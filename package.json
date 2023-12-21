@@ -1,0 +1,16 @@
+{
+  "name": "@graupl/graupl",
+  "version": "1.0.0",
+  "description": "The Graupl mono-repo",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Graupl/graupl.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Graupl/graupl/issues"
+  },
+  "homepage": "https://github.com/Graupl/graupl#readme"
+}
