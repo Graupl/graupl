@@ -1,0 +1,8 @@
+@layer graupl.base {
+  :root {
+    --graupl-gap: 1rem;
+    --graupl-content-max-width: 96ch;
+  }
+}
+
+/*# sourceMappingURL=base.css.map */

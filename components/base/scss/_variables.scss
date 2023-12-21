@@ -1,0 +1,6 @@
+// Variables referencing custom properties.
+
+@use "defaults";
+
+$gap: var(--graupl-gap, defaults.$gap);
+$content-max-width: var(--graupl-content-max-width, defaults.$content-max-width);

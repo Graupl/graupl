@@ -1,0 +1,10 @@
+// Graupl Base.
+
+@use "defaults" as *;
+
+@layer graupl.base {
+  :root {
+    --graupl-gap: #{$gap};
+    --graupl-content-max-width: #{$content-max-width};
+  }
+}

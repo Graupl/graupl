@@ -1,0 +1,39 @@
+// Graupl Container component.
+
+@use "variables" as *;
+
+@layer graupl.component {
+  .container,
+  .container > .full-width {
+    --graupl-container-full-width: minmax(#{$container-gap}, 1fr);
+    --graupl-container-content: min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2));
+    --graupl-container-breakout: minmax(0, #{$container-breakout-width});
+    --graupl-container-feature: minmax(0, #{$container-feature-width});
+
+    display: grid;
+    grid-template-columns:
+      [full-width-start] var(--graupl-container-full-width)
+      [feature-start] var(--graupl-container-feature)
+      [breakout-start] var(--graupl-container-breakout)
+      [content-start] var(--graupl-container-content) [content-end]
+      var(--graupl-container-breakout) [breakout-end]
+      var(--graupl-container-feature) [feature-end]
+      var(--graupl-container-full-width) [full-width-end];
+
+    > :not(.breakout, .full-width, .feature) {
+      grid-column: content;
+    }
+
+    .breakout {
+      grid-column: breakout;
+    }
+
+    .feature {
+      grid-column: feature;
+    }
+
+    .full-width {
+      grid-column: full-width;
+    }
+  }
+}

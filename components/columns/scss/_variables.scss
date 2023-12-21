@@ -1,0 +1,9 @@
+// Variables referencing custom properties.
+
+@use "../node_modules/@graupl/base/scss/variables" as base;
+@use "defaults";
+
+$columns-gap: var(--graupl-columns-gap, base.$gap);
+$columns-min-width: var(--graupl-columns-min-width, calc((base.$content-max-width - $columns-gap * 2) / 3));
+$columns-max-width: var(--graupl-columns-max-width, defaults.$columns-max-width);
+$columns-count: var(--graupl-columns-count, defaults.$columns-count);
