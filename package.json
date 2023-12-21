@@ -2,7 +2,9 @@
   "name": "@graupl/graupl",
   "version": "1.0.0",
   "description": "The Graupl mono-repo",
-  "scripts": {},
+  "scripts": {
+    "build": "sass components:dist/components"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Graupl/graupl.git"
@@ -12,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/Graupl/graupl/issues"
   },
-  "homepage": "https://github.com/Graupl/graupl#readme"
+  "homepage": "https://github.com/Graupl/graupl#readme",
+  "devDependencies": {
+    "sass": "^1.69.5"
+  }
 }

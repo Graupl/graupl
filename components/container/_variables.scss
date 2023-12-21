@@ -1,6 +1,6 @@
 // Variables referencing custom properties.
 
-@use "../node_modules/@graupl/base/scss/variables" as base;
+@use "../base/variables" as base;
 @use "defaults";
 
 $container-gap: var(--graupl-container-gap, base.$gap);
