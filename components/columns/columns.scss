@@ -7,12 +7,12 @@
 @include layer(layout) {
   .columns {
     display: grid;
-    grid-template-columns: var(--graupl-columns, repeat(#{$columns-count}, minmax(#{$columns-min-width}, #{$columns-max-width})));
+    grid-template-columns: var(--#{defaults.$prefix}-columns, repeat(#{$columns-count}, minmax(#{$columns-min-width}, #{$columns-max-width})));
     gap: $columns-gap;
 
     // Disable columns on small screens to avoid horizontal scrolling.
     @media screen and (max-width: #{defaults.$columns-disable-width}) {
-      --graupl-columns-min-width: #{defaults.$columns-max-width};
+      --#{defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
   }
 }

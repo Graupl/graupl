@@ -4,5 +4,7 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
-$container-breakout-width: 15ch;
-$container-feature-width: 20ch;
+@forward "../base/defaults";
+
+$container-breakout-width: 15ch !default;
+$container-feature-width: 20ch !default;

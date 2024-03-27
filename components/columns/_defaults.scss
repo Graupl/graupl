@@ -4,6 +4,8 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
-$columns-max-width: 1fr;
-$columns-count: auto-fit;
-$columns-disable-width: 48ch;
+@forward "../base/defaults";
+
+$columns-max-width: 1fr !default;
+$columns-count: auto-fit !default;
+$columns-disable-width: 48ch !default;

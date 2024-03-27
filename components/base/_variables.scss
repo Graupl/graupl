@@ -1,6 +1,10 @@
 // Variables referencing custom properties.
 
 @use "defaults";
+@use "sass:map";
 
-$gap: var(--graupl-gap, defaults.$gap);
-$content-max-width: var(--graupl-content-max-width, defaults.$content-max-width);
+// Layout properties.
+$content-max-width: var(--#{defaults.$prefix}-content-max-width, defaults.$content-max-width);
+
+// Spacing properties.
+$gap: var(--#{defaults.$prefix}-gap, defaults.$gap);

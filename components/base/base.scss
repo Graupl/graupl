@@ -1,10 +1,14 @@
 // Graupl Base.
 
 @use "defaults" as *;
+@use "../mixins/layer" as *;
 
 @include layer(base) {
   :root {
-    --graupl-gap: #{$gap};
-    --graupl-content-max-width: #{$content-max-width};
+    // Layout properties.
+    --#{$prefix}-content-max-width: #{$content-max-width};
+
+    // Spacing properties.
+    --#{$prefix}-gap: #{$gap};
   }
 }
