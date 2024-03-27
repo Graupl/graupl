@@ -1,0 +1,50 @@
+// Graupl Theme Component.
+
+@use "variables" as *;
+@use "../mixins/layer" as *;
+@use "defaults";
+@use "sass:map";
+
+@include layer(theme) {
+  :root {
+    // Set the light theme colours.
+    --#{defaults.$prefix}-theme-light-primary: #{map.get($primary, 600)};
+    --#{defaults.$prefix}-theme-light-secondary: #{map.get($secondary, 600)};
+    --#{defaults.$prefix}-theme-light-light: #{map.get($primary, 100)};
+    --#{defaults.$prefix}-theme-light-dark: #{map.get($primary, 900)};
+
+    // Set the dark theme colours.
+    --#{defaults.$prefix}-theme-dark-primary: #{map.get($primary, 400)};
+    --#{defaults.$prefix}-theme-dark-secondary: #{map.get($secondary, 400)};
+    --#{defaults.$prefix}-theme-dark-light: #{map.get($primary, 900)};
+    --#{defaults.$prefix}-theme-dark-dark: #{map.get($primary, 100)};
+
+    // Set the default active theme colours.
+    --#{defaults.$prefix}-theme-active-primary: #{$theme-light-primary};
+    --#{defaults.$prefix}-theme-active-secondary: #{$theme-light-secondary};
+    --#{defaults.$prefix}-theme-active-light: #{$theme-light-light};
+    --#{defaults.$prefix}-theme-active-dark: #{$theme-light-dark};
+  }
+
+  // Set the active theme for dark mode.
+  .dark-mode {
+    --#{defaults.$prefix}-theme-active-primary: #{$theme-dark-primary};
+    --#{defaults.$prefix}-theme-active-secondary: #{$theme-dark-secondary};
+    --#{defaults.$prefix}-theme-active-light: #{$theme-dark-light};
+    --#{defaults.$prefix}-theme-active-dark: #{$theme-dark-dark};
+  }
+
+  // Set the active theme for light mode.
+  .light-mode {
+    --#{defaults.$prefix}-theme-active-primary: #{$theme-light-primary};
+    --#{defaults.$prefix}-theme-active-secondary: #{$theme-light-secondary};
+    --#{defaults.$prefix}-theme-active-light: #{$theme-light-light};
+    --#{defaults.$prefix}-theme-active-dark: #{$theme-light-dark};
+  }
+
+  body {
+    background: $theme-active-light;
+    color: $theme-active-dark;
+    font-family: $font-family;
+  }
+}

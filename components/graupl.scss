@@ -2,6 +2,9 @@
 //
 // Forwards all components for easy development.
 
+// Forward the theme first.
+@forward "theme/theme";
+
 // Forward all components.
 @forward "columns/columns";
 @forward "container/container";
