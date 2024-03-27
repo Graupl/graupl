@@ -1,4 +1,7 @@
-@layer graupl.component {
+/**
+ * Layer mixins.
+ */
+@layer graupl.layout {
   .container,
   .container > .full-width {
     --graupl-container-full-width: minmax(var(--graupl-container-gap, var(--graupl-gap, 1rem)), 1fr);

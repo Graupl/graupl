@@ -1,0 +1,38 @@
+/**
+ * Layer mixins.
+ */
+@layer graupl.theme {
+  :root {
+    --graupl-theme-light-primary: var(--graupl-primary-600, hsl(217, 75%, 45%));
+    --graupl-theme-light-secondary: var(--graupl-secondary-600, hsl(320, 60%, 45%));
+    --graupl-theme-light-light: var(--graupl-primary-100, hsl(217, 100%, 95%));
+    --graupl-theme-light-dark: var(--graupl-primary-900, hsl(217, 100%, 10%));
+    --graupl-theme-dark-primary: var(--graupl-primary-400, hsl(217, 75%, 55%));
+    --graupl-theme-dark-secondary: var(--graupl-secondary-400, hsl(320, 60%, 55%));
+    --graupl-theme-dark-light: var(--graupl-primary-900, hsl(217, 100%, 10%));
+    --graupl-theme-dark-dark: var(--graupl-primary-100, hsl(217, 100%, 95%));
+    --graupl-theme-active-primary: var(--graupl-theme-light-primary, var(--graupl-primary-600, hsl(217, 75%, 45%)));
+    --graupl-theme-active-secondary: var(--graupl-theme-light-secondary, var(--graupl-secondary-600, hsl(320, 60%, 45%)));
+    --graupl-theme-active-light: var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%)));
+    --graupl-theme-active-dark: var(--graupl-theme-light-dark, var(--graupl-primary-900, hsl(217, 100%, 10%)));
+  }
+  .dark-mode {
+    --graupl-theme-active-primary: var(--graupl-theme-dark-primary, var(--graupl-primary-400, hsl(217, 75%, 55%)));
+    --graupl-theme-active-secondary: var(--graupl-theme-dark-secondary, var(--graupl-secondary-400, hsl(320, 60%, 55%)));
+    --graupl-theme-active-light: var(--graupl-theme-dark-light, var(--graupl-primary-900, hsl(217, 100%, 10%)));
+    --graupl-theme-active-dark: var(--graupl-theme-dark-dark, var(--graupl-primary-100, hsl(217, 100%, 95%)));
+  }
+  .light-mode {
+    --graupl-theme-active-primary: var(--graupl-theme-light-primary, var(--graupl-primary-600, hsl(217, 75%, 45%)));
+    --graupl-theme-active-secondary: var(--graupl-theme-light-secondary, var(--graupl-secondary-600, hsl(320, 60%, 45%)));
+    --graupl-theme-active-light: var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%)));
+    --graupl-theme-active-dark: var(--graupl-theme-light-dark, var(--graupl-primary-900, hsl(217, 100%, 10%)));
+  }
+  body {
+    background: var(--graupl-theme-active-light, var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%))));
+    color: var(--graupl-theme-active-dark, var(--graupl-theme-light-dark, var(--graupl-primary-900, hsl(217, 100%, 10%))));
+    font-family: var(--graupl-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+  }
+}
+
+/*# sourceMappingURL=theme.css.map */

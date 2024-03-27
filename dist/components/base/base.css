@@ -1,7 +1,16 @@
+/**
+ * Layer mixins.
+ */
 @layer graupl.base {
   :root {
-    --graupl-gap: 1rem;
     --graupl-content-max-width: 96ch;
+    --graupl-gap: 1rem;
+    --graupl-border-radius: 0.125em;
+    --graupl-border-width: 2px;
+    --graupl-border-style: solid;
+    --graupl-font-size-small: map.get($font-size, small);
+    --graupl-font-size-default: map.get($font-size, default);
+    --graupl-font-size-large: map.get($font-size, large);
   }
 }
 

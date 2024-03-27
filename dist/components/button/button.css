@@ -1,0 +1,34 @@
+/**
+ * Layer mixins.
+ */
+@layer graupl.component {
+  .button {
+    display: flex;
+    width: max-content;
+    padding: var(--graupl-button-padding, var(--graupl-button-padding-y, calc(var(--graupl-gap, 1rem) / 2)) var(--graupl-button-padding-x, var(--graupl-gap, 1rem)));
+    border-width: var(--graupl-button-border-width, var(--graupl-border-width, 2px));
+    border-style: var(--graupl-botton-border-style, var(--graupl-border-style, solid));
+    border-radius: var(--graupl-button-border-radius, var(--graupl-border-radius, 0.125em));
+    cursor: pointer;
+    font-size: 1rem;
+  }
+}
+@layer graupl.theme {
+  .button {
+    background: var(--graupl-button-background, var(--graupl-theme-active-light, var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%)))));
+    border-color: var(--graupl-button-border-color, var(--graupl-theme-active-primary, var(--graupl-theme-light-primary, var(--graupl-primary-600, hsl(217, 75%, 45%)))));
+    color: button-color;
+  }
+  .button:hover {
+    background: var(--graupl-button-hover-background, var(--graupl-theme-active-primary, var(--graupl-theme-light-primary, var(--graupl-primary-600, hsl(217, 75%, 45%)))));
+    border-color: var(--graupl-button-hover-border-color, var(--graupl-theme-active-primary, var(--graupl-theme-light-primary, var(--graupl-primary-600, hsl(217, 75%, 45%)))));
+    color: var(--graupl-button-hover-color, var(--graupl-theme-active-light, var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%)))));
+  }
+  .button:active {
+    background: var(--graupl-button-active-background, var(--graupl-theme-active-secondary, var(--graupl-theme-light-secondary, var(--graupl-secondary-600, hsl(320, 60%, 45%)))));
+    border-color: var(--graupl-button-active-border-color, var(--graupl-theme-active-secondary, var(--graupl-theme-light-secondary, var(--graupl-secondary-600, hsl(320, 60%, 45%)))));
+    color: var(--graupl-button-active-color, var(--graupl-theme-active-light, var(--graupl-theme-light-light, var(--graupl-primary-100, hsl(217, 100%, 95%)))));
+  }
+}
+
+/*# sourceMappingURL=button.css.map */
