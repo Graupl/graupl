@@ -2,6 +2,7 @@
 
 @use "defaults" as *;
 @use "../mixins/layer" as *;
+@use "sass:map";
 
 @include layer(base) {
   :root {
@@ -10,5 +11,15 @@
 
     // Spacing properties.
     --#{$prefix}-gap: #{$gap};
+
+    // Border properties.
+    --#{$prefix}-border-radius: #{$border-radius};
+    --#{$prefix}-border-width: #{$border-width};
+    --#{$prefix}-border-style: #{$border-style};
+
+    // Font properties.
+    --#{$prefix}-font-size-small: map.get($font-size, small);
+    --#{$prefix}-font-size-default: map.get($font-size, default);
+    --#{$prefix}-font-size-large: map.get($font-size, large);
   }
 }
