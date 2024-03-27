@@ -4,5 +4,11 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
-$gap: 1rem;
-$content-max-width: 96ch;
+// Prefix for custom properties and other naming conventions.
+$prefix: "graupl" !default;
+
+// Layout properties.
+$content-max-width: 96ch !default;
+
+// Spacing properties.
+$gap: 1rem !default;

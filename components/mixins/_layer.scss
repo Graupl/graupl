@@ -1,0 +1,13 @@
+/**
+ * Layer mixins.
+ */
+
+@use "../base/defaults" as base;
+
+@mixin layer($layer) {
+  @at-root {
+    @layer #{base.$prefix}.#{$layer} {
+      @content;
+    }
+  }
+}

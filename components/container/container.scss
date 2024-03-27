@@ -1,8 +1,9 @@
 // Graupl Container component.
 
 @use "variables" as *;
+@use "../mixins/layer" as *;
 
-@layer graupl.component {
+@include layer(layout) {
   .container,
   .container > .full-width {
     --graupl-container-full-width: minmax(#{$container-gap}, 1fr);
