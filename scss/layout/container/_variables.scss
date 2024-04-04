@@ -1,6 +1,6 @@
 // Variables referencing custom properties.
 
-@use "../../base/variables" as base;
+@use "../../variables" as base;
 @use "defaults";
 
 $container-gap: var(--#{defaults.$prefix}-container-gap, base.$gap);

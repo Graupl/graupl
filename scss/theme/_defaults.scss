@@ -6,7 +6,7 @@
 
 @use "sass:map";
 
-@forward "../base/defaults";
+@forward "../defaults";
 
 $primary: (
   100: hsl(219, 100%, 95%),

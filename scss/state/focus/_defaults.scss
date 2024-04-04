@@ -4,7 +4,7 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
-@forward "../../base/defaults";
+@forward "../../defaults";
 
 $focus-outline-style: dotted !default;
 $focus-box-shadow-style: inset !default;

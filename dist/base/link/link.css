@@ -1,0 +1,25 @@
+@layer graupl.base {
+  a {
+    text-decoration: var(--graupl-link-text-decoration, underline);
+    text-decoration-thickness: var(--graupl-link-text-decoration-thickness, var(--graupl-border-width, 2px));
+  }
+}
+@layer graupl.theme {
+  a {
+    color: var(--graupl-link-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
+  }
+  a:hover {
+    color: var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  }
+  a:active {
+    color: var(--graupl-link-active-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  }
+  a:visited {
+    color: var(--graupl-link-visited-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
+  }
+  a:visited:hover {
+    color: var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  }
+}
+
+/*# sourceMappingURL=link.css.map */

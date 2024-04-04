@@ -1,0 +1,33 @@
+// Link base styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+
+@include layer(base) {
+  a {
+    text-decoration: $link-text-decoration;
+    text-decoration-thickness: $link-text-decoration-thickness;
+  }
+}
+
+@include layer(theme) {
+  a {
+    color: $link-color;
+
+    &:hover {
+      color: $link-hover-color;
+    }
+
+    &:active {
+      color: $link-active-color;
+    }
+
+    &:visited {
+      color: $link-visited-color;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+    }
+  }
+}
