@@ -1,0 +1,36 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+@forward "../base/defaults";
+
+$primary: (
+  100: hsl(219, 100%, 95%),
+  200: hsl(219, 90%, 80%),
+  300: hsl(219, 80%, 65%),
+  400: hsl(219, 75%, 55%),
+  500: hsl(219, 75%, 50%),
+  600: hsl(219, 75%, 45%),
+  700: hsl(219, 80%, 35%),
+  800: hsl(219, 90%, 20%),
+  900: hsl(219, 100%, 10%),
+) !default;
+
+$secondary: (
+  100: hsl(340, 85%, 95%),
+  200: hsl(340, 75%, 80%),
+  300: hsl(340, 65%, 65%),
+  400: hsl(340, 60%, 55%),
+  500: hsl(340, 60%, 50%),
+  600: hsl(340, 60%, 45%),
+  700: hsl(340, 65%, 35%),
+  800: hsl(340, 75%, 20%),
+  900: hsl(340, 85%, 10%),
+) !default;
+
+$font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem);

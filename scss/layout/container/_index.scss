@@ -1,0 +1,41 @@
+// Graupl Container layout.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "defaults";
+
+@include layer(layout) {
+  .container,
+  .container > .full-width {
+    --#{defaults.$prefix}-container-full-width: minmax(#{$container-gap}, 1fr);
+    --#{defaults.$prefix}-container-content: min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2));
+    --#{defaults.$prefix}-container-breakout: minmax(0, #{$container-breakout-width});
+    --#{defaults.$prefix}-container-feature: minmax(0, #{$container-feature-width});
+
+    display: grid;
+    grid-template-columns:
+      [full-width-start] var(--#{defaults.$prefix}-container-full-width)
+      [feature-start] var(--#{defaults.$prefix}-container-feature)
+      [breakout-start] var(--#{defaults.$prefix}-container-breakout)
+      [content-start] var(--#{defaults.$prefix}-container-content) [content-end]
+      var(--#{defaults.$prefix}-container-breakout) [breakout-end]
+      var(--#{defaults.$prefix}-container-feature) [feature-end]
+      var(--#{defaults.$prefix}-container-full-width) [full-width-end];
+
+    > :not(.breakout, .full-width, .feature) {
+      grid-column: content;
+    }
+
+    .breakout {
+      grid-column: breakout;
+    }
+
+    .feature {
+      grid-column: feature;
+    }
+
+    .full-width {
+      grid-column: full-width;
+    }
+  }
+}

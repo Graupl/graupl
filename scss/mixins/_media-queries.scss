@@ -1,0 +1,15 @@
+// Media query mixins.
+
+// A media query for targetting users who have not requested reduced motion.
+@mixin animation-on {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// A media query for targetting users who have requested reduced motion.
+@mixin animation-off {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

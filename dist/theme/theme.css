@@ -1,0 +1,26 @@
+@layer graupl.theme {
+  :root {
+    background: var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))));
+    color: var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%))));
+    font-family: var(--graupl-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
+    font-size: var(--graupl-font-size, clamp(0.85rem, 0.8rem + 0.5vw, 1.25rem));
+  }
+  .dark-mode {
+    --graupl-theme-active--primary: var(--graupl-theme-dark--primary, var(--graupl-primary--300, hsl(219, 80%, 65%)));
+    --graupl-theme-active--primary--dark: var(--graupl-theme-dark--primary--dark, var(--graupl-primary--200, hsl(219, 90%, 80%)));
+    --graupl-theme-active--primary--light: var(--graupl-theme-dark--primary--light, var(--graupl-primary--400, hsl(219, 75%, 55%)));
+    --graupl-theme-active--secondary: var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(340, 65%, 65%)));
+    --graupl-theme-active--light: var(--graupl-theme-dark--light, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+    --graupl-theme-active--dark: var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+  }
+  .light-mode {
+    --graupl-theme-active--primary: var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
+    --graupl-theme-active--primary--dark: var(--graupl-theme-light--primary--dark, var(--graupl-primary--800, hsl(219, 90%, 20%)));
+    --graupl-theme-active--primary--light: var(--graupl-theme-light--primary--light, var(--graupl-primary--600, hsl(219, 75%, 45%)));
+    --graupl-theme-active--secondary: var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)));
+    --graupl-theme-active--light: var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+    --graupl-theme-active--dark: var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+  }
+}
+
+/*# sourceMappingURL=theme.css.map */

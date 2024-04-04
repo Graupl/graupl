@@ -1,0 +1,41 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+// Prefix for custom properties and other naming conventions.
+$prefix: "graupl" !default;
+
+// Layout properties.
+$content-max-width: 96ch !default;
+
+// Spacing properties.
+$gap: 1rem !default;
+
+// Size properties.
+$interactive-min-width: 44px !default;
+$interactive-min-height: 44px !default;
+
+// Border properties.
+$border-radius: 0.125rem !default;
+$border-width: 2px !default;
+$border-style: solid !default;
+
+// Font properties.
+$font-size-base: 1rem !default;
+$font-size: (
+  small: $font-size-base * 0.875,
+  default: $font-size-base,
+  large: $font-size-base * 1.125,
+) !default;
+
+// Transition properties.
+$transition-duration-base: 100;
+$transition-duration: (
+  fast: #{$transition-duration-base * 1.5}ms,
+  default: #{$transition-duration-base * 2.5}ms,
+  slow: #{$transition-duration-base * 3}ms,
+) !default;
+$transition-timing-function: ease !default;
+

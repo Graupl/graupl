@@ -1,0 +1,67 @@
+// Graupl Button Component.
+
+@use "defaults";
+@use "../../theme/variables" as theme;
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+
+@include layer(component) {
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $button-min-width;
+    min-height: $button-min-height;
+    padding: $button-padding;
+    border-width: $button-border-width;
+    border-style: $button-border-style;
+    border-radius: $button-border-radius;
+    cursor: pointer;
+    font-size: $button-font-size;
+    transition: $button-transition;
+
+    &:hover {
+      transform: $button-hover-transform;
+    }
+
+    &:active {
+      transform: $button-active-transform;
+    }
+  }
+}
+
+@include layer(theme) {
+  .button {
+    background: $button-background;
+    border-color: $button-border-color;
+    color: $button-color;
+
+    &:hover {
+      background: $button-hover-background;
+      border-color: $button-hover-border-color;
+      color: $button-hover-color;
+    }
+
+    &:active {
+      background: $button-active-background;
+      border-color: $button-active-border-color;
+      color: $button-active-color;
+    }
+
+    &.primary {
+      --#{defaults.$prefix}-button-hover-background: #{theme.$theme-active--primary};
+      --#{defaults.$prefix}-button-active-background: #{theme.$theme-active--primary};
+      --#{defaults.$prefix}-button-border-color: #{theme.$theme-active--primary};
+      --#{defaults.$prefix}-button-hover-border-color: #{theme.$theme-active--primary};
+      --#{defaults.$prefix}-button-active-border-color: #{theme.$theme-active--primary};
+    }
+
+    &.secondary {
+      --#{defaults.$prefix}-button-hover-background: #{theme.$theme-active--secondary};
+      --#{defaults.$prefix}-button-active-background: #{theme.$theme-active--secondary};
+      --#{defaults.$prefix}-button-border-color: #{theme.$theme-active--secondary};
+      --#{defaults.$prefix}-button-hover-border-color: #{theme.$theme-active--secondary};
+      --#{defaults.$prefix}-button-active-border-color: #{theme.$theme-active--secondary};
+    }
+  }
+}

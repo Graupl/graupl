@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "The Graupl mono-repo",
   "scripts": {
-    "build": "sass components:dist/components"
+    "build": "sass scss:dist"
   },
   "repository": {
     "type": "git",

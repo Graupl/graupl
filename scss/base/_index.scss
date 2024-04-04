@@ -1,0 +1,30 @@
+// Graupl Base.
+
+@use "defaults" as *;
+@use "../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(base) {
+  :root {
+    // Layout properties.
+    --#{$prefix}-content-max-width: #{$content-max-width};
+
+    // Spacing properties.
+    --#{$prefix}-gap: #{$gap};
+
+    // Border properties.
+    --#{$prefix}-border-radius: #{$border-radius};
+    --#{$prefix}-border-width: #{$border-width};
+    --#{$prefix}-border-style: #{$border-style};
+
+    // Font properties.
+    --#{$prefix}-font-size-small: map.get($font-size, small);
+    --#{$prefix}-font-size-default: map.get($font-size, default);
+    --#{$prefix}-font-size-large: map.get($font-size, large);
+
+    // Transition properties.
+    --#{$prefix}-transition-duration-fast: map.get($transition-duration, fast);
+    --#{$prefix}-transition-duration-default: map.get($transition-duration, default);
+    --#{$prefix}-transition-duration-slow: map.get($transition-duration, slow);
+  }
+}

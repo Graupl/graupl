@@ -1,0 +1,13 @@
+// Focus state styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+
+@include layer(state) {
+  *:focus-visible {
+    outline: $focus-outline-width $focus-outline-style $focus-outline-color;
+    outline-offset: $focus-outline-offset;
+    box-shadow: $focus-box-shadow;
+    border-color: transparent;
+  }
+}

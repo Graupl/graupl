@@ -1,0 +1,17 @@
+@layer graupl.base {
+  :root {
+    --graupl-content-max-width: 96ch;
+    --graupl-gap: 1rem;
+    --graupl-border-radius: 0.125rem;
+    --graupl-border-width: 2px;
+    --graupl-border-style: solid;
+    --graupl-font-size-small: map.get($font-size, small);
+    --graupl-font-size-default: map.get($font-size, default);
+    --graupl-font-size-large: map.get($font-size, large);
+    --graupl-transition-duration-fast: map.get($transition-duration, fast);
+    --graupl-transition-duration-default: map.get($transition-duration, default);
+    --graupl-transition-duration-slow: map.get($transition-duration, slow);
+  }
+}
+
+/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,14 @@
+// Layer mixins.
+//
+// These should be used to define the layers of your components to ensure that
+// they are output in the correct order in the final compiled CSS.
+
+@use "../base/defaults" as base;
+
+@mixin layer($layer) {
+  @at-root {
+    @layer #{base.$prefix}.#{$layer} {
+      @content;
+    }
+  }
+}
