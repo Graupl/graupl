@@ -1,157 +1,158 @@
-@layer graupl.base {
-  a {
-    text-decoration: var(--graupl-link-text-decoration, underline);
-    text-decoration-thickness: var(--graupl-link-text-decoration-thickness, var(--graupl-border-width, 2px));
+@layer graupl.base{
+  a{
+    -webkit-text-decoration:var(--graupl-link-text-decoration, underline);
+            text-decoration:var(--graupl-link-text-decoration, underline);
+    text-decoration-thickness:var(--graupl-link-text-decoration-thickness, var(--graupl-border-width, 2px));
   }
 }
-@layer graupl.theme {
-  a {
-    color: var(--graupl-link-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
+@layer graupl.theme{
+  a{
+    color:var(--graupl-link-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
-  a:hover {
-    color: var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  a:hover{
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
   }
-  a:active {
-    color: var(--graupl-link-active-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  a:active{
+    color:var(--graupl-link-active-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
   }
-  a:visited {
-    color: var(--graupl-link-visited-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
+  a:visited{
+    color:var(--graupl-link-visited-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
-  a:visited:hover {
-    color: var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+  a:visited:hover{
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
   }
 }
-@layer graupl.layout {
+@layer graupl.layout{
   .container,
-  .container > .full-width {
-    --graupl-container-full-width: minmax(var(--graupl-container-gap, var(--graupl-gap, 1rem)), 1fr);
-    --graupl-container-content: min(
+  .container > .full-width{
+    --graupl-container-full-width:minmax(var(--graupl-container-gap, var(--graupl-gap, 1rem)), 1fr);
+    --graupl-container-content:min(
       var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)),
       calc(100% - var(--graupl-container-gap, var(--graupl-gap, 1rem)) * 2)
     );
-    --graupl-container-breakout: minmax(
+    --graupl-container-breakout:minmax(
       0,
       var(--graupl-container-breakout-width, calc((var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) - var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch))) / 2))
     );
-    --graupl-container-feature: minmax(
+    --graupl-container-feature:minmax(
       0,
       var(--graupl-container-feature-width, calc((var(--graupl-container-feature-max-width, calc(var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) + 20ch)) - var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch))) / 2))
     );
-    display: grid;
-    grid-template-columns: [full-width-start] var(--graupl-container-full-width) [feature-start] var(--graupl-container-feature) [breakout-start] var(--graupl-container-breakout) [content-start] var(--graupl-container-content) [content-end] var(--graupl-container-breakout) [breakout-end] var(--graupl-container-feature) [feature-end] var(--graupl-container-full-width) [full-width-end];
+    display:grid;
+    grid-template-columns:[full-width-start] var(--graupl-container-full-width) [feature-start] var(--graupl-container-feature) [breakout-start] var(--graupl-container-breakout) [content-start] var(--graupl-container-content) [content-end] var(--graupl-container-breakout) [breakout-end] var(--graupl-container-feature) [feature-end] var(--graupl-container-full-width) [full-width-end];
   }
   .container > :not(.breakout, .full-width, .feature),
-  .container > .full-width > :not(.breakout, .full-width, .feature) {
-    grid-column: content;
+  .container > .full-width > :not(.breakout, .full-width, .feature){
+    grid-column:content;
   }
   .container .breakout,
-  .container > .full-width .breakout {
-    grid-column: breakout;
+  .container > .full-width .breakout{
+    grid-column:breakout;
   }
   .container .feature,
-  .container > .full-width .feature {
-    grid-column: feature;
+  .container > .full-width .feature{
+    grid-column:feature;
   }
   .container .full-width,
-  .container > .full-width .full-width {
-    grid-column: full-width;
+  .container > .full-width .full-width{
+    grid-column:full-width;
   }
 }
-@layer graupl.layout {
-  .columns {
-    display: grid;
-    grid-template-columns: var(--graupl-columns, repeat(var(--graupl-columns-count, auto-fit), minmax(var(--graupl-columns-min-width, calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-gap, var(--graupl-gap, 1rem)) * 2) / 3)), var(--graupl-columns-max-width, 1fr))));
-    gap: var(--graupl-columns-gap, var(--graupl-gap, 1rem));
+@layer graupl.layout{
+  .columns{
+    display:grid;
+    grid-template-columns:var(--graupl-columns, repeat(var(--graupl-columns-count, auto-fit), minmax(var(--graupl-columns-min-width, calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-gap, var(--graupl-gap, 1rem)) * 2) / 3)), var(--graupl-columns-max-width, 1fr))));
+    gap:var(--graupl-columns-gap, var(--graupl-gap, 1rem));
   }
-  @media screen and (max-width: 48ch) {
-    .columns {
-      --graupl-columns-min-width: 1fr;
+  @media screen and (max-width: 48ch){
+    .columns{
+      --graupl-columns-min-width:1fr;
     }
   }
 }
-@layer graupl.component {
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: var(--graupl-button-min-width, 44px);
-    min-height: var(--graupl-button-min-height, 44px);
-    padding: var(--graupl-button-padding, var(--graupl-button-padding-y, calc(var(--graupl-gap, 1rem) / 2)) var(--graupl-button-padding-x, var(--graupl-gap, 1rem)));
-    border-width: var(--graupl-button-border-width, var(--graupl-border-width, 2px));
-    border-style: var(--graupl-botton-border-style, var(--graupl-border-style, solid));
-    border-radius: var(--graupl-button-border-radius, var(--graupl-border-radius, 0.125rem));
-    cursor: pointer;
-    font-size: var(--graupl-button-font-size, var(--graupl-font-size-default, 1rem));
-    transition: var(--graupl-button-transition, background var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), color var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), border-color var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), transform var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease));
+@layer graupl.component{
+  .button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:var(--graupl-button-min-width, 44px);
+    min-height:var(--graupl-button-min-height, 44px);
+    padding:var(--graupl-button-padding, var(--graupl-button-padding-y, calc(var(--graupl-gap, 1rem) / 2)) var(--graupl-button-padding-x, var(--graupl-gap, 1rem)));
+    transition:var(--graupl-button-transition, background var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), color var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), border-color var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease), transform var(--graupl-transition-duration-fast, 150ms) var(--graupl-transition-timing-function, ease));
+    border-width:var(--graupl-button-border-width, var(--graupl-border-width, 2px));
+    border-style:var(--graupl-botton-border-style, var(--graupl-border-style, solid));
+    border-radius:var(--graupl-button-border-radius, var(--graupl-border-radius, 0.125rem));
+    font-size:var(--graupl-button-font-size, var(--graupl-font-size-default, 1rem));
+    cursor:pointer;
   }
-  .button:hover {
-    transform: var(--graupl-button-hover-transform, none);
+  .button:hover{
+    transform:var(--graupl-button-hover-transform, none);
   }
-  .button:active {
-    transform: var(--graupl-button-active-transform, scale(0.95));
-  }
-}
-@layer graupl.theme {
-  .button {
-    background: var(--graupl-button-background, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
-    border-color: var(--graupl-button-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    color: var(--graupl-button-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-  }
-  .button:hover {
-    background: var(--graupl-button-hover-background, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    border-color: var(--graupl-button-hover-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    color: var(--graupl-button-hover-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
-  }
-  .button:active {
-    background: var(--graupl-button-active-background, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    border-color: var(--graupl-button-active-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    color: var(--graupl-button-active-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
-  }
-  .button.primary {
-    --graupl-button-hover-background: var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
-    --graupl-button-active-background: var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
-    --graupl-button-border-color: var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
-    --graupl-button-hover-border-color: var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
-    --graupl-button-active-border-color: var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
-  }
-  .button.secondary {
-    --graupl-button-hover-background: var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-background: var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-border-color: var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-hover-border-color: var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-border-color: var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+  .button:active{
+    transform:var(--graupl-button-active-transform, scale(0.95));
   }
 }
-@layer graupl.state {
-  *:focus-visible {
-    outline: var(--graupl-focus-outline-width, var(--graupl-focus-width, var(--graupl-border-width, 2px))) var(--graupl-focus-outline-style, dotted) var(--graupl-focus-outline-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
-    outline-offset: var(--graupl-focus-outline-offset, calc(-1 * var(--graupl-focus-outline-width, var(--graupl-focus-width, var(--graupl-border-width, 2px)))));
-    box-shadow: var(--graupl-focus-box-shadow, var(--graupl-focus-width, var(--graupl-border-width, 2px)) var(--graupl-focus-width, var(--graupl-border-width, 2px)) 0 0 var(--graupl-focus-box-shadow-style, inset) var(--graupl-focus-box-shadow-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))))), 0 0 0 var(--graupl-focus-width, var(--graupl-border-width, 2px)) var(--graupl-focus-box-shadow-style, inset) var(--graupl-focus-box-shadow-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))))));
-    border-color: transparent;
+@layer graupl.theme{
+  .button{
+    border-color:var(--graupl-button-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    background:var(--graupl-button-background, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
+    color:var(--graupl-button-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+  }
+  .button:hover{
+    border-color:var(--graupl-button-hover-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    background:var(--graupl-button-hover-background, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    color:var(--graupl-button-hover-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
+  }
+  .button:active{
+    border-color:var(--graupl-button-active-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    background:var(--graupl-button-active-background, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    color:var(--graupl-button-active-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
+  }
+  .button.primary{
+    --graupl-button-hover-background:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
+  }
+  .button.secondary{
+    --graupl-button-hover-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
   }
 }
-@layer graupl.theme {
-  :root {
-    background: var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))));
-    color: var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%))));
-    font-family: var(--graupl-font-family, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
-    font-size: var(--graupl-font-size, clamp(0.85rem, 0.8rem + 0.5vw, 1.25rem));
+@layer graupl.state{
+  *:focus-visible{
+    border-color:transparent;
+    outline:var(--graupl-focus-outline-width, var(--graupl-focus-width, var(--graupl-border-width, 2px))) var(--graupl-focus-outline-style, dotted) var(--graupl-focus-outline-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    outline-offset:var(--graupl-focus-outline-offset, calc(-1 * var(--graupl-focus-outline-width, var(--graupl-focus-width, var(--graupl-border-width, 2px)))));
+    box-shadow:var(--graupl-focus-box-shadow, var(--graupl-focus-width, var(--graupl-border-width, 2px)) var(--graupl-focus-width, var(--graupl-border-width, 2px)) 0 0 var(--graupl-focus-box-shadow-style, inset) var(--graupl-focus-box-shadow-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))))), 0 0 0 var(--graupl-focus-width, var(--graupl-border-width, 2px)) var(--graupl-focus-box-shadow-style, inset) var(--graupl-focus-box-shadow-color, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))))));
   }
-  .dark-mode {
-    --graupl-theme-active--primary: var(--graupl-theme-dark--primary, var(--graupl-primary--300, hsl(219, 80%, 65%)));
-    --graupl-theme-active--primary--dark: var(--graupl-theme-dark--primary--dark, var(--graupl-primary--200, hsl(219, 90%, 80%)));
-    --graupl-theme-active--primary--light: var(--graupl-theme-dark--primary--light, var(--graupl-primary--400, hsl(219, 75%, 55%)));
-    --graupl-theme-active--secondary: var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(340, 65%, 65%)));
-    --graupl-theme-active--light: var(--graupl-theme-dark--light, var(--graupl-primary--900, hsl(219, 100%, 10%)));
-    --graupl-theme-active--dark: var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+}
+@layer graupl.theme{
+  :root{
+    background:var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))));
+    color:var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%))));
+    font-family:var(--graupl-font-family, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif);
+    font-size:var(--graupl-font-size, clamp(0.85rem, 0.8rem + 0.5vw, 1.25rem));
   }
-  .light-mode {
-    --graupl-theme-active--primary: var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
-    --graupl-theme-active--primary--dark: var(--graupl-theme-light--primary--dark, var(--graupl-primary--800, hsl(219, 90%, 20%)));
-    --graupl-theme-active--primary--light: var(--graupl-theme-light--primary--light, var(--graupl-primary--600, hsl(219, 75%, 45%)));
-    --graupl-theme-active--secondary: var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)));
-    --graupl-theme-active--light: var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)));
-    --graupl-theme-active--dark: var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+  .dark-mode{
+    --graupl-theme-active--primary:var(--graupl-theme-dark--primary, var(--graupl-primary--300, hsl(219, 80%, 65%)));
+    --graupl-theme-active--primary--dark:var(--graupl-theme-dark--primary--dark, var(--graupl-primary--200, hsl(219, 90%, 80%)));
+    --graupl-theme-active--primary--light:var(--graupl-theme-dark--primary--light, var(--graupl-primary--400, hsl(219, 75%, 55%)));
+    --graupl-theme-active--secondary:var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(340, 65%, 65%)));
+    --graupl-theme-active--light:var(--graupl-theme-dark--light, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+    --graupl-theme-active--dark:var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+  }
+  .light-mode{
+    --graupl-theme-active--primary:var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
+    --graupl-theme-active--primary--dark:var(--graupl-theme-light--primary--dark, var(--graupl-primary--800, hsl(219, 90%, 20%)));
+    --graupl-theme-active--primary--light:var(--graupl-theme-light--primary--light, var(--graupl-primary--600, hsl(219, 75%, 45%)));
+    --graupl-theme-active--secondary:var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)));
+    --graupl-theme-active--light:var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+    --graupl-theme-active--dark:var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
   }
 }
 
