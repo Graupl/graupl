@@ -75,7 +75,6 @@ $theme-active--primary--light: var(
   --#{defaults.$prefix}-theme-active--primary--light,
   $theme-light--primary--light
 );
-
 $theme-light--secondary: var(
   --#{defaults.$prefix}-theme-light--secondary,
   map.get($secondary, 700)
@@ -112,7 +111,6 @@ $theme-active--secondary--light: var(
   --#{defaults.$prefix}-theme-active--secondary--light,
   $theme-light--secondary--light
 );
-
 $theme-light--light: var(
   --#{defaults.$prefix}-theme-light--light,
   map.get($primary, 100)
@@ -125,7 +123,6 @@ $theme-active--light: var(
   --#{defaults.$prefix}-theme-active--light,
   $theme-light--light
 );
-
 $theme-light--dark: var(
   --#{defaults.$prefix}-theme-light--dark,
   map.get($primary, 900)
@@ -139,6 +136,6 @@ $theme-active--dark: var(
   $theme-light--dark
 );
 
-// Font family.
+// Font properties.
 $font-family: var(--#{defaults.$prefix}-font-family, defaults.$font-family);
 $font-size: var(--#{defaults.$prefix}-font-size, defaults.$font-size);

@@ -13,12 +13,12 @@
     min-width: $button-min-width;
     min-height: $button-min-height;
     padding: $button-padding;
+    transition: $button-transition;
     border-width: $button-border-width;
     border-style: $button-border-style;
     border-radius: $button-border-radius;
-    cursor: pointer;
     font-size: $button-font-size;
-    transition: $button-transition;
+    cursor: pointer;
 
     &:hover {
       transform: $button-hover-transform;
@@ -32,19 +32,19 @@
 
 @include layer(theme) {
   .button {
-    background: $button-background;
     border-color: $button-border-color;
+    background: $button-background;
     color: $button-color;
 
     &:hover {
-      background: $button-hover-background;
       border-color: $button-hover-border-color;
+      background: $button-hover-background;
       color: $button-hover-color;
     }
 
     &:active {
-      background: $button-active-background;
       border-color: $button-active-border-color;
+      background: $button-active-background;
       color: $button-active-color;
     }
 
