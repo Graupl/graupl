@@ -32,5 +32,13 @@ $secondary: (
   900: hsl(340, 85%, 10%),
 ) !default;
 
-$font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  "Helvetica Neue",
+  Arial,
+  sans-serif !default;
 $font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem);

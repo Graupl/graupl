@@ -6,34 +6,101 @@
 @use "sass:map";
 
 // Button properties.
-$button-min-width: var(--#{defaults.$prefix}-button-min-width, defaults.$interactive-min-width);
-$button-min-height: var(--#{defaults.$prefix}-button-min-height, defaults.$interactive-min-height);
+$button-min-width: var(
+  --#{defaults.$prefix}-button-min-width,
+  defaults.$interactive-min-width
+);
+$button-min-height: var(
+  --#{defaults.$prefix}-button-min-height,
+  defaults.$interactive-min-height
+);
 $button-padding-x: var(--#{defaults.$prefix}-button-padding-x, base.$gap);
-$button-padding-y: var(--#{defaults.$prefix}-button-padding-y, calc(base.$gap / 2));
-$button-padding: var(--#{defaults.$prefix}-button-padding, $button-padding-y $button-padding-x);
-$button-font-size: var(--#{defaults.$prefix}-button-font-size, map.get(base.$font-size, default));
-$button-transition: var(--#{defaults.$prefix}-button-transition, background map.get(base.$transition-duration, fast) base.$transition-timing-function, color map.get(base.$transition-duration, fast) base.$transition-timing-function, border-color map.get(base.$transition-duration, fast) base.$transition-timing-function, transform map.get(base.$transition-duration, fast) base.$transition-timing-function);
+$button-padding-y: var(
+  --#{defaults.$prefix}-button-padding-y,
+  calc(base.$gap / 2)
+);
+$button-padding: var(
+  --#{defaults.$prefix}-button-padding,
+  $button-padding-y $button-padding-x
+);
+$button-font-size: var(
+  --#{defaults.$prefix}-button-font-size,
+  map.get(base.$font-size, default)
+);
+$button-transition: var(
+  --#{defaults.$prefix}-button-transition,
+  background map.get(base.$transition-duration, fast)
+    base.$transition-timing-function,
+  color map.get(base.$transition-duration, fast)
+    base.$transition-timing-function,
+  border-color map.get(base.$transition-duration, fast)
+    base.$transition-timing-function,
+  transform map.get(base.$transition-duration, fast)
+    base.$transition-timing-function
+);
 
 // Transform properties.
-$button-hover-transform: var(--#{defaults.$prefix}-button-hover-transform, defaults.$button-hover-transform);
-$button-active-transform: var(--#{defaults.$prefix}-button-active-transform, defaults.$button-active-transform);
+$button-hover-transform: var(
+  --#{defaults.$prefix}-button-hover-transform,
+  defaults.$button-hover-transform
+);
+$button-active-transform: var(
+  --#{defaults.$prefix}-button-active-transform,
+  defaults.$button-active-transform
+);
 
 // Background properties.
-$button-background: var(--#{defaults.$prefix}-button-background, theme.$theme-active--light);
-$button-hover-background: var(--#{defaults.$prefix}-button-hover-background, theme.$theme-active--dark);
-$button-active-background: var(--#{defaults.$prefix}-button-active-background, theme.$theme-active--dark);
+$button-background: var(
+  --#{defaults.$prefix}-button-background,
+  theme.$theme-active--light
+);
+$button-hover-background: var(
+  --#{defaults.$prefix}-button-hover-background,
+  theme.$theme-active--dark
+);
+$button-active-background: var(
+  --#{defaults.$prefix}-button-active-background,
+  theme.$theme-active--dark
+);
 
 // Text properties.
-$button-color: var(--#{defaults.$prefix}-button-color, theme.$theme-active--dark);
-$button-hover-color: var(--#{defaults.$prefix}-button-hover-color, theme.$theme-active--light);
-$button-active-color: var(--#{defaults.$prefix}-button-active-color, theme.$theme-active--light);
+$button-color: var(
+  --#{defaults.$prefix}-button-color,
+  theme.$theme-active--dark
+);
+$button-hover-color: var(
+  --#{defaults.$prefix}-button-hover-color,
+  theme.$theme-active--light
+);
+$button-active-color: var(
+  --#{defaults.$prefix}-button-active-color,
+  theme.$theme-active--light
+);
 
 // Border properties.
-$button-border-width: var(--#{defaults.$prefix}-button-border-width, base.$border-width);
-$button-border-style: var(--#{defaults.$prefix}-botton-border-style, base.$border-style);
-$button-border-radius: var(--#{defaults.$prefix}-button-border-radius, base.$border-radius);
+$button-border-width: var(
+  --#{defaults.$prefix}-button-border-width,
+  base.$border-width
+);
+$button-border-style: var(
+  --#{defaults.$prefix}-botton-border-style,
+  base.$border-style
+);
+$button-border-radius: var(
+  --#{defaults.$prefix}-button-border-radius,
+  base.$border-radius
+);
 
 // Border colour properties.
-$button-border-color: var(--#{defaults.$prefix}-button-border-color, theme.$theme-active--dark);
-$button-hover-border-color: var(--#{defaults.$prefix}-button-hover-border-color, theme.$theme-active--dark);
-$button-active-border-color: var(--#{defaults.$prefix}-button-active-border-color, theme.$theme-active--dark);
+$button-border-color: var(
+  --#{defaults.$prefix}-button-border-color,
+  theme.$theme-active--dark
+);
+$button-hover-border-color: var(
+  --#{defaults.$prefix}-button-hover-border-color,
+  theme.$theme-active--dark
+);
+$button-active-border-color: var(
+  --#{defaults.$prefix}-button-active-border-color,
+  theme.$theme-active--dark
+);

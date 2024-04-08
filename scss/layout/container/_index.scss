@@ -8,9 +8,18 @@
   .container,
   .container > .full-width {
     --#{defaults.$prefix}-container-full-width: minmax(#{$container-gap}, 1fr);
-    --#{defaults.$prefix}-container-content: min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2));
-    --#{defaults.$prefix}-container-breakout: minmax(0, #{$container-breakout-width});
-    --#{defaults.$prefix}-container-feature: minmax(0, #{$container-feature-width});
+    --#{defaults.$prefix}-container-content: min(
+      #{$container-content-max-width},
+      calc(100% - #{$container-gap} * 2)
+    );
+    --#{defaults.$prefix}-container-breakout: minmax(
+      0,
+      #{$container-breakout-width}
+    );
+    --#{defaults.$prefix}-container-feature: minmax(
+      0,
+      #{$container-feature-width}
+    );
 
     display: grid;
     grid-template-columns:

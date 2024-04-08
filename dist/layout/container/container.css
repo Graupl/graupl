@@ -2,9 +2,18 @@
   .container,
   .container > .full-width {
     --graupl-container-full-width: minmax(var(--graupl-container-gap, var(--graupl-gap, 1rem)), 1fr);
-    --graupl-container-content: min(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)), calc(100% - var(--graupl-container-gap, var(--graupl-gap, 1rem)) * 2));
-    --graupl-container-breakout: minmax(0, var(--graupl-container-breakout-width, calc((var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) - var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch))) / 2)));
-    --graupl-container-feature: minmax(0, var(--graupl-container-feature-width, calc((var(--graupl-container-feature-max-width, calc(var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) + 20ch)) - var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch))) / 2)));
+    --graupl-container-content: min(
+      var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)),
+      calc(100% - var(--graupl-container-gap, var(--graupl-gap, 1rem)) * 2)
+    );
+    --graupl-container-breakout: minmax(
+      0,
+      var(--graupl-container-breakout-width, calc((var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) - var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch))) / 2))
+    );
+    --graupl-container-feature: minmax(
+      0,
+      var(--graupl-container-feature-width, calc((var(--graupl-container-feature-max-width, calc(var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch)) + 20ch)) - var(--graupl-container-breakout-max-width, calc(var(--graupl-container-content-max-width, var(--graupl-content-max-width, 96ch)) + 15ch))) / 2))
+    );
     display: grid;
     grid-template-columns: [full-width-start] var(--graupl-container-full-width) [feature-start] var(--graupl-container-feature) [breakout-start] var(--graupl-container-breakout) [content-start] var(--graupl-container-content) [content-end] var(--graupl-container-breakout) [breakout-end] var(--graupl-container-feature) [feature-end] var(--graupl-container-full-width) [full-width-end];
   }
