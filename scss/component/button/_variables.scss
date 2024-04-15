@@ -29,14 +29,10 @@ $button-font-size: var(
 );
 $button-transition: var(
   --#{defaults.$prefix}-button-transition,
-  background #{map.get(base.$transition-duration, fast)}
-    #{base.$transition-timing-function},
-  color #{map.get(base.$transition-duration, fast)}
-    #{base.$transition-timing-function},
-  border-color #{map.get(base.$transition-duration, fast)}
-    #{base.$transition-timing-function},
-  transform #{map.get(base.$transition-duration, fast)}
-    #{base.$transition-timing-function}
+  background #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
+  color #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
+  border-color #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
+  transform #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function}
 );
 
 // Transform properties.

@@ -5,37 +5,73 @@
 
 // Primary theme colours.
 $primary: (
-  100: var(--#{defaults.$prefix}-primary--100, #{map.get(defaults.$primary, 100)}),
-  200: var(--#{defaults.$prefix}-primary--200, #{map.get(defaults.$primary, 200)}),
-  300: var(--#{defaults.$prefix}-primary--300, #{map.get(defaults.$primary, 300)}),
-  400: var(--#{defaults.$prefix}-primary--400, #{map.get(defaults.$primary, 400)}),
-  500: var(--#{defaults.$prefix}-primary--500, #{map.get(defaults.$primary, 500)}),
-  600: var(--#{defaults.$prefix}-primary--600, #{map.get(defaults.$primary, 600)}),
-  700: var(--#{defaults.$prefix}-primary--700, #{map.get(defaults.$primary, 700)}),
-  800: var(--#{defaults.$prefix}-primary--800, #{map.get(defaults.$primary, 800)}),
-  900: var(--#{defaults.$prefix}-primary--900, #{map.get(defaults.$primary, 900)}),
+  100:
+    var(--#{defaults.$prefix}-primary--100, #{map.get(defaults.$primary, 100)}),
+  200:
+    var(--#{defaults.$prefix}-primary--200, #{map.get(defaults.$primary, 200)}),
+  300:
+    var(--#{defaults.$prefix}-primary--300, #{map.get(defaults.$primary, 300)}),
+  400:
+    var(--#{defaults.$prefix}-primary--400, #{map.get(defaults.$primary, 400)}),
+  500:
+    var(--#{defaults.$prefix}-primary--500, #{map.get(defaults.$primary, 500)}),
+  600:
+    var(--#{defaults.$prefix}-primary--600, #{map.get(defaults.$primary, 600)}),
+  700:
+    var(--#{defaults.$prefix}-primary--700, #{map.get(defaults.$primary, 700)}),
+  800:
+    var(--#{defaults.$prefix}-primary--800, #{map.get(defaults.$primary, 800)}),
+  900:
+    var(--#{defaults.$prefix}-primary--900, #{map.get(defaults.$primary, 900)}),
 );
 
 // Secondary theme colours.
 $secondary: (
   100:
-    var(--#{defaults.$prefix}-secondary--100, #{map.get(defaults.$secondary, 100)}),
+    var(
+      --#{defaults.$prefix}-secondary--100,
+      #{map.get(defaults.$secondary, 100)}
+    ),
   200:
-    var(--#{defaults.$prefix}-secondary--200, #{map.get(defaults.$secondary, 200)}),
+    var(
+      --#{defaults.$prefix}-secondary--200,
+      #{map.get(defaults.$secondary, 200)}
+    ),
   300:
-    var(--#{defaults.$prefix}-secondary--300, #{map.get(defaults.$secondary, 300)}),
+    var(
+      --#{defaults.$prefix}-secondary--300,
+      #{map.get(defaults.$secondary, 300)}
+    ),
   400:
-    var(--#{defaults.$prefix}-secondary--400, #{map.get(defaults.$secondary, 400)}),
+    var(
+      --#{defaults.$prefix}-secondary--400,
+      #{map.get(defaults.$secondary, 400)}
+    ),
   500:
-    var(--#{defaults.$prefix}-secondary--500, #{map.get(defaults.$secondary, 500)}),
+    var(
+      --#{defaults.$prefix}-secondary--500,
+      #{map.get(defaults.$secondary, 500)}
+    ),
   600:
-    var(--#{defaults.$prefix}-secondary--600, #{map.get(defaults.$secondary, 600)}),
+    var(
+      --#{defaults.$prefix}-secondary--600,
+      #{map.get(defaults.$secondary, 600)}
+    ),
   700:
-    var(--#{defaults.$prefix}-secondary--700, #{map.get(defaults.$secondary, 700)}),
+    var(
+      --#{defaults.$prefix}-secondary--700,
+      #{map.get(defaults.$secondary, 700)}
+    ),
   800:
-    var(--#{defaults.$prefix}-secondary--800, #{map.get(defaults.$secondary, 800)}),
+    var(
+      --#{defaults.$prefix}-secondary--800,
+      #{map.get(defaults.$secondary, 800)}
+    ),
   900:
-    var(--#{defaults.$prefix}-secondary--900, #{map.get(defaults.$secondary, 900)}),
+    var(
+      --#{defaults.$prefix}-secondary--900,
+      #{map.get(defaults.$secondary, 900)}
+    ),
 );
 
 // Theme colours.
