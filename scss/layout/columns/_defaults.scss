@@ -7,5 +7,7 @@
 @forward "../../defaults";
 
 $columns-max-width: 1fr !default;
-$columns-count: auto-fit !default;
+$columns-count: 3 !default;
 $columns-disable-width: 48ch !default;
+$columns-min-count: 1 !default;
+$columns-max-count: 4 !default;

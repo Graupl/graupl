@@ -2,6 +2,7 @@
 
 @use "variables" as *;
 @use "defaults";
+@use "../../variables" as base;
 @use "../../mixins/layer" as *;
 
 @include layer(layout) {
@@ -9,15 +10,20 @@
     display: grid;
     grid-template-columns: var(
       --#{defaults.$prefix}-columns,
-      repeat(
-        #{$columns-count},
-        minmax(#{$columns-min-width}, #{$columns-max-width})
-      )
+      repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
     );
     gap: $columns-gap;
+  }
 
-    // Disable columns on small screens to avoid horizontal scrolling.
-    @media screen and (max-width: #{defaults.$columns-disable-width}) {
+  @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
+    .columns-#{$i} {
+      --#{defaults.$prefix}-columns-count: #{$i};
+    }
+  }
+
+  // Disable columns on small screens to avoid horizontal bleeding.
+  @media screen and (max-width: #{defaults.$columns-disable-width}) {
+    .columns {
       --#{defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
   }

@@ -1,8 +1,20 @@
 @layer graupl.layout{
   .columns{
     display:grid;
-    grid-template-columns:var(--graupl-columns, repeat(var(--graupl-columns-count, auto-fit), minmax(var(--graupl-columns-min-width, calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-gap, var(--graupl-gap, 1rem)) * 2) / 3)), var(--graupl-columns-max-width, 1fr))));
+    grid-template-columns:var(--graupl-columns, repeat(auto-fit, minmax(var(--graupl-columns-min-width, calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-gap, var(--graupl-gap, 1rem)) * (var(--graupl-columns-count, 3) - 1)) / var(--graupl-columns-count, 3))), var(--graupl-columns-max-width, 1fr))));
     gap:var(--graupl-columns-gap, var(--graupl-gap, 1rem));
+  }
+  .columns-1{
+    --graupl-columns-count:1;
+  }
+  .columns-2{
+    --graupl-columns-count:2;
+  }
+  .columns-3{
+    --graupl-columns-count:3;
+  }
+  .columns-4{
+    --graupl-columns-count:4;
   }
   @media screen and (max-width: 48ch){
     .columns{

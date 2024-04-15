@@ -4,15 +4,18 @@
 @use "defaults";
 
 $columns-gap: var(--#{defaults.$prefix}-columns-gap, base.$gap);
+$columns-count: var(
+  --#{defaults.$prefix}-columns-count,
+  defaults.$columns-count
+);
 $columns-min-width: var(
   --#{defaults.$prefix}-columns-min-width,
-  calc((base.$content-max-width - $columns-gap * 2) / 3)
+  calc(
+    (base.$content-max-width - $columns-gap * ($columns-count - 1)) /
+      $columns-count
+  )
 );
 $columns-max-width: var(
   --#{defaults.$prefix}-columns-max-width,
   defaults.$columns-max-width
-);
-$columns-count: var(
-  --#{defaults.$prefix}-columns-count,
-  defaults.$columns-count
 );
