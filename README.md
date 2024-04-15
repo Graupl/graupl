@@ -1,3 +1,3 @@
-@graupl/graupl
+# @graupl/graupl
 
-The Graupl mono-repo.
+A modular and modern CSS framework.
