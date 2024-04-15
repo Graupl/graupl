@@ -7,25 +7,25 @@
 // Link properties.
 $link-text-decoration: var(
   --#{defaults.$prefix}-link-text-decoration,
-  defaults.$link-text-decoration
+  #{defaults.$link-text-decoration}
 );
 $link-text-decoration-thickness: var(
   --#{defaults.$prefix}-link-text-decoration-thickness,
-  base.$border-width
+  #{base.$border-width}
 );
 $link-color: var(
   --#{defaults.$prefix}-link-color,
-  theme.$theme-active--primary
+  #{theme.$theme-active--primary}
 );
 $link-hover-color: var(
   --#{defaults.$prefix}-link-hover-color,
-  theme.$theme-active--secondary
+  #{theme.$theme-active--secondary}
 );
 $link-active-color: var(
   --#{defaults.$prefix}-link-active-color,
-  theme.$theme-active--secondary
+  #{theme.$theme-active--secondary}
 );
 $link-visited-color: var(
   --#{defaults.$prefix}-link-visited-color,
-  theme.$theme-active--primary
+  #{theme.$theme-active--primary}
 );

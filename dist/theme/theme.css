@@ -2,7 +2,7 @@
   :root{
     background:var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%))));
     color:var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%))));
-    font-family:var(--graupl-font-family, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif);
+    font-family:var(--graupl-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif);
     font-size:var(--graupl-font-size, clamp(0.85rem, 0.8rem + 0.5vw, 1.25rem));
   }
   .dark-mode{
