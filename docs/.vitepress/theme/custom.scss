@@ -1,0 +1,35 @@
+@use "../../../scss/theme/variables" as theme;
+
+:root {
+  --vp-c-brand: #{theme.$theme-light--primary--dark};
+  --vp-c-brand-1: #{theme.$theme-light--primary--dark};
+  --vp-c-brand-2: #{theme.$theme-light--primary--dark};
+  --vp-c-brand-3: #{theme.$theme-light--primary--dark};
+  --vp-c-bg: #{theme.$theme-light--light};
+  --vp-c-bg-alt: #{theme.$theme-light--light};
+  --vp-c-bg-elv: #{theme.$theme-light--light};
+  --vp-c-bg-soft: #{theme.$theme-light--light};
+  --vp-c-border: #{theme.$theme-light--secondary--dark};
+  --vp-c-divider: #{theme.$theme-light--secondary--dark};
+  --vp-c-gutter: #{theme.$theme-light--secondary--dark};
+  --vp-c-text-1: #{theme.$theme-light--dark};
+  --vp-c-text-2: #{theme.$theme-light--dark};
+  --vp-c-text-3: #{theme.$theme-light--dark};
+}
+
+.dark {
+  --vp-c-brand: #{theme.$theme-light--primary--light};
+  --vp-c-brand-1: #{theme.$theme-light--primary--light};
+  --vp-c-brand-2: #{theme.$theme-light--primary--light};
+  --vp-c-brand-3: #{theme.$theme-light--primary--light};
+  --vp-c-bg: #{theme.$theme-light--dark};
+  --vp-c-bg-alt: #{theme.$theme-light--dark};
+  --vp-c-bg-elv: #{theme.$theme-light--dark};
+  --vp-c-bg-soft: #{theme.$theme-light--dark};
+  --vp-c-border: #{theme.$theme-light--secondary--light};
+  --vp-c-divider: #{theme.$theme-light--secondary--light};
+  --vp-c-gutter: #{theme.$theme-light--secondary--light};
+  --vp-c-text-1: #{theme.$theme-light--light};
+  --vp-c-text-2: #{theme.$theme-light--light};
+  --vp-c-text-3: #{theme.$theme-light--light};
+}
