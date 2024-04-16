@@ -21,6 +21,8 @@
     --#{defaults.$prefix}-theme-active--secondary: #{$theme-dark--secondary};
     --#{defaults.$prefix}-theme-active--light: #{$theme-dark--light};
     --#{defaults.$prefix}-theme-active--dark: #{$theme-dark--dark};
+
+    color-scheme: dark;
   }
 
   // Set the active theme for light mode.
@@ -31,5 +33,7 @@
     --#{defaults.$prefix}-theme-active--secondary: #{$theme-light--secondary};
     --#{defaults.$prefix}-theme-active--light: #{$theme-light--light};
     --#{defaults.$prefix}-theme-active--dark: #{$theme-light--dark};
+
+    color-scheme: light;
   }
 }
