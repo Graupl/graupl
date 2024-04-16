@@ -1,4 +1,46 @@
 @layer graupl.base{
+  input,
+  textarea,
+  select{
+    padding:var(--graupl-input-padding, var(--graupl-input-padding-y, calc(var(--graupl-gap, 1rem) / 2)) var(--graupl-input-padding-x, var(--graupl-gap, 1rem)));
+    border-width:var(--graupl-input-border-width, var(--graupl-border-width, 2px));
+    border-style:var(--graupl-botton-border-style, var(--graupl-border-style, solid));
+    border-radius:var(--graupl-input-border-radius, var(--graupl-border-radius, 0.125rem));
+  }
+}
+@layer graupl.theme{
+  input,
+  textarea,
+  select{
+    border-color:var(--graupl-input-border-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    background:var(--graupl-input-background, var(--graupl-theme-active--light, var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)))));
+    color:var(--graupl-input-color, var(--graupl-theme-active--dark, var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)))));
+    accent-color:var(--graupl-input-accent-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
+  }
+  input::-moz-placeholder, textarea::-moz-placeholder, select::-moz-placeholder{
+    color:var(--graupl-input-placeholder-color, var(--graupl-theme-active--shade--dark, var(--graupl-theme-light--shade--dark, var(--graupl-primary--300, hsl(219, 80%, 65%)))));
+  }
+  input::placeholder,
+  textarea::placeholder,
+  select::placeholder{
+    color:var(--graupl-input-placeholder-color, var(--graupl-theme-active--shade--dark, var(--graupl-theme-light--shade--dark, var(--graupl-primary--300, hsl(219, 80%, 65%)))));
+  }
+  input:disabled,
+  textarea:disabled,
+  select:disabled{
+    border-color:var(--graupl-input-disabled-border-color, var(--graupl-theme-active--shade--light, var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)))));
+    color:var(--graupl-input-disabled-color, var(--graupl-theme-active--shade--light, var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)))));
+  }
+  input:disabled::-moz-placeholder, textarea:disabled::-moz-placeholder, select:disabled::-moz-placeholder{
+    color:var(--graupl-input-disabled-placeholder-color, var(--graupl-theme-active--shade--light, var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)))));
+  }
+  input:disabled::placeholder,
+  textarea:disabled::placeholder,
+  select:disabled::placeholder{
+    color:var(--graupl-input-disabled-placeholder-color, var(--graupl-theme-active--shade--light, var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)))));
+  }
+}
+@layer graupl.base{
   a{
     -webkit-text-decoration:var(--graupl-link-text-decoration, underline);
             text-decoration:var(--graupl-link-text-decoration, underline);
@@ -157,6 +199,8 @@
     --graupl-theme-active--secondary:var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(340, 65%, 65%)));
     --graupl-theme-active--light:var(--graupl-theme-dark--light, var(--graupl-primary--900, hsl(219, 100%, 10%)));
     --graupl-theme-active--dark:var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+    --graupl-theme-active--shade--light:var(--graupl-theme-dark--shade--light, var(--graupl-primary--800, hsl(219, 90%, 20%)));
+    --graupl-theme-active--shade--dark:var(--graupl-theme-dark--shade--dark, var(--graupl-primary--700, hsl(219, 80%, 35%)));
   }
   .light-mode{
     --graupl-theme-active--primary:var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
@@ -165,6 +209,8 @@
     --graupl-theme-active--secondary:var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)));
     --graupl-theme-active--light:var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)));
     --graupl-theme-active--dark:var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+    --graupl-theme-active--shade--light:var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)));
+    --graupl-theme-active--shade--dark:var(--graupl-theme-light--shade--dark, var(--graupl-primary--300, hsl(219, 80%, 65%)));
   }
 }
 
