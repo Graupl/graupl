@@ -75,6 +75,7 @@ $secondary: (
 );
 
 // Theme colours.
+// Colour primary.
 $theme-light--primary: var(
   --#{defaults.$prefix}-theme-light--primary,
   #{map.get($primary, 700)}
@@ -111,6 +112,8 @@ $theme-active--primary--light: var(
   --#{defaults.$prefix}-theme-active--primary--light,
   #{$theme-light--primary--light}
 );
+
+// Color secondary.
 $theme-light--secondary: var(
   --#{defaults.$prefix}-theme-light--secondary,
   #{map.get($secondary, 700)}
@@ -147,6 +150,8 @@ $theme-active--secondary--light: var(
   --#{defaults.$prefix}-theme-active--secondary--light,
   #{$theme-light--secondary--light}
 );
+
+// Colour light.
 $theme-light--light: var(
   --#{defaults.$prefix}-theme-light--light,
   #{map.get($primary, 100)}
@@ -159,6 +164,8 @@ $theme-active--light: var(
   --#{defaults.$prefix}-theme-active--light,
   #{$theme-light--light}
 );
+
+// Colour dark.
 $theme-light--dark: var(
   --#{defaults.$prefix}-theme-light--dark,
   #{map.get($primary, 900)}
@@ -170,6 +177,32 @@ $theme-dark--dark: var(
 $theme-active--dark: var(
   --#{defaults.$prefix}-theme-active--dark,
   #{$theme-light--dark}
+);
+
+// Colour shade.
+$theme-light--shade--light: var(
+  --#{defaults.$prefix}-theme-light--shade--light,
+  #{map.get($primary, 200)}
+);
+$theme-light--shade--dark: var(
+  --#{defaults.$prefix}-theme-light--shade--dark,
+  #{map.get($primary, 300)}
+);
+$theme-dark--shade--light: var(
+  --#{defaults.$prefix}-theme-dark--shade--light,
+  #{map.get($primary, 800)}
+);
+$theme-dark--shade--dark: var(
+  --#{defaults.$prefix}-theme-dark--shade--dark,
+  #{map.get($primary, 700)}
+);
+$theme-active--shade--light: var(
+  --#{defaults.$prefix}-theme-active--shade--light,
+  #{$theme-light--shade--light}
+);
+$theme-active--shade--dark: var(
+  --#{defaults.$prefix}-theme-active--shade--dark,
+  #{$theme-light--shade--dark}
 );
 
 // Font properties.
