@@ -201,6 +201,7 @@
     --graupl-theme-active--dark:var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
     --graupl-theme-active--shade--light:var(--graupl-theme-dark--shade--light, var(--graupl-primary--800, hsl(219, 90%, 20%)));
     --graupl-theme-active--shade--dark:var(--graupl-theme-dark--shade--dark, var(--graupl-primary--700, hsl(219, 80%, 35%)));
+    color-scheme:dark;
   }
   .light-mode{
     --graupl-theme-active--primary:var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
@@ -211,6 +212,7 @@
     --graupl-theme-active--dark:var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
     --graupl-theme-active--shade--light:var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)));
     --graupl-theme-active--shade--dark:var(--graupl-theme-light--shade--dark, var(--graupl-primary--300, hsl(219, 80%, 65%)));
+    color-scheme:light;
   }
 }
 
