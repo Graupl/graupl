@@ -1,0 +1,74 @@
+// Variables referencing custom properties.
+
+@use "../../variables" as base;
+@use "../../theme/variables" as theme;
+@use "defaults";
+@use "sass:map";
+
+$input-padding-x: var(--#{defaults.$prefix}-input-padding-x, #{base.$gap});
+$input-padding-y: var(
+  --#{defaults.$prefix}-input-padding-y,
+  calc(#{base.$gap} / 2)
+);
+$input-padding: var(
+  --#{defaults.$prefix}-input-padding,
+  #{$input-padding-y} #{$input-padding-x}
+);
+$input-font-size: var(
+  --#{defaults.$prefix}-input-font-size,
+  #{map.get(base.$font-size, default)}
+);
+
+// Background properties.
+$input-background: var(
+  --#{defaults.$prefix}-input-background,
+  #{theme.$theme-active--light}
+);
+
+// Text properties.
+$input-color: var(
+  --#{defaults.$prefix}-input-color,
+  #{theme.$theme-active--dark}
+);
+$input-placeholder-color: var(
+  --#{defaults.$prefix}-input-placeholder-color,
+  #{theme.$theme-active--shade--dark}
+);
+$input-disabled-color: var(
+  --#{defaults.$prefix}-input-disabled-color,
+  #{theme.$theme-active--shade--light}
+);
+$input-disabled-placeholder-color: var(
+  --#{defaults.$prefix}-input-disabled-placeholder-color,
+  #{theme.$theme-active--shade--light}
+);
+
+// Border properties.
+$input-border-width: var(
+  --#{defaults.$prefix}-input-border-width,
+  #{base.$border-width}
+);
+$input-border-style: var(
+  --#{defaults.$prefix}-botton-border-style,
+  #{base.$border-style}
+);
+$input-border-radius: var(
+  --#{defaults.$prefix}-input-border-radius,
+  #{base.$border-radius}
+);
+
+// Border colour properties.
+$input-border-color: var(
+  --#{defaults.$prefix}-input-border-color,
+  #{theme.$theme-active--dark}
+);
+$input-disabled-border-color: var(
+  --#{defaults.$prefix}-input-disabled-border-color,
+  #{theme.$theme-active--shade--light}
+);
+
+// Accent color properties.
+$input-accent-color: var(
+  --#{defaults.$prefix}-input-accent-color,
+  #{theme.$theme-active--primary}
+);
