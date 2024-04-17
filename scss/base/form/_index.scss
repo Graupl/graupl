@@ -31,6 +31,14 @@
     border-style: $fieldset-border-style;
     border-radius: $fieldset-border-radius;
     font-size: $fieldset-font-size;
+
+    &:disabled {
+      input,
+      textarea,
+      select {
+        cursor: not-allowed;
+      }
+    }
   }
 }
 
@@ -73,6 +81,10 @@
     &:disabled {
       border-color: $fieldset-disabled-border-color;
       color: $fieldset-disabled-color;
+
+      label {
+        color: $label-disabled-color;
+      }
     }
   }
 }

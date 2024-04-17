@@ -26,6 +26,11 @@
     border-radius:var(--graupl-fieldset-border-radius, var(--graupl-input-border-radius, var(--graupl-border-radius, 0.125rem)));
     font-size:var(--graupl-fieldset-font-size, var(--graupl-input-font-size, var(--graupl-font-size-default, 1rem)));
   }
+  fieldset:disabled input,
+  fieldset:disabled textarea,
+  fieldset:disabled select{
+    cursor:not-allowed;
+  }
 }
 @layer graupl.theme{
   input,
@@ -72,6 +77,9 @@
   fieldset:disabled{
     border-color:var(--graupl-fieldset-disabled-border-color, var(--graupl-input-disabled-border-color, var(--graupl-theme-active--shade--light, var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%))))));
     color:var(--graupl-fieldset-disabled-color, var(--graupl-input-disabled-color, var(--graupl-theme-active--secondary--light, var(--graupl-theme-light--secondary--light, var(--graupl-secondary--600, hsl(235, 15%, 45%))))));
+  }
+  fieldset:disabled label{
+    color:var(--graupl-label-disabled-color, var(--graupl-input-disabled-color, var(--graupl-theme-active--secondary--light, var(--graupl-theme-light--secondary--light, var(--graupl-secondary--600, hsl(235, 15%, 45%))))));
   }
 }
 @layer graupl.base{
