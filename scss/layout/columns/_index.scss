@@ -13,11 +13,19 @@
       repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
     );
     gap: $columns-gap;
+
+    > * {
+      grid-column: span $columns-span;
+    }
   }
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
     .columns-#{$i} {
       --#{defaults.$prefix}-columns-count: #{$i};
+    }
+
+    .span-#{$i} {
+      --#{defaults.$prefix}-columns-span: #{$i};
     }
   }
 
