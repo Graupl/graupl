@@ -74,6 +74,55 @@ $secondary: (
     ),
 );
 
+// Tertiary theme colours.
+$tertiary: (
+  100:
+    var(
+      --#{defaults.$prefix}-tertiary--100,
+      #{map.get(defaults.$tertiary, 100)}
+    ),
+  200:
+    var(
+      --#{defaults.$prefix}-tertiary--200,
+      #{map.get(defaults.$tertiary, 200)}
+    ),
+  300:
+    var(
+      --#{defaults.$prefix}-tertiary--300,
+      #{map.get(defaults.$tertiary, 300)}
+    ),
+  400:
+    var(
+      --#{defaults.$prefix}-tertiary--400,
+      #{map.get(defaults.$tertiary, 400)}
+    ),
+  500:
+    var(
+      --#{defaults.$prefix}-tertiary--500,
+      #{map.get(defaults.$tertiary, 500)}
+    ),
+  600:
+    var(
+      --#{defaults.$prefix}-tertiary--600,
+      #{map.get(defaults.$tertiary, 600)}
+    ),
+  700:
+    var(
+      --#{defaults.$prefix}-tertiary--700,
+      #{map.get(defaults.$tertiary, 700)}
+    ),
+  800:
+    var(
+      --#{defaults.$prefix}-tertiary--800,
+      #{map.get(defaults.$tertiary, 800)}
+    ),
+  900:
+    var(
+      --#{defaults.$prefix}-tertiary--900,
+      #{map.get(defaults.$tertiary, 900)}
+    ),
+);
+
 // Theme colours.
 // Colour primary.
 $theme-light--primary: var(
@@ -149,6 +198,44 @@ $theme-active--secondary--dark: var(
 $theme-active--secondary--light: var(
   --#{defaults.$prefix}-theme-active--secondary--light,
   #{$theme-light--secondary--light}
+);
+
+// Colour tertiary.
+$theme-light--tertiary: var(
+  --#{defaults.$prefix}-theme-light--tertiary,
+  #{map.get($tertiary, 700)}
+);
+$theme-light--tertiary--dark: var(
+  --#{defaults.$prefix}-theme-light--tertiary--dark,
+  #{map.get($tertiary, 800)}
+);
+$theme-light--tertiary--light: var(
+  --#{defaults.$prefix}-theme-light--tertiary--light,
+  #{map.get($tertiary, 600)}
+);
+$theme-dark--tertiary: var(
+  --#{defaults.$prefix}-theme-dark--tertiary,
+  #{map.get($tertiary, 300)}
+);
+$theme-dark--tertiary--dark: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--dark,
+  #{map.get($tertiary, 200)}
+);
+$theme-dark--tertiary--light: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--light,
+  #{map.get($tertiary, 400)}
+);
+$theme-active--tertiary: var(
+  --#{defaults.$prefix}-theme-active--tertiary,
+  #{$theme-light--tertiary}
+);
+$theme-active--tertiary--dark: var(
+  --#{defaults.$prefix}-theme-active--tertiary--dark,
+  #{$theme-light--tertiary--dark}
+);
+$theme-active--tertiary--light: var(
+  --#{defaults.$prefix}-theme-active--tertiary--light,
+  #{$theme-light--tertiary--light}
 );
 
 // Colour light.

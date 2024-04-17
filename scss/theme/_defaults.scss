@@ -20,6 +20,17 @@ $primary: (
   900: hsl(219deg 100% 10%),
 ) !default;
 $secondary: (
+  100: hsl(235deg 40% 95%),
+  200: hsl(235deg 30% 80%),
+  300: hsl(235deg 20% 65%),
+  400: hsl(235deg 15% 55%),
+  500: hsl(235deg 15% 50%),
+  600: hsl(235deg 15% 45%),
+  700: hsl(235deg 20% 35%),
+  800: hsl(235deg 30% 20%),
+  900: hsl(235deg 40% 10%),
+) !default;
+$tertiary: (
   100: hsl(340deg 85% 95%),
   200: hsl(340deg 75% 80%),
   300: hsl(340deg 65% 65%),

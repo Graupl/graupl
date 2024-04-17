@@ -44,11 +44,18 @@
     --graupl-button-active-border-color:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
   }
   .button.secondary{
-    --graupl-button-hover-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-hover-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-hover-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+  }
+  .button.tertiary{
+    --graupl-button-hover-background:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
   }
 }
 

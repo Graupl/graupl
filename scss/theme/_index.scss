@@ -19,6 +19,11 @@
     --#{defaults.$prefix}-theme-active--primary--dark: #{$theme-dark--primary--dark};
     --#{defaults.$prefix}-theme-active--primary--light: #{$theme-dark--primary--light};
     --#{defaults.$prefix}-theme-active--secondary: #{$theme-dark--secondary};
+    --#{defaults.$prefix}-theme-active--secondary--dark: #{$theme-dark--secondary--dark};
+    --#{defaults.$prefix}-theme-active--secondary--light: #{$theme-dark--secondary--light};
+    --#{defaults.$prefix}-theme-active--tertiary: #{$theme-dark--tertiary};
+    --#{defaults.$prefix}-theme-active--tertiary--dark: #{$theme-dark--tertiary--dark};
+    --#{defaults.$prefix}-theme-active--tertiary--light: #{$theme-dark--tertiary--light};
     --#{defaults.$prefix}-theme-active--light: #{$theme-dark--light};
     --#{defaults.$prefix}-theme-active--dark: #{$theme-dark--dark};
     --#{defaults.$prefix}-theme-active--shade--light: #{$theme-dark--shade--light};
@@ -33,6 +38,11 @@
     --#{defaults.$prefix}-theme-active--primary--dark: #{$theme-light--primary--dark};
     --#{defaults.$prefix}-theme-active--primary--light: #{$theme-light--primary--light};
     --#{defaults.$prefix}-theme-active--secondary: #{$theme-light--secondary};
+    --#{defaults.$prefix}-theme-active--secondary--dark: #{$theme-light--secondary--dark};
+    --#{defaults.$prefix}-theme-active--secondary--light: #{$theme-light--secondary--light};
+    --#{defaults.$prefix}-theme-active--tertiary: #{$theme-light--tertiary};
+    --#{defaults.$prefix}-theme-active--tertiary--dark: #{$theme-light--tertiary--dark};
+    --#{defaults.$prefix}-theme-active--tertiary--light: #{$theme-light--tertiary--light};
     --#{defaults.$prefix}-theme-active--light: #{$theme-light--light};
     --#{defaults.$prefix}-theme-active--dark: #{$theme-light--dark};
     --#{defaults.$prefix}-theme-active--shade--light: #{$theme-light--shade--light};
