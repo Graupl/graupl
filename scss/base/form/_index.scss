@@ -11,6 +11,26 @@
     border-width: $input-border-width;
     border-style: $input-border-style;
     border-radius: $input-border-radius;
+    font-size: $input-font-size;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  label {
+    font-size: $label-font-size;
+  }
+
+  fieldset {
+    display: flex;
+    flex-flow: $fieldset-direction wrap;
+    gap: $fieldset-gap;
+    padding: $fieldset-padding;
+    border-width: $fieldset-border-width;
+    border-style: $fieldset-border-style;
+    border-radius: $fieldset-border-radius;
+    font-size: $fieldset-font-size;
   }
 }
 
@@ -34,6 +54,25 @@
       &::placeholder {
         color: $input-disabled-placeholder-color;
       }
+    }
+  }
+
+  label {
+    color: $label-color;
+
+    &:has(+ input:disabled, + textarea:disabled, + select:disabled) {
+      color: $label-disabled-color;
+    }
+  }
+
+  fieldset {
+    border-color: $fieldset-border-color;
+    background: $fieldset-background;
+    color: $fieldset-color;
+
+    &:disabled {
+      border-color: $fieldset-disabled-border-color;
+      color: $fieldset-disabled-color;
     }
   }
 }

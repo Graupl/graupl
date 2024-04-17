@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark-mode">
+<html lang="en" class="light-mode">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,11 +28,11 @@
     <h2>Form elements</h2>
     <p>Graupl provides default styling for all form elements.</p>
     <label for="input">Input</label>
-    <input type="text" class="input" placeholder="Input" id="input">
+    <input type="text" placeholder="Input" id="input">
     <label for="input-readonly">Readonly Input</label>
-    <input type="text" class="input" placeholder="Readonly Input" id="input-readonly" value="Readonly Input"readonly>
+    <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input"readonly>
     <label for="input-disabled">Disabled Input</label>
-    <input type="text" class="input" placeholder="Disabled Input" id="input-disabled" disabled>
+    <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
     <label for="textarea">Textarea</label>
     <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
     <label for="textarea-readonly">Readonly Textarea</label>
@@ -40,38 +40,60 @@
     <label for="textarea-disabled">Disabled Textarea</label>
     <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
     <label for="select">Select</label>
-    <select class="select" id="select">
+    <select id="select">
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <optgroup label="Group 1">
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </optgroup>
     </select>
     <label for="select-disabled">Disabled Select</label>
-    <select class="select" id="select-disabled" disabled>
+    <select id="select-disabled" disabled>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <optgroup label="Group 1">
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </optgroup>
     </select>
     <label for"multi-select">Multi-select</label>
-    <select class="multi-select" id="multi-select" multiple>
+    <select id="multi-select" multiple>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <optgroup label="Group 1">
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </optgroup>
     </select>
     <label for="multi-select-disabled">Disabled Multi-select</label>
-    <select class="multi-select" id="multi-select-disabled" multiple disabled>
+    <select id="multi-select-disabled" multiple disabled>
       <option value="1">Option 1</option>
       <option value="2">Option 2</option>
-      <option value="3">Option 3</option>
+      <optgroup label="Group 1">
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+        <option value="5">Option 5</option>
+      </optgroup>
     </select>
-    <label for="checkbox">
-    <input type="checkbox" class="checkbox" id="checkbox"> Checkbox</label>
-    <label for="checkbox-checked">
-    <input type="checkbox" class="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
-    <label for="checkbox-disabled">
-    <input type="checkbox" class="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
-    <label for="radio"><input type="radio" class="radio" id="radio" name="radio"> Radio</label>
-    <label for="radio-checked"><input type="radio" class="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
-    <label for="radio-disabled"><input type="radio" class="radio" id="radio-disabled" name="radio" disabled> Disabled Radio</label>
+    <fieldset>
+      <legend>Checkboxes</legend>
+      <label for="checkbox">
+      <input type="checkbox" id="checkbox"> Checkbox</label>
+      <label for="checkbox-checked">
+      <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
+      <label for="checkbox-disabled">
+      <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
+    </fieldset>
+    <fieldset>
+      <legend>Radio Buttons</legend>
+      <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
+      <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
+      <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled Radio</label>
+    </fieldset>
     <label for="range">Range</label>
     <input type="range" class="range" id="range">
   </main>
