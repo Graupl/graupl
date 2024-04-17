@@ -1,0 +1,78 @@
+// Graupl form base styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+
+@include layer(base) {
+  input,
+  textarea,
+  select {
+    padding: $input-padding;
+    border-width: $input-border-width;
+    border-style: $input-border-style;
+    border-radius: $input-border-radius;
+    font-size: $input-font-size;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  label {
+    font-size: $label-font-size;
+  }
+
+  fieldset {
+    display: flex;
+    flex-flow: $fieldset-direction wrap;
+    gap: $fieldset-gap;
+    padding: $fieldset-padding;
+    border-width: $fieldset-border-width;
+    border-style: $fieldset-border-style;
+    border-radius: $fieldset-border-radius;
+    font-size: $fieldset-font-size;
+  }
+}
+
+@include layer(theme) {
+  input,
+  textarea,
+  select {
+    border-color: $input-border-color;
+    background: $input-background;
+    color: $input-color;
+    accent-color: $input-accent-color;
+
+    &::placeholder {
+      color: $input-placeholder-color;
+    }
+
+    &:disabled {
+      border-color: $input-disabled-border-color;
+      color: $input-disabled-color;
+
+      &::placeholder {
+        color: $input-disabled-placeholder-color;
+      }
+    }
+  }
+
+  label {
+    color: $label-color;
+
+    &:has(+ input:disabled, + textarea:disabled, + select:disabled) {
+      color: $label-disabled-color;
+    }
+  }
+
+  fieldset {
+    border-color: $fieldset-border-color;
+    background: $fieldset-background;
+    color: $fieldset-color;
+
+    &:disabled {
+      border-color: $fieldset-disabled-border-color;
+      color: $fieldset-disabled-color;
+    }
+  }
+}
