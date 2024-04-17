@@ -63,5 +63,13 @@
       --#{defaults.$prefix}-button-hover-border-color: #{theme.$theme-active--secondary};
       --#{defaults.$prefix}-button-active-border-color: #{theme.$theme-active--secondary};
     }
+
+    &.tertiary {
+      --#{defaults.$prefix}-button-hover-background: #{theme.$theme-active--tertiary};
+      --#{defaults.$prefix}-button-active-background: #{theme.$theme-active--tertiary};
+      --#{defaults.$prefix}-button-border-color: #{theme.$theme-active--tertiary};
+      --#{defaults.$prefix}-button-hover-border-color: #{theme.$theme-active--tertiary};
+      --#{defaults.$prefix}-button-active-border-color: #{theme.$theme-active--tertiary};
+    }
   }
 }

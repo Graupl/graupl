@@ -10,16 +10,16 @@
     color:var(--graupl-link-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
   a:hover{
-    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
   a:active{
-    color:var(--graupl-link-active-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-active-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
   a:visited{
     color:var(--graupl-link-visited-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
   a:visited:hover{
-    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
 }
 

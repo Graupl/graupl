@@ -10,16 +10,16 @@
     color:var(--graupl-link-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
   a:hover{
-    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
   a:active{
-    color:var(--graupl-link-active-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-active-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
   a:visited{
     color:var(--graupl-link-visited-color, var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)))));
   }
   a:visited:hover{
-    color:var(--graupl-link-hover-color, var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)))));
+    color:var(--graupl-link-hover-color, var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)))));
   }
 }
 @layer graupl.layout{
@@ -143,11 +143,18 @@
     --graupl-button-active-border-color:var(--graupl-theme-active--primary, var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%))));
   }
   .button.secondary{
-    --graupl-button-hover-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-hover-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
-    --graupl-button-active-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%))));
+    --graupl-button-hover-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--secondary, var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%))));
+  }
+  .button.tertiary{
+    --graupl-button-hover-background:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-background:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-hover-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
+    --graupl-button-active-border-color:var(--graupl-theme-active--tertiary, var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%))));
   }
 }
 @layer graupl.state{
@@ -169,18 +176,32 @@
     --graupl-theme-active--primary:var(--graupl-theme-dark--primary, var(--graupl-primary--300, hsl(219, 80%, 65%)));
     --graupl-theme-active--primary--dark:var(--graupl-theme-dark--primary--dark, var(--graupl-primary--200, hsl(219, 90%, 80%)));
     --graupl-theme-active--primary--light:var(--graupl-theme-dark--primary--light, var(--graupl-primary--400, hsl(219, 75%, 55%)));
-    --graupl-theme-active--secondary:var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(340, 65%, 65%)));
+    --graupl-theme-active--secondary:var(--graupl-theme-dark--secondary, var(--graupl-secondary--300, hsl(235, 20%, 65%)));
+    --graupl-theme-active--secondary--dark:var(--graupl-theme-dark--secondary--dark, var(--graupl-secondary--200, hsl(235, 30%, 80%)));
+    --graupl-theme-active--secondary--light:var(--graupl-theme-dark--secondary--light, var(--graupl-secondary--400, hsl(235, 15%, 55%)));
+    --graupl-theme-active--tertiary:var(--graupl-theme-dark--tertiary, var(--graupl-tertiary--300, hsl(340, 65%, 65%)));
+    --graupl-theme-active--tertiary--dark:var(--graupl-theme-dark--tertiary--dark, var(--graupl-tertiary--200, hsl(340, 75%, 80%)));
+    --graupl-theme-active--tertiary--light:var(--graupl-theme-dark--tertiary--light, var(--graupl-tertiary--400, hsl(340, 60%, 55%)));
     --graupl-theme-active--light:var(--graupl-theme-dark--light, var(--graupl-primary--900, hsl(219, 100%, 10%)));
     --graupl-theme-active--dark:var(--graupl-theme-dark--dark, var(--graupl-primary--100, hsl(219, 100%, 95%)));
+    --graupl-theme-active--shade--light:var(--graupl-theme-dark--shade--light, var(--graupl-primary--800, hsl(219, 90%, 20%)));
+    --graupl-theme-active--shade--dark:var(--graupl-theme-dark--shade--dark, var(--graupl-primary--700, hsl(219, 80%, 35%)));
     color-scheme:dark;
   }
   .light-mode{
     --graupl-theme-active--primary:var(--graupl-theme-light--primary, var(--graupl-primary--700, hsl(219, 80%, 35%)));
     --graupl-theme-active--primary--dark:var(--graupl-theme-light--primary--dark, var(--graupl-primary--800, hsl(219, 90%, 20%)));
     --graupl-theme-active--primary--light:var(--graupl-theme-light--primary--light, var(--graupl-primary--600, hsl(219, 75%, 45%)));
-    --graupl-theme-active--secondary:var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(340, 65%, 35%)));
+    --graupl-theme-active--secondary:var(--graupl-theme-light--secondary, var(--graupl-secondary--700, hsl(235, 20%, 35%)));
+    --graupl-theme-active--secondary--dark:var(--graupl-theme-light--secondary--dark, var(--graupl-secondary--800, hsl(235, 30%, 20%)));
+    --graupl-theme-active--secondary--light:var(--graupl-theme-light--secondary--light, var(--graupl-secondary--600, hsl(235, 15%, 45%)));
+    --graupl-theme-active--tertiary:var(--graupl-theme-light--tertiary, var(--graupl-tertiary--700, hsl(340, 65%, 35%)));
+    --graupl-theme-active--tertiary--dark:var(--graupl-theme-light--tertiary--dark, var(--graupl-tertiary--800, hsl(340, 75%, 20%)));
+    --graupl-theme-active--tertiary--light:var(--graupl-theme-light--tertiary--light, var(--graupl-tertiary--600, hsl(340, 60%, 45%)));
     --graupl-theme-active--light:var(--graupl-theme-light--light, var(--graupl-primary--100, hsl(219, 100%, 95%)));
     --graupl-theme-active--dark:var(--graupl-theme-light--dark, var(--graupl-primary--900, hsl(219, 100%, 10%)));
+    --graupl-theme-active--shade--light:var(--graupl-theme-light--shade--light, var(--graupl-primary--200, hsl(219, 90%, 80%)));
+    --graupl-theme-active--shade--dark:var(--graupl-theme-light--shade--dark, var(--graupl-primary--300, hsl(219, 80%, 65%)));
     color-scheme:light;
   }
 }
