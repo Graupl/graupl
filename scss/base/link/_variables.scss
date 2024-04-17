@@ -19,11 +19,11 @@ $link-color: var(
 );
 $link-hover-color: var(
   --#{defaults.$prefix}-link-hover-color,
-  #{theme.$theme-active--secondary}
+  #{theme.$theme-active--tertiary}
 );
 $link-active-color: var(
   --#{defaults.$prefix}-link-active-color,
-  #{theme.$theme-active--secondary}
+  #{theme.$theme-active--tertiary}
 );
 $link-visited-color: var(
   --#{defaults.$prefix}-link-visited-color,
