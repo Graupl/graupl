@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.1](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.0...v1.0.0-alpha.1) (2024-04-17)
+
+
+### Features
+
+* add form base styles and components ([daee446](https://github.com/Graupl/graupl/commit/daee4461842c2a412f45478035855bb3a6a65ee5))
+* add tertiary colour for more options ([37cb0de](https://github.com/Graupl/graupl/commit/37cb0de0ba2162b5640ee64a41e000a1758fd591))
+* **layout:** add ability to span columns ([677c781](https://github.com/Graupl/graupl/commit/677c7811f6edd59df58e8ba727220624c74d1d52))
+
+
+### Bug Fixes
+
+* **theme:** add correct color scheme to theme modes ([b740200](https://github.com/Graupl/graupl/commit/b7402007ee889082a729d7dd7f8dec63c08bf0c8))
+
 ## 1.0.0-alpha.0 (2024-04-15)
 
 
