@@ -18,3 +18,7 @@ $columns-max-width: var(
   --#{defaults.$prefix}-columns-max-width,
   #{defaults.$columns-max-width}
 );
+$columns-span: var(
+  --#{defaults.$prefix}-columns-span,
+  #{defaults.$columns-span}
+);
