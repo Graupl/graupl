@@ -7,4 +7,6 @@
 @forward "../../defaults";
 
 $button-hover-transform: none !default;
+$button-hover-transform-reduced-motion: none !default;
 $button-active-transform: scale(0.95) !default;
+$button-active-transform-reduced-motion: scale(0.98) !default;

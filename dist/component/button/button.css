@@ -19,6 +19,17 @@
   .button:active{
     transform:var(--graupl-button-active-transform, scale(0.95));
   }
+  @media (prefers-reduced-motion: reduce){
+    .button{
+      transition:var(--graupl-button-transition-reduced-motion, background var(--graupl-transition-timing-function, ease), color var(--graupl-transition-timing-function, ease), border-color var(--graupl-transition-timing-function, ease));
+    }
+    .button:hover{
+      transform:var(--graupl-button-hover-transform-reduced-motion, none);
+    }
+    .button:active{
+      transform:var(--graupl-button-active-transform-reduced-motion, scale(0.98));
+    }
+  }
 }
 @layer graupl.theme{
   .button{

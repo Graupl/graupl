@@ -34,6 +34,12 @@ $button-transition: var(
   border-color #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
   transform #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function}
 );
+$button-transition-reduced-motion: var(
+  --#{defaults.$prefix}-button-transition-reduced-motion,
+  background #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function},
+  color #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function},
+  border-color #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function}
+);
 
 // Transform properties.
 $button-hover-transform: var(
@@ -43,6 +49,14 @@ $button-hover-transform: var(
 $button-active-transform: var(
   --#{defaults.$prefix}-button-active-transform,
   #{defaults.$button-active-transform}
+);
+$button-hover-transform-reduced-motion: var(
+  --#{defaults.$prefix}-button-hover-transform-reduced-motion,
+  #{defaults.$button-hover-transform-reduced-motion}
+);
+$button-active-transform-reduced-motion: var(
+  --#{defaults.$prefix}-button-active-transform-reduced-motion,
+  #{defaults.$button-active-transform-reduced-motion}
 );
 
 // Background properties.
