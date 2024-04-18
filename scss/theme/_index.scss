@@ -7,46 +7,84 @@
 
 @include layer(theme) {
   :root {
-    background: $theme-active--light;
-    color: $theme-active--dark;
+    background: $theme-active--primary--100;
+    color: $theme-active--primary--900;
     font-family: $font-family;
     font-size: $font-size;
   }
 
   // Set the active theme for dark mode.
   .dark-mode {
-    --#{defaults.$prefix}-theme-active--primary: #{$theme-dark--primary};
-    --#{defaults.$prefix}-theme-active--primary--dark: #{$theme-dark--primary--dark};
-    --#{defaults.$prefix}-theme-active--primary--light: #{$theme-dark--primary--light};
-    --#{defaults.$prefix}-theme-active--secondary: #{$theme-dark--secondary};
-    --#{defaults.$prefix}-theme-active--secondary--dark: #{$theme-dark--secondary--dark};
-    --#{defaults.$prefix}-theme-active--secondary--light: #{$theme-dark--secondary--light};
-    --#{defaults.$prefix}-theme-active--tertiary: #{$theme-dark--tertiary};
-    --#{defaults.$prefix}-theme-active--tertiary--dark: #{$theme-dark--tertiary--dark};
-    --#{defaults.$prefix}-theme-active--tertiary--light: #{$theme-dark--tertiary--light};
-    --#{defaults.$prefix}-theme-active--light: #{$theme-dark--light};
-    --#{defaults.$prefix}-theme-active--dark: #{$theme-dark--dark};
-    --#{defaults.$prefix}-theme-active--shade--light: #{$theme-dark--shade--light};
-    --#{defaults.$prefix}-theme-active--shade--dark: #{$theme-dark--shade--dark};
+    // Primary colours.
+    --#{defaults.$prefix}-theme-active--primary--100: #{$theme-dark--primary--100};
+    --#{defaults.$prefix}-theme-active--primary--200: #{$theme-dark--primary--200};
+    --#{defaults.$prefix}-theme-active--primary--300: #{$theme-dark--primary--300};
+    --#{defaults.$prefix}-theme-active--primary--400: #{$theme-dark--primary--400};
+    --#{defaults.$prefix}-theme-active--primary--500: #{$theme-dark--primary--500};
+    --#{defaults.$prefix}-theme-active--primary--600: #{$theme-dark--primary--600};
+    --#{defaults.$prefix}-theme-active--primary--700: #{$theme-dark--primary--700};
+    --#{defaults.$prefix}-theme-active--primary--800: #{$theme-dark--primary--800};
+    --#{defaults.$prefix}-theme-active--primary--900: #{$theme-dark--primary--900};
+
+    // Secondary colours.
+    --#{defaults.$prefix}-theme-active--secondary--100: #{$theme-dark--secondary--100};
+    --#{defaults.$prefix}-theme-active--secondary--200: #{$theme-dark--secondary--200};
+    --#{defaults.$prefix}-theme-active--secondary--300: #{$theme-dark--secondary--300};
+    --#{defaults.$prefix}-theme-active--secondary--400: #{$theme-dark--secondary--400};
+    --#{defaults.$prefix}-theme-active--secondary--500: #{$theme-dark--secondary--500};
+    --#{defaults.$prefix}-theme-active--secondary--600: #{$theme-dark--secondary--600};
+    --#{defaults.$prefix}-theme-active--secondary--700: #{$theme-dark--secondary--700};
+    --#{defaults.$prefix}-theme-active--secondary--800: #{$theme-dark--secondary--800};
+    --#{defaults.$prefix}-theme-active--secondary--900: #{$theme-dark--secondary--900};
+
+    // Tertiary colours.
+    --#{defaults.$prefix}-theme-active--tertiary--100: #{$theme-dark--tertiary--100};
+    --#{defaults.$prefix}-theme-active--tertiary--200: #{$theme-dark--tertiary--200};
+    --#{defaults.$prefix}-theme-active--tertiary--300: #{$theme-dark--tertiary--300};
+    --#{defaults.$prefix}-theme-active--tertiary--400: #{$theme-dark--tertiary--400};
+    --#{defaults.$prefix}-theme-active--tertiary--500: #{$theme-dark--tertiary--500};
+    --#{defaults.$prefix}-theme-active--tertiary--600: #{$theme-dark--tertiary--600};
+    --#{defaults.$prefix}-theme-active--tertiary--700: #{$theme-dark--tertiary--700};
+    --#{defaults.$prefix}-theme-active--tertiary--800: #{$theme-dark--tertiary--800};
+    --#{defaults.$prefix}-theme-active--tertiary--900: #{$theme-dark--tertiary--900};
 
     color-scheme: dark;
   }
 
   // Set the active theme for light mode.
   .light-mode {
-    --#{defaults.$prefix}-theme-active--primary: #{$theme-light--primary};
-    --#{defaults.$prefix}-theme-active--primary--dark: #{$theme-light--primary--dark};
-    --#{defaults.$prefix}-theme-active--primary--light: #{$theme-light--primary--light};
-    --#{defaults.$prefix}-theme-active--secondary: #{$theme-light--secondary};
-    --#{defaults.$prefix}-theme-active--secondary--dark: #{$theme-light--secondary--dark};
-    --#{defaults.$prefix}-theme-active--secondary--light: #{$theme-light--secondary--light};
-    --#{defaults.$prefix}-theme-active--tertiary: #{$theme-light--tertiary};
-    --#{defaults.$prefix}-theme-active--tertiary--dark: #{$theme-light--tertiary--dark};
-    --#{defaults.$prefix}-theme-active--tertiary--light: #{$theme-light--tertiary--light};
-    --#{defaults.$prefix}-theme-active--light: #{$theme-light--light};
-    --#{defaults.$prefix}-theme-active--dark: #{$theme-light--dark};
-    --#{defaults.$prefix}-theme-active--shade--light: #{$theme-light--shade--light};
-    --#{defaults.$prefix}-theme-active--shade--dark: #{$theme-light--shade--dark};
+    // Primary colours.
+    --#{defaults.$prefix}-theme-active--primary--100: #{$theme-light--primary--100};
+    --#{defaults.$prefix}-theme-active--primary--200: #{$theme-light--primary--200};
+    --#{defaults.$prefix}-theme-active--primary--300: #{$theme-light--primary--300};
+    --#{defaults.$prefix}-theme-active--primary--400: #{$theme-light--primary--400};
+    --#{defaults.$prefix}-theme-active--primary--500: #{$theme-light--primary--500};
+    --#{defaults.$prefix}-theme-active--primary--600: #{$theme-light--primary--600};
+    --#{defaults.$prefix}-theme-active--primary--700: #{$theme-light--primary--700};
+    --#{defaults.$prefix}-theme-active--primary--800: #{$theme-light--primary--800};
+    --#{defaults.$prefix}-theme-active--primary--900: #{$theme-light--primary--900};
+
+    // Secondary colours.
+    --#{defaults.$prefix}-theme-active--secondary--100: #{$theme-light--secondary--100};
+    --#{defaults.$prefix}-theme-active--secondary--200: #{$theme-light--secondary--200};
+    --#{defaults.$prefix}-theme-active--secondary--300: #{$theme-light--secondary--300};
+    --#{defaults.$prefix}-theme-active--secondary--400: #{$theme-light--secondary--400};
+    --#{defaults.$prefix}-theme-active--secondary--500: #{$theme-light--secondary--500};
+    --#{defaults.$prefix}-theme-active--secondary--600: #{$theme-light--secondary--600};
+    --#{defaults.$prefix}-theme-active--secondary--700: #{$theme-light--secondary--700};
+    --#{defaults.$prefix}-theme-active--secondary--800: #{$theme-light--secondary--800};
+    --#{defaults.$prefix}-theme-active--secondary--900: #{$theme-light--secondary--900};
+
+    // Tertiary colours.
+    --#{defaults.$prefix}-theme-active--tertiary--100: #{$theme-light--tertiary--100};
+    --#{defaults.$prefix}-theme-active--tertiary--200: #{$theme-light--tertiary--200};
+    --#{defaults.$prefix}-theme-active--tertiary--300: #{$theme-light--tertiary--300};
+    --#{defaults.$prefix}-theme-active--tertiary--400: #{$theme-light--tertiary--400};
+    --#{defaults.$prefix}-theme-active--tertiary--500: #{$theme-light--tertiary--500};
+    --#{defaults.$prefix}-theme-active--tertiary--600: #{$theme-light--tertiary--600};
+    --#{defaults.$prefix}-theme-active--tertiary--700: #{$theme-light--tertiary--700};
+    --#{defaults.$prefix}-theme-active--tertiary--800: #{$theme-light--tertiary--800};
+    --#{defaults.$prefix}-theme-active--tertiary--900: #{$theme-light--tertiary--900};
 
     color-scheme: light;
   }
