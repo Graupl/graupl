@@ -15,17 +15,17 @@ $link-text-decoration-thickness: var(
 );
 $link-color: var(
   --#{defaults.$prefix}-link-color,
-  #{theme.$theme-active--primary}
+  #{theme.$theme-active--primary--700}
 );
 $link-hover-color: var(
   --#{defaults.$prefix}-link-hover-color,
-  #{theme.$theme-active--tertiary}
+  #{theme.$theme-active--tertiary--700}
 );
 $link-active-color: var(
   --#{defaults.$prefix}-link-active-color,
-  #{theme.$theme-active--tertiary}
+  #{theme.$theme-active--tertiary--700}
 );
 $link-visited-color: var(
   --#{defaults.$prefix}-link-visited-color,
-  #{theme.$theme-active--primary}
+  #{theme.$theme-active--primary--700}
 );

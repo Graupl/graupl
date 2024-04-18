@@ -124,172 +124,346 @@ $tertiary: (
 );
 
 // Theme colours.
-// Colour primary.
-$theme-light--primary: var(
-  --#{defaults.$prefix}-theme-light--primary,
-  #{map.get($primary, 700)}
+// Colour primary - light.
+$theme-light--primary--100: var(
+  --#{defaults.$prefix}-theme-light--primary--100,
+  #{map.get($primary, 100)}
 );
-$theme-light--primary--dark: var(
-  --#{defaults.$prefix}-theme-light--primary--dark,
-  #{map.get($primary, 800)}
-);
-$theme-light--primary--light: var(
-  --#{defaults.$prefix}-theme-light--primary--light,
-  #{map.get($primary, 600)}
-);
-$theme-dark--primary: var(
-  --#{defaults.$prefix}-theme-dark--primary,
-  #{map.get($primary, 300)}
-);
-$theme-dark--primary--dark: var(
-  --#{defaults.$prefix}-theme-dark--primary--dark,
+$theme-light--primary--200: var(
+  --#{defaults.$prefix}-theme-light--primary--200,
   #{map.get($primary, 200)}
 );
-$theme-dark--primary--light: var(
-  --#{defaults.$prefix}-theme-dark--primary--light,
+$theme-light--primary--300: var(
+  --#{defaults.$prefix}-theme-light--primary--300,
+  #{map.get($primary, 300)}
+);
+$theme-light--primary--400: var(
+  --#{defaults.$prefix}-theme-light--primary--400,
   #{map.get($primary, 400)}
 );
-$theme-active--primary: var(
-  --#{defaults.$prefix}-theme-active--primary,
-  #{$theme-light--primary}
+$theme-light--primary--500: var(
+  --#{defaults.$prefix}-theme-light--primary--500,
+  #{map.get($primary, 500)}
 );
-$theme-active--primary--dark: var(
-  --#{defaults.$prefix}-theme-active--primary--dark,
-  #{$theme-light--primary--dark}
+$theme-light--primary--600: var(
+  --#{defaults.$prefix}-theme-light--primary--600,
+  #{map.get($primary, 600)}
 );
-$theme-active--primary--light: var(
-  --#{defaults.$prefix}-theme-active--primary--light,
-  #{$theme-light--primary--light}
-);
-
-// Color secondary.
-$theme-light--secondary: var(
-  --#{defaults.$prefix}-theme-light--secondary,
-  #{map.get($secondary, 700)}
-);
-$theme-light--secondary--dark: var(
-  --#{defaults.$prefix}-theme-light--secondary--dark,
-  #{map.get($secondary, 800)}
-);
-$theme-light--secondary--light: var(
-  --#{defaults.$prefix}-theme-light--secondary--light,
-  #{map.get($secondary, 600)}
-);
-$theme-dark--secondary: var(
-  --#{defaults.$prefix}-theme-dark--secondary,
-  #{map.get($secondary, 300)}
-);
-$theme-dark--secondary--dark: var(
-  --#{defaults.$prefix}-theme-dark--secondary--dark,
-  #{map.get($secondary, 200)}
-);
-$theme-dark--secondary--light: var(
-  --#{defaults.$prefix}-theme-dark--secondary--light,
-  #{map.get($secondary, 400)}
-);
-$theme-active--secondary: var(
-  --#{defaults.$prefix}-theme-active--secondary,
-  #{$theme-light--secondary}
-);
-$theme-active--secondary--dark: var(
-  --#{defaults.$prefix}-theme-active--secondary--dark,
-  #{$theme-light--secondary--dark}
-);
-$theme-active--secondary--light: var(
-  --#{defaults.$prefix}-theme-active--secondary--light,
-  #{$theme-light--secondary--light}
-);
-
-// Colour tertiary.
-$theme-light--tertiary: var(
-  --#{defaults.$prefix}-theme-light--tertiary,
-  #{map.get($tertiary, 700)}
-);
-$theme-light--tertiary--dark: var(
-  --#{defaults.$prefix}-theme-light--tertiary--dark,
-  #{map.get($tertiary, 800)}
-);
-$theme-light--tertiary--light: var(
-  --#{defaults.$prefix}-theme-light--tertiary--light,
-  #{map.get($tertiary, 600)}
-);
-$theme-dark--tertiary: var(
-  --#{defaults.$prefix}-theme-dark--tertiary,
-  #{map.get($tertiary, 300)}
-);
-$theme-dark--tertiary--dark: var(
-  --#{defaults.$prefix}-theme-dark--tertiary--dark,
-  #{map.get($tertiary, 200)}
-);
-$theme-dark--tertiary--light: var(
-  --#{defaults.$prefix}-theme-dark--tertiary--light,
-  #{map.get($tertiary, 400)}
-);
-$theme-active--tertiary: var(
-  --#{defaults.$prefix}-theme-active--tertiary,
-  #{$theme-light--tertiary}
-);
-$theme-active--tertiary--dark: var(
-  --#{defaults.$prefix}-theme-active--tertiary--dark,
-  #{$theme-light--tertiary--dark}
-);
-$theme-active--tertiary--light: var(
-  --#{defaults.$prefix}-theme-active--tertiary--light,
-  #{$theme-light--tertiary--light}
-);
-
-// Colour light.
-$theme-light--light: var(
-  --#{defaults.$prefix}-theme-light--light,
-  #{map.get($primary, 100)}
-);
-$theme-dark--light: var(
-  --#{defaults.$prefix}-theme-dark--light,
-  #{map.get($primary, 900)}
-);
-$theme-active--light: var(
-  --#{defaults.$prefix}-theme-active--light,
-  #{$theme-light--light}
-);
-
-// Colour dark.
-$theme-light--dark: var(
-  --#{defaults.$prefix}-theme-light--dark,
-  #{map.get($primary, 900)}
-);
-$theme-dark--dark: var(
-  --#{defaults.$prefix}-theme-dark--dark,
-  #{map.get($primary, 100)}
-);
-$theme-active--dark: var(
-  --#{defaults.$prefix}-theme-active--dark,
-  #{$theme-light--dark}
-);
-
-// Colour shade.
-$theme-light--shade--light: var(
-  --#{defaults.$prefix}-theme-light--shade--light,
-  #{map.get($primary, 200)}
-);
-$theme-light--shade--dark: var(
-  --#{defaults.$prefix}-theme-light--shade--dark,
-  #{map.get($primary, 300)}
-);
-$theme-dark--shade--light: var(
-  --#{defaults.$prefix}-theme-dark--shade--light,
-  #{map.get($primary, 800)}
-);
-$theme-dark--shade--dark: var(
-  --#{defaults.$prefix}-theme-dark--shade--dark,
+$theme-light--primary--700: var(
+  --#{defaults.$prefix}-theme-light--primary--700,
   #{map.get($primary, 700)}
 );
-$theme-active--shade--light: var(
-  --#{defaults.$prefix}-theme-active--shade--light,
-  #{$theme-light--shade--light}
+$theme-light--primary--800: var(
+  --#{defaults.$prefix}-theme-light--primary--800,
+  #{map.get($primary, 800)}
 );
-$theme-active--shade--dark: var(
-  --#{defaults.$prefix}-theme-active--shade--dark,
-  #{$theme-light--shade--dark}
+$theme-light--primary--900: var(
+  --#{defaults.$prefix}-theme-light--primary--900,
+  #{map.get($primary, 900)}
+);
+
+// Colour primary - dark.
+$theme-dark--primary--100: var(
+  --#{defaults.$prefix}-theme-dark--primary--100,
+  #{map.get($primary, 900)}
+);
+$theme-dark--primary--200: var(
+  --#{defaults.$prefix}-theme-dark--primary--200,
+  #{map.get($primary, 800)}
+);
+$theme-dark--primary--300: var(
+  --#{defaults.$prefix}-theme-dark--primary--300,
+  #{map.get($primary, 700)}
+);
+$theme-dark--primary--400: var(
+  --#{defaults.$prefix}-theme-dark--primary--400,
+  #{map.get($primary, 600)}
+);
+$theme-dark--primary--500: var(
+  --#{defaults.$prefix}-theme-dark--primary--500,
+  #{map.get($primary, 500)}
+);
+$theme-dark--primary--600: var(
+  --#{defaults.$prefix}-theme-dark--primary--600,
+  #{map.get($primary, 400)}
+);
+$theme-dark--primary--700: var(
+  --#{defaults.$prefix}-theme-dark--primary--700,
+  #{map.get($primary, 300)}
+);
+$theme-dark--primary--800: var(
+  --#{defaults.$prefix}-theme-dark--primary--800,
+  #{map.get($primary, 200)}
+);
+$theme-dark--primary--900: var(
+  --#{defaults.$prefix}-theme-dark--primary--900,
+  #{map.get($primary, 100)}
+);
+
+// Colour primary - active.
+$theme-active--primary--100: var(
+  --#{defaults.$prefix}-theme-active--primary--100,
+  #{$theme-light--primary--100}
+);
+$theme-active--primary--200: var(
+  --#{defaults.$prefix}-theme-active--primary--200,
+  #{$theme-light--primary--200}
+);
+$theme-active--primary--300: var(
+  --#{defaults.$prefix}-theme-active--primary--300,
+  #{$theme-light--primary--300}
+);
+$theme-active--primary--400: var(
+  --#{defaults.$prefix}-theme-active--primary--400,
+  #{$theme-light--primary--400}
+);
+$theme-active--primary--500: var(
+  --#{defaults.$prefix}-theme-active--primary--500,
+  #{$theme-light--primary--500}
+);
+$theme-active--primary--600: var(
+  --#{defaults.$prefix}-theme-active--primary--600,
+  #{$theme-light--primary--600}
+);
+$theme-active--primary--700: var(
+  --#{defaults.$prefix}-theme-active--primary--700,
+  #{$theme-light--primary--700}
+);
+$theme-active--primary--800: var(
+  --#{defaults.$prefix}-theme-active--primary--800,
+  #{$theme-light--primary--800}
+);
+$theme-active--primary--900: var(
+  --#{defaults.$prefix}-theme-active--primary--900,
+  #{$theme-light--primary--900}
+);
+
+// Color secondary - light.
+$theme-light--secondary--100: var(
+  --#{defaults.$prefix}-theme-light--secondary--100,
+  #{map.get($secondary, 100)}
+);
+$theme-light--secondary--200: var(
+  --#{defaults.$prefix}-theme-light--secondary--200,
+  #{map.get($secondary, 200)}
+);
+$theme-light--secondary--300: var(
+  --#{defaults.$prefix}-theme-light--secondary--300,
+  #{map.get($secondary, 300)}
+);
+$theme-light--secondary--400: var(
+  --#{defaults.$prefix}-theme-light--secondary--400,
+  #{map.get($secondary, 400)}
+);
+$theme-light--secondary--500: var(
+  --#{defaults.$prefix}-theme-light--secondary--500,
+  #{map.get($secondary, 500)}
+);
+$theme-light--secondary--600: var(
+  --#{defaults.$prefix}-theme-light--secondary--600,
+  #{map.get($secondary, 600)}
+);
+$theme-light--secondary--700: var(
+  --#{defaults.$prefix}-theme-light--secondary--700,
+  #{map.get($secondary, 700)}
+);
+$theme-light--secondary--800: var(
+  --#{defaults.$prefix}-theme-light--secondary--800,
+  #{map.get($secondary, 800)}
+);
+$theme-light--secondary--900: var(
+  --#{defaults.$prefix}-theme-light--secondary--900,
+  #{map.get($secondary, 900)}
+);
+
+// Colour secondary - dark.
+$theme-dark--secondary--100: var(
+  --#{defaults.$prefix}-theme-dark--secondary--100,
+  #{map.get($secondary, 900)}
+);
+$theme-dark--secondary--200: var(
+  --#{defaults.$prefix}-theme-dark--secondary--200,
+  #{map.get($secondary, 800)}
+);
+$theme-dark--secondary--300: var(
+  --#{defaults.$prefix}-theme-dark--secondary--300,
+  #{map.get($secondary, 700)}
+);
+$theme-dark--secondary--400: var(
+  --#{defaults.$prefix}-theme-dark--secondary--400,
+  #{map.get($secondary, 600)}
+);
+$theme-dark--secondary--500: var(
+  --#{defaults.$prefix}-theme-dark--secondary--500,
+  #{map.get($secondary, 500)}
+);
+$theme-dark--secondary--600: var(
+  --#{defaults.$prefix}-theme-dark--secondary--600,
+  #{map.get($secondary, 400)}
+);
+$theme-dark--secondary--700: var(
+  --#{defaults.$prefix}-theme-dark--secondary--700,
+  #{map.get($secondary, 300)}
+);
+$theme-dark--secondary--800: var(
+  --#{defaults.$prefix}-theme-dark--secondary--800,
+  #{map.get($secondary, 200)}
+);
+$theme-dark--secondary--900: var(
+  --#{defaults.$prefix}-theme-dark--secondary--900,
+  #{map.get($secondary, 100)}
+);
+
+// Colour secondary - active.
+$theme-active--secondary--100: var(
+  --#{defaults.$prefix}-theme-active--secondary--100,
+  #{$theme-light--secondary--100}
+);
+$theme-active--secondary--200: var(
+  --#{defaults.$prefix}-theme-active--secondary--200,
+  #{$theme-light--secondary--200}
+);
+$theme-active--secondary--300: var(
+  --#{defaults.$prefix}-theme-active--secondary--300,
+  #{$theme-light--secondary--300}
+);
+$theme-active--secondary--400: var(
+  --#{defaults.$prefix}-theme-active--secondary--400,
+  #{$theme-light--secondary--400}
+);
+$theme-active--secondary--500: var(
+  --#{defaults.$prefix}-theme-active--secondary--500,
+  #{$theme-light--secondary--500}
+);
+$theme-active--secondary--600: var(
+  --#{defaults.$prefix}-theme-active--secondary--600,
+  #{$theme-light--secondary--600}
+);
+$theme-active--secondary--700: var(
+  --#{defaults.$prefix}-theme-active--secondary--700,
+  #{$theme-light--secondary--700}
+);
+$theme-active--secondary--800: var(
+  --#{defaults.$prefix}-theme-active--secondary--800,
+  #{$theme-light--secondary--800}
+);
+$theme-active--secondary--900: var(
+  --#{defaults.$prefix}-theme-active--secondary--900,
+  #{$theme-light--secondary--900}
+);
+
+// Colour tertiary - light.
+$theme-light--tertiary--100: var(
+  --#{defaults.$prefix}-theme-light--tertiary--100,
+  #{map.get($tertiary, 100)}
+);
+$theme-light--tertiary--200: var(
+  --#{defaults.$prefix}-theme-light--tertiary--200,
+  #{map.get($tertiary, 200)}
+);
+$theme-light--tertiary--300: var(
+  --#{defaults.$prefix}-theme-light--tertiary--300,
+  #{map.get($tertiary, 300)}
+);
+$theme-light--tertiary--400: var(
+  --#{defaults.$prefix}-theme-light--tertiary--400,
+  #{map.get($tertiary, 400)}
+);
+$theme-light--tertiary--500: var(
+  --#{defaults.$prefix}-theme-light--tertiary--500,
+  #{map.get($tertiary, 500)}
+);
+$theme-light--tertiary--600: var(
+  --#{defaults.$prefix}-theme-light--tertiary--600,
+  #{map.get($tertiary, 600)}
+);
+$theme-light--tertiary--700: var(
+  --#{defaults.$prefix}-theme-light--tertiary--700,
+  #{map.get($tertiary, 700)}
+);
+$theme-light--tertiary--800: var(
+  --#{defaults.$prefix}-theme-light--tertiary--800,
+  #{map.get($tertiary, 800)}
+);
+$theme-light--tertiary--900: var(
+  --#{defaults.$prefix}-theme-light--tertiary--900,
+  #{map.get($tertiary, 900)}
+);
+
+// Colour tertiary - dark.
+$theme-dark--tertiary--100: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--100,
+  #{map.get($tertiary, 900)}
+);
+$theme-dark--tertiary--200: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--200,
+  #{map.get($tertiary, 800)}
+);
+$theme-dark--tertiary--300: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--300,
+  #{map.get($tertiary, 700)}
+);
+$theme-dark--tertiary--400: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--400,
+  #{map.get($tertiary, 600)}
+);
+$theme-dark--tertiary--500: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--500,
+  #{map.get($tertiary, 500)}
+);
+$theme-dark--tertiary--600: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--600,
+  #{map.get($tertiary, 400)}
+);
+$theme-dark--tertiary--700: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--700,
+  #{map.get($tertiary, 300)}
+);
+$theme-dark--tertiary--800: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--800,
+  #{map.get($tertiary, 200)}
+);
+$theme-dark--tertiary--900: var(
+  --#{defaults.$prefix}-theme-dark--tertiary--900,
+  #{map.get($tertiary, 100)}
+);
+
+// Colour tertiary - active.
+$theme-active--tertiary--100: var(
+  --#{defaults.$prefix}-theme-active--tertiary--100,
+  #{$theme-light--tertiary--100}
+);
+$theme-active--tertiary--200: var(
+  --#{defaults.$prefix}-theme-active--tertiary--200,
+  #{$theme-light--tertiary--200}
+);
+$theme-active--tertiary--300: var(
+  --#{defaults.$prefix}-theme-active--tertiary--300,
+  #{$theme-light--tertiary--300}
+);
+$theme-active--tertiary--400: var(
+  --#{defaults.$prefix}-theme-active--tertiary--400,
+  #{$theme-light--tertiary--400}
+);
+$theme-active--tertiary--500: var(
+  --#{defaults.$prefix}-theme-active--tertiary--500,
+  #{$theme-light--tertiary--500}
+);
+$theme-active--tertiary--600: var(
+  --#{defaults.$prefix}-theme-active--tertiary--600,
+  #{$theme-light--tertiary--600}
+);
+$theme-active--tertiary--700: var(
+  --#{defaults.$prefix}-theme-active--tertiary--700,
+  #{$theme-light--tertiary--700}
+);
+$theme-active--tertiary--800: var(
+  --#{defaults.$prefix}-theme-active--tertiary--800,
+  #{$theme-light--tertiary--800}
+);
+$theme-active--tertiary--900: var(
+  --#{defaults.$prefix}-theme-active--tertiary--900,
+  #{$theme-light--tertiary--900}
 );
 
 // Font properties.

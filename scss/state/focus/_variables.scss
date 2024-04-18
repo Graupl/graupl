@@ -7,7 +7,7 @@
 $focus-width: var(--#{defaults.$prefix}-focus-width, #{base.$border-width});
 $focus-outline-color: var(
   --#{defaults.$prefix}-focus-outline-color,
-  #{theme.$theme-active--dark}
+  #{theme.$theme-active--primary--900}
 );
 $focus-outline-width: var(
   --#{defaults.$prefix}-focus-outline-width,
@@ -23,7 +23,7 @@ $focus-outline-offset: var(
 );
 $focus-box-shadow-color: var(
   --#{defaults.$prefix}-focus-box-shadow-color,
-  #{theme.$theme-active--light}
+  #{theme.$theme-active--primary--100}
 );
 $focus-box-shadow-style: var(
   --#{defaults.$prefix}-focus-box-shadow-style,
