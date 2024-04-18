@@ -4,6 +4,7 @@
 @use "../../theme/variables" as theme;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
 
 @include layer(component) {
   .button {
@@ -26,6 +27,20 @@
 
     &:active {
       transform: $button-active-transform;
+    }
+  }
+
+  @include animation-off {
+    .button {
+      transition: $button-transition-reduced-motion;
+
+      &:hover {
+        transform: $button-hover-transform-reduced-motion;
+      }
+
+      &:active {
+        transform: $button-active-transform-reduced-motion;
+      }
     }
   }
 }
