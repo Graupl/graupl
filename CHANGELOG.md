@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.2](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2024-04-18)
+
+
+### Features
+
+* use full spectrum of available colour shades ([24ed3f3](https://github.com/Graupl/graupl/commit/24ed3f370ea43cc2454fd664a87eb83c9c9d00db))
+
+
+### Bug Fixes
+
+* **form:** handle disabled fieldsets ([5a50979](https://github.com/Graupl/graupl/commit/5a50979d52461ecd46b303d353ab10f5fc67fafb))
+
 ## [1.0.0-alpha.1](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.0...v1.0.0-alpha.1) (2024-04-17)
 
 
