@@ -6,6 +6,6 @@ export default defineConfig({
   description: "A modular and modern CSS framework.",
   base: "/graupl/",
   themeConfig: {
-    socialLinks: [{ icon: "github", url: "https://github.com/Graupl/graupl" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/Graupl/graupl" }],
   },
 });
