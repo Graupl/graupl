@@ -20,7 +20,7 @@
   }
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
-    .columns-#{$i} {
+    .count-#{$i} {
       --#{defaults.$prefix}-columns-count: #{$i};
     }
 
