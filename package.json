@@ -3,6 +3,29 @@
   "version": "1.0.0-alpha.2",
   "description": "A modular and modern CSS framework.",
   "type": "module",
+  "exports": {
+    ".": {
+      "sass": "./scss"
+    },
+    "./base": {
+      "sass": "./scss/base"
+    },
+    "./components": {
+      "sass": "./scss/component"
+    },
+    "./layout": {
+      "sass": "./scss/layout"
+    },
+    "./mixins": {
+      "sass": "./scss/mixins"
+    },
+    "./state": {
+      "sass": "./scss/state"
+    },
+    "./theme": {
+      "sass": "./scss/theme"
+    }
+  },
   "scripts": {
     "prepare": "husky install",
     "commit": "git cz",
