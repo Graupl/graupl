@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.3](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2024-04-20)
+
+
+### Features
+
+* **theme:** add ability to generate new theme colours automatically ([df0ad39](https://github.com/Graupl/graupl/commit/df0ad391ff0b122c55867b518ccfaa7cd6141ced))
+* **utilities:** add background and color utilities ([ef14a15](https://github.com/Graupl/graupl/commit/ef14a15e0d5934249829a9d6ef04014aa63a0e08)), closes [#11](https://github.com/Graupl/graupl/issues/11)
+
+
+### Bug Fixes
+
+* **accessibility:** add reduced motion handling on buttons ([2a33df0](https://github.com/Graupl/graupl/commit/2a33df00ddddf267f813160644b1f8c6a847e7a4))
+* **buttons:** handle disabled state ([1b2e859](https://github.com/Graupl/graupl/commit/1b2e859d57cdad9a3f2021ff6c7917800f80f34a)), closes [#9](https://github.com/Graupl/graupl/issues/9)
+* **state:** correct layer order for states to override ([afd87e4](https://github.com/Graupl/graupl/commit/afd87e4ec7c3957040b3701eaeb482768a366083))
+
+
+### Code Refactoring
+
+* change .columns- to .count- ([45d0970](https://github.com/Graupl/graupl/commit/45d0970fcca3c39a57a10e0cb7c4c18a2b36f31e))
+
+
+### Documentation
+
+* add basic example of how to override defaults ([a808eeb](https://github.com/Graupl/graupl/commit/a808eebfd7ab7e97be6b491b94886c68757bde1a)), closes [#10](https://github.com/Graupl/graupl/issues/10)
+* correct link to github ([847c074](https://github.com/Graupl/graupl/commit/847c07413ebdcbc32009e3b51f77eb1e2e5e4481))
+
+
+### Build System
+
+* **npm:** define exports ([e321b9c](https://github.com/Graupl/graupl/commit/e321b9c54a608795badc1f1f2f1468583694ccff))
+* **postcss:** re-enable cssnano ([cdd9cfc](https://github.com/Graupl/graupl/commit/cdd9cfc29a2c2d57447da86ba9258714070e61fd))
+
 ## [1.0.0-alpha.2](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2024-04-18)
 
 
