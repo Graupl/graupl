@@ -1,8 +1,8 @@
 // Variables referencing custom properties.
 
 @use "../../variables" as base;
-@use "../../theme/variables" as theme;
 @use "defaults";
+@use "../../functions/theme";
 
 // Link properties.
 $link-text-decoration: var(
@@ -13,19 +13,16 @@ $link-text-decoration-thickness: var(
   --#{defaults.$prefix}-link-text-decoration-thickness,
   #{base.$border-width}
 );
-$link-color: var(
-  --#{defaults.$prefix}-link-color,
-  #{theme.$theme-active--primary--700}
-);
+$link-color: var(--#{defaults.$prefix}-link-color, #{theme.get(primary, 700)});
 $link-hover-color: var(
   --#{defaults.$prefix}-link-hover-color,
-  #{theme.$theme-active--tertiary--700}
+  #{theme.get(tertiary, 700)}
 );
 $link-active-color: var(
   --#{defaults.$prefix}-link-active-color,
-  #{theme.$theme-active--tertiary--700}
+  #{theme.get(tertiary, 700)}
 );
 $link-visited-color: var(
   --#{defaults.$prefix}-link-visited-color,
-  #{theme.$theme-active--primary--700}
+  #{theme.get(primary, 700)}
 );

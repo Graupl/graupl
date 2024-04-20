@@ -8,38 +8,55 @@
 @forward "../defaults";
 
 // Colours.
-$primary: (
-  100: hsl(219deg 100% 95%),
-  200: hsl(219deg 90% 80%),
-  300: hsl(219deg 80% 65%),
-  400: hsl(219deg 75% 55%),
-  500: hsl(219deg 75% 50%),
-  600: hsl(219deg 75% 45%),
-  700: hsl(219deg 80% 35%),
-  800: hsl(219deg 90% 20%),
-  900: hsl(219deg 100% 10%),
+$default-colors: (
+  primary: (
+    100: hsl(219deg 100% 95%),
+    200: hsl(219deg 90% 80%),
+    300: hsl(219deg 80% 65%),
+    400: hsl(219deg 75% 55%),
+    500: hsl(219deg 75% 50%),
+    600: hsl(219deg 75% 45%),
+    700: hsl(219deg 80% 35%),
+    800: hsl(219deg 90% 20%),
+    900: hsl(219deg 100% 10%),
+  ),
+  secondary: (
+    100: hsl(235deg 40% 95%),
+    200: hsl(235deg 30% 80%),
+    300: hsl(235deg 20% 65%),
+    400: hsl(235deg 15% 55%),
+    500: hsl(235deg 15% 50%),
+    600: hsl(235deg 15% 45%),
+    700: hsl(235deg 20% 35%),
+    800: hsl(235deg 30% 20%),
+    900: hsl(235deg 40% 10%),
+  ),
+  tertiary: (
+    100: hsl(340deg 85% 95%),
+    200: hsl(340deg 75% 80%),
+    300: hsl(340deg 65% 65%),
+    400: hsl(340deg 60% 55%),
+    500: hsl(340deg 60% 50%),
+    600: hsl(340deg 60% 45%),
+    700: hsl(340deg 65% 35%),
+    800: hsl(340deg 75% 20%),
+    900: hsl(340deg 85% 10%),
+  ),
 ) !default;
-$secondary: (
-  100: hsl(235deg 40% 95%),
-  200: hsl(235deg 30% 80%),
-  300: hsl(235deg 20% 65%),
-  400: hsl(235deg 15% 55%),
-  500: hsl(235deg 15% 50%),
-  600: hsl(235deg 15% 45%),
-  700: hsl(235deg 20% 35%),
-  800: hsl(235deg 30% 20%),
-  900: hsl(235deg 40% 10%),
-) !default;
-$tertiary: (
-  100: hsl(340deg 85% 95%),
-  200: hsl(340deg 75% 80%),
-  300: hsl(340deg 65% 65%),
-  400: hsl(340deg 60% 55%),
-  500: hsl(340deg 60% 50%),
-  600: hsl(340deg 60% 45%),
-  700: hsl(340deg 65% 35%),
-  800: hsl(340deg 75% 20%),
-  900: hsl(340deg 85% 10%),
+$custom-colors: () !default;
+$colors: map.merge($default-colors, $custom-colors) !default;
+
+// A map for reversing the shade values of the dark theme.
+$dark-map: (
+  100: 900,
+  200: 800,
+  300: 700,
+  400: 600,
+  500: 500,
+  600: 400,
+  700: 300,
+  800: 200,
+  900: 100,
 ) !default;
 
 // Font properties.

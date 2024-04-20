@@ -2,6 +2,10 @@
 //
 // Forwards all components for easy development.
 
+// Forward the layer initialization.
+@forward "init";
+
+// Forward all layers.
 @forward "base";
 @forward "layout";
 @forward "component";

@@ -1,0 +1,11 @@
+// A function to get the specific theme shades.
+
+@use "sass:map";
+@use "../theme/variables" as theme;
+
+@function get($color, $shade) {
+  $color-map: map.get(theme.$theme-active, $color);
+  $value: map.get($color-map, $shade);
+
+  @return $value;
+}

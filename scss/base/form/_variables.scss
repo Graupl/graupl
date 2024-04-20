@@ -1,9 +1,9 @@
 // Variables referencing custom properties.
 
 @use "../../variables" as base;
-@use "../../theme/variables" as theme;
 @use "defaults";
 @use "sass:map";
+@use "../../functions/theme";
 
 $input-padding-x: var(--#{defaults.$prefix}-input-padding-x, #{base.$gap});
 $input-padding-y: var(
@@ -47,7 +47,7 @@ $fieldset-font-size: var(
 // Background properties.
 $input-background: var(
   --#{defaults.$prefix}-input-background,
-  #{theme.$theme-active--primary--100}
+  #{theme.get(primary, 100)}
 );
 $fieldset-background: var(
   --#{defaults.$prefix}-fieldset-background,
@@ -57,17 +57,17 @@ $fieldset-background: var(
 // Text properties.
 $input-color: var(
   --#{defaults.$prefix}-input-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $input-placeholder-color: var(
   --#{defaults.$prefix}-input-placeholder-color,
-  #{theme.$theme-active--secondary--600}
+  #{theme.get(secondary, 600)}
 );
 $label-color: var(--#{defaults.$prefix}-label-color, #{$input-color});
 $fieldset-color: var(--#{defaults.$prefix}-fieldset-color, #{$input-color});
 $input-disabled-color: var(
   --#{defaults.$prefix}-input-disabled-color,
-  #{theme.$theme-active--secondary--400}
+  #{theme.get(secondary, 400)}
 );
 $input-disabled-placeholder-color: var(
   --#{defaults.$prefix}-input-disabled-placeholder-color,
@@ -111,11 +111,11 @@ $fieldset-border-radius: var(
 // Border colour properties.
 $input-border-color: var(
   --#{defaults.$prefix}-input-border-color,
-  #{theme.$theme-active--secondary--700}
+  #{theme.get(secondary, 700)}
 );
 $input-disabled-border-color: var(
   --#{defaults.$prefix}-input-disabled-border-color,
-  #{theme.$theme-active--secondary--200}
+  #{theme.get(secondary, 200)}
 );
 $fieldset-border-color: var(
   --#{defaults.$prefix}-fieldset-border-color,
@@ -129,5 +129,5 @@ $fieldset-disabled-border-color: var(
 // Accent color properties.
 $input-accent-color: var(
   --#{defaults.$prefix}-input-accent-color,
-  #{theme.$theme-active--primary--700}
+  #{theme.get(primary, 700)}
 );
