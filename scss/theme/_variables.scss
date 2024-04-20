@@ -3,14 +3,19 @@
 @use "defaults";
 @use "sass:map";
 
+// A colour map of base colours and their shades.
 $colors: ();
 
+// Create a map for each colour.
 @each $color, $map in defaults.$colors {
+  // A map for the current colour.
   $color-map: ();
 
   @each $shade, $value in $map {
+    // Set the custom prop name and fallback value.
     $color-property: var(--#{defaults.$prefix}-#{$color}--#{$shade}, $value);
 
+    // Add the custom prop to the map.
     $color-map: map.merge(
       $color-map,
       (
@@ -19,6 +24,7 @@ $colors: ();
     );
   }
 
+  // Merge the colour map with the existing colours.
   $colors: map.merge(
     $colors,
     (
@@ -27,19 +33,24 @@ $colors: ();
   );
 }
 
+// Theme properties.
 $theme-light: ();
 $theme-dark: ();
 $theme-active: ();
 
+// Create a map for each colour theme.
 @each $color, $map in $colors {
+  // Maps for the current colour theme variants.
   $light-map: ();
   $dark-map: ();
   $active-map: ();
 
   @each $shade, $value in $map {
+    // Get the dark shade and value.
     $dark-shade: map.get(defaults.$dark-map, $shade);
     $dark-value: map.get($map, $dark-shade);
 
+    // Set the custom prop names and fallback values.
     $light-property: var(
       --#{defaults.$prefix}-theme-light--#{$color}--#{$shade},
       $value
@@ -53,6 +64,7 @@ $theme-active: ();
       $light-property
     );
 
+    // Add the custom props to the maps.
     $light-map: map.merge(
       $light-map,
       (
@@ -73,6 +85,7 @@ $theme-active: ();
     );
   }
 
+  // Merge the theme maps with the existing themes.
   $theme-light: map.merge(
     $theme-light,
     (
