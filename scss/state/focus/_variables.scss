@@ -1,13 +1,13 @@
 // Variables referencing custom properties.
 
 @use "../../variables" as base;
-@use "../../theme/variables" as theme;
 @use "defaults";
+@use "../../functions/theme";
 
 $focus-width: var(--#{defaults.$prefix}-focus-width, #{base.$border-width});
 $focus-outline-color: var(
   --#{defaults.$prefix}-focus-outline-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $focus-outline-width: var(
   --#{defaults.$prefix}-focus-outline-width,
@@ -23,7 +23,7 @@ $focus-outline-offset: var(
 );
 $focus-box-shadow-color: var(
   --#{defaults.$prefix}-focus-box-shadow-color,
-  #{theme.$theme-active--primary--100}
+  #{theme.get(primary, 100)}
 );
 $focus-box-shadow-style: var(
   --#{defaults.$prefix}-focus-box-shadow-style,

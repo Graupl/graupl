@@ -1,9 +1,9 @@
 // Variables referencing custom properties.
 
 @use "../../variables" as base;
-@use "../../theme/variables" as theme;
 @use "defaults";
 @use "sass:map";
+@use "../../functions/theme";
 
 // Button properties.
 $button-min-width: var(
@@ -62,29 +62,29 @@ $button-active-transform-reduced-motion: var(
 // Background properties.
 $button-background: var(
   --#{defaults.$prefix}-button-background,
-  #{theme.$theme-active--primary--100}
+  #{theme.get(primary, 100)}
 );
 $button-hover-background: var(
   --#{defaults.$prefix}-button-hover-background,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $button-active-background: var(
   --#{defaults.$prefix}-button-active-background,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 
 // Text properties.
 $button-color: var(
   --#{defaults.$prefix}-button-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $button-hover-color: var(
   --#{defaults.$prefix}-button-hover-color,
-  #{theme.$theme-active--primary--100}
+  #{theme.get(primary, 100)}
 );
 $button-active-color: var(
   --#{defaults.$prefix}-button-active-color,
-  #{theme.$theme-active--primary--100}
+  #{theme.get(primary, 100)}
 );
 
 // Border properties.
@@ -104,13 +104,13 @@ $button-border-radius: var(
 // Border colour properties.
 $button-border-color: var(
   --#{defaults.$prefix}-button-border-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $button-hover-border-color: var(
   --#{defaults.$prefix}-button-hover-border-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
 $button-active-border-color: var(
   --#{defaults.$prefix}-button-active-border-color,
-  #{theme.$theme-active--primary--900}
+  #{theme.get(primary, 900)}
 );
