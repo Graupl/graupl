@@ -1,35 +1,35 @@
-@use "../../../scss/theme/variables" as theme;
+@use "../../../scss/functions/theme";
 
 :root {
-  --vp-c-brand: #{theme.$theme-light--primary--700};
-  --vp-c-brand-1: #{theme.$theme-light--primary--700};
-  --vp-c-brand-2: #{theme.$theme-light--primary--700};
-  --vp-c-brand-3: #{theme.$theme-light--primary--700};
-  --vp-c-bg: #{theme.$theme-light--primary--100};
-  --vp-c-bg-alt: #{theme.$theme-light--primary--100};
-  --vp-c-bg-elv: #{theme.$theme-light--primary--100};
-  --vp-c-bg-soft: #{theme.$theme-light--primary--100};
-  --vp-c-border: #{theme.$theme-light--tertiary--700};
-  --vp-c-divider: #{theme.$theme-light--secondary--700};
-  --vp-c-gutter: #{theme.$theme-light--secondary--700};
-  --vp-c-text-1: #{theme.$theme-light--primary--900};
-  --vp-c-text-2: #{theme.$theme-light--primary--900};
-  --vp-c-text-3: #{theme.$theme-light--primary--900};
+  --vp-c-brand: #{theme.get(primary, 700)};
+  --vp-c-brand-1: #{theme.get(primary, 700)};
+  --vp-c-brand-2: #{theme.get(primary, 700)};
+  --vp-c-brand-3: #{theme.get(primary, 700)};
+  --vp-c-bg: #{theme.get(primary, 100)};
+  --vp-c-bg-alt: #{theme.get(primary, 100)};
+  --vp-c-bg-elv: #{theme.get(primary, 100)};
+  --vp-c-bg-soft: #{theme.get(primary, 100)};
+  --vp-c-border: #{theme.get(tertiary, 700)};
+  --vp-c-divider: #{theme.get(secondary, 700)};
+  --vp-c-gutter: #{theme.get(secondary, 700)};
+  --vp-c-text-1: #{theme.get(primary, 900)};
+  --vp-c-text-2: #{theme.get(primary, 900)};
+  --vp-c-text-3: #{theme.get(primary, 900)};
 }
 
 .dark {
-  --vp-c-brand: #{theme.$theme-light--primary--300};
-  --vp-c-brand-1: #{theme.$theme-light--primary--300};
-  --vp-c-brand-2: #{theme.$theme-light--primary--300};
-  --vp-c-brand-3: #{theme.$theme-light--primary--300};
-  --vp-c-bg: #{theme.$theme-light--primary--900};
-  --vp-c-bg-alt: #{theme.$theme-light--primary--900};
-  --vp-c-bg-elv: #{theme.$theme-light--primary--900};
-  --vp-c-bg-soft: #{theme.$theme-light--primary--900};
-  --vp-c-border: #{theme.$theme-light--tertiary--300};
-  --vp-c-divider: #{theme.$theme-light--secondary--300};
-  --vp-c-gutter: #{theme.$theme-light--secondary--300};
-  --vp-c-text-1: #{theme.$theme-light--primary--100};
-  --vp-c-text-2: #{theme.$theme-light--primary--100};
-  --vp-c-text-3: #{theme.$theme-light--primary--100};
+  --vp-c-brand: #{theme.get(primary, 300)};
+  --vp-c-brand-1: #{theme.get(primary, 300)};
+  --vp-c-brand-2: #{theme.get(primary, 300)};
+  --vp-c-brand-3: #{theme.get(primary, 300)};
+  --vp-c-bg: #{theme.get(primary, 900)};
+  --vp-c-bg-alt: #{theme.get(primary, 900)};
+  --vp-c-bg-elv: #{theme.get(primary, 900)};
+  --vp-c-bg-soft: #{theme.get(primary, 900)};
+  --vp-c-border: #{theme.get(tertiary, 300)};
+  --vp-c-divider: #{theme.get(secondary, 300)};
+  --vp-c-gutter: #{theme.get(secondary, 300)};
+  --vp-c-text-1: #{theme.get(primary, 100)};
+  --vp-c-text-2: #{theme.get(primary, 100)};
+  --vp-c-text-3: #{theme.get(primary, 100)};
 }
