@@ -29,6 +29,15 @@
     &:active {
       transform: $button-active-transform;
     }
+
+    &:disabled {
+      cursor: not-allowed;
+
+      &:hover,
+      &:active {
+        transform: none;
+      }
+    }
   }
 
   @include animation-off {
@@ -64,6 +73,19 @@
       color: $button-active-color;
     }
 
+    &:disabled {
+      border-color: $button-disabled-border-color;
+      background: $button-disabled-background;
+      color: $button-disabled-color;
+
+      &:hover,
+      &:active {
+        border-color: $button-disabled-border-color;
+        background: $button-disabled-background;
+        color: $button-disabled-color;
+      }
+    }
+
     @each $color, $map in theme.$theme-active {
       &.#{$color} {
         --#{defaults.$prefix}-button-hover-background: #{map.get($map, 700)};
@@ -71,6 +93,10 @@
         --#{defaults.$prefix}-button-border-color: #{map.get($map, 700)};
         --#{defaults.$prefix}-button-hover-border-color: #{map.get($map, 700)};
         --#{defaults.$prefix}-button-active-border-color: #{map.get($map, 700)};
+        --#{defaults.$prefix}-button-disabled-border-color: #{map.get(
+            $map,
+            200
+          )};
       }
     }
   }

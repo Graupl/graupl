@@ -72,6 +72,10 @@ $button-active-background: var(
   --#{defaults.$prefix}-button-active-background,
   #{theme.get(primary, 900)}
 );
+$button-disabled-background: var(
+  --#{defaults.$prefix}-button-disabled-background,
+  #{theme.get(primary, 100)}
+);
 
 // Text properties.
 $button-color: var(
@@ -85,6 +89,10 @@ $button-hover-color: var(
 $button-active-color: var(
   --#{defaults.$prefix}-button-active-color,
   #{theme.get(primary, 100)}
+);
+$button-disabled-color: var(
+  --#{defaults.$prefix}-button-disabled-color,
+  #{theme.get(primary, 200)}
 );
 
 // Border properties.
@@ -113,4 +121,8 @@ $button-hover-border-color: var(
 $button-active-border-color: var(
   --#{defaults.$prefix}-button-active-border-color,
   #{theme.get(primary, 900)}
+);
+$button-disabled-border-color: var(
+  --#{defaults.$prefix}-button-disabled-border-color,
+  #{theme.get(primary, 200)}
 );
