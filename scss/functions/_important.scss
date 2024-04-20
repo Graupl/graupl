@@ -1,0 +1,11 @@
+// A function to determine if the !important flag should be added to a property.
+
+@use "../defaults";
+
+@function insert($value) {
+  @if defaults.$use-important {
+    @return #{$value !important};
+  }
+
+  @return #{$value};
+}

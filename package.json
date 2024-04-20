@@ -24,6 +24,9 @@
     },
     "./theme": {
       "sass": "./scss/theme"
+    },
+    "./utilities": {
+      "sass": "./scss/utilities"
     }
   },
   "scripts": {

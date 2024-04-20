@@ -1,0 +1,22 @@
+// Graupl color utilities.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+@use "../../theme/variables" as theme;
+
+@include layer(utilities) {
+  @each $color, $map in theme.$theme-active {
+    @each $shade, $value in $map {
+      $name: #{$color}-#{$shade};
+
+      .background-#{$name} {
+        background: important.insert($value);
+      }
+
+      .color-#{$name} {
+        color: important.insert($value);
+      }
+    }
+  }
+}
