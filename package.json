@@ -36,7 +36,7 @@
     "prettier": "prettier '**/*.{js,mjs,cjs,scss,sass}'",
     "stylelint": "stylelint '**/*.scss' --allow-empty-input",
     "lint": "npm run eslint -- --fix && npm run stylelint -- --fix && npm run prettier --  --write",
-    "sass": "sass scss:dist",
+    "sass": "rm -rf dist && sass scss:dist",
     "postcss": "postcss 'dist/**/*.css' --replace",
     "build": "npm run sass && npm run postcss",
     "release": "git add dist/. && standard-version -a",
