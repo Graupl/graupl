@@ -10,11 +10,11 @@
     @each $shade, $value in $map {
       $name: #{$color}-#{$shade};
 
-      .background-#{$name} {
+      .bg-#{$name} {
         background: important.insert($value);
       }
 
-      .color-#{$name} {
+      .text-#{$name} {
         color: important.insert($value);
       }
     }
