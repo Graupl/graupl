@@ -8,8 +8,8 @@
 
 @include layer(theme) {
   :root {
-    background: theme.get(primary, 100);
-    color: theme.get(primary, 900);
+    background: $background;
+    color: $font-color;
     font-family: $font-family;
     font-size: $font-size;
   }

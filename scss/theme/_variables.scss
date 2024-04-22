@@ -109,3 +109,13 @@ $theme-active: ();
 // Font properties.
 $font-family: var(--#{defaults.$prefix}-font-family, #{defaults.$font-family});
 $font-size: var(--#{defaults.$prefix}-font-size, #{defaults.$font-size});
+
+// Colour properties.
+$font-color: var(
+  --#{defaults.$prefix}-font-color,
+  #{map.get(map.get($theme-active, primary), 900)}
+);
+$background: var(
+  --#{defaults.$prefix}-background,
+  #{map.get(map.get($theme-active, primary), 100)}
+);
