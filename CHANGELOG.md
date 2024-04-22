@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.4](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2024-04-22)
+
+
+### Features
+
+* **theme:** add variables for root font and background ([a7997e8](https://github.com/Graupl/graupl/commit/a7997e85b939dac5a2105d931d3a97010de14a6a))
+
+
+### Code Refactoring
+
+* **utilities:** use bg- and text- for color utilities ([9709b32](https://github.com/Graupl/graupl/commit/9709b32a6651b92dd49d5a151cf13d94ca3720bf))
+
 ## [1.0.0-alpha.3](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.2...v1.0.0-alpha.3) (2024-04-20)
 
 
