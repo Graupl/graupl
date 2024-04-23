@@ -1,128 +1,132 @@
 // Variables referencing custom properties.
 
-@use "../../variables" as base;
 @use "defaults";
-@use "sass:map";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
 @use "../../functions/theme";
+@use "sass:map";
 
 // Button properties.
 $button-min-width: var(
-  --#{defaults.$prefix}-button-min-width,
-  #{defaults.$interactive-min-width}
+  --#{root-defaults.$prefix}-button-min-width,
+  #{root-defaults.$interactive-min-width}
 );
 $button-min-height: var(
-  --#{defaults.$prefix}-button-min-height,
-  #{defaults.$interactive-min-height}
+  --#{root-defaults.$prefix}-button-min-height,
+  #{root-defaults.$interactive-min-height}
 );
-$button-padding-x: var(--#{defaults.$prefix}-button-padding-x, #{base.$gap});
+$button-padding-x: var(
+  --#{root-defaults.$prefix}-button-padding-x,
+  #{root-variables.$gap}
+);
 $button-padding-y: var(
-  --#{defaults.$prefix}-button-padding-y,
-  calc(#{base.$gap} / 2)
+  --#{root-defaults.$prefix}-button-padding-y,
+  calc(#{root-variables.$gap} / 2)
 );
 $button-padding: var(
-  --#{defaults.$prefix}-button-padding,
+  --#{root-defaults.$prefix}-button-padding,
   #{$button-padding-y} #{$button-padding-x}
 );
 $button-font-size: var(
-  --#{defaults.$prefix}-button-font-size,
-  #{map.get(base.$font-size, default)}
+  --#{root-defaults.$prefix}-button-font-size,
+  #{map.get(root-variables.$font-size, default)}
 );
 $button-transition: var(
-  --#{defaults.$prefix}-button-transition,
-  background #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
-  color #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
-  border-color #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function},
-  transform #{map.get(base.$transition-duration, fast)} #{base.$transition-timing-function}
+  --#{root-defaults.$prefix}-button-transition,
+  background #{map.get(root-variables.$transition-duration, fast)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-duration, fast)} #{root-variables.$transition-timing-function},
+  border-color #{map.get(root-variables.$transition-duration, fast)} #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-duration, fast)} #{root-variables.$transition-timing-function}
 );
 $button-transition-reduced-motion: var(
-  --#{defaults.$prefix}-button-transition-reduced-motion,
-  background #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function},
-  color #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function},
-  border-color #{map.get(base.$transition-duration, none)} #{base.$transition-timing-function}
+  --#{root-defaults.$prefix}-button-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-duration, none)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-duration, none)} #{root-variables.$transition-timing-function},
+  border-color #{map.get(root-variables.$transition-duration, none)} #{root-variables.$transition-timing-function}
 );
 
 // Transform properties.
 $button-hover-transform: var(
-  --#{defaults.$prefix}-button-hover-transform,
+  --#{root-defaults.$prefix}-button-hover-transform,
   #{defaults.$button-hover-transform}
 );
 $button-active-transform: var(
-  --#{defaults.$prefix}-button-active-transform,
+  --#{root-defaults.$prefix}-button-active-transform,
   #{defaults.$button-active-transform}
 );
 $button-hover-transform-reduced-motion: var(
-  --#{defaults.$prefix}-button-hover-transform-reduced-motion,
+  --#{root-defaults.$prefix}-button-hover-transform-reduced-motion,
   #{defaults.$button-hover-transform-reduced-motion}
 );
 $button-active-transform-reduced-motion: var(
-  --#{defaults.$prefix}-button-active-transform-reduced-motion,
+  --#{root-defaults.$prefix}-button-active-transform-reduced-motion,
   #{defaults.$button-active-transform-reduced-motion}
 );
 
 // Background properties.
 $button-background: var(
-  --#{defaults.$prefix}-button-background,
+  --#{root-defaults.$prefix}-button-background,
   #{theme.get(primary, 100)}
 );
 $button-hover-background: var(
-  --#{defaults.$prefix}-button-hover-background,
+  --#{root-defaults.$prefix}-button-hover-background,
   #{theme.get(primary, 900)}
 );
 $button-active-background: var(
-  --#{defaults.$prefix}-button-active-background,
+  --#{root-defaults.$prefix}-button-active-background,
   #{theme.get(primary, 900)}
 );
 $button-disabled-background: var(
-  --#{defaults.$prefix}-button-disabled-background,
+  --#{root-defaults.$prefix}-button-disabled-background,
   #{theme.get(primary, 100)}
 );
 
 // Text properties.
 $button-color: var(
-  --#{defaults.$prefix}-button-color,
+  --#{root-defaults.$prefix}-button-color,
   #{theme.get(primary, 900)}
 );
 $button-hover-color: var(
-  --#{defaults.$prefix}-button-hover-color,
+  --#{root-defaults.$prefix}-button-hover-color,
   #{theme.get(primary, 100)}
 );
 $button-active-color: var(
-  --#{defaults.$prefix}-button-active-color,
+  --#{root-defaults.$prefix}-button-active-color,
   #{theme.get(primary, 100)}
 );
 $button-disabled-color: var(
-  --#{defaults.$prefix}-button-disabled-color,
+  --#{root-defaults.$prefix}-button-disabled-color,
   #{theme.get(primary, 200)}
 );
 
 // Border properties.
 $button-border-width: var(
-  --#{defaults.$prefix}-button-border-width,
-  #{base.$border-width}
+  --#{root-defaults.$prefix}-button-border-width,
+  #{root-variables.$border-width}
 );
 $button-border-style: var(
-  --#{defaults.$prefix}-botton-border-style,
-  #{base.$border-style}
+  --#{root-defaults.$prefix}-botton-border-style,
+  #{root-variables.$border-style}
 );
 $button-border-radius: var(
-  --#{defaults.$prefix}-button-border-radius,
-  #{base.$border-radius}
+  --#{root-defaults.$prefix}-button-border-radius,
+  #{root-variables.$border-radius}
 );
 
 // Border colour properties.
 $button-border-color: var(
-  --#{defaults.$prefix}-button-border-color,
+  --#{root-defaults.$prefix}-button-border-color,
   #{theme.get(primary, 900)}
 );
 $button-hover-border-color: var(
-  --#{defaults.$prefix}-button-hover-border-color,
+  --#{root-defaults.$prefix}-button-hover-border-color,
   #{theme.get(primary, 900)}
 );
 $button-active-border-color: var(
-  --#{defaults.$prefix}-button-active-border-color,
+  --#{root-defaults.$prefix}-button-active-border-color,
   #{theme.get(primary, 900)}
 );
 $button-disabled-border-color: var(
-  --#{defaults.$prefix}-button-disabled-border-color,
+  --#{root-defaults.$prefix}-button-disabled-border-color,
   #{theme.get(primary, 200)}
 );

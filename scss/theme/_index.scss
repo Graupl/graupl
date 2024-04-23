@@ -2,23 +2,29 @@
 
 @use "variables" as *;
 @use "../mixins/layer" as *;
-@use "defaults";
+@use "../defaults" as root-defaults;
 @use "sass:map";
 @use "../functions/theme";
 
 @include layer(theme) {
   :root {
-    background: $background;
-    color: $font-color;
-    font-family: $font-family;
-    font-size: $font-size;
+    background: $global-background;
+    color: $global-font-color;
+    font-family: $global-font-family;
+    font-size: $global-font-size;
+
+    @each $color, $map in $theme-light {
+      @each $shade, $value in $map {
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+      }
+    }
   }
 
   // Set the active theme for dark mode.
   .dark-mode {
     @each $color, $map in $theme-dark {
       @each $shade, $value in $map {
-        --#{defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
       }
     }
 
@@ -29,7 +35,7 @@
   .light-mode {
     @each $color, $map in $theme-light {
       @each $shade, $value in $map {
-        --#{defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
       }
     }
 

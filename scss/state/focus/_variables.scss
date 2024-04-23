@@ -1,36 +1,40 @@
 // Variables referencing custom properties.
 
-@use "../../variables" as base;
+@use "../../variables" as root-variables;
 @use "defaults";
+@use "../../defaults" as root-defaults;
 @use "../../functions/theme";
 
-$focus-width: var(--#{defaults.$prefix}-focus-width, #{base.$border-width});
+$focus-width: var(
+  --#{root-defaults.$prefix}-focus-width,
+  #{root-variables.$border-width}
+);
 $focus-outline-color: var(
-  --#{defaults.$prefix}-focus-outline-color,
+  --#{root-defaults.$prefix}-focus-outline-color,
   #{theme.get(primary, 900)}
 );
 $focus-outline-width: var(
-  --#{defaults.$prefix}-focus-outline-width,
+  --#{root-defaults.$prefix}-focus-outline-width,
   #{$focus-width}
 );
 $focus-outline-style: var(
-  --#{defaults.$prefix}-focus-outline-style,
+  --#{root-defaults.$prefix}-focus-outline-style,
   #{defaults.$focus-outline-style}
 );
 $focus-outline-offset: var(
-  --#{defaults.$prefix}-focus-outline-offset,
+  --#{root-defaults.$prefix}-focus-outline-offset,
   calc(-1 * #{$focus-outline-width})
 );
 $focus-box-shadow-color: var(
-  --#{defaults.$prefix}-focus-box-shadow-color,
+  --#{root-defaults.$prefix}-focus-box-shadow-color,
   #{theme.get(primary, 100)}
 );
 $focus-box-shadow-style: var(
-  --#{defaults.$prefix}-focus-box-shadow-style,
+  --#{root-defaults.$prefix}-focus-box-shadow-style,
   #{defaults.$focus-box-shadow-style}
 );
 $focus-box-shadow: var(
-  --#{defaults.$prefix}-focus-box-shadow,
+  --#{root-defaults.$prefix}-focus-box-shadow,
   #{$focus-width $focus-width} 0 0 #{$focus-box-shadow-style} #{$focus-box-shadow-color},
   0 0 0 #{$focus-width} #{$focus-box-shadow-style} #{$focus-box-shadow-color}
 );
