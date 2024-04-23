@@ -2,34 +2,34 @@
 
 @use "variables" as *;
 @use "../../mixins/layer" as *;
-@use "defaults";
+@use "../../defaults" as root-defaults;
 
 @include layer(layout) {
   .container,
   .container > .full-width {
-    --#{defaults.$prefix}-container-full-width: minmax(#{$container-gap}, 1fr);
-    --#{defaults.$prefix}-container-content: min(
+    --#{root-defaults.$prefix}-container-full-width: minmax(#{$container-gap}, 1fr);
+    --#{root-defaults.$prefix}-container-content: min(
       #{$container-content-max-width},
       calc(100% - #{$container-gap} * 2)
     );
-    --#{defaults.$prefix}-container-breakout: minmax(
+    --#{root-defaults.$prefix}-container-breakout: minmax(
       0,
       #{$container-breakout-width}
     );
-    --#{defaults.$prefix}-container-feature: minmax(
+    --#{root-defaults.$prefix}-container-feature: minmax(
       0,
       #{$container-feature-width}
     );
 
     display: grid;
     grid-template-columns:
-      [full-width-start] var(--#{defaults.$prefix}-container-full-width)
-      [feature-start] var(--#{defaults.$prefix}-container-feature)
-      [breakout-start] var(--#{defaults.$prefix}-container-breakout)
-      [content-start] var(--#{defaults.$prefix}-container-content) [content-end]
-      var(--#{defaults.$prefix}-container-breakout) [breakout-end]
-      var(--#{defaults.$prefix}-container-feature) [feature-end]
-      var(--#{defaults.$prefix}-container-full-width) [full-width-end];
+      [full-width-start] var(--#{root-defaults.$prefix}-container-full-width)
+      [feature-start] var(--#{root-defaults.$prefix}-container-feature)
+      [breakout-start] var(--#{root-defaults.$prefix}-container-breakout)
+      [content-start] var(--#{root-defaults.$prefix}-container-content) [content-end]
+      var(--#{root-defaults.$prefix}-container-breakout) [breakout-end]
+      var(--#{root-defaults.$prefix}-container-feature) [feature-end]
+      var(--#{root-defaults.$prefix}-container-full-width) [full-width-end];
 
     > :not(.breakout, .full-width, .feature) {
       grid-column: content;

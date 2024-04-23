@@ -1,133 +1,134 @@
 // Variables referencing custom properties.
 
-@use "../../variables" as base;
 @use "defaults";
-@use "sass:map";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
 @use "../../functions/theme";
+@use "sass:map";
 
-$input-padding-x: var(--#{defaults.$prefix}-input-padding-x, #{base.$gap});
+$input-padding-x: var(--#{root-defaults.$prefix}-input-padding-x, #{root-variables.$gap});
 $input-padding-y: var(
-  --#{defaults.$prefix}-input-padding-y,
-  calc(#{base.$gap} / 2)
+  --#{root-defaults.$prefix}-input-padding-y,
+  calc(#{root-variables.$gap} / 2)
 );
 $input-padding: var(
-  --#{defaults.$prefix}-input-padding,
+  --#{root-defaults.$prefix}-input-padding,
   #{$input-padding-y} #{$input-padding-x}
 );
 $input-font-size: var(
-  --#{defaults.$prefix}-input-font-size,
-  #{map.get(base.$font-size, default)}
+  --#{root-defaults.$prefix}-input-font-size,
+  #{map.get(root-variables.$font-size, default)}
 );
 $label-font-size: var(
-  --#{defaults.$prefix}-label-font-size,
+  --#{root-defaults.$prefix}-label-font-size,
   #{$input-font-size}
 );
 $fieldset-direction: var(
-  --#{defaults.$prefix}-fieldset-direction,
+  --#{root-defaults.$prefix}-fieldset-direction,
   #{defaults.$fieldset-direction}
 );
-$fieldset-gap: var(--#{defaults.$prefix}-fieldset-gap, calc(#{base.$gap} / 4));
+$fieldset-gap: var(--#{root-defaults.$prefix}-fieldset-gap, calc(#{root-variables.$gap} / 4));
 $fieldset-padding-x: var(
-  --#{defaults.$prefix}-fieldset-padding-x,
+  --#{root-defaults.$prefix}-fieldset-padding-x,
   #{$input-padding-x}
 );
 $fieldset-padding-y: var(
-  --#{defaults.$prefix}-fieldset-padding-y,
+  --#{root-defaults.$prefix}-fieldset-padding-y,
   #{$input-padding-y}
 );
 $fieldset-padding: var(
-  --#{defaults.$prefix}-fieldset-padding,
+  --#{root-defaults.$prefix}-fieldset-padding,
   #{$fieldset-padding-y} #{$fieldset-padding-x}
 );
 $fieldset-font-size: var(
-  --#{defaults.$prefix}-fieldset-font-size,
+  --#{root-defaults.$prefix}-fieldset-font-size,
   #{$input-font-size}
 );
 
 // Background properties.
 $input-background: var(
-  --#{defaults.$prefix}-input-background,
+  --#{root-defaults.$prefix}-input-background,
   #{theme.get(primary, 100)}
 );
 $fieldset-background: var(
-  --#{defaults.$prefix}-fieldset-background,
+  --#{root-defaults.$prefix}-fieldset-background,
   #{$input-background}
 );
 
 // Text properties.
 $input-color: var(
-  --#{defaults.$prefix}-input-color,
+  --#{root-defaults.$prefix}-input-color,
   #{theme.get(primary, 900)}
 );
 $input-placeholder-color: var(
-  --#{defaults.$prefix}-input-placeholder-color,
+  --#{root-defaults.$prefix}-input-placeholder-color,
   #{theme.get(secondary, 600)}
 );
-$label-color: var(--#{defaults.$prefix}-label-color, #{$input-color});
-$fieldset-color: var(--#{defaults.$prefix}-fieldset-color, #{$input-color});
+$label-color: var(--#{root-defaults.$prefix}-label-color, #{$input-color});
+$fieldset-color: var(--#{root-defaults.$prefix}-fieldset-color, #{$input-color});
 $input-disabled-color: var(
-  --#{defaults.$prefix}-input-disabled-color,
+  --#{root-defaults.$prefix}-input-disabled-color,
   #{theme.get(secondary, 400)}
 );
 $input-disabled-placeholder-color: var(
-  --#{defaults.$prefix}-input-disabled-placeholder-color,
+  --#{root-defaults.$prefix}-input-disabled-placeholder-color,
   #{$input-disabled-color}
 );
 $label-disabled-color: var(
-  --#{defaults.$prefix}-label-disabled-color,
+  --#{root-defaults.$prefix}-label-disabled-color,
   #{$input-disabled-color}
 );
 $fieldset-disabled-color: var(
-  --#{defaults.$prefix}-fieldset-disabled-color,
+  --#{root-defaults.$prefix}-fieldset-disabled-color,
   #{$input-disabled-color}
 );
 
 // Border properties.
 $input-border-width: var(
-  --#{defaults.$prefix}-input-border-width,
-  #{base.$border-width}
+  --#{root-defaults.$prefix}-input-border-width,
+  #{root-variables.$border-width}
 );
 $input-border-style: var(
-  --#{defaults.$prefix}-botton-border-style,
-  #{base.$border-style}
+  --#{root-defaults.$prefix}-botton-border-style,
+  #{root-variables.$border-style}
 );
 $input-border-radius: var(
-  --#{defaults.$prefix}-input-border-radius,
-  #{base.$border-radius}
+  --#{root-defaults.$prefix}-input-border-radius,
+  #{root-variables.$border-radius}
 );
 $fieldset-border-width: var(
-  --#{defaults.$prefix}-fieldset-border-width,
+  --#{root-defaults.$prefix}-fieldset-border-width,
   #{$input-border-width}
 );
 $fieldset-border-style: var(
-  --#{defaults.$prefix}-fieldset-border-style,
+  --#{root-defaults.$prefix}-fieldset-border-style,
   #{$input-border-style}
 );
 $fieldset-border-radius: var(
-  --#{defaults.$prefix}-fieldset-border-radius,
+  --#{root-defaults.$prefix}-fieldset-border-radius,
   #{$input-border-radius}
 );
 
 // Border colour properties.
 $input-border-color: var(
-  --#{defaults.$prefix}-input-border-color,
+  --#{root-defaults.$prefix}-input-border-color,
   #{theme.get(secondary, 700)}
 );
 $input-disabled-border-color: var(
-  --#{defaults.$prefix}-input-disabled-border-color,
+  --#{root-defaults.$prefix}-input-disabled-border-color,
   #{theme.get(secondary, 200)}
 );
 $fieldset-border-color: var(
-  --#{defaults.$prefix}-fieldset-border-color,
+  --#{root-defaults.$prefix}-fieldset-border-color,
   #{$input-border-color}
 );
 $fieldset-disabled-border-color: var(
-  --#{defaults.$prefix}-fieldset-disabled-border-color,
+  --#{root-defaults.$prefix}-fieldset-disabled-border-color,
   #{$input-disabled-border-color}
 );
 
 // Accent color properties.
 $input-accent-color: var(
-  --#{defaults.$prefix}-input-accent-color,
+  --#{root-defaults.$prefix}-input-accent-color,
   #{theme.get(primary, 700)}
 );

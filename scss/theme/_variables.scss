@@ -1,6 +1,7 @@
 // Variables referencing custom properties.
 
 @use "defaults";
+@use "../defaults" as root-defaults;
 @use "sass:map";
 
 // A colour map of base colours and their shades.
@@ -13,7 +14,7 @@ $colors: ();
 
   @each $shade, $value in $map {
     // Set the custom prop name and fallback value.
-    $color-property: var(--#{defaults.$prefix}-#{$color}--#{$shade}, $value);
+    $color-property: var(--#{root-defaults.$prefix}-#{$color}--#{$shade}, $value);
 
     // Add the custom prop to the map.
     $color-map: map.merge(
@@ -52,15 +53,15 @@ $theme-active: ();
 
     // Set the custom prop names and fallback values.
     $light-property: var(
-      --#{defaults.$prefix}-theme-light--#{$color}--#{$shade},
+      --#{root-defaults.$prefix}-theme-light--#{$color}--#{$shade},
       $value
     );
     $dark-property: var(
-      --#{defaults.$prefix}-theme-dark--#{$color}--#{$shade},
+      --#{root-defaults.$prefix}-theme-dark--#{$color}--#{$shade},
       $dark-value
     );
     $active-property: var(
-      --#{defaults.$prefix}-theme-active--#{$color}--#{$shade},
+      --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade},
       $light-property
     );
 
@@ -107,15 +108,15 @@ $theme-active: ();
 }
 
 // Font properties.
-$font-family: var(--#{defaults.$prefix}-font-family, #{defaults.$font-family});
-$font-size: var(--#{defaults.$prefix}-font-size, #{defaults.$font-size});
+$global-font-family: var(--#{root-defaults.$prefix}-global-font-family, #{defaults.$global-font-family});
+$global-font-size: var(--#{root-defaults.$prefix}-global-font-size, #{defaults.$global-font-size});
 
 // Colour properties.
-$font-color: var(
-  --#{defaults.$prefix}-font-color,
+$global-font-color: var(
+  --#{root-defaults.$prefix}-global-font-color,
   #{map.get(map.get($theme-active, primary), 900)}
 );
-$background: var(
-  --#{defaults.$prefix}-background,
+$global-background: var(
+  --#{root-defaults.$prefix}-global-background,
   #{map.get(map.get($theme-active, primary), 100)}
 );

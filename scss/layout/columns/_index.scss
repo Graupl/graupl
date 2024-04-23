@@ -2,14 +2,14 @@
 
 @use "variables" as *;
 @use "defaults";
-@use "../../variables" as base;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 
 @include layer(layout) {
   .columns {
     display: grid;
     grid-template-columns: var(
-      --#{defaults.$prefix}-columns,
+      --#{root-defaults.$prefix}-columns,
       repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
     );
     gap: $columns-gap;
@@ -21,18 +21,18 @@
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
     .count-#{$i} {
-      --#{defaults.$prefix}-columns-count: #{$i};
+      --#{root-defaults.$prefix}-columns-count: #{$i};
     }
 
     .span-#{$i} {
-      --#{defaults.$prefix}-columns-span: #{$i};
+      --#{root-defaults.$prefix}-columns-span: #{$i};
     }
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
   @media screen and (max-width: #{defaults.$columns-disable-width}) {
     .columns {
-      --#{defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
+      --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
   }
 }

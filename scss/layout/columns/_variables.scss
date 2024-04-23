@@ -1,24 +1,25 @@
 // Variables referencing custom properties.
 
-@use "../../variables" as base;
 @use "defaults";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
 
-$columns-gap: var(--#{defaults.$prefix}-columns-gap, #{base.$gap});
+$columns-gap: var(--#{root-defaults.$prefix}-columns-gap, #{root-variables.$gap});
 $columns-count: var(
-  --#{defaults.$prefix}-columns-count,
+  --#{root-defaults.$prefix}-columns-count,
   #{defaults.$columns-count}
 );
 $columns-min-width: var(
-  --#{defaults.$prefix}-columns-min-width,
+  --#{root-defaults.$prefix}-columns-min-width,
   calc(
-    (#{base.$content-max-width} - #{$columns-gap} * (#{$columns-count} - 1)) / #{$columns-count}
+    (#{root-variables.$content-max-width} - #{$columns-gap} * (#{$columns-count} - 1)) / #{$columns-count}
   )
 );
 $columns-max-width: var(
-  --#{defaults.$prefix}-columns-max-width,
+  --#{root-defaults.$prefix}-columns-max-width,
   #{defaults.$columns-max-width}
 );
 $columns-span: var(
-  --#{defaults.$prefix}-columns-span,
+  --#{root-defaults.$prefix}-columns-span,
   #{defaults.$columns-span}
 );
