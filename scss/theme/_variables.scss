@@ -14,7 +14,10 @@ $colors: ();
 
   @each $shade, $value in $map {
     // Set the custom prop name and fallback value.
-    $color-property: var(--#{root-defaults.$prefix}-#{$color}--#{$shade}, $value);
+    $color-property: var(
+      --#{root-defaults.$prefix}-#{$color}--#{$shade},
+      $value
+    );
 
     // Add the custom prop to the map.
     $color-map: map.merge(
@@ -108,8 +111,14 @@ $theme-active: ();
 }
 
 // Font properties.
-$global-font-family: var(--#{root-defaults.$prefix}-global-font-family, #{defaults.$global-font-family});
-$global-font-size: var(--#{root-defaults.$prefix}-global-font-size, #{defaults.$global-font-size});
+$global-font-family: var(
+  --#{root-defaults.$prefix}-global-font-family,
+  #{defaults.$global-font-family}
+);
+$global-font-size: var(
+  --#{root-defaults.$prefix}-global-font-size,
+  #{defaults.$global-font-size}
+);
 
 // Colour properties.
 $global-font-color: var(

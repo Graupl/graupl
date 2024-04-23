@@ -5,7 +5,10 @@
 @use "../../defaults" as root-defaults;
 @use "../../functions/theme";
 
-$focus-width: var(--#{root-defaults.$prefix}-focus-width, #{root-variables.$border-width});
+$focus-width: var(
+  --#{root-defaults.$prefix}-focus-width,
+  #{root-variables.$border-width}
+);
 $focus-outline-color: var(
   --#{root-defaults.$prefix}-focus-outline-color,
   #{theme.get(primary, 900)}

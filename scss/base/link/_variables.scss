@@ -14,7 +14,10 @@ $link-text-decoration-thickness: var(
   --#{root-defaults.$prefix}-link-text-decoration-thickness,
   #{root-variables.$border-width}
 );
-$link-color: var(--#{root-defaults.$prefix}-link-color, #{theme.get(primary, 700)});
+$link-color: var(
+  --#{root-defaults.$prefix}-link-color,
+  #{theme.get(primary, 700)}
+);
 $link-hover-color: var(
   --#{root-defaults.$prefix}-link-hover-color,
   #{theme.get(tertiary, 700)}

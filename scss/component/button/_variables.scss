@@ -15,7 +15,10 @@ $button-min-height: var(
   --#{root-defaults.$prefix}-button-min-height,
   #{root-defaults.$interactive-min-height}
 );
-$button-padding-x: var(--#{root-defaults.$prefix}-button-padding-x, #{root-variables.$gap});
+$button-padding-x: var(
+  --#{root-defaults.$prefix}-button-padding-x,
+  #{root-variables.$gap}
+);
 $button-padding-y: var(
   --#{root-defaults.$prefix}-button-padding-y,
   calc(#{root-variables.$gap} / 2)

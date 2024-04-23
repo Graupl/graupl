@@ -88,11 +88,23 @@
 
     @each $color, $map in theme.$theme-active {
       &.#{$color} {
-        --#{root-defaults.$prefix}-button-hover-background: #{map.get($map, 700)};
-        --#{root-defaults.$prefix}-button-active-background: #{map.get($map, 700)};
+        --#{root-defaults.$prefix}-button-hover-background: #{map.get(
+            $map,
+            700
+          )};
+        --#{root-defaults.$prefix}-button-active-background: #{map.get(
+            $map,
+            700
+          )};
         --#{root-defaults.$prefix}-button-border-color: #{map.get($map, 700)};
-        --#{root-defaults.$prefix}-button-hover-border-color: #{map.get($map, 700)};
-        --#{root-defaults.$prefix}-button-active-border-color: #{map.get($map, 700)};
+        --#{root-defaults.$prefix}-button-hover-border-color: #{map.get(
+            $map,
+            700
+          )};
+        --#{root-defaults.$prefix}-button-active-border-color: #{map.get(
+            $map,
+            700
+          )};
         --#{root-defaults.$prefix}-button-disabled-border-color: #{map.get(
             $map,
             200

@@ -6,7 +6,10 @@
 @use "../../functions/theme";
 @use "sass:map";
 
-$input-padding-x: var(--#{root-defaults.$prefix}-input-padding-x, #{root-variables.$gap});
+$input-padding-x: var(
+  --#{root-defaults.$prefix}-input-padding-x,
+  #{root-variables.$gap}
+);
 $input-padding-y: var(
   --#{root-defaults.$prefix}-input-padding-y,
   calc(#{root-variables.$gap} / 2)
@@ -27,7 +30,10 @@ $fieldset-direction: var(
   --#{root-defaults.$prefix}-fieldset-direction,
   #{defaults.$fieldset-direction}
 );
-$fieldset-gap: var(--#{root-defaults.$prefix}-fieldset-gap, calc(#{root-variables.$gap} / 4));
+$fieldset-gap: var(
+  --#{root-defaults.$prefix}-fieldset-gap,
+  calc(#{root-variables.$gap} / 4)
+);
 $fieldset-padding-x: var(
   --#{root-defaults.$prefix}-fieldset-padding-x,
   #{$input-padding-x}
@@ -65,7 +71,10 @@ $input-placeholder-color: var(
   #{theme.get(secondary, 600)}
 );
 $label-color: var(--#{root-defaults.$prefix}-label-color, #{$input-color});
-$fieldset-color: var(--#{root-defaults.$prefix}-fieldset-color, #{$input-color});
+$fieldset-color: var(
+  --#{root-defaults.$prefix}-fieldset-color,
+  #{$input-color}
+);
 $input-disabled-color: var(
   --#{root-defaults.$prefix}-input-disabled-color,
   #{theme.get(secondary, 400)}

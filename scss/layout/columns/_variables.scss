@@ -4,17 +4,25 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 
-$columns-gap: var(--#{root-defaults.$prefix}-columns-gap, #{root-variables.$gap});
+$columns-gap: var(
+  --#{root-defaults.$prefix}-columns-gap,
+  #{root-variables.$gap}
+);
 $columns-count: var(
   --#{root-defaults.$prefix}-columns-count,
   #{defaults.$columns-count}
 );
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $columns-min-width: var(
   --#{root-defaults.$prefix}-columns-min-width,
   calc(
-    (#{root-variables.$content-max-width} - #{$columns-gap} * (#{$columns-count} - 1)) / #{$columns-count}
+    (
+        #{root-variables.$content-max-width} - #{$columns-gap} *
+          (#{$columns-count} - 1)
+      ) / #{$columns-count}
   )
 );
+/* stylelint-enable  scss/operator-no-newline-after */
 $columns-max-width: var(
   --#{root-defaults.$prefix}-columns-max-width,
   #{defaults.$columns-max-width}

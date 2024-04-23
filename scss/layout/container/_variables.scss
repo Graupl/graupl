@@ -4,7 +4,10 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 
-$container-gap: var(--#{root-defaults.$prefix}-container-gap, #{root-variables.$gap});
+$container-gap: var(
+  --#{root-defaults.$prefix}-container-gap,
+  #{root-variables.$gap}
+);
 $container-content-max-width: var(
   --#{root-defaults.$prefix}-container-content-max-width,
   #{root-variables.$content-max-width}

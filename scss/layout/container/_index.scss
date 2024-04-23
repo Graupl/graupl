@@ -7,7 +7,10 @@
 @include layer(layout) {
   .container,
   .container > .full-width {
-    --#{root-defaults.$prefix}-container-full-width: minmax(#{$container-gap}, 1fr);
+    --#{root-defaults.$prefix}-container-full-width: minmax(
+      #{$container-gap},
+      1fr
+    );
     --#{root-defaults.$prefix}-container-content: min(
       #{$container-content-max-width},
       calc(100% - #{$container-gap} * 2)
@@ -26,7 +29,8 @@
       [full-width-start] var(--#{root-defaults.$prefix}-container-full-width)
       [feature-start] var(--#{root-defaults.$prefix}-container-feature)
       [breakout-start] var(--#{root-defaults.$prefix}-container-breakout)
-      [content-start] var(--#{root-defaults.$prefix}-container-content) [content-end]
+      [content-start] var(--#{root-defaults.$prefix}-container-content)
+      [content-end]
       var(--#{root-defaults.$prefix}-container-breakout) [breakout-end]
       var(--#{root-defaults.$prefix}-container-feature) [feature-end]
       var(--#{root-defaults.$prefix}-container-full-width) [full-width-end];
