@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.5](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2024-04-23)
+
+
+### Bug Fixes
+
+* allow multiple default files to accept overrides ([#28](https://github.com/Graupl/graupl/issues/28)) ([da7ffa0](https://github.com/Graupl/graupl/commit/da7ffa0685e70cf90645c77148171ec505b6455b))
+
+
+### Build System
+
+* **npm:** remove dist before compiling sass ([02505b7](https://github.com/Graupl/graupl/commit/02505b761c8197ea8acb928cccce02ca2a4404d9))
+
 ## [1.0.0-alpha.4](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.3...v1.0.0-alpha.4) (2024-04-22)
 
 
