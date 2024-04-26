@@ -11,6 +11,14 @@ $content-max-width: var(
 
 // Spacing properties.
 $gap: var(--#{defaults.$prefix}-gap, defaults.$gap);
+$spacer: var(--#{defaults.$prefix}-spacer, defaults.$spacer);
+$spacers: ();
+
+@each $key, $value in defaults.$spacer-multipliers {
+  $space: var(--#{defaults.$prefix}-spacer-#{$key}, calc(#{$value} * #{$spacer}));
+
+  $spacers: map.set($spacers, $key, $space);
+}
 
 // Border properties.
 $border-radius: var(
