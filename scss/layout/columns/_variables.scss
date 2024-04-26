@@ -4,20 +4,28 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 
-$columns-gap: var(
-  --#{root-defaults.$prefix}-columns-gap,
+$columns-row-gap: var(
+  --#{root-defaults.$prefix}-columns-row-gap,
+  #{root-variables.$gap}
+);
+$columns-column-gap: var(
+  --#{root-defaults.$prefix}-columns-column-gap,
   #{root-variables.$gap}
 );
 $columns-count: var(
   --#{root-defaults.$prefix}-columns-count,
   #{defaults.$columns-count}
 );
+// Calculate the min-width of each column based on the content-max-width and column-gap.
+// We take the maximum width of the page and subtract the gap width multiplied by the number of
+// columns minus one (to account for the gaps between columns).
+// We then divide this by the number of columns to get the min-width of each column.
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $columns-min-width: var(
   --#{root-defaults.$prefix}-columns-min-width,
   calc(
     (
-        #{root-variables.$content-max-width} - #{$columns-gap} *
+        #{root-variables.$content-max-width} - #{$columns-column-gap} *
           (#{$columns-count} - 1)
       ) / #{$columns-count}
   )
@@ -26,6 +34,10 @@ $columns-min-width: var(
 $columns-max-width: var(
   --#{root-defaults.$prefix}-columns-max-width,
   #{defaults.$columns-max-width}
+);
+$columns-grid-template-columns: var(
+  --#{root-defaults.$prefix}-columns-grid-template-columns,
+  repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
 );
 $columns-span: var(
   --#{root-defaults.$prefix}-columns-span,
