@@ -9,8 +9,7 @@
   .columns {
     display: grid;
     grid-template-columns: $columns-grid-template-columns;
-    row-gap: $columns-row-gap;
-    column-gap: $columns-column-gap;
+    gap: $columns-row-gap $columns-column-gap;
 
     > * {
       grid-column: span $columns-span;

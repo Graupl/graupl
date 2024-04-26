@@ -16,6 +16,7 @@ $columns-count: var(
   --#{root-defaults.$prefix}-columns-count,
   #{defaults.$columns-count}
 );
+
 // Calculate the min-width of each column based on the content-max-width and column-gap.
 // We take the maximum width of the page and subtract the gap width multiplied by the number of
 // columns minus one (to account for the gaps between columns).
