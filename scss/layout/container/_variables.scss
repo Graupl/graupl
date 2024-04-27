@@ -3,10 +3,11 @@
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "sass:map";
 
 $container-gap: var(
   --#{root-defaults.$prefix}-container-gap,
-  #{root-variables.$gap}
+  #{map.get(root-variables.$spacers, 5)}
 );
 $container-content-max-width: var(
   --#{root-defaults.$prefix}-container-content-max-width,

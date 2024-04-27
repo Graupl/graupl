@@ -3,14 +3,15 @@
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "sass:map";
 
 $columns-row-gap: var(
   --#{root-defaults.$prefix}-columns-row-gap,
-  #{root-variables.$gap}
+  #{map.get(root-variables.$spacers, 5)}
 );
 $columns-column-gap: var(
   --#{root-defaults.$prefix}-columns-column-gap,
-  #{root-variables.$gap}
+  #{map.get(root-variables.$spacers, 5)}
 );
 $columns-count: var(
   --#{root-defaults.$prefix}-columns-count,

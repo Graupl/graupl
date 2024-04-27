@@ -17,11 +17,11 @@ $button-min-height: var(
 );
 $button-padding-x: var(
   --#{root-defaults.$prefix}-button-padding-x,
-  #{root-variables.$gap}
+  #{map.get(root-variables.$spacers, 5)}
 );
 $button-padding-y: var(
   --#{root-defaults.$prefix}-button-padding-y,
-  calc(#{root-variables.$gap} / 2)
+  #{map.get(root-variables.$spacers, 3)}
 );
 $button-padding: var(
   --#{root-defaults.$prefix}-button-padding,
