@@ -1,0 +1,118 @@
+// Variables referencing custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "sass:map";
+
+// Typography properties.
+$body-font-size: var(
+  --#{root-defaults.$prefix}-body-font-size,
+  #{map.get(root-variables.$font-sizes, base)}
+);
+$body-line-height: var(
+  --#{root-defaults.$prefix}-body-line-height,
+  #{root-defaults.$line-height}
+);
+$body-margin: var(
+  --#{root-defaults.$prefix}-body-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$paragraph-font-size: var(
+  --#{root-defaults.$prefix}-paragraph-font-size,
+  #{map.get(root-variables.$font-sizes, base)}
+);
+$paragraph-line-height: var(
+  --#{root-defaults.$prefix}-paragraph-line-height,
+  #{root-defaults.$line-height}
+);
+$paragraph-margin: var(
+  --#{root-defaults.$prefix}-paragraph-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$small-font-size: var(
+  --#{root-defaults.$prefix}-small-font-size,
+  #{map.get(root-variables.$font-sizes, small)}
+);
+$small-line-height: var(
+  --#{root-defaults.$prefix}-small-line-height,
+  #{root-defaults.$line-height}
+);
+$small-margin: var(
+  --#{root-defaults.$prefix}-small-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+
+// Headings properties.
+$h1-font-size: var(
+  --#{root-defaults.$prefix}-h1-font-size,
+  #{map.get(root-variables.$font-sizes, 5xl)}
+);
+$h2-font-size: var(
+  --#{root-defaults.$prefix}-h2-font-size,
+  #{map.get(root-variables.$font-sizes, 4xl)}
+);
+$h3-font-size: var(
+  --#{root-defaults.$prefix}-h3-font-size,
+  #{map.get(root-variables.$font-sizes, 3xl)}
+);
+$h4-font-size: var(
+  --#{root-defaults.$prefix}-h4-font-size,
+  #{map.get(root-variables.$font-sizes, 2xl)}
+);
+$h5-font-size: var(
+  --#{root-defaults.$prefix}-h5-font-size,
+  #{map.get(root-variables.$font-sizes, xl)}
+);
+$h6-font-size: var(
+  --#{root-defaults.$prefix}-h6-font-size,
+  #{map.get(root-variables.$font-sizes, lg)}
+);
+$h1-line-height: var(
+  --#{root-defaults.$prefix}-h1-line-height,
+  #{root-defaults.$line-height}
+);
+$h2-line-height: var(
+  --#{root-defaults.$prefix}-h2-line-height,
+  #{root-defaults.$line-height}
+);
+$h3-line-height: var(
+  --#{root-defaults.$prefix}-h3-line-height,
+  #{root-defaults.$line-height}
+);
+$h4-line-height: var(
+  --#{root-defaults.$prefix}-h4-line-height,
+  #{root-defaults.$line-height}
+);
+$h5-line-height: var(
+  --#{root-defaults.$prefix}-h5-line-height,
+  #{root-defaults.$line-height}
+);
+$h6-line-height: var(
+  --#{root-defaults.$prefix}-h6-line-height,
+  #{root-defaults.$line-height}
+);
+$h1-margin: var(
+  --#{root-defaults.$prefix}-h1-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$h2-margin: var(
+  --#{root-defaults.$prefix}-h2-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$h3-margin: var(
+  --#{root-defaults.$prefix}-h3-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$h4-margin: var(
+  --#{root-defaults.$prefix}-h4-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$h5-margin: var(
+  --#{root-defaults.$prefix}-h5-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);
+$h6-margin: var(
+  --#{root-defaults.$prefix}-h6-margin,
+  0 0 #{map.get(root-variables.$spacers, 2)} 0
+);

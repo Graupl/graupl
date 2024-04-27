@@ -1,0 +1,90 @@
+// Typography base styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(base) {
+  body {
+    margin: $body-margin;
+  }
+
+  p {
+    margin: $paragraph-margin;
+  }
+
+  small {
+    margin: $small-margin;
+  }
+
+  h1 {
+    margin: $h1-margin;
+  }
+
+  h2 {
+    margin: $h2-margin;
+  }
+
+  h3 {
+    margin: $h3-margin;
+  }
+
+  h4 {
+    margin: $h4-margin;
+  }
+
+  h5 {
+    margin: $h5-margin;
+  }
+
+  h6 {
+    margin: $h6-margin;
+  }
+}
+
+@include layer(theme) {
+  body {
+    font-size: $body-font-size;
+    line-height: $body-line-height;
+  }
+
+  p {
+    font-size: $paragraph-font-size;
+    line-height: $paragraph-line-height;
+  }
+
+  small {
+    font-size: $small-font-size;
+    line-height: $small-line-height;
+  }
+
+  h1 {
+    font-size: $h1-font-size;
+    line-height: $h1-line-height;
+  }
+
+  h2 {
+    font-size: $h2-font-size;
+    line-height: $h2-line-height;
+  }
+
+  h3 {
+    font-size: $h3-font-size;
+    line-height: $h3-line-height;
+  }
+
+  h4 {
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+  }
+
+  h5 {
+    font-size: $h5-font-size;
+    line-height: $h5-line-height;
+  }
+
+  h6 {
+    font-size: $h6-font-size;
+    line-height: $h6-line-height;
+  }
+}

@@ -29,24 +29,19 @@ $border-radius: var(
 $border-width: var(--#{defaults.$prefix}-border-width, defaults.$border-width);
 $border-style: var(--#{defaults.$prefix}-border-style, defaults.$border-style);
 
-// Font properties.
-$font-size: (
-  small:
-    var(
-      --#{defaults.$prefix}-font-size-small,
-      map.get(defaults.$font-size, small)
-    ),
-  default:
-    var(
-      --#{defaults.$prefix}-font-size-default,
-      map.get(defaults.$font-size, default)
-    ),
-  large:
-    var(
-      --#{defaults.$prefix}-font-size-large,
-      map.get(defaults.$font-size, large)
-    ),
-);
+// Text properties.
+$font-size: var(--#{defaults.$prefix}-font-base, #{defaults.$font-size});
+
+$font-sizes: ();
+@each $key, $value in defaults.$font-size-multipliers {
+  $size: var(
+    --#{defaults.$prefix}-font-#{$key},
+    calc(#{$value} * #{$font-size})
+  );
+  $font-sizes: map.set($font-sizes, $key, $size);
+}
+
+$line-height: var(--#{defaults.$prefix}-line-height, #{defaults.$line-height});
 
 // Transition properties.
 $transition-duration: (

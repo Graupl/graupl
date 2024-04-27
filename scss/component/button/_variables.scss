@@ -29,7 +29,7 @@ $button-padding: var(
 );
 $button-font-size: var(
   --#{root-defaults.$prefix}-button-font-size,
-  #{map.get(root-variables.$font-size, default)}
+  #{map.get(root-variables.$font-sizes, base)}
 );
 $button-transition: var(
   --#{root-defaults.$prefix}-button-transition,

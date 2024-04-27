@@ -20,7 +20,7 @@ $input-padding: var(
 );
 $input-font-size: var(
   --#{root-defaults.$prefix}-input-font-size,
-  #{map.get(root-variables.$font-size, default)}
+  #{map.get(root-variables.$font-sizes, base)}
 );
 $label-font-size: var(
   --#{root-defaults.$prefix}-label-font-size,
