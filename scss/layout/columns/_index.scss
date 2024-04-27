@@ -8,11 +8,8 @@
 @include layer(layout) {
   .columns {
     display: grid;
-    grid-template-columns: var(
-      --#{root-defaults.$prefix}-columns,
-      repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
-    );
-    gap: $columns-gap;
+    grid-template-columns: $columns-grid-template-columns;
+    gap: $columns-row-gap $columns-column-gap;
 
     > * {
       grid-column: span $columns-span;
