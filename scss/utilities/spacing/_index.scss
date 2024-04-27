@@ -12,13 +12,16 @@
   @each $name, $property in defaults.$spacing-properties {
     @each $key, $value in root-variables.$spacers {
       .#{$name}-#{$key} {
-
         // If we're dealing with gap, column-gap, or row-gap inside of .columns, we should update
         // the columns-column-gap property instead of the raw property.
         @if $name == "g" {
           &.columns {
-            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert($value)};
-            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert($value)};
+            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                $value
+              )};
+            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                $value
+              )};
           }
 
           &:not(.columns) {
@@ -28,7 +31,9 @@
           }
         } @else if $name == "cg" {
           &.columns {
-            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert($value)};
+            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                $value
+              )};
           }
 
           &:not(.columns) {
@@ -38,7 +43,9 @@
           }
         } @else if $name == "rg" {
           &.columns {
-            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert($value)};
+            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                $value
+              )};
           }
 
           &:not(.columns) {
