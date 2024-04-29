@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.5...v1.0.0) (2024-04-29)
+
+
+### Features
+
+* add typography theme and utility styles ([b60f500](https://github.com/Graupl/graupl/commit/b60f500e78fe79edd8dede398633d73041140d3d))
+* **utilities:** add spacer utilities and replace gap with spacers ([f4a49f8](https://github.com/Graupl/graupl/commit/f4a49f8d21a56121afe7ad5ea060307cc1a5909d))
+
+
+### Bug Fixes
+
+* **layout:** split columns gap into row and column ([9b42185](https://github.com/Graupl/graupl/commit/9b42185d0990839b58bdef947e404d838af7f9c3))
+
+
+### Build System
+
+* bump cssnano from 6.1.2 to 7.0.1 ([489c460](https://github.com/Graupl/graupl/commit/489c4605705d1af4cffc504a3eeef63911afad7e))
+* bump postcss-discard-comments from 6.0.2 to 7.0.0 ([1c39c0e](https://github.com/Graupl/graupl/commit/1c39c0e421eba6231114e1f553811400e909b979))
+
 ## [1.0.0-alpha.5](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.4...v1.0.0-alpha.5) (2024-04-23)
 
 
