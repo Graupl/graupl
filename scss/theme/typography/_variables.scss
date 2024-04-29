@@ -7,7 +7,10 @@
 
 // Font properties.
 $font-size: var(--#{root-defaults.$prefix}-font-base, #{defaults.$font-size});
-$line-height: var(--#{root-defaults.$prefix}-line-height, #{defaults.$line-height});
+$line-height: var(
+  --#{root-defaults.$prefix}-line-height,
+  #{defaults.$line-height}
+);
 
 // Generate all of the font-size-x custom properties.
 $font-sizes: ();
@@ -21,10 +24,7 @@ $font-sizes: ();
 
 $font-weights: ();
 @each $key, $value in defaults.$font-weights {
-  $weight: var(
-    --#{root-defaults.$prefix}-font-weight-#{$key},
-    $value
-  );
+  $weight: var(--#{root-defaults.$prefix}-font-weight-#{$key}, $value);
   $font-weights: map.set($font-weights, $key, $weight);
 }
 
@@ -116,10 +116,7 @@ $h1-line-height: var(
   --#{root-defaults.$prefix}-h1-line-height,
   #{$heading-line-height}
 );
-$h1-margin: var(
-  --#{root-defaults.$prefix}-h1-margin,
-  #{$heading-margin}
-);
+$h1-margin: var(--#{root-defaults.$prefix}-h1-margin, #{$heading-margin});
 $h1-font-family: var(
   --#{root-defaults.$prefix}-h1-font-family,
   $heading-font-family
@@ -138,10 +135,7 @@ $h2-line-height: var(
   --#{root-defaults.$prefix}-h2-line-height,
   #{$heading-line-height}
 );
-$h2-margin: var(
-  --#{root-defaults.$prefix}-h2-margin,
-  #{$heading-margin}
-);
+$h2-margin: var(--#{root-defaults.$prefix}-h2-margin, #{$heading-margin});
 $h2-font-family: var(
   --#{root-defaults.$prefix}-h2-font-family,
   $heading-font-family
@@ -160,10 +154,7 @@ $h3-line-height: var(
   --#{root-defaults.$prefix}-h3-line-height,
   #{$heading-line-height}
 );
-$h3-margin: var(
-  --#{root-defaults.$prefix}-h3-margin,
-  #{$heading-margin}
-);
+$h3-margin: var(--#{root-defaults.$prefix}-h3-margin, #{$heading-margin});
 $h3-font-family: var(
   --#{root-defaults.$prefix}-h3-font-family,
   $heading-font-family
@@ -182,10 +173,7 @@ $h4-line-height: var(
   --#{root-defaults.$prefix}-h4-line-height,
   #{$heading-line-height}
 );
-$h4-margin: var(
-  --#{root-defaults.$prefix}-h4-margin,
-  #{$heading-margin}
-);
+$h4-margin: var(--#{root-defaults.$prefix}-h4-margin, #{$heading-margin});
 $h4-font-family: var(
   --#{root-defaults.$prefix}-h4-font-family,
   $heading-font-family
@@ -204,10 +192,7 @@ $h5-line-height: var(
   --#{root-defaults.$prefix}-h5-line-height,
   #{$heading-line-height}
 );
-$h5-margin: var(
-  --#{root-defaults.$prefix}-h5-margin,
-  #{$heading-margin}
-);
+$h5-margin: var(--#{root-defaults.$prefix}-h5-margin, #{$heading-margin});
 $h5-font-family: var(
   --#{root-defaults.$prefix}-h5-font-family,
   $heading-font-family
@@ -226,10 +211,7 @@ $h6-line-height: var(
   --#{root-defaults.$prefix}-h6-line-height,
   #{$heading-line-height}
 );
-$h6-margin: var(
-  --#{root-defaults.$prefix}-h6-margin,
-  #{$heading-margin}
-);
+$h6-margin: var(--#{root-defaults.$prefix}-h6-margin, #{$heading-margin});
 $h6-font-family: var(
   --#{root-defaults.$prefix}-h6-font-family,
   $heading-font-family
