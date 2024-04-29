@@ -3,6 +3,7 @@
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../theme/typography/variables" as typography;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -29,7 +30,7 @@ $button-padding: var(
 );
 $button-font-size: var(
   --#{root-defaults.$prefix}-button-font-size,
-  #{map.get(root-variables.$font-sizes, base)}
+  #{map.get(typography.$font-sizes, base)}
 );
 $button-transition: var(
   --#{root-defaults.$prefix}-button-transition,

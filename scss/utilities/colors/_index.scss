@@ -3,10 +3,10 @@
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../functions/important";
-@use "../../theme/variables" as theme;
+@use "../../theme/color/variables" as color;
 
 @include layer(utilities) {
-  @each $color, $map in theme.$theme-active {
+  @each $color, $map in color.$theme-active {
     @each $shade, $value in $map {
       $name: #{$color}-#{$shade};
 

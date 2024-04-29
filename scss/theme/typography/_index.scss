@@ -1,14 +1,10 @@
-// Typography base styles.
+// Typography theme styles.
 
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "sass:map";
 
 @include layer(base) {
-  body {
-    margin: $body-margin;
-  }
-
   p {
     margin: $paragraph-margin;
   }
@@ -43,48 +39,73 @@
 }
 
 @include layer(theme) {
+  :root {
+    font-family: $root-font-family;
+    font-size: $root-font-size;
+  }
+
+  b,
+  strong {
+    font-weight: $bold-font-weight;
+  }
+
   body {
     font-size: $body-font-size;
     line-height: $body-line-height;
+    font-weight: $body-font-weight;
   }
 
   p {
     font-size: $paragraph-font-size;
     line-height: $paragraph-line-height;
+    font-weight: $paragraph-font-weight;
   }
 
   small {
     font-size: $small-font-size;
     line-height: $small-line-height;
+    font-weight: $small-font-weight;
   }
 
   h1 {
+    font-family: $h1-font-family;
     font-size: $h1-font-size;
     line-height: $h1-line-height;
+    font-weight: $h1-font-weight;
   }
 
   h2 {
+    font-family: $h2-font-family;
     font-size: $h2-font-size;
     line-height: $h2-line-height;
+    font-weight: $h2-font-weight;
   }
 
   h3 {
+    font-family: $h3-font-family;
     font-size: $h3-font-size;
     line-height: $h3-line-height;
+    font-weight: $h3-font-weight;
   }
 
   h4 {
+    font-family: $h4-font-family;
     font-size: $h4-font-size;
     line-height: $h4-line-height;
+    font-weight: $h4-font-weight;
   }
 
   h5 {
+    font-family: $h5-font-family;
     font-size: $h5-font-size;
     line-height: $h5-line-height;
+    font-weight: $h5-font-weight;
   }
 
   h6 {
+    font-family: $h6-font-family;
     font-size: $h6-font-size;
     line-height: $h6-line-height;
+    font-weight: $h6-font-weight;
   }
 }

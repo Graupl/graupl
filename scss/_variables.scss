@@ -29,20 +29,6 @@ $border-radius: var(
 $border-width: var(--#{defaults.$prefix}-border-width, defaults.$border-width);
 $border-style: var(--#{defaults.$prefix}-border-style, defaults.$border-style);
 
-// Text properties.
-$font-size: var(--#{defaults.$prefix}-font-base, #{defaults.$font-size});
-
-$font-sizes: ();
-@each $key, $value in defaults.$font-size-multipliers {
-  $size: var(
-    --#{defaults.$prefix}-font-#{$key},
-    calc(#{$value} * #{$font-size})
-  );
-  $font-sizes: map.set($font-sizes, $key, $size);
-}
-
-$line-height: var(--#{defaults.$prefix}-line-height, #{defaults.$line-height});
-
 // Transition properties.
 $transition-duration: (
   fast:

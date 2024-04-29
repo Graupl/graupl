@@ -57,16 +57,3 @@ $dark-map: (
   800: 200,
   900: 100,
 ) !default;
-
-// Font properties.
-/* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
-$global-font-family:
-  system-ui,
-  -apple-system,
-  blinkmacsystemfont,
-  "Segoe UI",
-  roboto,
-  "Helvetica Neue",
-  arial,
-  sans-serif !default;
-$global-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem);

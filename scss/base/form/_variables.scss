@@ -3,6 +3,7 @@
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../theme/typography/variables" as typography;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -20,7 +21,7 @@ $input-padding: var(
 );
 $input-font-size: var(
   --#{root-defaults.$prefix}-input-font-size,
-  #{map.get(root-variables.$font-sizes, base)}
+  #{map.get(typography.$font-sizes, base)}
 );
 $label-font-size: var(
   --#{root-defaults.$prefix}-label-font-size,

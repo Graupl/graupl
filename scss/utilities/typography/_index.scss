@@ -1,0 +1,93 @@
+// Graupl typography utilities.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+@use "../../theme/typography/variables" as typography;
+
+@include layer(utilities) {
+  @each $size, $value in typography.$font-sizes {
+    .text-#{$size} {
+      font-size: important.insert($value);
+    }
+  }
+
+  .text-paragraph {
+    font-size: important.insert(typography.$paragraph-font-size);
+    line-height: important.insert(typography.$paragraph-line-height);
+    margin: important.insert(typography.$paragraph-margin);
+    font-weight: important.insert(typography.$paragraph-font-weight);
+  }
+
+  .text-small {
+    font-size: important.insert(typography.$small-font-size);
+    line-height: important.insert(typography.$small-line-height);
+    margin: important.insert(typography.$small-margin);
+    font-weight: important.insert(typography.$small-font-weight);
+  }
+
+  .text-h1 {
+    font-size: important.insert(typography.$h1-font-size);
+    line-height: important.insert(typography.$h1-line-height);
+    margin: important.insert(typography.$h1-margin);
+    font-family: important.insert(typography.$h1-font-family);
+    font-weight: important.insert(typography.$h1-font-weight);
+  }
+
+  .text-h2 {
+    font-size: important.insert(typography.$h2-font-size);
+    line-height: important.insert(typography.$h2-line-height);
+    margin: important.insert(typography.$h2-margin);
+    font-family: important.insert(typography.$h2-font-family);
+    font-weight: important.insert(typography.$h2-font-weight);
+  }
+
+  .text-h3 {
+    font-size: important.insert(typography.$h3-font-size);
+    line-height: important.insert(typography.$h3-line-height);
+    margin: important.insert(typography.$h3-margin);
+    font-family: important.insert(typography.$h3-font-family);
+    font-weight: important.insert(typography.$h3-font-weight);
+  }
+
+  .text-h4 {
+    font-size: important.insert(typography.$h4-font-size);
+    line-height: important.insert(typography.$h4-line-height);
+    margin: important.insert(typography.$h4-margin);
+    font-family: important.insert(typography.$h4-font-family);
+    font-weight: important.insert(typography.$h4-font-weight);
+  }
+
+  .text-h5 {
+    font-size: important.insert(typography.$h5-font-size);
+    line-height: important.insert(typography.$h5-line-height);
+    margin: important.insert(typography.$h5-margin);
+    font-family: important.insert(typography.$h5-font-family);
+    font-weight: important.insert(typography.$h5-font-weight);
+  }
+
+  .text-h6 {
+    font-size: important.insert(typography.$h6-font-size);
+    line-height: important.insert(typography.$h6-line-height);
+    margin: important.insert(typography.$h6-margin);
+    font-family: important.insert(typography.$h6-font-family);
+    font-weight: important.insert(typography.$h6-font-weight);
+  }
+
+  // Font weight utilities.
+  @each $size, $value in typography.$font-weights {
+    .font-#{$size} {
+      font-weight: important.insert($value);
+    }
+  }
+
+
+  // Font style utilities.
+  .font-italic {
+    font-style: important.insert(italic);
+  }
+
+  .font-not-italic {
+    font-style: important.insert(normal);
+  }
+}
