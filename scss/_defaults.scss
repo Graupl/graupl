@@ -38,14 +38,6 @@ $border-radius: 0.125rem !default;
 $border-width: 2px !default;
 $border-style: solid !default;
 
-// Font properties.
-$font-size-base: 1rem !default;
-$font-size: (
-  small: $font-size-base * 0.875,
-  default: $font-size-base,
-  large: $font-size-base * 1.125,
-) !default;
-
 // Transition properties.
 $transition-duration-base: 100;
 $transition-duration: (

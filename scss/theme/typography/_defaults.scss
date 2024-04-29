@@ -1,0 +1,41 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+// font properties.
+$font-size: 1rem !default;
+$root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
+$line-height: 1.2em !default;
+
+// Multipliers for font sizes.
+// This uses a minor third scale.
+// See: https://typescale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000
+$font-size-multipliers: (
+  xs: 0.694,
+  sm: 0.833,
+  base: 1,
+  lg: 1.2,
+  xl: 1.44,
+  2xl: 1.728,
+  3xl: 2.074,
+  4xl: 2.488,
+  5xl: 2.986,
+) !default;
+$font-weights: (
+  light: 300,
+  normal: 400,
+  bold: 700,
+);
+
+/* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
+$root-font-family:
+  system-ui,
+  -apple-system,
+  blinkmacsystemfont,
+  "Segoe UI",
+  roboto,
+  "Helvetica Neue",
+  arial,
+  sans-serif !default;

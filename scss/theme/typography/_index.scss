@@ -1,0 +1,111 @@
+// Typography theme styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(base) {
+  p {
+    margin: $paragraph-margin;
+  }
+
+  small {
+    margin: $small-margin;
+  }
+
+  h1 {
+    margin: $h1-margin;
+  }
+
+  h2 {
+    margin: $h2-margin;
+  }
+
+  h3 {
+    margin: $h3-margin;
+  }
+
+  h4 {
+    margin: $h4-margin;
+  }
+
+  h5 {
+    margin: $h5-margin;
+  }
+
+  h6 {
+    margin: $h6-margin;
+  }
+}
+
+@include layer(theme) {
+  :root {
+    font-family: $root-font-family;
+    font-size: $root-font-size;
+  }
+
+  b,
+  strong {
+    font-weight: $bold-font-weight;
+  }
+
+  body {
+    font-size: $body-font-size;
+    font-weight: $body-font-weight;
+    line-height: $body-line-height;
+  }
+
+  p {
+    font-size: $paragraph-font-size;
+    font-weight: $paragraph-font-weight;
+    line-height: $paragraph-line-height;
+  }
+
+  small {
+    font-size: $small-font-size;
+    font-weight: $small-font-weight;
+    line-height: $small-line-height;
+  }
+
+  h1 {
+    font-family: $h1-font-family;
+    font-size: $h1-font-size;
+    font-weight: $h1-font-weight;
+    line-height: $h1-line-height;
+  }
+
+  h2 {
+    font-family: $h2-font-family;
+    font-size: $h2-font-size;
+    font-weight: $h2-font-weight;
+    line-height: $h2-line-height;
+  }
+
+  h3 {
+    font-family: $h3-font-family;
+    font-size: $h3-font-size;
+    font-weight: $h3-font-weight;
+    line-height: $h3-line-height;
+  }
+
+  h4 {
+    font-family: $h4-font-family;
+    font-size: $h4-font-size;
+    font-weight: $h4-font-weight;
+    line-height: $h4-line-height;
+  }
+
+  h5 {
+    font-family: $h5-font-family;
+    font-size: $h5-font-size;
+    font-weight: $h5-font-weight;
+    line-height: $h5-line-height;
+  }
+
+  h6 {
+    font-family: $h6-font-family;
+    font-size: $h6-font-size;
+    font-weight: $h6-font-weight;
+    line-height: $h6-line-height;
+  }
+}

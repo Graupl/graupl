@@ -1,7 +1,7 @@
 // Graupl Button Component.
 
 @use "../../defaults" as root-defaults;
-@use "../../theme/variables" as theme;
+@use "../../theme/color/variables" as color;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
@@ -86,7 +86,7 @@
       }
     }
 
-    @each $color, $map in theme.$theme-active {
+    @each $color, $map in color.$theme-active {
       &.#{$color} {
         --#{root-defaults.$prefix}-button-hover-background: #{map.get(
             $map,

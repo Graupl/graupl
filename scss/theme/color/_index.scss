@@ -1,0 +1,42 @@
+// Color theme styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+@use "../../functions/theme";
+
+@include layer(theme) {
+  :root {
+    background: $root-background;
+    color: $root-font-color;
+
+    @each $color, $map in $theme-light {
+      @each $shade, $value in $map {
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+      }
+    }
+  }
+
+  // Set the active theme for dark mode.
+  .dark-mode {
+    @each $color, $map in $theme-dark {
+      @each $shade, $value in $map {
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+      }
+    }
+
+    color-scheme: dark;
+  }
+
+  // Set the active theme for light mode.
+  .light-mode {
+    @each $color, $map in $theme-light {
+      @each $shade, $value in $map {
+        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+      }
+    }
+
+    color-scheme: light;
+  }
+}
