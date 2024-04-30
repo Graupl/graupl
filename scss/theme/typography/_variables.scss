@@ -76,7 +76,7 @@ $paragraph-font-weight: var(
 );
 $small-font-size: var(
   --#{root-defaults.$prefix}-small-font-size,
-  #{map.get($font-sizes, small)}
+  #{map.get($font-sizes, sm)}
 );
 $small-line-height: var(
   --#{root-defaults.$prefix}-small-line-height,
