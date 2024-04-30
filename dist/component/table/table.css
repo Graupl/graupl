@@ -1,0 +1,18 @@
+@layer graupl.component{table.striped tbody tr:nth-child(odd) td,table.striped tbody tr:nth-child(odd) th{background:var(--graupl-table-striped-background,var(--graupl-theme-active--secondary--200));color:var(--graupl-table-striped-color,var(--graupl-theme-active--secondary--900))}table.bordered{border-collapse:collapse}table.bordered,table.bordered td,table.bordered th{border-color:var(--graupl-table-border-color,var(--graupl-theme-active--primary--900));border-style:solid;border-width:2px}table.hoverable tbody tr:hover td,table.hoverable tbody tr:hover th{background:var(--graupl-table-hover-background,var(--graupl-theme-active--secondary--300));color:var(--graupl-table-hover-color,var(--graupl-theme-active--secondary--900))}table.primary{--graupl-table-header-background:var(
+      --graupl-theme-active--primary--700
+    );--graupl-table-header-color:var(--graupl-theme-active--primary--100);--graupl-table-striped-background:var(
+      --graupl-theme-active--primary--200
+    );--graupl-table-striped-color:var(--graupl-theme-active--primary--900);--graupl-table-hover-background:var(--graupl-theme-active--primary--300);--graupl-table-hover-color:var(--graupl-theme-active--primary--900);--graupl-table-border-color:var(--graupl-theme-active--primary--900)}table.secondary{--graupl-table-header-background:var(
+      --graupl-theme-active--secondary--700
+    );--graupl-table-header-color:var(--graupl-theme-active--secondary--100);--graupl-table-striped-background:var(
+      --graupl-theme-active--secondary--200
+    );--graupl-table-striped-color:var(--graupl-theme-active--secondary--900);--graupl-table-hover-background:var(
+      --graupl-theme-active--secondary--300
+    );--graupl-table-hover-color:var(--graupl-theme-active--secondary--900);--graupl-table-border-color:var(--graupl-theme-active--secondary--900)}table.tertiary{--graupl-table-header-background:var(
+      --graupl-theme-active--tertiary--700
+    );--graupl-table-header-color:var(--graupl-theme-active--tertiary--100);--graupl-table-striped-background:var(
+      --graupl-theme-active--tertiary--200
+    );--graupl-table-striped-color:var(--graupl-theme-active--tertiary--900);--graupl-table-hover-background:var(
+      --graupl-theme-active--tertiary--300
+    );--graupl-table-hover-color:var(--graupl-theme-active--tertiary--900);--graupl-table-border-color:var(--graupl-theme-active--tertiary--900)}}
+/*# sourceMappingURL=table.css.map */
