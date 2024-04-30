@@ -6,15 +6,15 @@
 @include layer(base) {
   table {
     caption {
-      caption-side: $table-caption-side;
       padding: $table-caption-padding;
+      caption-side: $table-caption-side;
     }
 
     th {
-      font-weight: $table-header-font-weight;
       padding: $table-header-padding;
       background: $table-header-background;
       color: $table-header-color;
+      font-weight: $table-header-font-weight;
     }
 
     td,
