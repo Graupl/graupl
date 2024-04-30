@@ -102,7 +102,10 @@ $heading-line-height: var(
 );
 $heading-margin: var(
   --#{root-defaults.$prefix}-heading-margin,
-  0 0 #{map.get(root-variables.$spacers, 2)} 0
+  #{map.get(root-variables.$spacers, 5)} 0 #{map.get(
+      root-variables.$spacers,
+      2
+    )} 0
 );
 $heading-font-weight: var(
   --#{root-defaults.$prefix}-heading-font-weight,
