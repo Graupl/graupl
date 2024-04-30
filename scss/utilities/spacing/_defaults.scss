@@ -4,7 +4,9 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
-$spacing-properties: (
+@use "sass:map";
+
+$base-spacing-properties: (
   g: gap,
   rg: row-gap,
   cg: column-gap,
@@ -22,4 +24,9 @@ $spacing-properties: (
   ml: margin-left,
   mx: margin-left margin-right,
   my: margin-top margin-bottom,
+) !default;
+$custom-spacing-properties: () !default;
+$spacing-properties: map.merge(
+  $base-spacing-properties,
+  $custom-spacing-properties
 ) !default;
