@@ -1,0 +1,29 @@
+// Variables referencing custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme" as theme;
+@use "sass:map";
+
+// Table caption properties.
+$table-caption-side: var(--#{root-defaults.$prefix}-table-caption-side, #{defaults.$caption-side}) !default;
+$table-caption-padding-x: var(--#{root-defaults.$prefix}-table-caption-padding-x, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-caption-padding-y: var(--#{root-defaults.$prefix}-table-caption-padding-y, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-caption-padding: $table-caption-padding-y $table-caption-padding-x;
+
+// Table header properties.
+$table-header-font-weight: var(--#{root-defaults.$prefix}-table-header-font-weight, #{typography.$font-weight-bold}) !default;
+$table-header-padding-x: var(--#{root-defaults.$prefix}-table-header-padding-x, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-header-padding-y: var(--#{root-defaults.$prefix}-table-header-padding-y, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-header-padding: $table-header-padding-y $table-header-padding-x;
+$table-header-background: var(--#{root-defaults.$prefix}-table-header-background, #{theme.get(primary, 100)});
+$table-header-color: var(--#{root-defaults.$prefix}-table-header-color, #{theme.get(primary, 900)});
+
+// Table cell properties.
+$table-cell-padding-x: var(--#{root-defaults.$prefix}-table-cell-padding-x, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-cell-padding-y: var(--#{root-defaults.$prefix}-table-cell-padding-y, #{map.get(root-variables.$spacers, 3)}) !default;
+$table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
+$table-cell-background: var(--#{root-defaults.$prefix}-table-cell-background, #{theme.get(primary, 100)});
+$table-cell-color: var(--#{root-defaults.$prefix}-table-cell-color, #{theme.get(primary, 900)});
