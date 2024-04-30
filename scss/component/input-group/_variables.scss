@@ -1,0 +1,63 @@
+// Variables referencing custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "sass:map";
+
+// Input group properties.
+$input-group-grid-template-areas: var(
+  --#{root-defaults.$prefix}-input-group-grid-template-areas,
+    "#{defaults.$input-group-grid-label-name}"
+    "#{defaults.$input-group-grid-input-name}"
+    "#{defaults.$input-group-grid-help-name}"
+);
+$input-group-grid-template-columns: var(
+  --#{root-defaults.$prefix}-input-group-grid-template-columns,
+  #{defaults.$input-group-grid-template-columns}
+);
+$input-group-grid-template-rows: var(
+  --#{root-defaults.$prefix}-input-group-grid-template-rows,
+  #{defaults.$input-group-grid-template-rows}
+);
+$input-group-row-gap: var(
+  --#{root-defaults.$prefix}-input-group-row-gap,
+  #{map.get(root-variables.$spacers, 2)}
+);
+$input-group-column-gap: var(
+  --#{root-defaults.$prefix}-input-group-column-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$input-group-gap: var(
+  --#{root-defaults.$prefix}-input-group-gap,
+  #{$input-group-row-gap} #{$input-group-column-gap}
+);
+
+// Inline input group properties.
+$input-group-inline-grid-template-areas: var(
+  --#{root-defaults.$prefix}-input-group-inline-grid-template-areas,
+  "#{defaults.$input-group-grid-label-name} #{defaults.$input-group-grid-input-name}"
+    "- #{defaults.$input-group-grid-help-name}"
+);
+$input-group-inline-grid-template-columns: var(
+  --#{root-defaults.$prefix}-input-group-inline-grid-template-columns,
+  #{defaults.$input-group-inline-grid-template-columns}
+);
+$input-group-inline-grid-template-rows: var(
+  --#{root-defaults.$prefix}-input-group-inline-grid-template-rows,
+  #{defaults.$input-group-inline-grid-template-rows}
+);
+
+// Inner element properties.
+$input-group-label-grid-area: var(
+  --#{root-defaults.$prefix}-input-group-label-grid-area,
+  #{defaults.$input-group-label-grid-area}
+);
+$input-group-input-grid-area: var(
+  --#{root-defaults.$prefix}-input-group-input-grid-area,
+  #{defaults.$input-group-input-grid-area}
+);
+$input-group-help-grid-area: var(
+  --#{root-defaults.$prefix}-input-group-help-grid-area,
+  #{defaults.$input-group-help-grid-area}
+);

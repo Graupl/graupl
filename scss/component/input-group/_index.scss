@@ -1,0 +1,44 @@
+// Graupl Input group Component.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
+
+// stylelint-disable declaration-block-no-redundant-longhand-properties
+@include layer(component) {
+  .input-group {
+    display: grid;
+    grid-template-columns: $input-group-grid-template-columns;
+    grid-template-areas: $input-group-grid-template-areas;
+    align-items: center;
+    gap: $input-group-gap;
+
+    label {
+      grid-area: $input-group-label-grid-area;
+    }
+
+    input,
+    textarea,
+    select {
+      grid-area: $input-group-input-grid-area;
+    }
+
+    .help-text {
+      grid-area: $input-group-help-grid-area;
+    }
+
+    &.inline {
+      grid-template-areas: $input-group-inline-grid-template-areas;
+      grid-template-columns: $input-group-inline-grid-template-columns;
+      grid-template-rows: $input-group-inline-grid-template-rows;
+    }
+  }
+
+  @include screen-under(sm) {
+    .input-group.inline {
+      grid-template-areas: $input-group-grid-template-areas;
+      grid-template-columns: $input-group-grid-template-columns;
+      grid-template-rows: $input-group-grid-template-rows;
+    }
+  }
+}
