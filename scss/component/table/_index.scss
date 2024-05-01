@@ -2,107 +2,94 @@
 
 @use "variables" as *;
 @use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 
 @include layer(component) {
   table {
-    &.striped {
-      tbody tr:nth-child(odd) {
-        th,
-        td {
-          background: var(
-            --graupl-table-striped-background,
-            var(--graupl-theme-active--secondary--200)
-          );
-          color: var(
-            --graupl-table-striped-color,
-            var(--graupl-theme-active--secondary--900)
-          );
-        }
+    @each $variant in theme.variants() {
+      &.#{$variant},
+      .#{$variant} {
+        --#{root-defaults.$prefix}-table-header-background: #{theme.get(
+            $variant,
+            700
+          )};
+        --#{root-defaults.$prefix}-table-header-color: #{theme.get(
+            $variant,
+            100
+          )};
+        --#{root-defaults.$prefix}-table-striped-background: #{theme.get(
+            $variant,
+            200
+          )};
+        --#{root-defaults.$prefix}-table-striped-color: #{theme.get(
+            $variant,
+            900
+          )};
+        --#{root-defaults.$prefix}-table-hover-background: #{theme.get(
+            $variant,
+            300
+          )};
+        --#{root-defaults.$prefix}-table-hover-color: #{theme.get(
+            $variant,
+            900
+          )};
+        --#{root-defaults.$prefix}-table-border-color: #{theme.get(
+            $variant,
+            900
+          )};
+        --#{root-defaults.$prefix}-table-highlight-background: #{theme.get(
+            $variant,
+            500
+          )};
+        --#{root-defaults.$prefix}-table-highlight-color: #{theme.get(
+            $variant,
+            100
+          )};
       }
     }
 
     &.bordered {
       border-collapse: collapse;
-      border-width: 2px;
-      border-style: solid;
-      border-color: var(
-        --graupl-table-border-color,
-        var(--graupl-theme-active--primary--900)
-      );
+      border-width: $table-border-width;
+      border-style: $table-border-style;
+      border-color: $table-border-color;
 
-      th,
-      td {
-        border-width: 2px;
-        border-style: solid;
-        border-color: var(
-          --graupl-table-border-color,
-          var(--graupl-theme-active--primary--900)
-        );
+      tr > * {
+        border-width: $table-cell-border-width;
+        border-style: $table-cell-border-style;
+        border-color: $table-cell-border-color;
+      }
+    }
+
+    &.striped-columns {
+      tbody tr:nth-child(odd) > * {
+        background: $table-striped-background;
+        color: $table-striped-color;
+      }
+    }
+
+    &.striped-rows {
+      tbody tr > :nth-child(odd) {
+        background: $table-striped-background;
+        color: $table-striped-color;
       }
     }
 
     &.hoverable {
-      tbody tr {
-        &:hover {
-          th,
-          td {
-            background: var(
-              --graupl-table-hover-background,
-              var(--graupl-theme-active--secondary--300)
-            );
-            color: var(
-              --graupl-table-hover-color,
-              var(--graupl-theme-active--secondary--900)
-            );
-          }
-        }
+      tbody tr:hover > * {
+        background: $table-hover-background;
+        color: $table-hover-color;
       }
     }
 
-    &.primary {
-      --graupl-table-header-background: var(
-        --graupl-theme-active--primary--700
-      );
-      --graupl-table-header-color: var(--graupl-theme-active--primary--100);
-      --graupl-table-striped-background: var(
-        --graupl-theme-active--primary--200
-      );
-      --graupl-table-striped-color: var(--graupl-theme-active--primary--900);
-      --graupl-table-hover-background: var(--graupl-theme-active--primary--300);
-      --graupl-table-hover-color: var(--graupl-theme-active--primary--900);
-      --graupl-table-border-color: var(--graupl-theme-active--primary--900);
-    }
-
-    &.secondary {
-      --graupl-table-header-background: var(
-        --graupl-theme-active--secondary--700
-      );
-      --graupl-table-header-color: var(--graupl-theme-active--secondary--100);
-      --graupl-table-striped-background: var(
-        --graupl-theme-active--secondary--200
-      );
-      --graupl-table-striped-color: var(--graupl-theme-active--secondary--900);
-      --graupl-table-hover-background: var(
-        --graupl-theme-active--secondary--300
-      );
-      --graupl-table-hover-color: var(--graupl-theme-active--secondary--900);
-      --graupl-table-border-color: var(--graupl-theme-active--secondary--900);
-    }
-
-    &.tertiary {
-      --graupl-table-header-background: var(
-        --graupl-theme-active--tertiary--700
-      );
-      --graupl-table-header-color: var(--graupl-theme-active--tertiary--100);
-      --graupl-table-striped-background: var(
-        --graupl-theme-active--tertiary--200
-      );
-      --graupl-table-striped-color: var(--graupl-theme-active--tertiary--900);
-      --graupl-table-hover-background: var(
-        --graupl-theme-active--tertiary--300
-      );
-      --graupl-table-hover-color: var(--graupl-theme-active--tertiary--900);
-      --graupl-table-border-color: var(--graupl-theme-active--tertiary--900);
+    .highlight {
+      --#{root-defaults.$prefix}-table-cell-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-cell-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}-table-header-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-header-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}-table-striped-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-striped-color: #{$table-highlight-color};
     }
   }
 }
