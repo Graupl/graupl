@@ -30,7 +30,7 @@ $font-weights: ();
   $font-weights: map.set($font-weights, $key, $weight);
 }
 
-$bold-font-weight: var(
+$font-weight-bold: var(
   --#{root-defaults.$prefix}-font-weight-bold,
   #{map.get($font-weights, bold)}
 );
@@ -76,7 +76,7 @@ $paragraph-font-weight: var(
 );
 $small-font-size: var(
   --#{root-defaults.$prefix}-small-font-size,
-  #{map.get($font-sizes, small)}
+  #{map.get($font-sizes, sm)}
 );
 $small-line-height: var(
   --#{root-defaults.$prefix}-small-line-height,
@@ -109,7 +109,7 @@ $heading-margin: var(
 );
 $heading-font-weight: var(
   --#{root-defaults.$prefix}-heading-font-weight,
-  #{$bold-font-weight}
+  #{$font-weight-bold}
 );
 
 // H1 properties.
