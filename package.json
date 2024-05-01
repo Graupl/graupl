@@ -54,6 +54,7 @@
     "sass": "rm -rf dist && sass scss:dist",
     "postcss": "postcss 'dist/**/*.css' --replace",
     "build": "npm run sass && npm run postcss",
+    "postbuild": "npm run docs:build",
     "release": "git add dist/. && standard-version -a",
     "prerelease": "npm run lint && npm run build",
     "docs:dev": "vitepress dev docs",

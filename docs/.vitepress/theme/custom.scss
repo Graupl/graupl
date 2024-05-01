@@ -1,4 +1,4 @@
-@use "../../../scss/functions/theme";
+@use "../../../src/scss/functions/theme";
 
 :root {
   --vp-c-brand: #{theme.get(primary, 700)};
