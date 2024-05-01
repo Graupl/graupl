@@ -1,0 +1,23 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+// Grid names.
+$input-group-grid-label-name: label !default;
+$input-group-grid-input-name: input !default;
+$input-group-grid-help-name: help !default;
+
+// Input group properties.
+$input-group-grid-template-columns: auto !default;
+$input-group-grid-template-rows: auto auto auto !default;
+
+// Inline input group properties.
+$input-group-inline-grid-template-columns: auto 1fr !default;
+$input-group-inline-grid-template-rows: auto auto !default;
+
+// Inner element properties.
+$input-group-label-grid-area: $input-group-grid-label-name !default;
+$input-group-input-grid-area: $input-group-grid-input-name !default;
+$input-group-help-grid-area: $input-group-grid-help-name !default;

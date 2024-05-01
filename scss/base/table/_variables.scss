@@ -25,7 +25,7 @@ $table-caption-padding: $table-caption-padding-y $table-caption-padding-x;
 // Table header properties.
 $table-header-font-weight: var(
   --#{root-defaults.$prefix}-table-header-font-weight,
-  #{typography.$bold-font-weight}
+  #{typography.$font-weight-bold}
 ) !default;
 $table-header-padding-x: var(
   --#{root-defaults.$prefix}-table-header-padding-x,
