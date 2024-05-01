@@ -29,3 +29,19 @@ $container-feature-width: var(
   --#{root-defaults.$prefix}-container-feature-width,
   calc((#{$container-feature-max-width} - #{$container-breakout-max-width}) / 2)
 );
+$container-content-section-width: var(
+  --#{root-defaults.$prefix}-container-content-section-width,
+  min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2))
+);
+$container-full-width-section-width: var(
+  --#{root-defaults.$prefix}-container-full-width-section-width,
+  minmax(#{$container-gap}, 1fr)
+);
+$container-breakout-section-width: var(
+  --#{root-defaults.$prefix}-container-breakout-section-width,
+  minmax(0, #{$container-breakout-width})
+);
+$container-feature-section-width: var(
+  --#{root-defaults.$prefix}-container-feature-section-width,
+  minmax(0, #{$container-feature-width})
+);

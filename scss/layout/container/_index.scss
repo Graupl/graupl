@@ -2,38 +2,20 @@
 
 @use "variables" as *;
 @use "../../mixins/layer" as *;
-@use "../../defaults" as root-defaults;
 
 @include layer(layout) {
   .container,
   .container > .full-width {
-    --#{root-defaults.$prefix}-container-full-width: minmax(
-      #{$container-gap},
-      1fr
-    );
-    --#{root-defaults.$prefix}-container-content: min(
-      #{$container-content-max-width},
-      calc(100% - #{$container-gap} * 2)
-    );
-    --#{root-defaults.$prefix}-container-breakout: minmax(
-      0,
-      #{$container-breakout-width}
-    );
-    --#{root-defaults.$prefix}-container-feature: minmax(
-      0,
-      #{$container-feature-width}
-    );
-
     display: grid;
     grid-template-columns:
-      [full-width-start] var(--#{root-defaults.$prefix}-container-full-width)
-      [feature-start] var(--#{root-defaults.$prefix}-container-feature)
-      [breakout-start] var(--#{root-defaults.$prefix}-container-breakout)
-      [content-start] var(--#{root-defaults.$prefix}-container-content)
+      [full-width-start] $container-full-width-section-width
+      [feature-start] $container-feature-section-width
+      [breakout-start] $container-breakout-section-width
+      [content-start] $container-content-section-width
       [content-end]
-      var(--#{root-defaults.$prefix}-container-breakout) [breakout-end]
-      var(--#{root-defaults.$prefix}-container-feature) [feature-end]
-      var(--#{root-defaults.$prefix}-container-full-width) [full-width-end];
+      $container-breakout-section-width [breakout-end]
+      $container-feature-section-width [feature-end]
+      $container-full-width-section-width [full-width-end];
 
     > :not(.breakout, .full-width, .feature) {
       grid-column: content;
