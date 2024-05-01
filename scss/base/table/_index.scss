@@ -1,0 +1,27 @@
+// Table base styles.
+
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+
+@include layer(base) {
+  table {
+    caption {
+      padding: $table-caption-padding;
+      caption-side: $table-caption-side;
+    }
+
+    th {
+      padding: $table-header-padding;
+      background: $table-header-background;
+      color: $table-header-color;
+      font-weight: $table-header-font-weight;
+    }
+
+    td,
+    tbody th {
+      padding: $table-cell-padding;
+      background: $table-cell-background;
+      color: $table-cell-color;
+    }
+  }
+}

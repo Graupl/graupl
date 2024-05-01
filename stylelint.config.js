@@ -8,6 +8,8 @@ const config = {
   rules: {
     "prettier/prettier": true,
     "scss/comment-no-empty": null,
+    "selector-max-compound-selectors": 4,
+    "selector-no-qualifying-type": null,
   },
 };
 
