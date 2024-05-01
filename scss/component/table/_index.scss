@@ -96,8 +96,7 @@
   .responsive-table {
     display: block;
     width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
+    overflow: scroll hidden;
 
     table {
       width: 100%;
