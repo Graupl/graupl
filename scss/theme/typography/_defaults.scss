@@ -4,6 +4,8 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
+@use "sass:map";
+
 // font properties.
 $font-size: 1rem !default;
 $root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
@@ -12,7 +14,7 @@ $line-height: 1.2em !default;
 // Multipliers for font sizes.
 // This uses a minor third scale.
 // See: https://typescale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000
-$font-size-multipliers: (
+$base-font-size-multipliers: (
   xs: 0.694,
   sm: 0.833,
   base: 1,
@@ -23,11 +25,20 @@ $font-size-multipliers: (
   4xl: 2.488,
   5xl: 2.986,
 ) !default;
-$font-weights: (
+$custom-font-size-multipliers: () !default;
+$font-size-multipliers: map.merge(
+  $base-font-size-multipliers,
+  $custom-font-size-multipliers
+) !default;
+
+// Weights.
+$base-font-weights: (
   light: 300,
   normal: 400,
   bold: 700,
-);
+) !default;
+$custom-font-weights: () !default;
+$font-weights: map.merge($base-font-weights, $custom-font-weights) !default;
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:

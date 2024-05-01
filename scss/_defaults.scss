@@ -4,6 +4,8 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
+@use "sass:map";
+
 // Prefix for custom properties and other naming conventions.
 $prefix: "graupl" !default;
 
@@ -13,9 +15,23 @@ $use-important: true !default;
 // Layout properties.
 $content-max-width: 96ch !default;
 
+// Screen sizes.
+$base-screen-sizes: (
+  xs: 0,
+  sm: 469px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  hd: 1920px,
+  qhd: 2560px,
+  uhd: 3840px,
+) !default;
+$custom-screen-sizes: () !default;
+$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes) !default;
+
 // Spacing properties.
 $spacer: 1rem !default;
-$spacer-multipliers: (
+$base-spacer-multipliers: (
   0: 0,
   1: 0.125,
   2: 0.25,
@@ -27,6 +43,11 @@ $spacer-multipliers: (
   8: 3,
   9: 5,
   10: 10,
+) !default;
+$custom-spacer-multipliers: () !default;
+$spacer-multipliers: map.merge(
+  $base-spacer-multipliers,
+  $custom-spacer-multipliers
 ) !default;
 
 // Size properties.

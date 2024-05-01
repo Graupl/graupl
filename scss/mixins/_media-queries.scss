@@ -1,5 +1,8 @@
 // Media query mixins.
 
+@use "../defaults" as root-defaults;
+@use "sass:map";
+
 // A media query for targetting users who have not requested reduced motion.
 @mixin animation-on {
   @media (prefers-reduced-motion: no-preference) {
@@ -10,6 +13,31 @@
 // A media query for targetting users who have requested reduced motion.
 @mixin animation-off {
   @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@mixin screen($size) {
+  $screen-size: map.get(root-defaults.$screen-sizes, $size);
+
+  @media screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+@mixin screen-under($size) {
+  $screen-size: map.get(root-defaults.$screen-sizes, $size);
+
+  @media screen and (max-width: #{$screen-size - 1}) {
+    @content;
+  }
+}
+
+@mixin screen-between($min-size, $max-size) {
+  $min-screen-size: map.get(root-defaults.$screen-sizes, $min-size);
+  $max-screen-size: map.get(root-defaults.$screen-sizes, $max-size);
+
+  @media screen and (min-width: $min-screen-size) and (max-width: #{$max-screen-size - 1}) {
     @content;
   }
 }

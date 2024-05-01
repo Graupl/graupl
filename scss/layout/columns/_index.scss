@@ -4,6 +4,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
 
 @include layer(layout) {
   .columns {
@@ -27,7 +28,7 @@
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
-  @media screen and (max-width: #{defaults.$columns-disable-width}) {
+  @include screen-under(sm) {
     .columns {
       --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
