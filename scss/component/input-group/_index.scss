@@ -8,8 +8,8 @@
 @include layer(component) {
   .input-group {
     display: grid;
-    grid-template-columns: $input-group-grid-template-columns;
     grid-template-areas: $input-group-grid-template-areas;
+    grid-template-columns: $input-group-grid-template-columns;
     align-items: center;
     gap: $input-group-gap;
 

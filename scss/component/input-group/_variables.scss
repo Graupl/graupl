@@ -8,7 +8,7 @@
 // Input group properties.
 $input-group-grid-template-areas: var(
   --#{root-defaults.$prefix}-input-group-grid-template-areas,
-    "#{defaults.$input-group-grid-label-name}"
+  "#{defaults.$input-group-grid-label-name}"
     "#{defaults.$input-group-grid-input-name}"
     "#{defaults.$input-group-grid-help-name}"
 );
