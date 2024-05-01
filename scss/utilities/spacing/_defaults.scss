@@ -17,6 +17,12 @@ $base-spacing-properties: (
   pl: padding-left,
   px: padding-left padding-right,
   py: padding-top padding-bottom,
+  pbs: padding-block-start,
+  pbe: padding-block-end,
+  pbse: padding-block-start padding-block-end,
+  pis: padding-inline-start,
+  pie: padding-inline-end,
+  pise: padding-inline-start padding-inline-end,
   m: margin,
   mt: margin-top,
   mr: margin-right,
@@ -24,6 +30,12 @@ $base-spacing-properties: (
   ml: margin-left,
   mx: margin-left margin-right,
   my: margin-top margin-bottom,
+  mbs: margin-block-start,
+  mbe: margin-block-end,
+  mbse: margin-block-start margin-block-end,
+  mis: margin-inline-start,
+  mie: margin-inline-end,
+  mise: margin-inline-start margin-inline-end,
 ) !default;
 $custom-spacing-properties: () !default;
 $spacing-properties: map.merge(
