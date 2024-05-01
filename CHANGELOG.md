@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.7](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2024-05-01)
+
+
+### Features
+
+* add top margin to headings ([9fc42f1](https://github.com/Graupl/graupl/commit/9fc42f19e4a524279c1107201799035f109b8e5b))
+* **component:** add input groups ([bf7ecd2](https://github.com/Graupl/graupl/commit/bf7ecd2b36d9bc49ae530a36a5fb6c961203619d))
+* implement table base and component styles ([7cb1552](https://github.com/Graupl/graupl/commit/7cb15522922189e0f17851260da81677acca6abc)), closes [#24](https://github.com/Graupl/graupl/issues/24)
+* **mixin:** implement proper screen media queries ([6c4f6d6](https://github.com/Graupl/graupl/commit/6c4f6d6738c876ef8a6f4273375155eb21f0aa55))
+* use theme-specific button text colours ([d6b3276](https://github.com/Graupl/graupl/commit/d6b327692dab24c1dbc0d169e4c98a8685ad4745))
+* **utility:** add writing direction specific spacers ([73b43ce](https://github.com/Graupl/graupl/commit/73b43ce3d87d5d5c6f285cb906ccb8ee0f5c47d5)), closes [#40](https://github.com/Graupl/graupl/issues/40)
+
+
+### Bug Fixes
+
+* **component:** correct field group column width ([6488aa5](https://github.com/Graupl/graupl/commit/6488aa52eafc3a6d61ce89327a3f32f17be42073)), closes [#44](https://github.com/Graupl/graupl/issues/44)
+* **docs:** correct path to functions ([e75207c](https://github.com/Graupl/graupl/commit/e75207c088604485764b01045521471aabecb2dd))
+* **typography:** use correct index for small text ([1685433](https://github.com/Graupl/graupl/commit/1685433c80a1d10b9355312b296a5eba7f959fd1))
+
+
+### Code Refactoring
+
+* **layout:** move container custom props to proper file ([4f4acde](https://github.com/Graupl/graupl/commit/4f4acded89c5b072f21d636e53fa8810e87e9972))
+* **maps:** add custom versions of maps to override ([6150442](https://github.com/Graupl/graupl/commit/61504424120300e94cdb409e9912cd4c3692ff9d))
+* **scss:** separate compiled and source scss ([4ce7bbb](https://github.com/Graupl/graupl/commit/4ce7bbb882e4b46c47ab64f56080d7f68a27d50c))
+* **typography:** rename bold-font-weight to font-weight-bold ([b9d7c04](https://github.com/Graupl/graupl/commit/b9d7c04a25a8c8c1a3a883871c5017e396fd4cf4))
+
+
+### Build System
+
+* **npm:** add postbuild script to ensure docs build during tests ([54b5e18](https://github.com/Graupl/graupl/commit/54b5e18eff9e183030817f037aac329bd15b2239))
+
 ## [1.0.0-alpha.6](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.5...v1.0.0-alpha.6) (2024-04-29)
 
 
