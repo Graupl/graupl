@@ -92,4 +92,16 @@
       --#{root-defaults.$prefix}-table-striped-color: #{$table-highlight-color};
     }
   }
+
+  .responsive-table {
+    display: block;
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    table {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
 }
