@@ -34,80 +34,99 @@
     </div>
     <h2>Form elements</h2>
     <p>Graupl provides default styling for all form elements.</p>
-    <label for="input">Input</label>
-    <input type="text" placeholder="Input" id="input">
-    <label for="input-readonly">Readonly Input</label>
-    <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input"readonly>
-    <label for="input-disabled">Disabled Input</label>
-    <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
-    <label for="textarea">Textarea</label>
-    <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
-    <label for="textarea-readonly">Readonly Textarea</label>
-    <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly" readonly>Readonly Textarea</textarea>
-    <label for="textarea-disabled">Disabled Textarea</label>
-    <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
-    <label for="select">Select</label>
-    <select id="select">
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <optgroup label="Group 1">
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-      </optgroup>
-    </select>
-    <label for="select-disabled">Disabled Select</label>
-    <select id="select-disabled" disabled>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <optgroup label="Group 1">
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-      </optgroup>
-    </select>
-    <label for"multi-select">Multi-select</label>
-    <select id="multi-select" multiple>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <optgroup label="Group 1">
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-      </optgroup>
-    </select>
-    <label for="multi-select-disabled">Disabled Multi-select</label>
-    <select id="multi-select-disabled" multiple disabled>
-      <option value="1">Option 1</option>
-      <option value="2">Option 2</option>
-      <optgroup label="Group 1">
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
-      </optgroup>
-    </select>
-    <fieldset>
-      <legend>Checkboxes</legend>
-      <label for="checkbox">
-      <input type="checkbox" id="checkbox"> Checkbox</label>
-      <label for="checkbox-checked">
-      <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
-      <label for="checkbox-disabled">
-      <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
-    </fieldset>
-    <fieldset>
-      <legend>Radio Buttons</legend>
-      <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
-      <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
-      <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled Radio</label>
-    </fieldset>
-    <fieldset disabled>
-      <legend>Disabled Fieldset</legend>
-      <label for="disabled-fieldset-checkbox">
-      <input type="checkbox" id="disabled-fieldset-checkbox"> Checkbox</label>
-    </fieldset>
-    <label for="range">Range</label>
-    <input type="range" class="range" id="range">
+    <form class="full-width rg-4">
+      <div class="input-group">
+        <label for="input">Input</label>
+        <input type="text" placeholder="Input" id="input">
+        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+      </div>
+      <div class="input-group inline"><label for="input-readonly">Readonly Input</label>
+        <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input" readonly>
+        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+      </div>
+      <div class="input-group"><label for="input-disabled">Disabled Input</label>
+        <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
+        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+      </div>
+      <div class="input-group inline"><label for="textarea">Textarea</label>
+        <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
+      </div>
+      <div class="input-group"><label for="textarea-readonly">Readonly Textarea</label>
+        <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
+          readonly>Readonly Textarea</textarea>
+      </div>
+      <div class="input-group"><label for="textarea-disabled">Disabled Textarea</label>
+        <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
+      </div>
+      <div class="input-group inline"><label for="select">Select</label>
+        <select id="select">
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <optgroup label="Group 1">
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="input-group"><label for="select-disabled">Disabled Select</label>
+        <select id="select-disabled" disabled>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <optgroup label="Group 1">
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="input-group"><label for"multi-select">Multi-select</label>
+        <select id="multi-select" multiple>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <optgroup label="Group 1">
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="input-group inline"><label for="multi-select-disabled">Disabled Multi-select</label>
+        <select id="multi-select-disabled" multiple disabled>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+          <optgroup label="Group 1">
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </optgroup>
+        </select>
+      </div>
+      <fieldset>
+        <legend>Checkboxes</legend>
+        <label for="checkbox">
+          <input type="checkbox" id="checkbox"> Checkbox</label>
+        <label for="checkbox-checked">
+          <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
+        <label for="checkbox-disabled">
+          <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
+      </fieldset>
+      <fieldset>
+        <legend>Radio Buttons</legend>
+        <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
+        <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
+        <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled
+          Radio</label>
+      </fieldset>
+      <fieldset disabled>
+        <legend>Disabled Fieldset</legend>
+        <label for="disabled-fieldset-checkbox">
+          <input type="checkbox" id="disabled-fieldset-checkbox"> Checkbox</label>
+      </fieldset>
+      <div class="input-group"><label for="range">Range</label>
+        <input type="range" class="range" id="range">
+      </div>
+    </form>
   </main>
 </body>
 
