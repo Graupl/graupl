@@ -33,4 +33,7 @@ $base-button-state-theme-map: (
   disabled-border-color: 200,
 );
 $custom-button-state-theme-map: () !default;
-$button-state-theme-map: map-merge($base-button-state-theme-map, $custom-button-state-theme-map);
+$button-state-theme-map: map.merge(
+  $base-button-state-theme-map,
+  $custom-button-state-theme-map
+);

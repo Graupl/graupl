@@ -12,7 +12,10 @@
       &.#{$variant},
       .#{$variant} {
         @each $prop, $key in defaults.$table-theme-map {
-          --#{root-defaults.$prefix}-table-#{$prop}: #{theme.get($variant, $key)};
+          --#{root-defaults.$prefix}-table-#{$prop}: #{theme.get(
+              $variant,
+              $key
+            )};
         }
       }
     }

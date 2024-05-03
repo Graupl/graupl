@@ -17,7 +17,7 @@ $content-max-width: 96ch !default;
 
 // Screen sizes.
 $base-screen-sizes: (
-  xs: '(0 <= width <= 48ch)',
+  xs: "(0 <= width <= 48ch)",
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);

@@ -24,7 +24,7 @@ $base-font-size-multipliers: (
   3xl: 2.074,
   4xl: 2.488,
   5xl: 2.986,
-) ;
+);
 $custom-font-size-multipliers: () !default;
 $font-size-multipliers: map.merge(
   $base-font-size-multipliers,

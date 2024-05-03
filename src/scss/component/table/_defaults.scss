@@ -27,4 +27,4 @@ $base-table-theme-map: (
   highlight-color: 100,
 );
 $custom-table-theme-map: () !default;
-$table-theme-map: map-merge($base-table-theme-map, $custom-table-theme-map);
+$table-theme-map: map.merge($base-table-theme-map, $custom-table-theme-map);
