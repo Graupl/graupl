@@ -1,6 +1,7 @@
 // Table component styles.
 
 @use "variables" as *;
+@use "defaults";
 @use "../../mixins/layer" as *;
 @use "../../defaults" as root-defaults;
 @use "../../functions/theme";
@@ -10,42 +11,9 @@
     @each $variant in theme.variants() {
       &.#{$variant},
       .#{$variant} {
-        --#{root-defaults.$prefix}-table-header-background: #{theme.get(
-            $variant,
-            700
-          )};
-        --#{root-defaults.$prefix}-table-header-color: #{theme.get(
-            $variant,
-            100
-          )};
-        --#{root-defaults.$prefix}-table-striped-background: #{theme.get(
-            $variant,
-            200
-          )};
-        --#{root-defaults.$prefix}-table-striped-color: #{theme.get(
-            $variant,
-            900
-          )};
-        --#{root-defaults.$prefix}-table-hover-background: #{theme.get(
-            $variant,
-            300
-          )};
-        --#{root-defaults.$prefix}-table-hover-color: #{theme.get(
-            $variant,
-            900
-          )};
-        --#{root-defaults.$prefix}-table-border-color: #{theme.get(
-            $variant,
-            900
-          )};
-        --#{root-defaults.$prefix}-table-highlight-background: #{theme.get(
-            $variant,
-            500
-          )};
-        --#{root-defaults.$prefix}-table-highlight-color: #{theme.get(
-            $variant,
-            100
-          )};
+        @each $prop, $key in defaults.$table-theme-map {
+          --#{root-defaults.$prefix}-table-#{$prop}: #{theme.get($variant, $key)};
+        }
       }
     }
 

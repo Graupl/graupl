@@ -3,3 +3,28 @@
 // Generally, these should not be used directly when styling components.
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Table theme defaults.
+// This map is used to define the default colour shades for the
+// themed table components.
+//
+// e.g.
+// Primary tables will use primary--700 as the header background,
+// and primary--100 as the header text colour.
+//
+// Secondary/tertiary tables will use the same shade for their respective colours.
+$base-table-theme-map: (
+  header-background: 700,
+  header-color: 100,
+  striped-background: 200,
+  striped-color: 900,
+  hover-background: 300,
+  hover-color: 900,
+  border-color: 900,
+  highlight-background: 500,
+  highlight-color: 100,
+);
+$custom-table-theme-map: () !default;
+$table-theme-map: map-merge($base-table-theme-map, $custom-table-theme-map);
