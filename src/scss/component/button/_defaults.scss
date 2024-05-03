@@ -4,7 +4,36 @@
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
 
+@use "sass:map";
+
 $button-hover-transform: none !default;
 $button-hover-transform-reduced-motion: none !default;
 $button-active-transform: scale(0.95) !default;
 $button-active-transform-reduced-motion: scale(0.98) !default;
+
+// Button state theme defaults.
+// This map is used to define the default colour shades for the
+// themed button components.
+//
+// e.g.
+// Primary buttons will use primary--900 as the text colour, primary--100 as the background
+// and primary--900 as the border colour.
+//
+// Secondary/tertiary buttons will use the same shade for their respective colours.
+$base-button-state-theme-map: (
+  color: 900,
+  border-color: 700,
+  hover-color: 100,
+  hover-background: 700,
+  hover-border-color: 700,
+  active-color: 100,
+  active-background: 700,
+  active-border-color: 700,
+  disabled-color: 200,
+  disabled-border-color: 200,
+);
+$custom-button-state-theme-map: () !default;
+$button-state-theme-map: map.merge(
+  $base-button-state-theme-map,
+  $custom-button-state-theme-map
+);

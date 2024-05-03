@@ -17,17 +17,10 @@ $content-max-width: 96ch !default;
 
 // Screen sizes.
 $base-screen-sizes: (
-  xs: 0,
-  sm: 469px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  hd: 1920px,
-  qhd: 2560px,
-  uhd: 3840px,
-) !default;
+  xs: "(0 <= width <= 48ch)",
+);
 $custom-screen-sizes: () !default;
-$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes) !default;
+$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
 
 // Spacing properties.
 $spacer: 1rem !default;
@@ -43,12 +36,12 @@ $base-spacer-multipliers: (
   8: 3,
   9: 5,
   10: 10,
-) !default;
+);
 $custom-spacer-multipliers: () !default;
 $spacer-multipliers: map.merge(
   $base-spacer-multipliers,
   $custom-spacer-multipliers
-) !default;
+);
 
 // Size properties.
 $interactive-min-width: 44px !default;
@@ -60,10 +53,15 @@ $border-width: 2px !default;
 $border-style: solid !default;
 
 // Transition properties.
-$transition-duration-base: 100;
-$transition-duration: (
+$transition-duration-base: 100 !default;
+$transition-timing-function: ease !default;
+$base-transition-durations: (
   fast: #{$transition-duration-base * 1.5}ms,
   default: #{$transition-duration-base * 2.5}ms,
   slow: #{$transition-duration-base * 3}ms,
-) !default;
-$transition-timing-function: ease !default;
+);
+$custom-transition-durations: () !default;
+$transition-durations: map.merge(
+  $base-transition-durations,
+  $custom-transition-durations
+);

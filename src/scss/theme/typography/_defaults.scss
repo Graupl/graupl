@@ -24,21 +24,21 @@ $base-font-size-multipliers: (
   3xl: 2.074,
   4xl: 2.488,
   5xl: 2.986,
-) !default;
+);
 $custom-font-size-multipliers: () !default;
 $font-size-multipliers: map.merge(
   $base-font-size-multipliers,
   $custom-font-size-multipliers
-) !default;
+);
 
 // Weights.
 $base-font-weights: (
   light: 300,
   normal: 400,
   bold: 700,
-) !default;
+);
 $custom-font-weights: () !default;
-$font-weights: map.merge($base-font-weights, $custom-font-weights) !default;
+$font-weights: map.merge($base-font-weights, $custom-font-weights);
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:
