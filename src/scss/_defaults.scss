@@ -17,17 +17,10 @@ $content-max-width: 96ch !default;
 
 // Screen sizes.
 $base-screen-sizes: (
-  xs: 0,
-  sm: 469px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  hd: 1920px,
-  qhd: 2560px,
-  uhd: 3840px,
-) !default;
+  xs: '(0 <= width <= 48ch)',
+);
 $custom-screen-sizes: () !default;
-$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes) !default;
+$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
 
 // Spacing properties.
 $spacer: 1rem !default;

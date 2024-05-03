@@ -35,7 +35,7 @@
     }
   }
 
-  @include screen-under(sm) {
+  @include screen(xs) {
     .input-group.inline {
       grid-template-areas: $input-group-grid-template-areas;
       grid-template-columns: $input-group-grid-template-columns;

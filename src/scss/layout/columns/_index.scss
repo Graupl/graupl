@@ -28,7 +28,7 @@
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
-  @include screen-under(sm) {
+  @include screen(xs) {
     .columns {
       --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
