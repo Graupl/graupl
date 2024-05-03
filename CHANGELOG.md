@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.8](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2024-05-03)
+
+
+### Features
+
+* **button:** add sass map to control theme shades for each variant ([e94f530](https://github.com/Graupl/graupl/commit/e94f530c78d82cef20a509816adac805e30735f4))
+* **screen:** reduce and modernize media queries and mixins ([7b5fc3c](https://github.com/Graupl/graupl/commit/7b5fc3c3e7a2fd2ca6001a8a16a6e58d78d4da3f))
+* **table:** add sass map to control theme shades for each variant ([64f36e2](https://github.com/Graupl/graupl/commit/64f36e2bf8da79ba2f149202d573cca9a28fd041))
+
+
+### Bug Fixes
+
+* **sass:** correct table caption side variable name ([d958294](https://github.com/Graupl/graupl/commit/d958294347ead86528123b5056193721563bd7b2))
+* **sass:** remove defaults from custom prop variables ([151ad89](https://github.com/Graupl/graupl/commit/151ad8905a435ab631714ebf6a98a8107fac5c9e))
+* **sass:** remove defaults from variables and fix transition name ([55e4a2e](https://github.com/Graupl/graupl/commit/55e4a2e21acad2fd26e02e7834c37c9bfcec100f))
+
 ## [1.0.0-alpha.7](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.6...v1.0.0-alpha.7) (2024-05-01)
 
 
