@@ -30,21 +30,21 @@ $border-width: var(--#{defaults.$prefix}-border-width, defaults.$border-width);
 $border-style: var(--#{defaults.$prefix}-border-style, defaults.$border-style);
 
 // Transition properties.
-$transition-duration: (
+$transition-durations: (
   fast:
     var(
       --#{defaults.$prefix}-transition-duration-fast,
-      map.get(defaults.$transition-duration, fast)
+      map.get(defaults.$transition-durations, fast)
     ),
   default:
     var(
       --#{defaults.$prefix}-transition-duration-default,
-      map.get(defaults.$transition-duration, default)
+      map.get(defaults.$transition-durations, default)
     ),
   slow:
     var(
       --#{defaults.$prefix}-transition-duration-slow,
-      map.get(defaults.$transition-duration, slow)
+      map.get(defaults.$transition-durations, slow)
     ),
 );
 $transition-timing-function: var(

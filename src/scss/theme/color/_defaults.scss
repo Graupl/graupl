@@ -46,7 +46,7 @@ $custom-colors: () !default;
 $colors: map.merge($default-colors, $custom-colors);
 
 // A map for reversing the shade values of the dark theme.
-$dark-map: (
+$base-dark-map: (
   100: 900,
   200: 800,
   300: 700,
@@ -56,4 +56,6 @@ $dark-map: (
   700: 300,
   800: 200,
   900: 100,
-) !default;
+);
+$custom-dark-map: () !default;
+$dark-map: map.merge($base-dark-map, $custom-dark-map);
