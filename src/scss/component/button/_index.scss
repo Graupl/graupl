@@ -1,5 +1,6 @@
 // Graupl Button Component.
 
+@use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
 @use "variables" as *;
@@ -88,31 +89,9 @@
 
     @each $color, $map in color.$theme-active {
       &.#{$color} {
-        --#{root-defaults.$prefix}-button-color: #{map.get($map, 900)};
-        --#{root-defaults.$prefix}-button-hover-color: #{map.get($map, 100)};
-        --#{root-defaults.$prefix}-button-active-color: #{map.get($map, 100)};
-        --#{root-defaults.$prefix}-button-disabled-color: #{map.get($map, 200)};
-        --#{root-defaults.$prefix}-button-hover-background: #{map.get(
-            $map,
-            700
-          )};
-        --#{root-defaults.$prefix}-button-active-background: #{map.get(
-            $map,
-            700
-          )};
-        --#{root-defaults.$prefix}-button-border-color: #{map.get($map, 700)};
-        --#{root-defaults.$prefix}-button-hover-border-color: #{map.get(
-            $map,
-            700
-          )};
-        --#{root-defaults.$prefix}-button-active-border-color: #{map.get(
-            $map,
-            700
-          )};
-        --#{root-defaults.$prefix}-button-disabled-border-color: #{map.get(
-            $map,
-            200
-          )};
+        @each $prop, $shade in defaults.$button-state-theme-map {
+          --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
+        }
       }
     }
   }
