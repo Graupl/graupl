@@ -10,7 +10,7 @@
 // Table caption properties.
 $table-caption-side: var(
   --#{root-defaults.$prefix}-table-caption-side,
-  #{defaults.$caption-side}
+  #{defaults.$table-caption-side}
 ) !default;
 $table-caption-padding-x: var(
   --#{root-defaults.$prefix}-table-caption-padding-x,
