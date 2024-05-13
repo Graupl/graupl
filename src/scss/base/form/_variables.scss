@@ -4,6 +4,7 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 @use "../../theme/typography/variables" as typography;
+@use "../../theme/color//variables" as color;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -55,7 +56,7 @@ $fieldset-font-size: var(
 // Background properties.
 $input-background: var(
   --#{root-defaults.$prefix}-input-background,
-  #{theme.get(primary, 100)}
+  #{color.$root-background}
 );
 $fieldset-background: var(
   --#{root-defaults.$prefix}-fieldset-background,
