@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.9](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2024-05-13)
+
+
+### Build System
+
+* **npm:** refine exports ([8f40fe8](https://github.com/Graupl/graupl/commit/8f40fe88234032cff2782622a348dcb4cbf42541))
+
 ## [1.0.0-alpha.8](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.7...v1.0.0-alpha.8) (2024-05-03)
 
 
