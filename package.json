@@ -7,41 +7,11 @@
     ".": {
       "sass": "./scss/graupl.scss"
     },
-    "./base.scss": {
-      "sass": "./scss/base.scss"
+    "./*.scss": {
+      "sass": "./scss/*.scss"
     },
-    "./base/*.scss": {
-      "sass": "./scss/base/*.scss"
-    },
-    "./component.scss": {
-      "sass": "./scss/component.scss"
-    },
-    "./component/*.scss": {
-      "sass": "./scss/component/*.scss"
-    },
-    "./layout.scss": {
-      "sass": "./scss/layout.scss"
-    },
-    "./layout/*.scss": {
-      "sass": "./scss/layout/*.scss"
-    },
-    "./state.scss": {
-      "sass": "./scss/state.scss"
-    },
-    "./state/*.scss": {
-      "sass": "./scss/state/*.scss"
-    },
-    "./theme.scss": {
-      "sass": "./scss/theme.scss"
-    },
-    "./theme/*.scss": {
-      "sass": "./scss/theme/*.scss"
-    },
-    "./utilities.scss": {
-      "sass": "./scss/utilities.scss"
-    },
-    "./utilities/*.scss": {
-      "sass": "./scss/utilities/*.scss"
+    "./src/*.scss": {
+      "sass": "./src/scss/*.scss"
     }
   },
   "scripts": {
