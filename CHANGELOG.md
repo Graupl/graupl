@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.10](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2024-05-14)
+
+
+### Features
+
+* link button and form backgrounds to root background ([cbfc6e5](https://github.com/Graupl/graupl/commit/cbfc6e5bc9f37e5a72042185c5f3b7f6a5be58ed))
+* **utility:** add alignment utilities ([5183e13](https://github.com/Graupl/graupl/commit/5183e137ef130c3d4f45f92a132bb98fdf1748ac))
+* **utility:** add display utilities ([490748d](https://github.com/Graupl/graupl/commit/490748dc92e267be8df6af9c1935a8154481547a))
+* **utility:** add flex utilities ([fc85be3](https://github.com/Graupl/graupl/commit/fc85be3b7de06a0294705895e83ae5293ffd3103))
+* **utility:** add inset utilities ([f148b50](https://github.com/Graupl/graupl/commit/f148b504c6e21382100f16f9c5ed4d5d203f1dcc))
+* **utility:** add justification utilities ([92ae016](https://github.com/Graupl/graupl/commit/92ae01677797e3284edd463d1c5b2e34a6cd7da0))
+* **utility:** add list utilities ([8867ace](https://github.com/Graupl/graupl/commit/8867acec69845264726397bfa6a7202655865231))
+* **utility:** add position utilities ([0ec0f89](https://github.com/Graupl/graupl/commit/0ec0f89a8a8d89d0a486be609f5b3d30369570b4))
+* **utility:** add visibility utilities ([6c5dcd2](https://github.com/Graupl/graupl/commit/6c5dcd256c7255db7c5cff9d39a0debf198910a6))
+* **utility:** allow class customization and standardize color classes ([708c8c3](https://github.com/Graupl/graupl/commit/708c8c352e6713b3ab382e93c6ccf396a113368d))
+* **utility:** allow class customization for typography classes ([9bc66b6](https://github.com/Graupl/graupl/commit/9bc66b689dca897bb64a779e910402bdad141c98))
+
 ## [1.0.0-alpha.9](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.8...v1.0.0-alpha.9) (2024-05-13)
 
 
