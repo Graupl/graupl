@@ -1,0 +1,38 @@
+// Graupl color utilities.
+
+@use "variables" as *;
+@use "defaults";
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+@use "../../theme/color/variables" as color;
+
+@include layer(utilities) {
+  // For each theme colour, create a utility class for background and color.
+  @each $color, $map in color.$theme-active {
+    @each $shade, $value in $map {
+      $name: #{$color}-#{$shade};
+
+      .#{defaults.$background-class-prefix}#{$name} {
+        background: important.insert($value);
+      }
+
+      .#{defaults.$text-class-prefix}#{$name} {
+        color: important.insert($value);
+      }
+    }
+  }
+
+  // For each background property, create a utility class.
+  @each $name, $property in defaults.$background-properties {
+    .#{defaults.$background-class-prefix}#{$name} {
+      background: important.insert($property);
+    }
+  }
+
+  // For each text property, create a utility class.
+  @each $name, $property in defaults.$text-properties {
+    .#{defaults.$text-class-prefix}#{$name} {
+      color: important.insert($property);
+    }
+  }
+}
