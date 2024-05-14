@@ -1,0 +1,15 @@
+// Graupl position utilities.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each position property, create a utility class.
+  @each $name, $property in defaults.$position-properties {
+    .#{defaults.$position-class-prefix}#{$name} {
+      position: important.insert($property);
+    }
+  }
+}

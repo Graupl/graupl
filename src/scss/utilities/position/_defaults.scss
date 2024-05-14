@@ -1,0 +1,21 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+$position-class-prefix: "position-" !default;
+$base-position-properties: (
+  static: static,
+  fixed: fixed,
+  absolute: absolute,
+  relative: relative,
+  sticky: sticky,
+);
+$custom-position-properties: () !default;
+$position-properties: map.merge(
+  $base-position-properties,
+  $custom-position-properties
+);
