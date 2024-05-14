@@ -1,0 +1,29 @@
+// Graupl justification utilities.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each justify content property, create a utility class.
+  @each $name, $property in defaults.$justify-content-properties {
+    .#{defaults.$justify-content-class-prefix}#{$name} {
+      justify-content: important.insert($property);
+    }
+  }
+
+  // For each justify items property, create a utility class.
+  @each $name, $property in defaults.$justify-items-properties {
+    .#{defaults.$justify-items-class-prefix}#{$name} {
+      justify-items: important.insert($property);
+    }
+  }
+
+  // For each justify self property, create a utility class.
+  @each $name, $property in defaults.$justify-self-properties {
+    .#{defaults.$justify-self-class-prefix}#{$name} {
+      justify-self: important.insert($property);
+    }
+  }
+}

@@ -1,0 +1,54 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Justify content properties.
+$justify-content-class-prefix: "justify-content-" !default;
+$base-justify-content-properties: (
+  normal: normal,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+  stretch: stretch,
+);
+$custom-justify-content-properties: () !default;
+$justify-content-properties: map.merge(
+  $base-justify-content-properties,
+  $custom-justify-content-properties
+);
+
+// Justify items properties.
+$justify-items-class-prefix: "justify-items-" !default;
+$base-justify-items-properties: (
+  start: start,
+  end: end,
+  center: center,
+  stretch: stretch,
+);
+$custom-justify-items-properties: () !default;
+$justify-items-properties: map.merge(
+  $base-justify-items-properties,
+  $custom-justify-items-properties
+);
+
+// Justify self properties.
+$justify-self-class-prefix: "justify-self-" !default;
+$base-justify-self-properties: (
+  auto: auto,
+  start: start,
+  end: end,
+  center: center,
+  stretch: stretch,
+);
+$custom-justify-self-properties: () !default;
+$justify-self-properties: map.merge(
+  $base-justify-self-properties,
+  $custom-justify-self-properties
+);
