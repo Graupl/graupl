@@ -3,3 +3,23 @@
 // Generally, these should not be used directly when styling components.
 // They are mainly used to provide default fallbacks for custom properties
 // which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Text size properties.
+$text-class-prefix: "text-" !default;
+
+// Font weight properties.
+$font-weight-class-prefix: "font-" !default;
+
+// Font style properties.
+$font-style-class-prefix: "font-" !default;
+$base-font-style-properties: (
+  normal: normal,
+  italic: italic,
+);
+$custom-font-style-properties: () !default;
+$font-style-properties: map.merge(
+  $base-font-style-properties,
+  $custom-font-style-properties
+);
