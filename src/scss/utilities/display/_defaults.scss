@@ -1,0 +1,27 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+$display-class-prefix: "display-" !default;
+$base-display-properties: (
+  block: block,
+  inline-block: inline-block,
+  inline: inline,
+  flex: flex,
+  inline-flex: inline-flex,
+  grid: grid,
+  inline-grid: inline-grid,
+  flow-root: flow-root,
+  none: none,
+  contents: contents,
+  list-item: list-item,
+);
+$custom-display-properties: () !default;
+$display-properties: map.merge(
+  $base-display-properties,
+  $custom-display-properties
+);
