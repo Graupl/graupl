@@ -1,0 +1,58 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Flex direction properties.
+$flex-direction-class-prefix: "flex-" !default;
+$base-flex-direction-properties: (
+  row: row,
+  row-reverse: row-reverse,
+  col: column,
+  col-reverse: column-reverse,
+);
+$custom-flex-direction-properties: () !default;
+$flex-direction-properties: map.merge(
+  $base-flex-direction-properties,
+  $custom-flex-direction-properties
+);
+
+// Flex wrap properties.
+$flex-wrap-class-prefix: "flex-" !default;
+$base-flex-wrap-properties: (
+  wrap: wrap,
+  wrap-reverse: wrap-reverse,
+  nowrap: nowrap,
+);
+$custom-flex-wrap-properties: () !default;
+$flex-wrap-properties: map.merge(
+  $base-flex-wrap-properties,
+  $custom-flex-wrap-properties
+);
+
+// Flex grow properties.
+$flex-grow-class-prefix: "flex-" !default;
+$base-flex-grow-properties: (
+  grow: 1,
+  no-grow: 0,
+);
+$custom-flex-grow-properties: () !default;
+$flex-grow-properties: map.merge(
+  $base-flex-grow-properties,
+  $custom-flex-grow-properties
+);
+
+// Flex shrink properties.
+$flex-shrink-class-prefix: "flex-" !default;
+$base-flex-shrink-properties: (
+  shrink: 1,
+  no-shrink: 0,
+);
+$custom-flex-shrink-properties: () !default;
+$flex-shrink-properties: map.merge(
+  $base-flex-shrink-properties,
+  $custom-flex-shrink-properties
+);
