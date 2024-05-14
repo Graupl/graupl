@@ -3,6 +3,7 @@
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
 @use "../../theme/typography/variables" as typography;
 @use "../../functions/theme";
 @use "sass:map";
@@ -65,7 +66,7 @@ $button-active-transform-reduced-motion: var(
 // Background properties.
 $button-background: var(
   --#{root-defaults.$prefix}-button-background,
-  #{theme.get(primary, 100)}
+  #{color.$root-background}
 );
 $button-hover-background: var(
   --#{root-defaults.$prefix}-button-hover-background,
@@ -77,7 +78,7 @@ $button-active-background: var(
 );
 $button-disabled-background: var(
   --#{root-defaults.$prefix}-button-disabled-background,
-  #{theme.get(primary, 100)}
+  #{color.$root-background}
 );
 
 // Text properties.
