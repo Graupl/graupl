@@ -1,0 +1,36 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Inset properties.
+$base-inset-properties: (
+  inset: inset,
+  inset-x: left right,
+  inset-y: top bottom,
+  inset-start: inset-inline-start,
+  inset-end: inset-inline-end,
+  top: top,
+  right: right,
+  bottom: bottom,
+  left: left,
+);
+$custom-inset-properties: () !default;
+$inset-properties: map.merge($base-inset-properties, $custom-inset-properties);
+
+// Inset values.
+$base-inset-values: (
+  0: 0,
+  auto: auto,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+);
+$custom-inset-values: () !default;
+$inset-values: map.merge($base-inset-values, $custom-inset-values);
