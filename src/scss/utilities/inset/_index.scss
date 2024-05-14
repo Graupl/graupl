@@ -1,0 +1,19 @@
+// Graupl inset utilities.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each inset property, create a utility class.
+  @each $type, $property in defaults.$inset-properties {
+    @each $name, $value in defaults.$inset-values {
+      .#{$type}-#{$name} {
+        @each $prop in $property {
+          #{$prop}: important.insert($value);
+        }
+      }
+    }
+  }
+}

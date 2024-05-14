@@ -1,0 +1,20 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Visibility properties.
+$visibility-class-prefix: "visibility-" !default;
+$base-visibility-properties: (
+  visible: visible,
+  hidden: hidden,
+  collapse: collapse,
+);
+$custom-visibility-properties: () !default;
+$visibility-properties: map.merge(
+  $base-visibility-properties,
+  $custom-visibility-properties
+);

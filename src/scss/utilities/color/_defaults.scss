@@ -1,0 +1,30 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Background utility properties.
+$background-class-prefix: "bg-" !default;
+$base-background-properties: (
+  inherit: inherit,
+  current: currentcolor,
+  transparent: transparent,
+);
+$custom-background-properties: () !default;
+$background-properties: map.merge(
+  $base-background-properties,
+  $custom-background-properties
+);
+
+// Text utility properties.
+$text-class-prefix: "text-" !default;
+$base-text-properties: (
+  inherit: inherit,
+  current: currentcolor,
+  transparent: transparent,
+);
+$custom-text-properties: () !default;
+$text-properties: map.merge($base-text-properties, $custom-text-properties);

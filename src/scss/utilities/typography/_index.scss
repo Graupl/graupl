@@ -1,32 +1,37 @@
 // Graupl typography utilities.
 
 @use "variables" as *;
+@use "defaults";
 @use "../../mixins/layer" as *;
 @use "../../functions/important";
 @use "../../theme/typography/variables" as typography;
 
 @include layer(utilities) {
+  // For each font size property, create a utility class.
   @each $size, $value in typography.$font-sizes {
-    .text-#{$size} {
+    .#{defaults.$text-class-prefix}#{$size} {
       font-size: important.insert($value);
     }
   }
 
-  .text-paragraph {
+  // Create utility classes for each type of text style in Graupl.
+  // These will apply not only the font size, but also the margin, font weight, and line height.
+  // This will allow for a more consistent and maintainable typography system.
+  .#{defaults.$text-class-prefix}paragraph {
     margin: important.insert(typography.$paragraph-margin);
     font-size: important.insert(typography.$paragraph-font-size);
     font-weight: important.insert(typography.$paragraph-font-weight);
     line-height: important.insert(typography.$paragraph-line-height);
   }
 
-  .text-small {
+  .#{defaults.$text-class-prefix}small {
     margin: important.insert(typography.$small-margin);
     font-size: important.insert(typography.$small-font-size);
     font-weight: important.insert(typography.$small-font-weight);
     line-height: important.insert(typography.$small-line-height);
   }
 
-  .text-h1 {
+  .#{defaults.$text-class-prefix}h1 {
     margin: important.insert(typography.$h1-margin);
     font-family: important.insert(typography.$h1-font-family);
     font-size: important.insert(typography.$h1-font-size);
@@ -34,7 +39,7 @@
     line-height: important.insert(typography.$h1-line-height);
   }
 
-  .text-h2 {
+  .#{defaults.$text-class-prefix}h2 {
     margin: important.insert(typography.$h2-margin);
     font-family: important.insert(typography.$h2-font-family);
     font-size: important.insert(typography.$h2-font-size);
@@ -42,7 +47,7 @@
     line-height: important.insert(typography.$h2-line-height);
   }
 
-  .text-h3 {
+  .#{defaults.$text-class-prefix}h3 {
     margin: important.insert(typography.$h3-margin);
     font-family: important.insert(typography.$h3-font-family);
     font-size: important.insert(typography.$h3-font-size);
@@ -50,7 +55,7 @@
     line-height: important.insert(typography.$h3-line-height);
   }
 
-  .text-h4 {
+  .#{defaults.$text-class-prefix}h4 {
     margin: important.insert(typography.$h4-margin);
     font-family: important.insert(typography.$h4-font-family);
     font-size: important.insert(typography.$h4-font-size);
@@ -58,7 +63,7 @@
     line-height: important.insert(typography.$h4-line-height);
   }
 
-  .text-h5 {
+  .#{defaults.$text-class-prefix}h5 {
     margin: important.insert(typography.$h5-margin);
     font-family: important.insert(typography.$h5-font-family);
     font-size: important.insert(typography.$h5-font-size);
@@ -66,7 +71,7 @@
     line-height: important.insert(typography.$h5-line-height);
   }
 
-  .text-h6 {
+  .#{defaults.$text-class-prefix}h6 {
     margin: important.insert(typography.$h6-margin);
     font-family: important.insert(typography.$h6-font-family);
     font-size: important.insert(typography.$h6-font-size);
@@ -74,19 +79,17 @@
     line-height: important.insert(typography.$h6-line-height);
   }
 
-  // Font weight utilities.
+  // For each font weight property, create a utility class.
   @each $size, $value in typography.$font-weights {
-    .font-#{$size} {
+    .#{defaults.$font-weight-class-prefix}#{$size} {
       font-weight: important.insert($value);
     }
   }
 
-  // Font style utilities.
-  .font-italic {
-    font-style: important.insert(italic);
-  }
-
-  .font-not-italic {
-    font-style: important.insert(normal);
+  // For each font style property, create a utility class.
+  @each $size, $value in defaults.$font-style-properties {
+    .#{defaults.$font-style-class-prefix}#{$size} {
+      font-style: important.insert($value);
+    }
   }
 }

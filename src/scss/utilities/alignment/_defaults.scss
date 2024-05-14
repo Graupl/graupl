@@ -1,0 +1,57 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// Align content properties.
+$align-content-class-prefix: "align-content-" !default;
+$base-align-content-properties: (
+  normal: normal,
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+  evenly: space-evenly,
+  baseline: baseline,
+  stretch: stretch,
+);
+$custom-align-content-properties: () !default;
+$align-content-properties: map.merge(
+  $base-align-content-properties,
+  $custom-align-content-properties
+);
+
+// Align items properties.
+$align-items-class-prefix: "align-items-" !default;
+$base-align-items-properties: (
+  start: start,
+  end: end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+);
+$custom-align-items-properties: () !default;
+$align-items-properties: map.merge(
+  $base-align-items-properties,
+  $custom-align-items-properties
+);
+
+// Align self properties.
+$align-self-class-prefix: "align-self-" !default;
+$base-align-self-properties: (
+  auto: auto,
+  start: start,
+  end: end,
+  center: center,
+  baseline: baseline,
+  stretch: stretch,
+);
+$custom-align-self-properties: () !default;
+$align-self-properties: map.merge(
+  $base-align-self-properties,
+  $custom-align-self-properties
+);

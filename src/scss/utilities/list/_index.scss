@@ -1,0 +1,22 @@
+// Graupl visibility utilities.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each list style type property, create a utility class.
+  @each $name, $property in defaults.$list-style-type-properties {
+    .#{defaults.$list-style-type-class-prefix}#{$name} {
+      list-style-type: important.insert($property);
+    }
+  }
+
+  // For each list style position property, create a utility class.
+  @each $name, $property in defaults.$list-style-postion-properties {
+    .#{defaults.$list-style-type-class-prefix}#{$name} {
+      list-style-position: important.insert($property);
+    }
+  }
+}
