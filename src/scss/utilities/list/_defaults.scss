@@ -1,0 +1,34 @@
+// Default values for Graupl.
+//
+// Generally, these should not be used directly when styling components.
+// They are mainly used to provide default fallbacks for custom properties
+// which can be found in the `variables.scss` file.
+
+@use "sass:map";
+
+// List style type properties.
+$list-style-type-class-prefix: "list-style-" !default;
+$base-list-style-type-properties: (
+  none: none,
+  disc: disc,
+  decimal: decimal,
+  circle: circle,
+  square: square,
+);
+$custom-list-style-type-properties: () !default;
+$list-style-type-properties: map.merge(
+  $base-list-style-type-properties,
+  $custom-list-style-type-properties
+);
+
+// List style position properties.
+$list-style-postion-class-prefix: "list-style-" !default;
+$base-list-style-postion-properties: (
+  inside: inside,
+  outside: outside,
+);
+$custom-list-style-postion-properties: () !default;
+$list-style-postion-properties: map.merge(
+  $base-list-style-postion-properties,
+  $custom-list-style-postion-properties
+);
