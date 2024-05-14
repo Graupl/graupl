@@ -1,0 +1,29 @@
+// Graupl alignment utilities.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each align content property, create a utility class.
+  @each $name, $property in defaults.$align-content-properties {
+    .#{defaults.$align-content-class-prefix}#{$name} {
+      align-content: important.insert($property);
+    }
+  }
+
+  // For each align items property, create a utility class.
+  @each $name, $property in defaults.$align-items-properties {
+    .#{defaults.$align-items-class-prefix}#{$name} {
+      align-items: important.insert($property);
+    }
+  }
+
+  // For each align self property, create a utility class.
+  @each $name, $property in defaults.$align-self-properties {
+    .#{defaults.$align-self-class-prefix}#{$name} {
+      align-self: important.insert($property);
+    }
+  }
+}
