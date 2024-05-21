@@ -81,6 +81,31 @@
       }
     }
 
+    &.link {
+      --#{root-defaults.$prefix}-button-color: #{link.$link-color};
+      --#{root-defaults.$prefix}-button-hover-color: #{link.$link-hover-color};
+      --#{root-defaults.$prefix}-button-active-color: #{link.$link-active-color};
+      --#{root-defaults.$prefix}-button-disabled-color: #{link.$link-disabled-color};
+      --#{root-defaults.$prefix}-button-background: none;
+      --#{root-defaults.$prefix}-button-hover-background: none;
+      --#{root-defaults.$prefix}-button-active-background: none;
+      --#{root-defaults.$prefix}-button-disabled-background: none;
+      --#{root-defaults.$prefix}-button-border-color: none;
+      --#{root-defaults.$prefix}-button-hover-border-color: none;
+      --#{root-defaults.$prefix}-button-active-border-color: none;
+      --#{root-defaults.$prefix}-button-disabled-border-color: none;
+      --#{root-defaults.$prefix}-button-hover-transform: none;
+      --#{root-defaults.$prefix}-button-active-transform: none;
+    }
+
+    &:not(.link) {
+      --#{root-defaults.$prefix}-link-color: #{$button-color};
+      --#{root-defaults.$prefix}-link-hover-color: #{$button-hover-color};
+      --#{root-defaults.$prefix}-link-active-color: #{$button-active-color};
+      --#{root-defaults.$prefix}-link-visited-color: #{$button-hover-color};
+      --#{root-defaults.$prefix}-link-disabled-color: #{$button-disabled-color};
+    }
+
     &:hover {
       --#{root-defaults.$prefix}-button-border-color: #{$button-hover-border-color};
       --#{root-defaults.$prefix}-button-background: #{$button-hover-background};
@@ -94,21 +119,16 @@
     }
 
     &:disabled {
-      --#{root-defaults.$prefix}-button-border-color: $button-disabled-border-color;
-      --#{root-defaults.$prefix}-button-background: $button-disabled-background;
-      --#{root-defaults.$prefix}-button-color: $button-disabled-color;
+      --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
 
       &:hover,
       &:active {
-        --#{root-defaults.$prefix}-button-border-color: $button-disabled-border-color;
-        --#{root-defaults.$prefix}-button-background: $button-disabled-background;
-        --#{root-defaults.$prefix}-button-color: $button-disabled-color;
+        --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
+        --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
       }
-    }
-
-    &.link {
-      --#{root-defaults.$prefix}-button-color: $link.$link-color;
-      --#{root-defaults.$prefix}-button-background: none;
     }
   }
 }

@@ -8,6 +8,10 @@
   a {
     text-decoration: $link-text-decoration;
     text-decoration-thickness: $link-text-decoration-thickness;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
   }
 }
 
@@ -16,19 +20,31 @@
     color: $link-color;
 
     &:hover {
-      --#{root-defaults.$prefix}-link-color: $link-hover-color;
+      --#{root-defaults.$prefix}-link-color: #{$link-hover-color};
     }
 
     &:active {
-      --#{root-defaults.$prefix}-link-color: $link-active-color;
+      --#{root-defaults.$prefix}-link-color: #{$link-active-color};
     }
 
+    // stylelint-disable no-descending-specificity
     &:visited {
-      --#{root-defaults.$prefix}-link-color: $link-visited-color;
-
+      &,
       &:hover {
-        --#{root-defaults.$prefix}-link-color: $link-hover-color;
+        --#{root-defaults.$prefix}-link-color: #{$link-hover-color};
       }
     }
+
+    &[disabled] {
+      pointer-events: none;
+
+      &,
+      &:hover,
+      &:active,
+      &:visited {
+        --#{root-defaults.$prefix}-link-color: #{$link-disabled-color};
+      }
+    }
+    // stylelint-enable no-descending-specificity
   }
 }
