@@ -63,27 +63,27 @@
     color: $button-color;
 
     &:hover {
-      border-color: $button-hover-border-color;
-      background: $button-hover-background;
-      color: $button-hover-color;
+      --#{root-defaults.$prefix}-button-border-color: #{$button-hover-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-hover-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-hover-color};
     }
 
     &:active {
-      border-color: $button-active-border-color;
-      background: $button-active-background;
-      color: $button-active-color;
+      --#{root-defaults.$prefix}-button-border-color: #{$button-active-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-active-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-active-color};
     }
 
     &:disabled {
-      border-color: $button-disabled-border-color;
-      background: $button-disabled-background;
-      color: $button-disabled-color;
+      --#{root-defaults.$prefix}-button-border-color: $button-disabled-border-color;
+      --#{root-defaults.$prefix}-button-background: $button-disabled-background;
+      --#{root-defaults.$prefix}-button-color: $button-disabled-color;
 
       &:hover,
       &:active {
-        border-color: $button-disabled-border-color;
-        background: $button-disabled-background;
-        color: $button-disabled-color;
+        --#{root-defaults.$prefix}-button-border-color: $button-disabled-border-color;
+        --#{root-defaults.$prefix}-button-background: $button-disabled-background;
+        --#{root-defaults.$prefix}-button-color: $button-disabled-color;
       }
     }
 

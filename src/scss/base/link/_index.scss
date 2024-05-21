@@ -1,6 +1,7 @@
 // Link base styles.
 
 @use "variables" as *;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 
 @include layer(base) {
@@ -15,18 +16,18 @@
     color: $link-color;
 
     &:hover {
-      color: $link-hover-color;
+      --#{root-defaults.$prefix}-link-color: $link-hover-color;
     }
 
     &:active {
-      color: $link-active-color;
+      --#{root-defaults.$prefix}-link-color: $link-active-color;
     }
 
     &:visited {
-      color: $link-visited-color;
+      --#{root-defaults.$prefix}-link-color: $link-visited-color;
 
       &:hover {
-        color: $link-hover-color;
+        --#{root-defaults.$prefix}-link-color: $link-hover-color;
       }
     }
   }
