@@ -4,7 +4,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
 @use "../../theme/typography/variables" as typography;
-@use "../../functions/theme" as theme;
+@use "../../theme/color/variables" as color;
 @use "sass:map";
 
 // Table caption properties.
@@ -38,11 +38,11 @@ $table-header-padding-y: var(
 $table-header-padding: $table-header-padding-y $table-header-padding-x;
 $table-header-background: var(
   --#{root-defaults.$prefix}-table-header-background,
-  #{theme.get(primary, 100)}
+  #{color.$root-background}
 );
 $table-header-color: var(
   --#{root-defaults.$prefix}-table-header-color,
-  #{theme.get(primary, 900)}
+  #{color.$root-font-color}
 );
 
 // Table cell properties.
@@ -57,9 +57,9 @@ $table-cell-padding-y: var(
 $table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
 $table-cell-background: var(
   --#{root-defaults.$prefix}-table-cell-background,
-  #{theme.get(primary, 100)}
+  #{color.$root-background}
 );
 $table-cell-color: var(
   --#{root-defaults.$prefix}-table-cell-color,
-  #{theme.get(primary, 900)}
+  #{color.$root-font-color}
 );
