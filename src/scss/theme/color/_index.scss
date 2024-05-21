@@ -9,7 +9,7 @@
 @include layer(theme) {
   :root {
     background: $root-background;
-    color: $root-font-color;
+    color: $root-color;
 
     @each $color, $map in $theme-light {
       @each $shade, $value in $map {

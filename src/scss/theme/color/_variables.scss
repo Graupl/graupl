@@ -111,8 +111,8 @@ $theme-active: ();
 }
 
 // Colour properties.
-$root-font-color: var(
-  --#{root-defaults.$prefix}-root-font-color,
+$root-color: var(
+  --#{root-defaults.$prefix}-root-color,
   #{map.get(map.get($theme-active, primary), 900)}
 );
 $root-background: var(
