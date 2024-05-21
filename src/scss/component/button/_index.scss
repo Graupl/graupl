@@ -3,6 +3,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
+@use "../../base/link/variables" as link;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
@@ -38,6 +39,16 @@
       &:active {
         transform: none;
       }
+    }
+
+    &.link {
+      min-width: auto;
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      font-size: inherit;
+      text-decoration: link.$link-text-decoration;
+      text-decoration-thickness: link.$link-text-decoration-thickness;
     }
   }
 
@@ -93,6 +104,11 @@
           --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
         }
       }
+    }
+
+    &.link {
+      --#{root-defaults.$prefix}-button-color: $link.$link-color;
+      --#{root-defaults.$prefix}-button-background: none;
     }
   }
 }
