@@ -73,6 +73,14 @@
     background: $button-background;
     color: $button-color;
 
+    @each $color, $map in color.$theme-active {
+      &.#{$color} {
+        @each $prop, $shade in defaults.$button-state-theme-map {
+          --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
+        }
+      }
+    }
+
     &:hover {
       --#{root-defaults.$prefix}-button-border-color: #{$button-hover-border-color};
       --#{root-defaults.$prefix}-button-background: #{$button-hover-background};
@@ -95,14 +103,6 @@
         --#{root-defaults.$prefix}-button-border-color: $button-disabled-border-color;
         --#{root-defaults.$prefix}-button-background: $button-disabled-background;
         --#{root-defaults.$prefix}-button-color: $button-disabled-color;
-      }
-    }
-
-    @each $color, $map in color.$theme-active {
-      &.#{$color} {
-        @each $prop, $shade in defaults.$button-state-theme-map {
-          --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
-        }
       }
     }
 
