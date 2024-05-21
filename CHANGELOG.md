@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.11](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2024-05-21)
+
+
+### Features
+
+* allow buttons and links to look like eachother ([87aae2f](https://github.com/Graupl/graupl/commit/87aae2f87e2c3ea76fda1938345dec936b3ace8b))
+
+
+### Code Refactoring
+
+* **tables:** sync default colours with root colours ([b91f59c](https://github.com/Graupl/graupl/commit/b91f59c1c10953c41208b53f92a519195f1bacf9))
+* **variable:** change root-font-color to root-color ([4b04a5c](https://github.com/Graupl/graupl/commit/4b04a5c67c3187f48351eb5b0edf7aaf646c0dd8))
+
 ## [1.0.0-alpha.10](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.9...v1.0.0-alpha.10) (2024-05-14)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@graupl/graupl",
-  "version": "1.0.0-alpha.10",
+  "version": "1.0.0-alpha.11",
   "description": "A modular and modern CSS framework.",
   "type": "module",
   "exports": {
