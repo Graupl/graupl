@@ -3,6 +3,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
+@use "../../base/link/variables" as link;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
@@ -39,6 +40,16 @@
         transform: none;
       }
     }
+
+    &.link {
+      min-width: auto;
+      min-height: auto;
+      padding: 0;
+      border: 0;
+      font-size: inherit;
+      text-decoration: link.$link-text-decoration;
+      text-decoration-thickness: link.$link-text-decoration-thickness;
+    }
   }
 
   @include animation-off {
@@ -62,36 +73,61 @@
     background: $button-background;
     color: $button-color;
 
-    &:hover {
-      border-color: $button-hover-border-color;
-      background: $button-hover-background;
-      color: $button-hover-color;
-    }
-
-    &:active {
-      border-color: $button-active-border-color;
-      background: $button-active-background;
-      color: $button-active-color;
-    }
-
-    &:disabled {
-      border-color: $button-disabled-border-color;
-      background: $button-disabled-background;
-      color: $button-disabled-color;
-
-      &:hover,
-      &:active {
-        border-color: $button-disabled-border-color;
-        background: $button-disabled-background;
-        color: $button-disabled-color;
-      }
-    }
-
     @each $color, $map in color.$theme-active {
       &.#{$color} {
         @each $prop, $shade in defaults.$button-state-theme-map {
           --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
         }
+      }
+    }
+
+    &.link {
+      --#{root-defaults.$prefix}-button-color: #{link.$link-color};
+      --#{root-defaults.$prefix}-button-hover-color: #{link.$link-hover-color};
+      --#{root-defaults.$prefix}-button-active-color: #{link.$link-active-color};
+      --#{root-defaults.$prefix}-button-disabled-color: #{link.$link-disabled-color};
+      --#{root-defaults.$prefix}-button-background: none;
+      --#{root-defaults.$prefix}-button-hover-background: none;
+      --#{root-defaults.$prefix}-button-active-background: none;
+      --#{root-defaults.$prefix}-button-disabled-background: none;
+      --#{root-defaults.$prefix}-button-border-color: none;
+      --#{root-defaults.$prefix}-button-hover-border-color: none;
+      --#{root-defaults.$prefix}-button-active-border-color: none;
+      --#{root-defaults.$prefix}-button-disabled-border-color: none;
+      --#{root-defaults.$prefix}-button-hover-transform: none;
+      --#{root-defaults.$prefix}-button-active-transform: none;
+    }
+
+    &:not(.link) {
+      --#{root-defaults.$prefix}-link-color: #{$button-color};
+      --#{root-defaults.$prefix}-link-hover-color: #{$button-hover-color};
+      --#{root-defaults.$prefix}-link-active-color: #{$button-active-color};
+      --#{root-defaults.$prefix}-link-visited-color: #{$button-hover-color};
+      --#{root-defaults.$prefix}-link-disabled-color: #{$button-disabled-color};
+    }
+
+    &:hover {
+      --#{root-defaults.$prefix}-button-border-color: #{$button-hover-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-hover-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-hover-color};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-button-border-color: #{$button-active-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-active-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-active-color};
+    }
+
+    &:disabled {
+      --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
+      --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
+
+      &:hover,
+      &:active {
+        --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
+        --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
       }
     }
   }

@@ -30,3 +30,7 @@ $link-visited-color: var(
   --#{root-defaults.$prefix}-link-visited-color,
   #{theme.get(primary, 700)}
 );
+$link-disabled-color: var(
+  --#{root-defaults.$prefix}-link-disabled-color,
+  #{theme.get(primary, 200)}
+);
