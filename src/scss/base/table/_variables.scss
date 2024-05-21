@@ -42,7 +42,7 @@ $table-header-background: var(
 );
 $table-header-color: var(
   --#{root-defaults.$prefix}-table-header-color,
-  #{color.$root-font-color}
+  #{color.$root-color}
 );
 
 // Table cell properties.
@@ -61,5 +61,5 @@ $table-cell-background: var(
 );
 $table-cell-color: var(
   --#{root-defaults.$prefix}-table-cell-color,
-  #{color.$root-font-color}
+  #{color.$root-color}
 );
