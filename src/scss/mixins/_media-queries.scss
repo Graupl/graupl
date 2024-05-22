@@ -1,4 +1,4 @@
-// Media query mixins.
+// @graupl/graupl media query mixins.
 
 @use "../defaults" as root-defaults;
 @use "sass:map";
@@ -17,6 +17,7 @@
   }
 }
 
+// A media query for targetting specific screen sizes.
 @mixin screen($size) {
   $screen-size: map.get(root-defaults.$screen-sizes, $size);
 
