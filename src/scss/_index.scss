@@ -5,6 +5,9 @@
 // Forward the layer initialization.
 @forward "init";
 
+// Forward normalize.
+@forward "normalize";
+
 // Forward all layers.
 @forward "base";
 @forward "layout";
