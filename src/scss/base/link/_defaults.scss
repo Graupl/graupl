@@ -6,4 +6,14 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+// Link selectors.
+$link-selector: "a" !default;
+
+// Link properties.
 $link-text-decoration: underline;
+$link-hover-text-decoration: underline;
+$link-transform: none !default;
+$link-hover-transform: none !default;
+$link-hover-transform-reduced-motion: none !default;
+$link-active-transform: none !default;
+$link-active-transform-reduced-motion: none !default;

@@ -7,6 +7,7 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 @use "../../functions/theme";
+@use "sass:map";
 
 // Link properties.
 $link-text-decoration: var(
@@ -20,6 +21,14 @@ $link-text-decoration-thickness: var(
 $link-color: var(
   --#{root-defaults.$prefix}-link-color,
   #{theme.get(primary, 700)}
+);
+$link-hover-text-decoration: var(
+  --#{root-defaults.$prefix}-link-hover-text-decoration,
+  #{defaults.$link-hover-text-decoration}
+);
+$link-hover-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-hover-text-decoration-thickness,
+  #{root-variables.$border-width}
 );
 $link-hover-color: var(
   --#{root-defaults.$prefix}-link-hover-color,
@@ -36,4 +45,56 @@ $link-visited-color: var(
 $link-disabled-color: var(
   --#{root-defaults.$prefix}-link-disabled-color,
   #{theme.get(primary, 200)}
+);
+$link-background: var(--#{root-defaults.$prefix}-link-background, transparent);
+$link-hover-background: var(
+  --#{root-defaults.$prefix}-link-hover-background,
+  transparent
+);
+$link-active-background: var(
+  --#{root-defaults.$prefix}-link-active-background,
+  transparent
+);
+$link-visited-background: var(
+  --#{root-defaults.$prefix}-link-visited-background,
+  transparent
+);
+$link-disabled-background: var(
+  --#{root-defaults.$prefix}-link-disabled-background,
+  transparent
+);
+$link-padding-x: var(
+  --#{root-defaults.$prefix}-link-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$link-padding-y: var(
+  --#{root-defaults.$prefix}-link-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$link-padding: var(
+  --#{root-defaults.$prefix}-link-padding,
+  #{$link-padding-y} #{$link-padding-x}
+);
+$link-transition: var(
+  --#{root-defaults.$prefix}-link-transition,
+  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$link-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-link-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+);
+$link-transform: var(
+  --#{root-defaults.$prefix}-link-transform,
+  #{defaults.$link-transform}
+);
+$link-hover-transform: var(
+  --#{root-defaults.$prefix}-link-hover-transform,
+  #{defaults.$link-hover-transform}
+);
+$link-active-transform: var(
+  --#{root-defaults.$prefix}-link-active-transform,
+  #{defaults.$link-active-transform}
 );
