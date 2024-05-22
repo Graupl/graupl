@@ -8,6 +8,13 @@
 
 @use "sass:map";
 
+// Button selectors.
+$button-selector: ".button" !default;
+$button-link-selector: ".link" !default;
+$button-theme-selector-prefix: "." !default;
+
+// Button properties.
+$button-transform: none !default;
 $button-hover-transform: none !default;
 $button-hover-transform-reduced-motion: none !default;
 $button-active-transform: scale(0.95) !default;
