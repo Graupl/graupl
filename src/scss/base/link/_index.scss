@@ -9,7 +9,7 @@
     text-decoration: $link-text-decoration;
     text-decoration-thickness: $link-text-decoration-thickness;
 
-    &:disabled {
+    &[disabled] {
       cursor: not-allowed;
     }
   }
@@ -36,8 +36,6 @@
     }
 
     &[disabled] {
-      pointer-events: none;
-
       &,
       &:hover,
       &:active,

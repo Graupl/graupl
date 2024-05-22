@@ -32,7 +32,12 @@
       transform: $button-active-transform;
     }
 
-    &:disabled {
+    &:not(.link) {
+      --#{root-defaults.$prefix}-link-text-decoration: none;
+    }
+
+    &:disabled,
+    &[disabled] {
       cursor: not-allowed;
 
       &:hover,
@@ -118,7 +123,8 @@
       --#{root-defaults.$prefix}-button-color: #{$button-active-color};
     }
 
-    &:disabled {
+    &:disabled,
+    &[disabled] {
       --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
       --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
       --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
