@@ -1,4 +1,7 @@
-// Variables referencing custom properties.
+// @graupl/graupl form base variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
 
 @use "defaults";
 @use "../../variables" as root-variables;
