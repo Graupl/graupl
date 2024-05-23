@@ -1,12 +1,14 @@
 // @gruapl/graupl input group component styles.
 
+@use "defaults";
+@use "../../base/form/defaults" as form-defaults;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
 
 // stylelint-disable declaration-block-no-redundant-longhand-properties
 @include layer(component) {
-  .input-group {
+  #{defaults.$input-group-selector} {
     display: grid;
     grid-template-areas: $input-group-grid-template-areas;
     grid-template-columns: $input-group-grid-template-columns;
@@ -14,21 +16,21 @@
     align-items: center;
     gap: $input-group-gap;
 
-    label {
+    #{form-defaults.$label-selector} {
       grid-area: $input-group-label-grid-area;
     }
 
-    input,
-    textarea,
-    select {
+    #{form-defaults.$input-selector},
+    #{form-defaults.$textarea-selector},
+    #{form-defaults.$select-selector} {
       grid-area: $input-group-input-grid-area;
     }
 
-    .help-text {
+    #{defaults.$input-group-help-text-selector} {
       grid-area: $input-group-help-grid-area;
     }
 
-    &.inline {
+    &#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-inline-grid-template-areas;
       grid-template-columns: $input-group-inline-grid-template-columns;
       grid-template-rows: $input-group-inline-grid-template-rows;
@@ -36,7 +38,7 @@
   }
 
   @include screen(xs) {
-    .input-group.inline {
+    #{defaults.$input-group-selector}#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-grid-template-areas;
       grid-template-columns: $input-group-grid-template-columns;
       grid-template-rows: $input-group-grid-template-rows;

@@ -1,4 +1,4 @@
-// @gruapl/graupl button component styles.
+// @gruapl/graupl button base styles.
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -9,7 +9,7 @@
 @use "../../mixins/media-queries" as *;
 @use "sass:map";
 
-@include layer(component) {
+@include layer(base) {
   #{defaults.$button-selector} {
     display: flex;
     align-items: center;

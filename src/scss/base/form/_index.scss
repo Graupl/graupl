@@ -1,12 +1,13 @@
 // @gruapl/graupl form base styles.
 
+@use "defaults";
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 
 @include layer(base) {
-  input,
-  textarea,
-  select {
+  #{defaults.$input-selector},
+  #{defaults.$textarea-selector},
+  #{defaults.$select-selector} {
     padding: $input-padding;
     border-width: $input-border-width;
     border-style: $input-border-style;
@@ -18,11 +19,11 @@
     }
   }
 
-  label {
+  #{defaults.$label-selector} {
     font-size: $label-font-size;
   }
 
-  fieldset {
+  #{defaults.$fieldset-selector} {
     display: flex;
     flex-flow: $fieldset-direction wrap;
     gap: $fieldset-gap;
@@ -33,9 +34,9 @@
     font-size: $fieldset-font-size;
 
     &:disabled {
-      input,
-      textarea,
-      select {
+      #{defaults.$input-selector},
+      #{defaults.$textarea-selector},
+      #{defaults.$select-selector} {
         cursor: not-allowed;
       }
     }
@@ -43,9 +44,9 @@
 }
 
 @include layer(theme) {
-  input,
-  textarea,
-  select {
+  #{defaults.$input-selector},
+  #{defaults.$textarea-selector},
+  #{defaults.$select-selector} {
     border-color: $input-border-color;
     background: $input-background;
     color: $input-color;
@@ -65,15 +66,15 @@
     }
   }
 
-  label {
+  #{defaults.$label-selector} {
     color: $label-color;
 
-    &:has(+ input:disabled, + textarea:disabled, + select:disabled) {
+    &:has(+ #{defaults.$input-selector}:disabled, + #{defaults.$textarea-selector}:disabled, + #{defaults.$select-selector}:disabled) {
       color: $label-disabled-color;
     }
   }
 
-  fieldset {
+  #{defaults.$fieldset-selector} {
     border-color: $fieldset-border-color;
     background: $fieldset-background;
     color: $fieldset-color;
@@ -82,7 +83,7 @@
       border-color: $fieldset-disabled-border-color;
       color: $fieldset-disabled-color;
 
-      label {
+      #{defaults.$label-selector} {
         color: $label-disabled-color;
       }
     }
