@@ -9,19 +9,23 @@
 // Menu selectors.
 $menu-selector: ".menu" !default;
 $submenu-selector: ".submenu" !default;
-$menu-item-selector: "a" !default;
+$menu-item-selector: ".menu-item" !default;
+$menu-link-selector: ".menu-link" !default;
+$submenu-toggle-selector: ".submenu-toggle" !default;
+$menu-show-selector: ".show" !default;
+$menu-hide-selector: ".hide" !default;
 
 // Flex properties.
 $menu-flex-direction: row !default;
 $submenu-flex-direction: column !default;
 
 // Menu link properties.
-$menu-item-text-decoration: none !default;
-$menu-item-hover-text-decoration: none !default;
-$menu-item-transform: none !default;
-$menu-item-hover-transform: none !default;
-$menu-item-hover-transform-reduced-motion: none !default;
-$menu-item-active-transform: none !default;
-$menu-item-active-transform-reduced-motion: none !default;
-$menu-item-border-width: 0 !default;
-$menu-item-border-style: solid !default;
+$menu-link-text-decoration: none !default;
+$menu-link-hover-text-decoration: none !default;
+$menu-link-transform: none !default;
+$menu-link-hover-transform: none !default;
+$menu-link-hover-transform-reduced-motion: none !default;
+$menu-link-active-transform: none !default;
+$menu-link-active-transform-reduced-motion: none !default;
+$menu-link-border-width: 0 !default;
+$menu-link-border-style: solid !default;

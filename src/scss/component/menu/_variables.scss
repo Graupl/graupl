@@ -34,126 +34,126 @@ $submenu-flex-direction: var(
   #{defaults.$submenu-flex-direction}
 );
 
-// Menu item properties.
-$menu-item-text-decoration: var(
-  --#{root-defaults.$prefix}-menu-item-text-decoration,
-  #{defaults.$menu-item-text-decoration}
+// Menu link properties.
+$menu-link-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration,
+  #{defaults.$menu-link-text-decoration}
 );
-$menu-item-text-decoration-thickness: var(
-  --#{root-defaults.$prefix}-menu-item-text-decoration-thickness,
+$menu-link-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration-thickness,
   0
 );
-$menu-item-hover-text-decoration: var(
-  --#{root-defaults.$prefix}-menu-item-hover-text-decoration,
-  #{defaults.$menu-item-hover-text-decoration}
+$menu-link-hover-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration,
+  #{defaults.$menu-link-hover-text-decoration}
 );
-$menu-item-hover-text-decoration-thickness: var(
-  --#{root-defaults.$prefix}-menu-item-hover-text-decoration-thickness,
+$menu-link-hover-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration-thickness,
   0
 );
-$menu-item-padding-x: var(
-  --#{root-defaults.$prefix}-menu-item-padding-x,
+$menu-link-padding-x: var(
+  --#{root-defaults.$prefix}-menu-link-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
-$menu-item-padding-y: var(
-  --#{root-defaults.$prefix}-menu-item-padding-y,
+$menu-link-padding-y: var(
+  --#{root-defaults.$prefix}-menu-link-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$menu-item-padding: var(
-  --#{root-defaults.$prefix}-menu-item-padding,
-  #{$menu-item-padding-y} #{$menu-item-padding-x}
+$menu-link-padding: var(
+  --#{root-defaults.$prefix}-menu-link-padding,
+  #{$menu-link-padding-y} #{$menu-link-padding-x}
 );
-$menu-item-background: var(
-  --#{root-defaults.$prefix}-menu-item-background,
+$menu-link-background: var(
+  --#{root-defaults.$prefix}-menu-link-background,
   #{color.$root-background}
 );
-$menu-item-color: var(
-  --#{root-defaults.$prefix}-menu-item-color,
+$menu-link-color: var(
+  --#{root-defaults.$prefix}-menu-link-color,
   #{color.$root-color}
 );
-$menu-item-hover-background: var(
-  --#{root-defaults.$prefix}-menu-item-hover-background,
+$menu-link-hover-background: var(
+  --#{root-defaults.$prefix}-menu-link-hover-background,
   #{color.$root-color}
 );
-$menu-item-hover-color: var(
-  --#{root-defaults.$prefix}-menu-item-hover-color,
+$menu-link-hover-color: var(
+  --#{root-defaults.$prefix}-menu-link-hover-color,
   #{color.$root-background}
 );
-$menu-item-active-background: var(
-  --#{root-defaults.$prefix}-menu-item-active-background,
+$menu-link-active-background: var(
+  --#{root-defaults.$prefix}-menu-link-active-background,
   #{color.$root-color}
 );
-$menu-item-active-color: var(
-  --#{root-defaults.$prefix}-menu-item-active-color,
+$menu-link-active-color: var(
+  --#{root-defaults.$prefix}-menu-link-active-color,
   #{color.$root-background}
 );
-$menu-item-visited-background: var(
-  --#{root-defaults.$prefix}-menu-item-visited-background,
+$menu-link-visited-background: var(
+  --#{root-defaults.$prefix}-menu-link-visited-background,
   #{color.$root-background}
 );
-$menu-item-visited-color: var(
-  --#{root-defaults.$prefix}-menu-item-visited-color,
+$menu-link-visited-color: var(
+  --#{root-defaults.$prefix}-menu-link-visited-color,
   #{color.$root-color}
 );
-$menu-item-disabled-background: var(
-  --#{root-defaults.$prefix}-menu-item-disabled-background,
+$menu-link-disabled-background: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-background,
   #{color.$root-background}
 );
-$menu-item-disabled-color: var(
-  --#{root-defaults.$prefix}-menu-item-disabled-color,
+$menu-link-disabled-color: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-color,
   #{theme.get(primary, 200)}
 );
-$menu-item-row-gap: var(
-  --#{root-defaults.$prefix}-menu-item-row-gap,
+$menu-link-row-gap: var(
+  --#{root-defaults.$prefix}-menu-link-row-gap,
   #{map.get(root-variables.$spacers, 0)}
 );
-$menu-item-column-gap: var(
-  --#{root-defaults.$prefix}-menu-item-column-gap,
-  #{$menu-item-padding-x}
+$menu-link-column-gap: var(
+  --#{root-defaults.$prefix}-menu-link-column-gap,
+  #{$menu-link-padding-x}
 );
-$menu-item-gap: var(
-  --#{root-defaults.$prefix}-menu-item-gap,
-  #{$menu-item-column-gap} #{$menu-item-row-gap}
+$menu-link-gap: var(
+  --#{root-defaults.$prefix}-menu-link-gap,
+  #{$menu-link-column-gap} #{$menu-link-row-gap}
 );
-$menu-item-transition: var(
-  --#{root-defaults.$prefix}-menu-item-transition,
+$menu-link-transition: var(
+  --#{root-defaults.$prefix}-menu-link-transition,
   background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
   color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
 );
-$menu-item-transition-reduced-motion: var(
-  --#{root-defaults.$prefix}-menu-item-transition-reduced-motion,
+$menu-link-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-menu-link-transition-reduced-motion,
   background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
   color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
 );
-$menu-item-border-width: var(
-  --#{root-defaults.$prefix}-menu-item-border-width,
-  #{defaults.$menu-item-border-width}
+$menu-link-border-width: var(
+  --#{root-defaults.$prefix}-menu-link-border-width,
+  #{defaults.$menu-link-border-width}
 );
-$menu-item-border-style: var(
+$menu-link-border-style: var(
   --#{root-defaults.$prefix}-botton-border-style,
-  #{defaults.$menu-item-border-style}
+  #{defaults.$menu-link-border-style}
 );
-$menu-item-border-radius: var(
-  --#{root-defaults.$prefix}-menu-item-border-radius,
+$menu-link-border-radius: var(
+  --#{root-defaults.$prefix}-menu-link-border-radius,
   #{root-variables.$border-radius}
 );
-$menu-item-transform: var(
-  --#{root-defaults.$prefix}-menu-item-transform,
-  #{defaults.$menu-item-transform}
+$menu-link-transform: var(
+  --#{root-defaults.$prefix}-menu-link-transform,
+  #{defaults.$menu-link-transform}
 );
-$menu-item-hover-transform: var(
-  --#{root-defaults.$prefix}-menu-item-hover-transform,
-  #{defaults.$menu-item-hover-transform}
+$menu-link-hover-transform: var(
+  --#{root-defaults.$prefix}-menu-link-hover-transform,
+  #{defaults.$menu-link-hover-transform}
 );
-$menu-item-active-transform: var(
-  --#{root-defaults.$prefix}-menu-item-active-transform,
-  #{defaults.$menu-item-active-transform}
+$menu-link-active-transform: var(
+  --#{root-defaults.$prefix}-menu-link-active-transform,
+  #{defaults.$menu-link-active-transform}
 );
-$menu-item-hover-transform-reduced-motion: var(
-  --#{root-defaults.$prefix}-menu-item-hover-transform-reduced-motion,
-  #{defaults.$menu-item-hover-transform-reduced-motion}
+$menu-link-hover-transform-reduced-motion: var(
+  --#{root-defaults.$prefix}-menu-link-hover-transform-reduced-motion,
+  #{defaults.$menu-link-hover-transform-reduced-motion}
 );
-$menu-item-active-transform-reduced-motion: var(
-  --#{root-defaults.$prefix}-menu-item-active-transform-reduced-motion,
-  #{defaults.$menu-item-active-transform-reduced-motion}
+$menu-link-active-transform-reduced-motion: var(
+  --#{root-defaults.$prefix}-menu-link-active-transform-reduced-motion,
+  #{defaults.$menu-link-active-transform-reduced-motion}
 );
