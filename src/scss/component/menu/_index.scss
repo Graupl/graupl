@@ -80,7 +80,6 @@
     min-width: max-content; // @todo make into custom prop.
     z-index: 2; // @todo make into custom prop.
 
-
     &#{defaults.$menu-show-selector} {
       display: flex;
     }

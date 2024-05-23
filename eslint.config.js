@@ -21,6 +21,7 @@ const config = {
     globals: {
       ...globals.browser,
       ...globals.es2021,
+      DisclosureMenu: "readonly",
     },
   },
   rules: {
