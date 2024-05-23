@@ -1,37 +1,62 @@
 // @gruapl/graupl link base styles.
 
+@use "defaults";
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
 
 @include layer(base) {
-  a {
+  #{defaults.$link-selector} {
+    padding: $link-padding;
+    transform: $link-transform;
+    transition: $link-transition;
     text-decoration: $link-text-decoration;
     text-decoration-thickness: $link-text-decoration-thickness;
+
+    &:hover {
+      --#{root-defaults.$prefix}-link-text-decoration: #{$link-hover-text-decoration};
+      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-hover-text-decoration-thickness};
+      --#{root-defaults.$prefix}-link-transform: #{$link-hover-transform};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-link-transform: #{$link-active-transform};
+    }
 
     &[disabled] {
       cursor: not-allowed;
     }
   }
+
+  @include animation-off {
+    #{defaults.$link-selector} {
+      --#{root-defaults.$prefix}-link-transition: #{$link-transition-reduced-motion};
+    }
+  }
 }
 
 @include layer(theme) {
-  a {
+  #{defaults.$link-selector} {
+    background: $link-background;
     color: $link-color;
 
     &:hover {
       --#{root-defaults.$prefix}-link-color: #{$link-hover-color};
+      --#{root-defaults.$prefix}-link-background: #{$link-hover-background};
     }
 
     &:active {
       --#{root-defaults.$prefix}-link-color: #{$link-active-color};
+      --#{root-defaults.$prefix}-link-background: #{$link-active-background};
     }
 
     // stylelint-disable no-descending-specificity
     &:visited {
       &,
       &:hover {
-        --#{root-defaults.$prefix}-link-color: #{$link-hover-color};
+        --#{root-defaults.$prefix}-link-color: #{$link-visited-color};
+        --#{root-defaults.$prefix}-link-background: #{$link-visited-background};
       }
     }
 
@@ -41,6 +66,7 @@
       &:active,
       &:visited {
         --#{root-defaults.$prefix}-link-color: #{$link-disabled-color};
+        --#{root-defaults.$prefix}-link-background: #{$link-disabled-background};
       }
     }
     // stylelint-enable no-descending-specificity

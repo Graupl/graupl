@@ -1,6 +1,6 @@
-// @graupl/graupl button component default values.
+// @graupl/graupl button base default values.
 //
-// Generally, these should not be used directly when styling components unless a static value is needed.
+// Generally, these should not be used directly when styling bases unless a static value is needed.
 // They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
 //
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
@@ -8,6 +8,13 @@
 
 @use "sass:map";
 
+// Button selectors.
+$button-selector: ".button" !default;
+$button-link-selector: ".link" !default;
+$button-theme-selector-prefix: "." !default;
+
+// Button properties.
+$button-transform: none !default;
 $button-hover-transform: none !default;
 $button-hover-transform-reduced-motion: none !default;
 $button-active-transform: scale(0.95) !default;
@@ -15,7 +22,7 @@ $button-active-transform-reduced-motion: scale(0.98) !default;
 
 // Button state theme defaults.
 // This map is used to define the default colour shades for the
-// themed button components.
+// themed button bases.
 //
 // e.g.
 // Primary buttons will use primary--900 as the text colour, primary--100 as the background

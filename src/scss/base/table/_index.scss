@@ -1,27 +1,119 @@
 // @gruapl/graupl table base styles.
 
+@use "defaults";
 @use "variables" as *;
 @use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 
 @include layer(base) {
-  table {
-    caption {
+  #{defaults.$table-selector} {
+    #{defaults.$table-caption-selector} {
       padding: $table-caption-padding;
       caption-side: $table-caption-side;
     }
 
-    th {
+    #{defaults.$table-header-selector} {
       padding: $table-header-padding;
-      background: $table-header-background;
-      color: $table-header-color;
       font-weight: $table-header-font-weight;
     }
 
-    td,
-    tbody th {
+    #{defaults.$table-cell-selector},
+    #{defaults.$table-body-selector} #{defaults.$table-header-selector} {
       padding: $table-cell-padding;
+    }
+
+    &#{defaults.$table-bordered-selector} {
+      border-collapse: collapse;
+      border-width: $table-border-width;
+      border-style: $table-border-style;
+
+      #{defaults.$table-row-selector} > * {
+        border-width: $table-cell-border-width;
+        border-style: $table-cell-border-style;
+      }
+    }
+  }
+
+  #{defaults.$table-responsive-selector} {
+    display: block;
+    width: 100%;
+    overflow: scroll hidden;
+
+    #{defaults.$table-selector} {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$table-selector} {
+    @each $variant in theme.variants() {
+      &#{defaults.$table-theme-prefix-selector}#{$variant},
+      #{defaults.$table-theme-prefix-selector}#{$variant} {
+        @each $prop, $key in defaults.$table-theme-map {
+          --#{root-defaults.$prefix}-table-#{$prop}: #{theme.get(
+              $variant,
+              $key
+            )};
+        }
+      }
+    }
+
+    #{defaults.$table-header-selector} {
+      background: $table-header-background;
+      color: $table-header-color;
+    }
+
+    #{defaults.$table-cell-selector},
+    #{defaults.$table-body-selector} #{defaults.$table-header-selector} {
       background: $table-cell-background;
       color: $table-cell-color;
+    }
+
+    &#{defaults.$table-bordered-selector} {
+      border-color: $table-border-color;
+
+      #{defaults.$table-row-selector} > * {
+        border-color: $table-cell-border-color;
+      }
+    }
+
+    &#{defaults.$table-striped-columns-selector} {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}:nth-child(odd)
+        > * {
+        background: $table-striped-background;
+        color: $table-striped-color;
+      }
+    }
+
+    &#{defaults.$table-striped-rows-selector} {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}
+        > :nth-child(odd) {
+        background: $table-striped-background;
+        color: $table-striped-color;
+      }
+    }
+
+    &#{defaults.$table-hoverable-selector} {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}:hover
+        > * {
+        background: $table-hover-background;
+        color: $table-hover-color;
+      }
+    }
+
+    #{defaults.$table-highlight-selector} {
+      --#{root-defaults.$prefix}-table-cell-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-cell-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}-table-header-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-header-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}-table-striped-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}-table-striped-color: #{$table-highlight-color};
     }
   }
 }
