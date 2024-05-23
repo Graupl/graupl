@@ -1,10 +1,53 @@
 // @graupl/graupl table base default values.
 //
-// Generally, these should not be used directly when styling components unless a static value is needed.
+// Generally, these should not be used directly when styling bases unless a static value is needed.
 // They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
 //
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "sass:map";
+
+// Table selectors.
+$table-selector: "table" !default;
+$table-caption-selector: "caption" !default;
+$table-header-selector: "th" !default;
+$table-cell-selector: "td" !default;
+$table-row-selector: "tr" !default;
+$table-head-selector: "thead" !default;
+$table-body-selector: "tbody" !default;
+$table-foot-selector: "tfoot" !default;
+$table-theme-prefix-selector: "." !default;
+$table-bordered-selector: ".bordered" !default;
+$table-collapsed-selector: ".collapsed" !default;
+$table-striped-columns-selector: ".striped-columns" !default;
+$table-striped-rows-selector: ".striped-rows" !default;
+$table-hoverable-selector: ".hoverable" !default;
+$table-highlight-selector: ".highlight" !default;
+$table-responsive-selector: ".responsive-table" !default;
+
 // Table properties.
 $table-caption-side: bottom !default;
+
+// Table theme defaults.
+// This map is used to define the default colour shades for the
+// themed table bases.
+//
+// e.g.
+// Primary tables will use primary--700 as the header background,
+// and primary--100 as the header text colour.
+//
+// Secondary/tertiary tables will use the same shade for their respective colours.
+$base-table-theme-map: (
+  header-background: 700,
+  header-color: 100,
+  striped-background: 200,
+  striped-color: 900,
+  hover-background: 300,
+  hover-color: 900,
+  border-color: 900,
+  highlight-background: 500,
+  highlight-color: 100,
+);
+$custom-table-theme-map: () !default;
+$table-theme-map: map.merge($base-table-theme-map, $custom-table-theme-map);

@@ -1,6 +1,6 @@
-// @graupl/graupl button component variables.
+// @graupl/graupl button base variables.
 //
-// These values are to be used to directly style components and provide a
+// These values are to be used to directly style bases and provide a
 // cleaner way to reference custom properties.
 
 @use "defaults";
@@ -49,6 +49,10 @@ $button-transition-reduced-motion: var(
 );
 
 // Transform properties.
+$button-transform: var(
+  --#{root-defaults.$prefix}-button-transform,
+  #{defaults.$button-transform}
+);
 $button-hover-transform: var(
   --#{root-defaults.$prefix}-button-hover-transform,
   #{defaults.$button-hover-transform}

@@ -1,11 +1,12 @@
 // @gruapl/graupl container layout styles.
 
+@use "defaults";
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 
 @include layer(layout) {
-  .container,
-  .container > .full-width {
+  #{defaults.$container-selector},
+  #{defaults.$container-selector} > #{defaults.$container-full-width-selector} {
     display: grid;
     grid-template-columns:
       [full-width-start] $container-full-width-section-width
@@ -17,19 +18,23 @@
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
 
-    > :not(.breakout, .full-width, .feature) {
+    > :not(
+        #{defaults.$container-breakout-selector},
+        #{defaults.$container-full-width-selector},
+        #{defaults.$container-feature-selector}
+      ) {
       grid-column: content;
     }
 
-    .breakout {
+    #{defaults.$container-breakout-selector} {
       grid-column: breakout;
     }
 
-    .feature {
+    #{defaults.$container-feature-selector} {
       grid-column: feature;
     }
 
-    .full-width {
+    #{defaults.$container-full-width-selector} {
       grid-column: full-width;
     }
   }

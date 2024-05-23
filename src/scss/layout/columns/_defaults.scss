@@ -6,6 +6,12 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+// Columns selectors.
+$columns-selector: ".columns" !default;
+$columns-count-selector-prefix: ".count-" !default;
+$columns-span-selector-prefix: ".span-" !default;
+
+// Columns properties.
 $columns-max-width: 1fr !default;
 $columns-count: 3 !default;
 $columns-min-count: 1 !default;

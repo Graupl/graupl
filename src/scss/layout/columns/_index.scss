@@ -7,7 +7,7 @@
 @use "../../mixins/media-queries" as *;
 
 @include layer(layout) {
-  .columns {
+  #{defaults.$columns-selector} {
     display: grid;
     grid-template-columns: $columns-grid-template-columns;
     gap: $columns-row-gap $columns-column-gap;
@@ -18,18 +18,18 @@
   }
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
-    .count-#{$i} {
+    #{defaults.$columns-count-selector-prefix}#{$i} {
       --#{root-defaults.$prefix}-columns-count: #{$i};
     }
 
-    .span-#{$i} {
+    #{defaults.$columns-span-selector-prefix}#{$i} {
       --#{root-defaults.$prefix}-columns-span: #{$i};
     }
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
   @include screen(xs) {
-    .columns {
+    #{defaults.$columns-selector} {
       --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
     }
   }
