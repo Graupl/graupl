@@ -69,7 +69,11 @@
   #{defaults.$label-selector} {
     color: $label-color;
 
-    &:has(+ #{defaults.$input-selector}:disabled, + #{defaults.$textarea-selector}:disabled, + #{defaults.$select-selector}:disabled) {
+    &:has(
+        + #{defaults.$input-selector}:disabled,
+        + #{defaults.$textarea-selector}:disabled,
+        + #{defaults.$select-selector}:disabled
+      ) {
       color: $label-disabled-color;
     }
   }
