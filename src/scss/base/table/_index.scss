@@ -23,6 +23,10 @@
       padding: $table-cell-padding;
     }
 
+    &#{defaults.$table-collapsed-selector} {
+      border-collapse: collapse;
+    }
+
     &#{defaults.$table-bordered-selector} {
       border-collapse: collapse;
       border-width: $table-border-width;
