@@ -3,7 +3,7 @@
 @use "defaults";
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
-@use "../button/defaults" as button-defaults;
+@use "../../base/button/defaults" as button-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
 
