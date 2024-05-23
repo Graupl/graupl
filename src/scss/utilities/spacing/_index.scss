@@ -60,5 +60,12 @@
         }
       }
     }
+
+    // Create the "auto" utility class.
+    .#{$name}-auto {
+      @each $prop in $property {
+        #{$prop}: important.insert(auto);
+      }
+    }
   }
 }
