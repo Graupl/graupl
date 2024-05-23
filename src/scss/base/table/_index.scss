@@ -81,21 +81,27 @@
     }
 
     &#{defaults.$table-striped-columns-selector} {
-      #{defaults.$table-body-selector} #{defaults.$table-row-selector}:nth-child(odd) > * {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}:nth-child(odd)
+        > * {
         background: $table-striped-background;
         color: $table-striped-color;
       }
     }
 
     &#{defaults.$table-striped-rows-selector} {
-      #{defaults.$table-body-selector} #{defaults.$table-row-selector} > :nth-child(odd) {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}
+        > :nth-child(odd) {
         background: $table-striped-background;
         color: $table-striped-color;
       }
     }
 
     &#{defaults.$table-hoverable-selector} {
-      #{defaults.$table-body-selector} #{defaults.$table-row-selector}:hover > * {
+      #{defaults.$table-body-selector}
+        #{defaults.$table-row-selector}:hover
+        > * {
         background: $table-hover-background;
         color: $table-hover-color;
       }
