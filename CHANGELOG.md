@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.12](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2024-05-24)
+
+
+### Features
+
+* allow all selectors to be customized ([270d3f4](https://github.com/Graupl/graupl/commit/270d3f4fca5c218ecba3831a24e0cbedb009c469))
+* **base:** add collapsed option for tables ([5f86b6d](https://github.com/Graupl/graupl/commit/5f86b6d82430de9d99c33359fbf36fa450fd98bf))
+* implement normalize.css into library ([f4b4614](https://github.com/Graupl/graupl/commit/f4b4614f475aa601f986de4e5bbe7b62a24797eb))
+* **utilities:** add auto spacers ([d5893bb](https://github.com/Graupl/graupl/commit/d5893bb41b4bfea776c6760b7117de404e7d84e8))
+
+
+### Bug Fixes
+
+* **buttons:** remove text decoration and add cursor for links that are buttons ([844dd10](https://github.com/Graupl/graupl/commit/844dd1072d92af34cb9f19b5eea4227b523c860b))
+
+
+### Documentation
+
+* **comments:** standardize file comments ([659e1ac](https://github.com/Graupl/graupl/commit/659e1acd8112620a9ed1e577df053e648687e7ac))
+
 ## [1.0.0-alpha.11](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.10...v1.0.0-alpha.11) (2024-05-21)
 
 
