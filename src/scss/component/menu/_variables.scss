@@ -23,6 +23,25 @@ $menu-gap: var(
   --#{root-defaults.$prefix}-menu-gap,
   #{$menu-column-gap} #{$menu-row-gap}
 );
+$submenu-row-gap: var(
+  --#{root-defaults.$prefix}-submenu-row-gap,
+  #{$menu-row-gap}
+);
+$submenu-column-gap: var(
+  --#{root-defaults.$prefix}-submenu-column-gap,
+  #{$menu-column-gap}
+);
+$submenu-gap: var(
+  --#{root-defaults.$prefix}-submenu-gap,
+  #{$submenu-column-gap} #{$submenu-row-gap}
+);
+
+// Menu properties.
+$menu-background: var(
+  --#{root-defaults.$prefix}-menu-background,
+  #{color.$root-background}
+);
+$menu-color: var(--#{root-defaults.$prefix}-menu-color, #{color.$root-color});
 
 // Flex properties.
 $menu-flex-direction: var(
@@ -65,35 +84,35 @@ $menu-link-padding: var(
 );
 $menu-link-background: var(
   --#{root-defaults.$prefix}-menu-link-background,
-  #{color.$root-background}
+  #{$menu-background}
 );
 $menu-link-color: var(
   --#{root-defaults.$prefix}-menu-link-color,
-  #{color.$root-color}
+  #{$menu-color}
 );
 $menu-link-hover-background: var(
   --#{root-defaults.$prefix}-menu-link-hover-background,
-  #{color.$root-color}
+  #{$menu-color}
 );
 $menu-link-hover-color: var(
   --#{root-defaults.$prefix}-menu-link-hover-color,
-  #{color.$root-background}
+  #{$menu-background}
 );
 $menu-link-active-background: var(
   --#{root-defaults.$prefix}-menu-link-active-background,
-  #{color.$root-color}
+  #{$menu-link-hover-background}
 );
 $menu-link-active-color: var(
   --#{root-defaults.$prefix}-menu-link-active-color,
-  #{color.$root-background}
+  #{$menu-link-hover-color}
 );
 $menu-link-visited-background: var(
   --#{root-defaults.$prefix}-menu-link-visited-background,
-  #{color.$root-background}
+  #{$menu-link-background}
 );
 $menu-link-visited-color: var(
   --#{root-defaults.$prefix}-menu-link-visited-color,
-  #{color.$root-color}
+  #{$menu-link-color}
 );
 $menu-link-disabled-background: var(
   --#{root-defaults.$prefix}-menu-link-disabled-background,
@@ -156,4 +175,79 @@ $menu-link-hover-transform-reduced-motion: var(
 $menu-link-active-transform-reduced-motion: var(
   --#{root-defaults.$prefix}-menu-link-active-transform-reduced-motion,
   #{defaults.$menu-link-active-transform-reduced-motion}
+);
+
+// Submenu properties.
+$submenu-background: var(
+  --#{root-defaults.$prefix}-submenu-background,
+  #{$menu-background}
+);
+$submenu-color: var(--#{root-defaults.$prefix}-submenu-color, #{$menu-color});
+$submenu-link-padding-x: var(
+  --#{root-defaults.$prefix}-submenu-link-padding-x,
+  #{$menu-link-padding-x}
+);
+$submenu-link-padding-y: var(
+  --#{root-defaults.$prefix}-submenu-link-padding-y,
+  #{$menu-link-padding-y}
+);
+$submenu-link-padding: var(
+  --#{root-defaults.$prefix}-submenu-link-padding,
+  #{$submenu-link-padding-y} #{$submenu-link-padding-x}
+);
+$submenu-link-background: var(
+  --#{root-defaults.$prefix}-submenu-link-background,
+  #{$submenu-background}
+);
+$submenu-link-color: var(
+  --#{root-defaults.$prefix}-submenu-link-color,
+  #{$submenu-color}
+);
+$submenu-link-hover-background: var(
+  --#{root-defaults.$prefix}-submenu-link-hover-background,
+  #{$submenu-color}
+);
+$submenu-link-hover-color: var(
+  --#{root-defaults.$prefix}-submenu-link-hover-color,
+  #{$submenu-background}
+);
+$submenu-link-active-background: var(
+  --#{root-defaults.$prefix}-submenu-link-active-background,
+  #{$submenu-link-hover-background}
+);
+$submenu-link-active-color: var(
+  --#{root-defaults.$prefix}-submenu-link-active-color,
+  #{$submenu-link-hover-color}
+);
+$submenu-link-visited-background: var(
+  --#{root-defaults.$prefix}-submenu-link-visited-background,
+  #{$submenu-link-background}
+);
+$submenu-link-visited-color: var(
+  --#{root-defaults.$prefix}-submenu-link-visited-color,
+  #{$submenu-link-color}
+);
+$submenu-link-disabled-background: var(
+  --#{root-defaults.$prefix}-submenu-link-disabled-background,
+  #{$menu-link-disabled-background}
+);
+$submenu-link-disabled-color: var(
+  --#{root-defaults.$prefix}-submenu-link-disabled-color,
+  #{$menu-link-disabled-color}
+);
+$submenu-border-width: var(
+  --#{root-defaults.$prefix}-submenu-border-width,
+  #{root-variables.$border-width}
+);
+$submenu-border-style: var(
+  --#{root-defaults.$prefix}-submenu-border-style,
+  #{root-variables.$border-style}
+);
+$submenu-border-color: var(
+  --#{root-defaults.$prefix}-submenu-border-color,
+  #{$submenu-color}
+);
+$submenu-border-radius: var(
+  --#{root-defaults.$prefix}-submenu-border-radius,
+  #{root-variables.$border-radius}
 );

@@ -49,19 +49,19 @@ $link-disabled-color: var(
 $link-background: var(--#{root-defaults.$prefix}-link-background, transparent);
 $link-hover-background: var(
   --#{root-defaults.$prefix}-link-hover-background,
-  transparent
+  #{$link-background}
 );
 $link-active-background: var(
   --#{root-defaults.$prefix}-link-active-background,
-  transparent
+  #{$link-background}
 );
 $link-visited-background: var(
   --#{root-defaults.$prefix}-link-visited-background,
-  transparent
+  #{$link-background}
 );
 $link-disabled-background: var(
   --#{root-defaults.$prefix}-link-disabled-background,
-  transparent
+  #{$link-background}
 );
 $link-padding-x: var(
   --#{root-defaults.$prefix}-link-padding-x,
