@@ -21,7 +21,7 @@
     --#{root-defaults.$prefix}-link-active-transform-reduced-motion: #{$menu-link-active-transform-reduced-motion};
     --#{root-defaults.$prefix}-button-padding: #{$menu-link-padding};
 
-    display: flex;
+    display: $menu-display;
     flex-flow: $menu-flex-direction wrap;
     align-items: center;
     margin: 0;
@@ -67,32 +67,34 @@
     --#{root-defaults.$prefix}-menu-flex-direction: #{$submenu-flex-direction};
     --#{root-defaults.$prefix}-menu-link-padding: #{$submenu-link-padding};
 
-    position: absolute;
-    z-index: 2; // @todo make into custom prop.
-    min-width: max-content; // @todo make into custom prop.
+    display: $submenu-display;
+    position: $submenu-position;
+    z-index: $submenu-z-index;
+    min-width: max-content;
     border-width: $submenu-border-width;
     border-style: $submenu-border-style;
     border-radius: $submenu-border-radius;
     background: $submenu-background;
     color: $submenu-color;
     gap: $submenu-gap;
-    inset: 100% auto auto 0; // @todo make into custom prop.
+    inset: $submenu-inset;
 
     &#{defaults.$menu-show-selector} {
-      display: flex;
+      --#{root-defaults.$prefix}-submenu-display: #{$submenu-show-display};
     }
 
     &#{defaults.$menu-hide-selector} {
-      display: none;
+      --#{root-defaults.$prefix}-submenu-display: #{$submenu-hide-display};
     }
 
     #{defaults.$menu-item-selector} {
-      width: 100%;
+      --#{root-defaults.$prefix}-menu-item-width: #{$submenu-item-width};
     }
   }
 
   #{defaults.$menu-item-selector} {
     position: relative;
+    width: $menu-item-width;
   }
 
   #{defaults.$submenu-toggle-selector} {

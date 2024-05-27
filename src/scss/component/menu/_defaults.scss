@@ -19,6 +19,26 @@ $menu-hide-selector: ".hide" !default;
 $menu-flex-direction: row !default;
 $submenu-flex-direction: column !default;
 
+// Visibility properties.
+$menu-show-display: flex !default;
+$menu-hide-display: none !default;
+$submenu-show-display: $menu-show-display !default;
+$submenu-hide-display: $menu-hide-display !default;
+
+// Menu item properties.
+$menu-item-width: auto !default;
+
+// Submenu properties.
+$submenu-position: absolute !default;
+$submenu-z-index: 2 !default;
+$submenu-top: 100% !default;
+$submenu-right: auto !default;
+$submenu-bottom: auto !default;
+$submenu-left: 0 !default;
+
+// Submenu item properties.
+$submenu-item-width: 100% !default;
+
 // Menu link properties.
 $menu-link-text-decoration: none !default;
 $menu-link-hover-text-decoration: none !default;

@@ -16,12 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
     const menuOptions =
       JSON.parse(nav.dataset.grauplMenuOptions.replace(/'/g, '"')) || {};
     const menuElement = nav.querySelector(".menu");
+    const controllerElement = nav.querySelector(".navigation-toggle");
+    const containerElement = nav;
     const menu = new window[MenuConstructor]({
       menuElement,
       menuItemSelector: ".menu-item",
       menuLinkSelector: ".menu-link",
       submenuItemSelector: ".submenu-item",
       submenuToggleSelector: ".submenu-toggle",
+      controllerElement,
+      containerElement,
       ...menuOptions,
     });
 

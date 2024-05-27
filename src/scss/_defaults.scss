@@ -20,7 +20,8 @@ $content-max-width: 96ch !default;
 // Screen sizes.
 $base-screen-sizes: (
   xs: "(0 <= width <= 48ch)",
-  menu-collapse: "(0 <= width <= 60ch)",
+  navigation-collapse: "(0 <= width <= 60ch)",
+  navigation-expand: "(60ch < width)",
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);

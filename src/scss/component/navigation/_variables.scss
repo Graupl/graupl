@@ -1,0 +1,80 @@
+// @graupl/graupl navigation component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "sass:map";
+
+// Navigation colors.
+$navigation-background: var(
+  --#{root-defaults.$prefix}-navigation-background,
+  #{color.$root-background}
+);
+$navigation-color: var(
+  --#{root-defaults.$prefix}-navigation-color,
+  #{color.$root-color}
+);
+
+// Navigation toggle size.
+$navigation-toggle-min-width: var(
+  --#{root-defaults.$prefix}-navigation-toggle-min-width,
+  #{root-defaults.$interactive-min-width}
+);
+$navigation-toggle-min-height: var(
+  --#{root-defaults.$prefix}-navigation-toggle-min-height,
+  #{root-defaults.$interactive-min-height}
+);
+
+// Navigation toggle spacing.
+$navigation-toggle-padding-x: var(
+  --#{root-defaults.$prefix}-navigation-toggle-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$navigation-toggle-padding-y: var(
+  --#{root-defaults.$prefix}-navigation-toggle-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$navigation-toggle-padding: var(
+  --#{root-defaults.$prefix}-navigation-toggle-padding,
+  #{$navigation-toggle-padding-y} #{$navigation-toggle-padding-x}
+);
+
+// Navigation toggle colors.
+$navigation-toggle-background: var(
+  --#{root-defaults.$prefix}-navigation-toggle-background,
+  #{$navigation-background}
+);
+$navigation-toggle-color: var(
+  --#{root-defaults.$prefix}-navigation-toggle-color,
+  #{$navigation-color}
+);
+$navigation-toggle-hover-background: var(
+  --#{root-defaults.$prefix}-navigation-toggle-hover-background,
+  #{$navigation-color}
+);
+$navigation-toggle-hover-color: var(
+  --#{root-defaults.$prefix}-navigation-toggle-hover-color,
+  #{$navigation-background}
+);
+
+// Navigation toggle border properties.
+$navigation-toggle-border-width: var(
+  --#{root-defaults.$prefix}-navigation-toggle-border-width,
+  #{root-variables.$border-width}
+);
+$navigation-toggle-border-style: var(
+  --#{root-defaults.$prefix}-navigation-toggle-border-style,
+  #{root-variables.$border-style}
+);
+$navigation-toggle-border-color: var(
+  --#{root-defaults.$prefix}-navigation-toggle-border-color,
+  #{$navigation-toggle-color}
+);
+$navigation-toggle-border-radius: var(
+  --#{root-defaults.$prefix}-navigation-toggle-border-radius,
+  #{root-variables.$border-radius}
+);
