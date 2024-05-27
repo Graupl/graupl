@@ -132,10 +132,7 @@
 
     &:disabled,
     &[disabled] {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
-
+      &,
       &:hover,
       &:active {
         --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
