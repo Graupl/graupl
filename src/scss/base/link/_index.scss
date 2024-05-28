@@ -19,26 +19,6 @@
     text-decoration: $link-text-decoration;
     text-decoration-style: $link-text-decoration-style;
     text-decoration-thickness: $link-text-decoration-thickness;
-    text-decoration-style: $link-text-decoration-style;
-    border-style: $link-border-style;
-    border-width: $link-border-width;
-    border-radius: $link-border-radius;
-    min-width: $link-min-width;
-    min-height: $link-min-height;
-
-    &:visited {
-      --#{root-defaults.$prefix}-link-text-decoration: #{$link-visited-text-decoration};
-      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-visited-text-decoration-thickness};
-      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-visited-text-decoration-style};
-      --#{root-defaults.$prefix}-link-transform: #{$link-visited-transform};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}-link-text-decoration: #{$link-focus-text-decoration};
-      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-focus-text-decoration-thickness};
-      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-focus-text-decoration-style};
-      --#{root-defaults.$prefix}-link-transform: #{$link-focus-transform};
-    }
 
     &:visited {
       --#{root-defaults.$prefix}-link-text-decoration: #{$link-visited-text-decoration};
