@@ -8,6 +8,7 @@
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
+@use "../../functions/theme";
 @use "sass:map";
 
 @include layer(base) {
@@ -118,7 +119,10 @@
     @each $color, $map in color.$theme-active {
       &#{defaults.$button-theme-selector-prefix}#{$color} {
         @each $prop, $shade in defaults.$button-state-theme-map {
-          --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
+          --#{root-defaults.$prefix}-button-#{$prop}: #{theme.get(
+              $color,
+              $shade
+            )};
         }
       }
     }
@@ -170,10 +174,6 @@
 
     &:disabled,
     &[disabled] {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
-
       &,
       &:visited,
       &:focus-visible,
