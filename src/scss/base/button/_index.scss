@@ -7,6 +7,7 @@
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
+@use "../../functions/theme";
 @use "sass:map";
 
 @include layer(base) {
@@ -88,7 +89,10 @@
     @each $color, $map in color.$theme-active {
       &#{defaults.$button-theme-selector-prefix}#{$color} {
         @each $prop, $shade in defaults.$button-state-theme-map {
-          --#{root-defaults.$prefix}-button-#{$prop}: #{map.get($map, $shade)};
+          --#{root-defaults.$prefix}-button-#{$prop}: #{theme.get(
+              $color,
+              $shade
+            )};
         }
       }
     }

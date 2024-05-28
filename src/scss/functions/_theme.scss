@@ -7,19 +7,19 @@
 
 // A function to get the specific theme shades.
 @function get($color, $shade) {
-  @if $shade == "transparent" or $color == "transparent" {
+  @if $shade == transparent or $color == transparent {
     @return transparent;
   }
 
-  @if $shade == "none" or $color == "none" {
+  @if $shade == none or $color == none {
     @return none;
   }
 
-  @if $shade == "inherit" or $color == "inherit" {
+  @if $shade == inherit or $color == inherit {
     @return inherit;
   }
 
-  @if $shade == "initial" or $color == "initial" {
+  @if $shade == initial or $color == initial {
     @return initial;
   }
 
