@@ -14,21 +14,85 @@ $link-text-decoration: var(
   --#{root-defaults.$prefix}-link-text-decoration,
   #{defaults.$link-text-decoration}
 );
-$link-text-decoration-thickness: var(
-  --#{root-defaults.$prefix}-link-text-decoration-thickness,
-  #{root-variables.$border-width}
+$link-visited-text-decoration: var(
+  --#{root-defaults.$prefix}-link-visited-text-decoration,
+  #{defaults.$link-visited-text-decoration}
 );
-$link-color: var(
-  --#{root-defaults.$prefix}-link-color,
-  #{theme.get(primary, 700)}
+$link-focus-text-decoration: var(
+  --#{root-defaults.$prefix}-link-focus-text-decoration,
+  #{defaults.$link-focus-text-decoration}
 );
 $link-hover-text-decoration: var(
   --#{root-defaults.$prefix}-link-hover-text-decoration,
   #{defaults.$link-hover-text-decoration}
 );
+$link-active-text-decoration: var(
+  --#{root-defaults.$prefix}-link-active-text-decoration,
+  #{defaults.$link-active-text-decoration}
+);
+$link-disabled-text-decoration: var(
+  --#{root-defaults.$prefix}-link-disabled-text-decoration,
+  #{defaults.$link-disabled-text-decoration}
+);
+$link-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$link-visited-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-visited-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$link-focus-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-focus-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
 $link-hover-text-decoration-thickness: var(
   --#{root-defaults.$prefix}-link-hover-text-decoration-thickness,
   #{root-variables.$border-width}
+);
+$link-active-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-active-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$link-disabled-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-link-disabled-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$link-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-text-decoration-style,
+  #{defaults.$link-text-decoration-style}
+);
+$link-visited-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-visited-text-decoration-style,
+  #{defaults.$link-visited-text-decoration-style}
+);
+$link-focus-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-focus-text-decoration-style,
+  #{defaults.$link-focus-text-decoration-style}
+);
+$link-hover-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-hover-text-decoration-style,
+  #{defaults.$link-hover-text-decoration-style}
+);
+$link-active-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-active-text-decoration-style,
+  #{defaults.$link-active-text-decoration-style}
+);
+$link-disabled-text-decoration-style: var(
+  --#{root-defaults.$prefix}-link-disabled-text-decoration-style,
+  #{defaults.$link-disabled-text-decoration-style}
+);
+$link-color: var(
+  --#{root-defaults.$prefix}-link-color,
+  #{theme.get(primary, 700)}
+);
+$link-visited-color: var(
+  --#{root-defaults.$prefix}-link-visited-color,
+  #{theme.get(primary, 700)}
+);
+$link-focus-color: var(
+  --#{root-defaults.$prefix}-link-focus-color,
+  #{theme.get(primary, 700)}
 );
 $link-hover-color: var(
   --#{root-defaults.$prefix}-link-hover-color,
@@ -38,30 +102,57 @@ $link-active-color: var(
   --#{root-defaults.$prefix}-link-active-color,
   #{theme.get(tertiary, 700)}
 );
-$link-visited-color: var(
-  --#{root-defaults.$prefix}-link-visited-color,
-  #{theme.get(primary, 700)}
-);
 $link-disabled-color: var(
   --#{root-defaults.$prefix}-link-disabled-color,
   #{theme.get(primary, 200)}
 );
-$link-background: var(--#{root-defaults.$prefix}-link-background, transparent);
-$link-hover-background: var(
-  --#{root-defaults.$prefix}-link-hover-background,
-  transparent
+$link-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-text-decoration-color,
+  #{$link-color}
 );
-$link-active-background: var(
-  --#{root-defaults.$prefix}-link-active-background,
-  transparent
+$link-visited-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-visited-text-decoration-color,
+  #{$link-visited-color}
+);
+$link-focus-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-focus-text-decoration-color,
+  #{$link-focus-color}
+);
+$link-hover-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-hover-text-decoration-color,
+  #{$link-hover-color}
+);
+$link-active-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-active-text-decoration-color,
+  #{$link-active-color}
+);
+$link-disabled-text-decoration-color: var(
+  --#{root-defaults.$prefix}-link-disabled-text-decoration-color,
+  #{$link-disabled-color}
+);
+$link-background: var(
+  --#{root-defaults.$prefix}-link-background,
+  #{defaults.$link-background}
 );
 $link-visited-background: var(
   --#{root-defaults.$prefix}-link-visited-background,
-  transparent
+  #{defaults.$link-visited-background}
+);
+$link-focus-background: var(
+  --#{root-defaults.$prefix}-link-focus-background,
+  #{defaults.$link-focus-background}
+);
+$link-hover-background: var(
+  --#{root-defaults.$prefix}-link-hover-background,
+  #{defaults.$link-hover-background}
+);
+$link-active-background: var(
+  --#{root-defaults.$prefix}-link-active-background,
+  #{defaults.$link-active-background}
 );
 $link-disabled-background: var(
   --#{root-defaults.$prefix}-link-disabled-background,
-  transparent
+  #{defaults.$link-disabled-background}
 );
 $link-padding-x: var(
   --#{root-defaults.$prefix}-link-padding-x,
@@ -90,6 +181,14 @@ $link-transform: var(
   --#{root-defaults.$prefix}-link-transform,
   #{defaults.$link-transform}
 );
+$link-visited-transform: var(
+  --#{root-defaults.$prefix}-link-visited-transform,
+  #{defaults.$link-visited-transform}
+);
+$link-focus-transform: var(
+  --#{root-defaults.$prefix}-link-focus-transform,
+  #{defaults.$link-focus-transform}
+);
 $link-hover-transform: var(
   --#{root-defaults.$prefix}-link-hover-transform,
   #{defaults.$link-hover-transform}
@@ -97,4 +196,52 @@ $link-hover-transform: var(
 $link-active-transform: var(
   --#{root-defaults.$prefix}-link-active-transform,
   #{defaults.$link-active-transform}
+);
+$link-disabled-transform: var(
+  --#{root-defaults.$prefix}-link-disabled-transform,
+  #{defaults.$link-disabled-transform}
+);
+$link-border-width: var(
+  --#{root-defaults.$prefix}-link-border-width,
+  #{defaults.$link-border-width}
+);
+$link-border-style: var(
+  --#{root-defaults.$prefix}-link-border-style,
+  #{root-variables.$border-style}
+);
+$link-border-radius: var(
+  --#{root-defaults.$prefix}-link-border-radius,
+  #{root-variables.$border-radius}
+);
+$link-border-color: var(
+  --#{root-defaults.$prefix}-link-border-color,
+  #{defaults.$link-border-color}
+);
+$link-visited-border-color: var(
+  --#{root-defaults.$prefix}-link-visited-border-color,
+  #{defaults.$link-visited-border-color}
+);
+$link-focus-border-color: var(
+  --#{root-defaults.$prefix}-link-focus-border-color,
+  #{defaults.$link-focus-border-color}
+);
+$link-hover-border-color: var(
+  --#{root-defaults.$prefix}-link-hover-border-color,
+  #{defaults.$link-hover-border-color}
+);
+$link-active-border-color: var(
+  --#{root-defaults.$prefix}-link-active-border-color,
+  #{defaults.$link-active-border-color}
+);
+$link-disabled-border-color: var(
+  --#{root-defaults.$prefix}-link-disabled-border-color,
+  #{defaults.$link-disabled-border-color}
+);
+$link-min-width: var(
+  --#{root-defaults.$prefix}-link-min-width,
+  defaults.$link-min-width
+);
+$link-min-height: var(
+  --#{root-defaults.$prefix}-link-min-height,
+  defaults.$link-min-height
 );

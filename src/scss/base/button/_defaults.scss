@@ -15,10 +15,11 @@ $button-theme-selector-prefix: "." !default;
 
 // Button properties.
 $button-transform: none !default;
-$button-hover-transform: none !default;
-$button-hover-transform-reduced-motion: none !default;
+$button-visited-transform: $button-transform !default;
+$button-focus-transform: $button-transform !default;
+$button-hover-transform: $button-transform !default;
 $button-active-transform: scale(0.95) !default;
-$button-active-transform-reduced-motion: scale(0.98) !default;
+$button-disabled-transform: $button-transform !default;
 
 // Button state theme defaults.
 // This map is used to define the default colour shades for the
@@ -32,6 +33,10 @@ $button-active-transform-reduced-motion: scale(0.98) !default;
 $base-button-state-theme-map: (
   color: 900,
   border-color: 700,
+  visited-color: 900,
+  visited-border-color: 700,
+  focus-color: 900,
+  focus-border-color: 700,
   hover-color: 100,
   hover-background: 700,
   hover-border-color: 700,
