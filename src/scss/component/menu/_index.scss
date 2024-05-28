@@ -4,79 +4,72 @@
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../base/button/defaults" as button-defaults;
+@use "../../base/button/variables" as button-variables;
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
 
 @include layer(component) {
   #{defaults.$menu-selector} {
+    --#{root-defaults.$prefix}-link-padding: #{$menu-link-padding};
+    --#{root-defaults.$prefix}-link-border-width: #{$menu-link-border-width};
+    --#{root-defaults.$prefix}-link-border-radius: #{$menu-link-border-radius};
+    --#{root-defaults.$prefix}-link-border-style: #{$menu-link-border-style};
     --#{root-defaults.$prefix}-link-text-decoration: #{$menu-link-text-decoration};
     --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$menu-link-text-decoration-thickness};
+    --#{root-defaults.$prefix}-link-text-decoration-style: #{$menu-link-text-decoration-style};
+    --#{root-defaults.$prefix}-link-transform: #{$menu-link-transform};
+    --#{root-defaults.$prefix}-link-visited-text-decoration: #{$menu-link-visited-text-decoration};
+    --#{root-defaults.$prefix}-link-visited-text-decoration-thickness: #{$menu-link-visited-text-decoration-thickness};
+    --#{root-defaults.$prefix}-link-visited-text-decoration-style: #{$menu-link-visited-text-decoration-style};
+    --#{root-defaults.$prefix}-link-visited-transform: #{$menu-link-visited-transform};
+    --#{root-defaults.$prefix}-link-focus-text-decoration: #{$menu-link-focus-text-decoration};
+    --#{root-defaults.$prefix}-link-focus-text-decoration-thickness: #{$menu-link-focus-text-decoration-thickness};
+    --#{root-defaults.$prefix}-link-focus-text-decoration-style: #{$menu-link-focus-text-decoration-style};
+    --#{root-defaults.$prefix}-link-focus-transform: #{$menu-link-focus-transform};
     --#{root-defaults.$prefix}-link-hover-text-decoration: #{$menu-link-hover-text-decoration};
     --#{root-defaults.$prefix}-link-hover-text-decoration-thickness: #{$menu-link-hover-text-decoration-thickness};
-    --#{root-defaults.$prefix}-link-padding: #{$menu-link-padding};
-    --#{root-defaults.$prefix}-link-transform: #{$menu-link-transform};
+    --#{root-defaults.$prefix}-link-hover-text-decoration-style: #{$menu-link-hover-text-decoration-style};
     --#{root-defaults.$prefix}-link-hover-transform: #{$menu-link-hover-transform};
+    --#{root-defaults.$prefix}-link-active-text-decoration: #{$menu-link-active-text-decoration};
+    --#{root-defaults.$prefix}-link-active-text-decoration-thickness: #{$menu-link-active-text-decoration-thickness};
+    --#{root-defaults.$prefix}-link-active-text-decoration-style: #{$menu-link-active-text-decoration-style};
     --#{root-defaults.$prefix}-link-active-transform: #{$menu-link-active-transform};
-    --#{root-defaults.$prefix}-link-hover-transform-reduced-motion: #{$menu-link-hover-transform-reduced-motion};
-    --#{root-defaults.$prefix}-link-active-transform-reduced-motion: #{$menu-link-active-transform-reduced-motion};
-    --#{root-defaults.$prefix}-button-padding: #{$menu-link-padding};
+    --#{root-defaults.$prefix}-link-disabled-text-decoration: #{$menu-link-disabled-text-decoration};
+    --#{root-defaults.$prefix}-link-disabled-text-decoration-thickness: #{$menu-link-disabled-text-decoration-thickness};
+    --#{root-defaults.$prefix}-link-disabled-text-decoration-style: #{$menu-link-disabled-text-decoration-style};
+    --#{root-defaults.$prefix}-link-disabled-transform: #{$menu-link-disabled-transform};
 
     display: $menu-display;
-    flex-flow: $menu-flex-direction wrap;
-    align-items: center;
-    margin: 0;
-    padding: 0;
-    background: $menu-background;
-    color: $menu-color;
+    flex-direction: $menu-flex-direction;
+    padding: $menu-padding;
+    border-width: $menu-border-width;
+    border-style: $menu-border-style;
+    border-radius: $menu-border-radius;
     list-style: none;
     gap: $menu-gap;
     isolation: isolate;
 
-    #{defaults.$menu-link-selector}:not(#{button-defaults.$button-selector}),
-    #{button-defaults.$button-selector}#{button-defaults.$button-link-selector} {
-      padding: $menu-link-padding;
-      transform: $menu-link-transform;
-      transition: $menu-link-transition;
-      border-width: $menu-link-border-width;
-      border-style: $menu-link-border-style;
-      border-radius: $menu-link-border-radius;
-      text-decoration: $menu-link-text-decoration;
-      text-decoration-thickness: $menu-link-text-decoration-thickness;
-
-      &:hover {
-        --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-hover-transform};
-      }
-
-      &:active {
-        --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-active-transform};
-      }
+    &#{defaults.$menu-show-selector} {
+      --#{root-defaults.$prefix}-menu-display: #{$menu-show-display};
     }
 
-    #{defaults.$menu-link-selector},
-    #{button-defaults.$button-selector} {
-      display: flex;
-      flex: 1 1;
-      align-items: center;
-      justify-content: space-between;
-      width: 100%;
-      gap: $menu-link-gap;
+    &#{defaults.$menu-hide-selector} {
+      --#{root-defaults.$prefix}-menu-display: #{$menu-hide-display};
     }
   }
 
   #{defaults.$submenu-selector} {
-    --#{root-defaults.$prefix}-menu-flex-direction: #{$submenu-flex-direction};
-    --#{root-defaults.$prefix}-menu-link-padding: #{$submenu-link-padding};
-
     display: $submenu-display;
     position: $submenu-position;
     z-index: $submenu-z-index;
-    min-width: max-content;
+    flex-direction: $submenu-flex-direction;
+    padding: $submenu-padding;
     border-width: $submenu-border-width;
     border-style: $submenu-border-style;
     border-radius: $submenu-border-radius;
-    background: $submenu-background;
-    color: $submenu-color;
+    list-style: none;
     gap: $submenu-gap;
+    isolation: isolate;
     inset: $submenu-inset;
 
     &#{defaults.$menu-show-selector} {
@@ -86,26 +79,94 @@
     &#{defaults.$menu-hide-selector} {
       --#{root-defaults.$prefix}-submenu-display: #{$submenu-hide-display};
     }
-
-    #{defaults.$menu-item-selector} {
-      --#{root-defaults.$prefix}-menu-item-width: #{$submenu-item-width};
-    }
   }
 
   #{defaults.$menu-item-selector} {
     position: relative;
-    width: $menu-item-width;
+    min-width: $menu-item-min-width;
+    padding: $menu-item-padding;
   }
 
-  #{defaults.$submenu-toggle-selector} {
-    &::after {
-      content: "▼";
-      transform: none;
-      transition: transform 200ms ease;
+  #{defaults.$menu-link-selector} {
+    display: flex;
+    padding: $menu-link-padding;
+    transform: $menu-link-transform;
+    transition: $menu-link-transition;
+    border-width: $menu-link-border-width;
+    border-style: $menu-link-border-style;
+    border-radius: $menu-link-border-radius;
+    text-decoration: $menu-link-text-decoration;
+    text-decoration-style: $menu-link-text-decoration-style;
+    gap: $menu-link-gap;
+    text-decoration-thickness: $menu-link-text-decoration-thickness;
+
+    &:visited {
+      --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-visited-text-decoration};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-thickness: #{$menu-link-visited-text-decoration-thickness};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-style: #{$menu-link-visited-text-decoration-style};
+      --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-visited-transform};
     }
 
-    &[aria-expanded="true"]::after {
-      transform: rotate(-180deg);
+    &:focus-visible {
+      --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-focus-text-decoration};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-thickness: #{$menu-link-focus-text-decoration-thickness};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-style: #{$menu-link-focus-text-decoration-style};
+      --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-focus-transform};
+    }
+
+    &:hover {
+      --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-hover-text-decoration};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-thickness: #{$menu-link-hover-text-decoration-thickness};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-style: #{$menu-link-hover-text-decoration-style};
+      --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-hover-transform};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-active-text-decoration};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-thickness: #{$menu-link-active-text-decoration-thickness};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-style: #{$menu-link-active-text-decoration-style};
+      --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-active-transform};
+    }
+
+    &:disabled,
+    &[disabled] {
+      &,
+      &:visited,
+      &:focus-visible,
+      &:hover,
+      &:active {
+        --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-disabled-text-decoration};
+        --#{root-defaults.$prefix}-menu-link-text-decoration-thickness: #{$menu-link-disabled-text-decoration-thickness};
+        --#{root-defaults.$prefix}-menu-link-text-decoration-style: #{$menu-link-disabled-text-decoration-style};
+        --#{root-defaults.$prefix}-menu-link-transform: #{$menu-link-disabled-transform};
+      }
+    }
+
+    &#{button-defaults.$button-selector} {
+      --#{root-defaults.$prefix}-menu-link-padding: #{button-variables.$button-padding};
+      --#{root-defaults.$prefix}-menu-link-border-width: #{button-variables.$button-border-width};
+      --#{root-defaults.$prefix}-menu-link-border-radius: #{button-variables.$button-border-radius};
+      --#{root-defaults.$prefix}-menu-link-border-style: #{button-variables.$button-border-style};
+      --#{root-defaults.$prefix}-menu-link-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-visited-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-focus-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-hover-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-active-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-disabled-text-decoration: none;
+      --#{root-defaults.$prefix}-menu-link-transition: #{button-variables.$button-transition};
+      --#{root-defaults.$prefix}-menu-link-transition-reduced-motion: #{button-variables.$button-transition-reduced-motion};
+      --#{root-defaults.$prefix}-menu-link-transform: #{button-variables.$button-transform};
+      --#{root-defaults.$prefix}-menu-link-visited-transform: #{button-variables.$button-visited-transform};
+      --#{root-defaults.$prefix}-menu-link-focus-transform: #{button-variables.$button-focus-transform};
+      --#{root-defaults.$prefix}-menu-link-hover-transform: #{button-variables.$button-hover-transform};
+      --#{root-defaults.$prefix}-menu-link-active-transform: #{button-variables.$button-active-transform};
+      --#{root-defaults.$prefix}-menu-link-disabled-transform: #{button-variables.$button-disabled-transform};
+    }
+  }
+
+  @include animation-off {
+    #{defaults.$menu-link-selector} {
+      --#{root-defaults.$prefix}-menu-link-transition: #{$menu-link-transition-reduced-motion};
     }
   }
 }
@@ -113,68 +174,107 @@
 @include layer(theme) {
   #{defaults.$menu-selector} {
     --#{root-defaults.$prefix}-link-color: #{$menu-link-color};
-    --#{root-defaults.$prefix}-link-hover-color: #{$menu-link-hover-color};
-    --#{root-defaults.$prefix}-link-active-color: #{$menu-link-active-color};
-    --#{root-defaults.$prefix}-link-visited-color: #{$menu-link-visited-color};
-    --#{root-defaults.$prefix}-link-disabled-color: #{$menu-link-disabled-color};
     --#{root-defaults.$prefix}-link-background: #{$menu-link-background};
-    --#{root-defaults.$prefix}-link-hover-background: #{$menu-link-hover-background};
-    --#{root-defaults.$prefix}-link-active-background: #{$menu-link-active-background};
+    --#{root-defaults.$prefix}-link-border-color: #{$menu-link-border-color};
+    --#{root-defaults.$prefix}-link-text-decoration-color: #{$menu-link-text-decoration-color};
+    --#{root-defaults.$prefix}-link-visited-color: #{$menu-link-visited-color};
     --#{root-defaults.$prefix}-link-visited-background: #{$menu-link-visited-background};
+    --#{root-defaults.$prefix}-link-visited-border-color: #{$menu-link-visited-border-color};
+    --#{root-defaults.$prefix}-link-visited-text-decoration-color: #{$menu-link-visited-text-decoration-color};
+    --#{root-defaults.$prefix}-link-focus-color: #{$menu-link-focus-color};
+    --#{root-defaults.$prefix}-link-focus-background: #{$menu-link-focus-background};
+    --#{root-defaults.$prefix}-link-focus-border-color: #{$menu-link-focus-border-color};
+    --#{root-defaults.$prefix}-link-focus-text-decoration-color: #{$menu-link-focus-text-decoration-color};
+    --#{root-defaults.$prefix}-link-hover-color: #{$menu-link-hover-color};
+    --#{root-defaults.$prefix}-link-hover-background: #{$menu-link-hover-background};
+    --#{root-defaults.$prefix}-link-hover-border-color: #{$menu-link-hover-border-color};
+    --#{root-defaults.$prefix}-link-hover-text-decoration-color: #{$menu-link-hover-text-decoration-color};
+    --#{root-defaults.$prefix}-link-active-color: #{$menu-link-active-color};
+    --#{root-defaults.$prefix}-link-active-background: #{$menu-link-active-background};
+    --#{root-defaults.$prefix}-link-active-border-color: #{$menu-link-active-border-color};
+    --#{root-defaults.$prefix}-link-active-text-decoration-color: #{$menu-link-active-text-decoration-color};
+    --#{root-defaults.$prefix}-link-disabled-color: #{$menu-link-disabled-color};
     --#{root-defaults.$prefix}-link-disabled-background: #{$menu-link-disabled-background};
-    --#{root-defaults.$prefix}-button-color: #{$menu-link-color};
-    --#{root-defaults.$prefix}-button-hover-color: #{$menu-link-hover-color};
-    --#{root-defaults.$prefix}-button-active-color: #{$menu-link-active-color};
-    --#{root-defaults.$prefix}-button-disabled-color: #{$menu-link-disabled-color};
-    --#{root-defaults.$prefix}-button-background: #{$menu-link-background};
-    --#{root-defaults.$prefix}-button-hover-background: #{$menu-link-hover-background};
-    --#{root-defaults.$prefix}-button-active-background: #{$menu-link-active-background};
-    --#{root-defaults.$prefix}-button-disabled-background: #{$menu-link-disabled-background};
+    --#{root-defaults.$prefix}-link-disabled-border-color: #{$menu-link-disabled-border-color};
+    --#{root-defaults.$prefix}-link-disabled-text-decoration-color: #{$menu-link-disabled-text-decoration-color};
 
-    #{defaults.$menu-link-selector}:not(#{button-defaults.$button-selector}),
-    #{button-defaults.$button-selector}#{button-defaults.$button-link-selector} {
-      background: $menu-link-background;
-      color: $menu-link-color;
-
-      &:visited {
-        --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-visited-background};
-        --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-visited-color};
-      }
-
-      &:hover {
-        --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-hover-color};
-        --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-hover-background};
-      }
-
-      &:active {
-        --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-active-color};
-        --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-active-background};
-      }
-
-      &:disabled,
-      &[disabled] {
-        &,
-        &:hover,
-        &:active {
-          --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-disabled-color};
-          --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-disabled-background};
-        }
-      }
-    }
+    border-color: $menu-border-color;
+    background: $menu-background;
+    color: $menu-color;
   }
 
   #{defaults.$submenu-selector} {
-    --#{root-defaults.$prefix}-menu-link-color: #{$submenu-link-color};
-    --#{root-defaults.$prefix}-menu-link-hover-color: #{$submenu-link-hover-color};
-    --#{root-defaults.$prefix}-menu-link-active-color: #{$submenu-link-active-color};
-    --#{root-defaults.$prefix}-menu-link-visited-color: #{$submenu-link-visited-color};
-    --#{root-defaults.$prefix}-menu-link-disabled-color: #{$submenu-link-disabled-color};
-    --#{root-defaults.$prefix}-menu-link-background: #{$submenu-link-background};
-    --#{root-defaults.$prefix}-menu-link-hover-background: #{$submenu-link-hover-background};
-    --#{root-defaults.$prefix}-menu-link-active-background: #{$submenu-link-active-background};
-    --#{root-defaults.$prefix}-menu-link-visited-background: #{$submenu-link-visited-background};
-    --#{root-defaults.$prefix}-menu-link-disabled-background: #{$submenu-link-disabled-background};
-
     border-color: $submenu-border-color;
+    background: $submenu-background;
+    color: $submenu-color;
+  }
+
+  #{defaults.$menu-link-selector} {
+    border-color: $menu-link-border-color;
+    background: $menu-link-background;
+    color: $menu-link-color;
+    text-decoration-color: $menu-link-text-decoration-color;
+
+    &:visited {
+      --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-visited-background};
+      --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-visited-color};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-color: #{$menu-link-visited-text-decoration-color};
+      --#{root-defaults.$prefix}-menu-link-border-color: #{$menu-link-visited-border-color};
+    }
+
+    &:focus-visible {
+      --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-focus-background};
+      --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-focus-color};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-color: #{$menu-link-focus-text-decoration-color};
+      --#{root-defaults.$prefix}-menu-link-border-color: #{$menu-link-focus-border-color};
+    }
+
+    &:hover {
+      --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-hover-background};
+      --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-hover-color};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-color: #{$menu-link-hover-text-decoration-color};
+      --#{root-defaults.$prefix}-menu-link-border-color: #{$menu-link-hover-border-color};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-active-background};
+      --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-active-color};
+      --#{root-defaults.$prefix}-menu-link-text-decoration-color: #{$menu-link-active-text-decoration-color};
+      --#{root-defaults.$prefix}-menu-link-border-color: #{$menu-link-active-border-color};
+    }
+
+    &:disabled {
+      &,
+      &:hover,
+      &:active,
+      &:focus-visible,
+      &:visited {
+        --#{root-defaults.$prefix}-menu-link-background: #{$menu-link-disabled-background};
+        --#{root-defaults.$prefix}-menu-link-color: #{$menu-link-disabled-color};
+        --#{root-defaults.$prefix}-menu-link-text-decoration-color: #{$menu-link-disabled-text-decoration-color};
+        --#{root-defaults.$prefix}-menu-link-border-color: #{$menu-link-disabled-border-color};
+      }
+    }
+
+    &#{button-defaults.$button-selector} {
+      --#{root-defaults.$prefix}-menu-link-background: #{button-variables.$button-background};
+      --#{root-defaults.$prefix}-menu-link-color: #{button-variables.$button-color};
+      --#{root-defaults.$prefix}-menu-link-border-color: #{button-variables.$button-border-color};
+      --#{root-defaults.$prefix}-menu-link-visited-background: #{button-variables.$button-visited-background};
+      --#{root-defaults.$prefix}-menu-link-visited-color: #{button-variables.$button-visited-color};
+      --#{root-defaults.$prefix}-menu-link-visited-border-color: #{button-variables.$button-visited-border-color};
+      --#{root-defaults.$prefix}-menu-link-focus-background: #{button-variables.$button-focus-background};
+      --#{root-defaults.$prefix}-menu-link-focus-color: #{button-variables.$button-focus-color};
+      --#{root-defaults.$prefix}-menu-link-focus-border-color: #{button-variables.$button-focus-border-color};
+      --#{root-defaults.$prefix}-menu-link-hover-background: #{button-variables.$button-hover-background};
+      --#{root-defaults.$prefix}-menu-link-hover-color: #{button-variables.$button-hover-color};
+      --#{root-defaults.$prefix}-menu-link-hover-border-color: #{button-variables.$button-hover-border-color};
+      --#{root-defaults.$prefix}-menu-link-active-background: #{button-variables.$button-active-background};
+      --#{root-defaults.$prefix}-menu-link-active-color: #{button-variables.$button-active-color};
+      --#{root-defaults.$prefix}-menu-link-active-border-color: #{button-variables.$button-active-border-color};
+      --#{root-defaults.$prefix}-menu-link-disabled-background: #{button-variables.$button-disabled-background};
+      --#{root-defaults.$prefix}-menu-link-disabled-color: #{button-variables.$button-disabled-color};
+      --#{root-defaults.$prefix}-menu-link-disabled-border-color: #{button-variables.$button-disabled-border-color};
+    }
   }
 }

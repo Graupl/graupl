@@ -26,7 +26,7 @@ $submenu-show-display: $menu-show-display !default;
 $submenu-hide-display: $menu-hide-display !default;
 
 // Menu item properties.
-$menu-item-width: auto !default;
+$menu-item-width: max-content !default;
 
 // Submenu properties.
 $submenu-position: absolute !default;
@@ -47,5 +47,5 @@ $menu-link-hover-transform: none !default;
 $menu-link-hover-transform-reduced-motion: none !default;
 $menu-link-active-transform: none !default;
 $menu-link-active-transform-reduced-motion: none !default;
+$menu-border-width: 0 !default;
 $menu-link-border-width: 0 !default;
-$menu-link-border-style: solid !default;
