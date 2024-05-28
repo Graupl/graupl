@@ -8,24 +8,60 @@
 
 @include layer(base) {
   #{defaults.$link-selector} {
+    min-width: $link-min-width;
+    min-height: $link-min-height;
     padding: $link-padding;
     transform: $link-transform;
     transition: $link-transition;
+    border-width: $link-border-width;
+    border-style: $link-border-style;
+    border-radius: $link-border-radius;
     text-decoration: $link-text-decoration;
+    text-decoration-style: $link-text-decoration-style;
     text-decoration-thickness: $link-text-decoration-thickness;
+
+    &:visited {
+      --#{root-defaults.$prefix}-link-text-decoration: #{$link-visited-text-decoration};
+      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-visited-text-decoration-thickness};
+      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-visited-text-decoration-style};
+      --#{root-defaults.$prefix}-link-transform: #{$link-visited-transform};
+    }
+
+    &:focus-visible {
+      --#{root-defaults.$prefix}-link-text-decoration: #{$link-focus-text-decoration};
+      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-focus-text-decoration-thickness};
+      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-focus-text-decoration-style};
+      --#{root-defaults.$prefix}-link-transform: #{$link-focus-transform};
+    }
 
     &:hover {
       --#{root-defaults.$prefix}-link-text-decoration: #{$link-hover-text-decoration};
       --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-hover-text-decoration-thickness};
+      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-hover-text-decoration-style};
       --#{root-defaults.$prefix}-link-transform: #{$link-hover-transform};
     }
 
     &:active {
+      --#{root-defaults.$prefix}-link-text-decoration: #{$link-active-text-decoration};
+      --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-active-text-decoration-thickness};
+      --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-active-text-decoration-style};
       --#{root-defaults.$prefix}-link-transform: #{$link-active-transform};
     }
 
+    &:disabled,
     &[disabled] {
       cursor: not-allowed;
+
+      &,
+      &:visited,
+      &:focus-visible,
+      &:hover,
+      &:active {
+        --#{root-defaults.$prefix}-link-text-decoration: #{$link-disabled-text-decoration};
+        --#{root-defaults.$prefix}-link-text-decoration-thickness: #{$link-disabled-text-decoration-thickness};
+        --#{root-defaults.$prefix}-link-text-decoration-style: #{$link-disabled-text-decoration-style};
+        --#{root-defaults.$prefix}-link-transform: #{$link-disabled-transform};
+      }
     }
   }
 
@@ -38,37 +74,51 @@
 
 @include layer(theme) {
   #{defaults.$link-selector} {
+    border-color: $link-border-color;
     background: $link-background;
     color: $link-color;
+    text-decoration-color: $link-text-decoration-color;
+
+    &:visited {
+      --#{root-defaults.$prefix}-link-color: #{$link-visited-color};
+      --#{root-defaults.$prefix}-link-background: #{$link-visited-background};
+      --#{root-defaults.$prefix}-link-border-color: #{$link-visited-border-color};
+      --#{root-defaults.$prefix}-link-text-decoration-color: #{$link-visited-text-decoration-color};
+    }
+
+    &:focus-visible {
+      --#{root-defaults.$prefix}-link-color: #{$link-focus-color};
+      --#{root-defaults.$prefix}-link-background: #{$link-focus-background};
+      --#{root-defaults.$prefix}-link-border-color: #{$link-focus-border-color};
+      --#{root-defaults.$prefix}-link-text-decoration-color: #{$link-focus-text-decoration-color};
+    }
 
     &:hover {
       --#{root-defaults.$prefix}-link-color: #{$link-hover-color};
       --#{root-defaults.$prefix}-link-background: #{$link-hover-background};
+      --#{root-defaults.$prefix}-link-border-color: #{$link-hover-border-color};
+      --#{root-defaults.$prefix}-link-text-decoration-color: #{$link-hover-text-decoration-color};
     }
 
     &:active {
       --#{root-defaults.$prefix}-link-color: #{$link-active-color};
       --#{root-defaults.$prefix}-link-background: #{$link-active-background};
+      --#{root-defaults.$prefix}-link-border-color: #{$link-active-border-color};
+      --#{root-defaults.$prefix}-link-text-decoration-color: #{$link-active-text-decoration-color};
     }
 
-    // stylelint-disable no-descending-specificity
-    &:visited {
-      &,
-      &:hover {
-        --#{root-defaults.$prefix}-link-color: #{$link-visited-color};
-        --#{root-defaults.$prefix}-link-background: #{$link-visited-background};
-      }
-    }
-
+    &:disabled,
     &[disabled] {
       &,
+      &:visited,
+      &:focus-visible,
       &:hover,
-      &:active,
-      &:visited {
+      &:active {
         --#{root-defaults.$prefix}-link-color: #{$link-disabled-color};
         --#{root-defaults.$prefix}-link-background: #{$link-disabled-background};
+        --#{root-defaults.$prefix}-link-border-color: #{$link-disabled-border-color};
+        --#{root-defaults.$prefix}-link-text-decoration-color: #{$link-disabled-text-decoration-color};
       }
     }
-    // stylelint-enable no-descending-specificity
   }
 }
