@@ -164,6 +164,10 @@
     }
   }
 
+  #{defaults.$submenu-toggle-selector} {
+    display: flex;
+  }
+
   @include animation-off {
     #{defaults.$menu-link-selector} {
       --#{root-defaults.$prefix}-menu-link-transition: #{$menu-link-transition-reduced-motion};

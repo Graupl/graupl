@@ -108,7 +108,7 @@ $submenu-hide-display: var(
   --#{root-defaults.$prefix}-submenu-hide-display,
   none
 );
-$submenu-display: var(--#{root-defaults.$prefix}-submenu-display, flex);
+$submenu-display: var(--#{root-defaults.$prefix}-submenu-display, none);
 
 // Submenu color properties.
 $submenu-background: var(
