@@ -10,32 +10,60 @@
   // Flex columns.
   #{defaults.$flex-columns-selector} {
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
     gap: $flex-columns-row-gap $flex-columns-column-gap;
 
     > * {
       flex: 1 1 $flex-columns-size;
+      max-width: $flex-columns-max-width;
     }
 
     #{defaults.$flex-columns-fill-selector} {
       --#{root-defaults.$prefix}-flex-columns-max-width: auto;
     }
+  }
 
-    @for $i
-      from defaults.$flex-columns-min-count
-      through defaults.$flex-columns-max-count
-    {
-      > #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+  @for $i
+    from defaults.$flex-columns-min-count
+    through defaults.$flex-columns-max-count
+  {
+    @each $screen, $query in root-defaults.$screen-sizes {
+      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
         --#{root-defaults.$prefix}-flex-columns-size: calc(
           ((100% / #{defaults.$flex-columns-max-count}) * #{$i}) -
             #{$flex-columns-column-gap}
         );
-
-        max-width: var(
-          --#{root-defaults.$prefix}-flex-columns-max-width,
-          calc(100% / #{defaults.$flex-columns-max-count} * #{$i})
+        --#{root-defaults.$prefix}-flex-columns-max-width: calc(
+          100% / #{defaults.$flex-columns-max-count} * #{$i}
         );
+        /* stylelint-enable  scss/operator-no-newline-after */
+      }
+
+      // For the screen-specific sizes, we can't use custom properties.
+      // It appears that custom properties that are already set, cannot be overwritten
+      // inside of a media query.
+      //
+      // If you do something like `.col-6 .col-lg-3`, the custom properties will only ever
+      // be set to the `.col-6` value.
+      @include screen($screen) {
+        #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
+          flex-basis: calc(
+            ((100% / #{defaults.$flex-columns-max-count}) * #{$i}) - #{$flex-columns-column-gap}
+          );
+          max-width: calc(100% / #{defaults.$flex-columns-max-count} * #{$i});
+
+          &#{defaults.$flex-columns-fill-selector} {
+            max-width: auto;
+          }
+        }
+      }
+    }
+
+    @include screen(xs) {
+      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+        --#{root-defaults.$prefix}-flex-columns-size: 100%;
+        --#{root-defaults.$prefix}-flex-columns-max-width: auto;
       }
     }
   }

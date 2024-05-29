@@ -20,3 +20,7 @@ $flex-columns-size: var(
   --#{root-defaults.$prefix}-flex-columns-size,
   #{defaults.$flex-columns-size}
 );
+$flex-columns-max-width: var(
+  --#{root-defaults.$prefix}-flex-columns-max-width,
+  #{defaults.$flex-columns-max-width}
+);
