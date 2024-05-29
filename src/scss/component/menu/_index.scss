@@ -85,6 +85,10 @@
     position: relative;
     min-width: $menu-item-min-width;
     padding: $menu-item-padding;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   #{defaults.$menu-link-selector} {
@@ -99,6 +103,7 @@
     text-decoration-style: $menu-link-text-decoration-style;
     gap: $menu-link-gap;
     text-decoration-thickness: $menu-link-text-decoration-thickness;
+    width: 100%;
 
     &:visited {
       --#{root-defaults.$prefix}-menu-link-text-decoration: #{$menu-link-visited-text-decoration};
@@ -166,11 +171,28 @@
 
   #{defaults.$submenu-toggle-selector} {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &::after {
+      content: $submenu-toggle-content;
+      display: block;
+      transform: $submenu-toggle-transform;
+      transition: $submenu-toggle-transition;
+    }
+
+    &[aria-expanded="true"]::after {
+      --#{root-defaults.$prefix}-submenu-toggle-transform: #{$submenu-toggle-open-transform};
+    }
   }
 
   @include animation-off {
     #{defaults.$menu-link-selector} {
       --#{root-defaults.$prefix}-menu-link-transition: #{$menu-link-transition-reduced-motion};
+    }
+
+    #{defaults.$submenu-toggle-selector}::after {
+      --#{root-defaults.$prefix}-submenu-toggle-transition: #{$submenu-toggle-transition-reduced-motion};
     }
   }
 }

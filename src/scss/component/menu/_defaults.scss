@@ -26,7 +26,7 @@ $submenu-show-display: $menu-show-display !default;
 $submenu-hide-display: $menu-hide-display !default;
 
 // Menu item properties.
-$menu-item-width: max-content !default;
+$menu-item-min-width: max-content !default;
 
 // Submenu properties.
 $submenu-position: absolute !default;
@@ -41,11 +41,25 @@ $submenu-item-width: 100% !default;
 
 // Menu link properties.
 $menu-link-text-decoration: none !default;
-$menu-link-hover-text-decoration: none !default;
+$menu-link-visited-text-decoration: $menu-link-text-decoration !default;
+$menu-link-focus-text-decoration: $menu-link-text-decoration !default;
+$menu-link-hover-text-decoration: $menu-link-text-decoration !default;
+$menu-link-active-text-decoration: $menu-link-text-decoration !default;
+$menu-link-disabled-text-decoration: $menu-link-text-decoration !default;
+$menu-link-text-decoration-style: solid !default;
+$menu-link-visited-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-focus-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-hover-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-active-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-disabled-text-decoration-style: $menu-link-text-decoration-style !default;
 $menu-link-transform: none !default;
-$menu-link-hover-transform: none !default;
-$menu-link-hover-transform-reduced-motion: none !default;
-$menu-link-active-transform: none !default;
-$menu-link-active-transform-reduced-motion: none !default;
+$menu-link-visited-transform: $menu-link-transform !default;
+$menu-link-focus-transform: $menu-link-transform !default;
+$menu-link-hover-transform: $menu-link-transform !default;
+$menu-link-active-transform: $menu-link-transform !default;
+$menu-link-disabled-transform: $menu-link-transform !default;
 $menu-border-width: 0 !default;
 $menu-link-border-width: 0 !default;
+$submenu-toggle-transform: rotate(0deg) !default;
+$submenu-toggle-open-transform: rotate(-180deg) !default;
+$submenu-toggle-content: "'▼'" !default;
