@@ -1,0 +1,15 @@
+// @gruapl/graupl flex columns layout styles.
+
+@use "variables" as *;
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
+
+@include layer(layout) {
+  // Flex rows.
+  #{defaults.$flex-row-selector} {}
+
+  // Flex columns.
+  #{defaults.$flex-columns-selector} {}
+}
