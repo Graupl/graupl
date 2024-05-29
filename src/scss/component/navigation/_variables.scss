@@ -7,6 +7,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
 @use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
 @use "sass:map";
 
 // Navigation colors.
@@ -77,4 +78,156 @@ $navigation-toggle-border-color: var(
 $navigation-toggle-border-radius: var(
   --#{root-defaults.$prefix}-navigation-toggle-border-radius,
   #{root-variables.$border-radius}
+);
+
+// Navigation branding properties.
+$navigation-branding-font-size: var(
+  --#{root-defaults.$prefix}-navigation-branding-font-size,
+  #{map.get(typography.$font-sizes, "lg")}
+);
+$navigation-branding-font-weight: var(
+  --#{root-defaults.$prefix}-navigation-branding-font-weight,
+  #{typography.$font-weight-bold}
+);
+$navigation-branding-padding-x: var(
+  --#{root-defaults.$prefix}-navigation-branding-padding-x,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$navigation-branding-padding-y: var(
+  --#{root-defaults.$prefix}-navigation-branding-padding-y,
+  #{map.get(root-variables.$spacers, 2)}
+);
+$navigation-branding-padding: var(
+  --#{root-defaults.$prefix}-navigation-branding-padding,
+  #{$navigation-branding-padding-y} #{$navigation-branding-padding-x}
+);
+
+// Navigation branding colors.
+$navigation-branding-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-color,
+  #{$navigation-color}
+);
+$navigation-branding-visited-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-visited-color,
+  #{$navigation-color}
+);
+$navigation-branding-focus-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-focus-color,
+  #{$navigation-color}
+);
+$navigation-branding-hover-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-hover-color,
+  #{$navigation-color}
+);
+$navigation-branding-active-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-active-color,
+  #{$navigation-color}
+);
+$navigation-branding-disabled-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-disabled-color,
+  #{$navigation-color}
+);
+
+// Navigation branding text decoration properties.
+$navigation-branding-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-text-decoration,
+  #{defaults.$navigation-branding-text-decoration}
+);
+$navigation-branding-visited-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-visited-text-decoration,
+  #{defaults.$navigation-branding-visited-text-decoration}
+);
+$navigation-branding-focus-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-focus-text-decoration,
+  #{defaults.$navigation-branding-focus-text-decoration}
+);
+$navigation-branding-hover-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-hover-text-decoration,
+  #{defaults.$navigation-branding-hover-text-decoration}
+);
+$navigation-branding-active-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-active-text-decoration,
+  #{defaults.$navigation-branding-active-text-decoration}
+);
+$navigation-branding-disabled-text-decoration: var(
+  --#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration,
+  #{defaults.$navigation-branding-disabled-text-decoration}
+);
+$navigation-branding-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-text-decoration-style,
+  #{defaults.$navigation-branding-text-decoration-style}
+);
+$navigation-branding-visited-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-style,
+  #{defaults.$navigation-branding-visited-text-decoration-style}
+);
+$navigation-branding-focus-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-style,
+  #{defaults.$navigation-branding-focus-text-decoration-style}
+);
+$navigation-branding-hover-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-style,
+  #{defaults.$navigation-branding-hover-text-decoration-style}
+);
+$navigation-branding-active-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-active-text-decoration-style,
+  #{defaults.$navigation-branding-active-text-decoration-style}
+);
+$navigation-branding-disabled-text-decoration-style: var(
+  --#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-style,
+  #{defaults.$navigation-branding-disabled-text-decoration-style}
+);
+$navigation-branding-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-visited-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-focus-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-hover-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-active-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-active-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-disabled-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$navigation-branding-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-text-decoration-color,
+  #{$navigation-branding-color}
+);
+$navigation-branding-visited-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-color,
+  #{$navigation-branding-visited-color}
+);
+$navigation-branding-focus-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-color,
+  #{$navigation-branding-focus-color}
+);
+$navigation-branding-hover-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-color,
+  #{$navigation-branding-hover-color}
+);
+$navigation-branding-active-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-active-text-decoration-color,
+  #{$navigation-branding-active-color}
+);
+$navigation-branding-disabled-text-decoration-color: var(
+  --#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-color,
+  #{$navigation-branding-disabled-color}
+);
+
+// Navigation toggle properties.
+$navigation-toggle-content: var(
+  --#{root-defaults.$prefix}-navigation-toggle-content,
+  #{defaults.$navigation-toggle-content}
 );

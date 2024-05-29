@@ -45,7 +45,7 @@
     border-radius: $navigation-toggle-border-radius;
 
     &::before {
-      content: "☰";
+      content: $navigation-toggle-content;
       display: block;
     }
   }
@@ -56,6 +56,49 @@
     grid-area: branding;
     align-items: center;
     justify-content: flex-start;
+    padding: $navigation-branding-padding;
+    font-size: $navigation-branding-font-size;
+    font-weight: $navigation-branding-font-weight;
+    text-decoration: $navigation-branding-text-decoration;
+    text-decoration-style: $navigation-branding-text-decoration-style;
+    text-decoration-thickness: $navigation-branding-text-decoration-thickness;
+
+    &:visited {
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-visited-text-decoration};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-visited-text-decoration-thickness};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-visited-text-decoration-style};
+    }
+
+    &:focus-visible {
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-focus-text-decoration};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-focus-text-decoration-thickness};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-focus-text-decoration-style};
+    }
+
+    &:hover {
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-hover-text-decoration};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-hover-text-decoration-thickness};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-hover-text-decoration-style};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-active-text-decoration};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-active-text-decoration-thickness};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-active-text-decoration-style};
+    }
+
+    &:disabled,
+    &[disabled] {
+      &,
+      &:visited,
+      &:focus-visible,
+      &:hover,
+      &:active {
+        --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-disabled-text-decoration};
+        --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-disabled-text-decoration-thickness};
+        --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-disabled-text-decoration-style};
+      }
+    }
   }
 
   @include screen(navigation-collapse) {
@@ -63,7 +106,7 @@
     #{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}-menu-flex-direction: column;
       --#{root-defaults.$prefix}-submenu-position: relative;
-      --#{root-defaults.$prefix}-menu-item-width: 100%;
+      --#{root-defaults.$prefix}-menu-item-min-width: 100%;
       --#{root-defaults.$prefix}-submenu-inset: auto;
     }
   }
@@ -104,6 +147,44 @@
     &:hover {
       --#{root-defaults.$prefix}-navigation-toggle-background: #{$navigation-toggle-hover-background};
       --#{root-defaults.$prefix}-navigation-toggle-color: #{$navigation-toggle-hover-color};
+    }
+  }
+
+  // Navigation branding.
+  #{defaults.$navigation-branding-selector} {
+    color: $navigation-branding-color;
+    text-decoration-color: $navigation-branding-text-decoration-color;
+
+    &:visited {
+      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-visited-color};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-visited-text-decoration-color};
+    }
+
+    &:focus-visible {
+      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-focus-color};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-focus-text-decoration-color};
+    }
+
+    &:hover {
+      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-hover-color};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-hover-text-decoration-color};
+    }
+
+    &:active {
+      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-active-color};
+      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-active-text-decoration-color};
+    }
+
+    &:disabled,
+    &[disabled] {
+      &,
+      &:visited,
+      &:focus-visible,
+      &:hover,
+      &:active {
+        --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-disabled-color};
+        --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-disabled-text-decoration-color};
+      }
     }
   }
 }
