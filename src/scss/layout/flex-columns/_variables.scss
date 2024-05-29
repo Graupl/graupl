@@ -1,0 +1,26 @@
+// @graupl/graupl flex columns layout variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../columns/variables" as columns-variables;
+
+// Flex columns properties.
+$flex-columns-row-gap: var(
+  --#{root-defaults.$prefix}-flex-columns-row-gap,
+  #{columns-variables.$columns-row-gap}
+);
+$flex-columns-column-gap: var(
+  --#{root-defaults.$prefix}-flex-columns-column-gap,
+  #{columns-variables.$columns-column-gap}
+);
+$flex-columns-size: var(
+  --#{root-defaults.$prefix}-flex-columns-size,
+  #{defaults.$flex-columns-size}
+);
+$flex-columns-max-width: var(
+  --#{root-defaults.$prefix}-flex-columns-max-width,
+  #{defaults.$flex-columns-max-width}
+);
