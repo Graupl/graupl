@@ -7,9 +7,36 @@
 @use "../../mixins/media-queries" as *;
 
 @include layer(layout) {
-  // Flex rows.
-  #{defaults.$flex-row-selector} {}
-
   // Flex columns.
-  #{defaults.$flex-columns-selector} {}
+  #{defaults.$flex-columns-selector} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: $flex-columns-row-gap $flex-columns-column-gap;
+
+    > * {
+      flex: 1 1 $flex-columns-size;
+    }
+
+    #{defaults.$flex-columns-fill-selector} {
+      --#{root-defaults.$prefix}-flex-columns-max-width: auto;
+    }
+
+    @for $i
+      from defaults.$flex-columns-min-count
+      through defaults.$flex-columns-max-count
+    {
+      > #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+        --#{root-defaults.$prefix}-flex-columns-size: calc(
+          ((100% / #{defaults.$flex-columns-max-count}) * #{$i}) -
+            #{$flex-columns-column-gap}
+        );
+
+        max-width: var(
+          --#{root-defaults.$prefix}-flex-columns-max-width,
+          calc(100% / #{defaults.$flex-columns-max-count} * #{$i})
+        );
+      }
+    }
+  }
 }
