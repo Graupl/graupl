@@ -1,0 +1,65 @@
+// @graupl/graupl menu component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+// Menu selectors.
+$menu-selector: ".menu" !default;
+$submenu-selector: ".submenu" !default;
+$menu-item-selector: ".menu-item" !default;
+$menu-link-selector: ".menu-link" !default;
+$submenu-toggle-selector: ".submenu-toggle" !default;
+$menu-show-selector: ".show" !default;
+$menu-hide-selector: ".hide" !default;
+
+// Flex properties.
+$menu-flex-direction: row !default;
+$submenu-flex-direction: column !default;
+
+// Visibility properties.
+$menu-show-display: flex !default;
+$menu-hide-display: none !default;
+$submenu-show-display: $menu-show-display !default;
+$submenu-hide-display: $menu-hide-display !default;
+
+// Menu item properties.
+$menu-item-min-width: max-content !default;
+
+// Submenu properties.
+$submenu-position: absolute !default;
+$submenu-z-index: 2 !default;
+$submenu-top: 100% !default;
+$submenu-right: auto !default;
+$submenu-bottom: auto !default;
+$submenu-left: 0 !default;
+
+// Submenu item properties.
+$submenu-item-width: 100% !default;
+
+// Menu link properties.
+$menu-link-text-decoration: none !default;
+$menu-link-visited-text-decoration: $menu-link-text-decoration !default;
+$menu-link-focus-text-decoration: $menu-link-text-decoration !default;
+$menu-link-hover-text-decoration: $menu-link-text-decoration !default;
+$menu-link-active-text-decoration: $menu-link-text-decoration !default;
+$menu-link-disabled-text-decoration: $menu-link-text-decoration !default;
+$menu-link-text-decoration-style: solid !default;
+$menu-link-visited-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-focus-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-hover-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-active-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-disabled-text-decoration-style: $menu-link-text-decoration-style !default;
+$menu-link-transform: none !default;
+$menu-link-visited-transform: $menu-link-transform !default;
+$menu-link-focus-transform: $menu-link-transform !default;
+$menu-link-hover-transform: $menu-link-transform !default;
+$menu-link-active-transform: $menu-link-transform !default;
+$menu-link-disabled-transform: $menu-link-transform !default;
+$menu-border-width: 0 !default;
+$menu-link-border-width: 0 !default;
+$submenu-toggle-transform: rotate(0deg) !default;
+$submenu-toggle-open-transform: rotate(-180deg) !default;
+$submenu-toggle-content: "'▼'" !default;

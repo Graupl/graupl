@@ -126,6 +126,27 @@
         <input type="range" class="range" id="range">
       </div>
     </form>
+    <h2>Navigation</h2>
+    <div class="py-7">
+      <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">
+        <a class="navigation-branding" href="#">Graupl</a>
+        <button class="navigation-toggle ml-auto mr-0" aria-label="Toggle navigation"></button>
+        <ul class="menu">
+          <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
+          <li class="menu-item submenu-item">
+            <button class="menu-link button link submenu-toggle">About</button>
+            <ul class="submenu">
+              <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
+              <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
+              <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
+            </ul>
+          </li>
+          <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
+          <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
+          <li class="menu-item"><a class="menu-link button tertiary" href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
     <h2>Tables</h2>
     <p>Graupl provides some default styling for tables as well as some other useful features to customize them.</p>
     <table class="bordered striped-rows hoverable">
@@ -356,6 +377,8 @@
       </table>
     </div>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
+  <script src="src/js/navigation.js"></script>
 </body>
 
 </html>

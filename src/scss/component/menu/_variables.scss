@@ -1,0 +1,479 @@
+// @graupl/graupl menu component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Menu properties.
+$menu-flex-direction: var(
+  --#{root-defaults.$prefix}-menu-flex-direction,
+  #{defaults.$menu-flex-direction}
+);
+$menu-padding-x: var(
+  --#{root-defaults.$prefix}-menu-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-padding-y: var(
+  --#{root-defaults.$prefix}-menu-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-padding: var(
+  --#{root-defaults.$prefix}-menu-padding,
+  #{$menu-padding-y} #{$menu-padding-x}
+);
+
+// Menu gap properties.
+$menu-column-gap: var(
+  --#{root-defaults.$prefix}-menu-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-row-gap: var(
+  --#{root-defaults.$prefix}-menu-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-gap: var(
+  --#{root-defaults.$prefix}-menu-gap,
+  #{$menu-column-gap} #{$menu-row-gap}
+);
+
+// Menu display properties.
+$menu-show-display: var(
+  --#{root-defaults.$prefix}-menu-show-display,
+  #{defaults.$menu-show-display}
+);
+$menu-hide-display: var(
+  --#{root-defaults.$prefix}-menu-hide-display,
+  #{defaults.$menu-hide-display}
+);
+$menu-display: var(
+  --#{root-defaults.$prefix}-menu-display,
+  #{defaults.$menu-show-display}
+);
+
+// Menu color properties.
+$menu-background: var(
+  --#{root-defaults.$prefix}-menu-background,
+  #{color.$root-background}
+);
+$menu-color: var(--#{root-defaults.$prefix}-menu-color, #{color.$root-color});
+
+// Menu border properties.
+$menu-border-color: var(
+  --#{root-defaults.$prefix}-menu-border-color,
+  #{$menu-color}
+);
+$menu-border-radius: var(
+  --#{root-defaults.$prefix}-menu-border-radius,
+  #{root-variables.$border-radius}
+);
+$menu-border-style: var(
+  --#{root-defaults.$prefix}-menu-border-style,
+  #{root-variables.$border-style}
+);
+$menu-border-width: var(
+  --#{root-defaults.$prefix}-menu-border-width,
+  #{defaults.$menu-border-width}
+);
+
+// Submenu properties
+$submenu-flex-direction: var(
+  --#{root-defaults.$prefix}-submenu-flex-direction,
+  #{defaults.$submenu-flex-direction}
+);
+$submenu-z-index: var(
+  --#{root-defaults.$prefix}-submenu-z-index,
+  #{defaults.$submenu-z-index}
+);
+$submenu-padding-x: var(
+  --#{root-defaults.$prefix}-submenu-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$submenu-padding-y: var(
+  --#{root-defaults.$prefix}-submenu-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$submenu-padding: var(
+  --#{root-defaults.$prefix}-submenu-padding,
+  #{$submenu-padding-y} #{$submenu-padding-x}
+);
+
+// Submenu gap properties.
+$submenu-column-gap: var(
+  --#{root-defaults.$prefix}-submenu-column-gap,
+  #{$menu-column-gap}
+);
+$submenu-row-gap: var(
+  --#{root-defaults.$prefix}-submenu-row-gap,
+  #{$menu-row-gap}
+);
+$submenu-gap: var(
+  --#{root-defaults.$prefix}-submenu-gap,
+  #{$submenu-column-gap} #{$submenu-row-gap}
+);
+
+// Submenu display properties.
+$submenu-show-display: var(
+  --#{root-defaults.$prefix}-submenu-show-display,
+  #{defaults.$submenu-show-display}
+);
+$submenu-hide-display: var(
+  --#{root-defaults.$prefix}-submenu-hide-display,
+  #{defaults.$submenu-hide-display}
+);
+$submenu-display: var(
+  --#{root-defaults.$prefix}-submenu-display,
+  #{defaults.$submenu-hide-display}
+);
+
+// Submenu color properties.
+$submenu-background: var(
+  --#{root-defaults.$prefix}-submenu-background,
+  #{$menu-background}
+);
+$submenu-color: var(--#{root-defaults.$prefix}-submenu-color, #{$menu-color});
+
+// Submenu border properties.
+$submenu-border-color: var(
+  --#{root-defaults.$prefix}-submenu-border-color,
+  #{$submenu-color}
+);
+$submenu-border-radius: var(
+  --#{root-defaults.$prefix}-submenu-border-radius,
+  #{root-variables.$border-radius}
+);
+$submenu-border-style: var(
+  --#{root-defaults.$prefix}-submenu-border-style,
+  #{root-variables.$border-style}
+);
+$submenu-border-width: var(
+  --#{root-defaults.$prefix}-submenu-border-width,
+  #{root-variables.$border-width}
+);
+
+// Submenu position properties.
+$submenu-position: var(
+  --#{root-defaults.$prefix}-submenu-position,
+  #{defaults.$submenu-position}
+);
+$submenu-top: var(
+  --#{root-defaults.$prefix}-submenu-top,
+  #{defaults.$submenu-top}
+);
+$submenu-right: var(
+  --#{root-defaults.$prefix}-submenu-right,
+  #{defaults.$submenu-right}
+);
+$submenu-bottom: var(
+  --#{root-defaults.$prefix}-submenu-bottom,
+  #{defaults.$submenu-bottom}
+);
+$submenu-left: var(
+  --#{root-defaults.$prefix}-submenu-left,
+  #{defaults.$submenu-left}
+);
+$submenu-inset: var(
+  --#{root-defaults.$prefix}-submenu-inset,
+  #{$submenu-top} #{$submenu-right} #{$submenu-bottom} #{$submenu-left}
+);
+
+// Menu item properties.
+$menu-item-min-width: var(
+  --#{root-defaults.$prefix}-menu-item-min-width,
+  #{defaults.$menu-item-min-width}
+);
+$menu-item-padding-x: var(
+  --#{root-defaults.$prefix}-menu-item-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-item-padding-y: var(
+  --#{root-defaults.$prefix}-menu-item-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-item-padding: var(
+  --#{root-defaults.$prefix}-menu-item-padding,
+  #{$menu-item-padding-y} #{$menu-item-padding-x}
+);
+
+// Submenu item properties.
+$submenu-item-width: var(
+  --#{root-defaults.$prefix}-submenu-item-width,
+  #{defaults.$submenu-item-width}
+);
+
+// Menu link properties.
+$menu-link-padding-x: var(
+  --#{root-defaults.$prefix}-menu-link-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$menu-link-padding-y: var(
+  --#{root-defaults.$prefix}-menu-link-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$menu-link-padding: var(
+  --#{root-defaults.$prefix}-menu-link-padding,
+  #{$menu-link-padding-y} #{$menu-link-padding-x}
+);
+
+// Menu link transform properties.
+$menu-link-transition: var(
+  --#{root-defaults.$prefix}-menu-link-transition,
+  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$menu-link-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-menu-link-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+);
+$menu-link-transform: var(
+  --#{root-defaults.$prefix}-menu-link-transform,
+  #{defaults.$menu-link-transform}
+);
+$menu-link-visited-transform: var(
+  --#{root-defaults.$prefix}-menu-link-visited-transform,
+  #{defaults.$menu-link-visited-transform}
+);
+$menu-link-focus-transform: var(
+  --#{root-defaults.$prefix}-menu-link-focus-transform,
+  #{defaults.$menu-link-focus-transform}
+);
+$menu-link-hover-transform: var(
+  --#{root-defaults.$prefix}-menu-link-hover-transform,
+  #{defaults.$menu-link-hover-transform}
+);
+$menu-link-active-transform: var(
+  --#{root-defaults.$prefix}-menu-link-active-transform,
+  #{defaults.$menu-link-active-transform}
+);
+$menu-link-disabled-transform: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-transform,
+  #{defaults.$menu-link-disabled-transform}
+);
+
+// Menu link gap properties.
+$menu-link-column-gap: var(
+  --#{root-defaults.$prefix}-menu-link-column-gap,
+  #{$menu-link-padding-x}
+);
+$menu-link-row-gap: var(
+  --#{root-defaults.$prefix}-menu-link-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$menu-link-gap: var(
+  --#{root-defaults.$prefix}-menu-link-gap,
+  #{$menu-link-column-gap} #{$menu-link-row-gap}
+);
+
+// Menu link colors.
+$menu-link-background: var(
+  --#{root-defaults.$prefix}-menu-link-background,
+  #{$menu-background}
+);
+$menu-link-visited-background: var(
+  --#{root-defaults.$prefix}-menu-link-visited-background,
+  #{$menu-background}
+);
+$menu-link-focus-background: var(
+  --#{root-defaults.$prefix}-menu-link-focus-background,
+  #{$menu-background}
+);
+$menu-link-hover-background: var(
+  --#{root-defaults.$prefix}-menu-link-hover-background,
+  #{$menu-color}
+);
+$menu-link-active-background: var(
+  --#{root-defaults.$prefix}-menu-link-active-background,
+  #{$menu-color}
+);
+$menu-link-disabled-background: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-background,
+  #{color.$root-background}
+);
+$menu-link-color: var(
+  --#{root-defaults.$prefix}-menu-link-color,
+  #{$menu-color}
+);
+$menu-link-visited-color: var(
+  --#{root-defaults.$prefix}-menu-link-visited-color,
+  #{$menu-color}
+);
+$menu-link-focus-color: var(
+  --#{root-defaults.$prefix}-menu-link-focus-color,
+  #{$menu-color}
+);
+$menu-link-hover-color: var(
+  --#{root-defaults.$prefix}-menu-link-hover-color,
+  #{$menu-background}
+);
+$menu-link-active-color: var(
+  --#{root-defaults.$prefix}-menu-link-active-color,
+  #{$menu-background}
+);
+$menu-link-disabled-color: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-color,
+  #{theme.get(primary, 200)}
+);
+
+// Menu link text decoration properties.
+$menu-link-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration,
+  #{defaults.$menu-link-text-decoration}
+);
+$menu-link-visited-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-visited-text-decoration,
+  #{defaults.$menu-link-visited-text-decoration}
+);
+$menu-link-focus-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-focus-text-decoration,
+  #{defaults.$menu-link-focus-text-decoration}
+);
+$menu-link-hover-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration,
+  #{defaults.$menu-link-hover-text-decoration}
+);
+$menu-link-active-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-active-text-decoration,
+  #{defaults.$menu-link-active-text-decoration}
+);
+$menu-link-disabled-text-decoration: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-text-decoration,
+  #{defaults.$menu-link-disabled-text-decoration}
+);
+$menu-link-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-visited-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-visited-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-focus-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-focus-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-hover-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-active-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-active-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-disabled-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+$menu-link-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration-style,
+  #{defaults.$menu-link-text-decoration-style}
+);
+$menu-link-visited-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-visited-text-decoration-style,
+  #{defaults.$menu-link-visited-text-decoration-style}
+);
+$menu-link-focus-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-focus-text-decoration-style,
+  #{defaults.$menu-link-focus-text-decoration-style}
+);
+$menu-link-hover-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration-style,
+  #{defaults.$menu-link-hover-text-decoration-style}
+);
+$menu-link-active-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-active-text-decoration-style,
+  #{defaults.$menu-link-active-text-decoration-style}
+);
+$menu-link-disabled-text-decoration-style: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-text-decoration-style,
+  #{defaults.$menu-link-disabled-text-decoration-style}
+);
+$menu-link-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-text-decoration-color,
+  #{$menu-link-color}
+);
+$menu-link-visited-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-visited-text-decoration-color,
+  #{$menu-link-visited-color}
+);
+$menu-link-focus-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-focus-text-decoration-color,
+  #{$menu-link-focus-color}
+);
+$menu-link-hover-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-hover-text-decoration-color,
+  #{$menu-link-hover-color}
+);
+$menu-link-active-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-active-text-decoration-color,
+  #{$menu-link-active-color}
+);
+$menu-link-disabled-text-decoration-color: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-text-decoration-color,
+  #{$menu-link-disabled-color}
+);
+
+// Menu link border properties.
+$menu-link-border-radius: var(
+  --#{root-defaults.$prefix}-menu-link-border-radius,
+  #{root-variables.$border-radius}
+);
+$menu-link-border-style: var(
+  --#{root-defaults.$prefix}-menu-link-border-style,
+  #{root-variables.$border-style}
+);
+$menu-link-border-width: var(
+  --#{root-defaults.$prefix}-menu-link-border-width,
+  #{defaults.$menu-link-border-width}
+);
+$menu-link-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-border-color,
+  #{$menu-link-color}
+);
+$menu-link-visited-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-visited-border-color,
+  #{$menu-link-color}
+);
+$menu-link-focus-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-focus-border-color,
+  #{$menu-link-color}
+);
+$menu-link-hover-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-hover-border-color,
+  #{$menu-link-color}
+);
+$menu-link-active-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-active-border-color,
+  #{$menu-link-color}
+);
+$menu-link-disabled-border-color: var(
+  --#{root-defaults.$prefix}-menu-link-disabled-border-color,
+  #{$menu-link-color}
+);
+
+// Submenu toggle properties.
+$submenu-toggle-transform: var(
+  --#{root-defaults.$prefix}-submenu-toggle-transform,
+  #{defaults.$submenu-toggle-transform}
+);
+$submenu-toggle-open-transform: var(
+  --#{root-defaults.$prefix}-submenu-toggle-open-transform,
+  #{defaults.$submenu-toggle-open-transform}
+);
+$submenu-toggle-content: var(
+  --#{root-defaults.$prefix}-submenu-toggle-content,
+  #{defaults.$submenu-toggle-content}
+);
+$submenu-toggle-transition: var(
+  --#{root-defaults.$prefix}-submenu-toggle-transition,
+  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$submenu-toggle-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-submenu-toggle-transition-reduced-motion,
+  none
+);
