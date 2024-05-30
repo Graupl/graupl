@@ -16,6 +16,7 @@
 
   $order-max-count: 0;
 
+  /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
   @if (
     columns-defaults.$columns-max-count >
       flex-columns-defaults.$flex-columns-max-count
@@ -24,6 +25,7 @@
   } @else {
     $order-max-count: flex-columns-defaults.$flex-columns-max-count;
   }
+  /* stylelint-enable  scss/operator-no-newline-after */
 
   @for $i from 1 through $order-max-count {
     .#{$order-class-prefix}#{$i} {
