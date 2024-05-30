@@ -1,0 +1,20 @@
+// @graupl/graupl order utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Order properties.
+$order-class-prefix: "order-" !default;
+
+$base-order-properties: (
+  "none": 0,
+  "first": -9999,
+  "last": 9999,
+);
+$custom-order-properties: () !default;
+$order-properties: map.merge($base-order-properties, $custom-order-properties);
