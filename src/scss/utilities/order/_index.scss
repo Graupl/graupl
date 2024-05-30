@@ -1,0 +1,35 @@
+// @gruapl/graupl order utilities styles.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../layout/columns/defaults" as columns-defaults;
+@use "../../layout/flex-columns/defaults" as flex-columns-defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  @each $order-property, $order-value in $order-properties {
+    .#{$order-class-prefix}#{$order-property} {
+      order: $order-value;
+    }
+  }
+
+  $order-max-count: 0;
+
+  /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+  @if (
+    columns-defaults.$columns-max-count >
+      flex-columns-defaults.$flex-columns-max-count
+  ) {
+    $order-max-count: columns-defaults.$columns-max-count;
+  } @else {
+    $order-max-count: flex-columns-defaults.$flex-columns-max-count;
+  }
+  /* stylelint-enable  scss/operator-no-newline-after */
+
+  @for $i from 1 through $order-max-count {
+    .#{$order-class-prefix}#{$i} {
+      order: $i;
+    }
+  }
+}
