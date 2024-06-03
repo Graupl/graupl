@@ -20,9 +20,9 @@ $content-max-width: 96ch !default;
 // Screen sizes.
 $base-screen-sizes: (
   xs: "(width <= 48ch)",
-  sm: "(48ch < width <= 72ch)",
-  md: "(72ch < width <= 108ch)",
-  lg: "(108ch < width <= 156ch)",
+  sm: "(48ch < width)",
+  md: "(72ch < width)",
+  lg: "(108ch < width)",
   xl: "(156ch < width)",
   navigation-collapse: "(width <= 72ch)",
   navigation-expand: "(72ch < width)",

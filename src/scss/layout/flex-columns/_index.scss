@@ -27,19 +27,31 @@
     from defaults.$flex-columns-min-count
     through defaults.$flex-columns-max-count
   {
-    @each $screen, $query in root-defaults.$screen-sizes {
-      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
-        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-        --#{root-defaults.$prefix}-flex-columns-size: calc(
-          ((100% / #{defaults.$flex-columns-max-count}) * #{$i}) -
-            #{$flex-columns-column-gap}
-        );
-        --#{root-defaults.$prefix}-flex-columns-max-width: calc(
-          100% / #{defaults.$flex-columns-max-count} * #{$i}
-        );
-        /* stylelint-enable  scss/operator-no-newline-after */
-      }
+    #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      --#{root-defaults.$prefix}-flex-columns-size: calc(
+        (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+          #{$flex-columns-column-gap}
+      );
+      --#{root-defaults.$prefix}-flex-columns-max-width: calc(
+        100% / #{defaults.$flex-columns-max-count} * #{$i}
+      );
+      /* stylelint-enable  scss/operator-no-newline-after */
+    }
 
+    @include screen(xs) {
+      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+        --#{root-defaults.$prefix}-flex-columns-size: 100%;
+        --#{root-defaults.$prefix}-flex-columns-max-width: auto;
+      }
+    }
+  }
+
+  @each $screen, $query in root-defaults.$screen-sizes {
+    @for $i
+      from defaults.$flex-columns-min-count
+      through defaults.$flex-columns-max-count
+    {
       // For the screen-specific sizes, we can't use custom properties.
       // It appears that custom properties that are already set, cannot be overwritten
       // inside of a media query.
@@ -48,22 +60,17 @@
       // be set to the `.col-6` value.
       @include screen($screen) {
         #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
-          flex-basis: calc(
-            ((100% / #{defaults.$flex-columns-max-count}) * #{$i}) - #{$flex-columns-column-gap}
+          --#{root-defaults.$prefix}-flex-columns-size: calc(
+            (100% / #{defaults.$flex-columns-max-count} * #{$i}) - #{$flex-columns-column-gap}
           );
-          max-width: calc(100% / #{defaults.$flex-columns-max-count} * #{$i});
+          --#{root-defaults.$prefix}-flex-columns-max-width: calc(
+            100% / #{defaults.$flex-columns-max-count} * #{$i}
+          );
 
           &#{defaults.$flex-columns-fill-selector} {
-            max-width: unset;
+            --#{root-defaults.$prefix}-flex-columns-max-width: unset;
           }
         }
-      }
-    }
-
-    @include screen(xs) {
-      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
-        --#{root-defaults.$prefix}-flex-columns-size: 100%;
-        --#{root-defaults.$prefix}-flex-columns-max-width: auto;
       }
     }
   }
