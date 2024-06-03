@@ -8,6 +8,8 @@
 
 // Link selectors.
 $link-selector: "a" !default;
+$stretched-link-selector: ".stretched" !default;
+$stretched-link-pseudo-selector: "before" !default;
 
 // Link properties.
 $link-text-decoration: underline !default;
@@ -43,3 +45,6 @@ $link-active-background: $link-background !default;
 $link-disabled-background: $link-background !default;
 $link-min-width: auto;
 $link-min-height: auto;
+
+// Stretched link properties.
+$stretched-link-z-index: 5 !default;
