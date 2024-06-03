@@ -10,23 +10,32 @@
   #{defaults.$card-selector} {
     display: grid;
     position: relative;
-    grid-template-areas:
-      "image"
-      "content";
-    grid-template-rows: $card-image-ratio $card-content-ratio;
+    grid-template-rows:
+      [image-start]
+      $card-image-ratio
+      [image-end content-start]
+      $card-content-ratio
+      [content-end];
+    grid-template-columns: 1fr;
     padding: $card-padding;
     border: $card-border;
     border-radius: $card-border-radius;
     gap: $card-gap;
     isolation: isolate;
 
-    &#{defaults.$card-horizontal-selector} {
+    &#{defaults.$horizontal-card-selector} {
       &,
-      &#{defaults.$card-horizontal-left-selector} {
-        --#{root-defaults.$prefix}-card-image-ratio: 2fr;
-        --#{root-defaults.$prefix}-card-content-ratio: 3fr;
+      &#{defaults.$horizontal-card-left-selector} {
+        --#{root-defaults.$prefix}-card-content-ratio: #{$horizontal-card-content-ratio};
+        --#{root-defaults.$prefix}-card-image-ratio: #{$horizontal-card-image-ratio};
 
-        grid-template: "image content" auto / $card-image-ratio $card-content-ratio;
+        grid-template-columns:
+          [image-start]
+          $card-image-ratio
+          [image-end content-start]
+          $card-content-ratio
+          [content-end];
+        grid-template-rows: 1fr;
 
         #{defaults.$card-image-selector} img {
           border-radius: calc($card-top-left-border-radius - $card-border-width)
@@ -34,9 +43,13 @@
         }
       }
 
-      &#{defaults.$card-horizontal-right-selector} {
-        grid-template-areas: "content image";
-        grid-template-columns: $card-content-ratio $card-image-ratio;
+      &#{defaults.$horizontal-card-right-selector} {
+        grid-template-columns:
+          [content-start]
+          $card-content-ratio
+          [content-end image-start]
+          $card-image-ratio
+          [image-end];
 
         #{defaults.$card-image-selector} img {
           border-radius: 0
@@ -72,16 +85,30 @@
     flex: 1 0 auto;
   }
 
+  #{defaults.$card-footer-selector} {
+    flex: 0 0 auto;
+  }
+
+  #{defaults.$card-title-selector} {
+    flex: 0 0 auto;
+  }
+
   @include screen-trigger(force-vertical-card) {
     #{defaults.$card-selector} {
-      &#{defaults.$card-horizontal-selector} {
+      &#{defaults.$horizontal-card-selector} {
         &,
-        &#{defaults.$card-horizontal-left-selector},
-        &#{defaults.$card-horizontal-right-selector} {
-          --#{root-defaults.$prefix}-card-image-ratio: #{defaults.$card-image-ratio};
-          --#{root-defaults.$prefix}-card-content-ratio: #{defaults.$card-content-ratio};
+        &#{defaults.$horizontal-card-left-selector},
+        &#{defaults.$horizontal-card-right-selector} {
+          --#{root-defaults.$prefix}-horizontal-card-image-ratio: #{defaults.$card-image-ratio};
+          --#{root-defaults.$prefix}-horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 
-          grid-template: "image" $card-image-ratio "content" $card-content-ratio / auto;
+          grid-template-columns: 1fr;
+          grid-template-rows:
+            [image-start]
+            $card-image-ratio
+            [image-end content-start]
+            $card-content-ratio
+            [content-end];
         }
       }
     }
@@ -93,5 +120,12 @@
     border-color: $card-border-color;
     background: $card-background;
     color: $card-color;
+  }
+
+  #{defaults.$card-title-selector} {
+    color: $card-title-color;
+    font-size: $card-title-font-size;
+    font-weight: $card-title-font-weight;
+    line-height: $card-title-line-height;
   }
 }

@@ -7,6 +7,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
 @use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
 @use "sass:map";
 
 // Card properties.
@@ -92,6 +93,14 @@ $card-image-ratio: var(
   --#{root-defaults.$prefix}-card-image-ratio,
   defaults.$card-image-ratio
 );
+$horizontal-card-content-ratio: var(
+  --#{root-defaults.$prefix}-horizontal-card-content-ratio,
+  defaults.$horizontal-card-content-ratio
+);
+$horizontal-card-image-ratio: var(
+  --#{root-defaults.$prefix}-horizontal-card-image-ratio,
+  defaults.$horizontal-card-image-ratio
+);
 
 // Card image properties.
 $card-image-padding-x: var(
@@ -133,4 +142,26 @@ $card-content-row-gap: var(
 $card-content-gap: var(
   --#{root-defaults.$prefix}-card-content-gap,
   #{$card-content-column-gap} #{$card-content-row-gap}
+);
+
+// Card title properties.
+$card-title-color: var(
+  --#{root-defaults.$prefix}-card-title-color,
+  #{$card-color}
+);
+$card-title-font-size: var(
+  --#{root-defaults.$prefix}-card-title-font-size,
+  #{typography.$h4-font-size}
+);
+$card-title-font-weight: var(
+  --#{root-defaults.$prefix}-card-title-font-weight,
+  #{typography.$h4-font-weight}
+);
+$card-title-font-family: var(
+  --#{root-defaults.$prefix}-card-title-font-family,
+  #{typography.$h4-font-family}
+);
+$card-title-line-height: var(
+  --#{root-defaults.$prefix}-card-title-line-height,
+  #{typography.$h4-line-height}
 );
