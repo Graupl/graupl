@@ -18,12 +18,12 @@
       $card-content-ratio
       [content-end];
     padding: $card-padding;
+    transform: $card-transform;
+    transition: $card-transition;
     border: $card-border;
     border-radius: $card-border-radius;
     gap: $card-gap;
     isolation: isolate;
-    transition: $card-transition;
-    transform: $card-transform;
 
     &:hover {
       --#{root-defaults.$prefix}-card-transform: #{$card-hover-transform};
