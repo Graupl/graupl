@@ -9,7 +9,10 @@
 @use "sass:map";
 
 // Font properties.
-$font-size: var(--#{root-defaults.$prefix}-font-base, #{defaults.$font-size});
+$font-size-base: var(
+  --#{root-defaults.$prefix}-font-size-base,
+  #{defaults.$font-size-base}
+);
 $line-height: var(
   --#{root-defaults.$prefix}-line-height,
   #{defaults.$line-height}
@@ -21,7 +24,7 @@ $font-sizes: ();
 @each $key, $value in defaults.$font-size-multipliers {
   $size: var(
     --#{root-defaults.$prefix}-font-#{$key},
-    calc(#{$value} * #{$font-size})
+    calc(#{$value} * #{$font-size-base})
   );
   $font-sizes: map.set($font-sizes, $key, $size);
 }
