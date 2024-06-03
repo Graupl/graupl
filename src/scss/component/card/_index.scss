@@ -10,13 +10,13 @@
   #{defaults.$card-selector} {
     display: grid;
     position: relative;
+    grid-template-columns: 1fr;
     grid-template-rows:
       [image-start]
       $card-image-ratio
       [image-end content-start]
       $card-content-ratio
       [content-end];
-    grid-template-columns: 1fr;
     padding: $card-padding;
     border: $card-border;
     border-radius: $card-border-radius;
