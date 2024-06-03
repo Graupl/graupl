@@ -245,3 +245,9 @@ $link-min-height: var(
   --#{root-defaults.$prefix}-link-min-height,
   defaults.$link-min-height
 );
+
+// Stretched link properties.
+$stretched-link-z-index: var(
+  --#{root-defaults.$prefix}-stretched-link-z-index,
+  #{defaults.$stretched-link-z-index}
+);

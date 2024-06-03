@@ -63,6 +63,17 @@
         --#{root-defaults.$prefix}-link-transform: #{$link-disabled-transform};
       }
     }
+
+    &#{defaults.$stretched-link-selector} {
+      isolation: isolate;
+
+      &::#{defaults.$stretched-link-pseudo-selector} {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: $stretched-link-z-index;
+      }
+    }
   }
 
   @include animation-off {
