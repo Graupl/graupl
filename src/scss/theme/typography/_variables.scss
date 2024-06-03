@@ -9,7 +9,10 @@
 @use "sass:map";
 
 // Font properties.
-$font-size-base: var(--#{root-defaults.$prefix}-font-size-base, #{defaults.$font-size-base});
+$font-size-base: var(
+  --#{root-defaults.$prefix}-font-size-base,
+  #{defaults.$font-size-base}
+);
 $line-height: var(
   --#{root-defaults.$prefix}-line-height,
   #{defaults.$line-height}
