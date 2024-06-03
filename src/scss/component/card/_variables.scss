@@ -23,6 +23,24 @@ $card-padding: var(
   --#{root-defaults.$prefix}-card-padding,
   #{$card-padding-y} #{$card-padding-x}
 );
+$card-transition: var(
+  --#{root-defaults.$prefix}-card-transition,
+  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$card-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-card-transition-reduced-motion,
+  none
+);
+
+// Card transform properties.
+$card-transform: var(
+  --#{root-defaults.$prefix}-card-transform,
+  #{defaults.$card-transform}
+);
+$card-hover-transform: var(
+  --#{root-defaults.$prefix}-card-hover-transform,
+  #{defaults.$card-hover-transform}
+);
 
 // Card gap properties.
 $card-column-gap: var(
