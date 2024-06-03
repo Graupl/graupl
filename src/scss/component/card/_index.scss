@@ -9,7 +9,7 @@
 @include layer(component) {
   #{defaults.$card-selector} {
     display: grid;
-    gap: $card-gap;
+    position: relative;
     grid-template-areas:
       "image"
       "content";
@@ -17,8 +17,8 @@
     padding: $card-padding;
     border: $card-border;
     border-radius: $card-border-radius;
+    gap: $card-gap;
     isolation: isolate;
-    position: relative;
 
     &#{defaults.$card-horizontal-selector} {
       &,
@@ -26,35 +26,22 @@
         --#{root-defaults.$prefix}-card-image-ratio: 2fr;
         --#{root-defaults.$prefix}-card-content-ratio: 3fr;
 
-        grid-template-rows: auto;
-        grid-template-columns: $card-image-ratio $card-content-ratio;
-        grid-template-areas: "image content";
+        grid-template: "image content" auto / $card-image-ratio $card-content-ratio;
 
         #{defaults.$card-image-selector} img {
-          border-top-left-radius: calc(
-            $card-top-left-border-radius - $card-border-width
-          );
-          border-top-right-radius: 0;
-          border-bottom-left-radius: calc(
-            $card-bottom-left-border-radius - $card-border-width
-          );
-          border-bottom-right-radius: 0;
+          border-radius: calc($card-top-left-border-radius - $card-border-width)
+            0 0 calc($card-bottom-left-border-radius - $card-border-width);
         }
       }
 
       &#{defaults.$card-horizontal-right-selector} {
-        grid-template-columns: $card-content-ratio $card-image-ratio;
         grid-template-areas: "content image";
+        grid-template-columns: $card-content-ratio $card-image-ratio;
 
         #{defaults.$card-image-selector} img {
-          border-top-left-radius: 0;
-          border-top-right-radius: calc(
-            $card-top-right-border-radius - $card-border-width
-          );
-          border-bottom-right-radius: calc(
-            $card-bottom-right-border-radius - $card-border-width
-          );
-          border-bottom-left-radius: 0;
+          border-radius: 0
+            calc($card-top-right-border-radius - $card-border-width)
+            calc($card-bottom-right-border-radius - $card-border-width) 0;
         }
       }
     }
@@ -67,23 +54,17 @@
     img {
       width: 100%;
       height: 100%;
+      border-radius: calc($card-top-left-border-radius - $card-border-width)
+        calc($card-top-right-border-radius - $card-border-width) 0 0;
       object-fit: cover;
-      border-top-left-radius: calc(
-        $card-top-left-border-radius - $card-border-width
-      );
-      border-top-right-radius: calc(
-        $card-top-right-border-radius - $card-border-width
-      );
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
     }
   }
 
   #{defaults.$card-content-selector} {
-    grid-area: content;
-    padding: $card-content-padding;
     display: flex;
+    grid-area: content;
     flex-direction: column;
+    padding: $card-content-padding;
     gap: $card-content-gap;
   }
 
@@ -100,11 +81,7 @@
           --#{root-defaults.$prefix}-card-image-ratio: #{defaults.$card-image-ratio};
           --#{root-defaults.$prefix}-card-content-ratio: #{defaults.$card-content-ratio};
 
-          grid-template-columns: auto;
-          grid-template-rows: $card-image-ratio $card-content-ratio;
-          grid-template-areas:
-            "image"
-            "content";
+          grid-template: "image" $card-image-ratio "content" $card-content-ratio / auto;
         }
       }
     }
@@ -113,8 +90,8 @@
 
 @include layer(theme) {
   #{defaults.$card-selector} {
+    border-color: $card-border-color;
     background: $card-background;
     color: $card-color;
-    border-color: $card-border-color;
   }
 }

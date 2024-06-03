@@ -27,7 +27,6 @@ $base-screen-sizes: (
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
-
 $base-screen-size-triggers: (
   navigation-collapse: "(width <= 72ch)",
   navigation-expand: "(72ch < width)",
