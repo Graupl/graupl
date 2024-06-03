@@ -19,7 +19,7 @@
     }
 
     #{defaults.$flex-columns-fill-selector} {
-      --#{root-defaults.$prefix}-flex-columns-max-width: auto;
+      --#{root-defaults.$prefix}-flex-columns-max-width: unset;
     }
   }
 
@@ -54,7 +54,7 @@
           max-width: calc(100% / #{defaults.$flex-columns-max-count} * #{$i});
 
           &#{defaults.$flex-columns-fill-selector} {
-            max-width: auto;
+            max-width: unset;
           }
         }
       }
