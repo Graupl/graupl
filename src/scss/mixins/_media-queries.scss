@@ -25,3 +25,11 @@
     @content;
   }
 }
+
+@mixin screen-trigger($size) {
+  $screen-size-trigger: map.get(root-defaults.$screen-size-triggers, $size);
+
+  @media screen and #{$screen-size-trigger} {
+    @content;
+  }
+}

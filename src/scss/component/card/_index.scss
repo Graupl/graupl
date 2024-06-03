@@ -1,0 +1,143 @@
+// @gruapl/graupl card component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
+
+@include layer(component) {
+  #{defaults.$card-selector} {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      [image-start]
+      $card-image-ratio
+      [image-end content-start]
+      $card-content-ratio
+      [content-end];
+    padding: $card-padding;
+    transform: $card-transform;
+    transition: $card-transition;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    gap: $card-gap;
+    isolation: isolate;
+
+    &:hover {
+      --#{root-defaults.$prefix}-card-transform: #{$card-hover-transform};
+    }
+
+    &#{defaults.$horizontal-card-selector} {
+      &,
+      &#{defaults.$horizontal-card-left-selector} {
+        --#{root-defaults.$prefix}-card-content-ratio: #{$horizontal-card-content-ratio};
+        --#{root-defaults.$prefix}-card-image-ratio: #{$horizontal-card-image-ratio};
+
+        grid-template-columns:
+          [image-start]
+          $card-image-ratio
+          [image-end content-start]
+          $card-content-ratio
+          [content-end];
+        grid-template-rows: 1fr;
+
+        #{defaults.$card-image-selector} img {
+          border-radius: calc($card-top-left-border-radius - $card-border-width)
+            0 0 calc($card-bottom-left-border-radius - $card-border-width);
+        }
+      }
+
+      &#{defaults.$horizontal-card-right-selector} {
+        grid-template-columns:
+          [content-start]
+          $card-content-ratio
+          [content-end image-start]
+          $card-image-ratio
+          [image-end];
+
+        #{defaults.$card-image-selector} img {
+          border-radius: 0
+            calc($card-top-right-border-radius - $card-border-width)
+            calc($card-bottom-right-border-radius - $card-border-width) 0;
+        }
+      }
+    }
+  }
+
+  #{defaults.$card-image-selector} {
+    grid-area: image;
+    padding: $card-image-padding;
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: calc($card-top-left-border-radius - $card-border-width)
+        calc($card-top-right-border-radius - $card-border-width) 0 0;
+      object-fit: cover;
+    }
+  }
+
+  #{defaults.$card-content-selector} {
+    display: flex;
+    grid-area: content;
+    flex-direction: column;
+    padding: $card-content-padding;
+    gap: $card-content-gap;
+  }
+
+  #{defaults.$card-body-selector} {
+    flex: 1 0 auto;
+  }
+
+  #{defaults.$card-footer-selector} {
+    flex: 0 0 auto;
+  }
+
+  #{defaults.$card-title-selector} {
+    flex: 0 0 auto;
+  }
+
+  @include screen-trigger(force-vertical-card) {
+    #{defaults.$card-selector} {
+      &#{defaults.$horizontal-card-selector} {
+        &,
+        &#{defaults.$horizontal-card-left-selector},
+        &#{defaults.$horizontal-card-right-selector} {
+          --#{root-defaults.$prefix}-horizontal-card-image-ratio: #{defaults.$card-image-ratio};
+          --#{root-defaults.$prefix}-horizontal-card-content-ratio: #{defaults.$card-content-ratio};
+
+          grid-template-columns: 1fr;
+          grid-template-rows:
+            [image-start]
+            $card-image-ratio
+            [image-end content-start]
+            $card-content-ratio
+            [content-end];
+        }
+      }
+    }
+  }
+
+  @include animation-off {
+    #{defaults.$card-selector} {
+      --#{root-defaults.$prefix}-card-transition: #{$card-transition-reduced-motion};
+    }
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$card-selector} {
+    border-color: $card-border-color;
+    background: $card-background;
+    color: $card-color;
+  }
+
+  #{defaults.$card-title-selector} {
+    color: $card-title-color;
+    font-size: $card-title-font-size;
+    font-weight: $card-title-font-weight;
+    line-height: $card-title-line-height;
+  }
+}
