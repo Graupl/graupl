@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // font properties.
-$font-size: 1rem !default;
+$font-size-base: 1rem !default;
 $root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
 $line-height: 1.2em !default;
 
