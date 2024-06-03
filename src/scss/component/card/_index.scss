@@ -1,0 +1,120 @@
+// @gruapl/graupl card component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
+
+@include layer(component) {
+  #{defaults.$card-selector} {
+    display: grid;
+    gap: $card-gap;
+    grid-template-areas:
+      "image"
+      "content";
+    grid-template-rows: $card-image-ratio $card-content-ratio;
+    padding: $card-padding;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    isolation: isolate;
+    position: relative;
+
+    &#{defaults.$card-horizontal-selector} {
+      &,
+      &#{defaults.$card-horizontal-left-selector} {
+        --#{root-defaults.$prefix}-card-image-ratio: 2fr;
+        --#{root-defaults.$prefix}-card-content-ratio: 3fr;
+
+        grid-template-rows: auto;
+        grid-template-columns: $card-image-ratio $card-content-ratio;
+        grid-template-areas: "image content";
+
+        #{defaults.$card-image-selector} img {
+          border-top-left-radius: calc(
+            $card-top-left-border-radius - $card-border-width
+          );
+          border-top-right-radius: 0;
+          border-bottom-left-radius: calc(
+            $card-bottom-left-border-radius - $card-border-width
+          );
+          border-bottom-right-radius: 0;
+        }
+      }
+
+      &#{defaults.$card-horizontal-right-selector} {
+        grid-template-columns: $card-content-ratio $card-image-ratio;
+        grid-template-areas: "content image";
+
+        #{defaults.$card-image-selector} img {
+          border-top-left-radius: 0;
+          border-top-right-radius: calc(
+            $card-top-right-border-radius - $card-border-width
+          );
+          border-bottom-right-radius: calc(
+            $card-bottom-right-border-radius - $card-border-width
+          );
+          border-bottom-left-radius: 0;
+        }
+      }
+    }
+  }
+
+  #{defaults.$card-image-selector} {
+    grid-area: image;
+    padding: $card-image-padding;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-top-left-radius: calc(
+        $card-top-left-border-radius - $card-border-width
+      );
+      border-top-right-radius: calc(
+        $card-top-right-border-radius - $card-border-width
+      );
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  #{defaults.$card-content-selector} {
+    grid-area: content;
+    padding: $card-content-padding;
+    display: flex;
+    flex-direction: column;
+    gap: $card-content-gap;
+  }
+
+  #{defaults.$card-body-selector} {
+    flex: 1 0 auto;
+  }
+
+  @include screen-trigger(force-vertical-card) {
+    #{defaults.$card-selector} {
+      &#{defaults.$card-horizontal-selector} {
+        &,
+        &#{defaults.$card-horizontal-left-selector},
+        &#{defaults.$card-horizontal-right-selector} {
+          --#{root-defaults.$prefix}-card-image-ratio: #{defaults.$card-image-ratio};
+          --#{root-defaults.$prefix}-card-content-ratio: #{defaults.$card-content-ratio};
+
+          grid-template-columns: auto;
+          grid-template-rows: $card-image-ratio $card-content-ratio;
+          grid-template-areas:
+            "image"
+            "content";
+        }
+      }
+    }
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$card-selector} {
+    background: $card-background;
+    color: $card-color;
+    border-color: $card-border-color;
+  }
+}
