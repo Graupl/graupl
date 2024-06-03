@@ -1,0 +1,26 @@
+// @gruapl/graupl ratio utilities styles.
+
+@use "variables" as *;
+@use "defaults" as defaults;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  #{defaults.$ratio-selector} {
+    position: relative;
+    width: 100%;
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: $ratio;
+    }
+  }
+
+  @each $ratio-selector, $value in defaults.$ratios {
+    #{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
+      --#{root-defaults.$prefix}-ratio: #{$value};
+    }
+  }
+}

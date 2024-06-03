@@ -1,0 +1,24 @@
+// @graupl/graupl ratio utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Ratio utilities.
+$ratio-selector: ".ratio" !default;
+$ratio-variant-selector-prefix: "." !default;
+$base-ratios: (
+  "one-by-one": 100%,
+  "two-by-one": 50%,
+  "four-by-three": 75%,
+  "four-by-one": 25%,
+  "sixteen-by-nine": calc(9 / 16 * 100%),
+  "three-by-two": calc(2 / 3 * 100%),
+  "eight-by-five": calc(5 / 8 * 100%),
+);
+$custom-ratios: () !default;
+$ratios: map.merge($base-ratios, $custom-ratios);
