@@ -1,0 +1,9 @@
+// @graupl/graupl ratio utilities variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+
+$ratio: var(--#{root-defaults.$prefix}-ratio);
