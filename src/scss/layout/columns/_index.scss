@@ -20,6 +20,14 @@
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
     #{defaults.$columns-count-selector-prefix}#{$i} {
       --#{root-defaults.$prefix}-columns-count: #{$i};
+
+      // For span values bigger than the actual column count, set them to the
+      // maximum column count so they don't break the layout.
+      @for $j from $i + 1 through defaults.$columns-max-count {
+        #{defaults.$columns-span-selector-prefix}#{$j} {
+          --#{root-defaults.$prefix}-columns-span: #{$i};
+        }
+      }
     }
 
     #{defaults.$columns-span-selector-prefix}#{$i} {
@@ -31,6 +39,20 @@
   @include screen(xs) {
     #{defaults.$columns-selector} {
       --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
+
+      > * {
+        --#{root-defaults.$prefix}-columns-span: 1;
+      }
+
+      // All spans should be set to 1 to avoid adding columns.
+      @for $i
+        from defaults.$columns-min-count
+        through defaults.$columns-max-count
+      {
+        #{defaults.$columns-span-selector-prefix}#{$i} {
+          --#{root-defaults.$prefix}-columns-span: 1;
+        }
+      }
     }
   }
 }
