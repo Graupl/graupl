@@ -1,0 +1,29 @@
+// @graupl/graupl card component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+// Card selectors.
+$card-selector: ".card" !default;
+$card-image-selector: ".card-image" !default;
+$card-content-selector: ".card-content" !default;
+$card-body-selector: ".card-body" !default;
+$card-header-selector: ".card-header" !default;
+$card-footer-selector: ".card-footer" !default;
+$card-title-selector: ".card-title" !default;
+$horizontal-card-selector: ".horizontal" !default;
+$horizontal-card-left-selector: ".left" !default;
+$horizontal-card-right-selector: ".right" !default;
+
+// Card properties.
+$card-transform: none !default;
+$card-hover-transform: $card-transform !default;
+
+// Card layout properties.
+$card-content-ratio: 1fr !default;
+$card-image-ratio: auto !default;
+$horizontal-card-content-ratio: 3fr !default;
+$horizontal-card-image-ratio: 2fr !default;

@@ -101,7 +101,7 @@
     }
   }
 
-  @include screen(navigation-collapse) {
+  @include screen-trigger(navigation-collapse) {
     // Navigation.
     #{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}-menu-flex-direction: column;
@@ -111,7 +111,7 @@
     }
   }
 
-  @include screen(navigation-expand) {
+  @include screen-trigger(navigation-expand) {
     // Navigation.
     #{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}-menu-hide-display: #{menu-variables.$menu-show-display};

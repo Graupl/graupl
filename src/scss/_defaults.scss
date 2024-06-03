@@ -24,11 +24,19 @@ $base-screen-sizes: (
   md: "(72ch < width)",
   lg: "(108ch < width)",
   xl: "(156ch < width)",
-  navigation-collapse: "(width <= 72ch)",
-  navigation-expand: "(72ch < width)",
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
+$base-screen-size-triggers: (
+  navigation-collapse: "(width <= 72ch)",
+  navigation-expand: "(72ch < width)",
+  force-vertical-card: "(width <= 72ch)",
+);
+$custom-screen-size-triggers: () !default;
+$screen-size-triggers: map.merge(
+  $base-screen-size-triggers,
+  $custom-screen-size-triggers
+);
 
 // Spacing properties.
 $spacer: 1rem !default;
