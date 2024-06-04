@@ -21,8 +21,7 @@
     padding: $button-padding;
     transform: $button-transform;
     transition: $button-transition;
-    border-width: $button-border-width;
-    border-style: $button-border-style;
+    border: $button-border;
     border-radius: $button-border-radius;
     font-size: $button-font-size;
     cursor: pointer;

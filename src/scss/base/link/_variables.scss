@@ -209,6 +209,10 @@ $link-border-style: var(
   --#{root-defaults.$prefix}-link-border-style,
   #{root-variables.$border-style}
 );
+$link-border: var(
+  --#{root-defaults.$prefix}-link-border,
+  #{$link-border-width} #{$link-border-style}
+);
 $link-border-radius: var(
   --#{root-defaults.$prefix}-link-border-radius,
   #{root-variables.$border-radius}

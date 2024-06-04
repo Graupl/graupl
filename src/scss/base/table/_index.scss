@@ -29,12 +29,10 @@
 
     &#{defaults.$table-bordered-selector} {
       border-collapse: collapse;
-      border-width: $table-border-width;
-      border-style: $table-border-style;
+      border: $table-border;
 
       #{defaults.$table-row-selector} > * {
-        border-width: $table-cell-border-width;
-        border-style: $table-cell-border-style;
+        border: $table-cell-border;
       }
     }
   }

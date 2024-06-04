@@ -135,6 +135,10 @@ $button-border-style: var(
   --#{root-defaults.$prefix}-botton-border-style,
   #{root-variables.$border-style}
 );
+$button-border: var(
+  --#{root-defaults.$prefix}-button-border,
+  #{$button-border-width} #{$button-border-style}
+);
 $button-border-radius: var(
   --#{root-defaults.$prefix}-button-border-radius,
   #{root-variables.$border-radius}
