@@ -9,605 +9,622 @@
 </head>
 
 <body>
-  <main class="container">
+  <main class="container pb-10">
     <h1>Hello Graupl!</h1>
     <p>Graupl is a modular CSS framework with the goal of making it easy to theme a site.</p>
     <p>This source code can be found in <a href="https://github.com/Graupl/graupl">GitHub</a>.</p>
     <p>Graupl supports light and dark modes out-of-the-box.</p>
-    <h2>Buttons</h2>
-    <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
-    </p>
-    <div class="columns count-4">
-      <button class="button">Default Button</button>
-      <button class="button primary">Primary Button</button>
-      <button class="button secondary">Secondary Button</button>
-      <button class="button tertiary">Tertiary Button</button>
-      <button class="button link">Link Button</button>
-      <a class="button" href="#">Anchor Button</a>
-      <button class="button" disabled>Default Button</button>
-      <button class="button primary" disabled>Primary Button</button>
-      <button class="button secondary" disabled>Secondary Button</button>
-      <button class="button tertiary" disabled>Tertiary Button</button>
-      <button class="button link" disabled>Link Button</button>
-      <a class="button" href="#" disabled>Anchor Button</a>
+    <button id="dark-mode-toggle" class="button mt-5">Toggle dark mode</button>
+    <div class="py-10 full-width container">
+      <h2>Buttons</h2>
+      <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
+      </p>
+      <div class="columns count-4">
+        <button class="button">Default Button</button>
+        <button class="button primary">Primary Button</button>
+        <button class="button secondary">Secondary Button</button>
+        <button class="button tertiary">Tertiary Button</button>
+        <button class="button link">Link Button</button>
+        <a class="button" href="#">Anchor Button</a>
+        <button class="button" disabled>Default Button</button>
+        <button class="button primary" disabled>Primary Button</button>
+        <button class="button secondary" disabled>Secondary Button</button>
+        <button class="button tertiary" disabled>Tertiary Button</button>
+        <button class="button link" disabled>Link Button</button>
+        <a class="button" href="#" disabled>Anchor Button</a>
+      </div>
     </div>
-    <h2>Form elements</h2>
-    <p>Graupl provides default styling for all form elements.</p>
-    <form class="full-width rg-4">
-      <div class="input-group">
-        <label for="input">Input</label>
-        <input type="text" placeholder="Input" id="input">
-        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
-      </div>
-      <div class="input-group inline"><label for="input-readonly">Readonly Input</label>
-        <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input" readonly>
-        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
-      </div>
-      <div class="input-group"><label for="input-disabled">Disabled Input</label>
-        <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
-        <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
-      </div>
-      <div class="input-group inline"><label for="textarea">Textarea</label>
-        <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
-      </div>
-      <div class="input-group"><label for="textarea-readonly">Readonly Textarea</label>
-        <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
-          readonly>Readonly Textarea</textarea>
-      </div>
-      <div class="input-group"><label for="textarea-disabled">Disabled Textarea</label>
-        <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
-      </div>
-      <div class="input-group inline"><label for="select">Select</label>
-        <select id="select">
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <optgroup label="Group 1">
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="input-group"><label for="select-disabled">Disabled Select</label>
-        <select id="select-disabled" disabled>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <optgroup label="Group 1">
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="input-group"><label for"multi-select">Multi-select</label>
-        <select id="multi-select" multiple>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <optgroup label="Group 1">
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-          </optgroup>
-        </select>
-      </div>
-      <div class="input-group inline"><label for="multi-select-disabled">Disabled Multi-select</label>
-        <select id="multi-select-disabled" multiple disabled>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <optgroup label="Group 1">
-            <option value="3">Option 3</option>
-            <option value="4">Option 4</option>
-            <option value="5">Option 5</option>
-          </optgroup>
-        </select>
-      </div>
-      <fieldset>
-        <legend>Checkboxes</legend>
-        <label for="checkbox">
-          <input type="checkbox" id="checkbox"> Checkbox</label>
-        <label for="checkbox-checked">
-          <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
-        <label for="checkbox-disabled">
-          <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
-      </fieldset>
-      <fieldset>
-        <legend>Radio Buttons</legend>
-        <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
-        <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
-        <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled
-          Radio</label>
-      </fieldset>
-      <fieldset disabled>
-        <legend>Disabled Fieldset</legend>
-        <label for="disabled-fieldset-checkbox">
-          <input type="checkbox" id="disabled-fieldset-checkbox"> Checkbox</label>
-      </fieldset>
-      <div class="input-group"><label for="range">Range</label>
-        <input type="range" class="range" id="range">
-      </div>
-    </form>
-    <h2>Navigation</h2>
-    <div class="py-7">
-      <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">
-        <a class="navigation-branding" href="#">Graupl</a>
-        <button class="navigation-toggle ml-auto mr-0" aria-label="Toggle navigation"></button>
-        <ul class="menu">
-          <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
-          <li class="menu-item submenu-item">
-            <button class="menu-link button link submenu-toggle">About</button>
-            <ul class="submenu">
-              <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
-              <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
-              <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
-            </ul>
-          </li>
-          <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
-          <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
-          <li class="menu-item"><a class="menu-link button tertiary" href="#">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="py-10 full-width container">
+      <h2>Form elements</h2>
+      <p>Graupl provides default styling for all form elements.</p>
+      <form class="full-width rg-4">
+        <div class="input-group">
+          <label for="input">Input</label>
+          <input type="text" placeholder="Input" id="input">
+          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+        </div>
+        <div class="input-group inline"><label for="input-readonly">Readonly Input</label>
+          <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input" readonly>
+          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+        </div>
+        <div class="input-group"><label for="input-disabled">Disabled Input</label>
+          <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
+          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+        </div>
+        <div class="input-group inline"><label for="textarea">Textarea</label>
+          <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
+        </div>
+        <div class="input-group"><label for="textarea-readonly">Readonly Textarea</label>
+          <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
+            readonly>Readonly Textarea</textarea>
+        </div>
+        <div class="input-group"><label for="textarea-disabled">Disabled Textarea</label>
+          <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
+        </div>
+        <div class="input-group inline"><label for="select">Select</label>
+          <select id="select">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <optgroup label="Group 1">
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="input-group"><label for="select-disabled">Disabled Select</label>
+          <select id="select-disabled" disabled>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <optgroup label="Group 1">
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="input-group"><label for"multi-select">Multi-select</label>
+          <select id="multi-select" multiple>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <optgroup label="Group 1">
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="input-group inline"><label for="multi-select-disabled">Disabled Multi-select</label>
+          <select id="multi-select-disabled" multiple disabled>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <optgroup label="Group 1">
+              <option value="3">Option 3</option>
+              <option value="4">Option 4</option>
+              <option value="5">Option 5</option>
+            </optgroup>
+          </select>
+        </div>
+        <fieldset>
+          <legend>Checkboxes</legend>
+          <label for="checkbox">
+            <input type="checkbox" id="checkbox"> Checkbox</label>
+          <label for="checkbox-checked">
+            <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
+          <label for="checkbox-disabled">
+            <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
+        </fieldset>
+        <fieldset>
+          <legend>Radio Buttons</legend>
+          <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
+          <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
+          <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled
+            Radio</label>
+        </fieldset>
+        <fieldset disabled>
+          <legend>Disabled Fieldset</legend>
+          <label for="disabled-fieldset-checkbox">
+            <input type="checkbox" id="disabled-fieldset-checkbox"> Checkbox</label>
+        </fieldset>
+        <div class="input-group"><label for="range">Range</label>
+          <input type="range" class="range" id="range">
+        </div>
+      </form>
     </div>
-    <h2>Tables</h2>
-    <p>Graupl provides some default styling for tables as well as some other useful features to customize them.</p>
-    <table class="bordered striped-rows hoverable">
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Person</th>
-          <th scope="col">Most interest in</th>
-          <th scope="col">Age</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Chris</th>
-          <td>HTML tables</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th scope="row">Dennis</th>
-          <td>Web accessibility</td>
-          <td>45</td>
-        </tr>
-        <tr>
-          <th scope="row">Sarah</th>
-          <td>JavaScript frameworks</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <th scope="row">Karen</th>
-          <td>Web performance</td>
-          <td>36</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row" colspan="2">Average age</th>
-          <td>33</td>
-        </tr>
-      </tfoot>
-    </table>
-    <table class="primary collapsed striped-columns hoverable">
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Person</th>
-          <th scope="col">Most interest in</th>
-          <th scope="col">Age</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Chris</th>
-          <td>HTML tables</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th scope="row">Dennis</th>
-          <td>Web accessibility</td>
-          <td>45</td>
-        </tr>
-        <tr>
-          <th scope="row">Sarah</th>
-          <td>JavaScript frameworks</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <th scope="row">Karen</th>
-          <td>Web performance</td>
-          <td>36</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row" colspan="2">Average age</th>
-          <td>33</td>
-        </tr>
-      </tfoot>
-    </table>
-    <table class="secondary bordered striped-columns hoverable">
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Person</th>
-          <th scope="col">Most interest in</th>
-          <th scope="col">Age</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Chris</th>
-          <td>HTML tables</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th scope="row">Dennis</th>
-          <td>Web accessibility</td>
-          <td>45</td>
-        </tr>
-        <tr>
-          <th scope="row">Sarah</th>
-          <td>JavaScript frameworks</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <th scope="row">Karen</th>
-          <td>Web performance</td>
-          <td>36</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row" colspan="2">Average age</th>
-          <td>33</td>
-        </tr>
-      </tfoot>
-    </table>
-    <table class="tertiary striped-columns hoverable">
-      <caption>
-        Front-end web developer course 2021
-      </caption>
-      <thead>
-        <tr>
-          <th scope="col">Person</th>
-          <th scope="col">Most interest in</th>
-          <th scope="col">Age</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">Chris</th>
-          <td>HTML tables</td>
-          <td>22</td>
-        </tr>
-        <tr>
-          <th scope="row">Dennis</th>
-          <td>Web accessibility</td>
-          <td>45</td>
-        </tr>
-        <tr>
-          <th scope="row">Sarah</th>
-          <td>JavaScript frameworks</td>
-          <td>29</td>
-        </tr>
-        <tr>
-          <th scope="row">Karen</th>
-          <td>Web performance</td>
-          <td>36</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th scope="row" colspan="2">Average age</th>
-          <td>33</td>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="responsive-table">
-      <table class="striped-columns">
+    <div class="py-10 full-width container">
+      <h2>Navigation</h2>
+      <div class="py-7">
+        <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">
+          <a class="navigation-branding" href="#">Graupl</a>
+          <button class="navigation-toggle ml-auto mr-0" aria-label="Toggle navigation"></button>
+          <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
+            <li class="menu-item submenu-item">
+              <button class="menu-link button link submenu-toggle">About</button>
+              <ul class="submenu">
+                <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
+                <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
+              </ul>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
+            <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
+            <li class="menu-item"><a class="menu-link button tertiary" href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="py-10 full-width container">
+      <h2>Tables</h2>
+      <p>Graupl provides some default styling for tables as well as some other useful features to customize them.</p>
+      <table class="bordered striped-rows hoverable">
         <caption>
-          A "responsive" table element. Resize the window to see the effect.
+          Front-end web developer course 2021
         </caption>
-        <thead class="primary">
+        <thead>
           <tr>
-            <th scrop="col">Column 1</th>
-            <th scrop="col">Column 2</th>
-            <th scrop="col">Column 3</th>
-            <th scrop="col">Column 4</th>
-            <th scrop="col">Column 5</th>
-            <th scrop="col">Column 6</th>
-            <th scrop="col">Column 7</th>
-            <th scrop="col">Column 8</th>
-            <th scrop="col">Column 9</th>
-            <th scrop="col">Column 10</th>
-            <th scrop="col">Column 11</th>
-            <th scrop="col">Column 12</th>
+            <th scope="col">Person</th>
+            <th scope="col">Most interest in</th>
+            <th scope="col">Age</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Row 1, Column 1</td>
-            <td>Row 1, Column 2</td>
-            <td>Row 1, Column 3</td>
-            <td>Row 1, Column 4</td>
-            <td>Row 1, Column 5</td>
-            <td>Row 1, Column 6</td>
-            <td>Row 1, Column 7</td>
-            <td>Row 1, Column 8</td>
-            <td>Row 1, Column 9</td>
-            <td>Row 1, Column 10</td>
-            <td>Row 1, Column 11</td>
-            <td>Row 1, Column 12</td>
+            <th scope="row">Chris</th>
+            <td>HTML tables</td>
+            <td>22</td>
           </tr>
           <tr>
-            <td>Row 2, Column 1</td>
-            <td>Row 2, Column 2</td>
-            <td>Row 2, Column 3</td>
-            <td>Row 2, Column 4</td>
-            <td>Row 2, Column 5</td>
-            <td>Row 2, Column 6</td>
-            <td>Row 2, Column 7</td>
-            <td>Row 2, Column 8</td>
-            <td>Row 2, Column 9</td>
-            <td>Row 2, Column 10</td>
-            <td>Row 2, Column 11</td>
-            <td>Row 2, Column 12</td>
+            <th scope="row">Dennis</th>
+            <td>Web accessibility</td>
+            <td>45</td>
           </tr>
           <tr>
-            <td class="tertiary">Row 3, Column 1</td>
-            <td>Row 3, Column 2</td>
-            <td class="tertiary highlight">Row 3, Column 3</td>
-            <td>Row 3, Column 4</td>
-            <td class="tertiary">Row 3, Column 5</td>
-            <td>Row 3, Column 6</td>
-            <td class="tertiary">Row 3, Column 7</td>
-            <td>Row 3, Column 8</td>
-            <td class="tertiary">Row 3, Column 9</td>
-            <td>Row 3, Column 10</td>
-            <td class="tertiary">Row 3, Column 11</td>
-            <td>Row 3, Column 12</td>
+            <th scope="row">Sarah</th>
+            <td>JavaScript frameworks</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <th scope="row">Karen</th>
+            <td>Web performance</td>
+            <td>36</td>
           </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Average age</th>
+            <td>33</td>
+          </tr>
+        </tfoot>
       </table>
+      <table class="primary collapsed striped-columns hoverable">
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Most interest in</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Chris</th>
+            <td>HTML tables</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <th scope="row">Dennis</th>
+            <td>Web accessibility</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <th scope="row">Sarah</th>
+            <td>JavaScript frameworks</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <th scope="row">Karen</th>
+            <td>Web performance</td>
+            <td>36</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Average age</th>
+            <td>33</td>
+          </tr>
+        </tfoot>
+      </table>
+      <table class="secondary bordered striped-columns hoverable">
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Most interest in</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Chris</th>
+            <td>HTML tables</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <th scope="row">Dennis</th>
+            <td>Web accessibility</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <th scope="row">Sarah</th>
+            <td>JavaScript frameworks</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <th scope="row">Karen</th>
+            <td>Web performance</td>
+            <td>36</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Average age</th>
+            <td>33</td>
+          </tr>
+        </tfoot>
+      </table>
+      <table class="tertiary striped-columns hoverable">
+        <caption>
+          Front-end web developer course 2021
+        </caption>
+        <thead>
+          <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Most interest in</th>
+            <th scope="col">Age</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Chris</th>
+            <td>HTML tables</td>
+            <td>22</td>
+          </tr>
+          <tr>
+            <th scope="row">Dennis</th>
+            <td>Web accessibility</td>
+            <td>45</td>
+          </tr>
+          <tr>
+            <th scope="row">Sarah</th>
+            <td>JavaScript frameworks</td>
+            <td>29</td>
+          </tr>
+          <tr>
+            <th scope="row">Karen</th>
+            <td>Web performance</td>
+            <td>36</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row" colspan="2">Average age</th>
+            <td>33</td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="responsive-table">
+        <table class="striped-columns">
+          <caption>
+            A "responsive" table element. Resize the window to see the effect.
+          </caption>
+          <thead class="primary">
+            <tr>
+              <th scrop="col">Column 1</th>
+              <th scrop="col">Column 2</th>
+              <th scrop="col">Column 3</th>
+              <th scrop="col">Column 4</th>
+              <th scrop="col">Column 5</th>
+              <th scrop="col">Column 6</th>
+              <th scrop="col">Column 7</th>
+              <th scrop="col">Column 8</th>
+              <th scrop="col">Column 9</th>
+              <th scrop="col">Column 10</th>
+              <th scrop="col">Column 11</th>
+              <th scrop="col">Column 12</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Row 1, Column 1</td>
+              <td>Row 1, Column 2</td>
+              <td>Row 1, Column 3</td>
+              <td>Row 1, Column 4</td>
+              <td>Row 1, Column 5</td>
+              <td>Row 1, Column 6</td>
+              <td>Row 1, Column 7</td>
+              <td>Row 1, Column 8</td>
+              <td>Row 1, Column 9</td>
+              <td>Row 1, Column 10</td>
+              <td>Row 1, Column 11</td>
+              <td>Row 1, Column 12</td>
+            </tr>
+            <tr>
+              <td>Row 2, Column 1</td>
+              <td>Row 2, Column 2</td>
+              <td>Row 2, Column 3</td>
+              <td>Row 2, Column 4</td>
+              <td>Row 2, Column 5</td>
+              <td>Row 2, Column 6</td>
+              <td>Row 2, Column 7</td>
+              <td>Row 2, Column 8</td>
+              <td>Row 2, Column 9</td>
+              <td>Row 2, Column 10</td>
+              <td>Row 2, Column 11</td>
+              <td>Row 2, Column 12</td>
+            </tr>
+            <tr>
+              <td class="tertiary">Row 3, Column 1</td>
+              <td>Row 3, Column 2</td>
+              <td class="tertiary highlight">Row 3, Column 3</td>
+              <td>Row 3, Column 4</td>
+              <td class="tertiary">Row 3, Column 5</td>
+              <td>Row 3, Column 6</td>
+              <td class="tertiary">Row 3, Column 7</td>
+              <td>Row 3, Column 8</td>
+              <td class="tertiary">Row 3, Column 9</td>
+              <td>Row 3, Column 10</td>
+              <td class="tertiary">Row 3, Column 11</td>
+              <td>Row 3, Column 12</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <h2>Columns</h2>
-    <div class="columns count-6 py-5">
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-      <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
-    </div>
-    <h2>Flex columns</h2>
-    <div class="flex-columns py-5">
-      <div class="col-6 col-md-8 col-xl-9 py-7 bg-primary-700 text-primary-100 px-5">
-        <div class="flex-columns">
-          <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-          <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-        </div>
-      </div>
-      <div class="col-6 col-md-4 col-xl-3 py-7 bg-primary-700 text-primary-100 px-5"></div>
-      <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
-        <div class="flex-columns">
-          <div class="col-6 col-md-9 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-          <div class="col-6 col-md-3 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-        </div>
-      </div>
-      <div class="col-8 py-7 bg-primary-700 text-primary-100 px-5">
-        <div class="flex-columns">
-          <div class="col-3 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-          <div class="col-9 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-        </div>
-      </div>
-      <div class="col-4 py-7 bg-primary-700 text-primary-100 px-5"></div>
-    </div>
-    <h2>Cards</h2>
-    <div class="columns py-7">
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
+    <div class="py-10 full-width container">
+      <h2>Columns</h2>
+      <div class="columns count-6 py-5">
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
+        <div class="bg-primary-700 text-primary-100 py-7 px-5"></div>
       </div>
     </div>
-    <h2>Horizontal Cards</h2>
-    <div class="columns count-2 py-7">
-      <div class="card horizontal">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
+    <div class="py-10 full-width container">
+      <h2>Flex columns</h2>
+      <div class="flex-columns py-5">
+        <div class="col-6 col-md-8 col-xl-9 py-7 bg-primary-700 text-primary-100 px-5">
+          <div class="flex-columns">
+            <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
+            <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
+          </div>
         </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
+        <div class="col-6 col-md-4 col-xl-3 py-7 bg-primary-700 text-primary-100 px-5"></div>
+        <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
+          <div class="flex-columns">
+            <div class="col-6 col-md-9 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
+            <div class="col-6 col-md-3 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
           </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
+        </div>
+        <div class="col-8 py-7 bg-primary-700 text-primary-100 px-5">
+          <div class="flex-columns">
+            <div class="col-3 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
+            <div class="col-9 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
           </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
+        </div>
+        <div class="col-4 py-7 bg-primary-700 text-primary-100 px-5"></div>
+      </div>
+    </div>
+    <div class="py-10 full-width container">
+      <h2>Cards</h2>
+      <div class="columns">
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="card horizontal right">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
+    </div>
+    <div class="py-10 full-width container">
+      <h2>Horizontal Cards</h2>
+      <div class="columns count-2">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
           </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card horizontal">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card horizontal right">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
+        <div class="card horizontal right">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
           </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
-          </div>
-        </div>
-      </div>
-      <div class="card horizontal">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
-        </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
-          </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
-          </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="card horizontal right">
-        <div class="card-image">
-          <img src="https://unsplash.it/1000/400" alt="Card image">
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
         </div>
-        <div class="card-content">
-          <div class="card-header">
-            <h3 class="card-title">Title</h3>
+        <div class="card horizontal right">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
           </div>
-          <div class="card-body">
-            <p>This is some text that describes the card.</p>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
           </div>
-          <div class="card-footer">
-            <a class="button primary stretched" href="#">Card Action</a>
+        </div>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
+          </div>
+        </div>
+        <div class="card horizontal right">
+          <div class="card-image">
+            <img src="https://unsplash.it/1000/400" alt="Card image">
+          </div>
+          <div class="card-content">
+            <div class="card-header">
+              <h3 class="card-title">Title</h3>
+            </div>
+            <div class="card-body">
+              <p>This is some text that describes the card.</p>
+            </div>
+            <div class="card-footer">
+              <a class="button primary stretched" href="#">Card Action</a>
+            </div>
           </div>
         </div>
       </div>
@@ -615,6 +632,24 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script src="src/js/navigation.js"></script>
+  <script>
+    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const setTheme = window.localStorage.getItem('theme') || preferredTheme;
+    const themeToggle = document.getElementById('dark-mode-toggle');
+
+    document.documentElement.classList.add(`${setTheme}-mode`);
+    themeToggle.innerHTML = setTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.classList.remove(`${currentTheme}-mode`);
+      document.documentElement.classList.add(`${newTheme}-mode`);
+      window.localStorage.setItem('theme', newTheme);
+      themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+    });
+  </script>
 </body>
 
 </html>
