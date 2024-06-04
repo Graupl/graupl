@@ -14,6 +14,7 @@
     <p>Graupl is a modular CSS framework with the goal of making it easy to theme a site.</p>
     <p>This source code can be found in <a href="https://github.com/Graupl/graupl">GitHub</a>.</p>
     <p>Graupl supports light and dark modes out-of-the-box.</p>
+    <button id="dark-mode-toggle" class="button mt-5">Toggle dark mode</button>
     <div class="py-10 full-width container">
       <h2>Buttons</h2>
       <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
@@ -631,6 +632,24 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script src="src/js/navigation.js"></script>
+  <script>
+    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const setTheme = window.localStorage.getItem('theme') || preferredTheme;
+    const themeToggle = document.getElementById('dark-mode-toggle');
+
+    document.documentElement.classList.add(`${setTheme}-mode`);
+    themeToggle.innerHTML = setTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.classList.remove(`${currentTheme}-mode`);
+      document.documentElement.classList.add(`${newTheme}-mode`);
+      window.localStorage.setItem('theme', newTheme);
+      themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+    });
+  </script>
 </body>
 
 </html>
