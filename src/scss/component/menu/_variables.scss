@@ -80,6 +80,10 @@ $menu-border-width: var(
   --#{root-defaults.$prefix}-menu-border-width,
   #{defaults.$menu-border-width}
 );
+$menu-border: var(
+  --#{root-defaults.$prefix}-menu-border,
+  #{$menu-border-width} #{$menu-border-style}
+);
 
 // Submenu properties
 $submenu-flex-direction: var(
@@ -154,6 +158,10 @@ $submenu-border-style: var(
 $submenu-border-width: var(
   --#{root-defaults.$prefix}-submenu-border-width,
   #{root-variables.$border-width}
+);
+$submenu-border: var(
+  --#{root-defaults.$prefix}-submenu-border,
+  #{$submenu-border-width} #{$submenu-border-style}
 );
 
 // Submenu position properties.
@@ -430,6 +438,10 @@ $menu-link-border-style: var(
 $menu-link-border-width: var(
   --#{root-defaults.$prefix}-menu-link-border-width,
   #{defaults.$menu-link-border-width}
+);
+$menu-link-border: var(
+  --#{root-defaults.$prefix}-menu-link-border,
+  #{$menu-link-border-width} #{$menu-link-border-style}
 );
 $menu-link-border-color: var(
   --#{root-defaults.$prefix}-menu-link-border-color,

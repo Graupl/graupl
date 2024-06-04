@@ -42,8 +42,7 @@
     display: $menu-display;
     flex-direction: $menu-flex-direction;
     padding: $menu-padding;
-    border-width: $menu-border-width;
-    border-style: $menu-border-style;
+    border: $menu-border;
     border-radius: $menu-border-radius;
     list-style: none;
     gap: $menu-gap;
@@ -65,8 +64,7 @@
     flex: 1 1;
     flex-direction: $submenu-flex-direction;
     padding: $submenu-padding;
-    border-width: $submenu-border-width;
-    border-style: $submenu-border-style;
+    border: $submenu-border;
     border-radius: $submenu-border-radius;
     list-style: none;
     gap: $submenu-gap;
@@ -98,8 +96,7 @@
     padding: $menu-link-padding;
     transform: $menu-link-transform;
     transition: $menu-link-transition;
-    border-width: $menu-link-border-width;
-    border-style: $menu-link-border-style;
+    border: $menu-link-border;
     border-radius: $menu-link-border-radius;
     text-decoration: $menu-link-text-decoration;
     text-decoration-style: $menu-link-text-decoration-style;

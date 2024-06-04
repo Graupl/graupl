@@ -9,8 +9,7 @@
   #{defaults.$textarea-selector},
   #{defaults.$select-selector} {
     padding: $input-padding;
-    border-width: $input-border-width;
-    border-style: $input-border-style;
+    border: $input-border;
     border-radius: $input-border-radius;
     font-size: $input-font-size;
 
@@ -28,8 +27,7 @@
     flex-flow: $fieldset-direction wrap;
     gap: $fieldset-gap;
     padding: $fieldset-padding;
-    border-width: $fieldset-border-width;
-    border-style: $fieldset-border-style;
+    border: $fieldset-border;
     border-radius: $fieldset-border-radius;
     font-size: $fieldset-font-size;
 

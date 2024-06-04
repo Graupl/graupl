@@ -106,6 +106,10 @@ $input-border-style: var(
   --#{root-defaults.$prefix}-botton-border-style,
   #{root-variables.$border-style}
 );
+$input-border: var(
+  --#{root-defaults.$prefix}-input-border,
+  #{$input-border-width} #{$input-border-style}
+);
 $input-border-radius: var(
   --#{root-defaults.$prefix}-input-border-radius,
   #{root-variables.$border-radius}
@@ -117,6 +121,10 @@ $fieldset-border-width: var(
 $fieldset-border-style: var(
   --#{root-defaults.$prefix}-fieldset-border-style,
   #{$input-border-style}
+);
+$fieldset-border: var(
+  --#{root-defaults.$prefix}-fieldset-border,
+  #{$fieldset-border-width} #{$fieldset-border-style}
 );
 $fieldset-border-radius: var(
   --#{root-defaults.$prefix}-fieldset-border-radius,

@@ -71,6 +71,10 @@ $navigation-toggle-border-style: var(
   --#{root-defaults.$prefix}-navigation-toggle-border-style,
   #{root-variables.$border-style}
 );
+$navigation-toggle-border: var(
+  --#{root-defaults.$prefix}-navigation-toggle-border,
+  #{$navigation-toggle-border-width} #{$navigation-toggle-border-style}
+);
 $navigation-toggle-border-color: var(
   --#{root-defaults.$prefix}-navigation-toggle-border-color,
   #{$navigation-toggle-color}

@@ -77,6 +77,10 @@ $table-border-style: var(
   --#{root-defaults.$prefix}-table-border-style,
   #{root-variables.$border-style}
 );
+$table-border: var(
+  --#{root-defaults.$prefix}-table-border,
+  #{$table-border-width} #{$table-border-style}
+);
 $table-border-color: var(
   --#{root-defaults.$prefix}-table-border-color,
   #{theme.get(primary, 900)}
@@ -90,6 +94,10 @@ $table-cell-border-width: var(
 $table-cell-border-style: var(
   --#{root-defaults.$prefix}-table-cell-border-style,
   #{$table-border-style}
+);
+$table-cell-border: var(
+  --#{root-defaults.$prefix}-table-cell-border,
+  #{$table-cell-border-width} #{$table-cell-border-style}
 );
 $table-cell-border-color: var(
   --#{root-defaults.$prefix}-table-cell-border-color,
