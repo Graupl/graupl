@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.13](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2024-06-04)
+
+
+### Features
+
+* **base:** add stretched link class ([fc5e4b6](https://github.com/Graupl/graupl/commit/fc5e4b661adcb1141432542a4b93dbaa30d4d154))
+* **base:** implement states and extras into both buttons and links ([161b34b](https://github.com/Graupl/graupl/commit/161b34b7dc83b4964cd75a1426dc4a8168d06ced))
+* **component:** implement cards  ([34e9d08](https://github.com/Graupl/graupl/commit/34e9d08dcf0eb46970bbdeb2a30346dcf03421ed)), closes [#63](https://github.com/Graupl/graupl/issues/63)
+* **component:** implement flex columns component ([6373947](https://github.com/Graupl/graupl/commit/6373947a1d844a9dec0f4cd18837aa5768a804a8))
+* **component:** implement menu and navigation components ([ce93a72](https://github.com/Graupl/graupl/commit/ce93a72f6154211f2ae48efb6e0e0b551bb66e24))
+* **function:** handle transparent and other standard colors in theme.get() ([3c3a7cf](https://github.com/Graupl/graupl/commit/3c3a7cf70fb0df8a58f6668ce4a0b620353985fc))
+* **props:** add new border prop to all elements ([d7de8c2](https://github.com/Graupl/graupl/commit/d7de8c223293fefec10d29e012172abb256f767d))
+* **utility:** add order utilities ([24c7026](https://github.com/Graupl/graupl/commit/24c7026cfdbcf02de3ef86b07e0ecad68b3b4751))
+* **utility:** add ratio classes ([526197d](https://github.com/Graupl/graupl/commit/526197db0dcae9ff426619853261024244f30620))
+
+
+### Bug Fixes
+
+* **buttons:** use proper theme get function for button variants ([7baa57a](https://github.com/Graupl/graupl/commit/7baa57a211e34fc1b0650e47f7cd8222e0c732a2))
+* rename font-size to font-size-base for consistency ([3537141](https://github.com/Graupl/graupl/commit/35371415ccd1a875b045d71fc5ddc4998be37870))
+* use unset for flex columns fill ([fdaa10b](https://github.com/Graupl/graupl/commit/fdaa10b0cfcab8fbf5652f7a5aaa40dddb917059))
+
+
+### Performance Improvements
+
+* **button:** simplify disabled button code ([582bcac](https://github.com/Graupl/graupl/commit/582bcacae7abc3b92d5bb58943ca25033f90f720))
+* **columns:** adjust both normal and flex columns to work better in various screen sizes ([16c133b](https://github.com/Graupl/graupl/commit/16c133b060e3fd9eecd677d91c861d15033dda6c))
+
+
+### Documentation
+
+* add mode toggle to html ([a22f12d](https://github.com/Graupl/graupl/commit/a22f12dbace5bcc6119c3588c5ed9ff494fe9fd1))
+* add spacing to example html ([3758642](https://github.com/Graupl/graupl/commit/37586421220f9dc97a083bc51d10038028fe3219))
+
 ## [1.0.0-alpha.12](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.11...v1.0.0-alpha.12) (2024-05-24)
 
 
