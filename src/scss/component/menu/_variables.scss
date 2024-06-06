@@ -195,6 +195,10 @@ $menu-item-min-width: var(
   --#{root-defaults.$prefix}-menu-item-min-width,
   #{defaults.$menu-item-min-width}
 );
+$menu-item-max-width: var(
+  --#{root-defaults.$prefix}-menu-item-max-width,
+  #{defaults.$menu-item-max-width}
+);
 $menu-item-padding-x: var(
   --#{root-defaults.$prefix}-menu-item-padding-x,
   #{map.get(root-variables.$spacers, 0)}

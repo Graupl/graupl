@@ -26,7 +26,8 @@ $submenu-show-display: $menu-show-display !default;
 $submenu-hide-display: $menu-hide-display !default;
 
 // Menu item properties.
-$menu-item-min-width: max-content !default;
+$menu-item-min-width: min-content !default;
+$menu-item-max-width: 100% !default;
 
 // Submenu properties.
 $submenu-position: absolute !default;
