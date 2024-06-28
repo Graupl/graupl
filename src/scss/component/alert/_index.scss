@@ -20,11 +20,31 @@
     gap: $alert-gap;
     border: $alert-border;
     border-radius: $alert-border-radius;
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+
+    &#{defaults.$alert-hidden-selector} {
+      display: none;
+    }
+
+    &#{defaults.$alert-transition-selector} {
+      display: grid;
+      opacity: 0;
+    }
+
+    &#{defaults.$alert-shown-selector} {
+      display: grid;
+    }
   }
 
   @include layer(theme) {
     --#{root-defaults.$prefix}-button-background: #{$alert-background};
     --#{root-defaults.$prefix}-button-focus-background: #{$alert-background};
+    --#{root-defaults.$prefix}-link-color: #{$alert-link-color};
+    --#{root-defaults.$prefix}-link-visited-color: #{$alert-link-visited-color};
+    --#{root-defaults.$prefix}-link-focus-color: #{$alert-link-focus-color};
+    --#{root-defaults.$prefix}-link-hover-color: #{$alert-link-hover-color};
+    --#{root-defaults.$prefix}-link-active-color: #{$alert-link-active-color};
+    --#{root-defaults.$prefix}-link-disabled-color: #{$alert-link-disabled-color};
 
     background-color: $alert-background;
     color: $alert-color;

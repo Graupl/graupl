@@ -15,8 +15,10 @@ $alert-body-selector: ".alert-body" !default;
 $alert-header-selector: ".alert-header" !default;
 $alert-footer-selector: ".alert-footer" !default;
 $alert-title-selector: ".alert-title" !default;
-$alert-dismissable-selector: ".dismissable" !default;
 $alert-dismisser-selector: ".dismisser" !default;
+$alert-hidden-selector: ".hide" !default;
+$alert-shown-selector: ".show" !default;
+$alert-transition-selector: ".transitioning" !default;
 
 // Alert state theme defaults.
 // This map is used to define the default colour shades for the
@@ -29,10 +31,16 @@ $alert-dismisser-selector: ".dismisser" !default;
 // Secondary/tertiary alerts will use the same shade for their respective colours.
 $base-alert-state-theme-map: (
   color: 900,
-  background: 100,
+  background: 200,
   border-color: 700,
   title-color: 800,
   button-border-color: transparent,
+  link-color: 800,
+  link-visited-color: 800,
+  link-focus-color: 800,
+  link-hover-color: 900,
+  link-active-color: 900,
+  link-disabled-color: 400,
 );
 $custom-alert-state-theme-map: () !default;
 $alert-state-theme-map: map.merge(

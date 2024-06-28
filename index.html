@@ -634,13 +634,13 @@
       <div class="display-grid g-5">
         <div class="alert">
           <div class="alter-header">
-            <h3 class="alert-title">Primary Alert</h3>
+            <h3 class="alert-title">Alert</h3>
           </div>
           <div class="alert-body">
             <p>This is some text that describes the alert.</p>
           </div>
           <div class="alert-footer">
-            <a href="#">Primary Action</a>
+            <a href="#">Action</a>
           </div>
           <button class="alert-dismisser button">x</button>
         </div>
@@ -658,25 +658,25 @@
         </div>
         <div class="alert secondary">
           <div class="alter-header">
-            <h3 class="alert-title">Primary Alert</h3>
+            <h3 class="alert-title">Secondary Alert</h3>
           </div>
           <div class="alert-body">
             <p>This is some text that describes the alert.</p>
           </div>
           <div class="alert-footer">
-            <a href="#">Primary Action</a>
+            <a href="#">Secondary Action</a>
           </div>
           <button class="alert-dismisser button secondary">x</button>
         </div>
         <div class="alert tertiary">
           <div class="alter-header">
-            <h3 class="alert-title">Primary Alert</h3>
+            <h3 class="alert-title">Tertiary Alert</h3>
           </div>
           <div class="alert-body">
             <p>This is some text that describes the alert.</p>
           </div>
           <div class="alert-footer">
-            <a href="#">Primary Action</a>
+            <a href="#">Tertiary Action</a>
           </div>
           <button class="alert-dismisser button tertiary">x</button>
         </div>
@@ -685,6 +685,7 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script src="src/js/navigation.js"></script>
+  <script type="module" src="src/js/alert/index.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const setTheme = window.localStorage.getItem('theme') || preferredTheme;
