@@ -20,7 +20,9 @@
     gap: $alert-gap;
     border: $alert-border;
     border-radius: $alert-border-radius;
-    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+    transition:
+      opacity 150ms ease-in-out,
+      transform 150ms ease-in-out;
 
     &#{defaults.$alert-hidden-selector} {
       display: none;
@@ -55,9 +57,12 @@
         $properties: ();
 
         @each $prop, $shade in defaults.$alert-state-theme-map {
-          $properties: map.merge($properties, (
-            $prop: theme.get($color, $shade)
-          ));
+          $properties: map.merge(
+            $properties,
+            (
+              $prop: theme.get($color, $shade),
+            )
+          );
         }
 
         @include create-variant($properties);

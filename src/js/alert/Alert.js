@@ -8,7 +8,6 @@ import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
 
 class Alert {
-
   /**
    * The HTML elements for the alert in the DOM.
    *
@@ -122,7 +121,16 @@ class Alert {
    * @param {boolean}              [options.isHidden = false]                - A flag to determine the initial state of the alert.
    * @param {boolean}              [options.initialize = false]              - A flag to auto-initialize.
    */
-  constructor({ alertElement, controllerElement = null, showClass = "show", hideClass = "hide", transitionClass = "transitioning", transitionTimer = 150, isHidden = false, initialize = false }) {
+  constructor({
+    alertElement,
+    controllerElement = null,
+    showClass = "show",
+    hideClass = "hide",
+    transitionClass = "transitioning",
+    transitionTimer = 150,
+    isHidden = false,
+    initialize = false,
+  }) {
     this._dom.alert = alertElement;
     this._dom.controller = controllerElement;
     this._showClass = showClass || "";
@@ -295,7 +303,9 @@ class Alert {
     }
 
     if (this._transitionClass !== "") {
-      const transitionClassCheck = isValidClassList({ transitionClass: this._transitionClass });
+      const transitionClassCheck = isValidClassList({
+        transitionClass: this._transitionClass,
+      });
 
       if (!transitionClassCheck.status) {
         this._errors.push(transitionClassCheck.message);
@@ -304,7 +314,9 @@ class Alert {
     }
 
     // Transition timer check.
-    const transitionTimerCheck = isValidType("number", { transitionTimer: this._transitionTimer });
+    const transitionTimerCheck = isValidType("number", {
+      transitionTimer: this._transitionTimer,
+    });
 
     if (!transitionTimerCheck.status) {
       this._errors.push(transitionTimerCheck.message);
