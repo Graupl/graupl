@@ -19,25 +19,32 @@
 }
 
 #{defaults.$carousel-item-selector} {
-  max-width: var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%);
-  transition: transform var(--#{root-defaults.$prefix}-carousel-transition-timer, 500ms) ease-in-out;
-  transform: translateX(var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%));
-  grid-area: items;
   z-index: 0;
+  grid-area: items;
+  max-width: var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%);
+  transform: translateX(
+    var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+  );
+  transition: transform
+    var(--#{root-defaults.$prefix}-carousel-transition-timer, 500ms) ease-in-out;
   opacity: 0;
 
   &.active {
-    transform: translateX(0) !important;
     z-index: 1;
+    transform: translateX(0) !important;
     opacity: 1;
 
     ~ #{defaults.$carousel-item-selector} {
-      transform: translateX(var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%));
+      transform: translateX(
+        var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+      );
     }
   }
 
   &:has(+ .active) {
+    transform: translateX(
+      calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%))
+    );
     opacity: 1;
-    transform: translateX(calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)));
   }
 }

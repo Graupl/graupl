@@ -4,7 +4,12 @@
  */
 
 import { addClass, removeClass } from "../domHelpers.js";
-import { isQuerySelector, isValidClassList, isValidInstance, isValidType } from "../validate.js";
+import {
+  isQuerySelector,
+  isValidClassList,
+  isValidInstance,
+  isValidType,
+} from "../validate.js";
 
 class Carousel {
   /**
@@ -31,7 +36,7 @@ class Carousel {
    */
   _selectors = {
     carouselItems: ".carousel-item",
-  }
+  };
 
   /**
    * The class(es) to apply when a carousel item is active.
@@ -118,7 +123,9 @@ class Carousel {
         );
       }
 
-      this.dom.carouselItems = this.dom.carousel.querySelectorAll(this.selectors.carouselItems);
+      this.dom.carouselItems = this.dom.carousel.querySelectorAll(
+        this.selectors.carouselItems
+      );
 
       this._handleClick();
     } catch (error) {
@@ -238,7 +245,9 @@ class Carousel {
     let check = true;
 
     // HTML element checks.
-    let htmlElementChecks = isValidInstance(HTMLElement, { carouselElement: this.dom.carousel });
+    let htmlElementChecks = isValidInstance(HTMLElement, {
+      carouselElement: this.dom.carousel,
+    });
 
     if (!htmlElementChecks) {
       this._errors.push(htmlElementChecks.message);
@@ -246,7 +255,9 @@ class Carousel {
     }
 
     if (this._dom.autoplayButton !== null) {
-      htmlElementChecks = isValidInstance(HTMLElement, { autoplayButton: this.dom.autoplayButton });
+      htmlElementChecks = isValidInstance(HTMLElement, {
+        autoplayButton: this.dom.autoplayButton,
+      });
 
       if (!htmlElementChecks) {
         this._errors.push(htmlElementChecks.message);
@@ -255,7 +266,10 @@ class Carousel {
     }
 
     if (this._dom.nextButton !== null || this._dom.previousButton !== null) {
-      htmlElementChecks = isValidInstance(HTMLElement, { nextButton: this.dom.nextButton, previousButton: this.dom.previousButton });
+      htmlElementChecks = isValidInstance(HTMLElement, {
+        nextButton: this.dom.nextButton,
+        previousButton: this.dom.previousButton,
+      });
 
       if (!htmlElementChecks) {
         this._errors.push(htmlElementChecks.message);
@@ -264,7 +278,9 @@ class Carousel {
     }
 
     // Query selector checks.
-    const querySelectorChecks = isQuerySelector({ carouselItemsSelector: this.selectors.carouselItems });
+    const querySelectorChecks = isQuerySelector({
+      carouselItemsSelector: this.selectors.carouselItems,
+    });
 
     if (!querySelectorChecks) {
       this._errors.push(querySelectorChecks.message);
@@ -273,7 +289,9 @@ class Carousel {
 
     // Class list checks.
     if (this._activeClass !== "") {
-      const classListChecks = isValidClassList({ activeClass: this.activeClass });
+      const classListChecks = isValidClassList({
+        activeClass: this.activeClass,
+      });
 
       if (!classListChecks) {
         this._errors.push(classListChecks.message);
