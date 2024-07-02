@@ -1,0 +1,123 @@
+// @graupl/graupl alert component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "sass:map";
+
+// Alert properties.
+$alert-padding-x: var(
+  --#{root-defaults.$prefix}-alert-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$alert-padding-y: var(
+  --#{root-defaults.$prefix}-alert-padding-y,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$alert-padding: var(
+  --#{root-defaults.$prefix}-alert-padding,
+  #{$alert-padding-y} #{$alert-padding-x}
+);
+
+// Alert gap properties.
+$alert-column-gap: var(
+  --#{root-defaults.$prefix}-alert-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$alert-row-gap: var(
+  --#{root-defaults.$prefix}-alert-row-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$alert-gap: var(
+  --#{root-defaults.$prefix}-alert-gap,
+  #{$alert-column-gap} #{$alert-row-gap}
+);
+
+// Alert color properties.
+$alert-background: var(
+  --#{root-defaults.$prefix}-alert-background,
+  #{color.$root-background}
+);
+$alert-color: var(--#{root-defaults.$prefix}-alert-color, #{color.$root-color});
+$alert-link-color: var(--#{root-defaults.$prefix}-alert-link-color);
+$alert-link-visited-color: var(
+  --#{root-defaults.$prefix}-alert-link-visited-color
+);
+$alert-link-focus-color: var(--#{root-defaults.$prefix}-alert-link-focus-color);
+$alert-link-hover-color: var(--#{root-defaults.$prefix}-alert-link-hover-color);
+$alert-link-active-color: var(
+  --#{root-defaults.$prefix}-alert-link-active-color
+);
+$alert-link-disabled-color: var(
+  --#{root-defaults.$prefix}-alert-link-disabled-color
+);
+
+// Alert border-properties.
+$alert-border-color: var(
+  --#{root-defaults.$prefix}-alert-border-color,
+  #{$alert-color}
+);
+$alert-top-left-border-radius: var(
+  --#{root-defaults.$prefix}-alert-top-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$alert-top-right-border-radius: var(
+  --#{root-defaults.$prefix}-alert-top-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$alert-bottom-left-border-radius: var(
+  --#{root-defaults.$prefix}-alert-bottom-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$alert-bottom-right-border-radius: var(
+  --#{root-defaults.$prefix}-alert-bottom-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$alert-border-radius: var(
+  --#{root-defaults.$prefix}-alert-border-radius,
+  #{$alert-top-left-border-radius} #{$alert-top-right-border-radius} #{$alert-bottom-right-border-radius}
+    #{$alert-bottom-left-border-radius}
+);
+$alert-border-style: var(
+  --#{root-defaults.$prefix}-alert-border-style,
+  #{root-variables.$border-style}
+);
+$alert-border-width: var(
+  --#{root-defaults.$prefix}-alert-border-width,
+  #{root-variables.$border-width}
+);
+$alert-border: var(
+  --#{root-defaults.$prefix}-alert-border,
+  #{$alert-border-width} #{$alert-border-style}
+);
+
+// Alert title properties.
+$alert-title-color: var(
+  --#{root-defaults.$prefix}-alert-title-color,
+  #{$alert-color}
+);
+$alert-title-font-size: var(
+  --#{root-defaults.$prefix}-alert-title-font-size,
+  #{typography.$h4-font-size}
+);
+$alert-title-font-weight: var(
+  --#{root-defaults.$prefix}-alert-title-font-weight,
+  #{typography.$h4-font-weight}
+);
+$alert-title-font-family: var(
+  --#{root-defaults.$prefix}-alert-title-font-family,
+  #{typography.$h4-font-family}
+);
+$alert-title-line-height: var(
+  --#{root-defaults.$prefix}-alert-title-line-height,
+  #{typography.$h4-line-height}
+);
+$alert-title-margin: var(
+  --#{root-defaults.$prefix}-alert-title-margin,
+  0 0 0 0
+);

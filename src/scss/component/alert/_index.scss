@@ -1,0 +1,113 @@
+// @gruapl/graupl alert component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "mixins" as *;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../mixins/layer" as *;
+@use "../../functions/theme";
+@use "sass:map";
+
+#{defaults.$alert-selector} {
+  @include layer(component) {
+    --#{root-defaults.$prefix}-button-border: 0;
+
+    display: grid;
+    grid-template-columns: [content-start] 1fr [content-end dismiss-start] auto [dismiss-end];
+    grid-template-rows: [header-start] auto [header-end body-start] auto [body-end footer-start] auto [footer-end];
+    padding: $alert-padding;
+    transition:
+      opacity 150ms ease-in-out,
+      transform 150ms ease-in-out;
+    border: $alert-border;
+    border-radius: $alert-border-radius;
+    gap: $alert-gap;
+
+    &#{defaults.$alert-hidden-selector} {
+      display: none;
+    }
+
+    &#{defaults.$alert-transition-selector} {
+      display: grid;
+      opacity: 0;
+    }
+
+    &#{defaults.$alert-shown-selector} {
+      display: grid;
+    }
+  }
+
+  @include layer(theme) {
+    --#{root-defaults.$prefix}-button-background: #{$alert-background};
+    --#{root-defaults.$prefix}-button-focus-background: #{$alert-background};
+    --#{root-defaults.$prefix}-link-color: #{$alert-link-color};
+    --#{root-defaults.$prefix}-link-visited-color: #{$alert-link-visited-color};
+    --#{root-defaults.$prefix}-link-focus-color: #{$alert-link-focus-color};
+    --#{root-defaults.$prefix}-link-hover-color: #{$alert-link-hover-color};
+    --#{root-defaults.$prefix}-link-active-color: #{$alert-link-active-color};
+    --#{root-defaults.$prefix}-link-disabled-color: #{$alert-link-disabled-color};
+
+    border-color: $alert-border-color;
+    background-color: $alert-background;
+    color: $alert-color;
+
+    @each $color, $map in color.$theme-active {
+      &#{defaults.$alert-theme-selector-prefix}#{$color} {
+        $properties: ();
+
+        @each $prop, $shade in defaults.$alert-state-theme-map {
+          $properties: map.merge(
+            $properties,
+            (
+              $prop: theme.get($color, $shade),
+            )
+          );
+        }
+
+        @include create-variant($properties);
+      }
+    }
+  }
+}
+
+#{defaults.$alert-header-selector} {
+  @include layer(component) {
+    grid-column: content;
+    grid-row: header;
+  }
+}
+
+#{defaults.$alert-body-selector} {
+  @include layer(component) {
+    grid-column: content;
+    grid-row: body;
+  }
+}
+
+#{defaults.$alert-footer-selector} {
+  @include layer(component) {
+    grid-column: content;
+    grid-row: footer;
+  }
+}
+
+#{defaults.$alert-dismisser-selector} {
+  @include layer(component) {
+    grid-column: dismiss;
+    grid-row: header;
+  }
+}
+
+#{defaults.$alert-title-selector} {
+  @include layer(component) {
+    margin: $alert-title-margin;
+  }
+
+  @include layer(theme) {
+    color: $alert-title-color;
+    font-size: $alert-title-font-size;
+    font-weight: $alert-title-font-weight;
+    line-height: $alert-title-line-height;
+  }
+}

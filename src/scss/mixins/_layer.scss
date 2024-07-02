@@ -6,9 +6,7 @@
 @use "../defaults" as root-defaults;
 
 @mixin layer($layer) {
-  @at-root {
-    @layer #{root-defaults.$prefix}.#{$layer} {
-      @content;
-    }
+  @layer #{root-defaults.$prefix}.#{$layer} {
+    @content;
   }
 }

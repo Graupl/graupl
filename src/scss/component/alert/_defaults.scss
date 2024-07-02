@@ -1,0 +1,49 @@
+// @graupl/graupl alert component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Alert selectors.
+$alert-selector: ".alert" !default;
+$alert-theme-selector-prefix: "." !default;
+$alert-body-selector: ".alert-body" !default;
+$alert-header-selector: ".alert-header" !default;
+$alert-footer-selector: ".alert-footer" !default;
+$alert-title-selector: ".alert-title" !default;
+$alert-dismisser-selector: ".dismisser" !default;
+$alert-hidden-selector: ".hide" !default;
+$alert-shown-selector: ".show" !default;
+$alert-transition-selector: ".transitioning" !default;
+
+// Alert state theme defaults.
+// This map is used to define the default colour shades for the
+// themed alert components.
+//
+// e.g.
+// Primary alerts will use primary--900 as the text colour, primary--100 as the background
+// and primary--900 as the border colour.
+//
+// Secondary/tertiary alerts will use the same shade for their respective colours.
+$base-alert-state-theme-map: (
+  color: 900,
+  background: 200,
+  border-color: 700,
+  title-color: 800,
+  button-border-color: transparent,
+  link-color: 800,
+  link-visited-color: 800,
+  link-focus-color: 800,
+  link-hover-color: 900,
+  link-active-color: 900,
+  link-disabled-color: 400,
+);
+$custom-alert-state-theme-map: () !default;
+$alert-state-theme-map: map.merge(
+  $base-alert-state-theme-map,
+  $custom-alert-state-theme-map
+);
