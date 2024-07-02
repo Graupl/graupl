@@ -17,12 +17,12 @@
     grid-template-columns: [content-start] 1fr [content-end dismiss-start] auto [dismiss-end];
     grid-template-rows: [header-start] auto [header-end body-start] auto [body-end footer-start] auto [footer-end];
     padding: $alert-padding;
-    gap: $alert-gap;
-    border: $alert-border;
-    border-radius: $alert-border-radius;
     transition:
       opacity 150ms ease-in-out,
       transform 150ms ease-in-out;
+    border: $alert-border;
+    border-radius: $alert-border-radius;
+    gap: $alert-gap;
 
     &#{defaults.$alert-hidden-selector} {
       display: none;
@@ -48,9 +48,9 @@
     --#{root-defaults.$prefix}-link-active-color: #{$alert-link-active-color};
     --#{root-defaults.$prefix}-link-disabled-color: #{$alert-link-disabled-color};
 
+    border-color: $alert-border-color;
     background-color: $alert-background;
     color: $alert-color;
-    border-color: $alert-border-color;
 
     @each $color, $map in color.$theme-active {
       &#{defaults.$alert-theme-selector-prefix}#{$color} {
@@ -73,29 +73,29 @@
 
 #{defaults.$alert-header-selector} {
   @include layer(component) {
-    grid-row: header;
     grid-column: content;
+    grid-row: header;
   }
 }
 
 #{defaults.$alert-body-selector} {
   @include layer(component) {
-    grid-row: body;
     grid-column: content;
+    grid-row: body;
   }
 }
 
 #{defaults.$alert-footer-selector} {
   @include layer(component) {
-    grid-row: footer;
     grid-column: content;
+    grid-row: footer;
   }
 }
 
 #{defaults.$alert-dismisser-selector} {
   @include layer(component) {
-    grid-row: header;
     grid-column: dismiss;
+    grid-row: header;
   }
 }
 
