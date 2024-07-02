@@ -1,0 +1,43 @@
+// @gruapl/graupl carousel component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "mixins" as *;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+
+#{defaults.$carousel-selector} {
+  isolation: isolate;
+}
+
+#{defaults.$carousel-item-container-selector} {
+  display: grid;
+  grid-template-areas: "items";
+  max-width: 100%;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+#{defaults.$carousel-item-selector} {
+  max-width: var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%);
+  transition: transform var(--#{root-defaults.$prefix}-carousel-transition-timer, 500ms) ease-in-out;
+  transform: translateX(var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%));
+  grid-area: items;
+  z-index: 0;
+  opacity: 0;
+
+  &.active {
+    transform: translateX(0) !important;
+    z-index: 1;
+    opacity: 1;
+
+    ~ #{defaults.$carousel-item-selector} {
+      transform: translateX(var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%));
+    }
+  }
+
+  &:has(+ .active) {
+    opacity: 1;
+    transform: translateX(calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)));
+  }
+}
