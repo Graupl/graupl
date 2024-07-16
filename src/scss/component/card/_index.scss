@@ -11,12 +11,6 @@
     display: grid;
     position: relative;
     grid-template-columns: 1fr;
-    grid-template-rows:
-      [image-start]
-      $card-image-ratio
-      [image-end content-start]
-      $card-content-ratio
-      [content-end];
     padding: $card-padding;
     transform: $card-transform;
     transition: $card-transition;
@@ -24,6 +18,26 @@
     border-radius: $card-border-radius;
     gap: $card-gap;
     isolation: isolate;
+
+    &,
+    &#{defaults.$vertical-card-top-selector} {
+      grid-template-rows:
+        [image-start]
+        $card-image-ratio
+        [image-end content-start]
+        $card-content-ratio
+        [content-end];
+    }
+
+    &#{defaults.$vertical-card-bottom-selector},
+    &#{defaults.$inverse-card-selector} {
+      grid-template-rows:
+        [content-start]
+        $card-content-ratio
+        [content-end image-start]
+        $card-image-ratio
+        [image-end];
+    }
 
     &:hover {
       --#{root-defaults.$prefix}-card-transform: #{$card-hover-transform};
@@ -49,7 +63,8 @@
         }
       }
 
-      &#{defaults.$horizontal-card-right-selector} {
+      &#{defaults.$horizontal-card-right-selector},
+      &#{defaults.$inverse-card-selector} {
         grid-template-columns:
           [content-start]
           $card-content-ratio
@@ -104,17 +119,36 @@
       &#{defaults.$horizontal-card-selector} {
         &,
         &#{defaults.$horizontal-card-left-selector},
-        &#{defaults.$horizontal-card-right-selector} {
+        &#{defaults.$vertical-card-top-selector},
+        &#{defaults.$horizontal-card-right-selector},
+        &#{defaults.$vertical-card-bottom-selector},
+        &#{defaults.$inverse-card-selector} {
           --#{root-defaults.$prefix}-horizontal-card-image-ratio: #{defaults.$card-image-ratio};
           --#{root-defaults.$prefix}-horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 
           grid-template-columns: 1fr;
+        }
+
+        &,
+        &#{defaults.$horizontal-card-left-selector},
+        &#{defaults.$horizontal-card-right-selector},
+        &#{defaults.$vertical-card-top-selector} {
           grid-template-rows:
             [image-start]
             $card-image-ratio
             [image-end content-start]
             $card-content-ratio
             [content-end];
+        }
+
+        &#{defaults.$vertical-card-bottom-selector},
+        &#{defaults.$inverse-card-selector} {
+          grid-template-rows:
+            [content-start]
+            $card-content-ratio
+            [content-end image-start]
+            $card-image-ratio
+            [image-end];
         }
       }
     }
