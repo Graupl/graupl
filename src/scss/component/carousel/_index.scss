@@ -7,7 +7,71 @@
 @use "../../mixins/layer" as *;
 
 #{defaults.$carousel-selector} {
+  position: relative;
   isolation: isolate;
+
+  &[data-graupl-action="next"] {
+    #{defaults.$carousel-item-selector}.active ~ #{defaults.$carousel-item-selector} {
+      opacity: 0;
+    }
+
+    #{defaults.$carousel-item-selector}:has(+ .active) {
+      opacity: 1;
+    }
+  }
+
+  &[data-graupl-action="previous"] {
+    #{defaults.$carousel-item-selector}.active ~ #{defaults.$carousel-item-selector} {
+      opacity: 1;
+    }
+
+    #{defaults.$carousel-item-selector}:has(+ .active) {
+      opacity: 0;
+    }
+  }
+}
+
+#{defaults.$carousel-control-container-selector} {
+  display: grid;
+  grid-template-areas: "autoplay - previous next";
+  grid-template-columns: auto 1fr auto auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+#{defaults.$carousel-autoplay-selector} {
+  grid-area: autoplay;
+}
+
+#{defaults.$carousel-play-selector}::before {
+  content: "▶";
+  display: inline-block;
+}
+
+#{defaults.$carousel-pause-selector}::before {
+  content: "❚❚";
+  display: inline-block;
+}
+
+#{defaults.$carousel-next-selector} {
+  grid-area: next;
+
+  &::before {
+    content: "▶";
+    display: inline-block;
+  }
+}
+
+#{defaults.$carousel-previous-selector} {
+  grid-area: previous;
+
+  &::before {
+    content: "◀";
+    display: inline-block;
+  }
 }
 
 #{defaults.$carousel-item-container-selector} {
@@ -45,6 +109,5 @@
     transform: translateX(
       calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%))
     );
-    opacity: 1;
   }
 }
