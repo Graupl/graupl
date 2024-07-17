@@ -459,15 +459,21 @@ class Accordion {
 
     // @todo: Add the logic of when an accordion should be shown or hidden.
     this.dom.controller.addEventListener("keyup", (event) => {
-      const blockKeys = ["Space", "Enter"];
       const key = keyPress(event);
 
-      // @todo: If option is selected allow the following,
-      // - On down arrow move to the next panel and optionaly wrap arround.
-      // - On arrow up move to the previous panel and optionaly wrap arround.
-
-      if (blockKeys.includes(key)) {
-        this._hidden ? this.show() : this.hide();
+      switch (key) {
+        case "Space":
+        case "Enter":
+          // @todo: Add a toggle method.
+          this._hidden ? this.show() : this.hide();
+          break;
+        case "ArrowDown":
+          // Add an accordion item class to handle the focus changing.
+          console.log('Arrow down: Move up an item');
+          break;
+        case "ArrowUp":
+          console.log('Arrow up: Move down an item');
+          break;
       }
     });
   }
