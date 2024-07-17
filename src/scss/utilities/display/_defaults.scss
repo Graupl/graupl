@@ -27,3 +27,5 @@ $display-properties: map.merge(
   $base-display-properties,
   $custom-display-properties
 );
+$visually-hidden-selector: ".visually-hidden" !default;
+$visually-hidden-focusable-selector: ".visually-hidden-focusable" !default;
