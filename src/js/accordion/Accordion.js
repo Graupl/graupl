@@ -355,7 +355,7 @@ class Accordion {
     this._hidden = false;
 
     if (emit) {
-      this.dom.accordion.dispatchEvent(this._hideEvent);
+      this.dom.accordion.dispatchEvent(this._showEvent);
     }
   }
 
