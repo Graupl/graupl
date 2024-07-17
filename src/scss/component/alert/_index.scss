@@ -2,10 +2,10 @@
 
 @use "defaults";
 @use "variables" as *;
-@use "mixins" as *;
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
 @use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -17,9 +17,7 @@
     grid-template-columns: [content-start] 1fr [content-end dismiss-start] auto [dismiss-end];
     grid-template-rows: [header-start] auto [header-end body-start] auto [body-end footer-start] auto [footer-end];
     padding: $alert-padding;
-    transition:
-      opacity 150ms ease-in-out,
-      transform 150ms ease-in-out;
+    transition: $alert-transition;
     border: $alert-border;
     border-radius: $alert-border-radius;
     gap: $alert-gap;
@@ -35,6 +33,12 @@
 
     &#{defaults.$alert-shown-selector} {
       display: grid;
+    }
+
+    @include animation-off {
+      #{defaults.$alert-selector} {
+        --#{root-defaults.$prefix}-alert-transition: #{$alert-transition-reduced-motion};
+      }
     }
   }
 
@@ -54,18 +58,12 @@
 
     @each $color, $map in color.$theme-active {
       &#{defaults.$alert-theme-selector-prefix}#{$color} {
-        $properties: ();
-
         @each $prop, $shade in defaults.$alert-state-theme-map {
-          $properties: map.merge(
-            $properties,
-            (
-              $prop: theme.get($color, $shade),
-            )
-          );
+          --#{root-defaults.$prefix}-alert-#{$prop}: #{theme.get(
+              $color,
+              $shade
+            )};
         }
-
-        @include create-variant($properties);
       }
     }
   }
@@ -75,6 +73,7 @@
   @include layer(component) {
     grid-column: content;
     grid-row: header;
+    padding: $alert-header-padding;
   }
 }
 
@@ -82,6 +81,7 @@
   @include layer(component) {
     grid-column: content;
     grid-row: body;
+    padding: $alert-body-padding;
   }
 }
 
@@ -89,13 +89,15 @@
   @include layer(component) {
     grid-column: content;
     grid-row: footer;
+    padding: $alert-footer-padding;
   }
 }
 
 #{defaults.$alert-dismisser-selector} {
   @include layer(component) {
     grid-column: dismiss;
-    grid-row: header;
+    grid-row: 1 / -1;
+    align-self: flex-start;
   }
 }
 

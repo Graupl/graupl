@@ -96,6 +96,31 @@ $alert-border: var(
   #{$alert-border-width} #{$alert-border-style}
 );
 
+// Alert transition properties.
+$alert-transition: var(
+  --#{root-defaults.$prefix}-alert-transition,
+  opacity #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$alert-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-alert-transition-reduced-motion,
+  opacity #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+
+// Alert header properties.
+$alert-header-padding-x: var(
+  --#{root-defaults.$prefix}-alert-header-padding-x,
+  0
+);
+$alert-header-padding-y: var(
+  --#{root-defaults.$prefix}-alert-header-padding-y,
+  0
+);
+$alert-header-padding: var(
+  --#{root-defaults.$prefix}-alert-header-padding,
+  #{$alert-header-padding-y} #{$alert-header-padding-x}
+);
+
 // Alert title properties.
 $alert-title-color: var(
   --#{root-defaults.$prefix}-alert-title-color,
@@ -120,4 +145,26 @@ $alert-title-line-height: var(
 $alert-title-margin: var(
   --#{root-defaults.$prefix}-alert-title-margin,
   0 0 0 0
+);
+
+// Alert body properties.
+$alert-body-padding-x: var(--#{root-defaults.$prefix}-alert-body-padding-x, 0);
+$alert-body-padding-y: var(--#{root-defaults.$prefix}-alert-body-padding-y, 0);
+$alert-body-padding: var(
+  --#{root-defaults.$prefix}-alert-body-padding,
+  #{$alert-body-padding-y} #{$alert-body-padding-x}
+);
+
+// Alert footer properties.
+$alert-footer-padding-x: var(
+  --#{root-defaults.$prefix}-alert-footer-padding-x,
+  0
+);
+$alert-footer-padding-y: var(
+  --#{root-defaults.$prefix}-alert-footer-padding-y,
+  0
+);
+$alert-footer-padding: var(
+  --#{root-defaults.$prefix}-alert-footer-padding,
+  #{$alert-footer-padding-y} #{$alert-footer-padding-x}
 );
