@@ -6,10 +6,25 @@
 @use "../../mixins/layer" as *;
 
 #{defaults.$accordion-selector} {
-  @include layer(component) {}
-}
+  @include layer(component) {
+    border: black solid 1px;
 
-@include layer(theme) {
-  // --#{root-defaults.$prefix}-button-background: #{$accordion-background};
-  // @todo: Make the accordion take up the entire parent.
+    #{defaults.$accordion-toggle-selector} {
+      display: block;
+      width: 100%;
+      border: none;
+    }
+
+    #{defaults.$accordion-title-selector} {
+      text-align: left;
+    }
+
+    #{defaults.$accordion-toggle-selector} {
+      margin-bottom: 1rem;
+    }
+
+    #{defaults.$accordion-panel-selector} {
+      padding: 0.5rem 1rem;
+    }
+  }
 }
