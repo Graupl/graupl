@@ -1,0 +1,15 @@
+// @gruapl/graupl card component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+
+#{defaults.$accordion-selector} {
+  @include layer(component) {}
+}
+
+@include layer(theme) {
+  // --#{root-defaults.$prefix}-button-background: #{$accordion-background};
+  // @todo: Make the accordion take up the entire parent.
+}
