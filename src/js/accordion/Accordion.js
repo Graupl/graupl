@@ -152,7 +152,7 @@ class Accordion {
 
       this._handleClick();
       this._handleKeydown();
-      // this._handleKeyup();
+      this._handleKeyup();
     } catch (error) {
       console.error(error);
     }
@@ -281,7 +281,8 @@ class Accordion {
    * This method exists to assist the _handleKeyup method.
    *
    * - Adds a `keydown` listener to the controller (if it exists).
-   *   - Blocks propagation on "Space" and "Enter" keys.
+   *   - Blocks propagation on the following keys
+   *   - "Space", "Enter", "ArrowDown", "ArrowUp", "Home", and "End".
    */
   _handleKeydown() {
     if (this._dom.controller === null) {
@@ -296,6 +297,33 @@ class Accordion {
       if (blockKeys.includes(key)) {
         console.log('Event prevented' + key);
         preventEvent(event);
+      }
+    });
+  }
+
+  /**
+   * Handles keyup events throughout the accordion for proper use.
+   *
+   * - Adds a `keyup` listener to the controller (if it exists).
+   *   - Hides the alert when the user hits "Space" or "Enter".
+   */
+  _handleKeyup() {
+    if (this.dom.controller === null) {
+      return;
+    }
+
+    // @todo: Add the logic of when an accordion should be shown or hidden.
+    this.dom.controller.addEventListener("keyup", (event) => {
+      const key = keyPress(event);
+
+      // @todo: On enter or space show if the panel is hidden.
+      // @todo: On enter or space hide if the panel is showing.
+      // @todo: If option is selected allow the following,
+      // - On down arrow move to the next panel and optionaly wrap arround.
+      // - On arrow up move to the previous panel and optionaly wrap arround.
+
+      if (key === "Space" || key === "Enter") {
+        this.hide();
       }
     });
   }
