@@ -100,6 +100,23 @@ class Accordion {
   });
 
   /**
+   * The event that is triggered when the accordion is toggled.
+   *
+   * @protected
+   *
+   * @event grauplAccordionToggle
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}       bubbles - A flag to bubble the event.
+   * @property {Object<Accordion>} detail  - The details object containing the Accordion itself.
+   */
+  _toggleEvent = new CustomEvent("grauplAccordionToggle", {
+    bubbles: true,
+    detail: { accordion: this },
+  });
+
+  /**
    * Decide if an accordion can be navigated, with up or down arrows when focused.
    *
    * @protected
@@ -295,7 +312,7 @@ class Accordion {
  *
  * @fires grauplAccordionShow
  *
- * @param {boolean} [emit = true] - A toggle to emit the show event once shown.
+ * @param {boolean} [emit = true] - Emit the show event once shown.
  */
   show(emit = true) {
     if (!this._hidden) {
@@ -347,7 +364,7 @@ class Accordion {
    *
    * @fires grauplAccordionHide
    *
-   * @param {boolean} [emit = true] - A toggle to emit the hide event once shown.
+   * @param {boolean} [emit = true] - Emit the hide event once hidden.
    */
   hide(emit = true) {
     if (this._hidden) {
@@ -402,6 +419,21 @@ class Accordion {
 
     if (emit) {
       this.dom.accordion.dispatchEvent(this._hideEvent);
+    }
+  }
+
+  /**
+ * Toggle the accordion.
+ *
+ * @fires grauplAccordionToggle
+ *
+ * @param {boolean} [emit = true] - A toggle to emit the hide event once shown.
+ */
+  toggle(emit = true) {
+    this._hidden ? this.show() : this.hide();
+
+    if (emit) {
+      this.dom.accordion.dispatchEvent(this._toggleEvent);
     }
   }
 
