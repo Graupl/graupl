@@ -1,9 +1,0 @@
-// @graupl/graupl alert mixins.
-
-@use "../../defaults" as root-defaults;
-
-@mixin create-variant($properties) {
-  @each $prop, $value in $properties {
-    --#{root-defaults.$prefix}-alert-#{$prop}: #{$value};
-  }
-}
