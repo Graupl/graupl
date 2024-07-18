@@ -293,6 +293,20 @@ class AccordionItem {
       this._focusOnArrow = value;
     }
   }
+  /**
+    * Toggle the accordion item.
+    *
+    * @fires grauplAccordionItemToggle
+    *
+    * @param {boolean} [emit = true] - A toggle to emit the hide event once shown.
+    */
+  toggle(emit = true) {
+    this._hidden ? this.show() : this.hide();
+
+    if (emit) {
+      this.dom.accordionItem.dispatchEvent(this._toggleEvent);
+    }
+  }
 
   /**
  * Validates all aspects of the accordion item to ensure proper functionality.
@@ -420,94 +434,6 @@ class AccordionItem {
     if (emit) {
       this.dom.Item.dispatchEvent(this._hideEvent);
     }
-  }
-
-  /**
- * Toggle the accordion item.
- *
- * @fires grauplAccordionItemToggle
- *
- * @param {boolean} [emit = true] - A toggle to emit the hide event once shown.
- */
-  toggle(emit = true) {
-    this._hidden ? this.show() : this.hide();
-
-    if (emit) {
-      this.dom.accordionItem.dispatchEvent(this._toggleEvent);
-    }
-  }
-
-  /**
-   * Handles click events throughout the accordion item for proper use.
-   *
-   * - Adds a `pointerup` listener to the controller that will hide the accordion item.
-   *
-   * @protected
-   */
-  _handleClick() {
-    if (this.dom.controller === null) {
-      return;
-    }
-
-    this.dom.controller.addEventListener("pointerup", () => this.hide());
-  }
-
-  /**
-   * Handles keydown events throughout the accordion item for proper use.
-   *
-   * This method exists to assist the _handleKeyup method.
-   *
-   * - Adds a `keydown` listener to the controller (if it exists).
-   *   - Blocks propagation on the following keys
-   *   - "Space", "Enter", "ArrowDown", "ArrowUp", "Home", and "End".
-   */
-  _handleKeydown() {
-    if (this.dom.controller === null) {
-      return;
-    }
-
-    this.dom.controller.addEventListener("keydown", (event) => {
-      const key = keyPress(event);
-      const blockKeys = ["Space", "Enter", "ArrowDown", "ArrowUp", "Home", "End"];
-
-      // Prevent default behavior for space and enter keys.
-      if (blockKeys.includes(key)) {
-        console.log('Event prevented' + key);
-        preventEvent(event);
-      }
-    });
-  }
-
-  /**
-   * Handles keyup events throughout the accordion item for proper use.
-   *
-   * - Adds a `keyup` listener to the controller (if it exists).
-   *   - Hides the accordion item when the user hits "Space" or "Enter".
-   */
-  _handleKeyup() {
-    if (this.dom.controller === null) {
-      return;
-    }
-
-    // @todo: Add the logic of when an accordion item should be shown or hidden.
-    this.dom.controller.addEventListener("keyup", (event) => {
-      const key = keyPress(event);
-
-      switch (key) {
-        case "Space":
-        case "Enter":
-          // @todo: Add a toggle method.
-          this._hidden ? this.show() : this.hide();
-          break;
-        case "ArrowDown":
-          // Add an accordion item class to handle the focus changing.
-          console.log('Arrow down: Move up an item');
-          break;
-        case "ArrowUp":
-          console.log('Arrow up: Move down an item');
-          break;
-      }
-    });
   }
 }
 
