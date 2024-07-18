@@ -1,3 +1,5 @@
+import { isValidClassList, isValidType } from "../validate.js";
+
 /**
  * An accessible navigation element in the DOM.
  *
@@ -212,8 +214,4 @@ class AccordionItemBase {
   //#endregion
 }
 
-
-
-
-
-
+export default AccordionItemBase;

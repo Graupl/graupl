@@ -3,37 +3,10 @@
  * The Accordion class.
  */
 
+import AccordionBase from "./AccordionBase.js";
 import AccordionItem from "./AccordionItem.js";
 
-class Accordion {
-  /**
-   * The DOM elements within the accordion.
-   *
-   * @protected
-   *
-   * @type {Object<HTMLElement, HTMLElement[]>}
-   *
-   * @property {HTMLElement}   accordion           - The accordion element.
-   */
-  _dom = {
-    accordionElement: null,
-  };
-
-  /**
-   * The query selectors used by the accordion.
-   *
-   * @protected
-   *
-   * @type {Object<string>}
-   *
-   * @property {string} accordionItemSelector      - The query selector for accordion items.
-   * @property {string} accordionControllSelector  - The query selector for accordion controls.
-   */
-  _selectors = {
-    accordionItemSelector: "",
-    accordionControllSelector: "",
-  };
-
+class Accordion extends AccordionBase {
   /**
    * Constructs a new `Accordion`.
    *
@@ -59,26 +32,22 @@ class Accordion {
     leaveDelay = -1,
     initialize = true,
   }) {
-    // Set DOM elements.
-    this._dom.accordionElement = accordionElement;
+    super({
+      accordionElement,
+      accordionItemSelector,
+      accordionControllSelector,
+      openClass,
+      closeClass,
+      transitionClass,
+      enterDelay,
+      leaveDelay,
+      initialize,
+    });
 
-    // Set DOM selectors.
-    this._selectors.accordionItemSelector = accordionItemSelector;
-    this._selectors.accordionControllSelector = accordionControllSelector;
-
-    // Set open/close classes.
-    this._openClass = openClass || "";
-    this._closeClass = closeClass || "";
-    this._transitionClass = transitionClass || "";
-
-    // Set focus settings.
-    this._hoverType = hoverType;
-    this._hoverDelay = hoverDelay;
-    this._enterDelay = enterDelay;
-    this._leaveDelay = leaveDelay;
+    console.log('Accordion ctor');
 
     if (initialize) {
-      this.initialize();
+      // this.initialize();
     }
   }
 
@@ -95,7 +64,6 @@ class Accordion {
         );
       }
 
-      // @todo: Create the accordion items.
       this._populateAccordionItems();
       // this._handleFocus();
       // this._handleClick();
@@ -236,19 +204,6 @@ class Accordion {
     //   }
     // });
   }
-
-  // todo: Focus accordion functionality.
-  // todo: Blur accordion functionality.
-  // todo: Focus current child functionality.
-  // todo: Focus child by index functionality.
-  // todo: Focus first child by functionality.
-  // todo: Focus last child by functionality.
-  // todo: Focus next child by functionality.
-  // todo: Focus previous child by functionality.
-  // todo: Blur current child by functionality.
-  // todo: Close all children by functionality.
-  // todo: Blur all children
-
 }
 
 export default Accordion;

@@ -1,13 +1,13 @@
+
+
 /**
  * @file
  * The Accordion Item class.
  */
 
-import { isValidClassList, isValidInstance, isValidType } from "../validate.js";
-import { addClass, removeClass } from "../domHelpers.js";
-import { keyPress, preventEvent } from "../eventHandlers.js";
+import AccordionItemBase from "./AccordionItemBase.js";
 
-class AccordionItem {
+class AccordionItem extends AccordionItemBase {
   /**
    * Constructs a new Accordion item object.
    *
@@ -33,14 +33,16 @@ class AccordionItem {
     initialize = false,
     focusOnArrow = false,
   }) {
-    this.dom.accordionItem = accordionItemElement;
-    this.dom.controller = controllerElement;
-    this._showClass = showClass || "";
-    this._hideClass = hideClass || "";
-    this._transitionClass = transitionClass || "";
-    this._transitionTimer = transitionTimer;
-    this._hidden = isHidden;
-    this._focusOnArrow = focusOnArrow;
+    super({
+      accordionItemElement,
+      controllerElement,
+      showClass,
+      hideClass,
+      transitionClass,
+      transitionTimer,
+      isHidden,
+      focusOnArrow,
+    });
 
     if (initialize) {
       this.initialize();
@@ -48,8 +50,8 @@ class AccordionItem {
   }
 
   /**
- * Initializes the accordion item.
- */
+   * Initializes the accordion item.
+   */
   initialize() {
     try {
       if (!this._validate()) {
@@ -59,10 +61,6 @@ class AccordionItem {
           )}`
         );
       }
-
-      this._handleClick();
-      this._handleKeydown();
-      this._handleKeyup();
     } catch (error) {
       console.error(error);
     }
@@ -209,6 +207,28 @@ class AccordionItem {
     if (emit) {
       this.dom.Item.dispatchEvent(this._hideEvent);
     }
+  }
+
+  /**
+   * Focuses the menu item's link if the parent menu's
+   * shouldFocus value is `true`.
+   *
+   * This will call the BaseMenuItem's focus method
+   * as well as set the menu link's `tabIndex` to 0.
+   */
+  focus() {
+    this.dom.link.tabIndex = 0;
+  }
+
+  /**
+   * Blurs the menu item's link if the parent menu's
+   * shouldFocus value is `true`.
+   *
+   * This will call the BaseMenuItem's blur method
+   * as well as set the menu link's `tabIndex` to -1.
+   */
+  blur() {
+    this.dom.link.tabIndex = -1;
   }
 }
 
