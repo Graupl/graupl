@@ -69,7 +69,6 @@ class Accordion extends AccordionBase {
       this._handleFocus();
       this._handleClick();
       this._handleKeydown();
-      // todo Test this
       this._handleKeyup();
 
     } catch (error) {
@@ -102,7 +101,7 @@ class Accordion extends AccordionBase {
       .forEach((accordionItemElement) => {
         const accordionItem = new AccordionItem({
           accordionItemElement,
-          controllerElement: accordionItemElement.querySelector(".accordion-toggle") || null,
+          controllerElement: accordionItemElement.querySelector(this._selectors.accordionControllSelector) || null,
           initialize: true,
         });
 
@@ -182,7 +181,6 @@ class Accordion extends AccordionBase {
 
       // Prevent default behavior for space and enter keys.
       if (blockKeys.includes(key)) {
-        console.log('Event prevented' + key);
         preventEvent(event);
       }
     });
