@@ -6,6 +6,7 @@
  */
 
 import AccordionItemBase from "./AccordionItemBase.js";
+import { addClass, removeClass } from "../domHelpers.js";
 
 class AccordionItem extends AccordionItemBase {
   /**
@@ -89,7 +90,7 @@ class AccordionItem extends AccordionItemBase {
  * @return {boolean} - The result of the validation.
  */
   _validate() {
-    // @todo: Add validation for the accordion item.
+    // todo: Add validation for the accordion item.
     let check = true;
     return check;
   }
@@ -205,7 +206,7 @@ class AccordionItem extends AccordionItemBase {
     this._hidden = true;
 
     if (emit) {
-      this.dom.Item.dispatchEvent(this._hideEvent);
+      this.dom.accordionItem.dispatchEvent(this._hideEvent);
     }
   }
 
@@ -217,7 +218,8 @@ class AccordionItem extends AccordionItemBase {
    * as well as set the menu link's `tabIndex` to 0.
    */
   focus() {
-    this.dom.link.tabIndex = 0;
+    // todo: Test this method.
+    this.dom.controller.focus();
   }
 
   /**
@@ -228,7 +230,8 @@ class AccordionItem extends AccordionItemBase {
    * as well as set the menu link's `tabIndex` to -1.
    */
   blur() {
-    this.dom.link.tabIndex = -1;
+    // todo: Test this method.
+    this.dom.controller.focus();
   }
 }
 

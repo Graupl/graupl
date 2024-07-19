@@ -1,5 +1,8 @@
 class AccordionBase {
   // #region Variables
+  currentChild = 0;
+  focusState = "none";
+
   /**
     * The DOM elements within the accordion.
     *
@@ -12,6 +15,8 @@ class AccordionBase {
   _dom = {
     accordionElement: null,
   };
+
+  _accordionItems = [];
 
   /**
    * The query selectors used by the accordion.
