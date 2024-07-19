@@ -3,11 +3,164 @@
  * The Accordion class.
  */
 
-import AccordionBase from "./AccordionBase.js";
 import AccordionItem from "./AccordionItem.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
+import {
+  isValidInstance,
+  isValidType,
+  isQuerySelector,
+  isValidClassList,
+  isValidState,
+  isValidEvent,
+  isValidHoverType,
+} from "../validate.js";
 
-class Accordion extends AccordionBase {
+class Accordion {
+  /**
+   * errors - The list of errors found during validation.
+   *
+   * @protected
+   *
+   * @type {string[]}
+   */
+  _errors = [];
+
+  /**
+   * The index of the curent child node.
+   *
+   * @protected
+   *
+   * @type {number}
+   */
+  _currentChild = 0;
+
+  /**
+   * The curent state of the accordion.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _focusState = "none";
+
+  /**
+    * The DOM elements within the accordion.
+    *
+    * @protected
+    *
+    * @type {Object<HTMLElement, HTMLElement[]>}
+    *
+    * @property {HTMLElement}   accordionElement           - The accordion element.
+    */
+  _dom = {
+    accordionElement: null,
+  };
+
+  /**
+   * The list of accordion items.
+   *
+   * @protected
+   *
+   * @type {AccordionItem[]}
+  */
+  _accordionItems = [];
+
+  /**
+   * The query selectors used by the accordion.
+   *
+   * @protected
+   *
+   * @type {Object<string>}
+   *
+   * @property {string} accordionItemSelector      - The query selector for accordion items.
+   * @property {string} accordionControllSelector  - The query selector for accordion controls.
+   */
+  _selectors = {
+    accordionItemSelector: "",
+    accordionControllSelector: "",
+  };
+
+  /**
+   * The current index of the accordion item.
+   *
+   * @readonly
+   *
+   * @type {number}
+   *
+   * @see _currentChild
+   */
+  get currentChild() {
+    return _currentChild;
+  }
+
+  /**
+   * The current state of the accordion.
+   *
+   * - "none" - No focus is present.
+   * - "self" - The accordion has focus.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _focusState
+   */
+  get focusState() {
+    return this._focusState;
+  }
+
+  /**
+   * The dom elements of the accordion.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _dom
+  */
+  get dom() {
+    return this._dom;
+  }
+
+  /**
+   * The list of accordion items.
+   *
+   * @readonly
+   *
+   * @type {AccordionItem[]}
+   *
+   * @see _accordionItems
+   */
+  get accordionItems() {
+    return this._accordionItems;
+  }
+
+  /**
+   * A flag marking a submenu item.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _selectors
+   */
+  get selectors() {
+    return this._selectors;
+  }
+
+  /**
+   * An array to hold error messages.
+   *
+   * @readonly
+   *
+   * @type {string[]}
+   *
+   * @see _errors
+   */
+  get errors() {
+    return this._errors;
+  }
+
   /**
    * Constructs a new `Accordion`.
    *
@@ -33,21 +186,23 @@ class Accordion extends AccordionBase {
     leaveDelay = -1,
     initialize = true,
   }) {
-    super({
-      accordionElement,
-      accordionItemSelector,
-      accordionControllSelector,
-      openClass,
-      closeClass,
-      transitionClass,
-      enterDelay,
-      leaveDelay,
-      initialize,
-    });
+    // Set DOM elements.
+    this._dom.accordionElement = accordionElement;
+
+    // Set DOM selectors.
+    this._selectors.accordionItemSelector = accordionItemSelector;
+    this._selectors.accordionControllSelector = accordionControllSelector;
+
+    // Set open/close classes.
+    this._openClass = openClass || "";
+    this.closeClass = closeClass || "";
+    this._transitionClass = transitionClass || "";
+
+    // Set focus settings.
+    this._enterDelay = enterDelay;
+    this._leaveDelay = leaveDelay;
 
     if (initialize) {
-      // todo: add an option to colapse all.
-      // todo: optional key support.
       this.initialize();
     }
   }
@@ -139,6 +294,37 @@ class Accordion extends AccordionBase {
   _validate() {
     // @todo: Add validation for the accordion item.
     let check = true;
+    let htmlElementChecks;
+
+    if (this.dom.accordionElement !== null) {
+      htmlElementChecks = isValidInstance(HTMLElement, {
+        accordionElement: this.dom.accordionElement,
+      });
+    }
+
+    if (!htmlElementChecks.status) {
+      this._errors.push(htmlElementChecks.error.message);
+      check = false;
+    }
+    // accordionElement,
+    // accordionItemSelector = ".accordion-item",
+    // accordionControllSelector = ".accordion-toggle",
+    // openClass = "show",
+    // closeClass = "hide",
+    // transitionClass = "transitioning",
+    // enterDelay = -1,
+    // leaveDelay = -1,
+    // initialize = true,
+    // todo: Add checks here.
+    // HTML element checks.
+    // Query selector checks.
+    // Class list checks.
+    // Enter and leave delay check
+    if (false) {
+      this._errors.push(htmlElementChecks.error.message);
+      check = false;
+    }
+
     return check;
   }
 
