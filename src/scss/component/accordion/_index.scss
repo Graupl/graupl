@@ -7,20 +7,45 @@
 
 #{defaults.$accordion-selector} {
   @include layer(component) {
-    border: black solid 1px;
+    border-radius: 7px;
+    border: 2px solid hsl(0deg 0% 52%);
+
+    .hide {
+      #{defaults.$accordion-panel-selector} {
+        display: none;
+      }
+    }
+
+    &:focus-within {
+      border-color: hsl(216deg 94% 43%);
+
+      #{defaults.$accordion-toggle-selector} {
+        background-color: hsl(0deg 0% 97%);
+      }
+    }
 
     #{defaults.$accordion-toggle-selector} {
       display: block;
       width: 100%;
       border: none;
+      margin-bottom: 1rem;
+
+      &:focus,
+      &:hover {
+        background: hsl(216deg 94% 94%);
+      }
+
+      &:focus {
+        outline: 4px solid transparent;
+      }
+
+      &:hover {
+        background: hsl(216deg 94% 94%);
+      }
     }
 
     #{defaults.$accordion-title-selector} {
       text-align: left;
-    }
-
-    #{defaults.$accordion-toggle-selector} {
-      margin-bottom: 1rem;
     }
 
     #{defaults.$accordion-panel-selector} {

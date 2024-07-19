@@ -46,6 +46,8 @@ class Accordion extends AccordionBase {
     });
 
     if (initialize) {
+      // todo: add an option to colapse all.
+      // todo: optional key support.
       this.initialize();
     }
   }
