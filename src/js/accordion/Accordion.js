@@ -306,9 +306,26 @@ class Accordion {
       this._errors.push(htmlElementChecks.error.message);
       check = false;
     }
-    // accordionElement,
-    // accordionItemSelector = ".accordion-item",
-    // accordionControllSelector = ".accordion-toggle",
+
+    // Query selector checks.
+    let querySelectorChecks;
+
+    if (this._selectors._selectors !== "" && this._selectors.accordionControllSelector !== "") {
+      querySelectorChecks = isQuerySelector({
+        accordionItemSelector: this._selectors.accordionItemSelector,
+        accordionControllSelector: this._selectors.accordionControllSelector,
+      });
+    } else {
+      this._errors.push("Accordion selectors cannot be empty.");
+      check = false;
+    }
+
+    if (!querySelectorChecks.status) {
+      this._errors.push(querySelectorChecks.error.message);
+      check = false;
+    }
+
+
     // openClass = "show",
     // closeClass = "hide",
     // transitionClass = "transitioning",
