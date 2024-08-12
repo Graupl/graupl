@@ -7,10 +7,33 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "sass:map";
-
+// TODO: Use default values provided in graupl.
 // Accordion selectors.
 $accordion-selector: ".accordion" !default;
+$accordion-icon-selector: ".accordion-icon" !default;
 $accordion-item-selector: ".accordion-item" !default;
-$accordion-toggle-selector: ".accordion-toggle" !default;
+$accordion-trigger-selector: ".accordion-trigger" !default;
 $accordion-title-selector: ".accordion-title" !default;
 $accordion-panel-selector: ".accordion-panel" !default;
+
+// Accordion properties.
+$accordion-border-radius: 7px !default;
+$accordion-border: 2px solid hsl(0deg 0% 52%) !default;
+
+// Accordion trigger properties.
+$accordion-trigger-background: none !default;
+$accordion-trigger-text-color: hsl(0deg 0% 13%) !default;
+$accordion-trigger-font-size: 1rem !default;
+$accordion-trigger-font-weight: normal !default;
+$accordion-trigger-padding: 1em 1.5em !default;
+$accordion-trigger-text-align: left !default;
+$accordion-trigger-background-active: hsl(0deg 0% 97%) !default;
+
+// Accordion title.
+$accordion-trigger-title-border: 2px solid !default;
+$accordion-trigger-title-border-radius: 5px !default;
+$accordion-trigger-title-padding: .25em !default;
+
+// Accordion panel.
+$accordion-panel-padding: 1em 1.5em !default;
+$accordion-panel-background: hsl(0deg 0% 97%) !default;

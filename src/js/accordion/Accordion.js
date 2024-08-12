@@ -105,6 +105,26 @@ class Accordion {
   };
 
   /**
+   * The timer for transitions.
+   *
+   * @protected
+   *
+   * @type {number}
+   *
+   */
+  _transitionTimer = 150;
+
+  /**
+   * A flag to decide if the accordion items can be navigated by arrows.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   *
+   */
+  _focusOnArrow = true;
+
+  /**
    * The class(es) to apply when the accordion is open.
    *
    * @type {string|string[]}
@@ -200,7 +220,31 @@ class Accordion {
     return this._selectors;
   }
 
+  /**
+   * The timer for transitions.
+   *
+   * @readonly
+   *
+   * @type {number}
+   *
+   * @see _transitionTimer
+   */
+  get transitionTimer() {
+    return this._transitionTimer;
+  }
 
+  /**
+   * A flag to decide if the accordion items can be navigated by arrows.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _focusOnArrow
+   */
+  get focusOnArrow() {
+    return this._focusOnArrow;
+  }
 
   /**
    * An array to hold error messages.
@@ -239,6 +283,14 @@ class Accordion {
     }
   }
 
+  set transitionTimer(value) {
+    isValidType("number", { value });
+
+    if (value >= 0 && this._transitionTimer !== value) {
+      this._transitionTimer = value;
+    }
+  }
+
   set currentChild(value) {
     isValidType("number", { value });
 
@@ -267,16 +319,22 @@ class Accordion {
    * @param {?(string|string[])} [options.closeClass = hide] - The class to apply when a accordion is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning] - The class to apply when a accordion is transitioning between "open" and "closed" states.
    * @param {boolean}            [options.initialize = true] - A flag to initialize the accordion immediately upon creation.
+   * @param {number}             [options.transitionTimer = 150] - A timer to set how long a transition will last for.
+   * @param {number}             [options.isHidden = false] - A flag to determine if the accordion items will start open or closed.
+   * @param {boolean}            [options.focusOnArrow = true] - A flag to determine if accordions can be navigated with arrows.
    */
   constructor({
     accordionElement,
     accordionItemSelector = ".accordion-item",
-    accordionControllSelector = ".accordion-toggle",
+    accordionControllSelector = ".accordion-trigger",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
     initialize = true,
+    transitionTimer = 150,
+    focusOnArrow = true,
   }) {
+
     // Set DOM elements.
     this._dom.accordionElement = accordionElement;
 
@@ -288,6 +346,10 @@ class Accordion {
     this._openClass = openClass || "";
     this._closeClass = closeClass || "";
     this._transitionClass = transitionClass || "";
+
+    // Set values
+    this._transitionTimer = transitionTimer;
+    this._focusOnArrow = focusOnArrow;
 
     if (initialize) {
       this.initialize();
@@ -331,7 +393,12 @@ class Accordion {
         const accordionItem = new AccordionItem({
           accordionItemElement,
           controllerElement: accordionItemElement.querySelector(this._selectors.accordionControllSelector) || null,
-          initialize: true,
+          showClass: this.openClass,
+          hideClass: this.closeClass,
+          transitionClass: this.transitionClass,
+          transitionTimer: this.transitionTimer,
+          isHidden: this.isHidden,
+          focusOnArrow: this.focusOnArrow
         });
 
         accordionItems.push(accordionItem);
@@ -499,10 +566,10 @@ class Accordion {
           this.toggleCurrentChild();
           break;
         case "ArrowDown":
-          this.focusNextChild();
+          this.focusOnArrow && this.focusNextChild();
           break;
         case "ArrowUp":
-          this.focusPreviousChild();
+          this.focusOnArrow && this.focusPreviousChild();
           break;
       }
     });

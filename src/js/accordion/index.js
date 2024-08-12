@@ -1,6 +1,8 @@
 import Accordion from "./Accordion.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("Accordion loaded");
+
   const accordions = [];
 
   document.querySelectorAll(".accordion").forEach((accordionElement) => {

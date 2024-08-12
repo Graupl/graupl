@@ -170,12 +170,12 @@ class AccordionItem {
     };
     this._dom.accordionItem = accordionItemElement;
     this._dom.controller = controllerElement;
-    this.showClass = showClass;
-    this.hideClass = hideClass;
-    this.transitionClass = transitionClass;
-    this.transitionTimer = transitionTimer;
-    this.isHidden = isHidden;
-    this.focusOnArrow = focusOnArrow;
+    this._showClass = showClass;
+    this._hideClass = hideClass;
+    this._transitionClass = transitionClass;
+    this._transitionTimer = transitionTimer;
+    this._hidden = isHidden;
+    this._focusOnArrow = focusOnArrow;
 
     if (initialize) {
       this.initialize();
@@ -276,7 +276,7 @@ class AccordionItem {
    *
    * @see _focusOnArrow
    */
-  get transitionTimer() {
+  get focusOnArrow() {
     return this._focusOnArrow;
   }
 
@@ -456,6 +456,9 @@ class AccordionItem {
 
     this._hidden = false;
 
+    // Set aria-expanded to true when hiding accordion item.
+    this.dom.controller.setAttribute("aria-expanded", "true");
+
     if (emit) {
       this.dom.accordionItem.dispatchEvent(this._showEvent);
     }
@@ -516,6 +519,9 @@ class AccordionItem {
         removeClass(this.showClass, this.dom.accordionItem);
       }
     }
+
+    // Set aria-expanded to false when hiding accordion item.
+    this.dom.controller.setAttribute("aria-expanded", "false");
 
     this._hidden = true;
 
