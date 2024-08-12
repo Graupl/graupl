@@ -10,12 +10,36 @@ import {
   isValidType,
   isQuerySelector,
   isValidClassList,
-  isValidState,
-  isValidEvent,
-  isValidHoverType,
 } from "../validate.js";
 
 class Accordion {
+  /**
+   * The class(es) to apply when the accordion is open.
+   *
+   * @protected
+   *
+   * @type {string|string[]}
+   */
+  _openClass = "show";
+
+  /**
+   * The class(es) to apply when the accordion is closed.
+   *
+   * @protected
+   *
+   * @type {string|string[]}
+   */
+  _closeClass = "hide";
+
+  /**
+   * The class(es) to apply when the accordion is transitioning between states.
+   *
+   * @protected
+   *
+   * @type {string|string[]}
+   */
+  _transitionClass = "transitioning";
+
   /**
    * errors - The list of errors found during validation.
    *
@@ -35,7 +59,7 @@ class Accordion {
   _currentChild = 0;
 
   /**
-   * The curent state of the accordion.
+   * The current state of the accordion's focus.
    *
    * @protected
    *
@@ -81,6 +105,39 @@ class Accordion {
   };
 
   /**
+   * The class(es) to apply when the accordion is open.
+   *
+   * @type {string|string[]}
+   *
+   * @see _openClass
+   */
+  get openClass() {
+    return this._openClass;
+  }
+
+  /**
+   * The class(es) to apply when the accordion is closed.
+   *
+   * @type {string|string[]}
+   *
+   * @see _closeClass
+   */
+  get closeClass() {
+    return this._closeClass;
+  }
+
+  /**
+   * The class(es) to apply when the accordion is transitioning between open and closed.
+   *
+   * @type {string|string[]}
+   *
+   * @see _transitionClass
+   */
+  get transitionClass() {
+    return this._transitionClass;
+  }
+
+  /**
    * The current index of the accordion item.
    *
    * @readonly
@@ -90,23 +147,7 @@ class Accordion {
    * @see _currentChild
    */
   get currentChild() {
-    return _currentChild;
-  }
-
-  /**
-   * The current state of the accordion.
-   *
-   * - "none" - No focus is present.
-   * - "self" - The accordion has focus.
-   *
-   * @readonly
-   *
-   * @type {string}
-   *
-   * @see _focusState
-   */
-  get focusState() {
-    return this._focusState;
+    return this._currentChild;
   }
 
   /**
@@ -136,7 +177,18 @@ class Accordion {
   }
 
   /**
-   * A flag marking a submenu item.
+   * The current state of the accordion's focus.
+   *
+   * @type {string}
+   *
+   * @see _focusState
+   */
+  get focusState() {
+    return this._focusState;
+  }
+
+  /**
+   * The selectors used for the accordion and accordion items.
    *
    * @readonly
    *
@@ -147,6 +199,8 @@ class Accordion {
   get selectors() {
     return this._selectors;
   }
+
+
 
   /**
    * An array to hold error messages.
@@ -161,6 +215,47 @@ class Accordion {
     return this._errors;
   }
 
+  set openClass(value) {
+    isValidClassList({ openClass: value });
+
+    if (this._openClass !== value) {
+      this._openClass = value;
+    }
+  }
+
+  set closeClass(value) {
+    isValidClassList({ closeClass: value });
+
+    if (this._closeClass !== value) {
+      this._closeClass = value;
+    }
+  }
+
+  set transitionClass(value) {
+    isValidClassList({ transitionClass: value });
+
+    if (this._transitionClass !== value) {
+      this._transitionClass = value;
+    }
+  }
+
+  set currentChild(value) {
+    isValidType("number", { value });
+
+    if (this._currentChild !== value &&
+      value >= 0 && value < this._accordionItems.length) {
+      this._currentChild = value;
+    }
+  }
+
+  set accordionItems(value) {
+    isValidType("object", { value });
+
+    if (value?.isArray() && value.every((item) => item instanceof AccordionItem)) {
+      this._accordionItems = value;
+    }
+  }
+
   /**
    * Constructs a new `Accordion`.
    *
@@ -171,8 +266,6 @@ class Accordion {
    * @param {?(string|string[])} [options.openClass = show] - The class to apply when a accordion is "open".
    * @param {?(string|string[])} [options.closeClass = hide] - The class to apply when a accordion is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning] - The class to apply when a accordion is transitioning between "open" and "closed" states.
-   * @param {number}             [options.enterDelay = -1] - The delay for opening a accordion if the accordion is focusable (in miliseconds).
-   * @param {number}             [options.leaveDelay = -1] - The delay for closing a accordion if the accordion is focusable (in miliseconds).
    * @param {boolean}            [options.initialize = true] - A flag to initialize the accordion immediately upon creation.
    */
   constructor({
@@ -182,8 +275,6 @@ class Accordion {
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
-    enterDelay = -1,
-    leaveDelay = -1,
     initialize = true,
   }) {
     // Set DOM elements.
@@ -195,12 +286,8 @@ class Accordion {
 
     // Set open/close classes.
     this._openClass = openClass || "";
-    this.closeClass = closeClass || "";
+    this._closeClass = closeClass || "";
     this._transitionClass = transitionClass || "";
-
-    // Set focus settings.
-    this._enterDelay = enterDelay;
-    this._leaveDelay = leaveDelay;
 
     if (initialize) {
       this.initialize();
@@ -232,19 +319,6 @@ class Accordion {
   }
 
   /**
-  * The HTML elements for the accordion item in the DOM.
-  *
-  * @readonly
-  *
-  * @see _dom
-  *
-  * @type {object}
-  */
-  get dom() {
-    return this._dom;
-  }
-
-  /**
   * Create accordion items based on the selectors.
   *
   * @protected
@@ -267,18 +341,14 @@ class Accordion {
   }
 
   /**
-   * Handles focus events throughout the menu for proper menu use.
-   *
-   * - Adds a `focus` listener to every menu item so when it gains focus,
-   *   it will set the item's containing menu's focus state
-   *   to "self".
+   * Handles focus events throughout the accordion for proper use.
    *
    * @protected
    */
   _handleFocus() {
     this._accordionItems.forEach((item, index) => {
       item.dom.controller.addEventListener("focus", () => {
-        this.focusState = "self";
+        this._focusState = "self";
         this.currentChild = index;
       });
     });
@@ -292,7 +362,6 @@ class Accordion {
   * @return {boolean} - The result of the validation.
   */
   _validate() {
-    // @todo: Add validation for the accordion item.
     let check = true;
     let htmlElementChecks;
 
@@ -325,21 +394,36 @@ class Accordion {
       check = false;
     }
 
+    // Class List Checks
+    if (this._openClass !== "") {
+      const openClassCheck = isValidClassList({ openClass: this._openClass });
 
-    // openClass = "show",
-    // closeClass = "hide",
-    // transitionClass = "transitioning",
-    // enterDelay = -1,
-    // leaveDelay = -1,
-    // initialize = true,
-    // todo: Add checks here.
-    // HTML element checks.
-    // Query selector checks.
-    // Class list checks.
-    // Enter and leave delay check
-    if (false) {
-      this._errors.push(htmlElementChecks.error.message);
-      check = false;
+      if (!openClassCheck.status) {
+        this._errors.push(openClassCheck.error.message);
+        check = false;
+      }
+    }
+
+    if (this._closeClass !== "") {
+      const closeClassCheck = isValidClassList({
+        closeClass: this._closeClass,
+      });
+
+      if (!closeClassCheck.status) {
+        this._errors.push(closeClassCheck.error.message);
+        check = false;
+      }
+    }
+
+    if (this._transitionClass !== "") {
+      const transitionClassCheck = isValidClassList({
+        transitionClass: this._transitionClass,
+      });
+
+      if (!transitionClassCheck.status) {
+        this._errors.push(transitionClassCheck.error.message);
+        check = false;
+      }
     }
 
     return check;
@@ -400,7 +484,6 @@ class Accordion {
       return;
     }
 
-    // @todo: Add the logic of when an accordion item should be shown or hidden.
     this.dom.accordionElement.addEventListener("keyup", (event) => {
       const key = keyPress(event);
 
@@ -419,7 +502,6 @@ class Accordion {
           this.focusNextChild();
           break;
         case "ArrowUp":
-          console.log('Arrow up: Move down an item');
           this.focusPreviousChild();
           break;
       }
@@ -444,12 +526,11 @@ class Accordion {
   focusLastChild() {
     const accordionItemsLength = this._accordionItems.length;
     const accordionItem = this._accordionItems[accordionItemsLength - 1];
-    console.log(accordionItem);
     accordionItem?.focus();
   }
 
   /**
- * Focus the menu's next child.
+ * Focus the accordions next child.
  *
  * @public
  */
@@ -513,7 +594,7 @@ class Accordion {
   }
 
   /**
-   * Close all submenu children.
+   * Close all accordion items.
    *
    * @public
    */
@@ -522,7 +603,7 @@ class Accordion {
   }
 
   /**
-   * Close all submenu children.
+   * Close an accordion item by index.
    *
    * @public
    */
@@ -531,7 +612,7 @@ class Accordion {
   }
 
   /**
-   * Close all submenu children.
+   * Open an accordion item by index..
    *
    * @public
    */
