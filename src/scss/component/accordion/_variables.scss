@@ -10,39 +10,38 @@
 @use "../../theme/typography/variables" as typography;
 @use "sass:map";
 
-// TODO: Update this to use default variables
+// TODO: Finish replacing defaults with global defaults.
+// TODO: Testing put default values here to confirm the issue is not with index.scss.
 // Accordion properties.
 $accordion-border-radius: var(--#{root-defaults.$prefix}-accordion-border-radius,
-        #{defaults.$accordion-border-radius});
+    #{root-defaults.$border-radius});
 $accordion-border: var(--#{root-defaults.$prefix}-accordion-border,
-        #{defaults.$accordion-border});
+    #{root-defaults.$border-width root-defaults.$border-style root-defaults.$border-style color.$root-background});
 
 // Accordion trigger properties.
-$accordion-trigger-background: var(--#{root-defaults.$prefix}-accordion-trigger-background,
-        #{defaults.$accordion-trigger-background});
+$accordion-trigger-background: var(--#{root-defaults.$prefix}-accordion-trigger-background, none);
 $accordion-trigger-text-color: var(--#{root-defaults.$prefix}-accordion-trigger-text-color,
-        #{defaults.$accordion-trigger-text-color});
+    #{color.$root-color});
 $accordion-trigger-font-size: var(--#{root-defaults.$prefix}-accordion-trigger-font-size,
-        #{defaults.$accordion-trigger-font-size});
+    #{defaults.$accordion-trigger-font-size});
 $accordion-trigger-font-weight: var(--#{root-defaults.$prefix}-accordion-font-weight,
-        #{defaults.$accordion-trigger-font-weight});
+    #{defaults.$accordion-trigger-font-weight});
 $accordion-trigger-padding: var(--#{root-defaults.$prefix}-accordion-trigger-padding,
-        #{defaults.$accordion-trigger-padding});
+    #{map.get(root-variables.$spacers, 5) map.get(root-variables.$spacers, 6)});
+
 $accordion-trigger-text-align: var(--#{root-defaults.$prefix}-accordion-trigger-text-align,
-        #{defaults.$accordion-trigger-text-align});
+    #{defaults.$accordion-trigger-text-align});
 $accordion-trigger-background-active: var(--#{root-defaults.$prefix}-accordion-trigger-background-active,
-        #{defaults.$accordion-trigger-background-active});
+    #{color.$root-background});
 
 // Accordion title.
-$accordion-trigger-title-border: var(--#{root-defaults.$prefix}-accordion-trigger-title-border,
-        #{defaults.$accordion-trigger-title-border});
-$accordion-trigger-title-border-radius: var(--#{root-defaults.$prefix}-accordion-trigger-title-border-radius,
-        #{defaults.$accordion-trigger-title-border-radius});
+$accordion-trigger-title-border: var(--#{root-defaults.$prefix}-accordion-trigger-title-border, none);
+$accordion-trigger-title-border-radius: var(--#{root-defaults.$prefix}-accordion-trigger-title-border-radius, none);
 $accordion-trigger-title-padding: var(--#{root-defaults.$prefix}-accordion-trigger-title-padding,
-        #{defaults.$accordion-trigger-title-padding});
+    #{map.get(root-variables.$spacers, 2)});
 
 // Accordion panel.
 $accordion-panel-padding: var(--#{root-defaults.$prefix}-accordion-panel-padding,
-        #{defaults.$accordion-panel-padding});
+    #{map.get(root-variables.$spacers, 5) map.get(root-variables.$spacers, 6)});
 $accordion-panel-background: var(--#{root-defaults.$prefix}-accordion-panel-background,
-        #{defaults.$accordion-panel-background});
+    #{color.$root-color});
