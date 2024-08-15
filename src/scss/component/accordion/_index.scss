@@ -7,7 +7,6 @@
 
 #{defaults.$accordion-selector} {
   @include layer(component) {
-    // TODO: The border is not applying but the rest seems to work.
     border-radius: #{$accordion-border-radius};
     border: #{$accordion-border};
 
@@ -84,12 +83,21 @@
       background-color: #{$accordion-panel-padding};
     }
 
-    // TODO: See how I can use the transitioning class to transiton open the accordion.
     .hide {
       #{defaults.$accordion-panel-selector} {
-        display: none;
+        // display: none;
+        overflow: hidden;
+        max-height: 0;
+        padding: 0;
       }
     }
+
+    // TODO: See how I can use the transitioning class to transiton open the accordion.
+    // .transitioning {
+    //   #{defaults.$accordion-panel-selector} {
+    //     transition: max-height 4s ease-in-out;
+    //   }
+    // }
 
     &>*:not(:first-child) {
       border-top: 1px solid hsl(0deg 0% 52%);
@@ -101,5 +109,3 @@
     }
   }
 }
-
-// TODO: Add theme layer.
