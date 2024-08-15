@@ -22,6 +22,7 @@ $accordion-trigger-text-color: var(--#{root-defaults.$prefix}-accordion-trigger-
 $accordion-trigger-font-size: var(--#{root-defaults.$prefix}-accordion-trigger-font-size, #{typography.$body-font-size});
 $accordion-trigger-font-weight: var(--#{root-defaults.$prefix}-accordion-trigger-font-weight, #{typography.$font-weight-bold});
 $accordion-trigger-text-align: var(--#{root-defaults.$prefix}-accordion-trigger-text-align, left);
+// TODO: When using theme.get the color is black. Idk how to use this will need to update with a better color.
 $accordion-trigger-background-active: var(--#{root-defaults.$prefix}-accordion-trigger-background-active, #{hsl(0, 0%, 78%)});
 
 // Accordion title.
@@ -30,8 +31,6 @@ $accordion-trigger-title-border-radius: none;
 $accordion-trigger-title-padding: var(--#{root-defaults.$prefix}-accordion-trigger-title-padding, #{map.get(root-variables.$spacers, 2)});
 
 // Accordion panel.
-$accordion-panel-padding: var(--#{root-defaults.$prefix}-accordion-panel-padding, #{root-defaults.$spacer map.get(root-variables.$spacers, 2)});
-// TODO: When using theme.get the color is black.
-// $accordion-panel-background: #{theme.get(primary, 700)};
-$accordion-panel-background: hsl(0deg 0% 97%) !default;
+$accordion-panel-padding: var(--#{root-defaults.$prefix}-accordion-panel-padding, #{root-defaults.$spacer});
+$accordion-panel-background: color.$root-color;
 $accordion-trigger-padding: #{root-defaults.$spacer};
