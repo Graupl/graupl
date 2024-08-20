@@ -65,6 +65,7 @@ export default defineConfig({
       {
         text: "Advanced Topics",
         items: [
+          { text: "Utilities", link: "/utilities" },
           { text: "Functions", link: "/functions" },
           { text: "Mixins", link: "/mixins" },
           { text: "State", link: "/state" },
