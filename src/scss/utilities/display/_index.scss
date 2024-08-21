@@ -4,6 +4,7 @@
 @use "defaults" as defaults;
 @use "../../mixins/layer" as *;
 @use "../../functions/important";
+@use "../../mixins/visually-hidden";
 
 @include layer(utilities) {
   // For each display property, create a utility class.
@@ -11,5 +12,14 @@
     .#{defaults.$display-class-prefix}#{$name} {
       display: important.insert($property);
     }
+  }
+
+  // Visually hidden utility classes.
+  #{$visually-hidden-selector} {
+    @include visually-hidden.apply;
+  }
+
+  #{$visually-hidden-focusable-selector} {
+    @include visually-hidden.focusable;
   }
 }
