@@ -170,6 +170,10 @@ class Carousel {
       );
 
       this._handleClick();
+
+      // Add initial class to play button.
+      addClass(this.autoplay ? this.pauseClass : this.playClass, this.dom.autoplayButton);
+
       this._handleAutoplay();
     } catch (error) {
       console.error(error);
@@ -423,8 +427,7 @@ class Carousel {
     });
 
     this.dom.autoplayButton.addEventListener("pointerup", () => {
-      this.autoplay = !this.autoplay;
-      this._handleAutoplay();
+      this.toggleAutoplay();
     });
   }
 
@@ -434,6 +437,8 @@ class Carousel {
     } else {
       this._clearInterval();
     }
+
+    this.autoplay = !this.autoplay;
   }
 
   /**
@@ -523,6 +528,23 @@ class Carousel {
     } else {
       this.activateItem(this.currentItem - 1);
     }
+  }
+
+  /**
+   * Activates the current carousel item.
+   *
+   * @public
+   */
+  toggleAutoplay() {
+    if (this.autoplay) {
+      addClass(this.pauseClass, this.dom.autoplayButton);
+      removeClass(this.playClass, this.dom.autoplayButton);
+    } else {
+      addClass(this.playClass, this.dom.autoplayButton);
+      removeClass(this.pauseClass, this.dom.autoplayButton);
+    }
+
+    this._handleAutoplay();
   }
 }
 
