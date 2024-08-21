@@ -4,6 +4,7 @@
  */
 
 import { addClass, removeClass } from "../domHelpers.js";
+import { preventEvent, keyPress } from "../eventHandlers.js";
 import {
   isQuerySelector,
   isValidClassList,
@@ -175,6 +176,7 @@ class Carousel {
       addClass(this.autoplay ? this.pauseClass : this.playClass, this.dom.autoplayButton);
       this._handleFocus();
       this._handleAutoplay();
+      this._handleKeyup();
     } catch (error) {
       console.error(error);
     }
@@ -429,6 +431,28 @@ class Carousel {
     this.dom.autoplayButton.addEventListener("pointerup", () => {
       this.toggleAutoplay();
     });
+  }
+
+  /**
+   * Handles keyup events throughout the carousel item for proper use.
+   *
+   * - Adds a `keyup` listener to the buttons (if it exists).
+   *   - Clicks the button on "Space" or "Enter".
+   */
+  _handleKeyup() {
+    const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
+
+    buttons.forEach(button => button.addEventListener("keyup", (event) => {
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Space":
+        case "Enter":
+          // Cause a pointer up event on a button if it is focused and has space or enter pressed.
+          event.target.dispatchEvent(new PointerEvent("pointerup"));
+          break;
+      }
+    }));
   }
 
   _handleAutoplay() {
