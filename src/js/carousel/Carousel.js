@@ -469,6 +469,8 @@ class Carousel {
       this._clearInterval();
     }
 
+    // TODO: This needs to be added to the carousel item container.
+    this.dom.carousel.setAttribute("aria-live", this.autoplay ? "off" : "polite");
     this.autoplay = !this.autoplay;
   }
 
