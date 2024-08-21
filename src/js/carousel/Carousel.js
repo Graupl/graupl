@@ -171,6 +171,7 @@ class Carousel {
       );
 
       this._handleClick();
+      this._handleCarouselItemsInit();
 
       // Add initial class to play button.
       addClass(this.autoplay ? this.pauseClass : this.playClass, this.dom.autoplayButton);
@@ -180,6 +181,12 @@ class Carousel {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  _handleCarouselItemsInit() {
+    this.dom.carouselItems.forEach((item, index) => {
+      item.setAttribute("aria-label", `${index + 1} of ${this.dom.carouselItems.length}`);
+    });
   }
 
   /**
