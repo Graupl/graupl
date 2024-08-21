@@ -66,15 +66,15 @@ Color Classes
 
 | Prefix | Color | Shade | Background Class | Text Class |
 | --- | --- | --- | --- | --- |
-| bg | text | primary | secondary | tertiary | 100 | bg-primary-100 | text-primary-100 |
-| bg | text | primary | secondary | tertiary | 200 | bg-primary-200 | text-primary-200 |
-| bg | text | primary | secondary | tertiary | 300 | bg-primary-300 | text-primary-300 |
-| bg | text | primary | secondary | tertiary | 400 | bg-primary-400 | text-primary-400 |
-| bg | text | primary | secondary | tertiary | 500 | bg-primary-500 | text-primary-500 |
-| bg | text | primary | secondary | tertiary | 600 | bg-primary-600 | text-primary-600 |
-| bg | text | primary | secondary | tertiary | 700 | bg-primary-700 | text-primary-700 |
-| bg | text | primary | secondary | tertiary | 800 | bg-primary-800 | text-primary-800 |
-| bg | text | primary | secondary | tertiary | 900 | bg-primary-900 | text-primary-900 |
+| bg \| text \| primary \| secondary \| tertiary | 100 | bg-primary-100 | text-primary-100 |
+| bg \| text \| primary \| secondary \| tertiary | 200 | bg-primary-200 | text-primary-200 |
+| bg \| text \| primary \| secondary \| tertiary | 300 | bg-primary-300 | text-primary-300 |
+| bg \| text \| primary \| secondary \| tertiary | 400 | bg-primary-400 | text-primary-400 |
+| bg \| text \| primary \| secondary \| tertiary | 500 | bg-primary-500 | text-primary-500 |
+| bg \| text \| primary \| secondary \| tertiary | 600 | bg-primary-600 | text-primary-600 |
+| bg \| text \| primary \| secondary \| tertiary | 700 | bg-primary-700 | text-primary-700 |
+| bg \| text \| primary \| secondary \| tertiary | 800 | bg-primary-800 | text-primary-800 |
+| bg \| text \| primary \| secondary \| tertiary | 900 | bg-primary-900 | text-primary-900 |
 
 Background and text properties
 
@@ -140,15 +140,15 @@ Every property is mapped to every value. So you can append the property name to 
 
 | Property | Value | Class Name |
 | --- | --- | --- |
-| inset | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-auto |
-| inset-x | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-x-full |
-| inset-y | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-y-quarter |
-| inset-start | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-start-half |
-| inset-end | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-end-three-quarters |
-| top | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-top-third |
-| right | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-right-two-thirds |
-| bottom | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-bottom-0 |
-| left | 0 | auto | full | quarter | half | three-quarters | third | two-thirds | inset-left-auto |
+| inset | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds | inset-auto |
+| inset-x | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds \| inset-x-full |
+| inset-y | 0 \| auto \| full \| quarter \| half \| three-quarters \| third | two-thirds \| inset-y-quarter |
+| inset-start | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds | inset-start-half |
+| inset-end | 0 \| auto \| full \| quarter \| half | three-quarters \| third \| two-thirds \| inset-end-three-quarters |
+| top | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds | inset-top-third |
+| right | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds | inset-right-two-thirds |
+| bottom | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds | inset-bottom-0 |
+| left | 0 \| auto \| full \| quarter \| half \| three-quarters \| third \| two-thirds \| inset-left-auto |
 
 ### Justification
 
@@ -334,9 +334,7 @@ Font Weight Utilities
 | Property | Class Name |
 | --- | --- |
 | light | font-light |
-| normal
- | font-normal
- |
+| normal | font-normal|
 | bold | font-bold |
 
 Font Style Utilities
