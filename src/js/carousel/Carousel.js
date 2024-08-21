@@ -173,7 +173,7 @@ class Carousel {
 
       // Add initial class to play button.
       addClass(this.autoplay ? this.pauseClass : this.playClass, this.dom.autoplayButton);
-
+      this._handleFocus();
       this._handleAutoplay();
     } catch (error) {
       console.error(error);
@@ -439,6 +439,19 @@ class Carousel {
     }
 
     this.autoplay = !this.autoplay;
+  }
+
+  _handleFocus() {
+    // Pause autoplay when a button is focused.
+    const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
+
+    buttons.forEach(button => button.addEventListener("focus", () => {
+      this._clearInterval();
+    }));
+
+    buttons.forEach(button => button.addEventListener("focusout", () => {
+      this._handleAutoplay();
+    }));
   }
 
   /**
