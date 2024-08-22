@@ -478,6 +478,7 @@ class Carousel {
     // Pause autoplay when a button is focused.
     const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
 
+    // TODO: This needs to happen on hover as well.
     buttons.forEach(button => button.addEventListener("focus", () => {
       this._clearInterval();
     }));

@@ -7,7 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "sass:map";
-
+// TODO: I needed to rework the markup so will need to update the selectors.
 // Carousel selectors.
 $carousel-selector: ".carousel" !default;
 $carousel-control-container-selector: ".carousel-control-container" !default;
