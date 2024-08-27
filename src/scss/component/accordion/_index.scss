@@ -12,10 +12,10 @@
       position: relative;
       text-align: #{$accordion-trigger-text-align};
       width: 100%;
+    }
 
-      &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
-        transform: translateY(-50%) rotate(-135deg);
-      }
+    &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
+      transform: translateY(-50%) rotate(-135deg);
     }
 
     #{defaults.$accordion-title-selector} {
@@ -74,14 +74,14 @@
       margin: 0;
       padding: #{$accordion-trigger-padding};
       outline: none;
+    }
 
-      &:hover {
-        background-color: #{$accordion-trigger-background-active};
-      }
+    #{defaults.$accordion-trigger-selector}:hover {
+      background-color: #{$accordion-trigger-background-active};
+    }
 
-      &:hover #{defaults.$accordion-icon-selector} {
-        border-color: hsl(216deg 94% 43%);
-      }
+    #{defaults.$accordion-trigger-selector}:hover #{defaults.$accordion-icon-selector} {
+      border-color: hsl(216deg 94% 43%);
     }
 
     #{defaults.$accordion-icon-selector} {
