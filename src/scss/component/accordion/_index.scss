@@ -7,39 +7,11 @@
 
 #{defaults.$accordion-selector} {
   @include layer(component) {
-    border-radius: #{$accordion-border-radius};
-    border: #{$accordion-border};
-
-    #{defaults.$accordion-item-selector} {
-      &>*:first-child {
-        margin: 0;
-
-        #{defaults.$accordion-trigger-selector} {
-          border-style: none;
-        }
-      }
-    }
-
     #{defaults.$accordion-trigger-selector} {
-      background: #{$accordion-trigger-background};
-      color: #{$accordion-trigger-text-color};
       display: block;
-      font-size: #{$accordion-trigger-font-size};
-      font-weight: #{$accordion-trigger-font-weight};
-      margin: 0;
-      padding: #{$accordion-trigger-padding};
       position: relative;
       text-align: #{$accordion-trigger-text-align};
       width: 100%;
-      outline: none;
-
-      &:hover {
-        background-color: #{$accordion-trigger-background-active};
-      }
-
-      &:hover #{defaults.$accordion-icon-selector} {
-        border-color: hsl(216deg 94% 43%);
-      }
 
       &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
         transform: translateY(-50%) rotate(-135deg);
@@ -56,10 +28,7 @@
     }
 
     #{defaults.$accordion-icon-selector} {
-      border: solid currentcolor;
-      border-width: 0 2px 2px 0;
       height: 0.5rem;
-      pointer-events: none;
       position: absolute;
       right: 2em;
       top: 50%;
@@ -67,18 +36,11 @@
       width: 0.5rem;
     }
 
-    #{defaults.$accordion-panel-selector} {
-      margin: 0;
-      padding: #{$accordion-panel-padding};
-      background-color: #{$accordion-panel-padding};
-    }
-
     .hide {
       #{defaults.$accordion-panel-selector} {
-        // display: none;
         overflow: hidden;
         max-height: 0;
-        padding: 0;
+        --#{root-defaults.$prefix}-accordion-panel-padding: 0;
       }
     }
 
@@ -88,14 +50,59 @@
     //     transition: max-height 4s ease-in-out;
     //   }
     // }
+  }
 
-    &>*:not(:first-child) {
-      border-top: 1px solid hsl(0deg 0% 52%);
+  @include layer(theme) {
+    border-radius: #{$accordion-border-radius};
+    border: #{$accordion-border};
+
+    #{defaults.$accordion-item-selector} {
+      &>*:first-child {
+        margin: 0;
+
+        #{defaults.$accordion-trigger-selector} {
+          border-style: none;
+        }
+      }
     }
 
-    &>*:last-child #{defaults.$accordion-trigger-selector},
-    &>*:last-child {
-      border-radius: 0 0 5px 5px;
+    #{defaults.$accordion-trigger-selector} {
+      background: #{$accordion-trigger-background};
+      color: #{$accordion-trigger-text-color};
+      font-size: #{$accordion-trigger-font-size};
+      font-weight: #{$accordion-trigger-font-weight};
+      margin: 0;
+      padding: #{$accordion-trigger-padding};
+      outline: none;
+
+      &:hover {
+        background-color: #{$accordion-trigger-background-active};
+      }
+
+      &:hover #{defaults.$accordion-icon-selector} {
+        border-color: hsl(216deg 94% 43%);
+      }
     }
+
+    #{defaults.$accordion-icon-selector} {
+      border: solid currentcolor;
+      border-width: 0 2px 2px 0;
+      pointer-events: none;
+    }
+
+    #{defaults.$accordion-panel-selector} {
+      margin: 0;
+      padding: #{$accordion-panel-padding};
+      background-color: #{$accordion-panel-padding};
+    }
+  }
+
+  &>*:not(:first-child) {
+    border-top: 1px solid hsl(0deg 0% 52%);
+  }
+
+  &>*:last-child #{defaults.$accordion-trigger-selector},
+  &>*:last-child {
+    border-radius: 0 0 5px 5px;
   }
 }
