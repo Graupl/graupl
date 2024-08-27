@@ -33,26 +33,16 @@
       width: 100%;
       outline: none;
 
-      &:hover,
-      &:focus {
+      &:hover {
         background-color: #{$accordion-trigger-background-active};
       }
 
-      &:focus {
-        outline: 4px solid transparent;
-      }
-
-      &:focus #{defaults.$accordion-icon-selector},
       &:hover #{defaults.$accordion-icon-selector} {
         border-color: hsl(216deg 94% 43%);
       }
 
       &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
         transform: translateY(-50%) rotate(-135deg);
-      }
-
-      &:focus #{defaults.$accordion-title-selector} {
-        border-color: hsl(216deg 94% 43%);
       }
     }
 
