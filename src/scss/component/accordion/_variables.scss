@@ -12,7 +12,7 @@
 @use "sass:map";
 
 $accordion-border-radius: var(--#{root-defaults.$prefix}-accordion-border-radius,
-    #{root-defaults.$border-radius});
+        #{root-defaults.$border-radius});
 
 $accordion-border: var(--#{root-defaults.$prefix}-accordion-border, #{root-defaults.$border-width root-defaults.$border-style color.$root-color});
 
@@ -21,7 +21,7 @@ $accordion-trigger-background: var(--#{root-defaults.$prefix}-accordion-trigger-
 $accordion-trigger-text-color: var(--#{root-defaults.$prefix}-accordion-trigger-text-color, #{color.$root-color});
 $accordion-trigger-font-size: var(--#{root-defaults.$prefix}-accordion-trigger-font-size, #{typography.$body-font-size});
 $accordion-trigger-font-weight: var(--#{root-defaults.$prefix}-accordion-trigger-font-weight, #{typography.$font-weight-bold});
-$accordion-trigger-text-align: var(--#{root-defaults.$prefix}-accordion-trigger-text-align, left);
+$accordion-trigger-text-align: var(--#{root-defaults.$prefix}-accordion-trigger-text-align, #{$accordion-trigger-text-align});
 // TODO: When using theme.get the color is black. Idk how to use this will need to update with a better color.
 $accordion-trigger-background-active: var(--#{root-defaults.$prefix}-accordion-trigger-background-active, #{hsl(0, 0%, 78%)});
 
