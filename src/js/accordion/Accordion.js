@@ -14,6 +14,54 @@ import {
 
 class Accordion {
   /**
+   * Constructs a new `Accordion`.
+   *
+   * @param {object}             options - The options for generating the accordion.
+   * @param {HTMLElement}        [options.accordionElement] - The accordion element in the DOM.
+   * @param {string}             [options.accordionItemSelector = .accordion-item] - The query selector string for accordion items.
+   * @param {string}             [options.accordionControllSelector = .accordion-toggle] - The query selector string for accordion controlls.
+   * @param {?(string|string[])} [options.openClass = show] - The class to apply when a accordion is "open".
+   * @param {?(string|string[])} [options.closeClass = hide] - The class to apply when a accordion is "closed".
+   * @param {?(string|string[])} [options.transitionClass = transitioning] - The class to apply when a accordion is transitioning between "open" and "closed" states.
+   * @param {boolean}            [options.initialize = true] - A flag to initialize the accordion immediately upon creation.
+   * @param {number}             [options.transitionTimer = 150] - A timer to set how long a transition will last for.
+   * @param {number}             [options.isHidden = false] - A flag to determine if the accordion items will start open or closed.
+   * @param {boolean}            [options.optionalKeySupport = true] - A flag to determine if accordions can be navigated with arrows.
+   */
+  constructor({
+    accordionElement,
+    accordionItemSelector = ".accordion-item",
+    accordionControllSelector = ".accordion-trigger",
+    openClass = "show",
+    closeClass = "hide",
+    transitionClass = "transitioning",
+    initialize = true,
+    transitionTimer = 1500,
+    optionalKeySupport = true,
+  }) {
+
+    // Set DOM elements.
+    this._dom.accordionElement = accordionElement;
+
+    // Set DOM selectors.
+    this._selectors.accordionItemSelector = accordionItemSelector;
+    this._selectors.accordionControllSelector = accordionControllSelector;
+
+    // Set open/close classes.
+    this._openClass = openClass || "";
+    this._closeClass = closeClass || "";
+    this._transitionClass = transitionClass || "";
+
+    // Set values
+    this._transitionTimer = transitionTimer;
+    this._optionalKeySupport = optionalKeySupport;
+
+    if (initialize) {
+      this.initialize();
+    }
+  }
+
+  /**
    * The class(es) to apply when the accordion is open.
    *
    * @protected
@@ -122,7 +170,7 @@ class Accordion {
    * @type {boolean}
    *
    */
-  _focusOnArrow = true;
+  _optionalKeySupport = true;
 
   /**
    * The class(es) to apply when the accordion is open.
@@ -240,10 +288,10 @@ class Accordion {
    *
    * @type {boolean}
    *
-   * @see _focusOnArrow
+   * @see _optionalKeySupport
    */
-  get focusOnArrow() {
-    return this._focusOnArrow;
+  get optionalKeySupport() {
+    return this._optionalKeySupport;
   }
 
   /**
@@ -309,54 +357,6 @@ class Accordion {
   }
 
   /**
-   * Constructs a new `Accordion`.
-   *
-   * @param {object}             options - The options for generating the accordion.
-   * @param {HTMLElement}        [options.accordionElement] - The accordion element in the DOM.
-   * @param {string}             [options.accordionItemSelector = .accordion-item] - The query selector string for accordion items.
-   * @param {string}             [options.accordionControllSelector = .accordion-toggle] - The query selector string for accordion controlls.
-   * @param {?(string|string[])} [options.openClass = show] - The class to apply when a accordion is "open".
-   * @param {?(string|string[])} [options.closeClass = hide] - The class to apply when a accordion is "closed".
-   * @param {?(string|string[])} [options.transitionClass = transitioning] - The class to apply when a accordion is transitioning between "open" and "closed" states.
-   * @param {boolean}            [options.initialize = true] - A flag to initialize the accordion immediately upon creation.
-   * @param {number}             [options.transitionTimer = 150] - A timer to set how long a transition will last for.
-   * @param {number}             [options.isHidden = false] - A flag to determine if the accordion items will start open or closed.
-   * @param {boolean}            [options.focusOnArrow = true] - A flag to determine if accordions can be navigated with arrows.
-   */
-  constructor({
-    accordionElement,
-    accordionItemSelector = ".accordion-item",
-    accordionControllSelector = ".accordion-trigger",
-    openClass = "show",
-    closeClass = "hide",
-    transitionClass = "transitioning",
-    initialize = true,
-    transitionTimer = 150,
-    focusOnArrow = true,
-  }) {
-
-    // Set DOM elements.
-    this._dom.accordionElement = accordionElement;
-
-    // Set DOM selectors.
-    this._selectors.accordionItemSelector = accordionItemSelector;
-    this._selectors.accordionControllSelector = accordionControllSelector;
-
-    // Set open/close classes.
-    this._openClass = openClass || "";
-    this._closeClass = closeClass || "";
-    this._transitionClass = transitionClass || "";
-
-    // Set values
-    this._transitionTimer = transitionTimer;
-    this._focusOnArrow = focusOnArrow;
-
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
   * Initializes the accordion.
   */
   initialize() {
@@ -398,7 +398,7 @@ class Accordion {
           transitionClass: this.transitionClass,
           transitionTimer: this.transitionTimer,
           isHidden: this.isHidden,
-          focusOnArrow: this.focusOnArrow
+          optionalKeySupport: this.optionalKeySupport
         });
 
         accordionItems.push(accordionItem);
@@ -566,10 +566,10 @@ class Accordion {
           this.toggleCurrentChild();
           break;
         case "ArrowDown":
-          this.focusOnArrow && this.focusNextChild();
+          this.optionalKeySupport && this.focusNextChild();
           break;
         case "ArrowUp":
-          this.focusOnArrow && this.focusPreviousChild();
+          this.optionalKeySupport && this.focusPreviousChild();
           break;
       }
     });
@@ -593,7 +593,7 @@ class Accordion {
   focusLastChild() {
     const accordionItemsLength = this._accordionItems.length;
     const accordionItem = this._accordionItems[accordionItemsLength - 1];
-    accordionItem?.focus();
+    accordionItem.focus();
   }
 
   /**

@@ -11,6 +11,49 @@ import { addClass, removeClass } from "../domHelpers.js";
  * @class
  */
 class AccordionItem {
+  /**
+   * Constructs a new Accordion item object.
+   * @constructor
+   *
+   * @param {object}               options                                   - The options object.
+   * @param {HTMLElement}          options.accordionItemElement              - The accordion item element.
+   * @param {?HTMLElement}         [options.controllerElement = null]        - The controller element.
+   * @param {string|string[]|null} [options.showClass = show]                - The class to add when the accordion item is shown.
+   * @param {string|string[]|null} [options.hideClass = hide]                - The class to add when the accordion item is hidden.
+   * @param {string|string[]|null} [options.transitionClass = transitioning] - The class to add when the accordion item is transitioning between shown and hidden.
+   * @param {number}               [options.transitionTimer = 150]           - The time in milliseconds the transition will take.
+   * @param {boolean}              [options.isHidden = false]                - A flag to determine the initial state of the accordion item.
+   * @param {boolean}              [options.initialize = false]              - A flag to auto-initialize.
+   * @param {boolean}              [options.optionalKeySupport = false]      - A flag to allow focus on up or down arrows.
+   */
+  constructor({
+    accordionItemElement,
+    controllerElement = null,
+    showClass = "show",
+    hideClass = "hide",
+    transitionClass = "transitioning",
+    transitionTimer = 150,
+    isHidden = false,
+    initialize = false,
+    optionalKeySupport = false,
+  }) {
+    this._dom = {
+      accordionItem: null,
+      controller: null,
+    };
+    this._dom.accordionItem = accordionItemElement;
+    this._dom.controller = controllerElement;
+    this._showClass = showClass;
+    this._hideClass = hideClass;
+    this._transitionClass = transitionClass;
+    this._transitionTimer = transitionTimer;
+    this._hidden = isHidden;
+    this._optionalKeySupport = optionalKeySupport;
+
+    if (initialize) {
+      this.initialize();
+    }
+  }
 
   /**
    * The HTML elements for the accordion item in the DOM.
@@ -76,7 +119,7 @@ class AccordionItem {
    *
    * @type {boolean}
    */
-  _focusOnArrow = false;
+  _optionalKeySupport = false;
 
   /**
      * The event that is triggered when the accordion item is shown.
@@ -137,50 +180,6 @@ class AccordionItem {
    * @type {string[]}
    */
   _errors = [];
-
-  /**
-   * Constructs a new Accordion item object.
-   * @constructor
-   *
-   * @param {object}               options                                   - The options object.
-   * @param {HTMLElement}          options.accordionItemElement              - The accordion item element.
-   * @param {?HTMLElement}         [options.controllerElement = null]        - The controller element.
-   * @param {string|string[]|null} [options.showClass = show]                - The class to add when the accordion item is shown.
-   * @param {string|string[]|null} [options.hideClass = hide]                - The class to add when the accordion item is hidden.
-   * @param {string|string[]|null} [options.transitionClass = transitioning] - The class to add when the accordion item is transitioning between shown and hidden.
-   * @param {number}               [options.transitionTimer = 150]           - The time in milliseconds the transition will take.
-   * @param {boolean}              [options.isHidden = false]                - A flag to determine the initial state of the accordion item.
-   * @param {boolean}              [options.initialize = false]              - A flag to auto-initialize.
-   * @param {boolean}              [options.focusOnArrow = false]            - A flag to allow focus on up or down arrows.
-   */
-  constructor({
-    accordionItemElement,
-    controllerElement = null,
-    showClass = "show",
-    hideClass = "hide",
-    transitionClass = "transitioning",
-    transitionTimer = 150,
-    isHidden = false,
-    initialize = false,
-    focusOnArrow = false,
-  }) {
-    this._dom = {
-      accordionItem: null,
-      controller: null,
-    };
-    this._dom.accordionItem = accordionItemElement;
-    this._dom.controller = controllerElement;
-    this._showClass = showClass;
-    this._hideClass = hideClass;
-    this._transitionClass = transitionClass;
-    this._transitionTimer = transitionTimer;
-    this._hidden = isHidden;
-    this._focusOnArrow = focusOnArrow;
-
-    if (initialize) {
-      this.initialize();
-    }
-  }
 
   /**
    * Initializes the accordion item.
@@ -274,10 +273,10 @@ class AccordionItem {
    *
    * @type {boolean}
    *
-   * @see _focusOnArrow
+   * @see _optionalKeySupport
    */
-  get focusOnArrow() {
-    return this._focusOnArrow;
+  get optionalKeySupport() {
+    return this._optionalKeySupport;
   }
 
   /**
@@ -333,11 +332,11 @@ class AccordionItem {
     }
   }
 
-  set focusOnArrow(value) {
-    isValidType("boolean", { focusOnArrow: value });
+  set optionalKeySupport(value) {
+    isValidType("boolean", { optionalKeySupport: value });
 
-    if (this._focusOnArrow !== value) {
-      this._focusOnArrow = value;
+    if (this._optionalKeySupport !== value) {
+      this._optionalKeySupport = value;
     }
   }
 
@@ -385,12 +384,12 @@ class AccordionItem {
       check = false;
     }
 
-    const focusOnArrowCheck = isValidType("boolean", {
-      focusOnArrow: this._focusOnArrow,
+    const optionalKeySupportCheck = isValidType("boolean", {
+      optionalKeySupport: this._optionalKeySupport,
     });
 
-    if (!focusOnArrowCheck.status) {
-      this._errors.push(focusOnArrowCheck.error.message);
+    if (!optionalKeySupportCheck.status) {
+      this._errors.push(optionalKeySupportCheck.error.message);
       check = false;
     }
 

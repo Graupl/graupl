@@ -7,6 +7,8 @@
 
 #{defaults.$accordion-selector} {
   @include layer(component) {
+    overflow: hidden;
+
     #{defaults.$accordion-trigger-selector} {
       --#{root-defaults.$prefix}-button-active-transform: none;
       justify-content: $accordion-trigger-justify-content;
@@ -14,7 +16,7 @@
     }
 
     #{defaults.$accordion-panel-selector} {
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
     }
 
     &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
@@ -43,13 +45,22 @@
     #{defaults.$accordion-transition-selector} {
       #{defaults.$accordion-panel-selector} {
         opacity: 0;
+        transform: translateY(-100%)
       }
     }
 
     #{defaults.$accordion-close-selector} {
       #{defaults.$accordion-panel-selector} {
-        opacity: 0;
         display: none;
+        opacity: 0;
+        transform: translateY(-100%)
+      }
+    }
+
+    #{defaults.$accordion-open-selector} {
+      #{defaults.$accordion-panel-selector} {
+        display: block;
+        opacity: 1;
       }
     }
 
@@ -59,7 +70,12 @@
     border-radius: #{$accordion-border-radius};
     border: #{$accordion-border};
 
+    #{defaults.$accordion-item-selector} {
+      overflow: hidden;
+    }
+
     #{defaults.$accordion-trigger-wrapper} {
+      z-index: 2;
       margin: #{$accordion-item-margin};
     }
 
@@ -69,6 +85,7 @@
     }
 
     #{defaults.$accordion-panel-selector} {
+      z-index: 1;
       margin: #{$accordion-panel-margin};
       padding: #{$accordion-panel-padding};
       background-color: #{$accordion-panel-background};
