@@ -8,13 +8,17 @@
 #{defaults.$accordion-selector} {
   @include layer(component) {
     #{defaults.$accordion-trigger-selector} {
-      display: block;
-      position: relative;
-      text-align: #{$accordion-trigger-text-align};
+      --#{root-defaults.$prefix}-button-active-transform: none;
+      justify-content: $accordion-trigger-justify-content;
       width: 100%;
     }
 
+    #{defaults.$accordion-panel-selector} {
+      transition: opacity 0.3s ease-in-out;
+    }
+
     &[aria-expanded="true"] #{defaults.$accordion-icon-selector} {
+      // TODO: Get the icon to work.
       transform: translateY(-50%) rotate(-135deg);
     }
 
@@ -22,12 +26,12 @@
       display: block;
       pointer-events: none;
       border: #{$accordion-trigger-title-border};
-      border-radius: #{$accordion-trigger-title-border-radius};
       padding: #{$accordion-trigger-title-padding};
       outline: #{$accordion-trigger-title-outline};
     }
 
     #{defaults.$accordion-icon-selector} {
+      // TODO: Get the icon to work.
       height: #{$accordion-icon-height};
       position: absolute;
       right: 2em;
@@ -36,51 +40,27 @@
       width: #{$accordion-icon-width};
     }
 
+    #{defaults.$accordion-transition-selector} {
+      #{defaults.$accordion-panel-selector} {
+        opacity: 0;
+      }
+    }
+
     #{defaults.$accordion-close-selector} {
       #{defaults.$accordion-panel-selector} {
-        overflow: hidden;
+        opacity: 0;
         display: none;
       }
     }
 
-    // TODO: See how I can use the transitioning class to transiton open the accordion.
-    // .transitioning {
-    //   #{defaults.$accordion-panel-selector} {
-    //     transition: max-height 4s ease-in-out;
-    //   }
-    // }
   }
 
   @include layer(theme) {
     border-radius: #{$accordion-border-radius};
     border: #{$accordion-border};
 
-    #{defaults.$accordion-item-selector} {
-      &>*:first-child {
-        margin: #{$accordion-item-margin};
-
-        #{defaults.$accordion-trigger-selector} {
-          border-style: #{$accordion-trigger-border-style};
-        }
-      }
-    }
-
-    #{defaults.$accordion-trigger-selector} {
-      background: #{$accordion-trigger-background};
-      color: #{$accordion-trigger-text-color};
-      font-size: #{$accordion-trigger-font-size};
-      font-weight: #{$accordion-trigger-font-weight};
-      margin: #{$accordion-trigger-margin};
-      padding: #{$accordion-trigger-padding};
-      outline: #{$accordion-trigger-outline};
-    }
-
-    #{defaults.$accordion-trigger-selector}:hover {
-      background-color: #{$accordion-trigger-background-active};
-    }
-
-    #{defaults.$accordion-trigger-selector}:hover #{defaults.$accordion-icon-selector} {
-      border-color: #{$accordion-icon-border-color};
+    #{defaults.$accordion-trigger-wrapper} {
+      margin: #{$accordion-item-margin};
     }
 
     #{defaults.$accordion-icon-selector} {
@@ -93,14 +73,9 @@
       padding: #{$accordion-panel-padding};
       background-color: #{$accordion-panel-background};
     }
-  }
 
-  &>*:not(:first-child) {
-    border-top: #{$accordion-border-top};
-  }
-
-  &>*:last-child #{defaults.$accordion-trigger-selector},
-  &>*:last-child {
-    border-radius: #{$accordion-border-radius};
+    #{defaults.$accordion-footer-selector} {
+      padding: #{$accordion-footer-padding};
+    }
   }
 }

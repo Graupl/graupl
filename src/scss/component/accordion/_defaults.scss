@@ -15,7 +15,11 @@ $accordion-item-selector: ".accordion-item" !default;
 $accordion-trigger-selector: ".accordion-trigger" !default;
 $accordion-title-selector: ".accordion-title" !default;
 $accordion-panel-selector: ".accordion-panel" !default;
+$accordion-footer-selector: ".accordion-footer" !default;
+$accordion-body-selector: ".accordion-body" !default;
 $accordion-close-selector: ".hide" !default;
+$accordion-transition-selector: ".transitioning" !default;
+$accordion-trigger-wrapper: ".accordion-trigger-wrapper" !default;
 
 // Accordion properties.
 $accordion-trigger-text-align: left !default;
