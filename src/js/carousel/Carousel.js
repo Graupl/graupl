@@ -18,7 +18,15 @@ class Carousel {
    *
    * @param {object}          options                                         - The options for the generated carousel.
    * @param {HTMLElement}     options.carouselElement                         - The carousel element in the DOM.
-   * @param {string}          [options.carouselItemSelector = .carousel-item] - The query selector string for carousel items.
+   * @param {string}          [options.carouselControlContainerSelector = .carousel-control-container] - The query selector string for carousel items.
+   * @param {string}          [options.carouselControlSelector = .carousel-control] - The query selector string for carousel items.
+   * @param {string}          [options.carouselAutoplaySelector = .autoplay] - The query selector string for carousel items.
+   * @param {string}          [options.carouselTabContainerSelector = .carousel-tab-container] - The query selector string for carousel items.
+   * @param {string}          [options.carouselTabListSelector = .carousel-tab-list] - The query selector string for carousel items.
+   * @param {string}          [options.carouselTabSelector = .carousel-tab] - The query selector string for carousel items.
+   * @param {string}          [options.carouselItemsContainerSelector = .carousel-item-container] - The query selector string for carousel items.
+   * @param {string}          [options.carouselItemsSelector = .carousel-item] - The query selector string for carousel items.
+   * @param {string[]}          [options.carouselItemIds = []] - The query selector string for carousel items.
    * @param {string|string[]} [options.activeClass = active]                  - The class(es) to apply when a carousel item is active.
    * @param {string|string[]} [options.playClass = play]                      - The class(es) to apply to the autoplay button when the carousel is paused.
    * @param {string|string[]} [options.pauseClass = pause]                    - The class(es) to apply to the autoplay button when the carousel is playing.
@@ -30,7 +38,15 @@ class Carousel {
    */
   constructor({
     carouselElement,
-    carouselItemSelector = ".carousel-item",
+    carouselControlContainerSelector = ".carousel-control-container",
+    carouselControlSelector = ".carousel-control",
+    carouselAutoplaySelector = ".autoplay",
+    carouselTabContainerSelector = ".carousel-tab-container",
+    carouselTabListSelector = ".carousel-tab-list",
+    carouselTabSelector = ".carousel-tab",
+    carouselItemsContainerSelector = ".carousel-item-container",
+    carouselItemsSelector = ".carousel-item",
+    carouselItemIds = [],
     activeClass = "active",
     playClass = "play",
     pauseClass = "pause",
@@ -40,8 +56,16 @@ class Carousel {
     autoplay = true,
     initialize = false,
   }) {
-    // TODO: Update the ctor to get the elements that may need to be passed in.
     this._dom.carousel = carouselElement;
+    this._selectors._carouselControlContainerSelector = carouselControlContainerSelector;
+    this._selectors._carouselControlSelector = carouselControlSelector;
+    this._selectors._carouselAutoplaySelector = carouselAutoplaySelector;
+    this._selectors._carouselTabContainerSelector = carouselTabContainerSelector;
+    this._selectors._carouselTabListSelector = carouselTabListSelector;
+    this._selectors._carouselTabSelector = carouselTabSelector;
+    this._selectors._carouselItemsContainerSelector = carouselItemsContainerSelector;
+    this._selectors._carouselItemsSelector = carouselItemsSelector;
+    this._carouselItemIds = carouselItemIds;
     this._dom.autoplayButton = autoplayButton;
     this._dom.nextButton = nextButton;
     this._dom.previousButton = previousButton;
@@ -129,7 +153,6 @@ class Carousel {
    * @property {string} carouselItems - The query selector string for carousel items.
    */
   _selectors = {
-    carousel: ".carousel",
     carouselControlContainer: ".carousel-control-container",
     carouselControl: ".carousel-control",
     carouselAutoplay: ".autoplay",
@@ -370,6 +393,7 @@ class Carousel {
    * @return {boolean} - The results of the validation.
    */
   _validate() {
+    // TODO: Add checks for the new ctor properties.
     let check = true;
 
     // HTML element checks.
