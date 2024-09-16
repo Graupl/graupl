@@ -8,6 +8,7 @@
 #{defaults.$accordion-selector} {
   @include layer(component) {
     overflow: hidden;
+    background-color: red !important;
 
     #{defaults.$accordion-trigger-selector} {
       --#{root-defaults.$prefix}-button-active-transform: none;
@@ -27,7 +28,6 @@
     #{defaults.$accordion-title-selector} {
       display: block;
       pointer-events: none;
-      border: #{$accordion-trigger-title-border};
       padding: #{$accordion-trigger-title-padding};
       outline: #{$accordion-trigger-title-outline};
     }
@@ -67,16 +67,15 @@
   }
 
   @include layer(theme) {
-    border-radius: #{$accordion-border-radius};
-    border: #{$accordion-border};
-
     #{defaults.$accordion-item-selector} {
       overflow: hidden;
     }
 
     #{defaults.$accordion-trigger-wrapper} {
       z-index: 2;
+      position: relative;
       margin: #{$accordion-item-margin};
+      border: #{$accordion-trigger-title-border};
     }
 
     #{defaults.$accordion-icon-selector} {
@@ -88,6 +87,7 @@
       z-index: 1;
       margin: #{$accordion-panel-margin};
       padding: #{$accordion-panel-padding};
+      border: #{$accordion-border};
       background-color: #{$accordion-panel-background};
     }
 
