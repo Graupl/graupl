@@ -40,6 +40,7 @@ class Carousel {
     autoplay = true,
     initialize = false,
   }) {
+    // TODO: Update the ctor to get the elements that may need to be passed in.
     this._dom.carousel = carouselElement;
     this._dom.autoplayButton = autoplayButton;
     this._dom.nextButton = nextButton;
@@ -86,6 +87,19 @@ class Carousel {
   }
 
   _handleCarouselItemsInit() {
+    // TODO: Here is where I handle setting the element attributes.
+    // TODO: If the container element is not a section and there is no role set, set the role to "group".
+    // TODO: Set the aria label to "Tabbed Carousel".
+    // TODO: Set the aria role description to "carousel" for the container.
+    // TODO: From the ctor set the aria label for the control buttons.
+    // TODO: Set the aria label to "Slides" for the tab container.
+    // TODO: Set the role to "tablist" for the tab list div.
+    // TODO: For each carousel tab set the type to button and the role to tab.
+    // TODO: For each carousel tab set the aria selected to false except for the active elment.
+    // TODO: For each carousel tab set the aria-controls="carousel-item-2" to the id of the carousel item.
+    // TODO: Set aria-live="off" aria-atomic="false" on the carousel item container.
+    // TODO: For each carousel-item set active on the active carousel item and set the role to tabpanel.
+
     this.dom.carouselItems.forEach((item, index) => {
       item.setAttribute("aria-label", `${index + 1} of ${this.dom.carouselItems.length}`);
     });
@@ -124,6 +138,7 @@ class Carousel {
     carouselTab: ".carousel-tab",
     carouselItemsContainer: ".carousel-item-container",
     carouselItems: ".carousel-item",
+    carouselItemIds: []
   };
   // TODO: Do I need all of these? I find the naming isn't descriptive.
 
