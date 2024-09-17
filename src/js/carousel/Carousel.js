@@ -159,6 +159,7 @@ class Carousel {
     if (carouselItemContainer) {
       carouselItemContainer.setAttribute("aria-live", "off");
       carouselItemContainer.setAttribute("aria-atomic", "false");
+      carouselItemContainer.setAttribute("tabindex", "0");
     }
 
     this._dom.carouselItems.forEach((item, index) => {
@@ -725,6 +726,7 @@ class Carousel {
    *   - Clicks the button on "Space" or "Enter".
    */
   _handleKeyup() {
+    // TODO: Implement the tab pattern for the tab indicators.
     const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
 
     buttons.forEach(button => button.addEventListener("keyup", (event) => {
@@ -752,8 +754,7 @@ class Carousel {
 
   _handleFocus() {
     // Pause autoplay when a button is focused.
-    // const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
-    const buttons = [this.dom.autoplayButton];
+    const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
 
     // TODO: This needs to happen on hover as well.
     buttons.forEach(button => button.addEventListener("focus", () => {
@@ -763,6 +764,22 @@ class Carousel {
     buttons.forEach(button => button.addEventListener("focusout", () => {
       this._handleAutoplay();
     }));
+
+    const tabs = this._dom.carousel.querySelectorAll(this.selectors.carouselTab);
+
+    if (tabs) {
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("focus", () => {
+          this._clearInterval();
+          // TODO: It is optional to set the active panel based on focus.
+          this.activateItem(index);
+        });
+
+        tab.addEventListener("focusout", () => {
+          this._handleAutoplay();
+        });
+      });
+    }
   }
 
   /**
