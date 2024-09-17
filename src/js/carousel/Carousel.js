@@ -145,10 +145,14 @@ class Carousel {
       tabs.forEach((tab, index) => {
         tab.setAttribute("role", "button");
         tab.setAttribute("aria-selected", index === 0);
-        // TODO: For each carousel tab set the aria-controls="carousel-item-2" to the id of the carousel item.
         tab.setAttribute("aria-controls", `carousel-item-${index}`);
       });
     }
+
+    carouseItems.forEach((item, index) => {
+      // TODO: I probably need a better way to get the ids for the carousel items.
+      item.setAttribute("id", `carousel-item-${index}`);
+    });
 
     const carouselItemContainer = this._dom.carousel.querySelector(this.selectors.carouselItemsContainer);
     if (carouselItemContainer) {
