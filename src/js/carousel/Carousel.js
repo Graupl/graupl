@@ -748,12 +748,12 @@ class Carousel {
     }
 
     this.dom.carousel.setAttribute("aria-live", this.autoplay ? "off" : "polite");
-    this.autoplay = !this.autoplay;
   }
 
   _handleFocus() {
     // Pause autoplay when a button is focused.
-    const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
+    // const buttons = [this.dom.nextButton, this.dom.previousButton, this.dom.autoplayButton];
+    const buttons = [this.dom.autoplayButton];
 
     // TODO: This needs to happen on hover as well.
     buttons.forEach(button => button.addEventListener("focus", () => {
@@ -863,14 +863,15 @@ class Carousel {
     // TODO: When clicking the toggle button, leaving focus then going into focus causes the button to need to be clicked twice to toggle.
 
     if (this.autoplay) {
-      addClass(this.pauseClass, this.dom.autoplayButton);
-      removeClass(this.playClass, this.dom.autoplayButton);
-    } else {
       addClass(this.playClass, this.dom.autoplayButton);
       removeClass(this.pauseClass, this.dom.autoplayButton);
+    } else {
+      addClass(this.pauseClass, this.dom.autoplayButton);
+      removeClass(this.playClass, this.dom.autoplayButton);
     }
 
     this._handleAutoplay();
+    this.autoplay = !this.autoplay;
   }
 }
 
