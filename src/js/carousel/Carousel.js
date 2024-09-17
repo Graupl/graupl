@@ -18,6 +18,10 @@ class Carousel {
    *
    * @param {object}          options                                         - The options for the generated carousel.
    * @param {HTMLElement}     options.carouselElement                         - The carousel element in the DOM.
+   * @param {HTMLElement[]}   [options.carouseItems = []]                     - The carousel items in the DOM.
+   * @param {?HTMLElement}    [options.autoplayButton = null]                 - The autoplay button for the carousel in the DOM.
+   * @param {?HTMLElement}    [options.nextButton = null]                     - The next button for the carousel in the DOM.
+   * @param {?HTMLElement}    [options.previousButton = null]                 - The previous button for the carousel in the DOM.
    * @param {string}          [options.carouselControlContainerSelector = .carousel-control-container] - The query selector string for carousel items.
    * @param {string}          [options.carouselControlSelector = .carousel-control] - The query selector string for carousel items.
    * @param {string}          [options.carouselAutoplaySelector = .autoplay] - The query selector string for carousel items.
@@ -25,19 +29,19 @@ class Carousel {
    * @param {string}          [options.carouselTabListSelector = .carousel-tab-list] - The query selector string for carousel items.
    * @param {string}          [options.carouselTabSelector = .carousel-tab] - The query selector string for carousel items.
    * @param {string}          [options.carouselItemsContainerSelector = .carousel-item-container] - The query selector string for carousel items.
-   * @param {string}          [options.carouselItemsSelector = .carousel-item] - The query selector string for carousel items.
-   * @param {string[]}          [options.carouselItemIds = []] - The query selector string for carousel items.
    * @param {string|string[]} [options.activeClass = active]                  - The class(es) to apply when a carousel item is active.
    * @param {string|string[]} [options.playClass = play]                      - The class(es) to apply to the autoplay button when the carousel is paused.
    * @param {string|string[]} [options.pauseClass = pause]                    - The class(es) to apply to the autoplay button when the carousel is playing.
-   * @param {?HTMLElement}    [options.autoplayButton = null]                 - The autoplay button for the carousel in the DOM.
-   * @param {?HTMLElement}    [options.nextButton = null]                     - The next button for the carousel in the DOM.
-   * @param {?HTMLElement}    [options.previousButton = null]                 - The previous button for the carousel in the DOM.
    * @param {boolean}         [options.autoplay = true]                       - A flag to indicate if the carousel should autoplay.
    * @param {boolean}         [options.initialize = false]                    - A flag to initialize the carousel immediately upon creation.
+   * @param {Number}          [options.transitionDelay = 10000]                    - A flag to initialize the carousel immediately upon creation.
    */
   constructor({
     carouselElement,
+    carouseItems = [],
+    autoplayButton = null,
+    nextButton = null,
+    previousButton = null,
     carouselControlContainerSelector = ".carousel-control-container",
     carouselControlSelector = ".carousel-control",
     carouselAutoplaySelector = ".autoplay",
@@ -45,35 +49,39 @@ class Carousel {
     carouselTabListSelector = ".carousel-tab-list",
     carouselTabSelector = ".carousel-tab",
     carouselItemsContainerSelector = ".carousel-item-container",
-    carouselItemsSelector = ".carousel-item",
-    carouselItemIds = [],
     activeClass = "active",
     playClass = "play",
     pauseClass = "pause",
-    autoplayButton = null,
-    nextButton = null,
-    previousButton = null,
     autoplay = true,
     initialize = false,
+    transitionDelay = 10000,
   }) {
+    // Set DOM elements.
     this._dom.carousel = carouselElement;
-    this._selectors._carouselControlContainerSelector = carouselControlContainerSelector;
-    this._selectors._carouselControlSelector = carouselControlSelector;
-    this._selectors._carouselAutoplaySelector = carouselAutoplaySelector;
-    this._selectors._carouselTabContainerSelector = carouselTabContainerSelector;
-    this._selectors._carouselTabListSelector = carouselTabListSelector;
-    this._selectors._carouselTabSelector = carouselTabSelector;
-    this._selectors._carouselItemsContainerSelector = carouselItemsContainerSelector;
-    this._selectors._carouselItemsSelector = carouselItemsSelector;
-    this._carouselItemIds = carouselItemIds;
+    this._dom.carouseItems = carouseItems;
     this._dom.autoplayButton = autoplayButton;
     this._dom.nextButton = nextButton;
     this._dom.previousButton = previousButton;
+
+    // Set query selectors.
+    this._selectors.carouselControlContainer = carouselControlContainerSelector;
+    this._selectors.carouselControl = carouselControlSelector;
+    this._selectors.carouselAutoplay = carouselAutoplaySelector;
+    this._selectors.carouselTabContainer = carouselTabContainerSelector;
+    this._selectors.carouselTabList = carouselTabListSelector;
+    this._selectors.carouselTab = carouselTabSelector;
+    this._selectors.carouselItemsContainer = carouselItemsContainerSelector;
+
+    // Set class names.
     this._activeClass = activeClass;
     this._playClass = playClass;
     this._pauseClass = pauseClass;
-    this._selectors.carouselItems = carouselItemSelector;
+
+    // Set flags.
     this._autoplay = autoplay;
+
+    // Set delay.
+    this._transitionDelay = transitionDelay;
 
     if (initialize) {
       this.initialize();
@@ -160,8 +168,6 @@ class Carousel {
     carouselTabList: ".carousel-tab-list",
     carouselTab: ".carousel-tab",
     carouselItemsContainer: ".carousel-item-container",
-    carouselItems: ".carousel-item",
-    carouselItemIds: []
   };
   // TODO: Do I need all of these? I find the naming isn't descriptive.
 
@@ -209,6 +215,15 @@ class Carousel {
    * @type {boolean}
    */
   _autoplay = true;
+
+  /**
+   * A variable to delay transiton slides in milla seconds.
+   *
+   * @protected
+   *
+   * @type {Number}
+   */
+  _transitionDelay = 10000;
 
   /**
    * The current action being performed by the carousel.
@@ -330,6 +345,17 @@ class Carousel {
   }
 
   /**
+   * The delay in millaseconds before transitioning slides.
+   *
+   * @type {Number}
+   *
+   * @see _transitionDelay
+   */
+  get transitionDelay() {
+    return this._transitionDelay;
+  }
+
+  /**
    * The current action being performed by the carousel.
    *
    * @type {string}
@@ -385,6 +411,42 @@ class Carousel {
     }
   }
 
+  set activeClass(value) {
+    isValidClassList({ activeClass: value });
+
+    if (this._activeClass !== value) {
+      this._activeClass = value;
+    }
+  }
+
+  set playClass(value) {
+    isValidClassList({ playClass: value });
+
+    if (this._playClass !== value) {
+      this._playClass = value;
+    }
+  }
+
+  set pauseClass(value) {
+    isValidClassList({ pauseClass: value });
+
+    if (this._pauseClass !== value) {
+      this._pauseClass = value;
+    }
+  }
+
+  set transitionDelay(value) {
+    isValidType("number", { value });
+
+    if (value === this.transitionDelay) {
+      return;
+    }
+
+    if (transitionDelay >= 0) {
+      this._currentItem = value;
+    }
+  }
+
   /**
    * Validates all aspects of the carousel to ensure proper functionality.
    *
@@ -393,12 +455,42 @@ class Carousel {
    * @return {boolean} - The results of the validation.
    */
   _validate() {
-    // TODO: Add checks for the new ctor properties.
     let check = true;
 
+    // Autoplay checks.
+    const autoplayChecks = isValidType("boolean", { autoplay: this.autoplay });
+
+    if (!autoplayChecks) {
+      this._errors.push(autoplayChecks.message);
+      check = false;
+    }
+
+    // Check flags are valid values.
+    let flagChecks = isValidInstance(Boolean, {
+      autoplay: this._autoplay,
+    });
+
+    if (!flagChecks) {
+      this._errors.push(flagChecks.message);
+      check = false;
+    }
+
+    // Check delay is a valid value.
+    let delayCheck = isValidInstance(Number, {
+      transitionDelay: this._transitionDelay,
+    });
+
+    if (!delayCheck) {
+      this._errors.push(delayCheck.message);
+      check = false;
+    }
+
+    // TODO: How do I check carouselItems in this function.
     // HTML element checks.
     let htmlElementChecks = isValidInstance(HTMLElement, {
-      carouselElement: this.dom.carousel,
+      carousel: this.dom.carousel,
+      nextButton: this.dom.nextButton,
+      previousButton: this.dom.previousButton,
     });
 
     if (!htmlElementChecks) {
@@ -406,7 +498,8 @@ class Carousel {
       check = false;
     }
 
-    if (this._dom.autoplayButton !== null) {
+    // If autoplay is set then the autioplay button is required.
+    if (this.autoplay) {
       htmlElementChecks = isValidInstance(HTMLElement, {
         autoplayButton: this.dom.autoplayButton,
       });
@@ -417,21 +510,14 @@ class Carousel {
       }
     }
 
-    if (this._dom.nextButton !== null || this._dom.previousButton !== null) {
-      htmlElementChecks = isValidInstance(HTMLElement, {
-        nextButton: this.dom.nextButton,
-        previousButton: this.dom.previousButton,
-      });
-
-      if (!htmlElementChecks) {
-        this._errors.push(htmlElementChecks.message);
-        check = false;
-      }
-    }
-
     // Query selector checks.
     const querySelectorChecks = isQuerySelector({
-      carouselItemsSelector: this.selectors.carouselItems,
+      carouselControlContainer: this._selectors.carouselControlContainerSelector,
+      carouselControl: this._selectors.carouselControlSelector,
+      carouselTabContainer: this._selectors.carouselTabContainerSelector,
+      carouselTabList: this._selectors.carouselTabListSelector,
+      carouselTab: this._selectors.carouselTabSelector,
+      carouselItemsContainer: this._selectors.carouselItemsContainerSelector,
     });
 
     if (!querySelectorChecks) {
@@ -439,23 +525,27 @@ class Carousel {
       check = false;
     }
 
-    // Class list checks.
-    if (this._activeClass !== "") {
-      const classListChecks = isValidClassList({
-        activeClass: this.activeClass,
+    // If autoplay is set then the autoplay selector is required.
+    if (this.autoplay) {
+      const autoPlayQuerySelectorChecks = isQuerySelector({
+        autoplay: this._selectors.carouselAutoplaySelector,
       });
 
-      if (!classListChecks) {
-        this._errors.push(classListChecks.message);
+      if (!autoPlayQuerySelectorChecks) {
+        this._errors.push(autoPlayQuerySelectorChecks.message);
         check = false;
       }
     }
 
-    // Autoplay checks.
-    const autoplayChecks = isValidType("boolean", { autoplay: this.autoplay });
+    // Class list checks.
+    const classListChecks = isValidClassList({
+      activeClass: this._activeClass,
+      playClass: this._playClass,
+      pauseClass: this._pauseClass,
+    });
 
-    if (!autoplayChecks) {
-      this._errors.push(autoplayChecks.message);
+    if (!classListChecks) {
+      this._errors.push(classListChecks.message);
       check = false;
     }
 
