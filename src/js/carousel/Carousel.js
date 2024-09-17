@@ -24,7 +24,6 @@ class Carousel {
    * @param {?HTMLElement}    [options.previousButton = null]                 - The previous button for the carousel in the DOM.
    * @param {string}          [options.carouselControlContainerSelector = .carousel-control-container] - The query selector string for carousel items.
    * @param {string}          [options.carouselControlSelector = .carousel-control] - The query selector string for carousel items.
-   * @param {string}          [options.carouselAutoplaySelector = .autoplay] - The query selector string for carousel items.
    * @param {string}          [options.carouselTabContainerSelector = .carousel-tab-container] - The query selector string for carousel items.
    * @param {string}          [options.carouselTabListSelector = .carousel-tab-list] - The query selector string for carousel items.
    * @param {string}          [options.carouselTabSelector = .carousel-tab] - The query selector string for carousel items.
@@ -44,7 +43,6 @@ class Carousel {
     previousButton = null,
     carouselControlContainerSelector = ".carousel-control-container",
     carouselControlSelector = ".carousel-control",
-    carouselAutoplaySelector = ".autoplay",
     carouselTabContainerSelector = ".carousel-tab-container",
     carouselTabListSelector = ".carousel-tab-list",
     carouselTabSelector = ".carousel-tab",
@@ -66,7 +64,6 @@ class Carousel {
     // Set query selectors.
     this._selectors.carouselControlContainer = carouselControlContainerSelector;
     this._selectors.carouselControl = carouselControlSelector;
-    this._selectors.carouselAutoplay = carouselAutoplaySelector;
     this._selectors.carouselTabContainer = carouselTabContainerSelector;
     this._selectors.carouselTabList = carouselTabListSelector;
     this._selectors.carouselTab = carouselTabSelector;
@@ -163,7 +160,6 @@ class Carousel {
   _selectors = {
     carouselControlContainer: ".carousel-control-container",
     carouselControl: ".carousel-control",
-    carouselAutoplay: ".autoplay",
     carouselTabContainer: ".carousel-tab-container",
     carouselTabList: ".carousel-tab-list",
     carouselTab: ".carousel-tab",
@@ -523,18 +519,6 @@ class Carousel {
     if (!querySelectorChecks) {
       this._errors.push(querySelectorChecks.message);
       check = false;
-    }
-
-    // If autoplay is set then the autoplay selector is required.
-    if (this.autoplay) {
-      const autoPlayQuerySelectorChecks = isQuerySelector({
-        autoplay: this._selectors.carouselAutoplaySelector,
-      });
-
-      if (!autoPlayQuerySelectorChecks) {
-        this._errors.push(autoPlayQuerySelectorChecks.message);
-        check = false;
-      }
     }
 
     // Class list checks.
