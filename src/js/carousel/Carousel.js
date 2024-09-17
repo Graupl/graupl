@@ -534,6 +534,14 @@ class Carousel {
     } else {
       this._currentItem = value;
     }
+
+    // Keep the aria selected in sync with the current item.
+    const tabs = this._dom.carousel.querySelectorAll(this.selectors.carouselTab);
+    if (tabs) {
+      this.dom.carouselItems.forEach((item, index) => {
+        item.setAttribute("aria-selected", index === this._currentItem);
+      });
+    }
   }
 
   set autoplay(value) {
@@ -698,6 +706,16 @@ class Carousel {
     this.dom.autoplayButton.addEventListener("pointerup", () => {
       this.toggleAutoplay();
     });
+
+    const tabs = this._dom.carousel.querySelectorAll(this.selectors.carouselTab);
+
+    if (tabs) {
+      tabs.forEach((tab, index) => {
+        tab.addEventListener("pointerup", () => {
+          this.activateItem(index);
+        });
+      });
+    }
   }
 
   /**
@@ -842,6 +860,8 @@ class Carousel {
    * @public
    */
   toggleAutoplay() {
+    // TODO: When clicking the toggle button, leaving focus then going into focus causes the button to need to be clicked twice to toggle.
+
     if (this.autoplay) {
       addClass(this.pauseClass, this.dom.autoplayButton);
       removeClass(this.playClass, this.dom.autoplayButton);
