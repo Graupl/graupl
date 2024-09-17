@@ -4,12 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const carousels = [];
 
   document.querySelectorAll(".carousel").forEach((carouselElement) => {
+    const carouselItems = carouselElement.querySelectorAll(".carousel-item");
     const autoplayButton = carouselElement.querySelector(".autoplay");
     const nextButton = carouselElement.querySelector(".next");
     const previousButton = carouselElement.querySelector(".previous");
 
     const carousel = new Carousel({
       carouselElement,
+      carouselItems,
       autoplayButton,
       nextButton,
       previousButton,

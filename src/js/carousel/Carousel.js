@@ -18,7 +18,7 @@ class Carousel {
    *
    * @param {object}          options                                         - The options for the generated carousel.
    * @param {HTMLElement}     options.carouselElement                         - The carousel element in the DOM.
-   * @param {HTMLElement[]}   [options.carouseItems = []]                     - The carousel items in the DOM.
+   * @param {HTMLElement[]}   [options.carouselItems = []]                     - The carousel items in the DOM.
    * @param {?HTMLElement}    [options.autoplayButton = null]                 - The autoplay button for the carousel in the DOM.
    * @param {?HTMLElement}    [options.nextButton = null]                     - The next button for the carousel in the DOM.
    * @param {?HTMLElement}    [options.previousButton = null]                 - The previous button for the carousel in the DOM.
@@ -37,7 +37,7 @@ class Carousel {
    */
   constructor({
     carouselElement,
-    carouseItems = [],
+    carouselItems = [],
     autoplayButton = null,
     nextButton = null,
     previousButton = null,
@@ -54,12 +54,12 @@ class Carousel {
     initialize = false,
     transitionDelay = 10000,
     autoPlayButtonLabel = "Auto Play",
-    nextButtonLabel = "Nexy",
+    nextButtonLabel = "Next",
     prevButtonLabel = "Prev",
   }) {
     // Set DOM elements.
     this._dom.carousel = carouselElement;
-    this._dom.carouseItems = carouseItems;
+    this._dom.carouselItems = carouselItems;
     this._dom.autoplayButton = autoplayButton;
     this._dom.nextButton = nextButton;
     this._dom.previousButton = previousButton;
@@ -83,6 +83,11 @@ class Carousel {
     // Set delay.
     this._transitionDelay = transitionDelay;
 
+    // Set aria labels.
+    this._autoPlayButtonLabel = autoPlayButtonLabel;
+    this._nextButtonLabel = nextButtonLabel;
+    this._prevButtonLabel = prevButtonLabel;
+
     if (initialize) {
       this.initialize();
     }
@@ -101,10 +106,6 @@ class Carousel {
         );
       }
 
-      this.dom.carouselItems = this.dom.carousel.querySelectorAll(
-        this.selectors.carouselItems
-      );
-
       this._handleClick();
       this._handleCarouselItemsInit();
 
@@ -119,14 +120,14 @@ class Carousel {
   }
 
   _handleCarouselItemsInit() {
-    const carouselTagName = this.carousel.tagName;
+    const carouselTagName = this._dom.carousel.tagName;
 
     if (carouselTagName !== "SECTION" && !this.carousel.getAttribute("role")) {
       this.carousel.setAttribute("role", "group");
     }
 
-    this.carousel.setAttribute("aria-label", "Tabbed Carousel");
-    this.carousel.setAttribute("aria-roledescription", "carousel");
+    this._dom.carousel.setAttribute("aria-label", "Tabbed Carousel");
+    this._dom.carousel.setAttribute("aria-roledescription", "carousel");
 
     if (this.autoplay) {
       this._dom.autoplayButton.setAttribute("aria-label", this.autoPlayButtonLabel);
@@ -135,7 +136,7 @@ class Carousel {
     this._dom.nextButton.setAttribute("aria-label", this.nextButtonLabel);
     this._dom.previousButton.setAttribute("aria-label", this.prevButtonLabel);
 
-    const tabList = this._dom.carousel.querySelector(this.selectors.carouselTabContainer);
+    const tabList = this._dom.carousel.querySelector(this.selectors.carouselTabList);
     tabList?.setAttribute("aria-label", "Slides");
     tabList?.setAttribute("role", "tablist");
 
@@ -149,7 +150,7 @@ class Carousel {
       });
     }
 
-    carouseItems.forEach((item, index) => {
+    this._dom.carouselItems.forEach((item, index) => {
       // TODO: I probably need a better way to get the ids for the carousel items.
       item.setAttribute("id", `carousel-item-${index}`);
     });
@@ -160,37 +161,13 @@ class Carousel {
       carouselItemContainer.setAttribute("aria-atomic", "false");
     }
 
-    this.dom.carouselItems.forEach((item, index) => {
+    this._dom.carouselItems.forEach((item, index) => {
       item.setAttribute("aria-label", `${index + 1} of ${this.dom.carouselItems.length}`);
+      if (index === 0) {
+        addClass(this.activeClass, item);
+      }
     });
   }
-
-  /**
-   * The aria label for the auto play button.
-   *
-   * @protected
-   *
-   * @type {String}
-   */
-  _autoPlayButtonLabel = "Auto Play";
-
-  /**
-   * The aria label for the next play button.
-   *
-   * @protected
-   *
-   * @type {String}
-   */
-  _nextButtonLabel = "Next";
-
-  /**
-   * The aria label for the pev play button.
-   *
-   * @protected
-   *
-   * @type {String}
-   */
-  _prevButtonLabel = "Prev";
 
   /**
    * The HTML elements for the carousel in the DOM.
@@ -201,7 +178,7 @@ class Carousel {
    */
   _dom = {
     carousel: null,
-    carouseItems: [],
+    carouselItems: [],
     autoplayButton: null,
     nextButton: null,
     previousButton: null,
@@ -294,6 +271,34 @@ class Carousel {
    * @type {?Function}
    */
   _autoplayInterval = null;
+
+  /**
+   * The stored interval callback for autoplaying the carousel.
+   *
+   * @protected
+   *
+   * @type {String}
+   */
+  _autoPlayButtonLabel = "Auto Play";
+
+  /**
+   * The stored interval callback for autoplaying the carousel.
+   *
+   * @protected
+   *
+   * @type {String}
+   */
+  _nextButtonLabel = "Next";
+
+  /**
+   * The stored interval callback for autoplaying the carousel.
+   *
+   * @protected
+   *
+   * @type {String}
+   */
+  _prevButtonLabel = "Prev";
+
 
   /**
    * An array of error messages generated by the carousel.
@@ -454,7 +459,7 @@ class Carousel {
    * @see _prevButtonLabel
    */
   get prevButtonLabel() {
-    _prevButtonLabel = "Prev";
+    return this._prevButtonLabel;
   }
 
   /**
@@ -477,7 +482,12 @@ class Carousel {
       return;
     }
 
-    this.autoPlayButtonLabel = value;
+    this._autoPlayButtonLabel = value;
+
+
+    if (this.autoplay) {
+      this._dom.autoplayButton.setAttribute("aria-label", this.autoPlayButtonLabel);
+    }
   }
 
   set nextButtonLabel(value) {
@@ -487,7 +497,8 @@ class Carousel {
       return;
     }
 
-    this.nextButtonLabel = value;
+    this._nextButtonLabel = value;
+    this._dom.nextButton.setAttribute("aria-label", this.nextButtonLabel);
   }
 
   set prevButtonLabel(value) {
@@ -497,7 +508,8 @@ class Carousel {
       return;
     }
 
-    this.prevButtonLabel = value;
+    this._prevButtonLabel = value;
+    this._dom.previousButton.setAttribute("aria-label", this.prevButtonLabel);
   }
 
   set activeClass(value) {
