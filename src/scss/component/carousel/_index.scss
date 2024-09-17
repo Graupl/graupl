@@ -111,3 +111,22 @@
     );
   }
 }
+
+#{defaults.$carousel-tab-list} {
+  display: flex;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+#{defaults.$carousel-tab-container} {
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+#{defaults.$carousel-tab} {
+  margin: 0.25rem;
+}
+
