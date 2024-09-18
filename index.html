@@ -134,7 +134,8 @@
     <div class="py-10 full-width container">
       <h2>Navigation</h2>
       <div class="py-7">
-        <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">
+        <nav class="navigation" data-graupl-menu-type="DisclosureMenu"
+          data-graupl-menu-options="{'optionalKeySupport': true}">
           <a class="navigation-branding" href="#">Graupl</a>
           <button class="navigation-toggle ml-auto mr-0" aria-label="Toggle navigation"></button>
           <ul class="menu">
@@ -429,7 +430,10 @@
     </div>
     <div class="py-10 full-width container">
       <h2>Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.top</span> class will have the image placed on the top while cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom</span> class will have the image placed on the bottom.</p>
+      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.top</span> class
+        will have the image placed on the top while cards using the <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom</span> class will have the image
+        placed on the bottom.</p>
       <div class="columns">
         <div class="card">
           <div class="card-image">
@@ -531,7 +535,10 @@
     </div>
     <div class="py-10 full-width container">
       <h2>Horizontal Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.right</span> class will have the image placed on the right while cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.left</span> class will have the image placed on the left.</p>
+      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.right</span> class
+        will have the image placed on the right while cards using the <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.left</span> class will have the image
+        placed on the left.</p>
       <div class="columns count-2">
         <div class="card horizontal">
           <div class="card-image">
@@ -633,8 +640,12 @@
     </div>
     <div class="py-10 full-width container">
       <h2>Inverse Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.inverse</span> class will have the image placed on the right if it is a horizontal card and on the bottom if it is a vertical card.</p>
-      <p>This is mainly to provide a shortcut for horiztonal cards that you'd like to use the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom .right</span> classes on when the card is forced to be vertical.</p>
+      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.inverse</span>
+        class will have the image placed on the right if it is a horizontal card and on the bottom if it is a vertical
+        card.</p>
+      <p>This is mainly to provide a shortcut for horiztonal cards that you'd like to use the <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom .right</span> classes on when the
+        card is forced to be vertical.</p>
       <div class="columns count-2">
         <div class="card horizontal inverse">
           <div class="card-image">
@@ -723,10 +734,47 @@
         </div>
       </div>
     </div>
+    <div class="py-10 full-width container">
+      <h2>Carousels</h2>
+      <section class="carousel">
+        <div class="carousel-control-container">
+          <button class=" carousel-control autoplay button primary"></button>
+          <button class="carousel-control previous button secondary"></button>
+          <button class="carousel-control next button secondary"></button>
+        </div>
+        <div class="carousel-tab-container">
+          <div class="carousel-tab-list">
+            <button class="carousel-tab"></button>
+            <button class="carousel-tab"></button>
+            <button class="carousel-tab"></button>
+            <button class="carousel-tab"></button>
+            <button class="carousel-tab"></button>
+          </div>
+        </div>
+        <div class="carousel-item-container">
+          <div class="carousel-item">
+            <img src="https://unsplash.it/1400/600" alt="Carousel item" />
+          </div>
+          <div class="carousel-item">
+            <img src="https://unsplash.it/1400/600" alt="Carousel item" />
+          </div>
+          <div class="carousel-item">
+            <img src="https://unsplash.it/1400/600" alt="Carousel item" />
+          </div>
+          <div class="carousel-item">
+            <img src="https://unsplash.it/1400/600" alt="Carousel item" />
+          </div>
+          <div class="carousel-item">
+            <img src="https://unsplash.it/1400/600" alt="Carousel item" />
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script src="src/js/navigation.js"></script>
   <script type="module" src="src/js/alert/index.js"></script>
+  <script type="module" src="src/js/carousel/index.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const setTheme = window.localStorage.getItem('theme') || preferredTheme;
