@@ -1,0 +1,26 @@
+// @graupl/graupl accordion component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Accordion selectors.
+$accordion-selector: ".accordion" !default;
+$accordion-icon-selector: ".accordion-icon" !default;
+$accordion-item-selector: ".accordion-item" !default;
+$accordion-trigger-selector: ".accordion-trigger" !default;
+$accordion-title-selector: ".accordion-title" !default;
+$accordion-panel-selector: ".accordion-panel" !default;
+$accordion-footer-selector: ".accordion-footer" !default;
+$accordion-body-selector: ".accordion-body" !default;
+$accordion-close-selector: ".hide" !default;
+$accordion-open-selector: ".open" !default;
+$accordion-transition-selector: ".transitioning" !default;
+$accordion-trigger-wrapper: ".accordion-trigger-wrapper" !default;
+
+// Accordion properties.
+$accordion-trigger-text-align: left !default;

@@ -1,0 +1,68 @@
+// @graupl/graupl accordion component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Selectors
+$accordion-selector: var(--#{root-defaults.$prefix}-accordion-selector, #{defaults.$accordion-selector});
+$accordion-icon-selector: var(--#{root-defaults.$prefix}-accordion-icon-selector, #{defaults.$accordion-icon-selector});
+$accordion-item-selector: var(--#{root-defaults.$prefix}-accordion-item-selector, #{defaults.$accordion-item-selector});
+$accordion-trigger-selector: var(--#{root-defaults.$prefix}-accordion-trigger-selector, #{defaults.$accordion-trigger-selector});
+$accordion-title-selector: var(--#{root-defaults.$prefix}-accordion-title-selector, #{defaults.$accordion-title-selector});
+$accordion-panel-selector: var(--#{root-defaults.$prefix}-accordion-panel-selector, #{defaults.$accordion-panel-selector});
+$accordion-panel-selector: var(--#{root-defaults.$prefix}-accordion-panel-selector, #{defaults.$accordion-panel-selector});
+$accordion-trigger-wrapper: var(--#{root-defaults.$prefix}-accordion-trigger-wrapper, #{defaults.$accordion-trigger-wrapper});
+
+// Accordion properties.
+$accordion-border-radius: var(--#{root-defaults.$prefix}-accordion-border-radius,
+                #{root-defaults.$border-radius});
+
+$accordion-border: var(--#{root-defaults.$prefix}-accordion-border, #{root-defaults.$border-width} #{root-defaults.$border-style} #{color.$root-color});
+
+// Accordion trigger properties.
+$accordion-trigger-background: var(--#{root-defaults.$prefix}-accordion-trigger-background, none);
+$accordion-trigger-text-color: var(--#{root-defaults.$prefix}-accordion-trigger-text-color, #{color.$root-color});
+$accordion-trigger-font-size: var(--#{root-defaults.$prefix}-accordion-trigger-font-size, #{typography.$body-font-size});
+$accordion-trigger-font-weight: var(--#{root-defaults.$prefix}-accordion-trigger-font-weight, #{typography.$font-weight-bold});
+$accordion-trigger-text-align: var(--#{root-defaults.$prefix}-accordion-trigger-text-align, #{defaults.$accordion-trigger-text-align});
+// TODO: When using theme.get the color is black. Idk how to use this will need to update with a better color.
+$accordion-trigger-background-active: var(--#{root-defaults.$prefix}-accordion-trigger-background-active, #{hsl(0, 0%, 78%)});
+
+// Accordion title.
+$accordion-trigger-title-border: var(--#{root-defaults.$prefix}-accordion-trigger-title-border, none);
+$accordion-trigger-title-border-radius: var(--#{root-defaults.$prefix}-accordion-trigger-title-border-radius, none);
+$accordion-trigger-title-padding: var(--#{root-defaults.$prefix}-accordion-trigger-title-padding, #{map.get(root-variables.$spacers, 2)});
+
+// Accordion panel.
+$accordion-panel-padding: var(--#{root-defaults.$prefix}-accordion-panel-padding, #{root-defaults.$spacer});
+$accordion-panel-background: var(--#{root-defaults.$prefix}-accordion-panel-background, inherit);
+$accordion-trigger-padding: var(--#{root-defaults.$prefix}-accordion-trigger-padding, #{root-defaults.$spacer});
+
+$accordion-trigger-title-outline: var(--#{root-defaults.$prefix}-accordion-trigger-title-outline, none);
+$accordion-icon-height: var(--#{root-defaults.$prefix}-accordion-icon-height, #{map.get(root-variables.$spacers, 3)});
+$accordion-close-selector: var(--#{root-defaults.$prefix}-accordion-close-selector, #{defaults.$accordion-close-selector});
+$accordion-icon-width: var(--#{root-defaults.$prefix}-accordion-icon-width, #{map.get(root-variables.$spacers, 3)});
+$accordion-trigger-margin: var(--#{root-defaults.$prefix}-accordion-trigger-margin, 0);
+$accordion-trigger-outline: var(--#{root-defaults.$prefix}-accordion-trigger-outline, none);
+
+$accordion-icon-border-color: var(--#{root-defaults.$prefix}-accordion-icon-border-color, #{theme.get(primary, 900)});
+$accordion-icon-border-width: var(--#{root-defaults.$prefix}-accordion-icon-border-width, 0 #{map.get(root-variables.$spacers, 1)} #{map.get(root-variables.$spacers, 1)} 0);
+$accordion-icon-border: var(--#{root-defaults.$prefix}-accordion-icon-border, solid currentcolor);
+
+$accordion-panel-margin: var(--#{root-defaults.$prefix}-accordion-panel-margin, 0);
+$accordion-item-margin: var(--#{root-defaults.$prefix}-accordion-item-margin, 0);
+$accordion-trigger-border-style: var(--#{root-defaults.$prefix}-accordion-trigger-border-style, none);
+$accordion-border-top: var(--#{root-defaults.$prefix}-accordion-border-top, #{map.get(root-variables.$spacers, 1)} solid #{theme.get(primary, 900)});
+$accordion-border-radius: var(--#{root-defaults.$prefix}-accordion-border-radius, 0 #{map.get(root-variables.$spacers, 1)});
+
+// Accordion footer.
+$accordion-footer-padding: var(--#{root-defaults.$prefix}-accordion-footer-padding, #{map.get(root-variables.$spacers, 5)} 0 0 0);
+$accordion-trigger-justify-content: var(--#{root-defaults.$prefix}-accordion-trigger-justify-content, flex-start);

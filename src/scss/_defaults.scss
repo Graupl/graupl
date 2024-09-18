@@ -25,17 +25,19 @@ $base-screen-sizes: (
   lg: "(108ch < width)",
   xl: "(156ch < width)",
 );
-$custom-screen-sizes: () !default;
-$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
+$custom-screen-sizes: (
+  ) !default;
+$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes
+);
 $base-screen-size-triggers: (
   navigation-collapse: "(width <= 72ch)",
   navigation-expand: "(72ch < width)",
   force-vertical-card: "(width <= 72ch)",
 );
-$custom-screen-size-triggers: () !default;
-$screen-size-triggers: map.merge(
-  $base-screen-size-triggers,
-  $custom-screen-size-triggers
+$custom-screen-size-triggers: (
+  ) !default;
+$screen-size-triggers: map.merge($base-screen-size-triggers,
+    $custom-screen-size-triggers
 );
 
 // Spacing properties.
@@ -53,10 +55,10 @@ $base-spacer-multipliers: (
   9: 5,
   10: 10,
 );
-$custom-spacer-multipliers: () !default;
-$spacer-multipliers: map.merge(
-  $base-spacer-multipliers,
-  $custom-spacer-multipliers
+$custom-spacer-multipliers: (
+  ) !default;
+$spacer-multipliers: map.merge($base-spacer-multipliers,
+    $custom-spacer-multipliers
 );
 
 // Size properties.
@@ -76,8 +78,8 @@ $base-transition-durations: (
   default: #{$transition-duration-base * 2.5}ms,
   slow: #{$transition-duration-base * 3}ms,
 );
-$custom-transition-durations: () !default;
-$transition-durations: map.merge(
-  $base-transition-durations,
-  $custom-transition-durations
+$custom-transition-durations: (
+  ) !default;
+$transition-durations: map.merge($base-transition-durations,
+    $custom-transition-durations
 );
