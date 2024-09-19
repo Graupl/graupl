@@ -29,8 +29,8 @@ class Carousel {
    * @property {HTMLElement[]} carouselTabs             - The carousel tabs.
    * @property {HTMLElement}   carouselTabContainer     - The carousel tab container.
    * @property {HTMLElement}   autoplay           - The autoplay button.
-   * @property {HTMLElement}   nextButton               - The next button.
-   * @property {HTMLElement}   previousButton           - The previous button.
+   * @property {HTMLElement}   next               - The next button.
+   * @property {HTMLElement}   previous           - The previous button.
    */
   _dom = {
     carousel: null,
@@ -270,14 +270,6 @@ class Carousel {
 
       // Set aria attributes.
       this._setAriaAttributes();
-
-      // Add initial class to play button.
-      if (this.dom.autoplay) {
-        addClass(
-          this.autoplay ? this.pauseClass : this.playClass,
-          this.dom.autoplay
-        );
-      }
 
       // Handle events.
       this._handleClick();
@@ -843,11 +835,11 @@ class Carousel {
    * Handles the click events throughout the carousel.
    */
   _handleClick() {
-    this.dom.nextButton.addEventListener("pointerup", () => {
+    this.dom.next.addEventListener("pointerup", () => {
       this.activateNextItem();
     });
 
-    this.dom.previousButton.addEventListener("pointerup", () => {
+    this.dom.previous.addEventListener("pointerup", () => {
       this.activatePreviousItem();
     });
 
@@ -876,11 +868,7 @@ class Carousel {
    */
   _handleKeyup() {
     // TODO: Implement the tab pattern for the tab indicators.
-    const buttons = [
-      this.dom.nextButton,
-      this.dom.previousButton,
-      this.dom.autoplay,
-    ];
+    const buttons = [this.dom.next, this.dom.previous, this.dom.autoplay];
 
     buttons.forEach((button) =>
       button.addEventListener("keyup", (event) => {
@@ -897,19 +885,35 @@ class Carousel {
     );
   }
 
+  /**
+   * Handles the autoplay functionality of the carousel.
+   *
+   * - Adds the appropriate class to the autoplay button.
+   * - Removes the appropriate class from the autoplay button.
+   * - Sets the appropriate aria-label for the autoplay button.
+   * - Sets the appropriate aria-live for the carousel.
+   * - Sets/clears the interval for autoplaying the carousel.
+   *
+   * @protected
+   */
   _handleAutoplay() {
     if (this.autoplay) {
-      this._setInterval();
-      this.dom.autoplay.setAttribute("aria-label", this.pauseText);
-    } else {
-      this._clearInterval();
-      this.dom.autoplay.setAttribute("aria-label", this.playText);
-    }
+      addClass(this.pauseClass, this.dom.autoplay);
+      removeClass(this.playClass, this.dom.autoplay);
 
-    this.dom.carousel.setAttribute(
-      "aria-live",
-      this.autoplay ? "off" : "polite"
-    );
+      this.dom.autoplay.setAttribute("aria-label", this.pauseText);
+      this.dom.carousel.setAttribute("aria-live", "off");
+
+      this._setInterval();
+    } else {
+      addClass(this.playClass, this.dom.autoplay);
+      removeClass(this.pauseClass, this.dom.autoplay);
+
+      this.dom.autoplay.setAttribute("aria-label", this.playText);
+      this.dom.carousel.setAttribute("aria-live", "polite");
+
+      this._clearInterval();
+    }
   }
 
   _handleFocus() {
@@ -1038,21 +1042,11 @@ class Carousel {
   }
 
   /**
-   * Activates the current carousel item.
+   * Toggles autoplay on the carousel.
    *
    * @public
    */
   toggleAutoplay() {
-    // TODO: When clicking the toggle button, leaving focus then going into focus causes the button to need to be clicked twice to toggle.
-
-    if (this.autoplay) {
-      addClass(this.playClass, this.dom.autoplay);
-      removeClass(this.pauseClass, this.dom.autoplay);
-    } else {
-      addClass(this.pauseClass, this.dom.autoplay);
-      removeClass(this.playClass, this.dom.autoplay);
-    }
-
     this._handleAutoplay();
     this.autoplay = !this.autoplay;
   }
