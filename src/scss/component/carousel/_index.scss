@@ -5,128 +5,173 @@
 @use "mixins" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../base/button/variables" as button-variables;
 
 #{defaults.$carousel-selector} {
   position: relative;
   isolation: isolate;
+  display: grid;
+  grid-template-columns: [slide-start autoplay-start] auto [autoplay-end tabs-start] 1fr [tabs-end previous-start] auto [previous-end next-start] auto [next-end slide-end];
+  grid-template-rows: [slide-start] 1fr [controls-start] auto [controls-end slide-end tabs-start] auto [tabs-end];
 
   &[data-graupl-action="next"] {
-    #{defaults.$carousel-item-selector}.active ~ #{defaults.$carousel-item-selector} {
-      opacity: 0;
-    }
+    #{defaults.$carousel-item-selector} {
+      &#{defaults.$carousel-previous-item-selector} {
+        transform: translateX(
+          calc(
+            -1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+          )
+        );
 
-    #{defaults.$carousel-item-selector}:has(+ .active) {
-      opacity: 1;
+        &#{defaults.$carousel-active-item-selector} {
+          transform: translateX(0);
+        }
+      }
+
+      &#{defaults.$carousel-next-item-selector} {
+        transform: translateX(
+          var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+        );
+
+        &#{defaults.$carousel-active-item-selector} {
+          transform: translateX(0);
+        }
+      }
     }
   }
 
   &[data-graupl-action="previous"] {
-    #{defaults.$carousel-item-selector}.active ~ #{defaults.$carousel-item-selector} {
-      opacity: 1;
-    }
+    #{defaults.$carousel-item-selector} {
+      &#{defaults.$carousel-previous-item-selector} {
+        transform: translateX(
+          var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+        );
 
-    #{defaults.$carousel-item-selector}:has(+ .active) {
-      opacity: 0;
+        &#{defaults.$carousel-active-item-selector} {
+          transform: translateX(0);
+        }
+      }
+
+      &#{defaults.$carousel-next-item-selector} {
+        transform: translateX(
+          calc(
+            -1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+          )
+        );
+
+        &#{defaults.$carousel-active-item-selector} {
+          transform: translateX(0);
+        }
+      }
     }
   }
 }
 
 #{defaults.$carousel-control-container-selector} {
-  display: grid;
-  grid-template-areas: "autoplay - previous next";
-  grid-template-columns: auto 1fr auto auto;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
+  display: contents;
 }
 
-#{defaults.$carousel-autoplay-selector} {
-  grid-area: autoplay;
-}
+#{defaults.$carousel-control-selector} {
+  &#{defaults.$carousel-autoplay-selector} {
+    grid-column: autoplay;
+    grid-row: controls;
+  }
 
-#{defaults.$carousel-play-selector}::before {
-  content: "▶";
-  display: inline-block;
-}
-
-#{defaults.$carousel-pause-selector}::before {
-  content: "❚❚";
-  display: inline-block;
-}
-
-#{defaults.$carousel-next-selector} {
-  grid-area: next;
-
-  &::before {
+  &#{defaults.$carousel-play-selector}::before {
     content: "▶";
     display: inline-block;
   }
-}
 
-#{defaults.$carousel-previous-selector} {
-  grid-area: previous;
-
-  &::before {
-    content: "◀";
+  &#{defaults.$carousel-pause-selector}::before {
+    content: "❚❚";
     display: inline-block;
+  }
+
+  &#{defaults.$carousel-next-selector} {
+    grid-column: next;
+    grid-row: controls;
+
+    &::before {
+      content: "▶";
+      display: inline-block;
+    }
+  }
+
+  &#{defaults.$carousel-previous-selector} {
+    grid-column: previous;
+    grid-row: controls;
+
+    &::before {
+      content: "◀";
+      display: inline-block;
+    }
   }
 }
 
 #{defaults.$carousel-item-container-selector} {
   display: grid;
+  grid-area: slide;
   grid-template-areas: "items";
-  max-width: 100%;
   overflow-x: hidden;
   isolation: isolate;
+  z-index: -1;
 }
 
 #{defaults.$carousel-item-selector} {
-  z-index: 0;
+  z-index: -1;
   grid-area: items;
   max-width: var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%);
-  transform: translateX(
-    var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-  );
-  transition: transform
-    var(--#{root-defaults.$prefix}-carousel-transition-timer, 500ms) ease-in-out;
   opacity: 0;
 
-  &.active {
+  &#{defaults.$carousel-active-item-selector} {
     z-index: 1;
-    transform: translateX(0) !important;
+    transform: translateX(0);
+    transition: transform
+      var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+      ease-in-out;
     opacity: 1;
-
-    ~ #{defaults.$carousel-item-selector} {
-      transform: translateX(
-        var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-      );
-    }
   }
 
-  &:has(+ .active) {
+  &#{defaults.$carousel-previous-item-selector} {
+    z-index: 1;
     transform: translateX(
       calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%))
     );
+    transition: transform
+      var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+      ease-in-out;
+    opacity: 1;
+
+    &#{defaults.$carousel-active-item-selector} {
+      transform: translateX(0);
+    }
+  }
+
+  &#{defaults.$carousel-next-item-selector} {
+    z-index: 1;
+    transform: translateX(
+      var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
+    );
+    opacity: 1;
+
+    &#{defaults.$carousel-active-item-selector} {
+      transform: translateX(0);
+    }
   }
 }
 
-#{defaults.$carousel-tab-list} {
+#{defaults.$carousel-tab-container-selector} {
+  grid-area: tabs;
   display: flex;
   justify-content: center;
-  padding: 0.25rem;
+  gap: 0.5rem;
 }
 
-#{defaults.$carousel-tab-container} {
-  position: absolute;
-  z-index: 1;
-  top: 100%;
-  left: 0;
-  right: 0;
-}
+#{defaults.$carousel-tab-selector} {
+  --#{root-defaults.$prefix}-button-border-radius: 50%;
 
-#{defaults.$carousel-tab} {
-  margin: 0.25rem;
+  &#{defaults.$carousel-active-item-selector} {
+    --#{root-defaults.$prefix}-button-background: #{button-variables.$button-active-background};
+    --#{root-defaults.$prefix}-button-color: #{button-variables.$button-active-color};
+  }
 }
-
