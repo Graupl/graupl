@@ -8,11 +8,11 @@
 @use "../../base/button/variables" as button-variables;
 
 #{defaults.$carousel-selector} {
-  position: relative;
-  isolation: isolate;
   display: grid;
+  position: relative;
   grid-template-columns: [slide-start autoplay-start] auto [autoplay-end tabs-start] 1fr [tabs-end previous-start] auto [previous-end next-start] auto [next-end slide-end];
   grid-template-rows: [slide-start] 1fr [controls-start] auto [controls-end slide-end tabs-start] auto [tabs-end];
+  isolation: isolate;
 
   &[data-graupl-action="next"] {
     #{defaults.$carousel-item-selector} {
@@ -110,11 +110,11 @@
 
 #{defaults.$carousel-item-container-selector} {
   display: grid;
+  z-index: -1;
   grid-area: slide;
   grid-template-areas: "items";
   overflow-x: hidden;
   isolation: isolate;
-  z-index: -1;
 }
 
 #{defaults.$carousel-item-selector} {
@@ -161,8 +161,8 @@
 }
 
 #{defaults.$carousel-tab-container-selector} {
-  grid-area: tabs;
   display: flex;
+  grid-area: tabs;
   justify-content: center;
   gap: 0.5rem;
 }
