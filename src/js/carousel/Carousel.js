@@ -1079,6 +1079,8 @@ class Carousel {
       tab.addEventListener("pointerup", () => {
         if (this.currentItem > index) {
           this._currentAction = "previous";
+        } else {
+          this._currentAction = "next";
         }
 
         this.activateItem(index);
