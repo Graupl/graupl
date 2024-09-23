@@ -9,6 +9,7 @@ const config = {
     "prettier/prettier": true,
     "scss/comment-no-empty": null,
     "selector-max-compound-selectors": 4,
+    "max-nesting-depth": 4,
     "selector-no-qualifying-type": null,
   },
 };
