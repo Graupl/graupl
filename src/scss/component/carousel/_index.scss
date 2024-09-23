@@ -12,7 +12,7 @@
     display: grid;
     position: relative;
     grid-template-columns: [slide-start autoplay-start] $carousel-control-width [autoplay-end tabs-start] $carousel-tab-width [tabs-end previous-start] $carousel-control-width [previous-end next-start] $carousel-control-width [next-end slide-end];
-    grid-template-rows: [slide-start] $carousel-slide-height [controls-start] $carousel-control-height [controls-end slide-end tabs-start] $carousel-tab-height [tabs-end];
+    grid-template-rows: [slide-start controls-start] $carousel-control-height [controls-end] $carousel-slide-height [tabs-start] $carousel-tab-height [tabs-end slide-end];
     isolation: isolate;
 
     &[data-graupl-action="next"] {
