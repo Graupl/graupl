@@ -1,2 +1,18 @@
-@charset "UTF-8";.carousel{display:grid;grid-template-columns:[slide-start autoplay-start] auto [autoplay-end tabs-start] 1fr [tabs-end previous-start] auto [previous-end next-start] auto [next-end slide-end];grid-template-rows:[slide-start] 1fr [controls-start] auto [controls-end slide-end tabs-start] auto [tabs-end];isolation:isolate;position:relative}.carousel[data-graupl-action=next] .carousel-item.previous{transform:translateX(calc(var(--graupl-carousel-item-max-width, 100%)*-1))}.carousel[data-graupl-action=next] .carousel-item.previous.active{transform:translateX(0)}.carousel[data-graupl-action=next] .carousel-item.next{transform:translateX(var(--graupl-carousel-item-max-width,100%))}.carousel[data-graupl-action=next] .carousel-item.next.active{transform:translateX(0)}.carousel[data-graupl-action=previous] .carousel-item.previous{transform:translateX(var(--graupl-carousel-item-max-width,100%))}.carousel[data-graupl-action=previous] .carousel-item.previous.active{transform:translateX(0)}.carousel[data-graupl-action=previous] .carousel-item.next{transform:translateX(calc(var(--graupl-carousel-item-max-width, 100%)*-1))}.carousel[data-graupl-action=previous] .carousel-item.next.active{transform:translateX(0)}.carousel-control-container{display:contents}.carousel-control.autoplay{grid-column:autoplay;grid-row:controls}.carousel-control.play:before{content:"▶";display:inline-block}.carousel-control.pause:before{content:"❚❚";display:inline-block}.carousel-control.next{grid-column:next;grid-row:controls}.carousel-control.next:before{content:"▶";display:inline-block}.carousel-control.previous{grid-column:previous;grid-row:controls}.carousel-control.previous:before{content:"◀";display:inline-block}.carousel-item-container{display:grid;grid-area:slide;grid-template-areas:"items";isolation:isolate;overflow-x:hidden;z-index:-1}.carousel-item{grid-area:items;max-width:var(--graupl-carousel-item-max-width,100%);opacity:0;z-index:-1}.carousel-item.active{transform:translateX(0)}.carousel-item.active,.carousel-item.previous{opacity:1;transition:transform var(--graupl-carousel-transition-duration,.5s) ease-in-out;z-index:1}.carousel-item.previous{transform:translateX(calc(var(--graupl-carousel-item-max-width, 100%)*-1))}.carousel-item.previous.active{transform:translateX(0)}.carousel-item.next{opacity:1;transform:translateX(var(--graupl-carousel-item-max-width,100%));z-index:1}.carousel-item.next.active{transform:translateX(0)}.carousel-tab-container{display:flex;gap:.5rem;grid-area:tabs;justify-content:center}.carousel-tab{--graupl-button-border-radius:50%}.carousel-tab.active{--graupl-button-background:var(--graupl-button-active-background,var(--graupl-theme-active--primary--900,var(--graupl-theme-light--primary--900,var(--graupl-primary--900,#001233))));--graupl-button-color:var(--graupl-button-active-color,var(--graupl-theme-active--primary--100,var(--graupl-theme-light--primary--100,var(--graupl-primary--100,#e6eeff))))}
-/*# sourceMappingURL=carousel.css.map */
+/* Error: Can't find stylesheet to import.
+ *   ,
+ * 5 | @use "mixins" as *;
+ *   | ^^^^^^^^^^^^^^^^^^
+ *   '
+ *   src/scss/component/carousel/_index.scss 5:1  @forward
+ *   scss/component/carousel.scss 3:1             root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: "Error: Can't find stylesheet to import.\a   \2577 \a 5 \2502  @use \"mixins\" as *;\a   \2502  ^^^^^^^^^^^^^^^^^^\a   \2575 \a   src/scss/component/carousel/_index.scss 5:1  @forward\a   scss/component/carousel.scss 3:1             root stylesheet";
+}

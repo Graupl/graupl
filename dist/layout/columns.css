@@ -1,2 +1,127 @@
-@layer graupl.layout{.columns{display:grid;gap:var(--graupl-columns-row-gap,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1))) var(--graupl-columns-column-gap,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)));grid-template-columns:var(--graupl-columns-grid-template-columns,repeat(auto-fit,minmax(var(--graupl-columns-min-width,calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-column-gap, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem)))) * (var(--graupl-columns-count, 3) - 1)) / var(--graupl-columns-count, 3))),var(--graupl-columns-max-width,1fr))))}.columns>*{grid-column:span var(--graupl-columns-span,1)}.count-1{--graupl-columns-count:1}.count-1 .span-2,.count-1 .span-3,.count-1 .span-4,.count-1 .span-5,.count-1 .span-6,.span-1{--graupl-columns-span:1}.count-2{--graupl-columns-count:2}.count-2 .span-3,.count-2 .span-4,.count-2 .span-5,.count-2 .span-6,.span-2{--graupl-columns-span:2}.count-3{--graupl-columns-count:3}.count-3 .span-4,.count-3 .span-5,.count-3 .span-6,.span-3{--graupl-columns-span:3}.count-4{--graupl-columns-count:4}.count-4 .span-5,.count-4 .span-6,.span-4{--graupl-columns-span:4}.count-5{--graupl-columns-count:5}.count-5 .span-6,.span-5{--graupl-columns-span:5}.count-6{--graupl-columns-count:6}.count-6 .span-6,.count-6 .span-7,.span-6{--graupl-columns-span:6}@media screen and (width <= 48ch){.columns{--graupl-columns-min-width:1fr}.columns .span-1,.columns .span-2,.columns .span-3,.columns .span-4,.columns .span-5,.columns .span-6,.columns>*{--graupl-columns-span:1}}}
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+/* stylelint-enable  scss/operator-no-newline-after */
+@layer graupl.layout {
+  .columns {
+    display: grid;
+    grid-template-columns: var(--graupl-columns-grid-template-columns, repeat(auto-fit, minmax(var(--graupl-columns-min-width, calc((var(--graupl-content-max-width, 96ch) - var(--graupl-columns-column-gap, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem)))) * (var(--graupl-columns-count, 3) - 1)) / var(--graupl-columns-count, 3))), var(--graupl-columns-max-width, 1fr))));
+    gap: var(--graupl-columns-row-gap, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem)))) var(--graupl-columns-column-gap, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))));
+  }
+  .columns > * {
+    grid-column: span var(--graupl-columns-span, 1);
+  }
+  .count-1 {
+    --graupl-columns-count: 1;
+  }
+  .count-1 .span-2 {
+    --graupl-columns-span: 1;
+  }
+  .count-1 .span-3 {
+    --graupl-columns-span: 1;
+  }
+  .count-1 .span-4 {
+    --graupl-columns-span: 1;
+  }
+  .count-1 .span-5 {
+    --graupl-columns-span: 1;
+  }
+  .count-1 .span-6 {
+    --graupl-columns-span: 1;
+  }
+  .span-1 {
+    --graupl-columns-span: 1;
+  }
+  .count-2 {
+    --graupl-columns-count: 2;
+  }
+  .count-2 .span-3 {
+    --graupl-columns-span: 2;
+  }
+  .count-2 .span-4 {
+    --graupl-columns-span: 2;
+  }
+  .count-2 .span-5 {
+    --graupl-columns-span: 2;
+  }
+  .count-2 .span-6 {
+    --graupl-columns-span: 2;
+  }
+  .span-2 {
+    --graupl-columns-span: 2;
+  }
+  .count-3 {
+    --graupl-columns-count: 3;
+  }
+  .count-3 .span-4 {
+    --graupl-columns-span: 3;
+  }
+  .count-3 .span-5 {
+    --graupl-columns-span: 3;
+  }
+  .count-3 .span-6 {
+    --graupl-columns-span: 3;
+  }
+  .span-3 {
+    --graupl-columns-span: 3;
+  }
+  .count-4 {
+    --graupl-columns-count: 4;
+  }
+  .count-4 .span-5 {
+    --graupl-columns-span: 4;
+  }
+  .count-4 .span-6 {
+    --graupl-columns-span: 4;
+  }
+  .span-4 {
+    --graupl-columns-span: 4;
+  }
+  .count-5 {
+    --graupl-columns-count: 5;
+  }
+  .count-5 .span-6 {
+    --graupl-columns-span: 5;
+  }
+  .span-5 {
+    --graupl-columns-span: 5;
+  }
+  .count-6 {
+    --graupl-columns-count: 6;
+  }
+  .count-6 .span-7 {
+    --graupl-columns-span: 6;
+  }
+  .count-6 .span-6 {
+    --graupl-columns-span: 6;
+  }
+  .span-6 {
+    --graupl-columns-span: 6;
+  }
+  @media screen and (width <= 48ch) {
+    .columns {
+      --graupl-columns-min-width: 1fr;
+    }
+    .columns > * {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-1 {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-2 {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-3 {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-4 {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-5 {
+      --graupl-columns-span: 1;
+    }
+    .columns .span-6 {
+      --graupl-columns-span: 1;
+    }
+  }
+}
+
 /*# sourceMappingURL=columns.css.map */

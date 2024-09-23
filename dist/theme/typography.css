@@ -1,2 +1,90 @@
-@layer graupl.base{p{margin:var(--graupl-paragraph-margin,0 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0)}small{margin:var(--graupl-small-margin,0 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0)}h1{margin:var(--graupl-h1-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}h2{margin:var(--graupl-h2-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}h3{margin:var(--graupl-h3-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}h4{margin:var(--graupl-h4-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}h5{margin:var(--graupl-h5-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}h6{margin:var(--graupl-h6-margin,var(--graupl-heading-margin,var(--graupl-spacer-5,calc(var(--graupl-spacer, 1rem)*1)) 0 var(--graupl-spacer-2,calc(var(--graupl-spacer, 1rem)*.25)) 0))}}@layer graupl.theme{:root{font-family:var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif);font-size:var(--graupl-root-font-size,clamp(.85rem,.8rem + .5vw,1.25rem))}b,strong{font-weight:var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))}body{font-size:var(--graupl-body-font-size,var(--graupl-font-base,calc(var(--graupl-font-size-base, 1rem)*1)));font-weight:var(--graupl-body-font-weight,var(--graupl-font-weight-normal,400));line-height:var(--graupl-body-line-height,var(--graupl-line-height,1.2em))}p{font-size:var(--graupl-paragraph-font-size,var(--graupl-body-font-size,var(--graupl-font-base,calc(var(--graupl-font-size-base, 1rem)*1))));font-weight:var(--graupl-paragraph-font-weight,var(--graupl-body-font-weight,var(--graupl-font-weight-normal,400)));line-height:var(--graupl-paragraph-line-height,var(--graupl-body-line-height,var(--graupl-line-height,1.2em)))}small{font-size:var(--graupl-small-font-size,var(--graupl-font-sm,calc(var(--graupl-font-size-base, 1rem)*.833)));font-weight:var(--graupl-small-font-weight,var(--graupl-body-font-weight,var(--graupl-font-weight-normal,400)));line-height:var(--graupl-small-line-height,var(--graupl-line-height,1.2em))}h1{font-family:var(--graupl-h1-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h1-font-size,var(--graupl-font-5xl,calc(var(--graupl-font-size-base, 1rem)*2.986)));font-weight:var(--graupl-h1-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h1-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}h2{font-family:var(--graupl-h2-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h2-font-size,var(--graupl-font-4xl,calc(var(--graupl-font-size-base, 1rem)*2.488)));font-weight:var(--graupl-h2-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h2-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}h3{font-family:var(--graupl-h3-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h3-font-size,var(--graupl-font-3xl,calc(var(--graupl-font-size-base, 1rem)*2.074)));font-weight:var(--graupl-h3-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h3-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}h4{font-family:var(--graupl-h4-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h4-font-size,var(--graupl-font-2xl,calc(var(--graupl-font-size-base, 1rem)*1.728)));font-weight:var(--graupl-h4-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h4-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}h5{font-family:var(--graupl-h5-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h5-font-size,var(--graupl-font-xl,calc(var(--graupl-font-size-base, 1rem)*1.44)));font-weight:var(--graupl-h5-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h5-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}h6{font-family:var(--graupl-h6-font-family,var(--graupl-heading-font-family,var(--graupl-root-font-family,system-ui,-apple-system,blinkmacsystemfont,Segoe UI,roboto,Helvetica Neue,arial,sans-serif)));font-size:var(--graupl-h6-font-size,var(--graupl-font-lg,calc(var(--graupl-font-size-base, 1rem)*1.2)));font-weight:var(--graupl-h6-font-weight,var(--graupl-heading-font-weight,var(--graupl-font-weight-bold,var(--graupl-font-weight-bold,700))));line-height:var(--graupl-h6-line-height,var(--graupl-heading-line-height,var(--graupl-line-height,1.2em)))}}
+/* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
+@layer graupl.base {
+  p {
+    margin: var(--graupl-paragraph-margin, 0 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0);
+  }
+  small {
+    margin: var(--graupl-small-margin, 0 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0);
+  }
+  h1 {
+    margin: var(--graupl-h1-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+  h2 {
+    margin: var(--graupl-h2-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+  h3 {
+    margin: var(--graupl-h3-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+  h4 {
+    margin: var(--graupl-h4-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+  h5 {
+    margin: var(--graupl-h5-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+  h6 {
+    margin: var(--graupl-h6-margin, var(--graupl-heading-margin, var(--graupl-spacer-5, calc(1 * var(--graupl-spacer, 1rem))) 0 var(--graupl-spacer-2, calc(0.25 * var(--graupl-spacer, 1rem))) 0));
+  }
+}
+@layer graupl.theme {
+  :root {
+    font-family: var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif);
+    font-size: var(--graupl-root-font-size, clamp(0.85rem, 0.8rem + 0.5vw, 1.25rem));
+  }
+  b,
+  strong {
+    font-weight: var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700));
+  }
+  body {
+    font-size: var(--graupl-body-font-size, var(--graupl-font-base, calc(1 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-body-font-weight, var(--graupl-font-weight-normal, 400));
+    line-height: var(--graupl-body-line-height, var(--graupl-line-height, 1.2em));
+  }
+  p {
+    font-size: var(--graupl-paragraph-font-size, var(--graupl-body-font-size, var(--graupl-font-base, calc(1 * var(--graupl-font-size-base, 1rem)))));
+    font-weight: var(--graupl-paragraph-font-weight, var(--graupl-body-font-weight, var(--graupl-font-weight-normal, 400)));
+    line-height: var(--graupl-paragraph-line-height, var(--graupl-body-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  small {
+    font-size: var(--graupl-small-font-size, var(--graupl-font-sm, calc(0.833 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-small-font-weight, var(--graupl-body-font-weight, var(--graupl-font-weight-normal, 400)));
+    line-height: var(--graupl-small-line-height, var(--graupl-line-height, 1.2em));
+  }
+  h1 {
+    font-family: var(--graupl-h1-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h1-font-size, var(--graupl-font-5xl, calc(2.986 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h1-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h1-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  h2 {
+    font-family: var(--graupl-h2-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h2-font-size, var(--graupl-font-4xl, calc(2.488 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h2-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h2-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  h3 {
+    font-family: var(--graupl-h3-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h3-font-size, var(--graupl-font-3xl, calc(2.074 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h3-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h3-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  h4 {
+    font-family: var(--graupl-h4-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h4-font-size, var(--graupl-font-2xl, calc(1.728 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h4-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h4-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  h5 {
+    font-family: var(--graupl-h5-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h5-font-size, var(--graupl-font-xl, calc(1.44 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h5-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h5-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+  h6 {
+    font-family: var(--graupl-h6-font-family, var(--graupl-heading-font-family, var(--graupl-root-font-family, system-ui, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif)));
+    font-size: var(--graupl-h6-font-size, var(--graupl-font-lg, calc(1.2 * var(--graupl-font-size-base, 1rem))));
+    font-weight: var(--graupl-h6-font-weight, var(--graupl-heading-font-weight, var(--graupl-font-weight-bold, var(--graupl-font-weight-bold, 700))));
+    line-height: var(--graupl-h6-line-height, var(--graupl-heading-line-height, var(--graupl-line-height, 1.2em)));
+  }
+}
+
 /*# sourceMappingURL=typography.css.map */
