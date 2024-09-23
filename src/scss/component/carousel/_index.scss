@@ -5,61 +5,52 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../base/button/variables" as button-variables;
+@use "../../base/button/mixins" as button-mixins;
 
 #{defaults.$carousel-selector} {
-  display: grid;
-  position: relative;
-  grid-template-columns: [slide-start autoplay-start] auto [autoplay-end tabs-start] 1fr [tabs-end previous-start] auto [previous-end next-start] auto [next-end slide-end];
-  grid-template-rows: [slide-start] 1fr [controls-start] auto [controls-end slide-end tabs-start] auto [tabs-end];
-  isolation: isolate;
+  @include layer(component) {
+    display: grid;
+    position: relative;
+    grid-template-columns: [slide-start autoplay-start] $carousel-control-width [autoplay-end tabs-start] $carousel-tab-width [tabs-end previous-start] $carousel-control-width [previous-end next-start] $carousel-control-width [next-end slide-end];
+    grid-template-rows: [slide-start] $carousel-slide-height [controls-start] $carousel-control-height [controls-end slide-end tabs-start] $carousel-tab-height [tabs-end];
+    isolation: isolate;
 
-  &[data-graupl-action="next"] {
-    #{defaults.$carousel-item-selector} {
-      &#{defaults.$carousel-previous-item-selector} {
-        transform: translateX(
-          calc(
-            -1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-          )
-        );
+    &[data-graupl-action="next"] {
+      #{defaults.$carousel-item-selector} {
+        &#{defaults.$carousel-previous-item-selector} {
+          transform: translateX(calc(-1 * $carousel-item-max-width));
 
-        &#{defaults.$carousel-active-item-selector} {
-          transform: translateX(0);
+          &#{defaults.$carousel-active-item-selector} {
+            transform: translateX(0);
+          }
         }
-      }
 
-      &#{defaults.$carousel-next-item-selector} {
-        transform: translateX(
-          var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-        );
+        &#{defaults.$carousel-next-item-selector} {
+          transform: translateX($carousel-item-max-width);
 
-        &#{defaults.$carousel-active-item-selector} {
-          transform: translateX(0);
+          &#{defaults.$carousel-active-item-selector} {
+            transform: translateX(0);
+          }
         }
       }
     }
-  }
 
-  &[data-graupl-action="previous"] {
-    #{defaults.$carousel-item-selector} {
-      &#{defaults.$carousel-previous-item-selector} {
-        transform: translateX(
-          var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-        );
+    &[data-graupl-action="previous"] {
+      #{defaults.$carousel-item-selector} {
+        &#{defaults.$carousel-previous-item-selector} {
+          transform: translateX($carousel-item-max-width);
 
-        &#{defaults.$carousel-active-item-selector} {
-          transform: translateX(0);
+          &#{defaults.$carousel-active-item-selector} {
+            transform: translateX(0);
+          }
         }
-      }
 
-      &#{defaults.$carousel-next-item-selector} {
-        transform: translateX(
-          calc(
-            -1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-          )
-        );
+        &#{defaults.$carousel-next-item-selector} {
+          transform: translateX(calc(-1 * $carousel-item-max-width));
 
-        &#{defaults.$carousel-active-item-selector} {
-          transform: translateX(0);
+          &#{defaults.$carousel-active-item-selector} {
+            transform: translateX(0);
+          }
         }
       }
     }
@@ -67,110 +58,123 @@
 }
 
 #{defaults.$carousel-control-container-selector} {
-  display: contents;
+  @include layer(component) {
+    display: contents;
+  }
 }
 
 #{defaults.$carousel-control-selector} {
-  &#{defaults.$carousel-autoplay-selector} {
-    grid-column: autoplay;
-    grid-row: controls;
-  }
+  @include button-mixins.apply-button;
 
-  &#{defaults.$carousel-play-selector}::before {
-    content: "▶";
-    display: inline-block;
-  }
+  @include layer(component) {
+    &#{defaults.$carousel-autoplay-selector} {
+      grid-column: autoplay;
+      grid-row: controls;
+    }
 
-  &#{defaults.$carousel-pause-selector}::before {
-    content: "❚❚";
-    display: inline-block;
-  }
-
-  &#{defaults.$carousel-next-selector} {
-    grid-column: next;
-    grid-row: controls;
-
-    &::before {
-      content: "▶";
+    &#{defaults.$carousel-play-selector}::before {
+      content: $carousel-play-content;
       display: inline-block;
     }
-  }
 
-  &#{defaults.$carousel-previous-selector} {
-    grid-column: previous;
-    grid-row: controls;
-
-    &::before {
-      content: "◀";
+    &#{defaults.$carousel-pause-selector}::before {
+      content: $carousel-pause-content;
       display: inline-block;
+    }
+
+    &#{defaults.$carousel-next-selector} {
+      grid-column: next;
+      grid-row: controls;
+
+      &::before {
+        content: $carousel-next-content;
+        display: inline-block;
+      }
+    }
+
+    &#{defaults.$carousel-previous-selector} {
+      grid-column: previous;
+      grid-row: controls;
+
+      &::before {
+        content: $carousel-previous-content;
+        display: inline-block;
+      }
     }
   }
 }
 
 #{defaults.$carousel-item-container-selector} {
-  display: grid;
-  z-index: -1;
-  grid-area: slide;
-  grid-template-areas: "items";
-  overflow-x: hidden;
-  isolation: isolate;
+  @include layer(component) {
+    display: grid;
+    z-index: -1;
+    grid-area: slide;
+    grid-template-areas: "items";
+    overflow-x: hidden;
+    isolation: isolate;
+  }
 }
 
 #{defaults.$carousel-item-selector} {
-  z-index: -1;
-  grid-area: items;
-  max-width: var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%);
-  opacity: 0;
+  @include layer(component) {
+    z-index: -1;
+    grid-area: items;
+    max-width: $carousel-item-max-width;
+    opacity: 0;
 
-  &#{defaults.$carousel-active-item-selector} {
-    z-index: 1;
-    transform: translateX(0);
-    transition: transform
-      var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
-      ease-in-out;
-    opacity: 1;
-  }
-
-  &#{defaults.$carousel-previous-item-selector} {
-    z-index: 1;
-    transform: translateX(
-      calc(-1 * var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%))
-    );
-    transition: transform
-      var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
-      ease-in-out;
-    opacity: 1;
-
-    &#{defaults.$carousel-active-item-selector} {
-      transform: translateX(0);
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-  }
-
-  &#{defaults.$carousel-next-item-selector} {
-    z-index: 1;
-    transform: translateX(
-      var(--#{root-defaults.$prefix}-carousel-item-max-width, 100%)
-    );
-    opacity: 1;
 
     &#{defaults.$carousel-active-item-selector} {
+      z-index: 1;
       transform: translateX(0);
+      transition: transform
+        var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+        ease-in-out;
+      opacity: 1;
+    }
+
+    &#{defaults.$carousel-previous-item-selector} {
+      z-index: 1;
+      transform: translateX(calc(-1 * $carousel-item-max-width));
+      transition: transform
+        var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+        ease-in-out;
+      opacity: 1;
+
+      &#{defaults.$carousel-active-item-selector} {
+        transform: translateX(0);
+      }
+    }
+
+    &#{defaults.$carousel-next-item-selector} {
+      z-index: 1;
+      transform: translateX($carousel-item-max-width);
+      opacity: 1;
+
+      &#{defaults.$carousel-active-item-selector} {
+        transform: translateX(0);
+      }
     }
   }
 }
 
 #{defaults.$carousel-tab-container-selector} {
-  display: flex;
-  grid-area: tabs;
-  justify-content: center;
-  gap: 0.5rem;
+  @include layer(component) {
+    display: flex;
+    grid-area: tabs;
+    justify-content: center;
+    gap: 0.5rem;
+  }
 }
 
 #{defaults.$carousel-tab-selector} {
-  --#{root-defaults.$prefix}-button-border-radius: 50%;
+  @include button-mixins.apply-button;
 
-  &#{defaults.$carousel-active-item-selector} {
-    --#{root-defaults.$prefix}-button-background: #{button-variables.$button-active-background};
-    --#{root-defaults.$prefix}-button-color: #{button-variables.$button-active-color};
+  @include layer(component) {
+    --#{root-defaults.$prefix}-button-border-radius: 50%;
   }
 }

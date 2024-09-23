@@ -631,6 +631,7 @@ class Carousel {
 
     if (this._transitionDuration !== value && value >= 0) {
       this._transitionDuration = value;
+      this._setTransitionDuration();
     }
   }
 
@@ -807,6 +808,14 @@ class Carousel {
         this._errors.push(pauseTextChecks.message);
         check = false;
       }
+    }
+
+    // Prefix checks.
+    const prefixChecks = isValidType("string", { prefix: this._prefix });
+
+    if (!prefixChecks) {
+      this._errors.push(prefixChecks.message);
+      check = false;
     }
 
     return check;
@@ -1225,6 +1234,13 @@ class Carousel {
     });
   }
 
+  /**
+   * Sets the transition duration for the carousel as a CSS custom property.
+   *
+   * The custom property is set as `--graupl-carousel-transition-duration`.
+   *
+   * @protected
+   */
   _setTransitionDuration() {
     this.dom.carousel.style.setProperty(
       `--${this.prefix}carousel-transition-duration`,

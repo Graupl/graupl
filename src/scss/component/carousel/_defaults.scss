@@ -24,3 +24,19 @@ $carousel-tab-selector: ".carousel-tab" !default;
 $carousel-active-item-selector: ".active" !default;
 $carousel-next-item-selector: ".next" !default;
 $carousel-previous-item-selector: ".previous" !default;
+
+// Carousel grid area properties.
+$carousel-control-width: auto;
+$carousel-control-height: auto;
+$carousel-tab-width: 1fr;
+$carousel-tab-height: auto;
+$carousel-slide-height: 1fr;
+
+// Carousel slide properties.
+$carousel-item-max-width: 100%;
+
+// Carousel control properties.
+$carousel-play-content: "'▶'";
+$carousel-pause-content: "'❚❚'";
+$carousel-next-content: "'▶'";
+$carousel-previous-content: "'◀'";

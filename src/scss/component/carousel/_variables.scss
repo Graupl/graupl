@@ -6,3 +6,51 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
+@use "../../base/button/variables" as button-variables;
+@use "sass:map";
+
+// Carousel grid area properties.
+$carousel-control-width: var(
+  --#{root-defaults.$prefix}-carousel-control-width,
+  #{defaults.$carousel-control-width}
+);
+$carousel-control-height: var(
+  --#{root-defaults.$prefix}-carousel-control-height,
+  #{defaults.$carousel-control-height}
+);
+$carousel-tab-width: var(
+  --#{root-defaults.$prefix}-carousel-tab-width,
+  #{defaults.$carousel-tab-width}
+);
+$carousel-tab-height: var(
+  --#{root-defaults.$prefix}-carousel-tab-height,
+  #{defaults.$carousel-tab-height}
+);
+$carousel-slide-height: var(
+  --#{root-defaults.$prefix}-carousel-slide-height,
+  #{defaults.$carousel-slide-height}
+);
+
+// Carousel slide properties.
+$carousel-item-max-width: var(
+  --#{root-defaults.$prefix}-carousel-item-max-width,
+  #{defaults.$carousel-item-max-width}
+);
+
+// Carousel control properties.
+$carousel-play-content: var(
+  --#{root-defaults.$prefix}-carousel-play-content,
+  #{defaults.$carousel-play-content}
+);
+$carousel-pause-content: var(
+  --#{root-defaults.$prefix}-carousel-pause-content,
+  #{defaults.$carousel-pause-content}
+);
+$carousel-next-content: var(
+  --#{root-defaults.$prefix}-carousel-next-content,
+  #{defaults.$carousel-next-content}
+);
+$carousel-previous-content: var(
+  --#{root-defaults.$prefix}-carousel-previous-content,
+  #{defaults.$carousel-previous-content}
+);
