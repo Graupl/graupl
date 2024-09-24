@@ -7,6 +7,7 @@
 @use "../../mixins/layer" as *;
 @use "../../mixins/media-queries" as *;
 @use "../../functions/theme";
+@use "../../base/button/mixins" as button-mixins;
 @use "sass:map";
 
 #{defaults.$alert-selector} {
@@ -94,6 +95,8 @@
 }
 
 #{defaults.$alert-dismisser-selector} {
+  @include button-mixins.apply-button();
+
   @include layer(component) {
     grid-column: dismiss;
     grid-row: 1 / -1;
