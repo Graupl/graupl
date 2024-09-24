@@ -15,7 +15,7 @@
     }
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "commit": "git cz",
     "eslint": "eslint .",
     "prettier": "prettier '**/*.{js,mjs,cjs,scss,sass}'",
@@ -51,7 +51,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
     "eslint-plugin-jsdoc": "^50.2.4",
     "globals": "^15.0.0",
     "husky": "^9.0.11",
