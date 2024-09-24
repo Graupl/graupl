@@ -95,7 +95,7 @@
 }
 
 #{defaults.$alert-dismisser-selector} {
-  @include button-mixins.apply-button();
+  @include button-mixins.apply-button;
 
   @include layer(component) {
     grid-column: dismiss;
