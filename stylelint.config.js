@@ -11,6 +11,10 @@ const config = {
     "selector-max-compound-selectors": 4,
     "max-nesting-depth": 4,
     "selector-no-qualifying-type": null,
+    "@stylistic/string-quotes": "double",
+    "@stylistic/function-parentheses-space-inside": "never-single-line",
+    "@stylistic/indentation": null,
+    "@stylistic/block-opening-brace-space-before": "never-single-line",
   },
 };
 
