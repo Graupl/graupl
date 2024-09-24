@@ -15,7 +15,7 @@ export function keyPress(event) {
     };
 
     return Object.keys(keys).find((key) => keys[key] === true) || "";
-  } catch (error) {
+  } catch {
     // Return an empty string if something goes wrong.
     return "";
   }
