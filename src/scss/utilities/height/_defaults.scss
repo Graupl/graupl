@@ -1,0 +1,38 @@
+// @graupl/graupl height utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Height properties.
+$height-class-prefix: "h-" !default;
+$max-height-class-prefix: "max-h-" !default;
+$min-height-class-prefix: "min-h-" !default;
+
+// Height values.
+$base-height-values: (
+  auto: auto,
+  fit-content: fit-content,
+  max-content: max-content,
+  min-content: min-content,
+  stretch: stretch,
+  0: 0,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+  half-screen: 50vh,
+  third-screen: calc(100vh / 3),
+  two-thirds-screen: calc(100vh / 1.5),
+  quarter-screen: 25vh,
+  three-quarters-screen: 75vh,
+  full-screen: 100vh,
+);
+$custom-height-values: () !default;
+$height-values: map.merge($base-height-values, $custom-height-values);
