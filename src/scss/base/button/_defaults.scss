@@ -12,7 +12,13 @@
 $button-selector: ".button" !default;
 $button-link-selector: ".link" !default;
 $button-theme-selector-prefix: "." !default;
+
+// State selectors.
 $button-active-selector: ".active" !default;
+$button-disabled-selector: ".disabled" !default;
+$button-focus-selector: ".focus" !default;
+$button-hover-selector: ".hover" !default;
+$button-visited-selector: ".visited" !default;
 
 // Button properties.
 $button-transform: none !default;

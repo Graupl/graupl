@@ -56,15 +56,18 @@
     font-size: $font-size;
     cursor: pointer;
 
-    &:visited {
+    &:visited,
+    &#{defaults.$button-visited-selector} {
       --#{root-defaults.$prefix}-button-transform: #{$visited-transform};
     }
 
-    &:focus-visible {
+    &:focus-visible,
+    &#{defaults.$button-focus-selector} {
       --#{root-defaults.$prefix}-button-transform: #{$focus-transform};
     }
 
-    &:hover {
+    &:hover,
+    &#{defaults.$button-hover-selector} {
       --#{root-defaults.$prefix}-button-transform: #{$hover-transform};
     }
 
@@ -74,14 +77,19 @@
     }
 
     &:disabled,
-    &[disabled] {
+    &[disabled],
+    &#{defaults.$button-disabled-selector} {
       cursor: not-allowed;
 
       &,
       &:visited,
+      &#{defaults.$button-visited-selector},
       &:focus-visible,
+      &#{defaults.$button-focus-selector},
       &:hover,
-      &:active {
+      &#{defaults.$button-hover-selector},
+      &:active,
+      &#{defaults.$button-active-selector} {
         --#{root-defaults.$prefix}-button-transform: #{$disabled-transform};
       }
     }
@@ -92,9 +100,9 @@
   }
 
   @include layer(theme) {
-    border-color: $button-border-color;
-    background: $button-background;
-    color: $button-color;
+    border-color: $border-color;
+    background: $background;
+    color: $color;
 
     @each $color, $map in color.$theme-active {
       &#{defaults.$button-theme-selector-prefix}#{$color} {
@@ -107,19 +115,22 @@
       }
     }
 
-    &:visited {
+    &:visited,
+    &#{defaults.$button-visited-selector} {
       --#{root-defaults.$prefix}-button-border-color: #{$visited-border-color};
       --#{root-defaults.$prefix}-button-background: #{$visited-background};
       --#{root-defaults.$prefix}-button-color: #{$visited-color};
     }
 
-    &:focus-visible {
+    &:focus-visible,
+    &#{defaults.$button-focus-selector} {
       --#{root-defaults.$prefix}-button-border-color: #{$focus-border-color};
       --#{root-defaults.$prefix}-button-background: #{$focus-background};
       --#{root-defaults.$prefix}-button-color: #{$focus-color};
     }
 
-    &:hover {
+    &:hover,
+    &#{defaults.$button-hover-selector} {
       --#{root-defaults.$prefix}-button-border-color: #{$hover-border-color};
       --#{root-defaults.$prefix}-button-background: #{$hover-background};
       --#{root-defaults.$prefix}-button-color: #{$hover-color};
@@ -133,12 +144,17 @@
     }
 
     &:disabled,
-    &[disabled] {
+    &[disabled],
+    &#{defaults.$button-disabled-selector} {
       &,
       &:visited,
+      &#{defaults.$button-visited-selector},
       &:focus-visible,
+      &#{defaults.$button-focus-selector},
       &:hover,
-      &:active {
+      &#{defaults.$button-hover-selector},
+      &:active,
+      &#{defaults.$button-active-selector} {
         --#{root-defaults.$prefix}-button-border-color: #{$disabled-border-color};
         --#{root-defaults.$prefix}-button-background: #{$disabled-background};
         --#{root-defaults.$prefix}-button-color: #{$disabled-color};
