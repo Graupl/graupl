@@ -11,9 +11,10 @@
   @include layer(component) {
     display: grid;
     position: relative;
-    grid-template-columns: [slide-start autoplay-start] $carousel-control-width [autoplay-end tabs-start] $carousel-tab-width [tabs-end previous-start] $carousel-control-width [previous-end next-start] $carousel-control-width [next-end slide-end];
-    grid-template-rows: [slide-start controls-start] $carousel-control-height [controls-end] $carousel-slide-height [tabs-start] $carousel-tab-height [tabs-end slide-end];
+    grid-template-columns: [slide-start controls-start] auto [tabs-start] $carousel-tabs-width [tabs-end] auto [controls-end slide-end];
+    grid-template-rows: [slide-start controls-start] $carousel-controls-height [controls-end] $carousel-slide-height [tabs-start] $carousel-tabs-height [tabs-end slide-end];
     isolation: isolate;
+    padding: $carousel-padding;
 
     &[data-graupl-action="next"] {
       #{defaults.$carousel-item-selector} {
@@ -21,7 +22,7 @@
           transform: translateX(calc(-1 * $carousel-item-max-width));
 
           &#{defaults.$carousel-active-item-selector} {
-            transform: translateX(0);
+            transform: none;
           }
         }
 
@@ -29,7 +30,7 @@
           transform: translateX($carousel-item-max-width);
 
           &#{defaults.$carousel-active-item-selector} {
-            transform: translateX(0);
+            transform: none;
           }
         }
       }
@@ -41,7 +42,7 @@
           transform: translateX($carousel-item-max-width);
 
           &#{defaults.$carousel-active-item-selector} {
-            transform: translateX(0);
+            transform: none;
           }
         }
 
@@ -49,7 +50,7 @@
           transform: translateX(calc(-1 * $carousel-item-max-width));
 
           &#{defaults.$carousel-active-item-selector} {
-            transform: translateX(0);
+            transform: none;
           }
         }
       }
@@ -59,7 +60,14 @@
 
 #{defaults.$carousel-control-container-selector} {
   @include layer(component) {
-    display: contents;
+    z-index: 1;
+    display: grid;
+    grid-area: controls;
+    grid-template-columns:
+      [autoplay-start] $carousel-control-width [autoplay-end]
+      1fr [previous-start] $carousel-control-width [previous-end next-start]
+      $carousel-control-width [next-end];
+    grid-template-rows: [autoplay-start next-start previous-start] $carousel-control-height [previous-end next-end autoplay-end];
   }
 }
 
@@ -68,8 +76,7 @@
 
   @include layer(component) {
     &#{defaults.$carousel-autoplay-selector} {
-      grid-column: autoplay;
-      grid-row: controls;
+      grid-area: autoplay;
     }
 
     &#{defaults.$carousel-play-selector}::before {
@@ -83,8 +90,7 @@
     }
 
     &#{defaults.$carousel-next-selector} {
-      grid-column: next;
-      grid-row: controls;
+      grid-area: next;
 
       &::before {
         content: $carousel-next-content;
@@ -93,8 +99,7 @@
     }
 
     &#{defaults.$carousel-previous-selector} {
-      grid-column: previous;
-      grid-row: controls;
+      grid-area: previous;
 
       &::before {
         content: $carousel-previous-content;
@@ -107,11 +112,12 @@
 #{defaults.$carousel-item-container-selector} {
   @include layer(component) {
     display: grid;
-    z-index: -1;
+    z-index: 0;
     grid-area: slide;
     grid-template-areas: "items";
     overflow-x: hidden;
     isolation: isolate;
+    padding: $carousel-item-container-padding;
   }
 }
 
@@ -122,15 +128,9 @@
     max-width: $carousel-item-max-width;
     opacity: 0;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
     &#{defaults.$carousel-active-item-selector} {
       z-index: 1;
-      transform: translateX(0);
+      transform: none;
       transition: transform
         var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
         ease-in-out;
@@ -146,7 +146,7 @@
       opacity: 1;
 
       &#{defaults.$carousel-active-item-selector} {
-        transform: translateX(0);
+        transform: none;
       }
     }
 
@@ -156,7 +156,7 @@
       opacity: 1;
 
       &#{defaults.$carousel-active-item-selector} {
-        transform: translateX(0);
+        transform: none;
       }
     }
   }
@@ -164,10 +164,12 @@
 
 #{defaults.$carousel-tab-container-selector} {
   @include layer(component) {
+    z-index: 1;
     display: flex;
     grid-area: tabs;
     justify-content: center;
-    gap: 0.5rem;
+    gap: $carousel-tab-container-gap;
+    padding: $carousel-tab-container-padding;
   }
 }
 
