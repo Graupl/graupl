@@ -1,0 +1,38 @@
+// @graupl/graupl width utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Width properties.
+$width-class-prefix: "w-" !default;
+$max-width-class-prefix: "max-w-" !default;
+$min-width-class-prefix: "min-w-" !default;
+
+// Width values.
+$base-width-values: (
+  auto: auto,
+  fit-content: fit-content,
+  max-content: max-content,
+  min-content: min-content,
+  stretch: stretch,
+  0: 0,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+  half-screen: 50vw,
+  third-screen: calc(100vw / 3),
+  two-thirds-screen: calc(100vw / 1.5),
+  quarter-screen: 25vw,
+  three-quarters-screen: 75vw,
+  full-screen: 100vw,
+);
+$custom-width-values: () !default;
+$width-values: map.merge($base-width-values, $custom-width-values);

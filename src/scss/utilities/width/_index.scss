@@ -1,0 +1,23 @@
+// @graupl/graupl width utilities styles.
+
+@use "variables" as *;
+@use "defaults";
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each width property, create a utility class.
+  @each $width, $value in defaults.$width-values {
+    .#{defaults.$width-class-prefix}#{$width} {
+      width: important.insert($value);
+    }
+
+    .#{defaults.$max-width-class-prefix}#{$width} {
+      max-width: important.insert($value);
+    }
+
+    .#{defaults.$min-width-class-prefix}#{$width} {
+      min-width: important.insert($value);
+    }
+  }
+}
