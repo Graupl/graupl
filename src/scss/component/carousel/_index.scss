@@ -60,8 +60,8 @@
 
 #{defaults.$carousel-control-container-selector} {
   @include layer(component) {
-    z-index: 1;
     display: grid;
+    z-index: 1;
     grid-area: controls;
     grid-template-columns:
       [autoplay-start] $carousel-control-width [autoplay-end]
@@ -115,9 +115,9 @@
     z-index: 0;
     grid-area: slide;
     grid-template-areas: "items";
+    padding: $carousel-item-container-padding;
     overflow-x: hidden;
     isolation: isolate;
-    padding: $carousel-item-container-padding;
   }
 }
 
@@ -164,12 +164,12 @@
 
 #{defaults.$carousel-tab-container-selector} {
   @include layer(component) {
-    z-index: 1;
     display: flex;
+    z-index: 1;
     grid-area: tabs;
     justify-content: center;
-    gap: $carousel-tab-container-gap;
     padding: $carousel-tab-container-padding;
+    gap: $carousel-tab-container-gap;
   }
 }
 
