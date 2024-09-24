@@ -1,80 +1,58 @@
-// @gruapl/graupl button base styles.
+// @graupl/graupl button base styles.
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../link/defaults" as link-defaults;
-@use "../../theme/color/variables" as color;
 @use "../../base/link/variables" as link;
 @use "variables" as *;
+@use "mixins" as *;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
-@use "../../functions/theme";
-@use "sass:map";
+
+#{defaults.$button-selector} {
+  @include apply-button;
+
+  &#{defaults.$button-link-selector} {
+    --#{root-defaults.$prefix}-button-padding: #{link.$link-padding};
+    --#{root-defaults.$prefix}-button-transition: #{link.$link-transition};
+    --#{root-defaults.$prefix}-button-transition-reduced-motion: #{link.$link-transition-reduced-motion};
+    --#{root-defaults.$prefix}-button-transform: #{link.$link-transform};
+    --#{root-defaults.$prefix}-button-visited-transform: #{link.$link-visited-transform};
+    --#{root-defaults.$prefix}-button-focus-transform: #{link.$link-transform};
+    --#{root-defaults.$prefix}-button-hover-transform: #{link.$link-hover-transform};
+    --#{root-defaults.$prefix}-button-active-transform: #{link.$link-active-transform};
+    --#{root-defaults.$prefix}-button-border-width: #{link.$link-border-width};
+    --#{root-defaults.$prefix}-button-border-style: #{link.$link-border-style};
+    --#{root-defaults.$prefix}-button-border-radius: #{link.$link-border-radius};
+    --#{root-defaults.$prefix}-button-min-width: #{link.$link-min-width};
+    --#{root-defaults.$prefix}-button-min-height: #{link.$link-min-height};
+    --#{root-defaults.$prefix}-button-font-size: inherit;
+
+    text-decoration: link.$link-text-decoration;
+    text-decoration-thickness: link.$link-text-decoration-thickness;
+    text-decoration-style: link.$link-text-decoration-style;
+  }
+}
 
 @include layer(base) {
-  #{defaults.$button-selector} {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: $button-min-width;
-    min-height: $button-min-height;
-    padding: $button-padding;
-    transform: $button-transform;
-    transition: $button-transition;
-    border: $button-border;
-    border-radius: $button-border-radius;
-    font-size: $button-font-size;
-    cursor: pointer;
-
-    &:visited {
-      --#{root-defaults.$prefix}-button-transform: #{$button-visited-transform};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}-button-transform: #{$button-focus-transform};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}-button-transform: #{$button-hover-transform};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}-button-transform: #{$button-active-transform};
-    }
-
-    &:disabled,
-    &[disabled] {
-      cursor: not-allowed;
-
-      &,
-      &:visited,
-      &:focus-visible,
-      &:hover,
-      &:active {
-        --#{root-defaults.$prefix}-button-transform: #{$button-disabled-transform};
-      }
-    }
-
-    &#{defaults.$button-link-selector} {
-      --#{root-defaults.$prefix}-button-padding: #{link.$link-padding};
-      --#{root-defaults.$prefix}-button-transition: #{link.$link-transition};
-      --#{root-defaults.$prefix}-button-transition-reduced-motion: #{link.$link-transition-reduced-motion};
-      --#{root-defaults.$prefix}-button-transform: #{link.$link-transform};
-      --#{root-defaults.$prefix}-button-visited-transform: #{link.$link-visited-transform};
-      --#{root-defaults.$prefix}-button-focus-transform: #{link.$link-transform};
-      --#{root-defaults.$prefix}-button-hover-transform: #{link.$link-hover-transform};
-      --#{root-defaults.$prefix}-button-active-transform: #{link.$link-active-transform};
-      --#{root-defaults.$prefix}-button-border-width: #{link.$link-border-width};
-      --#{root-defaults.$prefix}-button-border-style: #{link.$link-border-style};
-      --#{root-defaults.$prefix}-button-border-radius: #{link.$link-border-radius};
-      --#{root-defaults.$prefix}-button-min-width: #{link.$link-min-width};
-      --#{root-defaults.$prefix}-button-min-height: #{link.$link-min-height};
-      --#{root-defaults.$prefix}-button-font-size: inherit;
-
-      text-decoration: link.$link-text-decoration;
-      text-decoration-thickness: link.$link-text-decoration-thickness;
-      text-decoration-style: link.$link-text-decoration-style;
-    }
+  #{defaults.$button-selector}#{defaults.$button-link-selector} {
+    --#{root-defaults.$prefix}-button-color: #{link.$link-color};
+    --#{root-defaults.$prefix}-button-visited-color: #{link.$link-visited-color};
+    --#{root-defaults.$prefix}-button-focus-color: #{link.$link-focus-color};
+    --#{root-defaults.$prefix}-button-hover-color: #{link.$link-hover-color};
+    --#{root-defaults.$prefix}-button-active-color: #{link.$link-active-color};
+    --#{root-defaults.$prefix}-button-disabled-color: #{link.$link-disabled-color};
+    --#{root-defaults.$prefix}-button-background: #{link.$link-background};
+    --#{root-defaults.$prefix}-button-visited-background: #{link.$link-visited-background};
+    --#{root-defaults.$prefix}-button-focus-background: #{link.$link-focus-background};
+    --#{root-defaults.$prefix}-button-hover-background: #{link.$link-hover-background};
+    --#{root-defaults.$prefix}-button-active-background: #{link.$link-active-background};
+    --#{root-defaults.$prefix}-button-disabled-background: #{link.$link-disabled-background};
+    --#{root-defaults.$prefix}-button-border-color: #{link.$link-border-color};
+    --#{root-defaults.$prefix}-button-visited-border-color: #{link.$link-visited-border-color};
+    --#{root-defaults.$prefix}-button-focus-border-color: #{link.$link-focus-border-color};
+    --#{root-defaults.$prefix}-button-hover-border-color: #{link.$link-hover-border-color};
+    --#{root-defaults.$prefix}-button-active-border-color: #{link.$link-active-border-color};
+    --#{root-defaults.$prefix}-button-disabled-border-color: #{link.$link-disabled-border-color};
   }
 
   #{link-defaults.$link-selector} {
@@ -101,90 +79,9 @@
       --#{root-defaults.$prefix}-link-disabled-text-decoration: none;
     }
   }
-
-  @include animation-off {
-    #{defaults.$button-selector} {
-      --#{root-defaults.$prefix}-button-transition: #{$button-transition-reduced-motion};
-    }
-  }
 }
 
 @include layer(theme) {
-  #{defaults.$button-selector} {
-    border-color: $button-border-color;
-    background: $button-background;
-    color: $button-color;
-
-    @each $color, $map in color.$theme-active {
-      &#{defaults.$button-theme-selector-prefix}#{$color} {
-        @each $prop, $shade in defaults.$button-state-theme-map {
-          --#{root-defaults.$prefix}-button-#{$prop}: #{theme.get(
-              $color,
-              $shade
-            )};
-        }
-      }
-    }
-
-    &#{defaults.$button-link-selector} {
-      --#{root-defaults.$prefix}-button-color: #{link.$link-color};
-      --#{root-defaults.$prefix}-button-visited-color: #{link.$link-visited-color};
-      --#{root-defaults.$prefix}-button-focus-color: #{link.$link-focus-color};
-      --#{root-defaults.$prefix}-button-hover-color: #{link.$link-hover-color};
-      --#{root-defaults.$prefix}-button-active-color: #{link.$link-active-color};
-      --#{root-defaults.$prefix}-button-disabled-color: #{link.$link-disabled-color};
-      --#{root-defaults.$prefix}-button-background: #{link.$link-background};
-      --#{root-defaults.$prefix}-button-visited-background: #{link.$link-visited-background};
-      --#{root-defaults.$prefix}-button-focus-background: #{link.$link-focus-background};
-      --#{root-defaults.$prefix}-button-hover-background: #{link.$link-hover-background};
-      --#{root-defaults.$prefix}-button-active-background: #{link.$link-active-background};
-      --#{root-defaults.$prefix}-button-disabled-background: #{link.$link-disabled-background};
-      --#{root-defaults.$prefix}-button-border-color: #{link.$link-border-color};
-      --#{root-defaults.$prefix}-button-visited-border-color: #{link.$link-visited-border-color};
-      --#{root-defaults.$prefix}-button-focus-border-color: #{link.$link-focus-border-color};
-      --#{root-defaults.$prefix}-button-hover-border-color: #{link.$link-hover-border-color};
-      --#{root-defaults.$prefix}-button-active-border-color: #{link.$link-active-border-color};
-      --#{root-defaults.$prefix}-button-disabled-border-color: #{link.$link-disabled-border-color};
-    }
-
-    &:visited {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-visited-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-visited-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-visited-color};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-focus-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-focus-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-focus-color};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-hover-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-hover-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-hover-color};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}-button-border-color: #{$button-active-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$button-active-background};
-      --#{root-defaults.$prefix}-button-color: #{$button-active-color};
-    }
-
-    &:disabled,
-    &[disabled] {
-      &,
-      &:visited,
-      &:focus-visible,
-      &:hover,
-      &:active {
-        --#{root-defaults.$prefix}-button-border-color: #{$button-disabled-border-color};
-        --#{root-defaults.$prefix}-button-background: #{$button-disabled-background};
-        --#{root-defaults.$prefix}-button-color: #{$button-disabled-color};
-      }
-    }
-  }
-
   #{link-defaults.$link-selector} {
     &#{defaults.$button-selector}:not(#{defaults.$button-link-selector}) {
       --#{root-defaults.$prefix}-link-color: #{$button-color};
