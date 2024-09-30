@@ -11,7 +11,7 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const buildType = process.env.BUILD_TYPE ?? "default";
 
 // Supported build types.
-const formats = ["iife", "es", "cjs"];
+const formats = ["iife", "esm", "cjs"];
 
 // The library options for the different menus.
 const lib = {
