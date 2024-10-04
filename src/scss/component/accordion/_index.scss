@@ -29,30 +29,30 @@
 
 #{defaults.$accordion-item-selector} {
   @include layer(component) {
+    overflow: hidden;
     border: $accordion-item-border;
     border-radius: $accordion-item-border-radius;
-    overflow: hidden;
     isolation: isolate;
 
     &#{defaults.$accordion-item-close-selector}
       #{defaults.$accordion-item-content-selector} {
       display: none;
-      opacity: 0;
       height: 0;
+      opacity: 0;
     }
 
     &#{defaults.$accordion-item-open-selector}
       #{defaults.$accordion-item-content-selector} {
       display: block;
-      opacity: 1;
       height: auto;
+      opacity: 1;
     }
 
     &#{defaults.$accordion-item-transition-selector}
       #{defaults.$accordion-item-content-selector} {
       display: block;
-      opacity: 0;
       height: 0;
+      opacity: 0;
     }
   }
 
@@ -62,13 +62,13 @@
 }
 
 #{defaults.$accordion-item-toggle-selector} {
-  @include button-mixins.apply-button();
+  @include button-mixins.apply-button;
 
   @include layer(component) {
+    z-index: 2;
     padding: $accordion-item-toggle-padding;
     transform: $accordion-item-toggle-transform;
     transition: $accordion-item-toggle-transition;
-    z-index: 2;
 
     @each $selector in map.get(root-defaults.$state-selectors, visited) {
       &#{$selector} {
@@ -120,15 +120,15 @@
 
 #{defaults.$accordion-item-header-selector} {
   @include layer(component) {
-    padding: $accordion-item-header-padding;
     margin: $accordion-item-header-margin;
+    padding: $accordion-item-header-padding;
   }
 }
 
 #{defaults.$accordion-item-title-selector} {
   @include layer(component) {
-    padding: $accordion-item-title-padding;
     margin: $accordion-item-title-margin;
+    padding: $accordion-item-title-padding;
 
     &,
     #{defaults.$accordion-item-toggle-selector} {
@@ -142,10 +142,10 @@
   @include layer(theme) {
     &,
     #{defaults.$accordion-item-toggle-selector} {
+      font-family: $accordion-title-font-family;
       font-size: $accordion-title-font-size;
       font-weight: $accordion-title-font-weight;
       line-height: $accordion-title-line-height;
-      font-family: $accordion-title-font-family;
     }
   }
 }

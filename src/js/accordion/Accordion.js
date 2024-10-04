@@ -538,11 +538,7 @@ class Accordion {
    *
    * @protected
    */
-  _createChildElements() {
-    this.dom.accordionItems.forEach((element) => {
-      console.log(element);
-    });
-  }
+  _createChildElements() {}
 
   /**
    * Validates all aspects of the accordion item to ensure proper functionality.
@@ -640,8 +636,6 @@ class Accordion {
     this.dom.accordionItemToggles.forEach((accordionToggle) => {
       accordionToggle.addEventListener("keyup", (event) => {
         const key = keyPress(event);
-
-        console.log(event, key);
 
         switch (key) {
           case "Space":
