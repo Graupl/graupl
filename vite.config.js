@@ -48,10 +48,4 @@ export default defineConfig({
       host: "localhost",
     },
   },
-  test: {
-    environment: "jsdom",
-    environmentOptions: {
-      pretendToBeVisual: true,
-    },
-  },
 });
