@@ -12,10 +12,13 @@ export function keyPress(event) {
       Enter: key === "Enter" || key === 13,
       Space: key === " " || key === "Spacebar" || key === 32,
       Escape: key === "Escape" || key === "Esc" || key === 27,
-      ArrowDown: key === "ArrowDown" || key === 40,
-      ArrowUp: key === "ArrowUp" || key === 38,
+      ArrowUp: key === "ArrowUp" || key === "Up" || key === 38,
+      ArrowRight: key === "ArrowRight" || key === "Right" || key === 39,
+      ArrowDown: key === "ArrowDown" || key === "Down" || key === 40,
+      ArrowLeft: key === "ArrowLeft" || key === "Left" || key === 37,
       Home: key === "Home" || key === 36,
       End: key === "End" || key === 35,
+      Tab: key === "Tab" || key === 9,
     };
 
     return Object.keys(keys).find((key) => keys[key] === true) || "";

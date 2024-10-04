@@ -21,6 +21,12 @@ const lib = {
     formats,
     fileName: (format) => `graupl.${format}.js`,
   },
+  Accordion: {
+    entry: resolve(__dirname, "/src/js/accordion/Accordion.js"),
+    name: "Accordion",
+    formats,
+    fileName: (format) => `component/accordion.${format}.js`,
+  },
   Alert: {
     entry: resolve(__dirname, "/src/js/alert/Alert.js"),
     name: "Alert",

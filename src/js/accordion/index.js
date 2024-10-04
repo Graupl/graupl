@@ -1,18 +1,20 @@
 import Accordion from "./Accordion.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("Accordion loaded");
-
   const accordions = [];
 
   document.querySelectorAll(".accordion").forEach((accordionElement) => {
-    const accordion = new Accordion({ accordionElement });
+    const accordion = new Accordion({
+      accordionElement,
+      initialize: true,
+      optionalKeySupport: true,
+    });
     accordions.push(accordion);
   });
 
-  const gruapl = window.Graupl || {};
+  const graupl = window.Graupl || {};
 
-  gruapl.accordions = accordions;
+  graupl.accordions = accordions;
 
-  window.Graupl = gruapl;
+  window.Graupl = graupl;
 });

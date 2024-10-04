@@ -140,10 +140,13 @@ function m(e) {
       Enter: t === "Enter" || t === 13,
       Space: t === " " || t === "Spacebar" || t === 32,
       Escape: t === "Escape" || t === "Esc" || t === 27,
-      ArrowDown: t === "ArrowDown" || t === 40,
-      ArrowUp: t === "ArrowUp" || t === 38,
+      ArrowUp: t === "ArrowUp" || t === "Up" || t === 38,
+      ArrowRight: t === "ArrowRight" || t === "Right" || t === 39,
+      ArrowDown: t === "ArrowDown" || t === "Down" || t === 40,
+      ArrowLeft: t === "ArrowLeft" || t === "Left" || t === 37,
       Home: t === "Home" || t === 36,
-      End: t === "End" || t === 35
+      End: t === "End" || t === 35,
+      Tab: t === "Tab" || t === 9
     };
     return Object.keys(s).find((i) => s[i] === !0) || "";
   } catch {
@@ -498,15 +501,15 @@ class F {
     carouselTabContainerSelector: _ = ".carousel-tab-container",
     autoplaySelector: a = ".autoplay",
     nextSelector: g = ".next",
-    previousSelector: E = ".previous",
-    activeClass: b = "active",
-    previousClass: I = "previous",
-    nextClass: T = "next",
+    previousSelector: b = ".previous",
+    activeClass: E = "active",
+    previousClass: T = "previous",
+    nextClass: I = "next",
     playClass: v = "play",
     pauseClass: w = "pause",
     autoplay: x = !0,
-    transitionDelay: k = 1e4,
-    transitionDuration: A = 500,
+    transitionDelay: A = 1e4,
+    transitionDuration: k = 500,
     playText: D = "Play",
     pauseText: L = "Pause",
     prefix: S = "graupl-",
@@ -690,7 +693,7 @@ class F {
      * @type {string[]}
      */
     r(this, "_errors", []);
-    this._dom.carousel = t, this._selectors.carouselItems = s, this._selectors.carouselItemContainer = i, this._selectors.carouselControls = o, this._selectors.carouselControlContainer = n, this._selectors.carouselTabs = d, this._selectors.carouselTabContainer = _, this._selectors.autoplay = a, this._selectors.next = g, this._selectors.previous = E, this._activeClass = b || "", this._previousClass = I || "", this._nextClass = T || "", this._playClass = v || "", this._pauseClass = w || "", this._autoplay = x, this._transitionDelay = k, this._transitionDuration = A, this._playText = D || "", this._pauseText = L || "", this._prefix = S || "", $ && this.initialize();
+    this._dom.carousel = t, this._selectors.carouselItems = s, this._selectors.carouselItemContainer = i, this._selectors.carouselControls = o, this._selectors.carouselControlContainer = n, this._selectors.carouselTabs = d, this._selectors.carouselTabContainer = _, this._selectors.autoplay = a, this._selectors.next = g, this._selectors.previous = b, this._activeClass = E || "", this._previousClass = T || "", this._nextClass = I || "", this._playClass = v || "", this._pauseClass = w || "", this._autoplay = x, this._transitionDelay = A, this._transitionDuration = k, this._playText = D || "", this._pauseText = L || "", this._prefix = S || "", $ && this.initialize();
   }
   /**
    * Initializes the carousel.

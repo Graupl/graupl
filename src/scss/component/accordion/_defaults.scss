@@ -10,17 +10,21 @@
 
 // Accordion selectors.
 $accordion-selector: ".accordion" !default;
-$accordion-icon-selector: ".accordion-icon" !default;
 $accordion-item-selector: ".accordion-item" !default;
-$accordion-trigger-selector: ".accordion-trigger" !default;
-$accordion-title-selector: ".accordion-title" !default;
-$accordion-panel-selector: ".accordion-panel" !default;
-$accordion-footer-selector: ".accordion-footer" !default;
-$accordion-body-selector: ".accordion-body" !default;
-$accordion-close-selector: ".hide" !default;
-$accordion-open-selector: ".open" !default;
-$accordion-transition-selector: ".transitioning" !default;
-$accordion-trigger-wrapper: ".accordion-trigger-wrapper" !default;
+$accordion-item-header-selector: ".accordion-item-header" !default;
+$accordion-item-title-selector: ".accordion-item-title" !default;
+$accordion-item-toggle-selector: ".accordion-item-toggle" !default;
+$accordion-item-content-selector: ".accordion-item-content" !default;
+$accordion-item-body-selector: ".accordion-item-body" !default;
+$accordion-item-footer-selector: ".accordion-item-footer" !default;
+$accordion-item-open-selector: ".show" !default;
+$accordion-item-close-selector: ".hide" !default;
+$accordion-item-transition-selector: ".transitioning" !default;
 
-// Accordion properties.
-$accordion-trigger-text-align: left !default;
+// Toggle transform properties.
+$accordion-item-toggle-transform: none !default;
+$accordion-item-toggle-visited-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-focus-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-hover-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-active-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-disabled-transform: $accordion-item-toggle-transform !default;

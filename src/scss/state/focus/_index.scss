@@ -2,12 +2,18 @@
 
 @use "variables" as *;
 @use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
+@use "sass:map";
 
 @include layer(state) {
-  *:focus-visible {
-    border-color: transparent;
-    outline: $focus-outline-width $focus-outline-style $focus-outline-color;
-    outline-offset: $focus-outline-offset;
-    box-shadow: $focus-box-shadow;
+  $focus-selectors: map.get(root-defaults.$state-selectors, focus);
+
+  @each $state in $focus-selectors {
+    *#{$state} {
+      border-color: transparent;
+      outline: $focus-outline-width $focus-outline-style $focus-outline-color;
+      outline-offset: $focus-outline-offset;
+      box-shadow: $focus-box-shadow;
+    }
   }
 }

@@ -15,13 +15,17 @@
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
     },
-    "./carousel": {
-      "import": "./dist/js/component/carousel.es.js",
-      "require": "./dist/carousel.cjs.js"
+    "./accordion": {
+      "import": "./dist/js/component/accordion.es.js",
+      "require": "./dist/js/component/accordion.cjs.js"
     },
     "./alert": {
       "import": "./dist/js/component/alert.es.js",
       "require": "./dist/js/component/alert.cjs.js"
+    },
+    "./carousel": {
+      "import": "./dist/js/component/carousel.es.js",
+      "require": "./dist/carousel.cjs.js"
     }
   },
   "scripts": {
@@ -36,8 +40,9 @@
     "build": "npm-run-all build:*",
     "build:css": "npm run sass && npm run postcss",
     "build:js": "BUILD_TYPE=default vite build",
-    "build:carousel": "BUILD_TYPE=Carousel vite build",
+    "build:accordion": "BUILD_TYPE=Accordion vite build",
     "build:alert": "BUILD_TYPE=Alert vite build",
+    "build:carousel": "BUILD_TYPE=Carousel vite build",
     "postbuild": "npm run docs:build",
     "release": "git add dist/. && standard-version -a",
     "prerelease": "npm run lint && npm run build",
