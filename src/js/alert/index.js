@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
     alerts.push(alert);
   });
 
-  const gruapl = window.Graupl || {};
+  const graupl = window.Graupl || {};
 
-  gruapl.alerts = alerts;
+  graupl.alerts = alerts;
 
-  window.Graupl = gruapl;
+  window.Graupl = graupl;
 });

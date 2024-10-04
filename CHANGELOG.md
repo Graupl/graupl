@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.15](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2024-09-24)
+
+
+### Build System
+
+* **stylelint:** fix broken rules ([891807f](https://github.com/Graupl/graupl/commit/891807f0a618be0966fb9a6de9a3ee83a23c09a1))
+
+## [1.0.0-alpha.14](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.13...v1.0.0-alpha.14) (2024-09-24)
+
+
+### Features
+
+* add basic template for documentation ([2a71c52](https://github.com/Graupl/graupl/commit/2a71c525ef4c7ec57faefce1c4658f9a0d8e45e1))
+* **button:** add state classes ([1018e3b](https://github.com/Graupl/graupl/commit/1018e3b8c88ed1fc93565e6f642cba81b08cf1e3))
+* **component:** add top bottom and inverse classes to cards ([3199410](https://github.com/Graupl/graupl/commit/3199410c1cb925d2ba485899b0a039c802388e7b))
+* **component:** add transition custom props for alerts and fix markup ([b3c479f](https://github.com/Graupl/graupl/commit/b3c479fa351cfdbbfa4b877a2d5481cd6c5859ee))
+* **component:** implement alerts ([d493a7f](https://github.com/Graupl/graupl/commit/d493a7fdd58a1f3476988e4162078dbf4d9700eb)), closes [#65](https://github.com/Graupl/graupl/issues/65)
+* **component:** implement carousel ([ea613c1](https://github.com/Graupl/graupl/commit/ea613c14b98ddea04a4c3024adcf1b34aca3cfe0)), closes [#87](https://github.com/Graupl/graupl/issues/87)
+* **utilities:** add width and height classes ([5d93ed6](https://github.com/Graupl/graupl/commit/5d93ed6e8e85dd553543289db29d8a833b874afd))
+* **utility:** add visually hidden classes ([4c7cecc](https://github.com/Graupl/graupl/commit/4c7ceccd14194ccfbb1f67fba8f332f499a3e6db))
+
+
+### Bug Fixes
+
+* **menu:** adjust min/max width on menu items ([cff88ec](https://github.com/Graupl/graupl/commit/cff88eccb2dada10d98b48595b742ef08b79dc40))
+
+
+### Code Refactoring
+
+* **alerts:** use new button mixin ([2fe35eb](https://github.com/Graupl/graupl/commit/2fe35ebfd5ade483463f80e5688db976e938301c))
+
+
+### Build System
+
+* **npm:** update eslint and plugins to latest ([d927eaa](https://github.com/Graupl/graupl/commit/d927eaa7f70da62aad1aa766e32dace8668bb3dc))
+* **npm:** update husky ([678341c](https://github.com/Graupl/graupl/commit/678341cca8faa205f75e8a32826bbd1542c93587))
+* **npm:** update stylelint plugins ([f54942d](https://github.com/Graupl/graupl/commit/f54942d25b6c094bb8b27b5cae695984b46f4326))
+
 ## [1.0.0-alpha.13](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.12...v1.0.0-alpha.13) (2024-06-04)
 
 

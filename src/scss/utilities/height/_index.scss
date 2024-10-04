@@ -1,0 +1,23 @@
+// @graupl/graupl height utilities styles.
+
+@use "variables" as *;
+@use "defaults";
+@use "../../mixins/layer" as *;
+@use "../../functions/important";
+
+@include layer(utilities) {
+  // For each height property, create a utility class.
+  @each $height, $value in defaults.$height-values {
+    .#{defaults.$height-class-prefix}#{$height} {
+      height: important.insert($value);
+    }
+
+    .#{defaults.$max-height-class-prefix}#{$height} {
+      max-height: important.insert($value);
+    }
+
+    .#{defaults.$min-height-class-prefix}#{$height} {
+      min-height: important.insert($value);
+    }
+  }
+}

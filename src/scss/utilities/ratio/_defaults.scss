@@ -11,6 +11,7 @@
 // Ratio utilities.
 $ratio-selector: ".ratio" !default;
 $ratio-variant-selector-prefix: "." !default;
+$force-ratio-selector: ".force-ratio" !default;
 $base-ratios: (
   "one-by-one": 100%,
   "two-by-one": 50%,

@@ -1,0 +1,43 @@
+// @graupl/graupl carousel component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Carousel selectors.
+$carousel-selector: ".carousel" !default;
+$carousel-control-container-selector: ".carousel-control-container" !default;
+$carousel-control-selector: ".carousel-control" !default;
+$carousel-pause-selector: ".pause" !default;
+$carousel-play-selector: ".play" !default;
+$carousel-autoplay-selector: ".autoplay" !default;
+$carousel-previous-selector: ".previous" !default;
+$carousel-next-selector: ".next" !default;
+$carousel-item-container-selector: ".carousel-item-container" !default;
+$carousel-item-selector: ".carousel-item" !default;
+$carousel-tab-container-selector: ".carousel-tab-container" !default;
+$carousel-tab-selector: ".carousel-tab" !default;
+$carousel-active-item-selector: ".active" !default;
+$carousel-next-item-selector: ".next" !default;
+$carousel-previous-item-selector: ".previous" !default;
+
+// Carousel grid area properties.
+$carousel-controls-height: auto !default;
+$carousel-tabs-width: 1fr !default;
+$carousel-tabs-height: auto !default;
+$carousel-slide-height: 1fr !default;
+$carousel-control-height: 3rem !default;
+$carousel-control-width: 4rem !default;
+
+// Carousel slide properties.
+$carousel-item-max-width: 100% !default;
+
+// Carousel control properties.
+$carousel-play-content: "'▶'" !default;
+$carousel-pause-content: "'❚❚'" !default;
+$carousel-next-content: "'▶'" !default;
+$carousel-previous-content: "'◀'" !default;

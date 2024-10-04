@@ -1,0 +1,164 @@
+// @graupl/graupl button base styles.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../mixins/media-queries" as *;
+@use "../../functions/theme";
+@use "sass:map";
+
+@mixin apply-button(
+  $min-width: $button-min-width,
+  $min-height: $button-min-height,
+  $padding: $button-padding,
+  $transform: $button-transform,
+  $transition: $button-transition,
+  $border: $button-border,
+  $border-radius: $button-border-radius,
+  $font-size: $button-font-size,
+  $visited-transform: $button-visited-transform,
+  $focus-transform: $button-focus-transform,
+  $hover-transform: $button-hover-transform,
+  $active-transform: $button-active-transform,
+  $disabled-transform: $button-disabled-transform,
+  $border-color: $button-border-color,
+  $background: $button-background,
+  $color: $button-color,
+  $visited-border-color: $button-visited-border-color,
+  $visited-background: $button-visited-background,
+  $visited-color: $button-visited-color,
+  $focus-border-color: $button-focus-border-color,
+  $focus-background: $button-focus-background,
+  $focus-color: $button-focus-color,
+  $hover-border-color: $button-hover-border-color,
+  $hover-background: $button-hover-background,
+  $hover-color: $button-hover-color,
+  $active-border-color: $button-active-border-color,
+  $active-background: $button-active-background,
+  $active-color: $button-active-color,
+  $disabled-border-color: $button-disabled-border-color,
+  $disabled-background: $button-disabled-background,
+  $disabled-color: $button-disabled-color
+) {
+  @include layer(base) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $min-width;
+    min-height: $min-height;
+    padding: $padding;
+    transform: $transform;
+    transition: $transition;
+    border: $border;
+    border-radius: $border-radius;
+    font-size: $font-size;
+    cursor: pointer;
+
+    &:visited,
+    &#{defaults.$button-visited-selector} {
+      --#{root-defaults.$prefix}-button-transform: #{$visited-transform};
+    }
+
+    &:focus-visible,
+    &#{defaults.$button-focus-selector} {
+      --#{root-defaults.$prefix}-button-transform: #{$focus-transform};
+    }
+
+    &:hover,
+    &#{defaults.$button-hover-selector} {
+      --#{root-defaults.$prefix}-button-transform: #{$hover-transform};
+    }
+
+    &:active,
+    &#{defaults.$button-active-selector} {
+      --#{root-defaults.$prefix}-button-transform: #{$active-transform};
+    }
+
+    &:disabled,
+    &[disabled],
+    &#{defaults.$button-disabled-selector} {
+      cursor: not-allowed;
+
+      &,
+      &:visited,
+      &#{defaults.$button-visited-selector},
+      &:focus-visible,
+      &#{defaults.$button-focus-selector},
+      &:hover,
+      &#{defaults.$button-hover-selector},
+      &:active,
+      &#{defaults.$button-active-selector} {
+        --#{root-defaults.$prefix}-button-transform: #{$disabled-transform};
+      }
+    }
+
+    @include animation-off {
+      --#{root-defaults.$prefix}-button-transition: #{$button-transition-reduced-motion};
+    }
+  }
+
+  @include layer(theme) {
+    border-color: $border-color;
+    background: $background;
+    color: $color;
+
+    @each $color, $map in color.$theme-active {
+      &#{defaults.$button-theme-selector-prefix}#{$color} {
+        @each $prop, $shade in defaults.$button-state-theme-map {
+          --#{root-defaults.$prefix}-button-#{$prop}: #{theme.get(
+              $color,
+              $shade
+            )};
+        }
+      }
+    }
+
+    &:visited,
+    &#{defaults.$button-visited-selector} {
+      --#{root-defaults.$prefix}-button-border-color: #{$visited-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$visited-background};
+      --#{root-defaults.$prefix}-button-color: #{$visited-color};
+    }
+
+    &:focus-visible,
+    &#{defaults.$button-focus-selector} {
+      --#{root-defaults.$prefix}-button-border-color: #{$focus-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$focus-background};
+      --#{root-defaults.$prefix}-button-color: #{$focus-color};
+    }
+
+    &:hover,
+    &#{defaults.$button-hover-selector} {
+      --#{root-defaults.$prefix}-button-border-color: #{$hover-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$hover-background};
+      --#{root-defaults.$prefix}-button-color: #{$hover-color};
+    }
+
+    &:active,
+    &#{defaults.$button-active-selector} {
+      --#{root-defaults.$prefix}-button-border-color: #{$active-border-color};
+      --#{root-defaults.$prefix}-button-background: #{$active-background};
+      --#{root-defaults.$prefix}-button-color: #{$active-color};
+    }
+
+    &:disabled,
+    &[disabled],
+    &#{defaults.$button-disabled-selector} {
+      &,
+      &:visited,
+      &#{defaults.$button-visited-selector},
+      &:focus-visible,
+      &#{defaults.$button-focus-selector},
+      &:hover,
+      &#{defaults.$button-hover-selector},
+      &:active,
+      &#{defaults.$button-active-selector} {
+        --#{root-defaults.$prefix}-button-border-color: #{$disabled-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$disabled-background};
+        --#{root-defaults.$prefix}-button-color: #{$disabled-color};
+      }
+    }
+  }
+}

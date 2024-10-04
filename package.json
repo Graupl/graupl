@@ -1,30 +1,43 @@
 {
   "name": "@graupl/graupl",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.15",
   "description": "A modular and modern CSS framework.",
   "type": "module",
   "exports": {
     ".": {
-      "sass": "./scss/graupl.scss"
+      "sass": "./scss/graupl.scss",
+      "import": "./dist/js/graupl.es.js",
+      "require": "./dist/js/graupl.cjs.js"
     },
     "./*.scss": {
       "sass": "./scss/*.scss"
     },
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
+    },
+    "./carousel": {
+      "import": "./dist/js/component/carousel.es.js",
+      "require": "./dist/carousel.cjs.js"
+    },
+    "./alert": {
+      "import": "./dist/js/component/alert.es.js",
+      "require": "./dist/js/component/alert.cjs.js"
     }
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "husky",
     "commit": "git cz",
     "eslint": "eslint .",
     "prettier": "prettier '**/*.{js,mjs,cjs,scss,sass}'",
     "stylelint": "stylelint '**/*.scss' --allow-empty-input",
     "lint": "npm run eslint -- --fix && npm run stylelint -- --fix && npm run prettier --  --write",
-    "sass": "rm -rf dist && sass scss:dist",
-    "postcss": "postcss 'dist/**/*.css' --replace",
-    "build": "npm run sass && npm run postcss",
-    "watch": "rm -rf dist && sass --watch scss:dist",
+    "sass": "rm -rf dist/css/* && sass scss:dist/css",
+    "postcss": "postcss 'dist/css/**/*.css' --replace",
+    "build": "npm-run-all build:*",
+    "build:css": "npm run sass && npm run postcss",
+    "build:js": "BUILD_TYPE=default vite build",
+    "build:carousel": "BUILD_TYPE=Carousel vite build",
+    "build:alert": "BUILD_TYPE=Alert vite build",
     "postbuild": "npm run docs:build",
     "release": "git add dist/. && standard-version -a",
     "prerelease": "npm run lint && npm run build",
@@ -51,14 +64,14 @@
     "commitizen": "^4.3.0",
     "cssnano": "^7.0.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.11.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-jsdoc": "^48.2.3",
+    "eslint-plugin-jsdoc": "^50.2.4",
     "globals": "^15.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "normalize.css": "^8.0.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-discard-comments": "^7.0.0",
@@ -67,7 +80,7 @@
     "standard-version": "^9.5.0",
     "stylelint": "^16.3.1",
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
-    "stylelint-config-sass-guidelines": "^11.1.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-prettier": "^5.0.0",
     "vite": "^5.2.8",
