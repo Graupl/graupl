@@ -5,13 +5,23 @@
   "type": "module",
   "exports": {
     ".": {
-      "sass": "./scss/graupl.scss"
+      "sass": "./scss/graupl.scss",
+      "import": "./dist/js/graupl.es.js",
+      "require": "./dist/js/graupl.cjs.js"
     },
     "./*.scss": {
       "sass": "./scss/*.scss"
     },
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
+    },
+    "./carousel": {
+      "import": "./dist/js/component/carousel.es.js",
+      "require": "./dist/carousel.cjs.js"
+    },
+    "./alert": {
+      "import": "./dist/js/component/alert.es.js",
+      "require": "./dist/js/component/alert.cjs.js"
     }
   },
   "scripts": {
@@ -21,9 +31,13 @@
     "prettier": "prettier '**/*.{js,mjs,cjs,scss,sass}'",
     "stylelint": "stylelint '**/*.scss' --allow-empty-input",
     "lint": "npm run eslint -- --fix && npm run stylelint -- --fix && npm run prettier --  --write",
-    "sass": "rm -rf dist && sass scss:dist",
-    "postcss": "postcss 'dist/**/*.css' --replace",
-    "build": "npm run sass && npm run postcss",
+    "sass": "rm -rf dist/css/* && sass scss:dist/css",
+    "postcss": "postcss 'dist/css/**/*.css' --replace",
+    "build": "npm-run-all build:*",
+    "build:css": "npm run sass && npm run postcss",
+    "build:js": "BUILD_TYPE=default vite build",
+    "build:carousel": "BUILD_TYPE=Carousel vite build",
+    "build:alert": "BUILD_TYPE=Alert vite build",
     "postbuild": "npm run docs:build",
     "release": "git add dist/. && standard-version -a",
     "prerelease": "npm run lint && npm run build",
@@ -56,6 +70,7 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "normalize.css": "^8.0.1",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
     "postcss-discard-comments": "^7.0.0",
