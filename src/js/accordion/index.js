@@ -6,15 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".accordion").forEach((accordionElement) => {
     const accordion = new Accordion({
       accordionElement,
-      initialize: true,
       optionalKeySupport: true,
+      initialize: true,
     });
     accordions.push(accordion);
   });
-
-  const graupl = window.Graupl || {};
-
-  graupl.accordions = accordions;
-
-  window.Graupl = graupl;
 });

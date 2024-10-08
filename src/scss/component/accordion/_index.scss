@@ -5,6 +5,7 @@
 @use "../../base/button/mixins" as button-mixins;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../state/focus/index" as focus;
 @use "sass:map";
 
 #{defaults.$accordion-selector} {
@@ -33,26 +34,25 @@
     border: $accordion-item-border;
     border-radius: $accordion-item-border-radius;
     isolation: isolate;
+    transition: height 350ms ease;
 
     &#{defaults.$accordion-item-close-selector}
       #{defaults.$accordion-item-content-selector} {
       display: none;
-      height: 0;
-      opacity: 0;
     }
 
     &#{defaults.$accordion-item-open-selector}
       #{defaults.$accordion-item-content-selector} {
-      display: block;
-      height: auto;
       opacity: 1;
+      transform: translateY(0);
     }
 
     &#{defaults.$accordion-item-transition-selector}
       #{defaults.$accordion-item-content-selector} {
-      display: block;
-      height: 0;
-      opacity: 0;
+      display: flex;
+    }
+
+    &:has(#{defaults.$accordion-item-toggle-selector}:focus-visible) {
     }
   }
 
@@ -156,6 +156,11 @@
     flex-flow: column nowrap;
     gap: $accordion-item-content-gap;
     padding: $accordion-item-content-padding;
+    opacity: 0;
+    transition:
+      opacity 350ms ease,
+      transform 350ms ease;
+    transform: translateY(-100%);
   }
 }
 

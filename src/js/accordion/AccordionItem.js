@@ -3,7 +3,7 @@
  * The Accordion Item class.
  */
 
-import { isValidClassList, isValidType } from "../validate.js";
+import { isTag, isValidType } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 
 /**
@@ -13,115 +13,54 @@ import { addClass, removeClass } from "../domHelpers.js";
  */
 class AccordionItem {
   /**
-   * Constructs a new Accordion item object.
-   *
-   * @class
-   *
-   * @param {object}               options                                   - The options object.
-   * @param {HTMLElement}          options.accordionItemElement              - The accordion item element.
-   * @param {?HTMLElement}         [options.controllerElement = null]        - The controller element.
-   * @param {string|string[]|null} [options.showClass = show]                - The class to add when the accordion item is shown.
-   * @param {string|string[]|null} [options.hideClass = hide]                - The class to add when the accordion item is hidden.
-   * @param {string|string[]|null} [options.transitionClass = transitioning] - The class to add when the accordion item is transitioning between shown and hidden.
-   * @param {number}               [options.transitionTimer = 150]           - The time in milliseconds the transition will take.
-   * @param {boolean}              [options.isHidden = false]                - A flag to determine the initial state of the accordion item.
-   * @param {boolean}              [options.initialize = false]              - A flag to auto-initialize.
-   * @param {boolean}              [options.optionalKeySupport = false]      - A flag to allow focus on up or down arrows.
-   */
-  constructor({
-    accordionItemElement,
-    controllerElement = null,
-    showClass = "show",
-    hideClass = "hide",
-    transitionClass = "transitioning",
-    transitionTimer = 150,
-    isHidden = false,
-    initialize = false,
-    optionalKeySupport = false,
-  }) {
-    this._dom = {
-      accordionItem: null,
-      controller: null,
-    };
-    this._dom.accordionItem = accordionItemElement;
-    this._dom.controller = controllerElement;
-    this._showClass = showClass;
-    this._hideClass = hideClass;
-    this._transitionClass = transitionClass;
-    this._transitionTimer = transitionTimer;
-    this._hidden = isHidden;
-    this._optionalKeySupport = optionalKeySupport;
-
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
    * The HTML elements for the accordion item in the DOM.
    *
    * @protected
    *
    * @type {Object<HTMLElement>}
+   *
+   * @property {HTMLElement} item    - The accordion item element.
+   * @property {HTMLElement} toggle  - The controller element.
+   * @property {HTMLElement} content - The content element.
    */
   _dom = {
-    accordionItem: null,
-    controller: null,
+    item: null,
+    toggle: null,
+    content: null,
   };
 
   /**
-   * A flag to determine if the accordion item is hidden.
+   * The declared graupl accordion elements within the accordion item.
+   *
+   * @protected
+   *
+   * @type {Object<Accordion>}
+   *
+   * @property {Accordion} parentAccordion - The parent accordion containing this item.
+   */
+  _elements = {
+    parentAccordion: null,
+  };
+
+  /**
+   * The open state of the accordion.
    *
    * @protected
    *
    * @type {boolean}
    */
-  _hidden = false;
+  _open = false;
 
   /**
-   * The class to use to show the accordion item.
+   * The locked state of the accordions item.
    *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _showClass = "";
-
-  /**
-   * The class to use to hide the accordion item.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _hideClass = "";
-
-  /**
-   * The class to use when transitioning the accordion item.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _transitionClass = "";
-
-  /**
-   * The time in milliseconds the transition will take.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _transitionTimer = 150;
-
-  /**
-   * A flag to allow focus on up or down arrows.
+   * If locked, the accordion item cannot be closed.
    *
    * @protected
    *
    * @type {boolean}
    */
-  _optionalKeySupport = false;
+  _locked = false;
 
   /**
    * The event that is triggered when the accordion item is shown.
@@ -132,12 +71,12 @@ class AccordionItem {
    *
    * @type {CustomEvent}
    *
-   * @property {boolean}       bubbles - A flag to bubble the event.
+   * @property {boolean}               bubbles - A flag to bubble the event.
    * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
    */
   _showEvent = new CustomEvent("grauplAccordionItemShow", {
     bubbles: true,
-    detail: { accordionItem: this },
+    detail: { item: this },
   });
 
   /**
@@ -149,37 +88,55 @@ class AccordionItem {
    *
    * @type {CustomEvent}
    *
-   * @property {boolean}       bubbles - A flag to bubble the event.
+   * @property {boolean}               bubbles - A flag to bubble the event.
    * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
    */
   _hideEvent = new CustomEvent("grauplAccordionItemHide", {
     bubbles: true,
-    detail: { accordionItem: this },
+    detail: { item: this },
   });
 
   /**
-   * An array of error messages generated by the accordion item.
+   * Constructs a new Accordion item object.
    *
-   * @protected
+   * @class
    *
-   * @type {string[]}
+   * @param {object}               options                             - The options object.
+   * @param {HTMLElement}          options.accordionItemElement        - The accordion item element.
+   * @param {HTMLElement}          options.accordionItemToggleElement  - The toggle element.
+   * @param {HTMLElement}          options.accordionItemContentElement - The content element.
+   * @param {Accordion}            [options.parentAccordion = null]    - The accordion containing this item.
    */
-  _errors = [];
+  constructor({
+    accordionItemElement,
+    accordionItemToggleElement,
+    accordionItemContentElement,
+    parentAccordion = null,
+  }) {
+    // Set DOM elements.
+    this._dom.item = accordionItemElement;
+    this._dom.toggle = accordionItemToggleElement;
+    this._dom.content = accordionItemContentElement;
+
+    // Set the accordion elements.
+    this._elements.parentAccordion = parentAccordion;
+  }
 
   /**
    * Initializes the accordion item.
    */
   initialize() {
-    try {
-      if (!this._validate()) {
-        throw new Error(
-          `Graupl Accordion item: cannot initialize accordion item. The following errors have been found:\n - ${this.errors.join(
-            "\n - "
-          )}`
-        );
-      }
-    } catch (error) {
-      console.error(error);
+    // Set the IDs for the accordion item and it's elements if they don't exist.
+    this._setIds();
+
+    // Set the ARIA attributes for the accordion item and it's elements.
+    this._setAriaAttributes();
+
+    // Set the initial state of the accordion item.
+    if (this.dom.toggle.getAttribute("aria-expanded") === "true") {
+      this.show(false);
+    } else {
+      this.hide(false);
     }
   }
 
@@ -188,336 +145,340 @@ class AccordionItem {
    *
    * @readonly
    *
-   * @see _dom
-   *
    * @type {object}
+   *
+   * @see _dom
    */
   get dom() {
     return this._dom;
   }
 
   /**
-   * A flag to determine if the accordion item is hidden.
+   * The declared graupl accordion elements within the accordion item.
    *
    * @readonly
    *
-   * @see _hidden
+   * @type {Object<Accordion>}
+   *
+   * @see _elements
+   */
+  get elements() {
+    return this._elements;
+  }
+
+  /**
+   * The open state of the accordion.
+   *
+   * @readonly
    *
    * @type {object}
+   *
+   * @see _open
    */
-  get isHidden() {
-    return this._hidden;
+  get isOpen() {
+    return this._open;
   }
 
   /**
-   * The class to use the show the accordion item.
+   * The locked state of the accordions item.
    *
-   * @type {string|string[]}
+   * If locked, the accordion item cannot be closed.
    *
-   * @see _showClass
-   */
-  get showClass() {
-    return this._showClass;
-  }
-
-  /**
-   * The class to use to hide the accordion item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _hideClass
-   */
-  get hideClass() {
-    return this._hideClass;
-  }
-
-  /**
-   * The class to use when transitioning the accordion item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _transitionClass
-   */
-  get transitionClass() {
-    return this._transitionClass;
-  }
-
-  /**
-   * The time in milliseconds the transition will take.
-   *
-   * @type {number}
-   *
-   * @see _transitionTimer
-   */
-  get transitionTimer() {
-    return this._transitionTimer;
-  }
-
-  /**
-   * A flag to allow focus on up or down arrows.
+   * @readonly
    *
    * @type {boolean}
    *
-   * @see _optionalKeySupport
+   * @see _locked
    */
-  get optionalKeySupport() {
-    return this._optionalKeySupport;
+  get isLocked() {
+    return this._locked;
   }
 
-  /**
-   * An array of error messages generated by the accordion item.
-   *
-   * @readonly
-   *
-   * @type {string[]}
-   *
-   * @see _errors
-   */
-  get errors() {
-    return this._errors;
-  }
+  set isOpen(value) {
+    isValidType("boolean", { value });
 
-  set isHidden(value) {
-    isValidType('boolean', { isHidden: value });
-
-    if (this._hidden !== value) {
-      this._hidden = value;
-    }
-  }
-
-  set showClass(value) {
-    isValidClassList({ showClass: value });
-
-    if (this._showClass !== value) {
-      this._showClass = value;
-    }
-  }
-
-  set hideClass(value) {
-    isValidClassList({ hideClass: value });
-
-    if (this._hideClass !== value) {
-      this._hideClass = value;
-    }
-  }
-
-  set transitionClass(value) {
-    isValidClassList({ transitionClass: value });
-
-    if (this._transitionClass !== value) {
-      this._transitionClass = value;
-    }
-  }
-
-  set transitionTimer(value) {
-    isValidType("number", { transitionTimer: value });
-
-    if (this._transitionTimer !== value) {
-      this._transitionTimer = value;
-    }
-  }
-
-  set optionalKeySupport(value) {
-    isValidType("boolean", { optionalKeySupport: value });
-
-    if (this._optionalKeySupport !== value) {
-      this._optionalKeySupport = value;
+    if (this._open !== value) {
+      this._open = value;
     }
   }
 
   /**
-   * Toggle the accordion item.
+   * Sets the IDs for the accordion item and it's elements if they don't exist.
+   *
+   * The generated IDs use the parent accordion's key and follows the pattern:
+   *  - Accordion item: `accordion-item-{key}-{index}`
+   *  - Accordion item toggle: `accordion-item-toggle-{key}-{index}`
+   *  - Accordion item content: `accordion-item-content-{key}-{index}`
    */
-  toggle() {
-    this._hidden ? this.show() : this.hide();
+  _setIds() {
+    // Get the required information for IDs.
+    const { key } = this.elements.parentAccordion;
+    const index = this.elements.parentAccordion.dom.accordionItems.indexOf(
+      this.dom.item
+    );
+
+    // Set the ID values.
+    const itemID = this.dom.item.id || `accordion-item-${key}-${index}`;
+    const toggleID =
+      this.dom.toggle.id || `accordion-item-toggle-${key}-${index}`;
+    const contentID =
+      this.dom.content.id || `accordion-item-content-${key}-${index}`;
+
+    // Set the IDs.
+    this.dom.item.id = itemID;
+    this.dom.toggle.id = toggleID;
+    this.dom.content.id = contentID;
   }
 
   /**
-   * Validates all aspects of the accordion item to ensure proper functionality.
-   *
-   * @protected
-   *
-   * @return {boolean} - The result of the validation.
+   * Sets the ARIA attributes for the accordion item and it's elements.
    */
-  _validate() {
-    // Value Type Checks
-    let check = true;
-
-    const isHiddenCheck = isValidType("boolean", {
-      isHidden: this._hidden,
-    });
-
-    if (!isHiddenCheck.status) {
-      this._errors.push(isHiddenCheck.error.message);
-      check = false;
+  _setAriaAttributes() {
+    // Set the ARIA attributes for the accordion item toggle.
+    // If the toggle is not a button, then set the role to "button".
+    if (!isTag("button", { toggle: this.dom.toggle })) {
+      this.dom.toggle.setAttribute("role", "button");
     }
 
-    const transitionTimerCheck = isValidType("number", {
-      transitionTimer: this._transitionTimer,
-    });
-
-    if (!transitionTimerCheck.status) {
-      this._errors.push(transitionTimerCheck.error.message);
-      check = false;
+    // If aria-expanded is not explicitly set to "true", then set it to "false".
+    if (this.dom.toggle.getAttribute("aria-expanded") !== "true") {
+      this.dom.toggle.setAttribute("aria-expanded", "false");
     }
 
-    const optionalKeySupportCheck = isValidType("boolean", {
-      optionalKeySupport: this._optionalKeySupport,
-    });
+    // Set the aria-controls attribute for the toggle.
+    this.dom.toggle.setAttribute("aria-controls", this.dom.content.id);
 
-    if (!optionalKeySupportCheck.status) {
-      this._errors.push(optionalKeySupportCheck.error.message);
-      check = false;
+    // Set the ARIA attributes for the accordion item content.
+    // If the content is not a section, then set the role to "region".
+    if (!isTag("section", { content: this.dom.content })) {
+      this.dom.content.setAttribute("role", "region");
     }
 
-    // Class List Checks
-    const isClassListValidCheck = isValidClassList({
-      showClass: this._showClass,
-      hideClass: this._hideClass,
-      transitionClass: this._transitionClass,
-    });
-
-    if (!isClassListValidCheck.status) {
-      this._errors.push(isClassListValidCheck.error.message);
-      check = false;
-    }
-
-    return check;
+    // Set the aria-labelledby attribute for the content.
+    this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
   }
 
   /**
    * Shows the accordion item.
+   *
+   * @public
    *
    * @fires grauplAccordionItemShow
    *
    * @param {boolean} [emit = true] - Emit the show event once shown.
    */
   show(emit = true) {
-    if (!this._hidden) {
+    if (this._open) {
       return;
     }
+
+    const { closeClass, openClass, transitionClass, openDuration } =
+      this.elements.parentAccordion;
+
+    // Set aria-expanded to true when hiding accordion item.
+    this.dom.toggle.setAttribute("aria-expanded", "true");
 
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the hide class,
     // add the show class, and finally remove the transition class.
-    if (this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.accordionItem);
+    if (transitionClass !== "") {
+      addClass(transitionClass, this.dom.item);
 
       requestAnimationFrame(() => {
-        if (this.hideClass !== "") {
-          removeClass(this.hideClass, this.dom.accordionItem);
-        }
+        removeClass(closeClass, this.dom.item);
+
+        this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
-          if (this.showClass !== "") {
-            addClass(this.showClass, this.dom.accordionItem);
-          }
+          addClass(openClass, this.dom.item);
+
+          this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`;
 
           requestAnimationFrame(() => {
-            removeClass(this.transitionClass, this.dom.accordionItem);
+            setTimeout(() => {
+              removeClass(transitionClass, this.dom.item);
+
+              this.dom.item.style.height = "";
+            }, openDuration);
           });
         });
       });
     } else {
       // Add the show class
-      if (this.showClass !== "") {
-        addClass(this.showClass, this.dom.accordionItem);
-      }
+      addClass(openClass, this.dom.item);
 
       // Remove the hide class.
-      if (this.hideClass !== "") {
-        removeClass(this.hideClass, this.dom.accordionItem);
+      removeClass(closeClass, this.dom.item);
+    }
+
+    this._open = true;
+
+    // If the parent accordion only allows a single item to be open at a time,
+    // then close all other items.
+    if (!this.elements.parentAccordion.allowMultipleExpand) {
+      this.unlockSiblings();
+      this.closeSiblings();
+    }
+
+    // If the parent accordion requires at least one item to be open, and this
+    // is the only open item, then lock it. Otherwise, unlock all siblings.
+    if (!this.elements.parentAccordion.allowNoExpand) {
+      if (this.elements.parentAccordion.openAccordionItems.length <= 1) {
+        this.lock();
+      } else {
+        this.unlockSiblings();
       }
     }
 
-    this._hidden = false;
-
-    // Set aria-expanded to true when hiding accordion item.
-    this.dom.controller.setAttribute("aria-expanded", "true");
-
     if (emit) {
-      this.dom.accordionItem.dispatchEvent(this._showEvent);
+      this.dom.item.dispatchEvent(this._showEvent);
     }
   }
 
   /**
    * Hides the accordion item.
    *
+   * @public
+   *
    * @fires grauplAccordionItemHide
    *
    * @param {boolean} [emit = true] - Emit the hide event once hidden.
    */
   hide(emit = true) {
-    if (this._hidden) {
+    if (!this._open) {
       return;
     }
+
+    if (
+      !this.elements.parentAccordion.allowNoExpand &&
+      this.elements.parentAccordion.openAccordionItems.length <= 1
+    ) {
+      return;
+    }
+
+    const { closeClass, openClass, transitionClass, closeDuration } =
+      this.elements.parentAccordion;
+
+    // Set aria-expanded to false when hiding accordion item.
+    this.dom.toggle.setAttribute("aria-expanded", "false");
+
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
-    if (this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.accordionItem);
+    if (transitionClass !== "") {
+      addClass(transitionClass, this.dom.item);
+      this.dom.item.style.height = `${this.dom.item.getBoundingClientRect().height}px`;
 
       requestAnimationFrame(() => {
-        if (this.showClass !== "") {
-          removeClass(this.showClass, this.dom.accordionItem);
-        }
+        removeClass(openClass, this.dom.item);
+        this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
-          if (this.transitionTimer > 0) {
+          addClass(closeClass, this.dom.item);
+
+          requestAnimationFrame(() => {
             setTimeout(() => {
-              if (this.hideClass !== "") {
-                addClass(this.hideClass, this.dom.accordionItem);
-              }
+              removeClass(transitionClass, this.dom.item);
 
-              requestAnimationFrame(() => {
-                removeClass(this.transitionClass, this.dom.accordionItem);
-              });
-            }, this.transitionTimer);
-          } else {
-            if (this.hideClass !== "") {
-              addClass(this.hideClass, this.dom.accordionItem);
-            }
-
-            requestAnimationFrame(() => {
-              removeClass(this.transitionClass, this.dom.accordionItem);
-            });
-          }
+              this.dom.item.style.height = "";
+            }, closeDuration);
+          });
         });
       });
     } else {
       // Add the hide class
-      if (this.hideClass !== "") {
-        addClass(this.hideClass, this.dom.accordionItem);
-      }
+      addClass(closeClass, this.dom.item);
 
       // Remove the show class.
-      if (this.showClass !== "") {
-        removeClass(this.showClass, this.dom.accordionItem);
-      }
+      removeClass(openClass, this.dom.item);
     }
 
-    // Set aria-expanded to false when hiding accordion item.
-    this.dom.controller.setAttribute("aria-expanded", "false");
+    this._open = false;
 
-    this._hidden = true;
+    // If the parent accordion requires at least one item to be open, and this was
+    // the second to last open item, then lock to last open item.
+    if (
+      !this.elements.parentAccordion.allowNoExpand &&
+      this.elements.parentAccordion.openAccordionItems.length === 1
+    ) {
+      this.elements.parentAccordion.openAccordionItems[0].lock();
+    }
 
     if (emit) {
-      this.dom.accordionItem.dispatchEvent(this._hideEvent);
+      this.dom.item.dispatchEvent(this._hideEvent);
     }
+  }
+
+  /**
+   * Toggle the accordion item.
+   *
+   * @public
+   */
+  toggle() {
+    this.isOpen ? this.hide() : this.show();
   }
 
   /**
    * Focuses the accordion item.
+   *
+   * @public
    */
   focus() {
-    this.dom.controller.focus();
+    this.dom.toggle.focus();
   }
 
   /**
    * Blurs the accordion item.
+   *
+   * @public
    */
   blur() {
-    this.dom.controller.focus();
+    this.dom.toggle.blur();
+  }
+
+  /**
+   * Locks the accordion item.
+   *
+   * @public
+   */
+  lock() {
+    this._locked = true;
+    this.dom.toggle.setAttribute("disabled", "true");
+  }
+
+  /**
+   * Unlocks the accordion item.
+   *
+   * @public
+   */
+  unlock() {
+    this._locked = false;
+    this.dom.toggle.removeAttribute("disabled");
+  }
+
+  closeSiblings() {
+    if (this.elements.parentAccordion) {
+      this.elements.parentAccordion.elements.accordionItems.forEach((item) => {
+        if (item !== this) {
+          item.hide();
+        }
+      });
+    }
+  }
+
+  /**
+   * Unlocks the siblings of the accordion item.
+   *
+   * @public
+   */
+  unlockSiblings() {
+    if (this.elements.parentAccordion) {
+      this.elements.parentAccordion.elements.accordionItems.forEach((item) => {
+        if (item !== this) {
+          item.unlock();
+        }
+      });
+    }
   }
 }
 

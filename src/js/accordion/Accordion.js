@@ -6,6 +6,7 @@
 import AccordionItem from "./AccordionItem.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
 import { isValidInstance, isValidType, isValidClassList } from "../validate.js";
+import storage from "../storage.js";
 
 class Accordion {
   /**
@@ -18,11 +19,13 @@ class Accordion {
    * @property {HTMLElement}   accordion             - The accordion element.
    * @property {HTMLElement[]} accordionItems        - An array of accordion items.
    * @property {HTMLElement[]} accordionItemToggles  - An array of accordion item toggles.
+   * @property {HTMLElement[]} accordionItemContents - An array of accordion item contents.
    */
   _dom = {
     accordion: null,
     accordionItems: [],
     accordionItemToggles: [],
+    accordionItemContents: [],
   };
 
   /**
@@ -42,11 +45,13 @@ class Accordion {
    * @type {Object<string>}
    *
    * @property {string} accordionItems        - The query selector for accordion items.
-   * @property {string} accordionItemToggles  - The query selector for accordion toggle.
+   * @property {string} accordionItemToggles  - The query selector for accordion toggles.
+   * @property {string} accordionItemContents - The query selector for accordion contents.
    */
   _selectors = {
     accordionItems: "",
     accordionItemToggles: "",
+    accordionItemContents: "",
   };
 
   /**
@@ -96,7 +101,7 @@ class Accordion {
    *
    * @type {number}
    */
-  _transitionDuration = 250;
+  _transitionDuration = 300;
 
   /**
    * The duration time (in milliseconds) for the transition from closed to open states.
@@ -157,6 +162,24 @@ class Accordion {
   _currentChild = 0;
 
   /**
+   * The prefix to use for CSS custom properties.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _prefix = "graupl-";
+
+  /**
+   * The key used to generate IDs throughout the accordion.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _key = "";
+
+  /**
    * errors - The list of errors found during validation.
    *
    * @protected
@@ -172,31 +195,35 @@ class Accordion {
    * @param {HTMLElement}        [options.accordionElement]                                       - The accordion element in the DOM.
    * @param {string}             [options.accordionItemSelector = .accordion-item]                - The query selector string for accordion items.
    * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]   - The query selector string for accordion toggle.
+   * @param {string}             [options.accordionItemContentSelector = .accordion-item-content] - The query selector string for accordion content.
    * @param {?(string|string[])} [options.openClass = show]                                       - The class to apply when a accordion is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                                      - The class to apply when a accordion is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]                        - The class to apply when a accordion is transitioning between "open" and "closed" states.
-   * @param {number}             [options.transitionDuration = 250]                               - The duration of the transition between "open" and "closed" states (in milliseconds).
+   * @param {number}             [options.transitionDuration = 300]                               - The duration of the transition between "open" and "closed" states (in milliseconds).
    * @param {number}             [options.openDuration = -1]                                      - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {number}             [options.closeDuration = -1]                                     - The duration of the transition from "open" to "closed" states (in milliseconds).
    * @param {boolean}            [options.optionalKeySupport = false]                             - A flag to determine if accordions can be navigated with arrows.
    * @param {boolean}            [options.allowMultipleExpand = true]                             - A flag to determine if multiple accordions can be open at the same time.
    * @param {boolean}            [options.allowNoExpand = true]                                   - A flag to determine if no accordions can be open at the same time.
+   * @param {?string}            [options.prefix = graupl-]                                       - The prefix to use for CSS custom properties.
+   * @param {?string}            [options.key = null]                                             - The key used to generate IDs throughout the accordion.
    * @param {boolean}            [options.initialize = false]                                     - A flag to initialize the accordion immediately upon creation.
-   * @param {?string}            [options.prefix = graupl-]                                           - The prefix to use for CSS custom properties.
    */
   constructor({
     accordionElement,
     accordionItemSelector = ".accordion-item",
     accordionItemToggleSelector = ".accordion-item-toggle",
+    accordionItemContentSelector = ".accordion-item-content",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
-    transitionDuration = 250,
+    transitionDuration = 300,
     openDuration = -1,
     closeDuration = -1,
     optionalKeySupport = false,
     allowMultipleExpand = true,
     allowNoExpand = true,
+    key = null,
     initialize = false,
     prefix = "am-",
   }) {
@@ -206,6 +233,7 @@ class Accordion {
     // Set DOM selectors.
     this._selectors.accordionItems = accordionItemSelector;
     this._selectors.accordionItemToggles = accordionItemToggleSelector;
+    this._selectors.accordionItemContents = accordionItemContentSelector;
 
     // Set open/close classes.
     this._openClass = openClass || "";
@@ -227,8 +255,41 @@ class Accordion {
     // Set prefix.
     this._prefix = prefix || "";
 
+    // Set the key.
+    this._key = key || "";
+
     if (initialize) {
       this.initialize();
+    }
+  }
+
+  /**
+   * Initializes the accordion.
+   */
+  initialize() {
+    try {
+      if (!this._validate()) {
+        throw new Error(
+          `Graupl Accordion: cannot initialize accordion. The following errors have been found:\n - ${this.errors.join(
+            "\n - "
+          )}`
+        );
+      }
+
+      this._generateKey();
+      this._setDOMElements();
+      this._setIds();
+      this._createChildElements();
+      this._handleFocus();
+      this._handleClick();
+      this._handleKeydown();
+      this._handleKeyup();
+      this._setTransitionDurations();
+
+      storage.initializeStorage("accordions");
+      storage.pushToStorage("accordions", this.dom.accordion.id, this);
+    } catch (error) {
+      console.error(error);
     }
   }
 
@@ -263,6 +324,47 @@ class Accordion {
    */
   get transitionClass() {
     return this._transitionClass;
+  }
+
+  /**
+   * The duration time (in milliseconds) for the transition between open and closed states.
+   *
+   * @type {number}
+   *
+   * @see _transitionDuration
+   */
+  get transitionDuration() {
+    return this._transitionDuration;
+  }
+
+  /**
+   * The duration time (in milliseconds) for the transition from closed to open states.
+   *
+   * If openDuration is set to -1, the transitionDuration will be used instead.
+   *
+   * @type {number}
+   *
+   * @see _openDuration
+   */
+  get openDuration() {
+    return this._openDuration === -1
+      ? this.transitionDuration
+      : this._openDuration;
+  }
+
+  /**
+   * The duration time (in milliseconds) for the transition from open to closed states.
+   *
+   * If closeDuration is set to -1, the transitionDuration will be used instead.
+   *
+   * @type {number}
+   *
+   * @see _closeDuration
+   */
+  get closeDuration() {
+    return this._closeDuration === -1
+      ? this.transitionDuration
+      : this._closeDuration;
   }
 
   /**
@@ -318,19 +420,6 @@ class Accordion {
   }
 
   /**
-   * The timer for transitions.
-   *
-   * @readonly
-   *
-   * @type {number}
-   *
-   * @see _transitionTimer
-   */
-  get transitionTimer() {
-    return this._transitionTimer;
-  }
-
-  /**
    * A flag to decide if the accordion items can be navigated by arrows.
    *
    * @readonly
@@ -341,6 +430,72 @@ class Accordion {
    */
   get optionalKeySupport() {
     return this._optionalKeySupport;
+  }
+
+  /**
+   * The currently selected accordion item.
+   *
+   * @readonly
+   *
+   * @type {AccordionItem}
+   */
+  get currentAccordionItem() {
+    return this.elements.accordionItems[this.currentChild];
+  }
+
+  /**
+   * The currently open accordion items.
+   *
+   * @readonly
+   *
+   * @type {AccordionItem[]}
+   */
+  get openAccordionItems() {
+    return this.elements.accordionItems.filter((item) => item.isOpen);
+  }
+
+  /**
+   * A flag to decide if multiple accordions can be open at the same time.
+   *
+   * @type {boolean}
+   *
+   * @see _allowMultipleExpand
+   */
+  get allowMultipleExpand() {
+    return this._allowMultipleExpand;
+  }
+
+  /**
+   * A flag to decide if no accordions can be opened at the same time.
+   *
+   * @type {boolean}
+   *
+   * @see _allowNoExpand
+   */
+  get allowNoExpand() {
+    return this._allowNoExpand;
+  }
+
+  /**
+   * The prefix to use for CSS custom properties.
+   *
+   * @type {string}
+   *
+   * @see _prefix
+   */
+  get prefix() {
+    return this._prefix;
+  }
+
+  /**
+   * The key used to generate IDs throughout the accordion.
+   *
+   * @type {string}
+   *
+   * @see _key
+   */
+  get key() {
+    return this._key;
   }
 
   /**
@@ -380,11 +535,30 @@ class Accordion {
     }
   }
 
-  set transitionTimer(value) {
+  set transitionDuration(value) {
     isValidType("number", { value });
 
-    if (value >= 0 && this._transitionTimer !== value) {
-      this._transitionTimer = value;
+    if (this._transitionDuration !== value) {
+      this._transitionDuration = value;
+      this._setTransitionDurations();
+    }
+  }
+
+  set openDuration(value) {
+    isValidType("number", { value });
+
+    if (this._openDuration !== value) {
+      this._openDuration = value;
+      this._setTransitionDurations();
+    }
+  }
+
+  set closeDuration(value) {
+    isValidType("number", { value });
+
+    if (this._closeDuration !== value) {
+      this._closeDuration = value;
+      this._setTransitionDurations();
     }
   }
 
@@ -394,7 +568,7 @@ class Accordion {
     if (
       this._currentChild !== value &&
       value >= 0 &&
-      value < this._accordionItems.length
+      value < this.elements.accordionItems.length
     ) {
       this._currentChild = value;
     }
@@ -411,27 +585,35 @@ class Accordion {
     }
   }
 
-  /**
-   * Initializes the accordion.
-   */
-  initialize() {
-    try {
-      if (!this._validate()) {
-        throw new Error(
-          `Graupl Accordion: cannot initialize accordion. The following errors have been found:\n - ${this.errors.join(
-            "\n - "
-          )}`
-        );
-      }
+  set allowMultipleExpand(value) {
+    isValidType("boolean", { value });
 
-      this._setDOMElements();
-      this._createChildElements();
-      this._handleFocus();
-      this._handleClick();
-      this._handleKeydown();
-      this._handleKeyup();
-    } catch (error) {
-      console.error(error);
+    if (this._allowMultipleExpand !== value) {
+      this._allowMultipleExpand = value;
+    }
+  }
+
+  set allowNoExpand(value) {
+    isValidType("boolean", { value });
+
+    if (this._allowNoExpand !== value) {
+      this._allowNoExpand = value;
+    }
+  }
+
+  set prefix(value) {
+    isValidType("string", { value });
+
+    if (this._prefix !== value) {
+      this._prefix = value;
+    }
+  }
+
+  set key(value) {
+    isValidType("string", { value });
+
+    if (this._key !== value) {
+      this._key = value;
     }
   }
 
@@ -530,7 +712,37 @@ class Accordion {
 
     this.dom.accordionItems.forEach((accordionItem) => {
       this._setDOMElementType("accordionItemToggles", accordionItem, false);
+      this._setDOMElementType("accordionItemContents", accordionItem, false);
     });
+  }
+
+  /**
+   * Generates a key for the accordion.
+   *
+   * @param {boolean} [regenerate = false] - A flag to determine if the key should be regenerated.
+   */
+  _generateKey(regenerate = false) {
+    if (this.key === "" || regenerate) {
+      this.key = Math.random()
+        .toString(36)
+        .replace(/[^a-z]+/g, "")
+        .substring(0, 10);
+    }
+  }
+
+  /**
+   * Sets the IDs of the accordion and it's children if they do not already exist.
+   *
+   * The generated IDs use the key and follow the format:
+   *  - accordion: `accordion-${key}`
+   *
+   * @protected
+   */
+  _setIds() {
+    // Set the accordion ID.
+    const accordionId =
+      this.dom.accordion.getAttribute("id") || `accordion-${this.key}`;
+    this.dom.accordion.setAttribute("id", accordionId);
   }
 
   /**
@@ -538,7 +750,20 @@ class Accordion {
    *
    * @protected
    */
-  _createChildElements() {}
+  _createChildElements() {
+    this.dom.accordionItems.forEach((accordionItem, index) => {
+      const item = new AccordionItem({
+        accordionItemElement: accordionItem,
+        accordionItemToggleElement: this.dom.accordionItemToggles[index],
+        accordionItemContentElement: this.dom.accordionItemContents[index],
+        parentAccordion: this,
+      });
+
+      item.initialize();
+
+      this.elements.accordionItems.push(item);
+    });
+  }
 
   /**
    * Validates all aspects of the accordion item to ensure proper functionality.
@@ -644,26 +869,31 @@ class Accordion {
             this.currentAccordionItem.toggle();
 
             break;
-          case "Home":
-            preventEvent(event);
-            this.focusFirstChild();
+        }
 
-            break;
-          case "End":
-            preventEvent(event);
-            this.focusLastChild();
+        if (this.optionalKeySupport) {
+          switch (key) {
+            case "Home":
+              preventEvent(event);
+              this.focusFirstChild();
 
-            break;
-          case "ArrowDown":
-            preventEvent(event);
-            this.focusNextChild();
+              break;
+            case "End":
+              preventEvent(event);
+              this.focusLastChild();
 
-            break;
-          case "ArrowUp":
-            preventEvent(event);
-            this.focusPreviousChild();
+              break;
+            case "ArrowDown":
+              preventEvent(event);
+              this.focusNextChild();
 
-            break;
+              break;
+            case "ArrowUp":
+              preventEvent(event);
+              this.focusPreviousChild();
+
+              break;
+          }
         }
       });
     });
