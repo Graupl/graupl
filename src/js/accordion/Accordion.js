@@ -5,7 +5,12 @@
 
 import AccordionItem from "./AccordionItem.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
-import { isValidInstance, isValidType, isValidClassList } from "../validate.js";
+import {
+  isValidInstance,
+  isValidType,
+  isValidClassList,
+  isQuerySelector,
+} from "../validate.js";
 import storage from "../storage.js";
 
 class Accordion {
@@ -223,9 +228,9 @@ class Accordion {
     optionalKeySupport = false,
     allowMultipleExpand = true,
     allowNoExpand = true,
+    prefix = "am-",
     key = null,
     initialize = false,
-    prefix = "am-",
   }) {
     // Set DOM elements.
     this._dom.accordion = accordionElement;
@@ -276,16 +281,24 @@ class Accordion {
         );
       }
 
+      // Set up the DOM.
       this._generateKey();
       this._setDOMElements();
       this._setIds();
+
+      // Create the child elements.
       this._createChildElements();
+
+      // Handle events.
       this._handleFocus();
       this._handleClick();
       this._handleKeydown();
       this._handleKeyup();
+
+      // Set the custom props.
       this._setTransitionDurations();
 
+      // Set up the storage.
       storage.initializeStorage("accordions");
       storage.pushToStorage("accordions", this.dom.accordion.id, this);
     } catch (error) {
@@ -739,10 +752,7 @@ class Accordion {
    * @protected
    */
   _setIds() {
-    // Set the accordion ID.
-    const accordionId =
-      this.dom.accordion.getAttribute("id") || `accordion-${this.key}`;
-    this.dom.accordion.setAttribute("id", accordionId);
+    this.dom.accordion.id = this.dom.accordion.id || `accordion-${this.key}`;
   }
 
   /**
@@ -774,6 +784,120 @@ class Accordion {
    */
   _validate() {
     let check = true;
+
+    // HTML element checks.
+    const htmlElementChecks = isValidInstance(HTMLElement, {
+      accordionElement: this.dom.accordion,
+    });
+
+    if (!htmlElementChecks) {
+      this._errors.push(htmlElementChecks.message);
+      check = false;
+    }
+
+    // Query selector checks.
+    const querySelectorChecks = isQuerySelector({
+      accordionItemSelector: this._selectors.accordionItems,
+      accordionItemToggleSelector: this._selectors.accordionItemToggles,
+      accordionItemContentSelector: this._selectors.accordionItemContents,
+    });
+
+    if (!querySelectorChecks) {
+      this._errors.push(querySelectorChecks.message);
+      check = false;
+    }
+
+    // Class list checks.
+    if (this._openClass !== "") {
+      const openClassCheck = isValidClassList({ openClass: this._openClass });
+
+      if (!openClassCheck.status) {
+        this._errors.push(openClassCheck.error.message);
+        check = false;
+      }
+    }
+
+    if (this._closeClass !== "") {
+      const closeClassCheck = isValidClassList({
+        closeClass: this._closeClass,
+      });
+
+      if (!closeClassCheck.status) {
+        this._errors.push(closeClassCheck.error.message);
+        check = false;
+      }
+    }
+
+    if (this._transitionClass !== "") {
+      const transitionClassCheck = isValidClassList({
+        transitionClass: this._transitionClass,
+      });
+
+      if (!transitionClassCheck.status) {
+        this._errors.push(transitionClassCheck.error.message);
+        check = false;
+      }
+    }
+
+    // Transition duration check.
+    const transitionDurationCheck = isValidType("number", {
+      transitionDuration: this._transitionDuration,
+    });
+
+    if (!transitionDurationCheck.status) {
+      this._errors.push(transitionDurationCheck.error.message);
+      check = false;
+    }
+
+    // Open duration check.
+    const openDurationCheck = isValidType("number", {
+      openDuration: this._openDuration,
+    });
+
+    if (!openDurationCheck.status) {
+      this._errors.push(openDurationCheck.error.message);
+      check = false;
+    }
+
+    // Close duration check.
+    const closeDurationCheck = isValidType("number", {
+      closeDuration: this._closeDuration,
+    });
+
+    if (!closeDurationCheck.status) {
+      this._errors.push(closeDurationCheck.error.message);
+      check = false;
+    }
+
+    // Boolean checks.
+    const booleanCheck = isValidType("boolean", {
+      optionalKeySupport: this._optionalSupport,
+      allowMultipleExpand: this._allowMultipleExpand,
+      allowNoExpand: this._allowNoExpand,
+    });
+
+    if (!booleanCheck.status) {
+      this._errors.push(booleanCheck.error.message);
+      check = false;
+    }
+
+    // Key check.
+    if (this._key !== "") {
+      const keyCheck = isValidType("string", { key: this._key });
+
+      if (!keyCheck.status) {
+        this._errors.push(keyCheck.error.message);
+        check = false;
+      }
+    }
+
+    // Prefix check.
+    const prefixCheck = isValidType("string", { prefix: this._prefix });
+
+    if (!prefixCheck.status) {
+      this._errors.push(prefixCheck.error.message);
+      check = false;
+    }
 
     return check;
   }
