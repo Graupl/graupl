@@ -219,17 +219,11 @@ class AccordionItem {
       this.dom.item
     );
 
-    // Set the ID values.
-    const itemID = this.dom.item.id || `accordion-item-${key}-${index}`;
-    const toggleID =
+    this.dom.item.id = this.dom.item.id || `accordion-item-${key}-${index}`;
+    this.dom.toggle.id =
       this.dom.toggle.id || `accordion-item-toggle-${key}-${index}`;
-    const contentID =
+    this.dom.content.id =
       this.dom.content.id || `accordion-item-content-${key}-${index}`;
-
-    // Set the IDs.
-    this.dom.item.id = itemID;
-    this.dom.toggle.id = toggleID;
-    this.dom.content.id = contentID;
   }
 
   /**
