@@ -20,15 +20,21 @@ $accordion-item-footer-selector: ".accordion-item-footer" !default;
 $accordion-item-open-selector: ".show" !default;
 $accordion-item-close-selector: ".hide" !default;
 $accordion-item-transition-selector: ".transitioning" !default;
+$accordion-item-toggle-pseudo-selector: "::after" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-transform: none !default;
-$accordion-item-toggle-close-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-transition-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-open-transform: rotate(-180deg) !default;
+$accordion-item-toggle-visited-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-focus-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-hover-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-active-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-disabled-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-pseudo-transform: none !default;
+$accordion-item-toggle-pseudo-open-transform: rotate(-180deg) !default;
+
+// Toggle properties.
+$accordion-item-toggle-pseudo-content: "▼" !default;
 
 // Accordion transform properties.
 $accordion-item-content-transform: translateY(-100%) !default;
-$accordion-item-content-close-transform: $accordion-item-content-transform !default;
-$accordion-item-content-transition-transform: $accordion-item-content-transform !default;
 $accordion-item-content-open-transform: translateY(0) !default;

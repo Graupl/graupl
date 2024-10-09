@@ -3,6 +3,8 @@
  * The Accordion Item class.
  */
 
+/* global Accordion */
+
 import { isTag, isValidType } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 
@@ -134,9 +136,9 @@ class AccordionItem {
 
     // Set the initial state of the accordion item.
     if (this.dom.toggle.getAttribute("aria-expanded") === "true") {
-      this.show(false);
+      this.show(false, false);
     } else {
-      this.hide(false);
+      this.hide(false, false);
     }
   }
 
@@ -265,9 +267,10 @@ class AccordionItem {
    *
    * @fires grauplAccordionItemShow
    *
-   * @param {boolean} [emit = true] - Emit the show event once shown.
+   * @param {boolean} [emit = true]       - Emit the show event once shown.
+   * @param {boolean} [transition = true] - Respect the transition class.
    */
-  show(emit = true) {
+  show(emit = true, transition = true) {
     if (this._open) {
       return;
     }
@@ -281,7 +284,10 @@ class AccordionItem {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the hide class,
     // add the show class, and finally remove the transition class.
-    if (transitionClass !== "") {
+    //
+    // If `transition` is false, then it doesn't matter if the transition class
+    // is set. Do not use the transition.
+    if (transition && transitionClass !== "") {
       addClass(transitionClass, this.dom.item);
 
       requestAnimationFrame(() => {
@@ -342,9 +348,10 @@ class AccordionItem {
    *
    * @fires grauplAccordionItemHide
    *
-   * @param {boolean} [emit = true] - Emit the hide event once hidden.
+   * @param {boolean} [emit = true]       - Emit the show event once shown.
+   * @param {boolean} [transition = true] - Respect the transition class.
    */
-  hide(emit = true) {
+  hide(emit = true, transition = true) {
     if (!this._open) {
       return;
     }
@@ -365,7 +372,10 @@ class AccordionItem {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
-    if (transitionClass !== "") {
+    //
+    // If `transition` is false, then it doesn't matter if the transition class
+    // is set. Do not use the transition.
+    if (transition && transitionClass !== "") {
       addClass(transitionClass, this.dom.item);
       this.dom.item.style.height = `${this.dom.item.getBoundingClientRect().height}px`;
 

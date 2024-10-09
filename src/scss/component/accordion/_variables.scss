@@ -259,37 +259,46 @@ $accordion-item-toggle-transition-duration: var(
   --#{root-defaults.$prefix}-accordion-item-toggle-transition-duration,
   #{$accordion-transition-duration}
 );
+$accordion-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  height #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  none
+);
+$accordion-item-toggle-pseudo-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-item-toggle-pseudo-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  none
+);
+$accordion-item-content-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+    transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-item-content-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
 
 // Accordion item transform properties.
 $accordion-item-content-transform: var(
   --#{root-defaults.$prefix}-accordion-item-content-transform,
   #{defaults.$accordion-item-content-transform}
 );
-$accordion-item-content-close-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-content-close-transform,
-  #{defaults.$accordion-item-content-close-transform}
-);
-$accordion-item-content-transition-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-content-transition-transform,
-  #{defaults.$accordion-item-content-transition-transform}
-);
 $accordion-item-content-open-transform: var(
   --#{root-defaults.$prefix}-accordion-item-content-open-transform,
   #{defaults.$accordion-item-content-open-transform}
 );
-$accordion-item-toggle-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-toggle-transform,
-  #{defaults.$accordion-item-toggle-transform}
+$accordion-item-toggle-pseudo-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-pseudo-transform,
+  #{defaults.$accordion-item-toggle-pseudo-transform}
 );
-$accordion-item-toggle-close-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-toggle-close-transform,
-  #{defaults.$accordion-item-toggle-close-transform}
-);
-$accordion-item-toggle-transition-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-toggle-transition-transform,
-  #{defaults.$accordion-item-toggle-transition-transform}
-);
-$accordion-item-toggle-open-transform: var(
-  --#{root-defaults.$prefix}-accordion-item-toggle-open-transform,
-  #{defaults.$accordion-item-toggle-open-transform}
+$accordion-item-toggle-pseudo-open-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-pseudo-open-transform,
+  #{defaults.$accordion-item-toggle-pseudo-open-transform}
 );

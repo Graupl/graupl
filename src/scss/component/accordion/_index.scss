@@ -5,7 +5,7 @@
 @use "../../base/button/mixins" as button-mixins;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../state/focus/index" as focus;
+@use "../../state/focus/variables" as focus;
 @use "sass:map";
 
 #{defaults.$accordion-selector} {
@@ -34,7 +34,7 @@
     border: $accordion-item-border;
     border-radius: $accordion-item-border-radius;
     isolation: isolate;
-    transition: height 350ms ease;
+    transition: $accordion-transition;
 
     &#{defaults.$accordion-item-close-selector}
       #{defaults.$accordion-item-content-selector} {
@@ -44,15 +44,20 @@
     &#{defaults.$accordion-item-open-selector}
       #{defaults.$accordion-item-content-selector} {
       opacity: 1;
-      transform: translateY(0);
+      transform: $accordion-item-content-open-transform;
     }
 
     &#{defaults.$accordion-item-transition-selector}
       #{defaults.$accordion-item-content-selector} {
       display: flex;
     }
+  }
 
-    &:has(#{defaults.$accordion-item-toggle-selector}:focus-visible) {
+  @include layer(state) {
+    #{defaults.$accordion-item-toggle-selector} {
+      --#{root-defaults.$prefix}-focus-outline-offset: calc(
+        -1 * (#{$accordion-item-border-width} + #{focus.$focus-width})
+      );
     }
   }
 
@@ -100,19 +105,19 @@
       }
     }
 
-    &::after {
-      content: "▼";
+    &#{defaults.$accordion-item-toggle-pseudo-selector} {
+      content: defaults.$accordion-item-toggle-pseudo-content;
       display: flex;
       align-items: center;
       justify-content: center;
       margin-left: auto;
-      transform: rotate(0);
-      transition: transform 0.3s ease;
+      transform: $accordion-item-toggle-pseudo-transform;
+      transition: $accordion-item-toggle-pseudo-transition;
     }
 
     &[aria-expanded="true"] {
       &::after {
-        transform: rotate(-180deg);
+        transform: $accordion-item-toggle-pseudo-open-transform;
       }
     }
   }
@@ -157,10 +162,8 @@
     gap: $accordion-item-content-gap;
     padding: $accordion-item-content-padding;
     opacity: 0;
-    transition:
-      opacity 350ms ease,
-      transform 350ms ease;
-    transform: translateY(-100%);
+    transition: $accordion-item-content-transition;
+    transform: $accordion-item-content-transform;
   }
 }
 
