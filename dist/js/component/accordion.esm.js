@@ -1070,7 +1070,7 @@ class V {
     });
     l.status || (this._errors.push(l.error.message), t = !1);
     const d = o("boolean", {
-      optionalKeySupport: this._optionalSupport,
+      optionalKeySupport: this._optionalKeySupport,
       allowMultipleExpand: this._allowMultipleExpand,
       allowNoExpand: this._allowNoExpand
     });

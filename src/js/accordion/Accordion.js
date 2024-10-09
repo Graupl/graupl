@@ -871,7 +871,7 @@ class Accordion {
 
     // Boolean checks.
     const booleanCheck = isValidType("boolean", {
-      optionalKeySupport: this._optionalSupport,
+      optionalKeySupport: this._optionalKeySupport,
       allowMultipleExpand: this._allowMultipleExpand,
       allowNoExpand: this._allowNoExpand,
     });
