@@ -12,7 +12,14 @@ function m(s) {
     const t = s.key || s.keyCode, e = {
       Enter: t === "Enter" || t === 13,
       Space: t === " " || t === "Spacebar" || t === 32,
-      Escape: t === "Escape" || t === "Esc" || t === 27
+      Escape: t === "Escape" || t === "Esc" || t === 27,
+      ArrowUp: t === "ArrowUp" || t === "Up" || t === 38,
+      ArrowRight: t === "ArrowRight" || t === "Right" || t === 39,
+      ArrowDown: t === "ArrowDown" || t === "Down" || t === 40,
+      ArrowLeft: t === "ArrowLeft" || t === "Left" || t === 37,
+      Home: t === "Home" || t === 36,
+      End: t === "End" || t === 35,
+      Tab: t === "Tab" || t === 9
     };
     return Object.keys(e).find((r) => e[r] === !0) || "";
   } catch {
@@ -72,7 +79,7 @@ function n(s, t) {
     };
   }
 }
-function d(s) {
+function C(s) {
   try {
     if (typeof s != "object") {
       const t = typeof s;
@@ -125,7 +132,7 @@ function l(s) {
           );
       else {
         const r = {};
-        r[t] = s[t], d(r);
+        r[t] = s[t], C(r);
       }
     }
     return {
@@ -139,7 +146,7 @@ function l(s) {
     };
   }
 }
-function C(s, t) {
+function d(s, t) {
   if (n("string", { tagName: s }).status && f(HTMLElement, t).status) {
     const e = s.toLowerCase();
     let r = !0;
@@ -186,16 +193,16 @@ class P {
     carouselTabSelector: c = ".carousel-tab",
     carouselTabContainerSelector: y = ".carousel-tab-container",
     autoplaySelector: i = ".autoplay",
-    nextSelector: I = ".next",
-    previousSelector: g = ".previous",
+    nextSelector: g = ".next",
+    previousSelector: I = ".previous",
     activeClass: b = "active",
     previousClass: v = "previous",
     nextClass: E = "next",
     playClass: T = "play",
     pauseClass: x = "pause",
-    autoplay: k = !0,
+    autoplay: w = !0,
     transitionDelay: A = 1e4,
-    transitionDuration: w = 500,
+    transitionDuration: k = 500,
     playText: D = "Play",
     pauseText: L = "Pause",
     prefix: S = "graupl-",
@@ -379,7 +386,7 @@ class P {
      * @type {string[]}
      */
     a(this, "_errors", []);
-    this._dom.carousel = t, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = r, this._selectors.carouselControls = o, this._selectors.carouselControlContainer = u, this._selectors.carouselTabs = c, this._selectors.carouselTabContainer = y, this._selectors.autoplay = i, this._selectors.next = I, this._selectors.previous = g, this._activeClass = b || "", this._previousClass = v || "", this._nextClass = E || "", this._playClass = T || "", this._pauseClass = x || "", this._autoplay = k, this._transitionDelay = A, this._transitionDuration = w, this._playText = D || "", this._pauseText = L || "", this._prefix = S || "", $ && this.initialize();
+    this._dom.carousel = t, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = r, this._selectors.carouselControls = o, this._selectors.carouselControlContainer = u, this._selectors.carouselTabs = c, this._selectors.carouselTabContainer = y, this._selectors.autoplay = i, this._selectors.next = g, this._selectors.previous = I, this._activeClass = b || "", this._previousClass = v || "", this._nextClass = E || "", this._playClass = T || "", this._pauseClass = x || "", this._autoplay = w, this._transitionDelay = A, this._transitionDuration = k, this._playText = D || "", this._pauseText = L || "", this._prefix = S || "", $ && this.initialize();
   }
   /**
    * Initializes the carousel.
@@ -640,7 +647,7 @@ class P {
       carousel: this.dom.carousel
     });
     e || (this._errors.push(e.message), t = !1);
-    const r = d({
+    const r = C({
       carouselItemsSelector: this._selectors.carouselItems,
       carouselItemContainerSelector: this._selectors.carouselItemContainer,
       carouselControlsSelector: this._selectors.carouselControls,
@@ -793,8 +800,8 @@ class P {
    * Sets the aria attributes for the carousel.
    */
   _setAriaAttributes() {
-    !C("section", { carousel: this.dom.carousel }) && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
-      C("button", { tab: t }) || t.setAttribute("role", "button"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
+    !d("section", { carousel: this.dom.carousel }) && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
+      d("button", { tab: t }) || t.setAttribute("role", "button"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
     });
   }
   /**

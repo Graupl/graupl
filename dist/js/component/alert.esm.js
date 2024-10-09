@@ -1,6 +1,6 @@
 var y = Object.defineProperty;
-var _ = (s, t, i) => t in s ? y(s, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : s[t] = i;
-var n = (s, t, i) => _(s, typeof t != "symbol" ? t + "" : t, i);
+var w = (s, t, i) => t in s ? y(s, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : s[t] = i;
+var n = (s, t, i) => w(s, typeof t != "symbol" ? t + "" : t, i);
 function f(s, t) {
   try {
     if (typeof t != "object") {
@@ -129,14 +129,21 @@ function u(s) {
     const t = s.key || s.keyCode, i = {
       Enter: t === "Enter" || t === 13,
       Space: t === " " || t === "Spacebar" || t === 32,
-      Escape: t === "Escape" || t === "Esc" || t === 27
+      Escape: t === "Escape" || t === "Esc" || t === 27,
+      ArrowUp: t === "ArrowUp" || t === "Up" || t === 38,
+      ArrowRight: t === "ArrowRight" || t === "Right" || t === 39,
+      ArrowDown: t === "ArrowDown" || t === "Down" || t === 40,
+      ArrowLeft: t === "ArrowLeft" || t === "Left" || t === 37,
+      Home: t === "Home" || t === 36,
+      End: t === "End" || t === 35,
+      Tab: t === "Tab" || t === 9
     };
     return Object.keys(i).find((e) => i[e] === !0) || "";
   } catch {
     return "";
   }
 }
-function w(s) {
+function _(s) {
   s.preventDefault(), s.stopPropagation();
 }
 class E {
@@ -430,7 +437,7 @@ class E {
   _handleKeydown() {
     this.dom.controller !== null && this.dom.controller.addEventListener("keydown", (t) => {
       const i = u(t);
-      (i === "Space" || i === "Enter") && w(t);
+      (i === "Space" || i === "Enter") && _(t);
     });
   }
   /**

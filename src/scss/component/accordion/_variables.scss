@@ -1,0 +1,304 @@
+// @graupl/graupl accordion component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "sass:map";
+@use "../../base/button/variables" as button;
+
+// Accordion properties.
+$accordion-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-padding: var(
+  --#{root-defaults.$prefix}-accordion-padding,
+  #{$accordion-padding-y} #{$accordion-padding-x}
+);
+
+// Accordion gap properties.
+$accordion-column-gap: var(
+  --#{root-defaults.$prefix}-accordion-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-row-gap: var(
+  --#{root-defaults.$prefix}-accordion-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-gap: var(
+  --#{root-defaults.$prefix}-accordion-gap,
+  #{$accordion-column-gap} #{$accordion-row-gap}
+);
+
+// Accordion color properties.
+$accordion-color: var(
+  --#{root-defaults.$prefix}-accordion-color,
+  #{color.$root-color}
+);
+$accordion-background: var(
+  --#{root-defaults.$prefix}-accordion-background,
+  #{color.$root-background}
+);
+
+// Accordion item border properties.
+$accordion-item-border-color: var(
+  --#{root-defaults.$prefix}-accordion-item-border-color,
+  #{$accordion-color}
+);
+$accordion-item-top-left-border-radius: var(
+  --#{root-defaults.$prefix}-accordion-item-top-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$accordion-item-top-right-border-radius: var(
+  --#{root-defaults.$prefix}-accordion-item-top-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$accordion-item-bottom-left-border-radius: var(
+  --#{root-defaults.$prefix}-accordion-item-bottom-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$accordion-item-bottom-right-border-radius: var(
+  --#{root-defaults.$prefix}-accordion-item-bottom-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$accordion-item-border-radius: var(
+  --#{root-defaults.$prefix}-accordion-item-border-radius,
+  #{$accordion-item-top-left-border-radius} #{$accordion-item-top-right-border-radius}
+    #{$accordion-item-bottom-right-border-radius} #{$accordion-item-bottom-left-border-radius}
+);
+$accordion-item-border-style: var(
+  --#{root-defaults.$prefix}-accordion-item-border-style,
+  #{root-variables.$border-style}
+);
+$accordion-item-border-width: var(
+  --#{root-defaults.$prefix}-accordion-item-border-width,
+  #{root-variables.$border-width}
+);
+$accordion-item-border: var(
+  --#{root-defaults.$prefix}-accordion-item-border,
+  #{$accordion-item-border-width} #{$accordion-item-border-style}
+);
+
+// Accordion item properties.
+$accordion-item-toggle-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-padding,
+  #{button.$button-padding}
+);
+
+// Transform properties.
+$accordion-item-toggle-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-transform,
+  #{defaults.$accordion-item-toggle-transform}
+);
+$accordion-item-toggle-visited-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-visited-transform,
+  #{defaults.$accordion-item-toggle-visited-transform}
+);
+$accordion-item-toggle-focus-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-focus-transform,
+  #{defaults.$accordion-item-toggle-focus-transform}
+);
+$accordion-item-toggle-hover-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-hover-transform,
+  #{defaults.$accordion-item-toggle-hover-transform}
+);
+$accordion-item-toggle-active-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-active-transform,
+  #{defaults.$accordion-item-toggle-active-transform}
+);
+$accordion-item-toggle-disabled-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-disabled-transform,
+  #{defaults.$accordion-item-toggle-disabled-transform}
+);
+$accordion-item-toggle-transition: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-transition,
+  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+);
+$accordion-item-toggle-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+);
+
+// Accordion item header properties.
+$accordion-item-header-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-item-header-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-header-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-item-header-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-header-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-header-padding,
+  #{$accordion-item-header-padding-y} #{$accordion-item-header-padding-x}
+);
+$accordion-item-header-margin: var(
+  --#{root-defaults.$prefix}-accordion-item-header-margin,
+  calc(-1 * #{$accordion-item-border-width})
+);
+
+// Accordion item title properties.
+$accordion-item-title-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-item-title-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-title-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-item-title-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-title-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-title-padding,
+  #{$accordion-item-title-padding-y} #{$accordion-item-title-padding-x}
+);
+$accordion-item-title-margin-x: var(
+  --#{root-defaults.$prefix}-accordion-item-title-margin-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-title-margin-y: var(
+  --#{root-defaults.$prefix}-accordion-item-title-margin-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-title-margin: var(
+  --#{root-defaults.$prefix}-accordion-item-title-margin,
+  #{$accordion-item-title-margin-y} #{$accordion-item-title-margin-x}
+);
+$accordion-title-color: var(
+  --#{root-defaults.$prefix}-accordion-title-color,
+  #{$accordion-color}
+);
+$accordion-title-font-size: var(
+  --#{root-defaults.$prefix}-accordion-title-font-size,
+  #{typography.$h5-font-size}
+);
+$accordion-title-font-weight: var(
+  --#{root-defaults.$prefix}-accordion-title-font-weight,
+  #{typography.$h5-font-weight}
+);
+$accordion-title-font-family: var(
+  --#{root-defaults.$prefix}-accordion-title-font-family,
+  #{typography.$h5-font-family}
+);
+$accordion-title-line-height: var(
+  --#{root-defaults.$prefix}-accordion-title-line-height,
+  #{typography.$h5-line-height}
+);
+
+// Accordion item content properties.
+$accordion-item-content-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-item-content-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$accordion-item-content-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-item-content-padding-y,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$accordion-item-content-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-content-padding,
+  #{$accordion-item-content-padding-y} #{$accordion-item-content-padding-x}
+);
+$accordion-item-content-column-gap: var(
+  --#{root-defaults.$prefix}-accordion-item-content-column-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$accordion-item-content-row-gap: var(
+  --#{root-defaults.$prefix}-accordion-item-content-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-content-gap: var(
+  --#{root-defaults.$prefix}-accordion-item-content-gap,
+  #{$accordion-item-content-column-gap} #{$accordion-item-content-row-gap}
+);
+
+// Accordion item body properties.
+$accordion-item-body-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-item-body-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-body-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-item-body-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-body-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-body-padding,
+  #{$accordion-item-body-padding-y} #{$accordion-item-body-padding-x}
+);
+
+// Accordion item footer properties.
+$accordion-item-footer-padding-x: var(
+  --#{root-defaults.$prefix}-accordion-item-footer-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-footer-padding-y: var(
+  --#{root-defaults.$prefix}-accordion-item-footer-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-item-footer-padding: var(
+  --#{root-defaults.$prefix}-accordion-item-footer-padding,
+  #{$accordion-item-footer-padding-y} #{$accordion-item-footer-padding-x}
+);
+
+// Accordion item transition properties.
+$accordion-transition-duration: var(
+  --#{root-defaults.$prefix}-accordion-transition-duration,
+  #{map.get(root-variables.$transition-durations, slow)}
+);
+$accordion-item-toggle-transition-duration: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-transition-duration,
+  #{$accordion-transition-duration}
+);
+$accordion-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  height #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  none
+);
+$accordion-item-toggle-pseudo-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-item-toggle-pseudo-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  none
+);
+$accordion-item-content-transition: var(
+  --#{root-defaults.$prefix}-accordion-transition,
+  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+    transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+$accordion-item-content-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
+  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+);
+
+// Accordion item transform properties.
+$accordion-item-content-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-content-transform,
+  #{defaults.$accordion-item-content-transform}
+);
+$accordion-item-content-open-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-content-open-transform,
+  #{defaults.$accordion-item-content-open-transform}
+);
+$accordion-item-toggle-pseudo-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-pseudo-transform,
+  #{defaults.$accordion-item-toggle-pseudo-transform}
+);
+$accordion-item-toggle-pseudo-open-transform: var(
+  --#{root-defaults.$prefix}-accordion-item-toggle-pseudo-open-transform,
+  #{defaults.$accordion-item-toggle-pseudo-open-transform}
+);

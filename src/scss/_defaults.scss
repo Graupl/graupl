@@ -81,3 +81,31 @@ $transition-durations: map.merge(
   $base-transition-durations,
   $custom-transition-durations
 );
+
+// State selectors.
+$base-state-selectors: (
+  visited: (
+    ".visited",
+    ":visited",
+  ),
+  focus: (
+    ".focus",
+    ":focus-visible",
+  ),
+  hover: (
+    ".hover",
+    ":hover",
+  ),
+  active: (
+    ".active",
+    ":active",
+  ),
+  disabled: (
+    ".disabled",
+    ":disabled",
+    "[disabled]",
+    "[aria-disabled=true]",
+  ),
+);
+$custom-state-selectors: () !default;
+$state-selectors: map.merge($base-state-selectors, $custom-state-selectors);

@@ -1,0 +1,40 @@
+// @graupl/graupl accordion component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Accordion selectors.
+$accordion-selector: ".accordion" !default;
+$accordion-item-selector: ".accordion-item" !default;
+$accordion-item-header-selector: ".accordion-item-header" !default;
+$accordion-item-title-selector: ".accordion-item-title" !default;
+$accordion-item-toggle-selector: ".accordion-item-toggle" !default;
+$accordion-item-content-selector: ".accordion-item-content" !default;
+$accordion-item-body-selector: ".accordion-item-body" !default;
+$accordion-item-footer-selector: ".accordion-item-footer" !default;
+$accordion-item-open-selector: ".show" !default;
+$accordion-item-close-selector: ".hide" !default;
+$accordion-item-transition-selector: ".transitioning" !default;
+$accordion-item-toggle-pseudo-selector: "::after" !default;
+
+// Toggle transform properties.
+$accordion-item-toggle-transform: none !default;
+$accordion-item-toggle-visited-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-focus-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-hover-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-active-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-disabled-transform: $accordion-item-toggle-transform !default;
+$accordion-item-toggle-pseudo-transform: none !default;
+$accordion-item-toggle-pseudo-open-transform: rotate(-180deg) !default;
+
+// Toggle properties.
+$accordion-item-toggle-pseudo-content: "▼" !default;
+
+// Accordion transform properties.
+$accordion-item-content-transform: translateY(-100%) !default;
+$accordion-item-content-open-transform: translateY(0) !default;

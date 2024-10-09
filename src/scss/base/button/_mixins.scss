@@ -56,41 +56,42 @@
     font-size: $font-size;
     cursor: pointer;
 
-    &:visited,
-    &#{defaults.$button-visited-selector} {
-      --#{root-defaults.$prefix}-button-transform: #{$visited-transform};
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-transform: #{$visited-transform};
+      }
     }
 
-    &:focus-visible,
-    &#{defaults.$button-focus-selector} {
-      --#{root-defaults.$prefix}-button-transform: #{$focus-transform};
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-transform: #{$focus-transform};
+      }
     }
 
-    &:hover,
-    &#{defaults.$button-hover-selector} {
-      --#{root-defaults.$prefix}-button-transform: #{$hover-transform};
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-transform: #{$hover-transform};
+      }
     }
 
-    &:active,
-    &#{defaults.$button-active-selector} {
-      --#{root-defaults.$prefix}-button-transform: #{$active-transform};
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-transform: #{$active-transform};
+      }
     }
 
-    &:disabled,
-    &[disabled],
-    &#{defaults.$button-disabled-selector} {
-      cursor: not-allowed;
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        @each $state, $selectors in root-defaults.$state-selectors {
+          @each $selector in $selectors {
+            &,
+            &#{$selector} {
+              --#{root-defaults.$prefix}-button-transform: #{$disabled-transform};
 
-      &,
-      &:visited,
-      &#{defaults.$button-visited-selector},
-      &:focus-visible,
-      &#{defaults.$button-focus-selector},
-      &:hover,
-      &#{defaults.$button-hover-selector},
-      &:active,
-      &#{defaults.$button-active-selector} {
-        --#{root-defaults.$prefix}-button-transform: #{$disabled-transform};
+              cursor: not-allowed;
+            }
+          }
+        }
       }
     }
 
@@ -115,49 +116,50 @@
       }
     }
 
-    &:visited,
-    &#{defaults.$button-visited-selector} {
-      --#{root-defaults.$prefix}-button-border-color: #{$visited-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$visited-background};
-      --#{root-defaults.$prefix}-button-color: #{$visited-color};
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-border-color: #{$visited-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$visited-background};
+        --#{root-defaults.$prefix}-button-color: #{$visited-color};
+      }
     }
 
-    &:focus-visible,
-    &#{defaults.$button-focus-selector} {
-      --#{root-defaults.$prefix}-button-border-color: #{$focus-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$focus-background};
-      --#{root-defaults.$prefix}-button-color: #{$focus-color};
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-border-color: #{$focus-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$focus-background};
+        --#{root-defaults.$prefix}-button-color: #{$focus-color};
+      }
     }
 
-    &:hover,
-    &#{defaults.$button-hover-selector} {
-      --#{root-defaults.$prefix}-button-border-color: #{$hover-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$hover-background};
-      --#{root-defaults.$prefix}-button-color: #{$hover-color};
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-border-color: #{$hover-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$hover-background};
+        --#{root-defaults.$prefix}-button-color: #{$hover-color};
+      }
     }
 
-    &:active,
-    &#{defaults.$button-active-selector} {
-      --#{root-defaults.$prefix}-button-border-color: #{$active-border-color};
-      --#{root-defaults.$prefix}-button-background: #{$active-background};
-      --#{root-defaults.$prefix}-button-color: #{$active-color};
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-button-border-color: #{$active-border-color};
+        --#{root-defaults.$prefix}-button-background: #{$active-background};
+        --#{root-defaults.$prefix}-button-color: #{$active-color};
+      }
     }
 
-    &:disabled,
-    &[disabled],
-    &#{defaults.$button-disabled-selector} {
-      &,
-      &:visited,
-      &#{defaults.$button-visited-selector},
-      &:focus-visible,
-      &#{defaults.$button-focus-selector},
-      &:hover,
-      &#{defaults.$button-hover-selector},
-      &:active,
-      &#{defaults.$button-active-selector} {
-        --#{root-defaults.$prefix}-button-border-color: #{$disabled-border-color};
-        --#{root-defaults.$prefix}-button-background: #{$disabled-background};
-        --#{root-defaults.$prefix}-button-color: #{$disabled-color};
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        @each $state, $selectors in root-defaults.$state-selectors {
+          @each $selector in $selectors {
+            &,
+            &#{$selector} {
+              --#{root-defaults.$prefix}-button-border-color: #{$disabled-border-color};
+              --#{root-defaults.$prefix}-button-background: #{$disabled-background};
+              --#{root-defaults.$prefix}-button-color: #{$disabled-color};
+            }
+          }
+        }
       }
     }
   }

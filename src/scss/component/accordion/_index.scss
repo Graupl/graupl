@@ -1,0 +1,180 @@
+// @graupl/graupl accordion component styles.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../base/button/mixins" as button-mixins;
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../state/focus/variables" as focus;
+@use "sass:map";
+
+#{defaults.$accordion-selector} {
+  @include layer(component) {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: $accordion-padding;
+    gap: $accordion-gap;
+
+    > #{defaults.$accordion-item-selector} {
+      &:not(:first-child) {
+        margin-top: calc(-1 * #{$accordion-item-border-width});
+      }
+    }
+  }
+
+  @include layer(theme) {
+    background: $accordion-background;
+    color: $accordion-color;
+  }
+}
+
+#{defaults.$accordion-item-selector} {
+  @include layer(component) {
+    overflow: hidden;
+    transition: $accordion-transition;
+    border: $accordion-item-border;
+    border-radius: $accordion-item-border-radius;
+    isolation: isolate;
+
+    &#{defaults.$accordion-item-close-selector}
+      #{defaults.$accordion-item-content-selector} {
+      display: none;
+    }
+
+    &#{defaults.$accordion-item-open-selector}
+      #{defaults.$accordion-item-content-selector} {
+      transform: $accordion-item-content-open-transform;
+      opacity: 1;
+    }
+
+    &#{defaults.$accordion-item-transition-selector}
+      #{defaults.$accordion-item-content-selector} {
+      display: flex;
+    }
+  }
+
+  @include layer(state) {
+    #{defaults.$accordion-item-toggle-selector} {
+      --#{root-defaults.$prefix}-focus-outline-offset: calc(
+        -1 * (#{$accordion-item-border-width} + #{focus.$focus-width})
+      );
+    }
+  }
+
+  @include layer(theme) {
+    border-color: $accordion-item-border-color;
+  }
+}
+
+#{defaults.$accordion-item-toggle-selector} {
+  @include button-mixins.apply-button;
+
+  @include layer(component) {
+    z-index: 2;
+    padding: $accordion-item-toggle-padding;
+    transform: $accordion-item-toggle-transform;
+    transition: $accordion-item-toggle-transition;
+
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
+      }
+    }
+
+    &#{defaults.$accordion-item-toggle-pseudo-selector} {
+      content: defaults.$accordion-item-toggle-pseudo-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      transform: $accordion-item-toggle-pseudo-transform;
+      transition: $accordion-item-toggle-pseudo-transition;
+    }
+
+    &[aria-expanded="true"] {
+      &::after {
+        transform: $accordion-item-toggle-pseudo-open-transform;
+      }
+    }
+  }
+}
+
+#{defaults.$accordion-item-header-selector} {
+  @include layer(component) {
+    margin: $accordion-item-header-margin;
+    padding: $accordion-item-header-padding;
+  }
+}
+
+#{defaults.$accordion-item-title-selector} {
+  @include layer(component) {
+    margin: $accordion-item-title-margin;
+    padding: $accordion-item-title-padding;
+
+    &,
+    #{defaults.$accordion-item-toggle-selector} {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+
+  @include layer(theme) {
+    &,
+    #{defaults.$accordion-item-toggle-selector} {
+      font-family: $accordion-title-font-family;
+      font-size: $accordion-title-font-size;
+      font-weight: $accordion-title-font-weight;
+      line-height: $accordion-title-line-height;
+    }
+  }
+}
+
+#{defaults.$accordion-item-content-selector} {
+  @include layer(component) {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: $accordion-item-content-padding;
+    transform: $accordion-item-content-transform;
+    transition: $accordion-item-content-transition;
+    opacity: 0;
+    gap: $accordion-item-content-gap;
+  }
+}
+
+#{defaults.$accordion-item-body-selector} {
+  @include layer(component) {
+    padding: $accordion-item-body-padding;
+  }
+}
+
+#{defaults.$accordion-item-footer-selector} {
+  @include layer(component) {
+    padding: $accordion-item-footer-padding;
+  }
+}
