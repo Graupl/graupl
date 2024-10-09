@@ -31,10 +31,10 @@
 #{defaults.$accordion-item-selector} {
   @include layer(component) {
     overflow: hidden;
+    transition: $accordion-transition;
     border: $accordion-item-border;
     border-radius: $accordion-item-border-radius;
     isolation: isolate;
-    transition: $accordion-transition;
 
     &#{defaults.$accordion-item-close-selector}
       #{defaults.$accordion-item-content-selector} {
@@ -43,8 +43,8 @@
 
     &#{defaults.$accordion-item-open-selector}
       #{defaults.$accordion-item-content-selector} {
-      opacity: 1;
       transform: $accordion-item-content-open-transform;
+      opacity: 1;
     }
 
     &#{defaults.$accordion-item-transition-selector}
@@ -159,11 +159,11 @@
   @include layer(component) {
     display: flex;
     flex-flow: column nowrap;
-    gap: $accordion-item-content-gap;
     padding: $accordion-item-content-padding;
-    opacity: 0;
-    transition: $accordion-item-content-transition;
     transform: $accordion-item-content-transform;
+    transition: $accordion-item-content-transition;
+    opacity: 0;
+    gap: $accordion-item-content-gap;
   }
 }
 

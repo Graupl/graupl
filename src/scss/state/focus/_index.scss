@@ -8,6 +8,6 @@
 
 @each $state in map.get(root-defaults.$state-selectors, focus) {
   *#{$state} {
-    @include apply-focus();
+    @include apply-focus;
   }
 }
