@@ -31,6 +31,7 @@ $base-screen-size-triggers: (
   navigation-collapse: "(width <= 72ch)",
   navigation-expand: "(72ch < width)",
   force-vertical-card: "(width <= 72ch)",
+  force-single-column: "(width <= 48ch)",
 );
 $custom-screen-size-triggers: () !default;
 $screen-size-triggers: map.merge(

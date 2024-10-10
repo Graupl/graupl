@@ -39,7 +39,7 @@
       /* stylelint-enable  scss/operator-no-newline-after */
     }
 
-    @include screen(xs) {
+    @include screen-trigger(force-single-column) {
       #{defaults.$flex-columns-column-selector-prefix}#{$i} {
         --#{root-defaults.$prefix}-flex-columns-size: 100%;
         --#{root-defaults.$prefix}-flex-columns-max-width: auto;

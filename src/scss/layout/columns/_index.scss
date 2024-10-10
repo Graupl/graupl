@@ -36,7 +36,7 @@
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
-  @include screen(xs) {
+  @include screen-trigger(force-single-column) {
     #{defaults.$columns-selector} {
       --#{root-defaults.$prefix}-columns-min-width: #{defaults.$columns-max-width};
 
