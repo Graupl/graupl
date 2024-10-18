@@ -23,11 +23,13 @@ class AccordionItem {
    *
    * @property {HTMLElement} item    - The accordion item element.
    * @property {HTMLElement} toggle  - The controller element.
+   * @property {HTMLElement} header  - The header element.
    * @property {HTMLElement} content - The content element.
    */
   _dom = {
     item: null,
     toggle: null,
+    header: null,
     content: null,
   };
 
@@ -69,14 +71,14 @@ class AccordionItem {
    *
    * @protected
    *
-   * @event grauplAccordionItemShow
+   * @event grauplAccordionItemExpand
    *
    * @type {CustomEvent}
    *
    * @property {boolean}               bubbles - A flag to bubble the event.
    * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
    */
-  _showEvent = new CustomEvent("grauplAccordionItemShow", {
+  _expandEvent = new CustomEvent("grauplAccordionItemExpand", {
     bubbles: true,
     detail: { item: this },
   });
@@ -86,14 +88,14 @@ class AccordionItem {
    *
    * @protected
    *
-   * @event grauplAccordionItemHide
+   * @event grauplAccordionItemCollapse
    *
    * @type {CustomEvent}
    *
    * @property {boolean}               bubbles - A flag to bubble the event.
    * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
    */
-  _hideEvent = new CustomEvent("grauplAccordionItemHide", {
+  _collapseEvent = new CustomEvent("grauplAccordionItemCollapse", {
     bubbles: true,
     detail: { item: this },
   });
@@ -106,18 +108,21 @@ class AccordionItem {
    * @param {object}               options                             - The options object.
    * @param {HTMLElement}          options.accordionItemElement        - The accordion item element.
    * @param {HTMLElement}          options.accordionItemToggleElement  - The toggle element.
+   * @param {HTMLElement}          options.accordionItemHeaderElement  - The header element.
    * @param {HTMLElement}          options.accordionItemContentElement - The content element.
    * @param {Accordion}            [options.parentAccordion = null]    - The accordion containing this item.
    */
   constructor({
     accordionItemElement,
     accordionItemToggleElement,
+    accordionItemHeaderElement,
     accordionItemContentElement,
     parentAccordion = null,
   }) {
     // Set DOM elements.
     this._dom.item = accordionItemElement;
     this._dom.toggle = accordionItemToggleElement;
+    this._dom.header = accordionItemHeaderElement;
     this._dom.content = accordionItemContentElement;
 
     // Set the accordion elements.
@@ -222,6 +227,8 @@ class AccordionItem {
     this.dom.item.id = this.dom.item.id || `accordion-item-${key}-${index}`;
     this.dom.toggle.id =
       this.dom.toggle.id || `accordion-item-toggle-${key}-${index}`;
+    this.dom.header.id =
+      this.dom.header.id || `accordion-item-header-${key}-${index}`;
     this.dom.content.id =
       this.dom.content.id || `accordion-item-content-${key}-${index}`;
   }
@@ -259,7 +266,7 @@ class AccordionItem {
    *
    * @public
    *
-   * @fires grauplAccordionItemShow
+   * @fires grauplAccordionItemExpand
    *
    * @param {boolean} [emit = true]       - Emit the show event once shown.
    * @param {boolean} [transition = true] - Respect the transition class.
@@ -287,12 +294,12 @@ class AccordionItem {
       requestAnimationFrame(() => {
         removeClass(closeClass, this.dom.item);
 
-        this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`;
+        this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
           addClass(openClass, this.dom.item);
 
-          this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`;
+          this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`;
 
           requestAnimationFrame(() => {
             setTimeout(() => {
@@ -331,7 +338,7 @@ class AccordionItem {
     }
 
     if (emit) {
-      this.dom.item.dispatchEvent(this._showEvent);
+      this.dom.item.dispatchEvent(this._expandEvent);
     }
   }
 
@@ -340,7 +347,7 @@ class AccordionItem {
    *
    * @public
    *
-   * @fires grauplAccordionItemHide
+   * @fires grauplAccordionItemCollapse
    *
    * @param {boolean} [emit = true]       - Emit the show event once shown.
    * @param {boolean} [transition = true] - Respect the transition class.
@@ -375,7 +382,7 @@ class AccordionItem {
 
       requestAnimationFrame(() => {
         removeClass(openClass, this.dom.item);
-        this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`;
+        this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
           addClass(closeClass, this.dom.item);
@@ -409,7 +416,7 @@ class AccordionItem {
     }
 
     if (emit) {
-      this.dom.item.dispatchEvent(this._hideEvent);
+      this.dom.item.dispatchEvent(this._collapseEvent);
     }
   }
 
