@@ -1,6 +1,6 @@
-var T = Object.defineProperty;
-var S = (e, t, i) => t in e ? T(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
-var r = (e, t, i) => S(e, typeof t != "symbol" ? t + "" : t, i);
+var S = Object.defineProperty;
+var M = (e, t, i) => t in e ? S(e, t, { enumerable: !0, configurable: !0, writable: !0, value: i }) : e[t] = i;
+var r = (e, t, i) => M(e, typeof t != "symbol" ? t + "" : t, i);
 function g(e, t) {
   try {
     if (typeof t != "object") {
@@ -11,9 +11,9 @@ function g(e, t) {
     }
     for (const i in t)
       if (!(t[i] instanceof e)) {
-        const s = typeof t[i];
+        const o = typeof t[i];
         throw new TypeError(
-          `${i} must be an instance of ${e.name}. "${s}" given.`
+          `${i} must be an instance of ${e.name}. "${o}" given.`
         );
       }
     return {
@@ -27,7 +27,7 @@ function g(e, t) {
     };
   }
 }
-function o(e, t) {
+function s(e, t) {
   try {
     if (typeof t != "object") {
       const i = typeof t;
@@ -36,9 +36,9 @@ function o(e, t) {
       );
     }
     for (const i in t) {
-      const s = typeof t[i];
-      if (s !== e)
-        throw new TypeError(`${i} must be a ${e}. "${s}" given.`);
+      const o = typeof t[i];
+      if (o !== e)
+        throw new TypeError(`${i} must be a ${e}. "${o}" given.`);
     }
     return {
       status: !0,
@@ -92,8 +92,8 @@ function u(e) {
       const i = typeof e[t];
       if (i !== "string")
         if (Array.isArray(e[t]))
-          e[t].forEach((s) => {
-            if (typeof s != "string")
+          e[t].forEach((o) => {
+            if (typeof o != "string")
               throw new TypeError(
                 `${t} must be a string or an array of strings. An array containing non-strings given.`
               );
@@ -103,8 +103,8 @@ function u(e) {
             `${t} must be a string or an array of strings. "${i}" given.`
           );
       else {
-        const s = {};
-        s[t] = e[t], E(s);
+        const o = {};
+        o[t] = e[t], E(o);
       }
     }
     return {
@@ -119,12 +119,12 @@ function u(e) {
   }
 }
 function _(e, t) {
-  if (o("string", { tagName: e }).status && g(HTMLElement, t).status) {
+  if (s("string", { tagName: e }).status && g(HTMLElement, t).status) {
     const i = e.toLowerCase();
-    let s = !0;
+    let o = !0;
     for (const n in t)
-      t[n].tagName.toLowerCase() !== i && (s = !1);
-    return s;
+      t[n].tagName.toLowerCase() !== i && (o = !1);
+    return o;
   } else
     return !1;
 }
@@ -143,14 +143,16 @@ class C {
    * @param {object}               options                             - The options object.
    * @param {HTMLElement}          options.accordionItemElement        - The accordion item element.
    * @param {HTMLElement}          options.accordionItemToggleElement  - The toggle element.
+   * @param {HTMLElement}          options.accordionItemHeaderElement  - The header element.
    * @param {HTMLElement}          options.accordionItemContentElement - The content element.
    * @param {Accordion}            [options.parentAccordion = null]    - The accordion containing this item.
    */
   constructor({
     accordionItemElement: t,
     accordionItemToggleElement: i,
-    accordionItemContentElement: s,
-    parentAccordion: n = null
+    accordionItemHeaderElement: o,
+    accordionItemContentElement: n,
+    parentAccordion: a = null
   }) {
     /**
      * The HTML elements for the accordion item in the DOM.
@@ -161,11 +163,13 @@ class C {
      *
      * @property {HTMLElement} item    - The accordion item element.
      * @property {HTMLElement} toggle  - The controller element.
+     * @property {HTMLElement} header  - The header element.
      * @property {HTMLElement} content - The content element.
      */
     r(this, "_dom", {
       item: null,
       toggle: null,
+      header: null,
       content: null
     });
     /**
@@ -203,14 +207,14 @@ class C {
      *
      * @protected
      *
-     * @event grauplAccordionItemShow
+     * @event grauplAccordionItemExpand
      *
      * @type {CustomEvent}
      *
      * @property {boolean}               bubbles - A flag to bubble the event.
      * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
      */
-    r(this, "_showEvent", new CustomEvent("grauplAccordionItemShow", {
+    r(this, "_expandEvent", new CustomEvent("grauplAccordionItemExpand", {
       bubbles: !0,
       detail: { item: this }
     }));
@@ -219,18 +223,18 @@ class C {
      *
      * @protected
      *
-     * @event grauplAccordionItemHide
+     * @event grauplAccordionItemCollapse
      *
      * @type {CustomEvent}
      *
      * @property {boolean}               bubbles - A flag to bubble the event.
      * @property {Object<AccordionItem>} detail  - The details object containing the Accordion item itself.
      */
-    r(this, "_hideEvent", new CustomEvent("grauplAccordionItemHide", {
+    r(this, "_collapseEvent", new CustomEvent("grauplAccordionItemCollapse", {
       bubbles: !0,
       detail: { item: this }
     }));
-    this._dom.item = t, this._dom.toggle = i, this._dom.content = s, this._elements.parentAccordion = n;
+    this._dom.item = t, this._dom.toggle = i, this._dom.header = o, this._dom.content = n, this._elements.parentAccordion = a;
   }
   /**
    * Initializes the accordion item.
@@ -289,7 +293,7 @@ class C {
     return this._locked;
   }
   set isOpen(t) {
-    o("boolean", { value: t }), this._open !== t && (this._open = t);
+    s("boolean", { value: t }), this._open !== t && (this._open = t);
   }
   /**
    * Sets the IDs for the accordion item and it's elements if they don't exist.
@@ -303,7 +307,7 @@ class C {
     const { key: t } = this.elements.parentAccordion, i = this.elements.parentAccordion.dom.accordionItems.indexOf(
       this.dom.item
     );
-    this.dom.item.id = this.dom.item.id || `accordion-item-${t}-${i}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${t}-${i}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${t}-${i}`;
+    this.dom.item.id = this.dom.item.id || `accordion-item-${t}-${i}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${t}-${i}`, this.dom.header.id = this.dom.header.id || `accordion-item-header-${t}-${i}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${t}-${i}`;
   }
   /**
    * Sets the ARIA attributes for the accordion item and it's elements.
@@ -316,7 +320,7 @@ class C {
    *
    * @public
    *
-   * @fires grauplAccordionItemShow
+   * @fires grauplAccordionItemExpand
    *
    * @param {boolean} [emit = true]       - Emit the show event once shown.
    * @param {boolean} [transition = true] - Respect the transition class.
@@ -324,23 +328,23 @@ class C {
   show(t = !0, i = !0) {
     if (this._open)
       return;
-    const { closeClass: s, openClass: n, transitionClass: a, openDuration: l } = this.elements.parentAccordion;
+    const { closeClass: o, openClass: n, transitionClass: a, openDuration: l } = this.elements.parentAccordion;
     this.dom.toggle.setAttribute("aria-expanded", "true"), i && a !== "" ? (m(a, this.dom.item), requestAnimationFrame(() => {
-      p(s, this.dom.item), this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
-        m(n, this.dom.item), this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
+      p(o, this.dom.item), this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
+        m(n, this.dom.item), this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
           setTimeout(() => {
             p(a, this.dom.item), this.dom.item.style.height = "";
           }, l);
         });
       });
-    })) : (m(n, this.dom.item), p(s, this.dom.item)), this._open = !0, this.elements.parentAccordion.allowMultipleExpand || (this.unlockSiblings(), this.closeSiblings()), this.elements.parentAccordion.allowNoExpand || (this.elements.parentAccordion.openAccordionItems.length <= 1 ? this.lock() : this.unlockSiblings()), t && this.dom.item.dispatchEvent(this._showEvent);
+    })) : (m(n, this.dom.item), p(o, this.dom.item)), this._open = !0, this.elements.parentAccordion.allowMultipleExpand || (this.unlockSiblings(), this.closeSiblings()), this.elements.parentAccordion.allowNoExpand || (this.elements.parentAccordion.openAccordionItems.length <= 1 ? this.lock() : this.unlockSiblings()), t && this.dom.item.dispatchEvent(this._expandEvent);
   }
   /**
    * Hides the accordion item.
    *
    * @public
    *
-   * @fires grauplAccordionItemHide
+   * @fires grauplAccordionItemCollapse
    *
    * @param {boolean} [emit = true]       - Emit the show event once shown.
    * @param {boolean} [transition = true] - Respect the transition class.
@@ -348,16 +352,16 @@ class C {
   hide(t = !0, i = !0) {
     if (!this._open || !this.elements.parentAccordion.allowNoExpand && this.elements.parentAccordion.openAccordionItems.length <= 1)
       return;
-    const { closeClass: s, openClass: n, transitionClass: a, closeDuration: l } = this.elements.parentAccordion;
+    const { closeClass: o, openClass: n, transitionClass: a, closeDuration: l } = this.elements.parentAccordion;
     this.dom.toggle.setAttribute("aria-expanded", "false"), i && a !== "" ? (m(a, this.dom.item), this.dom.item.style.height = `${this.dom.item.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
-      p(n, this.dom.item), this.dom.item.style.height = `${this.dom.toggle.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
-        m(s, this.dom.item), requestAnimationFrame(() => {
+      p(n, this.dom.item), this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`, requestAnimationFrame(() => {
+        m(o, this.dom.item), requestAnimationFrame(() => {
           setTimeout(() => {
             p(a, this.dom.item), this.dom.item.style.height = "";
           }, l);
         });
       });
-    })) : (m(s, this.dom.item), p(n, this.dom.item)), this._open = !1, !this.elements.parentAccordion.allowNoExpand && this.elements.parentAccordion.openAccordionItems.length === 1 && this.elements.parentAccordion.openAccordionItems[0].lock(), t && this.dom.item.dispatchEvent(this._hideEvent);
+    })) : (m(o, this.dom.item), p(n, this.dom.item)), this._open = !1, !this.elements.parentAccordion.allowNoExpand && this.elements.parentAccordion.openAccordionItems.length === 1 && this.elements.parentAccordion.openAccordionItems[0].lock(), t && this.dom.item.dispatchEvent(this._collapseEvent);
   }
   /**
    * Toggle the accordion item.
@@ -429,7 +433,7 @@ function w(e) {
       End: t === "End" || t === 35,
       Tab: t === "Tab" || t === 9
     };
-    return Object.keys(i).find((s) => i[s] === !0) || "";
+    return Object.keys(i).find((o) => i[o] === !0) || "";
   } catch {
     return "";
   }
@@ -438,32 +442,32 @@ function h(e) {
   e.preventDefault(), e.stopPropagation();
 }
 function L(e = null) {
-  window.Graupl = window.Graupl || {}, o("string", { type: e }) && (window.Graupl[e] = window.Graupl[e] || {});
+  window.Graupl = window.Graupl || {}, s("string", { type: e }) && (window.Graupl[e] = window.Graupl[e] || {});
 }
-function M(e = null) {
-  return o("string", { type: e }) ? window.Graupl[e] : window.Graupl;
+function K(e = null) {
+  return s("string", { type: e }) ? window.Graupl[e] : window.Graupl;
 }
-function K(e, t = {}) {
-  o("string", { type: e }) && o("object", { data: t }) && (window.Graupl[e] = t);
+function O(e, t = {}) {
+  s("string", { type: e }) && s("object", { data: t }) && (window.Graupl[e] = t);
 }
 function G(e) {
-  o("string", { type: e }) && (window.Graupl[e] = {});
+  s("string", { type: e }) && (window.Graupl[e] = {});
 }
-function O(e, t, i) {
-  o("string", { type: e, key: t }) && (window.Graupl[e][t] = i);
+function H(e, t, i) {
+  s("string", { type: e, key: t }) && (window.Graupl[e][t] = i);
 }
 function j(e, t) {
-  return o("string", { type: e, key: t }) ? window.Graupl[e][t] : null;
+  return s("string", { type: e, key: t }) ? window.Graupl[e][t] : null;
 }
 function F(e, t) {
-  o("string", { type: e, key: t }) && delete window.Graupl[e][t];
+  s("string", { type: e, key: t }) && delete window.Graupl[e][t];
 }
 const y = {
   initializeStorage: L,
-  getStorage: M,
-  setStorage: K,
+  getStorage: K,
+  setStorage: O,
   clearStorage: G,
-  pushToStorage: O,
+  pushToStorage: H,
   getFromStorage: j,
   removeFromStorage: F
 };
@@ -475,6 +479,7 @@ class V {
    * @param {HTMLElement}        [options.accordionElement]                                       - The accordion element in the DOM.
    * @param {string}             [options.accordionItemSelector = .accordion-item]                - The query selector string for accordion items.
    * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]   - The query selector string for accordion toggle.
+   * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]   - The query selector string for accordion header.
    * @param {string}             [options.accordionItemContentSelector = .accordion-item-content] - The query selector string for accordion content.
    * @param {?(string|string[])} [options.openClass = show]                                       - The class to apply when a accordion is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                                      - The class to apply when a accordion is "closed".
@@ -492,20 +497,21 @@ class V {
   constructor({
     accordionElement: t,
     accordionItemSelector: i = ".accordion-item",
-    accordionItemToggleSelector: s = ".accordion-item-toggle",
-    accordionItemContentSelector: n = ".accordion-item-content",
-    openClass: a = "show",
-    closeClass: l = "hide",
-    transitionClass: d = "transitioning",
-    transitionDuration: f = 300,
-    openDuration: c = -1,
-    closeDuration: b = -1,
-    optionalKeySupport: A = !1,
+    accordionItemToggleSelector: o = ".accordion-item-toggle",
+    accordionItemHeaderSelector: n = ".accordion-item-header",
+    accordionItemContentSelector: a = ".accordion-item-content",
+    openClass: l = "show",
+    closeClass: d = "hide",
+    transitionClass: f = "transitioning",
+    transitionDuration: c = 300,
+    openDuration: b = -1,
+    closeDuration: A = -1,
+    optionalKeySupport: I = !1,
     allowMultipleExpand: k = !0,
     allowNoExpand: D = !0,
-    prefix: I = "am-",
-    key: x = null,
-    initialize: $ = !1
+    prefix: x = "am-",
+    key: $ = null,
+    initialize: T = !1
   }) {
     /**
      * The DOM elements within the accordion.
@@ -517,12 +523,14 @@ class V {
      * @property {HTMLElement}   accordion             - The accordion element.
      * @property {HTMLElement[]} accordionItems        - An array of accordion items.
      * @property {HTMLElement[]} accordionItemToggles  - An array of accordion item toggles.
+     * @property {HTMLElement[]} accordionItemHeaders  - An array of accordion headers.
      * @property {HTMLElement[]} accordionItemContents - An array of accordion item contents.
      */
     r(this, "_dom", {
       accordion: null,
       accordionItems: [],
       accordionItemToggles: [],
+      accordionItemHeaders: [],
       accordionItemContents: []
     });
     /**
@@ -542,11 +550,13 @@ class V {
      *
      * @property {string} accordionItems        - The query selector for accordion items.
      * @property {string} accordionItemToggles  - The query selector for accordion toggles.
+     * @property {string} accordionItemHeaders  - The query selector for accordion headers.
      * @property {string} accordionItemContents - The query selector for accordion contents.
      */
     r(this, "_selectors", {
       accordionItems: "",
       accordionItemToggles: "",
+      accordionItemHeaders: "",
       accordionItemContents: ""
     });
     /**
@@ -669,7 +679,7 @@ class V {
      * @type {string[]}
      */
     r(this, "_errors", []);
-    this._dom.accordion = t, this._selectors.accordionItems = i, this._selectors.accordionItemToggles = s, this._selectors.accordionItemContents = n, this._openClass = a || "", this._closeClass = l || "", this._transitionClass = d || "", this._transitionDuration = f, this._openDuration = c, this._closeDuration = b, this._optionalKeySupport = A, this._allowMultipleExpand = k, this._allowNoExpand = D, this._prefix = I || "", this._key = x || "", $ && this.initialize();
+    this._dom.accordion = t, this._selectors.accordionItems = i, this._selectors.accordionItemToggles = o, this._selectors.accordionItemHeaders = n, this._selectors.accordionItemContents = a, this._openClass = l || "", this._closeClass = d || "", this._transitionClass = f || "", this._transitionDuration = c, this._openDuration = b, this._closeDuration = A, this._optionalKeySupport = I, this._allowMultipleExpand = k, this._allowNoExpand = D, this._prefix = x || "", this._key = $ || "", T && this.initialize();
   }
   /**
    * Initializes the accordion.
@@ -895,31 +905,31 @@ class V {
     u({ transitionClass: t }), this._transitionClass !== t && (this._transitionClass = t);
   }
   set transitionDuration(t) {
-    o("number", { value: t }), this._transitionDuration !== t && (this._transitionDuration = t, this._setTransitionDurations());
+    s("number", { value: t }), this._transitionDuration !== t && (this._transitionDuration = t, this._setTransitionDurations());
   }
   set openDuration(t) {
-    o("number", { value: t }), this._openDuration !== t && (this._openDuration = t, this._setTransitionDurations());
+    s("number", { value: t }), this._openDuration !== t && (this._openDuration = t, this._setTransitionDurations());
   }
   set closeDuration(t) {
-    o("number", { value: t }), this._closeDuration !== t && (this._closeDuration = t, this._setTransitionDurations());
+    s("number", { value: t }), this._closeDuration !== t && (this._closeDuration = t, this._setTransitionDurations());
   }
   set currentChild(t) {
-    o("number", { value: t }), this._currentChild !== t && t >= 0 && t < this.elements.accordionItems.length && (this._currentChild = t);
+    s("number", { value: t }), this._currentChild !== t && t >= 0 && t < this.elements.accordionItems.length && (this._currentChild = t);
   }
   set accordionItems(t) {
-    o("object", { value: t }), t != null && t.isArray() && t.every((i) => i instanceof C) && (this._accordionItems = t);
+    s("object", { value: t }), t != null && t.isArray() && t.every((i) => i instanceof C) && (this._accordionItems = t);
   }
   set allowMultipleExpand(t) {
-    o("boolean", { value: t }), this._allowMultipleExpand !== t && (this._allowMultipleExpand = t);
+    s("boolean", { value: t }), this._allowMultipleExpand !== t && (this._allowMultipleExpand = t);
   }
   set allowNoExpand(t) {
-    o("boolean", { value: t }), this._allowNoExpand !== t && (this._allowNoExpand = t);
+    s("boolean", { value: t }), this._allowNoExpand !== t && (this._allowNoExpand = t);
   }
   set prefix(t) {
-    o("string", { value: t }), this._prefix !== t && (this._prefix = t);
+    s("string", { value: t }), this._prefix !== t && (this._prefix = t);
   }
   set key(t) {
-    o("string", { value: t }), this._key !== t && (this._key = t);
+    s("string", { value: t }), this._key !== t && (this._key = t);
   }
   /**
    * Sets DOM elements.
@@ -933,7 +943,7 @@ class V {
    * @param {boolean}     [overwrite = true]          - A flag to set if the existing elements will be overwritten.
    * @param {boolean}     [strict = false]            - A flag to set if the elements must be direct children of the base.
    */
-  _setDOMElementType(t, i = this.dom.accordion, s = !0, n = !1) {
+  _setDOMElementType(t, i = this.dom.accordion, o = !0, n = !1) {
     if (typeof this.selectors[t] == "string") {
       if (this._domLock.includes(t))
         throw new Error(
@@ -945,7 +955,7 @@ class V {
       ).filter(
         (d) => n ? d.parentElement === i : !0
       );
-      s ? this._dom[t] = l : this._dom[t] = [
+      o ? this._dom[t] = l : this._dom[t] = [
         ...this._dom[t],
         ...l
       ];
@@ -985,7 +995,7 @@ class V {
    */
   _setDOMElements() {
     this._setDOMElementType("accordionItems"), this._resetDOMElementType("accordionItemToggles"), this.dom.accordionItems.forEach((t) => {
-      this._setDOMElementType("accordionItemToggles", t, !1), this._setDOMElementType("accordionItemContents", t, !1);
+      this._setDOMElementType("accordionItemToggles", t, !1), this._setDOMElementType("accordionItemHeaders", t, !1), this._setDOMElementType("accordionItemContents", t, !1);
     });
   }
   /**
@@ -1014,13 +1024,14 @@ class V {
    */
   _createChildElements() {
     this.dom.accordionItems.forEach((t, i) => {
-      const s = new C({
+      const o = new C({
         accordionItemElement: t,
         accordionItemToggleElement: this.dom.accordionItemToggles[i],
+        accordionItemHeaderElement: this.dom.accordionItemHeaders[i],
         accordionItemContentElement: this.dom.accordionItemContents[i],
         parentAccordion: this
       });
-      s.initialize(), this.elements.accordionItems.push(s);
+      o.initialize(), this.elements.accordionItems.push(o);
     });
   }
   /**
@@ -1036,12 +1047,13 @@ class V {
       accordionElement: this.dom.accordion
     });
     i || (this._errors.push(i.message), t = !1);
-    const s = E({
+    const o = E({
       accordionItemSelector: this._selectors.accordionItems,
       accordionItemToggleSelector: this._selectors.accordionItemToggles,
+      accordionItemHeaderSelector: this._selectors.accordionItemHeaders,
       accordionItemContentSelector: this._selectors.accordionItemContents
     });
-    if (s || (this._errors.push(s.message), t = !1), this._openClass !== "") {
+    if (o || (this._errors.push(o.message), t = !1), this._openClass !== "") {
       const c = u({ openClass: this._openClass });
       c.status || (this._errors.push(c.error.message), t = !1);
     }
@@ -1057,28 +1069,28 @@ class V {
       });
       c.status || (this._errors.push(c.error.message), t = !1);
     }
-    const n = o("number", {
+    const n = s("number", {
       transitionDuration: this._transitionDuration
     });
     n.status || (this._errors.push(n.error.message), t = !1);
-    const a = o("number", {
+    const a = s("number", {
       openDuration: this._openDuration
     });
     a.status || (this._errors.push(a.error.message), t = !1);
-    const l = o("number", {
+    const l = s("number", {
       closeDuration: this._closeDuration
     });
     l.status || (this._errors.push(l.error.message), t = !1);
-    const d = o("boolean", {
+    const d = s("boolean", {
       optionalKeySupport: this._optionalKeySupport,
       allowMultipleExpand: this._allowMultipleExpand,
       allowNoExpand: this._allowNoExpand
     });
     if (d.status || (this._errors.push(d.error.message), t = !1), this._key !== "") {
-      const c = o("string", { key: this._key });
+      const c = s("string", { key: this._key });
       c.status || (this._errors.push(c.error.message), t = !1);
     }
-    const f = o("string", { prefix: this._prefix });
+    const f = s("string", { prefix: this._prefix });
     return f.status || (this._errors.push(f.error.message), t = !1), t;
   }
   /**
@@ -1123,8 +1135,8 @@ class V {
   _handleKeydown() {
     this.dom.accordionItemToggles.forEach((t) => {
       t.addEventListener("keydown", (i) => {
-        const s = w(i);
-        (["Space", "Enter"].includes(s) || this.optionalKeySupport && ["ArrowDown", "ArrowUp", "Home", "End"].includes(s)) && h(i);
+        const o = w(i);
+        (["Space", "Enter"].includes(o) || this.optionalKeySupport && ["ArrowDown", "ArrowUp", "Home", "End"].includes(o)) && h(i);
       });
     });
   }
@@ -1148,15 +1160,15 @@ class V {
   _handleKeyup() {
     this.dom.accordionItemToggles.forEach((t) => {
       t.addEventListener("keyup", (i) => {
-        const s = w(i);
-        switch (s) {
+        const o = w(i);
+        switch (o) {
           case "Space":
           case "Enter":
             h(i), this.currentAccordionItem.toggle();
             break;
         }
         if (this.optionalKeySupport)
-          switch (s) {
+          switch (o) {
             case "Home":
               h(i), this.focusFirstChild();
               break;
@@ -1254,6 +1266,22 @@ class V {
    */
   blurCurrentChild() {
     this.currentChild !== -1 && this.currentAccordionItem.blur();
+  }
+  /**
+   * Open all accordion items.
+   *
+   * @public
+   */
+  openChildren() {
+    this.elements.accordionItems.forEach((t) => t.show());
+  }
+  /**
+   * Close all accordion items.
+   *
+   * @public
+   */
+  closeChildren() {
+    this.elements.accordionItems.forEach((t) => t.hide());
   }
 }
 export {

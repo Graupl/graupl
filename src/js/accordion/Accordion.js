@@ -24,12 +24,14 @@ class Accordion {
    * @property {HTMLElement}   accordion             - The accordion element.
    * @property {HTMLElement[]} accordionItems        - An array of accordion items.
    * @property {HTMLElement[]} accordionItemToggles  - An array of accordion item toggles.
+   * @property {HTMLElement[]} accordionItemHeaders  - An array of accordion headers.
    * @property {HTMLElement[]} accordionItemContents - An array of accordion item contents.
    */
   _dom = {
     accordion: null,
     accordionItems: [],
     accordionItemToggles: [],
+    accordionItemHeaders: [],
     accordionItemContents: [],
   };
 
@@ -51,11 +53,13 @@ class Accordion {
    *
    * @property {string} accordionItems        - The query selector for accordion items.
    * @property {string} accordionItemToggles  - The query selector for accordion toggles.
+   * @property {string} accordionItemHeaders  - The query selector for accordion headers.
    * @property {string} accordionItemContents - The query selector for accordion contents.
    */
   _selectors = {
     accordionItems: "",
     accordionItemToggles: "",
+    accordionItemHeaders: "",
     accordionItemContents: "",
   };
 
@@ -200,6 +204,7 @@ class Accordion {
    * @param {HTMLElement}        [options.accordionElement]                                       - The accordion element in the DOM.
    * @param {string}             [options.accordionItemSelector = .accordion-item]                - The query selector string for accordion items.
    * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]   - The query selector string for accordion toggle.
+   * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]   - The query selector string for accordion header.
    * @param {string}             [options.accordionItemContentSelector = .accordion-item-content] - The query selector string for accordion content.
    * @param {?(string|string[])} [options.openClass = show]                                       - The class to apply when a accordion is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                                      - The class to apply when a accordion is "closed".
@@ -218,6 +223,7 @@ class Accordion {
     accordionElement,
     accordionItemSelector = ".accordion-item",
     accordionItemToggleSelector = ".accordion-item-toggle",
+    accordionItemHeaderSelector = ".accordion-item-header",
     accordionItemContentSelector = ".accordion-item-content",
     openClass = "show",
     closeClass = "hide",
@@ -238,6 +244,7 @@ class Accordion {
     // Set DOM selectors.
     this._selectors.accordionItems = accordionItemSelector;
     this._selectors.accordionItemToggles = accordionItemToggleSelector;
+    this._selectors.accordionItemHeaders = accordionItemHeaderSelector;
     this._selectors.accordionItemContents = accordionItemContentSelector;
 
     // Set open/close classes.
@@ -725,6 +732,7 @@ class Accordion {
 
     this.dom.accordionItems.forEach((accordionItem) => {
       this._setDOMElementType("accordionItemToggles", accordionItem, false);
+      this._setDOMElementType("accordionItemHeaders", accordionItem, false);
       this._setDOMElementType("accordionItemContents", accordionItem, false);
     });
   }
@@ -765,6 +773,7 @@ class Accordion {
       const item = new AccordionItem({
         accordionItemElement: accordionItem,
         accordionItemToggleElement: this.dom.accordionItemToggles[index],
+        accordionItemHeaderElement: this.dom.accordionItemHeaders[index],
         accordionItemContentElement: this.dom.accordionItemContents[index],
         parentAccordion: this,
       });
@@ -799,6 +808,7 @@ class Accordion {
     const querySelectorChecks = isQuerySelector({
       accordionItemSelector: this._selectors.accordionItems,
       accordionItemToggleSelector: this._selectors.accordionItemToggles,
+      accordionItemHeaderSelector: this._selectors.accordionItemHeaders,
       accordionItemContentSelector: this._selectors.accordionItemContents,
     });
 
@@ -1129,6 +1139,24 @@ class Accordion {
     if (this.currentChild !== -1) {
       this.currentAccordionItem.blur();
     }
+  }
+
+  /**
+   * Open all accordion items.
+   *
+   * @public
+   */
+  openChildren() {
+    this.elements.accordionItems.forEach((item) => item.show());
+  }
+
+  /**
+   * Close all accordion items.
+   *
+   * @public
+   */
+  closeChildren() {
+    this.elements.accordionItems.forEach((item) => item.hide());
   }
 }
 
