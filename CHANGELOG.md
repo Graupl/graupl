@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-alpha.16](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2024-10-22)
+
+
+### Features
+
+* add force-single-column screen trigger ([dad9253](https://github.com/Graupl/graupl/commit/dad92531fa9a273b223f062dca6bba0d60321942))
+* **build:** add compiled versions of js ([1e2939b](https://github.com/Graupl/graupl/commit/1e2939bc0c17ed7ad62dd47460cf42c3d9ae13e6))
+* **component:** implement accordion ([fdbc7c1](https://github.com/Graupl/graupl/commit/fdbc7c1aee4e8b87384c42cff11f7408f3743d47)), closes [#67](https://github.com/Graupl/graupl/issues/67)
+* fix accordion sizing and add new open close methods ([8a5420c](https://github.com/Graupl/graupl/commit/8a5420c22700162f359eab951e8ee09766d3d408))
+* **js:** implement new storage into all js components ([#114](https://github.com/Graupl/graupl/issues/114)) ([7747617](https://github.com/Graupl/graupl/commit/7747617102b10e9a23e2406162c26ca22c84f3b9))
+
+
+### Bug Fixes
+
+* **carousel:** remove pointer events from containers ([922167a](https://github.com/Graupl/graupl/commit/922167a69434dbdf657b46e729b483a62c7a71d9))
+* correct accordion typo ([#115](https://github.com/Graupl/graupl/issues/115)) ([35ad3d7](https://github.com/Graupl/graupl/commit/35ad3d73bf92cb9bf961fb12b24be050d4a648e8))
+
 ## [1.0.0-alpha.15](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.14...v1.0.0-alpha.15) (2024-09-24)
 
 
