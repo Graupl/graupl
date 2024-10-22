@@ -68,6 +68,7 @@
       1fr [previous-start] $carousel-control-width [previous-end next-start]
       $carousel-control-width [next-end];
     grid-template-rows: [autoplay-start next-start previous-start] $carousel-control-height [previous-end next-end autoplay-end];
+    pointer-events: none;
   }
 }
 
@@ -75,6 +76,8 @@
   @include button-mixins.apply-button;
 
   @include layer(component) {
+    pointer-events: auto;
+
     &#{defaults.$carousel-autoplay-selector} {
       grid-area: autoplay;
     }
@@ -170,6 +173,7 @@
     justify-content: center;
     padding: $carousel-tab-container-padding;
     gap: $carousel-tab-container-gap;
+    pointer-events: none;
   }
 }
 
@@ -178,5 +182,7 @@
 
   @include layer(component) {
     --#{root-defaults.$prefix}-button-border-radius: 50%;
+
+    pointer-events: auto;
   }
 }
