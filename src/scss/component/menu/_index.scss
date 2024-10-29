@@ -6,7 +6,7 @@
 @use "../../base/button/defaults" as button-defaults;
 @use "../../base/button/variables" as button-variables;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/animation";
 
 @include layer(component) {
   #{defaults.$menu-selector} {
@@ -185,7 +185,7 @@
     }
   }
 
-  @include animation-off {
+  @include animation.off {
     #{defaults.$menu-link-selector} {
       --#{root-defaults.$prefix}-menu-link-transition: #{$menu-link-transition-reduced-motion};
     }

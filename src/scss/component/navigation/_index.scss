@@ -6,7 +6,7 @@
 @use "../menu/defaults" as menu-defaults;
 @use "../menu/variables" as menu-variables;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/screen";
 
 @include layer(component) {
   // Navigation.
@@ -100,7 +100,7 @@
     }
   }
 
-  @include screen-trigger(navigation-collapse) {
+  @include screen.trigger(navigation-collapse) {
     // Navigation.
     #{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}-menu-flex-direction: column;
@@ -110,7 +110,7 @@
     }
   }
 
-  @include screen-trigger(navigation-expand) {
+  @include screen.trigger(navigation-expand) {
     // Navigation.
     #{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}-menu-hide-display: #{menu-variables.$menu-show-display};

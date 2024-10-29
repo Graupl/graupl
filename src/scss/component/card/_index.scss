@@ -4,7 +4,8 @@
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/animation";
+@use "../../mixins/screen";
 
 @include layer(component) {
   #{defaults.$card-selector} {
@@ -114,7 +115,7 @@
     flex: 0 0 auto;
   }
 
-  @include screen-trigger(force-vertical-card) {
+  @include screen.trigger(force-vertical-card) {
     #{defaults.$card-selector} {
       &#{defaults.$horizontal-card-selector} {
         &,
@@ -154,7 +155,7 @@
     }
   }
 
-  @include animation-off {
+  @include animation.off {
     #{defaults.$card-selector} {
       --#{root-defaults.$prefix}-card-transition: #{$card-transition-reduced-motion};
     }
