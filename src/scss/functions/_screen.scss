@@ -14,10 +14,8 @@
 
 @function max($size) {
   $keys: map.keys(root-defaults.$screen-sizes);
-
   $index: list.index($keys, "#{$size}");
   $key: list.nth($keys, $index + 1);
-
   $screen-size: map.get(root-defaults.$screen-sizes, $key);
   $screen-size: $screen-size - 1;
 

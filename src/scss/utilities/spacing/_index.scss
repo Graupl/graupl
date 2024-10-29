@@ -9,6 +9,7 @@
 @use "../../layout/columns/defaults" as columns-defaults;
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
 @use "../../mixins/screen";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each spacing property, create a utility class.
@@ -80,7 +81,7 @@
     }
 
     @if $responsive and root-defaults.$responsive-utilities {
-      @each $screen-size in map-keys(root-defaults.$screen-sizes) {
+      @each $screen-size in map.keys(root-defaults.$screen-sizes) {
         @each $key, $value in root-variables.$spacers {
           .#{$name}-#{$screen-size}-#{$key} {
             @include screen.up($screen-size) {

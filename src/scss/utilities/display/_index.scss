@@ -16,7 +16,7 @@
     }
 
     @if $responsive and root-defaults.$responsive-utilities {
-      @each $screen-size in map.keys($screen-sizes) {
+      @each $screen-size in map.keys(root-defaults.$screen-sizes) {
         .#{defaults.$display-class-prefix}#{$screen-size}-#{$name} {
           display: important.insert($property);
         }
