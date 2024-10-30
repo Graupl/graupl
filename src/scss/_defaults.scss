@@ -19,13 +19,12 @@ $responsive-utilities: true !default;
 $content-max-width: 96ch !default;
 
 // Screen sizes.
-$screen-size-unit: "ch" !default;
 $base-screen-sizes: (
-  xs: 0,
-  sm: 48,
-  md: 72,
-  lg: 108,
-  xl: 156,
+  xs: 0ch,
+  sm: 48ch,
+  md: 72ch,
+  lg: 108ch,
+  xl: 156ch,
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);

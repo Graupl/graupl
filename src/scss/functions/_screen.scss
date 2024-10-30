@@ -9,7 +9,7 @@
 @function min($size) {
   $screen-size: map.get(root-defaults.$screen-sizes, $size);
 
-  @return "(#{$screen-size}#{root-defaults.$screen-size-unit} <= width)";
+  @return "(#{$screen-size} <= width)";
 }
 
 @function max($size) {
@@ -19,12 +19,12 @@
   $screen-size: map.get(root-defaults.$screen-sizes, $key);
   $screen-size: $screen-size - 1;
 
-  @return "(width <= #{$screen-size}#{root-defaults.$screen-size-unit})";
+  @return "(width <= #{$screen-size})";
 }
 
 @function range($min, $max) {
   $min-size: min($min);
   $max-size: max($max);
 
-  @return "(#{$min-size}#{root-defaults.$screen-size-unit} <= width <= #{$max-size}#{root-defaults.$screen-size-unit})";
+  @return "(#{$min-size} <= width <= #{$max-size})";
 }
