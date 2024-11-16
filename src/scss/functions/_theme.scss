@@ -6,7 +6,7 @@
 @use "../theme/color/variables" as color;
 
 // A function to get the specific theme shades.
-@function get($color, $shade) {
+@function get($color, $shade, $theme: active) {
   @if $shade == transparent or $color == transparent {
     @return transparent;
   }
@@ -23,14 +23,16 @@
     @return initial;
   }
 
-  $color-map: map.get(color.$theme-active, $color);
+  $theme-map: map.get(color.$themes, $theme);
+  $color-map: map.get($theme-map, $color);
   $value: map.get($color-map, $shade);
 
   @return $value;
 }
 
-@function variants() {
-  $variants: map.keys(color.$theme-active);
+@function variants($theme: active) {
+  $theme-map: map.get(color.$themes, $theme);
+  $variants: map.keys($theme-map);
 
   @return $variants;
 }

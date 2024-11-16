@@ -105,7 +105,7 @@
     background: $background;
     color: $color;
 
-    @each $color, $map in color.$theme-active {
+    @each $color, $map in map.get(color.$themes, active) {
       &#{defaults.$button-theme-selector-prefix}#{$color} {
         @each $prop, $shade in defaults.$button-state-theme-map {
           --#{root-defaults.$prefix}-button-#{$prop}: #{theme.get(
