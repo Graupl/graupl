@@ -64,10 +64,14 @@ $default-colors: (
 );
 $custom-colors: () !default;
 $colors: map.deep-merge($default-colors, $custom-colors);
+
+// Themes.
 $default-themes: (light, dark);
 $custom-themes: () !default;
 $themes: list.join($default-themes, $custom-themes);
 $default-theme: light !default;
+
+// Theme mappings.
 $default-theme-mappings: (
   light: (
     100: 100,
@@ -97,6 +101,8 @@ $theme-mappings: map.deep-merge(
   $default-theme-mappings,
   $custom-theme-mappings
 );
+
+// Theme map.
 $default-theme-map: ();
 
 @each $theme in $themes {
