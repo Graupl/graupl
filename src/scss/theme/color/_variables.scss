@@ -55,7 +55,7 @@ $themes: (
     @each $shade, $value in $map {
       $color-property: var(
         --#{root-defaults.$prefix}-theme-#{$theme-name}--#{$color-name}--#{$shade},
-        #{map.get($color, $value)}
+        #{map.get($colors, map.get($value, color), map.get($value, shade))}
       );
       $color-map: map.merge(
         $color-map,
@@ -89,7 +89,7 @@ $themes: (
   @each $shade, $value in $map {
     $color-property: var(
       --#{root-defaults.$prefix}-theme-active--#{$color-name}--#{$shade},
-      #{map.get($color, $value)}
+      #{$value}
     );
     $color-map: map.merge(
       $color-map,

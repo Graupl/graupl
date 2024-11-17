@@ -28,7 +28,7 @@ $theme-selector-suffix: "-mode" !default;
 
 // Colours.
 $default-colors: (
-  primary: (
+  blue: (
     100: hsl(219deg 100% 95%),
     200: hsl(219deg 90% 80%),
     300: hsl(219deg 80% 65%),
@@ -39,7 +39,7 @@ $default-colors: (
     800: hsl(219deg 90% 20%),
     900: hsl(219deg 100% 10%),
   ),
-  secondary: (
+  grey: (
     100: hsl(235deg 40% 95%),
     200: hsl(235deg 30% 80%),
     300: hsl(235deg 20% 65%),
@@ -50,7 +50,7 @@ $default-colors: (
     800: hsl(235deg 30% 20%),
     900: hsl(235deg 40% 10%),
   ),
-  tertiary: (
+  pink: (
     100: hsl(340deg 85% 95%),
     200: hsl(340deg 75% 80%),
     300: hsl(340deg 65% 65%),
@@ -64,6 +64,14 @@ $default-colors: (
 );
 $custom-colors: () !default;
 $colors: map.deep-merge($default-colors, $custom-colors);
+
+$default-theme-colors: (
+  primary: blue,
+  secondary: grey,
+  tertiary: pink,
+);
+$custom-theme-colors: () !default;
+$theme-colors: map.deep-merge($default-theme-colors, $custom-theme-colors);
 
 // Themes.
 $default-themes: (light, dark);
@@ -108,14 +116,17 @@ $default-theme-map: ();
 @each $theme in $themes {
   $theme-map: ();
 
-  @each $color, $map in $colors {
+  @each $theme-color, $color-name in $theme-colors {
     $color-map: ();
 
-    @each $shade, $value in $map {
+    @each $shade, $value in map.get($colors, $color-name) {
       $color-map: map.merge(
         $color-map,
         (
-          $shade: map.get($theme-mappings, $theme, $shade),
+          $shade: (
+            color: $color-name,
+            shade: map.get($theme-mappings, $theme, $shade)
+          ),
         )
       );
     }
@@ -123,7 +134,7 @@ $default-theme-map: ();
     $theme-map: map.merge(
       $theme-map,
       (
-        $color: $color-map,
+        $theme-color: $color-map,
       )
     );
   }

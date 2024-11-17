@@ -23,11 +23,7 @@
     @return initial;
   }
 
-  $theme-map: map.get(color.$themes, $theme);
-  $color-map: map.get($theme-map, $color);
-  $value: map.get($color-map, $shade);
-
-  @return $value;
+  @return map.get(color.$themes, $theme, $color, $shade);
 }
 
 @function variants($theme: active) {
