@@ -13,7 +13,7 @@
 @mixin up($size) {
   $screen-size: screen.min($size);
 
-  @media screen and #{$screen-size} {
+  @media screen and (#{$screen-size} <= width) {
     @content;
   }
 }
@@ -22,7 +22,7 @@
 @mixin down($size) {
   $screen-size: screen.max($size);
 
-  @media screen and #{$screen-size} {
+  @media screen and (width <= $screen-size) {
     @content;
   }
 }
@@ -30,16 +30,16 @@
 // A mixin to generate a range of screen widths media query.
 @mixin between($min, $max) {
   $screen-size: screen.range($min, $max);
+  $min: map.get($screen-size, "min");
+  $max: map.get($screen-size, "max");
 
-  @media screen and #{$screen-size} {
+  @media screen and (#{$min} <= width <= #{$max}) {
     @content;
   }
 }
 
 @mixin only($size) {
-  $screen-size: screen.range($size, $size);
-
-  @media screen and #{$screen-size} {
+  @include between($size, $size) {
     @content;
   }
 }
