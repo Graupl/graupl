@@ -30,3 +30,6 @@ $base-text-properties: (
 );
 $custom-text-properties: () !default;
 $text-properties: map.merge($base-text-properties, $custom-text-properties);
+
+// Responsive utility flag.
+$responsive: true !default;

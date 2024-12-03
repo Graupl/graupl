@@ -36,3 +36,6 @@ $base-width-values: (
 );
 $custom-width-values: () !default;
 $width-values: map.merge($base-width-values, $custom-width-values);
+
+// Responsive utility flag.
+$responsive: true !default;

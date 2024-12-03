@@ -57,3 +57,6 @@ $align-self-properties: map.merge(
   $base-align-self-properties,
   $custom-align-self-properties
 );
+
+// Responsive utility flag.
+$responsive: true !default;

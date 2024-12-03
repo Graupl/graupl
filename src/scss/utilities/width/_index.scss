@@ -1,4 +1,7 @@
 // @graupl/graupl width utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
 @use "defaults";

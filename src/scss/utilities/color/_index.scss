@@ -1,10 +1,15 @@
 // @graupl/graupl color utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
 @use "defaults";
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
 @use "../../theme/color/variables" as color;
+@use "sass:map";
 
 @include layer(utilities) {
   // For each theme colour, create a utility class for background and color.
@@ -12,27 +17,75 @@
     @each $shade, $value in $map {
       $name: #{$color}-#{$shade};
 
-      .#{defaults.$background-class-prefix}#{$name} {
-        background: important.insert($value);
-      }
-
-      .#{defaults.$text-class-prefix}#{$name} {
-        color: important.insert($value);
-      }
+      @include utility.create(
+        ".#{defaults.$background-class-prefix}#{$name}",
+        background,
+        $value
+      );
+      @include utility.create(
+        ".#{defaults.$text-class-prefix}#{$name}",
+        color,
+        $value
+      );
     }
   }
 
   // For each background property, create a utility class.
-  @each $name, $property in defaults.$background-properties {
-    .#{defaults.$background-class-prefix}#{$name} {
-      background: important.insert($property);
-    }
+  @each $name, $value in defaults.$background-properties {
+    $selector: ".#{defaults.$background-class-prefix}#{$name}";
+
+    @include utility.create($selector, background, $value);
   }
 
   // For each text property, create a utility class.
-  @each $name, $property in defaults.$text-properties {
-    .#{defaults.$text-class-prefix}#{$name} {
-      color: important.insert($property);
+  @each $name, $value in defaults.$text-properties {
+    $selector: ".#{defaults.$text-class-prefix}#{$name}";
+
+    @include utility.create($selector, color, $value);
+  }
+
+  // Create responsive utilities.
+  @if $responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each theme colour, create a utility class for background and color.
+      @each $color, $map in color.$theme-active {
+        @each $shade, $value in $map {
+          $name: #{$color}-#{$shade};
+
+          @include utility.create(
+            ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$background-class-prefix}#{$name}",
+            background,
+            $value,
+            $screen-size
+          );
+          @include utility.create(
+            ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}#{$name}",
+            color,
+            $value,
+            $screen-size
+          );
+        }
+      }
+
+      // For each background property, create a utility class.
+      @each $name, $value in defaults.$background-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$background-class-prefix}#{$name}",
+          background,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each text property, create a utility class.
+      @each $name, $value in defaults.$text-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}#{$name}",
+          color,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

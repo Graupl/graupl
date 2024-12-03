@@ -36,3 +36,6 @@ $base-height-values: (
 );
 $custom-height-values: () !default;
 $height-values: map.merge($base-height-values, $custom-height-values);
+
+// Responsive utility flag.
+$responsive: true !default;

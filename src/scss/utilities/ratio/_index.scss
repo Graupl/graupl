@@ -1,13 +1,17 @@
 // @graupl/graupl ratio utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
 @use "defaults" as defaults;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "sass:map";
 
 @include layer(utilities) {
-  #{defaults.$ratio-selector} {
+  #{defaults.$ratio-class} {
     position: relative;
     width: 100%;
 
@@ -17,7 +21,7 @@
       padding-top: $ratio;
     }
 
-    #{defaults.$force-ratio-selector} {
+    #{defaults.$force-ratio-class} {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -26,8 +30,8 @@
     }
   }
 
-  @each $ratio-selector, $value in defaults.$ratios {
-    #{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
+  @each $ratio-class, $value in defaults.$ratios {
+    #{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
       --#{root-defaults.$prefix}-ratio: #{$value};
     }
   }

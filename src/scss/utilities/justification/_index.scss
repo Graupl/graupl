@@ -1,29 +1,75 @@
 // @graupl/graupl justification utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "defaults" as defaults;
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each justify content property, create a utility class.
-  @each $name, $property in defaults.$justify-content-properties {
-    .#{defaults.$justify-content-class-prefix}#{$name} {
-      justify-content: important.insert($property);
-    }
+  @each $name, $value in defaults.$justify-content-properties {
+    @include utility.create(
+      ".#{defaults.$justify-content-class-prefix}#{$name}",
+      justify-content,
+      $value
+    );
   }
 
   // For each justify items property, create a utility class.
-  @each $name, $property in defaults.$justify-items-properties {
-    .#{defaults.$justify-items-class-prefix}#{$name} {
-      justify-items: important.insert($property);
-    }
+  @each $name, $value in defaults.$justify-items-properties {
+    @include utility.create(
+      ".#{defaults.$justify-items-class-prefix}#{$name}",
+      justify-items,
+      $value
+    );
   }
 
   // For each justify self property, create a utility class.
-  @each $name, $property in defaults.$justify-self-properties {
-    .#{defaults.$justify-self-class-prefix}#{$name} {
-      justify-self: important.insert($property);
+  @each $name, $value in defaults.$justify-self-properties {
+    @include utility.create(
+      ".#{defaults.$justify-self-class-prefix}#{$name}",
+      justify-self,
+      $value
+    );
+  }
+
+  // Generate responsive utilities.
+  @if $responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each justify content property, create a utility class.
+      @each $name, $value in defaults.$justify-content-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$justify-content-class-prefix}#{$name}",
+          justify-content,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each justify items property, create a utility class.
+      @each $name, $value in defaults.$justify-items-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$justify-items-class-prefix}#{$name}",
+          justify-items,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each justify self property, create a utility class.
+      @each $name, $value in defaults.$justify-self-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$justify-self-class-prefix}#{$name}",
+          justify-self,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

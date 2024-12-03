@@ -1,0 +1,30 @@
+// @graupl/graupl utility mixins.
+//
+// Mixins to help generate utility classes.
+
+@use "./screen";
+@use "../functions/important";
+@use "../defaults" as root-defaults;
+@use "sass:map";
+
+@mixin create($selector, $property, $value, $breakpoint: false) {
+  #{$selector} {
+    @if $breakpoint {
+      @include screen.up($breakpoint) {
+        @each $prop in $property {
+          #{$prop}: important.insert($value);
+        }
+
+        // Allow for custom overrides and additional styles.
+        @content;
+      }
+    } @else {
+      @each $prop in $property {
+        #{$prop}: important.insert($value);
+      }
+
+      // Allow for custom overrides and additional styles.
+      @content;
+    }
+  }
+}

@@ -17,3 +17,6 @@ $base-order-properties: (
 );
 $custom-order-properties: () !default;
 $order-properties: map.merge($base-order-properties, $custom-order-properties);
+
+// Responsive utility flag.
+$responsive: true !default;

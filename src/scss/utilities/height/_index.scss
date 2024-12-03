@@ -1,23 +1,58 @@
 // @graupl/graupl height utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
 @use "defaults";
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each height property, create a utility class.
   @each $height, $value in defaults.$height-values {
-    .#{defaults.$height-class-prefix}#{$height} {
-      height: important.insert($value);
-    }
+    @include utility.create(
+      ".#{defaults.$height-class-prefix}#{$height}",
+      height,
+      $value
+    );
+    @include utility.create(
+      ".#{defaults.$max-height-class-prefix}#{$height}",
+      max-height,
+      $value
+    );
+    @include utility.create(
+      ".#{defaults.$min-height-class-prefix}#{$height}",
+      min-height,
+      $value
+    );
+  }
 
-    .#{defaults.$max-height-class-prefix}#{$height} {
-      max-height: important.insert($value);
-    }
-
-    .#{defaults.$min-height-class-prefix}#{$height} {
-      min-height: important.insert($value);
+  // Create responsive utilities.
+  @if $responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      @each $height, $value in defaults.$height-values {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$height-class-prefix}#{$height}",
+          height,
+          $value,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$max-height-class-prefix}#{$height}",
+          max-height,
+          $value,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$min-height-class-prefix}#{$height}",
+          min-height,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

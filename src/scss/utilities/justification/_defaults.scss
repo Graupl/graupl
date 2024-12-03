@@ -54,3 +54,6 @@ $justify-self-properties: map.merge(
   $base-justify-self-properties,
   $custom-justify-self-properties
 );
+
+// Responsive utility flag.
+$responsive: true !default;

@@ -24,13 +24,16 @@ $list-style-type-properties: map.merge(
 );
 
 // List style position properties.
-$list-style-postion-class-prefix: "list-style-" !default;
-$base-list-style-postion-properties: (
+$list-style-position-class-prefix: "list-style-" !default;
+$base-list-style-position-properties: (
   inside: inside,
   outside: outside,
 );
-$custom-list-style-postion-properties: () !default;
-$list-style-postion-properties: map.merge(
-  $base-list-style-postion-properties,
-  $custom-list-style-postion-properties
+$custom-list-style-position-properties: () !default;
+$list-style-position-properties: map.merge(
+  $base-list-style-position-properties,
+  $custom-list-style-position-properties
 );
+
+// Responsive utility flag.
+$responsive: true !default;

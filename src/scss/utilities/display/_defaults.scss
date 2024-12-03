@@ -27,6 +27,6 @@ $display-properties: map.merge(
   $base-display-properties,
   $custom-display-properties
 );
-$visually-hidden-selector: ".visually-hidden" !default;
-$visually-hidden-focusable-selector: ".visually-hidden-focusable" !default;
+$visually-hidden-class: "visually-hidden" !default;
+$visually-hidden-focusable-class: "visually-hidden-focusable" !default;
 $responsive: true !default;
