@@ -235,13 +235,17 @@ $menu-link-padding: var(
 // Menu link transform properties.
 $menu-link-transition: var(
   --#{root-defaults.$prefix}-menu-link-transition,
-  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $menu-link-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-menu-link-transition-reduced-motion,
-  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
 );
 $menu-link-transform: var(
   --#{root-defaults.$prefix}-menu-link-transform,
@@ -487,7 +491,8 @@ $submenu-toggle-content: var(
 );
 $submenu-toggle-transition: var(
   --#{root-defaults.$prefix}-submenu-toggle-transition,
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $submenu-toggle-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-submenu-toggle-transition-reduced-motion,

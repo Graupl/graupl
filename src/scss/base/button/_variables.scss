@@ -38,14 +38,19 @@ $button-font-size: var(
 );
 $button-transition: var(
   --#{root-defaults.$prefix}-button-transition,
-  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $button-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-button-transition-reduced-motion,
-  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
 );
 
 // Transform properties.

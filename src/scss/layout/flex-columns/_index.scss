@@ -61,7 +61,8 @@
       @include screen.up($screen) {
         #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
           --#{root-defaults.$prefix}-flex-columns-size: calc(
-            (100% / #{defaults.$flex-columns-max-count} * #{$i}) - #{$flex-columns-column-gap}
+            (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+              #{$flex-columns-column-gap}
           );
           --#{root-defaults.$prefix}-flex-columns-max-width: calc(
             100% / #{defaults.$flex-columns-max-count} * #{$i}

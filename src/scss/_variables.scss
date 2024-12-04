@@ -34,18 +34,15 @@ $border-style: var(--#{defaults.$prefix}-border-style, defaults.$border-style);
 
 // Transition properties.
 $transition-durations: (
-  fast:
-    var(
+  fast: var(
       --#{defaults.$prefix}-transition-duration-fast,
       map.get(defaults.$transition-durations, fast)
     ),
-  default:
-    var(
+  default: var(
       --#{defaults.$prefix}-transition-duration-default,
       map.get(defaults.$transition-durations, default)
     ),
-  slow:
-    var(
+  slow: var(
       --#{defaults.$prefix}-transition-duration-slow,
       map.get(defaults.$transition-durations, slow)
     ),
