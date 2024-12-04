@@ -3,16 +3,16 @@
 // Responsive class must be within their own loop to prevent specificity issues.
 // This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults";
-@use "../../mixins/layer" as *;
-@use "../../functions/important";
-@use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../functions/important";
 @use "../../layout/columns/defaults" as columns-defaults;
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
+@use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../variables" as root-variables;
+@use "defaults";
 @use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each spacing property, create a utility class.

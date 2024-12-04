@@ -3,15 +3,15 @@
 // Responsive class must be within their own loop to prevent specificity issues.
 // This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults";
 @use "../../defaults" as root-defaults;
-@use "../../mixins/layer" as *;
-@use "../../mixins/utility";
-@use "../../mixins/screen";
 @use "../../functions/important";
+@use "../../mixins/layer" as *;
+@use "../../mixins/screen";
+@use "../../mixins/utility";
 @use "../../theme/typography/variables" as typography;
+@use "defaults";
 @use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each font size property, create a utility class.
