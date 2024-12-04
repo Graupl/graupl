@@ -5,22 +5,102 @@
 
 @use "variables" as *;
 @use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each width property, create a utility class.
   @each $width, $value in defaults.$width-values {
-    .#{defaults.$width-class-prefix}#{$width} {
-      width: important.insert($value);
-    }
+    @include utility.create(
+      ".#{defaults.$width-class-prefix}#{$width}",
+      width,
+      $value
+    );
 
-    .#{defaults.$max-width-class-prefix}#{$width} {
-      max-width: important.insert($value);
-    }
+    @include utility.create(
+      ".#{defaults.$max-width-class-prefix}#{$width}",
+      max-width,
+      $value
+    );
 
-    .#{defaults.$min-width-class-prefix}#{$width} {
-      min-width: important.insert($value);
+    @include utility.create(
+      ".#{defaults.$min-width-class-prefix}#{$width}",
+      min-width,
+      $value
+    );
+  }
+
+  @each $spacer, $value in root-variables.$spacers {
+    @include utility.create(
+      ".#{defaults.$width-class-prefix}#{$spacer}",
+      width,
+      $value
+    );
+
+    @include utility.create(
+      ".#{defaults.$max-width-class-prefix}#{$spacer}",
+      max-width,
+      $value
+    );
+
+    @include utility.create(
+      ".#{defaults.$min-width-class-prefix}#{$spacer}",
+      min-width,
+      $value
+    );
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      @each $width, $value in defaults.$width-values {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$width-class-prefix}#{$width}",
+          width,
+          $value,
+          $screen-size
+        );
+
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$max-width-class-prefix}#{$width}",
+          max-width,
+          $value,
+          $screen-size
+        );
+
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$min-width-class-prefix}#{$width}",
+          min-width,
+          $value,
+          $screen-size
+        );
+      }
+
+      @each $spacer, $value in root-variables.$spacers {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$width-class-prefix}#{$spacer}",
+          width,
+          $value,
+          $screen-size
+        );
+
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$max-width-class-prefix}#{$spacer}",
+          max-width,
+          $value,
+          $screen-size
+        );
+
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$min-width-class-prefix}#{$spacer}",
+          min-width,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

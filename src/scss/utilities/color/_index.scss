@@ -45,7 +45,7 @@
   }
 
   // Create responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
       // For each theme colour, create a utility class for background and color.
       @each $color, $map in color.$theme-active {

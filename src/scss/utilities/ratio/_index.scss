@@ -4,14 +4,15 @@
 // This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
-@use "defaults" as defaults;
+@use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../mixins/screen";
 @use "sass:map";
 
 @include layer(utilities) {
-  #{defaults.$ratio-class} {
+  .#{defaults.$ratio-class} {
     position: relative;
     width: 100%;
 
@@ -21,7 +22,7 @@
       padding-top: $ratio;
     }
 
-    #{defaults.$force-ratio-class} {
+    .#{defaults.$force-ratio-class} {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -31,8 +32,21 @@
   }
 
   @each $ratio-class, $value in defaults.$ratios {
-    #{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
+    .#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
       --#{root-defaults.$prefix}-ratio: #{$value};
+    }
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      @each $ratio-class, $value in defaults.$ratios {
+        .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
+          @include screen.up($screen-size) {
+            --#{root-defaults.$prefix}-ratio: #{$value};
+          }
+        }
+      }
     }
   }
 }

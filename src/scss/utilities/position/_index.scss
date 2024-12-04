@@ -4,7 +4,7 @@
 // This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
-@use "defaults" as defaults;
+@use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
@@ -21,7 +21,7 @@
   }
 
   // Generate responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
       // For each position property, create a utility class.
       @each $name, $property in defaults.$position-properties {

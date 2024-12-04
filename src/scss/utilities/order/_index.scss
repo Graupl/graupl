@@ -4,7 +4,7 @@
 // This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
-@use "defaults" as defaults;
+@use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../layout/columns/defaults" as columns-defaults;
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
@@ -26,7 +26,7 @@
   }
   /* stylelint-enable  scss/operator-no-newline-after */
 
-  @each $order-property, $order-value in $order-properties {
+  @each $order-property, $order-value in defaults.$order-properties {
     @include utility.create(
       ".#{defaults.$order-class-prefix}#{$order-property}",
       order,
@@ -39,9 +39,9 @@
   }
 
   // Generate responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
-      @each $order-property, $order-value in $order-properties {
+      @each $order-property, $order-value in defaults.$order-properties {
         @include utility.create(
           ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$order-class-prefix}#{$order-property}",
           order,

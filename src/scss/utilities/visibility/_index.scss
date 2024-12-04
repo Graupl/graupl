@@ -4,15 +4,33 @@
 // This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
-@use "defaults" as defaults;
+@use "defaults";
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each visibility property, create a utility class.
-  @each $name, $property in defaults.$visibility-properties {
-    .#{defaults.$visibility-class-prefix}#{$name} {
-      visibility: important.insert($property);
+  @each $name, $value in defaults.$visibility-properties {
+    @include utility.create(
+      ".#{defaults.$visibility-class-prefix}#{$name}",
+      visibility,
+      $value
+    );
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      @each $name, $value in defaults.$visibility-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$visibility-class-prefix}#{$name}",
+          visibility,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

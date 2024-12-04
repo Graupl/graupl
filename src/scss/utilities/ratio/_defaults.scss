@@ -10,6 +10,7 @@
 
 // Ratio utilities.
 $ratio-class: "ratio" !default;
+$ratio-variant-class-prefix: "" !default;
 $force-ratio-class: "force-ratio" !default;
 $base-ratios: (
   "one-by-one": 100%,

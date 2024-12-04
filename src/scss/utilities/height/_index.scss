@@ -6,6 +6,7 @@
 @use "variables" as *;
 @use "defaults";
 @use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
 @use "sass:map";
@@ -30,8 +31,26 @@
     );
   }
 
+  @each $spacer, $value in root-variables.$spacers {
+    @include utility.create(
+      ".#{defaults.$height-class-prefix}#{$spacer}",
+      height,
+      $value
+    );
+    @include utility.create(
+      ".#{defaults.$max-height-class-prefix}#{$spacer}",
+      max-height,
+      $value
+    );
+    @include utility.create(
+      ".#{defaults.$min-height-class-prefix}#{$spacer}",
+      min-height,
+      $value
+    );
+  }
+
   // Create responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
       @each $height, $value in defaults.$height-values {
         @include utility.create(
@@ -48,6 +67,27 @@
         );
         @include utility.create(
           ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$min-height-class-prefix}#{$height}",
+          min-height,
+          $value,
+          $screen-size
+        );
+      }
+
+      @each $spacer, $value in root-variables.$spacers {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$height-class-prefix}#{$spacer}",
+          height,
+          $value,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$max-height-class-prefix}#{$spacer}",
+          max-height,
+          $value,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$min-height-class-prefix}#{$spacer}",
           min-height,
           $value,
           $screen-size

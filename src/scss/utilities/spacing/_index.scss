@@ -4,7 +4,7 @@
 // This keeps responsive specificity tied to screen size before property order.
 
 @use "variables" as *;
-@use "defaults" as defaults;
+@use "defaults";
 @use "../../mixins/layer" as *;
 @use "../../functions/important";
 @use "../../variables" as root-variables;
@@ -18,7 +18,7 @@
   // For each spacing property, create a utility class.
   @each $name, $property in defaults.$spacing-properties {
     @each $key, $value in root-variables.$spacers {
-      $selector: "#{$name}-#{$key}";
+      $selector: ".#{$name}-#{$key}";
 
       // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
       // the columns-column-gap property instead of the raw property.
@@ -79,12 +79,12 @@
     @include utility.create("#{$name}-auto", $property, auto);
   }
 
-  // Create responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
       @each $name, $property in defaults.$spacing-properties {
         @each $key, $value in root-variables.$spacers {
-          $selector: ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-#{$screen-size}-#{$key}";
+          $selector: ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-#{$key}";
 
           // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
           // the columns-column-gap property instead of the raw property.

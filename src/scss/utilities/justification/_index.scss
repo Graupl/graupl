@@ -6,7 +6,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
-@use "defaults" as defaults;
+@use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
@@ -39,7 +39,7 @@
   }
 
   // Generate responsive utilities.
-  @if $responsive and root-defaults.$responsive-utilities {
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
     @each $screen-size in map.keys(root-defaults.$screen-sizes) {
       // For each justify content property, create a utility class.
       @each $name, $value in defaults.$justify-content-properties {
