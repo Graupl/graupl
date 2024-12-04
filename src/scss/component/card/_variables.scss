@@ -25,7 +25,8 @@ $card-padding: var(
 );
 $card-transition: var(
   --#{root-defaults.$prefix}-card-transition,
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $card-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-card-transition-reduced-motion,
@@ -86,8 +87,8 @@ $card-bottom-right-border-radius: var(
 );
 $card-border-radius: var(
   --#{root-defaults.$prefix}-card-border-radius,
-  #{$card-top-left-border-radius} #{$card-top-right-border-radius} #{$card-bottom-right-border-radius}
-    #{$card-bottom-left-border-radius}
+  #{$card-top-left-border-radius} #{$card-top-right-border-radius}
+    #{$card-bottom-right-border-radius} #{$card-bottom-left-border-radius}
 );
 $card-border-style: var(
   --#{root-defaults.$prefix}-card-border-style,

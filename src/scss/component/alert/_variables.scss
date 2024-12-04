@@ -80,8 +80,8 @@ $alert-bottom-right-border-radius: var(
 );
 $alert-border-radius: var(
   --#{root-defaults.$prefix}-alert-border-radius,
-  #{$alert-top-left-border-radius} #{$alert-top-right-border-radius} #{$alert-bottom-right-border-radius}
-    #{$alert-bottom-left-border-radius}
+  #{$alert-top-left-border-radius} #{$alert-top-right-border-radius}
+    #{$alert-bottom-right-border-radius} #{$alert-bottom-left-border-radius}
 );
 $alert-border-style: var(
   --#{root-defaults.$prefix}-alert-border-style,
@@ -99,12 +99,15 @@ $alert-border: var(
 // Alert transition properties.
 $alert-transition: var(
   --#{root-defaults.$prefix}-alert-transition,
-  opacity #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $alert-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-alert-transition-reduced-motion,
-  opacity #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 
 // Alert header properties.

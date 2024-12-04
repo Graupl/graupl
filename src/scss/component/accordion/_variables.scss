@@ -73,8 +73,10 @@ $accordion-item-bottom-right-border-radius: var(
 );
 $accordion-item-border-radius: var(
   --#{root-defaults.$prefix}-accordion-item-border-radius,
-  #{$accordion-item-top-left-border-radius} #{$accordion-item-top-right-border-radius}
-    #{$accordion-item-bottom-right-border-radius} #{$accordion-item-bottom-left-border-radius}
+  #{$accordion-item-top-left-border-radius}
+    #{$accordion-item-top-right-border-radius}
+    #{$accordion-item-bottom-right-border-radius}
+    #{$accordion-item-bottom-left-border-radius}
 );
 $accordion-item-border-style: var(
   --#{root-defaults.$prefix}-accordion-item-border-style,
@@ -122,14 +124,19 @@ $accordion-item-toggle-disabled-transform: var(
 );
 $accordion-item-toggle-transition: var(
   --#{root-defaults.$prefix}-accordion-item-toggle-transition,
-  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $accordion-item-toggle-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-accordion-item-toggle-transition-reduced-motion,
-  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
 );
 
 // Accordion item header properties.
@@ -261,7 +268,8 @@ $accordion-item-toggle-transition-duration: var(
 );
 $accordion-transition: var(
   --#{root-defaults.$prefix}-accordion-transition,
-  height #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+  height #{map.get(root-variables.$transition-durations, slow)}
+    #{root-variables.$transition-timing-function}
 );
 $accordion-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
@@ -269,7 +277,8 @@ $accordion-transition-reduced-motion: var(
 );
 $accordion-item-toggle-pseudo-transition: var(
   --#{root-defaults.$prefix}-accordion-transition,
-  transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+  transform #{map.get(root-variables.$transition-durations, slow)}
+    #{root-variables.$transition-timing-function}
 );
 $accordion-item-toggle-pseudo-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
@@ -277,12 +286,15 @@ $accordion-item-toggle-pseudo-transition-reduced-motion: var(
 );
 $accordion-item-content-transition: var(
   --#{root-defaults.$prefix}-accordion-transition,
-  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
-    transform #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+  opacity #{map.get(root-variables.$transition-durations, slow)}
+    #{root-variables.$transition-timing-function} transform
+    #{map.get(root-variables.$transition-durations, slow)}
+    #{root-variables.$transition-timing-function}
 );
 $accordion-item-content-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-accordion-transition-reduced-motion,
-  opacity #{map.get(root-variables.$transition-durations, slow)} #{root-variables.$transition-timing-function}
+  opacity #{map.get(root-variables.$transition-durations, slow)}
+    #{root-variables.$transition-timing-function}
 );
 
 // Accordion item transform properties.
