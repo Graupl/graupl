@@ -22,7 +22,7 @@
 @mixin down($size) {
   $screen-size: screen.max($size);
 
-  @media screen and (width <= $screen-size) {
+  @media screen and (width <= #{$screen-size}) {
     @content;
   }
 }
@@ -50,7 +50,7 @@
   $mixin-args: map.get($screen-size-trigger, "args");
   $mixin: meta.get-mixin($mixin-name);
 
-  @include meta.apply($mixin, $mixin-args) {
+  @include meta.apply($mixin, $mixin-args...) {
     @content;
   }
 }
