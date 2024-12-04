@@ -60,10 +60,12 @@
       // be set to the `.col-6` value.
       @include screen.up($screen) {
         #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
+          /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
           --#{root-defaults.$prefix}-flex-columns-size: calc(
             (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
               #{$flex-columns-column-gap}
           );
+          /* stylelint-enable  scss/operator-no-newline-after */
           --#{root-defaults.$prefix}-flex-columns-max-width: calc(
             100% / #{defaults.$flex-columns-max-count} * #{$i}
           );
