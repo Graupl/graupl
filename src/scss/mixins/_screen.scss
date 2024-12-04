@@ -1,0 +1,56 @@
+// @graupl/graupl screen mixins.
+//
+// A series of mixins to generate breakpoints.
+
+// @use "../defaults" as root-defaults;
+@use "../functions/screen";
+@use "../defaults" as root-defaults;
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+
+// A mixin to generate a minimum screen width media query.
+@mixin up($size) {
+  $screen-size: screen.min($size);
+
+  @media screen and (#{$screen-size} <= width) {
+    @content;
+  }
+}
+
+// A mixin to generate a maximum screen width media query.
+@mixin down($size) {
+  $screen-size: screen.max($size);
+
+  @media screen and (width <= #{$screen-size}) {
+    @content;
+  }
+}
+
+// A mixin to generate a range of screen widths media query.
+@mixin between($min, $max) {
+  $screen-size: screen.range($min, $max);
+  $min: map.get($screen-size, "min");
+  $max: map.get($screen-size, "max");
+
+  @media screen and (#{$min} <= width <= #{$max}) {
+    @content;
+  }
+}
+
+@mixin only($size) {
+  @include between($size, $size) {
+    @content;
+  }
+}
+
+@mixin trigger($trigger) {
+  $screen-size-trigger: map.get(root-defaults.$screen-size-triggers, $trigger);
+  $mixin-name: map.get($screen-size-trigger, "mixin");
+  $mixin-args: map.get($screen-size-trigger, "args");
+  $mixin: meta.get-mixin($mixin-name);
+
+  @include meta.apply($mixin, $mixin-args...) {
+    @content;
+  }
+}

@@ -4,7 +4,7 @@
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/animation";
 
 @include layer(base) {
   #{defaults.$link-selector} {
@@ -75,7 +75,7 @@
     }
   }
 
-  @include animation-off {
+  @include animation.off {
     #{defaults.$link-selector} {
       --#{root-defaults.$prefix}-link-transition: #{$link-transition-reduced-motion};
     }

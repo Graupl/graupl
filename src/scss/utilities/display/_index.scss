@@ -2,15 +2,25 @@
 
 @use "variables" as *;
 @use "defaults" as defaults;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../functions/important";
 @use "../../mixins/visually-hidden";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
     .#{defaults.$display-class-prefix}#{$name} {
       display: important.insert($property);
+    }
+
+    @if $responsive and root-defaults.$responsive-utilities {
+      @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+        .#{defaults.$display-class-prefix}#{$screen-size}-#{$name} {
+          display: important.insert($property);
+        }
+      }
     }
   }
 

@@ -5,7 +5,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/animation";
 @use "../../functions/theme";
 @use "../../base/button/mixins" as button-mixins;
 @use "sass:map";
@@ -36,7 +36,7 @@
       display: grid;
     }
 
-    @include animation-off {
+    @include animation.off {
       #{defaults.$alert-selector} {
         --#{root-defaults.$prefix}-alert-transition: #{$alert-transition-reduced-motion};
       }

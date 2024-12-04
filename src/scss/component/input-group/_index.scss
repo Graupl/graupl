@@ -4,7 +4,7 @@
 @use "../../base/form/defaults" as form-defaults;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/screen";
 
 // stylelint-disable declaration-block-no-redundant-longhand-properties
 @include layer(component) {
@@ -37,7 +37,7 @@
     }
   }
 
-  @include screen(xs) {
+  @include screen.up(xs) {
     #{defaults.$input-group-selector}#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-grid-template-areas;
       grid-template-columns: $input-group-grid-template-columns;

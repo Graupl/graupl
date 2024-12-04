@@ -8,6 +8,8 @@
 @use "../../defaults" as root-defaults;
 @use "../../layout/columns/defaults" as columns-defaults;
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
+@use "../../mixins/screen";
+@use "sass:map";
 
 @include layer(utilities) {
   // For each spacing property, create a utility class.
@@ -73,6 +75,78 @@
         } @else {
           @each $prop in $property {
             #{$prop}: important.insert($value);
+          }
+        }
+      }
+    }
+
+    @if $responsive and root-defaults.$responsive-utilities {
+      @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+        @each $key, $value in root-variables.$spacers {
+          .#{$name}-#{$screen-size}-#{$key} {
+            @include screen.up($screen-size) {
+              // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+              // the columns-column-gap property instead of the raw property.
+              @if $name == "g" {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                  --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                  --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                @each $prop in $property {
+                  #{$prop}: important.insert($value);
+                }
+              } @else if $name == "cg" {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                @each $prop in $property {
+                  #{$prop}: important.insert($value);
+                }
+              } @else if $name == "rg" {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                @each $prop in $property {
+                  #{$prop}: important.insert($value);
+                }
+              } @else {
+                @each $prop in $property {
+                  #{$prop}: important.insert($value);
+                }
+              }
+            }
           }
         }
       }
