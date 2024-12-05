@@ -23,12 +23,17 @@
     @return initial;
   }
 
-  @return map.get(color.$themes, $theme, $color, $shade);
+  @if map.has-key(color.$themes, $theme, $color, $shade) {
+    @return map.get(map.get(map.get(color.$themes, $theme), $color), $shade);
+  }
+
+  @return null;
 }
 
 @function variants($theme: active) {
-  $theme-map: map.get(color.$themes, $theme);
-  $variants: map.keys($theme-map);
+  @if map.has-key(color.$themes, $theme) {
+    @return map.keys(map.get(color.$themes, $theme));
+  }
 
-  @return $variants;
+  @return null;
 }

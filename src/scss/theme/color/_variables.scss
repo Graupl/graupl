@@ -49,7 +49,6 @@ $themes: (
   $theme: ();
 
   @each $color-name, $map in $theme-map {
-    $color: map.get($colors, $color-name);
     $color-map: ();
 
     @each $shade, $value in $map {
@@ -83,7 +82,6 @@ $themes: (
 
 // Generate the active theme properties.
 @each $color-name, $map in map.get($themes, defaults.$default-theme) {
-  $color: map.get($colors, $color-name);
   $color-map: ();
 
   @each $shade, $value in $map {
@@ -113,11 +111,19 @@ $themes: (
 }
 
 // Colour properties.
-$root-color: var(
-  --#{root-defaults.$prefix}-root-color,
-  #{map.get(map.get(map.get($themes, active), primary), 900)}
-);
-$root-background: var(
-  --#{root-defaults.$prefix}-root-background,
-  #{map.get(map.get(map.get($themes, active), primary), 100)}
-);
+$root-color: var(--#{root-defaults.$prefix}-root-color);
+$root-background: var(--#{root-defaults.$prefix}-root-background);
+
+@if map.has-key($themes, active, primary, 900) {
+  $root-color: var(
+    --#{root-defaults.$prefix}-root-color,
+    #{map.get(map.get(map.get($themes, active), primary), 900)}
+  );
+}
+
+@if map.has-key($themes, active, primary, 100) {
+  $root-background: var(
+    --#{root-defaults.$prefix}-root-background,
+    #{map.get(map.get(map.get($themes, active), primary), 100)}
+  );
+}
