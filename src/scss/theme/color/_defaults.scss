@@ -7,6 +7,24 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "sass:map";
+@use "sass:list";
+
+$theme-selector-prefix: "." !default;
+$theme-selector-suffix: "-mode" !default;
+
+// The site will have colours, defaulting to primary, secondary, and tertiary.
+// Each colour will have a shade mapping, defaulting to 100-900.
+// Users can add custom colours/overrides for both colours and shades.
+
+// The site will use themes, defaulting to light and dark.
+// Users can add custom themes/overrides.
+
+// Each theme will have a mapping of colours, defaulting to cover all colours and shades.
+// Users can add custom mappings/overrides.
+
+// The combinations of colours, themes, and shades will be combined into a giant map.
+// It will be sorted by theme > color > shade where each shade is derived from the mapping.
+// Users can override any part of this giant map, allowing for fine-tuned control of theme colours.
 
 // Colours.
 $default-colors: (
@@ -45,19 +63,81 @@ $default-colors: (
   ),
 );
 $custom-colors: () !default;
-$colors: map.merge($default-colors, $custom-colors);
+$colors: map.deep-merge($default-colors, $custom-colors);
 
-// A map for reversing the shade values of the dark theme.
-$base-dark-map: (
-  100: 900,
-  200: 800,
-  300: 700,
-  400: 600,
-  500: 500,
-  600: 400,
-  700: 300,
-  800: 200,
-  900: 100,
+// Themes.
+$default-themes: (light, dark);
+$custom-themes: () !default;
+$themes: list.join($default-themes, $custom-themes);
+$default-theme: light !default;
+
+// Theme mappings.
+$default-theme-mappings: (
+  light: (
+    100: 100,
+    200: 200,
+    300: 300,
+    400: 400,
+    500: 500,
+    600: 600,
+    700: 700,
+    800: 800,
+    900: 900,
+  ),
+  dark: (
+    100: 900,
+    200: 800,
+    300: 700,
+    400: 600,
+    500: 500,
+    600: 400,
+    700: 300,
+    800: 200,
+    900: 100,
+  ),
 );
-$custom-dark-map: () !default;
-$dark-map: map.merge($base-dark-map, $custom-dark-map);
+$custom-theme-mappings: () !default;
+$theme-mappings: map.deep-merge(
+  $default-theme-mappings,
+  $custom-theme-mappings
+);
+
+// Theme map.
+$default-theme-map: ();
+
+@each $theme in $themes {
+  $theme-map: ();
+
+  @each $color-name, $color-map in $colors {
+    $color-theme-map: ();
+
+    @each $shade, $value in $color-map {
+      $color-theme-map: map.merge(
+        $color-theme-map,
+        (
+          $shade: (
+              color: $color-name,
+              shade: map.get($theme-mappings, $theme, $shade),
+            ),
+        )
+      );
+    }
+
+    $theme-map: map.merge(
+      $theme-map,
+      (
+        $color-name: $color-theme-map,
+      )
+    );
+  }
+
+  $default-theme-map: map.merge(
+    $default-theme-map,
+    (
+      $theme: $theme-map,
+    )
+  );
+}
+
+$custom-theme-map: () !default;
+$theme-map: map.deep-merge($default-theme-map, $custom-theme-map);

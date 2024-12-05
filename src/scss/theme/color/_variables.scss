@@ -40,85 +40,90 @@ $colors: ();
   );
 }
 
-// Theme properties.
-$theme-light: ();
-$theme-dark: ();
-$theme-active: ();
+$themes: (
+  active: (),
+);
 
-// Create a map for each colour theme.
-@each $color, $map in $colors {
-  // Maps for the current colour theme variants.
-  $light-map: ();
-  $dark-map: ();
-  $active-map: ();
+// Generate all of the theme properties.
+@each $theme-name, $theme-map in defaults.$theme-map {
+  $theme: ();
 
-  @each $shade, $value in $map {
-    // Get the dark shade and value.
-    $dark-shade: map.get(defaults.$dark-map, $shade);
-    $dark-value: map.get($map, $dark-shade);
+  @each $color-name, $map in $theme-map {
+    $color-map: ();
 
-    // Set the custom prop names and fallback values.
-    $light-property: var(
-      --#{root-defaults.$prefix}-theme-light--#{$color}--#{$shade},
-      $value
-    );
-    $dark-property: var(
-      --#{root-defaults.$prefix}-theme-dark--#{$color}--#{$shade},
-      $dark-value
-    );
-    $active-property: var(
-      --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade},
-      $light-property
-    );
+    @each $shade, $value in $map {
+      $color-property: var(
+        --#{root-defaults.$prefix}-theme-#{$theme-name}--#{$color-name}--#{$shade},
+        #{map.get($colors, map.get($value, color), map.get($value, shade))}
+      );
+      $color-map: map.merge(
+        $color-map,
+        (
+          $shade: $color-property,
+        )
+      );
+    }
 
-    // Add the custom props to the maps.
-    $light-map: map.merge(
-      $light-map,
+    $theme: map.merge(
+      $theme,
       (
-        $shade: $light-property,
-      )
-    );
-    $dark-map: map.merge(
-      $dark-map,
-      (
-        $shade: $dark-property,
-      )
-    );
-    $active-map: map.merge(
-      $active-map,
-      (
-        $shade: $active-property,
+        $color-name: $color-map,
       )
     );
   }
 
-  // Merge the theme maps with the existing themes.
-  $theme-light: map.merge(
-    $theme-light,
+  $themes: map.merge(
+    $themes,
     (
-      $color: $light-map,
+      $theme-name: $theme,
     )
   );
-  $theme-dark: map.merge(
-    $theme-dark,
+}
+
+// Generate the active theme properties.
+@each $color-name, $map in map.get($themes, defaults.$default-theme) {
+  $color-map: ();
+
+  @each $shade, $value in $map {
+    $color-property: var(
+      --#{root-defaults.$prefix}-theme-active--#{$color-name}--#{$shade},
+      #{$value}
+    );
+    $color-map: map.merge(
+      $color-map,
+      (
+        $shade: $color-property,
+      )
+    );
+  }
+
+  $themes: map.merge(
+    $themes,
     (
-      $color: $dark-map,
-    )
-  );
-  $theme-active: map.merge(
-    $theme-active,
-    (
-      $color: $active-map,
+      active: map.merge(
+          map.get($themes, active),
+          (
+            $color-name: $color-map,
+          )
+        ),
     )
   );
 }
 
 // Colour properties.
-$root-color: var(
-  --#{root-defaults.$prefix}-root-color,
-  #{map.get(map.get($theme-active, primary), 900)}
-);
-$root-background: var(
-  --#{root-defaults.$prefix}-root-background,
-  #{map.get(map.get($theme-active, primary), 100)}
-);
+$root-color: var(--#{root-defaults.$prefix}-root-color);
+$root-background: var(--#{root-defaults.$prefix}-root-background);
+
+@if map.has-key($themes, active, primary, 900) {
+  $root-color: var(
+    --#{root-defaults.$prefix}-root-color,
+    #{map.get(map.get(map.get($themes, active), primary), 900)}
+  );
+}
+
+@if map.has-key($themes, active, primary, 100) {
+  $root-background: var(
+    --#{root-defaults.$prefix}-root-background,
+    #{map.get(map.get(map.get($themes, active), primary), 100)}
+  );
+}

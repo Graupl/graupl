@@ -57,7 +57,7 @@
     background-color: $alert-background;
     color: $alert-color;
 
-    @each $color, $map in color.$theme-active {
+    @each $color, $map in map.get(color.$themes, active) {
       &#{defaults.$alert-theme-selector-prefix}#{$color} {
         @each $prop, $shade in defaults.$alert-state-theme-map {
           --#{root-defaults.$prefix}-alert-#{$prop}: #{theme.get(
