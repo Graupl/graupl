@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.0](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.16...v1.0.0-beta.0) (2024-12-05)
+
+
+### Features
+
+* **theme:** overhaul theme system to allow for fine-tuned control ([b433cd2](https://github.com/Graupl/graupl/commit/b433cd2ecac040a12e0b20cff91f90479aeff38e))
+* **utilities:** add ability to have responsive variations on all utilities ([#122](https://github.com/Graupl/graupl/issues/122)) ([ba8ffdf](https://github.com/Graupl/graupl/commit/ba8ffdfc8a48415b25e0c9eaefccdda4b41b0e5b))
+
+
+### Code Refactoring
+
+* **breakpoints:** change entire breakpoint system to be smarter ([f87f01c](https://github.com/Graupl/graupl/commit/f87f01cdbe10768270a6ae0359440bbf821c9bf6))
+* **navigation:** make js structure the same as other custom scripts ([f26534a](https://github.com/Graupl/graupl/commit/f26534ada58b32e48ce91d99574da089dc823f12))
+
 ## [1.0.0-alpha.16](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.15...v1.0.0-alpha.16) (2024-10-22)
 
 
