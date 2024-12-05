@@ -1,36 +1,71 @@
 // @graupl/graupl flex utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
-@use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
 @use "../../functions/important";
+@use "../../mixins/layer" as *;
+@use "../../mixins/utility";
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each flex direction property, create a utility class.
   @each $name, $property in defaults.$flex-direction-properties {
-    .#{defaults.$flex-direction-class-prefix}#{$name} {
-      flex-direction: important.insert($property);
-    }
+    @include utility.create(
+      ".#{defaults.$flex-direction-class-prefix}#{$name}",
+      flex-direction,
+      $property
+    );
+    @include utility.create(
+      ".#{defaults.$flex-wrap-class-prefix}#{$name}",
+      flex-wrap,
+      $property
+    );
+    @include utility.create(
+      ".#{defaults.$flex-grow-class-prefix}#{$name}",
+      flex-grow,
+      $property
+    );
+    @include utility.create(
+      ".#{defaults.$flex-shrink-class-prefix}#{$name}",
+      flex-shrink,
+      $property
+    );
   }
 
-  // For each flex wrap property, create a utility class.
-  @each $name, $property in defaults.$flex-wrap-properties {
-    .#{defaults.$flex-wrap-class-prefix}#{$name} {
-      flex-wrap: important.insert($property);
-    }
-  }
-
-  // For each flex grow property, create a utility class.
-  @each $name, $property in defaults.$flex-grow-properties {
-    .#{defaults.$flex-grow-class-prefix}#{$name} {
-      flex-grow: important.insert($property);
-    }
-  }
-
-  // For each flex shrink property, create a utility class.
-  @each $name, $property in defaults.$flex-shrink-properties {
-    .#{defaults.$flex-shrink-class-prefix}#{$name} {
-      flex-shrink: important.insert($property);
+  // Create responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each flex direction property, create a utility class.
+      @each $name, $property in defaults.$flex-direction-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$flex-direction-class-prefix}#{$name}",
+          flex-direction,
+          $property,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$flex-wrap-class-prefix}#{$name}",
+          flex-wrap,
+          $property,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$flex-grow-class-prefix}#{$name}",
+          flex-grow,
+          $property,
+          $screen-size
+        );
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$flex-shrink-class-prefix}#{$name}",
+          flex-shrink,
+          $property,
+          $screen-size
+        );
+      }
     }
   }
 }

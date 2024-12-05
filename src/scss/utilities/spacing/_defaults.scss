@@ -44,3 +44,6 @@ $spacing-properties: map.merge(
   $base-spacing-properties,
   $custom-spacing-properties
 );
+
+// Responsive utility flag.
+$responsive: true !default;

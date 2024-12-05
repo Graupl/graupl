@@ -21,3 +21,6 @@ $position-properties: map.merge(
   $base-position-properties,
   $custom-position-properties
 );
+
+// Responsive utility flag.
+$responsive: false !default;

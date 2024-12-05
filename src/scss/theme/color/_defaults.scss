@@ -64,7 +64,6 @@ $default-colors: (
 );
 $custom-colors: () !default;
 $colors: map.deep-merge($default-colors, $custom-colors);
-
 $default-theme-colors: (
   primary: blue,
   secondary: grey,
@@ -124,9 +123,9 @@ $default-theme-map: ();
         $color-map,
         (
           $shade: (
-            color: $color-name,
-            shade: map.get($theme-mappings, $theme, $shade)
-          ),
+              color: $color-name,
+              shade: map.get($theme-mappings, $theme, $shade),
+            ),
         )
       );
     }

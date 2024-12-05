@@ -38,6 +38,7 @@ $focus-box-shadow-style: var(
 );
 $focus-box-shadow: var(
   --#{root-defaults.$prefix}-focus-box-shadow,
-  #{$focus-width $focus-width} 0 0 #{$focus-box-shadow-style} #{$focus-box-shadow-color},
+  #{$focus-width $focus-width} 0 0 #{$focus-box-shadow-style}
+    #{$focus-box-shadow-color},
   0 0 0 #{$focus-width} #{$focus-box-shadow-style} #{$focus-box-shadow-color}
 );

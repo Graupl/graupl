@@ -102,8 +102,7 @@ $themes: (
   $themes: map.merge(
     $themes,
     (
-      active:
-        map.merge(
+      active: map.merge(
           map.get($themes, active),
           (
             $color-name: $color-map,

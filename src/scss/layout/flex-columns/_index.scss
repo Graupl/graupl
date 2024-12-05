@@ -4,7 +4,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/screen";
 
 @include layer(layout) {
   // Flex columns.
@@ -39,7 +39,7 @@
       /* stylelint-enable  scss/operator-no-newline-after */
     }
 
-    @include screen-trigger(force-single-column) {
+    @include screen.trigger(force-single-column) {
       #{defaults.$flex-columns-column-selector-prefix}#{$i} {
         --#{root-defaults.$prefix}-flex-columns-size: 100%;
         --#{root-defaults.$prefix}-flex-columns-max-width: auto;
@@ -58,11 +58,14 @@
       //
       // If you do something like `.col-6 .col-lg-3`, the custom properties will only ever
       // be set to the `.col-6` value.
-      @include screen($screen) {
+      @include screen.up($screen) {
         #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
+          /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
           --#{root-defaults.$prefix}-flex-columns-size: calc(
-            (100% / #{defaults.$flex-columns-max-count} * #{$i}) - #{$flex-columns-column-gap}
+            (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+              #{$flex-columns-column-gap}
           );
+          /* stylelint-enable  scss/operator-no-newline-after */
           --#{root-defaults.$prefix}-flex-columns-max-width: calc(
             100% / #{defaults.$flex-columns-max-count} * #{$i}
           );

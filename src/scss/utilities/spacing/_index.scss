@@ -1,22 +1,29 @@
 // @graupl/graupl spacing utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
-@use "../../mixins/layer" as *;
-@use "../../functions/important";
-@use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../functions/important";
 @use "../../layout/columns/defaults" as columns-defaults;
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/utility";
+@use "../../variables" as root-variables;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each spacing property, create a utility class.
   @each $name, $property in defaults.$spacing-properties {
     @each $key, $value in root-variables.$spacers {
-      .#{$name}-#{$key} {
-        // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
-        // the columns-column-gap property instead of the raw property.
-        @if $name == "g" {
+      $selector: ".#{$name}-#{$key}";
+
+      // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+      // the columns-column-gap property instead of the raw property.
+      @if $name == "g" {
+        @include utility.create($selector, $property, $value) {
           &#{columns-defaults.$columns-selector} {
             --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
                 $value
@@ -33,55 +40,129 @@
             --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
                 $value
               )};
-          }
-
-          @each $prop in $property {
-            #{$prop}: important.insert($value);
-          }
-        } @else if $name == "cg" {
-          &#{columns-defaults.$columns-selector} {
-            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
-                $value
-              )};
-          }
-
-          &#{flex-columns-defaults.$flex-columns-selector} {
-            --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
-                $value
-              )};
-          }
-
-          @each $prop in $property {
-            #{$prop}: important.insert($value);
-          }
-        } @else if $name == "rg" {
-          &#{columns-defaults.$columns-selector} {
-            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
-                $value
-              )};
-          }
-
-          &#{flex-columns-defaults.$flex-columns-selector} {
-            --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
-                $value
-              )};
-          }
-
-          @each $prop in $property {
-            #{$prop}: important.insert($value);
-          }
-        } @else {
-          @each $prop in $property {
-            #{$prop}: important.insert($value);
           }
         }
+      } @else if $name == "cg" {
+        @include utility.create($selector, $property, $value) {
+          &#{columns-defaults.$columns-selector} {
+            --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                $value
+              )};
+          }
+
+          &#{flex-columns-defaults.$flex-columns-selector} {
+            --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
+                $value
+              )};
+          }
+        }
+      } @else if $name == "rg" {
+        @include utility.create($selector, $property, $value) {
+          &#{columns-defaults.$columns-selector} {
+            --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                $value
+              )};
+          }
+
+          &#{flex-columns-defaults.$flex-columns-selector} {
+            --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
+                $value
+              )};
+          }
+        }
+      } @else {
+        @include utility.create($selector, $property, $value);
       }
     }
 
     // Create the "auto" utility class.
-    .#{$name}-auto {
-      @each $prop in $property {
-        #{$prop}: important.insert(auto);
+    @include utility.create("#{$name}-auto", $property, auto);
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      @each $name, $property in defaults.$spacing-properties {
+        @each $key, $value in root-variables.$spacers {
+          $selector: ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-#{$key}";
+
+          // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+          // the columns-column-gap property instead of the raw property.
+          @if $name == "g" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $screen-size
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "cg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $screen-size
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}-flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "rg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $screen-size
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}-flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else {
+            @include utility.create($selector, $property, $value, $screen-size);
+          }
+        }
+
+        // Create the "auto" utility class.
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-auto",
+          $property,
+          auto,
+          $screen-size
+        );
       }
     }
   }

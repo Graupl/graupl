@@ -13,25 +13,46 @@ $prefix: "graupl" !default;
 
 // Settings.
 $use-important: true !default;
+$responsive-utilities: true !default;
 
 // Layout properties.
 $content-max-width: 96ch !default;
 
 // Screen sizes.
 $base-screen-sizes: (
-  xs: "(width <= 48ch)",
-  sm: "(48ch < width)",
-  md: "(72ch < width)",
-  lg: "(108ch < width)",
-  xl: "(156ch < width)",
+  xs: 0,
+  sm: 48ch,
+  md: 72ch,
+  lg: 108ch,
+  xl: 156ch,
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
 $base-screen-size-triggers: (
-  navigation-collapse: "(width <= 72ch)",
-  navigation-expand: "(72ch < width)",
-  force-vertical-card: "(width <= 72ch)",
-  force-single-column: "(width <= 48ch)",
+  navigation-collapse: (
+    mixin: "down",
+    args: (
+      "sm",
+    ),
+  ),
+  navigation-expand: (
+    mixin: "up",
+    args: (
+      "md",
+    ),
+  ),
+  force-vertical-card: (
+    mixin: "down",
+    args: (
+      "sm",
+    ),
+  ),
+  force-single-column: (
+    mixin: "down",
+    args: (
+      "xs",
+    ),
+  ),
 );
 $custom-screen-size-triggers: () !default;
 $screen-size-triggers: map.merge(
@@ -110,3 +131,6 @@ $base-state-selectors: (
 );
 $custom-state-selectors: () !default;
 $state-selectors: map.merge($base-state-selectors, $custom-state-selectors);
+
+// Responsive utility separator.
+$responsive-separator: "\\:" !default;

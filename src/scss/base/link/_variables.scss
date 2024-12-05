@@ -168,14 +168,19 @@ $link-padding: var(
 );
 $link-transition: var(
   --#{root-defaults.$prefix}-link-transition,
-  background #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function},
-  transform #{map.get(root-variables.$transition-durations, fast)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
 );
 $link-transition-reduced-motion: var(
   --#{root-defaults.$prefix}-link-transition-reduced-motion,
-  background #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function},
-  color #{map.get(root-variables.$transition-durations, none)} #{root-variables.$transition-timing-function}
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
 );
 $link-transform: var(
   --#{root-defaults.$prefix}-link-transform,

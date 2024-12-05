@@ -32,7 +32,8 @@ $columns-min-width: var(
     (
         #{root-variables.$content-max-width} - #{$columns-column-gap} *
           (#{$columns-count} - 1)
-      ) / #{$columns-count}
+      ) /
+      #{$columns-count}
   )
 );
 /* stylelint-enable  scss/operator-no-newline-after */

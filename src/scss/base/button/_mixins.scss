@@ -5,7 +5,7 @@
 @use "../../theme/color/variables" as color;
 @use "variables" as *;
 @use "../../mixins/layer" as *;
-@use "../../mixins/media-queries" as *;
+@use "../../mixins/animation";
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -95,7 +95,7 @@
       }
     }
 
-    @include animation-off {
+    @include animation.off {
       --#{root-defaults.$prefix}-button-transition: #{$button-transition-reduced-motion};
     }
   }

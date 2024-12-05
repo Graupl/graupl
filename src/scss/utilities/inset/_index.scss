@@ -1,17 +1,35 @@
 // @graupl/graupl inset utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
-@use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
 @use "../../functions/important";
+@use "../../mixins/layer" as *;
+@use "../../mixins/utility";
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each inset property, create a utility class.
   @each $type, $property in defaults.$inset-properties {
     @each $name, $value in defaults.$inset-values {
-      .#{$type}-#{$name} {
-        @each $prop in $property {
-          #{$prop}: important.insert($value);
+      @include utility.create(".#{$type}-#{$name}", $property, $value);
+    }
+  }
+
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each inset property, create a utility class.
+      @each $type, $property in defaults.$inset-properties {
+        @each $name, $value in defaults.$inset-values {
+          @include utility.create(
+            ".#{$screen-size}#{root-defaults.$responsive-separator}#{$type}-#{$name}",
+            $property,
+            $value,
+            $screen-size
+          );
         }
       }
     }
