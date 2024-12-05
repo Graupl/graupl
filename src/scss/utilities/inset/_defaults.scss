@@ -38,4 +38,4 @@ $custom-inset-values: () !default;
 $inset-values: map.merge($base-inset-values, $custom-inset-values);
 
 // Responsive utility flag.
-$responsive: true !default;
+$responsive: false !default;

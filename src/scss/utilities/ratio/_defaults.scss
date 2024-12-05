@@ -25,4 +25,4 @@ $custom-ratios: () !default;
 $ratios: map.merge($base-ratios, $custom-ratios);
 
 // Responsive utility flag.
-$responsive: true !default;
+$responsive: false !default;
