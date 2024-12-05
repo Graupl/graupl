@@ -1,17 +1,26 @@
 // @graupl/graupl typography utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults";
-@use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
 @use "../../functions/important";
+@use "../../mixins/layer" as *;
+@use "../../mixins/screen";
+@use "../../mixins/utility";
 @use "../../theme/typography/variables" as typography;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each font size property, create a utility class.
   @each $size, $value in typography.$font-sizes {
-    .#{defaults.$text-class-prefix}#{$size} {
-      font-size: important.insert($value);
-    }
+    @include utility.create(
+      ".#{defaults.$text-class-prefix}#{$size}",
+      font-size,
+      $value
+    );
   }
 
   // Create utility classes for each type of text style in Graupl.
@@ -81,15 +90,135 @@
 
   // For each font weight property, create a utility class.
   @each $size, $value in typography.$font-weights {
-    .#{defaults.$font-weight-class-prefix}#{$size} {
-      font-weight: important.insert($value);
-    }
+    @include utility.create(
+      ".#{defaults.$font-weight-class-prefix}#{$size}",
+      font-weight,
+      $value
+    );
   }
 
   // For each font style property, create a utility class.
   @each $size, $value in defaults.$font-style-properties {
-    .#{defaults.$font-style-class-prefix}#{$size} {
-      font-style: important.insert($value);
+    @include utility.create(
+      ".#{defaults.$font-style-class-prefix}#{$size}",
+      font-style,
+      $value
+    );
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each font size property, create a utility class.
+      @each $size, $value in typography.$font-sizes {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}#{$size}",
+          font-size,
+          $value,
+          $screen-size
+        );
+      }
+
+      // Create utility classes for each type of text style in Graupl.
+      // These will apply not only the font size, but also the margin, font weight, and line height.
+      // This will allow for a more consistent and maintainable typography system.
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}paragraph {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$paragraph-margin);
+          font-size: important.insert(typography.$paragraph-font-size);
+          font-weight: important.insert(typography.$paragraph-font-weight);
+          line-height: important.insert(typography.$paragraph-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}small {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$small-margin);
+          font-size: important.insert(typography.$small-font-size);
+          font-weight: important.insert(typography.$small-font-weight);
+          line-height: important.insert(typography.$small-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h1 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h1-margin);
+          font-family: important.insert(typography.$h1-font-family);
+          font-size: important.insert(typography.$h1-font-size);
+          font-weight: important.insert(typography.$h1-font-weight);
+          line-height: important.insert(typography.$h1-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h2 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h2-margin);
+          font-family: important.insert(typography.$h2-font-family);
+          font-size: important.insert(typography.$h2-font-size);
+          font-weight: important.insert(typography.$h2-font-weight);
+          line-height: important.insert(typography.$h2-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h3 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h3-margin);
+          font-family: important.insert(typography.$h3-font-family);
+          font-size: important.insert(typography.$h3-font-size);
+          font-weight: important.insert(typography.$h3-font-weight);
+          line-height: important.insert(typography.$h3-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h4 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h4-margin);
+          font-family: important.insert(typography.$h4-font-family);
+          font-size: important.insert(typography.$h4-font-size);
+          font-weight: important.insert(typography.$h4-font-weight);
+          line-height: important.insert(typography.$h4-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h5 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h5-margin);
+          font-family: important.insert(typography.$h5-font-family);
+          font-size: important.insert(typography.$h5-font-size);
+          font-weight: important.insert(typography.$h5-font-weight);
+          line-height: important.insert(typography.$h5-line-height);
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-class-prefix}h6 {
+        @include screen.up($screen-size) {
+          margin: important.insert(typography.$h6-margin);
+          font-family: important.insert(typography.$h6-font-family);
+          font-size: important.insert(typography.$h6-font-size);
+          font-weight: important.insert(typography.$h6-font-weight);
+          line-height: important.insert(typography.$h6-line-height);
+        }
+      }
+
+      // For each font weight property, create a utility class.
+      @each $size, $value in typography.$font-weights {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-weight-class-prefix}#{$size}",
+          font-weight,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each font style property, create a utility class.
+      @each $size, $value in defaults.$font-style-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-style-class-prefix}#{$size}",
+          font-style,
+          $value,
+          $screen-size
+        );
+      }
     }
   }
 }

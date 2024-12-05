@@ -9,9 +9,9 @@
 @use "sass:map";
 
 // Ratio utilities.
-$ratio-selector: ".ratio" !default;
-$ratio-variant-selector-prefix: "." !default;
-$force-ratio-selector: ".force-ratio" !default;
+$ratio-class: "ratio" !default;
+$ratio-variant-class-prefix: "" !default;
+$force-ratio-class: "force-ratio" !default;
 $base-ratios: (
   "one-by-one": 100%,
   "two-by-one": 50%,
@@ -23,3 +23,6 @@ $base-ratios: (
 );
 $custom-ratios: () !default;
 $ratios: map.merge($base-ratios, $custom-ratios);
+
+// Responsive utility flag.
+$responsive: false !default;

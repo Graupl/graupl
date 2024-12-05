@@ -131,3 +131,6 @@ $base-state-selectors: (
 );
 $custom-state-selectors: () !default;
 $state-selectors: map.merge($base-state-selectors, $custom-state-selectors);
+
+// Responsive utility separator.
+$responsive-separator: "\\:" !default;

@@ -25,3 +25,6 @@ $font-style-properties: map.merge(
   $base-font-style-properties,
   $custom-font-style-properties
 );
+
+// Responsive utility flag.
+$responsive: false !default;

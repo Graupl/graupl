@@ -1,35 +1,61 @@
 // @graupl/graupl display utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/screen";
+@use "../../mixins/utility";
 @use "../../mixins/visually-hidden";
+@use "defaults";
 @use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
-    .#{defaults.$display-class-prefix}#{$name} {
-      display: important.insert($property);
-    }
-
-    @if $responsive and root-defaults.$responsive-utilities {
-      @each $screen-size in map.keys(root-defaults.$screen-sizes) {
-        .#{defaults.$display-class-prefix}#{$screen-size}-#{$name} {
-          display: important.insert($property);
-        }
-      }
-    }
+    @include utility.create(
+      ".#{defaults.$display-class-prefix}#{$name}",
+      display,
+      $property
+    );
   }
 
   // Visually hidden utility classes.
-  #{$visually-hidden-selector} {
+  #{defaults.$visually-hidden-class} {
     @include visually-hidden.apply;
   }
 
-  #{$visually-hidden-focusable-selector} {
+  #{defaults.$visually-hidden-focusable-class} {
     @include visually-hidden.focusable;
+  }
+
+  // Create responsive utilities for visually hidden classes.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each display property, create a utility class.
+      @each $name, $property in defaults.$display-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$display-class-prefix}#{$name}",
+          display,
+          $property,
+          $screen-size
+        );
+      }
+
+      // Visually hidden utility classes.
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$visually-hidden-class} {
+        @include screen.up($screen-size) {
+          @include visually-hidden.apply;
+        }
+      }
+
+      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$visually-hidden-focusable-class} {
+        @include screen.up($screen-size) {
+          @include visually-hidden.focusable;
+        }
+      }
+    }
   }
 }

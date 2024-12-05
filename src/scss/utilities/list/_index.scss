@@ -1,22 +1,56 @@
 // @graupl/graupl list utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
 
-@use "variables" as *;
-@use "defaults" as defaults;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../functions/important";
+@use "../../mixins/utility";
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(utilities) {
   // For each list style type property, create a utility class.
   @each $name, $property in defaults.$list-style-type-properties {
-    .#{defaults.$list-style-type-class-prefix}#{$name} {
-      list-style-type: important.insert($property);
-    }
+    @include utility.create(
+      ".#{defaults.$list-style-type-class-prefix}#{$name}",
+      list-style-type,
+      $property
+    );
   }
 
   // For each list style position property, create a utility class.
-  @each $name, $property in defaults.$list-style-postion-properties {
-    .#{defaults.$list-style-type-class-prefix}#{$name} {
-      list-style-position: important.insert($property);
+  @each $name, $property in defaults.$list-style-position-properties {
+    @include utility.create(
+      ".#{defaults.$list-style-position-class-prefix}#{$name}",
+      list-style-position,
+      $property
+    );
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // For each list style type property, create a utility class.
+      @each $name, $property in defaults.$list-style-type-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$list-style-type-class-prefix}#{$name}",
+          list-style-type,
+          $property,
+          $screen-size
+        );
+      }
+
+      // For each list style position property, create a utility class.
+      @each $name, $property in defaults.$list-style-position-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$list-style-position-class-prefix}#{$name}",
+          list-style-position,
+          $property,
+          $screen-size
+        );
+      }
     }
   }
 }

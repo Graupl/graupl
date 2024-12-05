@@ -58,3 +58,6 @@ $flex-shrink-properties: map.merge(
   $base-flex-shrink-properties,
   $custom-flex-shrink-properties
 );
+
+// Responsive utility flag.
+$responsive: false !default;

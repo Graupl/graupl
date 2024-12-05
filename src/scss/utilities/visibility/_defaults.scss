@@ -20,3 +20,6 @@ $visibility-properties: map.merge(
   $base-visibility-properties,
   $custom-visibility-properties
 );
+
+// Responsive utility flag.
+$responsive: true !default;
