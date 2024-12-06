@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.1](https://github.com/Graupl/graupl/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2024-12-06)
+
+
+### Code Refactoring
+
+* **prefix:** move dash separator to be included in prefix ([cb537b7](https://github.com/Graupl/graupl/commit/cb537b78c17e38a8afeeccabe75bb1136491aa47))
+
 ## [1.0.0-beta.0](https://github.com/Graupl/graupl/compare/v1.0.0-alpha.16...v1.0.0-beta.0) (2024-12-05)
 
 
