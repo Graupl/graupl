@@ -41,14 +41,14 @@
     }
 
     &:hover {
-      --#{root-defaults.$prefix}-card-transform: #{$card-hover-transform};
+      --#{root-defaults.$prefix}card-transform: #{$card-hover-transform};
     }
 
     &#{defaults.$horizontal-card-selector} {
       &,
       &#{defaults.$horizontal-card-left-selector} {
-        --#{root-defaults.$prefix}-card-content-ratio: #{$horizontal-card-content-ratio};
-        --#{root-defaults.$prefix}-card-image-ratio: #{$horizontal-card-image-ratio};
+        --#{root-defaults.$prefix}card-content-ratio: #{$horizontal-card-content-ratio};
+        --#{root-defaults.$prefix}card-image-ratio: #{$horizontal-card-image-ratio};
 
         grid-template-columns:
           [image-start]
@@ -124,8 +124,8 @@
         &#{defaults.$horizontal-card-right-selector},
         &#{defaults.$vertical-card-bottom-selector},
         &#{defaults.$inverse-card-selector} {
-          --#{root-defaults.$prefix}-horizontal-card-image-ratio: #{defaults.$card-image-ratio};
-          --#{root-defaults.$prefix}-horizontal-card-content-ratio: #{defaults.$card-content-ratio};
+          --#{root-defaults.$prefix}horizontal-card-image-ratio: #{defaults.$card-image-ratio};
+          --#{root-defaults.$prefix}horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 
           grid-template-columns: 1fr;
         }
@@ -157,7 +157,7 @@
 
   @include animation.off {
     #{defaults.$card-selector} {
-      --#{root-defaults.$prefix}-card-transition: #{$card-transition-reduced-motion};
+      --#{root-defaults.$prefix}card-transition: #{$card-transition-reduced-motion};
     }
   }
 }

@@ -13,123 +13,123 @@
 
 // Table caption properties.
 $table-caption-side: var(
-  --#{root-defaults.$prefix}-table-caption-side,
+  --#{root-defaults.$prefix}table-caption-side,
   #{defaults.$table-caption-side}
 );
 $table-caption-padding-x: var(
-  --#{root-defaults.$prefix}-table-caption-padding-x,
+  --#{root-defaults.$prefix}table-caption-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-caption-padding-y: var(
-  --#{root-defaults.$prefix}-table-caption-padding-y,
+  --#{root-defaults.$prefix}table-caption-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-caption-padding: $table-caption-padding-y $table-caption-padding-x;
 
 // Table header properties.
 $table-header-font-weight: var(
-  --#{root-defaults.$prefix}-table-header-font-weight,
+  --#{root-defaults.$prefix}table-header-font-weight,
   #{typography.$font-weight-bold}
 );
 $table-header-padding-x: var(
-  --#{root-defaults.$prefix}-table-header-padding-x,
+  --#{root-defaults.$prefix}table-header-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-header-padding-y: var(
-  --#{root-defaults.$prefix}-table-header-padding-y,
+  --#{root-defaults.$prefix}table-header-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-header-padding: $table-header-padding-y $table-header-padding-x;
 $table-header-background: var(
-  --#{root-defaults.$prefix}-table-header-background,
+  --#{root-defaults.$prefix}table-header-background,
   #{color.$root-background}
 );
 $table-header-color: var(
-  --#{root-defaults.$prefix}-table-header-color,
+  --#{root-defaults.$prefix}table-header-color,
   #{color.$root-color}
 );
 
 // Table cell properties.
 $table-cell-padding-x: var(
-  --#{root-defaults.$prefix}-table-cell-padding-x,
+  --#{root-defaults.$prefix}table-cell-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-cell-padding-y: var(
-  --#{root-defaults.$prefix}-table-cell-padding-y,
+  --#{root-defaults.$prefix}table-cell-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
 $table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
 $table-cell-background: var(
-  --#{root-defaults.$prefix}-table-cell-background,
+  --#{root-defaults.$prefix}table-cell-background,
   #{color.$root-background}
 );
 $table-cell-color: var(
-  --#{root-defaults.$prefix}-table-cell-color,
+  --#{root-defaults.$prefix}table-cell-color,
   #{color.$root-color}
 );
 
 // Table border properties.
 $table-border-width: var(
-  --#{root-defaults.$prefix}-table-border-width,
+  --#{root-defaults.$prefix}table-border-width,
   #{root-variables.$border-width}
 );
 $table-border-style: var(
-  --#{root-defaults.$prefix}-table-border-style,
+  --#{root-defaults.$prefix}table-border-style,
   #{root-variables.$border-style}
 );
 $table-border: var(
-  --#{root-defaults.$prefix}-table-border,
+  --#{root-defaults.$prefix}table-border,
   #{$table-border-width} #{$table-border-style}
 );
 $table-border-color: var(
-  --#{root-defaults.$prefix}-table-border-color,
+  --#{root-defaults.$prefix}table-border-color,
   #{theme.get(primary, 900)}
 );
 
 // Table cell border properties.
 $table-cell-border-width: var(
-  --#{root-defaults.$prefix}-table-cell-border-width,
+  --#{root-defaults.$prefix}table-cell-border-width,
   #{$table-border-width}
 );
 $table-cell-border-style: var(
-  --#{root-defaults.$prefix}-table-cell-border-style,
+  --#{root-defaults.$prefix}table-cell-border-style,
   #{$table-border-style}
 );
 $table-cell-border: var(
-  --#{root-defaults.$prefix}-table-cell-border,
+  --#{root-defaults.$prefix}table-cell-border,
   #{$table-cell-border-width} #{$table-cell-border-style}
 );
 $table-cell-border-color: var(
-  --#{root-defaults.$prefix}-table-cell-border-color,
+  --#{root-defaults.$prefix}table-cell-border-color,
   #{$table-border-color}
 );
 
 // Table striped properties.
 $table-striped-background: var(
-  --#{root-defaults.$prefix}-table-striped-background,
+  --#{root-defaults.$prefix}table-striped-background,
   #{theme.get(secondary, 200)}
 );
 $table-striped-color: var(
-  --#{root-defaults.$prefix}-table-striped-color,
+  --#{root-defaults.$prefix}table-striped-color,
   #{theme.get(secondary, 900)}
 );
 
 // Table hover properties.
 $table-hover-background: var(
-  --#{root-defaults.$prefix}-table-hover-background,
+  --#{root-defaults.$prefix}table-hover-background,
   #{theme.get(secondary, 300)}
 );
 $table-hover-color: var(
-  --#{root-defaults.$prefix}-table-hover-color,
+  --#{root-defaults.$prefix}table-hover-color,
   #{theme.get(secondary, 900)}
 );
 
 // Table highlight properties.
 $table-highlight-background: var(
-  --#{root-defaults.$prefix}-table-highlight-background,
+  --#{root-defaults.$prefix}table-highlight-background,
   #{theme.get(secondary, 500)}
 );
 $table-highlight-color: var(
-  --#{root-defaults.$prefix}-table-highlight-color,
+  --#{root-defaults.$prefix}table-highlight-color,
   #{theme.get(secondary, 100)}
 );

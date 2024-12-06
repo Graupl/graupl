@@ -21,54 +21,54 @@ Variables
 Alert Properties
 
 ```jsx
---#{root-defaults.$prefix}-alert-padding-x
---#{root-defaults.$prefix}-alert-padding-y
+--#{root-defaults.$prefix}alert-padding-x
+--#{root-defaults.$prefix}alert-padding-y
 ```
 
 Alert Gap Properties
 
 ```jsx
---#{root-defaults.$prefix}-alert-column-gap
---#{root-defaults.$prefix}-alert-row-gap
---#{root-defaults.$prefix}-alert-gap
+--#{root-defaults.$prefix}alert-column-gap
+--#{root-defaults.$prefix}alert-row-gap
+--#{root-defaults.$prefix}alert-gap
 ```
 
 Alert Colour Properties
 
 ```jsx
---#{root-defaults.$prefix}-alert-background
---#{root-defaults.$prefix}-alert-color
---#{root-defaults.$prefix}-alert-link-color
---#{root-defaults.$prefix}-alert-link-visited-color
---#{root-defaults.$prefix}-alert-link-focus-color
---#{root-defaults.$prefix}-alert-link-hover-color
---#{root-defaults.$prefix}-alert-link-active-color
---#{root-defaults.$prefix}-alert-link-disabled-color
+--#{root-defaults.$prefix}alert-background
+--#{root-defaults.$prefix}alert-color
+--#{root-defaults.$prefix}alert-link-color
+--#{root-defaults.$prefix}alert-link-visited-color
+--#{root-defaults.$prefix}alert-link-focus-color
+--#{root-defaults.$prefix}alert-link-hover-color
+--#{root-defaults.$prefix}alert-link-active-color
+--#{root-defaults.$prefix}alert-link-disabled-color
 ```
 
 Alert Border Properties
 
 ```jsx
---#{root-defaults.$prefix}-alert-border-color
---#{root-defaults.$prefix}-alert-top-left-border-radius
---#{root-defaults.$prefix}-alert-top-right-border-radius
---#{root-defaults.$prefix}-alert-bottom-left-border-radius
---#{root-defaults.$prefix}-alert-bottom-right-border-radius
---#{root-defaults.$prefix}-alert-border-radius
---#{root-defaults.$prefix}-alert-border-style
---#{root-defaults.$prefix}-alert-border-width
---#{root-defaults.$prefix}-alert-border
+--#{root-defaults.$prefix}alert-border-color
+--#{root-defaults.$prefix}alert-top-left-border-radius
+--#{root-defaults.$prefix}alert-top-right-border-radius
+--#{root-defaults.$prefix}alert-bottom-left-border-radius
+--#{root-defaults.$prefix}alert-bottom-right-border-radius
+--#{root-defaults.$prefix}alert-border-radius
+--#{root-defaults.$prefix}alert-border-style
+--#{root-defaults.$prefix}alert-border-width
+--#{root-defaults.$prefix}alert-border
 ```
 
 Alert Title Properties
 
 ```jsx
---#{root-defaults.$prefix}-alert-title-color
---#{root-defaults.$prefix}-alert-title-font-size
---#{root-defaults.$prefix}-alert-title-font-weight
---#{root-defaults.$prefix}-alert-title-font-family
---#{root-defaults.$prefix}-alert-title-line-height
---#{root-defaults.$prefix}-alert-title-margin
+--#{root-defaults.$prefix}alert-title-color
+--#{root-defaults.$prefix}alert-title-font-size
+--#{root-defaults.$prefix}alert-title-font-weight
+--#{root-defaults.$prefix}alert-title-font-family
+--#{root-defaults.$prefix}alert-title-line-height
+--#{root-defaults.$prefix}alert-title-margin
 ```
 
 Markup

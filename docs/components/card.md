@@ -34,90 +34,90 @@ Variables
 Card Properties
 
 ```jsx
---#{root-defaults.$prefix}-card-padding-x
---#{root-defaults.$prefix}-card-padding-y
---#{root-defaults.$prefix}-card-padding
---#{root-defaults.$prefix}-card-transition
---#{root-defaults.$prefix}-card-transition-reduced-motion
+--#{root-defaults.$prefix}card-padding-x
+--#{root-defaults.$prefix}card-padding-y
+--#{root-defaults.$prefix}card-padding
+--#{root-defaults.$prefix}card-transition
+--#{root-defaults.$prefix}card-transition-reduced-motion
 ```
 
 Card transform properties
 
 ```jsx
---#{root-defaults.$prefix}-card-transform
---#{root-defaults.$prefix}-card-hover-transform
+--#{root-defaults.$prefix}card-transform
+--#{root-defaults.$prefix}card-hover-transform
 ```
 
 Card gap properties
 
 ```jsx
---#{root-defaults.$prefix}-card-column-gap
---#{root-defaults.$prefix}-card-row-gap
---#{root-defaults.$prefix}-card-gap
+--#{root-defaults.$prefix}card-column-gap
+--#{root-defaults.$prefix}card-row-gap
+--#{root-defaults.$prefix}card-gap
 ```
 
 Card color properties
 
 ```jsx
---#{root-defaults.$prefix}-card-background
---#{root-defaults.$prefix}-card-color
+--#{root-defaults.$prefix}card-background
+--#{root-defaults.$prefix}card-color
 ```
 
 Card border-properties
 
 ```jsx
---#{root-defaults.$prefix}-card-border-color
---#{root-defaults.$prefix}-card-top-left-border-radius
---#{root-defaults.$prefix}-card-top-right-border-radius
---#{root-defaults.$prefix}-card-bottom-left-border-radius
---#{root-defaults.$prefix}-card-bottom-right-border-radius
---#{root-defaults.$prefix}-card-border-radius
---#{root-defaults.$prefix}-card-border-style
---#{root-defaults.$prefix}-card-border-width
---#{root-defaults.$prefix}-card-border
+--#{root-defaults.$prefix}card-border-color
+--#{root-defaults.$prefix}card-top-left-border-radius
+--#{root-defaults.$prefix}card-top-right-border-radius
+--#{root-defaults.$prefix}card-bottom-left-border-radius
+--#{root-defaults.$prefix}card-bottom-right-border-radius
+--#{root-defaults.$prefix}card-border-radius
+--#{root-defaults.$prefix}card-border-style
+--#{root-defaults.$prefix}card-border-width
+--#{root-defaults.$prefix}card-border
 ```
 
 Card layout properties
 
 ```jsx
---#{root-defaults.$prefix}-card-content-ratio
---#{root-defaults.$prefix}-card-image-ratio
---#{root-defaults.$prefix}-horizontal-card-content-ratio
---#{root-defaults.$prefix}-horizontal-card-image-ratio
+--#{root-defaults.$prefix}card-content-ratio
+--#{root-defaults.$prefix}card-image-ratio
+--#{root-defaults.$prefix}horizontal-card-content-ratio
+--#{root-defaults.$prefix}horizontal-card-image-ratio
 ```
 
 Card Image Properties
 
 ```jsx
---#{root-defaults.$prefix}-card-image-padding-x
---#{root-defaults.$prefix}-card-image-padding-y
---#{root-defaults.$prefix}-card-image-padding
+--#{root-defaults.$prefix}card-image-padding-x
+--#{root-defaults.$prefix}card-image-padding-y
+--#{root-defaults.$prefix}card-image-padding
 ```
 
 Card content properties
 
 ```jsx
---#{root-defaults.$prefix}-card-content-padding-x
---#{root-defaults.$prefix}-card-content-padding-y
---#{root-defaults.$prefix}-card-content-padding
+--#{root-defaults.$prefix}card-content-padding-x
+--#{root-defaults.$prefix}card-content-padding-y
+--#{root-defaults.$prefix}card-content-padding
 ```
 
 Card content gap properties
 
 ```jsx
---#{root-defaults.$prefix}-card-content-column-gap
---#{root-defaults.$prefix}-card-content-row-gap
---#{root-defaults.$prefix}-card-content-gap
+--#{root-defaults.$prefix}card-content-column-gap
+--#{root-defaults.$prefix}card-content-row-gap
+--#{root-defaults.$prefix}card-content-gap
 ```
 
 Card title properties
 
 ```jsx
---#{root-defaults.$prefix}-card-title-color
---#{root-defaults.$prefix}-card-title-font-size
---#{root-defaults.$prefix}-card-title-font-weight
---#{root-defaults.$prefix}-card-title-font-family
---#{root-defaults.$prefix}-card-title-line-height
+--#{root-defaults.$prefix}card-title-color
+--#{root-defaults.$prefix}card-title-font-size
+--#{root-defaults.$prefix}card-title-font-weight
+--#{root-defaults.$prefix}card-title-font-family
+--#{root-defaults.$prefix}card-title-line-height
 ```
 
 Markup

@@ -8,17 +8,17 @@
 
 // Layout properties.
 $content-max-width: var(
-  --#{defaults.$prefix}-content-max-width,
+  --#{defaults.$prefix}content-max-width,
   defaults.$content-max-width
 );
 
 // Spacing properties.
-$spacer: var(--#{defaults.$prefix}-spacer, defaults.$spacer);
+$spacer: var(--#{defaults.$prefix}spacer, defaults.$spacer);
 $spacers: ();
 
 @each $key, $value in defaults.$spacer-multipliers {
   $space: var(
-    --#{defaults.$prefix}-spacer-#{$key},
+    --#{defaults.$prefix}spacer-#{$key},
     calc(#{$value} * #{$spacer})
   );
   $spacers: map.set($spacers, $key, $space);
@@ -26,28 +26,28 @@ $spacers: ();
 
 // Border properties.
 $border-radius: var(
-  --#{defaults.$prefix}-border-radius,
+  --#{defaults.$prefix}border-radius,
   defaults.$border-radius
 );
-$border-width: var(--#{defaults.$prefix}-border-width, defaults.$border-width);
-$border-style: var(--#{defaults.$prefix}-border-style, defaults.$border-style);
+$border-width: var(--#{defaults.$prefix}border-width, defaults.$border-width);
+$border-style: var(--#{defaults.$prefix}border-style, defaults.$border-style);
 
 // Transition properties.
 $transition-durations: (
   fast: var(
-      --#{defaults.$prefix}-transition-duration-fast,
+      --#{defaults.$prefix}transition-duration-fast,
       map.get(defaults.$transition-durations, fast)
     ),
   default: var(
-      --#{defaults.$prefix}-transition-duration-default,
+      --#{defaults.$prefix}transition-duration-default,
       map.get(defaults.$transition-durations, default)
     ),
   slow: var(
-      --#{defaults.$prefix}-transition-duration-slow,
+      --#{defaults.$prefix}transition-duration-slow,
       map.get(defaults.$transition-durations, slow)
     ),
 );
 $transition-timing-function: var(
-  --#{defaults.$prefix}-transition-timing-function,
+  --#{defaults.$prefix}transition-timing-function,
   defaults.$transition-timing-function
 );

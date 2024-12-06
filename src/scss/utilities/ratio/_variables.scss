@@ -6,4 +6,4 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 
-$ratio: var(--#{root-defaults.$prefix}-ratio);
+$ratio: var(--#{root-defaults.$prefix}ratio);

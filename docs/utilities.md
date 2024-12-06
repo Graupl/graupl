@@ -240,7 +240,7 @@ List style position properties
 
 Variables
 
-`$ratio: var(*--#{root-defaults.$prefix}-ratio*);`
+`$ratio: var(*--#{root-defaults.$prefix}ratio*);`
 
 Contains element add this class to
 

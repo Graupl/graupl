@@ -31,106 +31,106 @@ Variables
 The navigation colors:
 
 ```scss
---#{root-defaults.$prefix}-navigation-background
---#{root-defaults.$prefix}-navigation-color
+--#{root-defaults.$prefix}navigation-background
+--#{root-defaults.$prefix}navigation-color
 
 ```
 
 The navigation toggle size:
 
 ```scss
---#{root-defaults.$prefix}-navigation-toggle-min-width
---#{root-defaults.$prefix}-navigation-toggle-min-height
+--#{root-defaults.$prefix}navigation-toggle-min-width
+--#{root-defaults.$prefix}navigation-toggle-min-height
 
 ```
 
 The navigation toggle spacing:
 
 ```scss
---#{root-defaults.$prefix}-navigation-toggle-padding-x
---#{root-defaults.$prefix}-navigation-toggle-padding-y
---#{root-defaults.$prefix}-navigation-toggle-padding
+--#{root-defaults.$prefix}navigation-toggle-padding-x
+--#{root-defaults.$prefix}navigation-toggle-padding-y
+--#{root-defaults.$prefix}navigation-toggle-padding
 
 ```
 
 The navigation toggle colors:
 
 ```scss
---#{root-defaults.$prefix}-navigation-toggle-background
---#{root-defaults.$prefix}-navigation-toggle-color
---#{root-defaults.$prefix}-navigation-toggle-hover-background
---#{root-defaults.$prefix}-navigation-toggle-hover-color
+--#{root-defaults.$prefix}navigation-toggle-background
+--#{root-defaults.$prefix}navigation-toggle-color
+--#{root-defaults.$prefix}navigation-toggle-hover-background
+--#{root-defaults.$prefix}navigation-toggle-hover-color
 
 ```
 
 The navigation toggle border properties:
 
 ```scss
---#{root-defaults.$prefix}-navigation-toggle-border-width
---#{root-defaults.$prefix}-navigation-toggle-border-style
---#{root-defaults.$prefix}-navigation-toggle-border
---#{root-defaults.$prefix}-navigation-toggle-border-color
---#{root-defaults.$prefix}-navigation-toggle-border-radius
+--#{root-defaults.$prefix}navigation-toggle-border-width
+--#{root-defaults.$prefix}navigation-toggle-border-style
+--#{root-defaults.$prefix}navigation-toggle-border
+--#{root-defaults.$prefix}navigation-toggle-border-color
+--#{root-defaults.$prefix}navigation-toggle-border-radius
 
 ```
 
 The navigation branding properties:
 
 ```scss
---#{root-defaults.$prefix}-navigation-branding-font-size
---#{root-defaults.$prefix}-navigation-branding-font-weight
---#{root-defaults.$prefix}-navigation-branding-padding-x
---#{root-defaults.$prefix}-navigation-branding-padding-y
---#{root-defaults.$prefix}-navigation-branding-padding
+--#{root-defaults.$prefix}navigation-branding-font-size
+--#{root-defaults.$prefix}navigation-branding-font-weight
+--#{root-defaults.$prefix}navigation-branding-padding-x
+--#{root-defaults.$prefix}navigation-branding-padding-y
+--#{root-defaults.$prefix}navigation-branding-padding
 
 ```
 
 The navigation branding colors:
 
 ```scss
---#{root-defaults.$prefix}-navigation-branding-color
---#{root-defaults.$prefix}-navigation-branding-visited-color
---#{root-defaults.$prefix}-navigation-branding-focus-color
---#{root-defaults.$prefix}-navigation-branding-hover-color
---#{root-defaults.$prefix}-navigation-branding-active-color
---#{root-defaults.$prefix}-navigation-branding-disabled-color
+--#{root-defaults.$prefix}navigation-branding-color
+--#{root-defaults.$prefix}navigation-branding-visited-color
+--#{root-defaults.$prefix}navigation-branding-focus-color
+--#{root-defaults.$prefix}navigation-branding-hover-color
+--#{root-defaults.$prefix}navigation-branding-active-color
+--#{root-defaults.$prefix}navigation-branding-disabled-color
 
 ```
 
 The navigation branding text decoration properties:
 
 ```scss
---#{root-defaults.$prefix}-navigation-branding-text-decoration
---#{root-defaults.$prefix}-navigation-branding-visited-text-decoration
---#{root-defaults.$prefix}-navigation-branding-focus-text-decoration
---#{root-defaults.$prefix}-navigation-branding-hover-text-decoration
---#{root-defaults.$prefix}-navigation-branding-active-text-decoration
---#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration
---#{root-defaults.$prefix}-navigation-branding-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-active-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-style
---#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-active-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-thickness
---#{root-defaults.$prefix}-navigation-branding-text-decoration-color
---#{root-defaults.$prefix}-navigation-branding-visited-text-decoration-color
---#{root-defaults.$prefix}-navigation-branding-focus-text-decoration-color
---#{root-defaults.$prefix}-navigation-branding-hover-text-decoration-color
---#{root-defaults.$prefix}-navigation-branding-active-text-decoration-color
---#{root-defaults.$prefix}-navigation-branding-disabled-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-text-decoration
+--#{root-defaults.$prefix}navigation-branding-visited-text-decoration
+--#{root-defaults.$prefix}navigation-branding-focus-text-decoration
+--#{root-defaults.$prefix}navigation-branding-hover-text-decoration
+--#{root-defaults.$prefix}navigation-branding-active-text-decoration
+--#{root-defaults.$prefix}navigation-branding-disabled-text-decoration
+--#{root-defaults.$prefix}navigation-branding-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-visited-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-focus-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-hover-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-active-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-style
+--#{root-defaults.$prefix}navigation-branding-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-visited-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-focus-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-hover-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-active-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-thickness
+--#{root-defaults.$prefix}navigation-branding-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-visited-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-focus-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-hover-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-active-text-decoration-color
+--#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-color
 
 ```
 
 The navigation toggle properties:
 
 ```scss
---#{root-defaults.$prefix}-navigation-toggle-content
+--#{root-defaults.$prefix}navigation-toggle-content
 
 ```
 

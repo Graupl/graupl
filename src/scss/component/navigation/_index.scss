@@ -22,11 +22,11 @@
       grid-area: menu;
 
       &#{menu-defaults.$menu-show-selector} {
-        --#{root-defaults.$prefix}-menu-display: #{menu-variables.$menu-show-display};
+        --#{root-defaults.$prefix}menu-display: #{menu-variables.$menu-show-display};
       }
 
       &#{menu-defaults.$menu-hide-selector} {
-        --#{root-defaults.$prefix}-menu-display: #{menu-variables.$menu-hide-display};
+        --#{root-defaults.$prefix}menu-display: #{menu-variables.$menu-hide-display};
       }
     }
   }
@@ -63,27 +63,27 @@
     text-decoration-thickness: $navigation-branding-text-decoration-thickness;
 
     &:visited {
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-visited-text-decoration};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-visited-text-decoration-thickness};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-visited-text-decoration-style};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-visited-text-decoration};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-visited-text-decoration-thickness};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-visited-text-decoration-style};
     }
 
     &:focus-visible {
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-focus-text-decoration};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-focus-text-decoration-thickness};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-focus-text-decoration-style};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-focus-text-decoration};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-focus-text-decoration-thickness};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-focus-text-decoration-style};
     }
 
     &:hover {
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-hover-text-decoration};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-hover-text-decoration-thickness};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-hover-text-decoration-style};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-hover-text-decoration};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-hover-text-decoration-thickness};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-hover-text-decoration-style};
     }
 
     &:active {
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-active-text-decoration};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-active-text-decoration-thickness};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-active-text-decoration-style};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-active-text-decoration};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-active-text-decoration-thickness};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-active-text-decoration-style};
     }
 
     &:disabled,
@@ -93,9 +93,9 @@
       &:focus-visible,
       &:hover,
       &:active {
-        --#{root-defaults.$prefix}-navigation-branding-text-decoration: #{$navigation-branding-disabled-text-decoration};
-        --#{root-defaults.$prefix}-navigation-branding-text-decoration-thickness: #{$navigation-branding-disabled-text-decoration-thickness};
-        --#{root-defaults.$prefix}-navigation-branding-text-decoration-style: #{$navigation-branding-disabled-text-decoration-style};
+        --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-disabled-text-decoration};
+        --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-disabled-text-decoration-thickness};
+        --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-disabled-text-decoration-style};
       }
     }
   }
@@ -103,17 +103,17 @@
   @include screen.trigger(navigation-collapse) {
     // Navigation.
     #{defaults.$navigation-selector} {
-      --#{root-defaults.$prefix}-menu-flex-direction: column;
-      --#{root-defaults.$prefix}-submenu-position: relative;
-      --#{root-defaults.$prefix}-menu-item-min-width: 100%;
-      --#{root-defaults.$prefix}-submenu-inset: auto;
+      --#{root-defaults.$prefix}menu-flex-direction: column;
+      --#{root-defaults.$prefix}submenu-position: relative;
+      --#{root-defaults.$prefix}menu-item-min-width: 100%;
+      --#{root-defaults.$prefix}submenu-inset: auto;
     }
   }
 
   @include screen.trigger(navigation-expand) {
     // Navigation.
     #{defaults.$navigation-selector} {
-      --#{root-defaults.$prefix}-menu-hide-display: #{menu-variables.$menu-show-display};
+      --#{root-defaults.$prefix}menu-hide-display: #{menu-variables.$menu-show-display};
 
       grid-template-areas: "branding - menu";
     }
@@ -128,10 +128,10 @@
 @include layer(theme) {
   // Navigation.
   #{defaults.$navigation-selector} {
-    --#{root-defaults.$prefix}-menu-background: #{$navigation-background};
-    --#{root-defaults.$prefix}-menu-color: #{$navigation-color};
-    --#{root-defaults.$prefix}-submenu-background: #{$navigation-background};
-    --#{root-defaults.$prefix}-submenu-color: #{$navigation-color};
+    --#{root-defaults.$prefix}menu-background: #{$navigation-background};
+    --#{root-defaults.$prefix}menu-color: #{$navigation-color};
+    --#{root-defaults.$prefix}submenu-background: #{$navigation-background};
+    --#{root-defaults.$prefix}submenu-color: #{$navigation-color};
 
     background: $navigation-background;
     color: $navigation-color;
@@ -144,8 +144,8 @@
     color: $navigation-toggle-color;
 
     &:hover {
-      --#{root-defaults.$prefix}-navigation-toggle-background: #{$navigation-toggle-hover-background};
-      --#{root-defaults.$prefix}-navigation-toggle-color: #{$navigation-toggle-hover-color};
+      --#{root-defaults.$prefix}navigation-toggle-background: #{$navigation-toggle-hover-background};
+      --#{root-defaults.$prefix}navigation-toggle-color: #{$navigation-toggle-hover-color};
     }
   }
 
@@ -155,23 +155,23 @@
     text-decoration-color: $navigation-branding-text-decoration-color;
 
     &:visited {
-      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-visited-color};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-visited-text-decoration-color};
+      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-visited-color};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-visited-text-decoration-color};
     }
 
     &:focus-visible {
-      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-focus-color};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-focus-text-decoration-color};
+      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-focus-color};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-focus-text-decoration-color};
     }
 
     &:hover {
-      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-hover-color};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-hover-text-decoration-color};
+      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-hover-color};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-hover-text-decoration-color};
     }
 
     &:active {
-      --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-active-color};
-      --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-active-text-decoration-color};
+      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-active-color};
+      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-active-text-decoration-color};
     }
 
     &:disabled,
@@ -181,8 +181,8 @@
       &:focus-visible,
       &:hover,
       &:active {
-        --#{root-defaults.$prefix}-navigation-branding-color: #{$navigation-branding-disabled-color};
-        --#{root-defaults.$prefix}-navigation-branding-text-decoration-color: #{$navigation-branding-disabled-text-decoration-color};
+        --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-disabled-color};
+        --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-disabled-text-decoration-color};
       }
     }
   }

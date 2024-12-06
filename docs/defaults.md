@@ -83,39 +83,39 @@ $transition-durations: map.merge(
 The layout properties:
 
 ```scss
---#{defaults.$prefix}-content-max-width
+--#{defaults.$prefix}content-max-width
 
 ```
 
 The spacing properties:
 
 ```scss
---#{defaults.$prefix}-spacer
---#{defaults.$prefix}-spacer-#{$key}
+--#{defaults.$prefix}spacer
+--#{defaults.$prefix}spacer-#{$key}
 
 ```
 
 The border properties:
 
 ```scss
---#{defaults.$prefix}-border-radius
---#{defaults.$prefix}-border-width
---#{defaults.$prefix}-border-style
+--#{defaults.$prefix}border-radius
+--#{defaults.$prefix}border-width
+--#{defaults.$prefix}border-style
 
 ```
 
 The transition duration properties:
 
 ```scss
---#{defaults.$prefix}-transition-duration-fast
---#{defaults.$prefix}-transition-duration-default
---#{defaults.$prefix}-transition-duration-slow
+--#{defaults.$prefix}transition-duration-fast
+--#{defaults.$prefix}transition-duration-default
+--#{defaults.$prefix}transition-duration-slow
 
 ```
 
 The transition timing function property:
 
 ```scss
---#{defaults.$prefix}-transition-timing-function
+--#{defaults.$prefix}transition-timing-function
 
 ```

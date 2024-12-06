@@ -15,14 +15,14 @@
     // Generate the default colour properties.
     @each $color, $map in defaults.$colors {
       @each $shade, $value in $map {
-        --#{root-defaults.$prefix}-#{$color}--#{$shade}: #{$value};
+        --#{root-defaults.$prefix}#{$color}--#{$shade}: #{$value};
       }
     }
 
     // Generate the active theme properties.
     @each $color, $map in map.get($themes, defaults.$default-theme) {
       @each $shade, $value in $map {
-        --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+        --#{root-defaults.$prefix}theme-active--#{$color}--#{$shade}: #{$value};
       }
     }
   }
@@ -32,7 +32,7 @@
     #{defaults.$theme-selector-prefix}#{$theme-name}#{defaults.$theme-selector-suffix} {
       @each $color, $map in $theme {
         @each $shade, $value in $map {
-          --#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}: #{$value};
+          --#{root-defaults.$prefix}theme-active--#{$color}--#{$shade}: #{$value};
         }
       }
 

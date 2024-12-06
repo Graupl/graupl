@@ -65,19 +65,19 @@ Variables
 
 ```sass
 // A custom variable is defined for each color and shade.
---#{root-defaults.$prefix}-#{$color}--#{$shade}
+--#{root-defaults.$prefix}#{$color}--#{$shade}
 
 // There are three modes for the theme.
 // Active is what is currently being used.
---#{root-defaults.$prefix}-theme-active--#{$color}--#{$shade}
+--#{root-defaults.$prefix}theme-active--#{$color}--#{$shade}
 // Theme dark is the color used when dark mode is active.
---#{root-defaults.$prefix}-theme-dark--#{$color}--#{$shade}
+--#{root-defaults.$prefix}theme-dark--#{$color}--#{$shade}
 // Light theme is the color active whne light mode is active
---#{root-defaults.$prefix}-theme-light--#{$color}--#{$shade}
+--#{root-defaults.$prefix}theme-light--#{$color}--#{$shade}
 
 // Globaly defined root color and root background.
---#{root-defaults.$prefix}-root-color
---#{root-defaults.$prefix}-root-background
+--#{root-defaults.$prefix}root-color
+--#{root-defaults.$prefix}root-background
 ```
 
 ## Typography
@@ -136,123 +136,123 @@ Variables
 The font properties:
 
 ```scss
---#{root-defaults.$prefix}-font-size-base
---#{root-defaults.$prefix}-line-height
+--#{root-defaults.$prefix}font-size-base
+--#{root-defaults.$prefix}line-height
 
 ```
 
 The font size properties:
 
 ```scss
---#{root-defaults.$prefix}-font-#{$key}
+--#{root-defaults.$prefix}font-#{$key}
 
 ```
 
 The font weight properties:
 
 ```scss
---#{root-defaults.$prefix}-font-weight-#{$key}
---#{root-defaults.$prefix}-font-weight-bold
+--#{root-defaults.$prefix}font-weight-#{$key}
+--#{root-defaults.$prefix}font-weight-bold
 
 ```
 
 The root properties:
 
 ```scss
---#{root-defaults.$prefix}-root-font-family
---#{root-defaults.$prefix}-root-font-size
+--#{root-defaults.$prefix}root-font-family
+--#{root-defaults.$prefix}root-font-size
 
 ```
 
 The typography properties:
 
 ```scss
---#{root-defaults.$prefix}-body-font-size
---#{root-defaults.$prefix}-body-line-height
---#{root-defaults.$prefix}-body-font-weight
---#{root-defaults.$prefix}-paragraph-font-size
---#{root-defaults.$prefix}-paragraph-line-height
---#{root-defaults.$prefix}-paragraph-margin
---#{root-defaults.$prefix}-paragraph-font-weight
---#{root-defaults.$prefix}-small-font-size
---#{root-defaults.$prefix}-small-line-height
---#{root-defaults.$prefix}-small-margin
---#{root-defaults.$prefix}-small-font-weight
+--#{root-defaults.$prefix}body-font-size
+--#{root-defaults.$prefix}body-line-height
+--#{root-defaults.$prefix}body-font-weight
+--#{root-defaults.$prefix}paragraph-font-size
+--#{root-defaults.$prefix}paragraph-line-height
+--#{root-defaults.$prefix}paragraph-margin
+--#{root-defaults.$prefix}paragraph-font-weight
+--#{root-defaults.$prefix}small-font-size
+--#{root-defaults.$prefix}small-line-height
+--#{root-defaults.$prefix}small-margin
+--#{root-defaults.$prefix}small-font-weight
 
 ```
 
 The heading properties:
 
 ```scss
---#{root-defaults.$prefix}-heading-font-family
---#{root-defaults.$prefix}-heading-line-height
---#{root-defaults.$prefix}-heading-margin
---#{root-defaults.$prefix}-heading-font-weight
+--#{root-defaults.$prefix}heading-font-family
+--#{root-defaults.$prefix}heading-line-height
+--#{root-defaults.$prefix}heading-margin
+--#{root-defaults.$prefix}heading-font-weight
 
 ```
 
 The H1 properties:
 
 ```scss
---#{root-defaults.$prefix}-h1-font-size
---#{root-defaults.$prefix}-h1-line-height
---#{root-defaults.$prefix}-h1-margin
---#{root-defaults.$prefix}-h1-font-family
---#{root-defaults.$prefix}-h1-font-weight
+--#{root-defaults.$prefix}h1-font-size
+--#{root-defaults.$prefix}h1-line-height
+--#{root-defaults.$prefix}h1-margin
+--#{root-defaults.$prefix}h1-font-family
+--#{root-defaults.$prefix}h1-font-weight
 
 ```
 
 The H2 properties:
 
 ```scss
---#{root-defaults.$prefix}-h2-font-size
---#{root-defaults.$prefix}-h2-line-height
---#{root-defaults.$prefix}-h2-margin
---#{root-defaults.$prefix}-h2-font-family
---#{root-defaults.$prefix}-h2-font-weight
+--#{root-defaults.$prefix}h2-font-size
+--#{root-defaults.$prefix}h2-line-height
+--#{root-defaults.$prefix}h2-margin
+--#{root-defaults.$prefix}h2-font-family
+--#{root-defaults.$prefix}h2-font-weight
 
 ```
 
 The H3 properties:
 
 ```scss
---#{root-defaults.$prefix}-h3-font-size
---#{root-defaults.$prefix}-h3-line-height
---#{root-defaults.$prefix}-h3-margin
---#{root-defaults.$prefix}-h3-font-family
---#{root-defaults.$prefix}-h3-font-weight
+--#{root-defaults.$prefix}h3-font-size
+--#{root-defaults.$prefix}h3-line-height
+--#{root-defaults.$prefix}h3-margin
+--#{root-defaults.$prefix}h3-font-family
+--#{root-defaults.$prefix}h3-font-weight
 
 ```
 
 The H4 properties:
 
 ```scss
---#{root-defaults.$prefix}-h4-font-size
---#{root-defaults.$prefix}-h4-line-height
---#{root-defaults.$prefix}-h4-margin
---#{root-defaults.$prefix}-h4-font-family
---#{root-defaults.$prefix}-h4-font-weight
+--#{root-defaults.$prefix}h4-font-size
+--#{root-defaults.$prefix}h4-line-height
+--#{root-defaults.$prefix}h4-margin
+--#{root-defaults.$prefix}h4-font-family
+--#{root-defaults.$prefix}h4-font-weight
 
 ```
 
 The H5 properties:
 
 ```scss
---#{root-defaults.$prefix}-h5-font-size
---#{root-defaults.$prefix}-h5-line-height
---#{root-defaults.$prefix}-h5-margin
---#{root-defaults.$prefix}-h5-font-family
---#{root-defaults.$prefix}-h5-font-weight
+--#{root-defaults.$prefix}h5-font-size
+--#{root-defaults.$prefix}h5-line-height
+--#{root-defaults.$prefix}h5-margin
+--#{root-defaults.$prefix}h5-font-family
+--#{root-defaults.$prefix}h5-font-weight
 
 ```
 
 The H6 properties:
 
 ```scss
---#{root-defaults.$prefix}-h6-font-size
---#{root-defaults.$prefix}-h6-line-height
---#{root-defaults.$prefix}-h6-margin
---#{root-defaults.$prefix}-h6-font-family
---#{root-defaults.$prefix}-h6-font-weight
+--#{root-defaults.$prefix}h6-font-size
+--#{root-defaults.$prefix}h6-line-height
+--#{root-defaults.$prefix}h6-margin
+--#{root-defaults.$prefix}h6-font-family
+--#{root-defaults.$prefix}h6-font-weight
 
 ```

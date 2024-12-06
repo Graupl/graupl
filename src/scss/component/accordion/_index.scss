@@ -55,7 +55,7 @@
 
   @include layer(state) {
     #{defaults.$accordion-item-toggle-selector} {
-      --#{root-defaults.$prefix}-focus-outline-offset: calc(
+      --#{root-defaults.$prefix}focus-outline-offset: calc(
         -1 * (#{$accordion-item-border-width} + #{focus.$focus-width})
       );
     }
@@ -77,31 +77,31 @@
 
     @each $selector in map.get(root-defaults.$state-selectors, visited) {
       &#{$selector} {
-        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
       }
     }
 
     @each $selector in map.get(root-defaults.$state-selectors, focus) {
       &#{$selector} {
-        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
       }
     }
 
     @each $selector in map.get(root-defaults.$state-selectors, hover) {
       &#{$selector} {
-        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
       }
     }
 
     @each $selector in map.get(root-defaults.$state-selectors, active) {
       &#{$selector} {
-        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
       }
     }
 
     @each $selector in map.get(root-defaults.$state-selectors, disabled) {
       &#{$selector} {
-        --#{root-defaults.$prefix}-accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
       }
     }
 

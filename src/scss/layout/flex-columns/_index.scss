@@ -19,7 +19,7 @@
     }
 
     #{defaults.$flex-columns-fill-selector} {
-      --#{root-defaults.$prefix}-flex-columns-max-width: unset;
+      --#{root-defaults.$prefix}flex-columns-max-width: unset;
     }
   }
 
@@ -29,11 +29,11 @@
   {
     #{defaults.$flex-columns-column-selector-prefix}#{$i} {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-      --#{root-defaults.$prefix}-flex-columns-size: calc(
+      --#{root-defaults.$prefix}flex-columns-size: calc(
         (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
           #{$flex-columns-column-gap}
       );
-      --#{root-defaults.$prefix}-flex-columns-max-width: calc(
+      --#{root-defaults.$prefix}flex-columns-max-width: calc(
         100% / #{defaults.$flex-columns-max-count} * #{$i}
       );
       /* stylelint-enable  scss/operator-no-newline-after */
@@ -41,8 +41,8 @@
 
     @include screen.trigger(force-single-column) {
       #{defaults.$flex-columns-column-selector-prefix}#{$i} {
-        --#{root-defaults.$prefix}-flex-columns-size: 100%;
-        --#{root-defaults.$prefix}-flex-columns-max-width: auto;
+        --#{root-defaults.$prefix}flex-columns-size: 100%;
+        --#{root-defaults.$prefix}flex-columns-max-width: auto;
       }
     }
   }
@@ -61,17 +61,17 @@
       @include screen.up($screen) {
         #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
           /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-          --#{root-defaults.$prefix}-flex-columns-size: calc(
+          --#{root-defaults.$prefix}flex-columns-size: calc(
             (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
               #{$flex-columns-column-gap}
           );
           /* stylelint-enable  scss/operator-no-newline-after */
-          --#{root-defaults.$prefix}-flex-columns-max-width: calc(
+          --#{root-defaults.$prefix}flex-columns-max-width: calc(
             100% / #{defaults.$flex-columns-max-count} * #{$i}
           );
 
           &#{defaults.$flex-columns-fill-selector} {
-            --#{root-defaults.$prefix}-flex-columns-max-width: unset;
+            --#{root-defaults.$prefix}flex-columns-max-width: unset;
           }
         }
       }

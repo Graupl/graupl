@@ -33,7 +33,7 @@
 
   @each $ratio-class, $value in defaults.$ratios {
     .#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
-      --#{root-defaults.$prefix}-ratio: #{$value};
+      --#{root-defaults.$prefix}ratio: #{$value};
     }
   }
 
@@ -43,7 +43,7 @@
       @each $ratio-class, $value in defaults.$ratios {
         .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
           @include screen.up($screen-size) {
-            --#{root-defaults.$prefix}-ratio: #{$value};
+            --#{root-defaults.$prefix}ratio: #{$value};
           }
         }
       }

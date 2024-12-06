@@ -55,7 +55,7 @@
       &#{defaults.$table-theme-prefix-selector}#{$variant},
       #{defaults.$table-theme-prefix-selector}#{$variant} {
         @each $prop, $key in defaults.$table-theme-map {
-          --#{root-defaults.$prefix}-table-#{$prop}: #{theme.get(
+          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get(
               $variant,
               $key
             )};
@@ -110,12 +110,12 @@
     }
 
     #{defaults.$table-highlight-selector} {
-      --#{root-defaults.$prefix}-table-cell-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}-table-cell-color: #{$table-highlight-color};
-      --#{root-defaults.$prefix}-table-header-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}-table-header-color: #{$table-highlight-color};
-      --#{root-defaults.$prefix}-table-striped-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}-table-striped-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}table-cell-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}table-cell-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}table-header-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}table-header-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}table-striped-background: #{$table-highlight-background};
+      --#{root-defaults.$prefix}table-striped-color: #{$table-highlight-color};
     }
   }
 }

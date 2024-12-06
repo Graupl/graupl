@@ -12,7 +12,7 @@
 
 #{defaults.$alert-selector} {
   @include layer(component) {
-    --#{root-defaults.$prefix}-button-border: 0;
+    --#{root-defaults.$prefix}button-border: 0;
 
     display: grid;
     grid-template-columns: [content-start] 1fr [content-end dismiss-start] auto [dismiss-end];
@@ -38,20 +38,20 @@
 
     @include animation.off {
       #{defaults.$alert-selector} {
-        --#{root-defaults.$prefix}-alert-transition: #{$alert-transition-reduced-motion};
+        --#{root-defaults.$prefix}alert-transition: #{$alert-transition-reduced-motion};
       }
     }
   }
 
   @include layer(theme) {
-    --#{root-defaults.$prefix}-button-background: #{$alert-background};
-    --#{root-defaults.$prefix}-button-focus-background: #{$alert-background};
-    --#{root-defaults.$prefix}-link-color: #{$alert-link-color};
-    --#{root-defaults.$prefix}-link-visited-color: #{$alert-link-visited-color};
-    --#{root-defaults.$prefix}-link-focus-color: #{$alert-link-focus-color};
-    --#{root-defaults.$prefix}-link-hover-color: #{$alert-link-hover-color};
-    --#{root-defaults.$prefix}-link-active-color: #{$alert-link-active-color};
-    --#{root-defaults.$prefix}-link-disabled-color: #{$alert-link-disabled-color};
+    --#{root-defaults.$prefix}button-background: #{$alert-background};
+    --#{root-defaults.$prefix}button-focus-background: #{$alert-background};
+    --#{root-defaults.$prefix}link-color: #{$alert-link-color};
+    --#{root-defaults.$prefix}link-visited-color: #{$alert-link-visited-color};
+    --#{root-defaults.$prefix}link-focus-color: #{$alert-link-focus-color};
+    --#{root-defaults.$prefix}link-hover-color: #{$alert-link-hover-color};
+    --#{root-defaults.$prefix}link-active-color: #{$alert-link-active-color};
+    --#{root-defaults.$prefix}link-disabled-color: #{$alert-link-disabled-color};
 
     border-color: $alert-border-color;
     background-color: $alert-background;
@@ -60,7 +60,7 @@
     @each $color, $map in map.get(color.$themes, active) {
       &#{defaults.$alert-theme-selector-prefix}#{$color} {
         @each $prop, $shade in defaults.$alert-state-theme-map {
-          --#{root-defaults.$prefix}-alert-#{$prop}: #{theme.get(
+          --#{root-defaults.$prefix}alert-#{$prop}: #{theme.get(
               $color,
               $shade
             )};

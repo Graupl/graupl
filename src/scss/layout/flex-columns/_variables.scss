@@ -9,18 +9,18 @@
 
 // Flex columns properties.
 $flex-columns-row-gap: var(
-  --#{root-defaults.$prefix}-flex-columns-row-gap,
+  --#{root-defaults.$prefix}flex-columns-row-gap,
   #{columns-variables.$columns-row-gap}
 );
 $flex-columns-column-gap: var(
-  --#{root-defaults.$prefix}-flex-columns-column-gap,
+  --#{root-defaults.$prefix}flex-columns-column-gap,
   #{columns-variables.$columns-column-gap}
 );
 $flex-columns-size: var(
-  --#{root-defaults.$prefix}-flex-columns-size,
+  --#{root-defaults.$prefix}flex-columns-size,
   #{defaults.$flex-columns-size}
 );
 $flex-columns-max-width: var(
-  --#{root-defaults.$prefix}-flex-columns-max-width,
+  --#{root-defaults.$prefix}flex-columns-max-width,
   #{defaults.$flex-columns-max-width}
 );

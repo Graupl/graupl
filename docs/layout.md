@@ -25,43 +25,43 @@ Variables
 The columns row and column gap properties:
 
 ```scss
---#{root-defaults.$prefix}-columns-row-gap
---#{root-defaults.$prefix}-columns-column-gap
+--#{root-defaults.$prefix}columns-row-gap
+--#{root-defaults.$prefix}columns-column-gap
 
 ```
 
 The columns count property:
 
 ```scss
---#{root-defaults.$prefix}-columns-count
+--#{root-defaults.$prefix}columns-count
 
 ```
 
 The columns min-width property:
 
 ```scss
---#{root-defaults.$prefix}-columns-min-width
+--#{root-defaults.$prefix}columns-min-width
 
 ```
 
 The columns max-width property:
 
 ```scss
---#{root-defaults.$prefix}-columns-max-width
+--#{root-defaults.$prefix}columns-max-width
 
 ```
 
 The columns grid template columns property:
 
 ```scss
---#{root-defaults.$prefix}-columns-grid-template-columns
+--#{root-defaults.$prefix}columns-grid-template-columns
 
 ```
 
 The columns span property:
 
 ```scss
---#{root-defaults.$prefix}-columns-span
+--#{root-defaults.$prefix}columns-span
 
 ```
 
@@ -86,61 +86,61 @@ Variables
 The container gap property:
 
 ```scss
---#{root-defaults.$prefix}-container-gap
+--#{root-defaults.$prefix}container-gap
 ```
 
 The container content max width property:
 
 ```scss
---#{root-defaults.$prefix}-container-content-max-width
+--#{root-defaults.$prefix}container-content-max-width
 ```
 
 The container breakout max width property:
 
 ```scss
---#{root-defaults.$prefix}-container-breakout-max-width
+--#{root-defaults.$prefix}container-breakout-max-width
 ```
 
 The container breakout width property:
 
 ```scss
---#{root-defaults.$prefix}-container-breakout-width
+--#{root-defaults.$prefix}container-breakout-width
 ```
 
 The container feature max width property:
 
 ```scss
---#{root-defaults.$prefix}-container-feature-max-width
+--#{root-defaults.$prefix}container-feature-max-width
 ```
 
 The container feature width property:
 
 ```scss
---#{root-defaults.$prefix}-container-feature-width
+--#{root-defaults.$prefix}container-feature-width
 ```
 
 The container content section width property:
 
 ```scss
---#{root-defaults.$prefix}-container-content-section-width
+--#{root-defaults.$prefix}container-content-section-width
 ```
 
 The container full width section width property:
 
 ```scss
---#{root-defaults.$prefix}-container-full-width-section-width
+--#{root-defaults.$prefix}container-full-width-section-width
 ```
 
 The container breakout section width property:
 
 ```scss
---#{root-defaults.$prefix}-container-breakout-section-width
+--#{root-defaults.$prefix}container-breakout-section-width
 ```
 
 The container feature section width property:
 
 ```scss
---#{root-defaults.$prefix}-container-feature-section-width
+--#{root-defaults.$prefix}container-feature-section-width
 ```
 
 ### Flex Columns
@@ -163,10 +163,10 @@ $flex-columns-max-width: unset !default;
 Variables
 
 ```jsx
---#{root-defaults.$prefix}-flex-columns-row-gap
---#{root-defaults.$prefix}-flex-columns-column-gap
---#{root-defaults.$prefix}-flex-columns-size
---#{root-defaults.$prefix}-flex-columns-max-width
+--#{root-defaults.$prefix}flex-columns-row-gap
+--#{root-defaults.$prefix}flex-columns-column-gap
+--#{root-defaults.$prefix}flex-columns-size
+--#{root-defaults.$prefix}flex-columns-max-width
 ```
 
 Markup

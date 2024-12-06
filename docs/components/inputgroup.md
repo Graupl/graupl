@@ -32,28 +32,28 @@ Variables
 Input group properties
 
 ```jsx
---#{root-defaults.$prefix}-input-group-grid-template-areas
---#{root-defaults.$prefix}-input-group-grid-template-columns
---#{root-defaults.$prefix}-input-group-grid-template-rows
---#{root-defaults.$prefix}-input-group-row-gap
---#{root-defaults.$prefix}-input-group-column-gap
---#{root-defaults.$prefix}-input-group-gap
+--#{root-defaults.$prefix}input-group-grid-template-areas
+--#{root-defaults.$prefix}input-group-grid-template-columns
+--#{root-defaults.$prefix}input-group-grid-template-rows
+--#{root-defaults.$prefix}input-group-row-gap
+--#{root-defaults.$prefix}input-group-column-gap
+--#{root-defaults.$prefix}input-group-gap
 ```
 
 Inline input group properties
 
 ```jsx
---#{root-defaults.$prefix}-input-group-inline-grid-template-areas
---#{root-defaults.$prefix}-input-group-inline-grid-template-columns
---#{root-defaults.$prefix}-input-group-inline-grid-template-rows
+--#{root-defaults.$prefix}input-group-inline-grid-template-areas
+--#{root-defaults.$prefix}input-group-inline-grid-template-columns
+--#{root-defaults.$prefix}input-group-inline-grid-template-rows
 ```
 
 Inner element properties
 
 ```jsx
---#{root-defaults.$prefix}-input-group-label-grid-area
---#{root-defaults.$prefix}-input-group-input-grid-area
---#{root-defaults.$prefix}-input-group-help-grid-area
+--#{root-defaults.$prefix}input-group-label-grid-area
+--#{root-defaults.$prefix}input-group-input-grid-area
+--#{root-defaults.$prefix}input-group-help-grid-area
 ```
 
 Markup

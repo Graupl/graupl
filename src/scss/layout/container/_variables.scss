@@ -9,42 +9,42 @@
 @use "sass:map";
 
 $container-gap: var(
-  --#{root-defaults.$prefix}-container-gap,
+  --#{root-defaults.$prefix}container-gap,
   #{map.get(root-variables.$spacers, 5)}
 );
 $container-content-max-width: var(
-  --#{root-defaults.$prefix}-container-content-max-width,
+  --#{root-defaults.$prefix}container-content-max-width,
   #{root-variables.$content-max-width}
 );
 $container-breakout-max-width: var(
-  --#{root-defaults.$prefix}-container-breakout-max-width,
+  --#{root-defaults.$prefix}container-breakout-max-width,
   calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
 );
 $container-breakout-width: var(
-  --#{root-defaults.$prefix}-container-breakout-width,
+  --#{root-defaults.$prefix}container-breakout-width,
   calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
 );
 $container-feature-max-width: var(
-  --#{root-defaults.$prefix}-container-feature-max-width,
+  --#{root-defaults.$prefix}container-feature-max-width,
   calc(#{$container-breakout-max-width} + #{defaults.$container-feature-width})
 );
 $container-feature-width: var(
-  --#{root-defaults.$prefix}-container-feature-width,
+  --#{root-defaults.$prefix}container-feature-width,
   calc((#{$container-feature-max-width} - #{$container-breakout-max-width}) / 2)
 );
 $container-content-section-width: var(
-  --#{root-defaults.$prefix}-container-content-section-width,
+  --#{root-defaults.$prefix}container-content-section-width,
   min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2))
 );
 $container-full-width-section-width: var(
-  --#{root-defaults.$prefix}-container-full-width-section-width,
+  --#{root-defaults.$prefix}container-full-width-section-width,
   minmax(#{$container-gap}, 1fr)
 );
 $container-breakout-section-width: var(
-  --#{root-defaults.$prefix}-container-breakout-section-width,
+  --#{root-defaults.$prefix}container-breakout-section-width,
   minmax(0, #{$container-breakout-width})
 );
 $container-feature-section-width: var(
-  --#{root-defaults.$prefix}-container-feature-section-width,
+  --#{root-defaults.$prefix}container-feature-section-width,
   minmax(0, #{$container-feature-width})
 );

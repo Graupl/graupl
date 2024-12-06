@@ -68,232 +68,232 @@ Variables
 The menu properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-flex-direction
---#{root-defaults.$prefix}-menu-padding-x
---#{root-defaults.$prefix}-menu-padding-y
---#{root-defaults.$prefix}-menu-padding
+--#{root-defaults.$prefix}menu-flex-direction
+--#{root-defaults.$prefix}menu-padding-x
+--#{root-defaults.$prefix}menu-padding-y
+--#{root-defaults.$prefix}menu-padding
 
 ```
 
 The menu gap properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-column-gap
---#{root-defaults.$prefix}-menu-row-gap
---#{root-defaults.$prefix}-menu-gap
+--#{root-defaults.$prefix}menu-column-gap
+--#{root-defaults.$prefix}menu-row-gap
+--#{root-defaults.$prefix}menu-gap
 
 ```
 
 The menu display properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-show-display
---#{root-defaults.$prefix}-menu-hide-display
---#{root-defaults.$prefix}-menu-display
+--#{root-defaults.$prefix}menu-show-display
+--#{root-defaults.$prefix}menu-hide-display
+--#{root-defaults.$prefix}menu-display
 
 ```
 
 The menu color properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-background
---#{root-defaults.$prefix}-menu-color
+--#{root-defaults.$prefix}menu-background
+--#{root-defaults.$prefix}menu-color
 
 ```
 
 The menu border properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-border-color
---#{root-defaults.$prefix}-menu-border-radius
---#{root-defaults.$prefix}-menu-border-style
---#{root-defaults.$prefix}-menu-border-width
---#{root-defaults.$prefix}-menu-border
+--#{root-defaults.$prefix}menu-border-color
+--#{root-defaults.$prefix}menu-border-radius
+--#{root-defaults.$prefix}menu-border-style
+--#{root-defaults.$prefix}menu-border-width
+--#{root-defaults.$prefix}menu-border
 
 ```
 
 The submenu properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-flex-direction
---#{root-defaults.$prefix}-submenu-z-index
---#{root-defaults.$prefix}-submenu-padding-x
---#{root-defaults.$prefix}-submenu-padding-y
---#{root-defaults.$prefix}-submenu-padding
+--#{root-defaults.$prefix}submenu-flex-direction
+--#{root-defaults.$prefix}submenu-z-index
+--#{root-defaults.$prefix}submenu-padding-x
+--#{root-defaults.$prefix}submenu-padding-y
+--#{root-defaults.$prefix}submenu-padding
 
 ```
 
 The submenu gap properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-column-gap
---#{root-defaults.$prefix}-submenu-row-gap
---#{root-defaults.$prefix}-submenu-gap
+--#{root-defaults.$prefix}submenu-column-gap
+--#{root-defaults.$prefix}submenu-row-gap
+--#{root-defaults.$prefix}submenu-gap
 
 ```
 
 The submenu display properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-show-display
---#{root-defaults.$prefix}-submenu-hide-display
---#{root-defaults.$prefix}-submenu-display
+--#{root-defaults.$prefix}submenu-show-display
+--#{root-defaults.$prefix}submenu-hide-display
+--#{root-defaults.$prefix}submenu-display
 
 ```
 
 The submenu color properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-background
---#{root-defaults.$prefix}-submenu-color
+--#{root-defaults.$prefix}submenu-background
+--#{root-defaults.$prefix}submenu-color
 
 ```
 
 The submenu border properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-border-color
---#{root-defaults.$prefix}-submenu-border-radius
---#{root-defaults.$prefix}-submenu-border-style
---#{root-defaults.$prefix}-submenu-border-width
---#{root-defaults.$prefix}-submenu-border
+--#{root-defaults.$prefix}submenu-border-color
+--#{root-defaults.$prefix}submenu-border-radius
+--#{root-defaults.$prefix}submenu-border-style
+--#{root-defaults.$prefix}submenu-border-width
+--#{root-defaults.$prefix}submenu-border
 
 ```
 
 The submenu position properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-position
---#{root-defaults.$prefix}-submenu-top
---#{root-defaults.$prefix}-submenu-right
---#{root-defaults.$prefix}-submenu-bottom
---#{root-defaults.$prefix}-submenu-left
---#{root-defaults.$prefix}-submenu-inset
+--#{root-defaults.$prefix}submenu-position
+--#{root-defaults.$prefix}submenu-top
+--#{root-defaults.$prefix}submenu-right
+--#{root-defaults.$prefix}submenu-bottom
+--#{root-defaults.$prefix}submenu-left
+--#{root-defaults.$prefix}submenu-inset
 
 ```
 
 The menu item properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-item-min-width
---#{root-defaults.$prefix}-menu-item-max-width
---#{root-defaults.$prefix}-menu-item-padding-x
---#{root-defaults.$prefix}-menu-item-padding-y
---#{root-defaults.$prefix}-menu-item-padding
+--#{root-defaults.$prefix}menu-item-min-width
+--#{root-defaults.$prefix}menu-item-max-width
+--#{root-defaults.$prefix}menu-item-padding-x
+--#{root-defaults.$prefix}menu-item-padding-y
+--#{root-defaults.$prefix}menu-item-padding
 
 ```
 
 The submenu item properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-item-width
+--#{root-defaults.$prefix}submenu-item-width
 
 ```
 
 The menu link properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-padding-x
---#{root-defaults.$prefix}-menu-link-padding-y
---#{root-defaults.$prefix}-menu-link-padding
+--#{root-defaults.$prefix}menu-link-padding-x
+--#{root-defaults.$prefix}menu-link-padding-y
+--#{root-defaults.$prefix}menu-link-padding
 
 ```
 
 The menu link transform properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-transition
---#{root-defaults.$prefix}-menu-link-transition-reduced-motion
---#{root-defaults.$prefix}-menu-link-transform
---#{root-defaults.$prefix}-menu-link-visited-transform
---#{root-defaults.$prefix}-menu-link-focus-transform
---#{root-defaults.$prefix}-menu-link-hover-transform
---#{root-defaults.$prefix}-menu-link-active-transform
---#{root-defaults.$prefix}-menu-link-disabled-transform
+--#{root-defaults.$prefix}menu-link-transition
+--#{root-defaults.$prefix}menu-link-transition-reduced-motion
+--#{root-defaults.$prefix}menu-link-transform
+--#{root-defaults.$prefix}menu-link-visited-transform
+--#{root-defaults.$prefix}menu-link-focus-transform
+--#{root-defaults.$prefix}menu-link-hover-transform
+--#{root-defaults.$prefix}menu-link-active-transform
+--#{root-defaults.$prefix}menu-link-disabled-transform
 
 ```
 
 The menu link gap properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-column-gap
---#{root-defaults.$prefix}-menu-link-row-gap
---#{root-defaults.$prefix}-menu-link-gap
+--#{root-defaults.$prefix}menu-link-column-gap
+--#{root-defaults.$prefix}menu-link-row-gap
+--#{root-defaults.$prefix}menu-link-gap
 
 ```
 
 The menu link colors:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-background
---#{root-defaults.$prefix}-menu-link-visited-background
---#{root-defaults.$prefix}-menu-link-focus-background
---#{root-defaults.$prefix}-menu-link-hover-background
---#{root-defaults.$prefix}-menu-link-active-background
---#{root-defaults.$prefix}-menu-link-disabled-background
---#{root-defaults.$prefix}-menu-link-color
---#{root-defaults.$prefix}-menu-link-visited-color
---#{root-defaults.$prefix}-menu-link-focus-color
---#{root-defaults.$prefix}-menu-link-hover-color
---#{root-defaults.$prefix}-menu-link-active-color
---#{root-defaults.$prefix}-menu-link-disabled-color
+--#{root-defaults.$prefix}menu-link-background
+--#{root-defaults.$prefix}menu-link-visited-background
+--#{root-defaults.$prefix}menu-link-focus-background
+--#{root-defaults.$prefix}menu-link-hover-background
+--#{root-defaults.$prefix}menu-link-active-background
+--#{root-defaults.$prefix}menu-link-disabled-background
+--#{root-defaults.$prefix}menu-link-color
+--#{root-defaults.$prefix}menu-link-visited-color
+--#{root-defaults.$prefix}menu-link-focus-color
+--#{root-defaults.$prefix}menu-link-hover-color
+--#{root-defaults.$prefix}menu-link-active-color
+--#{root-defaults.$prefix}menu-link-disabled-color
 
 ```
 
 The menu link text decoration properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-text-decoration
---#{root-defaults.$prefix}-menu-link-visited-text-decoration
---#{root-defaults.$prefix}-menu-link-focus-text-decoration
---#{root-defaults.$prefix}-menu-link-hover-text-decoration
---#{root-defaults.$prefix}-menu-link-active-text-decoration
---#{root-defaults.$prefix}-menu-link-disabled-text-decoration
---#{root-defaults.$prefix}-menu-link-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-visited-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-focus-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-hover-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-active-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-disabled-text-decoration-thickness
---#{root-defaults.$prefix}-menu-link-text-decoration-style
---#{root-defaults.$prefix}-menu-link-visited-text-decoration-style
---#{root-defaults.$prefix}-menu-link-focus-text-decoration-style
---#{root-defaults.$prefix}-menu-link-hover-text-decoration-style
---#{root-defaults.$prefix}-menu-link-active-text-decoration-style
---#{root-defaults.$prefix}-menu-link-disabled-text-decoration-style
---#{root-defaults.$prefix}-menu-link-text-decoration-color
---#{root-defaults.$prefix}-menu-link-visited-text-decoration-color
---#{root-defaults.$prefix}-menu-link-focus-text-decoration-color
---#{root-defaults.$prefix}-menu-link-hover-text-decoration-color
---#{root-defaults.$prefix}-menu-link-active-text-decoration-color
---#{root-defaults.$prefix}-menu-link-disabled-text-decoration-color
+--#{root-defaults.$prefix}menu-link-text-decoration
+--#{root-defaults.$prefix}menu-link-visited-text-decoration
+--#{root-defaults.$prefix}menu-link-focus-text-decoration
+--#{root-defaults.$prefix}menu-link-hover-text-decoration
+--#{root-defaults.$prefix}menu-link-active-text-decoration
+--#{root-defaults.$prefix}menu-link-disabled-text-decoration
+--#{root-defaults.$prefix}menu-link-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-visited-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-focus-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-hover-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-active-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-disabled-text-decoration-thickness
+--#{root-defaults.$prefix}menu-link-text-decoration-style
+--#{root-defaults.$prefix}menu-link-visited-text-decoration-style
+--#{root-defaults.$prefix}menu-link-focus-text-decoration-style
+--#{root-defaults.$prefix}menu-link-hover-text-decoration-style
+--#{root-defaults.$prefix}menu-link-active-text-decoration-style
+--#{root-defaults.$prefix}menu-link-disabled-text-decoration-style
+--#{root-defaults.$prefix}menu-link-text-decoration-color
+--#{root-defaults.$prefix}menu-link-visited-text-decoration-color
+--#{root-defaults.$prefix}menu-link-focus-text-decoration-color
+--#{root-defaults.$prefix}menu-link-hover-text-decoration-color
+--#{root-defaults.$prefix}menu-link-active-text-decoration-color
+--#{root-defaults.$prefix}menu-link-disabled-text-decoration-color
 
 ```
 
 The menu link border properties:
 
 ```scss
---#{root-defaults.$prefix}-menu-link-border-radius
---#{root-defaults.$prefix}-menu-link-border-style
---#{root-defaults.$prefix}-menu-link-border-width
---#{root-defaults.$prefix}-menu-link-border
---#{root-defaults.$prefix}-menu-link-border-color
---#{root-defaults.$prefix}-menu-link-visited-border-color
---#{root-defaults.$prefix}-menu-link-focus-border-color
---#{root-defaults.$prefix}-menu-link-hover-border-color
---#{root-defaults.$prefix}-menu-link-active-border-color
---#{root-defaults.$prefix}-menu-link-disabled-border-color
+--#{root-defaults.$prefix}menu-link-border-radius
+--#{root-defaults.$prefix}menu-link-border-style
+--#{root-defaults.$prefix}menu-link-border-width
+--#{root-defaults.$prefix}menu-link-border
+--#{root-defaults.$prefix}menu-link-border-color
+--#{root-defaults.$prefix}menu-link-visited-border-color
+--#{root-defaults.$prefix}menu-link-focus-border-color
+--#{root-defaults.$prefix}menu-link-hover-border-color
+--#{root-defaults.$prefix}menu-link-active-border-color
+--#{root-defaults.$prefix}menu-link-disabled-border-color
 
 ```
 
 The submenu toggle properties:
 
 ```scss
---#{root-defaults.$prefix}-submenu-toggle-transform
---#{root-defaults.$prefix}-submenu-toggle-open-transform
---#{root-defaults.$prefix}-submenu-toggle-content
---#{root-defaults.$prefix}-submenu-toggle-transition
---#{root-defaults.$prefix}-submenu-toggle-transition-reduced-motion
+--#{root-defaults.$prefix}submenu-toggle-transform
+--#{root-defaults.$prefix}submenu-toggle-open-transform
+--#{root-defaults.$prefix}submenu-toggle-content
+--#{root-defaults.$prefix}submenu-toggle-transition
+--#{root-defaults.$prefix}submenu-toggle-transition-reduced-motion
 
 ```
 

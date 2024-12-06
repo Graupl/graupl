@@ -135,7 +135,7 @@
       z-index: 1;
       transform: none;
       transition: transform
-        var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+        var(--#{root-defaults.$prefix}carousel-transition-duration, 500ms)
         ease-in-out;
       opacity: 1;
     }
@@ -144,7 +144,7 @@
       z-index: 1;
       transform: translateX(calc(-1 * $carousel-item-max-width));
       transition: transform
-        var(--#{root-defaults.$prefix}-carousel-transition-duration, 500ms)
+        var(--#{root-defaults.$prefix}carousel-transition-duration, 500ms)
         ease-in-out;
       opacity: 1;
 
@@ -181,7 +181,7 @@
   @include button-mixins.apply-button;
 
   @include layer(component) {
-    --#{root-defaults.$prefix}-button-border-radius: 50%;
+    --#{root-defaults.$prefix}button-border-radius: 50%;
 
     pointer-events: auto;
   }
