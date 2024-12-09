@@ -7,12 +7,20 @@
 @use "sass:list";
 
 @function min($size) {
+  @if not map.has-key(root-defaults.$screen-sizes, $size) {
+    @error "The screen size \"#{$size}\" does not exist.";
+  }
+
   $screen-size: map.get(root-defaults.$screen-sizes, $size);
 
   @return $screen-size;
 }
 
 @function max($size) {
+  @if not map.has-key(root-defaults.$screen-sizes, $size) {
+    @error "The screen size \"#{$size}\" does not exist.";
+  }
+
   $keys: map.keys(root-defaults.$screen-sizes);
   $index: list.index($keys, "#{$size}");
   $key: list.nth($keys, $index + 1);

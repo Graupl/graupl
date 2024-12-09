@@ -6,7 +6,6 @@
 @use "../functions/screen";
 @use "../defaults" as root-defaults;
 @use "sass:map";
-@use "sass:list";
 @use "sass:meta";
 
 // A mixin to generate a minimum screen width media query.
@@ -45,12 +44,34 @@
 }
 
 @mixin trigger($trigger) {
+  @if not map.has-key(root-defaults.$screen-size-triggers, $trigger) {
+    @error "The screen size trigger \"#{$trigger}\" does not exist.";
+  }
+
   $screen-size-trigger: map.get(root-defaults.$screen-size-triggers, $trigger);
+
+  @if not map.has-key($screen-size-trigger, "mixin") {
+    @error "The screen size trigger \"#{$trigger}\" does not have a mixin key.";
+  }
+
+  @if not map.has-key($screen-size-trigger, "args") {
+    @error "The screen size trigger \"#{$trigger}\" does not have an args key.";
+  }
+
   $mixin-name: map.get($screen-size-trigger, "mixin");
   $mixin-args: map.get($screen-size-trigger, "args");
+
+  @if not meta.mixin-exists($mixin-name) {
+    @error "The mixin \"#{$mixin-name}\" does not exist.";
+  }
+
   $mixin: meta.get-mixin($mixin-name);
 
-  @include meta.apply($mixin, $mixin-args...) {
-    @content;
+  @if meta.accepts-content($mixin) {
+    @include meta.apply($mixin, $mixin-args...) {
+      @content;
+    }
+  } @else {
+    @warn "The mixin \"#{$mixin-name}\" does not accept content.";
   }
 }
