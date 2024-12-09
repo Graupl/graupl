@@ -89,19 +89,28 @@
   }
 
   // For each font weight property, create a utility class.
-  @each $size, $value in typography.$font-weights {
+  @each $weight, $value in typography.$font-weights {
     @include utility.create(
-      ".#{defaults.$font-weight-class-prefix}#{$size}",
+      ".#{defaults.$font-weight-class-prefix}#{$weight}",
       font-weight,
       $value
     );
   }
 
   // For each font style property, create a utility class.
-  @each $size, $value in defaults.$font-style-properties {
+  @each $style, $value in defaults.$font-style-properties {
     @include utility.create(
-      ".#{defaults.$font-style-class-prefix}#{$size}",
+      ".#{defaults.$font-style-class-prefix}#{$style}",
       font-style,
+      $value
+    );
+  }
+
+  // For each text transform property, create a utility class.
+  @each $transform, $value in defaults.$text-transform-properties {
+    @include utility.create(
+      ".#{defaults.$text-transform-class-prefix}#{$transform}",
+      text-transform,
       $value
     );
   }
@@ -201,9 +210,9 @@
       }
 
       // For each font weight property, create a utility class.
-      @each $size, $value in typography.$font-weights {
+      @each $weight, $value in typography.$font-weights {
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-weight-class-prefix}#{$size}",
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-weight-class-prefix}#{$weight}",
           font-weight,
           $value,
           $screen-size
@@ -211,10 +220,20 @@
       }
 
       // For each font style property, create a utility class.
-      @each $size, $value in defaults.$font-style-properties {
+      @each $style, $value in defaults.$font-style-properties {
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-style-class-prefix}#{$size}",
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$font-style-class-prefix}#{$style}",
           font-style,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each text transform property, create a utility class.
+      @each $transform, $value in defaults.$text-transform-properties {
+        @include utility.create(
+          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$text-transform-class-prefix}#{$transform}",
+          text-transform,
           $value,
           $screen-size
         );

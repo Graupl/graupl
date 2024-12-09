@@ -26,5 +26,19 @@ $font-style-properties: map.merge(
   $custom-font-style-properties
 );
 
+// Text transform properties.
+$text-transform-class-prefix: "text-" !default;
+$base-text-transform-properties: (
+  uppercase: uppercase,
+  lowercase: lowercase,
+  capitalize: capitalize,
+  none: none,
+);
+$custom-text-transform-properties: () !default;
+$text-transform-properties: map.merge(
+  $base-text-transform-properties,
+  $custom-text-transform-properties
+);
+
 // Responsive utility flag.
 $responsive: false !default;
