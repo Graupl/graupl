@@ -1,0 +1,59 @@
+// @graupl/graupl border utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "sass:map";
+
+// Default border properties.
+$default-border-class: "bordered" !default;
+
+// Border width properties.
+$border-width-class-prefix: "border-" !default;
+$base-border-width-properties: (
+  thick: thick,
+  thin: thin,
+  medium: medium,
+  none: none,
+);
+$custom-border-width-properties: () !default;
+$border-widths: map.merge(
+  $base-border-width-properties,
+  $custom-border-width-properties
+);
+
+// Border color properties.
+$border-color-class-prefix: "border-" !default;
+$base-border-color-properties: (
+  transparent: transparent,
+);
+$custom-border-color-properties: () !default;
+$border-colors: map.merge(
+  $base-border-color-properties,
+  $custom-border-color-properties
+);
+
+// Border style properties.
+$border-style-class-prefix: "border-" !default;
+$base-border-style-properties: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+  groove: groove,
+  ridge: ridge,
+  inset: inset,
+  outset: outset,
+  none: none,
+);
+$custom-border-style-properties: () !default;
+$border-styles: map.merge(
+  $base-border-style-properties,
+  $custom-border-style-properties
+);
+
+// Responsive utility flag.
+$responsive: false !default;

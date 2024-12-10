@@ -5,9 +5,14 @@
 @use "./screen";
 @use "../functions/important";
 @use "../defaults" as root-defaults;
-@use "sass:map";
 
-@mixin create($selector, $property, $value, $breakpoint: false) {
+// Create a utility class.
+//
+// @param {String}      $selector   - The selector to apply the utility class to.
+// @param {String|List} $property   - The property/properties to apply to the selector.
+// @param {String}      $value      - The value to apply to the property/properties.
+// @param {?String}     $breakpoint - The breakpoint to apply the utility class to.
+@mixin create($selector, $property, $value, $breakpoint: null) {
   #{$selector} {
     @if $breakpoint {
       @include screen.up($breakpoint) {
@@ -20,6 +25,33 @@
       }
     } @else {
       @each $prop in $property {
+        #{$prop}: important.insert($value);
+      }
+
+      // Allow for custom overrides and additional styles.
+      @content;
+    }
+  }
+}
+
+// Create a utility class with a map of properties and values.
+//
+// @param {String}      $selector           - The selector to apply the utility class to.
+// @param {Map}         $property-value-map - The map of properties and values to apply to the selector.
+// @param {?String}     $breakpoint         - The breakpoint to apply the utility class to.
+@mixin create-mapped($selector, $property-value-map, $breakpoint: null) {
+  #{$selector} {
+    @if $breakpoint {
+      @include screen.up($breakpoint) {
+        @each $prop, $value in $property-value-map {
+          #{$prop}: important.insert($value);
+        }
+
+        // Allow for custom overrides and additional styles.
+        @content;
+      }
+    } @else {
+      @each $prop, $value in $property-value-map {
         #{$prop}: important.insert($value);
       }
 
