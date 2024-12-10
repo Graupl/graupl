@@ -9,11 +9,13 @@
 @use "sass:map";
 
 // Prefix for custom properties and other naming conventions.
-$prefix: "graupl-" !default;
+$id: "graupl" !default;
+$prefix: "#{$id}-" !default;
 
 // Settings.
 $use-important: true !default;
 $responsive-utilities: true !default;
+$use-layers: true !default;
 
 // Layout properties.
 $content-max-width: 96ch !default;
