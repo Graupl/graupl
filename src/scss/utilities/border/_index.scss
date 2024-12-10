@@ -1,0 +1,127 @@
+// @graupl/graupl border utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/important";
+@use "../../mixins/layer" as *;
+@use "../../mixins/screen";
+@use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
+@use "../../variables" as root-variables;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
+
+@include layer(utilities) {
+  // Create a class to apply the default border styling.
+  @include utility.create-mapped(
+    ".#{defaults.$default-border-class}",
+    (
+      border-width: root-variables.$border-width,
+      border-radius: root-variables.$border-radius,
+      border-style: root-variables.$border-style,
+    )
+  );
+
+  // For each border width, create a class to apply the border width.
+  @each $width, $value in defaults.$border-widths {
+    @include utility.create(
+      ".#{defaults.$border-width-class-prefix}#{$width}",
+      border-width,
+      $value
+    );
+  }
+
+  // For each border style, create a class to apply the border style.
+  @each $border-style, $value in defaults.$border-styles {
+    @include utility.create(
+      ".#{defaults.$border-style-class-prefix}#{$border-style}",
+      border-style,
+      $value
+    );
+  }
+
+  // For each theme colour, create a utility class for border color.
+  @each $color, $map in map.get(color.$themes, active) {
+    @each $shade, $value in $map {
+      $name: #{$color}-#{$shade};
+
+      @include utility.create(
+        ".#{defaults.$border-color-class-prefix}#{$name}",
+        border-color,
+        $value
+      );
+    }
+  }
+
+  // For each border color, create a utility class for border color.
+  @each $name, $value in defaults.$border-colors {
+    @include utility.create(
+      ".#{defaults.$border-color-class-prefix}#{$name}",
+      border-color,
+      $value
+    );
+  }
+
+  // Generate responsive utilities.
+  @if defaults.$responsive and root-defaults.$responsive-utilities {
+    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+      // Create a class to apply the default border styling.
+      @include utility.create-mapped(
+        ".#{defaults.$default-border-class}",
+        (
+          border-width: root-variables.$border-width,
+          border-radius: root-variables.$border-radius,
+          border-style: root-variables.$border-style,
+        ),
+        $screen-size
+      );
+
+      // For each border width, create a class to apply the border width.
+      @each $width, $value in defaults.$border-widths {
+        @include utility.create(
+          ".#{defaults.$border-width-class-prefix}#{$width}",
+          border-width,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each border style, create a class to apply the border style.
+      @each $border-style, $value in defaults.$border-styles {
+        @include utility.create(
+          ".#{defaults.$border-style-class-prefix}#{$border-style}",
+          border-style,
+          $value,
+          $screen-size
+        );
+      }
+
+      // For each theme colour, create a utility class for border color.
+      @each $color, $map in map.get(color.$themes, active) {
+        @each $shade, $value in $map {
+          $name: #{$color}-#{$shade};
+
+          @include utility.create(
+            ".#{defaults.$border-color-class-prefix}#{$name}",
+            border-color,
+            $value,
+            $screen-size
+          );
+        }
+      }
+
+      // For each border color, create a utility class for border color.
+      @each $name, $value in defaults.$border-colors {
+        @include utility.create(
+          ".#{defaults.$border-color-class-prefix}#{$name}",
+          border-color,
+          $value,
+          $screen-size
+        );
+      }
+    }
+  }
+}
