@@ -4,6 +4,9 @@ package-lock.json
 # Dependency directories.
 node_modules
 
-# Generated documention.
+# Generated documentation.
 docs/.vitepress/cache
 docs/.vitepress/dist
+
+# VSCode stuff.
+testing/flashpost
