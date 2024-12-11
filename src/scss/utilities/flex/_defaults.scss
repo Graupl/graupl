@@ -59,5 +59,27 @@ $flex-shrink-properties: map.merge(
   $custom-flex-shrink-properties
 );
 
+// Flex basis properties.
+$flex-basis-class-prefix: "flex-" !default;
+$base-flex-basis-properties: (
+  auto: auto,
+  fit-content: fit-content,
+  max-content: max-content,
+  min-content: min-content,
+  content: content,
+  0: 0,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+);
+$custom-flex-basis-properties: () !default;
+$flex-basis-properties: map.merge(
+  $base-flex-basis-properties,
+  $custom-flex-basis-properties
+);
+
 // Responsive utility flag.
 $responsive: false !default;
