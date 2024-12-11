@@ -1,0 +1,176 @@
+// @graupl/graupl list component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../variables" as root-variables;
+@use "defaults";
+@use "sass:map";
+
+// List properties.
+$list-padding-x: var(
+  --#{root-defaults.$prefix}list-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$list-padding-y: var(
+  --#{root-defaults.$prefix}list-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$list-padding: var(
+  --#{root-defaults.$prefix}list-padding,
+  #{$list-padding-y} #{$list-padding-x}
+);
+$list-margin-x: var(
+  --#{root-defaults.$prefix}list-margin-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$list-margin-y: var(
+  --#{root-defaults.$prefix}list-margin-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$list-margin: var(
+  --#{root-defaults.$prefix}list-margin,
+  #{$list-margin-y} #{$list-margin-x}
+);
+
+// List gap properties.
+$list-column-gap: var(
+  --#{root-defaults.$prefix}list-column-gap,
+  #{map.get(root-variables.$spacers, 2)}
+);
+$list-row-gap: var(
+  --#{root-defaults.$prefix}list-row-gap,
+  #{map.get(root-variables.$spacers, 2)}
+);
+$list-gap: var(
+  --#{root-defaults.$prefix}list-gap,
+  #{$list-column-gap} #{$list-row-gap}
+);
+
+// List color properties.
+$list-background: var(
+  --#{root-defaults.$prefix}list-background,
+  #{color.$root-background}
+);
+$list-color: var(--#{root-defaults.$prefix}list-color, #{color.$root-color});
+
+// List border-properties.
+$list-border-color: var(
+  --#{root-defaults.$prefix}list-border-color,
+  #{$list-color}
+);
+$list-top-left-border-radius: var(
+  --#{root-defaults.$prefix}list-top-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-top-right-border-radius: var(
+  --#{root-defaults.$prefix}list-top-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-bottom-left-border-radius: var(
+  --#{root-defaults.$prefix}list-bottom-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-bottom-right-border-radius: var(
+  --#{root-defaults.$prefix}list-bottom-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-border-radius: var(
+  --#{root-defaults.$prefix}list-border-radius,
+  #{$list-top-left-border-radius} #{$list-top-right-border-radius}
+    #{$list-bottom-right-border-radius} #{$list-bottom-left-border-radius}
+);
+$list-border-style: var(
+  --#{root-defaults.$prefix}list-border-style,
+  #{root-variables.$border-style}
+);
+$list-border-width: var(--#{root-defaults.$prefix}list-border-width, 0);
+$list-border: var(
+  --#{root-defaults.$prefix}list-border,
+  #{$list-border-width} #{$list-border-style}
+);
+
+// List item properties.
+$list-item-padding-x: var(
+  --#{root-defaults.$prefix}list-item-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$list-item-padding-y: var(
+  --#{root-defaults.$prefix}list-item-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$list-item-padding: var(
+  --#{root-defaults.$prefix}list-item-padding,
+  #{$list-item-padding-y} #{$list-item-padding-x}
+);
+$list-item-transition: var(
+  --#{root-defaults.$prefix}list-item-transition,
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+$list-item-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}list-item-transition-reduced-motion,
+  none
+);
+
+// List item transform properties.
+$list-item-transform: var(
+  --#{root-defaults.$prefix}list-item-transform,
+  #{defaults.$list-item-transform}
+);
+$list-item-hover-transform: var(
+  --#{root-defaults.$prefix}list-item-hover-transform,
+  #{defaults.$list-item-hover-transform}
+);
+
+// List item color properties.
+$list-item-background: var(
+  --#{root-defaults.$prefix}list-item-background,
+  #{color.$root-background}
+);
+$list-item-color: var(
+  --#{root-defaults.$prefix}list-item-color,
+  #{color.$root-color}
+);
+
+// List item border-properties.
+$list-item-border-color: var(
+  --#{root-defaults.$prefix}list-item-border-color,
+  #{$list-item-color}
+);
+$list-item-top-left-border-radius: var(
+  --#{root-defaults.$prefix}list-item-top-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-item-top-right-border-radius: var(
+  --#{root-defaults.$prefix}list-item-top-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-item-bottom-left-border-radius: var(
+  --#{root-defaults.$prefix}list-item-bottom-left-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-item-bottom-right-border-radius: var(
+  --#{root-defaults.$prefix}list-item-bottom-right-border-radius,
+  #{root-variables.$border-radius}
+);
+$list-item-border-radius: var(
+  --#{root-defaults.$prefix}list-item-border-radius,
+  #{$list-item-top-left-border-radius} #{$list-item-top-right-border-radius}
+    #{$list-item-bottom-right-border-radius}
+    #{$list-item-bottom-left-border-radius}
+);
+$list-item-border-style: var(
+  --#{root-defaults.$prefix}list-item-border-style,
+  #{root-variables.$border-style}
+);
+$list-item-border-width: var(
+  --#{root-defaults.$prefix}list-item-border-width,
+  #{root-variables.$border-width}
+);
+$list-item-border: var(
+  --#{root-defaults.$prefix}list-item-border,
+  #{$list-item-border-width} #{$list-item-border-style}
+);
