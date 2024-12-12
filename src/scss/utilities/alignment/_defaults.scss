@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Align content properties.
-$align-content-class-prefix: "align-content-" !default;
+$align-content-selector-prefix: "align-content-" !default;
 $base-align-content-properties: (
   normal: normal,
   start: flex-start,
@@ -28,7 +28,7 @@ $align-content-properties: map.merge(
 );
 
 // Align items properties.
-$align-items-class-prefix: "align-items-" !default;
+$align-items-selector-prefix: "align-items-" !default;
 $base-align-items-properties: (
   start: start,
   end: end,
@@ -43,7 +43,7 @@ $align-items-properties: map.merge(
 );
 
 // Align self properties.
-$align-self-class-prefix: "align-self-" !default;
+$align-self-selector-prefix: "align-self-" !default;
 $base-align-self-properties: (
   auto: auto,
   start: start,
@@ -58,5 +58,7 @@ $align-self-properties: map.merge(
   $custom-align-self-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;

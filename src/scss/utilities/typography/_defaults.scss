@@ -9,13 +9,13 @@
 @use "sass:map";
 
 // Text size properties.
-$text-class-prefix: "text-" !default;
+$text-selector-prefix: "text-" !default;
 
 // Font weight properties.
-$font-weight-class-prefix: "font-" !default;
+$font-weight-selector-prefix: "font-" !default;
 
 // Font style properties.
-$font-style-class-prefix: "font-" !default;
+$font-style-selector-prefix: "font-" !default;
 $base-font-style-properties: (
   normal: normal,
   italic: italic,
@@ -27,7 +27,7 @@ $font-style-properties: map.merge(
 );
 
 // Text transform properties.
-$text-transform-class-prefix: "text-" !default;
+$text-transform-selector-prefix: "text-" !default;
 $base-text-transform-properties: (
   uppercase: uppercase,
   lowercase: lowercase,
@@ -40,5 +40,7 @@ $text-transform-properties: map.merge(
   $custom-text-transform-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;

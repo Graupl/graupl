@@ -9,10 +9,10 @@
 @use "sass:map";
 
 // Default border properties.
-$default-border-class: "bordered" !default;
+$default-border-selector: "bordered" !default;
 
 // Border width properties.
-$border-width-class-prefix: "border-" !default;
+$border-width-selector-prefix: "border-" !default;
 $base-border-width-properties: (
   thick: thick,
   thin: thin,
@@ -26,7 +26,7 @@ $border-widths: map.merge(
 );
 
 // Border color properties.
-$border-color-class-prefix: "border-" !default;
+$border-color-selector-prefix: "border-" !default;
 $base-border-color-properties: (
   transparent: transparent,
 );
@@ -37,7 +37,7 @@ $border-colors: map.merge(
 );
 
 // Border style properties.
-$border-style-class-prefix: "border-" !default;
+$border-style-selector-prefix: "border-" !default;
 $base-border-style-properties: (
   solid: solid,
   dashed: dashed,
@@ -55,5 +55,7 @@ $border-styles: map.merge(
   $custom-border-style-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;

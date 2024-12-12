@@ -3,60 +3,130 @@
 // Mixins to help generate utility classes.
 
 @use "./screen";
+@use "./state";
+@use "./theme";
 @use "../functions/important";
+@use "../functions/utility";
 @use "../defaults" as root-defaults;
 
-// Create a utility class.
-//
-// @param {String}      $selector   - The selector to apply the utility class to.
-// @param {String|List} $property   - The property/properties to apply to the selector.
-// @param {String}      $value      - The value to apply to the property/properties.
-// @param {?String}     $breakpoint - The breakpoint to apply the utility class to.
-@mixin create($selector, $property, $value, $breakpoint: null) {
-  #{$selector} {
-    @if $breakpoint {
-      @include screen.up($breakpoint) {
-        @each $prop in $property {
-          #{$prop}: important.insert($value);
-        }
+/// Insert a map of properties and values into a utility class.
+///
+/// @param {Map} $map
+///   The map of properties and values to apply to the selector.
+@mixin _insert($map) {
+  @each $prop, $value in $map {
+    #{$prop}: important.insert($value);
+  }
 
-        // Allow for custom overrides and additional styles.
-        @content;
-      }
-    } @else {
-      @each $prop in $property {
-        #{$prop}: important.insert($value);
-      }
+  // Allow for custom overrides and additional styles.
+  @content;
+}
 
-      // Allow for custom overrides and additional styles.
+/// Handles wrapping utilities with a conditional state.
+///
+/// @param {?string} $state
+///   The state to wrap.
+@mixin _handle-state($state: null) {
+  @if $state {
+    @include state.state($state) {
       @content;
     }
+  } @else {
+    @content;
   }
 }
 
-// Create a utility class with a map of properties and values.
-//
-// @param {String}      $selector           - The selector to apply the utility class to.
-// @param {Map}         $property-value-map - The map of properties and values to apply to the selector.
-// @param {?String}     $breakpoint         - The breakpoint to apply the utility class to.
-@mixin create-mapped($selector, $property-value-map, $breakpoint: null) {
-  #{$selector} {
-    @if $breakpoint {
-      @include screen.up($breakpoint) {
-        @each $prop, $value in $property-value-map {
-          #{$prop}: important.insert($value);
-        }
-
-        // Allow for custom overrides and additional styles.
-        @content;
-      }
-    } @else {
-      @each $prop, $value in $property-value-map {
-        #{$prop}: important.insert($value);
-      }
-
-      // Allow for custom overrides and additional styles.
+/// Handles wrapping utilities with a conditional screen.
+///
+/// @param {?string} $screen
+///   The screen to wrap.
+@mixin _handle-screen($screen: null) {
+  @if $screen {
+    @include screen.up($screen) {
       @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+/// Handles wrapping utilities with a conditional theme.
+///
+/// @param {?string} $theme
+///   The theme mode to wrap.
+@mixin _handle-theme($theme: null) {
+  @if $theme {
+    @include theme.theme($theme) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+/// Create a utility class with a list of properties and a single value.
+///
+/// @param {string}      $selector
+///   The selector to apply the utility class to.
+/// @param {string|List} $property
+///   The property/properties to apply to the selector.
+/// @param {string}      $value
+///   The value to apply to the property/properties.
+/// @param {?string}     $screen
+///   The screen to apply the utility class to.
+/// @param {?string}     $theme
+///   The theme mode to apply the utility class to.
+/// @param {?string}     $state
+///   The state to apply the utility class to.
+@mixin create(
+  $selector,
+  $property,
+  $value,
+  $screen: null,
+  $theme: null,
+  $state: null
+) {
+  $map: utility.convert-property-values-to-map($property, $value);
+
+  @include create-mapped(
+    $selector,
+    $map,
+    $screen: $screen,
+    $theme: $theme,
+    $state: $state
+  ) {
+    @content;
+  }
+}
+
+/// Create a utility class with a map of properties and values.
+///
+/// @param {string}  $selector
+///   The selector to apply the utility class to.
+/// @param {Map}     $map
+///   The map of properties and values to apply to the selector.
+/// @param {?string} $screen
+///   The screen to apply the utility class to.
+/// @param {?string} $theme
+///   The theme mode to apply the utility class to.
+/// @param {?string} $state
+///   The state to apply the utility class to.
+@mixin create-mapped(
+  $selector,
+  $map,
+  $screen: null,
+  $theme: null,
+  $state: null
+) {
+  @include _handle-theme($theme) {
+    #{$selector} {
+      @include _handle-screen($screen) {
+        @include _handle-state($state) {
+          @include _insert($map) {
+            @content;
+          }
+        }
+      }
     }
   }
 }

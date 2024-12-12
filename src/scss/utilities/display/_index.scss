@@ -6,53 +6,126 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/theme";
+@use "../../mixins/state";
 @use "../../mixins/utility";
 @use "../../mixins/visually-hidden";
+@use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
-    @include utility.create(
-      ".#{defaults.$display-class-prefix}#{$name}",
-      display,
-      $property
-    );
+    $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+
+    @include utility.create($selector, display, $property);
   }
 
   // Visually hidden utility classes.
-  #{defaults.$visually-hidden-class} {
+  #{$selector-prefix}#{defaults.$visually-hidden-selector} {
     @include visually-hidden.apply;
   }
 
-  #{defaults.$visually-hidden-focusable-class} {
+  #{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
     @include visually-hidden.focusable;
   }
 
   // Create responsive utilities for visually hidden classes.
-  @if defaults.$responsive and root-defaults.$responsive-utilities {
-    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
       // For each display property, create a utility class.
       @each $name, $property in defaults.$display-properties {
+        $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$display-class-prefix}#{$name}",
+          $selector,
           display,
           $property,
-          $screen-size
+          $screen: $screen-name
         );
       }
 
       // Visually hidden utility classes.
-      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$visually-hidden-class} {
-        @include screen.up($screen-size) {
+      #{$selector-prefix}#{defaults.$visually-hidden-selector} {
+        @include screen.up($screen-name) {
           @include visually-hidden.apply;
         }
       }
 
-      .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$visually-hidden-focusable-class} {
-        @include screen.up($screen-size) {
+      #{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
+        @include screen.up($screen-name) {
+          @include visually-hidden.focusable;
+        }
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // For each display property, create a utility class.
+        @each $name, $property in defaults.$display-properties {
+          $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            display,
+            $property,
+            $theme: $theme-name
+          );
+        }
+
+        // Visually hidden utility classes.
+        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
+          @include theme.theme($theme-name) {
+            @include visually-hidden.apply;
+          }
+        }
+
+        #{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
+          @include theme.theme($theme-name) {
+            @include visually-hidden.focusable;
+          }
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // For each display property, create a utility class.
+      @each $name, $property in defaults.$display-properties {
+        $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          display,
+          $property,
+          $state: $state-name
+        );
+      }
+
+      // Visually hidden utility classes.
+      #{$selector-prefix}#{defaults.$visually-hidden-selector} {
+        @include state.state($state-name) {
+          @include visually-hidden.apply;
+        }
+      }
+
+      #{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
+        @include state.state($state-name) {
           @include visually-hidden.focusable;
         }
       }

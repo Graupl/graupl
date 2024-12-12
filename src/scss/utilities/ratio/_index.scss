@@ -6,13 +6,18 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/theme";
+@use "../../mixins/state";
 @use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
-  .#{defaults.$ratio-class} {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
+  #{$selector-prefix}#{defaults.$ratio-selector} {
     position: relative;
     width: 100%;
 
@@ -22,7 +27,7 @@
       padding-top: $ratio;
     }
 
-    .#{defaults.$force-ratio-class} {
+    .#{defaults.$force-ratio-selector} {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -31,19 +36,53 @@
     }
   }
 
-  @each $ratio-class, $value in defaults.$ratios {
-    .#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
+  @each $ratio-selector, $value in defaults.$ratios {
+    #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
       --#{root-defaults.$prefix}ratio: #{$value};
     }
   }
 
-  // Generate responsive utilities.
-  @if defaults.$responsive and root-defaults.$responsive-utilities {
-    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
-      @each $ratio-class, $value in defaults.$ratios {
-        .#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$ratio-variant-class-prefix}#{$ratio-class} {
-          @include screen.up($screen-size) {
+  // Generate screen-aware utilities.
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
+      @each $ratio-selector, $value in defaults.$ratios {
+        @include screen.up($screen-name) {
+          #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
             --#{root-defaults.$prefix}ratio: #{$value};
+          }
+        }
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        @each $ratio-selector, $value in defaults.$ratios {
+          @include theme.theme($theme-name) {
+            #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
+              --#{root-defaults.$prefix}ratio: #{$value};
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      @each $ratio-selector, $ratio-value in defaults.$ratios {
+        #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
+          @include state.state($state-name) {
+            --#{root-defaults.$prefix}ratio: #{$ratio-value};
           }
         }
       }

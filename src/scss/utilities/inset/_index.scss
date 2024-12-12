@@ -7,28 +7,81 @@
 @use "../../functions/important";
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
   // For each inset property, create a utility class.
   @each $type, $property in defaults.$inset-properties {
     @each $name, $value in defaults.$inset-values {
-      @include utility.create(".#{$type}-#{$name}", $property, $value);
+      $selector: "#{$selector-prefix}#{$type}-#{$name}";
+
+      @include utility.create($selector, $property, $value);
     }
   }
 
-  @if defaults.$responsive and root-defaults.$responsive-utilities {
-    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
       // For each inset property, create a utility class.
       @each $type, $property in defaults.$inset-properties {
         @each $name, $value in defaults.$inset-values {
+          $selector: "#{$selector-prefix}#{$type}-#{$name}";
+
           @include utility.create(
-            ".#{$screen-size}#{root-defaults.$responsive-separator}#{$type}-#{$name}",
+            $selector,
             $property,
             $value,
-            $screen-size
+            $screen: $screen-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // For each inset property, create a utility class.
+        @each $type, $property in defaults.$inset-properties {
+          @each $name, $value in defaults.$inset-values {
+            $selector: "#{$selector-prefix}#{$type}-#{$name}";
+
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $theme: $theme-name
+            );
+          }
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // For each inset property, create a utility class.
+      @each $type, $property in defaults.$inset-properties {
+        @each $name, $value in defaults.$inset-values {
+          $selector: "#{$selector-prefix}#{$type}-#{$name}";
+
+          @include utility.create(
+            $selector,
+            $property,
+            $value,
+            $state: $state-name
           );
         }
       }

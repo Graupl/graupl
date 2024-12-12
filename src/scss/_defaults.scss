@@ -14,7 +14,9 @@ $prefix: "#{$id}-" !default;
 
 // Settings.
 $use-important: true !default;
-$responsive-utilities: true !default;
+$screen-aware-utilities: true !default;
+$theme-aware-utilities: true !default;
+$state-aware-utilities: true !default;
 $use-layers: true !default;
 
 // Layout properties.
@@ -134,5 +136,10 @@ $base-state-selectors: (
 $custom-state-selectors: () !default;
 $state-selectors: map.merge($base-state-selectors, $custom-state-selectors);
 
-// Responsive utility separator.
-$responsive-separator: "\\:" !default;
+// Utility properties.
+$utility-selector-prefix: "." !default;
+
+// Utility modifier separators.
+$utility-screen-aware-separator: "\\:" !default;
+$utility-theme-aware-separator: "\\:" !default;
+$utility-state-aware-separator: "\\:" !default;

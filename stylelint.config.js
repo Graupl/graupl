@@ -15,6 +15,7 @@ const config = {
     "@stylistic/function-parentheses-space-inside": "never-single-line",
     "@stylistic/indentation": null,
     "@stylistic/block-opening-brace-space-before": "never-single-line",
+    "scss/at-mixin-pattern": "^_?[a-z][a-z0-9]*(-[a-z0-9]+)*$",
   },
 };
 
