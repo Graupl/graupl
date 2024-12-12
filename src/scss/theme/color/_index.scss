@@ -1,11 +1,11 @@
 // @graupl/graupl color theme styles.
 
-@use "variables" as *;
-@use "../../mixins/layer" as *;
-@use "defaults";
 @use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/theme";
+@use "defaults";
 @use "sass:map";
-@use "../../functions/theme";
+@use "variables" as *;
 
 @include layer(theme) {
   :root {
@@ -29,7 +29,7 @@
 
   // Generate the available theme properties.
   @each $theme-name, $theme in $themes {
-    #{defaults.$theme-selector-prefix}#{$theme-name}#{defaults.$theme-selector-suffix} {
+    @include theme.theme($theme-name) {
       @each $color, $map in $theme {
         @each $shade, $value in $map {
           --#{root-defaults.$prefix}theme-active--#{$color}--#{$shade}: #{$value};

@@ -5,6 +5,7 @@
 
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/theme";
 @use "../../mixins/utility";
 @use "../../theme/color/variables" as color;
 @use "defaults";
@@ -32,16 +33,20 @@
 
   // For each background property, create a utility class.
   @each $name, $value in defaults.$background-properties {
-    $selector: ".#{defaults.$background-class-prefix}#{$name}";
-
-    @include utility.create($selector, background, $value);
+    @include utility.create(
+      ".#{defaults.$background-class-prefix}#{$name}",
+      background,
+      $value
+    );
   }
 
   // For each text property, create a utility class.
   @each $name, $value in defaults.$text-properties {
-    $selector: ".#{defaults.$text-class-prefix}#{$name}";
-
-    @include utility.create($selector, color, $value);
+    @include utility.create(
+      ".#{defaults.$text-class-prefix}#{$name}",
+      color,
+      $value
+    );
   }
 
   // Create responsive utilities.
@@ -84,6 +89,98 @@
           color,
           $value,
           $screen-size
+        );
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if ($theme-name != active) {
+        // For each theme colour, create a utility class for background and color.
+        @each $color, $map in map.get(color.$themes, active) {
+          @each $shade, $value in $map {
+            $name: #{$color}-#{$shade};
+
+            @include utility.create(
+              ".#{$theme-name}#{root-defaults.$theme-aware-separator}#{defaults.$background-class-prefix}#{$name}",
+              background,
+              $value,
+              $theme: $theme-name
+            );
+            @include utility.create(
+              ".#{$theme-name}#{root-defaults.$theme-aware-separator}#{defaults.$text-class-prefix}#{$name}",
+              color,
+              $value,
+              $theme: $theme-name
+            );
+          }
+        }
+
+        // For each background property, create a utility class.
+        @each $name, $value in defaults.$background-properties {
+          @include utility.create(
+            ".#{$theme-name}#{root-defaults.$theme-aware-separator}#{defaults.$background-class-prefix}#{$name}",
+            background,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each text property, create a utility class.
+        @each $name, $value in defaults.$text-properties {
+          @include utility.create(
+            ".#{$theme-name}#{root-defaults.$theme-aware-separator}#{defaults.$text-class-prefix}#{$name}",
+            color,
+            $value,
+            $theme: $theme-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      // For each theme colour, create a utility class for background and color.
+      @each $color, $map in map.get(color.$themes, active) {
+        @each $shade, $color-value in $map {
+          $name: #{$color}-#{$shade};
+
+          @include utility.create(
+            ".#{$state-name}#{root-defaults.$state-aware-separator}#{defaults.$background-class-prefix}#{$name}",
+            background,
+            $color-value,
+            $state: $state-name
+          );
+          @include utility.create(
+            ".#{$state-name}#{root-defaults.$state-aware-separator}#{defaults.$text-class-prefix}#{$name}",
+            color,
+            $color-value,
+            $state: $state-name
+          );
+        }
+      }
+
+      // For each background property, create a utility class.
+      @each $name, $value in defaults.$background-properties {
+        @include utility.create(
+          ".#{$state-name}#{root-defaults.$state-aware-separator}#{defaults.$background-class-prefix}#{$name}",
+          background,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each text property, create a utility class.
+      @each $name, $value in defaults.$text-properties {
+        @include utility.create(
+          ".#{$state-name}#{root-defaults.$state-aware-separator}#{defaults.$text-class-prefix}#{$name}",
+          color,
+          $value,
+          $state: $state-name
         );
       }
     }

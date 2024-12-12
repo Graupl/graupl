@@ -33,3 +33,5 @@ $text-properties: map.merge($base-text-properties, $custom-text-properties);
 
 // Responsive utility flag.
 $responsive: false !default;
+$theme-aware: true !default;
+$state-aware: true !default;

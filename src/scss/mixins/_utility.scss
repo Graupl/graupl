@@ -3,60 +3,226 @@
 // Mixins to help generate utility classes.
 
 @use "./screen";
+@use "./state";
+@use "./theme";
 @use "../functions/important";
 @use "../defaults" as root-defaults;
 
-// Create a utility class.
-//
-// @param {String}      $selector   - The selector to apply the utility class to.
-// @param {String|List} $property   - The property/properties to apply to the selector.
-// @param {String}      $value      - The value to apply to the property/properties.
-// @param {?String}     $breakpoint - The breakpoint to apply the utility class to.
-@mixin create($selector, $property, $value, $breakpoint: null) {
-  #{$selector} {
-    @if $breakpoint {
-      @include screen.up($breakpoint) {
-        @each $prop in $property {
-          #{$prop}: important.insert($value);
+/// Create a utility class.
+///
+/// @param {string}      $selector
+///   The selector to apply the utility class to.
+/// @param {string|List} $property
+///   The property/properties to apply to the selector.
+/// @param {string}      $value
+///   The value to apply to the property/properties.
+/// @param {?string}     $breakpoint
+///   The breakpoint to apply the utility class to.
+/// @param {?string}     $theme
+///   The theme mode to apply the utility class to.
+/// @param {?string}     $state
+///   The state to apply the utility class to.
+@mixin create(
+  $selector,
+  $property,
+  $value,
+  $breakpoint: null,
+  $theme: null,
+  $state: null
+) {
+  @if $theme {
+    @include theme.theme($theme) {
+      #{$selector} {
+        @if $breakpoint {
+          @include screen.up($breakpoint) {
+            @if $state {
+              @include state.state($state) {
+                @each $prop in $property {
+                  #{$prop}: important.insert($value);
+                }
+
+                // Allow for custom overrides and additional styles.
+                @content;
+              }
+            } @else {
+              @each $prop in $property {
+                #{$prop}: important.insert($value);
+              }
+
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          }
+        } @else {
+          @if $state {
+            @include state.state($state) {
+              @each $prop in $property {
+                #{$prop}: important.insert($value);
+              }
+
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          } @else {
+            @each $prop in $property {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
         }
-
-        // Allow for custom overrides and additional styles.
-        @content;
       }
-    } @else {
-      @each $prop in $property {
-        #{$prop}: important.insert($value);
-      }
+    }
+  } @else {
+    #{$selector} {
+      @if $breakpoint {
+        @include screen.up($breakpoint) {
+          @if $state {
+            @include state.state($state) {
+              @each $prop in $property {
+                #{$prop}: important.insert($value);
+              }
 
-      // Allow for custom overrides and additional styles.
-      @content;
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          } @else {
+            @each $prop in $property {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
+        }
+      } @else {
+        @if $state {
+          @include state.state($state) {
+            @each $prop in $property {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
+        } @else {
+          @each $prop in $property {
+            #{$prop}: important.insert($value);
+          }
+
+          // Allow for custom overrides and additional styles.
+          @content;
+        }
+      }
     }
   }
 }
 
-// Create a utility class with a map of properties and values.
-//
-// @param {String}      $selector           - The selector to apply the utility class to.
-// @param {Map}         $property-value-map - The map of properties and values to apply to the selector.
-// @param {?String}     $breakpoint         - The breakpoint to apply the utility class to.
-@mixin create-mapped($selector, $property-value-map, $breakpoint: null) {
-  #{$selector} {
-    @if $breakpoint {
-      @include screen.up($breakpoint) {
-        @each $prop, $value in $property-value-map {
-          #{$prop}: important.insert($value);
+/// Create a utility class with a map of properties and values.
+///
+/// @param {string}  $selector
+///   The selector to apply the utility class to.
+/// @param {Map}     $property-value-map
+///   The map of properties and values to apply to the selector.
+/// @param {?string} $breakpoint
+///   The breakpoint to apply the utility class to.
+/// @param {?string} $theme
+///   The theme mode to apply the utility class to.
+/// @param {?string} $state
+///   The state to apply the utility class to.
+@mixin create-mapped(
+  $selector,
+  $property-value-map,
+  $breakpoint: null,
+  $theme: null,
+  $state: null
+) {
+  @if $theme {
+    @include theme.theme($theme) {
+      #{$selector} {
+        @if $breakpoint {
+          @include screen.up($breakpoint) {
+            @if $state {
+              @include state.state($state) {
+                @each $prop, $value in $property-value-map {
+                  #{$prop}: important.insert($value);
+                }
+
+                // Allow for custom overrides and additional styles.
+                @content;
+              }
+            } @else {
+              @each $prop, $value in $property-value-map {
+                #{$prop}: important.insert($value);
+              }
+
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          }
+        } @else {
+          @if $state {
+            @include state.state($state) {
+              @each $prop, $value in $property-value-map {
+                #{$prop}: important.insert($value);
+              }
+
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          } @else {
+            @each $prop, $value in $property-value-map {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
         }
-
-        // Allow for custom overrides and additional styles.
-        @content;
       }
-    } @else {
-      @each $prop, $value in $property-value-map {
-        #{$prop}: important.insert($value);
-      }
+    }
+  } @else {
+    #{$selector} {
+      @if $breakpoint {
+        @include screen.up($breakpoint) {
+          @if $state {
+            @include state.state($state) {
+              @each $prop, $value in $property-value-map {
+                #{$prop}: important.insert($value);
+              }
 
-      // Allow for custom overrides and additional styles.
-      @content;
+              // Allow for custom overrides and additional styles.
+              @content;
+            }
+          } @else {
+            @each $prop, $value in $property-value-map {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
+        }
+      } @else {
+        @if $state {
+          @include state.state($state) {
+            @each $prop, $value in $property-value-map {
+              #{$prop}: important.insert($value);
+            }
+
+            // Allow for custom overrides and additional styles.
+            @content;
+          }
+        } @else {
+          @each $prop, $value in $property-value-map {
+            #{$prop}: important.insert($value);
+          }
+
+          // Allow for custom overrides and additional styles.
+          @content;
+        }
+      }
     }
   }
 }

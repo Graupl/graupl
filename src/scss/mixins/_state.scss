@@ -1,0 +1,18 @@
+// @graupl/graupl state mixins.
+//
+// A series of mixins to tie styles to a state.
+
+@use "../defaults" as root-defaults;
+@use "sass:map";
+
+/// Applies styles to a specific state.
+///
+/// @param {string} $state
+///   The name of the state to apply the styles to.
+@mixin state($state) {
+  @each $selector in map.get(root-defaults.$state-selectors, $state) {
+    &#{$selector} {
+      @content;
+    }
+  }
+}
