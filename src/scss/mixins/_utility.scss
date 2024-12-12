@@ -7,6 +7,71 @@
 @use "./theme";
 @use "../functions/important";
 @use "../defaults" as root-defaults;
+@use "sass:map";
+
+/// Convert a property and value to a map.
+///
+/// This mixin is used internally.
+///
+/// @param {string|List} $property
+///   The property/properties to convert to keys.
+/// @param {string}      $value
+///   The value to use for keys.
+@function _convert-property-values-to-map($property, $value) {
+  $map: ();
+
+  @each $prop in $property {
+    $map: map.merge(
+      $map,
+      (
+        $prop: $value,
+      )
+    );
+  }
+
+  @return $map;
+}
+
+/// Insert a map of properties and values into a utility class.
+///
+/// This mixin is used internally.
+///
+/// @param {Map} $map
+///   The map of properties and values to apply to the selector.
+@mixin _insert($map) {
+  @each $prop, $value in $map {
+    #{$prop}: important.insert($value);
+  }
+
+  // Allow for custom overrides and additional styles.
+  @content;
+}
+
+/// Handles inserting properties and values with a conditional state.
+///
+/// This mixin is used internally.
+///
+/// @param {?string} $state
+///   The state to apply the utility class to.
+/// @param {?string} $property
+///   The property/properties to apply to the selector.
+/// @param {?string} $value
+///   The value to apply to the property/properties.
+/// @param {?Map}    $map
+///   The map of properties and values to apply to the selector.
+@mixin _handle-state($state: null, $map) {
+  @if $state {
+    @include state.state($state) {
+      @include _insert($map) {
+        @content;
+      }
+    }
+  } @else {
+    @include _insert($map) {
+      @content;
+    }
+  }
+}
 
 /// Create a utility class.
 ///
@@ -30,92 +95,16 @@
   $theme: null,
   $state: null
 ) {
-  @if $theme {
-    @include theme.theme($theme) {
-      #{$selector} {
-        @if $breakpoint {
-          @include screen.up($breakpoint) {
-            @if $state {
-              @include state.state($state) {
-                @each $prop in $property {
-                  #{$prop}: important.insert($value);
-                }
+  $map: _convert-property-values-to-map($property, $value);
 
-                // Allow for custom overrides and additional styles.
-                @content;
-              }
-            } @else {
-              @each $prop in $property {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
-              @content;
-            }
-          }
-        } @else {
-          @if $state {
-            @include state.state($state) {
-              @each $prop in $property {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
-              @content;
-            }
-          } @else {
-            @each $prop in $property {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
-            @content;
-          }
-        }
-      }
-    }
-  } @else {
-    #{$selector} {
-      @if $breakpoint {
-        @include screen.up($breakpoint) {
-          @if $state {
-            @include state.state($state) {
-              @each $prop in $property {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
-              @content;
-            }
-          } @else {
-            @each $prop in $property {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
-            @content;
-          }
-        }
-      } @else {
-        @if $state {
-          @include state.state($state) {
-            @each $prop in $property {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
-            @content;
-          }
-        } @else {
-          @each $prop in $property {
-            #{$prop}: important.insert($value);
-          }
-
-          // Allow for custom overrides and additional styles.
-          @content;
-        }
-      }
-    }
+  @include create-mapped(
+    $selector,
+    $map,
+    $breakpoint: $breakpoint,
+    $theme: $theme,
+    $state: $state
+  ) {
+    @content;
   }
 }
 
@@ -123,7 +112,7 @@
 ///
 /// @param {string}  $selector
 ///   The selector to apply the utility class to.
-/// @param {Map}     $property-value-map
+/// @param {Map}     $map
 ///   The map of properties and values to apply to the selector.
 /// @param {?string} $breakpoint
 ///   The breakpoint to apply the utility class to.
@@ -133,7 +122,7 @@
 ///   The state to apply the utility class to.
 @mixin create-mapped(
   $selector,
-  $property-value-map,
+  $map,
   $breakpoint: null,
   $theme: null,
   $state: null
@@ -143,40 +132,12 @@
       #{$selector} {
         @if $breakpoint {
           @include screen.up($breakpoint) {
-            @if $state {
-              @include state.state($state) {
-                @each $prop, $value in $property-value-map {
-                  #{$prop}: important.insert($value);
-                }
-
-                // Allow for custom overrides and additional styles.
-                @content;
-              }
-            } @else {
-              @each $prop, $value in $property-value-map {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
+            @include _handle-state($state, $map) {
               @content;
             }
           }
         } @else {
-          @if $state {
-            @include state.state($state) {
-              @each $prop, $value in $property-value-map {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
-              @content;
-            }
-          } @else {
-            @each $prop, $value in $property-value-map {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
+          @include _handle-state($state, $map) {
             @content;
           }
         }
@@ -186,40 +147,12 @@
     #{$selector} {
       @if $breakpoint {
         @include screen.up($breakpoint) {
-          @if $state {
-            @include state.state($state) {
-              @each $prop, $value in $property-value-map {
-                #{$prop}: important.insert($value);
-              }
-
-              // Allow for custom overrides and additional styles.
-              @content;
-            }
-          } @else {
-            @each $prop, $value in $property-value-map {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
+          @include _handle-state($state, $map) {
             @content;
           }
         }
       } @else {
-        @if $state {
-          @include state.state($state) {
-            @each $prop, $value in $property-value-map {
-              #{$prop}: important.insert($value);
-            }
-
-            // Allow for custom overrides and additional styles.
-            @content;
-          }
-        } @else {
-          @each $prop, $value in $property-value-map {
-            #{$prop}: important.insert($value);
-          }
-
-          // Allow for custom overrides and additional styles.
+        @include _handle-state($state, $map) {
           @content;
         }
       }
