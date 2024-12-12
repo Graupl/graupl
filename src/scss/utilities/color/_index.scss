@@ -97,7 +97,7 @@
   // Generate theme-aware utilities.
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
-      @if ($theme-name != active) {
+      @if $theme-name != active {
         // For each theme colour, create a utility class for background and color.
         @each $color, $map in map.get(color.$themes, active) {
           @each $shade, $value in $map {
