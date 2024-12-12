@@ -20,7 +20,7 @@
 
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
-    $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+    $selector: "#{$selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
 
     @include utility.create($selector, display, $property);
   }
@@ -41,7 +41,7 @@
 
       // For each display property, create a utility class.
       @each $name, $property in defaults.$display-properties {
-        $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+        $selector: "#{$selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
 
         @include utility.create(
           $selector,
@@ -74,7 +74,7 @@
 
         // For each display property, create a utility class.
         @each $name, $property in defaults.$display-properties {
-          $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+          $selector: "#{$selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
 
           @include utility.create(
             $selector,
@@ -107,7 +107,7 @@
 
       // For each display property, create a utility class.
       @each $name, $property in defaults.$display-properties {
-        $selector: "#{selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+        $selector: "#{$selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
 
         @include utility.create(
           $selector,
