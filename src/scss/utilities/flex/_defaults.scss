@@ -82,6 +82,6 @@ $flex-basis-properties: map.merge(
 );
 
 // Utility modifier flags.
-$screen-aware: true !default;
-$theme-aware: true !default;
-$state-aware: true !default;
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;

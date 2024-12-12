@@ -32,5 +32,5 @@ $visually-hidden-focusable-selector: "visually-hidden-focusable" !default;
 
 // Utility modifier flags.
 $screen-aware: true !default;
-$theme-aware: true !default;
-$state-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;

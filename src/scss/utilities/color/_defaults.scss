@@ -32,6 +32,6 @@ $custom-text-properties: () !default;
 $text-properties: map.merge($base-text-properties, $custom-text-properties);
 
 // Utility modifier flags.
-$screen-aware: true !default;
+$screen-aware: false !default;
 $theme-aware: true !default;
 $state-aware: true !default;

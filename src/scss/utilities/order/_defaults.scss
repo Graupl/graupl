@@ -20,5 +20,5 @@ $order-properties: map.merge($base-order-properties, $custom-order-properties);
 
 // Utility modifier flags.
 $screen-aware: true !default;
-$theme-aware: true !default;
-$state-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
