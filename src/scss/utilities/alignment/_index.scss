@@ -6,68 +6,161 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
   // For each align content property, create a utility class.
   @each $name, $value in defaults.$align-content-properties {
-    @include utility.create(
-      ".#{defaults.$align-content-class-prefix}#{$name}",
-      align-content,
-      $value
-    );
+    $selector: "#{$selector-prefix}#{defaults.$align-content-selector-prefix}#{$name}";
+
+    @include utility.create($selector, align-content, $value);
   }
 
   // For each align items property, create a utility class.
   @each $name, $value in defaults.$align-items-properties {
-    @include utility.create(
-      ".#{defaults.$align-items-class-prefix}#{$name}",
-      align-items,
-      $value
-    );
+    $selector: "#{$selector-prefix}#{defaults.$align-items-selector-prefix}#{$name}";
+
+    @include utility.create($selector, align-items, $value);
   }
 
   // For each align self property, create a utility class.
   @each $name, $value in defaults.$align-self-properties {
-    @include utility.create(
-      ".#{defaults.$align-self-class-prefix}#{$name}",
-      align-self,
-      $value
-    );
+    $selector: "#{$selector-prefix}#{defaults.$align-self-selector-prefix}#{$name}";
+
+    @include utility.create($selector, align-self, $value);
   }
 
-  // Generate responsive utilities.
-  @if defaults.$responsive and root-defaults.$responsive-utilities {
-    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+  // Generate screen-aware utilities.
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
       // For each align content property, create a utility class.
       @each $name, $value in defaults.$align-content-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-content-selector-prefix}#{$name}";
+
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$align-content-class-prefix}#{$name}",
+          $selector,
           align-content,
           $value,
-          $screen-size
+          $screen: $screen-name
         );
       }
 
       // For each align items property, create a utility class.
       @each $name, $value in defaults.$align-items-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-items-selector-prefix}#{$name}";
+
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$align-items-class-prefix}#{$name}",
+          $selector,
           align-items,
           $value,
-          $screen-size
+          $screen: $screen-name
         );
       }
 
       // For each align self property, create a utility class.
       @each $name, $value in defaults.$align-self-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-self-selector-prefix}#{$name}";
+
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{defaults.$align-self-class-prefix}#{$name}",
+          $selector,
           align-self,
           $value,
-          $screen-size
+          $screen: $screen-name
+        );
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // For each align content property, create a utility class.
+        @each $name, $value in defaults.$align-content-properties {
+          $selector: "#{$selector-prefix}#{defaults.$align-content-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            align-content,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each align items property, create a utility class.
+        @each $name, $value in defaults.$align-items-properties {
+          $selector: "#{$selector-prefix}#{defaults.$align-items-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            align-items,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each align self property, create a utility class.
+        @each $name, $value in defaults.$align-self-properties {
+          $selector: "#{$selector-prefix}#{defaults.$align-self-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            align-self,
+            $value,
+            $theme: $theme-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // For each align content property, create a utility class.
+      @each $name, $value in defaults.$align-content-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-content-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          align-content,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each align items property, create a utility class.
+      @each $name, $value in defaults.$align-items-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-items-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          align-items,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each align self property, create a utility class.
+      @each $name, $value in defaults.$align-self-properties {
+        $selector: "#{$selector-prefix}#{defaults.$align-self-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          align-self,
+          $value,
+          $state: $state-name
         );
       }
     }

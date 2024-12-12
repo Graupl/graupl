@@ -8,7 +8,7 @@
 
 @use "sass:map";
 
-$position-class-prefix: "position-" !default;
+$position-selector-prefix: "position-" !default;
 $base-position-properties: (
   static: static,
   fixed: fixed,
@@ -22,5 +22,7 @@ $position-properties: map.merge(
   $custom-position-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

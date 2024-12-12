@@ -9,16 +9,19 @@
 @use "../../layout/flex-columns/defaults" as flex-columns-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
 @use "../../variables" as root-variables;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
   // For each spacing property, create a utility class.
   @each $name, $property in defaults.$spacing-properties {
     @each $key, $value in root-variables.$spacers {
-      $selector: ".#{$name}-#{$key}";
+      $selector: "#{$selector-prefix}#{$name}-#{$key}";
 
       // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
       // the columns-column-gap property instead of the raw property.
@@ -75,16 +78,21 @@
       }
     }
 
+    $selector: "#{$selector-prefix}#{$name}-auto";
+
     // Create the "auto" utility class.
-    @include utility.create("#{$name}-auto", $property, auto);
+    @include utility.create($selector, $property, auto);
   }
 
-  // Generate responsive utilities.
-  @if defaults.$responsive and root-defaults.$responsive-utilities {
-    @each $screen-size in map.keys(root-defaults.$screen-sizes) {
+  // Generate screen-aware utilities.
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
+      // For each spacing property, create a utility class.
       @each $name, $property in defaults.$spacing-properties {
         @each $key, $value in root-variables.$spacers {
-          $selector: ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-#{$key}";
+          $selector: "#{$selector-prefix}#{$name}-#{$key}";
 
           // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
           // the columns-column-gap property instead of the raw property.
@@ -93,7 +101,7 @@
               $selector,
               $property,
               $value,
-              $screen-size
+              $screen: $screen-name
             ) {
               &#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
@@ -118,7 +126,7 @@
               $selector,
               $property,
               $value,
-              $screen-size
+              $screen: $screen-name
             ) {
               &#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
@@ -137,7 +145,7 @@
               $selector,
               $property,
               $value,
-              $screen-size
+              $screen: $screen-name
             ) {
               &#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
@@ -152,16 +160,221 @@
               }
             }
           } @else {
-            @include utility.create($selector, $property, $value, $screen-size);
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $screen: $screen-name
+            );
           }
         }
 
+        $selector: "#{$selector-prefix}#{$name}-auto";
+
         // Create the "auto" utility class.
         @include utility.create(
-          ".#{$screen-size}#{root-defaults.$responsive-separator}#{$name}-auto",
+          $selector,
           $property,
           auto,
-          $screen-size
+          $screen: $screen-name
+        );
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // For each spacing property, create a utility class.
+        @each $name, $property in defaults.$spacing-properties {
+          @each $key, $value in root-variables.$spacers {
+            $selector: "#{$selector-prefix}#{$name}-#{$key}";
+
+            // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+            // the columns-column-gap property instead of the raw property.
+            @if $name == "g" {
+              @include utility.create(
+                $selector,
+                $property,
+                $value,
+                $theme: $theme-name
+              ) {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                  --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                  --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+              }
+            } @else if $name == "cg" {
+              @include utility.create(
+                $selector,
+                $property,
+                $value,
+                $theme: $theme-name
+              ) {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                      $value
+                    )};
+                }
+              }
+            } @else if $name == "rg" {
+              @include utility.create(
+                $selector,
+                $property,
+                $value,
+                $theme: $theme-name
+              ) {
+                &#{columns-defaults.$columns-selector} {
+                  --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+
+                &#{flex-columns-defaults.$flex-columns-selector} {
+                  --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                      $value
+                    )};
+                }
+              }
+            } @else {
+              @include utility.create(
+                $selector,
+                $property,
+                $value,
+                $theme: $theme-name
+              );
+            }
+          }
+
+          $selector: "#{$selector-prefix}#{$name}-auto";
+
+          // Create the "auto" utility class.
+          @include utility.create(
+            $selector,
+            $property,
+            auto,
+            $theme: $theme-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // For each spacing property, create a utility class.
+      @each $name, $property in defaults.$spacing-properties {
+        @each $key, $value in root-variables.$spacers {
+          $selector: "#{$selector-prefix}#{$name}-#{$key}";
+
+          // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+          // the columns-column-gap property instead of the raw property.
+          @if $name == "g" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $state: $state-name
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "cg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $state: $state-name
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "rg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $state: $state-name
+            ) {
+              &#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              &#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $state: $state-name
+            );
+          }
+        }
+
+        $selector: "#{$selector-prefix}#{$name}-auto";
+
+        // Create the "auto" utility class.
+        @include utility.create(
+          $selector,
+          $property,
+          auto,
+          $state: $state-name
         );
       }
     }

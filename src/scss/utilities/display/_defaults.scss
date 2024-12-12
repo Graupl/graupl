@@ -8,7 +8,7 @@
 
 @use "sass:map";
 
-$display-class-prefix: "display-" !default;
+$display-selector-prefix: "display-" !default;
 $base-display-properties: (
   block: block,
   inline-block: inline-block,
@@ -27,6 +27,10 @@ $display-properties: map.merge(
   $base-display-properties,
   $custom-display-properties
 );
-$visually-hidden-class: "visually-hidden" !default;
-$visually-hidden-focusable-class: "visually-hidden-focusable" !default;
-$responsive: true !default;
+$visually-hidden-selector: "visually-hidden" !default;
+$visually-hidden-focusable-selector: "visually-hidden-focusable" !default;
+
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

@@ -9,9 +9,9 @@
 @use "sass:map";
 
 // Width properties.
-$width-class-prefix: "w-" !default;
-$max-width-class-prefix: "max-w-" !default;
-$min-width-class-prefix: "min-w-" !default;
+$width-selector-prefix: "w-" !default;
+$max-width-selector-prefix: "max-w-" !default;
+$min-width-selector-prefix: "min-w-" !default;
 
 // Width values.
 $base-width-values: (
@@ -37,5 +37,7 @@ $base-width-values: (
 $custom-width-values: () !default;
 $width-values: map.merge($base-width-values, $custom-width-values);
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

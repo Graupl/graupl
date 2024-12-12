@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Visibility properties.
-$visibility-class-prefix: "visibility-" !default;
+$visibility-selector-prefix: "visibility-" !default;
 $base-visibility-properties: (
   visible: visible,
   hidden: hidden,
@@ -21,5 +21,7 @@ $visibility-properties: map.merge(
   $custom-visibility-properties
 );
 
-// Responsive utility flag.
-$responsive: true !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

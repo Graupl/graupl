@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Background utility properties.
-$background-class-prefix: "bg-" !default;
+$background-selector-prefix: "bg-" !default;
 $base-background-properties: (
   inherit: inherit,
   current: currentcolor,
@@ -22,7 +22,7 @@ $background-properties: map.merge(
 );
 
 // Text utility properties.
-$text-class-prefix: "text-" !default;
+$text-selector-prefix: "text-" !default;
 $base-text-properties: (
   inherit: inherit,
   current: currentcolor,
@@ -31,7 +31,7 @@ $base-text-properties: (
 $custom-text-properties: () !default;
 $text-properties: map.merge($base-text-properties, $custom-text-properties);
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
 $theme-aware: true !default;
 $state-aware: true !default;

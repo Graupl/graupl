@@ -37,5 +37,7 @@ $base-inset-values: (
 $custom-inset-values: () !default;
 $inset-values: map.merge($base-inset-values, $custom-inset-values);
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

@@ -9,9 +9,9 @@
 @use "sass:map";
 
 // Height properties.
-$height-class-prefix: "h-" !default;
-$max-height-class-prefix: "max-h-" !default;
-$min-height-class-prefix: "min-h-" !default;
+$height-selector-prefix: "h-" !default;
+$max-height-selector-prefix: "max-h-" !default;
+$min-height-selector-prefix: "min-h-" !default;
 
 // Height values.
 $base-height-values: (
@@ -37,5 +37,7 @@ $base-height-values: (
 $custom-height-values: () !default;
 $height-values: map.merge($base-height-values, $custom-height-values);
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Order properties.
-$order-class-prefix: "order-" !default;
+$order-selector-prefix: "order-" !default;
 $base-order-properties: (
   "none": 0,
   "first": -9999,
@@ -18,5 +18,7 @@ $base-order-properties: (
 $custom-order-properties: () !default;
 $order-properties: map.merge($base-order-properties, $custom-order-properties);
 
-// Responsive utility flag.
-$responsive: true !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

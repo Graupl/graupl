@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Flex direction properties.
-$flex-direction-class-prefix: "flex-" !default;
+$flex-direction-selector-prefix: "flex-" !default;
 $base-flex-direction-properties: (
   row: row,
   row-reverse: row-reverse,
@@ -23,7 +23,7 @@ $flex-direction-properties: map.merge(
 );
 
 // Flex wrap properties.
-$flex-wrap-class-prefix: "flex-" !default;
+$flex-wrap-selector-prefix: "flex-" !default;
 $base-flex-wrap-properties: (
   wrap: wrap,
   wrap-reverse: wrap-reverse,
@@ -36,7 +36,7 @@ $flex-wrap-properties: map.merge(
 );
 
 // Flex grow properties.
-$flex-grow-class-prefix: "flex-" !default;
+$flex-grow-selector-prefix: "flex-" !default;
 $base-flex-grow-properties: (
   grow: 1,
   no-grow: 0,
@@ -48,7 +48,7 @@ $flex-grow-properties: map.merge(
 );
 
 // Flex shrink properties.
-$flex-shrink-class-prefix: "flex-" !default;
+$flex-shrink-selector-prefix: "flex-" !default;
 $base-flex-shrink-properties: (
   shrink: 1,
   no-shrink: 0,
@@ -60,7 +60,7 @@ $flex-shrink-properties: map.merge(
 );
 
 // Flex basis properties.
-$flex-basis-class-prefix: "flex-" !default;
+$flex-basis-selector-prefix: "flex-" !default;
 $base-flex-basis-properties: (
   auto: auto,
   fit-content: fit-content,
@@ -81,5 +81,7 @@ $flex-basis-properties: map.merge(
   $custom-flex-basis-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

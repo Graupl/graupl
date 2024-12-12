@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // Justify content properties.
-$justify-content-class-prefix: "justify-content-" !default;
+$justify-content-selector-prefix: "justify-content-" !default;
 $base-justify-content-properties: (
   normal: normal,
   start: flex-start,
@@ -27,7 +27,7 @@ $justify-content-properties: map.merge(
 );
 
 // Justify items properties.
-$justify-items-class-prefix: "justify-items-" !default;
+$justify-items-selector-prefix: "justify-items-" !default;
 $base-justify-items-properties: (
   start: start,
   end: end,
@@ -41,7 +41,7 @@ $justify-items-properties: map.merge(
 );
 
 // Justify self properties.
-$justify-self-class-prefix: "justify-self-" !default;
+$justify-self-selector-prefix: "justify-self-" !default;
 $base-justify-self-properties: (
   auto: auto,
   start: start,
@@ -55,5 +55,7 @@ $justify-self-properties: map.merge(
   $custom-justify-self-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;

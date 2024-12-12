@@ -9,7 +9,7 @@
 @use "sass:map";
 
 // List style type properties.
-$list-style-type-class-prefix: "list-style-" !default;
+$list-style-type-selector-prefix: "list-style-" !default;
 $base-list-style-type-properties: (
   none: none,
   disc: disc,
@@ -24,7 +24,7 @@ $list-style-type-properties: map.merge(
 );
 
 // List style position properties.
-$list-style-position-class-prefix: "list-style-" !default;
+$list-style-position-selector-prefix: "list-style-" !default;
 $base-list-style-position-properties: (
   inside: inside,
   outside: outside,
@@ -35,5 +35,7 @@ $list-style-position-properties: map.merge(
   $custom-list-style-position-properties
 );
 
-// Responsive utility flag.
-$responsive: false !default;
+// Utility modifier flags.
+$screen-aware: true !default;
+$theme-aware: true !default;
+$state-aware: true !default;
