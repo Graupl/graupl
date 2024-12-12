@@ -37,7 +37,7 @@
     }
   }
 
-  @include screen.up(xs) {
+  @include screen.down(xs) {
     #{defaults.$input-group-selector}#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-grid-template-areas;
       grid-template-columns: $input-group-grid-template-columns;
