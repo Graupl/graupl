@@ -2,6 +2,34 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.2](https://github.com/Graupl/graupl/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-12-13)
+
+
+### Features
+
+* **component:** add list and list item ([98f899c](https://github.com/Graupl/graupl/commit/98f899c1555277145271ac65060105d3d1ace1b0))
+* implement id and layer control ([2b39b73](https://github.com/Graupl/graupl/commit/2b39b73fac4aed26eb8f49da5e66e625b6936263))
+* **utilities:** add theme and state aware utilities ([fa835cb](https://github.com/Graupl/graupl/commit/fa835cb98c877a14653686569f44f3a553cb1d92))
+* **utility:** add border classes ([5a408df](https://github.com/Graupl/graupl/commit/5a408dfdfa01daa37210cf5aecbbe6e3fe708715))
+* **utility:** add flex basis and fix generation of existing flex classes ([05499f7](https://github.com/Graupl/graupl/commit/05499f79773bcc90b5d59f1a5b74d86f26aeb2bf))
+* **utility:** add text transform classes ([0f2e074](https://github.com/Graupl/graupl/commit/0f2e07403e884c42eb21fb4d4bc0dcfd426d96eb))
+
+
+### Bug Fixes
+
+* **component:** use correct screen mixin for input group inline ([73ac6cb](https://github.com/Graupl/graupl/commit/73ac6cb58684d2c4f6eea82a507b721359bed9ae))
+* **utilities:** correct selector for display classes ([65c5052](https://github.com/Graupl/graupl/commit/65c5052311382f8c25eb9f89edd1faade42b7901))
+
+
+### Performance Improvements
+
+* **screen:** add error checking for mixins and functions ([3130bce](https://github.com/Graupl/graupl/commit/3130bce2e43d43194c56b983b755d8a0acd13500))
+
+
+### Code Refactoring
+
+* **border:** use rem for default width ([8ef867f](https://github.com/Graupl/graupl/commit/8ef867f30860134a59fa4bf147d05d618a7cbfcb))
+
 ## [1.0.0-beta.1](https://github.com/Graupl/graupl/compare/v1.0.0-beta.0...v1.0.0-beta.1) (2024-12-06)
 
 
