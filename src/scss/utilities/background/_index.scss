@@ -1,0 +1,340 @@
+// @graupl/graupl background utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
+
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
+
+@include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
+  // For each background attachment property, create a utility class.
+  @each $name, $value in defaults.$background-attachment-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-attachment, $value);
+  }
+
+  // For each background clip property, create a utility class.
+  @each $name, $value in defaults.$background-clip-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-clip, $value);
+  }
+
+  // For each background image property, create a utility class.
+  @each $name, $value in defaults.$background-image-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-image, $value);
+  }
+
+  // For each background origin property, create a utility class.
+  @each $name, $value in defaults.$background-origin-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-origin, $value);
+  }
+
+  // For each background position property, create a utility class.
+  @each $name, $value in defaults.$background-position-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-position, $value);
+  }
+
+  // For each background repeat property, create a utility class.
+  @each $name, $value in defaults.$background-repeat-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-repeat, $value);
+  }
+
+  // For each background size property, create a utility class.
+  @each $name, $value in defaults.$background-size-properties {
+    $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+
+    @include utility.create($selector, background-size, $value);
+  }
+
+  // Generate screen-aware utilities.
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
+      // For each background attachment property, create a utility class.
+      @each $name, $value in defaults.$background-attachment-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-attachment,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background clip property, create a utility class.
+      @each $name, $value in defaults.$background-clip-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-clip,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background image property, create a utility class.
+      @each $name, $value in defaults.$background-image-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-image,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background origin property, create a utility class.
+      @each $name, $value in defaults.$background-origin-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-origin,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background position property, create a utility class.
+      @each $name, $value in defaults.$background-position-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-position,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background repeat property, create a utility class.
+      @each $name, $value in defaults.$background-repeat-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-repeat,
+          $value,
+          $screen: $screen-name
+        );
+      }
+
+      // For each background size property, create a utility class.
+      @each $name, $value in defaults.$background-size-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-size,
+          $value,
+          $screen: $screen-name
+        );
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // For each background attachment property, create a utility class.
+        @each $name, $value in defaults.$background-attachment-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-attachment,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background clip property, create a utility class.
+        @each $name, $value in defaults.$background-clip-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-clip,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background image property, create a utility class.
+        @each $name, $value in defaults.$background-image-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-image,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background origin property, create a utility class.
+        @each $name, $value in defaults.$background-origin-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-origin,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background position property, create a utility class.
+        @each $name, $value in defaults.$background-position-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-position,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background repeat property, create a utility class.
+        @each $name, $value in defaults.$background-repeat-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-repeat,
+            $value,
+            $theme: $theme-name
+          );
+        }
+
+        // For each background size property, create a utility class.
+        @each $name, $value in defaults.$background-size-properties {
+          $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-size,
+            $value,
+            $theme: $theme-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // For each background attachment property, create a utility class.
+      @each $name, $value in defaults.$background-attachment-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-attachment,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background clip property, create a utility class.
+      @each $name, $value in defaults.$background-clip-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-clip,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background image property, create a utility class.
+      @each $name, $value in defaults.$background-image-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-image,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background origin property, create a utility class.
+      @each $name, $value in defaults.$background-origin-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-origin,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background position property, create a utility class.
+      @each $name, $value in defaults.$background-position-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-position,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background repeat property, create a utility class.
+      @each $name, $value in defaults.$background-repeat-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-repeat,
+          $value,
+          $state: $state-name
+        );
+      }
+
+      // For each background size property, create a utility class.
+      @each $name, $value in defaults.$background-size-properties {
+        $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-size,
+          $value,
+          $state: $state-name
+        );
+      }
+    }
+  }
+}
