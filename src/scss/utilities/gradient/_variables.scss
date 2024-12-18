@@ -1,0 +1,29 @@
+// @graupl/graupl gradient utilities variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "defaults";
+
+$gradient-from: var(
+  --#{root-defaults.$prefix}gradient-from,
+  #{theme.get(transparent)}
+);
+$gradient-from-position: var(
+  --#{root-defaults.$prefix}gradient-from-position,
+  0%
+);
+$gradient-to: var(
+  --#{root-defaults.$prefix}gradient-to,
+  #{theme.get(transparent)}
+);
+$gradient-to-position: var(
+  --#{root-defaults.$prefix}gradient-to-position,
+  100%
+);
+$gradient-direction: var(
+  --#{root-defaults.$prefix}gradient-direction,
+  to right
+);

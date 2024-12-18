@@ -1,0 +1,313 @@
+// @graupl/graupl background utilities styles.
+//
+// Responsive class must be within their own loop to prevent specificity issues.
+// This keeps responsive specificity tied to screen size before property order.
+
+@use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
+@use "../../mixins/utility";
+@use "../../theme/color/variables" as color;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
+
+@include layer(utilities) {
+  $selector-prefix: root-defaults.$utility-selector-prefix;
+
+  // Generate gradient utilities.
+  $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+
+  @include utility.create(
+    $selector,
+    background-image,
+    linear-gradient(
+      $gradient-direction,
+      $gradient-from $gradient-from-position,
+      $gradient-to $gradient-to-position
+    )
+  );
+
+  // For each gradient direction, create a utility class.
+  @each $name, $direction in defaults.$gradient-directions {
+    $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+
+    @include utility.create(
+      $selector,
+      --#{root-defaults.$prefix}gradient-direction,
+      $direction
+    );
+  }
+
+  // For each gradient color, create a utility class for both to and from.
+  @each $name, $color in defaults.$gradient-colors {
+    $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+
+    @include utility.create(
+      $selector,
+      --#{root-defaults.$prefix}gradient-from,
+      $color
+    );
+
+    $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+
+    @include utility.create(
+      $selector,
+      --#{root-defaults.$prefix}gradient-to,
+      $color
+    );
+  }
+
+  // For each theme color, create a utility class for both to and from.
+  @each $color, $map in map.get(color.$themes, active) {
+    @each $shade, $value in $map {
+      $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+
+      @include utility.create(
+        $selector,
+        --#{root-defaults.$prefix}gradient-from,
+        $value
+      );
+
+      $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+
+      @include utility.create(
+        $selector,
+        --#{root-defaults.$prefix}gradient-to,
+        $value
+      );
+    }
+  }
+
+  // Generate screen-aware utilities.
+  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+
+      // Generate gradient utilities.
+      $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+
+      @include utility.create(
+        $selector,
+        background-image,
+        linear-gradient(
+          $gradient-direction,
+          $gradient-from $gradient-from-position,
+          $gradient-to $gradient-to-position
+        ),
+        $screen: $screen-name
+      );
+
+      // For each gradient direction, create a utility class.
+      @each $name, $direction in defaults.$gradient-directions {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-direction,
+          $direction,
+          $screen: $screen-name
+        );
+      }
+
+      // For each gradient color, create a utility class for both to and from.
+      @each $name, $color in defaults.$gradient-colors {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-from,
+          $color,
+          $screen: $screen-name
+        );
+
+        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-to,
+          $color,
+          $screen: $screen-name
+        );
+      }
+
+      // For each theme color, create a utility class for both to and from.
+      @each $color, $map in map.get(color.$themes, active) {
+        @each $shade, $value in $map {
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-from,
+            $value,
+            $screen: $screen-name
+          );
+
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-to,
+            $value,
+            $screen: $screen-name
+          );
+        }
+      }
+    }
+  }
+
+  // Generate theme-aware utilities.
+  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name, $colors in color.$themes {
+      @if $theme-name != active {
+        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+
+        // Generate gradient utilities.
+        $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+
+        @include utility.create(
+          $selector,
+          background-image,
+          linear-gradient(
+            $gradient-direction,
+            $gradient-from $gradient-from-position,
+            $gradient-to $gradient-to-position
+          ),
+          $theme: $theme-name
+        );
+
+        // For each gradient direction, create a utility class.
+        @each $name, $direction in defaults.$gradient-directions {
+          $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-direction,
+            $direction,
+            $theme: $theme-name
+          );
+        }
+
+        // For each gradient color, create a utility class for both to and from.
+        @each $name, $color in defaults.$gradient-colors {
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-from,
+            $color,
+            $theme: $theme-name
+          );
+
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-to,
+            $color,
+            $theme: $theme-name
+          );
+        }
+
+        // For each theme color, create a utility class for both to and from.
+        @each $color, $map in map.get(color.$themes, active) {
+          @each $shade, $value in $map {
+            $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+
+            @include utility.create(
+              $selector,
+              --#{root-defaults.$prefix}gradient-from,
+              $value,
+              $theme: $theme-name
+            );
+
+            $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+
+            @include utility.create(
+              $selector,
+              --#{root-defaults.$prefix}gradient-to,
+              $value,
+              $theme: $theme-name
+            );
+          }
+        }
+      }
+    }
+  }
+
+  // Generate state-aware utilities.
+  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name, $value in root-defaults.$state-selectors {
+      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+
+      // Generate gradient utilities.
+      $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+
+      @include utility.create(
+        $selector,
+        background-image,
+        linear-gradient(
+          $gradient-direction,
+          $gradient-from $gradient-from-position,
+          $gradient-to $gradient-to-position
+        ),
+        $state: $state-name
+      );
+
+      // For each gradient direction, create a utility class.
+      @each $name, $direction in defaults.$gradient-directions {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-direction,
+          $direction,
+          $state: $state-name
+        );
+      }
+
+      // For each gradient color, create a utility class for both to and from.
+      @each $name, $color in defaults.$gradient-colors {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-from,
+          $color,
+          $state: $state-name
+        );
+
+        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          --#{root-defaults.$prefix}gradient-to,
+          $color,
+          $state: $state-name
+        );
+      }
+
+      // For each theme color, create a utility class for both to and from.
+      @each $color, $map in map.get(color.$themes, active) {
+        @each $shade, $value in $map {
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-from,
+            $value,
+            $state: $state-name
+          );
+
+          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-to,
+            $value,
+            $state: $state-name
+          );
+        }
+      }
+    }
+  }
+}

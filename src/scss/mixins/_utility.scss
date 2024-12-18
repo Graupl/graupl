@@ -8,6 +8,7 @@
 @use "../functions/important";
 @use "../functions/utility";
 @use "../defaults" as root-defaults;
+@use "sass:string";
 
 /// Insert a map of properties and values into a utility class.
 ///
@@ -15,7 +16,12 @@
 ///   The map of properties and values to apply to the selector.
 @mixin _insert($map) {
   @each $prop, $value in $map {
-    #{$prop}: important.insert($value);
+    // Do not attempt to insert important values inside of custom properties.
+    @if string.slice($prop, 1, 2) != "--" {
+      #{$prop}: important.insert(#{$value});
+    } @else {
+      #{$prop}: #{$value};
+    }
   }
 
   // Allow for custom overrides and additional styles.

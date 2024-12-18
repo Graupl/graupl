@@ -6,7 +6,7 @@
 @use "../theme/color/variables" as color;
 
 // A function to get the specific theme shades.
-@function get($color, $shade, $theme: active) {
+@function get($color, $shade: null, $theme: active) {
   @if $shade == transparent or $color == transparent {
     @return transparent;
   }
