@@ -23,11 +23,7 @@ $gradient-to-position: var(
   --#{root-defaults.$prefix}gradient-to-position,
   100%
 );
-$gradient-direction-linear: var(
-  --#{root-defaults.$prefix}gradient-direction,
-  to right
-);
-$gradient-direction-radial: var(
-  --#{root-defaults.$prefix}gradient-direction,
-  circle
+$gradient-directions: (
+  linear: var(--#{root-defaults.$prefix}gradient-direction, to right),
+  radial: var(--#{root-defaults.$prefix}gradient-direction, circle),
 );
