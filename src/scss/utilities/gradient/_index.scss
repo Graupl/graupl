@@ -21,7 +21,7 @@
     $selector,
     background-image,
     linear-gradient(
-      $gradient-direction-linear,
+      map.get($gradient-directions, linear),
       $gradient-from $gradient-from-position,
       $gradient-to $gradient-to-position
     )
@@ -36,7 +36,7 @@
       background-image,
       #{$type
         }(
-          $gradient-direction-radial,
+          map.get($gradient-directions, $name),
           $gradient-from $gradient-from-position,
           $gradient-to $gradient-to-position
         )
@@ -106,12 +106,29 @@
         $selector,
         background-image,
         linear-gradient(
-          $gradient-direction,
+          map.get($gradient-directions, linear),
           $gradient-from $gradient-from-position,
           $gradient-to $gradient-to-position
         ),
         $screen: $screen-name
       );
+
+      // For each gradient type, create a utility class.
+      @each $name, $type in defaults.$gradient-types {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-image,
+          #{$type
+            }(
+              map.get($gradient-directions, $name),
+              $gradient-from $gradient-from-position,
+              $gradient-to $gradient-to-position
+            ),
+          $screen: $screen-name
+        );
+      }
 
       // For each gradient direction, create a utility class.
       @each $name, $direction in defaults.$gradient-directions {
@@ -184,12 +201,29 @@
           $selector,
           background-image,
           linear-gradient(
-            $gradient-direction,
+            map.get($gradient-directions, linear),
             $gradient-from $gradient-from-position,
             $gradient-to $gradient-to-position
           ),
           $theme: $theme-name
         );
+
+        // For each gradient type, create a utility class.
+        @each $name, $type in defaults.$gradient-types {
+          $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+
+          @include utility.create(
+            $selector,
+            background-image,
+            #{$type
+              }(
+                map.get($gradient-directions, $name),
+                $gradient-from $gradient-from-position,
+                $gradient-to $gradient-to-position
+              ),
+            $theme: $theme-name
+          );
+        }
 
         // For each gradient direction, create a utility class.
         @each $name, $direction in defaults.$gradient-directions {
@@ -262,12 +296,29 @@
         $selector,
         background-image,
         linear-gradient(
-          $gradient-direction,
+          map.get($gradient-directions, linear),
           $gradient-from $gradient-from-position,
           $gradient-to $gradient-to-position
         ),
         $state: $state-name
       );
+
+      // For each gradient type, create a utility class.
+      @each $name, $type in defaults.$gradient-types {
+        $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+
+        @include utility.create(
+          $selector,
+          background-image,
+          #{$type
+            }(
+              map.get($gradient-directions, $name),
+              $gradient-from $gradient-from-position,
+              $gradient-to $gradient-to-position
+            ),
+          $state: $state-name
+        );
+      }
 
       // For each gradient direction, create a utility class.
       @each $name, $direction in defaults.$gradient-directions {
