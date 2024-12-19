@@ -10,19 +10,36 @@
 
 // Gradient properties.
 $gradient-selector: "gradient" !default;
+$gradient-type-selector-prefix: "" !default;
 $gradient-direction-selector-prefix: "" !default;
 $gradient-color-selector-prefix: "" !default;
 $gradient-color-from-selector-prefix: "from-" !default;
 $gradient-color-to-selector-prefix: "to-" !default;
+$base-gradient-types: (
+  linear: linear-gradient,
+  radial: radial-gradient,
+);
+$custom-gradient-types: () !default;
+$gradient-types: map.merge($base-gradient-types, $custom-gradient-types);
 $base-gradient-directions: (
   to-top: "to top",
-  to-top-right: "to top right",
   to-right: "to right",
-  to-bottom-right: "to bottom right",
   to-bottom: "to bottom",
-  to-bottom-left: "to bottom left",
   to-left: "to left",
-  to-top-left: "to top left",
+  circle: circle,
+  circle-at-top: circle at top,
+  circle-at-right: circle at right,
+  circle-at-bottom: circle at bottom,
+  circle-at-left: circle at left,
+  ellipse: ellipse,
+  ellipse-at-top: ellipse at top,
+  ellipse-at-right: ellipse at right,
+  ellipse-at-bottom: ellipse at bottom,
+  ellipse-at-left: ellipse at left,
+  closest-side: closest-side,
+  closest-corner: closest-corner,
+  farthest-side: farthest-side,
+  farthest-corner: farthest-corner,
 );
 $custom-gradient-directions: () !default;
 $gradient-directions: map.merge(
