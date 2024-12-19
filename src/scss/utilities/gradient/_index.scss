@@ -21,11 +21,27 @@
     $selector,
     background-image,
     linear-gradient(
-      $gradient-direction,
+      $gradient-direction-linear,
       $gradient-from $gradient-from-position,
       $gradient-to $gradient-to-position
     )
   );
+
+  // For each gradient type, create a utility class.
+  @each $name, $type in defaults.$gradient-types {
+    $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+
+    @include utility.create(
+      $selector,
+      background-image,
+      #{$type
+        }(
+          $gradient-direction-radial,
+          $gradient-from $gradient-from-position,
+          $gradient-to $gradient-to-position
+        )
+    );
+  }
 
   // For each gradient direction, create a utility class.
   @each $name, $direction in defaults.$gradient-directions {
