@@ -1,11 +1,10 @@
 /** @type {import('postcss-load-config').Config} */
 const config = {
   plugins: [
-    require("autoprefixer"),
-    // @todo: add cssnano when ready
-    // Waiting on upstream issue for postcss-calc: https://github.com/postcss/postcss-calc/issues/77
-    require("cssnano"),
     require("postcss-discard-comments"),
+    require("./combine-at-rules.cjs")({ atRules: ["layer"] }),
+    require("autoprefixer"),
+    require("cssnano"),
   ],
 };
 
