@@ -8,7 +8,8 @@
 
 // Flex columns selectors.
 $flex-columns-selector: ".flex-columns" !default;
-$flex-columns-column-selector-prefix: ".col-" !default;
+$flex-columns-column-selector-prefix: "." !default;
+$flex-columns-column-selector: "col-" !default;
 $flex-columns-fill-selector: ".fill" !default;
 
 // Flex columns properties.
