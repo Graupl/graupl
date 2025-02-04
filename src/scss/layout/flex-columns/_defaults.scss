@@ -6,11 +6,16 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Flex columns selectors.
-$flex-columns-selector: ".flex-columns" !default;
-$flex-columns-column-selector-prefix: "." !default;
+$flex-columns-selector-base: root-defaults.$selector-base !default;
+$flex-columns-selector: "flex-columns" !default;
+$flex-columns-column-selector-base: $flex-columns-selector-base !default;
 $flex-columns-column-selector: "col-" !default;
-$flex-columns-fill-selector: ".fill" !default;
+$flex-columns-fill-selector-base: $flex-columns-selector-base !default;
+$flex-columns-fill-selector: "fill" !default;
+$flex-columns-screen-aware-separator: root-defaults.$screen-aware-selector-separator !default;
 
 // Flex columns properties.
 $flex-columns-min-count: 1 !default;
