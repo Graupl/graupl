@@ -6,11 +6,17 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Container selectors.
-$container-selector: ".container" !default;
-$container-breakout-selector: ".breakout" !default;
-$container-feature-selector: ".feature" !default;
-$container-full-width-selector: ".full-width" !default;
+$container-selector-base: root-defaults.$selector-base !default;
+$container-selector: "container" !default;
+$container-breakout-selector-base: $container-selector-base !default;
+$container-breakout-selector: "breakout" !default;
+$container-feature-selector-base: $container-selector-base !default;
+$container-feature-selector: "feature" !default;
+$container-full-width-selector-base: $container-selector-base !default;
+$container-full-width-selector: "full-width" !default;
 
 // Container properties.
 $container-breakout-width: 15ch !default;
