@@ -44,9 +44,13 @@ const plugin = (options = {}) => {
     },
     Root(root) {
       // Combine all of the at-rules into a single at-rule
+      // Only do this for rules found in the current file.
       for (const atRuleName in atRules) {
         for (const atRuleParams in atRules[atRuleName]) {
           const atRule = atRules[atRuleName][atRuleParams];
+
+          console.log(atRule);
+
           root.append(atRule);
         }
       }
