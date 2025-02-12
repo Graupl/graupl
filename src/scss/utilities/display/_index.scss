@@ -16,7 +16,7 @@
 @use "variables" as *;
 
 @include layer(utilities) {
-  $selector-prefix: root-defaults.$utility-selector-prefix;
+  $selector-prefix: root-defaults.$utility-selector-base;
 
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
@@ -37,7 +37,7 @@
   // Create responsive utilities for visually hidden classes.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+      $selector-prefix: "#{root-defaults.$utility-selector-base}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
 
       // For each display property, create a utility class.
       @each $name, $property in defaults.$display-properties {
@@ -70,7 +70,7 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+        $selector-prefix: "#{root-defaults.$utility-selector-base}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
 
         // For each display property, create a utility class.
         @each $name, $property in defaults.$display-properties {
@@ -103,7 +103,7 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: "#{root-defaults.$utility-selector-prefix}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+      $selector-prefix: "#{root-defaults.$utility-selector-base}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
 
       // For each display property, create a utility class.
       @each $name, $property in defaults.$display-properties {

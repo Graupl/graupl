@@ -1,14 +1,16 @@
 // @graupl/graupl flex columns layout styles.
 
-@use "variables" as *;
-@use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/utility";
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(layout) {
   // Flex columns.
-  #{defaults.$flex-columns-selector} {
+  #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
     display: flex;
     flex-wrap: wrap;
     gap: $flex-columns-row-gap $flex-columns-column-gap;
@@ -18,7 +20,7 @@
       max-width: $flex-columns-max-width;
     }
 
-    #{defaults.$flex-columns-fill-selector} {
+    #{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
       --#{root-defaults.$prefix}flex-columns-max-width: unset;
     }
   }
@@ -27,7 +29,7 @@
     from defaults.$flex-columns-min-count
     through defaults.$flex-columns-max-count
   {
-    #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+    #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       --#{root-defaults.$prefix}flex-columns-size: calc(
         (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
@@ -40,41 +42,37 @@
     }
 
     @include screen.trigger(force-single-column) {
-      #{defaults.$flex-columns-column-selector-prefix}#{$i} {
+      #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
         --#{root-defaults.$prefix}flex-columns-size: 100%;
         --#{root-defaults.$prefix}flex-columns-max-width: auto;
       }
     }
   }
 
-  @each $screen, $query in root-defaults.$screen-sizes {
+  @each $screen-name in map.keys(root-defaults.$screen-sizes) {
     @for $i
       from defaults.$flex-columns-min-count
       through defaults.$flex-columns-max-count
     {
-      // For the screen-specific sizes, we can't use custom properties.
-      // It appears that custom properties that are already set, cannot be overwritten
-      // inside of a media query.
-      //
-      // If you do something like `.col-6 .col-lg-3`, the custom properties will only ever
-      // be set to the `.col-6` value.
-      @include screen.up($screen) {
-        #{defaults.$flex-columns-column-selector-prefix}#{$screen}-#{$i} {
-          /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      @include utility.create-mapped(
+        #{defaults.$flex-columns-column-selector-base}#{$screen-name}#{defaults.$flex-columns-screen-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
+        (
           --#{root-defaults.$prefix}flex-columns-size: calc(
-            (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
-              #{$flex-columns-column-gap}
-          );
-          /* stylelint-enable  scss/operator-no-newline-after */
+              (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+                #{$flex-columns-column-gap}
+            ),
           --#{root-defaults.$prefix}flex-columns-max-width: calc(
-            100% / #{defaults.$flex-columns-max-count} * #{$i}
-          );
-
-          &#{defaults.$flex-columns-fill-selector} {
-            --#{root-defaults.$prefix}flex-columns-max-width: unset;
-          }
+              100% / #{defaults.$flex-columns-max-count} * #{$i}
+            )
+        ),
+        $screen: $screen-name
+      ) {
+        &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
+          --#{root-defaults.$prefix}flex-columns-max-width: unset;
         }
       }
+      /* stylelint-enable  scss/operator-no-newline-after */
     }
   }
 }
