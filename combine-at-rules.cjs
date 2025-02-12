@@ -49,8 +49,6 @@ const plugin = (options = {}) => {
         for (const atRuleParams in atRules[atRuleName]) {
           const atRule = atRules[atRuleName][atRuleParams];
 
-          console.log(atRule);
-
           root.append(atRule);
         }
       }
