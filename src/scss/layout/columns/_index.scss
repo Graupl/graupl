@@ -7,7 +7,7 @@
 @use "../../mixins/screen";
 
 @include layer(layout) {
-  #{defaults.$columns-selector} {
+  #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
     display: grid;
     grid-template-columns: $columns-grid-template-columns;
     gap: $columns-row-gap $columns-column-gap;
@@ -18,26 +18,26 @@
   }
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
-    #{defaults.$columns-count-selector-prefix}#{$i} {
+    #{defaults.$columns-count-selector-base}#{defaults.$columns-count-selector-prefix}#{$i} {
       --#{root-defaults.$prefix}columns-count: #{$i};
 
       // For span values bigger than the actual column count, set them to the
       // maximum column count so they don't break the layout.
       @for $j from $i + 1 through defaults.$columns-max-count {
-        #{defaults.$columns-span-selector-prefix}#{$j} {
+        #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
           --#{root-defaults.$prefix}columns-span: #{$i};
         }
       }
     }
 
-    #{defaults.$columns-span-selector-prefix}#{$i} {
+    #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
       --#{root-defaults.$prefix}columns-span: #{$i};
     }
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
   @include screen.trigger(force-single-column) {
-    #{defaults.$columns-selector} {
+    #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
       --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};
 
       > * {
@@ -49,7 +49,7 @@
         from defaults.$columns-min-count
         through defaults.$columns-max-count
       {
-        #{defaults.$columns-span-selector-prefix}#{$i} {
+        #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
           --#{root-defaults.$prefix}columns-span: 1;
         }
       }

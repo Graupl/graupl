@@ -6,10 +6,15 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Columns selectors.
-$columns-selector: ".columns" !default;
-$columns-count-selector-prefix: ".count-" !default;
-$columns-span-selector-prefix: ".span-" !default;
+$columns-selector-base: root-defaults.$selector-base !default;
+$columns-selector: "columns" !default;
+$columns-count-selector-base: $columns-selector-base !default;
+$columns-count-selector-prefix: "count-" !default;
+$columns-span-selector-base: $columns-selector-base !default;
+$columns-span-selector-prefix: "span-" !default;
 
 // Columns properties.
 $columns-max-width: 1fr !default;

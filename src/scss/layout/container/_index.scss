@@ -5,37 +5,39 @@
 @use "../../mixins/layer" as *;
 
 @include layer(layout) {
-  #{defaults.$container-selector},
-  #{defaults.$container-selector} > #{defaults.$container-full-width-selector} {
-    display: grid;
-    grid-template-columns:
-      [full-width-start] $container-full-width-section-width
-      [feature-start] $container-feature-section-width
-      [breakout-start] $container-breakout-section-width
-      [content-start] $container-content-section-width
-      [content-end]
-      $container-breakout-section-width [breakout-end]
-      $container-feature-section-width [feature-end]
-      $container-full-width-section-width [full-width-end];
+  #{defaults.$container-selector-base}#{defaults.$container-selector} {
+    &,
+    > #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
+      display: grid;
+      grid-template-columns:
+        [full-width-start] $container-full-width-section-width
+        [feature-start] $container-feature-section-width
+        [breakout-start] $container-breakout-section-width
+        [content-start] $container-content-section-width
+        [content-end]
+        $container-breakout-section-width [breakout-end]
+        $container-feature-section-width [feature-end]
+        $container-full-width-section-width [full-width-end];
 
-    > :not(
-        #{defaults.$container-breakout-selector},
-        #{defaults.$container-full-width-selector},
-        #{defaults.$container-feature-selector}
-      ) {
-      grid-column: content;
-    }
+      > :not(
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+        ) {
+        grid-column: content;
+      }
 
-    #{defaults.$container-breakout-selector} {
-      grid-column: breakout;
-    }
+      #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector} {
+        grid-column: breakout;
+      }
 
-    #{defaults.$container-feature-selector} {
-      grid-column: feature;
-    }
+      #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+        grid-column: feature;
+      }
 
-    #{defaults.$container-full-width-selector} {
-      grid-column: full-width;
+      #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
+        grid-column: full-width;
+      }
     }
   }
 }
