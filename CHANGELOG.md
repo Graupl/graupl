@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.3](https://github.com/Graupl/graupl/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-02-12)
+
+
+### Features
+
+* **layout:** implement graupl-structured flex columns and new selector base ([684f715](https://github.com/Graupl/graupl/commit/684f71529a80cacaa24cc0ca4ace8300e21576a3)), closes [#136](https://github.com/Graupl/graupl/issues/136)
+* **layout:** implement selector-base ([cc70559](https://github.com/Graupl/graupl/commit/cc705592ddb289970d7276d380223bdaaba2c3a8)), closes [#136](https://github.com/Graupl/graupl/issues/136)
+* **utilities:** add gradients and background options ([75a1708](https://github.com/Graupl/graupl/commit/75a1708748793ff33736144c7046dde64845b51c))
+* **utilities:** add radial gradient options ([38bc6df](https://github.com/Graupl/graupl/commit/38bc6df42e09e6ed7873f9d3bed1577bfa6f86b5))
+
+
+### Bug Fixes
+
+* **utilities:** correct generation for gradient aware-variant classes ([b69d1ff](https://github.com/Graupl/graupl/commit/b69d1ff1a68863f41b5a5c35d8ab1329dfeb0221))
+
+
+### Performance Improvements
+
+* **utilities:** disable default aware-variants for gradient and background ([0f04459](https://github.com/Graupl/graupl/commit/0f04459d79b7dcd80900427339ac65e52cb7ed33))
+
+
+### Build System
+
+* **postcss:** add custom postcss plugin to merge layers ([#134](https://github.com/Graupl/graupl/issues/134)) ([0382d07](https://github.com/Graupl/graupl/commit/0382d076f11b416008d7d4076331452c66834939))
+
 ## [1.0.0-beta.2](https://github.com/Graupl/graupl/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2024-12-13)
 
 
