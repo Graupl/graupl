@@ -1,3 +1,6 @@
 // @graupl/graupl layer initialization styles.
 
-@layer graupl.normalize, graupl.base, graupl.layout, graupl.component, graupl.theme, graupl.utilities, graupl.state;
+@use "defaults" as root-defaults;
+
+// Layer initialization.
+@layer #{root-defaults.$id}.normalize, #{root-defaults.$id}.base, #{root-defaults.$id}.layout, #{root-defaults.$id}.component, #{root-defaults.$id}.theme, #{root-defaults.$id}.utilities, #{root-defaults.$id}.state;
