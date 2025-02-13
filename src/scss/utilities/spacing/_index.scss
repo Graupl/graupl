@@ -27,7 +27,7 @@
       // the columns-column-gap property instead of the raw property.
       @if $name == "g" {
         @include utility.create($selector, $property, $value) {
-          &#{columns-defaults.$columns-selector} {
+          &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
             --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                 $value
               )};
@@ -36,7 +36,7 @@
               )};
           }
 
-          &#{flex-columns-defaults.$flex-columns-selector} {
+          &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
             --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                 $value
               )};
@@ -47,13 +47,13 @@
         }
       } @else if $name == "cg" {
         @include utility.create($selector, $property, $value) {
-          &#{columns-defaults.$columns-selector} {
+          &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
             --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                 $value
               )};
           }
 
-          &#{flex-columns-defaults.$flex-columns-selector} {
+          &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
             --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                 $value
               )};
@@ -61,13 +61,13 @@
         }
       } @else if $name == "rg" {
         @include utility.create($selector, $property, $value) {
-          &#{columns-defaults.$columns-selector} {
+          &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
             --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
                 $value
               )};
           }
 
-          &#{flex-columns-defaults.$flex-columns-selector} {
+          &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
             --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
                 $value
               )};
@@ -103,7 +103,7 @@
               $value,
               $screen: $screen-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -112,7 +112,7 @@
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -128,13 +128,13 @@
               $value,
               $screen: $screen-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                     $value
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -147,13 +147,13 @@
               $value,
               $screen: $screen-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
                     $value
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
                     $value
                   )};
@@ -202,7 +202,7 @@
                 $value,
                 $theme: $theme-name
               ) {
-                &#{columns-defaults.$columns-selector} {
+                &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                   --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                       $value
                     )};
@@ -211,7 +211,7 @@
                     )};
                 }
 
-                &#{flex-columns-defaults.$flex-columns-selector} {
+                &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                   --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                       $value
                     )};
@@ -227,13 +227,13 @@
                 $value,
                 $theme: $theme-name
               ) {
-                &#{columns-defaults.$columns-selector} {
+                &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                   --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                       $value
                     )};
                 }
 
-                &#{flex-columns-defaults.$flex-columns-selector} {
+                &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                   --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                       $value
                     )};
@@ -246,13 +246,13 @@
                 $value,
                 $theme: $theme-name
               ) {
-                &#{columns-defaults.$columns-selector} {
+                &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                   --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
                       $value
                     )};
                 }
 
-                &#{flex-columns-defaults.$flex-columns-selector} {
+                &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                   --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
                       $value
                     )};
@@ -301,7 +301,7 @@
               $value,
               $state: $state-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -310,7 +310,7 @@
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -326,13 +326,13 @@
               $value,
               $state: $state-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
                     $value
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
                     $value
                   )};
@@ -345,13 +345,13 @@
               $value,
               $state: $state-name
             ) {
-              &#{columns-defaults.$columns-selector} {
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
                 --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
                     $value
                   )};
               }
 
-              &#{flex-columns-defaults.$flex-columns-selector} {
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
                 --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
                     $value
                   )};
