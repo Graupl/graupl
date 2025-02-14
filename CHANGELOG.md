@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.4](https://github.com/Graupl/graupl/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2025-02-14)
+
+
+### Bug Fixes
+
+* **layers:** use id in layer initialization ([f09a3ae](https://github.com/Graupl/graupl/commit/f09a3aeffdfe2bc0c781fa2a29aac1cd2f15e484))
+* **utility:** update gap to account for selector base ([550136b](https://github.com/Graupl/graupl/commit/550136b822959c1db1113f19a90ffe377315b270))
+
+
+### Build System
+
+* **git:** update pages job to use latest versions ([79a1d18](https://github.com/Graupl/graupl/commit/79a1d18bf12573b0885621aa3b5132136c623150))
+
 ## [1.0.0-beta.3](https://github.com/Graupl/graupl/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2025-02-12)
 
 
