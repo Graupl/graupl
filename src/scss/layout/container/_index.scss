@@ -1,4 +1,58 @@
 // @graupl/graupl container layout styles.
+//
+// This module provides the layout styles for the container component.
+//
+// The container component is a grid container that provides a layout for the main content of a page.
+// It is divided into four sections:
+// - Full-width: A full-width section that spans the entire width of the container.
+// - Feature: A feature section that is used for feature content.
+// - Breakout: A breakout section that is used for breakout content.
+// - Content: The main content section that contains all other content.
+//
+// The container layout is as follows:
+// | full-width | feature | breakout | content | breakout | feature | full-width |
+//
+// Nesting a container directly inside of another container will cause the
+// nested container to inherit the grid columns of the parent container.
+//
+// The default classes are:
+// - `.container`: The main container component.
+// - `.full-width`: A full-width container component.
+// - `.feature`: A feature container component.
+// - `.breakout`: A breakout container component.
+// - `.contain`: A utility class to contain child elements to the content section of the container grid.
+//
+// The following custom properties control the layout of the container:
+// - `--graupl-container-gap`: The gap between the container sections.
+// - `--graupl-container-content-max-width`: The maximum width of the content section.
+// - `--graupl-container-breakout-max-width`: The maximum width of the breakout section.
+// - `--graupl-container-feature-max-width`: The maximum width of the feature section.
+// - `--graupl-container-full-width-section-min-width`: The minimum width of one side of the full-width section.
+// - `--graupl-container-full-width-section-max-width`: The maximum width of one side of the full-width section.
+// - `--graupl-container-feature-section-min-width`: The minimum width of one side of the feature section.
+// - `--graupl-container-feature-section-max-width`: The maximum width of one side of the feature section.
+// - `--graupl-container-breakout-section-min-width`: The minimum width of one side of the breakout section.
+// - `--graupl-container-breakout-section-max-width`: The maximum width of one side of the breakout section.
+// - `--graupl-container-content-section-min-width`: The minimum width of the content section.
+// - `--graupl-container-content-section-max-width`: The maximum width of the content section.
+// - `--graupl-container-full-width-section-width`: The calculated minmax width of the full-width section.
+// - `--graupl-container-feature-section-width`: The calculated minmax width of the feature section.
+// - `--graupl-container-breakout-section-width`: The calculated minmax width of the breakout section.
+// - `--graupl-container-content-section-width`: The calculated minmax width of the content section.
+//
+// The following variables control the layout of the container:
+// - `$container-selector-base`: The base selector for the container component.
+// - `$container-selector`: The selector for the container component.
+// - `$container-breakout-selector-base`: The base selector for the breakout container component.
+// - `$container-breakout-selector`: The selector for the breakout container component.
+// - `$container-feature-selector-base`: The base selector for the feature container component.
+// - `$container-feature-selector`: The selector for the feature container component.
+// - `$container-full-width-selector-base`: The base selector for the full-width container component.
+// - `$container-full-width-selector`: The selector for the full-width container component.
+// - `$container-contain-selector-base`: The base selector for the contain utility class.
+// - `$container-contain-selector`: The selector for the contain utility class.
+// - `$container-breakout-width`: The width of the breakout section will extend from the content section.
+// - `$container-feature-width`: The width of the feature section will extend from the breakout section.
 
 @use "defaults";
 @use "variables" as *;
