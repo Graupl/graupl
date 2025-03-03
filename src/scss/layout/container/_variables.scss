@@ -20,31 +20,67 @@ $container-breakout-max-width: var(
   --#{root-defaults.$prefix}container-breakout-max-width,
   calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
 );
-$container-breakout-width: var(
-  --#{root-defaults.$prefix}container-breakout-width,
-  calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
-);
 $container-feature-max-width: var(
   --#{root-defaults.$prefix}container-feature-max-width,
   calc(#{$container-breakout-max-width} + #{defaults.$container-feature-width})
 );
-$container-feature-width: var(
-  --#{root-defaults.$prefix}container-feature-width,
+$container-full-width-section-min-width: var(
+  --#{root-defaults.$prefix}container-full-width-section-min-width,
+  #{$container-gap}
+);
+$container-full-width-section-max-width: var(
+  --#{root-defaults.$prefix}container-full-width-section-max-width,
+  1fr
+);
+$container-feature-section-min-width: var(
+  --#{root-defaults.$prefix}container-feature-section-min-width,
+  0
+);
+$container-feature-section-max-width: var(
+  --#{root-defaults.$prefix}container-feature-section-max-width,
   calc((#{$container-feature-max-width} - #{$container-breakout-max-width}) / 2)
 );
-$container-content-section-width: var(
-  --#{root-defaults.$prefix}container-content-section-width,
-  min(#{$container-content-max-width}, calc(100% - #{$container-gap} * 2))
+$container-breakout-section-min-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-min-width,
+  0
+);
+$container-breakout-section-max-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-max-width,
+  calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
+);
+$container-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-content-section-min-width,
+  calc(100% - #{$container-full-width-section-min-width} * 2)
+);
+$container-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-content-section-max-width,
+  #{$container-content-max-width}
 );
 $container-full-width-section-width: var(
   --#{root-defaults.$prefix}container-full-width-section-width,
-  minmax(#{$container-gap}, 1fr)
-);
-$container-breakout-section-width: var(
-  --#{root-defaults.$prefix}container-breakout-section-width,
-  minmax(0, #{$container-breakout-width})
+  minmax(
+    #{$container-full-width-section-min-width},
+    #{$container-full-width-section-max-width}
+  )
 );
 $container-feature-section-width: var(
   --#{root-defaults.$prefix}container-feature-section-width,
-  minmax(0, #{$container-feature-width})
+  minmax(
+    #{$container-feature-section-min-width},
+    #{$container-feature-section-max-width}
+  )
+);
+$container-breakout-section-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-width,
+  minmax(
+    #{$container-breakout-section-min-width},
+    #{$container-breakout-section-max-width}
+  )
+);
+$container-content-section-width: var(
+  --#{root-defaults.$prefix}container-content-section-width,
+  min(
+    #{$container-content-section-min-width},
+    #{$container-content-section-max-width}
+  )
 );
