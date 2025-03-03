@@ -17,6 +17,8 @@ $container-feature-selector-base: $container-selector-base !default;
 $container-feature-selector: "feature" !default;
 $container-full-width-selector-base: $container-selector-base !default;
 $container-full-width-selector: "full-width" !default;
+$container-contain-selector-base: $container-selector-base !default;
+$container-contain-selector: "contain" !default;
 
 // Container properties.
 $container-breakout-width: 15ch !default;

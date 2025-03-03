@@ -17,6 +17,15 @@
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
 
+    // Container components should span the full width of their parent container
+    // and inherit the grid columns.
+    > #{defaults.$container-selector-base}#{defaults.$container-selector} {
+      grid-column: 1/-1;
+      grid-template-columns: subgrid;
+    }
+
+    // Everything in the container that isn't a container component should
+    // be in the content section.
     > :not(
         #{defaults.$container-selector-base}#{defaults.$container-selector},
         #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
@@ -26,21 +35,33 @@
       grid-column: content;
     }
 
-    #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector} {
+    // Contain components should inherit the container's grid columns and
+    // force all children to be in the content section.
+    > #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+      display: grid;
+      grid-template-columns: subgrid;
+
+      > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+        ) {
+        grid-column: content;
+      }
+    }
+
+    // Set up the container components to span the appropriate grid columns.
+    > #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector} {
       grid-column: breakout;
     }
 
-    #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+    > #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
       grid-column: feature;
     }
 
-    #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
+    > #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
       grid-column: full-width;
-    }
-
-    > #{defaults.$container-selector-base}#{defaults.$container-selector} {
-      grid-column: 1/-1;
-      grid-template-columns: subgrid;
     }
   }
 }
