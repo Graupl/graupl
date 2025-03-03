@@ -15,6 +15,12 @@
     > * {
       grid-column: span $columns-span;
     }
+
+    // Set any child columns to subgrid.
+    // This is necessary to avoid breaking the layout.
+    #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
+      grid-template-columns: subgrid;
+    }
   }
 
   @for $i from defaults.$columns-min-count through defaults.$columns-max-count {

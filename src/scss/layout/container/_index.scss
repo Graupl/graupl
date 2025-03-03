@@ -1,4 +1,58 @@
 // @graupl/graupl container layout styles.
+//
+// This module provides the layout styles for the container component.
+//
+// The container component is a grid container that provides a layout for the main content of a page.
+// It is divided into four sections:
+// - Full-width: A full-width section that spans the entire width of the container.
+// - Feature: A feature section that is used for feature content.
+// - Breakout: A breakout section that is used for breakout content.
+// - Content: The main content section that contains all other content.
+//
+// The container layout is as follows:
+// | full-width | feature | breakout | content | breakout | feature | full-width |
+//
+// Nesting a container directly inside of another container will cause the
+// nested container to inherit the grid columns of the parent container.
+//
+// The default classes are:
+// - `.container`: The main container component.
+// - `.full-width`: A full-width container component.
+// - `.feature`: A feature container component.
+// - `.breakout`: A breakout container component.
+// - `.contain`: A utility class to contain child elements to the content section of the container grid.
+//
+// The following custom properties control the layout of the container:
+// - `--graupl-container-gap`: The gap between the container sections.
+// - `--graupl-container-content-max-width`: The maximum width of the content section.
+// - `--graupl-container-breakout-max-width`: The maximum width of the breakout section.
+// - `--graupl-container-feature-max-width`: The maximum width of the feature section.
+// - `--graupl-container-full-width-section-min-width`: The minimum width of one side of the full-width section.
+// - `--graupl-container-full-width-section-max-width`: The maximum width of one side of the full-width section.
+// - `--graupl-container-feature-section-min-width`: The minimum width of one side of the feature section.
+// - `--graupl-container-feature-section-max-width`: The maximum width of one side of the feature section.
+// - `--graupl-container-breakout-section-min-width`: The minimum width of one side of the breakout section.
+// - `--graupl-container-breakout-section-max-width`: The maximum width of one side of the breakout section.
+// - `--graupl-container-content-section-min-width`: The minimum width of the content section.
+// - `--graupl-container-content-section-max-width`: The maximum width of the content section.
+// - `--graupl-container-full-width-section-width`: The calculated minmax width of the full-width section.
+// - `--graupl-container-feature-section-width`: The calculated minmax width of the feature section.
+// - `--graupl-container-breakout-section-width`: The calculated minmax width of the breakout section.
+// - `--graupl-container-content-section-width`: The calculated minmax width of the content section.
+//
+// The following variables control the layout of the container:
+// - `$container-selector-base`: The base selector for the container component.
+// - `$container-selector`: The selector for the container component.
+// - `$container-breakout-selector-base`: The base selector for the breakout container component.
+// - `$container-breakout-selector`: The selector for the breakout container component.
+// - `$container-feature-selector-base`: The base selector for the feature container component.
+// - `$container-feature-selector`: The selector for the feature container component.
+// - `$container-full-width-selector-base`: The base selector for the full-width container component.
+// - `$container-full-width-selector`: The selector for the full-width container component.
+// - `$container-contain-selector-base`: The base selector for the contain utility class.
+// - `$container-contain-selector`: The selector for the contain utility class.
+// - `$container-breakout-width`: The width of the breakout section will extend from the content section.
+// - `$container-feature-width`: The width of the feature section will extend from the breakout section.
 
 @use "defaults";
 @use "variables" as *;
@@ -6,38 +60,62 @@
 
 @include layer(layout) {
   #{defaults.$container-selector-base}#{defaults.$container-selector} {
-    &,
-    > #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
+    display: grid;
+    grid-template-columns:
+      [full-width-start] $container-full-width-section-width
+      [feature-start] $container-feature-section-width
+      [breakout-start] $container-breakout-section-width
+      [content-start] $container-content-section-width
+      [content-end]
+      $container-breakout-section-width [breakout-end]
+      $container-feature-section-width [feature-end]
+      $container-full-width-section-width [full-width-end];
+
+    // Container components should span the full width of their parent container
+    // and inherit the grid columns.
+    > #{defaults.$container-selector-base}#{defaults.$container-selector} {
+      grid-column: 1/-1;
+      grid-template-columns: subgrid;
+    }
+
+    // Everything in the container that isn't a container component should
+    // be in the content section.
+    > :not(
+        #{defaults.$container-selector-base}#{defaults.$container-selector},
+        #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+        #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+        #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+      ) {
+      grid-column: content;
+    }
+
+    // Contain components should inherit the container's grid columns and
+    // force all children to be in the content section.
+    > #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
       display: grid;
-      grid-template-columns:
-        [full-width-start] $container-full-width-section-width
-        [feature-start] $container-feature-section-width
-        [breakout-start] $container-breakout-section-width
-        [content-start] $container-content-section-width
-        [content-end]
-        $container-breakout-section-width [breakout-end]
-        $container-feature-section-width [feature-end]
-        $container-full-width-section-width [full-width-end];
+      grid-template-columns: subgrid;
 
       > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
           #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
           #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
           #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
         ) {
         grid-column: content;
       }
+    }
 
-      #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector} {
-        grid-column: breakout;
-      }
+    // Set up the container components to span the appropriate grid columns.
+    > #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector} {
+      grid-column: breakout;
+    }
 
-      #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-        grid-column: feature;
-      }
+    > #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+      grid-column: feature;
+    }
 
-      #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
-        grid-column: full-width;
-      }
+    > #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
+      grid-column: full-width;
     }
   }
 }
