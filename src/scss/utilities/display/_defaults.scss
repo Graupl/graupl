@@ -6,8 +6,10 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
+$display-selector-base: root-defaults.$utility-selector-base !default;
 $display-selector-prefix: "display-" !default;
 $base-display-properties: (
   block: block,
@@ -27,8 +29,6 @@ $display-properties: map.merge(
   $base-display-properties,
   $custom-display-properties
 );
-$visually-hidden-selector: "visually-hidden" !default;
-$visually-hidden-focusable-selector: "visually-hidden-focusable" !default;
 
 // Utility modifier flags.
 $screen-aware: true !default;
