@@ -34,7 +34,7 @@ $container-full-width-section-max-width: var(
 );
 $container-feature-section-min-width: var(
   --#{root-defaults.$prefix}container-feature-section-min-width,
-  0
+  0rem
 );
 $container-feature-section-max-width: var(
   --#{root-defaults.$prefix}container-feature-section-max-width,
@@ -42,16 +42,22 @@ $container-feature-section-max-width: var(
 );
 $container-breakout-section-min-width: var(
   --#{root-defaults.$prefix}container-breakout-section-min-width,
-  0
+  0rem
 );
 $container-breakout-section-max-width: var(
   --#{root-defaults.$prefix}container-breakout-section-max-width,
   calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
 );
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $container-content-section-min-width: var(
   --#{root-defaults.$prefix}container-content-section-min-width,
-  calc(100% - #{$container-full-width-section-min-width} * 2)
+  calc(
+    100% - (#{$container-full-width-section-min-width} * 2) -
+      (#{$container-feature-section-min-width} * 2) -
+      (#{$container-breakout-section-min-width} * 2)
+  )
 );
+/* stylelint-enable  scss/operator-no-newline-after */
 $container-content-section-max-width: var(
   --#{root-defaults.$prefix}container-content-section-max-width,
   #{$container-content-max-width}
