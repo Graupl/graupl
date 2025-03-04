@@ -53,6 +53,28 @@
 // - `$container-contain-selector`: The selector for the contain utility class.
 // - `$container-breakout-width`: The width of the breakout section will extend from the content section.
 // - `$container-feature-width`: The width of the feature section will extend from the breakout section.
+//
+// @example
+//   <div class="container">
+//     Regular content
+//     <div class="full-width">
+//       Full-width content
+//     </div>
+//     <div class="feature">
+//       Feature content
+//     </div>
+//     <div class="breakout">
+//       Breakout content
+//     </div>
+//   </div>
+//
+// @example
+//   <div class="container">
+//     Regular content
+//     <div class="feature contain">
+//       Contained feature content
+//     </div>
+//   </div>
 
 @use "defaults";
 @use "variables" as *;

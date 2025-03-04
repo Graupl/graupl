@@ -39,6 +39,20 @@
 // - `$columns-min-count`: The minimum number of columns used to generate `.count-#` classes.
 // - `$columns-max-count`: The maximum number of columns used to generate `.count-#` classes.
 // - `$columns-span`: The default span of each column.
+//
+// @example
+//   <div class="columns">
+//     <div>Column 1</div>
+//     <div>Column 2</div>
+//     <div>Column 3</div>
+//   </div>
+//
+// @example
+//   <div class="columns count-4">
+//     <div>Column 1</div>
+//     <div class="span-2">Column 2</div>
+//     <div>Column 3</div>
+//   </div>
 
 @use "variables" as *;
 @use "defaults";

@@ -32,6 +32,27 @@
 // - `$flex-columns-max-count`: The maximum number of columns used to generate `.col-#` classes.
 // - `$flex-columns-size`: The default size of a column.
 // - `$flex-columns-max-width`: The default maximum width of a column.
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3">Column 1</div>
+//     <div class="col-6">Column 2</div>
+//     <div class="col-3">Column 3</div>
+//   </div>
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3">Column 1</div>
+//     <div class="col-3 fill">Column 2</div>
+//     <div class="col-3">Column 3</div>
+//   </div>
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3 md:col-2">Column 1</div>
+//     <div class="col-6 md:col-8">Column 2</div>
+//     <div class="col-3 md:col-2">Column 3</div>
+//   </div>
 
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
