@@ -1,4 +1,58 @@
 // @graupl/graupl flex columns layout styles.
+//
+// This module provides the layout styles for the flex columns component.
+//
+// The flex columns component is a flex container that provides a responsive grid layout for content.
+// The flex columns will adjust their sizes accordingly based on the classes applied to them.
+//
+// These are effectively bootstrap columns, but leaning more on the way flex natively works in the browser.
+// This means that columns will size themselves taking the gap between them into account.
+//
+// The default classes are:
+// - `.flex-columns`: The main flex columns component.
+// - `.col-#`: A class to set the size of a column.
+// - `.fill`: A class to set a column to fill the remaining space.
+// - `.[screen-name]:col-#`: A class to set the size of a column at a specific screen size.
+//
+// The following custom properties control the layout of the flex columns:
+// - `--graupl-flex-columns-row-gap`: The gap between the rows of the flex columns.
+// - `--graupl-flex-columns-column-gap`: The gap between the columns of the flex columns.
+// - `--graupl-flex-columns-size`: The size of a column.
+// - `--graupl-flex-columns-max-width`: The maximum width of a column.
+//
+// The following variables control the layout of the flex columns:
+// - `$flex-columns-selector-base`: The base selector for the flex columns component.
+// - `$flex-columns-selector`: The selector for the flex columns component.
+// - `$flex-columns-column-selector-base`: The base selector for the column class.
+// - `$flex-columns-column-selector`: The selector for the column class.
+// - `$flex-columns-fill-selector-base`: The base selector for the fill class.
+// - `$flex-columns-fill-selector`: The selector for the fill class.
+// - `$flex-columns-screen-aware-separator`: The separator for the screen-aware column class.
+// - `$flex-columns-min-count`: The minimum number of columns used to generate `.col-#` classes.
+// - `$flex-columns-max-count`: The maximum number of columns used to generate `.col-#` classes.
+// - `$flex-columns-size`: The default size of a column.
+// - `$flex-columns-max-width`: The default maximum width of a column.
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3">Column 1</div>
+//     <div class="col-6">Column 2</div>
+//     <div class="col-3">Column 3</div>
+//   </div>
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3">Column 1</div>
+//     <div class="col-3 fill">Column 2</div>
+//     <div class="col-3">Column 3</div>
+//   </div>
+//
+// @example
+//   <div class="flex-columns">
+//     <div class="col-3 md:col-2">Column 1</div>
+//     <div class="col-6 md:col-8">Column 2</div>
+//     <div class="col-3 md:col-2">Column 3</div>
+//   </div>
 
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
@@ -9,7 +63,7 @@
 @use "variables" as *;
 
 @include layer(layout) {
-  // Flex columns.
+  // .flex-columns
   #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
     display: flex;
     flex-wrap: wrap;
@@ -20,6 +74,7 @@
       max-width: $flex-columns-max-width;
     }
 
+    // .fill
     #{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
       --#{root-defaults.$prefix}flex-columns-max-width: unset;
     }
@@ -29,6 +84,7 @@
     from defaults.$flex-columns-min-count
     through defaults.$flex-columns-max-count
   {
+    // .col-#{$i}
     #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       --#{root-defaults.$prefix}flex-columns-size: calc(
@@ -42,6 +98,7 @@
     }
 
     @include screen.trigger(force-single-column) {
+      // .col-#{$i}
       #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
         --#{root-defaults.$prefix}flex-columns-size: 100%;
         --#{root-defaults.$prefix}flex-columns-max-width: auto;
@@ -56,6 +113,7 @@
     {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       @include utility.create-mapped(
+        // .#{screen-name}:col-#{$i}
         #{defaults.$flex-columns-column-selector-base}#{$screen-name}#{defaults.$flex-columns-screen-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
         (
           --#{root-defaults.$prefix}flex-columns-size: calc(
@@ -68,6 +126,7 @@
         ),
         $screen: $screen-name
       ) {
+        // .fill
         &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
           --#{root-defaults.$prefix}flex-columns-max-width: unset;
         }
