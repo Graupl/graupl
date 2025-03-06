@@ -15,7 +15,8 @@
 ///   The value with the important flag added.
 @function insert($value, $override: null) {
   // If override is set, use it.
-  @if $override {
+  /* stylelint-disable scss/at-if-no-null */
+  @if $override != null {
     // Convert the override to a string.
     // We have to do this because true/false values are weird in Sass.
     // Using the raw boolean value, it will always return true for some reason.
@@ -25,6 +26,7 @@
       @return #{$value};
     }
   }
+  /* stylelint-enable scss/at-if-no-null */
 
   @if defaults.$use-important {
     @return #{$value} !important;
