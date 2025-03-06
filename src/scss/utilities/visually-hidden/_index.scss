@@ -10,13 +10,13 @@
 // - N/A.
 //
 // The following variables control the generated utility classes:
-// - `$visually-hidden-selector-base`: The base selector for the visually-hidden utility classes.
+// - `$selector-base`: The base selector for the utility classes.
+// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$screen-aware`: A flag to generate screen-aware utility classes.
+// - `$theme-aware`: A flag to generate theme-aware utility classes.
+// - `$state-aware`: A flag to generate state-aware utility classes.
 // - `$visually-hidden-selector`: The selector for the visually-hidden utility class.
-// - `$visually-hidden-focusable-selector-base`: The base selector for the focusable utility class.
 // - `$visually-hidden-focusable-selector`: The selector for the focusable utility class.
-// - `$screen-aware`: Generates screen-aware utility classes for visually hidden elements.
-// - `$theme-aware`: Generates theme-aware utility classes for visually hidden elements.
-// - `$state-aware`: Generates state-aware utility classes for visually hidden elements.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.
@@ -57,20 +57,18 @@
 
 @include layer(utilities) {
   // `.`
-  $selector-prefix: defaults.$visually-hidden-selector-base;
+  $selector-prefix: defaults.$selector-base;
 
   // `.visually-hidden`
   #{$selector-prefix}#{defaults.$visually-hidden-selector} {
     // `&:not(.focusable)`
-    &:not(
-        #{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector}
-      ) {
-      @include visually-hidden.apply;
+    &:not(#{$selector-prefix}#{defaults.$visually-hidden-focusable-selector}) {
+      @include visually-hidden.apply(defaults.$use-important);
     }
 
     // `&.focusable`
-    &#{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector} {
-      @include visually-hidden.focusable;
+    &#{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
+      @include visually-hidden.focusable(defaults.$use-important);
     }
   }
 
@@ -85,14 +83,14 @@
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(
-              #{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector}
+              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
             ) {
-            @include visually-hidden.apply;
+            @include visually-hidden.apply(defaults.$use-important);
           }
 
           // `&.focusable`
-          &#{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector} {
-            @include visually-hidden.focusable;
+          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
+            @include visually-hidden.focusable(defaults.$use-important);
           }
         }
       }
@@ -110,14 +108,14 @@
           #{$selector-prefix}#{defaults.$visually-hidden-selector} {
             // `&:not(.focusable)`
             &:not(
-                #{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector}
+                #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
               ) {
-              @include visually-hidden.apply;
+              @include visually-hidden.apply(defaults.$use-important);
             }
 
             // `&.focusable`
-            &#{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector} {
-              @include visually-hidden.focusable;
+            &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
+              @include visually-hidden.focusable(defaults.$use-important);
             }
           }
         }
@@ -135,14 +133,14 @@
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(
-              #{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector}
+              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
             ) {
-            @include visually-hidden.apply;
+            @include visually-hidden.apply(defaults.$use-important);
           }
 
           // `&.focusable`
-          &#{defaults.$visually-hidden-focusable-selector-base}#{defaults.$visually-hidden-focusable-selector} {
-            @include visually-hidden.focusable;
+          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
+            @include visually-hidden.focusable(defaults.$use-important);
           }
         }
       }

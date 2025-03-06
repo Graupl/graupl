@@ -9,7 +9,14 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 
-$display-selector-base: root-defaults.$utility-selector-base !default;
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+
+// Display properties.
 $display-selector-prefix: "display-" !default;
 $base-display-properties: (
   block: block,
@@ -29,8 +36,3 @@ $display-properties: map.merge(
   $base-display-properties,
   $custom-display-properties
 );
-
-// Utility modifier flags.
-$screen-aware: true !default;
-$theme-aware: false !default;
-$state-aware: false !default;
