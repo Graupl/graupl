@@ -6,7 +6,15 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
 
 // Ratio utilities.
 $ratio-selector: "ratio" !default;
@@ -23,8 +31,3 @@ $base-ratios: (
 );
 $custom-ratios: () !default;
 $ratios: map.merge($base-ratios, $custom-ratios);
-
-// Utility modifier flags.
-$screen-aware: true !default;
-$theme-aware: false !default;
-$state-aware: false !default;
