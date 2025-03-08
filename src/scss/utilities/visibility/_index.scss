@@ -63,7 +63,7 @@
   // For each visibility property, create a utility class.
   @each $name, $value in defaults.$visibility-properties {
     // e.g. `.visibility-visible` or `.visibility-hidden`
-    $selector: "#{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -77,12 +77,12 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {
         // e.g. `.md:visibility-visible` or `.lg:visibility-hidden`
-        $selector: "#{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -100,12 +100,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each visibility property, create a utility class.
         @each $name, $value in defaults.$visibility-properties {
           // e.g. `.dark:visibility-visible` or `.light:visibility-hidden`
-          $selector: "#{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -123,12 +123,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {
         // e.g. `.hover:visibility-visible` or `.focus:visibility-hidden`
-        $selector: "#{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

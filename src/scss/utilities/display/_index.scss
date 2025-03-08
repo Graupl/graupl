@@ -71,7 +71,7 @@
   // For each display property, create a utility class.
   @each $name, $property in defaults.$display-properties {
     // e.g. `.display-block` or `.display-flex`
-    $selector: "#{$selector-prefix}#{defaults.$display-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$display-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,

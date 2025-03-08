@@ -412,7 +412,7 @@
   @each $name, $property in defaults.$spacing-properties {
     @each $key, $value in root-variables.$spacers {
       // `.m-1` or `.p-1`
-      $selector: "#{$selector-prefix}#{$name}-#{$key}";
+      $selector: #{$selector-prefix}#{$name}-#{$key};
 
       // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
       // the columns-column-gap property instead of the raw property.
@@ -511,13 +511,13 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each spacing property, create a utility class.
       @each $name, $property in defaults.$spacing-properties {
         @each $key, $value in root-variables.$spacers {
           // `.md:m-1` or `.lg:p-1`
-          $selector: "#{$selector-prefix}#{$name}-#{$key}";
+          $selector: #{$selector-prefix}#{$name}-#{$key};
 
           // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
           // the columns-column-gap property instead of the raw property.
@@ -624,13 +624,13 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each spacing property, create a utility class.
         @each $name, $property in defaults.$spacing-properties {
           @each $key, $value in root-variables.$spacers {
             // `.dark:m-1` or `.light:p-1`
-            $selector: "#{$selector-prefix}#{$name}-#{$key}";
+            $selector: #{$selector-prefix}#{$name}-#{$key};
 
             // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
             // the columns-column-gap property instead of the raw property.
@@ -737,13 +737,13 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each spacing property, create a utility class.
       @each $name, $property in defaults.$spacing-properties {
         @each $key, $value in root-variables.$spacers {
           // `.hover:m-1` or `.focus:p-1`
-          $selector: "#{$selector-prefix}#{$name}-#{$key}";
+          $selector: #{$selector-prefix}#{$name}-#{$key};
 
           // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
           // the columns-column-gap property instead of the raw property.

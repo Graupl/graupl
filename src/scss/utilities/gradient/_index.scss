@@ -149,7 +149,7 @@
   // Generate gradient utilities.
   //
   // `.gradient`
-  $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+  $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
   @include utility.create(
     $selector,
@@ -165,7 +165,7 @@
   // For each gradient type, create a utility class.
   @each $name, $type in defaults.$gradient-types {
     // e.g. `.linear` or `.radial`
-    $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -183,7 +183,7 @@
   // For each gradient direction, create a utility class.
   @each $name, $direction in defaults.$gradient-directions {
     // e.g. `.to-top` or `.to-right`
-    $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -196,7 +196,7 @@
   // For each gradient color, create a utility class for both to and from.
   @each $name, $color in defaults.$gradient-colors {
     // e.g. `.from-transparent`
-    $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -206,7 +206,7 @@
     );
 
     // e.g. `.to-transparent`
-    $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -220,7 +220,7 @@
   @each $color, $map in map.get(color.$themes, active) {
     @each $shade, $value in $map {
       // e.g. `.from-primary-500` or `.from-secondary-500`
-      $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+      $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
 
       @include utility.create(
         $selector,
@@ -230,7 +230,7 @@
       );
 
       // e.g. `.to-primary-500` or `.to-secondary-500`
-      $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+      $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
 
       @include utility.create(
         $selector,
@@ -245,12 +245,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // Generate gradient utilities.
       //
       // e.g. `.md:gradient` or `.lg:gradient`
-      $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+      $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
       @include utility.create(
         $selector,
@@ -267,7 +267,7 @@
       // For each gradient type, create a utility class.
       @each $name, $type in defaults.$gradient-types {
         // e.g. `.md:linear` or `.lg:radial`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -286,7 +286,7 @@
       // For each gradient direction, create a utility class.
       @each $name, $direction in defaults.$gradient-directions {
         // e.g. `.md:to-top` or `.lg:to-right`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -300,7 +300,7 @@
       // For each gradient color, create a utility class for both to and from.
       @each $name, $color in defaults.$gradient-colors {
         // e.g. `.md:from-transparent` or `.lg:from-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -311,7 +311,7 @@
         );
 
         // e.g. `.md:to-transparent` or `.lg:to-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -326,7 +326,7 @@
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.md:from-primary-500` or `.lg:from-secondary-500`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -337,7 +337,7 @@
           );
 
           // e.g. `.md:to-primary-500` or `.lg:to-secondary-500`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -356,12 +356,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // Generate gradient utilities.
         //
         // e.g. `.dark:gradient` or `.light:gradient`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
         @include utility.create(
           $selector,
@@ -378,7 +378,7 @@
         // For each gradient type, create a utility class.
         @each $name, $type in defaults.$gradient-types {
           // e.g. `.dark:linear` or `.light:radial`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -397,7 +397,7 @@
         // For each gradient direction, create a utility class.
         @each $name, $direction in defaults.$gradient-directions {
           // e.g. `.dark:to-top` or `.light:to-right`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -411,7 +411,7 @@
         // For each gradient color, create a utility class for both to and from.
         @each $name, $color in defaults.$gradient-colors {
           // e.g. `.dark:from-transparent` or `.light:from-transparent`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -422,7 +422,7 @@
           );
 
           // e.g. `.dark:to-transparent` or `.light:to-transparent`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -437,7 +437,7 @@
         @each $color, $map in map.get(color.$themes, active) {
           @each $shade, $value in $map {
             // e.g. `.dark:from-primary-500` or `.light:from-secondary-500`
-            $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+            $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
 
             @include utility.create(
               $selector,
@@ -448,7 +448,7 @@
             );
 
             // e.g. `.dark:to-primary-500` or `.light:to-secondary-500`
-            $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+            $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
 
             @include utility.create(
               $selector,
@@ -467,12 +467,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // Generate gradient utilities.
       //
       // e.g. `.hover:gradient` or `.focus:gradient`
-      $selector: "#{$selector-prefix}#{defaults.$gradient-selector}";
+      $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
       @include utility.create(
         $selector,
@@ -489,7 +489,7 @@
       // For each gradient type, create a utility class.
       @each $name, $type in defaults.$gradient-types {
         // e.g. `.hover:linear` or `.focus:radial`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -508,7 +508,7 @@
       // For each gradient direction, create a utility class.
       @each $name, $direction in defaults.$gradient-directions {
         // e.g. `.hover:to-top` or `.focus:to-right`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -522,7 +522,7 @@
       // For each gradient color, create a utility class for both to and from.
       @each $name, $color in defaults.$gradient-colors {
         // e.g. `.hover:from-transparent` or `.focus:from-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -533,7 +533,7 @@
         );
 
         // e.g. `.hover:to-transparent` or `.focus:to-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -548,7 +548,7 @@
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.hover:from-primary-500` or `.focus:from-secondary-500`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -559,7 +559,7 @@
           );
 
           // e.g. `.hover:to-primary-500` or `.focus:to-secondary-500`
-          $selector: "#{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,

@@ -65,7 +65,7 @@
   // For each position property, create a utility class.
   @each $name, $property in defaults.$position-properties {
     // e.g. `.position-static` or `.position-fixed`
-    $selector: "#{$selector-prefix}#{defaults.$position-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$position-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -79,12 +79,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each position property, create a utility class.
       @each $name, $property in defaults.$position-properties {
         // e.g. `.md:position-static` or `.lg:position-fixed`
-        $selector: "#{$selector-prefix}#{defaults.$position-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$position-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -102,12 +102,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each position property, create a utility class.
         @each $name, $property in defaults.$position-properties {
           // e.g. `.dark:position-static` or `.light:position-fixed`
-          $selector: "#{$selector-prefix}#{defaults.$position-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$position-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -125,12 +125,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each position property, create a utility class.
       @each $name, $property in defaults.$position-properties {
         // e.g. `.hover:position-static` or `.focus:position-fixed`
-        $selector: "#{$selector-prefix}#{defaults.$position-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$position-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

@@ -82,7 +82,7 @@
   // For each justify content property, create a utility class.
   @each $name, $value in defaults.$justify-content-properties {
     // e.g. `.justify-content-normal` or `.justify-content-center`
-    $selector: "#{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -95,7 +95,7 @@
   // For each justify items property, create a utility class.
   @each $name, $value in defaults.$justify-items-properties {
     // e.g. `.justify-items-start` or `.justify-items-center`
-    $selector: "#{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -108,7 +108,7 @@
   // For each justify self property, create a utility class.
   @each $name, $value in defaults.$justify-self-properties {
     // e.g. `.justify-self-auto` or `.justify-self-center`
-    $selector: "#{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -122,12 +122,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each justify content property, create a utility class.
       @each $name, $value in defaults.$justify-content-properties {
         // e.g. `.md:justify-content-normal` or `.lg:justify-content-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -141,7 +141,7 @@
       // For each justify items property, create a utility class.
       @each $name, $value in defaults.$justify-items-properties {
         // e.g. `.md:justify-items-start` or `.lg:justify-items-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -155,7 +155,7 @@
       // For each justify self property, create a utility class.
       @each $name, $value in defaults.$justify-self-properties {
         // e.g. `.md:justify-self-auto` or `.lg:justify-self-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -173,12 +173,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each justify content property, create a utility class.
         @each $name, $value in defaults.$justify-content-properties {
           // e.g. `.dark:justify-content-normal` or `.light:justify-content-center`
-          $selector: "#{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -192,7 +192,7 @@
         // For each justify items property, create a utility class.
         @each $name, $value in defaults.$justify-items-properties {
           // e.g. `.dark:justify-items-start` or `.light:justify-items-center`
-          $selector: "#{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -206,7 +206,7 @@
         // For each justify self property, create a utility class.
         @each $name, $value in defaults.$justify-self-properties {
           // e.g. `.dark:justify-self-auto` or `.light:justify-self-center`
-          $selector: "#{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -224,12 +224,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each justify content property, create a utility class.
       @each $name, $value in defaults.$justify-content-properties {
         // e.g. `.hover:justify-content-normal` or `.focus:justify-content-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -243,7 +243,7 @@
       // For each justify items property, create a utility class.
       @each $name, $value in defaults.$justify-items-properties {
         // e.g. `.hover:justify-items-start` or `.focus:justify-items-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -257,7 +257,7 @@
       // For each justify self property, create a utility class.
       @each $name, $value in defaults.$justify-self-properties {
         // e.g. `.hover:justify-self-auto` or `.focus:justify-self-center`
-        $selector: "#{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

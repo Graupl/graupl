@@ -58,7 +58,7 @@
   // For each template property, create a utility class.
   @each $name, $value in defaults.$template-properties {
     // e.g. `.template-property-name`
-    $selector: "#{$selector-prefix}#{defaults.$template-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -72,12 +72,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each template property, create a utility class.
       @each $name, $value in defaults.$template-properties {
         // e.g. `.md:template-property-name`
-        $selector: "#{$selector-prefix}#{defaults.$template-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -95,12 +95,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each template property, create a utility class.
         @each $name, $value in defaults.$template-properties {
           // e.g. `.dark:template-property-name` or `.light:template-property-name`
-          $selector: "#{$selector-prefix}#{defaults.$template-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -118,12 +118,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each template property, create a utility class.
       @each $name, $value in defaults.$template-properties {
         // e.g. `.hover:template-property-name` or `.focus:template-property-name`
-        $selector: "#{$selector-prefix}#{defaults.$template-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

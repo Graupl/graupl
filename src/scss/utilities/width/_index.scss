@@ -144,7 +144,7 @@
   // For each width property, create a utility class.
   @each $width, $value in defaults.$width-values {
     // e.g. `.w-min-content` or `.w-full`
-    $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$width}";
+    $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
 
     @include utility.create(
       $selector,
@@ -154,7 +154,7 @@
     );
 
     // e.g. `.max-w-min-content` or `.max-w-full`
-    $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width}";
+    $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
 
     @include utility.create(
       $selector,
@@ -164,7 +164,7 @@
     );
 
     // e.g. `.min-w-min-content` or `.min-w-full`
-    $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width}";
+    $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
 
     @include utility.create(
       $selector,
@@ -176,7 +176,7 @@
 
   @each $spacer, $value in root-variables.$spacers {
     // e.g. `.w-1` or `.w-2`
-    $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -186,7 +186,7 @@
     );
 
     // e.g. `.max-w-1` or `.max-w-2`
-    $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -196,7 +196,7 @@
     );
 
     // e.g. `.min-w-1` or `.min-w-2`
-    $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -210,12 +210,12 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
         // e.g. `.md:w-min-content` or `.lg:w-full`
-        $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -226,7 +226,7 @@
         );
 
         // e.g. `.md:max-w-min-content` or `.lg:max-w-full`
-        $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -237,7 +237,7 @@
         );
 
         // e.g. `.md:min-w-min-content` or `.lg:min-w-full`
-        $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -250,7 +250,7 @@
 
       @each $spacer, $value in root-variables.$spacers {
         // e.g. `.md:w-1` or `.lg:w-2`
-        $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -261,7 +261,7 @@
         );
 
         // e.g. `.md:max-w-1` or `.lg:max-w-2`
-        $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -272,7 +272,7 @@
         );
 
         // e.g. `.md:min-w-1` or `.lg:min-w-2`
-        $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -290,12 +290,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each width property, create a utility class.
         @each $width, $value in defaults.$width-values {
           // e.g. `.dark:w-min-content` or `.light:w-full`
-          $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$width}";
+          $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
 
           @include utility.create(
             $selector,
@@ -306,7 +306,7 @@
           );
 
           // e.g. `.dark:max-w-min-content` or `.light:max-w-full`
-          $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width}";
+          $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
 
           @include utility.create(
             $selector,
@@ -317,7 +317,7 @@
           );
 
           // e.g. `.dark:min-w-min-content` or `.light:min-w-full`
-          $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width}";
+          $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
 
           @include utility.create(
             $selector,
@@ -330,7 +330,7 @@
 
         @each $spacer, $value in root-variables.$spacers {
           // e.g. `.dark:w-1` or `.light:w-2`
-          $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -341,7 +341,7 @@
           );
 
           // e.g. `.dark:max-w-1` or `.light:max-w-2`
-          $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -352,7 +352,7 @@
           );
 
           // e.g. `.dark:min-w-1` or `.light:min-w-2`
-          $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -370,17 +370,17 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
         // e.g. `.hover:w-min-content` or `.focus:w-full`
-        $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
 
         @include utility.create($selector, width, $value, $state: $state-name);
 
         // e.g. `.hover:max-w-min-content` or `.focus:max-w-full`
-        $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -391,7 +391,7 @@
         );
 
         // e.g. `.hover:min-w-min-content` or `.focus:min-w-full`
-        $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -404,12 +404,12 @@
 
       @each $spacer, $value in root-variables.$spacers {
         // e.g. `.hover:w-1` or `.focus:w-2`
-        $selector: "#{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
         @include utility.create($selector, width, $value, $state: $state-name);
 
         // e.g. `.hover:max-w-1` or `.focus:max-w-2`
-        $selector: "#{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -420,7 +420,7 @@
         );
 
         // e.g. `.hover:min-w-1` or `.focus:min-w-2`
-        $selector: "#{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,

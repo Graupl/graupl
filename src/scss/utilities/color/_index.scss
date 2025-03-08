@@ -130,7 +130,7 @@
   @each $color, $map in map.get(color.$themes, active) {
     @each $shade, $value in $map {
       // e.g. `.bg-primary-500` or `.bg-secondary-700`
-      $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade}";
+      $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
       @include utility.create(
         $selector,
@@ -140,7 +140,7 @@
       );
 
       // e.g. `.text-primary-500` or `.text-secondary-700`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade}";
+      $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
       @include utility.create(
         $selector,
@@ -154,7 +154,7 @@
   // For each background property, create a utility class.
   @each $name, $value in defaults.$background-properties {
     // e.g. `.bg-inherit` or `.bg-current`
-    $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -167,7 +167,7 @@
   // For each text property, create a utility class.
   @each $name, $value in defaults.$text-properties {
     // e.g. `.text-inherit` or `.text-current`
-    $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -181,13 +181,13 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each theme colour, create a utility class for background and color.
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.md:bg-primary-500` or `.lg:bg-secondary-700`
-          $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -198,7 +198,7 @@
           );
 
           // e.g. `.md:text-primary-500` or `.lg:text-secondary-700`
-          $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -213,7 +213,7 @@
       // For each background property, create a utility class.
       @each $name, $value in defaults.$background-properties {
         // e.g. `.md:bg-inherit` or `.lg:bg-current`
-        $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -227,7 +227,7 @@
       // For each text property, create a utility class.
       @each $name, $value in defaults.$text-properties {
         // e.g. `.md:text-inherit` or `.lg:text-current`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -245,13 +245,13 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each theme colour, create a utility class for background and color.
         @each $color, $map in map.get(color.$themes, active) {
           @each $shade, $value in $map {
             // e.g. `.dark:bg-primary-500` or `.light:bg-secondary-700`
-            $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade}";
+            $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
             @include utility.create(
               $selector,
@@ -262,7 +262,7 @@
             );
 
             // e.g. `.dark:text-primary-500` or `.light:text-secondary-700`
-            $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade}";
+            $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
             @include utility.create(
               $selector,
@@ -277,7 +277,7 @@
         // For each background property, create a utility class.
         @each $name, $value in defaults.$background-properties {
           // e.g. `.dark:bg-inherit` or `.light:bg-current`
-          $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -291,7 +291,7 @@
         // For each text property, create a utility class.
         @each $name, $value in defaults.$text-properties {
           // e.g. `.dark:text-inherit` or `.light:text-current`
-          $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -309,13 +309,13 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each theme colour, create a utility class for background and color.
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.hover:bg-primary-500` or `.focus:bg-secondary-700`
-          $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -326,7 +326,7 @@
           );
 
           // e.g. `.hover:text-primary-500` or `.focus:text-secondary-700`
-          $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -341,7 +341,7 @@
       // For each background property, create a utility class.
       @each $name, $value in defaults.$background-properties {
         // e.g. `.hover:bg-inherit` or `.focus:bg-current`
-        $selector: "#{$selector-prefix}#{defaults.$background-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -355,7 +355,7 @@
       // For each text property, create a utility class.
       @each $name, $value in defaults.$text-properties {
         // e.g. `.hover:text-inherit` or `.focus:text-current`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

@@ -144,7 +144,7 @@
   // For each height property, create a utility class.
   @each $height, $value in defaults.$height-values {
     // e.g. `.h-min-content` or `.h-fit-content`
-    $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
+    $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$height};
 
     @include utility.create(
       $selector,
@@ -154,7 +154,7 @@
     );
 
     // e.g. `.max-h-min-content` or `.max-h-fit-content`
-    $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
+    $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height};
 
     @include utility.create(
       $selector,
@@ -164,7 +164,7 @@
     );
 
     // e.g. `.min-h-min-content` or `.min-h-fit-content`
-    $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
+    $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height};
 
     @include utility.create(
       $selector,
@@ -176,7 +176,7 @@
 
   @each $spacer, $value in root-variables.$spacers {
     // e.g. `.h-1` or `.h-5`
-    $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -186,7 +186,7 @@
     );
 
     // e.g. `.max-h-1` or `.max-h-5`
-    $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -196,7 +196,7 @@
     );
 
     // e.g. `.min-h-1` or `.min-h-5`
-    $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer}";
+    $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
 
     @include utility.create(
       $selector,
@@ -210,12 +210,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
         // e.g. `.md:h-min-content` or `.lg:h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$height};
 
         @include utility.create(
           $selector,
@@ -226,7 +226,7 @@
         );
 
         // e.g. `.md:max-h-min-content` or `.lg:max-h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height};
 
         @include utility.create(
           $selector,
@@ -237,7 +237,7 @@
         );
 
         // e.g. `.md:min-h-min-content` or `.lg:min-h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height};
 
         @include utility.create(
           $selector,
@@ -250,7 +250,7 @@
 
       @each $spacer, $value in root-variables.$spacers {
         // e.g. `.md:h-1` or `.lg:h-5`
-        $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -261,7 +261,7 @@
         );
 
         // e.g. `.md:max-h-1` or `.lg:max-h-5`
-        $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -272,7 +272,7 @@
         );
 
         // e.g. `.md:min-h-1` or `.lg:min-h-5`
-        $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -290,12 +290,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each height property, create a utility class.
         @each $height, $value in defaults.$height-values {
           // e.g. `.dark:h-min-content` or `.light:h-fit-content`
-          $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
+          $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$height};
 
           @include utility.create(
             $selector,
@@ -306,7 +306,7 @@
           );
 
           // e.g. `.dark:max-h-min-content` or `.light:max-h-fit-content`
-          $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
+          $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height};
 
           @include utility.create(
             $selector,
@@ -317,7 +317,7 @@
           );
 
           // e.g. `.dark:min-h-min-content` or `.light:min-h-fit-content`
-          $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
+          $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height};
 
           @include utility.create(
             $selector,
@@ -330,7 +330,7 @@
 
         @each $spacer, $value in root-variables.$spacers {
           // e.g. `.dark:h-1` or `.light:h-5`
-          $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -341,7 +341,7 @@
           );
 
           // e.g. `.dark:max-h-1` or `.light:max-h-5`
-          $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -352,7 +352,7 @@
           );
 
           // e.g. `.dark:min-h-1` or `.light:min-h-5`
-          $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer}";
+          $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
 
           @include utility.create(
             $selector,
@@ -370,17 +370,17 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
         // e.g. `.hover:h-min-content` or `.focus:h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$height};
 
         @include utility.create($selector, height, $value, $state: $state-name);
 
         // e.g. `.hover:max-h-min-content` or `.focus:max-h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height};
 
         @include utility.create(
           $selector,
@@ -391,7 +391,7 @@
         );
 
         // e.g. `.hover:min-h-min-content` or `.focus:min-h-fit-content`
-        $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height};
 
         @include utility.create(
           $selector,
@@ -404,12 +404,12 @@
 
       @each $spacer, $value in root-variables.$spacers {
         // e.g. `.hover:h-1` or `.focus:h-5`
-        $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
 
         @include utility.create($selector, height, $value, $state: $state-name);
 
         // e.g. `.hover:max-h-1` or `.focus:max-h-5`
-        $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,
@@ -420,7 +420,7 @@
         );
 
         // e.g. `.hover:min-h-1` or `.focus:min-h-5`
-        $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer}";
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
 
         @include utility.create(
           $selector,

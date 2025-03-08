@@ -97,7 +97,7 @@
   // For each flex direction property, create a utility class.
   @each $name, $property in defaults.$flex-direction-properties {
     // e.g. `.flex-row` or `.flex-col`
-    $selector: "#{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -110,7 +110,7 @@
   // For each flex wrap property, create a utility class.
   @each $name, $property in defaults.$flex-wrap-properties {
     // e.g. `.flex-wrap` or `.flex-nowrap`
-    $selector: "#{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -123,7 +123,7 @@
   // For each flex grow property, create a utility class.
   @each $name, $property in defaults.$flex-grow-properties {
     // e.g. `.flex-grow` or `.flex-no-grow`
-    $selector: "#{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -136,7 +136,7 @@
   // For each flex shrink property, create a utility class.
   @each $name, $property in defaults.$flex-shrink-properties {
     // e.g. `.flex-shrink` or `.flex-no-shrink`
-    $selector: "#{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -149,7 +149,7 @@
   // For each flex basis property, create a utility class.
   @each $name, $property in defaults.$flex-basis-properties {
     // e.g. `.flex-min-content` or `.flex-max-content`
-    $selector: "#{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -163,12 +163,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each flex direction property, create a utility class.
       @each $name, $property in defaults.$flex-direction-properties {
         // e.g. `.md:flex-row` or `.lg:flex-col`
-        $selector: "#{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -182,7 +182,7 @@
       // For each flex wrap property, create a utility class.
       @each $name, $property in defaults.$flex-wrap-properties {
         // e.g. `.md:flex-wrap` or `.lg:flex-nowrap`
-        $selector: "#{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -196,7 +196,7 @@
       // For each flex grow property, create a utility class.
       @each $name, $property in defaults.$flex-grow-properties {
         // e.g. `.md:flex-grow` or `.lg:flex-no-grow`
-        $selector: "#{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -210,7 +210,7 @@
       // For each flex shrink property, create a utility class.
       @each $name, $property in defaults.$flex-shrink-properties {
         // e.g. `.md:flex-shrink` or `.lg:flex-no-shrink`
-        $selector: "#{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -224,7 +224,7 @@
       // For each flex basis property, create a utility class.
       @each $name, $property in defaults.$flex-basis-properties {
         // e.g. `.md:flex-min-content` or `.lg:flex-max-content`
-        $selector: "#{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -242,12 +242,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each flex direction property, create a utility class.
         @each $name, $property in defaults.$flex-direction-properties {
           // e.g. `.dark:flex-row` or `.light:flex-col`
-          $selector: "#{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -261,7 +261,7 @@
         // For each flex wrap property, create a utility class.
         @each $name, $property in defaults.$flex-wrap-properties {
           // e.g. `.dark:flex-wrap` or `.light:flex-nowrap`
-          $selector: "#{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -275,7 +275,7 @@
         // For each flex grow property, create a utility class.
         @each $name, $property in defaults.$flex-grow-properties {
           // e.g. `.dark:flex-grow` or `.light:flex-no-grow`
-          $selector: "#{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -289,7 +289,7 @@
         // For each flex shrink property, create a utility class.
         @each $name, $property in defaults.$flex-shrink-properties {
           // e.g. `.dark:flex-shrink` or `.light:flex-no-shrink`
-          $selector: "#{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -303,7 +303,7 @@
         // For each flex basis property, create a utility class.
         @each $name, $property in defaults.$flex-basis-properties {
           // e.g. `.dark:flex-min-content` or `.light:flex-max-content`
-          $selector: "#{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -321,12 +321,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each flex direction property, create a utility class.
       @each $name, $property in defaults.$flex-direction-properties {
         // e.g. `.hover:flex-row` or `.focus:flex-col`
-        $selector: "#{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -340,7 +340,7 @@
       // For each flex wrap property, create a utility class.
       @each $name, $property in defaults.$flex-wrap-properties {
         // e.g. `.hover:flex-wrap` or `.focus:flex-nowrap`
-        $selector: "#{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -354,7 +354,7 @@
       // For each flex grow property, create a utility class.
       @each $name, $property in defaults.$flex-grow-properties {
         // e.g. `.hover:flex-grow` or `.focus:flex-no-grow`
-        $selector: "#{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -368,7 +368,7 @@
       // For each flex shrink property, create a utility class.
       @each $name, $property in defaults.$flex-shrink-properties {
         // e.g. `.hover:flex-shrink` or `.focus:flex-no-shrink`
-        $selector: "#{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -382,7 +382,7 @@
       // For each flex basis property, create a utility class.
       @each $name, $property in defaults.$flex-basis-properties {
         // e.g. `.hover:flex-min-content` or `.focus:flex-max-content`
-        $selector: "#{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

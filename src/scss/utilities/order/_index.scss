@@ -86,7 +86,7 @@
   /* stylelint-enable  scss/operator-no-newline-after */
 
   @each $property, $value in defaults.$order-properties {
-    $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
+    $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
 
     @include utility.create(
       $selector,
@@ -97,7 +97,7 @@
   }
 
   @for $i from 1 through $order-max-count {
-    $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$i}";
+    $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
     @include utility.create(
       $selector,
@@ -110,10 +110,10 @@
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       @each $property, $value in defaults.$order-properties {
-        $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
 
         @include utility.create(
           $selector,
@@ -125,7 +125,7 @@
       }
 
       @for $i from 1 through $order-max-count {
-        $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$i}";
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
         @include utility.create(
           $selector,
@@ -142,10 +142,10 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         @each $property, $value in defaults.$order-properties {
-          $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
+          $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
 
           @include utility.create(
             $selector,
@@ -157,7 +157,7 @@
         }
 
         @for $i from 1 through $order-max-count {
-          $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$i}";
+          $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
           @include utility.create(
             $selector,
@@ -174,10 +174,10 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       @each $property, $value in defaults.$order-properties {
-        $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
 
         @include utility.create(
           $selector,
@@ -189,7 +189,7 @@
       }
 
       @for $i from 1 through $order-max-count {
-        $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$i}";
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
         @include utility.create(
           $selector,

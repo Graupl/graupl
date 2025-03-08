@@ -109,7 +109,7 @@
   $selector-prefix: defaults.$selector-base;
 
   // `.bordered`
-  $selector: "#{$selector-prefix}#{defaults.$default-border-selector}";
+  $selector: #{$selector-prefix}#{defaults.$default-border-selector};
 
   // Create a class to apply the default border styling.
   @include utility.create-mapped(
@@ -125,7 +125,7 @@
   // For each border width, create a class to apply the border width.
   @each $width, $value in defaults.$border-width-properties {
     // e.g. `.border-thick` or `.border-thin`
-    $selector: "#{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width}";
+    $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
 
     @include utility.create(
       $selector,
@@ -138,7 +138,7 @@
   // For each border style, create a class to apply the border style.
   @each $border-style, $value in defaults.$border-style-properties {
     // e.g. `.border-solid` or `.border-dashed`
-    $selector: "#{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style}";
+    $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
 
     @include utility.create(
       $selector,
@@ -152,7 +152,7 @@
   @each $color, $map in map.get(color.$themes, active) {
     @each $shade, $value in $map {
       // e.g. `.border-primary-100` or `.border-secondary-900`
-      $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade}";
+      $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
 
       @include utility.create(
         $selector,
@@ -166,7 +166,7 @@
   // For each border color, create a utility class for border color.
   @each $name, $value in defaults.$border-color-properties {
     // e.g. `.border-transparent`
-    $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -180,10 +180,10 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // e.g. `.md:bordered` or `.lg:bordered`
-      $selector: "#{$selector-prefix}#{defaults.$default-border-selector}";
+      $selector: #{$selector-prefix}#{defaults.$default-border-selector};
 
       // Create a class to apply the default border styling.
       @include utility.create-mapped(
@@ -200,7 +200,7 @@
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
         // e.g. `.md:border-thick` or `.lg:border-thin`
-        $selector: "#{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -214,7 +214,7 @@
       // For each border style, create a class to apply the border style.
       @each $border-style, $value in defaults.$border-style-properties {
         // e.g. `.md:border-solid` or `.lg:border-dashed`
-        $selector: "#{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style}";
+        $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
 
         @include utility.create(
           $selector,
@@ -229,7 +229,7 @@
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.md:border-primary-100` or `.lg:border-secondary-900`
-          $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -244,7 +244,7 @@
       // For each border color, create a utility class for border color.
       @each $name, $value in defaults.$border-color-properties {
         // e.g. `.md:border-transparent` or `.lg:border-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -262,10 +262,10 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // e.g. `.dark:bordered` or `.light:bordered`
-        $selector: "#{$selector-prefix}#{defaults.$default-border-selector}";
+        $selector: #{$selector-prefix}#{defaults.$default-border-selector};
 
         // Create a class to apply the default border styling.
         @include utility.create-mapped(
@@ -282,7 +282,7 @@
         // For each border width, create a class to apply the border width.
         @each $width, $value in defaults.$border-width-properties {
           // e.g. `.dark:border-thick` or `.light:border-thin`
-          $selector: "#{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width}";
+          $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
 
           @include utility.create(
             $selector,
@@ -296,7 +296,7 @@
         // For each border style, create a class to apply the border style.
         @each $border-style, $value in defaults.$border-style-properties {
           // e.g. `.dark:border-solid` or `.light:border-dashed`
-          $selector: "#{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style}";
+          $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
 
           @include utility.create(
             $selector,
@@ -311,7 +311,7 @@
         @each $color, $map in map.get(color.$themes, active) {
           @each $shade, $value in $map {
             // e.g. `.dark:border-primary-100` or `.light:border-secondary-900`
-            $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade}";
+            $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
 
             @include utility.create(
               $selector,
@@ -326,7 +326,7 @@
         // For each border color, create a utility class for border color.
         @each $name, $value in defaults.$border-color-properties {
           // e.g. `.dark:border-transparent` or `.light:border-transparent`
-          $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -344,10 +344,10 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // e.g. `.hover:bordered` or `.focus:bordered`
-      $selector: "#{$selector-prefix}#{defaults.$default-border-selector}";
+      $selector: #{$selector-prefix}#{defaults.$default-border-selector};
 
       // Create a class to apply the default border styling.
       @include utility.create-mapped(
@@ -364,7 +364,7 @@
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
         // e.g. `.hover:border-thick` or `.focus:border-thin`
-        $selector: "#{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width}";
+        $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
 
         @include utility.create(
           $selector,
@@ -378,7 +378,7 @@
       // For each border style, create a class to apply the border style.
       @each $border-style, $value in defaults.$border-style-properties {
         // e.g. `.hover:border-solid` or `.focus:border-dashed`
-        $selector: "#{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style}";
+        $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
 
         @include utility.create(
           $selector,
@@ -393,7 +393,7 @@
       @each $color, $map in map.get(color.$themes, active) {
         @each $shade, $value in $map {
           // e.g. `.hover:border-primary-100` or `.focus:border-secondary-900`
-          $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade}";
+          $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
 
           @include utility.create(
             $selector,
@@ -408,7 +408,7 @@
       // For each border color, create a utility class for border color.
       @each $name, $value in defaults.$border-color-properties {
         // e.g. `.hover:border-transparent` or `.focus:border-transparent`
-        $selector: "#{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,

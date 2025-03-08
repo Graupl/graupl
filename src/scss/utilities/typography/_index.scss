@@ -92,7 +92,7 @@
   // For each font size property, create a utility class.
   @each $size, $value in typography.$font-sizes {
     // e.g. `.text-2xl` or `.text-3xl`
-    $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$size}";
+    $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
 
     @include utility.create($selector, font-size, $value);
   }
@@ -222,7 +222,7 @@
   // For each font weight property, create a utility class.
   @each $weight, $value in typography.$font-weights {
     // e.g. `.font-bold` or `.font-normal`
-    $selector: "#{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight}";
+    $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
     @include utility.create(
       $selector,
@@ -235,7 +235,7 @@
   // For each font style property, create a utility class.
   @each $style, $value in defaults.$font-style-properties {
     // e.g. `.font-normal` or `.font-italic`
-    $selector: "#{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style}";
+    $selector: #{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style};
 
     @include utility.create(
       $selector,
@@ -248,7 +248,7 @@
   // For each text transform property, create a utility class.
   @each $transform, $value in defaults.$text-transform-properties {
     // e.g. `.text-uppercase` or `.text-lowercase`
-    $selector: "#{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform}";
+    $selector: #{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform};
 
     @include utility.create(
       $selector,
@@ -262,12 +262,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each font size property, create a utility class.
       @each $size, $value in typography.$font-sizes {
         // e.g. `.md:text-2xl` or `.lg:text-3xl`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$size}";
+        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
 
         @include utility.create(
           $selector,
@@ -411,7 +411,7 @@
       // For each font weight property, create a utility class.
       @each $weight, $value in typography.$font-weights {
         // e.g. `.md:font-bold` or `.lg:font-normal`
-        $selector: "#{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight}";
+        $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
         @include utility.create(
           $selector,
@@ -425,7 +425,7 @@
       // For each font style property, create a utility class.
       @each $style, $value in defaults.$font-style-properties {
         // e.g. `.md:font-normal` or `.lg:font-italic`
-        $selector: "#{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style}";
+        $selector: #{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style};
 
         @include utility.create(
           $selector,
@@ -439,7 +439,7 @@
       // For each text transform property, create a utility class.
       @each $transform, $value in defaults.$text-transform-properties {
         // e.g. `.md:text-uppercase` or `.lg:text-lowercase`
-        $selector: "#{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform}";
+        $selector: #{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform};
 
         @include utility.create(
           $selector,
@@ -457,12 +457,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each font size property, create a utility class.
         @each $size, $value in typography.$font-sizes {
           // e.g. `.dark:text-2xl` or `.light:text-3xl`
-          $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$size}";
+          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
 
           @include utility.create(
             $selector,
@@ -606,7 +606,7 @@
         // For each font weight property, create a utility class.
         @each $weight, $value in typography.$font-weights {
           // e.g. `.dark:font-bold` or `.light:font-normal`
-          $selector: "#{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight}";
+          $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
           @include utility.create(
             $selector,
@@ -620,7 +620,7 @@
         // For each font style property, create a utility class.
         @each $style, $value in defaults.$font-style-properties {
           // e.g. `.dark:font-normal` or `.light:font-italic`
-          $selector: "#{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style}";
+          $selector: #{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style};
 
           @include utility.create(
             $selector,
@@ -634,7 +634,7 @@
         // For each text transform property, create a utility class.
         @each $transform, $value in defaults.$text-transform-properties {
           // e.g. `.dark:text-uppercase` or `.light:text-lowercase`
-          $selector: "#{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform}";
+          $selector: #{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform};
 
           @include utility.create(
             $selector,
@@ -652,12 +652,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each font size property, create a utility class.
       @each $size, $value in typography.$font-sizes {
         // e.g. `.hover:text-2xl` or `.focus:text-3xl`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}#{$size}";
+        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
 
         @include utility.create(
           $selector,
@@ -801,7 +801,7 @@
       // For each font weight property, create a utility class.
       @each $weight, $value in typography.$font-weights {
         // e.g. `.hover:font-bold` or `.focus:font-normal`
-        $selector: "#{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight}";
+        $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
         @include utility.create(
           $selector,
@@ -815,7 +815,7 @@
       // For each font style property, create a utility class.
       @each $style, $value in defaults.$font-style-properties {
         // e.g. `.hover:font-normal` or `.focus:font-italic`
-        $selector: "#{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style}";
+        $selector: #{$selector-prefix}#{defaults.$font-style-selector-prefix}#{$style};
 
         @include utility.create(
           $selector,
@@ -829,7 +829,7 @@
       // For each text transform property, create a utility class.
       @each $transform, $value in defaults.$text-transform-properties {
         // e.g. `.hover:text-uppercase` or `.focus:text-lowercase`
-        $selector: "#{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform}";
+        $selector: #{$selector-prefix}#{defaults.$text-transform-selector-prefix}#{$transform};
 
         @include utility.create(
           $selector,

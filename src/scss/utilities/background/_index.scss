@@ -142,7 +142,7 @@
   // For each background attachment property, create a utility class.
   @each $name, $value in defaults.$background-attachment-properties {
     // e.g. `.bg-attachment-scroll` or `.bg-attachment-fixed`
-    $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -155,7 +155,7 @@
   // For each background clip property, create a utility class.
   @each $name, $value in defaults.$background-clip-properties {
     // e.g. `.bg-clip-border-box` or `.bg-clip-padding-box`
-    $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -168,7 +168,7 @@
   // For each background image property, create a utility class.
   @each $name, $value in defaults.$background-image-properties {
     // e.g. `.bg-image-none` or `.bg-image-inherit`
-    $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -181,7 +181,7 @@
   // For each background origin property, create a utility class.
   @each $name, $value in defaults.$background-origin-properties {
     // e.g. `.bg-origin-border-box` or `.bg-origin-padding-box`
-    $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -194,7 +194,7 @@
   // For each background position property, create a utility class.
   @each $name, $value in defaults.$background-position-properties {
     // e.g. `.bg-position-top` or `.bg-position-center`
-    $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -207,7 +207,7 @@
   // For each background repeat property, create a utility class.
   @each $name, $value in defaults.$background-repeat-properties {
     // e.g. `.bg-repeat-repeat` or `.bg-repeat-no-repeat`
-    $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -220,7 +220,7 @@
   // For each background size property, create a utility class.
   @each $name, $value in defaults.$background-size-properties {
     // e.g. `.bg-size-auto` or `.bg-size-cover`
-    $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+    $selector: #{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name};
 
     @include utility.create(
       $selector,
@@ -234,12 +234,12 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each background attachment property, create a utility class.
       @each $name, $value in defaults.$background-attachment-properties {
         // e.g. `.md:bg-attachment-scroll` or `.lg:bg-attachment-fixed`
-        $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -253,7 +253,7 @@
       // For each background clip property, create a utility class.
       @each $name, $value in defaults.$background-clip-properties {
         // e.g. `.md:bg-clip-border-box` or `.lg:bg-clip-padding-box`
-        $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -267,7 +267,7 @@
       // For each background image property, create a utility class.
       @each $name, $value in defaults.$background-image-properties {
         // e.g. `.md:bg-image-none` or `.lg:bg-image-inherit`
-        $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -281,7 +281,7 @@
       // For each background origin property, create a utility class.
       @each $name, $value in defaults.$background-origin-properties {
         // e.g. `.md:bg-origin-border-box` or `.lg:bg-origin-padding-box`
-        $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -295,7 +295,7 @@
       // For each background position property, create a utility class.
       @each $name, $value in defaults.$background-position-properties {
         // e.g. `.md:bg-position-top` or `.lg:bg-position-center`
-        $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -309,7 +309,7 @@
       // For each background repeat property, create a utility class.
       @each $name, $value in defaults.$background-repeat-properties {
         // e.g. `.md:bg-repeat-repeat` or `.lg:bg-repeat-no-repeat`
-        $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -323,7 +323,7 @@
       // For each background size property, create a utility class.
       @each $name, $value in defaults.$background-size-properties {
         // e.g. `.md:bg-size-auto` or `.lg:bg-size-cover`
-        $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -341,12 +341,12 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
+        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each background attachment property, create a utility class.
         @each $name, $value in defaults.$background-attachment-properties {
           // e.g. `.dark:bg-attachment-scroll` or `.light:bg-attachment-fixed`
-          $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -360,7 +360,7 @@
         // For each background clip property, create a utility class.
         @each $name, $value in defaults.$background-clip-properties {
           // e.g. `.dark:bg-clip-border-box` or `.light:bg-clip-padding-box`
-          $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -374,7 +374,7 @@
         // For each background image property, create a utility class.
         @each $name, $value in defaults.$background-image-properties {
           // e.g. `.dark:bg-image-none` or `.light:bg-image-inherit`
-          $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -388,7 +388,7 @@
         // For each background origin property, create a utility class.
         @each $name, $value in defaults.$background-origin-properties {
           // e.g. `.dark:bg-origin-border-box` or `.light:bg-origin-padding-box`
-          $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -402,7 +402,7 @@
         // For each background position property, create a utility class.
         @each $name, $value in defaults.$background-position-properties {
           // e.g. `.dark:bg-position-top` or `.light:bg-position-center`
-          $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -416,7 +416,7 @@
         // For each background repeat property, create a utility class.
         @each $name, $value in defaults.$background-repeat-properties {
           // e.g. `.dark:bg-repeat-repeat` or `.light:bg-repeat-no-repeat`
-          $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -430,7 +430,7 @@
         // For each background size property, create a utility class.
         @each $name, $value in defaults.$background-size-properties {
           // e.g. `.dark:bg-size-auto` or `.light:bg-size-cover`
-          $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+          $selector: #{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name};
 
           @include utility.create(
             $selector,
@@ -448,12 +448,12 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
+      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each background attachment property, create a utility class.
       @each $name, $value in defaults.$background-attachment-properties {
         // e.g. `.hover:bg-attachment-scroll` or `.focus:bg-attachment-fixed`
-        $selector: "#{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-attachment-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -467,7 +467,7 @@
       // For each background clip property, create a utility class.
       @each $name, $value in defaults.$background-clip-properties {
         // e.g. `.hover:bg-clip-border-box` or `.focus:bg-clip-padding-box`
-        $selector: "#{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-clip-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -481,7 +481,7 @@
       // For each background image property, create a utility class.
       @each $name, $value in defaults.$background-image-properties {
         // e.g. `.hover:bg-image-none` or `.focus:bg-image-inherit`
-        $selector: "#{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-image-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -495,7 +495,7 @@
       // For each background origin property, create a utility class.
       @each $name, $value in defaults.$background-origin-properties {
         // e.g. `.hover:bg-origin-border-box` or `.focus:bg-origin-padding-box`
-        $selector: "#{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-origin-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -509,7 +509,7 @@
       // For each background position property, create a utility class.
       @each $name, $value in defaults.$background-position-properties {
         // e.g. `.hover:bg-position-top` or `.focus:bg-position-center`
-        $selector: "#{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-position-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -523,7 +523,7 @@
       // For each background repeat property, create a utility class.
       @each $name, $value in defaults.$background-repeat-properties {
         // e.g. `.hover:bg-repeat-repeat` or `.focus:bg-repeat-no-repeat`
-        $selector: "#{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-repeat-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
@@ -537,7 +537,7 @@
       // For each background size property, create a utility class.
       @each $name, $value in defaults.$background-size-properties {
         // e.g. `.hover:bg-size-auto` or `.focus:bg-size-cover`
-        $selector: "#{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name}";
+        $selector: #{$selector-prefix}#{defaults.$background-size-selector-prefix}#{$name};
 
         @include utility.create(
           $selector,
