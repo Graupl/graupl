@@ -14,6 +14,9 @@ $use-important: root-defaults.$use-important !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
 $state-aware: false !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
 
 // Visually hidden properties.
 $visually-hidden-selector: "visually-hidden" !default;

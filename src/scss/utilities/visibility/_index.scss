@@ -16,6 +16,9 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$screen-aware-separator`: The separator for screen-aware utility classes.
+// - `$theme-aware-separator`: The separator for theme-aware utility classes.
+// - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$visibility-selector-prefix`: The prefix for the visibility utility classes.
 // - `$base-visibility-properties`: The base visibility properties and values.
 // - `$custom-visibility-properties`: Additional visibility properties and values.
@@ -74,7 +77,7 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {
@@ -97,7 +100,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
 
         // For each visibility property, create a utility class.
         @each $name, $value in defaults.$visibility-properties {
@@ -120,7 +123,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {

@@ -28,6 +28,9 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$screen-aware-separator`: The separator for screen-aware utility classes.
+// - `$theme-aware-separator`: The separator for theme-aware utility classes.
+// - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$order-selector-prefix`: The prefix for the order utility classes.
 // - `$base-order-properties`: The base order properties and values.
 // - `$custom-order-properties`: Additional order properties and values.
@@ -107,7 +110,7 @@
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
 
       @each $property, $value in defaults.$order-properties {
         $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
@@ -139,7 +142,7 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
 
         @each $property, $value in defaults.$order-properties {
           $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";
@@ -171,7 +174,7 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
 
       @each $property, $value in defaults.$order-properties {
         $selector: "#{$selector-prefix}#{defaults.$order-selector-prefix}#{$property}";

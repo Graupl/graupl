@@ -15,6 +15,9 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$screen-aware-separator`: The separator for screen-aware utility classes.
+// - `$theme-aware-separator`: The separator for theme-aware utility classes.
+// - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$visually-hidden-selector`: The selector for the visually-hidden utility class.
 // - `$visually-hidden-focusable-selector`: The selector for the focusable utility class.
 //
@@ -76,7 +79,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$display-selector-base}#{$screen-name}#{root-defaults.$utility-screen-aware-separator};
+      $selector-prefix: #{defaults.$display-selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
 
       @include screen.up($screen-name) {
         // e.g. `.md:visually-hidden`
@@ -101,7 +104,7 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: #{defaults.$display-selector-base}#{$theme-name}#{root-defaults.$utility-theme-aware-separator};
+        $selector-prefix: #{defaults.$display-selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
 
         @include theme.theme($theme-name) {
           // e.g. `.dark:visually-hidden`
@@ -126,7 +129,7 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: #{defaults.$display-selector-base}#{$state-name}#{root-defaults.$utility-state-aware-separator};
+      $selector-prefix: #{defaults.$display-selector-base}#{$state-name}#{defaults.$state-aware-separator};
 
       @include state.state($state-name) {
         // e.g. `.hover:visually-hidden`

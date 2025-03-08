@@ -94,6 +94,9 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$screen-aware-separator`: The separator for screen-aware utility classes.
+// - `$theme-aware-separator`: The separator for theme-aware utility classes.
+// - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$gradient-selector`: The selector for the gradient utility classes.
 // - `$gradient-type-selector-prefix`: The prefix for the gradient type utility classes.
 // - `$gradient-direction-selector-prefix`: The prefix for the gradient direction utility classes.
@@ -242,7 +245,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{root-defaults.$utility-screen-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator}";
 
       // Generate gradient utilities.
       //
@@ -353,7 +356,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{root-defaults.$utility-theme-aware-separator}";
+        $selector-prefix: "#{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator}";
 
         // Generate gradient utilities.
         //
@@ -464,7 +467,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{root-defaults.$utility-state-aware-separator}";
+      $selector-prefix: "#{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator}";
 
       // Generate gradient utilities.
       //
