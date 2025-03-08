@@ -15,6 +15,8 @@ $use-important: root-defaults.$use-important !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
+
+// Position properties.
 $position-selector-prefix: "position-" !default;
 $base-position-properties: (
   static: static,

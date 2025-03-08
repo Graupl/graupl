@@ -140,7 +140,7 @@
 
   // For each height property, create a utility class.
   @each $height, $value in defaults.$height-values {
-    // e.g. `.h-0` or `.h-fit-content`
+    // e.g. `.h-min-content` or `.h-fit-content`
     $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
 
     @include utility.create(
@@ -150,7 +150,7 @@
       $important: defaults.$use-important
     );
 
-    // e.g. `.max-h-0` or `.max-h-fit-content`
+    // e.g. `.max-h-min-content` or `.max-h-fit-content`
     $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
 
     @include utility.create(
@@ -160,7 +160,7 @@
       $important: defaults.$use-important
     );
 
-    // e.g. `.min-h-0` or `.min-h-fit-content`
+    // e.g. `.min-h-min-content` or `.min-h-fit-content`
     $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
 
     @include utility.create(
@@ -211,7 +211,7 @@
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
-        // e.g. `.md:h-0` or `.lg:h-fit-content`
+        // e.g. `.md:h-min-content` or `.lg:h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
 
         @include utility.create(
@@ -222,7 +222,7 @@
           $screen: $screen-name
         );
 
-        // e.g. `.md:max-h-0` or `.lg:max-h-fit-content`
+        // e.g. `.md:max-h-min-content` or `.lg:max-h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
 
         @include utility.create(
@@ -233,7 +233,7 @@
           $screen: $screen-name
         );
 
-        // e.g. `.md:min-h-0` or `.lg:min-h-fit-content`
+        // e.g. `.md:min-h-min-content` or `.lg:min-h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
 
         @include utility.create(
@@ -291,7 +291,7 @@
 
         // For each height property, create a utility class.
         @each $height, $value in defaults.$height-values {
-          // e.g. `.dark:h-0` or `.light:h-fit-content`
+          // e.g. `.dark:h-min-content` or `.light:h-fit-content`
           $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
 
           @include utility.create(
@@ -302,7 +302,7 @@
             $theme: $theme-name
           );
 
-          // e.g. `.dark:max-h-0` or `.light:max-h-fit-content`
+          // e.g. `.dark:max-h-min-content` or `.light:max-h-fit-content`
           $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
 
           @include utility.create(
@@ -313,7 +313,7 @@
             $theme: $theme-name
           );
 
-          // e.g. `.dark:min-h-0` or `.light:min-h-fit-content`
+          // e.g. `.dark:min-h-min-content` or `.light:min-h-fit-content`
           $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
 
           @include utility.create(
@@ -371,12 +371,12 @@
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
-        // e.g. `.hover:h-0` or `.focus:h-fit-content`
+        // e.g. `.hover:h-min-content` or `.focus:h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$height-selector-prefix}#{$height}";
 
         @include utility.create($selector, height, $value, $state: $state-name);
 
-        // e.g. `.hover:max-h-0` or `.focus:max-h-fit-content`
+        // e.g. `.hover:max-h-min-content` or `.focus:max-h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height}";
 
         @include utility.create(
@@ -387,7 +387,7 @@
           $state: $state-name
         );
 
-        // e.g. `.hover:min-h-0` or `.focus:min-h-fit-content`
+        // e.g. `.hover:min-h-min-content` or `.focus:min-h-fit-content`
         $selector: "#{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height}";
 
         @include utility.create(
