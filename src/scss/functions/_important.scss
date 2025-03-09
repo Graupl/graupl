@@ -4,9 +4,32 @@
 
 @use "../defaults";
 
-@function insert($value) {
+/// Determine if an important flag is required and insert it into a property value.
+///
+/// @param {String} $value
+///   The value to insert the important flag into.
+/// @param {Boolean} $use-important
+///   A flag to determine if the important flag should be overridden.
+///
+/// @return {String}
+///   The value with the important flag added.
+@function insert($value, $override: null) {
+  // If override is set, use it.
+  /* stylelint-disable scss/at-if-no-null */
+  @if $override != null {
+    // Convert the override to a string.
+    // We have to do this because true/false values are weird in Sass.
+    // Using the raw boolean value, it will always return true for some reason.
+    @if "#{$override}" == "true" {
+      @return #{$value} !important;
+    } @else {
+      @return #{$value};
+    }
+  }
+  /* stylelint-enable scss/at-if-no-null */
+
   @if defaults.$use-important {
-    @return #{$value !important};
+    @return #{$value} !important;
   }
 
   @return #{$value};

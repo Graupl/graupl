@@ -6,7 +6,18 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
 
 // Inset properties.
 $base-inset-properties: (
@@ -36,8 +47,3 @@ $base-inset-values: (
 );
 $custom-inset-values: () !default;
 $inset-values: map.merge($base-inset-values, $custom-inset-values);
-
-// Utility modifier flags.
-$screen-aware: true !default;
-$theme-aware: false !default;
-$state-aware: false !default;

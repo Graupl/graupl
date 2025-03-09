@@ -14,11 +14,13 @@
 ///
 /// @param {Map} $map
 ///   The map of properties and values to apply to the selector.
-@mixin _insert($map) {
+/// @param {Boolean} $important
+///   A flag to determine if the important flag should be added.
+@mixin _insert($map, $important: null) {
   @each $prop, $value in $map {
     // Do not attempt to insert important values inside of custom properties.
     @if string.slice($prop, 1, 2) != "--" {
-      #{$prop}: important.insert(#{$value});
+      #{$prop}: important.insert(#{$value}, $override: $important);
     } @else {
       #{$prop}: #{$value};
     }
@@ -78,6 +80,8 @@
 ///   The property/properties to apply to the selector.
 /// @param {string}      $value
 ///   The value to apply to the property/properties.
+/// @param {?Boolean}     $important
+///   A flag to determine if the important flag should be added.
 /// @param {?string}     $screen
 ///   The screen to apply the utility class to.
 /// @param {?string}     $theme
@@ -88,6 +92,7 @@
   $selector,
   $property,
   $value,
+  $important: null,
   $screen: null,
   $theme: null,
   $state: null
@@ -97,6 +102,7 @@
   @include create-mapped(
     $selector,
     $map,
+    $important: $important,
     $screen: $screen,
     $theme: $theme,
     $state: $state
@@ -111,6 +117,8 @@
 ///   The selector to apply the utility class to.
 /// @param {Map}     $map
 ///   The map of properties and values to apply to the selector.
+/// @param {?Boolean} $important
+///   A flag to determine if the important flag should be added.
 /// @param {?string} $screen
 ///   The screen to apply the utility class to.
 /// @param {?string} $theme
@@ -120,6 +128,7 @@
 @mixin create-mapped(
   $selector,
   $map,
+  $important: null,
   $screen: null,
   $theme: null,
   $state: null
@@ -128,7 +137,7 @@
     #{$selector} {
       @include _handle-screen($screen) {
         @include _handle-state($state) {
-          @include _insert($map) {
+          @include _insert($map, $important) {
             @content;
           }
         }
