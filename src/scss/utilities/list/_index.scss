@@ -24,13 +24,13 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$list-style-type-selector-prefix`: The prefix for the list-style-type utility classes.
-// - `$base-list-style-type-properties`: The base list-style-type properties and values.
-// - `$custom-list-style-type-properties`: Additional list-style-type properties and values.
-// - `$list-style-type-properties`: The combined list-style-type properties and values.
+// - `$base-list-style-type-properties`: The base properties and values for the list-style-type utility classes.
+// - `$custom-list-style-type-properties`: The custom properties and values for list-style-type.
+// - `$list-style-type-properties`: The combined properties and values for list-style-type.
 // - `$list-style-position-selector-prefix`: The prefix for the list-style-position utility classes.
-// - `$base-list-style-position-properties`: The base list-style-position properties and values.
-// - `$custom-list-style-position-properties`: Additional list-style-position properties and values.
-// - `$list-style-position-properties`: The combined list-style-position properties and values.
+// - `$base-list-style-position-properties`: The base properties and values for the list-style-position utility classes.
+// - `$custom-list-style-position-properties`: The custom properties and values for list-style-position.
+// - `$list-style-position-properties`: The combined properties and values for list-style-position.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

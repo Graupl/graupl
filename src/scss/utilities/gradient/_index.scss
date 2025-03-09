@@ -103,15 +103,15 @@
 // - `$gradient-color-selector-prefix`: The prefix for the gradient color utility classes.
 // - `$gradient-color-from-selector-prefix`: The prefix for the gradient from color utility classes.
 // - `$gradient-color-to-selector-prefix`: The prefix for the gradient to color utility classes.
-// - `$base-gradient-types`: The base gradient types and functions.
-// - `$custom-gradient-types`: Additional gradient types and functions.
-// - `$gradient-types`: The combined gradient types and functions.
-// - `$base-gradient-directions`: The base gradient directions and values.
-// - `$custom-gradient-directions`: Additional gradient directions and values.
-// - `$gradient-directions`: The combined gradient directions and values.
-// - `$base-gradient-colors`: The base gradient colors and values.
-// - `$custom-gradient-colors`: Additional gradient colors and values.
-// - `$gradient-colors`: The combined gradient colors and values.
+// - `$base-gradient-types`: The base properties and values for the gradient type utility classes.
+// - `$custom-gradient-types`: The custom properties and values for the gradient type utility classes.
+// - `$gradient-types`: The combined properties and values for the gradient type utility classes.
+// - `$base-gradient-directions`: The base properties and values for the gradient direction utility classes.
+// - `$custom-gradient-directions`: The custom properties and values for the gradient direction utility classes.
+// - `$gradient-directions`: The combined properties and values for the gradient direction utility classes.
+// - `$base-gradient-colors`: The base properties and values for the gradient color utility classes.
+// - `$custom-gradient-colors`: The custom properties and values for the gradient color utility classes.
+// - `$gradient-colors`: The combined properties and values for the gradient color utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

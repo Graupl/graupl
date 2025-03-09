@@ -28,9 +28,9 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$display-selector-prefix`: The prefix for the display utility classes.
-// - `$base-display-properties`: The base display properties and values.
-// - `$custom-display-properties`: Additional display properties and values.
-// - `$display-properties`: The combined display properties and values.
+// - `$base-display-properties`: The base properties and values for the display utility classes.
+// - `$custom-display-properties`: The custom properties and values for the display utility classes.
+// - `$display-properties`: The merged properties and values for the display utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, only screen-aware utility classes are generated.

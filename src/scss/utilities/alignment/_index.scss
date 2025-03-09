@@ -37,17 +37,17 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$align-content-selector-prefix`: The prefix for the align content utility classes.
-// - `$base-align-content-properties`: The base align content properties and values.
-// - `$custom-align-content-properties`: Additional align content properties and values.
-// - `$align-content-properties`: The combined align content properties and values.
+// - `$base-align-content-properties`: The base properties and values for the align content utility classes.
+// - `$custom-align-content-properties`: The custom properties and values for the align content utility classes.
+// - `$align-content-properties`: The combined properties and values for the align content utility classes.
 // - `$align-items-selector-prefix`: The prefix for the align items utility classes.
-// - `$base-align-items-properties`: The base align items properties and values.
-// - `$custom-align-items-properties`: Additional align items properties and values.
-// - `$align-items-properties`: The combined align items properties and values.
+// - `$base-align-items-properties`: The base properties and values for the align items utility classes.
+// - `$custom-align-items-properties`: The custom properties and values for the align items utility classes.
+// - `$align-items-properties`: The combined properties and values for the align items utility classes.
 // - `$align-self-selector-prefix`: The prefix for the align self utility classes.
-// - `$base-align-self-properties`: The base align self properties and values.
-// - `$custom-align-self-properties`: Additional align self properties and values.
-// - `$align-self-properties`: The combined align self properties and values.
+// - `$base-align-self-properties`: The base properties and values for the align self utility classes.
+// - `$custom-align-self-properties`: The custom properties and values for the align self utility classes.
+// - `$align-self-properties`: The combined properties and values for the align self utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

@@ -40,25 +40,25 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$flex-direction-selector-prefix`: The prefix for the flex direction utility classes.
-// - `$base-flex-direction-properties`: The base flex direction properties.
-// - `$custom-flex-direction-properties`: The custom flex direction properties.
-// - `$flex-direction-properties`: The merged flex direction properties.
+// - `$base-flex-direction-properties`: The base properties and values for the flex direction utility classes.
+// - `$custom-flex-direction-properties`: The custom properties and values for the flex direction utility classes.
+// - `$flex-direction-properties`: The merged properties and values for the flex direction utility classes.
 // - `$flex-wrap-selector-prefix`: The prefix for the flex wrap utility classes.
-// - `$base-flex-wrap-properties`: The base flex wrap properties.
-// - `$custom-flex-wrap-properties`: The custom flex wrap properties.
-// - `$flex-wrap-properties`: The merged flex wrap properties.
+// - `$base-flex-wrap-properties`: The base properties and values for the flex wrap utility classes.
+// - `$custom-flex-wrap-properties`: The custom properties and values for the flex wrap utility classes.
+// - `$flex-wrap-properties`: The merged properties and values for the flex wrap utility classes.
 // - `$flex-grow-selector-prefix`: The prefix for the flex grow utility classes.
-// - `$base-flex-grow-properties`: The base flex grow properties.
-// - `$custom-flex-grow-properties`: The custom flex grow properties.
-// - `$flex-grow-properties`: The merged flex grow properties.
+// - `$base-flex-grow-properties`: The base properties and values for the flex grow utility classes.
+// - `$custom-flex-grow-properties`: The custom properties and values for the flex grow utility classes.
+// - `$flex-grow-properties`: The merged properties and values for the flex grow utility classes.
 // - `$flex-shrink-selector-prefix`: The prefix for the flex shrink utility classes.
-// - `$base-flex-shrink-properties`: The base flex shrink properties.
-// - `$custom-flex-shrink-properties`: The custom flex shrink properties.
-// - `$flex-shrink-properties`: The merged flex shrink properties.
+// - `$base-flex-shrink-properties`: The base properties and values for the flex shrink utility classes.
+// - `$custom-flex-shrink-properties`: The custom properties and values for the flex shrink utility classes.
+// - `$flex-shrink-properties`: The merged properties and values for the flex shrink utility classes.
 // - `$flex-basis-selector-prefix`: The prefix for the flex basis utility classes.
-// - `$base-flex-basis-properties`: The base flex basis properties.
-// - `$custom-flex-basis-properties`: The custom flex basis properties.
-// - `$flex-basis-properties`: The merged flex basis properties.
+// - `$base-flex-basis-properties`: The base properties and values for the flex basis utility classes.
+// - `$custom-flex-basis-properties`: The custom properties and values for the flex basis utility classes.
+// - `$flex-basis-properties`: The merged properties and values for the flex basis utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

@@ -45,13 +45,13 @@
 // - `$text-selector-prefix`: The prefix for the text utility classes.
 // - `$font-weight-selector-prefix`: The prefix for the font weight utility classes.
 // - `$font-style-selector-prefix`: The prefix for the font style utility classes.
-// - `$base-font-style-properties`: The base font style properties and values.
-// - `$custom-font-style-properties`: Additional font style properties and values.
-// - `$font-style-properties`: The combined font style properties and values.
+// - `$base-font-style-properties`: The base properties and values for the font style utility classes.
+// - `$custom-font-style-properties`: The custom properties and values for the font style utility classes.
+// - `$font-style-properties`: The combined properties and values for the font style utility classes.
 // - `$text-transform-selector-prefix`: The prefix for the text transform utility classes.
-// - `$base-text-transform-properties`: The base text transform properties and values.
-// - `$custom-text-transform-properties`: Additional text transform properties and values.
-// - `$text-transform-properties`: The combined text transform properties and values.
+// - `$base-text-transform-properties`: The base properties and values for the text transform utility classes.
+// - `$custom-text-transform-properties`: The custom properties and values for the text transform utility classes.
+// - `$text-transform-properties`: The combined properties and values for the text transform utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

@@ -364,9 +364,9 @@
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$base-spacing-properties`: The base spacing properties and values.
-// - `$custom-spacing-properties`: Additional spacing properties and values.
-// - `$spacing-properties`: The combined spacing properties and values.
+// - `$base-spacing-properties`: The base properties and values for the spacing utility classes.
+// - `$custom-spacing-properties`: The custom properties and values for the spacing utility classes.
+// - `$spacing-properties`: The combined properties and values for the spacing utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, only screen-aware utility classes are generated.

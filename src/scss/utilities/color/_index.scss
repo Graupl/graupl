@@ -77,13 +77,13 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$background-selector-prefix`: The prefix for the background utility classes.
-// - `$base-background-properties`: The base background properties and values.
-// - `$custom-background-properties`: Additional background properties and values.
-// - `$background-properties`: The combined background properties and values.
+// - `$base-background-properties`: The base properties and values for the background utility classes.
+// - `$custom-background-properties`: The custom properties and values for the background utility classes.
+// - `$background-properties`: The merged properties and values for the background utility classes.
 // - `$text-selector-prefix`: The prefix for the text utility classes.
-// - `$base-text-properties`: The base text properties and values.
-// - `$custom-text-properties`: Additional text properties and values.
-// - `$text-properties`: The combined text properties and values.
+// - `$base-text-properties`: The base properties and values for text utility classes.
+// - `$custom-text-properties`: The custom properties and values for text utility classes.
+// - `$text-properties`: The merged properties and values for text utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, theme-aware and state-aware utility classes are generated.

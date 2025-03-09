@@ -22,9 +22,9 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$position-selector-prefix`: The prefix for the position utility classes.
-// - `$base-position-properties`: The base position properties and values.
-// - `$custom-position-properties`: Additional position properties and values.
-// - `$position-properties`: The combined position properties and values.
+// - `$base-position-properties`: The base properties and values for the position utility classes.
+// - `$custom-position-properties`: The custom properties and values for the position utility classes.
+// - `$position-properties`: The combined properties and values for the position utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, only screen-aware utility classes are generated.

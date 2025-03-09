@@ -34,17 +34,17 @@
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
 // - `$justify-content-selector-prefix`: The prefix for the justify-content utility classes.
-// - `$base-justify-content-properties`: The base justify-content properties and values.
-// - `$custom-justify-content-properties`: Additional justify-content properties and values.
-// - `$justify-content-properties`: The combined justify-content properties and values.
+// - `$base-justify-content-properties`: The base properties and values for justify-content.
+// - `$custom-justify-content-properties`: The custom properties and values for justify-content.
+// - `$justify-content-properties`: The combined properties and values for justify-content.
 // - `$justify-items-selector-prefix`: The prefix for the justify-items utility classes.
-// - `$base-justify-items-properties`: The base justify-items properties and values.
-// - `$custom-justify-items-properties`: Additional justify-items properties and values.
-// - `$justify-items-properties`: The combined justify-items properties and values.
+// - `$base-justify-items-properties`: The base properties and values for justify-items.
+// - `$custom-justify-items-properties`: The custom properties and values for justify-items.
+// - `$justify-items-properties`: The combined properties and values for justify-items.
 // - `$justify-self-selector-prefix`: The prefix for the justify-self utility classes.
-// - `$base-justify-self-properties`: The base justify-self properties and values.
-// - `$custom-justify-self-properties`: Additional justify-self properties and values.
-// - `$justify-self-properties`: The combined justify-self properties and values.
+// - `$base-justify-self-properties`: The base properties and values for justify-self.
+// - `$custom-justify-self-properties`: The custom properties and values for justify-self.
+// - `$justify-self-properties`: The combined properties and values for justify-self.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.
