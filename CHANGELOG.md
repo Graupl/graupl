@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.5](https://github.com/Graupl/graupl/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2025-03-10)
+
+
+### Features
+
+* add control over container min widths and make it easier to cascade containers ([8de27f0](https://github.com/Graupl/graupl/commit/8de27f01abba42c2729539f3992e5375bcf2e55c))
+* container code and documentation improvements ([f25a063](https://github.com/Graupl/graupl/commit/f25a0639cff5031d41d7af817e9a1d3bbcfc7add))
+* **utilities:** add more customization options and documentation ([36f5387](https://github.com/Graupl/graupl/commit/36f5387d4ce038d40fc54830424193a0513541a3))
+
+
+### Documentation
+
+* **layout:** add descriptions, available options, and examples ([e0d1c28](https://github.com/Graupl/graupl/commit/e0d1c2816188428580b4fccea1e983f760c806c7))
+* standardize wording and structure of current documented files ([433c7be](https://github.com/Graupl/graupl/commit/433c7be6b04c8c98ea7e83bcb6226d2cd0e55c6b))
+* **state:** properly document focus ([8f1b1dc](https://github.com/Graupl/graupl/commit/8f1b1dcd36f56b00425e72a9e406dac4b2ff23a5))
+
 ## [1.0.0-beta.4](https://github.com/Graupl/graupl/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2025-02-14)
 
 
