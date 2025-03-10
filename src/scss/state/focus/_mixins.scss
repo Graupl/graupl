@@ -5,6 +5,7 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 
+/// Applies the focus state.
 @mixin apply-focus() {
   @include layer(state) {
     border-color: transparent;
