@@ -11,12 +11,13 @@ If you want to compile your own version of Graupl, you can! Here's how:
 
 ## Overriding Graupl's default variables
 
-Graupl's sass variables are all declared with `!default` flag. This means you can override them in your own theme file.
+Graupl's has sass variables declared with `!default` flag. This means you can override them in your own theme file.
 
 ```scss
 // Import the file containing the variables you want to override.
-@forward '@graupl/graupl/defaults' with (
-  $prefix: 'custom',
+// In this case, we want to make sure that, instead of all of our custom properties starting with `--graupl-` they start with `--custom-`.
+@use '@graupl/graupl/src/scss/defaults' as graupl-defaults with (
+  $id: 'custom',
 );
 
 // Import Graupl.
@@ -31,7 +32,7 @@ You can add new colours to Graupl by adding to the `$custom-colours` map.
 
 ```scss
 // Import the theme's defaults.
-@forward "@graupl/graupl/theme/defaults" with (
+@use "@graupl/graupl/src/scss/theme/defaults" as graupl-color-defaults with (
   $custom-colors: (
     custom: (
       100: #f0f0f0,
@@ -53,4 +54,4 @@ You can add new colours to Graupl by adding to the `$custom-colours` map.
 // Import your own theme...
 ```
 
-These colours will have new classes generated for them, e.g. `background-custom-100`, `color-custom-100`, etc. as well as component variants, e.g. `button custom`, and full dark-mode support.
+These colours will have new classes generated for them, e.g. `.bg-custom-100`, `.text-custom-100`, etc. as well as component variants, e.g. `button custom`, and full dark-mode support.

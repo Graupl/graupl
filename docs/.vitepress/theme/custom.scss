@@ -1,4 +1,9 @@
+@use "../../../src/scss/theme/color/defaults" as graupl-color-defaults with (
+  $theme-selector-suffix: ""
+);
+@use "../../../src/scss/utilities";
 @use "../../../src/scss/functions/theme";
+@use "../../../src/scss/theme/color";
 
 :root {
   --vp-c-brand: #{theme.get(primary, 700)};
@@ -17,19 +22,6 @@
   --vp-c-text-3: #{theme.get(primary, 900)};
 }
 
-.dark {
-  --vp-c-brand: #{theme.get(primary, 300)};
-  --vp-c-brand-1: #{theme.get(primary, 300)};
-  --vp-c-brand-2: #{theme.get(primary, 300)};
-  --vp-c-brand-3: #{theme.get(primary, 300)};
-  --vp-c-bg: #{theme.get(primary, 900)};
-  --vp-c-bg-alt: #{theme.get(primary, 900)};
-  --vp-c-bg-elv: #{theme.get(primary, 900)};
-  --vp-c-bg-soft: #{theme.get(primary, 900)};
-  --vp-c-border: #{theme.get(tertiary, 300)};
-  --vp-c-divider: #{theme.get(secondary, 300)};
-  --vp-c-gutter: #{theme.get(secondary, 300)};
-  --vp-c-text-1: #{theme.get(primary, 100)};
-  --vp-c-text-2: #{theme.get(primary, 100)};
-  --vp-c-text-3: #{theme.get(primary, 100)};
+.vp-doc [class*="language-"] pre {
+  background: #{theme.get(secondary, 100)};
 }
