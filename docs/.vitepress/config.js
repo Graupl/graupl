@@ -63,6 +63,10 @@ export default defineConfig({
         ],
       },
       {
+        text: "Utilities",
+        items: [{ text: "Alignment", link: "/utilities/alignment" }],
+      },
+      {
         text: "Advanced Topics",
         items: [
           { text: "Utilities", link: "/utilities" },
