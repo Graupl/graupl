@@ -20,7 +20,7 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 
 Sets the `align-content` property to `normal`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-normal p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -36,7 +36,7 @@ Sets the `align-content` property to `normal`.
 
 Sets the `align-content` property to `flex-start`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-start p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-start p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -52,7 +52,7 @@ Sets the `align-content` property to `flex-start`.
 
 Sets the `align-content` property to `flex-end`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-end p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-end p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -68,7 +68,7 @@ Sets the `align-content` property to `flex-end`.
 
 Sets the `align-content` property to `center`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-center p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-center p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -84,7 +84,7 @@ Sets the `align-content` property to `center`.
 
 Sets the `align-content` property to `space-between`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-between p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-between p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -100,7 +100,7 @@ Sets the `align-content` property to `space-between`.
 
 Sets the `align-content` property to `space-around`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-around p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-around p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -116,7 +116,7 @@ Sets the `align-content` property to `space-around`.
 
 Sets the `align-content` property to `space-evenly`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-evenly p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-evenly p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -132,7 +132,7 @@ Sets the `align-content` property to `space-evenly`.
 
 Sets the `align-content` property to `baseline`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-baseline p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-baseline p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -148,7 +148,7 @@ Sets the `align-content` property to `baseline`.
 
 Sets the `align-content` property to `stretch`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-300 align-content-stretch p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 align-content-stretch p-5 h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -174,7 +174,7 @@ Sets the `align-content` property to `stretch`.
 
 Sets the `align-items` property to `start`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 align-items-start p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-items-start p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -190,7 +190,7 @@ Sets the `align-items` property to `start`.
 
 Sets the `align-items` property to `end`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 align-items-end p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-items-end p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -206,7 +206,7 @@ Sets the `align-items` property to `end`.
 
 Sets the `align-items` property to `center`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 align-items-center p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-items-center p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -222,7 +222,7 @@ Sets the `align-items` property to `center`.
 
 Sets the `align-items` property to `baseline`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 align-items-baseline p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-items-baseline p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -238,7 +238,7 @@ Sets the `align-items` property to `baseline`.
 
 Sets the `align-items` property to `stretch`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 align-items-stretch p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-items-stretch p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
@@ -265,7 +265,7 @@ Sets the `align-items` property to `stretch`.
 
 Sets the `align-self` property to `auto`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-auto">Item</div>
 </div>
 
@@ -281,7 +281,7 @@ Sets the `align-self` property to `auto`.
 
 Sets the `align-self` property to `start`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-start">Item</div>
 </div>
 
@@ -297,7 +297,7 @@ Sets the `align-self` property to `start`.
 
 Sets the `align-self` property to `end`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-end">Item</div>
 </div>
 
@@ -313,7 +313,7 @@ Sets the `align-self` property to `end`.
 
 Sets the `align-self` property to `end`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-end">Item</div>
 </div>
 
@@ -329,7 +329,7 @@ Sets the `align-self` property to `end`.
 
 Sets the `align-self` property to `center`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-center">Item</div>
 </div>
 
@@ -345,7 +345,7 @@ Sets the `align-self` property to `center`.
 
 Sets the `align-self` property to `baseline`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-baseline">Item</div>
 </div>
 
@@ -361,7 +361,7 @@ Sets the `align-self` property to `baseline`.
 
 Sets the `align-self` property to `stretch`.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-300 p-5 h-10">
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 align-self-stretch">Item</div>
 </div>
 
