@@ -1,9 +1,12 @@
 @use "../../../src/scss/theme/color/defaults" as graupl-color-defaults with (
   $theme-selector-suffix: ""
 );
+@use "../../../src/scss/variables" as graupl-variables;
 @use "../../../src/scss/utilities";
 @use "../../../src/scss/functions/theme";
 @use "../../../src/scss/theme/color";
+@use "../../../src/scss/state/focus";
+@use "sass:map";
 
 :root {
   --vp-c-brand: #{theme.get(primary, 700)};
@@ -24,4 +27,8 @@
 
 .vp-doc [class*="language-"] pre {
   background: #{theme.get(secondary, 100)};
+}
+
+.nav .group .items .link {
+  padding-left: map.get(graupl-variables.$spacers, 4);
 }

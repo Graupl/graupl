@@ -1,4 +1,4 @@
-# Alignment
+# Alignment Utilities
 
 The alignment utilities provide a set of classes to adjust the `align-content`, `align-items`, and `align-self` properties of items.
 
