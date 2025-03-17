@@ -1,6 +1,6 @@
 # Alignment Utilities
 
-The alignment utilities provide a set of classes to adjust the `align-content`, `align-items`, and `align-self` properties of items.
+The alignment utilities provide a set of classes to adjust the `align-content`, `align-items`, and `align-self` properties of elements.
 
 ## Align content
 
@@ -380,7 +380,7 @@ To customize the alignment utilities, you can use the following variables.
 | Variable | Default Value | Description |
 | --- | --- | --- |
 | `$selector-base` | `"."` | The base selector for the utility classes. |
-| `$use-important` | `false` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `false` | A flag to generate state-aware utility classes. |
@@ -400,6 +400,6 @@ To generate responsive alignment utilities, you can set the `$screen-aware`, `$t
 
 By default, no responsive alignment utilities are generated.
 
-```scss
-
-For more information on responsive variants, refer to the [Responsive utility classes](./responsive-utility-classes) documentation.
+::: tip :pencil2: Note
+For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.
+:::
