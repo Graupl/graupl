@@ -8,6 +8,11 @@ export default defineConfig({
   title: "Graupl",
   description: "A modular and modern CSS framework.",
   base: "/graupl/",
+  vite: {
+    server: {
+      host: "0.0.0.0",
+    },
+  },
   themeConfig: {
     nav: [
       {
