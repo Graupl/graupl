@@ -311,3 +311,32 @@ Sets the `color` property to `currentColor`.
 ### `.text-transparent`
 
 Sets the `color` property to `transparent`.
+
+## Customization
+
+To customize the color utilities, you can use the following variables.
+
+| Variable | Default Value | Description |
+| --- | --- | --- |
+| `$selector-base` | `"."` | The base selector for the utility classes. |
+| `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
+| `$theme-aware` | `true` | A flag to generate theme-aware utility classes. |
+| `$state-aware` | `true` | A flag to generate state-aware utility classes. |
+| `$screen-aware-separator` | `:` | The separator for screen-aware utility classes. |
+| `$theme-aware-separator` | `:` | The separator for theme-aware utility classes. |
+| `$state-aware-separator` | `:` | The separator for state-aware utility classes. |
+| `$background-selector-prefix` | `bg-` | The prefix for the background utility classes. |
+| `$custom-background-properties` | `()` | The custom properties and values for the background utility classes. |
+| `$text-selector-prefix` | `text-` | The prefix for the text utility classes. |
+| `$custom-text-properties` | `()` | The custom properties and values for text utility classes. |
+
+## Responsive variants
+
+To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, or `$state-aware` variables to `true`.
+
+By default, theme-aware and state-aware utility classes are generated.
+
+::: tip :pencil2: Note
+For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.
+:::
