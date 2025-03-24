@@ -7,7 +7,6 @@ export default defineConfig({
   lang: "en-US",
   title: "Graupl",
   description: "A modular and modern CSS framework.",
-  base: "/graupl/",
   vite: {
     server: {
       host: "0.0.0.0",
