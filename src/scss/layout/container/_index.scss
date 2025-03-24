@@ -88,8 +88,16 @@
       [full-width-start] $container-full-width-section-width
       [feature-start] $container-feature-section-width
       [breakout-start] $container-breakout-section-width
-      [content-start] $container-content-section-width
-      [content-end]
+      [content-start sidebar-left-start content-left-start] calc(
+        $container-content-section-width * 0.25
+      )
+      [sidebar-left-end inner-content-start content-right-start] calc(
+        $container-content-section-width * 0.5
+      )
+      [inner-content-end sidebar-right-start content-left-end] calc(
+        $container-content-section-width * 0.25
+      )
+      [content-end sidebar-right-end content-right-end]
       $container-breakout-section-width [breakout-end]
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
@@ -120,7 +128,7 @@
     // force all children to be in the content section.
     //
     // > .contain
-    > #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+    #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
       display: grid;
       grid-template-columns: subgrid;
 
