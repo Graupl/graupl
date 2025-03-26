@@ -16,6 +16,10 @@ $container-content-max-width: var(
   --#{root-defaults.$prefix}container-content-max-width,
   #{root-variables.$content-max-width}
 );
+$container-sidebar-width: var(
+  --#{root-defaults.$prefix}container-sidebar-width,
+  #{defaults.$container-sidebar-width}
+);
 $container-breakout-max-width: var(
   --#{root-defaults.$prefix}container-breakout-max-width,
   calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
@@ -88,5 +92,21 @@ $container-content-section-width: var(
   min(
     #{$container-content-section-min-width},
     #{$container-content-section-max-width}
+  )
+);
+$container-sidebar-left-section-width: var(
+  --#{root-defaults.$prefix}container-sidebar-left-section-width,
+  $container-sidebar-width
+);
+$container-sidebar-right-section-width: var(
+  --#{root-defaults.$prefix}container-sidebar-right-section-width,
+  $container-sidebar-width
+);
+$container-inner-content-section-width: var(
+  --#{root-defaults.$prefix}container-inner-content-section-width,
+  calc(
+    #{$container-content-section-width} -
+      #{$container-sidebar-left-section-width} -
+      #{$container-sidebar-right-section-width}
   )
 );

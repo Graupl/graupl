@@ -79,6 +79,7 @@
 @use "defaults";
 @use "variables" as *;
 @use "../../mixins/layer" as *;
+@use "../../mixins/screen";
 
 @include layer(layout) {
   // .container
@@ -88,16 +89,8 @@
       [full-width-start] $container-full-width-section-width
       [feature-start] $container-feature-section-width
       [breakout-start] $container-breakout-section-width
-      [content-start sidebar-left-start content-left-start] calc(
-        $container-content-section-width * 0.25
-      )
-      [sidebar-left-end inner-content-start content-right-start] calc(
-        $container-content-section-width * 0.5
-      )
-      [inner-content-end sidebar-right-start content-left-end] calc(
-        $container-content-section-width * 0.25
-      )
-      [content-end sidebar-right-end content-right-end]
+      [content-start] $container-content-section-width
+      [content-end]
       $container-breakout-section-width [breakout-end]
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
@@ -158,6 +151,117 @@
     // .full-width
     #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector} {
       grid-column: full-width;
+    }
+
+    @include screen.trigger(allow-sidebars) {
+      // &.sidebars
+      &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
+        grid-template-columns:
+          [full-width-start] $container-full-width-section-width
+          [feature-start] $container-feature-section-width
+          [breakout-start] $container-breakout-section-width
+          [content-start sidebar-left-start content-left-start] $container-sidebar-left-section-width
+          [sidebar-left-end inner-content-start content-right-start] $container-inner-content-section-width
+          [content-left-end inner-content-end sidebar-right-start] $container-sidebar-right-section-width
+          [content-right-end sidebar-right-end content-end]
+          $container-breakout-section-width [breakout-end]
+          $container-feature-section-width [feature-end]
+          $container-full-width-section-width [full-width-end];
+
+        // .sidebar-left
+        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: 1 / sidebar-left-end;
+          grid-row: 1;
+
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
+          > *:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
+            ) {
+            grid-column: sidebar-left;
+          }
+        }
+
+        // .sidebar-right
+        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: sidebar-right-start / -1;
+          grid-row: 1;
+
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
+          > *:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+            ) {
+            grid-column: sidebar-right;
+          }
+        }
+
+        // .content-right
+        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: content-right-start / -1;
+          grid-row: 1;
+
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
+          > *:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+            ) {
+            grid-column: content-right;
+          }
+        }
+
+        // .content-left
+        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: 1 / content-left-end;
+          grid-row: 1;
+
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
+          > *:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
+            ) {
+            grid-column: content-left;
+          }
+        }
+
+        // .inner-content
+        #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
+          display: grid;
+          grid-template-columns: subgrid;
+          grid-column: 1 / -1;
+          grid-row: 1;
+
+          // > :not(.container, .breakout, .feature, .full-width)
+          > :not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
+            grid-column: inner-content;
+          }
+        }
+      }
     }
   }
 }

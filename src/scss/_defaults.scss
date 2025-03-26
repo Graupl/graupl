@@ -57,6 +57,12 @@ $base-screen-size-triggers: (
       "xs",
     ),
   ),
+  allow-sidebars: (
+    mixin: "up",
+    args: (
+      "md",
+    ),
+  ),
 );
 $custom-screen-size-triggers: () !default;
 $screen-size-triggers: map.merge(

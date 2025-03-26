@@ -9,80 +9,19 @@
   <style>
     @media screen and (width > 72ch) {
       .sidebar-left {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / sidebar-left-end;
-        grid-row: 1;
         z-index: 1;
-
-        > *:not(.breakout, .full-width, .sidebar-left, .container, .feature) {
-          grid-column: sidebar-left;
-        }
       }
 
       .inner-content {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / -1;
-        grid-row: 1;
-
-        > *:not(.breakout, .full-width, .sidebar-left, .container, .feature) {
-          grid-column: inner-content;
-        }
-
         .breakout,
         .full-width,
         .feature {
-          z-index: 0;
-        }
-
-        .breakout-left {
-          grid-column: breakout-start / inner-content-end;
-          z-index: 0;
-        }
-
-        .breakout-right {
-          grid-column: inner-content-start / breakout-end;
           z-index: 0;
         }
       }
 
       .sidebar-right {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: sidebar-right-start / -1;
-        grid-row: 1;
         z-index: 1;
-
-        > *:not(.breakout, .full-width, .sidebar-right, .container, .feature) {
-          grid-column: sidebar-right;
-        }
-
-        .breakout,
-        .full-width,
-        .feature {
-          grid-column-start: sidebar-right-start;
-        }
-      }
-
-      .content-right {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: content-right-start / -1; /* Updated to specify the grid column range */
-        grid-row: 1; /* Added to define the row placement */
-        > *:not(.breakout, .full-width, .sidebar-right, .container, .feature) {
-          grid-column: content-right;
-        }
-      }
-
-      .content-left {
-        display: grid;
-        grid-template-columns: subgrid;
-        grid-column: 1 / content-left-end; /* Updated to specify the grid column range */
-        grid-row: 1; /* Added to define the row placement */
-        > *:not(.breakout, .full-width, .sidebar-left, .container, .feature) {
-          grid-column: content-left;
-        }
       }
     }
   </style>
@@ -974,7 +913,7 @@
         </li>
       </ul>
     </div>
-    <div class="py-10 my-10 container">
+    <div class="py-10 my-10 container sidebars">
       <div class="sidebar-left">
         <div class="bg-primary-500 py-10"></div>
       </div>
@@ -993,7 +932,7 @@
         <div class="bg-primary-500 py-10"></div>
       </div>
     </div>
-    <div class="py-10 my-10 container">
+    <div class="py-10 my-10 container sidebars">
       <div class="sidebar-left">
         <div class="bg-primary-500 py-10"></div>
       </div>
@@ -1001,7 +940,7 @@
         <div class="bg-secondary-500 py-10"></div>
       </div>
     </div>
-    <div class="py-10 my-10 container">
+    <div class="py-10 my-10 container sidebars">
       <div class="content-left">
         <div class="bg-secondary-500 py-10"></div>
       </div>
