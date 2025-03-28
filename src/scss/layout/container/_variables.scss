@@ -102,6 +102,7 @@ $container-sidebar-right-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-right-section-width,
   $container-sidebar-width
 );
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $container-inner-content-section-width: var(
   --#{root-defaults.$prefix}container-inner-content-section-width,
   calc(
@@ -110,3 +111,4 @@ $container-inner-content-section-width: var(
       #{$container-sidebar-right-section-width}
   )
 );
+/* stylelint-enable  scss/operator-no-newline-after */
