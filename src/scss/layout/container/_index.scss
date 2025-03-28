@@ -9,6 +9,13 @@
 // - Breakout: A breakout section that is used for breakout content.
 // - Content: The main content section that contains all other content.
 //
+// Optionally, the container component can have sidebars, which divides the content section into five sections:
+// - Sidebar-left: A left sidebar section that is used for sidebar content.
+// - Sidebar-right: A right sidebar section that is used for sidebar content.
+// - Inner-content: A section that contains the main content of the page.
+// - Content-left: A section that contains the sidebar-left and inner-content sections.
+// - Content-right: A section that contains the inner-content and sidebar-right sections.
+//
 // The container layout is as follows:
 // | full-width | feature | breakout | content | breakout | feature | full-width |
 //
@@ -21,10 +28,17 @@
 // - `.feature`: A feature container component.
 // - `.breakout`: A breakout container component.
 // - `.contain`: A utility class to contain child elements to the content section of the container grid.
+// - `.sidebars`: A utility class to enable sidebars in the container.
+// - `.sidebar-left`: A left sidebar container component.
+// - `.sidebar-right`: A right sidebar container component.
+// - `.content-left`: A left content container component.
+// - `.content-right`: A right content container component.
+// - `.inner-content`: A utility class to contain child elements to the inner content section of the container grid.
 //
 // The following custom properties control the generated classes:
 // - `--graupl-container-gap`: The gap between the container sections.
 // - `--graupl-container-content-max-width`: The maximum width of the content section.
+// - `--graupl-container-sidebar-width`: The width of the sidebar sections.
 // - `--graupl-container-breakout-max-width`: The maximum width of the breakout section.
 // - `--graupl-container-feature-max-width`: The maximum width of the feature section.
 // - `--graupl-container-full-width-section-min-width`: The minimum width of one side of the full-width section.
@@ -39,6 +53,9 @@
 // - `--graupl-container-feature-section-width`: The calculated minmax width of the feature section.
 // - `--graupl-container-breakout-section-width`: The calculated minmax width of the breakout section.
 // - `--graupl-container-content-section-width`: The calculated minmax width of the content section.
+// - `--graupl-container-sidebar-left-section-width`: The width of the left sidebar section.
+// - `--graupl-container-sidebar-right-section-width`: The width of the right sidebar section.
+// - `--graupl-container-inner-content-section-width`: The calculated minmax width of the inner content section.
 //
 // The following variables control the generated classes:
 // - `$container-selector-base`: The base selector for the container component.
@@ -51,8 +68,18 @@
 // - `$container-full-width-selector`: The selector for the full-width container component.
 // - `$container-contain-selector-base`: The base selector for the contain utility class.
 // - `$container-contain-selector`: The selector for the contain utility class.
+// - `$container-sidebars-selector-base`: The base selector for the sidebars utility class.
+// - `$container-sidebars-selector`: The selector for the sidebars utility class.
+// - `$container-content-selector-base`: The base selector for the content container component.
+// - `$container-content-selector`: The selector for the content container component.
+// - `$container-sidebar-selector-base`: The base selector for the sidebar container component.
+// - `$container-sidebar-selector`: The selector for the sidebar container component.
+// - `$container-left-selector-suffix`: The suffix for the left sidebar selector.
+// - `$container-right-selector-suffix`: The suffix for the right sidebar selector.
+// - `$container-inner-selector-prefix`: The prefix for the inner content selector.
 // - `$container-breakout-width`: The width of the breakout section will extend from the content section.
 // - `$container-feature-width`: The width of the feature section will extend from the breakout section.
+// - `$container-sidebar-width`: The width of the sidebar sections.
 //
 // @example
 //   <div class="container">
