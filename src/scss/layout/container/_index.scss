@@ -102,6 +102,39 @@
 //       Contained feature content
 //     </div>
 //   </div>
+//
+// @example
+//   <div class="container sidebars">
+//     <div class="sidebar-left">
+//       Left sidebar content
+//     </div>
+//     <div class="content-right">
+//       Content right content
+//     </div>
+//   </div>
+//
+// @example
+//   <div class="container sidebars">
+//     <div class="content-left">
+//       Content left content
+//     </div>
+//     <div class="sidebar-right">
+//       Right sidebar content
+//     </div>
+//   </div>
+//
+// @example
+//   <div class="container sidebars">
+//     <div class="sidebar-left">
+//       Left sidebar content
+//     </div>
+//     <div class="inner-content">
+//       Inner content content
+//     </div>
+//     <div class="sidebar-right">
+//       Right sidebar content
+//     </div>
+//   </div>
 
 @use "defaults";
 @use "variables" as *;
@@ -185,11 +218,11 @@
       // .sidebar-left
       #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
         display: grid;
-        grid-column: -1 / 1;
+        grid-column: 1 / -1;
         grid-template-columns: subgrid;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
-        > *:not(
+        > :not(
             #{defaults.$container-selector-base}#{defaults.$container-selector},
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
@@ -203,11 +236,11 @@
       // .sidebar-right
       #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
         display: grid;
-        grid-column: -1 / 1;
+        grid-column: 1 / -1;
         grid-template-columns: subgrid;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
-        > *:not(
+        > :not(
             #{defaults.$container-selector-base}#{defaults.$container-selector},
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
@@ -225,7 +258,7 @@
         grid-template-columns: subgrid;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
-        > *:not(
+        > :not(
             #{defaults.$container-selector-base}#{defaults.$container-selector},
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
@@ -260,7 +293,7 @@
         grid-template-columns: subgrid;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-        > *:not(
+        > :not(
             #{defaults.$container-selector-base}#{defaults.$container-selector},
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
@@ -345,30 +378,34 @@
 
         // .sidebar-left
         #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
-          grid-column: 1 / sidebar-left-end;
           grid-row: 1;
-
-          // Lock content to the sidebar-left section.
-          //
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
-          > *:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
-            ) {
-            grid-column: sidebar-left;
-          }
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
-          // .container, .breakout, .feature, .full-width
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-            grid-column-end: sidebar-left-end;
+          // &:not(.container)
+          &:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector}
+            ) {
+            // &, .container, .breakout, .feature, .full-width
+            &,
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+              grid-column-end: sidebar-left-end;
+            }
+          }
+
+          // Lock content to the sidebar-left section.
+          //
+          // > :not(.container, .breakout, .feature, .full-width)
+          > :not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
+            grid-column: sidebar-left;
           }
 
           // Contain components should inherit the container's grid columns and
@@ -376,13 +413,12 @@
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
+            // > :not(.container, .breakout, .feature, .full-width)
             > :not(
                 #{defaults.$container-selector-base}#{defaults.$container-selector},
                 #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
                 #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
+                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
               ) {
               grid-column: sidebar-left;
             }
@@ -391,30 +427,34 @@
 
         // .sidebar-right
         #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
-          grid-column: sidebar-right-start / -1;
           grid-row: 1;
-
-          // Lock content to the sidebar-right section.
-          //
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
-          > *:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-            ) {
-            grid-column: sidebar-right;
-          }
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
-          // .container, .breakout, .feature, .full-width
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-            grid-column-start: sidebar-right-start;
+          // &:not(.container)
+          &:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector}
+            ) {
+            // &, .container, .breakout, .feature, .full-width
+            &,
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+              grid-column-start: sidebar-right-start;
+            }
+          }
+
+          // Lock content to the sidebar-right section.
+          //
+          // > :not(.container, .breakout, .feature, .full-width)
+          > :not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
+            grid-column: sidebar-right;
           }
 
           // Contain components should inherit the container's grid columns and
@@ -422,13 +462,12 @@
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
+            // > :not(.container, .breakout, .feature, .full-width)
             > :not(
                 #{defaults.$container-selector-base}#{defaults.$container-selector},
                 #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
                 #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
               ) {
               grid-column: sidebar-right;
             }
@@ -439,16 +478,30 @@
         #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
           grid-row: 1;
 
+          // Make sure other container classes do not break the layout inside of the content.
+          //
+          // &:not(.container)
+          &:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector}
+            ) {
+            // &, .container, .breakout, .feature, .full-width
+            &,
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+              grid-column-start: content-right-start;
+            }
+          }
+
           // Lock content to the content-right section.
           //
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-          > *:not(
+          // > :not(.container, .breakout, .feature, .full-width)
+          > :not(
               #{defaults.$container-selector-base}#{defaults.$container-selector},
               #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
             grid-column: content-right;
           }
@@ -458,14 +511,12 @@
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
+            // > :not(.container, .breakout, .feature, .full-width)
             > :not(
                 #{defaults.$container-selector-base}#{defaults.$container-selector},
                 #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
                 #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
               ) {
               grid-column: content-right;
             }
@@ -476,16 +527,30 @@
         #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
           grid-row: 1;
 
+          // Make sure other container classes do not break the layout inside of the content.
+          //
+          // &:not(.container)
+          &:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector}
+            ) {
+            // &, .container, .breakout, .feature, .full-width
+            &,
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+              grid-column-end: content-left-end;
+            }
+          }
+
           // Lock content to the content-left section.
           //
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-          > *:not(
+          // > :not(.container, .breakout, .feature, .full-width)
+          > :not(
               #{defaults.$container-selector-base}#{defaults.$container-selector},
               #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
             grid-column: content-left;
           }
@@ -495,14 +560,12 @@
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
+            // > :not(.container, .breakout, .feature, .full-width)
             > :not(
                 #{defaults.$container-selector-base}#{defaults.$container-selector},
                 #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
                 #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
               ) {
               grid-column: content-left;
             }
@@ -513,16 +576,30 @@
         #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
           grid-row: 1;
 
+          // Make sure other container classes do not break the layout inside of the content.
+          //
+          // &:not(.container)
+          &:not(
+              #{defaults.$container-selector-base}#{defaults.$container-selector}
+            ) {
+            // &, .container, .breakout, .feature, .full-width
+            &,
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
+              grid-column: inner-content;
+            }
+          }
+
           // Lock content to the inner-content section.
           //
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
+          // > :not(.container, .breakout, .feature, .full-width)
           > :not(
               #{defaults.$container-selector-base}#{defaults.$container-selector},
               #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
             grid-column: inner-content;
           }
@@ -532,14 +609,12 @@
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
+            // > :not(.container, .breakout, .feature, .full-width)
             > :not(
                 #{defaults.$container-selector-base}#{defaults.$container-selector},
                 #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
                 #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-                #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
               ) {
               grid-column: inner-content;
             }
