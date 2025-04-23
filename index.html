@@ -6,6 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="dist/css/graupl.css">
+  <style>
+    @media screen and (width > 72ch) {
+      .sidebar-left {
+        z-index: 1;
+      }
+
+      .inner-content {
+        .breakout,
+        .full-width,
+        .feature {
+          z-index: 0;
+        }
+      }
+
+      .sidebar-right {
+        z-index: 1;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -894,6 +913,69 @@
         </li>
       </ul>
     </div>
+    <div class="py-10 my-10 container sidebars">
+      <div class="sidebar-left">
+        <div class="bg-primary-500 py-10">
+          <h2>Sidebar content (left)</h2>
+          <p>This is sidebar content.</p>
+        </div>
+      </div>
+      <div class="inner-content container">
+        <div class="bg-secondary-500 py-10">
+          <h2>Inner content 1</h2>
+          <p>This is the inner content section where additional information can be placed.</p>
+        </div>
+        <div class="bg-tertiary-500 full-width contain">
+          <div class="bg-tertiary-700 feature contain">
+            <div class="bg-tertiary-800 breakout contain">
+              <div class="bg-secondary-500 py-10">
+                <h2>Inner content 2</h2>
+                <p>This is the inner content section where additional information can be placed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-secondary-500 py-10">
+          <h2>Inner content 3</h2>
+          <p>This is the inner content section where additional information can be placed.</p>
+        </div>
+      </div>
+      <div class="sidebar-right">
+        <div class="bg-primary-500 py-10">
+          <h2>Sidebar content (right)</h2>
+          <p>This is sidebar content.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-10 my-10 container sidebars">
+      <div class="sidebar-left bg-primary-700">
+        <div class="bg-primary-500 py-10">
+          <h2>Sidebar content (left)</h2>
+          <p>This is sidebar content.</p>
+        </div>
+      </div>
+      <div class="content-right bg-secondary-700">
+        <div class="bg-secondary-500 py-10">
+          <h2>Inner content 1</h2>
+          <p>This is the inner content section where additional information can be placed.</p>
+        </div>
+      </div>
+    </div>
+    <div class="py-10 my-10 container sidebars">
+      <div class="content-left bg-secondary-700">
+        <div class="bg-secondary-500 py-10">
+          <h2>Inner content 1</h2>
+          <p>This is the inner content section where additional information can be placed.</p>
+        </div>
+      </div>
+      <div class="sidebar-right bg-primary-700">
+        <div class="bg-primary-500 py-10">
+          <h2>Sidebar content (right)</h2>
+          <p>This is sidebar content.</p>
+        </div>
+      </div>
+    </div>
+
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script type="module" src="src/js/alert/index.js"></script>
