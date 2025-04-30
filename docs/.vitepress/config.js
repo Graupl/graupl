@@ -88,6 +88,7 @@ export default defineConfig({
           { text: "Visibility", link: "/utilities/visibility" },
           { text: "Visually-hidden", link: "/utilities/visually-hidden" },
           { text: "Width", link: "/utilities/width" },
+          { text: "Z-index", link: "/utilities/z-index" },
         ],
       },
       {
