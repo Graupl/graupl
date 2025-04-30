@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.6](https://github.com/Graupl/graupl/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2025-04-30)
+
+
+### Features
+
+* **container:** add sidebar functionality ([ec64613](https://github.com/Graupl/graupl/commit/ec64613f8a9b9de5907dd8c339be743cf7703685))
+* **utility:** add z-index ([88890e5](https://github.com/Graupl/graupl/commit/88890e552450cb0419c939e5b8c2555746fe939b))
+
+
+### Performance Improvements
+
+* **background:** remove unused utilities ([466732f](https://github.com/Graupl/graupl/commit/466732f1b68aa7c7c7fd32959718610b10eaf667))
+
+
+### Build System
+
+* **docs:** update server host for docs dev ([d63ce32](https://github.com/Graupl/graupl/commit/d63ce3251a6ee68181b8f1f6e66e6e77e5dbd529))
+
+
+### Documentation
+
+* improve existing docs begin utility overhaul ([b291618](https://github.com/Graupl/graupl/commit/b29161871624bb1dfa90efa62ab24f26303f069f))
+* remove base dir ([3a124a7](https://github.com/Graupl/graupl/commit/3a124a71233dedcf8fce11c9f488eabca425249e))
+* touch up color docs ([c0eced5](https://github.com/Graupl/graupl/commit/c0eced5a745348d7df86326945f70a2d9dd1db68))
+* **utlities:** add background, border, and color utilities ([0594a77](https://github.com/Graupl/graupl/commit/0594a772db7ed28b0de8ec4f374a0615626bf0b2))
+
 ## [1.0.0-beta.5](https://github.com/Graupl/graupl/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2025-03-10)
 
 
