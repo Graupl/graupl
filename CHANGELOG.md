@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.7](https://github.com/Graupl/graupl/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2025-05-01)
+
+
+### Bug Fixes
+
+* **utility:** correct z-index property ([3d7168c](https://github.com/Graupl/graupl/commit/3d7168ca2da2b11bc8d25cbd928631490cc4ae54))
+
 ## [1.0.0-beta.6](https://github.com/Graupl/graupl/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2025-04-30)
 
 
