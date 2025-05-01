@@ -64,7 +64,7 @@
 
     @include utility.create(
       $selector,
-      property,
+      z-index,
       $value,
       $important: #{defaults.$use-important}
     );
@@ -83,7 +83,7 @@
 
         @include utility.create(
           $selector,
-          property,
+          z-index,
           $value,
           $important: #{defaults.$use-important},
           $screen: $screen-name
@@ -106,7 +106,7 @@
 
           @include utility.create(
             $selector,
-            property,
+            z-index,
             $value,
             $important: #{defaults.$use-important},
             $theme: $theme-name
@@ -129,7 +129,7 @@
 
         @include utility.create(
           $selector,
-          property,
+          z-index,
           $value,
           $important: #{defaults.$use-important},
           $state: $state-name
