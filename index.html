@@ -29,11 +29,18 @@
 
 <body>
   <main class="container pb-10">
-    <h1 class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">Hello Graupl!</h1>
-    <p>Graupl is a modular CSS framework with the goal of making it easy to theme a site.</p>
-    <p>This source code can be found in <a href="https://github.com/Graupl/graupl">GitHub</a>.</p>
-    <p>Graupl supports light and dark modes out-of-the-box.</p>
-    <button id="dark-mode-toggle" class="button mt-5 w-half">Toggle dark mode</button>
+    <div class="flex-columns">
+      <div class="col-8">
+        <h1 class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">Hello Graupl!</h1>
+        <p>Graupl is a modular CSS framework with the goal of making it easy to theme a site.</p>
+        <p>This source code can be found in <a href="https://github.com/Graupl/graupl">GitHub</a>.</p>
+        <p>Graupl supports light and dark modes out-of-the-box.</p>
+        <button id="dark-mode-toggle" class="button mt-5 w-half">Toggle dark mode</button>
+      </div>
+      <div class="col-4 align-items-center">
+        <img src="./logo.svg" alt="Graupl logo" class="logo">
+      </div>
+    </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Buttons</h2>
       <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
