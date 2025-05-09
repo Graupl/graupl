@@ -88,11 +88,11 @@ $link-color: var(
 );
 $link-visited-color: var(
   --#{root-defaults.$prefix}link-visited-color,
-  #{theme.get(primary, 700)}
+  #{$link-color}
 );
 $link-focus-color: var(
   --#{root-defaults.$prefix}link-focus-color,
-  #{theme.get(primary, 700)}
+  #{$link-color}
 );
 $link-hover-color: var(
   --#{root-defaults.$prefix}link-hover-color,
@@ -100,7 +100,7 @@ $link-hover-color: var(
 );
 $link-active-color: var(
   --#{root-defaults.$prefix}link-active-color,
-  #{theme.get(tertiary, 700)}
+  #{$link-hover-color}
 );
 $link-disabled-color: var(
   --#{root-defaults.$prefix}link-disabled-color,
