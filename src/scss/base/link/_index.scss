@@ -20,31 +20,31 @@
     text-decoration-thickness: $link-text-decoration-thickness;
 
     &:visited {
-      text-decoration: $link-visited-text-decoration;
-      text-decoration-thickness: $link-visited-text-decoration-thickness;
-      text-decoration-style: $link-visited-text-decoration-style;
       transform: $link-visited-transform;
+      text-decoration: $link-visited-text-decoration;
+      text-decoration-style: $link-visited-text-decoration-style;
+      text-decoration-thickness: $link-visited-text-decoration-thickness;
     }
 
     &:focus-visible {
-      text-decoration: $link-focus-text-decoration;
-      text-decoration-thickness: $link-focus-text-decoration-thickness;
-      text-decoration-style: $link-focus-text-decoration-style;
       transform: $link-focus-transform;
+      text-decoration: $link-focus-text-decoration;
+      text-decoration-style: $link-focus-text-decoration-style;
+      text-decoration-thickness: $link-focus-text-decoration-thickness;
     }
 
     &:hover {
-      text-decoration: $link-hover-text-decoration;
-      text-decoration-thickness: $link-hover-text-decoration-thickness;
-      text-decoration-style: $link-hover-text-decoration-style;
       transform: $link-hover-transform;
+      text-decoration: $link-hover-text-decoration;
+      text-decoration-style: $link-hover-text-decoration-style;
+      text-decoration-thickness: $link-hover-text-decoration-thickness;
     }
 
     &:active {
-      text-decoration: $link-active-text-decoration;
-      text-decoration-thickness: $link-active-text-decoration-thickness;
-      text-decoration-style: $link-active-text-decoration-style;
       transform: $link-active-transform;
+      text-decoration: $link-active-text-decoration;
+      text-decoration-style: $link-active-text-decoration-style;
+      text-decoration-thickness: $link-active-text-decoration-thickness;
     }
 
     &:disabled,
@@ -56,10 +56,10 @@
       &:focus-visible,
       &:hover,
       &:active {
-        text-decoration: $link-disabled-text-decoration;
-        text-decoration-thickness: $link-disabled-text-decoration-thickness;
-        text-decoration-style: $link-disabled-text-decoration-style;
         transform: $link-disabled-transform;
+        text-decoration: $link-disabled-text-decoration;
+        text-decoration-style: $link-disabled-text-decoration-style;
+        text-decoration-thickness: $link-disabled-text-decoration-thickness;
       }
     }
 
@@ -90,30 +90,30 @@
     text-decoration-color: $link-text-decoration-color;
 
     &:visited {
-      color: $link-visited-color;
-      background: $link-visited-background;
       border-color: $link-visited-border-color;
+      background: $link-visited-background;
+      color: $link-visited-color;
       text-decoration-color: $link-visited-text-decoration-color;
     }
 
     &:focus-visible {
-      color: $link-focus-color;
-      background: $link-focus-background;
       border-color: $link-focus-border-color;
+      background: $link-focus-background;
+      color: $link-focus-color;
       text-decoration-color: $link-focus-text-decoration-color;
     }
 
     &:hover {
-      color: $link-hover-color;
-      background: $link-hover-background;
       border-color: $link-hover-border-color;
+      background: $link-hover-background;
+      color: $link-hover-color;
       text-decoration-color: $link-hover-text-decoration-color;
     }
 
     &:active {
-      color: $link-active-color;
-      background: $link-active-background;
       border-color: $link-active-border-color;
+      background: $link-active-background;
+      color: $link-active-color;
       text-decoration-color: $link-active-text-decoration-color;
     }
 
@@ -124,9 +124,9 @@
       &:focus-visible,
       &:hover,
       &:active {
-        color: $link-disabled-color;
-        background: $link-disabled-background;
         border-color: $link-disabled-border-color;
+        background: $link-disabled-background;
+        color: $link-disabled-color;
         text-decoration-color: $link-disabled-text-decoration-color;
       }
     }

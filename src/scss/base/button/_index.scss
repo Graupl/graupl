@@ -10,7 +10,7 @@
 
 @include layer(base) {
   #{defaults.$button-selector} {
-    @include apply-base();
+    @include apply-base;
 
     &#{defaults.$button-link-selector} {
       --#{root-defaults.$prefix}button-padding: #{link.$link-padding};
@@ -62,7 +62,7 @@
 
 @include layer(theme) {
   #{defaults.$button-selector} {
-    @include apply-theme();
+    @include apply-theme;
 
     &#{defaults.$button-link-selector} {
       --#{root-defaults.$prefix}button-color: #{link.$link-color};
