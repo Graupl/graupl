@@ -10,8 +10,14 @@
 @use "../../base/button/mixins" as button-mixins;
 @use "sass:map";
 
-#{defaults.$alert-selector} {
-  @include layer(component) {
+@include layer(base) {
+  #{defaults.$alert-dismisser-selector} {
+    @include button-mixins.apply-base;
+  }
+}
+
+@include layer(component) {
+  #{defaults.$alert-selector} {
     --#{root-defaults.$prefix}button-border: 0;
 
     display: grid;
@@ -43,7 +49,37 @@
     }
   }
 
-  @include layer(theme) {
+  #{defaults.$alert-header-selector} {
+    grid-column: content;
+    grid-row: header;
+    padding: $alert-header-padding;
+  }
+
+  #{defaults.$alert-body-selector} {
+    grid-column: content;
+    grid-row: body;
+    padding: $alert-body-padding;
+  }
+
+  #{defaults.$alert-footer-selector} {
+    grid-column: content;
+    grid-row: footer;
+    padding: $alert-footer-padding;
+  }
+
+  #{defaults.$alert-dismisser-selector} {
+    grid-column: dismiss;
+    grid-row: 1 / -1;
+    align-self: flex-start;
+  }
+
+  #{defaults.$alert-title-selector} {
+    margin: $alert-title-margin;
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$alert-selector} {
     --#{root-defaults.$prefix}button-background: #{$alert-background};
     --#{root-defaults.$prefix}button-focus-background: #{$alert-background};
     --#{root-defaults.$prefix}link-color: #{$alert-link-color};
@@ -68,48 +104,12 @@
       }
     }
   }
-}
 
-#{defaults.$alert-header-selector} {
-  @include layer(component) {
-    grid-column: content;
-    grid-row: header;
-    padding: $alert-header-padding;
-  }
-}
-
-#{defaults.$alert-body-selector} {
-  @include layer(component) {
-    grid-column: content;
-    grid-row: body;
-    padding: $alert-body-padding;
-  }
-}
-
-#{defaults.$alert-footer-selector} {
-  @include layer(component) {
-    grid-column: content;
-    grid-row: footer;
-    padding: $alert-footer-padding;
-  }
-}
-
-#{defaults.$alert-dismisser-selector} {
-  @include button-mixins.apply-button;
-
-  @include layer(component) {
-    grid-column: dismiss;
-    grid-row: 1 / -1;
-    align-self: flex-start;
-  }
-}
-
-#{defaults.$alert-title-selector} {
-  @include layer(component) {
-    margin: $alert-title-margin;
+  #{defaults.$alert-dismisser-selector} {
+    @include button-mixins.apply-theme;
   }
 
-  @include layer(theme) {
+  #{defaults.$alert-title-selector} {
     color: $alert-title-color;
     font-size: $alert-title-font-size;
     font-weight: $alert-title-font-weight;

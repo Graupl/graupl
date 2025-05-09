@@ -7,8 +7,18 @@
 @use "../../base/button/variables" as button-variables;
 @use "../../base/button/mixins" as button-mixins;
 
-#{defaults.$carousel-selector} {
-  @include layer(component) {
+@include layer(base) {
+  #{defaults.$carousel-control-selector} {
+    @include button-mixins.apply-base;
+  }
+
+  #{defaults.$carousel-tab-selector} {
+    @include button-mixins.apply-base;
+  }
+}
+
+@include layer(component) {
+  #{defaults.$carousel-selector} {
     display: grid;
     position: relative;
     grid-template-columns: [slide-start controls-start] auto [tabs-start] $carousel-tabs-width [tabs-end] auto [controls-end slide-end];
@@ -56,10 +66,8 @@
       }
     }
   }
-}
 
-#{defaults.$carousel-control-container-selector} {
-  @include layer(component) {
+  #{defaults.$carousel-control-container-selector} {
     display: grid;
     z-index: 1;
     grid-area: controls;
@@ -70,12 +78,8 @@
     grid-template-rows: [autoplay-start next-start previous-start] $carousel-control-height [previous-end next-end autoplay-end];
     pointer-events: none;
   }
-}
 
-#{defaults.$carousel-control-selector} {
-  @include button-mixins.apply-button;
-
-  @include layer(component) {
+  #{defaults.$carousel-control-selector} {
     pointer-events: auto;
 
     &#{defaults.$carousel-autoplay-selector} {
@@ -110,10 +114,8 @@
       }
     }
   }
-}
 
-#{defaults.$carousel-item-container-selector} {
-  @include layer(component) {
+  #{defaults.$carousel-item-container-selector} {
     display: grid;
     z-index: 0;
     grid-area: slide;
@@ -122,10 +124,8 @@
     overflow-x: hidden;
     isolation: isolate;
   }
-}
 
-#{defaults.$carousel-item-selector} {
-  @include layer(component) {
+  #{defaults.$carousel-item-selector} {
     z-index: -1;
     grid-area: items;
     max-width: $carousel-item-max-width;
@@ -163,10 +163,8 @@
       }
     }
   }
-}
 
-#{defaults.$carousel-tab-container-selector} {
-  @include layer(component) {
+  #{defaults.$carousel-tab-container-selector} {
     display: flex;
     z-index: 1;
     grid-area: tabs;
@@ -175,14 +173,20 @@
     gap: $carousel-tab-container-gap;
     pointer-events: none;
   }
-}
 
-#{defaults.$carousel-tab-selector} {
-  @include button-mixins.apply-button;
-
-  @include layer(component) {
+  #{defaults.$carousel-tab-selector} {
     --#{root-defaults.$prefix}button-border-radius: 50%;
 
     pointer-events: auto;
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$carousel-control-selector} {
+    @include button-mixins.apply-theme;
+  }
+
+  #{defaults.$carousel-tab-selector} {
+    @include button-mixins.apply-theme;
   }
 }
