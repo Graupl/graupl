@@ -22,8 +22,6 @@ $button-visited-selector: ".visited" !default;
 
 // Button properties.
 $button-transform: none !default;
-$button-visited-transform: $button-transform !default;
-$button-focus-transform: $button-transform !default;
 $button-hover-transform: $button-transform !default;
 $button-active-transform: scale(0.95) !default;
 $button-disabled-transform: $button-transform !default;

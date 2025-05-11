@@ -23,39 +23,25 @@
   font-size: $button-font-size;
   cursor: pointer;
 
-  @each $selector in map.get(root-defaults.$state-selectors, visited) {
-    &#{$selector} {
-      --#{root-defaults.$prefix}button-transform: #{$button-visited-transform};
-    }
-  }
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
+      &#{$selector} {
+        transform: map.get($button-transform-states, $state);
 
-  @each $selector in map.get(root-defaults.$state-selectors, focus) {
-    &#{$selector} {
-      --#{root-defaults.$prefix}button-transform: #{$button-focus-transform};
-    }
-  }
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          cursor: not-allowed;
 
-  @each $selector in map.get(root-defaults.$state-selectors, hover) {
-    &#{$selector} {
-      --#{root-defaults.$prefix}button-transform: #{$button-hover-transform};
-    }
-  }
-
-  @each $selector in map.get(root-defaults.$state-selectors, active) {
-    &#{$selector} {
-      --#{root-defaults.$prefix}button-transform: #{$button-active-transform};
-    }
-  }
-
-  @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-    &#{$selector} {
-      @each $state, $selectors in root-defaults.$state-selectors {
-        @each $selector in $selectors {
-          &,
-          &#{$selector} {
-            --#{root-defaults.$prefix}button-transform: #{$button-disabled-transform};
-
-            cursor: not-allowed;
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  transform: map.get($button-transform-states, $state);
+                }
+              }
+            }
           }
         }
       }
@@ -73,6 +59,7 @@
   color: $button-color;
 
   @each $color, $map in map.get(color.$themes, active) {
+    // e.g. &.primary, &.secondary, &.tertiary
     &#{defaults.$button-theme-selector-prefix}#{$color} {
       @each $prop, $shade in defaults.$button-state-theme-map {
         --#{root-defaults.$prefix}button-#{$prop}: #{theme.get($color, $shade)};
@@ -80,47 +67,27 @@
     }
   }
 
-  @each $selector in map.get(root-defaults.$state-selectors, visited) {
-    &#{$selector} {
-      border-color: $button-visited-border-color;
-      background: $button-visited-background;
-      color: $button-visited-color;
-    }
-  }
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
+      &#{$selector} {
+        border-color: map.get($button-border-color-states, $state);
+        background: map.get($button-background-states, $state);
+        color: map.get($button-color-states, $state);
 
-  @each $selector in map.get(root-defaults.$state-selectors, focus) {
-    &#{$selector} {
-      border-color: $button-focus-border-color;
-      background: $button-focus-background;
-      color: $button-focus-color;
-    }
-  }
-
-  @each $selector in map.get(root-defaults.$state-selectors, hover) {
-    &#{$selector} {
-      border-color: $button-hover-border-color;
-      background: $button-hover-background;
-      color: $button-hover-color;
-    }
-  }
-
-  @each $selector in map.get(root-defaults.$state-selectors, active) {
-    &#{$selector} {
-      border-color: $button-active-border-color;
-      background: $button-active-background;
-      color: $button-active-color;
-    }
-  }
-
-  @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-    &#{$selector} {
-      @each $state, $selectors in root-defaults.$state-selectors {
-        @each $selector in $selectors {
-          &,
-          &#{$selector} {
-            border-color: $button-disabled-border-color;
-            background: $button-disabled-background;
-            color: $button-disabled-color;
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  border-color: map.get($button-border-color-states, $state);
+                  background: map.get($button-background-states, $state);
+                  color: map.get($button-color-states, $state);
+                }
+              }
+            }
           }
         }
       }
