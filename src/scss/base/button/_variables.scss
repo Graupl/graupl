@@ -56,7 +56,7 @@ $button-transition-reduced-motion: var(
 // Transform properties.
 $button-transform: var(
   --#{root-defaults.$prefix}button-transform,
-  #{defaults.$button-transform}
+  #{defaults.$button-initial-transform}
 );
 $button-visited-transform: var(
   --#{root-defaults.$prefix}button-visited-transform,
@@ -68,11 +68,11 @@ $button-focus-transform: var(
 );
 $button-hover-transform: var(
   --#{root-defaults.$prefix}button-hover-transform,
-  #{defaults.$button-hover-transform}
+  #{$button-transform}
 );
 $button-active-transform: var(
   --#{root-defaults.$prefix}button-active-transform,
-  #{defaults.$button-active-transform}
+  #{defaults.$button-final-transform}
 );
 $button-disabled-transform: var(
   --#{root-defaults.$prefix}button-disabled-transform,

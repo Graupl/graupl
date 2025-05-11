@@ -12,7 +12,7 @@
 // Link properties.
 $link-text-decoration: var(
   --#{root-defaults.$prefix}link-text-decoration,
-  #{defaults.$link-text-decoration}
+  #{defaults.$link-initial-text-decoration}
 );
 $link-visited-text-decoration: var(
   --#{root-defaults.$prefix}link-visited-text-decoration,
@@ -24,7 +24,7 @@ $link-focus-text-decoration: var(
 );
 $link-hover-text-decoration: var(
   --#{root-defaults.$prefix}link-hover-text-decoration,
-  #{defaults.$link-hover-text-decoration}
+  #{defaults.$link-final-text-decoration}
 );
 $link-active-text-decoration: var(
   --#{root-defaults.$prefix}link-active-text-decoration,
@@ -76,7 +76,7 @@ $link-text-decoration-thickness-states: (
 );
 $link-text-decoration-style: var(
   --#{root-defaults.$prefix}link-text-decoration-style,
-  #{defaults.$link-text-decoration-style}
+  #{defaults.$link-initial-text-decoration-style}
 );
 $link-visited-text-decoration-style: var(
   --#{root-defaults.$prefix}link-visited-text-decoration-style,
@@ -88,7 +88,7 @@ $link-focus-text-decoration-style: var(
 );
 $link-hover-text-decoration-style: var(
   --#{root-defaults.$prefix}link-hover-text-decoration-style,
-  #{defaults.$link-hover-text-decoration-style}
+  #{defaults.$link-final-text-decoration-style}
 );
 $link-active-text-decoration-style: var(
   --#{root-defaults.$prefix}link-active-text-decoration-style,
@@ -232,7 +232,7 @@ $link-transition-reduced-motion: var(
 );
 $link-transform: var(
   --#{root-defaults.$prefix}link-transform,
-  #{defaults.$link-transform}
+  #{defaults.$link-initial-transform}
 );
 $link-visited-transform: var(
   --#{root-defaults.$prefix}link-visited-transform,
@@ -244,7 +244,7 @@ $link-focus-transform: var(
 );
 $link-hover-transform: var(
   --#{root-defaults.$prefix}link-hover-transform,
-  #{defaults.$link-hover-transform}
+  #{defaults.$link-final-transform}
 );
 $link-active-transform: var(
   --#{root-defaults.$prefix}link-active-transform,

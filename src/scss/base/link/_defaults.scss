@@ -16,15 +16,15 @@ $stretched-link-selector: "stretched" !default;
 $stretched-link-pseudo-selector: "before" !default;
 
 // Link properties.
-$link-text-decoration: underline !default;
-$link-hover-text-decoration: $link-text-decoration !default;
-$link-disabled-text-decoration: $link-text-decoration !default;
-$link-text-decoration-style: solid !default;
-$link-hover-text-decoration-style: $link-text-decoration-style !default;
-$link-disabled-text-decoration-style: $link-text-decoration-style !default;
-$link-transform: none !default;
-$link-hover-transform: $link-transform !default;
-$link-disabled-transform: $link-transform !default;
+$link-initial-text-decoration: underline !default;
+$link-final-text-decoration: $link-initial-text-decoration !default;
+$link-disabled-text-decoration: $link-initial-text-decoration !default;
+$link-initial-text-decoration-style: solid !default;
+$link-final-text-decoration-style: $link-initial-text-decoration-style !default;
+$link-disabled-text-decoration-style: $link-initial-text-decoration-style !default;
+$link-initial-transform: none !default;
+$link-final-transform: $link-initial-transform !default;
+$link-disabled-transform: $link-initial-transform !default;
 $link-border-width: 0 !default;
 $link-min-width: auto;
 $link-min-height: auto;
