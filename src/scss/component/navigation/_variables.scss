@@ -113,11 +113,11 @@ $navigation-branding-color: var(
 );
 $navigation-branding-visited-color: var(
   --#{root-defaults.$prefix}navigation-branding-visited-color,
-  #{$navigation-color}
+  #{$navigation-branding-color}
 );
 $navigation-branding-focus-color: var(
   --#{root-defaults.$prefix}navigation-branding-focus-color,
-  #{$navigation-color}
+  #{$navigation-branding-color}
 );
 $navigation-branding-hover-color: var(
   --#{root-defaults.$prefix}navigation-branding-hover-color,
@@ -125,7 +125,7 @@ $navigation-branding-hover-color: var(
 );
 $navigation-branding-active-color: var(
   --#{root-defaults.$prefix}navigation-branding-active-color,
-  #{$navigation-color}
+  #{$navigation-branding-hover-color}
 );
 $navigation-branding-disabled-color: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-color,
@@ -135,23 +135,23 @@ $navigation-branding-disabled-color: var(
 // Navigation branding text decoration properties.
 $navigation-branding-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration,
-  #{defaults.$navigation-branding-text-decoration}
+  #{defaults.$navigation-branding-initial-text-decoration}
 );
 $navigation-branding-visited-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration,
-  #{defaults.$navigation-branding-visited-text-decoration}
+  #{$navigation-branding-text-decoration}
 );
 $navigation-branding-focus-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration,
-  #{defaults.$navigation-branding-focus-text-decoration}
+  #{$navigation-branding-text-decoration}
 );
 $navigation-branding-hover-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration,
-  #{defaults.$navigation-branding-hover-text-decoration}
+  #{defaults.$navigation-branding-final-text-decoration}
 );
 $navigation-branding-active-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration,
-  #{defaults.$navigation-branding-active-text-decoration}
+  #{$navigation-branding-hover-text-decoration}
 );
 $navigation-branding-disabled-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration,
@@ -159,23 +159,23 @@ $navigation-branding-disabled-text-decoration: var(
 );
 $navigation-branding-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration-style,
-  #{defaults.$navigation-branding-text-decoration-style}
+  #{defaults.$navigation-branding-initial-text-decoration-style}
 );
 $navigation-branding-visited-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration-style,
-  #{defaults.$navigation-branding-visited-text-decoration-style}
+  #{$navigation-branding-text-decoration-style}
 );
 $navigation-branding-focus-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration-style,
-  #{defaults.$navigation-branding-focus-text-decoration-style}
+  #{$navigation-branding-text-decoration-style}
 );
 $navigation-branding-hover-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration-style,
-  #{defaults.$navigation-branding-hover-text-decoration-style}
+  #{defaults.$navigation-branding-final-text-decoration-style}
 );
 $navigation-branding-active-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration-style,
-  #{defaults.$navigation-branding-active-text-decoration-style}
+  #{$navigation-branding-hover-text-decoration-style}
 );
 $navigation-branding-disabled-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-style,
@@ -187,11 +187,11 @@ $navigation-branding-text-decoration-thickness: var(
 );
 $navigation-branding-visited-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration-thickness,
-  #{root-variables.$border-width}
+  #{$navigation-branding-text-decoration-thickness}
 );
 $navigation-branding-focus-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration-thickness,
-  #{root-variables.$border-width}
+  #{$navigation-branding-text-decoration-thickness}
 );
 $navigation-branding-hover-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration-thickness,
@@ -199,7 +199,7 @@ $navigation-branding-hover-text-decoration-thickness: var(
 );
 $navigation-branding-active-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration-thickness,
-  #{root-variables.$border-width}
+  #{$navigation-branding-hover-text-decoration-thickness}
 );
 $navigation-branding-disabled-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-thickness,

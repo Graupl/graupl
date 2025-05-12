@@ -15,15 +15,9 @@ $navigation-branding-selector: ".navigation-branding" !default;
 $navigation-toggle-content: "'☰'" !default;
 
 // Navigation branding properties.
-$navigation-branding-text-decoration: none !default;
-$navigation-branding-visited-text-decoration: $navigation-branding-text-decoration !default;
-$navigation-branding-focus-text-decoration: $navigation-branding-text-decoration !default;
-$navigation-branding-hover-text-decoration: $navigation-branding-text-decoration !default;
-$navigation-branding-active-text-decoration: $navigation-branding-text-decoration !default;
-$navigation-branding-disabled-text-decoration: $navigation-branding-text-decoration !default;
-$navigation-branding-text-decoration-style: solid !default;
-$navigation-branding-visited-text-decoration-style: $navigation-branding-text-decoration-style !default;
-$navigation-branding-focus-text-decoration-style: $navigation-branding-text-decoration-style !default;
-$navigation-branding-hover-text-decoration-style: $navigation-branding-text-decoration-style !default;
-$navigation-branding-active-text-decoration-style: $navigation-branding-text-decoration-style !default;
-$navigation-branding-disabled-text-decoration-style: $navigation-branding-text-decoration-style !default;
+$navigation-branding-initial-text-decoration: none !default;
+$navigation-branding-final-text-decoration: $navigation-branding-initial-text-decoration !default;
+$navigation-branding-disabled-text-decoration: $navigation-branding-initial-text-decoration !default;
+$navigation-branding-initial-text-decoration-style: solid !default;
+$navigation-branding-final-text-decoration-style: $navigation-branding-initial-text-decoration-style !default;
+$navigation-branding-disabled-text-decoration-style: $navigation-branding-initial-text-decoration-style !default;
