@@ -127,3 +127,6 @@ $root-background: var(--#{root-defaults.$prefix}root-background);
     #{map.get(map.get(map.get($themes, active), primary), 100)}
   );
 }
+
+$color: var(--#{root-defaults.$prefix}color, #{$root-color});
+$background: var(--#{root-defaults.$prefix}background, #{$root-background});
