@@ -7,7 +7,7 @@
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
 @use "../../theme/typography/variables" as typography;
-@use "../../theme/color//variables" as color;
+@use "../../theme/color/variables" as color;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -59,7 +59,7 @@ $fieldset-font-size: var(
 // Background properties.
 $input-background: var(
   --#{root-defaults.$prefix}input-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 $fieldset-background: var(
   --#{root-defaults.$prefix}fieldset-background,
@@ -67,10 +67,7 @@ $fieldset-background: var(
 );
 
 // Text properties.
-$input-color: var(
-  --#{root-defaults.$prefix}input-color,
-  #{theme.get(primary, 900)}
-);
+$input-color: var(--#{root-defaults.$prefix}input-color, #{color.$color});
 $input-placeholder-color: var(
   --#{root-defaults.$prefix}input-placeholder-color,
   #{theme.get(secondary, 600)}
@@ -131,7 +128,7 @@ $fieldset-border-radius: var(
 // Border colour properties.
 $input-border-color: var(
   --#{root-defaults.$prefix}input-border-color,
-  #{theme.get(secondary, 700)}
+  #{color.$color}
 );
 $input-disabled-border-color: var(
   --#{root-defaults.$prefix}input-disabled-border-color,

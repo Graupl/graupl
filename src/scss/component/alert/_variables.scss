@@ -41,9 +41,9 @@ $alert-gap: var(
 // Alert color properties.
 $alert-background: var(
   --#{root-defaults.$prefix}alert-background,
-  #{color.$root-background}
+  #{color.$background}
 );
-$alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$root-color});
+$alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$color});
 $alert-link-color: var(--#{root-defaults.$prefix}alert-link-color);
 $alert-link-visited-color: var(
   --#{root-defaults.$prefix}alert-link-visited-color

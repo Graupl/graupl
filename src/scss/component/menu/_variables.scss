@@ -59,9 +59,9 @@ $menu-display: var(
 // Menu color properties.
 $menu-background: var(
   --#{root-defaults.$prefix}menu-background,
-  #{color.$root-background}
+  #{color.$background}
 );
-$menu-color: var(--#{root-defaults.$prefix}menu-color, #{color.$root-color});
+$menu-color: var(--#{root-defaults.$prefix}menu-color, #{color.$color});
 
 // Menu border properties.
 $menu-border-color: var(
@@ -309,7 +309,7 @@ $menu-link-active-background: var(
 );
 $menu-link-disabled-background: var(
   --#{root-defaults.$prefix}menu-link-disabled-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 $menu-link-color: var(
   --#{root-defaults.$prefix}menu-link-color,

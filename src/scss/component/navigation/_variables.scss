@@ -13,11 +13,11 @@
 // Navigation colors.
 $navigation-background: var(
   --#{root-defaults.$prefix}navigation-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 $navigation-color: var(
   --#{root-defaults.$prefix}navigation-color,
-  #{color.$root-color}
+  #{color.$color}
 );
 
 // Navigation toggle size.
