@@ -56,27 +56,35 @@ $button-transition-reduced-motion: var(
 // Transform properties.
 $button-transform: var(
   --#{root-defaults.$prefix}button-transform,
-  #{defaults.$button-transform}
+  #{defaults.$button-initial-transform}
 );
 $button-visited-transform: var(
   --#{root-defaults.$prefix}button-visited-transform,
-  #{defaults.$button-visited-transform}
+  #{$button-transform}
 );
 $button-focus-transform: var(
   --#{root-defaults.$prefix}button-focus-transform,
-  #{defaults.$button-focus-transform}
+  #{$button-transform}
 );
 $button-hover-transform: var(
   --#{root-defaults.$prefix}button-hover-transform,
-  #{defaults.$button-hover-transform}
+  #{$button-transform}
 );
 $button-active-transform: var(
   --#{root-defaults.$prefix}button-active-transform,
-  #{defaults.$button-active-transform}
+  #{defaults.$button-final-transform}
 );
 $button-disabled-transform: var(
   --#{root-defaults.$prefix}button-disabled-transform,
   #{defaults.$button-disabled-transform}
+);
+$button-transform-states: (
+  default: $button-transform,
+  visited: $button-visited-transform,
+  focus: $button-focus-transform,
+  hover: $button-hover-transform,
+  active: $button-active-transform,
+  disabled: $button-disabled-transform,
 );
 
 // Background properties.
@@ -86,11 +94,11 @@ $button-background: var(
 );
 $button-visited-background: var(
   --#{root-defaults.$prefix}button-visited-background,
-  #{color.$root-background}
+  #{$button-background}
 );
 $button-focus-background: var(
   --#{root-defaults.$prefix}button-focus-background,
-  #{color.$root-background}
+  #{$button-background}
 );
 $button-hover-background: var(
   --#{root-defaults.$prefix}button-hover-background,
@@ -98,11 +106,19 @@ $button-hover-background: var(
 );
 $button-active-background: var(
   --#{root-defaults.$prefix}button-active-background,
-  #{theme.get(primary, 900)}
+  #{$button-hover-background}
 );
 $button-disabled-background: var(
   --#{root-defaults.$prefix}button-disabled-background,
   #{color.$root-background}
+);
+$button-background-states: (
+  default: $button-background,
+  visited: $button-visited-background,
+  focus: $button-focus-background,
+  hover: $button-hover-background,
+  active: $button-active-background,
+  disabled: $button-disabled-background,
 );
 
 // Text properties.
@@ -112,11 +128,11 @@ $button-color: var(
 );
 $button-visited-color: var(
   --#{root-defaults.$prefix}button-visited-color,
-  #{color.$root-color}
+  #{$button-color}
 );
 $button-focus-color: var(
   --#{root-defaults.$prefix}button-focus-color,
-  #{color.$root-color}
+  #{$button-color}
 );
 $button-hover-color: var(
   --#{root-defaults.$prefix}button-hover-color,
@@ -124,11 +140,19 @@ $button-hover-color: var(
 );
 $button-active-color: var(
   --#{root-defaults.$prefix}button-active-color,
-  #{theme.get(primary, 100)}
+  #{$button-hover-color}
 );
 $button-disabled-color: var(
   --#{root-defaults.$prefix}button-disabled-color,
   #{theme.get(primary, 200)}
+);
+$button-color-states: (
+  default: $button-color,
+  visited: $button-visited-color,
+  focus: $button-focus-color,
+  hover: $button-hover-color,
+  active: $button-active-color,
+  disabled: $button-disabled-color,
 );
 
 // Border properties.
@@ -156,11 +180,11 @@ $button-border-color: var(
 );
 $button-visited-border-color: var(
   --#{root-defaults.$prefix}button-visited-border-color,
-  #{color.$root-color}
+  #{$button-border-color}
 );
 $button-focus-border-color: var(
   --#{root-defaults.$prefix}button-focus-border-color,
-  #{color.$root-color}
+  #{$button-border-color}
 );
 $button-hover-border-color: var(
   --#{root-defaults.$prefix}button-hover-border-color,
@@ -168,9 +192,17 @@ $button-hover-border-color: var(
 );
 $button-active-border-color: var(
   --#{root-defaults.$prefix}button-active-border-color,
-  #{color.$root-color}
+  #{$button-hover-border-color}
 );
 $button-disabled-border-color: var(
   --#{root-defaults.$prefix}button-disabled-border-color,
   #{theme.get(primary, 200)}
+);
+$button-border-color-states: (
+  default: $button-border-color,
+  visited: $button-visited-border-color,
+  focus: $button-focus-border-color,
+  hover: $button-hover-border-color,
+  active: $button-active-border-color,
+  disabled: $button-disabled-border-color,
 );

@@ -9,154 +9,84 @@
 @use "../../functions/theme";
 @use "sass:map";
 
-@mixin apply-button(
-  $min-width: $button-min-width,
-  $min-height: $button-min-height,
-  $padding: $button-padding,
-  $transform: $button-transform,
-  $transition: $button-transition,
-  $border: $button-border,
-  $border-radius: $button-border-radius,
-  $font-size: $button-font-size,
-  $visited-transform: $button-visited-transform,
-  $focus-transform: $button-focus-transform,
-  $hover-transform: $button-hover-transform,
-  $active-transform: $button-active-transform,
-  $disabled-transform: $button-disabled-transform,
-  $border-color: $button-border-color,
-  $background: $button-background,
-  $color: $button-color,
-  $visited-border-color: $button-visited-border-color,
-  $visited-background: $button-visited-background,
-  $visited-color: $button-visited-color,
-  $focus-border-color: $button-focus-border-color,
-  $focus-background: $button-focus-background,
-  $focus-color: $button-focus-color,
-  $hover-border-color: $button-hover-border-color,
-  $hover-background: $button-hover-background,
-  $hover-color: $button-hover-color,
-  $active-border-color: $button-active-border-color,
-  $active-background: $button-active-background,
-  $active-color: $button-active-color,
-  $disabled-border-color: $button-disabled-border-color,
-  $disabled-background: $button-disabled-background,
-  $disabled-color: $button-disabled-color
-) {
-  @include layer(base) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: $min-width;
-    min-height: $min-height;
-    padding: $padding;
-    transform: $transform;
-    transition: $transition;
-    border: $border;
-    border-radius: $border-radius;
-    font-size: $font-size;
-    cursor: pointer;
+@mixin apply-base() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $button-min-width;
+  min-height: $button-min-height;
+  padding: $button-padding;
+  transform: $button-transform;
+  transition: $button-transition;
+  border: $button-border;
+  border-radius: $button-border-radius;
+  font-size: $button-font-size;
+  cursor: pointer;
 
-    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
       &#{$selector} {
-        --#{root-defaults.$prefix}button-transform: #{$visited-transform};
-      }
-    }
+        transform: map.get($button-transform-states, $state);
 
-    @each $selector in map.get(root-defaults.$state-selectors, focus) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-transform: #{$focus-transform};
-      }
-    }
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          cursor: not-allowed;
 
-    @each $selector in map.get(root-defaults.$state-selectors, hover) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-transform: #{$hover-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, active) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-transform: #{$active-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-      &#{$selector} {
-        @each $state, $selectors in root-defaults.$state-selectors {
-          @each $selector in $selectors {
-            &,
-            &#{$selector} {
-              --#{root-defaults.$prefix}button-transform: #{$disabled-transform};
-
-              cursor: not-allowed;
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  transform: map.get($button-transform-states, $state);
+                }
+              }
             }
           }
         }
       }
     }
+  }
 
-    @include animation.off {
-      --#{root-defaults.$prefix}button-transition: #{$button-transition-reduced-motion};
+  @include animation.off {
+    --#{root-defaults.$prefix}button-transition: #{$button-transition-reduced-motion};
+  }
+}
+
+@mixin apply-theme() {
+  border-color: $button-border-color;
+  background: $button-background;
+  color: $button-color;
+
+  @each $color, $map in map.get(color.$themes, active) {
+    // e.g. &.primary, &.secondary, &.tertiary
+    &#{defaults.$button-theme-selector-base}#{defaults.$button-theme-selector-prefix}#{$color} {
+      @each $prop, $shade in defaults.$button-state-theme-map {
+        --#{root-defaults.$prefix}button-#{$prop}: #{theme.get($color, $shade)};
+      }
     }
   }
 
-  @include layer(theme) {
-    border-color: $border-color;
-    background: $background;
-    color: $color;
-
-    @each $color, $map in map.get(color.$themes, active) {
-      &#{defaults.$button-theme-selector-prefix}#{$color} {
-        @each $prop, $shade in defaults.$button-state-theme-map {
-          --#{root-defaults.$prefix}button-#{$prop}: #{theme.get(
-              $color,
-              $shade
-            )};
-        }
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
       &#{$selector} {
-        --#{root-defaults.$prefix}button-border-color: #{$visited-border-color};
-        --#{root-defaults.$prefix}button-background: #{$visited-background};
-        --#{root-defaults.$prefix}button-color: #{$visited-color};
-      }
-    }
+        border-color: map.get($button-border-color-states, $state);
+        background: map.get($button-background-states, $state);
+        color: map.get($button-color-states, $state);
 
-    @each $selector in map.get(root-defaults.$state-selectors, focus) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-border-color: #{$focus-border-color};
-        --#{root-defaults.$prefix}button-background: #{$focus-background};
-        --#{root-defaults.$prefix}button-color: #{$focus-color};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, hover) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-border-color: #{$hover-border-color};
-        --#{root-defaults.$prefix}button-background: #{$hover-background};
-        --#{root-defaults.$prefix}button-color: #{$hover-color};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, active) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}button-border-color: #{$active-border-color};
-        --#{root-defaults.$prefix}button-background: #{$active-background};
-        --#{root-defaults.$prefix}button-color: #{$active-color};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-      &#{$selector} {
-        @each $state, $selectors in root-defaults.$state-selectors {
-          @each $selector in $selectors {
-            &,
-            &#{$selector} {
-              --#{root-defaults.$prefix}button-border-color: #{$disabled-border-color};
-              --#{root-defaults.$prefix}button-background: #{$disabled-background};
-              --#{root-defaults.$prefix}button-color: #{$disabled-color};
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  border-color: map.get($button-border-color-states, $state);
+                  background: map.get($button-background-states, $state);
+                  color: map.get($button-color-states, $state);
+                }
+              }
             }
           }
         }

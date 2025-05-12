@@ -6,27 +6,21 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // Button selectors.
-$button-selector: ".button" !default;
-$button-link-selector: ".link" !default;
-$button-theme-selector-prefix: "." !default;
-
-// State selectors.
-$button-active-selector: ".active" !default;
-$button-disabled-selector: ".disabled" !default;
-$button-focus-selector: ".focus" !default;
-$button-hover-selector: ".hover" !default;
-$button-visited-selector: ".visited" !default;
+$button-selector-base: root-defaults.$selector-base !default;
+$button-selector: "button" !default;
+$button-link-selector-base: $button-selector-base !default;
+$button-link-selector: "link" !default;
+$button-theme-selector-base: $button-selector-base !default;
+$button-theme-selector-prefix: "" !default;
 
 // Button properties.
-$button-transform: none !default;
-$button-visited-transform: $button-transform !default;
-$button-focus-transform: $button-transform !default;
-$button-hover-transform: $button-transform !default;
-$button-active-transform: scale(0.95) !default;
-$button-disabled-transform: $button-transform !default;
+$button-initial-transform: none !default;
+$button-final-transform: scale(0.95) !default;
+$button-disabled-transform: $button-initial-transform !default;
 
 // Button state theme defaults.
 // This map is used to define the default colour shades for the
@@ -40,16 +34,9 @@ $button-disabled-transform: $button-transform !default;
 $base-button-state-theme-map: (
   color: 900,
   border-color: 700,
-  visited-color: 900,
-  visited-border-color: 700,
-  focus-color: 900,
-  focus-border-color: 700,
   hover-color: 100,
   hover-background: 700,
   hover-border-color: 700,
-  active-color: 100,
-  active-background: 700,
-  active-border-color: 700,
   disabled-color: 200,
   disabled-border-color: 200,
 );

@@ -42,22 +42,89 @@
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
+      <h2>Typography</h2>
+      <p>Graupl provides default typography styles and classes to go with them.</p>
+      <div class="text-h1">Heading 1 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h1</span>)</div>
+      <div class="text-h2">Heading 2 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h2</span>)</div>
+      <div class="text-h3">Heading 3 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h3</span>)</div>
+      <div class="text-h4">Heading 4 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h4</span>)</div>
+      <div class="text-h5">Heading 5 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h5</span>)</div>
+      <div class="text-h6">Heading 6 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h6</span>)</div>
+      <p>This is a paragraph. It provides the default styles for all text on the site and can be applied to non-paragraph elements using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-paragraph</span> class. There are also set defaults for <strong>bold</strong> and <em>emphasized</em> text.</p>
+      <h3>Links</h3>
+      <p>There are also default links styles that handle all states they could be in.</p>
+      <ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
+        <li><a href="https://graupl.dev/page-that-cant-be-visited">Link</a></li>
+        <li><a href="https://graupl.dev" class="visited">Visited link</a></li>
+        <li><a href="https://graupl.dev" class="focus">Focused link</a></li>
+        <li><a href="https://graupl.dev" class="hover">Hovered link</a></li>
+        <li><a href="https://graupl.dev" class="active">Active link</a></li>
+        <li><a href="https://graupl.dev" class="disabled">Disabled link</a></li>
+      </ul>
+    </div>
+    <div class="container py-10 my-10 align-content-center">
       <h2>Buttons</h2>
       <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
       </p>
-      <div class="columns count-4">
-        <button class="button">Default Button</button>
-        <button class="button primary">Primary Button</button>
-        <button class="button secondary">Secondary Button</button>
-        <button class="button tertiary">Tertiary Button</button>
-        <button class="button link">Link Button</button>
-        <a class="button" href="#">Anchor Button</a>
-        <button class="button" disabled>Default Button</button>
-        <button class="button primary" disabled>Primary Button</button>
-        <button class="button secondary" disabled>Secondary Button</button>
-        <button class="button tertiary" disabled>Tertiary Button</button>
-        <button class="button link" disabled>Link Button</button>
-        <a class="button" href="#" disabled>Anchor Button</a>
+      <h3>Default buttons</h3>
+      <p>The default button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> class to any element.</p>
+      <div class="columns">
+        <button class="button">Default button</button>
+        <button class="button visited">Visited button</button>
+        <button class="button focus">Focused Button</button>
+        <button class="button hover">Hovered Button</button>
+        <button class="button active">Active Button</button>
+        <button class="button disabled">Disabled Button</button>
+      </div>
+      <h3>Primary buttons</h3>
+      <p>The primary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.primary</span> classes to any element.</p>
+      <div class="columns">
+        <button class="button primary">Default button</button>
+        <button class="button primary visited">Visited button</button>
+        <button class="button primary focus">Focused Button</button>
+        <button class="button primary hover">Hovered Button</button>
+        <button class="button primary active">Active Button</button>
+        <button class="button primary disabled">Disabled Button</button>
+      </div>
+      <h3>Secondary buttons</h3>
+      <p>The secondary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.secondary</span> classes to any element.</p>
+      <div class="columns">
+        <button class="button secondary">Default button</button>
+        <button class="button secondary visited">Visited button</button>
+        <button class="button secondary focus">Focused Button</button>
+        <button class="button secondary hover">Hovered Button</button>
+        <button class="button secondary active">Active Button</button>
+        <button class="button secondary disabled">Disabled Button</button>
+      </div>
+      <h3>Tertiary buttons</h3>
+      <p>The tertiary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.tertiary</span> classes to any element.</p>
+      <div class="columns">
+        <button class="button tertiary">Default button</button>
+        <button class="button tertiary visited">Visited button</button>
+        <button class="button tertiary focus">Focused Button</button>
+        <button class="button tertiary hover">Hovered Button</button>
+        <button class="button tertiary active">Active Button</button>
+        <button class="button tertiary disabled">Disabled Button</button>
+      </div>
+      <h3>Link buttons</h3>
+      <p>The link button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.link</span> classes to any element. Buttons set to use the link variant will have their defaults overwritten by link defaults.</p>
+      <div class="columns">
+        <button class="button link">Default button</button>
+        <button class="button link visited">Visited button</button>
+        <button class="button link focus">Focused Button</button>
+        <button class="button link hover">Hovered Button</button>
+        <button class="button link active">Active Button</button>
+        <button class="button link disabled">Disabled Button</button>
+      </div>
+      <h3>Anchor buttons</h3>
+      <p>The anchor button isn't a class, but demonstrates the interactions between buttons and links. Any <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">&lt;a&gt;</span> tag with the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> class will have its defaults overwritten with button defaults.</p>
+      <div class="columns">
+        <a href="https://graupl.dev/page-that-cant-be-visited" class="button">Default button</a>
+        <a href="https://graupl.dev" class="button visited">Visited button</a>
+        <a href="https://graupl.dev" class="button focus">Focused Button</a>
+        <a href="https://graupl.dev" class="button hover">Hovered Button</a>
+        <a href="https://graupl.dev" class="button active">Active Button</a>
+        <a href="https://graupl.dev" class="button disabled">Disabled Button</a>
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
@@ -899,7 +966,7 @@
         </li>
       </ul>
       <p class="pt-5">We can also use the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.display-flex</span> utility class.</p>
-      <ul class="list display-flex">
+      <ul class="list display-flex flex-wrap">
         <li class="list-item">
           <a href="#">List item 1</a>
         </li>

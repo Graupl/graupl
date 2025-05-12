@@ -6,43 +6,26 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Link selectors.
+$link-selector-base: "" !default;
 $link-selector: "a" !default;
-$stretched-link-selector: ".stretched" !default;
+$stretched-link-selector-base: root-defaults.$selector-base !default;
+$stretched-link-selector: "stretched" !default;
 $stretched-link-pseudo-selector: "before" !default;
 
 // Link properties.
-$link-text-decoration: underline !default;
-$link-visited-text-decoration: $link-text-decoration !default;
-$link-active-text-decoration: $link-text-decoration !default;
-$link-hover-text-decoration: $link-text-decoration !default;
-$link-focus-text-decoration: $link-text-decoration !default;
-$link-disabled-text-decoration: $link-text-decoration !default;
-$link-text-decoration-style: solid !default;
-$link-visited-text-decoration-style: $link-text-decoration-style !default;
-$link-active-text-decoration-style: $link-text-decoration-style !default;
-$link-hover-text-decoration-style: $link-text-decoration-style !default;
-$link-focus-text-decoration-style: $link-text-decoration-style !default;
-$link-disabled-text-decoration-style: $link-text-decoration-style !default;
-$link-transform: none !default;
-$link-visited-transform: $link-transform !default;
-$link-focus-transform: $link-transform !default;
-$link-hover-transform: $link-transform !default;
-$link-active-transform: $link-transform !default;
-$link-disabled-transform: $link-transform !default;
+$link-initial-text-decoration: underline !default;
+$link-final-text-decoration: $link-initial-text-decoration !default;
+$link-disabled-text-decoration: $link-initial-text-decoration !default;
+$link-initial-text-decoration-style: solid !default;
+$link-final-text-decoration-style: $link-initial-text-decoration-style !default;
+$link-disabled-text-decoration-style: $link-initial-text-decoration-style !default;
+$link-initial-transform: none !default;
+$link-final-transform: $link-initial-transform !default;
+$link-disabled-transform: $link-initial-transform !default;
 $link-border-width: 0 !default;
-$link-border-color: transparent !default;
-$link-visited-border-color: $link-border-color !default;
-$link-focus-border-color: $link-border-color !default;
-$link-hover-border-color: $link-border-color !default;
-$link-active-border-color: $link-border-color !default;
-$link-disabled-border-color: $link-border-color !default;
-$link-background: transparent !default;
-$link-visited-background: $link-background !default;
-$link-focus-background: $link-background !default;
-$link-hover-background: $link-background !default;
-$link-active-background: $link-background !default;
-$link-disabled-background: $link-background !default;
 $link-min-width: auto;
 $link-min-height: auto;
 
