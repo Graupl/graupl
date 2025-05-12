@@ -42,11 +42,11 @@ $table-header-padding-y: var(
 $table-header-padding: $table-header-padding-y $table-header-padding-x;
 $table-header-background: var(
   --#{root-defaults.$prefix}table-header-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 $table-header-color: var(
   --#{root-defaults.$prefix}table-header-color,
-  #{color.$root-color}
+  #{color.$color}
 );
 
 // Table cell properties.
@@ -61,11 +61,11 @@ $table-cell-padding-y: var(
 $table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
 $table-cell-background: var(
   --#{root-defaults.$prefix}table-cell-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 $table-cell-color: var(
   --#{root-defaults.$prefix}table-cell-color,
-  #{color.$root-color}
+  #{color.$color}
 );
 
 // Table border properties.

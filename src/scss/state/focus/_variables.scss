@@ -6,7 +6,7 @@
 @use "../../variables" as root-variables;
 @use "defaults";
 @use "../../defaults" as root-defaults;
-@use "../../functions/theme";
+@use "../../theme/color/variables" as color;
 
 $focus-width: var(
   --#{root-defaults.$prefix}focus-width,
@@ -14,7 +14,7 @@ $focus-width: var(
 );
 $focus-outline-color: var(
   --#{root-defaults.$prefix}focus-outline-color,
-  #{theme.get(primary, 900)}
+  #{color.$color}
 );
 $focus-outline-width: var(
   --#{root-defaults.$prefix}focus-outline-width,
@@ -30,7 +30,7 @@ $focus-outline-offset: var(
 );
 $focus-box-shadow-color: var(
   --#{root-defaults.$prefix}focus-box-shadow-color,
-  #{theme.get(primary, 100)}
+  #{color.$background}
 );
 $focus-box-shadow-style: var(
   --#{root-defaults.$prefix}focus-box-shadow-style,

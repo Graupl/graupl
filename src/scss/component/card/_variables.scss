@@ -60,9 +60,9 @@ $card-gap: var(
 // Card color properties.
 $card-background: var(
   --#{root-defaults.$prefix}card-background,
-  #{color.$root-background}
+  #{color.$background}
 );
-$card-color: var(--#{root-defaults.$prefix}card-color, #{color.$root-color});
+$card-color: var(--#{root-defaults.$prefix}card-color, #{color.$color});
 
 // Card border-properties.
 $card-border-color: var(

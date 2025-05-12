@@ -43,11 +43,11 @@ $accordion-gap: var(
 // Accordion color properties.
 $accordion-color: var(
   --#{root-defaults.$prefix}accordion-color,
-  #{color.$root-color}
+  #{color.$color}
 );
 $accordion-background: var(
   --#{root-defaults.$prefix}accordion-background,
-  #{color.$root-background}
+  #{color.$background}
 );
 
 // Accordion item border properties.
