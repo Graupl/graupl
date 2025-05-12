@@ -274,9 +274,26 @@ $link-border: var(
   --#{root-defaults.$prefix}link-border,
   #{$link-border-width} #{$link-border-style}
 );
+$link-border-top-left-radius: var(
+  --#{root-defaults.$prefix}link-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$link-border-top-right-radius: var(
+  --#{root-defaults.$prefix}link-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$link-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}link-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
+$link-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}link-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
 $link-border-radius: var(
   --#{root-defaults.$prefix}link-border-radius,
-  #{root-variables.$border-radius}
+  #{$link-border-top-left-radius} #{$link-border-top-right-radius}
+    #{$link-border-bottom-right-radius} #{$link-border-bottom-left-radius}
 );
 $link-border-color: var(
   --#{root-defaults.$prefix}link-border-color,
