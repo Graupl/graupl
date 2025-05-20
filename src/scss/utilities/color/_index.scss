@@ -132,20 +132,21 @@
       // e.g. `.bg-primary-500` or `.bg-secondary-700`
       $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
-      @include utility.create(
+      @include utility.create-mapped(
         $selector,
-        background,
-        $value,
+        (
+          --#{root-defaults.$prefix}background: #{$value},
+          background: #{color.$background}
+        ),
         $important: defaults.$use-important
       );
 
       // e.g. `.text-primary-500` or `.text-secondary-700`
       $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
-      @include utility.create(
+      @include utility.create-mapped(
         $selector,
-        color,
-        $value,
+        (--#{root-defaults.$prefix}color: #{$value}, color: #{color.$color}),
         $important: defaults.$use-important
       );
     }
@@ -156,10 +157,12 @@
     // e.g. `.bg-inherit` or `.bg-current`
     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
-    @include utility.create(
+    @include utility.create-mapped(
       $selector,
-      background,
-      $value,
+      (
+        --#{root-defaults.$prefix}background: #{$value},
+        background: #{color.$background}
+      ),
       $important: defaults.$use-important
     );
   }
@@ -169,10 +172,9 @@
     // e.g. `.text-inherit` or `.text-current`
     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
-    @include utility.create(
+    @include utility.create-mapped(
       $selector,
-      color,
-      $value,
+      (--#{root-defaults.$prefix}color: #{$value}, color: #{color.$color}),
       $important: defaults.$use-important
     );
   }
@@ -189,10 +191,12 @@
           // e.g. `.md:bg-primary-500` or `.lg:bg-secondary-700`
           $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            background,
-            $value,
+            (
+              --#{root-defaults.$prefix}background: #{$value},
+              background: #{color.$background}
+            ),
             $important: defaults.$use-important,
             $screen: $screen-name
           );
@@ -200,10 +204,12 @@
           // e.g. `.md:text-primary-500` or `.lg:text-secondary-700`
           $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            color,
-            $value,
+            (
+              --#{root-defaults.$prefix}color: #{$value},
+              color: #{color.$color}
+            ),
             $important: defaults.$use-important,
             $screen: $screen-name
           );
@@ -215,10 +221,12 @@
         // e.g. `.md:bg-inherit` or `.lg:bg-current`
         $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
-        @include utility.create(
+        @include utility.create-mapped(
           $selector,
-          background,
-          $value,
+          (
+            --#{root-defaults.$prefix}background: #{$value},
+            background: #{color.$background}
+          ),
           $important: defaults.$use-important,
           $screen: $screen-name
         );
@@ -229,10 +237,9 @@
         // e.g. `.md:text-inherit` or `.lg:text-current`
         $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
-        @include utility.create(
+        @include utility.create-mapped(
           $selector,
-          color,
-          $value,
+          (--#{root-defaults.$prefix}color: #{$value}, color: #{color.$color}),
           $important: defaults.$use-important,
           $screen: $screen-name
         );
@@ -253,10 +260,12 @@
             // e.g. `.dark:bg-primary-500` or `.light:bg-secondary-700`
             $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
-            @include utility.create(
+            @include utility.create-mapped(
               $selector,
-              background,
-              $value,
+              (
+                --#{root-defaults.$prefix}background: #{$value},
+                background: #{color.$background}
+              ),
               $important: defaults.$use-important,
               $theme: $theme-name
             );
@@ -264,10 +273,12 @@
             // e.g. `.dark:text-primary-500` or `.light:text-secondary-700`
             $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
-            @include utility.create(
+            @include utility.create-mapped(
               $selector,
-              color,
-              $value,
+              (
+                --#{root-defaults.$prefix}color: #{$value},
+                color: #{color.$color}
+              ),
               $important: defaults.$use-important,
               $theme: $theme-name
             );
@@ -279,10 +290,12 @@
           // e.g. `.dark:bg-inherit` or `.light:bg-current`
           $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            background,
-            $value,
+            (
+              --#{root-defaults.$prefix}background: #{$value},
+              background: #{color.$background}
+            ),
             $important: defaults.$use-important,
             $theme: $theme-name
           );
@@ -293,10 +306,12 @@
           // e.g. `.dark:text-inherit` or `.light:text-current`
           $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            color,
-            $value,
+            (
+              --#{root-defaults.$prefix}color: #{$value},
+              color: #{color.$color}
+            ),
             $important: defaults.$use-important,
             $theme: $theme-name
           );
@@ -317,10 +332,12 @@
           // e.g. `.hover:bg-primary-500` or `.focus:bg-secondary-700`
           $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            background,
-            $value,
+            (
+              --#{root-defaults.$prefix}background: #{$value},
+              background: #{color.$background}
+            ),
             $important: defaults.$use-important,
             $state: $state-name
           );
@@ -328,10 +345,12 @@
           // e.g. `.hover:text-primary-500` or `.focus:text-secondary-700`
           $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
 
-          @include utility.create(
+          @include utility.create-mapped(
             $selector,
-            color,
-            $value,
+            (
+              --#{root-defaults.$prefix}color: #{$value},
+              color: #{color.$color}
+            ),
             $important: defaults.$use-important,
             $state: $state-name
           );
@@ -343,10 +362,12 @@
         // e.g. `.hover:bg-inherit` or `.focus:bg-current`
         $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
-        @include utility.create(
+        @include utility.create-mapped(
           $selector,
-          background,
-          $value,
+          (
+            --#{root-defaults.$prefix}background: #{$value},
+            background: #{color.$background}
+          ),
           $important: defaults.$use-important,
           $state: $state-name
         );
@@ -357,10 +378,9 @@
         // e.g. `.hover:text-inherit` or `.focus:text-current`
         $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
-        @include utility.create(
+        @include utility.create-mapped(
           $selector,
-          color,
-          $value,
+          (--#{root-defaults.$prefix}color: #{$value}, color: #{color.$color}),
           $important: defaults.$use-important,
           $state: $state-name
         );
