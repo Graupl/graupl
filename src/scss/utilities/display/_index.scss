@@ -56,6 +56,11 @@
 //
 // e.g. `.hover:display-block` will set the `display` property to `block` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:display-block` will set the `display` property to `block` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="display-block">This is a block element.</div>
 //

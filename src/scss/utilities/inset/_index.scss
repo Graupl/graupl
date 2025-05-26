@@ -119,6 +119,11 @@
 //
 // e.g. `.hover:inset-0` will set the `inset` property to `0` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:inset-0` will set the `inset` property to `0` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="inset-0">This element has no inset.</div>
 //

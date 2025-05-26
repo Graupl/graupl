@@ -119,17 +119,22 @@
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
 // - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.sm:w-auto` will set the width property to `auto` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:w-auto` will set the `width` property to `auto` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
 // - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:w-auto` will set the width property to `auto` when the `dark` theme is active.
+// e.g. `.dark:w-auto` will set the `width` property to `auto` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
 // - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:w-auto` will set the width property to `auto` when the element is hovered.
+// e.g. `.hover:w-auto` will set the `width` property to `auto` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:w-auto` will set the `width` property to `auto` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="w-5">This element has a width equal to Graupl's spacer 5 value.</div>

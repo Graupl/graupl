@@ -36,17 +36,22 @@
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
 // - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.sm:z-0` will set the z-index property to 0 on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:z-0` will set the `z-index` property to `0` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
 // - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:z-0` will set the z-index property to 0 when the `dark` theme is active.
+// e.g. `.dark:z-0` will set the `z-index` property to `0` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
 // - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:z-0` will set the z-index property to 0 when the element is hovered.
+// e.g. `.hover:z-0` will set the  `z-index` property to `0` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:z-0` will set the `z-index` property to `0` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="z-0">This element has a z-index of 0.</div>

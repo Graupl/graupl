@@ -137,6 +137,11 @@
 //
 // e.g. `.hover:gradient` will set the `background-image` property to `linear-gradient()` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:gradient` will set the `background-image` property to `linear-gradient()` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="gradient from-primary-500 to-tertiary-500">This element has a gradient background.</div>
 

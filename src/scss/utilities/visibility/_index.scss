@@ -45,6 +45,11 @@
 //
 // e.g. `.hover:visibility-visible` will set the `visibility` property to `visible` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:visibility-visible` will set the `visibility` property to `visible` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="visibility-hidden">This is a hidden element.</div>
 //

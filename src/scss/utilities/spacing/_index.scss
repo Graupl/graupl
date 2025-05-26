@@ -392,6 +392,11 @@
 //
 // e.g. `.active:m-1` will set the `margin` property to Graupl's spacer 1 value when the `active` state is active.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:m-1` will set the `margin` property to Graupl's spacer 1 value when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="m-1">...</div>
 //

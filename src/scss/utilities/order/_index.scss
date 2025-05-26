@@ -60,6 +60,11 @@
 //
 // e.g. `.hover:order-none` will set the `order` property to `0` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:order-none` will set the `order` property to `0` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="order-none">This is a default order element.</div>
 //

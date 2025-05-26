@@ -56,6 +56,11 @@
 //
 // e.g. `.hover:list-style-disc` will set the `list-style-type` property to `disc` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:list-style-disc` will set the `list-style-type` property to `disc` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <ul class="list-style-none list-style-outside">
 //     <li>Item 1</li>

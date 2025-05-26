@@ -70,6 +70,11 @@
 //
 // e.g. `.hover:justify-content-normal` will set the `justify-content` property to `normal` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:justify-content-normal` will set the `justify-content` property to `normal` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="justify-content-normal">This is a normal justify-content element.</div>
 

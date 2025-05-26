@@ -109,6 +109,11 @@
 //
 // e.g. `.hover:bg-primary-100` will set the `background` property to Graupl's primary 100 color when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:bg-primary-100` will set the `background` property to Graupl's primary 100 color when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="bg-primary-100">
 //      <span class="text-primary-900">This is primary 900 text with a primary 100 background.</span>

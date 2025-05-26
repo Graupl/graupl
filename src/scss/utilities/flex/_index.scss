@@ -84,6 +84,11 @@
 //
 // e.g. `.hover:flex-row` will set the `flex-direction` property to `row` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:flex-row` will set the `flex-direction` property to `row` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //  <div class="flex-row">This element will have a flex direction of row.</div>
 

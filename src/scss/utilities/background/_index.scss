@@ -95,6 +95,11 @@
 //
 // e.g. `.hover:bg-attachment-scroll` will set the `background-attachment` property to `scroll` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:bg-attachment-scroll` will set the `background-attachment` property to `scroll` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="bg-attachment-scroll">This element has a scrollable background.</div>
 

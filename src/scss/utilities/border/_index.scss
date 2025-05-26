@@ -96,6 +96,11 @@
 //
 // e.g. `.hover:border-thick` will set the `border-width` property to `thick` when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:border-thick` will set the `border-width` property to `thick` when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <div class="bordered">This element has a border.</div>
 

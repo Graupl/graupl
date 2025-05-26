@@ -45,6 +45,11 @@
 //
 // e.g. `.hover:visually-hidden` will visually hide elements when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:visually-hidden` will set the `visibility` property to `hidden` when the parent container is larger than the `md` breakpoint.
+//
 // Note: The `.focusable` class will never have screen-aware, theme-aware, or state-aware classes generated.
 //
 // @example

@@ -77,6 +77,11 @@
 //
 // e.g. `.hover:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the parent container is larger than the `md` breakpoint.
+//
 // @example
 //   <span class="text-h3">This is an h3-styled element.</span>
 
