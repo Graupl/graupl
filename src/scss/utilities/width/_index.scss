@@ -117,17 +117,17 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
 // e.g. `.sm:w-auto` will set the width property to `auto` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
 // e.g. `.dark:w-auto` will set the width property to `auto` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
 // e.g. `.hover:w-auto` will set the width property to `auto` when the element is hovered.
 //

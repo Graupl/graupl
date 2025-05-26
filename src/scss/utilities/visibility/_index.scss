@@ -31,19 +31,19 @@
 // - `$visibility-properties`: The combined properties and values for the visibility utility classes.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:visibility-visible` will set the visibility property to `visible` on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:visibility-visible` will set the `visibility` property to `visible` on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:visibility-visible` will set the visibility property to `visible` when the `dark` theme is active.
+// e.g. `.dark:visibility-visible` will set the `visibility` property to `visible` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:visibility-visible` will set the visibility property to `visible` when the element is hovered.
+// e.g. `.hover:visibility-visible` will set the `visibility` property to `visible` when the element is hovered.
 //
 // @example
 //   <div class="visibility-hidden">This is a hidden element.</div>

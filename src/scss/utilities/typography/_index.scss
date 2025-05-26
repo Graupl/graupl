@@ -63,19 +63,19 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:text-2xl` will set the font size to Graupl's 2 extra large font size on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:text-2xl` will set the `font-size` property to Graupl's 2 extra large font size on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:text-paragraph` will set the font size, margin, font weight, and line height properties to Graupl's paragraph styles when the `dark` theme is active.
+// e.g. `.dark:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:text-paragraph` will set the font size, margin, font weight, and line height properties to Graupl's paragraph styles when the element is hovered.
+// e.g. `.hover:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the element is hovered.
 //
 // @example
 //   <span class="text-h3">This is an h3-styled element.</span>

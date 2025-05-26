@@ -42,17 +42,17 @@
 // By default, only screen-aware utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
 // e.g. `.sm:ratio-one-by-one` will set the aspect ratio to 1:1 on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
 // e.g. `.dark:ratio-one-by-one` will set the aspect ratio to 1:1 when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
 // e.g. `.hover:ratio-one-by-one` will set the aspect ratio to 1:1 when the element is hovered.
 //

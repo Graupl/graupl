@@ -59,19 +59,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix-name}:{prefix}{value}`
 //
-// e.g. `.sm:align-content-normal` will align the content by its normal value on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:align-content-normal` will set the `align-content` property to `normal` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix-name}:{prefix}{value}`
 //
-// e.g. `.dark:align-content-normal` will align the content by its normal value when the `dark` theme is active.
+// e.g. `.dark:align-content-normal` will set the `align-content` property to `normal` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix-name}:{prefix}{value}`
 //
-// e.g. `.hover:align-content-normal` will align the content by its normal value when the element is hovered.
+// e.g. `.hover:align-content-normal` will set the `align-content` property to `normal` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:align-content-normal` will set the `align-content` property to `normal` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="align-content-normal">This content is aligned normally.</div>

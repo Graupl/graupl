@@ -32,24 +32,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-utility-prefix}{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.sm:[template-class]` will apply a property value on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:[template-class]` will set the `template` property to `value` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-utility-prefix}{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:[template-class]` will apply a property value when the `dark` theme is active.
+// e.g. `.dark:[template-class]` will set the `template` property to `value` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-utility-prefix}{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:[template-class]` will apply a property value when the element is hovered.
+// e.g. `.hover:[template-class]` will set the `template` property to `value` when the element is hovered.
 //
 // When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-utility-prefix}{container-name}:{prefix}{value}`
+// - `.{container-prefix}{container-name}:{prefix}{value}`
 //
-// e.g. `.cq:md:[template-class]` will apply a property value when the parent container is larger than the `md` breakpoint.
+// e.g. `.cq:md:[template-class]` will set the `template` property to `value` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="template-class">This content showing you how to use this.</div>
