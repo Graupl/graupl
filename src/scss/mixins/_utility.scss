@@ -153,7 +153,7 @@
 ) {
   @include _handle-theme($theme) {
     #{$selector} {
-      @if ($screen or $container) {
+      @if $screen or $container {
         @if $screen {
           @include _handle-screen($screen) {
             @include _handle-state($state) {
@@ -163,6 +163,7 @@
             }
           }
         }
+
         @if $container {
           @include _handle-container($container) {
             @include _handle-state($state) {

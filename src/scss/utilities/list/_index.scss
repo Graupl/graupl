@@ -203,6 +203,7 @@
       }
     }
   }
+
   // Generate container-aware utilities.
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
