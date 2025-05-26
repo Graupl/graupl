@@ -183,7 +183,7 @@ To customize the background utilities, you can use the following variables.
 
 ## Responsive variants
 
-To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+To generate responsive background utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
 
 By default, no responsive alignment utilities are generated.
 
