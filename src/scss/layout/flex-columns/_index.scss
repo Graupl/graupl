@@ -68,6 +68,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/container";
 @use "../../mixins/utility";
 @use "defaults";
 @use "sass:map";
@@ -79,6 +80,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: $flex-columns-row-gap $flex-columns-column-gap;
+    container-type: $flex-columns-container-type;
 
     > * {
       flex: 1 1 $flex-columns-size;
@@ -106,9 +108,10 @@
         100% / #{defaults.$flex-columns-max-count} * #{$i}
       );
       /* stylelint-enable  scss/operator-no-newline-after */
+      container-type: $flex-columns-container-type;
     }
 
-    @include screen.trigger(force-single-column) {
+    @include container.trigger(force-single-column) {
       // .col-#{$i}
       #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
         --#{root-defaults.$prefix}flex-columns-size: 100%;
@@ -135,7 +138,7 @@
               100% / #{defaults.$flex-columns-max-count} * #{$i}
             )
         ),
-        $screen: $screen-name
+        $container: $screen-name
       ) {
         // .fill
         &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {

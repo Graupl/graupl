@@ -24,3 +24,7 @@ $flex-columns-max-width: var(
   --#{root-defaults.$prefix}flex-columns-max-width,
   #{defaults.$flex-columns-max-width}
 );
+$flex-columns-container-type: var(
+  --#{root-defaults.$prefix}flex-columns-container-type,
+  #{defaults.$flex-columns-container-type}
+);

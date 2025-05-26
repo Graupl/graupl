@@ -154,6 +154,7 @@
       $container-breakout-section-width [breakout-end]
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
+    container-type: inline-size;
 
     // Container components should span the full width of their parent container
     // and inherit the grid columns.
@@ -162,6 +163,7 @@
     > #{defaults.$container-selector-base}#{defaults.$container-selector} {
       grid-column: 1/-1;
       grid-template-columns: subgrid;
+      container-type: normal;
     }
 
     // Everything in the container that isn't a container component should

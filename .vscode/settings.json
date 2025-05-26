@@ -3,5 +3,6 @@
     "mbse",
     "pbse",
     "pise"
-  ]
+  ],
+  "liveServer.settings.port": 5501
 }

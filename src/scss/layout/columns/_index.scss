@@ -69,7 +69,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../mixins/screen";
+@use "../../mixins/container";
 
 @include layer(layout) {
   // .columns
@@ -113,7 +113,7 @@
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
-  @include screen.trigger(force-single-column) {
+  @include container.trigger(force-single-column) {
     // .columns
     #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
       --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};

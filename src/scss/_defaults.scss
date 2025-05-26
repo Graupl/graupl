@@ -17,6 +17,7 @@ $use-important: true !default;
 $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
 $state-aware-utilities: true !default;
+$container-aware-utilities: true !default;
 $use-layers: true !default;
 
 // Layout properties.
@@ -70,6 +71,17 @@ $screen-size-triggers: map.merge(
   $custom-screen-size-triggers
 );
 
+// Container sizes.
+$base-container-sizes: $screen-sizes;
+$custom-container-sizes: () !default;
+$container-sizes: map.merge($base-container-sizes, $custom-container-sizes);
+$base-container-size-triggers: $screen-size-triggers;
+$custom-container-size-triggers: () !default;
+$container-size-triggers: map.merge(
+  $base-container-size-triggers,
+  $custom-container-size-triggers
+);
+
 // Spacing properties.
 $spacer: 1rem !default;
 $base-spacer-multipliers: (
@@ -119,6 +131,13 @@ $selector-base: "." !default;
 $screen-aware-selector-separator: "\\:" !default;
 $theme-aware-selector-separator: "\\:" !default;
 $state-aware-selector-separator: "\\:" !default;
+$container-aware-selector-separator: "\\:" !default;
+
+// Selector prefixes.
+$screen-selector-prefix: "" !default;
+$theme-selector-prefix: "" !default;
+$state-selector-prefix: "" !default;
+$container-selector-prefix: "cq\\:" !default;
 
 // State selectors.
 $state-selector-base: "." !default;
@@ -156,3 +175,9 @@ $utility-selector-base: $selector-base !default;
 $utility-screen-aware-separator: $screen-aware-selector-separator !default;
 $utility-theme-aware-separator: $theme-aware-selector-separator !default;
 $utility-state-aware-separator: $state-aware-selector-separator !default;
+$utility-container-aware-separator: $container-aware-selector-separator !default;
+
+$utility-screen-aware-prefix: $screen-selector-prefix !default;
+$utility-theme-aware-prefix: $theme-selector-prefix !default;
+$utility-state-aware-prefix: $state-selector-prefix !default;
+$utility-container-aware-prefix: $container-selector-prefix !default;
