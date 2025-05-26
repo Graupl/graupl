@@ -15,7 +15,7 @@ $use-important: root-defaults.$use-important !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
-$container-aware: false !default;
+$container-aware: true !default;
 $screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
 $theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
 $state-aware-separator: root-defaults.$utility-state-aware-separator !default;
