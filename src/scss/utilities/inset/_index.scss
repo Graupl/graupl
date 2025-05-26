@@ -85,9 +85,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$base-inset-properties`: The base properties and values for the inset utility classes.
 // - `$custom-inset-properties`: Additional properties and values for the inset utility classes.
 // - `$inset-properties`: The combined properties and values for the inset utility classes.
