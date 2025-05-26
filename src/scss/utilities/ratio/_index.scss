@@ -108,7 +108,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       @each $ratio-selector, $value in defaults.$ratios {
         @include screen.up($screen-name) {
@@ -126,7 +126,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         @each $ratio-selector, $value in defaults.$ratios {
           @include theme.theme($theme-name) {
@@ -144,13 +144,30 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       @each $ratio-selector, $ratio-value in defaults.$ratios {
         // e.g. `.hover:ratio-one-by-one` or `.focus:ratio-two-by-one
         #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
           @include state.state($state-name) {
             --#{root-defaults.$prefix}ratio: #{$ratio-value};
+          }
+        }
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      @each $ratio-selector, $value in defaults.$ratios {
+        @include container.up($container-name) {
+          // e.g. `.md:ratio-one-by-one` or `.lg:ratio-two-by-one`
+          #{$selector-prefix}#{defaults.$ratio-variant-selector-prefix}#{$ratio-selector} {
+            --#{root-defaults.$prefix}ratio: #{$value};
           }
         }
       }

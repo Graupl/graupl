@@ -75,7 +75,7 @@
     }
   }
 
-  // Create responsive utilities for visually hidden classes.
+  // Create screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
@@ -133,6 +133,31 @@
 
       @include state.state($state-name) {
         // e.g. `.hover:visually-hidden`
+        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
+          // `&:not(.focusable)`
+          &:not(
+              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+            ) {
+            @include visually-hidden.apply(defaults.$use-important);
+          }
+
+          // `&.focusable`
+          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
+            @include visually-hidden.focusable(defaults.$use-important);
+          }
+        }
+      }
+    }
+  }
+
+  // Create container aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$display-selector-base}#{$container-name}#{defaults.$container-aware-separator};
+
+      @include container.up($container-name) {
+        // e.g. `.md:visually-hidden`
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(

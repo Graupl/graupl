@@ -210,7 +210,7 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -290,7 +290,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each width property, create a utility class.
         @each $width, $value in defaults.$width-values {
@@ -370,7 +370,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -428,6 +428,85 @@
           $value,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each width property, create a utility class.
+      @each $width, $value in defaults.$width-values {
+        // e.g. `.md:w-min-content` or `.lg:w-full`
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
+
+        @include utility.create(
+          $selector,
+          width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:max-w-min-content` or `.lg:max-w-full`
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
+
+        @include utility.create(
+          $selector,
+          max-width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:min-w-min-content` or `.lg:min-w-full`
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
+
+        @include utility.create(
+          $selector,
+          min-width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      @each $spacer, $value in root-variables.$spacers {
+        // e.g. `.md:w-1` or `.lg:w-2`
+        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:max-w-1` or `.lg:max-w-2`
+        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          max-width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:min-w-1` or `.lg:min-w-2`
+        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          min-width,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }
