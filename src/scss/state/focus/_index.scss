@@ -32,9 +32,11 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 
-@each $state in map.get(root-defaults.$state-selectors, focus) {
-  // e.g. *.focus or *:focus-visible
-  *#{$state} {
-    @include apply-focus;
+@include layer(state) {
+  @each $state in map.get(root-defaults.$state-selectors, focus) {
+    // e.g. *.focus or *:focus-visible
+    *#{$state} {
+      @include apply-focus;
+    }
   }
 }
