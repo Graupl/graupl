@@ -262,21 +262,18 @@ $link-transform-states: (
   active: $link-active-transform,
   disabled: $link-disabled-transform,
 );
-$link-border-top-width: var(
-  --#{root-defaults.$prefix}link-border-top-width,
-  #{root-variables.$border-top-width}
-);
+$link-border-top-width: var(--#{root-defaults.$prefix}link-border-top-width, 0);
 $link-border-right-width: var(
   --#{root-defaults.$prefix}link-border-right-width,
-  #{root-variables.$border-right-width}
+  0
 );
 $link-border-bottom-width: var(
   --#{root-defaults.$prefix}link-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  0
 );
 $link-border-left-width: var(
   --#{root-defaults.$prefix}link-border-left-width,
-  #{root-variables.$border-left-width}
+  0
 );
 $link-border-width: var(
   --#{root-defaults.$prefix}link-border-width,
