@@ -136,10 +136,10 @@
 //     </div>
 //   </div>
 
+@use "../../mixins/container";
+@use "../../mixins/layer" as *;
 @use "defaults";
 @use "variables" as *;
-@use "../../mixins/layer" as *;
-@use "../../mixins/screen";
 
 @include layer(layout) {
   // .container
@@ -363,7 +363,7 @@
       }
     }
 
-    @include screen.trigger(allow-sidebars) {
+    @include container.trigger(allow-sidebars) {
       // &.sidebars
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
         grid-template-columns:
