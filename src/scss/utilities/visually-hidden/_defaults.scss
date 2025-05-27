@@ -14,9 +14,15 @@ $use-important: root-defaults.$use-important !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
 $state-aware: false !default;
+$container-aware: false !default;
 $screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
 $theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
 $state-aware-separator: root-defaults.$utility-state-aware-separator !default;
+$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 
 // Visually hidden properties.
 $visually-hidden-selector: "visually-hidden" !default;

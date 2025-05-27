@@ -15,9 +15,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$visually-hidden-selector`: The selector for the visually-hidden utility class.
 // - `$visually-hidden-focusable-selector`: The selector for the focusable utility class.
 //
@@ -39,6 +45,11 @@
 //
 // e.g. `.hover:visually-hidden` will visually hide elements when the element is hovered.
 //
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:visually-hidden` will set the `visibility` property to `hidden` when the parent container is larger than the `md` breakpoint.
+//
 // Note: The `.focusable` class will never have screen-aware, theme-aware, or state-aware classes generated.
 //
 // @example
@@ -48,10 +59,11 @@
 //   <a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
 
 @use "../../defaults" as root-defaults;
+@use "../../mixins/container";
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
-@use "../../mixins/theme";
 @use "../../mixins/state";
+@use "../../mixins/theme";
 @use "../../mixins/visually-hidden";
 @use "../../theme/color/variables" as color;
 @use "defaults";
@@ -75,11 +87,11 @@
     }
   }
 
-  // Create responsive utilities for visually hidden classes.
+  // Create screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$display-selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       @include screen.up($screen-name) {
         // e.g. `.md:visually-hidden`
@@ -104,7 +116,7 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: #{defaults.$display-selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         @include theme.theme($theme-name) {
           // e.g. `.dark:visually-hidden`
@@ -129,10 +141,35 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: #{defaults.$display-selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       @include state.state($state-name) {
         // e.g. `.hover:visually-hidden`
+        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
+          // `&:not(.focusable)`
+          &:not(
+              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+            ) {
+            @include visually-hidden.apply(defaults.$use-important);
+          }
+
+          // `&.focusable`
+          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
+            @include visually-hidden.focusable(defaults.$use-important);
+          }
+        }
+      }
+    }
+  }
+
+  // Create container aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      @include container.up($container-name) {
+        // e.g. `.md:visually-hidden`
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(

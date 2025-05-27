@@ -30,9 +30,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$justify-content-selector-prefix`: The prefix for the justify-content utility classes.
 // - `$base-justify-content-properties`: The base properties and values for justify-content.
 // - `$custom-justify-content-properties`: The custom properties and values for justify-content.
@@ -50,19 +56,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:justify-content-normal` will set the justify-content property to `normal` on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:justify-content-normal` will set the `justify-content` property to `normal` on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:justify-content-normal` will set the justify-content property to `normal` when the `dark` theme is active.
+// e.g. `.dark:justify-content-normal` will set the `justify-content` property to `normal` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:justify-content-normal` will set the justify-content property to `normal` when the element is hovered.
+// e.g. `.hover:justify-content-normal` will set the `justify-content` property to `normal` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:justify-content-normal` will set the `justify-content` property to `normal` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="justify-content-normal">This is a normal justify-content element.</div>
@@ -122,7 +133,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each justify content property, create a utility class.
       @each $name, $value in defaults.$justify-content-properties {
@@ -173,7 +184,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each justify content property, create a utility class.
         @each $name, $value in defaults.$justify-content-properties {
@@ -224,7 +235,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each justify content property, create a utility class.
       @each $name, $value in defaults.$justify-content-properties {
@@ -265,6 +276,56 @@
           $value,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each justify content property, create a utility class.
+      @each $name, $value in defaults.$justify-content-properties {
+        // e.g. `.md:justify-content-normal` or `.lg:justify-content-center`
+        $selector: #{$selector-prefix}#{defaults.$justify-content-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          justify-content,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each justify items property, create a utility class.
+      @each $name, $value in defaults.$justify-items-properties {
+        // e.g. `.md:justify-items-start` or `.lg:justify-items-center`
+        $selector: #{$selector-prefix}#{defaults.$justify-items-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          justify-items,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each justify self property, create a utility class.
+      @each $name, $value in defaults.$justify-self-properties {
+        // e.g. `.md:justify-self-auto` or `.lg:justify-self-center`
+        $selector: #{$selector-prefix}#{defaults.$justify-self-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          justify-self,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }

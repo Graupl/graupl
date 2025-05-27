@@ -97,9 +97,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$height-selector-prefix`: The prefix for the height utility classes.
 // - `$max-height-selector-prefix`: The prefix for the max-height utility classes.
 // - `$min-height-selector-prefix`: The prefix for the min-height utility classes.
@@ -111,19 +117,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.sm:h-auto` will set the height property to `auto` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:h-auto` will set the `height` property to `auto` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:h-auto` will set the height property to `auto` when the `dark` theme is active.
+// e.g. `.dark:h-auto` will set the `height` property to `auto` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:h-auto` will set the height property to `auto` when the element is hovered.
+// e.g. `.hover:h-auto` will set the `height` property to `auto` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:h-auto` will set the `height` property to `auto` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="h-5">This element has a height equal to Graupl's spacer 5 value.</div>
@@ -210,7 +221,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
@@ -290,7 +301,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each height property, create a utility class.
         @each $height, $value in defaults.$height-values {
@@ -370,7 +381,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each height property, create a utility class.
       @each $height, $value in defaults.$height-values {
@@ -428,6 +439,85 @@
           $value,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each height property, create a utility class.
+      @each $height, $value in defaults.$height-values {
+        // e.g. `.md:h-min-content` or `.lg:h-fit-content`
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$height};
+
+        @include utility.create(
+          $selector,
+          height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:max-h-min-content` or `.lg:max-h-fit-content`
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$height};
+
+        @include utility.create(
+          $selector,
+          max-height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:min-h-min-content` or `.lg:min-h-fit-content`
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$height};
+
+        @include utility.create(
+          $selector,
+          min-height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      @each $spacer, $value in root-variables.$spacers {
+        // e.g. `.md:h-1` or `.lg:h-5`
+        $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:max-h-1` or `.lg:max-h-5`
+        $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          max-height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+
+        // e.g. `.md:min-h-1` or `.lg:min-h-5`
+        $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
+
+        @include utility.create(
+          $selector,
+          min-height,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }

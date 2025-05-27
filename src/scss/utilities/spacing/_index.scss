@@ -361,9 +361,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$base-spacing-properties`: The base properties and values for the spacing utility classes.
 // - `$custom-spacing-properties`: The custom properties and values for the spacing utility classes.
 // - `$spacing-properties`: The combined properties and values for the spacing utility classes.
@@ -372,19 +378,24 @@
 // By default, only screen-aware utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:m-1` will set the margin property to Graupl's spacer 1 value on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:m-1` will set the `margin` property to Graupl's spacer 1 value on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:m-1` will set the margin property to Graupl's spacer 1 value when the `dark` theme is active.
+// e.g. `.dark:m-1` will set the `margin` property to Graupl's spacer 1 value when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.active:m-1` will set the margin property to Graupl's spacer 1 value when the `active` state is active.
+// e.g. `.active:m-1` will set the `margin` property to Graupl's spacer 1 value when the `active` state is active.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:m-1` will set the `margin` property to Graupl's spacer 1 value when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="m-1">...</div>
@@ -511,7 +522,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each spacing property, create a utility class.
       @each $name, $property in defaults.$spacing-properties {
@@ -624,7 +635,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each spacing property, create a utility class.
         @each $name, $property in defaults.$spacing-properties {
@@ -737,7 +748,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each spacing property, create a utility class.
       @each $name, $property in defaults.$spacing-properties {
@@ -840,6 +851,118 @@
           auto,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each spacing property, create a utility class.
+      @each $name, $property in defaults.$spacing-properties {
+        @each $key, $value in root-variables.$spacers {
+          // `.md:m-1` or `.lg:p-1`
+          $selector: #{$selector-prefix}#{$name}-#{$key};
+
+          // If we're dealing with gap, column-gap, or row-gap inside of #{columns-defaults.$columns-selector}, we should update
+          // the columns-column-gap property instead of the raw property.
+          @if $name == "g" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $important: defaults.$use-important,
+              $container: $container-name
+            ) {
+              // `&.columns`
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              // `&.flex-columns`
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+                --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "cg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $important: defaults.$use-important,
+              $container: $container-name
+            ) {
+              // `&.columns`
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              // `&.flex-columns`
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-column-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else if $name == "rg" {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $important: defaults.$use-important,
+              $container: $container-name
+            ) {
+              // `&.columns`
+              &#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector} {
+                --#{root-defaults.$prefix}columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+
+              // `&.flex-columns`
+              &#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector} {
+                --#{root-defaults.$prefix}flex-columns-row-gap: #{important.insert(
+                    $value
+                  )};
+              }
+            }
+          } @else {
+            @include utility.create(
+              $selector,
+              $property,
+              $value,
+              $important: defaults.$use-important,
+              $container: $container-name
+            );
+          }
+        }
+
+        // `.md:m-auto` or `.lg:p-auto`
+        $selector: "#{$selector-prefix}#{$name}-auto";
+
+        // Create the "auto" utility class.
+        @include utility.create(
+          $selector,
+          $property,
+          auto,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }

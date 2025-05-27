@@ -3,6 +3,7 @@
 // Mixins to help generate utility classes.
 
 @use "./screen";
+@use "./container";
 @use "./state";
 @use "./theme";
 @use "../functions/important";
@@ -58,6 +59,20 @@
   }
 }
 
+/// Handles wrapping utilities with a conditional container.
+///
+/// @param {?string} $container
+///   The container to wrap.
+@mixin _handle-container($container: null) {
+  @if $container {
+    @include container.up($container) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
 /// Handles wrapping utilities with a conditional theme.
 ///
 /// @param {?string} $theme
@@ -95,7 +110,8 @@
   $important: null,
   $screen: null,
   $theme: null,
-  $state: null
+  $state: null,
+  $container: null
 ) {
   $map: utility.convert-property-values-to-map($property, $value);
 
@@ -105,7 +121,8 @@
     $important: $important,
     $screen: $screen,
     $theme: $theme,
-    $state: $state
+    $state: $state,
+    $container: $container
   ) {
     @content;
   }
@@ -131,11 +148,32 @@
   $important: null,
   $screen: null,
   $theme: null,
-  $state: null
+  $state: null,
+  $container: null
 ) {
   @include _handle-theme($theme) {
     #{$selector} {
-      @include _handle-screen($screen) {
+      @if $screen or $container {
+        @if $screen {
+          @include _handle-screen($screen) {
+            @include _handle-state($state) {
+              @include _insert($map, $important) {
+                @content;
+              }
+            }
+          }
+        }
+
+        @if $container {
+          @include _handle-container($container) {
+            @include _handle-state($state) {
+              @include _insert($map, $important) {
+                @content;
+              }
+            }
+          }
+        }
+      } @else {
         @include _handle-state($state) {
           @include _insert($map, $important) {
             @content;

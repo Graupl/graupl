@@ -28,9 +28,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$order-selector-prefix`: The prefix for the order utility classes.
 // - `$base-order-properties`: The base properties and values for the order utility classes.
 // - `$custom-order-properties`: The custom properties and values for the order utility classes.
@@ -40,19 +46,24 @@
 // By default, only screen-aware utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:order-none` will set the order property to `0` on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:order-none` will set the `order` property to `0` on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:order-none` will set the order property to `0` when the `dark` theme is active.
+// e.g. `.dark:order-none` will set the `order` property to `0` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:order-none` will set the order property to `0` when the element is hovered.
+// e.g. `.hover:order-none` will set the `order` property to `0` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:order-none` will set the `order` property to `0` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="order-none">This is a default order element.</div>
@@ -110,7 +121,7 @@
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       @each $property, $value in defaults.$order-properties {
         $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
@@ -142,7 +153,7 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         @each $property, $value in defaults.$order-properties {
           $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
@@ -174,7 +185,7 @@
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       @each $property, $value in defaults.$order-properties {
         $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
@@ -197,6 +208,37 @@
           $i,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      @each $property, $value in defaults.$order-properties {
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
+
+        @include utility.create(
+          $selector,
+          order,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      @for $i from 1 through $order-max-count {
+        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+
+        @include utility.create(
+          $selector,
+          order,
+          $i,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }

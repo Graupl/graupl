@@ -240,9 +240,15 @@ To customize the border utilities, you can use the following variables.
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `false` | A flag to generate state-aware utility classes. |
-| `$screen-aware-separator` | `:` | The separator for screen-aware utility classes. |
-| `$theme-aware-separator` | `:` | The separator for theme-aware utility classes. |
-| `$state-aware-separator` | `:` | The separator for state-aware utility classes. |
+| `$container-aware` | `false` | A flag to generate container-aware utility classes. |
+| `$screen-aware-separator` | `":"` | The separator for screen-aware utility classes. |
+| `$theme-aware-separator` | `":"` | The separator for theme-aware utility classes. |
+| `$state-aware-separator` | `":"` | The separator for state-aware utility classes. |
+| `$container-aware-separator` | `":"` | The separator for container-aware utility classes. |
+| `$screen-aware-selector-prefix` | `""` | The prefix for the screen-aware utility classes. |
+| `$theme-aware-selector-prefix` | `""` | The prefix for the theme-aware utility classes. |
+| `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
+| `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$default-border-selector` | `"bordered"` | The selector for the default border utility class. |
 | `$border-width-selector-prefix` | `"border-"` | The prefix for the border width utility classes. |
 | `$custom-border-width-properties` | `()` | The custom properties and values for the border width utility classes. |
@@ -253,7 +259,7 @@ To customize the border utilities, you can use the following variables.
 
 ## Responsive variants
 
-To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, or `$state-aware` variables to `true`.
+To generate responsive border utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
 
 By default, no responsive alignment utilities are generated.
 

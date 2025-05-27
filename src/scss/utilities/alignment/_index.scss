@@ -33,9 +33,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$align-content-selector-prefix`: The prefix for the align content utility classes.
 // - `$base-align-content-properties`: The base properties and values for the align content utility classes.
 // - `$custom-align-content-properties`: The custom properties and values for the align content utility classes.
@@ -53,19 +59,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix-name}:{prefix}{value}`
 //
-// e.g. `.sm:align-content-normal` will align the content by its normal value on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:align-content-normal` will set the `align-content` property to `normal` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix-name}:{prefix}{value}`
 //
-// e.g. `.dark:align-content-normal` will align the content by its normal value when the `dark` theme is active.
+// e.g. `.dark:align-content-normal` will set the `align-content` property to `normal` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix-name}:{prefix}{value}`
 //
-// e.g. `.hover:align-content-normal` will align the content by its normal value when the element is hovered.
+// e.g. `.hover:align-content-normal` will set the `align-content` property to `normal` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:align-content-normal` will set the `align-content` property to `normal` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="align-content-normal">This content is aligned normally.</div>
@@ -125,7 +136,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each align content property, create a utility class.
       @each $name, $value in defaults.$align-content-properties {
@@ -176,7 +187,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each align content property, create a utility class.
         @each $name, $value in defaults.$align-content-properties {
@@ -227,7 +238,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each align content property, create a utility class.
       @each $name, $value in defaults.$align-content-properties {
@@ -268,6 +279,56 @@
           $value,
           $important: #{defaults.$use-important},
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each align content property, create a utility class.
+      @each $name, $value in defaults.$align-content-properties {
+        // e.g. `.md:align-content-normal` or `.lg:align-content-start`
+        $selector: #{$selector-prefix}#{defaults.$align-content-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          align-content,
+          $value,
+          $important: #{defaults.$use-important},
+          $container: $container-name
+        );
+      }
+
+      // For each align items property, create a utility class.
+      @each $name, $value in defaults.$align-items-properties {
+        // e.g. `.md:align-items-start` or `.lg:align-items-center`
+        $selector: #{$selector-prefix}#{defaults.$align-items-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          align-items,
+          $value,
+          $important: #{defaults.$use-important},
+          $container: $container-name
+        );
+      }
+
+      // For each align self property, create a utility class.
+      @each $name, $value in defaults.$align-self-properties {
+        // e.g. `.md:align-self-auto` or `.lg:align-self-center`
+        $selector: #{$selector-prefix}#{defaults.$align-self-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          align-self,
+          $value,
+          $important: #{defaults.$use-important},
+          $container: $container-name
         );
       }
     }

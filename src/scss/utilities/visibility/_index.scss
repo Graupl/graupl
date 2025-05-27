@@ -16,28 +16,39 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$visibility-selector-prefix`: The prefix for the visibility utility classes.
 // - `$base-visibility-properties`: The base properties and values for the visibility utility classes.
 // - `$custom-visibility-properties`: The custom properties and values for the visibility utility classes.
 // - `$visibility-properties`: The combined properties and values for the visibility utility classes.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.md:visibility-visible` will set the visibility property to `visible` on screens equal to or larger than the `md` breakpoint.
+// e.g. `.md:visibility-visible` will set the `visibility` property to `visible` on screens equal to or larger than the `md` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:visibility-visible` will set the visibility property to `visible` when the `dark` theme is active.
+// e.g. `.dark:visibility-visible` will set the `visibility` property to `visible` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:visibility-visible` will set the visibility property to `visible` when the element is hovered.
+// e.g. `.hover:visibility-visible` will set the `visibility` property to `visible` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:visibility-visible` will set the `visibility` property to `visible` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //   <div class="visibility-hidden">This is a hidden element.</div>
@@ -74,7 +85,7 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {
@@ -97,7 +108,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each visibility property, create a utility class.
         @each $name, $value in defaults.$visibility-properties {
@@ -120,7 +131,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each visibility property, create a utility class.
       @each $name, $value in defaults.$visibility-properties {
@@ -133,6 +144,28 @@
           $value,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each visibility property, create a utility class.
+      @each $name, $value in defaults.$visibility-properties {
+        // e.g. `.md:visibility-visible` or `.lg:visibility-hidden`
+        $selector: #{$selector-prefix}#{defaults.$visibility-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          visibility,
+          $value,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }

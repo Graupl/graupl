@@ -36,9 +36,15 @@
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
+// - `$container-aware`: A flag to generate container-aware utility classes.
 // - `$screen-aware-separator`: The separator for screen-aware utility classes.
 // - `$theme-aware-separator`: The separator for theme-aware utility classes.
 // - `$state-aware-separator`: The separator for state-aware utility classes.
+// - `$container-aware-separator`: The separator for container-aware utility classes.
+// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
+// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
+// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
+// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$flex-direction-selector-prefix`: The prefix for the flex direction utility classes.
 // - `$base-flex-direction-properties`: The base properties and values for the flex direction utility classes.
 // - `$custom-flex-direction-properties`: The custom properties and values for the flex direction utility classes.
@@ -64,19 +70,24 @@
 // By default, no responsive utility classes are generated.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:{prefix}{value}`
+// - `.{screen-prefix}{screen-name}:{prefix}{value}`
 //
-// e.g. `.sm:flex-row` will set the flex direction property to `row` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `.sm:flex-row` will set the `flex-direction` property to `row` on screens equal to or larger than the `sm` breakpoint.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:{prefix}{value}`
+// - `.{theme-prefix}{theme-name}:{prefix}{value}`
 //
-// e.g. `.dark:flex-row` will set the flex direction property to `row` when the `dark` theme is active.
+// e.g. `.dark:flex-row` will set the `flex-direction` property to `row` when the `dark` theme is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:{prefix}{value}`
+// - `.{state-prefix}{state-name}:{prefix}{value}`
 //
-// e.g. `.hover:flex-row` will set the flex direction property to `row` when the element is hovered.
+// e.g. `.hover:flex-row` will set the `flex-direction` property to `row` when the element is hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern:
+// - `.{container-prefix}{container-name}:{prefix}{value}`
+//
+// e.g. `.cq:md:flex-row` will set the `flex-direction` property to `row` when the parent container is larger than the `md` breakpoint.
 //
 // @example
 //  <div class="flex-row">This element will have a flex direction of row.</div>
@@ -163,7 +174,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
       // For each flex direction property, create a utility class.
       @each $name, $property in defaults.$flex-direction-properties {
@@ -242,7 +253,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
         // For each flex direction property, create a utility class.
         @each $name, $property in defaults.$flex-direction-properties {
@@ -321,7 +332,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
       // For each flex direction property, create a utility class.
       @each $name, $property in defaults.$flex-direction-properties {
@@ -390,6 +401,84 @@
           $property,
           $important: defaults.$use-important,
           $state: $state-name
+        );
+      }
+    }
+  }
+
+  // Generate container-aware utilities.
+  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      // e.g. `.md:` or `.lg:`
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+
+      // For each flex direction property, create a utility class.
+      @each $name, $property in defaults.$flex-direction-properties {
+        // e.g. `.md:flex-row` or `.lg:flex-col`
+        $selector: #{$selector-prefix}#{defaults.$flex-direction-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          flex-direction,
+          $property,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each flex wrap property, create a utility class.
+      @each $name, $property in defaults.$flex-wrap-properties {
+        // e.g. `.md:flex-wrap` or `.lg:flex-nowrap`
+        $selector: #{$selector-prefix}#{defaults.$flex-wrap-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          flex-wrap,
+          $property,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each flex grow property, create a utility class.
+      @each $name, $property in defaults.$flex-grow-properties {
+        // e.g. `.md:flex-grow` or `.lg:flex-no-grow`
+        $selector: #{$selector-prefix}#{defaults.$flex-grow-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          flex-grow,
+          $property,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each flex shrink property, create a utility class.
+      @each $name, $property in defaults.$flex-shrink-properties {
+        // e.g. `.md:flex-shrink` or `.lg:flex-no-shrink`
+        $selector: #{$selector-prefix}#{defaults.$flex-shrink-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          flex-shrink,
+          $property,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
+      // For each flex basis property, create a utility class.
+      @each $name, $property in defaults.$flex-basis-properties {
+        // e.g. `.md:flex-min-content` or `.lg:flex-max-content`
+        $selector: #{$selector-prefix}#{defaults.$flex-basis-selector-prefix}#{$name};
+
+        @include utility.create(
+          $selector,
+          flex-basis,
+          $property,
+          $important: defaults.$use-important,
+          $container: $container-name
         );
       }
     }
