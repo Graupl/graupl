@@ -71,19 +71,19 @@ $table-cell-color: var(
 // Table border properties.
 $table-border-top-width: var(
   --#{root-defaults.$prefix}table-border-top-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-top-width}
 );
 $table-border-right-width: var(
   --#{root-defaults.$prefix}table-border-right-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-right-width}
 );
 $table-border-bottom-width: var(
   --#{root-defaults.$prefix}table-border-bottom-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-bottom-width}
 );
 $table-border-left-width: var(
   --#{root-defaults.$prefix}table-border-left-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-left-width}
 );
 $table-border-width: var(
   --#{root-defaults.$prefix}table-border-width,
@@ -92,19 +92,19 @@ $table-border-width: var(
 );
 $table-border-top-style: var(
   --#{root-defaults.$prefix}table-border-top-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-top-style}
 );
 $table-border-right-style: var(
   --#{root-defaults.$prefix}table-border-right-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-right-style}
 );
 $table-border-bottom-style: var(
   --#{root-defaults.$prefix}table-border-bottom-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-bottom-style}
 );
 $table-border-left-style: var(
   --#{root-defaults.$prefix}table-border-left-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-left-style}
 );
 $table-border-style: var(
   --#{root-defaults.$prefix}table-border-style,
@@ -119,19 +119,19 @@ $table-border-color: var(
 // Table cell border properties.
 $table-cell-border-top-width: var(
   --#{root-defaults.$prefix}table-cell-border-top-width,
-  #{$table-border-width}
+  #{root-variables.$border-top-width}
 );
 $table-cell-border-right-width: var(
   --#{root-defaults.$prefix}table-cell-border-right-width,
-  #{$table-border-width}
+  #{root-variables.$border-right-width}
 );
 $table-cell-border-bottom-width: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-width,
-  #{$table-border-width}
+  #{root-variables.$border-bottom-width}
 );
 $table-cell-border-left-width: var(
   --#{root-defaults.$prefix}table-cell-border-left-width,
-  #{$table-border-width}
+  #{root-variables.$border-left-width}
 );
 $table-cell-border-width: var(
   --#{root-defaults.$prefix}table-cell-border-width,
@@ -140,19 +140,19 @@ $table-cell-border-width: var(
 );
 $table-cell-border-top-style: var(
   --#{root-defaults.$prefix}table-cell-border-top-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-top-style}
 );
 $table-cell-border-right-style: var(
   --#{root-defaults.$prefix}table-cell-border-right-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-right-style}
 );
 $table-cell-border-bottom-style: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-bottom-style}
 );
 $table-cell-border-left-style: var(
   --#{root-defaults.$prefix}table-cell-border-left-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-left-style}
 );
 $table-cell-border-style: var(
   --#{root-defaults.$prefix}table-cell-border-style,

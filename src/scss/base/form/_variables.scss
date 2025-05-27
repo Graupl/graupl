@@ -94,19 +94,19 @@ $fieldset-disabled-color: var(
 // Border properties.
 $input-border-top-width: var(
   --#{root-defaults.$prefix}input-border-top-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-top-width}
 );
 $input-border-right-width: var(
   --#{root-defaults.$prefix}input-border-right-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-right-width}
 );
 $input-border-bottom-width: var(
   --#{root-defaults.$prefix}input-border-bottom-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-bottom-width}
 );
 $input-border-left-width: var(
   --#{root-defaults.$prefix}input-border-left-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-left-width}
 );
 $input-border-width: var(
   --#{root-defaults.$prefix}input-border-width,
@@ -115,19 +115,19 @@ $input-border-width: var(
 );
 $input-border-top-style: var(
   --#{root-defaults.$prefix}input-border-top-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-top-style}
 );
 $input-border-right-style: var(
   --#{root-defaults.$prefix}input-border-right-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-right-style}
 );
 $input-border-bottom-style: var(
   --#{root-defaults.$prefix}input-border-bottom-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-bottom-style}
 );
 $input-border-left-style: var(
   --#{root-defaults.$prefix}input-border-left-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-left-style}
 );
 $input-border-style: var(
   --#{root-defaults.$prefix}input-border-style,
@@ -136,19 +136,19 @@ $input-border-style: var(
 );
 $input-border-top-left-radius: var(
   --#{root-defaults.$prefix}input-border-top-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-left-radius}
 );
 $input-border-top-right-radius: var(
   --#{root-defaults.$prefix}input-border-top-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-right-radius}
 );
 $input-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}input-border-bottom-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-left-radius}
 );
 $input-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}input-border-bottom-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-right-radius}
 );
 $input-border-radius: var(
   --#{root-defaults.$prefix}input-border-radius,

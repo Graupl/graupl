@@ -155,19 +155,19 @@ $button-color-states: (
 // Border properties.
 $button-border-top-width: var(
   --#{root-defaults.$prefix}button-border-top-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-top-width}
 );
 $button-border-right-width: var(
   --#{root-defaults.$prefix}button-border-right-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-right-width}
 );
 $button-border-bottom-width: var(
   --#{root-defaults.$prefix}button-border-bottom-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-bottom-width}
 );
 $button-border-left-width: var(
   --#{root-defaults.$prefix}button-border-left-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-left-width}
 );
 $button-border-width: var(
   --#{root-defaults.$prefix}button-border-width,
@@ -176,19 +176,19 @@ $button-border-width: var(
 );
 $button-border-top-style: var(
   --#{root-defaults.$prefix}button-border-top-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-top-style}
 );
 $button-border-right-style: var(
   --#{root-defaults.$prefix}button-border-right-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-right-style}
 );
 $button-border-bottom-style: var(
   --#{root-defaults.$prefix}button-border-bottom-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-bottom-style}
 );
 $button-border-left-style: var(
   --#{root-defaults.$prefix}button-border-left-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-left-style}
 );
 $button-border-style: var(
   --#{root-defaults.$prefix}button-border-style,
@@ -197,19 +197,19 @@ $button-border-style: var(
 );
 $button-border-top-left-radius: var(
   --#{root-defaults.$prefix}button-border-top-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-left-radius}
 );
 $button-border-top-right-radius: var(
   --#{root-defaults.$prefix}button-border-top-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-right-radius}
 );
 $button-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}button-border-bottom-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-right-radius}
 );
 $button-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}button-border-bottom-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-left-radius}
 );
 $button-border-radius: var(
   --#{root-defaults.$prefix}button-border-radius,

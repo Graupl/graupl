@@ -64,19 +64,19 @@ $alert-border-color: var(
 );
 $alert-border-top-left-radius: var(
   --#{root-defaults.$prefix}alert-border-top-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-left-radius}
 );
 $alert-border-top-right-radius: var(
   --#{root-defaults.$prefix}alert-border-top-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-right-radius}
 );
 $alert-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}alert-border-bottom-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-left-radius}
 );
 $alert-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}alert-border-bottom-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-right-radius}
 );
 $alert-border-radius: var(
   --#{root-defaults.$prefix}alert-border-radius,
@@ -85,19 +85,19 @@ $alert-border-radius: var(
 );
 $alert-border-top-width: var(
   --#{root-defaults.$prefix}alert-border-top-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-top-width}
 );
 $alert-border-right-width: var(
   --#{root-defaults.$prefix}alert-border-right-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-right-width}
 );
 $alert-border-bottom-width: var(
   --#{root-defaults.$prefix}alert-border-bottom-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-bottom-width}
 );
 $alert-border-left-width: var(
   --#{root-defaults.$prefix}alert-border-left-width,
-  #{root-variables.$border-width}
+  #{root-variables.$border-left-width}
 );
 $alert-border-width: var(
   --#{root-defaults.$prefix}alert-border-width,
@@ -106,19 +106,19 @@ $alert-border-width: var(
 );
 $alert-border-top-style: var(
   --#{root-defaults.$prefix}alert-border-top-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-top-style}
 );
 $alert-border-right-style: var(
   --#{root-defaults.$prefix}alert-border-right-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-right-style}
 );
 $alert-border-bottom-style: var(
   --#{root-defaults.$prefix}alert-border-bottom-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-bottom-style}
 );
 $alert-border-left-style: var(
   --#{root-defaults.$prefix}alert-border-left-style,
-  #{root-variables.$border-style}
+  #{root-variables.$border-left-style}
 );
 $alert-border-style: var(
   --#{root-defaults.$prefix}alert-border-style,
