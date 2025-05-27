@@ -55,28 +55,28 @@ $accordion-item-border-color: var(
   --#{root-defaults.$prefix}accordion-item-border-color,
   #{$accordion-color}
 );
-$accordion-item-top-left-border-radius: var(
-  --#{root-defaults.$prefix}accordion-item-top-left-border-radius,
+$accordion-item-border-top-left-radius: var(
+  --#{root-defaults.$prefix}accordion-item-border-top-left-radius,
   #{root-variables.$border-radius}
 );
-$accordion-item-top-right-border-radius: var(
-  --#{root-defaults.$prefix}accordion-item-top-right-border-radius,
+$accordion-item-border-top-right-radius: var(
+  --#{root-defaults.$prefix}accordion-item-border-top-right-radius,
   #{root-variables.$border-radius}
 );
-$accordion-item-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}accordion-item-bottom-left-border-radius,
+$accordion-item-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}accordion-item-border-bottom-left-radius,
   #{root-variables.$border-radius}
 );
-$accordion-item-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}accordion-item-bottom-right-border-radius,
+$accordion-item-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}accordion-item-border-bottom-right-radius,
   #{root-variables.$border-radius}
 );
 $accordion-item-border-radius: var(
   --#{root-defaults.$prefix}accordion-item-border-radius,
-  #{$accordion-item-top-left-border-radius}
-    #{$accordion-item-top-right-border-radius}
-    #{$accordion-item-bottom-right-border-radius}
-    #{$accordion-item-bottom-left-border-radius}
+  #{$accordion-item-border-top-left-radius}
+    #{$accordion-item-border-top-right-radius}
+    #{$accordion-item-border-bottom-right-radius}
+    #{$accordion-item-border-bottom-left-radius}
 );
 $accordion-item-border-style: var(
   --#{root-defaults.$prefix}accordion-item-border-style,

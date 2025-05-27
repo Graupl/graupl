@@ -69,26 +69,26 @@ $card-border-color: var(
   --#{root-defaults.$prefix}card-border-color,
   #{$card-color}
 );
-$card-top-left-border-radius: var(
-  --#{root-defaults.$prefix}card-top-left-border-radius,
+$card-border-top-left-radius: var(
+  --#{root-defaults.$prefix}card-border-top-left-radius,
   #{root-variables.$border-radius}
 );
-$card-top-right-border-radius: var(
-  --#{root-defaults.$prefix}card-top-right-border-radius,
+$card-border-top-right-radius: var(
+  --#{root-defaults.$prefix}card-border-top-right-radius,
   #{root-variables.$border-radius}
 );
-$card-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}card-bottom-left-border-radius,
+$card-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}card-border-bottom-left-radius,
   #{root-variables.$border-radius}
 );
-$card-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}card-bottom-right-border-radius,
+$card-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}card-border-bottom-right-radius,
   #{root-variables.$border-radius}
 );
 $card-border-radius: var(
   --#{root-defaults.$prefix}card-border-radius,
-  #{$card-top-left-border-radius} #{$card-top-right-border-radius}
-    #{$card-bottom-right-border-radius} #{$card-bottom-left-border-radius}
+  #{$card-border-top-left-radius} #{$card-border-top-right-radius}
+    #{$card-border-bottom-right-radius} #{$card-border-bottom-left-radius}
 );
 $card-border-style: var(
   --#{root-defaults.$prefix}card-border-style,

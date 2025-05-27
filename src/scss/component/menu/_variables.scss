@@ -68,9 +68,26 @@ $menu-border-color: var(
   --#{root-defaults.$prefix}menu-border-color,
   #{$menu-color}
 );
+$menu-border-top-left-radius: var(
+  --#{root-defaults.$prefix}menu-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$menu-border-top-right-radius: var(
+  --#{root-defaults.$prefix}menu-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$menu-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}menu-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
+$menu-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}menu-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
 $menu-border-radius: var(
   --#{root-defaults.$prefix}menu-border-radius,
-  #{root-variables.$border-radius}
+  #{$menu-border-top-left-radius} #{$menu-border-top-right-radius}
+    #{$menu-border-bottom-right-radius} #{$menu-border-bottom-left-radius}
 );
 $menu-border-style: var(
   --#{root-defaults.$prefix}menu-border-style,
@@ -147,9 +164,26 @@ $submenu-border-color: var(
   --#{root-defaults.$prefix}submenu-border-color,
   #{$submenu-color}
 );
+$submenu-border-top-left-radius: var(
+  --#{root-defaults.$prefix}submenu-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$submenu-border-top-right-radius: var(
+  --#{root-defaults.$prefix}submenu-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$submenu-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
+$submenu-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
 $submenu-border-radius: var(
   --#{root-defaults.$prefix}submenu-border-radius,
-  #{root-variables.$border-radius}
+  #{$submenu-border-top-left-radius} #{$submenu-border-top-right-radius}
+    #{$submenu-border-bottom-right-radius} #{$submenu-border-bottom-left-radius}
 );
 $submenu-border-style: var(
   --#{root-defaults.$prefix}submenu-border-style,
@@ -435,9 +469,27 @@ $menu-link-disabled-text-decoration-color: var(
 );
 
 // Menu link border properties.
+$menu-link-border-top-left-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$menu-link-border-top-right-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$menu-link-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
+$menu-link-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
 $menu-link-border-radius: var(
   --#{root-defaults.$prefix}menu-link-border-radius,
-  #{root-variables.$border-radius}
+  #{$menu-link-border-top-left-radius} #{$menu-link-border-top-right-radius}
+    #{$menu-link-border-bottom-right-radius}
+    #{$menu-link-border-bottom-left-radius}
 );
 $menu-link-border-style: var(
   --#{root-defaults.$prefix}menu-link-border-style,

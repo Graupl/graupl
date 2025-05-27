@@ -79,9 +79,28 @@ $navigation-toggle-border-color: var(
   --#{root-defaults.$prefix}navigation-toggle-border-color,
   #{$navigation-toggle-color}
 );
+$navigation-toggle-border-top-left-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$navigation-toggle-border-top-right-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$navigation-toggle-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
+$navigation-toggle-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
 $navigation-toggle-border-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-radius,
-  #{root-variables.$border-radius}
+  #{$navigation-toggle-border-top-left-radius}
+    #{$navigation-toggle-border-top-right-radius}
+    #{$navigation-toggle-border-bottom-right-radius}
+    #{$navigation-toggle-border-bottom-left-radius}
 );
 
 // Navigation branding properties.

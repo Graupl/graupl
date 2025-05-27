@@ -61,26 +61,26 @@ $list-border-color: var(
   --#{root-defaults.$prefix}list-border-color,
   #{$list-color}
 );
-$list-top-left-border-radius: var(
-  --#{root-defaults.$prefix}list-top-left-border-radius,
+$list-border-top-left-radius: var(
+  --#{root-defaults.$prefix}list-border-top-left-radius,
   #{root-variables.$border-radius}
 );
-$list-top-right-border-radius: var(
-  --#{root-defaults.$prefix}list-top-right-border-radius,
+$list-border-top-right-radius: var(
+  --#{root-defaults.$prefix}list-border-top-right-radius,
   #{root-variables.$border-radius}
 );
-$list-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}list-bottom-left-border-radius,
+$list-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}list-border-bottom-left-radius,
   #{root-variables.$border-radius}
 );
-$list-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}list-bottom-right-border-radius,
+$list-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}list-border-bottom-right-radius,
   #{root-variables.$border-radius}
 );
 $list-border-radius: var(
   --#{root-defaults.$prefix}list-border-radius,
-  #{$list-top-left-border-radius} #{$list-top-right-border-radius}
-    #{$list-bottom-right-border-radius} #{$list-bottom-left-border-radius}
+  #{$list-border-top-left-radius} #{$list-border-top-right-radius}
+    #{$list-border-bottom-right-radius} #{$list-border-bottom-left-radius}
 );
 $list-border-style: var(
   --#{root-defaults.$prefix}list-border-style,
@@ -140,27 +140,27 @@ $list-item-border-color: var(
   --#{root-defaults.$prefix}list-item-border-color,
   #{$list-item-color}
 );
-$list-item-top-left-border-radius: var(
-  --#{root-defaults.$prefix}list-item-top-left-border-radius,
+$list-item-border-top-left-radius: var(
+  --#{root-defaults.$prefix}list-item-border-top-left-radius,
   #{root-variables.$border-radius}
 );
-$list-item-top-right-border-radius: var(
-  --#{root-defaults.$prefix}list-item-top-right-border-radius,
+$list-item-border-top-right-radius: var(
+  --#{root-defaults.$prefix}list-item-border-top-right-radius,
   #{root-variables.$border-radius}
 );
-$list-item-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}list-item-bottom-left-border-radius,
+$list-item-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}list-item-border-bottom-left-radius,
   #{root-variables.$border-radius}
 );
-$list-item-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}list-item-bottom-right-border-radius,
+$list-item-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}list-item-border-bottom-right-radius,
   #{root-variables.$border-radius}
 );
 $list-item-border-radius: var(
   --#{root-defaults.$prefix}list-item-border-radius,
-  #{$list-item-top-left-border-radius} #{$list-item-top-right-border-radius}
-    #{$list-item-bottom-right-border-radius}
-    #{$list-item-bottom-left-border-radius}
+  #{$list-item-border-top-left-radius} #{$list-item-border-top-right-radius}
+    #{$list-item-border-bottom-right-radius}
+    #{$list-item-border-bottom-left-radius}
 );
 $list-item-border-style: var(
   --#{root-defaults.$prefix}list-item-border-style,

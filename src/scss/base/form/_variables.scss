@@ -104,9 +104,26 @@ $input-border: var(
   --#{root-defaults.$prefix}input-border,
   #{$input-border-width} #{$input-border-style}
 );
+$input-border-top-left-radius: var(
+  --#{root-defaults.$prefix}input-border-top-left-radius,
+  #{root-variables.$border-radius}
+);
+$input-border-top-right-radius: var(
+  --#{root-defaults.$prefix}input-border-top-right-radius,
+  #{root-variables.$border-radius}
+);
+$input-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}input-border-bottom-left-radius,
+  #{root-variables.$border-radius}
+);
+$input-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}input-border-bottom-right-radius,
+  #{root-variables.$border-radius}
+);
 $input-border-radius: var(
   --#{root-defaults.$prefix}input-border-radius,
-  #{root-variables.$border-radius}
+  #{$input-border-top-left-radius} #{$input-border-top-right-radius}
+    #{$input-border-bottom-right-radius} #{$input-border-bottom-left-radius}
 );
 $fieldset-border-width: var(
   --#{root-defaults.$prefix}fieldset-border-width,
@@ -120,9 +137,27 @@ $fieldset-border: var(
   --#{root-defaults.$prefix}fieldset-border,
   #{$fieldset-border-width} #{$fieldset-border-style}
 );
+$fieldset-border-top-left-radius: var(
+  --#{root-defaults.$prefix}fieldset-border-top-left-radius,
+  #{$input-border-top-left-radius}
+);
+$fieldset-border-top-right-radius: var(
+  --#{root-defaults.$prefix}fieldset-border-top-right-radius,
+  #{$input-border-top-right-radius}
+);
+$fieldset-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}fieldset-border-bottom-left-radius,
+  #{$input-border-bottom-left-radius}
+);
+$fieldset-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}fieldset-border-bottom-right-radius,
+  #{$input-border-bottom-right-radius}
+);
 $fieldset-border-radius: var(
   --#{root-defaults.$prefix}fieldset-border-radius,
-  #{$input-border-radius}
+  #{$fieldset-border-top-left-radius} #{$fieldset-border-top-right-radius}
+    #{$fieldset-border-bottom-right-radius}
+    #{$fieldset-border-bottom-left-radius}
 );
 
 // Border colour properties.

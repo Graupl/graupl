@@ -62,26 +62,26 @@ $alert-border-color: var(
   --#{root-defaults.$prefix}alert-border-color,
   #{$alert-color}
 );
-$alert-top-left-border-radius: var(
-  --#{root-defaults.$prefix}alert-top-left-border-radius,
+$alert-border-top-left-radius: var(
+  --#{root-defaults.$prefix}alert-border-top-left-radius,
   #{root-variables.$border-radius}
 );
-$alert-top-right-border-radius: var(
-  --#{root-defaults.$prefix}alert-top-right-border-radius,
+$alert-border-top-right-radius: var(
+  --#{root-defaults.$prefix}alert-border-top-right-radius,
   #{root-variables.$border-radius}
 );
-$alert-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}alert-bottom-left-border-radius,
+$alert-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}alert-border-bottom-left-radius,
   #{root-variables.$border-radius}
 );
-$alert-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}alert-bottom-right-border-radius,
+$alert-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}alert-border-bottom-right-radius,
   #{root-variables.$border-radius}
 );
 $alert-border-radius: var(
   --#{root-defaults.$prefix}alert-border-radius,
-  #{$alert-top-left-border-radius} #{$alert-top-right-border-radius}
-    #{$alert-bottom-right-border-radius} #{$alert-bottom-left-border-radius}
+  #{$alert-border-top-left-radius} #{$alert-border-top-right-radius}
+    #{$alert-border-bottom-right-radius} #{$alert-border-bottom-left-radius}
 );
 $alert-border-style: var(
   --#{root-defaults.$prefix}alert-border-style,
