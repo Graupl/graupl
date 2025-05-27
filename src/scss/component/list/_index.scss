@@ -13,7 +13,8 @@
     position: relative;
     margin: $list-margin;
     padding: $list-padding;
-    border: $list-border;
+    border-width: $list-border-width;
+    border-style: $list-border-style;
     border-radius: $list-border-radius;
     list-style: none;
     gap: $list-gap;
@@ -24,7 +25,8 @@
     padding: $list-item-padding;
     transform: $list-item-transform;
     transition: $list-item-transition;
-    border: $list-item-border;
+    border-width: $list-item-border-width;
+    border-style: $list-item-border-style;
     border-radius: $list-item-border-radius;
 
     @each $selector in map.get(root-defaults.$state-selectors, hover) {

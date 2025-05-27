@@ -262,17 +262,47 @@ $link-transform-states: (
   active: $link-active-transform,
   disabled: $link-disabled-transform,
 );
+$link-border-top-width: var(
+  --#{root-defaults.$prefix}link-border-top-width,
+  #{root-variables.$border-width}
+);
+$link-border-right-width: var(
+  --#{root-defaults.$prefix}link-border-right-width,
+  #{root-variables.$border-width}
+);
+$link-border-bottom-width: var(
+  --#{root-defaults.$prefix}link-border-bottom-width,
+  #{root-variables.$border-width}
+);
+$link-border-left-width: var(
+  --#{root-defaults.$prefix}link-border-left-width,
+  #{root-variables.$border-width}
+);
 $link-border-width: var(
   --#{root-defaults.$prefix}link-border-width,
-  #{defaults.$link-border-width}
+  #{$link-border-top-width} #{$link-border-right-width}
+    #{$link-border-bottom-width} #{$link-border-left-width}
+);
+$link-border-top-style: var(
+  --#{root-defaults.$prefix}link-border-top-style,
+  #{root-variables.$border-style}
+);
+$link-border-right-style: var(
+  --#{root-defaults.$prefix}link-border-right-style,
+  #{root-variables.$border-style}
+);
+$link-border-bottom-style: var(
+  --#{root-defaults.$prefix}link-border-bottom-style,
+  #{root-variables.$border-style}
+);
+$link-border-left-style: var(
+  --#{root-defaults.$prefix}link-border-left-style,
+  #{root-variables.$border-style}
 );
 $link-border-style: var(
   --#{root-defaults.$prefix}link-border-style,
-  #{root-variables.$border-style}
-);
-$link-border: var(
-  --#{root-defaults.$prefix}link-border,
-  #{$link-border-width} #{$link-border-style}
+  #{$link-border-top-style} #{$link-border-right-style}
+    #{$link-border-bottom-style} #{$link-border-left-style}
 );
 $link-border-top-left-radius: var(
   --#{root-defaults.$prefix}link-border-top-left-radius,

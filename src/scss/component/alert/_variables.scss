@@ -83,17 +83,47 @@ $alert-border-radius: var(
   #{$alert-border-top-left-radius} #{$alert-border-top-right-radius}
     #{$alert-border-bottom-right-radius} #{$alert-border-bottom-left-radius}
 );
-$alert-border-style: var(
-  --#{root-defaults.$prefix}alert-border-style,
-  #{root-variables.$border-style}
+$alert-border-top-width: var(
+  --#{root-defaults.$prefix}alert-border-top-width,
+  #{root-variables.$border-width}
+);
+$alert-border-right-width: var(
+  --#{root-defaults.$prefix}alert-border-right-width,
+  #{root-variables.$border-width}
+);
+$alert-border-bottom-width: var(
+  --#{root-defaults.$prefix}alert-border-bottom-width,
+  #{root-variables.$border-width}
+);
+$alert-border-left-width: var(
+  --#{root-defaults.$prefix}alert-border-left-width,
+  #{root-variables.$border-width}
 );
 $alert-border-width: var(
   --#{root-defaults.$prefix}alert-border-width,
-  #{root-variables.$border-width}
+  #{$alert-border-top-width} #{$alert-border-right-width}
+    #{$alert-border-bottom-width} #{$alert-border-left-width}
 );
-$alert-border: var(
-  --#{root-defaults.$prefix}alert-border,
-  #{$alert-border-width} #{$alert-border-style}
+$alert-border-top-style: var(
+  --#{root-defaults.$prefix}alert-border-top-style,
+  #{root-variables.$border-style}
+);
+$alert-border-right-style: var(
+  --#{root-defaults.$prefix}alert-border-right-style,
+  #{root-variables.$border-style}
+);
+$alert-border-bottom-style: var(
+  --#{root-defaults.$prefix}alert-border-bottom-style,
+  #{root-variables.$border-style}
+);
+$alert-border-left-style: var(
+  --#{root-defaults.$prefix}alert-border-left-style,
+  #{root-variables.$border-style}
+);
+$alert-border-style: var(
+  --#{root-defaults.$prefix}alert-border-style,
+  #{$alert-border-top-style} #{$alert-border-right-style}
+    #{$alert-border-bottom-style} #{$alert-border-left-style}
 );
 
 // Alert transition properties.

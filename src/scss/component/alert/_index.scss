@@ -25,7 +25,8 @@
     grid-template-rows: [header-start] auto [header-end body-start] auto [body-end footer-start] auto [footer-end];
     padding: $alert-padding;
     transition: $alert-transition;
-    border: $alert-border;
+    border-width: $alert-border-width;
+    border-style: $alert-border-style;
     border-radius: $alert-border-radius;
     gap: $alert-gap;
 

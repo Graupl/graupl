@@ -92,17 +92,47 @@ $fieldset-disabled-color: var(
 );
 
 // Border properties.
-$input-border-width: var(
-  --#{root-defaults.$prefix}input-border-width,
+$input-border-top-width: var(
+  --#{root-defaults.$prefix}input-border-top-width,
   #{root-variables.$border-width}
 );
-$input-border-style: var(
-  --#{root-defaults.$prefix}botton-border-style,
+$input-border-right-width: var(
+  --#{root-defaults.$prefix}input-border-right-width,
+  #{root-variables.$border-width}
+);
+$input-border-bottom-width: var(
+  --#{root-defaults.$prefix}input-border-bottom-width,
+  #{root-variables.$border-width}
+);
+$input-border-left-width: var(
+  --#{root-defaults.$prefix}input-border-left-width,
+  #{root-variables.$border-width}
+);
+$input-border-width: var(
+  --#{root-defaults.$prefix}input-border-width,
+  #{$input-border-top-width} #{$input-border-right-width}
+    #{$input-border-bottom-width} #{$input-border-left-width}
+);
+$input-border-top-style: var(
+  --#{root-defaults.$prefix}input-border-top-style,
   #{root-variables.$border-style}
 );
-$input-border: var(
-  --#{root-defaults.$prefix}input-border,
-  #{$input-border-width} #{$input-border-style}
+$input-border-right-style: var(
+  --#{root-defaults.$prefix}input-border-right-style,
+  #{root-variables.$border-style}
+);
+$input-border-bottom-style: var(
+  --#{root-defaults.$prefix}input-border-bottom-style,
+  #{root-variables.$border-style}
+);
+$input-border-left-style: var(
+  --#{root-defaults.$prefix}input-border-left-style,
+  #{root-variables.$border-style}
+);
+$input-border-style: var(
+  --#{root-defaults.$prefix}input-border-style,
+  #{$input-border-top-style} #{$input-border-right-style}
+    #{$input-border-bottom-style} #{$input-border-left-style}
 );
 $input-border-top-left-radius: var(
   --#{root-defaults.$prefix}input-border-top-left-radius,
@@ -125,17 +155,47 @@ $input-border-radius: var(
   #{$input-border-top-left-radius} #{$input-border-top-right-radius}
     #{$input-border-bottom-right-radius} #{$input-border-bottom-left-radius}
 );
+$fieldset-border-top-width: var(
+  --#{root-defaults.$prefix}fieldset-border-top-width,
+  #{$input-border-top-width}
+);
+$fieldset-border-right-width: var(
+  --#{root-defaults.$prefix}fieldset-border-right-width,
+  #{$input-border-right-width}
+);
+$fieldset-border-bottom-width: var(
+  --#{root-defaults.$prefix}fieldset-border-bottom-width,
+  #{$input-border-bottom-width}
+);
+$fieldset-border-left-width: var(
+  --#{root-defaults.$prefix}fieldset-border-left-width,
+  #{$input-border-left-width}
+);
 $fieldset-border-width: var(
   --#{root-defaults.$prefix}fieldset-border-width,
-  #{$input-border-width}
+  #{$fieldset-border-top-width} #{$fieldset-border-right-width}
+    #{$fieldset-border-bottom-width} #{$fieldset-border-left-width}
+);
+$fieldset-border-top-style: var(
+  --#{root-defaults.$prefix}fieldset-border-top-style,
+  #{$input-border-top-style}
+);
+$fieldset-border-right-style: var(
+  --#{root-defaults.$prefix}fieldset-border-right-style,
+  #{$input-border-right-style}
+);
+$fieldset-border-bottom-style: var(
+  --#{root-defaults.$prefix}fieldset-border-bottom-style,
+  #{$input-border-bottom-style}
+);
+$fieldset-border-left-style: var(
+  --#{root-defaults.$prefix}fieldset-border-left-style,
+  #{$input-border-left-style}
 );
 $fieldset-border-style: var(
   --#{root-defaults.$prefix}fieldset-border-style,
-  #{$input-border-style}
-);
-$fieldset-border: var(
-  --#{root-defaults.$prefix}fieldset-border,
-  #{$fieldset-border-width} #{$fieldset-border-style}
+  #{$fieldset-border-top-style} #{$fieldset-border-right-style}
+    #{$fieldset-border-bottom-style} #{$fieldset-border-left-style}
 );
 $fieldset-border-top-left-radius: var(
   --#{root-defaults.$prefix}fieldset-border-top-left-radius,

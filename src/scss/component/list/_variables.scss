@@ -82,14 +82,47 @@ $list-border-radius: var(
   #{$list-border-top-left-radius} #{$list-border-top-right-radius}
     #{$list-border-bottom-right-radius} #{$list-border-bottom-left-radius}
 );
-$list-border-style: var(
-  --#{root-defaults.$prefix}list-border-style,
+$list-border-top-width: var(
+  --#{root-defaults.$prefix}list-border-top-width,
+  #{root-variables.$border-width}
+);
+$list-border-right-width: var(
+  --#{root-defaults.$prefix}list-border-right-width,
+  #{root-variables.$border-width}
+);
+$list-border-bottom-width: var(
+  --#{root-defaults.$prefix}list-border-bottom-width,
+  #{root-variables.$border-width}
+);
+$list-border-left-width: var(
+  --#{root-defaults.$prefix}list-border-left-width,
+  #{root-variables.$border-width}
+);
+$list-border-width: var(
+  --#{root-defaults.$prefix}list-border-width,
+  #{$list-border-top-width} #{$list-border-right-width}
+    #{$list-border-bottom-width} #{$list-border-left-width}
+);
+$list-border-top-style: var(
+  --#{root-defaults.$prefix}list-border-top-style,
   #{root-variables.$border-style}
 );
-$list-border-width: var(--#{root-defaults.$prefix}list-border-width, 0);
-$list-border: var(
-  --#{root-defaults.$prefix}list-border,
-  #{$list-border-width} #{$list-border-style}
+$list-border-right-style: var(
+  --#{root-defaults.$prefix}list-border-right-style,
+  #{root-variables.$border-style}
+);
+$list-border-bottom-style: var(
+  --#{root-defaults.$prefix}list-border-bottom-style,
+  #{root-variables.$border-style}
+);
+$list-border-left-style: var(
+  --#{root-defaults.$prefix}list-border-left-style,
+  #{root-variables.$border-style}
+);
+$list-border-style: var(
+  --#{root-defaults.$prefix}list-border-style,
+  #{$list-border-top-style} #{$list-border-right-style}
+    #{$list-border-bottom-style} #{$list-border-left-style}
 );
 
 // List item properties.
@@ -162,15 +195,45 @@ $list-item-border-radius: var(
     #{$list-item-border-bottom-right-radius}
     #{$list-item-border-bottom-left-radius}
 );
-$list-item-border-style: var(
-  --#{root-defaults.$prefix}list-item-border-style,
-  #{root-variables.$border-style}
+$list-item-border-top-width: var(
+  --#{root-defaults.$prefix}list-item-border-top-width,
+  #{root-variables.$border-width}
+);
+$list-item-border-right-width: var(
+  --#{root-defaults.$prefix}list-item-border-right-width,
+  #{root-variables.$border-width}
+);
+$list-item-border-bottom-width: var(
+  --#{root-defaults.$prefix}list-item-border-bottom-width,
+  #{root-variables.$border-width}
+);
+$list-item-border-left-width: var(
+  --#{root-defaults.$prefix}list-item-border-left-width,
+  #{root-variables.$border-width}
 );
 $list-item-border-width: var(
   --#{root-defaults.$prefix}list-item-border-width,
-  #{root-variables.$border-width}
+  #{$list-item-border-top-width} #{$list-item-border-right-width}
+    #{$list-item-border-bottom-width} #{$list-item-border-left-width}
 );
-$list-item-border: var(
-  --#{root-defaults.$prefix}list-item-border,
-  #{$list-item-border-width} #{$list-item-border-style}
+$list-item-border-top-style: var(
+  --#{root-defaults.$prefix}list-item-border-top-style,
+  #{root-variables.$border-style}
+);
+$list-item-border-right-style: var(
+  --#{root-defaults.$prefix}list-item-border-right-style,
+  #{root-variables.$border-style}
+);
+$list-item-border-bottom-style: var(
+  --#{root-defaults.$prefix}list-item-border-bottom-style,
+  #{root-variables.$border-style}
+);
+$list-item-border-left-style: var(
+  --#{root-defaults.$prefix}list-item-border-left-style,
+  #{root-variables.$border-style}
+);
+$list-item-border-style: var(
+  --#{root-defaults.$prefix}list-item-border-style,
+  #{$list-item-border-top-style} #{$list-item-border-right-style}
+    #{$list-item-border-bottom-style} #{$list-item-border-left-style}
 );
