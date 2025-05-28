@@ -79,7 +79,7 @@
 @use "variables" as *;
 
 @include layer(layout) {
-  // .flex-columns
+  // `.flex-columns`
   #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +91,7 @@
       max-width: $flex-columns-max-width;
     }
 
-    // .fill
+    // `.fill`
     #{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
       --#{root-defaults.$prefix}flex-columns-max-width: unset;
     }
@@ -101,7 +101,7 @@
     from defaults.$flex-columns-min-count
     through defaults.$flex-columns-max-count
   {
-    // .col-#{$i}
+    // e.g. `.col-1` or `.col-12`
     #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       --#{root-defaults.$prefix}flex-columns-size: calc(
@@ -116,7 +116,7 @@
     }
 
     @include container.trigger(force-single-column) {
-      // .col-#{$i}
+      // e.g. `.col-1` or `.col-12`
       #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
         --#{root-defaults.$prefix}flex-columns-size: 100%;
         --#{root-defaults.$prefix}flex-columns-max-width: auto;
@@ -131,7 +131,7 @@
     {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       @include utility.create-mapped(
-        // .#{screen-name}:col-#{$i}
+        // e.g. `.md:col-1` or `.xl:col-12`
         #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-screen-aware-selector-prefix}#{$screen-name}#{defaults.$flex-columns-screen-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
         (
           --#{root-defaults.$prefix}flex-columns-size: calc(
@@ -144,7 +144,7 @@
         ),
         $screen: $screen-name
       ) {
-        // .fill
+        // `&.fill`
         &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
           --#{root-defaults.$prefix}flex-columns-max-width: unset;
         }
@@ -160,7 +160,7 @@
     {
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       @include utility.create-mapped(
-        // .#{screen-name}:col-#{$i}
+        // e.g. `.cq:md:col-1` or `.cq:xl:col-12`
         #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-container-aware-selector-prefix}#{$container-name}#{defaults.$flex-columns-container-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
         (
           --#{root-defaults.$prefix}flex-columns-size: calc(
@@ -173,7 +173,7 @@
         ),
         $container: $container-name
       ) {
-        // .fill
+        // `&.fill`
         &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
           --#{root-defaults.$prefix}flex-columns-max-width: unset;
         }
