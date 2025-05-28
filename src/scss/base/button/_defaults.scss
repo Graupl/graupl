@@ -12,9 +12,9 @@
 // Button selectors.
 $button-selector-base: root-defaults.$selector-base !default;
 $button-selector: "button" !default;
-$button-link-selector-base: $button-selector-base !default;
+$button-link-selector-base: root-defaults.$selector-base !default;
 $button-link-selector: "link" !default;
-$button-theme-selector-base: $button-selector-base !default;
+$button-theme-selector-base: root-defaults.$selector-base !default;
 $button-theme-selector-prefix: "" !default;
 
 // Button properties.
