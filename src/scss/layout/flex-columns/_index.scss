@@ -24,6 +24,7 @@
 // - `.col-12`: Sets the size of a column in the flex columns component to 12.
 // - `.fill`: A class to set a column to fill the remaining space.
 // - `.[screen-name]:col-#`: A class to set the size of a column at a specific screen size.
+// - `.[container-name]:col-#`: A class to set the size of a column at a specific container size.
 //
 // The following custom properties control the generated classes:
 // - `--graupl-flex-columns-row-gap`: The gap between the rows of the flex columns.
@@ -128,7 +129,7 @@
       /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       @include utility.create-mapped(
         // .#{screen-name}:col-#{$i}
-        #{defaults.$flex-columns-column-selector-base}#{$screen-name}#{defaults.$flex-columns-screen-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
+        #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-screen-aware-selector-prefix}#{$screen-name}#{defaults.$flex-columns-screen-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
         (
           --#{root-defaults.$prefix}flex-columns-size: calc(
               (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
@@ -138,7 +139,36 @@
               100% / #{defaults.$flex-columns-max-count} * #{$i}
             )
         ),
-        $container: $screen-name
+        $screen: $screen-name
+      ) {
+        // .fill
+        &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
+          --#{root-defaults.$prefix}flex-columns-max-width: unset;
+        }
+      }
+      /* stylelint-enable  scss/operator-no-newline-after */
+    }
+  }
+
+  @each $container-name in map.keys(root-defaults.$container-sizes) {
+    @for $i
+      from defaults.$flex-columns-min-count
+      through defaults.$flex-columns-max-count
+    {
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      @include utility.create-mapped(
+        // .#{screen-name}:col-#{$i}
+        #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-container-aware-selector-prefix}#{$container-name}#{defaults.$flex-columns-container-aware-separator}#{defaults.$flex-columns-column-selector}#{$i},
+        (
+          --#{root-defaults.$prefix}flex-columns-size: calc(
+              (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+                #{$flex-columns-column-gap}
+            ),
+          --#{root-defaults.$prefix}flex-columns-max-width: calc(
+              100% / #{defaults.$flex-columns-max-count} * #{$i}
+            )
+        ),
+        $container: $container-name
       ) {
         // .fill
         &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
