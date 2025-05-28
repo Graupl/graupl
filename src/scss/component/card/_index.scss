@@ -11,7 +11,7 @@
   #{defaults.$card-selector} {
     display: grid;
     position: relative;
-    grid-template-columns: 1fr;
+    grid-template-columns: [image-start content-start] 1fr [image-end content-end];
     padding: $card-padding;
     transform: $card-transform;
     transition: $card-transition;
@@ -57,7 +57,7 @@
           [image-end content-start]
           $card-content-ratio
           [content-end];
-        grid-template-rows: 1fr;
+        grid-template-rows: [image-start content-start] 1fr [image-end content-end];
 
         #{defaults.$card-image-selector} img {
           border-radius: calc(
@@ -161,7 +161,7 @@
           --#{root-defaults.$prefix}horizontal-card-image-ratio: #{defaults.$card-image-ratio};
           --#{root-defaults.$prefix}horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 
-          grid-template-columns: 1fr;
+          grid-template-columns: [image-start content-start] 1fr [image-end content-end];
         }
 
         &,
