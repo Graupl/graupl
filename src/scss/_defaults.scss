@@ -134,10 +134,10 @@ $state-aware-selector-separator: "\\:" !default;
 $container-aware-selector-separator: "\\:" !default;
 
 // Selector prefixes.
-$screen-selector-prefix: "" !default;
-$theme-selector-prefix: "" !default;
-$state-selector-prefix: "" !default;
-$container-selector-prefix: "cq\\:" !default;
+$screen-aware-selector-prefix: "" !default;
+$theme-aware-selector-prefix: "" !default;
+$state-aware-selector-prefix: "" !default;
+$container-aware-selector-prefix: "cq\\:" !default;
 
 // State selectors.
 $state-selector-base: "." !default;
@@ -176,7 +176,7 @@ $utility-screen-aware-separator: $screen-aware-selector-separator !default;
 $utility-theme-aware-separator: $theme-aware-selector-separator !default;
 $utility-state-aware-separator: $state-aware-selector-separator !default;
 $utility-container-aware-separator: $container-aware-selector-separator !default;
-$utility-screen-aware-selector-prefix: $screen-selector-prefix !default;
-$utility-theme-aware-selector-prefix: $theme-selector-prefix !default;
-$utility-state-aware-selector-prefix: $state-selector-prefix !default;
-$utility-container-aware-selector-prefix: $container-selector-prefix !default;
+$utility-screen-aware-selector-prefix: $screen-aware-selector-prefix !default;
+$utility-theme-aware-selector-prefix: $theme-aware-selector-prefix !default;
+$utility-state-aware-selector-prefix: $state-aware-selector-prefix !default;
+$utility-container-aware-selector-prefix: $container-aware-selector-prefix !default;
