@@ -73,6 +73,7 @@ export default defineConfig({
           { text: "Background", link: "/utilities/background" },
           { text: "Border", link: "/utilities/border" },
           { text: "Color", link: "/utilities/color" },
+          { text: "Container", link: "/utilities/container" },
           { text: "Display", link: "/utilities/display" },
           { text: "Flex", link: "/utilities/flex" },
           { text: "Gradient", link: "/utilities/gradient" },
