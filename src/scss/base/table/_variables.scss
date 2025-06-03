@@ -113,7 +113,7 @@ $table-border-style: var(
 );
 $table-border-color: var(
   --#{root-defaults.$prefix}table-border-color,
-  #{theme.get(primary, 900)}
+  #{color.$border-color}
 );
 
 // Table cell border properties.

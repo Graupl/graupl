@@ -223,7 +223,7 @@ $fieldset-border-radius: var(
 // Border colour properties.
 $input-border-color: var(
   --#{root-defaults.$prefix}input-border-color,
-  #{color.$color}
+  #{color.$border-color}
 );
 $input-disabled-border-color: var(
   --#{root-defaults.$prefix}input-disabled-border-color,
