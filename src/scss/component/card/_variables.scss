@@ -69,38 +69,68 @@ $card-border-color: var(
   --#{root-defaults.$prefix}card-border-color,
   #{$card-color}
 );
-$card-top-left-border-radius: var(
-  --#{root-defaults.$prefix}card-top-left-border-radius,
-  #{root-variables.$border-radius}
+$card-border-top-left-radius: var(
+  --#{root-defaults.$prefix}card-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
 );
-$card-top-right-border-radius: var(
-  --#{root-defaults.$prefix}card-top-right-border-radius,
-  #{root-variables.$border-radius}
+$card-border-top-right-radius: var(
+  --#{root-defaults.$prefix}card-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
 );
-$card-bottom-left-border-radius: var(
-  --#{root-defaults.$prefix}card-bottom-left-border-radius,
-  #{root-variables.$border-radius}
+$card-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}card-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
 );
-$card-bottom-right-border-radius: var(
-  --#{root-defaults.$prefix}card-bottom-right-border-radius,
-  #{root-variables.$border-radius}
+$card-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}card-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
 );
 $card-border-radius: var(
   --#{root-defaults.$prefix}card-border-radius,
-  #{$card-top-left-border-radius} #{$card-top-right-border-radius}
-    #{$card-bottom-right-border-radius} #{$card-bottom-left-border-radius}
+  #{$card-border-top-left-radius} #{$card-border-top-right-radius}
+    #{$card-border-bottom-right-radius} #{$card-border-bottom-left-radius}
 );
-$card-border-style: var(
-  --#{root-defaults.$prefix}card-border-style,
-  #{root-variables.$border-style}
+$card-border-top-width: var(
+  --#{root-defaults.$prefix}card-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$card-border-right-width: var(
+  --#{root-defaults.$prefix}card-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$card-border-bottom-width: var(
+  --#{root-defaults.$prefix}card-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$card-border-left-width: var(
+  --#{root-defaults.$prefix}card-border-left-width,
+  #{root-variables.$border-left-width}
 );
 $card-border-width: var(
   --#{root-defaults.$prefix}card-border-width,
-  #{root-variables.$border-width}
+  #{$card-border-top-width} #{$card-border-right-width}
+    #{$card-border-bottom-width} #{$card-border-left-width}
 );
-$card-border: var(
-  --#{root-defaults.$prefix}card-border,
-  #{$card-border-width} #{$card-border-style}
+$card-border-top-style: var(
+  --#{root-defaults.$prefix}card-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$card-border-right-style: var(
+  --#{root-defaults.$prefix}card-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$card-border-bottom-style: var(
+  --#{root-defaults.$prefix}card-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$card-border-left-style: var(
+  --#{root-defaults.$prefix}card-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$card-border-style: var(
+  --#{root-defaults.$prefix}card-border-style,
+  #{$card-border-top-style} #{$card-border-right-style}
+    #{$card-border-bottom-style} #{$card-border-left-style}
 );
 
 // Card layout properties.

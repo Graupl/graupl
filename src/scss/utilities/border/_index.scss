@@ -126,9 +126,16 @@
   @include utility.create-mapped(
     $selector,
     (
-      border-width: root-variables.$border-width,
-      border-radius: root-variables.$border-radius,
-      border-style: root-variables.$border-style,
+      border-width: root-variables.$border-top-width
+        root-variables.$border-right-width root-variables.$border-bottom-width
+        root-variables.$border-left-width,
+      border-radius: root-variables.$border-top-left-radius
+        root-variables.$border-top-right-radius
+        root-variables.$border-bottom-right-radius
+        root-variables.$border-bottom-left-radius,
+      border-style: root-variables.$border-top-style
+        root-variables.$border-right-style root-variables.$border-bottom-style
+        root-variables.$border-left-style,
     ),
     $important: defaults.$use-important
   );
@@ -200,9 +207,18 @@
       @include utility.create-mapped(
         $selector,
         (
-          border-width: root-variables.$border-width,
-          border-radius: root-variables.$border-radius,
-          border-style: root-variables.$border-style,
+          border-width: root-variables.$border-top-width
+            root-variables.$border-right-width
+            root-variables.$border-bottom-width
+            root-variables.$border-left-width,
+          border-radius: root-variables.$border-top-left-radius
+            root-variables.$border-top-right-radius
+            root-variables.$border-bottom-right-radius
+            root-variables.$border-bottom-left-radius,
+          border-style: root-variables.$border-top-style
+            root-variables.$border-right-style
+            root-variables.$border-bottom-style
+            root-variables.$border-left-style,
         ),
         $important: defaults.$use-important,
         $screen: $screen-name
@@ -282,9 +298,18 @@
         @include utility.create-mapped(
           $selector,
           (
-            border-width: root-variables.$border-width,
-            border-radius: root-variables.$border-radius,
-            border-style: root-variables.$border-style,
+            border-width: root-variables.$border-top-width
+              root-variables.$border-right-width
+              root-variables.$border-bottom-width
+              root-variables.$border-left-width,
+            border-radius: root-variables.$border-top-left-radius
+              root-variables.$border-top-right-radius
+              root-variables.$border-bottom-right-radius
+              root-variables.$border-bottom-left-radius,
+            border-style: root-variables.$border-top-style
+              root-variables.$border-right-style
+              root-variables.$border-bottom-style
+              root-variables.$border-left-style,
           ),
           $important: defaults.$use-important,
           $theme: $theme-name
@@ -364,9 +389,18 @@
       @include utility.create-mapped(
         $selector,
         (
-          border-width: root-variables.$border-width,
-          border-radius: root-variables.$border-radius,
-          border-style: root-variables.$border-style,
+          border-width: root-variables.$border-top-width
+            root-variables.$border-right-width
+            root-variables.$border-bottom-width
+            root-variables.$border-left-width,
+          border-radius: root-variables.$border-top-left-radius
+            root-variables.$border-top-right-radius
+            root-variables.$border-bottom-right-radius
+            root-variables.$border-bottom-left-radius,
+          border-style: root-variables.$border-top-style
+            root-variables.$border-right-style
+            root-variables.$border-bottom-style
+            root-variables.$border-left-style,
         ),
         $important: defaults.$use-important,
         $state: $state-name
@@ -445,9 +479,18 @@
       @include utility.create-mapped(
         $selector,
         (
-          border-width: root-variables.$border-width,
-          border-radius: root-variables.$border-radius,
-          border-style: root-variables.$border-style,
+          border-width: root-variables.$border-top-width
+            root-variables.$border-right-width
+            root-variables.$border-bottom-width
+            root-variables.$border-left-width,
+          border-radius: root-variables.$border-top-left-radius
+            root-variables.$border-top-right-radius
+            root-variables.$border-bottom-right-radius
+            root-variables.$border-bottom-left-radius,
+          border-style: root-variables.$border-top-style
+            root-variables.$border-right-style
+            root-variables.$border-bottom-style
+            root-variables.$border-left-style,
         ),
         $important: defaults.$use-important,
         $container: $container-name

@@ -31,7 +31,8 @@
   #{defaults.$accordion-item-selector} {
     overflow: hidden;
     transition: $accordion-transition;
-    border: $accordion-item-border;
+    border-width: $accordion-item-border-width;
+    border-style: $accordion-item-border-style;
     border-radius: $accordion-item-border-radius;
     isolation: isolate;
 

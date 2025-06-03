@@ -68,21 +68,68 @@ $menu-border-color: var(
   --#{root-defaults.$prefix}menu-border-color,
   #{$menu-color}
 );
+$menu-border-top-left-radius: var(
+  --#{root-defaults.$prefix}menu-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$menu-border-top-right-radius: var(
+  --#{root-defaults.$prefix}menu-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$menu-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}menu-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$menu-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}menu-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
 $menu-border-radius: var(
   --#{root-defaults.$prefix}menu-border-radius,
-  #{root-variables.$border-radius}
+  #{$menu-border-top-left-radius} #{$menu-border-top-right-radius}
+    #{$menu-border-bottom-right-radius} #{$menu-border-bottom-left-radius}
 );
-$menu-border-style: var(
-  --#{root-defaults.$prefix}menu-border-style,
-  #{root-variables.$border-style}
+$menu-border-top-width: var(
+  --#{root-defaults.$prefix}menu-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$menu-border-right-width: var(
+  --#{root-defaults.$prefix}menu-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$menu-border-bottom-width: var(
+  --#{root-defaults.$prefix}menu-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$menu-border-left-width: var(
+  --#{root-defaults.$prefix}menu-border-left-width,
+  #{root-variables.$border-left-width}
 );
 $menu-border-width: var(
   --#{root-defaults.$prefix}menu-border-width,
-  #{defaults.$menu-border-width}
+  #{$menu-border-top-width} #{$menu-border-right-width}
+    #{$menu-border-bottom-width} #{$menu-border-left-width}
 );
-$menu-border: var(
-  --#{root-defaults.$prefix}menu-border,
-  #{$menu-border-width} #{$menu-border-style}
+$menu-border-top-style: var(
+  --#{root-defaults.$prefix}menu-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$menu-border-right-style: var(
+  --#{root-defaults.$prefix}menu-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$menu-border-bottom-style: var(
+  --#{root-defaults.$prefix}menu-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$menu-border-left-style: var(
+  --#{root-defaults.$prefix}menu-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$menu-border-style: var(
+  --#{root-defaults.$prefix}menu-border-style,
+  #{$menu-border-top-style} #{$menu-border-right-style}
+    #{$menu-border-bottom-style} #{$menu-border-left-style}
 );
 
 // Submenu properties
@@ -147,21 +194,68 @@ $submenu-border-color: var(
   --#{root-defaults.$prefix}submenu-border-color,
   #{$submenu-color}
 );
+$submenu-border-top-left-radius: var(
+  --#{root-defaults.$prefix}submenu-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$submenu-border-top-right-radius: var(
+  --#{root-defaults.$prefix}submenu-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$submenu-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$submenu-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
 $submenu-border-radius: var(
   --#{root-defaults.$prefix}submenu-border-radius,
-  #{root-variables.$border-radius}
+  #{$submenu-border-top-left-radius} #{$submenu-border-top-right-radius}
+    #{$submenu-border-bottom-right-radius} #{$submenu-border-bottom-left-radius}
 );
-$submenu-border-style: var(
-  --#{root-defaults.$prefix}submenu-border-style,
-  #{root-variables.$border-style}
+$submenu-border-top-width: var(
+  --#{root-defaults.$prefix}submenu-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$submenu-border-right-width: var(
+  --#{root-defaults.$prefix}submenu-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$submenu-border-bottom-width: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$submenu-border-left-width: var(
+  --#{root-defaults.$prefix}submenu-border-left-width,
+  #{root-variables.$border-left-width}
 );
 $submenu-border-width: var(
   --#{root-defaults.$prefix}submenu-border-width,
-  #{root-variables.$border-width}
+  #{$submenu-border-top-width} #{$submenu-border-right-width}
+    #{$submenu-border-bottom-width} #{$submenu-border-left-width}
 );
-$submenu-border: var(
-  --#{root-defaults.$prefix}submenu-border,
-  #{$submenu-border-width} #{$submenu-border-style}
+$submenu-border-top-style: var(
+  --#{root-defaults.$prefix}submenu-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$submenu-border-right-style: var(
+  --#{root-defaults.$prefix}submenu-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$submenu-border-bottom-style: var(
+  --#{root-defaults.$prefix}submenu-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$submenu-border-left-style: var(
+  --#{root-defaults.$prefix}submenu-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$submenu-border-style: var(
+  --#{root-defaults.$prefix}submenu-border-style,
+  #{$submenu-border-top-style} #{$submenu-border-right-style}
+    #{$submenu-border-bottom-style} #{$submenu-border-left-style}
 );
 
 // Submenu position properties.
@@ -435,21 +529,69 @@ $menu-link-disabled-text-decoration-color: var(
 );
 
 // Menu link border properties.
+$menu-link-border-top-left-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$menu-link-border-top-right-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$menu-link-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$menu-link-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
 $menu-link-border-radius: var(
   --#{root-defaults.$prefix}menu-link-border-radius,
-  #{root-variables.$border-radius}
+  #{$menu-link-border-top-left-radius} #{$menu-link-border-top-right-radius}
+    #{$menu-link-border-bottom-right-radius}
+    #{$menu-link-border-bottom-left-radius}
 );
-$menu-link-border-style: var(
-  --#{root-defaults.$prefix}menu-link-border-style,
-  #{root-variables.$border-style}
+$menu-link-border-top-width: var(
+  --#{root-defaults.$prefix}menu-link-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$menu-link-border-right-width: var(
+  --#{root-defaults.$prefix}menu-link-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$menu-link-border-bottom-width: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$menu-link-border-left-width: var(
+  --#{root-defaults.$prefix}menu-link-border-left-width,
+  #{root-variables.$border-left-width}
 );
 $menu-link-border-width: var(
   --#{root-defaults.$prefix}menu-link-border-width,
-  #{defaults.$menu-link-border-width}
+  #{$menu-link-border-top-width} #{$menu-link-border-right-width}
+    #{$menu-link-border-bottom-width} #{$menu-link-border-left-width}
 );
-$menu-link-border: var(
-  --#{root-defaults.$prefix}menu-link-border,
-  #{$menu-link-border-width} #{$menu-link-border-style}
+$menu-link-border-top-style: var(
+  --#{root-defaults.$prefix}menu-link-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$menu-link-border-right-style: var(
+  --#{root-defaults.$prefix}menu-link-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$menu-link-border-bottom-style: var(
+  --#{root-defaults.$prefix}menu-link-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$menu-link-border-left-style: var(
+  --#{root-defaults.$prefix}menu-link-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$menu-link-border-style: var(
+  --#{root-defaults.$prefix}menu-link-border-style,
+  #{$menu-link-border-top-style} #{$menu-link-border-right-style}
+    #{$menu-link-border-bottom-style} #{$menu-link-border-left-style}
 );
 $menu-link-border-color: var(
   --#{root-defaults.$prefix}menu-link-border-color,

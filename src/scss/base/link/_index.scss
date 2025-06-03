@@ -117,7 +117,8 @@
     padding: $link-padding;
     transform: $link-transform;
     transition: $link-transition;
-    border: $link-border;
+    border-width: $link-border-width;
+    border-style: $link-border-style;
     border-radius: $link-border-radius;
     text-decoration: $link-text-decoration;
     text-decoration-style: $link-text-decoration-style;

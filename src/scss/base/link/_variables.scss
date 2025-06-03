@@ -262,33 +262,60 @@ $link-transform-states: (
   active: $link-active-transform,
   disabled: $link-disabled-transform,
 );
+$link-border-top-width: var(--#{root-defaults.$prefix}link-border-top-width, 0);
+$link-border-right-width: var(
+  --#{root-defaults.$prefix}link-border-right-width,
+  0
+);
+$link-border-bottom-width: var(
+  --#{root-defaults.$prefix}link-border-bottom-width,
+  0
+);
+$link-border-left-width: var(
+  --#{root-defaults.$prefix}link-border-left-width,
+  0
+);
 $link-border-width: var(
   --#{root-defaults.$prefix}link-border-width,
-  #{defaults.$link-border-width}
+  #{$link-border-top-width} #{$link-border-right-width}
+    #{$link-border-bottom-width} #{$link-border-left-width}
+);
+$link-border-top-style: var(
+  --#{root-defaults.$prefix}link-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$link-border-right-style: var(
+  --#{root-defaults.$prefix}link-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$link-border-bottom-style: var(
+  --#{root-defaults.$prefix}link-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$link-border-left-style: var(
+  --#{root-defaults.$prefix}link-border-left-style,
+  #{root-variables.$border-left-style}
 );
 $link-border-style: var(
   --#{root-defaults.$prefix}link-border-style,
-  #{root-variables.$border-style}
-);
-$link-border: var(
-  --#{root-defaults.$prefix}link-border,
-  #{$link-border-width} #{$link-border-style}
+  #{$link-border-top-style} #{$link-border-right-style}
+    #{$link-border-bottom-style} #{$link-border-left-style}
 );
 $link-border-top-left-radius: var(
   --#{root-defaults.$prefix}link-border-top-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-left-radius}
 );
 $link-border-top-right-radius: var(
   --#{root-defaults.$prefix}link-border-top-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-top-right-radius}
 );
 $link-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}link-border-bottom-right-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-right-radius}
 );
 $link-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}link-border-bottom-left-radius,
-  #{root-variables.$border-radius}
+  #{root-variables.$border-bottom-left-radius}
 );
 $link-border-radius: var(
   --#{root-defaults.$prefix}link-border-radius,

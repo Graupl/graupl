@@ -24,6 +24,10 @@ $focus-outline-style: var(
   --#{root-defaults.$prefix}focus-outline-style,
   #{defaults.$focus-outline-style}
 );
+$focus-outline: var(
+  --#{root-defaults.$prefix}focus-outline,
+  #{$focus-outline-width} #{$focus-outline-style} #{$focus-outline-color}
+);
 $focus-outline-offset: var(
   --#{root-defaults.$prefix}focus-outline-offset,
   calc(-1 * #{$focus-outline-width})
@@ -32,13 +36,15 @@ $focus-box-shadow-color: var(
   --#{root-defaults.$prefix}focus-box-shadow-color,
   #{color.$background}
 );
-$focus-box-shadow-style: var(
-  --#{root-defaults.$prefix}focus-box-shadow-style,
-  #{defaults.$focus-box-shadow-style}
+$focus-border-color: var(
+  --#{root-defaults.$prefix}focus-border-color,
+  #{color.$background}
 );
 $focus-box-shadow: var(
   --#{root-defaults.$prefix}focus-box-shadow,
-  #{$focus-width $focus-width} 0 0 #{$focus-box-shadow-style}
-    #{$focus-box-shadow-color},
-  0 0 0 #{$focus-width} #{$focus-box-shadow-style} #{$focus-box-shadow-color}
+  0 0 0 #{$focus-width} inset #{$focus-box-shadow-color}
+);
+$focus-box-shadow-bordered: var(
+  --#{root-defaults.$prefix}focus-box-shadow-bordered,
+  0 0 0 #{$focus-width} #{$focus-box-shadow-color}
 );
