@@ -11,12 +11,12 @@
 // - `.tertiary`: A class to use the tertiary colour for the button.
 // - `.link`: A class to make a button look like a link.
 //
-// The following custom properties control the generate selectors:
+// The following custom properties control the generated selectors:
 // - `--graupl-button-min-width`: The minimum width of the button.
 // - `--graupl-button-min-height`: The minimum height of the button.
 // - `--graupl-button-padding-x`: The horizontal padding of the button.
 // - `--graupl-button-padding-y`: The vertical padding of the button.
-// - `--graupl-button-padding`: The padding of the button.
+// - `--graupl-button-padding`: The padding of the button (combines x and y padding).
 // - `--graupl-button-font-size`: The font size of the button.
 // - `--graupl-button-transition`: The transition of the button.
 // - `--graupl-button-transition-reduced-motion`: The transition of the button when reduced motion is enabled.
@@ -38,14 +38,21 @@
 // - `--graupl-button-hover-color`: The text colour of a hovered button.
 // - `--graupl-button-active-color`: The text colour of an active button.
 // - `--graupl-button-disabled-color`: The text colour of a disabled button.
-// - `--graupl-button-border-width`: The border width of the button.
-// - `--graupl-button-border-style`: The border style of the button.
-// - `--graupl-button-border`: The border of the button.
+// - `--graupl-button-border-top-width`: The top border width of the button.
+// - `--graupl-button-border-right-width`: The right border width of the button.
+// - `--graupl-button-border-bottom-width`: The bottom border width of the button.
+// - `--graupl-button-border-left-width`: The left border width of the button.
+// - `--graupl-button-border-width`: The border width of the button (combines top, right, bottom, and left widths).
+// - `--graupl-button-border-top-style`: The top border style of the button.
+// - `--graupl-button-border-right-style`: The right border style of the button.
+// - `--graupl-button-border-bottom-style`: The bottom border style of the button.
+// - `--graupl-button-border-left-style`: The left border style of the button.
+// - `--graupl-button-border-style`: The border style of the button (combines top, right, bottom, and left styles).
 // - `--graupl-button-border-top-left-radius`: The top left border radius of the button.
 // - `--graupl-button-border-top-right-radius`: The top right border radius of the button.
 // - `--graupl-button-border-bottom-right-radius`: The bottom right border radius of the button.
 // - `--graupl-button-border-bottom-left-radius`: The bottom left border radius of the button.
-// - `--graupl-button-border-radius`: The border radius of the button.
+// - `--graupl-button-border-radius`: The border radius of the button (combines top-left, top-right, bottom-right, and bottom-left radii).
 // - `--graupl-button-border-color`: The border colour of the button.
 // - `--graupl-button-visited-border-color`: The border colour of a visited button.
 // - `--graupl-button-focus-border-color`: The border colour of a focused button.
@@ -83,9 +90,11 @@
 @use "variables" as *;
 
 @include layer(base) {
+  // .button
   #{defaults.$button-selector-base}#{defaults.$button-selector} {
     @include apply-base;
 
+    // &.link
     &#{defaults.$button-link-selector-base}#{defaults.$button-link-selector} {
       --#{root-defaults.$prefix}button-padding: #{link.$link-padding};
       --#{root-defaults.$prefix}button-transition: #{link.$link-transition};
@@ -108,7 +117,9 @@
     }
   }
 
+  // a
   #{link-defaults.$link-selector-base}#{link-defaults.$link-selector} {
+    // &.button:not(.link)
     &#{defaults.$button-selector-base}#{defaults.$button-selector}:not(
         #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
       ) {
@@ -137,9 +148,11 @@
 }
 
 @include layer(theme) {
+  // .button
   #{defaults.$button-selector-base}#{defaults.$button-selector} {
     @include apply-theme;
 
+    // &.link
     &#{defaults.$button-link-selector-base}#{defaults.$button-link-selector} {
       --#{root-defaults.$prefix}button-color: #{link.$link-color};
       --#{root-defaults.$prefix}button-visited-color: #{link.$link-visited-color};
@@ -162,7 +175,9 @@
     }
   }
 
+  // a
   #{link-defaults.$link-selector-base}#{link-defaults.$link-selector} {
+    // &.button:not(.link)
     &#{defaults.$button-selector-base}#{defaults.$button-selector}:not(
         #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
       ) {
