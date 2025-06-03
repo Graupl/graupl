@@ -5,9 +5,9 @@
 @use "../../mixins/layer" as *;
 
 @include layer(base) {
-  #{defaults.$input-selector},
-  #{defaults.$textarea-selector},
-  #{defaults.$select-selector} {
+  #{defaults.$input-selector-base}#{defaults.$input-selector},
+  #{defaults.$textarea-selector-base}#{defaults.$textarea-selector},
+  #{defaults.$select-selector-base}#{defaults.$select-selector} {
     padding: $input-padding;
     border: $input-border;
     border-radius: $input-border-radius;
@@ -18,11 +18,11 @@
     }
   }
 
-  #{defaults.$label-selector} {
+  #{defaults.$label-selector-base}#{defaults.$label-selector} {
     font-size: $label-font-size;
   }
 
-  #{defaults.$fieldset-selector} {
+  #{defaults.$fieldset-selector-base}#{defaults.$fieldset-selector} {
     display: flex;
     flex-flow: $fieldset-direction wrap;
     gap: $fieldset-gap;
@@ -42,9 +42,9 @@
 }
 
 @include layer(theme) {
-  #{defaults.$input-selector},
-  #{defaults.$textarea-selector},
-  #{defaults.$select-selector} {
+  #{defaults.$input-selector-base}#{defaults.$input-selector},
+  #{defaults.$textarea-selector-base}#{defaults.$textarea-selector},
+  #{defaults.$select-selector-base}#{defaults.$select-selector} {
     border-color: $input-border-color;
     background: $input-background;
     color: $input-color;
@@ -64,19 +64,19 @@
     }
   }
 
-  #{defaults.$label-selector} {
+  #{defaults.$label-selector-base}#{defaults.$label-selector} {
     color: $label-color;
 
     &:has(
-        + #{defaults.$input-selector}:disabled,
-        + #{defaults.$textarea-selector}:disabled,
-        + #{defaults.$select-selector}:disabled
+        + #{defaults.$input-selector-base}#{defaults.$input-selector}:disabled,
+        + #{defaults.$textarea-selector-base}#{defaults.$textarea-selector}:disabled,
+        + #{defaults.$select-selector-base}#{defaults.$select-selector}:disabled
       ) {
       color: $label-disabled-color;
     }
   }
 
-  #{defaults.$fieldset-selector} {
+  #{defaults.$fieldset-selector-base}#{defaults.$fieldset-selector} {
     border-color: $fieldset-border-color;
     background: $fieldset-background;
     color: $fieldset-color;
