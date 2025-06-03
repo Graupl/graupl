@@ -1,8 +1,10 @@
 // @graupl/graupl form base styles.
 
-@use "defaults";
-@use "variables" as *;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "defaults";
+@use "sass:map";
+@use "variables" as *;
 
 @include layer(base) {
   #{defaults.$input-selector-base}#{defaults.$input-selector},
@@ -13,8 +15,10 @@
     border-radius: $input-border-radius;
     font-size: $input-font-size;
 
-    &:disabled {
-      cursor: not-allowed;
+    @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
+      &#{$selector} {
+        cursor: not-allowed;
+      }
     }
   }
 
@@ -31,11 +35,13 @@
     border-radius: $fieldset-border-radius;
     font-size: $fieldset-font-size;
 
-    &:disabled {
-      #{defaults.$input-selector},
-      #{defaults.$textarea-selector},
-      #{defaults.$select-selector} {
-        cursor: not-allowed;
+    @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
+      &#{$selector} {
+        #{defaults.$input-selector},
+        #{defaults.$textarea-selector},
+        #{defaults.$select-selector} {
+          cursor: not-allowed;
+        }
       }
     }
   }
@@ -54,12 +60,14 @@
       color: $input-placeholder-color;
     }
 
-    &:disabled {
-      border-color: $input-disabled-border-color;
-      color: $input-disabled-color;
+    @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
+      &#{$selector} {
+        border-color: $input-disabled-border-color;
+        color: $input-disabled-color;
 
-      &::placeholder {
-        color: $input-disabled-placeholder-color;
+        &::placeholder {
+          color: $input-disabled-placeholder-color;
+        }
       }
     }
   }
@@ -67,12 +75,14 @@
   #{defaults.$label-selector-base}#{defaults.$label-selector} {
     color: $label-color;
 
-    &:has(
-        + #{defaults.$input-selector-base}#{defaults.$input-selector}:disabled,
-        + #{defaults.$textarea-selector-base}#{defaults.$textarea-selector}:disabled,
-        + #{defaults.$select-selector-base}#{defaults.$select-selector}:disabled
-      ) {
-      color: $label-disabled-color;
+    @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
+      &:has(
+          + #{defaults.$input-selector-base}#{defaults.$input-selector}#{$selector},
+          + #{defaults.$textarea-selector-base}#{defaults.$textarea-selector}#{$selector},
+          + #{defaults.$select-selector-base}#{defaults.$select-selector}#{$selector}
+        ) {
+        color: $label-disabled-color;
+      }
     }
   }
 
@@ -81,12 +91,14 @@
     background: $fieldset-background;
     color: $fieldset-color;
 
-    &:disabled {
-      border-color: $fieldset-disabled-border-color;
-      color: $fieldset-disabled-color;
+    @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
+      &#{$selector} {
+        border-color: $fieldset-disabled-border-color;
+        color: $fieldset-disabled-color;
 
-      #{defaults.$label-selector} {
-        color: $label-disabled-color;
+        #{defaults.$label-selector} {
+          color: $label-disabled-color;
+        }
       }
     }
   }
