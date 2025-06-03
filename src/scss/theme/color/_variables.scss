@@ -130,3 +130,4 @@ $root-background: var(--#{root-defaults.$prefix}root-background);
 
 $color: var(--#{root-defaults.$prefix}color, #{$root-color});
 $background: var(--#{root-defaults.$prefix}background, #{$root-background});
+$border-color: var(--#{root-defaults.$prefix}border-color, #{$color});

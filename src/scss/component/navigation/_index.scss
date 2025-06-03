@@ -40,7 +40,8 @@
     min-width: $navigation-toggle-min-width;
     min-height: $navigation-toggle-min-height;
     padding: $navigation-toggle-padding;
-    border: $navigation-toggle-border;
+    border-width: $navigation-toggle-border-width;
+    border-style: $navigation-toggle-border-style;
     border-radius: $navigation-toggle-border-radius;
 
     &::before {

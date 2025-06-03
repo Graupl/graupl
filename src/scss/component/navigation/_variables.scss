@@ -63,25 +63,78 @@ $navigation-toggle-hover-color: var(
 );
 
 // Navigation toggle border properties.
+$navigation-toggle-border-top-width: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$navigation-toggle-border-right-width: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$navigation-toggle-border-bottom-width: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$navigation-toggle-border-left-width: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-left-width,
+  #{root-variables.$border-left-width}
+);
 $navigation-toggle-border-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-width,
-  #{root-variables.$border-width}
+  #{$navigation-toggle-border-top-width}
+    #{$navigation-toggle-border-right-width}
+    #{$navigation-toggle-border-bottom-width}
+    #{$navigation-toggle-border-left-width}
+);
+$navigation-toggle-border-top-style: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$navigation-toggle-border-right-style: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$navigation-toggle-border-bottom-style: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$navigation-toggle-border-left-style: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-left-style,
+  #{root-variables.$border-left-style}
 );
 $navigation-toggle-border-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-style,
-  #{root-variables.$border-style}
-);
-$navigation-toggle-border: var(
-  --#{root-defaults.$prefix}navigation-toggle-border,
-  #{$navigation-toggle-border-width} #{$navigation-toggle-border-style}
+  #{$navigation-toggle-border-top-style}
+    #{$navigation-toggle-border-right-style}
+    #{$navigation-toggle-border-bottom-style}
+    #{$navigation-toggle-border-left-style}
 );
 $navigation-toggle-border-color: var(
   --#{root-defaults.$prefix}navigation-toggle-border-color,
   #{$navigation-toggle-color}
 );
+$navigation-toggle-border-top-left-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$navigation-toggle-border-top-right-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$navigation-toggle-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$navigation-toggle-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}navigation-toggle-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
 $navigation-toggle-border-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-radius,
-  #{root-variables.$border-radius}
+  #{$navigation-toggle-border-top-left-radius}
+    #{$navigation-toggle-border-top-right-radius}
+    #{$navigation-toggle-border-bottom-right-radius}
+    #{$navigation-toggle-border-bottom-left-radius}
 );
 
 // Navigation branding properties.

@@ -29,8 +29,50 @@ $border-radius: var(
   --#{defaults.$prefix}border-radius,
   defaults.$border-radius
 );
+$border-top-left-radius: var(
+  --#{defaults.$prefix}border-top-left-radius,
+  #{$border-radius}
+);
+$border-top-right-radius: var(
+  --#{defaults.$prefix}border-top-right-radius,
+  #{$border-radius}
+);
+$border-bottom-right-radius: var(
+  --#{defaults.$prefix}border-bottom-right-radius,
+  #{$border-radius}
+);
+$border-bottom-left-radius: var(
+  --#{defaults.$prefix}border-bottom-left-radius,
+  #{$border-radius}
+);
 $border-width: var(--#{defaults.$prefix}border-width, defaults.$border-width);
+$border-top-width: var(--#{defaults.$prefix}border-top-width, #{$border-width});
+$border-right-width: var(
+  --#{defaults.$prefix}border-right-width,
+  #{$border-width}
+);
+$border-bottom-width: var(
+  --#{defaults.$prefix}border-bottom-width,
+  #{$border-width}
+);
+$border-left-width: var(
+  --#{defaults.$prefix}border-left-width,
+  #{$border-width}
+);
 $border-style: var(--#{defaults.$prefix}border-style, defaults.$border-style);
+$border-top-style: var(--#{defaults.$prefix}border-top-style, #{$border-style});
+$border-right-style: var(
+  --#{defaults.$prefix}border-right-style,
+  #{$border-style}
+);
+$border-bottom-style: var(
+  --#{defaults.$prefix}border-bottom-style,
+  #{$border-style}
+);
+$border-left-style: var(
+  --#{defaults.$prefix}border-left-style,
+  #{$border-style}
+);
 
 // Transition properties.
 $transition-durations: (
