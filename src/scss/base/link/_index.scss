@@ -58,14 +58,21 @@
 // - `--graupl-link-transform-hover`: The transform for a hovered link.
 // - `--graupl-link-transform-active`: The transform for an active link.
 // - `--graupl-link-transform-disabled`: The transform for a disabled link.
-// - `--graupl-link-border-width`: The border width for the link.
-// - `--graupl-link-border-style`: The border style for the link.
+// - `--graupl-link-border-top-width`: The top border width for the link.
+// - `--graupl-link-border-right-width`: The right border width for the link.
+// - `--graupl-link-border-bottom-width`: The bottom border width for the link.
+// - `--graupl-link-border-left-width`: The left border width for the link.
+// - `--graupl-link-border-width`: The border width for the link (combines top, right, bottom, and left widths).
+// - `--graupl-link-border-top-style`: The top border style for the link.
+// - `--graupl-link-border-right-style`: The right border style for the link.
+// - `--graupl-link-border-bottom-style`: The bottom border style for the link.
+// - `--graupl-link-border-left-style`: The left border style for the link.
+// - `--graupl-link-border-style`: The border style for the link (combines top, right, bottom, and left styles).
 // - `--graupl-link-border-top-left-radius`: The top left border radius for the link.
 // - `--graupl-link-border-top-right-radius`: The top right border radius for the link.
 // - `--graupl-link-border-bottom-right-radius`: The bottom right border radius for the link.
 // - `--graupl-link-border-bottom-left-radius`: The bottom left border radius for the link.
-// - `--graupl-link-border-radius`: The border radius for the link.
-// - `--graupl-link-border`: The border for the link.
+// - `--graupl-link-border-radius`: The border radius for the link (combines top-left, top-right, bottom-right, and bottom-left radii).
 // - `--graupl-link-border-color`: The border color for the link.
 // - `--graupl-link-visited-border-color`: The border color for a visited link.
 // - `--graupl-link-focus-border-color`: The border color for a focused link.
@@ -74,7 +81,7 @@
 // - `--graupl-link-disabled-border-color`: The border color for a disabled link.
 // - `--graupl-link-min-width`: The minimum width for the link.
 // - `--graupl-link-min-height`: The minimum height for the link.
-// - `--graupl-link-stretched-link-z-index`: The z-index for the stretched link.
+// - `--graupl-link-stretched-link-z-index`: The z-index for the stretched link component.
 //
 // The following variables control the generated selectors:
 // - `$link-selector-base`: The base selector for the link component.
