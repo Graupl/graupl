@@ -9,9 +9,11 @@
 @use "../../defaults" as root-defaults;
 
 // Link selectors.
-$link-selector-base: "" !default;
+$selector-base: root-defaults.$element-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$link-selector-base: $selector-base !default;
 $link-selector: "a" !default;
-$stretched-link-selector-base: root-defaults.$selector-base !default;
+$stretched-link-selector-base: $modifier-selector-base !default;
 $stretched-link-selector: "stretched" !default;
 $stretched-link-pseudo-selector: "before" !default;
 

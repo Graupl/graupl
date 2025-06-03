@@ -7,15 +7,17 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 // Form selectors.
-$input-selector-base: "" !default;
+$selector-base: "" !default;
+$modifier-selector-base: $selector-base !default;
+$input-selector-base: $selector-base !default;
 $input-selector: "input" !default;
-$textarea-selector-base: "" !default;
+$textarea-selector-base: $selector-base !default;
 $textarea-selector: "textarea" !default;
-$select-selector-base: "" !default;
+$select-selector-base: $selector-base !default;
 $select-selector: "select" !default;
-$label-selector-base: "" !default;
+$label-selector-base: $selector-base !default;
 $label-selector: "label" !default;
-$fieldset-selector-base: "" !default;
+$fieldset-selector-base: $selector-base !default;
 $fieldset-selector: "fieldset" !default;
 
 // Fieldset properties.
