@@ -78,8 +78,8 @@ $input-disabled-color: var(
   --#{root-defaults.$prefix}input-disabled-color,
   #{theme.get(secondary, 400)}
 );
-$input-disabled-placeholder-color: var(
-  --#{root-defaults.$prefix}input-disabled-placeholder-color,
+$input-placeholder-disabled-color: var(
+  --#{root-defaults.$prefix}input-placeholder-disabled-color,
   #{$input-disabled-color}
 );
 $label-disabled-color: var(
@@ -241,5 +241,5 @@ $fieldset-disabled-border-color: var(
 // Accent color properties.
 $input-accent-color: var(
   --#{root-defaults.$prefix}input-accent-color,
-  #{theme.get(primary, 700)}
+  #{$input-color}
 );
