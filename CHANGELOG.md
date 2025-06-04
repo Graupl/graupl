@@ -2,6 +2,42 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0-beta.8](https://github.com/Graupl/graupl/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2025-06-04)
+
+
+### Features
+
+* add inital logo ([d7a2b55](https://github.com/Graupl/graupl/commit/d7a2b5540cf6a5e9d6d6947082a47342b9103ae8))
+* add logo stuff ([c79bca3](https://github.com/Graupl/graupl/commit/c79bca3a9635d266fb8bab9854e656977fe12dcf))
+* **base:** add new border radius custom props to buttons ([cea4075](https://github.com/Graupl/graupl/commit/cea40753c0045c246274d826f71f6f0f9d14f625))
+* **base:** add new border radius custom props to links ([08cc74e](https://github.com/Graupl/graupl/commit/08cc74e56ef81ab6b05e7f5d541b5cd4f09be7f7))
+* **base:** use latest standards for various properties and documentation ([54814bf](https://github.com/Graupl/graupl/commit/54814bf7aa3044a77efd8c59d1156f397accef25)), closes [#156](https://github.com/Graupl/graupl/issues/156) [#157](https://github.com/Graupl/graupl/issues/157) [#136](https://github.com/Graupl/graupl/issues/136)
+* **columns:** add new columns max content width custom prop ([f88d865](https://github.com/Graupl/graupl/commit/f88d86501a7ee67b4a22f40b26c625065a1c9820))
+* **component:** handle menu and navigation similar to new links and buttons ([22dc6ad](https://github.com/Graupl/graupl/commit/22dc6ad5aa6b50fa80597b8a554b528b1525ce12))
+* implement container query support ([e4ef996](https://github.com/Graupl/graupl/commit/e4ef996288edccb258cd8506b3ab9cae93615ec3))
+* implement new border standardization across all components ([dbaaed2](https://github.com/Graupl/graupl/commit/dbaaed273f90b9b5094756395742c3644916cddd))
+* **layout:** add container query classes to flex-columns ([17799a2](https://github.com/Graupl/graupl/commit/17799a22b08619ea08b880784bbe23af181ab830))
+* **theme:** implement new color custom props ([2dd4d89](https://github.com/Graupl/graupl/commit/2dd4d895735c590aa4cfebb25d9f6fd2720983a4))
+* **utility:** add container type classes ([0a1efb7](https://github.com/Graupl/graupl/commit/0a1efb775f4fc8a07c0541849c6f1b2844d30002)), closes [#161](https://github.com/Graupl/graupl/issues/161)
+
+
+### Bug Fixes
+
+* **accordion:** correct border defaults ([34eccb4](https://github.com/Graupl/graupl/commit/34eccb4017275a1818f892fa57cf44b22a81add8))
+* **card:** correct grid layout ([cbb2785](https://github.com/Graupl/graupl/commit/cbb2785c6000e63075fa6ed6faee6a07d10a59c2))
+* **container:** correct sidebar media queries ([f0be06f](https://github.com/Graupl/graupl/commit/f0be06f2c828c2fc70d9fe835e74c88a0c39a410))
+* **demo:** correct broken html ([2faa489](https://github.com/Graupl/graupl/commit/2faa489a59a905b8979455be851b5f36d08f3d95))
+* **lists:** correct border defaults ([e066101](https://github.com/Graupl/graupl/commit/e0661010405605d6eef8803aa6688afb3fbcdb00))
+* **menu:** correct border defaults ([c4184bf](https://github.com/Graupl/graupl/commit/c4184bfc815e87ce10ac7b33b3b9d1fbf67443bb))
+* **menu:** use selector base for buttons ([c36ed16](https://github.com/Graupl/graupl/commit/c36ed16e9e551c0a22d0576f49c996fa3ee1435f))
+* **sp:** correct typo in property name ([46757b9](https://github.com/Graupl/graupl/commit/46757b9b6e028859117145e81a17be0257d76ead))
+* **utility:** use graupl color and background props in color utilities ([dcfe3a5](https://github.com/Graupl/graupl/commit/dcfe3a51495ec216034026ec22dc3e0d2c50e8bc))
+
+
+### Performance Improvements
+
+* **base:** greatly simplify and standardize links and buttons ([1176330](https://github.com/Graupl/graupl/commit/1176330fb406bc587f68711342fc97a5a10f2bc8))
+
 ## [1.0.0-beta.7](https://github.com/Graupl/graupl/compare/v1.0.0-beta.6...v1.0.0-beta.7) (2025-05-01)
 
 
