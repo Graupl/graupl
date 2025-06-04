@@ -23,7 +23,15 @@
 
     > #{defaults.$accordion-item-selector} {
       &:not(:first-child) {
-        margin-top: calc(-1 * #{$accordion-item-border-width});
+        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+        margin-top: calc(
+          -1 *
+            min(
+              #{$accordion-item-border-top-width},
+              #{$accordion-item-border-bottom-width}
+            )
+        );
+        /* stylelint-enable  scss/operator-no-newline-after */
       }
     }
   }
@@ -54,56 +62,54 @@
   }
 
   #{defaults.$accordion-item-toggle-selector} {
-    @include layer(component) {
-      z-index: 2;
-      padding: $accordion-item-toggle-padding;
-      transform: $accordion-item-toggle-transform;
-      transition: $accordion-item-toggle-transition;
+    z-index: 2;
+    padding: $accordion-item-toggle-padding;
+    transform: $accordion-item-toggle-transform;
+    transition: $accordion-item-toggle-transition;
 
-      @each $selector in map.get(root-defaults.$state-selectors, visited) {
-        &#{$selector} {
-          --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
-        }
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
       }
+    }
 
-      @each $selector in map.get(root-defaults.$state-selectors, focus) {
-        &#{$selector} {
-          --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
-        }
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
       }
+    }
 
-      @each $selector in map.get(root-defaults.$state-selectors, hover) {
-        &#{$selector} {
-          --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
-        }
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
       }
+    }
 
-      @each $selector in map.get(root-defaults.$state-selectors, active) {
-        &#{$selector} {
-          --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
-        }
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
       }
+    }
 
-      @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-        &#{$selector} {
-          --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
-        }
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
       }
+    }
 
-      &#{defaults.$accordion-item-toggle-pseudo-selector} {
-        content: defaults.$accordion-item-toggle-pseudo-content;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
-        transform: $accordion-item-toggle-pseudo-transform;
-        transition: $accordion-item-toggle-pseudo-transition;
-      }
+    &#{defaults.$accordion-item-toggle-pseudo-selector} {
+      content: defaults.$accordion-item-toggle-pseudo-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      transform: $accordion-item-toggle-pseudo-transform;
+      transition: $accordion-item-toggle-pseudo-transition;
+    }
 
-      &[aria-expanded="true"] {
-        &::after {
-          transform: $accordion-item-toggle-pseudo-open-transform;
-        }
+    &[aria-expanded="true"] {
+      &::after {
+        transform: $accordion-item-toggle-pseudo-open-transform;
       }
     }
   }
@@ -148,9 +154,20 @@
 @include layer(state) {
   #{defaults.$accordion-item-selector} {
     #{defaults.$accordion-item-toggle-selector} {
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       --#{root-defaults.$prefix}focus-outline-offset: calc(
-        -1 * (#{$accordion-item-border-width} + #{focus.$focus-width})
+        -1 *
+          (
+            min(
+                #{$accordion-item-border-top-width},
+                #{$accordion-item-border-bottom-width},
+                #{$accordion-item-border-left-width},
+                #{$accordion-item-border-right-width}
+              ) +
+              #{focus.$focus-width}
+          )
       );
+      /* stylelint-enable  scss/operator-no-newline-after */
     }
   }
 }

@@ -82,21 +82,18 @@ $list-border-radius: var(
   #{$list-border-top-left-radius} #{$list-border-top-right-radius}
     #{$list-border-bottom-right-radius} #{$list-border-bottom-left-radius}
 );
-$list-border-top-width: var(
-  --#{root-defaults.$prefix}list-border-top-width,
-  #{root-variables.$border-top-width}
-);
+$list-border-top-width: var(--#{root-defaults.$prefix}list-border-top-width, 0);
 $list-border-right-width: var(
   --#{root-defaults.$prefix}list-border-right-width,
-  #{root-variables.$border-right-width}
+  0
 );
 $list-border-bottom-width: var(
   --#{root-defaults.$prefix}list-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  0
 );
 $list-border-left-width: var(
   --#{root-defaults.$prefix}list-border-left-width,
-  #{root-variables.$border-left-width}
+  0
 );
 $list-border-width: var(
   --#{root-defaults.$prefix}list-border-width,
