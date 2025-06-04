@@ -184,7 +184,15 @@ $accordion-item-header-padding: var(
 );
 $accordion-item-header-margin: var(
   --#{root-defaults.$prefix}accordion-item-header-margin,
-  calc(-1 * #{$accordion-item-border-width})
+  calc(
+    -1 *
+      min(
+        #{$accordion-item-border-top-width},
+        #{$accordion-item-border-bottom-width},
+        #{$accordion-item-border-left-width},
+        #{$accordion-item-border-right-width}
+      )
+  )
 );
 
 // Accordion item title properties.
