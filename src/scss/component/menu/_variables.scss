@@ -91,19 +91,19 @@ $menu-border-radius: var(
 );
 $menu-border-top-width: var(
   --#{root-defaults.$prefix}menu-border-top-width,
-  #{root-variables.$border-top-width}
+  #{defaults.$menu-border-width}
 );
 $menu-border-right-width: var(
   --#{root-defaults.$prefix}menu-border-right-width,
-  #{root-variables.$border-right-width}
+  #{defaults.$menu-border-width}
 );
 $menu-border-bottom-width: var(
   --#{root-defaults.$prefix}menu-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  #{defaults.$menu-border-width}
 );
 $menu-border-left-width: var(
   --#{root-defaults.$prefix}menu-border-left-width,
-  #{root-variables.$border-left-width}
+  #{defaults.$menu-border-width}
 );
 $menu-border-width: var(
   --#{root-defaults.$prefix}menu-border-width,
@@ -553,19 +553,19 @@ $menu-link-border-radius: var(
 );
 $menu-link-border-top-width: var(
   --#{root-defaults.$prefix}menu-link-border-top-width,
-  #{root-variables.$border-top-width}
+  #{defaults.$menu-link-border-width}
 );
 $menu-link-border-right-width: var(
   --#{root-defaults.$prefix}menu-link-border-right-width,
-  #{root-variables.$border-right-width}
+  #{defaults.$menu-link-border-width}
 );
 $menu-link-border-bottom-width: var(
   --#{root-defaults.$prefix}menu-link-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  #{defaults.$menu-link-border-width}
 );
 $menu-link-border-left-width: var(
   --#{root-defaults.$prefix}menu-link-border-left-width,
-  #{root-variables.$border-left-width}
+  #{defaults.$menu-link-border-width}
 );
 $menu-link-border-width: var(
   --#{root-defaults.$prefix}menu-link-border-width,
