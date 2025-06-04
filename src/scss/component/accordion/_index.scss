@@ -23,6 +23,7 @@
 
     > #{defaults.$accordion-item-selector} {
       &:not(:first-child) {
+        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
         margin-top: calc(
           -1 *
             min(
@@ -30,6 +31,7 @@
               #{$accordion-item-border-bottom-width}
             )
         );
+        /* stylelint-enable  scss/operator-no-newline-after */
       }
     }
   }
@@ -152,6 +154,7 @@
 @include layer(state) {
   #{defaults.$accordion-item-selector} {
     #{defaults.$accordion-item-toggle-selector} {
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
       --#{root-defaults.$prefix}focus-outline-offset: calc(
         -1 *
           (
@@ -164,6 +167,7 @@
               #{focus.$focus-width}
           )
       );
+      /* stylelint-enable  scss/operator-no-newline-after */
     }
   }
 }

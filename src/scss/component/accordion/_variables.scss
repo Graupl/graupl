@@ -182,6 +182,7 @@ $accordion-item-header-padding: var(
   --#{root-defaults.$prefix}accordion-item-header-padding,
   #{$accordion-item-header-padding-y} #{$accordion-item-header-padding-x}
 );
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $accordion-item-header-margin: var(
   --#{root-defaults.$prefix}accordion-item-header-margin,
   calc(
@@ -194,6 +195,7 @@ $accordion-item-header-margin: var(
       )
   )
 );
+/* stylelint-enable  scss/operator-no-newline-after */
 
 // Accordion item title properties.
 $accordion-item-title-padding-x: var(
