@@ -9,7 +9,7 @@
 @use "../../defaults" as root-defaults;
 
 // Columns selectors.
-$columns-selector-base: root-defaults.$selector-base !default;
+$columns-selector-base: root-defaults.$component-selector-base !default;
 $columns-selector: "columns" !default;
 $columns-count-selector-base: $columns-selector-base !default;
 $columns-count-selector-prefix: "count-" !default;

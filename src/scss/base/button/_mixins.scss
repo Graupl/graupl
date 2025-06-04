@@ -9,6 +9,7 @@
 @use "../../functions/theme";
 @use "sass:map";
 
+/// Mixin to apply base styles for buttons.
 @mixin apply-base() {
   display: flex;
   align-items: center;
@@ -54,6 +55,7 @@
   }
 }
 
+/// Mixin to apply theme styles for buttons.
 @mixin apply-theme() {
   border-color: $button-border-color;
   background: $button-background;

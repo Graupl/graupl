@@ -10,11 +10,13 @@
 @use "sass:map";
 
 // Button selectors.
-$button-selector-base: root-defaults.$selector-base !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$button-selector-base: $selector-base !default;
 $button-selector: "button" !default;
-$button-link-selector-base: $button-selector-base !default;
+$button-link-selector-base: $modifier-selector-base !default;
 $button-link-selector: "link" !default;
-$button-theme-selector-base: $button-selector-base !default;
+$button-theme-selector-base: $modifier-selector-base !default;
 $button-theme-selector-prefix: "" !default;
 
 // Button properties.

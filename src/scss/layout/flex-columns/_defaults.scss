@@ -9,7 +9,7 @@
 @use "../../defaults" as root-defaults;
 
 // Flex columns selectors.
-$flex-columns-selector-base: root-defaults.$selector-base !default;
+$flex-columns-selector-base: root-defaults.$component-selector-base !default;
 $flex-columns-selector: "flex-columns" !default;
 $flex-columns-column-selector-base: $flex-columns-selector-base !default;
 $flex-columns-column-selector: "col-" !default;

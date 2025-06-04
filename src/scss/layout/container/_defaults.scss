@@ -9,7 +9,7 @@
 @use "../../defaults" as root-defaults;
 
 // Container selectors.
-$container-selector-base: root-defaults.$selector-base !default;
+$container-selector-base: root-defaults.$component-selector-base !default;
 $container-selector: "container" !default;
 $container-breakout-selector-base: $container-selector-base !default;
 $container-breakout-selector: "breakout" !default;
