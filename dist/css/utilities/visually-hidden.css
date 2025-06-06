@@ -1,2 +1,28 @@
-@layer graupl.utilities{.visually-hidden:not(.focusable){height:1px!important;margin:-1px!important;overflow:hidden!important;padding:0!important;position:absolute!important;width:1px!important;clip:rect(0,0,0,0)!important;border:0!important;clip-path:inset(50%)!important;white-space:nowrap!important}.visually-hidden.focusable:not(:focus,:focus-within){height:1px!important;margin:-1px!important;overflow:hidden!important;padding:0!important;position:absolute!important;width:1px!important;clip:rect(0,0,0,0)!important;border:0!important;clip-path:inset(50%)!important;white-space:nowrap!important}}
+@layer graupl.utilities {
+  .visually-hidden:not(.focusable) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(50%) !important;
+  }
+  .visually-hidden.focusable:not(:focus, :focus-within) {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    border: 0 !important;
+    white-space: nowrap !important;
+    clip-path: inset(50%) !important;
+  }
+}
+
 /*# sourceMappingURL=visually-hidden.css.map */

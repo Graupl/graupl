@@ -1,12 +1,17 @@
+@use "../../../src/scss/defaults" as graupl-defaults with (
+  $use-layers: false
+);
 @use "../../../src/scss/theme/color/defaults" as graupl-color-defaults with (
   $theme-selector-suffix: ""
 );
+
+// @use "../../../src/scss/base/button/defaults" as graupl-button-defaults with (
+//   $button-selector: "button,.button"
+// );
 @use "../../../src/scss/variables" as graupl-variables;
-@use "../../../src/scss/utilities";
 @use "../../../src/scss/functions/theme";
-@use "../../../src/scss/theme/color";
-@use "../../../src/scss/state/focus";
 @use "sass:map";
+@use "../../../src/scss";
 
 :root {
   --vp-c-brand: #{theme.get(primary, 700)};
