@@ -1,6 +1,3 @@
-// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
-import storybook from "eslint-plugin-storybook";
-
 import jsdoc from "eslint-plugin-jsdoc";
 import globals from "globals";
 import js from "@eslint/js";
@@ -74,5 +71,4 @@ export default [
   {
     ignores,
   },
-  ...storybook.configs["flat/recommended"],
 ];

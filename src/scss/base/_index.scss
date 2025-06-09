@@ -1,6 +1,6 @@
 // @graupl/graupl base styles.
 
-@use "button";
-@use "form";
-@use "link";
-@use "table";
+@forward "button";
+@forward "form";
+@forward "link";
+@forward "table";

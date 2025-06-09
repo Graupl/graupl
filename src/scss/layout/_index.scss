@@ -1,5 +1,5 @@
 // @graupl/graupl layout styles.
 
-@use "container";
-@use "columns";
-@use "flex-columns";
+@forward "container";
+@forward "columns";
+@forward "flex-columns";

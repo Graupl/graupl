@@ -10,6 +10,3 @@ docs/.vitepress/dist
 
 # VSCode stuff.
 testing/flashpost
-
-*storybook.log
-storybook-static
