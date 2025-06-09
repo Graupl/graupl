@@ -4,8 +4,8 @@
 @use "../../../src/scss/variables" as graupl-variables;
 @use "../../../src/scss/utilities";
 @use "../../../src/scss/functions/theme";
-@use "../../../src/scss/theme/color";
-@use "../../../src/scss/state/focus";
+@use "../../../src/scss/theme" as graupl-theme;
+@use "../../../src/scss/state" as graupl-state;
 @use "sass:map";
 
 :root {
@@ -23,6 +23,11 @@
   --vp-c-text-1: #{theme.get(primary, 900)};
   --vp-c-text-2: #{theme.get(primary, 900)};
   --vp-c-text-3: #{theme.get(primary, 900)};
+
+  --vp-code-bg: #{theme.get(secondary, 200)};
+  --vp-code-color: #{theme.get(tertiary, 900)};
+
+  --vp-layout-max-width: 168ch;
 }
 
 .vp-doc [class*="language-"] pre {
@@ -31,4 +36,8 @@
 
 .nav .group .items .link {
   padding-left: map.get(graupl-variables.$spacers, 4);
+}
+
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
 }

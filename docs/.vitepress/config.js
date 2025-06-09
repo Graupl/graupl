@@ -51,6 +51,10 @@ export default defineConfig({
         ],
       },
       {
+        text: "Base Elements",
+        items: [{ text: "Buttons", link: "base/buttons" }],
+      },
+      {
         text: "Layout & Content",
         items: [
           { text: "Layout", link: "/layout" },
