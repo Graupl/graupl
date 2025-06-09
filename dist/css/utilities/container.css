@@ -1,2 +1,16 @@
-@layer graupl.utilities{.container-type-inline{container-type:inline-size!important}.container-type-normal{container-type:normal!important}.container-type-size{container-type:size!important}.container-type-scroll{container-type:scroll-state!important}}
+@layer graupl.utilities {
+  .container-type-inline {
+    container-type: inline-size !important;
+  }
+  .container-type-normal {
+    container-type: normal !important;
+  }
+  .container-type-size {
+    container-type: size !important;
+  }
+  .container-type-scroll {
+    container-type: scroll-state !important;
+  }
+}
+
 /*# sourceMappingURL=container.css.map */
