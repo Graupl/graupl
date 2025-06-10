@@ -18,8 +18,11 @@ The `.button` class is the base class for all button styles.
 
 There are 4 button variants provided by default: `.primary`, `.secondary`, `.tertiary`, and `.link`.
 
-<div class="display-flex g-3">
-  <button :class="$style.button.primary">Primary Button</button>
+<div class="display-flex g-3 flex-wrap">
+  <button :class="[$style.button, $style.primary]">Primary Button</button>
+  <button :class="[$style.button, $style.secondary]">Secondary Button</button>
+  <button :class="[$style.button, $style.tertiary]">Tertiary Button</button>
+  <button :class="[$style.button, $style.link]">Link Button</button>
 </div>
 
 ```html

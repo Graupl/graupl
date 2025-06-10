@@ -15,7 +15,16 @@ export default defineConfig({
       },
     },
   },
+  markdown: {
+    toc: {
+      level: [1, 2, 3],
+    },
+  },
+  cleanUrls: true,
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     nav: [
       {
         text: "Docs",
