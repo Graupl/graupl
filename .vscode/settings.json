@@ -4,5 +4,7 @@
     "pbse",
     "pise"
   ],
-  "liveServer.settings.port": 5501
+  "liveServer.settings.port": 5501,
+  "vp.docsDir": "docs",
+  "vite.autoStart": false
 }
