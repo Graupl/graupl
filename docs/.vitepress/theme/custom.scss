@@ -22,7 +22,6 @@
   --graupl-docs-menu-link-hover-text-decoration-color: var(
     --graupl-docs-theme-active--tertiary--600
   );
-  --graupl-docs-submenu-toggle-content: "↓";
 
   @each $key, $value in graupl-defaults.$spacer-multipliers {
     --graupl-docs-spacer-#{$key}: calc(#{$value} * var(--graupl-docs-spacer));
