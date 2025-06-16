@@ -7,12 +7,16 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".navigation-shelf-lock-toggle") || null;
   const hoverControllerElement =
     document.querySelector(".navigation-shelf-hover-toggle") || null;
+  const sideControllerElement =
+    document.querySelector(".navigation-shelf-side-toggle") || null;
 
   new NavigationShelf({
     shelfElement,
     controllerElement,
     lockControllerElement,
     hoverControllerElement,
+    sideControllerElement,
+    hover: true,
     initialize: true,
   });
 });

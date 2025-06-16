@@ -1,11 +1,13 @@
 import {
   isValidClassList,
   isValidType,
-  isValidHoverType,
   isValidInstance,
   isValidSideType,
+  isValidState,
+  isValidEvent,
 } from "../validate.js";
 import { preventEvent, keyPress } from "../eventHandlers.js";
+import { addClass, removeClass } from "../domHelpers.js";
 import storage from "../storage.js";
 
 class NavigationShelf {
@@ -14,7 +16,7 @@ class NavigationShelf {
    *
    * @protected
    *
-   * @type {Object<HTMLElement>}
+   * @type {Object<HTMLElement,HTMLElement[]>}
    *
    * @property {HTMLElement} shelf - The shelf element.
    * @property {HTMLElement} controller - The toggle for this shelf.
@@ -46,49 +48,29 @@ class NavigationShelf {
   };
 
   /**
-   * The class(es) to apply to dependent elements when the shelf is open.
+   * The class(es) to apply to the shelf _and_ dependent elements in various scenarios.
    *
    * @protected
    *
-   * @type {string|string[]}
+   * @type {Object<string,string[]>}
+   *
+   * @property {string|string[]} locked - The class(es) to the shelf _and_ dependent elements when the shelf is locked.
+   * @property {string|stirng[]} unlocked - The class(es) to the shelf _and_ dependent elements when the shelf is unlocked.
+   * @property {string|string[]} left - The class(es) for the left side.
+   * @property {string|string[]} right - The class(es) for the right side.
+   * @property {string|string[]} open - The class(es) to apply to the shelf when the shelf is open.
+   * @property {string|string[]} close - The class(es) to apply to the shelf when the shelf is closed.
+   * @property {string|string[]} transition - The class(es) to apply to the shelf _and_ dependent elements when the shelf is transitioning between states.
    */
-  _dependentOpenClass = "shelf-show";
-
-  /**
-   * The class(es) to apply to dependent elements when the shelf is closed.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _dependentCloseClass = "shelf-hide";
-
-  /**
-   * The class(es) to apply when the shelf is open.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _openClass = "show";
-
-  /**
-   * The class(es) to apply when the shelf is closed.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _closeClass = "hide";
-
-  /**
-   * The class(es) to apply when the shelf is transitioning between states.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _transitionClass = "transitioning";
+  _classes = {
+    locked: "locked",
+    unlocked: "unlocked",
+    left: "left-side",
+    right: "right-side",
+    open: "show",
+    close: "hide",
+    transistion: "transitioning",
+  }
 
   /**
    * The duration time (in milliseconds) for the transition between open and closed states.
@@ -118,13 +100,31 @@ class NavigationShelf {
   _closeDuration = -1;
 
   /**
-   * The type of hoverability for the shelf.
+   * The current state of the shelf's focus.
    *
    * @protected
    *
    * @type {string}
    */
-  _hoverType = "off";
+  _focusState = "none";
+
+  /**
+   * This last event triggered on the shelf.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _currentEvent = "none";
+
+  /**
+   * A flag to indicate if the shelf is hoverable.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _hover = false;
 
   /**
    * The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
@@ -154,6 +154,15 @@ class NavigationShelf {
   _leaveDelay = -1;
 
   /**
+   * A variable to hold the hover timeout function.
+   *
+   * @protected
+   *
+   * @type {?Function}
+   */
+  _hoverTimeout = null;
+
+  /**
    * A flag to indicate if the navigation shelf is locked.
    *
    * @protected
@@ -163,13 +172,13 @@ class NavigationShelf {
   _locked = false;
 
   /**
-   * A flag to check in the navigation shelf can dynamically close based on if the shelf has been opened already.
+   * A flag to check in the navigation shelf can dynamically close based on if the shelf has been manually interacted with already.
    *
    * @protected
    *
    * @type {boolean}
    */
-  _hasOpened = false;
+  _softLocked = false;
 
   /**
    * The side of the screen the navigation shelf is on.
@@ -179,6 +188,111 @@ class NavigationShelf {
    * @type {string}
    */
   _side = "left";
+
+  /**
+   * The opposite side of the screen the naigation shelf is on.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _otherSide = "right";
+
+  /**
+   * The open state of the shelf.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _open = false;
+
+  /**
+   * The event that is triggered when the shelf expands.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfExpand
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _expandEvent = new CustomEvent("grauplNavigationShelfExpand", {
+    bubbles: true,
+    detail: { shelf: this },
+  });
+
+  /**
+   * The event that is triggered when the shelf collapses.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfCollapse
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _collapseEvent = new CustomEvent("grauplNavigationShelfCollapse", {
+    bubbles: true,
+    detail: { shelf: this },
+  });
+
+  /**
+   * The event that is triggered when the shelf is locked.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfLock
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _lockEvent = new CustomEvent("grauplNavigationShelfLock", {
+    bubbles: true,
+    detail: { shelf: this },
+  });
+
+  /**
+   * The event that is triggered when the shelf is unlocked.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfUnlock
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _unlockEvent = new CustomEvent("grauplNavigationShelfUnlock", {
+    bubbles: true,
+    detail: { shelf: this },
+  });
+
+  /**
+   * The event that is triggered when the shelf has shifted sides.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfShift
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _shiftEvent = new CustomEvent("grauplNavigationShelfShift", {
+    bubbles: true,
+    detail: {
+      shelf: this,
+    }
+  })
 
   /**
    * The prefix to use for CSS custom properties.
@@ -212,16 +326,19 @@ class NavigationShelf {
     controllerElement,
     lockControllerElement,
     hoverControllerElement,
+    sideControllerElement,
     dependentSelector = ".shelf-aware",
-    dependentOpenClass = "shelf-show",
-    dependentCloseClass = "shelf-hide",
+    lockedClass = "locked",
+    unlockedClass = "unlocked",
+    leftClass = "left-side",
+    rightClass = "right-side",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
-    hoverType = "off",
+    hover = false,
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
@@ -235,18 +352,19 @@ class NavigationShelf {
     this._dom.controller = controllerElement;
     this._dom.lockController = lockControllerElement;
     this._dom.hoverController = hoverControllerElement;
+    this._dom.sideController = sideControllerElement;
 
     // Set DOM selectors.
     this._selectors.dependents = dependentSelector;
 
-    // Set dependent open/close classes.
-    this._dependentOpenClass = dependentOpenClass || "";
-    this._dependentCloseClass = dependentCloseClass || "";
-
-    // Set open/close classes.
-    this._openClass = openClass || "";
-    this._closeClass = closeClass || "";
-    this._transitionClass = transitionClass || "";
+    // Set classes.
+    this._classes.locked = lockedClass || "";
+    this._classes.unlocked = unlockedClass || "";
+    this._classes.left = leftClass || "";
+    this._classes.right = rightClass || "";
+    this._classes.open = openClass || "";
+    this._classes.close = closeClass || "";
+    this._classes.transition = transitionClass || "";
 
     // Set transition duration.
     this._transitionDuration = transitionDuration;
@@ -263,7 +381,7 @@ class NavigationShelf {
     this._prefix = prefix || "";
 
     // Set hover settings.
-    this._hoverType = hoverType;
+    this._hover = hover;
     this._hoverDelay = hoverDelay;
     this._enterDelay = enterDelay;
     this._leaveDelay = leaveDelay;
@@ -291,6 +409,20 @@ class NavigationShelf {
       this._setDOMElements();
       this._setIds();
       this._setAriaAttributes();
+
+      // Set up the event listeners.
+      this._handleFocus();
+      this._handleClick();
+      this._handleHover();
+
+      // Ensure the initial state of the shelf.
+      if (this.dom.controller.getAttribute("aria-expanded") === "true") {
+        this._expand(false);
+      } else {
+        this._collapse(false);
+      }
+
+      this._shiftSide(false);
 
       // Set up the storage.
       storage.initializeStorage("navigation-shelves");
@@ -327,58 +459,93 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to dependent elements when the shelf is open.
+   * The class(es) to apply to the shelf _and_ dependent elements in various scenarios.
    *
-   * @type {string|string[]}
+   * @readonly
    *
-   * @see _dependentOpenClass
+   * @type {Object<string, string[]}
+   *
+   * @see _classes
    */
-  get dependentOpenClass() {
-    return this._dependentOpenClass;
+  get classes() {
+    return this._classes;
   }
 
   /**
-   * The class(es) to apply to dependent elements when the shelf is closed.
+   * The class(es) to apply to dependent elements when the shelf is locked.
    *
    * @type {string|string[]}
    *
-   * @see _dependentCloseClass
+   * @see _classes
    */
-  get dependentCloseClass() {
-    return this._dependentCloseClass;
+  get lockedClass() {
+    return this._classes.locked;
   }
 
   /**
-   * The class(es) to apply when the shelf is open.
+   * The class(es) to apply to dependent elements when the shelf is unlocked.
    *
    * @type {string|string[]}
    *
-   * @see _openClass
+   * @see _classes
+   */
+  get unlockedClass() {
+    return this._classes.unlocked;
+  }
+
+  /**
+   * The class(es) to apply to the shelf _and_ dependent elements when when shelf is on the left side.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get leftClass() {
+    return this._classes.left;
+  }
+
+  /**
+   * The class(es) to apply to the shelf _and_ dependent elements when when shelf is on the right side.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get rightClass() {
+    return this._classes.right;
+  }
+
+  /**
+   * The class(es) to apply to the shelf when the shelf is open.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
    */
   get openClass() {
-    return this._openClass;
+    return this._classes.open;
   }
 
   /**
-   * The class(es) to apply when the shelf is closed.
+   * The class(es) to apply to the shelf when the shelf is closed.
    *
    * @type {string|string[]}
    *
-   * @see _closeClass
+   * @see _classes
    */
   get closeClass() {
-    return this._closeClass;
+    return this._classes.close;
   }
 
   /**
-   * The class(es) to apply when the shelf is transitioning between open and closed.
+   * The class(es) to apply to the shelf _and_ dependent elements when the shelf is transitioning between open and closed.
    *
    * @type {string|string[]}
    *
-   * @see _transitionClass
+   * @see _classes
    */
   get transitionClass() {
-    return this._transitionClass;
+    return this._classes.transition;
   }
 
   /**
@@ -429,14 +596,36 @@ class NavigationShelf {
   }
 
   /**
-   * The type of hoverability for the shelf.
+   * The current state of the shelf's focus.
    *
    * @type {string}
    *
-   * @see _hoverType
+   * @see _focusState
    */
-  get hoverType() {
-    return this._hoverType;
+  get focusState() {
+    return this._focusState;
+  }
+
+  /**
+   * The last event triggered on the shelf.
+   *
+   * @type {string}
+   *
+   * @see _currentEvent
+   */
+  get currentEvent() {
+    return this._currentEvent;
+  }
+
+  /**
+   * A flag to indicate if the shelf is hoverable.
+   *
+   * @type {boolean}
+   *
+   * @see _hover
+   */
+  get hover() {
+    return this._hover;
   }
 
   /**
@@ -498,12 +687,14 @@ class NavigationShelf {
    *
    * @see _locked
    */
-  get locked() {
+  get isLocked() {
     return this._locked;
   }
 
   /**
    * The side of the screen the navigation shelf is on.
+   *
+   * @readonly
    *
    * @type {string}
    *
@@ -511,6 +702,19 @@ class NavigationShelf {
    */
   get side() {
     return this._side;
+  }
+
+  /**
+   * The opposite side of the screen the navigation shelf is on.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _otherSide
+   */
+  get otherSide() {
+    return this._otherSide;
   }
 
   /**
@@ -529,10 +733,27 @@ class NavigationShelf {
    *
    * @type {boolean}
    *
-   * @see _hasOpened
+   * @see _softLocked
    */
-  get hasOpened() {
-    return this._hasOpened;
+  get isSoftLocked() {
+    return this._softLocked;
+  }
+
+  /**
+   * The open state on the shelf.
+   *
+   * @type {boolean}
+   *
+   * @see _open
+   */
+  get isOpen() {
+    return this._open;
+  }
+
+  set isOpen(value) {
+    isValidType("boolean", { value });
+
+    this._open = value;
   }
 
   /**
@@ -548,41 +769,41 @@ class NavigationShelf {
     return this._errors;
   }
 
-  set dependentOpenClass(value) {
-    isValidClassList({ dependentOpenClass: value });
-    if (this._dependentOpenClass !== value) {
-      this._dependentOpenClass = value;
+  set dependentLockedClass(value) {
+    isValidClassList({ dependentLockedClass: value });
+    if (this._classes.dependentLocked !== value) {
+      this._classes.dependentLocked = value;
     }
   }
 
-  set dependentCloseClass(value) {
-    isValidClassList({ dependentCloseClass: value });
-    if (this._dependentCloseClass !== value) {
-      this._dependentCloseClass = value;
+  set dependentUnlockedClass(value) {
+    isValidClassList({ dependentUnlockedClass: value });
+    if (this._classes.dependentUnlocked !== value) {
+      this._classes.dependentUnlocked = value;
     }
   }
 
   set openClass(value) {
     isValidClassList({ openClass: value });
 
-    if (this._openClass !== value) {
-      this._openClass = value;
+    if (this._classes.open !== value) {
+      this._classes.open = value;
     }
   }
 
   set closeClass(value) {
     isValidClassList({ closeClass: value });
 
-    if (this._closeClass !== value) {
-      this._closeClass = value;
+    if (this._classes.close !== value) {
+      this._classes.close = value;
     }
   }
 
   set transitionClass(value) {
     isValidClassList({ transitionClass: value });
 
-    if (this._transitionClass !== value) {
-      this._transitionClass = value;
+    if (this._classes.transition !== value) {
+      this._classes.transition = value;
     }
   }
 
@@ -613,11 +834,27 @@ class NavigationShelf {
     }
   }
 
-  set hoverType(value) {
-    isValidHoverType({ value });
+  set focusState(value) {
+    isValidState({ value });
 
-    if (this._hoverType !== value) {
-      this._hoverType = value;
+    if (this._focusState !== value) {
+      this._focusState = value;
+    }
+  }
+
+  set currentEvent(value) {
+    isValidEvent({ value });
+
+    if (this._currentEvent !== value) {
+      this._currentEvent = value;
+    }
+  }
+
+  set hover(value) {
+    isValidType("boolean", { value });
+
+    if (this._hover !== value) {
+      this._hover = value;
     }
   }
 
@@ -653,19 +890,11 @@ class NavigationShelf {
     }
   }
 
-  set locked(value) {
+  set isLocked(value) {
     isValidType("boolean", { value });
 
     if (this._locked !== value) {
       this._locked = value;
-    }
-  }
-
-  set side(value) {
-    isValidType("string", { value });
-
-    if (this._side !== value) {
-      this._side = value;
     }
   }
 
@@ -677,11 +906,11 @@ class NavigationShelf {
     }
   }
 
-  set hasOpened(value) {
+  set isSoftLocked(value) {
     isValidType("boolean", { value });
 
-    if (this._hasOpened !== value) {
-      this._hasOpened = value;
+    if (this._softLocked !== value) {
+      this._softLocked = value;
     }
   }
 
@@ -701,11 +930,14 @@ class NavigationShelf {
       controllerElement: this._dom.controller,
     };
 
-    if (this._dom.lockController.length > 0) {
+    if (this._dom.lockController) {
       htmlElements.lockControllerElement = this._dom.lockController;
     }
-    if (this._dom.hoverController.length > 0) {
+    if (this._dom.hoverController) {
       htmlElements.hoverControllerElement = this._dom.hoverController;
+    }
+    if (this._dom.sideController) {
+      htmlElements.sideControllerElement = this._dom.sideController;
     }
 
     const htmlElementChecks = isValidInstance(HTMLElement, htmlElements);
@@ -716,55 +948,18 @@ class NavigationShelf {
     }
 
     // Class list checks.
-    if (this._dependentOpenClass !== "") {
-      const dependentOpenClassCheck = isValidClassList({
-        dependentOpenClass: this._dependentOpenClass,
-      });
-      if (!dependentOpenClassCheck.status) {
-        this._errors.push(dependentOpenClassCheck.error.message);
-        check = false;
-      }
+    const classes = {};
+    for (const key of Object.keys(this.classes)) {
+      if (this._classes[key] === "") continue;
+
+
+      classes[`${key}Class`] = this._classes[key];
     }
+    const classChecks = isValidClassList(classes);
 
-    if (this._dependentCloseClass !== "") {
-      const dependentCloseClassCheck = isValidClassList({
-        dependentCloseClass: this._dependentCloseClass,
-      });
-      if (!dependentCloseClassCheck.status) {
-        this._errors.push(dependentCloseClassCheck.error.message);
-        check = false;
-      }
-    }
-
-    if (this._openClass !== "") {
-      const openClassCheck = isValidClassList({ openClass: this._openClass });
-
-      if (!openClassCheck.status) {
-        this._errors.push(openClassCheck.error.message);
-        check = false;
-      }
-    }
-
-    if (this._closeClass !== "") {
-      const closeClassCheck = isValidClassList({
-        closeClass: this._closeClass,
-      });
-
-      if (!closeClassCheck.status) {
-        this._errors.push(closeClassCheck.error.message);
-        check = false;
-      }
-    }
-
-    if (this._transitionClass !== "") {
-      const transitionClassCheck = isValidClassList({
-        transitionClass: this._transitionClass,
-      });
-
-      if (!transitionClassCheck.status) {
-        this._errors.push(transitionClassCheck.error.message);
-        check = false;
-      }
+    if (!classChecks.status) {
+      this._errors.push(classChecks.error.message);
+      check = false;
     }
 
     // Transition duration check.
@@ -797,11 +992,11 @@ class NavigationShelf {
       check = false;
     }
 
-    // Hover type check.
-    const hoverTypeCheck = isValidHoverType({ hoverType: this._hoverType });
+    // Hover check.
+    const hoverCheck = isValidType("boolean", { hover: this._hover });
 
-    if (!hoverTypeCheck.status) {
-      this._errors.push(hoverTypeCheck.error.message);
+    if (!hoverCheck.status) {
+      this._errors.push(hoverCheck.error.message);
       check = false;
     }
 
@@ -1020,7 +1215,10 @@ class NavigationShelf {
    */
   _setAriaAttributes() {
     this.dom.controller.setAttribute("aria-controls", this.dom.shelf.id);
-    this.dom.controller.setAttribute("aria-expanded", "false");
+
+    if (this.dom.controller.getAttribute("aria-expanded") !== "true") {
+      this.dom.controller.setAttribute("aria-expanded", "false");
+    }
 
     this.dom.lockController.setAttribute("aria-controls", this.dom.shelf.id);
     this.dom.lockController.setAttribute(
@@ -1033,6 +1231,394 @@ class NavigationShelf {
       "aria-pressed",
       this._hoverType === "on" ? "true" : "false"
     );
+  }
+
+  /**
+   * Clears the hover timeout.
+   *
+   * @protected
+   */
+  _clearTimeout() {
+    clearTimeout(this._hoverTimeout);
+  }
+
+  /**
+   * Sets the hover timeout.
+   *
+   * @protected
+   *
+   * @param {Function} callback - The callback function to execute.
+   * @param {number}   delay    - The delay time in milliseconds.
+   */
+  _setTimeout(callback, delay) {
+    isValidType("function", { callback });
+    isValidType("number", { delay });
+
+    this._hoverTimeout = setTimeout(callback, delay);
+  }
+
+  _handleFocus() {
+    this.dom.shelf.addEventListener("focusout", (event) => {
+      if (event.relatedTarget === null || this.dom.shelf.contains(event.relatedTarget)) return;
+
+      this.focusState = "none";
+      this.close();
+    });
+  }
+
+  _handleClick() {
+    // Prevent pointer down events on all controlled elements.
+    for (const element of Object.values(this.dom)) {
+      if (!element) continue;
+      if (Array.isArray(element)) continue;
+
+      element.addEventListener(
+        "pointerdown",
+        () => {
+          this.currentEvent = "mouse";
+          this._clearTimeout();
+        },
+        { passive: true }
+      );
+    }
+
+    // Toggle the shelf when the controlled is clicked.
+    this.dom.controller.addEventListener("pointerup", (event) => {
+      if (event.button !== 0) return;
+
+      this.currentEvent = "mouse";
+      preventEvent(event);
+      this.toggle();
+
+      if (this.isOpen) {
+        this.focusState = "self";
+        this.isSoftLocked = true;
+      }
+    });
+
+    // Toggle hoverability when the hover controller is clicked.
+    if (this.dom.hoverController) {
+      this.dom.hoverController.addEventListener("pointerup", (event) => {
+        if (event.button !== 0) return;
+
+        this.currentEvent = "mouse";
+        preventEvent(event);
+        this.focusState = "self";
+        this.hover = !this.hover;
+      });
+    }
+
+    // Toggle shelf lock when the lock controller is clicked.
+    if (this.dom.lockController) {
+      this.dom.lockController.addEventListener("pointerup", (event) => {
+        if (event.button !== 0) return;
+
+        this.currentEvent = "mouse";
+        preventEvent(event);
+        this.focusState = "self";
+        this.toggleLock();
+      });
+    }
+
+    // Toggle shifting sides when the side controller is clicked.
+    if (this.dom.sideController) {
+      this.dom.sideController.addEventListener("pointerup", (event) => {
+        if (event.button !== 0) return;
+
+        this.currentEvent = "mouse";
+        preventEvent(event);
+        this.focusState = "self";
+        this.toggleSide();
+      });
+    }
+
+    // Catch all to open if shelf if there is a click inside of it.
+    this.dom.shelf.addEventListener("pointerup", (event) => {
+      if (event.button !== 0) return;
+
+      this.currentEvent = "mouse";
+      this.focusState = "self";
+      this.isSoftLocked = true;
+      this.open();
+    });
+
+    // Close the shelf if a click happens outside of it.
+    document.addEventListener("pointerup", (event) => {
+      if (this.focusState === "none") return;
+      if (this.isLocked) return;
+      if (this.dom.shelf === event.target || this.dom.shelf.contains(event.target)) return;
+
+      this.currentEvent = "mouse";
+      this.close();
+    });
+  }
+
+  _handleHover() {
+    this.dom.shelf.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "pen" || event.pointerType === "touch") return;
+      if (this.isLocked || this.isSoftLocked) return;
+      if (!this.hover) return;
+
+      this.currentEvent = "mouse";
+
+      if (this.enterDelay > 0) {
+        this._clearTimeout();
+        this._setTimeout(() => {
+          if (!this.isOpen) {
+            this.open();
+          }
+        }, this.enterDelay);
+      } else {
+        this.open();
+      }
+    });
+
+    this.dom.shelf.addEventListener("pointerleave", (event) => {
+      if (event.pointerType === "pen" || event.pointerType === "touch") return;
+      if (this.isLocked || this.isSoftLocked) return;
+      if (!this.hover) return;
+
+      this.currentEvent = "mouse";
+
+      if (this.leaveDelay > 0) {
+        this._clearTimeout();
+        this._setTimeout(() => {
+          if (this.isOpen) {
+            this.close();
+          }
+        }, this.leaveDelay);
+      } else {
+        this.close();
+      }
+    });
+  }
+
+  _expand(emit = true) {
+    this.dom.controller.setAttribute("aria-expanded", "true");
+
+    // If we're dealing with transition classes, then we need to utilize
+    // requestAnimationFrame to add the transition class, remove the close class,
+    // add the open class, and finally remove the transition class.
+    if (this.transitionClass !== "") {
+      addClass(this.transitionClass, this.dom.shelf);
+
+      requestAnimationFrame(() => {
+        removeClass(this.closeClass, this.dom.shelf);
+
+        requestAnimationFrame(() => {
+          addClass(this.openClass, this.dom.shelf);
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              removeClass(this.transitionClass, this.dom.shelf);
+            }, this.openDuration);
+          });
+        });
+      });
+    } else {
+      // Add the open class
+      addClass(this.openClass, this.dom.shelf);
+
+      // Remove the close class.
+      removeClass(this.closeClass, this.dom.shelf);
+    }
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._expandEvent);
+    }
+  }
+
+  _collapse(emit = true) {
+    this.dom.controller.setAttribute("aria-expanded", "false");
+    this.isSoftLocked = false;
+
+    // If we're dealing with transition classes, then we need to utilize
+    // requestAnimationFrame to add the transition class, remove the open class,
+    // add the close class, and finally remove the transition class.
+    if (this.transitionClass !== "") {
+      addClass(this.transitionClass, this.dom.shelf);
+
+      requestAnimationFrame(() => {
+        removeClass(this.openClass, this.dom.shelf);
+
+        requestAnimationFrame(() => {
+          addClass(this.closeClass, this.dom.shelf);
+
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              removeClass(this.transitionClass, this.dom.shelf);
+            }, this.closeDuration);
+          });
+        });
+      });
+    } else {
+      // Add the close class
+      addClass(this.closeClass, this.dom.shelf);
+
+      // Remove the open class.
+      removeClass(this.openClass, this.dom.shelf);
+    }
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._collapseEvent);
+    }
+  }
+
+  _lock(emit = true) {
+    this.dom.lockController.setAttribute("aria-pressed", "true");
+
+    // Add the locked class
+    addClass(this.lockedClass, this.dom.shelf);
+
+    // Add the locked class to dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      addClass(this.lockedClass, dependent);
+    });
+
+    // Remove the unlocked class.
+    removeClass(this.unlockedClass, this.dom.shelf);
+
+    // Remove the unlocked class from dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      removeClass(this.unlockedClass, dependent);
+    });
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._lockEvent);
+    }
+  }
+
+  _unlock(emit = true) {
+    this.dom.lockController.setAttribute("aria-pressed", "false");
+
+    // Add the unlocked class
+    addClass(this.unlockedClass, this.dom.shelf);
+
+    // Add the unlocked class to dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      addClass(this.unlockedClass, dependent);
+    });
+
+    // Remove the locked class.
+    removeClass(this.lockedClass, this.dom.shelf);
+
+    // Remove the locked class from dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      removeClass(this.lockedClass, dependent);
+    });
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._unlockEvent);
+    }
+  }
+
+  _shiftSide(emit = true) {
+    const toClass = this._classes[this.side];
+    const fromClass = this._classes[this.otherSide];
+
+    // Add the to class
+    addClass(toClass, this.dom.shelf);
+
+    // Add the to class to dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      addClass(toClass, dependent);
+    });
+
+    // Remove the from class.
+    removeClass(fromClass, this.dom.shelf);
+
+    // Remove the from class from dependent elements.
+    this.dom.dependents.forEach((dependent) => {
+      removeClass(fromClass, dependent);
+    });
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._shiftEvent);
+    }
+  }
+
+  open(force = false) {
+    // Only open if the shelf is closed.
+    if (this.isOpen && !force) return;
+
+    this._expand();
+
+    // Set the open flag.
+    this.isOpen = true;
+  }
+
+  close(force = false) {
+    // Only close if the shelf is open.
+    if (!this.isOpen && !force) return;
+
+    this.unlock();
+    this._collapse();
+
+    // Set the open flag.
+    this.isOpen = false;
+  }
+
+  toggle() {
+    if (this.isOpen) {
+      this.close();
+    } else {
+      this.open();
+    }
+  }
+
+  lock(emit = true) {
+    // Only lock if the shelf is unlocked.
+    if (this.isLocked) return;
+
+    this._lock();
+
+    // Set the locked flag.
+    this.isLocked = true;
+
+    // Open the shelf.
+    this.open(true);
+  }
+
+  unlock(emit = true) {
+    // Only unlock if the shelf is locked.
+    if (!this.isLocked) return;
+
+    this._unlock();
+
+    // Set the locked flag.
+    this.isLocked = false;
+  }
+
+  toggleLock() {
+    if (this.isLocked) {
+      this.unlock();
+    } else {
+      this.lock();
+    }
+  }
+
+  toLeft() {
+    if (this.side === "left") return;
+
+    this._side = "left";
+    this._otherSide = "right";
+    this._shiftSide();
+  }
+
+  toRight() {
+    if (this.side === "right") return;
+
+    this._side = "right";
+    this._otherSide = "left";
+    this._shiftSide();
+  }
+
+  toggleSide() {
+    if (this.side === "left") {
+      this.toRight();
+    } else {
+      this.toLeft();
+    }
   }
 }
 

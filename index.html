@@ -8,48 +8,184 @@
   <link rel="stylesheet" href="dist/css/graupl.css">
   <style>
     :root {
-      --graupl-navigation-shelf-closed-width: 5rem;
-      --graupl-navigation-shelf-open-width: 36ch;
+      --graupl-navigation-shelf-min-width: 3rem;
+      --graupl-navigation-shelf-max-width: 36ch;
     }
 
     .shelf-aware {
-      padding-left: var(--graupl-navigation-shelf-closed-width);
+      &,
+      &.left-side {
+          padding-left: var(--graupl-navigation-shelf-min-width);
+          padding-right: 0;
 
-      &.show {
-        padding-left: var(--graupl-navigation-shelf-open-width);
+          &.locked {
+            padding-left: var(--graupl-navigation-shelf-max-width);
+            padding-right: 0;
+          }
+        }
+
+      &.right-side {
+        padding-right: var(--graupl-navigation-shelf-min-width);
+        padding-left: 0;
+
+        &.locked {
+          padding-right: var(--graupl-navigation-shelf-max-width);
+          padding-left: 0;
+        }
       }
     }
 
     .navigation-shelf {
-      --graupl-background: var(--graupl-theme-active--primary--800);
-      --graupl-color: var(--graupl-theme-active--primary--100);
-
       position: fixed;
       top: 0;
       bottom: 0;
-      left: 0;
-      width: var(--graupl-navigation-shelf-open-width);
-      background: var(--graupl-background);
-      color: var(--graupl-color);
-      transform: translateX(calc(-1 * 100% + var(--graupl-navigation-shelf-closed-width)));
-      display: grid;
-      grid-template-columns: [header-start content-start footer-start] 1fr [footer-end content-end header-end];
+      width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      overflow-x: hidden;
+      background: var(--graupl-navigation-shelf-background, var(--graupl-background, var(--graupl-root-background, var(--graupl-theme-active--primary--100))));
+      color: var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900))));
+      display: var(--graupl-navigation-shelf-closed-display, grid);
+      grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width)) [footer-end content-end header-end];
       grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
+      transition: var(--graupl-navigation-shelf-transition, width 200ms ease, display 50ms allow-discrete, opacity 200ms ease);
+      isolation: isolate;
+      opacity: var(--graupl-navigation-shelf-closed-opacity, 1);
+      transform: var(--graupl-navigation-shelf-transform, null);
+      z-index: var(--graupl-navigation-shelf-z-index, 2);
+
+      &,
+      &.left-side {
+        left: 0;
+        right: auto;
+        border-style: var(--graupl-navigation-shelf-border-style, var(--graupl-navigation-shelf-border-top-style, solid) var(--graupl-navigation-shelf-border-right-style, solid) var(--graupl-navigation-shelf-border-bottom-style, solid) var(--graupl-navigation-shelf-border-left-style, solid));
+        border-width: var(--graupl-navigation-shelf-border-width, var(--graupl-navigation-shelf-border-top-width, 0) var(--graupl-navigation-shelf-border-right-width, 0) var(--graupl-navigation-shelf-border-bottom-width, 0) var(--graupl-navigation-shelf-border-left-width, 0));
+        border-color: var(--graupl-navigation-shelf-border-color, var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900)))));
+
+        .navigation-shelf-side-toggle::before {
+          content: "◧";
+          display: block;
+        }
+      }
+
+      &.right-side {
+        left: auto;
+        right: 0;
+
+        .navigation-shelf-side-toggle::before {
+          content: "◨";
+        }
+      }
+
+      .w-shelf-current {
+        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .min-w-shelf-current {
+        min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .max-w-shelf-current {
+        max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .w-shelf-closed {
+        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .min-w-shelf-closed {
+        min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .max-w-shelf-closed {
+        max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+      }
+
+      .w-shelf-min {
+        width: var(--graupl-navigation-shelf-min-width);
+      }
+
+      .min-w-shelf-min {
+        min-width: var(--graupl-navigation-shelf-min-width);
+      }
+
+      .max-w-shelf-min {
+        max-width: var(--graupl-navigation-shelf-min-width);
+      }
+
+      .w-shelf-open {
+        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+      }
+
+      .min-w-shelf-open {
+        min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+      }
+
+      .max-w-shelf-open {
+        max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+      }
+
+      .w-shelf-max {
+        width: var(--graupl-navigation-shelf-max-width);
+      }
+
+      .min-w-shelf-max {
+        min-width: var(--graupl-navigation-shelf-max-width);
+      }
+
+      .max-w-shelf-max {
+        max-width: var(--graupl-navigation-shelf-max-width);
+      }
 
       &.show {
-        transform: translateX(0);
+        transform: var(--graupl-navigation-shelf-open-transform, null);
+        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-max-width) [footer-end content-end header-end];
+        display: var(--graupl-navigation-shelf-open-display, grid);
+        opacity: var(--graupl-navigation-shelf-open-opacity, 1);
+
+        .w-shelf-current {
+          width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        }
+
+        .min-w-shelf-current {
+          min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        }
+
+        .max-w-shelf-current {
+          max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        }
       }
 
       .navigation-shelf-header {
         grid-area: header;
+        transition: width 200ms ease;
       }
 
       .navigation-shelf-content {
         grid-area: content;
+        /* overflow-y: scroll; */
+        scrollbar-width: thin;
       }
 
       .navigation-shelf-footer {
         grid-area: footer;
+        /* overflow-y: scroll; */
+        scrollbar-width: thin;
+      }
+
+      .navigation-shelf-lock-toggle::before {
+        content: "🔓";
+        display: block;
+      }
+
+      .navigation-shelf-hover-toggle::before {
+        content: "◎";
+        display: block;
+      }
+
+      &.locked {
+        .navigation-shelf-lock-toggle::before {
+          content: "🔒";
+        }
       }
     }
   </style>
@@ -69,17 +205,17 @@
         <img src="./logo.svg" alt="Graupl logo" class="logo">
       </div>
       <button class="navigation-shelf-toggle">Toggle shelf</button>
-      <div class="navigation-shelf">
-        <div class="navigation-shelf-header">
-          <h2>Navigation Shelf</h2>
+      <div class="navigation-shelf bg-primary-700 text-primary-100">
+        <div class="navigation-shelf-header w-shelf-open">
+          <img src="./favicon.ico" alt="Graupl logo" class="logo w-shelf-closed">
         </div>
-        <div class="navigation-shelf-content">
+        <div class="navigation-shelf-content w-shelf-open">
           <p>This is the content of the navigation shelf.</p>
         </div>
-        <div class="navigation-shelf-footer">
-          <button class="navigation-shelf-lock-toggle">Toggle shelf lock</button>
-          <button class="navigation-shelf-hover-toggle">Toggle shelf hover</button>
-          <button class="navigation-shelf-side-toggle">Toggle side</button>
+        <div class="navigation-shelf-footer w-shelf-current display-flex flex-wrap">
+          <button class="button tertiary navigation-shelf-lock-toggle w-full text-primary-100" aria-label="Toggle shelf lock"></button>
+          <button class="button tertiary navigation-shelf-hover-toggle w-full text-primary-100" aria-label="Toggle shelf hover"></button>
+          <button class="button tertiary navigation-shelf-side-toggle w-full text-primary-100" aria-label="Toggle side"></button>
         </div>
       </div>
     </div>

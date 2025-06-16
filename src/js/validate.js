@@ -317,3 +317,97 @@ export function isValidSideType(values) {
     };
   }
 }
+
+/**
+ * Check to see if the provided values are valid focus states for a menu.
+ *
+ * Available states are: `"none"`, `"self"`, and `"child"`.
+ *
+ * The values must be provided inside of an object
+ * so the variable name can be retrieved in case of errors.
+ *
+ * Will return `{ status: true }` if the check is successful.
+ *
+ * @param  {Object<string>}          values - The value(s) to check.
+ * @return {Object<boolean, string>}        - The result of the check.
+ */
+export function isValidState(values) {
+  try {
+    if (typeof values !== "object") {
+      const type = typeof values;
+
+      throw new TypeError(
+        `Values given to isValidState() must be inside of an object. "${type}" given.`
+      );
+    }
+
+    const validStates = ["none", "self", "child"];
+
+    for (const key in values) {
+      if (!validStates.includes(values[key])) {
+        throw new TypeError(
+          `${key} must be one of the following values: ${validStates.join(
+            ", "
+          )}. "${values[key]}" given.`
+        );
+      }
+    }
+
+    return {
+      status: true,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      status: false,
+      error,
+    };
+  }
+}
+
+/**
+ * Check to see if the provided values are valid event types for a menu.
+ *
+ * Available events are: `"none"`, `"mouse"`, `"keyboard"`, and `"character"`.
+ *
+ * The values must be provided inside of an object
+ * so the variable name can be retrieved in case of errors.
+ *
+ * Will return `{ status: true }` if the check is successful.
+ *
+ * @param  {Object<string>}          values - The value(s) to check.
+ * @return {Object<boolean, string>}        - The result of the check.
+ */
+export function isValidEvent(values) {
+  try {
+    if (typeof values !== "object") {
+      const type = typeof values;
+
+      throw new TypeError(
+        `Values given to isValidEvent() must be inside of an object. "${type}" given.`
+      );
+    }
+
+    const validEvents = ["none", "mouse", "keyboard", "character"];
+
+    for (const key in values) {
+      if (!validEvents.includes(values[key])) {
+        throw new TypeError(
+          `${key} must be one of the following values: ${validEvents.join(
+            ", "
+          )}. "${values[key]}" given.`
+        );
+      }
+    }
+
+    return {
+      status: true,
+      error: null,
+    };
+  } catch (error) {
+    return {
+      status: false,
+      error,
+    };
+  }
+}
