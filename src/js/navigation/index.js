@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
       menuLinkSelector: ".menu-link",
       submenuItemSelector: ".submenu-item",
       submenuToggleSelector: ".submenu-toggle",
+      submenuSubtoggleSelector: ".submenu-toggle",
       controllerElement,
       containerElement,
       ...menuOptions,

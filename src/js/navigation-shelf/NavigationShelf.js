@@ -6,7 +6,7 @@ import {
   isValidState,
   isValidEvent,
 } from "../validate.js";
-import { preventEvent, keyPress } from "../eventHandlers.js";
+import { preventEvent } from "../eventHandlers.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import storage from "../storage.js";
 
@@ -48,29 +48,33 @@ class NavigationShelf {
   };
 
   /**
-   * The class(es) to apply to the shelf _and_ dependent elements in various scenarios.
+   * The class(es) to apply to the shelf and dependent elements in various scenarios.
    *
    * @protected
    *
    * @type {Object<string,string[]>}
    *
-   * @property {string|string[]} locked - The class(es) to the shelf _and_ dependent elements when the shelf is locked.
-   * @property {string|stirng[]} unlocked - The class(es) to the shelf _and_ dependent elements when the shelf is unlocked.
-   * @property {string|string[]} left - The class(es) for the left side.
-   * @property {string|string[]} right - The class(es) for the right side.
+   * @property {string|string[]} locked - The class(es) to apply to the shelf and dependent elements when the shelf is locked.
+   * @property {string|string[]} unlocked - The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
+   * @property {string|string[]} hover - The class(es) to apply to the shelf element when the shelf is hoverable.
+   * @property {string|string[]} noHover - The class(es) to apply to the shelf element when the shelf is not hoverable.
+   * @property {string|string[]} left - The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
+   * @property {string|string[]} right - The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
    * @property {string|string[]} open - The class(es) to apply to the shelf when the shelf is open.
    * @property {string|string[]} close - The class(es) to apply to the shelf when the shelf is closed.
-   * @property {string|string[]} transition - The class(es) to apply to the shelf _and_ dependent elements when the shelf is transitioning between states.
+   * @property {string|string[]} transition - The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
    */
   _classes = {
     locked: "locked",
     unlocked: "unlocked",
+    hover: "hoverable",
+    noHover: "not-hoverable",
     left: "left-side",
     right: "right-side",
     open: "show",
     close: "hide",
     transistion: "transitioning",
-  }
+  };
 
   /**
    * The duration time (in milliseconds) for the transition between open and closed states.
@@ -291,8 +295,46 @@ class NavigationShelf {
     bubbles: true,
     detail: {
       shelf: this,
-    }
-  })
+    },
+  });
+
+  /**
+   * The event that is triggered when the shelf's hoverability is enabled.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfEnableHoverable
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _enableHoverEvent = new CustomEvent("grauplNavigationShelfEnableHoverable", {
+    bubbles: true,
+    detail: {
+      shelf: this,
+    },
+  });
+
+  /**
+   * The event that is triggered when the shelf's hoverability is disabled.
+   *
+   * @protected
+   *
+   * @event grauplNavigationShelfDisableHover
+   *
+   * @type {CustomEvent}
+   *
+   * @property {boolean}                 bubbles - A flag to bubble the event.
+   * @property {Object<NavigationShelf>} detail  - The details object containing the NavigationShelf itself.
+   */
+  _disableHoverEvent = new CustomEvent("grauplNavigationShelfDisableHover", {
+    bubbles: true,
+    detail: {
+      shelf: this,
+    },
+  });
 
   /**
    * The prefix to use for CSS custom properties.
@@ -330,6 +372,8 @@ class NavigationShelf {
     dependentSelector = ".shelf-aware",
     lockedClass = "locked",
     unlockedClass = "unlocked",
+    hoverClass = "hoverable",
+    noHoverClass = "not-hoverable",
     leftClass = "left-side",
     rightClass = "right-side",
     openClass = "show",
@@ -360,6 +404,8 @@ class NavigationShelf {
     // Set classes.
     this._classes.locked = lockedClass || "";
     this._classes.unlocked = unlockedClass || "";
+    this._classes.hover = hoverClass || "";
+    this._classes.noHover = noHoverClass || "";
     this._classes.left = leftClass || "";
     this._classes.right = rightClass || "";
     this._classes.open = openClass || "";
@@ -404,6 +450,8 @@ class NavigationShelf {
         );
       }
 
+      this._setTransitionDurations();
+
       // Set up the DOM.
       this._generateKey();
       this._setDOMElements();
@@ -415,13 +463,21 @@ class NavigationShelf {
       this._handleClick();
       this._handleHover();
 
-      // Ensure the initial state of the shelf.
+      // Ensure the initial open state of the shelf.
       if (this.dom.controller.getAttribute("aria-expanded") === "true") {
         this._expand(false);
       } else {
         this._collapse(false);
       }
 
+      // Ensure the initial hoverability of the shelf.
+      if (this.hover) {
+        this._enableHover(false);
+      } else {
+        this._disableHover(false);
+      }
+
+      // Ensure the initial side of the shelf.
       this._shiftSide(false);
 
       // Set up the storage.
@@ -459,11 +515,11 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to the shelf _and_ dependent elements in various scenarios.
+   * The class(es) to apply to the shelf and dependent elements in various scenarios.
    *
    * @readonly
    *
-   * @type {Object<string, string[]}
+   * @type {Object<string, string[]>}
    *
    * @see _classes
    */
@@ -472,7 +528,7 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to dependent elements when the shelf is locked.
+   * The class(es) to apply to the shelf and dependent elements when the shelf is locked.
    *
    * @type {string|string[]}
    *
@@ -483,7 +539,7 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to dependent elements when the shelf is unlocked.
+   * The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
    *
    * @type {string|string[]}
    *
@@ -494,7 +550,29 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to the shelf _and_ dependent elements when when shelf is on the left side.
+   * The class(es) to apply to the shelf element when the shelf is hoverable.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get hoverClass() {
+    return this._classes.hover;
+  }
+
+  /**
+   * The class(es) to apply to the shelf element when the shelf is not hoverable.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get noHoverClass() {
+    return this._classes.noHover;
+  }
+
+  /**
+   * The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
    *
    * @type {string|string[]}
    *
@@ -505,7 +583,7 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to the shelf _and_ dependent elements when when shelf is on the right side.
+   * The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
    *
    * @type {string|string[]}
    *
@@ -538,7 +616,7 @@ class NavigationShelf {
   }
 
   /**
-   * The class(es) to apply to the shelf _and_ dependent elements when the shelf is transitioning between open and closed.
+   * The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
    *
    * @type {string|string[]}
    *
@@ -620,6 +698,8 @@ class NavigationShelf {
   /**
    * A flag to indicate if the shelf is hoverable.
    *
+   * @readonly
+   *
    * @type {boolean}
    *
    * @see _hover
@@ -682,6 +762,8 @@ class NavigationShelf {
 
   /**
    * A flag to indicate if the navigation shelf is locked.
+   *
+   * @readonly
    *
    * @type {boolean}
    *
@@ -748,12 +830,6 @@ class NavigationShelf {
    */
   get isOpen() {
     return this._open;
-  }
-
-  set isOpen(value) {
-    isValidType("boolean", { value });
-
-    this._open = value;
   }
 
   /**
@@ -850,14 +926,6 @@ class NavigationShelf {
     }
   }
 
-  set hover(value) {
-    isValidType("boolean", { value });
-
-    if (this._hover !== value) {
-      this._hover = value;
-    }
-  }
-
   set hoverDelay(value) {
     isValidType("number", { value });
 
@@ -887,14 +955,6 @@ class NavigationShelf {
 
     if (this._prefix !== value) {
       this._prefix = value;
-    }
-  }
-
-  set isLocked(value) {
-    isValidType("boolean", { value });
-
-    if (this._locked !== value) {
-      this._locked = value;
     }
   }
 
@@ -951,7 +1011,6 @@ class NavigationShelf {
     const classes = {};
     for (const key of Object.keys(this.classes)) {
       if (this._classes[key] === "") continue;
-
 
       classes[`${key}Class`] = this._classes[key];
     }
@@ -1259,7 +1318,11 @@ class NavigationShelf {
 
   _handleFocus() {
     this.dom.shelf.addEventListener("focusout", (event) => {
-      if (event.relatedTarget === null || this.dom.shelf.contains(event.relatedTarget)) return;
+      if (
+        event.relatedTarget === null ||
+        this.dom.shelf.contains(event.relatedTarget)
+      )
+        return;
 
       this.focusState = "none";
       this.close();
@@ -1304,7 +1367,11 @@ class NavigationShelf {
         this.currentEvent = "mouse";
         preventEvent(event);
         this.focusState = "self";
-        this.hover = !this.hover;
+        this.toggleHover();
+
+        if (this.hover) {
+          this.open();
+        }
       });
     }
 
@@ -1346,7 +1413,11 @@ class NavigationShelf {
     document.addEventListener("pointerup", (event) => {
       if (this.focusState === "none") return;
       if (this.isLocked) return;
-      if (this.dom.shelf === event.target || this.dom.shelf.contains(event.target)) return;
+      if (
+        this.dom.shelf === event.target ||
+        this.dom.shelf.contains(event.target)
+      )
+        return;
 
       this.currentEvent = "mouse";
       this.close();
@@ -1391,6 +1462,35 @@ class NavigationShelf {
         this.close();
       }
     });
+  }
+
+  /**
+   * Sets the transition durations of the shelf as a CSS custom properties.
+   *
+   * The custom properties are:
+   *   - `--graupl-transition-duration`,
+   *   - `--graupl-open-transition-duration`, and
+   *   - `--graupl-close-transition-duration`.
+   *
+   * The prefix of `graupl-` can be changed by setting the shelf's prefix value.
+   *
+   * @protected
+   */
+  _setTransitionDurations() {
+    this.dom.shelf.style.setProperty(
+      `--${this.prefix}navigation-shelf-transition-duration`,
+      `${this.transitionDuration}ms`
+    );
+
+    this.dom.shelf.style.setProperty(
+      `--${this.prefix}navigation-shelf-open-transition-duration`,
+      `${this.openDuration}ms`
+    );
+
+    this.dom.shelf.style.setProperty(
+      `--${this.prefix}navigation-shelf-close-transition-duration`,
+      `${this.closeDuration}ms`
+    );
   }
 
   _expand(emit = true) {
@@ -1537,6 +1637,26 @@ class NavigationShelf {
     }
   }
 
+  _enableHover(emit = true) {
+    addClass(this.hoverClass, this.dom.shelf);
+
+    removeClass(this.noHoverClass, this.dom.shelf);
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._enableHoverEvent);
+    }
+  }
+
+  _disableHover(emit = true) {
+    addClass(this.noHoverClass, this.dom.shelf);
+
+    removeClass(this.hoverClass, this.dom.shelf);
+
+    if (emit) {
+      this.dom.shelf.dispatchEvent(this._disableHoverEvent);
+    }
+  }
+
   open(force = false) {
     // Only open if the shelf is closed.
     if (this.isOpen && !force) return;
@@ -1544,7 +1664,7 @@ class NavigationShelf {
     this._expand();
 
     // Set the open flag.
-    this.isOpen = true;
+    this._open = true;
   }
 
   close(force = false) {
@@ -1555,7 +1675,7 @@ class NavigationShelf {
     this._collapse();
 
     // Set the open flag.
-    this.isOpen = false;
+    this._open = false;
   }
 
   toggle() {
@@ -1566,27 +1686,27 @@ class NavigationShelf {
     }
   }
 
-  lock(emit = true) {
+  lock() {
     // Only lock if the shelf is unlocked.
     if (this.isLocked) return;
 
     this._lock();
 
     // Set the locked flag.
-    this.isLocked = true;
+    this._locked = true;
 
     // Open the shelf.
     this.open(true);
   }
 
-  unlock(emit = true) {
+  unlock() {
     // Only unlock if the shelf is locked.
     if (!this.isLocked) return;
 
     this._unlock();
 
     // Set the locked flag.
-    this.isLocked = false;
+    this._locked = false;
   }
 
   toggleLock() {
@@ -1618,6 +1738,30 @@ class NavigationShelf {
       this.toRight();
     } else {
       this.toLeft();
+    }
+  }
+
+  enableHover() {
+    if (this.hover) return;
+
+    this._enableHover();
+
+    this._hover = true;
+  }
+
+  disableHover() {
+    if (!this.hover) return;
+
+    this._disableHover();
+
+    this._hover = false;
+  }
+
+  toggleHover() {
+    if (this.hover) {
+      this.disableHover();
+    } else {
+      this.enableHover();
     }
   }
 }

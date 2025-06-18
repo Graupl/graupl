@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     lockControllerElement,
     hoverControllerElement,
     sideControllerElement,
-    hover: true,
     initialize: true,
   });
 });

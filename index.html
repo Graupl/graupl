@@ -7,58 +7,58 @@
   <title>Document</title>
   <link rel="stylesheet" href="dist/css/graupl.css">
   <style>
-    :root {
-      --graupl-navigation-shelf-min-width: 3rem;
-      --graupl-navigation-shelf-max-width: 36ch;
-    }
 
     .shelf-aware {
       &,
       &.left-side {
-          padding-left: var(--graupl-navigation-shelf-min-width);
+          padding-left: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
           padding-right: 0;
 
           &.locked {
-            padding-left: var(--graupl-navigation-shelf-max-width);
+            padding-left: var(--graupl-navigation-shelf-max-width, 36ch);
             padding-right: 0;
           }
         }
 
       &.right-side {
-        padding-right: var(--graupl-navigation-shelf-min-width);
+        padding-right: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
         padding-left: 0;
 
         &.locked {
-          padding-right: var(--graupl-navigation-shelf-max-width);
+          padding-right: var(--graupl-navigation-shelf-max-width, 36ch);
           padding-left: 0;
         }
       }
     }
 
     .navigation-shelf {
+      @starting-style {
+        opacity: var(--graupl-navigation-shelf-starting-opacity, 1);
+      }
+
       position: fixed;
       top: 0;
       bottom: 0;
-      width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
       overflow-x: hidden;
+      transform: var(--graupl-navigation-shelf-transform, var(--graupl-navigation-shelf-closed-transform, null));
+      width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch)));
+      grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch))) [footer-end content-end header-end];
+      display: var(--graupl-navigation-shelf-display, var(--graupl-navigation-shelf-closed-display, grid));
+      opacity: var(--graupl-navigation-shelf-opacity, var(--graupl-navigation-shelf-closed-opacity, 1));
       background: var(--graupl-navigation-shelf-background, var(--graupl-background, var(--graupl-root-background, var(--graupl-theme-active--primary--100))));
       color: var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900))));
-      display: var(--graupl-navigation-shelf-closed-display, grid);
-      grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width)) [footer-end content-end header-end];
       grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
-      transition: var(--graupl-navigation-shelf-transition, width 200ms ease, display 50ms allow-discrete, opacity 200ms ease);
+      transition: var(--graupl-navigation-shelf-transition, width var(--graupl-navigation-shelf-transition-duration, 250ms) ease, transform var(--graupl-navigation-shelf-transition-duration, 250ms) ease, opacity var(--graupl-navigation-shelf-transition-duration, 250ms) ease, display var(--graupl-navigation-shelf-transition-duration, 250ms) allow-discrete);
       isolation: isolate;
-      opacity: var(--graupl-navigation-shelf-closed-opacity, 1);
-      transform: var(--graupl-navigation-shelf-transform, null);
       z-index: var(--graupl-navigation-shelf-z-index, 2);
+      border-style: var(--graupl-navigation-shelf-border-style, var(--graupl-navigation-shelf-border-top-style, solid) var(--graupl-navigation-shelf-border-right-style, solid) var(--graupl-navigation-shelf-border-bottom-style, solid) var(--graupl-navigation-shelf-border-left-style, solid));
+      border-width: var(--graupl-navigation-shelf-border-width, var(--graupl-navigation-shelf-border-top-width, 0) var(--graupl-navigation-shelf-border-right-width, 0) var(--graupl-navigation-shelf-border-bottom-width, 0) var(--graupl-navigation-shelf-border-left-width, 0));
+      border-color: var(--graupl-navigation-shelf-border-color, var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900)))));
 
       &,
       &.left-side {
         left: 0;
         right: auto;
-        border-style: var(--graupl-navigation-shelf-border-style, var(--graupl-navigation-shelf-border-top-style, solid) var(--graupl-navigation-shelf-border-right-style, solid) var(--graupl-navigation-shelf-border-bottom-style, solid) var(--graupl-navigation-shelf-border-left-style, solid));
-        border-width: var(--graupl-navigation-shelf-border-width, var(--graupl-navigation-shelf-border-top-width, 0) var(--graupl-navigation-shelf-border-right-width, 0) var(--graupl-navigation-shelf-border-bottom-width, 0) var(--graupl-navigation-shelf-border-left-width, 0));
-        border-color: var(--graupl-navigation-shelf-border-color, var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900)))));
 
         .navigation-shelf-side-toggle::before {
           content: "◧";
@@ -76,82 +76,122 @@
       }
 
       .w-shelf-current {
-        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch)));
       }
 
       .min-w-shelf-current {
-        min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        min-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch)));
       }
 
       .max-w-shelf-current {
-        max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        max-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch)));
       }
 
       .w-shelf-closed {
-        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
       }
 
       .min-w-shelf-closed {
-        min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
       }
 
       .max-w-shelf-closed {
-        max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width));
+        max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
       }
 
       .w-shelf-min {
-        width: var(--graupl-navigation-shelf-min-width);
+        width: var(--graupl-navigation-shelf-min-width, 5ch);
       }
 
       .min-w-shelf-min {
-        min-width: var(--graupl-navigation-shelf-min-width);
+        min-width: var(--graupl-navigation-shelf-min-width, 5ch);
       }
 
       .max-w-shelf-min {
-        max-width: var(--graupl-navigation-shelf-min-width);
+        max-width: var(--graupl-navigation-shelf-min-width, 5ch);
       }
 
       .w-shelf-open {
-        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
       }
 
       .min-w-shelf-open {
-        min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
       }
 
       .max-w-shelf-open {
-        max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+        max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
       }
 
       .w-shelf-max {
-        width: var(--graupl-navigation-shelf-max-width);
+        width: var(--graupl-navigation-shelf-max-width, 36ch);
       }
 
       .min-w-shelf-max {
-        min-width: var(--graupl-navigation-shelf-max-width);
+        min-width: var(--graupl-navigation-shelf-max-width, 36ch);
       }
 
       .max-w-shelf-max {
-        max-width: var(--graupl-navigation-shelf-max-width);
+        max-width: var(--graupl-navigation-shelf-max-width, 36ch);
+      }
+
+      &.hide {
+        display: var(--graupl-navigation-shelf-closed-display, grid);
+        width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        opacity: var(--graupl-navigation-shelf-closed-opacity, 1);
+        transform: var(--graupl-navigation-shelf-closed-transform, null);
+        grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch)) [footer-end content-end header-end];
+
+        .w-shelf-current {
+          width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
+
+        .min-w-shelf-current {
+          min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
+
+        .max-w-shelf-current {
+          max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
+      }
+
+      &.transitioning {
+        transform: var(--graupl-navigation-shelf-transitioning-transform, null);
+        width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 5ch)) [footer-end content-end header-end];
+        display: var(--graupl-navigation-shelf-transitioning-display, grid);
+        opacity: var(--graupl-navigation-shelf-transitioning-opacity, 1);
+
+        .w-shelf-current {
+          width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
+
+        .min-w-shelf-current {
+          min-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
+
+        .max-w-shelf-current {
+          max-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 5ch));
+        }
       }
 
       &.show {
         transform: var(--graupl-navigation-shelf-open-transform, null);
-        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
-        grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-max-width) [footer-end content-end header-end];
+        width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+        grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-max-width, 36ch) [footer-end content-end header-end];
         display: var(--graupl-navigation-shelf-open-display, grid);
         opacity: var(--graupl-navigation-shelf-open-opacity, 1);
 
         .w-shelf-current {
-          width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+          width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
         }
 
         .min-w-shelf-current {
-          min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+          min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
         }
 
         .max-w-shelf-current {
-          max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width));
+          max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
         }
       }
 
@@ -173,18 +213,36 @@
       }
 
       .navigation-shelf-lock-toggle::before {
-        content: "🔓";
+        content: var(--graupl-navigation-shelf-lock-toggle-content, var(--graupl-navigation-shelf-lock-toggle-unlocked-content, "🔓"));
         display: block;
       }
 
       .navigation-shelf-hover-toggle::before {
-        content: "◎";
+        content: var(--graupl-navigation-shelf-hover-toggle-content, var(--graupl-navigation-shelf-hover-toggle-not-hoverable-content, "◎"));
         display: block;
+      }
+
+      &.hoverable {
+        .navigation-shelf-hover-toggle::before {
+          content: var(--graupl-navigation-shelf-hover-toggle-hoverable-content, "x");
+        }
+      }
+
+      &.not-hoverable {
+        .navigation-shelf-hover-toggle::before {
+          content: var(--graupl-navigation-shelf-hover-toggle-not-hoverable-content, "◎");
+        }
       }
 
       &.locked {
         .navigation-shelf-lock-toggle::before {
-          content: "🔒";
+          content: var(--graupl-navigation-shelf-lock-toggle-locked-content, "🔒");
+        }
+      }
+
+      &.unlocked {
+        .navigation-shelf-lock-toggle::before {
+          content: var(--graupl-navigation-shelf-lock-toggle-unlocked-content, "🔓");
         }
       }
     }
@@ -206,16 +264,34 @@
       </div>
       <button class="navigation-shelf-toggle">Toggle shelf</button>
       <div class="navigation-shelf bg-primary-700 text-primary-100">
-        <div class="navigation-shelf-header w-shelf-open">
-          <img src="./favicon.ico" alt="Graupl logo" class="logo w-shelf-closed">
+        <div class="navigation-shelf-header">
         </div>
         <div class="navigation-shelf-content w-shelf-open">
-          <p>This is the content of the navigation shelf.</p>
+          <nav class="navigation display-flex flex-col" data-graupl-menu-type="DisclosureMenu"
+            data-graupl-menu-options="{'optionalKeySupport': true}">
+            <ul class="menu flex-col">
+              <li class="menu-item flex-wrap flex-row">
+                <a class="menu-link flex-grow w-min-content" href="#typography">Typography</a>
+              </li>
+              <li class="menu-item submenu-item">
+                <button class="menu-link button link submenu-toggle">About</button>
+                <ul class="submenu min-w-full position-relative">
+                  <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
+                  <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
+                  <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
+              <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
+              <li class="menu-item"><a class="menu-link button"
+                  href="#">Contact</a></li>
+            </ul>
+          </nav>
         </div>
         <div class="navigation-shelf-footer w-shelf-current display-flex flex-wrap">
-          <button class="button tertiary navigation-shelf-lock-toggle w-full text-primary-100" aria-label="Toggle shelf lock"></button>
-          <button class="button tertiary navigation-shelf-hover-toggle w-full text-primary-100" aria-label="Toggle shelf hover"></button>
-          <button class="button tertiary navigation-shelf-side-toggle w-full text-primary-100" aria-label="Toggle side"></button>
+          <button class="button navigation-shelf-lock-toggle w-full" aria-label="Toggle shelf lock"></button>
+          <button class="button navigation-shelf-hover-toggle w-full" aria-label="Toggle shelf hover"></button>
+          <button class="button navigation-shelf-side-toggle w-full" aria-label="Toggle side"></button>
         </div>
       </div>
     </div>
@@ -1345,6 +1421,7 @@
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/top-link-disclosure-menu.iife.js"></script>
   <script type="module" src="src/js/alert/index.js"></script>
   <script type="module" src="src/js/accordion/index.js"></script>
   <script type="module" src="src/js/carousel/index.js"></script>
@@ -1366,6 +1443,15 @@
       document.documentElement.classList.add(`${newTheme}-mode`);
       window.localStorage.setItem('theme', newTheme);
       themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("h1,h2,h3,h4,h5,h6").forEach((heading) => {
+        if (heading.id !== "") return;
+
+        heading.id = heading.innerText.toLowerCase().replace(/[^\w]/g, " ").trim().replace(/\s+/g, "-");
+      });
     });
   </script>
 </body>

@@ -509,7 +509,7 @@ class V {
     optionalKeySupport: I = !1,
     allowMultipleExpand: k = !0,
     allowNoExpand: D = !0,
-    prefix: x = "am-",
+    prefix: x = "graupl-",
     key: $ = null,
     initialize: T = !1
   }) {
