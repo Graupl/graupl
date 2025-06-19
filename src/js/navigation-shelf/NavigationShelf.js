@@ -393,10 +393,10 @@ class NavigationShelf {
   }) {
     // Set DOM elements.
     this._dom.shelf = shelfElement;
-    this._dom.controller = controllerElement;
-    this._dom.lockController = lockControllerElement;
-    this._dom.hoverController = hoverControllerElement;
-    this._dom.sideController = sideControllerElement;
+    this._dom.controller = controllerElement || null;
+    this._dom.lockController = lockControllerElement || null;
+    this._dom.hoverController = hoverControllerElement || null;
+    this._dom.sideController = sideControllerElement || null;
 
     // Set DOM selectors.
     this._selectors.dependents = dependentSelector;
@@ -1255,8 +1255,10 @@ class NavigationShelf {
    */
   _setIds() {
     this.dom.shelf.id = this.dom.shelf.id || `navigation-shelf-${this.key}`;
-    this.dom.controller.id =
-      this.dom.controller.id || `navigation-shelf-toggle-${this.key}`;
+    if (this.dom.controller) {
+      this.dom.controller.id =
+        this.dom.controller.id || `navigation-shelf-toggle-${this.key}`;
+    }
     if (this.dom.lockController) {
       this.dom.lockController.id =
         this.dom.lockController.id ||
@@ -1273,23 +1275,33 @@ class NavigationShelf {
    * Sets the aria attributes for the navigation shelf.
    */
   _setAriaAttributes() {
-    this.dom.controller.setAttribute("aria-controls", this.dom.shelf.id);
+    if (this.dom.controller) {
+      this.dom.controller.setAttribute("aria-controls", this.dom.shelf.id);
 
-    if (this.dom.controller.getAttribute("aria-expanded") !== "true") {
-      this.dom.controller.setAttribute("aria-expanded", "false");
+      if (this.dom.controller.getAttribute("aria-expanded") !== "true") {
+        this.dom.controller.setAttribute("aria-expanded", "false");
+      }
     }
 
-    this.dom.lockController.setAttribute("aria-controls", this.dom.shelf.id);
-    this.dom.lockController.setAttribute(
-      "aria-pressed",
-      this._locked ? "true" : "false"
-    );
+    if (this.dom.lockController) {
+      this.dom.lockController.setAttribute("aria-controls", this.dom.shelf.id);
+      this.dom.lockController.setAttribute(
+        "aria-pressed",
+        this._locked ? "true" : "false"
+      );
+    }
 
-    this.dom.hoverController.setAttribute("aria-controls", this.dom.shelf.id);
-    this.dom.hoverController.setAttribute(
-      "aria-pressed",
-      this._hoverType === "on" ? "true" : "false"
-    );
+    if (this.dom.hoverController) {
+      this.dom.hoverController.setAttribute("aria-controls", this.dom.shelf.id);
+      this.dom.hoverController.setAttribute(
+        "aria-pressed",
+        this._hoverType === "on" ? "true" : "false"
+      );
+    }
+
+    if (this.dom.sideController) {
+      this.dom.sideController.setAttribute("aria-controls", this.dom.shelf.id);
+    }
   }
 
   /**
@@ -1346,18 +1358,20 @@ class NavigationShelf {
     }
 
     // Toggle the shelf when the controlled is clicked.
-    this.dom.controller.addEventListener("pointerup", (event) => {
-      if (event.button !== 0) return;
+    if (this.dom.controller) {
+      this.dom.controller.addEventListener("pointerup", (event) => {
+        if (event.button !== 0) return;
 
-      this.currentEvent = "mouse";
-      preventEvent(event);
-      this.toggle();
+        this.currentEvent = "mouse";
+        preventEvent(event);
+        this.toggle();
 
-      if (this.isOpen) {
-        this.focusState = "self";
-        this.isSoftLocked = true;
-      }
-    });
+        if (this.isOpen) {
+          this.focusState = "self";
+          this.isSoftLocked = true;
+        }
+      });
+    }
 
     // Toggle hoverability when the hover controller is clicked.
     if (this.dom.hoverController) {
@@ -1494,7 +1508,9 @@ class NavigationShelf {
   }
 
   _expand(emit = true) {
-    this.dom.controller.setAttribute("aria-expanded", "true");
+    if (this.dom.controller) {
+      this.dom.controller.setAttribute("aria-expanded", "true");
+    }
 
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the close class,
@@ -1529,7 +1545,9 @@ class NavigationShelf {
   }
 
   _collapse(emit = true) {
-    this.dom.controller.setAttribute("aria-expanded", "false");
+    if (this.dom.controller) {
+      this.dom.controller.setAttribute("aria-expanded", "false");
+    }
     this.isSoftLocked = false;
 
     // If we're dealing with transition classes, then we need to utilize
@@ -1565,7 +1583,9 @@ class NavigationShelf {
   }
 
   _lock(emit = true) {
-    this.dom.lockController.setAttribute("aria-pressed", "true");
+    if (this.dom.lockController) {
+      this.dom.lockController.setAttribute("aria-pressed", "true");
+    }
 
     // Add the locked class
     addClass(this.lockedClass, this.dom.shelf);
@@ -1589,7 +1609,9 @@ class NavigationShelf {
   }
 
   _unlock(emit = true) {
-    this.dom.lockController.setAttribute("aria-pressed", "false");
+    if (this.dom.lockController) {
+      this.dom.lockController.setAttribute("aria-pressed", "false");
+    }
 
     // Add the unlocked class
     addClass(this.unlockedClass, this.dom.shelf);
@@ -1638,6 +1660,10 @@ class NavigationShelf {
   }
 
   _enableHover(emit = true) {
+    if (this.dom.hoverController) {
+      this.dom.hoverController.setAttribute("aria-pressed", "true");
+    }
+
     addClass(this.hoverClass, this.dom.shelf);
 
     removeClass(this.noHoverClass, this.dom.shelf);
@@ -1648,6 +1674,10 @@ class NavigationShelf {
   }
 
   _disableHover(emit = true) {
+    if (this.dom.hoverController) {
+      this.dom.hoverController.setAttribute("aria-pressed", "false");
+    }
+
     addClass(this.noHoverClass, this.dom.shelf);
 
     removeClass(this.hoverClass, this.dom.shelf);
