@@ -6,8 +6,12 @@ import {
   isValidState,
   isValidEvent,
 } from "../validate.js";
-import { preventEvent } from "../eventHandlers.js";
-import { addClass, removeClass } from "../domHelpers.js";
+import { keyPress, preventEvent } from "../eventHandlers.js";
+import {
+  addClass,
+  removeClass,
+  selectFirstFocusableElement,
+} from "../domHelpers.js";
 import storage from "../storage.js";
 
 class NavigationShelf {
@@ -462,6 +466,8 @@ class NavigationShelf {
       this._handleFocus();
       this._handleClick();
       this._handleHover();
+      this._handleKeydown();
+      this._handleKeyup();
 
       // Ensure the initial open state of the shelf.
       if (this.dom.controller.getAttribute("aria-expanded") === "true") {
@@ -1329,6 +1335,11 @@ class NavigationShelf {
   }
 
   _handleFocus() {
+    this.dom.shelf.addEventListener("focusin", () => {
+      this.focusState = "self";
+      this.open();
+    });
+
     this.dom.shelf.addEventListener("focusout", (event) => {
       if (
         event.relatedTarget === null ||
@@ -1476,6 +1487,110 @@ class NavigationShelf {
         this.close();
       }
     });
+  }
+
+  _handleKeydown() {
+    // Prevent keydown events on the shelf if they are `Escape`.
+    this.dom.shelf.addEventListener("keydown", (event) => {
+      const key = keyPress(event);
+
+      if (key === "Escape") {
+        preventEvent(event);
+      }
+    });
+
+    // Prevent keydown events on all controller elements if they are `Space` or `Enter`.
+    for (const element of Object.values(this.dom)) {
+      if (!element) continue;
+      if (Array.isArray(element)) continue;
+      if (element === this.dom.shelf) continue;
+
+      element.addEventListener("keydown", (event) => {
+        this.currentEvent = "keyboard";
+
+        const key = keyPress(event);
+
+        if (key === "Space" || key === "Enter") {
+          preventEvent(event);
+        }
+      });
+    }
+  }
+
+  _handleKeyup() {
+    // Close the shelf on `Escape`.
+    this.dom.shelf.addEventListener("keyup", (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      console.log(key);
+
+      if (key === "Escape") {
+        this.close();
+      }
+    });
+
+    // Toggle the shelf on `Space` or `Enter` on the controller.
+    if (this.dom.controller) {
+      this.dom.controller.addEventListener("keyup", (event) => {
+        this.currentEvent = "keyboard";
+
+        const key = keyPress(event);
+
+        if (key === "Space" || key === "Enter") {
+          preventEvent(event);
+          this.toggle();
+
+          if (this.isOpen) {
+            const element = selectFirstFocusableElement(this.dom.shelf);
+            element.focus();
+          }
+        }
+      });
+    }
+
+    // Toggle hover on `Space` or `Enter` on the hover controller.
+    if (this.dom.hoverController) {
+      this.dom.hoverController.addEventListener("keyup", (event) => {
+        this.currentEvent = "keyboard";
+
+        const key = keyPress(event);
+
+        if (key === "Space" || key === "Enter") {
+          preventEvent(event);
+          this.toggleHover();
+        }
+      });
+    }
+
+    // Toggle lock on `Space` or `Enter` on the lock controller.
+    if (this.dom.lockController) {
+      this.dom.lockController.addEventListener("keyup", (event) => {
+        this.currentEvent = "keyboard";
+
+        const key = keyPress(event);
+
+        if (key === "Space" || key === "Enter") {
+          preventEvent(event);
+          this.toggleLock();
+        }
+      });
+    }
+
+    // Shift sides on `Space` or `Enter` on the side controller.
+    if (this.dom.sideController) {
+      this.dom.sideController.addEventListener("keyup", (event) => {
+        this.currentEvent = "keyboard";
+
+        const key = keyPress(event);
+
+        if (key === "Space" || key === "Enter") {
+          preventEvent(event);
+          this.toggleSide();
+        }
+      });
+    }
   }
 
   /**
