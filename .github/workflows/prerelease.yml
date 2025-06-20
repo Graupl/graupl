@@ -4,7 +4,7 @@ on:
   push:
     # Push events to match v*.*.*-alpha.*, v*.*.*-beta.*, and v*.*.*-rc.* where * is a number.
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+-[a-zA-Z].[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+.[0-9]+'
 
 jobs:
   test:
