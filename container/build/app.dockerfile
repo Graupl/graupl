@@ -9,7 +9,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt update -y; apt upgrade -y; \
   # @todo determine which keys are insecure and update them.; \
   apt update --allow-insecure-repositories --allow-unauthenticated; \
-  apt install -y ca-certificates curl gnupg; \
+  apt install -y ca-certificates curl ssh gnupg; \
   apt-get clean && \
   apt-get autoclean && \
   apt-get autoremove
