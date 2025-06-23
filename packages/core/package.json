@@ -21,6 +21,15 @@
     },
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
+    },
+    "./accordion": {
+      "import": "./src/js/Accordion.js"
+    },
+    "./alert": {
+      "import": "./src/js/Alert.js"
+    },
+    "./carousel": {
+      "import": "./src/js/Carousel.js"
     }
   },
   "repository": {

@@ -1,4 +1,4 @@
-// @graupl/graupl button base styles.
+// @graupl/core button base styles.
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -96,4 +96,9 @@
       }
     }
   }
+}
+
+@mixin apply() {
+  @include apply-base;
+  @include apply-theme;
 }
