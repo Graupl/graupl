@@ -1,0 +1,62 @@
+// @graupl/icons icon mixins.
+
+@use "variables" as *;
+
+@mixin _component() {
+  display: $icon-display;
+  width: $icon-width;
+  height: $icon-height;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: sub;
+  mask-image: $icon;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  mask-position: center;
+}
+
+@mixin _theme() {
+  background-color: $icon-color;
+}
+
+@mixin apply-component($target: "self") {
+  @if $target == "before" {
+    &::before {
+      @include _component;
+
+      content: "";
+      margin-inline-end: $icon-spacer;
+    }
+  } @else if $target == "after" {
+    &::after {
+      @include _component;
+
+      content: "";
+      margin-inline-start: $icon-spacer;
+    }
+  } @else {
+    @include _component;
+
+    margin-inline: $icon-spacer $icon-spacer;
+  }
+}
+
+@mixin apply-theme($target: "self") {
+  @if $target == "before" {
+    &::before {
+      @include _theme;
+    }
+  } @else if $target == "after" {
+    &::after {
+      @include _theme;
+    }
+  } @else {
+    @include _theme;
+  }
+}
+
+@mixin apply($target: "self") {
+  @include apply-base($target);
+  @include apply-theme($target);
+}
