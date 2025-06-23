@@ -57,6 +57,6 @@
 }
 
 @mixin apply($target: "self") {
-  @include apply-base($target);
+  @include apply-component($target);
   @include apply-theme($target);
 }
