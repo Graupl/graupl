@@ -3,31 +3,9 @@
   "version": "1.0.0-beta.8",
   "description": "A modular and modern CSS framework.",
   "type": "module",
-  "exports": {
-    ".": {
-      "sass": "./scss/graupl.scss",
-      "import": "./dist/js/graupl.es.js",
-      "require": "./dist/js/graupl.cjs.js"
-    },
-    "./*.scss": {
-      "sass": "./scss/*.scss"
-    },
-    "./src/*.scss": {
-      "sass": "./src/scss/*.scss"
-    },
-    "./accordion": {
-      "import": "./dist/js/component/accordion.es.js",
-      "require": "./dist/js/component/accordion.cjs.js"
-    },
-    "./alert": {
-      "import": "./dist/js/component/alert.es.js",
-      "require": "./dist/js/component/alert.cjs.js"
-    },
-    "./carousel": {
-      "import": "./dist/js/component/carousel.es.js",
-      "require": "./dist/carousel.cjs.js"
-    }
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "prepare": "husky",
     "commit": "git cz",
@@ -35,30 +13,45 @@
     "prettier": "prettier '**/*.{js,mjs,cjs,scss,sass}'",
     "stylelint": "stylelint '**/*.scss' --allow-empty-input",
     "lint": "npm run eslint -- --fix && npm run stylelint -- --fix && npm run prettier --  --write",
-    "sass": "rm -rf dist/css/* && sass scss:dist/css",
-    "postcss": "postcss 'dist/css/**/*.css' --replace",
+    "sass": "npm run sass:package && npm-run-all sass:package:*",
+    "sass:package": "rm -rf dist/css/* && sass scss:dist/css",
+    "sass:package:core": "rm -rf packages/core/dist/css/* && sass packages/core/scss:packages/core/dist/css",
+    "postcss": "npm run postcss:package && npm-run-all postcss:package:*",
+    "postcss:package": "postcss 'dist/css/**/*.css' --replace",
+    "postcss:package:core": "postcss 'packages/core/dist/css/**/*.css' --replace",
+    "vite": "npm run vite:package && npm-run-all vite:package:*",
+    "vite:package": "vite build --config vite.config.js",
+    "vite:package:core": "vite build --config packages/core/vite.config.js",
     "build": "npm-run-all build:*",
     "build:css": "npm run sass && npm run postcss",
-    "build:js": "BUILD_TYPE=default vite build",
-    "build:accordion": "BUILD_TYPE=Accordion vite build",
-    "build:alert": "BUILD_TYPE=Alert vite build",
-    "build:carousel": "BUILD_TYPE=Carousel vite build",
+    "build:js": "npm run vite",
     "postbuild": "npm run docs:build",
     "release": "git add dist/. && commit-and-tag-version -a",
     "prerelease": "npm run lint && npm run build",
+    "dev": "vite --config vite.config.js",
+    "preview": "vite preview --config vite.config.js",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Graupl/graupl.git"
+    "url": "git+https://github.com/Graupl/graupl.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "graupl"
+  ],
+  "author": "Nick Milton",
+  "contributors": [
+    {
+      "name": "Coldfront Labs Inc.",
+      "url": "https://coldfrontlabs.ca"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/Graupl/graupl/issues"
   },
+  "license": "ISC",
   "homepage": "https://github.com/Graupl/graupl#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
