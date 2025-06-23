@@ -70,7 +70,8 @@ jobs:
       - name: Get prerelease type
         id: get_prerelease_type
         run: |
-          export PRERELEASE_TYPE=$(node -p "require('./package.json').version.split('-')[1].split('.')[0]")
+          export VERSION=$(node -p "require('./package.json').version")
+          export PRERELEASE_TYPE=$(echo $VERSION | sed -E 's/^[0-9]+\.[0-9]+\.[0-9]+-([a-zA-Z]+)\.[0-9]+/\1/')
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
 
       - name: Publish workspaces to npm
@@ -109,7 +110,8 @@ jobs:
       - name: Get prerelease type
         id: get_prerelease_type
         run: |
-          export PRERELEASE_TYPE=$(node -p "require('./package.json').version.split('-')[1].split('.')[0]")
+          export VERSION=$(node -p "require('./package.json').version")
+          export PRERELEASE_TYPE=$(echo $VERSION | sed -E 's/^[0-9]+\.[0-9]+\.[0-9]+-([a-zA-Z]+)\.[0-9]+/\1/')
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
 
       - name: Publish workspaces to GitHub Packages
