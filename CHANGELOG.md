@@ -1,6 +1,50 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [1.0.0-beta.10](https://github.com/Graupl/graupl/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2025-06-23)
+
+
+### Bug Fixes
+
+* **icons:** correct mixin call to reflect new mixins ([5d8cb33](https://github.com/Graupl/graupl/commit/5d8cb33c134795f75d158b814b98ac23d5601c8a))
+
+
+### Continuous Integration
+
+* **github:** setup workflow call triggers on test ([6ac48d4](https://github.com/Graupl/graupl/commit/6ac48d41e906a27a466d6103901b53cd6a9604a4))
+
+## [1.0.0-beta.9](https://github.com/Graupl/graupl/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2025-06-23)
+
+
+### Features
+
+* **package:** integrate icons into main repo ([b7dfbda](https://github.com/Graupl/graupl/commit/b7dfbdac321b1cf66b5d899203e3cfb2b2951cbf))
+
+
+### Code Refactoring
+
+* **menu:** change default toggle content ([2389b0b](https://github.com/Graupl/graupl/commit/2389b0b962ca70c83d3e00363ea39c44162d2e89))
+
+
+### Build System
+
+* **container:** add docker environment for development ([d4358ae](https://github.com/Graupl/graupl/commit/d4358ae2580faccfd9735fd9cd475aaba33c7bf1))
+* **graupl:** set up namespaces and sub packaging ([7e5bfaa](https://github.com/Graupl/graupl/commit/7e5bfaaea03963aefb87417b77b888761e5223f4))
+* **npm:** replace standard-version with commit-and-tag-version ([d8ceddc](https://github.com/Graupl/graupl/commit/d8ceddc8e9cf7eeacc7af2f6f08fbbf5ac076404))
+* **release:** update all package versions when release is run ([e0af825](https://github.com/Graupl/graupl/commit/e0af8254bea76f13628d8fde1393751aaa37d939))
+* **sass:** use node importer ([74301c0](https://github.com/Graupl/graupl/commit/74301c00da97d75354cfe42cde40b8ebe4c38073))
+
+
+### Continuous Integration
+
+* add release workflows ([0c03570](https://github.com/Graupl/graupl/commit/0c035700c044c9ffbd8f4262003e45db4b4c7edd))
+* **prerelease:** fix logic ([6b340f8](https://github.com/Graupl/graupl/commit/6b340f80ba6856ccb0bbb7d1863e373ff2b5f888))
+* **prerelease:** fix logic ([a191379](https://github.com/Graupl/graupl/commit/a191379d87bd640376be90cda94bc39cf2f7659c))
+* **release:** fix formatting ([63bc38b](https://github.com/Graupl/graupl/commit/63bc38bcecec4cc91787a1486b5f2d492dece987))
+* **release:** fix triggers ([f3194f3](https://github.com/Graupl/graupl/commit/f3194f31e8352ce71b2a341a6339d837f787b6b8))
+* **release:** update workflows to handle workspaces ([27eebf5](https://github.com/Graupl/graupl/commit/27eebf501002ea4aad2432467dee00677f5e743e))
+* standard ci names, permissions, and formats ([85b5a6d](https://github.com/Graupl/graupl/commit/85b5a6d4142cecb1ad0c7b15b7bf9e1861ba8c42))
 
 ## [1.0.0-beta.8](https://github.com/Graupl/graupl/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2025-06-04)
 

@@ -1,0 +1,54 @@
+// @graupl/core height utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$container-aware: false !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
+$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+
+// Height properties.
+$height-selector-prefix: "h-" !default;
+$max-height-selector-prefix: "max-h-" !default;
+$min-height-selector-prefix: "min-h-" !default;
+
+// Height values.
+$base-height-values: (
+  auto: auto,
+  fit-content: fit-content,
+  max-content: max-content,
+  min-content: min-content,
+  stretch: stretch,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+  half-screen: 50vh,
+  third-screen: calc(100vh / 3),
+  two-thirds-screen: calc(100vh / 1.5),
+  quarter-screen: 25vh,
+  three-quarters-screen: 75vh,
+  full-screen: 100vh,
+);
+$custom-height-values: () !default;
+$height-values: map.merge($base-height-values, $custom-height-values);

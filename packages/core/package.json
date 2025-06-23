@@ -1,0 +1,58 @@
+{
+  "name": "@graupl/core",
+  "version": "1.0.0-beta.10",
+  "description": "The core module of Graupl, providing essential styles and utilities.",
+  "main": "dist/js/graupl.cjs.js",
+  "module": "dist/js/graupl.es.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "scss",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./scss/graupl.scss",
+      "import": "./dist/js/graupl.es.js",
+      "require": "./dist/js/graupl.cjs.js"
+    },
+    "./*.scss": {
+      "sass": "./scss/*.scss"
+    },
+    "./src/*.scss": {
+      "sass": "./src/scss/*.scss"
+    },
+    "./accordion": {
+      "import": "./src/js/Accordion.js"
+    },
+    "./alert": {
+      "import": "./src/js/Alert.js"
+    },
+    "./carousel": {
+      "import": "./src/js/Carousel.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graupl/graupl.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "graupl"
+  ],
+  "author": "Nick Milton",
+  "contributors": [
+    {
+      "name": "Coldfront Labs Inc.",
+      "url": "https://coldfrontlabs.ca"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Graupl/graupl/issues"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/Graupl/graupl/tree/main/packages/core#readme",
+  "devDependencies": {
+    "sass": "^1.89.2"
+  }
+}

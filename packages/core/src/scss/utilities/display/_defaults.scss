@@ -1,0 +1,47 @@
+// @graupl/core display utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$container-aware: true !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
+$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+
+// Display properties.
+$display-selector-prefix: "display-" !default;
+$base-display-properties: (
+  block: block,
+  inline-block: inline-block,
+  inline: inline,
+  flex: flex,
+  inline-flex: inline-flex,
+  grid: grid,
+  inline-grid: inline-grid,
+  flow-root: flow-root,
+  none: none,
+  contents: contents,
+  list-item: list-item,
+);
+$custom-display-properties: () !default;
+$display-properties: map.merge(
+  $base-display-properties,
+  $custom-display-properties
+);

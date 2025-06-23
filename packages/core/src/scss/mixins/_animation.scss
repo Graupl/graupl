@@ -1,0 +1,15 @@
+// @graupl/core animation media query mixins.
+
+// A media query for targeting users who have not requested reduced motion.
+@mixin on {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+// A media query for targeting users who have requested reduced motion.
+@mixin off {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

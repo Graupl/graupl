@@ -1,0 +1,30 @@
+// @graupl/icons icon component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "pkg:@graupl/core/src/scss/defaults" as root-defaults;
+
+// Icon selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$icon-selector-base: $selector-base !default;
+$icon-selector: "icon" !default;
+$icon-before-selector: "#{$icon-selector}-before" !default;
+$icon-after-selector: "#{$icon-selector}-after" !default;
+$icon-prefix-selector-base: $modifier-selector-base !default;
+$icon-prefix-selector: "" !default;
+$icon-color-prefix-selector-base: $modifier-selector-base !default;
+$icon-color-prefix-selector: "" !default;
+
+// Icon properties.
+$icon-display: inline-block !default;
+$icon-size: 1.25em !default;
+
+// Icons.
+// This should be a key/value pair for the name of the icon and the path to the icon's SVG.
+$custom-icons: () !default;
+$icons: $custom-icons;

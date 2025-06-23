@@ -1,0 +1,39 @@
+// @graupl/core theme functions.
+//
+// Functions to help with getting information about the theme.
+
+@use "sass:map";
+@use "../theme/color/variables" as color;
+
+// A function to get the specific theme shades.
+@function get($color, $shade: null, $theme: active) {
+  @if $shade == transparent or $color == transparent {
+    @return transparent;
+  }
+
+  @if $shade == none or $color == none {
+    @return none;
+  }
+
+  @if $shade == inherit or $color == inherit {
+    @return inherit;
+  }
+
+  @if $shade == initial or $color == initial {
+    @return initial;
+  }
+
+  @if map.has-key(color.$themes, $theme, $color, $shade) {
+    @return map.get(map.get(map.get(color.$themes, $theme), $color), $shade);
+  }
+
+  @return null;
+}
+
+@function variants($theme: active) {
+  @if map.has-key(color.$themes, $theme) {
+    @return map.keys(map.get(color.$themes, $theme));
+  }
+
+  @return null;
+}
