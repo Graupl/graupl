@@ -73,6 +73,12 @@ jobs:
           export PRERELEASE_TYPE=$(node -p "require('./package.json').version.split('-')[1].split('.')[0]")
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
 
+      - name: Publish workspaces to npm
+        if: github.tag
+        run: npm publish --workspaces --access public --tag ${{ env.PRERELEASE_TYPE }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish to npm
         if: github.tag
         run: npm publish --access public --tag ${{ env.PRERELEASE_TYPE }}
@@ -105,6 +111,12 @@ jobs:
         run: |
           export PRERELEASE_TYPE=$(node -p "require('./package.json').version.split('-')[1].split('.')[0]")
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
+
+      - name: Publish workspaces to GitHub Packages
+        if: github.tag
+        run: npm publish --workspaces --access public --tag ${{ env.PRERELEASE_TYPE }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
         if: github.tag
