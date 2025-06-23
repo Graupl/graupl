@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.10](https://github.com/Graupl/graupl/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2025-06-23)
+
+
+### Bug Fixes
+
+* **icons:** correct mixin call to reflect new mixins ([5d8cb33](https://github.com/Graupl/graupl/commit/5d8cb33c134795f75d158b814b98ac23d5601c8a))
+
+
+### Continuous Integration
+
+* **github:** setup workflow call triggers on test ([6ac48d4](https://github.com/Graupl/graupl/commit/6ac48d41e906a27a466d6103901b53cd6a9604a4))
+
 ## [1.0.0-beta.9](https://github.com/Graupl/graupl/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2025-06-23)
 
 

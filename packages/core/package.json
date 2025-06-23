@@ -1,6 +1,6 @@
 {
   "name": "@graupl/core",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0-beta.10",
   "description": "The core module of Graupl, providing essential styles and utilities.",
   "main": "dist/js/graupl.cjs.js",
   "module": "dist/js/graupl.es.js",
