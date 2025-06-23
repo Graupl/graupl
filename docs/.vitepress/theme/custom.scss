@@ -1,11 +1,12 @@
-@use "../../../src/scss/theme/color/defaults" as graupl-color-defaults with (
+@use "../../../packages/core/src/scss/theme/color/defaults" as
+  graupl-color-defaults with (
   $theme-selector-suffix: ""
 );
-@use "../../../src/scss/variables" as graupl-variables;
-@use "../../../src/scss/utilities";
-@use "../../../src/scss/functions/theme";
-@use "../../../src/scss/theme/color";
-@use "../../../src/scss/state/focus";
+@use "../../../packages/core/src/scss/variables" as graupl-variables;
+@use "../../../packages/core/src/scss/utilities";
+@use "../../../packages/core/src/scss/functions/theme";
+@use "../../../packages/core/src/scss/theme/color";
+@use "../../../packages/core/src/scss/state/focus";
 @use "sass:map";
 
 :root {
