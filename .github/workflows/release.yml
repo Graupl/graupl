@@ -17,7 +17,7 @@ jobs:
   release_github:
     # Prevent this action from running on forks.
     if: github.repository == 'graupl/graupl'
-    needs: [test]
+    needs: test
     runs-on: ubuntu-latest
     environment: Release
     steps:
