@@ -1,10 +1,5 @@
-import Accordion from "./Accordion.js";
+import generate from "./generator.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".accordion").forEach((accordionElement) => {
-    new Accordion({
-      accordionElement,
-      initialize: true,
-    });
-  });
+  generate();
 });
