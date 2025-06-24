@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.11](https://github.com/Graupl/graupl/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2025-06-24)
+
+
+### Features
+
+* **core:** add import require rules for new scripts ([287be8b](https://github.com/Graupl/graupl/commit/287be8b5f06d9140c1cffcf355641c8c13af6d33))
+
+
+### Build System
+
+* correct files including when installing through npm ([50b347f](https://github.com/Graupl/graupl/commit/50b347fcc125d6b957a5807970c958be3cfb7148))
+* implement rolldown for js bundling ([8b11c7a](https://github.com/Graupl/graupl/commit/8b11c7a5095b22d3e85ce913eea9aa9937c92c65))
+* standardize directories to match the rest of the project ([cdda81e](https://github.com/Graupl/graupl/commit/cdda81e2e41025e21f6fc81665c238fd3fcfec86))
+
+
+### Continuous Integration
+
+* **release:** get proper prerelease type ([e1e28a4](https://github.com/Graupl/graupl/commit/e1e28a45fa42087f141a8a03cee2a732cb080726))
+
 ## [1.0.0-beta.10](https://github.com/Graupl/graupl/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2025-06-23)
 
 
