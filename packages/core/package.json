@@ -23,13 +23,32 @@
       "sass": "./src/scss/*.scss"
     },
     "./accordion": {
-      "import": "./src/js/Accordion.js"
+      "import": "./dist/modules/accordion.es.js",
+      "require": "./dist/modules/accordion.cjs.js"
+    },
+    "./accordion/generator": {
+      "import": "./dist/generators/accordion.es.js",
+      "require": "./dist/generators/accordion.cjs.js"
     },
     "./alert": {
-      "import": "./src/js/Alert.js"
+      "import": "./dist/modules/alert.es.js",
+      "require": "./dist/modules/alert.cjs.js"
+    },
+    "./alert/generator": {
+      "import": "./dist/generators/alert.es.js",
+      "require": "./dist/generators/alert.cjs.js"
     },
     "./carousel": {
-      "import": "./src/js/Carousel.js"
+      "import": "./dist/modules/carousel.es.js",
+      "require": "./dist/modules/carousel.cjs.js"
+    },
+    "./carousel/generator": {
+      "import": "./dist/generators/carousel.es.js",
+      "require": "./dist/generators/carousel.cjs.js"
+    },
+    "./navigation/generator": {
+      "import": "./dist/generators/navigation.es.js",
+      "require": "./dist/generators/navigation.cjs.js"
     }
   },
   "repository": {
