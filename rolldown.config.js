@@ -55,4 +55,81 @@ export default defineConfig([
     platform: "browser",
     plugins,
   },
+  {
+    input: "./packages/core/src/js/accordion/Accordion.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/accordion.${format}.js`,
+      format,
+      name: "Accordion",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/accordion/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/accordion.${format}.js`,
+      format,
+      name: "AccordionGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/alert/Alert.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/alert.${format}.js`,
+      format,
+      name: "Alert",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/carousel/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/carousel.${format}.js`,
+      format,
+      name: "CarouselGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/carousel/Carousel.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/carousel.${format}.js`,
+      format,
+      name: "Carousel",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/carousel/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/carousel.${format}.js`,
+      format,
+      name: "CarouselGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/navigation/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/navigation.${format}.js`,
+      format,
+      name: "NavigationGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
 ]);

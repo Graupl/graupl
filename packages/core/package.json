@@ -22,33 +22,42 @@
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
     },
+    "./src/accordion": {
+      "import": "./src/js/accordion/Accordion.js"
+    },
+    "./src/alert": {
+      "import": "./src/js/alert/Alert.js"
+    },
+    "./src/carousel": {
+      "import": "./src/js/carousel/Carousel.js"
+    },
     "./accordion": {
-      "import": "./dist/modules/accordion.es.js",
-      "require": "./dist/modules/accordion.cjs.js"
+      "import": "./dist/js/component/accordion.es.js",
+      "require": "./dist/js/component/accordion.cjs.js"
     },
     "./accordion/generator": {
-      "import": "./dist/generators/accordion.es.js",
-      "require": "./dist/generators/accordion.cjs.js"
+      "import": "./dist/js/generator/accordion.es.js",
+      "require": "./dist/js/generator/accordion.cjs.js"
     },
     "./alert": {
-      "import": "./dist/modules/alert.es.js",
-      "require": "./dist/modules/alert.cjs.js"
+      "import": "./dist/js/component/alert.es.js",
+      "require": "./dist/js/component/alert.cjs.js"
     },
     "./alert/generator": {
-      "import": "./dist/generators/alert.es.js",
-      "require": "./dist/generators/alert.cjs.js"
+      "import": "./dist/js/generator/alert.es.js",
+      "require": "./dist/js/generator/alert.cjs.js"
     },
     "./carousel": {
-      "import": "./dist/modules/carousel.es.js",
-      "require": "./dist/modules/carousel.cjs.js"
+      "import": "./dist/js/component/carousel.es.js",
+      "require": "./dist/js/component/carousel.cjs.js"
     },
     "./carousel/generator": {
-      "import": "./dist/generators/carousel.es.js",
-      "require": "./dist/generators/carousel.cjs.js"
+      "import": "./dist/js/generator/carousel.es.js",
+      "require": "./dist/js/generator/carousel.cjs.js"
     },
     "./navigation/generator": {
-      "import": "./dist/generators/navigation.es.js",
-      "require": "./dist/generators/navigation.cjs.js"
+      "import": "./dist/js/generator/navigation.es.js",
+      "require": "./dist/js/generator/navigation.cjs.js"
     }
   },
   "repository": {

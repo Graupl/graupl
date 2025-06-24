@@ -57,7 +57,7 @@ export default defineConfig([
   {
     input: "./src/js/accordion/Accordion.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/modules/accordion.${format}.js`,
+      file: `dist/js/component/accordion.${format}.js`,
       format,
       name: "Accordion",
       sourcemap: true,
@@ -68,7 +68,7 @@ export default defineConfig([
   {
     input: "./src/js/accordion/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generators/accordion.${format}.js`,
+      file: `dist/js/generator/accordion.${format}.js`,
       format,
       name: "AccordionGenerator",
       sourcemap: true,
@@ -79,7 +79,7 @@ export default defineConfig([
   {
     input: "./src/js/alert/Alert.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/modules/alert.${format}.js`,
+      file: `dist/js/component/alert.${format}.js`,
       format,
       name: "Alert",
       sourcemap: true,
@@ -90,7 +90,7 @@ export default defineConfig([
   {
     input: "./src/js/carousel/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generators/carousel.${format}.js`,
+      file: `dist/js/generator/carousel.${format}.js`,
       format,
       name: "CarouselGenerator",
       sourcemap: true,
@@ -101,7 +101,7 @@ export default defineConfig([
   {
     input: "./src/js/carousel/Carousel.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/modules/carousel.${format}.js`,
+      file: `dist/js/component/carousel.${format}.js`,
       format,
       name: "Carousel",
       sourcemap: true,
@@ -112,7 +112,7 @@ export default defineConfig([
   {
     input: "./src/js/carousel/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generators/carousel.${format}.js`,
+      file: `dist/js/generator/carousel.${format}.js`,
       format,
       name: "CarouselGenerator",
       sourcemap: true,
@@ -123,7 +123,7 @@ export default defineConfig([
   {
     input: "./src/js/navigation/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generators/navigation.${format}.js`,
+      file: `dist/js/generator/navigation.${format}.js`,
       format,
       name: "NavigationGenerator",
       sourcemap: true,
