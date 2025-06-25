@@ -112,9 +112,9 @@ jobs:
       - name: Publish workspaces to GitHub Packages
         run: npm publish --workspaces --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to GitHub Packages
         run: npm publish --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
