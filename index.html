@@ -1167,10 +1167,7 @@
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script type="module" src="packages/core/src/js/alert/index.js"></script>
-  <script type="module" src="packages/core/src/js/accordion/index.js"></script>
-  <script type="module" src="packages/core/src/js/carousel/index.js"></script>
-  <script type="module" src="packages/core/src/js/navigation/index.js"></script>
+  <script src="./dist/js/graupl.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const setTheme = window.localStorage.getItem('theme') || preferredTheme;
@@ -1187,26 +1184,6 @@
       document.documentElement.classList.add(`${newTheme}-mode`);
       window.localStorage.setItem('theme', newTheme);
       themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
-    });
-  </script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const viewSwapper = document.getElementById('view-swapper');
-      const cardContainer = document.querySelector('.container-type-inline > .columns');
-
-      viewSwapper.addEventListener('click', () => {
-        if (viewSwapper.dataset.view === 'list') {
-          // Set the --graupl-columns-count CSS variable to 1 for list view.
-          cardContainer.style.setProperty('--graupl-columns-count', '1');
-          viewSwapper.dataset.view = 'grid';
-          viewSwapper.textContent = 'Grid view';
-        } else {
-          // Set the --graupl-columns-count CSS variable to 3 for grid view.
-          cardContainer.style.setProperty('--graupl-columns-count', '3');
-          viewSwapper.dataset.view = 'list';
-          viewSwapper.textContent = 'List view';
-        }
-      });
     });
   </script>
 </body>

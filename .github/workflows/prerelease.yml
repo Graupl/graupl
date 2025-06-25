@@ -34,7 +34,6 @@ jobs:
 
       # Get the version from the package.json
       - name: Get version
-        id: get_version
         run: |
           export VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
@@ -68,20 +67,17 @@ jobs:
 
       # Get the prerelease type from the package.json, e.g., 'alpha', 'beta', or 'rc'.
       - name: Get prerelease type
-        id: get_prerelease_type
         run: |
           export VERSION=$(node -p "require('./package.json').version")
           export PRERELEASE_TYPE=$(echo $VERSION | sed -E 's/^[0-9]+\.[0-9]+\.[0-9]+-([a-zA-Z]+)\.[0-9]+/\1/')
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
 
       - name: Publish workspaces to npm
-        if: github.tag
         run: npm publish --workspaces --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
-        if: github.tag
         run: npm publish --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -108,20 +104,17 @@ jobs:
 
       # Get the prerelease type from the package.json, e.g., 'alpha', 'beta', or 'rc'.
       - name: Get prerelease type
-        id: get_prerelease_type
         run: |
           export VERSION=$(node -p "require('./package.json').version")
           export PRERELEASE_TYPE=$(echo $VERSION | sed -E 's/^[0-9]+\.[0-9]+\.[0-9]+-([a-zA-Z]+)\.[0-9]+/\1/')
           echo "PRERELEASE_TYPE=$PRERELEASE_TYPE" >> $GITHUB_ENV
 
       - name: Publish workspaces to GitHub Packages
-        if: github.tag
         run: npm publish --workspaces --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: Publish to GitHub Packages
-        if: github.tag
         run: npm publish --access public --tag ${{ env.PRERELEASE_TYPE }}
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}

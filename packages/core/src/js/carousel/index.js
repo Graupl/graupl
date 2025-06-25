@@ -1,10 +1,5 @@
-import Carousel from "./Carousel.js";
+import generate from "./generator.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll(".carousel").forEach((carouselElement) => {
-    new Carousel({
-      carouselElement,
-      initialize: true,
-    });
-  });
+  generate();
 });
