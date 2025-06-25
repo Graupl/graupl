@@ -34,7 +34,6 @@ jobs:
 
       # Get the version from the package.json
       - name: Get version
-        id: get_version
         run: |
           export VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
@@ -67,13 +66,11 @@ jobs:
         run: npm install
 
       - name: Publish workspaces to npm
-        if: github.tag
         run: npm publish --workspaces --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to npm
-        if: github.tag
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -99,13 +96,11 @@ jobs:
         run: npm install
 
       - name: Publish workspaces to GitHub Packages
-        if: github.tag
         run: npm publish --workspaces --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
-        if: github.tag
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
