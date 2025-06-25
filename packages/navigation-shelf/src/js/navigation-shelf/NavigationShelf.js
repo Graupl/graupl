@@ -5,14 +5,14 @@ import {
   isValidSideType,
   isValidState,
   isValidEvent,
-} from "../validate.js";
-import { keyPress, preventEvent } from "../eventHandlers.js";
+} from "@graupl/core/src/validate.js";
+import { keyPress, preventEvent } from "@graupl/core/src/eventHandlers.js";
 import {
   addClass,
   removeClass,
   selectFirstFocusableElement,
-} from "../domHelpers.js";
-import storage from "../storage.js";
+} from "@graupl/core/src/domHelpers.js";
+import storage from "@graupl/core/src/storage.js";
 
 class NavigationShelf {
   /**
