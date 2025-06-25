@@ -1,0 +1,28 @@
+// @graupl/core utility functions.
+//
+// Functions to help generate utility classes.
+
+@use "sass:map";
+
+/// Convert a property and value to a map.
+///
+/// This mixin is used internally.
+///
+/// @param {string|List} $property
+///   The property/properties to convert to keys.
+/// @param {string}      $value
+///   The value to use for keys.
+@function convert-property-values-to-map($property, $value) {
+  $map: ();
+
+  @each $prop in $property {
+    $map: map.merge(
+      $map,
+      (
+        $prop: $value,
+      )
+    );
+  }
+
+  @return $map;
+}

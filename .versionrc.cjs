@@ -1,3 +1,11 @@
+const fs = require("fs");
+
+// Get all package.json files in the packages/*/ directories
+const packageJsonFiles = fs
+  .readdirSync("packages")
+  .filter((dir) => fs.statSync(`packages/${dir}`).isDirectory())
+  .map((dir) => `packages/${dir}/package.json`);
+
 const config = {
   types: [
     {
@@ -57,5 +65,9 @@ const config = {
     },
   ],
 };
+
+config.packageFiles = ["package.json"];
+
+config.bumpFiles = [...config.packageFiles, ...packageJsonFiles];
 
 module.exports = config;

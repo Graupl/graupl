@@ -1,0 +1,200 @@
+// @graupl/core alert component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "sass:map";
+
+// Alert properties.
+$alert-padding-x: var(
+  --#{root-defaults.$prefix}alert-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$alert-padding-y: var(
+  --#{root-defaults.$prefix}alert-padding-y,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$alert-padding: var(
+  --#{root-defaults.$prefix}alert-padding,
+  #{$alert-padding-y} #{$alert-padding-x}
+);
+
+// Alert gap properties.
+$alert-column-gap: var(
+  --#{root-defaults.$prefix}alert-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$alert-row-gap: var(
+  --#{root-defaults.$prefix}alert-row-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$alert-gap: var(
+  --#{root-defaults.$prefix}alert-gap,
+  #{$alert-column-gap} #{$alert-row-gap}
+);
+
+// Alert color properties.
+$alert-background: var(
+  --#{root-defaults.$prefix}alert-background,
+  #{color.$background}
+);
+$alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$color});
+$alert-link-color: var(--#{root-defaults.$prefix}alert-link-color);
+$alert-link-visited-color: var(
+  --#{root-defaults.$prefix}alert-link-visited-color
+);
+$alert-link-focus-color: var(--#{root-defaults.$prefix}alert-link-focus-color);
+$alert-link-hover-color: var(--#{root-defaults.$prefix}alert-link-hover-color);
+$alert-link-active-color: var(
+  --#{root-defaults.$prefix}alert-link-active-color
+);
+$alert-link-disabled-color: var(
+  --#{root-defaults.$prefix}alert-link-disabled-color
+);
+
+// Alert border-properties.
+$alert-border-color: var(
+  --#{root-defaults.$prefix}alert-border-color,
+  #{$alert-color}
+);
+$alert-border-top-left-radius: var(
+  --#{root-defaults.$prefix}alert-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$alert-border-top-right-radius: var(
+  --#{root-defaults.$prefix}alert-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$alert-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}alert-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$alert-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}alert-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$alert-border-radius: var(
+  --#{root-defaults.$prefix}alert-border-radius,
+  #{$alert-border-top-left-radius} #{$alert-border-top-right-radius}
+    #{$alert-border-bottom-right-radius} #{$alert-border-bottom-left-radius}
+);
+$alert-border-top-width: var(
+  --#{root-defaults.$prefix}alert-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$alert-border-right-width: var(
+  --#{root-defaults.$prefix}alert-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$alert-border-bottom-width: var(
+  --#{root-defaults.$prefix}alert-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$alert-border-left-width: var(
+  --#{root-defaults.$prefix}alert-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$alert-border-width: var(
+  --#{root-defaults.$prefix}alert-border-width,
+  #{$alert-border-top-width} #{$alert-border-right-width}
+    #{$alert-border-bottom-width} #{$alert-border-left-width}
+);
+$alert-border-top-style: var(
+  --#{root-defaults.$prefix}alert-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$alert-border-right-style: var(
+  --#{root-defaults.$prefix}alert-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$alert-border-bottom-style: var(
+  --#{root-defaults.$prefix}alert-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$alert-border-left-style: var(
+  --#{root-defaults.$prefix}alert-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$alert-border-style: var(
+  --#{root-defaults.$prefix}alert-border-style,
+  #{$alert-border-top-style} #{$alert-border-right-style}
+    #{$alert-border-bottom-style} #{$alert-border-left-style}
+);
+
+// Alert transition properties.
+$alert-transition: var(
+  --#{root-defaults.$prefix}alert-transition,
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+$alert-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}alert-transition-reduced-motion,
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+
+// Alert header properties.
+$alert-header-padding-x: var(
+  --#{root-defaults.$prefix}alert-header-padding-x,
+  0
+);
+$alert-header-padding-y: var(
+  --#{root-defaults.$prefix}alert-header-padding-y,
+  0
+);
+$alert-header-padding: var(
+  --#{root-defaults.$prefix}alert-header-padding,
+  #{$alert-header-padding-y} #{$alert-header-padding-x}
+);
+
+// Alert title properties.
+$alert-title-color: var(
+  --#{root-defaults.$prefix}alert-title-color,
+  #{$alert-color}
+);
+$alert-title-font-size: var(
+  --#{root-defaults.$prefix}alert-title-font-size,
+  #{typography.$h4-font-size}
+);
+$alert-title-font-weight: var(
+  --#{root-defaults.$prefix}alert-title-font-weight,
+  #{typography.$h4-font-weight}
+);
+$alert-title-font-family: var(
+  --#{root-defaults.$prefix}alert-title-font-family,
+  #{typography.$h4-font-family}
+);
+$alert-title-line-height: var(
+  --#{root-defaults.$prefix}alert-title-line-height,
+  #{typography.$h4-line-height}
+);
+$alert-title-margin: var(--#{root-defaults.$prefix}alert-title-margin, 0 0 0 0);
+
+// Alert body properties.
+$alert-body-padding-x: var(--#{root-defaults.$prefix}alert-body-padding-x, 0);
+$alert-body-padding-y: var(--#{root-defaults.$prefix}alert-body-padding-y, 0);
+$alert-body-padding: var(
+  --#{root-defaults.$prefix}alert-body-padding,
+  #{$alert-body-padding-y} #{$alert-body-padding-x}
+);
+
+// Alert footer properties.
+$alert-footer-padding-x: var(
+  --#{root-defaults.$prefix}alert-footer-padding-x,
+  0
+);
+$alert-footer-padding-y: var(
+  --#{root-defaults.$prefix}alert-footer-padding-y,
+  0
+);
+$alert-footer-padding: var(
+  --#{root-defaults.$prefix}alert-footer-padding,
+  #{$alert-footer-padding-y} #{$alert-footer-padding-x}
+);

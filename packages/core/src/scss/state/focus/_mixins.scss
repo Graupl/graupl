@@ -1,0 +1,13 @@
+// @graupl/core focus state mixins.
+
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+/// Applies the focus state.
+@mixin apply-focus() {
+  border-color: $focus-border-color;
+  outline: $focus-outline;
+  outline-offset: $focus-outline-offset;
+  box-shadow: $focus-box-shadow;
+}

@@ -1,0 +1,24 @@
+// @graupl/core form base default values.
+//
+// Generally, these should not be used directly when styling bases unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+// Form selectors.
+$selector-base: "" !default;
+$modifier-selector-base: $selector-base !default;
+$input-selector-base: $selector-base !default;
+$input-selector: "input" !default;
+$textarea-selector-base: $selector-base !default;
+$textarea-selector: "textarea" !default;
+$select-selector-base: $selector-base !default;
+$select-selector: "select" !default;
+$label-selector-base: $selector-base !default;
+$label-selector: "label" !default;
+$fieldset-selector-base: $selector-base !default;
+$fieldset-selector: "fieldset" !default;
+
+// Fieldset properties.
+$fieldset-direction: column !default;

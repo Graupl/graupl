@@ -1,0 +1,55 @@
+{
+  "name": "@graupl/icons",
+  "version": "1.0.0-beta.12",
+  "description": "A plugin for Graupl that provides bare-minimum icon components.",
+  "type": "module",
+  "files": [
+    "dist",
+    "scss",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./scss/icon.scss"
+    },
+    "./*.scss": {
+      "sass": "./scss/*.scss"
+    },
+    "./src/*.scss": {
+      "sass": "./src/scss/*.scss"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graupl/graupl.git",
+    "directory": "packages/icons"
+  },
+  "keywords": [
+    "graupl"
+  ],
+  "author": "Nick Milton",
+  "contributors": [
+    {
+      "name": "Coldfront Labs Inc.",
+      "url": "https://coldfrontlabs.ca"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Graupl/graupl/issues"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/Graupl/graupl/tree/main/packages/icons#readme",
+  "scripts": {
+    "presass": "rm -rf dist/css/*",
+    "sass": "sass scss:dist/css --pkg-importer=node",
+    "postcss": "postcss 'dist/css/**/*.css' --replace --config ./postcss.config.cjs",
+    "prerolldown": "rm -rf dist/js/*",
+    "rolldown": "#rolldown --config ./rolldown.config.js",
+    "build": "npm-run-all build:*",
+    "build:css": "npm run sass && npm run postcss",
+    "build:js": "npm run rolldown"
+  },
+  "dependencies": {
+    "@graupl/core": "*"
+  }
+}

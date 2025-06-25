@@ -1,0 +1,133 @@
+// @graupl/core color theme variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+// A colour map of base colours and their shades.
+$colors: ();
+
+// Create a map for each colour.
+@each $color, $map in defaults.$colors {
+  // A map for the current colour.
+  $color-map: ();
+
+  @each $shade, $value in $map {
+    // Set the custom prop name and fallback value.
+    $color-property: var(
+      --#{root-defaults.$prefix}#{$color}--#{$shade},
+      $value
+    );
+
+    // Add the custom prop to the map.
+    $color-map: map.merge(
+      $color-map,
+      (
+        $shade: $color-property,
+      )
+    );
+  }
+
+  // Merge the colour map with the existing colours.
+  $colors: map.merge(
+    $colors,
+    (
+      $color: $color-map,
+    )
+  );
+}
+
+$themes: (
+  active: (),
+);
+
+// Generate all of the theme properties.
+@each $theme-name, $theme-map in defaults.$theme-map {
+  $theme: ();
+
+  @each $color-name, $map in $theme-map {
+    $color-map: ();
+
+    @each $shade, $value in $map {
+      $color-property: var(
+        --#{root-defaults.$prefix}theme-#{$theme-name}--#{$color-name}--#{$shade},
+        #{map.get($colors, map.get($value, color), map.get($value, shade))}
+      );
+      $color-map: map.merge(
+        $color-map,
+        (
+          $shade: $color-property,
+        )
+      );
+    }
+
+    $theme: map.merge(
+      $theme,
+      (
+        $color-name: $color-map,
+      )
+    );
+  }
+
+  $themes: map.merge(
+    $themes,
+    (
+      $theme-name: $theme,
+    )
+  );
+}
+
+// Generate the active theme properties.
+@each $color-name, $map in map.get($themes, defaults.$default-theme) {
+  $color-map: ();
+
+  @each $shade, $value in $map {
+    $color-property: var(
+      --#{root-defaults.$prefix}theme-active--#{$color-name}--#{$shade},
+      #{$value}
+    );
+    $color-map: map.merge(
+      $color-map,
+      (
+        $shade: $color-property,
+      )
+    );
+  }
+
+  $themes: map.merge(
+    $themes,
+    (
+      active: map.merge(
+          map.get($themes, active),
+          (
+            $color-name: $color-map,
+          )
+        ),
+    )
+  );
+}
+
+// Colour properties.
+$root-color: var(--#{root-defaults.$prefix}root-color);
+$root-background: var(--#{root-defaults.$prefix}root-background);
+
+@if map.has-key($themes, active, primary, 900) {
+  $root-color: var(
+    --#{root-defaults.$prefix}root-color,
+    #{map.get(map.get(map.get($themes, active), primary), 900)}
+  );
+}
+
+@if map.has-key($themes, active, primary, 100) {
+  $root-background: var(
+    --#{root-defaults.$prefix}root-background,
+    #{map.get(map.get(map.get($themes, active), primary), 100)}
+  );
+}
+
+$color: var(--#{root-defaults.$prefix}color, #{$root-color});
+$background: var(--#{root-defaults.$prefix}background, #{$root-background});
+$border-color: var(--#{root-defaults.$prefix}border-color, #{$color});

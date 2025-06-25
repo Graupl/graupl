@@ -1,0 +1,77 @@
+// @graupl/core screen mixins.
+//
+// A series of mixins to generate breakpoints.
+
+// @use "../defaults" as root-defaults;
+@use "../functions/screen";
+@use "../defaults" as root-defaults;
+@use "sass:map";
+@use "sass:meta";
+
+// A mixin to generate a minimum screen width media query.
+@mixin up($size) {
+  $screen-size: screen.min($size);
+
+  @media screen and (#{$screen-size} <= width) {
+    @content;
+  }
+}
+
+// A mixin to generate a maximum screen width media query.
+@mixin down($size) {
+  $screen-size: screen.max($size);
+
+  @media screen and (width <= #{$screen-size}) {
+    @content;
+  }
+}
+
+// A mixin to generate a range of screen widths media query.
+@mixin between($min, $max) {
+  $screen-size: screen.range($min, $max);
+  $min: map.get($screen-size, "min");
+  $max: map.get($screen-size, "max");
+
+  @media screen and (#{$min} <= width <= #{$max}) {
+    @content;
+  }
+}
+
+@mixin only($size) {
+  @include between($size, $size) {
+    @content;
+  }
+}
+
+@mixin trigger($trigger) {
+  @if not map.has-key(root-defaults.$screen-size-triggers, $trigger) {
+    @error "The screen size trigger \"#{$trigger}\" does not exist.";
+  }
+
+  $screen-size-trigger: map.get(root-defaults.$screen-size-triggers, $trigger);
+
+  @if not map.has-key($screen-size-trigger, "mixin") {
+    @error "The screen size trigger \"#{$trigger}\" does not have a mixin key.";
+  }
+
+  @if not map.has-key($screen-size-trigger, "args") {
+    @error "The screen size trigger \"#{$trigger}\" does not have an args key.";
+  }
+
+  $mixin-name: map.get($screen-size-trigger, "mixin");
+  $mixin-args: map.get($screen-size-trigger, "args");
+
+  @if not meta.mixin-exists($mixin-name) {
+    @error "The mixin \"#{$mixin-name}\" does not exist.";
+  }
+
+  $mixin: meta.get-mixin($mixin-name);
+
+  @if meta.accepts-content($mixin) {
+    @include meta.apply($mixin, $mixin-args...) {
+      @content;
+    }
+  } @else {
+    @warn "The mixin \"#{$mixin-name}\" does not accept content.";
+  }
+}

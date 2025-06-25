@@ -1,0 +1,93 @@
+{
+  "name": "@graupl/core",
+  "version": "1.0.0-beta.12",
+  "description": "The core module of Graupl, providing essential styles and utilities.",
+  "main": "dist/js/graupl.cjs.js",
+  "module": "dist/js/graupl.es.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "scss",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./scss/graupl.scss",
+      "import": "./dist/js/graupl.es.js",
+      "require": "./dist/js/graupl.cjs.js"
+    },
+    "./*.scss": {
+      "sass": "./scss/*.scss"
+    },
+    "./src/*.scss": {
+      "sass": "./src/scss/*.scss"
+    },
+    "./src/accordion": {
+      "import": "./src/js/accordion/Accordion.js"
+    },
+    "./src/alert": {
+      "import": "./src/js/alert/Alert.js"
+    },
+    "./src/carousel": {
+      "import": "./src/js/carousel/Carousel.js"
+    },
+    "./accordion": {
+      "import": "./dist/js/component/accordion.es.js",
+      "require": "./dist/js/component/accordion.cjs.js"
+    },
+    "./accordion/generator": {
+      "import": "./dist/js/generator/accordion.es.js",
+      "require": "./dist/js/generator/accordion.cjs.js"
+    },
+    "./alert": {
+      "import": "./dist/js/component/alert.es.js",
+      "require": "./dist/js/component/alert.cjs.js"
+    },
+    "./alert/generator": {
+      "import": "./dist/js/generator/alert.es.js",
+      "require": "./dist/js/generator/alert.cjs.js"
+    },
+    "./carousel": {
+      "import": "./dist/js/component/carousel.es.js",
+      "require": "./dist/js/component/carousel.cjs.js"
+    },
+    "./carousel/generator": {
+      "import": "./dist/js/generator/carousel.es.js",
+      "require": "./dist/js/generator/carousel.cjs.js"
+    },
+    "./navigation/generator": {
+      "import": "./dist/js/generator/navigation.es.js",
+      "require": "./dist/js/generator/navigation.cjs.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graupl/graupl.git",
+    "directory": "packages/core"
+  },
+  "keywords": [
+    "graupl"
+  ],
+  "author": "Nick Milton",
+  "contributors": [
+    {
+      "name": "Coldfront Labs Inc.",
+      "url": "https://coldfrontlabs.ca"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Graupl/graupl/issues"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/Graupl/graupl/tree/main/packages/core#readme",
+  "scripts": {
+    "presass": "rm -rf dist/css/*",
+    "sass": "sass scss:dist/css --pkg-importer=node",
+    "postcss": "postcss 'dist/css/**/*.css' --replace --config ./postcss.config.cjs",
+    "prerolldown": "rm -rf dist/js/*",
+    "rolldown": "rolldown --config ./rolldown.config.js",
+    "build": "npm-run-all build:*",
+    "build:css": "npm run sass && npm run postcss",
+    "build:js": "npm run rolldown"
+  }
+}

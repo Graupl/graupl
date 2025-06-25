@@ -1,0 +1,55 @@
+// @graupl/core inset utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$container-aware: true !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
+$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+
+// Inset properties.
+$base-inset-properties: (
+  inset: inset,
+  inset-x: left right,
+  inset-y: top bottom,
+  inset-start: inset-inline-start,
+  inset-end: inset-inline-end,
+  top: top,
+  right: right,
+  bottom: bottom,
+  left: left,
+);
+$custom-inset-properties: () !default;
+$inset-properties: map.merge($base-inset-properties, $custom-inset-properties);
+
+// Inset values.
+$base-inset-values: (
+  0: 0,
+  auto: auto,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+);
+$custom-inset-values: () !default;
+$inset-values: map.merge($base-inset-values, $custom-inset-values);

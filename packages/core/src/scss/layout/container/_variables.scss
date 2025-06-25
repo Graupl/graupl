@@ -1,0 +1,114 @@
+// @graupl/core container layout variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+$container-gap: var(
+  --#{root-defaults.$prefix}container-gap,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$container-content-max-width: var(
+  --#{root-defaults.$prefix}container-content-max-width,
+  #{root-variables.$content-max-width}
+);
+$container-sidebar-width: var(
+  --#{root-defaults.$prefix}container-sidebar-width,
+  #{defaults.$container-sidebar-width}
+);
+$container-breakout-max-width: var(
+  --#{root-defaults.$prefix}container-breakout-max-width,
+  calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
+);
+$container-feature-max-width: var(
+  --#{root-defaults.$prefix}container-feature-max-width,
+  calc(#{$container-breakout-max-width} + #{defaults.$container-feature-width})
+);
+$container-full-width-section-min-width: var(
+  --#{root-defaults.$prefix}container-full-width-section-min-width,
+  #{$container-gap}
+);
+$container-full-width-section-max-width: var(
+  --#{root-defaults.$prefix}container-full-width-section-max-width,
+  1fr
+);
+$container-feature-section-min-width: var(
+  --#{root-defaults.$prefix}container-feature-section-min-width,
+  0rem
+);
+$container-feature-section-max-width: var(
+  --#{root-defaults.$prefix}container-feature-section-max-width,
+  calc((#{$container-feature-max-width} - #{$container-breakout-max-width}) / 2)
+);
+$container-breakout-section-min-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-min-width,
+  0rem
+);
+$container-breakout-section-max-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-max-width,
+  calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
+);
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+$container-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-content-section-min-width,
+  calc(
+    100% - (#{$container-full-width-section-min-width} * 2) -
+      (#{$container-feature-section-min-width} * 2) -
+      (#{$container-breakout-section-min-width} * 2)
+  )
+);
+/* stylelint-enable  scss/operator-no-newline-after */
+$container-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-content-section-max-width,
+  #{$container-content-max-width}
+);
+$container-full-width-section-width: var(
+  --#{root-defaults.$prefix}container-full-width-section-width,
+  minmax(
+    #{$container-full-width-section-min-width},
+    #{$container-full-width-section-max-width}
+  )
+);
+$container-feature-section-width: var(
+  --#{root-defaults.$prefix}container-feature-section-width,
+  minmax(
+    #{$container-feature-section-min-width},
+    #{$container-feature-section-max-width}
+  )
+);
+$container-breakout-section-width: var(
+  --#{root-defaults.$prefix}container-breakout-section-width,
+  minmax(
+    #{$container-breakout-section-min-width},
+    #{$container-breakout-section-max-width}
+  )
+);
+$container-content-section-width: var(
+  --#{root-defaults.$prefix}container-content-section-width,
+  min(
+    #{$container-content-section-min-width},
+    #{$container-content-section-max-width}
+  )
+);
+$container-sidebar-left-section-width: var(
+  --#{root-defaults.$prefix}container-sidebar-left-section-width,
+  $container-sidebar-width
+);
+$container-sidebar-right-section-width: var(
+  --#{root-defaults.$prefix}container-sidebar-right-section-width,
+  $container-sidebar-width
+);
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+$container-inner-content-section-width: var(
+  --#{root-defaults.$prefix}container-inner-content-section-width,
+  calc(
+    #{$container-content-section-width} -
+      #{$container-sidebar-left-section-width} -
+      #{$container-sidebar-right-section-width}
+  )
+);
+/* stylelint-enable  scss/operator-no-newline-after */

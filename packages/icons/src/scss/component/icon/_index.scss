@@ -1,0 +1,60 @@
+// @gruapl/icons icon component styles.
+
+@use "defaults";
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/theme/color/variables" as color;
+@use "pkg:@graupl/core/src/mixins/layer" as *;
+@use "mixins" as *;
+@use "sass:map";
+
+@include layer(component) {
+  #{defaults.$icon-selector-base}#{defaults.$icon-selector} {
+    @include apply-component;
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-before-selector} {
+    @include apply-component("before");
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-after-selector} {
+    @include apply-component("after");
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-selector},
+  #{defaults.$icon-selector-base}#{defaults.$icon-before-selector},
+  #{defaults.$icon-selector-base}#{defaults.$icon-after-selector} {
+    @each $name, $icon in defaults.$icons {
+      &#{defaults.$icon-prefix-selector-base}#{defaults.$icon-prefix-selector}#{$name} {
+        --#{root-defaults.$prefix}icon: #{$icon};
+      }
+    }
+  }
+}
+
+@include layer(theme) {
+  #{defaults.$icon-selector-base}#{defaults.$icon-selector} {
+    @include apply-theme;
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-before-selector} {
+    @include apply-theme("before");
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-after-selector} {
+    @include apply-theme("after");
+  }
+
+  #{defaults.$icon-selector-base}#{defaults.$icon-selector},
+  #{defaults.$icon-selector-base}#{defaults.$icon-before-selector},
+  #{defaults.$icon-selector-base}#{defaults.$icon-after-selector} {
+    @each $color, $map in map.get(color.$themes, active) {
+      @each $shade, $value in $map {
+        $name: #{$color}-#{$shade};
+
+        &#{defaults.$icon-color-prefix-selector-base}#{defaults.$icon-color-prefix-selector}#{$name} {
+          --#{root-defaults.$prefix}icon-color: #{$value};
+        }
+      }
+    }
+  }
+}
