@@ -1,7 +1,7 @@
 import Accordion from "./Accordion.js";
 import once from "@drupal/once";
 
-export const generate = (
+const generate = (
   options = {},
   context = document,
   accordionSelector = ".accordion"

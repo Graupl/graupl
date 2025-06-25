@@ -22,14 +22,8 @@
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
     },
-    "./src/accordion": {
-      "import": "./src/js/accordion/Accordion.js"
-    },
-    "./src/alert": {
-      "import": "./src/js/alert/Alert.js"
-    },
-    "./src/carousel": {
-      "import": "./src/js/carousel/Carousel.js"
+    "./src/*.js": {
+      "import": "./src/js/*.js"
     },
     "./accordion": {
       "import": "./dist/js/component/accordion.es.js",
