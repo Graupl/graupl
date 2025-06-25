@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.12](https://github.com/Graupl/graupl/compare/v1.0.0-beta.11...v1.0.0-beta.12) (2025-06-25)
+
+
+### Bug Fixes
+
+* properly compile alert generator ([3d92023](https://github.com/Graupl/graupl/commit/3d92023007be2ef7aace0f8fa2c7a5ceccc502a5))
+
+
+### Continuous Integration
+
+* **release:** remove addition conditions from publishing ([a33f456](https://github.com/Graupl/graupl/commit/a33f45673e3aaef43fd4ea2df1f51c26560b3dfe))
+
 ## [1.0.0-beta.11](https://github.com/Graupl/graupl/compare/v1.0.0-beta.10...v1.0.0-beta.11) (2025-06-24)
 
 
