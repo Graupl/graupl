@@ -88,11 +88,11 @@ export default defineConfig([
     plugins,
   },
   {
-    input: "./src/js/carousel/generator.js",
+    input: "./src/js/alert/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/carousel.${format}.js`,
+      file: `dist/js/generator/alert.${format}.js`,
       format,
-      name: "CarouselGenerator",
+      name: "AlertGenerator",
       sourcemap: true,
     })),
     platform: "browser",
