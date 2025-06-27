@@ -38,12 +38,22 @@ jobs:
           export VERSION=$(node -p "require('./package.json').version")
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
+      - name: Get the current release log
+        run: |
+          if [ -f CURRENT_RELEASE.md ]; then
+            export CURRENT_RELEASE=$(cat CURRENT_RELEASE.md)
+          else
+            export CURRENT_RELEASE="No release notes available."
+          fi
+          echo "CURRENT_RELEASE=$CURRENT_RELEASE" >> $GITHUB_ENV
+
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: ${{ env.VERSION }}
           make_latest: true
+          body: ${{ env.CURRENT_RELEASE }}
 
   publish_npm:
     # Prevent this action from running on forks.

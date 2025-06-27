@@ -1,6 +1,6 @@
 {
   "name": "@graupl/icons",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.13",
   "description": "A plugin for Graupl that provides bare-minimum icon components.",
   "type": "module",
   "files": [
@@ -43,11 +43,8 @@
     "presass": "rm -rf dist/css/*",
     "sass": "sass scss:dist/css --pkg-importer=node",
     "postcss": "postcss 'dist/css/**/*.css' --replace --config ./postcss.config.cjs",
-    "prerolldown": "rm -rf dist/js/*",
-    "rolldown": "#rolldown --config ./rolldown.config.js",
     "build": "npm-run-all build:*",
-    "build:css": "npm run sass && npm run postcss",
-    "build:js": "npm run rolldown"
+    "build:css": "npm run sass && npm run postcss"
   },
   "dependencies": {
     "@graupl/core": "*"

@@ -234,7 +234,7 @@ class Accordion {
     optionalKeySupport = false,
     allowMultipleExpand = true,
     allowNoExpand = true,
-    prefix = "am-",
+    prefix = "graupl-",
     key = null,
     initialize = false,
   }) {

@@ -1,6 +1,6 @@
 {
   "name": "@graupl/core",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.13",
   "description": "The core module of Graupl, providing essential styles and utilities.",
   "main": "dist/js/graupl.cjs.js",
   "module": "dist/js/graupl.es.js",
@@ -22,14 +22,8 @@
     "./src/*.scss": {
       "sass": "./src/scss/*.scss"
     },
-    "./src/accordion": {
-      "import": "./src/js/accordion/Accordion.js"
-    },
-    "./src/alert": {
-      "import": "./src/js/alert/Alert.js"
-    },
-    "./src/carousel": {
-      "import": "./src/js/carousel/Carousel.js"
+    "./src/*.js": {
+      "import": "./src/js/*.js"
     },
     "./accordion": {
       "import": "./dist/js/component/accordion.es.js",
