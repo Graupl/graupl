@@ -2,10 +2,12 @@ import {
   isValidClassList,
   isValidType,
   isValidInstance,
-  isValidSideType,
   isValidState,
   isValidEvent,
 } from "@graupl/core/src/validate.js";
+import {
+  isValidSideType,
+} from "../validate.js";
 import { keyPress, preventEvent } from "@graupl/core/src/eventHandlers.js";
 import {
   addClass,
