@@ -1,0 +1,249 @@
+@use "pkg:@graupl/icons/src/component/icon/mixins" as icon-mixins;
+@use "../../defaults" as root-defaults;
+@use "sass:map";
+
+.shelf-aware {
+  &,
+  &.left-side {
+      padding-left: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+      padding-right: 0;
+
+      &.locked {
+        padding-left: var(--graupl-navigation-shelf-max-width, 36ch);
+        padding-right: 0;
+      }
+    }
+
+  &.right-side {
+    padding-right: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    padding-left: 0;
+
+    &.locked {
+      padding-right: var(--graupl-navigation-shelf-max-width, 36ch);
+      padding-left: 0;
+    }
+  }
+}
+
+.navigation-shelf {
+  @starting-style {
+    opacity: var(--graupl-navigation-shelf-starting-opacity, 1);
+  }
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  transform: var(--graupl-navigation-shelf-transform, var(--graupl-navigation-shelf-closed-transform, null));
+  width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
+  grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem))) [footer-end content-end header-end];
+  display: var(--graupl-navigation-shelf-display, var(--graupl-navigation-shelf-closed-display, grid));
+  opacity: var(--graupl-navigation-shelf-opacity, var(--graupl-navigation-shelf-closed-opacity, 1));
+  background: var(--graupl-navigation-shelf-background, var(--graupl-background, var(--graupl-root-background, var(--graupl-theme-active--primary--100))));
+  color: var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900))));
+  grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
+  transition: var(--graupl-navigation-shelf-transition, width var(--graupl-navigation-shelf-transition-duration, 250ms) ease, transform var(--graupl-navigation-shelf-transition-duration, 250ms) ease, opacity var(--graupl-navigation-shelf-transition-duration, 250ms) ease, display var(--graupl-navigation-shelf-transition-duration, 250ms) allow-discrete);
+  isolation: isolate;
+  z-index: var(--graupl-navigation-shelf-z-index, 2);
+  border-style: var(--graupl-navigation-shelf-border-style, var(--graupl-navigation-shelf-border-top-style, solid) var(--graupl-navigation-shelf-border-right-style, solid) var(--graupl-navigation-shelf-border-bottom-style, solid) var(--graupl-navigation-shelf-border-left-style, solid));
+  border-width: var(--graupl-navigation-shelf-border-width, var(--graupl-navigation-shelf-border-top-width, 0) var(--graupl-navigation-shelf-border-right-width, 0) var(--graupl-navigation-shelf-border-bottom-width, 0) var(--graupl-navigation-shelf-border-left-width, 0));
+  border-color: var(--graupl-navigation-shelf-border-color, var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900)))));
+
+  &,
+  &.left-side {
+    --graupl-navigation-shelf-side-toggle-content: var(--graupl-navigation-shelf-side-toggle-shelf-right-content, #{map.get(root-defaults.$icons, "shelf-right")});
+
+    left: 0;
+    right: auto;
+
+    &.locked {
+      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-unlock-right-content, #{map.get(root-defaults.$icons, "unlock-right")});
+    }
+
+    &.unlocked {
+      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-lock-right-content, #{map.get(root-defaults.$icons, "lock-right")});
+    }
+  }
+
+  &.right-side {
+    --graupl-navigation-shelf-side-toggle-content: var(--graupl-navigation-shelf-side-toggle-shelf-left-content, #{map.get(root-defaults.$icons, "shelf-left")});
+
+    left: auto;
+    right: 0;
+
+    &.locked {
+      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-unlock-left-content, #{map.get(root-defaults.$icons, "unlock-left")});
+    }
+
+    &.unlocked {
+      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-lock-left-content, #{map.get(root-defaults.$icons, "lock-left")});
+    }
+  }
+
+  &.hoverable {
+    --graupl-navigation-shelf-hover-toggle-content: var(--graupl-navigation-shelf-hover-toggle-disable-hover-content, #{map.get(root-defaults.$icons, "disable-hover")});
+  }
+
+  &.not-hoverable {
+    --graupl-navigation-shelf-hover-toggle-content: var(--graupl-navigation-shelf-hover-toggle-enable-hover-content, #{map.get(root-defaults.$icons, "enable-hover")});
+  }
+
+  .w-shelf-current {
+    width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
+  }
+
+  .min-w-shelf-current {
+    min-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
+  }
+
+  .max-w-shelf-current {
+    max-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
+  }
+
+  .w-shelf-closed {
+    width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+  }
+
+  .min-w-shelf-closed {
+    min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+  }
+
+  .max-w-shelf-closed {
+    max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+  }
+
+  .w-shelf-min {
+    width: var(--graupl-navigation-shelf-min-width, 3.5rem);
+  }
+
+  .min-w-shelf-min {
+    min-width: var(--graupl-navigation-shelf-min-width, 3.5rem);
+  }
+
+  .max-w-shelf-min {
+    max-width: var(--graupl-navigation-shelf-min-width, 3.5rem);
+  }
+
+  .w-shelf-open {
+    width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+  }
+
+  .min-w-shelf-open {
+    min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+  }
+
+  .max-w-shelf-open {
+    max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+  }
+
+  .w-shelf-max {
+    width: var(--graupl-navigation-shelf-max-width, 36ch);
+  }
+
+  .min-w-shelf-max {
+    min-width: var(--graupl-navigation-shelf-max-width, 36ch);
+  }
+
+  .max-w-shelf-max {
+    max-width: var(--graupl-navigation-shelf-max-width, 36ch);
+  }
+
+  &.hide {
+    display: var(--graupl-navigation-shelf-closed-display, grid);
+    width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    opacity: var(--graupl-navigation-shelf-closed-opacity, 1);
+    transform: var(--graupl-navigation-shelf-closed-transform, null);
+    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)) [footer-end content-end header-end];
+
+    .w-shelf-current {
+      width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+
+    .min-w-shelf-current {
+      min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+
+    .max-w-shelf-current {
+      max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+  }
+
+  &.transitioning {
+    transform: var(--graupl-navigation-shelf-transitioning-transform, null);
+    width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem)) [footer-end content-end header-end];
+    display: var(--graupl-navigation-shelf-transitioning-display, grid);
+    opacity: var(--graupl-navigation-shelf-transitioning-opacity, 1);
+
+    .w-shelf-current {
+      width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+
+    .min-w-shelf-current {
+      min-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+
+    .max-w-shelf-current {
+      max-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    }
+  }
+
+  &.show {
+    transform: var(--graupl-navigation-shelf-open-transform, null);
+    width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-max-width, 36ch) [footer-end content-end header-end];
+    display: var(--graupl-navigation-shelf-open-display, grid);
+    opacity: var(--graupl-navigation-shelf-open-opacity, 1);
+
+    .w-shelf-current {
+      width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+    }
+
+    .min-w-shelf-current {
+      min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+    }
+
+    .max-w-shelf-current {
+      max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
+    }
+  }
+
+  .navigation-shelf-header {
+    grid-area: header;
+    transition: width 200ms ease;
+  }
+
+  .navigation-shelf-content {
+    grid-area: content;
+    scrollbar-width: thin;
+  }
+
+  .navigation-shelf-footer {
+    grid-area: footer;
+    scrollbar-width: thin;
+  }
+
+  .navigation-shelf-side-toggle {
+    --graupl-icon: var(--graupl-navigation-shelf-side-toggle-content, var(--graupl-navigation-shelf-side-toggle-shelf-right-content, #{map.get(root-defaults.$icons, "shelf-right")}));
+    --graupl-icon-spacer: var(--graupl-navigation-shelf-side-toggle-spacer, 0);
+
+    @include icon-mixins.apply-component("before");
+    @include icon-mixins.apply-theme("before");
+  }
+
+  .navigation-shelf-lock-toggle {
+    --graupl-icon: var(--graupl-navigation-shelf-lock-toggle-content, var(--graupl-navigation-shelf-lock-toggle-lock-content, #{map.get(root-defaults.$icons, "lock-right")}));
+    --graupl-icon-spacer: var(--graupl-navigation-shelf-lock-toggle-spacer, 0);
+
+    @include icon-mixins.apply-component("before");
+    @include icon-mixins.apply-theme("before");
+  }
+
+  .navigation-shelf-hover-toggle {
+    --graupl-icon: var(--graupl-navigation-shelf-hover-toggle-content, var(--graupl-navigation-shelf-hover-toggle-enable-hover-content, #{map.get(root-defaults.$icons, "enable-hover")}));
+    --graupl-icon-spacer: var(--graupl-navigation-shelf-hover-toggle-spacer, 0);
+
+    @include icon-mixins.apply-component("before");
+    @include icon-mixins.apply-theme("before");
+  }
+}
