@@ -40,8 +40,7 @@ export function removeClass(className, element) {
  * Select all focusable elements within a given context.
  *
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- *
- * @returns {HTMLElement[]}
+ * @return {HTMLElement[]} - An array of focusable elements.
  */
 export function selectAllFocusableElements(context = document) {
   const querySelector =
@@ -63,8 +62,7 @@ export function selectAllFocusableElements(context = document) {
  * Select the first focusable element within a given context.
  *
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- *
- * @returns {HTMLElement|boolean} - The first focusable element or false if none found.
+ * @return {HTMLElement|boolean} - The first focusable element or false if none found.
  */
 export function selectFirstFocusableElement(context = document) {
   const tabbableElements = selectAllFocusableElements(context);
@@ -76,8 +74,7 @@ export function selectFirstFocusableElement(context = document) {
  * Select the last focusable element within a given context.
  *
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- *
- * @returns {HTMLElement|boolean} - The last focusable element or false if none found.
+ * @return {HTMLElement|boolean} - The last focusable element or false if none found.
  */
 export function selectLastFocusableElement(context = document) {
   const tabbableElements = selectAllFocusableElements(context);
@@ -90,8 +87,7 @@ export function selectLastFocusableElement(context = document) {
  *
  * @param {HTMLElement} element - The reference element.
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- *
- * @returns {HTMLElement|boolean} - The next focusable element or false if none found.
+ * @return {HTMLElement|boolean} - The next focusable element or false if none found.
  */
 export function selectNextFocusableElement(element, context = document) {
   const tabbableElements = selectAllFocusableElements(context);
@@ -107,8 +103,7 @@ export function selectNextFocusableElement(element, context = document) {
  *
  * @param {HTMLElement} element - The reference element.
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- *
- * @returns {HTMLElement|boolean} - The previous focusable element or false if none found.
+ * @return {HTMLElement|boolean} - The previous focusable element or false if none found.
  */
 export function selectPreviousFocusableElement(element, context = document) {
   const tabbableElements = selectAllFocusableElements(context);
