@@ -197,10 +197,10 @@
     @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
       // &:has(:disabled, .disabled)
       &:has(
-        + #{defaults.$input-selector-base}#{defaults.$input-selector}#{$selector},
-        + #{defaults.$textarea-selector-base}#{defaults.$textarea-selector}#{$selector},
-        + #{defaults.$select-selector-base}#{defaults.$select-selector}#{$selector}
-      ) {
+          + #{defaults.$input-selector-base}#{defaults.$input-selector}#{$selector},
+          + #{defaults.$textarea-selector-base}#{defaults.$textarea-selector}#{$selector},
+          + #{defaults.$select-selector-base}#{defaults.$select-selector}#{$selector}
+        ) {
         color: $label-disabled-color;
       }
     }
