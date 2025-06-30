@@ -1,0 +1,196 @@
+// @graupl/navigation-shelf navigation shelf component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "pkg:@graupl/core/src/variables" as root-variables;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/theme/color/variables" as color;
+@use "sass:map";
+
+// Navigation shelf properties.
+$navigation-shelf-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-background,
+  #{color.$background}
+);
+$navigation-shelf-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-color,
+  #{color.$color}
+);
+$navigation-shelf-z-index: var(
+  --#{root-defaults.$prefix}navigation-shelf-z-index,
+  #{defaults.$navigation-shelf-z-index}
+);
+
+// Border properties.
+$navigation-shelf-border-top-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$navigation-shelf-border-right-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$navigation-shelf-border-bottom-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$navigation-shelf-border-left-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$navigation-shelf-border-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-style,
+  #{$navigation-shelf-border-top-style} #{$navigation-shelf-border-right-style}
+    #{$navigation-shelf-border-bottom-style}
+    #{$navigation-shelf-border-left-style}
+);
+$navigation-shelf-border-top-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-top-width,
+  0
+);
+$navigation-shelf-border-right-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-right-width,
+  0
+);
+$navigation-shelf-border-bottom-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-bottom-width,
+  0
+);
+$navigation-shelf-border-left-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-left-width,
+  0
+);
+$navigation-shelf-border-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-width,
+  #{$navigation-shelf-border-top-width} #{$navigation-shelf-border-right-width}
+    #{$navigation-shelf-border-bottom-width}
+    #{$navigation-shelf-border-left-width}
+);
+$navigation-shelf-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-border-color,
+  #{$navigation-shelf-color}
+);
+
+// Transform properties.
+$navigation-shelf-closed-transform: var(
+  --#{root-defaults.$prefix}navigation-shelf-closed-transform,
+  null
+);
+$navigation-shelf-open-transform: var(
+  --#{root-defaults.$prefix}navigation-shelf-open-transform,
+  null
+);
+$navigation-shelf-transitioning-transform: var(
+  --#{root-defaults.$prefix}navigation-shelf-transitioning-transform,
+  null
+);
+$navigation-shelf-transform: var(
+  --#{root-defaults.$prefix}navigation-shelf-transform,
+  #{$navigation-shelf-closed-transform}
+);
+$navigation-shelf-starting-transform: var(
+  --#{root-defaults.$prefix}navigation-shelf-starting-transform,
+  #{$navigation-shelf-transform}
+);
+
+// Width properties.
+$navigation-shelf-min-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-min-width,
+  #{defaults.$navigation-shelf-min-width}
+);
+$navigation-shelf-max-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-max-width,
+  #{defaults.$navigation-shelf-max-width}
+);
+$navigation-shelf-closed-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-closed-width,
+  #{$navigation-shelf-min-width}
+);
+$navigation-shelf-open-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-open-width,
+  #{$navigation-shelf-max-width}
+);
+$navigation-shelf-transitioning-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-transitioning-width,
+  #{$navigation-shelf-min-width}
+);
+$navigation-shelf-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-width,
+  #{$navigation-shelf-closed-width}
+);
+$navigation-shelf-starting-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-starting-width,
+  #{$navigation-shelf-width}
+);
+$navigation-shelf-current-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-current-width,
+  #{$navigation-shelf-width}
+);
+
+// Display properties.
+$navigation-shelf-closed-display: var(
+  --#{root-defaults.$prefix}navigation-shelf-closed-display,
+  grid
+);
+$navigation-shelf-open-display: var(
+  --#{root-defaults.$prefix}navigation-shelf-open-display,
+  grid
+);
+$navigation-shelf-transitioning-display: var(
+  --#{root-defaults.$prefix}navigation-shelf-transitioning-display,
+  grid
+);
+$navigation-shelf-display: var(
+  --#{root-defaults.$prefix}navigation-shelf-display,
+  #{$navigation-shelf-closed-display}
+);
+$navigation-shelf-starting-display: var(
+  --#{root-defaults.$prefix}navigation-shelf-starting-display,
+  #{$navigation-shelf-display}
+);
+
+// Opacity properties.
+$navigation-shelf-closed-opacity: var(
+  --#{root-defaults.$prefix}navigation-shelf-closed-opacity,
+  1
+);
+$navigation-shelf-open-opacity: var(
+  --#{root-defaults.$prefix}navigation-shelf-open-opacity,
+  1
+);
+$navigation-shelf-transitioning-opacity: var(
+  --#{root-defaults.$prefix}navigation-shelf-transitioning-opacity,
+  1
+);
+$navigation-shelf-opacity: var(
+  --#{root-defaults.$prefix}navigation-shelf-opacity,
+  #{$navigation-shelf-closed-opacity}
+);
+$navigation-shelf-starting-opacity: var(
+  --#{root-defaults.$prefix}navigation-shelf-starting-opacity,
+  #{$navigation-shelf-opacity}
+);
+
+// Transition properties.
+$navigation-shelf-transition-duration: var(
+  --#{root-defaults.$prefix}navigation-shelf-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+$navigation-shelf-transition: var(
+  --#{root-defaults.$prefix}navigation-shelf-transition,
+  width #{$navigation-shelf-transition-duration}
+    #{root-variables.$transition-timing-function},
+  transform #{$navigation-shelf-transition-duration}
+    #{root-variables.$transition-timing-function},
+  opacity #{$navigation-shelf-transition-duration}
+    #{root-variables.$transition-timing-function},
+  display #{$navigation-shelf-transition-duration} allow-discrete
+);
+$navigation-shelf-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}navigation-shelf-transition-reduced-motion,
+  opacity #{$navigation-shelf-transition-duration}
+    #{root-variables.$transition-timing-function},
+  display #{$navigation-shelf-transition-duration} allow-discrete
+);

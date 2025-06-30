@@ -1,0 +1,27 @@
+// @graupl/navigation-shelf width utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "../../component/navigation-shelf/variables" as *;
+@use "sass:map";
+
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
+
+// Width values.
+$base-width-values: (
+  shelf-min: $navigation-shelf-min-width,
+  shelf-max: $navigation-shelf-max-width,
+  shelf-current: $navigation-shelf-current-width,
+  shelf-closed: $navigation-shelf-closed-width,
+  shelf-open: $navigation-shelf-open-width,
+);
+$width-values: () !default;
+
+@if $generate-base-utilities {
+  $width-values: map.merge($base-width-values, $width-values);
+}

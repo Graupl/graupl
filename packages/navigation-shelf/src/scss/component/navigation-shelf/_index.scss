@@ -1,249 +1,258 @@
 @use "pkg:@graupl/icons/src/component/icon/mixins" as icon-mixins;
-@use "../../defaults" as root-defaults;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/mixins/animation";
+@use "defaults";
+@use "variables" as *;
 @use "sass:map";
 
 .shelf-aware {
+  // &,
+  // &.left-side
   &,
-  &.left-side {
-      padding-left: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-left-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    padding-right: 0;
+    padding-left: $navigation-shelf-closed-width;
+
+    // &.locked
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
       padding-right: 0;
-
-      &.locked {
-        padding-left: var(--graupl-navigation-shelf-max-width, 36ch);
-        padding-right: 0;
-      }
+      padding-left: $navigation-shelf-max-width;
     }
+  }
 
-  &.right-side {
-    padding-right: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+  // &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix}
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    padding-right: $navigation-shelf-closed-width;
     padding-left: 0;
 
-    &.locked {
-      padding-right: var(--graupl-navigation-shelf-max-width, 36ch);
+    // &.locked
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
+      padding-right: $navigation-shelf-max-width;
       padding-left: 0;
     }
   }
 }
 
-.navigation-shelf {
-  @starting-style {
-    opacity: var(--graupl-navigation-shelf-starting-opacity, 1);
-  }
+// .navigation-shelf
+#{defaults.$navigation-shelf-selector-base}#{defaults.$navigation-shelf-selector} {
+  --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-width};
 
+  display: $navigation-shelf-display;
   position: fixed;
+  z-index: $navigation-shelf-z-index;
   top: 0;
   bottom: 0;
-  overflow-x: hidden;
-  transform: var(--graupl-navigation-shelf-transform, var(--graupl-navigation-shelf-closed-transform, null));
-  width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
-  grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem))) [footer-end content-end header-end];
-  display: var(--graupl-navigation-shelf-display, var(--graupl-navigation-shelf-closed-display, grid));
-  opacity: var(--graupl-navigation-shelf-opacity, var(--graupl-navigation-shelf-closed-opacity, 1));
-  background: var(--graupl-navigation-shelf-background, var(--graupl-background, var(--graupl-root-background, var(--graupl-theme-active--primary--100))));
-  color: var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900))));
+  grid-template-columns: [header-start content-start footer-start] $navigation-shelf-width [footer-end content-end header-end];
   grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
-  transition: var(--graupl-navigation-shelf-transition, width var(--graupl-navigation-shelf-transition-duration, 250ms) ease, transform var(--graupl-navigation-shelf-transition-duration, 250ms) ease, opacity var(--graupl-navigation-shelf-transition-duration, 250ms) ease, display var(--graupl-navigation-shelf-transition-duration, 250ms) allow-discrete);
+  width: $navigation-shelf-width;
+  overflow-x: hidden;
+  transform: $navigation-shelf-transform;
+  transition: $navigation-shelf-transition;
+  border-width: $navigation-shelf-border-width;
+  border-style: $navigation-shelf-border-style;
+  border-color: $navigation-shelf-border-color;
+  opacity: $navigation-shelf-opacity;
+  background: $navigation-shelf-background;
+  color: $navigation-shelf-color;
   isolation: isolate;
-  z-index: var(--graupl-navigation-shelf-z-index, 2);
-  border-style: var(--graupl-navigation-shelf-border-style, var(--graupl-navigation-shelf-border-top-style, solid) var(--graupl-navigation-shelf-border-right-style, solid) var(--graupl-navigation-shelf-border-bottom-style, solid) var(--graupl-navigation-shelf-border-left-style, solid));
-  border-width: var(--graupl-navigation-shelf-border-width, var(--graupl-navigation-shelf-border-top-width, 0) var(--graupl-navigation-shelf-border-right-width, 0) var(--graupl-navigation-shelf-border-bottom-width, 0) var(--graupl-navigation-shelf-border-left-width, 0));
-  border-color: var(--graupl-navigation-shelf-border-color, var(--graupl-navigation-shelf-color, var(--graupl-color, var(--graupl-root-color, var(--graupl-theme-active--primary--900)))));
 
+  @starting-style {
+    display: $navigation-shelf-starting-display;
+    width: $navigation-shelf-starting-width;
+    transform: $navigation-shelf-starting-transform;
+    opacity: $navigation-shelf-starting-opacity;
+  }
+
+  @include animation.off {
+    --#{root-defaults.$prefix}navigation-shelf-transition: #{$navigation-shelf-transition-reduced-motion};
+  }
+
+  // &
+  // &.left-side
   &,
-  &.left-side {
-    --graupl-navigation-shelf-side-toggle-content: var(--graupl-navigation-shelf-side-toggle-shelf-right-content, #{map.get(root-defaults.$icons, "shelf-right")});
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-left-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content,
+      #{map.get(defaults.$navigation-shelf-icons, "shelf-right")}
+    );
 
-    left: 0;
     right: auto;
+    left: 0;
 
-    &.locked {
-      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-unlock-right-content, #{map.get(root-defaults.$icons, "unlock-right")});
+    // &.locked
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "unlock-right")}
+      );
     }
 
-    &.unlocked {
-      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-lock-right-content, #{map.get(root-defaults.$icons, "lock-right")});
+    // &.unlocked
+    &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-right")}
+      );
     }
   }
 
-  &.right-side {
-    --graupl-navigation-shelf-side-toggle-content: var(--graupl-navigation-shelf-side-toggle-shelf-left-content, #{map.get(root-defaults.$icons, "shelf-left")});
+  // &.right-side
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-left-content,
+      #{map.get(defaults.$navigation-shelf-icons, "shelf-left")}
+    );
 
-    left: auto;
     right: 0;
+    left: auto;
 
-    &.locked {
-      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-unlock-left-content, #{map.get(root-defaults.$icons, "unlock-left")});
+    // &.locked
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-left-content,
+        #{map.get(defaults.$navigation-shelf-icons, "unlock-left")}
+      );
     }
 
-    &.unlocked {
-      --graupl-navigation-shelf-lock-toggle-content: var(--graupl-navigation-shelf-lock-toggle-lock-left-content, #{map.get(root-defaults.$icons, "lock-left")});
-    }
-  }
-
-  &.hoverable {
-    --graupl-navigation-shelf-hover-toggle-content: var(--graupl-navigation-shelf-hover-toggle-disable-hover-content, #{map.get(root-defaults.$icons, "disable-hover")});
-  }
-
-  &.not-hoverable {
-    --graupl-navigation-shelf-hover-toggle-content: var(--graupl-navigation-shelf-hover-toggle-enable-hover-content, #{map.get(root-defaults.$icons, "enable-hover")});
-  }
-
-  .w-shelf-current {
-    width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
-  }
-
-  .min-w-shelf-current {
-    min-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
-  }
-
-  .max-w-shelf-current {
-    max-width: var(--graupl-navigation-shelf-width, var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)));
-  }
-
-  .w-shelf-closed {
-    width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-  }
-
-  .min-w-shelf-closed {
-    min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-  }
-
-  .max-w-shelf-closed {
-    max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-  }
-
-  .w-shelf-min {
-    width: var(--graupl-navigation-shelf-min-width, 3.5rem);
-  }
-
-  .min-w-shelf-min {
-    min-width: var(--graupl-navigation-shelf-min-width, 3.5rem);
-  }
-
-  .max-w-shelf-min {
-    max-width: var(--graupl-navigation-shelf-min-width, 3.5rem);
-  }
-
-  .w-shelf-open {
-    width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-  }
-
-  .min-w-shelf-open {
-    min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-  }
-
-  .max-w-shelf-open {
-    max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-  }
-
-  .w-shelf-max {
-    width: var(--graupl-navigation-shelf-max-width, 36ch);
-  }
-
-  .min-w-shelf-max {
-    min-width: var(--graupl-navigation-shelf-max-width, 36ch);
-  }
-
-  .max-w-shelf-max {
-    max-width: var(--graupl-navigation-shelf-max-width, 36ch);
-  }
-
-  &.hide {
-    display: var(--graupl-navigation-shelf-closed-display, grid);
-    width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    opacity: var(--graupl-navigation-shelf-closed-opacity, 1);
-    transform: var(--graupl-navigation-shelf-closed-transform, null);
-    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem)) [footer-end content-end header-end];
-
-    .w-shelf-current {
-      width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    }
-
-    .min-w-shelf-current {
-      min-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    }
-
-    .max-w-shelf-current {
-      max-width: var(--graupl-navigation-shelf-closed-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
+    // &.unlocked
+    &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-left-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-left")}
+      );
     }
   }
 
-  &.transitioning {
-    transform: var(--graupl-navigation-shelf-transitioning-transform, null);
-    width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem)) [footer-end content-end header-end];
-    display: var(--graupl-navigation-shelf-transitioning-display, grid);
-    opacity: var(--graupl-navigation-shelf-transitioning-opacity, 1);
-
-    .w-shelf-current {
-      width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    }
-
-    .min-w-shelf-current {
-      min-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    }
-
-    .max-w-shelf-current {
-      max-width: var(--graupl-navigation-shelf-transitioning-width, var(--graupl-navigation-shelf-min-width, 3.5rem));
-    }
+  // &.hoverable
+  &#{defaults.$navigation-shelf-hoverable-selector-base}#{defaults.$navigation-shelf-hoverable-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-disable-hover-content,
+      #{map.get(defaults.$navigation-shelf-icons, "disable-hover")}
+    );
   }
 
-  &.show {
-    transform: var(--graupl-navigation-shelf-open-transform, null);
-    width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-    grid-template-columns: [header-start content-start footer-start] var(--graupl-navigation-shelf-max-width, 36ch) [footer-end content-end header-end];
-    display: var(--graupl-navigation-shelf-open-display, grid);
-    opacity: var(--graupl-navigation-shelf-open-opacity, 1);
-
-    .w-shelf-current {
-      width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-    }
-
-    .min-w-shelf-current {
-      min-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-    }
-
-    .max-w-shelf-current {
-      max-width: var(--graupl-navigation-shelf-open-width, var(--graupl-navigation-shelf-max-width, 36ch));
-    }
+  // &.not-hoverable
+  &#{defaults.$navigation-shelf-not-hoverable-selector-base}#{defaults.$navigation-shelf-not-hoverable-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
+      #{map.get(defaults.$navigation-shelf-icons, "enable-hover")}
+    );
   }
 
-  .navigation-shelf-header {
+  // &.hide
+  &#{defaults.$navigation-shelf-closed-selector-base}#{defaults.$navigation-shelf-closed-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-closed-width};
+
+    display: $navigation-shelf-closed-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-closed-width [footer-end content-end header-end];
+    width: $navigation-shelf-closed-width;
+    transform: $navigation-shelf-closed-transform;
+    opacity: $navigation-shelf-closed-opacity;
+  }
+
+  // &.transitioning
+  &#{defaults.$navigation-shelf-transitioning-selector-base}#{defaults.$navigation-shelf-transitioning-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-transitioning-width};
+
+    display: $navigation-shelf-transitioning-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-transitioning-width [footer-end content-end header-end];
+    width: $navigation-shelf-transitioning-width;
+    transform: $navigation-shelf-transitioning-transform;
+    opacity: $navigation-shelf-transitioning-opacity;
+  }
+
+  // &.show
+  &#{defaults.$navigation-shelf-open-selector-base}#{defaults.$navigation-shelf-open-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-open-width};
+
+    display: $navigation-shelf-open-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-max-width [footer-end content-end header-end];
+    width: $navigation-shelf-open-width;
+    transform: $navigation-shelf-open-transform;
+    opacity: $navigation-shelf-open-opacity;
+  }
+
+  // .navigation-shelf-header
+  #{defaults.$navigation-shelf-header-selector-base}#{defaults.$navigation-shelf-header-selector} {
     grid-area: header;
     transition: width 200ms ease;
   }
 
-  .navigation-shelf-content {
+  // .navigation-shelf-content
+  #{defaults.$navigation-shelf-content-selector-base}#{defaults.$navigation-shelf-content-selector} {
     grid-area: content;
     scrollbar-width: thin;
   }
 
-  .navigation-shelf-footer {
+  // .navigation-shelf-footer
+  #{defaults.$navigation-shelf-footer-selector-base}#{defaults.$navigation-shelf-footer-selector} {
     grid-area: footer;
     scrollbar-width: thin;
   }
 
-  .navigation-shelf-side-toggle {
-    --graupl-icon: var(--graupl-navigation-shelf-side-toggle-content, var(--graupl-navigation-shelf-side-toggle-shelf-right-content, #{map.get(root-defaults.$icons, "shelf-right")}));
-    --graupl-icon-spacer: var(--graupl-navigation-shelf-side-toggle-spacer, 0);
+  // .navigation-shelf-side-toggle
+  #{defaults.$navigation-shelf-side-toggle-selector-base}#{defaults.$navigation-shelf-side-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "shelf-right")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-spacer,
+      0
+    );
 
-    @include icon-mixins.apply-component("before");
-    @include icon-mixins.apply-theme("before");
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-side-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-side-toggle-pseudo-element}
+    );
   }
 
-  .navigation-shelf-lock-toggle {
-    --graupl-icon: var(--graupl-navigation-shelf-lock-toggle-content, var(--graupl-navigation-shelf-lock-toggle-lock-content, #{map.get(root-defaults.$icons, "lock-right")}));
-    --graupl-icon-spacer: var(--graupl-navigation-shelf-lock-toggle-spacer, 0);
+  // .navigation-shelf-lock-toggle
+  #{defaults.$navigation-shelf-lock-toggle-selector-base}#{defaults.$navigation-shelf-lock-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-right")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-spacer,
+      0
+    );
 
-    @include icon-mixins.apply-component("before");
-    @include icon-mixins.apply-theme("before");
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-lock-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-lock-toggle-pseudo-element}
+    );
   }
 
-  .navigation-shelf-hover-toggle {
-    --graupl-icon: var(--graupl-navigation-shelf-hover-toggle-content, var(--graupl-navigation-shelf-hover-toggle-enable-hover-content, #{map.get(root-defaults.$icons, "enable-hover")}));
-    --graupl-icon-spacer: var(--graupl-navigation-shelf-hover-toggle-spacer, 0);
+  // .navigation-shelf-hover-toggle
+  #{defaults.$navigation-shelf-hover-toggle-selector-base}#{defaults.$navigation-shelf-hover-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
+        #{map.get(defaults.$navigation-shelf-icons, "enable-hover")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-spacer,
+      0
+    );
 
-    @include icon-mixins.apply-component("before");
-    @include icon-mixins.apply-theme("before");
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-hover-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-hover-toggle-pseudo-element}
+    );
   }
 }
