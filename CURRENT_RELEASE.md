@@ -1,11 +1,16 @@
-## [1.0.0-beta.13](https://github.com/Graupl/graupl/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2025-06-25)
+## [1.0.0-beta.15](https://github.com/Graupl/graupl/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2025-06-30)
 
 
-### Bug Fixes
+### Documentation
 
-* **core:** correct how source and generator scripts are exported ([8e590f1](https://github.com/Graupl/graupl/commit/8e590f13da490a5789cb01c075ad7de0a2bc7218))
+* correct return information for helper function ([5e36cb0](https://github.com/Graupl/graupl/commit/5e36cb0b5a67e38aea1cd2eadf240fd0aead213e))
+
+
+### Build System
+
+* **release:** fix post changelog script ([20e8da9](https://github.com/Graupl/graupl/commit/20e8da904eb08bebb73a7f44e901f380cfdd296f))
 
 
 ### Continuous Integration
 
-* **release:** use classic access token for github publishing ([967dd47](https://github.com/Graupl/graupl/commit/967dd473f08a1b4e8809f640e99c0a3983ea2990))
+* **release:** correct body path ([054f361](https://github.com/Graupl/graupl/commit/054f36191a76b4c2dcd5bdc6e012bef5fb55b7ca))

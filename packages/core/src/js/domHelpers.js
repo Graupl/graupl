@@ -40,7 +40,7 @@ export function removeClass(className, element) {
  * Select all focusable elements within a given context.
  *
  * @param {HTMLElement} [context = document] - The context in which to search for focusable elements.
- * @return {HTMLElement[]}
+ * @return {HTMLElement[]} - An array of focusable elements.
  */
 export function selectAllFocusableElements(context = document) {
   const querySelector =

@@ -2,6 +2,52 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.15](https://github.com/Graupl/graupl/compare/v1.0.0-beta.14...v1.0.0-beta.15) (2025-06-30)
+
+
+### Documentation
+
+* correct return information for helper function ([5e36cb0](https://github.com/Graupl/graupl/commit/5e36cb0b5a67e38aea1cd2eadf240fd0aead213e))
+
+
+### Build System
+
+* **release:** fix post changelog script ([20e8da9](https://github.com/Graupl/graupl/commit/20e8da904eb08bebb73a7f44e901f380cfdd296f))
+
+
+### Continuous Integration
+
+* **release:** correct body path ([054f361](https://github.com/Graupl/graupl/commit/054f36191a76b4c2dcd5bdc6e012bef5fb55b7ca))
+
+## [1.0.0-beta.14](https://github.com/Graupl/graupl/compare/v1.0.0-beta.13...v1.0.0-beta.14) (2025-06-27)
+
+
+### Features
+
+* **js:** add functions for finding focusable elements ([196e47e](https://github.com/Graupl/graupl/commit/196e47ec2c1f51cb61b97500ee212c61c2c9654e))
+* **js:** add new validation helpers ([0d41fb1](https://github.com/Graupl/graupl/commit/0d41fb115dfdccf5ea1126425d50d8b35d66885e))
+
+
+### Bug Fixes
+
+* **accordion:** correct default prefix value ([fc63113](https://github.com/Graupl/graupl/commit/fc63113abe0018ebc053d4f70c996ef08e32fce5))
+
+
+### Documentation
+
+* add basic readmes ([5519d43](https://github.com/Graupl/graupl/commit/5519d431957a204a93da43cde1f7f6657cb3a0dc))
+
+
+### Build System
+
+* **npm:** allow packages to not have the same scripts ([3862381](https://github.com/Graupl/graupl/commit/3862381b182478823a8efcd9bedaeb94b2717ca6))
+* **release:** add a way to get the current release notes into a separate file ([2110c03](https://github.com/Graupl/graupl/commit/2110c03d153430eb96fba20aca160096bfad3af6))
+
+
+### Continuous Integration
+
+* **release:** add body to github releases ([2c929c6](https://github.com/Graupl/graupl/commit/2c929c6163d5878e4216c742e0d72ee8e2d76031))
+
 ## [1.0.0-beta.13](https://github.com/Graupl/graupl/compare/v1.0.0-beta.12...v1.0.0-beta.13) (2025-06-25)
 
 
