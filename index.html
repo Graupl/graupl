@@ -6,29 +6,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="dist/css/graupl.css">
+  <link rel="stylesheet" href="packages/icons/dist/css/icon.css">
+  <link rel="stylesheet" href="packages/navigation-shelf/dist/css/navigation-shelf.css">
   <style>
-    @media screen and (width > 72ch) {
-      .sidebar-left {
-        z-index: 1;
-      }
-
-      .inner-content {
-        .breakout,
-        .full-width,
-        .feature {
-          z-index: 0;
-        }
-      }
-
-      .sidebar-right {
-        z-index: 1;
-      }
+    /* Have the shelf fully disappear when closed */
+    /* :root {
+      --graupl-navigation-shelf-closed-display: none;
+      --graupl-navigation-shelf-closed-opacity: 0;
+      --graupl-navigation-shelf-starting-opacity: 0;
+      --graupl-navigation-shelf-transitioning-opacity: 0;
+      --graupl-navigation-shelf-min-width: 36ch;
     }
+
+    .left-side {
+      --graupl-navigation-shelf-closed-transform: translateX(-100%);
+      --graupl-navigation-shelf-transitioning-transform: translateX(-100%);
+    }
+
+    .right-side {
+      --graupl-navigation-shelf-closed-transform: translateX(100%);
+      --graupl-navigation-shelf-transitioning-transform: translateX(100%);
+    } */
   </style>
 </head>
 
 <body>
-  <main class="container pb-10">
+  <main class="container pb-10 shelf-aware">
     <div class="flex-columns">
       <div class="col-8">
         <h1 class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">Hello Graupl!</h1>
@@ -39,6 +42,38 @@
       </div>
       <div class="col-4 align-items-center">
         <img src="./logo.svg" alt="Graupl logo" class="logo">
+      </div>
+      <button class="navigation-shelf-toggle">Toggle shelf</button>
+      <div class="navigation-shelf bg-primary-700 text-primary-100">
+        <div class="navigation-shelf-header">
+        </div>
+        <div class="navigation-shelf-content w-shelf-open">
+          <nav class="navigation display-flex flex-col" data-graupl-menu-type="DisclosureMenu"
+            data-graupl-menu-options="{'optionalKeySupport': true}">
+            <ul class="menu flex-col">
+              <li class="menu-item flex-wrap flex-row">
+                <a class="menu-link flex-grow w-min-content" href="#typography">Typography</a>
+              </li>
+              <li class="menu-item submenu-item">
+                <button class="menu-link button link submenu-toggle">About</button>
+                <ul class="submenu min-w-full position-relative">
+                  <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
+                  <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
+                  <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
+                </ul>
+              </li>
+              <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
+              <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
+              <li class="menu-item"><a class="menu-link button"
+                  href="#">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="navigation-shelf-footer w-shelf-current display-flex flex-wrap">
+          <button class="button navigation-shelf-lock-toggle w-full" aria-label="Toggle shelf lock"></button>
+          <button class="button navigation-shelf-hover-toggle w-full" aria-label="Toggle shelf hover"></button>
+          <button class="button navigation-shelf-side-toggle w-full" aria-label="Toggle side"></button>
+        </div>
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
@@ -1168,6 +1203,7 @@
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script src="./dist/js/graupl.js"></script>
+  <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const setTheme = window.localStorage.getItem('theme') || preferredTheme;
@@ -1184,6 +1220,15 @@
       document.documentElement.classList.add(`${newTheme}-mode`);
       window.localStorage.setItem('theme', newTheme);
       themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("h1,h2,h3,h4,h5,h6").forEach((heading) => {
+        if (heading.id !== "") return;
+
+        heading.id = heading.innerText.toLowerCase().replace(/[^\w]/g, " ").trim().replace(/\s+/g, "-");
+      });
     });
   </script>
 </body>
