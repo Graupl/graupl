@@ -1,0 +1,228 @@
+@use "pkg:@graupl/icons/src/component/icon/mixins" as icon-mixins;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/mixins/animation";
+@use "defaults";
+@use "variables" as *;
+@use "sass:map";
+@warn "The `@graupl/navigation-shelf` component is under active development and is highly experimental. It is not recommended for production use at this time.";
+
+// `.navigation-shelf`
+#{defaults.$navigation-shelf-selector-base}#{defaults.$navigation-shelf-selector} {
+  --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-width};
+
+  display: $navigation-shelf-display;
+  position: fixed;
+  z-index: $navigation-shelf-z-index;
+  top: 0;
+  bottom: 0;
+  grid-template-columns: [header-start content-start footer-start] $navigation-shelf-width [footer-end content-end header-end];
+  grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end footer-start] auto [footer-end];
+  width: $navigation-shelf-width;
+  overflow-x: hidden;
+  transform: $navigation-shelf-transform;
+  transition: $navigation-shelf-transition;
+  border-width: $navigation-shelf-border-width;
+  border-style: $navigation-shelf-border-style;
+  border-color: $navigation-shelf-border-color;
+  opacity: $navigation-shelf-opacity;
+  background: $navigation-shelf-background;
+  color: $navigation-shelf-color;
+  isolation: isolate;
+
+  @starting-style {
+    display: $navigation-shelf-starting-display;
+    width: $navigation-shelf-starting-width;
+    transform: $navigation-shelf-starting-transform;
+    opacity: $navigation-shelf-starting-opacity;
+  }
+
+  @include animation.off {
+    --#{root-defaults.$prefix}navigation-shelf-transition: #{$navigation-shelf-transition-reduced-motion};
+  }
+
+  // `&,`
+  // `&.left-side`
+  &,
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-left-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content,
+      #{map.get(defaults.$navigation-shelf-icons, "shelf-right")}
+    );
+
+    right: auto;
+    left: 0;
+
+    // `&.locked`
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "unlock-right")}
+      );
+    }
+
+    // `&.unlocked`
+    &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-right")}
+      );
+    }
+  }
+
+  // `&.right-side`
+  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-left-content,
+      #{map.get(defaults.$navigation-shelf-icons, "shelf-left")}
+    );
+
+    right: 0;
+    left: auto;
+
+    // `&.locked`
+    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-left-content,
+        #{map.get(defaults.$navigation-shelf-icons, "unlock-left")}
+      );
+    }
+
+    // `&.unlocked`
+    &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-left-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-left")}
+      );
+    }
+  }
+
+  // `&.hoverable`
+  &#{defaults.$navigation-shelf-hoverable-selector-base}#{defaults.$navigation-shelf-hoverable-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-disable-hover-content,
+      #{map.get(defaults.$navigation-shelf-icons, "disable-hover")}
+    );
+  }
+
+  // `&.not-hoverable`
+  &#{defaults.$navigation-shelf-not-hoverable-selector-base}#{defaults.$navigation-shelf-not-hoverable-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
+      #{map.get(defaults.$navigation-shelf-icons, "enable-hover")}
+    );
+  }
+
+  // `&.hide`
+  &#{defaults.$navigation-shelf-closed-selector-base}#{defaults.$navigation-shelf-closed-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-closed-width};
+
+    display: $navigation-shelf-closed-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-closed-width [footer-end content-end header-end];
+    width: $navigation-shelf-closed-width;
+    transform: $navigation-shelf-closed-transform;
+    opacity: $navigation-shelf-closed-opacity;
+  }
+
+  // `&.transitioning`
+  &#{defaults.$navigation-shelf-transitioning-selector-base}#{defaults.$navigation-shelf-transitioning-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-transitioning-width};
+
+    display: $navigation-shelf-transitioning-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-transitioning-width [footer-end content-end header-end];
+    width: $navigation-shelf-transitioning-width;
+    transform: $navigation-shelf-transitioning-transform;
+    opacity: $navigation-shelf-transitioning-opacity;
+  }
+
+  // `&.show`
+  &#{defaults.$navigation-shelf-open-selector-base}#{defaults.$navigation-shelf-open-selector} {
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-open-width};
+
+    display: $navigation-shelf-open-display;
+    grid-template-columns: [header-start content-start footer-start] $navigation-shelf-max-width [footer-end content-end header-end];
+    width: $navigation-shelf-open-width;
+    transform: $navigation-shelf-open-transform;
+    opacity: $navigation-shelf-open-opacity;
+  }
+
+  // `.navigation-shelf-header`
+  #{defaults.$navigation-shelf-header-selector-base}#{defaults.$navigation-shelf-header-selector} {
+    grid-area: header;
+  }
+
+  // `.navigation-shelf-content`
+  #{defaults.$navigation-shelf-content-selector-base}#{defaults.$navigation-shelf-content-selector} {
+    grid-area: content;
+  }
+
+  // `.navigation-shelf-footer`
+  #{defaults.$navigation-shelf-footer-selector-base}#{defaults.$navigation-shelf-footer-selector} {
+    grid-area: footer;
+  }
+
+  // `.navigation-shelf-side-toggle`
+  #{defaults.$navigation-shelf-side-toggle-selector-base}#{defaults.$navigation-shelf-side-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content,
+        #{map.get(defaults.$navigation-shelf-icons, "shelf-right")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-side-toggle-spacer,
+      0
+    );
+
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-side-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-side-toggle-pseudo-element}
+    );
+  }
+
+  // `.navigation-shelf-lock-toggle`
+  #{defaults.$navigation-shelf-lock-toggle-selector-base}#{defaults.$navigation-shelf-lock-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-content,
+        #{map.get(defaults.$navigation-shelf-icons, "lock-right")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-lock-toggle-spacer,
+      0
+    );
+
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-lock-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-lock-toggle-pseudo-element}
+    );
+  }
+
+  // `.navigation-shelf-hover-toggle`
+  #{defaults.$navigation-shelf-hover-toggle-selector-base}#{defaults.$navigation-shelf-hover-toggle-selector} {
+    --#{root-defaults.$prefix}icon: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content,
+      var(
+        --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
+        #{map.get(defaults.$navigation-shelf-icons, "enable-hover")}
+      )
+    );
+    --#{root-defaults.$prefix}icon-spacer: var(
+      --#{root-defaults.$prefix}navigation-shelf-hover-toggle-spacer,
+      0
+    );
+
+    @include icon-mixins.apply-component(
+      #{defaults.$navigation-shelf-hover-toggle-pseudo-element}
+    );
+    @include icon-mixins.apply-theme(
+      #{defaults.$navigation-shelf-hover-toggle-pseudo-element}
+    );
+  }
+}

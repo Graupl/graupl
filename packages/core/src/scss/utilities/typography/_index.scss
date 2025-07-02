@@ -36,6 +36,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -48,15 +49,20 @@
 // - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
 // - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$text-selector-prefix`: The prefix for the text utility classes.
+// - `$text-style-selector-prefix`: The prefix for the text style utility classes.
+// - `$base-text-style-properties`: The base properties and values for the text style utility classes.
+// - `$text-style-properties`: The combined properties and values for the text style utility classes.
+// - `$font-size-selector-prefix`: The prefix for the font size utility classes.
+// - `$base-font-size-properties`: The base properties and values for the font size utility classes.
+// - `$font-size-properties`: The combined properties and values for the font size utility classes.
 // - `$font-weight-selector-prefix`: The prefix for the font weight utility classes.
 // - `$font-style-selector-prefix`: The prefix for the font style utility classes.
 // - `$base-font-style-properties`: The base properties and values for the font style utility classes.
-// - `$custom-font-style-properties`: The custom properties and values for the font style utility classes.
+// - `$custom-font-style-properties`: [DEPRECATED] The custom properties and values for the font style utility classes.
 // - `$font-style-properties`: The combined properties and values for the font style utility classes.
 // - `$text-transform-selector-prefix`: The prefix for the text transform utility classes.
 // - `$base-text-transform-properties`: The base properties and values for the text transform utility classes.
-// - `$custom-text-transform-properties`: The custom properties and values for the text transform utility classes.
+// - `$custom-text-transform-properties`: [DEPRECATED] The custom properties and values for the text transform utility classes.
 // - `$text-transform-properties`: The combined properties and values for the text transform utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
@@ -101,145 +107,169 @@
   $selector-prefix: defaults.$selector-base;
 
   // For each font size property, create a utility class.
-  @each $size, $value in typography.$font-sizes {
-    // e.g. `.text-2xl` or `.text-3xl`
-    $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
+  // @each $size, $value in typography.$font-sizes {
+  //   // e.g. `.text-2xl` or `.text-3xl`
+  //   $selector: #{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$size};
 
-    @include utility.create($selector, font-size, $value);
-  }
+  //   @include utility.create($selector, font-size, $value);
+  // }
+
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}paragraph";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$paragraph-margin,
+  //     font-size: typography.$paragraph-font-size,
+  //     font-weight: typography.$paragraph-font-weight,
+  //     line-height: typography.$paragraph-line-height,
+  //     color: typography.$paragraph-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-small`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}small";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$small-margin,
+  //     font-size: typography.$small-font-size,
+  //     font-weight: typography.$small-font-weight,
+  //     line-height: typography.$small-line-height,
+  //     color: typography.$small-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h1`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h1";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h1-margin,
+  //     font-family: typography.$h1-font-family,
+  //     font-size: typography.$h1-font-size,
+  //     font-weight: typography.$h1-font-weight,
+  //     line-height: typography.$h1-line-height,
+  //     color: typography.$h1-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h2`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h2";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h2-margin,
+  //     font-family: typography.$h2-font-family,
+  //     font-size: typography.$h2-font-size,
+  //     font-weight: typography.$h2-font-weight,
+  //     line-height: typography.$h2-line-height,
+  //     color: typography.$h2-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h3`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h3";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h3-margin,
+  //     font-family: typography.$h3-font-family,
+  //     font-size: typography.$h3-font-size,
+  //     font-weight: typography.$h3-font-weight,
+  //     line-height: typography.$h3-line-height,
+  //     color: typography.$h3-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h4`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h4";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h4-margin,
+  //     font-family: typography.$h4-font-family,
+  //     font-size: typography.$h4-font-size,
+  //     font-weight: typography.$h4-font-weight,
+  //     line-height: typography.$h4-line-height,
+  //     color: typography.$h4-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h5`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h5";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h5-margin,
+  //     font-family: typography.$h5-font-family,
+  //     font-size: typography.$h5-font-size,
+  //     font-weight: typography.$h5-font-weight,
+  //     line-height: typography.$h5-line-height,
+  //     color: typography.$h5-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
+
+  // // `.text-h6`
+  // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h6";
+
+  // @include utility.create-mapped(
+  //   $selector,
+  //   (
+  //     margin: typography.$h6-margin,
+  //     font-family: typography.$h6-font-family,
+  //     font-size: typography.$h6-font-size,
+  //     font-weight: typography.$h6-font-weight,
+  //     line-height: typography.$h6-line-height,
+  //     color: typography.$h6-color,
+  //   ),
+  //   $important: defaults.$use-important
+  // );
 
   // Create utility classes for each type of text style in Graupl.
   // These will apply not only the font size, but also the margin, font weight, and line height.
   // This will allow for a more consistent and maintainable typography system.
   //
   // `.text-paragraph`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}paragraph";
 
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$paragraph-margin,
-      font-size: typography.$paragraph-font-size,
-      font-weight: typography.$paragraph-font-weight,
-      line-height: typography.$paragraph-line-height,
-      color: typography.$paragraph-color,
-    ),
-    $important: defaults.$use-important
-  );
+  @each $style, $props in defaults.$text-style-properties {
+    // e.g. `.text-paragraph` or `.text-small`
+    $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$style}";
 
-  // `.text-small`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}small";
+    @include utility.create-mapped(
+      $selector,
+      $props,
+      $important: defaults.$use-important
+    );
+  }
 
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$small-margin,
-      font-size: typography.$small-font-size,
-      font-weight: typography.$small-font-weight,
-      line-height: typography.$small-line-height,
-      color: typography.$small-color,
-    ),
-    $important: defaults.$use-important
-  );
+  // For each font size property, create a utility class.
+  @each $size, $value in defaults.$font-size-properties {
+    $selector: #{$selector-prefix}#{defaults.$font-size-selector-prefix}#{$size};
 
-  // `.text-h1`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h1";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h1-margin,
-      font-family: typography.$h1-font-family,
-      font-size: typography.$h1-font-size,
-      font-weight: typography.$h1-font-weight,
-      line-height: typography.$h1-line-height,
-      color: typography.$h1-color,
-    ),
-    $important: defaults.$use-important
-  );
-
-  // `.text-h2`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h2";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h2-margin,
-      font-family: typography.$h2-font-family,
-      font-size: typography.$h2-font-size,
-      font-weight: typography.$h2-font-weight,
-      line-height: typography.$h2-line-height,
-      color: typography.$h2-color,
-    ),
-    $important: defaults.$use-important
-  );
-
-  // `.text-h3`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h3";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h3-margin,
-      font-family: typography.$h3-font-family,
-      font-size: typography.$h3-font-size,
-      font-weight: typography.$h3-font-weight,
-      line-height: typography.$h3-line-height,
-      color: typography.$h3-color,
-    ),
-    $important: defaults.$use-important
-  );
-
-  // `.text-h4`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h4";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h4-margin,
-      font-family: typography.$h4-font-family,
-      font-size: typography.$h4-font-size,
-      font-weight: typography.$h4-font-weight,
-      line-height: typography.$h4-line-height,
-      color: typography.$h4-color,
-    ),
-    $important: defaults.$use-important
-  );
-
-  // `.text-h5`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h5";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h5-margin,
-      font-family: typography.$h5-font-family,
-      font-size: typography.$h5-font-size,
-      font-weight: typography.$h5-font-weight,
-      line-height: typography.$h5-line-height,
-      color: typography.$h5-color,
-    ),
-    $important: defaults.$use-important
-  );
-
-  // `.text-h6`
-  $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h6";
-
-  @include utility.create-mapped(
-    $selector,
-    (
-      margin: typography.$h6-margin,
-      font-family: typography.$h6-font-family,
-      font-size: typography.$h6-font-size,
-      font-weight: typography.$h6-font-weight,
-      line-height: typography.$h6-line-height,
-      color: typography.$h6-color,
-    ),
-    $important: defaults.$use-important
-  );
+    @include utility.create(
+      $selector,
+      font-size,
+      $value,
+      $important: defaults.$use-important
+    );
+  }
 
   // For each font weight property, create a utility class.
-  @each $weight, $value in typography.$font-weights {
+  @each $weight, $value in defaults.$font-weight-properties {
     // e.g. `.font-bold` or `.font-normal`
     $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
@@ -283,10 +313,179 @@
       // e.g. `.md:` or `.lg:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
+      // // For each font size property, create a utility class.
+      // @each $size, $value in typography.$font-sizes {
+      //   // e.g. `.md:text-2xl` or `.lg:text-3xl`
+      //   $selector: #{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$size};
+
+      //   @include utility.create(
+      //     $selector,
+      //     font-size,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $screen: $screen-name
+      //   );
+      // }
+
+      // // Create utility classes for each type of text style in Graupl.
+      // // These will apply not only the font size, but also the margin, font weight, and line height.
+      // // This will allow for a more consistent and maintainable typography system.
+      // //
+      // // e.g. `.md:text-paragraph` or `.lg:text-paragraph`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}paragraph";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$paragraph-margin,
+      //     font-size: typography.$paragraph-font-size,
+      //     font-weight: typography.$paragraph-font-weight,
+      //     line-height: typography.$paragraph-line-height,
+      //     color: typography.$paragraph-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-small` or `.lg:text-small`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}small";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$small-margin,
+      //     font-size: typography.$small-font-size,
+      //     font-weight: typography.$small-font-weight,
+      //     line-height: typography.$small-line-height,
+      //     color: typography.$small-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h1` or `.lg:text-h1`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h1";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h1-margin,
+      //     font-family: typography.$h1-font-family,
+      //     font-size: typography.$h1-font-size,
+      //     font-weight: typography.$h1-font-weight,
+      //     line-height: typography.$h1-line-height,
+      //     color: typography.$h1-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h2` or `.lg:text-h2`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h2";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h2-margin,
+      //     font-family: typography.$h2-font-family,
+      //     font-size: typography.$h2-font-size,
+      //     font-weight: typography.$h2-font-weight,
+      //     line-height: typography.$h2-line-height,
+      //     color: typography.$h2-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h3` or `.lg:text-h3`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h3";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h3-margin,
+      //     font-family: typography.$h3-font-family,
+      //     font-size: typography.$h3-font-size,
+      //     font-weight: typography.$h3-font-weight,
+      //     line-height: typography.$h3-line-height,
+      //     color: typography.$h3-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h4` or `.lg:text-h4`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h4";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h4-margin,
+      //     font-family: typography.$h4-font-family,
+      //     font-size: typography.$h4-font-size,
+      //     font-weight: typography.$h4-font-weight,
+      //     line-height: typography.$h4-line-height,
+      //     color: typography.$h4-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h5` or `.lg:text-h5`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h5";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h5-margin,
+      //     font-family: typography.$h5-font-family,
+      //     font-size: typography.$h5-font-size,
+      //     font-weight: typography.$h5-font-weight,
+      //     line-height: typography.$h5-line-height,
+      //     color: typography.$h5-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // // e.g. `.md:text-h6` or `.lg:text-h6`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h6";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h6-margin,
+      //     font-family: typography.$h6-font-family,
+      //     font-size: typography.$h6-font-size,
+      //     font-weight: typography.$h6-font-weight,
+      //     line-height: typography.$h6-line-height,
+      //     color: typography.$h6-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $screen: $screen-name
+      // );
+
+      // Create utility classes for each type of text style in Graupl.
+      // These will apply not only the font size, but also the margin, font weight, and line height.
+      // This will allow for a more consistent and maintainable typography system.
+      //
+      // `.text-paragraph`
+
+      @each $style, $props in defaults.$text-style-properties {
+        // e.g. `.text-paragraph` or `.text-small`
+        $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$style}";
+
+        @include utility.create-mapped(
+          $selector,
+          $props,
+          $important: defaults.$use-important,
+          $screen: $screen-name
+        );
+      }
+
       // For each font size property, create a utility class.
-      @each $size, $value in typography.$font-sizes {
-        // e.g. `.md:text-2xl` or `.lg:text-3xl`
-        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
+      @each $size, $value in defaults.$font-size-properties {
+        $selector: #{$selector-prefix}#{defaults.$font-size-selector-prefix}#{$size};
 
         @include utility.create(
           $selector,
@@ -297,146 +496,8 @@
         );
       }
 
-      // Create utility classes for each type of text style in Graupl.
-      // These will apply not only the font size, but also the margin, font weight, and line height.
-      // This will allow for a more consistent and maintainable typography system.
-      //
-      // e.g. `.md:text-paragraph` or `.lg:text-paragraph`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}paragraph";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$paragraph-margin,
-          font-size: typography.$paragraph-font-size,
-          font-weight: typography.$paragraph-font-weight,
-          line-height: typography.$paragraph-line-height,
-          color: typography.$paragraph-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-small` or `.lg:text-small`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}small";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$small-margin,
-          font-size: typography.$small-font-size,
-          font-weight: typography.$small-font-weight,
-          line-height: typography.$small-line-height,
-          color: typography.$small-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h1` or `.lg:text-h1`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h1";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h1-margin,
-          font-family: typography.$h1-font-family,
-          font-size: typography.$h1-font-size,
-          font-weight: typography.$h1-font-weight,
-          line-height: typography.$h1-line-height,
-          color: typography.$h1-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h2` or `.lg:text-h2`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h2";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h2-margin,
-          font-family: typography.$h2-font-family,
-          font-size: typography.$h2-font-size,
-          font-weight: typography.$h2-font-weight,
-          line-height: typography.$h2-line-height,
-          color: typography.$h2-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h3` or `.lg:text-h3`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h3";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h3-margin,
-          font-family: typography.$h3-font-family,
-          font-size: typography.$h3-font-size,
-          font-weight: typography.$h3-font-weight,
-          line-height: typography.$h3-line-height,
-          color: typography.$h3-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h4` or `.lg:text-h4`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h4";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h4-margin,
-          font-family: typography.$h4-font-family,
-          font-size: typography.$h4-font-size,
-          font-weight: typography.$h4-font-weight,
-          line-height: typography.$h4-line-height,
-          color: typography.$h4-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h5` or `.lg:text-h5`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h5";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h5-margin,
-          font-family: typography.$h5-font-family,
-          font-size: typography.$h5-font-size,
-          font-weight: typography.$h5-font-weight,
-          line-height: typography.$h5-line-height,
-          color: typography.$h5-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
-      // e.g. `.md:text-h6` or `.lg:text-h6`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h6";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h6-margin,
-          font-family: typography.$h6-font-family,
-          font-size: typography.$h6-font-size,
-          font-weight: typography.$h6-font-weight,
-          line-height: typography.$h6-line-height,
-          color: typography.$h6-color,
-        ),
-        $important: defaults.$use-important,
-        $screen: $screen-name
-      );
-
       // For each font weight property, create a utility class.
-      @each $weight, $value in typography.$font-weights {
+      @each $weight, $value in defaults.$font-weight-properties {
         // e.g. `.md:font-bold` or `.lg:font-normal`
         $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
@@ -486,10 +547,179 @@
         // e.g. `.dark:` or `.light:`
         $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
+        // // For each font size property, create a utility class.
+        // @each $size, $value in typography.$font-sizes {
+        //   // e.g. `.dark:text-2xl` or `.light:text-3xl`
+        //   $selector: #{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$size};
+
+        //   @include utility.create(
+        //     $selector,
+        //     font-size,
+        //     $value,
+        //     $important: defaults.$use-important,
+        //     $theme: $theme-name
+        //   );
+        // }
+
+        // // Create utility classes for each type of text style in Graupl.
+        // // These will apply not only the font size, but also the margin, font weight, and line height.
+        // // This will allow for a more consistent and maintainable typography system.
+        // //
+        // // e.g. `.dark:text-paragraph` or `.light:text-paragraph`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}paragraph";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$paragraph-margin,
+        //     font-size: typography.$paragraph-font-size,
+        //     font-weight: typography.$paragraph-font-weight,
+        //     line-height: typography.$paragraph-line-height,
+        //     color: typography.$paragraph-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-small` or `.light:text-small`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}small";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$small-margin,
+        //     font-size: typography.$small-font-size,
+        //     font-weight: typography.$small-font-weight,
+        //     line-height: typography.$small-line-height,
+        //     color: typography.$small-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h1` or `.light:text-h1`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h1";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h1-margin,
+        //     font-family: typography.$h1-font-family,
+        //     font-size: typography.$h1-font-size,
+        //     font-weight: typography.$h1-font-weight,
+        //     line-height: typography.$h1-line-height,
+        //     color: typography.$h1-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h2` or `.light:text-h2`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h2";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h2-margin,
+        //     font-family: typography.$h2-font-family,
+        //     font-size: typography.$h2-font-size,
+        //     font-weight: typography.$h2-font-weight,
+        //     line-height: typography.$h2-line-height,
+        //     color: typography.$h2-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h3` or `.light:text-h3`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h3";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h3-margin,
+        //     font-family: typography.$h3-font-family,
+        //     font-size: typography.$h3-font-size,
+        //     font-weight: typography.$h3-font-weight,
+        //     line-height: typography.$h3-line-height,
+        //     color: typography.$h3-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h4` or `.light:text-h4`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h4";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h4-margin,
+        //     font-family: typography.$h4-font-family,
+        //     font-size: typography.$h4-font-size,
+        //     font-weight: typography.$h4-font-weight,
+        //     line-height: typography.$h4-line-height,
+        //     color: typography.$h4-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h5` or `.light:text-h5`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h5";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h5-margin,
+        //     font-family: typography.$h5-font-family,
+        //     font-size: typography.$h5-font-size,
+        //     font-weight: typography.$h5-font-weight,
+        //     line-height: typography.$h5-line-height,
+        //     color: typography.$h5-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // // e.g. `.dark:text-h6` or `.light:text-h6`
+        // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h6";
+
+        // @include utility.create-mapped(
+        //   $selector,
+        //   (
+        //     margin: typography.$h6-margin,
+        //     font-family: typography.$h6-font-family,
+        //     font-size: typography.$h6-font-size,
+        //     font-weight: typography.$h6-font-weight,
+        //     line-height: typography.$h6-line-height,
+        //     color: typography.$h6-color,
+        //   ),
+        //   $important: defaults.$use-important,
+        //   $theme: $theme-name
+        // );
+
+        // Create utility classes for each type of text style in Graupl.
+        // These will apply not only the font size, but also the margin, font weight, and line height.
+        // This will allow for a more consistent and maintainable typography system.
+        //
+        // `.text-paragraph`
+
+        @each $style, $props in defaults.$text-style-properties {
+          // e.g. `.text-paragraph` or `.text-small`
+          $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$style}";
+
+          @include utility.create-mapped(
+            $selector,
+            $props,
+            $important: defaults.$use-important,
+            $theme: $theme-name
+          );
+        }
+
         // For each font size property, create a utility class.
-        @each $size, $value in typography.$font-sizes {
-          // e.g. `.dark:text-2xl` or `.light:text-3xl`
-          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
+        @each $size, $value in defaults.$font-size-properties {
+          $selector: #{$selector-prefix}#{defaults.$font-size-selector-prefix}#{$size};
 
           @include utility.create(
             $selector,
@@ -500,146 +730,8 @@
           );
         }
 
-        // Create utility classes for each type of text style in Graupl.
-        // These will apply not only the font size, but also the margin, font weight, and line height.
-        // This will allow for a more consistent and maintainable typography system.
-        //
-        // e.g. `.dark:text-paragraph` or `.light:text-paragraph`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}paragraph";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$paragraph-margin,
-            font-size: typography.$paragraph-font-size,
-            font-weight: typography.$paragraph-font-weight,
-            line-height: typography.$paragraph-line-height,
-            color: typography.$paragraph-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-small` or `.light:text-small`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}small";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$small-margin,
-            font-size: typography.$small-font-size,
-            font-weight: typography.$small-font-weight,
-            line-height: typography.$small-line-height,
-            color: typography.$small-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h1` or `.light:text-h1`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h1";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h1-margin,
-            font-family: typography.$h1-font-family,
-            font-size: typography.$h1-font-size,
-            font-weight: typography.$h1-font-weight,
-            line-height: typography.$h1-line-height,
-            color: typography.$h1-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h2` or `.light:text-h2`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h2";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h2-margin,
-            font-family: typography.$h2-font-family,
-            font-size: typography.$h2-font-size,
-            font-weight: typography.$h2-font-weight,
-            line-height: typography.$h2-line-height,
-            color: typography.$h2-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h3` or `.light:text-h3`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h3";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h3-margin,
-            font-family: typography.$h3-font-family,
-            font-size: typography.$h3-font-size,
-            font-weight: typography.$h3-font-weight,
-            line-height: typography.$h3-line-height,
-            color: typography.$h3-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h4` or `.light:text-h4`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h4";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h4-margin,
-            font-family: typography.$h4-font-family,
-            font-size: typography.$h4-font-size,
-            font-weight: typography.$h4-font-weight,
-            line-height: typography.$h4-line-height,
-            color: typography.$h4-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h5` or `.light:text-h5`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h5";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h5-margin,
-            font-family: typography.$h5-font-family,
-            font-size: typography.$h5-font-size,
-            font-weight: typography.$h5-font-weight,
-            line-height: typography.$h5-line-height,
-            color: typography.$h5-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
-        // e.g. `.dark:text-h6` or `.light:text-h6`
-        $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h6";
-
-        @include utility.create-mapped(
-          $selector,
-          (
-            margin: typography.$h6-margin,
-            font-family: typography.$h6-font-family,
-            font-size: typography.$h6-font-size,
-            font-weight: typography.$h6-font-weight,
-            line-height: typography.$h6-line-height,
-            color: typography.$h6-color,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-
         // For each font weight property, create a utility class.
-        @each $weight, $value in typography.$font-weights {
+        @each $weight, $value in defaults.$font-weight-properties {
           // e.g. `.dark:font-bold` or `.light:font-normal`
           $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
@@ -689,10 +781,179 @@
       // e.g. `.hover:` or `.focus:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
+      // // For each font size property, create a utility class.
+      // @each $size, $value in typography.$font-sizes {
+      //   // e.g. `.hover:text-2xl` or `.focus:text-3xl`
+      //   $selector: #{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$size};
+
+      //   @include utility.create(
+      //     $selector,
+      //     font-size,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $state: $state-name
+      //   );
+      // }
+
+      // // Create utility classes for each type of text style in Graupl.
+      // // These will apply not only the font size, but also the margin, font weight, and line height.
+      // // This will allow for a more consistent and maintainable typography system.
+      // //
+      // // e.g. `.hover:text-paragraph` or `.focus:text-paragraph`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}paragraph";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$paragraph-margin,
+      //     font-size: typography.$paragraph-font-size,
+      //     font-weight: typography.$paragraph-font-weight,
+      //     line-height: typography.$paragraph-line-height,
+      //     color: typography.$paragraph-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-small` or `.focus:text-small`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}small";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$small-margin,
+      //     font-size: typography.$small-font-size,
+      //     font-weight: typography.$small-font-weight,
+      //     line-height: typography.$small-line-height,
+      //     color: typography.$small-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h1` or `.focus:text-h1`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h1";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h1-margin,
+      //     font-family: typography.$h1-font-family,
+      //     font-size: typography.$h1-font-size,
+      //     font-weight: typography.$h1-font-weight,
+      //     line-height: typography.$h1-line-height,
+      //     color: typography.$h1-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h2` or `.focus:text-h2`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h2";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h2-margin,
+      //     font-family: typography.$h2-font-family,
+      //     font-size: typography.$h2-font-size,
+      //     font-weight: typography.$h2-font-weight,
+      //     line-height: typography.$h2-line-height,
+      //     color: typography.$h2-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h3` or `.focus:text-h3`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h3";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h3-margin,
+      //     font-family: typography.$h3-font-family,
+      //     font-size: typography.$h3-font-size,
+      //     font-weight: typography.$h3-font-weight,
+      //     line-height: typography.$h3-line-height,
+      //     color: typography.$h3-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h4` or `.focus:text-h4`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h4";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h4-margin,
+      //     font-family: typography.$h4-font-family,
+      //     font-size: typography.$h4-font-size,
+      //     font-weight: typography.$h4-font-weight,
+      //     line-height: typography.$h4-line-height,
+      //     color: typography.$h4-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h5` or `.focus:text-h5`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h5";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h5-margin,
+      //     font-family: typography.$h5-font-family,
+      //     font-size: typography.$h5-font-size,
+      //     font-weight: typography.$h5-font-weight,
+      //     line-height: typography.$h5-line-height,
+      //     color: typography.$h5-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // // e.g. `.hover:text-h6` or `.focus:text-h6`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h6";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h6-margin,
+      //     font-family: typography.$h6-font-family,
+      //     font-size: typography.$h6-font-size,
+      //     font-weight: typography.$h6-font-weight,
+      //     line-height: typography.$h6-line-height,
+      //     color: typography.$h6-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $state: $state-name
+      // );
+
+      // Create utility classes for each type of text style in Graupl.
+      // These will apply not only the font size, but also the margin, font weight, and line height.
+      // This will allow for a more consistent and maintainable typography system.
+      //
+      // `.text-paragraph`
+
+      @each $style, $props in defaults.$text-style-properties {
+        // e.g. `.text-paragraph` or `.text-small`
+        $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$style}";
+
+        @include utility.create-mapped(
+          $selector,
+          $props,
+          $important: defaults.$use-important,
+          $state: $state-name
+        );
+      }
+
       // For each font size property, create a utility class.
-      @each $size, $value in typography.$font-sizes {
-        // e.g. `.hover:text-2xl` or `.focus:text-3xl`
-        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
+      @each $size, $value in defaults.$font-size-properties {
+        $selector: #{$selector-prefix}#{defaults.$font-size-selector-prefix}#{$size};
 
         @include utility.create(
           $selector,
@@ -703,146 +964,8 @@
         );
       }
 
-      // Create utility classes for each type of text style in Graupl.
-      // These will apply not only the font size, but also the margin, font weight, and line height.
-      // This will allow for a more consistent and maintainable typography system.
-      //
-      // e.g. `.hover:text-paragraph` or `.focus:text-paragraph`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}paragraph";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$paragraph-margin,
-          font-size: typography.$paragraph-font-size,
-          font-weight: typography.$paragraph-font-weight,
-          line-height: typography.$paragraph-line-height,
-          color: typography.$paragraph-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-small` or `.focus:text-small`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}small";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$small-margin,
-          font-size: typography.$small-font-size,
-          font-weight: typography.$small-font-weight,
-          line-height: typography.$small-line-height,
-          color: typography.$small-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h1` or `.focus:text-h1`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h1";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h1-margin,
-          font-family: typography.$h1-font-family,
-          font-size: typography.$h1-font-size,
-          font-weight: typography.$h1-font-weight,
-          line-height: typography.$h1-line-height,
-          color: typography.$h1-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h2` or `.focus:text-h2`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h2";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h2-margin,
-          font-family: typography.$h2-font-family,
-          font-size: typography.$h2-font-size,
-          font-weight: typography.$h2-font-weight,
-          line-height: typography.$h2-line-height,
-          color: typography.$h2-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h3` or `.focus:text-h3`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h3";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h3-margin,
-          font-family: typography.$h3-font-family,
-          font-size: typography.$h3-font-size,
-          font-weight: typography.$h3-font-weight,
-          line-height: typography.$h3-line-height,
-          color: typography.$h3-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h4` or `.focus:text-h4`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h4";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h4-margin,
-          font-family: typography.$h4-font-family,
-          font-size: typography.$h4-font-size,
-          font-weight: typography.$h4-font-weight,
-          line-height: typography.$h4-line-height,
-          color: typography.$h4-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h5` or `.focus:text-h5`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h5";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h5-margin,
-          font-family: typography.$h5-font-family,
-          font-size: typography.$h5-font-size,
-          font-weight: typography.$h5-font-weight,
-          line-height: typography.$h5-line-height,
-          color: typography.$h5-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
-      // e.g. `.hover:text-h6` or `.focus:text-h6`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h6";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h6-margin,
-          font-family: typography.$h6-font-family,
-          font-size: typography.$h6-font-size,
-          font-weight: typography.$h6-font-weight,
-          line-height: typography.$h6-line-height,
-          color: typography.$h6-color,
-        ),
-        $important: defaults.$use-important,
-        $state: $state-name
-      );
-
       // For each font weight property, create a utility class.
-      @each $weight, $value in typography.$font-weights {
+      @each $weight, $value in defaults.$font-weight-properties {
         // e.g. `.hover:font-bold` or `.focus:font-normal`
         $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 
@@ -891,10 +1014,179 @@
       // e.g. `.md:` or `.lg:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
 
+      // // For each font size property, create a utility class.
+      // @each $size, $value in typography.$font-sizes {
+      //   // e.g. `.md:text-2xl` or `.lg:text-3xl`
+      //   $selector: #{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$size};
+
+      //   @include utility.create(
+      //     $selector,
+      //     font-size,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $container: $container-name
+      //   );
+      // }
+
+      // // Create utility classes for each type of text style in Graupl.
+      // // These will apply not only the font size, but also the margin, font weight, and line height.
+      // // This will allow for a more consistent and maintainable typography system.
+      // //
+      // // e.g. `.md:text-paragraph` or `.lg:text-paragraph`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}paragraph";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$paragraph-margin,
+      //     font-size: typography.$paragraph-font-size,
+      //     font-weight: typography.$paragraph-font-weight,
+      //     line-height: typography.$paragraph-line-height,
+      //     color: typography.$paragraph-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-small` or `.lg:text-small`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}small";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$small-margin,
+      //     font-size: typography.$small-font-size,
+      //     font-weight: typography.$small-font-weight,
+      //     line-height: typography.$small-line-height,
+      //     color: typography.$small-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h1` or `.lg:text-h1`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h1";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h1-margin,
+      //     font-family: typography.$h1-font-family,
+      //     font-size: typography.$h1-font-size,
+      //     font-weight: typography.$h1-font-weight,
+      //     line-height: typography.$h1-line-height,
+      //     color: typography.$h1-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h2` or `.lg:text-h2`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h2";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h2-margin,
+      //     font-family: typography.$h2-font-family,
+      //     font-size: typography.$h2-font-size,
+      //     font-weight: typography.$h2-font-weight,
+      //     line-height: typography.$h2-line-height,
+      //     color: typography.$h2-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h3` or `.lg:text-h3`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h3";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h3-margin,
+      //     font-family: typography.$h3-font-family,
+      //     font-size: typography.$h3-font-size,
+      //     font-weight: typography.$h3-font-weight,
+      //     line-height: typography.$h3-line-height,
+      //     color: typography.$h3-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h4` or `.lg:text-h4`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h4";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h4-margin,
+      //     font-family: typography.$h4-font-family,
+      //     font-size: typography.$h4-font-size,
+      //     font-weight: typography.$h4-font-weight,
+      //     line-height: typography.$h4-line-height,
+      //     color: typography.$h4-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h5` or `.lg:text-h5`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h5";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h5-margin,
+      //     font-family: typography.$h5-font-family,
+      //     font-size: typography.$h5-font-size,
+      //     font-weight: typography.$h5-font-weight,
+      //     line-height: typography.$h5-line-height,
+      //     color: typography.$h5-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // // e.g. `.md:text-h6` or `.lg:text-h6`
+      // $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}h6";
+
+      // @include utility.create-mapped(
+      //   $selector,
+      //   (
+      //     margin: typography.$h6-margin,
+      //     font-family: typography.$h6-font-family,
+      //     font-size: typography.$h6-font-size,
+      //     font-weight: typography.$h6-font-weight,
+      //     line-height: typography.$h6-line-height,
+      //     color: typography.$h6-color,
+      //   ),
+      //   $important: defaults.$use-important,
+      //   $container: $container-name
+      // );
+
+      // Create utility classes for each type of text style in Graupl.
+      // These will apply not only the font size, but also the margin, font weight, and line height.
+      // This will allow for a more consistent and maintainable typography system.
+      //
+      // `.text-paragraph`
+
+      @each $style, $props in defaults.$text-style-properties {
+        // e.g. `.text-paragraph` or `.text-small`
+        $selector: "#{$selector-prefix}#{defaults.$text-style-selector-prefix}#{$style}";
+
+        @include utility.create-mapped(
+          $selector,
+          $props,
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
+
       // For each font size property, create a utility class.
-      @each $size, $value in typography.$font-sizes {
-        // e.g. `.md:text-2xl` or `.lg:text-3xl`
-        $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$size};
+      @each $size, $value in defaults.$font-size-properties {
+        $selector: #{$selector-prefix}#{defaults.$font-size-selector-prefix}#{$size};
 
         @include utility.create(
           $selector,
@@ -905,146 +1197,8 @@
         );
       }
 
-      // Create utility classes for each type of text style in Graupl.
-      // These will apply not only the font size, but also the margin, font weight, and line height.
-      // This will allow for a more consistent and maintainable typography system.
-      //
-      // e.g. `.md:text-paragraph` or `.lg:text-paragraph`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}paragraph";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$paragraph-margin,
-          font-size: typography.$paragraph-font-size,
-          font-weight: typography.$paragraph-font-weight,
-          line-height: typography.$paragraph-line-height,
-          color: typography.$paragraph-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-small` or `.lg:text-small`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}small";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$small-margin,
-          font-size: typography.$small-font-size,
-          font-weight: typography.$small-font-weight,
-          line-height: typography.$small-line-height,
-          color: typography.$small-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h1` or `.lg:text-h1`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h1";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h1-margin,
-          font-family: typography.$h1-font-family,
-          font-size: typography.$h1-font-size,
-          font-weight: typography.$h1-font-weight,
-          line-height: typography.$h1-line-height,
-          color: typography.$h1-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h2` or `.lg:text-h2`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h2";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h2-margin,
-          font-family: typography.$h2-font-family,
-          font-size: typography.$h2-font-size,
-          font-weight: typography.$h2-font-weight,
-          line-height: typography.$h2-line-height,
-          color: typography.$h2-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h3` or `.lg:text-h3`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h3";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h3-margin,
-          font-family: typography.$h3-font-family,
-          font-size: typography.$h3-font-size,
-          font-weight: typography.$h3-font-weight,
-          line-height: typography.$h3-line-height,
-          color: typography.$h3-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h4` or `.lg:text-h4`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h4";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h4-margin,
-          font-family: typography.$h4-font-family,
-          font-size: typography.$h4-font-size,
-          font-weight: typography.$h4-font-weight,
-          line-height: typography.$h4-line-height,
-          color: typography.$h4-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h5` or `.lg:text-h5`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h5";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h5-margin,
-          font-family: typography.$h5-font-family,
-          font-size: typography.$h5-font-size,
-          font-weight: typography.$h5-font-weight,
-          line-height: typography.$h5-line-height,
-          color: typography.$h5-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
-      // e.g. `.md:text-h6` or `.lg:text-h6`
-      $selector: "#{$selector-prefix}#{defaults.$text-selector-prefix}h6";
-
-      @include utility.create-mapped(
-        $selector,
-        (
-          margin: typography.$h6-margin,
-          font-family: typography.$h6-font-family,
-          font-size: typography.$h6-font-size,
-          font-weight: typography.$h6-font-weight,
-          line-height: typography.$h6-line-height,
-          color: typography.$h6-color,
-        ),
-        $important: defaults.$use-important,
-        $container: $container-name
-      );
-
       // For each font weight property, create a utility class.
-      @each $weight, $value in typography.$font-weights {
+      @each $weight, $value in defaults.$font-weight-properties {
         // e.g. `.md:font-bold` or `.lg:font-normal`
         $selector: #{$selector-prefix}#{defaults.$font-weight-selector-prefix}#{$weight};
 

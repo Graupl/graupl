@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -41,7 +42,19 @@ $base-display-properties: (
   list-item: list-item,
 );
 $custom-display-properties: () !default;
-$display-properties: map.merge(
-  $base-display-properties,
-  $custom-display-properties
-);
+$display-properties: () !default;
+
+// @todo remove this once $custom-display-properties is removed
+@if $custom-display-properties != () {
+  @warn "`$custom-display-properties` is deprecated and will be removed in a future release of Graupl. Use `$display-properties` instead.";
+
+  $display-properties: map.merge(
+    $display-properties,
+    $custom-display-properties
+  );
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $display-properties: map.merge($base-display-properties, $display-properties);
+}

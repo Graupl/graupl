@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -38,7 +39,14 @@ $base-inset-properties: (
   left: left,
 );
 $custom-inset-properties: () !default;
-$inset-properties: map.merge($base-inset-properties, $custom-inset-properties);
+$inset-properties: () !default;
+
+// @todo remove this once $custom-inset-properties is removed
+@if $custom-inset-properties != () {
+  @warn "`$custom-inset-properties` is deprecated and will be removed in a future release of Graupl. Use `$inset-properties` instead.";
+
+  $inset-properties: map.merge($inset-properties, $custom-inset-properties);
+}
 
 // Inset values.
 $base-inset-values: (
@@ -52,4 +60,17 @@ $base-inset-values: (
   two-thirds: calc(100% / 1.5),
 );
 $custom-inset-values: () !default;
-$inset-values: map.merge($base-inset-values, $custom-inset-values);
+$inset-values: () !default;
+
+// @todo remove this once $custom-inset-values is removed
+@if $custom-inset-values != () {
+  @warn "`$custom-inset-values` is deprecated and will be removed in a future release of Graupl. Use `$inset-values` instead.";
+
+  $inset-values: map.merge($inset-values, $custom-inset-values);
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $inset-properties: map.merge($base-inset-properties, $inset-properties);
+  $inset-values: map.merge($base-inset-values, $inset-values);
+}

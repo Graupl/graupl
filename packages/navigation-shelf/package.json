@@ -1,0 +1,71 @@
+{
+  "name": "@graupl/navigation-shelf",
+  "version": "1.0.0-beta.12",
+  "description": "A plugin for Graupl that provides a navigation shelf component.",
+  "main": "dist/js/navigation-shelf.cjs.js",
+  "module": "dist/js/navigation-shelf.es.js",
+  "type": "module",
+  "files": [
+    "dist",
+    "scss",
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "sass": "./scss/navigation-shelf.scss",
+      "import": "./dist/js/navigation-shelf.es.js",
+      "require": "./dist/js/navigation-shelf.cjs.js"
+    },
+    "./*.scss": {
+      "sass": "./scss/*.scss"
+    },
+    "./src/*.scss": {
+      "sass": "./src/scss/*.scss"
+    },
+    "./src/navigation-shelf": {
+      "import": "./src/js/navigation-shelf/NavigationShelf.js"
+    },
+    "./navigation-shelf": {
+      "import": "./dist/js/component/navigation-shelf.es.js",
+      "require": "./dist/js/component/navigation-shelf.cjs.js"
+    },
+    "./navigation-shelf/generator": {
+      "import": "./dist/js/generator/navigation-shelf.es.js",
+      "require": "./dist/js/generator/navigation-shelf.cjs.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graupl/graupl.git",
+    "directory": "packages/navigation-shelf"
+  },
+  "keywords": [
+    "graupl"
+  ],
+  "author": "Nick Milton",
+  "contributors": [
+    {
+      "name": "Coldfront Labs Inc.",
+      "url": "https://coldfrontlabs.ca"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Graupl/graupl/issues"
+  },
+  "license": "ISC",
+  "homepage": "https://github.com/Graupl/graupl/tree/main/packages/navigation-shelf#readme",
+  "scripts": {
+    "presass": "rm -rf dist/css/*",
+    "sass": "sass scss:dist/css --pkg-importer=node",
+    "postcss": "postcss 'dist/css/**/*.css' --replace --config ./postcss.config.cjs",
+    "prerolldown": "rm -rf dist/js/*",
+    "rolldown": "rolldown --config ./rolldown.config.js",
+    "build": "npm-run-all build:*",
+    "build:css": "npm run sass && npm run postcss",
+    "build:js": "npm run rolldown"
+  },
+  "dependencies": {
+    "@graupl/core": "*",
+    "@graupl/icons": "*"
+  }
+}

@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -58,7 +59,19 @@ $base-spacing-properties: (
   mise: margin-inline-start margin-inline-end,
 );
 $custom-spacing-properties: () !default;
-$spacing-properties: map.merge(
-  $base-spacing-properties,
-  $custom-spacing-properties
-);
+$spacing-properties: () !default;
+
+// @todo remove this once $custom-spacing-properties is removed
+@if $custom-spacing-properties != () {
+  @warn "`$custom-spacing-properties` is deprecated and will be removed in a future release of Graupl. Use `$spacing-properties` instead.";
+
+  $spacing-properties: map.merge(
+    $spacing-properties,
+    $custom-spacing-properties
+  );
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $spacing-properties: map.merge($base-spacing-properties, $spacing-properties);
+}

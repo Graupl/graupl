@@ -36,6 +36,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -50,31 +51,31 @@
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$background-attachment-selector-prefix`: The prefix for the background attachment utility classes.
 // - `$base-background-attachment-properties`: The base properties and values for the background attachment utility classes.
-// - `$custom-background-attachment-properties`: The custom properties and values for the background attachment utility classes.
+// - `$custom-background-attachment-properties`: [DEPRECATED] The custom properties and values for the background attachment utility classes.
 // - `$background-attachment-properties`: The combined properties and values for the background attachment utility classes.
 // - `$background-clip-selector-prefix`: The prefix for the background clip utility classes.
 // - `$base-background-clip-properties`: The base properties and values for the background clip utility classes.
-// - `$custom-background-clip-properties`: The custom properties and values for the background clip utility classes.
+// - `$custom-background-clip-properties`: [DEPRECATED] The custom properties and values for the background clip utility classes.
 // - `$background-clip-properties`: The combined properties and values for the background clip utility classes.
 // - `$background-image-selector-prefix`: The prefix for the background image utility classes.
 // - `$base-background-image-properties`: The base properties and values for the background image utility classes.
-// - `$custom-background-image-properties`: The custom properties and values for the background image utility classes.
+// - `$custom-background-image-properties`: [DEPRECATED] The custom properties and values for the background image utility classes.
 // - `$background-image-properties`: The combined properties and values for the background image utility classes.
 // - `$background-origin-selector-prefix`: The prefix for the background origin utility classes.
 // - `$base-background-origin-properties`: The base properties and values for the background origin utility classes.
-// - `$custom-background-origin-properties`: The custom properties and values for the background origin utility classes.
+// - `$custom-background-origin-properties`: [DEPRECATED] The custom properties and values for the background origin utility classes.
 // - `$background-origin-properties`: The combined properties and values for the background origin utility classes.
 // - `$background-position-selector-prefix`: The prefix for the background position utility classes.
 // - `$base-background-position-properties`: The base properties and values for the background position utility classes.
-// - `$custom-background-position-properties`: The custom properties and values for the background position utility classes.
+// - `$custom-background-position-properties`: [DEPRECATED] The custom properties and values for the background position utility classes.
 // - `$background-position-properties`: The combined properties and values for the background position utility classes.
 // - `$background-repeat-selector-prefix`: The prefix for the background repeat utility classes.
 // - `$base-background-repeat-properties`: The base properties and values for the background repeat utility classes.
-// - `$custom-background-repeat-properties`: The custom properties and values for the background repeat utility classes.
+// - `$custom-background-repeat-properties`: [DEPRECATED] The custom properties and values for the background repeat utility classes.
 // - `$background-repeat-properties`: The combined properties and values for the background repeat utility classes.
 // - `$background-size-selector-prefix`: The prefix for the background size utility classes.
 // - `$base-background-size-properties`: The base properties and values for the background size utility classes.
-// - `$custom-background-size-properties`: The custom properties and values for the background size utility classes.
+// - `$custom-background-size-properties`: [DEPRECATED] The custom properties and values for the background size utility classes.
 // - `$background-size-properties`: The combined properties and values for the background size utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
