@@ -5,9 +5,7 @@ import {
   isValidState,
   isValidEvent,
 } from "@graupl/core/src/validate.js";
-import {
-  isValidSideType,
-} from "../validate.js";
+import { isValidSideType } from "../validate.js";
 import { keyPress, preventEvent } from "@graupl/core/src/eventHandlers.js";
 import {
   addClass,
@@ -1525,8 +1523,6 @@ class NavigationShelf {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
-
-      console.log(key);
 
       if (key === "Escape") {
         this.close();

@@ -4,36 +4,9 @@
 @use "defaults";
 @use "variables" as *;
 @use "sass:map";
+@warn "The `@graupl/navigation-shelf` component is under active development and is highly experimental. It is not recommended for production use at this time.";
 
-.shelf-aware {
-  // &,
-  // &.left-side
-  &,
-  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-left-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
-    padding-right: 0;
-    padding-left: $navigation-shelf-closed-width;
-
-    // &.locked
-    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
-      padding-right: 0;
-      padding-left: $navigation-shelf-max-width;
-    }
-  }
-
-  // &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix}
-  &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
-    padding-right: $navigation-shelf-closed-width;
-    padding-left: 0;
-
-    // &.locked
-    &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
-      padding-right: $navigation-shelf-max-width;
-      padding-left: 0;
-    }
-  }
-}
-
-// .navigation-shelf
+// `.navigation-shelf`
 #{defaults.$navigation-shelf-selector-base}#{defaults.$navigation-shelf-selector} {
   --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-width};
 
@@ -67,8 +40,8 @@
     --#{root-defaults.$prefix}navigation-shelf-transition: #{$navigation-shelf-transition-reduced-motion};
   }
 
-  // &
-  // &.left-side
+  // `&,`
+  // `&.left-side`
   &,
   &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-left-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
     --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
@@ -79,7 +52,7 @@
     right: auto;
     left: 0;
 
-    // &.locked
+    // `&.locked`
     &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
       --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
         --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-right-content,
@@ -87,7 +60,7 @@
       );
     }
 
-    // &.unlocked
+    // `&.unlocked`
     &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
       --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
         --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-right-content,
@@ -96,7 +69,7 @@
     }
   }
 
-  // &.right-side
+  // `&.right-side`
   &#{defaults.$navigation-shelf-side-selector-base}#{defaults.$navigation-shelf-right-side-selector}#{defaults.$navigation-shelf-side-selector-suffix} {
     --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: var(
       --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-left-content,
@@ -106,7 +79,7 @@
     right: 0;
     left: auto;
 
-    // &.locked
+    // `&.locked`
     &#{defaults.$navigation-shelf-locked-selector-base}#{defaults.$navigation-shelf-locked-selector} {
       --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
         --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-left-content,
@@ -114,7 +87,7 @@
       );
     }
 
-    // &.unlocked
+    // `&.unlocked`
     &#{defaults.$navigation-shelf-unlocked-selector-base}#{defaults.$navigation-shelf-unlocked-selector} {
       --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: var(
         --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-left-content,
@@ -123,7 +96,7 @@
     }
   }
 
-  // &.hoverable
+  // `&.hoverable`
   &#{defaults.$navigation-shelf-hoverable-selector-base}#{defaults.$navigation-shelf-hoverable-selector} {
     --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
       --#{root-defaults.$prefix}navigation-shelf-hover-toggle-disable-hover-content,
@@ -131,7 +104,7 @@
     );
   }
 
-  // &.not-hoverable
+  // `&.not-hoverable`
   &#{defaults.$navigation-shelf-not-hoverable-selector-base}#{defaults.$navigation-shelf-not-hoverable-selector} {
     --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content: var(
       --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
@@ -139,7 +112,7 @@
     );
   }
 
-  // &.hide
+  // `&.hide`
   &#{defaults.$navigation-shelf-closed-selector-base}#{defaults.$navigation-shelf-closed-selector} {
     --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-closed-width};
 
@@ -150,7 +123,7 @@
     opacity: $navigation-shelf-closed-opacity;
   }
 
-  // &.transitioning
+  // `&.transitioning`
   &#{defaults.$navigation-shelf-transitioning-selector-base}#{defaults.$navigation-shelf-transitioning-selector} {
     --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-transitioning-width};
 
@@ -161,7 +134,7 @@
     opacity: $navigation-shelf-transitioning-opacity;
   }
 
-  // &.show
+  // `&.show`
   &#{defaults.$navigation-shelf-open-selector-base}#{defaults.$navigation-shelf-open-selector} {
     --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-open-width};
 
@@ -172,25 +145,22 @@
     opacity: $navigation-shelf-open-opacity;
   }
 
-  // .navigation-shelf-header
+  // `.navigation-shelf-header`
   #{defaults.$navigation-shelf-header-selector-base}#{defaults.$navigation-shelf-header-selector} {
     grid-area: header;
-    transition: width 200ms ease;
   }
 
-  // .navigation-shelf-content
+  // `.navigation-shelf-content`
   #{defaults.$navigation-shelf-content-selector-base}#{defaults.$navigation-shelf-content-selector} {
     grid-area: content;
-    scrollbar-width: thin;
   }
 
-  // .navigation-shelf-footer
+  // `.navigation-shelf-footer`
   #{defaults.$navigation-shelf-footer-selector-base}#{defaults.$navigation-shelf-footer-selector} {
     grid-area: footer;
-    scrollbar-width: thin;
   }
 
-  // .navigation-shelf-side-toggle
+  // `.navigation-shelf-side-toggle`
   #{defaults.$navigation-shelf-side-toggle-selector-base}#{defaults.$navigation-shelf-side-toggle-selector} {
     --#{root-defaults.$prefix}icon: var(
       --#{root-defaults.$prefix}navigation-shelf-side-toggle-content,
@@ -212,7 +182,7 @@
     );
   }
 
-  // .navigation-shelf-lock-toggle
+  // `.navigation-shelf-lock-toggle`
   #{defaults.$navigation-shelf-lock-toggle-selector-base}#{defaults.$navigation-shelf-lock-toggle-selector} {
     --#{root-defaults.$prefix}icon: var(
       --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content,
@@ -234,7 +204,7 @@
     );
   }
 
-  // .navigation-shelf-hover-toggle
+  // `.navigation-shelf-hover-toggle`
   #{defaults.$navigation-shelf-hover-toggle-selector-base}#{defaults.$navigation-shelf-hover-toggle-selector} {
     --#{root-defaults.$prefix}icon: var(
       --#{root-defaults.$prefix}navigation-shelf-hover-toggle-content,

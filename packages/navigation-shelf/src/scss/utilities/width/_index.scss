@@ -143,8 +143,5 @@
 @use "sass:map";
 @use "variables" as *;
 @use "pkg:@graupl/core/src/utilities/width/defaults" as width-defaults
-  with(
-    $generate-base-utilities: false,
-    $custom-width-values: defaults.$width-values
-  );
+  with($generate-base-utilities: false, $width-values: defaults.$width-values);
 @use "pkg:@graupl/core/src/utilities/width";

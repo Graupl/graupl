@@ -55,29 +55,73 @@
 // @example
 //   <div class="template-class">This content showing you how to use this.</div>
 
-@use "../../defaults" as root-defaults;
-@use "../../mixins/layer" as *;
-@use "../../mixins/utility";
-@use "../../theme/color/variables" as color;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/mixins/layer" as *;
+@use "pkg:@graupl/core/src/mixins/utility";
+@use "pkg:@graupl/core/src/theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
+@use "../../component/navigation-shelf/defaults" as navigation-shelf-defaults;
+@use "../../component/navigation-shelf/variables" as navigation-shelf-variables;
+@use "pkg:@graupl/core/src/functions/important";
 
 @include layer(utilities) {
   // `.`
   $selector-prefix: defaults.$selector-base;
 
-  // For each template property, create a utility class.
-  @each $name, $value in defaults.$template-properties {
-    // e.g. `.template-property-name`
-    $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
+  // `.shelf-aware`
+  $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
 
-    @include utility.create(
-      $selector,
-      property,
-      $value,
-      $important: #{defaults.$use-important}
-    );
+  @include utility.create-mapped(
+    $selector,
+    (
+      padding-right: 0,
+      padding-left: navigation-shelf-variables.$navigation-shelf-closed-width,
+    ),
+    $important: #{defaults.$use-important}
+  ) {
+    // `&.locked`
+    &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+      padding-left: important.insert(
+        navigation-shelf-variables.$navigation-shelf-open-width,
+        defaults.$use-important
+      );
+    }
+
+    // `&.left-side`
+    &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-left-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+      padding-right: important.insert(0, defaults.$use-important);
+      padding-left: important.insert(
+        navigation-shelf-variables.$navigation-shelf-closed-width,
+        defaults.$use-important
+      );
+
+      // `&.locked`
+      &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+        padding-left: important.insert(
+          navigation-shelf-variables.$navigation-shelf-open-width,
+          defaults.$use-important
+        );
+      }
+    }
+
+    // `&.right-side`
+    &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-right-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+      padding-right: important.insert(
+        navigation-shelf-variables.$navigation-shelf-closed-width,
+        defaults.$use-important
+      );
+      padding-left: important.insert(0, defaults.$use-important);
+
+      // `&.locked`
+      &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+        padding-right: important.insert(
+          navigation-shelf-variables.$navigation-shelf-open-width,
+          defaults.$use-important
+        );
+      }
+    }
   }
 
   // Generate screen-aware utilities.
@@ -86,18 +130,60 @@
       // e.g. `.md:` or `.lg:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
 
-      // For each template property, create a utility class.
-      @each $name, $value in defaults.$template-properties {
-        // e.g. `.md:template-property-name`
-        $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
+      // e.g. `.md:shelf-aware`
+      $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
 
-        @include utility.create(
-          $selector,
-          property,
-          $value,
-          $important: #{defaults.$use-important},
-          $screen: $screen-name
-        );
+      @include utility.create-mapped(
+        $selector,
+        (
+          padding-right: 0,
+          padding-left:
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+        ),
+        $important: #{defaults.$use-important},
+        $screen: $screen-name
+      ) {
+        // `&.locked`
+        &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-open-width,
+            defaults.$use-important
+          );
+        }
+
+        // `&.left-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-left-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(0, defaults.$use-important);
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-left: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
+
+        // `&.right-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-right-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+          padding-left: important.insert(0, defaults.$use-important);
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-right: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
       }
     }
   }
@@ -109,18 +195,60 @@
         // e.g. `.dark:` or `.light:`
         $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
 
-        // For each template property, create a utility class.
-        @each $name, $value in defaults.$template-properties {
-          // e.g. `.dark:template-property-name` or `.light:template-property-name`
-          $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
+        // e.g. `.dark:shelf-aware` or `.light:shelf-aware`
+        $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
 
-          @include utility.create(
-            $selector,
-            property,
-            $value,
-            $important: #{defaults.$use-important},
-            $theme: $theme-name
-          );
+        @include utility.create-mapped(
+          $selector,
+          (
+            padding-right: 0,
+            padding-left:
+              navigation-shelf-variables.$navigation-shelf-closed-width,
+          ),
+          $important: #{defaults.$use-important},
+          $theme: $theme-name
+        ) {
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-left: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+
+          // `&.left-side`
+          &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-left-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+            padding-right: important.insert(0, defaults.$use-important);
+            padding-left: important.insert(
+              navigation-shelf-variables.$navigation-shelf-closed-width,
+              defaults.$use-important
+            );
+
+            // `&.locked`
+            &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+              padding-left: important.insert(
+                navigation-shelf-variables.$navigation-shelf-open-width,
+                defaults.$use-important
+              );
+            }
+          }
+
+          // `&.right-side`
+          &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-right-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+            padding-right: important.insert(
+              navigation-shelf-variables.$navigation-shelf-closed-width,
+              defaults.$use-important
+            );
+            padding-left: important.insert(0, defaults.$use-important);
+
+            // `&.locked`
+            &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+              padding-right: important.insert(
+                navigation-shelf-variables.$navigation-shelf-open-width,
+                defaults.$use-important
+              );
+            }
+          }
         }
       }
     }
@@ -132,18 +260,60 @@
       // e.g. `.hover:` or `.focus:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
 
-      // For each template property, create a utility class.
-      @each $name, $value in defaults.$template-properties {
-        // e.g. `.hover:template-property-name` or `.focus:template-property-name`
-        $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
+      // e.g. `.hover:shelf-aware` or `.focus:shelf-aware`
+      $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
 
-        @include utility.create(
-          $selector,
-          property,
-          $value,
-          $important: #{defaults.$use-important},
-          $state: $state-name
-        );
+      @include utility.create-mapped(
+        $selector,
+        (
+          padding-right: 0,
+          padding-left:
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+        ),
+        $important: #{defaults.$use-important},
+        $state: $state-name
+      ) {
+        // `&.locked`
+        &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-open-width,
+            defaults.$use-important
+          );
+        }
+
+        // `&.left-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-left-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(0, defaults.$use-important);
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-left: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
+
+        // `&.right-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-right-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+          padding-left: important.insert(0, defaults.$use-important);
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-right: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
       }
     }
   }
@@ -154,18 +324,60 @@
       // e.g. `.md:` or `.lg:`
       $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
 
-      // For each template property, create a utility class.
-      @each $name, $value in defaults.$template-properties {
-        // e.g. `.cq:md:template-property-name`
-        $selector: #{$selector-prefix}#{defaults.$template-selector-prefix}#{$name};
+      // e.g. `.cq:md:shelf-aware`
+      $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
 
-        @include utility.create(
-          $selector,
-          property,
-          $value,
-          $important: #{defaults.$use-important},
-          $container: $container-name
-        );
+      @include utility.create-mapped(
+        $selector,
+        (
+          padding-right: 0,
+          padding-left:
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+        ),
+        $important: #{defaults.$use-important},
+        $container: $container-name
+      ) {
+        // `&.locked`
+        &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-open-width,
+            defaults.$use-important
+          );
+        }
+
+        // `&.left-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-left-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(0, defaults.$use-important);
+          padding-left: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-left: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
+
+        // `&.right-side`
+        &#{navigation-shelf-defaults.$navigation-shelf-side-selector-base}#{navigation-shelf-defaults.$navigation-shelf-right-side-selector}#{navigation-shelf-defaults.$navigation-shelf-side-selector-suffix} {
+          padding-right: important.insert(
+            navigation-shelf-variables.$navigation-shelf-closed-width,
+            defaults.$use-important
+          );
+          padding-left: important.insert(0, defaults.$use-important);
+
+          // `&.locked`
+          &#{navigation-shelf-defaults.$navigation-shelf-locked-selector-base}#{navigation-shelf-defaults.$navigation-shelf-locked-selector} {
+            padding-right: important.insert(
+              navigation-shelf-variables.$navigation-shelf-open-width,
+              defaults.$use-important
+            );
+          }
+        }
       }
     }
   }
