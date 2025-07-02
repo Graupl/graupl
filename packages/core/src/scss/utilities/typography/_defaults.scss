@@ -7,11 +7,13 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../theme/typography/variables" as typography;
 @use "sass:map";
 
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -25,11 +27,105 @@ $theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix
 $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 
-// Text size properties.
-$text-selector-prefix: "text-" !default;
+// Text style properties.
+$text-style-selector-prefix: "text-" !default;
+$base-text-style-properties: (
+  paragraph: (
+    margin: typography.$paragraph-margin,
+    font-size: typography.$paragraph-font-size,
+    font-weight: typography.$paragraph-font-weight,
+    line-height: typography.$paragraph-line-height,
+    color: typography.$paragraph-color,
+  ),
+  small: (
+    margin: typography.$small-margin,
+    font-size: typography.$small-font-size,
+    font-weight: typography.$small-font-weight,
+    line-height: typography.$small-line-height,
+    color: typography.$small-color,
+  ),
+  h1: (
+    margin: typography.$h1-margin,
+    font-family: typography.$h1-font-family,
+    font-size: typography.$h1-font-size,
+    font-weight: typography.$h1-font-weight,
+    line-height: typography.$h1-line-height,
+    color: typography.$h1-color,
+  ),
+  h2: (
+    margin: typography.$h2-margin,
+    font-family: typography.$h2-font-family,
+    font-size: typography.$h2-font-size,
+    font-weight: typography.$h2-font-weight,
+    line-height: typography.$h2-line-height,
+    color: typography.$h2-color,
+  ),
+  h3: (
+    margin: typography.$h3-margin,
+    font-family: typography.$h3-font-family,
+    font-size: typography.$h3-font-size,
+    font-weight: typography.$h3-font-weight,
+    line-height: typography.$h3-line-height,
+    color: typography.$h3-color,
+  ),
+  h4: (
+    margin: typography.$h4-margin,
+    font-family: typography.$h4-font-family,
+    font-size: typography.$h4-font-size,
+    font-weight: typography.$h4-font-weight,
+    line-height: typography.$h4-line-height,
+    color: typography.$h4-color,
+  ),
+  h5: (
+    margin: typography.$h5-margin,
+    font-family: typography.$h5-font-family,
+    font-size: typography.$h5-font-size,
+    font-weight: typography.$h5-font-weight,
+    line-height: typography.$h5-line-height,
+    color: typography.$h5-color,
+  ),
+  h6: (
+    margin: typography.$h6-margin,
+    font-family: typography.$h6-font-family,
+    font-size: typography.$h6-font-size,
+    font-weight: typography.$h6-font-weight,
+    line-height: typography.$h6-line-height,
+    color: typography.$h6-color,
+  ),
+);
+$text-style-properties: () !default;
+
+// Font size properties.
+$font-size-selector-prefix: "text-" !default;
+$base-font-size-properties: ();
+
+// Add the typography font sizes to the base font size properties.
+@each $size, $value in typography.$font-sizes {
+  $base-font-size-properties: map.merge(
+    $base-font-size-properties,
+    (
+      $size: $value,
+    )
+  );
+}
+
+$font-size-properties: () !default;
 
 // Font weight properties.
 $font-weight-selector-prefix: "font-weight-" !default;
+$base-font-weight-properties: ();
+
+// Add the typography font weights to the base font weight properties.
+@each $weight, $value in typography.$font-weights {
+  $base-font-weight-properties: map.merge(
+    $base-font-weight-properties,
+    (
+      $weight: $value,
+    )
+  );
+}
+
+$font-weight-properties: () !default;
 
 // Font style properties.
 $font-style-selector-prefix: "font-" !default;
@@ -38,10 +134,17 @@ $base-font-style-properties: (
   italic: italic,
 );
 $custom-font-style-properties: () !default;
-$font-style-properties: map.merge(
-  $base-font-style-properties,
-  $custom-font-style-properties
-);
+$font-style-properties: () !default;
+
+// @todo remove this once $custom-font-style-properties is removed
+@if $custom-font-style-properties != () {
+  @warn "`$custom-font-style-properties` is deprecated and will be removed in a future release of Graupl. Use `$font-style-properties` instead.";
+
+  $font-style-properties: map.merge(
+    $font-style-properties,
+    $custom-font-style-properties
+  );
+}
 
 // Text transform properties.
 $text-transform-selector-prefix: "text-" !default;
@@ -52,7 +155,38 @@ $base-text-transform-properties: (
   none: none,
 );
 $custom-text-transform-properties: () !default;
-$text-transform-properties: map.merge(
-  $base-text-transform-properties,
-  $custom-text-transform-properties
-);
+$text-transform-properties: () !default;
+
+// @todo remove this once $custom-text-transform-properties is removed
+@if $custom-text-transform-properties != () {
+  @warn "`$custom-text-transform-properties` is deprecated and will be removed in a future release of Graupl. Use `$text-transform-properties` instead.";
+
+  $text-transform-properties: map.merge(
+    $text-transform-properties,
+    $custom-text-transform-properties
+  );
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $text-style-properties: map.deep-merge(
+    $base-text-style-properties,
+    $text-style-properties
+  );
+  $font-size-properties: map.merge(
+    $base-font-size-properties,
+    $font-size-properties
+  );
+  $font-weight-properties: map.merge(
+    $base-font-weight-properties,
+    $font-weight-properties
+  );
+  $font-style-properties: map.merge(
+    $base-font-style-properties,
+    $font-style-properties
+  );
+  $text-transform-properties: map.merge(
+    $base-text-transform-properties,
+    $text-transform-properties
+  );
+}

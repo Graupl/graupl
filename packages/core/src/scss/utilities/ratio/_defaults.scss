@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -39,4 +40,16 @@ $base-ratios: (
   "eight-by-five": calc(5 / 8 * 100%),
 );
 $custom-ratios: () !default;
-$ratios: map.merge($base-ratios, $custom-ratios);
+$ratios: () !default;
+
+// @todo remove this once $custom-ratios is removed
+@if $custom-ratios != () {
+  @warn "`$custom-ratios` is deprecated and will be removed in a future release of Graupl. Use `$ratios` instead.";
+
+  $ratios: map.merge($ratios, $custom-ratios);
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $ratios: map.merge($base-ratios, $ratios);
+}
