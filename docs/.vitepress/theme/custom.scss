@@ -1,8 +1,8 @@
-@use "../../../src/scss/defaults" as graupl-defaults with (
+@use "../../../packages/core/src/scss/defaults" as graupl-defaults with (
   $id: "graupl-docs"
 );
-@use "../../../src/scss/base/button/mixins" as graupl-button-mixins;
-@use "../../../src/scss" as graupl;
+@use "../../../packages/core/src/scss/base/button/mixins" as graupl-button-mixins;
+@use "../../../packages/core/src/scss" as graupl;
 
 :root {
   --graupl-docs-content-max-width: 158ch;

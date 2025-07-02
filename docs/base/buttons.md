@@ -364,8 +364,8 @@ The following Sass variables can be used to customize the generation of the butt
 </table>
 
 <style module lang="scss">
-  @use "../../src/scss/defaults" as graupl-defaults with (
+  @use "../../packages/core/src/scss/defaults" as graupl-defaults with (
     $use-layers: false,
   );
-  @use "../../src/scss/base/button" as graupl-button;
+  @use "../../packages/core/src/scss/base/button" as graupl-button;
 </style>
