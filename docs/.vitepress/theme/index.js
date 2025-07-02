@@ -3,5 +3,5 @@ import "./custom.scss";
 
 export default {
   Layout,
-  enhanceApp({ app, router, siteData }) {},
+  enhanceApp() {},
 };
