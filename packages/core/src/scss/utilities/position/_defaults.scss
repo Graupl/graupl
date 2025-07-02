@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -35,7 +36,22 @@ $base-position-properties: (
   sticky: sticky,
 );
 $custom-position-properties: () !default;
-$position-properties: map.merge(
-  $base-position-properties,
-  $custom-position-properties
-);
+$position-properties: () !default;
+
+// @todo remove this once $custom-position-properties is removed
+@if $custom-position-properties != () {
+  @warn "`$custom-position-properties` is deprecated and will be removed in a future release of Graupl. Use `$position-properties` instead.";
+
+  $position-properties: map.merge(
+    $position-properties,
+    $custom-position-properties
+  );
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $position-properties: map.merge(
+    $base-position-properties,
+    $position-properties
+  );
+}

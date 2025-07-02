@@ -25,6 +25,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -39,7 +40,7 @@
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$order-selector-prefix`: The prefix for the order utility classes.
 // - `$base-order-properties`: The base properties and values for the order utility classes.
-// - `$custom-order-properties`: The custom properties and values for the order utility classes.
+// - `$custom-order-properties`: [DEPRECATED] The custom properties and values for the order utility classes.
 // - `$order-properties`: The combined properties and values for the order utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
@@ -83,18 +84,6 @@
 
 @include layer(utilities) {
   $selector-prefix: defaults.$selector-base;
-  $order-max-count: 0;
-
-  /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-  @if (
-    columns-defaults.$columns-max-count >
-      flex-columns-defaults.$flex-columns-max-count
-  ) {
-    $order-max-count: columns-defaults.$columns-max-count;
-  } @else {
-    $order-max-count: flex-columns-defaults.$flex-columns-max-count;
-  }
-  /* stylelint-enable  scss/operator-no-newline-after */
 
   @each $property, $value in defaults.$order-properties {
     $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$property};
@@ -107,16 +96,16 @@
     );
   }
 
-  @for $i from 1 through $order-max-count {
-    $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+  // @for $i from 1 through defaults.$order-max-count {
+  //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
-    @include utility.create(
-      $selector,
-      order,
-      $i,
-      $important: defaults.$use-important
-    );
-  }
+  //   @include utility.create(
+  //     $selector,
+  //     order,
+  //     $i,
+  //     $important: defaults.$use-important
+  //   );
+  // }
 
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
@@ -135,17 +124,17 @@
         );
       }
 
-      @for $i from 1 through $order-max-count {
-        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+      // @for $i from 1 through defaults.$order-max-count {
+      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
-        @include utility.create(
-          $selector,
-          order,
-          $i,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     order,
+      //     $i,
+      //     $important: defaults.$use-important,
+      //     $screen: $screen-name
+      //   );
+      // }
     }
   }
 
@@ -167,17 +156,17 @@
           );
         }
 
-        @for $i from 1 through $order-max-count {
-          $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+        // @for $i from 1 through defaults.$order-max-count {
+        //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
-          @include utility.create(
-            $selector,
-            order,
-            $i,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
-        }
+        //   @include utility.create(
+        //     $selector,
+        //     order,
+        //     $i,
+        //     $important: defaults.$use-important,
+        //     $theme: $theme-name
+        //   );
+        // }
       }
     }
   }
@@ -199,17 +188,17 @@
         );
       }
 
-      @for $i from 1 through $order-max-count {
-        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+      // @for $i from 1 through defaults.$order-max-count {
+      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
-        @include utility.create(
-          $selector,
-          order,
-          $i,
-          $important: defaults.$use-important,
-          $state: $state-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     order,
+      //     $i,
+      //     $important: defaults.$use-important,
+      //     $state: $state-name
+      //   );
+      // }
     }
   }
 
@@ -230,17 +219,17 @@
         );
       }
 
-      @for $i from 1 through $order-max-count {
-        $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
+      // @for $i from 1 through defaults.$order-max-count {
+      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
 
-        @include utility.create(
-          $selector,
-          order,
-          $i,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     order,
+      //     $i,
+      //     $important: defaults.$use-important,
+      //     $container: $container-name
+      //   );
+      // }
     }
   }
 }

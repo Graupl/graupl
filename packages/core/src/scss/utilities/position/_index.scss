@@ -15,6 +15,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -29,7 +30,7 @@
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$position-selector-prefix`: The prefix for the position utility classes.
 // - `$base-position-properties`: The base properties and values for the position utility classes.
-// - `$custom-position-properties`: The custom properties and values for the position utility classes.
+// - `$custom-position-properties`: [DEPRECATED] The custom properties and values for the position utility classes.
 // - `$position-properties`: The combined properties and values for the position utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.

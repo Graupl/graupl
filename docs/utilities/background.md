@@ -154,6 +154,7 @@ To customize the background utilities, you can use the following variables.
 | --- | --- | --- |
 | `$selector-base` | `"."` | The base selector for the utility classes. |
 | `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `false` | A flag to generate state-aware utility classes. |
@@ -167,19 +168,19 @@ To customize the background utilities, you can use the following variables.
 | `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
 | `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$background-attachment-selector-prefix` | `"bg-attachment-"` | The prefix for the background attachment utility classes. |
-| `$custom-background-attachment-properties` | `()` | The custom properties and values for the background attachment utility classes. |
+| `$custom-background-attachment-properties` | `()` | [DEPRECATED] The custom properties and values for the background attachment utility classes. |
 | `$background-clip-selector-prefix` | `"bg-clip-"` | The prefix for the background clip utility classes. |
-| `$custom-background-clip-properties` | `()` | The custom properties and values for the background clip utility classes. |
+| `$custom-background-clip-properties` | `()` | [DEPRECATED] The custom properties and values for the background clip utility classes. |
 | `$background-image-selector-prefix` | `"bg-image-"` | The prefix for the background image utility classes. |
-| `$custom-background-image-properties` | `()` | The custom properties and values for the background image utility classes. |
+| `$custom-background-image-properties` | `()` | [DEPRECATED] The custom properties and values for the background image utility classes. |
 | `$background-origin-selector-prefix` | `"bg-origin-"` | The prefix for the background origin utility classes. |
-| `$custom-background-origin-properties` | `()` | The custom properties and values for the background origin utility classes. |
+| `$custom-background-origin-properties` | `()` | [DEPRECATED] The custom properties and values for the background origin utility classes. |
 | `$background-position-selector-prefix` | `"bg-position-"` | The prefix for the background position utility classes. |
-| `$custom-background-position-properties` | `()` | The custom properties and values for the background position utility classes. |
+| `$custom-background-position-properties` | `()` | [DEPRECATED] The custom properties and values for the background position utility classes. |
 | `$background-repeat-selector-prefix` | `"bg-repeat-"` | The prefix for the background repeat utility classes. |
-| `$custom-background-repeat-properties` | `()` | The custom properties and values for the background repeat utility classes. |
+| `$custom-background-repeat-properties` | `()` | [DEPRECATED] The custom properties and values for the background repeat utility classes. |
 | `$background-size-selector-prefix` | `"bg-size-"` | The prefix for the background size utility classes. |
-| `$custom-background-size-properties` | `()` | The custom properties and values for the background size utility classes. |
+| `$custom-background-size-properties` | `()` | [DEPRECATED] The custom properties and values for the background size utility classes. |
 
 ## Responsive variants
 

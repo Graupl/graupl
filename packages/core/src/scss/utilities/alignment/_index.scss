@@ -30,6 +30,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -44,15 +45,15 @@
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$align-content-selector-prefix`: The prefix for the align content utility classes.
 // - `$base-align-content-properties`: The base properties and values for the align content utility classes.
-// - `$custom-align-content-properties`: The custom properties and values for the align content utility classes.
+// - `$custom-align-content-properties`: [DEPRECATED] The custom properties and values for the align content utility classes.
 // - `$align-content-properties`: The combined properties and values for the align content utility classes.
 // - `$align-items-selector-prefix`: The prefix for the align items utility classes.
 // - `$base-align-items-properties`: The base properties and values for the align items utility classes.
-// - `$custom-align-items-properties`: The custom properties and values for the align items utility classes.
+// - `$custom-align-items-properties`: [DEPRECATED] The custom properties and values for the align items utility classes.
 // - `$align-items-properties`: The combined properties and values for the align items utility classes.
 // - `$align-self-selector-prefix`: The prefix for the align self utility classes.
 // - `$base-align-self-properties`: The base properties and values for the align self utility classes.
-// - `$custom-align-self-properties`: The custom properties and values for the align self utility classes.
+// - `$custom-align-self-properties`: [DEPRECATED] The custom properties and values for the align self utility classes.
 // - `$align-self-properties`: The combined properties and values for the align self utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.

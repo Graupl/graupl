@@ -94,6 +94,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -110,7 +111,7 @@
 // - `$max-width-selector-prefix`: The prefix for the max-width utility classes.
 // - `$min-width-selector-prefix`: The prefix for the min-width utility classes.
 // - `$base-width-values`: The base properties and values for the width utility classes.
-// - `$custom-width-values`: The custom properties and values for the width utility classes.
+// - `$custom-width-values`: [DEPRECATED] The custom properties and values for the width utility classes.
 // - `$width-values`: The combined properties and values for the width utility classes.
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
@@ -185,37 +186,37 @@
     );
   }
 
-  @each $spacer, $value in root-variables.$spacers {
-    // e.g. `.w-1` or `.w-2`
-    $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+  // @each $spacer, $value in root-variables.$spacers {
+  //   // e.g. `.w-1` or `.w-2`
+  //   $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
-    @include utility.create(
-      $selector,
-      width,
-      $value,
-      $important: defaults.$use-important
-    );
+  //   @include utility.create(
+  //     $selector,
+  //     width,
+  //     $value,
+  //     $important: defaults.$use-important
+  //   );
 
-    // e.g. `.max-w-1` or `.max-w-2`
-    $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+  //   // e.g. `.max-w-1` or `.max-w-2`
+  //   $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
-    @include utility.create(
-      $selector,
-      max-width,
-      $value,
-      $important: defaults.$use-important
-    );
+  //   @include utility.create(
+  //     $selector,
+  //     max-width,
+  //     $value,
+  //     $important: defaults.$use-important
+  //   );
 
-    // e.g. `.min-w-1` or `.min-w-2`
-    $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+  //   // e.g. `.min-w-1` or `.min-w-2`
+  //   $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
-    @include utility.create(
-      $selector,
-      min-width,
-      $value,
-      $important: defaults.$use-important
-    );
-  }
+  //   @include utility.create(
+  //     $selector,
+  //     min-width,
+  //     $value,
+  //     $important: defaults.$use-important
+  //   );
+  // }
 
   // Generate screen-aware utilities.
   @if defaults.$screen-aware {
@@ -259,40 +260,40 @@
         );
       }
 
-      @each $spacer, $value in root-variables.$spacers {
-        // e.g. `.md:w-1` or `.lg:w-2`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+      // @each $spacer, $value in root-variables.$spacers {
+      //   // e.g. `.md:w-1` or `.lg:w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
+      //   @include utility.create(
+      //     $selector,
+      //     width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $screen: $screen-name
+      //   );
 
-        // e.g. `.md:max-w-1` or `.lg:max-w-2`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+      //   // e.g. `.md:max-w-1` or `.lg:max-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
+      //   @include utility.create(
+      //     $selector,
+      //     max-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $screen: $screen-name
+      //   );
 
-        // e.g. `.md:min-w-1` or `.lg:min-w-2`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+      //   // e.g. `.md:min-w-1` or `.lg:min-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     min-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $screen: $screen-name
+      //   );
+      // }
     }
   }
 
@@ -339,40 +340,40 @@
           );
         }
 
-        @each $spacer, $value in root-variables.$spacers {
-          // e.g. `.dark:w-1` or `.light:w-2`
-          $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+        // @each $spacer, $value in root-variables.$spacers {
+        //   // e.g. `.dark:w-1` or `.light:w-2`
+        //   $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
-          @include utility.create(
-            $selector,
-            width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
+        //   @include utility.create(
+        //     $selector,
+        //     width,
+        //     $value,
+        //     $important: defaults.$use-important,
+        //     $theme: $theme-name
+        //   );
 
-          // e.g. `.dark:max-w-1` or `.light:max-w-2`
-          $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+        //   // e.g. `.dark:max-w-1` or `.light:max-w-2`
+        //   $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
-          @include utility.create(
-            $selector,
-            max-width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
+        //   @include utility.create(
+        //     $selector,
+        //     max-width,
+        //     $value,
+        //     $important: defaults.$use-important,
+        //     $theme: $theme-name
+        //   );
 
-          // e.g. `.dark:min-w-1` or `.light:min-w-2`
-          $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+        //   // e.g. `.dark:min-w-1` or `.light:min-w-2`
+        //   $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
-          @include utility.create(
-            $selector,
-            min-width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
-        }
+        //   @include utility.create(
+        //     $selector,
+        //     min-width,
+        //     $value,
+        //     $important: defaults.$use-important,
+        //     $theme: $theme-name
+        //   );
+        // }
       }
     }
   }
@@ -413,34 +414,34 @@
         );
       }
 
-      @each $spacer, $value in root-variables.$spacers {
-        // e.g. `.hover:w-1` or `.focus:w-2`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+      // @each $spacer, $value in root-variables.$spacers {
+      //   // e.g. `.hover:w-1` or `.focus:w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
-        @include utility.create($selector, width, $value, $state: $state-name);
+      //   @include utility.create($selector, width, $value, $state: $state-name);
 
-        // e.g. `.hover:max-w-1` or `.focus:max-w-2`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+      //   // e.g. `.hover:max-w-1` or `.focus:max-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $state: $state-name
-        );
+      //   @include utility.create(
+      //     $selector,
+      //     max-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $state: $state-name
+      //   );
 
-        // e.g. `.hover:min-w-1` or `.focus:min-w-2`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+      //   // e.g. `.hover:min-w-1` or `.focus:min-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $state: $state-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     min-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $state: $state-name
+      //   );
+      // }
     }
   }
 
@@ -486,40 +487,40 @@
         );
       }
 
-      @each $spacer, $value in root-variables.$spacers {
-        // e.g. `.md:w-1` or `.lg:w-2`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
+      // @each $spacer, $value in root-variables.$spacers {
+      //   // e.g. `.md:w-1` or `.lg:w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
+      //   @include utility.create(
+      //     $selector,
+      //     width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $container: $container-name
+      //   );
 
-        // e.g. `.md:max-w-1` or `.lg:max-w-2`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
+      //   // e.g. `.md:max-w-1` or `.lg:max-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
+      //   @include utility.create(
+      //     $selector,
+      //     max-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $container: $container-name
+      //   );
 
-        // e.g. `.md:min-w-1` or `.lg:min-w-2`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
+      //   // e.g. `.md:min-w-1` or `.lg:min-w-2`
+      //   $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$spacer};
 
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
-      }
+      //   @include utility.create(
+      //     $selector,
+      //     min-width,
+      //     $value,
+      //     $important: defaults.$use-important,
+      //     $container: $container-name
+      //   );
+      // }
     }
   }
 }

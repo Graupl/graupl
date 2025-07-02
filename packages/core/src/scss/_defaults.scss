@@ -14,6 +14,7 @@ $prefix: "#{$id}-" !default;
 
 // Settings.
 $use-important: true !default;
+$generate-base-utilities: true !default;
 $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
 $state-aware-utilities: true !default;
