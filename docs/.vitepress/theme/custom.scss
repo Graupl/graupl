@@ -1,3 +1,5 @@
+/* stylelint-disable custom-property-pattern */
+
 @use "../../../packages/core/src/scss/defaults" as graupl-defaults with (
   $id: "graupl-docs"
 );
@@ -32,17 +34,18 @@
     --graupl-docs-transition-duration-#{$key}: #{$value};
   }
 }
+
 .container {
   isolation: isolate;
 }
 
 .submenu-toggle::after {
+  padding: 0 var(--graupl-docs-spacer-2);
   text-decoration: var(--graupl-docs-menu-link-hover-text-decoration);
+  text-decoration-color: var(--graupl-docs-theme-active--secondary--100);
   text-decoration-thickness: var(
     --graupl-docs-menu-link-hover-text-decoration-thickness
   );
-  text-decoration-color: var(--graupl-docs-theme-active--secondary--100);
-  padding: 0 var(--graupl-docs-spacer-2);
 }
 
 .sidebar-left .navigation {
@@ -72,10 +75,10 @@
 }
 
 code {
-  background: var(--graupl-docs-theme-active--secondary--100);
-  color: var(--graupl-docs-theme-active--secondary--800);
   display: inline;
   padding: 0 var(--graupl-docs-spacer-2);
+  background: var(--graupl-docs-theme-active--secondary--100);
+  color: var(--graupl-docs-theme-active--secondary--800);
 }
 
 pre code {
@@ -90,11 +93,11 @@ pre code {
 
   .lang {
     position: absolute;
-    right: var(--graupl-docs-spacer-3);
     top: var(--graupl-docs-spacer-1);
+    right: var(--graupl-docs-spacer-3);
     height: var(--graupl-docs-spacer-6);
-    opacity: 1;
     transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 1;
   }
 
   .copy {
@@ -102,18 +105,19 @@ pre code {
     @include graupl-button-mixins.apply-theme;
 
     position: absolute;
-    right: var(--graupl-docs-spacer-3);
-    top: var(--graupl-docs-spacer-3);
-    height: var(--graupl-docs-spacer-6);
-    opacity: 0;
-    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
     z-index: 2;
+    top: var(--graupl-docs-spacer-3);
+    right: var(--graupl-docs-spacer-3);
+    height: var(--graupl-docs-spacer-6);
+    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 0;
   }
 
   &:hover {
     .copy {
       opacity: 1;
     }
+
     .lang {
       opacity: 0;
     }
@@ -133,12 +137,15 @@ pre code {
 .border-top-none {
   border-top-width: 0;
 }
+
 .border-left-none {
   border-left-width: 0;
 }
+
 .border-bottom-none {
   border-bottom-width: 0;
 }
+
 .border-right-none {
   border-right-width: 0;
 }
