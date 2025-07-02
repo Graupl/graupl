@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -34,10 +35,17 @@ $base-flex-direction-properties: (
   col-reverse: column-reverse,
 );
 $custom-flex-direction-properties: () !default;
-$flex-direction-properties: map.merge(
-  $base-flex-direction-properties,
-  $custom-flex-direction-properties
-);
+$flex-direction-properties: () !default;
+
+// @todo remove this once $custom-flex-direction-properties is removed
+@if $custom-flex-direction-properties != () {
+  @warn "`$custom-flex-direction-properties` is deprecated and will be removed in a future release of Graupl. Use `$flex-direction-properties` instead.";
+
+  $flex-direction-properties: map.merge(
+    $flex-direction-properties,
+    $custom-flex-direction-properties
+  );
+}
 
 // Flex wrap properties.
 $flex-wrap-selector-prefix: "flex-" !default;
@@ -47,10 +55,17 @@ $base-flex-wrap-properties: (
   nowrap: nowrap,
 );
 $custom-flex-wrap-properties: () !default;
-$flex-wrap-properties: map.merge(
-  $base-flex-wrap-properties,
-  $custom-flex-wrap-properties
-);
+$flex-wrap-properties: () !default;
+
+// @todo remove this once $custom-flex-wrap-properties is removed
+@if $custom-flex-wrap-properties != () {
+  @warn "`$custom-flex-wrap-properties` is deprecated and will be removed in a future release of Graupl. Use `$flex-wrap-properties` instead.";
+
+  $flex-wrap-properties: map.merge(
+    $flex-wrap-properties,
+    $custom-flex-wrap-properties
+  );
+}
 
 // Flex grow properties.
 $flex-grow-selector-prefix: "flex-" !default;
@@ -59,10 +74,24 @@ $base-flex-grow-properties: (
   no-grow: 0,
 );
 $custom-flex-grow-properties: () !default;
-$flex-grow-properties: map.merge(
-  $base-flex-grow-properties,
-  $custom-flex-grow-properties
-);
+$flex-grow-properties: () !default;
+
+// @todo remove this once $custom-flex-grow-properties is removed
+@if $custom-flex-grow-properties != () {
+  @warn "`$custom-flex-grow-properties` is deprecated and will be removed in a future release of Graupl. Use `$flex-grow-properties` instead.";
+
+  $flex-grow-properties: map.merge(
+    $flex-grow-properties,
+    $custom-flex-grow-properties
+  );
+}
+
+@if $generate-base-utilities {
+  $flex-grow-properties: map.merge(
+    $base-flex-grow-properties,
+    $flex-grow-properties
+  );
+}
 
 // Flex shrink properties.
 $flex-shrink-selector-prefix: "flex-" !default;
@@ -71,10 +100,17 @@ $base-flex-shrink-properties: (
   no-shrink: 0,
 );
 $custom-flex-shrink-properties: () !default;
-$flex-shrink-properties: map.merge(
-  $base-flex-shrink-properties,
-  $custom-flex-shrink-properties
-);
+$flex-shrink-properties: () !default;
+
+// @todo remove this once $custom-flex-shrink-properties is removed
+@if $custom-flex-shrink-properties != () {
+  @warn "`$custom-flex-shrink-properties` is deprecated and will be removed in a future release of Graupl. Use `$flex-shrink-properties` instead.";
+
+  $flex-shrink-properties: map.merge(
+    $flex-shrink-properties,
+    $custom-flex-shrink-properties
+  );
+}
 
 // Flex basis properties.
 $flex-basis-selector-prefix: "flex-" !default;
@@ -93,7 +129,34 @@ $base-flex-basis-properties: (
   two-thirds: calc(100% / 1.5),
 );
 $custom-flex-basis-properties: () !default;
-$flex-basis-properties: map.merge(
-  $base-flex-basis-properties,
-  $custom-flex-basis-properties
-);
+$flex-basis-properties: () !default;
+
+// @todo remove this once $custom-flex-basis-properties is removed
+@if $custom-flex-basis-properties != () {
+  @warn "`$custom-flex-basis-properties` is deprecated and will be removed in a future release of Graupl. Use `$flex-basis-properties` instead.";
+
+  $flex-basis-properties: map.merge(
+    $flex-basis-properties,
+    $custom-flex-basis-properties
+  );
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $flex-direction-properties: map.merge(
+    $base-flex-direction-properties,
+    $flex-direction-properties
+  );
+  $flex-wrap-properties: map.merge(
+    $base-flex-wrap-properties,
+    $flex-wrap-properties
+  );
+  $flex-shrink-properties: map.merge(
+    $base-flex-shrink-properties,
+    $flex-shrink-properties
+  );
+  $flex-basis-properties: map.merge(
+    $base-flex-basis-properties,
+    $flex-basis-properties
+  );
+}

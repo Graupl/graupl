@@ -7,11 +7,15 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../layout/columns/defaults" as columns-defaults;
+@use "../../layout/flex-columns/defaults" as flex-columns-defaults;
 @use "sass:map";
+@use "sass:math";
 
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -26,11 +30,38 @@ $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 
 // Order properties.
+$order-max-count: math.max(
+  columns-defaults.$columns-max-count,
+  flex-columns-defaults.$flex-columns-max-count
+) !default;
 $order-selector-prefix: "order-" !default;
 $base-order-properties: (
   "none": 0,
   "first": -9999,
   "last": 9999,
 );
+
+// Add the count values to the base order properties.
+@for $i from 1 through $order-max-count {
+  $base-order-properties: map.merge(
+    $base-order-properties,
+    (
+      math.abs($i): $i,
+    )
+  );
+}
+
 $custom-order-properties: () !default;
-$order-properties: map.merge($base-order-properties, $custom-order-properties);
+$order-properties: () !default;
+
+// @todo remove this once $custom-order-properties is removed
+@if $custom-order-properties != () {
+  @warn "`$custom-order-properties` is deprecated and will be removed in a future release of Graupl. Use `$order-properties` instead.";
+
+  $order-properties: map.merge($order-properties, $custom-order-properties);
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $order-properties: map.merge($base-order-properties, $order-properties);
+}

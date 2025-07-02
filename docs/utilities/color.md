@@ -320,6 +320,7 @@ To customize the color utilities, you can use the following variables.
 | --- | --- | --- |
 | `$selector-base` | `"."` | The base selector for the utility classes. |
 | `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `true` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `true` | A flag to generate state-aware utility classes. |
@@ -333,9 +334,9 @@ To customize the color utilities, you can use the following variables.
 | `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
 | `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$background-selector-prefix` | `bg-` | The prefix for the background utility classes. |
-| `$custom-background-properties` | `()` | The custom properties and values for the background utility classes. |
+| `$custom-background-properties` | `()` | [DEPRECATED] The custom properties and values for the background utility classes. |
 | `$text-selector-prefix` | `text-` | The prefix for the text utility classes. |
-| `$custom-text-properties` | `()` | The custom properties and values for text utility classes. |
+| `$custom-text-properties` | `()` | [DEPRECATED] The custom properties and values for text utility classes. |
 
 ## Responsive variants
 

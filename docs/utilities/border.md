@@ -237,6 +237,7 @@ To customize the border utilities, you can use the following variables.
 | --- | --- | --- |
 | `$selector-base` | `"."` | The base selector for the utility classes. |
 | `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `false` | A flag to generate state-aware utility classes. |
@@ -251,11 +252,11 @@ To customize the border utilities, you can use the following variables.
 | `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$default-border-selector` | `"bordered"` | The selector for the default border utility class. |
 | `$border-width-selector-prefix` | `"border-"` | The prefix for the border width utility classes. |
-| `$custom-border-width-properties` | `()` | The custom properties and values for the border width utility classes. |
+| `$custom-border-width-properties` | `()` | [DEPRECATED] The custom properties and values for the border width utility classes. |
 | `$border-color-selector-prefix` | `"border-"` | The prefix for the border color utility classes. |
-| `$custom-border-color-properties` | `()` | The custom properties and values for the border color utility classes. |
+| `$custom-border-color-properties` | `()` | [DEPRECATED] The custom properties and values for the border color utility classes. |
 | `$border-style-selector-prefix` | `"border-"` | The prefix for the border style utility classes. |
-| `$custom-border-style-properties` | `()` | The custom properties and values for the border style utility classes. |
+| `$custom-border-style-properties` | `()` | [DEPRECATED] The custom properties and values for the border style utility classes. |
 
 ## Responsive variants
 

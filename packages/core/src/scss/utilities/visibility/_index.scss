@@ -13,6 +13,7 @@
 // The following variables control the generated classes:
 // - `$selector-base`: The base selector for the utility classes.
 // - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
+// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
 // - `$screen-aware`: A flag to generate screen-aware utility classes.
 // - `$theme-aware`: A flag to generate theme-aware utility classes.
 // - `$state-aware`: A flag to generate state-aware utility classes.
@@ -27,7 +28,7 @@
 // - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
 // - `$visibility-selector-prefix`: The prefix for the visibility utility classes.
 // - `$base-visibility-properties`: The base properties and values for the visibility utility classes.
-// - `$custom-visibility-properties`: The custom properties and values for the visibility utility classes.
+// - `$custom-visibility-properties`: [DEPRECATED] The custom properties and values for the visibility utility classes.
 // - `$visibility-properties`: The combined properties and values for the visibility utility classes.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:

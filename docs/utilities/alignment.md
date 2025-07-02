@@ -381,6 +381,7 @@ To customize the alignment utilities, you can use the following variables.
 | --- | --- | --- |
 | `$selector-base` | `"."` | The base selector for the utility classes. |
 | `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
+| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
 | `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
 | `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
 | `$state-aware` | `false` | A flag to generate state-aware utility classes. |
@@ -394,11 +395,11 @@ To customize the alignment utilities, you can use the following variables.
 | `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
 | `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$align-content-selector-prefix` | `"align-content-"` | The prefix for the align content utility classes. |
-| `$custom-align-content-properties` | `()` | The custom properties and values for the align content utility classes. |
+| `$custom-align-content-properties` | `()` | [DEPRECATED] The custom properties and values for the align content utility classes. |
 | `$align-items-selector-prefix` | `"align-items-"` | The prefix for the `.align-items-utility` utility classes. |
-| `$custom-align-items-properties` | `()` | The custom properties and values for the `.align-items-utility` utility classes. |
+| `$custom-align-items-properties` | `()` | [DEPRECATED] The custom properties and values for the `.align-items-utility` utility classes. |
 | `$align-self-selector-prefix` | `"align-self-"` | The prefix for the `.align-self-utility` utility classes. |
-| `$custom-align-self-properties` | `()` | The custom properties and values for the `.align-self-utility` utility classes. |
+| `$custom-align-self-properties` | `()` | [DEPRECATED] The custom properties and values for the `.align-self-utility` utility classes. |
 
 ## Responsive variants
 

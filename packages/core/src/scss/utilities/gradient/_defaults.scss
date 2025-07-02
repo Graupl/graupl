@@ -7,11 +7,13 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
 @use "sass:map";
 
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -37,7 +39,19 @@ $base-gradient-types: (
   radial: radial-gradient,
 );
 $custom-gradient-types: () !default;
-$gradient-types: map.merge($base-gradient-types, $custom-gradient-types);
+$gradient-types: () !default;
+
+// @todo remove this once $custom-gradient-types is removed
+@if $custom-gradient-types != () {
+  @warn "`$custom-gradient-types` is deprecated and will be removed in a future release of Graupl. Use `$gradient-types` instead.";
+
+  $gradient-types: map.merge($gradient-types, $custom-gradient-types);
+}
+
+@if $generate-base-utilities {
+  $gradient-types: map.merge($base-gradient-types, $gradient-types);
+}
+
 $base-gradient-directions: (
   to-top: "to top",
   to-right: "to right",
@@ -59,12 +73,47 @@ $base-gradient-directions: (
   farthest-corner: farthest-corner,
 );
 $custom-gradient-directions: () !default;
-$gradient-directions: map.merge(
-  $base-gradient-directions,
-  $custom-gradient-directions
-);
+$gradient-directions: () !default;
+
+// @todo remove this once $custom-gradient-directions is removed
+@if $custom-gradient-directions != () {
+  @warn "`$custom-gradient-directions` is deprecated and will be removed in a future release of Graupl. Use `$gradient-directions` instead.";
+
+  $gradient-directions: map.merge(
+    $gradient-directions,
+    $custom-gradient-directions
+  );
+}
+
 $base-gradient-colors: (
   transparent: transparent,
 );
+
+// Add the active theme colors to the base gradient colors.
+@each $color, $map in map.get(color.$themes, active) {
+  @each $shade, $value in $map {
+    $base-gradient-colors: map.merge(
+      $base-gradient-colors,
+      (#{$color}-#{$shade}: #{$value})
+    );
+  }
+}
+
 $custom-gradient-colors: () !default;
-$gradient-colors: map.merge($base-gradient-colors, $custom-gradient-colors);
+$gradient-colors: () !default;
+
+// @todo remove this once $custom-gradient-colors is removed
+@if $custom-gradient-colors != () {
+  @warn "`$custom-gradient-colors` is deprecated and will be removed in a future release of Graupl. Use `$gradient-colors` instead.";
+
+  $gradient-colors: map.merge($gradient-colors, $custom-gradient-colors);
+}
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $gradient-directions: map.merge(
+    $base-gradient-directions,
+    $gradient-directions
+  );
+  $gradient-colors: map.merge($base-gradient-colors, $gradient-colors);
+}

@@ -12,6 +12,7 @@
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
 $use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
 $state-aware: false !default;
@@ -33,7 +34,21 @@ $base-visibility-properties: (
   collapse: collapse,
 );
 $custom-visibility-properties: () !default;
-$visibility-properties: map.merge(
-  $base-visibility-properties,
-  $custom-visibility-properties
-);
+$visibility-properties: () !default;
+
+// @todo remove this once $custom-visibility-properties is removed
+@if $custom-visibility-properties != () {
+  @warn "`$custom-visibility-properties` is deprecated and will be removed in a future release of Graupl. Use `$visibility-properties` instead.";
+
+  $visibility-properties: map.merge(
+    $visibility-properties,
+    $custom-visibility-properties
+  );
+}
+
+@if $generate-base-utilities {
+  $visibility-properties: map.merge(
+    $base-visibility-properties,
+    $visibility-properties
+  );
+}
