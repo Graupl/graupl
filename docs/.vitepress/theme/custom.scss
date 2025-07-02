@@ -1,7 +1,8 @@
 @use "../../../packages/core/src/scss/defaults" as graupl-defaults with (
   $id: "graupl-docs"
 );
-@use "../../../packages/core/src/scss/base/button/mixins" as graupl-button-mixins;
+@use "../../../packages/core/src/scss/base/button/mixins" as
+  graupl-button-mixins;
 @use "../../../packages/core/src/scss" as graupl;
 
 :root {

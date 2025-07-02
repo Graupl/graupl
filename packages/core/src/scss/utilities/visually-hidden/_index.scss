@@ -99,8 +99,8 @@
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(
-              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-            ) {
+            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+          ) {
             @include visually-hidden.apply(defaults.$use-important);
           }
 
@@ -124,8 +124,8 @@
           #{$selector-prefix}#{defaults.$visually-hidden-selector} {
             // `&:not(.focusable)`
             &:not(
-                #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-              ) {
+              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+            ) {
               @include visually-hidden.apply(defaults.$use-important);
             }
 
@@ -149,8 +149,8 @@
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(
-              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-            ) {
+            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+          ) {
             @include visually-hidden.apply(defaults.$use-important);
           }
 
@@ -174,8 +174,8 @@
         #{$selector-prefix}#{defaults.$visually-hidden-selector} {
           // `&:not(.focusable)`
           &:not(
-              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-            ) {
+            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
+          ) {
             @include visually-hidden.apply(defaults.$use-important);
           }
 
