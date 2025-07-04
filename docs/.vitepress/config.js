@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 
 // Get the current version from the package.json file.
 import { version } from "../../package.json";
+import { NodePackageImporter } from "sass-embedded";
 
 export default defineConfig({
   lang: "en-US",
@@ -12,6 +13,14 @@ export default defineConfig({
       host: "0.0.0.0",
       hmr: {
         host: "localhost",
+      },
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: "modern-compiler",
+          importers: [new NodePackageImporter()],
+        },
       },
     },
   },
