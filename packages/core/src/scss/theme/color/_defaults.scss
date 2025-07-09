@@ -77,7 +77,17 @@ $colors: map.deep-merge($default-colors, $colors);
 // Themes.
 $default-themes: (light, dark);
 $custom-themes: () !default;
-$themes: list.join($default-themes, $custom-themes);
+$themes: () !default;
+
+// @todo remove this once $custom-themes is removed
+@if $custom-themes != () {
+  @warn "`$custom-themes` is deprecated and will be removed in a future release of Graupl. Use `$themes` instead.";
+
+  $themes: list.join($themes, $custom-themes);
+}
+
+$themes: list.join($default-themes, $themes);
+
 $default-theme: light !default;
 
 // Theme mappings.
