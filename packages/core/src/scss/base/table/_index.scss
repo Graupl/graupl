@@ -223,7 +223,7 @@
 @include layer(theme) {
   // table
   #{defaults.$table-selector-base}#{defaults.$table-selector} {
-    @each $variant in theme.variants() {
+    @each $variant in theme.get-theme() {
       // e.g. &.primary, &.secondary, &.tertiary,
       // e.g. .primary, .secondary, .tertiary
       &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$variant},
