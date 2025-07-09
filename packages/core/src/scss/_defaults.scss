@@ -96,7 +96,19 @@ $screen-size-triggers: map.merge(
 // Container sizes.
 $base-container-sizes: $screen-sizes;
 $custom-container-sizes: () !default;
-$container-sizes: map.merge($base-container-sizes, $custom-container-sizes);
+$container-sizes: () !default;
+
+// @todo remove this once $custom-container-sizes is removed
+@if $custom-container-sizes != () {
+  @warn "`$custom-container-sizes` is deprecated and will be removed in a future release of Graupl. Use `$container-sizes` instead.";
+
+  $container-sizes: map.merge($container-sizes, $custom-container-sizes);
+}
+
+$container-size-triggers: map.merge(
+  $base-container-size-triggers,
+  $container-size-triggers
+);
 $base-container-size-triggers: $screen-size-triggers;
 $custom-container-size-triggers: () !default;
 $container-size-triggers: map.merge(
