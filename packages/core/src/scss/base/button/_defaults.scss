@@ -33,7 +33,7 @@ $button-disabled-transform: $button-initial-transform !default;
 // and primary--900 as the border colour.
 //
 // Secondary/tertiary buttons will use the same shade for their respective colours.
-$base-button-state-theme-map: (
+$-button-state-theme-map: (
   color: 900,
   border-color: 700,
   hover-color: 100,
@@ -56,6 +56,6 @@ $button-state-theme-map: () !default;
 }
 
 $button-state-theme-map: map.merge(
-  $base-button-state-theme-map,
+  $-button-state-theme-map,
   $button-state-theme-map
 );

@@ -29,7 +29,7 @@ $alert-transition-selector: ".transitioning" !default;
 // and primary--900 as the border colour.
 //
 // Secondary/tertiary alerts will use the same shade for their respective colours.
-$base-alert-state-theme-map: (
+$-alert-state-theme-map: (
   color: 900,
   background: 200,
   border-color: 700,
@@ -56,6 +56,6 @@ $alert-state-theme-map: () !default;
 }
 
 $alert-state-theme-map: map.merge(
-  $base-alert-state-theme-map,
+  $-alert-state-theme-map,
   $alert-state-theme-map
 );

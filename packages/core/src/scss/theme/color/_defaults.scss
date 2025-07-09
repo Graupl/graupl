@@ -27,7 +27,7 @@ $theme-selector-suffix: "-mode" !default;
 // Users can override any part of this giant map, allowing for fine-tuned control of theme colours.
 
 // Colours.
-$default-colors: (
+$-colors: (
   primary: (
     100: hsl(219deg 100% 95%),
     200: hsl(219deg 90% 80%),
@@ -72,10 +72,10 @@ $colors: () !default;
   $colors: map.deep-merge($colors, $custom-colors);
 }
 
-$colors: map.deep-merge($default-colors, $colors);
+$colors: map.deep-merge($-colors, $colors);
 
 // Themes.
-$default-themes: (light, dark);
+$-themes: (light, dark);
 $custom-themes: () !default;
 $themes: () !default;
 
@@ -86,12 +86,12 @@ $themes: () !default;
   $themes: list.join($themes, $custom-themes);
 }
 
-$themes: list.join($default-themes, $themes);
+$themes: list.join($-themes, $themes);
 
 $default-theme: light !default;
 
 // Theme mappings.
-$default-theme-mappings: (
+$-theme-mappings: (
   light: (
     100: 100,
     200: 200,
@@ -125,10 +125,10 @@ $theme-mappings: () !default;
   $theme-mappings: map.deep-merge($theme-mappings, $custom-theme-mappings);
 }
 
-$theme-mappings: map.deep-merge($default-theme-mappings, $theme-mappings);
+$theme-mappings: map.deep-merge($-theme-mappings, $theme-mappings);
 
 // Theme map.
-$default-theme-map: ();
+$-theme-map: ();
 
 @each $theme in $themes {
   $theme-map: ();
@@ -156,8 +156,8 @@ $default-theme-map: ();
     );
   }
 
-  $default-theme-map: map.merge(
-    $default-theme-map,
+  $-theme-map: map.merge(
+    $-theme-map,
     (
       $theme: $theme-map,
     )
@@ -174,4 +174,4 @@ $theme-map: () !default;
   $theme-map: map.deep-merge($theme-map, $custom-theme-map);
 }
 
-$theme-map: map.deep-merge($default-theme-map, $theme-map);
+$theme-map: map.deep-merge($-theme-map, $theme-map);

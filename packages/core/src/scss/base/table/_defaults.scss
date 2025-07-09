@@ -53,7 +53,7 @@ $table-caption-side: bottom !default;
 // and primary--100 as the header text colour.
 //
 // Secondary/tertiary tables will use the same shade for their respective colours.
-$base-table-theme-map: (
+$-table-theme-map: (
   header-background: 700,
   header-color: 100,
   striped-background: 200,
@@ -74,4 +74,4 @@ $table-theme-map: () !default;
   $table-theme-map: map.merge($table-theme-map, $custom-table-theme-map);
 }
 
-$table-theme-map: map.merge($base-table-theme-map, $table-theme-map);
+$table-theme-map: map.merge($-table-theme-map, $table-theme-map);

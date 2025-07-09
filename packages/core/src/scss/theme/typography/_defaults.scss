@@ -16,7 +16,7 @@ $line-height: 1.2em !default;
 // Multipliers for font sizes.
 // This uses a minor third scale.
 // See: https://typescale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000
-$base-font-size-multipliers: (
+$-font-size-multipliers: (
   xs: 0.694,
   sm: 0.833,
   base: 1,
@@ -41,12 +41,12 @@ $font-size-multipliers: () !default;
 }
 
 $font-size-multipliers: map.merge(
-  $base-font-size-multipliers,
+  $-font-size-multipliers,
   $font-size-multipliers
 );
 
 // Weights.
-$base-font-weights: (
+$-font-weights: (
   light: 300,
   normal: 400,
   bold: 700,
@@ -61,7 +61,7 @@ $font-weights: () !default;
   $font-weights: map.merge($font-weights, $custom-font-weights);
 }
 
-$font-weights: map.merge($base-font-weights, $font-weights);
+$font-weights: map.merge($-font-weights, $font-weights);
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:
