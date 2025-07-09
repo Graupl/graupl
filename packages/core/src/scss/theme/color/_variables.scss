@@ -81,33 +81,35 @@ $themes: (
 }
 
 // Generate the active theme properties.
-@each $color-name, $map in map.get($themes, defaults.$default-theme) {
-  $color-map: ();
+@if map.has-key($themes, defaults.$default-theme) {
+  @each $color-name, $map in map.get($themes, defaults.$default-theme) {
+    $color-map: ();
 
-  @each $shade, $value in $map {
-    $color-property: var(
-      --#{root-defaults.$prefix}theme-active--#{$color-name}--#{$shade},
-      #{$value}
-    );
-    $color-map: map.merge(
-      $color-map,
+    @each $shade, $value in $map {
+      $color-property: var(
+        --#{root-defaults.$prefix}theme-active--#{$color-name}--#{$shade},
+        #{$value}
+      );
+      $color-map: map.merge(
+        $color-map,
+        (
+          $shade: $color-property,
+        )
+      );
+    }
+
+    $themes: map.merge(
+      $themes,
       (
-        $shade: $color-property,
+        active: map.merge(
+            map.get($themes, active),
+            (
+              $color-name: $color-map,
+            )
+          ),
       )
     );
   }
-
-  $themes: map.merge(
-    $themes,
-    (
-      active: map.merge(
-          map.get($themes, active),
-          (
-            $color-name: $color-map,
-          )
-        ),
-    )
-  );
 }
 
 // Colour properties.

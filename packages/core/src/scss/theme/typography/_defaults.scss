@@ -6,9 +6,12 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // font properties.
+$generate-base-font-sizes: root-defaults.$generate-base-font-sizes !default;
+$generate-base-font-weights: root-defaults.$generate-base-font-weights !default;
 $font-size-base: 1rem !default;
 $root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
 $line-height: 1.2em !default;
@@ -16,7 +19,7 @@ $line-height: 1.2em !default;
 // Multipliers for font sizes.
 // This uses a minor third scale.
 // See: https://typescale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Lato&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000
-$base-font-size-multipliers: (
+$-font-size-multipliers: (
   xs: 0.694,
   sm: 0.833,
   base: 1,
@@ -28,19 +31,46 @@ $base-font-size-multipliers: (
   5xl: 2.986,
 );
 $custom-font-size-multipliers: () !default;
-$font-size-multipliers: map.merge(
-  $base-font-size-multipliers,
-  $custom-font-size-multipliers
-);
+$font-size-multipliers: () !default;
+
+// @todo remove this once $custom-font-size-multipliers is removed
+@if $custom-font-size-multipliers != () {
+  @warn "`$custom-font-size-multipliers` is deprecated and will be removed in a future release of Graupl. Use `$font-size-multipliers` instead.";
+
+  $font-size-multipliers: map.merge(
+    $font-size-multipliers,
+    $custom-font-size-multipliers
+  );
+}
+
+// Merge the font size multipliers with the default ones.
+@if $generate-base-font-sizes {
+  $font-size-multipliers: map.merge(
+    $-font-size-multipliers,
+    $font-size-multipliers
+  );
+}
 
 // Weights.
-$base-font-weights: (
+$-font-weights: (
   light: 300,
   normal: 400,
   bold: 700,
 );
 $custom-font-weights: () !default;
-$font-weights: map.merge($base-font-weights, $custom-font-weights);
+$font-weights: () !default;
+
+// @todo remove this once $custom-font-weights is removed
+@if $custom-font-weights != () {
+  @warn "`$custom-font-weights` is deprecated and will be removed in a future release of Graupl. Use `$font-weights` instead.";
+
+  $font-weights: map.merge($font-weights, $custom-font-weights);
+}
+
+// Merge the custom font weights with the default ones.
+@if $generate-base-font-weights {
+  $font-weights: map.merge($-font-weights, $font-weights);
+}
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:

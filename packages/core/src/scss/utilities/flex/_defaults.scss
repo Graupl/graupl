@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Flex direction properties.
 $flex-direction-selector-prefix: "flex-" !default;
-$base-flex-direction-properties: (
+$-flex-direction-properties: (
   row: row,
   row-reverse: row-reverse,
   col: column,
@@ -49,7 +49,7 @@ $flex-direction-properties: () !default;
 
 // Flex wrap properties.
 $flex-wrap-selector-prefix: "flex-" !default;
-$base-flex-wrap-properties: (
+$-flex-wrap-properties: (
   wrap: wrap,
   wrap-reverse: wrap-reverse,
   nowrap: nowrap,
@@ -69,7 +69,7 @@ $flex-wrap-properties: () !default;
 
 // Flex grow properties.
 $flex-grow-selector-prefix: "flex-" !default;
-$base-flex-grow-properties: (
+$-flex-grow-properties: (
   grow: 1,
   no-grow: 0,
 );
@@ -88,14 +88,14 @@ $flex-grow-properties: () !default;
 
 @if $generate-base-utilities {
   $flex-grow-properties: map.merge(
-    $base-flex-grow-properties,
+    $-flex-grow-properties,
     $flex-grow-properties
   );
 }
 
 // Flex shrink properties.
 $flex-shrink-selector-prefix: "flex-" !default;
-$base-flex-shrink-properties: (
+$-flex-shrink-properties: (
   shrink: 1,
   no-shrink: 0,
 );
@@ -114,7 +114,7 @@ $flex-shrink-properties: () !default;
 
 // Flex basis properties.
 $flex-basis-selector-prefix: "flex-" !default;
-$base-flex-basis-properties: (
+$-flex-basis-properties: (
   auto: auto,
   fit-content: fit-content,
   max-content: max-content,
@@ -144,19 +144,19 @@ $flex-basis-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $flex-direction-properties: map.merge(
-    $base-flex-direction-properties,
+    $-flex-direction-properties,
     $flex-direction-properties
   );
   $flex-wrap-properties: map.merge(
-    $base-flex-wrap-properties,
+    $-flex-wrap-properties,
     $flex-wrap-properties
   );
   $flex-shrink-properties: map.merge(
-    $base-flex-shrink-properties,
+    $-flex-shrink-properties,
     $flex-shrink-properties
   );
   $flex-basis-properties: map.merge(
-    $base-flex-basis-properties,
+    $-flex-basis-properties,
     $flex-basis-properties
   );
 }

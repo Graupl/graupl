@@ -33,7 +33,7 @@ $max-width-selector-prefix: "max-w-" !default;
 $min-width-selector-prefix: "min-w-" !default;
 
 // Width values.
-$base-width-values: (
+$-width-values: (
   auto: auto,
   fit-content: fit-content,
   max-content: max-content,
@@ -55,8 +55,8 @@ $base-width-values: (
 
 // Add the spacer values to the base width values.
 @each $spacer, $value in root-variables.$spacers {
-  $base-width-values: map.merge(
-    $base-width-values,
+  $-width-values: map.merge(
+    $-width-values,
     (
       $spacer: $value,
     )
@@ -75,5 +75,5 @@ $width-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $width-values: map.merge($base-width-values, $width-values);
+  $width-values: map.merge($-width-values, $width-values);
 }

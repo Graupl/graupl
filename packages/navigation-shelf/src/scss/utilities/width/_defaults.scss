@@ -35,7 +35,7 @@ $max-width-selector-prefix: width-defaults.$max-width-selector-prefix !default;
 $min-width-selector-prefix: width-defaults.$min-width-selector-prefix !default;
 
 // Width values.
-$base-width-values: (
+$-width-values: (
   shelf-min: $navigation-shelf-min-width,
   shelf-max: $navigation-shelf-max-width,
   shelf-current: $navigation-shelf-current-width,
@@ -54,5 +54,5 @@ $width-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $width-values: map.merge($base-width-values, $width-values);
+  $width-values: map.merge($-width-values, $width-values);
 }

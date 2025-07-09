@@ -30,10 +30,10 @@
   @return null;
 }
 
-@function variants($theme: active) {
+@function get-theme($theme: active) {
   @if map.has-key(color.$themes, $theme) {
     @return map.keys(map.get(color.$themes, $theme));
   }
 
-  @return null;
+  @return ();
 }

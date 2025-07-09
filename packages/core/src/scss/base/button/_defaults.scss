@@ -12,6 +12,7 @@
 // Button selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $button-selector-base: $selector-base !default;
 $button-selector: "button" !default;
 $button-link-selector-base: $modifier-selector-base !default;
@@ -33,7 +34,7 @@ $button-disabled-transform: $button-initial-transform !default;
 // and primary--900 as the border colour.
 //
 // Secondary/tertiary buttons will use the same shade for their respective colours.
-$base-button-state-theme-map: (
+$-button-state-theme-map: (
   color: 900,
   border-color: 700,
   hover-color: 100,
@@ -43,7 +44,22 @@ $base-button-state-theme-map: (
   disabled-border-color: 200,
 );
 $custom-button-state-theme-map: () !default;
-$button-state-theme-map: map.merge(
-  $base-button-state-theme-map,
-  $custom-button-state-theme-map
-);
+$button-state-theme-map: () !default;
+
+// @todo remove this once $custom-button-state-theme-map is removed
+@if $custom-button-state-theme-map != () {
+  @warn "`$custom-button-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$button-state-theme-map` instead.";
+
+  $button-state-theme-map: map.merge(
+    $button-state-theme-map,
+    $custom-button-state-theme-map
+  );
+}
+
+// Merge the custom button state theme map with the default one.
+@if $generate-base-theme-map {
+  $button-state-theme-map: map.merge(
+    $-button-state-theme-map,
+    $button-state-theme-map
+  );
+}

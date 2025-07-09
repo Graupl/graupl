@@ -5,6 +5,7 @@ import prettier from "eslint-config-prettier";
 
 const files = ["*.js", "*.cjs"];
 const ignores = [
+  "demo/",
   "dist/",
   "docs/.vitepress/cache/",
   "docs/.vitepress/dist/",

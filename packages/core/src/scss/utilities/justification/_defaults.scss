@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Justify content properties.
 $justify-content-selector-prefix: "justify-content-" !default;
-$base-justify-content-properties: (
+$-justify-content-properties: (
   normal: normal,
   start: flex-start,
   end: flex-end,
@@ -53,7 +53,7 @@ $justify-content-properties: () !default;
 
 // Justify items properties.
 $justify-items-selector-prefix: "justify-items-" !default;
-$base-justify-items-properties: (
+$-justify-items-properties: (
   start: start,
   end: end,
   center: center,
@@ -74,7 +74,7 @@ $justify-items-properties: () !default;
 
 // Justify self properties.
 $justify-self-selector-prefix: "justify-self-" !default;
-$base-justify-self-properties: (
+$-justify-self-properties: (
   auto: auto,
   start: start,
   end: end,
@@ -97,15 +97,15 @@ $justify-self-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $justify-content-properties: map.merge(
-    $base-justify-content-properties,
+    $-justify-content-properties,
     $justify-content-properties
   );
   $justify-items-properties: map.merge(
-    $base-justify-items-properties,
+    $-justify-items-properties,
     $justify-items-properties
   );
   $justify-self-properties: map.merge(
-    $base-justify-self-properties,
+    $-justify-self-properties,
     $justify-self-properties
   );
 }

@@ -61,7 +61,7 @@
   background: $button-background;
   color: $button-color;
 
-  @each $color, $map in map.get(color.$themes, active) {
+  @each $color, $map in theme.get-theme() {
     // e.g. &.primary, &.secondary, &.tertiary
     &#{defaults.$button-theme-selector-base}#{defaults.$button-theme-selector-prefix}#{$color} {
       @each $prop, $shade in defaults.$button-state-theme-map {

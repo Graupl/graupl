@@ -30,7 +30,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 $ratio-selector: "ratio" !default;
 $ratio-variant-selector-prefix: "" !default;
 $force-ratio-selector: "force-ratio" !default;
-$base-ratios: (
+$-ratios: (
   "one-by-one": 100%,
   "two-by-one": 50%,
   "four-by-three": 75%,
@@ -51,5 +51,5 @@ $ratios: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $ratios: map.merge($base-ratios, $ratios);
+  $ratios: map.merge($-ratios, $ratios);
 }

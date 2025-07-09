@@ -31,7 +31,7 @@
     "build:packages": "npm --workspaces run build --if-present",
     "build:css": "npm run sass && npm run postcss",
     "build:js": "npm run rolldown",
-    "postbuild": "npm run docs:build",
+    "postbuild": "npm run docs:build && npm run demo:build",
     "release": "commit-and-tag-version -a",
     "demo:dev": "vite",
     "demo:preview": "vite preview",

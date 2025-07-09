@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Display properties.
 $display-selector-prefix: "display-" !default;
-$base-display-properties: (
+$-display-properties: (
   block: block,
   inline-block: inline-block,
   inline: inline,
@@ -56,5 +56,5 @@ $display-properties: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $display-properties: map.merge($base-display-properties, $display-properties);
+  $display-properties: map.merge($-display-properties, $display-properties);
 }

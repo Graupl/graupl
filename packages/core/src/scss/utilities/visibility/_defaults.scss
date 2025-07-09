@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Visibility properties.
 $visibility-selector-prefix: "visibility-" !default;
-$base-visibility-properties: (
+$-visibility-properties: (
   visible: visible,
   hidden: hidden,
   collapse: collapse,
@@ -48,7 +48,7 @@ $visibility-properties: () !default;
 
 @if $generate-base-utilities {
   $visibility-properties: map.merge(
-    $base-visibility-properties,
+    $-visibility-properties,
     $visibility-properties
   );
 }

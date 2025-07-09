@@ -12,6 +12,7 @@
 // Table selectors.
 $selector-base: root-defaults.$element-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $table-selector-base: $selector-base !default;
 $table-selector: "table" !default;
 $table-caption-selector-base: $selector-base !default;
@@ -53,7 +54,7 @@ $table-caption-side: bottom !default;
 // and primary--100 as the header text colour.
 //
 // Secondary/tertiary tables will use the same shade for their respective colours.
-$base-table-theme-map: (
+$-table-theme-map: (
   header-background: 700,
   header-color: 100,
   striped-background: 200,
@@ -65,4 +66,16 @@ $base-table-theme-map: (
   highlight-color: 100,
 );
 $custom-table-theme-map: () !default;
-$table-theme-map: map.merge($base-table-theme-map, $custom-table-theme-map);
+$table-theme-map: () !default;
+
+// @todo remove this once $custom-table-theme-map is removed
+@if $custom-table-theme-map != () {
+  @warn "`$custom-table-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$table-theme-map` instead.";
+
+  $table-theme-map: map.merge($table-theme-map, $custom-table-theme-map);
+}
+
+// Merge the custom table theme map with the default one.
+@if $generate-base-theme-map {
+  $table-theme-map: map.merge($-table-theme-map, $table-theme-map);
+}

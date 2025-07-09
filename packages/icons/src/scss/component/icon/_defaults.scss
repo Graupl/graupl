@@ -27,4 +27,11 @@ $icon-size: 1.25em !default;
 // Icons.
 // This should be a key/value pair for the name of the icon and the path to the icon's SVG.
 $custom-icons: () !default;
-$icons: $custom-icons;
+$icons: () !default;
+
+// @todo remove this once $custom-icons is removed
+@if $custom-icons != () {
+  @warn "`$custom-icons` is deprecated and will be removed in a future release of Graupl. Use `$icons` instead.";
+
+  $icons: map.merge($icons, $custom-icons);
+}
