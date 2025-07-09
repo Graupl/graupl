@@ -176,9 +176,21 @@ $base-transition-durations: (
   slow: #{$transition-duration-base * 3}ms,
 );
 $custom-transition-durations: () !default;
+$transition-durations: () !default;
+
+// @todo remove this once $custom-transition-durations is removed
+@if $custom-transition-durations != () {
+  @warn "`$custom-transition-durations` is deprecated and will be removed in a future release of Graupl. Use `$transition-durations` instead.";
+
+  $transition-durations: map.merge(
+    $transition-durations,
+    $custom-transition-durations
+  );
+}
+
 $transition-durations: map.merge(
   $base-transition-durations,
-  $custom-transition-durations
+  $transition-durations
 );
 
 // Selector properties.
