@@ -6,9 +6,12 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // font properties.
+$generate-base-font-sizes: root-defaults.$generate-base-font-sizes !default;
+$generate-base-font-weights: root-defaults.$generate-base-font-weights !default;
 $font-size-base: 1rem !default;
 $root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
 $line-height: 1.2em !default;
@@ -40,10 +43,13 @@ $font-size-multipliers: () !default;
   );
 }
 
-$font-size-multipliers: map.merge(
-  $-font-size-multipliers,
-  $font-size-multipliers
-);
+// Merge the font size multipliers with the default ones.
+@if $generate-base-font-sizes {
+  $font-size-multipliers: map.merge(
+    $-font-size-multipliers,
+    $font-size-multipliers
+  );
+}
 
 // Weights.
 $-font-weights: (
@@ -61,7 +67,10 @@ $font-weights: () !default;
   $font-weights: map.merge($font-weights, $custom-font-weights);
 }
 
-$font-weights: map.merge($-font-weights, $font-weights);
+// Merge the custom font weights with the default ones.
+@if $generate-base-font-weights {
+  $font-weights: map.merge($-font-weights, $font-weights);
+}
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:
