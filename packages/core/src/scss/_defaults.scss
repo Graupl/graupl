@@ -19,6 +19,7 @@ $generate-base-themes: true !default;
 $generate-base-theme-maps: true !default;
 $generate-base-font-sizes: true !default;
 $generate-base-font-weights: true !default;
+$generate-state-classes: true !default;
 $generate-base-utilities: true !default;
 $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
@@ -208,28 +209,46 @@ $container-aware-selector-prefix: "cq\\:" !default;
 $state-selector-base: $modifier-selector-base !default;
 $-state-selectors: (
   visited: (
-    "#{$state-selector-base}visited",
     ":visited",
   ),
   focus: (
-    "#{$state-selector-base}focus",
     ":focus-visible",
   ),
   hover: (
-    "#{$state-selector-base}hover",
     ":hover",
   ),
   active: (
-    "#{$state-selector-base}active",
     ":active",
   ),
   disabled: (
-    "#{$state-selector-base}disabled",
     ":disabled",
     "[disabled]",
     "[aria-disabled=true]",
   ),
 );
+$-state-class-selectors: (
+  visited: (
+    "#{$state-selector-base}visited",
+  ),
+  focus: (
+    "#{$state-selector-base}focus",
+  ),
+  hover: (
+    "#{$state-selector-base}hover",
+  ),
+  active: (
+    "#{$state-selector-base}active",
+  ),
+  disabled: (
+    "#{$state-selector-base}disabled",
+  ),
+);
+
+// Merge the state class selectors with the state selectors.
+@if $generate-state-classes {
+  $-state-selectors: map.deep-merge($-state-selectors, $-state-class-selectors);
+}
+
 $custom-state-selectors: () !default;
 $state-selectors: () !default;
 
