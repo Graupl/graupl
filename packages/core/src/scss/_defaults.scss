@@ -235,7 +235,16 @@ $base-state-selectors: (
   ),
 );
 $custom-state-selectors: () !default;
-$state-selectors: map.merge($base-state-selectors, $custom-state-selectors);
+$state-selectors: () !default;
+
+// @todo remove this once $custom-state-selectors is removed
+@if $custom-state-selectors != () {
+  @warn "`$custom-state-selectors` is deprecated and will be removed in a future release of Graupl. Use `$state-selectors` instead.";
+
+  $state-selectors: map.merge($state-selectors, $custom-state-selectors);
+}
+
+$state-selectors: map.merge($base-state-selectors, $state-selectors);
 
 // Utility properties.
 $utility-selector-base: $modifier-selector-base !default;
