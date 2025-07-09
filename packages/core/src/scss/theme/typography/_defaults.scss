@@ -28,9 +28,21 @@ $base-font-size-multipliers: (
   5xl: 2.986,
 );
 $custom-font-size-multipliers: () !default;
+$font-size-multipliers: () !default;
+
+// @todo remove this once $custom-font-size-multipliers is removed
+@if $custom-font-size-multipliers != () {
+  @warn "`$custom-font-size-multipliers` is deprecated and will be removed in a future release of Graupl. Use `$font-size-multipliers` instead.";
+
+  $font-size-multipliers: map.merge(
+    $font-size-multipliers,
+    $custom-font-size-multipliers
+  );
+}
+
 $font-size-multipliers: map.merge(
   $base-font-size-multipliers,
-  $custom-font-size-multipliers
+  $font-size-multipliers
 );
 
 // Weights.
