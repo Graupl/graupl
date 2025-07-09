@@ -165,4 +165,13 @@ $default-theme-map: ();
 }
 
 $custom-theme-map: () !default;
-$theme-map: map.deep-merge($default-theme-map, $custom-theme-map);
+$theme-map: () !default;
+
+// @todo remove this once $custom-theme-map is removed
+@if $custom-theme-map != () {
+  @warn "`$custom-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$theme-map` instead.";
+
+  $theme-map: map.deep-merge($theme-map, $custom-theme-map);
+}
+
+$theme-map: map.deep-merge($default-theme-map, $theme-map);
