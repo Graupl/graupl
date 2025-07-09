@@ -144,10 +144,19 @@ $base-spacer-multipliers: (
   10: 10,
 );
 $custom-spacer-multipliers: () !default;
-$spacer-multipliers: map.merge(
-  $base-spacer-multipliers,
-  $custom-spacer-multipliers
-);
+$spacer-multipliers: () !default;
+
+// @todo remove this once $custom-spacer-multipliers is removed
+@if $custom-spacer-multipliers != () {
+  @warn "`$custom-spacer-multipliers` is deprecated and will be removed in a future release of Graupl. Use `$spacer-multipliers` instead.";
+
+  $spacer-multipliers: map.merge(
+    $spacer-multipliers,
+    $custom-spacer-multipliers
+  );
+}
+
+$spacer-multipliers: map.merge($base-spacer-multipliers, $spacer-multipliers);
 
 // Size properties.
 $interactive-min-width: 44px !default;
