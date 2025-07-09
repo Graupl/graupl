@@ -76,9 +76,21 @@ $base-screen-size-triggers: (
   ),
 );
 $custom-screen-size-triggers: () !default;
+$screen-size-triggers: () !default;
+
+// @todo remove this once $custom-screen-size-triggers is removed
+@if $custom-screen-size-triggers != () {
+  @warn "`$custom-screen-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$screen-size-triggers` instead.";
+
+  $screen-size-triggers: map.merge(
+    $screen-size-triggers,
+    $custom-screen-size-triggers
+  );
+}
+
 $screen-size-triggers: map.merge(
   $base-screen-size-triggers,
-  $custom-screen-size-triggers
+  $screen-size-triggers
 );
 
 // Container sizes.
