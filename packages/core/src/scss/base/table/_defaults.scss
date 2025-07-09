@@ -12,6 +12,7 @@
 // Table selectors.
 $selector-base: root-defaults.$element-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $table-selector-base: $selector-base !default;
 $table-selector: "table" !default;
 $table-caption-selector-base: $selector-base !default;
@@ -74,4 +75,7 @@ $table-theme-map: () !default;
   $table-theme-map: map.merge($table-theme-map, $custom-table-theme-map);
 }
 
-$table-theme-map: map.merge($-table-theme-map, $table-theme-map);
+// Merge the custom table theme map with the default one.
+@if $generate-base-theme-map {
+  $table-theme-map: map.merge($-table-theme-map, $table-theme-map);
+}

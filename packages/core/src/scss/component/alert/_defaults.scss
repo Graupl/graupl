@@ -6,9 +6,11 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // Alert selectors.
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $alert-selector: ".alert" !default;
 $alert-theme-selector-prefix: "." !default;
 $alert-body-selector: ".alert-body" !default;
@@ -55,7 +57,10 @@ $alert-state-theme-map: () !default;
   );
 }
 
-$alert-state-theme-map: map.merge(
-  $-alert-state-theme-map,
-  $alert-state-theme-map
-);
+// Merge the custom alert state theme map with the default one.
+@if $generate-base-theme-map {
+  $alert-state-theme-map: map.merge(
+    $-alert-state-theme-map,
+    $alert-state-theme-map
+  );
+}
