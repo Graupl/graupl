@@ -111,9 +111,21 @@ $container-size-triggers: map.merge(
 );
 $base-container-size-triggers: $screen-size-triggers;
 $custom-container-size-triggers: () !default;
+$container-size-triggers: () !default;
+
+// @todo remove this once $custom-container-size-triggers is removed
+@if $custom-container-size-triggers != () {
+  @warn "`$custom-container-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$container-size-triggers` instead.";
+
+  $container-size-triggers: map.merge(
+    $container-size-triggers,
+    $custom-container-size-triggers
+  );
+}
+
 $container-size-triggers: map.merge(
   $base-container-size-triggers,
-  $custom-container-size-triggers
+  $container-size-triggers
 );
 
 // Spacing properties.
