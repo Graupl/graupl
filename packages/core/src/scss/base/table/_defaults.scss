@@ -65,4 +65,13 @@ $base-table-theme-map: (
   highlight-color: 100,
 );
 $custom-table-theme-map: () !default;
-$table-theme-map: map.merge($base-table-theme-map, $custom-table-theme-map);
+$table-theme-map: () !default;
+
+// @todo remove this once $custom-table-theme-map is removed
+@if $custom-table-theme-map != () {
+  @warn "`$custom-table-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$table-theme-map` instead.";
+
+  $table-theme-map: map.merge($table-theme-map, $custom-table-theme-map);
+}
+
+$table-theme-map: map.merge($base-table-theme-map, $table-theme-map);
