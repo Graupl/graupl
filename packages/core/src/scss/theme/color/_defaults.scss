@@ -6,9 +6,12 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 @use "sass:list";
 
+$generate-base-colors: root-defaults.$generate-base-colors !default;
+$generate-base-themes: root-defaults.$generate-base-themes !default;
 $theme-selector-prefix: "." !default;
 $theme-selector-suffix: "-mode" !default;
 
@@ -72,7 +75,10 @@ $colors: () !default;
   $colors: map.deep-merge($colors, $custom-colors);
 }
 
-$colors: map.deep-merge($-colors, $colors);
+// Merge the custom colors with the default ones.
+@if $generate-base-colors {
+  $colors: map.deep-merge($-colors, $colors);
+}
 
 // Themes.
 $-themes: (light, dark);
@@ -85,8 +91,6 @@ $themes: () !default;
 
   $themes: list.join($themes, $custom-themes);
 }
-
-$themes: list.join($-themes, $themes);
 
 $default-theme: light !default;
 
@@ -125,7 +129,11 @@ $theme-mappings: () !default;
   $theme-mappings: map.deep-merge($theme-mappings, $custom-theme-mappings);
 }
 
-$theme-mappings: map.deep-merge($-theme-mappings, $theme-mappings);
+// Merge the custom themes with the default ones.
+@if $generate-base-themes {
+  $themes: list.join($-themes, $themes);
+  $theme-mappings: map.deep-merge($-theme-mappings, $theme-mappings);
+}
 
 // Theme map.
 $-theme-map: ();

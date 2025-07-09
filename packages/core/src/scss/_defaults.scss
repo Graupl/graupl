@@ -14,6 +14,8 @@ $prefix: "#{$id}-" !default;
 
 // Settings.
 $use-important: true !default;
+$generate-base-colors: true !default;
+$generate-base-themes: true !default;
 $generate-base-theme-maps: true !default;
 $generate-base-utilities: true !default;
 $screen-aware-utilities: true !default;
