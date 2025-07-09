@@ -52,7 +52,16 @@ $base-font-weights: (
   bold: 700,
 );
 $custom-font-weights: () !default;
-$font-weights: map.merge($base-font-weights, $custom-font-weights);
+$font-weights: () !default;
+
+// @todo remove this once $custom-font-weights is removed
+@if $custom-font-weights != () {
+  @warn "`$custom-font-weights` is deprecated and will be removed in a future release of Graupl. Use `$font-weights` instead.";
+
+  $font-weights: map.merge($font-weights, $custom-font-weights);
+}
+
+$font-weights: map.merge($base-font-weights, $font-weights);
 
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $root-font-family:
