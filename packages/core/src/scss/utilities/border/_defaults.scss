@@ -32,7 +32,7 @@ $default-border-selector: "bordered" !default;
 
 // Border width properties.
 $border-width-selector-prefix: "border-" !default;
-$base-border-width-properties: (
+$-border-width-properties: (
   thick: thick,
   thin: thin,
   medium: medium,
@@ -53,15 +53,15 @@ $border-width-properties: () !default;
 
 // Border color properties.
 $border-color-selector-prefix: "border-" !default;
-$base-border-color-properties: (
+$-border-color-properties: (
   transparent: transparent,
 );
 
 // Add the active theme colors to the base border color properties.
 @each $color, $map in map.get(color.$themes, active) {
   @each $shade, $value in $map {
-    $base-border-color-properties: map.merge(
-      $base-border-color-properties,
+    $-border-color-properties: map.merge(
+      $-border-color-properties,
       (#{$color}-#{$shade}: #{$value})
     );
   }
@@ -82,7 +82,7 @@ $border-color-properties: () !default;
 
 // Border style properties.
 $border-style-selector-prefix: "border-" !default;
-$base-border-style-properties: (
+$-border-style-properties: (
   solid: solid,
   dashed: dashed,
   dotted: dotted,
@@ -109,15 +109,15 @@ $border-style-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $border-width-properties: map.merge(
-    $base-border-width-properties,
+    $-border-width-properties,
     $border-width-properties
   );
   $border-color-properties: map.merge(
-    $base-border-color-properties,
+    $-border-color-properties,
     $border-color-properties
   );
   $border-style-properties: map.merge(
-    $base-border-style-properties,
+    $-border-style-properties,
     $border-style-properties
   );
 }

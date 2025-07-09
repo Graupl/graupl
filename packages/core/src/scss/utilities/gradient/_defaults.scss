@@ -34,7 +34,7 @@ $gradient-direction-selector-prefix: "" !default;
 $gradient-color-selector-prefix: "" !default;
 $gradient-color-from-selector-prefix: "from-" !default;
 $gradient-color-to-selector-prefix: "to-" !default;
-$base-gradient-types: (
+$-gradient-types: (
   linear: linear-gradient,
   radial: radial-gradient,
 );
@@ -49,10 +49,10 @@ $gradient-types: () !default;
 }
 
 @if $generate-base-utilities {
-  $gradient-types: map.merge($base-gradient-types, $gradient-types);
+  $gradient-types: map.merge($-gradient-types, $gradient-types);
 }
 
-$base-gradient-directions: (
+$-gradient-directions: (
   to-top: "to top",
   to-right: "to right",
   to-bottom: "to bottom",
@@ -85,15 +85,15 @@ $gradient-directions: () !default;
   );
 }
 
-$base-gradient-colors: (
+$-gradient-colors: (
   transparent: transparent,
 );
 
 // Add the active theme colors to the base gradient colors.
 @each $color, $map in map.get(color.$themes, active) {
   @each $shade, $value in $map {
-    $base-gradient-colors: map.merge(
-      $base-gradient-colors,
+    $-gradient-colors: map.merge(
+      $-gradient-colors,
       (#{$color}-#{$shade}: #{$value})
     );
   }
@@ -111,9 +111,6 @@ $gradient-colors: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $gradient-directions: map.merge(
-    $base-gradient-directions,
-    $gradient-directions
-  );
-  $gradient-colors: map.merge($base-gradient-colors, $gradient-colors);
+  $gradient-directions: map.merge($-gradient-directions, $gradient-directions);
+  $gradient-colors: map.merge($-gradient-colors, $gradient-colors);
 }

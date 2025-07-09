@@ -27,7 +27,7 @@ $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 
 // Inset properties.
-$base-inset-properties: (
+$-inset-properties: (
   inset: inset,
   inset-x: left right,
   inset-y: top bottom,
@@ -49,7 +49,7 @@ $inset-properties: () !default;
 }
 
 // Inset values.
-$base-inset-values: (
+$-inset-values: (
   0: 0,
   auto: auto,
   full: 100%,
@@ -71,6 +71,6 @@ $inset-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $inset-properties: map.merge($base-inset-properties, $inset-properties);
-  $inset-values: map.merge($base-inset-values, $inset-values);
+  $inset-properties: map.merge($-inset-properties, $inset-properties);
+  $inset-values: map.merge($-inset-values, $inset-values);
 }

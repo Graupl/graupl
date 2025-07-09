@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Background attachment properties.
 $background-attachment-selector-prefix: "bg-attachment-" !default;
-$base-background-attachment-properties: (
+$-background-attachment-properties: (
   scroll: scroll,
   fixed: fixed,
   local: local,
@@ -48,7 +48,7 @@ $background-attachment-properties: () !default;
 
 // Background clip properties.
 $background-clip-selector-prefix: "bg-clip-" !default;
-$base-background-clip-properties: (
+$-background-clip-properties: (
   border-box: border-box,
   padding-box: padding-box,
   content-box: content-box,
@@ -70,7 +70,7 @@ $background-clip-properties: () !default;
 
 // Background image properties.
 $background-image-selector-prefix: "bg-image-" !default;
-$base-background-image-properties: (
+$-background-image-properties: (
   none: none,
 );
 $custom-background-image-properties: () !default;
@@ -88,7 +88,7 @@ $background-image-properties: () !default;
 
 // Background origin properties.
 $background-origin-selector-prefix: "bg-origin-" !default;
-$base-background-origin-properties: (
+$-background-origin-properties: (
   border-box: border-box,
   padding-box: padding-box,
   content-box: content-box,
@@ -108,7 +108,7 @@ $background-origin-properties: () !default;
 
 // Background position properties.
 $background-position-selector-prefix: "bg-position-" !default;
-$base-background-position-properties: (
+$-background-position-properties: (
   top: top,
   right: right,
   bottom: bottom,
@@ -130,7 +130,7 @@ $background-position-properties: () !default;
 
 // Background repeat properties.
 $background-repeat-selector-prefix: "bg-repeat-" !default;
-$base-background-repeat-properties: (
+$-background-repeat-properties: (
   repeat: repeat,
   repeat-x: repeat-x,
   repeat-y: repeat-y,
@@ -153,7 +153,7 @@ $background-repeat-properties: () !default;
 
 // Background size properties.
 $background-size-selector-prefix: "bg-size-" !default;
-$base-background-size-properties: (
+$-background-size-properties: (
   auto: auto,
   cover: cover,
   contain: contain,
@@ -174,31 +174,31 @@ $background-size-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $background-attachment-properties: map.merge(
-    $base-background-attachment-properties,
+    $-background-attachment-properties,
     $background-attachment-properties
   );
   $background-clip-properties: map.merge(
-    $base-background-clip-properties,
+    $-background-clip-properties,
     $background-clip-properties
   );
   $background-image-properties: map.merge(
-    $base-background-image-properties,
+    $-background-image-properties,
     $background-image-properties
   );
   $background-origin-properties: map.merge(
-    $base-background-origin-properties,
+    $-background-origin-properties,
     $background-origin-properties
   );
   $background-position-properties: map.merge(
-    $base-background-position-properties,
+    $-background-position-properties,
     $background-position-properties
   );
   $background-repeat-properties: map.merge(
-    $base-background-repeat-properties,
+    $-background-repeat-properties,
     $background-repeat-properties
   );
   $background-size-properties: map.merge(
-    $base-background-size-properties,
+    $-background-size-properties,
     $background-size-properties
   );
 }

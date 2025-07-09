@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Position properties.
 $position-selector-prefix: "position-" !default;
-$base-position-properties: (
+$-position-properties: (
   static: static,
   fixed: fixed,
   absolute: absolute,
@@ -50,8 +50,5 @@ $position-properties: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $position-properties: map.merge(
-    $base-position-properties,
-    $position-properties
-  );
+  $position-properties: map.merge($-position-properties, $position-properties);
 }

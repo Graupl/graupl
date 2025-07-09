@@ -33,7 +33,7 @@ $max-height-selector-prefix: "max-h-" !default;
 $min-height-selector-prefix: "min-h-" !default;
 
 // Height values.
-$base-height-values: (
+$-height-values: (
   auto: auto,
   fit-content: fit-content,
   max-content: max-content,
@@ -55,8 +55,8 @@ $base-height-values: (
 
 // Add the spacer values to the base height values.
 @each $spacer, $value in root-variables.$spacers {
-  $base-height-values: map.merge(
-    $base-height-values,
+  $-height-values: map.merge(
+    $-height-values,
     (
       $spacer: $value,
     )
@@ -75,5 +75,5 @@ $height-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $height-values: map.merge($base-height-values, $height-values);
+  $height-values: map.merge($-height-values, $height-values);
 }

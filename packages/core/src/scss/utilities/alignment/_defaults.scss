@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Align content properties.
 $align-content-selector-prefix: "align-content-" !default;
-$base-align-content-properties: (
+$-align-content-properties: (
   normal: normal,
   start: flex-start,
   end: flex-end,
@@ -54,7 +54,7 @@ $align-content-properties: () !default;
 
 // Align items properties.
 $align-items-selector-prefix: "align-items-" !default;
-$base-align-items-properties: (
+$-align-items-properties: (
   start: start,
   end: end,
   center: center,
@@ -76,7 +76,7 @@ $align-items-properties: () !default;
 
 // Align self properties.
 $align-self-selector-prefix: "align-self-" !default;
-$base-align-self-properties: (
+$-align-self-properties: (
   auto: auto,
   start: start,
   end: end,
@@ -100,15 +100,15 @@ $align-self-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $align-content-properties: map.merge(
-    $base-align-content-properties,
+    $-align-content-properties,
     $align-content-properties
   );
   $align-items-properties: map.merge(
-    $base-align-items-properties,
+    $-align-items-properties,
     $align-items-properties
   );
   $align-self-properties: map.merge(
-    $base-align-self-properties,
+    $-align-self-properties,
     $align-self-properties
   );
 }
