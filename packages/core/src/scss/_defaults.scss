@@ -33,7 +33,16 @@ $base-screen-sizes: (
   xl: 156ch,
 );
 $custom-screen-sizes: () !default;
-$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
+$screen-sizes: () !default;
+
+// @todo remove this once $custom-screen-sizes is removed
+@if $custom-screen-sizes != () {
+  @warn "`$custom-screen-sizes` is deprecated and will be removed in a future release of Graupl. Use `$screen-sizes` instead.";
+
+  $screen-sizes: map.merge($screen-sizes, $custom-screen-sizes);
+}
+
+$screen-sizes: map.merge($base-screen-sizes, $screen-sizes);
 $base-screen-size-triggers: (
   navigation-collapse: (
     mixin: "down",
