@@ -223,16 +223,13 @@
 @include layer(theme) {
   // table
   #{defaults.$table-selector-base}#{defaults.$table-selector} {
-    @each $variant in theme.get-theme() {
+    @each $color in theme.get-colors() {
       // e.g. &.primary, &.secondary, &.tertiary,
       // e.g. .primary, .secondary, .tertiary
-      &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$variant},
-      #{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$variant} {
+      &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color},
+      #{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color} {
         @each $prop, $key in defaults.$table-theme-map {
-          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get(
-              $variant,
-              $key
-            )};
+          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get($color, $key)};
         }
       }
     }

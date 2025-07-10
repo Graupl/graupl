@@ -9,6 +9,7 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 
 $generate-base-colors: root-defaults.$generate-base-colors !default;
 $generate-base-themes: root-defaults.$generate-base-themes !default;
@@ -32,6 +33,7 @@ $theme-selector-suffix: "-mode" !default;
 // Colours.
 $-colors: (
   primary: (
+    _default: hsl(219deg 75% 50%),
     100: hsl(219deg 100% 95%),
     200: hsl(219deg 90% 80%),
     300: hsl(219deg 80% 65%),
@@ -43,6 +45,7 @@ $-colors: (
     900: hsl(219deg 100% 10%),
   ),
   secondary: (
+    _default: hsl(235deg 15% 50%),
     100: hsl(235deg 40% 95%),
     200: hsl(235deg 30% 80%),
     300: hsl(235deg 20% 65%),
@@ -54,6 +57,7 @@ $-colors: (
     900: hsl(235deg 40% 10%),
   ),
   tertiary: (
+    _default: hsl(340deg 60% 50%),
     100: hsl(340deg 85% 95%),
     200: hsl(340deg 75% 80%),
     300: hsl(340deg 65% 65%),
@@ -67,6 +71,21 @@ $-colors: (
 );
 $custom-colors: () !default;
 $colors: () !default;
+
+// Loop through the customized colors and convert them to a map structure.
+// This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
+@each $color, $value in $colors {
+  @if meta.type-of($value) == "color" {
+    $colors: map.merge(
+      $colors,
+      (
+        $color: (
+            _default: $value,
+          ),
+      )
+    );
+  }
+}
 
 // @todo remove this once $custom-colors is removed
 @if $custom-colors != () {
@@ -145,12 +164,21 @@ $-theme-map: ();
     $color-theme-map: ();
 
     @each $shade, $value in $color-map {
+      $color-property: null;
+
+      // Handle _default shade vs proper shade mappings.
+      @if map.has-key($theme-mappings, $theme, $shade) {
+        $color-property: map.get($theme-mappings, $theme, $shade);
+      } @else if $shade == "_default" {
+        $color-property: $shade;
+      }
+
       $color-theme-map: map.merge(
         $color-theme-map,
         (
           $shade: (
               color: $color-name,
-              shade: map.get($theme-mappings, $theme, $shade),
+              shade: $color-property,
             ),
         )
       );
