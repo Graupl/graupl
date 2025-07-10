@@ -6,6 +6,7 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "sass:list";
 @use "sass:map";
 
 // Prefix for custom properties and other naming conventions.
@@ -246,7 +247,13 @@ $-state-class-selectors: (
 
 // Merge the state class selectors with the state selectors.
 @if $generate-state-classes {
-  $-state-selectors: map.deep-merge($-state-selectors, $-state-class-selectors);
+  @each $state, $selectors in $-state-selectors {
+    $-state-selectors: map.set(
+      $-state-selectors,
+      $state,
+      list.join($selectors, map.get($-state-class-selectors, $state))
+    );
+  }
 }
 
 $custom-state-selectors: () !default;
@@ -256,10 +263,30 @@ $state-selectors: () !default;
 @if $custom-state-selectors != () {
   @warn "`$custom-state-selectors` is deprecated and will be removed in a future release of Graupl. Use `$state-selectors` instead.";
 
-  $state-selectors: map.merge($state-selectors, $custom-state-selectors);
+  @each $state, $selectors in $custom-state-selectors {
+    @if map.has-key($state-selectors, $state) {
+      $state-selectors: map.set(
+        $state-selectors,
+        $state,
+        list.join(map.get($state-selectors, $state), $selectors)
+      );
+    } @else {
+      $state-selectors: map.set($state-selectors, $state, $selectors);
+    }
+  }
 }
 
-$state-selectors: map.merge($-state-selectors, $state-selectors);
+@each $state, $selectors in $-state-selectors {
+  @if map.has-key($state-selectors, $state) {
+    $state-selectors: map.set(
+      $state-selectors,
+      $state,
+      list.join(map.get($state-selectors, $state), $selectors)
+    );
+  } @else {
+    $state-selectors: map.set($state-selectors, $state, $selectors);
+  }
+}
 
 // Utility properties.
 $utility-selector-base: $modifier-selector-base !default;
