@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "pkg:@graupl/core/src/scss/defaults" as root-defaults;
+@use "sass:map";
 
 // Icon selectors.
 $selector-base: root-defaults.$component-selector-base !default;
