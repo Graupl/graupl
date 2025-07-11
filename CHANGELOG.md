@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.17](https://github.com/Graupl/graupl/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2025-07-11)
+
+
+### Bug Fixes
+
+* **icons:** add missing map module to defaults ([ca7d0f1](https://github.com/Graupl/graupl/commit/ca7d0f17784766a3a5152bd36bd17aa06dc25afc))
+
 ## [1.0.0-beta.16](https://github.com/Graupl/graupl/compare/v1.0.0-beta.15...v1.0.0-beta.16) (2025-07-10)
 
 
