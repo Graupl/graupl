@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "sass:map";
 
 // Button selectors.
@@ -63,3 +64,31 @@ $button-state-theme-map: () !default;
     $button-state-theme-map
   );
 }
+
+$-button-theme-map: ();
+
+@each $color in theme.get-colors() {
+  $state-map: ();
+
+  @each $prop, $shade in $button-state-theme-map {
+    $state-map: map.merge(
+      $state-map,
+      (
+        $prop: (
+            color: $color,
+            shade: $shade,
+          ),
+      )
+    );
+  }
+
+  $-button-theme-map: map.merge(
+    $-button-theme-map,
+    (
+      $color: $state-map,
+    )
+  );
+}
+
+$button-theme-map: () !default;
+$button-theme-map: map.deep-merge($-button-theme-map, $button-theme-map);
