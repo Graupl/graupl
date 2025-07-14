@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.18](https://github.com/Graupl/graupl/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2025-07-14)
+
+
+### Features
+
+* **core:** implement new theme property maps in buttons, tables, and alerts ([cd93f65](https://github.com/Graupl/graupl/commit/cd93f657645bd33209be3ab3552e4eaa9e61de3d))
+
 ## [1.0.0-beta.17](https://github.com/Graupl/graupl/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2025-07-11)
 
 

@@ -1,6 +1,6 @@
-## [1.0.0-beta.17](https://github.com/Graupl/graupl/compare/v1.0.0-beta.16...v1.0.0-beta.17) (2025-07-11)
+## [1.0.0-beta.18](https://github.com/Graupl/graupl/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2025-07-14)
 
 
-### Bug Fixes
+### Features
 
-* **icons:** add missing map module to defaults ([ca7d0f1](https://github.com/Graupl/graupl/commit/ca7d0f17784766a3a5152bd36bd17aa06dc25afc))
+* **core:** implement new theme property maps in buttons, tables, and alerts ([cd93f65](https://github.com/Graupl/graupl/commit/cd93f657645bd33209be3ab3552e4eaa9e61de3d))
