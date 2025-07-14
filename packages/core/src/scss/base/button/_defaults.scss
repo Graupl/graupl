@@ -35,7 +35,7 @@ $button-disabled-transform: $button-initial-transform !default;
 // and primary--900 as the border colour.
 //
 // Secondary/tertiary buttons will use the same shade for their respective colours.
-$-button-state-theme-map: (
+$-button-theme-mappings: (
   color: 900,
   border-color: 700,
   hover-color: 100,
@@ -46,49 +46,36 @@ $-button-state-theme-map: (
 );
 $custom-button-state-theme-map: () !default;
 $button-state-theme-map: () !default;
+$button-theme-mappings: () !default;
 
 // @todo remove this once $custom-button-state-theme-map is removed
 @if $custom-button-state-theme-map != () {
-  @warn "`$custom-button-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$button-state-theme-map` instead.";
+  @warn "`$custom-button-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$button-theme-mappings` instead.";
 
-  $button-state-theme-map: map.merge(
-    $button-state-theme-map,
+  $button-theme-mappings: map.merge(
+    $button-theme-mappings,
     $custom-button-state-theme-map
+  );
+}
+
+// @todo remove the once $button-state-theme-map is removed
+@if $button-state-theme-map != () {
+  @warn "`$button-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$button-theme-mappings` instead.";
+
+  $button-theme-mappings: map.merge(
+    $button-theme-mappings,
+    $button-state-theme-map
   );
 }
 
 // Merge the custom button state theme map with the default one.
 @if $generate-base-theme-map {
-  $button-state-theme-map: map.merge(
-    $-button-state-theme-map,
-    $button-state-theme-map
+  $button-theme-mappings: map.merge(
+    $-button-theme-mappings,
+    $button-theme-mappings
   );
 }
 
-$-button-theme-map: ();
-
-@each $color in theme.get-colors() {
-  $state-map: ();
-
-  @each $prop, $shade in $button-state-theme-map {
-    $state-map: map.merge(
-      $state-map,
-      (
-        $prop: (
-            color: $color,
-            shade: $shade,
-          ),
-      )
-    );
-  }
-
-  $-button-theme-map: map.merge(
-    $-button-theme-map,
-    (
-      $color: $state-map,
-    )
-  );
-}
-
+$-button-theme-map: theme.generate-property-map($button-theme-mappings);
 $button-theme-map: () !default;
 $button-theme-map: map.deep-merge($-button-theme-map, $button-theme-map);
