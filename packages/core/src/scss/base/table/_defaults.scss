@@ -6,8 +6,9 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
-@use "sass:map";
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Table selectors.
 $selector-base: root-defaults.$element-selector-base !default;
@@ -54,7 +55,7 @@ $table-caption-side: bottom !default;
 // and primary--100 as the header text colour.
 //
 // Secondary/tertiary tables will use the same shade for their respective colours.
-$-table-theme-map: (
+$-table-theme-mappings: (
   header-background: 700,
   header-color: 100,
   striped-background: 200,
@@ -66,16 +67,26 @@ $-table-theme-map: (
   highlight-color: 100,
 );
 $custom-table-theme-map: () !default;
-$table-theme-map: () !default;
+$table-theme-mappings: () !default;
 
 // @todo remove this once $custom-table-theme-map is removed
 @if $custom-table-theme-map != () {
-  @warn "`$custom-table-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$table-theme-map` instead.";
+  @warn "`$custom-table-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$table-theme-mappings` instead.";
 
-  $table-theme-map: map.merge($table-theme-map, $custom-table-theme-map);
+  $table-theme-mappings: map.merge(
+    $table-theme-mappings,
+    $custom-table-theme-map
+  );
 }
 
 // Merge the custom table theme map with the default one.
 @if $generate-base-theme-map {
-  $table-theme-map: map.merge($-table-theme-map, $table-theme-map);
+  $table-theme-mappings: map.merge(
+    $-table-theme-mappings,
+    $table-theme-mappings
+  );
 }
+
+$-table-theme-map: theme.generate-property-map($table-theme-mappings);
+$table-theme-map: () !default;
+$table-theme-map: map.deep-merge($-table-theme-map, $table-theme-map);

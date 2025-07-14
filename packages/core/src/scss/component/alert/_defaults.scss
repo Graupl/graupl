@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "sass:map";
 
 // Alert selectors.
@@ -31,7 +32,7 @@ $alert-transition-selector: ".transitioning" !default;
 // and primary--900 as the border colour.
 //
 // Secondary/tertiary alerts will use the same shade for their respective colours.
-$-alert-state-theme-map: (
+$-alert-theme-mappings: (
   color: 900,
   background: 200,
   border-color: 700,
@@ -46,21 +47,36 @@ $-alert-state-theme-map: (
 );
 $custom-alert-state-theme-map: () !default;
 $alert-state-theme-map: () !default;
+$alert-theme-mappings: () !default;
 
 // @todo remove this once $custom-alert-state-theme-map is removed
 @if $custom-alert-state-theme-map != () {
-  @warn "`$custom-alert-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$alert-state-theme-map` instead.";
+  @warn "`$custom-alert-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$alert-theme-mappings` instead.";
 
   $alert-state-theme-map: map.merge(
-    $alert-state-theme-map,
+    $alert-theme-mappings,
     $custom-alert-state-theme-map
+  );
+}
+
+// @todo remove the once $alert-state-theme-map is removed
+@if $alert-state-theme-map != () {
+  @warn "`$alert-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$alert-theme-mappings` instead.";
+
+  $alert-theme-mappings: map.merge(
+    $alert-theme-mappings,
+    $alert-state-theme-map
   );
 }
 
 // Merge the custom alert state theme map with the default one.
 @if $generate-base-theme-map {
-  $alert-state-theme-map: map.merge(
-    $-alert-state-theme-map,
-    $alert-state-theme-map
+  $alert-theme-mappings: map.merge(
+    $-alert-theme-mappings,
+    $alert-theme-mappings
   );
 }
+
+$-alert-theme-map: theme.generate-property-map($alert-theme-mappings);
+$alert-theme-map: () !default;
+$alert-theme-map: map.deep-merge($-alert-theme-map, $alert-theme-map);

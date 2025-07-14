@@ -61,11 +61,14 @@
   background: $button-background;
   color: $button-color;
 
-  @each $color in theme.get-colors() {
+  @each $color, $map in defaults.$button-theme-map {
     // e.g. &.primary, &.secondary, &.tertiary
     &#{defaults.$button-theme-selector-base}#{defaults.$button-theme-selector-prefix}#{$color} {
-      @each $prop, $shade in defaults.$button-state-theme-map {
-        --#{root-defaults.$prefix}button-#{$prop}: #{theme.get($color, $shade)};
+      @each $prop, $value in $map {
+        --#{root-defaults.$prefix}button-#{$prop}: #{theme.get(
+            map.get($value, color),
+            map.get($value, shade)
+          )};
       }
     }
   }

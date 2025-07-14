@@ -20,7 +20,7 @@
 // - `.secondary`: A component modifier to apply the secondary colour to the table component.
 // - `.tertiary`: A component modifier to apply the tertiary colour to the table component.
 //
-// The following custom properties control the generated selectors:
+// The following custom properties can be used to customize the table component:
 // - `--graupl-table-caption-side`: The caption side of the table component.
 // - `--graupl-table-caption-padding-x`: The horizontal padding of the table caption component.
 // - `--graupl-table-caption-padding-y`: The vertical padding of the table caption component.
@@ -30,7 +30,7 @@
 // - `--graupl-table-header-padding-y`: The vertical padding of the table header component.
 // - `--graupl-table-header-padding`: The padding of the table header component (combines x and y padding).
 // - `--graupl-table-header-background`: The background colour of the table header component.
-// - `--graupl-table-header-color`: The text colour of the table header component.
+// - `--graupl-table-header-background`: The text colour of the table header component.
 // - `--graupl-table-cell-padding-x`: The horizontal padding of the table cell component.
 // - `--graupl-table-cell-padding-y`: The vertical padding of the table cell component.
 // - `--graupl-table-cell-padding`: The padding of the table cell component (combines x and y padding).
@@ -91,9 +91,10 @@
 // - `--graupl-table-highlight-background`: The background colour of the highlighted table component modifier.
 // - `--graupl-table-highlight-color`: The text colour of the highlighted table component modifier.
 //
-// The following variables control the generated selectors:
+// The following sass variables can be used to customize the generation of the table component:
 // - `$selector-base`: The selector base for the component.
 // - `$modifier-selector-base`: The selector base for component modifiers.
+// - `$generate-base-theme-map`: A flag to generate the base theme maps for table variants.
 // - `$table-selector-base`: The selector base for the table component.
 // - `$table-selector`: The selector for the table component.
 // - `$table-caption-selector-base`: The selector base for the table caption component.
@@ -122,6 +123,107 @@
 // - `$table-highlight-selector`: The selector for the highlighted table component modifier.
 // - `$table-responsive-selector-base`: The selector base for the responsive table component modifier.
 // - `$table-responsive-selector`: The selector for the responsive table component modifier.
+// - `$table-theme-mappings`: A map of properties and color shades used generate all table variants.
+// - `$table-theme-map`: A map of all properties, colors, and color shades used to generate all table variants.
+//
+// Using `$table-theme-mappings`
+//
+// `$table-theme-mappings` is a 1-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $table-theme-mappings: (
+//   header-background: 700,
+// )
+// ```
+//
+// This directly[1] maps to all table variants, telling them what shade to use for said property.
+// All table variants will use the following based on the example above:
+// - Primary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--primary--700`,
+// - Secondary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize _all_ tables variants in the same way.
+//
+// For example, if you use the following map:
+// ```scss
+// $table-theme-mappings: (
+//   header-background: 500,
+// )
+// ```
+//
+// All table variants will use the following:
+// - Primary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--primary--500`,
+// - Secondary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--500`, and
+// - Tertiary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--tertiary--500`.
+//
+// [1] `$table-theme-mappings` gets parsed into a larger, more explicit map: `$table-theme-map`.
+//
+// Using `$table-theme-map`
+//
+// `$table-theme-map` is a multi-level map of properties, colors, and shade values.
+//
+// e.g.
+// ```scss
+// $table-theme-map: (
+//   primary: (
+//     header-background: (
+//       color: primary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     header-background: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     header-background: (
+//       color: tertiary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// This directly maps to all table variants, telling them what shade to use for said property.
+// The table variants will use the following based on the example above:
+// - Primary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--primary--700`,
+// - Secondary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize table variants individually.
+//
+// For example, if you use the following map:
+//
+// ```scss
+// $table-theme-map: (
+//   primary: (
+//     header-background: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     header-background: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     header-background: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// The table variants will use the following:
+// - Primary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--700`,
+// - Secondary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary tables will have their `--graupl-table-header-background` property set to `--graupl-theme-active--secondary--700`.
 //
 // @example
 // <table class="table bordered">
@@ -149,6 +251,7 @@
 @use "../../mixins/layer" as *;
 @use "../../defaults" as root-defaults;
 @use "../../functions/theme";
+@use "sass:map";
 
 @include layer(base) {
   // table
@@ -223,13 +326,16 @@
 @include layer(theme) {
   // table
   #{defaults.$table-selector-base}#{defaults.$table-selector} {
-    @each $color in theme.get-colors() {
+    @each $color, $map in defaults.$table-theme-map {
       // e.g. &.primary, &.secondary, &.tertiary,
       // e.g. .primary, .secondary, .tertiary
       &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color},
       #{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color} {
-        @each $prop, $key in defaults.$table-theme-map {
-          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get($color, $key)};
+        @each $prop, $value in $map {
+          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get(
+              map.get($value, color),
+              map.get($value, shade)
+            )};
         }
       }
     }

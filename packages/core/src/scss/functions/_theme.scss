@@ -5,7 +5,19 @@
 @use "sass:map";
 @use "../theme/color/variables" as color;
 
-// A function to get the specific theme shades.
+/// Get a specific color shade in a specific theme.
+///
+/// $color and $shade both have special values for returning specific colours.
+/// "transparent", "none", "inherit", and "initial" will all return their respective
+/// default CSS values.
+///
+/// If a shade cannot be found in a requested colour, it will fall back to the `_default` shade before returning `null`.
+///
+/// @param {string}        $color          - The color.
+/// @param {string|number} $shade [null]   - The shade.
+/// @param {string}        $theme [active] - The theme.
+///
+/// @return {string|null} The custom property pointing to the correct colour or null if none is found.
 @function get($color, $shade: null, $theme: active) {
   @if $shade == transparent or $color == transparent {
     @return transparent;
@@ -34,6 +46,12 @@
   @return null;
 }
 
+/// Gets a full shade map of a specific color in a specific theme.
+///
+/// @param {string} $color          - The color.
+/// @param {string} $theme [active] - The theme.
+///
+/// @return {map|null} The shade map or null if none is found.
 @function get-color($color, $theme: active) {
   @if map.has-key(color.$themes, $theme, $color) {
     @return map.get(map.get(color.$themes, $theme), $color);
@@ -42,10 +60,45 @@
   @return null;
 }
 
+/// Gets the names of all colours in a specific theme.
+///
+/// @param {string} $theme [active] - The theme.
+///
+/// @return {map} The map of color names.
 @function get-colors($theme: active) {
   @if map.has-key(color.$themes, $theme) {
     @return map.keys(map.get(color.$themes, $theme));
   }
 
   @return ();
+}
+
+/// Generates a map to tie different properties to color/shade values based on all colors in a specific theme.
+@function generate-property-map($mapping, $theme: active) {
+  $theme-map: ();
+
+  @each $color in map.keys(map.get(color.$themes, $theme)) {
+    $map: ();
+
+    @each $prop, $shade in $mapping {
+      $map: map.merge(
+        $map,
+        (
+          $prop: (
+              color: $color,
+              shade: $shade,
+            ),
+        )
+      );
+    }
+
+    $theme-map: map.merge(
+      $theme-map,
+      (
+        $color: $map,
+      )
+    );
+  }
+
+  @return $theme-map;
 }
