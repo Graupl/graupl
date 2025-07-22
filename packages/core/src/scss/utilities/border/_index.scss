@@ -241,7 +241,7 @@
       // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
       @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
         @include utility.create-mapped(
-          #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+          #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
           (
             border-width: table-variables.$table-border-width,
             border-radius: table-variables.$table-border-radius,
