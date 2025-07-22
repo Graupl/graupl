@@ -141,7 +141,11 @@
   );
 
   // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
-  @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == $selector){
+  /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+  @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+    $selector
+  {
+    /* stylelint-enable  scss/operator-no-newline-after */
     @include utility.create-mapped(
       #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
       (
@@ -237,9 +241,12 @@
         $screen: $screen-name
       );
 
-
       // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
-      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+        #{defaults.$selector-base}#{defaults.$default-border-selector}
+      {
+        /* stylelint-enable  scss/operator-no-newline-after */
         @include utility.create-mapped(
           #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
           (
@@ -251,7 +258,6 @@
           $screen: $screen-name
         );
       }
-
 
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
@@ -344,20 +350,23 @@
           $theme: $theme-name
         );
 
-
-      // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
-      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
-        @include utility.create-mapped(
-          #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
-          (
-            border-width: table-variables.$table-border-width,
-            border-radius: table-variables.$table-border-radius,
-            border-style: table-variables.$table-border-style,
-          ),
-          $important: defaults.$use-important,
-          $theme: $theme-name
-        );
-      }
+        // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+        @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+          #{defaults.$selector-base}#{defaults.$default-border-selector}
+        {
+          /* stylelint-enable  scss/operator-no-newline-after */
+          @include utility.create-mapped(
+            #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
+            (
+              border-width: table-variables.$table-border-width,
+              border-radius: table-variables.$table-border-radius,
+              border-style: table-variables.$table-border-style,
+            ),
+            $important: defaults.$use-important,
+            $theme: $theme-name
+          );
+        }
 
         // For each border width, create a class to apply the border width.
         @each $width, $value in defaults.$border-width-properties {
@@ -450,9 +459,12 @@
         $state: $state-name
       );
 
-
       // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
-      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+        #{defaults.$selector-base}#{defaults.$default-border-selector}
+      {
+        /* stylelint-enable  scss/operator-no-newline-after */
         @include utility.create-mapped(
           #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
           (
@@ -556,7 +568,11 @@
       );
 
       // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
-      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+      /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+      @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+        #{defaults.$selector-base}#{defaults.$default-border-selector}
+      {
+        /* stylelint-enable  scss/operator-no-newline-after */
         @include utility.create-mapped(
           #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
           (
