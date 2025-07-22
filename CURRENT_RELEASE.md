@@ -1,6 +1,6 @@
-## [1.0.0-beta.18](https://github.com/Graupl/graupl/compare/v1.0.0-beta.17...v1.0.0-beta.18) (2025-07-14)
+## [1.0.0-beta.19](https://github.com/Graupl/graupl/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2025-07-22)
 
 
-### Features
+### Bug Fixes
 
-* **core:** implement new theme property maps in buttons, tables, and alerts ([cd93f65](https://github.com/Graupl/graupl/commit/cd93f657645bd33209be3ab3552e4eaa9e61de3d))
+* **utility:** change bordered utilities to work with tables ([d615af5](https://github.com/Graupl/graupl/commit/d615af5242c6970fc1ca2d0e388b7b9d0ac7a916)), closes [#191](https://github.com/Graupl/graupl/issues/191)
