@@ -103,6 +103,8 @@
 //   <div class="bordered">This element has a border.</div>
 
 @use "../../defaults" as root-defaults;
+@use "../../base/table/defaults" as table-defaults;
+@use "../../base/table/variables" as table-variables;
 @use "../../functions/important";
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
@@ -137,6 +139,19 @@
     ),
     $important: defaults.$use-important
   );
+
+  // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+  @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == $selector){
+    @include utility.create-mapped(
+      #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+      (
+        border-width: table-variables.$table-border-width,
+        border-radius: table-variables.$table-border-radius,
+        border-style: table-variables.$table-border-style,
+      ),
+      $important: defaults.$use-important
+    );
+  }
 
   // For each border width, create a class to apply the border width.
   @each $width, $value in defaults.$border-width-properties {
@@ -221,6 +236,22 @@
         $important: defaults.$use-important,
         $screen: $screen-name
       );
+
+
+      // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+        @include utility.create-mapped(
+          #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+          (
+            border-width: table-variables.$table-border-width,
+            border-radius: table-variables.$table-border-radius,
+            border-style: table-variables.$table-border-style,
+          ),
+          $important: defaults.$use-important,
+          $screen: $screen-name
+        );
+      }
+
 
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
@@ -313,6 +344,21 @@
           $theme: $theme-name
         );
 
+
+      // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+        @include utility.create-mapped(
+          #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+          (
+            border-width: table-variables.$table-border-width,
+            border-radius: table-variables.$table-border-radius,
+            border-style: table-variables.$table-border-style,
+          ),
+          $important: defaults.$use-important,
+          $theme: $theme-name
+        );
+      }
+
         // For each border width, create a class to apply the border width.
         @each $width, $value in defaults.$border-width-properties {
           // e.g. `.dark:border-thick` or `.light:border-thin`
@@ -404,6 +450,21 @@
         $state: $state-name
       );
 
+
+      // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+        @include utility.create-mapped(
+          #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+          (
+            border-width: table-variables.$table-border-width,
+            border-radius: table-variables.$table-border-radius,
+            border-style: table-variables.$table-border-style,
+          ),
+          $important: defaults.$use-important,
+          $state: $state-name
+        );
+      }
+
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
         // e.g. `.hover:border-thick` or `.focus:border-thin`
@@ -493,6 +554,20 @@
         $important: defaults.$use-important,
         $container: $container-name
       );
+
+      // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+      @if (#{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} == #{defaults.$selector-base}#{defaults.$default-border-selector}){
+        @include utility.create-mapped(
+          #{defaults.$table-selector-base}#{defaults.$table-selector}#{$selector},
+          (
+            border-width: table-variables.$table-border-width,
+            border-radius: table-variables.$table-border-radius,
+            border-style: table-variables.$table-border-style,
+          ),
+          $important: defaults.$use-important,
+          $container: $container-name
+        );
+      }
 
       // For each border width, create a class to apply the border width.
       @each $width, $value in defaults.$border-width-properties {
