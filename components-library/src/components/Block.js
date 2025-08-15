@@ -59,6 +59,17 @@ export default {
       type: [String, Number],
       default: "3",
     },
+    /**
+     * The prefix to use for the block's classes.
+     */
+    prefix: {
+      type: String,
+      default: "cl-",
+      validator: (value) => {
+        // Ensure the prefix is a valid string (only letters, numbers, and dashes).
+        return /^[a-z][a-z0-9-]+$/i.test(value);
+      },
+    },
   },
   setup(props, { slots }) {
     /**
@@ -113,36 +124,78 @@ export default {
     });
 
     /**
-     * The classes to apply to the view.
+     * The classes to apply to the block.
      *
      * Combines the base class with any additional classes provided.
      *
-     * @return {string} - The view's classes.
+     * @return {Array} - The view's classes.
      */
     const classes = computed(() => {
-      return `cl-${domSafeType.value} ${props.class}`;
+      const baseClasses = [
+        `${props.prefix}${domSafeType.value}`,
+        `${props.prefix}${domSafeType.value}-${domSafeName.value}`,
+      ];
+      const customClasses = props.class.split(" ");
+
+      return [...baseClasses, ...customClasses];
     });
 
     /**
-     * The classes to apply to the header block.
+     * The classes to apply to the block's header.
      *
      * Combines the base class with any additional classes provided.
      *
-     * @return {string} - The header's classes.
+     * @return {Array} - The header's classes.
      */
     const headerClasses = computed(() => {
-      return `cl-${domSafeType.value}-header ${props.headerClass}`;
+      const baseClasses = [
+        `${props.prefix}${domSafeType.value}-header`,
+        `${props.prefix}${domSafeType.value}-${domSafeName.value}-header`,
+      ];
+      const customClasses = props.headerClass.split(" ");
+
+      return [...baseClasses, ...customClasses];
     });
 
     /**
-     * The classes to apply to the content block.
+     * The classes to apply to the block's heading.
+     *
+     * @return {Array} - The heading's classes.
+     */
+    const headingClasses = computed(() => {
+      return [
+        `${props.prefix}${domSafeType.value}-heading`,
+        `${props.prefix}${domSafeType.value}-${domSafeName.value}-heading`,
+      ];
+    });
+
+    /**
+     * The classes to apply to the block's description.
+     *
+     * @return {Array} - The description's classes.
+     */
+    const descriptionClasses = computed(() => {
+      return [
+        `${props.prefix}${domSafeType.value}-description`,
+        `${props.prefix}${domSafeType.value}-${domSafeName.value}-description`,
+      ];
+    });
+
+    /**
+     * The classes to apply to the block's content.
      *
      * Combines the base class with any additional classes provided.
      *
-     * @return {string} - The content's classes.
+     * @return {Array} - The content's classes.
      */
     const contentClasses = computed(() => {
-      return `cl-${domSafeType.value}-content ${props.contentClass}`;
+      const baseClasses = [
+        `${props.prefix}${domSafeType.value}-content`,
+        `${props.prefix}${domSafeType.value}-${domSafeName.value}-content`,
+      ];
+      const customClasses = props.contentClass.split(" ");
+
+      return [...baseClasses, ...customClasses];
     });
 
     return () =>
@@ -165,13 +218,15 @@ export default {
                   description: props.description,
                   headingID: headingID.value,
                   headingLevel: props.headingLevel,
+                  headingClasses: headingClasses.value,
+                  descriptionClasses: descriptionClasses.value,
                 })
               : [
                   h(
                     `h${props.headingLevel}`,
                     {
                       id: headingID.value,
-                      class: `cl-${domSafeType.value}-heading`,
+                      class: headerClasses.value,
                     },
                     blockHeading.value
                   ),
@@ -179,7 +234,7 @@ export default {
                     ? h(
                         "p",
                         {
-                          class: `cl-${domSafeType.value}-description`,
+                          class: descriptionClasses.value,
                         },
                         props.description
                       )
