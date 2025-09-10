@@ -1,5 +1,5 @@
 /**
- * Check to see if the provided elements have a specific contructor.
+ * Check to see if the provided elements have a specific constructor.
  *
  * The values must be provided inside of an object
  * so the variable name can be retrieved in case of errors.
@@ -9,11 +9,11 @@
  *
  * Will return `{ status: true }` if the check is successful.
  *
- * @param  {object}                  contructor - The constructor to check for.
- * @param  {object}                  elements   - The element(s) to check.
- * @return {Object<boolean, string>}            - The result of the check.
+ * @param  {object}                  constructor - The constructor to check for.
+ * @param  {object}                  elements    - The element(s) to check.
+ * @return {Object<boolean, string>}             - The result of the check.
  */
-export function isValidInstance(contructor, elements) {
+export function isValidInstance(constructor, elements) {
   try {
     if (typeof elements !== "object") {
       const elementsType = typeof elements;
@@ -24,10 +24,10 @@ export function isValidInstance(contructor, elements) {
     }
 
     for (const key in elements) {
-      if (!(elements[key] instanceof contructor)) {
+      if (!(elements[key] instanceof constructor)) {
         const elementType = typeof elements[key];
         throw new TypeError(
-          `${key} must be an instance of ${contructor.name}. "${elementType}" given.`
+          `${key} must be an instance of ${constructor.name}. "${elementType}" given.`
         );
       }
     }
