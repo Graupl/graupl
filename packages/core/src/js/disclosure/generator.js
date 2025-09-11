@@ -16,7 +16,7 @@ const generate = (
           ) || {}
         : {};
 
-      const targettedControllerSelector = `${controllerSelector}[data-graupl-disclosure-target="#${disclosureElement.id}"]`;
+      const targettedControllerSelector = `${controllerSelector}[data-graupl-disclosure-target="${disclosureElement.id}"]`;
       const [controllerElement] = once(
         "graupl-disclosure-generator",
         targettedControllerSelector,

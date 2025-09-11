@@ -1,0 +1,45 @@
+// @graupl/core disclosure component base styles.
+
+@use "../../mixins/layer" as *;
+@use "../../mixins/animation";
+@use "../../defaults" as root-defaults;
+@use "defaults";
+@use "variables" as *;
+
+@include layer(component) {
+  // .disclosure
+  #{defaults.$disclosure-selector-base}#{defaults.$disclosure-selector} {
+    display: $disclosure-display;
+    height: $disclosure-height;
+    padding: $disclosure-padding;
+    overflow: hidden;
+    transition:
+      height 5000ms ease,
+      opacity 5000ms ease;
+    opacity: 0;
+
+    // &.hide
+    &#{defaults.$disclosure-closed-selector-base}#{defaults.$disclosure-closed-selector} {
+      --#{root-defaults.$prefix}disclosure-display: #{$disclosure-hide-display};
+      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-hide-height};
+
+      opacity: 0;
+    }
+
+    // &.transitioning
+    &#{defaults.$disclosure-transitioning-selector-base}#{defaults.$disclosure-transitioning-selector} {
+      --#{root-defaults.$prefix}disclosure-display: #{$disclosure-transitioning-display};
+      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-transitioning-height};
+
+      opacity: 0;
+    }
+
+    // &.show
+    &#{defaults.$disclosure-open-selector-base}#{defaults.$disclosure-open-selector} {
+      --#{root-defaults.$prefix}disclosure-display: #{$disclosure-show-display};
+      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-show-height};
+
+      opacity: 1;
+    }
+  }
+}

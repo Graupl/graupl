@@ -6,6 +6,7 @@
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
+@use "sass:map";
 
 // Disclosure properties.
 $disclosure-padding-x: var(
@@ -36,5 +37,23 @@ $disclosure-transitioning-display: var(
 );
 $disclosure-display: var(
   --#{root-defaults.$prefix}disclosure-display,
-  #{defaults.$disclosure-show-display}
+  #{defaults.$disclosure-hide-display}
+);
+
+// Disclosure height properties.
+$disclosure-show-height: var(
+  --#{root-defaults.$prefix}disclosure-show-height,
+  #{defaults.$disclosure-show-height}
+);
+$disclosure-hide-height: var(
+  --#{root-defaults.$prefix}disclosure-hide-height,
+  #{defaults.$disclosure-hide-height}
+);
+$disclosure-transitioning-height: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-height,
+  #{defaults.$disclosure-transitioning-height}
+);
+$disclosure-height: var(
+  --#{root-defaults.$prefix}disclosure-height,
+  #{defaults.$disclosure-hide-height}
 );

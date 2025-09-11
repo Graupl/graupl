@@ -60,7 +60,7 @@ class Disclosure {
    * @property {number} close      - The duration time (in milliseconds) for the transition from open to closed states.
    */
   _durations = {
-    transition: 250,
+    transition: 5000,
     open: -1,
     close: -1,
   };
@@ -173,7 +173,7 @@ class Disclosure {
   }) {
     // Set the DOM elements.
     this._dom.disclosure = disclosureElement;
-    this._dom.toggle = controllerElement;
+    this._dom.controller = controllerElement;
 
     // Set the classes.
     this._classes.open = openClass || "";
@@ -211,14 +211,11 @@ class Disclosure {
       this._setIds();
       this._setAriaAttributes();
 
-      // Create the child elements.
-      // this._createChildElements();
-
       // Handle events.
-      // this._handleFocus();
-      // this._handleClick();
-      // this._handleKeydown();
-      // this._handleKeyup();
+      this._handleFocus();
+      this._handleClick();
+      this._handleKeydown();
+      this._handleKeyup();
 
       // Set the custom props.
       this._setTransitionDurations();
@@ -502,7 +499,7 @@ class Disclosure {
     // Class list checks.
     const classes = {};
 
-    for (const className in Object.keys(this.classes)) {
+    for (const className of Object.keys(this._classes)) {
       if (this._classes[className] === "") {
         continue;
       }
@@ -520,7 +517,7 @@ class Disclosure {
     // Duration checks.
     const durations = {};
 
-    for (const durationName in Object.keys(this.durations)) {
+    for (const durationName of Object.keys(this._durations)) {
       durations[`${durationName}Duration`] = this._durations[durationName];
     }
 
@@ -646,27 +643,18 @@ class Disclosure {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
-    //
-    // Throughout the process, the element's height will also be hard-set to
-    // allow for proper height transitions if needed.
-    if (transition && this.translationClass !== "") {
-      addClass(this.translationClass, this.dom.disclosure);
+    if (transition && this.transitionlass !== "") {
+      addClass(this.transitionClass, this.dom.disclosure);
 
       requestAnimationFrame(() => {
         removeClass(this.closeClass, this.dom.disclosure);
 
-        this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-
         requestAnimationFrame(() => {
           addClass(this.openClass, this.dom.disclosure);
 
-          this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-
           requestAnimationFrame(() => {
             setTimeout(() => {
-              removeClass(this.translationClass, this.dom.disclosure);
-
-              this.dom.disclosure.style.height = "";
+              removeClass(this.transitionClass, this.dom.disclosure);
             }, this.openDuration);
           });
         });
@@ -680,7 +668,7 @@ class Disclosure {
     }
 
     if (emit) {
-      this.dom.toggle.dispatchEvent(this._expandEvent);
+      this.dom.controller.dispatchEvent(this._expandEvent);
     }
   }
 
@@ -703,18 +691,11 @@ class Disclosure {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the open class,
     // add the close class, and finally remove the transition class.
-    //
-    // Throughout the process, the element's height will also be hard-set to
-    // allow for proper height transitions if needed.
     if (transition && this.transitionClass !== "") {
       addClass(this.transitionClass, this.dom.disclosure);
 
-      this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-
       requestAnimationFrame(() => {
         removeClass(this.openClass, this.dom.disclosure);
-
-        this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
           addClass(this.closeClass, this.dom.disclosure);
@@ -722,8 +703,6 @@ class Disclosure {
           requestAnimationFrame(() => {
             setTimeout(() => {
               removeClass(this.transitionClass, this.dom.disclosure);
-
-              this.dom.item.style.height = "";
             }, this.closeDuration);
           });
         });
@@ -737,7 +716,7 @@ class Disclosure {
     }
 
     if (emit) {
-      this.dom.toggle.dispatchEvent(this._collapseEvent);
+      this.dom.controller.dispatchEvent(this._collapseEvent);
     }
   }
 
@@ -802,7 +781,7 @@ class Disclosure {
    *   - Blocks propagation on "Escape" keys.
    */
   _handleKeydown() {
-    this.elements.controller.addEventListener("keydown", (event) => {
+    this.dom.controller.addEventListener("keydown", (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
@@ -816,7 +795,7 @@ class Disclosure {
       }
     });
 
-    this.elements.disclosure.addEventListener("keydown", (event) => {
+    this.dom.disclosure.addEventListener("keydown", (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
