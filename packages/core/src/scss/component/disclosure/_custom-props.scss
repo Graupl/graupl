@@ -1,0 +1,29 @@
+// @graupl/core disclosure component custom properties.
+//
+// This file is used to pre-define all custom properties used by the disclosure component.
+// This allows for easier out-of-the-box theming for users who do not wish to use Sass.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../mixins/layer" as *;
+
+@include layer(custom-props) {
+  :root {
+    --#{root-defaults.$prefix}disclosure-padding-x: #{map.get(
+        root-variables.$spacers,
+        0
+      )};
+    --#{root-defaults.$prefix}disclosure-padding-y: #{map.get(
+        root-variables.$spacers,
+        0
+      )};
+    --#{root-defaults.$prefix}disclosure-padding: #{$disclosure-padding-y}
+      #{$disclosure-padding-x};
+    --#{root-defaults.$prefix}disclosure-show-display: #{defaults.$disclosure-show-display};
+    --#{root-defaults.$prefix}disclosure-hide-display: #{defaults.$disclosure-hide-display};
+    --#{root-defaults.$prefix}disclosure-transitioning-display: #{defaults.$disclosure-transitioning-display};
+    --#{root-defaults.$prefix}disclosure-display: #{defaults.$disclosure-show-display};
+  }
+}

@@ -1,0 +1,40 @@
+// @graupl/core disclosure component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+
+// Disclosure properties.
+$disclosure-padding-x: var(
+  --#{root-defaults.$prefix}disclosure-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$disclosure-padding-y: var(
+  --#{root-defaults.$prefix}disclosure-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$disclosure-padding: var(
+  --#{root-defaults.$prefix}disclosure-padding,
+  #{$disclosure-padding-y} #{$disclosure-padding-x}
+);
+
+// Disclosure display properties.
+$disclosure-show-display: var(
+  --#{root-defaults.$prefix}disclosure-show-display,
+  #{defaults.$disclosure-show-display}
+);
+$disclosure-hide-display: var(
+  --#{root-defaults.$prefix}disclosure-hide-display,
+  #{defaults.$disclosure-hide-display}
+);
+$disclosure-transitioning-display: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-display,
+  #{defaults.$disclosure-transitioning-display}
+);
+$disclosure-display: var(
+  --#{root-defaults.$prefix}disclosure-display,
+  #{defaults.$disclosure-show-display}
+);
