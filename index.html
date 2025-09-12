@@ -1140,7 +1140,9 @@
       <h2>Disclosures</h2>
       <button class="disclosure-controller button" data-graupl-disclosure-target="#disclosure" type="button" aria-label="toggle-disclosure"></button>
       <div id="#disclosure" class="disclosure">
-        <p>This content is hidden until the disclosure is open.</p>
+        <div class="disclosure-content">
+          <p>This content is hidden until the disclosure is open.</p>
+        </div>
       </div>
     </div>
     <div class="py-10 my-10 container sidebars">
@@ -1207,7 +1209,11 @@
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script src="./dist/js/graupl.js"></script>
+  <script type="module" src="./packages/core/src/js/accordion/index.js"></script>
+  <script type="module" src="./packages/core/src/js/alert/index.js"></script>
+  <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
+  <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
+  <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
   <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

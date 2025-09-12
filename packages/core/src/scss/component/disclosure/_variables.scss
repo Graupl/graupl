@@ -40,20 +40,55 @@ $disclosure-display: var(
   #{defaults.$disclosure-hide-display}
 );
 
-// Disclosure height properties.
-$disclosure-show-height: var(
-  --#{root-defaults.$prefix}disclosure-show-height,
-  #{defaults.$disclosure-show-height}
+// Disclosure block-size properties.
+$disclosure-show-block-size: var(
+  --#{root-defaults.$prefix}disclosure-show-block-size,
+  #{defaults.$disclosure-show-block-size}
 );
-$disclosure-hide-height: var(
-  --#{root-defaults.$prefix}disclosure-hide-height,
-  #{defaults.$disclosure-hide-height}
+$disclosure-hide-block-size: var(
+  --#{root-defaults.$prefix}disclosure-hide-block-size,
+  #{defaults.$disclosure-hide-block-size}
 );
-$disclosure-transitioning-height: var(
-  --#{root-defaults.$prefix}disclosure-transitioning-height,
-  #{defaults.$disclosure-transitioning-height}
+$disclosure-transitioning-block-size: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-block-size,
+  #{defaults.$disclosure-transitioning-block-size}
 );
-$disclosure-height: var(
-  --#{root-defaults.$prefix}disclosure-height,
-  #{defaults.$disclosure-hide-height}
+$disclosure-block-size: var(
+  --#{root-defaults.$prefix}disclosure-block-size,
+  #{defaults.$disclosure-hide-block-size}
+);
+
+// Opacity properties.
+$disclosure-show-opacity: var(
+  --#{root-defaults.$prefix}disclosure-show-opacity,
+  #{defaults.$disclosure-show-opacity}
+);
+$disclosure-hide-opacity: var(
+  --#{root-defaults.$prefix}disclosure-hide-opacity,
+  #{defaults.$disclosure-hide-opacity}
+);
+$disclosure-transitioning-opacity: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-opacity,
+  #{defaults.$disclosure-transitioning-opacity}
+);
+$disclosure-opacity: var(
+  --#{root-defaults.$prefix}disclosure-opacity,
+  #{$disclosure-hide-opacity}
+);
+
+// Transition properties.
+$disclosure-transition-duration: var(
+  --#{root-defaults.$prefix}disclosure-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+$disclosure-transition-timing-function: var(
+  --#{root-defaults.$prefix}disclosure-transition-timing-function,
+  #{root-variables.$transition-timing-function}
+);
+$disclosure-transition: var(
+  --#{root-defaults.$prefix}disclosure-transition,
+  opacity #{$disclosure-transition-duration}
+    #{$disclosure-transition-timing-function},
+  block-size #{$disclosure-transition-duration}
+    #{$disclosure-transition-timing-function}
 );

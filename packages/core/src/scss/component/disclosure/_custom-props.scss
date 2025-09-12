@@ -26,9 +26,23 @@
     --#{root-defaults.$prefix}disclosure-hide-display: #{defaults.$disclosure-hide-display};
     --#{root-defaults.$prefix}disclosure-transitioning-display: #{defaults.$disclosure-transitioning-display};
     --#{root-defaults.$prefix}disclosure-display: #{defaults.$disclosure-hide-display};
-    --#{root-defaults.$prefix}disclosure-show-height: #{defaults.$disclosure-show-height};
-    --#{root-defaults.$prefix}disclosure-hide-height: #{defaults.$disclosure-hide-height};
-    --#{root-defaults.$prefix}disclosure-transitioning-height: #{defaults.$disclosure-transitioning-height};
-    --#{root-defaults.$prefix}disclosure-height: #{$disclosure-hide-height};
+    --#{root-defaults.$prefix}disclosure-show-block-size: #{defaults.$disclosure-show-block-size};
+    --#{root-defaults.$prefix}disclosure-hide-block-size: #{defaults.$disclosure-hide-block-size};
+    --#{root-defaults.$prefix}disclosure-transitioning-block-size: #{defaults.$disclosure-transitioning-block-size};
+    --#{root-defaults.$prefix}disclosure-block-size: #{$disclosure-hide-block-size};
+    --#{root-defaults.$prefix}disclosure-show-opacity: #{defaults.$disclosure-show-opacity};
+    --#{root-defaults.$prefix}disclosure-hide-opacity: #{defaults.$disclosure-hide-opacity};
+    --#{root-defaults.$prefix}disclosure-transitioning-opacity: #{defaults.$disclosure-transitioning-opacity};
+    --#{root-defaults.$prefix}disclosure-opacity: #{$disclosure-hide-opacity};
+    --#{root-defaults.$prefix}disclosure-transition-duration: #{map.get(
+        root-variables.$transition-durations,
+        fast
+      )};
+    --#{root-defaults.$prefix}disclosure-transition-timing-function: #{root-variables.$transition-timing-function};
+    --#{root-defaults.$prefix}disclosure-transition:
+      opacity #{$disclosure-transition-duration}
+        #{$disclosure-transition-timing-function},
+      block-size #{$disclosure-transition-duration}
+        #{$disclosure-transition-timing-function};
   }
 }

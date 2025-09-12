@@ -13,6 +13,8 @@ $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $disclosure-selector-base: $selector-base !default;
 $disclosure-selector: "disclosure" !default;
+$disclosure-content-selector-base: $selector-base !default;
+$disclosure-content-selector: "disclosure-content" !default;
 $disclosure-controller-selector-base: $modifier-selector-base !default;
 $disclosure-controller-selector: "disclosure-controller" !default;
 $disclosure-open-selector-base: $modifier-selector-base !default;
@@ -24,10 +26,15 @@ $disclosure-transitioning-selector: "transitioning" !default;
 
 // Visibility properties.
 $disclosure-show-display: flex !default;
-$disclosure-hide-display: none !default;
+$disclosure-hide-display: flex !default;
 $disclosure-transitioning-display: $disclosure-show-display !default;
 
-// Disclosure height properties.
-$disclosure-show-height: auto !default;
-$disclosure-hide-height: 0 !default;
-$disclosure-transitioning-height: $disclosure-hide-height !default;
+// Disclosure block-size properties.
+$disclosure-show-block-size: 100% !default;
+$disclosure-hide-block-size: 0 !default;
+$disclosure-transitioning-block-size: $disclosure-hide-block-size !default;
+
+// Opacity properties.
+$disclosure-show-opacity: 1 !default;
+$disclosure-hide-opacity: 0 !default;
+$disclosure-transitioning-opacity: $disclosure-hide-opacity !default;

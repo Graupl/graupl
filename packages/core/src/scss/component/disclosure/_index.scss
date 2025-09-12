@@ -10,36 +10,31 @@
   // .disclosure
   #{defaults.$disclosure-selector-base}#{defaults.$disclosure-selector} {
     display: $disclosure-display;
-    height: $disclosure-height;
+    block-size: $disclosure-block-size;
     padding: $disclosure-padding;
     overflow: hidden;
-    transition:
-      height 5000ms ease,
-      opacity 5000ms ease;
-    opacity: 0;
+    transition: $disclosure-transition;
+    opacity: $disclosure-opacity;
 
     // &.hide
     &#{defaults.$disclosure-closed-selector-base}#{defaults.$disclosure-closed-selector} {
       --#{root-defaults.$prefix}disclosure-display: #{$disclosure-hide-display};
-      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-hide-height};
-
-      opacity: 0;
+      --#{root-defaults.$prefix}disclosure-block-size: #{$disclosure-hide-block-size};
+      --#{root-defaults.$prefix}disclosure-opacity: #{$disclosure-hide-opacity};
     }
 
     // &.transitioning
     &#{defaults.$disclosure-transitioning-selector-base}#{defaults.$disclosure-transitioning-selector} {
       --#{root-defaults.$prefix}disclosure-display: #{$disclosure-transitioning-display};
-      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-transitioning-height};
-
-      opacity: 0;
+      --#{root-defaults.$prefix}disclosure-block-size: #{$disclosure-transitioning-block-size};
+      --#{root-defaults.$prefix}disclosure-opacity: #{$disclosure-transitioning-opacity};
     }
 
     // &.show
     &#{defaults.$disclosure-open-selector-base}#{defaults.$disclosure-open-selector} {
       --#{root-defaults.$prefix}disclosure-display: #{$disclosure-show-display};
-      --#{root-defaults.$prefix}disclosure-height: #{$disclosure-show-height};
-
-      opacity: 1;
+      --#{root-defaults.$prefix}disclosure-block-size: #{$disclosure-show-block-size};
+      --#{root-defaults.$prefix}disclosure-opacity: #{$disclosure-show-opacity};
     }
   }
 }
