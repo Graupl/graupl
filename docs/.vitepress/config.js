@@ -18,12 +18,22 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          api: "modern-compiler",
           importers: [new NodePackageImporter()],
         },
       },
     },
   },
+  markdown: {
+    toc: {
+      level: [1, 2, 3],
+    },
+  },
+  cleanUrls: true,
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     nav: [
       {
         text: "Docs",
@@ -57,6 +67,10 @@ export default defineConfig({
           { text: "Compiling Graupl", link: "/compiling-graupl" },
           { text: "Introduction", link: "/introduction" },
         ],
+      },
+      {
+        text: "Base Elements",
+        items: [{ text: "Buttons", link: "base/buttons" }],
       },
       {
         text: "Layout & Content",

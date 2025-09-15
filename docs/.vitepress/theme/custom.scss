@@ -1,35 +1,152 @@
-@use "../../../packages/core/src/scss/theme/color/defaults" as
-  graupl-color-defaults with (
-  $theme-selector-suffix: ""
+/* stylelint-disable custom-property-pattern */
+
+@use "pkg:@graupl/core/src/defaults" as graupl-defaults with (
+  $id: "graupl-docs"
 );
-@use "../../../packages/core/src/scss/variables" as graupl-variables;
-@use "../../../packages/core/src/scss/utilities";
-@use "../../../packages/core/src/scss/functions/theme";
-@use "../../../packages/core/src/scss/theme/color";
-@use "../../../packages/core/src/scss/state/focus";
-@use "sass:map";
+@use "pkg:@graupl/core/src/base/button/mixins" as graupl-button-mixins;
+@use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
+@use "pkg:@graupl/icons" as graupl-icons;
+@use "pkg:@graupl/core" as graupl;
 
 :root {
-  --vp-c-brand: #{theme.get(primary, 700)};
-  --vp-c-brand-1: #{theme.get(primary, 700)};
-  --vp-c-brand-2: #{theme.get(primary, 700)};
-  --vp-c-brand-3: #{theme.get(primary, 700)};
-  --vp-c-bg: #{theme.get(primary, 100)};
-  --vp-c-bg-alt: #{theme.get(primary, 100)};
-  --vp-c-bg-elv: #{theme.get(primary, 100)};
-  --vp-c-bg-soft: #{theme.get(primary, 100)};
-  --vp-c-border: #{theme.get(tertiary, 700)};
-  --vp-c-divider: #{theme.get(secondary, 700)};
-  --vp-c-gutter: #{theme.get(secondary, 700)};
-  --vp-c-text-1: #{theme.get(primary, 900)};
-  --vp-c-text-2: #{theme.get(primary, 900)};
-  --vp-c-text-3: #{theme.get(primary, 900)};
+  --graupl-docs-content-max-width: 158ch;
+  --graupl-docs-container-sidebar-width: 28ch;
+  --graupl-docs-spacer: 1rem;
+  --graupl-docs-root-background: var(--graupl-docs-theme-active--primary--100);
+  --graupl-docs-root-color: var(--graupl-docs-theme-active--primary--900);
+  --graupl-docs-background: var(--graupl-docs-theme-active--primary--100);
+  --graupl-docs-color: var(--graupl-docs-theme-active--primary--900);
+  --graupl-docs-navigation-background: transparent;
+  --graupl-docs-menu-link-hover-background: transparent;
+  --graupl-docs-menu-link-hover-color: var(
+    --graupl-docs-theme-active--primary--700
+  );
+  --graupl-docs-menu-link-hover-text-decoration: underline;
+  --graupl-docs-menu-link-hover-text-decoration-thickness: 0.125rem;
+  --graupl-docs-menu-link-hover-text-decoration-color: var(
+    --graupl-docs-theme-active--tertiary--600
+  );
+
+  @each $key, $value in graupl-defaults.$spacer-multipliers {
+    --graupl-docs-spacer-#{$key}: calc(#{$value} * var(--graupl-docs-spacer));
+  }
+
+  @each $key, $value in graupl-defaults.$base-transition-durations {
+    --graupl-docs-transition-duration-#{$key}: #{$value};
+  }
 }
 
-.vp-doc [class*="language-"] pre {
-  background: #{theme.get(secondary, 100)};
+.container {
+  isolation: isolate;
 }
 
-.nav .group .items .link {
-  padding-left: map.get(graupl-variables.$spacers, 4);
+.submenu-toggle::after {
+  padding: 0 var(--graupl-docs-spacer-2);
+  text-decoration: var(--graupl-docs-menu-link-hover-text-decoration);
+  text-decoration-color: var(--graupl-docs-theme-active--secondary--100);
+  text-decoration-thickness: var(
+    --graupl-docs-menu-link-hover-text-decoration-thickness
+  );
+}
+
+.sidebar-left .navigation {
+  --graupl-docs-submenu-display: flex;
+  --graupl-docs-submenu-border-color: transparent;
+  --graupl-docs-submenu-position: relative;
+  --graupl-docs-submenu-inset: auto;
+  --graupl-docs-background: var(--graupl-docs-theme-active--primary--100);
+  --graupl-docs-color: var(--graupl-docs-theme-active--primary--900);
+  --graupl-docs-menu-link-hover-text-decoration-color: var(
+    --graupl-docs-theme-active--tertiary--500
+  );
+  --graupl-docs-menu-link-hover-color: var(
+    --graupl-docs-theme-active--primary--700
+  );
+
+  grid-template-columns: [branding-start menu-start] 1fr [menu-end branding-end];
+  grid-template-rows: [branding-start] auto [branding-end menu-start] 1fr [menu-end];
+
+  .submenu {
+    --graupl-docs-menu-link-padding: var(--graupl-docs-spacer-3)
+      var(--graupl-docs-spacer-5) var(--graupl-docs-spacer-3)
+      var(--graupl-docs-spacer-6);
+
+    width: 100%;
+  }
+}
+
+code {
+  display: inline;
+  padding: 0 var(--graupl-docs-spacer-2);
+  background: var(--graupl-docs-theme-active--secondary--100);
+  color: var(--graupl-docs-theme-active--secondary--800);
+}
+
+pre code {
+  display: block;
+  padding: var(--graupl-docs-spacer-6);
+  overflow-x: scroll;
+  scrollbar-width: thin;
+}
+
+.vp-adaptive-theme[class*="language-"] {
+  position: relative;
+
+  .lang {
+    position: absolute;
+    top: var(--graupl-docs-spacer-1);
+    right: var(--graupl-docs-spacer-3);
+    height: var(--graupl-docs-spacer-6);
+    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 1;
+  }
+
+  .copy {
+    @include graupl-button-mixins.apply-base;
+    @include graupl-button-mixins.apply-theme;
+
+    position: absolute;
+    z-index: 2;
+    top: var(--graupl-docs-spacer-3);
+    right: var(--graupl-docs-spacer-3);
+    height: var(--graupl-docs-spacer-6);
+    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 0;
+  }
+
+  &:hover {
+    .copy {
+      opacity: 1;
+    }
+
+    .lang {
+      opacity: 0;
+    }
+  }
+
+  span {
+    color: var(--shiki-light);
+  }
+}
+
+.dark-mode {
+  .vp-adaptive-theme[class*="language-"] span {
+    color: var(--shiki-dark);
+  }
+}
+
+.border-top-none {
+  border-top-width: 0;
+}
+
+.border-left-none {
+  border-left-width: 0;
+}
+
+.border-bottom-none {
+  border-bottom-width: 0;
+}
+
+.border-right-none {
+  border-right-width: 0;
 }
