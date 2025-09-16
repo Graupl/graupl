@@ -3,12 +3,17 @@ import { onMounted, ref, useTemplateRef } from "vue";
 import { useData } from "vitepress";
 import DisclosureMenu from "accessible-menu/disclosure-menu";
 import Treeview from "accessible-menu/treeview";
-import NavigationShelfGenerator from "../../../packages/navigation-shelf/src/js/navigation-shelf/generator.js";
+import NavigationShelf from "../../../packages/navigation-shelf/src/js/navigation-shelf/NavigationShelf.js";
 const { page, site } = useData();
 const { nav, sidebar, socialLinks } = site.value.themeConfig || {};
 const mainNav = useTemplateRef("mainNav");
 const socialNav = useTemplateRef("socialNav");
 const sidebarNav = useTemplateRef("sidebarNav");
+const navigationShelf = useTemplateRef("navigationShelf");
+const shelfLockToggle = useTemplateRef("shelfLockToggle");
+const shelfHoverToggle = useTemplateRef("shelfHoverToggle");
+const shelfSideToggle = useTemplateRef("shelfSideToggle");
+const shelfToggle = useTemplateRef("shelfToggle");
 const menus = ref([]);
 
 onMounted(() => {
@@ -31,7 +36,15 @@ onMounted(() => {
     })
   );
 
-  NavigationShelfGenerator();
+  new NavigationShelf({
+    shelfElement: navigationShelf.value,
+    controllerElement: shelfToggle.value,
+    lockControllerElement: shelfLockToggle.value,
+    hoverControllerElement: shelfHoverToggle.value,
+    sideControllerElement: shelfSideToggle.value,
+    locked: true,
+    initialize: true,
+  });
 });
 </script>
 
@@ -41,7 +54,7 @@ onMounted(() => {
       <div class="display-flex justify-content-end g-4">
         <div
           class="navigation-shelf dark-mode bg-secondary-100 text-secondary-900"
-          data-graupl-navigation-shelf-options="{ 'locked': true }"
+          ref="navigationShelf"
         >
           <div class="navigation-shelf-header"></div>
           <div class="navigation-shelf-content w-shelf-open">
@@ -72,20 +85,23 @@ onMounted(() => {
             <button
               class="button navigation-shelf-lock-toggle w-min-content mr-auto"
               aria-label="Toggle shelf lock"
+              ref="shelfLockToggle"
             ></button>
             <button
               class="button navigation-shelf-hover-toggle w-min-content"
               aria-label="Toggle shelf hover"
+              ref="shelfHoverToggle"
             ></button>
             <button
               class="button navigation-shelf-side-toggle w-min-content"
               aria-label="Toggle side"
+              ref="shelfSideToggle"
             ></button>
           </div>
         </div>
-        <!-- <a href="/" class="w-full height-auto display-flex align-items-center"
+        <a href="/" class="w-full height-auto display-flex align-items-center"
           ><img src="/logo.svg" alt="Graupl Logo" class="w-9 h-auto"
-        /></a> -->
+        /></a>
         <nav class="navigation" id="main" ref="mainNav">
           <ul class="menu mbs-3 mbe-3 g-2">
             <li v-for="item in nav" :key="item.text" class="menu-item">
@@ -123,6 +139,7 @@ onMounted(() => {
         <button
           class="button navigation-shelf-toggle navigation-toggle border-none"
           aria-label="Toggle sidebar"
+          ref="shelfToggle"
         ></button>
       </div>
     </div>
