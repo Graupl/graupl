@@ -1,3 +1,3 @@
-# Animation Mixins
+# Links
 
 Documentation to be written.

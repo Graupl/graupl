@@ -1,3 +1,3 @@
-# Animation Mixins
+# Accordions
 
 Documentation to be written.
