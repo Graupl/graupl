@@ -7,6 +7,7 @@ const files = ["*.js", "*.cjs"];
 const ignores = [
   "demo/",
   "dist/",
+  "components-library/dist/",
   "docs/.vitepress/cache/",
   "docs/.vitepress/dist/",
   "packages/*/dist/",

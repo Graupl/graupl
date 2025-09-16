@@ -1,10 +1,10 @@
 // @graupl/core component styles.
 
-@forward "alert";
-@forward "accordion";
-@forward "card";
-@forward "carousel";
-@forward "input-group";
-@forward "list";
-@forward "menu";
-@forward "navigation";
+@use "alert";
+@use "accordion";
+@use "card";
+@use "carousel";
+@use "input-group";
+@use "list";
+@use "menu";
+@use "navigation";

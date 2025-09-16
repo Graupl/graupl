@@ -58,15 +58,16 @@ class NavigationShelf {
    *
    * @type {Object<string,string[]>}
    *
-   * @property {string|string[]} locked - The class(es) to apply to the shelf and dependent elements when the shelf is locked.
-   * @property {string|string[]} unlocked - The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
-   * @property {string|string[]} hover - The class(es) to apply to the shelf element when the shelf is hoverable.
-   * @property {string|string[]} noHover - The class(es) to apply to the shelf element when the shelf is not hoverable.
-   * @property {string|string[]} left - The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
-   * @property {string|string[]} right - The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
-   * @property {string|string[]} open - The class(es) to apply to the shelf when the shelf is open.
-   * @property {string|string[]} close - The class(es) to apply to the shelf when the shelf is closed.
+   * @property {string|string[]} locked     - The class(es) to apply to the shelf and dependent elements when the shelf is locked.
+   * @property {string|string[]} unlocked   - The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
+   * @property {string|string[]} hover      - The class(es) to apply to the shelf element when the shelf is hoverable.
+   * @property {string|string[]} noHover    - The class(es) to apply to the shelf element when the shelf is not hoverable.
+   * @property {string|string[]} left       - The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
+   * @property {string|string[]} right      - The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
+   * @property {string|string[]} open       - The class(es) to apply to the shelf when the shelf is open.
+   * @property {string|string[]} close      - The class(es) to apply to the shelf when the shelf is closed.
    * @property {string|string[]} transition - The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
+   * @property {string|string[]} initialize - The class(es) to apply to the shelf when the shelf is initializing.
    */
   _classes = {
     locked: "locked",
@@ -78,6 +79,7 @@ class NavigationShelf {
     open: "show",
     close: "hide",
     transistion: "transitioning",
+    initialize: "initializing",
   };
 
   /**
@@ -341,6 +343,15 @@ class NavigationShelf {
   });
 
   /**
+   * A flag to indicate if the shelf has been initialized.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _initialized = false;
+
+  /**
    * The prefix to use for CSS custom properties.
    *
    * @protected
@@ -393,6 +404,7 @@ class NavigationShelf {
     locked = false,
     side = "left",
     prefix = "graupl-",
+    initializeClass = "initializing",
     initialize = false,
   }) {
     // Set DOM elements.
@@ -415,6 +427,7 @@ class NavigationShelf {
     this._classes.open = openClass || "";
     this._classes.close = closeClass || "";
     this._classes.transition = transitionClass || "";
+    this._classes.initialize = initializeClass || "";
 
     // Set transition duration.
     this._transitionDuration = transitionDuration;
@@ -470,10 +483,17 @@ class NavigationShelf {
       this._handleKeyup();
 
       // Ensure the initial open state of the shelf.
-      if (this.dom.controller.getAttribute("aria-expanded") === "true") {
-        this._expand(false);
+      if (
+        this.dom.controller.getAttribute("aria-expanded") === "true" ||
+        this.isLocked
+      ) {
+        this._expand(false, false);
+
+        if (this.isLocked) {
+          this._lock(false);
+        }
       } else {
-        this._collapse(false);
+        this._collapse(false, false);
       }
 
       // Ensure the initial hoverability of the shelf.
@@ -489,6 +509,9 @@ class NavigationShelf {
       // Set up the storage.
       storage.initializeStorage("navigation-shelves");
       storage.pushToStorage("navigation-shelves", this.dom.shelf.id, this);
+
+      // Set the initialized flag to true.
+      this._initialized = true;
     } catch (error) {
       console.error(error);
     }
@@ -518,19 +541,6 @@ class NavigationShelf {
    */
   get selectors() {
     return this._selectors;
-  }
-
-  /**
-   * The class(es) to apply to the shelf and dependent elements in various scenarios.
-   *
-   * @readonly
-   *
-   * @type {Object<string, string[]>}
-   *
-   * @see _classes
-   */
-  get classes() {
-    return this._classes;
   }
 
   /**
@@ -630,6 +640,17 @@ class NavigationShelf {
    */
   get transitionClass() {
     return this._classes.transition;
+  }
+
+  /**
+   * The class(es) to apply to the shelf when the shelf is initializing.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get initializeClass() {
+    return this._classes.initialize;
   }
 
   /**
@@ -889,6 +910,14 @@ class NavigationShelf {
     }
   }
 
+  set initializeClass(value) {
+    isValidClassList({ initializeClass: value });
+
+    if (this._classes.initialize !== value) {
+      this._classes.initialize = value;
+    }
+  }
+
   set transitionDuration(value) {
     isValidType("number", { value });
 
@@ -1015,7 +1044,7 @@ class NavigationShelf {
 
     // Class list checks.
     const classes = {};
-    for (const key of Object.keys(this.classes)) {
+    for (const key of Object.keys(this._classes)) {
       if (this._classes[key] === "") continue;
 
       classes[`${key}Class`] = this._classes[key];
@@ -1348,7 +1377,10 @@ class NavigationShelf {
         return;
 
       this.focusState = "none";
-      this.close();
+
+      if (!this.isLocked) {
+        this.close();
+      }
     });
   }
 
@@ -1620,15 +1652,30 @@ class NavigationShelf {
     );
   }
 
-  _expand(emit = true) {
+  _expand(emit = true, transition = true) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "true");
     }
 
+    // If the shelf hasn't been initialized, we need to add the initialize class
+    // before opening the shelf for the first time.
+    //
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
-    if (this.transitionClass !== "") {
+    if (!this._initialized) {
+      addClass(this.initializeClass, this.dom.shelf);
+
+      requestAnimationFrame(() => {
+        addClass(this.openClass, this.dom.shelf);
+
+        removeClass(this.closeClass, this.dom.shelf);
+
+        requestAnimationFrame(() => {
+          removeClass(this.initializeClass, this.dom.shelf);
+        });
+      });
+    } else if (transition && this.transitionClass !== "") {
       addClass(this.transitionClass, this.dom.shelf);
 
       requestAnimationFrame(() => {
@@ -1657,16 +1704,31 @@ class NavigationShelf {
     }
   }
 
-  _collapse(emit = true) {
+  _collapse(emit = true, transition = true) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "false");
     }
     this.isSoftLocked = false;
 
+    // If the shelf hasn't been initialized, we need to add the initialize class
+    // before closing the shelf for the first time.
+    //
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the open class,
     // add the close class, and finally remove the transition class.
-    if (this.transitionClass !== "") {
+    if (!this._initialized) {
+      addClass(this.initializeClass, this.dom.shelf);
+
+      requestAnimationFrame(() => {
+        addClass(this.closeClass, this.dom.shelf);
+
+        removeClass(this.openClass, this.dom.shelf);
+
+        requestAnimationFrame(() => {
+          removeClass(this.initializeClass, this.dom.shelf);
+        });
+      });
+    } else if (transition && this.transitionClass !== "") {
       addClass(this.transitionClass, this.dom.shelf);
 
       requestAnimationFrame(() => {

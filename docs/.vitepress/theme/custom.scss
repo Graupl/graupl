@@ -1,35 +1,214 @@
-@use "../../../packages/core/src/scss/theme/color/defaults" as
-  graupl-color-defaults with (
-  $theme-selector-suffix: ""
+/* stylelint-disable custom-property-pattern */
+
+@use "pkg:@graupl/core/src/defaults" as graupl-defaults with (
+  $id: "graupl-docs"
 );
-@use "../../../packages/core/src/scss/variables" as graupl-variables;
-@use "../../../packages/core/src/scss/utilities";
-@use "../../../packages/core/src/scss/functions/theme";
-@use "../../../packages/core/src/scss/theme/color";
-@use "../../../packages/core/src/scss/state/focus";
-@use "sass:map";
+@use "pkg:@graupl/core/src/base/button/mixins" as graupl-button-mixins;
+@use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
+@use "pkg:@graupl/icons" as graupl-icons;
+@use "pkg:@graupl/core" as graupl;
 
 :root {
-  --vp-c-brand: #{theme.get(primary, 700)};
-  --vp-c-brand-1: #{theme.get(primary, 700)};
-  --vp-c-brand-2: #{theme.get(primary, 700)};
-  --vp-c-brand-3: #{theme.get(primary, 700)};
-  --vp-c-bg: #{theme.get(primary, 100)};
-  --vp-c-bg-alt: #{theme.get(primary, 100)};
-  --vp-c-bg-elv: #{theme.get(primary, 100)};
-  --vp-c-bg-soft: #{theme.get(primary, 100)};
-  --vp-c-border: #{theme.get(tertiary, 700)};
-  --vp-c-divider: #{theme.get(secondary, 700)};
-  --vp-c-gutter: #{theme.get(secondary, 700)};
-  --vp-c-text-1: #{theme.get(primary, 900)};
-  --vp-c-text-2: #{theme.get(primary, 900)};
-  --vp-c-text-3: #{theme.get(primary, 900)};
+  --graupl-docs-content-max-width: 158ch;
+  --graupl-docs-container-sidebar-width: 28ch;
+  --graupl-docs-spacer: 1rem;
+  --graupl-docs-root-background: var(--graupl-docs-theme-active--primary--100);
+  --graupl-docs-root-color: var(--graupl-docs-theme-active--primary--900);
+  --graupl-docs-background: var(--graupl-docs-theme-active--primary--100);
+  --graupl-docs-color: var(--graupl-docs-theme-active--primary--900);
+  --graupl-docs-navigation-background: transparent;
+  --graupl-docs-menu-link-hover-background: transparent;
+  --graupl-docs-menu-link-hover-color: var(
+    --graupl-docs-theme-active--primary--700
+  );
+  --graupl-docs-menu-link-hover-text-decoration: underline;
+  --graupl-docs-menu-link-hover-text-decoration-thickness: 0.125rem;
+  --graupl-docs-menu-link-hover-text-decoration-color: var(
+    --graupl-docs-theme-active--tertiary--600
+  );
+  --graupl-docs-border-width: 0.125rem;
+  --graupl-docs-border-style: solid;
+  --graupl-docs-navigation-shelf-min-width: 4rem;
+
+  @each $key, $value in graupl-defaults.$spacer-multipliers {
+    --graupl-docs-spacer-#{$key}: calc(#{$value} * var(--graupl-docs-spacer));
+  }
+
+  @each $key, $value in graupl-defaults.$transition-durations {
+    --graupl-docs-transition-duration-#{$key}: #{$value};
+  }
 }
 
-.vp-doc [class*="language-"] pre {
-  background: #{theme.get(secondary, 100)};
+code {
+  display: inline;
+  padding: 0 var(--graupl-docs-spacer-2);
+  background: var(--graupl-docs-theme-active--secondary--100);
+  color: var(--graupl-docs-theme-active--secondary--800);
 }
 
-.nav .group .items .link {
-  padding-left: map.get(graupl-variables.$spacers, 4);
+pre code {
+  display: block;
+  padding: var(--graupl-docs-spacer-6);
+  overflow-x: scroll;
+  scrollbar-width: thin;
+}
+
+.custom-block {
+  --graupl-docs-color: var(
+    --graupl-docs-custom-block-color,
+    var(--graupl-docs-theme-active--primary--900)
+  );
+
+  padding: var(--graupl-docs-spacer-4) var(--graupl-docs-spacer-6);
+  border-width: 0 0 0 calc(var(--graupl-docs-border-width) * 2);
+  border-style: var(--graupl-docs-border-style);
+  border-color: var(
+    --graupl-docs-custom-block-border-color,
+    var(--graupl-docs-theme-active--secondary--500)
+  );
+  background: var(
+    --graupl-docs-custom-block-background,
+    var(--graupl-docs-theme-active--secondary--200)
+  );
+  color: var(
+    --graupl-docs-custom-block-color,
+    var(--graupl-docs-theme-active--primary--900)
+  );
+
+  .custom-block-title {
+    font-size: var(--gruapl-docs-font-size-lg, 1.125rem);
+    font-weight: var(--graupl-docs-font-weight-bold, 700);
+  }
+
+  &.info {
+    --graupl-docs-custom-block-background: var(
+      --graupl-docs-theme-active--primary--200
+    );
+    --graupl-docs-custom-block-border-color: var(
+      --graupl-docs-theme-active--primary--500
+    );
+    --graupl-docs-custom-block-color: var(
+      --graupl-docs-theme-active--primary--900
+    );
+  }
+
+  &.tip {
+    --graupl-docs-custom-block-background: var(
+      --graupl-docs-theme-active--secondary--200
+    );
+    --graupl-docs-custom-block-border-color: var(
+      --graupl-docs-theme-active--secondary--500
+    );
+    --graupl-docs-custom-block-color: var(
+      --graupl-docs-theme-active--secondary--900
+    );
+  }
+
+  &.warning {
+    --graupl-docs-custom-block-background: var(
+      --graupl-docs-theme-active--tertiary--200
+    );
+    --graupl-docs-custom-block-border-color: var(
+      --graupl-docs-theme-active--tertiary--500
+    );
+    --graupl-docs-custom-block-color: var(
+      --graupl-docs-theme-active--tertiary--900
+    );
+  }
+
+  &.danger {
+    --graupl-docs-custom-block-background: var(
+      --graupl-docs-theme-active--tertiary--700
+    );
+    --graupl-docs-custom-block-border-color: var(
+      --graupl-docs-theme-active--tertiary--500
+    );
+    --graupl-docs-custom-block-color: var(
+      --graupl-docs-theme-active--tertiary--100
+    );
+  }
+}
+
+.vp-adaptive-theme[class*="language-"] {
+  position: relative;
+
+  .lang {
+    position: absolute;
+    top: var(--graupl-docs-spacer-1);
+    right: var(--graupl-docs-spacer-3);
+    height: var(--graupl-docs-spacer-6);
+    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 1;
+  }
+
+  .copy {
+    @include graupl-button-mixins.apply-base;
+    @include graupl-button-mixins.apply-theme;
+
+    position: absolute;
+    z-index: 2;
+    top: var(--graupl-docs-spacer-3);
+    right: var(--graupl-docs-spacer-3);
+    height: var(--graupl-docs-spacer-6);
+    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    opacity: 0;
+  }
+
+  &:hover {
+    .copy {
+      opacity: 1;
+    }
+
+    .lang {
+      opacity: 0;
+    }
+  }
+
+  span {
+    color: var(--shiki-light);
+  }
+}
+
+.dark-mode {
+  .vp-adaptive-theme[class*="language-"] span {
+    color: var(--shiki-dark);
+  }
+}
+
+.navigation-shelf {
+  --graupl-docs-button-border-color: transparent;
+  --graupl-docs-menu-link-border-color: transparent;
+  --graupl-docs-submenu-border-color: transparent;
+  --graupl-docs-submenu-position: relative;
+  --graupl-docs-submenu-inset: auto;
+  --graupl-docs-menu-link-hover-color: var(
+    --graupl-docs-theme-active--primary--700
+  );
+
+  border: calc(var(--graupl-docs-border-width) * 2)
+    var(--graupl-docs-border-style) transparent;
+  border-top-width: 0;
+  border-bottom-width: 0;
+
+  &.left-side {
+    border-right-color: var(--graupl-docs-theme-active--tertiary--500);
+  }
+
+  &.right-side {
+    border-left-color: var(--graupl-docs-theme-active--tertiary--500);
+  }
+
+  .navigation {
+    --graupl-docs-menu-flex-direction: column;
+
+    grid-template-columns: auto auto 1fr;
+    transition: opacity var(--graupl-docs-transition-duration-fast);
+  }
+
+  &.hide {
+    .navigation {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
 }

@@ -5,6 +5,7 @@ package-lock.json
 node_modules
 
 # Generated files.
+components-library/dist
 demo
 
 # Generated documentation.

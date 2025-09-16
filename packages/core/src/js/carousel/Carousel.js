@@ -220,7 +220,7 @@ class Carousel {
   _errors = [];
 
   /**
-   * Contructs a new `Carousel`.
+   * Constructs a new `Carousel`.
    *
    * @param {object}             options                                                                  - The options for the generated carousel.
    * @param {HTMLElement}        options.carouselElement                                                  - The carousel element in the DOM.
