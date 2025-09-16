@@ -162,8 +162,6 @@
 
   // `.navigation-shelf-footer`
   #{defaults.$navigation-shelf-footer-selector-base}#{defaults.$navigation-shelf-footer-selector} {
-    position: fixed;
-    bottom: 0;
     grid-area: footer;
   }
 
