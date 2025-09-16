@@ -1,3 +1,3 @@
-# Animation Mixins
+# Carousels
 
 Documentation to be written.

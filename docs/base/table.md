@@ -1,3 +1,3 @@
-# Animation Mixins
+# Tables
 
 Documentation to be written.

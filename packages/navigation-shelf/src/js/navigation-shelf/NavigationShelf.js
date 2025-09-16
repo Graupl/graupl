@@ -1377,7 +1377,10 @@ class NavigationShelf {
         return;
 
       this.focusState = "none";
-      this.close();
+
+      if (!this.isLocked) {
+        this.close();
+      }
     });
   }
 

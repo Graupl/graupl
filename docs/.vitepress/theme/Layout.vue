@@ -49,7 +49,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="position-relative min-h-full-screen">
+  <div class="position-relative min-h-full-screen pb-8">
     <div class="container topbar shelf-aware">
       <div class="display-flex justify-content-end g-4">
         <div
@@ -143,6 +143,32 @@ onMounted(() => {
         ></button>
       </div>
     </div>
-    <div class="container shelf-aware"><Content /></div>
+    <div class="container shelf-aware">
+      <template v-if="page.frontmatter?.layout === 'home'">
+        <div v-if="page.frontmatter?.hero" class="display-flex flex-col g-5">
+          <div>
+            <h1 class="mb-0">{{ page.frontmatter.hero.name }}</h1>
+            <p class="text-2xl w-max-content text-primary-800">
+              {{ page.frontmatter.hero.tagline }}
+            </p>
+          </div>
+          <div
+            v-if="page.frontmatter.hero.actions"
+            class="display-flex flex-wrap g-4"
+          >
+            <a
+              v-for="action in page.frontmatter.hero.actions"
+              :key="`action-${action.text.toLowerCase().replace(' ', '-')}`"
+              :href="action.link"
+              :class="`button ${action.theme}`"
+              >{{ action.text }}</a
+            >
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <Content />
+      </template>
+    </div>
   </div>
 </template>
