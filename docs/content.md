@@ -2,6 +2,9 @@
 
 ## Table
 
+<SampleTable />
+<!-- The above demo uses the options described in the documentation. Source: docs/demo/DemoTable.vue -->
+
 Default Values
 
 ```jsx
