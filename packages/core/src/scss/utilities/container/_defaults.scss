@@ -28,7 +28,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Container type properties.
 $container-type-selector-prefix: "container-type-" !default;
-$base-container-type-properties: (
+$-container-type-properties: (
   inline: "inline-size",
   normal: "normal",
   size: "size",
@@ -50,7 +50,7 @@ $container-type-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $container-type-properties: map.merge(
-    $base-container-type-properties,
+    $-container-type-properties,
     $container-type-properties
   );
 }

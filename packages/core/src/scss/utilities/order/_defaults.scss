@@ -35,7 +35,7 @@ $order-max-count: math.max(
   flex-columns-defaults.$flex-columns-max-count
 ) !default;
 $order-selector-prefix: "order-" !default;
-$base-order-properties: (
+$-order-properties: (
   "none": 0,
   "first": -9999,
   "last": 9999,
@@ -43,8 +43,8 @@ $base-order-properties: (
 
 // Add the count values to the base order properties.
 @for $i from 1 through $order-max-count {
-  $base-order-properties: map.merge(
-    $base-order-properties,
+  $-order-properties: map.merge(
+    $-order-properties,
     (
       math.abs($i): $i,
     )
@@ -63,5 +63,5 @@ $order-properties: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $order-properties: map.merge($base-order-properties, $order-properties);
+  $order-properties: map.merge($-order-properties, $order-properties);
 }

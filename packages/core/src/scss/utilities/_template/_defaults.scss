@@ -34,12 +34,9 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 // Remember to replace references like [_template], or other placeholder content with appropriate descriptions!
 
 $template-selector-prefix: "template-" !default;
-$base-template-properties: ();
+$-template-properties: ();
 $template-properties: () !default;
 
 @if $generate-base-utilities {
-  $template-properties: map.merge(
-    $base-template-properties,
-    $template-properties
-  );
+  $template-properties: map.merge($-template-properties, $template-properties);
 }

@@ -14,67 +14,170 @@
 // The following custom properties can be used to customize the button component:
 // | Property | Description | Default Value |
 // | --- | --- | --- |
-// | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `var(--graupl-interactive-min-width)` |
-// | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `var(--graupl-interactive-min-height)` |
-// | `--graupl-button-padding-x`                  | The horizontal padding of the button component.                                                                | `var(--graupl-spacer-5)` |
-// | `--graupl-button-padding-y`                  | The vertical padding of the button component.                                                                  | `var(--graupl-spacer-3)` |
-// | `--graupl-button-padding`                    | The padding of the button component (combines x and y padding).                                                | `var(--graupl-button-padding-x) var(--graupl-button-padding-y)` |
-// | `--graupl-button-font-size`                  | The font size of the button component.                                                                         | `var(--graupl-font-size-base)` |
-// | `--graupl-button-transition`                 | The transition of the button component.                                                                        | `background var(--graupl-transition-duration-fast), color var(--graupl-transition-duration-fast), transform var(--graupl-transition-duration-fast)` |
-// | `--graupl-button-transition-reduced-motion`  | The transition of the button component when reduced motion is enabled.                                         | `background var(--graupl-transition-duration-none), color var(--graupl-transition-duration-none)` |
-// | `--graupl-button-transform`                  | The transform of the button component.                                                                         | `0` |
-// | `--graupl-button-visited-transform`          | The transform of a visited button component.                                                                   | `var(--graupl-button-transform)` |
-// | `--graupl-button-focus-transform`            | The transform of a focused button component.                                                                   | `var(--graupl-button-transform)` |
-// | `--graupl-button-hover-transform`            | The transform of a hovered button component.                                                                   | `var(--graupl-button-transform)` |
-// | `--graupl-button-active-transform`           | The transform of an active button component.                                                                   | `scale(0.95)` |
-// | `--graupl-button-disabled-transform`         | The transform of a disabled button component.                                                                  | `0` |
-// | `--graupl-button-background`                 | The background colour of the button component.                                                                 | `var(--graupl-background)` |
-// | `--graupl-button-visited-background`         | The background colour of a visited button component.                                                           | `var(--graupl-button-background)` |
-// | `--graupl-button-focus-background`           | The background colour of a focused button component.                                                           | `var(--graupl-button-background)` |
-// | `--graupl-button-hover-background`           | The background colour of a hovered button component.                                                           | `var(--graupl-color)` |
-// | `--graupl-button-active-background`          | The background colour of an active button component.                                                           | `var(--graupl-button-hover-background)` |
-// | `--graupl-button-disabled-background`        | The background colour of a disabled button component.                                                          | `var(--graupl-background)` |
-// | `--graupl-button-color`                      | The text colour of the button component.                                                                       | `var(--graupl-color)` |
-// | `--graupl-button-visited-color`              | The text colour of a visited button component.                                                                 | `var(--graupl-button-color)` |
-// | `--graupl-button-focus-color`                | The text colour of a focused button component.                                                                 | `var(--graupl-button-color)` |
-// | `--graupl-button-hover-color`                | The text colour of a hovered button component.                                                                 | `var(--graupl-background)` |
-// | `--graupl-button-active-color`               | The text colour of an active button component.                                                                 | `var(--graupl-button-hover-color)` |
-// | `--graupl-button-disabled-color`             | The text colour of a disabled button component.                                                                | `var(--graupl-theme-active--primary--200)` |
-// | `--graupl-button-border-top-width`           | The top border width of the button component.                                                                  | `var(--graupl-border-top-width)` |
-// | `--graupl-button-border-right-width`         | The right border width of the button component.                                                                | `var(--graupl-border-right-width)` |
-// | `--graupl-button-border-bottom-width`        | The bottom border width of the button component.                                                               | `var(--graupl-border-bottom-width)` |
-// | `--graupl-button-border-left-width`          | The left border width of the button component.                                                                 | `var(--graupl-border-left-width)` |
-// | `--graupl-button-border-width`               | The border width of the button component (combines top, right, bottom, and left widths).                       | `var(--graupl-button-border-top-width) var(--graupl-button-border-right-width) var(--graupl-button-border-bottom-width) var(--graupl-button-border-left-width)` |
-// | `--graupl-button-border-top-style`           | The top border style of the button component.                                                                  | `var(--graupl-border-top-style)` |
-// | `--graupl-button-border-right-style`         | The right border style of the button component.                                                                | `var(--graupl-border-right-style)` |
-// | `--graupl-button-border-bottom-style`        | The bottom border style of the button component.                                                               | `var(--graupl-border-bottom-style)` |
-// | `--graupl-button-border-left-style`          | The left border style of the button component.                                                                 | `var(--graupl-border-left-style)` |
-// | `--graupl-button-border-style`               | The border style of the button component (combines top, right, bottom, and left styles).                       | `var(--graupl-button-border-top-style) var(--graupl-button-border-right-style) var(--graupl-button-border-bottom-style) var(--graupl-button-border-left-style)` |
-// | `--graupl-button-border-top-left-radius`     | The top left border radius of the button component.                                                            | `var(--graupl-border-top-left-radius)` |
-// | `--graupl-button-border-top-right-radius`    | The top right border radius of the button component.                                                           | `var(--graupl-border-top-right-radius)` |
-// | `--graupl-button-border-bottom-right-radius` | The bottom right border radius of the button component.                                                        | `var(--graupl-border-bottom-right-radius)` |
-// | `--graupl-button-border-bottom-left-radius`  | The bottom left border radius of the button component.                                                         | `var(--graupl-border-bottom-left-radius)` |
+// | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `var(--graupl-interactive-min-width)`                                                                                                                                                     |
+// | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `var(--graupl-interactive-min-height)`                                                                                                                                                    |
+// | `--graupl-button-padding-x`                  | The horizontal padding of the button component.                                                                | `var(--graupl-spacer-5)`                                                                                                                                                                  |
+// | `--graupl-button-padding-y`                  | The vertical padding of the button component.                                                                  | `var(--graupl-spacer-3)`                                                                                                                                                                  |
+// | `--graupl-button-padding`                    | The padding of the button component (combines x and y padding).                                                | `var(--graupl-button-padding-x) var(--graupl-button-padding-y)`                                                                                                                           |
+// | `--graupl-button-font-size`                  | The font size of the button component.                                                                         | `var(--graupl-font-size-base)`                                                                                                                                                            |
+// | `--graupl-button-transition`                 | The transition of the button component.                                                                        | `background var(--graupl-transition-duration-fast), color var(--graupl-transition-duration-fast), transform var(--graupl-transition-duration-fast)`                                       |
+// | `--graupl-button-transition-reduced-motion`  | The transition of the button component when reduced motion is enabled.                                         | `background var(--graupl-transition-duration-none), color var(--graupl-transition-duration-none)`                                                                                         |
+// | `--graupl-button-transform`                  | The transform of the button component.                                                                         | `0`                                                                                                                                                                                       |
+// | `--graupl-button-visited-transform`          | The transform of a visited button component.                                                                   | `var(--graupl-button-transform)`                                                                                                                                                          |
+// | `--graupl-button-focus-transform`            | The transform of a focused button component.                                                                   | `var(--graupl-button-transform)`                                                                                                                                                          |
+// | `--graupl-button-hover-transform`            | The transform of a hovered button component.                                                                   | `var(--graupl-button-transform)`                                                                                                                                                          |
+// | `--graupl-button-active-transform`           | The transform of an active button component.                                                                   | `scale(0.95)`                                                                                                                                                                             |
+// | `--graupl-button-disabled-transform`         | The transform of a disabled button component.                                                                  | `0`                                                                                                                                                                                       |
+// | `--graupl-button-background`                 | The background colour of the button component.                                                                 | `var(--graupl-background)`                                                                                                                                                                |
+// | `--graupl-button-visited-background`         | The background colour of a visited button component.                                                           | `var(--graupl-button-background)`                                                                                                                                                         |
+// | `--graupl-button-focus-background`           | The background colour of a focused button component.                                                           | `var(--graupl-button-background)`                                                                                                                                                         |
+// | `--graupl-button-hover-background`           | The background colour of a hovered button component.                                                           | `var(--graupl-color)`                                                                                                                                                                     |
+// | `--graupl-button-active-background`          | The background colour of an active button component.                                                           | `var(--graupl-button-hover-background)`                                                                                                                                                   |
+// | `--graupl-button-disabled-background`        | The background colour of a disabled button component.                                                          | `var(--graupl-background)`                                                                                                                                                                |
+// | `--graupl-button-color`                      | The text colour of the button component.                                                                       | `var(--graupl-color)`                                                                                                                                                                     |
+// | `--graupl-button-visited-color`              | The text colour of a visited button component.                                                                 | `var(--graupl-button-color)`                                                                                                                                                              |
+// | `--graupl-button-focus-color`                | The text colour of a focused button component.                                                                 | `var(--graupl-button-color)`                                                                                                                                                              |
+// | `--graupl-button-hover-color`                | The text colour of a hovered button component.                                                                 | `var(--graupl-background)`                                                                                                                                                                |
+// | `--graupl-button-active-color`               | The text colour of an active button component.                                                                 | `var(--graupl-button-hover-color)`                                                                                                                                                        |
+// | `--graupl-button-disabled-color`             | The text colour of a disabled button component.                                                                | `var(--graupl-theme-active--primary--200)`                                                                                                                                                |
+// | `--graupl-button-border-top-width`           | The top border width of the button component.                                                                  | `var(--graupl-border-top-width)`                                                                                                                                                          |
+// | `--graupl-button-border-right-width`         | The right border width of the button component.                                                                | `var(--graupl-border-right-width)`                                                                                                                                                        |
+// | `--graupl-button-border-bottom-width`        | The bottom border width of the button component.                                                               | `var(--graupl-border-bottom-width)`                                                                                                                                                       |
+// | `--graupl-button-border-left-width`          | The left border width of the button component.                                                                 | `var(--graupl-border-left-width)`                                                                                                                                                         |
+// | `--graupl-button-border-width`               | The border width of the button component (combines top, right, bottom, and left widths).                       | `var(--graupl-button-border-top-width) var(--graupl-button-border-right-width) var(--graupl-button-border-bottom-width) var(--graupl-button-border-left-width)`                           |
+// | `--graupl-button-border-top-style`           | The top border style of the button component.                                                                  | `var(--graupl-border-top-style)`                                                                                                                                                          |
+// | `--graupl-button-border-right-style`         | The right border style of the button component.                                                                | `var(--graupl-border-right-style)`                                                                                                                                                        |
+// | `--graupl-button-border-bottom-style`        | The bottom border style of the button component.                                                               | `var(--graupl-border-bottom-style)`                                                                                                                                                       |
+// | `--graupl-button-border-left-style`          | The left border style of the button component.                                                                 | `var(--graupl-border-left-style)`                                                                                                                                                         |
+// | `--graupl-button-border-style`               | The border style of the button component (combines top, right, bottom, and left styles).                       | `var(--graupl-button-border-top-style) var(--graupl-button-border-right-style) var(--graupl-button-border-bottom-style) var(--graupl-button-border-left-style)`                           |
+// | `--graupl-button-border-top-left-radius`     | The top left border radius of the button component.                                                            | `var(--graupl-border-top-left-radius)`                                                                                                                                                    |
+// | `--graupl-button-border-top-right-radius`    | The top right border radius of the button component.                                                           | `var(--graupl-border-top-right-radius)`                                                                                                                                                   |
+// | `--graupl-button-border-bottom-right-radius` | The bottom right border radius of the button component.                                                        | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                |
+// | `--graupl-button-border-bottom-left-radius`  | The bottom left border radius of the button component.                                                         | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                 |
 // | `--graupl-button-border-radius`              | The border radius of the button component (combines top-left, top-right, bottom-right, and bottom-left radii). | `var(--graupl-button-border-top-left-radius) var(--graupl-button-border-top-right-radius) var(--graupl-button-border-bottom-right-radius) var(--graupl-button-border-bottom-left-radius)` |
-// | `--graupl-button-border-color`               | The border colour of the button component.                                                                     | `var(--graupl-border-color)` |
-// | `--graupl-button-visited-border-color`       | The border colour of a visited button component.                                                               | `var(--graupl-button-border-color)` |
-// | `--graupl-button-focus-border-color`         | The border colour of a focused button component.                                                               | `var(--graupl-button-border-color)` |
-// | `--graupl-button-hover-border-color`         | The border colour of a hovered button component.                                                               | `var(--graupl-border-color)` |
-// | `--graupl-button-active-border-color`        | The border colour of an active button component.                                                               | `var(--graupl-button-hover-border-color)` |
-// | `--graupl-button-disabled-border-color`      | The border colour of a disabled button component.                                                              | `var(--graupl-theme-active--primary--200)` |
+// | `--graupl-button-border-color`               | The border colour of the button component.                                                                     | `var(--graupl-border-color)`                                                                                                                                                              |
+// | `--graupl-button-visited-border-color`       | The border colour of a visited button component.                                                               | `var(--graupl-button-border-color)`                                                                                                                                                       |
+// | `--graupl-button-focus-border-color`         | The border colour of a focused button component.                                                               | `var(--graupl-button-border-color)`                                                                                                                                                       |
+// | `--graupl-button-hover-border-color`         | The border colour of a hovered button component.                                                               | `var(--graupl-border-color)`                                                                                                                                                              |
+// | `--graupl-button-active-border-color`        | The border colour of an active button component.                                                               | `var(--graupl-button-hover-border-color)`                                                                                                                                                 |
+// | `--graupl-button-disabled-border-color`      | The border colour of a disabled button component.                                                              | `var(--graupl-theme-active--primary--200)`                                                                                                                                                |
 //
-// The following sass variables can be used to control the generation of the button component:
-// - `$selector-base`: The selector base for the component.
-// - `$modifier-selector-base`: The selector base for component modifiers.
-// - `$button-selector-base`: The selector base for the button component.
-// - `$button-selector`: The button component selector.
-// - `$button-link-selector-base`: The selector base for the button link component modifier.
-// - `$button-link-selector`: The button link component modifier selector.
-// - `$button-theme-selector-base`: The selector base for the button theme component modifiers.
-// - `$button-theme-selector-prefix`: The button theme component modifier selector prefix.
-// - `$button-initial-transform`: The initial transform of the button.
-// - `$button-final-transform`: The final transform of the button.
-// - `$button-disabled-transform`: The disabled transform of the button.
-// - `$custom-button-state-theme-map`: A map of custom button state theme values.
+// The following sass variables can be used to customize the generation of the button component:
+// | Variable | Description | Default Value |
+// | --- | --- | --- |
+// | `$selector-base`                | The selector base for the component.                                                    | `.`                         |
+// | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `.`                         |
+// | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                      |
+// | `$button-selector-base`         | The selector base for the button component.                                             | `$selector-base`            |
+// | `$button-selector`              | The button component selector.                                                          | `button`                    |
+// | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `$modifier-selector-base`   |
+// | `$button-link-selector`         | The button link component modifier selector.                                            | `link`                      |
+// | `$button-theme-selector-base`   | The selector base for the button theme component modifiers.                             | `$modifier-selector-base`   |
+// | `$button-theme-selector-prefix` | The button theme component modifier selector prefix.                                    | `""`                        |
+// | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`                      |
+// | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)`               |
+// | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `$button-initial-transform` |
+// | `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`                        |
+// | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `()`                        |
+//
+// Using `$button-theme-mappings`
+//
+// `$button-theme-mappings` is a 1-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $button-theme-mappings: (
+//   border-color: 700,
+// )
+// ```
+//
+// This directly[1] maps to all button variants, telling them what shade to use for said property.
+// All button variants will use the following based on the example above:
+// - Primary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize _all_ buttons variants in the same way.
+//
+// For example, if you use the following map:
+// ```scss
+// $button-theme-mappings: (
+//   border-color: 500,
+// )
+// ```
+//
+// All button variants will use the following:
+// - Primary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--primary--500`,
+// - Secondary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--500`, and
+// - Tertiary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--tertiary--500`.
+//
+// [1] `$button-theme-mappings` gets parsed into a larger, more explicit map: `$button-theme-map`.
+//
+// Using `$button-theme-map`
+//
+// `$button-theme-map` is a multi-level map of properties, colors, and shade values.
+//
+// e.g.
+// ```scss
+// $button-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: primary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: tertiary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// This directly maps to all button variants, telling them what shade to use for said property.
+// The button variants will use the following based on the example above:
+// - Primary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize button variants individually.
+//
+// For example, if you use the following map:
+//
+// ```scss
+// $button-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// The button variants will use the following:
+// - Primary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--700`,
+// - Secondary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary buttons will have their `--graupl-button-border-color` property set to `--graupl-theme-active--secondary--700`.
 //
 // @example
 // <button class="button primary">Primary Button</button>

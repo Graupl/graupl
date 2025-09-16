@@ -29,7 +29,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 // Z-index properties.
 
 $z-index-selector-prefix: "z-" !default;
-$base-z-index-properties: (
+$-z-index-properties: (
   "n1": -1,
   0: 0,
   1: 1,
@@ -48,5 +48,5 @@ $z-index-properties: () !default;
 }
 
 @if $generate-base-utilities {
-  $z-index-properties: map.merge($base-z-index-properties, $z-index-properties);
+  $z-index-properties: map.merge($-z-index-properties, $z-index-properties);
 }

@@ -6,6 +6,7 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "sass:list";
 @use "sass:map";
 
 // Prefix for custom properties and other naming conventions.
@@ -14,6 +15,12 @@ $prefix: "#{$id}-" !default;
 
 // Settings.
 $use-important: true !default;
+$generate-base-colors: true !default;
+$generate-base-themes: true !default;
+$generate-base-theme-maps: true !default;
+$generate-base-font-sizes: true !default;
+$generate-base-font-weights: true !default;
+$generate-state-classes: true !default;
 $generate-base-utilities: true !default;
 $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
@@ -25,7 +32,7 @@ $use-layers: true !default;
 $content-max-width: 96ch !default;
 
 // Screen sizes.
-$base-screen-sizes: (
+$-screen-sizes: (
   xs: 0,
   sm: 48ch,
   md: 72ch,
@@ -33,8 +40,17 @@ $base-screen-sizes: (
   xl: 156ch,
 );
 $custom-screen-sizes: () !default;
-$screen-sizes: map.merge($base-screen-sizes, $custom-screen-sizes);
-$base-screen-size-triggers: (
+$screen-sizes: () !default;
+
+// @todo remove this once $custom-screen-sizes is removed
+@if $custom-screen-sizes != () {
+  @warn "`$custom-screen-sizes` is deprecated and will be removed in a future release of Graupl. Use `$screen-sizes` instead.";
+
+  $screen-sizes: map.merge($screen-sizes, $custom-screen-sizes);
+}
+
+$screen-sizes: map.merge($-screen-sizes, $screen-sizes);
+$-screen-size-triggers: (
   navigation-collapse: (
     mixin: "down",
     args: (
@@ -67,25 +83,55 @@ $base-screen-size-triggers: (
   ),
 );
 $custom-screen-size-triggers: () !default;
-$screen-size-triggers: map.merge(
-  $base-screen-size-triggers,
-  $custom-screen-size-triggers
-);
+$screen-size-triggers: () !default;
+
+// @todo remove this once $custom-screen-size-triggers is removed
+@if $custom-screen-size-triggers != () {
+  @warn "`$custom-screen-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$screen-size-triggers` instead.";
+
+  $screen-size-triggers: map.merge(
+    $screen-size-triggers,
+    $custom-screen-size-triggers
+  );
+}
+
+$screen-size-triggers: map.merge($-screen-size-triggers, $screen-size-triggers);
 
 // Container sizes.
-$base-container-sizes: $screen-sizes;
+$-container-sizes: $screen-sizes;
 $custom-container-sizes: () !default;
-$container-sizes: map.merge($base-container-sizes, $custom-container-sizes);
-$base-container-size-triggers: $screen-size-triggers;
+$container-sizes: () !default;
+
+// @todo remove this once $custom-container-sizes is removed
+@if $custom-container-sizes != () {
+  @warn "`$custom-container-sizes` is deprecated and will be removed in a future release of Graupl. Use `$container-sizes` instead.";
+
+  $container-sizes: map.merge($container-sizes, $custom-container-sizes);
+}
+
+$container-sizes: map.merge($-container-sizes, $container-sizes);
+$-container-size-triggers: $screen-size-triggers;
 $custom-container-size-triggers: () !default;
+$container-size-triggers: () !default;
+
+// @todo remove this once $custom-container-size-triggers is removed
+@if $custom-container-size-triggers != () {
+  @warn "`$custom-container-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$container-size-triggers` instead.";
+
+  $container-size-triggers: map.merge(
+    $container-size-triggers,
+    $custom-container-size-triggers
+  );
+}
+
 $container-size-triggers: map.merge(
-  $base-container-size-triggers,
-  $custom-container-size-triggers
+  $-container-size-triggers,
+  $container-size-triggers
 );
 
 // Spacing properties.
 $spacer: 1rem !default;
-$base-spacer-multipliers: (
+$-spacer-multipliers: (
   0: 0,
   1: 0.125,
   2: 0.25,
@@ -99,10 +145,19 @@ $base-spacer-multipliers: (
   10: 10,
 );
 $custom-spacer-multipliers: () !default;
-$spacer-multipliers: map.merge(
-  $base-spacer-multipliers,
-  $custom-spacer-multipliers
-);
+$spacer-multipliers: () !default;
+
+// @todo remove this once $custom-spacer-multipliers is removed
+@if $custom-spacer-multipliers != () {
+  @warn "`$custom-spacer-multipliers` is deprecated and will be removed in a future release of Graupl. Use `$spacer-multipliers` instead.";
+
+  $spacer-multipliers: map.merge(
+    $spacer-multipliers,
+    $custom-spacer-multipliers
+  );
+}
+
+$spacer-multipliers: map.merge($-spacer-multipliers, $spacer-multipliers);
 
 // Size properties.
 $interactive-min-width: 44px !default;
@@ -116,16 +171,25 @@ $border-style: solid !default;
 // Transition properties.
 $transition-duration-base: 100 !default;
 $transition-timing-function: ease !default;
-$base-transition-durations: (
+$-transition-durations: (
   fast: #{$transition-duration-base * 1.5}ms,
   default: #{$transition-duration-base * 2.5}ms,
   slow: #{$transition-duration-base * 3}ms,
 );
 $custom-transition-durations: () !default;
-$transition-durations: map.merge(
-  $base-transition-durations,
-  $custom-transition-durations
-);
+$transition-durations: () !default;
+
+// @todo remove this once $custom-transition-durations is removed
+@if $custom-transition-durations != () {
+  @warn "`$custom-transition-durations` is deprecated and will be removed in a future release of Graupl. Use `$transition-durations` instead.";
+
+  $transition-durations: map.merge(
+    $transition-durations,
+    $custom-transition-durations
+  );
+}
+
+$transition-durations: map.merge($-transition-durations, $transition-durations);
 
 // Selector properties.
 $element-selector-base: "" !default;
@@ -144,32 +208,85 @@ $container-aware-selector-prefix: "cq\\:" !default;
 
 // State selectors.
 $state-selector-base: $modifier-selector-base !default;
-$base-state-selectors: (
+$-state-selectors: (
   visited: (
-    "#{$state-selector-base}visited",
     ":visited",
   ),
   focus: (
-    "#{$state-selector-base}focus",
     ":focus-visible",
   ),
   hover: (
-    "#{$state-selector-base}hover",
     ":hover",
   ),
   active: (
-    "#{$state-selector-base}active",
     ":active",
   ),
   disabled: (
-    "#{$state-selector-base}disabled",
     ":disabled",
     "[disabled]",
     "[aria-disabled=true]",
   ),
 );
+$-state-class-selectors: (
+  visited: (
+    "#{$state-selector-base}visited",
+  ),
+  focus: (
+    "#{$state-selector-base}focus",
+  ),
+  hover: (
+    "#{$state-selector-base}hover",
+  ),
+  active: (
+    "#{$state-selector-base}active",
+  ),
+  disabled: (
+    "#{$state-selector-base}disabled",
+  ),
+);
+
+// Merge the state class selectors with the state selectors.
+@if $generate-state-classes {
+  @each $state, $selectors in $-state-selectors {
+    $-state-selectors: map.set(
+      $-state-selectors,
+      $state,
+      list.join($selectors, map.get($-state-class-selectors, $state))
+    );
+  }
+}
+
 $custom-state-selectors: () !default;
-$state-selectors: map.merge($base-state-selectors, $custom-state-selectors);
+$state-selectors: () !default;
+
+// @todo remove this once $custom-state-selectors is removed
+@if $custom-state-selectors != () {
+  @warn "`$custom-state-selectors` is deprecated and will be removed in a future release of Graupl. Use `$state-selectors` instead.";
+
+  @each $state, $selectors in $custom-state-selectors {
+    @if map.has-key($state-selectors, $state) {
+      $state-selectors: map.set(
+        $state-selectors,
+        $state,
+        list.join(map.get($state-selectors, $state), $selectors)
+      );
+    } @else {
+      $state-selectors: map.set($state-selectors, $state, $selectors);
+    }
+  }
+}
+
+@each $state, $selectors in $-state-selectors {
+  @if map.has-key($state-selectors, $state) {
+    $state-selectors: map.set(
+      $state-selectors,
+      $state,
+      list.join(map.get($state-selectors, $state), $selectors)
+    );
+  } @else {
+    $state-selectors: map.set($state-selectors, $state, $selectors);
+  }
+}
 
 // Utility properties.
 $utility-selector-base: $modifier-selector-base !default;

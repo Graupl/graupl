@@ -6,9 +6,13 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 @use "sass:list";
+@use "sass:meta";
 
+$generate-base-colors: root-defaults.$generate-base-colors !default;
+$generate-base-themes: root-defaults.$generate-base-themes !default;
 $theme-selector-prefix: "." !default;
 $theme-selector-suffix: "-mode" !default;
 
@@ -27,8 +31,9 @@ $theme-selector-suffix: "-mode" !default;
 // Users can override any part of this giant map, allowing for fine-tuned control of theme colours.
 
 // Colours.
-$default-colors: (
+$-colors: (
   primary: (
+    _default: hsl(219deg 75% 50%),
     100: hsl(219deg 100% 95%),
     200: hsl(219deg 90% 80%),
     300: hsl(219deg 80% 65%),
@@ -40,6 +45,7 @@ $default-colors: (
     900: hsl(219deg 100% 10%),
   ),
   secondary: (
+    _default: hsl(235deg 15% 50%),
     100: hsl(235deg 40% 95%),
     200: hsl(235deg 30% 80%),
     300: hsl(235deg 20% 65%),
@@ -51,6 +57,7 @@ $default-colors: (
     900: hsl(235deg 40% 10%),
   ),
   tertiary: (
+    _default: hsl(340deg 60% 50%),
     100: hsl(340deg 85% 95%),
     200: hsl(340deg 75% 80%),
     300: hsl(340deg 65% 65%),
@@ -63,16 +70,51 @@ $default-colors: (
   ),
 );
 $custom-colors: () !default;
-$colors: map.deep-merge($default-colors, $custom-colors);
+$colors: () !default;
+
+// Loop through the customized colors and convert them to a map structure.
+// This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
+@each $color, $value in $colors {
+  @if meta.type-of($value) == "color" {
+    $colors: map.merge(
+      $colors,
+      (
+        $color: (
+            _default: $value,
+          ),
+      )
+    );
+  }
+}
+
+// @todo remove this once $custom-colors is removed
+@if $custom-colors != () {
+  @warn "`$custom-colors` is deprecated and will be removed in a future release of Graupl. Use `$colors` instead.";
+
+  $colors: map.deep-merge($colors, $custom-colors);
+}
+
+// Merge the custom colors with the default ones.
+@if $generate-base-colors {
+  $colors: map.deep-merge($-colors, $colors);
+}
 
 // Themes.
-$default-themes: (light, dark);
+$-themes: (light, dark);
 $custom-themes: () !default;
-$themes: list.join($default-themes, $custom-themes);
+$themes: () !default;
+
+// @todo remove this once $custom-themes is removed
+@if $custom-themes != () {
+  @warn "`$custom-themes` is deprecated and will be removed in a future release of Graupl. Use `$themes` instead.";
+
+  $themes: list.join($themes, $custom-themes);
+}
+
 $default-theme: light !default;
 
 // Theme mappings.
-$default-theme-mappings: (
+$-theme-mappings: (
   light: (
     100: 100,
     200: 200,
@@ -97,13 +139,23 @@ $default-theme-mappings: (
   ),
 );
 $custom-theme-mappings: () !default;
-$theme-mappings: map.deep-merge(
-  $default-theme-mappings,
-  $custom-theme-mappings
-);
+$theme-mappings: () !default;
+
+// @todo remove this once $custom-theme-mappings is removed
+@if $custom-theme-mappings != () {
+  @warn "`$custom-theme-mappings` is deprecated and will be removed in a future release of Graupl. Use `$theme-mappings` instead.";
+
+  $theme-mappings: map.deep-merge($theme-mappings, $custom-theme-mappings);
+}
+
+// Merge the custom themes with the default ones.
+@if $generate-base-themes {
+  $themes: list.join($-themes, $themes);
+  $theme-mappings: map.deep-merge($-theme-mappings, $theme-mappings);
+}
 
 // Theme map.
-$default-theme-map: ();
+$-theme-map: ();
 
 @each $theme in $themes {
   $theme-map: ();
@@ -112,12 +164,21 @@ $default-theme-map: ();
     $color-theme-map: ();
 
     @each $shade, $value in $color-map {
+      $color-property: null;
+
+      // Handle _default shade vs proper shade mappings.
+      @if map.has-key($theme-mappings, $theme, $shade) {
+        $color-property: map.get($theme-mappings, $theme, $shade);
+      } @else if $shade == "_default" {
+        $color-property: $shade;
+      }
+
       $color-theme-map: map.merge(
         $color-theme-map,
         (
           $shade: (
               color: $color-name,
-              shade: map.get($theme-mappings, $theme, $shade),
+              shade: $color-property,
             ),
         )
       );
@@ -131,8 +192,8 @@ $default-theme-map: ();
     );
   }
 
-  $default-theme-map: map.merge(
-    $default-theme-map,
+  $-theme-map: map.merge(
+    $-theme-map,
     (
       $theme: $theme-map,
     )
@@ -140,4 +201,13 @@ $default-theme-map: ();
 }
 
 $custom-theme-map: () !default;
-$theme-map: map.deep-merge($default-theme-map, $custom-theme-map);
+$theme-map: () !default;
+
+// @todo remove this once $custom-theme-map is removed
+@if $custom-theme-map != () {
+  @warn "`$custom-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$theme-map` instead.";
+
+  $theme-map: map.deep-merge($theme-map, $custom-theme-map);
+}
+
+$theme-map: map.deep-merge($-theme-map, $theme-map);

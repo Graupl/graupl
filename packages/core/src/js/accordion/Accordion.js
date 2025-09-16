@@ -658,7 +658,7 @@ class Accordion {
     if (typeof this.selectors[elementType] === "string") {
       if (this._domLock.includes(elementType)) {
         throw new Error(
-          `Graupl ${this.contructor.name}: "${elementType}" element cannot be set through _setDOMElementType.`
+          `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType.`
         );
       }
 
@@ -684,7 +684,7 @@ class Accordion {
       }
     } else {
       throw new Error(
-        `Graupl ${this.contructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
       );
     }
   }
@@ -702,7 +702,7 @@ class Accordion {
     if (typeof this.selectors[elementType] === "string") {
       if (this._domLock.includes(elementType)) {
         throw new Error(
-          `Graupl ${this.contructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType.`
+          `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType.`
         );
       }
 
@@ -713,7 +713,7 @@ class Accordion {
       }
     } else {
       throw new Error(
-        `Graupl ${this.contructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
       );
     }
   }

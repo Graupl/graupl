@@ -29,7 +29,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Text style properties.
 $text-style-selector-prefix: "text-" !default;
-$base-text-style-properties: (
+$-text-style-properties: (
   paragraph: (
     margin: typography.$paragraph-margin,
     font-size: typography.$paragraph-font-size,
@@ -97,12 +97,12 @@ $text-style-properties: () !default;
 
 // Font size properties.
 $font-size-selector-prefix: "text-" !default;
-$base-font-size-properties: ();
+$-font-size-properties: ();
 
 // Add the typography font sizes to the base font size properties.
 @each $size, $value in typography.$font-sizes {
-  $base-font-size-properties: map.merge(
-    $base-font-size-properties,
+  $-font-size-properties: map.merge(
+    $-font-size-properties,
     (
       $size: $value,
     )
@@ -113,12 +113,12 @@ $font-size-properties: () !default;
 
 // Font weight properties.
 $font-weight-selector-prefix: "font-weight-" !default;
-$base-font-weight-properties: ();
+$-font-weight-properties: ();
 
 // Add the typography font weights to the base font weight properties.
 @each $weight, $value in typography.$font-weights {
-  $base-font-weight-properties: map.merge(
-    $base-font-weight-properties,
+  $-font-weight-properties: map.merge(
+    $-font-weight-properties,
     (
       $weight: $value,
     )
@@ -129,7 +129,7 @@ $font-weight-properties: () !default;
 
 // Font style properties.
 $font-style-selector-prefix: "font-" !default;
-$base-font-style-properties: (
+$-font-style-properties: (
   normal: normal,
   italic: italic,
 );
@@ -148,7 +148,7 @@ $font-style-properties: () !default;
 
 // Text transform properties.
 $text-transform-selector-prefix: "text-" !default;
-$base-text-transform-properties: (
+$-text-transform-properties: (
   uppercase: uppercase,
   lowercase: lowercase,
   capitalize: capitalize,
@@ -170,23 +170,23 @@ $text-transform-properties: () !default;
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $text-style-properties: map.deep-merge(
-    $base-text-style-properties,
+    $-text-style-properties,
     $text-style-properties
   );
   $font-size-properties: map.merge(
-    $base-font-size-properties,
+    $-font-size-properties,
     $font-size-properties
   );
   $font-weight-properties: map.merge(
-    $base-font-weight-properties,
+    $-font-weight-properties,
     $font-weight-properties
   );
   $font-style-properties: map.merge(
-    $base-font-style-properties,
+    $-font-style-properties,
     $font-style-properties
   );
   $text-transform-properties: map.merge(
-    $base-text-transform-properties,
+    $-text-transform-properties,
     $text-transform-properties
   );
 }

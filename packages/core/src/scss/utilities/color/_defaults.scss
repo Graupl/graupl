@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "../../theme/color/variables" as color;
 @use "sass:map";
 
@@ -29,7 +30,7 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 
 // Background utility properties.
 $background-selector-prefix: "bg-" !default;
-$base-background-properties: (
+$-background-properties: (
   inherit: inherit,
   current: currentcolor,
   transparent: transparent,
@@ -49,7 +50,7 @@ $background-properties: () !default;
 
 // Text utility properties.
 $text-selector-prefix: "text-" !default;
-$base-text-properties: (
+$-text-properties: (
   inherit: inherit,
   current: currentcolor,
   transparent: transparent,
@@ -65,24 +66,32 @@ $text-properties: () !default;
 }
 
 // Add all of the active theme colours to the text and background base properties.
-@each $color, $map in map.get(color.$themes, active) {
+@each $color in theme.get-colors() {
+  $map: theme.get-color($color);
+
   @each $shade, $value in $map {
-    $base-background-properties: map.merge(
-      $base-background-properties,
-      (#{$color}-#{$shade}: #{$value})
+    // Handle _default shade vs proper shade mappings.
+    $name: null;
+
+    @if $shade == "_default" {
+      $name: #{$color};
+    } @else {
+      $name: #{$color}-#{$shade};
+    }
+
+    $-background-properties: map.merge(
+      $-background-properties,
+      (#{$name}: #{$value})
     );
-    $base-text-properties: map.merge(
-      $base-text-properties,
-      (#{$color}-#{$shade}: #{$value})
-    );
+    $-text-properties: map.merge($-text-properties, (#{$name}: #{$value}));
   }
 }
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $background-properties: map.merge(
-    $base-background-properties,
+    $-background-properties,
     $background-properties
   );
-  $text-properties: map.merge($base-text-properties, $text-properties);
+  $text-properties: map.merge($-text-properties, $text-properties);
 }

@@ -94,12 +94,12 @@
     background-color: $alert-background;
     color: $alert-color;
 
-    @each $color, $map in map.get(color.$themes, active) {
+    @each $color, $map in defaults.$alert-theme-map {
       &#{defaults.$alert-theme-selector-prefix}#{$color} {
-        @each $prop, $shade in defaults.$alert-state-theme-map {
+        @each $prop, $value in $map {
           --#{root-defaults.$prefix}alert-#{$prop}: #{theme.get(
-              $color,
-              $shade
+              map.get($value, color),
+              map.get($value, shade)
             )};
         }
       }

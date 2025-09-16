@@ -2,6 +2,7 @@
 
 @use "defaults";
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/theme";
 @use "pkg:@graupl/core/src/theme/color/variables" as color;
 @use "pkg:@graupl/core/src/mixins/layer" as *;
 @use "mixins" as *;
@@ -47,9 +48,15 @@
   #{defaults.$icon-selector-base}#{defaults.$icon-selector},
   #{defaults.$icon-selector-base}#{defaults.$icon-before-selector},
   #{defaults.$icon-selector-base}#{defaults.$icon-after-selector} {
-    @each $color, $map in map.get(color.$themes, active) {
+    @each $color, $map in theme.get-colors() {
       @each $shade, $value in $map {
-        $name: #{$color}-#{$shade};
+        $name: null;
+
+        @if $shade == "_default" {
+          $name: #{$color};
+        } @else {
+          $name: #{$color}-#{$shade};
+        }
 
         &#{defaults.$icon-color-prefix-selector-base}#{defaults.$icon-color-prefix-selector}#{$name} {
           --#{root-defaults.$prefix}icon-color: #{$value};

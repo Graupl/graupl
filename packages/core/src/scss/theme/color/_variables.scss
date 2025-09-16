@@ -16,11 +16,18 @@ $colors: ();
   $color-map: ();
 
   @each $shade, $value in $map {
+    $color-property: "";
+
     // Set the custom prop name and fallback value.
-    $color-property: var(
-      --#{root-defaults.$prefix}#{$color}--#{$shade},
-      $value
-    );
+    // Handle _default shade vs proper shade mappings.
+    @if $shade == "_default" {
+      $color-property: var(--#{root-defaults.$prefix}#{$color}, $value);
+    } @else {
+      $color-property: var(
+        --#{root-defaults.$prefix}#{$color}--#{$shade},
+        $value
+      );
+    }
 
     // Add the custom prop to the map.
     $color-map: map.merge(
@@ -52,10 +59,22 @@ $themes: (
     $color-map: ();
 
     @each $shade, $value in $map {
-      $color-property: var(
-        --#{root-defaults.$prefix}theme-#{$theme-name}--#{$color-name}--#{$shade},
-        #{map.get($colors, map.get($value, color), map.get($value, shade))}
-      );
+      $color-property: "";
+
+      // Set the custom prop name and fallback value.
+      // Handle _default shade vs proper shade mappings.
+      @if $shade == "_default" {
+        $color-property: var(
+          --#{root-defaults.$prefix}theme--#{$theme-name}--#{$color-name},
+          #{map.get($colors, map.get($value, color), map.get($value, shade))}
+        );
+      } @else {
+        $color-property: var(
+          --#{root-defaults.$prefix}theme-#{$theme-name}--#{$color-name}--#{$shade},
+          #{map.get($colors, map.get($value, color), map.get($value, shade))}
+        );
+      }
+
       $color-map: map.merge(
         $color-map,
         (
@@ -81,33 +100,47 @@ $themes: (
 }
 
 // Generate the active theme properties.
-@each $color-name, $map in map.get($themes, defaults.$default-theme) {
-  $color-map: ();
+@if map.has-key($themes, defaults.$default-theme) {
+  @each $color-name, $map in map.get($themes, defaults.$default-theme) {
+    $color-map: ();
 
-  @each $shade, $value in $map {
-    $color-property: var(
-      --#{root-defaults.$prefix}theme-active--#{$color-name}--#{$shade},
-      #{$value}
-    );
-    $color-map: map.merge(
-      $color-map,
+    @each $shade, $value in $map {
+      $color-property: "";
+
+      // Set the custom prop name and fallback value.
+      // Handle _default shade vs proper shade mappings.
+      @if $shade == "_default" {
+        $color-property: var(
+          --#{root-defaults.$prefix}theme-active--#{$color-name},
+          #{$value}
+        );
+      } @else {
+        $color-property: var(
+          --#{root-defaults.$prefix}theme-active--#{$color-name}--#{$shade},
+          #{$value}
+        );
+      }
+
+      $color-map: map.merge(
+        $color-map,
+        (
+          $shade: $color-property,
+        )
+      );
+    }
+
+    $themes: map.merge(
+      $themes,
       (
-        $shade: $color-property,
+        active: map.merge(
+            map.get($themes, active),
+            (
+              $color-name: $color-map,
+            )
+          ),
       )
     );
   }
-
-  $themes: map.merge(
-    $themes,
-    (
-      active: map.merge(
-          map.get($themes, active),
-          (
-            $color-name: $color-map,
-          )
-        ),
-    )
-  );
 }
 
 // Colour properties.
