@@ -39,7 +39,7 @@ There are 4 button variants provided by default: `.primary`, `.secondary`, `.ter
 
 The following custom properties can be used to customize the button component:
 
-<table>
+<table class="table bordered condensed striped-columns">
   <thead>
     <tr>
       <th>Property</th>
