@@ -479,6 +479,77 @@ $accordion-expand-margin: var(
   --#{root-defaults.$prefix}accordion-expand-margin,
   #{$accordion-expand-margin-y} #{$accordion-expand-margin-x}
 );
+$accordion-expand-border-color: var(
+  --#{root-defaults.$prefix}accordion-expand-border-color,
+  #{$accordion-color}
+);
+$accordion-expand-border-top-left-radius: var(
+  --#{root-defaults.$prefix}accordion-expand-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$accordion-expand-border-top-right-radius: var(
+  --#{root-defaults.$prefix}accordion-expand-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$accordion-expand-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}accordion-expand-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$accordion-expand-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}accordion-expand-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$accordion-expand-border-radius: var(
+  --#{root-defaults.$prefix}accordion-expand-border-radius,
+  #{$accordion-expand-border-top-left-radius}
+    #{$accordion-expand-border-top-right-radius}
+    #{$accordion-expand-border-bottom-right-radius}
+    #{$accordion-expand-border-bottom-left-radius}
+);
+$accordion-expand-border-top-width: var(
+  --#{root-defaults.$prefix}accordion-expand-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$accordion-expand-border-right-width: var(
+  --#{root-defaults.$prefix}accordion-expand-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$accordion-expand-border-bottom-width: var(
+  --#{root-defaults.$prefix}accordion-expand-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$accordion-expand-border-left-width: var(
+  --#{root-defaults.$prefix}accordion-expand-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$accordion-expand-border-width: var(
+  --#{root-defaults.$prefix}accordion-expand-border-width,
+  #{$accordion-expand-border-top-width} #{$accordion-expand-border-right-width}
+    #{$accordion-expand-border-bottom-width}
+    #{$accordion-expand-border-left-width}
+);
+$accordion-expand-border-top-style: var(
+  --#{root-defaults.$prefix}accordion-expand-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$accordion-expand-border-right-style: var(
+  --#{root-defaults.$prefix}accordion-expand-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$accordion-expand-border-bottom-style: var(
+  --#{root-defaults.$prefix}accordion-expand-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$accordion-expand-border-left-style: var(
+  --#{root-defaults.$prefix}accordion-expand-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$accordion-expand-border-style: var(
+  --#{root-defaults.$prefix}accordion-expand-border-style,
+  #{$accordion-expand-border-top-style} #{$accordion-expand-border-right-style}
+    #{$accordion-expand-border-bottom-style}
+    #{$accordion-expand-border-left-style}
+);
 
 // Accordion expand transform properties.
 $accordion-expand-transform: var(
@@ -546,6 +617,79 @@ $accordion-collapse-margin-y: var(
 $accordion-collapse-margin: var(
   --#{root-defaults.$prefix}accordion-collapse-margin,
   #{$accordion-collapse-margin-y} #{$accordion-collapse-margin-x}
+);
+$accordion-collapse-border-color: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-color,
+  #{$accordion-color}
+);
+$accordion-collapse-border-top-left-radius: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$accordion-collapse-border-top-right-radius: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$accordion-collapse-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$accordion-collapse-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$accordion-collapse-border-radius: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-radius,
+  #{$accordion-collapse-border-top-left-radius}
+    #{$accordion-collapse-border-top-right-radius}
+    #{$accordion-collapse-border-bottom-right-radius}
+    #{$accordion-collapse-border-bottom-left-radius}
+);
+$accordion-collapse-border-top-width: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$accordion-collapse-border-right-width: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$accordion-collapse-border-bottom-width: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$accordion-collapse-border-left-width: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$accordion-collapse-border-width: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-width,
+  #{$accordion-collapse-border-top-width}
+    #{$accordion-collapse-border-right-width}
+    #{$accordion-collapse-border-bottom-width}
+    #{$accordion-collapse-border-left-width}
+);
+$accordion-collapse-border-top-style: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$accordion-collapse-border-right-style: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$accordion-collapse-border-bottom-style: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$accordion-collapse-border-left-style: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$accordion-collapse-border-style: var(
+  --#{root-defaults.$prefix}accordion-collapse-border-style,
+  #{$accordion-collapse-border-top-style}
+    #{$accordion-collapse-border-right-style}
+    #{$accordion-collapse-border-bottom-style}
+    #{$accordion-collapse-border-left-style}
 );
 
 // Accordion collapse transform properties.

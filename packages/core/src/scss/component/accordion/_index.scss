@@ -179,6 +179,9 @@
     padding: $accordion-expand-padding;
     transform: $accordion-expand-transform;
     transition: $accordion-expand-transition;
+    border-width: $accordion-expand-border-width;
+    border-style: $accordion-expand-border-style;
+    border-radius: $accordion-expand-border-radius;
 
     @each $selector in map.get(root-defaults.$state-selectors, visited) {
       &#{$selector} {
@@ -217,6 +220,9 @@
     padding: $accordion-collapse-padding;
     transform: $accordion-collapse-transform;
     transition: $accordion-collapse-transition;
+    border-width: $accordion-collapse-border-width;
+    border-style: $accordion-collapse-border-style;
+    border-radius: $accordion-collapse-border-radius;
 
     @each $selector in map.get(root-defaults.$state-selectors, visited) {
       &#{$selector} {
