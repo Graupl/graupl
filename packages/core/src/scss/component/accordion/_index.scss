@@ -14,12 +14,29 @@
   }
 }
 
+@include layer(base) {
+  #{defaults.$accordion-expand-selector} {
+    @include button-mixins.apply-base;
+  }
+}
+
+@include layer(base) {
+  #{defaults.$accordion-collapse-selector} {
+    @include button-mixins.apply-base;
+  }
+}
+
 @include layer(component) {
   #{defaults.$accordion-selector} {
     display: flex;
     flex-flow: column nowrap;
     padding: $accordion-padding;
     gap: $accordion-gap;
+
+    > #{defaults.$accordion-utility-selector} {
+      display: flex;
+      flex-flow: row nowrap;
+    }
 
     > #{defaults.$accordion-item-selector} {
       &:not(:first-child) {
@@ -149,6 +166,88 @@
   #{defaults.$accordion-item-footer-selector} {
     padding: $accordion-item-footer-padding;
   }
+
+  #{defaults.$accordion-utility-selector} {
+    justify-content: flex-end;
+    margin: $accordion-utility-margin;
+    padding: $accordion-utility-padding;
+  }
+
+  #{defaults.$accordion-expand-selector} {
+    z-index: 2;
+    margin: $accordion-expand-margin;
+    padding: $accordion-expand-padding;
+    transform: $accordion-expand-transform;
+    transition: $accordion-expand-transition;
+
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-visited-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-focus-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-hover-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-active-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-disabled-transform};
+      }
+    }
+  }
+
+  #{defaults.$accordion-collapse-selector} {
+    z-index: 2;
+    margin: $accordion-collapse-margin;
+    padding: $accordion-collapse-padding;
+    transform: $accordion-collapse-transform;
+    transition: $accordion-collapse-transition;
+
+    @each $selector in map.get(root-defaults.$state-selectors, visited) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-visited-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, focus) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-focus-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, hover) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-hover-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, active) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-active-transform};
+      }
+    }
+
+    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
+      &#{$selector} {
+        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-disabled-transform};
+      }
+    }
+  }
 }
 
 @include layer(state) {
@@ -176,6 +275,18 @@
   #{defaults.$accordion-selector} {
     background: $accordion-background;
     color: $accordion-color;
+  }
+
+  #{defaults.$accordion-utility-selector} {
+    border-style: $accordion-utility-border-style;
+  }
+
+  #{defaults.$accordion-expand-selector} {
+    @include button-mixins.apply-theme;
+  }
+
+  #{defaults.$accordion-collapse-selector} {
+    @include button-mixins.apply-theme;
   }
 
   #{defaults.$accordion-item-selector} {

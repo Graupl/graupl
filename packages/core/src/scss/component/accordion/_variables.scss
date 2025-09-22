@@ -354,3 +354,238 @@ $accordion-item-toggle-pseudo-open-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-pseudo-open-transform,
   #{defaults.$accordion-item-toggle-pseudo-open-transform}
 );
+
+// Accordion utility properties.
+$accordion-utility-padding-x: var(
+  --#{root-defaults.$prefix}accordion-utility-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-utility-padding-y: var(
+  --#{root-defaults.$prefix}accordion-utility-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$accordion-utility-padding: var(
+  --#{root-defaults.$prefix}accordion-utility-padding,
+  #{$accordion-utility-padding-y} #{$accordion-utility-padding-x}
+);
+$accordion-utility-margin-x: var(
+  --#{root-defaults.$prefix}accordion-utility-margin-x,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-utility-margin-y: var(
+  --#{root-defaults.$prefix}accordion-utility-margin-y,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-utility-margin: var(
+  --#{root-defaults.$prefix}accordion-utility-margin,
+  #{$accordion-utility-margin-y} #{$accordion-utility-margin-x}
+);
+$accordion-utility-border-color: var(
+  --#{root-defaults.$prefix}accordion-utility-border-color,
+  #{$accordion-color}
+);
+$accordion-utility-border-top-left-radius: var(
+  --#{root-defaults.$prefix}accordion-utility-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$accordion-utility-border-top-right-radius: var(
+  --#{root-defaults.$prefix}accordion-utility-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$accordion-utility-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}accordion-utility-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$accordion-utility-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}accordion-utility-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$accordion-utility-border-radius: var(
+  --#{root-defaults.$prefix}accordion-utility-border-radius,
+  #{$accordion-utility-border-top-left-radius}
+    #{$accordion-utility-border-top-right-radius}
+    #{$accordion-utility-border-bottom-right-radius}
+    #{$accordion-utility-border-bottom-left-radius}
+);
+$accordion-utility-border-top-width: var(
+  --#{root-defaults.$prefix}accordion-utility-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$accordion-utility-border-right-width: var(
+  --#{root-defaults.$prefix}accordion-utility-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$accordion-utility-border-bottom-width: var(
+  --#{root-defaults.$prefix}accordion-utility-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$accordion-utility-border-left-width: var(
+  --#{root-defaults.$prefix}accordion-utility-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$accordion-utility-border-width: var(
+  --#{root-defaults.$prefix}accordion-utility-border-width,
+  #{$accordion-utility-border-top-width}
+    #{$accordion-utility-border-right-width}
+    #{$accordion-utility-border-bottom-width}
+    #{$accordion-utility-border-left-width}
+);
+$accordion-utility-border-top-style: var(
+  --#{root-defaults.$prefix}accordion-utility-border-top-style,
+  none
+);
+$accordion-utility-border-right-style: var(
+  --#{root-defaults.$prefix}accordion-utility-border-right-style,
+  none
+);
+$accordion-utility-border-bottom-style: var(
+  --#{root-defaults.$prefix}accordion-utility-border-bottom-style,
+  none
+);
+$accordion-utility-border-left-style: var(
+  --#{root-defaults.$prefix}accordion-utility-border-left-style,
+  none
+);
+$accordion-utility-border-style: var(
+  --#{root-defaults.$prefix}accordion-utility-border-style,
+  #{$accordion-utility-border-top-style}
+    #{$accordion-utility-border-right-style}
+    #{$accordion-utility-border-bottom-style}
+    #{$accordion-utility-border-left-style}
+);
+
+// Accordion expand button properties.
+$accordion-expand-padding-x: var(
+  --#{root-defaults.$prefix}accordion-expand-padding-x,
+  #{button.$button-padding}
+);
+$accordion-expand-padding-y: var(
+  --#{root-defaults.$prefix}accordion-expand-padding-y,
+  #{button.$button-padding}
+);
+$accordion-expand-padding: var(
+  --#{root-defaults.$prefix}accordion-expand-padding,
+  #{$accordion-expand-padding-y} #{$accordion-expand-padding-x}
+);
+$accordion-expand-margin-x: var(
+  --#{root-defaults.$prefix}accordion-expand-margin-x,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-expand-margin-y: var(
+  --#{root-defaults.$prefix}accordion-expand-margin-y,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-expand-margin: var(
+  --#{root-defaults.$prefix}accordion-expand-margin,
+  #{$accordion-expand-margin-y} #{$accordion-expand-margin-x}
+);
+
+// Accordion expand transform properties.
+$accordion-expand-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-transform,
+  #{defaults.$accordion-expand-transform}
+);
+$accordion-expand-visited-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-visited-transform,
+  #{defaults.$accordion-expand-visited-transform}
+);
+$accordion-expand-focus-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-focus-transform,
+  #{defaults.$accordion-expand-focus-transform}
+);
+$accordion-expand-hover-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-hover-transform,
+  #{defaults.$accordion-expand-hover-transform}
+);
+$accordion-expand-active-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-active-transform,
+  #{defaults.$accordion-expand-active-transform}
+);
+$accordion-expand-disabled-transform: var(
+  --#{root-defaults.$prefix}accordion-expand-disabled-transform,
+  #{defaults.$accordion-expand-disabled-transform}
+);
+$accordion-expand-transition: var(
+  --#{root-defaults.$prefix}accordion-expand-transition,
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+$accordion-expand-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}accordion-expand-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
+);
+
+// Accordion collapse button properties.
+$accordion-collapse-padding-x: var(
+  --#{root-defaults.$prefix}accordion-collapse-padding-x,
+  #{button.$button-padding}
+);
+$accordion-collapse-padding-y: var(
+  --#{root-defaults.$prefix}accordion-collapse-padding-y,
+  #{button.$button-padding}
+);
+$accordion-collapse-padding: var(
+  --#{root-defaults.$prefix}accordion-collapse-padding,
+  #{$accordion-collapse-padding-y} #{$accordion-collapse-padding-x}
+);
+$accordion-collapse-margin-x: var(
+  --#{root-defaults.$prefix}accordion-collapse-margin-x,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-collapse-margin-y: var(
+  --#{root-defaults.$prefix}accordion-collapse-margin-y,
+  #{map.get(root-variables.$spacers, 1)}
+);
+$accordion-collapse-margin: var(
+  --#{root-defaults.$prefix}accordion-collapse-margin,
+  #{$accordion-collapse-margin-y} #{$accordion-collapse-margin-x}
+);
+
+// Accordion collapse transform properties.
+$accordion-collapse-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-transform,
+  #{defaults.$accordion-collapse-transform}
+);
+$accordion-collapse-visited-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-visited-transform,
+  #{defaults.$accordion-collapse-visited-transform}
+);
+$accordion-collapse-focus-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-focus-transform,
+  #{defaults.$accordion-collapse-focus-transform}
+);
+$accordion-collapse-hover-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-hover-transform,
+  #{defaults.$accordion-collapse-hover-transform}
+);
+$accordion-collapse-active-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-active-transform,
+  #{defaults.$accordion-collapse-active-transform}
+);
+$accordion-collapse-disabled-transform: var(
+  --#{root-defaults.$prefix}accordion-collapse-disabled-transform,
+  #{defaults.$accordion-collapse-disabled-transform}
+);
+$accordion-collapse-transition: var(
+  --#{root-defaults.$prefix}accordion-collapse-transition,
+  background #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+$accordion-collapse-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}accordion-collapse-transition-reduced-motion,
+  background #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function},
+  color #{map.get(root-variables.$transition-durations, none)}
+    #{root-variables.$transition-timing-function}
+);

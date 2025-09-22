@@ -21,6 +21,9 @@ $accordion-item-open-selector: ".show" !default;
 $accordion-item-close-selector: ".hide" !default;
 $accordion-item-transition-selector: ".transitioning" !default;
 $accordion-item-toggle-pseudo-selector: "::after" !default;
+$accordion-expand-selector: ".accordion-expand" !default;
+$accordion-collapse-selector: ".accordion-collapse" !default;
+$accordion-utility-selector: ".accordion-utility" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-transform: none !default;
@@ -38,3 +41,19 @@ $accordion-item-toggle-pseudo-content: "▼" !default;
 // Accordion transform properties.
 $accordion-item-content-transform: translateY(-100%) !default;
 $accordion-item-content-open-transform: translateY(0) !default;
+
+// Expand transform properties.
+$accordion-expand-transform: none !default;
+$accordion-expand-visited-transform: $accordion-expand-transform !default;
+$accordion-expand-focus-transform: $accordion-expand-transform !default;
+$accordion-expand-hover-transform: $accordion-expand-transform !default;
+$accordion-expand-active-transform: $accordion-expand-transform !default;
+$accordion-expand-disabled-transform: $accordion-expand-transform !default;
+
+// Collapse transform properties.
+$accordion-collapse-transform: none !default;
+$accordion-collapse-visited-transform: $accordion-collapse-transform !default;
+$accordion-collapse-focus-transform: $accordion-collapse-transform !default;
+$accordion-collapse-hover-transform: $accordion-collapse-transform !default;
+$accordion-collapse-active-transform: $accordion-collapse-transform !default;
+$accordion-collapse-disabled-transform: $accordion-collapse-transform !default;

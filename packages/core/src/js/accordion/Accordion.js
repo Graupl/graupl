@@ -313,8 +313,6 @@ class Accordion {
       // Handle events.
       this._handleFocus();
       this._handleClick();
-      this._handleExpandAll();
-      this._handleCollapseAll();
       this._handleKeydown();
       this._handleKeyup();
 
@@ -962,44 +960,20 @@ class Accordion {
         accordionItem.toggle();
       });
     });
-  }
-
-  /**
-   * Handles click events throughout the accordion item for proper use.
-   *
-   * - Adds a `pointerup` listener to the accordion item toggles that will toggle each accordion item.
-   *
-   * @protected
-   */
-  _handleCollapseAll() {
-    this.dom.accordionCollapses.forEach((accordionCollapse) => {
-      accordionCollapse.addEventListener("pointerup", () => {
-        this.elements.accordionItems.forEach((accordionItem) => {
-          if (accordionItem.dom.item.classList.contains("show")) {
-            accordionItem.toggle();
-          }
+    if (this._allowNoExpand) {
+      this.dom.accordionCollapses.forEach((accordionCollapse) => {
+        accordionCollapse.addEventListener("pointerup", () => {
+          this.closeChildren();
         });
       });
-    });
-  }
-
-  /**
-   * Handles click events throughout the accordion item for proper use.
-   *
-   * - Adds a `pointerup` listener to the accordion item toggles that will toggle each accordion item.
-   *
-   * @protected
-   */
-  _handleExpandAll() {
-    this.dom.accordionExpands.forEach((accordionExpand) => {
-      accordionExpand.addEventListener("pointerup", () => {
-        this.elements.accordionItems.forEach((accordionItem) => {
-          if (accordionItem.dom.item.classList.contains("hide")) {
-            accordionItem.toggle();
-          }
+    }
+    if (this._allowMultipleExpand) {
+      this.dom.accordionExpands.forEach((accordionExpand) => {
+        accordionExpand.addEventListener("pointerup", () => {
+          this.openChildren();
         });
       });
-    });
+    }
   }
 
   /**
