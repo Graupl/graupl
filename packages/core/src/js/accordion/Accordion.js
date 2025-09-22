@@ -26,6 +26,8 @@ class Accordion {
    * @property {HTMLElement[]} accordionItemToggles  - An array of accordion item toggles.
    * @property {HTMLElement[]} accordionItemHeaders  - An array of accordion headers.
    * @property {HTMLElement[]} accordionItemContents - An array of accordion item contents.
+   * @property {HTMLElement[]} accordionExpands       - An array of accordion item expand toggles.
+   * @property {HTMLElement[]} accordionCollapses       - An array of accordion item collapse toggles.
    */
   _dom = {
     accordion: null,
@@ -33,6 +35,8 @@ class Accordion {
     accordionItemToggles: [],
     accordionItemHeaders: [],
     accordionItemContents: [],
+    accordionExpands: [],
+    accordionCollapses: [],
   };
 
   /**
@@ -55,12 +59,16 @@ class Accordion {
    * @property {string} accordionItemToggles  - The query selector for accordion toggles.
    * @property {string} accordionItemHeaders  - The query selector for accordion headers.
    * @property {string} accordionItemContents - The query selector for accordion contents.
+   * @property {string} accordionExpands      - The query selector for accordion expand toggles.
+   * @property {string} accordionCollapses      - The query selector for accordion collapse toggles.
    */
   _selectors = {
     accordionItems: "",
     accordionItemToggles: "",
     accordionItemHeaders: "",
     accordionItemContents: "",
+    accordionExpands: "",
+    accordionCollapses: "",
   };
 
   /**
@@ -206,6 +214,8 @@ class Accordion {
    * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]   - The query selector string for accordion toggle.
    * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]   - The query selector string for accordion header.
    * @param {string}             [options.accordionItemContentSelector = .accordion-item-content] - The query selector string for accordion content.
+   * @param {string}             [options.accordionExpandSelector = .accordion-expand]            - The query selector string for accordion expand toggle.
+   * @param {string}             [options.accordionCollapseSelector = .accordion-collapse]            - The query selector string for accordion expand toggle.
    * @param {?(string|string[])} [options.openClass = show]                                       - The class to apply when a accordion is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                                      - The class to apply when a accordion is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]                        - The class to apply when a accordion is transitioning between "open" and "closed" states.
@@ -225,6 +235,8 @@ class Accordion {
     accordionItemToggleSelector = ".accordion-item-toggle",
     accordionItemHeaderSelector = ".accordion-item-header",
     accordionItemContentSelector = ".accordion-item-content",
+    accordionExpandSelector = ".accordion-expand",
+    accordionCollapseSelector = ".accordion-collapse",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
@@ -246,6 +258,8 @@ class Accordion {
     this._selectors.accordionItemToggles = accordionItemToggleSelector;
     this._selectors.accordionItemHeaders = accordionItemHeaderSelector;
     this._selectors.accordionItemContents = accordionItemContentSelector;
+    this._selectors.accordionExpands = accordionExpandSelector;
+    this._selectors.accordionCollapses = accordionCollapseSelector;
 
     // Set open/close classes.
     this._openClass = openClass || "";
@@ -299,6 +313,8 @@ class Accordion {
       // Handle events.
       this._handleFocus();
       this._handleClick();
+      this._handleExpandAll();
+      this._handleCollapseAll();
       this._handleKeydown();
       this._handleKeyup();
 
@@ -729,6 +745,8 @@ class Accordion {
   _setDOMElements() {
     this._setDOMElementType("accordionItems");
     this._resetDOMElementType("accordionItemToggles");
+    this._setDOMElementType("accordionExpands");
+    this._setDOMElementType("accordionCollapses");
 
     this.dom.accordionItems.forEach((accordionItem) => {
       this._setDOMElementType("accordionItemToggles", accordionItem, false);
@@ -810,6 +828,8 @@ class Accordion {
       accordionItemToggleSelector: this._selectors.accordionItemToggles,
       accordionItemHeaderSelector: this._selectors.accordionItemHeaders,
       accordionItemContentSelector: this._selectors.accordionItemContents,
+      accordionExpandSelector: this._selectors.accordionExpands,
+      accordionCollapseSelector: this._selectors.accordionCollapses,
     });
 
     if (!querySelectorChecks) {
@@ -940,6 +960,44 @@ class Accordion {
       accordionItem.dom.toggle.addEventListener("pointerup", () => {
         this.currentChild = index;
         accordionItem.toggle();
+      });
+    });
+  }
+
+  /**
+   * Handles click events throughout the accordion item for proper use.
+   *
+   * - Adds a `pointerup` listener to the accordion item toggles that will toggle each accordion item.
+   *
+   * @protected
+   */
+  _handleCollapseAll() {
+    this.dom.accordionCollapses.forEach((accordionCollapse) => {
+      accordionCollapse.addEventListener("pointerup", () => {
+        this.elements.accordionItems.forEach((accordionItem) => {
+          if (accordionItem.dom.item.classList.contains("show")) {
+            accordionItem.toggle();
+          }
+        });
+      });
+    });
+  }
+
+  /**
+   * Handles click events throughout the accordion item for proper use.
+   *
+   * - Adds a `pointerup` listener to the accordion item toggles that will toggle each accordion item.
+   *
+   * @protected
+   */
+  _handleExpandAll() {
+    this.dom.accordionExpands.forEach((accordionExpand) => {
+      accordionExpand.addEventListener("pointerup", () => {
+        this.elements.accordionItems.forEach((accordionItem) => {
+          if (accordionItem.dom.item.classList.contains("hide")) {
+            accordionItem.toggle();
+          }
+        });
       });
     });
   }
