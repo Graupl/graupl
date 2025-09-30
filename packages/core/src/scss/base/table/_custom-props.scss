@@ -1,0 +1,196 @@
+// @graupl/core table base custom properties.
+//
+// Provides default CSS custom property values for the table base component so
+// they are available even when Sass is not part of the build pipeline.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/typography/variables" as typography;
+@use "../../theme/color/variables" as color;
+@use "../../functions/theme";
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(props) {
+  :root {
+    // Caption.
+    --#{root-defaults.$prefix}table-caption-side: #{defaults.$table-caption-side};
+    --#{root-defaults.$prefix}table-caption-padding-x: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-caption-padding-y: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-caption-padding: #{$table-caption-padding-y}
+      #{$table-caption-padding-x};
+
+    // Header presentation.
+    --#{root-defaults.$prefix}table-header-font-weight: #{typography.$font-weight-bold};
+    --#{root-defaults.$prefix}table-header-padding-x: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-header-padding-y: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-header-padding: #{$table-header-padding-y}
+      #{$table-header-padding-x};
+    --#{root-defaults.$prefix}table-header-background: #{color.$background};
+    --#{root-defaults.$prefix}table-header-color: #{color.$color};
+
+    // Cell presentation.
+    --#{root-defaults.$prefix}table-cell-padding-x: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-cell-padding-y: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}table-cell-padding: #{$table-cell-padding-y}
+      #{$table-cell-padding-x};
+    --#{root-defaults.$prefix}table-cell-background: #{color.$background};
+    --#{root-defaults.$prefix}table-cell-color: #{color.$color};
+
+    // Table borders.
+    --#{root-defaults.$prefix}table-border-top-width: #{root-variables.$border-top-width};
+    --#{root-defaults.$prefix}table-border-right-width: #{root-variables.$border-right-width};
+    --#{root-defaults.$prefix}table-border-bottom-width: #{root-variables.$border-bottom-width};
+    --#{root-defaults.$prefix}table-border-left-width: #{root-variables.$border-left-width};
+    --#{root-defaults.$prefix}table-border-width: #{$table-border-top-width}
+      #{$table-border-right-width} #{$table-border-bottom-width}
+      #{$table-border-left-width};
+    --#{root-defaults.$prefix}table-border-top-style: #{root-variables.$border-top-style};
+    --#{root-defaults.$prefix}table-border-right-style: #{root-variables.$border-right-style};
+    --#{root-defaults.$prefix}table-border-bottom-style: #{root-variables.$border-bottom-style};
+    --#{root-defaults.$prefix}table-border-left-style: #{root-variables.$border-left-style};
+    --#{root-defaults.$prefix}table-border-style: #{$table-border-top-style}
+      #{$table-border-right-style} #{$table-border-bottom-style}
+      #{$table-border-left-style};
+    --#{root-defaults.$prefix}table-border-top-left-radius: #{root-variables.$border-top-left-radius};
+    --#{root-defaults.$prefix}table-border-top-right-radius: #{root-variables.$border-top-right-radius};
+    --#{root-defaults.$prefix}table-border-bottom-right-radius: #{root-variables.$border-bottom-right-radius};
+    --#{root-defaults.$prefix}table-border-bottom-left-radius: #{root-variables.$border-bottom-left-radius};
+    --#{root-defaults.$prefix}table-border-radius: #{$table-border-top-left-radius}
+      #{$table-border-top-right-radius} #{$table-border-bottom-right-radius}
+      #{$table-border-bottom-left-radius};
+    --#{root-defaults.$prefix}table-border-color: #{color.$border-color};
+
+    // Cell borders.
+    --#{root-defaults.$prefix}table-cell-border-top-width: #{root-variables.$border-top-width};
+    --#{root-defaults.$prefix}table-cell-border-right-width: #{root-variables.$border-right-width};
+    --#{root-defaults.$prefix}table-cell-border-bottom-width: #{root-variables.$border-bottom-width};
+    --#{root-defaults.$prefix}table-cell-border-left-width: #{root-variables.$border-left-width};
+    --#{root-defaults.$prefix}table-cell-border-width: #{$table-cell-border-top-width}
+      #{$table-cell-border-right-width} #{$table-cell-border-bottom-width}
+      #{$table-cell-border-left-width};
+    --#{root-defaults.$prefix}table-cell-border-top-style: #{root-variables.$border-top-style};
+    --#{root-defaults.$prefix}table-cell-border-right-style: #{root-variables.$border-right-style};
+    --#{root-defaults.$prefix}table-cell-border-bottom-style: #{root-variables.$border-bottom-style};
+    --#{root-defaults.$prefix}table-cell-border-left-style: #{root-variables.$border-left-style};
+    --#{root-defaults.$prefix}table-cell-border-style: #{$table-cell-border-top-style}
+      #{$table-cell-border-right-style} #{$table-cell-border-bottom-style}
+      #{$table-cell-border-left-style};
+    --#{root-defaults.$prefix}table-cell-border-top-left-radius: #{root-variables.$border-top-left-radius};
+    --#{root-defaults.$prefix}table-cell-border-top-right-radius: #{root-variables.$border-top-right-radius};
+    --#{root-defaults.$prefix}table-cell-border-bottom-right-radius: #{root-variables.$border-bottom-right-radius};
+    --#{root-defaults.$prefix}table-cell-border-bottom-left-radius: #{root-variables.$border-bottom-left-radius};
+    --#{root-defaults.$prefix}table-cell-border-radius: #{$table-cell-border-top-left-radius}
+      #{$table-cell-border-top-right-radius}
+      #{$table-cell-border-bottom-right-radius}
+      #{$table-cell-border-bottom-left-radius};
+    --#{root-defaults.$prefix}table-cell-border-color: var(
+      --#{root-defaults.$prefix}table-border-color,
+      #{color.$border-color}
+    );
+
+    // Header borders.
+    --#{root-defaults.$prefix}table-header-border-top-width: var(
+      --#{root-defaults.$prefix}table-cell-border-top-width,
+      #{root-variables.$border-top-width}
+    );
+    --#{root-defaults.$prefix}table-header-border-right-width: var(
+      --#{root-defaults.$prefix}table-cell-border-right-width,
+      #{root-variables.$border-right-width}
+    );
+    --#{root-defaults.$prefix}table-header-border-bottom-width: var(
+      --#{root-defaults.$prefix}table-cell-border-bottom-width,
+      #{root-variables.$border-bottom-width}
+    );
+    --#{root-defaults.$prefix}table-header-border-left-width: var(
+      --#{root-defaults.$prefix}table-cell-border-left-width,
+      #{root-variables.$border-left-width}
+    );
+    --#{root-defaults.$prefix}table-header-border-width: #{$table-header-border-top-width}
+      #{$table-header-border-right-width} #{$table-header-border-bottom-width}
+      #{$table-header-border-left-width};
+    --#{root-defaults.$prefix}table-header-border-top-style: var(
+      --#{root-defaults.$prefix}table-cell-border-top-style,
+      #{root-variables.$border-top-style}
+    );
+    --#{root-defaults.$prefix}table-header-border-right-style: var(
+      --#{root-defaults.$prefix}table-cell-border-right-style,
+      #{root-variables.$border-right-style}
+    );
+    --#{root-defaults.$prefix}table-header-border-bottom-style: var(
+      --#{root-defaults.$prefix}table-cell-border-bottom-style,
+      #{root-variables.$border-bottom-style}
+    );
+    --#{root-defaults.$prefix}table-header-border-left-style: var(
+      --#{root-defaults.$prefix}table-cell-border-left-style,
+      #{root-variables.$border-left-style}
+    );
+    --#{root-defaults.$prefix}table-header-border-style: #{$table-header-border-top-style}
+      #{$table-header-border-right-style} #{$table-header-border-bottom-style}
+      #{$table-header-border-left-style};
+    --#{root-defaults.$prefix}table-header-border-top-left-radius: var(
+      --#{root-defaults.$prefix}table-cell-border-top-left-radius,
+      #{root-variables.$border-top-left-radius}
+    );
+    --#{root-defaults.$prefix}table-header-border-top-right-radius: var(
+      --#{root-defaults.$prefix}table-cell-border-top-right-radius,
+      #{root-variables.$border-top-right-radius}
+    );
+    --#{root-defaults.$prefix}table-header-border-bottom-right-radius: var(
+      --#{root-defaults.$prefix}table-cell-border-bottom-right-radius,
+      #{root-variables.$border-bottom-right-radius}
+    );
+    --#{root-defaults.$prefix}table-header-border-bottom-left-radius: var(
+      --#{root-defaults.$prefix}table-cell-border-bottom-left-radius,
+      #{root-variables.$border-bottom-left-radius}
+    );
+    --#{root-defaults.$prefix}table-header-border-radius: #{$table-header-border-top-left-radius}
+      #{$table-header-border-top-right-radius}
+      #{$table-header-border-bottom-right-radius}
+      #{$table-header-border-bottom-left-radius};
+    --#{root-defaults.$prefix}table-header-border-color: var(
+      --#{root-defaults.$prefix}table-border-color,
+      #{color.$border-color}
+    );
+
+    // Table state colours.
+    --#{root-defaults.$prefix}table-striped-background: #{theme.get(
+        secondary,
+        200
+      )};
+    --#{root-defaults.$prefix}table-striped-color: #{theme.get(secondary, 900)};
+    --#{root-defaults.$prefix}table-hover-background: #{theme.get(
+        secondary,
+        300
+      )};
+    --#{root-defaults.$prefix}table-hover-color: #{theme.get(secondary, 900)};
+    --#{root-defaults.$prefix}table-highlight-background: #{theme.get(
+        secondary,
+        500
+      )};
+    --#{root-defaults.$prefix}table-highlight-color: #{theme.get(
+        secondary,
+        100
+      )};
+  }
+}

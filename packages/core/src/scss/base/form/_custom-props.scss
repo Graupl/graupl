@@ -1,0 +1,124 @@
+// @graupl/core form base custom properties.
+//
+// This file pre-defines all custom properties used by the form base component
+// so projects can rely on the defaults without compiling the Sass layer.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(props) {
+  :root {
+    // Input sizing.
+    --#{root-defaults.$prefix}input-padding-x: #{map.get(
+        root-variables.$spacers,
+        5
+      )};
+    --#{root-defaults.$prefix}input-padding-y: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}input-padding: #{$input-padding-y}
+      #{$input-padding-x};
+    --#{root-defaults.$prefix}input-font-size: #{map.get(
+        typography.$font-sizes,
+        base
+      )};
+
+    // Label sizing.
+    --#{root-defaults.$prefix}label-font-size: #{$input-font-size};
+
+    // Fieldset layout & sizing.
+    --#{root-defaults.$prefix}fieldset-direction: #{defaults.$fieldset-direction};
+    --#{root-defaults.$prefix}fieldset-gap: #{map.get(
+        root-variables.$spacers,
+        2
+      )};
+    --#{root-defaults.$prefix}fieldset-padding-x: #{$input-padding-x};
+    --#{root-defaults.$prefix}fieldset-padding-y: #{$input-padding-y};
+    --#{root-defaults.$prefix}fieldset-padding: #{$input-padding-y}
+      #{$input-padding-x};
+    --#{root-defaults.$prefix}fieldset-font-size: #{$input-font-size};
+
+    // Surface colours.
+    --#{root-defaults.$prefix}input-background: #{color.$background};
+    --#{root-defaults.$prefix}fieldset-background: #{$input-background};
+
+    // Text colours.
+    --#{root-defaults.$prefix}input-color: #{color.$color};
+    --#{root-defaults.$prefix}input-placeholder-color: #{theme.get(
+        secondary,
+        600
+      )};
+    --#{root-defaults.$prefix}label-color: #{$input-color};
+    --#{root-defaults.$prefix}fieldset-color: #{$input-color};
+    --#{root-defaults.$prefix}input-disabled-color: #{theme.get(secondary, 400)};
+    --#{root-defaults.$prefix}input-placeholder-disabled-color: #{$input-disabled-color};
+    --#{root-defaults.$prefix}label-disabled-color: #{$input-disabled-color};
+    --#{root-defaults.$prefix}fieldset-disabled-color: #{$input-disabled-color};
+
+    // Border sizing.
+    --#{root-defaults.$prefix}input-border-top-width: #{root-variables.$border-top-width};
+    --#{root-defaults.$prefix}input-border-right-width: #{root-variables.$border-right-width};
+    --#{root-defaults.$prefix}input-border-bottom-width: #{root-variables.$border-bottom-width};
+    --#{root-defaults.$prefix}input-border-left-width: #{root-variables.$border-left-width};
+    --#{root-defaults.$prefix}input-border-width: #{$input-border-top-width}
+      #{$input-border-right-width} #{$input-border-bottom-width}
+      #{$input-border-left-width};
+    --#{root-defaults.$prefix}input-border-top-style: #{root-variables.$border-top-style};
+    --#{root-defaults.$prefix}input-border-right-style: #{root-variables.$border-right-style};
+    --#{root-defaults.$prefix}input-border-bottom-style: #{root-variables.$border-bottom-style};
+    --#{root-defaults.$prefix}input-border-left-style: #{root-variables.$border-left-style};
+    --#{root-defaults.$prefix}input-border-style: #{$input-border-top-style}
+      #{$input-border-right-style} #{$input-border-bottom-style}
+      #{$input-border-left-style};
+    --#{root-defaults.$prefix}input-border-top-left-radius: #{root-variables.$border-top-left-radius};
+    --#{root-defaults.$prefix}input-border-top-right-radius: #{root-variables.$border-top-right-radius};
+    --#{root-defaults.$prefix}input-border-bottom-right-radius: #{root-variables.$border-bottom-right-radius};
+    --#{root-defaults.$prefix}input-border-bottom-left-radius: #{root-variables.$border-bottom-left-radius};
+    --#{root-defaults.$prefix}input-border-radius: #{$input-border-top-left-radius}
+      #{$input-border-top-right-radius} #{$input-border-bottom-right-radius}
+      #{$input-border-bottom-left-radius};
+
+    --#{root-defaults.$prefix}fieldset-border-top-width: #{$input-border-top-width};
+    --#{root-defaults.$prefix}fieldset-border-right-width: #{$input-border-right-width};
+    --#{root-defaults.$prefix}fieldset-border-bottom-width: #{$input-border-bottom-width};
+    --#{root-defaults.$prefix}fieldset-border-left-width: #{$input-border-left-width};
+    --#{root-defaults.$prefix}fieldset-border-width: #{$fieldset-border-top-width}
+      #{$fieldset-border-right-width} #{$fieldset-border-bottom-width}
+      #{$fieldset-border-left-width};
+    --#{root-defaults.$prefix}fieldset-border-top-style: #{$input-border-top-style};
+    --#{root-defaults.$prefix}fieldset-border-right-style: #{$input-border-right-style};
+    --#{root-defaults.$prefix}fieldset-border-bottom-style: #{$input-border-bottom-style};
+    --#{root-defaults.$prefix}fieldset-border-left-style: #{$input-border-left-style};
+    --#{root-defaults.$prefix}fieldset-border-style: #{$fieldset-border-top-style}
+      #{$fieldset-border-right-style} #{$fieldset-border-bottom-style}
+      #{$fieldset-border-left-style};
+    --#{root-defaults.$prefix}fieldset-border-top-left-radius: #{$input-border-top-left-radius};
+    --#{root-defaults.$prefix}fieldset-border-top-right-radius: #{$input-border-top-right-radius};
+    --#{root-defaults.$prefix}fieldset-border-bottom-right-radius: #{$input-border-bottom-right-radius};
+    --#{root-defaults.$prefix}fieldset-border-bottom-left-radius: #{$input-border-bottom-left-radius};
+    --#{root-defaults.$prefix}fieldset-border-radius: #{$fieldset-border-top-left-radius}
+      #{$fieldset-border-top-right-radius}
+      #{$fieldset-border-bottom-right-radius}
+      #{$fieldset-border-bottom-left-radius};
+
+    // Border colours.
+    --#{root-defaults.$prefix}input-border-color: #{color.$border-color};
+    --#{root-defaults.$prefix}input-disabled-border-color: #{theme.get(
+        secondary,
+        200
+      )};
+    --#{root-defaults.$prefix}fieldset-border-color: #{$input-border-color};
+    --#{root-defaults.$prefix}fieldset-disabled-border-color: #{$input-disabled-border-color};
+
+    // Accent colour.
+    --#{root-defaults.$prefix}input-accent-color: #{$input-color};
+  }
+}

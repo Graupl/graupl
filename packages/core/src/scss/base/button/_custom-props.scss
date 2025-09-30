@@ -1,0 +1,105 @@
+// @graupl/core button base custom properties.
+//
+// This file pre-defines all custom properties used by the button component.
+// This allows for easier out-of-the-box theming for users who do not wish to use Sass.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(props) {
+  :root {
+    --#{root-defaults.$prefix}button-min-width: #{root-defaults.$interactive-min-width};
+    --#{root-defaults.$prefix}button-min-height: #{root-defaults.$interactive-min-height};
+    --#{root-defaults.$prefix}button-padding-x: #{map.get(
+        root-variables.$spacers,
+        5
+      )};
+    --#{root-defaults.$prefix}button-padding-y: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}button-padding: #{$button-padding-y}
+      #{$button-padding-x};
+    --#{root-defaults.$prefix}button-font-size: #{map.get(
+        typography.$font-sizes,
+        base
+      )};
+    --#{root-defaults.$prefix}button-transition:
+      background #{map.get(root-variables.$transition-durations, fast)}
+        #{root-variables.$transition-timing-function},
+      color #{map.get(root-variables.$transition-durations, fast)}
+        #{root-variables.$transition-timing-function},
+      transform #{map.get(root-variables.$transition-durations, fast)}
+        #{root-variables.$transition-timing-function};
+    --#{root-defaults.$prefix}button-transition-reduced-motion:
+      background #{map.get(root-variables.$transition-durations, none)}
+        #{root-variables.$transition-timing-function},
+      color #{map.get(root-variables.$transition-durations, none)}
+        #{root-variables.$transition-timing-function};
+
+    // Transform properties.
+    --#{root-defaults.$prefix}button-transform: #{defaults.$button-initial-transform};
+    --#{root-defaults.$prefix}button-visited-transform: #{$button-transform};
+    --#{root-defaults.$prefix}button-focus-transform: #{$button-transform};
+    --#{root-defaults.$prefix}button-hover-transform: #{$button-transform};
+    --#{root-defaults.$prefix}button-active-transform: #{defaults.$button-final-transform};
+    --#{root-defaults.$prefix}button-disabled-transform: #{defaults.$button-disabled-transform};
+
+    // Background properties.
+    --#{root-defaults.$prefix}button-background: #{color.$background};
+    --#{root-defaults.$prefix}button-visited-background: #{$button-background};
+    --#{root-defaults.$prefix}button-focus-background: #{$button-background};
+    --#{root-defaults.$prefix}button-hover-background: #{color.$color};
+    --#{root-defaults.$prefix}button-active-background: #{$button-hover-background};
+    --#{root-defaults.$prefix}button-disabled-background: #{color.$background};
+
+    // Text properties.
+    --#{root-defaults.$prefix}button-color: #{color.$color};
+    --#{root-defaults.$prefix}button-visited-color: #{$button-color};
+    --#{root-defaults.$prefix}button-focus-color: #{$button-color};
+    --#{root-defaults.$prefix}button-hover-color: #{color.$background};
+    --#{root-defaults.$prefix}button-active-color: #{$button-hover-color};
+    --#{root-defaults.$prefix}button-disabled-color: #{theme.get(primary, 200)};
+
+    // Border properties.
+    --#{root-defaults.$prefix}button-border-top-width: #{root-variables.$border-top-width};
+    --#{root-defaults.$prefix}button-border-right-width: #{root-variables.$border-right-width};
+    --#{root-defaults.$prefix}button-border-bottom-width: #{root-variables.$border-bottom-width};
+    --#{root-defaults.$prefix}button-border-left-width: #{root-variables.$border-left-width};
+    --#{root-defaults.$prefix}button-border-width: #{$button-border-top-width}
+      #{$button-border-right-width} #{$button-border-bottom-width}
+      #{$button-border-left-width};
+    --#{root-defaults.$prefix}button-border-top-style: #{root-variables.$border-top-style};
+    --#{root-defaults.$prefix}button-border-right-style: #{root-variables.$border-right-style};
+    --#{root-defaults.$prefix}button-border-bottom-style: #{root-variables.$border-bottom-style};
+    --#{root-defaults.$prefix}button-border-left-style: #{root-variables.$border-left-style};
+    --#{root-defaults.$prefix}button-border-style: #{$button-border-top-style}
+      #{$button-border-right-style} #{$button-border-bottom-style}
+      #{$button-border-left-style};
+    --#{root-defaults.$prefix}button-border-top-left-radius: #{root-variables.$border-top-left-radius};
+    --#{root-defaults.$prefix}button-border-top-right-radius: #{root-variables.$border-top-right-radius};
+    --#{root-defaults.$prefix}button-border-bottom-right-radius: #{root-variables.$border-bottom-right-radius};
+    --#{root-defaults.$prefix}button-border-bottom-left-radius: #{root-variables.$border-bottom-left-radius};
+    --#{root-defaults.$prefix}button-border-radius: #{$button-border-top-left-radius}
+      #{$button-border-top-right-radius} #{$button-border-bottom-right-radius}
+      #{$button-border-bottom-left-radius};
+
+    // Border colour properties.
+    --#{root-defaults.$prefix}button-border-color: #{color.$border-color};
+    --#{root-defaults.$prefix}button-visited-border-color: #{$button-border-color};
+    --#{root-defaults.$prefix}button-focus-border-color: #{$button-border-color};
+    --#{root-defaults.$prefix}button-hover-border-color: #{color.$border-color};
+    --#{root-defaults.$prefix}button-active-border-color: #{$button-hover-border-color};
+    --#{root-defaults.$prefix}button-disabled-border-color: #{theme.get(
+        primary,
+        200
+      )};
+  }
+}
