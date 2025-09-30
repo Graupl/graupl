@@ -198,3 +198,47 @@ $navigation-shelf-transition-reduced-motion: var(
     #{root-variables.$transition-timing-function},
   display #{$navigation-shelf-transition-duration} allow-discrete
 );
+$navigation-shelf-side-toggle-shelf-right-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content,
+  #{map.get(defaults.$navigation-shelf-icons, "shelf-right")}
+);
+$navigation-shelf-side-toggle-shelf-left-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-left-content,
+  #{map.get(defaults.$navigation-shelf-icons, "shelf-left")}
+);
+$navigation-shelf-side-toggle-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-side-toggle-content,
+  #{$navigation-shelf-side-toggle-shelf-left-content}
+);
+$navigation-shelf-lock-toggle-lock-right-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-right-content,
+  #{map.get(defaults.$navigation-shelf-icons, "lock-right")}
+);
+$navigation-shelf-lock-toggle-unlock-right-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-right-content,
+  #{map.get(defaults.$navigation-shelf-icons, "unlock-right")}
+);
+$navigation-shelf-lock-toggle-lock-left-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-left-content,
+  #{map.get(defaults.$navigation-shelf-icons, "lock-left")}
+);
+$navigation-shelf-lock-toggle-unlock-left-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-left-content,
+  #{map.get(defaults.$navigation-shelf-icons, "unlock-left")}
+);
+$navigation-shelf-lock-toggle-lock-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-content,
+  #{$navigation-shelf-lock-toggle-lock-right-content}
+);
+$navigation-shelf-lock-toggle-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content,
+  #{$navigation-shelf-lock-toggle-lock-content}
+);
+$navigation-shelf-hover-toggle-enable-hover-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content,
+  #{map.get(defaults.$navigation-shelf-icons, "enable-hover")}
+);
+$navigation-shelf-hover-toggle-disable-hover-content: var(
+  --#{root-defaults.$prefix}navigation-shelf-hover-toggle-disable-hover-content,
+  #{map.get(defaults.$navigation-shelf-icons, "disable-hover")}
+);

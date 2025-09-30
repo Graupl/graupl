@@ -1,0 +1,130 @@
+// @graupl/navigation-shelf navigation shelf component custom properties.
+//
+// Defines the default CSS custom property values so the component can be
+// deployed without compiling the Sass sources.
+
+@use "defaults";
+@use "variables" as *;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/variables" as root-variables;
+@use "pkg:@graupl/core/src/theme/color/variables" as color;
+@use "pkg:@graupl/core/src/mixins/layer" as *;
+@use "sass:map";
+
+@include layer(custom-props) {
+  :root {
+    // Base appearance.
+    --#{root-defaults.$prefix}navigation-shelf-background: #{color.$background};
+    --#{root-defaults.$prefix}navigation-shelf-color: #{color.$color};
+    --#{root-defaults.$prefix}navigation-shelf-z-index: #{defaults.$navigation-shelf-z-index};
+
+    // Border styles.
+    --#{root-defaults.$prefix}navigation-shelf-border-top-style: #{root-variables.$border-top-style};
+    --#{root-defaults.$prefix}navigation-shelf-border-right-style: #{root-variables.$border-right-style};
+    --#{root-defaults.$prefix}navigation-shelf-border-bottom-style: #{root-variables.$border-bottom-style};
+    --#{root-defaults.$prefix}navigation-shelf-border-left-style: #{root-variables.$border-left-style};
+    --#{root-defaults.$prefix}navigation-shelf-border-style: #{$navigation-shelf-border-top-style}
+      #{$navigation-shelf-border-right-style}
+      #{$navigation-shelf-border-bottom-style}
+      #{$navigation-shelf-border-left-style};
+    --#{root-defaults.$prefix}navigation-shelf-border-top-width: 0;
+    --#{root-defaults.$prefix}navigation-shelf-border-right-width: 0;
+    --#{root-defaults.$prefix}navigation-shelf-border-bottom-width: 0;
+    --#{root-defaults.$prefix}navigation-shelf-border-left-width: 0;
+    --#{root-defaults.$prefix}navigation-shelf-border-width: #{$navigation-shelf-border-top-width}
+      #{$navigation-shelf-border-right-width}
+      #{$navigation-shelf-border-bottom-width}
+      #{$navigation-shelf-border-left-width};
+    --#{root-defaults.$prefix}navigation-shelf-border-color: #{$navigation-shelf-color};
+
+    // Dimensions.
+    --#{root-defaults.$prefix}navigation-shelf-min-width: #{defaults.$navigation-shelf-min-width};
+    --#{root-defaults.$prefix}navigation-shelf-max-width: #{defaults.$navigation-shelf-max-width};
+    --#{root-defaults.$prefix}navigation-shelf-closed-width: #{$navigation-shelf-min-width};
+    --#{root-defaults.$prefix}navigation-shelf-open-width: #{$navigation-shelf-max-width};
+    --#{root-defaults.$prefix}navigation-shelf-transitioning-width: #{$navigation-shelf-min-width};
+    --#{root-defaults.$prefix}navigation-shelf-width: #{$navigation-shelf-closed-width};
+    --#{root-defaults.$prefix}navigation-shelf-starting-width: #{$navigation-shelf-width};
+    --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-width};
+
+    // Display & opacity.
+    --#{root-defaults.$prefix}navigation-shelf-closed-display: grid;
+    --#{root-defaults.$prefix}navigation-shelf-open-display: grid;
+    --#{root-defaults.$prefix}navigation-shelf-transitioning-display: grid;
+    --#{root-defaults.$prefix}navigation-shelf-display: #{$navigation-shelf-closed-display};
+    --#{root-defaults.$prefix}navigation-shelf-starting-display: #{$navigation-shelf-display};
+    --#{root-defaults.$prefix}navigation-shelf-closed-opacity: 1;
+    --#{root-defaults.$prefix}navigation-shelf-open-opacity: 1;
+    --#{root-defaults.$prefix}navigation-shelf-transitioning-opacity: 1;
+    --#{root-defaults.$prefix}navigation-shelf-opacity: #{$navigation-shelf-closed-opacity};
+    --#{root-defaults.$prefix}navigation-shelf-starting-opacity: #{$navigation-shelf-opacity};
+
+    // Transforms.
+    --#{root-defaults.$prefix}navigation-shelf-closed-transform: none;
+    --#{root-defaults.$prefix}navigation-shelf-open-transform: none;
+    --#{root-defaults.$prefix}navigation-shelf-transitioning-transform: none;
+    --#{root-defaults.$prefix}navigation-shelf-transform: #{$navigation-shelf-closed-transform};
+    --#{root-defaults.$prefix}navigation-shelf-starting-transform: #{$navigation-shelf-transform};
+
+    // Transitions.
+    --#{root-defaults.$prefix}navigation-shelf-transition-duration: #{map.get(
+        root-variables.$transition-durations,
+        fast
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-transition:
+      width #{$navigation-shelf-transition-duration}
+        #{root-variables.$transition-timing-function},
+      transform #{$navigation-shelf-transition-duration}
+        #{root-variables.$transition-timing-function},
+      opacity #{$navigation-shelf-transition-duration}
+        #{root-variables.$transition-timing-function},
+      display #{$navigation-shelf-transition-duration} allow-discrete;
+    --#{root-defaults.$prefix}navigation-shelf-transition-initializing: none;
+    --#{root-defaults.$prefix}navigation-shelf-transition-reduced-motion:
+      opacity #{$navigation-shelf-transition-duration}
+        #{root-variables.$transition-timing-function},
+      display #{$navigation-shelf-transition-duration} allow-discrete;
+
+    // Icon helpers and spacers.
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-right-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "shelf-right"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-shelf-left-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "shelf-left"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-content: #{$navigation-shelf-side-toggle-shelf-left-content};
+    --#{root-defaults.$prefix}navigation-shelf-side-toggle-spacer: 0;
+
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-right-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "lock-right"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-right-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "unlock-right"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-left-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "lock-left"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-unlock-left-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "unlock-left"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-lock-content: #{$navigation-shelf-lock-toggle-lock-right-content};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-content: #{$navigation-shelf-lock-toggle-lock-content};
+    --#{root-defaults.$prefix}navigation-shelf-lock-toggle-spacer: 0;
+
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-enable-hover-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "enable-hover"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-disable-hover-content: #{map.get(
+        defaults.$navigation-shelf-icons,
+        "disable-hover"
+      )};
+    --#{root-defaults.$prefix}navigation-shelf-hover-toggle-spacer: 0;
+  }
+}
