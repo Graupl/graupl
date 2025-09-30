@@ -1,3 +1,5 @@
+@use "packages/core/src/scss/custom-props" as core-custom-props;
 @use "packages/core/src/scss" as core;
 @use "packages/icons/src/scss" as icons;
+@use "packages/navigation-shelf/src/scss/custom-props" as navigation-shelf-props;
 @use "packages/navigation-shelf/src/scss" as navigation-shelf;
