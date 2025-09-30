@@ -3,4 +3,4 @@
 @use "defaults" as root-defaults;
 
 // Layer initialization.
-@layer #{root-defaults.$id}.normalize, #{root-defaults.$id}.base, #{root-defaults.$id}.layout, #{root-defaults.$id}.component, #{root-defaults.$id}.theme, #{root-defaults.$id}.utilities, #{root-defaults.$id}.state;
+@layer #{root-defaults.$id}.normalize, #{root-defaults.$id}.props, #{root-defaults.$id}.base, #{root-defaults.$id}.layout, #{root-defaults.$id}.component, #{root-defaults.$id}.theme, #{root-defaults.$id}.utilities, #{root-defaults.$id}.state;
