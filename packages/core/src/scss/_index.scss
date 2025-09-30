@@ -6,6 +6,10 @@
 // Forward normalize.
 @use "normalize";
 
+// Forward all custom props.
+@use "custom-props";
+@use "base/custom-props" as base-custom-props;
+
 // Forward all layers.
 @use "base";
 @use "layout";

@@ -1,4 +1,49 @@
 // @graupl/core custom properties.
 
-// Forward all custom properties.
-@use "base/custom-props";
+@use "sass:map";
+@use "defaults";
+@use "variables" as *;
+@use "mixins/layer" as *;
+
+@include layer(props) {
+  :root {
+    // Layout.
+    --#{defaults.$prefix}content-max-width: #{defaults.$content-max-width};
+
+    // Spacing scale.
+    --#{defaults.$prefix}spacer: #{defaults.$spacer};
+
+    @each $key, $value in defaults.$spacer-multipliers {
+      --#{defaults.$prefix}spacer-#{$key}: calc(#{$value} * #{$spacer});
+    }
+
+    // Border radii.
+    --#{defaults.$prefix}border-radius: #{defaults.$border-radius};
+    --#{defaults.$prefix}border-top-left-radius: #{$border-radius};
+    --#{defaults.$prefix}border-top-right-radius: #{$border-radius};
+    --#{defaults.$prefix}border-bottom-right-radius: #{$border-radius};
+    --#{defaults.$prefix}border-bottom-left-radius: #{$border-radius};
+
+    // Border widths.
+    --#{defaults.$prefix}border-width: #{defaults.$border-width};
+    --#{defaults.$prefix}border-top-width: #{$border-width};
+    --#{defaults.$prefix}border-right-width: #{$border-width};
+    --#{defaults.$prefix}border-bottom-width: #{$border-width};
+    --#{defaults.$prefix}border-left-width: #{$border-width};
+
+    // Border styles.
+    --#{defaults.$prefix}border-style: #{defaults.$border-style};
+    --#{defaults.$prefix}border-top-style: #{$border-style};
+    --#{defaults.$prefix}border-right-style: #{$border-style};
+    --#{defaults.$prefix}border-bottom-style: #{$border-style};
+    --#{defaults.$prefix}border-left-style: #{$border-style};
+
+    // Transition durations.
+    @each $name, $duration in defaults.$transition-durations {
+      --#{defaults.$prefix}transition-duration-#{$name}: #{$duration};
+    }
+
+    // Transition timing.
+    --#{defaults.$prefix}transition-timing-function: #{defaults.$transition-timing-function};
+  }
+}
