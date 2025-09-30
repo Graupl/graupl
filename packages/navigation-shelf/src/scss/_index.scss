@@ -1,2 +1,4 @@
+@use "custom-props";
+@use "component/custom-props" as component-custom-props;
 @use "component";
 @use "utilities";

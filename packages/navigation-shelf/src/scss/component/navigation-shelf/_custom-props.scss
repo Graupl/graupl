@@ -11,7 +11,7 @@
 @use "pkg:@graupl/core/src/mixins/layer" as *;
 @use "sass:map";
 
-@include layer(custom-props) {
+@include layer(props) {
   :root {
     // Base appearance.
     --#{root-defaults.$prefix}navigation-shelf-background: #{color.$background};
