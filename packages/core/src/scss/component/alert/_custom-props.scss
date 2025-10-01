@@ -1,0 +1,34 @@
+// @graupl/core alert component custom properties.
+//
+// This file pre-defines all custom properties used by the alert component
+// so projects can rely on the defaults without compiling the Sass layer.
+
+@use "defaults";
+@use "variables" as *;
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../base/link/variables" as link-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "../../mixins/layer" as *;
+@use "sass:map";
+
+@include layer(props) {
+  :root {
+    // Alert header.
+    --#{root-defaults.$prefix}alert-header-padding-x: 0;
+    --#{root-defaults.$prefix}alert-header-padding-y: 0;
+
+    // Alert title.
+    --#{root-defaults.$prefix}alert-title-margin: 0 0 0 0;
+
+    // Alert body.
+    --#{root-defaults.$prefix}alert-body-padding-x: 0;
+    --#{root-defaults.$prefix}alert-body-padding-y: 0;
+
+    // Alert footer.
+    --#{root-defaults.$prefix}alert-footer-padding-x: 0;
+    --#{root-defaults.$prefix}alert-footer-padding-y: 0;
+  }
+}

@@ -15,92 +15,21 @@
   :root {
     // Text decoration values.
     --#{root-defaults.$prefix}link-text-decoration: #{defaults.$link-initial-text-decoration};
-    --#{root-defaults.$prefix}link-visited-text-decoration: #{defaults.$link-initial-text-decoration};
-    --#{root-defaults.$prefix}link-focus-text-decoration: #{defaults.$link-initial-text-decoration};
     --#{root-defaults.$prefix}link-hover-text-decoration: #{defaults.$link-final-text-decoration};
-    --#{root-defaults.$prefix}link-active-text-decoration: #{defaults.$link-final-text-decoration};
     --#{root-defaults.$prefix}link-disabled-text-decoration: #{defaults.$link-disabled-text-decoration};
-
-    // Text decoration thickness.
-    --#{root-defaults.$prefix}link-text-decoration-thickness: #{root-variables.$border-width};
-    --#{root-defaults.$prefix}link-visited-text-decoration-thickness: #{root-variables.$border-width};
-    --#{root-defaults.$prefix}link-focus-text-decoration-thickness: #{root-variables.$border-width};
-    --#{root-defaults.$prefix}link-hover-text-decoration-thickness: #{root-variables.$border-width};
-    --#{root-defaults.$prefix}link-active-text-decoration-thickness: #{root-variables.$border-width};
-    --#{root-defaults.$prefix}link-disabled-text-decoration-thickness: #{root-variables.$border-width};
 
     // Text decoration style.
     --#{root-defaults.$prefix}link-text-decoration-style: #{defaults.$link-initial-text-decoration-style};
-    --#{root-defaults.$prefix}link-visited-text-decoration-style: #{defaults.$link-initial-text-decoration-style};
-    --#{root-defaults.$prefix}link-focus-text-decoration-style: #{defaults.$link-initial-text-decoration-style};
     --#{root-defaults.$prefix}link-hover-text-decoration-style: #{defaults.$link-final-text-decoration-style};
-    --#{root-defaults.$prefix}link-active-text-decoration-style: #{defaults.$link-final-text-decoration-style};
     --#{root-defaults.$prefix}link-disabled-text-decoration-style: #{defaults.$link-disabled-text-decoration-style};
 
-    // Link colours.
-    --#{root-defaults.$prefix}link-color: #{theme.get(primary, 700)};
-    --#{root-defaults.$prefix}link-visited-color: #{$link-color};
-    --#{root-defaults.$prefix}link-focus-color: #{$link-color};
-    --#{root-defaults.$prefix}link-hover-color: #{theme.get(tertiary, 700)};
-    --#{root-defaults.$prefix}link-active-color: #{$link-hover-color};
-    --#{root-defaults.$prefix}link-disabled-color: #{theme.get(primary, 200)};
-
-    // Text decoration colours.
-    --#{root-defaults.$prefix}link-text-decoration-color: #{$link-color};
-    --#{root-defaults.$prefix}link-visited-text-decoration-color: #{$link-visited-color};
-    --#{root-defaults.$prefix}link-focus-text-decoration-color: #{$link-focus-color};
-    --#{root-defaults.$prefix}link-hover-text-decoration-color: #{$link-hover-color};
-    --#{root-defaults.$prefix}link-active-text-decoration-color: #{$link-active-color};
-    --#{root-defaults.$prefix}link-disabled-text-decoration-color: #{$link-disabled-color};
-
-    // Background colours.
-    --#{root-defaults.$prefix}link-background: #{theme.get(transparent)};
-    --#{root-defaults.$prefix}link-visited-background: #{$link-background};
-    --#{root-defaults.$prefix}link-focus-background: #{$link-background};
-    --#{root-defaults.$prefix}link-hover-background: #{theme.get(transparent)};
-    --#{root-defaults.$prefix}link-active-background: #{$link-hover-background};
-    --#{root-defaults.$prefix}link-disabled-background: #{theme.get(
-        transparent
-      )};
-
     // Spacing & sizing.
-    --#{root-defaults.$prefix}link-padding-x: #{map.get(
-        root-variables.$spacers,
-        0
-      )};
-    --#{root-defaults.$prefix}link-padding-y: #{map.get(
-        root-variables.$spacers,
-        0
-      )};
-    --#{root-defaults.$prefix}link-padding: var(
-        --#{root-defaults.$prefix}link-padding-y,
-        #{map.get(root-variables.$spacers, 0)}
-      )
-      var(
-        --#{root-defaults.$prefix}link-padding-x,
-        #{map.get(root-variables.$spacers, 0)}
-      );
     --#{root-defaults.$prefix}link-min-width: #{defaults.$link-min-width};
     --#{root-defaults.$prefix}link-min-height: #{defaults.$link-min-height};
 
     // Motion.
-    --#{root-defaults.$prefix}link-transition:
-      background #{map.get(root-variables.$transition-durations, fast)}
-        #{root-variables.$transition-timing-function},
-      color #{map.get(root-variables.$transition-durations, fast)}
-        #{root-variables.$transition-timing-function},
-      transform #{map.get(root-variables.$transition-durations, fast)}
-        #{root-variables.$transition-timing-function};
-    --#{root-defaults.$prefix}link-transition-reduced-motion:
-      background #{map.get(root-variables.$transition-durations, none)}
-        #{root-variables.$transition-timing-function},
-      color #{map.get(root-variables.$transition-durations, none)}
-        #{root-variables.$transition-timing-function};
     --#{root-defaults.$prefix}link-transform: #{defaults.$link-initial-transform};
-    --#{root-defaults.$prefix}link-visited-transform: #{defaults.$link-initial-transform};
-    --#{root-defaults.$prefix}link-focus-transform: #{defaults.$link-initial-transform};
     --#{root-defaults.$prefix}link-hover-transform: #{defaults.$link-final-transform};
-    --#{root-defaults.$prefix}link-active-transform: #{defaults.$link-final-transform};
     --#{root-defaults.$prefix}link-disabled-transform: #{defaults.$link-disabled-transform};
 
     // Border sizing.
@@ -108,35 +37,6 @@
     --#{root-defaults.$prefix}link-border-right-width: 0;
     --#{root-defaults.$prefix}link-border-bottom-width: 0;
     --#{root-defaults.$prefix}link-border-left-width: 0;
-    --#{root-defaults.$prefix}link-border-width: #{$link-border-top-width}
-      #{$link-border-right-width} #{$link-border-bottom-width}
-      #{$link-border-left-width};
-
-    --#{root-defaults.$prefix}link-border-top-style: #{root-variables.$border-top-style};
-    --#{root-defaults.$prefix}link-border-right-style: #{root-variables.$border-right-style};
-    --#{root-defaults.$prefix}link-border-bottom-style: #{root-variables.$border-bottom-style};
-    --#{root-defaults.$prefix}link-border-left-style: #{root-variables.$border-left-style};
-    --#{root-defaults.$prefix}link-border-style: #{$link-border-top-style}
-      #{$link-border-right-style} #{$link-border-bottom-style}
-      #{$link-border-left-style};
-
-    --#{root-defaults.$prefix}link-border-top-left-radius: #{root-variables.$border-top-left-radius};
-    --#{root-defaults.$prefix}link-border-top-right-radius: #{root-variables.$border-top-right-radius};
-    --#{root-defaults.$prefix}link-border-bottom-right-radius: #{root-variables.$border-bottom-right-radius};
-    --#{root-defaults.$prefix}link-border-bottom-left-radius: #{root-variables.$border-bottom-left-radius};
-    --#{root-defaults.$prefix}link-border-radius: #{$link-border-top-left-radius}
-      #{$link-border-top-right-radius} #{$link-border-bottom-right-radius}
-      #{$link-border-bottom-left-radius};
-
-    // Border colours.
-    --#{root-defaults.$prefix}link-border-color: #{theme.get(transparent)};
-    --#{root-defaults.$prefix}link-visited-border-color: #{$link-border-color};
-    --#{root-defaults.$prefix}link-focus-border-color: #{$link-border-color};
-    --#{root-defaults.$prefix}link-hover-border-color: #{theme.get(transparent)};
-    --#{root-defaults.$prefix}link-active-border-color: #{$link-hover-border-color};
-    --#{root-defaults.$prefix}link-disabled-border-color: #{theme.get(
-        transparent
-      )};
 
     // Stretched link helper.
     --#{root-defaults.$prefix}stretched-link-z-index: #{defaults.$stretched-link-z-index};
