@@ -316,23 +316,23 @@ $accordion-transition-reduced-motion: var(
   none
 );
 $accordion-item-toggle-pseudo-transition: var(
-  --#{root-defaults.$prefix}accordion-transition,
+  --#{root-defaults.$prefix}accordion-item-toggle-pseudo-transition,
   transform #{map.get(root-variables.$transition-durations, slow)}
     #{root-variables.$transition-timing-function}
 );
 $accordion-item-toggle-pseudo-transition-reduced-motion: var(
-  --#{root-defaults.$prefix}accordion-transition-reduced-motion,
+  --#{root-defaults.$prefix}accordion-item-toggle-pseudo-transition-reduced-motion,
   none
 );
 $accordion-item-content-transition: var(
-  --#{root-defaults.$prefix}accordion-transition,
+  --#{root-defaults.$prefix}accordion-item-content-transition,
   opacity #{map.get(root-variables.$transition-durations, slow)}
     #{root-variables.$transition-timing-function} transform
     #{map.get(root-variables.$transition-durations, slow)}
     #{root-variables.$transition-timing-function}
 );
 $accordion-item-content-transition-reduced-motion: var(
-  --#{root-defaults.$prefix}accordion-transition-reduced-motion,
+  --#{root-defaults.$prefix}accordion-item-content-transition-reduced-motion,
   opacity #{map.get(root-variables.$transition-durations, slow)}
     #{root-variables.$transition-timing-function}
 );
