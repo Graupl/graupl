@@ -9,6 +9,7 @@
 // Forward all custom props.
 @use "custom-props";
 @use "base/custom-props" as base-custom-props;
+@use "component/custom-props" as component-custom-props;
 
 // Forward all layers.
 @use "base";
