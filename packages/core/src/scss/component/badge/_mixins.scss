@@ -1,0 +1,107 @@
+// @graupl/core badge base styles.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "variables" as *;
+@use "../../mixins/layer" as *;
+@use "../../mixins/animation";
+@use "../../functions/theme";
+@use "sass:map";
+
+/// Mixin to apply base styles for badges.
+@mixin apply-base() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: $badge-min-width;
+  min-height: $badge-min-height;
+  padding: $badge-padding;
+  transform: $badge-transform;
+  transition: $badge-transition;
+  border-width: $badge-border-width;
+  border-style: $badge-border-style;
+  border-radius: $badge-border-radius;
+  font-size: $badge-font-size;
+  cursor: pointer;
+
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
+      &#{$selector} {
+        transform: map.get($badge-transform-states, $state);
+
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          cursor: not-allowed;
+
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  transform: map.get($badge-transform-states, $state);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include animation.off {
+    --#{root-defaults.$prefix}badge-transition: #{$badge-transition-reduced-motion};
+  }
+}
+
+/// Mixin to apply theme styles for badges.
+@mixin apply-theme() {
+  border-color: $badge-border-color;
+  background: $badge-background;
+  color: $badge-color;
+
+  @each $color, $map in defaults.$badge-theme-map {
+    // e.g. &.primary, &.secondary, &.tertiary
+    &#{defaults.$badge-theme-selector-base}#{defaults.$badge-theme-selector-prefix}#{$color} {
+      @each $prop, $value in $map {
+        --#{root-defaults.$prefix}badge-#{$prop}: #{theme.get(
+            map.get($value, color),
+            map.get($value, shade)
+          )};
+      }
+    }
+  }
+
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
+      &#{$selector} {
+        border-color: map.get($badge-border-color-states, $state);
+        background: map.get($badge-background-states, $state);
+        color: map.get($badge-color-states, $state);
+
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  border-color: map.get($badge-border-color-states, $state);
+                  background: map.get($badge-background-states, $state);
+                  color: map.get($badge-color-states, $state);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin apply() {
+  @include apply-base;
+  @include apply-theme;
+}

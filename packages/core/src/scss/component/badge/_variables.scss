@@ -1,0 +1,112 @@
+// @graupl/core badge base variables.
+//
+// These values are to be used to directly style bases and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Typography.
+$badge-font-size: var(
+  --#{root-defaults.$prefix}badge-font-size,
+  #{map.get(typography.$font-sizes, base)}
+);
+
+// Colors.
+$badge-background: var(
+  --#{root-defaults.$prefix}badge-background,
+  #{color.$background}
+);
+$badge-color: var(--#{root-defaults.$prefix}badge-color, #{color.$color});
+$badge-border-color: var(
+  --#{root-defaults.$prefix}badge-border-color,
+  #{color.$border-color}
+);
+
+// Spacing.
+$badge-padding-x: var(
+  --#{root-defaults.$prefix}badge-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$badge-padding-y: var(
+  --#{root-defaults.$prefix}badge-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$badge-padding: var(
+  --#{root-defaults.$prefix}badge-padding,
+  #{$badge-padding-y} #{$badge-padding-x}
+);
+
+// Border widths.
+$badge-border-top-width: var(
+  --#{root-defaults.$prefix}badge-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$badge-border-right-width: var(
+  --#{root-defaults.$prefix}badge-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$badge-border-bottom-width: var(
+  --#{root-defaults.$prefix}badge-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$badge-border-left-width: var(
+  --#{root-defaults.$prefix}badge-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$badge-border-width: var(
+  --#{root-defaults.$prefix}badge-border-width,
+  #{$badge-border-top-width} #{$badge-border-right-width}
+    #{$badge-border-bottom-width} #{$badge-border-left-width}
+);
+
+// Border styles.
+$badge-border-top-style: var(
+  --#{root-defaults.$prefix}badge-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$badge-border-right-style: var(
+  --#{root-defaults.$prefix}badge-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$badge-border-bottom-style: var(
+  --#{root-defaults.$prefix}badge-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$badge-border-left-style: var(
+  --#{root-defaults.$prefix}badge-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$badge-border-style: var(
+  --#{root-defaults.$prefix}badge-border-style,
+  #{$badge-border-top-style} #{$badge-border-right-style}
+    #{$badge-border-bottom-style} #{$badge-border-left-style}
+);
+
+// Border radii.
+$badge-border-top-left-radius: var(
+  --#{root-defaults.$prefix}badge-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$badge-border-top-right-radius: var(
+  --#{root-defaults.$prefix}badge-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$badge-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}badge-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$badge-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}badge-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$badge-border-radius: var(
+  --#{root-defaults.$prefix}badge-border-radius,
+  #{$badge-border-top-left-radius} #{$badge-border-top-right-radius}
+    #{$badge-border-bottom-right-radius} #{$badge-border-bottom-left-radius}
+);
