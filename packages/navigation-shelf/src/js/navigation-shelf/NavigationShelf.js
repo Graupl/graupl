@@ -554,6 +554,14 @@ class NavigationShelf {
     return this._classes.locked;
   }
 
+  set lockedClass(value) {
+    isValidClassList({ lockedClass: value });
+
+    if (this._classes.locked !== value) {
+      this._classes.locked = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
    *
@@ -563,6 +571,14 @@ class NavigationShelf {
    */
   get unlockedClass() {
     return this._classes.unlocked;
+  }
+
+  set unlockedClass(value) {
+    isValidClassList({ unlockedClass: value });
+
+    if (this._classes.unlocked !== value) {
+      this._classes.unlocked = value;
+    }
   }
 
   /**
@@ -576,6 +592,14 @@ class NavigationShelf {
     return this._classes.hover;
   }
 
+  set hoverClass(value) {
+    isValidClassList({ hoverClass: value });
+
+    if (this._classes.hover !== value) {
+      this._classes.hover = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf element when the shelf is not hoverable.
    *
@@ -585,6 +609,14 @@ class NavigationShelf {
    */
   get noHoverClass() {
     return this._classes.noHover;
+  }
+
+  set noHoverClass(value) {
+    isValidClassList({ noHoverClass: value });
+
+    if (this._classes.noHover !== value) {
+      this._classes.noHover = value;
+    }
   }
 
   /**
@@ -598,6 +630,14 @@ class NavigationShelf {
     return this._classes.left;
   }
 
+  set leftClass(value) {
+    isValidClassList({ leftClass: value });
+
+    if (this._classes.left !== value) {
+      this._classes.left = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
    *
@@ -607,6 +647,14 @@ class NavigationShelf {
    */
   get rightClass() {
     return this._classes.right;
+  }
+
+  set rightClass(value) {
+    isValidClassList({ rightClass: value });
+
+    if (this._classes.right !== value) {
+      this._classes.right = value;
+    }
   }
 
   /**
@@ -620,6 +668,14 @@ class NavigationShelf {
     return this._classes.open;
   }
 
+  set openClass(value) {
+    isValidClassList({ openClass: value });
+
+    if (this._classes.open !== value) {
+      this._classes.open = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf when the shelf is closed.
    *
@@ -629,6 +685,14 @@ class NavigationShelf {
    */
   get closeClass() {
     return this._classes.close;
+  }
+
+  set closeClass(value) {
+    isValidClassList({ closeClass: value });
+
+    if (this._classes.close !== value) {
+      this._classes.close = value;
+    }
   }
 
   /**
@@ -642,6 +706,14 @@ class NavigationShelf {
     return this._classes.transition;
   }
 
+  set transitionClass(value) {
+    isValidClassList({ transitionClass: value });
+
+    if (this._classes.transition !== value) {
+      this._classes.transition = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf when the shelf is initializing.
    *
@@ -651,6 +723,14 @@ class NavigationShelf {
    */
   get initializeClass() {
     return this._classes.initialize;
+  }
+
+  set initializeClass(value) {
+    isValidClassList({ initializeClass: value });
+
+    if (this._classes.initialize !== value) {
+      this._classes.initialize = value;
+    }
   }
 
   /**
@@ -664,6 +744,15 @@ class NavigationShelf {
    */
   get transitionDuration() {
     return this._transitionDuration;
+  }
+
+  set transitionDuration(value) {
+    isValidType("number", { value });
+
+    if (this._transitionDuration !== value) {
+      this._transitionDuration = value;
+      this._setTransitionDurations();
+    }
   }
 
   /**
@@ -683,6 +772,15 @@ class NavigationShelf {
     return this._openDuration;
   }
 
+  set openDuration(value) {
+    isValidType("number", { value });
+
+    if (this._openDuration !== value) {
+      this._openDuration = value;
+      this._setTransitionDurations();
+    }
+  }
+
   /**
    * The duration time (in milliseconds) for the transition from open to closed states.
    *
@@ -700,6 +798,15 @@ class NavigationShelf {
     return this._closeDuration;
   }
 
+  set closeDuration(value) {
+    isValidType("number", { value });
+
+    if (this._closeDuration !== value) {
+      this._closeDuration = value;
+      this._setTransitionDurations();
+    }
+  }
+
   /**
    * The current state of the shelf's focus.
    *
@@ -711,6 +818,14 @@ class NavigationShelf {
     return this._focusState;
   }
 
+  set focusState(value) {
+    isValidState({ value });
+
+    if (this._focusState !== value) {
+      this._focusState = value;
+    }
+  }
+
   /**
    * The last event triggered on the shelf.
    *
@@ -720,6 +835,14 @@ class NavigationShelf {
    */
   get currentEvent() {
     return this._currentEvent;
+  }
+
+  set currentEvent(value) {
+    isValidEvent({ value });
+
+    if (this._currentEvent !== value) {
+      this._currentEvent = value;
+    }
   }
 
   /**
@@ -746,6 +869,14 @@ class NavigationShelf {
     return this._hoverDelay;
   }
 
+  set hoverDelay(value) {
+    isValidType("number", { value });
+
+    if (this._hoverDelay !== value) {
+      this._hoverDelay = value;
+    }
+  }
+
   /**
    * The delay time (in milliseconds) used for pointerenter events to take place.
    *
@@ -759,6 +890,14 @@ class NavigationShelf {
     if (this._enterDelay === -1) return this.hoverDelay;
 
     return this._enterDelay;
+  }
+
+  set enterDelay(value) {
+    isValidType("number", { value });
+
+    if (this._enterDelay !== value) {
+      this._enterDelay = value;
+    }
   }
 
   /**
@@ -776,6 +915,14 @@ class NavigationShelf {
     return this._leaveDelay;
   }
 
+  set leaveDelay(value) {
+    isValidType("number", { value });
+
+    if (this._leaveDelay !== value) {
+      this._leaveDelay = value;
+    }
+  }
+
   /**
    * The prefix to use for CSS custom properties.
    *
@@ -785,6 +932,14 @@ class NavigationShelf {
    */
   get prefix() {
     return this._prefix;
+  }
+
+  set prefix(value) {
+    isValidType("string", { value });
+
+    if (this._prefix !== value) {
+      this._prefix = value;
+    }
   }
 
   /**
@@ -837,6 +992,14 @@ class NavigationShelf {
     return this._key;
   }
 
+  set key(value) {
+    isValidType("string", { value });
+
+    if (this._key !== value) {
+      this._key = value;
+    }
+  }
+
   /**
    * A flag to check if the shelf can dynamically hover.
    *
@@ -848,8 +1011,18 @@ class NavigationShelf {
     return this._softLocked;
   }
 
+  set isSoftLocked(value) {
+    isValidType("boolean", { value });
+
+    if (this._softLocked !== value) {
+      this._softLocked = value;
+    }
+  }
+
   /**
    * The open state on the shelf.
+   *
+   * @readonly
    *
    * @type {boolean}
    *
@@ -870,143 +1043,6 @@ class NavigationShelf {
    */
   get errors() {
     return this._errors;
-  }
-
-  set dependentLockedClass(value) {
-    isValidClassList({ dependentLockedClass: value });
-    if (this._classes.dependentLocked !== value) {
-      this._classes.dependentLocked = value;
-    }
-  }
-
-  set dependentUnlockedClass(value) {
-    isValidClassList({ dependentUnlockedClass: value });
-    if (this._classes.dependentUnlocked !== value) {
-      this._classes.dependentUnlocked = value;
-    }
-  }
-
-  set openClass(value) {
-    isValidClassList({ openClass: value });
-
-    if (this._classes.open !== value) {
-      this._classes.open = value;
-    }
-  }
-
-  set closeClass(value) {
-    isValidClassList({ closeClass: value });
-
-    if (this._classes.close !== value) {
-      this._classes.close = value;
-    }
-  }
-
-  set transitionClass(value) {
-    isValidClassList({ transitionClass: value });
-
-    if (this._classes.transition !== value) {
-      this._classes.transition = value;
-    }
-  }
-
-  set initializeClass(value) {
-    isValidClassList({ initializeClass: value });
-
-    if (this._classes.initialize !== value) {
-      this._classes.initialize = value;
-    }
-  }
-
-  set transitionDuration(value) {
-    isValidType("number", { value });
-
-    if (this._transitionDuration !== value) {
-      this._transitionDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set openDuration(value) {
-    isValidType("number", { value });
-
-    if (this._openDuration !== value) {
-      this._openDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set closeDuration(value) {
-    isValidType("number", { value });
-
-    if (this._closeDuration !== value) {
-      this._closeDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set focusState(value) {
-    isValidState({ value });
-
-    if (this._focusState !== value) {
-      this._focusState = value;
-    }
-  }
-
-  set currentEvent(value) {
-    isValidEvent({ value });
-
-    if (this._currentEvent !== value) {
-      this._currentEvent = value;
-    }
-  }
-
-  set hoverDelay(value) {
-    isValidType("number", { value });
-
-    if (this._hoverDelay !== value) {
-      this._hoverDelay = value;
-    }
-  }
-
-  set enterDelay(value) {
-    isValidType("number", { value });
-
-    if (this._enterDelay !== value) {
-      this._enterDelay = value;
-    }
-  }
-
-  set leaveDelay(value) {
-    isValidType("number", { value });
-
-    if (this._leaveDelay !== value) {
-      this._leaveDelay = value;
-    }
-  }
-
-  set prefix(value) {
-    isValidType("string", { value });
-
-    if (this._prefix !== value) {
-      this._prefix = value;
-    }
-  }
-
-  set key(value) {
-    isValidType("string", { value });
-
-    if (this._key !== value) {
-      this._key = value;
-    }
-  }
-
-  set isSoftLocked(value) {
-    isValidType("boolean", { value });
-
-    if (this._softLocked !== value) {
-      this._softLocked = value;
-    }
   }
 
   /**
