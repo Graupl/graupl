@@ -13,6 +13,7 @@ import {
   selectFirstFocusableElement,
 } from "@graupl/core/src/domHelpers.js";
 import storage from "@graupl/core/src/storage.js";
+import { TransactionalValue } from "@graupl/core/src/TransactionalValue.js";
 
 class NavigationShelf {
   /**
@@ -177,9 +178,9 @@ class NavigationShelf {
    *
    * @protected
    *
-   * @type {boolean}
+   * @type {TransactionalValue<boolean>}
    */
-  _locked = false;
+  _locked = new TransactionalValue(false);
 
   /**
    * A flag to check in the navigation shelf can dynamically close based on if the shelf has been manually interacted with already.
@@ -216,6 +217,24 @@ class NavigationShelf {
    * @type {boolean}
    */
   _open = false;
+
+  /**
+   * The width of the screen (in pixels) that the menu will automatically open/close itself.
+   *
+   * @protected
+   *
+   * @type {number}
+   */
+  _breakpointWidth = 1180;
+
+  /**
+   * This ResizeObserver for the navigation shelf.
+   *
+   * @protected
+   *
+   * @type {ResizeObserver|null}
+   */
+  _observer = null;
 
   /**
    * The event that is triggered when the shelf expands.
@@ -435,7 +454,7 @@ class NavigationShelf {
     this._closeDuration = closeDuration;
 
     // Set locked state.
-    this._locked = locked;
+    this._locked = new TransactionalValue(locked);
 
     // Set side.
     this._side = side;
@@ -481,6 +500,7 @@ class NavigationShelf {
       this._handleHover();
       this._handleKeydown();
       this._handleKeyup();
+      this._handleResize();
 
       // Ensure the initial open state of the shelf.
       if (
@@ -952,7 +972,20 @@ class NavigationShelf {
    * @see _locked
    */
   get isLocked() {
-    return this._locked;
+    return this._locked.value;
+  }
+
+  /**
+   * The committed lock preference for the navigation shelf.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get shouldBeLocked() {
+    return this._locked.committed;
   }
 
   /**
@@ -1169,7 +1202,7 @@ class NavigationShelf {
     }
 
     // Locked check.
-    const lockedCheck = isValidType("boolean", { locked: this._locked });
+    const lockedCheck = isValidType("boolean", { locked: this._locked.value });
     if (!lockedCheck.status) {
       this._errors.push(lockedCheck.error.message);
       check = false;
@@ -1192,16 +1225,15 @@ class NavigationShelf {
    *
    * @protected
    *
-   * @param {string}      elementType                - The type of element to populate.
-   * @param {HTMLElement} [base = this.dom.shelf] - The element used as the base for the querySelector.
-   * @param {boolean}     [overwrite = true]         - A flag to set if the existing elements will be overwritten.
-   * @param {boolean}     [strict = true]           - A flag to set if the elements must be direct children of the base.
+   * @param {string}                      elementType                     - The type of element to populate.
+   * @param {Object<HTMLElement,boolean>} [options = {}]                  - The options for setting the DOM element type.
+   * @param {HTMLElement}                 [options.base = this.dom.shelf] - The element used as the base for the querySelector.
+   * @param {boolean}                     [options.overwrite = true]      - A flag to set if the existing elements will be overwritten.
+   * @param {boolean}                     [options.strict = true]         - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    base = this.dom.shelf,
-    overwrite = true,
-    strict = true
+    { base = this.dom.shelf, overwrite = true, strict = true } = {}
   ) {
     if (typeof this.selectors[elementType] === "string") {
       if (
@@ -1298,7 +1330,7 @@ class NavigationShelf {
    * @protected
    */
   _setDOMElements() {
-    this._setDOMElementType("dependents", document, true, false);
+    this._setDOMElementType("dependents", { base: document, strict: false });
   }
 
   /**
@@ -1358,7 +1390,7 @@ class NavigationShelf {
       this.dom.lockController.setAttribute("aria-controls", this.dom.shelf.id);
       this.dom.lockController.setAttribute(
         "aria-pressed",
-        this._locked ? "true" : "false"
+        this.isLocked ? "true" : "false"
       );
     }
 
@@ -1397,6 +1429,46 @@ class NavigationShelf {
     isValidType("number", { delay });
 
     this._hoverTimeout = setTimeout(callback, delay);
+  }
+
+  /**
+   * Observes body size changes and keeps the shelf aligned with the configured breakpoint.
+   *
+   * @protected
+   */
+  _handleResize() {
+    if (this._breakpointWidth <= 0) {
+      return;
+    }
+
+    this._observer = new ResizeObserver((entries) => {
+      requestAnimationFrame(() => {
+        for (const entry of entries) {
+          const boxSize = Array.isArray(entry.contentBoxSize)
+            ? entry.contentBoxSize[0]
+            : entry.contentBoxSize;
+          const inlineSize =
+            boxSize && typeof boxSize.inlineSize === "number"
+              ? boxSize.inlineSize
+              : entry.contentRect.width;
+
+          if (typeof inlineSize !== "number") continue;
+
+          const belowBreakpoint = inlineSize <= this._breakpointWidth;
+          const aboveBreakpoint = inlineSize > this._breakpointWidth;
+
+          if (belowBreakpoint && this.isOpen) {
+            this.close({
+              preserveLock: this.shouldBeLocked,
+            });
+          } else if (aboveBreakpoint && this.shouldBeLocked && !this.isOpen) {
+            this._locked.reset();
+            this.lock({ force: true });
+          }
+        }
+      });
+    });
+    this._observer.observe(document.body);
   }
 
   _handleFocus() {
@@ -1443,7 +1515,7 @@ class NavigationShelf {
 
         this.currentEvent = "mouse";
         preventEvent(event);
-        this.toggle();
+        this.toggle({ preserveLock: false });
 
         if (this.isOpen) {
           this.focusState = "self";
@@ -1688,7 +1760,7 @@ class NavigationShelf {
     );
   }
 
-  _expand(emit = true, transition = true) {
+  _expand({ emit = true, transition = true } = {}) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "true");
     }
@@ -1793,7 +1865,15 @@ class NavigationShelf {
     }
   }
 
-  _lock(emit = true) {
+  /**
+   * Applies the locked state styling and dispatches the lock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for the lock side effects.
+   * @param {boolean}         [options.emit = true] - Whether to emit the lock event.
+   */
+  _lock({ emit = true } = {}) {
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "true");
     }
@@ -1819,7 +1899,15 @@ class NavigationShelf {
     }
   }
 
-  _unlock(emit = true) {
+  /**
+   * Applies the unlocked state styling and dispatches the unlock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for the unlock side effects.
+   * @param {boolean}         [options.emit = true] - Whether to emit the unlock event.
+   */
+  _unlock({ emit = true } = {}) {
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "false");
     }
@@ -1845,7 +1933,15 @@ class NavigationShelf {
     }
   }
 
-  _shiftSide(emit = true) {
+  /**
+   * Updates all dependent elements to reflect the shelf side.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]      - Options for shifting side.
+   * @param {boolean}         [options.emit=true] - Whether to emit the shift event.
+   */
+  _shiftSide({ emit = true } = {}) {
     const toClass = this._classes[this.side];
     const fromClass = this._classes[this.otherSide];
 
@@ -1870,7 +1966,15 @@ class NavigationShelf {
     }
   }
 
-  _enableHover(emit = true) {
+  /**
+   * Enables hover mode on the shelf.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
+   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
+   */
+  _enableHover({ emit = true } = {}) {
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "true");
     }
@@ -1884,7 +1988,15 @@ class NavigationShelf {
     }
   }
 
-  _disableHover(emit = true) {
+  /**
+   * Disables hover mode on the shelf.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
+   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
+   */
+  _disableHover({ emit = true } = {}) {
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "false");
     }
@@ -1898,7 +2010,13 @@ class NavigationShelf {
     }
   }
 
-  open(force = false) {
+  /**
+   * Opens the shelf.
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for opening the shelf.
+   * @param {boolean}         [options.emit = true] - Whether to force the open action.
+   */
+  open({ force = false } = {}) {
     // Only open if the shelf is closed.
     if (this.isOpen && !force) return;
 
@@ -1908,46 +2026,83 @@ class NavigationShelf {
     this._open = true;
   }
 
-  close(force = false) {
+  /**
+   * Closes the shelf and optionally preserves the committed lock state.
+   *
+   * @param {Object<boolean>} [options = {}]                - Options for closing the shelf.
+   * @param {boolean}         [options.force = false]       - Whether to force the close action.
+   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged.
+   */
+  close({ force = false, preserveLock = true } = {}) {
     // Only close if the shelf is open.
     if (!this.isOpen && !force) return;
 
-    this.unlock();
+    this.unlock({ updateLock: !preserveLock });
     this._collapse();
 
     // Set the open flag.
     this._open = false;
   }
 
-  toggle() {
+  /**
+   * Toggles the shelf open or closed.
+   *
+   * @param {Object<boolean>} [options = {}]                - Options for toggling the shelf.
+   * @param {boolean}         [options.force = false]       - Whether to force the transition.
+   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged when closing.
+   */
+  toggle({ force = false, preserveLock = true } = {}) {
     if (this.isOpen) {
-      this.close();
+      this.close({ force, preserveLock });
     } else {
-      this.open();
+      this.open({ force });
     }
   }
 
-  lock() {
+  /**
+   * Locks the shelf and ensures it remains open.
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for locking the shelf.
+   * @param {boolean}         [options.emit = true] - Whether to force the lock even if already locked.
+   */
+  lock({ force = false } = {}) {
     // Only lock if the shelf is unlocked.
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
+    this._locked.value = true;
     this._lock();
 
-    // Set the locked flag.
-    this._locked = true;
+    // Commit the locked preference.
+    this._locked.commit();
 
     // Open the shelf.
-    this.open(true);
+    this.open({ force: true });
   }
 
-  unlock() {
+  /**
+   * Unlocks the shelf.
+   *
+   * @param {Object<boolean>} [options = {}]              - Options for unlocking the shelf.
+   * @param {boolean}         [options.updateLock = true] - Whether to commit the unlocked state as the new preference.
+   */
+  unlock({ updateLock = true } = {}) {
     // Only unlock if the shelf is locked.
-    if (!this.isLocked) return;
+    if (!this.isLocked) {
+      this._locked.value = false;
 
+      if (updateLock) {
+        this._locked.commit();
+      }
+
+      return;
+    }
+
+    this._locked.value = false;
     this._unlock();
 
-    // Set the locked flag.
-    this._locked = false;
+    if (updateLock) {
+      this._locked.commit();
+    }
   }
 
   toggleLock() {
