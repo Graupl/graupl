@@ -84,31 +84,38 @@ class NavigationShelf {
   };
 
   /**
-   * The duration time (in milliseconds) for the transition between open and closed states.
+   * The duration times (in milliseconds) for various things throughout the navigation shelf.
    *
    * @protected
    *
-   * @type {number}
+   * @type {Object<number>}
+   *
+   * @property {number} transition - The duration time (in milliseconds) for the transition between open and closed states.
+   * @property {number} open       - The duration time (in milliseconds) for the transition from closed to open states.
+   * @property {number} close      - The duration time (in milliseconds) for the transition from open to closed states.
    */
-  _transitionDuration = 250;
+  _durations = {
+    transition: 250,
+    open: -1,
+    close: -1,
+  };
 
   /**
-   * The duration time (in milliseconds) for the transition from closed to open states.
+   * The delay times (in milliseconds) for various things throughout the navigation shelf.
    *
    * @protected
    *
-   * @type {number}
-   */
-  _openDuration = -1;
-
-  /**
-   * The duration time (in milliseconds) for the transition from open to closed states.
+   * @type {Object<number>}
    *
-   * @protected
-   *
-   * @type {number}
+   * @property {number} hover - The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
+   * @property {number} enter - The delay time (in milliseconds) used for pointerenter events to take place.
+   * @property {number} leave - The delay time (in milliseconds) used for pointerleave events to take place.
    */
-  _closeDuration = -1;
+  _delays = {
+    hover: 250,
+    enter: -1,
+    leave: -1,
+  };
 
   /**
    * The current state of the shelf's focus.
@@ -136,33 +143,6 @@ class NavigationShelf {
    * @type {boolean}
    */
   _hover = false;
-
-  /**
-   * The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _hoverDelay = 250;
-
-  /**
-   * The delay time (in milliseconds) used for pointerenter events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _enterDelay = -1;
-
-  /**
-   * The delay time (in milliseconds) used for pointerleave events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _leaveDelay = -1;
 
   /**
    * A variable to hold the hover timeout function.
@@ -425,7 +405,7 @@ class NavigationShelf {
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
-  }) {
+  } = {}) {
     // Set DOM elements.
     this._dom.shelf = shelfElement;
     this._dom.controller = controllerElement || null;
@@ -449,9 +429,9 @@ class NavigationShelf {
     this._classes.initialize = initializeClass || "";
 
     // Set transition duration.
-    this._transitionDuration = transitionDuration;
-    this._openDuration = openDuration;
-    this._closeDuration = closeDuration;
+    this._durations.transition = transitionDuration;
+    this._durations.open = openDuration;
+    this._durations.close = closeDuration;
 
     // Set locked state.
     this._locked = new TransactionalValue(locked);
@@ -464,9 +444,9 @@ class NavigationShelf {
 
     // Set hover settings.
     this._hover = hover;
-    this._hoverDelay = hoverDelay;
-    this._enterDelay = enterDelay;
-    this._leaveDelay = leaveDelay;
+    this._delays.hover = hoverDelay;
+    this._delays.enter = enterDelay;
+    this._delays.leave = leaveDelay;
 
     if (initialize) {
       this.initialize();
@@ -760,17 +740,17 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _transitionDuration
+   * @see _durations
    */
   get transitionDuration() {
-    return this._transitionDuration;
+    return this._durations.transition;
   }
 
   set transitionDuration(value) {
     isValidType("number", { value });
 
-    if (this._transitionDuration !== value) {
-      this._transitionDuration = value;
+    if (this._durations.transition !== value) {
+      this._durations.transition = value;
       this._setTransitionDurations();
     }
   }
@@ -784,19 +764,19 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _openDuration
+   * @see _durations
    */
   get openDuration() {
-    if (this._openDuration === -1) return this.transitionDuration;
+    if (this._durations.open === -1) return this.transitionDuration;
 
-    return this._openDuration;
+    return this._durations.open;
   }
 
   set openDuration(value) {
     isValidType("number", { value });
 
-    if (this._openDuration !== value) {
-      this._openDuration = value;
+    if (this._durations.open !== value) {
+      this._durations.open = value;
       this._setTransitionDurations();
     }
   }
@@ -810,19 +790,19 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _closeDuration
+   * @see _durations
    */
   get closeDuration() {
-    if (this._closeDuration === -1) return this.transitionDuration;
+    if (this._durations.close === -1) return this.transitionDuration;
 
-    return this._closeDuration;
+    return this._durations.close;
   }
 
   set closeDuration(value) {
     isValidType("number", { value });
 
-    if (this._closeDuration !== value) {
-      this._closeDuration = value;
+    if (this._durations.close !== value) {
+      this._durations.close = value;
       this._setTransitionDurations();
     }
   }
@@ -883,17 +863,17 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _hoverDelay
+   * @see _delays
    */
   get hoverDelay() {
-    return this._hoverDelay;
+    return this._delays.hover;
   }
 
   set hoverDelay(value) {
     isValidType("number", { value });
 
-    if (this._hoverDelay !== value) {
-      this._hoverDelay = value;
+    if (this._delays.hover !== value) {
+      this._delays.hover = value;
     }
   }
 
@@ -904,19 +884,19 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _enterDelay
+   * @see _delays
    */
   get enterDelay() {
-    if (this._enterDelay === -1) return this.hoverDelay;
+    if (this._delays.enter === -1) return this.hoverDelay;
 
-    return this._enterDelay;
+    return this._delays.enter;
   }
 
   set enterDelay(value) {
     isValidType("number", { value });
 
-    if (this._enterDelay !== value) {
-      this._enterDelay = value;
+    if (this._delays.enter !== value) {
+      this._delays.enter = value;
     }
   }
 
@@ -927,19 +907,19 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _leaveDelay
+   * @see _delays
    */
   get leaveDelay() {
-    if (this._leaveDelay === -1) return this.hoverDelay;
+    if (this._delays.leave === -1) return this.hoverDelay;
 
-    return this._leaveDelay;
+    return this._delays.leave;
   }
 
   set leaveDelay(value) {
     isValidType("number", { value });
 
-    if (this._leaveDelay !== value) {
-      this._leaveDelay = value;
+    if (this._delays.leave !== value) {
+      this._delays.leave = value;
     }
   }
 
@@ -1125,33 +1105,17 @@ class NavigationShelf {
       check = false;
     }
 
-    // Transition duration check.
-    const transitionDurationCheck = isValidType("number", {
-      transitionDuration: this._transitionDuration,
-    });
+    // Duration checks.
+    const durations = {};
+    for (const key of Object.keys(this._durations)) {
+      if (this._durations[key] === "") continue;
 
-    if (!transitionDurationCheck.status) {
-      this._errors.push(transitionDurationCheck.error.message);
-      check = false;
+      durations[`${key}Duration`] = this._durations[key];
     }
+    const durationChecks = isValidType("number", durations);
 
-    // Open duration check.
-    const openDurationCheck = isValidType("number", {
-      openDuration: this._openDuration,
-    });
-
-    if (!openDurationCheck.status) {
-      this._errors.push(openDurationCheck.error.message);
-      check = false;
-    }
-
-    // Close duration check.
-    const closeDurationCheck = isValidType("number", {
-      closeDuration: this._closeDuration,
-    });
-
-    if (!closeDurationCheck.status) {
-      this._errors.push(closeDurationCheck.error.message);
+    if (!durationChecks.status) {
+      this._errors.push(durationChecks.error.message);
       check = false;
     }
 
@@ -1163,33 +1127,17 @@ class NavigationShelf {
       check = false;
     }
 
-    // Hover delay check.
-    const hoverDelayCheck = isValidType("number", {
-      hoverDelay: this._hoverDelay,
-    });
+    // Delay checks.
+    const delays = {};
+    for (const key of Object.keys(this._delays)) {
+      if (this._delays[key] === "") continue;
 
-    if (!hoverDelayCheck.status) {
-      this._errors.push(hoverDelayCheck.error.message);
-      check = false;
+      delays[`${key}Delay`] = this._delays[key];
     }
+    const delayChecks = isValidType("number", delays);
 
-    // Enter delay check.
-    const enterDelayCheck = isValidType("number", {
-      enterDelay: this._enterDelay,
-    });
-
-    if (!enterDelayCheck.status) {
-      this._errors.push(enterDelayCheck.error.message);
-      check = false;
-    }
-
-    // Leave delay check.
-    const leaveDelayCheck = isValidType("number", {
-      leaveDelay: this._leaveDelay,
-    });
-
-    if (!leaveDelayCheck.status) {
-      this._errors.push(leaveDelayCheck.error.message);
+    if (!delayChecks.status) {
+      this._errors.push(delayChecks.error.message);
       check = false;
     }
 
