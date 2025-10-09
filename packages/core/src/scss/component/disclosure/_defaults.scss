@@ -15,8 +15,8 @@ $disclosure-selector-base: $selector-base !default;
 $disclosure-selector: "disclosure" !default;
 $disclosure-content-selector-base: $selector-base !default;
 $disclosure-content-selector: "disclosure-content" !default;
-$disclosure-controller-selector-base: $modifier-selector-base !default;
-$disclosure-controller-selector: "disclosure-controller" !default;
+$disclosure-toggle-selector-base: $modifier-selector-base !default;
+$disclosure-toggle-selector: "disclosure-toggle" !default;
 $disclosure-open-selector-base: $modifier-selector-base !default;
 $disclosure-open-selector: "show" !default;
 $disclosure-closed-selector-base: $modifier-selector-base !default;
@@ -38,3 +38,8 @@ $disclosure-transitioning-block-size: $disclosure-hide-block-size !default;
 $disclosure-show-opacity: 1 !default;
 $disclosure-hide-opacity: 0 !default;
 $disclosure-transitioning-opacity: $disclosure-hide-opacity !default;
+
+// Disclosure toggle properties.
+$disclosure-toggle-content: "'↓'" !default;
+$disclosure-toggle-transform: rotate(0deg) !default;
+$disclosure-toggle-open-transform: rotate(-180deg) !default;

@@ -820,7 +820,7 @@ class Disclosure {
    */
   _setDOMElementType(
     elementType,
-    { base = this.dom.shelf, overwrite = true, strict = true } = {}
+    { base = this.dom.disclosure, overwrite = true, strict = true } = {}
   ) {
     if (typeof this.selectors[elementType] === "string") {
       if (this._domLock.includes(elementType)) {
@@ -960,6 +960,8 @@ class Disclosure {
       removeClass(this.closeClass, this.dom.disclosure);
     }
 
+    this.dom.content.removeAttribute("inert");
+
     if (emit) {
       this.dom.controller.dispatchEvent(this._expandEvent);
     }
@@ -1021,6 +1023,8 @@ class Disclosure {
       // Remove the open class.
       removeClass(this.openClass, this.dom.disclosure);
     }
+
+    this.dom.content.setAttribute("inert", "true");
 
     if (emit) {
       this.dom.controller.dispatchEvent(this._collapseEvent);

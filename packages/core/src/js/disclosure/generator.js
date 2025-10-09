@@ -1,12 +1,12 @@
 import Disclosure from "./Disclosure.js";
 import once from "@drupal/once";
 
-const generate = (
+const generate = ({
   options = {},
   context = document,
   disclosureSelector = ".disclosure",
-  controllerSelector = ".disclosure-controller"
-) => {
+  controllerSelector = ".disclosure-toggle",
+} = {}) => {
   once("graupl-disclosure-generator", disclosureSelector, context).forEach(
     (disclosureElement) => {
       const disclosureOptions = disclosureElement.dataset

@@ -5,13 +5,13 @@
 @use "../../defaults" as root-defaults;
 @use "defaults";
 @use "variables" as *;
+@use "../../base/button/mixins" as button-mixins;
 
 @include layer(component) {
   // .disclosure
   #{defaults.$disclosure-selector-base}#{defaults.$disclosure-selector} {
     display: $disclosure-display;
     block-size: $disclosure-block-size;
-    padding: $disclosure-padding;
     overflow: hidden;
     transition: $disclosure-transition;
     opacity: $disclosure-opacity;
@@ -36,5 +36,58 @@
       --#{root-defaults.$prefix}disclosure-block-size: #{$disclosure-show-block-size};
       --#{root-defaults.$prefix}disclosure-opacity: #{$disclosure-show-opacity};
     }
+  }
+
+  // .disclosure-content
+  #{defaults.$disclosure-content-selector-base}#{defaults.$disclosure-content-selector} {
+    flex: 1 1 auto;
+    padding: $disclosure-content-padding;
+    border-width: $disclosure-content-border-width;
+    border-style: $disclosure-content-border-style;
+    border-radius: $disclosure-content-border-radius;
+  }
+
+  // .disclosure-toggle.
+  #{defaults.$disclosure-toggle-selector-base}#{defaults.$disclosure-toggle-selector} {
+    @include button-mixins.apply-base;
+
+    &::after {
+      content: $disclosure-toggle-content;
+      display: block;
+      transform: $disclosure-toggle-transform;
+      transition: $disclosure-toggle-transition;
+    }
+
+    &[aria-expanded="true"]::after {
+      --#{root-defaults.$prefix}disclosure-toggle-transform: #{$disclosure-toggle-open-transform};
+    }
+  }
+
+  @include animation.off {
+    #{defaults.$disclosure-selector-base}#{defaults.$disclosure-selector} {
+      --#{root-defaults.$prefix}disclosure-transition: #{$disclosure-transition-reduced-motion};
+    }
+
+    #{defaults.$disclosure-toggle-selector-base}#{defaults.$disclosure-toggle-selector} {
+      --#{root-defaults.$prefix}disclosure-toggle-transition: #{$disclosure-toggle-transition-reduced-motion};
+    }
+  }
+}
+
+@include layer(theme) {
+  // .disclosure
+  #{defaults.$disclosure-selector-base}#{defaults.$disclosure-selector} {
+    background: $disclosure-background;
+    color: $disclosure-color;
+  }
+
+  // .disclosure-content
+  #{defaults.$disclosure-content-selector-base}#{defaults.$disclosure-content-selector} {
+    border-color: $disclosure-content-border-color;
+  }
+
+  // .disclosure-toggle
+  #{defaults.$disclosure-toggle-selector-base}#{defaults.$disclosure-toggle-selector} {
+    @include button-mixins.apply-theme;
   }
 }
