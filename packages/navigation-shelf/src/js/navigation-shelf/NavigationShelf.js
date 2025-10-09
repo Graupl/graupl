@@ -13,6 +13,7 @@ import {
   selectFirstFocusableElement,
 } from "@graupl/core/src/domHelpers.js";
 import storage from "@graupl/core/src/storage.js";
+import { TransactionalValue } from "@graupl/core/src/TransactionalValue.js";
 
 class NavigationShelf {
   /**
@@ -83,31 +84,38 @@ class NavigationShelf {
   };
 
   /**
-   * The duration time (in milliseconds) for the transition between open and closed states.
+   * The duration times (in milliseconds) for various things throughout the navigation shelf.
    *
    * @protected
    *
-   * @type {number}
+   * @type {Object<number>}
+   *
+   * @property {number} transition - The duration time (in milliseconds) for the transition between open and closed states.
+   * @property {number} open       - The duration time (in milliseconds) for the transition from closed to open states.
+   * @property {number} close      - The duration time (in milliseconds) for the transition from open to closed states.
    */
-  _transitionDuration = 250;
+  _durations = {
+    transition: 250,
+    open: -1,
+    close: -1,
+  };
 
   /**
-   * The duration time (in milliseconds) for the transition from closed to open states.
+   * The delay times (in milliseconds) for various things throughout the navigation shelf.
    *
    * @protected
    *
-   * @type {number}
-   */
-  _openDuration = -1;
-
-  /**
-   * The duration time (in milliseconds) for the transition from open to closed states.
+   * @type {Object<number>}
    *
-   * @protected
-   *
-   * @type {number}
+   * @property {number} hover - The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
+   * @property {number} enter - The delay time (in milliseconds) used for pointerenter events to take place.
+   * @property {number} leave - The delay time (in milliseconds) used for pointerleave events to take place.
    */
-  _closeDuration = -1;
+  _delays = {
+    hover: 250,
+    enter: -1,
+    leave: -1,
+  };
 
   /**
    * The current state of the shelf's focus.
@@ -137,33 +145,6 @@ class NavigationShelf {
   _hover = false;
 
   /**
-   * The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _hoverDelay = 250;
-
-  /**
-   * The delay time (in milliseconds) used for pointerenter events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _enterDelay = -1;
-
-  /**
-   * The delay time (in milliseconds) used for pointerleave events to take place.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _leaveDelay = -1;
-
-  /**
    * A variable to hold the hover timeout function.
    *
    * @protected
@@ -177,9 +158,9 @@ class NavigationShelf {
    *
    * @protected
    *
-   * @type {boolean}
+   * @type {TransactionalValue<boolean>}
    */
-  _locked = false;
+  _locked = new TransactionalValue(false);
 
   /**
    * A flag to check in the navigation shelf can dynamically close based on if the shelf has been manually interacted with already.
@@ -216,6 +197,24 @@ class NavigationShelf {
    * @type {boolean}
    */
   _open = false;
+
+  /**
+   * The width of the screen (in pixels) that the menu will automatically open/close itself.
+   *
+   * @protected
+   *
+   * @type {number}
+   */
+  _breakpointWidth = 1180;
+
+  /**
+   * This ResizeObserver for the navigation shelf.
+   *
+   * @protected
+   *
+   * @type {ResizeObserver|null}
+   */
+  _observer = null;
 
   /**
    * The event that is triggered when the shelf expands.
@@ -406,7 +405,7 @@ class NavigationShelf {
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
-  }) {
+  } = {}) {
     // Set DOM elements.
     this._dom.shelf = shelfElement;
     this._dom.controller = controllerElement || null;
@@ -430,12 +429,12 @@ class NavigationShelf {
     this._classes.initialize = initializeClass || "";
 
     // Set transition duration.
-    this._transitionDuration = transitionDuration;
-    this._openDuration = openDuration;
-    this._closeDuration = closeDuration;
+    this._durations.transition = transitionDuration;
+    this._durations.open = openDuration;
+    this._durations.close = closeDuration;
 
     // Set locked state.
-    this._locked = locked;
+    this._locked = new TransactionalValue(locked);
 
     // Set side.
     this._side = side;
@@ -445,9 +444,9 @@ class NavigationShelf {
 
     // Set hover settings.
     this._hover = hover;
-    this._hoverDelay = hoverDelay;
-    this._enterDelay = enterDelay;
-    this._leaveDelay = leaveDelay;
+    this._delays.hover = hoverDelay;
+    this._delays.enter = enterDelay;
+    this._delays.leave = leaveDelay;
 
     if (initialize) {
       this.initialize();
@@ -481,6 +480,7 @@ class NavigationShelf {
       this._handleHover();
       this._handleKeydown();
       this._handleKeyup();
+      this._handleResize();
 
       // Ensure the initial open state of the shelf.
       if (
@@ -554,6 +554,14 @@ class NavigationShelf {
     return this._classes.locked;
   }
 
+  set lockedClass(value) {
+    isValidClassList({ lockedClass: value });
+
+    if (this._classes.locked !== value) {
+      this._classes.locked = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
    *
@@ -563,6 +571,14 @@ class NavigationShelf {
    */
   get unlockedClass() {
     return this._classes.unlocked;
+  }
+
+  set unlockedClass(value) {
+    isValidClassList({ unlockedClass: value });
+
+    if (this._classes.unlocked !== value) {
+      this._classes.unlocked = value;
+    }
   }
 
   /**
@@ -576,6 +592,14 @@ class NavigationShelf {
     return this._classes.hover;
   }
 
+  set hoverClass(value) {
+    isValidClassList({ hoverClass: value });
+
+    if (this._classes.hover !== value) {
+      this._classes.hover = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf element when the shelf is not hoverable.
    *
@@ -585,6 +609,14 @@ class NavigationShelf {
    */
   get noHoverClass() {
     return this._classes.noHover;
+  }
+
+  set noHoverClass(value) {
+    isValidClassList({ noHoverClass: value });
+
+    if (this._classes.noHover !== value) {
+      this._classes.noHover = value;
+    }
   }
 
   /**
@@ -598,6 +630,14 @@ class NavigationShelf {
     return this._classes.left;
   }
 
+  set leftClass(value) {
+    isValidClassList({ leftClass: value });
+
+    if (this._classes.left !== value) {
+      this._classes.left = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
    *
@@ -607,6 +647,14 @@ class NavigationShelf {
    */
   get rightClass() {
     return this._classes.right;
+  }
+
+  set rightClass(value) {
+    isValidClassList({ rightClass: value });
+
+    if (this._classes.right !== value) {
+      this._classes.right = value;
+    }
   }
 
   /**
@@ -620,6 +668,14 @@ class NavigationShelf {
     return this._classes.open;
   }
 
+  set openClass(value) {
+    isValidClassList({ openClass: value });
+
+    if (this._classes.open !== value) {
+      this._classes.open = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf when the shelf is closed.
    *
@@ -629,6 +685,14 @@ class NavigationShelf {
    */
   get closeClass() {
     return this._classes.close;
+  }
+
+  set closeClass(value) {
+    isValidClassList({ closeClass: value });
+
+    if (this._classes.close !== value) {
+      this._classes.close = value;
+    }
   }
 
   /**
@@ -642,6 +706,14 @@ class NavigationShelf {
     return this._classes.transition;
   }
 
+  set transitionClass(value) {
+    isValidClassList({ transitionClass: value });
+
+    if (this._classes.transition !== value) {
+      this._classes.transition = value;
+    }
+  }
+
   /**
    * The class(es) to apply to the shelf when the shelf is initializing.
    *
@@ -653,6 +725,14 @@ class NavigationShelf {
     return this._classes.initialize;
   }
 
+  set initializeClass(value) {
+    isValidClassList({ initializeClass: value });
+
+    if (this._classes.initialize !== value) {
+      this._classes.initialize = value;
+    }
+  }
+
   /**
    * The duration time (in milliseconds) for the transition between open and closed states.
    *
@@ -660,10 +740,19 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _transitionDuration
+   * @see _durations
    */
   get transitionDuration() {
-    return this._transitionDuration;
+    return this._durations.transition;
+  }
+
+  set transitionDuration(value) {
+    isValidType("number", { value });
+
+    if (this._durations.transition !== value) {
+      this._durations.transition = value;
+      this._setTransitionDurations();
+    }
   }
 
   /**
@@ -675,12 +764,21 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _openDuration
+   * @see _durations
    */
   get openDuration() {
-    if (this._openDuration === -1) return this.transitionDuration;
+    if (this._durations.open === -1) return this.transitionDuration;
 
-    return this._openDuration;
+    return this._durations.open;
+  }
+
+  set openDuration(value) {
+    isValidType("number", { value });
+
+    if (this._durations.open !== value) {
+      this._durations.open = value;
+      this._setTransitionDurations();
+    }
   }
 
   /**
@@ -692,12 +790,21 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _closeDuration
+   * @see _durations
    */
   get closeDuration() {
-    if (this._closeDuration === -1) return this.transitionDuration;
+    if (this._durations.close === -1) return this.transitionDuration;
 
-    return this._closeDuration;
+    return this._durations.close;
+  }
+
+  set closeDuration(value) {
+    isValidType("number", { value });
+
+    if (this._durations.close !== value) {
+      this._durations.close = value;
+      this._setTransitionDurations();
+    }
   }
 
   /**
@@ -711,6 +818,14 @@ class NavigationShelf {
     return this._focusState;
   }
 
+  set focusState(value) {
+    isValidState({ value });
+
+    if (this._focusState !== value) {
+      this._focusState = value;
+    }
+  }
+
   /**
    * The last event triggered on the shelf.
    *
@@ -720,6 +835,14 @@ class NavigationShelf {
    */
   get currentEvent() {
     return this._currentEvent;
+  }
+
+  set currentEvent(value) {
+    isValidEvent({ value });
+
+    if (this._currentEvent !== value) {
+      this._currentEvent = value;
+    }
   }
 
   /**
@@ -740,10 +863,18 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _hoverDelay
+   * @see _delays
    */
   get hoverDelay() {
-    return this._hoverDelay;
+    return this._delays.hover;
+  }
+
+  set hoverDelay(value) {
+    isValidType("number", { value });
+
+    if (this._delays.hover !== value) {
+      this._delays.hover = value;
+    }
   }
 
   /**
@@ -753,12 +884,20 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _enterDelay
+   * @see _delays
    */
   get enterDelay() {
-    if (this._enterDelay === -1) return this.hoverDelay;
+    if (this._delays.enter === -1) return this.hoverDelay;
 
-    return this._enterDelay;
+    return this._delays.enter;
+  }
+
+  set enterDelay(value) {
+    isValidType("number", { value });
+
+    if (this._delays.enter !== value) {
+      this._delays.enter = value;
+    }
   }
 
   /**
@@ -768,12 +907,20 @@ class NavigationShelf {
    *
    * @type {number}
    *
-   * @see _leaveDelay
+   * @see _delays
    */
   get leaveDelay() {
-    if (this._leaveDelay === -1) return this.hoverDelay;
+    if (this._delays.leave === -1) return this.hoverDelay;
 
-    return this._leaveDelay;
+    return this._delays.leave;
+  }
+
+  set leaveDelay(value) {
+    isValidType("number", { value });
+
+    if (this._delays.leave !== value) {
+      this._delays.leave = value;
+    }
   }
 
   /**
@@ -787,6 +934,14 @@ class NavigationShelf {
     return this._prefix;
   }
 
+  set prefix(value) {
+    isValidType("string", { value });
+
+    if (this._prefix !== value) {
+      this._prefix = value;
+    }
+  }
+
   /**
    * A flag to indicate if the navigation shelf is locked.
    *
@@ -797,7 +952,20 @@ class NavigationShelf {
    * @see _locked
    */
   get isLocked() {
-    return this._locked;
+    return this._locked.value;
+  }
+
+  /**
+   * The committed lock preference for the navigation shelf.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get shouldBeLocked() {
+    return this._locked.committed;
   }
 
   /**
@@ -837,6 +1005,14 @@ class NavigationShelf {
     return this._key;
   }
 
+  set key(value) {
+    isValidType("string", { value });
+
+    if (this._key !== value) {
+      this._key = value;
+    }
+  }
+
   /**
    * A flag to check if the shelf can dynamically hover.
    *
@@ -848,8 +1024,18 @@ class NavigationShelf {
     return this._softLocked;
   }
 
+  set isSoftLocked(value) {
+    isValidType("boolean", { value });
+
+    if (this._softLocked !== value) {
+      this._softLocked = value;
+    }
+  }
+
   /**
    * The open state on the shelf.
+   *
+   * @readonly
    *
    * @type {boolean}
    *
@@ -870,143 +1056,6 @@ class NavigationShelf {
    */
   get errors() {
     return this._errors;
-  }
-
-  set dependentLockedClass(value) {
-    isValidClassList({ dependentLockedClass: value });
-    if (this._classes.dependentLocked !== value) {
-      this._classes.dependentLocked = value;
-    }
-  }
-
-  set dependentUnlockedClass(value) {
-    isValidClassList({ dependentUnlockedClass: value });
-    if (this._classes.dependentUnlocked !== value) {
-      this._classes.dependentUnlocked = value;
-    }
-  }
-
-  set openClass(value) {
-    isValidClassList({ openClass: value });
-
-    if (this._classes.open !== value) {
-      this._classes.open = value;
-    }
-  }
-
-  set closeClass(value) {
-    isValidClassList({ closeClass: value });
-
-    if (this._classes.close !== value) {
-      this._classes.close = value;
-    }
-  }
-
-  set transitionClass(value) {
-    isValidClassList({ transitionClass: value });
-
-    if (this._classes.transition !== value) {
-      this._classes.transition = value;
-    }
-  }
-
-  set initializeClass(value) {
-    isValidClassList({ initializeClass: value });
-
-    if (this._classes.initialize !== value) {
-      this._classes.initialize = value;
-    }
-  }
-
-  set transitionDuration(value) {
-    isValidType("number", { value });
-
-    if (this._transitionDuration !== value) {
-      this._transitionDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set openDuration(value) {
-    isValidType("number", { value });
-
-    if (this._openDuration !== value) {
-      this._openDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set closeDuration(value) {
-    isValidType("number", { value });
-
-    if (this._closeDuration !== value) {
-      this._closeDuration = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  set focusState(value) {
-    isValidState({ value });
-
-    if (this._focusState !== value) {
-      this._focusState = value;
-    }
-  }
-
-  set currentEvent(value) {
-    isValidEvent({ value });
-
-    if (this._currentEvent !== value) {
-      this._currentEvent = value;
-    }
-  }
-
-  set hoverDelay(value) {
-    isValidType("number", { value });
-
-    if (this._hoverDelay !== value) {
-      this._hoverDelay = value;
-    }
-  }
-
-  set enterDelay(value) {
-    isValidType("number", { value });
-
-    if (this._enterDelay !== value) {
-      this._enterDelay = value;
-    }
-  }
-
-  set leaveDelay(value) {
-    isValidType("number", { value });
-
-    if (this._leaveDelay !== value) {
-      this._leaveDelay = value;
-    }
-  }
-
-  set prefix(value) {
-    isValidType("string", { value });
-
-    if (this._prefix !== value) {
-      this._prefix = value;
-    }
-  }
-
-  set key(value) {
-    isValidType("string", { value });
-
-    if (this._key !== value) {
-      this._key = value;
-    }
-  }
-
-  set isSoftLocked(value) {
-    isValidType("boolean", { value });
-
-    if (this._softLocked !== value) {
-      this._softLocked = value;
-    }
   }
 
   /**
@@ -1056,33 +1105,17 @@ class NavigationShelf {
       check = false;
     }
 
-    // Transition duration check.
-    const transitionDurationCheck = isValidType("number", {
-      transitionDuration: this._transitionDuration,
-    });
+    // Duration checks.
+    const durations = {};
+    for (const key of Object.keys(this._durations)) {
+      if (this._durations[key] === "") continue;
 
-    if (!transitionDurationCheck.status) {
-      this._errors.push(transitionDurationCheck.error.message);
-      check = false;
+      durations[`${key}Duration`] = this._durations[key];
     }
+    const durationChecks = isValidType("number", durations);
 
-    // Open duration check.
-    const openDurationCheck = isValidType("number", {
-      openDuration: this._openDuration,
-    });
-
-    if (!openDurationCheck.status) {
-      this._errors.push(openDurationCheck.error.message);
-      check = false;
-    }
-
-    // Close duration check.
-    const closeDurationCheck = isValidType("number", {
-      closeDuration: this._closeDuration,
-    });
-
-    if (!closeDurationCheck.status) {
-      this._errors.push(closeDurationCheck.error.message);
+    if (!durationChecks.status) {
+      this._errors.push(durationChecks.error.message);
       check = false;
     }
 
@@ -1094,33 +1127,17 @@ class NavigationShelf {
       check = false;
     }
 
-    // Hover delay check.
-    const hoverDelayCheck = isValidType("number", {
-      hoverDelay: this._hoverDelay,
-    });
+    // Delay checks.
+    const delays = {};
+    for (const key of Object.keys(this._delays)) {
+      if (this._delays[key] === "") continue;
 
-    if (!hoverDelayCheck.status) {
-      this._errors.push(hoverDelayCheck.error.message);
-      check = false;
+      delays[`${key}Delay`] = this._delays[key];
     }
+    const delayChecks = isValidType("number", delays);
 
-    // Enter delay check.
-    const enterDelayCheck = isValidType("number", {
-      enterDelay: this._enterDelay,
-    });
-
-    if (!enterDelayCheck.status) {
-      this._errors.push(enterDelayCheck.error.message);
-      check = false;
-    }
-
-    // Leave delay check.
-    const leaveDelayCheck = isValidType("number", {
-      leaveDelay: this._leaveDelay,
-    });
-
-    if (!leaveDelayCheck.status) {
-      this._errors.push(leaveDelayCheck.error.message);
+    if (!delayChecks.status) {
+      this._errors.push(delayChecks.error.message);
       check = false;
     }
 
@@ -1133,7 +1150,7 @@ class NavigationShelf {
     }
 
     // Locked check.
-    const lockedCheck = isValidType("boolean", { locked: this._locked });
+    const lockedCheck = isValidType("boolean", { locked: this._locked.value });
     if (!lockedCheck.status) {
       this._errors.push(lockedCheck.error.message);
       check = false;
@@ -1156,16 +1173,15 @@ class NavigationShelf {
    *
    * @protected
    *
-   * @param {string}      elementType                - The type of element to populate.
-   * @param {HTMLElement} [base = this.dom.shelf] - The element used as the base for the querySelector.
-   * @param {boolean}     [overwrite = true]         - A flag to set if the existing elements will be overwritten.
-   * @param {boolean}     [strict = true]           - A flag to set if the elements must be direct children of the base.
+   * @param {string}                      elementType                     - The type of element to populate.
+   * @param {Object<HTMLElement,boolean>} [options = {}]                  - The options for setting the DOM element type.
+   * @param {HTMLElement}                 [options.base = this.dom.shelf] - The element used as the base for the querySelector.
+   * @param {boolean}                     [options.overwrite = true]      - A flag to set if the existing elements will be overwritten.
+   * @param {boolean}                     [options.strict = true]         - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    base = this.dom.shelf,
-    overwrite = true,
-    strict = true
+    { base = this.dom.shelf, overwrite = true, strict = true } = {}
   ) {
     if (typeof this.selectors[elementType] === "string") {
       if (
@@ -1262,7 +1278,7 @@ class NavigationShelf {
    * @protected
    */
   _setDOMElements() {
-    this._setDOMElementType("dependents", document, true, false);
+    this._setDOMElementType("dependents", { base: document, strict: false });
   }
 
   /**
@@ -1322,7 +1338,7 @@ class NavigationShelf {
       this.dom.lockController.setAttribute("aria-controls", this.dom.shelf.id);
       this.dom.lockController.setAttribute(
         "aria-pressed",
-        this._locked ? "true" : "false"
+        this.isLocked ? "true" : "false"
       );
     }
 
@@ -1361,6 +1377,46 @@ class NavigationShelf {
     isValidType("number", { delay });
 
     this._hoverTimeout = setTimeout(callback, delay);
+  }
+
+  /**
+   * Observes body size changes and keeps the shelf aligned with the configured breakpoint.
+   *
+   * @protected
+   */
+  _handleResize() {
+    if (this._breakpointWidth <= 0) {
+      return;
+    }
+
+    this._observer = new ResizeObserver((entries) => {
+      requestAnimationFrame(() => {
+        for (const entry of entries) {
+          const boxSize = Array.isArray(entry.contentBoxSize)
+            ? entry.contentBoxSize[0]
+            : entry.contentBoxSize;
+          const inlineSize =
+            boxSize && typeof boxSize.inlineSize === "number"
+              ? boxSize.inlineSize
+              : entry.contentRect.width;
+
+          if (typeof inlineSize !== "number") continue;
+
+          const belowBreakpoint = inlineSize <= this._breakpointWidth;
+          const aboveBreakpoint = inlineSize > this._breakpointWidth;
+
+          if (belowBreakpoint && this.isOpen) {
+            this.close({
+              preserveLock: this.shouldBeLocked,
+            });
+          } else if (aboveBreakpoint && this.shouldBeLocked && !this.isOpen) {
+            this._locked.reset();
+            this.lock({ force: true });
+          }
+        }
+      });
+    });
+    this._observer.observe(document.body);
   }
 
   _handleFocus() {
@@ -1407,7 +1463,7 @@ class NavigationShelf {
 
         this.currentEvent = "mouse";
         preventEvent(event);
-        this.toggle();
+        this.toggle({ preserveLock: false });
 
         if (this.isOpen) {
           this.focusState = "self";
@@ -1652,7 +1708,7 @@ class NavigationShelf {
     );
   }
 
-  _expand(emit = true, transition = true) {
+  _expand({ emit = true, transition = true } = {}) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "true");
     }
@@ -1757,7 +1813,15 @@ class NavigationShelf {
     }
   }
 
-  _lock(emit = true) {
+  /**
+   * Applies the locked state styling and dispatches the lock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for the lock side effects.
+   * @param {boolean}         [options.emit = true] - Whether to emit the lock event.
+   */
+  _lock({ emit = true } = {}) {
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "true");
     }
@@ -1783,7 +1847,15 @@ class NavigationShelf {
     }
   }
 
-  _unlock(emit = true) {
+  /**
+   * Applies the unlocked state styling and dispatches the unlock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for the unlock side effects.
+   * @param {boolean}         [options.emit = true] - Whether to emit the unlock event.
+   */
+  _unlock({ emit = true } = {}) {
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "false");
     }
@@ -1809,7 +1881,15 @@ class NavigationShelf {
     }
   }
 
-  _shiftSide(emit = true) {
+  /**
+   * Updates all dependent elements to reflect the shelf side.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]      - Options for shifting side.
+   * @param {boolean}         [options.emit=true] - Whether to emit the shift event.
+   */
+  _shiftSide({ emit = true } = {}) {
     const toClass = this._classes[this.side];
     const fromClass = this._classes[this.otherSide];
 
@@ -1834,7 +1914,15 @@ class NavigationShelf {
     }
   }
 
-  _enableHover(emit = true) {
+  /**
+   * Enables hover mode on the shelf.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
+   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
+   */
+  _enableHover({ emit = true } = {}) {
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "true");
     }
@@ -1848,7 +1936,15 @@ class NavigationShelf {
     }
   }
 
-  _disableHover(emit = true) {
+  /**
+   * Disables hover mode on the shelf.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
+   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
+   */
+  _disableHover({ emit = true } = {}) {
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "false");
     }
@@ -1862,7 +1958,13 @@ class NavigationShelf {
     }
   }
 
-  open(force = false) {
+  /**
+   * Opens the shelf.
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for opening the shelf.
+   * @param {boolean}         [options.emit = true] - Whether to force the open action.
+   */
+  open({ force = false } = {}) {
     // Only open if the shelf is closed.
     if (this.isOpen && !force) return;
 
@@ -1872,46 +1974,83 @@ class NavigationShelf {
     this._open = true;
   }
 
-  close(force = false) {
+  /**
+   * Closes the shelf and optionally preserves the committed lock state.
+   *
+   * @param {Object<boolean>} [options = {}]                - Options for closing the shelf.
+   * @param {boolean}         [options.force = false]       - Whether to force the close action.
+   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged.
+   */
+  close({ force = false, preserveLock = true } = {}) {
     // Only close if the shelf is open.
     if (!this.isOpen && !force) return;
 
-    this.unlock();
+    this.unlock({ updateLock: !preserveLock });
     this._collapse();
 
     // Set the open flag.
     this._open = false;
   }
 
-  toggle() {
+  /**
+   * Toggles the shelf open or closed.
+   *
+   * @param {Object<boolean>} [options = {}]                - Options for toggling the shelf.
+   * @param {boolean}         [options.force = false]       - Whether to force the transition.
+   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged when closing.
+   */
+  toggle({ force = false, preserveLock = true } = {}) {
     if (this.isOpen) {
-      this.close();
+      this.close({ force, preserveLock });
     } else {
-      this.open();
+      this.open({ force });
     }
   }
 
-  lock() {
+  /**
+   * Locks the shelf and ensures it remains open.
+   *
+   * @param {Object<boolean>} [options = {}]        - Options for locking the shelf.
+   * @param {boolean}         [options.emit = true] - Whether to force the lock even if already locked.
+   */
+  lock({ force = false } = {}) {
     // Only lock if the shelf is unlocked.
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
+    this._locked.value = true;
     this._lock();
 
-    // Set the locked flag.
-    this._locked = true;
+    // Commit the locked preference.
+    this._locked.commit();
 
     // Open the shelf.
-    this.open(true);
+    this.open({ force: true });
   }
 
-  unlock() {
+  /**
+   * Unlocks the shelf.
+   *
+   * @param {Object<boolean>} [options = {}]              - Options for unlocking the shelf.
+   * @param {boolean}         [options.updateLock = true] - Whether to commit the unlocked state as the new preference.
+   */
+  unlock({ updateLock = true } = {}) {
     // Only unlock if the shelf is locked.
-    if (!this.isLocked) return;
+    if (!this.isLocked) {
+      this._locked.value = false;
 
+      if (updateLock) {
+        this._locked.commit();
+      }
+
+      return;
+    }
+
+    this._locked.value = false;
     this._unlock();
 
-    // Set the locked flag.
-    this._locked = false;
+    if (updateLock) {
+      this._locked.commit();
+    }
   }
 
   toggleLock() {
