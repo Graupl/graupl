@@ -1,0 +1,45 @@
+// @graupl/core disclosure component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+
+// Disclosure selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$disclosure-selector-base: $selector-base !default;
+$disclosure-selector: "disclosure" !default;
+$disclosure-content-selector-base: $selector-base !default;
+$disclosure-content-selector: "disclosure-content" !default;
+$disclosure-toggle-selector-base: $modifier-selector-base !default;
+$disclosure-toggle-selector: "disclosure-toggle" !default;
+$disclosure-open-selector-base: $modifier-selector-base !default;
+$disclosure-open-selector: "show" !default;
+$disclosure-closed-selector-base: $modifier-selector-base !default;
+$disclosure-closed-selector: "hide" !default;
+$disclosure-transitioning-selector-base: $modifier-selector-base !default;
+$disclosure-transitioning-selector: "transitioning" !default;
+
+// Visibility properties.
+$disclosure-show-display: flex !default;
+$disclosure-hide-display: flex !default;
+$disclosure-transitioning-display: $disclosure-show-display !default;
+
+// Disclosure block-size properties.
+$disclosure-show-block-size: 100% !default;
+$disclosure-hide-block-size: 0 !default;
+$disclosure-transitioning-block-size: $disclosure-hide-block-size !default;
+
+// Opacity properties.
+$disclosure-show-opacity: 1 !default;
+$disclosure-hide-opacity: 0 !default;
+$disclosure-transitioning-opacity: $disclosure-hide-opacity !default;
+
+// Disclosure toggle properties.
+$disclosure-toggle-content: "'↓'" !default;
+$disclosure-toggle-transform: rotate(0deg) !default;
+$disclosure-toggle-open-transform: rotate(-180deg) !default;
