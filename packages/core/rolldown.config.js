@@ -131,4 +131,26 @@ export default defineConfig([
     platform: "browser",
     plugins,
   },
+  {
+    input: "./src/js/disclosure/Disclosure.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/disclosure.${format}.js`,
+      format,
+      name: "Disclosure",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/disclosure/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/disclosure.${format}.js`,
+      format,
+      name: "DisclosureGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
 ]);

@@ -1961,8 +1961,8 @@ class NavigationShelf {
   /**
    * Opens the shelf.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for opening the shelf.
-   * @param {boolean}         [options.emit = true] - Whether to force the open action.
+   * @param {Object<boolean>} [options = {}]          - Options for opening the shelf.
+   * @param {boolean}         [options.force = false] - Whether to force the open action.
    */
   open({ force = false } = {}) {
     // Only open if the shelf is closed.

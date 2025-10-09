@@ -1136,6 +1136,16 @@
         </li>
       </ul>
     </div>
+    <div class="container py-10 my-10 align-content-center">
+      <h2>Disclosures</h2>
+      <button class="disclosure-toggle primary" data-graupl-disclosure-target="#disclosure" type="button" aria-label="Toggle disclosure example"></button>
+      <div id="#disclosure" class="disclosure">
+        <div class="disclosure-content">
+          <p>This content is hidden until the disclosure is open.</p>
+          <p>This is some more content with a <a href="#">link</a> in it.</p>
+        </div>
+      </div>
+    </div>
     <div class="py-10 my-10 container sidebars">
       <div class="sidebar-left z-1">
         <div class="bg-primary-500 py-10">
@@ -1200,7 +1210,11 @@
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script src="./dist/js/graupl.js"></script>
+  <script type="module" src="./packages/core/src/js/accordion/index.js"></script>
+  <script type="module" src="./packages/core/src/js/alert/index.js"></script>
+  <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
+  <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
+  <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
   <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
