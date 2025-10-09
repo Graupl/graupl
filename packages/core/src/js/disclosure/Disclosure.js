@@ -15,6 +15,7 @@ import {
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
 import storage from "../storage.js";
+import { TransactionalValue } from "../TransactionalValue.js";
 
 class Disclosure {
   /**
@@ -63,14 +64,16 @@ class Disclosure {
    *
    * @type {Object<string, string[]>}
    *
-   * @property {string|string[]} open - The class(es) to apply when the disclosure is open.
-   * @property {string|string[]} close - The class(es) to apply when the disclousre is closed.
+   * @property {string|string[]} open       - The class(es) to apply when the disclosure is open.
+   * @property {string|string[]} close      - The class(es) to apply when the disclousre is closed.
    * @property {string|string[]} tranistion - The class(es) to apply when the disclosure is transitioning between states.
+   * @property {string|string[]} initialize - The class(es) to apply when the disclosure is initializing.
    */
   _classes = {
     open: "show",
     close: "hide",
     transition: "transitioning",
+    initialize: "initializing",
   };
 
   /**
@@ -113,9 +116,36 @@ class Disclosure {
    *
    * @protected
    *
+   * @type {TransactionalValue<boolean>}
+   */
+  _open = new TransactionalValue(false);
+
+  /**
+   * Whether or not to close the disclosure when it loses focus in the DOM.
+   *
+   * @protected
+   *
    * @type {boolean}
    */
-  _open = false;
+  _closeOnBlur = false;
+
+  /**
+   * The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   *
+   * @protected
+   *
+   * @type {number}
+   */
+  _breakpointWidth = -1;
+
+  /**
+   * This ResizeObserver for the disclosure.
+   *
+   * @protected
+   *
+   * @type {ResizeObserver|null}
+   */
+  _observer = null;
 
   /**
    * The event that is triggered when the disclosure expands.
@@ -182,7 +212,10 @@ class Disclosure {
    * @param {number}             [options.transitionDuration = 250]                        - The duration of the transition between "open" and "closed" states (in milliseconds).
    * @param {boolean}            [options.openDuration = -1]                               - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {boolean}            [options.closeDuration = -1]                              - The duration of the transition from "open" to "closed" states (in milliseconds).
+   * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
+   * @param {boolean}            [options.minWidth = -1]                               - The width of the screen (in pixels) that the disclosure will automatically open/close itself.
    * @param {?string}            [options.prefix = graupl-]                                - The prefix to use for CSS custom properties.
+   * @param {?(string|string[])} [options.initializeClass = initializing]                  - The class to apply when a disclosure is initialzing.
    * @param {boolean}            [options.initialize = false]                              - Whether to initialize the disclosure upon construction.
    */
   constructor({
@@ -195,7 +228,10 @@ class Disclosure {
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
+    closeOnBlur = false,
+    minWidth = -1,
     prefix = "graupl-",
+    initializeClass = "initializing",
     initialize = false,
   }) {
     // Set the DOM elements.
@@ -209,11 +245,18 @@ class Disclosure {
     this._classes.open = openClass || "";
     this._classes.close = closeClass || "";
     this._classes.transition = transitionClass || "";
+    this._classes.initialize = initializeClass || "";
 
     // Set the transition durations.
     this._durations.transition = transitionDuration;
     this._durations.open = openDuration;
     this._durations.close = closeDuration;
+
+    // Set close on blur.
+    this._closeOnBlur = closeOnBlur;
+
+    // Set collapse width.
+    this._breakpointWidth = minWidth;
 
     // Set the prefix.
     this._prefix = prefix;
@@ -236,6 +279,8 @@ class Disclosure {
         );
       }
 
+      addClass(this._classes.initialize, this.dom.disclosure);
+
       // Set up the DOM.
       this._generateKey();
       this._setDOMElements();
@@ -247,6 +292,7 @@ class Disclosure {
       this._handleClick();
       this._handleKeydown();
       this._handleKeyup();
+      this._handleResize();
 
       // Set the custom props.
       this._setTransitionDurations();
@@ -260,6 +306,10 @@ class Disclosure {
       } else {
         this._collapse(false, false);
       }
+
+      requestAnimationFrame(() => {
+        removeClass(this._classes.initialize, this.dom.disclosure);
+      });
     } catch (error) {
       console.error(error);
     }
@@ -349,6 +399,25 @@ class Disclosure {
   }
 
   /**
+   * The class(es) to apply to the shelf when the disclosure is initializing.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes
+   */
+  get initializeClass() {
+    return this._classes.initialize;
+  }
+
+  set initializeClass(value) {
+    isValidClassList({ initializeClass: value });
+
+    if (this._classes.initialize !== value) {
+      this._classes.initialize = value;
+    }
+  }
+
+  /**
    * The duration time (in milliseconds) for the transition between open and closed states.
    *
    * Setting this value will also set the --graupl-transition-duration CSS custom property on the disclosure.
@@ -423,6 +492,44 @@ class Disclosure {
   }
 
   /**
+   * The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   *
+   * @type {number}
+   *
+   * @see _breakpointWidth
+   */
+  get minWidth() {
+    return this._breakpointWidth;
+  }
+
+  set minWidth(value) {
+    isValidType("number", { value });
+
+    if (this._breakpointWidth !== value) {
+      this._breakpointWidth = value;
+    }
+  }
+
+  /**
+   * Whether to close the disclosure when it loses focus in the DOM.
+   *
+   * @type {boolean}
+   *
+   * @see _closeOnBlur
+   */
+  get closeOnBlur() {
+    return this._closeOnBlur;
+  }
+
+  set closeOnBlur(value) {
+    isValidType("boolean", { value });
+
+    if (this._closeOnBlur !== value) {
+      this._closeOnBlur = value;
+    }
+  }
+
+  /**
    * The current state of the disclosure's focus.
    *
    * @type {string}
@@ -490,7 +597,20 @@ class Disclosure {
    * @see _open
    */
   get isOpen() {
-    return this._open;
+    return this._open.value;
+  }
+
+  /**
+   * The open state of the disclosure that the user specifically triggered.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _open
+   */
+  get hasOpened() {
+    return this._open.committed;
   }
 
   /**
@@ -692,16 +812,15 @@ class Disclosure {
    *
    * @protected
    *
-   * @param {string}      elementType                  - The type of element to populate.
-   * @param {HTMLElement} [base = this.dom.disclosure] - The element used as the base for the querySelect.
-   * @param {boolean}     [overwrite = true]           - A flag to set if the existing elements will be overwritten.
-   * @param {boolean}     [strict = false]             - A flag to set if the elements must be direct children of the base.
+   * @param {string}                      elementType                          - The type of element to populate.
+   * @param {Object<HTMLElement,boolean>} [options = {}]                       - The options for setting the DOM element type.
+   * @param {HTMLElement}                 [options.base = this.dom.disclosure] - The element used as the base for the querySelector.
+   * @param {boolean}                     [options.overwrite = true]           - A flag to set if the existing elements will be overwritten.
+   * @param {boolean}                     [options.strict = true]              - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    base = this.dom.disclosure,
-    overwrite = true,
-    strict = false
+    { base = this.dom.shelf, overwrite = true, strict = true } = {}
   ) {
     if (typeof this.selectors[elementType] === "string") {
       if (this._domLock.includes(elementType)) {
@@ -908,6 +1027,38 @@ class Disclosure {
     }
   }
 
+  _handleResize() {
+    if (this._breakpointWidth <= 0) {
+      return;
+    }
+
+    this._observer = new ResizeObserver((entries) => {
+      requestAnimationFrame(() => {
+        for (const entry of entries) {
+          const boxSize = Array.isArray(entry.contentBoxSize)
+            ? entry.contentBoxSize[0]
+            : entry.contentBoxSize;
+          const inlineSize =
+            boxSize && typeof boxSize.inlineSize === "number"
+              ? boxSize.inlineSize
+              : entry.contentRect.width;
+
+          if (typeof inlineSize !== "number") continue;
+
+          const belowBreakpoint = inlineSize <= this.minWidth;
+          const aboveBreakpoint = inlineSize > this.minWidth;
+
+          if (belowBreakpoint && this.isOpen) {
+            this.close({ preserveState: true });
+          } else if (aboveBreakpoint && !this.isOpen && this.hasOpened) {
+            this.open();
+          }
+        }
+      });
+    });
+    this._observer.observe(document.body);
+  }
+
   /**
    * Handles focus events throughout the disclosure.
    *
@@ -916,6 +1067,7 @@ class Disclosure {
   _handleFocus() {
     this.dom.disclosure.addEventListener("focusout", (event) => {
       if (
+        !this.closeOnBlur ||
         this.currentEvent !== "keyboard" ||
         event.relatedTarget === null ||
         this.dom.disclosure.contains(event.relatedTarget) ||
@@ -945,7 +1097,7 @@ class Disclosure {
     });
 
     document.addEventListener("pointerup", (event) => {
-      if (this.focusState !== "self") return;
+      if (this.focusState !== "self" || !this.closeOnBlur) return;
 
       this.currentEvent = "mouse";
 
@@ -1044,17 +1196,25 @@ class Disclosure {
    * Sets the disclosure's focus state to "self", calls expand, and sets isOpen to `true`.
    *
    * @public
+   *
+   * @param {Object<boolean>} [options = {}]                  - Options for opening the disclosure.
+   * @param {boolean}         [options.force = false]         - Whether to force the open action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
    */
-  open() {
+  open({ force = false, preserveState = false } = {}) {
+    if (this.isOpen && !force) return;
+
     // Set the focus state.
     this.focusState = "self";
 
-    if (!this.isOpen) {
-      // Expand the disclosure.
-      this._expand();
+    // Expand the disclosure.
+    this._expand();
 
-      // Set the open state.
-      this._open = true;
+    // Set the open state.
+    this._open.value = true;
+
+    if (!preserveState) {
+      this._open.commit();
     }
   }
 
@@ -1064,17 +1224,25 @@ class Disclosure {
    * Sets the disclosure's focus state to "none", calls expand, and sets isOpen to `true`.
    *
    * @public
+   *
+   * @param {Object<boolean>} [options = {}]                  - Options for previewing the disclosure.
+   * @param {boolean}         [options.force = false]         - Whether to force the preview action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
    */
-  preview() {
+  preview({ force = false, preserveState = false } = {}) {
+    if (this.isOpen && !force) return;
+
     // Set the focus state.
     this.focusState = "none";
 
-    if (!this.isOpen) {
-      // Expand the disclosure.
-      this._expand();
+    // Expand the disclosure.
+    this._expand();
 
-      // Set the open state.
-      this._open = true;
+    // Set the open state.
+    this._open.value = true;
+
+    if (!preserveState) {
+      this._open.commit();
     }
   }
 
@@ -1084,17 +1252,25 @@ class Disclosure {
    * Sets the disclosure's focus state to "none", calls collapse, and sets isOpen to `false`.
    *
    * @public
+   *
+   * @param {Object<boolean>} [options = {}]                  - Options for closing the disclosure.
+   * @param {boolean}         [options.force = false]         - Whether to force the close action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
    */
-  close() {
+  close({ force = false, preserveState = false } = {}) {
+    if (!this.isOpen && !force) return;
+
     // Set the focus state.
     this.focusState = "none";
 
-    if (this.isOpen) {
-      // Collapse the disclosure.
-      this._collapse();
+    // Collapse the disclosure.
+    this._collapse();
 
-      // Set the open state.
-      this._open = false;
+    // Set the open state.
+    this._open.value = false;
+
+    if (!preserveState) {
+      this._open.commit();
     }
   }
 
@@ -1102,12 +1278,16 @@ class Disclosure {
    * Toggles the open state of the disclosure.
    *
    * @public
+   *
+   * @param {Object<boolean>} [options = {}]                  - Options for toggling the disclosure.
+   * @param {boolean}         [options.force = false]         - Whether to force the open or close action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
    */
-  toggle() {
+  toggle({ force = false, preserveState = false } = {}) {
     if (this.isOpen) {
-      this.close();
+      this.close({ force, preserveState });
     } else {
-      this.open();
+      this.open({ force, preserveState });
     }
   }
 }
