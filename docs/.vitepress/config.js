@@ -18,12 +18,22 @@ export default defineConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          api: "modern-compiler",
           importers: [new NodePackageImporter()],
         },
       },
     },
   },
+  markdown: {
+    toc: {
+      level: [1, 2, 3],
+    },
+  },
+  cleanUrls: true,
   themeConfig: {
+    search: {
+      provider: "local",
+    },
     nav: [
       {
         text: "Docs",
@@ -54,27 +64,52 @@ export default defineConfig({
       {
         text: "Getting Started",
         items: [
-          { text: "Compiling Graupl", link: "/compiling-graupl" },
           { text: "Introduction", link: "/introduction" },
+          { text: "Quick Start", link: "/quick-start" },
+          { text: "Compiling Graupl", link: "/compiling-graupl" },
+          { text: "Customizing Graupl", link: "/customizing-graupl" },
         ],
       },
       {
-        text: "Layout & Content",
+        text: "Base Elements",
         items: [
-          { text: "Layout", link: "/layout" },
-          { text: "Content", link: "/content" },
-          { text: "Forms", link: "/forms" },
+          { text: "Buttons", link: "base/button" },
+          { text: "Forms", link: "base/form" },
+          { text: "links", link: "base/link" },
+          { text: "Tables", link: "base/table" },
         ],
       },
       {
         text: "Components",
         items: [
-          { text: "Alert", link: "/components/alert" },
-          { text: "Button", link: "/components/button" },
-          { text: "Card", link: "/components/card" },
-          { text: "Input Group", link: "/components/inputgroup" },
-          { text: "Menu", link: "/components/menu" },
-          { text: "Navigation", link: "/components/navigation" },
+          { text: "Accordions", link: "/components/accordion" },
+          { text: "Alerts", link: "/components/alert" },
+          { text: "Buttons", link: "/components/button" },
+          { text: "Cards", link: "/components/card" },
+          { text: "Carousels", link: "/components/carousel" },
+          { text: "Input Groups", link: "/components/input-group" },
+          { text: "Lists", link: "/components/list" },
+          { text: "Menus", link: "/components/menu" },
+          { text: "Navigations", link: "/components/navigation" },
+        ],
+      },
+      {
+        text: "Layout",
+        items: [
+          { text: "Containers", link: "/layout/container" },
+          { text: "Columns", link: "/layout/column" },
+          { text: "Flex Columns", link: "/layout/flex-column" },
+        ],
+      },
+      {
+        text: "State",
+        items: [{ text: "Focus", link: "/state/focus" }],
+      },
+      {
+        text: "Theme",
+        items: [
+          { text: "Colors", link: "/theme/colors" },
+          { text: "Typography", link: "/theme/typography" },
         ],
       },
       {
@@ -101,17 +136,6 @@ export default defineConfig({
           { text: "Visually-hidden", link: "/utilities/visually-hidden" },
           { text: "Width", link: "/utilities/width" },
           { text: "Z-index", link: "/utilities/z-index" },
-        ],
-      },
-      {
-        text: "Advanced Topics",
-        items: [
-          { text: "Utilities", link: "/utilities" },
-          { text: "Functions", link: "/functions" },
-          { text: "Mixins", link: "/mixins" },
-          { text: "State", link: "/state" },
-          { text: "Theme", link: "/theme" },
-          { text: "Defaults", link: "/defaults" },
         ],
       },
     ],

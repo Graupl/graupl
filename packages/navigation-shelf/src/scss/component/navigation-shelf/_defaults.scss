@@ -44,6 +44,8 @@ $navigation-shelf-closed-selector-base: $modifier-selector-base !default;
 $navigation-shelf-closed-selector: "hide" !default;
 $navigation-shelf-transitioning-selector-base: $modifier-selector-base !default;
 $navigation-shelf-transitioning-selector: "transitioning" !default;
+$navigation-shelf-initializing-selector-base: $modifier-selector-base !default;
+$navigation-shelf-initializing-selector: "initializing" !default;
 
 // Navigation shelf properties.
 $navigation-shelf-side-toggle-pseudo-element: "before" !default;

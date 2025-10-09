@@ -188,6 +188,10 @@ $navigation-shelf-transition: var(
     #{root-variables.$transition-timing-function},
   display #{$navigation-shelf-transition-duration} allow-discrete
 );
+$navigation-shelf-transition-initializing: (
+  --#{root-defaults.$prefix}navigation-shelf-transition-initializing,
+  none
+);
 $navigation-shelf-transition-reduced-motion: var(
   --#{root-defaults.$prefix}navigation-shelf-transition-reduced-motion,
   opacity #{$navigation-shelf-transition-duration}

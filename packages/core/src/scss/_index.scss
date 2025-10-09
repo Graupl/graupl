@@ -1,15 +1,15 @@
 // @graupl/core styles.
 
 // Forward the layer initialization.
-@forward "init";
+@use "init";
 
 // Forward normalize.
-@forward "normalize";
+@use "normalize";
 
 // Forward all layers.
-@forward "base";
-@forward "layout";
-@forward "component";
-@forward "state";
-@forward "theme";
-@forward "utilities";
+@use "base";
+@use "layout";
+@use "component";
+@use "state";
+@use "theme";
+@use "utilities";
