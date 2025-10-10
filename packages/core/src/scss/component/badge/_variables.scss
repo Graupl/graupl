@@ -14,7 +14,7 @@
 // Typography.
 $badge-font-size: var(
   --#{root-defaults.$prefix}badge-font-size,
-  #{map.get(typography.$font-sizes, base)}
+  #{map.get(typography.$font-sizes, sm)}
 );
 
 // Colors.
