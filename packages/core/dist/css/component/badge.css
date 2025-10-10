@@ -1,0 +1,24 @@
+/* Error: There is no module with the namespace "theme".
+ *     ,
+ * 191 |             --#{root-defaults.$prefix}badge-#{$prop}: #{theme.get(
+ *     | ,-------------------------------------------------------^
+ * 192 | |               map.get($value, color),
+ * 193 | |               map.get($value, shade)
+ * 194 | |             )};
+ *     | '-------------^
+ *     '
+ *   src/scss/component/badge/_index.scss 191:55  @content
+ *   src/scss/mixins/_layer.scss 11:7             layer()
+ *   src/scss/component/badge/_index.scss 180:1   @forward
+ *   scss/component/badge.scss 3:1                root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: There is no module with the namespace "theme".\a     \2577 \a 191 \2502              --#{root-defaults.$prefix}badge-#{$prop}: #{theme.get(\a     \2502  \250c \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 ^\a 192 \2502  \2502                map.get($value, color),\a 193 \2502  \2502                map.get($value, shade)\a 194 \2502  \2502              )};\a     \2502  \2514 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 \2500 ^\a     \2575 \a   src/scss/component/badge/_index.scss 191:55  @content\a   src/scss/mixins/_layer.scss 11:7             layer()\a   src/scss/component/badge/_index.scss 180:1   @forward\a   scss/component/badge.scss 3:1                root stylesheet';
+}
