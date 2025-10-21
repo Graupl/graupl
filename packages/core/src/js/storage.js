@@ -8,76 +8,100 @@ import { isValidType } from "./validate.js";
 /**
  * Initializes the storage system.
  *
- * @param {?string} [type = null] - The type of storage to initialize.
+ * @param {Object<string>} [options = {}]           - The options for the storage.
+ * @param {?string}        [options.type = null]    - The type of storage.
+ * @param {string}         [options.scope = Graupl] - The scope of the storage.
  */
-export function initializeStorage(type = null) {
-  window.Graupl = window.Graupl || {};
+export function initializeStorage({ type = null, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return;
+
+  window[scope] = window[scope] || {};
 
   if (isValidType("string", { type })) {
-    window.Graupl[type] = window.Graupl[type] || {};
+    window[scope][type] = window[scope][type] || {};
   }
 }
 
 /**
  * Get the storage object.
  *
- * @param  {?string} type - The type of storage to get.
- * @return {object}       - The storage object.
+ * @param  {Object<string>} [options = {}]           - The options for the storage.
+ * @param  {?string}        [options.type = null]    - The type of storage.
+ * @param  {string}         [options.scope = Graupl] - The scope of the storage.
+ * @return {object|null}                             - The storage object or null.
  */
-export function getStorage(type = null) {
+export function getStorage({ type = null, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return null;
+
   if (isValidType("string", { type })) {
-    return window.Graupl[type];
+    return window[scope][type];
   }
 
-  return window.Graupl;
+  return window[scope];
 }
 
 /**
  * Set the storage object of a given type.
  *
- * @param {string} type - The type of storage to set.
- * @param {object} data - The data to set.
+ * @param {Object<string, object>} [options = {}]           - The options for the storage.
+ * @param {string}                 options.type             - The type of storage.
+ * @param {object}                 [options.data = {}]      - The data to store.
+ * @param {string}                 [options.scope = Graupl] - The scope of the storage.
  */
-export function setStorage(type, data = {}) {
+export function setStorage({ type, data = {}, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return;
+
   if (isValidType("string", { type }) && isValidType("object", { data })) {
-    window.Graupl[type] = data;
+    window[scope][type] = data;
   }
 }
 
 /**
  * Clear the storage object of a given type.
  *
- * @param {string} type - The type of storage to clear.
+ * @param {Object<string>} [options = {}]           - The options for the storage.
+ * @param {string}         options.type             - The type of storage.
+ * @param {string}         [options.scope = Graupl] - The scope of the storage.
  */
-export function clearStorage(type) {
+export function clearStorage({ type, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return;
+
   if (isValidType("string", { type })) {
-    window.Graupl[type] = {};
+    window[scope][type] = {};
   }
 }
 
 /**
  * Push a value to the storage object.
  *
- * @param {string} type  - The type of storage to push to.
- * @param {string} key   - The key to use for the value.
- * @param {*}      value - The value to store.
+ * @param {Object<string, object>} [options = {}]           - The options for the storage.
+ * @param {string}                 options.type             - The type of storage.
+ * @param {string}                 options.key              - The key of the storage item.
+ * @param {object}                 options.data             - The data to store.
+ * @param {string}                 [options.scope = Graupl] - The scope of the storage.
  */
-export function pushToStorage(type, key, value) {
+export function pushToStorage({ type, key, value, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return;
+
   if (isValidType("string", { type, key })) {
-    window.Graupl[type][key] = value;
+    window[scope][type][key] = value;
   }
 }
 
 /**
  * Get a value from the storage object.
  *
- * @param  {string }type - The type of storage to get from.
- * @param  {string }key  - The key to get the value from.
- * @return {*}           - The value from the storage object.
+ * @param  {Object<string>} [options = {}]           - The options for the storage.
+ * @param  {string}         options.type             - The type of storage.
+ * @param  {string}         options.key              - The key of the storage item.
+ * @param  {string}         [options.scope = Graupl] - The scope of the storage.
+ * @return {object|null}                             - The storage object or null.
  */
-export function getFromStorage(type, key) {
+export function getFromStorage({ type, key, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return null;
+
   if (isValidType("string", { type, key })) {
-    return window.Graupl[type][key];
+    return window[scope][type][key];
   }
 
   return null;
@@ -86,12 +110,16 @@ export function getFromStorage(type, key) {
 /**
  * Remove a value from the storage object.
  *
- * @param {string} type - The type of storage to remove from.
- * @param {string} key  - The key to remove the value from.
+ * @param {Object<string>} [options = {}]           - The options for the storage.
+ * @param {string}         options.type             - The type of storage.
+ * @param {string}         options.key              - The key of the storage item.
+ * @param {string}         [options.scope = Graupl] - The scope of the storage.
  */
-export function removeFromStorage(type, key) {
+export function removeFromStorage({ type, key, scope = "Graupl" } = {}) {
+  if (!isValidType("string", { scope })) return;
+
   if (isValidType("string", { type, key })) {
-    delete window.Graupl[type][key];
+    delete window[scope][type][key];
   }
 }
 
