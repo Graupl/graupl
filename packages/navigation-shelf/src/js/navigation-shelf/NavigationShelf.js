@@ -1389,6 +1389,8 @@ class NavigationShelf {
       return;
     }
 
+    let width = 0;
+
     this._observer = new ResizeObserver((entries) => {
       requestAnimationFrame(() => {
         for (const entry of entries) {
@@ -1402,6 +1404,8 @@ class NavigationShelf {
 
           if (typeof inlineSize !== "number") continue;
 
+          if (width === inlineSize) continue;
+
           const belowBreakpoint = inlineSize <= this._breakpointWidth;
           const aboveBreakpoint = inlineSize > this._breakpointWidth;
 
@@ -1413,6 +1417,8 @@ class NavigationShelf {
             this._locked.reset();
             this.lock({ force: true });
           }
+
+          width = inlineSize;
         }
       });
     });
