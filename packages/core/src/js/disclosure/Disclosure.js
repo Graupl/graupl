@@ -121,6 +121,15 @@ class Disclosure {
   _open = new TransactionalValue(false);
 
   /**
+   * A value to force the disclosure open when the breakpoint width is passed.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _shouldOpen = false;
+
+  /**
    * Whether or not to close the disclosure when it loses focus in the DOM.
    *
    * @protected
@@ -213,7 +222,8 @@ class Disclosure {
    * @param {boolean}            [options.openDuration = -1]                               - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {boolean}            [options.closeDuration = -1]                              - The duration of the transition from "open" to "closed" states (in milliseconds).
    * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
-   * @param {boolean}            [options.minWidth = -1]                               - The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   * @param {boolean}            [options.minWidth = -1]                                   - The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
    * @param {?string}            [options.prefix = graupl-]                                - The prefix to use for CSS custom properties.
    * @param {?(string|string[])} [options.initializeClass = initializing]                  - The class to apply when a disclosure is initialzing.
    * @param {boolean}            [options.initialize = false]                              - Whether to initialize the disclosure upon construction.
@@ -230,6 +240,7 @@ class Disclosure {
     closeDuration = -1,
     closeOnBlur = false,
     minWidth = -1,
+    autoOpen = false,
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
@@ -255,8 +266,9 @@ class Disclosure {
     // Set close on blur.
     this._closeOnBlur = closeOnBlur;
 
-    // Set collapse width.
+    // Set collapse width and auto open functionality.
     this._breakpointWidth = minWidth;
+    this._shouldOpen = autoOpen;
 
     // Set the prefix.
     this._prefix = prefix;
@@ -299,9 +311,13 @@ class Disclosure {
 
       // Set up the storage.
       storage.initializeStorage("disclosures");
+      storage.initializeStorage("disclosures");
       storage.pushToStorage("disclosures", this.dom.disclosure.id, this);
 
-      if (this.dom.controller.getAttribute("aria-expanded") === "true") {
+      if (
+        this.dom.controller.getAttribute("aria-expanded") === "true" ||
+        (this.shouldOpen && window.matchMedia(this.openQuery).matches)
+      ) {
         this._expand(false, false);
       } else {
         this._collapse(false, false);
@@ -611,6 +627,59 @@ class Disclosure {
    */
   get hasOpened() {
     return this._open.committed;
+  }
+
+  /**
+   * A value to force opening reguardless of user interaction.
+   *
+   * @type {boolean}
+   *
+   * @see _shouldOpen
+   */
+  get shouldOpen() {
+    return this._shouldOpen;
+  }
+
+  set shouldOpen(value) {
+    isValidType("boolean", { value });
+
+    if (this._shouldOpen !== value) {
+      this._shouldOpen = value;
+    }
+  }
+
+  /**
+   * A media query for when the disclosure should open.
+   *
+   * Will return an empty string if no min width is set.
+   *
+   * @readonly
+   *
+   * @type {string}
+   */
+  get openQuery() {
+    if (this.minWidth === -1) {
+      return "";
+    }
+
+    return `(width > ${this.minWidth}px)`;
+  }
+
+  /**
+   * A media query for when the disclosure should close.
+   *
+   * Will return an empty string if no min width is set.
+   *
+   * @readonly
+   *
+   * @type {string}
+   */
+  get closeQuery() {
+    if (this.minWidth === -1) {
+      return "";
+    }
+
+    return `(width <= ${this.minWidth}px)`;
   }
 
   /**
@@ -1058,7 +1127,11 @@ class Disclosure {
 
           if (belowBreakpoint && this.isOpen) {
             this.close({ preserveState: true });
-          } else if (aboveBreakpoint && !this.isOpen && this.hasOpened) {
+          } else if (
+            aboveBreakpoint &&
+            !this.isOpen &&
+            (this.hasOpened || this.shouldOpen)
+          ) {
             this.open();
           }
 
