@@ -1036,6 +1036,8 @@ class Disclosure {
       return;
     }
 
+    let width = 0;
+
     this._observer = new ResizeObserver((entries) => {
       requestAnimationFrame(() => {
         for (const entry of entries) {
@@ -1049,6 +1051,8 @@ class Disclosure {
 
           if (typeof inlineSize !== "number") continue;
 
+          if (width === inlineSize) continue;
+
           const belowBreakpoint = inlineSize <= this.minWidth;
           const aboveBreakpoint = inlineSize > this.minWidth;
 
@@ -1057,6 +1061,8 @@ class Disclosure {
           } else if (aboveBreakpoint && !this.isOpen && this.hasOpened) {
             this.open();
           }
+
+          width = inlineSize;
         }
       });
     });
