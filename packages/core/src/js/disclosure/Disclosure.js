@@ -758,9 +758,9 @@ class Disclosure {
     // Query selector checks.
     const querySelectors = {};
 
-    for (const querySelector of Object.keys(this._querySelectors)) {
+    for (const querySelector of Object.keys(this._selectors)) {
       querySelectors[`${querySelector}Selector`] =
-        this._querySelectors[querySelector];
+        this._selectors[querySelector];
     }
 
     const querySelectorChecks = isQuerySelector(querySelectors);
@@ -821,7 +821,7 @@ class Disclosure {
    */
   _generateKey({ regenerate = false } = {}) {
     if (this.key === "" || regenerate) {
-      this.key = Math.random()
+      this._key = Math.random()
         .toString(36)
         .replace(/[^a-z]+/g, "")
         .substring(0, 10);
