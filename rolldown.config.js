@@ -46,6 +46,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/disclosure/index.js",
+    output: {
+      file: `dist/js/disclosure.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/navigation/index.js",
     output: {
       file: `dist/js/navigation.js`,
