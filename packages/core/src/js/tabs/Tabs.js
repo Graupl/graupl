@@ -9,6 +9,8 @@ import {
   isValidType,
   isValidClassList,
   isQuerySelector,
+  isValidState,
+  isValidEvent,
 } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
@@ -61,7 +63,7 @@ class Tabs {
   };
 
   /**
-   * The list of tab items.
+   * The declared elements within the tabs.
    *
    * @protected
    *
@@ -243,7 +245,7 @@ class Tabs {
   }
 
   /**
-   * Initializes the tab.
+   * Initializes the tabs.
    */
   initialize() {
     try {
@@ -294,7 +296,7 @@ class Tabs {
   }
 
   /**
-   * The dom elements of the tab.
+   * The DOM elements of the tab.
    *
    * @readonly
    *
@@ -307,7 +309,7 @@ class Tabs {
   }
 
   /**
-   * The elements of the tab.
+   * The declared elements of the tabs.
    *
    * @readonly
    *
@@ -509,6 +511,44 @@ class Tabs {
    */
   get currentTabToggle() {
     return this.elements.tabToggle[this.currentChild];
+  }
+
+  /**
+   * The current state of the tab's focus.
+   *
+   * @type {string}
+   *
+   * @see _focusState
+   */
+  get focusState() {
+    return this._focusState;
+  }
+
+  set focusState(value) {
+    isValidState({ value });
+
+    if (this._focusState !== value) {
+      this._focusState = value;
+    }
+  }
+
+  /**
+   * The last event triggered on the tabs.
+   *
+   * @type {string}
+   *
+   * @see _currentEvent
+   */
+  get currentEvent() {
+    return this._currentEvent;
+  }
+
+  set currentEvent(value) {
+    isValidEvent({ value });
+
+    if (this._currentEvent !== value) {
+      this._currentEvent = value;
+    }
   }
 
   /**
