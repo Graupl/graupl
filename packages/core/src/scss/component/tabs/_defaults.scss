@@ -1,0 +1,73 @@
+// @graupl/core tabs base default values.
+//
+// Generally, these should not be used directly when styling bases unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Tabs selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
+$tabs-selector-base: $selector-base !default;
+$tabs-selector: "tabs" !default;
+$tabs-tab-list-selector-base: $selector-base !default;
+$tabs-tab-list-selector: "tab-list" !default;
+$tabs-tab-toggle-selector-base: $selector-base !default;
+$tabs-tab-toggle-selector: "tab-toggle" !default;
+$tabs-tab-content-selector-base: $selector-base !default;
+$tabs-tab-content-selector: "tab-content" !default;
+$tabs-theme-selector-base: $modifier-selector-base !default;
+$tabs-theme-selector-prefix: "" !default;
+$tabs-tab-content-open-selector-base: $modifier-selector-base !default;
+$tabs-tab-content-open-selector: "show" !default;
+$tabs-tab-content-closed-selector-base: $modifier-selector-base !default;
+$tabs-tab-content-closed-selector: "hide" !default;
+$tabs-tab-content-transitioning-selector-base: $modifier-selector-base !default;
+$tabs-tab-content-transitioning-selector: "transitioning" !default;
+
+// Visibility properties.
+$tabs-tab-content-show-display: block !default;
+$tabs-tab-content-hide-display: block !default;
+$tabs-tab-content-transitioning-display: $tabs-tab-content-show-display !default;
+
+// Opacity properties.
+$tabs-tab-content-show-opacity: 1 !default;
+$tabs-tab-content-hide-opacity: 0 !default;
+$tabs-tab-content-transitioning-opacity: $tabs-tab-content-hide-opacity !default;
+
+// Tabs state theme defaults.
+// This map is used to define the default colour shades for the
+// themed tabs bases.
+//
+// e.g.
+// Primary tabs will use primary--900 as the toggle text colour and primary--700 as the toggle background.
+//
+// Secondary/tertiary tabs will use the same shade for their respective colours.
+$-tabs-theme-mappings: (
+  tab-toggle-color: 100,
+  tab-toggle-background: 700,
+  tab-toggle-border-color: 700,
+  tab-toggle-hover-color: 900,
+  tab-toggle-hover-background: 300,
+  tab-toggle-hover-border-color: 300,
+  tab-toggle-disabled-color: 200,
+  tab-toggle-disabled-background: 100,
+  tab-toggle-disabled-border-color: 200,
+);
+$tabs-theme-mappings: () !default;
+
+// Merge the custom tabs state theme map with the default one.
+@if $generate-base-theme-map {
+  $tabs-theme-mappings: map.merge($-tabs-theme-mappings, $tabs-theme-mappings);
+}
+
+$-tabs-theme-map: theme.generate-property-map($tabs-theme-mappings);
+$tabs-theme-map: () !default;
+$tabs-theme-map: map.deep-merge($-tabs-theme-map, $tabs-theme-map);

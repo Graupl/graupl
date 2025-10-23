@@ -1,0 +1,428 @@
+// @graupl/core badge base variables.
+//
+// These values are to be used to directly style bases and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Tabs properties.
+$tabs-padding-x: var(
+  --#{root-defaults.$prefix}tabs-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-padding-y: var(
+  --#{root-defaults.$prefix}tabs-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-padding: var(
+  --#{root-defaults.$prefix}tabs-padding,
+  #{$tabs-padding-x} #{$tabs-padding-y}
+);
+
+// Tabs color properties.
+$tabs-color: var(--#{root-defaults.$prefix}tabs-color, #{color.$color});
+$tabs-background: var(
+  --#{root-defaults.$prefix}tabs-background,
+  #{color.$background}
+);
+
+// Tabs border properties.
+$tabs-border-color: var(
+  --#{root-defaults.$prefix}tabs-border-color,
+  #{$tabs-color}
+);
+$tabs-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tabs-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$tabs-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tabs-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$tabs-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tabs-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$tabs-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tabs-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$tabs-border-radius: var(
+  --#{root-defaults.$prefix}tabs-border-radius,
+  #{$tabs-border-top-left-radius} #{$tabs-border-top-right-radius}
+    #{$tabs-border-bottom-right-radius} #{$tabs-border-bottom-left-radius}
+);
+$tabs-border-top-width: var(--#{root-defaults.$prefix}tabs-border-top-width, 0);
+$tabs-border-right-width: var(
+  --#{root-defaults.$prefix}tabs-border-right-width,
+  0
+);
+$tabs-border-bottom-width: var(
+  --#{root-defaults.$prefix}tabs-border-bottom-width,
+  0
+);
+$tabs-border-left-width: var(
+  --#{root-defaults.$prefix}tabs-border-left-width,
+  0
+);
+$tabs-border-width: var(
+  --#{root-defaults.$prefix}tabs-border-width,
+  #{$tabs-border-top-width} #{$tabs-border-right-width}
+    #{$tabs-border-bottom-width} #{$tabs-border-left-width}
+);
+$tabs-border-top-style: var(
+  --#{root-defaults.$prefix}tabs-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$tabs-border-right-style: var(
+  --#{root-defaults.$prefix}tabs-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$tabs-border-bottom-style: var(
+  --#{root-defaults.$prefix}tabs-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$tabs-border-left-style: var(
+  --#{root-defaults.$prefix}tabs-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$tabs-border-style: var(
+  --#{root-defaults.$prefix}tabs-border-style,
+  #{$tabs-border-top-style} #{$tabs-border-right-style}
+    #{$tabs-border-bottom-style} #{$tabs-border-left-style}
+);
+
+// Tab list properties.
+$tabs-tab-list-padding-x: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-padding-y: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-padding: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding,
+  #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
+);
+
+// Tab list border properties.
+$tabs-tab-list-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-color,
+  #{$tabs-border-color}
+);
+$tabs-tab-list-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$tabs-tab-list-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$tabs-tab-list-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$tabs-tab-list-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$tabs-tab-list-border-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-radius,
+  #{$tabs-tab-list-border-top-left-radius}
+    #{$tabs-tab-list-border-top-right-radius}
+    #{$tabs-tab-list-border-bottom-right-radius}
+    #{$tabs-tab-list-border-bottom-left-radius}
+);
+$tabs-tab-list-border-top-width: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-top-width,
+  0
+);
+$tabs-tab-list-border-right-width: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-right-width,
+  0
+);
+$tabs-tab-list-border-bottom-width: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$tabs-tab-list-border-left-width: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-left-width,
+  0
+);
+$tabs-tab-list-border-width: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-width,
+  #{$tabs-tab-list-border-top-width} #{$tabs-tab-list-border-right-width}
+    #{$tabs-tab-list-border-bottom-width} #{$tabs-tab-list-border-left-width}
+);
+$tabs-tab-list-border-top-style: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$tabs-tab-list-border-right-style: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$tabs-tab-list-border-bottom-style: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$tabs-tab-list-border-left-style: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$tabs-tab-list-border-style: var(
+  --#{root-defaults.$prefix}tabs-tab-list-border-style,
+  #{$tabs-tab-list-border-top-style} #{$tabs-tab-list-border-right-style}
+    #{$tabs-tab-list-border-bottom-style} #{$tabs-tab-list-border-left-style}
+);
+
+// Tab list gap properties.
+$tabs-tab-list-column-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-row-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-gap,
+  #{$tabs-tab-list-column-gap} #{$tabs-tab-list-row-gap}
+);
+
+// Tab toggle properties.
+$tabs-tab-toggle-padding-x: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$tabs-tab-toggle-padding-y: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$tabs-tab-toggle-padding: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-padding,
+  #{$tabs-tab-toggle-padding-x} #{$tabs-tab-toggle-padding-y}
+);
+
+// Tab toggle border properties.
+$tabs-tab-toggle-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-color,
+  #{$tabs-border-color}
+);
+$tabs-tab-toggle-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$tabs-tab-toggle-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$tabs-tab-toggle-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$tabs-tab-toggle-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$tabs-tab-toggle-border-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-radius,
+  #{$tabs-tab-toggle-border-top-left-radius}
+    #{$tabs-tab-toggle-border-top-right-radius}
+    #{$tabs-tab-toggle-border-bottom-right-radius}
+    #{$tabs-tab-toggle-border-bottom-left-radius}
+);
+$tabs-tab-toggle-border-top-width: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$tabs-tab-toggle-border-right-width: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$tabs-tab-toggle-border-bottom-width: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$tabs-tab-toggle-border-left-width: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$tabs-tab-toggle-border-width: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-width,
+  #{$tabs-tab-toggle-border-top-width} #{$tabs-tab-toggle-border-right-width}
+    #{$tabs-tab-toggle-border-bottom-width}
+    #{$tabs-tab-toggle-border-left-width}
+);
+$tabs-tab-toggle-border-top-style: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$tabs-tab-toggle-border-right-style: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$tabs-tab-toggle-border-bottom-style: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$tabs-tab-toggle-border-left-style: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$tabs-tab-toggle-border-style: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-style,
+  #{$tabs-tab-toggle-border-top-style} #{$tabs-tab-toggle-border-right-style}
+    #{$tabs-tab-toggle-border-bottom-style}
+    #{$tabs-tab-toggle-border-left-style}
+);
+
+// Tab content properties.
+$tabs-tab-content-padding-x: var(
+  --#{root-defaults.$prefix}tabs-tab-content-padding-x,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$tabs-tab-content-padding-y: var(
+  --#{root-defaults.$prefix}tabs-tab-content-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$tabs-tab-content-padding: var(
+  --#{root-defaults.$prefix}tabs-tab-content-padding,
+  #{$tabs-tab-content-padding-x} #{$tabs-tab-content-padding-y}
+);
+
+// Tab content border properties.
+$tabs-tab-content-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-color,
+  #{$tabs-border-color}
+);
+$tabs-tab-content-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$tabs-tab-content-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$tabs-tab-content-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$tabs-tab-content-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$tabs-tab-content-border-radius: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-radius,
+  #{$tabs-tab-content-border-top-left-radius}
+    #{$tabs-tab-content-border-top-right-radius}
+    #{$tabs-tab-content-border-bottom-right-radius}
+    #{$tabs-tab-content-border-bottom-left-radius}
+);
+$tabs-tab-content-border-top-width: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$tabs-tab-content-border-right-width: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$tabs-tab-content-border-bottom-width: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$tabs-tab-content-border-left-width: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$tabs-tab-content-border-width: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-width,
+  #{$tabs-tab-content-border-top-width} #{$tabs-tab-content-border-right-width}
+    #{$tabs-tab-content-border-bottom-width}
+    #{$tabs-tab-content-border-left-width}
+);
+$tabs-tab-content-border-top-style: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$tabs-tab-content-border-right-style: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$tabs-tab-content-border-bottom-style: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$tabs-tab-content-border-left-style: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$tabs-tab-content-border-style: var(
+  --#{root-defaults.$prefix}tabs-tab-content-border-style,
+  #{$tabs-tab-content-border-top-style} #{$tabs-tab-content-border-right-style}
+    #{$tabs-tab-content-border-bottom-style}
+    #{$tabs-tab-content-border-left-style}
+);
+
+// Tab content display properties.
+$tabs-tab-content-show-display: var(
+  --#{root-defaults.$prefix}tabs-tab-content-show-display,
+  #{defaults.$tabs-tab-content-show-display}
+);
+$tabs-tab-content-hide-display: var(
+  --#{root-defaults.$prefix}tabs-tab-content-hide-display,
+  #{defaults.$tabs-tab-content-hide-display}
+);
+$tabs-tab-content-transitioning-display: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transitioning-display,
+  #{defaults.$tabs-tab-content-transitioning-display}
+);
+$tabs-tab-content-display: var(
+  --#{root-defaults.$prefix}tabs-tab-content-display,
+  #{defaults.$tabs-tab-content-hide-display}
+);
+
+// Tab content opacity properties.
+$tabs-tab-content-show-opacity: var(
+  --#{root-defaults.$prefix}tabs-tab-content-show-opacity,
+  #{defaults.$tabs-tab-content-show-opacity}
+);
+$tabs-tab-content-hide-opacity: var(
+  --#{root-defaults.$prefix}tabs-tab-content-hide-opacity,
+  #{defaults.$tabs-tab-content-hide-opacity}
+);
+$tabs-tab-content-transitioning-opacity: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transitioning-opacity,
+  #{defaults.$tabs-tab-content-transitioning-opacity}
+);
+$tabs-tab-content-opacity: var(
+  --#{root-defaults.$prefix}tabs-tab-content-opacity,
+  #{$tabs-tab-content-hide-opacity}
+);
+
+// Tab content transition properties.
+$tabs-tab-content-transition-duration: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+$tabs-tab-content-transition-timing-function: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transition-timing-function,
+  #{root-variables.$transition-timing-function}
+);
+$tabs-tab-content-transition: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transition,
+  opacity #{$tabs-tab-content-transition-duration}
+    #{$tabs-tab-content-transition-timing-function}
+);
+$tabs-tab-content-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}tabs-tab-content-transition-reduced-motion,
+  opacity #{$tabs-tab-content-transition-duration}
+    #{$tabs-tab-content-transition-timing-function}
+);

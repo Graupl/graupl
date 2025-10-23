@@ -106,7 +106,7 @@ class Tabs {
    * @property {number} close      - The duration time (in milliseconds) for the transition from open to closed states.
    */
   _durations = {
-    transition: 5000,
+    transition: 250,
     open: -1,
     close: -1,
   };
@@ -339,17 +339,17 @@ class Tabs {
    *
    * @type {string|string[]}
    *
-   * @see _openClass
+   * @see _classes.open
    */
   get openClass() {
-    return this._openClass;
+    return this._classes.open;
   }
 
   set openClass(value) {
     isValidClassList({ openClass: value });
 
-    if (this._openClass !== value) {
-      this._openClass = value;
+    if (this._classes.open !== value) {
+      this._classes.open = value;
     }
   }
 
@@ -358,17 +358,17 @@ class Tabs {
    *
    * @type {string|string[]}
    *
-   * @see _closeClass
+   * @see _classes.close
    */
   get closeClass() {
-    return this._closeClass;
+    return this._classes.close;
   }
 
   set closeClass(value) {
     isValidClassList({ closeClass: value });
 
-    if (this._closeClass !== value) {
-      this._closeClass = value;
+    if (this._classes.close !== value) {
+      this._classes.close = value;
     }
   }
 
@@ -377,17 +377,17 @@ class Tabs {
    *
    * @type {string|string[]}
    *
-   * @see _transitionClass
+   * @see _classes.transition
    */
   get transitionClass() {
-    return this._transitionClass;
+    return this._classes.transition;
   }
 
   set transitionClass(value) {
     isValidClassList({ transitionClass: value });
 
-    if (this._transitionClass !== value) {
-      this._transitionClass = value;
+    if (this._classes.transition !== value) {
+      this._classes.transition = value;
     }
   }
 
@@ -396,17 +396,17 @@ class Tabs {
    *
    * @type {number}
    *
-   * @see _transitionDuration
+   * @see _durations.transition
    */
   get transitionDuration() {
-    return this._transitionDuration;
+    return this._durations.transition;
   }
 
   set transitionDuration(value) {
     isValidType("number", { value });
 
-    if (this._transitionDuration !== value) {
-      this._transitionDuration = value;
+    if (this._durations.transition !== value) {
+      this._durations.transition = value;
       this._setTransitionDurations();
     }
   }
@@ -418,19 +418,19 @@ class Tabs {
    *
    * @type {number}
    *
-   * @see _openDuration
+   * @see _durations.open
    */
   get openDuration() {
-    return this._openDuration === -1
+    return this._durations.open === -1
       ? this.transitionDuration
-      : this._openDuration;
+      : this._durations.open;
   }
 
   set openDuration(value) {
     isValidType("number", { value });
 
-    if (this._openDuration !== value) {
-      this._openDuration = value;
+    if (this._durations.open !== value) {
+      this._durations.open = value;
       this._setTransitionDurations();
     }
   }
@@ -442,19 +442,19 @@ class Tabs {
    *
    * @type {number}
    *
-   * @see _closeDuration
+   * @see _durations.close
    */
   get closeDuration() {
-    return this._closeDuration === -1
+    return this._durations.close === -1
       ? this.transitionDuration
-      : this._closeDuration;
+      : this._durations.close;
   }
 
   set closeDuration(value) {
     isValidType("number", { value });
 
-    if (this._closeDuration !== value) {
-      this._closeDuration = value;
+    if (this._durations.close !== value) {
+      this._durations.close = value;
       this._setTransitionDurations();
     }
   }
@@ -619,9 +619,9 @@ class Tabs {
     // Query selector checks.
     const querySelectors = {};
 
-    for (const querySelector of Object.keys(this._querySelectors)) {
+    for (const querySelector of Object.keys(this._selectors)) {
       querySelectors[`${querySelector}Selector`] =
-        this._querySelectors[querySelector];
+        this._selectors[querySelector];
     }
 
     const querySelectorChecks = isQuerySelector(querySelectors);
@@ -702,7 +702,7 @@ class Tabs {
    */
   _generateKey({ regenerate = false } = {}) {
     if (this.key === "" || regenerate) {
-      this.key = Math.random()
+      this._key = Math.random()
         .toString(36)
         .replace(/[^a-z]+/g, "")
         .substring(0, 10);
@@ -770,13 +770,13 @@ class Tabs {
    *
    * @param {string}                      elementType                          - The type of element to populate.
    * @param {Object<HTMLElement,boolean>} [options = {}]                       - The options for setting the DOM element type.
-   * @param {HTMLElement}                 [options.base = this.dom.disclosure] - The element used as the base for the querySelector.
+   * @param {HTMLElement}                 [options.base = this.dom.tabs] - The element used as the base for the querySelector.
    * @param {boolean}                     [options.overwrite = true]           - A flag to set if the existing elements will be overwritten.
    * @param {boolean}                     [options.strict = true]              - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    { base = this.dom.disclosure, overwrite = true, strict = true } = {}
+    { base = this.dom.tabs, overwrite = true, strict = true } = {}
   ) {
     if (typeof this.selectors[elementType] === "string") {
       if (this._domLock.includes(elementType)) {
@@ -785,7 +785,7 @@ class Tabs {
         );
       }
 
-      if (base !== this.dom.disclosure) isValidInstance(HTMLElement, { base });
+      if (base !== this.dom.tabs) isValidInstance(HTMLElement, { base });
 
       // Get the all elements matching the selector in the base.
       const domElements = Array.from(
