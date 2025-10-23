@@ -1021,28 +1021,17 @@ class Disclosure {
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
     if (transition && this.transitionlass !== "") {
-      // this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-      // console.log(this.dom.disclosure.style.height);
       addClass(this.transitionClass, this.dom.disclosure);
 
       requestAnimationFrame(() => {
         removeClass(this.closeClass, this.dom.disclosure);
 
-        // this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-        // console.log(this.dom.disclosure.style.height);
-
         requestAnimationFrame(() => {
           addClass(this.openClass, this.dom.disclosure);
-
-          // this.dom.disclosure.style.height = `${this.dom.content.getBoundingClientRect().height}px`;
-          // console.log(this.dom.disclosure.style.height);
 
           requestAnimationFrame(() => {
             setTimeout(() => {
               removeClass(this.transitionClass, this.dom.disclosure);
-
-              // this.dom.disclosure.style.height = "";
-              // console.log(this.dom.disclosure.style.height);
             }, this.openDuration);
           });
         });
@@ -1083,31 +1072,19 @@ class Disclosure {
     // requestAnimationFrame to add the transition class, remove the open class,
     // add the close class, and finally remove the transition class.
     if (transition && this.transitionClass !== "") {
-      // this.dom.disclosure.style.height = `${this.dom.content.getBoundingClientRect().height}px`;
-      // console.log(this.dom.disclosure.style.height);
-
       addClass(this.transitionClass, this.dom.disclosure);
 
       requestAnimationFrame(() => {
         removeClass(this.openClass, this.dom.disclosure);
 
-        // this.dom.disclosure.style.height = `${this.dom.content.getBoundingClientRect().height}px`;
-        // console.log(this.dom.disclosure.style.height);
-
         requestAnimationFrame(() => {
           addClass(this.closeClass, this.dom.disclosure);
-
-          // this.dom.disclosure.style.height = `${this.dom.disclosure.getBoundingClientRect().height}px`;
-          // console.log(this.dom.disclosure.style.height);
 
           requestAnimationFrame(() => {
             setTimeout(() => {
               removeClass(this.transitionClass, this.dom.disclosure);
 
               this.dom.content.innert = true;
-
-              // this.dom.disclosure.style.height = "";
-              // console.log(this.dom.disclosure.style.height);
             }, this.closeDuration);
           });
         });
