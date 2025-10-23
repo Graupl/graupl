@@ -65,6 +65,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./src/js/tabs/index.js",
+    output: {
+      file: `dist/js/tabs.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./src/js/accordion/Accordion.js",
     output: ["iife", "es", "cjs"].map((format) => ({
       file: `dist/js/component/accordion.${format}.js`,
@@ -158,6 +168,28 @@ export default defineConfig([
       file: `dist/js/generator/navigation.${format}.js`,
       format,
       name: "NavigationGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/tabs/Tabs.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/tabs.${format}.js`,
+      format,
+      name: "Tabs",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/tabs/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/tabs.${format}.js`,
+      format,
+      name: "TabsGenerator",
       sourcemap: true,
     })),
     platform: "browser",
