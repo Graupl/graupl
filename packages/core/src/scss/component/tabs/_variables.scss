@@ -150,7 +150,7 @@ $tabs-tab-list-border-right-width: var(
 );
 $tabs-tab-list-border-bottom-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  0
 );
 $tabs-tab-list-border-left-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-left-width,

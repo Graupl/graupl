@@ -157,6 +157,9 @@
 @include layer(component) {
   // .tabs
   #{defaults.$tabs-selector-base}#{defaults.$tabs-selector} {
+    display: grid;
+    grid-template-columns: [list-start content-start] 1fr [content-end list-end];
+    grid-template-rows: [list-start] auto [list-end content-start] 1fr [content-end];
     padding: $tabs-padding;
     border-width: $tabs-border-width;
     border-style: $tabs-border-style;
@@ -166,6 +169,7 @@
   // .tab-list
   #{defaults.$tabs-tab-list-selector-base}#{defaults.$tabs-tab-list-selector} {
     display: flex;
+    grid-area: list;
     padding: $tabs-tab-list-padding;
     border-width: $tabs-tab-list-border-width;
     border-style: $tabs-tab-list-border-style;
@@ -185,6 +189,7 @@
   // .tab-content
   #{defaults.$tabs-tab-content-selector-base}#{defaults.$tabs-tab-content-selector} {
     display: $tabs-tab-content-display;
+    grid-area: content;
     padding: $tabs-tab-content-padding;
     transition: $tabs-tab-content-transition;
     border-width: $tabs-tab-content-border-width;
@@ -223,14 +228,16 @@
   #{defaults.$tabs-selector-base}#{defaults.$tabs-selector} {
     border-color: $tabs-border-color;
 
-    @each $color, $map in defaults.$tabs-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary
-      &#{defaults.$tabs-theme-selector-base}#{defaults.$tabs-theme-selector-prefix}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}tabs-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @each $color, $map in defaults.$tabs-theme-map {
+        // e.g. &.primary, &.secondary, &.tertiary
+        &#{defaults.$tabs-theme-selector-base}#{defaults.$tabs-theme-selector-prefix}#{$color} {
+          @each $prop, $value in $map {
+            --#{root-defaults.$prefix}tabs-#{$prop}: #{theme.get(
+                map.get($value, color),
+                map.get($value, shade)
+              )};
+          }
         }
       }
     }

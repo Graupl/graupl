@@ -284,7 +284,7 @@ class Tabs {
       if (
         this.elements.tabToggle.filter((toggle) => toggle.isActive).length === 0
       ) {
-        this.elements.tabToggle[0].show(false, false);
+        this.elements.tabToggle[0].show();
       }
 
       requestAnimationFrame(() => {

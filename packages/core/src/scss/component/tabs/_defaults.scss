@@ -34,7 +34,7 @@ $tabs-tab-content-transitioning-selector: "transitioning" !default;
 
 // Visibility properties.
 $tabs-tab-content-show-display: block !default;
-$tabs-tab-content-hide-display: block !default;
+$tabs-tab-content-hide-display: none !default;
 $tabs-tab-content-transitioning-display: $tabs-tab-content-show-display !default;
 
 // Opacity properties.
