@@ -58,18 +58,21 @@ $tabs-border-radius: var(
   #{$tabs-border-top-left-radius} #{$tabs-border-top-right-radius}
     #{$tabs-border-bottom-right-radius} #{$tabs-border-bottom-left-radius}
 );
-$tabs-border-top-width: var(--#{root-defaults.$prefix}tabs-border-top-width, 0);
+$tabs-border-top-width: var(
+  --#{root-defaults.$prefix}tabs-border-top-width,
+  0rem
+);
 $tabs-border-right-width: var(
   --#{root-defaults.$prefix}tabs-border-right-width,
-  0
+  0rem
 );
 $tabs-border-bottom-width: var(
   --#{root-defaults.$prefix}tabs-border-bottom-width,
-  0
+  0rem
 );
 $tabs-border-left-width: var(
   --#{root-defaults.$prefix}tabs-border-left-width,
-  0
+  0rem
 );
 $tabs-border-width: var(
   --#{root-defaults.$prefix}tabs-border-width,
@@ -98,28 +101,14 @@ $tabs-border-style: var(
     #{$tabs-border-bottom-style} #{$tabs-border-left-style}
 );
 
-// Tab list properties.
-$tabs-tab-list-padding-x: var(
-  --#{root-defaults.$prefix}tabs-tab-list-padding-x,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$tabs-tab-list-padding-y: var(
-  --#{root-defaults.$prefix}tabs-tab-list-padding-y,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$tabs-tab-list-padding: var(
-  --#{root-defaults.$prefix}tabs-tab-list-padding,
-  #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
-);
-
 // Tab list gap properties.
 $tabs-tab-list-column-gap: var(
   --#{root-defaults.$prefix}tabs-tab-list-column-gap,
-  #{map.get(root-variables.$spacers, 3)}
+  #{map.get(root-variables.$spacers, 0)}
 );
 $tabs-tab-list-row-gap: var(
   --#{root-defaults.$prefix}tabs-tab-list-row-gap,
-  #{map.get(root-variables.$spacers, 0)}
+  #{map.get(root-variables.$spacers, 2)}
 );
 $tabs-tab-list-gap: var(
   --#{root-defaults.$prefix}tabs-tab-list-gap,
@@ -203,20 +192,6 @@ $tabs-tab-list-border-style: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-style,
   #{$tabs-tab-list-border-top-style} #{$tabs-tab-list-border-right-style}
     #{$tabs-tab-list-border-bottom-style} #{$tabs-tab-list-border-left-style}
-);
-
-// Tab list gap properties.
-$tabs-tab-list-column-gap: var(
-  --#{root-defaults.$prefix}tabs-tab-list-column-gap,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$tabs-tab-list-row-gap: var(
-  --#{root-defaults.$prefix}tabs-tab-list-row-gap,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$tabs-tab-list-gap: var(
-  --#{root-defaults.$prefix}tabs-tab-list-gap,
-  #{$tabs-tab-list-column-gap} #{$tabs-tab-list-row-gap}
 );
 
 // Tab toggle properties.
@@ -607,4 +582,30 @@ $tabs-tab-toggle-transform-states: (
   active: $tabs-tab-toggle-active-transform,
   selected: $tabs-tab-toggle-selected-transform,
   disabled: $tabs-tab-toggle-disabled-transform,
+);
+
+// Tab list properties.
+$tabs-tab-list-padding-x: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-padding-y: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-padding: var(
+  --#{root-defaults.$prefix}tabs-tab-list-padding,
+  #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
+);
+$tabs-tab-list-margin: var(
+  --#{root-defaults.$prefix}tabs-tab-list-margin,
+  0 0
+    calc(
+      -1 *
+        max(
+          #{$tabs-tab-list-border-bottom-width},
+          #{$tabs-tab-toggle-border-bottom-width}
+        )
+    )
+    0
 );

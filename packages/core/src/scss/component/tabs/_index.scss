@@ -177,6 +177,7 @@
     border-style: $tabs-tab-list-border-style;
     border-radius: $tabs-tab-list-border-radius;
     gap: $tabs-tab-list-gap;
+    margin: $tabs-tab-list-margin;
   }
 
   // .tab-toggle
@@ -187,6 +188,7 @@
     border-width: $tabs-tab-toggle-border-width;
     border-style: $tabs-tab-toggle-border-style;
     border-radius: $tabs-tab-toggle-border-radius;
+    z-index: 2;
 
     @include state.generate-modifiers(
       (
@@ -206,6 +208,7 @@
     border-style: $tabs-tab-content-border-style;
     border-radius: $tabs-tab-content-border-radius;
     opacity: $tabs-tab-content-opacity;
+    z-index: 1;
 
     // &.hide
     &#{defaults.$tabs-tab-content-closed-selector-base}#{defaults.$tabs-tab-content-closed-selector} {
