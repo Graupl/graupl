@@ -42,6 +42,11 @@ $tabs-tab-content-show-opacity: 1 !default;
 $tabs-tab-content-hide-opacity: 0 !default;
 $tabs-tab-content-transitioning-opacity: $tabs-tab-content-hide-opacity !default;
 
+// Transform properties.
+$tabs-tab-toggle-initial-transform: none !default;
+$tabs-tab-toggle-final-transform: none !default;
+$tabs-tab-toggle-disabled-transform: $tabs-tab-toggle-initial-transform !default;
+
 // Tabs state theme defaults.
 // This map is used to define the default colour shades for the
 // themed tabs bases.
@@ -51,15 +56,21 @@ $tabs-tab-content-transitioning-opacity: $tabs-tab-content-hide-opacity !default
 //
 // Secondary/tertiary tabs will use the same shade for their respective colours.
 $-tabs-theme-mappings: (
-  tab-toggle-color: 100,
-  tab-toggle-background: 700,
+  tab-toggle-color: 900,
+  tab-toggle-background: 100,
   tab-toggle-border-color: 700,
-  tab-toggle-hover-color: 900,
-  tab-toggle-hover-background: 300,
-  tab-toggle-hover-border-color: 300,
+  tab-toggle-hover-color: 100,
+  tab-toggle-hover-background: 700,
+  tab-toggle-hover-border-color: 700,
   tab-toggle-disabled-color: 200,
   tab-toggle-disabled-background: 100,
   tab-toggle-disabled-border-color: 200,
+  tab-toggle-selected-background: 700,
+  tab-toggle-selected-color: 100,
+  tab-toggle-selected-border-color: 700,
+  tab-content-color: 900,
+  tab-content-background: 100,
+  tab-content-border-color: 700,
 );
 $tabs-theme-mappings: () !default;
 

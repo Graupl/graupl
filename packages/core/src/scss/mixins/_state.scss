@@ -16,3 +16,40 @@
     }
   }
 }
+
+/// Generates state modifiers with properties.
+///
+/// @param {map} $state-map
+///   The map of props and states.
+/// @param {string} $selector-base
+///   The selector base for the state modifier.
+/// @param {string} $selector-prefix
+///   The selector prefix for the state modifer.
+@mixin generate-modifiers($state-map) {
+  @each $state, $selectors in root-defaults.$state-selectors {
+    @each $selector in $selectors {
+      // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
+      &#{$selector} {
+        @each $prop, $map in $state-map {
+          #{$prop}: map.get($map, $state);
+        }
+
+        // If the state is disabled, we want that to supersede all other states.
+        @if $state == "disabled" {
+          @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
+            @if $sub-state != $state {
+              @each $sub-selector in $sub-selectors {
+                // e.g &:visited, &:focus-visible, &:hover, &:active
+                &#{$sub-selector} {
+                  @each $prop, $map in $state-map {
+                    #{$prop}: map.get($map, $state);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

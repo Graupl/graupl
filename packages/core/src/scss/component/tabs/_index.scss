@@ -146,7 +146,8 @@
 // - Tertiary tabs will have their `--graupl-tabs-border-color` property set to `--graupl-theme-active--secondary--700`.
 
 @use "../../defaults" as root-defaults;
-@use "../../functions/theme";
+@use "../../mixins/theme";
+@use "../../mixins/state";
 @use "../../mixins/animation";
 @use "../../mixins/layer" as *;
 @use "../../base/button/mixins" as button-mixins;
@@ -159,11 +160,12 @@
   #{defaults.$tabs-selector-base}#{defaults.$tabs-selector} {
     display: grid;
     grid-template-columns: [list-start content-start] 1fr [content-end list-end];
-    grid-template-rows: [list-start] auto [list-end content-start] 1fr [content-end];
+    grid-template-rows: [list-start] auto [content-start list-end] 1fr [content-end];
     padding: $tabs-padding;
     border-width: $tabs-border-width;
     border-style: $tabs-border-style;
     border-radius: $tabs-border-radius;
+    isolation: isolate;
   }
 
   // .tab-list
@@ -174,6 +176,7 @@
     border-width: $tabs-tab-list-border-width;
     border-style: $tabs-tab-list-border-style;
     border-radius: $tabs-tab-list-border-radius;
+    gap: $tabs-tab-list-gap;
   }
 
   // .tab-toggle
@@ -184,11 +187,18 @@
     border-width: $tabs-tab-toggle-border-width;
     border-style: $tabs-tab-toggle-border-style;
     border-radius: $tabs-tab-toggle-border-radius;
+
+    @include state.generate-modifiers(
+      (
+        transform: $tabs-tab-toggle-transform-states,
+      )
+    );
   }
 
   // .tab-content
   #{defaults.$tabs-tab-content-selector-base}#{defaults.$tabs-tab-content-selector} {
     display: $tabs-tab-content-display;
+    z-index: 1;
     grid-area: content;
     padding: $tabs-tab-content-padding;
     transition: $tabs-tab-content-transition;
@@ -227,18 +237,17 @@
   // .tabs
   #{defaults.$tabs-selector-base}#{defaults.$tabs-selector} {
     border-color: $tabs-border-color;
+    background: $tabs-background;
+    color: $tabs-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {
       @each $color, $map in defaults.$tabs-theme-map {
-        // e.g. &.primary, &.secondary, &.tertiary
-        &#{defaults.$tabs-theme-selector-base}#{defaults.$tabs-theme-selector-prefix}#{$color} {
-          @each $prop, $value in $map {
-            --#{root-defaults.$prefix}tabs-#{$prop}: #{theme.get(
-                map.get($value, color),
-                map.get($value, shade)
-              )};
-          }
-        }
+        @include theme.generate-modifiers(
+          defaults.$tabs-theme-map,
+          defaults.$tabs-theme-selector-base,
+          defaults.$tabs-theme-selector-prefix,
+          "tabs-"
+        );
       }
     }
   }
@@ -246,6 +255,8 @@
   // .tab-list
   #{defaults.$tabs-tab-list-selector-base}#{defaults.$tabs-tab-list-selector} {
     border-color: $tabs-tab-list-border-color;
+    background: $tabs-tab-list-background;
+    color: $tabs-tab-list-color;
   }
 
   // .tab-toggle
@@ -253,10 +264,22 @@
     @include button-mixins.apply-theme;
 
     border-color: $tabs-tab-toggle-border-color;
+    background: $tabs-tab-toggle-background;
+    color: $tabs-tab-toggle-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $tabs-tab-toggle-border-color-states,
+        background: $tabs-tab-toggle-background-states,
+        color: $tabs-tab-toggle-color-states,
+      )
+    );
   }
 
   // .tab-content
   #{defaults.$tabs-tab-content-selector-base}#{defaults.$tabs-tab-content-selector} {
     border-color: $tabs-tab-content-border-color;
+    background: $tabs-tab-content-background;
+    color: $tabs-tab-content-color;
   }
 }

@@ -227,6 +227,12 @@ $-state-selectors: (
     "[disabled]",
     "[aria-disabled=true]",
   ),
+  selected: (
+    "[aria-selected=true]",
+  ),
+  current: (
+    "[aria-current=true]",
+  ),
 );
 $-state-class-selectors: (
   visited: (
@@ -243,6 +249,12 @@ $-state-class-selectors: (
   ),
   disabled: (
     "#{$state-selector-base}disabled",
+  ),
+  selected: (
+    "#{$state-selector-base}selected",
+  ),
+  current: (
+    "#{$state-selector-base}current",
   ),
 );
 

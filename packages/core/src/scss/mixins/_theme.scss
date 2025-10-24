@@ -2,7 +2,10 @@
 //
 // A series of mixins to tie styles to a theme-mode.
 
+@use "../functions/theme";
 @use "../theme/color/defaults" as color-defaults;
+@use "../defaults" as root-defaults;
+@use "sass:map";
 
 /// Applies styles to a specific theme mode.
 ///
@@ -11,5 +14,34 @@
 @mixin theme($theme-name) {
   #{color-defaults.$theme-selector-prefix}#{$theme-name}#{color-defaults.$theme-selector-suffix} {
     @content;
+  }
+}
+
+/// Generates a theme modifiers with custom props.
+///
+/// @param {map} $theme-map
+///   The map of custom props.
+/// @param {string} $selector-base
+///   The selector base for the theme modifier.
+/// @param {string} $selector-prefix
+///   The selector prefix for the theme modifer.
+/// @param {string} $scope
+///   The scope of the custom properties.
+@mixin generate-modifiers(
+  $theme-map,
+  $selector-base,
+  $selector-prefix,
+  $scope: ""
+) {
+  @each $color, $map in $theme-map {
+    // e.g. &.primary, &.secondary, &.tertiary
+    &#{$selector-base}#{$selector-prefix}#{$color} {
+      @each $prop, $value in $map {
+        --#{root-defaults.$prefix}#{$scope}#{$prop}: #{theme.get(
+            map.get($value, color),
+            map.get($value, shade)
+          )};
+      }
+    }
   }
 }

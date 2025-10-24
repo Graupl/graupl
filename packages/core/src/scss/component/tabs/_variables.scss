@@ -112,6 +112,28 @@ $tabs-tab-list-padding: var(
   #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
 );
 
+// Tab list gap properties.
+$tabs-tab-list-column-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-column-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+$tabs-tab-list-row-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+$tabs-tab-list-gap: var(
+  --#{root-defaults.$prefix}tabs-tab-list-gap,
+  #{$tabs-tab-list-column-gap} #{$tabs-tab-list-row-gap}
+);
+$tabs-tab-list-background: var(
+  --#{root-defaults.$prefix}tabs-tab-list-background,
+  #{$tabs-background}
+);
+$tabs-tab-list-color: var(
+  --#{root-defaults.$prefix}tabs-tab-list-color,
+  #{$tabs-color}
+);
+
 // Tab list border properties.
 $tabs-tab-list-border-color: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-color,
@@ -142,19 +164,19 @@ $tabs-tab-list-border-radius: var(
 );
 $tabs-tab-list-border-top-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-top-width,
-  0
+  0rem
 );
 $tabs-tab-list-border-right-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-right-width,
-  0
+  0rem
 );
 $tabs-tab-list-border-bottom-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-bottom-width,
-  0
+  0rem
 );
 $tabs-tab-list-border-left-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-left-width,
-  0
+  0rem
 );
 $tabs-tab-list-border-width: var(
   --#{root-defaults.$prefix}tabs-tab-list-border-width,
@@ -212,10 +234,6 @@ $tabs-tab-toggle-padding: var(
 );
 
 // Tab toggle border properties.
-$tabs-tab-toggle-border-color: var(
-  --#{root-defaults.$prefix}tabs-tab-toggle-border-color,
-  #{$tabs-border-color}
-);
 $tabs-tab-toggle-border-top-left-radius: var(
   --#{root-defaults.$prefix}tabs-tab-toggle-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
@@ -296,6 +314,14 @@ $tabs-tab-content-padding-y: var(
 $tabs-tab-content-padding: var(
   --#{root-defaults.$prefix}tabs-tab-content-padding,
   #{$tabs-tab-content-padding-x} #{$tabs-tab-content-padding-y}
+);
+$tabs-tab-content-background: var(
+  --#{root-defaults.$prefix}tabs-tab-content-background,
+  #{$tabs-background}
+);
+$tabs-tab-content-color: var(
+  --#{root-defaults.$prefix}tabs-tab-content-color,
+  #{$tabs-color}
 );
 
 // Tab content border properties.
@@ -425,4 +451,160 @@ $tabs-tab-content-transition-reduced-motion: var(
   --#{root-defaults.$prefix}tabs-tab-content-transition-reduced-motion,
   opacity #{$tabs-tab-content-transition-duration}
     #{$tabs-tab-content-transition-timing-function}
+);
+
+// Tab toggle background properties.
+$tabs-tab-toggle-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-background,
+  #{$tabs-tab-list-background}
+);
+$tabs-tab-toggle-visited-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-visited-background,
+  #{$tabs-tab-toggle-background}
+);
+$tabs-tab-toggle-focus-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-focus-background,
+  #{$tabs-tab-toggle-background}
+);
+$tabs-tab-toggle-hover-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-hover-background,
+  #{$tabs-tab-list-color}
+);
+$tabs-tab-toggle-active-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-active-background,
+  #{$tabs-tab-toggle-hover-background}
+);
+$tabs-tab-toggle-selected-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-selected-background,
+  #{$tabs-tab-toggle-hover-background}
+);
+$tabs-tab-toggle-disabled-background: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-disabled-background,
+  #{$tabs-tab-list-background}
+);
+$tabs-tab-toggle-background-states: (
+  _default: $tabs-tab-toggle-background,
+  visited: $tabs-tab-toggle-visited-background,
+  focus: $tabs-tab-toggle-focus-background,
+  hover: $tabs-tab-toggle-hover-background,
+  active: $tabs-tab-toggle-active-background,
+  selected: $tabs-tab-toggle-selected-background,
+  disabled: $tabs-tab-toggle-disabled-background,
+);
+
+// Tab toggle text properties.
+$tabs-tab-toggle-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-color,
+  #{$tabs-tab-list-color}
+);
+$tabs-tab-toggle-visited-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-visited-color,
+  #{$tabs-tab-toggle-color}
+);
+$tabs-tab-toggle-focus-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-focus-color,
+  #{$tabs-tab-toggle-color}
+);
+$tabs-tab-toggle-hover-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-hover-color,
+  #{$tabs-tab-list-background}
+);
+$tabs-tab-toggle-active-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-active-color,
+  #{$tabs-tab-toggle-hover-color}
+);
+$tabs-tab-toggle-selected-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-selected-color,
+  #{$tabs-tab-toggle-hover-color}
+);
+$tabs-tab-toggle-disabled-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$tabs-tab-toggle-color-states: (
+  _default: $tabs-tab-toggle-color,
+  visited: $tabs-tab-toggle-visited-color,
+  focus: $tabs-tab-toggle-focus-color,
+  hover: $tabs-tab-toggle-hover-color,
+  active: $tabs-tab-toggle-active-color,
+  selected: $tabs-tab-toggle-selected-color,
+  disabled: $tabs-tab-toggle-disabled-color,
+);
+
+// Tab toggle border colour properties.
+$tabs-tab-toggle-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-border-color,
+  #{$tabs-tab-list-border-color}
+);
+$tabs-tab-toggle-visited-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-visited-border-color,
+  #{$tabs-tab-toggle-border-color}
+);
+$tabs-tab-toggle-focus-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-focus-border-color,
+  #{$tabs-tab-toggle-border-color}
+);
+$tabs-tab-toggle-hover-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-hover-border-color,
+  #{$tabs-tab-list-border-color}
+);
+$tabs-tab-toggle-active-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-active-border-color,
+  #{$tabs-tab-toggle-hover-border-color}
+);
+$tabs-tab-toggle-selected-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-selected-border-color,
+  #{$tabs-tab-toggle-hover-border-color}
+);
+$tabs-tab-toggle-disabled-border-color: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$tabs-tab-toggle-border-color-states: (
+  _default: $tabs-tab-toggle-border-color,
+  visited: $tabs-tab-toggle-visited-border-color,
+  focus: $tabs-tab-toggle-focus-border-color,
+  hover: $tabs-tab-toggle-hover-border-color,
+  active: $tabs-tab-toggle-active-border-color,
+  selected: $tabs-tab-toggle-selected-border-color,
+  disabled: $tabs-tab-toggle-disabled-border-color,
+);
+
+// Tab toggle transform properties.
+$tabs-tab-toggle-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-transform,
+  #{defaults.$tabs-tab-toggle-initial-transform}
+);
+$tabs-tab-toggle-visited-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-visited-transform,
+  #{$tabs-tab-toggle-transform}
+);
+$tabs-tab-toggle-focus-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-focus-transform,
+  #{$tabs-tab-toggle-transform}
+);
+$tabs-tab-toggle-hover-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-hover-transform,
+  #{$tabs-tab-toggle-transform}
+);
+$tabs-tab-toggle-active-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-active-transform,
+  #{defaults.$tabs-tab-toggle-final-transform}
+);
+$tabs-tab-toggle-selected-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-selected-transform,
+  #{defaults.$tabs-tab-toggle-final-transform}
+);
+$tabs-tab-toggle-disabled-transform: var(
+  --#{root-defaults.$prefix}tabs-tab-toggle-disabled-transform,
+  #{defaults.$tabs-tab-toggle-disabled-transform}
+);
+$tabs-tab-toggle-transform-states: (
+  _default: $tabs-tab-toggle-transform,
+  visited: $tabs-tab-toggle-visited-transform,
+  focus: $tabs-tab-toggle-focus-transform,
+  hover: $tabs-tab-toggle-hover-transform,
+  active: $tabs-tab-toggle-active-transform,
+  selected: $tabs-tab-toggle-selected-transform,
+  disabled: $tabs-tab-toggle-disabled-transform,
 );
