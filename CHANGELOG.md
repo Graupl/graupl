@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.23](https://github.com/Graupl/graupl/compare/v1.0.0-beta.22...v1.0.0-beta.23) (2025-10-28)
+
+
+### Bug Fixes
+
+* **breakpoints:** use pixels for all breakpoints to fix resizing bug ([2bf8319](https://github.com/Graupl/graupl/commit/2bf8319295445d636dc7f7c6715c244e3a2ef02e))
+
 ## [1.0.0-beta.22](https://github.com/Graupl/graupl/compare/v1.0.0-beta.21...v1.0.0-beta.22) (2025-10-28)
 
 
