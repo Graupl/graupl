@@ -253,43 +253,8 @@
         }
       }
 
-      // .content-right
-      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
-
-        // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
-        > :not(
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-        ) {
-          grid-column: content;
-        }
-
-        // Contain components should inherit the container's grid columns and
-        // force all children to be in the content section.
-        //
-        // > .contain
-        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-          // > :not(.container, .breakout, .feature, .full-width)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
-            grid-column: content;
-          }
-        }
-      }
-
-      // .content-left
-      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
@@ -309,44 +274,7 @@
         // Contain components should inherit the container's grid columns and
         // force all children to be in the content section.
         //
-        // > .contain
-        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
-            grid-column: content;
-          }
-        }
-      }
-
-      // .inner-content
-      #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
-
-        // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-        > :not(
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-        ) {
-          grid-column: content;
-        }
-
-        // Contain components should inherit the container's grid columns and
-        // force all children to be in the content section.
-        //
-        // > .contain
+        // .contain
         #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
           // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
           > :not(
@@ -363,23 +291,133 @@
       }
     }
 
+    // &.sidebars-left
+    &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+      // .sidebar
+      #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+      }
+
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+
+        // Contain components should inherit the container's grid columns and
+        // force all children to be in the content section.
+        //
+        // .contain
+        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+          > :not(
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
+            grid-column: content;
+          }
+        }
+      }
+    }
+
+    // &.sidebars-right
+    &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+      // .sidebar
+      #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+      }
+
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+
+        // Contain components should inherit the container's grid columns and
+        // force all children to be in the content section.
+        //
+        // .contain
+        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+          > :not(
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
+            grid-column: content;
+          }
+        }
+      }
+    }
+
     @include screen.trigger(allow-sidebars) {
       // &.sidebars
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
-          [feature-start] $container-feature-section-width
-          [breakout-start] $container-breakout-section-width
-          [content-start sidebar-left-start content-left-start] $container-sidebar-left-section-width
-          [sidebar-left-end inner-content-start content-right-start] $container-inner-content-section-width
-          [content-left-end inner-content-end sidebar-right-start] $container-sidebar-right-section-width
-          [content-right-end sidebar-right-end content-end]
-          $container-breakout-section-width [breakout-end]
-          $container-feature-section-width [feature-end]
-          $container-full-width-section-width [full-width-end];
+          [sidebar-left-start feature-start] $container-sidebar-left-section-width
+          [sidebar-left-end breakout-start] $container-sidebars-breakout-section-width
+          [content-start] $container-sidebars-content-section-width
+          [content-end] $container-sidebars-breakout-section-width
+          [breakout-end sidebar-right-start] $container-sidebar-right-section-width
+          [feature-end sidebar-right-end] $container-full-width-section-width
+          [full-width-end];
 
-        // .sidebar-left
-        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
+        // > .sidebar-left
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
           grid-row: 1;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
@@ -394,7 +432,7 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-end: sidebar-left-end;
+              grid-column-end: content-start;
             }
           }
 
@@ -427,8 +465,8 @@
           }
         }
 
-        // .sidebar-right
-        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
+        // > .sidebar-right
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
           grid-row: 1;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
@@ -443,7 +481,7 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-start: sidebar-right-start;
+              grid-column-start: content-end;
             }
           }
 
@@ -476,11 +514,29 @@
           }
         }
 
-        // .content-right
-        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+          grid-row: 1;
+        }
+      }
+
+      // &.sidebars-left
+      &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+        grid-template-columns:
+          [full-width-start] $container-full-width-section-width
+          [sidebar-start feature-start] $container-sidebar-left-section-width
+          [sidebar-end breakout-start] $container-sidebars-breakout-section-width
+          [content-start] $container-sidebars-left-content-section-width
+          [content-end] $container-breakout-section-width
+          [breakout-end] $container-feature-section-width
+          [feature-end] $container-full-width-section-width
+          [full-width-end];
+
+        // > .sidebar
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
           grid-row: 1;
 
-          // Make sure other container classes do not break the layout inside of the content.
+          // Make sure other container classes do not break the layout inside of the sidebar.
           //
           // &:not(.container)
           &:not(
@@ -492,11 +548,11 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-start: content-right-start;
+              grid-column-end: content-start;
             }
           }
 
-          // Lock content to the content-right section.
+          // Lock content to the sidebar section.
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
@@ -505,11 +561,11 @@
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
           ) {
-            grid-column: content-right;
+            grid-column: sidebar;
           }
 
           // Contain components should inherit the container's grid columns and
-          // force all children to be in the content-right section.
+          // force all children to be in the sidebar section.
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
@@ -520,16 +576,34 @@
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
               #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
-              grid-column: content-right;
+              grid-column: sidebar;
             }
           }
         }
 
-        // .content-left
-        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+          grid-row: 1;
+        }
+      }
+
+      // &.sidebars-right
+      &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+        grid-template-columns:
+          [full-width-start] $container-full-width-section-width
+          [feature-start] $container-feature-section-width
+          [breakout-start] $container-breakout-section-width
+          [content-start] $container-sidebars-right-content-section-width
+          [content-end] $container-sidebars-breakout-section-width
+          [breakout-end sidebar-start] $container-sidebar-right-section-width
+          [feature-end sidebar-end] $container-full-width-section-width
+          [full-width-end];
+
+        // > .sidebar
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
           grid-row: 1;
 
-          // Make sure other container classes do not break the layout inside of the content.
+          // Make sure other container classes do not break the layout inside of the sidebar.
           //
           // &:not(.container)
           &:not(
@@ -541,11 +615,11 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-end: content-left-end;
+              grid-column-start: content-end;
             }
           }
 
-          // Lock content to the content-left section.
+          // Lock content to the sidebar section.
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
@@ -554,11 +628,11 @@
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
           ) {
-            grid-column: content-left;
+            grid-column: sidebar;
           }
 
           // Contain components should inherit the container's grid columns and
-          // force all children to be in the content-left section.
+          // force all children to be in the sidebar section.
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
@@ -569,58 +643,14 @@
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
               #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
-              grid-column: content-left;
+              grid-column: sidebar;
             }
           }
         }
 
-        // .inner-content
-        #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
-
-          // Make sure other container classes do not break the layout inside of the content.
-          //
-          // &:not(.container)
-          &:not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector}
-          ) {
-            // &, .container, .breakout, .feature, .full-width
-            &,
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column: inner-content;
-            }
-          }
-
-          // Lock content to the inner-content section.
-          //
-          // > :not(.container, .breakout, .feature, .full-width)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-          ) {
-            grid-column: inner-content;
-          }
-
-          // Contain components should inherit the container's grid columns and
-          // force all children to be in the inner-content section.
-          //
-          // > .contain
-          #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width)
-            > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
-              grid-column: inner-content;
-            }
-          }
         }
       }
     }

@@ -12,21 +12,29 @@ $container-gap: var(
   --#{root-defaults.$prefix}container-gap,
   #{map.get(root-variables.$spacers, 5)}
 );
-$container-content-max-width: var(
-  --#{root-defaults.$prefix}container-content-max-width,
-  #{root-variables.$content-max-width}
-);
 $container-sidebar-width: var(
   --#{root-defaults.$prefix}container-sidebar-width,
   #{defaults.$container-sidebar-width}
 );
+$container-breakout-width: var(
+  --#{root-defaults.$prefix}container-breakout-width,
+  #{defaults.$container-breakout-width}
+);
+$container-feature-width: var(
+  --#{root-defaults.$prefix}container-feature-width,
+  #{defaults.$container-feature-width}
+);
+$container-content-max-width: var(
+  --#{root-defaults.$prefix}container-content-max-width,
+  #{root-variables.$content-max-width}
+);
 $container-breakout-max-width: var(
   --#{root-defaults.$prefix}container-breakout-max-width,
-  calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
+  calc(#{$container-content-max-width} + #{$container-breakout-width})
 );
 $container-feature-max-width: var(
   --#{root-defaults.$prefix}container-feature-max-width,
-  calc(#{$container-breakout-max-width} + #{defaults.$container-feature-width})
+  calc(#{$container-breakout-max-width} + #{$container-feature-width})
 );
 $container-full-width-section-min-width: var(
   --#{root-defaults.$prefix}container-full-width-section-min-width,
@@ -96,19 +104,40 @@ $container-content-section-width: var(
 );
 $container-sidebar-left-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-left-section-width,
-  $container-sidebar-width
+  max($container-sidebar-width, $container-feature-section-max-width)
 );
 $container-sidebar-right-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-right-section-width,
-  $container-sidebar-width
+  max($container-sidebar-width, $container-feature-section-max-width)
 );
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-$container-inner-content-section-width: var(
-  --#{root-defaults.$prefix}container-inner-content-section-width,
+$container-sidebars-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-content-section-width,
   calc(
     #{$container-content-section-width} -
       #{$container-sidebar-left-section-width} -
-      #{$container-sidebar-right-section-width}
+      #{$container-sidebar-right-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width) * 2
   )
+);
+$container-sidebars-right-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-width,
+  calc(
+    #{$container-content-section-width} -
+      #{$container-sidebar-right-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width)
+  )
+);
+$container-sidebars-left-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-width,
+  calc(
+    #{$container-content-section-width} -
+      #{$container-sidebar-left-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width)
+  )
+);
+$container-sidebars-breakout-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-breakout-section-width,
+  #{$container-breakout-section-max-width}
 );
 /* stylelint-enable  scss/operator-no-newline-after */
