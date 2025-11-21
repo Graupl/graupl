@@ -45,6 +45,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./src/js/disclosure/index.js",
+    output: {
+      file: `dist/js/disclosure.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./src/js/navigation/index.js",
     output: {
       file: `dist/js/navigation.js`,
@@ -115,6 +125,28 @@ export default defineConfig([
       file: `dist/js/generator/carousel.${format}.js`,
       format,
       name: "CarouselGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/disclosure/Disclosure.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/disclosure.${format}.js`,
+      format,
+      name: "Disclosure",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/disclosure/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/disclosure.${format}.js`,
+      format,
+      name: "DisclosureGenerator",
       sourcemap: true,
     })),
     platform: "browser",

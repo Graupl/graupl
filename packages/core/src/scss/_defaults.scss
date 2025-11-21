@@ -34,10 +34,13 @@ $content-max-width: 96ch !default;
 // Screen sizes.
 $-screen-sizes: (
   xs: 0,
-  sm: 48ch,
-  md: 72ch,
-  lg: 108ch,
-  xl: 156ch,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  hd: 1500px,
+  qhd: 1921px,
+  uhd: 2561px,
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: () !default;

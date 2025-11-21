@@ -1,0 +1,205 @@
+// @graupl/core disclosure component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "sass:map";
+
+// Color properties.
+$disclosure-color: var(--#{root-defaults}disclosure-colour, #{color.$color});
+$disclosure-background: var(
+  --#{root-defaults}disclosure-background,
+  #{color.$background}
+);
+$disclosure-content-border-color: var(
+  --#{root-defaults.$prefix}disclosure-content-border-color,
+  #{color.$border-color}
+);
+
+// Spacing properties.
+$disclosure-content-padding-x: var(
+  --#{root-defaults.$prefix}disclosure-content-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$disclosure-content-padding-y: var(
+  --#{root-defaults.$prefix}disclosure-content-padding-y,
+  #{map.get(root-variables.$spacers, 5)}
+);
+$disclosure-content-padding: var(
+  --#{root-defaults.$prefix}disclosure-content-padding,
+  #{$disclosure-content-padding-y} #{$disclosure-content-padding-x}
+);
+
+// Display properties.
+$disclosure-show-display: var(
+  --#{root-defaults.$prefix}disclosure-show-display,
+  #{defaults.$disclosure-show-display}
+);
+$disclosure-hide-display: var(
+  --#{root-defaults.$prefix}disclosure-hide-display,
+  #{defaults.$disclosure-hide-display}
+);
+$disclosure-transitioning-display: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-display,
+  #{defaults.$disclosure-transitioning-display}
+);
+$disclosure-display: var(
+  --#{root-defaults.$prefix}disclosure-display,
+  #{defaults.$disclosure-hide-display}
+);
+
+// Block-size properties.
+$disclosure-show-block-size: var(
+  --#{root-defaults.$prefix}disclosure-show-block-size,
+  #{defaults.$disclosure-show-block-size}
+);
+$disclosure-hide-block-size: var(
+  --#{root-defaults.$prefix}disclosure-hide-block-size,
+  #{defaults.$disclosure-hide-block-size}
+);
+$disclosure-transitioning-block-size: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-block-size,
+  #{defaults.$disclosure-transitioning-block-size}
+);
+$disclosure-block-size: var(
+  --#{root-defaults.$prefix}disclosure-block-size,
+  #{defaults.$disclosure-hide-block-size}
+);
+
+// Opacity properties.
+$disclosure-show-opacity: var(
+  --#{root-defaults.$prefix}disclosure-show-opacity,
+  #{defaults.$disclosure-show-opacity}
+);
+$disclosure-hide-opacity: var(
+  --#{root-defaults.$prefix}disclosure-hide-opacity,
+  #{defaults.$disclosure-hide-opacity}
+);
+$disclosure-transitioning-opacity: var(
+  --#{root-defaults.$prefix}disclosure-transitioning-opacity,
+  #{defaults.$disclosure-transitioning-opacity}
+);
+$disclosure-opacity: var(
+  --#{root-defaults.$prefix}disclosure-opacity,
+  #{$disclosure-hide-opacity}
+);
+
+// Transition properties.
+$disclosure-transition-duration: var(
+  --#{root-defaults.$prefix}disclosure-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+$disclosure-transition-timing-function: var(
+  --#{root-defaults.$prefix}disclosure-transition-timing-function,
+  #{root-variables.$transition-timing-function}
+);
+$disclosure-transition: var(
+  --#{root-defaults.$prefix}disclosure-transition,
+  opacity #{$disclosure-transition-duration}
+    #{$disclosure-transition-timing-function},
+  block-size #{$disclosure-transition-duration}
+    #{$disclosure-transition-timing-function}
+);
+$disclosure-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}disclosure-transition-reduced-motion,
+  opacity #{$disclosure-transition-duration}
+    #{$disclosure-transition-timing-function}
+);
+
+// Border properties.
+$disclosure-content-border-top-width: var(
+  --#{root-defaults.$prefix}disclosure-content-border-top-width,
+  #{root-variables.$border-top-width}
+);
+$disclosure-content-border-right-width: var(
+  --#{root-defaults.$prefix}disclosure-content-border-right-width,
+  #{root-variables.$border-right-width}
+);
+$disclosure-content-border-bottom-width: var(
+  --#{root-defaults.$prefix}disclosure-content-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+$disclosure-content-border-left-width: var(
+  --#{root-defaults.$prefix}disclosure-content-border-left-width,
+  #{root-variables.$border-left-width}
+);
+$disclosure-content-border-width: var(
+  --#{root-defaults.$prefix}disclosure-content-border-width,
+  #{$disclosure-content-border-top-width}
+    #{$disclosure-content-border-right-width}
+    #{$disclosure-content-border-bottom-width}
+    #{$disclosure-content-border-left-width}
+);
+$disclosure-content-border-top-style: var(
+  --#{root-defaults.$prefix}disclosure-content-border-top-style,
+  #{root-variables.$border-top-style}
+);
+$disclosure-content-border-right-style: var(
+  --#{root-defaults.$prefix}disclosure-content-border-right-style,
+  #{root-variables.$border-right-style}
+);
+$disclosure-content-border-bottom-style: var(
+  --#{root-defaults.$prefix}disclosure-content-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+$disclosure-content-border-left-style: var(
+  --#{root-defaults.$prefix}disclosure-content-border-left-style,
+  #{root-variables.$border-left-style}
+);
+$disclosure-content-border-style: var(
+  --#{root-defaults.$prefix}disclosure-content-border-style,
+  #{$disclosure-content-border-top-style}
+    #{$disclosure-content-border-right-style}
+    #{$disclosure-content-border-bottom-style}
+    #{$disclosure-content-border-left-style}
+);
+$disclosure-content-border-top-left-radius: var(
+  --#{root-defaults.$prefix}disclosure-content-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+$disclosure-content-border-top-right-radius: var(
+  --#{root-defaults.$prefix}disclosure-content-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+$disclosure-content-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}disclosure-content-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+$disclosure-content-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}disclosure-content-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+$disclosure-content-border-radius: var(
+  --#{root-defaults.$prefix}disclosure-content-border-radius,
+  #{$disclosure-content-border-top-left-radius}
+    #{$disclosure-content-border-top-right-radius}
+    #{$disclosure-content-border-bottom-right-radius}
+    #{$disclosure-content-border-bottom-left-radius}
+);
+
+// Disclosure toggle properties.
+$disclosure-toggle-transform: var(
+  --#{root-defaults.$prefix}disclosure-toggle-transform,
+  #{defaults.$disclosure-toggle-transform}
+);
+$disclosure-toggle-open-transform: var(
+  --#{root-defaults.$prefix}disclosure-toggle-open-transform,
+  #{defaults.$disclosure-toggle-open-transform}
+);
+$disclosure-toggle-content: var(
+  --#{root-defaults.$prefix}disclosure-toggle-content,
+  #{defaults.$disclosure-toggle-content}
+);
+$disclosure-toggle-transition: var(
+  --#{root-defaults.$prefix}disclosure-toggle-transition,
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+$disclosure-toggle-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}disclosure-toggle-transition-reduced-motion,
+  none
+);
