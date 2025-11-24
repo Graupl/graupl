@@ -27,8 +27,8 @@
         margin-top: calc(
           -1 *
             min(
-              #{$accordion-item-border-top-width},
-              #{$accordion-item-border-bottom-width}
+              var(#{$accordion-item-border-top-width}),
+              var(#{$accordion-item-border-bottom-width})
             )
         );
         /* stylelint-enable  scss/operator-no-newline-after */
@@ -159,10 +159,10 @@
         -1 *
           (
             min(
-                #{$accordion-item-border-top-width},
-                #{$accordion-item-border-bottom-width},
-                #{$accordion-item-border-left-width},
-                #{$accordion-item-border-right-width}
+                var(#{$accordion-item-border-top-width}),
+                var(#{$accordion-item-border-bottom-width}),
+                var(#{$accordion-item-border-left-width}),
+                var(#{$accordion-item-border-right-width})
               ) +
               #{focus.$focus-width}
           )
