@@ -28,15 +28,15 @@
 // - `.feature`: A feature container component.
 // - `.breakout`: A breakout container component.
 // - `.contain`: A utility class to contain child elements to the content section of the container grid.
-// - `.sidebars`: A utility class to enable sidebars in the container.
-// - `.sidebar-left`: A left sidebar container component.
-// - `.sidebar-right`: A right sidebar container component.
-// - `.content-left`: A left content container component.
-// - `.content-right`: A right content container component.
-// - `.inner-content`: A utility class to contain child elements to the inner content section of the container grid.
+// - `.sidebars`: A utility class to enable two sidebars in the container.
+// - `.sidebars-left`: A utility class to enable a left sidebar in the container.
+// - `.sidebars-right`: A utility class to enable a right sidebar in the container.
+// - `.sidebar-left`: A left sidebar container component used directly inside of a container with sidebars.
+// - `.sidebar-right`: A right sidebar container component used directly inside of a container with sidebars.
+// - `.sidebar`: A sidebar container component used directly inside of a container with sidebars.
+// - `.content`: A content container component used directly inside of a container with sidebars.
 //
 // The following custom properties control the generated classes:
-// - `--graupl-container-gap`: The gap between the container sections.
 // - `--graupl-container-content-max-width`: The maximum width of the content section.
 // - `--graupl-container-sidebar-width`: The width of the sidebar sections.
 // - `--graupl-container-breakout-max-width`: The maximum width of the breakout section.
@@ -104,21 +104,21 @@
 //   </div>
 //
 // @example
-//   <div class="container sidebars">
-//     <div class="sidebar-left">
+//   <div class="container sidebars-left">
+//     <div class="sidebar">
 //       Left sidebar content
 //     </div>
-//     <div class="content-right">
+//     <div class="content">
 //       Content right content
 //     </div>
 //   </div>
 //
 // @example
-//   <div class="container sidebars">
-//     <div class="content-left">
+//   <div class="container sidebars-right">
+//     <div class="content">
 //       Content left content
 //     </div>
-//     <div class="sidebar-right">
+//     <div class="sidebar">
 //       Right sidebar content
 //     </div>
 //   </div>
@@ -128,7 +128,7 @@
 //     <div class="sidebar-left">
 //       Left sidebar content
 //     </div>
-//     <div class="inner-content">
+//     <div class="content">
 //       Inner content content
 //     </div>
 //     <div class="sidebar-right">
@@ -222,6 +222,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
         > :not(
@@ -240,6 +241,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
         > :not(
@@ -258,6 +260,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
         > :not(
@@ -298,6 +301,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
@@ -316,6 +320,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
@@ -354,6 +359,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
@@ -372,6 +378,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
@@ -418,7 +425,8 @@
 
         // > .sidebar-left
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
-          grid-row: 1;
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
@@ -467,7 +475,8 @@
 
         // > .sidebar-right
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
-          grid-row: 1;
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
@@ -514,8 +523,8 @@
           }
         }
 
-        // > .content
-        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        > .content
+          > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
         }
       }
@@ -534,7 +543,8 @@
 
         // > .sidebar
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
-          grid-row: 1;
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
@@ -601,7 +611,8 @@
 
         // > .sidebar
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
-          grid-row: 1;
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
