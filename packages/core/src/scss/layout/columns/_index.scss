@@ -28,28 +28,34 @@
 // - `.span-5`: Sets the span of a column in the columns component to 5.
 // - `.span-6`: Sets the span of a column in the columns component to 6.
 //
-// The following custom properties control the generated classes:
-// - `--graupl-columns-row-gap`: The gap between the rows of the columns.
-// - `--graupl-columns-column-gap`: The gap between the columns of the columns.
-// - `--graupl-columns-count`: The maximum number of columns.
-// - `--graupl-columns-content-max-width`: The maximum width of the content inside the columns.
-// - `--graupl-columns-min-width`: The minimum width of each column.
-// - `--graupl-columns-max-width`: The maximum width of each column.
-// - `--graupl-columns-grid-template-columns`: The grid template columns for the columns.
-// - `--graupl-columns-span`: The span of each column.
+// The following custom properties can be used to customize the columns component:
+// | Property | Description | Default Value |
+// | --- | --- | --- |
+// | `--graupl-columns-row-gap`               | The gap between the rows of the columns.             | `var(--graupl-spacer-5)`                                                                                                                               |
+// | `--graupl-columns-column-gap`            | The gap between the columns of the columns.          | `var(--graupl-spacer-5)`                                                                                                                               |
+// | `--graupl-columns-count`                 | The maximum number of columns.                       | `3`                                                                                                                                                    |
+// | `--graupl-columns-content-max-width`     | The maximum width of the content inside the columns. | `var(--graupl-content-max-width)`                                                                                                                      |
+// | `--graupl-columns-min-width`             | The minimum width of each column.                    | `calc((var(--graupl-columns-content-max-width) - var(--graupl-columns-column-gap) * (var(--graupl-columns-count) - 1)) / var(--graupl-columns-count))` |
+// | `--graupl-columns-max-width`             | The maximum width of each column.                    | `1fr`                                                                                                                                                  |
+// | `--graupl-columns-grid-template-columns` | The grid template columns for the columns.           | `repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))`                                                           |
+// | `--graupl-columns-span`                  | The span of each column.                             | `1`                                                                                                                                                    |
 //
-// The following variables control the generated classes:
-// - `$columns-selector-base`: The base selector for the columns component.
-// - `$columns-selector`: The selector for the columns component.
-// - `$columns-count-selector-base`: The base selector for the count class.
-// - `$columns-count-selector-prefix`: The prefix for the count class.
-// - `$columns-span-selector-base`: The base selector for the span class.
-// - `$columns-span-selector-prefix`: The prefix for the span class.
-// - `$columns-max-width`: The maximum width of each column.
-// - `$columns-count`: The default number of columns.
-// - `$columns-min-count`: The minimum number of columns used to generate `.count-#` classes.
-// - `$columns-max-count`: The maximum number of columns used to generate `.count-#` classes.
-// - `$columns-span`: The default span of each column.
+// The following sass variables can be used to customize the generation of the columns component:
+// | Variable | Description | Default Value |
+// | --- | --- | --- |
+// | `$selector-base`                 | The base selector for the component.                               | `"."`       |
+// | `$modifier-selector-base`        | The base selector for component modifiers.                         | `"."`       |
+// | `$columns-selector-base`         | The base selector for the columns component.                       | `$selector-base` |
+// | `$columns-selector`              | The selector for the columns component.                            | `"columns"` |
+// | `$columns-count-selector-base`   | The base selector for the count class.                             | `$selector-base` |
+// | `$columns-count-selector-prefix` | The prefix for the count class.                                    | `"count-"`  |
+// | `$columns-span-selector-base`    | The base selector for the span class.                              | `$selector-base` |
+// | `$columns-span-selector-prefix`  | The prefix for the span class.                                     | `"span-"`   |
+// | `$columns-max-width`             | The maximum width of each column.                                  | `1fr`       |
+// | `$columns-count`                 | The default number of columns.                                     | `3`         |
+// | `$columns-min-count`             | The minimum number of columns used to generate `.count-#` classes. | `1`         |
+// | `$columns-max-count`             | The maximum number of columns used to generate `.count-#` classes. | `6`         |
+// | `$columns-span`                  | The default span of each column.                                   | `1`         |
 //
 // @example
 //   <div class="columns">
