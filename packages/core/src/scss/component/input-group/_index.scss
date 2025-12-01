@@ -8,7 +8,7 @@
 
 // stylelint-disable declaration-block-no-redundant-longhand-properties
 @include layer(component) {
-  #{defaults.$input-group-selector} {
+  #{defaults.$input-group-selector-base}#{defaults.$input-group-selector} {
     display: grid;
     grid-template-areas: $input-group-grid-template-areas;
     grid-template-columns: $input-group-grid-template-columns;
@@ -26,11 +26,11 @@
       grid-area: $input-group-input-grid-area;
     }
 
-    #{defaults.$input-group-help-text-selector} {
+    #{defaults.$input-group-help-text-selector-base}#{defaults.$input-group-help-text-selector} {
       grid-area: $input-group-help-grid-area;
     }
 
-    &#{defaults.$input-group-inline-selector} {
+    &#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-inline-grid-template-areas;
       grid-template-columns: $input-group-inline-grid-template-columns;
       grid-template-rows: $input-group-inline-grid-template-rows;
@@ -38,7 +38,7 @@
   }
 
   @include screen.down(xs) {
-    #{defaults.$input-group-selector}#{defaults.$input-group-inline-selector} {
+    #{defaults.$input-group-selector-base}#{defaults.$input-group-selector}#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-inline-selector} {
       grid-template-areas: $input-group-grid-template-areas;
       grid-template-columns: $input-group-grid-template-columns;
       grid-template-rows: $input-group-grid-template-rows;

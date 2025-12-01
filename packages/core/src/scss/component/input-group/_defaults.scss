@@ -6,10 +6,17 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Input group selectors.
-$input-group-selector: ".input-group" !default;
-$input-group-inline-selector: ".inline" !default;
-$input-group-help-text-selector: ".help-text" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$input-group-selector-base: $selector-base !default;
+$input-group-selector: "input-group" !default;
+$input-group-inline-selector-base: $modifier-selector-base !default;
+$input-group-inline-selector: "inline" !default;
+$input-group-help-text-selector-base: $selector-base !default;
+$input-group-help-text-selector: "help-text" !default;
 
 // Grid names.
 $input-group-grid-label-name: label !default;
