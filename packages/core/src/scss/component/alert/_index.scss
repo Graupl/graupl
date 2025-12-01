@@ -11,13 +11,13 @@
 @use "sass:map";
 
 @include layer(base) {
-  #{defaults.$alert-dismisser-selector} {
+  #{defaults.$alert-dismisser-selector-base}#{defaults.$alert-dismisser-selector} {
     @include button-mixins.apply-base;
   }
 }
 
 @include layer(component) {
-  #{defaults.$alert-selector} {
+  #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
     --#{root-defaults.$prefix}button-border: 0;
 
     display: grid;
@@ -30,57 +30,57 @@
     border-radius: $alert-border-radius;
     gap: $alert-gap;
 
-    &#{defaults.$alert-hidden-selector} {
+    &#{defaults.$alert-hidden-selector-base}#{defaults.$alert-hidden-selector} {
       display: none;
     }
 
-    &#{defaults.$alert-transition-selector} {
+    &#{defaults.$alert-transition-selector-base}#{defaults.$alert-transition-selector} {
       display: grid;
       opacity: 0;
     }
 
-    &#{defaults.$alert-shown-selector} {
+    &#{defaults.$alert-shown-selector-base}#{defaults.$alert-shown-selector} {
       display: grid;
-    }
-
-    @include animation.off {
-      #{defaults.$alert-selector} {
-        --#{root-defaults.$prefix}alert-transition: #{$alert-transition-reduced-motion};
-      }
     }
   }
 
-  #{defaults.$alert-header-selector} {
+  #{defaults.$alert-header-selector-base}#{defaults.$alert-header-selector} {
     grid-column: content;
     grid-row: header;
     padding: $alert-header-padding;
   }
 
-  #{defaults.$alert-body-selector} {
+  #{defaults.$alert-body-selector-base}#{defaults.$alert-body-selector} {
     grid-column: content;
     grid-row: body;
     padding: $alert-body-padding;
   }
 
-  #{defaults.$alert-footer-selector} {
+  #{defaults.$alert-footer-selector-base}#{defaults.$alert-footer-selector} {
     grid-column: content;
     grid-row: footer;
     padding: $alert-footer-padding;
   }
 
-  #{defaults.$alert-dismisser-selector} {
+  #{defaults.$alert-dismisser-selector-base}#{defaults.$alert-dismisser-selector} {
     grid-column: dismiss;
     grid-row: 1 / -1;
     align-self: flex-start;
   }
 
-  #{defaults.$alert-title-selector} {
+  #{defaults.$alert-title-selector-base}#{defaults.$alert-title-selector} {
     margin: $alert-title-margin;
+  }
+
+  @include animation.off {
+    #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
+      --#{root-defaults.$prefix}alert-transition: #{$alert-transition-reduced-motion};
+    }
   }
 }
 
 @include layer(theme) {
-  #{defaults.$alert-selector} {
+  #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
     --#{root-defaults.$prefix}button-background: #{$alert-background};
     --#{root-defaults.$prefix}button-focus-background: #{$alert-background};
     --#{root-defaults.$prefix}link-color: #{$alert-link-color};
@@ -95,7 +95,7 @@
     color: $alert-color;
 
     @each $color, $map in defaults.$alert-theme-map {
-      &#{defaults.$alert-theme-selector-prefix}#{$color} {
+      &#{defaults.$alert-theme-selector-prefix-base}#{defaults.$alert-theme-selector-prefix}#{$color} {
         @each $prop, $value in $map {
           --#{root-defaults.$prefix}alert-#{$prop}: #{theme.get(
               map.get($value, color),
@@ -106,11 +106,11 @@
     }
   }
 
-  #{defaults.$alert-dismisser-selector} {
+  #{defaults.$alert-dismisser-selector-base}#{defaults.$alert-dismisser-selector} {
     @include button-mixins.apply-theme;
   }
 
-  #{defaults.$alert-title-selector} {
+  #{defaults.$alert-title-selector-base}#{defaults.$alert-title-selector} {
     color: $alert-title-color;
     font-size: $alert-title-font-size;
     font-weight: $alert-title-font-weight;
