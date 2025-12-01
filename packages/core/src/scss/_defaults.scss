@@ -26,6 +26,7 @@ $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
 $state-aware-utilities: true !default;
 $container-aware-utilities: false !default;
+$themeable-components: true !default;
 $use-layers: true !default;
 
 // Layout properties.
@@ -34,10 +35,13 @@ $content-max-width: 96ch !default;
 // Screen sizes.
 $-screen-sizes: (
   xs: 0,
-  sm: 48ch,
-  md: 72ch,
-  lg: 108ch,
-  xl: 156ch,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+  hd: 1500px,
+  qhd: 1921px,
+  uhd: 2561px,
 );
 $custom-screen-sizes: () !default;
 $screen-sizes: () !default;
@@ -226,6 +230,12 @@ $-state-selectors: (
     "[disabled]",
     "[aria-disabled=true]",
   ),
+  selected: (
+    "[aria-selected=true]",
+  ),
+  current: (
+    "[aria-current=true]",
+  ),
 );
 $-state-class-selectors: (
   visited: (
@@ -242,6 +252,12 @@ $-state-class-selectors: (
   ),
   disabled: (
     "#{$state-selector-base}disabled",
+  ),
+  selected: (
+    "#{$state-selector-base}selected",
+  ),
+  current: (
+    "#{$state-selector-base}current",
   ),
 );
 

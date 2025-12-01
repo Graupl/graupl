@@ -1,6 +1,6 @@
-## [1.0.0-beta.19](https://github.com/Graupl/graupl/compare/v1.0.0-beta.18...v1.0.0-beta.19) (2025-07-22)
+## [1.0.0-beta.23](https://github.com/Graupl/graupl/compare/v1.0.0-beta.22...v1.0.0-beta.23) (2025-10-28)
 
 
 ### Bug Fixes
 
-* **utility:** change bordered utilities to work with tables ([d615af5](https://github.com/Graupl/graupl/commit/d615af5242c6970fc1ca2d0e388b7b9d0ac7a916)), closes [#191](https://github.com/Graupl/graupl/issues/191)
+* **breakpoints:** use pixels for all breakpoints to fix resizing bug ([2bf8319](https://github.com/Graupl/graupl/commit/2bf8319295445d636dc7f7c6715c244e3a2ef02e))

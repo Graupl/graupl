@@ -46,9 +46,29 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/disclosure/index.js",
+    output: {
+      file: `dist/js/disclosure.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/navigation/index.js",
     output: {
       file: `dist/js/navigation.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/tabs/index.js",
+    output: {
+      file: `dist/js/tabs.js`,
       format: "iife",
       sourcemap: true,
     },
@@ -122,11 +142,55 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/disclosure/Disclosure.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/disclosure.${format}.js`,
+      format,
+      name: "Disclosure",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/disclosure/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/disclosure.${format}.js`,
+      format,
+      name: "DisclosureGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/navigation/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
       file: `dist/js/generator/navigation.${format}.js`,
       format,
       name: "NavigationGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/tabs/Tabs.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/tabs.${format}.js`,
+      format,
+      name: "Tabs",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/tabs/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/tabs.${format}.js`,
+      format,
+      name: "TabsGenerator",
       sourcemap: true,
     })),
     platform: "browser",
