@@ -9,21 +9,23 @@
 @use "../../defaults" as root-defaults;
 
 // Container selectors.
-$container-selector-base: root-defaults.$component-selector-base !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$container-selector-base: $selector-base !default;
 $container-selector: "container" !default;
-$container-breakout-selector-base: $container-selector-base !default;
+$container-breakout-selector-base: $selector-base !default;
 $container-breakout-selector: "breakout" !default;
-$container-feature-selector-base: $container-selector-base !default;
+$container-feature-selector-base: $selector-base !default;
 $container-feature-selector: "feature" !default;
-$container-full-width-selector-base: $container-selector-base !default;
+$container-full-width-selector-base: $selector-base !default;
 $container-full-width-selector: "full-width" !default;
-$container-contain-selector-base: $container-selector-base !default;
+$container-contain-selector-base: $modifier-selector-base !default;
 $container-contain-selector: "contain" !default;
-$container-sidebars-selector-base: $container-selector-base !default;
+$container-sidebars-selector-base: $modifier-selector-base !default;
 $container-sidebars-selector: "sidebars" !default;
-$container-content-selector-base: $container-selector-base !default;
+$container-content-selector-base: $selector-base !default;
 $container-content-selector: "content" !default;
-$container-sidebar-selector-base: $container-selector-base !default;
+$container-sidebar-selector-base: $selector-base !default;
 $container-sidebar-selector: "sidebar" !default;
 $container-left-selector-suffix: "-left" !default;
 $container-right-selector-suffix: "-right" !default;
