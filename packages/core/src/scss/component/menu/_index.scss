@@ -9,7 +9,7 @@
 @use "../../mixins/animation";
 
 @include layer(component) {
-  #{defaults.$menu-selector} {
+  #{defaults.$menu-selector-base}#{defaults.$menu-selector} {
     --#{root-defaults.$prefix}link-padding: #{$menu-link-padding};
     --#{root-defaults.$prefix}link-border-width: #{$menu-link-border-width};
     --#{root-defaults.$prefix}link-border-radius: #{$menu-link-border-radius};
@@ -49,16 +49,16 @@
     gap: $menu-gap;
     isolation: isolate;
 
-    &#{defaults.$menu-show-selector} {
+    &#{defaults.$menu-show-selector-base}#{defaults.$menu-show-selector} {
       --#{root-defaults.$prefix}menu-display: #{$menu-show-display};
     }
 
-    &#{defaults.$menu-hide-selector} {
+    &#{defaults.$menu-hide-selector-base}#{defaults.$menu-hide-selector} {
       --#{root-defaults.$prefix}menu-display: #{$menu-hide-display};
     }
   }
 
-  #{defaults.$submenu-selector} {
+  #{defaults.$submenu-selector-base}#{defaults.$submenu-selector} {
     display: $submenu-display;
     position: $submenu-position;
     z-index: $submenu-z-index;
@@ -73,16 +73,16 @@
     isolation: isolate;
     inset: $submenu-inset;
 
-    &#{defaults.$menu-show-selector} {
+    &#{defaults.$menu-show-selector-base}#{defaults.$menu-show-selector} {
       --#{root-defaults.$prefix}submenu-display: #{$submenu-show-display};
     }
 
-    &#{defaults.$menu-hide-selector} {
+    &#{defaults.$menu-hide-selector-base}#{defaults.$menu-hide-selector} {
       --#{root-defaults.$prefix}submenu-display: #{$submenu-hide-display};
     }
   }
 
-  #{defaults.$menu-item-selector} {
+  #{defaults.$menu-item-selector-base}#{defaults.$menu-item-selector} {
     display: flex;
     position: relative;
     flex-wrap: wrap;
@@ -93,7 +93,7 @@
     padding: $menu-item-padding;
   }
 
-  #{defaults.$menu-link-selector} {
+  #{defaults.$menu-link-selector-base}#{defaults.$menu-link-selector} {
     display: flex;
     width: 100%;
     padding: $menu-link-padding;
@@ -171,7 +171,7 @@
     }
   }
 
-  #{defaults.$submenu-toggle-selector} {
+  #{defaults.$submenu-toggle-selector-base}#{defaults.$submenu-toggle-selector} {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -189,18 +189,18 @@
   }
 
   @include animation.off {
-    #{defaults.$menu-link-selector} {
+    #{defaults.$menu-link-selector-base}#{defaults.$menu-link-selector} {
       --#{root-defaults.$prefix}menu-link-transition: #{$menu-link-transition-reduced-motion};
     }
 
-    #{defaults.$submenu-toggle-selector}::after {
+    #{defaults.$submenu-toggle-selector-base}#{defaults.$submenu-toggle-selector}::after {
       --#{root-defaults.$prefix}submenu-toggle-transition: #{$submenu-toggle-transition-reduced-motion};
     }
   }
 }
 
 @include layer(theme) {
-  #{defaults.$menu-selector} {
+  #{defaults.$menu-selector-base}#{defaults.$menu-selector} {
     --#{root-defaults.$prefix}link-color: #{$menu-link-color};
     --#{root-defaults.$prefix}link-background: #{$menu-link-background};
     --#{root-defaults.$prefix}link-border-color: #{$menu-link-border-color};
@@ -231,13 +231,13 @@
     color: $menu-color;
   }
 
-  #{defaults.$submenu-selector} {
+  #{defaults.$submenu-selector-base}#{defaults.$submenu-selector} {
     border-color: $submenu-border-color;
     background: $submenu-background;
     color: $submenu-color;
   }
 
-  #{defaults.$menu-link-selector} {
+  #{defaults.$menu-link-selector-base}#{defaults.$menu-link-selector} {
     border-color: $menu-link-border-color;
     background: $menu-link-background;
     color: $menu-link-color;

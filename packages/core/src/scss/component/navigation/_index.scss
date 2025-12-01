@@ -10,7 +10,7 @@
 
 @include layer(component) {
   // Navigation.
-  #{defaults.$navigation-selector} {
+  #{defaults.$navigation-selector-base}#{defaults.$navigation-selector} {
     display: grid;
     grid-template-areas:
       "branding - toggle"
@@ -18,21 +18,21 @@
     grid-template-columns: auto 1fr auto;
     isolation: isolate;
 
-    #{menu-defaults.$menu-selector} {
+    #{menu-defaults.$menu-selector-base}#{menu-defaults.$menu-selector} {
       grid-area: menu;
 
-      &#{menu-defaults.$menu-show-selector} {
+      &#{menu-defaults.$menu-show-selector-base}#{menu-defaults.$menu-show-selector} {
         --#{root-defaults.$prefix}menu-display: #{menu-variables.$menu-show-display};
       }
 
-      &#{menu-defaults.$menu-hide-selector} {
+      &#{menu-defaults.$menu-hide-selector-base}#{menu-defaults.$menu-hide-selector} {
         --#{root-defaults.$prefix}menu-display: #{menu-variables.$menu-hide-display};
       }
     }
   }
 
   // Navigation toggle.
-  #{defaults.$navigation-toggle-selector} {
+  #{defaults.$navigation-toggle-selector-base}#{defaults.$navigation-toggle-selector} {
     display: flex;
     grid-area: toggle;
     align-items: center;
@@ -51,7 +51,7 @@
   }
 
   // Navigation branding.
-  #{defaults.$navigation-branding-selector} {
+  #{defaults.$navigation-branding-selector-base}#{defaults.$navigation-branding-selector} {
     display: flex;
     grid-area: branding;
     align-items: center;
@@ -103,7 +103,7 @@
 
   @include screen.trigger(navigation-collapse) {
     // Navigation.
-    #{defaults.$navigation-selector} {
+    #{defaults.$navigation-selector-base}#{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}menu-flex-direction: column;
       --#{root-defaults.$prefix}submenu-position: relative;
       --#{root-defaults.$prefix}menu-item-min-width: 100%;
@@ -113,14 +113,14 @@
 
   @include screen.trigger(navigation-expand) {
     // Navigation.
-    #{defaults.$navigation-selector} {
+    #{defaults.$navigation-selector-base}#{defaults.$navigation-selector} {
       --#{root-defaults.$prefix}menu-hide-display: #{menu-variables.$menu-show-display};
 
       grid-template-areas: "branding - menu";
     }
 
     // Navigation toggle.
-    #{defaults.$navigation-toggle-selector} {
+    #{defaults.$navigation-toggle-selector-base}#{defaults.$navigation-toggle-selector} {
       display: none;
     }
   }
@@ -128,7 +128,7 @@
 
 @include layer(theme) {
   // Navigation.
-  #{defaults.$navigation-selector} {
+  #{defaults.$navigation-selector-base}#{defaults.$navigation-selector} {
     --#{root-defaults.$prefix}menu-background: #{$navigation-background};
     --#{root-defaults.$prefix}menu-color: #{$navigation-color};
     --#{root-defaults.$prefix}submenu-background: #{$navigation-background};
@@ -139,7 +139,7 @@
   }
 
   // Navigation toggle.
-  #{defaults.$navigation-toggle-selector} {
+  #{defaults.$navigation-toggle-selector-base}#{defaults.$navigation-toggle-selector} {
     border-color: $navigation-toggle-border-color;
     background: $navigation-toggle-background;
     color: $navigation-toggle-color;
@@ -151,7 +151,7 @@
   }
 
   // Navigation branding.
-  #{defaults.$navigation-branding-selector} {
+  #{defaults.$navigation-branding-selector-base}#{defaults.$navigation-branding-selector} {
     color: $navigation-branding-color;
     text-decoration-color: $navigation-branding-text-decoration-color;
 
