@@ -8,7 +8,7 @@
 @use "../../mixins/container";
 
 @include layer(component) {
-  #{defaults.$card-selector} {
+  #{defaults.$card-selector-base}#{defaults.$card-selector} {
     display: grid;
     position: relative;
     grid-template-columns: [image-start content-start] 1fr [image-end content-end];
@@ -22,7 +22,7 @@
     isolation: isolate;
 
     &,
-    &#{defaults.$vertical-card-top-selector} {
+    &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector} {
       grid-template-rows:
         [image-start]
         $card-image-ratio
@@ -31,8 +31,8 @@
         [content-end];
     }
 
-    &#{defaults.$vertical-card-bottom-selector},
-    &#{defaults.$inverse-card-selector} {
+    &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
+    &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
       grid-template-rows:
         [content-start]
         $card-content-ratio
@@ -45,9 +45,9 @@
       --#{root-defaults.$prefix}card-transform: #{$card-hover-transform};
     }
 
-    &#{defaults.$horizontal-card-selector} {
+    &#{defaults.$horizontal-card-selector-base}#{defaults.$horizontal-card-selector} {
       &,
-      &#{defaults.$horizontal-card-left-selector} {
+      &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector} {
         --#{root-defaults.$prefix}card-content-ratio: #{$horizontal-card-content-ratio};
         --#{root-defaults.$prefix}card-image-ratio: #{$horizontal-card-image-ratio};
 
@@ -59,7 +59,8 @@
           [content-end];
         grid-template-rows: [image-start content-start] 1fr [image-end content-end];
 
-        #{defaults.$card-image-selector} img {
+        #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+          img {
           border-radius: calc(
               $card-border-top-left-radius - min(
                   $card-border-top-width,
@@ -76,8 +77,8 @@
         }
       }
 
-      &#{defaults.$horizontal-card-right-selector},
-      &#{defaults.$inverse-card-selector} {
+      &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
+      &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
         grid-template-columns:
           [content-start]
           $card-content-ratio
@@ -85,7 +86,8 @@
           $card-image-ratio
           [image-end];
 
-        #{defaults.$card-image-selector} img {
+        #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+          img {
           border-radius: 0
             calc(
               $card-border-top-right-radius - min(
@@ -105,7 +107,7 @@
     }
   }
 
-  #{defaults.$card-image-selector} {
+  #{defaults.$card-image-selector-base}#{defaults.$card-image-selector} {
     grid-area: image;
     padding: $card-image-padding;
 
@@ -129,7 +131,7 @@
     }
   }
 
-  #{defaults.$card-content-selector} {
+  #{defaults.$card-content-selector-base}#{defaults.$card-content-selector} {
     display: flex;
     grid-area: content;
     flex-direction: column;
@@ -137,27 +139,27 @@
     gap: $card-content-gap;
   }
 
-  #{defaults.$card-body-selector} {
+  #{defaults.$card-body-selector-base}#{defaults.$card-body-selector} {
     flex: 1 0 auto;
   }
 
-  #{defaults.$card-footer-selector} {
+  #{defaults.$card-footer-selector-base}#{defaults.$card-footer-selector} {
     flex: 0 0 auto;
   }
 
-  #{defaults.$card-title-selector} {
+  #{defaults.$card-title-selector-base}#{defaults.$card-title-selector} {
     flex: 0 0 auto;
   }
 
   @include container.trigger(force-vertical-card) {
-    #{defaults.$card-selector} {
-      &#{defaults.$horizontal-card-selector} {
+    #{defaults.$card-selector-base}#{defaults.$card-selector} {
+      &#{defaults.$horizontal-card-selector-base}#{defaults.$horizontal-card-selector} {
         &,
-        &#{defaults.$horizontal-card-left-selector},
-        &#{defaults.$vertical-card-top-selector},
-        &#{defaults.$horizontal-card-right-selector},
-        &#{defaults.$vertical-card-bottom-selector},
-        &#{defaults.$inverse-card-selector} {
+        &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
+        &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector},
+        &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
+        &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
+        &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
           --#{root-defaults.$prefix}horizontal-card-image-ratio: #{defaults.$card-image-ratio};
           --#{root-defaults.$prefix}horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 

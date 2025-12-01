@@ -6,20 +6,37 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Card selectors.
-$card-selector: ".card" !default;
-$card-image-selector: ".card-image" !default;
-$card-content-selector: ".card-content" !default;
-$card-body-selector: ".card-body" !default;
-$card-header-selector: ".card-header" !default;
-$card-footer-selector: ".card-footer" !default;
-$card-title-selector: ".card-title" !default;
-$horizontal-card-selector: ".horizontal" !default;
-$horizontal-card-left-selector: ".left" !default;
-$horizontal-card-right-selector: ".right" !default;
-$vertical-card-top-selector: ".top" !default;
-$vertical-card-bottom-selector: ".bottom" !default;
-$inverse-card-selector: ".inverse" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$card-selector-base: $selector-base !default;
+$card-selector: "card" !default;
+$card-image-selector-base: $selector-base !default;
+$card-image-selector: "card-image" !default;
+$card-content-selector-base: $selector-base !default;
+$card-content-selector: "card-content" !default;
+$card-body-selector-base: $selector-base !default;
+$card-body-selector: "card-body" !default;
+$card-header-selector-base: $selector-base !default;
+$card-header-selector: "card-header" !default;
+$card-footer-selector-base: $selector-base !default;
+$card-footer-selector: "card-footer" !default;
+$card-title-selector-base: $selector-base !default;
+$card-title-selector: "card-title" !default;
+$horizontal-card-selector-base: $modifier-selector-base !default;
+$horizontal-card-selector: "horizontal" !default;
+$horizontal-card-left-selector-base: $modifier-selector-base !default;
+$horizontal-card-left-selector: "left" !default;
+$horizontal-card-right-selector-base: $modifier-selector-base !default;
+$horizontal-card-right-selector: "right" !default;
+$vertical-card-top-selector-base: $modifier-selector-base !default;
+$vertical-card-top-selector: "top" !default;
+$vertical-card-bottom-selector-base: $modifier-selector-base !default;
+$vertical-card-bottom-selector: "bottom" !default;
+$inverse-card-selector-base: $modifier-selector-base !default;
+$inverse-card-selector: "inverse" !default;
 
 // Card properties.
 $card-transform: none !default;
