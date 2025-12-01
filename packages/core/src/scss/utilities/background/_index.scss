@@ -33,43 +33,38 @@
 // The following custom properties control the generated classes:
 // - N/A.
 //
-// The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$background-attachment-selector-prefix`: The prefix for the background attachment utility classes.
-// - `$custom-background-attachment-properties`: [DEPRECATED] The custom properties and values for the background attachment utility classes.
-// - `$background-attachment-properties`: The combined properties and values for the background attachment utility classes.
-// - `$background-clip-selector-prefix`: The prefix for the background clip utility classes.
-// - `$custom-background-clip-properties`: [DEPRECATED] The custom properties and values for the background clip utility classes.
-// - `$background-clip-properties`: The combined properties and values for the background clip utility classes.
-// - `$background-image-selector-prefix`: The prefix for the background image utility classes.
-// - `$custom-background-image-properties`: [DEPRECATED] The custom properties and values for the background image utility classes.
-// - `$background-image-properties`: The combined properties and values for the background image utility classes.
-// - `$background-origin-selector-prefix`: The prefix for the background origin utility classes.
-// - `$custom-background-origin-properties`: [DEPRECATED] The custom properties and values for the background origin utility classes.
-// - `$background-origin-properties`: The combined properties and values for the background origin utility classes.
-// - `$background-position-selector-prefix`: The prefix for the background position utility classes.
-// - `$custom-background-position-properties`: [DEPRECATED] The custom properties and values for the background position utility classes.
-// - `$background-position-properties`: The combined properties and values for the background position utility classes.
-// - `$background-repeat-selector-prefix`: The prefix for the background repeat utility classes.
-// - `$custom-background-repeat-properties`: [DEPRECATED] The custom properties and values for the background repeat utility classes.
-// - `$background-repeat-properties`: The combined properties and values for the background repeat utility classes.
-// - `$background-size-selector-prefix`: The prefix for the background size utility classes.
-// - `$custom-background-size-properties`: [DEPRECATED] The custom properties and values for the background size utility classes.
-// - `$background-size-properties`: The combined properties and values for the background size utility classes.
+// The following sass variables control the generated classes:
+// | Variable | Description | Default Value |
+// | --- | --- | --- |
+// | `$selector-base`                          | Base selector for utility classes.                                 | `"."` |
+// | `$use-important`                         | Append `!important` to generated declarations.                     | `true` |
+// | `$generate-base-utilities`               | Generate the base utilities.                                       | `true` |
+// | `$screen-aware`                          | Generate screen-aware variants.                                    | `false` |
+// | `$theme-aware`                           | Generate theme-aware variants.                                     | `false` |
+// | `$state-aware`                           | Generate state-aware variants.                                     | `false` |
+// | `$container-aware`                       | Generate container-aware variants.                                 | `false` |
+// | `$screen-aware-separator`                | Separator for screen-aware utilities.                              | `"\\:"` |
+// | `$theme-aware-separator`                 | Separator for theme-aware utilities.                               | `"\\:"` |
+// | `$state-aware-separator`                 | Separator for state-aware utilities.                               | `"\\:"` |
+// | `$container-aware-separator`             | Separator for container-aware utilities.                           | `"\\:"` |
+// | `$screen-aware-selector-prefix`          | Prefix for screen-aware utilities.                                 | `""` |
+// | `$theme-aware-selector-prefix`           | Prefix for theme-aware utilities.                                  | `""` |
+// | `$state-aware-selector-prefix`           | Prefix for state-aware utilities.                                  | `""` |
+// | `$container-aware-selector-prefix`       | Prefix for container-aware utilities.                              | `"cq\\:"` |
+// | `$background-attachment-selector-prefix` | Prefix for background-attachment utilities.                        | `"bg-attachment-"` |
+// | `$background-attachment-properties`      | Map of background-attachment utility values.                       | `scroll, fixed, local` |
+// | `$background-clip-selector-prefix`       | Prefix for background-clip utilities.                              | `"bg-clip-"` |
+// | `$background-clip-properties`            | Map of background-clip utility values.                             | `border-box, padding-box, content-box, text, border-area` |
+// | `$background-image-selector-prefix`      | Prefix for background-image utilities.                             | `"bg-image-"` |
+// | `$background-image-properties`           | Map of background-image utility values.                            | `none` |
+// | `$background-origin-selector-prefix`     | Prefix for background-origin utilities.                            | `"bg-origin-"` |
+// | `$background-origin-properties`          | Map of background-origin utility values.                           | `border-box, padding-box, content-box` |
+// | `$background-position-selector-prefix`   | Prefix for background-position utilities.                          | `"bg-position-"` |
+// | `$background-position-properties`        | Map of background-position utility values.                         | `top, right, bottom, left, center` |
+// | `$background-repeat-selector-prefix`     | Prefix for background-repeat utilities.                            | `"bg-repeat-"` |
+// | `$background-repeat-properties`          | Map of background-repeat utility values.                           | `repeat, repeat-x, repeat-y, space, round, no-repeat` |
+// | `$background-size-selector-prefix`       | Prefix for background-size utilities.                              | `"bg-size-"` |
+// | `$background-size-properties`            | Map of background-size utility values.                             | `auto, cover, contain` |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.
