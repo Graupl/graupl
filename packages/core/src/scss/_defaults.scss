@@ -26,6 +26,7 @@ $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
 $state-aware-utilities: true !default;
 $container-aware-utilities: false !default;
+$themeable-components: true !default;
 $use-layers: true !default;
 
 // Layout properties.
@@ -229,6 +230,12 @@ $-state-selectors: (
     "[disabled]",
     "[aria-disabled=true]",
   ),
+  selected: (
+    "[aria-selected=true]",
+  ),
+  current: (
+    "[aria-current=true]",
+  ),
 );
 $-state-class-selectors: (
   visited: (
@@ -245,6 +252,12 @@ $-state-class-selectors: (
   ),
   disabled: (
     "#{$state-selector-base}disabled",
+  ),
+  selected: (
+    "#{$state-selector-base}selected",
+  ),
+  current: (
+    "#{$state-selector-base}current",
   ),
 );
 
