@@ -6,21 +6,35 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // Accordion selectors.
-$accordion-selector: ".accordion" !default;
-$accordion-item-selector: ".accordion-item" !default;
-$accordion-item-header-selector: ".accordion-item-header" !default;
-$accordion-item-title-selector: ".accordion-item-title" !default;
-$accordion-item-toggle-selector: ".accordion-item-toggle" !default;
-$accordion-item-content-selector: ".accordion-item-content" !default;
-$accordion-item-body-selector: ".accordion-item-body" !default;
-$accordion-item-footer-selector: ".accordion-item-footer" !default;
-$accordion-item-open-selector: ".show" !default;
-$accordion-item-close-selector: ".hide" !default;
-$accordion-item-transition-selector: ".transitioning" !default;
-$accordion-item-toggle-pseudo-selector: "::after" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$accordion-selector-base: $selector-base !default;
+$accordion-selector: "accordion" !default;
+$accordion-item-selector-base: $selector-base !default;
+$accordion-item-selector: "accordion-item" !default;
+$accordion-item-header-selector-base: $selector-base !default;
+$accordion-item-header-selector: "accordion-item-header" !default;
+$accordion-item-title-selector-base: $selector-base !default;
+$accordion-item-title-selector: "accordion-item-title" !default;
+$accordion-item-toggle-selector-base: $selector-base !default;
+$accordion-item-toggle-selector: "accordion-item-toggle" !default;
+$accordion-item-content-selector-base: $selector-base !default;
+$accordion-item-content-selector: "accordion-item-content" !default;
+$accordion-item-body-selector-base: $selector-base !default;
+$accordion-item-body-selector: "accordion-item-body" !default;
+$accordion-item-footer-selector-base: $selector-base !default;
+$accordion-item-footer-selector: "accordion-item-footer" !default;
+$accordion-item-open-selector-base: $modifier-selector-base !default;
+$accordion-item-open-selector: "show" !default;
+$accordion-item-close-selector-base: $modifier-selector-base !default;
+$accordion-item-close-selector: "hide" !default;
+$accordion-item-transition-selector-base: $modifier-selector-base !default;
+$accordion-item-transition-selector: "transitioning" !default;
+$accordion-item-toggle-pseudo-selector: "after" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-transform: none !default;
