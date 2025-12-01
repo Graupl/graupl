@@ -8,17 +8,17 @@
 @use "../../base/button/mixins" as button-mixins;
 
 @include layer(base) {
-  #{defaults.$carousel-control-selector} {
+  #{defaults.$carousel-control-selector-base}#{defaults.$carousel-control-selector} {
     @include button-mixins.apply-base;
   }
 
-  #{defaults.$carousel-tab-selector} {
+  #{defaults.$carousel-tab-selector-base}#{defaults.$carousel-tab-selector} {
     @include button-mixins.apply-base;
   }
 }
 
 @include layer(component) {
-  #{defaults.$carousel-selector} {
+  #{defaults.$carousel-selector-base}#{defaults.$carousel-selector} {
     display: grid;
     position: relative;
     grid-template-columns: [slide-start controls-start] auto [tabs-start] $carousel-tabs-width [tabs-end] auto [controls-end slide-end];
@@ -27,19 +27,19 @@
     padding: $carousel-padding;
 
     &[data-graupl-action="next"] {
-      #{defaults.$carousel-item-selector} {
-        &#{defaults.$carousel-previous-item-selector} {
+      #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
+        &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
           transform: translateX(calc(-1 * $carousel-item-max-width));
 
-          &#{defaults.$carousel-active-item-selector} {
+          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
             transform: none;
           }
         }
 
-        &#{defaults.$carousel-next-item-selector} {
+        &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
           transform: translateX($carousel-item-max-width);
 
-          &#{defaults.$carousel-active-item-selector} {
+          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
             transform: none;
           }
         }
@@ -47,19 +47,19 @@
     }
 
     &[data-graupl-action="previous"] {
-      #{defaults.$carousel-item-selector} {
-        &#{defaults.$carousel-previous-item-selector} {
+      #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
+        &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
           transform: translateX($carousel-item-max-width);
 
-          &#{defaults.$carousel-active-item-selector} {
+          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
             transform: none;
           }
         }
 
-        &#{defaults.$carousel-next-item-selector} {
+        &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
           transform: translateX(calc(-1 * $carousel-item-max-width));
 
-          &#{defaults.$carousel-active-item-selector} {
+          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
             transform: none;
           }
         }
@@ -67,7 +67,7 @@
     }
   }
 
-  #{defaults.$carousel-control-container-selector} {
+  #{defaults.$carousel-control-container-selector-base}#{defaults.$carousel-control-container-selector} {
     display: grid;
     z-index: 1;
     grid-area: controls;
@@ -79,24 +79,24 @@
     pointer-events: none;
   }
 
-  #{defaults.$carousel-control-selector} {
+  #{defaults.$carousel-control-selector-base}#{defaults.$carousel-control-selector} {
     pointer-events: auto;
 
-    &#{defaults.$carousel-autoplay-selector} {
+    &#{defaults.$carousel-autoplay-selector-base}#{defaults.$carousel-autoplay-selector} {
       grid-area: autoplay;
     }
 
-    &#{defaults.$carousel-play-selector}::before {
+    &#{defaults.$carousel-play-selector-base}#{defaults.$carousel-play-selector}::before {
       content: $carousel-play-content;
       display: inline-block;
     }
 
-    &#{defaults.$carousel-pause-selector}::before {
+    &#{defaults.$carousel-pause-selector-base}#{defaults.$carousel-pause-selector}::before {
       content: $carousel-pause-content;
       display: inline-block;
     }
 
-    &#{defaults.$carousel-next-selector} {
+    &#{defaults.$carousel-next-selector-base}#{defaults.$carousel-next-selector} {
       grid-area: next;
 
       &::before {
@@ -105,7 +105,7 @@
       }
     }
 
-    &#{defaults.$carousel-previous-selector} {
+    &#{defaults.$carousel-previous-selector-base}#{defaults.$carousel-previous-selector} {
       grid-area: previous;
 
       &::before {
@@ -115,7 +115,7 @@
     }
   }
 
-  #{defaults.$carousel-item-container-selector} {
+  #{defaults.$carousel-item-container-selector-base}#{defaults.$carousel-item-container-selector} {
     display: grid;
     z-index: 0;
     grid-area: slide;
@@ -125,13 +125,13 @@
     isolation: isolate;
   }
 
-  #{defaults.$carousel-item-selector} {
+  #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
     z-index: -1;
     grid-area: items;
     max-width: $carousel-item-max-width;
     opacity: 0;
 
-    &#{defaults.$carousel-active-item-selector} {
+    &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
       z-index: 1;
       transform: none;
       transition: transform
@@ -140,7 +140,7 @@
       opacity: 1;
     }
 
-    &#{defaults.$carousel-previous-item-selector} {
+    &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
       z-index: 1;
       transform: translateX(calc(-1 * $carousel-item-max-width));
       transition: transform
@@ -148,23 +148,23 @@
         ease-in-out;
       opacity: 1;
 
-      &#{defaults.$carousel-active-item-selector} {
+      &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
         transform: none;
       }
     }
 
-    &#{defaults.$carousel-next-item-selector} {
+    &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
       z-index: 1;
       transform: translateX($carousel-item-max-width);
       opacity: 1;
 
-      &#{defaults.$carousel-active-item-selector} {
+      &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
         transform: none;
       }
     }
   }
 
-  #{defaults.$carousel-tab-container-selector} {
+  #{defaults.$carousel-tab-container-selector-base}#{defaults.$carousel-tab-container-selector} {
     display: flex;
     z-index: 1;
     grid-area: tabs;
@@ -174,7 +174,7 @@
     pointer-events: none;
   }
 
-  #{defaults.$carousel-tab-selector} {
+  #{defaults.$carousel-tab-selector-base}#{defaults.$carousel-tab-selector} {
     --#{root-defaults.$prefix}button-border-radius: 50%;
 
     pointer-events: auto;
@@ -182,11 +182,11 @@
 }
 
 @include layer(theme) {
-  #{defaults.$carousel-control-selector} {
+  #{defaults.$carousel-control-selector-base}#{defaults.$carousel-control-selector} {
     @include button-mixins.apply-theme;
   }
 
-  #{defaults.$carousel-tab-selector} {
+  #{defaults.$carousel-tab-selector-base}#{defaults.$carousel-tab-selector} {
     @include button-mixins.apply-theme;
   }
 }
