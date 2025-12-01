@@ -188,11 +188,11 @@
     //
     // > :not(.container, .breakout, .feature, .full-width)
     > :not(
-        #{defaults.$container-selector-base}#{defaults.$container-selector},
-        #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-        #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-        #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-      ) {
+      #{defaults.$container-selector-base}#{defaults.$container-selector},
+      #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+      #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+      #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+    ) {
       grid-column: content;
     }
 
@@ -206,11 +206,11 @@
 
       // > :not(.container, .breakout, .feature, .full-width)
       > :not(
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-        ) {
+        #{defaults.$container-selector-base}#{defaults.$container-selector},
+        #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+        #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+        #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+      ) {
         grid-column: content;
       }
     }
@@ -243,12 +243,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix}
+        ) {
           grid-column: content;
         }
       }
@@ -262,12 +262,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+        ) {
           grid-column: content;
         }
       }
@@ -281,13 +281,13 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+        ) {
           grid-column: content;
         }
 
@@ -298,13 +298,13 @@
         #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
           // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
+          ) {
             grid-column: content;
           }
         }
@@ -322,12 +322,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
           grid-column: content;
         }
       }
@@ -341,12 +341,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
           grid-column: content;
         }
 
@@ -357,12 +357,12 @@
         #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
           // > :not(.container, .breakout, .feature, .full-width, .sidebar)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
             grid-column: content;
           }
         }
@@ -380,12 +380,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
           grid-column: content;
         }
       }
@@ -399,12 +399,12 @@
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar)
         > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-          ) {
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
           grid-column: content;
         }
 
@@ -415,12 +415,12 @@
         #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
           // > :not(.container, .breakout, .feature, .full-width, .sidebar)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-              #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
             grid-column: content;
           }
         }
@@ -449,8 +449,8 @@
           //
           // &:not(.container)
           &:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector}
+          ) {
             // &, .container, .breakout, .feature, .full-width
             &,
             #{defaults.$container-selector-base}#{defaults.$container-selector},
@@ -465,11 +465,11 @@
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+          ) {
             grid-column: sidebar-left;
           }
 
@@ -480,11 +480,11 @@
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
             // > :not(.container, .breakout, .feature, .full-width)
             > :not(
-                #{defaults.$container-selector-base}#{defaults.$container-selector},
-                #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-                #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-              ) {
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
               grid-column: sidebar-left;
             }
           }
@@ -499,8 +499,8 @@
           //
           // &:not(.container)
           &:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector}
+          ) {
             // &, .container, .breakout, .feature, .full-width
             &,
             #{defaults.$container-selector-base}#{defaults.$container-selector},
@@ -515,11 +515,11 @@
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+          ) {
             grid-column: sidebar-right;
           }
 
@@ -530,11 +530,11 @@
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
             // > :not(.container, .breakout, .feature, .full-width)
             > :not(
-                #{defaults.$container-selector-base}#{defaults.$container-selector},
-                #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-                #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-              ) {
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
               grid-column: sidebar-right;
             }
           }
@@ -567,8 +567,8 @@
           //
           // &:not(.container)
           &:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector}
+          ) {
             // &, .container, .breakout, .feature, .full-width
             &,
             #{defaults.$container-selector-base}#{defaults.$container-selector},
@@ -583,11 +583,11 @@
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+          ) {
             grid-column: sidebar;
           }
 
@@ -598,11 +598,11 @@
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
             // > :not(.container, .breakout, .feature, .full-width)
             > :not(
-                #{defaults.$container-selector-base}#{defaults.$container-selector},
-                #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-                #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-              ) {
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
               grid-column: sidebar;
             }
           }
@@ -635,8 +635,8 @@
           //
           // &:not(.container)
           &:not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector}
+          ) {
             // &, .container, .breakout, .feature, .full-width
             &,
             #{defaults.$container-selector-base}#{defaults.$container-selector},
@@ -651,11 +651,11 @@
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+          ) {
             grid-column: sidebar;
           }
 
@@ -666,11 +666,11 @@
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
             // > :not(.container, .breakout, .feature, .full-width)
             > :not(
-                #{defaults.$container-selector-base}#{defaults.$container-selector},
-                #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-                #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-                #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-              ) {
+              #{defaults.$container-selector-base}#{defaults.$container-selector},
+              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
+            ) {
               grid-column: sidebar;
             }
           }
