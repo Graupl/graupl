@@ -597,6 +597,7 @@ $tabs-tab-list-padding: var(
   --#{root-defaults.$prefix}tabs-tab-list-padding,
   #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
 );
+/* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $tabs-tab-list-margin: var(
   --#{root-defaults.$prefix}tabs-tab-list-margin,
   0 0
@@ -609,3 +610,4 @@ $tabs-tab-list-margin: var(
     )
     0
 );
+/* stylelint-enable  scss/operator-no-newline-after */
