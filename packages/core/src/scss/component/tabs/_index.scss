@@ -370,6 +370,7 @@
   #{defaults.$tabs-tab-list-selector-base}#{defaults.$tabs-tab-list-selector} {
     display: flex;
     grid-area: list;
+    flex-wrap: wrap;
     margin: $tabs-tab-list-margin;
     padding: $tabs-tab-list-padding;
     border-width: $tabs-tab-list-border-width;
@@ -383,6 +384,7 @@
     @include button-mixins.apply-base;
 
     z-index: 2;
+    flex: 1 1 auto;
     padding: $tabs-tab-toggle-padding;
     border-width: $tabs-tab-toggle-border-width;
     border-style: $tabs-tab-toggle-border-style;
