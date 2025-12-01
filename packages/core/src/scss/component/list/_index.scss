@@ -8,7 +8,7 @@
 @use "variables" as *;
 
 @include layer(component) {
-  #{defaults.$list-selector} {
+  #{defaults.$list-selector-base}#{defaults.$list-selector} {
     display: grid;
     position: relative;
     margin: $list-margin;
@@ -20,7 +20,7 @@
     gap: $list-gap;
   }
 
-  #{defaults.$list-item-selector} {
+  #{defaults.$list-item-selector-base}#{defaults.$list-item-selector} {
     position: relative;
     padding: $list-item-padding;
     transform: $list-item-transform;
@@ -38,13 +38,13 @@
 }
 
 @include layer(theme) {
-  #{defaults.$list-selector} {
+  #{defaults.$list-selector-base}#{defaults.$list-selector} {
     border-color: $list-border-color;
     background: $list-background;
     color: $list-color;
   }
 
-  #{defaults.$list-item-selector} {
+  #{defaults.$list-item-selector-base}#{defaults.$list-item-selector} {
     border-color: $list-item-border-color;
     background: $list-item-background;
     color: $list-item-color;
