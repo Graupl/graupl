@@ -6,14 +6,25 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Menu selectors.
-$menu-selector: ".menu" !default;
-$submenu-selector: ".submenu" !default;
-$menu-item-selector: ".menu-item" !default;
-$menu-link-selector: ".menu-link" !default;
-$submenu-toggle-selector: ".submenu-toggle" !default;
-$menu-show-selector: ".show" !default;
-$menu-hide-selector: ".hide" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$menu-selector-base: $selector-base !default;
+$menu-selector: "menu" !default;
+$submenu-selector-base: $selector-base !default;
+$submenu-selector: "submenu" !default;
+$menu-item-selector-base: $selector-base !default;
+$menu-item-selector: "menu-item" !default;
+$menu-link-selector-base: $selector-base !default;
+$menu-link-selector: "menu-link" !default;
+$submenu-toggle-selector-base: $selector-base !default;
+$submenu-toggle-selector: "submenu-toggle" !default;
+$menu-show-selector-base: $modifier-selector-base !default;
+$menu-show-selector: "show" !default;
+$menu-hide-selector-base: $modifier-selector-base !default;
+$menu-hide-selector: "hide" !default;
 
 // Flex properties.
 $menu-flex-direction: row !default;
