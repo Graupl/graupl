@@ -14,62 +14,62 @@
 // - `.transitioning`: Modifier applied while the alert is transitioning.
 //
 // The following custom properties can be used to customize the alert component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
-// | `--graupl-alert-padding-x`                      | Horizontal padding of the alert.                                           | `var(--graupl-spacer-5)` |
-// | `--graupl-alert-padding-y`                      | Vertical padding of the alert.                                             | `var(--graupl-spacer-5)` |
-// | `--graupl-alert-padding`                        | Shorthand padding of the alert.                                            | `var(--graupl-alert-padding-y) var(--graupl-alert-padding-x)` |
-// | `--graupl-alert-gap`                            | Gap inside the alert (column/row).                                         | `var(--graupl-alert-column-gap) var(--graupl-alert-row-gap)` |
-// | `--graupl-alert-background`                     | Background colour of the alert.                                            | `var(--graupl-background)` |
-// | `--graupl-alert-color`                          | Text colour of the alert.                                                  | `var(--graupl-color)` |
-// | `--graupl-alert-border-width`                   | Border width of the alert.                                                 | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)` |
-// | `--graupl-alert-border-style`                   | Border style of the alert.                                                 | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)` |
-// | `--graupl-alert-border-radius`                  | Border radius of the alert.                                                | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
-// | `--graupl-alert-border-color`                   | Border colour of the alert.                                                | `var(--graupl-alert-color)` |
-// | `--graupl-alert-transition`                     | Transition applied to alert appearance.                                    | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
-// | `--graupl-alert-transition-reduced-motion`      | Transition when reduced motion is enabled.                                 | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
-// | `--graupl-alert-header-padding`                 | Padding for the alert header.                                              | `0 0` |
-// | `--graupl-alert-body-padding`                   | Padding for the alert body.                                                | `0 0` |
-// | `--graupl-alert-footer-padding`                 | Padding for the alert footer.                                              | `0 0` |
-// | `--graupl-alert-title-color`                    | Text colour of the alert title.                                            | `var(--graupl-alert-color)` |
-// | `--graupl-alert-title-font-size`                | Font size of the alert title.                                              | `var(--graupl-h4)` |
-// | `--graupl-alert-title-font-weight`              | Font weight of the alert title.                                            | `var(--graupl-font-weight-h4)` |
-// | `--graupl-alert-title-font-family`              | Font family of the alert title.                                            | `var(--graupl-font-family-h4)` |
-// | `--graupl-alert-title-line-height`              | Line height of the alert title.                                            | `var(--graupl-line-height-h4)` |
-// | `--graupl-alert-title-margin`                   | Margin for the alert title.                                                | `0 0 0 0` |
-// | `--graupl-alert-link-color`                     | Link colour inside alerts.                                                 | `unset` (inherits) |
-// | `--graupl-alert-link-visited-color`             | Visited link colour inside alerts.                                         | `unset` |
-// | `--graupl-alert-link-focus-color`               | Focused link colour inside alerts.                                         | `unset` |
-// | `--graupl-alert-link-hover-color`               | Hovered link colour inside alerts.                                         | `unset` |
-// | `--graupl-alert-link-active-color`              | Active link colour inside alerts.                                          | `unset` |
-// | `--graupl-alert-link-disabled-color`            | Disabled link colour inside alerts.                                        | `unset` |
+// | Property                                   | Description                                | Default Value                                                                                                                                                                        |
+// | ---                                        | ---                                        | ---                                                                                                                                                                                  |
+// | `--graupl-alert-padding-x`                 | Horizontal padding of the alert.           | `var(--graupl-spacer-5)`                                                                                                                                                             |
+// | `--graupl-alert-padding-y`                 | Vertical padding of the alert.             | `var(--graupl-spacer-5)`                                                                                                                                                             |
+// | `--graupl-alert-padding`                   | Shorthand padding of the alert.            | `var(--graupl-alert-padding-y) var(--graupl-alert-padding-x)`                                                                                                                        |
+// | `--graupl-alert-gap`                       | Gap inside the alert (column/row).         | `var(--graupl-alert-column-gap) var(--graupl-alert-row-gap)`                                                                                                                         |
+// | `--graupl-alert-background`                | Background colour of the alert.            | `var(--graupl-background)`                                                                                                                                                           |
+// | `--graupl-alert-color`                     | Text colour of the alert.                  | `var(--graupl-color)`                                                                                                                                                                |
+// | `--graupl-alert-border-width`              | Border width of the alert.                 | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)`                                                  |
+// | `--graupl-alert-border-style`              | Border style of the alert.                 | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)`                                                  |
+// | `--graupl-alert-border-radius`             | Border radius of the alert.                | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)`                        |
+// | `--graupl-alert-border-color`              | Border colour of the alert.                | `var(--graupl-alert-color)`                                                                                                                                                          |
+// | `--graupl-alert-transition`                | Transition applied to alert appearance.    | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
+// | `--graupl-alert-transition-reduced-motion` | Transition when reduced motion is enabled. | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                            |
+// | `--graupl-alert-header-padding`            | Padding for the alert header.              | `0 0`                                                                                                                                                                                |
+// | `--graupl-alert-body-padding`              | Padding for the alert body.                | `0 0`                                                                                                                                                                                |
+// | `--graupl-alert-footer-padding`            | Padding for the alert footer.              | `0 0`                                                                                                                                                                                |
+// | `--graupl-alert-title-color`               | Text colour of the alert title.            | `var(--graupl-alert-color)`                                                                                                                                                          |
+// | `--graupl-alert-title-font-size`           | Font size of the alert title.              | `var(--graupl-h4)`                                                                                                                                                                   |
+// | `--graupl-alert-title-font-weight`         | Font weight of the alert title.            | `var(--graupl-font-weight-h4)`                                                                                                                                                       |
+// | `--graupl-alert-title-font-family`         | Font family of the alert title.            | `var(--graupl-font-family-h4)`                                                                                                                                                       |
+// | `--graupl-alert-title-line-height`         | Line height of the alert title.            | `var(--graupl-line-height-h4)`                                                                                                                                                       |
+// | `--graupl-alert-title-margin`              | Margin for the alert title.                | `0 0 0 0`                                                                                                                                                                            |
+// | `--graupl-alert-link-color`                | Link colour inside alerts.                 | `unset` (inherits)                                                                                                                                                                   |
+// | `--graupl-alert-link-visited-color`        | Visited link colour inside alerts.         | `unset`                                                                                                                                                                              |
+// | `--graupl-alert-link-focus-color`          | Focused link colour inside alerts.         | `unset`                                                                                                                                                                              |
+// | `--graupl-alert-link-hover-color`          | Hovered link colour inside alerts.         | `unset`                                                                                                                                                                              |
+// | `--graupl-alert-link-active-color`         | Active link colour inside alerts.          | `unset`                                                                                                                                                                              |
+// | `--graupl-alert-link-disabled-color`       | Disabled link colour inside alerts.        | `unset`                                                                                                                                                                              |
 //
 // The following sass variables can be used to customize the generation of the alert component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                         | Selector base for the component.                        | `"."` |
-// | `$modifier-selector-base`                | Selector base for component modifiers.                  | `"."` |
-// | `$generate-base-theme-map`               | Flag to generate the base theme map.                    | `true` |
-// | `$alert-selector-base`                   | Selector base for the alert container.                  | `$selector-base` |
-// | `$alert-selector`                        | Selector for the alert container.                       | `"alert"` |
-// | `$alert-theme-selector-prefix-base`      | Selector base for theme modifiers.                      | `"."` |
-// | `$alert-theme-selector-prefix`           | Selector prefix for theme modifiers.                    | `""` |
-// | `$alert-body-selector-base`              | Selector base for the alert body.                       | `$selector-base` |
-// | `$alert-body-selector`                   | Selector for the alert body.                            | `"alert-body"` |
-// | `$alert-header-selector-base`            | Selector base for the alert header.                     | `$selector-base` |
-// | `$alert-header-selector`                 | Selector for the alert header.                          | `"alert-header"` |
-// | `$alert-footer-selector-base`            | Selector base for the alert footer.                     | `$selector-base` |
-// | `$alert-footer-selector`                 | Selector for the alert footer.                          | `"alert-footer"` |
-// | `$alert-title-selector-base`             | Selector base for the alert title.                      | `$selector-base` |
-// | `$alert-title-selector`                  | Selector for the alert title.                           | `"alert-title"` |
-// | `$alert-dismisser-selector-base`         | Selector base for the alert dismisser.                  | `$selector-base` |
-// | `$alert-dismisser-selector`              | Selector for the alert dismisser.                       | `"alert-dismisser"` |
-// | `$alert-hidden-selector-base`            | Selector base for the hidden modifier.                  | `"."` |
-// | `$alert-hidden-selector`                 | Selector applied when hidden.                           | `"hide"` |
-// | `$alert-shown-selector-base`             | Selector base for the shown modifier.                   | `"."` |
-// | `$alert-shown-selector`                  | Selector applied when shown.                            | `"show"` |
-// | `$alert-transition-selector-base`        | Selector base for the transitioning modifier.           | `"."` |
-// | `$alert-transition-selector`             | Selector applied while transitioning.                   | `"transitioning"` |
+// | Variable                            | Description                                   | Default Value       |
+// | ---                                 | ---                                           | ---                 |
+// | `$selector-base`                    | Selector base for the component.              | `"."`               |
+// | `$modifier-selector-base`           | Selector base for component modifiers.        | `"."`               |
+// | `$generate-base-theme-map`          | Flag to generate the base theme map.          | `true`              |
+// | `$alert-selector-base`              | Selector base for the alert container.        | `$selector-base`    |
+// | `$alert-selector`                   | Selector for the alert container.             | `"alert"`           |
+// | `$alert-theme-selector-prefix-base` | Selector base for theme modifiers.            | `"."`               |
+// | `$alert-theme-selector-prefix`      | Selector prefix for theme modifiers.          | `""`                |
+// | `$alert-body-selector-base`         | Selector base for the alert body.             | `$selector-base`    |
+// | `$alert-body-selector`              | Selector for the alert body.                  | `"alert-body"`      |
+// | `$alert-header-selector-base`       | Selector base for the alert header.           | `$selector-base`    |
+// | `$alert-header-selector`            | Selector for the alert header.                | `"alert-header"`    |
+// | `$alert-footer-selector-base`       | Selector base for the alert footer.           | `$selector-base`    |
+// | `$alert-footer-selector`            | Selector for the alert footer.                | `"alert-footer"`    |
+// | `$alert-title-selector-base`        | Selector base for the alert title.            | `$selector-base`    |
+// | `$alert-title-selector`             | Selector for the alert title.                 | `"alert-title"`     |
+// | `$alert-dismisser-selector-base`    | Selector base for the alert dismisser.        | `$selector-base`    |
+// | `$alert-dismisser-selector`         | Selector for the alert dismisser.             | `"alert-dismisser"` |
+// | `$alert-hidden-selector-base`       | Selector base for the hidden modifier.        | `"."`               |
+// | `$alert-hidden-selector`            | Selector applied when hidden.                 | `"hide"`            |
+// | `$alert-shown-selector-base`        | Selector base for the shown modifier.         | `"."`               |
+// | `$alert-shown-selector`             | Selector applied when shown.                  | `"show"`            |
+// | `$alert-transition-selector-base`   | Selector base for the transitioning modifier. | `"."`               |
+// | `$alert-transition-selector`        | Selector applied while transitioning.         | `"transitioning"`   |
 //
 // ## Using `$alert-theme-mappings`
 //

@@ -21,8 +21,8 @@
 // - `.tertiary`: A component modifier to apply the tertiary colour to the table component.
 //
 // The following custom properties can be used to customize the table component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                                           | Description                                                                                                          | Default Value                                                                                                                                                                                                     |
+// | ---                                                | ---                                                                                                                  | ---                                                                                                                                                                                                               |
 // | `--graupl-table-caption-side`                      | The caption side of the table component.                                                                             | `bottom`                                                                                                                                                                                                          |
 // | `--graupl-table-caption-padding-x`                 | The horizontal padding of the table caption component.                                                               | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
 // | `--graupl-table-caption-padding-y`                 | The vertical padding of the table caption component.                                                                 | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
@@ -94,8 +94,8 @@
 // | `--graupl-table-highlight-color`                   | The text colour of the highlighted table component modifier.                                                         | `var(--graupl-theme-active--secondary--100)`                                                                                                                                                                      |
 //
 // The following sass variables can be used to customize the generation of the table component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                               | Description                                                                            | Default Value             |
+// | ---                                    | ---                                                                                    | ---                       |
 // | `$selector-base`                       | The selector base for the component.                                                   | `""`                      |
 // | `$modifier-selector-base`              | The selector base for component modifiers.                                             | `"."`                     |
 // | `$generate-base-theme-map`             | A flag to generate the base theme maps for table variants.                             | `true`                    |

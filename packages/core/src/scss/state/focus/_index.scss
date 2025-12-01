@@ -9,8 +9,8 @@
 // - `:focus-visible`: The focus pseudo-class (from the root state selectors).
 //
 // The following custom properties can be used to customize the focus state:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                             | Description                                         | Default Value                                                                                           |
+// | ---                                  | ---                                                 | ---                                                                                                     |
 // | `--graupl-focus-width`               | The width of the focus outline.                     | `var(--graupl-border-width)`                                                                            |
 // | `--graupl-focus-outline-color`       | The color of the focus outline.                     | `var(--graupl-color)`                                                                                   |
 // | `--graupl-focus-outline-width`       | The width of the focus outline.                     | `var(--graupl-focus-width)`                                                                             |
@@ -23,9 +23,9 @@
 // | `--graupl-focus-box-shadow-bordered` | The box shadow used for bordered focus styles.      | `0 0 0 var(--graupl-focus-width) var(--graupl-focus-box-shadow-color)`                                  |
 //
 // The following sass variables can be used to customize the generation of the focus state:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$focus-outline-style` | The style of the focus outline. | `dotted` |
+// | Variable               | Description                     | Default Value |
+// | ---                    | ---                             | ---           |
+// | `$focus-outline-style` | The style of the focus outline. | `dotted`      |
 //
 // Note: This focus styles are also applied to the `:focus-visible` pseudo-class by default.
 //

@@ -8,42 +8,42 @@
 // - `.inline`: Modifier to lay out label/input/help in a single row (when allowed).
 //
 // The following custom properties can be used to customize the input group component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
-// | `--graupl-input-group-grid-template-areas`            | Grid template areas for the default layout.                   | `"label" "input" "help"` |
-// | `--graupl-input-group-grid-template-columns`          | Grid template columns for the default layout.                 | `100%` |
-// | `--graupl-input-group-grid-template-rows`             | Grid template rows for the default layout.                    | `auto auto auto` |
-// | `--graupl-input-group-row-gap`                        | Row gap between label/input/help.                             | `var(--graupl-spacer-2)` |
-// | `--graupl-input-group-column-gap`                     | Column gap between label/input/help.                          | `var(--graupl-spacer-3)` |
-// | `--graupl-input-group-gap`                            | Shorthand gap (row/column) for the group.                     | `var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap)` |
-// | `--graupl-input-group-inline-grid-template-areas`     | Grid template areas for the inline layout.                    | `"label input" "- help"` |
-// | `--graupl-input-group-inline-grid-template-columns`   | Grid template columns for the inline layout.                  | `auto 1fr` |
-// | `--graupl-input-group-inline-grid-template-rows`      | Grid template rows for the inline layout.                     | `auto auto` |
-// | `--graupl-input-group-label-grid-area`                | Grid area name used by the label.                             | `label` |
-// | `--graupl-input-group-input-grid-area`                | Grid area name used by form controls.                         | `input` |
-// | `--graupl-input-group-help-grid-area`                 | Grid area name used by help text.                             | `help` |
+// | Property                                            | Description                                   | Default Value                                                            |
+// | ---                                                 | ---                                           | ---                                                                      |
+// | `--graupl-input-group-grid-template-areas`          | Grid template areas for the default layout.   | `"label" "input" "help"`                                                 |
+// | `--graupl-input-group-grid-template-columns`        | Grid template columns for the default layout. | `100%`                                                                   |
+// | `--graupl-input-group-grid-template-rows`           | Grid template rows for the default layout.    | `auto auto auto`                                                         |
+// | `--graupl-input-group-row-gap`                      | Row gap between label/input/help.             | `var(--graupl-spacer-2)`                                                 |
+// | `--graupl-input-group-column-gap`                   | Column gap between label/input/help.          | `var(--graupl-spacer-3)`                                                 |
+// | `--graupl-input-group-gap`                          | Shorthand gap (row/column) for the group.     | `var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap)` |
+// | `--graupl-input-group-inline-grid-template-areas`   | Grid template areas for the inline layout.    | `"label input" "- help"`                                                 |
+// | `--graupl-input-group-inline-grid-template-columns` | Grid template columns for the inline layout.  | `auto 1fr`                                                               |
+// | `--graupl-input-group-inline-grid-template-rows`    | Grid template rows for the inline layout.     | `auto auto`                                                              |
+// | `--graupl-input-group-label-grid-area`              | Grid area name used by the label.             | `label`                                                                  |
+// | `--graupl-input-group-input-grid-area`              | Grid area name used by form controls.         | `input`                                                                  |
+// | `--graupl-input-group-help-grid-area`               | Grid area name used by help text.             | `help`                                                                   |
 //
 // The following sass variables can be used to customize the generation of the input group component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                                   | Selector base for the component.                       | `"."` |
-// | `$modifier-selector-base`                          | Selector base for component modifiers.                 | `"."` |
-// | `$input-group-selector-base`                       | Selector base for the input group container.           | `$selector-base` |
-// | `$input-group-selector`                            | Selector for the input group container.                | `"input-group"` |
-// | `$input-group-inline-selector-base`                | Selector base for the inline modifier.                 | `"."` |
-// | `$input-group-inline-selector`                     | Selector for the inline modifier.                      | `"inline"` |
-// | `$input-group-help-text-selector-base`             | Selector base for the help text.                       | `$selector-base` |
-// | `$input-group-help-text-selector`                  | Selector for the help text.                            | `"help-text"` |
-// | `$input-group-grid-label-name`                     | Grid area name for labels.                             | `label` |
-// | `$input-group-grid-input-name`                     | Grid area name for inputs.                             | `input` |
-// | `$input-group-grid-help-name`                      | Grid area name for help text.                          | `help` |
-// | `$input-group-grid-template-columns`               | Default grid columns.                                  | `100%` |
-// | `$input-group-grid-template-rows`                  | Default grid rows.                                     | `auto auto auto` |
-// | `$input-group-inline-grid-template-columns`        | Inline layout grid columns.                            | `auto 1fr` |
-// | `$input-group-inline-grid-template-rows`           | Inline layout grid rows.                               | `auto auto` |
-// | `$input-group-label-grid-area`                     | Grid area value for labels.                            | `label` |
-// | `$input-group-input-grid-area`                     | Grid area value for inputs.                            | `input` |
-// | `$input-group-help-grid-area`                      | Grid area value for help text.                         | `help` |
+// | Variable                                    | Description                                  | Default Value    |
+// | ---                                         | ---                                          | ---              |
+// | `$selector-base`                            | Selector base for the component.             | `"."`            |
+// | `$modifier-selector-base`                   | Selector base for component modifiers.       | `"."`            |
+// | `$input-group-selector-base`                | Selector base for the input group container. | `$selector-base` |
+// | `$input-group-selector`                     | Selector for the input group container.      | `"input-group"`  |
+// | `$input-group-inline-selector-base`         | Selector base for the inline modifier.       | `"."`            |
+// | `$input-group-inline-selector`              | Selector for the inline modifier.            | `"inline"`       |
+// | `$input-group-help-text-selector-base`      | Selector base for the help text.             | `$selector-base` |
+// | `$input-group-help-text-selector`           | Selector for the help text.                  | `"help-text"`    |
+// | `$input-group-grid-label-name`              | Grid area name for labels.                   | `label`          |
+// | `$input-group-grid-input-name`              | Grid area name for inputs.                   | `input`          |
+// | `$input-group-grid-help-name`               | Grid area name for help text.                | `help`           |
+// | `$input-group-grid-template-columns`        | Default grid columns.                        | `100%`           |
+// | `$input-group-grid-template-rows`           | Default grid rows.                           | `auto auto auto` |
+// | `$input-group-inline-grid-template-columns` | Inline layout grid columns.                  | `auto 1fr`       |
+// | `$input-group-inline-grid-template-rows`    | Inline layout grid rows.                     | `auto auto`      |
+// | `$input-group-label-grid-area`              | Grid area value for labels.                  | `label`          |
+// | `$input-group-input-grid-area`              | Grid area value for inputs.                  | `input`          |
+// | `$input-group-help-grid-area`               | Grid area value for help text.               | `help`           |
 //
 // @example
 // <div class="input-group">

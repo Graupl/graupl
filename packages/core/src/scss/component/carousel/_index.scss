@@ -12,66 +12,66 @@
 // - `.carousel-tab`: Individual tabs.
 //
 // The following custom properties can be used to customize the carousel component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
-// | `--graupl-carousel-controls-height`            | Height of the controls row.                         | `auto` |
-// | `--graupl-carousel-tabs-width`                 | Width of the tabs column.                           | `1fr` |
-// | `--graupl-carousel-tabs-height`                | Height of the tabs row.                             | `auto` |
-// | `--graupl-carousel-slide-height`               | Height of the slide row.                            | `1fr` |
-// | `--graupl-carousel-padding-x`                  | Horizontal padding of the carousel.                 | `var(--graupl-spacer-0)` |
-// | `--graupl-carousel-padding-y`                  | Vertical padding of the carousel.                   | `var(--graupl-spacer-0)` |
-// | `--graupl-carousel-padding`                    | Shorthand padding of the carousel.                  | `var(--graupl-carousel-padding-y) var(--graupl-carousel-padding-x)` |
-// | `--graupl-carousel-item-max-width`             | Max width of a carousel item.                       | `100%` |
-// | `--graupl-carousel-item-container-padding`     | Padding of the item container.                      | `var(--graupl-spacer-0) var(--graupl-spacer-0)` |
-// | `--graupl-carousel-control-width`              | Width of each control.                              | `4rem` |
-// | `--graupl-carousel-control-height`             | Height of each control.                             | `3rem` |
-// | `--graupl-carousel-play-content`               | Content for the play control pseudo-element.        | `'▶'` |
-// | `--graupl-carousel-pause-content`              | Content for the pause control pseudo-element.       | `'❚❚'` |
-// | `--graupl-carousel-next-content`               | Content for the next control pseudo-element.        | `'▶'` |
-// | `--graupl-carousel-previous-content`           | Content for the previous control pseudo-element.    | `'◀'` |
-// | `--graupl-carousel-tab-container-padding`      | Padding of the tab container.                       | `var(--graupl-spacer-3) var(--graupl-spacer-3)` |
-// | `--graupl-carousel-tab-container-gap`          | Gap inside the tab container.                       | `var(--graupl-spacer-3)` |
+// | Property                                   | Description                                      | Default Value                                                       |
+// | ---                                        | ---                                              | ---                                                                 |
+// | `--graupl-carousel-controls-height`        | Height of the controls row.                      | `auto`                                                              |
+// | `--graupl-carousel-tabs-width`             | Width of the tabs column.                        | `1fr`                                                               |
+// | `--graupl-carousel-tabs-height`            | Height of the tabs row.                          | `auto`                                                              |
+// | `--graupl-carousel-slide-height`           | Height of the slide row.                         | `1fr`                                                               |
+// | `--graupl-carousel-padding-x`              | Horizontal padding of the carousel.              | `var(--graupl-spacer-0)`                                            |
+// | `--graupl-carousel-padding-y`              | Vertical padding of the carousel.                | `var(--graupl-spacer-0)`                                            |
+// | `--graupl-carousel-padding`                | Shorthand padding of the carousel.               | `var(--graupl-carousel-padding-y) var(--graupl-carousel-padding-x)` |
+// | `--graupl-carousel-item-max-width`         | Max width of a carousel item.                    | `100%`                                                              |
+// | `--graupl-carousel-item-container-padding` | Padding of the item container.                   | `var(--graupl-spacer-0) var(--graupl-spacer-0)`                     |
+// | `--graupl-carousel-control-width`          | Width of each control.                           | `4rem`                                                              |
+// | `--graupl-carousel-control-height`         | Height of each control.                          | `3rem`                                                              |
+// | `--graupl-carousel-play-content`           | Content for the play control pseudo-element.     | `'▶'`                                                               |
+// | `--graupl-carousel-pause-content`          | Content for the pause control pseudo-element.    | `'❚❚'`                                                              |
+// | `--graupl-carousel-next-content`           | Content for the next control pseudo-element.     | `'▶'`                                                               |
+// | `--graupl-carousel-previous-content`       | Content for the previous control pseudo-element. | `'◀'`                                                               |
+// | `--graupl-carousel-tab-container-padding`  | Padding of the tab container.                    | `var(--graupl-spacer-3) var(--graupl-spacer-3)`                     |
+// | `--graupl-carousel-tab-container-gap`      | Gap inside the tab container.                    | `var(--graupl-spacer-3)`                                            |
 //
 // The following sass variables can be used to customize the generation of the carousel component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                              | Selector base for the component.                       | `"."` |
-// | `$modifier-selector-base`                     | Selector base for component modifiers.                 | `"."` |
-// | `$carousel-selector-base`                     | Selector base for the carousel container.              | `$selector-base` |
-// | `$carousel-selector`                          | Selector for the carousel container.                   | `"carousel"` |
-// | `$carousel-control-container-selector-base`   | Selector base for the control container.               | `$selector-base` |
-// | `$carousel-control-container-selector`        | Selector for the control container.                    | `"carousel-control-container"` |
-// | `$carousel-control-selector-base`             | Selector base for controls.                            | `$selector-base` |
-// | `$carousel-control-selector`                  | Selector for controls.                                 | `"carousel-control"` |
-// | `$carousel-pause-selector-base`               | Selector base for pause modifier.                      | `"."` |
-// | `$carousel-pause-selector`                    | Selector for pause modifier.                           | `"pause"` |
-// | `$carousel-play-selector-base`                | Selector base for play modifier.                       | `"."` |
-// | `$carousel-play-selector`                     | Selector for play modifier.                            | `"play"` |
-// | `$carousel-autoplay-selector-base`            | Selector base for autoplay modifier.                   | `"."` |
-// | `$carousel-autoplay-selector`                 | Selector for autoplay modifier.                        | `"autoplay"` |
-// | `$carousel-previous-selector-base`            | Selector base for previous modifier.                   | `"."` |
-// | `$carousel-previous-selector`                 | Selector for previous modifier.                        | `"previous"` |
-// | `$carousel-next-selector-base`                | Selector base for next modifier.                       | `"."` |
-// | `$carousel-next-selector`                     | Selector for next modifier.                            | `"next"` |
-// | `$carousel-item-container-selector-base`      | Selector base for item container.                      | `$selector-base` |
-// | `$carousel-item-container-selector`           | Selector for item container.                           | `"carousel-item-container"` |
-// | `$carousel-item-selector-base`                | Selector base for items.                               | `$selector-base` |
-// | `$carousel-item-selector`                     | Selector for items.                                    | `"carousel-item"` |
-// | `$carousel-tab-container-selector-base`       | Selector base for tab container.                       | `$selector-base` |
-// | `$carousel-tab-container-selector`            | Selector for tab container.                            | `"carousel-tab-container"` |
-// | `$carousel-tab-selector-base`                 | Selector base for tabs.                                | `$selector-base` |
-// | `$carousel-tab-selector`                      | Selector for tabs.                                     | `"carousel-tab"` |
-// | `$carousel-active-item-selector-base`         | Selector base for the active modifier.                 | `"."` |
-// | `$carousel-active-item-selector`              | Selector for the active modifier.                      | `"active"` |
-// | `$carousel-next-item-selector-base`           | Selector base for the next modifier.                   | `"."` |
-// | `$carousel-next-item-selector`                | Selector for the next modifier.                        | `"next"` |
-// | `$carousel-previous-item-selector-base`       | Selector base for the previous modifier.               | `"."` |
-// | `$carousel-previous-item-selector`            | Selector for the previous modifier.                    | `"previous"` |
-// | `$carousel-controls-height`                   | Height of the controls row.                            | `auto` |
-// | `$carousel-tabs-width`                        | Width of the tabs column.                              | `1fr` |
-// | `$carousel-tabs-height`                       | Height of the tabs row.                                | `auto` |
-// | `$carousel-slide-height`                      | Height of the slide row.                               | `1fr` |
-// | `$carousel-item-max-width`                    | Max width of a carousel item.                          | `100%` |
+// | Variable                                    | Description                               | Default Value                  |
+// | ---                                         | ---                                       | ---                            |
+// | `$selector-base`                            | Selector base for the component.          | `"."`                          |
+// | `$modifier-selector-base`                   | Selector base for component modifiers.    | `"."`                          |
+// | `$carousel-selector-base`                   | Selector base for the carousel container. | `$selector-base`               |
+// | `$carousel-selector`                        | Selector for the carousel container.      | `"carousel"`                   |
+// | `$carousel-control-container-selector-base` | Selector base for the control container.  | `$selector-base`               |
+// | `$carousel-control-container-selector`      | Selector for the control container.       | `"carousel-control-container"` |
+// | `$carousel-control-selector-base`           | Selector base for controls.               | `$selector-base`               |
+// | `$carousel-control-selector`                | Selector for controls.                    | `"carousel-control"`           |
+// | `$carousel-pause-selector-base`             | Selector base for pause modifier.         | `"."`                          |
+// | `$carousel-pause-selector`                  | Selector for pause modifier.              | `"pause"`                      |
+// | `$carousel-play-selector-base`              | Selector base for play modifier.          | `"."`                          |
+// | `$carousel-play-selector`                   | Selector for play modifier.               | `"play"`                       |
+// | `$carousel-autoplay-selector-base`          | Selector base for autoplay modifier.      | `"."`                          |
+// | `$carousel-autoplay-selector`               | Selector for autoplay modifier.           | `"autoplay"`                   |
+// | `$carousel-previous-selector-base`          | Selector base for previous modifier.      | `"."`                          |
+// | `$carousel-previous-selector`               | Selector for previous modifier.           | `"previous"`                   |
+// | `$carousel-next-selector-base`              | Selector base for next modifier.          | `"."`                          |
+// | `$carousel-next-selector`                   | Selector for next modifier.               | `"next"`                       |
+// | `$carousel-item-container-selector-base`    | Selector base for item container.         | `$selector-base`               |
+// | `$carousel-item-container-selector`         | Selector for item container.              | `"carousel-item-container"`    |
+// | `$carousel-item-selector-base`              | Selector base for items.                  | `$selector-base`               |
+// | `$carousel-item-selector`                   | Selector for items.                       | `"carousel-item"`              |
+// | `$carousel-tab-container-selector-base`     | Selector base for tab container.          | `$selector-base`               |
+// | `$carousel-tab-container-selector`          | Selector for tab container.               | `"carousel-tab-container"`     |
+// | `$carousel-tab-selector-base`               | Selector base for tabs.                   | `$selector-base`               |
+// | `$carousel-tab-selector`                    | Selector for tabs.                        | `"carousel-tab"`               |
+// | `$carousel-active-item-selector-base`       | Selector base for the active modifier.    | `"."`                          |
+// | `$carousel-active-item-selector`            | Selector for the active modifier.         | `"active"`                     |
+// | `$carousel-next-item-selector-base`         | Selector base for the next modifier.      | `"."`                          |
+// | `$carousel-next-item-selector`              | Selector for the next modifier.           | `"next"`                       |
+// | `$carousel-previous-item-selector-base`     | Selector base for the previous modifier.  | `"."`                          |
+// | `$carousel-previous-item-selector`          | Selector for the previous modifier.       | `"previous"`                   |
+// | `$carousel-controls-height`                 | Height of the controls row.               | `auto`                         |
+// | `$carousel-tabs-width`                      | Width of the tabs column.                 | `1fr`                          |
+// | `$carousel-tabs-height`                     | Height of the tabs row.                   | `auto`                         |
+// | `$carousel-slide-height`                    | Height of the slide row.                  | `1fr`                          |
+// | `$carousel-item-max-width`                  | Max width of a carousel item.             | `100%`                         |
 //
 // @example
 // <section class="carousel">

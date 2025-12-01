@@ -27,8 +27,8 @@
 // - `.[container-name]:col-#`: A class to set the size of a column at a specific container size.
 //
 // The following custom properties can be used to customize the flex columns component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                               | Description                                               | Default Value            |
+// | ---                                    | ---                                                       | ---                      |
 // | `--graupl-flex-columns-row-gap`        | The gap between the rows of the flex columns.             | `var(--graupl-spacer-5)` |
 // | `--graupl-flex-columns-column-gap`     | The gap between the columns of the flex columns.          | `var(--graupl-spacer-5)` |
 // | `--graupl-flex-columns-size`           | The size of a column.                                     | `auto`                   |
@@ -36,8 +36,8 @@
 // | `--graupl-flex-columns-container-type` | The container type applied to the flex columns component. | `inline-size`            |
 //
 // The following sass variables can be used to customize the generation of the flex columns component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                                        | Description                                                      | Default Value    |
+// | ---                                             | ---                                                              | ---              |
 // | `$selector-base`                                | The base selector for the component.                             | `"."`            |
 // | `$modifier-selector-base`                       | The base selector for component modifiers.                       | `"."`            |
 // | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `$selector-base` |

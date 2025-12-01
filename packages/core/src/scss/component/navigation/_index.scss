@@ -8,44 +8,44 @@
 // - `.navigation-branding`: The branding link/label.
 //
 // The following custom properties can be used to customize the navigation component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
-// | `--graupl-navigation-background`                    | Background colour of the navigation bar.                         | `var(--graupl-background)` |
-// | `--graupl-navigation-color`                         | Text colour of the navigation bar.                               | `var(--graupl-color)` |
-// | `--graupl-navigation-toggle-min-width`              | Minimum width of the toggle.                                     | `44px` |
-// | `--graupl-navigation-toggle-min-height`             | Minimum height of the toggle.                                    | `44px` |
-// | `--graupl-navigation-toggle-padding`                | Padding of the toggle.                                           | `var(--graupl-spacer-3) var(--graupl-spacer-5)` |
-// | `--graupl-navigation-toggle-background`             | Background colour of the toggle.                                 | `var(--graupl-navigation-background)` |
-// | `--graupl-navigation-toggle-color`                  | Text colour of the toggle.                                       | `var(--graupl-navigation-color)` |
-// | `--graupl-navigation-toggle-hover-background`       | Background when the toggle is hovered.                           | `var(--graupl-navigation-color)` |
-// | `--graupl-navigation-toggle-hover-color`            | Text colour when the toggle is hovered.                          | `var(--graupl-navigation-background)` |
-// | `--graupl-navigation-toggle-border-width`           | Border width of the toggle.                                      | `var(--graupl-border-width)` (per side) |
-// | `--graupl-navigation-toggle-border-style`           | Border style of the toggle.                                      | `var(--graupl-border-style)` (per side) |
-// | `--graupl-navigation-toggle-border-radius`          | Border radius of the toggle.                                     | `var(--graupl-border-radius)` (per corner) |
-// | `--graupl-navigation-toggle-border-color`           | Border colour of the toggle.                                     | `var(--graupl-navigation-toggle-color)` |
-// | `--graupl-navigation-toggle-content`                | Content used for the toggle pseudo-element.                      | `'☰'` |
-// | `--graupl-navigation-branding-padding`              | Padding for the branding element.                                | `inherit` |
-// | `--graupl-navigation-branding-font-size`            | Font size for the branding element.                              | `inherit` |
-// | `--graupl-navigation-branding-font-weight`          | Font weight for the branding element.                            | `inherit` |
-// | `--graupl-navigation-branding-text-decoration`      | Base text decoration for branding.                               | `none` |
-// | `--graupl-navigation-branding-text-decoration-style`| Base text decoration style for branding.                         | `solid` |
-// | `--graupl-navigation-branding-text-decoration-thickness` | Base text decoration thickness for branding.                | `var(--graupl-border-width)` |
-// | `--graupl-navigation-branding-color`                | Text colour for branding.                                        | `var(--graupl-navigation-color)` |
-// | `--graupl-navigation-branding-text-decoration-color`| Text decoration colour for branding.                             | `var(--graupl-navigation-color)` |
-// | `--graupl-navigation-branding-visited-*` / `--graupl-navigation-branding-focus-*` / `--graupl-navigation-branding-hover-*` / `--graupl-navigation-branding-active-*` / `--graupl-navigation-branding-disabled-*` | State overrides for branding text/decoration. | Inherit from base values |
+// | Property                                                                                                                                                                                                         | Description                                   | Default Value                                   |
+// | ---                                                                                                                                                                                                              | ---                                           | ---                                             |
+// | `--graupl-navigation-background`                                                                                                                                                                                 | Background colour of the navigation bar.      | `var(--graupl-background)`                      |
+// | `--graupl-navigation-color`                                                                                                                                                                                      | Text colour of the navigation bar.            | `var(--graupl-color)`                           |
+// | `--graupl-navigation-toggle-min-width`                                                                                                                                                                           | Minimum width of the toggle.                  | `44px`                                          |
+// | `--graupl-navigation-toggle-min-height`                                                                                                                                                                          | Minimum height of the toggle.                 | `44px`                                          |
+// | `--graupl-navigation-toggle-padding`                                                                                                                                                                             | Padding of the toggle.                        | `var(--graupl-spacer-3) var(--graupl-spacer-5)` |
+// | `--graupl-navigation-toggle-background`                                                                                                                                                                          | Background colour of the toggle.              | `var(--graupl-navigation-background)`           |
+// | `--graupl-navigation-toggle-color`                                                                                                                                                                               | Text colour of the toggle.                    | `var(--graupl-navigation-color)`                |
+// | `--graupl-navigation-toggle-hover-background`                                                                                                                                                                    | Background when the toggle is hovered.        | `var(--graupl-navigation-color)`                |
+// | `--graupl-navigation-toggle-hover-color`                                                                                                                                                                         | Text colour when the toggle is hovered.       | `var(--graupl-navigation-background)`           |
+// | `--graupl-navigation-toggle-border-width`                                                                                                                                                                        | Border width of the toggle.                   | `var(--graupl-border-width)` (per side)         |
+// | `--graupl-navigation-toggle-border-style`                                                                                                                                                                        | Border style of the toggle.                   | `var(--graupl-border-style)` (per side)         |
+// | `--graupl-navigation-toggle-border-radius`                                                                                                                                                                       | Border radius of the toggle.                  | `var(--graupl-border-radius)` (per corner)      |
+// | `--graupl-navigation-toggle-border-color`                                                                                                                                                                        | Border colour of the toggle.                  | `var(--graupl-navigation-toggle-color)`         |
+// | `--graupl-navigation-toggle-content`                                                                                                                                                                             | Content used for the toggle pseudo-element.   | `'☰'`                                           |
+// | `--graupl-navigation-branding-padding`                                                                                                                                                                           | Padding for the branding element.             | `inherit`                                       |
+// | `--graupl-navigation-branding-font-size`                                                                                                                                                                         | Font size for the branding element.           | `inherit`                                       |
+// | `--graupl-navigation-branding-font-weight`                                                                                                                                                                       | Font weight for the branding element.         | `inherit`                                       |
+// | `--graupl-navigation-branding-text-decoration`                                                                                                                                                                   | Base text decoration for branding.            | `none`                                          |
+// | `--graupl-navigation-branding-text-decoration-style`                                                                                                                                                             | Base text decoration style for branding.      | `solid`                                         |
+// | `--graupl-navigation-branding-text-decoration-thickness`                                                                                                                                                         | Base text decoration thickness for branding.  | `var(--graupl-border-width)`                    |
+// | `--graupl-navigation-branding-color`                                                                                                                                                                             | Text colour for branding.                     | `var(--graupl-navigation-color)`                |
+// | `--graupl-navigation-branding-text-decoration-color`                                                                                                                                                             | Text decoration colour for branding.          | `var(--graupl-navigation-color)`                |
+// | `--graupl-navigation-branding-visited-*` / `--graupl-navigation-branding-focus-*` / `--graupl-navigation-branding-hover-*` / `--graupl-navigation-branding-active-*` / `--graupl-navigation-branding-disabled-*` | State overrides for branding text/decoration. | Inherit from base values                        |
 //
 // The following sass variables can be used to customize the generation of the navigation component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                           | Selector base for the component.                      | `"."` |
-// | `$modifier-selector-base`                  | Selector base for component modifiers.                | `"."` |
-// | `$navigation-selector-base`                | Selector base for the navigation container.           | `$selector-base` |
-// | `$navigation-selector`                     | Selector for the navigation container.                | `"navigation"` |
-// | `$navigation-toggle-selector-base`         | Selector base for the navigation toggle.              | `$selector-base` |
-// | `$navigation-toggle-selector`              | Selector for the navigation toggle.                   | `"navigation-toggle"` |
-// | `$navigation-branding-selector-base`       | Selector base for the navigation branding.            | `$selector-base` |
-// | `$navigation-branding-selector`            | Selector for the navigation branding.                 | `"navigation-branding"` |
-// | `$navigation-toggle-content`               | Content for the toggle pseudo-element.                | `'☰'` |
+// | Variable                             | Description                                 | Default Value           |
+// | ---                                  | ---                                         | ---                     |
+// | `$selector-base`                     | Selector base for the component.            | `"."`                   |
+// | `$modifier-selector-base`            | Selector base for component modifiers.      | `"."`                   |
+// | `$navigation-selector-base`          | Selector base for the navigation container. | `$selector-base`        |
+// | `$navigation-selector`               | Selector for the navigation container.      | `"navigation"`          |
+// | `$navigation-toggle-selector-base`   | Selector base for the navigation toggle.    | `$selector-base`        |
+// | `$navigation-toggle-selector`        | Selector for the navigation toggle.         | `"navigation-toggle"`   |
+// | `$navigation-branding-selector-base` | Selector base for the navigation branding.  | `$selector-base`        |
+// | `$navigation-branding-selector`      | Selector for the navigation branding.       | `"navigation-branding"` |
+// | `$navigation-toggle-content`         | Content for the toggle pseudo-element.      | `'☰'`                   |
 //
 // @example
 // <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">

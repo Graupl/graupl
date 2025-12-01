@@ -10,8 +10,8 @@
 // - `fieldset`: The fieldset component.
 //
 // The following custom properties can be used to customize the form components:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                                       | Description                                                                                                    | Default Value                                                                                                                                                                                     |
+// | ---                                            | ---                                                                                                            | ---                                                                                                                                                                                               |
 // | `--graupl-input-padding-x`                     | The horizontal padding for input components.                                                                   | `var(--graupl-spacer-5)`                                                                                                                                                                          |
 // | `--graupl-input-padding-y`                     | The vertical padding for input components.                                                                     | `var(--graupl-spacer-3)`                                                                                                                                                                          |
 // | `--graupl-input-padding`                       | The padding for input components (combines x and y padding).                                                   | `var(--graupl-input-padding-y) var(--graupl-input-padding-x)`                                                                                                                                     |
@@ -70,8 +70,8 @@
 // | `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-input-color)`                                                                                                                                                                       |
 //
 // The following sass variables can be used to customize the generation of the form components:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                  | Description                                   | Default Value    |
+// | ---                       | ---                                           | ---              |
 // | `$selector-base`          | The selector base for the component.          | `""`             |
 // | `$modifier-selector-base` | The selector base for component modifiers.    | `$selector-base` |
 // | `$input-selector-base`    | The base selector for the input component.    | `$selector-base` |

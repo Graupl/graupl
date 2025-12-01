@@ -15,27 +15,27 @@
 // - N/A.
 //
 // The following sass variables control the generated classes:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                         | Base selector for utility classes.                                 | `"."` |
-// | `$use-important`                        | Append `!important` to generated declarations.                     | `true` |
-// | `$generate-base-utilities`              | Generate the base utilities.                                       | `true` |
-// | `$screen-aware`                         | Generate screen-aware variants.                                    | `false` |
-// | `$theme-aware`                          | Generate theme-aware variants.                                     | `false` |
-// | `$state-aware`                          | Generate state-aware variants.                                     | `false` |
-// | `$container-aware`                      | Generate container-aware variants.                                 | `false` |
-// | `$screen-aware-separator`               | Separator for screen-aware utilities.                              | `"\\:"` |
-// | `$theme-aware-separator`                | Separator for theme-aware utilities.                               | `"\\:"` |
-// | `$state-aware-separator`                | Separator for state-aware utilities.                               | `"\\:"` |
-// | `$container-aware-separator`            | Separator for container-aware utilities.                           | `"\\:"` |
-// | `$screen-aware-selector-prefix`         | Prefix for screen-aware utilities.                                 | `""` |
-// | `$theme-aware-selector-prefix`          | Prefix for theme-aware utilities.                                  | `""` |
-// | `$state-aware-selector-prefix`          | Prefix for state-aware utilities.                                  | `""` |
-// | `$container-aware-selector-prefix`      | Prefix for container-aware utilities.                              | `"cq\\:"` |
-// | `$list-style-type-selector-prefix`      | Prefix for list-style-type utilities.                              | `"list-style-"` |
-// | `$list-style-type-properties`           | Map of list-style-type utility values.                             | `none, disc, decimal, circle, square` |
-// | `$list-style-position-selector-prefix`  | Prefix for list-style-position utilities.                          | `"list-style-"` |
-// | `$list-style-position-properties`       | Map of list-style-position utility values.                         | `inside, outside` |
+// | Variable                               | Description                                    | Default Value                         |
+// | ---                                    | ---                                            | ---                                   |
+// | `$selector-base`                       | Base selector for utility classes.             | `"."`                                 |
+// | `$use-important`                       | Append `!important` to generated declarations. | `true`                                |
+// | `$generate-base-utilities`             | Generate the base utilities.                   | `true`                                |
+// | `$screen-aware`                        | Generate screen-aware variants.                | `false`                               |
+// | `$theme-aware`                         | Generate theme-aware variants.                 | `false`                               |
+// | `$state-aware`                         | Generate state-aware variants.                 | `false`                               |
+// | `$container-aware`                     | Generate container-aware variants.             | `false`                               |
+// | `$screen-aware-separator`              | Separator for screen-aware utilities.          | `"\\:"`                               |
+// | `$theme-aware-separator`               | Separator for theme-aware utilities.           | `"\\:"`                               |
+// | `$state-aware-separator`               | Separator for state-aware utilities.           | `"\\:"`                               |
+// | `$container-aware-separator`           | Separator for container-aware utilities.       | `"\\:"`                               |
+// | `$screen-aware-selector-prefix`        | Prefix for screen-aware utilities.             | `""`                                  |
+// | `$theme-aware-selector-prefix`         | Prefix for theme-aware utilities.              | `""`                                  |
+// | `$state-aware-selector-prefix`         | Prefix for state-aware utilities.              | `""`                                  |
+// | `$container-aware-selector-prefix`     | Prefix for container-aware utilities.          | `"cq\\:"`                             |
+// | `$list-style-type-selector-prefix`     | Prefix for list-style-type utilities.          | `"list-style-"`                       |
+// | `$list-style-type-properties`          | Map of list-style-type utility values.         | `none, disc, decimal, circle, square` |
+// | `$list-style-position-selector-prefix` | Prefix for list-style-position utilities.      | `"list-style-"`                       |
+// | `$list-style-position-properties`      | Map of list-style-position utility values.     | `inside, outside`                     |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

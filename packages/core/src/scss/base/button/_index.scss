@@ -12,8 +12,8 @@
 // - `.link`: A component modifier to make the button component look like a link component.
 //
 // The following custom properties can be used to customize the button component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                                     | Description                                                                                                    | Default Value                                                                                                                                                                             |
+// | ---                                          | ---                                                                                                            | ---                                                                                                                                                                                       |
 // | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `var(--graupl-interactive-min-width)`                                                                                                                                                     |
 // | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `var(--graupl-interactive-min-height)`                                                                                                                                                    |
 // | `--graupl-button-padding-x`                  | The horizontal padding of the button component.                                                                | `var(--graupl-spacer-5)`                                                                                                                                                                  |
@@ -63,8 +63,8 @@
 // | `--graupl-button-disabled-border-color`      | The border colour of a disabled button component.                                                              | `var(--graupl-theme-active--primary--200)`                                                                                                                                                |
 //
 // The following sass variables can be used to customize the generation of the button component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                        | Description                                                                             | Default Value               |
+// | ---                             | ---                                                                                     | ---                         |
 // | `$selector-base`                | The selector base for the component.                                                    | `.`                         |
 // | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `.`                         |
 // | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                      |

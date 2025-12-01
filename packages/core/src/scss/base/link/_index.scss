@@ -9,8 +9,8 @@
 // - `.stretched`: A component modifier that makes the link component stretch to fill nearest relative container.
 //
 // The following custom properties can be used to customize the link component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                                           | Description                                                                                                   | Default Value                                                                                                                                                                                                                                                                  |
+// | ---                                                | ---                                                                                                           | ---                                                                                                                                                                                                                                                                            |
 // | `--graupl-link-text-decoration`                    | The text decoration for the link component.                                                                   | `underline`                                                                                                                                                                                                                                                                    |
 // | `--graupl-link-visited-text-decoration`            | The text decoration for a visited link component.                                                             | `var(--graupl-link-text-decoration)`                                                                                                                                                                                                                                           |
 // | `--graupl-link-focus-text-decoration`              | The text decoration for a focused link component.                                                             | `var(--graupl-link-text-decoration)`                                                                                                                                                                                                                                           |
@@ -84,8 +84,8 @@
 // | `--graupl-link-stretched-link-z-index`             | The z-index for the stretched link component modifier.                                                        | `5`                                                                                                                                                                                                                                                                            |
 //
 // The following sass variables can be used to customize the generation of the link component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                               | Description                                                    | Default Value                         |
+// | ---                                    | ---                                                            | ---                                   |
 // | `$selector-base`                       | The selector base for the component.                           | `""`                                  |
 // | `$modifier-selector-base`              | The selector base for component modifiers.                     | `"."`                                 |
 // | `$link-selector-base`                  | The base selector for the link component.                      | `$selector-base`                      |

@@ -37,8 +37,8 @@
 // - `.content`: A content container component used directly inside of a container with sidebars.
 //
 // The following custom properties can be used to customize the container component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
+// | Property                                                     | Description                                                                         | Default Value                                                                                                                                                                                                                                                                                                                                                        |
+// | ---                                                          | ---                                                                                 | ---                                                                                                                                                                                                                                                                                                                                                                  |
 // | `--graupl-container-sidebar-width`                           | The width of the sidebar sections.                                                  | `26ch`                                                                                                                                                                                                                                                                                                                                                               |
 // | `--graupl-container-breakout-width`                          | The width that the breakout section will extend beyond the content.                 | `4ch`                                                                                                                                                                                                                                                                                                                                                                |
 // | `--graupl-container-feature-width`                           | The width that the feature section will extend beyond the breakout.                 | `10ch`                                                                                                                                                                                                                                                                                                                                                               |
@@ -71,8 +71,8 @@
 // | `--graupl-container-sidebars-left-content-section-width`     | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebar-left-content-section-min-width), var(--graupl-container-sidebar-left-content-section-max-width))`                                                                                                                                                                                                                                |
 //
 // The following sass variables can be used to customize the generation of the container component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
+// | Variable                              | Description                                                             | Default Value             |
+// | ---                                   | ---                                                                     | ---                       |
 // | `$selector-base`                      | The selector base for the component.                                    | `.`                       |
 // | `$modifier-selector-base`             | The selector base for component modifiers.                              | `.`                       |
 // | `$container-selector-base`            | The base selector for the container component.                          | `$selector-base`          |

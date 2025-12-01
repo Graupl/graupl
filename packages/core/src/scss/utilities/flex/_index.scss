@@ -31,33 +31,33 @@
 // - N/A.
 //
 // The following sass variables control the generated classes:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                    | Base selector for utility classes.                                 | `"."` |
-// | `$use-important`                   | Append `!important` to generated declarations.                     | `true` |
-// | `$generate-base-utilities`         | Generate the base utilities.                                       | `true` |
-// | `$screen-aware`                    | Generate screen-aware variants.                                    | `false` |
-// | `$theme-aware`                     | Generate theme-aware variants.                                     | `false` |
-// | `$state-aware`                     | Generate state-aware variants.                                     | `false` |
-// | `$container-aware`                 | Generate container-aware variants.                                 | `false` |
-// | `$screen-aware-separator`          | Separator for screen-aware utilities.                              | `"\\:"` |
-// | `$theme-aware-separator`           | Separator for theme-aware utilities.                               | `"\\:"` |
-// | `$state-aware-separator`           | Separator for state-aware utilities.                               | `"\\:"` |
-// | `$container-aware-separator`       | Separator for container-aware utilities.                           | `"\\:"` |
-// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.                                 | `""` |
-// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.                                  | `""` |
-// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.                                  | `""` |
-// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.                              | `"cq\\:"` |
-// | `$flex-direction-selector-prefix`  | Prefix for flex-direction utilities.                               | `"flex-"` |
-// | `$flex-direction-properties`       | Map of flex-direction utility values.                              | `row, row-reverse, col, col-reverse` |
-// | `$flex-wrap-selector-prefix`       | Prefix for flex-wrap utilities.                                    | `"flex-"` |
-// | `$flex-wrap-properties`            | Map of flex-wrap utility values.                                   | `wrap, wrap-reverse, nowrap` |
-// | `$flex-grow-selector-prefix`       | Prefix for flex-grow utilities.                                    | `"flex-"` |
-// | `$flex-grow-properties`            | Map of flex-grow utility values.                                   | `grow, no-grow` |
-// | `$flex-shrink-selector-prefix`     | Prefix for flex-shrink utilities.                                  | `"flex-"` |
-// | `$flex-shrink-properties`          | Map of flex-shrink utility values.                                 | `shrink, no-shrink` |
-// | `$flex-basis-selector-prefix`      | Prefix for flex-basis utilities.                                   | `"flex-"` |
-// | `$flex-basis-properties`           | Map of flex-basis utility values.                                  | `auto, fit-content, max-content, min-content, content, 0, full, quarter, half, three-quarters, third, two-thirds` |
+// | Variable                           | Description                                    | Default Value                                                                                                     |
+// | ---                                | ---                                            | ---                                                                                                               |
+// | `$selector-base`                   | Base selector for utility classes.             | `"."`                                                                                                             |
+// | `$use-important`                   | Append `!important` to generated declarations. | `true`                                                                                                            |
+// | `$generate-base-utilities`         | Generate the base utilities.                   | `true`                                                                                                            |
+// | `$screen-aware`                    | Generate screen-aware variants.                | `false`                                                                                                           |
+// | `$theme-aware`                     | Generate theme-aware variants.                 | `false`                                                                                                           |
+// | `$state-aware`                     | Generate state-aware variants.                 | `false`                                                                                                           |
+// | `$container-aware`                 | Generate container-aware variants.             | `false`                                                                                                           |
+// | `$screen-aware-separator`          | Separator for screen-aware utilities.          | `"\\:"`                                                                                                           |
+// | `$theme-aware-separator`           | Separator for theme-aware utilities.           | `"\\:"`                                                                                                           |
+// | `$state-aware-separator`           | Separator for state-aware utilities.           | `"\\:"`                                                                                                           |
+// | `$container-aware-separator`       | Separator for container-aware utilities.       | `"\\:"`                                                                                                           |
+// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.             | `""`                                                                                                              |
+// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.              | `""`                                                                                                              |
+// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.              | `""`                                                                                                              |
+// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.          | `"cq\\:"`                                                                                                         |
+// | `$flex-direction-selector-prefix`  | Prefix for flex-direction utilities.           | `"flex-"`                                                                                                         |
+// | `$flex-direction-properties`       | Map of flex-direction utility values.          | `row, row-reverse, col, col-reverse`                                                                              |
+// | `$flex-wrap-selector-prefix`       | Prefix for flex-wrap utilities.                | `"flex-"`                                                                                                         |
+// | `$flex-wrap-properties`            | Map of flex-wrap utility values.               | `wrap, wrap-reverse, nowrap`                                                                                      |
+// | `$flex-grow-selector-prefix`       | Prefix for flex-grow utilities.                | `"flex-"`                                                                                                         |
+// | `$flex-grow-properties`            | Map of flex-grow utility values.               | `grow, no-grow`                                                                                                   |
+// | `$flex-shrink-selector-prefix`     | Prefix for flex-shrink utilities.              | `"flex-"`                                                                                                         |
+// | `$flex-shrink-properties`          | Map of flex-shrink utility values.             | `shrink, no-shrink`                                                                                               |
+// | `$flex-basis-selector-prefix`      | Prefix for flex-basis utilities.               | `"flex-"`                                                                                                         |
+// | `$flex-basis-properties`           | Map of flex-basis utility values.              | `auto, fit-content, max-content, min-content, content, 0, full, quarter, half, three-quarters, third, two-thirds` |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

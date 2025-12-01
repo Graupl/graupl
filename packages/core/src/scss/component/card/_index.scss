@@ -13,74 +13,74 @@
 // - `.horizontal`, `.left`, `.right`, `.top`, `.bottom`, `.inverse`: Layout modifiers that control image/content positioning.
 //
 // The following custom properties can be used to customize the card component:
-// | Property | Description | Default Value |
-// | --- | --- | --- |
-// | `--graupl-card-padding-x`                | Horizontal padding of the card.                                    | `var(--graupl-spacer-0)` |
-// | `--graupl-card-padding-y`                | Vertical padding of the card.                                      | `var(--graupl-spacer-0)` |
-// | `--graupl-card-padding`                  | Shorthand padding of the card.                                     | `var(--graupl-card-padding-y) var(--graupl-card-padding-x)` |
-// | `--graupl-card-transition`               | Transition applied to the card.                                    | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
-// | `--graupl-card-transition-reduced-motion`| Transition when reduced motion is enabled.                         | `none` |
-// | `--graupl-card-transform`                | Base transform for the card.                                       | `none` |
-// | `--graupl-card-hover-transform`          | Transform for hovered cards.                                       | `none` |
-// | `--graupl-card-column-gap`               | Column gap inside the card.                                        | `var(--graupl-spacer-0)` |
-// | `--graupl-card-row-gap`                  | Row gap inside the card.                                           | `var(--graupl-spacer-0)` |
-// | `--graupl-card-gap`                      | Gap inside the card (column/row).                                  | `var(--graupl-card-column-gap) var(--graupl-card-row-gap)` |
-// | `--graupl-card-background`               | Background colour of the card.                                     | `var(--graupl-background)` |
-// | `--graupl-card-color`                    | Text colour of the card.                                           | `var(--graupl-color)` |
-// | `--graupl-card-border-width`             | Border width of the card.                                          | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)` |
-// | `--graupl-card-border-style`             | Border style of the card.                                          | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)` |
-// | `--graupl-card-border-radius`            | Border radius of the card.                                         | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
-// | `--graupl-card-border-color`             | Border colour of the card.                                         | `var(--graupl-card-color)` |
-// | `--graupl-card-content-ratio`            | Grid row ratio used for card content.                              | `1fr` |
-// | `--graupl-card-image-ratio`              | Grid row ratio used for card images.                               | `auto` |
-// | `--graupl-horizontal-card-content-ratio` | Grid column ratio for horizontal cards (content area).             | `3fr` |
-// | `--graupl-horizontal-card-image-ratio`   | Grid column ratio for horizontal cards (image area).               | `2fr` |
-// | `--graupl-card-image-padding`            | Padding for the card image wrapper.                                | `var(--graupl-spacer-0) var(--graupl-spacer-0)` |
-// | `--graupl-card-content-padding`          | Padding for the card content wrapper.                              | `var(--graupl-spacer-3) var(--graupl-spacer-5)` |
-// | `--graupl-card-content-gap`              | Gap inside the card content (column/row).                          | `var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)` |
-// | `--graupl-card-title-color`              | Text colour of the card title.                                     | `var(--graupl-card-color)` |
-// | `--graupl-card-title-font-size`          | Font size of the card title.                                       | `var(--graupl-h4)` |
-// | `--graupl-card-title-font-weight`        | Font weight of the card title.                                     | `var(--graupl-font-weight-h4)` |
-// | `--graupl-card-title-font-family`        | Font family of the card title.                                     | `var(--graupl-font-family-h4)` |
-// | `--graupl-card-title-line-height`        | Line height of the card title.                                     | `var(--graupl-line-height-h4)` |
+// | Property                                  | Description                                            | Default Value                                                                                                                                                 |
+// | ---                                       | ---                                                    | ---                                                                                                                                                           |
+// | `--graupl-card-padding-x`                 | Horizontal padding of the card.                        | `var(--graupl-spacer-0)`                                                                                                                                      |
+// | `--graupl-card-padding-y`                 | Vertical padding of the card.                          | `var(--graupl-spacer-0)`                                                                                                                                      |
+// | `--graupl-card-padding`                   | Shorthand padding of the card.                         | `var(--graupl-card-padding-y) var(--graupl-card-padding-x)`                                                                                                   |
+// | `--graupl-card-transition`                | Transition applied to the card.                        | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                   |
+// | `--graupl-card-transition-reduced-motion` | Transition when reduced motion is enabled.             | `none`                                                                                                                                                        |
+// | `--graupl-card-transform`                 | Base transform for the card.                           | `none`                                                                                                                                                        |
+// | `--graupl-card-hover-transform`           | Transform for hovered cards.                           | `none`                                                                                                                                                        |
+// | `--graupl-card-column-gap`                | Column gap inside the card.                            | `var(--graupl-spacer-0)`                                                                                                                                      |
+// | `--graupl-card-row-gap`                   | Row gap inside the card.                               | `var(--graupl-spacer-0)`                                                                                                                                      |
+// | `--graupl-card-gap`                       | Gap inside the card (column/row).                      | `var(--graupl-card-column-gap) var(--graupl-card-row-gap)`                                                                                                    |
+// | `--graupl-card-background`                | Background colour of the card.                         | `var(--graupl-background)`                                                                                                                                    |
+// | `--graupl-card-color`                     | Text colour of the card.                               | `var(--graupl-color)`                                                                                                                                         |
+// | `--graupl-card-border-width`              | Border width of the card.                              | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)`                           |
+// | `--graupl-card-border-style`              | Border style of the card.                              | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)`                           |
+// | `--graupl-card-border-radius`             | Border radius of the card.                             | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
+// | `--graupl-card-border-color`              | Border colour of the card.                             | `var(--graupl-card-color)`                                                                                                                                    |
+// | `--graupl-card-content-ratio`             | Grid row ratio used for card content.                  | `1fr`                                                                                                                                                         |
+// | `--graupl-card-image-ratio`               | Grid row ratio used for card images.                   | `auto`                                                                                                                                                        |
+// | `--graupl-horizontal-card-content-ratio`  | Grid column ratio for horizontal cards (content area). | `3fr`                                                                                                                                                         |
+// | `--graupl-horizontal-card-image-ratio`    | Grid column ratio for horizontal cards (image area).   | `2fr`                                                                                                                                                         |
+// | `--graupl-card-image-padding`             | Padding for the card image wrapper.                    | `var(--graupl-spacer-0) var(--graupl-spacer-0)`                                                                                                               |
+// | `--graupl-card-content-padding`           | Padding for the card content wrapper.                  | `var(--graupl-spacer-3) var(--graupl-spacer-5)`                                                                                                               |
+// | `--graupl-card-content-gap`               | Gap inside the card content (column/row).              | `var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)`                                                                                    |
+// | `--graupl-card-title-color`               | Text colour of the card title.                         | `var(--graupl-card-color)`                                                                                                                                    |
+// | `--graupl-card-title-font-size`           | Font size of the card title.                           | `var(--graupl-h4)`                                                                                                                                            |
+// | `--graupl-card-title-font-weight`         | Font weight of the card title.                         | `var(--graupl-font-weight-h4)`                                                                                                                                |
+// | `--graupl-card-title-font-family`         | Font family of the card title.                         | `var(--graupl-font-family-h4)`                                                                                                                                |
+// | `--graupl-card-title-line-height`         | Line height of the card title.                         | `var(--graupl-line-height-h4)`                                                                                                                                |
 //
 // The following sass variables can be used to customize the generation of the card component:
-// | Variable | Description | Default Value |
-// | --- | --- | --- |
-// | `$selector-base`                      | Selector base for the component.                    | `"."` |
-// | `$modifier-selector-base`             | Selector base for component modifiers.             | `"."` |
-// | `$card-selector-base`                 | Selector base for the card container.              | `$selector-base` |
-// | `$card-selector`                      | Selector for the card container.                   | `"card"` |
-// | `$card-image-selector-base`           | Selector base for the image wrapper.               | `$selector-base` |
-// | `$card-image-selector`                | Selector for the image wrapper.                    | `"card-image"` |
-// | `$card-content-selector-base`         | Selector base for the content wrapper.             | `$selector-base` |
-// | `$card-content-selector`              | Selector for the content wrapper.                  | `"card-content"` |
-// | `$card-body-selector-base`            | Selector base for the body region.                 | `$selector-base` |
-// | `$card-body-selector`                 | Selector for the body region.                      | `"card-body"` |
-// | `$card-header-selector-base`          | Selector base for the header region.               | `$selector-base` |
-// | `$card-header-selector`               | Selector for the header region.                    | `"card-header"` |
-// | `$card-footer-selector-base`          | Selector base for the footer region.               | `$selector-base` |
-// | `$card-footer-selector`               | Selector for the footer region.                    | `"card-footer"` |
-// | `$card-title-selector-base`           | Selector base for the title element.               | `$selector-base` |
-// | `$card-title-selector`                | Selector for the title element.                    | `"card-title"` |
-// | `$horizontal-card-selector-base`      | Selector base for horizontal layout modifier.      | `"."` |
-// | `$horizontal-card-selector`           | Selector for horizontal layout modifier.           | `"horizontal"` |
-// | `$horizontal-card-left-selector-base` | Selector base for left modifier.                   | `"."` |
-// | `$horizontal-card-left-selector`      | Selector for left modifier.                        | `"left"` |
-// | `$horizontal-card-right-selector-base`| Selector base for right modifier.                  | `"."` |
-// | `$horizontal-card-right-selector`     | Selector for right modifier.                       | `"right"` |
-// | `$vertical-card-top-selector-base`    | Selector base for top modifier.                    | `"."` |
-// | `$vertical-card-top-selector`         | Selector for top modifier.                         | `"top"` |
-// | `$vertical-card-bottom-selector-base` | Selector base for bottom modifier.                 | `"."` |
-// | `$vertical-card-bottom-selector`      | Selector for bottom modifier.                      | `"bottom"` |
-// | `$inverse-card-selector-base`         | Selector base for inverse layout modifier.         | `"."` |
-// | `$inverse-card-selector`              | Selector for inverse layout modifier.              | `"inverse"` |
-// | `$card-transform`                     | Base transform for the card.                       | `none` |
-// | `$card-hover-transform`               | Hover transform for the card.                      | `none` |
-// | `$card-content-ratio`                 | Grid ratio for content rows.                       | `1fr` |
-// | `$card-image-ratio`                   | Grid ratio for image rows.                         | `auto` |
-// | `$horizontal-card-content-ratio`      | Grid ratio for content in horizontal layout.       | `3fr` |
-// | `$horizontal-card-image-ratio`        | Grid ratio for images in horizontal layout.        | `2fr` |
+// | Variable                               | Description                                   | Default Value    |
+// | ---                                    | ---                                           | ---              |
+// | `$selector-base`                       | Selector base for the component.              | `"."`            |
+// | `$modifier-selector-base`              | Selector base for component modifiers.        | `"."`            |
+// | `$card-selector-base`                  | Selector base for the card container.         | `$selector-base` |
+// | `$card-selector`                       | Selector for the card container.              | `"card"`         |
+// | `$card-image-selector-base`            | Selector base for the image wrapper.          | `$selector-base` |
+// | `$card-image-selector`                 | Selector for the image wrapper.               | `"card-image"`   |
+// | `$card-content-selector-base`          | Selector base for the content wrapper.        | `$selector-base` |
+// | `$card-content-selector`               | Selector for the content wrapper.             | `"card-content"` |
+// | `$card-body-selector-base`             | Selector base for the body region.            | `$selector-base` |
+// | `$card-body-selector`                  | Selector for the body region.                 | `"card-body"`    |
+// | `$card-header-selector-base`           | Selector base for the header region.          | `$selector-base` |
+// | `$card-header-selector`                | Selector for the header region.               | `"card-header"`  |
+// | `$card-footer-selector-base`           | Selector base for the footer region.          | `$selector-base` |
+// | `$card-footer-selector`                | Selector for the footer region.               | `"card-footer"`  |
+// | `$card-title-selector-base`            | Selector base for the title element.          | `$selector-base` |
+// | `$card-title-selector`                 | Selector for the title element.               | `"card-title"`   |
+// | `$horizontal-card-selector-base`       | Selector base for horizontal layout modifier. | `"."`            |
+// | `$horizontal-card-selector`            | Selector for horizontal layout modifier.      | `"horizontal"`   |
+// | `$horizontal-card-left-selector-base`  | Selector base for left modifier.              | `"."`            |
+// | `$horizontal-card-left-selector`       | Selector for left modifier.                   | `"left"`         |
+// | `$horizontal-card-right-selector-base` | Selector base for right modifier.             | `"."`            |
+// | `$horizontal-card-right-selector`      | Selector for right modifier.                  | `"right"`        |
+// | `$vertical-card-top-selector-base`     | Selector base for top modifier.               | `"."`            |
+// | `$vertical-card-top-selector`          | Selector for top modifier.                    | `"top"`          |
+// | `$vertical-card-bottom-selector-base`  | Selector base for bottom modifier.            | `"."`            |
+// | `$vertical-card-bottom-selector`       | Selector for bottom modifier.                 | `"bottom"`       |
+// | `$inverse-card-selector-base`          | Selector base for inverse layout modifier.    | `"."`            |
+// | `$inverse-card-selector`               | Selector for inverse layout modifier.         | `"inverse"`      |
+// | `$card-transform`                      | Base transform for the card.                  | `none`           |
+// | `$card-hover-transform`                | Hover transform for the card.                 | `none`           |
+// | `$card-content-ratio`                  | Grid ratio for content rows.                  | `1fr`            |
+// | `$card-image-ratio`                    | Grid ratio for image rows.                    | `auto`           |
+// | `$horizontal-card-content-ratio`       | Grid ratio for content in horizontal layout.  | `3fr`            |
+// | `$horizontal-card-image-ratio`         | Grid ratio for images in horizontal layout.   | `2fr`            |
 //
 // @example
 // <div class="card">
