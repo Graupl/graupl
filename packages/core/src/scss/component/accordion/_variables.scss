@@ -362,3 +362,101 @@ $accordion-item-toggle-pseudo-open-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-pseudo-open-transform,
   #{defaults.$accordion-item-toggle-pseudo-open-transform}
 );
+
+// Accordion item toggle color properties.
+$accordion-item-toggle-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-color,
+  #{$accordion-color}
+);
+$accordion-item-toggle-visited-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-visited-color,
+  #{$accordion-item-toggle-color}
+);
+$accordion-item-toggle-focus-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-focus-color,
+  #{$accordion-item-toggle-color}
+);
+$accordion-item-toggle-hover-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-hover-color,
+  #{$accordion-background}
+);
+$accordion-item-toggle-active-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-active-color,
+  #{$accordion-item-toggle-hover-color}
+);
+$accordion-item-toggle-disabled-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$accordion-item-toggle-color-states: (
+  default: $accordion-item-toggle-color,
+  visited: $accordion-item-toggle-visited-color,
+  focus: $accordion-item-toggle-focus-color,
+  hover: $accordion-item-toggle-hover-color,
+  active: $accordion-item-toggle-active-color,
+  disabled: $accordion-item-toggle-disabled-color,
+);
+$accordion-item-toggle-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-background,
+  #{$accordion-background}
+);
+$accordion-item-toggle-visited-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-visited-background,
+  #{$accordion-item-toggle-background}
+);
+$accordion-item-toggle-focus-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-focus-background,
+  #{$accordion-item-toggle-background}
+);
+$accordion-item-toggle-hover-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-hover-background,
+  #{$accordion-color}
+);
+$accordion-item-toggle-active-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-active-background,
+  #{$accordion-item-toggle-hover-background}
+);
+$accordion-item-toggle-disabled-background: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-disabled-background,
+  #{$accordion-background}
+);
+$accordion-item-toggle-background-states: (
+  default: $accordion-item-toggle-background,
+  visited: $accordion-item-toggle-visited-background,
+  focus: $accordion-item-toggle-focus-background,
+  hover: $accordion-item-toggle-hover-background,
+  active: $accordion-item-toggle-active-background,
+  disabled: $accordion-item-toggle-disabled-background,
+);
+$accordion-item-toggle-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-border-color,
+  #{$accordion-item-border-color}
+);
+$accordion-item-toggle-visited-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-visited-border-color,
+  #{$accordion-item-toggle-border-color}
+);
+$accordion-item-toggle-focus-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-focus-border-color,
+  #{$accordion-item-toggle-border-color}
+);
+$accordion-item-toggle-hover-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-hover-border-color,
+  #{$accordion-item-border-color}
+);
+$accordion-item-toggle-active-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-active-border-color,
+  #{$accordion-item-toggle-hover-border-color}
+);
+$accordion-item-toggle-disabled-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-toggle-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$accordion-item-toggle-border-color-states: (
+  default: $accordion-item-toggle-border-color,
+  visited: $accordion-item-toggle-visited-border-color,
+  focus: $accordion-item-toggle-focus-border-color,
+  hover: $accordion-item-toggle-hover-border-color,
+  active: $accordion-item-toggle-active-border-color,
+  disabled: $accordion-item-toggle-disabled-border-color,
+);

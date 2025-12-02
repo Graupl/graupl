@@ -7,13 +7,18 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "sass:map";
 
 // Accordion selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $accordion-selector-base: $selector-base !default;
 $accordion-selector: "accordion" !default;
+$accordion-theme-selector-base: $modifier-selector-base !default;
+$accordion-theme-selector-prefix: "" !default;
 $accordion-item-selector-base: $selector-base !default;
 $accordion-item-selector: "accordion-item" !default;
 $accordion-item-header-selector-base: $selector-base !default;
@@ -52,3 +57,40 @@ $accordion-item-toggle-pseudo-content: "▼" !default;
 // Accordion transform properties.
 $accordion-item-content-transform: translateY(-100%) !default;
 $accordion-item-content-open-transform: translateY(0) !default;
+
+// Accordion state theme defaults.
+// This map is used to define the default colour shades for the
+// themed accordion bases.
+//
+// e.g.
+// Primary accordions will use primary--900 as the text colour and primary--700 as the border colour.
+//
+// Secondary/tertiary accordions will use the same shade for their respective colours.
+$-accordion-theme-mappings: (
+  item-toggle-color: 900,
+  item-toggle-border-color: 700,
+  item-border-color: 700,
+  item-toggle-hover-color: 100,
+  item-toggle-hover-background: 700,
+  item-hover-border-color: 700,
+  item-toggle-hover-border-color: 700,
+  item-toggle-disabled-color: 200,
+  item-disabled-border-color: 200,
+  item-toggle-disabled-border-color: 200,
+);
+$accordion-theme-mappings: () !default;
+
+// Merge the custom accordion state theme map with the default one.
+@if $generate-base-theme-map {
+  $accordion-theme-mappings: map.merge(
+    $-accordion-theme-mappings,
+    $accordion-theme-mappings
+  );
+}
+
+$-accordion-theme-map: theme.generate-property-map($accordion-theme-mappings);
+$accordion-theme-map: () !default;
+$accordion-theme-map: map.deep-merge(
+  $-accordion-theme-map,
+  $accordion-theme-map
+);
