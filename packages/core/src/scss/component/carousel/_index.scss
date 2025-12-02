@@ -22,6 +22,7 @@
 // | `--graupl-carousel-padding-y`              | Vertical padding of the carousel.                | `var(--graupl-spacer-0)`                                            |
 // | `--graupl-carousel-padding`                | Shorthand padding of the carousel.               | `var(--graupl-carousel-padding-y) var(--graupl-carousel-padding-x)` |
 // | `--graupl-carousel-item-max-width`         | Max width of a carousel item.                    | `100%`                                                              |
+// | `--graupl-carousel-transition-duration`    | Duration used for slide transitions.             | `500ms`                                                             |
 // | `--graupl-carousel-item-container-padding` | Padding of the item container.                   | `var(--graupl-spacer-0) var(--graupl-spacer-0)`                     |
 // | `--graupl-carousel-control-width`          | Width of each control.                           | `4rem`                                                              |
 // | `--graupl-carousel-control-height`         | Height of each control.                          | `3rem`                                                              |
@@ -72,6 +73,7 @@
 // | `$carousel-tabs-height`                     | Height of the tabs row.                   | `auto`                         |
 // | `$carousel-slide-height`                    | Height of the slide row.                  | `1fr`                          |
 // | `$carousel-item-max-width`                  | Max width of a carousel item.             | `100%`                         |
+// | `$carousel-transition-duration`             | Duration used for slide transitions.      | `500ms`                        |
 //
 // @example
 // <section class="carousel">
@@ -256,9 +258,7 @@
     &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
       z-index: 1;
       transform: none;
-      transition: transform
-        var(--#{root-defaults.$prefix}carousel-transition-duration, 500ms)
-        ease-in-out;
+      transition: transform #{$carousel-transition-duration} ease-in-out;
       opacity: 1;
     }
 
@@ -266,9 +266,7 @@
     &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
       z-index: 1;
       transform: translateX(calc(-1 * $carousel-item-max-width));
-      transition: transform
-        var(--#{root-defaults.$prefix}carousel-transition-duration, 500ms)
-        ease-in-out;
+      transition: transform #{$carousel-transition-duration} ease-in-out;
       opacity: 1;
 
       // &.carousel-active-item
