@@ -26,27 +26,35 @@
 // - `.[screen-name]:col-#`: A class to set the size of a column at a specific screen size.
 // - `.[container-name]:col-#`: A class to set the size of a column at a specific container size.
 //
-// The following custom properties control the generated classes:
-// - `--graupl-flex-columns-row-gap`: The gap between the rows of the flex columns.
-// - `--graupl-flex-columns-column-gap`: The gap between the columns of the flex columns.
-// - `--graupl-flex-columns-size`: The size of a column.
-// - `--graupl-flex-columns-max-width`: The maximum width of a column.
+// The following custom properties can be used to customize the flex columns component:
+// | Property                               | Description                                               | Default Value            |
+// | ---                                    | ---                                                       | ---                      |
+// | `--graupl-flex-columns-row-gap`        | The gap between the rows of the flex columns.             | `var(--graupl-spacer-5)` |
+// | `--graupl-flex-columns-column-gap`     | The gap between the columns of the flex columns.          | `var(--graupl-spacer-5)` |
+// | `--graupl-flex-columns-size`           | The size of a column.                                     | `auto`                   |
+// | `--graupl-flex-columns-max-width`      | The maximum width of a column.                            | `unset`                  |
+// | `--graupl-flex-columns-container-type` | The container type applied to the flex columns component. | `inline-size`            |
 //
-// The following variables control the generated classes:
-// - `$flex-columns-selector-base`: The base selector for the flex columns component.
-// - `$flex-columns-selector`: The selector for the flex columns component.
-// - `$flex-columns-column-selector-base`: The base selector for the column class.
-// - `$flex-columns-column-selector`: The selector for the column class.
-// - `$flex-columns-fill-selector-base`: The base selector for the fill class.
-// - `$flex-columns-fill-selector`: The selector for the fill class.
-// - `$flex-columns-screen-aware-separator`: The separator for the screen-aware column class.
-// - `$flex-columns-container-aware-separator`: The separator for the container-aware column class.
-// - `$flex-columns-screen-aware-selector-prefix`: The prefix for the screen-aware column class.
-// - `$flex-columns-container-aware-selector-prefix`: The prefix for the container-aware column class.
-// - `$flex-columns-min-count`: The minimum number of columns used to generate `.col-#` classes.
-// - `$flex-columns-max-count`: The maximum number of columns used to generate `.col-#` classes.
-// - `$flex-columns-size`: The default size of a column.
-// - `$flex-columns-max-width`: The default maximum width of a column.
+// The following sass variables can be used to customize the generation of the flex columns component:
+// | Variable                                        | Description                                                      | Default Value    |
+// | ---                                             | ---                                                              | ---              |
+// | `$selector-base`                                | The base selector for the component.                             | `"."`            |
+// | `$modifier-selector-base`                       | The base selector for component modifiers.                       | `"."`            |
+// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `$selector-base` |
+// | `$flex-columns-selector`                        | The selector for the flex columns component.                     | `"flex-columns"` |
+// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `$selector-base` |
+// | `$flex-columns-column-selector`                 | The selector for the column class.                               | `"col-"`         |
+// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `$selector-base` |
+// | `$flex-columns-fill-selector`                   | The selector for the fill class.                                 | `"fill"`         |
+// | `$flex-columns-screen-aware-separator`          | The separator for the screen-aware column class.                 | `"\\:"`          |
+// | `$flex-columns-container-aware-separator`       | The separator for the container-aware column class.              | `"\\:"`          |
+// | `$flex-columns-screen-aware-selector-prefix`    | The prefix for the screen-aware column class.                    | `""`             |
+// | `$flex-columns-container-aware-selector-prefix` | The prefix for the container-aware column class.                 | `"cq\\:"`        |
+// | `$flex-columns-min-count`                       | The minimum number of columns used to generate `.col-#` classes. | `1`              |
+// | `$flex-columns-max-count`                       | The maximum number of columns used to generate `.col-#` classes. | `12`             |
+// | `$flex-columns-size`                            | The default size of a column.                                    | `auto`           |
+// | `$flex-columns-max-width`                       | The default maximum width of a column.                           | `unset`          |
+// | `$flex-columns-container-type`                  | The container type applied to the flex columns component.        | `"inline-size"`  |
 //
 // @example
 //   <div class="flex-columns">

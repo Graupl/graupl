@@ -8,6 +8,7 @@
 @use "../../variables" as root-variables;
 @use "../../theme/color/variables" as color;
 @use "../../theme/typography/variables" as typography;
+@use "../../base/link/variables" as link-variables;
 @use "sass:map";
 
 // Alert properties.
@@ -44,17 +45,29 @@ $alert-background: var(
   #{color.$background}
 );
 $alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$color});
-$alert-link-color: var(--#{root-defaults.$prefix}alert-link-color);
-$alert-link-visited-color: var(
-  --#{root-defaults.$prefix}alert-link-visited-color
+$alert-link-color: var(
+  --#{root-defaults.$prefix}alert-link-color,
+  #{link-variables.$link-color}
 );
-$alert-link-focus-color: var(--#{root-defaults.$prefix}alert-link-focus-color);
-$alert-link-hover-color: var(--#{root-defaults.$prefix}alert-link-hover-color);
+$alert-link-visited-color: var(
+  --#{root-defaults.$prefix}alert-link-visited-color,
+  #{$alert-link-color}
+);
+$alert-link-focus-color: var(
+  --#{root-defaults.$prefix}alert-link-focus-color,
+  #{$alert-link-color}
+);
+$alert-link-hover-color: var(
+  --#{root-defaults.$prefix}alert-link-hover-color,
+  #{link-variables.$link-hover-color}
+);
 $alert-link-active-color: var(
-  --#{root-defaults.$prefix}alert-link-active-color
+  --#{root-defaults.$prefix}alert-link-active-color,
+  #{$alert-link-hover-color}
 );
 $alert-link-disabled-color: var(
-  --#{root-defaults.$prefix}alert-link-disabled-color
+  --#{root-defaults.$prefix}alert-link-disabled-color,
+  #{link-variables.$link-disabled-color}
 );
 
 // Alert border-properties.

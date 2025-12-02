@@ -11,24 +11,26 @@
 // - N/A.
 //
 // The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$visibility-selector-prefix`: The prefix for the visibility utility classes.
-// - `$custom-visibility-properties`: [DEPRECATED] The custom properties and values for the visibility utility classes.
-// - `$visibility-properties`: The combined properties and values for the visibility utility classes.
+// | Variable                           | Description                                                       | Default Value               |
+// | ---                                | ---                                                               | ---                         |
+// | `$selector-base`                   | Base selector for utility classes.                                | `"."`                       |
+// | `$use-important`                   | Append `!important` to generated declarations.                    | `true`                      |
+// | `$generate-base-utilities`         | Generate the base utilities.                                      | `true`                      |
+// | `$screen-aware`                    | Generate screen-aware variants.                                   | `true`                      |
+// | `$theme-aware`                     | Generate theme-aware variants.                                    | `false`                     |
+// | `$state-aware`                     | Generate state-aware variants.                                    | `false`                     |
+// | `$container-aware`                 | Generate container-aware variants.                                | `true`                      |
+// | `$screen-aware-separator`          | Separator for screen-aware utilities.                             | `"\\:"`                     |
+// | `$theme-aware-separator`           | Separator for theme-aware utilities.                              | `"\\:"`                     |
+// | `$state-aware-separator`           | Separator for state-aware utilities.                              | `"\\:"`                     |
+// | `$container-aware-separator`       | Separator for container-aware utilities.                          | `"\\:"`                     |
+// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.                                | `""`                        |
+// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.                                 | `""`                        |
+// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.                                 | `""`                        |
+// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.                             | `"cq\\:"`                   |
+// | `$visibility-selector-prefix`      | Prefix for visibility utilities.                                  | `"visibility-"`             |
+// | `$custom-visibility-properties`    | [DEPRECATED] Additional visibility property/value pairs to merge. | `()`                        |
+// | `$visibility-properties`           | Map of visibility utilities.                                      | `visible, hidden, collapse` |
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
 // - `.{screen-prefix}{screen-name}:{prefix}{value}`

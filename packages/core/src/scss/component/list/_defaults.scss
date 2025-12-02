@@ -6,9 +6,15 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+
 // Card selectors.
-$list-selector: ".list" !default;
-$list-item-selector: ".list-item" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$list-selector-base: $selector-base !default;
+$list-selector: "list" !default;
+$list-item-selector-base: $selector-base !default;
+$list-item-selector: "list-item" !default;
 
 // List item properties.
 $list-item-transform: none !default;

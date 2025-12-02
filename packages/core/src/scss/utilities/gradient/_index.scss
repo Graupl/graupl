@@ -88,34 +88,33 @@
 // - `--graupl-gradient-to-position`: The gradient's to color position.
 // - `--graupl-gradient-direction`: The gradient's direction.
 //
-// The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$gradient-selector`: The selector for the gradient utility classes.
-// - `$gradient-type-selector-prefix`: The prefix for the gradient type utility classes.
-// - `$gradient-direction-selector-prefix`: The prefix for the gradient direction utility classes.
-// - `$gradient-color-selector-prefix`: The prefix for the gradient color utility classes.
-// - `$gradient-color-from-selector-prefix`: The prefix for the gradient from color utility classes.
-// - `$gradient-color-to-selector-prefix`: The prefix for the gradient to color utility classes.
-// - `$custom-gradient-types`: [DEPRECATED] The custom properties and values for the gradient type utility classes.
-// - `$gradient-types`: The combined properties and values for the gradient type utility classes.
-// - `$custom-gradient-directions`: [DEPRECATED] The custom properties and values for the gradient direction utility classes.
-// - `$gradient-directions`: The combined properties and values for the gradient direction utility classes.
-// - `$custom-gradient-colors`: [DEPRECATED] The custom properties and values for the gradient color utility classes.
-// - `$gradient-colors`: The combined properties and values for the gradient color utility classes.
+// The following sass variables control the generated classes:
+// | Variable                               | Description                                                      | Default Value                                                                                  |
+// | ---                                    | ---                                                              | ---                                                                                            |
+// | `$selector-base`                       | Base selector for utility classes.                               | `"."`                                                                                          |
+// | `$use-important`                       | Append `!important` to generated declarations.                   | `true`                                                                                         |
+// | `$generate-base-utilities`             | Generate the base utilities.                                     | `true`                                                                                         |
+// | `$screen-aware`                        | Generate screen-aware variants.                                  | `false`                                                                                        |
+// | `$theme-aware`                         | Generate theme-aware variants.                                   | `false`                                                                                        |
+// | `$state-aware`                         | Generate state-aware variants.                                   | `false`                                                                                        |
+// | `$container-aware`                     | Generate container-aware variants.                               | `false`                                                                                        |
+// | `$screen-aware-separator`              | Separator for screen-aware utilities.                            | `"\\:"`                                                                                        |
+// | `$theme-aware-separator`               | Separator for theme-aware utilities.                             | `"\\:"`                                                                                        |
+// | `$state-aware-separator`               | Separator for state-aware utilities.                             | `"\\:"`                                                                                        |
+// | `$container-aware-separator`           | Separator for container-aware utilities.                         | `"\\:"`                                                                                        |
+// | `$screen-aware-selector-prefix`        | Prefix for screen-aware utilities.                               | `""`                                                                                           |
+// | `$theme-aware-selector-prefix`         | Prefix for theme-aware utilities.                                | `""`                                                                                           |
+// | `$state-aware-selector-prefix`         | Prefix for state-aware utilities.                                | `""`                                                                                           |
+// | `$container-aware-selector-prefix`     | Prefix for container-aware utilities.                            | `"cq\\:"`                                                                                      |
+// | `$gradient-selector`                   | Selector for the base gradient utility.                          | `"gradient"`                                                                                   |
+// | `$gradient-type-selector-prefix`       | Prefix for gradient type utilities.                              | `"gradient-"`                                                                                  |
+// | `$gradient-direction-selector-prefix`  | Prefix for gradient direction utilities.                         | `"to-"`, `"circle"`, `"ellipse"`, etc.                                                         |
+// | `$gradient-color-selector-prefix`      | Prefix for gradient colour utilities.                            | `"gradient-"`                                                                                  |
+// | `$gradient-color-from-selector-prefix` | Prefix for gradient “from” colour utilities.                     | `"from-"`                                                                                      |
+// | `$gradient-color-to-selector-prefix`   | Prefix for gradient “to” colour utilities.                       | `"to-"`                                                                                        |
+// | `$gradient-types`                      | Map of gradient types.                                           | `linear, radial`                                                                               |
+// | `$gradient-directions`                 | Map of gradient direction keywords.                              | `to-top/right/bottom/left`, `circle`, `ellipse`, `closest-side/corner`, `farthest-side/corner` |
+// | `$gradient-colors`                     | Map of gradient colours (includes theme shades and transparent). | See `_defaults.scss`                                                                           |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

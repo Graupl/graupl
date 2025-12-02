@@ -11,17 +11,29 @@
 @use "sass:map";
 
 // Alert selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$alert-selector: ".alert" !default;
-$alert-theme-selector-prefix: "." !default;
-$alert-body-selector: ".alert-body" !default;
-$alert-header-selector: ".alert-header" !default;
-$alert-footer-selector: ".alert-footer" !default;
-$alert-title-selector: ".alert-title" !default;
-$alert-dismisser-selector: ".alert-dismisser" !default;
-$alert-hidden-selector: ".hide" !default;
-$alert-shown-selector: ".show" !default;
-$alert-transition-selector: ".transitioning" !default;
+$alert-selector-base: $selector-base !default;
+$alert-selector: "alert" !default;
+$alert-theme-selector-prefix-base: $modifier-selector-base !default;
+$alert-theme-selector-prefix: "" !default;
+$alert-body-selector-base: $selector-base !default;
+$alert-body-selector: "alert-body" !default;
+$alert-header-selector-base: $selector-base !default;
+$alert-header-selector: "alert-header" !default;
+$alert-footer-selector-base: $selector-base !default;
+$alert-footer-selector: "alert-footer" !default;
+$alert-title-selector-base: $selector-base !default;
+$alert-title-selector: "alert-title" !default;
+$alert-dismisser-selector-base: $selector-base !default;
+$alert-dismisser-selector: "alert-dismisser" !default;
+$alert-hidden-selector-base: $modifier-selector-base !default;
+$alert-hidden-selector: "hide" !default;
+$alert-shown-selector-base: $modifier-selector-base !default;
+$alert-shown-selector: "show" !default;
+$alert-transition-selector-base: $modifier-selector-base !default;
+$alert-transition-selector: "transitioning" !default;
 
 // Alert state theme defaults.
 // This map is used to define the default colour shades for the

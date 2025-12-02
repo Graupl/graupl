@@ -10,9 +10,12 @@
 @use "sass:map";
 
 // Color properties.
-$disclosure-color: var(--#{root-defaults}disclosure-colour, #{color.$color});
+$disclosure-color: var(
+  --#{root-defaults.$prefix}disclosure-color,
+  #{color.$color}
+);
 $disclosure-background: var(
-  --#{root-defaults}disclosure-background,
+  --#{root-defaults.$prefix}disclosure-background,
   #{color.$background}
 );
 $disclosure-content-border-color: var(

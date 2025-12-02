@@ -85,6 +85,12 @@ $carousel-control-height: var(
   #{defaults.$carousel-control-height}
 );
 
+// Carousel transition properties.
+$carousel-transition-duration: var(
+  --#{root-defaults.$prefix}carousel-transition-duration,
+  #{defaults.$carousel-transition-duration}
+);
+
 // Carousel tab properties.
 $carousel-tab-container-padding-x: var(
   --#{root-defaults.$prefix}carousel-tab-container-padding-x,
