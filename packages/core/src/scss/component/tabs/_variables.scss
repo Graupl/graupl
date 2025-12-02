@@ -22,7 +22,7 @@ $tabs-padding-y: var(
 );
 $tabs-padding: var(
   --#{root-defaults.$prefix}tabs-padding,
-  #{$tabs-padding-x} #{$tabs-padding-y}
+  #{$tabs-padding-y} #{$tabs-padding-x}
 );
 
 // Tabs color properties.
@@ -205,7 +205,7 @@ $tabs-tab-toggle-padding-y: var(
 );
 $tabs-tab-toggle-padding: var(
   --#{root-defaults.$prefix}tabs-tab-toggle-padding,
-  #{$tabs-tab-toggle-padding-x} #{$tabs-tab-toggle-padding-y}
+  #{$tabs-tab-toggle-padding-y} #{$tabs-tab-toggle-padding-x}
 );
 
 // Tab toggle border properties.
@@ -288,7 +288,7 @@ $tabs-tab-content-padding-y: var(
 );
 $tabs-tab-content-padding: var(
   --#{root-defaults.$prefix}tabs-tab-content-padding,
-  #{$tabs-tab-content-padding-x} #{$tabs-tab-content-padding-y}
+  #{$tabs-tab-content-padding-y} #{$tabs-tab-content-padding-x}
 );
 $tabs-tab-content-background: var(
   --#{root-defaults.$prefix}tabs-tab-content-background,
@@ -595,7 +595,7 @@ $tabs-tab-list-padding-y: var(
 );
 $tabs-tab-list-padding: var(
   --#{root-defaults.$prefix}tabs-tab-list-padding,
-  #{$tabs-tab-list-padding-x} #{$tabs-tab-list-padding-y}
+  #{$tabs-tab-list-padding-y} #{$tabs-tab-list-padding-x}
 );
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
 $tabs-tab-list-margin: var(
