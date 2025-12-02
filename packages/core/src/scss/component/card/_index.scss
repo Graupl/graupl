@@ -10,7 +10,12 @@
 // - `.card-header`: The header region.
 // - `.card-footer`: The footer region.
 // - `.card-title`: The title element.
-// - `.horizontal`, `.left`, `.right`, `.top`, `.bottom`, `.inverse`: Layout modifiers that control image/content positioning.
+// - `.horizontal`: A modifier to use a horizontal layout for the card.
+// - `.left`: A modifier to position the image on the left in a horizontal layout.
+// - `.right`: A modifier to position the image on the right in a horizontal layout.
+// - `.top`: A modifier to position the image on the top in a vertical layout.
+// - `.bottom`: A modifier to position the image on the bottom in a vertical layout.
+// - `.inverse`: A modifier to invert the image/content positioning.
 //
 // The following custom properties can be used to customize the card component:
 // | Property                                  | Description                                            | Default Value                                                                                                                                                 |

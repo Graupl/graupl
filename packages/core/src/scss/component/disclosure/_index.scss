@@ -17,9 +17,9 @@
 // - `.disclosure-toggle`: The disclosure toggle control that inherits the button base styles.
 //
 // The following custom properties can be used to customize the disclosure component:
-// - `--graupl-disclosure-background`: The disclosure container background colour.
-// - `--graupl-disclosure-colour`: The disclosure container text colour.
-// - `--graupl-disclosure-content-border-color`: The disclosure content border colour.
+// - `--graupl-disclosure-background`: The disclosure container background color.
+// - `--graupl-disclosure-color`: The disclosure container text color.
+// - `--graupl-disclosure-content-border-color`: The disclosure content border color.
 // - `--graupl-disclosure-content-padding-x`: The horizontal padding for the disclosure content.
 // - `--graupl-disclosure-content-padding-y`: The vertical padding for the disclosure content.
 // - `--graupl-disclosure-content-padding`: The shorthand padding for the disclosure content (combines x and y padding).
@@ -53,7 +53,7 @@
 // - `--graupl-disclosure-content-border-top-right-radius`: The top-right border radius for the content.
 // - `--graupl-disclosure-content-border-bottom-right-radius`: The bottom-right border radius for the content.
 // - `--graupl-disclosure-content-border-bottom-left-radius`: The bottom-left border radius for the content.
-// - `--graupl-disclosure-content-border-radius`: The shorthand border radius for the disclosure content (combines top-left, top-right, bottom-right, and top-left widths).
+// - `--graupl-disclosure-content-border-radius`: The shorthand border radius for the disclosure content (combines top-left, top-right, bottom-right, and bottom-left radii).
 // - `--graupl-disclosure-toggle-transform`: The transform applied to the toggle indicator.
 // - `--graupl-disclosure-toggle-open-transform`: The transform applied to the toggle when open.
 // - `--graupl-disclosure-toggle-content`: The string content inserted by the toggle pseudo-element.
