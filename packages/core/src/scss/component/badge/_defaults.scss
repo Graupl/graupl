@@ -14,9 +14,10 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $badge-selector-base: $selector-base !default;
 $badge-selector: "badge" !default;
-$badge-theme-selector-base: $modifier-selector-base !default;
+$badge-theme-selector-prefix-base: $modifier-selector-base !default;
 $badge-theme-selector-prefix: "" !default;
 
 // Badge state theme defaults.
