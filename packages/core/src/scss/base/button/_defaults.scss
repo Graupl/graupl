@@ -14,6 +14,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $button-selector-base: $selector-base !default;
 $button-selector: "button" !default;
 $button-link-selector-base: $modifier-selector-base !default;
