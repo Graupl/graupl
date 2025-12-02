@@ -11,7 +11,7 @@
 // The following custom properties can be used to customize the focus state:
 // | Property                             | Description                                         | Default Value                                                                                           |
 // | ---                                  | ---                                                 | ---                                                                                                     |
-// | `--graupl-focus-width`               | The width of the focus outline.                     | `var(--graupl-border-width)`                                                                            |
+// | `--graupl-focus-width`               | The width of both the focus outline and box shadow. | `var(--graupl-border-width)`                                                                            |
 // | `--graupl-focus-outline-color`       | The color of the focus outline.                     | `var(--graupl-color)`                                                                                   |
 // | `--graupl-focus-outline-width`       | The width of the focus outline.                     | `var(--graupl-focus-width)`                                                                             |
 // | `--graupl-focus-outline-style`       | The style of the focus outline.                     | `dotted`                                                                                                |
@@ -20,7 +20,6 @@
 // | `--graupl-focus-box-shadow-color`    | The color of the focus box shadow.                  | `var(--graupl-background)`                                                                              |
 // | `--graupl-focus-border-color`        | The color applied to the border in the focus state. | `var(--graupl-background)`                                                                              |
 // | `--graupl-focus-box-shadow`          | The box shadow of the focus state.                  | `0 0 0 var(--graupl-focus-width) inset var(--graupl-focus-box-shadow-color)`                            |
-// | `--graupl-focus-box-shadow-bordered` | The box shadow used for bordered focus styles.      | `0 0 0 var(--graupl-focus-width) var(--graupl-focus-box-shadow-color)`                                  |
 //
 // The following sass variables can be used to customize the generation of the focus state:
 // | Variable               | Description                     | Default Value |

@@ -44,7 +44,3 @@ $focus-box-shadow: var(
   --#{root-defaults.$prefix}focus-box-shadow,
   0 0 0 #{$focus-width} inset #{$focus-box-shadow-color}
 );
-$focus-box-shadow-bordered: var(
-  --#{root-defaults.$prefix}focus-box-shadow-bordered,
-  0 0 0 #{$focus-width} #{$focus-box-shadow-color}
-);
