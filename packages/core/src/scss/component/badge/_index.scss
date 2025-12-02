@@ -37,18 +37,18 @@
 // | `--graupl-badge-border-radius`              | The border radius of the badge component (combines top-left, top-right, bottom-right, and bottom-left radii). | `var(--graupl-badge-border-top-left-radius) var(--graupl-badge-border-top-right-radius) var(--graupl-badge-border-bottom-right-radius) var(--graupl-badge-border-bottom-left-radius)` |
 //
 // The following sass variables can be used to customize the generation of the badge component:
-// | Variable                            | Description                                                                            | Default Value             |
-// | ---                                 | ---                                                                                    | ---                       |
-// | `$selector-base`                    | The selector base for the component.                                                   | `.`                       |
-// | `$modifier-selector-base`           | The selector base for component modifiers.                                             | `.`                       |
-// | `$themeable`                        | Flag to generate theme modifiers.                                                      | `true`.                   |
-// | `$generate-base-theme-map`          | A flag to generate the base theme maps for badge variants.                             | `true`                    |
-// | `$badge-selector-base`              | The selector base for the badge component.                                             | `$selector-base`          |
-// | `$badge-selector`                   | The badge component selector.                                                          | `badge`                   |
-// | `$badge-theme-selector-prefix-base` | The selector base for the badge theme component modifiers.                             | `$modifier-selector-base` |
-// | `$badge-theme-selector-prefix`      | The badge theme component modifier selector prefix.                                    | `""`                      |
-// | `$badge-theme-mappings`             | A map of properties and color shades used generate all badge variants.                 | `()`                      |
-// | `$badge-theme-map`                  | A map of all properties, colors, and color shades used to generate all badge variants. | `()`                      |
+// | Variable                       | Description                                                                            | Default Value             |
+// | ---                            | ---                                                                                    | ---                       |
+// | `$selector-base`               | The selector base for the component.                                                   | `.`                       |
+// | `$modifier-selector-base`      | The selector base for component modifiers.                                             | `.`                       |
+// | `$themeable`                   | Flag to generate theme modifiers.                                                      | `true`.                   |
+// | `$generate-base-theme-map`     | A flag to generate the base theme maps for badge variants.                             | `true`                    |
+// | `$badge-selector-base`         | The selector base for the badge component.                                             | `$selector-base`          |
+// | `$badge-selector`              | The badge component selector.                                                          | `badge`                   |
+// | `$badge-theme-selector-base`   | The selector base for the badge theme component modifiers.                             | `$modifier-selector-base` |
+// | `$badge-theme-selector-prefix` | The badge theme component modifier selector prefix.                                    | `""`                      |
+// | `$badge-theme-mappings`        | A map of properties and color shades used generate all badge variants.                 | `()`                      |
+// | `$badge-theme-map`             | A map of all properties, colors, and color shades used to generate all badge variants. | `()`                      |
 //
 // ## Using `$badge-theme-mappings`
 //
@@ -189,7 +189,7 @@
     @if root-defaults.$themeable-components and defaults.$themeable {
       @include theme.generate-modifiers(
         defaults.$badge-theme-map,
-        defaults.$badge-theme-selector-prefix-base,
+        defaults.$badge-theme-selector-base,
         defaults.$badge-theme-selector-prefix,
         "alert-"
       );

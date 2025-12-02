@@ -17,7 +17,7 @@ $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $themeable: true !default;
 $alert-selector-base: $selector-base !default;
 $alert-selector: "alert" !default;
-$alert-theme-selector-prefix-base: $modifier-selector-base !default;
+$alert-theme-selector-base: $modifier-selector-base !default;
 $alert-theme-selector-prefix: "" !default;
 $alert-body-selector-base: $selector-base !default;
 $alert-body-selector: "alert-body" !default;
