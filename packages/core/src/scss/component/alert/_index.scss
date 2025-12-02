@@ -50,6 +50,7 @@
 // | `$selector-base`                    | Selector base for the component.              | `"."`               |
 // | `$modifier-selector-base`           | Selector base for component modifiers.        | `"."`               |
 // | `$generate-base-theme-map`          | Flag to generate the base theme map.          | `true`              |
+// | `$themeable`                        | Flag to generate theme modifiers.             | `true`              |
 // | `$alert-selector-base`              | Selector base for the alert container.        | `$selector-base`    |
 // | `$alert-selector`                   | Selector for the alert container.             | `"alert"`           |
 // | `$alert-theme-selector-prefix-base` | Selector base for theme modifiers.            | `"."`               |
@@ -197,10 +198,9 @@
 @use "defaults";
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
-@use "../../theme/color/variables" as color;
 @use "../../mixins/layer" as *;
 @use "../../mixins/animation";
-@use "../../functions/theme";
+@use "../../mixins/theme";
 @use "../../base/button/mixins" as button-mixins;
 @use "sass:map";
 
@@ -300,16 +300,13 @@
     background-color: $alert-background;
     color: $alert-color;
 
-    @each $color, $map in defaults.$alert-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary
-      &#{defaults.$alert-theme-selector-prefix-base}#{defaults.$alert-theme-selector-prefix}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}alert-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$alert-theme-map,
+        defaults.$alert-theme-selector-prefix-base,
+        defaults.$alert-theme-selector-prefix,
+        "alert-"
+      );
     }
   }
 
