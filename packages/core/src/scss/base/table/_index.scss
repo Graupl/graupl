@@ -99,6 +99,7 @@
 // | `$selector-base`                       | The selector base for the component.                                                   | `""`                      |
 // | `$modifier-selector-base`              | The selector base for component modifiers.                                             | `"."`                     |
 // | `$generate-base-theme-map`             | A flag to generate the base theme maps for table variants.                             | `true`                    |
+// | `$themeable`                           | A flag that determines whether theme modifiers are generated.                          | `true`                    |
 // | `$table-selector-base`                 | The selector base for the table component.                                             | `$selector-base`          |
 // | `$table-selector`                      | The selector for the table component.                                                  | `"table"`                 |
 // | `$table-caption-selector-base`         | The selector base for the table caption component.                                     | `$selector-base`          |
@@ -254,8 +255,8 @@
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../defaults" as root-defaults;
-@use "../../functions/theme";
-@use "sass:map";
+@use "../../mixins/state";
+@use "../../mixins/theme";
 
 @include layer(base) {
   // table
@@ -330,18 +331,22 @@
 @include layer(theme) {
   // table
   #{defaults.$table-selector-base}#{defaults.$table-selector} {
-    @each $color, $map in defaults.$table-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary,
-      // e.g. .primary, .secondary, .tertiary
-      &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color},
-      #{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$table-theme-map,
+        defaults.$table-theme-prefix-selector-base,
+        defaults.$table-theme-prefix-selector,
+        "table-"
+      );
+
+      // Apply theme modifiers when used without the parent reference.
+      @include theme.generate-modifiers(
+        defaults.$table-theme-map,
+        defaults.$table-theme-prefix-selector-base,
+        defaults.$table-theme-prefix-selector,
+        "table-",
+        ""
+      );
     }
 
     // th

@@ -27,15 +27,18 @@
 ///   The selector prefix for the theme modifer.
 /// @param {string} $scope
 ///   The scope of the custom properties.
+/// @param {string} $base
+///   The base selector to append the theme modifier to.
 @mixin generate-modifiers(
   $theme-map,
   $selector-base,
   $selector-prefix,
-  $scope: ""
+  $scope: "",
+  $base: "&"
 ) {
   @each $color, $map in $theme-map {
     // e.g. &.primary, &.secondary, &.tertiary
-    &#{$selector-base}#{$selector-prefix}#{$color} {
+    #{$base}#{$selector-base}#{$selector-prefix}#{$color} {
       @each $prop, $value in $map {
         --#{root-defaults.$prefix}#{$scope}#{$prop}: #{theme.get(
             map.get($value, color),
