@@ -24,7 +24,10 @@ $table-caption-padding-y: var(
   --#{root-defaults.$prefix}table-caption-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-caption-padding: $table-caption-padding-y $table-caption-padding-x;
+$table-caption-padding: var(
+  --#{root-defaults.$prefix}table-caption-padding,
+  #{$table-caption-padding-y} #{$table-caption-padding-x}
+);
 
 // Table header properties.
 $table-header-font-weight: var(
@@ -39,7 +42,10 @@ $table-header-padding-y: var(
   --#{root-defaults.$prefix}table-header-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-header-padding: $table-header-padding-y $table-header-padding-x;
+$table-header-padding: var(
+  --#{root-defaults.$prefix}table-header-padding,
+  #{$table-header-padding-y} #{$table-header-padding-x}
+);
 $table-header-background: var(
   --#{root-defaults.$prefix}table-header-background,
   #{color.$background}
@@ -58,7 +64,10 @@ $table-cell-padding-y: var(
   --#{root-defaults.$prefix}table-cell-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
+$table-cell-padding: var(
+  --#{root-defaults.$prefix}table-cell-padding,
+  #{$table-cell-padding-y} #{$table-cell-padding-x}
+);
 $table-cell-background: var(
   --#{root-defaults.$prefix}table-cell-background,
   #{color.$background}
