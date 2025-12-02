@@ -152,6 +152,14 @@ $accordion-item-toggle-disabled-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-disabled-transform,
   #{defaults.$accordion-item-toggle-disabled-transform}
 );
+$accordion-item-toggle-transform-states: (
+  _default: $accordion-item-toggle-transform,
+  visited: $accordion-item-toggle-visited-transform,
+  focus: $accordion-item-toggle-focus-transform,
+  hover: $accordion-item-toggle-hover-transform,
+  active: $accordion-item-toggle-active-transform,
+  disabled: $accordion-item-toggle-disabled-transform,
+);
 $accordion-item-toggle-transition: var(
   --#{root-defaults.$prefix}accordion-item-toggle-transition,
   background #{map.get(root-variables.$transition-durations, fast)}
