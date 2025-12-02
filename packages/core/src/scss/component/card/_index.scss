@@ -50,42 +50,145 @@
 // | `--graupl-card-title-line-height`         | Line height of the card title.                         | `var(--graupl-line-height-h4)`                                                                                                                                |
 //
 // The following sass variables can be used to customize the generation of the card component:
-// | Variable                               | Description                                   | Default Value    |
-// | ---                                    | ---                                           | ---              |
-// | `$selector-base`                       | Selector base for the component.              | `"."`            |
-// | `$modifier-selector-base`              | Selector base for component modifiers.        | `"."`            |
-// | `$card-selector-base`                  | Selector base for the card container.         | `$selector-base` |
-// | `$card-selector`                       | Selector for the card container.              | `"card"`         |
-// | `$card-image-selector-base`            | Selector base for the image wrapper.          | `$selector-base` |
-// | `$card-image-selector`                 | Selector for the image wrapper.               | `"card-image"`   |
-// | `$card-content-selector-base`          | Selector base for the content wrapper.        | `$selector-base` |
-// | `$card-content-selector`               | Selector for the content wrapper.             | `"card-content"` |
-// | `$card-body-selector-base`             | Selector base for the body region.            | `$selector-base` |
-// | `$card-body-selector`                  | Selector for the body region.                 | `"card-body"`    |
-// | `$card-header-selector-base`           | Selector base for the header region.          | `$selector-base` |
-// | `$card-header-selector`                | Selector for the header region.               | `"card-header"`  |
-// | `$card-footer-selector-base`           | Selector base for the footer region.          | `$selector-base` |
-// | `$card-footer-selector`                | Selector for the footer region.               | `"card-footer"`  |
-// | `$card-title-selector-base`            | Selector base for the title element.          | `$selector-base` |
-// | `$card-title-selector`                 | Selector for the title element.               | `"card-title"`   |
-// | `$horizontal-card-selector-base`       | Selector base for horizontal layout modifier. | `"."`            |
-// | `$horizontal-card-selector`            | Selector for horizontal layout modifier.      | `"horizontal"`   |
-// | `$horizontal-card-left-selector-base`  | Selector base for left modifier.              | `"."`            |
-// | `$horizontal-card-left-selector`       | Selector for left modifier.                   | `"left"`         |
-// | `$horizontal-card-right-selector-base` | Selector base for right modifier.             | `"."`            |
-// | `$horizontal-card-right-selector`      | Selector for right modifier.                  | `"right"`        |
-// | `$vertical-card-top-selector-base`     | Selector base for top modifier.               | `"."`            |
-// | `$vertical-card-top-selector`          | Selector for top modifier.                    | `"top"`          |
-// | `$vertical-card-bottom-selector-base`  | Selector base for bottom modifier.            | `"."`            |
-// | `$vertical-card-bottom-selector`       | Selector for bottom modifier.                 | `"bottom"`       |
-// | `$inverse-card-selector-base`          | Selector base for inverse layout modifier.    | `"."`            |
-// | `$inverse-card-selector`               | Selector for inverse layout modifier.         | `"inverse"`      |
-// | `$card-transform`                      | Base transform for the card.                  | `none`           |
-// | `$card-hover-transform`                | Hover transform for the card.                 | `none`           |
-// | `$card-content-ratio`                  | Grid ratio for content rows.                  | `1fr`            |
-// | `$card-image-ratio`                    | Grid ratio for image rows.                    | `auto`           |
-// | `$horizontal-card-content-ratio`       | Grid ratio for content in horizontal layout.  | `3fr`            |
-// | `$horizontal-card-image-ratio`         | Grid ratio for images in horizontal layout.   | `2fr`            |
+// | Variable                               | Description                                                                           | Default Value    |
+// | ---                                    | ---                                                                                   | ---              |
+// | `$selector-base`                       | Selector base for the component.                                                      | `"."`            |
+// | `$modifier-selector-base`              | Selector base for component modifiers.                                                | `"."`            |
+// | `$generate-base-theme-map`             | A flag to generate the base theme maps for accordion variants.                        | `true`           |
+// | `$themeable`                           | Flag to generate theme modifiers.                                                     | `false`          |
+// | `$card-selector-base`                  | Selector base for the card container.                                                 | `$selector-base` |
+// | `$card-selector`                       | Selector for the card container.                                                      | `"card"`         |
+// | `$card-image-selector-base`            | Selector base for the image wrapper.                                                  | `$selector-base` |
+// | `$card-image-selector`                 | Selector for the image wrapper.                                                       | `"card-image"`   |
+// | `$card-content-selector-base`          | Selector base for the content wrapper.                                                | `$selector-base` |
+// | `$card-content-selector`               | Selector for the content wrapper.                                                     | `"card-content"` |
+// | `$card-body-selector-base`             | Selector base for the body region.                                                    | `$selector-base` |
+// | `$card-body-selector`                  | Selector for the body region.                                                         | `"card-body"`    |
+// | `$card-header-selector-base`           | Selector base for the header region.                                                  | `$selector-base` |
+// | `$card-header-selector`                | Selector for the header region.                                                       | `"card-header"`  |
+// | `$card-footer-selector-base`           | Selector base for the footer region.                                                  | `$selector-base` |
+// | `$card-footer-selector`                | Selector for the footer region.                                                       | `"card-footer"`  |
+// | `$card-title-selector-base`            | Selector base for the title element.                                                  | `$selector-base` |
+// | `$card-title-selector`                 | Selector for the title element.                                                       | `"card-title"`   |
+// | `$horizontal-card-selector-base`       | Selector base for horizontal layout modifier.                                         | `"."`            |
+// | `$horizontal-card-selector`            | Selector for horizontal layout modifier.                                              | `"horizontal"`   |
+// | `$horizontal-card-left-selector-base`  | Selector base for left modifier.                                                      | `"."`            |
+// | `$horizontal-card-left-selector`       | Selector for left modifier.                                                           | `"left"`         |
+// | `$horizontal-card-right-selector-base` | Selector base for right modifier.                                                     | `"."`            |
+// | `$horizontal-card-right-selector`      | Selector for right modifier.                                                          | `"right"`        |
+// | `$vertical-card-top-selector-base`     | Selector base for top modifier.                                                       | `"."`            |
+// | `$vertical-card-top-selector`          | Selector for top modifier.                                                            | `"top"`          |
+// | `$vertical-card-bottom-selector-base`  | Selector base for bottom modifier.                                                    | `"."`            |
+// | `$vertical-card-bottom-selector`       | Selector for bottom modifier.                                                         | `"bottom"`       |
+// | `$inverse-card-selector-base`          | Selector base for inverse layout modifier.                                            | `"."`            |
+// | `$inverse-card-selector`               | Selector for inverse layout modifier.                                                 | `"inverse"`      |
+// | `$card-transform`                      | Base transform for the card.                                                          | `none`           |
+// | `$card-hover-transform`                | Hover transform for the card.                                                         | `none`           |
+// | `$card-content-ratio`                  | Grid ratio for content rows.                                                          | `1fr`            |
+// | `$card-image-ratio`                    | Grid ratio for image rows.                                                            | `auto`           |
+// | `$horizontal-card-content-ratio`       | Grid ratio for content in horizontal layout.                                          | `3fr`            |
+// | `$horizontal-card-image-ratio`         | Grid ratio for images in horizontal layout.                                           | `2fr`            |
+// | `$card-theme-mappings`                 | A map of properties and color shades used generate all card variants.                 | `()`             |
+// | `$card-theme-map`                      | A map of all properties, colors, and color shades used to generate all card variants. | `()`             |
+//
+// ## Using `$card-theme-mappings`
+//
+// `$card-theme-mappings` is a 1-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $card-theme-mappings: (
+//   border-color: 700,
+// )
+// ```
+//
+// This directly[1] maps to all card variants, telling them what shade to use for said property.
+// All card variants will use the following based on the example above:
+// - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize _all_ cards variants in the same way.
+//
+// For example, if you use the following map:
+// ```scss
+// $card-theme-mappings: (
+//   border-color: 500,
+// )
+// ```
+//
+// All card variants will use the following:
+// - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--primary--500`,
+// - Secondary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--500`, and
+// - Tertiary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--tertiary--500`.
+//
+// [1] `$card-theme-mappings` gets parsed into a larger, more explicit map: `$card-theme-map`.
+//
+// Using `$card-theme-map`
+//
+// `$card-theme-map` is a multi-level map of properties, colors, and shade values.
+//
+// e.g.
+// ```scss
+// $card-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: primary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: tertiary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// This directly maps to all card variants, telling them what shade to use for said property.
+// The card variants will use the following based on the example above:
+// - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize card variants individually.
+//
+// For example, if you use the following map:
+//
+// ```scss
+// $card-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// The card variants will use the following:
+// - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`,
+// - Secondary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`.
 //
 // @example
 // <div class="card">
@@ -93,7 +196,7 @@
 //   <div class="card-content">
 //     <div class="card-header"><h3 class="card-title">Card Title</h3></div>
 //     <div class="card-body"><p>This is some text that describes the card.</p></div>
-//     <div class="card-footer"><a class="button stretched" href="#">Card Action</a></div>
+//     <div class="card-footer"><a class="card stretched" href="#">Card Action</a></div>
 //   </div>
 // </div>
 //
@@ -103,7 +206,7 @@
 //   <div class="card-content">
 //     <div class="card-header"><h3 class="card-title">Card Title</h3></div>
 //     <div class="card-body"><p>This is some text that describes the card.</p></div>
-//     <div class="card-footer"><a class="button stretched" href="#">Card Action</a></div>
+//     <div class="card-footer"><a class="card stretched" href="#">Card Action</a></div>
 //   </div>
 // </div>
 
@@ -111,6 +214,7 @@
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/theme";
 @use "../../mixins/animation";
 @use "../../mixins/container";
 
@@ -291,9 +395,9 @@
 
         // &, &.left, &.top
         &,
-        &#{defaults.$horizontal-card-left-selector},
-        &#{defaults.$horizontal-card-right-selector},
-        &#{defaults.$vertical-card-top-selector} {
+        &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
+        &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
+        &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector} {
           grid-template-rows:
             [image-start]
             $card-image-ratio
@@ -303,8 +407,8 @@
         }
 
         // &.bottom, &.inverse
-        &#{defaults.$vertical-card-bottom-selector},
-        &#{defaults.$inverse-card-selector} {
+        &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
+        &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
           grid-template-rows:
             [content-start]
             $card-content-ratio
@@ -318,7 +422,7 @@
 
   @include animation.off {
     // .card
-    #{defaults.$card-selector} {
+    #{#{defaults.$card-selector-base}}#{defaults.$card-selector} {
       --#{root-defaults.$prefix}card-transition: #{$card-transition-reduced-motion};
     }
   }
@@ -326,14 +430,26 @@
 
 @include layer(theme) {
   // .card
-  #{defaults.$card-selector} {
+  #{#{defaults.$card-selector-base}}#{defaults.$card-selector} {
+    --#{root-defaults.$prefix}color: #{$card-color};
+    --#{root-defaults.$prefix}background: #{$card-background};
+
     border-color: $card-border-color;
     background: $card-background;
     color: $card-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$card-theme-map,
+        defaults.$card-theme-selector-base,
+        defaults.$card-theme-selector-prefix,
+        "card-"
+      );
+    }
   }
 
   // .card-title
-  #{defaults.$card-title-selector} {
+  #{defaults.$card-title-selector-base}#{defaults.$card-title-selector} {
     color: $card-title-color;
     font-size: $card-title-font-size;
     font-weight: $card-title-font-weight;

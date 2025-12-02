@@ -146,7 +146,7 @@
 // | `$selector-base`                                | The selector base for the component.                                                  | `.`                                  |
 // | `$modifier-selector-base`                       | The selector base for component modifiers.                                            | `.`                                  |
 // | `$generate-base-theme-map`                      | A flag to generate the base theme maps for tabs variants.                             | `true`                               |
-// | `$themeable`                                    | A flag that determines whether theme modifiers are generated.                         | `true`                               |
+// | `$themeable`                                    | A flag that determines whether theme modifiers are generated.                         | `false`                              |
 // | `$tabs-selector-base`                           | The selector base for the tabs component.                                             | `$selector-base`                     |
 // | `$tabs-selector`                                | The tabs component selector.                                                          | `"tabs"`                             |
 // | `$tabs-tab-list-selector-base`                  | The selector base for the tabs list component.                                        | `$selector-base`                     |

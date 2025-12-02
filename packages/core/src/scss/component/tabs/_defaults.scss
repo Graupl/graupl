@@ -14,7 +14,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$themeable: true !default;
+$themeable: false !default;
 $tabs-selector-base: $selector-base !default;
 $tabs-selector: "tabs" !default;
 $tabs-tab-list-selector-base: $selector-base !default;

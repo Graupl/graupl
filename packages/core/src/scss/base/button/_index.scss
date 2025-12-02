@@ -68,6 +68,7 @@
 // | `$selector-base`                | The selector base for the component.                                                    | `.`                         |
 // | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `.`                         |
 // | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                      |
+// | `$themeable`                    | A flag that determines whether theme modifiers are generated.                           | `true`                      |
 // | `$button-selector-base`         | The selector base for the button component.                                             | `$selector-base`            |
 // | `$button-selector`              | The button component selector.                                                          | `button`                    |
 // | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `$modifier-selector-base`   |

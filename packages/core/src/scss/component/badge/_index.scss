@@ -41,6 +41,7 @@
 // | ---                            | ---                                                                                    | ---                       |
 // | `$selector-base`               | The selector base for the component.                                                   | `.`                       |
 // | `$modifier-selector-base`      | The selector base for component modifiers.                                             | `.`                       |
+// | `$themeable`                   | Flag to generate theme modifiers.                                                      | `true`.                   |
 // | `$generate-base-theme-map`     | A flag to generate the base theme maps for badge variants.                             | `true`                    |
 // | `$badge-selector-base`         | The selector base for the badge component.                                             | `$selector-base`          |
 // | `$badge-selector`              | The badge component selector.                                                          | `badge`                   |
@@ -158,7 +159,7 @@
 // <a class="badge tertiary" href="#">Tertiary Badge</a>
 
 @use "../../defaults" as root-defaults;
-@use "../../functions/theme";
+@use "../../mixins/theme";
 @use "../../mixins/layer" as *;
 @use "defaults";
 @use "sass:map";
@@ -185,16 +186,13 @@
     background: $badge-background;
     color: $badge-color;
 
-    @each $color, $map in defaults.$badge-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary
-      &#{defaults.$badge-theme-selector-base}#{defaults.$badge-theme-selector-prefix}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}badge-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$badge-theme-map,
+        defaults.$badge-theme-selector-base,
+        defaults.$badge-theme-selector-prefix,
+        "alert-"
+      );
     }
   }
 }

@@ -14,6 +14,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $button-selector-base: $selector-base !default;
 $button-selector: "button" !default;
 $button-link-selector-base: $modifier-selector-base !default;
@@ -31,8 +32,7 @@ $button-disabled-transform: $button-initial-transform !default;
 // themed button bases.
 //
 // e.g.
-// Primary buttons will use primary--900 as the text colour, primary--100 as the background
-// and primary--900 as the border colour.
+// Primary buttons will use primary--900 as the text colour and primary--700 as the border colour.
 //
 // Secondary/tertiary buttons will use the same shade for their respective colours.
 $-button-theme-mappings: (

@@ -60,35 +60,156 @@
 // | `--graupl-accordion-item-content-transition-reduced-motion` | Transition for content when reduced motion is enabled.             | `opacity var(--graupl-transition-duration-slow) var(--graupl-transition-timing-function)`                                                                                                                                                                                      |
 // | `--graupl-accordion-item-content-transform`                 | Base transform for accordion content.                              | `translateY(-100%)`                                                                                                                                                                                                                                                            |
 // | `--graupl-accordion-item-content-open-transform`            | Transform when accordion content is open.                          | `translateY(0)`                                                                                                                                                                                                                                                                |
+// | `--graupl-accordion-item-toggle-color`                      | Text colour of the accordion item toggle.                          | `var(--graupl-accordion-color)`                                                                                                                                                                                                                                                |
+// | `--graupl-accordion-item-toggle-visited-color`              | Text colour of a visited accordion item toggle.                    | `var(--graupl-accordion-item-toggle-color)`                                                                                                                                                                                                                                    |
+// | `--graupl-accordion-item-toggle-focus-color`                | Text colour of a focused accordion item toggle.                    | `var(--graupl-accordion-item-toggle-color)`                                                                                                                                                                                                                                    |
+// | `--graupl-accordion-item-toggle-hover-color`                | Text colour of a hovered accordion item toggle.                    | `var(--graupl-accordion-background)`                                                                                                                                                                                                                                           |
+// | `--graupl-accordion-item-toggle-active-color`               | Text colour of an active accordion item toggle.                    | `var(--graupl-accordion-item-toggle-hover-color)`                                                                                                                                                                                                                              |
+// | `--graupl-accordion-item-toggle-disabled-color`             | Text colour of a disabled accordion item toggle.                   | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                                                                     |
+// | `--graupl-accordion-item-toggle-background`                 | Background colour of the accordion item toggle.                    | `var(--graupl-accordion-background)`                                                                                                                                                                                                                                           |
+// | `--graupl-accordion-item-toggle-visited-background`         | Background colour of a visited accordion item toggle.              | `var(--graupl-accordion-item-toggle-background)`                                                                                                                                                                                                                               |
+// | `--graupl-accordion-item-toggle-focus-background`           | Background colour of a focused accordion item toggle.              | `var(--graupl-accordion-item-toggle-background)`                                                                                                                                                                                                                               |
+// | `--graupl-accordion-item-toggle-hover-background`           | Background colour of a hovered accordion item toggle.              | `var(--graupl-accordion-color)`                                                                                                                                                                                                                                                |
+// | `--graupl-accordion-item-toggle-active-background`          | Background colour of an active accordion item toggle.              | `var(--graupl-accordion-item-toggle-hover-background)`                                                                                                                                                                                                                         |
+// | `--graupl-accordion-item-toggle-disabled-background`        | Background colour of a disabled accordion item toggle.             | `var(--graupl-accordion-background)`                                                                                                                                                                                                                                           |
+// | `--graupl-accordion-item-toggle-border-color`               | Border colour of the accordion item toggle.                        | `var(--graupl-accordion-item-border-color)`                                                                                                                                                                                                                                    |
+// | `--graupl-accordion-item-toggle-visited-border-color`       | Border colour of a visited accordion item toggle.                  | `var(--graupl-accordion-item-toggle-border-color)`                                                                                                                                                                                                                             |
+// | `--graupl-accordion-item-toggle-focus-border-color`         | Border colour of a focused accordion item toggle.                  | `var(--graupl-accordion-item-toggle-border-color)`                                                                                                                                                                                                                             |
+// | `--graupl-accordion-item-toggle-hover-border-color`         | Border colour of a hovered accordion item toggle.                  | `var(--graupl-accordion-item-border-color)`                                                                                                                                                                                                                                    |
+// | `--graupl-accordion-item-toggle-active-border-color`        | Border colour of an active accordion item toggle.                  | `var(--graupl-accordion-item-toggle-hover-border-color)`                                                                                                                                                                                                                       |
+// | `--graupl-accordion-item-toggle-disabled-border-color`      | Border colour of a disabled accordion item toggle.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                                                                     |
 //
 // The following sass variables can be used to customize the generation of the accordion component:
-// | Variable                                   | Description                                          | Default Value              |
-// | ---                                        | ---                                                  | ---                        |
-// | `$selector-base`                           | Selector base for the component.                     | `"."`                      |
-// | `$modifier-selector-base`                  | Selector base for component modifiers.               | `"."`                      |
-// | `$accordion-selector-base`                 | Selector base for the accordion container.           | `$selector-base`           |
-// | `$accordion-selector`                      | Selector for the accordion container.                | `"accordion"`              |
-// | `$accordion-item-selector-base`            | Selector base for items.                             | `$selector-base`           |
-// | `$accordion-item-selector`                 | Selector for items.                                  | `"accordion-item"`         |
-// | `$accordion-item-header-selector-base`     | Selector base for item headers.                      | `$selector-base`           |
-// | `$accordion-item-header-selector`          | Selector for item headers.                           | `"accordion-item-header"`  |
-// | `$accordion-item-title-selector-base`      | Selector base for item titles.                       | `$selector-base`           |
-// | `$accordion-item-title-selector`           | Selector for item titles.                            | `"accordion-item-title"`   |
-// | `$accordion-item-toggle-selector-base`     | Selector base for item toggles.                      | `$selector-base`           |
-// | `$accordion-item-toggle-selector`          | Selector for item toggles.                           | `"accordion-item-toggle"`  |
-// | `$accordion-item-content-selector-base`    | Selector base for item content.                      | `$selector-base`           |
-// | `$accordion-item-content-selector`         | Selector for item content.                           | `"accordion-item-content"` |
-// | `$accordion-item-body-selector-base`       | Selector base for item bodies.                       | `$selector-base`           |
-// | `$accordion-item-body-selector`            | Selector for item bodies.                            | `"accordion-item-body"`    |
-// | `$accordion-item-footer-selector-base`     | Selector base for item footers.                      | `$selector-base`           |
-// | `$accordion-item-footer-selector`          | Selector for item footers.                           | `"accordion-item-footer"`  |
-// | `$accordion-item-open-selector-base`       | Selector base applied to the open modifier.          | `"."`                      |
-// | `$accordion-item-open-selector`            | Selector applied to the open modifier.               | `"show"`                   |
-// | `$accordion-item-close-selector-base`      | Selector base applied to the closed modifier.        | `"."`                      |
-// | `$accordion-item-close-selector`           | Selector applied to the closed modifier.             | `"hide"`                   |
-// | `$accordion-item-transition-selector-base` | Selector base applied to the transitioning modifier. | `"."`                      |
-// | `$accordion-item-transition-selector`      | Selector applied to the transitioning modifier.      | `"transitioning"`          |
-// | `$accordion-item-toggle-pseudo-selector`   | Pseudo-element used for the toggle indicator.        | `"after"`                  |
+// | Variable                                   | Description                                                                                | Default Value              |
+// | ---                                        | ---                                                                                        | ---                        |
+// | `$selector-base`                           | Selector base for the component.                                                           | `"."`                      |
+// | `$modifier-selector-base`                  | Selector base for component modifiers.                                                     | `"."`                      |
+// | `$generate-base-theme-map`                 | A flag to generate the base theme maps for accordion variants.                             | `true`                     |
+// | `$themeable`                               | Flag to generate theme modifiers.                                                          | `false`                    |
+// | `$accordion-selector-base`                 | Selector base for the accordion container.                                                 | `$selector-base`           |
+// | `$accordion-selector`                      | Selector for the accordion container.                                                      | `"accordion"`              |
+// | `$accordion-item-selector-base`            | Selector base for items.                                                                   | `$selector-base`           |
+// | `$accordion-item-selector`                 | Selector for items.                                                                        | `"accordion-item"`         |
+// | `$accordion-item-header-selector-base`     | Selector base for item headers.                                                            | `$selector-base`           |
+// | `$accordion-item-header-selector`          | Selector for item headers.                                                                 | `"accordion-item-header"`  |
+// | `$accordion-item-title-selector-base`      | Selector base for item titles.                                                             | `$selector-base`           |
+// | `$accordion-item-title-selector`           | Selector for item titles.                                                                  | `"accordion-item-title"`   |
+// | `$accordion-item-toggle-selector-base`     | Selector base for item toggles.                                                            | `$selector-base`           |
+// | `$accordion-item-toggle-selector`          | Selector for item toggles.                                                                 | `"accordion-item-toggle"`  |
+// | `$accordion-item-content-selector-base`    | Selector base for item content.                                                            | `$selector-base`           |
+// | `$accordion-item-content-selector`         | Selector for item content.                                                                 | `"accordion-item-content"` |
+// | `$accordion-item-body-selector-base`       | Selector base for item bodies.                                                             | `$selector-base`           |
+// | `$accordion-item-body-selector`            | Selector for item bodies.                                                                  | `"accordion-item-body"`    |
+// | `$accordion-item-footer-selector-base`     | Selector base for item footers.                                                            | `$selector-base`           |
+// | `$accordion-item-footer-selector`          | Selector for item footers.                                                                 | `"accordion-item-footer"`  |
+// | `$accordion-item-open-selector-base`       | Selector base applied to the open modifier.                                                | `"."`                      |
+// | `$accordion-item-open-selector`            | Selector applied to the open modifier.                                                     | `"show"`                   |
+// | `$accordion-item-close-selector-base`      | Selector base applied to the closed modifier.                                              | `"."`                      |
+// | `$accordion-item-close-selector`           | Selector applied to the closed modifier.                                                   | `"hide"`                   |
+// | `$accordion-item-transition-selector-base` | Selector base applied to the transitioning modifier.                                       | `"."`                      |
+// | `$accordion-item-transition-selector`      | Selector applied to the transitioning modifier.                                            | `"transitioning"`          |
+// | `$accordion-item-toggle-pseudo-selector`   | Pseudo-element used for the toggle indicator.                                              | `"after"`                  |
+// | `$accordion-theme-mappings`                | A map of properties and color shades used generate all accordion variants.                 | `()`                       |
+// | `$accordion-theme-map`                     | A map of all properties, colors, and color shades used to generate all accordion variants. | `()`                       |
+//
+// ## Using `$accordion-theme-mappings`
+//
+// `$accordion-theme-mappings` is a 1-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $accordion-theme-mappings: (
+//   border-color: 700,
+// )
+// ```
+//
+// This directly[1] maps to all accordion variants, telling them what shade to use for said property.
+// All accordion variants will use the following based on the example above:
+// - Primary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize _all_ accordions variants in the same way.
+//
+// For example, if you use the following map:
+// ```scss
+// $accordion-theme-mappings: (
+//   border-color: 500,
+// )
+// ```
+//
+// All accordion variants will use the following:
+// - Primary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--primary--500`,
+// - Secondary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--500`, and
+// - Tertiary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--tertiary--500`.
+//
+// [1] `$accordion-theme-mappings` gets parsed into a larger, more explicit map: `$accordion-theme-map`.
+//
+// Using `$accordion-theme-map`
+//
+// `$accordion-theme-map` is a multi-level map of properties, colors, and shade values.
+//
+// e.g.
+// ```scss
+// $accordion-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: primary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: tertiary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// This directly maps to all accordion variants, telling them what shade to use for said property.
+// The accordion variants will use the following based on the example above:
+// - Primary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize accordion variants individually.
+//
+// For example, if you use the following map:
+//
+// ```scss
+// $accordion-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// The accordion variants will use the following:
+// - Primary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--700`,
+// - Secondary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary accordions will have their `--graupl-accordion-border-color` property set to `--graupl-theme-active--secondary--700`.
 //
 // @example
 // <div class="accordion">
@@ -144,6 +265,8 @@
 @use "../../base/button/mixins" as button-mixins;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/state";
+@use "../../mixins/theme";
 @use "../../state/focus/variables" as focus;
 @use "sass:map";
 
@@ -211,35 +334,11 @@
     transform: $accordion-item-toggle-transform;
     transition: $accordion-item-toggle-transition;
 
-    @each $selector in map.get(root-defaults.$state-selectors, visited) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-visited-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, focus) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-focus-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, hover) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-hover-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, active) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-active-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-item-toggle-transform: #{$accordion-item-toggle-disabled-transform};
-      }
-    }
+    @include state.generate-modifiers(
+      (
+        transform: $accordion-item-toggle-transform-states,
+      )
+    );
 
     // ::after
     &::#{defaults.$accordion-item-toggle-pseudo-selector} {
@@ -328,8 +427,36 @@
 @include layer(theme) {
   // .accordion
   #{defaults.$accordion-selector-base}#{defaults.$accordion-selector} {
+    --#{root-defaults.$prefix}button-color: #{$accordion-item-toggle-color};
+    --#{root-defaults.$prefix}button-visited-color: #{$accordion-item-toggle-visited-color};
+    --#{root-defaults.$prefix}button-focus-color: #{$accordion-item-toggle-focus-color};
+    --#{root-defaults.$prefix}button-hover-color: #{$accordion-item-toggle-hover-color};
+    --#{root-defaults.$prefix}button-active-color: #{$accordion-item-toggle-active-color};
+    --#{root-defaults.$prefix}button-disabled-color: #{$accordion-item-toggle-disabled-color};
+    --#{root-defaults.$prefix}button-border-color: #{$accordion-item-toggle-border-color};
+    --#{root-defaults.$prefix}button-visited-border-color: #{$accordion-item-toggle-visited-border-color};
+    --#{root-defaults.$prefix}button-focus-border-color: #{$accordion-item-toggle-focus-border-color};
+    --#{root-defaults.$prefix}button-hover-border-color: #{$accordion-item-toggle-hover-border-color};
+    --#{root-defaults.$prefix}button-active-border-color: #{$accordion-item-toggle-active-border-color};
+    --#{root-defaults.$prefix}button-disabled-border-color: #{$accordion-item-toggle-disabled-border-color};
+    --#{root-defaults.$prefix}button-background: #{$accordion-item-toggle-background};
+    --#{root-defaults.$prefix}button-visited-background: #{$accordion-item-toggle-visited-background};
+    --#{root-defaults.$prefix}button-focus-background: #{$accordion-item-toggle-focus-background};
+    --#{root-defaults.$prefix}button-hover-background: #{$accordion-item-toggle-hover-background};
+    --#{root-defaults.$prefix}button-active-background: #{$accordion-item-toggle-active-background};
+    --#{root-defaults.$prefix}button-disabled-background: #{$accordion-item-toggle-disabled-background};
+
     background: $accordion-background;
     color: $accordion-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$accordion-theme-map,
+        defaults.$accordion-theme-selector-base,
+        defaults.$accordion-theme-selector-prefix,
+        "accordion-"
+      );
+    }
   }
 
   // .accordion-item

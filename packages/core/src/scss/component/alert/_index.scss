@@ -45,31 +45,32 @@
 // | `--graupl-alert-link-disabled-color`       | Disabled link colour inside alerts.        | `unset`                                                                                                                                                                              |
 //
 // The following sass variables can be used to customize the generation of the alert component:
-// | Variable                            | Description                                   | Default Value       |
-// | ---                                 | ---                                           | ---                 |
-// | `$selector-base`                    | Selector base for the component.              | `"."`               |
-// | `$modifier-selector-base`           | Selector base for component modifiers.        | `"."`               |
-// | `$generate-base-theme-map`          | Flag to generate the base theme map.          | `true`              |
-// | `$alert-selector-base`              | Selector base for the alert container.        | `$selector-base`    |
-// | `$alert-selector`                   | Selector for the alert container.             | `"alert"`           |
-// | `$alert-theme-selector-prefix-base` | Selector base for theme modifiers.            | `"."`               |
-// | `$alert-theme-selector-prefix`      | Selector prefix for theme modifiers.          | `""`                |
-// | `$alert-body-selector-base`         | Selector base for the alert body.             | `$selector-base`    |
-// | `$alert-body-selector`              | Selector for the alert body.                  | `"alert-body"`      |
-// | `$alert-header-selector-base`       | Selector base for the alert header.           | `$selector-base`    |
-// | `$alert-header-selector`            | Selector for the alert header.                | `"alert-header"`    |
-// | `$alert-footer-selector-base`       | Selector base for the alert footer.           | `$selector-base`    |
-// | `$alert-footer-selector`            | Selector for the alert footer.                | `"alert-footer"`    |
-// | `$alert-title-selector-base`        | Selector base for the alert title.            | `$selector-base`    |
-// | `$alert-title-selector`             | Selector for the alert title.                 | `"alert-title"`     |
-// | `$alert-dismisser-selector-base`    | Selector base for the alert dismisser.        | `$selector-base`    |
-// | `$alert-dismisser-selector`         | Selector for the alert dismisser.             | `"alert-dismisser"` |
-// | `$alert-hidden-selector-base`       | Selector base for the hidden modifier.        | `"."`               |
-// | `$alert-hidden-selector`            | Selector applied when hidden.                 | `"hide"`            |
-// | `$alert-shown-selector-base`        | Selector base for the shown modifier.         | `"."`               |
-// | `$alert-shown-selector`             | Selector applied when shown.                  | `"show"`            |
-// | `$alert-transition-selector-base`   | Selector base for the transitioning modifier. | `"."`               |
-// | `$alert-transition-selector`        | Selector applied while transitioning.         | `"transitioning"`   |
+// | Variable                          | Description                                   | Default Value       |
+// | ---                               | ---                                           | ---                 |
+// | `$selector-base`                  | Selector base for the component.              | `"."`               |
+// | `$modifier-selector-base`         | Selector base for component modifiers.        | `"."`               |
+// | `$generate-base-theme-map`        | Flag to generate the base theme map.          | `true`              |
+// | `$themeable`                      | Flag to generate theme modifiers.             | `true`              |
+// | `$alert-selector-base`            | Selector base for the alert container.        | `$selector-base`    |
+// | `$alert-selector`                 | Selector for the alert container.             | `"alert"`           |
+// | `$alert-theme-selector-base`      | Selector base for theme modifiers.            | `"."`               |
+// | `$alert-theme-selector-prefix`    | Selector prefix for theme modifiers.          | `""`                |
+// | `$alert-body-selector-base`       | Selector base for the alert body.             | `$selector-base`    |
+// | `$alert-body-selector`            | Selector for the alert body.                  | `"alert-body"`      |
+// | `$alert-header-selector-base`     | Selector base for the alert header.           | `$selector-base`    |
+// | `$alert-header-selector`          | Selector for the alert header.                | `"alert-header"`    |
+// | `$alert-footer-selector-base`     | Selector base for the alert footer.           | `$selector-base`    |
+// | `$alert-footer-selector`          | Selector for the alert footer.                | `"alert-footer"`    |
+// | `$alert-title-selector-base`      | Selector base for the alert title.            | `$selector-base`    |
+// | `$alert-title-selector`           | Selector for the alert title.                 | `"alert-title"`     |
+// | `$alert-dismisser-selector-base`  | Selector base for the alert dismisser.        | `$selector-base`    |
+// | `$alert-dismisser-selector`       | Selector for the alert dismisser.             | `"alert-dismisser"` |
+// | `$alert-hidden-selector-base`     | Selector base for the hidden modifier.        | `"."`               |
+// | `$alert-hidden-selector`          | Selector applied when hidden.                 | `"hide"`            |
+// | `$alert-shown-selector-base`      | Selector base for the shown modifier.         | `"."`               |
+// | `$alert-shown-selector`           | Selector applied when shown.                  | `"show"`            |
+// | `$alert-transition-selector-base` | Selector base for the transitioning modifier. | `"."`               |
+// | `$alert-transition-selector`      | Selector applied while transitioning.         | `"transitioning"`   |
 //
 // ## Using `$alert-theme-mappings`
 //
@@ -197,10 +198,9 @@
 @use "defaults";
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
-@use "../../theme/color/variables" as color;
 @use "../../mixins/layer" as *;
 @use "../../mixins/animation";
-@use "../../functions/theme";
+@use "../../mixins/theme";
 @use "../../base/button/mixins" as button-mixins;
 @use "sass:map";
 
@@ -300,16 +300,13 @@
     background-color: $alert-background;
     color: $alert-color;
 
-    @each $color, $map in defaults.$alert-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary
-      &#{defaults.$alert-theme-selector-prefix-base}#{defaults.$alert-theme-selector-prefix}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}alert-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$alert-theme-map,
+        defaults.$alert-theme-selector-base,
+        defaults.$alert-theme-selector-prefix,
+        "alert-"
+      );
     }
   }
 
