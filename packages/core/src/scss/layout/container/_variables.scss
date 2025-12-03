@@ -138,8 +138,8 @@ $container-sidebars-content-section-width: var(
     #{$container-sidebars-content-section-max-width}
   )
 );
-$container-sidebar-right-content-section-min-width: var(
-  --#{root-defaults.$prefix}container-sidebar-right-content-section-min-width,
+$container-sidebars-right-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-min-width,
   calc(
     100% - (#{$container-full-width-section-min-width} * 2) -
       (#{$container-feature-section-min-width} * 2) -
@@ -148,8 +148,8 @@ $container-sidebar-right-content-section-min-width: var(
       #{$container-sidebar-right-section-width}
   )
 );
-$container-sidebar-right-content-section-max-width: var(
-  --#{root-defaults.$prefix}container-sidebar-right-content-section-max-width,
+$container-sidebars-right-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-max-width,
   calc(
     #{$container-content-section-max-width} -
       #{$container-sidebar-right-section-width} +
@@ -159,12 +159,12 @@ $container-sidebar-right-content-section-max-width: var(
 $container-sidebars-right-content-section-width: var(
   --#{root-defaults.$prefix}container-sidebars-right-content-section-width,
   min(
-    $container-sidebar-right-content-section-min-width,
-    $container-sidebar-right-content-section-max-width
+    $container-sidebars-right-content-section-min-width,
+    $container-sidebars-right-content-section-max-width
   )
 );
-$container-sidebar-left-content-section-min-width: var(
-  --#{root-defaults.$prefix}container-sidebar-left-content-section-min-width,
+$container-sidebars-left-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-min-width,
   calc(
     100% - (#{$container-full-width-section-min-width} * 2) -
       (#{$container-feature-section-min-width} * 2) -
@@ -173,8 +173,8 @@ $container-sidebar-left-content-section-min-width: var(
       #{$container-sidebar-left-section-width}
   )
 );
-$container-sidebar-left-content-section-max-width: var(
-  --#{root-defaults.$prefix}container-sidebar-left-content-section-max-width,
+$container-sidebars-left-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-max-width,
   calc(
     #{$container-content-section-max-width} -
       #{$container-sidebar-left-section-width} +
@@ -184,8 +184,8 @@ $container-sidebar-left-content-section-max-width: var(
 $container-sidebars-left-content-section-width: var(
   --#{root-defaults.$prefix}container-sidebars-left-content-section-width,
   min(
-    $container-sidebar-left-content-section-min-width,
-    $container-sidebar-left-content-section-max-width
+    $container-sidebars-left-content-section-min-width,
+    $container-sidebars-left-content-section-max-width
   )
 );
 /* stylelint-enable  scss/operator-no-newline-after */
