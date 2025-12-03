@@ -64,13 +64,13 @@ $badge-border-color: var(
 // --graupl-badge-padding-x
 $badge-padding-x: var(
   --#{root-defaults.$prefix}badge-padding-x,
-  #{map.get(root-variables.$spacers, 5)}
+  #{map.get(root-variables.$spacers, 3)}
 );
 
 // --graupl-badge-padding-y
 $badge-padding-y: var(
   --#{root-defaults.$prefix}badge-padding-y,
-  #{map.get(root-variables.$spacers, 3)}
+  #{map.get(root-variables.$spacers, 2)}
 );
 
 // --graupl-badge-padding
