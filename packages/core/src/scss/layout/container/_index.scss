@@ -172,6 +172,7 @@
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
     container-type: inline-size;
+    overflow-wrap: break-word;
 
     // Container components should span the full width of their parent container
     // and inherit the grid columns.
