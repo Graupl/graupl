@@ -12,7 +12,7 @@
 /// @param {string} $theme-name
 ///   The name of the theme mode to apply the styles to.
 @mixin theme($theme-name) {
-  #{color-defaults.$theme-selector-prefix}#{$theme-name}#{color-defaults.$theme-selector-suffix} {
+  #{color-defaults.$theme-selector-base}#{color-defaults.$theme-selector-prefix}#{$theme-name}#{color-defaults.$theme-selector-suffix} {
     @content;
   }
 }

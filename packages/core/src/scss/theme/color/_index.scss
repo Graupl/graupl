@@ -137,17 +137,22 @@
 // | `--graupl-border-color`                 | Border colour token.                       | `var(--graupl-color)`                       |
 //
 // The following sass variables can be used to customize colour generation:
-// | Variable                 | Description                                        | Default Value        |
-// | ---                      | ---                                                | ---                  |
-// | `$generate-base-colors`  | Flag to generate base colour tokens.               | `true`               |
-// | `$generate-base-themes`  | Flag to generate base theme tokens.                | `true`               |
-// | `$theme-selector-prefix` | Prefix for theme selectors.                        | `"."`                |
-// | `$theme-selector-suffix` | Suffix for theme selectors.                        | `"-mode"`            |
-// | `$colors`                | Map of base colours and shades.                    | See `_defaults.scss` |
-// | `$themes`                | List of available themes.                          | `(light, dark)`      |
-// | `$default-theme`         | Theme used for the active tokens at `:root`.       | `light`              |
-// | `$theme-mappings`        | Shade remapping per theme.                         | See `_defaults.scss` |
-// | `$theme-map`             | Expanded map of theme → colour → shade references. | Auto-generated       |
+// | Variable                  | Description                                        | Default Value             |
+// | ---                       | ---                                                | ---                       |
+// | `$selector-base`          | The selector base for the component.               | `.`                       |
+// | `$modifier-selector-base` | The selector base for component modifiers.         | `.`                       |
+// | `$generate-base-colors`   | Flag to generate base colour tokens.               | `true`                    |
+// | `$generate-base-themes`   | Flag to generate base theme tokens.                | `true`                    |
+// | `$theme-selector-base`    | The selector base for the theme modifiers.         | `$modifier-selector-base` |
+// | `$theme-selector-prefix`  | Prefix for theme modifiers.                        | `"."`                     |
+// | `$theme-selector-suffix`  | Suffix for theme modifiers.                        | `"-mode"`                 |
+// | `$root-selector-base`     | The base selector for the root component.          | `":"`                     |
+// | `$root-selector`          | The selector for the root component.               | `"root"`                  |
+// | `$colors`                 | Map of base colours and shades.                    | See `_defaults.scss`      |
+// | `$themes`                 | List of available themes.                          | `(light, dark)`           |
+// | `$default-theme`          | Theme used for the active tokens at `:root`.       | `light`                   |
+// | `$theme-mappings`         | Shade remapping per theme.                         | See `_defaults.scss`      |
+// | `$theme-map`              | Expanded map of theme → colour → shade references. | Auto-generated            |
 //
 // @example
 // <div class="dark-mode">
@@ -168,7 +173,7 @@
 
 @include layer(theme) {
   // :root
-  :root {
+  #{defaults.$root-selector-base}#{defaults.$root-selector} {
     background: $root-background;
     color: $root-color;
 

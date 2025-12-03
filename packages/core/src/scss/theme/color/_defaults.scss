@@ -11,10 +11,15 @@
 @use "sass:list";
 @use "sass:meta";
 
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-colors: root-defaults.$generate-base-colors !default;
 $generate-base-themes: root-defaults.$generate-base-themes !default;
-$theme-selector-prefix: "." !default;
+$theme-selector-base: $modifier-selector-base !default;
+$theme-selector-prefix: "" !default;
 $theme-selector-suffix: "-mode" !default;
+$root-selector-base: ":" !default;
+$root-selector: "root" !default;
 
 // The site will have colours, defaulting to primary, secondary, and tertiary.
 // Each colour will have a shade mapping, defaulting to 100-900.

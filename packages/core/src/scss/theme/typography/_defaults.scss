@@ -10,6 +10,32 @@
 @use "sass:map";
 
 // font properties.
+$selector-base: root-defaults.$element-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$paragraph-selector-base: $selector-base !default;
+$paragraph-selector: "p";
+$small-selector-base: $selector-base !default;
+$small-selector: "small";
+$h1-selector-base: $selector-base !default;
+$h1-selector: "h1" !default;
+$h2-selector-base: $selector-base !default;
+$h2-selector: "h2" !default;
+$h3-selector-base: $selector-base !default;
+$h3-selector: "h3" !default;
+$h4-selector-base: $selector-base !default;
+$h4-selector: "h4" !default;
+$h5-selector-base: $selector-base !default;
+$h5-selector: "h5" !default;
+$h6-selector-base: $selector-base !default;
+$h6-selector: "h6" !default;
+$root-selector-base: ":" !default;
+$root-selector: "root" !default;
+$bold-selector-base: $selector-base !default;
+$bold-selector: "b" !default;
+$strong-selector-base: $selector-base !default;
+$strong-selector: "strong" !default;
+$body-selector-base: $selector-base !default;
+$body-selector: "body" !default;
 $generate-base-font-sizes: root-defaults.$generate-base-font-sizes !default;
 $generate-base-font-weights: root-defaults.$generate-base-font-weights !default;
 $font-size-base: 1rem !default;
