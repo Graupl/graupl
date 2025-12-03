@@ -3,6 +3,52 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                                        | Default                                                                                                                                                                                                                                 |
+// | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-disclosure-color                              | var(--graupl-color)                                                                                                                                                                                                                     |
+// | --graupl-disclosure-background                         | var(--graupl-background)                                                                                                                                                                                                                |
+// | --graupl-disclosure-content-border-color               | var(--graupl-border-color)                                                                                                                                                                                                              |
+// | --graupl-disclosure-content-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                                                                                  |
+// | --graupl-disclosure-content-padding-y                  | var(--graupl-spacer-5)                                                                                                                                                                                                                  |
+// | --graupl-disclosure-content-padding                    | var(--graupl-disclosure-content-padding-y) var(--graupl-disclosure-content-padding-x)                                                                                                                                                   |
+// | --graupl-disclosure-show-display                       | flex                                                                                                                                                                                                                                    |
+// | --graupl-disclosure-hide-display                       | flex                                                                                                                                                                                                                                    |
+// | --graupl-disclosure-transitioning-display              | flex                                                                                                                                                                                                                |
+// | --graupl-disclosure-display                            | flex                                                                                                                                                                                                                                    |
+// | --graupl-disclosure-show-block-size                    | 100%                                                                                                                                                                                                                                    |
+// | --graupl-disclosure-hide-block-size                    | 0                                                                                                                                                                                                                                       |
+// | --graupl-disclosure-transitioning-block-size           | 0                                                                                                                                                                                                             |
+// | --graupl-disclosure-block-size                         | 0                                                                                                                                                                                                                                       |
+// | --graupl-disclosure-show-opacity                       | 1                                                                                                                                                                                                                                       |
+// | --graupl-disclosure-hide-opacity                       | 0                                                                                                                                                                                                                                       |
+// | --graupl-disclosure-transitioning-opacity              | 0                                                                                                                                                                                                                |
+// | --graupl-disclosure-opacity                            | 0                                                                                                                                                                                                                                       |
+// | --graupl-disclosure-transition-duration                | var(--graupl-transition-duration-fast)                                                                                                                                                                                                  |
+// | --graupl-disclosure-transition-timing-function         | var(--graupl-transition-timing-function)                                                                                                                                                                                                |
+// | --graupl-disclosure-transition                         | opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function), block-size var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)                   |
+// | --graupl-disclosure-transition-reduced-motion          | opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)                                                                                                                                |
+// | --graupl-disclosure-content-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                                                                          |
+// | --graupl-disclosure-content-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                                                                        |
+// | --graupl-disclosure-content-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                                                                       |
+// | --graupl-disclosure-content-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                                                                         |
+// | --graupl-disclosure-content-border-width               | var(--graupl-disclosure-content-border-top-width) var(--graupl-disclosure-content-border-right-width) var(--graupl-disclosure-content-border-bottom-width) var(--graupl-disclosure-content-border-left-width)                           |
+// | --graupl-disclosure-content-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                                                                          |
+// | --graupl-disclosure-content-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                                                                        |
+// | --graupl-disclosure-content-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                                                                       |
+// | --graupl-disclosure-content-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                                                                         |
+// | --graupl-disclosure-content-border-style               | var(--graupl-disclosure-content-border-top-style) var(--graupl-disclosure-content-border-right-style) var(--graupl-disclosure-content-border-bottom-style) var(--graupl-disclosure-content-border-left-style)                           |
+// | --graupl-disclosure-content-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                                                    |
+// | --graupl-disclosure-content-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                                                                                   |
+// | --graupl-disclosure-content-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                                |
+// | --graupl-disclosure-content-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                                 |
+// | --graupl-disclosure-content-border-radius              | var(--graupl-disclosure-content-border-top-left-radius) var(--graupl-disclosure-content-border-top-right-radius) var(--graupl-disclosure-content-border-bottom-right-radius) var(--graupl-disclosure-content-border-bottom-left-radius) |
+// | --graupl-disclosure-toggle-transform                   | rotate(0deg)                                                                                                                                                                                                                            |
+// | --graupl-disclosure-toggle-open-transform              | rotate(-180deg)                                                                                                                                                                                                                         |
+// | --graupl-disclosure-toggle-content                     | "'↓'"                                                                                                                                                                                                                                   |
+// | --graupl-disclosure-toggle-transition                  | transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                                                                               |
+// | --graupl-disclosure-toggle-transition-reduced-motion   | none                                                                                                                                                                                                                                    |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
@@ -10,96 +56,132 @@
 @use "sass:map";
 
 // Color properties.
+// --graupl-disclosure-color
 $disclosure-color: var(
   --#{root-defaults.$prefix}disclosure-color,
   #{color.$color}
 );
+
+// --graupl-disclosure-background
 $disclosure-background: var(
   --#{root-defaults.$prefix}disclosure-background,
   #{color.$background}
 );
+
+// --graupl-disclosure-content-border-color
 $disclosure-content-border-color: var(
   --#{root-defaults.$prefix}disclosure-content-border-color,
   #{color.$border-color}
 );
 
 // Spacing properties.
+// --graupl-disclosure-content-padding-x
 $disclosure-content-padding-x: var(
   --#{root-defaults.$prefix}disclosure-content-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-disclosure-content-padding-y
 $disclosure-content-padding-y: var(
   --#{root-defaults.$prefix}disclosure-content-padding-y,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-disclosure-content-padding
 $disclosure-content-padding: var(
   --#{root-defaults.$prefix}disclosure-content-padding,
   #{$disclosure-content-padding-y} #{$disclosure-content-padding-x}
 );
 
 // Display properties.
+// --graupl-disclosure-show-display
 $disclosure-show-display: var(
   --#{root-defaults.$prefix}disclosure-show-display,
   #{defaults.$disclosure-show-display}
 );
+
+// --graupl-disclosure-hide-display
 $disclosure-hide-display: var(
   --#{root-defaults.$prefix}disclosure-hide-display,
   #{defaults.$disclosure-hide-display}
 );
+
+// --graupl-disclosure-transitioning-display
 $disclosure-transitioning-display: var(
   --#{root-defaults.$prefix}disclosure-transitioning-display,
   #{defaults.$disclosure-transitioning-display}
 );
+
+// --graupl-disclosure-display
 $disclosure-display: var(
   --#{root-defaults.$prefix}disclosure-display,
   #{defaults.$disclosure-hide-display}
 );
 
 // Block-size properties.
+// --graupl-disclosure-show-block-size
 $disclosure-show-block-size: var(
   --#{root-defaults.$prefix}disclosure-show-block-size,
   #{defaults.$disclosure-show-block-size}
 );
+
+// --graupl-disclosure-hide-block-size
 $disclosure-hide-block-size: var(
   --#{root-defaults.$prefix}disclosure-hide-block-size,
   #{defaults.$disclosure-hide-block-size}
 );
+
+// --graupl-disclosure-transitioning-block-size
 $disclosure-transitioning-block-size: var(
   --#{root-defaults.$prefix}disclosure-transitioning-block-size,
   #{defaults.$disclosure-transitioning-block-size}
 );
+
+// --graupl-disclosure-block-size
 $disclosure-block-size: var(
   --#{root-defaults.$prefix}disclosure-block-size,
   #{defaults.$disclosure-hide-block-size}
 );
 
 // Opacity properties.
+// --graupl-disclosure-show-opacity
 $disclosure-show-opacity: var(
   --#{root-defaults.$prefix}disclosure-show-opacity,
   #{defaults.$disclosure-show-opacity}
 );
+
+// --graupl-disclosure-hide-opacity
 $disclosure-hide-opacity: var(
   --#{root-defaults.$prefix}disclosure-hide-opacity,
   #{defaults.$disclosure-hide-opacity}
 );
+
+// --graupl-disclosure-transitioning-opacity
 $disclosure-transitioning-opacity: var(
   --#{root-defaults.$prefix}disclosure-transitioning-opacity,
   #{defaults.$disclosure-transitioning-opacity}
 );
+
+// --graupl-disclosure-opacity
 $disclosure-opacity: var(
   --#{root-defaults.$prefix}disclosure-opacity,
   #{$disclosure-hide-opacity}
 );
 
 // Transition properties.
+// --graupl-disclosure-transition-duration
 $disclosure-transition-duration: var(
   --#{root-defaults.$prefix}disclosure-transition-duration,
   #{map.get(root-variables.$transition-durations, fast)}
 );
+
+// --graupl-disclosure-transition-timing-function
 $disclosure-transition-timing-function: var(
   --#{root-defaults.$prefix}disclosure-transition-timing-function,
   #{root-variables.$transition-timing-function}
 );
+
+// --graupl-disclosure-transition
 $disclosure-transition: var(
   --#{root-defaults.$prefix}disclosure-transition,
   opacity #{$disclosure-transition-duration}
@@ -107,6 +189,8 @@ $disclosure-transition: var(
   block-size #{$disclosure-transition-duration}
     #{$disclosure-transition-timing-function}
 );
+
+// --graupl-disclosure-transition-reduced-motion
 $disclosure-transition-reduced-motion: var(
   --#{root-defaults.$prefix}disclosure-transition-reduced-motion,
   opacity #{$disclosure-transition-duration}
@@ -114,22 +198,31 @@ $disclosure-transition-reduced-motion: var(
 );
 
 // Border properties.
+// --graupl-disclosure-content-border-top-width
 $disclosure-content-border-top-width: var(
   --#{root-defaults.$prefix}disclosure-content-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-disclosure-content-border-right-width
 $disclosure-content-border-right-width: var(
   --#{root-defaults.$prefix}disclosure-content-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-disclosure-content-border-bottom-width
 $disclosure-content-border-bottom-width: var(
   --#{root-defaults.$prefix}disclosure-content-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-disclosure-content-border-left-width
 $disclosure-content-border-left-width: var(
   --#{root-defaults.$prefix}disclosure-content-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-disclosure-content-border-width
 $disclosure-content-border-width: var(
   --#{root-defaults.$prefix}disclosure-content-border-width,
   #{$disclosure-content-border-top-width}
@@ -137,22 +230,32 @@ $disclosure-content-border-width: var(
     #{$disclosure-content-border-bottom-width}
     #{$disclosure-content-border-left-width}
 );
+
+// --graupl-disclosure-content-border-top-style
 $disclosure-content-border-top-style: var(
   --#{root-defaults.$prefix}disclosure-content-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-disclosure-content-border-right-style
 $disclosure-content-border-right-style: var(
   --#{root-defaults.$prefix}disclosure-content-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-disclosure-content-border-bottom-style
 $disclosure-content-border-bottom-style: var(
   --#{root-defaults.$prefix}disclosure-content-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-disclosure-content-border-left-style
 $disclosure-content-border-left-style: var(
   --#{root-defaults.$prefix}disclosure-content-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-disclosure-content-border-style
 $disclosure-content-border-style: var(
   --#{root-defaults.$prefix}disclosure-content-border-style,
   #{$disclosure-content-border-top-style}
@@ -160,22 +263,32 @@ $disclosure-content-border-style: var(
     #{$disclosure-content-border-bottom-style}
     #{$disclosure-content-border-left-style}
 );
+
+// --graupl-disclosure-content-border-top-left-radius
 $disclosure-content-border-top-left-radius: var(
   --#{root-defaults.$prefix}disclosure-content-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-disclosure-content-border-top-right-radius
 $disclosure-content-border-top-right-radius: var(
   --#{root-defaults.$prefix}disclosure-content-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-disclosure-content-border-bottom-right-radius
 $disclosure-content-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}disclosure-content-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-disclosure-content-border-bottom-left-radius
 $disclosure-content-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}disclosure-content-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-disclosure-content-border-radius
 $disclosure-content-border-radius: var(
   --#{root-defaults.$prefix}disclosure-content-border-radius,
   #{$disclosure-content-border-top-left-radius}
@@ -185,23 +298,32 @@ $disclosure-content-border-radius: var(
 );
 
 // Disclosure toggle properties.
+// --graupl-disclosure-toggle-transform
 $disclosure-toggle-transform: var(
   --#{root-defaults.$prefix}disclosure-toggle-transform,
   #{defaults.$disclosure-toggle-transform}
 );
+
+// --graupl-disclosure-toggle-open-transform
 $disclosure-toggle-open-transform: var(
   --#{root-defaults.$prefix}disclosure-toggle-open-transform,
   #{defaults.$disclosure-toggle-open-transform}
 );
+
+// --graupl-disclosure-toggle-content
 $disclosure-toggle-content: var(
   --#{root-defaults.$prefix}disclosure-toggle-content,
   #{defaults.$disclosure-toggle-content}
 );
+
+// --graupl-disclosure-toggle-transition
 $disclosure-toggle-transition: var(
   --#{root-defaults.$prefix}disclosure-toggle-transition,
   transform #{map.get(root-variables.$transition-durations, fast)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-disclosure-toggle-transition-reduced-motion
 $disclosure-toggle-transition-reduced-motion: var(
   --#{root-defaults.$prefix}disclosure-toggle-transition-reduced-motion,
   none

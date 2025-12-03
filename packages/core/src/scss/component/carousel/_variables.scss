@@ -3,6 +3,32 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                            | Default                                                                                         |
+// | ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+// | --graupl-carousel-controls-height          | auto                                                                                            |
+// | --graupl-carousel-tabs-width               | 1fr                                                                                             |
+// | --graupl-carousel-tabs-height              | auto                                                                                            |
+// | --graupl-carousel-slide-height             | 1fr                                                                                             |
+// | --graupl-carousel-padding-x                | var(--graupl-spacer-0)                                                                          |
+// | --graupl-carousel-padding-y                | var(--graupl-spacer-0)                                                                          |
+// | --graupl-carousel-padding                  | var(--graupl-carousel-padding-y) var(--graupl-carousel-padding-x)                               |
+// | --graupl-carousel-item-max-width           | 100%                                                                                            |
+// | --graupl-carousel-item-container-padding-x | var(--graupl-spacer-0)                                                                          |
+// | --graupl-carousel-item-container-padding-y | var(--graupl-spacer-0)                                                                          |
+// | --graupl-carousel-item-container-padding   | var(--graupl-carousel-item-container-padding-y) var(--graupl-carousel-item-container-padding-x) |
+// | --graupl-carousel-play-content             | "'▶'"                                                                                           |
+// | --graupl-carousel-pause-content            | "'❚❚'"                                                                                          |
+// | --graupl-carousel-next-content             | "'▶'"                                                                                           |
+// | --graupl-carousel-previous-content         | "'◀'"                                                                                           |
+// | --graupl-carousel-control-width            | 4rem                                                                                            |
+// | --graupl-carousel-control-height           | 3rem                                                                                            |
+// | --graupl-carousel-transition-duration      | 500ms                                                                                           |
+// | --graupl-carousel-tab-container-padding-x  | var(--graupl-spacer-3)                                                                          |
+// | --graupl-carousel-tab-container-padding-y  | var(--graupl-spacer-3)                                                                          |
+// | --graupl-carousel-tab-container-padding    | var(--graupl-carousel-tab-container-padding-y) var(--graupl-carousel-tab-container-padding-x)   |
+// | --graupl-carousel-tab-container-gap        | var(--graupl-spacer-3)                                                                          |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
@@ -10,100 +36,138 @@
 @use "sass:map";
 
 // Carousel grid area properties.
+// --graupl-carousel-controls-height
 $carousel-controls-height: var(
   --#{root-defaults.$prefix}carousel-controls-height,
   #{defaults.$carousel-controls-height}
 );
+
+// --graupl-carousel-tabs-width
 $carousel-tabs-width: var(
   --#{root-defaults.$prefix}carousel-tabs-width,
   #{defaults.$carousel-tabs-width}
 );
+
+// --graupl-carousel-tabs-height
 $carousel-tabs-height: var(
   --#{root-defaults.$prefix}carousel-tabs-height,
   #{defaults.$carousel-tabs-height}
 );
+
+// --graupl-carousel-slide-height
 $carousel-slide-height: var(
   --#{root-defaults.$prefix}carousel-slide-height,
   #{defaults.$carousel-slide-height}
 );
 
 // Carousel properties.
+// --graupl-carousel-padding-x
 $carousel-padding-x: var(
   --#{root-defaults.$prefix}carousel-padding-x,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-carousel-padding-y
 $carousel-padding-y: var(
   --#{root-defaults.$prefix}carousel-padding-y,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-carousel-padding
 $carousel-padding: var(
   --#{root-defaults.$prefix}carousel-padding,
   #{$carousel-padding-y} #{$carousel-padding-x}
 );
 
 // Carousel slide properties.
+// --graupl-carousel-item-max-width
 $carousel-item-max-width: var(
   --#{root-defaults.$prefix}carousel-item-max-width,
   #{defaults.$carousel-item-max-width}
 );
+
+// --graupl-carousel-item-container-padding-x
 $carousel-item-container-padding-x: var(
   --#{root-defaults.$prefix}carousel-item-container-padding-x,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-carousel-item-container-padding-y
 $carousel-item-container-padding-y: var(
   --#{root-defaults.$prefix}carousel-item-container-padding-y,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-carousel-item-container-padding
 $carousel-item-container-padding: var(
   --#{root-defaults.$prefix}carousel-item-container-padding,
   #{$carousel-item-container-padding-y} #{$carousel-item-container-padding-x}
 );
 
 // Carousel control properties.
+// --graupl-carousel-play-content
 $carousel-play-content: var(
   --#{root-defaults.$prefix}carousel-play-content,
   #{defaults.$carousel-play-content}
 );
+
+// --graupl-carousel-pause-content
 $carousel-pause-content: var(
   --#{root-defaults.$prefix}carousel-pause-content,
   #{defaults.$carousel-pause-content}
 );
+
+// --graupl-carousel-next-content
 $carousel-next-content: var(
   --#{root-defaults.$prefix}carousel-next-content,
   #{defaults.$carousel-next-content}
 );
+
+// --graupl-carousel-previous-content
 $carousel-previous-content: var(
   --#{root-defaults.$prefix}carousel-previous-content,
   #{defaults.$carousel-previous-content}
 );
+
+// --graupl-carousel-control-width
 $carousel-control-width: var(
   --#{root-defaults.$prefix}carousel-control-width,
   #{defaults.$carousel-control-width}
 );
+
+// --graupl-carousel-control-height
 $carousel-control-height: var(
   --#{root-defaults.$prefix}carousel-control-height,
   #{defaults.$carousel-control-height}
 );
 
 // Carousel transition properties.
+// --graupl-carousel-transition-duration
 $carousel-transition-duration: var(
   --#{root-defaults.$prefix}carousel-transition-duration,
   #{defaults.$carousel-transition-duration}
 );
 
 // Carousel tab properties.
+// --graupl-carousel-tab-container-padding-x
 $carousel-tab-container-padding-x: var(
   --#{root-defaults.$prefix}carousel-tab-container-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-carousel-tab-container-padding-y
 $carousel-tab-container-padding-y: var(
   --#{root-defaults.$prefix}carousel-tab-container-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-carousel-tab-container-padding
 $carousel-tab-container-padding: var(
   --#{root-defaults.$prefix}carousel-tab-container-padding,
   #{$carousel-tab-container-padding-y} #{$carousel-tab-container-padding-x}
 );
+
+// --graupl-carousel-tab-container-gap
 $carousel-tab-container-gap: var(
   --#{root-defaults.$prefix}carousel-tab-container-gap,
   #{map.get(root-variables.$spacers, 3)}

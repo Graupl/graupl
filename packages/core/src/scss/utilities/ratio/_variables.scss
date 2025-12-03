@@ -3,7 +3,13 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property | Default |
+// | --------------- | ------- |
+// | --graupl-ratio  |         |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 
+// --graupl-ratio
 $ratio: var(--#{root-defaults.$prefix}ratio);

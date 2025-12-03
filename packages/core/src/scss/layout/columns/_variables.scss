@@ -8,18 +8,25 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 
+// --graupl-columns-row-gap
 $columns-row-gap: var(
   --#{root-defaults.$prefix}columns-row-gap,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-columns-column-gap
 $columns-column-gap: var(
   --#{root-defaults.$prefix}columns-column-gap,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-columns-count
 $columns-count: var(
   --#{root-defaults.$prefix}columns-count,
   #{defaults.$columns-count}
 );
+
+// --graupl-columns-content-max-width
 $columns-content-max-width: var(
   --#{root-defaults.$prefix}columns-content-max-width,
   #{root-variables.$content-max-width}
@@ -30,6 +37,7 @@ $columns-content-max-width: var(
 // columns minus one (to account for the gaps between columns).
 // We then divide this by the number of columns to get the min-width of each column.
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+// --graupl-columns-min-width
 $columns-min-width: var(
   --#{root-defaults.$prefix}columns-min-width,
   calc(
@@ -41,14 +49,19 @@ $columns-min-width: var(
   )
 );
 /* stylelint-enable  scss/operator-no-newline-after */
+// --graupl-columns-max-width
 $columns-max-width: var(
   --#{root-defaults.$prefix}columns-max-width,
   #{defaults.$columns-max-width}
 );
+
+// --graupl-columns-grid-template-columns
 $columns-grid-template-columns: var(
   --#{root-defaults.$prefix}columns-grid-template-columns,
   repeat(auto-fit, minmax(#{$columns-min-width}, #{$columns-max-width}))
 );
+
+// --graupl-columns-span
 $columns-span: var(
   --#{root-defaults.$prefix}columns-span,
   #{defaults.$columns-span}

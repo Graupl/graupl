@@ -3,6 +3,56 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                          | Default                                                                                                                                                                         |
+// | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-card-padding-x                  | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-padding-y                  | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-padding                    | var(--graupl-card-padding-y) var(--graupl-card-padding-x)                                                                                                                       |
+// | --graupl-card-transition                 | transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                       |
+// | --graupl-card-transition-reduced-motion  | none                                                                                                                                                                            |
+// | --graupl-card-transform                  | none                                                                                                                                                                            |
+// | --graupl-card-hover-transform            | none                                                                                                                                                                 |
+// | --graupl-card-column-gap                 | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-row-gap                    | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-gap                        | var(--graupl-card-column-gap) var(--graupl-card-row-gap)                                                                                                                        |
+// | --graupl-card-background                 | var(--graupl-background)                                                                                                                                                        |
+// | --graupl-card-color                      | var(--graupl-color)                                                                                                                                                             |
+// | --graupl-card-border-color               | var(--graupl-card-color)                                                                                                                                                        |
+// | --graupl-card-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                            |
+// | --graupl-card-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                           |
+// | --graupl-card-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                         |
+// | --graupl-card-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                        |
+// | --graupl-card-border-radius              | var(--graupl-card-border-top-left-radius) var(--graupl-card-border-top-right-radius) var(--graupl-card-border-bottom-right-radius) var(--graupl-card-border-bottom-left-radius) |
+// | --graupl-card-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                  |
+// | --graupl-card-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                |
+// | --graupl-card-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                               |
+// | --graupl-card-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                 |
+// | --graupl-card-border-width               | var(--graupl-card-border-top-width) var(--graupl-card-border-right-width) var(--graupl-card-border-bottom-width) var(--graupl-card-border-left-width)                           |
+// | --graupl-card-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                  |
+// | --graupl-card-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                |
+// | --graupl-card-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                               |
+// | --graupl-card-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                 |
+// | --graupl-card-border-style               | var(--graupl-card-border-top-style) var(--graupl-card-border-right-style) var(--graupl-card-border-bottom-style) var(--graupl-card-border-left-style)                           |
+// | --graupl-card-content-ratio              | 1fr                                                                                                                                                                             |
+// | --graupl-card-image-ratio                | auto                                                                                                                                                                            |
+// | --graupl-horizontal-card-content-ratio   | 3fr                                                                                                                                                                             |
+// | --graupl-horizontal-card-image-ratio     | 2fr                                                                                                                                                                             |
+// | --graupl-card-image-padding-x            | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-image-padding-y            | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-image-padding              | var(--graupl-card-image-padding-y) var(--graupl-card-image-padding-x)                                                                                                           |
+// | --graupl-card-content-padding-x          | var(--graupl-spacer-5)                                                                                                                                                          |
+// | --graupl-card-content-padding-y          | var(--graupl-spacer-3)                                                                                                                                                          |
+// | --graupl-card-content-padding            | var(--graupl-card-content-padding-y) var(--graupl-card-content-padding-x)                                                                                                       |
+// | --graupl-card-content-column-gap         | var(--graupl-spacer-0)                                                                                                                                                          |
+// | --graupl-card-content-row-gap            | var(--graupl-spacer-3)                                                                                                                                                          |
+// | --graupl-card-content-gap                | var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)                                                                                                        |
+// | --graupl-card-title-color                | var(--graupl-card-color)                                                                                                                                                        |
+// | --graupl-card-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                      |
+// | --graupl-card-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                    |
+// | --graupl-card-title-font-family          | var(--graupl-h4-font-family)                                                                                                                                                    |
+// | --graupl-card-title-line-height          | var(--graupl-h4-line-height)                                                                                                                                                    |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
@@ -11,122 +61,173 @@
 @use "sass:map";
 
 // Card properties.
+// --graupl-card-padding-x
 $card-padding-x: var(
   --#{root-defaults.$prefix}card-padding-x,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-padding-y
 $card-padding-y: var(
   --#{root-defaults.$prefix}card-padding-y,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-padding
 $card-padding: var(
   --#{root-defaults.$prefix}card-padding,
   #{$card-padding-y} #{$card-padding-x}
 );
+
+// --graupl-card-transition
 $card-transition: var(
   --#{root-defaults.$prefix}card-transition,
   transform #{map.get(root-variables.$transition-durations, fast)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-card-transition-reduced-motion
 $card-transition-reduced-motion: var(
   --#{root-defaults.$prefix}card-transition-reduced-motion,
   none
 );
 
 // Card transform properties.
+// --graupl-card-transform
 $card-transform: var(
   --#{root-defaults.$prefix}card-transform,
   #{defaults.$card-transform}
 );
+
+// --graupl-card-hover-transform
 $card-hover-transform: var(
   --#{root-defaults.$prefix}card-hover-transform,
   #{defaults.$card-hover-transform}
 );
 
 // Card gap properties.
+// --graupl-card-column-gap
 $card-column-gap: var(
   --#{root-defaults.$prefix}card-column-gap,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-row-gap
 $card-row-gap: var(
   --#{root-defaults.$prefix}card-row-gap,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-gap
 $card-gap: var(
   --#{root-defaults.$prefix}card-gap,
   #{$card-column-gap} #{$card-row-gap}
 );
 
 // Card color properties.
+// --graupl-card-background
 $card-background: var(
   --#{root-defaults.$prefix}card-background,
   #{color.$background}
 );
+
+// --graupl-card-color
 $card-color: var(--#{root-defaults.$prefix}card-color, #{color.$color});
 
 // Card border-properties.
+// --graupl-card-border-color
 $card-border-color: var(
   --#{root-defaults.$prefix}card-border-color,
   #{$card-color}
 );
+
+// --graupl-card-border-top-left-radius
 $card-border-top-left-radius: var(
   --#{root-defaults.$prefix}card-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-card-border-top-right-radius
 $card-border-top-right-radius: var(
   --#{root-defaults.$prefix}card-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-card-border-bottom-left-radius
 $card-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}card-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-card-border-bottom-right-radius
 $card-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}card-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-card-border-radius
 $card-border-radius: var(
   --#{root-defaults.$prefix}card-border-radius,
   #{$card-border-top-left-radius} #{$card-border-top-right-radius}
     #{$card-border-bottom-right-radius} #{$card-border-bottom-left-radius}
 );
+
+// --graupl-card-border-top-width
 $card-border-top-width: var(
   --#{root-defaults.$prefix}card-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-card-border-right-width
 $card-border-right-width: var(
   --#{root-defaults.$prefix}card-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-card-border-bottom-width
 $card-border-bottom-width: var(
   --#{root-defaults.$prefix}card-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-card-border-left-width
 $card-border-left-width: var(
   --#{root-defaults.$prefix}card-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-card-border-width
 $card-border-width: var(
   --#{root-defaults.$prefix}card-border-width,
   #{$card-border-top-width} #{$card-border-right-width}
     #{$card-border-bottom-width} #{$card-border-left-width}
 );
+
+// --graupl-card-border-top-style
 $card-border-top-style: var(
   --#{root-defaults.$prefix}card-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-card-border-right-style
 $card-border-right-style: var(
   --#{root-defaults.$prefix}card-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-card-border-bottom-style
 $card-border-bottom-style: var(
   --#{root-defaults.$prefix}card-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-card-border-left-style
 $card-border-left-style: var(
   --#{root-defaults.$prefix}card-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-card-border-style
 $card-border-style: var(
   --#{root-defaults.$prefix}card-border-style,
   #{$card-border-top-style} #{$card-border-right-style}
@@ -134,82 +235,113 @@ $card-border-style: var(
 );
 
 // Card layout properties.
+// --graupl-card-content-ratio
 $card-content-ratio: var(
   --#{root-defaults.$prefix}card-content-ratio,
   defaults.$card-content-ratio
 );
+
+// --graupl-card-image-ratio
 $card-image-ratio: var(
   --#{root-defaults.$prefix}card-image-ratio,
   defaults.$card-image-ratio
 );
+
+// --graupl-horizontal-card-content-ratio
 $horizontal-card-content-ratio: var(
   --#{root-defaults.$prefix}horizontal-card-content-ratio,
   defaults.$horizontal-card-content-ratio
 );
+
+// --graupl-horizontal-card-image-ratio
 $horizontal-card-image-ratio: var(
   --#{root-defaults.$prefix}horizontal-card-image-ratio,
   defaults.$horizontal-card-image-ratio
 );
 
 // Card image properties.
+// --graupl-card-image-padding-x
 $card-image-padding-x: var(
   --#{root-defaults.$prefix}card-image-padding-x,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-image-padding-y
 $card-image-padding-y: var(
   --#{root-defaults.$prefix}card-image-padding-y,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-image-padding
 $card-image-padding: var(
   --#{root-defaults.$prefix}card-image-padding,
   #{$card-image-padding-y} #{$card-image-padding-x}
 );
 
 // Card content properties.
+// --graupl-card-content-padding-x
 $card-content-padding-x: var(
   --#{root-defaults.$prefix}card-content-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-card-content-padding-y
 $card-content-padding-y: var(
   --#{root-defaults.$prefix}card-content-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-card-content-padding
 $card-content-padding: var(
   --#{root-defaults.$prefix}card-content-padding,
   #{$card-content-padding-y} #{$card-content-padding-x}
 );
 
 // Card content gap properties.
+// --graupl-card-content-column-gap
 $card-content-column-gap: var(
   --#{root-defaults.$prefix}card-content-column-gap,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-card-content-row-gap
 $card-content-row-gap: var(
   --#{root-defaults.$prefix}card-content-row-gap,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-card-content-gap
 $card-content-gap: var(
   --#{root-defaults.$prefix}card-content-gap,
   #{$card-content-column-gap} #{$card-content-row-gap}
 );
 
 // Card title properties.
+// --graupl-card-title-color
 $card-title-color: var(
   --#{root-defaults.$prefix}card-title-color,
   #{$card-color}
 );
+
+// --graupl-card-title-font-size
 $card-title-font-size: var(
   --#{root-defaults.$prefix}card-title-font-size,
   #{typography.$h4-font-size}
 );
+
+// --graupl-card-title-font-weight
 $card-title-font-weight: var(
   --#{root-defaults.$prefix}card-title-font-weight,
   #{typography.$h4-font-weight}
 );
+
+// --graupl-card-title-font-family
 $card-title-font-family: var(
   --#{root-defaults.$prefix}card-title-font-family,
   #{typography.$h4-font-family}
 );
+
+// --graupl-card-title-line-height
 $card-title-line-height: var(
   --#{root-defaults.$prefix}card-title-line-height,
   #{typography.$h4-line-height}
