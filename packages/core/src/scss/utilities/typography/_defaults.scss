@@ -133,18 +133,7 @@ $-font-style-properties: (
   normal: normal,
   italic: italic,
 );
-$custom-font-style-properties: () !default;
 $font-style-properties: () !default;
-
-// @todo remove this once $custom-font-style-properties is removed
-@if $custom-font-style-properties != () {
-  @warn "`$custom-font-style-properties` is deprecated and will be removed in a future release of Graupl. Use `$font-style-properties` instead.";
-
-  $font-style-properties: map.merge(
-    $font-style-properties,
-    $custom-font-style-properties
-  );
-}
 
 // Text transform properties.
 $text-transform-selector-prefix: "text-" !default;
@@ -154,18 +143,7 @@ $-text-transform-properties: (
   capitalize: capitalize,
   none: none,
 );
-$custom-text-transform-properties: () !default;
 $text-transform-properties: () !default;
-
-// @todo remove this once $custom-text-transform-properties is removed
-@if $custom-text-transform-properties != () {
-  @warn "`$custom-text-transform-properties` is deprecated and will be removed in a future release of Graupl. Use `$text-transform-properties` instead.";
-
-  $text-transform-properties: map.merge(
-    $text-transform-properties,
-    $custom-text-transform-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

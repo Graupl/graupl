@@ -35,18 +35,7 @@ $-background-properties: (
   current: currentcolor,
   transparent: transparent,
 );
-$custom-background-properties: () !default;
 $background-properties: () !default;
-
-// @todo remove this once $custom-background-properties is removed
-@if $custom-background-properties != () {
-  @warn "`$custom-background-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-properties` instead.";
-
-  $background-properties: map.merge(
-    $background-properties,
-    $custom-background-properties
-  );
-}
 
 // Text utility properties.
 $text-selector-prefix: "text-" !default;
@@ -55,15 +44,7 @@ $-text-properties: (
   current: currentcolor,
   transparent: transparent,
 );
-$custom-text-properties: () !default;
 $text-properties: () !default;
-
-// @todo remove this once $custom-text-properties is removed
-@if $custom-text-properties != () {
-  @warn "`$custom-text-properties` is deprecated and will be removed in a future release of Graupl. Use `$text-properties` instead.";
-
-  $text-properties: map.merge($text-properties, $custom-text-properties);
-}
 
 // Add all of the active theme colours to the text and background base properties.
 @each $color in theme.get-colors() {

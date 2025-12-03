@@ -11,26 +11,25 @@
 // - N/A.
 //
 // The following variables control the generated classes:
-// | Variable                           | Description                                                       | Default Value               |
-// | ---                                | ---                                                               | ---                         |
-// | `$selector-base`                   | Base selector for utility classes.                                | `"."`                       |
-// | `$use-important`                   | Append `!important` to generated declarations.                    | `true`                      |
-// | `$generate-base-utilities`         | Generate the base utilities.                                      | `true`                      |
-// | `$screen-aware`                    | Generate screen-aware variants.                                   | `true`                      |
-// | `$theme-aware`                     | Generate theme-aware variants.                                    | `false`                     |
-// | `$state-aware`                     | Generate state-aware variants.                                    | `false`                     |
-// | `$container-aware`                 | Generate container-aware variants.                                | `true`                      |
-// | `$screen-aware-separator`          | Separator for screen-aware utilities.                             | `"\\:"`                     |
-// | `$theme-aware-separator`           | Separator for theme-aware utilities.                              | `"\\:"`                     |
-// | `$state-aware-separator`           | Separator for state-aware utilities.                              | `"\\:"`                     |
-// | `$container-aware-separator`       | Separator for container-aware utilities.                          | `"\\:"`                     |
-// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.                                | `""`                        |
-// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.                                 | `""`                        |
-// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.                                 | `""`                        |
-// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.                             | `"cq\\:"`                   |
-// | `$visibility-selector-prefix`      | Prefix for visibility utilities.                                  | `"visibility-"`             |
-// | `$custom-visibility-properties`    | [DEPRECATED] Additional visibility property/value pairs to merge. | `()`                        |
-// | `$visibility-properties`           | Map of visibility utilities.                                      | `visible, hidden, collapse` |
+// | Variable                           | Description                                    | Default Value               |
+// | ---                                | ---                                            | ---                         |
+// | `$selector-base`                   | Base selector for utility classes.             | `"."`                       |
+// | `$use-important`                   | Append `!important` to generated declarations. | `true`                      |
+// | `$generate-base-utilities`         | Generate the base utilities.                   | `true`                      |
+// | `$screen-aware`                    | Generate screen-aware variants.                | `true`                      |
+// | `$theme-aware`                     | Generate theme-aware variants.                 | `false`                     |
+// | `$state-aware`                     | Generate state-aware variants.                 | `false`                     |
+// | `$container-aware`                 | Generate container-aware variants.             | `true`                      |
+// | `$screen-aware-separator`          | Separator for screen-aware utilities.          | `"\\:"`                     |
+// | `$theme-aware-separator`           | Separator for theme-aware utilities.           | `"\\:"`                     |
+// | `$state-aware-separator`           | Separator for state-aware utilities.           | `"\\:"`                     |
+// | `$container-aware-separator`       | Separator for container-aware utilities.       | `"\\:"`                     |
+// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.             | `""`                        |
+// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.              | `""`                        |
+// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.              | `""`                        |
+// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.          | `"cq\\:"`                   |
+// | `$visibility-selector-prefix`      | Prefix for visibility utilities.               | `"visibility-"`             |
+// | `$visibility-properties`           | Map of visibility utilities.                   | `visible, hidden, collapse` |
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
 // - `.{screen-prefix}{screen-name}:{prefix}{value}`

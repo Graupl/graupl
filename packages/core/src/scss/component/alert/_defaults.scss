@@ -58,29 +58,7 @@ $-alert-theme-mappings: (
   link-active-color: 900,
   link-disabled-color: 400,
 );
-$custom-alert-state-theme-map: () !default;
-$alert-state-theme-map: () !default;
 $alert-theme-mappings: () !default;
-
-// @todo remove this once $custom-alert-state-theme-map is removed
-@if $custom-alert-state-theme-map != () {
-  @warn "`$custom-alert-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$alert-theme-mappings` instead.";
-
-  $alert-state-theme-map: map.merge(
-    $alert-theme-mappings,
-    $custom-alert-state-theme-map
-  );
-}
-
-// @todo remove the once $alert-state-theme-map is removed
-@if $alert-state-theme-map != () {
-  @warn "`$alert-state-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$alert-theme-mappings` instead.";
-
-  $alert-theme-mappings: map.merge(
-    $alert-theme-mappings,
-    $alert-state-theme-map
-  );
-}
 
 // Merge the custom alert state theme map with the default one.
 @if $generate-base-theme-map {

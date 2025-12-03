@@ -63,15 +63,7 @@ $-height-values: (
   );
 }
 
-$custom-height-values: () !default;
 $height-values: () !default;
-
-// @todo remove this once $custom-height-values is removed
-@if $custom-height-values != () {
-  @warn "`$custom-height-values` is deprecated and will be removed in a future release of Graupl. Use `$height-values` instead.";
-
-  $height-values: map.merge($height-values, $custom-height-values);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

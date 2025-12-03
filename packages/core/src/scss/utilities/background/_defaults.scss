@@ -33,18 +33,7 @@ $-background-attachment-properties: (
   fixed: fixed,
   local: local,
 );
-$custom-background-attachment-properties: () !default;
 $background-attachment-properties: () !default;
-
-// @todo remove this once $custom-background-attachment-properties is removed
-@if $custom-background-attachment-properties != () {
-  @warn "`$custom-background-attachment-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-attachment-properties` instead.";
-
-  $background-attachment-properties: map.merge(
-    $background-attachment-properties,
-    $custom-background-attachment-properties
-  );
-}
 
 // Background clip properties.
 $background-clip-selector-prefix: "bg-clip-" !default;
@@ -55,36 +44,14 @@ $-background-clip-properties: (
   text: text,
   border-area: border-area,
 );
-$custom-background-clip-properties: () !default;
 $background-clip-properties: () !default;
-
-// @todo remove this once $custom-background-clip-properties is removed
-@if $custom-background-clip-properties != () {
-  @warn "`$custom-background-clip-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-clip-properties` instead.";
-
-  $background-clip-properties: map.merge(
-    $background-clip-properties,
-    $custom-background-clip-properties
-  );
-}
 
 // Background image properties.
 $background-image-selector-prefix: "bg-image-" !default;
 $-background-image-properties: (
   none: none,
 );
-$custom-background-image-properties: () !default;
 $background-image-properties: () !default;
-
-// @todo remove this once $custom-background-image-properties is removed
-@if $custom-background-image-properties != () {
-  @warn "`$custom-background-image-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-image-properties` instead.";
-
-  $background-image-properties: map.merge(
-    $background-image-properties,
-    $custom-background-image-properties
-  );
-}
 
 // Background origin properties.
 $background-origin-selector-prefix: "bg-origin-" !default;
@@ -93,18 +60,7 @@ $-background-origin-properties: (
   padding-box: padding-box,
   content-box: content-box,
 );
-$custom-background-origin-properties: () !default;
 $background-origin-properties: () !default;
-
-// @todo remove this once $custom-background-origin-properties is removed
-@if $custom-background-origin-properties != () {
-  @warn "`$custom-background-origin-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-origin-properties` instead.";
-
-  $background-origin-properties: map.merge(
-    $background-origin-properties,
-    $custom-background-origin-properties
-  );
-}
 
 // Background position properties.
 $background-position-selector-prefix: "bg-position-" !default;
@@ -115,18 +71,7 @@ $-background-position-properties: (
   left: left,
   center: center,
 );
-$custom-background-position-properties: () !default;
 $background-position-properties: () !default;
-
-// @todo remove this once $custom-background-position-properties is removed
-@if $custom-background-position-properties != () {
-  @warn "`$custom-background-position-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-position-properties` instead.";
-
-  $background-position-properties: map.merge(
-    $background-position-properties,
-    $custom-background-position-properties
-  );
-}
 
 // Background repeat properties.
 $background-repeat-selector-prefix: "bg-repeat-" !default;
@@ -138,18 +83,7 @@ $-background-repeat-properties: (
   round: round,
   no-repeat: no-repeat,
 );
-$custom-background-repeat-properties: () !default;
 $background-repeat-properties: () !default;
-
-// @todo remove this once $custom-background-repeat-properties is removed
-@if $custom-background-repeat-properties != () {
-  @warn "`$custom-background-repeat-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-repeat-properties` instead.";
-
-  $background-repeat-properties: map.merge(
-    $background-repeat-properties,
-    $custom-background-repeat-properties
-  );
-}
 
 // Background size properties.
 $background-size-selector-prefix: "bg-size-" !default;
@@ -158,18 +92,7 @@ $-background-size-properties: (
   cover: cover,
   contain: contain,
 );
-$custom-background-size-properties: () !default;
 $background-size-properties: () !default;
-
-// @todo remove this once $custom-background-size-properties is removed
-@if $custom-background-size-properties != () {
-  @warn "`$custom-background-size-properties` is deprecated and will be removed in a future release of Graupl. Use `$background-size-properties` instead.";
-
-  $background-size-properties: map.merge(
-    $background-size-properties,
-    $custom-background-size-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

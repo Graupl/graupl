@@ -69,7 +69,6 @@ $-colors: (
     900: hsl(340deg 85% 10%),
   ),
 );
-$custom-colors: () !default;
 $colors: () !default;
 
 // Loop through the customized colors and convert them to a map structure.
@@ -87,13 +86,6 @@ $colors: () !default;
   }
 }
 
-// @todo remove this once $custom-colors is removed
-@if $custom-colors != () {
-  @warn "`$custom-colors` is deprecated and will be removed in a future release of Graupl. Use `$colors` instead.";
-
-  $colors: map.deep-merge($colors, $custom-colors);
-}
-
 // Merge the custom colors with the default ones.
 @if $generate-base-colors {
   $colors: map.deep-merge($-colors, $colors);
@@ -101,16 +93,7 @@ $colors: () !default;
 
 // Themes.
 $-themes: (light, dark);
-$custom-themes: () !default;
 $themes: () !default;
-
-// @todo remove this once $custom-themes is removed
-@if $custom-themes != () {
-  @warn "`$custom-themes` is deprecated and will be removed in a future release of Graupl. Use `$themes` instead.";
-
-  $themes: list.join($themes, $custom-themes);
-}
-
 $default-theme: light !default;
 
 // Theme mappings.
@@ -138,15 +121,7 @@ $-theme-mappings: (
     900: 100,
   ),
 );
-$custom-theme-mappings: () !default;
 $theme-mappings: () !default;
-
-// @todo remove this once $custom-theme-mappings is removed
-@if $custom-theme-mappings != () {
-  @warn "`$custom-theme-mappings` is deprecated and will be removed in a future release of Graupl. Use `$theme-mappings` instead.";
-
-  $theme-mappings: map.deep-merge($theme-mappings, $custom-theme-mappings);
-}
 
 // Merge the custom themes with the default ones.
 @if $generate-base-themes {
@@ -200,14 +175,5 @@ $-theme-map: ();
   );
 }
 
-$custom-theme-map: () !default;
 $theme-map: () !default;
-
-// @todo remove this once $custom-theme-map is removed
-@if $custom-theme-map != () {
-  @warn "`$custom-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$theme-map` instead.";
-
-  $theme-map: map.deep-merge($theme-map, $custom-theme-map);
-}
-
 $theme-map: map.deep-merge($-theme-map, $theme-map);

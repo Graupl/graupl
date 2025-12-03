@@ -373,7 +373,6 @@
 // | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.                                                        | `""`                                                                                                                              |
 // | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.                                                        | `""`                                                                                                                              |
 // | `$container-aware-selector-prefix` | Prefix for container-aware utilities.                                                    | `"cq\\:"`                                                                                                                         |
-// | `$custom-spacing-properties`       | [DEPRECATED] Additional spacing property/value pairs to merge.                           | `()`                                                                                                                              |
 // | `$spacing-properties`              | Map of spacing utilities (gap/row-gap/column-gap, padding/margin axes, logical spacing). | `g, rg, cg, p, pt, pr, pb, pl, px, py, pbs, pbe, pbse, pis, pie, pise, m, mt, mr, mb, ml, mx, my, mbs, mbe, mbse, mis, mie, mise` |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.

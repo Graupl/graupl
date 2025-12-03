@@ -43,16 +43,7 @@ $-screen-sizes: (
   qhd: 1921px,
   uhd: 2561px,
 );
-$custom-screen-sizes: () !default;
 $screen-sizes: () !default;
-
-// @todo remove this once $custom-screen-sizes is removed
-@if $custom-screen-sizes != () {
-  @warn "`$custom-screen-sizes` is deprecated and will be removed in a future release of Graupl. Use `$screen-sizes` instead.";
-
-  $screen-sizes: map.merge($screen-sizes, $custom-screen-sizes);
-}
-
 $screen-sizes: map.merge($-screen-sizes, $screen-sizes);
 $-screen-size-triggers: (
   navigation-collapse: (
@@ -86,48 +77,15 @@ $-screen-size-triggers: (
     ),
   ),
 );
-$custom-screen-size-triggers: () !default;
 $screen-size-triggers: () !default;
-
-// @todo remove this once $custom-screen-size-triggers is removed
-@if $custom-screen-size-triggers != () {
-  @warn "`$custom-screen-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$screen-size-triggers` instead.";
-
-  $screen-size-triggers: map.merge(
-    $screen-size-triggers,
-    $custom-screen-size-triggers
-  );
-}
-
 $screen-size-triggers: map.merge($-screen-size-triggers, $screen-size-triggers);
 
 // Container sizes.
 $-container-sizes: $screen-sizes;
-$custom-container-sizes: () !default;
 $container-sizes: () !default;
-
-// @todo remove this once $custom-container-sizes is removed
-@if $custom-container-sizes != () {
-  @warn "`$custom-container-sizes` is deprecated and will be removed in a future release of Graupl. Use `$container-sizes` instead.";
-
-  $container-sizes: map.merge($container-sizes, $custom-container-sizes);
-}
-
 $container-sizes: map.merge($-container-sizes, $container-sizes);
 $-container-size-triggers: $screen-size-triggers;
-$custom-container-size-triggers: () !default;
 $container-size-triggers: () !default;
-
-// @todo remove this once $custom-container-size-triggers is removed
-@if $custom-container-size-triggers != () {
-  @warn "`$custom-container-size-triggers` is deprecated and will be removed in a future release of Graupl. Use `$container-size-triggers` instead.";
-
-  $container-size-triggers: map.merge(
-    $container-size-triggers,
-    $custom-container-size-triggers
-  );
-}
-
 $container-size-triggers: map.merge(
   $-container-size-triggers,
   $container-size-triggers
@@ -148,19 +106,7 @@ $-spacer-multipliers: (
   9: 5,
   10: 10,
 );
-$custom-spacer-multipliers: () !default;
 $spacer-multipliers: () !default;
-
-// @todo remove this once $custom-spacer-multipliers is removed
-@if $custom-spacer-multipliers != () {
-  @warn "`$custom-spacer-multipliers` is deprecated and will be removed in a future release of Graupl. Use `$spacer-multipliers` instead.";
-
-  $spacer-multipliers: map.merge(
-    $spacer-multipliers,
-    $custom-spacer-multipliers
-  );
-}
-
 $spacer-multipliers: map.merge($-spacer-multipliers, $spacer-multipliers);
 
 // Size properties.
@@ -180,19 +126,7 @@ $-transition-durations: (
   default: #{$transition-duration-base * 2.5}ms,
   slow: #{$transition-duration-base * 3}ms,
 );
-$custom-transition-durations: () !default;
 $transition-durations: () !default;
-
-// @todo remove this once $custom-transition-durations is removed
-@if $custom-transition-durations != () {
-  @warn "`$custom-transition-durations` is deprecated and will be removed in a future release of Graupl. Use `$transition-durations` instead.";
-
-  $transition-durations: map.merge(
-    $transition-durations,
-    $custom-transition-durations
-  );
-}
-
 $transition-durations: map.merge($-transition-durations, $transition-durations);
 
 // Selector properties.
@@ -272,25 +206,7 @@ $-state-class-selectors: (
   }
 }
 
-$custom-state-selectors: () !default;
 $state-selectors: () !default;
-
-// @todo remove this once $custom-state-selectors is removed
-@if $custom-state-selectors != () {
-  @warn "`$custom-state-selectors` is deprecated and will be removed in a future release of Graupl. Use `$state-selectors` instead.";
-
-  @each $state, $selectors in $custom-state-selectors {
-    @if map.has-key($state-selectors, $state) {
-      $state-selectors: map.set(
-        $state-selectors,
-        $state,
-        list.join(map.get($state-selectors, $state), $selectors)
-      );
-    } @else {
-      $state-selectors: map.set($state-selectors, $state, $selectors);
-    }
-  }
-}
 
 @each $state, $selectors in $-state-selectors {
   @if map.has-key($state-selectors, $state) {

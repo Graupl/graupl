@@ -58,10 +58,8 @@
 // | `$font-weight-selector-prefix`      | Prefix for font-weight utilities.                                     | `"font-weight-"`                           |
 // | `$font-weight-properties`           | Map of font-weight utilities.                                         | `light, normal, bold`                      |
 // | `$font-style-selector-prefix`       | Prefix for font-style utilities.                                      | `"font-"`                                  |
-// | `$custom-font-style-properties`     | [DEPRECATED] Additional font-style property/value pairs to merge.     | `()`                                       |
 // | `$font-style-properties`            | Map of font-style utilities.                                          | `normal, italic`                           |
 // | `$text-transform-selector-prefix`   | Prefix for text-transform utilities.                                  | `"text-"`                                  |
-// | `$custom-text-transform-properties` | [DEPRECATED] Additional text-transform property/value pairs to merge. | `()`                                       |
 // | `$text-transform-properties`        | Map of text-transform utilities.                                      | `uppercase, lowercase, capitalize, none`   |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.

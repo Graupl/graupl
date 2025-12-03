@@ -35,18 +35,7 @@ $-position-properties: (
   relative: relative,
   sticky: sticky,
 );
-$custom-position-properties: () !default;
 $position-properties: () !default;
-
-// @todo remove this once $custom-position-properties is removed
-@if $custom-position-properties != () {
-  @warn "`$custom-position-properties` is deprecated and will be removed in a future release of Graupl. Use `$position-properties` instead.";
-
-  $position-properties: map.merge(
-    $position-properties,
-    $custom-position-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

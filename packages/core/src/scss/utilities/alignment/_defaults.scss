@@ -39,18 +39,7 @@ $-align-content-properties: (
   baseline: baseline,
   stretch: stretch,
 );
-$custom-align-content-properties: () !default;
 $align-content-properties: () !default;
-
-// @todo remove this once $custom-align-content-properties is removed
-@if $custom-align-content-properties != () {
-  @warn "`$custom-align-content-properties` is deprecated and will be removed in a future release of Graupl. Use `$align-content-properties` instead.";
-
-  $align-content-properties: map.merge(
-    $align-content-properties,
-    $custom-align-content-properties
-  );
-}
 
 // Align items properties.
 $align-items-selector-prefix: "align-items-" !default;
@@ -61,18 +50,7 @@ $-align-items-properties: (
   baseline: baseline,
   stretch: stretch,
 );
-$custom-align-items-properties: () !default;
 $align-items-properties: () !default;
-
-// @todo remove this once $custom-align-items-properties is removed
-@if $custom-align-items-properties != () {
-  @warn "`$custom-align-items-properties` is deprecated and will be removed in a future release of Graupl. Use `$align-items-properties` instead.";
-
-  $align-items-properties: map.merge(
-    $align-items-properties,
-    $custom-align-items-properties
-  );
-}
 
 // Align self properties.
 $align-self-selector-prefix: "align-self-" !default;
@@ -84,18 +62,7 @@ $-align-self-properties: (
   baseline: baseline,
   stretch: stretch,
 );
-$custom-align-self-properties: () !default;
 $align-self-properties: () !default;
-
-// @todo remove this once $custom-align-self-properties is removed
-@if $custom-align-self-properties != () {
-  @warn "`$custom-align-self-properties` is deprecated and will be removed in a future release of Graupl. Use `$align-self-properties` instead.";
-
-  $align-self-properties: map.merge(
-    $align-self-properties,
-    $custom-align-self-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

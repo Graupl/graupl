@@ -51,15 +51,7 @@ $-order-properties: (
   );
 }
 
-$custom-order-properties: () !default;
 $order-properties: () !default;
-
-// @todo remove this once $custom-order-properties is removed
-@if $custom-order-properties != () {
-  @warn "`$custom-order-properties` is deprecated and will be removed in a future release of Graupl. Use `$order-properties` instead.";
-
-  $order-properties: map.merge($order-properties, $custom-order-properties);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
