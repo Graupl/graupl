@@ -67,15 +67,13 @@ $accordion-item-content-open-transform: translateY(0) !default;
 //
 // Secondary/tertiary accordions will use the same shade for their respective colours.
 $-accordion-theme-mappings: (
-  item-toggle-color: 900,
-  item-toggle-border-color: 700,
-  item-border-color: 700,
+  color: 900,
+  border-color: 700,
+  item-background: 100,
   item-toggle-hover-color: 100,
   item-toggle-hover-background: 700,
-  item-hover-border-color: 700,
   item-toggle-hover-border-color: 700,
   item-toggle-disabled-color: 200,
-  item-disabled-border-color: 200,
   item-toggle-disabled-border-color: 200,
 );
 $accordion-theme-mappings: () !default;

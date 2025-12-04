@@ -14,7 +14,10 @@
 // | --graupl-accordion-gap                                          | var(--graupl-accordion-column-gap) var(--graupl-accordion-row-gap)                                                                                                                                                                                                           |
 // | --graupl-accordion-color                                        | var(--graupl-color)                                                                                                                                                                                                                                                          |
 // | --graupl-accordion-background                                   | var(--graupl-background)                                                                                                                                                                                                                                                     |
-// | --graupl-accordion-item-border-color                            | var(--graupl-accordion-color)                                                                                                                                                                                                                                                |
+// | --graupl-accordion-border-color                                 | var(--graupl-accordion-color)                                                                                                                                                                                                                                                |
+// | --graupl-accordion-item-color                                   | var(--graupl-accordion-color)                                                                                                                                                                                                                                                |
+// | --graupl-accordion-item-background                              | var(--graupl-accordion-background)                                                                                                                                                                                                                                           |
+// | --graupl-accordion-item-border-color                            | var(--graupl-accordion-item-border-color)                                                                                                                                                                                                                                    |
 // | --graupl-accordion-item-border-top-left-radius                  | var(--graupl-border-top-left-radius)                                                                                                                                                                                                                                         |
 // | --graupl-accordion-item-border-top-right-radius                 | var(--graupl-border-top-right-radius)                                                                                                                                                                                                                                        |
 // | --graupl-accordion-item-border-bottom-left-radius               | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                                                                      |
@@ -32,11 +35,11 @@
 // | --graupl-accordion-item-border-style                            | var(--graupl-accordion-item-border-top-style) var(--graupl-accordion-item-border-right-style) var(--graupl-accordion-item-border-bottom-style) var(--graupl-accordion-item-border-left-style)                                                                                |
 // | --graupl-accordion-item-toggle-padding                          | button.var(--graupl-button-padding)                                                                                                                                                                                                                                          |
 // | --graupl-accordion-item-toggle-transform                        | none                                                                                                                                                                                                                                                                         |
-// | --graupl-accordion-item-toggle-visited-transform                | none                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-focus-transform                  | none                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-hover-transform                  | none                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-active-transform                 | none                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-disabled-transform               | none                                                                                                                                                                                                                                             |
+// | --graupl-accordion-item-toggle-visited-transform                | none                                                                                                                                                                                                                                                                         |
+// | --graupl-accordion-item-toggle-focus-transform                  | none                                                                                                                                                                                                                                                                         |
+// | --graupl-accordion-item-toggle-hover-transform                  | none                                                                                                                                                                                                                                                                         |
+// | --graupl-accordion-item-toggle-active-transform                 | none                                                                                                                                                                                                                                                                         |
+// | --graupl-accordion-item-toggle-disabled-transform               | none                                                                                                                                                                                                                                                                         |
 // | --graupl-accordion-item-toggle-transition                       | background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function) |
 // | --graupl-accordion-item-toggle-transition-reduced-motion        | background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)                                                                                            |
 // | --graupl-accordion-item-header-padding-x                        | var(--graupl-spacer-0)                                                                                                                                                                                                                                                       |
@@ -49,11 +52,15 @@
 // | --graupl-accordion-item-title-margin-x                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-item-title-margin-y                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-item-title-margin                            | var(--graupl-accordion-item-title-margin-y) var(--graupl-accordion-item-title-margin-x)                                                                                                                                                                                      |
-// | --graupl-accordion-title-color                                  | var(--graupl-accordion-color)                                                                                                                                                                                                                                                |
-// | --graupl-accordion-title-font-size                              | var(--graupl-h5-font-size)                                                                                                                                                                                                                                                   |
-// | --graupl-accordion-title-font-weight                            | var(--graupl-h5-font-weight)                                                                                                                                                                                                                                                 |
-// | --graupl-accordion-title-font-family                            | var(--graupl-h5-font-family)                                                                                                                                                                                                                                                 |
-// | --graupl-accordion-title-line-height                            | var(--graupl-h5-line-height)                                                                                                                                                                                                                                                 |
+// | --graupl-accordion-item-title-color                             | var(--graupl-accordion-item-color)                                                                                                                                                                                                                                           |
+// | --graupl-accordion-item-title-background                        | var(--graupl-accordion-item-background)                                                                                                                                                                                                                                      |
+// | --graupl-accordion-item-title-border-color                      | var(--graupl-accordion-item-border-color)                                                                                                                                                                                                                                    |
+// | --graupl-accordion-item-title-font-size                         | var(--graupl-h5-font-size)                                                                                                                                                                                                                                                   |
+// | --graupl-accordion-item-title-font-weight                       | var(--graupl-h5-font-weight)                                                                                                                                                                                                                                                 |
+// | --graupl-accordion-item-title-font-family                       | var(--graupl-h5-font-family)                                                                                                                                                                                                                                                 |
+// | --graupl-accordion-item-title-line-height                       | var(--graupl-h5-line-height)                                                                                                                                                                                                                                                 |
+// | --graupl-accordion-item-content-color                           | var(--graupl-accordion-item-color)                                                                                                                                                                                                                                           |
+// | --graupl-accordion-item-content-background                      | var(--graupl-accordion-item-background)                                                                                                                                                                                                                                      |
 // | --graupl-accordion-item-content-padding-x                       | var(--graupl-spacer-5)                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-item-content-padding-y                       | var(--graupl-spacer-5)                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-item-content-padding                         | var(--graupl-accordion-item-content-padding-y) var(--graupl-accordion-item-content-padding-x)                                                                                                                                                                                |
@@ -157,11 +164,29 @@ $accordion-background: var(
   #{color.$background}
 );
 
+// --graupl-accordion-border-color
+$accordion-border-color: var(
+  --#{root-defaults.$prefix}accordion-border-color,
+  #{$accordion-color}
+);
+
+// --graupl-accordion-item-color
+$accordion-item-color: var(
+  --#{root-defaults.$prefix}accordion-item-color,
+  #{$accordion-color}
+);
+
+// --graupl-accordion-item-background
+$accordion-item-background: var(
+  --#{root-defaults.$prefix}accordion-item-background,
+  #{$accordion-background}
+);
+
 // Accordion item border properties.
 // --graupl-accordion-item-border-color
 $accordion-item-border-color: var(
   --#{root-defaults.$prefix}accordion-item-border-color,
-  #{$accordion-color}
+  #{$accordion-item-color}
 );
 
 // --graupl-accordion-item-border-top-left-radius
@@ -402,34 +427,58 @@ $accordion-item-title-margin: var(
   #{$accordion-item-title-margin-y} #{$accordion-item-title-margin-x}
 );
 
-// --graupl-accordion-title-color
-$accordion-title-color: var(
-  --#{root-defaults.$prefix}accordion-title-color,
-  #{$accordion-color}
+// --graupl-accordion-item-title-color
+$accordion-item-title-color: var(
+  --#{root-defaults.$prefix}accordion-item-title-color,
+  #{$accordion-item-color}
 );
 
-// --graupl-accordion-title-font-size
-$accordion-title-font-size: var(
-  --#{root-defaults.$prefix}accordion-title-font-size,
+// --graupl-accordion-item-title-background
+$accordion-item-title-background: var(
+  --#{root-defaults.$prefix}accordion-item-title-background,
+  #{$accordion-item-background}
+);
+
+// --graupl-accordion-item-title-border-color
+$accordion-item-title-border-color: var(
+  --#{root-defaults.$prefix}accordion-item-title-border-color,
+  #{$accordion-item-border-color}
+);
+
+// --graupl-accordion-item-title-font-size
+$accordion-item-title-font-size: var(
+  --#{root-defaults.$prefix}accordion-item-title-font-size,
   #{typography.$h5-font-size}
 );
 
-// --graupl-accordion-title-font-weight
-$accordion-title-font-weight: var(
-  --#{root-defaults.$prefix}accordion-title-font-weight,
+// --graupl-accordion-item-title-font-weight
+$accordion-item-title-font-weight: var(
+  --#{root-defaults.$prefix}accordion-item-title-font-weight,
   #{typography.$h5-font-weight}
 );
 
-// --graupl-accordion-title-font-family
-$accordion-title-font-family: var(
-  --#{root-defaults.$prefix}accordion-title-font-family,
+// --graupl-accordion-item-title-font-family
+$accordion-item-title-font-family: var(
+  --#{root-defaults.$prefix}accordion-item-title-font-family,
   #{typography.$h5-font-family}
 );
 
-// --graupl-accordion-title-line-height
-$accordion-title-line-height: var(
-  --#{root-defaults.$prefix}accordion-title-line-height,
+// --graupl-accordion-item-title-line-height
+$accordion-item-title-line-height: var(
+  --#{root-defaults.$prefix}accordion-item-title-line-height,
   #{typography.$h5-line-height}
+);
+
+// --graupl-accordion-item-content-color
+$accordion-item-content-color: var(
+  --#{root-defaults.$prefix}accordion-item-content-color,
+  #{$accordion-item-color}
+);
+
+// --graupl-accordion-item-content-background
+$accordion-item-content-background: var(
+  --#{root-defaults.$prefix}accordion-item-content-background,
+  #{$accordion-item-background}
 );
 
 // Accordion item content properties.
