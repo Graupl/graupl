@@ -3,48 +3,74 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                 | Default                                                                                               |
+// | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
+// | --graupl-focus-width            | var(--graupl-border-width)                                                                            |
+// | --graupl-focus-outline-color    | var(--graupl-color)                                                                                   |
+// | --graupl-focus-outline-width    | var(--graupl-focus-width)                                                                             |
+// | --graupl-focus-outline-style    | solid                                                                                                 |
+// | --graupl-focus-outline          | var(--graupl-focus-outline-width) var(--graupl-focus-outline-style) var(--graupl-focus-outline-color) |
+// | --graupl-focus-outline-offset   | calc(-1 * var(--graupl-focus-outline-width))                                                          |
+// | --graupl-focus-box-shadow-color | var(--graupl-background)                                                                              |
+// | --graupl-focus-border-color     | var(--graupl-background)                                                                              |
+// | --graupl-focus-box-shadow       | 0 0 0 var(--graupl-focus-width) inset var(--graupl-focus-box-shadow-color)                            |
+
 @use "../../variables" as root-variables;
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
 
+// --graupl-focus-width
 $focus-width: var(
   --#{root-defaults.$prefix}focus-width,
   #{root-variables.$border-width}
 );
+
+// --graupl-focus-outline-color
 $focus-outline-color: var(
   --#{root-defaults.$prefix}focus-outline-color,
   #{color.$color}
 );
+
+// --graupl-focus-outline-width
 $focus-outline-width: var(
   --#{root-defaults.$prefix}focus-outline-width,
   #{$focus-width}
 );
+
+// --graupl-focus-outline-style
 $focus-outline-style: var(
   --#{root-defaults.$prefix}focus-outline-style,
   #{defaults.$focus-outline-style}
 );
+
+// --graupl-focus-outline
 $focus-outline: var(
   --#{root-defaults.$prefix}focus-outline,
   #{$focus-outline-width} #{$focus-outline-style} #{$focus-outline-color}
 );
+
+// --graupl-focus-outline-offset
 $focus-outline-offset: var(
   --#{root-defaults.$prefix}focus-outline-offset,
   calc(-1 * #{$focus-outline-width})
 );
+
+// --graupl-focus-box-shadow-color
 $focus-box-shadow-color: var(
   --#{root-defaults.$prefix}focus-box-shadow-color,
   #{color.$background}
 );
+
+// --graupl-focus-border-color
 $focus-border-color: var(
   --#{root-defaults.$prefix}focus-border-color,
   #{color.$background}
 );
+
+// --graupl-focus-box-shadow
 $focus-box-shadow: var(
   --#{root-defaults.$prefix}focus-box-shadow,
   0 0 0 #{$focus-width} inset #{$focus-box-shadow-color}
-);
-$focus-box-shadow-bordered: var(
-  --#{root-defaults.$prefix}focus-box-shadow-bordered,
-  0 0 0 #{$focus-width} #{$focus-box-shadow-color}
 );

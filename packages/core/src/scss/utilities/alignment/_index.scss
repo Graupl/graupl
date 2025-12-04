@@ -27,31 +27,30 @@
 // The following custom properties control the generated classes:
 // - N/A.
 //
-// The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$align-content-selector-prefix`: The prefix for the align content utility classes.
-// - `$custom-align-content-properties`: [DEPRECATED] The custom properties and values for the align content utility classes.
-// - `$align-content-properties`: The combined properties and values for the align content utility classes.
-// - `$align-items-selector-prefix`: The prefix for the align items utility classes.
-// - `$custom-align-items-properties`: [DEPRECATED] The custom properties and values for the align items utility classes.
-// - `$align-items-properties`: The combined properties and values for the align items utility classes.
-// - `$align-self-selector-prefix`: The prefix for the align self utility classes.
-// - `$custom-align-self-properties`: [DEPRECATED] The custom properties and values for the align self utility classes.
-// - `$align-self-properties`: The combined properties and values for the align self utility classes.
+// The following sass variables control the generated classes:
+// | Variable                           | Description                                    | Default Value                                                            |
+// | ---                                | ---                                            | ---                                                                      |
+// | `$selector-base`                   | Base selector for utility classes.             | `"."`                                                                    |
+// | `$use-important`                   | Append `!important` to generated declarations. | `true`                                                                   |
+// | `$generate-base-utilities`         | Generate the base utilities.                   | `true`                                                                   |
+// | `$screen-aware`                    | Generate screen-aware variants.                | `false`                                                                  |
+// | `$theme-aware`                     | Generate theme-aware variants.                 | `false`                                                                  |
+// | `$state-aware`                     | Generate state-aware variants.                 | `false`                                                                  |
+// | `$container-aware`                 | Generate container-aware variants.             | `false`                                                                  |
+// | `$screen-aware-separator`          | Separator for screen-aware utilities.          | `"\\:"`                                                                  |
+// | `$theme-aware-separator`           | Separator for theme-aware utilities.           | `"\\:"`                                                                  |
+// | `$state-aware-separator`           | Separator for state-aware utilities.           | `"\\:"`                                                                  |
+// | `$container-aware-separator`       | Separator for container-aware utilities.       | `"\\:"`                                                                  |
+// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.             | `""`                                                                     |
+// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.              | `""`                                                                     |
+// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.              | `""`                                                                     |
+// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.          | `"cq\\:"`                                                                |
+// | `$align-content-selector-prefix`   | Prefix for align-content utilities.            | `"align-content-"`                                                       |
+// | `$align-content-properties`        | Map of align-content utility values.           | `normal, start, end, center, between, around, evenly, baseline, stretch` |
+// | `$align-items-selector-prefix`     | Prefix for align-items utilities.              | `"align-items-"`                                                         |
+// | `$align-items-properties`          | Map of align-items utility values.             | `start, end, center, baseline, stretch`                                  |
+// | `$align-self-selector-prefix`      | Prefix for align-self utilities.               | `"align-self-"`                                                          |
+// | `$align-self-properties`           | Map of align-self utility values.              | `auto, start, end, center, baseline, stretch`                            |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

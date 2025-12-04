@@ -39,15 +39,7 @@ $-ratios: (
   "three-by-two": calc(2 / 3 * 100%),
   "eight-by-five": calc(5 / 8 * 100%),
 );
-$custom-ratios: () !default;
 $ratios: () !default;
-
-// @todo remove this once $custom-ratios is removed
-@if $custom-ratios != () {
-  @warn "`$custom-ratios` is deprecated and will be removed in a future release of Graupl. Use `$ratios` instead.";
-
-  $ratios: map.merge($ratios, $custom-ratios);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

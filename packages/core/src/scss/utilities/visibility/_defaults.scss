@@ -33,18 +33,7 @@ $-visibility-properties: (
   hidden: hidden,
   collapse: collapse,
 );
-$custom-visibility-properties: () !default;
 $visibility-properties: () !default;
-
-// @todo remove this once $custom-visibility-properties is removed
-@if $custom-visibility-properties != () {
-  @warn "`$custom-visibility-properties` is deprecated and will be removed in a future release of Graupl. Use `$visibility-properties` instead.";
-
-  $visibility-properties: map.merge(
-    $visibility-properties,
-    $custom-visibility-properties
-  );
-}
 
 @if $generate-base-utilities {
   $visibility-properties: map.merge(

@@ -34,18 +34,7 @@ $-container-type-properties: (
   size: "size",
   scroll: "scroll-state",
 );
-$custom-container-type-properties: () !default;
 $container-type-properties: () !default;
-
-// @todo remove this once $custom-container-type-properties is removed
-@if $custom-container-type-properties != () {
-  @warn "`$custom-container-type-properties` is deprecated and will be removed in a future release of Graupl. Use `$container-type-properties` instead.";
-
-  $container-type-properties: map.merge(
-    $container-type-properties,
-    $custom-container-type-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

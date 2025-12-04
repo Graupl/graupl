@@ -1,0 +1,48 @@
+// @graupl/core badge base default values.
+//
+// Generally, these should not be used directly when styling bases unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Badge selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
+$badge-selector-base: $selector-base !default;
+$badge-selector: "badge" !default;
+$badge-theme-selector-base: $modifier-selector-base !default;
+$badge-theme-selector-prefix: "" !default;
+
+// Badge state theme defaults.
+// This map is used to define the default colour shades for the
+// themed badge bases.
+//
+// e.g.
+// Primary badges will use primary--900 as the text colour, primary--100 as the background
+// and primary--900 as the border colour.
+//
+// Secondary/tertiary badges will use the same shade for their respective colours.
+$-badge-theme-mappings: (
+  color: 900,
+  border-color: 700,
+);
+$badge-theme-mappings: () !default;
+
+// Merge the custom badge state theme map with the default one.
+@if $generate-base-theme-map {
+  $badge-theme-mappings: map.merge(
+    $-badge-theme-mappings,
+    $badge-theme-mappings
+  );
+}
+
+$-badge-theme-map: theme.generate-property-map($badge-theme-mappings);
+$badge-theme-map: () !default;
+$badge-theme-map: map.deep-merge($-badge-theme-map, $badge-theme-map);

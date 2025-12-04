@@ -39,18 +39,7 @@ $-border-width-properties: (
   medium: medium,
   none: none,
 );
-$custom-border-width-properties: () !default;
 $border-width-properties: () !default;
-
-// @todo remove this once $custom-border-width-properties is removed
-@if $custom-border-width-properties != () {
-  @warn "`$custom-border-width-properties` is deprecated and will be removed in a future release of Graupl. Use `$border-width-properties` instead.";
-
-  $border-width-properties: map.merge(
-    $border-width-properties,
-    $custom-border-width-properties
-  );
-}
 
 // Border color properties.
 $border-color-selector-prefix: "border-" !default;
@@ -79,18 +68,7 @@ $-border-color-properties: (
   }
 }
 
-$custom-border-color-properties: () !default;
 $border-color-properties: () !default;
-
-// @todo remove this once $custom-border-color-properties is removed
-@if $custom-border-color-properties != () {
-  @warn "`$custom-border-color-properties` is deprecated and will be removed in a future release of Graupl. Use `$border-color-properties` instead.";
-
-  $border-color-properties: map.merge(
-    $border-color-properties,
-    $custom-border-color-properties
-  );
-}
 
 // Border style properties.
 $border-style-selector-prefix: "border-" !default;
@@ -105,18 +83,7 @@ $-border-style-properties: (
   outset: outset,
   none: none,
 );
-$custom-border-style-properties: () !default;
 $border-style-properties: () !default;
-
-// @todo remove this once $custom-border-style-properties is removed
-@if $custom-border-style-properties != () {
-  @warn "`$custom-border-style-properties` is deprecated and will be removed in a future release of Graupl. Use `$border-style-properties` instead.";
-
-  $border-style-properties: map.merge(
-    $border-style-properties,
-    $custom-border-style-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

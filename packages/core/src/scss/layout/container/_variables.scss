@@ -8,51 +8,79 @@
 @use "../../defaults" as root-defaults;
 @use "sass:map";
 
-$container-gap: var(
-  --#{root-defaults.$prefix}container-gap,
-  #{map.get(root-variables.$spacers, 5)}
-);
-$container-content-max-width: var(
-  --#{root-defaults.$prefix}container-content-max-width,
-  #{root-variables.$content-max-width}
-);
+// --graupl-container-sidebar-width
 $container-sidebar-width: var(
   --#{root-defaults.$prefix}container-sidebar-width,
   #{defaults.$container-sidebar-width}
 );
+
+// --graupl-container-breakout-width
+$container-breakout-width: var(
+  --#{root-defaults.$prefix}container-breakout-width,
+  #{defaults.$container-breakout-width}
+);
+
+// --graupl-container-feature-width
+$container-feature-width: var(
+  --#{root-defaults.$prefix}container-feature-width,
+  #{defaults.$container-feature-width}
+);
+
+// --graupl-container-content-max-width
+$container-content-max-width: var(
+  --#{root-defaults.$prefix}container-content-max-width,
+  #{root-variables.$content-max-width}
+);
+
+// --graupl-container-breakout-max-width
 $container-breakout-max-width: var(
   --#{root-defaults.$prefix}container-breakout-max-width,
-  calc(#{$container-content-max-width} + #{defaults.$container-breakout-width})
+  calc(#{$container-content-max-width} + #{$container-breakout-width})
 );
+
+// --graupl-container-feature-max-width
 $container-feature-max-width: var(
   --#{root-defaults.$prefix}container-feature-max-width,
-  calc(#{$container-breakout-max-width} + #{defaults.$container-feature-width})
+  calc(#{$container-breakout-max-width} + #{$container-feature-width})
 );
+
+// --graupl-container-full-width-section-min-width
 $container-full-width-section-min-width: var(
   --#{root-defaults.$prefix}container-full-width-section-min-width,
-  #{$container-gap}
+  #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-container-full-width-section-max-width
 $container-full-width-section-max-width: var(
   --#{root-defaults.$prefix}container-full-width-section-max-width,
   1fr
 );
+
+// --graupl-container-feature-section-min-width
 $container-feature-section-min-width: var(
   --#{root-defaults.$prefix}container-feature-section-min-width,
   0rem
 );
+
+// --graupl-container-feature-section-max-width
 $container-feature-section-max-width: var(
   --#{root-defaults.$prefix}container-feature-section-max-width,
   calc((#{$container-feature-max-width} - #{$container-breakout-max-width}) / 2)
 );
+
+// --graupl-container-breakout-section-min-width
 $container-breakout-section-min-width: var(
   --#{root-defaults.$prefix}container-breakout-section-min-width,
   0rem
 );
+
+// --graupl-container-breakout-section-max-width
 $container-breakout-section-max-width: var(
   --#{root-defaults.$prefix}container-breakout-section-max-width,
   calc((#{$container-breakout-max-width} - #{$container-content-max-width}) / 2)
 );
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+// --graupl-container-content-section-min-width
 $container-content-section-min-width: var(
   --#{root-defaults.$prefix}container-content-section-min-width,
   calc(
@@ -62,10 +90,13 @@ $container-content-section-min-width: var(
   )
 );
 /* stylelint-enable  scss/operator-no-newline-after */
+// --graupl-container-content-section-max-width
 $container-content-section-max-width: var(
   --#{root-defaults.$prefix}container-content-section-max-width,
   #{$container-content-max-width}
 );
+
+// --graupl-container-full-width-section-width
 $container-full-width-section-width: var(
   --#{root-defaults.$prefix}container-full-width-section-width,
   minmax(
@@ -73,6 +104,8 @@ $container-full-width-section-width: var(
     #{$container-full-width-section-max-width}
   )
 );
+
+// --graupl-container-feature-section-width
 $container-feature-section-width: var(
   --#{root-defaults.$prefix}container-feature-section-width,
   minmax(
@@ -80,6 +113,8 @@ $container-feature-section-width: var(
     #{$container-feature-section-max-width}
   )
 );
+
+// --graupl-container-breakout-section-width
 $container-breakout-section-width: var(
   --#{root-defaults.$prefix}container-breakout-section-width,
   minmax(
@@ -87,6 +122,8 @@ $container-breakout-section-width: var(
     #{$container-breakout-section-max-width}
   )
 );
+
+// --graupl-container-content-section-width
 $container-content-section-width: var(
   --#{root-defaults.$prefix}container-content-section-width,
   min(
@@ -94,21 +131,117 @@ $container-content-section-width: var(
     #{$container-content-section-max-width}
   )
 );
+
+// --graupl-container-sidebar-left-section-width
 $container-sidebar-left-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-left-section-width,
-  $container-sidebar-width
+  max($container-sidebar-width, $container-feature-section-max-width)
 );
+
+// --graupl-container-sidebar-right-section-width
 $container-sidebar-right-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-right-section-width,
-  $container-sidebar-width
+  max($container-sidebar-width, $container-feature-section-max-width)
+);
+
+// --graupl-container-sidebars-breakout-section-width
+$container-sidebars-breakout-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-breakout-section-width,
+  #{$container-breakout-section-max-width}
 );
 /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-$container-inner-content-section-width: var(
-  --#{root-defaults.$prefix}container-inner-content-section-width,
+// --graupl-container-sidebars-content-section-min-width
+$container-sidebars-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-sidebars-content-section-min-width,
   calc(
-    #{$container-content-section-width} -
+    100% - (#{$container-full-width-section-min-width} * 2) -
+      (#{$container-feature-section-min-width} * 2) -
+      (#{$container-sidebars-breakout-section-width} * 2) -
       #{$container-sidebar-left-section-width} -
       #{$container-sidebar-right-section-width}
+  )
+);
+
+// --graupl-container-sidebars-content-section-max-width
+$container-sidebars-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-sidebar-left-section-width} -
+      #{$container-sidebar-right-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width) +
+      min($container-sidebar-width, $container-feature-section-max-width)
+  )
+);
+
+// --graupl-container-sidebars-content-section-width
+$container-sidebars-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-content-section-width,
+  min(
+    #{$container-sidebars-content-section-min-width},
+    #{$container-sidebars-content-section-max-width}
+  )
+);
+
+// --graupl-container-sidebars-right-content-section-min-width
+$container-sidebars-right-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-min-width,
+  calc(
+    100% - (#{$container-full-width-section-min-width} * 2) -
+      (#{$container-feature-section-min-width} * 2) -
+      #{$container-breakout-section-min-width} -
+      #{$container-sidebars-breakout-section-width} -
+      #{$container-sidebar-right-section-width}
+  )
+);
+
+// --graupl-container-sidebars-right-content-section-max-width
+$container-sidebars-right-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-sidebar-right-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width)
+  )
+);
+
+// --graupl-container-sidebars-right-content-section-width
+$container-sidebars-right-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-right-content-section-width,
+  min(
+    $container-sidebars-right-content-section-min-width,
+    $container-sidebars-right-content-section-max-width
+  )
+);
+
+// --graupl-container-sidebars-left-content-section-min-width
+$container-sidebars-left-content-section-min-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-min-width,
+  calc(
+    100% - (#{$container-full-width-section-min-width} * 2) -
+      (#{$container-feature-section-min-width} * 2) -
+      #{$container-breakout-section-min-width} -
+      #{$container-sidebars-breakout-section-width} -
+      #{$container-sidebar-left-section-width}
+  )
+);
+
+// --graupl-container-sidebars-left-content-section-max-width
+$container-sidebars-left-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-sidebar-left-section-width} +
+      min($container-sidebar-width, $container-feature-section-max-width)
+  )
+);
+
+// --graupl-container-sidebars-left-content-section-width
+$container-sidebars-left-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-left-content-section-width,
+  min(
+    $container-sidebars-left-content-section-min-width,
+    $container-sidebars-left-content-section-max-width
   )
 );
 /* stylelint-enable  scss/operator-no-newline-after */

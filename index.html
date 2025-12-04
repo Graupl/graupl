@@ -29,7 +29,7 @@
 </head>
 
 <body>
-  <main class="container pb-10 shelf-aware">
+  <main class="container pb-10">
     <div class="flex-columns">
       <div class="col-8">
         <h1 class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">Hello Graupl!</h1>
@@ -40,38 +40,6 @@
       </div>
       <div class="col-4 align-items-center">
         <img src="./logo.svg" alt="Graupl logo" class="logo">
-      </div>
-      <button class="navigation-shelf-toggle">Toggle shelf</button>
-      <div class="navigation-shelf bg-primary-700 text-primary-100">
-        <div class="navigation-shelf-header">
-        </div>
-        <div class="navigation-shelf-content w-shelf-open">
-          <nav class="navigation display-flex flex-col" data-graupl-menu-type="DisclosureMenu"
-            data-graupl-menu-options="{'optionalKeySupport': true}">
-            <ul class="menu flex-col">
-              <li class="menu-item flex-wrap flex-row">
-                <a class="menu-link flex-grow w-min-content" href="#typography">Typography</a>
-              </li>
-              <li class="menu-item submenu-item">
-                <button class="menu-link button link submenu-toggle">About</button>
-                <ul class="submenu min-w-full position-relative">
-                  <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
-                  <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
-                  <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
-                </ul>
-              </li>
-              <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
-              <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
-              <li class="menu-item"><a class="menu-link button"
-                  href="#">Contact</a></li>
-            </ul>
-          </nav>
-        </div>
-        <div class="navigation-shelf-footer w-shelf-current display-flex flex-wrap">
-          <button class="button navigation-shelf-lock-toggle w-full" aria-label="Toggle shelf lock"></button>
-          <button class="button navigation-shelf-hover-toggle w-full" aria-label="Toggle shelf hover"></button>
-          <button class="button navigation-shelf-side-toggle w-full" aria-label="Toggle side"></button>
-        </div>
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
@@ -158,6 +126,16 @@
         <a href="https://graupl.dev" class="button hover">Hovered Button</a>
         <a href="https://graupl.dev" class="button active">Active Button</a>
         <a href="https://graupl.dev" class="button disabled">Disabled Button</a>
+      </div>
+    </div>
+    <div class="container py-10 my-10 align-content-center">
+      <h2>Badges</h2>
+      <p>There are 4 colours of badges supported by default.</p>
+      <div class="display-flex flex-wrap g-5">
+        <span class="badge">Default badge</span>
+        <span class="badge primary">Primary badge</span>
+        <span class="badge secondary">Secondary badge</span>
+        <span class="badge tertiary">Tertiary badge</span>
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
@@ -1034,6 +1012,95 @@
         </div>
       </div>
     </div>
+    <div class="container py-10">
+      <div class="tabs" data-graupl-tabs-options="{'automaticActivation': true}">
+        <div class="tab-list">
+          <button class="tab-toggle">
+            Tab 1 with text
+          </button>
+          <button class="tab-toggle">
+            Tab 2 with more text
+          </button>
+          <button class="tab-toggle">
+            Tab 3 this is the longest title of them all!
+          </button>
+          <button class="tab-toggle">
+            Tab 4 and this has a longer title
+          </button>
+          <button class="tab-toggle">
+            Tab 5 this has some text too
+          </button>
+        </div>
+        <div class="tab-content">
+          <p>This is the content of the first tab.</p>
+          <p>This is the content of the first tab.</p>
+          <p>This is the content of the first tab.</p>
+        </div>
+        <div class="tab-content">
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+          <p>This is the content of the second tab.</p>
+        </div>
+        <div class="tab-content">
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+          <p>This is the content of the third tab.</p>
+        </div>
+        <div class="tab-content">
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+          <p>This is the content of the fourth tab.</p>
+        </div>
+        <div class="tab-content">
+          <p>This is the content of the fifth tab.</p>
+          <p>This is the content of the fifth tab.</p>
+          <p>This is the content of the fifth tab.</p>
+          <p>This is the content of the fifth tab.</p>
+          <p>This is the content of the fifth tab.</p>
+          <p>This is the content of the fifth tab.</p>
+        </div>
+      </div>
+    </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Carousels</h2>
       <section class="carousel">
@@ -1140,71 +1207,64 @@
         </li>
       </ul>
     </div>
-    <div class="py-10 my-10 container sidebars">
-      <div class="sidebar-left z-1">
-        <div class="bg-primary-500 py-10">
-          <h2>Sidebar content (left)</h2>
-          <p>This is sidebar content.</p>
+    <div class="container py-10 my-10 align-content-center">
+      <h2>Disclosures</h2>
+      <button class="disclosure-toggle primary" data-graupl-disclosure-target="#disclosure" type="button" aria-label="Toggle disclosure example"></button>
+      <div id="#disclosure" class="disclosure">
+        <div class="disclosure-content">
+          <p>This content is hidden until the disclosure is open.</p>
+          <p>This is some more content with a <a href="#">link</a> in it.</p>
         </div>
       </div>
-      <div class="inner-content container z-0">
-        <div class="bg-secondary-500 py-10">
-          <h2>Inner content 1</h2>
-          <p>This is the inner content section where additional information can be placed.</p>
-        </div>
-        <div class="bg-tertiary-500 full-width contain">
-          <div class="bg-tertiary-700 feature contain">
-            <div class="bg-tertiary-800 breakout contain">
-              <div class="bg-secondary-500 py-10">
-                <h2>Inner content 2</h2>
-                <p>This is the inner content section where additional information can be placed.</p>
-              </div>
+    </div>
+    <div class="mt-10 pt-10 mb-5 pb-5 container">
+      <div class="bg-tertiary-200 focus full-width contain">
+        <div class="bg-secondary-200 focus feature contain">
+          <div class="bg-primary-200 focus breakout contain">
+            <div class="bg-primary-100 focus py-10">
             </div>
           </div>
         </div>
-        <div class="bg-secondary-500 py-10">
-          <h2>Inner content 3</h2>
-          <p>This is the inner content section where additional information can be placed.</p>
-        </div>
       </div>
-      <div class="sidebar-right z-1">
-        <div class="bg-primary-500 py-10">
-          <h2>Sidebar content (right)</h2>
-          <p>This is sidebar content.</p>
+    </div>
+    <div class="py-5 my-5 container sidebars">
+      <div class="bg-tertiary-200 focus full-width contain">
+        <div class="bg-secondary-200 focus feature contain">
+          <div class="bg-primary-200 focus breakout contain">
+            <div class="bg-primary-100 focus py-10">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="py-10 my-10 container sidebars">
-      <div class="sidebar-left bg-primary-700 z-1">
-        <div class="bg-primary-500 py-10">
-          <h2>Sidebar content (left)</h2>
-          <p>This is sidebar content.</p>
-        </div>
-      </div>
-      <div class="content-right bg-secondary-700 z-0">
-        <div class="bg-secondary-500 py-10">
-          <h2>Inner content 1</h2>
-          <p>This is the inner content section where additional information can be placed.</p>
+    <div class="py-5 my-5 container sidebars-left">
+      <div class="bg-tertiary-200 focus full-width contain">
+        <div class="bg-secondary-200 focus feature contain">
+          <div class="bg-primary-200 focus breakout contain">
+            <div class="bg-primary-100 focus py-10">
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="py-10 my-10 container sidebars">
-      <div class="content-left bg-secondary-700 z-0">
-        <div class="bg-secondary-500 py-10">
-          <h2>Inner content 1</h2>
-          <p>This is the inner content section where additional information can be placed.</p>
-        </div>
-      </div>
-      <div class="sidebar-right bg-primary-700 z-1">
-        <div class="bg-primary-500 py-10">
-          <h2>Sidebar content (right)</h2>
-          <p>This is sidebar content.</p>
+    <div class="mb-10 pb-10 mt-5 pt-5 container sidebars-right">
+      <div class="bg-tertiary-200 focus full-width contain">
+        <div class="bg-secondary-200 focus feature contain">
+          <div class="bg-primary-200 focus breakout contain">
+            <div class="bg-primary-100 focus py-10">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script src="./dist/js/graupl.js"></script>
+  <script type="module" src="./packages/core/src/js/accordion/index.js"></script>
+  <script type="module" src="./packages/core/src/js/alert/index.js"></script>
+  <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
+  <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
+  <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
+  <script type="module" src="./packages/core/src/js/tabs/index.js"></script>
   <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

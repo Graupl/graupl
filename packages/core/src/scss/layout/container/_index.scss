@@ -28,58 +28,75 @@
 // - `.feature`: A feature container component.
 // - `.breakout`: A breakout container component.
 // - `.contain`: A utility class to contain child elements to the content section of the container grid.
-// - `.sidebars`: A utility class to enable sidebars in the container.
-// - `.sidebar-left`: A left sidebar container component.
-// - `.sidebar-right`: A right sidebar container component.
-// - `.content-left`: A left content container component.
-// - `.content-right`: A right content container component.
-// - `.inner-content`: A utility class to contain child elements to the inner content section of the container grid.
+// - `.sidebars`: A utility class to enable two sidebars in the container.
+// - `.sidebars-left`: A utility class to enable a left sidebar in the container.
+// - `.sidebars-right`: A utility class to enable a right sidebar in the container.
+// - `.sidebar-left`: A left sidebar container component used directly inside of a container with sidebars.
+// - `.sidebar-right`: A right sidebar container component used directly inside of a container with sidebars.
+// - `.sidebar`: A sidebar container component used directly inside of a container with sidebars.
+// - `.content`: A content container component used directly inside of a container with sidebars.
 //
-// The following custom properties control the generated classes:
-// - `--graupl-container-gap`: The gap between the container sections.
-// - `--graupl-container-content-max-width`: The maximum width of the content section.
-// - `--graupl-container-sidebar-width`: The width of the sidebar sections.
-// - `--graupl-container-breakout-max-width`: The maximum width of the breakout section.
-// - `--graupl-container-feature-max-width`: The maximum width of the feature section.
-// - `--graupl-container-full-width-section-min-width`: The minimum width of one side of the full-width section.
-// - `--graupl-container-full-width-section-max-width`: The maximum width of one side of the full-width section.
-// - `--graupl-container-feature-section-min-width`: The minimum width of one side of the feature section.
-// - `--graupl-container-feature-section-max-width`: The maximum width of one side of the feature section.
-// - `--graupl-container-breakout-section-min-width`: The minimum width of one side of the breakout section.
-// - `--graupl-container-breakout-section-max-width`: The maximum width of one side of the breakout section.
-// - `--graupl-container-content-section-min-width`: The minimum width of the content section.
-// - `--graupl-container-content-section-max-width`: The maximum width of the content section.
-// - `--graupl-container-full-width-section-width`: The calculated minmax width of the full-width section.
-// - `--graupl-container-feature-section-width`: The calculated minmax width of the feature section.
-// - `--graupl-container-breakout-section-width`: The calculated minmax width of the breakout section.
-// - `--graupl-container-content-section-width`: The calculated minmax width of the content section.
-// - `--graupl-container-sidebar-left-section-width`: The width of the left sidebar section.
-// - `--graupl-container-sidebar-right-section-width`: The width of the right sidebar section.
-// - `--graupl-container-inner-content-section-width`: The calculated minmax width of the inner content section.
+// The following custom properties can be used to customize the container component:
+// | Property                                                      | Description                                                                         | Default Value                                                                                                                                                                                                                                                                                                                                                        |
+// | ---                                                           | ---                                                                                 | ---                                                                                                                                                                                                                                                                                                                                                                  |
+// | `--graupl-container-sidebar-width`                            | The width of the sidebar sections.                                                  | `26ch`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-breakout-width`                           | The width that the breakout section will extend beyond the content.                 | `4ch`                                                                                                                                                                                                                                                                                                                                                                |
+// | `--graupl-container-feature-width`                            | The width that the feature section will extend beyond the breakout.                 | `10ch`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-content-max-width`                        | The maximum width of the content section.                                           | `var(--graupl-content-max-width)`                                                                                                                                                                                                                                                                                                                                    |
+// | `--graupl-container-breakout-max-width`                       | The maximum width of the breakout section.                                          | `calc(var(--graupl-container-content-max-width) + var(--graupl-container-breakout-width))`                                                                                                                                                                                                                                                                           |
+// | `--graupl-container-feature-max-width`                        | The maximum width of the feature section.                                           | `calc(var(--graupl-container-breakout-max-width) + var(--graupl-container-feature-width))`                                                                                                                                                                                                                                                                           |
+// | `--graupl-container-full-width-section-min-width`             | The minimum width of one side of the full-width section.                            | `var(--graupl-spacer-5)`                                                                                                                                                                                                                                                                                                                                             |
+// | `--graupl-container-full-width-section-max-width`             | The maximum width of one side of the full-width section.                            | `1fr`                                                                                                                                                                                                                                                                                                                                                                |
+// | `--graupl-container-feature-section-min-width`                | The minimum width of one side of the feature section.                               | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-feature-section-max-width`                | The maximum width of one side of the feature section.                               | `calc((var(--graupl-container-feature-max-width) - var(--graupl-container-breakout-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-breakout-section-min-width`               | The minimum width of one side of the breakout section.                              | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-breakout-section-max-width`               | The maximum width of one side of the breakout section.                              | `calc((var(--graupl-container-breakout-max-width) - var(--graupl-container-content-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-content-section-min-width`                | The minimum width of the content section.                                           | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-breakout-section-min-width) * 2))`                                                                                                                                                                       |
+// | `--graupl-container-content-section-max-width`                | The maximum width of the content section.                                           | `var(--graupl-container-content-max-width)`                                                                                                                                                                                                                                                                                                                          |
+// | `--graupl-container-full-width-section-width`                 | The calculated minmax width of the full-width section.                              | `minmax(var(--graupl-container-full-width-section-min-width), var(--graupl-container-full-width-section-max-width))`                                                                                                                                                                                                                                                 |
+// | `--graupl-container-feature-section-width`                    | The calculated minmax width of the feature section.                                 | `minmax(var(--graupl-container-feature-section-min-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                       |
+// | `--graupl-container-breakout-section-width`                   | The calculated minmax width of the breakout section.                                | `minmax(var(--graupl-container-breakout-section-min-width), var(--graupl-container-breakout-section-max-width))`                                                                                                                                                                                                                                                     |
+// | `--graupl-container-content-section-width`                    | The calculated width of the content section.                                        | `min(var(--graupl-container-content-section-min-width), var(--graupl-container-content-section-max-width))`                                                                                                                                                                                                                                                          |
+// | `--graupl-container-sidebar-left-section-width`               | The width of the left sidebar section.                                              | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
+// | `--graupl-container-sidebar-right-section-width`              | The width of the right sidebar section.                                             | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
+// | `--graupl-container-sidebars-breakout-section-width`          | The breakout width when both sidebars are enabled.                                  | `var(--graupl-container-breakout-section-max-width)`                                                                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-sidebars-content-section-min-width`       | The minimum width of the content section when both sidebars are enabled.            | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-sidebars-breakout-section-width) * 2) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                       |
+// | `--graupl-container-sidebars-content-section-max-width`       | The maximum width of the content section when both sidebars are enabled.            | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))` |
+// | `--graupl-container-sidebars-content-section-width`           | The calculated width of the content section when both sidebars are enabled.         | `min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-content-section-max-width))`                                                                                                                                                                                                                                        |
+// | `--graupl-container-sidebars-right-content-section-min-width` | The minimum width of the content section when only the right sidebar is enabled.    | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                             |
+// | `--graupl-container-sidebars-right-content-section-max-width` | The maximum width of the content section when only the right sidebar is enabled.    | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                      |
+// | `--graupl-container-sidebars-right-content-section-width`     | The calculated width of the content section when only the right sidebar is enabled. | `min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-right-content-section-max-width))`                                                                                                                                                                                                                            |
+// | `--graupl-container-sidebars-left-content-section-min-width`  | The minimum width of the content section when only the left sidebar is enabled.     | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))`                                                              |
+// | `--graupl-container-sidebars-left-content-section-max-width`  | The maximum width of the content section when only the left sidebar is enabled.     | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                       |
+// | `--graupl-container-sidebars-left-content-section-width`      | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
 //
-// The following variables control the generated classes:
-// - `$container-selector-base`: The base selector for the container component.
-// - `$container-selector`: The selector for the container component.
-// - `$container-breakout-selector-base`: The base selector for the breakout container component.
-// - `$container-breakout-selector`: The selector for the breakout container component.
-// - `$container-feature-selector-base`: The base selector for the feature container component.
-// - `$container-feature-selector`: The selector for the feature container component.
-// - `$container-full-width-selector-base`: The base selector for the full-width container component.
-// - `$container-full-width-selector`: The selector for the full-width container component.
-// - `$container-contain-selector-base`: The base selector for the contain utility class.
-// - `$container-contain-selector`: The selector for the contain utility class.
-// - `$container-sidebars-selector-base`: The base selector for the sidebars utility class.
-// - `$container-sidebars-selector`: The selector for the sidebars utility class.
-// - `$container-content-selector-base`: The base selector for the content container component.
-// - `$container-content-selector`: The selector for the content container component.
-// - `$container-sidebar-selector-base`: The base selector for the sidebar container component.
-// - `$container-sidebar-selector`: The selector for the sidebar container component.
-// - `$container-left-selector-suffix`: The suffix for the left sidebar selector.
-// - `$container-right-selector-suffix`: The suffix for the right sidebar selector.
-// - `$container-inner-selector-prefix`: The prefix for the inner content selector.
-// - `$container-breakout-width`: The width of the breakout section will extend from the content section.
-// - `$container-feature-width`: The width of the feature section will extend from the breakout section.
-// - `$container-sidebar-width`: The width of the sidebar sections.
+// The following sass variables can be used to customize the generation of the container component:
+// | Variable                              | Description                                                             | Default Value             |
+// | ---                                   | ---                                                                     | ---                       |
+// | `$selector-base`                      | The selector base for the component.                                    | `.`                       |
+// | `$modifier-selector-base`             | The selector base for component modifiers.                              | `.`                       |
+// | `$container-selector-base`            | The base selector for the container component.                          | `$selector-base`          |
+// | `$container-selector`                 | The selector for the container component.                               | `container`               |
+// | `$container-breakout-selector-base`   | The base selector for the breakout container component.                 | `$selector-base`          |
+// | `$container-breakout-selector`        | The selector for the breakout container component.                      | `breakout`                |
+// | `$container-feature-selector-base`    | The base selector for the feature container component.                  | `$selector-base`          |
+// | `$container-feature-selector`         | The selector for the feature container component.                       | `feature`                 |
+// | `$container-full-width-selector-base` | The base selector for the full-width container component.               | `$selector-base`          |
+// | `$container-full-width-selector`      | The selector for the full-width container component.                    | `full-width`              |
+// | `$container-contain-selector-base`    | The base selector for the contain utility class.                        | `$modifier-selector-base` |
+// | `$container-contain-selector`         | The selector for the contain utility class.                             | `contain`                 |
+// | `$container-sidebars-selector-base`   | The base selector for the sidebars utility class.                       | `$modifier-selector-base` |
+// | `$container-sidebars-selector`        | The selector for the sidebars utility class.                            | `sidebars`                |
+// | `$container-content-selector-base`    | The base selector for the content container component.                  | `$selector-base`          |
+// | `$container-content-selector`         | The selector for the content container component.                       | `content`                 |
+// | `$container-sidebar-selector-base`    | The base selector for the sidebar container component.                  | `$selector-base`          |
+// | `$container-sidebar-selector`         | The selector for the sidebar container component.                       | `sidebar`                 |
+// | `$container-left-selector-suffix`     | The suffix for the left sidebar selector.                               | `-left`                   |
+// | `$container-right-selector-suffix`    | The suffix for the right sidebar selector.                              | `-right`                  |
+// | `$container-inner-selector-prefix`    | The prefix for the inner content selector.                              | `inner-`                  |
+// | `$container-breakout-width`           | The width of the breakout section will extend from the content section. | `4ch`                     |
+// | `$container-feature-width`            | The width of the feature section will extend from the breakout section. | `10ch`                    |
+// | `$container-sidebar-width`            | The width of the sidebar sections.                                      | `26ch`                    |
 //
 // @example
 //   <div class="container">
@@ -104,21 +121,21 @@
 //   </div>
 //
 // @example
-//   <div class="container sidebars">
-//     <div class="sidebar-left">
+//   <div class="container sidebars-left">
+//     <div class="sidebar">
 //       Left sidebar content
 //     </div>
-//     <div class="content-right">
+//     <div class="content">
 //       Content right content
 //     </div>
 //   </div>
 //
 // @example
-//   <div class="container sidebars">
-//     <div class="content-left">
+//   <div class="container sidebars-right">
+//     <div class="content">
 //       Content left content
 //     </div>
-//     <div class="sidebar-right">
+//     <div class="sidebar">
 //       Right sidebar content
 //     </div>
 //   </div>
@@ -128,7 +145,7 @@
 //     <div class="sidebar-left">
 //       Left sidebar content
 //     </div>
-//     <div class="inner-content">
+//     <div class="content">
 //       Inner content content
 //     </div>
 //     <div class="sidebar-right">
@@ -155,6 +172,7 @@
       $container-feature-section-width [feature-end]
       $container-full-width-section-width [full-width-end];
     container-type: inline-size;
+    overflow-wrap: break-word;
 
     // Container components should span the full width of their parent container
     // and inherit the grid columns.
@@ -222,6 +240,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left)
         > :not(
@@ -240,6 +259,7 @@
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
         > :not(
@@ -253,46 +273,12 @@
         }
       }
 
-      // .content-right
-      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
         display: grid;
         grid-column: 1 / -1;
         grid-template-columns: subgrid;
-
-        // > :not(.container, .breakout, .feature, .full-width, .sidebar-right)
-        > :not(
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-        ) {
-          grid-column: content;
-        }
-
-        // Contain components should inherit the container's grid columns and
-        // force all children to be in the content section.
-        //
-        // > .contain
-        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-          // > :not(.container, .breakout, .feature, .full-width)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
-            grid-column: content;
-          }
-        }
-      }
-
-      // .content-left
-      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
+        align-content: flex-start;
 
         // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
         > :not(
@@ -309,44 +295,7 @@
         // Contain components should inherit the container's grid columns and
         // force all children to be in the content section.
         //
-        // > .contain
-        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-          // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-          ) {
-            grid-column: content;
-          }
-        }
-      }
-
-      // .inner-content
-      #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: subgrid;
-
-        // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
-        > :not(
-          #{defaults.$container-selector-base}#{defaults.$container-selector},
-          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix},
-          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix}
-        ) {
-          grid-column: content;
-        }
-
-        // Contain components should inherit the container's grid columns and
-        // force all children to be in the content section.
-        //
-        // > .contain
+        // .contain
         #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
           // > :not(.container, .breakout, .feature, .full-width, .sidebar-left, .sidebar-right)
           > :not(
@@ -363,24 +312,139 @@
       }
     }
 
+    // &.sidebars-left
+    &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+      // .sidebar
+      #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-content: flex-start;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+      }
+
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-content: flex-start;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+
+        // Contain components should inherit the container's grid columns and
+        // force all children to be in the content section.
+        //
+        // .contain
+        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+          > :not(
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
+            grid-column: content;
+          }
+        }
+      }
+    }
+
+    // &.sidebars-right
+    &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+      // .sidebar
+      #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-content: flex-start;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+      }
+
+      // .content
+      #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
+        align-content: flex-start;
+
+        // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+        > :not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector},
+          #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+          #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+          #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+          #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+        ) {
+          grid-column: content;
+        }
+
+        // Contain components should inherit the container's grid columns and
+        // force all children to be in the content section.
+        //
+        // .contain
+        #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          // > :not(.container, .breakout, .feature, .full-width, .sidebar)
+          > :not(
+            #{defaults.$container-selector-base}#{defaults.$container-selector},
+            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
+            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
+            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector},
+            #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}
+          ) {
+            grid-column: content;
+          }
+        }
+      }
+    }
+
     @include screen.trigger(allow-sidebars) {
       // &.sidebars
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
-          [feature-start] $container-feature-section-width
-          [breakout-start] $container-breakout-section-width
-          [content-start sidebar-left-start content-left-start] $container-sidebar-left-section-width
-          [sidebar-left-end inner-content-start content-right-start] $container-inner-content-section-width
-          [content-left-end inner-content-end sidebar-right-start] $container-sidebar-right-section-width
-          [content-right-end sidebar-right-end content-end]
-          $container-breakout-section-width [breakout-end]
-          $container-feature-section-width [feature-end]
-          $container-full-width-section-width [full-width-end];
+          [sidebar-left-start feature-start] $container-sidebar-left-section-width
+          [sidebar-left-end breakout-start] $container-sidebars-breakout-section-width
+          [content-start] $container-sidebars-content-section-width
+          [content-end] $container-sidebars-breakout-section-width
+          [breakout-end sidebar-right-start] $container-sidebar-right-section-width
+          [feature-end sidebar-right-end] $container-full-width-section-width
+          [full-width-end];
 
-        // .sidebar-left
-        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
-          grid-row: 1;
+        // > .sidebar-left
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
@@ -394,7 +458,7 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-end: sidebar-left-end;
+              grid-column-end: content-start;
             }
           }
 
@@ -427,9 +491,10 @@
           }
         }
 
-        // .sidebar-right
-        #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
-          grid-row: 1;
+        // > .sidebar-right
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-right-selector-suffix} {
+          grid-row: 1 / -1;
+          grid-template: subgrid;
 
           // Make sure other container classes do not break the layout inside of the sidebar.
           //
@@ -443,7 +508,7 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-start: sidebar-right-start;
+              grid-column-start: content-end;
             }
           }
 
@@ -476,11 +541,30 @@
           }
         }
 
-        // .content-right
-        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-right-selector-suffix} {
+        > .content
+          > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
+        }
+      }
 
-          // Make sure other container classes do not break the layout inside of the content.
+      // &.sidebars-left
+      &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+        grid-template-columns:
+          [full-width-start] $container-full-width-section-width
+          [sidebar-start feature-start] $container-sidebar-left-section-width
+          [sidebar-end breakout-start] $container-sidebars-breakout-section-width
+          [content-start] $container-sidebars-left-content-section-width
+          [content-end] $container-breakout-section-width
+          [breakout-end] $container-feature-section-width
+          [feature-end] $container-full-width-section-width
+          [full-width-end];
+
+        // > .sidebar
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+          grid-row: 1 / -1;
+          grid-template: subgrid;
+
+          // Make sure other container classes do not break the layout inside of the sidebar.
           //
           // &:not(.container)
           &:not(
@@ -492,11 +576,11 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-start: content-right-start;
+              grid-column-end: content-start;
             }
           }
 
-          // Lock content to the content-right section.
+          // Lock content to the sidebar section.
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
@@ -505,11 +589,11 @@
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
           ) {
-            grid-column: content-right;
+            grid-column: sidebar;
           }
 
           // Contain components should inherit the container's grid columns and
-          // force all children to be in the content-right section.
+          // force all children to be in the sidebar section.
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
@@ -520,16 +604,35 @@
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
               #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
-              grid-column: content-right;
+              grid-column: sidebar;
             }
           }
         }
 
-        // .content-left
-        #{defaults.$container-content-selector-base}#{defaults.$container-content-selector}#{defaults.$container-left-selector-suffix} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
+        }
+      }
 
-          // Make sure other container classes do not break the layout inside of the content.
+      // &.sidebars-right
+      &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+        grid-template-columns:
+          [full-width-start] $container-full-width-section-width
+          [feature-start] $container-feature-section-width
+          [breakout-start] $container-breakout-section-width
+          [content-start] $container-sidebars-right-content-section-width
+          [content-end] $container-sidebars-breakout-section-width
+          [breakout-end sidebar-start] $container-sidebar-right-section-width
+          [feature-end sidebar-end] $container-full-width-section-width
+          [full-width-end];
+
+        // > .sidebar
+        > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
+          grid-row: 1 / -1;
+          grid-template: subgrid;
+
+          // Make sure other container classes do not break the layout inside of the sidebar.
           //
           // &:not(.container)
           &:not(
@@ -541,11 +644,11 @@
             #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column-end: content-left-end;
+              grid-column-start: content-end;
             }
           }
 
-          // Lock content to the content-left section.
+          // Lock content to the sidebar section.
           //
           // > :not(.container, .breakout, .feature, .full-width)
           > :not(
@@ -554,11 +657,11 @@
             #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
             #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
           ) {
-            grid-column: content-left;
+            grid-column: sidebar;
           }
 
           // Contain components should inherit the container's grid columns and
-          // force all children to be in the content-left section.
+          // force all children to be in the sidebar section.
           //
           // > .contain
           #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
@@ -569,58 +672,14 @@
               #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
               #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
             ) {
-              grid-column: content-left;
+              grid-column: sidebar;
             }
           }
         }
 
-        // .inner-content
-        #{defaults.$container-content-selector-base}#{defaults.$container-inner-selector-prefix}#{defaults.$container-content-selector} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
-
-          // Make sure other container classes do not break the layout inside of the content.
-          //
-          // &:not(.container)
-          &:not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector}
-          ) {
-            // &, .container, .breakout, .feature, .full-width
-            &,
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector} {
-              grid-column: inner-content;
-            }
-          }
-
-          // Lock content to the inner-content section.
-          //
-          // > :not(.container, .breakout, .feature, .full-width)
-          > :not(
-            #{defaults.$container-selector-base}#{defaults.$container-selector},
-            #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-            #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-            #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-          ) {
-            grid-column: inner-content;
-          }
-
-          // Contain components should inherit the container's grid columns and
-          // force all children to be in the inner-content section.
-          //
-          // > .contain
-          #{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
-            // > :not(.container, .breakout, .feature, .full-width)
-            > :not(
-              #{defaults.$container-selector-base}#{defaults.$container-selector},
-              #{defaults.$container-breakout-selector-base}#{defaults.$container-breakout-selector},
-              #{defaults.$container-full-width-selector-base}#{defaults.$container-full-width-selector},
-              #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
-            ) {
-              grid-column: inner-content;
-            }
-          }
         }
       }
     }

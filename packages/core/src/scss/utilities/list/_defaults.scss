@@ -35,18 +35,7 @@ $-list-style-type-properties: (
   circle: circle,
   square: square,
 );
-$custom-list-style-type-properties: () !default;
 $list-style-type-properties: () !default;
-
-// @todo remove this once $custom-list-style-type-properties is removed
-@if $custom-list-style-type-properties != () {
-  @warn "`$custom-list-style-type-properties` is deprecated and will be removed in a future release of Graupl. Use `$list-style-type-properties` instead.";
-
-  $list-style-type-properties: map.merge(
-    $list-style-type-properties,
-    $custom-list-style-type-properties
-  );
-}
 
 // List style position properties.
 $list-style-position-selector-prefix: "list-style-" !default;
@@ -54,18 +43,7 @@ $-list-style-position-properties: (
   inside: inside,
   outside: outside,
 );
-$custom-list-style-position-properties: () !default;
 $list-style-position-properties: () !default;
-
-// @todo remove this once $custom-list-style-position-properties is removed
-@if $custom-list-style-position-properties != () {
-  @warn "`$custom-list-style-position-properties` is deprecated and will be removed in a future release of Graupl. Use `$list-style-position-properties` instead.";
-
-  $list-style-position-properties: map.merge(
-    $list-style-position-properties,
-    $custom-list-style-position-properties
-  );
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

@@ -3,123 +3,243 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                           | Default                                                                                                                                                                             |
+// | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-alert-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                              |
+// | --graupl-alert-padding-y                  | var(--graupl-spacer-5)                                                                                                                                                              |
+// | --graupl-alert-padding                    | var(--graupl-alert-padding-y) var(--graupl-alert-padding-x)                                                                                                                         |
+// | --graupl-alert-column-gap                 | var(--graupl-spacer-0)                                                                                                                                                              |
+// | --graupl-alert-row-gap                    | var(--graupl-spacer-3)                                                                                                                                                              |
+// | --graupl-alert-gap                        | var(--graupl-alert-column-gap) var(--graupl-alert-row-gap)                                                                                                                          |
+// | --graupl-alert-background                 | var(--graupl-background)                                                                                                                                                            |
+// | --graupl-alert-color                      | var(--graupl-color)                                                                                                                                                                 |
+// | --graupl-alert-link-color                 | link-variables.var(--graupl-link-color)                                                                                                                                             |
+// | --graupl-alert-link-visited-color         | var(--graupl-alert-link-color)                                                                                                                                                      |
+// | --graupl-alert-link-focus-color           | var(--graupl-alert-link-color)                                                                                                                                                      |
+// | --graupl-alert-link-hover-color           | link-variables.var(--graupl-link-hover-color)                                                                                                                                       |
+// | --graupl-alert-link-active-color          | var(--graupl-alert-link-hover-color)                                                                                                                                                |
+// | --graupl-alert-link-disabled-color        | link-variables.var(--graupl-link-disabled-color)                                                                                                                                    |
+// | --graupl-alert-border-color               | var(--graupl-alert-color)                                                                                                                                                           |
+// | --graupl-alert-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                |
+// | --graupl-alert-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                               |
+// | --graupl-alert-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                             |
+// | --graupl-alert-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                            |
+// | --graupl-alert-border-radius              | var(--graupl-alert-border-top-left-radius) var(--graupl-alert-border-top-right-radius) var(--graupl-alert-border-bottom-right-radius) var(--graupl-alert-border-bottom-left-radius) |
+// | --graupl-alert-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                      |
+// | --graupl-alert-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                    |
+// | --graupl-alert-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                   |
+// | --graupl-alert-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                     |
+// | --graupl-alert-border-width               | var(--graupl-alert-border-top-width) var(--graupl-alert-border-right-width) var(--graupl-alert-border-bottom-width) var(--graupl-alert-border-left-width)                           |
+// | --graupl-alert-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                      |
+// | --graupl-alert-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                    |
+// | --graupl-alert-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                   |
+// | --graupl-alert-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                     |
+// | --graupl-alert-border-style               | var(--graupl-alert-border-top-style) var(--graupl-alert-border-right-style) var(--graupl-alert-border-bottom-style) var(--graupl-alert-border-left-style)                           |
+// | --graupl-alert-transition                 | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)  |
+// | --graupl-alert-transition-reduced-motion  | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                             |
+// | --graupl-alert-header-padding-x           | 0                                                                                                                                                                                   |
+// | --graupl-alert-header-padding-y           | 0                                                                                                                                                                                   |
+// | --graupl-alert-header-padding             | var(--graupl-alert-header-padding-y) var(--graupl-alert-header-padding-x)                                                                                                           |
+// | --graupl-alert-title-color                | var(--graupl-alert-color)                                                                                                                                                           |
+// | --graupl-alert-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                          |
+// | --graupl-alert-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                        |
+// | --graupl-alert-title-font-family          | var(--graupl-h4-font-family)                                                                                                                                                        |
+// | --graupl-alert-title-line-height          | var(--graupl-h4-line-height)                                                                                                                                                        |
+// | --graupl-alert-title-margin               | 0 0 0 0                                                                                                                                                                             |
+// | --graupl-alert-body-padding-x             | 0                                                                                                                                                                                   |
+// | --graupl-alert-body-padding-y             | 0                                                                                                                                                                                   |
+// | --graupl-alert-body-padding               | var(--graupl-alert-body-padding-y) var(--graupl-alert-body-padding-x)                                                                                                               |
+// | --graupl-alert-footer-padding-x           | 0                                                                                                                                                                                   |
+// | --graupl-alert-footer-padding-y           | 0                                                                                                                                                                                   |
+// | --graupl-alert-footer-padding             | var(--graupl-alert-footer-padding-y) var(--graupl-alert-footer-padding-x)                                                                                                           |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
 @use "../../theme/color/variables" as color;
 @use "../../theme/typography/variables" as typography;
+@use "../../base/link/variables" as link-variables;
 @use "sass:map";
 
 // Alert properties.
+// --graupl-alert-padding-x
 $alert-padding-x: var(
   --#{root-defaults.$prefix}alert-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-alert-padding-y
 $alert-padding-y: var(
   --#{root-defaults.$prefix}alert-padding-y,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-alert-padding
 $alert-padding: var(
   --#{root-defaults.$prefix}alert-padding,
   #{$alert-padding-y} #{$alert-padding-x}
 );
 
 // Alert gap properties.
+// --graupl-alert-column-gap
 $alert-column-gap: var(
   --#{root-defaults.$prefix}alert-column-gap,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-alert-row-gap
 $alert-row-gap: var(
   --#{root-defaults.$prefix}alert-row-gap,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-alert-gap
 $alert-gap: var(
   --#{root-defaults.$prefix}alert-gap,
   #{$alert-column-gap} #{$alert-row-gap}
 );
 
 // Alert color properties.
+// --graupl-alert-background
 $alert-background: var(
   --#{root-defaults.$prefix}alert-background,
   #{color.$background}
 );
+
+// --graupl-alert-color
 $alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$color});
-$alert-link-color: var(--#{root-defaults.$prefix}alert-link-color);
+
+// --graupl-alert-link-color
+$alert-link-color: var(
+  --#{root-defaults.$prefix}alert-link-color,
+  #{link-variables.$link-color}
+);
+
+// --graupl-alert-link-visited-color
 $alert-link-visited-color: var(
-  --#{root-defaults.$prefix}alert-link-visited-color
+  --#{root-defaults.$prefix}alert-link-visited-color,
+  #{$alert-link-color}
 );
-$alert-link-focus-color: var(--#{root-defaults.$prefix}alert-link-focus-color);
-$alert-link-hover-color: var(--#{root-defaults.$prefix}alert-link-hover-color);
+
+// --graupl-alert-link-focus-color
+$alert-link-focus-color: var(
+  --#{root-defaults.$prefix}alert-link-focus-color,
+  #{$alert-link-color}
+);
+
+// --graupl-alert-link-hover-color
+$alert-link-hover-color: var(
+  --#{root-defaults.$prefix}alert-link-hover-color,
+  #{link-variables.$link-hover-color}
+);
+
+// --graupl-alert-link-active-color
 $alert-link-active-color: var(
-  --#{root-defaults.$prefix}alert-link-active-color
+  --#{root-defaults.$prefix}alert-link-active-color,
+  #{$alert-link-hover-color}
 );
+
+// --graupl-alert-link-disabled-color
 $alert-link-disabled-color: var(
-  --#{root-defaults.$prefix}alert-link-disabled-color
+  --#{root-defaults.$prefix}alert-link-disabled-color,
+  #{link-variables.$link-disabled-color}
 );
 
 // Alert border-properties.
+// --graupl-alert-border-color
 $alert-border-color: var(
   --#{root-defaults.$prefix}alert-border-color,
   #{$alert-color}
 );
+
+// --graupl-alert-border-top-left-radius
 $alert-border-top-left-radius: var(
   --#{root-defaults.$prefix}alert-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-alert-border-top-right-radius
 $alert-border-top-right-radius: var(
   --#{root-defaults.$prefix}alert-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-alert-border-bottom-left-radius
 $alert-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}alert-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-alert-border-bottom-right-radius
 $alert-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}alert-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-alert-border-radius
 $alert-border-radius: var(
   --#{root-defaults.$prefix}alert-border-radius,
   #{$alert-border-top-left-radius} #{$alert-border-top-right-radius}
     #{$alert-border-bottom-right-radius} #{$alert-border-bottom-left-radius}
 );
+
+// --graupl-alert-border-top-width
 $alert-border-top-width: var(
   --#{root-defaults.$prefix}alert-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-alert-border-right-width
 $alert-border-right-width: var(
   --#{root-defaults.$prefix}alert-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-alert-border-bottom-width
 $alert-border-bottom-width: var(
   --#{root-defaults.$prefix}alert-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-alert-border-left-width
 $alert-border-left-width: var(
   --#{root-defaults.$prefix}alert-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-alert-border-width
 $alert-border-width: var(
   --#{root-defaults.$prefix}alert-border-width,
   #{$alert-border-top-width} #{$alert-border-right-width}
     #{$alert-border-bottom-width} #{$alert-border-left-width}
 );
+
+// --graupl-alert-border-top-style
 $alert-border-top-style: var(
   --#{root-defaults.$prefix}alert-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-alert-border-right-style
 $alert-border-right-style: var(
   --#{root-defaults.$prefix}alert-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-alert-border-bottom-style
 $alert-border-bottom-style: var(
   --#{root-defaults.$prefix}alert-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-alert-border-left-style
 $alert-border-left-style: var(
   --#{root-defaults.$prefix}alert-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-alert-border-style
 $alert-border-style: var(
   --#{root-defaults.$prefix}alert-border-style,
   #{$alert-border-top-style} #{$alert-border-right-style}
@@ -127,6 +247,7 @@ $alert-border-style: var(
 );
 
 // Alert transition properties.
+// --graupl-alert-transition
 $alert-transition: var(
   --#{root-defaults.$prefix}alert-transition,
   opacity #{map.get(root-variables.$transition-durations, fast)}
@@ -134,6 +255,8 @@ $alert-transition: var(
   transform #{map.get(root-variables.$transition-durations, fast)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-alert-transition-reduced-motion
 $alert-transition-reduced-motion: var(
   --#{root-defaults.$prefix}alert-transition-reduced-motion,
   opacity #{map.get(root-variables.$transition-durations, fast)}
@@ -141,59 +264,85 @@ $alert-transition-reduced-motion: var(
 );
 
 // Alert header properties.
+// --graupl-alert-header-padding-x
 $alert-header-padding-x: var(
   --#{root-defaults.$prefix}alert-header-padding-x,
   0
 );
+
+// --graupl-alert-header-padding-y
 $alert-header-padding-y: var(
   --#{root-defaults.$prefix}alert-header-padding-y,
   0
 );
+
+// --graupl-alert-header-padding
 $alert-header-padding: var(
   --#{root-defaults.$prefix}alert-header-padding,
   #{$alert-header-padding-y} #{$alert-header-padding-x}
 );
 
 // Alert title properties.
+// --graupl-alert-title-color
 $alert-title-color: var(
   --#{root-defaults.$prefix}alert-title-color,
   #{$alert-color}
 );
+
+// --graupl-alert-title-font-size
 $alert-title-font-size: var(
   --#{root-defaults.$prefix}alert-title-font-size,
   #{typography.$h4-font-size}
 );
+
+// --graupl-alert-title-font-weight
 $alert-title-font-weight: var(
   --#{root-defaults.$prefix}alert-title-font-weight,
   #{typography.$h4-font-weight}
 );
+
+// --graupl-alert-title-font-family
 $alert-title-font-family: var(
   --#{root-defaults.$prefix}alert-title-font-family,
   #{typography.$h4-font-family}
 );
+
+// --graupl-alert-title-line-height
 $alert-title-line-height: var(
   --#{root-defaults.$prefix}alert-title-line-height,
   #{typography.$h4-line-height}
 );
+
+// --graupl-alert-title-margin
 $alert-title-margin: var(--#{root-defaults.$prefix}alert-title-margin, 0 0 0 0);
 
 // Alert body properties.
+// --graupl-alert-body-padding-x
 $alert-body-padding-x: var(--#{root-defaults.$prefix}alert-body-padding-x, 0);
+
+// --graupl-alert-body-padding-y
 $alert-body-padding-y: var(--#{root-defaults.$prefix}alert-body-padding-y, 0);
+
+// --graupl-alert-body-padding
 $alert-body-padding: var(
   --#{root-defaults.$prefix}alert-body-padding,
   #{$alert-body-padding-y} #{$alert-body-padding-x}
 );
 
 // Alert footer properties.
+// --graupl-alert-footer-padding-x
 $alert-footer-padding-x: var(
   --#{root-defaults.$prefix}alert-footer-padding-x,
   0
 );
+
+// --graupl-alert-footer-padding-y
 $alert-footer-padding-y: var(
   --#{root-defaults.$prefix}alert-footer-padding-y,
   0
 );
+
+// --graupl-alert-footer-padding
 $alert-footer-padding: var(
   --#{root-defaults.$prefix}alert-footer-padding,
   #{$alert-footer-padding-y} #{$alert-footer-padding-x}

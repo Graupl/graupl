@@ -10,23 +10,25 @@
 // - N/A.
 //
 // The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$visually-hidden-selector`: The selector for the visually-hidden utility class.
-// - `$visually-hidden-focusable-selector`: The selector for the focusable utility class.
+// | Variable                              | Description                                       | Default Value       |
+// | ---                                   | ---                                               | ---                 |
+// | `$selector-base`                      | Base selector for utility classes.                | `"."`               |
+// | `$use-important`                      | Append `!important` to generated declarations.    | `true`              |
+// | `$generate-base-utilities`            | Generate the base utilities.                      | `true`              |
+// | `$screen-aware`                       | Generate screen-aware variants.                   | `false`             |
+// | `$theme-aware`                        | Generate theme-aware variants.                    | `false`             |
+// | `$state-aware`                        | Generate state-aware variants.                    | `false`             |
+// | `$container-aware`                    | Generate container-aware variants.                | `false`             |
+// | `$screen-aware-separator`             | Separator for screen-aware utilities.             | `"\\:"`             |
+// | `$theme-aware-separator`              | Separator for theme-aware utilities.              | `"\\:"`             |
+// | `$state-aware-separator`              | Separator for state-aware utilities.              | `"\\:"`             |
+// | `$container-aware-separator`          | Separator for container-aware utilities.          | `"\\:"`             |
+// | `$screen-aware-selector-prefix`       | Prefix for screen-aware utilities.                | `""`                |
+// | `$theme-aware-selector-prefix`        | Prefix for theme-aware utilities.                 | `""`                |
+// | `$state-aware-selector-prefix`        | Prefix for state-aware utilities.                 | `""`                |
+// | `$container-aware-selector-prefix`    | Prefix for container-aware utilities.             | `"cq\\:"`           |
+// | `$visually-hidden-selector`           | Selector used for visually hidden utilities.      | `"visually-hidden"` |
+// | `$visually-hidden-focusable-selector` | Selector used to expose focusable hidden content. | `"focusable"`       |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

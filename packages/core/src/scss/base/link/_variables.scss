@@ -3,6 +3,81 @@
 // These values are to be used to directly style bases and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                                  | Default                                                                                                                                                                                                                                                                      |
+// | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-link-text-decoration                    | underline                                                                                                                                                                                                                                                                    |
+// | --graupl-link-visited-text-decoration            | var(--graupl-link-text-decoration)                                                                                                                                                                                                                                           |
+// | --graupl-link-focus-text-decoration              | var(--graupl-link-text-decoration)                                                                                                                                                                                                                                           |
+// | --graupl-link-hover-text-decoration              | underline                                                                                                                                                                                                                                                                    |
+// | --graupl-link-active-text-decoration             | var(--graupl-link-hover-text-decoration)                                                                                                                                                                                                                                     |
+// | --graupl-link-disabled-text-decoration           | underline                                                                                                                                                                                                                                                                    |
+// | --graupl-link-text-decoration-thickness          | var(--graupl-border-width)                                                                                                                                                                                                                                                   |
+// | --graupl-link-visited-text-decoration-thickness  | var(--graupl-link-text-decoration-thickness)                                                                                                                                                                                                                                 |
+// | --graupl-link-focus-text-decoration-thickness    | var(--graupl-link-text-decoration-thickness)                                                                                                                                                                                                                                 |
+// | --graupl-link-hover-text-decoration-thickness    | var(--graupl-border-width)                                                                                                                                                                                                                                                   |
+// | --graupl-link-active-text-decoration-thickness   | var(--graupl-link-hover-text-decoration-thickness)                                                                                                                                                                                                                           |
+// | --graupl-link-disabled-text-decoration-thickness | var(--graupl-border-width)                                                                                                                                                                                                                                                   |
+// | --graupl-link-text-decoration-style              | solid                                                                                                                                                                                                                                                                        |
+// | --graupl-link-visited-text-decoration-style      | var(--graupl-link-text-decoration-style)                                                                                                                                                                                                                                     |
+// | --graupl-link-focus-text-decoration-style        | var(--graupl-link-text-decoration-style)                                                                                                                                                                                                                                     |
+// | --graupl-link-hover-text-decoration-style        | solid                                                                                                                                                                                                                                                                        |
+// | --graupl-link-active-text-decoration-style       | var(--graupl-link-hover-text-decoration-style)                                                                                                                                                                                                                               |
+// | --graupl-link-disabled-text-decoration-style     | solid                                                                                                                                                                                                                                                                        |
+// | --graupl-link-color                              | var(--graupl-theme-active--primary--700)                                                                                                                                                                                                                                     |
+// | --graupl-link-visited-color                      | var(--graupl-link-color)                                                                                                                                                                                                                                                     |
+// | --graupl-link-focus-color                        | var(--graupl-link-color)                                                                                                                                                                                                                                                     |
+// | --graupl-link-hover-color                        | theme.get(tertiary, 700)                                                                                                                                                                                                                                                     |
+// | --graupl-link-active-color                       | var(--graupl-link-hover-color)                                                                                                                                                                                                                                               |
+// | --graupl-link-disabled-color                     | var(--graupl-theme-active--primary--200)                                                                                                                                                                                                                                     |
+// | --graupl-link-text-decoration-color              | var(--graupl-link-color)                                                                                                                                                                                                                                                     |
+// | --graupl-link-visited-text-decoration-color      | var(--graupl-link-visited-color)                                                                                                                                                                                                                                             |
+// | --graupl-link-focus-text-decoration-color        | var(--graupl-link-focus-color)                                                                                                                                                                                                                                               |
+// | --graupl-link-hover-text-decoration-color        | var(--graupl-link-hover-color)                                                                                                                                                                                                                                               |
+// | --graupl-link-active-text-decoration-color       | var(--graupl-link-active-color)                                                                                                                                                                                                                                              |
+// | --graupl-link-disabled-text-decoration-color     | var(--graupl-link-disabled-color)                                                                                                                                                                                                                                            |
+// | --graupl-link-background                         | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-visited-background                 | var(--graupl-link-background)                                                                                                                                                                                                                                                |
+// | --graupl-link-focus-background                   | var(--graupl-link-background)                                                                                                                                                                                                                                                |
+// | --graupl-link-hover-background                   | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-active-background                  | var(--graupl-link-hover-background)                                                                                                                                                                                                                                          |
+// | --graupl-link-disabled-background                | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-padding-x                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                       |
+// | --graupl-link-padding-y                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                       |
+// | --graupl-link-padding                            | var(--graupl-link-padding-y) var(--graupl-link-padding-x)                                                                                                                                                                                                                    |
+// | --graupl-link-transition                         | background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function) |
+// | --graupl-link-transition-reduced-motion          | background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)                                                                                            |
+// | --graupl-link-transform                          | var(--graupl-link-initial-transform)                                                                                                                                                                                                                                         |
+// | --graupl-link-visited-transform                  | var(--graupl-link-transform)                                                                                                                                                                                                                                                 |
+// | --graupl-link-focus-transform                    | var(--graupl-link-transform)                                                                                                                                                                                                                                                 |
+// | --graupl-link-hover-transform                    | var(--graupl-link-final-transform)                                                                                                                                                                                                                                           |
+// | --graupl-link-active-transform                   | var(--graupl-link-hover-transform)                                                                                                                                                                                                                                           |
+// | --graupl-link-disabled-transform                 | var(--graupl-link-disabled-transform)                                                                                                                                                                                                                                        |
+// | --graupl-link-border-top-width                   | 0                                                                                                                                                                                                                                                                            |
+// | --graupl-link-border-right-width                 | 0                                                                                                                                                                                                                                                                            |
+// | --graupl-link-border-bottom-width                | 0                                                                                                                                                                                                                                                                            |
+// | --graupl-link-border-left-width                  | 0                                                                                                                                                                                                                                                                            |
+// | --graupl-link-border-width                       | var(--graupl-link-border-top-width) var(--graupl-link-border-right-width) var(--graupl-link-border-bottom-width) var(--graupl-link-border-left-width)                                                                                                                        |
+// | --graupl-link-border-top-style                   | var(--graupl-border-top-style)                                                                                                                                                                                                                                               |
+// | --graupl-link-border-right-style                 | var(--graupl-border-right-style)                                                                                                                                                                                                                                             |
+// | --graupl-link-border-bottom-style                | var(--graupl-border-bottom-style)                                                                                                                                                                                                                                            |
+// | --graupl-link-border-left-style                  | var(--graupl-border-left-style)                                                                                                                                                                                                                                              |
+// | --graupl-link-border-style                       | var(--graupl-link-border-top-style) var(--graupl-link-border-right-style) var(--graupl-link-border-bottom-style) var(--graupl-link-border-left-style)                                                                                                                        |
+// | --graupl-link-border-top-left-radius             | var(--graupl-border-top-left-radius)                                                                                                                                                                                                                                         |
+// | --graupl-link-border-top-right-radius            | var(--graupl-border-top-right-radius)                                                                                                                                                                                                                                        |
+// | --graupl-link-border-bottom-right-radius         | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                                                                     |
+// | --graupl-link-border-bottom-left-radius          | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                                                                      |
+// | --graupl-link-border-radius                      | var(--graupl-link-border-top-left-radius) var(--graupl-link-border-top-right-radius) var(--graupl-link-border-bottom-right-radius) var(--graupl-link-border-bottom-left-radius)                                                                                              |
+// | --graupl-link-border-color                       | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-visited-border-color               | var(--graupl-link-border-color)                                                                                                                                                                                                                                              |
+// | --graupl-link-focus-border-color                 | var(--graupl-link-border-color)                                                                                                                                                                                                                                              |
+// | --graupl-link-hover-border-color                 | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-active-border-color                | var(--graupl-link-hover-border-color)                                                                                                                                                                                                                                        |
+// | --graupl-link-disabled-border-color              | theme.get(transparent)                                                                                                                                                                                                                                                       |
+// | --graupl-link-min-width                          | var(--graupl-link-min-width)                                                                                                                                                                                                                                                 |
+// | --graupl-link-min-height                         | var(--graupl-link-min-height)                                                                                                                                                                                                                                                |
+// | --graupl-stretched-link-z-index                  | var(--graupl-stretched-link-z-index)                                                                                                                                                                                                                                         |
+
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
@@ -10,26 +85,37 @@
 @use "sass:map";
 
 // Link properties.
+// --graupl-link-text-decoration
 $link-text-decoration: var(
   --#{root-defaults.$prefix}link-text-decoration,
   #{defaults.$link-initial-text-decoration}
 );
+
+// --graupl-link-visited-text-decoration
 $link-visited-text-decoration: var(
   --#{root-defaults.$prefix}link-visited-text-decoration,
   #{$link-text-decoration}
 );
+
+// --graupl-link-focus-text-decoration
 $link-focus-text-decoration: var(
   --#{root-defaults.$prefix}link-focus-text-decoration,
   #{$link-text-decoration}
 );
+
+// --graupl-link-hover-text-decoration
 $link-hover-text-decoration: var(
   --#{root-defaults.$prefix}link-hover-text-decoration,
   #{defaults.$link-final-text-decoration}
 );
+
+// --graupl-link-active-text-decoration
 $link-active-text-decoration: var(
   --#{root-defaults.$prefix}link-active-text-decoration,
   #{$link-hover-text-decoration}
 );
+
+// --graupl-link-disabled-text-decoration
 $link-disabled-text-decoration: var(
   --#{root-defaults.$prefix}link-disabled-text-decoration,
   #{defaults.$link-disabled-text-decoration}
@@ -42,26 +128,38 @@ $link-text-decoration-states: (
   active: $link-active-text-decoration,
   disabled: $link-disabled-text-decoration,
 );
+
+// --graupl-link-text-decoration-thickness
 $link-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+
+// --graupl-link-visited-text-decoration-thickness
 $link-visited-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-visited-text-decoration-thickness,
   #{$link-text-decoration-thickness}
 );
+
+// --graupl-link-focus-text-decoration-thickness
 $link-focus-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-focus-text-decoration-thickness,
   #{$link-text-decoration-thickness}
 );
+
+// --graupl-link-hover-text-decoration-thickness
 $link-hover-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-hover-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+
+// --graupl-link-active-text-decoration-thickness
 $link-active-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-active-text-decoration-thickness,
   #{$link-hover-text-decoration-thickness}
 );
+
+// --graupl-link-disabled-text-decoration-thickness
 $link-disabled-text-decoration-thickness: var(
   --#{root-defaults.$prefix}link-disabled-text-decoration-thickness,
   #{root-variables.$border-width}
@@ -74,26 +172,38 @@ $link-text-decoration-thickness-states: (
   active: $link-active-text-decoration-thickness,
   disabled: $link-disabled-text-decoration-thickness,
 );
+
+// --graupl-link-text-decoration-style
 $link-text-decoration-style: var(
   --#{root-defaults.$prefix}link-text-decoration-style,
   #{defaults.$link-initial-text-decoration-style}
 );
+
+// --graupl-link-visited-text-decoration-style
 $link-visited-text-decoration-style: var(
   --#{root-defaults.$prefix}link-visited-text-decoration-style,
   #{$link-text-decoration-style}
 );
+
+// --graupl-link-focus-text-decoration-style
 $link-focus-text-decoration-style: var(
   --#{root-defaults.$prefix}link-focus-text-decoration-style,
   #{$link-text-decoration-style}
 );
+
+// --graupl-link-hover-text-decoration-style
 $link-hover-text-decoration-style: var(
   --#{root-defaults.$prefix}link-hover-text-decoration-style,
   #{defaults.$link-final-text-decoration-style}
 );
+
+// --graupl-link-active-text-decoration-style
 $link-active-text-decoration-style: var(
   --#{root-defaults.$prefix}link-active-text-decoration-style,
   #{$link-hover-text-decoration-style}
 );
+
+// --graupl-link-disabled-text-decoration-style
 $link-disabled-text-decoration-style: var(
   --#{root-defaults.$prefix}link-disabled-text-decoration-style,
   #{defaults.$link-disabled-text-decoration-style}
@@ -106,26 +216,38 @@ $link-text-decoration-style-states: (
   active: $link-active-text-decoration-style,
   disabled: $link-disabled-text-decoration-style,
 );
+
+// --graupl-link-color
 $link-color: var(
   --#{root-defaults.$prefix}link-color,
   #{theme.get(primary, 700)}
 );
+
+// --graupl-link-visited-color
 $link-visited-color: var(
   --#{root-defaults.$prefix}link-visited-color,
   #{$link-color}
 );
+
+// --graupl-link-focus-color
 $link-focus-color: var(
   --#{root-defaults.$prefix}link-focus-color,
   #{$link-color}
 );
+
+// --graupl-link-hover-color
 $link-hover-color: var(
   --#{root-defaults.$prefix}link-hover-color,
   #{theme.get(tertiary, 700)}
 );
+
+// --graupl-link-active-color
 $link-active-color: var(
   --#{root-defaults.$prefix}link-active-color,
   #{$link-hover-color}
 );
+
+// --graupl-link-disabled-color
 $link-disabled-color: var(
   --#{root-defaults.$prefix}link-disabled-color,
   #{theme.get(primary, 200)}
@@ -138,26 +260,38 @@ $link-color-states: (
   active: $link-active-color,
   disabled: $link-disabled-color,
 );
+
+// --graupl-link-text-decoration-color
 $link-text-decoration-color: var(
   --#{root-defaults.$prefix}link-text-decoration-color,
   #{$link-color}
 );
+
+// --graupl-link-visited-text-decoration-color
 $link-visited-text-decoration-color: var(
   --#{root-defaults.$prefix}link-visited-text-decoration-color,
   #{$link-visited-color}
 );
+
+// --graupl-link-focus-text-decoration-color
 $link-focus-text-decoration-color: var(
   --#{root-defaults.$prefix}link-focus-text-decoration-color,
   #{$link-focus-color}
 );
+
+// --graupl-link-hover-text-decoration-color
 $link-hover-text-decoration-color: var(
   --#{root-defaults.$prefix}link-hover-text-decoration-color,
   #{$link-hover-color}
 );
+
+// --graupl-link-active-text-decoration-color
 $link-active-text-decoration-color: var(
   --#{root-defaults.$prefix}link-active-text-decoration-color,
   #{$link-active-color}
 );
+
+// --graupl-link-disabled-text-decoration-color
 $link-disabled-text-decoration-color: var(
   --#{root-defaults.$prefix}link-disabled-text-decoration-color,
   #{$link-disabled-color}
@@ -170,26 +304,38 @@ $link-text-decoration-color-states: (
   active: $link-active-text-decoration-color,
   disabled: $link-disabled-text-decoration-color,
 );
+
+// --graupl-link-background
 $link-background: var(
   --#{root-defaults.$prefix}link-background,
   #{theme.get(transparent)}
 );
+
+// --graupl-link-visited-background
 $link-visited-background: var(
   --#{root-defaults.$prefix}link-visited-background,
   #{$link-background}
 );
+
+// --graupl-link-focus-background
 $link-focus-background: var(
   --#{root-defaults.$prefix}link-focus-background,
   #{$link-background}
 );
+
+// --graupl-link-hover-background
 $link-hover-background: var(
   --#{root-defaults.$prefix}link-hover-background,
   #{theme.get(transparent)}
 );
+
+// --graupl-link-active-background
 $link-active-background: var(
   --#{root-defaults.$prefix}link-active-background,
   #{$link-hover-background}
 );
+
+// --graupl-link-disabled-background
 $link-disabled-background: var(
   --#{root-defaults.$prefix}link-disabled-background,
   #{theme.get(transparent)}
@@ -202,18 +348,26 @@ $link-background-states: (
   active: $link-active-background,
   disabled: $link-disabled-background,
 );
+
+// --graupl-link-padding-x
 $link-padding-x: var(
   --#{root-defaults.$prefix}link-padding-x,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-link-padding-y
 $link-padding-y: var(
   --#{root-defaults.$prefix}link-padding-y,
   #{map.get(root-variables.$spacers, 0)}
 );
+
+// --graupl-link-padding
 $link-padding: var(
   --#{root-defaults.$prefix}link-padding,
   #{$link-padding-y} #{$link-padding-x}
 );
+
+// --graupl-link-transition
 $link-transition: var(
   --#{root-defaults.$prefix}link-transition,
   background #{map.get(root-variables.$transition-durations, fast)}
@@ -223,6 +377,8 @@ $link-transition: var(
   transform #{map.get(root-variables.$transition-durations, fast)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-link-transition-reduced-motion
 $link-transition-reduced-motion: var(
   --#{root-defaults.$prefix}link-transition-reduced-motion,
   background #{map.get(root-variables.$transition-durations, none)}
@@ -230,26 +386,38 @@ $link-transition-reduced-motion: var(
   color #{map.get(root-variables.$transition-durations, none)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-link-transform
 $link-transform: var(
   --#{root-defaults.$prefix}link-transform,
   #{defaults.$link-initial-transform}
 );
+
+// --graupl-link-visited-transform
 $link-visited-transform: var(
   --#{root-defaults.$prefix}link-visited-transform,
   #{$link-transform}
 );
+
+// --graupl-link-focus-transform
 $link-focus-transform: var(
   --#{root-defaults.$prefix}link-focus-transform,
   #{$link-transform}
 );
+
+// --graupl-link-hover-transform
 $link-hover-transform: var(
   --#{root-defaults.$prefix}link-hover-transform,
   #{defaults.$link-final-transform}
 );
+
+// --graupl-link-active-transform
 $link-active-transform: var(
   --#{root-defaults.$prefix}link-active-transform,
   #{$link-hover-transform}
 );
+
+// --graupl-link-disabled-transform
 $link-disabled-transform: var(
   --#{root-defaults.$prefix}link-disabled-transform,
   #{defaults.$link-disabled-transform}
@@ -262,86 +430,128 @@ $link-transform-states: (
   active: $link-active-transform,
   disabled: $link-disabled-transform,
 );
+
+// --graupl-link-border-top-width
 $link-border-top-width: var(--#{root-defaults.$prefix}link-border-top-width, 0);
+
+// --graupl-link-border-right-width
 $link-border-right-width: var(
   --#{root-defaults.$prefix}link-border-right-width,
   0
 );
+
+// --graupl-link-border-bottom-width
 $link-border-bottom-width: var(
   --#{root-defaults.$prefix}link-border-bottom-width,
   0
 );
+
+// --graupl-link-border-left-width
 $link-border-left-width: var(
   --#{root-defaults.$prefix}link-border-left-width,
   0
 );
+
+// --graupl-link-border-width
 $link-border-width: var(
   --#{root-defaults.$prefix}link-border-width,
   #{$link-border-top-width} #{$link-border-right-width}
     #{$link-border-bottom-width} #{$link-border-left-width}
 );
+
+// --graupl-link-border-top-style
 $link-border-top-style: var(
   --#{root-defaults.$prefix}link-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-link-border-right-style
 $link-border-right-style: var(
   --#{root-defaults.$prefix}link-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-link-border-bottom-style
 $link-border-bottom-style: var(
   --#{root-defaults.$prefix}link-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-link-border-left-style
 $link-border-left-style: var(
   --#{root-defaults.$prefix}link-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-link-border-style
 $link-border-style: var(
   --#{root-defaults.$prefix}link-border-style,
   #{$link-border-top-style} #{$link-border-right-style}
     #{$link-border-bottom-style} #{$link-border-left-style}
 );
+
+// --graupl-link-border-top-left-radius
 $link-border-top-left-radius: var(
   --#{root-defaults.$prefix}link-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-link-border-top-right-radius
 $link-border-top-right-radius: var(
   --#{root-defaults.$prefix}link-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-link-border-bottom-right-radius
 $link-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}link-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-link-border-bottom-left-radius
 $link-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}link-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-link-border-radius
 $link-border-radius: var(
   --#{root-defaults.$prefix}link-border-radius,
   #{$link-border-top-left-radius} #{$link-border-top-right-radius}
     #{$link-border-bottom-right-radius} #{$link-border-bottom-left-radius}
 );
+
+// --graupl-link-border-color
 $link-border-color: var(
   --#{root-defaults.$prefix}link-border-color,
   #{theme.get(transparent)}
 );
+
+// --graupl-link-visited-border-color
 $link-visited-border-color: var(
   --#{root-defaults.$prefix}link-visited-border-color,
   #{$link-border-color}
 );
+
+// --graupl-link-focus-border-color
 $link-focus-border-color: var(
   --#{root-defaults.$prefix}link-focus-border-color,
   #{$link-border-color}
 );
+
+// --graupl-link-hover-border-color
 $link-hover-border-color: var(
   --#{root-defaults.$prefix}link-hover-border-color,
   #{theme.get(transparent)}
 );
+
+// --graupl-link-active-border-color
 $link-active-border-color: var(
   --#{root-defaults.$prefix}link-active-border-color,
   #{$link-hover-border-color}
 );
+
+// --graupl-link-disabled-border-color
 $link-disabled-border-color: var(
   --#{root-defaults.$prefix}link-disabled-border-color,
   #{theme.get(transparent)}
@@ -354,16 +564,21 @@ $link-border-color-states: (
   active: $link-active-border-color,
   disabled: $link-disabled-border-color,
 );
+
+// --graupl-link-min-width
 $link-min-width: var(
   --#{root-defaults.$prefix}link-min-width,
   defaults.$link-min-width
 );
+
+// --graupl-link-min-height
 $link-min-height: var(
   --#{root-defaults.$prefix}link-min-height,
   defaults.$link-min-height
 );
 
 // Stretched link properties.
+// --graupl-stretched-link-z-index
 $stretched-link-z-index: var(
   --#{root-defaults.$prefix}stretched-link-z-index,
   #{defaults.$stretched-link-z-index}

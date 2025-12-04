@@ -39,15 +39,7 @@ $-gradient-types: (
   linear: linear-gradient,
   radial: radial-gradient,
 );
-$custom-gradient-types: () !default;
 $gradient-types: () !default;
-
-// @todo remove this once $custom-gradient-types is removed
-@if $custom-gradient-types != () {
-  @warn "`$custom-gradient-types` is deprecated and will be removed in a future release of Graupl. Use `$gradient-types` instead.";
-
-  $gradient-types: map.merge($gradient-types, $custom-gradient-types);
-}
 
 @if $generate-base-utilities {
   $gradient-types: map.merge($-gradient-types, $gradient-types);
@@ -73,19 +65,7 @@ $-gradient-directions: (
   farthest-side: farthest-side,
   farthest-corner: farthest-corner,
 );
-$custom-gradient-directions: () !default;
 $gradient-directions: () !default;
-
-// @todo remove this once $custom-gradient-directions is removed
-@if $custom-gradient-directions != () {
-  @warn "`$custom-gradient-directions` is deprecated and will be removed in a future release of Graupl. Use `$gradient-directions` instead.";
-
-  $gradient-directions: map.merge(
-    $gradient-directions,
-    $custom-gradient-directions
-  );
-}
-
 $-gradient-colors: (
   transparent: transparent,
 );
@@ -108,15 +88,7 @@ $-gradient-colors: (
   }
 }
 
-$custom-gradient-colors: () !default;
 $gradient-colors: () !default;
-
-// @todo remove this once $custom-gradient-colors is removed
-@if $custom-gradient-colors != () {
-  @warn "`$custom-gradient-colors` is deprecated and will be removed in a future release of Graupl. Use `$gradient-colors` instead.";
-
-  $gradient-colors: map.merge($gradient-colors, $custom-gradient-colors);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

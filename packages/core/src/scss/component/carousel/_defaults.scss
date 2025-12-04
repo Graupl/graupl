@@ -6,24 +6,42 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
 @use "sass:map";
 
 // Carousel selectors.
-$carousel-selector: ".carousel" !default;
-$carousel-control-container-selector: ".carousel-control-container" !default;
-$carousel-control-selector: ".carousel-control" !default;
-$carousel-pause-selector: ".pause" !default;
-$carousel-play-selector: ".play" !default;
-$carousel-autoplay-selector: ".autoplay" !default;
-$carousel-previous-selector: ".previous" !default;
-$carousel-next-selector: ".next" !default;
-$carousel-item-container-selector: ".carousel-item-container" !default;
-$carousel-item-selector: ".carousel-item" !default;
-$carousel-tab-container-selector: ".carousel-tab-container" !default;
-$carousel-tab-selector: ".carousel-tab" !default;
-$carousel-active-item-selector: ".active" !default;
-$carousel-next-item-selector: ".next" !default;
-$carousel-previous-item-selector: ".previous" !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$carousel-selector-base: $selector-base !default;
+$carousel-selector: "carousel" !default;
+$carousel-control-container-selector-base: $selector-base !default;
+$carousel-control-container-selector: "carousel-control-container" !default;
+$carousel-control-selector-base: $selector-base !default;
+$carousel-control-selector: "carousel-control" !default;
+$carousel-pause-selector-base: $modifier-selector-base !default;
+$carousel-pause-selector: "pause" !default;
+$carousel-play-selector-base: $modifier-selector-base !default;
+$carousel-play-selector: "play" !default;
+$carousel-autoplay-selector-base: $modifier-selector-base !default;
+$carousel-autoplay-selector: "autoplay" !default;
+$carousel-previous-selector-base: $modifier-selector-base !default;
+$carousel-previous-selector: "previous" !default;
+$carousel-next-selector-base: $modifier-selector-base !default;
+$carousel-next-selector: "next" !default;
+$carousel-item-container-selector-base: $selector-base !default;
+$carousel-item-container-selector: "carousel-item-container" !default;
+$carousel-item-selector-base: $selector-base !default;
+$carousel-item-selector: "carousel-item" !default;
+$carousel-tab-container-selector-base: $selector-base !default;
+$carousel-tab-container-selector: "carousel-tab-container" !default;
+$carousel-tab-selector-base: $selector-base !default;
+$carousel-tab-selector: "carousel-tab" !default;
+$carousel-active-item-selector-base: $modifier-selector-base !default;
+$carousel-active-item-selector: "active" !default;
+$carousel-next-item-selector-base: $modifier-selector-base !default;
+$carousel-next-item-selector: "next" !default;
+$carousel-previous-item-selector-base: $modifier-selector-base !default;
+$carousel-previous-item-selector: "previous" !default;
 
 // Carousel grid area properties.
 $carousel-controls-height: auto !default;
@@ -32,6 +50,7 @@ $carousel-tabs-height: auto !default;
 $carousel-slide-height: 1fr !default;
 $carousel-control-height: 3rem !default;
 $carousel-control-width: 4rem !default;
+$carousel-transition-duration: 500ms !default;
 
 // Carousel slide properties.
 $carousel-item-max-width: 100% !default;

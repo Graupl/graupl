@@ -1,0 +1,176 @@
+// @graupl/core badge base variables.
+//
+// These values are to be used to directly style bases and provide a
+// cleaner way to reference custom properties.
+
+// Custom property defaults:
+// | Custom property                           | Default                                                                                                                                                                             |
+// | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-badge-font-size                  | var(--graupl-font-sm)                                                                                                                                                               |
+// | --graupl-badge-background                 | var(--graupl-background)                                                                                                                                                            |
+// | --graupl-badge-color                      | var(--graupl-color)                                                                                                                                                                 |
+// | --graupl-badge-border-color               | var(--graupl-border-color)                                                                                                                                                          |
+// | --graupl-badge-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                              |
+// | --graupl-badge-padding-y                  | var(--graupl-spacer-3)                                                                                                                                                              |
+// | --graupl-badge-padding                    | var(--graupl-badge-padding-y) var(--graupl-badge-padding-x)                                                                                                                         |
+// | --graupl-badge-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                      |
+// | --graupl-badge-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                    |
+// | --graupl-badge-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                   |
+// | --graupl-badge-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                     |
+// | --graupl-badge-border-width               | var(--graupl-badge-border-top-width) var(--graupl-badge-border-right-width) var(--graupl-badge-border-bottom-width) var(--graupl-badge-border-left-width)                           |
+// | --graupl-badge-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                      |
+// | --graupl-badge-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                    |
+// | --graupl-badge-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                   |
+// | --graupl-badge-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                     |
+// | --graupl-badge-border-style               | var(--graupl-badge-border-top-style) var(--graupl-badge-border-right-style) var(--graupl-badge-border-bottom-style) var(--graupl-badge-border-left-style)                           |
+// | --graupl-badge-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                |
+// | --graupl-badge-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                               |
+// | --graupl-badge-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                            |
+// | --graupl-badge-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                             |
+// | --graupl-badge-border-radius              | var(--graupl-badge-border-top-left-radius) var(--graupl-badge-border-top-right-radius) var(--graupl-badge-border-bottom-right-radius) var(--graupl-badge-border-bottom-left-radius) |
+
+@use "defaults";
+@use "../../variables" as root-variables;
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Typography.
+// --graupl-badge-font-size
+$badge-font-size: var(
+  --#{root-defaults.$prefix}badge-font-size,
+  #{map.get(typography.$font-sizes, sm)}
+);
+
+// Colors.
+// --graupl-badge-background
+$badge-background: var(
+  --#{root-defaults.$prefix}badge-background,
+  #{color.$background}
+);
+
+// --graupl-badge-color
+$badge-color: var(--#{root-defaults.$prefix}badge-color, #{color.$color});
+
+// --graupl-badge-border-color
+$badge-border-color: var(
+  --#{root-defaults.$prefix}badge-border-color,
+  #{color.$border-color}
+);
+
+// Spacing.
+// --graupl-badge-padding-x
+$badge-padding-x: var(
+  --#{root-defaults.$prefix}badge-padding-x,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-badge-padding-y
+$badge-padding-y: var(
+  --#{root-defaults.$prefix}badge-padding-y,
+  #{map.get(root-variables.$spacers, 2)}
+);
+
+// --graupl-badge-padding
+$badge-padding: var(
+  --#{root-defaults.$prefix}badge-padding,
+  #{$badge-padding-y} #{$badge-padding-x}
+);
+
+// Border widths.
+// --graupl-badge-border-top-width
+$badge-border-top-width: var(
+  --#{root-defaults.$prefix}badge-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-badge-border-right-width
+$badge-border-right-width: var(
+  --#{root-defaults.$prefix}badge-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-badge-border-bottom-width
+$badge-border-bottom-width: var(
+  --#{root-defaults.$prefix}badge-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-badge-border-left-width
+$badge-border-left-width: var(
+  --#{root-defaults.$prefix}badge-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-badge-border-width
+$badge-border-width: var(
+  --#{root-defaults.$prefix}badge-border-width,
+  #{$badge-border-top-width} #{$badge-border-right-width}
+    #{$badge-border-bottom-width} #{$badge-border-left-width}
+);
+
+// Border styles.
+// --graupl-badge-border-top-style
+$badge-border-top-style: var(
+  --#{root-defaults.$prefix}badge-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-badge-border-right-style
+$badge-border-right-style: var(
+  --#{root-defaults.$prefix}badge-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-badge-border-bottom-style
+$badge-border-bottom-style: var(
+  --#{root-defaults.$prefix}badge-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-badge-border-left-style
+$badge-border-left-style: var(
+  --#{root-defaults.$prefix}badge-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-badge-border-style
+$badge-border-style: var(
+  --#{root-defaults.$prefix}badge-border-style,
+  #{$badge-border-top-style} #{$badge-border-right-style}
+    #{$badge-border-bottom-style} #{$badge-border-left-style}
+);
+
+// Border radii.
+// --graupl-badge-border-top-left-radius
+$badge-border-top-left-radius: var(
+  --#{root-defaults.$prefix}badge-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-badge-border-top-right-radius
+$badge-border-top-right-radius: var(
+  --#{root-defaults.$prefix}badge-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-badge-border-bottom-right-radius
+$badge-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}badge-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-badge-border-bottom-left-radius
+$badge-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}badge-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-badge-border-radius
+$badge-border-radius: var(
+  --#{root-defaults.$prefix}badge-border-radius,
+  #{$badge-border-top-left-radius} #{$badge-border-top-right-radius}
+    #{$badge-border-bottom-right-radius} #{$badge-border-bottom-left-radius}
+);

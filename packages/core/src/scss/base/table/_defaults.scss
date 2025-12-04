@@ -14,6 +14,7 @@
 $selector-base: root-defaults.$element-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $table-selector-base: $selector-base !default;
 $table-selector: "table" !default;
 $table-caption-selector-base: $selector-base !default;
@@ -66,18 +67,7 @@ $-table-theme-mappings: (
   highlight-background: 500,
   highlight-color: 100,
 );
-$custom-table-theme-map: () !default;
 $table-theme-mappings: () !default;
-
-// @todo remove this once $custom-table-theme-map is removed
-@if $custom-table-theme-map != () {
-  @warn "`$custom-table-theme-map` is deprecated and will be removed in a future release of Graupl. Use `$table-theme-mappings` instead.";
-
-  $table-theme-mappings: map.merge(
-    $table-theme-mappings,
-    $custom-table-theme-map
-  );
-}
 
 // Merge the custom table theme map with the default one.
 @if $generate-base-theme-map {

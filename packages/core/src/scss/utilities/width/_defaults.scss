@@ -63,15 +63,7 @@ $-width-values: (
   );
 }
 
-$custom-width-values: () !default;
 $width-values: () !default;
-
-// @todo remove this once $custom-width-values is removed
-@if $custom-width-values != () {
-  @warn "`$custom-width-values` is deprecated and will be removed in a future release of Graupl. Use `$width-values` instead.";
-
-  $width-values: map.merge($width-values, $custom-width-values);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

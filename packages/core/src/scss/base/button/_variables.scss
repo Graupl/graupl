@@ -3,6 +3,57 @@
 // These values are to be used to directly style bases and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                            | Default                                                                                                                                                                                                                                                                      |
+// | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-button-min-width                  | 44px                                                                                                                                                                                                                                                                         |
+// | --graupl-button-min-height                 | 44px                                                                                                                                                                                                                                                                         |
+// | --graupl-button-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                                                                                                                       |
+// | --graupl-button-padding-y                  | var(--graupl-spacer-3)                                                                                                                                                                                                                                                       |
+// | --graupl-button-padding                    | var(--graupl-button-padding-y) var(--graupl-button-padding-x)                                                                                                                                                                                                                |
+// | --graupl-button-font-size                  | var(--graupl-font-base)                                                                                                                                                                                                                                                      |
+// | --graupl-button-transition                 | background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function) |
+// | --graupl-button-transition-reduced-motion  | background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)                                                                                            |
+// | --graupl-button-transform                  | none                                                                                                                                                                                                                                                                         |
+// | --graupl-button-visited-transform          | var(--graupl-button-transform)                                                                                                                                                                                                                                               |
+// | --graupl-button-focus-transform            | var(--graupl-button-transform)                                                                                                                                                                                                                                               |
+// | --graupl-button-hover-transform            | var(--graupl-button-transform)                                                                                                                                                                                                                                               |
+// | --graupl-button-active-transform           | scale(0.95)                                                                                                                                                                                                                                                                  |
+// | --graupl-button-disabled-transform         | none                                                                                                                                                                                                                                                                         |
+// | --graupl-button-background                 | var(--graupl-background)                                                                                                                                                                                                                                                     |
+// | --graupl-button-visited-background         | var(--graupl-button-background)                                                                                                                                                                                                                                              |
+// | --graupl-button-focus-background           | var(--graupl-button-background)                                                                                                                                                                                                                                              |
+// | --graupl-button-hover-background           | var(--graupl-color)                                                                                                                                                                                                                                                          |
+// | --graupl-button-active-background          | var(--graupl-button-hover-background)                                                                                                                                                                                                                                        |
+// | --graupl-button-disabled-background        | var(--graupl-background)                                                                                                                                                                                                                                                     |
+// | --graupl-button-color                      | var(--graupl-color)                                                                                                                                                                                                                                                          |
+// | --graupl-button-visited-color              | var(--graupl-button-color)                                                                                                                                                                                                                                                   |
+// | --graupl-button-focus-color                | var(--graupl-button-color)                                                                                                                                                                                                                                                   |
+// | --graupl-button-hover-color                | var(--graupl-background)                                                                                                                                                                                                                                                     |
+// | --graupl-button-active-color               | var(--graupl-button-hover-color)                                                                                                                                                                                                                                             |
+// | --graupl-button-disabled-color             | var(--graupl-theme-active--primary--200)                                                                                                                                                                                                                                     |
+// | --graupl-button-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                                                                                                               |
+// | --graupl-button-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                                                                                                             |
+// | --graupl-button-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                                                                                                            |
+// | --graupl-button-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                                                                                                              |
+// | --graupl-button-border-width               | var(--graupl-button-border-top-width) var(--graupl-button-border-right-width) var(--graupl-button-border-bottom-width) var(--graupl-button-border-left-width)                                                                                                                |
+// | --graupl-button-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                                                                                                               |
+// | --graupl-button-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                                                                                                             |
+// | --graupl-button-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                                                                                                            |
+// | --graupl-button-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                                                                                                              |
+// | --graupl-button-border-style               | var(--graupl-button-border-top-style) var(--graupl-button-border-right-style) var(--graupl-button-border-bottom-style) var(--graupl-button-border-left-style)                                                                                                                |
+// | --graupl-button-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                                                                                         |
+// | --graupl-button-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                                                                                                                        |
+// | --graupl-button-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                                                                     |
+// | --graupl-button-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                                                                      |
+// | --graupl-button-border-radius              | var(--graupl-button-border-top-left-radius) var(--graupl-button-border-top-right-radius) var(--graupl-button-border-bottom-right-radius) var(--graupl-button-border-bottom-left-radius)                                                                                      |
+// | --graupl-button-border-color               | var(--graupl-border-color)                                                                                                                                                                                                                                                   |
+// | --graupl-button-visited-border-color       | var(--graupl-button-border-color)                                                                                                                                                                                                                                            |
+// | --graupl-button-focus-border-color         | var(--graupl-button-border-color)                                                                                                                                                                                                                                            |
+// | --graupl-button-hover-border-color         | var(--graupl-border-color)                                                                                                                                                                                                                                                   |
+// | --graupl-button-active-border-color        | var(--graupl-button-hover-border-color)                                                                                                                                                                                                                                      |
+// | --graupl-button-disabled-border-color      | var(--graupl-theme-active--primary--200)                                                                                                                                                                                                                                     |
+
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
@@ -12,30 +63,43 @@
 @use "sass:map";
 
 // Button properties.
+// --graupl-button-min-width
 $button-min-width: var(
   --#{root-defaults.$prefix}button-min-width,
   #{root-defaults.$interactive-min-width}
 );
+
+// --graupl-button-min-height
 $button-min-height: var(
   --#{root-defaults.$prefix}button-min-height,
   #{root-defaults.$interactive-min-height}
 );
+
+// --graupl-button-padding-x
 $button-padding-x: var(
   --#{root-defaults.$prefix}button-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-button-padding-y
 $button-padding-y: var(
   --#{root-defaults.$prefix}button-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-button-padding
 $button-padding: var(
   --#{root-defaults.$prefix}button-padding,
   #{$button-padding-y} #{$button-padding-x}
 );
+
+// --graupl-button-font-size
 $button-font-size: var(
   --#{root-defaults.$prefix}button-font-size,
   #{map.get(typography.$font-sizes, base)}
 );
+
+// --graupl-button-transition
 $button-transition: var(
   --#{root-defaults.$prefix}button-transition,
   background #{map.get(root-variables.$transition-durations, fast)}
@@ -45,6 +109,8 @@ $button-transition: var(
   transform #{map.get(root-variables.$transition-durations, fast)}
     #{root-variables.$transition-timing-function}
 );
+
+// --graupl-button-transition-reduced-motion
 $button-transition-reduced-motion: var(
   --#{root-defaults.$prefix}button-transition-reduced-motion,
   background #{map.get(root-variables.$transition-durations, none)}
@@ -54,26 +120,37 @@ $button-transition-reduced-motion: var(
 );
 
 // Transform properties.
+// --graupl-button-transform
 $button-transform: var(
   --#{root-defaults.$prefix}button-transform,
   #{defaults.$button-initial-transform}
 );
+
+// --graupl-button-visited-transform
 $button-visited-transform: var(
   --#{root-defaults.$prefix}button-visited-transform,
   #{$button-transform}
 );
+
+// --graupl-button-focus-transform
 $button-focus-transform: var(
   --#{root-defaults.$prefix}button-focus-transform,
   #{$button-transform}
 );
+
+// --graupl-button-hover-transform
 $button-hover-transform: var(
   --#{root-defaults.$prefix}button-hover-transform,
   #{$button-transform}
 );
+
+// --graupl-button-active-transform
 $button-active-transform: var(
   --#{root-defaults.$prefix}button-active-transform,
   #{defaults.$button-final-transform}
 );
+
+// --graupl-button-disabled-transform
 $button-disabled-transform: var(
   --#{root-defaults.$prefix}button-disabled-transform,
   #{defaults.$button-disabled-transform}
@@ -88,26 +165,37 @@ $button-transform-states: (
 );
 
 // Background properties.
+// --graupl-button-background
 $button-background: var(
   --#{root-defaults.$prefix}button-background,
   #{color.$background}
 );
+
+// --graupl-button-visited-background
 $button-visited-background: var(
   --#{root-defaults.$prefix}button-visited-background,
   #{$button-background}
 );
+
+// --graupl-button-focus-background
 $button-focus-background: var(
   --#{root-defaults.$prefix}button-focus-background,
   #{$button-background}
 );
+
+// --graupl-button-hover-background
 $button-hover-background: var(
   --#{root-defaults.$prefix}button-hover-background,
   #{color.$color}
 );
+
+// --graupl-button-active-background
 $button-active-background: var(
   --#{root-defaults.$prefix}button-active-background,
   #{$button-hover-background}
 );
+
+// --graupl-button-disabled-background
 $button-disabled-background: var(
   --#{root-defaults.$prefix}button-disabled-background,
   #{color.$background}
@@ -122,23 +210,34 @@ $button-background-states: (
 );
 
 // Text properties.
+// --graupl-button-color
 $button-color: var(--#{root-defaults.$prefix}button-color, #{color.$color});
+
+// --graupl-button-visited-color
 $button-visited-color: var(
   --#{root-defaults.$prefix}button-visited-color,
   #{$button-color}
 );
+
+// --graupl-button-focus-color
 $button-focus-color: var(
   --#{root-defaults.$prefix}button-focus-color,
   #{$button-color}
 );
+
+// --graupl-button-hover-color
 $button-hover-color: var(
   --#{root-defaults.$prefix}button-hover-color,
   #{color.$background}
 );
+
+// --graupl-button-active-color
 $button-active-color: var(
   --#{root-defaults.$prefix}button-active-color,
   #{$button-hover-color}
 );
+
+// --graupl-button-disabled-color
 $button-disabled-color: var(
   --#{root-defaults.$prefix}button-disabled-color,
   #{theme.get(primary, 200)}
@@ -153,64 +252,93 @@ $button-color-states: (
 );
 
 // Border properties.
+// --graupl-button-border-top-width
 $button-border-top-width: var(
   --#{root-defaults.$prefix}button-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-button-border-right-width
 $button-border-right-width: var(
   --#{root-defaults.$prefix}button-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-button-border-bottom-width
 $button-border-bottom-width: var(
   --#{root-defaults.$prefix}button-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-button-border-left-width
 $button-border-left-width: var(
   --#{root-defaults.$prefix}button-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-button-border-width
 $button-border-width: var(
   --#{root-defaults.$prefix}button-border-width,
   #{$button-border-top-width} #{$button-border-right-width}
     #{$button-border-bottom-width} #{$button-border-left-width}
 );
+
+// --graupl-button-border-top-style
 $button-border-top-style: var(
   --#{root-defaults.$prefix}button-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-button-border-right-style
 $button-border-right-style: var(
   --#{root-defaults.$prefix}button-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-button-border-bottom-style
 $button-border-bottom-style: var(
   --#{root-defaults.$prefix}button-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-button-border-left-style
 $button-border-left-style: var(
   --#{root-defaults.$prefix}button-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-button-border-style
 $button-border-style: var(
   --#{root-defaults.$prefix}button-border-style,
   #{$button-border-top-style} #{$button-border-right-style}
     #{$button-border-bottom-style} #{$button-border-left-style}
 );
+
+// --graupl-button-border-top-left-radius
 $button-border-top-left-radius: var(
   --#{root-defaults.$prefix}button-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-button-border-top-right-radius
 $button-border-top-right-radius: var(
   --#{root-defaults.$prefix}button-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-button-border-bottom-right-radius
 $button-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}button-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-button-border-bottom-left-radius
 $button-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}button-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-button-border-radius
 $button-border-radius: var(
   --#{root-defaults.$prefix}button-border-radius,
   #{$button-border-top-left-radius} #{$button-border-top-right-radius}
@@ -218,26 +346,37 @@ $button-border-radius: var(
 );
 
 // Border colour properties.
+// --graupl-button-border-color
 $button-border-color: var(
   --#{root-defaults.$prefix}button-border-color,
   #{color.$border-color}
 );
+
+// --graupl-button-visited-border-color
 $button-visited-border-color: var(
   --#{root-defaults.$prefix}button-visited-border-color,
   #{$button-border-color}
 );
+
+// --graupl-button-focus-border-color
 $button-focus-border-color: var(
   --#{root-defaults.$prefix}button-focus-border-color,
   #{$button-border-color}
 );
+
+// --graupl-button-hover-border-color
 $button-hover-border-color: var(
   --#{root-defaults.$prefix}button-hover-border-color,
   #{color.$border-color}
 );
+
+// --graupl-button-active-border-color
 $button-active-border-color: var(
   --#{root-defaults.$prefix}button-active-border-color,
   #{$button-hover-border-color}
 );
+
+// --graupl-button-disabled-border-color
 $button-disabled-border-color: var(
   --#{root-defaults.$prefix}button-disabled-border-color,
   #{theme.get(primary, 200)}

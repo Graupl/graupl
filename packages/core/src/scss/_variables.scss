@@ -2,21 +2,60 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                      | Default                            |
+// | ------------------------------------ | ---------------------------------- |
+// | --graupl-content-max-width           | 96ch                               |
+// | --graupl-spacer                      | 1rem                               |
+// | --graupl-spacer-0                    | calc(0 * var(--graupl-spacer))     |
+// | --graupl-spacer-1                    | calc(0.125 * var(--graupl-spacer)) |
+// | --graupl-spacer-2                    | calc(0.25 * var(--graupl-spacer))  |
+// | --graupl-spacer-3                    | calc(0.5 * var(--graupl-spacer))   |
+// | --graupl-spacer-4                    | calc(0.75 * var(--graupl-spacer))  |
+// | --graupl-spacer-5                    | calc(1 * var(--graupl-spacer))     |
+// | --graupl-spacer-6                    | calc(1.5 * var(--graupl-spacer))   |
+// | --graupl-spacer-7                    | calc(2 * var(--graupl-spacer))     |
+// | --graupl-spacer-8                    | calc(3 * var(--graupl-spacer))     |
+// | --graupl-spacer-9                    | calc(5 * var(--graupl-spacer))     |
+// | --graupl-spacer-10                   | calc(10 * var(--graupl-spacer))    |
+// | --graupl-border-radius               | 0.125rem                           |
+// | --graupl-border-top-left-radius      | var(--graupl-border-radius)        |
+// | --graupl-border-top-right-radius     | var(--graupl-border-radius)        |
+// | --graupl-border-bottom-right-radius  | var(--graupl-border-radius)        |
+// | --graupl-border-bottom-left-radius   | var(--graupl-border-radius)        |
+// | --graupl-border-width                | 0.125rem                           |
+// | --graupl-border-top-width            | var(--graupl-border-width)         |
+// | --graupl-border-right-width          | var(--graupl-border-width)         |
+// | --graupl-border-bottom-width         | var(--graupl-border-width)         |
+// | --graupl-border-left-width           | var(--graupl-border-width)         |
+// | --graupl-border-style                | solid                              |
+// | --graupl-border-top-style            | var(--graupl-border-style)         |
+// | --graupl-border-right-style          | var(--graupl-border-style)         |
+// | --graupl-border-bottom-style         | var(--graupl-border-style)         |
+// | --graupl-border-left-style           | var(--graupl-border-style)         |
+// | --graupl-transition-duration-fast    | 150ms                              |
+// | --graupl-transition-duration-default | 250ms                              |
+// | --graupl-transition-duration-slow    | 300ms                              |
+// | --graupl-transition-timing-function  | ease                               |
 
 @use "defaults";
 @use "sass:map";
 
 // Layout properties.
+// --graupl-content-max-width
 $content-max-width: var(
   --#{defaults.$prefix}content-max-width,
   defaults.$content-max-width
 );
 
 // Spacing properties.
+// --graupl-spacer
 $spacer: var(--#{defaults.$prefix}spacer, defaults.$spacer);
 $spacers: ();
 
 @each $key, $value in defaults.$spacer-multipliers {
+  // --graupl-spacer-0, --graupl-spacer-1, --graupl-spacer-2, --graupl-spacer-3, --graupl-spacer-4, --graupl-spacer-5, --graupl-spacer-6, --graupl-spacer-7, --graupl-spacer-8, --graupl-spacer-9, --graupl-spacer-10
   $space: var(
     --#{defaults.$prefix}spacer-#{$key},
     calc(#{$value} * #{$spacer})
@@ -25,50 +64,79 @@ $spacers: ();
 }
 
 // Border properties.
+// --graupl-border-radius
 $border-radius: var(
   --#{defaults.$prefix}border-radius,
   defaults.$border-radius
 );
+
+// --graupl-border-top-left-radius
 $border-top-left-radius: var(
   --#{defaults.$prefix}border-top-left-radius,
   #{$border-radius}
 );
+
+// --graupl-border-top-right-radius
 $border-top-right-radius: var(
   --#{defaults.$prefix}border-top-right-radius,
   #{$border-radius}
 );
+
+// --graupl-border-bottom-right-radius
 $border-bottom-right-radius: var(
   --#{defaults.$prefix}border-bottom-right-radius,
   #{$border-radius}
 );
+
+// --graupl-border-bottom-left-radius
 $border-bottom-left-radius: var(
   --#{defaults.$prefix}border-bottom-left-radius,
   #{$border-radius}
 );
+
+// --graupl-border-width
 $border-width: var(--#{defaults.$prefix}border-width, defaults.$border-width);
+
+// --graupl-border-top-width
 $border-top-width: var(--#{defaults.$prefix}border-top-width, #{$border-width});
+
+// --graupl-border-right-width
 $border-right-width: var(
   --#{defaults.$prefix}border-right-width,
   #{$border-width}
 );
+
+// --graupl-border-bottom-width
 $border-bottom-width: var(
   --#{defaults.$prefix}border-bottom-width,
   #{$border-width}
 );
+
+// --graupl-border-left-width
 $border-left-width: var(
   --#{defaults.$prefix}border-left-width,
   #{$border-width}
 );
+
+// --graupl-border-style
 $border-style: var(--#{defaults.$prefix}border-style, defaults.$border-style);
+
+// --graupl-border-top-style
 $border-top-style: var(--#{defaults.$prefix}border-top-style, #{$border-style});
+
+// --graupl-border-right-style
 $border-right-style: var(
   --#{defaults.$prefix}border-right-style,
   #{$border-style}
 );
+
+// --graupl-border-bottom-style
 $border-bottom-style: var(
   --#{defaults.$prefix}border-bottom-style,
   #{$border-style}
 );
+
+// --graupl-border-left-style
 $border-left-style: var(
   --#{defaults.$prefix}border-left-style,
   #{$border-style}
@@ -89,6 +157,8 @@ $transition-durations: (
       map.get(defaults.$transition-durations, slow)
     ),
 );
+
+// --graupl-transition-timing-function
 $transition-timing-function: var(
   --#{defaults.$prefix}transition-timing-function,
   defaults.$transition-timing-function

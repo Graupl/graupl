@@ -3,6 +3,75 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                                                 | Default                                                                                                                                                                                                                             |
+// | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | Custom property                                                 | Default                                                                                                                                                                                                                             |
+// | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-navigation-background                                  | var(--graupl-background)                                                                                                                                                                                                            |
+// | --graupl-navigation-color                                       | var(--graupl-color)                                                                                                                                                                                                                 |
+// | --graupl-navigation-toggle-min-width                            | 44px                                                                                                                                                                                                                                |
+// | --graupl-navigation-toggle-min-height                           | 44px                                                                                                                                                                                                                                |
+// | --graupl-navigation-toggle-padding-x                            | var(--graupl-spacer-5)                                                                                                                                                                                                              |
+// | --graupl-navigation-toggle-padding-y                            | var(--graupl-spacer-3)                                                                                                                                                                                                              |
+// | --graupl-navigation-toggle-padding                              | var(--graupl-navigation-toggle-padding-y) var(--graupl-navigation-toggle-padding-x)                                                                                                                                                 |
+// | --graupl-navigation-toggle-background                           | var(--graupl-navigation-background)                                                                                                                                                                                                 |
+// | --graupl-navigation-toggle-color                                | var(--graupl-navigation-color)                                                                                                                                                                                                      |
+// | --graupl-navigation-toggle-hover-background                     | var(--graupl-navigation-color)                                                                                                                                                                                                      |
+// | --graupl-navigation-toggle-hover-color                          | var(--graupl-navigation-background)                                                                                                                                                                                                 |
+// | --graupl-navigation-toggle-border-top-width                     | var(--graupl-border-top-width)                                                                                                                                                                                                      |
+// | --graupl-navigation-toggle-border-right-width                   | var(--graupl-border-right-width)                                                                                                                                                                                                    |
+// | --graupl-navigation-toggle-border-bottom-width                  | var(--graupl-border-bottom-width)                                                                                                                                                                                                   |
+// | --graupl-navigation-toggle-border-left-width                    | var(--graupl-border-left-width)                                                                                                                                                                                                     |
+// | --graupl-navigation-toggle-border-width                         | var(--graupl-navigation-toggle-border-top-width) var(--graupl-navigation-toggle-border-right-width) var(--graupl-navigation-toggle-border-bottom-width) var(--graupl-navigation-toggle-border-left-width)                           |
+// | --graupl-navigation-toggle-border-top-style                     | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-navigation-toggle-border-right-style                   | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-navigation-toggle-border-bottom-style                  | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-navigation-toggle-border-left-style                    | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-navigation-toggle-border-style                         | var(--graupl-navigation-toggle-border-top-style) var(--graupl-navigation-toggle-border-right-style) var(--graupl-navigation-toggle-border-bottom-style) var(--graupl-navigation-toggle-border-left-style)                           |
+// | --graupl-navigation-toggle-border-color                         | var(--graupl-navigation-toggle-color)                                                                                                                                                                                               |
+// | --graupl-navigation-toggle-border-top-left-radius               | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-navigation-toggle-border-top-right-radius              | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-navigation-toggle-border-bottom-left-radius            | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-navigation-toggle-border-bottom-right-radius           | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-navigation-toggle-border-radius                        | var(--graupl-navigation-toggle-border-top-left-radius) var(--graupl-navigation-toggle-border-top-right-radius) var(--graupl-navigation-toggle-border-bottom-right-radius) var(--graupl-navigation-toggle-border-bottom-left-radius) |
+// | --graupl-navigation-branding-font-size                          | var(--graupl-font-lg)                                                                                                                                                                                                               |
+// | --graupl-navigation-branding-font-weight                        | var(--graupl-font-weight-bold)                                                                                                                                                                                                      |
+// | --graupl-navigation-branding-padding-x                          | var(--graupl-spacer-3)                                                                                                                                                                                                              |
+// | --graupl-navigation-branding-padding-y                          | var(--graupl-spacer-2)                                                                                                                                                                                                              |
+// | --graupl-navigation-branding-padding                            | var(--graupl-navigation-branding-padding-y) var(--graupl-navigation-branding-padding-x)                                                                                                                                             |
+// | --graupl-navigation-branding-color                              | var(--graupl-navigation-color)                                                                                                                                                                                                      |
+// | --graupl-navigation-branding-visited-color                      | var(--graupl-navigation-branding-color)                                                                                                                                                                                             |
+// | --graupl-navigation-branding-focus-color                        | var(--graupl-navigation-branding-color)                                                                                                                                                                                             |
+// | --graupl-navigation-branding-hover-color                        | var(--graupl-navigation-color)                                                                                                                                                                                                      |
+// | --graupl-navigation-branding-active-color                       | var(--graupl-navigation-branding-hover-color)                                                                                                                                                                                       |
+// | --graupl-navigation-branding-disabled-color                     | var(--graupl-navigation-color)                                                                                                                                                                                                      |
+// | --graupl-navigation-branding-text-decoration                    | none                                                                                                                                                                                                                                |
+// | --graupl-navigation-branding-visited-text-decoration            | var(--graupl-navigation-branding-text-decoration)                                                                                                                                                                                   |
+// | --graupl-navigation-branding-focus-text-decoration              | var(--graupl-navigation-branding-text-decoration)                                                                                                                                                                                   |
+// | --graupl-navigation-branding-hover-text-decoration              | none                                                                                                                                                                                                                                |
+// | --graupl-navigation-branding-active-text-decoration             | var(--graupl-navigation-branding-hover-text-decoration)                                                                                                                                                                             |
+// | --graupl-navigation-branding-disabled-text-decoration           | none                                                                                                                                                                                                                                |
+// | --graupl-navigation-branding-text-decoration-style              | solid                                                                                                                                                                                                                               |
+// | --graupl-navigation-branding-visited-text-decoration-style      | var(--graupl-navigation-branding-text-decoration-style)                                                                                                                                                                             |
+// | --graupl-navigation-branding-focus-text-decoration-style        | var(--graupl-navigation-branding-text-decoration-style)                                                                                                                                                                             |
+// | --graupl-navigation-branding-hover-text-decoration-style        | solid                                                                                                                                                                                                                               |
+// | --graupl-navigation-branding-active-text-decoration-style       | var(--graupl-navigation-branding-hover-text-decoration-style)                                                                                                                                                                       |
+// | --graupl-navigation-branding-disabled-text-decoration-style     | solid                                                                                                                                                                                                                               |
+// | --graupl-navigation-branding-text-decoration-thickness          | var(--graupl-border-width)                                                                                                                                                                                                          |
+// | --graupl-navigation-branding-visited-text-decoration-thickness  | var(--graupl-navigation-branding-text-decoration-thickness)                                                                                                                                                                         |
+// | --graupl-navigation-branding-focus-text-decoration-thickness    | var(--graupl-navigation-branding-text-decoration-thickness)                                                                                                                                                                         |
+// | --graupl-navigation-branding-hover-text-decoration-thickness    | var(--graupl-border-width)                                                                                                                                                                                                          |
+// | --graupl-navigation-branding-active-text-decoration-thickness   | var(--graupl-navigation-branding-hover-text-decoration-thickness)                                                                                                                                                                   |
+// | --graupl-navigation-branding-disabled-text-decoration-thickness | var(--graupl-border-width)                                                                                                                                                                                                          |
+// | --graupl-navigation-branding-text-decoration-color              | var(--graupl-navigation-branding-color)                                                                                                                                                                                             |
+// | --graupl-navigation-branding-visited-text-decoration-color      | var(--graupl-navigation-branding-visited-color)                                                                                                                                                                                     |
+// | --graupl-navigation-branding-focus-text-decoration-color        | var(--graupl-navigation-branding-focus-color)                                                                                                                                                                                       |
+// | --graupl-navigation-branding-hover-text-decoration-color        | var(--graupl-navigation-branding-hover-color)                                                                                                                                                                                       |
+// | --graupl-navigation-branding-active-text-decoration-color       | var(--graupl-navigation-branding-active-color)                                                                                                                                                                                      |
+// | --graupl-navigation-branding-disabled-text-decoration-color     | var(--graupl-navigation-branding-disabled-color)                                                                                                                                                                                    |
+// | --graupl-navigation-toggle-content                              | "'☰'"                                                                                                                                                                                                                               |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
@@ -11,74 +80,101 @@
 @use "sass:map";
 
 // Navigation colors.
+// --graupl-navigation-background
 $navigation-background: var(
   --#{root-defaults.$prefix}navigation-background,
   #{color.$background}
 );
+
+// --graupl-navigation-color
 $navigation-color: var(
   --#{root-defaults.$prefix}navigation-color,
   #{color.$color}
 );
 
 // Navigation toggle size.
+// --graupl-navigation-toggle-min-width
 $navigation-toggle-min-width: var(
   --#{root-defaults.$prefix}navigation-toggle-min-width,
   #{root-defaults.$interactive-min-width}
 );
+
+// --graupl-navigation-toggle-min-height
 $navigation-toggle-min-height: var(
   --#{root-defaults.$prefix}navigation-toggle-min-height,
   #{root-defaults.$interactive-min-height}
 );
 
 // Navigation toggle spacing.
+// --graupl-navigation-toggle-padding-x
 $navigation-toggle-padding-x: var(
   --#{root-defaults.$prefix}navigation-toggle-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-navigation-toggle-padding-y
 $navigation-toggle-padding-y: var(
   --#{root-defaults.$prefix}navigation-toggle-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-navigation-toggle-padding
 $navigation-toggle-padding: var(
   --#{root-defaults.$prefix}navigation-toggle-padding,
   #{$navigation-toggle-padding-y} #{$navigation-toggle-padding-x}
 );
 
 // Navigation toggle colors.
+// --graupl-navigation-toggle-background
 $navigation-toggle-background: var(
   --#{root-defaults.$prefix}navigation-toggle-background,
   #{$navigation-background}
 );
+
+// --graupl-navigation-toggle-color
 $navigation-toggle-color: var(
   --#{root-defaults.$prefix}navigation-toggle-color,
   #{$navigation-color}
 );
+
+// --graupl-navigation-toggle-hover-background
 $navigation-toggle-hover-background: var(
   --#{root-defaults.$prefix}navigation-toggle-hover-background,
   #{$navigation-color}
 );
+
+// --graupl-navigation-toggle-hover-color
 $navigation-toggle-hover-color: var(
   --#{root-defaults.$prefix}navigation-toggle-hover-color,
   #{$navigation-background}
 );
 
 // Navigation toggle border properties.
+// --graupl-navigation-toggle-border-top-width
 $navigation-toggle-border-top-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-navigation-toggle-border-right-width
 $navigation-toggle-border-right-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-navigation-toggle-border-bottom-width
 $navigation-toggle-border-bottom-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-navigation-toggle-border-left-width
 $navigation-toggle-border-left-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-navigation-toggle-border-width
 $navigation-toggle-border-width: var(
   --#{root-defaults.$prefix}navigation-toggle-border-width,
   #{$navigation-toggle-border-top-width}
@@ -86,22 +182,32 @@ $navigation-toggle-border-width: var(
     #{$navigation-toggle-border-bottom-width}
     #{$navigation-toggle-border-left-width}
 );
+
+// --graupl-navigation-toggle-border-top-style
 $navigation-toggle-border-top-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-navigation-toggle-border-right-style
 $navigation-toggle-border-right-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-navigation-toggle-border-bottom-style
 $navigation-toggle-border-bottom-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-navigation-toggle-border-left-style
 $navigation-toggle-border-left-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-navigation-toggle-border-style
 $navigation-toggle-border-style: var(
   --#{root-defaults.$prefix}navigation-toggle-border-style,
   #{$navigation-toggle-border-top-style}
@@ -109,26 +215,38 @@ $navigation-toggle-border-style: var(
     #{$navigation-toggle-border-bottom-style}
     #{$navigation-toggle-border-left-style}
 );
+
+// --graupl-navigation-toggle-border-color
 $navigation-toggle-border-color: var(
   --#{root-defaults.$prefix}navigation-toggle-border-color,
   #{$navigation-toggle-color}
 );
+
+// --graupl-navigation-toggle-border-top-left-radius
 $navigation-toggle-border-top-left-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-navigation-toggle-border-top-right-radius
 $navigation-toggle-border-top-right-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-navigation-toggle-border-bottom-left-radius
 $navigation-toggle-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-navigation-toggle-border-bottom-right-radius
 $navigation-toggle-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-navigation-toggle-border-radius
 $navigation-toggle-border-radius: var(
   --#{root-defaults.$prefix}navigation-toggle-border-radius,
   #{$navigation-toggle-border-top-left-radius}
@@ -138,152 +256,220 @@ $navigation-toggle-border-radius: var(
 );
 
 // Navigation branding properties.
+// --graupl-navigation-branding-font-size
 $navigation-branding-font-size: var(
   --#{root-defaults.$prefix}navigation-branding-font-size,
   #{map.get(typography.$font-sizes, "lg")}
 );
+
+// --graupl-navigation-branding-font-weight
 $navigation-branding-font-weight: var(
   --#{root-defaults.$prefix}navigation-branding-font-weight,
   #{typography.$font-weight-bold}
 );
+
+// --graupl-navigation-branding-padding-x
 $navigation-branding-padding-x: var(
   --#{root-defaults.$prefix}navigation-branding-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-navigation-branding-padding-y
 $navigation-branding-padding-y: var(
   --#{root-defaults.$prefix}navigation-branding-padding-y,
   #{map.get(root-variables.$spacers, 2)}
 );
+
+// --graupl-navigation-branding-padding
 $navigation-branding-padding: var(
   --#{root-defaults.$prefix}navigation-branding-padding,
   #{$navigation-branding-padding-y} #{$navigation-branding-padding-x}
 );
 
 // Navigation branding colors.
+// --graupl-navigation-branding-color
 $navigation-branding-color: var(
   --#{root-defaults.$prefix}navigation-branding-color,
   #{$navigation-color}
 );
+
+// --graupl-navigation-branding-visited-color
 $navigation-branding-visited-color: var(
   --#{root-defaults.$prefix}navigation-branding-visited-color,
   #{$navigation-branding-color}
 );
+
+// --graupl-navigation-branding-focus-color
 $navigation-branding-focus-color: var(
   --#{root-defaults.$prefix}navigation-branding-focus-color,
   #{$navigation-branding-color}
 );
+
+// --graupl-navigation-branding-hover-color
 $navigation-branding-hover-color: var(
   --#{root-defaults.$prefix}navigation-branding-hover-color,
   #{$navigation-color}
 );
+
+// --graupl-navigation-branding-active-color
 $navigation-branding-active-color: var(
   --#{root-defaults.$prefix}navigation-branding-active-color,
   #{$navigation-branding-hover-color}
 );
+
+// --graupl-navigation-branding-disabled-color
 $navigation-branding-disabled-color: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-color,
   #{$navigation-color}
 );
 
 // Navigation branding text decoration properties.
+// --graupl-navigation-branding-text-decoration
 $navigation-branding-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration,
   #{defaults.$navigation-branding-initial-text-decoration}
 );
+
+// --graupl-navigation-branding-visited-text-decoration
 $navigation-branding-visited-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration,
   #{$navigation-branding-text-decoration}
 );
+
+// --graupl-navigation-branding-focus-text-decoration
 $navigation-branding-focus-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration,
   #{$navigation-branding-text-decoration}
 );
+
+// --graupl-navigation-branding-hover-text-decoration
 $navigation-branding-hover-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration,
   #{defaults.$navigation-branding-final-text-decoration}
 );
+
+// --graupl-navigation-branding-active-text-decoration
 $navigation-branding-active-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration,
   #{$navigation-branding-hover-text-decoration}
 );
+
+// --graupl-navigation-branding-disabled-text-decoration
 $navigation-branding-disabled-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration,
   #{defaults.$navigation-branding-disabled-text-decoration}
 );
+
+// --graupl-navigation-branding-text-decoration-style
 $navigation-branding-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration-style,
   #{defaults.$navigation-branding-initial-text-decoration-style}
 );
+
+// --graupl-navigation-branding-visited-text-decoration-style
 $navigation-branding-visited-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration-style,
   #{$navigation-branding-text-decoration-style}
 );
+
+// --graupl-navigation-branding-focus-text-decoration-style
 $navigation-branding-focus-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration-style,
   #{$navigation-branding-text-decoration-style}
 );
+
+// --graupl-navigation-branding-hover-text-decoration-style
 $navigation-branding-hover-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration-style,
   #{defaults.$navigation-branding-final-text-decoration-style}
 );
+
+// --graupl-navigation-branding-active-text-decoration-style
 $navigation-branding-active-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration-style,
   #{$navigation-branding-hover-text-decoration-style}
 );
+
+// --graupl-navigation-branding-disabled-text-decoration-style
 $navigation-branding-disabled-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-style,
   #{defaults.$navigation-branding-disabled-text-decoration-style}
 );
+
+// --graupl-navigation-branding-text-decoration-thickness
 $navigation-branding-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+
+// --graupl-navigation-branding-visited-text-decoration-thickness
 $navigation-branding-visited-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration-thickness,
   #{$navigation-branding-text-decoration-thickness}
 );
+
+// --graupl-navigation-branding-focus-text-decoration-thickness
 $navigation-branding-focus-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration-thickness,
   #{$navigation-branding-text-decoration-thickness}
 );
+
+// --graupl-navigation-branding-hover-text-decoration-thickness
 $navigation-branding-hover-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+
+// --graupl-navigation-branding-active-text-decoration-thickness
 $navigation-branding-active-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration-thickness,
   #{$navigation-branding-hover-text-decoration-thickness}
 );
+
+// --graupl-navigation-branding-disabled-text-decoration-thickness
 $navigation-branding-disabled-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+
+// --graupl-navigation-branding-text-decoration-color
 $navigation-branding-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-text-decoration-color,
   #{$navigation-branding-color}
 );
+
+// --graupl-navigation-branding-visited-text-decoration-color
 $navigation-branding-visited-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-visited-text-decoration-color,
   #{$navigation-branding-visited-color}
 );
+
+// --graupl-navigation-branding-focus-text-decoration-color
 $navigation-branding-focus-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-focus-text-decoration-color,
   #{$navigation-branding-focus-color}
 );
+
+// --graupl-navigation-branding-hover-text-decoration-color
 $navigation-branding-hover-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-hover-text-decoration-color,
   #{$navigation-branding-hover-color}
 );
+
+// --graupl-navigation-branding-active-text-decoration-color
 $navigation-branding-active-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-active-text-decoration-color,
   #{$navigation-branding-active-color}
 );
+
+// --graupl-navigation-branding-disabled-text-decoration-color
 $navigation-branding-disabled-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-color,
   #{$navigation-branding-disabled-color}
 );
 
 // Navigation toggle properties.
+// --graupl-navigation-toggle-content
 $navigation-toggle-content: var(
   --#{root-defaults.$prefix}navigation-toggle-content,
   #{defaults.$navigation-toggle-content}

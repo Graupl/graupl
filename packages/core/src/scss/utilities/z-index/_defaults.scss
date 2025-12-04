@@ -34,18 +34,7 @@ $-z-index-properties: (
   0: 0,
   1: 1,
 );
-$custom-z-index-properties: () !default;
 $z-index-properties: () !default;
-
-// @todo remove this once $custom-z-index-properties is removed
-@if $custom-z-index-properties != () {
-  @warn "`$custom-z-index-properties` is deprecated and will be removed in a future release of Graupl. Use `$z-index-properties` instead.";
-
-  $z-index-properties: map.merge(
-    $z-index-properties,
-    $custom-z-index-properties
-  );
-}
 
 @if $generate-base-utilities {
   $z-index-properties: map.merge($-z-index-properties, $z-index-properties);

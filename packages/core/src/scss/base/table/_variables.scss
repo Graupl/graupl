@@ -3,6 +3,79 @@
 // These values are to be used to directly style bases and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                                  | Default                                                                                                                                                                                                         |
+// | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-table-caption-side                      | var(--graupl-table-caption-side)                                                                                                                                                                                |
+// | --graupl-table-caption-padding-x                 | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-caption-padding-y                 | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-caption-padding                   | var(--graupl-table-caption-padding-y) var(--graupl-table-caption-padding-x)                                                                                                                                     |
+// | --graupl-table-header-font-weight                | typography.var(--graupl-font-weight-bold)                                                                                                                                                                       |
+// | --graupl-table-header-padding-x                  | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-header-padding-y                  | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-header-padding                    | var(--graupl-table-header-padding-y) var(--graupl-table-header-padding-x)                                                                                                                                       |
+// | --graupl-table-header-background                 | var(--graupl-background)                                                                                                                                                                                        |
+// | --graupl-table-header-color                      | var(--graupl-color)                                                                                                                                                                                             |
+// | --graupl-table-cell-padding-x                    | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-cell-padding-y                    | var(--graupl-spacer-3)                                                                                                                                                                                          |
+// | --graupl-table-cell-padding                      | var(--graupl-table-cell-padding-y) var(--graupl-table-cell-padding-x)                                                                                                                                           |
+// | --graupl-table-cell-background                   | var(--graupl-background)                                                                                                                                                                                        |
+// | --graupl-table-cell-color                        | var(--graupl-color)                                                                                                                                                                                             |
+// | --graupl-table-border-top-width                  | var(--graupl-border-top-width)                                                                                                                                                                                  |
+// | --graupl-table-border-right-width                | var(--graupl-border-right-width)                                                                                                                                                                                |
+// | --graupl-table-border-bottom-width               | var(--graupl-border-bottom-width)                                                                                                                                                                               |
+// | --graupl-table-border-left-width                 | var(--graupl-border-left-width)                                                                                                                                                                                 |
+// | --graupl-table-border-width                      | var(--graupl-table-border-top-width) var(--graupl-table-border-right-width) var(--graupl-table-border-bottom-width) var(--graupl-table-border-left-width)                                                       |
+// | --graupl-table-border-top-style                  | var(--graupl-border-top-style)                                                                                                                                                                                  |
+// | --graupl-table-border-right-style                | var(--graupl-border-right-style)                                                                                                                                                                                |
+// | --graupl-table-border-bottom-style               | var(--graupl-border-bottom-style)                                                                                                                                                                               |
+// | --graupl-table-border-left-style                 | var(--graupl-border-left-style)                                                                                                                                                                                 |
+// | --graupl-table-border-style                      | var(--graupl-table-border-top-style) var(--graupl-table-border-right-style) var(--graupl-table-border-bottom-style) var(--graupl-table-border-left-style)                                                       |
+// | --graupl-table-border-top-left-radius            | var(--graupl-border-top-left-radius)                                                                                                                                                                            |
+// | --graupl-table-border-top-right-radius           | var(--graupl-border-top-right-radius)                                                                                                                                                                           |
+// | --graupl-table-border-bottom-right-radius        | var(--graupl-border-bottom-right-radius)                                                                                                                                                                        |
+// | --graupl-table-border-bottom-left-radius         | var(--graupl-border-bottom-left-radius)                                                                                                                                                                         |
+// | --graupl-table-border-radius                     | var(--graupl-table-border-top-left-radius) var(--graupl-table-border-top-right-radius) var(--graupl-table-border-bottom-right-radius) var(--graupl-table-border-bottom-left-radius)                             |
+// | --graupl-table-border-color                      | var(--graupl-border-color)                                                                                                                                                                                      |
+// | --graupl-table-cell-border-top-width             | var(--graupl-border-top-width)                                                                                                                                                                                  |
+// | --graupl-table-cell-border-right-width           | var(--graupl-border-right-width)                                                                                                                                                                                |
+// | --graupl-table-cell-border-bottom-width          | var(--graupl-border-bottom-width)                                                                                                                                                                               |
+// | --graupl-table-cell-border-left-width            | var(--graupl-border-left-width)                                                                                                                                                                                 |
+// | --graupl-table-cell-border-width                 | var(--graupl-table-cell-border-top-width) var(--graupl-table-cell-border-right-width) var(--graupl-table-cell-border-bottom-width) var(--graupl-table-cell-border-left-width)                                   |
+// | --graupl-table-cell-border-top-style             | var(--graupl-border-top-style)                                                                                                                                                                                  |
+// | --graupl-table-cell-border-right-style           | var(--graupl-border-right-style)                                                                                                                                                                                |
+// | --graupl-table-cell-border-bottom-style          | var(--graupl-border-bottom-style)                                                                                                                                                                               |
+// | --graupl-table-cell-border-left-style            | var(--graupl-border-left-style)                                                                                                                                                                                 |
+// | --graupl-table-cell-border-style                 | var(--graupl-table-cell-border-top-style) var(--graupl-table-cell-border-right-style) var(--graupl-table-cell-border-bottom-style) var(--graupl-table-cell-border-left-style)                                   |
+// | --graupl-table-cell-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                            |
+// | --graupl-table-cell-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                           |
+// | --graupl-table-cell-border-bottom-right-radius   | var(--graupl-border-bottom-right-radius)                                                                                                                                                                        |
+// | --graupl-table-cell-border-bottom-left-radius    | var(--graupl-border-bottom-left-radius)                                                                                                                                                                         |
+// | --graupl-table-cell-border-radius                | var(--graupl-table-cell-border-top-left-radius) var(--graupl-table-cell-border-top-right-radius) var(--graupl-table-cell-border-bottom-right-radius) var(--graupl-table-cell-border-bottom-left-radius)         |
+// | --graupl-table-cell-border-color                 | var(--graupl-table-border-color)                                                                                                                                                                                |
+// | --graupl-table-header-border-top-width           | var(--graupl-table-cell-border-top-width)                                                                                                                                                                       |
+// | --graupl-table-header-border-right-width         | var(--graupl-table-cell-border-right-width)                                                                                                                                                                     |
+// | --graupl-table-header-border-bottom-width        | var(--graupl-table-cell-border-bottom-width)                                                                                                                                                                    |
+// | --graupl-table-header-border-left-width          | var(--graupl-table-cell-border-left-width)                                                                                                                                                                      |
+// | --graupl-table-header-border-width               | var(--graupl-table-header-border-top-width) var(--graupl-table-header-border-right-width) var(--graupl-table-header-border-bottom-width) var(--graupl-table-header-border-left-width)                           |
+// | --graupl-table-header-border-top-style           | var(--graupl-table-cell-border-top-style)                                                                                                                                                                       |
+// | --graupl-table-header-border-right-style         | var(--graupl-table-cell-border-right-style)                                                                                                                                                                     |
+// | --graupl-table-header-border-bottom-style        | var(--graupl-table-cell-border-bottom-style)                                                                                                                                                                    |
+// | --graupl-table-header-border-left-style          | var(--graupl-table-cell-border-left-style)                                                                                                                                                                      |
+// | --graupl-table-header-border-style               | var(--graupl-table-header-border-top-style) var(--graupl-table-header-border-right-style) var(--graupl-table-header-border-bottom-style) var(--graupl-table-header-border-left-style)                           |
+// | --graupl-table-header-border-top-left-radius     | var(--graupl-table-cell-border-top-left-radius)                                                                                                                                                                 |
+// | --graupl-table-header-border-top-right-radius    | var(--graupl-table-cell-border-top-right-radius)                                                                                                                                                                |
+// | --graupl-table-header-border-bottom-right-radius | var(--graupl-table-cell-border-bottom-right-radius)                                                                                                                                                             |
+// | --graupl-table-header-border-bottom-left-radius  | var(--graupl-table-cell-border-bottom-left-radius)                                                                                                                                                              |
+// | --graupl-table-header-border-radius              | var(--graupl-table-header-border-top-left-radius) var(--graupl-table-header-border-top-right-radius) var(--graupl-table-header-border-bottom-right-radius) var(--graupl-table-header-border-bottom-left-radius) |
+// | --graupl-table-header-border-color               | var(--graupl-table-border-color)                                                                                                                                                                                |
+// | --graupl-table-striped-background                | var(--graupl-theme-active--secondary--200)                                                                                                                                                                      |
+// | --graupl-table-striped-color                     | var(--graupl-theme-active--secondary--900)                                                                                                                                                                      |
+// | --graupl-table-hover-background                  | var(--graupl-theme-active--secondary--300)                                                                                                                                                                      |
+// | --graupl-table-hover-color                       | var(--graupl-theme-active--secondary--900)                                                                                                                                                                      |
+// | --graupl-table-highlight-background              | var(--graupl-theme-active--secondary--500)                                                                                                                                                                      |
+// | --graupl-table-highlight-color                   | var(--graupl-theme-active--secondary--100)                                                                                                                                                                      |
+
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
@@ -12,260 +85,387 @@
 @use "sass:map";
 
 // Table caption properties.
+// --graupl-table-caption-side
 $table-caption-side: var(
   --#{root-defaults.$prefix}table-caption-side,
   #{defaults.$table-caption-side}
 );
+
+// --graupl-table-caption-padding-x
 $table-caption-padding-x: var(
   --#{root-defaults.$prefix}table-caption-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-table-caption-padding-y
 $table-caption-padding-y: var(
   --#{root-defaults.$prefix}table-caption-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-caption-padding: $table-caption-padding-y $table-caption-padding-x;
+
+// --graupl-table-caption-padding
+$table-caption-padding: var(
+  --#{root-defaults.$prefix}table-caption-padding,
+  #{$table-caption-padding-y} #{$table-caption-padding-x}
+);
 
 // Table header properties.
+// --graupl-table-header-font-weight
 $table-header-font-weight: var(
   --#{root-defaults.$prefix}table-header-font-weight,
   #{typography.$font-weight-bold}
 );
+
+// --graupl-table-header-padding-x
 $table-header-padding-x: var(
   --#{root-defaults.$prefix}table-header-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-table-header-padding-y
 $table-header-padding-y: var(
   --#{root-defaults.$prefix}table-header-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-header-padding: $table-header-padding-y $table-header-padding-x;
+
+// --graupl-table-header-padding
+$table-header-padding: var(
+  --#{root-defaults.$prefix}table-header-padding,
+  #{$table-header-padding-y} #{$table-header-padding-x}
+);
+
+// --graupl-table-header-background
 $table-header-background: var(
   --#{root-defaults.$prefix}table-header-background,
   #{color.$background}
 );
+
+// --graupl-table-header-color
 $table-header-color: var(
   --#{root-defaults.$prefix}table-header-color,
   #{color.$color}
 );
 
 // Table cell properties.
+// --graupl-table-cell-padding-x
 $table-cell-padding-x: var(
   --#{root-defaults.$prefix}table-cell-padding-x,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-table-cell-padding-y
 $table-cell-padding-y: var(
   --#{root-defaults.$prefix}table-cell-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
-$table-cell-padding: $table-cell-padding-y $table-cell-padding-x;
+
+// --graupl-table-cell-padding
+$table-cell-padding: var(
+  --#{root-defaults.$prefix}table-cell-padding,
+  #{$table-cell-padding-y} #{$table-cell-padding-x}
+);
+
+// --graupl-table-cell-background
 $table-cell-background: var(
   --#{root-defaults.$prefix}table-cell-background,
   #{color.$background}
 );
+
+// --graupl-table-cell-color
 $table-cell-color: var(
   --#{root-defaults.$prefix}table-cell-color,
   #{color.$color}
 );
 
 // Table border properties.
+// --graupl-table-border-top-width
 $table-border-top-width: var(
   --#{root-defaults.$prefix}table-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-table-border-right-width
 $table-border-right-width: var(
   --#{root-defaults.$prefix}table-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-table-border-bottom-width
 $table-border-bottom-width: var(
   --#{root-defaults.$prefix}table-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-table-border-left-width
 $table-border-left-width: var(
   --#{root-defaults.$prefix}table-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-table-border-width
 $table-border-width: var(
   --#{root-defaults.$prefix}table-border-width,
   #{$table-border-top-width} #{$table-border-right-width}
     #{$table-border-bottom-width} #{$table-border-left-width}
 );
+
+// --graupl-table-border-top-style
 $table-border-top-style: var(
   --#{root-defaults.$prefix}table-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-table-border-right-style
 $table-border-right-style: var(
   --#{root-defaults.$prefix}table-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-table-border-bottom-style
 $table-border-bottom-style: var(
   --#{root-defaults.$prefix}table-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-table-border-left-style
 $table-border-left-style: var(
   --#{root-defaults.$prefix}table-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-table-border-style
 $table-border-style: var(
   --#{root-defaults.$prefix}table-border-style,
   #{$table-border-top-style} #{$table-border-right-style}
     #{$table-border-bottom-style} #{$table-border-left-style}
 );
+
+// --graupl-table-border-top-left-radius
 $table-border-top-left-radius: var(
   --#{root-defaults.$prefix}table-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-table-border-top-right-radius
 $table-border-top-right-radius: var(
   --#{root-defaults.$prefix}table-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-table-border-bottom-right-radius
 $table-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}table-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-table-border-bottom-left-radius
 $table-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}table-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-table-border-radius
 $table-border-radius: var(
   --#{root-defaults.$prefix}table-border-radius,
   #{$table-border-top-left-radius} #{$table-border-top-right-radius}
     #{$table-border-bottom-right-radius} #{$table-border-bottom-left-radius}
 );
+
+// --graupl-table-border-color
 $table-border-color: var(
   --#{root-defaults.$prefix}table-border-color,
   #{color.$border-color}
 );
 
 // Table cell border properties.
+// --graupl-table-cell-border-top-width
 $table-cell-border-top-width: var(
   --#{root-defaults.$prefix}table-cell-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-table-cell-border-right-width
 $table-cell-border-right-width: var(
   --#{root-defaults.$prefix}table-cell-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-table-cell-border-bottom-width
 $table-cell-border-bottom-width: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-table-cell-border-left-width
 $table-cell-border-left-width: var(
   --#{root-defaults.$prefix}table-cell-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-table-cell-border-width
 $table-cell-border-width: var(
   --#{root-defaults.$prefix}table-cell-border-width,
   #{$table-cell-border-top-width} #{$table-cell-border-right-width}
     #{$table-cell-border-bottom-width} #{$table-cell-border-left-width}
 );
+
+// --graupl-table-cell-border-top-style
 $table-cell-border-top-style: var(
   --#{root-defaults.$prefix}table-cell-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-table-cell-border-right-style
 $table-cell-border-right-style: var(
   --#{root-defaults.$prefix}table-cell-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-table-cell-border-bottom-style
 $table-cell-border-bottom-style: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-table-cell-border-left-style
 $table-cell-border-left-style: var(
   --#{root-defaults.$prefix}table-cell-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-table-cell-border-style
 $table-cell-border-style: var(
   --#{root-defaults.$prefix}table-cell-border-style,
   #{$table-cell-border-top-style} #{$table-cell-border-right-style}
     #{$table-cell-border-bottom-style} #{$table-cell-border-left-style}
 );
+
+// --graupl-table-cell-border-top-left-radius
 $table-cell-border-top-left-radius: var(
   --#{root-defaults.$prefix}table-cell-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-table-cell-border-top-right-radius
 $table-cell-border-top-right-radius: var(
   --#{root-defaults.$prefix}table-cell-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-table-cell-border-bottom-right-radius
 $table-cell-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-table-cell-border-bottom-left-radius
 $table-cell-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}table-cell-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-table-cell-border-radius
 $table-cell-border-radius: var(
   --#{root-defaults.$prefix}table-cell-border-radius,
   #{$table-cell-border-top-left-radius} #{$table-cell-border-top-right-radius}
     #{$table-cell-border-bottom-right-radius}
     #{$table-cell-border-bottom-left-radius}
 );
+
+// --graupl-table-cell-border-color
 $table-cell-border-color: var(
   --#{root-defaults.$prefix}table-cell-border-color,
   #{$table-border-color}
 );
 
 // Table header border properties.
+// --graupl-table-header-border-top-width
 $table-header-border-top-width: var(
   --#{root-defaults.$prefix}table-header-border-top-width,
   #{$table-cell-border-top-width}
 );
+
+// --graupl-table-header-border-right-width
 $table-header-border-right-width: var(
   --#{root-defaults.$prefix}table-header-border-right-width,
   #{$table-cell-border-right-width}
 );
+
+// --graupl-table-header-border-bottom-width
 $table-header-border-bottom-width: var(
   --#{root-defaults.$prefix}table-header-border-bottom-width,
   #{$table-cell-border-bottom-width}
 );
+
+// --graupl-table-header-border-left-width
 $table-header-border-left-width: var(
   --#{root-defaults.$prefix}table-header-border-left-width,
   #{$table-cell-border-left-width}
 );
+
+// --graupl-table-header-border-width
 $table-header-border-width: var(
   --#{root-defaults.$prefix}table-header-border-width,
   #{$table-header-border-top-width} #{$table-header-border-right-width}
     #{$table-header-border-bottom-width} #{$table-header-border-left-width}
 );
+
+// --graupl-table-header-border-top-style
 $table-header-border-top-style: var(
   --#{root-defaults.$prefix}table-header-border-top-style,
   #{$table-cell-border-top-style}
 );
+
+// --graupl-table-header-border-right-style
 $table-header-border-right-style: var(
   --#{root-defaults.$prefix}table-header-border-right-style,
   #{$table-cell-border-right-style}
 );
+
+// --graupl-table-header-border-bottom-style
 $table-header-border-bottom-style: var(
   --#{root-defaults.$prefix}table-header-border-bottom-style,
   #{$table-cell-border-bottom-style}
 );
+
+// --graupl-table-header-border-left-style
 $table-header-border-left-style: var(
   --#{root-defaults.$prefix}table-header-border-left-style,
   #{$table-cell-border-left-style}
 );
+
+// --graupl-table-header-border-style
 $table-header-border-style: var(
   --#{root-defaults.$prefix}table-header-border-style,
   #{$table-header-border-top-style} #{$table-header-border-right-style}
     #{$table-header-border-bottom-style} #{$table-header-border-left-style}
 );
+
+// --graupl-table-header-border-top-left-radius
 $table-header-border-top-left-radius: var(
   --#{root-defaults.$prefix}table-header-border-top-left-radius,
   #{$table-cell-border-top-left-radius}
 );
+
+// --graupl-table-header-border-top-right-radius
 $table-header-border-top-right-radius: var(
   --#{root-defaults.$prefix}table-header-border-top-right-radius,
   #{$table-cell-border-top-right-radius}
 );
+
+// --graupl-table-header-border-bottom-right-radius
 $table-header-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}table-header-border-bottom-right-radius,
   #{$table-cell-border-bottom-right-radius}
 );
+
+// --graupl-table-header-border-bottom-left-radius
 $table-header-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}table-header-border-bottom-left-radius,
   #{$table-cell-border-bottom-left-radius}
 );
+
+// --graupl-table-header-border-radius
 $table-header-border-radius: var(
   --#{root-defaults.$prefix}table-header-border-radius,
   #{$table-header-border-top-left-radius}
@@ -273,36 +473,47 @@ $table-header-border-radius: var(
     #{$table-header-border-bottom-right-radius}
     #{$table-header-border-bottom-left-radius}
 );
+
+// --graupl-table-header-border-color
 $table-header-border-color: var(
   --#{root-defaults.$prefix}table-header-border-color,
   #{$table-border-color}
 );
 
 // Table striped properties.
+// --graupl-table-striped-background
 $table-striped-background: var(
   --#{root-defaults.$prefix}table-striped-background,
   #{theme.get(secondary, 200)}
 );
+
+// --graupl-table-striped-color
 $table-striped-color: var(
   --#{root-defaults.$prefix}table-striped-color,
   #{theme.get(secondary, 900)}
 );
 
 // Table hover properties.
+// --graupl-table-hover-background
 $table-hover-background: var(
   --#{root-defaults.$prefix}table-hover-background,
   #{theme.get(secondary, 300)}
 );
+
+// --graupl-table-hover-color
 $table-hover-color: var(
   --#{root-defaults.$prefix}table-hover-color,
   #{theme.get(secondary, 900)}
 );
 
 // Table highlight properties.
+// --graupl-table-highlight-background
 $table-highlight-background: var(
   --#{root-defaults.$prefix}table-highlight-background,
   #{theme.get(secondary, 500)}
 );
+
+// --graupl-table-highlight-color
 $table-highlight-color: var(
   --#{root-defaults.$prefix}table-highlight-color,
   #{theme.get(secondary, 100)}

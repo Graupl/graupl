@@ -9,11 +9,13 @@
 @use "../../defaults" as root-defaults;
 
 // Columns selectors.
-$columns-selector-base: root-defaults.$component-selector-base !default;
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$columns-selector-base: $selector-base !default;
 $columns-selector: "columns" !default;
-$columns-count-selector-base: $columns-selector-base !default;
+$columns-count-selector-base: $selector-base !default;
 $columns-count-selector-prefix: "count-" !default;
-$columns-span-selector-base: $columns-selector-base !default;
+$columns-span-selector-base: $selector-base !default;
 $columns-span-selector-prefix: "span-" !default;
 
 // Columns properties.

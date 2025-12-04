@@ -3,22 +3,37 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                 | Default     |
+// | ------------------------------- | ----------- |
+// | --graupl-gradient-from          | transparent |
+// | --graupl-gradient-from-position | 0%          |
+// | --graupl-gradient-to            | transparent |
+// | --graupl-gradient-to-position   | 100%        |
+
 @use "../../defaults" as root-defaults;
 @use "../../functions/theme";
 @use "defaults";
 
+// --graupl-gradient-from
 $gradient-from: var(
   --#{root-defaults.$prefix}gradient-from,
   #{theme.get(transparent)}
 );
+
+// --graupl-gradient-from-position
 $gradient-from-position: var(
   --#{root-defaults.$prefix}gradient-from-position,
   0%
 );
+
+// --graupl-gradient-to
 $gradient-to: var(
   --#{root-defaults.$prefix}gradient-to,
   #{theme.get(transparent)}
 );
+
+// --graupl-gradient-to-position
 $gradient-to-position: var(
   --#{root-defaults.$prefix}gradient-to-position,
   100%

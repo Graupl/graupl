@@ -3,6 +3,66 @@
 // These values are to be used to directly style bases and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Custom property                              | Default                                                                                                                                                                                         |
+// | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-input-padding-x                     | var(--graupl-spacer-5)                                                                                                                                                                          |
+// | --graupl-input-padding-y                     | var(--graupl-spacer-3)                                                                                                                                                                          |
+// | --graupl-input-padding                       | var(--graupl-input-padding-y) var(--graupl-input-padding-x)                                                                                                                                     |
+// | --graupl-input-font-size                     | var(--graupl-font-base)                                                                                                                                                                         |
+// | --graupl-label-font-size                     | var(--graupl-input-font-size)                                                                                                                                                                   |
+// | --graupl-fieldset-direction                  | column                                                                                                                                                                                          |
+// | --graupl-fieldset-gap                        | var(--graupl-spacer-2)                                                                                                                                                                          |
+// | --graupl-fieldset-padding-x                  | var(--graupl-input-padding-x)                                                                                                                                                                   |
+// | --graupl-fieldset-padding-y                  | var(--graupl-input-padding-y)                                                                                                                                                                   |
+// | --graupl-fieldset-padding                    | var(--graupl-fieldset-padding-y) var(--graupl-fieldset-padding-x)                                                                                                                               |
+// | --graupl-fieldset-font-size                  | var(--graupl-input-font-size)                                                                                                                                                                   |
+// | --graupl-input-background                    | var(--graupl-background)                                                                                                                                                                        |
+// | --graupl-fieldset-background                 | var(--graupl-input-background)                                                                                                                                                                  |
+// | --graupl-input-color                         | var(--graupl-color)                                                                                                                                                                             |
+// | --graupl-input-placeholder-color             | var(--graupl-theme-active--secondary--600)                                                                                                                                                      |
+// | --graupl-label-color                         | var(--graupl-input-color)                                                                                                                                                                       |
+// | --graupl-fieldset-color                      | var(--graupl-input-color)                                                                                                                                                                       |
+// | --graupl-input-disabled-color                | var(--graupl-theme-active--secondary--400)                                                                                                                                                      |
+// | --graupl-input-placeholder-disabled-color    | var(--graupl-input-disabled-color)                                                                                                                                                              |
+// | --graupl-label-disabled-color                | var(--graupl-input-disabled-color)                                                                                                                                                              |
+// | --graupl-fieldset-disabled-color             | var(--graupl-input-disabled-color)                                                                                                                                                              |
+// | --graupl-input-border-top-width              | var(--graupl-border-top-width)                                                                                                                                                                  |
+// | --graupl-input-border-right-width            | var(--graupl-border-right-width)                                                                                                                                                                |
+// | --graupl-input-border-bottom-width           | var(--graupl-border-bottom-width)                                                                                                                                                               |
+// | --graupl-input-border-left-width             | var(--graupl-border-left-width)                                                                                                                                                                 |
+// | --graupl-input-border-width                  | var(--graupl-input-border-top-width) var(--graupl-input-border-right-width) var(--graupl-input-border-bottom-width) var(--graupl-input-border-left-width)                                       |
+// | --graupl-input-border-top-style              | var(--graupl-border-top-style)                                                                                                                                                                  |
+// | --graupl-input-border-right-style            | var(--graupl-border-right-style)                                                                                                                                                                |
+// | --graupl-input-border-bottom-style           | var(--graupl-border-bottom-style)                                                                                                                                                               |
+// | --graupl-input-border-left-style             | var(--graupl-border-left-style)                                                                                                                                                                 |
+// | --graupl-input-border-style                  | var(--graupl-input-border-top-style) var(--graupl-input-border-right-style) var(--graupl-input-border-bottom-style) var(--graupl-input-border-left-style)                                       |
+// | --graupl-input-border-top-left-radius        | var(--graupl-border-top-left-radius)                                                                                                                                                            |
+// | --graupl-input-border-top-right-radius       | var(--graupl-border-top-right-radius)                                                                                                                                                           |
+// | --graupl-input-border-bottom-left-radius     | var(--graupl-border-bottom-left-radius)                                                                                                                                                         |
+// | --graupl-input-border-bottom-right-radius    | var(--graupl-border-bottom-right-radius)                                                                                                                                                        |
+// | --graupl-input-border-radius                 | var(--graupl-input-border-top-left-radius) var(--graupl-input-border-top-right-radius) var(--graupl-input-border-bottom-right-radius) var(--graupl-input-border-bottom-left-radius)             |
+// | --graupl-fieldset-border-top-width           | var(--graupl-input-border-top-width)                                                                                                                                                            |
+// | --graupl-fieldset-border-right-width         | var(--graupl-input-border-right-width)                                                                                                                                                          |
+// | --graupl-fieldset-border-bottom-width        | var(--graupl-input-border-bottom-width)                                                                                                                                                         |
+// | --graupl-fieldset-border-left-width          | var(--graupl-input-border-left-width)                                                                                                                                                           |
+// | --graupl-fieldset-border-width               | var(--graupl-fieldset-border-top-width) var(--graupl-fieldset-border-right-width) var(--graupl-fieldset-border-bottom-width) var(--graupl-fieldset-border-left-width)                           |
+// | --graupl-fieldset-border-top-style           | var(--graupl-input-border-top-style)                                                                                                                                                            |
+// | --graupl-fieldset-border-right-style         | var(--graupl-input-border-right-style)                                                                                                                                                          |
+// | --graupl-fieldset-border-bottom-style        | var(--graupl-input-border-bottom-style)                                                                                                                                                         |
+// | --graupl-fieldset-border-left-style          | var(--graupl-input-border-left-style)                                                                                                                                                           |
+// | --graupl-fieldset-border-style               | var(--graupl-fieldset-border-top-style) var(--graupl-fieldset-border-right-style) var(--graupl-fieldset-border-bottom-style) var(--graupl-fieldset-border-left-style)                           |
+// | --graupl-fieldset-border-top-left-radius     | var(--graupl-input-border-top-left-radius)                                                                                                                                                      |
+// | --graupl-fieldset-border-top-right-radius    | var(--graupl-input-border-top-right-radius)                                                                                                                                                     |
+// | --graupl-fieldset-border-bottom-left-radius  | var(--graupl-input-border-bottom-left-radius)                                                                                                                                                   |
+// | --graupl-fieldset-border-bottom-right-radius | var(--graupl-input-border-bottom-right-radius)                                                                                                                                                  |
+// | --graupl-fieldset-border-radius              | var(--graupl-fieldset-border-top-left-radius) var(--graupl-fieldset-border-top-right-radius) var(--graupl-fieldset-border-bottom-right-radius) var(--graupl-fieldset-border-bottom-left-radius) |
+// | --graupl-input-border-color                  | var(--graupl-border-color)                                                                                                                                                                      |
+// | --graupl-input-disabled-border-color         | var(--graupl-theme-active--secondary--200)                                                                                                                                                      |
+// | --graupl-fieldset-border-color               | var(--graupl-input-border-color)                                                                                                                                                                |
+// | --graupl-fieldset-disabled-border-color      | var(--graupl-input-disabled-border-color)                                                                                                                                                       |
+// | --graupl-input-accent-color                  | var(--graupl-input-color)                                                                                                                                                                       |
+
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
@@ -11,208 +71,306 @@
 @use "../../functions/theme";
 @use "sass:map";
 
+// --graupl-input-padding-x
 $input-padding-x: var(
   --#{root-defaults.$prefix}input-padding-x,
   #{map.get(root-variables.$spacers, 5)}
 );
+
+// --graupl-input-padding-y
 $input-padding-y: var(
   --#{root-defaults.$prefix}input-padding-y,
   #{map.get(root-variables.$spacers, 3)}
 );
+
+// --graupl-input-padding
 $input-padding: var(
   --#{root-defaults.$prefix}input-padding,
   #{$input-padding-y} #{$input-padding-x}
 );
+
+// --graupl-input-font-size
 $input-font-size: var(
   --#{root-defaults.$prefix}input-font-size,
   #{map.get(typography.$font-sizes, base)}
 );
+
+// --graupl-label-font-size
 $label-font-size: var(
   --#{root-defaults.$prefix}label-font-size,
   #{$input-font-size}
 );
+
+// --graupl-fieldset-direction
 $fieldset-direction: var(
   --#{root-defaults.$prefix}fieldset-direction,
   #{defaults.$fieldset-direction}
 );
+
+// --graupl-fieldset-gap
 $fieldset-gap: var(
   --#{root-defaults.$prefix}fieldset-gap,
   map.get(root-variables.$spacers, 2)
 );
+
+// --graupl-fieldset-padding-x
 $fieldset-padding-x: var(
   --#{root-defaults.$prefix}fieldset-padding-x,
   #{$input-padding-x}
 );
+
+// --graupl-fieldset-padding-y
 $fieldset-padding-y: var(
   --#{root-defaults.$prefix}fieldset-padding-y,
   #{$input-padding-y}
 );
+
+// --graupl-fieldset-padding
 $fieldset-padding: var(
   --#{root-defaults.$prefix}fieldset-padding,
   #{$fieldset-padding-y} #{$fieldset-padding-x}
 );
+
+// --graupl-fieldset-font-size
 $fieldset-font-size: var(
   --#{root-defaults.$prefix}fieldset-font-size,
   #{$input-font-size}
 );
 
 // Background properties.
+// --graupl-input-background
 $input-background: var(
   --#{root-defaults.$prefix}input-background,
   #{color.$background}
 );
+
+// --graupl-fieldset-background
 $fieldset-background: var(
   --#{root-defaults.$prefix}fieldset-background,
   #{$input-background}
 );
 
 // Text properties.
+// --graupl-input-color
 $input-color: var(--#{root-defaults.$prefix}input-color, #{color.$color});
+
+// --graupl-input-placeholder-color
 $input-placeholder-color: var(
   --#{root-defaults.$prefix}input-placeholder-color,
   #{theme.get(secondary, 600)}
 );
+
+// --graupl-label-color
 $label-color: var(--#{root-defaults.$prefix}label-color, #{$input-color});
+
+// --graupl-fieldset-color
 $fieldset-color: var(--#{root-defaults.$prefix}fieldset-color, #{$input-color});
+
+// --graupl-input-disabled-color
 $input-disabled-color: var(
   --#{root-defaults.$prefix}input-disabled-color,
   #{theme.get(secondary, 400)}
 );
+
+// --graupl-input-placeholder-disabled-color
 $input-placeholder-disabled-color: var(
   --#{root-defaults.$prefix}input-placeholder-disabled-color,
   #{$input-disabled-color}
 );
+
+// --graupl-label-disabled-color
 $label-disabled-color: var(
   --#{root-defaults.$prefix}label-disabled-color,
   #{$input-disabled-color}
 );
+
+// --graupl-fieldset-disabled-color
 $fieldset-disabled-color: var(
   --#{root-defaults.$prefix}fieldset-disabled-color,
   #{$input-disabled-color}
 );
 
 // Border properties.
+// --graupl-input-border-top-width
 $input-border-top-width: var(
   --#{root-defaults.$prefix}input-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-input-border-right-width
 $input-border-right-width: var(
   --#{root-defaults.$prefix}input-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-input-border-bottom-width
 $input-border-bottom-width: var(
   --#{root-defaults.$prefix}input-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-input-border-left-width
 $input-border-left-width: var(
   --#{root-defaults.$prefix}input-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-input-border-width
 $input-border-width: var(
   --#{root-defaults.$prefix}input-border-width,
   #{$input-border-top-width} #{$input-border-right-width}
     #{$input-border-bottom-width} #{$input-border-left-width}
 );
+
+// --graupl-input-border-top-style
 $input-border-top-style: var(
   --#{root-defaults.$prefix}input-border-top-style,
   #{root-variables.$border-top-style}
 );
+
+// --graupl-input-border-right-style
 $input-border-right-style: var(
   --#{root-defaults.$prefix}input-border-right-style,
   #{root-variables.$border-right-style}
 );
+
+// --graupl-input-border-bottom-style
 $input-border-bottom-style: var(
   --#{root-defaults.$prefix}input-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+
+// --graupl-input-border-left-style
 $input-border-left-style: var(
   --#{root-defaults.$prefix}input-border-left-style,
   #{root-variables.$border-left-style}
 );
+
+// --graupl-input-border-style
 $input-border-style: var(
   --#{root-defaults.$prefix}input-border-style,
   #{$input-border-top-style} #{$input-border-right-style}
     #{$input-border-bottom-style} #{$input-border-left-style}
 );
+
+// --graupl-input-border-top-left-radius
 $input-border-top-left-radius: var(
   --#{root-defaults.$prefix}input-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-input-border-top-right-radius
 $input-border-top-right-radius: var(
   --#{root-defaults.$prefix}input-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+// --graupl-input-border-bottom-left-radius
 $input-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}input-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-input-border-bottom-right-radius
 $input-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}input-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-input-border-radius
 $input-border-radius: var(
   --#{root-defaults.$prefix}input-border-radius,
   #{$input-border-top-left-radius} #{$input-border-top-right-radius}
     #{$input-border-bottom-right-radius} #{$input-border-bottom-left-radius}
 );
+
+// --graupl-fieldset-border-top-width
 $fieldset-border-top-width: var(
   --#{root-defaults.$prefix}fieldset-border-top-width,
   #{$input-border-top-width}
 );
+
+// --graupl-fieldset-border-right-width
 $fieldset-border-right-width: var(
   --#{root-defaults.$prefix}fieldset-border-right-width,
   #{$input-border-right-width}
 );
+
+// --graupl-fieldset-border-bottom-width
 $fieldset-border-bottom-width: var(
   --#{root-defaults.$prefix}fieldset-border-bottom-width,
   #{$input-border-bottom-width}
 );
+
+// --graupl-fieldset-border-left-width
 $fieldset-border-left-width: var(
   --#{root-defaults.$prefix}fieldset-border-left-width,
   #{$input-border-left-width}
 );
+
+// --graupl-fieldset-border-width
 $fieldset-border-width: var(
   --#{root-defaults.$prefix}fieldset-border-width,
   #{$fieldset-border-top-width} #{$fieldset-border-right-width}
     #{$fieldset-border-bottom-width} #{$fieldset-border-left-width}
 );
+
+// --graupl-fieldset-border-top-style
 $fieldset-border-top-style: var(
   --#{root-defaults.$prefix}fieldset-border-top-style,
   #{$input-border-top-style}
 );
+
+// --graupl-fieldset-border-right-style
 $fieldset-border-right-style: var(
   --#{root-defaults.$prefix}fieldset-border-right-style,
   #{$input-border-right-style}
 );
+
+// --graupl-fieldset-border-bottom-style
 $fieldset-border-bottom-style: var(
   --#{root-defaults.$prefix}fieldset-border-bottom-style,
   #{$input-border-bottom-style}
 );
+
+// --graupl-fieldset-border-left-style
 $fieldset-border-left-style: var(
   --#{root-defaults.$prefix}fieldset-border-left-style,
   #{$input-border-left-style}
 );
+
+// --graupl-fieldset-border-style
 $fieldset-border-style: var(
   --#{root-defaults.$prefix}fieldset-border-style,
   #{$fieldset-border-top-style} #{$fieldset-border-right-style}
     #{$fieldset-border-bottom-style} #{$fieldset-border-left-style}
 );
+
+// --graupl-fieldset-border-top-left-radius
 $fieldset-border-top-left-radius: var(
   --#{root-defaults.$prefix}fieldset-border-top-left-radius,
   #{$input-border-top-left-radius}
 );
+
+// --graupl-fieldset-border-top-right-radius
 $fieldset-border-top-right-radius: var(
   --#{root-defaults.$prefix}fieldset-border-top-right-radius,
   #{$input-border-top-right-radius}
 );
+
+// --graupl-fieldset-border-bottom-left-radius
 $fieldset-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}fieldset-border-bottom-left-radius,
   #{$input-border-bottom-left-radius}
 );
+
+// --graupl-fieldset-border-bottom-right-radius
 $fieldset-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}fieldset-border-bottom-right-radius,
   #{$input-border-bottom-right-radius}
 );
+
+// --graupl-fieldset-border-radius
 $fieldset-border-radius: var(
   --#{root-defaults.$prefix}fieldset-border-radius,
   #{$fieldset-border-top-left-radius} #{$fieldset-border-top-right-radius}
@@ -221,24 +379,32 @@ $fieldset-border-radius: var(
 );
 
 // Border colour properties.
+// --graupl-input-border-color
 $input-border-color: var(
   --#{root-defaults.$prefix}input-border-color,
   #{color.$border-color}
 );
+
+// --graupl-input-disabled-border-color
 $input-disabled-border-color: var(
   --#{root-defaults.$prefix}input-disabled-border-color,
   #{theme.get(secondary, 200)}
 );
+
+// --graupl-fieldset-border-color
 $fieldset-border-color: var(
   --#{root-defaults.$prefix}fieldset-border-color,
   #{$input-border-color}
 );
+
+// --graupl-fieldset-disabled-border-color
 $fieldset-disabled-border-color: var(
   --#{root-defaults.$prefix}fieldset-disabled-border-color,
   #{$input-disabled-border-color}
 );
 
 // Accent color properties.
+// --graupl-input-accent-color
 $input-accent-color: var(
   --#{root-defaults.$prefix}input-accent-color,
   #{$input-color}

@@ -38,15 +38,7 @@ $-inset-properties: (
   bottom: bottom,
   left: left,
 );
-$custom-inset-properties: () !default;
 $inset-properties: () !default;
-
-// @todo remove this once $custom-inset-properties is removed
-@if $custom-inset-properties != () {
-  @warn "`$custom-inset-properties` is deprecated and will be removed in a future release of Graupl. Use `$inset-properties` instead.";
-
-  $inset-properties: map.merge($inset-properties, $custom-inset-properties);
-}
 
 // Inset values.
 $-inset-values: (
@@ -59,15 +51,7 @@ $-inset-values: (
   third: calc(100% / 3),
   two-thirds: calc(100% / 1.5),
 );
-$custom-inset-values: () !default;
 $inset-values: () !default;
-
-// @todo remove this once $custom-inset-values is removed
-@if $custom-inset-values != () {
-  @warn "`$custom-inset-values` is deprecated and will be removed in a future release of Graupl. Use `$inset-values` instead.";
-
-  $inset-values: map.merge($inset-values, $custom-inset-values);
-}
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {

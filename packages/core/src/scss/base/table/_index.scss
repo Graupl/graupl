@@ -21,112 +21,117 @@
 // - `.tertiary`: A component modifier to apply the tertiary colour to the table component.
 //
 // The following custom properties can be used to customize the table component:
-// - `--graupl-table-caption-side`: The caption side of the table component.
-// - `--graupl-table-caption-padding-x`: The horizontal padding of the table caption component.
-// - `--graupl-table-caption-padding-y`: The vertical padding of the table caption component.
-// - `--graupl-table-caption-padding`: The padding of the table caption component (combines x and y padding).
-// - `--graupl-table-header-font-weight`: The font weight of the table header component.
-// - `--graupl-table-header-padding-x`: The horizontal padding of the table header component.
-// - `--graupl-table-header-padding-y`: The vertical padding of the table header component.
-// - `--graupl-table-header-padding`: The padding of the table header component (combines x and y padding).
-// - `--graupl-table-header-background`: The background colour of the table header component.
-// - `--graupl-table-header-background`: The text colour of the table header component.
-// - `--graupl-table-cell-padding-x`: The horizontal padding of the table cell component.
-// - `--graupl-table-cell-padding-y`: The vertical padding of the table cell component.
-// - `--graupl-table-cell-padding`: The padding of the table cell component (combines x and y padding).
-// - `--graupl-table-cell-background`: The background colour of the table cell component.
-// - `--graupl-table-cell-color`: The text colour of the table cell component.
-// - `--graupl-table-border-top-width`: The top border width of the table component.
-// - `--graupl-table-border-right-width`: The right border width of the table component.
-// - `--graupl-table-border-bottom-width`: The bottom border width of the table component.
-// - `--graupl-table-border-left-width`: The left border width of the table component.
-// - `--graupl-table-border-width`: The border width of the table component (combines top, right, bottom, and left widths).
-// - `--graupl-table-border-top-style`: The top border style of the table component.
-// - `--graupl-table-border-right-style`: The right border style of the table component.
-// - `--graupl-table-border-bottom-style`: The bottom border style of the table component.
-// - `--graupl-table-border-left-style`: The left border style of the table component.
-// - `--graupl-table-border-style`: The border style of the table component (combines top, right, bottom, and left styles).
-// - `--graupl-table-border-top-left-radius`: The top left border radius of the table component.
-// - `--graupl-table-border-top-right-radius`: The top right border radius of the table component.
-// - `--graupl-table-border-bottom-right-radius`: The bottom right border radius of the table component.
-// - `--graupl-table-border-bottom-left-radius`: The bottom left border radius of the table component.
-// - `--graupl-table-border-radius`: The border radius of the table component (combines top left, top right, bottom right, and bottom left radii).
-// - `--graupl-table-border-color`: The border colour of the table component.
-// - `--graupl-table-cell-border-top-width`: The top border width of the table cell component.
-// - `--graupl-table-cell-border-right-width`: The right border width of the table cell component.
-// - `--graupl-table-cell-border-bottom-width`: The bottom border width of the table cell component.
-// - `--graupl-table-cell-border-left-width`: The left border width of the table cell component.
-// - `--graupl-table-cell-border-width`: The border width of the table cell component (combines top, right, bottom, and left widths).
-// - `--graupl-table-cell-border-top-style`: The top border style of the table cell component.
-// - `--graupl-table-cell-border-right-style`: The right border style of the table cell component.
-// - `--graupl-table-cell-border-bottom-style`: The bottom border style of the table cell component.
-// - `--graupl-table-cell-border-left-style`: The left border style of the table cell component.
-// - `--graupl-table-cell-border-style`: The border style of the table cell component (combines top, right, bottom, and left styles).
-// - `--graupl-table-cell-border-top-left-radius`: The top left border radius of the table cell component.
-// - `--graupl-table-cell-border-top-right-radius`: The top right border radius of the table cell component.
-// - `--graupl-table-cell-border-bottom-right-radius`: The bottom right border radius of the table cell component.
-// - `--graupl-table-cell-border-bottom-left-radius`: The bottom left border radius of the table cell component.
-// - `--graupl-table-cell-border-radius`: The border radius of the table cell component (combines top left, top right, bottom right, and bottom left radii).
-// - `--graupl-table-cell-border-color`: The border colour of the table cell component.
-// - `--graupl-table-header-border-top-width`: The top border width of the table header component.
-// - `--graupl-table-header-border-right-width`: The right border width of the table header component.
-// - `--graupl-table-header-border-bottom-width`: The bottom border width of the table header component.
-// - `--graupl-table-header-border-left-width`: The left border width of the table header component.
-// - `--graupl-table-header-border-width`: The border width of the table header component (combines top, right, bottom, and left widths).
-// - `--graupl-table-header-border-top-style`: The top border style of the table header component.
-// - `--graupl-table-header-border-right-style`: The right border style of the table header component.
-// - `--graupl-table-header-border-bottom-style`: The bottom border style of the table header component.
-// - `--graupl-table-header-border-left-style`: The left border style of the table header component.
-// - `--graupl-table-header-border-style`: The border style of the table header component (combines top, right, bottom, and left styles).
-// - `--graupl-table-header-border-top-left-radius`: The top left border radius of the table header component.
-// - `--graupl-table-header-border-top-right-radius`: The top right border radius of the table header component.
-// - `--graupl-table-header-border-bottom-right-radius`: The bottom right border radius of the table header component.
-// - `--graupl-table-header-border-bottom-left-radius`: The bottom left border radius of the table header component.
-// - `--graupl-table-header-border-radius`: The border radius of the table header component (combines top left, top right, bottom right, and bottom left radii).
-// - `--graupl-table-header-border-color`: The border colour of the table header component.
-// - `--graupl-table-striped-background`: The background colour of the striped table component modifier.
-// - `--graupl-table-striped-color`: The text colour of the striped table component modifier.
-// - `--graupl-table-hover-background`: The background colour of the hoverable table component modifier.
-// - `--graupl-table-hover-color`: The text colour of the hoverable table component modifier.
-// - `--graupl-table-highlight-background`: The background colour of the highlighted table component modifier.
-// - `--graupl-table-highlight-color`: The text colour of the highlighted table component modifier.
+// | Property                                           | Description                                                                                                          | Default Value                                                                                                                                                                                                     |
+// | ---                                                | ---                                                                                                                  | ---                                                                                                                                                                                                               |
+// | `--graupl-table-caption-side`                      | The caption side of the table component.                                                                             | `bottom`                                                                                                                                                                                                          |
+// | `--graupl-table-caption-padding-x`                 | The horizontal padding of the table caption component.                                                               | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-caption-padding-y`                 | The vertical padding of the table caption component.                                                                 | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-caption-padding`                   | The padding of the table caption component (combines x and y padding).                                               | `var(--graupl-table-caption-padding-y) var(--graupl-table-caption-padding-x)`                                                                                                                                     |
+// | `--graupl-table-header-font-weight`                | The font weight of the table header component.                                                                       | `var(--graupl-font-weight-bold)`                                                                                                                                                                                  |
+// | `--graupl-table-header-padding-x`                  | The horizontal padding of the table header component.                                                                | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-header-padding-y`                  | The vertical padding of the table header component.                                                                  | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-header-padding`                    | The padding of the table header component (combines x and y padding).                                                | `var(--graupl-table-header-padding-y) var(--graupl-table-header-padding-x)`                                                                                                                                       |
+// | `--graupl-table-header-background`                 | The background colour of the table header component.                                                                 | `var(--graupl-background)`                                                                                                                                                                                        |
+// | `--graupl-table-header-color`                      | The text colour of the table header component.                                                                       | `var(--graupl-color)`                                                                                                                                                                                             |
+// | `--graupl-table-cell-padding-x`                    | The horizontal padding of the table cell component.                                                                  | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-cell-padding-y`                    | The vertical padding of the table cell component.                                                                    | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
+// | `--graupl-table-cell-padding`                      | The padding of the table cell component (combines x and y padding).                                                  | `var(--graupl-table-cell-padding-y) var(--graupl-table-cell-padding-x)`                                                                                                                                           |
+// | `--graupl-table-cell-background`                   | The background colour of the table cell component.                                                                   | `var(--graupl-background)`                                                                                                                                                                                        |
+// | `--graupl-table-cell-color`                        | The text colour of the table cell component.                                                                         | `var(--graupl-color)`                                                                                                                                                                                             |
+// | `--graupl-table-border-top-width`                  | The top border width of the table component.                                                                         | `var(--graupl-border-top-width)`                                                                                                                                                                                  |
+// | `--graupl-table-border-right-width`                | The right border width of the table component.                                                                       | `var(--graupl-border-right-width)`                                                                                                                                                                                |
+// | `--graupl-table-border-bottom-width`               | The bottom border width of the table component.                                                                      | `var(--graupl-border-bottom-width)`                                                                                                                                                                               |
+// | `--graupl-table-border-left-width`                 | The left border width of the table component.                                                                        | `var(--graupl-border-left-width)`                                                                                                                                                                                 |
+// | `--graupl-table-border-width`                      | The border width of the table component (combines top, right, bottom, and left widths).                              | `var(--graupl-table-border-top-width) var(--graupl-table-border-right-width) var(--graupl-table-border-bottom-width) var(--graupl-table-border-left-width)`                                                       |
+// | `--graupl-table-border-top-style`                  | The top border style of the table component.                                                                         | `var(--graupl-border-top-style)`                                                                                                                                                                                  |
+// | `--graupl-table-border-right-style`                | The right border style of the table component.                                                                       | `var(--graupl-border-right-style)`                                                                                                                                                                                |
+// | `--graupl-table-border-bottom-style`               | The bottom border style of the table component.                                                                      | `var(--graupl-border-bottom-style)`                                                                                                                                                                               |
+// | `--graupl-table-border-left-style`                 | The left border style of the table component.                                                                        | `var(--graupl-border-left-style)`                                                                                                                                                                                 |
+// | `--graupl-table-border-style`                      | The border style of the table component (combines top, right, bottom, and left styles).                              | `var(--graupl-table-border-top-style) var(--graupl-table-border-right-style) var(--graupl-table-border-bottom-style) var(--graupl-table-border-left-style)`                                                       |
+// | `--graupl-table-border-top-left-radius`            | The top left border radius of the table component.                                                                   | `var(--graupl-border-top-left-radius)`                                                                                                                                                                            |
+// | `--graupl-table-border-top-right-radius`           | The top right border radius of the table component.                                                                  | `var(--graupl-border-top-right-radius)`                                                                                                                                                                           |
+// | `--graupl-table-border-bottom-right-radius`        | The bottom right border radius of the table component.                                                               | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                        |
+// | `--graupl-table-border-bottom-left-radius`         | The bottom left border radius of the table component.                                                                | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                         |
+// | `--graupl-table-border-radius`                     | The border radius of the table component (combines top left, top right, bottom right, and bottom left radii).        | `var(--graupl-table-border-top-left-radius) var(--graupl-table-border-top-right-radius) var(--graupl-table-border-bottom-right-radius) var(--graupl-table-border-bottom-left-radius)`                             |
+// | `--graupl-table-border-color`                      | The border colour of the table component.                                                                            | `var(--graupl-border-color)`                                                                                                                                                                                      |
+// | `--graupl-table-cell-border-top-width`             | The top border width of the table cell component.                                                                    | `var(--graupl-border-top-width)`                                                                                                                                                                                  |
+// | `--graupl-table-cell-border-right-width`           | The right border width of the table cell component.                                                                  | `var(--graupl-border-right-width)`                                                                                                                                                                                |
+// | `--graupl-table-cell-border-bottom-width`          | The bottom border width of the table cell component.                                                                 | `var(--graupl-border-bottom-width)`                                                                                                                                                                               |
+// | `--graupl-table-cell-border-left-width`            | The left border width of the table cell component.                                                                   | `var(--graupl-border-left-width)`                                                                                                                                                                                 |
+// | `--graupl-table-cell-border-width`                 | The border width of the table cell component (combines top, right, bottom, and left widths).                         | `var(--graupl-table-cell-border-top-width) var(--graupl-table-cell-border-right-width) var(--graupl-table-cell-border-bottom-width) var(--graupl-table-cell-border-left-width)`                                   |
+// | `--graupl-table-cell-border-top-style`             | The top border style of the table cell component.                                                                    | `var(--graupl-border-top-style)`                                                                                                                                                                                  |
+// | `--graupl-table-cell-border-right-style`           | The right border style of the table cell component.                                                                  | `var(--graupl-border-right-style)`                                                                                                                                                                                |
+// | `--graupl-table-cell-border-bottom-style`          | The bottom border style of the table cell component.                                                                 | `var(--graupl-border-bottom-style)`                                                                                                                                                                               |
+// | `--graupl-table-cell-border-left-style`            | The left border style of the table cell component.                                                                   | `var(--graupl-border-left-style)`                                                                                                                                                                                 |
+// | `--graupl-table-cell-border-style`                 | The border style of the table cell component (combines top, right, bottom, and left styles).                         | `var(--graupl-table-cell-border-top-style) var(--graupl-table-cell-border-right-style) var(--graupl-table-cell-border-bottom-style) var(--graupl-table-cell-border-left-style)`                                   |
+// | `--graupl-table-cell-border-top-left-radius`       | The top left border radius of the table cell component.                                                              | `var(--graupl-border-top-left-radius)`                                                                                                                                                                            |
+// | `--graupl-table-cell-border-top-right-radius`      | The top right border radius of the table cell component.                                                             | `var(--graupl-border-top-right-radius)`                                                                                                                                                                           |
+// | `--graupl-table-cell-border-bottom-right-radius`   | The bottom right border radius of the table cell component.                                                          | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                        |
+// | `--graupl-table-cell-border-bottom-left-radius`    | The bottom left border radius of the table cell component.                                                           | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                         |
+// | `--graupl-table-cell-border-radius`                | The border radius of the table cell component (combines top left, top right, bottom right, and bottom left radii).   | `var(--graupl-table-cell-border-top-left-radius) var(--graupl-table-cell-border-top-right-radius) var(--graupl-table-cell-border-bottom-right-radius) var(--graupl-table-cell-border-bottom-left-radius)`         |
+// | `--graupl-table-cell-border-color`                 | The border colour of the table cell component.                                                                       | `var(--graupl-table-border-color)`                                                                                                                                                                                |
+// | `--graupl-table-header-border-top-width`           | The top border width of the table header component.                                                                  | `var(--graupl-table-cell-border-top-width)`                                                                                                                                                                       |
+// | `--graupl-table-header-border-right-width`         | The right border width of the table header component.                                                                | `var(--graupl-table-cell-border-right-width)`                                                                                                                                                                     |
+// | `--graupl-table-header-border-bottom-width`        | The bottom border width of the table header component.                                                               | `var(--graupl-table-cell-border-bottom-width)`                                                                                                                                                                    |
+// | `--graupl-table-header-border-left-width`          | The left border width of the table header component.                                                                 | `var(--graupl-table-cell-border-left-width)`                                                                                                                                                                      |
+// | `--graupl-table-header-border-width`               | The border width of the table header component (combines top, right, bottom, and left widths).                       | `var(--graupl-table-header-border-top-width) var(--graupl-table-header-border-right-width) var(--graupl-table-header-border-bottom-width) var(--graupl-table-header-border-left-width)`                           |
+// | `--graupl-table-header-border-top-style`           | The top border style of the table header component.                                                                  | `var(--graupl-table-cell-border-top-style)`                                                                                                                                                                       |
+// | `--graupl-table-header-border-right-style`         | The right border style of the table header component.                                                                | `var(--graupl-table-cell-border-right-style)`                                                                                                                                                                     |
+// | `--graupl-table-header-border-bottom-style`        | The bottom border style of the table header component.                                                               | `var(--graupl-table-cell-border-bottom-style)`                                                                                                                                                                    |
+// | `--graupl-table-header-border-left-style`          | The left border style of the table header component.                                                                 | `var(--graupl-table-cell-border-left-style)`                                                                                                                                                                      |
+// | `--graupl-table-header-border-style`               | The border style of the table header component (combines top, right, bottom, and left styles).                       | `var(--graupl-table-header-border-top-style) var(--graupl-table-header-border-right-style) var(--graupl-table-header-border-bottom-style) var(--graupl-table-header-border-left-style)`                           |
+// | `--graupl-table-header-border-top-left-radius`     | The top left border radius of the table header component.                                                            | `var(--graupl-table-cell-border-top-left-radius)`                                                                                                                                                                 |
+// | `--graupl-table-header-border-top-right-radius`    | The top right border radius of the table header component.                                                           | `var(--graupl-table-cell-border-top-right-radius)`                                                                                                                                                                |
+// | `--graupl-table-header-border-bottom-right-radius` | The bottom right border radius of the table header component.                                                        | `var(--graupl-table-cell-border-bottom-right-radius)`                                                                                                                                                             |
+// | `--graupl-table-header-border-bottom-left-radius`  | The bottom left border radius of the table header component.                                                         | `var(--graupl-table-cell-border-bottom-left-radius)`                                                                                                                                                              |
+// | `--graupl-table-header-border-radius`              | The border radius of the table header component (combines top left, top right, bottom right, and bottom left radii). | `var(--graupl-table-header-border-top-left-radius) var(--graupl-table-header-border-top-right-radius) var(--graupl-table-header-border-bottom-right-radius) var(--graupl-table-header-border-bottom-left-radius)` |
+// | `--graupl-table-header-border-color`               | The border colour of the table header component.                                                                     | `var(--graupl-table-border-color)`                                                                                                                                                                                |
+// | `--graupl-table-striped-background`                | The background colour of the striped table component modifier.                                                       | `var(--graupl-theme-active--secondary--200)`                                                                                                                                                                      |
+// | `--graupl-table-striped-color`                     | The text colour of the striped table component modifier.                                                             | `var(--graupl-theme-active--secondary--900)`                                                                                                                                                                      |
+// | `--graupl-table-hover-background`                  | The background colour of the hoverable table component modifier.                                                     | `var(--graupl-theme-active--secondary--300)`                                                                                                                                                                      |
+// | `--graupl-table-hover-color`                       | The text colour of the hoverable table component modifier.                                                           | `var(--graupl-theme-active--secondary--900)`                                                                                                                                                                      |
+// | `--graupl-table-highlight-background`              | The background colour of the highlighted table component modifier.                                                   | `var(--graupl-theme-active--secondary--500)`                                                                                                                                                                      |
+// | `--graupl-table-highlight-color`                   | The text colour of the highlighted table component modifier.                                                         | `var(--graupl-theme-active--secondary--100)`                                                                                                                                                                      |
 //
 // The following sass variables can be used to customize the generation of the table component:
-// - `$selector-base`: The selector base for the component.
-// - `$modifier-selector-base`: The selector base for component modifiers.
-// - `$generate-base-theme-map`: A flag to generate the base theme maps for table variants.
-// - `$table-selector-base`: The selector base for the table component.
-// - `$table-selector`: The selector for the table component.
-// - `$table-caption-selector-base`: The selector base for the table caption component.
-// - `$table-caption-selector`: The selector for the table caption component.
-// - `$table-header-selector-base`: The selector base for the table header cell component.
-// - `$table-header-selector`: The selector for the table header cell component.
-// - `$table-cell-selector-base`: The selector base for the table cell component.
-// - `$table-cell-selector`: The selector for the table cell component.
-// - `$table-row-selector-base`: The selector base for the table row component.
-// - `$table-row-selector`: The selector for the table row component.
-// - `$table-body-selector-base`: The selector base for the table body component.
-// - `$table-body-selector`: The selector for the table body component.
-// - `$table-theme-prefix-selector-base`: The selector base for the themed table component modifiers.
-// - `$table-theme-prefix-selector`: The selector prefix for the themed table component modifiers.
-// - `$table-bordered-selector-base`: The selector base for the bordered table component modifier.
-// - `$table-bordered-selector`: The selector for the bordered table component modifier.
-// - `$table-collapsed-selector-base`: The selector base for the collapsed table component modifier.
-// - `$table-collapsed-selector`: The selector for the collapsed table component modifier.
-// - `$table-striped-columns-selector-base`: The selector base for the striped columns table component modifier.
-// - `$table-striped-columns-selector`: The selector for the striped columns table component modifier.
-// - `$table-striped-rows-selector-base`: The selector base for the striped rows table component modifier.
-// - `$table-striped-rows-selector`: The selector for the striped rows table component modifier.
-// - `$table-hoverable-selector-base`: The selector base for the hoverable table component modifier.
-// - `$table-hoverable-selector`: The selector for the hoverable table component modifier.
-// - `$table-highlight-selector-base`: The selector base for the highlighted table component modifier.
-// - `$table-highlight-selector`: The selector for the highlighted table component modifier.
-// - `$table-responsive-selector-base`: The selector base for the responsive table component modifier.
-// - `$table-responsive-selector`: The selector for the responsive table component modifier.
-// - `$table-theme-mappings`: A map of properties and color shades used generate all table variants.
-// - `$table-theme-map`: A map of all properties, colors, and color shades used to generate all table variants.
+// | Variable                               | Description                                                                            | Default Value             |
+// | ---                                    | ---                                                                                    | ---                       |
+// | `$selector-base`                       | The selector base for the component.                                                   | `""`                      |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                             | `"."`                     |
+// | `$generate-base-theme-map`             | A flag to generate the base theme maps for table variants.                             | `true`                    |
+// | `$themeable`                           | A flag that determines whether theme modifiers are generated.                          | `true`                    |
+// | `$table-selector-base`                 | The selector base for the table component.                                             | `$selector-base`          |
+// | `$table-selector`                      | The selector for the table component.                                                  | `"table"`                 |
+// | `$table-caption-selector-base`         | The selector base for the table caption component.                                     | `$selector-base`          |
+// | `$table-caption-selector`              | The selector for the table caption component.                                          | `"caption"`               |
+// | `$table-header-selector-base`          | The selector base for the table header cell component.                                 | `$selector-base`          |
+// | `$table-header-selector`               | The selector for the table header cell component.                                      | `"th"`                    |
+// | `$table-cell-selector-base`            | The selector base for the table cell component.                                        | `$selector-base`          |
+// | `$table-cell-selector`                 | The selector for the table cell component.                                             | `"td"`                    |
+// | `$table-row-selector-base`             | The selector base for the table row component.                                         | `$selector-base`          |
+// | `$table-row-selector`                  | The selector for the table row component.                                              | `"tr"`                    |
+// | `$table-body-selector-base`            | The selector base for the table body component.                                        | `$selector-base`          |
+// | `$table-body-selector`                 | The selector for the table body component.                                             | `"tbody"`                 |
+// | `$table-theme-prefix-selector-base`    | The selector base for the themed table component modifiers.                            | `$modifier-selector-base` |
+// | `$table-theme-prefix-selector`         | The selector prefix for the themed table component modifiers.                          | `""`                      |
+// | `$table-bordered-selector-base`        | The selector base for the bordered table component modifier.                           | `$modifier-selector-base` |
+// | `$table-bordered-selector`             | The selector for the bordered table component modifier.                                | `"bordered"`              |
+// | `$table-collapsed-selector-base`       | The selector base for the collapsed table component modifier.                          | `$modifier-selector-base` |
+// | `$table-collapsed-selector`            | The selector for the collapsed table component modifier.                               | `"collapsed"`             |
+// | `$table-striped-columns-selector-base` | The selector base for the striped columns table component modifier.                    | `$modifier-selector-base` |
+// | `$table-striped-columns-selector`      | The selector for the striped columns table component modifier.                         | `"striped-columns"`       |
+// | `$table-striped-rows-selector-base`    | The selector base for the striped rows table component modifier.                       | `$modifier-selector-base` |
+// | `$table-striped-rows-selector`         | The selector for the striped rows table component modifier.                            | `"striped-rows"`          |
+// | `$table-hoverable-selector-base`       | The selector base for the hoverable table component modifier.                          | `$modifier-selector-base` |
+// | `$table-hoverable-selector`            | The selector for the hoverable table component modifier.                               | `"hoverable"`             |
+// | `$table-highlight-selector-base`       | The selector base for the highlighted table component modifier.                        | `$modifier-selector-base` |
+// | `$table-highlight-selector`            | The selector for the highlighted table component modifier.                             | `"highlight"`             |
+// | `$table-responsive-selector-base`      | The selector base for the responsive table component modifier.                         | `$modifier-selector-base` |
+// | `$table-responsive-selector`           | The selector for the responsive table component modifier.                              | `"responsive-table"`      |
+// | `$table-theme-mappings`                | A map of properties and color shades used generate all table variants.                 | `()`                      |
+// | `$table-theme-map`                     | A map of all properties, colors, and color shades used to generate all table variants. | `()`                      |
 //
-// Using `$table-theme-mappings`
+// ## Using `$table-theme-mappings`
 //
 // `$table-theme-mappings` is a 1-level map of properties and shade values.
 //
@@ -250,8 +255,8 @@
 @use "variables" as *;
 @use "../../mixins/layer" as *;
 @use "../../defaults" as root-defaults;
-@use "../../functions/theme";
-@use "sass:map";
+@use "../../mixins/state";
+@use "../../mixins/theme";
 
 @include layer(base) {
   // table
@@ -326,18 +331,22 @@
 @include layer(theme) {
   // table
   #{defaults.$table-selector-base}#{defaults.$table-selector} {
-    @each $color, $map in defaults.$table-theme-map {
-      // e.g. &.primary, &.secondary, &.tertiary,
-      // e.g. .primary, .secondary, .tertiary
-      &#{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color},
-      #{defaults.$table-theme-prefix-selector-base}#{defaults.$table-theme-prefix-selector}#{$color} {
-        @each $prop, $value in $map {
-          --#{root-defaults.$prefix}table-#{$prop}: #{theme.get(
-              map.get($value, color),
-              map.get($value, shade)
-            )};
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$table-theme-map,
+        defaults.$table-theme-prefix-selector-base,
+        defaults.$table-theme-prefix-selector,
+        "table-"
+      );
+
+      // Apply theme modifiers when used without the parent reference.
+      @include theme.generate-modifiers(
+        defaults.$table-theme-map,
+        defaults.$table-theme-prefix-selector-base,
+        defaults.$table-theme-prefix-selector,
+        "table-",
+        ""
+      );
     }
 
     // th
