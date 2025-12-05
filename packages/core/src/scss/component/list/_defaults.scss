@@ -7,15 +7,42 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Card selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $list-selector-base: $selector-base !default;
 $list-selector: "list" !default;
+$list-theme-selector-base: $modifier-selector-base !default;
+$list-theme-selector-prefix: "" !default;
 $list-item-selector-base: $selector-base !default;
 $list-item-selector: "list-item" !default;
 
 // List item properties.
 $list-item-transform: none !default;
 $list-item-hover-transform: $list-item-transform !default;
+
+// List state theme defaults.
+// This map defines the default colour shades applied to themed lists.
+// All theme variants will only adjust the colour and border colour of the list
+// container and items.
+$-list-theme-mappings: (
+  color: 900,
+  border-color: 700,
+  item-color: 900,
+  item-border-color: 700,
+);
+$list-theme-mappings: () !default;
+
+// Merge the custom list theme map with the default one.
+@if $generate-base-theme-map {
+  $list-theme-mappings: map.merge($-list-theme-mappings, $list-theme-mappings);
+}
+
+$-list-theme-map: theme.generate-property-map($list-theme-mappings);
+$list-theme-map: () !default;
+$list-theme-map: map.deep-merge($-list-theme-map, $list-theme-map);
