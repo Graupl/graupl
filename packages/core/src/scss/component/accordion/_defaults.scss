@@ -45,21 +45,34 @@ $accordion-collapse-selector: ".accordion-collapse" !default;
 $accordion-utility-selector: ".accordion-utility" !default;
 
 // Toggle transform properties.
-$accordion-item-toggle-transform: none !default;
-$accordion-item-toggle-visited-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-focus-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-hover-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-active-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-disabled-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-pseudo-transform: none !default;
-$accordion-item-toggle-pseudo-open-transform: rotate(-180deg) !default;
+$accordion-item-toggle-initial-transform: none !default;
+$accordion-item-toggle-final-transform: $accordion-item-toggle-initial-transform !default;
+$accordion-item-toggle-disabled-transform: $accordion-item-toggle-initial-transform !default;
+$accordion-item-toggle-pseudo-initial-transform: none !default;
+$accordion-item-toggle-pseudo-final-transform: rotate(-180deg);
+
+// Expand transform properties.
+$accordion-expand-transform: none !default;
+$accordion-expand-visited-transform: $accordion-expand-transform !default;
+$accordion-expand-focus-transform: $accordion-expand-transform !default;
+$accordion-expand-hover-transform: $accordion-expand-transform !default;
+$accordion-expand-active-transform: $accordion-expand-transform !default;
+$accordion-expand-disabled-transform: $accordion-expand-transform !default;
+
+// Collapse transform properties.
+$accordion-collapse-transform: none !default;
+$accordion-collapse-visited-transform: $accordion-collapse-transform !default;
+$accordion-collapse-focus-transform: $accordion-collapse-transform !default;
+$accordion-collapse-hover-transform: $accordion-collapse-transform !default;
+$accordion-collapse-active-transform: $accordion-collapse-transform !default;
+$accordion-collapse-disabled-transform: $accordion-collapse-transform !default;
 
 // Toggle properties.
 $accordion-item-toggle-pseudo-content: "▼" !default;
 
 // Accordion transform properties.
-$accordion-item-content-transform: translateY(-100%) !default;
-$accordion-item-content-open-transform: translateY(0) !default;
+$accordion-item-content-initial-transform: translateY(-100%) !default;
+$accordion-item-content-final-transform: translateY(0) !default;
 
 // Accordion state theme defaults.
 // This map is used to define the default colour shades for the
@@ -70,15 +83,13 @@ $accordion-item-content-open-transform: translateY(0) !default;
 //
 // Secondary/tertiary accordions will use the same shade for their respective colours.
 $-accordion-theme-mappings: (
-  item-toggle-color: 900,
-  item-toggle-border-color: 700,
-  item-border-color: 700,
+  color: 900,
+  border-color: 700,
+  item-background: 100,
   item-toggle-hover-color: 100,
   item-toggle-hover-background: 700,
-  item-hover-border-color: 700,
   item-toggle-hover-border-color: 700,
   item-toggle-disabled-color: 200,
-  item-disabled-border-color: 200,
   item-toggle-disabled-border-color: 200,
 );
 $accordion-theme-mappings: () !default;
@@ -97,19 +108,3 @@ $accordion-theme-map: map.deep-merge(
   $-accordion-theme-map,
   $accordion-theme-map
 );
-
-// Expand transform properties.
-$accordion-expand-transform: none !default;
-$accordion-expand-visited-transform: $accordion-expand-transform !default;
-$accordion-expand-focus-transform: $accordion-expand-transform !default;
-$accordion-expand-hover-transform: $accordion-expand-transform !default;
-$accordion-expand-active-transform: $accordion-expand-transform !default;
-$accordion-expand-disabled-transform: $accordion-expand-transform !default;
-
-// Collapse transform properties.
-$accordion-collapse-transform: none !default;
-$accordion-collapse-visited-transform: $accordion-collapse-transform !default;
-$accordion-collapse-focus-transform: $accordion-collapse-transform !default;
-$accordion-collapse-hover-transform: $accordion-collapse-transform !default;
-$accordion-collapse-active-transform: $accordion-collapse-transform !default;
-$accordion-collapse-disabled-transform: $accordion-collapse-transform !default;
