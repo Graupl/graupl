@@ -126,7 +126,7 @@
     display: grid;
     position: relative;
     grid-template-columns: [slide-start controls-start] auto [tabs-start] $carousel-tabs-width [tabs-end] auto [controls-end slide-end];
-    grid-template-rows: [slide-start controls-start] $carousel-controls-height [controls-end] $carousel-slide-height [slide-end tabs-start] $carousel-tabs-height [tabs-end];
+    grid-template-rows: [slide-start controls-start] $carousel-controls-height [controls-end] $carousel-slide-height [tabs-start] $carousel-tabs-height [tabs-end slide-end];
     isolation: isolate;
     padding: $carousel-padding;
 
