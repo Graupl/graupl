@@ -362,7 +362,8 @@
       flex-flow: row nowrap;
     }
 
-    > #{defaults.$accordion-item-selector} {
+    // > .accordion-item
+    > #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector} {
       &:not(:first-child) {
         /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
         margin-top: calc(
