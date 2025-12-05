@@ -451,6 +451,16 @@
           "tabs-"
         );
       }
+
+      @each $color, $map in defaults.$tabs-theme-map {
+        @include theme.generate-modifiers(
+          defaults.$tabs-theme-map,
+          defaults.$tabs-theme-selector-base,
+          defaults.$tabs-theme-selector-prefix,
+          "tabs-",
+          ""
+        );
+      }
     }
   }
 
