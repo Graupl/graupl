@@ -7,13 +7,18 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "sass:map";
 
 // Carousel selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $carousel-selector-base: $selector-base !default;
 $carousel-selector: "carousel" !default;
+$carousel-theme-selector-base: $modifier-selector-base !default;
+$carousel-theme-selector-prefix: "" !default;
 $carousel-control-container-selector-base: $selector-base !default;
 $carousel-control-container-selector: "carousel-control-container" !default;
 $carousel-control-selector-base: $selector-base !default;
@@ -60,3 +65,37 @@ $carousel-play-content: "'▶'" !default;
 $carousel-pause-content: "'❚❚'" !default;
 $carousel-next-content: "'▶'" !default;
 $carousel-previous-content: "'◀'" !default;
+
+// Carousel state theme defaults.
+// This map is used to define the default colour shades for the
+// themed carousel bases.
+//
+// e.g.
+// Primary carousels will use primary--900 as the text colour and primary--800 as the title colour.
+//
+// Secondary/tertiary carousels will use the same shade for their respective colours.
+$-carousel-theme-mappings: (
+  color: 900,
+  border-color: 700,
+  control-hover-color: 100,
+  control-hover-background: 700,
+  control-hover-border-color: 700,
+  tab-hover-color: 100,
+  tab-hover-background: 700,
+  tab-hover-border-color: 700,
+  disabled-color: 200,
+  disabled-border-color: 200,
+);
+$carousel-theme-mappings: () !default;
+
+// Merge the custom carousel state theme map with the default one.
+@if $generate-base-theme-map {
+  $carousel-theme-mappings: map.merge(
+    $-carousel-theme-mappings,
+    $carousel-theme-mappings
+  );
+}
+
+$-carousel-theme-map: theme.generate-property-map($carousel-theme-mappings);
+$carousel-theme-map: () !default;
+$carousel-theme-map: map.deep-merge($-carousel-theme-map, $carousel-theme-map);

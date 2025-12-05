@@ -13,7 +13,7 @@
 //
 // The following custom properties can be used to customize the carousel component:
 // | Property                                   | Description                                      | Default Value                                                       |
-// | ---                                        | ---                                              | ---                                                                 |
+// | ------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------------- |
 // | `--graupl-carousel-controls-height`        | Height of the controls row.                      | `auto`                                                              |
 // | `--graupl-carousel-tabs-width`             | Width of the tabs column.                        | `1fr`                                                               |
 // | `--graupl-carousel-tabs-height`            | Height of the tabs row.                          | `auto`                                                              |
@@ -24,56 +24,200 @@
 // | `--graupl-carousel-item-max-width`         | Max width of a carousel item.                    | `100%`                                                              |
 // | `--graupl-carousel-transition-duration`    | Duration used for slide transitions.             | `500ms`                                                             |
 // | `--graupl-carousel-item-container-padding` | Padding of the item container.                   | `var(--graupl-spacer-0) var(--graupl-spacer-0)`                     |
+// | `--graupl-carousel-color`                  | Default text color for carousel content.         | `var(--graupl-color)`                                               |
+// | `--graupl-carousel-background`             | Default background color for the carousel.       | `var(--graupl-background)`                                          |
+// | `--graupl-carousel-border-color`           | Border color applied to carousel elements.       | `var(--graupl-border-color)`                                        |
+// | `--graupl-carousel-control-color`          | Text/icon color for carousel controls.           | `var(--graupl-carousel-color)`                                      |
+// | `--graupl-carousel-control-visited-color`  | Text/icon color for visited controls.            | `var(--graupl-carousel-control-color)`                              |
+// | `--graupl-carousel-control-focus-color`    | Text/icon color for focused controls.            | `var(--graupl-carousel-control-color)`                              |
+// | `--graupl-carousel-control-hover-color`    | Text/icon color for hovered controls.            | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-control-active-color`   | Text/icon color for active controls.             | `var(--graupl-carousel-control-hover-color)`                        |
+// | `--graupl-carousel-control-disabled-color` | Text/icon color for disabled controls.           | `var(--graupl-theme-active--primary--200)`                          |
+// | `--graupl-carousel-control-background`     | Background color for carousel controls.          | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-control-visited-background` | Background for visited controls.             | `var(--graupl-carousel-control-background)`                         |
+// | `--graupl-carousel-control-focus-background`   | Background for focused controls.             | `var(--graupl-carousel-control-background)`                         |
+// | `--graupl-carousel-control-hover-background`   | Background for hovered controls.              | `var(--graupl-carousel-color)`                                      |
+// | `--graupl-carousel-control-active-background`  | Background for active controls.               | `var(--graupl-carousel-control-hover-background)`                   |
+// | `--graupl-carousel-control-disabled-background` | Background for disabled controls.            | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-control-border-color`   | Border color for carousel controls.              | `var(--graupl-carousel-border-color)`                               |
+// | `--graupl-carousel-control-visited-border-color` | Border color for visited controls.          | `var(--graupl-carousel-control-border-color)`                       |
+// | `--graupl-carousel-control-focus-border-color`   | Border color for focused controls.          | `var(--graupl-carousel-control-border-color)`                       |
+// | `--graupl-carousel-control-hover-border-color`   | Border color for hovered controls.           | `var(--graupl-carousel-control-border-color)`                       |
+// | `--graupl-carousel-control-active-border-color`  | Border color for active controls.            | `var(--graupl-carousel-control-hover-border-color)`                 |
+// | `--graupl-carousel-control-disabled-border-color` | Border color for disabled controls.         | `var(--graupl-theme-active--primary--200)`                          |
 // | `--graupl-carousel-control-width`          | Width of each control.                           | `4rem`                                                              |
 // | `--graupl-carousel-control-height`         | Height of each control.                          | `3rem`                                                              |
 // | `--graupl-carousel-play-content`           | Content for the play control pseudo-element.     | `'▶'`                                                               |
 // | `--graupl-carousel-pause-content`          | Content for the pause control pseudo-element.    | `'❚❚'`                                                              |
 // | `--graupl-carousel-next-content`           | Content for the next control pseudo-element.     | `'▶'`                                                               |
 // | `--graupl-carousel-previous-content`       | Content for the previous control pseudo-element. | `'◀'`                                                               |
+// | `--graupl-carousel-tab-color`              | Text/icon color for carousel tabs.               | `var(--graupl-carousel-color)`                                      |
+// | `--graupl-carousel-tab-visited-color`      | Text/icon color for visited tabs.                | `var(--graupl-carousel-tab-color)`                                  |
+// | `--graupl-carousel-tab-focus-color`        | Text/icon color for focused tabs.                | `var(--graupl-carousel-tab-color)`                                  |
+// | `--graupl-carousel-tab-hover-color`        | Text/icon color for hovered tabs.                | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-tab-active-color`       | Text/icon color for active tabs.                 | `var(--graupl-carousel-tab-hover-color)`                            |
+// | `--graupl-carousel-tab-disabled-color`     | Text/icon color for disabled tabs.               | `var(--graupl-theme-active--primary--200)`                          |
+// | `--graupl-carousel-tab-background`         | Background color for carousel tabs.              | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-tab-visited-background` | Background for visited tabs.                     | `var(--graupl-carousel-tab-background)`                             |
+// | `--graupl-carousel-tab-focus-background`   | Background for focused tabs.                     | `var(--graupl-carousel-tab-background)`                             |
+// | `--graupl-carousel-tab-hover-background`   | Background for hovered tabs.                     | `var(--graupl-carousel-color)`                                      |
+// | `--graupl-carousel-tab-active-background`  | Background for active tabs.                      | `var(--graupl-carousel-tab-hover-background)`                       |
+// | `--graupl-carousel-tab-disabled-background`| Background for disabled tabs.                    | `var(--graupl-carousel-background)`                                 |
+// | `--graupl-carousel-tab-border-color`       | Border color for carousel tabs.                  | `var(--graupl-carousel-border-color)`                               |
+// | `--graupl-carousel-tab-visited-border-color` | Border color for visited tabs.                 | `var(--graupl-carousel-tab-border-color)`                           |
+// | `--graupl-carousel-tab-focus-border-color` | Border color for focused tabs.                   | `var(--graupl-carousel-tab-border-color)`                           |
+// | `--graupl-carousel-tab-hover-border-color` | Border color for hovered tabs.                   | `var(--graupl-carousel-tab-border-color)`                           |
+// | `--graupl-carousel-tab-active-border-color`| Border color for active tabs.                    | `var(--graupl-carousel-tab-hover-border-color)`                     |
+// | `--graupl-carousel-tab-disabled-border-color` | Border color for disabled tabs.                | `var(--graupl-theme-active--primary--200)`                          |
 // | `--graupl-carousel-tab-container-padding`  | Padding of the tab container.                    | `var(--graupl-spacer-3) var(--graupl-spacer-3)`                     |
 // | `--graupl-carousel-tab-container-gap`      | Gap inside the tab container.                    | `var(--graupl-spacer-3)`                                            |
 //
 // The following sass variables can be used to customize the generation of the carousel component:
-// | Variable                                    | Description                               | Default Value                  |
-// | ---                                         | ---                                       | ---                            |
-// | `$selector-base`                            | Selector base for the component.          | `"."`                          |
-// | `$modifier-selector-base`                   | Selector base for component modifiers.    | `"."`                          |
-// | `$carousel-selector-base`                   | Selector base for the carousel container. | `$selector-base`               |
-// | `$carousel-selector`                        | Selector for the carousel container.      | `"carousel"`                   |
-// | `$carousel-control-container-selector-base` | Selector base for the control container.  | `$selector-base`               |
-// | `$carousel-control-container-selector`      | Selector for the control container.       | `"carousel-control-container"` |
-// | `$carousel-control-selector-base`           | Selector base for controls.               | `$selector-base`               |
-// | `$carousel-control-selector`                | Selector for controls.                    | `"carousel-control"`           |
-// | `$carousel-pause-selector-base`             | Selector base for pause modifier.         | `"."`                          |
-// | `$carousel-pause-selector`                  | Selector for pause modifier.              | `"pause"`                      |
-// | `$carousel-play-selector-base`              | Selector base for play modifier.          | `"."`                          |
-// | `$carousel-play-selector`                   | Selector for play modifier.               | `"play"`                       |
-// | `$carousel-autoplay-selector-base`          | Selector base for autoplay modifier.      | `"."`                          |
-// | `$carousel-autoplay-selector`               | Selector for autoplay modifier.           | `"autoplay"`                   |
-// | `$carousel-previous-selector-base`          | Selector base for previous modifier.      | `"."`                          |
-// | `$carousel-previous-selector`               | Selector for previous modifier.           | `"previous"`                   |
-// | `$carousel-next-selector-base`              | Selector base for next modifier.          | `"."`                          |
-// | `$carousel-next-selector`                   | Selector for next modifier.               | `"next"`                       |
-// | `$carousel-item-container-selector-base`    | Selector base for item container.         | `$selector-base`               |
-// | `$carousel-item-container-selector`         | Selector for item container.              | `"carousel-item-container"`    |
-// | `$carousel-item-selector-base`              | Selector base for items.                  | `$selector-base`               |
-// | `$carousel-item-selector`                   | Selector for items.                       | `"carousel-item"`              |
-// | `$carousel-tab-container-selector-base`     | Selector base for tab container.          | `$selector-base`               |
-// | `$carousel-tab-container-selector`          | Selector for tab container.               | `"carousel-tab-container"`     |
-// | `$carousel-tab-selector-base`               | Selector base for tabs.                   | `$selector-base`               |
-// | `$carousel-tab-selector`                    | Selector for tabs.                        | `"carousel-tab"`               |
-// | `$carousel-active-item-selector-base`       | Selector base for the active modifier.    | `"."`                          |
-// | `$carousel-active-item-selector`            | Selector for the active modifier.         | `"active"`                     |
-// | `$carousel-next-item-selector-base`         | Selector base for the next modifier.      | `"."`                          |
-// | `$carousel-next-item-selector`              | Selector for the next modifier.           | `"next"`                       |
-// | `$carousel-previous-item-selector-base`     | Selector base for the previous modifier.  | `"."`                          |
-// | `$carousel-previous-item-selector`          | Selector for the previous modifier.       | `"previous"`                   |
-// | `$carousel-controls-height`                 | Height of the controls row.               | `auto`                         |
-// | `$carousel-tabs-width`                      | Width of the tabs column.                 | `1fr`                          |
-// | `$carousel-tabs-height`                     | Height of the tabs row.                   | `auto`                         |
-// | `$carousel-slide-height`                    | Height of the slide row.                  | `1fr`                          |
-// | `$carousel-item-max-width`                  | Max width of a carousel item.             | `100%`                         |
-// | `$carousel-transition-duration`             | Duration used for slide transitions.      | `500ms`                        |
+// | Variable                                    | Description                                             | Default Value                  |
+// | ------------------------------------------- | ------------------------------------------------------- | ------------------------------ |
+// | `$selector-base`                            | Selector base for the component.                        | `"."`                          |
+// | `$modifier-selector-base`                   | Selector base for component modifiers.                  | `"."`                          |
+// | `$generate-base-theme-map`                  | Flag to generate the base theme map.                    | `true`                         |
+// | `$themeable`                                | Flag to generate theme modifiers.                       | `false`                        |
+// | `$carousel-selector-base`                   | Selector base for the carousel container.               | `$selector-base`               |
+// | `$carousel-selector`                        | Selector for the carousel container.                    | `"carousel"`                   |
+// | `$carousel-theme-selector-base`             | Selector base for theme modifiers.                      | `"."`                          |
+// | `$carousel-theme-selector-prefix`           | Selector prefix for theme modifiers.                    | `""`                           |
+// | `$carousel-control-container-selector-base` | Selector base for the control container.                | `$selector-base`               |
+// | `$carousel-control-container-selector`      | Selector for the control container.                     | `"carousel-control-container"` |
+// | `$carousel-control-selector-base`           | Selector base for controls.                             | `$selector-base`               |
+// | `$carousel-control-selector`                | Selector for controls.                                  | `"carousel-control"`           |
+// | `$carousel-pause-selector-base`             | Selector base for pause modifier.                       | `"."`                          |
+// | `$carousel-pause-selector`                  | Selector for pause modifier.                            | `"pause"`                      |
+// | `$carousel-play-selector-base`              | Selector base for play modifier.                        | `"."`                          |
+// | `$carousel-play-selector`                   | Selector for play modifier.                             | `"play"`                       |
+// | `$carousel-autoplay-selector-base`          | Selector base for autoplay modifier.                    | `"."`                          |
+// | `$carousel-autoplay-selector`               | Selector for autoplay modifier.                         | `"autoplay"`                   |
+// | `$carousel-previous-selector-base`          | Selector base for previous modifier.                    | `"."`                          |
+// | `$carousel-previous-selector`               | Selector for previous modifier.                         | `"previous"`                   |
+// | `$carousel-next-selector-base`              | Selector base for next modifier.                        | `"."`                          |
+// | `$carousel-next-selector`                   | Selector for next modifier.                             | `"next"`                       |
+// | `$carousel-item-container-selector-base`    | Selector base for item container.                       | `$selector-base`               |
+// | `$carousel-item-container-selector`         | Selector for item container.                            | `"carousel-item-container"`    |
+// | `$carousel-item-selector-base`              | Selector base for items.                                | `$selector-base`               |
+// | `$carousel-item-selector`                   | Selector for items.                                     | `"carousel-item"`              |
+// | `$carousel-tab-container-selector-base`     | Selector base for tab container.                        | `$selector-base`               |
+// | `$carousel-tab-container-selector`          | Selector for tab container.                             | `"carousel-tab-container"`     |
+// | `$carousel-tab-selector-base`               | Selector base for tabs.                                 | `$selector-base`               |
+// | `$carousel-tab-selector`                    | Selector for tabs.                                      | `"carousel-tab"`               |
+// | `$carousel-active-item-selector-base`       | Selector base for the active modifier.                  | `"."`                          |
+// | `$carousel-active-item-selector`            | Selector for the active modifier.                       | `"active"`                     |
+// | `$carousel-next-item-selector-base`         | Selector base for the next modifier.                    | `"."`                          |
+// | `$carousel-next-item-selector`              | Selector for the next modifier.                         | `"next"`                       |
+// | `$carousel-previous-item-selector-base`     | Selector base for the previous modifier.                | `"."`                          |
+// | `$carousel-previous-item-selector`          | Selector for the previous modifier.                     | `"previous"`                   |
+// | `$carousel-controls-height`                 | Height of the controls row.                             | `auto`                         |
+// | `$carousel-tabs-width`                      | Width of the tabs column.                               | `1fr`                          |
+// | `$carousel-tabs-height`                     | Height of the tabs row.                                 | `auto`                         |
+// | `$carousel-slide-height`                    | Height of the slide row.                                | `1fr`                          |
+// | `$carousel-item-max-width`                  | Max width of a carousel item.                           | `100%`                         |
+// | `$carousel-transition-duration`             | Duration used for slide transitions.                    | `500ms`                        |
+// | `$carousel-theme-mappings`                  | Map of properties/shades applied to all theme variants. | `()`                           |
+// | `$carousel-theme-map`                       | Expanded map of properties/colors/shades per variant.   | `()`                           |
+//
+// ## Using `$carousel-theme-mappings`
+//
+// `$carousel-theme-mappings` is a 1-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $carousel-theme-mappings: (
+//   border-color: 700,
+// )
+// ```
+//
+// This directly[1] maps to all carousel variants, telling them what shade to use for said property.
+// All carousel variants will use the following based on the example above:
+// - Primary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize _all_ carousel variants in the same way.
+//
+// For example, if you use the following map:
+// ```scss
+// $carousel-theme-mappings: (
+//   border-color: 500,
+// )
+// ```
+//
+// All carousel variants will use the following:
+// - Primary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--primary--500`,
+// - Secondary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--500`, and
+// - Tertiary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--tertiary--500`.
+//
+// [1] `$carousel-theme-mappings` gets parsed into a larger, more explicit map: `$carousel-theme-map`.
+//
+// Using `$carousel-theme-map`
+//
+// `$carousel-theme-map` is a multi-level map of properties, colors, and shade values.
+//
+// e.g.
+// ```scss
+// $carousel-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: primary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: tertiary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// This directly maps to all carousel variants, telling them what shade to use for said property.
+// The carousel variants will use the following based on the example above:
+// - Primary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--primary--700`,
+// - Secondary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--tertiary--700`.
+//
+// You can use this to customize carousel variants individually.
+//
+// For example, if you use the following map:
+//
+// ```scss
+// $carousel-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   secondary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+//   tertiary: (
+//     border-color: (
+//       color: secondary,
+//       shade: 700
+//     ),
+//   ),
+// )
+// ```
+//
+// The carousel variants will use the following:
+// - Primary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--700`,
+// - Secondary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--700`, and
+// - Tertiary carousels will have their `--graupl-carousel-border-color` property set to `--graupl-theme-active--secondary--700`.
 //
 // @example
 // <section class="carousel">
@@ -101,12 +245,13 @@
 //   </div>
 // </section>
 
-@use "defaults";
-@use "variables" as *;
+@use "../../base/button/mixins" as button-mixins;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
-@use "../../base/button/variables" as button-variables;
-@use "../../base/button/mixins" as button-mixins;
+@use "../../mixins/state";
+@use "../../mixins/theme";
+@use "defaults";
+@use "variables" as *;
 
 @include layer(base) {
   // .carousel-control
@@ -308,13 +453,59 @@
 }
 
 @include layer(theme) {
+  // .carousel
+  #{defaults.$carousel-selector-base}#{defaults.$carousel-selector} {
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$carousel-theme-map,
+        defaults.$carousel-theme-selector-base,
+        defaults.$carousel-theme-selector-prefix,
+        "carousel-"
+      );
+    }
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$carousel-theme-map,
+        defaults.$carousel-theme-selector-base,
+        defaults.$carousel-theme-selector-prefix,
+        "carousel-",
+        ""
+      );
+    }
+  }
+
   // .carousel-control
   #{defaults.$carousel-control-selector-base}#{defaults.$carousel-control-selector} {
     @include button-mixins.apply-theme;
+
+    border-color: $carousel-control-border-color;
+    background: $carousel-control-background;
+    color: $carousel-control-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $carousel-control-border-color-states,
+        color: $carousel-control-color-states,
+        background: $carousel-control-background-states,
+      )
+    );
   }
 
   // .carousel-tab
   #{defaults.$carousel-tab-selector-base}#{defaults.$carousel-tab-selector} {
     @include button-mixins.apply-theme;
+
+    border-color: $carousel-tab-border-color;
+    background: $carousel-tab-background;
+    color: $carousel-tab-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $carousel-tab-border-color-states,
+        color: $carousel-tab-color-states,
+        background: $carousel-tab-background-states,
+      )
+    );
   }
 }
