@@ -462,9 +462,6 @@
         defaults.$carousel-theme-selector-prefix,
         "carousel-"
       );
-    }
-
-    @if root-defaults.$themeable-components and defaults.$themeable {
       @include theme.generate-modifiers(
         defaults.$carousel-theme-map,
         defaults.$carousel-theme-selector-base,
