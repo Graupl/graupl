@@ -119,37 +119,45 @@
 // | `--graupl-accordion-item-toggle-disabled-border-color`            | Border colour of a disabled accordion item toggle.                  | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                                                                                                                  |
 //
 // The following sass variables can be used to customize the generation of the accordion component:
-// | Variable                                   | Description                                                                                | Default Value              |
-// | ------------------------------------------ | ------------------------------------------------------------------------------------------ | -------------------------- |
-// | `$selector-base`                           | Selector base for the component.                                                           | `"."`                      |
-// | `$modifier-selector-base`                  | Selector base for component modifiers.                                                     | `"."`                      |
-// | `$generate-base-theme-map`                 | A flag to generate the base theme maps for accordion variants.                             | `true`                     |
-// | `$themeable`                               | Flag to generate theme modifiers.                                                          | `false`                    |
-// | `$accordion-selector-base`                 | Selector base for the accordion container.                                                 | `$selector-base`           |
-// | `$accordion-selector`                      | Selector for the accordion container.                                                      | `"accordion"`              |
-// | `$accordion-item-selector-base`            | Selector base for items.                                                                   | `$selector-base`           |
-// | `$accordion-item-selector`                 | Selector for items.                                                                        | `"accordion-item"`         |
-// | `$accordion-item-header-selector-base`     | Selector base for item headers.                                                            | `$selector-base`           |
-// | `$accordion-item-header-selector`          | Selector for item headers.                                                                 | `"accordion-item-header"`  |
-// | `$accordion-item-title-selector-base`      | Selector base for item titles.                                                             | `$selector-base`           |
-// | `$accordion-item-title-selector`           | Selector for item titles.                                                                  | `"accordion-item-title"`   |
-// | `$accordion-item-toggle-selector-base`     | Selector base for item toggles.                                                            | `$selector-base`           |
-// | `$accordion-item-toggle-selector`          | Selector for item toggles.                                                                 | `"accordion-item-toggle"`  |
-// | `$accordion-item-content-selector-base`    | Selector base for item content.                                                            | `$selector-base`           |
-// | `$accordion-item-content-selector`         | Selector for item content.                                                                 | `"accordion-item-content"` |
-// | `$accordion-item-body-selector-base`       | Selector base for item bodies.                                                             | `$selector-base`           |
-// | `$accordion-item-body-selector`            | Selector for item bodies.                                                                  | `"accordion-item-body"`    |
-// | `$accordion-item-footer-selector-base`     | Selector base for item footers.                                                            | `$selector-base`           |
-// | `$accordion-item-footer-selector`          | Selector for item footers.                                                                 | `"accordion-item-footer"`  |
-// | `$accordion-item-open-selector-base`       | Selector base applied to the open modifier.                                                | `"."`                      |
-// | `$accordion-item-open-selector`            | Selector applied to the open modifier.                                                     | `"show"`                   |
-// | `$accordion-item-close-selector-base`      | Selector base applied to the closed modifier.                                              | `"."`                      |
-// | `$accordion-item-close-selector`           | Selector applied to the closed modifier.                                                   | `"hide"`                   |
-// | `$accordion-item-transition-selector-base` | Selector base applied to the transitioning modifier.                                       | `"."`                      |
-// | `$accordion-item-transition-selector`      | Selector applied to the transitioning modifier.                                            | `"transitioning"`          |
-// | `$accordion-item-toggle-pseudo-selector`   | Pseudo-element used for the toggle indicator.                                              | `"after"`                  |
-// | `$accordion-theme-mappings`                | A map of properties and color shades used generate all accordion variants.                 | `()`                       |
-// | `$accordion-theme-map`                     | A map of all properties, colors, and color shades used to generate all accordion variants. | `()`                       |
+// | Variable                                          | Description                                                                                | Default Value                              |
+// | ------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------ |
+// | `$selector-base`                                  | Selector base for the component.                                                           | `"."`                                      |
+// | `$modifier-selector-base`                         | Selector base for component modifiers.                                                     | `"."`                                      |
+// | `$generate-base-theme-map`                        | A flag to generate the base theme maps for accordion variants.                             | `true`                                     |
+// | `$themeable`                                      | Flag to generate theme modifiers.                                                          | `false`                                    |
+// | `$accordion-selector-base`                        | Selector base for the accordion container.                                                 | `$selector-base`                           |
+// | `$accordion-selector`                             | Selector for the accordion container.                                                      | `"accordion"`                              |
+// | `$accordion-item-selector-base`                   | Selector base for items.                                                                   | `$selector-base`                           |
+// | `$accordion-item-selector`                        | Selector for items.                                                                        | `"accordion-item"`                         |
+// | `$accordion-item-header-selector-base`            | Selector base for item headers.                                                            | `$selector-base`                           |
+// | `$accordion-item-header-selector`                 | Selector for item headers.                                                                 | `"accordion-item-header"`                  |
+// | `$accordion-item-title-selector-base`             | Selector base for item titles.                                                             | `$selector-base`                           |
+// | `$accordion-item-title-selector`                  | Selector for item titles.                                                                  | `"accordion-item-title"`                   |
+// | `$accordion-item-toggle-selector-base`            | Selector base for item toggles.                                                            | `$selector-base`                           |
+// | `$accordion-item-toggle-selector`                 | Selector for item toggles.                                                                 | `"accordion-item-toggle"`                  |
+// | `$accordion-item-content-selector-base`           | Selector base for item content.                                                            | `$selector-base`                           |
+// | `$accordion-item-content-selector`                | Selector for item content.                                                                 | `"accordion-item-content"`                 |
+// | `$accordion-item-body-selector-base`              | Selector base for item bodies.                                                             | `$selector-base`                           |
+// | `$accordion-item-body-selector`                   | Selector for item bodies.                                                                  | `"accordion-item-body"`                    |
+// | `$accordion-item-footer-selector-base`            | Selector base for item footers.                                                            | `$selector-base`                           |
+// | `$accordion-item-footer-selector`                 | Selector for item footers.                                                                 | `"accordion-item-footer"`                  |
+// | `$accordion-item-open-selector-base`              | Selector base applied to the open modifier.                                                | `"."`                                      |
+// | `$accordion-item-open-selector`                   | Selector applied to the open modifier.                                                     | `"show"`                                   |
+// | `$accordion-item-close-selector-base`             | Selector base applied to the closed modifier.                                              | `"."`                                      |
+// | `$accordion-item-close-selector`                  | Selector applied to the closed modifier.                                                   | `"hide"`                                   |
+// | `$accordion-item-transition-selector-base`        | Selector base applied to the transitioning modifier.                                       | `"."`                                      |
+// | `$accordion-item-transition-selector`             | Selector applied to the transitioning modifier.                                            | `"transitioning"`                          |
+// | `$accordion-item-toggle-pseudo-selector`          | Pseudo-element used for the toggle indicator.                                              | `"after"`                                  |
+// | `$accordion-item-toggle-initial-transform`        | The initial transform of the accordion item toggle.                                        | `none`                                     |
+// | `$accordion-item-toggle-final-transform`          | The final transform of the accordion item toggle.                                          | `$accordion-item-toggle-initial-transform` |
+// | `$accordion-item-toggle-disabled-transform`       | The disabled transform of the accordion item toggle.                                       | `$accordion-item-toggle-initial-transform` |
+// | `$accordion-item-toggle-pseudo-initial-transform` | The initial transform of the accordion item toggle pseudo element.                         | `none`                                     |
+// | `$accordion-item-toggle-pseudo-final-transform`   | The final transform of the accordion item toggle pseudo element.                           | `rotate(-180deg)`                          |
+// | `$accordion-item-toggle-pseudo-content`           | Content for the accordion item toggle pseudo element.                                      | `"▼"`                                      |
+// | `$accordion-item-content-initial-transform`       | The initial transform of the accordion item content.                                       | `translateY(-100%)'                        |
+// | `$accordion-item-content-final-transform`         | The final transform of the accordion item content.                                         | `translateY(0)`                            |
+// | `$accordion-theme-mappings`                       | A map of properties and color shades used generate all accordion variants.                 | `()`                                       |
+// | `$accordion-theme-map`                            | A map of all properties, colors, and color shades used to generate all accordion variants. | `()`                                       |
 //
 // ## Using `$accordion-theme-mappings`
 //

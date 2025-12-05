@@ -73,8 +73,8 @@
 // | --graupl-accordion-item-toggle-visited-transform                | Transform for a visited toggle.                                     | var(--graupl-accordion-item-toggle-transform)                                                                                                                                                                                                                                                                             |
 // | --graupl-accordion-item-toggle-focus-transform                  | Transform for a focused toggle.                                     | var(--graupl-accordion-item-toggle-transform)                                                                                                                                                                                                                                                                             |
 // | --graupl-accordion-item-toggle-hover-transform                  | Transform for a hovered toggle.                                     | var(--graupl-accordion-item-toggle-transform)                                                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-active-transform                 | Transform for an active toggle.                                     | var(--graupl-accordion-item-toggle-transform)                                                                                                                                                                                                                                                                             |
-// | --graupl-accordion-item-toggle-disabled-transform               | Transform for a disabled toggle.                                    | var(--graupl-accordion-item-toggle-transform)                                                                                                                                                                                                                                                                             |
+// | --graupl-accordion-item-toggle-active-transform                 | Transform for an active toggle.                                     | none                                                                                                                                                                                                                                                                                                                      |
+// | --graupl-accordion-item-toggle-disabled-transform               | Transform for a disabled toggle.                                    | none                                                                                                                                                                                                                                                                                                                      |
 // | --graupl-accordion-item-toggle-pseudo-transform                 | Transform for the toggle indicator pseudo-element.                  | none                                                                                                                                                                                                                                                                                                                      |
 // | --graupl-accordion-item-toggle-pseudo-open-transform            | Transform for the toggle indicator when open.                       | rotate(-180deg)                                                                                                                                                                                                                                                                                                           |
 // | --graupl-accordion-transition-duration                          | Duration used for accordion transitions.                            | var(--graupl-transition-duration-slow)                                                                                                                                                                                                                                                                                    |
@@ -490,13 +490,13 @@ $accordion-item-footer-padding: var(
 // --graupl-accordion-item-content-transform
 $accordion-item-content-transform: var(
   --#{root-defaults.$prefix}accordion-item-content-transform,
-  #{defaults.$accordion-item-content-transform}
+  #{defaults.$accordion-item-content-initial-transform}
 );
 
 // --graupl-accordion-item-content-open-transform
 $accordion-item-content-open-transform: var(
   --#{root-defaults.$prefix}accordion-item-content-open-transform,
-  #{defaults.$accordion-item-content-open-transform}
+  #{defaults.$accordion-item-content-final-transform}
 );
 
 // Accordion toggle layout and transform properties.
@@ -521,31 +521,31 @@ $accordion-item-toggle-padding: var(
 // --graupl-accordion-item-toggle-transform
 $accordion-item-toggle-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-transform,
-  #{defaults.$accordion-item-toggle-transform}
+  #{defaults.$accordion-item-toggle-initial-transform}
 );
 
 // --graupl-accordion-item-toggle-visited-transform
 $accordion-item-toggle-visited-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-visited-transform,
-  #{defaults.$accordion-item-toggle-visited-transform}
+  #{$accordion-item-toggle-transform}
 );
 
 // --graupl-accordion-item-toggle-focus-transform
 $accordion-item-toggle-focus-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-focus-transform,
-  #{defaults.$accordion-item-toggle-focus-transform}
+  #{$accordion-item-toggle-transform}
 );
 
 // --graupl-accordion-item-toggle-hover-transform
 $accordion-item-toggle-hover-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-hover-transform,
-  #{defaults.$accordion-item-toggle-hover-transform}
+  #{$accordion-item-toggle-transform}
 );
 
 // --graupl-accordion-item-toggle-active-transform
 $accordion-item-toggle-active-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-active-transform,
-  #{defaults.$accordion-item-toggle-active-transform}
+  #{defaults.$accordion-item-toggle-final-transform}
 );
 
 // --graupl-accordion-item-toggle-disabled-transform
@@ -565,13 +565,13 @@ $accordion-item-toggle-transform-states: (
 // --graupl-accordion-item-toggle-pseudo-transform
 $accordion-item-toggle-pseudo-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-pseudo-transform,
-  #{defaults.$accordion-item-toggle-pseudo-transform}
+  #{defaults.$accordion-item-toggle-pseudo-initial-transform}
 );
 
 // --graupl-accordion-item-toggle-pseudo-open-transform
 $accordion-item-toggle-pseudo-open-transform: var(
   --#{root-defaults.$prefix}accordion-item-toggle-pseudo-open-transform,
-  #{defaults.$accordion-item-toggle-pseudo-open-transform}
+  #{defaults.$accordion-item-toggle-pseudo-final-transform}
 );
 
 // Accordion item toggle color properties.

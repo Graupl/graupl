@@ -42,21 +42,18 @@ $accordion-item-transition-selector: "transitioning" !default;
 $accordion-item-toggle-pseudo-selector: "after" !default;
 
 // Toggle transform properties.
-$accordion-item-toggle-transform: none !default;
-$accordion-item-toggle-visited-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-focus-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-hover-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-active-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-disabled-transform: $accordion-item-toggle-transform !default;
-$accordion-item-toggle-pseudo-transform: none !default;
-$accordion-item-toggle-pseudo-open-transform: rotate(-180deg) !default;
+$accordion-item-toggle-initial-transform: none !default;
+$accordion-item-toggle-final-transform: $accordion-item-toggle-initial-transform !default;
+$accordion-item-toggle-disabled-transform: $accordion-item-toggle-initial-transform !default;
+$accordion-item-toggle-pseudo-initial-transform: none !default;
+$accordion-item-toggle-pseudo-final-transform: rotate(-180deg);
 
 // Toggle properties.
 $accordion-item-toggle-pseudo-content: "▼" !default;
 
 // Accordion transform properties.
-$accordion-item-content-transform: translateY(-100%) !default;
-$accordion-item-content-open-transform: translateY(0) !default;
+$accordion-item-content-initial-transform: translateY(-100%) !default;
+$accordion-item-content-final-transform: translateY(0) !default;
 
 // Accordion state theme defaults.
 // This map is used to define the default colour shades for the
