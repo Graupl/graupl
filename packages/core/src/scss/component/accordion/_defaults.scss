@@ -40,9 +40,14 @@ $accordion-item-close-selector: "hide" !default;
 $accordion-item-transition-selector-base: $modifier-selector-base !default;
 $accordion-item-transition-selector: "transitioning" !default;
 $accordion-item-toggle-pseudo-selector: "after" !default;
-$accordion-expand-selector: ".accordion-expand" !default;
-$accordion-collapse-selector: ".accordion-collapse" !default;
-$accordion-utility-selector: ".accordion-utility" !default;
+$accordion-expand-selector-base: $modifier-selector-base !default;
+$accordion-expand-selector: ".expand" !default;
+$accordion-collapse-selector-base: $modifier-selector-base !default;
+$accordion-collapse-selector: ".collapse" !default;
+$accordion-control-selector-base: $modifier-selector-base !default;
+$accordion-control-selector: ".accordion-control" !default;
+$accordion-control-container-selector-base: $modifier-selector-base !default;
+$accordion-control-container-selector: ".accordion-control-container" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-initial-transform: none !default;

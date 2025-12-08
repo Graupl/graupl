@@ -21,13 +21,13 @@ class Accordion {
    *
    * @type {Object<HTMLElement, HTMLElement[]>}
    *
-   * @property {HTMLElement}   accordion             - The accordion element.
-   * @property {HTMLElement[]} accordionItems        - An array of accordion items.
-   * @property {HTMLElement[]} accordionItemToggles  - An array of accordion item toggles.
-   * @property {HTMLElement[]} accordionItemHeaders  - An array of accordion headers.
-   * @property {HTMLElement[]} accordionItemContents - An array of accordion item contents.
-   * @property {HTMLElement[]} accordionExpands       - An array of accordion item expand toggles.
-   * @property {HTMLElement[]} accordionCollapses       - An array of accordion item collapse toggles.
+   * @property {HTMLElement}   accordion                  - The accordion element.
+   * @property {HTMLElement[]} accordionItems             - An array of accordion items.
+   * @property {HTMLElement[]} accordionItemToggles       - An array of accordion item toggles.
+   * @property {HTMLElement[]} accordionItemHeaders       - An array of accordion headers.
+   * @property {HTMLElement[]} accordionItemContents      - An array of accordion item contents.
+   * @property {HTMLElement[]} accordionControl           - The accordion controls.
+   * @property {HTMLElement}   accordionControlContainer  - The accordion control container.
    */
   _dom = {
     accordion: null,
@@ -35,8 +35,8 @@ class Accordion {
     accordionItemToggles: [],
     accordionItemHeaders: [],
     accordionItemContents: [],
-    accordionExpands: [],
-    accordionCollapses: [],
+    accordionControl: [],
+    accordionControlContainer: [],
   };
 
   /**
@@ -55,20 +55,18 @@ class Accordion {
    *
    * @type {Object<string>}
    *
-   * @property {string} accordionItems        - The query selector for accordion items.
-   * @property {string} accordionItemToggles  - The query selector for accordion toggles.
-   * @property {string} accordionItemHeaders  - The query selector for accordion headers.
-   * @property {string} accordionItemContents - The query selector for accordion contents.
-   * @property {string} accordionExpands      - The query selector for accordion expand toggles.
-   * @property {string} accordionCollapses      - The query selector for accordion collapse toggles.
+   * @property {string} accordionItems            - The query selector for accordion items.
+   * @property {string} accordionItemToggles      - The query selector for accordion toggles.
+   * @property {string} accordionItemHeaders      - The query selector for accordion headers.
+   * @property {string} accordionItemContents     - The query selector for accordion contents.
+   * @property {string} accordionControl          - The query selector string for accordion controls.
    */
   _selectors = {
     accordionItems: "",
     accordionItemToggles: "",
     accordionItemHeaders: "",
     accordionItemContents: "",
-    accordionExpands: "",
-    accordionCollapses: "",
+    accordionControl: "",
   };
 
   /**
@@ -85,58 +83,44 @@ class Accordion {
   };
 
   /**
-   * The class(es) to apply when the accordion is open.
+   * The classes to apply when the accordions are in various states.
    *
    * @protected
    *
-   * @type {string|string[]}
+   * @type {Object<string, string[]>}
+   *
+   * @property {string|string[]} open         - The class(es) to apply when the accordion item is open.
+   * @property {string|string[]} close        - The class(es) to apply when the accordion item is closed.
+   * @property {string|string[]} transition   - The class(es) to apply when the accordion item is transitioning between states.
+   * @property {string|string[]} initialize   - The class(es) to apply when the accordion item is initializing.
+   * @property {string} expand                - The class(es) to apply when the accordion items expand.
+   * @property {string} collapse              - The class(es) to apply when the accordion items collapse.
    */
-  _openClass = "show";
+  _classes = {
+    expand: "expand",
+    collapse: "collapse",
+    open: "show",
+    close: "hide",
+    transition: "transitioning",
+    initialize: "initializing",
+  };
 
   /**
-   * The class(es) to apply when the accordion is closed.
+   * The duration times (in milliseconds) for various things throughout the accordions.
    *
    * @protected
    *
-   * @type {string|string[]}
+   * @type {Object<number>}
+   *
+   * @property {number} transition - The duration time (in milliseconds) for the transition between open and closed states.
+   * @property {number} open       - The duration time (in milliseconds) for the transition from closed to open states.
+   * @property {number} close      - The duration time (in milliseconds) for the transition from open to closed states.
    */
-  _closeClass = "hide";
-
-  /**
-   * The class(es) to apply when the accordion is transitioning between states.
-   *
-   * @protected
-   *
-   * @type {string|string[]}
-   */
-  _transitionClass = "transitioning";
-
-  /**
-   * The duration time (in milliseconds) for the transition between open and closed states.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _transitionDuration = 300;
-
-  /**
-   * The duration time (in milliseconds) for the transition from closed to open states.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _openDuration = -1;
-
-  /**
-   * The duration time (in milliseconds) for the transition from open to closed states.
-   *
-   * @protected
-   *
-   * @type {number}
-   */
-  _closeDuration = -1;
+  _durations = {
+    transition: 250,
+    open: -1,
+    close: -1,
+  };
 
   /**
    * A flag to decide if the accordion items can be navigated by arrows.
@@ -208,26 +192,28 @@ class Accordion {
   /**
    * Constructs a new `Accordion`.
    *
-   * @param {object}             options                                                          - The options for generating the accordion.
-   * @param {HTMLElement}        [options.accordionElement]                                       - The accordion element in the DOM.
-   * @param {string}             [options.accordionItemSelector = .accordion-item]                - The query selector string for accordion items.
-   * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]   - The query selector string for accordion toggle.
-   * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]   - The query selector string for accordion header.
-   * @param {string}             [options.accordionItemContentSelector = .accordion-item-content] - The query selector string for accordion content.
-   * @param {string}             [options.accordionExpandSelector = .accordion-expand]            - The query selector string for accordion expand toggle.
-   * @param {string}             [options.accordionCollapseSelector = .accordion-collapse]            - The query selector string for accordion expand toggle.
-   * @param {?(string|string[])} [options.openClass = show]                                       - The class to apply when a accordion is "open".
-   * @param {?(string|string[])} [options.closeClass = hide]                                      - The class to apply when a accordion is "closed".
-   * @param {?(string|string[])} [options.transitionClass = transitioning]                        - The class to apply when a accordion is transitioning between "open" and "closed" states.
-   * @param {number}             [options.transitionDuration = 300]                               - The duration of the transition between "open" and "closed" states (in milliseconds).
-   * @param {number}             [options.openDuration = -1]                                      - The duration of the transition from "closed" to "open" states (in milliseconds).
-   * @param {number}             [options.closeDuration = -1]                                     - The duration of the transition from "open" to "closed" states (in milliseconds).
-   * @param {boolean}            [options.optionalKeySupport = false]                             - A flag to determine if accordions can be navigated with arrows.
-   * @param {boolean}            [options.allowMultipleExpand = true]                             - A flag to determine if multiple accordions can be open at the same time.
-   * @param {boolean}            [options.allowNoExpand = true]                                   - A flag to determine if no accordions can be open at the same time.
-   * @param {?string}            [options.prefix = graupl-]                                       - The prefix to use for CSS custom properties.
-   * @param {?string}            [options.key = null]                                             - The key used to generate IDs throughout the accordion.
-   * @param {boolean}            [options.initialize = false]                                     - A flag to initialize the accordion immediately upon creation.
+   * @param {object}             options                                                                    - The options for generating the accordion.
+   * @param {HTMLElement}        [options.accordionElement]                                                 - The accordion element in the DOM.
+   * @param {string}             [options.accordionItemSelector = .accordion-item]                          - The query selector string for accordion items.
+   * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]             - The query selector string for accordion toggle.
+   * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]             - The query selector string for accordion header.
+   * @param {string}             [options.accordionItemContentSelector = .accordion-item-content]           - The query selector string for accordion content.
+   * @param {string}             [options.accordionControlSelector = .accordion-control]                    - The query selector string for accordion controls.
+   * @param {?(string|string[])} [options.expandClass = expand]                                             - The class(es) to apply to a carousel item that is the expand item.
+   * @param {?(string|string[])} [options.collapseClass = collapse]                                         - The class(es) to apply to a carousel item that is the collapse item.
+   * @param {?(string|string[])} [options.openClass = show]                                                 - The class to apply when a accordion is "open".
+   * @param {?(string|string[])} [options.closeClass = hide]                                                - The class to apply when a accordion is "closed".
+   * @param {?(string|string[])} [options.transitionClass = transitioning]                                  - The class to apply when a accordion is transitioning between "open" and "closed" states.
+   * @param {number}             [options.transitionDuration = 300]                                         - The duration of the transition between "open" and "closed" states (in milliseconds).
+   * @param {number}             [options.openDuration = -1]                                                - The duration of the transition from "closed" to "open" states (in milliseconds).
+   * @param {number}             [options.closeDuration = -1]                                               - The duration of the transition from "open" to "closed" states (in milliseconds).
+   * @param {boolean}            [options.optionalKeySupport = false]                                       - A flag to determine if accordions can be navigated with arrows.
+   * @param {boolean}            [options.allowMultipleExpand = true]                                       - A flag to determine if multiple accordions can be open at the same time.
+   * @param {boolean}            [options.allowNoExpand = true]                                             - A flag to determine if no accordions can be open at the same time.
+   * @param {boolean}            [options.automaticActivation = false]                                      - A flag to set if focusing a accordion item toggle will automatically activate it.
+   * @param {?string}            [options.prefix = graupl-]                                                 - The prefix to use for CSS custom properties.
+   * @param {?string}            [options.key = null]                                                       - The key used to generate IDs throughout the accordion.
+   * @param {boolean}            [options.initialize = false]                                               - A flag to initialize the accordion immediately upon creation.
    */
   constructor({
     accordionElement,
@@ -235,8 +221,9 @@ class Accordion {
     accordionItemToggleSelector = ".accordion-item-toggle",
     accordionItemHeaderSelector = ".accordion-item-header",
     accordionItemContentSelector = ".accordion-item-content",
-    accordionExpandSelector = ".accordion-expand",
-    accordionCollapseSelector = ".accordion-collapse",
+    accordionControlSelector = ".accordion-control",
+    expandClass = "expand",
+    collapseClass = "collapse",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
@@ -246,6 +233,7 @@ class Accordion {
     optionalKeySupport = false,
     allowMultipleExpand = true,
     allowNoExpand = true,
+    automaticActivation = false,
     prefix = "graupl-",
     key = null,
     initialize = false,
@@ -258,18 +246,22 @@ class Accordion {
     this._selectors.accordionItemToggles = accordionItemToggleSelector;
     this._selectors.accordionItemHeaders = accordionItemHeaderSelector;
     this._selectors.accordionItemContents = accordionItemContentSelector;
-    this._selectors.accordionExpands = accordionExpandSelector;
-    this._selectors.accordionCollapses = accordionCollapseSelector;
+    this._selectors.accordionControl = accordionControlSelector;
 
-    // Set open/close classes.
+    // Set open/close and expand/collapse classes.
+    this._expandClass = expandClass || "";
+    this._collapseClass = collapseClass || "";
     this._openClass = openClass || "";
     this._closeClass = closeClass || "";
     this._transitionClass = transitionClass || "";
 
     // Set transition duration.
-    this._transitionDuration = transitionDuration;
-    this._openDuration = openDuration;
-    this._closeDuration = closeDuration;
+    this._durations.transition = transitionDuration;
+    this._durations.open = openDuration;
+    this._durations.close = closeDuration;
+
+    // Set automatic activation.
+    this._automatic = automaticActivation;
 
     // Set optional key support.
     this._optionalKeySupport = optionalKeySupport;
@@ -325,6 +317,28 @@ class Accordion {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  /**
+   * The class(es) to apply when the accordion is expanding.
+   *
+   * @type {string|string[]}
+   *
+   * @see _expandClass
+   */
+  get expandClass() {
+    return this.openChildren;
+  }
+
+  /**
+   * The class(es) to apply when the accordion is collapsing.
+   *
+   * @type {string|string[]}
+   *
+   * @see _collapseClass
+   */
+  get collapseClass() {
+    return this._collapseClass;
   }
 
   /**
@@ -743,8 +757,7 @@ class Accordion {
   _setDOMElements() {
     this._setDOMElementType("accordionItems");
     this._resetDOMElementType("accordionItemToggles");
-    this._setDOMElementType("accordionExpands");
-    this._setDOMElementType("accordionCollapses");
+    this._setDOMElementType("accordionControl");
 
     this.dom.accordionItems.forEach((accordionItem) => {
       this._setDOMElementType("accordionItemToggles", accordionItem, false);
@@ -821,14 +834,14 @@ class Accordion {
     }
 
     // Query selector checks.
-    const querySelectorChecks = isQuerySelector({
-      accordionItemSelector: this._selectors.accordionItems,
-      accordionItemToggleSelector: this._selectors.accordionItemToggles,
-      accordionItemHeaderSelector: this._selectors.accordionItemHeaders,
-      accordionItemContentSelector: this._selectors.accordionItemContents,
-      accordionExpandSelector: this._selectors.accordionExpands,
-      accordionCollapseSelector: this._selectors.accordionCollapses,
-    });
+    const querySelectors = {};
+
+    for (const querySelector of Object.keys(this._selectors)) {
+      querySelectors[`${querySelector}Selector`] =
+        this._selectors[querySelector];
+    }
+
+    const querySelectorChecks = isQuerySelector(querySelectors);
 
     if (!querySelectorChecks) {
       this._errors.push(querySelectorChecks.message);
@@ -836,72 +849,40 @@ class Accordion {
     }
 
     // Class list checks.
-    if (this._openClass !== "") {
-      const openClassCheck = isValidClassList({ openClass: this._openClass });
+    const classes = {};
 
-      if (!openClassCheck.status) {
-        this._errors.push(openClassCheck.error.message);
-        check = false;
+    for (const className of Object.keys(this._classes)) {
+      if (this._classes[className] === "") {
+        continue;
       }
+
+      classes[`${className}Class`] = this._classes[className];
     }
 
-    if (this._closeClass !== "") {
-      const closeClassCheck = isValidClassList({
-        closeClass: this._closeClass,
-      });
+    const classListChecks = isValidClassList(classes);
 
-      if (!closeClassCheck.status) {
-        this._errors.push(closeClassCheck.error.message);
-        check = false;
-      }
-    }
-
-    if (this._transitionClass !== "") {
-      const transitionClassCheck = isValidClassList({
-        transitionClass: this._transitionClass,
-      });
-
-      if (!transitionClassCheck.status) {
-        this._errors.push(transitionClassCheck.error.message);
-        check = false;
-      }
-    }
-
-    // Transition duration check.
-    const transitionDurationCheck = isValidType("number", {
-      transitionDuration: this._transitionDuration,
-    });
-
-    if (!transitionDurationCheck.status) {
-      this._errors.push(transitionDurationCheck.error.message);
+    if (!classListChecks.status) {
+      this._errors.push(classListChecks.error.message);
       check = false;
     }
 
-    // Open duration check.
-    const openDurationCheck = isValidType("number", {
-      openDuration: this._openDuration,
-    });
+    // Duration checks.
+    const durations = {};
 
-    if (!openDurationCheck.status) {
-      this._errors.push(openDurationCheck.error.message);
-      check = false;
+    for (const durationName of Object.keys(this._durations)) {
+      durations[`${durationName}Duration`] = this._durations[durationName];
     }
 
-    // Close duration check.
-    const closeDurationCheck = isValidType("number", {
-      closeDuration: this._closeDuration,
-    });
+    const durationChecks = isValidType("number", durations);
 
-    if (!closeDurationCheck.status) {
-      this._errors.push(closeDurationCheck.error.message);
+    if (!durationChecks.status) {
+      this._errors.push(durationChecks.error.message);
       check = false;
     }
 
     // Boolean checks.
     const booleanCheck = isValidType("boolean", {
-      optionalKeySupport: this._optionalKeySupport,
-      allowMultipleExpand: this._allowMultipleExpand,
-      allowNoExpand: this._allowNoExpand,
+      automaticActivation: this._automatic,
     });
 
     if (!booleanCheck.status) {
@@ -960,20 +941,19 @@ class Accordion {
         accordionItem.toggle();
       });
     });
-    if (this._allowNoExpand) {
-      this.dom.accordionCollapses.forEach((accordionCollapse) => {
-        accordionCollapse.addEventListener("pointerup", () => {
-          this.closeChildren();
-        });
-      });
-    }
-    if (this._allowMultipleExpand) {
-      this.dom.accordionExpands.forEach((accordionExpand) => {
-        accordionExpand.addEventListener("pointerup", () => {
+
+    this.dom.accordionControl.forEach((control) => {
+      if (control.classList.contains("expand")) {
+        control.addEventListener("pointerup", () => {
           this.openChildren();
         });
-      });
-    }
+      }
+      if (control.classList.contains("collapse")) {
+        control.addEventListener("pointerup", () => {
+          this.closeChildren();
+        });
+      }
+    });
   }
 
   /**
@@ -1014,8 +994,8 @@ class Accordion {
    * - `Enter` or `Space`:
    *   - When focus is on the accordion header for a collapsed panel, expands the associated panel. If the implementation allows only one panel to be expanded, and if another panel is expanded, collapses that panel.
    *   - When focus is on the accordion header for an expanded panel, collapses the panel if the implementation supports collapsing. Some implementations require one panel to be expanded at all times and allow only one panel to be expanded; so, they do not support a collapse function.
-   * - `Tab`: Moves focus to the next focusable element; all focusable elements in the accordion are included in the page `Tab` sequence.
-   * - `Shift + Tab`: Moves focus to the previous focusable element; all focusable elements in the accordion are included in the page `Tab` sequence.
+   * - `Accordion`: Moves focus to the next focusable element; all focusable elements in the accordion are included in the page `Accordion` sequence.
+   * - `Shift + Accordion`: Moves focus to the previous focusable element; all focusable elements in the accordion are included in the page `Accordion` sequence.
    * - `Down Arrow` (Optional): If focus is on an accordion header, moves focus to the next accordion header. If focus is on the last accordion header, either does nothing or moves focus to the first accordion header.
    * - `Up Arrow` (Optional): If focus is on an accordion header, moves focus to the previous accordion header. If focus is on the first accordion header, either does nothing or moves focus to the last accordion header.
    * - `Home` (Optional): When focus is on an accordion header, moves focus to the first accordion header.

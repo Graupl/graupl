@@ -326,25 +326,7 @@
 }
 
 @include layer(base) {
-  #{defaults.$accordion-expand-selector} {
-    @include button-mixins.apply-base;
-  }
-}
-
-@include layer(base) {
-  #{defaults.$accordion-collapse-selector} {
-    @include button-mixins.apply-base;
-  }
-}
-
-@include layer(base) {
-  #{defaults.$accordion-expand-selector} {
-    @include button-mixins.apply-base;
-  }
-}
-
-@include layer(base) {
-  #{defaults.$accordion-collapse-selector} {
+  #{defaults.$accordion-control-selector} {
     @include button-mixins.apply-base;
   }
 }
@@ -357,9 +339,10 @@
     padding: $accordion-padding;
     gap: $accordion-gap;
 
-    > #{defaults.$accordion-utility-selector} {
+    > #{defaults.$accordion-control-container-selector} {
       display: flex;
       flex-flow: row nowrap;
+      justify-content: flex-end;
     }
 
     // > .accordion-item
@@ -477,92 +460,10 @@
     padding: $accordion-item-footer-padding;
   }
 
-  #{defaults.$accordion-utility-selector} {
+  #{defaults.$accordion-control-selector} {
     justify-content: flex-end;
-    margin: $accordion-utility-margin;
-    padding: $accordion-utility-padding;
-  }
-
-  #{defaults.$accordion-expand-selector} {
-    z-index: 2;
-    margin: $accordion-expand-margin;
-    padding: $accordion-expand-padding;
-    transform: $accordion-expand-transform;
-    transition: $accordion-expand-transition;
-    border-width: $accordion-expand-border-width;
-    border-style: $accordion-expand-border-style;
-    border-radius: $accordion-expand-border-radius;
-
-    @each $selector in map.get(root-defaults.$state-selectors, visited) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-visited-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, focus) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-focus-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, hover) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-hover-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, active) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-active-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-expand-transform: #{$accordion-expand-disabled-transform};
-      }
-    }
-  }
-
-  #{defaults.$accordion-collapse-selector} {
-    z-index: 2;
-    margin: $accordion-collapse-margin;
-    padding: $accordion-collapse-padding;
-    transform: $accordion-collapse-transform;
-    transition: $accordion-collapse-transition;
-    border-width: $accordion-collapse-border-width;
-    border-style: $accordion-collapse-border-style;
-    border-radius: $accordion-collapse-border-radius;
-
-    @each $selector in map.get(root-defaults.$state-selectors, visited) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-visited-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, focus) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-focus-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, hover) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-hover-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, active) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-active-transform};
-      }
-    }
-
-    @each $selector in map.get(root-defaults.$state-selectors, disabled) {
-      &#{$selector} {
-        --#{root-defaults.$prefix}accordion-collapse-transform: #{$accordion-collapse-disabled-transform};
-      }
-    }
+    margin: $accordion-control-margin;
+    padding: $accordion-control-padding;
   }
 
   @include animation.off {
@@ -651,15 +552,11 @@
     color: $accordion-item-content-color;
   }
 
-  #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector}#{defaults.$accordion-utility-selector} {
-    border-style: $accordion-utility-border-style;
+  #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector}#{defaults.$accordion-control-container-selector} {
+    border-style: $accordion-control-border-style;
   }
 
-  #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector}#{defaults.$accordion-expand-selector} {
-    @include button-mixins.apply-theme;
-  }
-
-  #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector}#{defaults.$accordion-collapse-selector} {
+  #{defaults.$accordion-item-selector-base}#{defaults.$accordion-item-selector}#{defaults.$accordion-control-selector} {
     @include button-mixins.apply-theme;
   }
 
