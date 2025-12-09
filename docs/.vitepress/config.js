@@ -16,9 +16,9 @@ export default defineConfig({
       },
     },
     css: {
+      transformer: "lightningcss",
       preprocessorOptions: {
         scss: {
-          api: "modern-compiler",
           importers: [new NodePackageImporter()],
         },
       },
