@@ -41,10 +41,11 @@
   "homepage": "https://github.com/Graupl/graupl/tree/main/packages/icons#readme",
   "scripts": {
     "presass": "rm -rf dist/css/*",
+    "precss": "rm -rf dist/css/*",
     "sass": "sass scss:dist/css --pkg-importer=node",
-    "postcss": "postcss 'dist/css/**/*.css' --replace --config ./postcss.config.cjs",
+    "css": "node compile-styles.js",
     "build": "npm-run-all build:*",
-    "build:css": "npm run sass && npm run postcss"
+    "build:css": "npm run css"
   },
   "dependencies": {
     "@graupl/core": "*"

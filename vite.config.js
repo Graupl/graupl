@@ -13,6 +13,7 @@ export default defineConfig({
     },
   },
   css: {
+    transformer: "lightningcss",
     preprocessorOptions: {
       scss: {
         importers: [new NodePackageImporter()],
