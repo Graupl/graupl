@@ -28,10 +28,51 @@
 // | --graupl-carousel-tab-container-padding-y  | var(--graupl-spacer-3)                                                                          |
 // | --graupl-carousel-tab-container-padding    | var(--graupl-carousel-tab-container-padding-y) var(--graupl-carousel-tab-container-padding-x)   |
 // | --graupl-carousel-tab-container-gap        | var(--graupl-spacer-3)                                                                          |
+// | --graupl-carousel-color                    | var(--graupl-color)                                                                             |
+// | --graupl-carousel-background               | var(--graupl-background)                                                                        |
+// | --graupl-carousel-border-color             | var(--graupl-border-color)                                                                      |
+// | --graupl-carousel-control-color            | var(--graupl-carousel-color)                                                                    |
+// | --graupl-carousel-control-visited-color    | var(--graupl-carousel-control-color)                                                            |
+// | --graupl-carousel-control-focus-color      | var(--graupl-carousel-control-color)                                                            |
+// | --graupl-carousel-control-hover-color      | var(--graupl-carousel-background)                                                               |
+// | --graupl-carousel-control-active-color     | var(--graupl-carousel-control-hover-color)                                                      |
+// | --graupl-carousel-control-disabled-color   | var(--graupl-theme-active--primary--200)                                                        |
+// | --graupl-carousel-control-background       | var(--graupl-carousel-background)                                                               |
+// | --graupl-carousel-control-visited-background | var(--graupl-carousel-control-background)                                                     |
+// | --graupl-carousel-control-focus-background | var(--graupl-carousel-control-background)                                                      |
+// | --graupl-carousel-control-hover-background | var(--graupl-carousel-color)                                                                   |
+// | --graupl-carousel-control-active-background | var(--graupl-carousel-control-hover-background)                                               |
+// | --graupl-carousel-control-disabled-background | var(--graupl-carousel-background)                                                             |
+// | --graupl-carousel-control-border-color     | var(--graupl-carousel-border-color)                                                             |
+// | --graupl-carousel-control-visited-border-color | var(--graupl-carousel-control-border-color)                                                  |
+// | --graupl-carousel-control-focus-border-color | var(--graupl-carousel-control-border-color)                                                  |
+// | --graupl-carousel-control-hover-border-color | var(--graupl-carousel-control-border-color)                                                  |
+// | --graupl-carousel-control-active-border-color | var(--graupl-carousel-control-hover-border-color)                                           |
+// | --graupl-carousel-control-disabled-border-color | var(--graupl-theme-active--primary--200)                                                   |
+// | --graupl-carousel-tab-color                 | var(--graupl-carousel-color)                                                                    |
+// | --graupl-carousel-tab-visited-color         | var(--graupl-carousel-tab-color)                                                                |
+// | --graupl-carousel-tab-focus-color           | var(--graupl-carousel-tab-color)                                                                |
+// | --graupl-carousel-tab-hover-color           | var(--graupl-carousel-background)                                                               |
+// | --graupl-carousel-tab-active-color          | var(--graupl-carousel-tab-hover-color)                                                          |
+// | --graupl-carousel-tab-disabled-color        | var(--graupl-theme-active--primary--200)                                                        |
+// | --graupl-carousel-tab-background            | var(--graupl-carousel-background)                                                               |
+// | --graupl-carousel-tab-visited-background    | var(--graupl-carousel-tab-background)                                                           |
+// | --graupl-carousel-tab-focus-background      | var(--graupl-carousel-tab-background)                                                           |
+// | --graupl-carousel-tab-hover-background      | var(--graupl-carousel-color)                                                                    |
+// | --graupl-carousel-tab-active-background     | var(--graupl-carousel-tab-hover-background)                                                     |
+// | --graupl-carousel-tab-disabled-background   | var(--graupl-carousel-background)                                                               |
+// | --graupl-carousel-tab-border-color          | var(--graupl-carousel-border-color)                                                             |
+// | --graupl-carousel-tab-visited-border-color  | var(--graupl-carousel-tab-border-color)                                                         |
+// | --graupl-carousel-tab-focus-border-color    | var(--graupl-carousel-tab-border-color)                                                         |
+// | --graupl-carousel-tab-hover-border-color    | var(--graupl-carousel-tab-border-color)                                                         |
+// | --graupl-carousel-tab-active-border-color   | var(--graupl-carousel-tab-hover-border-color)                                                   |
+// | --graupl-carousel-tab-disabled-border-color | var(--graupl-theme-active--primary--200)                                                        |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
+@use "../../functions/theme";
+@use "../../theme/color/variables" as color;
 @use "../../base/button/variables" as button-variables;
 @use "sass:map";
 
@@ -58,6 +99,22 @@ $carousel-tabs-height: var(
 $carousel-slide-height: var(
   --#{root-defaults.$prefix}carousel-slide-height,
   #{defaults.$carousel-slide-height}
+);
+
+// Carousel color properties.
+// --graupl-carousel-color
+$carousel-color: var(--#{root-defaults.$prefix}carousel-color, #{color.$color});
+
+// --graupl-carousel-background
+$carousel-background: var(
+  --#{root-defaults.$prefix}carousel-background,
+  #{color.$background}
+);
+
+// --graupl-carousel-border-color
+$carousel-border-color: var(
+  --#{root-defaults.$prefix}carousel-border-color,
+  #{color.$border-color}
 );
 
 // Carousel properties.
@@ -105,6 +162,138 @@ $carousel-item-container-padding: var(
 );
 
 // Carousel control properties.
+// --graupl-carousel-control-color
+$carousel-control-color: var(
+  --#{root-defaults.$prefix}carousel-control-color,
+  #{$carousel-color}
+);
+
+// --graupl-carousel-control-visited-color
+$carousel-control-visited-color: var(
+  --#{root-defaults.$prefix}carousel-control-visited-color,
+  #{$carousel-control-color}
+);
+
+// --graupl-carousel-control-focus-color
+$carousel-control-focus-color: var(
+  --#{root-defaults.$prefix}carousel-control-focus-color,
+  #{$carousel-control-color}
+);
+
+// --graupl-carousel-control-hover-color
+$carousel-control-hover-color: var(
+  --#{root-defaults.$prefix}carousel-control-hover-color,
+  #{$carousel-background}
+);
+
+// --graupl-carousel-control-active-color
+$carousel-control-active-color: var(
+  --#{root-defaults.$prefix}carousel-control-active-color,
+  #{$carousel-control-hover-color}
+);
+
+// --graupl-carousel-control-disabled-color
+$carousel-control-disabled-color: var(
+  --#{root-defaults.$prefix}carousel-control-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$carousel-control-color-states: (
+  default: $carousel-control-color,
+  visited: $carousel-control-visited-color,
+  focus: $carousel-control-focus-color,
+  hover: $carousel-control-hover-color,
+  active: $carousel-control-active-color,
+  disabled: $carousel-control-disabled-color,
+);
+
+// --graupl-carousel-control-background
+$carousel-control-background: var(
+  --#{root-defaults.$prefix}carousel-control-background,
+  #{$carousel-background}
+);
+
+// --graupl-carousel-control-visited-background
+$carousel-control-visited-background: var(
+  --#{root-defaults.$prefix}carousel-control-visited-background,
+  #{$carousel-control-background}
+);
+
+// --graupl-carousel-control-focus-background
+$carousel-control-focus-background: var(
+  --#{root-defaults.$prefix}carousel-control-focus-background,
+  #{$carousel-control-background}
+);
+
+// --graupl-carousel-control-hover-background
+$carousel-control-hover-background: var(
+  --#{root-defaults.$prefix}carousel-control-hover-background,
+  #{$carousel-color}
+);
+
+// --graupl-carousel-control-active-background
+$carousel-control-active-background: var(
+  --#{root-defaults.$prefix}carousel-control-active-background,
+  #{$carousel-control-hover-background}
+);
+
+// --graupl-carousel-control-disabled-background
+$carousel-control-disabled-background: var(
+  --#{root-defaults.$prefix}carousel-control-disabled-background,
+  #{$carousel-background}
+);
+$carousel-control-background-states: (
+  default: $carousel-control-background,
+  visited: $carousel-control-visited-background,
+  focus: $carousel-control-focus-background,
+  hover: $carousel-control-hover-background,
+  active: $carousel-control-active-background,
+  disabled: $carousel-control-disabled-background,
+);
+
+// --graupl-carousel-control-border-color
+$carousel-control-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-border-color,
+  #{$carousel-border-color}
+);
+
+// --graupl-carousel-control-visited-border-color
+$carousel-control-visited-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-visited-border-color,
+  #{$carousel-control-border-color}
+);
+
+// --graupl-carousel-control-focus-border-color
+$carousel-control-focus-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-focus-border-color,
+  #{$carousel-control-border-color}
+);
+
+// --graupl-carousel-control-hover-border-color
+$carousel-control-hover-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-hover-border-color,
+  #{$carousel-control-border-color}
+);
+
+// --graupl-carousel-control-active-border-color
+$carousel-control-active-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-active-border-color,
+  #{$carousel-control-hover-border-color}
+);
+
+// --graupl-carousel-control-disabled-border-color
+$carousel-control-disabled-border-color: var(
+  --#{root-defaults.$prefix}carousel-control-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$carousel-control-border-color-states: (
+  default: $carousel-control-border-color,
+  visited: $carousel-control-visited-border-color,
+  focus: $carousel-control-focus-border-color,
+  hover: $carousel-control-hover-border-color,
+  active: $carousel-control-active-border-color,
+  disabled: $carousel-control-disabled-border-color,
+);
+
 // --graupl-carousel-play-content
 $carousel-play-content: var(
   --#{root-defaults.$prefix}carousel-play-content,
@@ -149,6 +338,138 @@ $carousel-transition-duration: var(
 );
 
 // Carousel tab properties.
+// --graupl-carousel-tab-color
+$carousel-tab-color: var(
+  --#{root-defaults.$prefix}carousel-tab-color,
+  #{$carousel-color}
+);
+
+// --graupl-carousel-tab-visited-color
+$carousel-tab-visited-color: var(
+  --#{root-defaults.$prefix}carousel-tab-visited-color,
+  #{$carousel-tab-color}
+);
+
+// --graupl-carousel-tab-focus-color
+$carousel-tab-focus-color: var(
+  --#{root-defaults.$prefix}carousel-tab-focus-color,
+  #{$carousel-tab-color}
+);
+
+// --graupl-carousel-tab-hover-color
+$carousel-tab-hover-color: var(
+  --#{root-defaults.$prefix}carousel-tab-hover-color,
+  #{$carousel-background}
+);
+
+// --graupl-carousel-tab-active-color
+$carousel-tab-active-color: var(
+  --#{root-defaults.$prefix}carousel-tab-active-color,
+  #{$carousel-tab-hover-color}
+);
+
+// --graupl-carousel-tab-disabled-color
+$carousel-tab-disabled-color: var(
+  --#{root-defaults.$prefix}carousel-tab-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$carousel-tab-color-states: (
+  default: $carousel-tab-color,
+  visited: $carousel-tab-visited-color,
+  focus: $carousel-tab-focus-color,
+  hover: $carousel-tab-hover-color,
+  active: $carousel-tab-active-color,
+  disabled: $carousel-tab-disabled-color,
+);
+
+// --graupl-carousel-tab-background
+$carousel-tab-background: var(
+  --#{root-defaults.$prefix}carousel-tab-background,
+  #{$carousel-background}
+);
+
+// --graupl-carousel-tab-visited-background
+$carousel-tab-visited-background: var(
+  --#{root-defaults.$prefix}carousel-tab-visited-background,
+  #{$carousel-tab-background}
+);
+
+// --graupl-carousel-tab-focus-background
+$carousel-tab-focus-background: var(
+  --#{root-defaults.$prefix}carousel-tab-focus-background,
+  #{$carousel-tab-background}
+);
+
+// --graupl-carousel-tab-hover-background
+$carousel-tab-hover-background: var(
+  --#{root-defaults.$prefix}carousel-tab-hover-background,
+  #{$carousel-color}
+);
+
+// --graupl-carousel-tab-active-background
+$carousel-tab-active-background: var(
+  --#{root-defaults.$prefix}carousel-tab-active-background,
+  #{$carousel-tab-hover-background}
+);
+
+// --graupl-carousel-tab-disabled-background
+$carousel-tab-disabled-background: var(
+  --#{root-defaults.$prefix}carousel-tab-disabled-background,
+  #{$carousel-background}
+);
+$carousel-tab-background-states: (
+  default: $carousel-tab-background,
+  visited: $carousel-tab-visited-background,
+  focus: $carousel-tab-focus-background,
+  hover: $carousel-tab-hover-background,
+  active: $carousel-tab-active-background,
+  disabled: $carousel-tab-disabled-background,
+);
+
+// --graupl-carousel-tab-border-color
+$carousel-tab-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-border-color,
+  #{$carousel-border-color}
+);
+
+// --graupl-carousel-tab-visited-border-color
+$carousel-tab-visited-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-visited-border-color,
+  #{$carousel-tab-border-color}
+);
+
+// --graupl-carousel-tab-focus-border-color
+$carousel-tab-focus-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-focus-border-color,
+  #{$carousel-tab-border-color}
+);
+
+// --graupl-carousel-tab-hover-border-color
+$carousel-tab-hover-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-hover-border-color,
+  #{$carousel-tab-border-color}
+);
+
+// --graupl-carousel-tab-active-border-color
+$carousel-tab-active-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-active-border-color,
+  #{$carousel-tab-hover-border-color}
+);
+
+// --graupl-carousel-tab-disabled-border-color
+$carousel-tab-disabled-border-color: var(
+  --#{root-defaults.$prefix}carousel-tab-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$carousel-tab-border-color-states: (
+  default: $carousel-tab-border-color,
+  visited: $carousel-tab-visited-border-color,
+  focus: $carousel-tab-focus-border-color,
+  hover: $carousel-tab-hover-border-color,
+  active: $carousel-tab-active-border-color,
+  disabled: $carousel-tab-disabled-border-color,
+);
+
 // --graupl-carousel-tab-container-padding-x
 $carousel-tab-container-padding-x: var(
   --#{root-defaults.$prefix}carousel-tab-container-padding-x,
