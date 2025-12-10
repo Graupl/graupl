@@ -574,11 +574,11 @@ $accordion-item-toggle-pseudo-open-transform: var(
   #{defaults.$accordion-item-toggle-pseudo-final-transform}
 );
 
-// Accordion item toggle color properties.
+// Accordion control color properties.
 // --graupl-accordion-item-toggle-color
 $accordion-item-toggle-color: var(
   --#{root-defaults.$prefix}accordion-item-toggle-color,
-  #{$accordion-color}
+  #{$accordion-item-color}
 );
 
 // --graupl-accordion-item-toggle-visited-color
@@ -782,50 +782,68 @@ $accordion-item-toggle-transition-reduced-motion: var(
 );
 
 // Accordion control properties.
+
+// --graupl-accordion-control-background
+$accordion-control-background: var(
+  --#{root-defaults.$prefix}accordion-control-background,
+  #{$accordion-item-background}
+);
+
+// --graupl-accordion-control-color
+$accordion-control-color: var(
+  --#{root-defaults.$prefix}accordion-control-color,
+  #{$accordion-item-color}
+);
+
+// --graupl-accordion-control-padding-x.
 $accordion-control-padding-x: var(
   --#{root-defaults.$prefix}accordion-control-padding-x,
   #{button.$button-padding}
 );
+
+// --graupl-accordion-control-padding-y
 $accordion-control-padding-y: var(
   --#{root-defaults.$prefix}accordion-control-padding-y,
   #{button.$button-padding}
 );
+
+// --graupl-accordion-control-padding
 $accordion-control-padding: var(
   --#{root-defaults.$prefix}accordion-control-padding,
   #{$accordion-control-padding-y} #{$accordion-control-padding-x}
 );
-$accordion-control-margin-x: var(
-  --#{root-defaults.$prefix}accordion-control-margin-x,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$accordion-control-margin-y: var(
-  --#{root-defaults.$prefix}accordion-control-margin-y,
-  #{map.get(root-variables.$spacers, 0)}
-);
-$accordion-control-margin: var(
-  --#{root-defaults.$prefix}accordion-control-margin,
-  #{$accordion-control-margin-y} #{$accordion-control-margin-x}
-);
+
+// --graupl-accordion-control-border-color
 $accordion-control-border-color: var(
   --#{root-defaults.$prefix}accordion-control-border-color,
   #{$accordion-color}
 );
+
+// --graupl-accordion-control-border-top-left-radius
 $accordion-control-border-top-left-radius: var(
   --#{root-defaults.$prefix}accordion-control-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
+
+// --graupl-accordion-control-border-top-right-radius
 $accordion-control-border-top-right-radius: var(
   --#{root-defaults.$prefix}accordion-control-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
+
+//  --graupl-accordion-control-border-bottom-left-radius
 $accordion-control-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}accordion-control-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
+
+// --graupl-accordion-control-border-bottom-right-radius
 $accordion-control-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}accordion-control-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
+
+// --graupl-accordion-control-border-radius
 $accordion-control-border-radius: var(
   --#{root-defaults.$prefix}accordion-control-border-radius,
   #{$accordion-control-border-top-left-radius}
@@ -833,22 +851,32 @@ $accordion-control-border-radius: var(
     #{$accordion-control-border-bottom-right-radius}
     #{$accordion-control-border-bottom-left-radius}
 );
+
+// --graupl-accordion-control-border-top-width
 $accordion-control-border-top-width: var(
   --#{root-defaults.$prefix}accordion-control-border-top-width,
   #{root-variables.$border-top-width}
 );
+
+// --graupl-accordion-control-border-right-width
 $accordion-control-border-right-width: var(
   --#{root-defaults.$prefix}accordion-control-border-right-width,
   #{root-variables.$border-right-width}
 );
+
+// --graupl-accordion-control-border-bottom-width
 $accordion-control-border-bottom-width: var(
   --#{root-defaults.$prefix}accordion-control-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
+
+// --graupl-accordion-control-border-left-width
 $accordion-control-border-left-width: var(
   --#{root-defaults.$prefix}accordion-control-border-left-width,
   #{root-variables.$border-left-width}
 );
+
+// --graupl-accordion-control-border-width
 $accordion-control-border-width: var(
   --#{root-defaults.$prefix}accordion-control-border-width,
   #{$accordion-control-border-top-width}
@@ -856,26 +884,169 @@ $accordion-control-border-width: var(
     #{$accordion-control-border-bottom-width}
     #{$accordion-control-border-left-width}
 );
+
+// --graupl-accordion-control-border-top-style
 $accordion-control-border-top-style: var(
   --#{root-defaults.$prefix}accordion-control-border-top-style,
   none
 );
+
+// --graupl-accordion-control-border-right-style
 $accordion-control-border-right-style: var(
   --#{root-defaults.$prefix}accordion-control-border-right-style,
   none
 );
+
+// --graupl-accordion-control-border-bottom-style
 $accordion-control-border-bottom-style: var(
   --#{root-defaults.$prefix}accordion-control-border-bottom-style,
   none
 );
+
+// --graupl-accordion-control-border-left-style
 $accordion-control-border-left-style: var(
   --#{root-defaults.$prefix}accordion-control-border-left-style,
   none
 );
+
+// --graupl-accordion-control-border-style
 $accordion-control-border-style: var(
   --#{root-defaults.$prefix}accordion-control-border-style,
   #{$accordion-control-border-top-style}
     #{$accordion-control-border-right-style}
     #{$accordion-control-border-bottom-style}
     #{$accordion-control-border-left-style}
+);
+
+// Accordion item toggle color properties.
+// --graupl-accordion-control-color
+$accordion-control-color: var(
+  --#{root-defaults.$prefix}accordion-control-color,
+  #{$accordion-color}
+);
+
+// --graupl-accordion-control-visited-color
+$accordion-control-visited-color: var(
+  --#{root-defaults.$prefix}accordion-control-visited-color,
+  #{$accordion-control-color}
+);
+
+// --graupl-accordion-control-focus-color
+$accordion-control-focus-color: var(
+  --#{root-defaults.$prefix}accordion-control-focus-color,
+  #{$accordion-control-color}
+);
+
+// --graupl-accordion-control-hover-color
+$accordion-control-hover-color: var(
+  --#{root-defaults.$prefix}accordion-control-hover-color,
+  #{$accordion-background}
+);
+
+// --graupl-accordion-control-active-color
+$accordion-control-active-color: var(
+  --#{root-defaults.$prefix}accordion-control-active-color,
+  #{$accordion-control-hover-color}
+);
+
+// --graupl-accordion-control-disabled-color
+$accordion-control-disabled-color: var(
+  --#{root-defaults.$prefix}accordion-control-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$accordion-control-color-states: (
+  default: $accordion-control-color,
+  visited: $accordion-control-visited-color,
+  focus: $accordion-control-focus-color,
+  hover: $accordion-control-hover-color,
+  active: $accordion-control-active-color,
+  disabled: $accordion-control-disabled-color,
+);
+
+// --graupl-accordion-control-background
+$accordion-control-background: var(
+  --#{root-defaults.$prefix}accordion-control-background,
+  #{$accordion-background}
+);
+
+// --graupl-accordion-control-visited-background
+$accordion-control-visited-background: var(
+  --#{root-defaults.$prefix}accordion-control-visited-background,
+  #{$accordion-control-background}
+);
+
+// --graupl-accordion-control-focus-background
+$accordion-control-focus-background: var(
+  --#{root-defaults.$prefix}accordion-control-focus-background,
+  #{$accordion-control-background}
+);
+
+// --graupl-accordion-control-hover-background
+$accordion-control-hover-background: var(
+  --#{root-defaults.$prefix}accordion-control-hover-background,
+  #{$accordion-color}
+);
+
+// --graupl-accordion-control-active-background
+$accordion-control-active-background: var(
+  --#{root-defaults.$prefix}accordion-control-active-background,
+  #{$accordion-control-hover-background}
+);
+
+// --graupl-accordion-control-disabled-background
+$accordion-control-disabled-background: var(
+  --#{root-defaults.$prefix}accordion-control-disabled-background,
+  #{$accordion-background}
+);
+$accordion-control-background-states: (
+  default: $accordion-control-background,
+  visited: $accordion-control-visited-background,
+  focus: $accordion-control-focus-background,
+  hover: $accordion-control-hover-background,
+  active: $accordion-control-active-background,
+  disabled: $accordion-control-disabled-background,
+);
+
+// --graupl-accordion-control-border-color
+$accordion-control-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-border-color,
+  #{$accordion-item-border-color}
+);
+
+// --graupl-accordion-control-visited-border-color
+$accordion-control-visited-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-visited-border-color,
+  #{$accordion-control-border-color}
+);
+
+// --graupl-accordion-control-focus-border-color
+$accordion-control-focus-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-focus-border-color,
+  #{$accordion-control-border-color}
+);
+
+// --graupl-accordion-control-hover-border-color
+$accordion-control-hover-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-hover-border-color,
+  #{$accordion-item-border-color}
+);
+
+// --graupl-accordion-control-active-border-color
+$accordion-control-active-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-active-border-color,
+  #{$accordion-control-hover-border-color}
+);
+
+// --graupl-accordion-control-disabled-border-color
+$accordion-control-disabled-border-color: var(
+  --#{root-defaults.$prefix}accordion-control-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$accordion-control-border-color-states: (
+  default: $accordion-control-border-color,
+  visited: $accordion-control-visited-border-color,
+  focus: $accordion-control-focus-border-color,
+  hover: $accordion-control-hover-border-color,
+  active: $accordion-control-active-border-color,
+  disabled: $accordion-control-disabled-border-color,
 );

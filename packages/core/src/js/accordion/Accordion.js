@@ -942,6 +942,7 @@ class Accordion {
       });
     });
 
+    // Clicks for the accordion controls.
     this.dom.accordionControl.forEach((control) => {
       if (control.classList.contains("expand")) {
         control.addEventListener("pointerup", () => {

@@ -56,21 +56,12 @@ $accordion-item-toggle-disabled-transform: $accordion-item-toggle-initial-transf
 $accordion-item-toggle-pseudo-initial-transform: none !default;
 $accordion-item-toggle-pseudo-final-transform: rotate(-180deg);
 
-// Expand transform properties.
-$accordion-expand-transform: none !default;
-$accordion-expand-visited-transform: $accordion-expand-transform !default;
-$accordion-expand-focus-transform: $accordion-expand-transform !default;
-$accordion-expand-hover-transform: $accordion-expand-transform !default;
-$accordion-expand-active-transform: $accordion-expand-transform !default;
-$accordion-expand-disabled-transform: $accordion-expand-transform !default;
-
-// Collapse transform properties.
-$accordion-collapse-transform: none !default;
-$accordion-collapse-visited-transform: $accordion-collapse-transform !default;
-$accordion-collapse-focus-transform: $accordion-collapse-transform !default;
-$accordion-collapse-hover-transform: $accordion-collapse-transform !default;
-$accordion-collapse-active-transform: $accordion-collapse-transform !default;
-$accordion-collapse-disabled-transform: $accordion-collapse-transform !default;
+// Control transform properties.
+$accordion-control-initial-transform: none !default;
+$accordion-control-final-transform: $accordion-control-initial-transform !default;
+$accordion-control-disabled-transform: $accordion-control-initial-transform !default;
+$accordion-control-pseudo-initial-transform: none !default;
+$accordion-control-pseudo-final-transform: rotate(-180deg);
 
 // Toggle properties.
 $accordion-item-toggle-pseudo-content: "▼" !default;
