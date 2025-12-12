@@ -199,22 +199,22 @@ class NavigationShelf {
   _open = false;
 
   /**
-   * The width of the screen (in pixels) that the menu will automatically open/close itself.
+   * The width of the screen that the menu will automatically open/close itself.
    *
    * @protected
    *
-   * @type {number}
+   * @type {string}
    */
-  _breakpointWidth = 1180;
+  _breakpointWidth = "1023px";
 
   /**
-   * This ResizeObserver for the navigation shelf.
+   * This MediaQueryList for the disclosure.
    *
    * @protected
    *
-   * @type {ResizeObserver|null}
+   * @type {MediaQueryList|null}
    */
-  _observer = null;
+  _mediaQueryList = null;
 
   /**
    * The event that is triggered when the shelf expands.
@@ -1385,44 +1385,24 @@ class NavigationShelf {
    * @protected
    */
   _handleResize() {
-    if (this._breakpointWidth <= 0) {
+    if (this._breakpointWidth === "") {
       return;
     }
 
-    let width = 0;
+    this._mediaQueryList = window.matchMedia(
+      `(width <= ${this._breakpointWidth})`
+    );
 
-    this._observer = new ResizeObserver((entries) => {
-      requestAnimationFrame(() => {
-        for (const entry of entries) {
-          const boxSize = Array.isArray(entry.contentBoxSize)
-            ? entry.contentBoxSize[0]
-            : entry.contentBoxSize;
-          const inlineSize =
-            boxSize && typeof boxSize.inlineSize === "number"
-              ? boxSize.inlineSize
-              : entry.contentRect.width;
-
-          if (typeof inlineSize !== "number") continue;
-
-          if (width === inlineSize) continue;
-
-          const belowBreakpoint = inlineSize <= this._breakpointWidth;
-          const aboveBreakpoint = inlineSize > this._breakpointWidth;
-
-          if (belowBreakpoint && this.isOpen) {
-            this.close({
-              preserveLock: this.shouldBeLocked,
-            });
-          } else if (aboveBreakpoint && this.shouldBeLocked && !this.isOpen) {
-            this._locked.reset();
-            this.lock({ force: true });
-          }
-
-          width = inlineSize;
-        }
-      });
+    this._mediaQueryList.addEventListener("change", (event) => {
+      if (event.matches && this.isOpen) {
+        this.close({
+          preserveLock: this.shouldBeLocked,
+        });
+      } else if (!event.matches && this.shouldBeLocked && !this.isOpen) {
+        this._locked.reset();
+        this.lock({ force: true });
+      }
     });
-    this._observer.observe(document.body);
   }
 
   _handleFocus() {
