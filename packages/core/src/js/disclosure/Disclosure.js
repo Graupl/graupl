@@ -139,22 +139,22 @@ class Disclosure {
   _closeOnBlur = false;
 
   /**
-   * The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   * The width of the screen that the disclosure will automatically open/close itself.
    *
    * @protected
    *
-   * @type {number}
+   * @type {string}
    */
-  _breakpointWidth = -1;
+  _breakpointWidth = "";
 
   /**
-   * This ResizeObserver for the disclosure.
+   * This MediaQueryList for the disclosure.
    *
    * @protected
    *
-   * @type {ResizeObserver|null}
+   * @type {MediaQueryList|null}
    */
-  _observer = null;
+  _mediaQueryList = null;
 
   /**
    * The event that is triggered when the disclosure expands.
@@ -231,7 +231,7 @@ class Disclosure {
    * @param {boolean}            [options.openDuration = -1]                               - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {boolean}            [options.closeDuration = -1]                              - The duration of the transition from "open" to "closed" states (in milliseconds).
    * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
-   * @param {boolean}            [options.minWidth = -1]                                   - The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   * @param {?string}            [options.minWidth = ""]                                   - The width of the screen that the disclosure will automatically open/close itself.
    * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
    * @param {?string}            [options.prefix = graupl-]                                - The prefix to use for CSS custom properties.
    * @param {?(string|string[])} [options.initializeClass = initializing]                  - The class to apply when a disclosure is initialzing.
@@ -248,7 +248,7 @@ class Disclosure {
     openDuration = -1,
     closeDuration = -1,
     closeOnBlur = false,
-    minWidth = -1,
+    minWidth = "",
     autoOpen = false,
     prefix = "graupl-",
     initializeClass = "initializing",
@@ -276,7 +276,7 @@ class Disclosure {
     this._closeOnBlur = closeOnBlur;
 
     // Set collapse width and auto open functionality.
-    this._breakpointWidth = minWidth;
+    this._breakpointWidth = minWidth || "";
     this._shouldOpen = autoOpen;
 
     // Set the prefix.
@@ -516,7 +516,7 @@ class Disclosure {
   }
 
   /**
-   * The width of the screen (in pixels) that the disclosure will automatically open/close itself.
+   * The width of the screen that the disclosure will automatically open/close itself.
    *
    * @type {number}
    *
@@ -527,7 +527,7 @@ class Disclosure {
   }
 
   set minWidth(value) {
-    isValidType("number", { value });
+    isValidType("string", { value });
 
     if (this._breakpointWidth !== value) {
       this._breakpointWidth = value;
@@ -1105,45 +1105,25 @@ class Disclosure {
   }
 
   _handleResize() {
-    if (this._breakpointWidth <= 0) {
+    if (this._breakpointWidth === "") {
       return;
     }
 
-    let width = 0;
+    this._mediaQueryList = window.matchMedia(
+      `(width <= ${this._breakpointWidth})`
+    );
 
-    this._observer = new ResizeObserver((entries) => {
-      requestAnimationFrame(() => {
-        for (const entry of entries) {
-          const boxSize = Array.isArray(entry.contentBoxSize)
-            ? entry.contentBoxSize[0]
-            : entry.contentBoxSize;
-          const inlineSize =
-            boxSize && typeof boxSize.inlineSize === "number"
-              ? boxSize.inlineSize
-              : entry.contentRect.width;
-
-          if (typeof inlineSize !== "number") continue;
-
-          if (width === inlineSize) continue;
-
-          const belowBreakpoint = inlineSize <= this.minWidth;
-          const aboveBreakpoint = inlineSize > this.minWidth;
-
-          if (belowBreakpoint && this.isOpen) {
-            this.close({ preserveState: true });
-          } else if (
-            aboveBreakpoint &&
-            !this.isOpen &&
-            (this.hasOpened || this.shouldOpen)
-          ) {
-            this.open();
-          }
-
-          width = inlineSize;
-        }
-      });
+    this._mediaQueryList.addEventListener("change", (event) => {
+      if (event.matches && this.isOpen) {
+        this.close({ preserveState: true });
+      } else if (
+        !event.matches &&
+        !this.isOpen &&
+        (this.hasOpened || this.shouldOpen)
+      ) {
+        this.open();
+      }
     });
-    this._observer.observe(document.body);
   }
 
   /**
