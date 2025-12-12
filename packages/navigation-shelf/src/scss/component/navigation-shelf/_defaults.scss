@@ -12,6 +12,7 @@
 // Navigation shelf selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$show-warnings: true !default;
 $navigation-shelf-selector-base: $selector-base !default;
 $navigation-shelf-selector: "navigation-shelf" !default;
 $navigation-shelf-header-selector-base: $selector-base !default;
