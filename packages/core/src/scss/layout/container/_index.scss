@@ -71,32 +71,77 @@
 // | `--graupl-container-sidebars-left-content-section-width`      | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
 //
 // The following sass variables can be used to customize the generation of the container component:
-// | Variable                              | Description                                                             | Default Value             |
-// | ---                                   | ---                                                                     | ---                       |
-// | `$selector-base`                      | The selector base for the component.                                    | `.`                       |
-// | `$modifier-selector-base`             | The selector base for component modifiers.                              | `.`                       |
-// | `$container-selector-base`            | The base selector for the container component.                          | `$selector-base`          |
-// | `$container-selector`                 | The selector for the container component.                               | `container`               |
-// | `$container-breakout-selector-base`   | The base selector for the breakout container component.                 | `$selector-base`          |
-// | `$container-breakout-selector`        | The selector for the breakout container component.                      | `breakout`                |
-// | `$container-feature-selector-base`    | The base selector for the feature container component.                  | `$selector-base`          |
-// | `$container-feature-selector`         | The selector for the feature container component.                       | `feature`                 |
-// | `$container-full-width-selector-base` | The base selector for the full-width container component.               | `$selector-base`          |
-// | `$container-full-width-selector`      | The selector for the full-width container component.                    | `full-width`              |
-// | `$container-contain-selector-base`    | The base selector for the contain utility class.                        | `$modifier-selector-base` |
-// | `$container-contain-selector`         | The selector for the contain utility class.                             | `contain`                 |
-// | `$container-sidebars-selector-base`   | The base selector for the sidebars utility class.                       | `$modifier-selector-base` |
-// | `$container-sidebars-selector`        | The selector for the sidebars utility class.                            | `sidebars`                |
-// | `$container-content-selector-base`    | The base selector for the content container component.                  | `$selector-base`          |
-// | `$container-content-selector`         | The selector for the content container component.                       | `content`                 |
-// | `$container-sidebar-selector-base`    | The base selector for the sidebar container component.                  | `$selector-base`          |
-// | `$container-sidebar-selector`         | The selector for the sidebar container component.                       | `sidebar`                 |
-// | `$container-left-selector-suffix`     | The suffix for the left sidebar selector.                               | `-left`                   |
-// | `$container-right-selector-suffix`    | The suffix for the right sidebar selector.                              | `-right`                  |
-// | `$container-inner-selector-prefix`    | The prefix for the inner content selector.                              | `inner-`                  |
-// | `$container-breakout-width`           | The width of the breakout section will extend from the content section. | `4ch`                     |
-// | `$container-feature-width`            | The width of the feature section will extend from the breakout section. | `10ch`                    |
-// | `$container-sidebar-width`            | The width of the sidebar sections.                                      | `26ch`                    |
+// | Variable                              | Description                                                                  | Default Value             |
+// | ---                                   | ---                                                                          | ---                       |
+// | `$selector-base`                      | The selector base for the component.                                         | `.`                       |
+// | `$modifier-selector-base`             | The selector base for component modifiers.                                   | `.`                       |
+// | `$force-container-chaining`           | A flag to force container chaining in all containers.                        | `false`                   |
+// | `$generate-forced-container-selectors | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
+// | `$show-warnings`                      | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
+// | `$container-selector-base`            | The base selector for the container component.                               | `$selector-base`          |
+// | `$container-selector`                 | The selector for the container component.                                    | `container`               |
+// | `$container-breakout-selector-base`   | The base selector for the breakout container component.                      | `$selector-base`          |
+// | `$container-breakout-selector`        | The selector for the breakout container component.                           | `breakout`                |
+// | `$container-feature-selector-base`    | The base selector for the feature container component.                       | `$selector-base`          |
+// | `$container-feature-selector`         | The selector for the feature container component.                            | `feature`                 |
+// | `$container-full-width-selector-base` | The base selector for the full-width container component.                    | `$selector-base`          |
+// | `$container-full-width-selector`      | The selector for the full-width container component.                         | `full-width`              |
+// | `$container-contain-selector-base`    | The base selector for the contain utility class.                             | `$modifier-selector-base` |
+// | `$container-contain-selector`         | The selector for the contain utility class.                                  | `contain`                 |
+// | `$container-sidebars-selector-base`   | The base selector for the sidebars utility class.                            | `$modifier-selector-base` |
+// | `$container-sidebars-selector`        | The selector for the sidebars utility class.                                 | `sidebars`                |
+// | `$container-content-selector-base`    | The base selector for the content container component.                       | `$selector-base`          |
+// | `$container-content-selector`         | The selector for the content container component.                            | `content`                 |
+// | `$container-sidebar-selector-base`    | The base selector for the sidebar container component.                       | `$selector-base`          |
+// | `$container-sidebar-selector`         | The selector for the sidebar container component.                            | `sidebar`                 |
+// | `$container-left-selector-suffix`     | The suffix for the left sidebar selector.                                    | `-left`                   |
+// | `$container-right-selector-suffix`    | The suffix for the right sidebar selector.                                   | `-right`                  |
+// | `$container-inner-selector-prefix`    | The prefix for the inner content selector.                                   | `inner-`                  |
+// | `$container-breakout-width`           | The width of the breakout section will extend from the content section.      | `4ch`                     |
+// | `$container-feature-width`            | The width of the feature section will extend from the breakout section.      | `10ch`                    |
+// | `$container-sidebar-width`            | The width of the sidebar sections.                                           | `26ch`                    |
+//
+// ## What is container chaining?
+//
+// Container chaining is a structural setup in the DOM in which you make sure that if you have nested containers or container-level elements (breakouts, features, etc.), you never allow them to be contained in anything other than a container.
+//
+// What do I mean by this?
+//
+// If you have to following setup in your DOM:
+//
+// ```
+//   <div class="container">
+//     <p>Some content here...</p>
+//     <section>
+//       <p>Some content here...</p>
+//       <div class="breakout">
+//         <p>Some content here that I would like to breakout...</p>
+//       </div>
+//       <p>Some content here...</p>
+//     </section>
+//   </div>
+// ```
+//
+//  To achieve a breakout of the content inside of the <section>, you need to make sure the section is also a container, otherwise the breakout class will have no effect.
+//
+// ```
+//   <div class="container">
+//     <p>Some content here...</p>
+//     <section class="container">
+//       <p>Some content here...</p>
+//       <div class="breakout">
+//         <p>Some content here that I would like to breakout...</p>
+//       </div>
+//       <p>Some content here...</p>
+//     </section>
+//   </div>
+// ```
+//
+// There _is_ a feature flag (`$force-container-chaining`) which automatically set up container chaining for you.
+//
+// This works by selecting all elements between a parent and child container and making them inherit the parent's layout.
+//
+// Because you have control over how this is limited, it can result in using an unrestricted :has() selector, which can be slow.
 //
 // @example
 //   <div class="container">
@@ -153,8 +198,9 @@
 //     </div>
 //   </div>
 
-@use "../../mixins/screen";
+@use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/screen";
 @use "defaults";
 @use "variables" as *;
 
@@ -195,6 +241,45 @@
       #{defaults.$container-feature-selector-base}#{defaults.$container-feature-selector}
     ) {
       grid-column: content;
+    }
+
+    // Handle force chaining.
+    //
+    // This works by selecting all elements between a parent and child container
+    // and making them inherit the parent's layout.
+    //
+    // Because you have control over how this is limited, it can result in using
+    // an unrestricted :has() selector, which can be slow.
+    @if defaults.$force-container-chaining {
+      @if defaults.$show-warnings and root-defaults.$show-warnings {
+        @warn ("You have enabled automatic container chaining. This can result in an unrestricted :has() selector, which can be slow. Make sure you know what you're doing with this.");
+      }
+
+      // .container :is(article,aside,div,section):not(.container):has(&)
+      #{defaults.$container-selector-base}#{defaults.$container-selector}
+        :is(#{defaults.$forced-container-selectors}):not(
+          #{defaults.$container-selector-base}#{defaults.$container-selector}
+        ):has(&) {
+        display: grid;
+        grid-column: 1/-1;
+        grid-template-columns: subgrid;
+        container-type: normal;
+
+        // .container
+        #{defaults.$container-selector-base}#{defaults.$container-selector} {
+          grid-column: 1/-1;
+          container-type: normal;
+
+          // &:not(.sidebars, .sidebars-left, .sidebars-right)
+          &:not(
+            #{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector},
+            #{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix},
+            #{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix}
+          ) {
+            grid-template-columns: subgrid;
+          }
+        }
+      }
     }
 
     // Contain components should inherit the container's grid columns and
