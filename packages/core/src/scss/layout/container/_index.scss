@@ -252,7 +252,7 @@
     // an unrestricted :has() selector, which can be slow.
     @if defaults.$force-container-chaining {
       @if defaults.$show-warnings and root-defaults.$show-warnings {
-        @warn ("You have enabled automatic container chaining. This can result in an unrestricted :has() selector, which can be slow. Make sure you know what you're doing with this.");
+        @warn ("You have enabled automatic container chaining. This can result in an unrestricted :has() selector if you customize $forced-container-selectors to be too broad, which can be slow. Make sure you know what you're doing with this.");
       }
 
       // .container :is(article,aside,div,section):not(.container):has(&)
