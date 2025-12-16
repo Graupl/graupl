@@ -72,11 +72,12 @@
 // | --graupl-navigation-branding-disabled-text-decoration-color     | var(--graupl-navigation-branding-disabled-color)                                                                                                                                                                                    |
 // | --graupl-navigation-toggle-content                              | "'☰'"                                                                                                                                                                                                                               |
 
-@use "defaults";
 @use "../../defaults" as root-defaults;
-@use "../../variables" as root-variables;
+@use "../../functions/theme";
 @use "../../theme/color/variables" as color;
 @use "../../theme/typography/variables" as typography;
+@use "../../variables" as root-variables;
+@use "defaults";
 @use "sass:map";
 
 // Navigation colors.
@@ -131,10 +132,16 @@ $navigation-toggle-background: var(
   #{$navigation-background}
 );
 
-// --graupl-navigation-toggle-color
-$navigation-toggle-color: var(
-  --#{root-defaults.$prefix}navigation-toggle-color,
-  #{$navigation-color}
+// --graupl-navigation-toggle-visited-background
+$navigation-toggle-visited-background: var(
+  --#{root-defaults.$prefix}navigation-toggle-visited-background,
+  #{$navigation-toggle-background}
+);
+
+// --graupl-navigation-toggle-focus-background
+$navigation-toggle-focus-background: var(
+  --#{root-defaults.$prefix}navigation-toggle-focus-background,
+  #{$navigation-toggle-background}
 );
 
 // --graupl-navigation-toggle-hover-background
@@ -143,10 +150,68 @@ $navigation-toggle-hover-background: var(
   #{$navigation-color}
 );
 
+// --graupl-navigation-toggle-active-background
+$navigation-toggle-active-background: var(
+  --#{root-defaults.$prefix}navigation-toggle-active-background,
+  #{$navigation-toggle-hover-background}
+);
+
+// --graupl-navigation-toggle-disabled-background
+$navigation-toggle-disabled-background: var(
+  --#{root-defaults.$prefix}navigation-toggle-disabled-background,
+  #{$navigation-background}
+);
+$navigation-toggle-background-states: (
+  default: $navigation-toggle-background,
+  visited: $navigation-toggle-visited-background,
+  focus: $navigation-toggle-focus-background,
+  hover: $navigation-toggle-hover-background,
+  active: $navigation-toggle-active-background,
+  disabled: $navigation-toggle-disabled-background,
+);
+
+// --graupl-navigation-toggle-color
+$navigation-toggle-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-color,
+  #{$navigation-color}
+);
+
+// --graupl-navigation-toggle-visited-color
+$navigation-toggle-visited-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-visited-color,
+  #{$navigation-background}
+);
+
+// --graupl-navigation-toggle-focus-color
+$navigation-toggle-focus-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-focus-color,
+  #{$navigation-background}
+);
+
 // --graupl-navigation-toggle-hover-color
 $navigation-toggle-hover-color: var(
   --#{root-defaults.$prefix}navigation-toggle-hover-color,
   #{$navigation-background}
+);
+
+// --graupl-navigation-toggle-active-color
+$navigation-toggle-active-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-active-color,
+  #{$navigation-background}
+);
+
+// --graupl-navigation-toggle-disabled-color
+$navigation-toggle-disabled-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$navigation-toggle-color-states: (
+  default: $navigation-toggle-color,
+  visited: $navigation-toggle-visited-color,
+  focus: $navigation-toggle-focus-color,
+  hover: $navigation-toggle-hover-color,
+  active: $navigation-toggle-active-color,
+  disabled: $navigation-toggle-disabled-color,
 );
 
 // Navigation toggle border properties.
@@ -220,6 +285,44 @@ $navigation-toggle-border-style: var(
 $navigation-toggle-border-color: var(
   --#{root-defaults.$prefix}navigation-toggle-border-color,
   #{$navigation-toggle-color}
+);
+
+// --graupl-navigation-toggle-visited-border-color
+$navigation-toggle-visited-border-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-visited-border-color,
+  #{$navigation-toggle-border-color}
+);
+
+// --graupl-navigation-toggle-focus-border-color
+$navigation-toggle-focus-border-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-focus-border-color,
+  #{$navigation-toggle-border-color}
+);
+
+// --graupl-navigation-toggle-hover-border-color
+$navigation-toggle-hover-border-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-hover-border-color,
+  #{$navigation-toggle-hover-color}
+);
+
+// --graupl-navigation-toggle-active-border-color
+$navigation-toggle-active-border-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-active-border-color,
+  #{$navigation-toggle-hover-border-color}
+);
+
+// --graupl-navigation-toggle-disabled-border-color
+$navigation-toggle-disabled-border-color: var(
+  --#{root-defaults.$prefix}navigation-toggle-disabled-border-color,
+  #{$navigation-toggle-disabled-color}
+);
+$navigation-toggle-border-color-states: (
+  default: $navigation-toggle-border-color,
+  visited: $navigation-toggle-visited-border-color,
+  focus: $navigation-toggle-focus-border-color,
+  hover: $navigation-toggle-hover-border-color,
+  active: $navigation-toggle-active-border-color,
+  disabled: $navigation-toggle-disabled-border-color,
 );
 
 // --graupl-navigation-toggle-border-top-left-radius
@@ -322,6 +425,14 @@ $navigation-branding-disabled-color: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-color,
   #{$navigation-color}
 );
+$navigation-branding-color-states: (
+  default: $navigation-branding-color,
+  visited: $navigation-branding-visited-color,
+  focus: $navigation-branding-focus-color,
+  hover: $navigation-branding-hover-color,
+  active: $navigation-branding-active-color,
+  disabled: $navigation-branding-disabled-color,
+);
 
 // Navigation branding text decoration properties.
 // --graupl-navigation-branding-text-decoration
@@ -359,6 +470,14 @@ $navigation-branding-disabled-text-decoration: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration,
   #{defaults.$navigation-branding-disabled-text-decoration}
 );
+$navigation-branding-text-decoration-states: (
+  default: $navigation-branding-text-decoration,
+  visited: $navigation-branding-visited-text-decoration,
+  focus: $navigation-branding-focus-text-decoration,
+  hover: $navigation-branding-hover-text-decoration,
+  active: $navigation-branding-active-text-decoration,
+  disabled: $navigation-branding-disabled-text-decoration,
+);
 
 // --graupl-navigation-branding-text-decoration-style
 $navigation-branding-text-decoration-style: var(
@@ -394,6 +513,14 @@ $navigation-branding-active-text-decoration-style: var(
 $navigation-branding-disabled-text-decoration-style: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-style,
   #{defaults.$navigation-branding-disabled-text-decoration-style}
+);
+$navigation-branding-text-decoration-style-states: (
+  default: $navigation-branding-text-decoration-style,
+  visited: $navigation-branding-visited-text-decoration-style,
+  focus: $navigation-branding-focus-text-decoration-style,
+  hover: $navigation-branding-hover-text-decoration-style,
+  active: $navigation-branding-active-text-decoration-style,
+  disabled: $navigation-branding-disabled-text-decoration-style,
 );
 
 // --graupl-navigation-branding-text-decoration-thickness
@@ -431,6 +558,14 @@ $navigation-branding-disabled-text-decoration-thickness: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-thickness,
   #{root-variables.$border-width}
 );
+$navigation-branding-text-decoration-thickness-states: (
+  default: $navigation-branding-text-decoration-thickness,
+  visited: $navigation-branding-visited-text-decoration-thickness,
+  focus: $navigation-branding-focus-text-decoration-thickness,
+  hover: $navigation-branding-hover-text-decoration-thickness,
+  active: $navigation-branding-active-text-decoration-thickness,
+  disabled: $navigation-branding-disabled-text-decoration-thickness,
+);
 
 // --graupl-navigation-branding-text-decoration-color
 $navigation-branding-text-decoration-color: var(
@@ -466,6 +601,14 @@ $navigation-branding-active-text-decoration-color: var(
 $navigation-branding-disabled-text-decoration-color: var(
   --#{root-defaults.$prefix}navigation-branding-disabled-text-decoration-color,
   #{$navigation-branding-disabled-color}
+);
+$navigation-branding-text-decoration-color-states: (
+  default: $navigation-branding-text-decoration-color,
+  visited: $navigation-branding-visited-text-decoration-color,
+  focus: $navigation-branding-focus-text-decoration-color,
+  hover: $navigation-branding-hover-text-decoration-color,
+  active: $navigation-branding-active-text-decoration-color,
+  disabled: $navigation-branding-disabled-text-decoration-color,
 );
 
 // Navigation toggle properties.

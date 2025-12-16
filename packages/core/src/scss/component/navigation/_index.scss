@@ -8,68 +8,159 @@
 // - `.navigation-branding`: The branding link/label.
 //
 // The following custom properties can be used to customize the navigation component:
-// | Property                                                                                                                                                                                                         | Description                                      | Default Value                                                       |
-// | ---                                                                                                                                                                                                              | ---                                              | ---                                                                 |
-// | `--graupl-navigation-background`                                                                                                                                                                                 | Background colour of the navigation bar.         | `var(--graupl-background)`                                          |
-// | `--graupl-navigation-color`                                                                                                                                                                                      | Text colour of the navigation bar.               | `var(--graupl-color)`                                               |
-// | `--graupl-navigation-toggle-min-width`                                                                                                                                                                           | Minimum width of the toggle.                     | `44px`                                                              |
-// | `--graupl-navigation-toggle-min-height`                                                                                                                                                                          | Minimum height of the toggle.                    | `44px`                                                              |
-// | `--graupl-navigation-toggle-padding`                                                                                                                                                                             | Padding of the toggle.                           | `var(--graupl-spacer-3) var(--graupl-spacer-5)`                     |
-// | `--graupl-navigation-toggle-background`                                                                                                                                                                          | Background colour of the toggle.                 | `var(--graupl-navigation-background)`                               |
-// | `--graupl-navigation-toggle-color`                                                                                                                                                                               | Text colour of the toggle.                       | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-toggle-hover-background`                                                                                                                                                                    | Background when the toggle is hovered.           | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-toggle-hover-color`                                                                                                                                                                         | Text colour when the toggle is hovered.          | `var(--graupl-navigation-background)`                               |
-// | `--graupl-navigation-toggle-border-width`                                                                                                                                                                        | Border width of the toggle.                      | `var(--graupl-border-width)` (per side)                             |
-// | `--graupl-navigation-toggle-border-style`                                                                                                                                                                        | Border style of the toggle.                      | `var(--graupl-border-style)` (per side)                             |
-// | `--graupl-navigation-toggle-border-radius`                                                                                                                                                                       | Border radius of the toggle.                     | `var(--graupl-border-radius)` (per corner)                          |
-// | `--graupl-navigation-toggle-border-color`                                                                                                                                                                        | Border colour of the toggle.                     | `var(--graupl-navigation-toggle-color)`                             |
-// | `--graupl-navigation-toggle-content`                                                                                                                                                                             | Content used for the toggle pseudo-element.      | `'☰'`                                                               |
-// | `--graupl-navigation-branding-padding`                                                                                                                                                                           | Padding for the branding element.                | `var(--graupl-spacer-2) var(--graupl-spacer-3)`                     |
-// | `--graupl-navigation-branding-font-size`                                                                                                                                                                         | Font size for the branding element.              | `var(--graupl-font-size-lg)`                                        |
-// | `--graupl-navigation-branding-font-weight`                                                                                                                                                                       | Font weight for the branding element.            | `var(--graupl-font-weight-bold)`                                    |
-// | `--graupl-navigation-branding-text-decoration`                                                                                                                                                                   | Base text decoration for branding.               | `none`                                                              |
-// | `--graupl-navigation-branding-text-decoration-style`                                                                                                                                                             | Base text decoration style for branding.         | `solid`                                                             |
-// | `--graupl-navigation-branding-text-decoration-thickness`                                                                                                                                                         | Base text decoration thickness for branding.     | `var(--graupl-border-width)`                                        |
-// | `--graupl-navigation-branding-color`                                                                                                                                                                             | Text colour for branding.                        | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-branding-text-decoration-color`                                                                                                                                                             | Text decoration colour for branding.             | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-branding-visited-color`                                                                                                                                                                     | Text colour for visited branding.                | `var(--graupl-navigation-branding-color)`                           |
-// | `--graupl-navigation-branding-focus-color`                                                                                                                                                                       | Text colour for focused branding.                | `var(--graupl-navigation-branding-color)`                           |
-// | `--graupl-navigation-branding-hover-color`                                                                                                                                                                       | Text colour for hovered branding.                | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-branding-active-color`                                                                                                                                                                      | Text colour for active branding.                 | `var(--graupl-navigation-branding-hover-color)`                     |
-// | `--graupl-navigation-branding-disabled-color`                                                                                                                                                                    | Text colour for disabled branding.               | `var(--graupl-navigation-color)`                                    |
-// | `--graupl-navigation-branding-visited-text-decoration`                                                                                                                                                           | Text decoration for visited branding.            | `var(--graupl-navigation-branding-text-decoration)`                 |
-// | `--graupl-navigation-branding-focus-text-decoration`                                                                                                                                                             | Text decoration for focused branding.            | `var(--graupl-navigation-branding-text-decoration)`                 |
-// | `--graupl-navigation-branding-hover-text-decoration`                                                                                                                                                             | Text decoration for hovered branding.            | `var(--graupl-navigation-branding-text-decoration)`                 |
-// | `--graupl-navigation-branding-active-text-decoration`                                                                                                                                                            | Text decoration for active branding.             | `var(--graupl-navigation-branding-hover-text-decoration)`           |
-// | `--graupl-navigation-branding-disabled-text-decoration`                                                                                                                                                          | Text decoration for disabled branding.           | `var(--graupl-navigation-branding-text-decoration)`                 |
-// | `--graupl-navigation-branding-visited-text-decoration-style`                                                                                                                                                     | Text decoration style for visited branding.      | `var(--graupl-navigation-branding-text-decoration-style)`           |
-// | `--graupl-navigation-branding-focus-text-decoration-style`                                                                                                                                                       | Text decoration style for focused branding.      | `var(--graupl-navigation-branding-text-decoration-style)`           |
-// | `--graupl-navigation-branding-hover-text-decoration-style`                                                                                                                                                       | Text decoration style for hovered branding.      | `var(--graupl-navigation-branding-text-decoration-style)`           |
-// | `--graupl-navigation-branding-active-text-decoration-style`                                                                                                                                                      | Text decoration style for active branding.       | `var(--graupl-navigation-branding-hover-text-decoration-style)`     |
-// | `--graupl-navigation-branding-disabled-text-decoration-style`                                                                                                                                                    | Text decoration style for disabled branding.     | `var(--graupl-navigation-branding-text-decoration-style)`           |
-// | `--graupl-navigation-branding-visited-text-decoration-thickness`                                                                                                                                                 | Text decoration thickness for visited branding.  | `var(--graupl-navigation-branding-text-decoration-thickness)`       |
-// | `--graupl-navigation-branding-focus-text-decoration-thickness`                                                                                                                                                   | Text decoration thickness for focused branding.  | `var(--graupl-navigation-branding-text-decoration-thickness)`       |
-// | `--graupl-navigation-branding-hover-text-decoration-thickness`                                                                                                                                                   | Text decoration thickness for hovered branding.  | `var(--graupl-border-width)`                                        |
-// | `--graupl-navigation-branding-active-text-decoration-thickness`                                                                                                                                                  | Text decoration thickness for active branding.   | `var(--graupl-navigation-branding-hover-text-decoration-thickness)` |
-// | `--graupl-navigation-branding-disabled-text-decoration-thickness`                                                                                                                                                | Text decoration thickness for disabled branding. | `var(--graupl-border-width)`                                        |
-// | `--graupl-navigation-branding-visited-text-decoration-color`                                                                                                                                                     | Text decoration colour for visited branding.     | `var(--graupl-navigation-branding-visited-color)`                   |
-// | `--graupl-navigation-branding-focus-text-decoration-color`                                                                                                                                                       | Text decoration colour for focused branding.     | `var(--graupl-navigation-branding-focus-color)`                     |
-// | `--graupl-navigation-branding-hover-text-decoration-color`                                                                                                                                                       | Text decoration colour for hovered branding.     | `var(--graupl-navigation-branding-hover-color)`                     |
-// | `--graupl-navigation-branding-active-text-decoration-color`                                                                                                                                                      | Text decoration colour for active branding.      | `var(--graupl-navigation-branding-active-color)`                    |
-// | `--graupl-navigation-branding-disabled-text-decoration-color`                                                                                                                                                    | Text decoration colour for disabled branding.    | `var(--graupl-navigation-branding-disabled-color)`                  |
+// | Property                                                          | Description                                                   | Default Value                                                                                                                                                                                                                         |
+// | ----------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | `--graupl-navigation-background`                                  | Background colour of the navigation bar.                      | `var(--graupl-background)`                                                                                                                                                                                                            |
+// | `--graupl-navigation-color`                                       | Text colour of the navigation bar.                            | `var(--graupl-color)`                                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-min-width`                            | Minimum width of the toggle control.                          | `44px`                                                                                                                                                                                                                                |
+// | `--graupl-navigation-toggle-min-height`                           | Minimum height of the toggle control.                         | `44px`                                                                                                                                                                                                                                |
+// | `--graupl-navigation-toggle-padding-x`                            | Horizontal padding inside the toggle.                         | `var(--graupl-spacer-5)`                                                                                                                                                                                                              |
+// | `--graupl-navigation-toggle-padding-y`                            | Vertical padding inside the toggle.                           | `var(--graupl-spacer-3)`                                                                                                                                                                                                              |
+// | `--graupl-navigation-toggle-padding`                              | Shorthand padding for the toggle.                             | `var(--graupl-navigation-toggle-padding-y) var(--graupl-navigation-toggle-padding-x)`                                                                                                                                                 |
+// | `--graupl-navigation-toggle-background`                           | Background colour of the toggle.                              | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-visited-background`                   | Background when the toggle is visited.                        | `var(--graupl-navigation-toggle-background)`                                                                                                                                                                                          |
+// | `--graupl-navigation-toggle-focus-background`                     | Background when the toggle is focused.                        | `var(--graupl-navigation-toggle-background)`                                                                                                                                                                                          |
+// | `--graupl-navigation-toggle-hover-background`                     | Background when the toggle is hovered.                        | `var(--graupl-navigation-color)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-toggle-active-background`                    | Background when the toggle is active.                         | `var(--graupl-navigation-toggle-hover-background)`                                                                                                                                                                                    |
+// | `--graupl-navigation-toggle-disabled-background`                  | Background when the toggle is disabled.                       | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-color`                                | Text colour of the toggle.                                    | `var(--graupl-navigation-color)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-toggle-visited-color`                        | Text colour of a visited toggle.                              | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-focus-color`                          | Text colour of a focused toggle.                              | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-hover-color`                          | Text colour of a hovered toggle.                              | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-active-color`                         | Text colour of an active toggle.                              | `var(--graupl-navigation-background)`                                                                                                                                                                                                 |
+// | `--graupl-navigation-toggle-disabled-color`                       | Text colour of a disabled toggle.                             | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
+// | `--graupl-navigation-toggle-border-top-width`                     | Top border width of the toggle.                               | `var(--graupl-border-top-width)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-toggle-border-right-width`                   | Right border width of the toggle.                             | `var(--graupl-border-right-width)`                                                                                                                                                                                                    |
+// | `--graupl-navigation-toggle-border-bottom-width`                  | Bottom border width of the toggle.                            | `var(--graupl-border-bottom-width)`                                                                                                                                                                                                   |
+// | `--graupl-navigation-toggle-border-left-width`                    | Left border width of the toggle.                              | `var(--graupl-border-left-width)`                                                                                                                                                                                                     |
+// | `--graupl-navigation-toggle-border-width`                         | Border width shorthand for the toggle.                        | `var(--graupl-navigation-toggle-border-top-width) var(--graupl-navigation-toggle-border-right-width) var(--graupl-navigation-toggle-border-bottom-width) var(--graupl-navigation-toggle-border-left-width)`                           |
+// | `--graupl-navigation-toggle-border-top-style`                     | Top border style of the toggle.                               | `var(--graupl-border-top-style)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-toggle-border-right-style`                   | Right border style of the toggle.                             | `var(--graupl-border-right-style)`                                                                                                                                                                                                    |
+// | `--graupl-navigation-toggle-border-bottom-style`                  | Bottom border style of the toggle.                            | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                   |
+// | `--graupl-navigation-toggle-border-left-style`                    | Left border style of the toggle.                              | `var(--graupl-border-left-style)`                                                                                                                                                                                                     |
+// | `--graupl-navigation-toggle-border-style`                         | Border style shorthand for the toggle.                        | `var(--graupl-navigation-toggle-border-top-style) var(--graupl-navigation-toggle-border-right-style) var(--graupl-navigation-toggle-border-bottom-style) var(--graupl-navigation-toggle-border-left-style)`                           |
+// | `--graupl-navigation-toggle-border-color`                         | Base border colour of the toggle.                             | `var(--graupl-navigation-toggle-color)`                                                                                                                                                                                               |
+// | `--graupl-navigation-toggle-visited-border-color`                 | Border colour of a visited toggle.                            | `var(--graupl-navigation-toggle-border-color)`                                                                                                                                                                                        |
+// | `--graupl-navigation-toggle-focus-border-color`                   | Border colour of a focused toggle.                            | `var(--graupl-navigation-toggle-border-color)`                                                                                                                                                                                        |
+// | `--graupl-navigation-toggle-hover-border-color`                   | Border colour of a hovered toggle.                            | `var(--graupl-navigation-toggle-hover-color)`                                                                                                                                                                                         |
+// | `--graupl-navigation-toggle-active-border-color`                  | Border colour of an active toggle.                            | `var(--graupl-navigation-toggle-hover-border-color)`                                                                                                                                                                                  |
+// | `--graupl-navigation-toggle-disabled-border-color`                | Border colour of a disabled toggle.                           | `var(--graupl-navigation-toggle-disabled-color)`                                                                                                                                                                                      |
+// | `--graupl-navigation-toggle-border-top-left-radius`               | Top-left border radius of the toggle.                         | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                |
+// | `--graupl-navigation-toggle-border-top-right-radius`              | Top-right border radius of the toggle.                        | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                               |
+// | `--graupl-navigation-toggle-border-bottom-right-radius`           | Bottom-right border radius of the toggle.                     | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                                            |
+// | `--graupl-navigation-toggle-border-bottom-left-radius`            | Bottom-left border radius of the toggle.                      | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                             |
+// | `--graupl-navigation-toggle-border-radius`                        | Border radius shorthand for the toggle.                       | `var(--graupl-navigation-toggle-border-top-left-radius) var(--graupl-navigation-toggle-border-top-right-radius) var(--graupl-navigation-toggle-border-bottom-right-radius) var(--graupl-navigation-toggle-border-bottom-left-radius)` |
+// | `--graupl-navigation-branding-padding-x`                          | Horizontal padding for the branding element.                  | `var(--graupl-spacer-3)`                                                                                                                                                                                                              |
+// | `--graupl-navigation-branding-padding-y`                          | Vertical padding for the branding element.                    | `var(--graupl-spacer-2)`                                                                                                                                                                                                              |
+// | `--graupl-navigation-branding-padding`                            | Shorthand padding for the branding element.                   | `var(--graupl-navigation-branding-padding-y) var(--graupl-navigation-branding-padding-x)`                                                                                                                                             |
+// | `--graupl-navigation-branding-font-size`                          | Font size of the branding element.                            | `var(--graupl-font-lg)`                                                                                                                                                                                                               |
+// | `--graupl-navigation-branding-font-weight`                        | Font weight of the branding element.                          | `var(--graupl-font-weight-bold)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-branding-color`                              | Text colour for branding.                                     | `var(--graupl-navigation-color)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-branding-visited-color`                      | Text colour for visited branding.                             | `var(--graupl-navigation-branding-color)`                                                                                                                                                                                             |
+// | `--graupl-navigation-branding-focus-color`                        | Text colour for focused branding.                             | `var(--graupl-navigation-branding-color)`                                                                                                                                                                                             |
+// | `--graupl-navigation-branding-hover-color`                        | Text colour for hovered branding.                             | `var(--graupl-navigation-color)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-branding-active-color`                       | Text colour for active branding.                              | `var(--graupl-navigation-branding-hover-color)`                                                                                                                                                                                       |
+// | `--graupl-navigation-branding-disabled-color`                     | Text colour for disabled branding.                            | `var(--graupl-navigation-color)`                                                                                                                                                                                                      |
+// | `--graupl-navigation-branding-text-decoration`                    | Base text decoration for branding.                            | `none`                                                                                                                                                                                                                                |
+// | `--graupl-navigation-branding-visited-text-decoration`            | Text decoration for visited branding.                         | `var(--graupl-navigation-branding-text-decoration)`                                                                                                                                                                                   |
+// | `--graupl-navigation-branding-focus-text-decoration`              | Text decoration for focused branding.                         | `var(--graupl-navigation-branding-text-decoration)`                                                                                                                                                                                   |
+// | `--graupl-navigation-branding-hover-text-decoration`              | Text decoration for hovered branding.                         | `none`                                                                                                                                                                                                                                |
+// | `--graupl-navigation-branding-active-text-decoration`             | Text decoration for active branding.                          | `var(--graupl-navigation-branding-hover-text-decoration)`                                                                                                                                                                             |
+// | `--graupl-navigation-branding-disabled-text-decoration`           | Text decoration for disabled branding.                        | `none`                                                                                                                                                                                                                                |
+// | `--graupl-navigation-branding-text-decoration-style`              | Base text decoration style for branding.                      | `solid`                                                                                                                                                                                                                               |
+// | `--graupl-navigation-branding-visited-text-decoration-style`      | Text decoration style for visited branding.                   | `var(--graupl-navigation-branding-text-decoration-style)`                                                                                                                                                                             |
+// | `--graupl-navigation-branding-focus-text-decoration-style`        | Text decoration style for focused branding.                   | `var(--graupl-navigation-branding-text-decoration-style)`                                                                                                                                                                             |
+// | `--graupl-navigation-branding-hover-text-decoration-style`        | Text decoration style for hovered branding.                   | `solid`                                                                                                                                                                                                                               |
+// | `--graupl-navigation-branding-active-text-decoration-style`       | Text decoration style for active branding.                    | `var(--graupl-navigation-branding-hover-text-decoration-style)`                                                                                                                                                                       |
+// | `--graupl-navigation-branding-disabled-text-decoration-style`     | Text decoration style for disabled branding.                  | `solid`                                                                                                                                                                                                                               |
+// | `--graupl-navigation-branding-text-decoration-thickness`          | Base decoration thickness for branding.                       | `var(--graupl-border-width)`                                                                                                                                                                                                          |
+// | `--graupl-navigation-branding-visited-text-decoration-thickness`  | Decoration thickness for visited branding.                    | `var(--graupl-navigation-branding-text-decoration-thickness)`                                                                                                                                                                         |
+// | `--graupl-navigation-branding-focus-text-decoration-thickness`    | Decoration thickness for focused branding.                    | `var(--graupl-navigation-branding-text-decoration-thickness)`                                                                                                                                                                         |
+// | `--graupl-navigation-branding-hover-text-decoration-thickness`    | Decoration thickness for hovered branding.                    | `var(--graupl-border-width)`                                                                                                                                                                                                          |
+// | `--graupl-navigation-branding-active-text-decoration-thickness`   | Decoration thickness for active branding.                     | `var(--graupl-navigation-branding-hover-text-decoration-thickness)`                                                                                                                                                                   |
+// | `--graupl-navigation-branding-disabled-text-decoration-thickness` | Decoration thickness for disabled branding.                   | `var(--graupl-border-width)`                                                                                                                                                                                                          |
+// | `--graupl-navigation-branding-text-decoration-color`              | Base decoration colour for branding.                          | `var(--graupl-navigation-branding-color)`                                                                                                                                                                                             |
+// | `--graupl-navigation-branding-visited-text-decoration-color`      | Decoration colour for visited branding.                       | `var(--graupl-navigation-branding-visited-color)`                                                                                                                                                                                     |
+// | `--graupl-navigation-branding-focus-text-decoration-color`        | Decoration colour for focused branding.                       | `var(--graupl-navigation-branding-focus-color)`                                                                                                                                                                                       |
+// | `--graupl-navigation-branding-hover-text-decoration-color`        | Decoration colour for hovered branding.                       | `var(--graupl-navigation-branding-hover-color)`                                                                                                                                                                                       |
+// | `--graupl-navigation-branding-active-text-decoration-color`       | Decoration colour for active branding.                        | `var(--graupl-navigation-branding-active-color)`                                                                                                                                                                                      |
+// | `--graupl-navigation-branding-disabled-text-decoration-color`     | Decoration colour for disabled branding.                      | `var(--graupl-navigation-branding-disabled-color)`                                                                                                                                                                                    |
+// | `--graupl-navigation-toggle-content`                              | Content used for the toggle pseudo-element.                   | `'☰'`                                                                                                                                                                                                                                 |
 //
 // The following sass variables can be used to customize the generation of the navigation component:
-// | Variable                             | Description                                 | Default Value           |
-// | ---                                  | ---                                         | ---                     |
-// | `$selector-base`                     | Selector base for the component.            | `"."`                   |
-// | `$modifier-selector-base`            | Selector base for component modifiers.      | `"."`                   |
-// | `$navigation-selector-base`          | Selector base for the navigation container. | `$selector-base`        |
-// | `$navigation-selector`               | Selector for the navigation container.      | `"navigation"`          |
-// | `$navigation-toggle-selector-base`   | Selector base for the navigation toggle.    | `$selector-base`        |
-// | `$navigation-toggle-selector`        | Selector for the navigation toggle.         | `"navigation-toggle"`   |
-// | `$navigation-branding-selector-base` | Selector base for the navigation branding.  | `$selector-base`        |
-// | `$navigation-branding-selector`      | Selector for the navigation branding.       | `"navigation-branding"` |
-// | `$navigation-toggle-content`         | Content for the toggle pseudo-element.      | `'☰'`                   |
+// | Variable                             | Description                                                          | Default Value             |
+// | ------------------------------------ | -------------------------------------------------------------------- | ------------------------- |
+// | `$selector-base`                     | Selector base for the component.                                     | `"."`                     |
+// | `$modifier-selector-base`            | Selector base for component modifiers.                               | `"."`                     |
+// | `$generate-base-theme-map`           | Flag to generate the base theme maps for navigation variants.        | `true`                    |
+// | `$themeable`                         | Flag to generate theme modifiers.                                    | `false`                   |
+// | `$navigation-selector-base`          | Selector base for the navigation container.                          | `$selector-base`          |
+// | `$navigation-selector`               | Selector for the navigation container.                               | `"navigation"`            |
+// | `$navigation-theme-selector-base`    | Selector base for navigation theme modifiers.                        | `$modifier-selector-base` |
+// | `$navigation-theme-selector-prefix`  | Selector prefix for navigation theme modifiers.                      | `""`                      |
+// | `$navigation-toggle-selector-base`   | Selector base for the navigation toggle.                             | `$selector-base`          |
+// | `$navigation-toggle-selector`        | Selector for the navigation toggle.                                  | `"navigation-toggle"`     |
+// | `$navigation-branding-selector-base` | Selector base for the navigation branding.                           | `$selector-base`          |
+// | `$navigation-branding-selector`      | Selector for the navigation branding.                                | `"navigation-branding"`   |
+// | `$navigation-toggle-content`         | Content for the toggle pseudo-element.                               | `'☰'`                     |
+// | `$navigation-theme-mappings`         | A map of properties and shade values applied to navigation variants. | `()`                      |
+// | `$navigation-theme-map`              | A fully expanded property map used to generate navigation variants.  | `()`                      |
+//
+// ## Using `$navigation-theme-mappings`
+//
+// `$navigation-theme-mappings` is a single-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $navigation-theme-mappings: (
+//   color: 900,
+//   background: 100,
+// );
+// ```
+//
+// This directly[1] informs all navigation variants what shade to use for each property key.
+// Based on the example above:
+// - Primary navigations expose `--graupl-navigation-color` as `var(--graupl-theme-active--primary--900)` and `--graupl-navigation-background` as `var(--graupl-theme-active--primary--100)`,
+// - Secondary navigations expose those properties via the secondary palette, and
+// - Tertiary navigations expose those properties via the tertiary palette.
+//
+// You can target multiple properties at once to keep every variant in sync.
+//
+// ```scss
+// $navigation-theme-mappings: (
+//   color: 800,
+//   toggle-hover-background: 700,
+// );
+// ```
+//
+// - Primary navigations use `--graupl-theme-active--primary--800` for `--graupl-navigation-color` and `--graupl-theme-active--primary--700` for `--graupl-navigation-toggle-hover-background`.
+// - Secondary/tertiary navigations pull the same shades from their respective palettes.
+//
+// [1] `$navigation-theme-mappings` gets parsed into a larger, more explicit map: `$navigation-theme-map`.
+//
+// ## Using `$navigation-theme-map`
+//
+// `$navigation-theme-map` is a multi-level map of properties, colours, and shade values, allowing you to override individual variants without affecting the others.
+//
+// e.g.
+// ```scss
+// $navigation-theme-map: (
+//   primary: (
+//     color: (
+//       color: primary,
+//       shade: 950,
+//     ),
+//   ),
+//   secondary: (
+//     background: (
+//       color: secondary,
+//       shade: 200,
+//     ),
+//   ),
+// );
+// ```
+//
+// This example keeps the default behaviour for tertiary navigations, while deepening the colour on the primary variant and lightening the background on the secondary variant.
 //
 // @example
 // <nav class="navigation" data-graupl-menu-type="DisclosureMenu" data-graupl-menu-options="{'optionalKeySupport': true}">
@@ -91,13 +182,15 @@
 //   </ul>
 // </nav>
 
-@use "defaults";
-@use "variables" as *;
 @use "../../defaults" as root-defaults;
-@use "../menu/defaults" as menu-defaults;
-@use "../menu/variables" as menu-variables;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/state";
+@use "../../mixins/theme";
+@use "../menu/defaults" as menu-defaults;
+@use "../menu/variables" as menu-variables;
+@use "defaults";
+@use "variables" as *;
 
 @include layer(component) {
   // .navigation
@@ -157,42 +250,14 @@
     text-decoration-style: $navigation-branding-text-decoration-style;
     text-decoration-thickness: $navigation-branding-text-decoration-thickness;
 
-    &:visited {
-      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-visited-text-decoration};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-visited-text-decoration-thickness};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-visited-text-decoration-style};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-focus-text-decoration};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-focus-text-decoration-thickness};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-focus-text-decoration-style};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-hover-text-decoration};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-hover-text-decoration-thickness};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-hover-text-decoration-style};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-active-text-decoration};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-active-text-decoration-thickness};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-active-text-decoration-style};
-    }
-
-    &:disabled,
-    &[disabled] {
-      &,
-      &:visited,
-      &:focus-visible,
-      &:hover,
-      &:active {
-        --#{root-defaults.$prefix}navigation-branding-text-decoration: #{$navigation-branding-disabled-text-decoration};
-        --#{root-defaults.$prefix}navigation-branding-text-decoration-thickness: #{$navigation-branding-disabled-text-decoration-thickness};
-        --#{root-defaults.$prefix}navigation-branding-text-decoration-style: #{$navigation-branding-disabled-text-decoration-style};
-      }
-    }
+    @include state.generate-modifiers(
+      (
+        text-decoration: $navigation-branding-text-decoration-states,
+        text-decoration-thickness:
+          $navigation-branding-text-decoration-thickness-states,
+        text-decoration-style: $navigation-branding-text-decoration-style-states,
+      )
+    );
   }
 
   @include screen.trigger(navigation-collapse) {
@@ -225,11 +290,25 @@
   #{defaults.$navigation-selector-base}#{defaults.$navigation-selector} {
     --#{root-defaults.$prefix}menu-background: #{$navigation-background};
     --#{root-defaults.$prefix}menu-color: #{$navigation-color};
-    --#{root-defaults.$prefix}submenu-background: #{$navigation-background};
-    --#{root-defaults.$prefix}submenu-color: #{$navigation-color};
 
     background: $navigation-background;
     color: $navigation-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$navigation-theme-map,
+        defaults.$navigation-theme-selector-base,
+        defaults.$navigation-theme-selector-prefix,
+        "navigation-"
+      );
+      @include theme.generate-modifiers(
+        defaults.$navigation-theme-map,
+        defaults.$navigation-theme-selector-base,
+        defaults.$navigation-theme-selector-prefix,
+        "navigation-",
+        ""
+      );
+    }
   }
 
   // .navigation-toggle
@@ -238,10 +317,13 @@
     background: $navigation-toggle-background;
     color: $navigation-toggle-color;
 
-    &:hover {
-      --#{root-defaults.$prefix}navigation-toggle-background: #{$navigation-toggle-hover-background};
-      --#{root-defaults.$prefix}navigation-toggle-color: #{$navigation-toggle-hover-color};
-    }
+    @include state.generate-modifiers(
+      (
+        border-color: $navigation-toggle-border-color-states,
+        background: $navigation-toggle-background-states,
+        color: $navigation-toggle-color-states,
+      )
+    );
   }
 
   // .navigation-branding
@@ -249,36 +331,11 @@
     color: $navigation-branding-color;
     text-decoration-color: $navigation-branding-text-decoration-color;
 
-    &:visited {
-      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-visited-color};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-visited-text-decoration-color};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-focus-color};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-focus-text-decoration-color};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-hover-color};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-hover-text-decoration-color};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-active-color};
-      --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-active-text-decoration-color};
-    }
-
-    &:disabled,
-    &[disabled] {
-      &,
-      &:visited,
-      &:focus-visible,
-      &:hover,
-      &:active {
-        --#{root-defaults.$prefix}navigation-branding-color: #{$navigation-branding-disabled-color};
-        --#{root-defaults.$prefix}navigation-branding-text-decoration-color: #{$navigation-branding-disabled-text-decoration-color};
-      }
-    }
+    @include state.generate-modifiers(
+      (
+        color: $navigation-branding-color-states,
+        text-decoration: $navigation-branding-text-decoration-color-states,
+      )
+    );
   }
 }
