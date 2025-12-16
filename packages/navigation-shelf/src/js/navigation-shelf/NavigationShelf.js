@@ -208,6 +208,13 @@ class NavigationShelf {
   _breakpointWidth = "1023px";
 
   /**
+   * The media query to use when automatically opening/closing the disclosure
+   *
+   * @type {string}
+   */
+  _mediaQueryString = "";
+
+  /**
    * This MediaQueryList for the disclosure.
    *
    * @protected
@@ -215,6 +222,26 @@ class NavigationShelf {
    * @type {MediaQueryList|null}
    */
   _mediaQueryList = null;
+
+  /**
+   * A callback for media query list events
+   *
+   * @protected
+   *
+   * @type {Function}
+   *
+   * @param {MediaQueryListEvent} event - The event.
+   */
+  _mediaQueryListEventCallback = (event) => {
+    if (event.matches && this.isOpen) {
+      this.close({
+        preserveLock: this.shouldBeLocked,
+      });
+    } else if (!event.matches && this.shouldBeLocked && !this.isOpen) {
+      this._locked.reset();
+      this.lock({ force: true });
+    }
+  };
 
   /**
    * The event that is triggered when the shelf expands.
@@ -402,6 +429,7 @@ class NavigationShelf {
     leaveDelay = -1,
     locked = false,
     side = "left",
+    mediaQuery = "",
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
@@ -435,6 +463,7 @@ class NavigationShelf {
 
     // Set locked state.
     this._locked = new TransactionalValue(locked);
+    this._mediaQueryString = mediaQuery || "";
 
     // Set side.
     this._side = side;
@@ -1389,20 +1418,12 @@ class NavigationShelf {
       return;
     }
 
-    this._mediaQueryList = window.matchMedia(
-      `(width <= ${this._breakpointWidth})`
+    this._mediaQueryList = window.matchMedia(this.mediaQuery);
+    this._mediaQueryList.addEventListener(
+      "change",
+      this._mediaQueryListEventCallback
     );
-
-    this._mediaQueryList.addEventListener("change", (event) => {
-      if (event.matches && this.isOpen) {
-        this.close({
-          preserveLock: this.shouldBeLocked,
-        });
-      } else if (!event.matches && this.shouldBeLocked && !this.isOpen) {
-        this._locked.reset();
-        this.lock({ force: true });
-      }
-    });
+    this._mediaQueryListEventCallback(this._mediaQueryList);
   }
 
   _handleFocus() {
