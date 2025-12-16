@@ -6,19 +6,89 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
 // Form selectors.
-$selector-base: "" !default;
-$modifier-selector-base: $selector-base !default;
+$selector-base: root-defaults.$element-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $input-selector-base: $selector-base !default;
 $input-selector: "input" !default;
+$input-theme-prefix-selector-base: $modifier-selector-base !default;
+$input-theme-prefix-selector: "" !default;
 $textarea-selector-base: $selector-base !default;
 $textarea-selector: "textarea" !default;
 $select-selector-base: $selector-base !default;
 $select-selector: "select" !default;
 $label-selector-base: $selector-base !default;
 $label-selector: "label" !default;
+$label-theme-prefix-selector-base: $input-theme-prefix-selector-base !default;
+$label-theme-prefix-selector: $input-theme-prefix-selector !default;
 $fieldset-selector-base: $selector-base !default;
 $fieldset-selector: "fieldset" !default;
+$fieldset-theme-prefix-selector-base: $input-theme-prefix-selector-base !default;
+$fieldset-theme-prefix-selector: $input-theme-prefix-selector !default;
 
 // Fieldset properties.
 $fieldset-direction: column !default;
+
+// Input theme defaults.
+// This map is used to define the default colour shades for the
+// themed input bases.
+//
+// e.g.
+// Primary inputs will use primary--700 as the header background,
+// and primary--100 as the header text colour.
+//
+// Secondary/tertiary inputs will use the same shade for their respective colours.
+$-input-theme-mappings: (
+  color: 900,
+  background: 100,
+  border-color: 700,
+  placeholder-color: 600,
+  disabled-color: 200,
+  disabled-border-color: 200,
+);
+$input-theme-mappings: () !default;
+$-label-theme-mappings: (
+  color: 900,
+  background: 100,
+  border-color: 700,
+);
+$label-theme-mappings: () !default;
+$-fieldset-theme-mappings: (
+  color: 900,
+  background: 100,
+  border-color: 700,
+  accent-color: 700,
+);
+$fieldset-theme-mappings: () !default;
+
+// Merge the custom input theme map with the default one.
+@if $generate-base-theme-map {
+  $input-theme-mappings: map.merge(
+    $-input-theme-mappings,
+    $input-theme-mappings
+  );
+  $label-theme-mappings: map.merge(
+    $-label-theme-mappings,
+    $label-theme-mappings
+  );
+  $fieldset-theme-mappings: map.merge(
+    $-fieldset-theme-mappings,
+    $fieldset-theme-mappings
+  );
+}
+
+$-input-theme-map: theme.generate-property-map($input-theme-mappings);
+$input-theme-map: () !default;
+$input-theme-map: map.deep-merge($-input-theme-map, $input-theme-map);
+$-label-theme-map: theme.generate-property-map($label-theme-mappings);
+$label-theme-map: () !default;
+$label-theme-map: map.deep-merge($-label-theme-map, $label-theme-map);
+$-fieldset-theme-map: theme.generate-property-map($fieldset-theme-mappings);
+$fieldset-theme-map: () !default;
+$fieldset-theme-map: map.deep-merge($-fieldset-theme-map, $fieldset-theme-map);

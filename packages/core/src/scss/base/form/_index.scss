@@ -11,7 +11,7 @@
 //
 // The following custom properties can be used to customize the form components:
 // | Property                                       | Description                                                                                                    | Default Value                                                                                                                                                                                     |
-// | ---                                            | ---                                                                                                            | ---                                                                                                                                                                                               |
+// | ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `--graupl-input-padding-x`                     | The horizontal padding for input components.                                                                   | `var(--graupl-spacer-5)`                                                                                                                                                                          |
 // | `--graupl-input-padding-y`                     | The vertical padding for input components.                                                                     | `var(--graupl-spacer-3)`                                                                                                                                                                          |
 // | `--graupl-input-padding`                       | The padding for input components (combines x and y padding).                                                   | `var(--graupl-input-padding-y) var(--graupl-input-padding-x)`                                                                                                                                     |
@@ -70,21 +70,95 @@
 // | `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-input-color)`                                                                                                                                                                       |
 //
 // The following sass variables can be used to customize the generation of the form components:
-// | Variable                  | Description                                   | Default Value    |
-// | ---                       | ---                                           | ---              |
-// | `$selector-base`          | The selector base for the component.          | `""`             |
-// | `$modifier-selector-base` | The selector base for component modifiers.    | `$selector-base` |
-// | `$input-selector-base`    | The base selector for the input component.    | `$selector-base` |
-// | `$input-selector`         | The input component selector.                 | `input`          |
-// | `$textarea-selector-base` | The base selector for the textarea component. | `$selector-base` |
-// | `$textarea-selector`      | The textarea component selector.              | `textarea`       |
-// | `$select-selector-base`   | The base selector for the select component.   | `$selector-base` |
-// | `$select-selector`        | The select component selector.                | `select`         |
-// | `$label-selector-base`    | The base selector for the label component.    | `$selector-base` |
-// | `$label-selector`         | The label component selector.                 | `label`          |
-// | `$fieldset-selector-base` | The base selector for the fieldset component. | `$selector-base` |
-// | `$fieldset-selector`      | The fieldset component selector.              | `fieldset`       |
-// | `$fieldset-direction`     | The direction of fieldset component items.    | `column`         |
+// | Variable                               | Description                                                                | Default Value                       |
+// | -------------------------------------- | -------------------------------------------------------------------------- | ----------------------------------- |
+// | `$selector-base`                       | The selector base for the component.                                       | `""`                                |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                 | `$selector-base`                    |
+// | `$generate-base-theme-map`             | Flag to generate the base theme maps for form elements.                    | `true`                              |
+// | `$themeable`                           | Flag to generate theme modifiers.                                          | `false`                             |
+// | `$input-selector-base`                 | The base selector for the input component.                                 | `$selector-base`                    |
+// | `$input-selector`                      | The input component selector.                                              | `input`                             |
+// | `$input-theme-prefix-selector-base`    | Selector base used for input theme modifiers.                              | `$modifier-selector-base`           |
+// | `$input-theme-prefix-selector`         | Selector prefix used for input theme modifiers.                            | `""`                                |
+// | `$textarea-selector-base`              | The base selector for the textarea component.                              | `$selector-base`                    |
+// | `$textarea-selector`                   | The textarea component selector.                                           | `textarea`                          |
+// | `$select-selector-base`                | The base selector for the select component.                                | `$selector-base`                    |
+// | `$select-selector`                     | The select component selector.                                             | `select`                            |
+// | `$label-selector-base`                 | The base selector for the label component.                                 | `$selector-base`                    |
+// | `$label-selector`                      | The label component selector.                                              | `label`                             |
+// | `$label-theme-prefix-selector-base`    | Selector base used for label theme modifiers.                              | `$input-theme-prefix-selector-base` |
+// | `$label-theme-prefix-selector`         | Selector prefix used for label theme modifiers.                            | `$input-theme-prefix-selector`      |
+// | `$fieldset-selector-base`              | The base selector for the fieldset component.                              | `$selector-base`                    |
+// | `$fieldset-selector`                   | The fieldset component selector.                                           | `fieldset`                          |
+// | `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                           | `$input-theme-prefix-selector-base` |
+// | `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                         | `$input-theme-prefix-selector`      |
+// | `$fieldset-direction`                  | The direction of fieldset component items.                                 | `column`                            |
+// | `$input-theme-mappings`                | Map of properties and shade values applied to themed input variants.       | `()`                                |
+// | `$input-theme-map`                     | Fully expanded property map used to generate themed input variants.        | `()`                                |
+// | `$label-theme-mappings`                | Map of properties and shade values applied to themed label variants.       | `()`                                |
+// | `$label-theme-map`                     | Fully expanded property map used to generate themed label variants.        | `()`                                |
+// | `$fieldset-theme-mappings`             | Map of properties and shade values applied to themed fieldset variants.    | `()`                                |
+// | `$fieldset-theme-map`                  | Fully expanded property map used to generate themed fieldset variants.     | `()`                                |
+//
+// ## Using `$input-theme-mappings`, `$label-theme-mappings`, and `$fieldset-theme-mappings`
+//
+// Each of these variables is a single-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $input-theme-mappings: (
+//   color: 900,
+//   background: 100,
+//   border-color: 700,
+// );
+// ```
+//
+// This directly[1] informs all input variants what shade to use for each property key.
+// Based on the example above:
+// - Primary inputs expose `--graupl-input-color`, `--graupl-input-background`, and `--graupl-input-border-color` as `var(--graupl-theme-active--primary--900/100/700)`,
+// - Secondary inputs expose those properties via the secondary palette, and
+// - Tertiary inputs expose those properties via the tertiary palette.
+//
+// The same pattern applies to `$label-theme-mappings` and `$fieldset-theme-mappings`, ensuring every form element stays in sync across variants.
+//
+// ```scss
+// $label-theme-mappings: (
+//   color: 800,
+// );
+// $fieldset-theme-mappings: (
+//   background: 50,
+//   border-color: 600,
+// );
+// ```
+//
+// - Primary labels use `--graupl-theme-active--primary--800` for `--graupl-label-color`,
+// - Primary fieldsets use `--graupl-theme-active--primary--50` / `--graupl-theme-active--primary--600` for their background/border colours, and other variants follow suit using their palettes.
+//
+// [1] Each `*-theme-mappings` map gets parsed into a larger, more explicit map: the corresponding `*-theme-map`.
+//
+// ## Using `$input-theme-map`, `$label-theme-map`, and `$fieldset-theme-map`
+//
+// These variables are multi-level maps of properties, colours, and shade values, allowing you to override individual variants without affecting the others.
+//
+// e.g.
+// ```scss
+// $input-theme-map: (
+//   primary: (
+//     border-color: (
+//       color: primary,
+//       shade: 950,
+//     ),
+//   ),
+//   secondary: (
+//     background: (
+//       color: secondary,
+//       shade: 200,
+//     ),
+//   ),
+// );
+// ```
+//
+// This example deepens the primary input border colour while lightening the secondary input background. You can mix and match overrides for labels and fieldsets in their respective maps to target variants independently.
 //
 // @example
 // <label for="input-id">Input Label</label>
@@ -117,6 +191,7 @@
 
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/theme";
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
@@ -194,6 +269,15 @@
         }
       }
     }
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$input-theme-map,
+        defaults.$input-theme-prefix-selector-base,
+        defaults.$input-theme-prefix-selector,
+        "input-"
+      );
+    }
   }
 
   // label
@@ -209,6 +293,21 @@
       ) {
         color: $label-disabled-color;
       }
+    }
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$label-theme-map,
+        defaults.$label-theme-prefix-selector-base,
+        defaults.$label-theme-prefix-selector,
+        "label-"
+      );
+      @include theme.generate-modifiers(
+        defaults.$input-theme-map,
+        defaults.$input-theme-prefix-selector-base,
+        defaults.$input-theme-prefix-selector,
+        "input-"
+      );
     }
   }
 
@@ -228,6 +327,27 @@
           color: $label-disabled-color;
         }
       }
+    }
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$fieldset-theme-map,
+        defaults.$fieldset-theme-prefix-selector-base,
+        defaults.$fieldset-theme-prefix-selector,
+        "fieldset-"
+      );
+      @include theme.generate-modifiers(
+        defaults.$label-theme-map,
+        defaults.$label-theme-prefix-selector-base,
+        defaults.$label-theme-prefix-selector,
+        "label-"
+      );
+      @include theme.generate-modifiers(
+        defaults.$input-theme-map,
+        defaults.$input-theme-prefix-selector-base,
+        defaults.$input-theme-prefix-selector,
+        "input-"
+      );
     }
   }
 }
