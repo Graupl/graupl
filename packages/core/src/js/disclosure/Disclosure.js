@@ -148,6 +148,13 @@ class Disclosure {
   _breakpointWidth = "";
 
   /**
+   * The media query to use when automatically opening/closing the disclosure
+   *
+   * @type {string}
+   */
+  _mediaQueryString = "";
+
+  /**
    * This MediaQueryList for the disclosure.
    *
    * @protected
@@ -155,6 +162,27 @@ class Disclosure {
    * @type {MediaQueryList|null}
    */
   _mediaQueryList = null;
+
+  /**
+   * A callback for media query list events
+   *
+   * @protected
+   *
+   * @type {Function}
+   *
+   * @param {MediaQueryListEvent} event - The event.
+   */
+  _mediaQueryListEventCallback = (event) => {
+    if (event.matches && this.isOpen) {
+      this.close({ preserveState: true });
+    } else if (
+      !event.matches &&
+      !this.isOpen &&
+      (this.hasOpened || this.shouldOpen)
+    ) {
+      this.open();
+    }
+  };
 
   /**
    * The event that is triggered when the disclosure expands.
@@ -233,6 +261,7 @@ class Disclosure {
    * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
    * @param {?string}            [options.minWidth = ""]                                   - The width of the screen that the disclosure will automatically open/close itself.
    * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
+   * @param {?string}            [options.mediaQuery = ""]                                 - The media query to use when automatically opening/closing the disclosure.
    * @param {?string}            [options.prefix = graupl-]                                - The prefix to use for CSS custom properties.
    * @param {?(string|string[])} [options.initializeClass = initializing]                  - The class to apply when a disclosure is initialzing.
    * @param {boolean}            [options.initialize = false]                              - Whether to initialize the disclosure upon construction.
@@ -250,10 +279,11 @@ class Disclosure {
     closeOnBlur = false,
     minWidth = "",
     autoOpen = false,
+    mediaQuery = "",
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
-  }) {
+  } = {}) {
     // Set the DOM elements.
     this._dom.disclosure = disclosureElement;
     this._dom.controller = controllerElement;
@@ -278,6 +308,7 @@ class Disclosure {
     // Set collapse width and auto open functionality.
     this._breakpointWidth = minWidth || "";
     this._shouldOpen = autoOpen;
+    this._mediaQueryString = mediaQuery || "";
 
     // Set the prefix.
     this._prefix = prefix;
@@ -518,7 +549,7 @@ class Disclosure {
   /**
    * The width of the screen that the disclosure will automatically open/close itself.
    *
-   * @type {number}
+   * @type {string}
    *
    * @see _breakpointWidth
    */
@@ -531,6 +562,29 @@ class Disclosure {
 
     if (this._breakpointWidth !== value) {
       this._breakpointWidth = value;
+    }
+  }
+
+  /**
+   * The media query to use when automatically opening/closing the disclosure.
+   *
+   * @type {string}
+   *
+   * @see _mediaQueryString
+   */
+  get mediaQuery() {
+    if (this._mediaQueryString !== "") {
+      return this._mediaQueryString;
+    }
+
+    return `(width <= ${this._breakpointWidth})`;
+  }
+
+  set mediaQuery(value) {
+    isValidType("string", { value });
+
+    if (this._mediaQueryString !== value) {
+      this._mediaQueryString = value;
     }
   }
 
@@ -1109,21 +1163,12 @@ class Disclosure {
       return;
     }
 
-    this._mediaQueryList = window.matchMedia(
-      `(width <= ${this._breakpointWidth})`
+    this._mediaQueryList = window.matchMedia(this.mediaQuery);
+    this._mediaQueryList.addEventListener(
+      "change",
+      this._mediaQueryListEventCallback
     );
-
-    this._mediaQueryList.addEventListener("change", (event) => {
-      if (event.matches && this.isOpen) {
-        this.close({ preserveState: true });
-      } else if (
-        !event.matches &&
-        !this.isOpen &&
-        (this.hasOpened || this.shouldOpen)
-      ) {
-        this.open();
-      }
-    });
+    this._mediaQueryListEventCallback(this._mediaQueryList);
   }
 
   /**
