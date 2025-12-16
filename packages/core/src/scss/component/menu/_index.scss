@@ -98,13 +98,14 @@
 //   <li class="menu-item"><a class="menu-link button tertiary" href="#">Contact</a></li>
 // </ul>
 
-@use "defaults";
-@use "variables" as *;
-@use "../../defaults" as root-defaults;
 @use "../../base/button/defaults" as button-defaults;
 @use "../../base/button/variables" as button-variables;
-@use "../../mixins/layer" as *;
+@use "../../defaults" as root-defaults;
 @use "../../mixins/animation";
+@use "../../mixins/layer" as *;
+@use "../../mixins/state";
+@use "defaults";
+@use "variables" as *;
 
 @include layer(component) {
   // .menu
@@ -213,49 +214,16 @@
     gap: $menu-link-gap;
     text-decoration-thickness: $menu-link-text-decoration-thickness;
 
-    &:visited {
-      --#{root-defaults.$prefix}menu-link-text-decoration: #{$menu-link-visited-text-decoration};
-      --#{root-defaults.$prefix}menu-link-text-decoration-thickness: #{$menu-link-visited-text-decoration-thickness};
-      --#{root-defaults.$prefix}menu-link-text-decoration-style: #{$menu-link-visited-text-decoration-style};
-      --#{root-defaults.$prefix}menu-link-transform: #{$menu-link-visited-transform};
-    }
+    @include state.generate-modifiers(
+      (
+        text-decoration: $menu-link-text-decoration-states,
+        text-decoration-thickness: $menu-link-text-decoration-thickness-states,
+        text-decoration-style: $menu-link-text-decoration-style-states,
+        transform: $menu-link-transform-states,
+      )
+    );
 
-    &:focus-visible {
-      --#{root-defaults.$prefix}menu-link-text-decoration: #{$menu-link-focus-text-decoration};
-      --#{root-defaults.$prefix}menu-link-text-decoration-thickness: #{$menu-link-focus-text-decoration-thickness};
-      --#{root-defaults.$prefix}menu-link-text-decoration-style: #{$menu-link-focus-text-decoration-style};
-      --#{root-defaults.$prefix}menu-link-transform: #{$menu-link-focus-transform};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}menu-link-text-decoration: #{$menu-link-hover-text-decoration};
-      --#{root-defaults.$prefix}menu-link-text-decoration-thickness: #{$menu-link-hover-text-decoration-thickness};
-      --#{root-defaults.$prefix}menu-link-text-decoration-style: #{$menu-link-hover-text-decoration-style};
-      --#{root-defaults.$prefix}menu-link-transform: #{$menu-link-hover-transform};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}menu-link-text-decoration: #{$menu-link-active-text-decoration};
-      --#{root-defaults.$prefix}menu-link-text-decoration-thickness: #{$menu-link-active-text-decoration-thickness};
-      --#{root-defaults.$prefix}menu-link-text-decoration-style: #{$menu-link-active-text-decoration-style};
-      --#{root-defaults.$prefix}menu-link-transform: #{$menu-link-active-transform};
-    }
-
-    &:disabled,
-    &[disabled] {
-      &,
-      &:visited,
-      &:focus-visible,
-      &:hover,
-      &:active {
-        --#{root-defaults.$prefix}menu-link-text-decoration: #{$menu-link-disabled-text-decoration};
-        --#{root-defaults.$prefix}menu-link-text-decoration-thickness: #{$menu-link-disabled-text-decoration-thickness};
-        --#{root-defaults.$prefix}menu-link-text-decoration-style: #{$menu-link-disabled-text-decoration-style};
-        --#{root-defaults.$prefix}menu-link-transform: #{$menu-link-disabled-transform};
-      }
-    }
-
-    // .button
+    // &.button
     &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
       --#{root-defaults.$prefix}menu-link-padding: #{button-variables.$button-padding};
       --#{root-defaults.$prefix}menu-link-border-width: #{button-variables.$button-border-width};
@@ -356,46 +324,14 @@
     color: $menu-link-color;
     text-decoration-color: $menu-link-text-decoration-color;
 
-    &:visited {
-      --#{root-defaults.$prefix}menu-link-background: #{$menu-link-visited-background};
-      --#{root-defaults.$prefix}menu-link-color: #{$menu-link-visited-color};
-      --#{root-defaults.$prefix}menu-link-text-decoration-color: #{$menu-link-visited-text-decoration-color};
-      --#{root-defaults.$prefix}menu-link-border-color: #{$menu-link-visited-border-color};
-    }
-
-    &:focus-visible {
-      --#{root-defaults.$prefix}menu-link-background: #{$menu-link-focus-background};
-      --#{root-defaults.$prefix}menu-link-color: #{$menu-link-focus-color};
-      --#{root-defaults.$prefix}menu-link-text-decoration-color: #{$menu-link-focus-text-decoration-color};
-      --#{root-defaults.$prefix}menu-link-border-color: #{$menu-link-focus-border-color};
-    }
-
-    &:hover {
-      --#{root-defaults.$prefix}menu-link-background: #{$menu-link-hover-background};
-      --#{root-defaults.$prefix}menu-link-color: #{$menu-link-hover-color};
-      --#{root-defaults.$prefix}menu-link-text-decoration-color: #{$menu-link-hover-text-decoration-color};
-      --#{root-defaults.$prefix}menu-link-border-color: #{$menu-link-hover-border-color};
-    }
-
-    &:active {
-      --#{root-defaults.$prefix}menu-link-background: #{$menu-link-active-background};
-      --#{root-defaults.$prefix}menu-link-color: #{$menu-link-active-color};
-      --#{root-defaults.$prefix}menu-link-text-decoration-color: #{$menu-link-active-text-decoration-color};
-      --#{root-defaults.$prefix}menu-link-border-color: #{$menu-link-active-border-color};
-    }
-
-    &:disabled {
-      &,
-      &:hover,
-      &:active,
-      &:focus-visible,
-      &:visited {
-        --#{root-defaults.$prefix}menu-link-background: #{$menu-link-disabled-background};
-        --#{root-defaults.$prefix}menu-link-color: #{$menu-link-disabled-color};
-        --#{root-defaults.$prefix}menu-link-text-decoration-color: #{$menu-link-disabled-text-decoration-color};
-        --#{root-defaults.$prefix}menu-link-border-color: #{$menu-link-disabled-border-color};
-      }
-    }
+    @include state.generate-modifiers(
+      (
+        border-color: $menu-link-border-color-states,
+        background: $menu-link-background-states,
+        color: $menu-link-color-states,
+        text-decoration-color: $menu-link-text-decoration-color-states,
+      )
+    );
 
     // .button
     &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
