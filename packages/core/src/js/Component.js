@@ -120,9 +120,13 @@ class Component {
    *
    * @param {MediaQueryListEvent} event - The event.
    */
-  // eslint-disable-next-line no-unused-vars
   _mediaQueryListEventCallback = (event) => {
     // Add functionality to handle media matches.
+    if (event.matches) {
+      // Do something.
+    } else {
+      // Do something else.
+    }
   };
 
   /**
