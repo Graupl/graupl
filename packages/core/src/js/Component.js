@@ -3,6 +3,16 @@
  * A generic component class.
  */
 
+import {
+  isValidInstance,
+  isValidType,
+  isValidClassList,
+  isQuerySelector,
+  isValidState,
+  isValidEvent,
+} from "./validate.js";
+import storage from "../storage.js";
+
 class Component {
   /**
    * The DOM elements within the component.
@@ -77,6 +87,45 @@ class Component {
   _currentEvent = "none";
 
   /**
+   * The breakoint that the component will call media query list events.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _breakpoint = "";
+
+  /**
+   * The media query to use to trigger media query list events.
+   *
+   * @type {string}
+   */
+  _mediaQueryString = "";
+
+  /**
+   * This MediaQueryList for the component.
+   *
+   * @protected
+   *
+   * @type {MediaQueryList|null}
+   */
+  _mediaQueryList = null;
+
+  /**
+   * A callback for media query list events
+   *
+   * @protected
+   *
+   * @type {Function}
+   *
+   * @param {MediaQueryListEvent} event - The event.
+   */
+  // eslint-disable-next-line no-unused-vars
+  _mediaQueryListEventCallback = (event) => {
+    // Add functionality to handle media matches.
+  };
+
+  /**
    * The prefix used for CSS custom properties and attributes.
    *
    * @protected
@@ -95,6 +144,33 @@ class Component {
   _key = "";
 
   /**
+   * The key used for storage.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _storageKey = "component";
+
+  /**
+   * The main ID of the component.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _id = "";
+
+  /**
+   * The validity state of the component.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _valid = true;
+
+  /**
    * The errors found throughout the component.
    *
    * @protected
@@ -106,7 +182,7 @@ class Component {
   /**
    * Constructs a new component.
    *
-   * @param {object}             options                                  - The options for generating the component.
+   * @param {object}             [options = {}]                           - The options for generating the component.
    * @param {?string}            [options.prefix = graupl-]               - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                     - The key used to generate IDs throughout the component.
    * @param {?(string|string[])} [options.initializeClass = initializing] - The class(es) to apply when the component is initializing.
@@ -126,16 +202,538 @@ class Component {
     this._key = key || "";
 
     if (initialize) {
-      this._initialize();
+      this.initialize();
     }
   }
 
-  _initialize() {
+  initialize() {
     try {
-    } catch (error) {}
+      if (!this._validate()) {
+        throw new Error(
+          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors.join("\n - ")}`
+        );
+      }
+
+      // Generate the key.
+      this._generateKey();
+
+      // Set up the DOM.
+      this._setDOMElements();
+      this._setIds();
+      this._setAttributes();
+      this._setCustomProps();
+
+      // Create child elements.
+      this._createChildElements();
+
+      // Handle events.
+      this._handleMediaMatch();
+      this._handleFocus();
+      this._handleClick();
+      this._handleKeydown();
+      this._handleKeyup();
+
+      // Set up the storage.
+      storage.initializeStorage(this._storageKey);
+      storage.pushToStorage(
+        this._storageKey,
+        this._id !== "" ? this._id : this._key,
+        this
+      );
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  initialize() {}
+  /**
+   * The DOM elements within the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _dom
+   */
+  get dom() {
+    return this._dom;
+  }
+
+  /**
+   * The query selectors used by the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _selectors
+   */
+  get selectors() {
+    return this._selectors;
+  }
+
+  /**
+   * The instantiated elements within the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _elements
+   */
+  get elements() {
+    return this._elements;
+  }
+
+  /**
+   * The CSS classes to apply when the component is in various states.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _classes
+   */
+  get classes() {
+    return this._classes;
+  }
+
+  /**
+   * The current state of the component's focus.
+   *
+   * @type {string}
+   *
+   * @see _focusState
+   */
+  get focusState() {
+    return this._focusState;
+  }
+
+  set focusState(value) {
+    isValidState({ value });
+
+    if (this._focusState !== value) {
+      this._focusState = value;
+    }
+  }
+
+  /**
+   * The last type of event triggered within the component.
+   *
+   * @type {string}
+   *
+   * @see _currentEvent
+   */
+  get currentEvent() {
+    return this._currentEvent;
+  }
+
+  set currentEvent(value) {
+    isValidEvent({ value });
+
+    if (this._currentEvent !== value) {
+      this._currentEvent = value;
+    }
+  }
+
+  /**
+   * The breakoint that the component will call media query list events.
+   *
+   * @type {string}
+   *
+   * @see _breakpoint
+   */
+  get breakpoint() {
+    return this._breakpoint;
+  }
+
+  set breakpoint(value) {
+    isValidType("string", { value });
+
+    if (this._breakpoint !== value) {
+      this._breakpoint = value;
+    }
+  }
+
+  /**
+   * The media query to use to trigger media query list events.
+   *
+   * @type {string}
+   *
+   * @see _mediaQueryString
+   */
+  get mediaQuery() {
+    if (this._mediaQueryString !== "") {
+      return this._mediaQueryString;
+    }
+
+    return `(width <= ${this._breakpoint})`;
+  }
+
+  set mediaQuery(value) {
+    isValidType("string", { value });
+
+    if (this._mediaQueryString !== value) {
+      this._mediaQueryString = value;
+    }
+  }
+
+  /**
+   * The prefix used for CSS custom properties and attributes.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _prefix
+   */
+  get prefix() {
+    return this._prefix;
+  }
+
+  /**
+   * The key used to generate IDs throughout the component.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _key
+   */
+  get key() {
+    return this._key;
+  }
+
+  /**
+   * An array to hold error messages.
+   *
+   * @readonly
+   *
+   * @type {string[]}
+   *
+   * @see _errors
+   */
+  get errors() {
+    return this._errors;
+  }
+
+  /**
+   * Validates all aspects of the component to ensure proper functionality.
+   *
+   * Keys are altered to match the arguments passed in during creation where possible.
+   *
+   * @protected
+   *
+   * @return {boolean} - The result of the validation checks.
+   */
+  _validate() {
+    // DOM checks.
+    if (Object.keys(this._dom).length > 0) {
+      const domElements = {};
+
+      // Loop through and add "Element" to the end of each key in _dom.
+      for (const domKey of Object.keys(this._dom)) {
+        // If we're dealing with an array, we need to check each element in the array.
+        if (Array.isArray(this._dom[domKey])) {
+          this._dom[domKey].forEach((element, index) => {
+            domElements[`${domKey}Element[${index}]`] = element;
+          });
+        }
+
+        domElements[`${domKey}Element`] = this._dom[domKey];
+      }
+
+      // Check the DOM elements.
+      const domChecks = isValidInstance(HTMLElement, domElements);
+
+      // Handle DOM check failure.
+      if (!domChecks) {
+        this._errors.push(domChecks.message);
+        this._valid = false;
+      }
+    }
+
+    // Query selector checks.
+    if (Object.keys(this._selectors).length > 0) {
+      const querySelectors = {};
+
+      // Loop through and add "Selector" to the end of each key in _selectors.
+      for (const querySelector of Object.keys(this._selectors)) {
+        querySelectors[`${querySelector}Selector`] =
+          this._selectors[querySelector];
+      }
+
+      // Check the query selectors.
+      const querySelectorChecks = isQuerySelector(querySelectors);
+
+      // Handle query selector check failure.
+      if (!querySelectorChecks) {
+        this._errors.push(querySelectorChecks.message);
+        this._valid = false;
+      }
+    }
+
+    // Class list checks.
+    if (Object.keys(this._classes).length > 0) {
+      const classes = {};
+
+      // Loop through and add "Class" to the end of each key in _classes.
+      for (const className of Object.keys(this._classes)) {
+        if (this._classes[className] === "") {
+          continue;
+        }
+
+        classes[`${className}Class`] = this._classes[className];
+      }
+
+      // Check the class lists.
+      const classListChecks = isValidClassList(classes);
+
+      // Handle class list check failure.
+      if (!classListChecks.status) {
+        this._errors.push(classListChecks.error.message);
+        this._valid = false;
+      }
+    }
+
+    // Duration checks.
+    if (Object.keys(this._durations).length > 0) {
+      const durations = {};
+
+      // Loop through and add "Duration" to the end of each key in _durations.
+      for (const durationName of Object.keys(this._durations)) {
+        durations[`${durationName}Duration`] = this._durations[durationName];
+      }
+
+      // Check the durations.
+      const durationChecks = isValidType("number", durations);
+
+      // Handle duration check failure.
+      if (!durationChecks.status) {
+        this._errors.push(durationChecks.error.message);
+        this._valid = false;
+      }
+    }
+
+    // State checks.
+
+    // Key check.
+    if (this._key !== "") {
+      // Check the key.
+      const keyCheck = isValidType("string", { key: this._key });
+
+      // Handle key check failure.
+      if (!keyCheck.status) {
+        this._errors.push(keyCheck.error.message);
+        this._valid = false;
+      }
+    }
+
+    // Prefix check.
+    if (this._prefix !== "") {
+      const prefixCheck = isValidType("string", { prefix: this._prefix });
+
+      if (!prefixCheck.status) {
+        this._errors.push(prefixCheck.error.message);
+        this._valid = false;
+      }
+    }
+
+    return this._valid;
+  }
+
+  /**
+   * Generates a key for the component.
+   *
+   * @param {boolean} [regenerate = false] - A flag to determine if the key should be regenerated.
+   */
+  _generateKey(regenerate = false) {
+    if (this._key === "" || regenerate) {
+      this._key = Math.random()
+        .toString(36)
+        .replace(/[^a-z]+/g, "")
+        .substring(0, 10);
+    }
+  }
+
+  /**
+   * Sets IDs throughout the component.
+   */
+  _setIds() {
+    // Add functionality to set IDs throughout the component.
+  }
+
+  /**
+   * Sets attributes throughout the component.
+   */
+  _setAttributes() {
+    // Add functionality to set attributes throughout the component.
+  }
+
+  /**
+   * Sets custom props throughout the component.
+   */
+  _setCustomProps() {
+    // Add functionality to set custom props throughout the component.
+  }
+
+  /**
+   * Sets DOM elements throughout the component.
+   *
+   * Elements listed in _protectedDOMElements cannot be set using this method.
+   *
+   * @protected
+   *
+   * @param {string}                      elementType                - The type of element to populate.
+   * @param {Object<HTMLElement,boolean>} [options = {}]             - The options for setting the DOM element type.
+   * @param {HTMLElement}                 [options.context]          - The element used as the base context for the querySelector.
+   * @param {boolean}                     [options.overwrite = true] - A flag to set if the existing elements will be overwritten.
+   * @param {boolean}                     [options.strict = true]    - A flag to set if the elements must be direct children of the base.
+   */
+  _setDOMElementType(
+    elementType,
+    { context, overwrite = true, strict = true } = {}
+  ) {
+    if (typeof this.selectors[elementType] === "string") {
+      if (this._protectedDOMElements.includes(elementType)) {
+        throw new Error(
+          `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
+        );
+      }
+
+      // Make sure the context element is actually an HTMLELement.
+      isValidInstance(HTMLElement, { context });
+
+      // Get the all elements matching the selector in the context.
+      const domElements = Array.from(
+        context.querySelectorAll(this.selectors[elementType])
+      );
+
+      // Filter the elements so if `strict` is true, only direct children of the context are kept.
+      const filteredElements = domElements.filter((item) =>
+        strict ? item.parentElement === context : true
+      );
+
+      if (Array.isArray(this._dom[elementType])) {
+        if (overwrite) {
+          this._dom[elementType] = filteredElements;
+        } else {
+          this._dom[elementType] = [
+            ...this._dom[elementType],
+            ...filteredElements,
+          ];
+        }
+      } else {
+        this._dom[elementType] = filteredElements[0] || null;
+      }
+    } else {
+      throw new Error(
+        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+      );
+    }
+  }
+
+  /**
+   * Resets DOM elements throughout the component.
+   *
+   * Elements listed in _protectedDOMElements cannot be reset using this method.
+   *
+   * @protected
+   *
+   * @param {string} elementType - The type of element to clear.
+   */
+  _resetDOMElementType(elementType) {
+    if (typeof this.selectors[elementType] === "string") {
+      if (this._protectedDOMElements.includes(elementType)) {
+        throw new Error(
+          `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
+        );
+      }
+
+      if (Array.isArray(this._dom[elementType])) {
+        this._dom[elementType] = [];
+      } else {
+        this._dom[elementType] = null;
+      }
+    } else {
+      throw new Error(
+        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+      );
+    }
+  }
+
+  /**
+   * Sets all DOM elements throughout the component.
+   *
+   * Utilizes _setDOMElementType and _resetDOMElementType.
+   *
+   * @protected
+   */
+  _setDOMElements() {
+    // Add functionality to set DOM Elements throughout the component.
+  }
+
+  /**
+   * Creates and initializes child elements throughout the component.
+   *
+   * @protected
+   */
+  _createChildElements() {
+    // Add functionality to handle creating child elements throughout the component.
+  }
+
+  /**
+   * Handles media match events throughout the component.
+   *
+   * @protected
+   */
+  _handleMediaMatch() {
+    if (this._breakpointWidth === "") {
+      return;
+    }
+
+    this._mediaQueryList = window.matchMedia(this.mediaQuery);
+    this._mediaQueryList.addEventListener(
+      "change",
+      this._mediaQueryListEventCallback
+    );
+    this._mediaQueryListEventCallback(this._mediaQueryList);
+  }
+
+  /**
+   * Handles focus events through the component.
+   *
+   * @protected
+   */
+  _handleFocus() {
+    // Add functionality to handle focus events throughout the component.
+  }
+
+  /**
+   * Handles click events through the component.
+   *
+   * @protected
+   */
+  _handleClick() {
+    // Add functionality to handle click events throughout the component.
+  }
+
+  /**
+   * Handles keydown events through the component.
+   *
+   * @protected
+   */
+  _handleKeydown() {
+    // Add functionality to handle keydown events throughout the component.
+  }
+
+  /**
+   * Handles keyup events through the component.
+   *
+   * @protected
+   */
+  _handleKeyup() {
+    // Add functionality to handle keyup events throughout the component.
+  }
 }
 
 export default Component;
