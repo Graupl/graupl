@@ -85,11 +85,15 @@
 //
 // The following sass variables can be used to customize the generation of the link component:
 // | Variable                               | Description                                                    | Default Value                         |
-// | ---                                    | ---                                                            | ---                                   |
+// | -------------------------------------- | -------------------------------------------------------------- | ------------------------------------- |
 // | `$selector-base`                       | The selector base for the component.                           | `""`                                  |
 // | `$modifier-selector-base`              | The selector base for component modifiers.                     | `"."`                                 |
+// | `$generate-base-theme-map`             | Flag to generate the base theme maps for link variants.        | `true`                                |
+// | `$themeable`                           | Flag to generate theme modifiers.                              | `false`                               |
 // | `$link-selector-base`                  | The base selector for the link component.                      | `$selector-base`                      |
 // | `$link-selector`                       | The selector for the link component.                           | `"a"`                                 |
+// | `$link-theme-prefix-selector-base`     | Selector base used for link theme modifiers.                   | `$modifier-selector-base`             |
+// | `$link-theme-prefix-selector`          | Selector prefix used for link theme modifiers.                 | `""`                                  |
 // | `$stretched-link-selector-base`        | The base selector for the stretched link component modifier.   | `$modifier-selector-base`             |
 // | `$stretched-link-selector`             | The selector for the stretched link component modifier.        | `"stretched"`                         |
 // | `$stretched-link-pseudo-selector`      | The pseudo selector for the stretched link component modifier. | `"before"`                            |
@@ -106,6 +110,55 @@
 // | `$link-min-width`                      | The minimum width for the link component.                      | `auto`                                |
 // | `$link-min-height`                     | The minimum height for the link component.                     | `auto`                                |
 // | `$stretched-link-z-index`              | The z-index for the stretched link component modifier.         | `5`                                   |
+// | `$link-theme-mappings`                 | Map of properties and shade values applied to themed links.    | `()`                                  |
+// | `$link-theme-map`                      | Fully expanded property map used to generate themed links.     | `()`                                  |
+//
+// ## Using `$link-theme-mappings`
+//
+// `$link-theme-mappings` is a single-level map of properties and shade values.
+//
+// e.g.
+// ```scss
+// $link-theme-mappings: (
+//   color: 700,
+//   hover-color: 400,
+//   disabled-color: 200,
+// );
+// ```
+//
+// This directly[1] informs all link variants what shade to use for each property key.
+// Based on the example above:
+// - Primary links expose `--graupl-link-color`, `--graupl-link-hover-color`, and `--graupl-link-disabled-color` as `var(--graupl-theme-active--primary--700/400/200)`,
+// - Secondary links expose those properties via the secondary palette, and
+// - Tertiary links expose those properties via the tertiary palette.
+//
+// You can tailor the behaviour by specifying additional properties (e.g. `text-decoration-color`, `background`) to keep variants in sync.
+//
+// [1] `$link-theme-mappings` gets parsed into a larger, more explicit map: `$link-theme-map`.
+//
+// ## Using `$link-theme-map`
+//
+// `$link-theme-map` is a multi-level map of properties, colours, and shade values, allowing you to override individual variants without affecting the others.
+//
+// e.g.
+// ```scss
+// $link-theme-map: (
+//   primary: (
+//     color: (
+//       color: primary,
+//       shade: 900,
+//     ),
+//   ),
+//   secondary: (
+//     hover-color: (
+//       color: secondary,
+//       shade: 300,
+//     ),
+//   ),
+// );
+// ```
+//
+// This example deepens the primary link colour while lightening the secondary hover colour, leaving other variants untouched.
 //
 // @example
 //   <a href="#">Link</a>
@@ -116,6 +169,8 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/animation";
 @use "../../mixins/layer" as *;
+@use "../../mixins/state";
+@use "../../mixins/theme";
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
@@ -135,51 +190,14 @@
     text-decoration-style: $link-text-decoration-style;
     text-decoration-thickness: $link-text-decoration-thickness;
 
-    @each $state, $selectors in root-defaults.$state-selectors {
-      @each $selector in $selectors {
-        // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
-        &#{$selector} {
-          transform: map.get($link-transform-states, $state);
-          text-decoration: map.get($link-text-decoration-states, $state);
-          text-decoration-style: map.get(
-            $link-text-decoration-style-states,
-            $state
-          );
-          text-decoration-thickness: map.get(
-            $link-text-decoration-thickness-states,
-            $state
-          );
-
-          // If the state is disabled, we want that to supersede all other states.
-          @if $state == "disabled" {
-            cursor: not-allowed;
-
-            @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
-              @if $sub-state != $state {
-                @each $sub-selector in $sub-selectors {
-                  // e.g &:visited, &:focus-visible, &:hover, &:active
-                  &#{$sub-selector} {
-                    transform: map.get($link-transform-states, $state);
-                    text-decoration: map.get(
-                      $link-text-decoration-states,
-                      $state
-                    );
-                    text-decoration-style: map.get(
-                      $link-text-decoration-style-states,
-                      $state
-                    );
-                    text-decoration-thickness: map.get(
-                      $link-text-decoration-thickness-states,
-                      $state
-                    );
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    @include state.generate-modifiers(
+      (
+        transform: $link-transform-states,
+        text-decoration: $link-text-decoration-states,
+        text-decoration-style: $link-text-decoration-style-states,
+        text-decoration-thickness: $link-text-decoration-thickness-states,
+      )
+    );
 
     // &.stretched
     &#{defaults.$stretched-link-selector-base}#{defaults.$stretched-link-selector} {
@@ -211,39 +229,22 @@
     color: $link-color;
     text-decoration-color: $link-text-decoration-color;
 
-    @each $state, $selectors in root-defaults.$state-selectors {
-      @each $selector in $selectors {
-        // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
-        &#{$selector} {
-          border-color: map.get($link-border-color-states, $state);
-          background: map.get($link-background-states, $state);
-          color: map.get($link-color-states, $state);
-          text-decoration-color: map.get(
-            $link-text-decoration-color-states,
-            $state
-          );
-
-          // If the state is disabled, we want that to supersede all other states.
-          @if $state == "disabled" {
-            @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
-              @if $sub-state != $state {
-                @each $sub-selector in $sub-selectors {
-                  // e.g &:visited, &:focus-visible, &:hover, &:active
-                  &#{$sub-selector} {
-                    border-color: map.get($link-border-color-states, $state);
-                    background: map.get($link-background-states, $state);
-                    color: map.get($link-color-states, $state);
-                    text-decoration-color: map.get(
-                      $link-text-decoration-color-states,
-                      $state
-                    );
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$link-theme-map,
+        defaults.$link-theme-prefix-selector-base,
+        defaults.$link-theme-prefix-selector,
+        "link-"
+      );
     }
+
+    @include state.generate-modifiers(
+      (
+        border-color: $link-border-color-states,
+        background: $link-background-states,
+        color: $link-color-states,
+        text-decoration-color: $link-text-decoration-color-states,
+      )
+    );
   }
 }

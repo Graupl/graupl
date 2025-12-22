@@ -7,12 +7,18 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Navigation selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $navigation-selector-base: $selector-base !default;
 $navigation-selector: "navigation" !default;
+$navigation-theme-selector-base: $modifier-selector-base !default;
+$navigation-theme-selector-prefix: "" !default;
 $navigation-toggle-selector-base: $selector-base !default;
 $navigation-toggle-selector: "navigation-toggle" !default;
 $navigation-branding-selector-base: $selector-base !default;
@@ -28,3 +34,32 @@ $navigation-branding-disabled-text-decoration: $navigation-branding-initial-text
 $navigation-branding-initial-text-decoration-style: solid !default;
 $navigation-branding-final-text-decoration-style: $navigation-branding-initial-text-decoration-style !default;
 $navigation-branding-disabled-text-decoration-style: $navigation-branding-initial-text-decoration-style !default;
+
+// Navigation state theme defaults.
+// This map is used to define the default colour shades for the
+// themed navigation bases.
+//
+// e.g.
+// Primary navigations will use primary--900 as the text colour and primary--700 as the border colour.
+//
+// Secondary/tertiary navigations will use the same shade for their respective colours.
+$-navigation-theme-mappings: (
+  color: 900,
+  background: 100,
+);
+$navigation-theme-mappings: () !default;
+
+// Merge the custom navigation state theme map with the default one.
+@if $generate-base-theme-map {
+  $navigation-theme-mappings: map.merge(
+    $-navigation-theme-mappings,
+    $navigation-theme-mappings
+  );
+}
+
+$-navigation-theme-map: theme.generate-property-map($navigation-theme-mappings);
+$navigation-theme-map: () !default;
+$navigation-theme-map: map.deep-merge(
+  $-navigation-theme-map,
+  $navigation-theme-map
+);

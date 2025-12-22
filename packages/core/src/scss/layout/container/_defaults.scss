@@ -7,10 +7,14 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "sass:list";
 
 // Container selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$force-container-chaining: false !default;
+$generate-forced-container-selectors: true !default;
+$show-warnings: true !default;
 $container-selector-base: $selector-base !default;
 $container-selector: "container" !default;
 $container-breakout-selector-base: $selector-base !default;
@@ -35,3 +39,14 @@ $container-inner-selector-prefix: "inner-" !default;
 $container-breakout-width: 4ch !default;
 $container-feature-width: 10ch !default;
 $container-sidebar-width: 26ch !default;
+
+// Forced container selectors.
+$-forced-container-selectors: (article, aside, div, section);
+$forced-container-selectors: () !default;
+
+@if $generate-forced-container-selectors {
+  $forced-container-selectors: list.join(
+    $-forced-container-selectors,
+    $forced-container-selectors
+  );
+}

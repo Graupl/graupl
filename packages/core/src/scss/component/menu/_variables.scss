@@ -42,12 +42,12 @@
 // | --graupl-submenu-column-gap                           | var(--graupl-menu-column-gap)                                                                                                                                                                       |
 // | --graupl-submenu-row-gap                              | var(--graupl-menu-row-gap)                                                                                                                                                                          |
 // | --graupl-submenu-gap                                  | var(--graupl-submenu-column-gap) var(--graupl-submenu-row-gap)                                                                                                                                      |
-// | --graupl-submenu-show-display                         | flex                                                                                                                                                                                  |
-// | --graupl-submenu-hide-display                         | none                                                                                                                                                                                  |
-// | --graupl-submenu-display                              | none                                                                                                                                                                                  |
+// | --graupl-submenu-show-display                         | flex                                                                                                                                                                                                |
+// | --graupl-submenu-hide-display                         | none                                                                                                                                                                                                |
+// | --graupl-submenu-display                              | none                                                                                                                                                                                                |
 // | --graupl-submenu-background                           | var(--graupl-menu-background)                                                                                                                                                                       |
 // | --graupl-submenu-color                                | var(--graupl-menu-color)                                                                                                                                                                            |
-// | --graupl-submenu-border-color                         | var(--graupl-submenu-color)                                                                                                                                                                         |
+// | --graupl-submenu-border-color                         | var(--graupl-menu-border-color)                                                                                                                                                                     |
 // | --graupl-submenu-border-top-left-radius               | var(--graupl-border-top-left-radius)                                                                                                                                                                |
 // | --graupl-submenu-border-top-right-radius              | var(--graupl-border-top-right-radius)                                                                                                                                                               |
 // | --graupl-submenu-border-bottom-left-radius            | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
@@ -83,9 +83,9 @@
 // | --graupl-menu-link-transform                          | none                                                                                                                                                                                                |
 // | --graupl-menu-link-visited-transform                  | var(--graupl-menu-link-transform)                                                                                                                                                                   |
 // | --graupl-menu-link-focus-transform                    | var(--graupl-menu-link-transform)                                                                                                                                                                   |
-// | --graupl-menu-link-hover-transform                    | none                                                                                                                                                                        |
+// | --graupl-menu-link-hover-transform                    | none                                                                                                                                                                                                |
 // | --graupl-menu-link-active-transform                   | var(--graupl-menu-link-hover-transform)                                                                                                                                                             |
-// | --graupl-menu-link-disabled-transform                 | none                                                                                                                                                                        |
+// | --graupl-menu-link-disabled-transform                 | none                                                                                                                                                                                                |
 // | --graupl-menu-link-column-gap                         | var(--graupl-menu-link-padding-x)                                                                                                                                                                   |
 // | --graupl-menu-link-row-gap                            | var(--graupl-spacer-0)                                                                                                                                                                              |
 // | --graupl-menu-link-gap                                | var(--graupl-menu-link-column-gap) var(--graupl-menu-link-row-gap)                                                                                                                                  |
@@ -104,9 +104,9 @@
 // | --graupl-menu-link-text-decoration                    | none                                                                                                                                                                                                |
 // | --graupl-menu-link-visited-text-decoration            | var(--graupl-menu-link-text-decoration)                                                                                                                                                             |
 // | --graupl-menu-link-focus-text-decoration              | var(--graupl-menu-link-text-decoration)                                                                                                                                                             |
-// | --graupl-menu-link-hover-text-decoration              | none                                                                                                                                                                  |
+// | --graupl-menu-link-hover-text-decoration              | none                                                                                                                                                                                                |
 // | --graupl-menu-link-active-text-decoration             | var(--graupl-menu-link-hover-text-decoration)                                                                                                                                                       |
-// | --graupl-menu-link-disabled-text-decoration           | none                                                                                                                                                                  |
+// | --graupl-menu-link-disabled-text-decoration           | none                                                                                                                                                                                                |
 // | --graupl-menu-link-text-decoration-thickness          | var(--graupl-border-width)                                                                                                                                                                          |
 // | --graupl-menu-link-visited-text-decoration-thickness  | var(--graupl-menu-link-text-decoration-thickness)                                                                                                                                                   |
 // | --graupl-menu-link-focus-text-decoration-thickness    | var(--graupl-menu-link-text-decoration-thickness)                                                                                                                                                   |
@@ -116,9 +116,9 @@
 // | --graupl-menu-link-text-decoration-style              | solid                                                                                                                                                                                               |
 // | --graupl-menu-link-visited-text-decoration-style      | var(--graupl-menu-link-text-decoration-style)                                                                                                                                                       |
 // | --graupl-menu-link-focus-text-decoration-style        | var(--graupl-menu-link-text-decoration-style)                                                                                                                                                       |
-// | --graupl-menu-link-hover-text-decoration-style        | solid                                                                                                                                                            |
+// | --graupl-menu-link-hover-text-decoration-style        | solid                                                                                                                                                                                               |
 // | --graupl-menu-link-active-text-decoration-style       | var(--graupl-menu-link-hover-text-decoration-style)                                                                                                                                                 |
-// | --graupl-menu-link-disabled-text-decoration-style     | solid                                                                                                                                                            |
+// | --graupl-menu-link-disabled-text-decoration-style     | solid                                                                                                                                                                                               |
 // | --graupl-menu-link-text-decoration-color              | var(--graupl-menu-link-color)                                                                                                                                                                       |
 // | --graupl-menu-link-visited-text-decoration-color      | var(--graupl-menu-link-visited-color)                                                                                                                                                               |
 // | --graupl-menu-link-focus-text-decoration-color        | var(--graupl-menu-link-focus-color)                                                                                                                                                                 |
@@ -415,7 +415,7 @@ $submenu-color: var(--#{root-defaults.$prefix}submenu-color, #{$menu-color});
 // --graupl-submenu-border-color
 $submenu-border-color: var(
   --#{root-defaults.$prefix}submenu-border-color,
-  #{$submenu-color}
+  #{$menu-border-color}
 );
 
 // --graupl-submenu-border-top-left-radius
@@ -659,6 +659,14 @@ $menu-link-disabled-transform: var(
   --#{root-defaults.$prefix}menu-link-disabled-transform,
   #{defaults.$menu-link-disabled-transform}
 );
+$menu-link-transform-states: (
+  default: $menu-link-transform,
+  visited: $menu-link-visited-transform,
+  focus: $menu-link-focus-transform,
+  hover: $menu-link-hover-transform,
+  active: $menu-link-active-transform,
+  disabled: $menu-link-disabled-transform,
+);
 
 // Menu link gap properties.
 // --graupl-menu-link-column-gap
@@ -715,6 +723,14 @@ $menu-link-disabled-background: var(
   --#{root-defaults.$prefix}menu-link-disabled-background,
   #{color.$background}
 );
+$menu-link-background-states: (
+  default: $menu-link-background,
+  visited: $menu-link-visited-background,
+  focus: $menu-link-focus-background,
+  hover: $menu-link-hover-background,
+  active: $menu-link-active-background,
+  disabled: $menu-link-disabled-background,
+);
 
 // --graupl-menu-link-color
 $menu-link-color: var(
@@ -750,6 +766,14 @@ $menu-link-active-color: var(
 $menu-link-disabled-color: var(
   --#{root-defaults.$prefix}menu-link-disabled-color,
   #{theme.get(primary, 200)}
+);
+$menu-link-color-states: (
+  default: $menu-link-color,
+  visited: $menu-link-visited-color,
+  focus: $menu-link-focus-color,
+  hover: $menu-link-hover-color,
+  active: $menu-link-active-color,
+  disabled: $menu-link-disabled-color,
 );
 
 // Menu link text decoration properties.
@@ -788,6 +812,14 @@ $menu-link-disabled-text-decoration: var(
   --#{root-defaults.$prefix}menu-link-disabled-text-decoration,
   #{defaults.$menu-link-disabled-text-decoration}
 );
+$menu-link-text-decoration-states: (
+  default: $menu-link-text-decoration,
+  visited: $menu-link-visited-text-decoration,
+  focus: $menu-link-focus-text-decoration,
+  hover: $menu-link-hover-text-decoration,
+  active: $menu-link-active-text-decoration,
+  disabled: $menu-link-disabled-text-decoration,
+);
 
 // --graupl-menu-link-text-decoration-thickness
 $menu-link-text-decoration-thickness: var(
@@ -823,6 +855,14 @@ $menu-link-active-text-decoration-thickness: var(
 $menu-link-disabled-text-decoration-thickness: var(
   --#{root-defaults.$prefix}menu-link-disabled-text-decoration-thickness,
   #{root-variables.$border-width}
+);
+$menu-link-text-decoration-thickness-states: (
+  default: $menu-link-text-decoration-thickness,
+  visited: $menu-link-visited-text-decoration-thickness,
+  focus: $menu-link-focus-text-decoration-thickness,
+  hover: $menu-link-hover-text-decoration-thickness,
+  active: $menu-link-active-text-decoration-thickness,
+  disabled: $menu-link-disabled-text-decoration-thickness,
 );
 
 // --graupl-menu-link-text-decoration-style
@@ -860,6 +900,14 @@ $menu-link-disabled-text-decoration-style: var(
   --#{root-defaults.$prefix}menu-link-disabled-text-decoration-style,
   #{defaults.$menu-link-disabled-text-decoration-style}
 );
+$menu-link-text-decoration-style-states: (
+  default: $menu-link-text-decoration-style,
+  visited: $menu-link-visited-text-decoration-style,
+  focus: $menu-link-focus-text-decoration-style,
+  hover: $menu-link-hover-text-decoration-style,
+  active: $menu-link-active-text-decoration-style,
+  disabled: $menu-link-disabled-text-decoration-style,
+);
 
 // --graupl-menu-link-text-decoration-color
 $menu-link-text-decoration-color: var(
@@ -895,6 +943,14 @@ $menu-link-active-text-decoration-color: var(
 $menu-link-disabled-text-decoration-color: var(
   --#{root-defaults.$prefix}menu-link-disabled-text-decoration-color,
   #{$menu-link-disabled-color}
+);
+$menu-link-text-decoration-color-states: (
+  default: $menu-link-text-decoration-color,
+  visited: $menu-link-visited-text-decoration-color,
+  focus: $menu-link-focus-text-decoration-color,
+  hover: $menu-link-hover-text-decoration-color,
+  active: $menu-link-active-text-decoration-color,
+  disabled: $menu-link-disabled-text-decoration-color,
 );
 
 // Menu link border properties.
@@ -1026,6 +1082,14 @@ $menu-link-active-border-color: var(
 $menu-link-disabled-border-color: var(
   --#{root-defaults.$prefix}menu-link-disabled-border-color,
   #{$menu-link-disabled-color}
+);
+$menu-link-border-color-states: (
+  default: $menu-link-border-color,
+  visited: $menu-link-visited-border-color,
+  focus: $menu-link-focus-border-color,
+  hover: $menu-link-hover-border-color,
+  active: $menu-link-active-border-color,
+  disabled: $menu-link-disabled-border-color,
 );
 
 // Submenu toggle properties.

@@ -7,12 +7,18 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Menu selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $menu-selector-base: $selector-base !default;
 $menu-selector: "menu" !default;
+$menu-theme-selector-base: $modifier-selector-base !default;
+$menu-theme-selector-prefix: "" !default;
 $submenu-selector-base: $selector-base !default;
 $submenu-selector: "submenu" !default;
 $menu-item-selector-base: $selector-base !default;
@@ -66,3 +72,28 @@ $menu-link-border-width: 0 !default;
 $submenu-toggle-transform: rotate(0deg) !default;
 $submenu-toggle-open-transform: rotate(-180deg) !default;
 $submenu-toggle-content: "'↓'" !default;
+
+// Menu state theme defaults.
+// This map is used to define the default colour shades for the
+// themed menu bases.
+//
+// e.g.
+// Primary menus will use primary--900 as the text colour and primary--700 as the border colour.
+//
+// Secondary/tertiary menus will use the same shade for their respective colours.
+$-menu-theme-mappings: (
+  color: 900,
+  border-color: 700,
+  link-hover-background: 700,
+  link-hover-color: 100,
+);
+$menu-theme-mappings: () !default;
+
+// Merge the custom menu state theme map with the default one.
+@if $generate-base-theme-map {
+  $menu-theme-mappings: map.merge($-menu-theme-mappings, $menu-theme-mappings);
+}
+
+$-menu-theme-map: theme.generate-property-map($menu-theme-mappings);
+$menu-theme-map: () !default;
+$menu-theme-map: map.deep-merge($-menu-theme-map, $menu-theme-map);

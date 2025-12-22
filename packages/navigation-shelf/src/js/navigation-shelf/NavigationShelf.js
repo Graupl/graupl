@@ -199,22 +199,49 @@ class NavigationShelf {
   _open = false;
 
   /**
-   * The width of the screen (in pixels) that the menu will automatically open/close itself.
+   * The width of the screen that the menu will automatically open/close itself.
    *
    * @protected
    *
-   * @type {number}
+   * @type {string}
    */
-  _breakpointWidth = 1180;
+  _breakpointWidth = "1023px";
 
   /**
-   * This ResizeObserver for the navigation shelf.
+   * The media query to use when automatically opening/closing the disclosure
+   *
+   * @type {string}
+   */
+  _mediaQueryString = "";
+
+  /**
+   * This MediaQueryList for the disclosure.
    *
    * @protected
    *
-   * @type {ResizeObserver|null}
+   * @type {MediaQueryList|null}
    */
-  _observer = null;
+  _mediaQueryList = null;
+
+  /**
+   * A callback for media query list events
+   *
+   * @protected
+   *
+   * @type {Function}
+   *
+   * @param {MediaQueryListEvent} event - The event.
+   */
+  _mediaQueryListEventCallback = (event) => {
+    if (event.matches && this.isOpen) {
+      this.close({
+        preserveLock: this.shouldBeLocked,
+      });
+    } else if (!event.matches && this.shouldBeLocked && !this.isOpen) {
+      this._locked.reset();
+      this.lock({ force: true });
+    }
+  };
 
   /**
    * The event that is triggered when the shelf expands.
@@ -402,6 +429,7 @@ class NavigationShelf {
     leaveDelay = -1,
     locked = false,
     side = "left",
+    mediaQuery = "",
     prefix = "graupl-",
     initializeClass = "initializing",
     initialize = false,
@@ -435,6 +463,7 @@ class NavigationShelf {
 
     // Set locked state.
     this._locked = new TransactionalValue(locked);
+    this._mediaQueryString = mediaQuery || "";
 
     // Set side.
     this._side = side;
@@ -1385,44 +1414,16 @@ class NavigationShelf {
    * @protected
    */
   _handleResize() {
-    if (this._breakpointWidth <= 0) {
+    if (this._breakpointWidth === "") {
       return;
     }
 
-    let width = 0;
-
-    this._observer = new ResizeObserver((entries) => {
-      requestAnimationFrame(() => {
-        for (const entry of entries) {
-          const boxSize = Array.isArray(entry.contentBoxSize)
-            ? entry.contentBoxSize[0]
-            : entry.contentBoxSize;
-          const inlineSize =
-            boxSize && typeof boxSize.inlineSize === "number"
-              ? boxSize.inlineSize
-              : entry.contentRect.width;
-
-          if (typeof inlineSize !== "number") continue;
-
-          if (width === inlineSize) continue;
-
-          const belowBreakpoint = inlineSize <= this._breakpointWidth;
-          const aboveBreakpoint = inlineSize > this._breakpointWidth;
-
-          if (belowBreakpoint && this.isOpen) {
-            this.close({
-              preserveLock: this.shouldBeLocked,
-            });
-          } else if (aboveBreakpoint && this.shouldBeLocked && !this.isOpen) {
-            this._locked.reset();
-            this.lock({ force: true });
-          }
-
-          width = inlineSize;
-        }
-      });
-    });
-    this._observer.observe(document.body);
+    this._mediaQueryList = window.matchMedia(this.mediaQuery);
+    this._mediaQueryList.addEventListener(
+      "change",
+      this._mediaQueryListEventCallback
+    );
+    this._mediaQueryListEventCallback(this._mediaQueryList);
   }
 
   _handleFocus() {

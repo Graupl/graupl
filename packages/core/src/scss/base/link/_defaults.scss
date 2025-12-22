@@ -7,12 +7,18 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Link selectors.
 $selector-base: root-defaults.$element-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $link-selector-base: $selector-base !default;
 $link-selector: "a" !default;
+$link-theme-prefix-selector-base: $modifier-selector-base !default;
+$link-theme-prefix-selector: "" !default;
 $stretched-link-selector-base: $modifier-selector-base !default;
 $stretched-link-selector: "stretched" !default;
 $stretched-link-pseudo-selector: "before" !default;
@@ -33,3 +39,28 @@ $link-min-height: auto;
 
 // Stretched link properties.
 $stretched-link-z-index: 5 !default;
+
+// Link theme defaults.
+// This map is used to define the default colour shades for the
+// themed link bases.
+//
+// e.g.
+// Primary links will use primary--700 as the header background,
+// and primary--100 as the header text colour.
+//
+// Secondary/tertiary links will use the same shade for their respective colours.
+$-link-theme-mappings: (
+  color: 700,
+  hover-color: 400,
+  disabled-color: 200,
+);
+$link-theme-mappings: () !default;
+
+// Merge the custom link theme map with the default one.
+@if $generate-base-theme-map {
+  $link-theme-mappings: map.merge($-link-theme-mappings, $link-theme-mappings);
+}
+
+$-link-theme-map: theme.generate-property-map($link-theme-mappings);
+$link-theme-map: () !default;
+$link-theme-map: map.deep-merge($-link-theme-map, $link-theme-map);
