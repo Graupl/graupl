@@ -421,7 +421,7 @@ class AccordionItem extends Component {
     emit = true,
     transition = true,
   } = {}) {
-    if (!this._open && !force) return;
+    if (!this.isOpen && !force) return;
 
     if (
       !this.elements.parent.allowNoExpand &&

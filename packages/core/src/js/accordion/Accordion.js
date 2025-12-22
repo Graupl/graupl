@@ -297,6 +297,18 @@ class Accordion extends Component {
 
       // Store the component.
       this._store();
+
+      // Handle enabling/disabling controls based on options.
+      if (this.dom.expandController.length > 0 && !this.allowMultipleExpand) {
+        this.dom.expandController.forEach((control) => {
+          control.setAttribute("disabled", "disabled");
+        });
+      }
+      if (this.dom.collapseController.length > 0 && !this.allowNoExpand) {
+        this.dom.collapseController.forEach((control) => {
+          control.setAttribute("disabled", "disabled");
+        });
+      }
     } catch (error) {
       console.error(error);
     } finally {
@@ -514,6 +526,18 @@ class Accordion extends Component {
 
     if (this._allowMultipleExpand !== value) {
       this._allowMultipleExpand = value;
+
+      if (this.dom.expandController.length > 0) {
+        if (value) {
+          this.dom.expandController.forEach((control) => {
+            control.removeAttribute("disabled");
+          });
+        } else {
+          this.dom.expandController.forEach((control) => {
+            control.setAttribute("disabled", "disabled");
+          });
+        }
+      }
     }
   }
 
@@ -533,6 +557,18 @@ class Accordion extends Component {
 
     if (this._allowNoExpand !== value) {
       this._allowNoExpand = value;
+
+      if (this.dom.collapseController.length > 0) {
+        if (value) {
+          this.dom.collapseController.forEach((control) => {
+            control.removeAttribute("disabled");
+          });
+        } else {
+          this.dom.collapseController.forEach((control) => {
+            control.setAttribute("disabled", "disabled");
+          });
+        }
+      }
     }
   }
 
@@ -703,6 +739,7 @@ class Accordion extends Component {
     this.elements.accordionItems.forEach((accordionItem, index) => {
       accordionItem.dom.toggle.addEventListener("pointerup", () => {
         this.currentChild = index;
+        this.currentEvent = "mouse";
         accordionItem.toggle();
       });
     });
@@ -710,12 +747,18 @@ class Accordion extends Component {
     // Clicks for the accordion controls.
     this.dom.expandController.forEach((control) => {
       control.addEventListener("pointerup", () => {
-        this.openChildren();
+        this.currentEvent = "mouse";
+        if (this.allowMultipleExpand) {
+          this.openChildren();
+        }
       });
     });
     this.dom.collapseController.forEach((control) => {
       control.addEventListener("pointerup", () => {
-        this.closeChildren();
+        this.currentEvent = "mouse";
+        if (this.allowNoExpand) {
+          this.closeChildren();
+        }
       });
     });
   }
