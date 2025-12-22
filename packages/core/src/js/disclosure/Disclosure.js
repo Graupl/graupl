@@ -143,38 +143,48 @@ class Disclosure extends Component {
   _storageKey = "disclosures";
 
   /**
-   * The event that is triggered when the disclosure expands.
+   * Custom events that can be triggered throughout the disclosure.
    *
    * @protected
    *
-   * @event grauplDisclosureExpand
-   *
-   * @type {CustomEvent}
-   *
-   * @property {boolean}            bubbles - A flag to bubble the event.
-   * @property {Object<Disclosure>} details - The details object containing the Disclosure itself.
+   * @type {Object<CustomEvent>}
    */
-  _expandEvent = new CustomEvent("grauplDisclosureExpand", {
-    bubbles: true,
-    detail: { disclosure: this },
-  });
-
-  /**
-   * The event that is triggered when the disclosure collapses.
-   *
-   * @protected
-   *
-   * @event grauplDisclosureCollapse
-   *
-   * @type {CustomEvent}
-   *
-   * @property {boolean}            bubbles - A flag to bubble the event.
-   * @property {Object<Disclosure>} details - The details object containing the Disclosure itself.
-   */
-  _collapseEvent = new CustomEvent("grauplDisclosureCollapse", {
-    bubbles: true,
-    detail: { disclosure: this },
-  });
+  _events = {
+    /**
+     * The event that is triggered when the disclosure is shown.
+     *
+     * @event grauplDisclosureExpand
+     *
+     * @type {CustomEvent}
+     *
+     * @property {boolean}            bubbles           - A flag to bubble the event
+     * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+     * @property {Disclosure}         detail.disclosure - The disclosure.
+     */
+    expand: new CustomEvent("grauplDisclosureExpand", {
+      bubbles: true,
+      detail: {
+        disclosure: this,
+      },
+    }),
+    /**
+     * The event that is triggered when the disclosure is hidden.
+     *
+     * @event grauplDisclosureCollapse
+     *
+     * @type {CustomEvent}
+     *
+     * @property {boolean}            bubbles           - A flag to bubble the event
+     * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+     * @property {Disclosure}         detail.disclosure - The disclosure.
+     */
+    collapse: new CustomEvent("grauplDisclosureCollapse", {
+      bubbles: true,
+      detail: {
+        disclosure: this,
+      },
+    }),
+  };
 
   /**
    * Constructs a new `Disclosure`.
@@ -694,7 +704,7 @@ class Disclosure extends Component {
     this.dom.content.removeAttribute("inert");
 
     if (emit) {
-      this.dom.controller.dispatchEvent(this._expandEvent);
+      this._dispatchEvent("expand", this.dom.controller);
     }
   }
 
@@ -747,7 +757,7 @@ class Disclosure extends Component {
     this.dom.content.setAttribute("inert", "true");
 
     if (emit) {
-      this.dom.controller.dispatchEvent(this._collapseEvent);
+      this._dispatchEvent("collapse", this.dom.controller);
     }
   }
 
