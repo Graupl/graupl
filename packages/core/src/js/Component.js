@@ -11,7 +11,7 @@ import {
   isValidState,
   isValidEvent,
 } from "./validate.js";
-import storage from "../storage.js";
+import storage from "./storage.js";
 
 class Component {
   /**
@@ -56,17 +56,30 @@ class Component {
    * @protected
    *
    * @type {Object<string, string[]>}
+   *
+   * @
    */
-  _classes = {};
+  _classes = {
+    initialize: "",
+  };
 
   /**
-   * The duration times (in milliseconds) for variouse aspects throughout the component.
+   * The duration times (in milliseconds) for various aspects throughout the component.
    *
    * @protected
    *
    * @type {Object<number>}
    */
   _durations = {};
+
+  /**
+   * The delay times (in milliseconds) for various aspects throughout the component.
+   *
+   * @protected
+   *
+   * @type {Object<number>}
+   */
+  _delays = {};
 
   /**
    * The current state of the component's focus.
@@ -112,7 +125,7 @@ class Component {
   _mediaQueryList = null;
 
   /**
-   * A callback for media query list events
+   * A callback for media query list events.
    *
    * @protected
    *
@@ -128,6 +141,33 @@ class Component {
       // Do something else.
     }
   };
+
+  /**
+   * Intervals throughout the component.
+   *
+   * @protected
+   *
+   * @type {Object<Function>}
+   */
+  _intervals = {};
+
+  /**
+   * Timeouts throughout the component.
+   *
+   * @protected
+   *
+   * @type {Object<Function>}
+   */
+  _timeouts = {};
+
+  /**
+   * Custom events that can be triggered throughout the component.
+   *
+   * @protected
+   *
+   * @type {Object<CustomEvent>}
+   */
+  _events = {};
 
   /**
    * The prefix used for CSS custom properties and attributes.
@@ -154,7 +194,7 @@ class Component {
    *
    * @type {string}
    */
-  _storageKey = "component";
+  _storageKey = "components";
 
   /**
    * The main ID of the component.
@@ -190,13 +230,11 @@ class Component {
    * @param {?string}            [options.prefix = graupl-]               - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                     - The key used to generate IDs throughout the component.
    * @param {?(string|string[])} [options.initializeClass = initializing] - The class(es) to apply when the component is initializing.
-   * @param {boolean}            [options.initialize = false]             - A flag to initialize the component immediately upon creation.
    */
   constructor({
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
-    initialize = false,
   } = {}) {
     // Set the classes.
     this._classes.initialize = initializeClass || "";
@@ -204,12 +242,11 @@ class Component {
     // Set the prefix and key.
     this._prefix = prefix || "";
     this._key = key || "";
-
-    if (initialize) {
-      this.initialize();
-    }
   }
 
+  /**
+   * Initialize the component.
+   */
   initialize() {
     try {
       if (!this._validate()) {
@@ -218,35 +255,13 @@ class Component {
         );
       }
 
-      // Generate the key.
       this._generateKey();
-
-      // Set up the DOM.
-      this._setDOMElements();
-      this._setIds();
-      this._setAttributes();
-      this._setCustomProps();
-
-      // Create child elements.
-      this._createChildElements();
-
-      // Handle events.
-      this._handleMediaMatch();
-      this._handleFocus();
-      this._handleClick();
-      this._handleKeydown();
-      this._handleKeyup();
-
-      // Set up the storage.
-      storage.initializeStorage(this._storageKey);
-      storage.pushToStorage(
-        this._storageKey,
-        this._id !== "" ? this._id : this._key,
-        this
-      );
     } catch (error) {
       console.error(error);
     }
+  }
+  init() {
+    this.initialize();
   }
 
   /**
@@ -302,6 +317,90 @@ class Component {
   }
 
   /**
+   * The duration times (in milliseconds) for various aspects throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _durations
+   */
+  get durations() {
+    return this._durations;
+  }
+
+  /**
+   * The delay times (in milliseconds) for various aspects throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _delays
+   */
+  get delays() {
+    return this._delays;
+  }
+
+  /**
+   * Intervals throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _intervals
+   */
+  get intervals() {
+    return this._intervals;
+  }
+
+  /**
+   * Timeouts throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _timeouts
+   */
+  get timeouts() {
+    return this._timeouts;
+  }
+
+  /**
+   * Custom events that can be triggered throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object}
+   *
+   * @see _events
+   */
+  get events() {
+    return this._events;
+  }
+
+  /**
+   * The class(es) to apply when the component is initializing.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes.initialize
+   */
+  get initializeClass() {
+    return this._classes.initialize;
+  }
+
+  set initializeClass(value) {
+    isValidClassList({ initializeClass: value });
+
+    if (this._classes.initialize !== value) {
+      this._classes.initialize = value;
+    }
+  }
+
+  /**
    * The current state of the component's focus.
    *
    * @type {string}
@@ -313,7 +412,7 @@ class Component {
   }
 
   set focusState(value) {
-    isValidState({ value });
+    isValidState({ focusState: value });
 
     if (this._focusState !== value) {
       this._focusState = value;
@@ -332,7 +431,7 @@ class Component {
   }
 
   set currentEvent(value) {
-    isValidEvent({ value });
+    isValidEvent({ currentEvent: value });
 
     if (this._currentEvent !== value) {
       this._currentEvent = value;
@@ -351,7 +450,7 @@ class Component {
   }
 
   set breakpoint(value) {
-    isValidType("string", { value });
+    isValidType("string", { breakpoint: value });
 
     if (this._breakpoint !== value) {
       this._breakpoint = value;
@@ -374,7 +473,7 @@ class Component {
   }
 
   set mediaQuery(value) {
-    isValidType("string", { value });
+    isValidType("string", { mediaQuery: value });
 
     if (this._mediaQueryString !== value) {
       this._mediaQueryString = value;
@@ -518,7 +617,24 @@ class Component {
       }
     }
 
-    // State checks.
+    // Delay checks.
+    if (Object.keys(this.delays).length > 0) {
+      const delays = {};
+
+      // Loop through and add "Delay" to the end of each key in delays.
+      for (const delayName of Object.keys(this.delays)) {
+        delays[`${delayName}Delay`] = this.delays[delayName];
+      }
+
+      // Check the delays.
+      const delayChecks = isValidType("number", delays);
+
+      // Handle delay check failure.
+      if (!delayChecks.status) {
+        this._errors.push(delayChecks.error.message);
+        this._valid = false;
+      }
+    }
 
     // Key check.
     if (this._key !== "") {
@@ -567,9 +683,9 @@ class Component {
   }
 
   /**
-   * Sets attributes throughout the component.
+   * Sets ARIA attributes throughout the component.
    */
-  _setAttributes() {
+  _setAriaAttributes() {
     // Add functionality to set attributes throughout the component.
   }
 
@@ -597,42 +713,44 @@ class Component {
     elementType,
     { context, overwrite = true, strict = true } = {}
   ) {
-    if (typeof this.selectors[elementType] === "string") {
-      if (this._protectedDOMElements.includes(elementType)) {
-        throw new Error(
-          `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
-        );
-      }
-
-      // Make sure the context element is actually an HTMLELement.
-      isValidInstance(HTMLElement, { context });
-
-      // Get the all elements matching the selector in the context.
-      const domElements = Array.from(
-        context.querySelectorAll(this.selectors[elementType])
-      );
-
-      // Filter the elements so if `strict` is true, only direct children of the context are kept.
-      const filteredElements = domElements.filter((item) =>
-        strict ? item.parentElement === context : true
-      );
-
-      if (Array.isArray(this._dom[elementType])) {
-        if (overwrite) {
-          this._dom[elementType] = filteredElements;
-        } else {
-          this._dom[elementType] = [
-            ...this._dom[elementType],
-            ...filteredElements,
-          ];
-        }
-      } else {
-        this._dom[elementType] = filteredElements[0] || null;
-      }
-    } else {
+    // Make sure the element type is valid.
+    if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
         `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
       );
+    }
+
+    // Make sure the element type can actually be set through this method.
+    if (this._protectedDOMElements.includes(elementType)) {
+      throw new Error(
+        `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
+      );
+    }
+
+    // Make sure the context element is actually an HTMLELement.
+    isValidInstance(HTMLElement, { context });
+
+    // Get the all elements matching the selector in the context.
+    const domElements = Array.from(
+      context.querySelectorAll(this.selectors[elementType])
+    );
+
+    // Filter the elements so if `strict` is true, only direct children of the context are kept.
+    const filteredElements = domElements.filter((item) =>
+      strict ? item.parentElement === context : true
+    );
+
+    if (Array.isArray(this._dom[elementType])) {
+      if (overwrite) {
+        this._dom[elementType] = filteredElements;
+      } else {
+        this._dom[elementType] = [
+          ...this._dom[elementType],
+          ...filteredElements,
+        ];
+      }
+    } else {
+      this._dom[elementType] = filteredElements[0] || null;
     }
   }
 
@@ -646,22 +764,24 @@ class Component {
    * @param {string} elementType - The type of element to clear.
    */
   _resetDOMElementType(elementType) {
-    if (typeof this.selectors[elementType] === "string") {
-      if (this._protectedDOMElements.includes(elementType)) {
-        throw new Error(
-          `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
-        );
-      }
-
-      if (Array.isArray(this._dom[elementType])) {
-        this._dom[elementType] = [];
-      } else {
-        this._dom[elementType] = null;
-      }
-    } else {
+    // Make sure the element type is valid.
+    if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
         `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
       );
+    }
+
+    // Make sure the element type can actually be reset through this method.
+    if (this._protectedDOMElements.includes(elementType)) {
+      throw new Error(
+        `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
+      );
+    }
+
+    if (Array.isArray(this._dom[elementType])) {
+      this._dom[elementType] = [];
+    } else {
+      this._dom[elementType] = null;
     }
   }
 
@@ -737,6 +857,94 @@ class Component {
    */
   _handleKeyup() {
     // Add functionality to handle keyup events throughout the component.
+  }
+
+  /**
+   * Stores the component into the global Graupl storage object.
+   *
+   * @protected
+   */
+  _store() {
+    // Set up the storage.
+    storage.initializeStorage(this._storageKey);
+    storage.pushToStorage(
+      this._storageKey,
+      this._id !== "" ? this._id : this._key,
+      this
+    );
+  }
+
+  /**
+   * Sets an interval within the component.
+   *
+   * @protected
+   *
+   * @param {Function} [callback]         - The callback function.
+   * @param {number}   [delay]            - The time (in milliseconds) of the delay.
+   * @param {string}   [scope = _default] - The scope of the interval (used to store the interval in _intervals).
+   */
+  _setInterval(callback, delay, scope = "_default") {
+    this._clearInterval(scope);
+
+    this._intervals[scope] = setInterval(callback, delay);
+  }
+
+  /**
+   * Clears the interval within the component.
+   *
+   * @protected
+   *
+   * @param {string} [scope = _default] - The scope of the interval (used to get the interval from _intervals).
+   */
+  _clearInterval(scope = "_default") {
+    clearInterval(this._intervals[scope]);
+  }
+
+  /**
+   * Sets a timeout within the component.
+   *
+   * @protected
+   *
+   * @param {Function} [callback]         - The callback function.
+   * @param {number}   [delay]            - The time (in milliseconds) of the delay.
+   * @param {string}   [scope = _default] - The scope of the timeout (used to store the timeout in _timeouts).
+   */
+  _setTimeout(callback, delay, scope = "_default") {
+    this._clearTimeout(scope);
+
+    this._timeouts[scope] = setTimeout(callback, delay);
+  }
+
+  /**
+   * Clears the timeout within the component.
+   *
+   * @protected
+   *
+   * @param {string} [scope = _default] - The scope of the timeout (used to get the timeout from _timeouts).
+   */
+  _clearTimeout(scope = "_default") {
+    clearTimeout(this._timeouts[scope]);
+  }
+
+  /**
+   * Dispatch a custom event on an element in the DOM.
+   *
+   * @param {string}      eventType - The type of the event to dispatch.
+   * @param {HTMLElement} element   - The element to dispatch the event on.
+   */
+  _dispatchEvent(eventType, element) {
+    // Make sure the event type exists.
+    if (!Object.keys(this.events).includes(eventType)) {
+      throw new Error(
+        `Graupl ${this.constructor.name}: "${eventType}" is not a valid event type.`
+      );
+    }
+
+    // Make sure the element is actually an HTML Element.
+    isValidInstance(HTMLElement, { element });
+
+    // Dispatch the event.
+    element.dispatchEvent(this.events[eventType]);
   }
 }
 
