@@ -101,6 +101,7 @@ class TabToggle extends Component {
   };
 
   /**
+   * Constructs a new TabToggle.
    *
    * @param {object}      [options = {}]         - The options for generating the tab toggle.
    * @param {HTMLElement} options.toggleElement  - The tab toggle DOM element.
@@ -130,9 +131,9 @@ class TabToggle extends Component {
     this._setAriaAttributes();
 
     if (this.dom.toggle.getAttribute("aria-selected") === "true") {
-      this.show();
+      this.show({ force: true, emit: false, transition: false });
     } else {
-      this._conceal({ emit: false, transition: false });
+      this.hide({ force: true, emit: false, transition: false });
     }
   }
 
@@ -193,7 +194,7 @@ class TabToggle extends Component {
   /**
    * Reveal the toggle.
    *
-   * Sets the toggles's `aria-selected` to "true", adds the
+   * Sets the toggle's `aria-selected` to "true", adds the
    * open class to the content, and removes the closed class from the content.
    *
    * @protected
@@ -250,7 +251,7 @@ class TabToggle extends Component {
   /**
    * Conseals the toggle.
    *
-   * Sets the toggles's `aria-expanded` to "false", adds the
+   * Sets the toggle's `aria-expanded` to "false", adds the
    * close class to the content, and removes the open class from the content.
    *
    * @protected
@@ -307,18 +308,25 @@ class TabToggle extends Component {
   /**
    * Shows the tab toggle's content.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for showing the toggle.
-   * @param {boolean}         [options.force = false]         - Whether to force the show action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the active state.
+   * @param {Object<boolean>} [options = {}]                  - The options for showing the tab toggle.
+   * @param {boolean}         [options.force = false]         - Whether to force the open action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once revealed.
+   * @param {boolean}         [options.transition = true]     - Respect the transition class.
    */
-  show({ force = false, preserveState = false } = {}) {
+  show({
+    force = false,
+    preserveState = false,
+    emit = true,
+    transition = true,
+  } = {}) {
     if (this.isActive && !force) return;
 
     // Set the focus state of the parent tabs element.
     this.elements.parent.focusState = "self";
 
     // Reveal the toggle.
-    this._reveal();
+    this._reveal({ emit, transition });
 
     // Set the active state
     this._active.value = true;
@@ -337,18 +345,25 @@ class TabToggle extends Component {
   /**
    * Hides the tab toggle's content.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for hiding the toggle.
-   * @param {boolean}         [options.force = false]         - Whether to force the show action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the active state.
+   * @param {Object<boolean>} [options = {}]                  - The options for hiding the tab toggle.
+   * @param {boolean}         [options.force = false]         - Whether to force the hide action.
+   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once consealed.
+   * @param {boolean}         [options.transition = true]     - Respect the transition class.
    */
-  hide({ force = false, preserveState = false } = {}) {
+  hide({
+    force = false,
+    preserveState = false,
+    emit = true,
+    transition = true,
+  } = {}) {
     if (!this.isActive && !force) return;
 
     // Set the focus state of the parent tabs element.
     this.elements.parent.focusState = "none";
 
     // Conceal the toggle.
-    this._conceal();
+    this._conceal({ emit, transition });
 
     // Set the active state
     this._active.value = false;
