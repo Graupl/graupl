@@ -556,7 +556,7 @@ class Tabs extends Component {
    */
   _handleFocus() {
     this.elements.tabToggle.forEach((toggle, index) => {
-      toggle.dom.toggle.addEventListener("focus", () => {
+      this._addEventListener("focus", toggle.dom.toggle, () => {
         this.currentChild = index;
 
         if (this.isAutomatic) {
@@ -575,7 +575,7 @@ class Tabs extends Component {
    */
   _handleClick() {
     this.elements.tabToggle.forEach((toggle, index) => {
-      toggle.dom.toggle.addEventListener("pointerup", () => {
+      this._addEventListener("pointerup", toggle.dom.toggle, () => {
         this.currentChild = index;
         toggle.show();
       });
@@ -592,7 +592,7 @@ class Tabs extends Component {
    */
   _handleKeydown() {
     this.dom.tabToggle.forEach((tabToggle) => {
-      tabToggle.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", tabToggle, (event) => {
         const key = keyPress(event);
         const ToggleKeys = [
           "Space",
@@ -630,7 +630,7 @@ class Tabs extends Component {
    */
   _handleKeyup() {
     this.dom.tabToggle.forEach((tabToggle) => {
-      tabToggle.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", tabToggle, (event) => {
         const key = keyPress(event);
 
         switch (key) {

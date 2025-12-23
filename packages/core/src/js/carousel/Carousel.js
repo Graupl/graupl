@@ -772,13 +772,13 @@ class Carousel extends Component {
    */
   _handleFocus() {
     // Pause autoplay when anything in the carousel is focused.
-    this.dom.carousel.addEventListener("focusin", () => {
+    this._addEventListener("focusin", this.dom.carousel, () => {
       if (this.autoplay) {
         this._clearInterval();
       }
     });
 
-    this.dom.carousel.addEventListener("focusout", () => {
+    this._addEventListener("focusout", this.dom.carousel, () => {
       if (this.autoplay) {
         this._setInterval(() => this.activateNextItem(), this.transitionDelay);
       }
@@ -794,20 +794,20 @@ class Carousel extends Component {
    * - Adds a `pointerup` listener to each tab control to activate the corresponding item.
    */
   _handleClick() {
-    this.dom.next.addEventListener("pointerup", () => {
+    this._addEventListener("pointerup", this.dom.next, () => {
       this.activateNextItem();
     });
 
-    this.dom.previous.addEventListener("pointerup", () => {
+    this._addEventListener("pointerup", this.dom.previous, () => {
       this.activatePreviousItem();
     });
 
-    this.dom.autoplay.addEventListener("pointerup", () => {
+    this._addEventListener("pointerup", this.dom.autoplay, () => {
       this.toggleAutoplay();
     });
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      tab.addEventListener("pointerup", () => {
+      this._addEventListener("pointerup", tab, () => {
         if (this.currentItem > index) {
           this._currentAction = "previous";
         } else {
@@ -827,13 +827,13 @@ class Carousel extends Component {
    */
   _handleHover() {
     // Pause autoplay when anything in the carousel is hovered.
-    this.dom.carousel.addEventListener("pointerover", () => {
+    this._addEventListener("pointerover", this.dom.carousel, () => {
       if (this.autoplay) {
         this._clearInterval();
       }
     });
 
-    this.dom.carousel.addEventListener("pointerleave", () => {
+    this._addEventListener("pointerleave", this.dom.carousel, () => {
       if (this.autoplay) {
         this._setInterval(() => this.activateNextItem(), this.transitionDelay);
       }
@@ -850,7 +850,7 @@ class Carousel extends Component {
    */
   _handleKeydown() {
     this.dom.carouselControls.forEach((control) => {
-      control.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", control, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -865,7 +865,7 @@ class Carousel extends Component {
     });
 
     this.dom.carouselTabs.forEach((tab) => {
-      tab.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -890,7 +890,7 @@ class Carousel extends Component {
    */
   _handleKeyup() {
     // Activate the next item if the space or enter key on the next control.
-    this.dom.next.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.next, (event) => {
       const key = keyPress(event);
 
       switch (key) {
@@ -906,7 +906,7 @@ class Carousel extends Component {
     });
 
     // Activate the previous item if the space or enter key on the previous control.
-    this.dom.previous.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.previous, (event) => {
       const key = keyPress(event);
 
       switch (key) {
@@ -922,7 +922,7 @@ class Carousel extends Component {
     });
 
     // Toggle autoplay if the space or enter key on the autoplay control.
-    this.dom.autoplay.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.autoplay, (event) => {
       const key = keyPress(event);
 
       switch (key) {
@@ -939,7 +939,7 @@ class Carousel extends Component {
 
     // Activate the item if the space or enter key on the tab control.
     this.dom.carouselTabs.forEach((tab, index) => {
-      tab.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {

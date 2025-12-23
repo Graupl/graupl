@@ -722,7 +722,7 @@ class Accordion extends Component {
    */
   _handleFocus() {
     this.elements.accordionItems.forEach((accordionItem, index) => {
-      accordionItem.dom.toggle.addEventListener("focus", () => {
+      this._addEventListener("focus", accordionItem.dom.toggle, () => {
         this.currentChild = index;
       });
     });
@@ -737,7 +737,7 @@ class Accordion extends Component {
    */
   _handleClick() {
     this.elements.accordionItems.forEach((accordionItem, index) => {
-      accordionItem.dom.toggle.addEventListener("pointerup", () => {
+      this._addEventListener("pointerup", accordionItem.dom.toggle, () => {
         this.currentChild = index;
         this.currentEvent = "mouse";
         accordionItem.toggle();
@@ -746,7 +746,7 @@ class Accordion extends Component {
 
     // Clicks for the accordion controls.
     this.dom.expandController.forEach((control) => {
-      control.addEventListener("pointerup", () => {
+      this._addEventListener("pointerup", control, () => {
         this.currentEvent = "mouse";
         if (this.allowMultipleExpand) {
           this.openChildren();
@@ -754,7 +754,7 @@ class Accordion extends Component {
       });
     });
     this.dom.collapseController.forEach((control) => {
-      control.addEventListener("pointerup", () => {
+      this._addEventListener("pointerup", control, () => {
         this.currentEvent = "mouse";
         if (this.allowNoExpand) {
           this.closeChildren();
@@ -777,7 +777,7 @@ class Accordion extends Component {
    */
   _handleKeydown() {
     this.dom.accordionItemToggles.forEach((accordionToggle) => {
-      accordionToggle.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", accordionToggle, (event) => {
         const key = keyPress(event);
         const toggleKeys = ["Space", "Enter"];
 
@@ -796,7 +796,7 @@ class Accordion extends Component {
     });
 
     this.dom.accordionControls.forEach((control) => {
-      control.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", control, (event) => {
         const key = keyPress(event);
         const controllerKeys = ["Space", "Enter"];
 
@@ -829,7 +829,7 @@ class Accordion extends Component {
    */
   _handleKeyup() {
     this.dom.accordionItemToggles.forEach((accordionToggle) => {
-      accordionToggle.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", accordionToggle, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -870,7 +870,7 @@ class Accordion extends Component {
     });
 
     this.dom.expandController.forEach((control) => {
-      control.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", control, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -887,7 +887,7 @@ class Accordion extends Component {
     });
 
     this.dom.collapseController.forEach((control) => {
-      control.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", control, (event) => {
         const key = keyPress(event);
 
         switch (key) {

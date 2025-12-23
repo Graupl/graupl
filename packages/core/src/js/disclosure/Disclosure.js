@@ -767,7 +767,7 @@ class Disclosure extends Component {
    * - Adds a `focusout` listener to the disclosure so when the disclosure loses focus it will close.
    */
   _handleFocus() {
-    this.dom.disclosure.addEventListener("focusout", (event) => {
+    this._addEventListener("focusout", this.dom.disclosure, (event) => {
       if (
         !this.closeOnBlur ||
         this.currentEvent !== "keyboard" ||
@@ -789,7 +789,7 @@ class Disclosure extends Component {
    * - Adds a `pointerup` listener to the `document` so if the user clicks outside the disclosure it will close.
    */
   _handleClick() {
-    this.dom.controller.addEventListener("pointerup", (event) => {
+    this._addEventListener("pointerup", this.dom.controller, (event) => {
       this.currentEvent = "mouse";
 
       if (event.button !== 0) return;
@@ -798,7 +798,7 @@ class Disclosure extends Component {
       this.toggle();
     });
 
-    document.addEventListener("pointerup", (event) => {
+    this._addEventListener("pointerup", document, (event) => {
       if (this.focusState !== "self" || !this.closeOnBlur) return;
 
       this.currentEvent = "mouse";
@@ -823,7 +823,7 @@ class Disclosure extends Component {
    *   - Blocks propagation on "Escape" keys.
    */
   _handleKeydown() {
-    this.dom.controller.addEventListener("keydown", (event) => {
+    this._addEventListener("keydown", this.dom.controller, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
@@ -837,7 +837,7 @@ class Disclosure extends Component {
       }
     });
 
-    this.dom.disclosure.addEventListener("keydown", (event) => {
+    this._addEventListener("keydown", this.dom.disclosure, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
@@ -860,7 +860,7 @@ class Disclosure extends Component {
    *   - Closes the disclosure on "Escape" keys.
    */
   _handleKeyup() {
-    this.dom.controller.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.controller, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
@@ -876,7 +876,7 @@ class Disclosure extends Component {
       }
     });
 
-    this.dom.disclosure.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.disclosure, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
