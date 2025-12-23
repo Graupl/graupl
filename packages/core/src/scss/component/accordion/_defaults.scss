@@ -41,13 +41,13 @@ $accordion-item-transition-selector-base: $modifier-selector-base !default;
 $accordion-item-transition-selector: "transitioning" !default;
 $accordion-item-toggle-pseudo-selector: "after" !default;
 $accordion-expand-selector-base: $modifier-selector-base !default;
-$accordion-expand-selector: ".expand" !default;
+$accordion-expand-selector: ".expand-all" !default;
 $accordion-collapse-selector-base: $modifier-selector-base !default;
-$accordion-collapse-selector: ".collapse" !default;
-$accordion-control-selector-base: $modifier-selector-base !default;
-$accordion-control-selector: ".accordion-control" !default;
-$accordion-control-container-selector-base: $modifier-selector-base !default;
-$accordion-control-container-selector: ".accordion-control-container" !default;
+$accordion-collapse-selector: ".collapse-all" !default;
+$accordion-control-selector-base: $selector-base !default;
+$accordion-control-selector: "accordion-control" !default;
+$accordion-control-container-selector-base: $selector-base !default;
+$accordion-control-container-selector: "accordion-control-container" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-initial-transform: none !default;
@@ -55,13 +55,6 @@ $accordion-item-toggle-final-transform: $accordion-item-toggle-initial-transform
 $accordion-item-toggle-disabled-transform: $accordion-item-toggle-initial-transform !default;
 $accordion-item-toggle-pseudo-initial-transform: none !default;
 $accordion-item-toggle-pseudo-final-transform: rotate(-180deg);
-
-// Control transform properties.
-$accordion-control-initial-transform: none !default;
-$accordion-control-final-transform: $accordion-control-initial-transform !default;
-$accordion-control-disabled-transform: $accordion-control-initial-transform !default;
-$accordion-control-pseudo-initial-transform: none !default;
-$accordion-control-pseudo-final-transform: rotate(-180deg);
 
 // Toggle properties.
 $accordion-item-toggle-pseudo-content: "▼" !default;
@@ -87,6 +80,12 @@ $-accordion-theme-mappings: (
   item-toggle-hover-border-color: 700,
   item-toggle-disabled-color: 200,
   item-toggle-disabled-border-color: 200,
+  control-background: 100,
+  control-hover-color: 100,
+  control-hover-background: 700,
+  control-hover-border-color: 700,
+  control-disabled-color: 200,
+  control-disabled-border-color: 200,
 );
 $accordion-theme-mappings: () !default;
 
