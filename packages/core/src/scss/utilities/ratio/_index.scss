@@ -91,17 +91,16 @@
 
   // `.ratio`
   #{$selector-prefix}#{defaults.$ratio-selector} {
-    position: important.insert(relative, $override: defaults.$use-important);
     width: important.insert(100%, $override: defaults.$use-important);
+    aspect-ratio: $ratio;
 
-    &::before {
-      content: "";
-      display: important.insert(block, $override: defaults.$use-important);
-      padding-top: important.insert($ratio, $override: defaults.$use-important);
+    // &:has(.force-ratio)
+    &:has(#{$selector-prefix}#{defaults.$force-ratio-selector}) {
+      position: important.insert(relative, $override: defaults.$use-important);
     }
 
     // `.force-ratio`
-    .#{defaults.$force-ratio-selector} {
+    #{$selector-prefix}#{defaults.$force-ratio-selector} {
       position: important.insert(absolute, $override: defaults.$use-important);
       inset: important.insert(0, $override: defaults.$use-important);
       width: important.insert(100%, $override: defaults.$use-important);
