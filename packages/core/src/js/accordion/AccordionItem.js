@@ -400,7 +400,7 @@ class AccordionItem extends Component {
 
     // If the parent accordion only allows a single item to be open at a time,
     // then close all other items.
-    if (!this.elements.parent.allowMultipleExpand) {
+    if (!this.elements.parent.allowExpandMultiple) {
       this.unlockSiblings();
       this.closeSiblings();
     }
