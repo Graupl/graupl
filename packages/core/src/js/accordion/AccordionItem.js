@@ -277,14 +277,19 @@ class AccordionItem extends Component {
       requestAnimationFrame(() => {
         removeClass(closeClass, this.dom.item);
 
+        this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`;
+
         requestAnimationFrame(() => {
           addClass(openClass, this.dom.item);
 
+          this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height + this.dom.content.getBoundingClientRect().height}px`;
+
           requestAnimationFrame(() => {
-            this._setTimeout(
-              () => removeClass(transitionClass, this.dom.item),
-              openDuration
-            );
+            this._setTimeout(() => {
+              removeClass(transitionClass, this.dom.item);
+
+              this.dom.item.style.height = "";
+            }, openDuration);
           });
         });
       });
@@ -333,17 +338,22 @@ class AccordionItem extends Component {
     if (transition && transitionClass !== "") {
       addClass(transitionClass, this.dom.item);
 
+      this.dom.item.style.height = `${this.dom.item.getBoundingClientRect().height}px`;
+
       requestAnimationFrame(() => {
         removeClass(openClass, this.dom.item);
+
+        this.dom.item.style.height = `${this.dom.header.getBoundingClientRect().height}px`;
 
         requestAnimationFrame(() => {
           addClass(closeClass, this.dom.item);
 
           requestAnimationFrame(() => {
-            this._setTimeout(
-              () => removeClass(transitionClass, this.dom.item),
-              closeDuration
-            );
+            this._setTimeout(() => {
+              removeClass(transitionClass, this.dom.item);
+
+              this.dom.item.style.height = "";
+            }, closeDuration);
           });
         });
       });
