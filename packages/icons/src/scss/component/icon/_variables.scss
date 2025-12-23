@@ -3,6 +3,17 @@
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
+// Custom property defaults:
+// | Property                  | Default                   |
+// | ------------------------- | ------------------------- |
+// | --graupl-icon-display     | inline-block              |
+// | --graupl-icon-size        | 1.25em                    |
+// | --graupl-icon-width       | var(--graupl-icon-size)   |
+// | --graupl-icon-height      | var(--graupl-icon-size)   |
+// | --graupl-icon-color       | var(--graupl-color)       |
+// | --graupl-icon             | none                      |
+// | --graupl-icon-spacer      | var(--graupl-spacer-2)    |
+
 @use "defaults";
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/theme/color/variables" as color;

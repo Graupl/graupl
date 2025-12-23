@@ -16,40 +16,32 @@
 // @example
 // <button class="button icon-after">Button</button>
 
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/base/button/defaults" as button-defaults;
 @use "pkg:@graupl/core/src/base/button/variables" as button;
-@use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/mixins/layer" as *;
-@use "sass:map";
+@use "pkg:@graupl/core/src/mixins/theme";
+@use "../../component/icon/mixins" as icon;
+@use "../../component/icon/defaults" as icon-defaults;
 @use "variables" as *;
 
 @include layer(theme) {
   // .button
   #{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
-    --#{root-defaults.$prefix}icon-color: #{button.$button-color};
+    // &.icon, &.icon-before, &.icon-after
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-selector},
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-before-selector},
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-after-selector} {
+      @include icon.bind(button.$button-color, button.$button-color-states);
 
-    @each $state, $selectors in root-defaults.$state-selectors {
-      @each $selector in $selectors {
-        // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
-        &#{$selector} {
-          --#{root-defaults.$prefix}icon-color: #{map.get(
-              button.$button-color-states,
-              $state
-            )};
-
-          // If the state is disabled, we want that to supersede all other states.
-          @if $state == "disabled" {
-            @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
-              @each $sub-selector in $sub-selectors {
-                // e.g &:visited, &:focus-visible, &:hover, &:active
-                &#{$sub-selector} {
-                  --#{root-defaults.$prefix}icon-color: #{map.get(
-                      button.$button-color-states,
-                      $state
-                    )};
-                }
-              }
-            }
+      @if root-defaults.$themeable-components and button-defaults.$themeable {
+        @each $color, $map in button-defaults.$button-theme-map {
+          // &.primary, &.secondary, &.tertiary
+          &#{button-defaults.$button-theme-selector-base}#{button-defaults.$button-theme-selector-prefix}#{$color} {
+            @include icon.bind(
+              button.$button-color,
+              button.$button-color-states
+            );
           }
         }
       }
