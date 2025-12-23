@@ -40,6 +40,14 @@ $accordion-item-close-selector: "hide" !default;
 $accordion-item-transition-selector-base: $modifier-selector-base !default;
 $accordion-item-transition-selector: "transitioning" !default;
 $accordion-item-toggle-pseudo-selector: "after" !default;
+$accordion-expand-selector-base: $modifier-selector-base !default;
+$accordion-expand-selector: ".expand-all" !default;
+$accordion-collapse-selector-base: $modifier-selector-base !default;
+$accordion-collapse-selector: ".collapse-all" !default;
+$accordion-control-selector-base: $selector-base !default;
+$accordion-control-selector: "accordion-control" !default;
+$accordion-control-container-selector-base: $selector-base !default;
+$accordion-control-container-selector: "accordion-control-container" !default;
 
 // Toggle transform properties.
 $accordion-item-toggle-initial-transform: none !default;
@@ -72,6 +80,12 @@ $-accordion-theme-mappings: (
   item-toggle-hover-border-color: 700,
   item-toggle-disabled-color: 200,
   item-toggle-disabled-border-color: 200,
+  control-background: 100,
+  control-hover-color: 100,
+  control-hover-background: 700,
+  control-hover-border-color: 700,
+  control-disabled-color: 200,
+  control-disabled-border-color: 200,
 );
 $accordion-theme-mappings: () !default;
 
