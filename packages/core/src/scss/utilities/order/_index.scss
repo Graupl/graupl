@@ -96,17 +96,6 @@
     );
   }
 
-  // @for $i from 1 through defaults.$order-max-count {
-  //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
-
-  //   @include utility.create(
-  //     $selector,
-  //     order,
-  //     $i,
-  //     $important: defaults.$use-important
-  //   );
-  // }
-
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
@@ -123,18 +112,6 @@
           $screen: $screen-name
         );
       }
-
-      // @for $i from 1 through defaults.$order-max-count {
-      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
-
-      //   @include utility.create(
-      //     $selector,
-      //     order,
-      //     $i,
-      //     $important: defaults.$use-important,
-      //     $screen: $screen-name
-      //   );
-      // }
     }
   }
 
@@ -155,18 +132,6 @@
             $theme: $theme-name
           );
         }
-
-        // @for $i from 1 through defaults.$order-max-count {
-        //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
-
-        //   @include utility.create(
-        //     $selector,
-        //     order,
-        //     $i,
-        //     $important: defaults.$use-important,
-        //     $theme: $theme-name
-        //   );
-        // }
       }
     }
   }
@@ -187,18 +152,6 @@
           $state: $state-name
         );
       }
-
-      // @for $i from 1 through defaults.$order-max-count {
-      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
-
-      //   @include utility.create(
-      //     $selector,
-      //     order,
-      //     $i,
-      //     $important: defaults.$use-important,
-      //     $state: $state-name
-      //   );
-      // }
     }
   }
 
@@ -218,18 +171,6 @@
           $container: $container-name
         );
       }
-
-      // @for $i from 1 through defaults.$order-max-count {
-      //   $selector: #{$selector-prefix}#{defaults.$order-selector-prefix}#{$i};
-
-      //   @include utility.create(
-      //     $selector,
-      //     order,
-      //     $i,
-      //     $important: defaults.$use-important,
-      //     $container: $container-name
-      //   );
-      // }
     }
   }
 }
