@@ -161,6 +161,15 @@ class Component {
   _timeouts = {};
 
   /**
+   * Event listeners throughout the component.
+   *
+   * @protected
+   *
+   * @type {object[]}
+   */
+  _listeners = [];
+
+  /**
    * Custom events that can be triggered throughout the component.
    *
    * @protected
@@ -875,6 +884,18 @@ class Component {
   }
 
   /**
+   * Removes the component from the global Graupl storage object.
+   *
+   * @protected
+   */
+  _unstore() {
+    storage.removeFromStorage(
+      this._storageKey,
+      this._id !== "" ? this._id : this._key
+    );
+  }
+
+  /**
    * Sets an interval within the component.
    *
    * @protected
@@ -945,6 +966,75 @@ class Component {
 
     // Dispatch the event.
     element.dispatchEvent(this.events[eventType]);
+  }
+
+  /**
+   * Add an event listener to an element and register it within the component.
+   *
+   * @param {string}         type           - The type of event to listen for.
+   * @param {HTMLElement}    element        - The element to add the listener to.
+   * @param {Function}       listener       - The listener callback.
+   * @param {object|boolean} [options = {}] - Options to pass to the listener.
+   */
+  _addEventListener(type, element, listener, options = {}) {
+    // Add the listener.
+    element.addEventListener(type, listener, options);
+
+    // Store it in the component.
+    this._listeners.push({
+      type,
+      element,
+      listener,
+      options,
+    });
+  }
+
+  /**
+   * Remove an event listener to an element and unregister it within the component.
+   *
+   * @param {string}         type           - The type of event to listen for.
+   * @param {HTMLElement}    element        - The element to add the listener to.
+   * @param {Function}       listener       - The listener callback.
+   * @param {object|boolean} [options = {}] - Options to pass to the listener.
+   */
+  _removeEventListener(type, element, listener, options = {}) {
+    // Remove the listener.
+    element.removeEventListener(type, listener, options);
+
+    // Remove it from the component storage.
+    const index = this._listeners.indexOf({
+      type,
+      element,
+      listener,
+      options,
+    });
+
+    if (index !== -1) {
+      this._listeners.splice(index);
+    }
+  }
+
+  /**
+   * Removes all event listeners registered in the component.
+   *
+   * @protected
+   */
+  _removeEventListeners() {
+    this._listeners.forEach(({ type, element, listener, options }) => {
+      this._removeEventListener(type, element, listener, options);
+    });
+  }
+
+  /**
+   * Disposes of the current instantiated component.
+   *
+   * Removes all event listeners and delete's the object.
+   */
+  dispose() {
+    this._removeEventListeners();
+    this._unstore();
+
+    delete this;
   }
 }
 

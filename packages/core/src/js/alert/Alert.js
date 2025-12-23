@@ -553,7 +553,7 @@ class Alert extends Component {
       return;
     }
 
-    this.dom.controller.addEventListener("pointerup", () => this.hide());
+    this._addEventListener("pointerup", this.dom.controller, () => this.hide());
   }
 
   /**
@@ -569,7 +569,7 @@ class Alert extends Component {
       return;
     }
 
-    this.dom.controller.addEventListener("keydown", (event) => {
+    this._addEventListener("keydown", this.dom.controller, (event) => {
       const key = keyPress(event);
 
       // Prevent default behavior for space and enter keys.
@@ -590,7 +590,7 @@ class Alert extends Component {
       return;
     }
 
-    this.dom.controller.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.controller, (event) => {
       const key = keyPress(event);
 
       if (key === "Space" || key === "Enter") {
