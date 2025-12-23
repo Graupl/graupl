@@ -406,7 +406,7 @@ class Accordion extends Component {
    * @see _durations.open
    */
   get openDuration() {
-    return this._openDuration === -1
+    return this._durations.open === -1
       ? this.transitionDuration
       : this._durations.open;
   }
@@ -430,7 +430,7 @@ class Accordion extends Component {
    * @see _durations.close
    */
   get closeDuration() {
-    return this._closeDuration === -1
+    return this._durations.close === -1
       ? this.transitionDuration
       : this._durations.close;
   }
