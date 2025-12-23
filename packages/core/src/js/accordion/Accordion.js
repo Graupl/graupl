@@ -145,15 +145,15 @@ class Accordion extends Component {
   _expandMultiple = true;
 
   /**
-   * A flag to decide if no accordions can be opened at the same time.
+   * A flag to decide if all accordion items can be closed at the same time.
    *
-   * If set to false, at least one accordion must be open at all times.
+   * If set to false, at least one accordion items must be open at all times.
    *
    * @protected
    *
    * @type {boolean}
    */
-  _allowNoExpand = true;
+  _collapseAll = true;
 
   /**
    * The index of the current child node.
@@ -194,7 +194,7 @@ class Accordion extends Component {
    * @param {number}             [options.closeDuration = -1]                                               - The duration of the transition from "open" to "closed" states (in milliseconds).
    * @param {boolean}            [options.optionalKeySupport = false]                                       - A flag to determine if accordions can be navigated with arrows.
    * @param {boolean}            [options.allowExpandMultiple = true]                                       - A flag to determine if multiple accordions can be open at the same time.
-   * @param {boolean}            [options.allowNoExpand = true]                                             - A flag to determine if no accordions can be open at the same time.
+   * @param {boolean}            [options.allowCollapseAll = true]                                          - A flag to determine if no accordions can be open at the same time.
    * @param {boolean}            [options.automaticActivation = false]                                      - A flag to set if focusing a accordion item toggle will automatically activate it.
    * @param {?string}            [options.prefix = graupl-]                                                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                                                       - The key used to generate IDs throughout the accordion.
@@ -219,7 +219,7 @@ class Accordion extends Component {
     closeDuration = -1,
     optionalKeySupport = false,
     allowExpandMultiple = true,
-    allowNoExpand = true,
+    allowCollapseAll = true,
     automaticActivation = false,
     prefix = "graupl-",
     key = null,
@@ -264,7 +264,7 @@ class Accordion extends Component {
 
     // Set expand rules.
     this._expandMultiple = allowExpandMultiple;
-    this._allowNoExpand = allowNoExpand;
+    this._collapseAll = allowCollapseAll;
 
     if (initialize) {
       this.initialize();
@@ -304,7 +304,7 @@ class Accordion extends Component {
           control.setAttribute("disabled", "disabled");
         });
       }
-      if (this.dom.collapseController.length > 0 && !this.allowNoExpand) {
+      if (this.dom.collapseController.length > 0 && !this.allowCollapseAll) {
         this.dom.collapseController.forEach((control) => {
           control.setAttribute("disabled", "disabled");
         });
@@ -542,21 +542,21 @@ class Accordion extends Component {
   }
 
   /**
-   * A flag to decide if no accordions can be opened at the same time.
+   * A flag to decide if all accordion items can be closed at the same time.
    *
    * @type {boolean}
    *
-   * @see _allowNoExpand
+   * @see _collapseAll
    */
-  get allowNoExpand() {
-    return this._allowNoExpand;
+  get allowCollapseAll() {
+    return this._collapseAll;
   }
 
-  set allowNoExpand(value) {
-    isValidType("boolean", { allowNoExpand: value });
+  set allowCollapseAll(value) {
+    isValidType("boolean", { allowCollapseAll: value });
 
-    if (this._allowNoExpand !== value) {
-      this._allowNoExpand = value;
+    if (this._collapseAll !== value) {
+      this._collapseAll = value;
 
       if (this.dom.collapseController.length > 0) {
         if (value) {
@@ -587,7 +587,7 @@ class Accordion extends Component {
       automaticActivation: this._automatic,
       optionalKeySupport: this._optionalKeySupport,
       allowExpandMultiple: this._expandMultiple,
-      allowNoExpand: this._allowNoExpand,
+      allowCollapseAll: this._collapseAll,
     };
 
     // Check the booleans.
@@ -756,7 +756,7 @@ class Accordion extends Component {
     this.dom.collapseController.forEach((control) => {
       this._addEventListener("pointerup", control, () => {
         this.currentEvent = "mouse";
-        if (this.allowNoExpand) {
+        if (this.allowCollapseAll) {
           this.closeChildren();
         }
       });
@@ -896,7 +896,7 @@ class Accordion extends Component {
             preventEvent(event);
             this.currentEvent = "keyboard";
 
-            if (this.allowNoExpand) {
+            if (this.allowCollapseAll) {
               this.closeChildren();
             }
         }
