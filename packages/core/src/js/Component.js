@@ -378,6 +378,19 @@ class Component {
   }
 
   /**
+   * Event listeners throughout the component.
+   *
+   * @readonly
+   *
+   * @type {object[]}
+   *
+   * @see _listeners
+   */
+  get listeners() {
+    return this._listeners;
+  }
+
+  /**
    * Custom events that can be triggered throughout the component.
    *
    * @readonly
