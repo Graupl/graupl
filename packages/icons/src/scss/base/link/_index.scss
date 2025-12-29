@@ -16,40 +16,29 @@
 // @example
 // <a href="#" class="icon-after">Link</a>
 
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/base/link/defaults" as link-defaults;
 @use "pkg:@graupl/core/src/base/link/variables" as link;
-@use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/mixins/layer" as *;
-@use "sass:map";
+@use "pkg:@graupl/core/src/mixins/theme";
+@use "../../component/icon/mixins" as icon;
+@use "../../component/icon/defaults" as icon-defaults;
 @use "variables" as *;
 
 @include layer(theme) {
   // a
   #{link-defaults.$link-selector-base}#{link-defaults.$link-selector} {
-    --#{root-defaults.$prefix}icon-color: #{link.$link-color};
+    // &.icon, &.icon-before, &.icon-after
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-selector},
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-before-selector},
+    &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-after-selector} {
+      @include icon.bind(link.$link-color, link.$link-color-states);
 
-    @each $state, $selectors in root-defaults.$state-selectors {
-      @each $selector in $selectors {
-        // e.g &:visited, &:focus-visible, &:hover, &:active, &:disabled
-        &#{$selector} {
-          --#{root-defaults.$prefix}icon-color: #{map.get(
-              link.$link-color-states,
-              $state
-            )};
-
-          // If the state is disabled, we want that to supersede all other states.
-          @if $state == "disabled" {
-            @each $sub-state, $sub-selectors in root-defaults.$state-selectors {
-              @each $sub-selector in $sub-selectors {
-                // e.g &:visited, &:focus-visible, &:hover, &:active
-                &#{$sub-selector} {
-                  --#{root-defaults.$prefix}icon-color: #{map.get(
-                      link.$link-color-states,
-                      $state
-                    )};
-                }
-              }
-            }
+      @if root-defaults.$themeable-components and link-defaults.$themeable {
+        @each $color, $map in link-defaults.$link-theme-map {
+          // &.primary, &.secondary, &.tertiary
+          &#{link-defaults.$link-theme-selector-base}#{link-defaults.$link-theme-selector-prefix}#{$color} {
+            @include icon.bind(link.$link-color, link.$link-color-states);
           }
         }
       }
