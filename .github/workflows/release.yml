@@ -75,7 +75,7 @@ jobs:
       - name: Set up Node (npm registry)
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: "https://registry.npmjs.org/"
           scope: "@graupl"
 
@@ -110,7 +110,7 @@ jobs:
       - name: Set up Node (GitHub Packages)
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: "https://npm.pkg.github.com/"
           scope: "@graupl"
 
