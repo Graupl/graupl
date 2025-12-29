@@ -7,19 +7,22 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "pkg:@graupl/core/src/scss/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/theme";
 @use "sass:map";
 
 // Icon selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: true !default;
 $icon-selector-base: $selector-base !default;
 $icon-selector: "icon" !default;
 $icon-before-selector: "#{$icon-selector}-before" !default;
 $icon-after-selector: "#{$icon-selector}-after" !default;
+$icon-theme-selector-base: $modifier-selector-base !default;
+$icon-theme-selector-prefix: "" !default;
 $icon-prefix-selector-base: $modifier-selector-base !default;
 $icon-prefix-selector: "" !default;
-$icon-color-prefix-selector-base: $modifier-selector-base !default;
-$icon-color-prefix-selector: "" !default;
 
 // Icon properties.
 $icon-display: inline-block !default;
@@ -27,12 +30,26 @@ $icon-size: 1.25em !default;
 
 // Icons.
 // This should be a key/value pair for the name of the icon and the path to the icon's SVG.
-$custom-icons: () !default;
 $icons: () !default;
 
-// @todo remove this once $custom-icons is removed
-@if $custom-icons != () {
-  @warn "`$custom-icons` is deprecated and will be removed in a future release of Graupl. Use `$icons` instead.";
+// Button state theme defaults.
+// This map is used to define the default colour shades for the
+// themed icon bases.
+//
+// e.g.
+// Primary icons will use primary--900 as the colour.
+//
+// Secondary/tertiary icons will use the same shade for their respective colours.
+$-icon-theme-mappings: (
+  color: 500,
+);
+$icon-theme-mappings: () !default;
 
-  $icons: map.merge($icons, $custom-icons);
+// Merge the custom icon state theme map with the default one.
+@if $generate-base-theme-map {
+  $icon-theme-mappings: map.merge($-icon-theme-mappings, $icon-theme-mappings);
 }
+
+$-icon-theme-map: theme.generate-property-map($icon-theme-mappings);
+$icon-theme-map: () !default;
+$icon-theme-map: map.deep-merge($-icon-theme-map, $icon-theme-map);
