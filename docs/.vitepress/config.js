@@ -127,6 +127,7 @@ export default defineConfig({
           { text: "Inset", link: "/utilities/inset" },
           { text: "Justification", link: "/utilities/justification" },
           { text: "List", link: "/utilities/list" },
+          { text: "Object", link: "/utilities/object" },
           { text: "Order", link: "/utilities/order" },
           { text: "Position", link: "/utilities/position" },
           { text: "Ratio", link: "/utilities/ratio" },
