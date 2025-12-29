@@ -167,7 +167,7 @@
     @each $selector in map.get(root-defaults.$state-selectors, hover) {
       // e.g &:hover, &.hover
       &#{$selector} {
-        --#{root-defaults.$prefix}list-item-transform: $list-item-hover-transform;
+        --#{root-defaults.$prefix}list-item-transform: #{$list-item-hover-transform};
       }
     }
   }
