@@ -31,13 +31,13 @@ $ratio-selector: "ratio" !default;
 $ratio-variant-selector-prefix: "" !default;
 $force-ratio-selector: "force-ratio" !default;
 $-ratios: (
-  "one-by-one": 100%,
-  "two-by-one": 50%,
-  "four-by-three": 75%,
-  "four-by-one": 25%,
-  "sixteen-by-nine": calc(9 / 16 * 100%),
-  "three-by-two": calc(2 / 3 * 100%),
-  "eight-by-five": calc(5 / 8 * 100%),
+  "one-by-one": "1",
+  "two-by-one": "2 / 1",
+  "four-by-three": "4 / 3",
+  "four-by-one": "4 / 1",
+  "sixteen-by-nine": "16 / 9",
+  "three-by-two": "3 / 2",
+  "eight-by-five": "8 / 5",
 );
 $ratios: () !default;
 
