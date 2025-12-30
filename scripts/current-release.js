@@ -1,56 +1,107 @@
 /**
  * @file
- * This script generates the changelog for the current release.
- * It reads the CHANGELOG.md file and extracts the section for the current version.
- * The changelog is then written to CURRENT_RELEASE.md.
+ * Extracts the most recent release section from CHANGELOG.md and writes it
+ * to CURRENT_RELEASE.md.
+ *
+ * The extracted release title is normalized to a level-2 markdown heading
+ * (`##`) to ensure consistent formatting for GitHub release notes.
  */
 
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+/* eslint-disable no-console */
+/* global process */
+
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const packageJsonPath = path.join(__dirname, "../package.json");
-const changelogPath = path.join(__dirname, "../CHANGELOG.md");
-const currentReleasePath = path.join(__dirname, "../CURRENT_RELEASE.md");
+const CHANGELOG_PATH = path.resolve(__dirname, "../CHANGELOG.md");
+const CURRENT_RELEASE_PATH = path.resolve(__dirname, "../CURRENT_RELEASE.md");
 
-// Read the package.json file to get the current version
-const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-const currentVersion = packageJson.version;
+/**
+ * Matches level-2 or level-3 markdown headings containing a SemVer version,
+ * including prerelease and build metadata.
+ *
+ * Examples:
+ * - ### [4.2.2](...) (2025-05-27)
+ * - ## [4.2.2-beta.1](...)
+ *
+ * @type {RegExp}
+ */
+const RELEASE_HEADING_RE =
+  /^#{2,3}\s+\[(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?\][^\n]*$/gm;
 
-// Read the CHANGELOG.md file
-const changelogContent = fs.readFileSync(changelogPath, "utf8");
+/**
+ * Normalizes Windows-style CRLF newlines to LF.
+ *
+ * @param {string} input - Input text
+ * @return {string} Text with normalized newlines
+ */
+function normalizeNewlines(input) {
+  return input.replace(/\r\n/g, "\n");
+}
 
-// Parse the CHANGELOG.md to find the current version and all lines until the next version.
-const lines = changelogContent.split("\n");
-let inCurrentVersionSection = false;
-let currentReleaseLines = [];
-for (const line of lines) {
-  if (line.startsWith(`## [${currentVersion}]`)) {
-    inCurrentVersionSection = true;
-    currentReleaseLines.push(line);
-  } else if (inCurrentVersionSection) {
-    if (line.startsWith("## ")) {
-      // We reached the next version section, stop collecting lines
-      break;
-    }
-    currentReleaseLines.push(line);
+/**
+ * Forces the first markdown heading in a block to be a level-2 heading.
+ *
+ * @param {string} block - Extracted release block
+ * @return {string} Block with normalized heading level
+ */
+function normalizeReleaseHeadingLevel(block) {
+  return block.replace(/^#{2,3}\s+/m, "## ");
+}
+
+/**
+ * Extracts the most recent release section from the changelog.
+ *
+ * Assumes the changelog is ordered newest → oldest.
+ *
+ * @param {string} changelog - Full changelog content
+ * @return {string} Extracted latest release block
+ *
+ * @throws {Error} If no release headings are found
+ */
+function extractLatestRelease(changelog) {
+  const text = normalizeNewlines(changelog);
+
+  // Reset global RegExp state
+  RELEASE_HEADING_RE.lastIndex = 0;
+
+  const firstMatch = RELEASE_HEADING_RE.exec(text);
+  if (!firstMatch) {
+    throw new Error(
+      "No release headings found. Expected a heading like '### [4.2.2](...) (YYYY-MM-DD)'."
+    );
   }
+
+  const startIndex = firstMatch.index;
+
+  const secondMatch = RELEASE_HEADING_RE.exec(text);
+  const endIndex = secondMatch ? secondMatch.index : text.length;
+
+  const block = text.slice(startIndex, endIndex).trimEnd();
+
+  return normalizeReleaseHeadingLevel(block) + "\n";
 }
 
-if (currentReleaseLines.length > 0) {
-  // Write the current release changelog to CURRENT_RELEASE.md
-  fs.writeFileSync(
-    currentReleasePath,
-    currentReleaseLines.join("\n").trim(),
-    "utf8"
-  );
-} else {
-  fs.writeFileSync(
-    currentReleasePath,
-    `No changelog found for version ${currentVersion}.`,
-    "utf8"
-  );
+/**
+ * Main execution entrypoint.
+ *
+ * @return {Promise<void>}
+ */
+async function main() {
+  const changelog = await fs.readFile(CHANGELOG_PATH, "utf8");
+  const latestRelease = extractLatestRelease(changelog);
+
+  await fs.writeFile(CURRENT_RELEASE_PATH, latestRelease, "utf8");
+
+  const firstLine = latestRelease.split("\n")[0]?.trim() ?? "";
+  console.log(`Wrote CURRENT_RELEASE.md from latest section: ${firstLine}`);
 }
+
+main().catch((err) => {
+  console.error(err instanceof Error ? err.message : err);
+  process.exitCode = 1;
+});
