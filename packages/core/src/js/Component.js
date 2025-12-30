@@ -961,6 +961,17 @@ class Component {
   }
 
   /**
+   * Clears all timeouts within the component.
+   *
+   * @protected
+   */
+  _clearTimeouts() {
+    for (const scope of Object.keys(this._timeouts)) {
+      this._clearTimeout(scope);
+    }
+  }
+
+  /**
    * Dispatch a custom event on an element in the DOM.
    *
    * @param {string}      eventType - The type of the event to dispatch.
@@ -1041,9 +1052,10 @@ class Component {
   /**
    * Disposes of the current instantiated component.
    *
-   * Removes all event listeners and delete's the object.
+   * Removes all timeouts and event listeners, removes the component from the global storage, and delete's the object.
    */
   dispose() {
+    this._clearTimeouts();
     this._removeEventListeners();
     this._unstore();
 
