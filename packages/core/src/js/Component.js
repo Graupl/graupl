@@ -1014,10 +1014,10 @@ class Component {
   }
 
   /**
-   * Remove an event listener to an element and unregister it within the component.
+   * Remove an event listener from an element and unregister it within the component.
    *
-   * @param {string}         type           - The type of event to listen for.
-   * @param {HTMLElement}    element        - The element to add the listener to.
+   * @param {string}         type           - The type of event to remove.
+   * @param {HTMLElement}    element        - The element to remove the listener from.
    * @param {Function}       listener       - The listener callback.
    * @param {object|boolean} [options = {}] - Options to pass to the listener.
    */
