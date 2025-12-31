@@ -924,7 +924,7 @@ class Component {
   }
 
   /**
-   * Clears the interval within the component.
+   * Clears an interval within the component.
    *
    * @protected
    *
@@ -932,6 +932,17 @@ class Component {
    */
   _clearInterval(scope = "_default") {
     clearInterval(this._intervals[scope]);
+  }
+
+  /**
+   * Clears all intervals within the component.
+   *
+   * @protected
+   */
+  _clearIntervals() {
+    for (const scope of Object.keys(this._intervals)) {
+      this._clearInterval(scope);
+    }
   }
 
   /**
@@ -950,7 +961,7 @@ class Component {
   }
 
   /**
-   * Clears the timeout within the component.
+   * Clears a timeout within the component.
    *
    * @protected
    *
@@ -1078,6 +1089,7 @@ class Component {
    * Removes all timeouts and event listeners, removes the component from the global storage, and delete's the object.
    */
   dispose() {
+    this._clearIntervals();
     this._clearTimeouts();
     this._removeEventListeners();
     this._unstore();
