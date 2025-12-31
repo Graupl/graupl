@@ -1025,27 +1025,50 @@ class Component {
     // Remove the listener.
     element.removeEventListener(type, listener, options);
 
-    // Remove it from the component storage.
-    const index = this._listeners.indexOf({
-      type,
-      element,
-      listener,
-      options,
+    // Find the listener in the component's listener storage.
+    let index = -1;
+
+    this._listeners.forEach((registeredListener, i) => {
+      if (
+        registeredListener.type === type &&
+        registeredListener.element === element &&
+        registeredListener.listener === listener &&
+        JSON.stringify(registeredListener.options) === JSON.stringify(options)
+      ) {
+        index = i;
+      }
     });
 
+    // Remove it from the component's listener storage.
     if (index !== -1) {
-      this._listeners.splice(index);
+      this._listeners.splice(index, 1);
     }
   }
 
   /**
    * Removes all event listeners registered in the component.
    *
+   * This can be filtered by type and/or element.
+   *
    * @protected
+   *
+   * @param {object}       [options = {}]           - Options for removing listeners.
+   * @param {?string}      [options.type = null]    - The type of event to remove. If null, all types are removed.
+   * @param {?HTMLElement} [options.element = null] - The element to remove listeners from. If null, all elements are removed.
    */
-  _removeEventListeners() {
-    this._listeners.forEach(({ type, element, listener, options }) => {
-      this._removeEventListener(type, element, listener, options);
+  _removeEventListeners({ type = null, element = null } = {}) {
+    const listeners = [...this._listeners];
+
+    listeners.forEach((listener) => {
+      if (type !== null && listener.type !== type) return;
+      if (element !== null && listener.element !== element) return;
+
+      this._removeEventListener(
+        listener.type,
+        listener.element,
+        listener.listener,
+        listener.options
+      );
     });
   }
 
