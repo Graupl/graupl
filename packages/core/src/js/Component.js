@@ -529,6 +529,32 @@ class Component {
   }
 
   /**
+   * The main ID of the component.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _id
+   */
+  get id() {
+    return this._id;
+  }
+
+  /**
+   * The validity state of the component.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _valid
+   */
+  get isValid() {
+    return this._valid;
+  }
+
+  /**
    * An array to hold error messages.
    *
    * @readonly
@@ -562,9 +588,9 @@ class Component {
           this._dom[domKey].forEach((element, index) => {
             domElements[`${domKey}Element[${index}]`] = element;
           });
+        } else {
+          domElements[`${domKey}Element`] = this._dom[domKey];
         }
-
-        domElements[`${domKey}Element`] = this._dom[domKey];
       }
 
       // Check the DOM elements.
@@ -891,7 +917,7 @@ class Component {
     storage.initializeStorage(this._storageKey);
     storage.pushToStorage(
       this._storageKey,
-      this._id !== "" ? this._id : this._key,
+      this.id !== "" ? this.id : this._key,
       this
     );
   }
@@ -904,7 +930,7 @@ class Component {
   _unstore() {
     storage.removeFromStorage(
       this._storageKey,
-      this._id !== "" ? this._id : this._key
+      this.id !== "" ? this.id : this._key
     );
   }
 
