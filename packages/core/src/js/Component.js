@@ -588,7 +588,7 @@ class Component {
           this._dom[domKey].forEach((element, index) => {
             domElements[`${domKey}Element[${index}]`] = element;
           });
-        } else {
+        } else if (this._dom[domKey] !== null) {
           domElements[`${domKey}Element`] = this._dom[domKey];
         }
       }
