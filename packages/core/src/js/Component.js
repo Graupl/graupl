@@ -493,6 +493,10 @@ class Component {
       return this._mediaQueryString;
     }
 
+    if (this._breakpoint === "") {
+      return "";
+    }
+
     return `(width <= ${this._breakpoint})`;
   }
 
@@ -875,7 +879,7 @@ class Component {
    * @protected
    */
   _handleMediaMatch() {
-    if (this._breakpointWidth === "") {
+    if (this.mediaQuery === "") {
       return;
     }
 
