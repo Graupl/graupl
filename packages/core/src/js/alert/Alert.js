@@ -325,7 +325,7 @@ class Alert extends Component {
   }
 
   set showDuration(value) {
-    isValidType("number", { value });
+    isValidType("number", { showDuration: value });
 
     if (this._durations.show !== value) {
       this._durations.show = value;
@@ -351,7 +351,7 @@ class Alert extends Component {
   }
 
   set hideDuration(value) {
-    isValidType("number", { value });
+    isValidType("number", { hideDuration: value });
 
     if (this._durations.hide !== value) {
       this._durations.hide = value;
@@ -388,11 +388,13 @@ class Alert extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 

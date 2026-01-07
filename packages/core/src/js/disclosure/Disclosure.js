@@ -560,11 +560,13 @@ class Disclosure extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -610,7 +612,13 @@ class Disclosure extends Component {
     this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id);
 
     // If the controller element is not a button, set its role to button.
-    if (!isTag("button", { controller: this.dom.controller })) {
+    if (
+      !isTag(
+        "button",
+        { controller: this.dom.controller },
+        { shouldThrow: false }
+      ).status
+    ) {
       this.dom.controller.setAttribute("role", "button");
     }
   }

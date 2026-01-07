@@ -75,9 +75,9 @@ class Tabs extends Component {
    *
    * @type {Object<string, string[]>}
    *
-   * @property {string|string[]} open         - The class(es) to apply when the tab is open.
-   * @property {string|string[]} close        - The class(es) to apply when the tab is closed.
-   * @property {string|string[]} transition   - The class(es) to apply when the tab is transitioning between states.
+   * @property {string|string[]} open       - The class(es) to apply when the tab is open.
+   * @property {string|string[]} close      - The class(es) to apply when the tab is closed.
+   * @property {string|string[]} transition - The class(es) to apply when the tab is transitioning between states.
    * @property {string|string[]} initialize - The class(es) to apply when the tab is initializing.
    */
   _classes = {
@@ -442,11 +442,13 @@ class Tabs extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 

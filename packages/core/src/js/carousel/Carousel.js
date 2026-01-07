@@ -595,11 +595,13 @@ class Carousel extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -610,11 +612,11 @@ class Carousel extends Component {
     };
 
     // Check the strings.
-    const stringChecks = isValidType("string", strings);
+    const stringChecks = isValidType("string", strings, { shouldThrow: false });
 
     // Handle string check failures.
-    if (!stringChecks) {
-      this._errors.push(stringChecks.message);
+    if (!stringChecks.status) {
+      this._errors = [...this._errors, ...stringChecks.errors];
       this._valid = false;
     }
 
@@ -696,7 +698,8 @@ class Carousel extends Component {
     // Sections and role="region" are acceptable in certain cases, so
     // we only need to fallback to role="group" if neither of those are present.
     if (
-      !isTag("section", { carousel: this.dom.carousel }) &&
+      !isTag("section", { carousel: this.dom.carousel }, { shouldThrow: false })
+        .status &&
       !this.dom.carousel.getAttribute("role") !== "region"
     ) {
       this.dom.carousel.setAttribute("role", "group");
@@ -710,7 +713,7 @@ class Carousel extends Component {
     }
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      if (!isTag("button", { tab: tab })) {
+      if (!isTag("button", { tab: tab }, { shouldThrow: false }).status) {
         tab.setAttribute("role", "button");
       }
 

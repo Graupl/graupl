@@ -594,8 +594,8 @@ class Accordion extends Component {
     const booleanChecks = isValidType("boolean", booleans);
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 

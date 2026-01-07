@@ -260,7 +260,9 @@ class Component {
     try {
       if (!this._validate()) {
         throw new Error(
-          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors.join("\n - ")}`
+          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
+            .map((error) => error.toString())
+            .join("\n - ")}`
         );
       }
 
@@ -395,7 +397,7 @@ class Component {
    *
    * @readonly
    *
-   * @type {object}
+   * @type {Error[]}
    *
    * @see _events
    */
@@ -594,11 +596,13 @@ class Component {
       }
 
       // Check the DOM elements.
-      const domChecks = isValidInstance(HTMLElement, domElements);
+      const domChecks = isValidInstance(HTMLElement, domElements, {
+        shouldThrow: false,
+      });
 
       // Handle DOM check failure.
-      if (!domChecks) {
-        this._errors.push(domChecks.message);
+      if (!domChecks.status) {
+        this._errors = [...this._errors, ...domChecks.errors];
         this._valid = false;
       }
     }
@@ -614,11 +618,13 @@ class Component {
       }
 
       // Check the query selectors.
-      const querySelectorChecks = isQuerySelector(querySelectors);
+      const querySelectorChecks = isQuerySelector(querySelectors, {
+        shouldThrow: false,
+      });
 
       // Handle query selector check failure.
-      if (!querySelectorChecks) {
-        this._errors.push(querySelectorChecks.message);
+      if (!querySelectorChecks.status) {
+        this._errors = [...this._errors, ...querySelectorChecks.errors];
         this._valid = false;
       }
     }
@@ -637,11 +643,11 @@ class Component {
       }
 
       // Check the class lists.
-      const classListChecks = isValidClassList(classes);
+      const classListChecks = isValidClassList(classes, { shouldThrow: false });
 
       // Handle class list check failure.
       if (!classListChecks.status) {
-        this._errors.push(classListChecks.error.message);
+        this._errors = [...this._errors, ...classListChecks.errors];
         this._valid = false;
       }
     }
@@ -656,11 +662,13 @@ class Component {
       }
 
       // Check the durations.
-      const durationChecks = isValidType("number", durations);
+      const durationChecks = isValidType("number", durations, {
+        shouldThrow: false,
+      });
 
       // Handle duration check failure.
       if (!durationChecks.status) {
-        this._errors.push(durationChecks.error.message);
+        this._errors = [...this._errors, ...durationChecks.errors];
         this._valid = false;
       }
     }
@@ -675,11 +683,11 @@ class Component {
       }
 
       // Check the delays.
-      const delayChecks = isValidType("number", delays);
+      const delayChecks = isValidType("number", delays, { shouldThrow: false });
 
       // Handle delay check failure.
       if (!delayChecks.status) {
-        this._errors.push(delayChecks.error.message);
+        this._errors = [...this._errors, ...delayChecks.errors];
         this._valid = false;
       }
     }
@@ -687,21 +695,29 @@ class Component {
     // Key check.
     if (this._key !== "") {
       // Check the key.
-      const keyCheck = isValidType("string", { key: this._key });
+      const keyCheck = isValidType(
+        "string",
+        { key: this._key },
+        { shouldThrow: false }
+      );
 
       // Handle key check failure.
       if (!keyCheck.status) {
-        this._errors.push(keyCheck.error.message);
+        this._errors = [...this._errors, ...keyCheck.errors];
         this._valid = false;
       }
     }
 
     // Prefix check.
     if (this._prefix !== "") {
-      const prefixCheck = isValidType("string", { prefix: this._prefix });
+      const prefixCheck = isValidType(
+        "string",
+        { prefix: this._prefix },
+        { shouldThrow: false }
+      );
 
       if (!prefixCheck.status) {
-        this._errors.push(prefixCheck.error.message);
+        this._errors = [...this._errors, ...prefixCheck.errors];
         this._valid = false;
       }
     }
