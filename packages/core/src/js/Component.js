@@ -11,7 +11,7 @@ import {
   isValidState,
   isValidEvent,
 } from "./validate.js";
-import storage from "./storage.js";
+import StorageManager from "./StorageManager.js";
 
 class Component {
   /**
@@ -914,12 +914,22 @@ class Component {
    */
   _store() {
     // Set up the storage.
-    storage.initializeStorage(this._storageKey);
-    storage.pushToStorage(
-      this._storageKey,
-      this.id !== "" ? this.id : this._key,
-      this
-    );
+    if (
+      !isValidInstance(
+        StorageManager,
+        { storage: window.Graupl },
+        { shouldThrow: false }
+      ).status
+    ) {
+      new StorageManager({ scope: "Graupl" });
+    }
+
+    // Store the menu
+    window.Graupl.set({
+      key: this.id !== "" ? this.id : this.key,
+      type: this._storageKey,
+      data: this,
+    });
   }
 
   /**
@@ -928,10 +938,20 @@ class Component {
    * @protected
    */
   _unstore() {
-    storage.removeFromStorage(
-      this._storageKey,
-      this.id !== "" ? this.id : this._key
-    );
+    if (
+      !isValidInstance(
+        StorageManager,
+        { storage: window.Graupl },
+        { shouldThrow: false }
+      ).status
+    ) {
+      return;
+    }
+
+    window.Graupl.clear({
+      key: this.id !== "" ? this.id : this.key,
+      type: this._storageKey,
+    });
   }
 
   /**
