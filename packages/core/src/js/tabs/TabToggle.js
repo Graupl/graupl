@@ -164,7 +164,7 @@ class TabToggle extends Component {
   _setIds() {
     // Get the required information for IDs.
     const { key } = this.elements.parent;
-    const index = this.elements.parent.dom.tabToggle.indexOf(this.dom.toggle);
+    const index = this.elements.parent.dom.tabToggles.indexOf(this.dom.toggle);
 
     this.dom.toggle.id = this.dom.toggle.id || `tab-toggle-${key}-${index}`;
     this.dom.content.id = this.dom.content.id || `tab-content-${key}-${index}`;
@@ -395,7 +395,7 @@ class TabToggle extends Component {
    */
   hideSiblings() {
     if (this.elements.parent) {
-      this.elements.parent.elements.tabToggle.forEach((toggle) => {
+      this.elements.parent.elements.tabToggles.forEach((toggle) => {
         if (toggle !== this) {
           toggle.hide();
         }
