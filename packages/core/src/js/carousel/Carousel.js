@@ -186,11 +186,11 @@ class Carousel extends Component {
    *
    * @param {object}             options                                                                  - The options for the generated carousel.
    * @param {HTMLElement}        options.carouselElement                                                  - The carousel element in the DOM.
-   * @param {string}             [options.carouselItemSelector = .carousel-item]                          - The query selector string for carousel items.
+   * @param {string}             [options.carouselItemsSelector = .carousel-item]                         - The query selector string for carousel items.
    * @param {string}             [options.carouselItemContainerSelector = .carousel-item-container]       - The query selector string for the carousel item container.
-   * @param {string}             [options.carouselControlSelector = .carousel-control]                    - The query selector string for carousel controls.
+   * @param {string}             [options.carouselControlsSelector = .carousel-control]                   - The query selector string for carousel controls.
    * @param {string}             [options.carouselControlContainerSelector = .carousel-control-container] - The query selector string for carousel control container.
-   * @param {string}             [options.carouselTabSelector = .carousel-tab]                            - The query selector string for carousel tabs.
+   * @param {string}             [options.carouselTabsSelector = .carousel-tab]                           - The query selector string for carousel tabs.
    * @param {string}             [options.carouselTabContainerSelector = .carousel-tab-container]         - The query selector string for the carousel tab container.
    * @param {string}             [options.autoplaySelector = .autoplay]                                   - The query selector string for the autoplay button.
    * @param {string}             [options.nextSelector = .next]                                           - The query selector string for the next button.
@@ -212,11 +212,11 @@ class Carousel extends Component {
    */
   constructor({
     carouselElement,
-    carouselItemSelector = ".carousel-item",
+    carouselItemsSelector = ".carousel-item",
     carouselItemContainerSelector = ".carousel-item-container",
-    carouselControlSelector = ".carousel-control",
+    carouselControlsSelector = ".carousel-control",
     carouselControlContainerSelector = ".carousel-control-container",
-    carouselTabSelector = ".carousel-tab",
+    carouselTabsSelector = ".carousel-tab",
     carouselTabContainerSelector = ".carousel-tab-container",
     autoplaySelector = ".autoplay",
     nextSelector = ".next",
@@ -246,11 +246,11 @@ class Carousel extends Component {
     this._dom.carousel = carouselElement;
 
     // Set query selectors.
-    this._selectors.carouselItems = carouselItemSelector;
+    this._selectors.carouselItems = carouselItemsSelector;
     this._selectors.carouselItemContainer = carouselItemContainerSelector;
-    this._selectors.carouselControls = carouselControlSelector;
+    this._selectors.carouselControls = carouselControlsSelector;
     this._selectors.carouselControlContainer = carouselControlContainerSelector;
-    this._selectors.carouselTabs = carouselTabSelector;
+    this._selectors.carouselTabs = carouselTabsSelector;
     this._selectors.carouselTabContainer = carouselTabContainerSelector;
     this._selectors.autoplay = autoplaySelector;
     this._selectors.next = nextSelector;
