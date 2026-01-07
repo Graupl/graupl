@@ -176,37 +176,37 @@ class Accordion extends Component {
   /**
    * Constructs a new `Accordion`.
    *
-   * @param {object}             options                                                                    - The options for generating the accordion.
-   * @param {HTMLElement}        [options.accordionElement]                                                 - The accordion element in the DOM.
-   * @param {string}             [options.accordionItemSelector = .accordion-item]                          - The query selector string for accordion items.
-   * @param {string}             [options.accordionItemToggleSelector = .accordion-item-toggle]             - The query selector string for accordion toggle.
-   * @param {string}             [options.accordionItemHeaderSelector = .accordion-item-header]             - The query selector string for accordion header.
-   * @param {string}             [options.accordionItemContentSelector = .accordion-item-content]           - The query selector string for accordion content.
-   * @param {string}             [options.accordionControlContainerSelector = .accordion-control-container] - The query selector string for the accordion control container.
-   * @param {string}             [options.accordionControlsSelector = .accordion-control]                   - The query selector string for accordion controls.
-   * @param {string}             [options.expandControllerSelector = .expand-all]                           - The query selector string for the expand all controller(s).
-   * @param {string}             [options.collapseControllerSelector = .collapse-all]                       - The query selector string for the collapse all controller(s).
-   * @param {?(string|string[])} [options.openClass = show]                                                 - The class to apply when a accordion is "open".
-   * @param {?(string|string[])} [options.closeClass = hide]                                                - The class to apply when a accordion is "closed".
-   * @param {?(string|string[])} [options.transitionClass = transitioning]                                  - The class to apply when a accordion is transitioning between "open" and "closed" states.
-   * @param {number}             [options.transitionDuration = 300]                                         - The duration of the transition between "open" and "closed" states (in milliseconds).
-   * @param {number}             [options.openDuration = -1]                                                - The duration of the transition from "closed" to "open" states (in milliseconds).
-   * @param {number}             [options.closeDuration = -1]                                               - The duration of the transition from "open" to "closed" states (in milliseconds).
-   * @param {boolean}            [options.optionalKeySupport = false]                                       - A flag to determine if accordions can be navigated with arrows.
-   * @param {boolean}            [options.allowMultipleExpand = true]                                       - A flag to determine if multiple accordions can be open at the same time.
-   * @param {boolean}            [options.allowNoExpand = true]                                             - A flag to determine if no accordions can be open at the same time.
-   * @param {boolean}            [options.automaticActivation = false]                                      - A flag to set if focusing a accordion item toggle will automatically activate it.
-   * @param {?string}            [options.prefix = graupl-]                                                 - The prefix used for CSS custom properties and attributes.
-   * @param {?string}            [options.key = null]                                                       - The key used to generate IDs throughout the accordion.
-   * @param {?(string|string[])} [options.initializeClass = initializing]                                   - The class(es) to apply when the accordion is initializing.
-   * @param {boolean}            [options.initialize = false]                                               - A flag to initialize the accordion immediately upon creation.
+   * @param {object}             options                                                                     - The options for generating the accordion.
+   * @param {HTMLElement}        [options.accordionElement]                                                  - The accordion element in the DOM.
+   * @param {string}             [options.accordionItemsSelector = .accordion-item]                          - The query selector string for accordion items.
+   * @param {string}             [options.accordionItemTogglesSelector = .accordion-item-toggle]             - The query selector string for accordion toggle.
+   * @param {string}             [options.accordionItemHeadersSelector = .accordion-item-header]             - The query selector string for accordion header.
+   * @param {string}             [options.accordionItemContentsSelector = .accordion-item-content]           - The query selector string for accordion content.
+   * @param {string}             [options.accordionControlContainerSelector = .accordion-control-container]  - The query selector string for the accordion control container.
+   * @param {string}             [options.accordionControlsSelector = .accordion-control]                    - The query selector string for accordion controls.
+   * @param {string}             [options.expandControllerSelector = .expand-all]                            - The query selector string for the expand all controller(s).
+   * @param {string}             [options.collapseControllerSelector = .collapse-all]                        - The query selector string for the collapse all controller(s).
+   * @param {?(string|string[])} [options.openClass = show]                                                  - The class to apply when a accordion is "open".
+   * @param {?(string|string[])} [options.closeClass = hide]                                                 - The class to apply when a accordion is "closed".
+   * @param {?(string|string[])} [options.transitionClass = transitioning]                                   - The class to apply when a accordion is transitioning between "open" and "closed" states.
+   * @param {number}             [options.transitionDuration = 300]                                          - The duration of the transition between "open" and "closed" states (in milliseconds).
+   * @param {number}             [options.openDuration = -1]                                                 - The duration of the transition from "closed" to "open" states (in milliseconds).
+   * @param {number}             [options.closeDuration = -1]                                                - The duration of the transition from "open" to "closed" states (in milliseconds).
+   * @param {boolean}            [options.optionalKeySupport = false]                                        - A flag to determine if accordions can be navigated with arrows.
+   * @param {boolean}            [options.allowMultipleExpand = true]                                        - A flag to determine if multiple accordions can be open at the same time.
+   * @param {boolean}            [options.allowNoExpand = true]                                              - A flag to determine if no accordions can be open at the same time.
+   * @param {boolean}            [options.automaticActivation = false]                                       - A flag to set if focusing a accordion item toggle will automatically activate it.
+   * @param {?string}            [options.prefix = graupl-]                                                  - The prefix used for CSS custom properties and attributes.
+   * @param {?string}            [options.key = null]                                                        - The key used to generate IDs throughout the accordion.
+   * @param {?(string|string[])} [options.initializeClass = initializing]                                    - The class(es) to apply when the accordion is initializing.
+   * @param {boolean}            [options.initialize = false]                                                - A flag to initialize the accordion immediately upon creation.
    */
   constructor({
     accordionElement,
-    accordionItemSelector = ".accordion-item",
-    accordionItemToggleSelector = ".accordion-item-toggle",
-    accordionItemHeaderSelector = ".accordion-item-header",
-    accordionItemContentSelector = ".accordion-item-content",
+    accordionItemsSelector = ".accordion-item",
+    accordionItemTogglesSelector = ".accordion-item-toggle",
+    accordionItemHeadersSelector = ".accordion-item-header",
+    accordionItemContentsSelector = ".accordion-item-content",
     accordionControlContainerSelector = ".accordion-control-container",
     accordionControlsSelector = ".accordion-control",
     expandControllerSelector = ".expand-all",
@@ -236,10 +236,10 @@ class Accordion extends Component {
     this._dom.accordion = accordionElement;
 
     // Set the query selectors.
-    this._selectors.accordionItems = accordionItemSelector;
-    this._selectors.accordionItemToggles = accordionItemToggleSelector;
-    this._selectors.accordionItemHeaders = accordionItemHeaderSelector;
-    this._selectors.accordionItemContents = accordionItemContentSelector;
+    this._selectors.accordionItems = accordionItemsSelector;
+    this._selectors.accordionItemToggles = accordionItemTogglesSelector;
+    this._selectors.accordionItemHeaders = accordionItemHeadersSelector;
+    this._selectors.accordionItemContents = accordionItemContentsSelector;
     this._selectors.accordionControlContainer =
       accordionControlContainerSelector;
     this._selectors.accordionControls = accordionControlsSelector;
