@@ -775,11 +775,11 @@ class Component {
    * @param {Object<HTMLElement,boolean>} [options = {}]             - The options for setting the DOM element type.
    * @param {HTMLElement}                 [options.context]          - The element used as the base context for the querySelector.
    * @param {boolean}                     [options.overwrite = true] - A flag to set if the existing elements will be overwritten.
-   * @param {boolean}                     [options.strict = true]    - A flag to set if the elements must be direct children of the base.
+   * @param {boolean}                     [options.strict = false]   - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    { context, overwrite = true, strict = true } = {}
+    { context, overwrite = true, strict = false } = {}
   ) {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
