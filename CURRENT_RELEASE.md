@@ -1,11 +1,16 @@
-## [1.0.0-beta.29](https://github.com/Graupl/graupl/compare/v1.0.0-beta.28...v1.0.0-beta.29) (2026-01-07)
+## [1.0.0-beta.30](https://github.com/Graupl/graupl/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2026-01-09)
 
 
 ### Bug Fixes
 
-* **components:** adjust media match rules to work on custom media queries ([6c68b7f](https://github.com/Graupl/graupl/commit/6c68b7f58eeded9f26f799adedf462a690320732))
+* **icons:** restore icon spacer ([8b59009](https://github.com/Graupl/graupl/commit/8b5900956a7a46bfbc1a973f321533eae18793cd))
+
+
+### Build System
+
+* **release:** ensure all tests succeed before a release is allowed to be tagged ([3d999b4](https://github.com/Graupl/graupl/commit/3d999b449f11edc5b6dd5f67465e20ace829fb83))
 
 
 ### Continuous Integration
 
-* change gh_token to github_token ([997cc7e](https://github.com/Graupl/graupl/commit/997cc7e518a126d950bfed7456a1d1f0e4d8bd71))
+* add packages write permission to release action ([ee41900](https://github.com/Graupl/graupl/commit/ee41900ee0d87d140dc76a8f52261fcdaa6fb11e))

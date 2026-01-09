@@ -1,6 +1,6 @@
 {
   "name": "@graupl/core",
-  "version": "1.0.0-beta.29",
+  "version": "1.0.0-beta.30",
   "license": "GPL-3.0-or-later",
   "description": "The core module of Graupl, providing essential styles and utilities.",
   "main": "dist/js/graupl.cjs.js",
