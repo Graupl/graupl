@@ -546,7 +546,7 @@ class Alert extends Component {
   /**
    * Handles click events throughout the alert for proper use.
    *
-   * - Adds a `pointerup` listener to the controller that will hide the alert.
+   * - Adds a `click` listener to the controller that will hide the alert.
    *
    * @protected
    */
@@ -555,7 +555,7 @@ class Alert extends Component {
       return;
     }
 
-    this._addEventListener("pointerup", this.dom.controller, () => this.hide());
+    this._addEventListener("click", this.dom.controller, () => this.hide());
   }
 
   /**

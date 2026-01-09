@@ -731,13 +731,13 @@ class Accordion extends Component {
   /**
    * Handles click events throughout the accordion item for proper use.
    *
-   * - Adds a `pointerup` listener to the accordion item toggles that will toggle each accordion item.
+   * - Adds a `click` listener to the accordion item toggles that will toggle each accordion item.
    *
    * @protected
    */
   _handleClick() {
     this.elements.accordionItems.forEach((accordionItem, index) => {
-      this._addEventListener("pointerup", accordionItem.dom.toggle, () => {
+      this._addEventListener("click", accordionItem.dom.toggle, () => {
         this.currentChild = index;
         this.currentEvent = "mouse";
         accordionItem.toggle();
@@ -746,7 +746,7 @@ class Accordion extends Component {
 
     // Clicks for the accordion controls.
     this.dom.expandController.forEach((control) => {
-      this._addEventListener("pointerup", control, () => {
+      this._addEventListener("click", control, () => {
         this.currentEvent = "mouse";
         if (this.allowMultipleExpand) {
           this.openChildren();
@@ -754,7 +754,7 @@ class Accordion extends Component {
       });
     });
     this.dom.collapseController.forEach((control) => {
-      this._addEventListener("pointerup", control, () => {
+      this._addEventListener("click", control, () => {
         this.currentEvent = "mouse";
         if (this.allowNoExpand) {
           this.closeChildren();

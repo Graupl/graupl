@@ -793,11 +793,11 @@ class Disclosure extends Component {
   /**
    * Handles click events throughout the disclosure.
    *
-   * - Adds a `pointerup` listener to the controller that toggles the disclosure.
-   * - Adds a `pointerup` listener to the `document` so if the user clicks outside the disclosure it will close.
+   * - Adds a `click` listener to the controller that toggles the disclosure.
+   * - Adds a `click` listener to the `document` so if the user clicks outside the disclosure it will close.
    */
   _handleClick() {
-    this._addEventListener("pointerup", this.dom.controller, (event) => {
+    this._addEventListener("click", this.dom.controller, (event) => {
       this.currentEvent = "mouse";
 
       if (event.button !== 0) return;
@@ -806,7 +806,7 @@ class Disclosure extends Component {
       this.toggle();
     });
 
-    this._addEventListener("pointerup", document, (event) => {
+    this._addEventListener("click", document, (event) => {
       if (this.focusState !== "self" || !this.closeOnBlur) return;
 
       this.currentEvent = "mouse";

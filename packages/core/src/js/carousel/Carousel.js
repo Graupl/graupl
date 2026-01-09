@@ -791,26 +791,26 @@ class Carousel extends Component {
   /**
    * Handles the click events throughout the carousel.
    *
-   * - Adds a `pointerup` listener to the next control to activate the next item.
-   * - Adds a `pointerup` listener to the previous control to activate the previous item.
-   * - Adds a `pointerup` listener to the autoplay control to toggle autoplay.
-   * - Adds a `pointerup` listener to each tab control to activate the corresponding item.
+   * - Adds a `click` listener to the next control to activate the next item.
+   * - Adds a `click` listener to the previous control to activate the previous item.
+   * - Adds a `click` listener to the autoplay control to toggle autoplay.
+   * - Adds a `click` listener to each tab control to activate the corresponding item.
    */
   _handleClick() {
-    this._addEventListener("pointerup", this.dom.next, () => {
+    this._addEventListener("click", this.dom.next, () => {
       this.activateNextItem();
     });
 
-    this._addEventListener("pointerup", this.dom.previous, () => {
+    this._addEventListener("click", this.dom.previous, () => {
       this.activatePreviousItem();
     });
 
-    this._addEventListener("pointerup", this.dom.autoplay, () => {
+    this._addEventListener("click", this.dom.autoplay, () => {
       this.toggleAutoplay();
     });
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      this._addEventListener("pointerup", tab, () => {
+      this._addEventListener("click", tab, () => {
         if (this.currentItem > index) {
           this._currentAction = "previous";
         } else {

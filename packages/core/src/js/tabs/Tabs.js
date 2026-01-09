@@ -572,13 +572,13 @@ class Tabs extends Component {
   /**
    * Handles click events throughout the tab item for proper use.
    *
-   * - Adds a `pointerup` listener to the tab item toggles that will toggle each tab item.
+   * - Adds a `click` listener to the tab item toggles that will toggle each tab item.
    *
    * @protected
    */
   _handleClick() {
     this.elements.tabToggles.forEach((toggle, index) => {
-      this._addEventListener("pointerup", toggle.dom.toggle, () => {
+      this._addEventListener("click", toggle.dom.toggle, () => {
         this.currentChild = index;
         toggle.show();
       });
