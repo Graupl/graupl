@@ -28,8 +28,14 @@ $-targets: (
     mask-size: contain;
     mask-position: center;
 
-    @if $target == "before" or $target == "after" {
+    @if $target == "before" {
       content: "";
+      margin-inline-end: $icon-spacer;
+    } @else if $target == "after" {
+      content: "";
+      margin-inline-start: $icon-spacer;
+    } @else {
+      margin-inline: $icon-spacer;
     }
   }
 }
