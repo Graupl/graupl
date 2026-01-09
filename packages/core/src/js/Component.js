@@ -224,6 +224,15 @@ class Component {
   _valid = true;
 
   /**
+   * The initialized state of the component.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _initialized = false;
+
+  /**
    * The errors found throughout the component.
    *
    * @protected
@@ -558,6 +567,19 @@ class Component {
    */
   get isValid() {
     return this._valid;
+  }
+
+  /**
+   * The initialized state of the component.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _initialized
+   */
+  get isInitialized() {
+    return this._initialized;
   }
 
   /**

@@ -315,6 +315,11 @@ class Carousel extends Component {
       requestAnimationFrame(() => {
         removeClass(this.initializeClass, this.dom.carousel);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 

@@ -227,6 +227,11 @@ class Alert extends Component {
       requestAnimationFrame(() => {
         removeClass(this._classes.initialize, this.dom.alert);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 
