@@ -471,3 +471,57 @@ export function isTag(tagName, elements, { shouldThrow = true } = {}) {
 
   return result;
 }
+
+/**
+ * Check to see if the provided value is a key in the provided object.
+ *
+ * Will return `{ status: true }` if the check is successful.
+ *
+ * @param {string|string[]}           key                           - The key or array of keys to check for.
+ * @param {object}                    object                        - The object to check against.
+ * @param {object}                    [options = {}]                - Additional options.
+ * @param {boolean}                   [options.shouldThrow = true ] - Whether to throw on error or return it.
+ * @return {Object<boolean, Error[]>}                               - The result of the check.
+ */
+export function isValidKey(key, object, { shouldThrow = true } = {}) {
+  const result = {
+    status: true,
+    errors: [],
+  };
+
+  try {
+    if (typeof object !== "object" || object === null) {
+      const type = typeof object;
+
+      throw new TypeError(
+        `The object provided to isValidKey() must be a valid object. "${type}" given.`
+      );
+    }
+
+    const keysToCheck = Array.isArray(key) ? key : [key];
+
+    keysToCheck.forEach((singleKey) => {
+      try {
+        if (!Object.prototype.hasOwnProperty.call(object, singleKey)) {
+          throw new TypeError(
+            `"${singleKey}" is not a valid key in the provided object. It must be one of the following values: ${Object.keys(
+              object
+            ).join(", ")}.`
+          );
+        }
+      } catch (error) {
+        result.status = false;
+        result.errors.push(error);
+      }
+    });
+  } catch (error) {
+    result.status = false;
+    result.errors.push(error);
+  }
+
+  if (shouldThrow && !result.status) {
+    throw result.errors[0];
+  }
+
+  return result;
+}
