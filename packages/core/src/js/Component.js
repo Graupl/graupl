@@ -718,6 +718,36 @@ class Component {
       }
     }
 
+    // Breakpoint check.
+    if (this._breakpoint !== "") {
+      const breakpointCheck = isValidType(
+        "string",
+        { breakpoint: this._breakpoint },
+        { shouldThrow: false }
+      );
+
+      // Handle breakpoint check failure.
+      if (!breakpointCheck.status) {
+        this._errors = [...this._errors, ...breakpointCheck.errors];
+        this._valid = false;
+      }
+    }
+
+    // Media query check.
+    if (this._mediaQueryString !== "") {
+      const mediaQueryCheck = isValidType(
+        "string",
+        { mediaQuery: this._mediaQueryString },
+        { shouldThrow: false }
+      );
+
+      // Handle media query check failure.
+      if (!mediaQueryCheck.status) {
+        this._errors = [...this._errors, ...mediaQueryCheck.errors];
+        this._valid = false;
+      }
+    }
+
     // Key check.
     if (this._key !== "") {
       // Check the key.
