@@ -6,7 +6,7 @@ import {
   removeClass,
   selectFirstFocusableElement,
 } from "@graupl/core/src/domHelpers.js";
-import { TransactionalValue } from "@graupl/core/src/TransactionalValue.js";
+import TransactionalValue from "@graupl/core/src/TransactionalValue.js";
 import Component from "@graupl/core/src/Component.js";
 
 class NavigationShelf extends Component {

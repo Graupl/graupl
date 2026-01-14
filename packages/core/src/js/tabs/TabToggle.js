@@ -6,7 +6,7 @@
 /* global Tabs */
 
 import { addClass, removeClass } from "@graupl/core/src/domHelpers.js";
-import { TransactionalValue } from "../TransactionalValue.js";
+import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 class TabToggle extends Component {

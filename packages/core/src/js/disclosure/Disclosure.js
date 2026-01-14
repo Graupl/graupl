@@ -6,7 +6,7 @@
 import { isValidClassList, isValidType, isTag } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
-import { TransactionalValue } from "../TransactionalValue.js";
+import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 class Disclosure extends Component {
