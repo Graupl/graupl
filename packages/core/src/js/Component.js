@@ -906,8 +906,9 @@ class Component {
     }
 
     this._mediaQueryList = window.matchMedia(this.mediaQuery);
-    this._mediaQueryList.addEventListener(
+    this._addEventListener(
       "change",
+      this._mediaQueryList,
       this._mediaQueryListEventCallback
     );
     this._mediaQueryListEventCallback(this._mediaQueryList);
