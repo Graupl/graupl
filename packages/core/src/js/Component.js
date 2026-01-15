@@ -56,8 +56,6 @@ class Component {
    * @protected
    *
    * @type {Object<string, string[]>}
-   *
-   * @
    */
   _classes = {
     initialize: "",
