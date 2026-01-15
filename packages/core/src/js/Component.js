@@ -10,9 +10,11 @@ import {
   isQuerySelector,
   isValidState,
   isValidEvent,
-  isValidKey,
+  hasValidRootDOMElement,
+  isValidEventType,
 } from "./validate.js";
 import StorageManager from "./StorageManager.js";
+import { addClass, removeClass } from "./domHelpers.js";
 
 class Component {
   /**
@@ -187,22 +189,22 @@ class Component {
    * @type {Object<CustomEvent>}
    */
   _events = {
-    initialize: new CustomEvent("GrauplComponentInitialize", {
+    initialize: new CustomEvent("grauplComponentInitialize", {
       detail: { component: this },
     }),
-    preinitialize: new CustomEvent("GrauplComponentPreinitialize", {
+    preinitialize: new CustomEvent("grauplComponentPreinitialize", {
       detail: { component: this },
     }),
-    postinitialize: new CustomEvent("GrauplComponentPostinitialize", {
+    postinitialize: new CustomEvent("grauplComponentPostinitialize", {
       detail: { component: this },
     }),
-    validate: new CustomEvent("GrauplComponentValidate", {
+    validate: new CustomEvent("grauplComponentValidate", {
       detail: { component: this },
     }),
-    prevalidate: new CustomEvent("GrauplComponentPrevalidate", {
+    prevalidate: new CustomEvent("grauplComponentPrevalidate", {
       detail: { component: this },
     }),
-    postvalidate: new CustomEvent("GrauplComponentPostvalidate", {
+    postvalidate: new CustomEvent("grauplComponentPostvalidate", {
       detail: { component: this },
     }),
   };
@@ -266,7 +268,7 @@ class Component {
    *
    * @protected
    *
-   * @type {string[]}
+   * @type {Error[]}
    */
   _errors = [];
 
@@ -299,19 +301,46 @@ class Component {
       if (!this._validate()) {
         throw new Error(
           `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
-            .map((error) => error.toString())
+            .map((error) => error.message)
             .join("\n - ")}`
         );
       }
-      this._dispatchEvent("preinitialize", this.rootDOMElement());
 
+      addClass(this.initializeClass, this.rootDOMElement);
+
+      this._dispatchEvent("preinitialize", this.rootDOMElement);
+
+      // Generate the key.
       this._generateKey();
 
-      this._dispatchEvent("initialize", this.rootDOMElement());
+      // Set up the DOM.
+      this._setDOMElements();
+      this._setIds();
+      this._setAriaAttributes();
+      this._setCustomProps();
+
+      // Set up child elements.
+      this._createChildElements();
+
+      // Handle events.
+      this._handleMediaMatch();
+      this._handleFocus();
+      this._handleClick();
+      this._handleKeydown();
+      this._handleKeyup();
+
+      // Store the disclosure.
+      this._store();
+
+      this._dispatchEvent("initialize", this.rootDOMElement);
+
+      removeClass(this.initializeClass, this.rootDOMElement);
+
+      this._initialized = true;
+
+      this._dispatchEvent("postinitialize", this.rootDOMElement);
     } catch (error) {
       console.error(error);
-    } finally {
-      this._dispatchEvent("postinitialize", this.rootDOMElement());
     }
   }
   init() {
@@ -340,8 +369,8 @@ class Component {
    *
    * @see _rootDOMElement
    */
-  rootDOMElement() {
-    return this._dom[this._rootDOMElement] || document;
+  get rootDOMElement() {
+    return this._dom[this._rootDOMElement] || document.documentElement;
   }
 
   /**
@@ -654,7 +683,16 @@ class Component {
   _validate() {
     this._dispatchEvent("prevalidate", this.rootDOMElement);
 
-    this._dispatchEvent("validate", this.rootDOMElement);
+    // _rootDOMElement check.
+    const rootDOMElementCheck = hasValidRootDOMElement(this, {
+      shouldThrow: false,
+    });
+
+    // Handle _rootDOMElement check failure.
+    if (!rootDOMElementCheck.status) {
+      this._errors = [...this._errors, ...rootDOMElementCheck.errors];
+      this._valid = false;
+    }
 
     // DOM checks.
     if (Object.keys(this._dom).length > 0) {
@@ -771,7 +809,6 @@ class Component {
 
     // String checks.
     const strings = {
-      _rootDOMElement: this._rootDOMElement,
       _storageKey: this._storageKey,
       key: this._key,
       prefix: this._prefix,
@@ -792,15 +829,7 @@ class Component {
       this._valid = false;
     }
 
-    // _rootDOMElement check.
-    const rootDOMElementCheck = isValidKey(this._rootDOMElement, this._dom, {
-      shouldThrow: false,
-    });
-
-    if (!rootDOMElementCheck.status) {
-      this._errors = [...this._errors, ...rootDOMElementCheck.errors];
-      this._valid = false;
-    }
+    this._dispatchEvent("validate", this.rootDOMElement);
 
     this._dispatchEvent("postvalidate", this.rootDOMElement);
 
@@ -867,7 +896,10 @@ class Component {
     }
 
     // Make sure the element type can actually be set through this method.
-    if (this._protectedDOMElements.includes(elementType)) {
+    if (
+      this._rootDOMElement === elementType ||
+      this._protectedDOMElements.includes(elementType)
+    ) {
       throw new Error(
         `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
       );
@@ -918,7 +950,10 @@ class Component {
     }
 
     // Make sure the element type can actually be reset through this method.
-    if (this._protectedDOMElements.includes(elementType)) {
+    if (
+      this._rootDOMElement === elementType ||
+      this._protectedDOMElements.includes(elementType)
+    ) {
       throw new Error(
         `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
       );
@@ -1020,7 +1055,7 @@ class Component {
         { shouldThrow: false }
       ).status
     ) {
-      new StorageManager({ scope: "Graupl" });
+      new StorageManager({ scope: "GrauplStorage" });
     }
 
     // Store the menu
@@ -1065,9 +1100,10 @@ class Component {
    */
   _registerEvent(name, { bubbles = true, detail = {} } = {}) {
     isValidType("string", { name });
+    isValidType("boolean", { bubbles });
     isValidType("object", { detail });
 
-    const eventName = `Graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
+    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
       1
     )}`;
 
@@ -1159,11 +1195,7 @@ class Component {
    */
   _dispatchEvent(eventType, element) {
     // Make sure the event type exists.
-    if (!Object.keys(this.events).includes(eventType)) {
-      throw new Error(
-        `Graupl ${this.constructor.name}: "${eventType}" is not a valid event type.`
-      );
-    }
+    isValidEventType(eventType, this);
 
     // Make sure the element is actually an HTML Element.
     isValidInstance(HTMLElement, { element });
