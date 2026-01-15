@@ -327,10 +327,10 @@ class Component {
       this._handleKeydown();
       this._handleKeyup();
 
+      this._dispatchEvent("initialize", this.rootDOMElement);
+
       // Store the disclosure.
       this._store();
-
-      this._dispatchEvent("initialize", this.rootDOMElement);
 
       removeClass(this.initializeClass, this.rootDOMElement);
 
