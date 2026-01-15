@@ -466,7 +466,7 @@ class Accordion extends Component {
   }
 
   /**
-   * Validates all aspects of the accordion item to ensure proper functionality.
+   * Validates all aspects of the accordion to ensure proper functionality.
    *
    * @protected
    *
