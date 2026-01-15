@@ -203,7 +203,7 @@ class Disclosure extends Component {
         // those that _should_ open.
         if (
           this.dom.controller.getAttribute("aria-expanded") === "true" ||
-          (this.shouldOpen && window.matchMedia(this.mediaQuery).matches)
+          (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
         ) {
           this._expand({ emit: false, transition: false });
         } else {
