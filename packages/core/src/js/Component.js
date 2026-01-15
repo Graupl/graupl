@@ -10,8 +10,8 @@ import {
   isQuerySelector,
   isValidState,
   isValidEvent,
-  hasValidRootDOMElement,
   isValidEventType,
+  hasValidRootDOMElement,
 } from "./validate.js";
 import StorageManager from "./StorageManager.js";
 import { addClass, removeClass } from "./domHelpers.js";
@@ -68,8 +68,6 @@ class Component {
    * @protected
    *
    * @type {Object<string, string[]>}
-   *
-   * @
    */
   _classes = {
     initialize: "",
@@ -819,7 +817,6 @@ class Component {
     this._protectedDOMElements.forEach((elementType) => {
       strings[`_protectedDOMElementType[${elementType}]`] = elementType;
     });
-
     // Check the strings.
     const stringChecks = isValidType("string", strings, { shouldThrow: false });
 
@@ -1089,31 +1086,6 @@ class Component {
   }
 
   /**
-   * Registers a new event type within the component.
-   *
-   * @protected
-   *
-   * @param {string}  name                     - The name of the new event type.
-   * @param {object}  [options = {}]           - The options for the new event type.
-   * @param {boolean} [options.bubbles = true] - A flag to set if the event bubbles.
-   * @param {object}  [options.detail = {}]    - Additional details to include in the event.
-   */
-  _registerEvent(name, { bubbles = true, detail = {} } = {}) {
-    isValidType("string", { name });
-    isValidType("boolean", { bubbles });
-    isValidType("object", { detail });
-
-    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
-      1
-    )}`;
-
-    this._events[name] = new CustomEvent(eventName, {
-      bubbles,
-      detail: { component: this, ...detail },
-    });
-  }
-
-  /**
    * Sets an interval within the component.
    *
    * @protected
@@ -1185,6 +1157,31 @@ class Component {
     for (const scope of Object.keys(this._timeouts)) {
       this._clearTimeout(scope);
     }
+  }
+
+  /**
+   * Registers a new event type within the component.
+   *
+   * @protected
+   *
+   * @param {string}  name                     - The name of the new event type.
+   * @param {object}  [options = {}]           - The options for the new event type.
+   * @param {boolean} [options.bubbles = true] - A flag to set if the event bubbles.
+   * @param {object}  [options.detail = {}]    - Additional details to include in the event.
+   */
+  _registerEvent(name, { bubbles = true, detail = {} } = {}) {
+    isValidType("string", { name });
+    isValidType("boolean", { bubbles });
+    isValidType("object", { detail });
+
+    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
+      1
+    )}`;
+
+    this._events[name] = new CustomEvent(eventName, {
+      bubbles,
+      detail: { component: this, ...detail },
+    });
   }
 
   /**
