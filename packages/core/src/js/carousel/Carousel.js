@@ -194,15 +194,6 @@ class Carousel extends Component {
    */
   initialize() {
     this._addEventListener(
-      "grauplComponentPreinitialize",
-      this.rootDOMElement,
-      () => {
-        // Add the initialization class.
-        addClass(this._classes.initialize, this.dom.carousel);
-      }
-    );
-
-    this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
       () => {
@@ -211,17 +202,6 @@ class Carousel extends Component {
 
         // Activate the first item.
         this.activateFirstItem();
-      }
-    );
-
-    this._addEventListener(
-      "grauplComponentPostinitialize",
-      this.rootDOMElement,
-      () => {
-        // Remove the initialization class.
-        requestAnimationFrame(() => {
-          removeClass(this.initializeClass, this.dom.carousel);
-        });
       }
     );
 

@@ -161,15 +161,6 @@ class Alert extends Component {
    */
   initialize() {
     this._addEventListener(
-      "grauplComponentPreinitialize",
-      this.rootDOMElement,
-      () => {
-        // Add the initialization class.
-        addClass(this._classes.initialize, this.dom.alert);
-      }
-    );
-
-    this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
       () => {
@@ -177,17 +168,6 @@ class Alert extends Component {
         if (this.isHidden) {
           this._conseal({ emit: false, transition: false });
         }
-      }
-    );
-
-    this._addEventListener(
-      "grauplComponentPostinitialize",
-      this.rootDOMElement,
-      () => {
-        // Remove the initialization class.
-        requestAnimationFrame(() => {
-          removeClass(this._classes.initialize, this.dom.alert);
-        });
       }
     );
 

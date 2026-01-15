@@ -187,16 +187,7 @@ class Disclosure extends Component {
    */
   initialize() {
     this._addEventListener(
-      "GrauplComponentPreinitialize",
-      this.rootDOMElement,
-      () => {
-        // Add the initialization class.
-        addClass(this._classes.initialize, this.dom.disclosure);
-      }
-    );
-
-    this._addEventListener(
-      "GrauplComponentInitialize",
+      "grauplComponentInitialize",
       this.rootDOMElement,
       () => {
         // Handle auto-opening disclosures with aria-expanded set to true or
@@ -208,22 +199,6 @@ class Disclosure extends Component {
           this._expand({ emit: false, transition: false });
         } else {
           this._collapse({ emit: false, transition: false });
-        }
-      }
-    );
-
-    this._addEventListener(
-      "GrauplComponentPostinitialize",
-      this.rootDOMElement,
-      () => {
-        // Remove the initialization class.
-        requestAnimationFrame(() => {
-          removeClass(this._classes.initialize, this.dom.disclosure);
-        });
-
-        // Set the initialized flag to true if valid.
-        if (this.isValid) {
-          this._initialized = true;
         }
       }
     );

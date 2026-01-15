@@ -5,7 +5,6 @@
 
 import TabToggle from "./TabToggle.js";
 import { isValidType, isValidClassList } from "../validate.js";
-import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
 import Component from "../Component.js";
 
@@ -144,15 +143,6 @@ class Tabs extends Component {
    * Initializes the tabs.
    */
   initialize() {
-    this._addEventListener(
-      "grauplComponentPreinitialize",
-      this.rootDOMElement,
-      () => {
-        // Add the initialization class.
-        addClass(this.initializeClass, this.dom.tabs);
-      }
-    );
-
     this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
       // Make sure the first tab is open if no other tab is active.
       if (
@@ -162,17 +152,6 @@ class Tabs extends Component {
         this.elements.tabToggles[0].show();
       }
     });
-
-    this._addEventListener(
-      "grauplComponentPostinitialize",
-      this.rootDOMElement,
-      () => {
-        // Remove the initialization class.
-        requestAnimationFrame(() => {
-          removeClass(this.initializeClass, this.dom.tabs);
-        });
-      }
-    );
 
     super.initialize();
   }
