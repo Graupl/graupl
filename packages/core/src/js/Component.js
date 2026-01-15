@@ -10,6 +10,7 @@ import {
   isQuerySelector,
   isValidState,
   isValidEvent,
+  isValidEventType,
 } from "./validate.js";
 import StorageManager from "./StorageManager.js";
 
@@ -1062,6 +1063,31 @@ class Component {
   }
 
   /**
+   * Registers a new event type within the component.
+   *
+   * @protected
+   *
+   * @param {string}  name                     - The name of the new event type.
+   * @param {object}  [options = {}]           - The options for the new event type.
+   * @param {boolean} [options.bubbles = true] - A flag to set if the event bubbles.
+   * @param {object}  [options.detail = {}]    - Additional details to include in the event.
+   */
+  _registerEvent(name, { bubbles = true, detail = {} } = {}) {
+    isValidType("string", { name });
+    isValidType("boolean", { bubbles });
+    isValidType("object", { detail });
+
+    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
+      1
+    )}`;
+
+    this._events[name] = new CustomEvent(eventName, {
+      bubbles,
+      detail: { component: this, ...detail },
+    });
+  }
+
+  /**
    * Dispatch a custom event on an element in the DOM.
    *
    * @param {string}      eventType - The type of the event to dispatch.
@@ -1069,11 +1095,7 @@ class Component {
    */
   _dispatchEvent(eventType, element) {
     // Make sure the event type exists.
-    if (!Object.keys(this.events).includes(eventType)) {
-      throw new Error(
-        `Graupl ${this.constructor.name}: "${eventType}" is not a valid event type.`
-      );
-    }
+    isValidEventType(eventType, this);
 
     // Make sure the element is actually an HTML Element.
     isValidInstance(HTMLElement, { element });

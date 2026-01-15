@@ -1,4 +1,11 @@
 /**
+ * @file
+ * Validation helper functions.
+ */
+
+/* global Component */
+
+/**
  * Check to see if the provided elements have a specific contructor.
  *
  * The values must be provided inside of an object
@@ -459,6 +466,45 @@ export function isTag(tagName, elements, { shouldThrow = true } = {}) {
           result.errors.push(error);
         }
       }
+    }
+  } catch (error) {
+    result.status = false;
+    result.errors.push(error);
+  }
+
+  if (shouldThrow && !result.status) {
+    throw result.errors[0];
+  }
+
+  return result;
+}
+
+/**
+ * Check to see if the provided event type is valid for dispatching.
+ *
+ * Will return `{ status: true }` if the check is successful.
+ *
+ * @param  {string}                   eventType                     - The event type to check.
+ * @param  {Component}                component                     - The component to check.
+ * @param  {object}                   [options = {}]                - Additional options.
+ * @param  {boolean}                  [options.shouldThrow = true ] - Whether to throw on error or return it.
+ * @return {Object<boolean, Error[]>}                               - The result of the check.
+ */
+export function isValidEventType(
+  eventType,
+  component,
+  { shouldThrow = true } = {}
+) {
+  const result = {
+    status: true,
+    errors: [],
+  };
+
+  try {
+    if (!Object.prototype.hasOwnProperty.call(component.events, eventType)) {
+      throw new TypeError(
+        `Event type "${eventType}" is not valid for ${component.constructor.name}. Valid event types are: "${Object.keys(component.events).join('", ')}".`
+      );
     }
   } catch (error) {
     result.status = false;
