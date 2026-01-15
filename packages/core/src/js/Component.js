@@ -718,64 +718,26 @@ class Component {
       }
     }
 
-    // Breakpoint check.
-    if (this._breakpoint !== "") {
-      const breakpointCheck = isValidType(
-        "string",
-        { breakpoint: this._breakpoint },
-        { shouldThrow: false }
-      );
+    // String checks.
+    const strings = {
+      _storageKey: this._storageKey,
+      key: this._key,
+      prefix: this._prefix,
+      mediaQuery: this._mediaQueryString,
+      breakpoint: this._breakpoint,
+    };
 
-      // Handle breakpoint check failure.
-      if (!breakpointCheck.status) {
-        this._errors = [...this._errors, ...breakpointCheck.errors];
-        this._valid = false;
-      }
-    }
+    this._protectedDOMElements.forEach((elementType) => {
+      strings[`_protectedDOMElementType[${elementType}]`] = elementType;
+    });
 
-    // Media query check.
-    if (this._mediaQueryString !== "") {
-      const mediaQueryCheck = isValidType(
-        "string",
-        { mediaQuery: this._mediaQueryString },
-        { shouldThrow: false }
-      );
+    // Check the strings.
+    const stringChecks = isValidType("string", strings, { shouldThrow: false });
 
-      // Handle media query check failure.
-      if (!mediaQueryCheck.status) {
-        this._errors = [...this._errors, ...mediaQueryCheck.errors];
-        this._valid = false;
-      }
-    }
-
-    // Key check.
-    if (this._key !== "") {
-      // Check the key.
-      const keyCheck = isValidType(
-        "string",
-        { key: this._key },
-        { shouldThrow: false }
-      );
-
-      // Handle key check failure.
-      if (!keyCheck.status) {
-        this._errors = [...this._errors, ...keyCheck.errors];
-        this._valid = false;
-      }
-    }
-
-    // Prefix check.
-    if (this._prefix !== "") {
-      const prefixCheck = isValidType(
-        "string",
-        { prefix: this._prefix },
-        { shouldThrow: false }
-      );
-
-      if (!prefixCheck.status) {
-        this._errors = [...this._errors, ...prefixCheck.errors];
-        this._valid = false;
-      }
+    // Handle string check failure.
+    if (!stringChecks.status) {
+      this._errors = [...this._errors, ...stringChecks.errors];
+      this._valid = false;
     }
 
     return this._valid;
