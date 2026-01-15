@@ -329,7 +329,7 @@ class Component {
 
       this._dispatchEvent("initialize", this.rootDOMElement);
 
-      // Store the disclosure.
+      // Store the component.
       this._store();
 
       removeClass(this.initializeClass, this.rootDOMElement);
