@@ -1,4 +1,3 @@
-import storage from "../storage.js";
 import once from "@drupal/once";
 
 const generate = (
@@ -28,7 +27,7 @@ const generate = (
       const controllerElement =
         navigationElement.querySelector(".navigation-toggle") || null;
       const containerElement = controllerElement ? navigationElement : null;
-      const menu = new window[MenuConstructor]({
+      new window[MenuConstructor]({
         menuElement,
         menuItemSelector: ".menu-item",
         menuLinkSelector: ".menu-link",
@@ -39,9 +38,6 @@ const generate = (
         ...options,
         ...menuOptions,
       });
-
-      storage.initializeStorage("menus");
-      storage.pushToStorage("menus", menu.dom.menu.id, menu);
     }
   );
 };

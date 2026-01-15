@@ -950,15 +950,15 @@ class Component {
     if (
       !isValidInstance(
         StorageManager,
-        { storage: window.Graupl },
+        { storage: window.GrauplStorage },
         { shouldThrow: false }
       ).status
     ) {
-      new StorageManager({ scope: "Graupl" });
+      new StorageManager({ scope: "GrauplStorage" });
     }
 
     // Store the menu
-    window.Graupl.set({
+    window.GrauplStorage.set({
       key: this.id !== "" ? this.id : this.key,
       type: this._storageKey,
       data: this,
@@ -974,14 +974,14 @@ class Component {
     if (
       !isValidInstance(
         StorageManager,
-        { storage: window.Graupl },
+        { storage: window.GrauplStorage },
         { shouldThrow: false }
       ).status
     ) {
       return;
     }
 
-    window.Graupl.clear({
+    window.GrauplStorage.clear({
       key: this.id !== "" ? this.id : this.key,
       type: this._storageKey,
     });
