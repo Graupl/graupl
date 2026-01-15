@@ -20,4 +20,10 @@ export default defineConfig({
       },
     },
   },
+  test: {
+    environment: "jsdom",
+    environmentOptions: {
+      pretendToBeVisual: true,
+    },
+  },
 });

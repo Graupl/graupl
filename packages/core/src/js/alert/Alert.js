@@ -6,7 +6,7 @@
 import { isValidClassList, isValidType } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
-import { TransactionalValue } from "../TransactionalValue.js";
+import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 class Alert extends Component {
@@ -227,6 +227,11 @@ class Alert extends Component {
       requestAnimationFrame(() => {
         removeClass(this._classes.initialize, this.dom.alert);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 
@@ -325,7 +330,7 @@ class Alert extends Component {
   }
 
   set showDuration(value) {
-    isValidType("number", { value });
+    isValidType("number", { showDuration: value });
 
     if (this._durations.show !== value) {
       this._durations.show = value;
@@ -351,7 +356,7 @@ class Alert extends Component {
   }
 
   set hideDuration(value) {
-    isValidType("number", { value });
+    isValidType("number", { hideDuration: value });
 
     if (this._durations.hide !== value) {
       this._durations.hide = value;
@@ -388,11 +393,13 @@ class Alert extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -544,7 +551,7 @@ class Alert extends Component {
   /**
    * Handles click events throughout the alert for proper use.
    *
-   * - Adds a `pointerup` listener to the controller that will hide the alert.
+   * - Adds a `click` listener to the controller that will hide the alert.
    *
    * @protected
    */
@@ -553,7 +560,7 @@ class Alert extends Component {
       return;
     }
 
-    this._addEventListener("pointerup", this.dom.controller, () => this.hide());
+    this._addEventListener("click", this.dom.controller, () => this.hide());
   }
 
   /**

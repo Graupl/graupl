@@ -6,7 +6,7 @@
 import { isValidClassList, isValidType, isTag } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
-import { TransactionalValue } from "../TransactionalValue.js";
+import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 class Disclosure extends Component {
@@ -306,6 +306,11 @@ class Disclosure extends Component {
       requestAnimationFrame(() => {
         removeClass(this._classes.initialize, this.dom.disclosure);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 
@@ -560,11 +565,13 @@ class Disclosure extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -610,7 +617,13 @@ class Disclosure extends Component {
     this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id);
 
     // If the controller element is not a button, set its role to button.
-    if (!isTag("button", { controller: this.dom.controller })) {
+    if (
+      !isTag(
+        "button",
+        { controller: this.dom.controller },
+        { shouldThrow: false }
+      ).status
+    ) {
       this.dom.controller.setAttribute("role", "button");
     }
   }
@@ -785,11 +798,11 @@ class Disclosure extends Component {
   /**
    * Handles click events throughout the disclosure.
    *
-   * - Adds a `pointerup` listener to the controller that toggles the disclosure.
-   * - Adds a `pointerup` listener to the `document` so if the user clicks outside the disclosure it will close.
+   * - Adds a `click` listener to the controller that toggles the disclosure.
+   * - Adds a `click` listener to the `document` so if the user clicks outside the disclosure it will close.
    */
   _handleClick() {
-    this._addEventListener("pointerup", this.dom.controller, (event) => {
+    this._addEventListener("click", this.dom.controller, (event) => {
       this.currentEvent = "mouse";
 
       if (event.button !== 0) return;
@@ -798,7 +811,7 @@ class Disclosure extends Component {
       this.toggle();
     });
 
-    this._addEventListener("pointerup", document, (event) => {
+    this._addEventListener("click", document, (event) => {
       if (this.focusState !== "self" || !this.closeOnBlur) return;
 
       this.currentEvent = "mouse";

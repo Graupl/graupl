@@ -1,6 +1,7 @@
 {
   "name": "@graupl/core",
-  "version": "1.0.0-beta.25",
+  "version": "1.0.0-beta.32",
+  "license": "GPL-3.0-or-later",
   "description": "The core module of Graupl, providing essential styles and utilities.",
   "main": "dist/js/graupl.cjs.js",
   "module": "dist/js/graupl.es.js",
@@ -72,7 +73,6 @@
   "bugs": {
     "url": "https://github.com/Graupl/graupl/issues"
   },
-  "license": "ISC",
   "homepage": "https://github.com/Graupl/graupl/tree/main/packages/core#readme",
   "scripts": {
     "presass": "rm -rf dist/css/*",

@@ -7,7 +7,7 @@
 
 import { isTag } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
-import { TransactionalValue } from "../TransactionalValue.js";
+import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 class AccordionItem extends Component {
@@ -222,7 +222,10 @@ class AccordionItem extends Component {
   _setAriaAttributes() {
     // Set the ARIA attributes for the accordion item toggle.
     // If the toggle is not a button, then set the role to "button".
-    if (!isTag("button", { toggle: this.dom.toggle })) {
+    if (
+      !isTag("button", { toggle: this.dom.toggle }, { shouldThrow: false })
+        .status
+    ) {
       this.dom.toggle.setAttribute("role", "button");
     }
 
@@ -236,7 +239,10 @@ class AccordionItem extends Component {
 
     // Set the ARIA attributes for the accordion item content.
     // If the content is not a section, then set the role to "region".
-    if (!isTag("section", { content: this.dom.content })) {
+    if (
+      !isTag("section", { content: this.dom.content }, { shouldThrow: false })
+        .status
+    ) {
       this.dom.content.setAttribute("role", "region");
     }
 

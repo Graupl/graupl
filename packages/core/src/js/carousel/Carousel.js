@@ -186,11 +186,11 @@ class Carousel extends Component {
    *
    * @param {object}             options                                                                  - The options for the generated carousel.
    * @param {HTMLElement}        options.carouselElement                                                  - The carousel element in the DOM.
-   * @param {string}             [options.carouselItemSelector = .carousel-item]                          - The query selector string for carousel items.
+   * @param {string}             [options.carouselItemsSelector = .carousel-item]                         - The query selector string for carousel items.
    * @param {string}             [options.carouselItemContainerSelector = .carousel-item-container]       - The query selector string for the carousel item container.
-   * @param {string}             [options.carouselControlSelector = .carousel-control]                    - The query selector string for carousel controls.
+   * @param {string}             [options.carouselControlsSelector = .carousel-control]                   - The query selector string for carousel controls.
    * @param {string}             [options.carouselControlContainerSelector = .carousel-control-container] - The query selector string for carousel control container.
-   * @param {string}             [options.carouselTabSelector = .carousel-tab]                            - The query selector string for carousel tabs.
+   * @param {string}             [options.carouselTabsSelector = .carousel-tab]                           - The query selector string for carousel tabs.
    * @param {string}             [options.carouselTabContainerSelector = .carousel-tab-container]         - The query selector string for the carousel tab container.
    * @param {string}             [options.autoplaySelector = .autoplay]                                   - The query selector string for the autoplay button.
    * @param {string}             [options.nextSelector = .next]                                           - The query selector string for the next button.
@@ -212,11 +212,11 @@ class Carousel extends Component {
    */
   constructor({
     carouselElement,
-    carouselItemSelector = ".carousel-item",
+    carouselItemsSelector = ".carousel-item",
     carouselItemContainerSelector = ".carousel-item-container",
-    carouselControlSelector = ".carousel-control",
+    carouselControlsSelector = ".carousel-control",
     carouselControlContainerSelector = ".carousel-control-container",
-    carouselTabSelector = ".carousel-tab",
+    carouselTabsSelector = ".carousel-tab",
     carouselTabContainerSelector = ".carousel-tab-container",
     autoplaySelector = ".autoplay",
     nextSelector = ".next",
@@ -246,11 +246,11 @@ class Carousel extends Component {
     this._dom.carousel = carouselElement;
 
     // Set query selectors.
-    this._selectors.carouselItems = carouselItemSelector;
+    this._selectors.carouselItems = carouselItemsSelector;
     this._selectors.carouselItemContainer = carouselItemContainerSelector;
-    this._selectors.carouselControls = carouselControlSelector;
+    this._selectors.carouselControls = carouselControlsSelector;
     this._selectors.carouselControlContainer = carouselControlContainerSelector;
-    this._selectors.carouselTabs = carouselTabSelector;
+    this._selectors.carouselTabs = carouselTabsSelector;
     this._selectors.carouselTabContainer = carouselTabContainerSelector;
     this._selectors.autoplay = autoplaySelector;
     this._selectors.next = nextSelector;
@@ -315,6 +315,11 @@ class Carousel extends Component {
       requestAnimationFrame(() => {
         removeClass(this.initializeClass, this.dom.carousel);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 
@@ -595,11 +600,13 @@ class Carousel extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -610,11 +617,11 @@ class Carousel extends Component {
     };
 
     // Check the strings.
-    const stringChecks = isValidType("string", strings);
+    const stringChecks = isValidType("string", strings, { shouldThrow: false });
 
     // Handle string check failures.
-    if (!stringChecks) {
-      this._errors.push(stringChecks.message);
+    if (!stringChecks.status) {
+      this._errors = [...this._errors, ...stringChecks.errors];
       this._valid = false;
     }
 
@@ -696,7 +703,8 @@ class Carousel extends Component {
     // Sections and role="region" are acceptable in certain cases, so
     // we only need to fallback to role="group" if neither of those are present.
     if (
-      !isTag("section", { carousel: this.dom.carousel }) &&
+      !isTag("section", { carousel: this.dom.carousel }, { shouldThrow: false })
+        .status &&
       !this.dom.carousel.getAttribute("role") !== "region"
     ) {
       this.dom.carousel.setAttribute("role", "group");
@@ -710,7 +718,7 @@ class Carousel extends Component {
     }
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      if (!isTag("button", { tab: tab })) {
+      if (!isTag("button", { tab: tab }, { shouldThrow: false }).status) {
         tab.setAttribute("role", "button");
       }
 
@@ -788,26 +796,26 @@ class Carousel extends Component {
   /**
    * Handles the click events throughout the carousel.
    *
-   * - Adds a `pointerup` listener to the next control to activate the next item.
-   * - Adds a `pointerup` listener to the previous control to activate the previous item.
-   * - Adds a `pointerup` listener to the autoplay control to toggle autoplay.
-   * - Adds a `pointerup` listener to each tab control to activate the corresponding item.
+   * - Adds a `click` listener to the next control to activate the next item.
+   * - Adds a `click` listener to the previous control to activate the previous item.
+   * - Adds a `click` listener to the autoplay control to toggle autoplay.
+   * - Adds a `click` listener to each tab control to activate the corresponding item.
    */
   _handleClick() {
-    this._addEventListener("pointerup", this.dom.next, () => {
+    this._addEventListener("click", this.dom.next, () => {
       this.activateNextItem();
     });
 
-    this._addEventListener("pointerup", this.dom.previous, () => {
+    this._addEventListener("click", this.dom.previous, () => {
       this.activatePreviousItem();
     });
 
-    this._addEventListener("pointerup", this.dom.autoplay, () => {
+    this._addEventListener("click", this.dom.autoplay, () => {
       this.toggleAutoplay();
     });
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      this._addEventListener("pointerup", tab, () => {
+      this._addEventListener("click", tab, () => {
         if (this.currentItem > index) {
           this._currentAction = "previous";
         } else {

@@ -17,16 +17,16 @@ class Tabs extends Component {
    *
    * @type {Object<HTMLElement, HTMLElement[]>}
    *
-   * @property {HTMLElement}   tabs       - The tabs element.
-   * @property {HTMLElement}   tabList    - The tab list element.
-   * @property {HTMLElement[]} tabToggle  - An array of tab item toggles.
-   * @property {HTMLElement[]} tabContent - An array of tab item contents.
+   * @property {HTMLElement}   tabs        - The tabs element.
+   * @property {HTMLElement}   tabList     - The tab list element.
+   * @property {HTMLElement[]} tabToggles  - An array of tab item toggles.
+   * @property {HTMLElement[]} tabContents - An array of tab item contents.
    */
   _dom = {
     tabs: null,
     tabList: null,
-    tabToggle: [],
-    tabContent: [],
+    tabToggles: [],
+    tabContents: [],
   };
 
   /**
@@ -45,14 +45,14 @@ class Tabs extends Component {
    *
    * @type {Object<string>}
    *
-   * @property {string} tabList    - The query selector for the tab list.
-   * @property {string} tabToggle  - The query selector for tab toggles.
-   * @property {string} tabContent - The query selector for tab contents.
+   * @property {string} tabList     - The query selector for the tab list.
+   * @property {string} tabToggles  - The query selector for tab toggles.
+   * @property {string} tabContents - The query selector for tab contents.
    */
   _selectors = {
     tabList: "",
-    tabToggle: "",
-    tabContent: "",
+    tabToggles: "",
+    tabContents: "",
   };
 
   /**
@@ -62,10 +62,10 @@ class Tabs extends Component {
    *
    * @type {Object<TabToggle[]>}
    *
-   * @property {TabToggle[]} tabToggle - The list of tab items.
+   * @property {TabToggle[]} tabToggles - The list of tab items.
    */
   _elements = {
-    tabToggle: [],
+    tabToggles: [],
   };
 
   /**
@@ -75,9 +75,9 @@ class Tabs extends Component {
    *
    * @type {Object<string, string[]>}
    *
-   * @property {string|string[]} open         - The class(es) to apply when the tab is open.
-   * @property {string|string[]} close        - The class(es) to apply when the tab is closed.
-   * @property {string|string[]} transition   - The class(es) to apply when the tab is transitioning between states.
+   * @property {string|string[]} open       - The class(es) to apply when the tab is open.
+   * @property {string|string[]} close      - The class(es) to apply when the tab is closed.
+   * @property {string|string[]} transition - The class(es) to apply when the tab is transitioning between states.
    * @property {string|string[]} initialize - The class(es) to apply when the tab is initializing.
    */
   _classes = {
@@ -134,28 +134,28 @@ class Tabs extends Component {
   /**
    * Constructs a new `Tab`.
    *
-   * @param {object}             options                                     - The options for generating the tab.
-   * @param {HTMLElement}        [options.tabsElement]                       - The tab element in the DOM.
-   * @param {string}             [options.tabListSelector = .tab-list]       - The query selector string for the tab list.
-   * @param {string}             [options.tabToggleSelector = .tab-toggle]   - The query selector string for tab toggle.
-   * @param {string}             [options.tabContentSelector = .tab-content] - The query selector string for tab content.
-   * @param {?(string|string[])} [options.openClass = show]                  - The class to apply when a tab is "open".
-   * @param {?(string|string[])} [options.closeClass = hide]                 - The class to apply when a tab is "closed".
-   * @param {?(string|string[])} [options.transitionClass = null]            - The class to apply when a tab is transitioning between "open" and "closed" states.
-   * @param {number}             [options.transitionDuration = 300]          - The duration of the transition between "open" and "closed" states (in milliseconds).
-   * @param {number}             [options.openDuration = -1]                 - The duration of the transition from "closed" to "open" states (in milliseconds).
-   * @param {number}             [options.closeDuration = -1]                - The duration of the transition from "open" to "closed" states (in milliseconds).
-   * @param {boolean}            [options.automaticActivation = false]       - A flag to set if focusing a tab item toggle will automatically activate it.
-   * @param {?string}            [options.prefix = graupl-]                  - The prefix to use for CSS custom properties.
-   * @param {?string}            [options.key = null]                        - The key used to generate IDs throughout the tab.
-   * @param {?(string|string[])} [options.initializeClass = initializing]    - The class to apply when a tabs are initialzing.
-   * @param {boolean}            [options.initialize = false]                - A flag to initialize the tab immediately upon creation.
+   * @param {object}             options                                      - The options for generating the tab.
+   * @param {HTMLElement}        [options.tabsElement]                        - The tab element in the DOM.
+   * @param {string}             [options.tabListSelector = .tab-list]        - The query selector string for the tab list.
+   * @param {string}             [options.tabTogglesSelector = .tab-toggle]   - The query selector string for tab toggle.
+   * @param {string}             [options.tabContentsSelector = .tab-content] - The query selector string for tab content.
+   * @param {?(string|string[])} [options.openClass = show]                   - The class to apply when a tab is "open".
+   * @param {?(string|string[])} [options.closeClass = hide]                  - The class to apply when a tab is "closed".
+   * @param {?(string|string[])} [options.transitionClass = null]             - The class to apply when a tab is transitioning between "open" and "closed" states.
+   * @param {number}             [options.transitionDuration = 300]           - The duration of the transition between "open" and "closed" states (in milliseconds).
+   * @param {number}             [options.openDuration = -1]                  - The duration of the transition from "closed" to "open" states (in milliseconds).
+   * @param {number}             [options.closeDuration = -1]                 - The duration of the transition from "open" to "closed" states (in milliseconds).
+   * @param {boolean}            [options.automaticActivation = false]        - A flag to set if focusing a tab item toggle will automatically activate it.
+   * @param {?string}            [options.prefix = graupl-]                   - The prefix to use for CSS custom properties.
+   * @param {?string}            [options.key = null]                         - The key used to generate IDs throughout the tab.
+   * @param {?(string|string[])} [options.initializeClass = initializing]     - The class to apply when a tabs are initialzing.
+   * @param {boolean}            [options.initialize = false]                 - A flag to initialize the tab immediately upon creation.
    */
   constructor({
     tabsElement,
     tabListSelector = ".tab-list",
-    tabToggleSelector = ".tab-toggle",
-    tabContentSelector = ".tab-content",
+    tabTogglesSelector = ".tab-toggle",
+    tabContentsSelector = ".tab-content",
     openClass = "show",
     closeClass = "hide",
     transitionClass = null,
@@ -179,8 +179,8 @@ class Tabs extends Component {
 
     // Set DOM selectors.
     this._selectors.tabList = tabListSelector;
-    this._selectors.tabToggle = tabToggleSelector;
-    this._selectors.tabContent = tabContentSelector;
+    this._selectors.tabToggles = tabTogglesSelector;
+    this._selectors.tabContents = tabContentsSelector;
 
     // Set open/close classes.
     this._classes.open = openClass || "";
@@ -230,9 +230,10 @@ class Tabs extends Component {
 
       // Make sure the first tab is open if no other tab is active.
       if (
-        this.elements.tabToggle.filter((toggle) => toggle.isActive).length === 0
+        this.elements.tabToggles.filter((toggle) => toggle.isActive).length ===
+        0
       ) {
-        this.elements.tabToggle[0].show();
+        this.elements.tabToggles[0].show();
       }
     } catch (error) {
       console.error(error);
@@ -241,6 +242,11 @@ class Tabs extends Component {
       requestAnimationFrame(() => {
         removeClass(this.initializeClass, this.dom.tabs);
       });
+
+      // Set the initialized flag to true if valid.
+      if (this.isValid) {
+        this._initialized = true;
+      }
     }
   }
 
@@ -407,7 +413,7 @@ class Tabs extends Component {
     if (
       this._currentChild !== value &&
       value >= 0 &&
-      value < this.elements.tabToggle.length
+      value < this.elements.tabToggles.length
     ) {
       this._currentChild = value;
     }
@@ -420,7 +426,7 @@ class Tabs extends Component {
    * @type {TabToggle}
    */
   get currentTabToggle() {
-    return this.elements.tabToggle[this.currentChild];
+    return this.elements.tabToggles[this.currentChild];
   }
 
   /**
@@ -441,11 +447,13 @@ class Tabs extends Component {
     };
 
     // Check the booleans.
-    const booleanChecks = isValidType("boolean", booleans);
+    const booleanChecks = isValidType("boolean", booleans, {
+      shouldThrow: false,
+    });
 
     // Handle boolean check failure.
-    if (!booleanChecks) {
-      this._errors.push(booleanChecks.message);
+    if (!booleanChecks.status) {
+      this._errors = [...this._errors, ...booleanChecks.errors];
       this._valid = false;
     }
 
@@ -519,12 +527,12 @@ class Tabs extends Component {
     this._setDOMElementType("tabList", { context: this.dom.tabs });
 
     if (this.dom.tabList) {
-      this._resetDOMElementType("tabToggle");
-      this._setDOMElementType("tabToggle", { context: this.dom.tabList });
+      this._resetDOMElementType("tabToggles");
+      this._setDOMElementType("tabToggles", { context: this.dom.tabList });
     }
 
-    this._resetDOMElementType("tabContent");
-    this._setDOMElementType("tabContent", { context: this.dom.tabs });
+    this._resetDOMElementType("tabContents");
+    this._setDOMElementType("tabContents", { context: this.dom.tabs });
   }
 
   /**
@@ -533,16 +541,16 @@ class Tabs extends Component {
    * @protected
    */
   _createChildElements() {
-    this.dom.tabToggle.forEach((tabToggle, index) => {
+    this.dom.tabToggles.forEach((tabToggles, index) => {
       const toggle = new TabToggle({
-        toggleElement: tabToggle,
-        contentElement: this.dom.tabContent[index],
+        toggleElement: tabToggles,
+        contentElement: this.dom.tabContents[index],
         parentTab: this,
       });
 
       toggle.initialize();
 
-      this._elements.tabToggle.push(toggle);
+      this._elements.tabToggles.push(toggle);
     });
   }
 
@@ -555,7 +563,7 @@ class Tabs extends Component {
    * @protected
    */
   _handleFocus() {
-    this.elements.tabToggle.forEach((toggle, index) => {
+    this.elements.tabToggles.forEach((toggle, index) => {
       this._addEventListener("focus", toggle.dom.toggle, () => {
         this.currentChild = index;
 
@@ -569,13 +577,13 @@ class Tabs extends Component {
   /**
    * Handles click events throughout the tab item for proper use.
    *
-   * - Adds a `pointerup` listener to the tab item toggles that will toggle each tab item.
+   * - Adds a `click` listener to the tab item toggles that will toggle each tab item.
    *
    * @protected
    */
   _handleClick() {
-    this.elements.tabToggle.forEach((toggle, index) => {
-      this._addEventListener("pointerup", toggle.dom.toggle, () => {
+    this.elements.tabToggles.forEach((toggle, index) => {
+      this._addEventListener("click", toggle.dom.toggle, () => {
         this.currentChild = index;
         toggle.show();
       });
@@ -591,8 +599,8 @@ class Tabs extends Component {
    *   - Blocks propagation on "Space", "Enter", "ArrowRight", "ArrowLeft", "Home", and "End" keys.
    */
   _handleKeydown() {
-    this.dom.tabToggle.forEach((tabToggle) => {
-      this._addEventListener("keydown", tabToggle, (event) => {
+    this.dom.tabToggles.forEach((tabToggles) => {
+      this._addEventListener("keydown", tabToggles, (event) => {
         const key = keyPress(event);
         const ToggleKeys = [
           "Space",
@@ -629,8 +637,8 @@ class Tabs extends Component {
    * Note: When the above explanations mention "tab link", they are referring to the tab item toggle.
    */
   _handleKeyup() {
-    this.dom.tabToggle.forEach((tabToggle) => {
-      this._addEventListener("keyup", tabToggle, (event) => {
+    this.dom.tabToggles.forEach((tabToggles) => {
+      this._addEventListener("keyup", tabToggles, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -696,14 +704,14 @@ class Tabs extends Component {
    * Focus the tab's last child.
    */
   focusLastChild() {
-    this.focusChild(this.elements.tabToggle.length - 1);
+    this.focusChild(this.elements.tabToggles.length - 1);
   }
 
   /**
    * Focus the tab's next child.
    */
   focusNextChild() {
-    if (this.currentChild < this.elements.tabToggle.length - 1) {
+    if (this.currentChild < this.elements.tabToggles.length - 1) {
       this.focusChild(this.currentChild + 1);
     } else {
       this.focusFirstChild();

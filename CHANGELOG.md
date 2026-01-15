@@ -2,6 +2,140 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.32](https://github.com/Graupl/graupl/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2026-01-09)
+
+
+### Bug Fixes
+
+* **dist:** add missing tabs files ([4eb33b5](https://github.com/Graupl/graupl/commit/4eb33b56fff7fa302ef97597ba4a28bb701479d8))
+
+## [1.0.0-beta.31](https://github.com/Graupl/graupl/compare/v1.0.0-beta.30...v1.0.0-beta.31) (2026-01-09)
+
+
+### Features
+
+* **components:** add initialized flag ([0572405](https://github.com/Graupl/graupl/commit/0572405c08abf409a45a139c08384f0d29958d00))
+* **navigation shelf:** update js to use new component base class ([d6f0943](https://github.com/Graupl/graupl/commit/d6f0943b9db527da1bca6dd2228dc5931da0dd94))
+
+
+### Bug Fixes
+
+* **accessibility:** use click events instead of pointerup events ([507f50d](https://github.com/Graupl/graupl/commit/507f50d522a37032c8b39df985c0204e337dc85a))
+* **component:** do not force strict element generation ([5fdcad6](https://github.com/Graupl/graupl/commit/5fdcad6857aa05c69a5f0d561f95a9ec36c0139d))
+
+## [1.0.0-beta.30](https://github.com/Graupl/graupl/compare/v1.0.0-beta.29...v1.0.0-beta.30) (2026-01-09)
+
+
+### Bug Fixes
+
+* **icons:** restore icon spacer ([8b59009](https://github.com/Graupl/graupl/commit/8b5900956a7a46bfbc1a973f321533eae18793cd))
+
+
+### Build System
+
+* **release:** ensure all tests succeed before a release is allowed to be tagged ([3d999b4](https://github.com/Graupl/graupl/commit/3d999b449f11edc5b6dd5f67465e20ace829fb83))
+
+
+### Continuous Integration
+
+* add packages write permission to release action ([ee41900](https://github.com/Graupl/graupl/commit/ee41900ee0d87d140dc76a8f52261fcdaa6fb11e))
+
+## [1.0.0-beta.29](https://github.com/Graupl/graupl/compare/v1.0.0-beta.28...v1.0.0-beta.29) (2026-01-07)
+
+
+### Bug Fixes
+
+* **components:** adjust media match rules to work on custom media queries ([6c68b7f](https://github.com/Graupl/graupl/commit/6c68b7f58eeded9f26f799adedf462a690320732))
+
+
+### Continuous Integration
+
+* change gh_token to github_token ([997cc7e](https://github.com/Graupl/graupl/commit/997cc7e518a126d950bfed7456a1d1f0e4d8bd71))
+
+## [1.0.0-beta.28](https://github.com/Graupl/graupl/compare/v1.0.0-beta.27...v1.0.0-beta.28) (2026-01-07)
+
+
+### Features
+
+* add id and isValid getters ([462bc4d](https://github.com/Graupl/graupl/commit/462bc4dc64da6b426498a014f6f9baf2f7f18427))
+* **component:** add clearIntervals method and add it to dispose ([34f3bf3](https://github.com/Graupl/graupl/commit/34f3bf39585a228a487e35c31488c5c09fb237c4))
+* **component:** add clearTimeouts function ([c056c26](https://github.com/Graupl/graupl/commit/c056c26f8ce4a86bf62dfbe78de7b564ee6d54b0))
+* **components:** implement more robust StorageManager class ([5d892dd](https://github.com/Graupl/graupl/commit/5d892dd5eb3e6bfc93bb2c9a063c4da653061687))
+
+
+### Bug Fixes
+
+* **accordion:** use proper inheritence for accordion control border props ([f68abda](https://github.com/Graupl/graupl/commit/f68abdac652dac352ed535165a430b6c863c3daa))
+* **component:** correct logic for removing event listeners ([8f2f2cb](https://github.com/Graupl/graupl/commit/8f2f2cbf74dc60bb7ed10e807128f264567b4a62))
+* **components:** add missing key types to event handlers ([bc1d093](https://github.com/Graupl/graupl/commit/bc1d093720b76c232480d421d1155ebd3c187424))
+* **components:** do not validate null dom elements by default ([701d029](https://github.com/Graupl/graupl/commit/701d02991a871b275461d5bccd07cbcb79a518dc))
+
+
+### Documentation
+
+* **packages:** update license for subpackages ([7687333](https://github.com/Graupl/graupl/commit/76873335e4a568c58e5e8c1e79ed2db4eaf9f4a5))
+
+
+### Code Refactoring
+
+* **accordion:** pluralize selector option names ([bce16a6](https://github.com/Graupl/graupl/commit/bce16a66c86070e437ef4ae458bdeff2720c77e7))
+* **carousel:** pluralize selector option names ([87385d3](https://github.com/Graupl/graupl/commit/87385d3f830e2d6736b3a6adf592b5eb1b0b1408))
+* **components:** overhaul error handling and validation ([5efb9de](https://github.com/Graupl/graupl/commit/5efb9de307c9bc08cd78fca8d85b483346464d08))
+* **tabs:** pluralize selector option names and elements ([1867da2](https://github.com/Graupl/graupl/commit/1867da2ecef89069ca1843779a1499dd56e2d9f9))
+
+
+### Build System
+
+* **script:** update current release with better version identification ([25071ac](https://github.com/Graupl/graupl/commit/25071ace3d0e880a98aa456d14178225a273b24a))
+
+
+### Continuous Integration
+
+* add vitest to test actions ([879ac91](https://github.com/Graupl/graupl/commit/879ac91a07d64b419188f210f1510f5774330302))
+
+## [1.0.0-beta.27](https://github.com/Graupl/graupl/compare/v1.0.0-beta.26...v1.0.0-beta.27) (2025-12-29)
+
+
+### Features
+
+* **utility:** add object fit and position utilities ([0aa16aa](https://github.com/Graupl/graupl/commit/0aa16aa9f30dbce3c19006f972945a76baed8250)), closes [#147](https://github.com/Graupl/graupl/issues/147)
+* **utility:** replace custom ratio handling with native aspect ratio property ([ef8ee01](https://github.com/Graupl/graupl/commit/ef8ee01a747d697f81f3e110669c008f61884fed)), closes [#166](https://github.com/Graupl/graupl/issues/166)
+
+
+### Documentation
+
+* add gpl 3 license ([c889bfb](https://github.com/Graupl/graupl/commit/c889bfbd848671c6bc8ab0bfb7f7106e083be07f))
+
+
+### Build System
+
+* **node:** upgrade to node 24 and npm 11 ([f2119d8](https://github.com/Graupl/graupl/commit/f2119d8deda4e97f7b9fa294cd8b450b851d2e29))
+
+## [1.0.0-beta.26](https://github.com/Graupl/graupl/compare/v1.0.0-beta.25...v1.0.0-beta.26) (2025-12-29)
+
+
+### Features
+
+* **accordion:** add expand and collapse all functionality ([d7c1775](https://github.com/Graupl/graupl/commit/d7c17758ba82f962eb7a45dd604d0614984ed359))
+* **icons:** update to latest themeable standards ([6d3660c](https://github.com/Graupl/graupl/commit/6d3660c081c4f866410e84a1ad89b9d16768da9c))
+* **js:** add disposal methods for removing components after initialization ([cf38c39](https://github.com/Graupl/graupl/commit/cf38c394191a8f2a09fcf34befb2e40fb5d3f9b9)), closes [#190](https://github.com/Graupl/graupl/issues/190)
+* **js:** implement base component class ([a2889e8](https://github.com/Graupl/graupl/commit/a2889e855137a9b372df59e72fea0768be9c0b6e))
+
+
+### Bug Fixes
+
+* **Disclosure:** use proper event system ([58a95a1](https://github.com/Graupl/graupl/commit/58a95a178ceb2731e32e26a1a1cf999c92d189c7))
+
+
+### Code Refactoring
+
+* **Tabs:** update toggle scripts ([9eedf17](https://github.com/Graupl/graupl/commit/9eedf17876db165d1f2185bebf469317f0eaccd7))
+
+
+### Continuous Integration
+
+* merge release and prerelease into single pipeline ([2a638a7](https://github.com/Graupl/graupl/commit/2a638a7a36bcf1778fb605f6589d30e1ec6cd770))
+
 ## [1.0.0-beta.25](https://github.com/Graupl/graupl/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-12-16)
 
 

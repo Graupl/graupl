@@ -1,7 +1,6 @@
-## [1.0.0-beta.25](https://github.com/Graupl/graupl/compare/v1.0.0-beta.24...v1.0.0-beta.25) (2025-12-16)
+## [1.0.0-beta.32](https://github.com/Graupl/graupl/compare/v1.0.0-beta.31...v1.0.0-beta.32) (2026-01-09)
 
 
 ### Bug Fixes
 
-* **disclosure:** handle resize events properly ([10d4d4f](https://github.com/Graupl/graupl/commit/10d4d4f71ab1868ffc868924f42fb5249d7d9022))
-* **navigation shelf:** handle resize events properly ([0daefa0](https://github.com/Graupl/graupl/commit/0daefa06d26b48e4cacc33960675edb6f109e1fc))
+* **dist:** add missing tabs files ([4eb33b5](https://github.com/Graupl/graupl/commit/4eb33b56fff7fa302ef97597ba4a28bb701479d8))

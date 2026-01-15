@@ -11,7 +11,7 @@ import {
   isValidState,
   isValidEvent,
 } from "./validate.js";
-import storage from "./storage.js";
+import StorageManager from "./StorageManager.js";
 
 class Component {
   /**
@@ -224,6 +224,15 @@ class Component {
   _valid = true;
 
   /**
+   * The initialized state of the component.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _initialized = false;
+
+  /**
    * The errors found throughout the component.
    *
    * @protected
@@ -260,7 +269,9 @@ class Component {
     try {
       if (!this._validate()) {
         throw new Error(
-          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors.join("\n - ")}`
+          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
+            .map((error) => error.toString())
+            .join("\n - ")}`
         );
       }
 
@@ -395,7 +406,7 @@ class Component {
    *
    * @readonly
    *
-   * @type {object}
+   * @type {Error[]}
    *
    * @see _events
    */
@@ -491,6 +502,10 @@ class Component {
       return this._mediaQueryString;
     }
 
+    if (this._breakpoint === "") {
+      return "";
+    }
+
     return `(width <= ${this._breakpoint})`;
   }
 
@@ -529,6 +544,45 @@ class Component {
   }
 
   /**
+   * The main ID of the component.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _id
+   */
+  get id() {
+    return this._id;
+  }
+
+  /**
+   * The validity state of the component.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _valid
+   */
+  get isValid() {
+    return this._valid;
+  }
+
+  /**
+   * The initialized state of the component.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _initialized
+   */
+  get isInitialized() {
+    return this._initialized;
+  }
+
+  /**
    * An array to hold error messages.
    *
    * @readonly
@@ -562,17 +616,19 @@ class Component {
           this._dom[domKey].forEach((element, index) => {
             domElements[`${domKey}Element[${index}]`] = element;
           });
+        } else if (this._dom[domKey] !== null) {
+          domElements[`${domKey}Element`] = this._dom[domKey];
         }
-
-        domElements[`${domKey}Element`] = this._dom[domKey];
       }
 
       // Check the DOM elements.
-      const domChecks = isValidInstance(HTMLElement, domElements);
+      const domChecks = isValidInstance(HTMLElement, domElements, {
+        shouldThrow: false,
+      });
 
       // Handle DOM check failure.
-      if (!domChecks) {
-        this._errors.push(domChecks.message);
+      if (!domChecks.status) {
+        this._errors = [...this._errors, ...domChecks.errors];
         this._valid = false;
       }
     }
@@ -588,11 +644,13 @@ class Component {
       }
 
       // Check the query selectors.
-      const querySelectorChecks = isQuerySelector(querySelectors);
+      const querySelectorChecks = isQuerySelector(querySelectors, {
+        shouldThrow: false,
+      });
 
       // Handle query selector check failure.
-      if (!querySelectorChecks) {
-        this._errors.push(querySelectorChecks.message);
+      if (!querySelectorChecks.status) {
+        this._errors = [...this._errors, ...querySelectorChecks.errors];
         this._valid = false;
       }
     }
@@ -611,11 +669,11 @@ class Component {
       }
 
       // Check the class lists.
-      const classListChecks = isValidClassList(classes);
+      const classListChecks = isValidClassList(classes, { shouldThrow: false });
 
       // Handle class list check failure.
       if (!classListChecks.status) {
-        this._errors.push(classListChecks.error.message);
+        this._errors = [...this._errors, ...classListChecks.errors];
         this._valid = false;
       }
     }
@@ -630,11 +688,13 @@ class Component {
       }
 
       // Check the durations.
-      const durationChecks = isValidType("number", durations);
+      const durationChecks = isValidType("number", durations, {
+        shouldThrow: false,
+      });
 
       // Handle duration check failure.
       if (!durationChecks.status) {
-        this._errors.push(durationChecks.error.message);
+        this._errors = [...this._errors, ...durationChecks.errors];
         this._valid = false;
       }
     }
@@ -649,11 +709,41 @@ class Component {
       }
 
       // Check the delays.
-      const delayChecks = isValidType("number", delays);
+      const delayChecks = isValidType("number", delays, { shouldThrow: false });
 
       // Handle delay check failure.
       if (!delayChecks.status) {
-        this._errors.push(delayChecks.error.message);
+        this._errors = [...this._errors, ...delayChecks.errors];
+        this._valid = false;
+      }
+    }
+
+    // Breakpoint check.
+    if (this._breakpoint !== "") {
+      const breakpointCheck = isValidType(
+        "string",
+        { breakpoint: this._breakpoint },
+        { shouldThrow: false }
+      );
+
+      // Handle breakpoint check failure.
+      if (!breakpointCheck.status) {
+        this._errors = [...this._errors, ...breakpointCheck.errors];
+        this._valid = false;
+      }
+    }
+
+    // Media query check.
+    if (this._mediaQueryString !== "") {
+      const mediaQueryCheck = isValidType(
+        "string",
+        { mediaQuery: this._mediaQueryString },
+        { shouldThrow: false }
+      );
+
+      // Handle media query check failure.
+      if (!mediaQueryCheck.status) {
+        this._errors = [...this._errors, ...mediaQueryCheck.errors];
         this._valid = false;
       }
     }
@@ -661,21 +751,29 @@ class Component {
     // Key check.
     if (this._key !== "") {
       // Check the key.
-      const keyCheck = isValidType("string", { key: this._key });
+      const keyCheck = isValidType(
+        "string",
+        { key: this._key },
+        { shouldThrow: false }
+      );
 
       // Handle key check failure.
       if (!keyCheck.status) {
-        this._errors.push(keyCheck.error.message);
+        this._errors = [...this._errors, ...keyCheck.errors];
         this._valid = false;
       }
     }
 
     // Prefix check.
     if (this._prefix !== "") {
-      const prefixCheck = isValidType("string", { prefix: this._prefix });
+      const prefixCheck = isValidType(
+        "string",
+        { prefix: this._prefix },
+        { shouldThrow: false }
+      );
 
       if (!prefixCheck.status) {
-        this._errors.push(prefixCheck.error.message);
+        this._errors = [...this._errors, ...prefixCheck.errors];
         this._valid = false;
       }
     }
@@ -729,11 +827,11 @@ class Component {
    * @param {Object<HTMLElement,boolean>} [options = {}]             - The options for setting the DOM element type.
    * @param {HTMLElement}                 [options.context]          - The element used as the base context for the querySelector.
    * @param {boolean}                     [options.overwrite = true] - A flag to set if the existing elements will be overwritten.
-   * @param {boolean}                     [options.strict = true]    - A flag to set if the elements must be direct children of the base.
+   * @param {boolean}                     [options.strict = false]   - A flag to set if the elements must be direct children of the base.
    */
   _setDOMElementType(
     elementType,
-    { context, overwrite = true, strict = true } = {}
+    { context, overwrite = true, strict = false } = {}
   ) {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
@@ -833,13 +931,14 @@ class Component {
    * @protected
    */
   _handleMediaMatch() {
-    if (this._breakpointWidth === "") {
+    if (this.mediaQuery === "") {
       return;
     }
 
     this._mediaQueryList = window.matchMedia(this.mediaQuery);
-    this._mediaQueryList.addEventListener(
+    this._addEventListener(
       "change",
+      this._mediaQueryList,
       this._mediaQueryListEventCallback
     );
     this._mediaQueryListEventCallback(this._mediaQueryList);
@@ -888,12 +987,22 @@ class Component {
    */
   _store() {
     // Set up the storage.
-    storage.initializeStorage(this._storageKey);
-    storage.pushToStorage(
-      this._storageKey,
-      this._id !== "" ? this._id : this._key,
-      this
-    );
+    if (
+      !isValidInstance(
+        StorageManager,
+        { storage: window.Graupl },
+        { shouldThrow: false }
+      ).status
+    ) {
+      new StorageManager({ scope: "Graupl" });
+    }
+
+    // Store the menu
+    window.Graupl.set({
+      key: this.id !== "" ? this.id : this.key,
+      type: this._storageKey,
+      data: this,
+    });
   }
 
   /**
@@ -902,10 +1011,20 @@ class Component {
    * @protected
    */
   _unstore() {
-    storage.removeFromStorage(
-      this._storageKey,
-      this._id !== "" ? this._id : this._key
-    );
+    if (
+      !isValidInstance(
+        StorageManager,
+        { storage: window.Graupl },
+        { shouldThrow: false }
+      ).status
+    ) {
+      return;
+    }
+
+    window.Graupl.clear({
+      key: this.id !== "" ? this.id : this.key,
+      type: this._storageKey,
+    });
   }
 
   /**
@@ -924,7 +1043,7 @@ class Component {
   }
 
   /**
-   * Clears the interval within the component.
+   * Clears an interval within the component.
    *
    * @protected
    *
@@ -932,6 +1051,17 @@ class Component {
    */
   _clearInterval(scope = "_default") {
     clearInterval(this._intervals[scope]);
+  }
+
+  /**
+   * Clears all intervals within the component.
+   *
+   * @protected
+   */
+  _clearIntervals() {
+    for (const scope of Object.keys(this._intervals)) {
+      this._clearInterval(scope);
+    }
   }
 
   /**
@@ -950,7 +1080,7 @@ class Component {
   }
 
   /**
-   * Clears the timeout within the component.
+   * Clears a timeout within the component.
    *
    * @protected
    *
@@ -958,6 +1088,17 @@ class Component {
    */
   _clearTimeout(scope = "_default") {
     clearTimeout(this._timeouts[scope]);
+  }
+
+  /**
+   * Clears all timeouts within the component.
+   *
+   * @protected
+   */
+  _clearTimeouts() {
+    for (const scope of Object.keys(this._timeouts)) {
+      this._clearTimeout(scope);
+    }
   }
 
   /**
@@ -1003,10 +1144,10 @@ class Component {
   }
 
   /**
-   * Remove an event listener to an element and unregister it within the component.
+   * Remove an event listener from an element and unregister it within the component.
    *
-   * @param {string}         type           - The type of event to listen for.
-   * @param {HTMLElement}    element        - The element to add the listener to.
+   * @param {string}         type           - The type of event to remove.
+   * @param {HTMLElement}    element        - The element to remove the listener from.
    * @param {Function}       listener       - The listener callback.
    * @param {object|boolean} [options = {}] - Options to pass to the listener.
    */
@@ -1014,36 +1155,61 @@ class Component {
     // Remove the listener.
     element.removeEventListener(type, listener, options);
 
-    // Remove it from the component storage.
-    const index = this._listeners.indexOf({
-      type,
-      element,
-      listener,
-      options,
+    // Find the listener in the component's listener storage.
+    let index = -1;
+
+    this._listeners.forEach((registeredListener, i) => {
+      if (
+        registeredListener.type === type &&
+        registeredListener.element === element &&
+        registeredListener.listener === listener &&
+        JSON.stringify(registeredListener.options) === JSON.stringify(options)
+      ) {
+        index = i;
+      }
     });
 
+    // Remove it from the component's listener storage.
     if (index !== -1) {
-      this._listeners.splice(index);
+      this._listeners.splice(index, 1);
     }
   }
 
   /**
    * Removes all event listeners registered in the component.
    *
+   * This can be filtered by type and/or element.
+   *
    * @protected
+   *
+   * @param {object}       [options = {}]           - Options for removing listeners.
+   * @param {?string}      [options.type = null]    - The type of event to remove. If null, all types are removed.
+   * @param {?HTMLElement} [options.element = null] - The element to remove listeners from. If null, all elements are removed.
    */
-  _removeEventListeners() {
-    this._listeners.forEach(({ type, element, listener, options }) => {
-      this._removeEventListener(type, element, listener, options);
+  _removeEventListeners({ type = null, element = null } = {}) {
+    const listeners = [...this._listeners];
+
+    listeners.forEach((listener) => {
+      if (type !== null && listener.type !== type) return;
+      if (element !== null && listener.element !== element) return;
+
+      this._removeEventListener(
+        listener.type,
+        listener.element,
+        listener.listener,
+        listener.options
+      );
     });
   }
 
   /**
    * Disposes of the current instantiated component.
    *
-   * Removes all event listeners and delete's the object.
+   * Removes all timeouts and event listeners, removes the component from the global storage, and delete's the object.
    */
   dispose() {
+    this._clearIntervals();
+    this._clearTimeouts();
     this._removeEventListeners();
     this._unstore();
 

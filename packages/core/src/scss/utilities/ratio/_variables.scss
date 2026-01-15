@@ -6,10 +6,10 @@
 // Custom property defaults:
 // | Custom property | Default |
 // | --------------- | ------- |
-// | --graupl-ratio  |         |
+// | --graupl-ratio  | `auto   |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
 
 // --graupl-ratio
-$ratio: var(--#{root-defaults.$prefix}ratio);
+$ratio: var(--#{root-defaults.$prefix}ratio, auto);

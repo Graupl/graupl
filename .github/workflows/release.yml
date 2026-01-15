@@ -2,106 +2,142 @@ name: Release
 
 on:
   push:
-    # Push events to match v*.*.* where * is a number.
     tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+.[0-9]+"
 
 permissions:
   contents: write
   id-token: write
+  packages: write
 
 jobs:
   test:
     uses: ./.github/workflows/test.yml
 
-  release_github:
-    # Prevent this action from running on forks.
+  meta:
     if: github.repository == 'graupl/graupl'
     needs: test
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.meta.outputs.version }}
+      prerelease_type: ${{ steps.meta.outputs.prerelease_type }}
+      is_prerelease: ${{ steps.meta.outputs.is_prerelease }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version + prerelease info
+        id: meta
+        shell: bash
+        run: |
+          VERSION="$(node -p "require('./package.json').version")"
+
+          # alpha/beta/rc/etc. Empty when not a prerelease.
+          PRERELEASE_TYPE="$(echo "$VERSION" | sed -nE 's/^v?[0-9]+\.[0-9]+\.[0-9]+-([a-zA-Z]+)\.[0-9]+$/\1/p')"
+
+          if [[ -n "$PRERELEASE_TYPE" ]]; then
+            IS_PRERELEASE="true"
+          else
+            IS_PRERELEASE="false"
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "prerelease_type=$PRERELEASE_TYPE" >> "$GITHUB_OUTPUT"
+          echo "is_prerelease=$IS_PRERELEASE" >> "$GITHUB_OUTPUT"
+
+  release_github:
+    if: github.repository == 'graupl/graupl'
+    needs: meta
     runs-on: ubuntu-latest
     environment: Release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.x
-
-      - name: Install modules
-        run: npm install
-
-      # Get the version from the package.json
-      - name: Get version
-        run: |
-          export VERSION=$(node -p "require('./package.json').version")
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: ${{ env.VERSION }}
-          make_latest: true
+          name: ${{ needs.meta.outputs.version }}
+          prerelease: ${{ needs.meta.outputs.is_prerelease == 'true' }}
+          make_latest: ${{ needs.meta.outputs.is_prerelease != 'true' }}
           body_path: CURRENT_RELEASE.md
 
   publish_npm:
-    # Prevent this action from running on forks.
     if: github.repository == 'graupl/graupl'
-    needs: [release_github]
+    needs: [meta, release_github]
     runs-on: ubuntu-latest
     environment: Release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node (npm registry)
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
-          registry-url: 'https://registry.npmjs.org/'
-          scope: '@graupl'
+          node-version: 24.x
+          registry-url: "https://registry.npmjs.org/"
+          scope: "@graupl"
 
       - name: Install modules
         run: npm install
 
-      - name: Publish workspaces to npm
+      - name: Publish workspaces to npm (full release)
+        if: needs.meta.outputs.is_prerelease != 'true'
         run: npm publish --workspaces --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm
+      - name: Publish root to npm (full release)
+        if: needs.meta.outputs.is_prerelease != 'true'
         run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish workspaces to npm (prerelease)
+        if: needs.meta.outputs.is_prerelease == 'true'
+        run: npm publish --workspaces --access public --tag "${{ needs.meta.outputs.prerelease_type }}"
+
+      - name: Publish root to npm (prerelease)
+        if: needs.meta.outputs.is_prerelease == 'true'
+        run: npm publish --access public --tag "${{ needs.meta.outputs.prerelease_type }}"
 
   publish_github:
-    # Prevent this action from running on forks.
     if: github.repository == 'graupl/graupl'
-    needs: [release_github]
+    needs: [meta, release_github]
     runs-on: ubuntu-latest
     environment: Release
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node (GitHub Packages)
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
-          registry-url: 'https://npm.pkg.github.com/'
-          scope: '@graupl'
+          node-version: 24.x
+          registry-url: "https://npm.pkg.github.com/"
+          scope: "@graupl"
 
       - name: Install modules
         run: npm install
 
-      - name: Publish workspaces to GitHub Packages
+      - name: Publish workspaces to GitHub Packages (full release)
+        if: needs.meta.outputs.is_prerelease != 'true'
         run: npm publish --workspaces --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Publish to GitHub Packages
+      - name: Publish root to GitHub Packages (full release)
+        if: needs.meta.outputs.is_prerelease != 'true'
         run: npm publish --access public
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish workspaces to GitHub Packages (prerelease)
+        if: needs.meta.outputs.is_prerelease == 'true'
+        run: npm publish --workspaces --access public --tag "${{ needs.meta.outputs.prerelease_type }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish root to GitHub Packages (prerelease)
+        if: needs.meta.outputs.is_prerelease == 'true'
+        run: npm publish --access public --tag "${{ needs.meta.outputs.prerelease_type }}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

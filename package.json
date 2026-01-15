@@ -1,6 +1,7 @@
 {
   "name": "@graupl/graupl",
-  "version": "1.0.0-beta.25",
+  "version": "1.0.0-beta.32",
+  "license": "GPL-3.0-or-later",
   "description": "A modular and modern CSS framework.",
   "type": "module",
   "files": [
@@ -37,7 +38,10 @@
     "demo:build": "vite build",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run"
   },
   "repository": {
     "type": "git",
@@ -56,7 +60,6 @@
   "bugs": {
     "url": "https://github.com/Graupl/graupl/issues"
   },
-  "license": "ISC",
   "homepage": "https://github.com/Graupl/graupl#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
@@ -64,6 +67,7 @@
     "@drupal/once": "git+https://git.drupalcode.org/issue/once-3466026.git",
     "@eslint/js": "^9.0.0",
     "@rollup/plugin-babel": "^6.0.4",
+    "@vitest/ui": "^4.0.16",
     "accessible-menu": "^4.2.2",
     "chokidar-cli": "^3.0.0",
     "commit-and-tag-version": "^12.5.1",
@@ -74,6 +78,7 @@
     "eslint-plugin-jsdoc": "^50.2.4",
     "globals": "^15.0.0",
     "husky": "^9.0.11",
+    "jsdom": "^27.4.0",
     "lightningcss": "^1.30.2",
     "lint-staged": "^15.2.2",
     "normalize.css": "^8.0.1",
@@ -89,7 +94,9 @@
     "stylelint-config-standard-scss": "^13.1.0",
     "stylelint-prettier": "^5.0.0",
     "vite": "^7.0.2",
-    "vitepress": "^1.1.0"
+    "vitepress": "^1.1.0",
+    "vitest": "^4.0.16",
+    "vitest-axe": "^0.1.0"
   },
   "dependencies": {
     "@graupl/core": "*"

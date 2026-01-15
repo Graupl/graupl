@@ -1,59 +1,71 @@
 // @graupl/icons icon mixins.
 
+@use "defaults";
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/mixins/state";
+@use "pkg:@graupl/core/src/mixins/theme";
+@use "sass:map";
 @use "variables" as *;
 
-@mixin _component() {
-  display: $icon-display;
-  width: $icon-width;
-  height: $icon-height;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  vertical-align: sub;
-  mask-image: $icon;
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  mask-position: center;
-}
+$-targets: (
+  "self": "&",
+  "before": "&::before",
+  "after": "&::after",
+);
 
-@mixin _theme() {
-  background-color: $icon-color;
-}
-
+/// Mixin to apply component styles for icons.
 @mixin apply-component($target: "self") {
-  @if $target == "before" {
-    &::before {
-      @include _component;
+  #{map.get($-targets, $target)} {
+    display: $icon-display;
+    width: $icon-width;
+    height: $icon-height;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    vertical-align: sub;
+    mask-image: $icon;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
 
+    @if $target == "before" {
       content: "";
       margin-inline-end: $icon-spacer;
-    }
-  } @else if $target == "after" {
-    &::after {
-      @include _component;
-
+    } @else if $target == "after" {
       content: "";
       margin-inline-start: $icon-spacer;
+    } @else {
+      margin-inline: $icon-spacer;
     }
-  } @else {
-    @include _component;
-
-    margin-inline: $icon-spacer $icon-spacer;
   }
 }
 
+/// Mixin to apply theme styles for icons.
 @mixin apply-theme($target: "self") {
-  @if $target == "before" {
-    &::before {
-      @include _theme;
-    }
-  } @else if $target == "after" {
-    &::after {
-      @include _theme;
-    }
-  } @else {
-    @include _theme;
+  @if root-defaults.$themeable-components and defaults.$themeable {
+    @include theme.generate-modifiers(
+      defaults.$icon-theme-map,
+      defaults.$icon-theme-selector-base,
+      defaults.$icon-theme-selector-prefix,
+      "icon-"
+    );
   }
+
+  #{map.get($-targets, $target)} {
+    background-color: $icon-color;
+  }
+}
+
+/// Mixin to bind icon colors to a component.
+///
+/// @param {CustomProperty} $color  - The default color prop for the icon.
+/// @param {Map}            $states - A map of states and color props for the icon.
+@mixin bind($color, $states) {
+  --#{root-defaults.$prefix}icon-color: #{$color};
+
+  @include state.generate-modifiers(
+    (--#{root-defaults.$prefix}icon-color: $states)
+  );
 }
 
 @mixin apply($target: "self") {
