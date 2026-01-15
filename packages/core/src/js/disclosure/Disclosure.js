@@ -206,11 +206,11 @@ class Disclosure extends Component {
       // Store the component.
       this._store();
 
-      // Handle auto-opening disclsoures with aria-expanded set to true or
+      // Handle auto-opening disclosures with aria-expanded set to true or
       // those that _should_ open.
       if (
         this.dom.controller.getAttribute("aria-expanded") === "true" ||
-        (this.shouldOpen && window.matchMedia(this.mediaQuery).matches)
+        (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
       ) {
         this._expand({ emit: false, transition: false });
       } else {
