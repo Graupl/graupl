@@ -268,7 +268,7 @@ class Component {
       if (!this._validate()) {
         throw new Error(
           `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
-            .map((error) => error.toString())
+            .map((error) => error.message)
             .join("\n - ")}`
         );
       }
