@@ -237,7 +237,7 @@ class Component {
    *
    * @protected
    *
-   * @type {string[]}
+   * @type {Error[]}
    */
   _errors = [];
 
