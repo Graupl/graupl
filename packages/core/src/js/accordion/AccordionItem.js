@@ -406,14 +406,14 @@ class AccordionItem extends Component {
 
     // If the parent accordion only allows a single item to be open at a time,
     // then close all other items.
-    if (!this.elements.parent.allowMultipleExpand) {
+    if (!this.elements.parent.allowExpandMultiple) {
       this.unlockSiblings();
       this.closeSiblings();
     }
 
     // If the parent accordion requires at least one item to be open, and this
     // is the only open item, then lock it. Otherwise, unlock all siblings.
-    if (!this.elements.parent.allowNoExpand) {
+    if (!this.elements.parent.allowCollapseAll) {
       if (this.elements.parent.openAccordionItems.length <= 1) {
         this.lock();
       } else {
@@ -440,7 +440,7 @@ class AccordionItem extends Component {
     if (!this.isOpen && !force) return;
 
     if (
-      !this.elements.parent.allowNoExpand &&
+      !this.elements.parent.allowCollapseAll &&
       this.elements.parent.openAccordionItems.length <= 1
     ) {
       return;
@@ -458,7 +458,7 @@ class AccordionItem extends Component {
     // If the parent accordion requires at least one item to be open, and this was
     // the second to last open item, then lock to last open item.
     if (
-      !this.elements.parent.allowNoExpand &&
+      !this.elements.parent.allowCollapseAll &&
       this.elements.parent.openAccordionItems.length === 1
     ) {
       this.elements.parent.openAccordionItems[0].lock();
