@@ -134,15 +134,7 @@ class Tabs extends Component {
     // Set automatic activation.
     this._automatic = automaticActivation;
 
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
-   * Initializes the tabs.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
       // Make sure the first tab is open if no other tab is active.
       if (
@@ -153,7 +145,32 @@ class Tabs extends Component {
       }
     });
 
-    super.initialize();
+    // Set up custom validation.
+    this._addEventListener(
+      "grauplComponentValidate",
+      this.rootDOMElement,
+      () => {
+        // Boolean checks.
+        const booleans = {
+          automaticActivation: this._automatic,
+        };
+
+        // Check the booleans.
+        const booleanChecks = isValidType("boolean", booleans, {
+          shouldThrow: false,
+        });
+
+        // Handle boolean check failure.
+        if (!booleanChecks.status) {
+          this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+      }
+    );
+
+    if (initialize) {
+      this.initialize();
+    }
   }
 
   /**
@@ -333,41 +350,6 @@ class Tabs extends Component {
    */
   get currentTabToggle() {
     return this.elements.tabToggles[this.currentChild];
-  }
-
-  /**
-   * Validates all aspects of the tabs to ensure proper functionality.
-   *
-   * Keys are altered to match the arguments passed in during creation where possible.
-   *
-   * @protected
-   *
-   * @return {boolean} - The result of the validation.
-   */
-  _validate() {
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          automaticActivation: this._automatic,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans, {
-          shouldThrow: false,
-        });
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-      }
-    );
-
-    return super._validate();
   }
 
   /**

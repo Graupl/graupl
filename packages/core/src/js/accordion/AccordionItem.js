@@ -122,12 +122,8 @@ class AccordionItem extends Component {
         item: this,
       },
     });
-  }
 
-  /**
-   * Initializes the accordion item.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -140,8 +136,6 @@ class AccordionItem extends Component {
         }
       }
     );
-
-    super.initialize();
   }
 
   /**

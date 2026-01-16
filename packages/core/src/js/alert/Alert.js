@@ -151,15 +151,7 @@ class Alert extends Component {
       },
     });
 
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
-   * Initializes the alert.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -171,7 +163,32 @@ class Alert extends Component {
       }
     );
 
-    super.initialize();
+    // Set up custom validation.
+    this._addEventListener(
+      "grauplComponentValidate",
+      this.rootDOMElement,
+      () => {
+        // Boolean checks.
+        const booleans = {
+          isHidden: this._hidden.value,
+        };
+
+        // Check the booleans.
+        const booleanChecks = isValidType("boolean", booleans, {
+          shouldThrow: false,
+        });
+
+        // Handle boolean check failure.
+        if (!booleanChecks.status) {
+          this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+      }
+    );
+
+    if (initialize) {
+      this.initialize();
+    }
   }
 
   /**
@@ -314,39 +331,6 @@ class Alert extends Component {
    */
   get isHidden() {
     return this._hidden.value;
-  }
-
-  /**
-   * Validates all aspects of the alert to ensure proper functionality.
-   *
-   * @protected
-   *
-   * @return {boolean} - The result of the validation.
-   */
-  _validate() {
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          isHidden: this._hidden.value,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans, {
-          shouldThrow: false,
-        });
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-      }
-    );
-
-    return super._validate();
   }
 
   /**

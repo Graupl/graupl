@@ -184,15 +184,7 @@ class Carousel extends Component {
     this._playText = playText || "";
     this._pauseText = pauseText || "";
 
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
-   * Initializes the carousel.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -205,7 +197,49 @@ class Carousel extends Component {
       }
     );
 
-    super.initialize();
+    // Set up custom validation.
+    this._addEventListener(
+      "grauplComponentValidate",
+      this.rootDOMElement,
+      () => {
+        // Boolean checks.
+        const booleans = {
+          autoplay: this._autoplay,
+        };
+
+        // Check the booleans.
+        const booleanChecks = isValidType("boolean", booleans, {
+          shouldThrow: false,
+        });
+
+        // Handle boolean check failure.
+        if (!booleanChecks.status) {
+          this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+
+        // String checks.
+        const strings = {
+          playText: this._playText,
+          pauseText: this._pauseText,
+        };
+
+        // Check the strings.
+        const stringChecks = isValidType("string", strings, {
+          shouldThrow: false,
+        });
+
+        // Handle string check failures.
+        if (!stringChecks.status) {
+          this._errors = [...this._errors, ...stringChecks.errors];
+          this._valid = false;
+        }
+      }
+    );
+
+    if (initialize) {
+      this.initialize();
+    }
   }
 
   /**
@@ -467,56 +501,6 @@ class Carousel extends Component {
    */
   get currentAction() {
     return this._currentAction;
-  }
-
-  /**
-   * Validates all aspects of the carousel to ensure proper functionality.
-   *
-   * @protected
-   *
-   * @return {boolean} - The results of the validation.
-   */
-  _validate() {
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          autoplay: this._autoplay,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans, {
-          shouldThrow: false,
-        });
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-
-        // String checks.
-        const strings = {
-          playText: this._playText,
-          pauseText: this._pauseText,
-        };
-
-        // Check the strings.
-        const stringChecks = isValidType("string", strings, {
-          shouldThrow: false,
-        });
-
-        // Handle string check failures.
-        if (!stringChecks.status) {
-          this._errors = [...this._errors, ...stringChecks.errors];
-          this._valid = false;
-        }
-      }
-    );
-
-    return super._validate();
   }
 
   /**

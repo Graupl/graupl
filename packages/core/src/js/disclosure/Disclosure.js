@@ -177,15 +177,7 @@ class Disclosure extends Component {
     this._registerEvent("expand", { detail: { disclosure: this } });
     this._registerEvent("collapse", { detail: { disclosure: this } });
 
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
-   * Initializes the disclosure.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -203,7 +195,33 @@ class Disclosure extends Component {
       }
     );
 
-    super.initialize();
+    // Set up custom validation.
+    this._addEventListener(
+      "grauplComponentValidate",
+      this.rootDOMElement,
+      () => {
+        // Boolean checks.
+        const booleans = {
+          closeOnBlur: this._closeOnBlur,
+          autoOpen: this._shouldOpen,
+        };
+
+        // Check the booleans.
+        const booleanChecks = isValidType("boolean", booleans, {
+          shouldThrow: false,
+        });
+
+        // Handle boolean check failure.
+        if (!booleanChecks.status) {
+          this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+      }
+    );
+
+    if (initialize) {
+      this.initialize();
+    }
   }
 
   /**
@@ -436,42 +454,6 @@ class Disclosure extends Component {
     }
 
     return check;
-  }
-
-  /**
-   * Validates all aspects of the disclosure to ensure proper functionality.
-   *
-   * Keys are altered to match the arguments passed in during creation where possible.
-   *
-   * @protected
-   *
-   * @return {boolean} - The result of the validation.
-   */
-  _validate() {
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          closeOnBlur: this._closeOnBlur,
-          autoOpen: this._shouldOpen,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans, {
-          shouldThrow: false,
-        });
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-      }
-    );
-
-    return super._validate();
   }
 
   /**

@@ -182,15 +182,7 @@ class Accordion extends Component {
     this._expandMultiple = allowExpandMultiple;
     this._collapseAll = allowCollapseAll;
 
-    if (initialize) {
-      this.initialize();
-    }
-  }
-
-  /**
-   * Initializes the accordion.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -209,7 +201,33 @@ class Accordion extends Component {
       }
     );
 
-    super.initialize();
+    // Set up custom validation.
+    this._addEventListener(
+      "grauplComponentValidate",
+      this.rootDOMElement,
+      () => {
+        // Boolean checks.
+        const booleans = {
+          automaticActivation: this._automatic,
+          optionalKeySupport: this._optionalKeySupport,
+          allowExpandMultiple: this._expandMultiple,
+          allowCollapseAll: this._collapseAll,
+        };
+
+        // Check the booleans.
+        const booleanChecks = isValidType("boolean", booleans);
+
+        // Handle boolean check failure.
+        if (!booleanChecks.status) {
+          this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+      }
+    );
+
+    if (initialize) {
+      this.initialize();
+    }
   }
 
   /**
@@ -463,40 +481,6 @@ class Accordion extends Component {
         }
       }
     }
-  }
-
-  /**
-   * Validates all aspects of the accordion to ensure proper functionality.
-   *
-   * @protected
-   *
-   * @return {boolean} - The result of the validation.
-   */
-  _validate() {
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          automaticActivation: this._automatic,
-          optionalKeySupport: this._optionalKeySupport,
-          allowExpandMultiple: this._expandMultiple,
-          allowCollapseAll: this._collapseAll,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans);
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-      }
-    );
-
-    return super._validate();
   }
 
   /**

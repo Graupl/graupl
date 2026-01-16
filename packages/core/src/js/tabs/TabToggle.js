@@ -107,12 +107,8 @@ class TabToggle extends Component {
         toggle: this,
       },
     });
-  }
 
-  /**
-   * Initializes the tab toggle.
-   */
-  initialize() {
+    // Set up custom initialization.
     this._addEventListener(
       "grauplComponentInitialize",
       this.rootDOMElement,
@@ -125,8 +121,6 @@ class TabToggle extends Component {
         }
       }
     );
-
-    super.initialize();
   }
 
   /**
