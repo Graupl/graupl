@@ -303,7 +303,7 @@ class Accordion extends Component {
 
     if (this._durations.transition !== value) {
       this._durations.transition = value;
-      this._setTransitionDurations();
+      this._setCustomProps();
     }
   }
 
@@ -327,7 +327,7 @@ class Accordion extends Component {
 
     if (this._durations.open !== value) {
       this._durations.open = value;
-      this._setTransitionDurations();
+      this._setCustomProps();
     }
   }
 
@@ -351,7 +351,7 @@ class Accordion extends Component {
 
     if (this._durations.close !== value) {
       this._durations.close = value;
-      this._setTransitionDurations();
+      this._setCustomProps();
     }
   }
 
