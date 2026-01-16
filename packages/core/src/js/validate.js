@@ -517,3 +517,45 @@ export function isValidEventType(
 
   return result;
 }
+
+/**
+ * Check to see if the component has a valid root DOM element.
+ *
+ * Will return `{ status: true }` if the check is successful.
+ *
+ * @param  {Component} component                  - The component to check.
+ * @param  {object}    [options = {}]             - Additional options.
+ * @param  {boolean}   [options.shouldThrow=true] - Whether to throw on error or return it.
+ * @return {Object<boolean, Error[]>}             - The result of the check.
+ */
+export function hasValidRootDOMElement(component, { shouldThrow = true } = {}) {
+  const result = {
+    status: true,
+    errors: [],
+  };
+
+  try {
+    // Check to make sure the root DOM element exists in _dom.
+    if (
+      !Object.prototype.hasOwnProperty.call(
+        component._dom,
+        component._rootDOMElement
+      )
+    ) {
+      throw new Error(
+        `The root DOM element "${component._rootDOMElement}" does not exist in the ${component.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(
+          component._dom
+        ).join('", "')}".`
+      );
+    }
+  } catch (error) {
+    result.status = false;
+    result.errors.push(error);
+  }
+
+  if (shouldThrow && !result.status) {
+    throw result.errors[0];
+  }
+
+  return result;
+}
