@@ -323,6 +323,7 @@ class Component {
       // Handle events.
       this._handleMediaMatch();
       this._handleFocus();
+      this._handleHover();
       this._handleClick();
       this._handleKeydown();
       this._handleKeyup();
@@ -1018,6 +1019,15 @@ class Component {
    */
   _handleClick() {
     // Add functionality to handle click events throughout the component.
+  }
+
+  /**
+   * Handles hover events through the component.
+   *
+   * @protected
+   */
+  _handleHover() {
+    // Add functionality to handle hover events throughout the component.
   }
 
   /**
