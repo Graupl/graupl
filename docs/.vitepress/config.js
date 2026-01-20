@@ -73,10 +73,10 @@ export default defineConfig({
       {
         text: "Base Elements",
         items: [
-          { text: "Buttons", link: "base/button" },
-          { text: "Forms", link: "base/form" },
-          { text: "links", link: "base/link" },
-          { text: "Tables", link: "base/table" },
+          { text: "Buttons", link: "/base/button" },
+          { text: "Forms", link: "/base/form" },
+          { text: "Links", link: "/base/link" },
+          { text: "Tables", link: "/base/table" },
         ],
       },
       {
