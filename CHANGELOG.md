@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.35](https://github.com/Graupl/graupl/compare/v1.0.0-beta.34...v1.0.0-beta.35) (2026-01-21)
+
+
+### Bug Fixes
+
+* **theme:** properly validate and fix all malformed theme colors ([6fb439c](https://github.com/Graupl/graupl/commit/6fb439c645439f251f291993f7a74d5ede924c24))
+
 ## [1.0.0-beta.34](https://github.com/Graupl/graupl/compare/v1.0.0-beta.33...v1.0.0-beta.34) (2026-01-16)
 
 
