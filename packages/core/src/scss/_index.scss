@@ -1,24 +1,5 @@
 // @graupl/core styles.
 
-@use "theme/color/defaults" as color-defaults with (
-  $show-warnings: false,
-  $colors: (
-    "blue": (
-      "_default": hsl(210deg 100% 50%),
-      "100": hsl(210deg 100% 95%),
-      "200": hsl(210deg 90% 80%),
-      "300": hsl(210deg 80% 65%),
-      "400": hsl(210deg 75% 55%),
-      "500": hsl(210deg 75% 50%),
-      "600": hsl(210deg 75% 45%),
-      "700": hsl(210deg 80% 35%),
-      "800": hsl(210deg 90% 20%),
-      "900": hsl(210deg 100% 10%),
-    ),
-    black: #000,
-  )
-);
-
 // Forward the layer initialization.
 @use "init";
 
