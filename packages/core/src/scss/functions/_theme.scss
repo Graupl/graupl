@@ -90,7 +90,6 @@
 
 /// Generates a map to tie different properties to color/shade values based on all colors in a specific theme.
 @function generate-property-map($mapping, $theme: "active") {
-  $mapping: map-functions.force-string-keys($mapping);
   $theme: string.quote(#{$theme});
   $theme-map: ();
 
@@ -101,9 +100,9 @@
       $map: map.merge(
         $map,
         (
-          "#{$prop}": (
-              "color": $color,
-              "shade": $shade,
+          $prop: (
+              color: $color,
+              shade: $shade,
             ),
         )
       );
@@ -112,7 +111,7 @@
     $theme-map: map.merge(
       $theme-map,
       (
-        "#{$color}": $map,
+        $color: $map,
       )
     );
   }
