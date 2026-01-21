@@ -7,6 +7,8 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/map" as map-functions;
+@use "../../functions/list" as list-functions;
 @use "sass:map";
 @use "sass:list";
 @use "sass:meta";
@@ -77,10 +79,12 @@ $-colors: (
 );
 $colors: () !default;
 
-// Loop through the customized colors and validate/transform them.
+// Ensure all keys in the colors map are strings.
+$colors: map-functions.force-string-keys($colors);
+
+// If a vlaue in colors is a color, convert it to a map with only the _default shade.
+// This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
 @each $color, $value in $colors {
-  // If the value is a color, convert it to a map with only the _default shade.
-  // This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
   @if meta.type-of($value) == "color" {
     $colors: map.merge(
       $colors,
@@ -88,50 +92,6 @@ $colors: () !default;
         $color: (
             "_default": $value,
           ),
-      )
-    );
-  }
-
-  // Convert any shades in $value that aren't strings to strings.
-  @if meta.type-of($value) == "map" {
-    $shades: map.keys($value);
-
-    @each $shade in $shades {
-      @if meta.type-of($shade) != "string" {
-        @if $show-warnings and root-defaults.$show-warnings {
-          @warn "Shade `#{$shade}` in color `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-        }
-
-        $shade-value: map.get($value, $shade);
-        $value: map.remove($value, $shade);
-        $value: map.merge(
-          $value,
-          (
-            "#{$shade}": $shade-value,
-          )
-        );
-      }
-    }
-
-    $colors: map.merge(
-      $colors,
-      (
-        $color: $value,
-      )
-    );
-  }
-
-  // Convert any color names that aren't strings to strings.
-  @if meta.type-of($color) != "string" {
-    @if $show-warnings and root-defaults.$show-warnings {
-      @warn "Color name `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-    }
-
-    $colors: map.remove($colors, $color);
-    $colors: map.merge(
-      $colors,
-      (
-        "#{$color}": $value,
       )
     );
   }
@@ -146,19 +106,8 @@ $colors: () !default;
 $-themes: ("light", "dark");
 $themes: () !default;
 
-// Loop through the customized themes and validate/transform them.
-@each $theme in $themes {
-  // Convert any themes that aren't strings to strings.
-  @if meta.type-of($theme) != "string" {
-    @if $show-warnings and root-defaults.$show-warnings {
-      @warn "Theme name `#{$theme}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-    }
-
-    $themes: list.remove($themes, $theme);
-    $themes: list.append($themes, "#{$theme}");
-  }
-}
-
+// Ensure all themes are strings.
+$themes: list-functions.force-strings($themes);
 $default-theme: "light" !default;
 
 // Theme mappings.
@@ -188,37 +137,8 @@ $-theme-mappings: (
 );
 $theme-mappings: () !default;
 
-// Loop through the customized theme mappings and validate/transform them.
-@each $theme, $mapping in $theme-mappings {
-  // Convert any mapping shades that aren't strings to strings.
-  @each $shade in map.keys($mapping) {
-    @if meta.type-of($shade) != "string" {
-      @warn "Shade `#{$shade}` in theme `#{$theme}` mapping is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-
-      $shade-value: map.get($mapping, $shade);
-      $mapping: map.remove($mapping, $shade);
-      $mapping: map.merge(
-        $mapping,
-        (
-          "#{$shade}": $shade-value,
-        )
-      );
-    }
-  }
-
-  // Convert any themes that aren't strings to strings.
-  @if meta.type-of($theme) != "string" {
-    @warn "Theme name `#{$theme}` in theme mappings is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-
-    $theme-mappings: map.remove($theme-mappings, $theme);
-    $theme-mappings: map.merge(
-      $theme-mappings,
-      (
-        "#{$theme}": $mapping,
-      )
-    );
-  }
-}
+// Ensure all keys in the theme mappings are strings.
+$theme-mappings: map-functions.force-string-keys($theme-mappings);
 
 // Merge the custom themes with the default ones.
 @if $generate-base-themes {
@@ -273,75 +193,9 @@ $-theme-map: ();
 }
 
 $theme-map: () !default;
+
+// Ensure all keys in the theme map are strings.
+$theme-map: map-functions.force-string-keys($theme-map);
+
+// Merge the custom theme map with the default one.
 $theme-map: map.deep-merge($-theme-map, $theme-map);
-
-// Loop through the customized theme map and validate/transform it.
-@each $theme, $theme-colors in $theme-map {
-  @each $color, $color-shades in $theme-colors {
-    @each $shade, $value in $color-shades {
-      // Convert any shades that aren't strings to strings.
-      @if meta.type-of($shade) != "string" {
-        @if $show-warnings and root-defaults.$show-warnings {
-          @warn "Shade `#{$shade}` in theme `#{$theme}` color `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-        }
-
-        $shade-value: map.get($color-shades, $shade);
-        $color-shades: map.remove($color-shades, $shade);
-        $color-shades: map.merge(
-          $color-shades,
-          (
-            "#{$shade}": $shade-value,
-          )
-        );
-        $theme-colors: map.merge(
-          $theme-colors,
-          (
-            $color: $color-shades,
-          )
-        );
-        $theme-map: map.merge(
-          $theme-map,
-          (
-            $theme: $theme-colors,
-          )
-        );
-      }
-
-      // Convert any color names that aren't strings to strings.
-      @if meta.type-of($color) != "string" {
-        @if $show-warnings and root-defaults.$show-warnings {
-          @warn "Color name `#{$color}` in theme `#{$theme}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-        }
-
-        $color-shades: map.remove($theme-colors, $color);
-        $theme-colors: map.merge(
-          $theme-colors,
-          (
-            "#{$color}": $color-shades,
-          )
-        );
-        $theme-map: map.merge(
-          $theme-map,
-          (
-            $theme: $theme-colors,
-          )
-        );
-      }
-
-      // Convert any themes that aren't strings to strings.
-      @if meta.type-of($theme) != "string" {
-        @if $show-warnings and root-defaults.$show-warnings {
-          @warn "Theme name `#{$theme}` in theme mappings is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
-        }
-
-        $theme-colors: map.remove($theme-map, $theme);
-        $theme-map: map.merge(
-          $theme-map,
-          (
-            "#{$theme}": $theme-colors,
-          )
-        );
-      }
-    }
-  }
-}

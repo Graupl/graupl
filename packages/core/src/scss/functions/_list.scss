@@ -1,0 +1,16 @@
+// @graupl/core list functions.
+//
+// A series of functions to help manipulate lists.
+
+@use "sass:list";
+
+@function force-strings($list) {
+  $new-list: ();
+
+  @each $item in $list {
+    $new-item: "#{$item}";
+    $new-list: list.append($new-list, $new-item);
+  }
+
+  @return $new-list;
+}

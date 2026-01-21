@@ -1,0 +1,27 @@
+// @graupl/core map functions.
+//
+// A series of functions to help manipulate maps.
+
+@use "sass:map";
+@use "sass:meta";
+
+@function force-string-keys($map) {
+  $new-map: ();
+
+  @each $key, $value in $map {
+    $new-key: "#{$key}";
+
+    @if meta.type-of($value) == "map" {
+      $value: force-string-keys($value);
+    }
+
+    $new-map: map.merge(
+      $new-map,
+      (
+        $new-key: $value,
+      )
+    );
+  }
+
+  @return $new-map;
+}
