@@ -3,6 +3,8 @@
 // Functions to help with getting information about the theme.
 
 @use "sass:map";
+@use "sass:string";
+@use "sass:meta";
 @use "../theme/color/variables" as color;
 
 /// Get a specific color shade in a specific theme.
@@ -18,20 +20,24 @@
 /// @param {string}        $theme [active] - The theme.
 ///
 /// @return {string|null} The custom property pointing to the correct colour or null if none is found.
-@function get($color, $shade: null, $theme: active) {
-  @if $shade == transparent or $color == transparent {
+@function get($color, $shade: null, $theme: "active") {
+  $color: string.quote(#{$color});
+  $theme: string.quote(#{$theme});
+  $shade: string.quote(#{$shade});
+
+  @if $shade == "transparent" or $color == "transparent" {
     @return transparent;
   }
 
-  @if $shade == none or $color == none {
+  @if $shade == "none" or $color == "none" {
     @return none;
   }
 
-  @if $shade == inherit or $color == inherit {
+  @if $shade == "inherit" or $color == "inherit" {
     @return inherit;
   }
 
-  @if $shade == initial or $color == initial {
+  @if $shade == "initial" or $color == "initial" {
     @return initial;
   }
 
@@ -39,8 +45,11 @@
     @return map.get(map.get(map.get(color.$themes, $theme), $color), $shade);
   }
 
-  @if map.has-key(color.$themes, $theme, $color, _default) {
-    @return map.get(map.get(map.get(color.$themes, $theme), $color), _default);
+  @if map.has-key(color.$themes, $theme, $color, "_default") {
+    @return map.get(
+      map.get(map.get(color.$themes, $theme), $color),
+      "_default"
+    );
   }
 
   @return null;
@@ -52,7 +61,10 @@
 /// @param {string} $theme [active] - The theme.
 ///
 /// @return {map|null} The shade map or null if none is found.
-@function get-color($color, $theme: active) {
+@function get-color($color, $theme: "active") {
+  $color: string.quote(#{$color});
+  $theme: string.quote(#{$theme});
+
   @if map.has-key(color.$themes, $theme, $color) {
     @return map.get(map.get(color.$themes, $theme), $color);
   }
@@ -65,7 +77,9 @@
 /// @param {string} $theme [active] - The theme.
 ///
 /// @return {map} The map of color names.
-@function get-colors($theme: active) {
+@function get-colors($theme: "active") {
+  $theme: string.quote(#{$theme});
+
   @if map.has-key(color.$themes, $theme) {
     @return map.keys(map.get(color.$themes, $theme));
   }
@@ -74,7 +88,8 @@
 }
 
 /// Generates a map to tie different properties to color/shade values based on all colors in a specific theme.
-@function generate-property-map($mapping, $theme: active) {
+@function generate-property-map($mapping, $theme: "active") {
+  $theme: string.quote(#{$theme});
   $theme-map: ();
 
   @each $color in map.keys(map.get(color.$themes, $theme)) {

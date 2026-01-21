@@ -20,6 +20,7 @@ $theme-selector-prefix: "" !default;
 $theme-selector-suffix: "-mode" !default;
 $root-selector-base: ":" !default;
 $root-selector: "root" !default;
+$show-warnings: true !default;
 
 // The site will have colours, defaulting to primary, secondary, and tertiary.
 // Each colour will have a shade mapping, defaulting to 100-900.
@@ -37,55 +38,100 @@ $root-selector: "root" !default;
 
 // Colours.
 $-colors: (
-  primary: (
-    _default: hsl(219deg 75% 50%),
-    100: hsl(219deg 100% 95%),
-    200: hsl(219deg 90% 80%),
-    300: hsl(219deg 80% 65%),
-    400: hsl(219deg 75% 55%),
-    500: hsl(219deg 75% 50%),
-    600: hsl(219deg 75% 45%),
-    700: hsl(219deg 80% 35%),
-    800: hsl(219deg 90% 20%),
-    900: hsl(219deg 100% 10%),
+  "primary": (
+    "_default": hsl(219deg 75% 50%),
+    "100": hsl(219deg 100% 95%),
+    "200": hsl(219deg 90% 80%),
+    "300": hsl(219deg 80% 65%),
+    "400": hsl(219deg 75% 55%),
+    "500": hsl(219deg 75% 50%),
+    "600": hsl(219deg 75% 45%),
+    "700": hsl(219deg 80% 35%),
+    "800": hsl(219deg 90% 20%),
+    "900": hsl(219deg 100% 10%),
   ),
-  secondary: (
-    _default: hsl(235deg 15% 50%),
-    100: hsl(235deg 40% 95%),
-    200: hsl(235deg 30% 80%),
-    300: hsl(235deg 20% 65%),
-    400: hsl(235deg 15% 55%),
-    500: hsl(235deg 15% 50%),
-    600: hsl(235deg 15% 45%),
-    700: hsl(235deg 20% 35%),
-    800: hsl(235deg 30% 20%),
-    900: hsl(235deg 40% 10%),
+  "secondary": (
+    "_default": hsl(235deg 15% 50%),
+    "100": hsl(235deg 40% 95%),
+    "200": hsl(235deg 30% 80%),
+    "300": hsl(235deg 20% 65%),
+    "400": hsl(235deg 15% 55%),
+    "500": hsl(235deg 15% 50%),
+    "600": hsl(235deg 15% 45%),
+    "700": hsl(235deg 20% 35%),
+    "800": hsl(235deg 30% 20%),
+    "900": hsl(235deg 40% 10%),
   ),
-  tertiary: (
-    _default: hsl(340deg 60% 50%),
-    100: hsl(340deg 85% 95%),
-    200: hsl(340deg 75% 80%),
-    300: hsl(340deg 65% 65%),
-    400: hsl(340deg 60% 55%),
-    500: hsl(340deg 60% 50%),
-    600: hsl(340deg 60% 45%),
-    700: hsl(340deg 65% 35%),
-    800: hsl(340deg 75% 20%),
-    900: hsl(340deg 85% 10%),
+  "tertiary": (
+    "_default": hsl(340deg 60% 50%),
+    "100": hsl(340deg 85% 95%),
+    "200": hsl(340deg 75% 80%),
+    "300": hsl(340deg 65% 65%),
+    "400": hsl(340deg 60% 55%),
+    "500": hsl(340deg 60% 50%),
+    "600": hsl(340deg 60% 45%),
+    "700": hsl(340deg 65% 35%),
+    "800": hsl(340deg 75% 20%),
+    "900": hsl(340deg 85% 10%),
   ),
 );
 $colors: () !default;
 
-// Loop through the customized colors and convert them to a map structure.
-// This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
+// Loop through the customized colors and validate/transform them.
 @each $color, $value in $colors {
+  // If the value is a color, convert it to a map with only the _default shade.
+  // This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
   @if meta.type-of($value) == "color" {
     $colors: map.merge(
       $colors,
       (
         $color: (
-            _default: $value,
+            "_default": $value,
           ),
+      )
+    );
+  }
+
+  // Convert any shades in $value that aren't strings to strings.
+  @if meta.type-of($value) == "map" {
+    $shades: map.keys($value);
+
+    @each $shade in $shades {
+      @if meta.type-of($shade) != "string" {
+        @if $show-warnings and root-defaults.$show-warnings {
+          @warn "Shade `#{$shade}` in color `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+        }
+
+        $shade-value: map.get($value, $shade);
+        $value: map.remove($value, $shade);
+        $value: map.merge(
+          $value,
+          (
+            "#{$shade}": $shade-value,
+          )
+        );
+      }
+    }
+
+    $colors: map.merge(
+      $colors,
+      (
+        $color: $value,
+      )
+    );
+  }
+
+  // Convert any color names that aren't strings to strings.
+  @if meta.type-of($color) != "string" {
+    @if $show-warnings and root-defaults.$show-warnings {
+      @warn "Color name `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+    }
+
+    $colors: map.remove($colors, $color);
+    $colors: map.merge(
+      $colors,
+      (
+        "#{$color}": $value,
       )
     );
   }
@@ -97,36 +143,82 @@ $colors: () !default;
 }
 
 // Themes.
-$-themes: (light, dark);
+$-themes: ("light", "dark");
 $themes: () !default;
-$default-theme: light !default;
+
+// Loop through the customized themes and validate/transform them.
+@each $theme in $themes {
+  // Convert any themes that aren't strings to strings.
+  @if meta.type-of($theme) != "string" {
+    @if $show-warnings and root-defaults.$show-warnings {
+      @warn "Theme name `#{$theme}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+    }
+
+    $themes: list.remove($themes, $theme);
+    $themes: list.append($themes, "#{$theme}");
+  }
+}
+
+$default-theme: "light" !default;
 
 // Theme mappings.
 $-theme-mappings: (
-  light: (
-    100: 100,
-    200: 200,
-    300: 300,
-    400: 400,
-    500: 500,
-    600: 600,
-    700: 700,
-    800: 800,
-    900: 900,
+  "light": (
+    "100": "100",
+    "200": "200",
+    "300": "300",
+    "400": "400",
+    "500": "500",
+    "600": "600",
+    "700": "700",
+    "800": "800",
+    "900": "900",
   ),
-  dark: (
-    100: 900,
-    200: 800,
-    300: 700,
-    400: 600,
-    500: 500,
-    600: 400,
-    700: 300,
-    800: 200,
-    900: 100,
+  "dark": (
+    "100": "900",
+    "200": "800",
+    "300": "700",
+    "400": "600",
+    "500": "500",
+    "600": "400",
+    "700": "300",
+    "800": "200",
+    "900": "100",
   ),
 );
 $theme-mappings: () !default;
+
+// Loop through the customized theme mappings and validate/transform them.
+@each $theme, $mapping in $theme-mappings {
+  // Convert any mapping shades that aren't strings to strings.
+  @each $shade in map.keys($mapping) {
+    @if meta.type-of($shade) != "string" {
+      @warn "Shade `#{$shade}` in theme `#{$theme}` mapping is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+
+      $shade-value: map.get($mapping, $shade);
+      $mapping: map.remove($mapping, $shade);
+      $mapping: map.merge(
+        $mapping,
+        (
+          "#{$shade}": $shade-value,
+        )
+      );
+    }
+  }
+
+  // Convert any themes that aren't strings to strings.
+  @if meta.type-of($theme) != "string" {
+    @warn "Theme name `#{$theme}` in theme mappings is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+
+    $theme-mappings: map.remove($theme-mappings, $theme);
+    $theme-mappings: map.merge(
+      $theme-mappings,
+      (
+        "#{$theme}": $mapping,
+      )
+    );
+  }
+}
 
 // Merge the custom themes with the default ones.
 @if $generate-base-themes {
@@ -182,3 +274,74 @@ $-theme-map: ();
 
 $theme-map: () !default;
 $theme-map: map.deep-merge($-theme-map, $theme-map);
+
+// Loop through the customized theme map and validate/transform it.
+@each $theme, $theme-colors in $theme-map {
+  @each $color, $color-shades in $theme-colors {
+    @each $shade, $value in $color-shades {
+      // Convert any shades that aren't strings to strings.
+      @if meta.type-of($shade) != "string" {
+        @if $show-warnings and root-defaults.$show-warnings {
+          @warn "Shade `#{$shade}` in theme `#{$theme}` color `#{$color}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+        }
+
+        $shade-value: map.get($color-shades, $shade);
+        $color-shades: map.remove($color-shades, $shade);
+        $color-shades: map.merge(
+          $color-shades,
+          (
+            "#{$shade}": $shade-value,
+          )
+        );
+        $theme-colors: map.merge(
+          $theme-colors,
+          (
+            $color: $color-shades,
+          )
+        );
+        $theme-map: map.merge(
+          $theme-map,
+          (
+            $theme: $theme-colors,
+          )
+        );
+      }
+
+      // Convert any color names that aren't strings to strings.
+      @if meta.type-of($color) != "string" {
+        @if $show-warnings and root-defaults.$show-warnings {
+          @warn "Color name `#{$color}` in theme `#{$theme}` is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+        }
+
+        $color-shades: map.remove($theme-colors, $color);
+        $theme-colors: map.merge(
+          $theme-colors,
+          (
+            "#{$color}": $color-shades,
+          )
+        );
+        $theme-map: map.merge(
+          $theme-map,
+          (
+            $theme: $theme-colors,
+          )
+        );
+      }
+
+      // Convert any themes that aren't strings to strings.
+      @if meta.type-of($theme) != "string" {
+        @if $show-warnings and root-defaults.$show-warnings {
+          @warn "Theme name `#{$theme}` in theme mappings is not a string. Graupl will convert it for you, but the order of the resulting map is not guaranteed. Please convert the value to a string to resolve this issue properly.";
+        }
+
+        $theme-colors: map.remove($theme-map, $theme);
+        $theme-map: map.merge(
+          $theme-map,
+          (
+            "#{$theme}": $theme-colors,
+          )
+        );
+      }
+    }
+  }
+}
