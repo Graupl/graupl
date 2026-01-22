@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.37](https://github.com/Graupl/graupl/compare/v1.0.0-beta.36...v1.0.0-beta.37) (2026-01-22)
+
+
+### Bug Fixes
+
+* **container:** correct bug with container with sidebars not aligning properly ([b77f486](https://github.com/Graupl/graupl/commit/b77f486462fbd2a37cd44870677196ea053aee69))
+
 ## [1.0.0-beta.36](https://github.com/Graupl/graupl/compare/v1.0.0-beta.35...v1.0.0-beta.36) (2026-01-22)
 
 
