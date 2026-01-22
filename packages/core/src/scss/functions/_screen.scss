@@ -5,8 +5,18 @@
 @use "../defaults" as root-defaults;
 @use "sass:map";
 @use "sass:list";
+@use "sass:string";
 
+/// Get the minimum size for a specific screen size.
+///
+/// @param {string} $size
+///   The screen size.
+///
+/// @return {number}
+///   The minimum size for the screen size.
 @function min($size) {
+  $string: string.quote(#{$size});
+
   @if not map.has-key(root-defaults.$screen-sizes, $size) {
     @error "The screen size \"#{$size}\" does not exist.";
   }
@@ -16,7 +26,14 @@
   @return $screen-size;
 }
 
+/// Get the maximum size for a specific screen size.
+///
+/// @param {string} $size - The screen size.
+///
+/// @return {number} The maximum size for the screen size.
 @function max($size) {
+  $string: string.quote(#{$size});
+
   @if not map.has-key(root-defaults.$screen-sizes, $size) {
     @error "The screen size \"#{$size}\" does not exist.";
   }
@@ -30,9 +47,17 @@
   @return $screen-size;
 }
 
+/// Get the range for a specific screen size.
+///
+/// @param {string} $min - The minimum screen size.
+/// @param {string} $max - The maximum screen size.
+///
+/// @return {map} The range for the screen size.
 @function range($min, $max) {
+  $min: string.quote(#{$min});
+  $max: string.quote(#{$max});
   $min-size: min($min);
   $max-size: max($max);
 
-  @return (min: $min-size, max: $max-size);
+  @return ("min": $min-size, "max": $max-size);
 }

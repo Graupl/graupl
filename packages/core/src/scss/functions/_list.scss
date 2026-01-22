@@ -4,12 +4,18 @@
 
 @use "sass:list";
 
+/// Force all items in a list to be strings.
+///
+/// @param {list} $list
+///   The list to convert.
+///
+/// @return {list}
+///   The list with string items.
 @function force-strings($list) {
   $new-list: ();
 
   @each $item in $list {
-    $new-item: "#{$item}";
-    $new-list: list.append($new-list, $new-item);
+    $new-list: list.append($new-list, "#{$item}");
   }
 
   @return $new-list;
