@@ -250,24 +250,19 @@ The following custom properties can be used to customize the link element:
       <td><code>var(--graupl-link-padding-y) var(--graupl-link-padding-x)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-font-size</code></td>
-      <td>The font size of the link component.</td>
-      <td><code>var(--graupl-font-size-base)</code></td>
-    </tr>
-    <tr>
       <td><code>--graupl-link-transition</code></td>
       <td>The transition of the link component.</td>
-      <td><code>background var(--graupl-transition-duration-fast), color var(--graupl-transition-duration-fast), transform var(--graupl-transition-duration-fast)</code></td>
+      <td><code>background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-transition-reduced-motion</code></td>
       <td>The transition of the link component when reduced motion is enabled.</td>
-      <td><code>background var(--graupl-transition-duration-none), color var(--graupl-transition-duration-none)</code></td>
+      <td><code>background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-transform</code></td>
       <td>The transform of the link component.</td>
-      <td><code>0</code></td>
+      <td><code>none</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-visited-transform</code></td>
@@ -282,37 +277,37 @@ The following custom properties can be used to customize the link element:
     <tr>
       <td><code>--graupl-link-hover-transform</code></td>
       <td>The transform of a hovered link component.</td>
-      <td><code>var(--graupl-link-transform)</code></td>
+      <td><code>none</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-active-transform</code></td>
       <td>The transform of an active link component.</td>
-      <td><code>scale(0.95)</code></td>
+      <td><code>var(--graupl-link-hover-transform)</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-disabled-transform</code></td>
       <td>The transform of a disabled link component.</td>
-      <td><code>0</code></td>
+      <td><code>none</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-border-top-width</code></td>
       <td>The top border width of the link component.</td>
-      <td><code>var(--graupl-border-top-width)</code></td>
+      <td><code>0</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-border-right-width</code></td>
       <td>The right border width of the link component.</td>
-      <td><code>var(--graupl-border-right-width)</code></td>
+      <td><code>0</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-border-bottom-width</code></td>
       <td>The bottom border width of the link component.</td>
-      <td><code>var(--graupl-border-bottom-width)</code></td>
+      <td><code>0</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-border-left-width</code></td>
       <td>The left border width of the link component.</td>
-      <td><code>var(--graupl-border-left-width)</code></td>
+      <td><code>0</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-border-width</code></td>
@@ -372,7 +367,7 @@ The following custom properties can be used to customize the link element:
     <tr>
       <td><code>--graupl-link-border-color</code></td>
       <td>The border colour of the link component.</td>
-      <td><code>var(--graupl-border-color)</code></td>
+      <td><code>transparent</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-visited-border-color</code></td>
@@ -387,7 +382,7 @@ The following custom properties can be used to customize the link element:
     <tr>
       <td><code>--graupl-link-hover-border-color</code></td>
       <td>The border colour of a hovered link component.</td>
-      <td><code>var(--graupl-border-color)</code></td>
+      <td><code>transparent</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-active-border-color</code></td>
@@ -397,7 +392,22 @@ The following custom properties can be used to customize the link element:
     <tr>
       <td><code>--graupl-link-disabled-border-color</code></td>
       <td>The border colour of a disabled link component.</td>
-      <td><code>var(--graupl-theme-active--primary--200)</code></td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-min-width</code></td>
+      <td>The minimum width for the link component.</td>
+      <td><code>auto</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-min-height</code></td>
+      <td>The minimum height for the link component.</td>
+      <td><code>auto</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-stretched-link-z-index</code></td>
+      <td>The z-index for the stretched link component modifier.</td>
+      <td><code>5</code></td>
     </tr>
   </tbody>
 </table>
