@@ -11,6 +11,7 @@
 // Columns selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$force-single-columns: true !default;
 $columns-selector-base: $selector-base !default;
 $columns-selector: "columns" !default;
 $columns-count-selector-base: $selector-base !default;
