@@ -1,6 +1,6 @@
 {
   "name": "@graupl/icons",
-  "version": "1.0.0-beta.35",
+  "version": "1.0.0-beta.36",
   "license": "GPL-3.0-or-later",
   "description": "A plugin for Graupl that provides bare-minimum icon components.",
   "type": "module",
