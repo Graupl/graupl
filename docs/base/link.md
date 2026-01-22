@@ -514,27 +514,12 @@ The following Sass variables can be used to customize the generation of the butt
     <tr>
       <td><code>$link-final-transform</code></td>
       <td>The final transform for the link.</td>
-      <td><code>none</code></td>
-    </tr>
-    <tr>
-      <td><code>$link-disabled-transform</code></td>
-      <td>The disabled transform for the link.</td>
-      <td><code>none</code></td>
-    </tr>
-    <tr>
       <td><code>$link-initial-transform</code></td>
-      <td>The initial transform for the link.</td>
-      <td><code>none</code></td>
-    </tr>
-    <tr>
-      <td><code>$link-final-transform</code></td>
-      <td>The final transform for the link.</td>
-      <td><code>scale(0.95)</code></td>
     </tr>
     <tr>
       <td><code>$link-disabled-transform</code></td>
       <td>The disabled transform for the link.</td>
-      <td><code>none</code></td>
+      <td><code>$link-initial-transform</code></td>
     </tr>
     <tr>
       <td><code>$link-border-width</code></td>
