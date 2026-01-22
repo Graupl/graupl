@@ -44,34 +44,41 @@
 }
 
 @mixin trigger($trigger) {
+  // Validate that the trigger exists.
   @if not map.has-key(root-defaults.$screen-size-triggers, $trigger) {
     @error "The screen size trigger \"#{$trigger}\" does not exist.";
   }
 
   $screen-size-trigger: map.get(root-defaults.$screen-size-triggers, $trigger);
 
-  @if not map.has-key($screen-size-trigger, "mixin") {
-    @error "The screen size trigger \"#{$trigger}\" does not have a mixin key.";
-  }
-
-  @if not map.has-key($screen-size-trigger, "args") {
-    @error "The screen size trigger \"#{$trigger}\" does not have an args key.";
-  }
-
-  $mixin-name: map.get($screen-size-trigger, "mixin");
-  $mixin-args: map.get($screen-size-trigger, "args");
-
-  @if not meta.mixin-exists($mixin-name) {
-    @error "The mixin \"#{$mixin-name}\" does not exist.";
-  }
-
-  $mixin: meta.get-mixin($mixin-name);
-
-  @if meta.accepts-content($mixin) {
-    @include meta.apply($mixin, $mixin-args...) {
-      @content;
+  // If the trigger is null, assume the user has disabled it and output the content as-is.
+  @if meta.type-of($screen-size-trigger) != "null" {
+    // Validate that the trigger has the required keys.
+    @if not map.has-key($screen-size-trigger, "mixin") {
+      @error "The screen size trigger \"#{$trigger}\" does not have a mixin key.";
     }
-  } @else {
-    @warn "The mixin \"#{$mixin-name}\" does not accept content.";
+
+    @if not map.has-key($screen-size-trigger, "args") {
+      @error "The screen size trigger \"#{$trigger}\" does not have an args key.";
+    }
+
+    $mixin-name: map.get($screen-size-trigger, "mixin");
+    $mixin-args: map.get($screen-size-trigger, "args");
+
+    // Validate that the mixin exists.
+    @if not meta.mixin-exists($mixin-name) {
+      @error "The mixin \"#{$mixin-name}\" does not exist.";
+    }
+
+    $mixin: meta.get-mixin($mixin-name);
+
+    // Include the mixin with the provided arguments and content.
+    @if meta.accepts-content($mixin) {
+      @include meta.apply($mixin, $mixin-args...) {
+        @content;
+      }
+    } @else {
+      @warn "The mixin \"#{$mixin-name}\" does not accept content.";
+    }
   }
 }
