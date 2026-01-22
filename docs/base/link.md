@@ -7,11 +7,14 @@ The link component is a `<a>` element.
 ## Base element
 
 The base `<a>` element is styled to handle the different states ( Visited, Focused, Hovered, Active, Disabled ).
-
-<li><a href="https://graupl.dev/page-that-cant-be-visited">Link</a></li>
+<ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
+  <li>
+    <a href="/">Link</a>
+  </li>
+</ul>
 
 ```html
-<a href="https://graupl.dev/page-that-cant-be-visited">Link</a>
+<a href="/">Link</a>
 ```
 
 ## Variants
@@ -19,21 +22,23 @@ The base `<a>` element is styled to handle the different states ( Visited, Focus
 There are 6 link state variants provided by default: `.visited`, `.focus`, `.hover`, `.active` and `.disabled`.
 
 <div class="display-flex g-3 flex-wrap">
-  <a> Default Link</a>
-  <a :class="[$style.visited]">Visited Link</a>
-  <a :class="[$style.focus]">Focused Link</a>
-  <a :class="[$style.hover]">Hovered Link</a>
-  <a :class="[$style.active]">Active Link</a>
-  <a :class="[$style.disabled]">Disabled Link</a>
+<ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
+  <li><a href="/"> Default Link</a></li>
+  <li><a href="/" class="visited">Visited Link</a></li>
+  <li><a href="/" class="focus">Focused Link</a></li>
+  <li><a href="/" class="hover">Hovered Link</a></li>
+  <li><a href="/" class="active">Active Link</a></li>
+  <li><a href="/" class="disabled">Disabled Link</a></li>
+</ul>
 </div>
 
 ```html
-  <a> Default Link</a>
-  <a :class="[$style.visited]">Visited Link</a>
-  <a :class="[$style.focus]">Focused Link</a>
-  <a :class="[$style.hover]">Hovered Link</a>
-  <a :class="[$style.active]">Active Link</a>
-  <a :class="[$style.disabled]">Disabled Link</a>
+  <a href="/"> Default Link</a>
+  <a href="/" class="visited">Visited Link</a>
+  <a href="/" class="focus">Focused Link</a>
+  <a href="/" class="hover">Hovered Link</a>
+  <a href="/" class="active">Active Link</a>
+  <a href="/" class="disabled">Disabled Link</a>
 ```
 
 ## Custom Properties
@@ -49,239 +54,349 @@ The following custom properties can be used to customize the link element:
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td><code>--graupl-button-min-width</code></td>
-      <td>The minimum width of the button component.</td>
-      <td><code>var(--graupl-interactive-min-width)</code></td>
+     <tr>
+      <td><code>--graupl-link-text-decoration</code></td>
+      <td>The text decoration of the link component.</td>
+      <td><code>underline</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-min-height</code></td>
-      <td>The minimum height of the button component.</td>
-      <td><code>var(--graupl-interactive-min-height)</code></td>
+      <td><code>--graupl-link-visited-text-decoration</code></td>
+      <td>The text decoration of a visited link component.</td>
+      <td><code>var(--graupl-link-text-decoration)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-padding-x</code></td>
-      <td>The horizontal padding of the button component.</td>
-      <td><code>var(--graupl-spacer-5)</code></td>
+      <td><code>--graupl-link-focus-text-decoration</code></td>
+      <td>The text decoration of a focused link component.</td>
+      <td><code>var(--graupl-link-text-decoration)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-padding-y</code></td>
-      <td>The vertical padding of the button component.</td>
-      <td><code>var(--graupl-spacer-3)</code></td>
+      <td><code>--graupl-link-hover-text-decoration</code></td>
+      <td>The text decoration of a hovered link component.</td>
+      <td><code>underline</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-padding</code></td>
-      <td>The padding of the button component (combines x and y padding)</td>
-      <td><code>var(--graupl-button-padding-x) var(--graupl-button-padding-y)</code></td>
+      <td><code>--graupl-link-active-text-decoration</code></td>
+      <td>The text decoration of an active link component.</td>
+      <td><code>var(--graupl-link-hover-text-decoration)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-font-size</code></td>
-      <td>The font size of the button component.</td>
-      <td><code>var(--graupl-font-size-base)</code></td>
+      <td><code>--graupl-link-disabled-text-decoration</code></td>
+      <td>The text decoration of a disabled link component.</td>
+      <td><code>underline</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-transition</code></td>
-      <td>The transition of the button component.</td>
-      <td><code>background var(--graupl-transition-duration-fast), color var(--graupl-transition-duration-fast), transform var(--graupl-transition-duration-fast)</code></td>
+      <td><code>--graupl-link-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of the link component.</td>
+      <td><code>var(--graupl-border-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-transition-reduced-motion</code></td>
-      <td>The transition of the button component when reduced motion is enabled.</td>
-      <td><code>background var(--graupl-transition-duration-none), color var(--graupl-transition-duration-none)</code></td>
+      <td><code>--graupl-link-visited-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of a visited link component.</td>
+      <td><code>var(--graupl-link-text-decoration-thickness)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-transform</code></td>
-      <td>The transform of the button component.</td>
-      <td><code>0</code></td>
+      <td><code>--graupl-link-focus-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of a focused link component.</td>
+      <td><code>var(--graupl-link-text-decoration-thickness)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-visited-transform</code></td>
-      <td>The transform of a visited button component.</td>
-      <td><code>var(--graupl-button-transform)</code></td>
+      <td><code>--graupl-link-hover-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of a hovered link component.</td>
+      <td><code>var(--graupl-border-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-focus-transform</code></td>
-      <td>The transform of a focused button component.</td>
-      <td><code>var(--graupl-button-transform)</code></td>
+      <td><code>--graupl-link-active-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of an active link component.</td>
+      <td><code>var(--graupl-link-hover-text-decoration-thickness)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-hover-transform</code></td>
-      <td>The transform of a hovered button component.</td>
-      <td><code>var(--graupl-button-transform)</code></td>
+      <td><code>--graupl-link-disabled-text-decoration-thickness</code></td>
+      <td>The text decoration thickness of a disabled link component.</td>
+      <td><code>var(--graupl-border-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-active-transform</code></td>
-      <td>The transform of an active button component.</td>
-      <td><code>scale(0.95)</code></td>
+      <td><code>--graupl-link-text-decoration-style</code></td>
+      <td>The text decoration style of the link component.</td>
+      <td><code>solid</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-disabled-transform</code></td>
-      <td>The transform of a disabled button component.</td>
-      <td><code>0</code></td>
+      <td><code>--graupl-link-visited-text-decoration-style</code></td>
+      <td>The text decoration style of a visited link component.</td>
+      <td><code>var(--graupl-link-text-decoration-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-background</code></td>
-      <td>The background colour of the button component.</td>
-      <td><code>var(--graupl-background)</code></td>
+      <td><code>--graupl-link-focus-text-decoration-style</code></td>
+      <td>The text decoration style of a focused link component.</td>
+      <td><code>var(--graupl-link-text-decoration-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-visited-background</code></td>
-      <td>The background colour of a visited button component.</td>
-      <td><code>var(--graupl-button-background)</code></td>
+      <td><code>--graupl-link-hover-text-decoration-style</code></td>
+      <td>The text decoration style of a hovered link component.</td>
+      <td><code>solid</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-focus-background</code></td>
-      <td>The background colour of a focused button component.</td>
-      <td><code>var(--graupl-button-background)</code></td>
+      <td><code>--graupl-link-active-text-decoration-style</code></td>
+      <td>The text decoration style of an active link component.</td>
+      <td><code>var(--graupl-link-hover-text-decoration-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-hover-background</code></td>
-      <td>The background colour of a hovered button component.</td>
-      <td><code>var(--graupl-color)</code></td>
+      <td><code>--graupl-link-disabled-text-decoration-style</code></td>
+      <td>The text decoration style of a disabled link component.</td>
+      <td><code>solid</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-active-background</code></td>
-      <td>The background colour of an active button component.</td>
-      <td><code>var(--graupl-button-hover-background)</code></td>
+      <td><code>--graupl-link-color</code></td>
+      <td>The text colour of the link component.</td>
+      <td><code>var(--graupl-theme-active--primary--700)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-disabled-background</code></td>
-      <td>The background colour of a disabled button component.</td>
-      <td><code>var(--graupl-background)</code></td>
+      <td><code>--graupl-link-visited-color</code></td>
+      <td>The text colour of a visited link component.</td>
+      <td><code>var(--graupl-link-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-color</code></td>
-      <td>The text colour of the button component.</td>
-      <td><code>var(--graupl-color)</code></td>
+      <td><code>--graupl-link-focus-color</code></td>
+      <td>The text colour of a focused link component.</td>
+      <td><code>var(--graupl-link-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-visited-color</code></td>
-      <td>The text colour of a visited button component.</td>
-      <td><code>var(--graupl-button-color)</code></td>
+      <td><code>--graupl-link-hover-color</code></td>
+      <td>The text colour of a hovered link component.</td>
+      <td><code>var(--graupl-theme-active--primary--700)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-focus-color</code></td>
-      <td>The text colour of a focused button component.</td>
-      <td><code>var(--graupl-button-color)</code></td>
+      <td><code>--graupl-link-active-color</code></td>
+      <td>The text colour of an active link component.</td>
+      <td><code>var(--graupl-link-hover-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-hover-color</code></td>
-      <td>The text colour of a hovered button component.</td>
-      <td><code>var(--graupl-background)</code></td>
-    </tr>
-    <tr>
-      <td><code>--graupl-button-active-color</code></td>
-      <td>The text colour of an active button component.</td>
-      <td><code>var(--graupl-button-hover-color)</code></td>
-    </tr>
-    <tr>
-      <td><code>--graupl-button-disabled-color</code></td>
-      <td>The text colour of a disabled button component.</td>
+      <td><code>--graupl-link-disabled-color</code></td>
+      <td>The text colour of a disabled link component.</td>
       <td><code>var(--graupl-theme-active--primary--200)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-top-width</code></td>
-      <td>The top border width of the button component.</td>
+      <td><code>--graupl-link-text-decoration-color</code></td>
+      <td>The text decoration colour of the link component.</td>
+      <td><code>var(--graupl-link-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-visited-text-decoration-color</code></td>
+      <td>The text decoration colour of a visited link component.</td>
+      <td><code>var(--graupl-link-visited-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-focus-text-decoration-color</code></td>
+      <td>The text decoration colour of a focused link component.</td>
+      <td><code>var(--graupl-link-focus-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-hover-text-decoration-color</code></td>
+      <td>The text decoration colour of a hovered link component.</td>
+      <td><code>var(--graupl-link-hover-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-active-text-decoration-color</code></td>
+      <td>The text decoration colour of an active link component.</td>
+      <td><code>var(--graupl-link-active-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-disabled-text-decoration-color</code></td>
+      <td>The text decoration colour of a disabled link component.</td>
+      <td><code>var(--graupl-link-disabled-color)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-background</code></td>
+      <td>The background colour of the link component.</td>
+      <td><code>vtransparent</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-visited-background</code></td>
+      <td>The background colour of a visited link component.</td>
+      <td><code>var(--graupl-link-background)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-focus-background</code></td>
+      <td>The background colour of a focused link component.</td>
+      <td><code>var(--graupl-link-background)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-hover-background</code></td>
+      <td>The background colour of a hovered link component.</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-active-background</code></td>
+      <td>The background colour of an active link component.</td>
+      <td><code>var(--graupl-link-hover-background)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-disabled-background</code></td>
+      <td>The background colour of a disabled link component.</td>
+      <td><code>transparent</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-padding-x</code></td>
+      <td>The horizontal padding of the link component.</td>
+      <td><code>var(--graupl-spacer-0)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-padding-y</code></td>
+      <td>The vertical padding of the link component.</td>
+      <td><code>var(--graupl-spacer-0)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-padding</code></td>
+      <td>The padding of the link component (combines x and y padding)</td>
+      <td><code>var(--graupl-link-padding-y) var(--graupl-link-padding-x)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-font-size</code></td>
+      <td>The font size of the link component.</td>
+      <td><code>var(--graupl-font-size-base)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-transition</code></td>
+      <td>The transition of the link component.</td>
+      <td><code>background var(--graupl-transition-duration-fast), color var(--graupl-transition-duration-fast), transform var(--graupl-transition-duration-fast)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-transition-reduced-motion</code></td>
+      <td>The transition of the link component when reduced motion is enabled.</td>
+      <td><code>background var(--graupl-transition-duration-none), color var(--graupl-transition-duration-none)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-transform</code></td>
+      <td>The transform of the link component.</td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-visited-transform</code></td>
+      <td>The transform of a visited link component.</td>
+      <td><code>var(--graupl-link-transform)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-focus-transform</code></td>
+      <td>The transform of a focused link component.</td>
+      <td><code>var(--graupl-link-transform)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-hover-transform</code></td>
+      <td>The transform of a hovered link component.</td>
+      <td><code>var(--graupl-link-transform)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-active-transform</code></td>
+      <td>The transform of an active link component.</td>
+      <td><code>scale(0.95)</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-disabled-transform</code></td>
+      <td>The transform of a disabled link component.</td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td><code>--graupl-link-border-top-width</code></td>
+      <td>The top border width of the link component.</td>
       <td><code>var(--graupl-border-top-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-right-width</code></td>
-      <td>The right border width of the button component.</td>
+      <td><code>--graupl-link-border-right-width</code></td>
+      <td>The right border width of the link component.</td>
       <td><code>var(--graupl-border-right-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-bottom-width</code></td>
-      <td>The bottom border width of the button component.</td>
+      <td><code>--graupl-link-border-bottom-width</code></td>
+      <td>The bottom border width of the link component.</td>
       <td><code>var(--graupl-border-bottom-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-left-width</code></td>
-      <td>The left border width of the button component.</td>
+      <td><code>--graupl-link-border-left-width</code></td>
+      <td>The left border width of the link component.</td>
       <td><code>var(--graupl-border-left-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-width</code></td>
-      <td>The border width of the button component (combines top, right, bottom, and left widths)</td>
-      <td><code>var(--graupl-button-border-top-width) var(--graupl-button-border-right-width) var(--graupl-button-border-bottom-width) var(--graupl-button-border-left-width)</code></td>
+      <td><code>--graupl-link-border-width</code></td>
+      <td>The border width of the link component (combines top, right, bottom, and left widths)</td>
+      <td><code>var(--graupl-link-border-top-width) var(--graupl-link-border-right-width) var(--graupl-link-border-bottom-width) var(--graupl-link-border-left-width)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-top-style</code></td>
-      <td>The top border style of the button component.</td>
+      <td><code>--graupl-link-border-top-style</code></td>
+      <td>The top border style of the link component.</td>
       <td><code>var(--graupl-border-top-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-right-style</code></td>
-      <td>The right border style of the button component.</td>
+      <td><code>--graupl-link-border-right-style</code></td>
+      <td>The right border style of the link component.</td>
       <td><code>var(--graupl-border-right-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-bottom-style</code></td>
-      <td>The bottom border style of the button component.</td>
+      <td><code>--graupl-link-border-bottom-style</code></td>
+      <td>The bottom border style of the link component.</td>
       <td><code>var(--graupl-border-bottom-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-left-style</code></td>
-      <td>The left border style of the button component.</td>
+      <td><code>--graupl-link-border-left-style</code></td>
+      <td>The left border style of the link component.</td>
       <td><code>var(--graupl-border-left-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-style</code></td>
-      <td>The border style of the button component (combines top, right, bottom, and left styles)</td>
-      <td><code>var(--graupl-button-border-top-style) var(--graupl-button-border-right-style) var(--graupl-button-border-bottom-style) var(--graupl-button-border-left-style)</code></td>
+      <td><code>--graupl-link-border-style</code></td>
+      <td>The border style of the link component (combines top, right, bottom, and left styles)</td>
+      <td><code>var(--graupl-link-border-top-style) var(--graupl-link-border-right-style) var(--graupl-link-border-bottom-style) var(--graupl-link-border-left-style)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-top-left-radius</code></td>
-      <td>The top left border radius of the button component.</td>
+      <td><code>--graupl-link-border-top-left-radius</code></td>
+      <td>The top left border radius of the link component.</td>
       <td><code>var(--graupl-border-top-left-radius)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-top-right-radius</code></td>
-      <td>The top right border radius of the button component.</td>
+      <td><code>--graupl-link-border-top-right-radius</code></td>
+      <td>The top right border radius of the link component.</td>
       <td><code>var(--graupl-border-top-right-radius)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-bottom-right-radius</code></td>
-      <td>The bottom right border radius of the button component.</td>
+      <td><code>--graupl-link-border-bottom-right-radius</code></td>
+      <td>The bottom right border radius of the link component.</td>
       <td><code>var(--graupl-border-bottom-right-radius)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-bottom-left-radius</code></td>
-      <td>The bottom left border radius of the button component.</td>
+      <td><code>--graupl-link-border-bottom-left-radius</code></td>
+      <td>The bottom left border radius of the link component.</td>
       <td><code>var(--graupl-border-bottom-left-radius)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-radius</code></td>
-      <td>The border radius of the button component (combines top-left, top-right, bottom-right, and bottom-left radii)</td>
-      <td><code>var(--graupl-button-border-top-left-radius) var(--graupl-button-border-top-right-radius) var(--graupl-button-border-bottom-right-radius) var(--graupl-button-border-bottom-left-radius)</code></td>
+      <td><code>--graupl-link-border-radius</code></td>
+      <td>The border radius of the link component (combines top-left, top-right, bottom-right, and bottom-left radii)</td>
+      <td><code>var(--graupl-link-border-top-left-radius) var(--graupl-link-border-top-right-radius) var(--graupl-link-border-bottom-right-radius) var(--graupl-link-border-bottom-left-radius)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-border-color</code></td>
-      <td>The border colour of the button component.</td>
+      <td><code>--graupl-link-border-color</code></td>
+      <td>The border colour of the link component.</td>
       <td><code>var(--graupl-border-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-visited-border-color</code></td>
-      <td>The border colour of a visited button component.</td>
-      <td><code>var(--graupl-button-border-color)</code></td>
+      <td><code>--graupl-link-visited-border-color</code></td>
+      <td>The border colour of a visited link component.</td>
+      <td><code>var(--graupl-link-border-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-focus-border-color</code></td>
-      <td>The border colour of a focused button component.</td>
-      <td><code>var(--graupl-button-border-color)</code></td>
+      <td><code>--graupl-link-focus-border-color</code></td>
+      <td>The border colour of a focused link component.</td>
+      <td><code>var(--graupl-link-border-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-hover-border-color</code></td>
-      <td>The border colour of a hovered button component.</td>
+      <td><code>--graupl-link-hover-border-color</code></td>
+      <td>The border colour of a hovered link component.</td>
       <td><code>var(--graupl-border-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-active-border-color</code></td>
-      <td>The border colour of an active button component.</td>
-      <td><code>var(--graupl-button-hover-border-color)</code></td>
+      <td><code>--graupl-link-active-border-color</code></td>
+      <td>The border colour of an active link component.</td>
+      <td><code>var(--graupl-link-hover-border-color)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-button-disabled-border-color</code></td>
-      <td>The border colour of a disabled button component.</td>
+      <td><code>--graupl-link-disabled-border-color</code></td>
+      <td>The border colour of a disabled link component.</td>
       <td><code>var(--graupl-theme-active--primary--200)</code></td>
     </tr>
   </tbody>
@@ -312,53 +427,128 @@ The following Sass variables can be used to customize the generation of the butt
       <td><code>.</code></td>
     </tr>
     <tr>
-      <td><code>$button-selector-base</code></td>
-      <td>The selector base for the button component.</td>
+      <td><code>$link-selector-base</code></td>
+      <td>The selector base for the link component.</td>
       <td><code>.</code></td>
     </tr>
     <tr>
-      <td><code>$button-selector</code></td>
-      <td>The button component selector.</td>
-      <td><code>button</code></td>
+      <td><code>$link-selector</code></td>
+      <td>The link component selector.</td>
+      <td><code>a</code></td>
     </tr>
     <tr>
-      <td><code>$button-link-selector-base</code></td>
-      <td>The selector base for the button link component modifier.</td>
+      <td><code>$link-theme-prefix-selector-base</code></td>
+      <td>The selector base for the link theme modifiers.</td>
       <td><code>.</code></td>
     </tr>
     <tr>
-      <td><code>$button-link-selector</code></td>
-      <td>The button link component modifier selector.</td>
-      <td><code>link</code></td>
-    </tr>
-    <tr>
-      <td><code>$button-theme-selector-base</code></td>
-      <td>The selector base for the button theme component modifiers.</td>
-      <td><code>.</code></td>
-    </tr>
-    <tr>
-      <td><code>$button-theme-selector-prefix</code></td>
-      <td>The button theme component modifier selector prefix.</td>
+      <td><code>$link-theme-prefix-selector</code></td>
+      <td>Selector prefix used for link theme modifiers.</td>
       <td><code>""</code></td>
     </tr>
     <tr>
-      <td><code>$button-initial-transform</code></td>
-      <td>The initial transform of the button.</td>
+      <td><code>$stretched-link-selector-base</code></td>
+      <td>The selector base for the link theme modifiers.</td>
+      <td><code>.</code></td>
+    </tr>
+    <tr>
+      <td><code>$stretched-link-selector</code></td>
+      <td>Selector prefix used for link theme modifiers.</td>
+      <td><code>stretched</code></td>
+    </tr>
+    <tr>
+      <td><code>$stretched-link--pseudo-selector</code></td>
+      <td>The pseudo selector for the stretched link component modifier.</td>
+      <td><code>before</code></td>
+    </tr>
+    <tr>
+      <td><code>$stretched-link-z-index</code></td>
+      <td>The z-index for the stretched link component modifier.</td>
+      <td><code>5</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-initial-text-decoration</code></td>
+      <td>The initial text decoration for the link.</td>
+      <td><code>underline</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-final-text-decoration</code></td>
+      <td>The final text decoration for the link.</td>
+      <td><code>underline</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-disabled-text-decoration</code></td>
+      <td>The disabled text decoration for the link.</td>
+      <td><code>underline</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-initial-text-decoration-style</code></td>
+      <td>The initial text decoration style for the link.</td>
+      <td><code>solid</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-final-text-decoration-style</code></td>
+      <td>The final text decoration style for the link.</td>
+      <td><code>solid</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-disabled-text-decoration-style</code></td>
+      <td>The disabled text decoration style for the link.</td>
+      <td><code>solid</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-initial-transform</code></td>
+      <td>The initial transform for the link.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
-      <td><code>$button-final-transform</code></td>
-      <td>The final transform of the button.</td>
+      <td><code>$link-final-transform</code></td>
+      <td>The final transform for the link.</td>
+      <td><code>none</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-disabled-transform</code></td>
+      <td>The disabled transform for the link.</td>
+      <td><code>none</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-initial-transform</code></td>
+      <td>The initial transform for the link.</td>
+      <td><code>none</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-final-transform</code></td>
+      <td>The final transform for the link.</td>
       <td><code>scale(0.95)</code></td>
     </tr>
     <tr>
-      <td><code>$button-disabled-transform</code></td>
-      <td>The disabled transform of the button.</td>
+      <td><code>$link-disabled-transform</code></td>
+      <td>The disabled transform for the link.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
-      <td><code>$custom-button-state-theme-map</code></td>
-      <td>A map of custom button state theme values.</td>
+      <td><code>$link-border-width</code></td>
+      <td>The border width for the link.</td>
+      <td><code>0</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-min-width</code></td>
+      <td>The minimum width for the link.</td>
+      <td><code>auto</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-min-height</code></td>
+      <td>The minimum height for the link.</td>
+      <td><code>auto</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-theme-mappings</code></td>
+      <td>Map of properties and shade values applied to themed links.</td>
+      <td><code>()</code></td>
+    </tr>
+    <tr>
+      <td><code>$link-theme-map</code></td>
+      <td>Fully expanded properties and shade values applied to themed links.</td>
       <td><code>()</code></td>
     </tr>
   </tbody>
