@@ -626,8 +626,8 @@
           }
         }
 
-        > .content
-          > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
+        // > .content
+        > #{defaults.$container-content-selector-base}#{defaults.$container-content-selector} {
           grid-row: 1;
         }
       }
