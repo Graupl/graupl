@@ -109,7 +109,9 @@ onMounted(() => {
                 item.text
               }}</a>
               <template v-else>
-                <button class="menu-link submenu-toggle">
+                <button
+                  class="menu-link submenu-toggle min-w-max-content icon-after dropdown-arrow"
+                >
                   {{ item.text }}
                 </button>
                 <ul class="submenu">
@@ -130,14 +132,17 @@ onMounted(() => {
         <nav class="navigation" id="social" ref="socialNav">
           <ul class="menu mbs-3 mbe-3 g-2">
             <li v-for="item in socialLinks" :key="item.link" class="menu-item">
-              <a :href="item.link" class="menu-link">
-                {{ item.icon }}
+              <a
+                :href="item.link"
+                :aria-label="item.icon"
+                :class="`menu-link icon-after ${item.icon}`"
+              >
               </a>
             </li>
           </ul>
         </nav>
         <button
-          class="button navigation-shelf-toggle navigation-toggle border-none"
+          class="button navigation-shelf-toggle navigation-toggle border-none icon-before nav-toggle"
           aria-label="Toggle sidebar"
           ref="shelfToggle"
         ></button>
