@@ -72,8 +72,8 @@ The classes and colours will be displayed on the custom property tables below.
 
 ## Custom Properties
 
-The following custom properties can be used to customize the table component. Here is a list of component properties:
-| Table |
+The following custom properties can be used to customize the table component:
+| Table Components |
 | --- |
 | [`Caption`](#caption-properties) |
 | [`Header`](#header-properties) |
