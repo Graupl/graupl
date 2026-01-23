@@ -52,7 +52,74 @@ The `.table` class is the base class for all table styles.
 
 There are 3 table colour variants provided by default: `.primary`, `.secondary` and `.tertiary`.
 
-There are also variant classes that help to customize your table:
+<br>
+
+<div class="display-flex g-8">
+  <table id="primary-table" class="table primary hoverable bordered">
+    <caption>Table for Primary Variant</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="secondary-table" class="table secondary hoverable bordered">
+    <caption>Table for Secondary Variant</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="tertiary-table" class="table tertiary hoverable bordered">
+    <caption>Table for Tertiary Variant</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+## Modifiers
+
+There are also many classes that help to customize your table:
 
 | Class Name | Property|
 | --- | --- |
@@ -66,9 +133,148 @@ There are also variant classes that help to customize your table:
 
 <br>
 
-The classes and colours will be displayed on the custom property tables below.
+<div class="display-flex flex-wrap g-8">
+  <table id="bordered-table" class="table bordered">
+    <caption>Table for Bordered Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
 
-<br>
+  <table id="collapsed-table" class="table collapsed bordered">
+    <caption>Table for Collapsed Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="striped-columns-table" class="table striped-columns">
+    <caption>Table for Striped Columns Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="striped-rows-table" class="table striped-rows">
+    <caption>Table for Striped Rows Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="hoverable-table" class="table hoverable">
+    <caption>Table for Hoverable Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="highlight-table" class="table hightlight">
+    <caption>Table for Highlight Modifier (Cell 4)</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td class="highlight"> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table id="responsive-table" class="table responsive-table  w-fit-content">
+    <caption>Table for Responsive Modifier</caption>
+    <thead>
+      <tr>
+        <th> Header 1 </th>
+        <th> Header 2 </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> Cell 1 </td>
+        <td> Cell 2 </td>
+      </tr>
+      <tr>
+        <td> Cell 3 </td>
+        <td> Cell 4 </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
 ## Custom Properties
 
@@ -82,11 +288,7 @@ The following custom properties can be used to customize the table component:
 
 ### Caption Properties
 
-The table shown will be affected with `.primary`, `.hoverable` and `.striped-columns` classes.
-
-<br>
-
-<table class="table primary hoverable striped-columns">
+<table class="table bordered collapsed striped-columns">
   <thead>
     <tr>
       <th>Property</th>
@@ -120,11 +322,7 @@ The table shown will be affected with `.primary`, `.hoverable` and `.striped-col
 
 ### Header Properties
 
-The table shown will be affected with `.tertiary`, `.highlight` and `.striped-rows` classes. The first cell under the header will be highlighted.
-
-<br>
-
-<table class="table tertiary striped-rows">
+<table class="table bordered collapsed striped-columns">
   <thead>
     <tr>
       <th>Property</th>
@@ -134,7 +332,7 @@ The table shown will be affected with `.tertiary`, `.highlight` and `.striped-ro
   </thead>
   <tbody>
     <tr>
-      <td class="highlight"><code>--graupl-table-header-font-weight</code></td>
+      <td><code>--graupl-table-header-font-weight</code></td>
       <td>The font weight of the table header component.</td>
       <td><code>var(--graupl-font-weight-bold)</code></td>
     </tr>
@@ -248,11 +446,7 @@ The table shown will be affected with `.tertiary`, `.highlight` and `.striped-ro
 
 ### Cell Properties
 
-The table shown will be affected with `.bordered`, `.highlight` and `.hoverable` classes. The second cell under the header will be highlighted.
-
-<br>
-
-<table class="table bordered hoverable">
+<table class="table bordered collapsed striped-columns">
   <thead>
     <tr>
       <th>Property</th>
@@ -263,7 +457,7 @@ The table shown will be affected with `.bordered`, `.highlight` and `.hoverable`
   <tbody>
     <tr>
       <td><code>--graupl-table-cell-font-weight</code></td>
-      <td class="highlight">The font weight of the table cell component.</td>
+      <td>The font weight of the table cell component.</td>
       <td><code>var(--graupl-font-weight-bold)</code></td>
     </tr>
      <tr>
@@ -406,9 +600,7 @@ The table shown will be affected with `.bordered`, `.highlight` and `.hoverable`
 
 ### Bordered Properties
 
-The table shown will be affected with `.secondary`, `.collapsed` and `.bordered` classes.
-
-<table class="table secondary collapsed bordered">
+<table class="table bordered collapsed striped-columns">
   <thead>
     <tr>
       <th>Property</th>
