@@ -2,24 +2,34 @@
 
 The link base component provides a set of classes to style links consistently across your application. It includes various states and modifiers to handle different link types and interactions.
 
-The link component is a `<a>` element.
-
 ## Base element
 
 The base `<a>` element is styled to handle the different states ( Visited, Focused, Hovered, Active, Disabled ).
-<ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
-  <li>
-    <a href="/">Link</a>
-  </li>
+<div class="display-flex g-3 flex-wrap">
+<ul class="list-style-none m-0 p-0 display-flex g-3">
+  <li><a href="/"> Default Link</a></li>
+  <li><a href="/" class="visited">Visited Link</a></li>
+  <li><a href="/" class="focus">Focused Link</a></li>
+  <li><a href="/" class="hover">Hovered Link</a></li>
+  <li><a href="/" class="active">Active Link</a></li>
+  <li><a href="/" class="disabled">Disabled Link</a></li>
 </ul>
+</div>
 
 ```html
-<a href="/">Link</a>
+  <a href="/"> Default Link</a>
+  <a href="/" class="visited">Visited Link</a>
+  <a href="/" class="focus">Focused Link</a>
+  <a href="/" class="hover">Hovered Link</a>
+  <a href="/" class="active">Active Link</a>
+  <a href="/" class="disabled">Disabled Link</a>
 ```
 
-## Variants
+## States
 
-There are 6 link state variants provided by default: `.visited`, `.focus`, `.hover`, `.active` and `.disabled`.
+Links are set up to handle different states by default: visited, focus, hover, active and disabled.
+
+You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active` and `.disabled`, respectively.
 
 <div class="display-flex g-3 flex-wrap">
 <ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
@@ -417,7 +427,7 @@ The following custom properties can be used to customize the link element:
 
 The following Sass variables can be used to customize the generation of the button component:
 
-<table>
+<table class="table hoverable">
   <thead>
     <tr>
       <th>Variable</th>
