@@ -7,6 +7,8 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/map" as map-functions;
+@use "../../functions/list" as list-functions;
 @use "sass:map";
 @use "sass:list";
 @use "sass:meta";
@@ -37,46 +39,49 @@ $root-selector: "root" !default;
 
 // Colours.
 $-colors: (
-  primary: (
-    _default: hsl(219deg 75% 50%),
-    100: hsl(219deg 100% 95%),
-    200: hsl(219deg 90% 80%),
-    300: hsl(219deg 80% 65%),
-    400: hsl(219deg 75% 55%),
-    500: hsl(219deg 75% 50%),
-    600: hsl(219deg 75% 45%),
-    700: hsl(219deg 80% 35%),
-    800: hsl(219deg 90% 20%),
-    900: hsl(219deg 100% 10%),
+  "primary": (
+    "_default": hsl(219deg 75% 50%),
+    "100": hsl(219deg 100% 95%),
+    "200": hsl(219deg 90% 80%),
+    "300": hsl(219deg 80% 65%),
+    "400": hsl(219deg 75% 55%),
+    "500": hsl(219deg 75% 50%),
+    "600": hsl(219deg 75% 45%),
+    "700": hsl(219deg 80% 35%),
+    "800": hsl(219deg 90% 20%),
+    "900": hsl(219deg 100% 10%),
   ),
-  secondary: (
-    _default: hsl(235deg 15% 50%),
-    100: hsl(235deg 40% 95%),
-    200: hsl(235deg 30% 80%),
-    300: hsl(235deg 20% 65%),
-    400: hsl(235deg 15% 55%),
-    500: hsl(235deg 15% 50%),
-    600: hsl(235deg 15% 45%),
-    700: hsl(235deg 20% 35%),
-    800: hsl(235deg 30% 20%),
-    900: hsl(235deg 40% 10%),
+  "secondary": (
+    "_default": hsl(235deg 15% 50%),
+    "100": hsl(235deg 40% 95%),
+    "200": hsl(235deg 30% 80%),
+    "300": hsl(235deg 20% 65%),
+    "400": hsl(235deg 15% 55%),
+    "500": hsl(235deg 15% 50%),
+    "600": hsl(235deg 15% 45%),
+    "700": hsl(235deg 20% 35%),
+    "800": hsl(235deg 30% 20%),
+    "900": hsl(235deg 40% 10%),
   ),
-  tertiary: (
-    _default: hsl(340deg 60% 50%),
-    100: hsl(340deg 85% 95%),
-    200: hsl(340deg 75% 80%),
-    300: hsl(340deg 65% 65%),
-    400: hsl(340deg 60% 55%),
-    500: hsl(340deg 60% 50%),
-    600: hsl(340deg 60% 45%),
-    700: hsl(340deg 65% 35%),
-    800: hsl(340deg 75% 20%),
-    900: hsl(340deg 85% 10%),
+  "tertiary": (
+    "_default": hsl(340deg 60% 50%),
+    "100": hsl(340deg 85% 95%),
+    "200": hsl(340deg 75% 80%),
+    "300": hsl(340deg 65% 65%),
+    "400": hsl(340deg 60% 55%),
+    "500": hsl(340deg 60% 50%),
+    "600": hsl(340deg 60% 45%),
+    "700": hsl(340deg 65% 35%),
+    "800": hsl(340deg 75% 20%),
+    "900": hsl(340deg 85% 10%),
   ),
 );
 $colors: () !default;
 
-// Loop through the customized colors and convert them to a map structure.
+// Ensure all keys in the colors map are strings.
+$colors: map-functions.force-string-keys($colors);
+
+// If a vlaue in colors is a color, convert it to a map with only the _default shade.
 // This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
 @each $color, $value in $colors {
   @if meta.type-of($value) == "color" {
@@ -84,7 +89,7 @@ $colors: () !default;
       $colors,
       (
         $color: (
-            _default: $value,
+            "_default": $value,
           ),
       )
     );
@@ -97,36 +102,42 @@ $colors: () !default;
 }
 
 // Themes.
-$-themes: (light, dark);
+$-themes: ("light", "dark");
 $themes: () !default;
-$default-theme: light !default;
+
+// Ensure all themes are strings.
+$themes: list-functions.force-strings($themes);
+$default-theme: "light" !default;
 
 // Theme mappings.
 $-theme-mappings: (
-  light: (
-    100: 100,
-    200: 200,
-    300: 300,
-    400: 400,
-    500: 500,
-    600: 600,
-    700: 700,
-    800: 800,
-    900: 900,
+  "light": (
+    "100": "100",
+    "200": "200",
+    "300": "300",
+    "400": "400",
+    "500": "500",
+    "600": "600",
+    "700": "700",
+    "800": "800",
+    "900": "900",
   ),
-  dark: (
-    100: 900,
-    200: 800,
-    300: 700,
-    400: 600,
-    500: 500,
-    600: 400,
-    700: 300,
-    800: 200,
-    900: 100,
+  "dark": (
+    "100": "900",
+    "200": "800",
+    "300": "700",
+    "400": "600",
+    "500": "500",
+    "600": "400",
+    "700": "300",
+    "800": "200",
+    "900": "100",
   ),
 );
 $theme-mappings: () !default;
+
+// Ensure all keys in the theme mappings are strings.
+$theme-mappings: map-functions.force-string-keys($theme-mappings);
 
 // Merge the custom themes with the default ones.
 @if $generate-base-themes {
@@ -181,4 +192,9 @@ $-theme-map: ();
 }
 
 $theme-map: () !default;
+
+// Ensure all keys in the theme map are strings.
+$theme-map: map-functions.force-string-keys($theme-map);
+
+// Merge the custom theme map with the default one.
 $theme-map: map.deep-merge($-theme-map, $theme-map);

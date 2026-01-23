@@ -5,8 +5,18 @@
 @use "../defaults" as root-defaults;
 @use "sass:map";
 @use "sass:list";
+@use "sass:string";
 
+/// Get the minimum size for a specific container size.
+///
+/// @param {string} $size
+///   The container size.
+///
+/// @return {number}
+///   The minimum size for the container size.
 @function min($size) {
+  $size: string.quote(#{$size});
+
   @if not map.has-key(root-defaults.$container-sizes, $size) {
     @error "The container size \"#{$size}\" does not exist.";
   }
@@ -16,7 +26,16 @@
   @return $container-size;
 }
 
+/// Get the maximum size for a specific container size.
+///
+/// @param {string} $size
+///   The container size.
+///
+/// @return {number}
+///   The maximum size for the container size.
 @function max($size) {
+  $size: string.quote(#{$size});
+
   @if not map.has-key(root-defaults.$container-sizes, $size) {
     @error "The container size \"#{$size}\" does not exist.";
   }
@@ -30,9 +49,20 @@
   @return $container-size;
 }
 
+/// Get the range for a specific container size.
+///
+/// @param {string} $min
+///   The minimum container size.
+/// @param {string} $max
+///   The maximum container size.
+///
+/// @return {map}
+///   The range for the container size.
 @function range($min, $max) {
+  $min: string.quote(#{$min});
+  $max: string.quote(#{$max});
   $min-size: min($min);
   $max-size: max($max);
 
-  @return (min: $min-size, max: $max-size);
+  @return ("min": $min-size, "max": $max-size);
 }

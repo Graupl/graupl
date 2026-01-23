@@ -45,6 +45,7 @@
 // | ---                              | ---                                                                | ---              |
 // | `$selector-base`                 | The base selector for the component.                               | `"."`            |
 // | `$modifier-selector-base`        | The base selector for component modifiers.                         | `"."`            |
+// | `$force-single-columns`          | Flag to enable forced single column layout on small screens.       | `true`           |
 // | `$columns-selector-base`         | The base selector for the columns component.                       | `$selector-base` |
 // | `$columns-selector`              | The selector for the columns component.                            | `"columns"`      |
 // | `$columns-count-selector-base`   | The base selector for the count class.                             | `$selector-base` |
@@ -119,23 +120,25 @@
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
-  @include container.trigger(force-single-column) {
-    // .columns
-    #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
-      --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};
+  @if defaults.$force-single-columns {
+    @include container.trigger(force-single-column) {
+      // .columns
+      #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
+        --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};
 
-      > * {
-        --#{root-defaults.$prefix}columns-span: 1;
-      }
-
-      // All spans should be set to 1 to avoid adding columns.
-      @for $i
-        from defaults.$columns-min-count
-        through defaults.$columns-max-count
-      {
-        // .span-#{$i}
-        #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
+        > * {
           --#{root-defaults.$prefix}columns-span: 1;
+        }
+
+        // All spans should be set to 1 to avoid adding columns.
+        @for $i
+          from defaults.$columns-min-count
+          through defaults.$columns-max-count
+        {
+          // .span-#{$i}
+          #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
+            --#{root-defaults.$prefix}columns-span: 1;
+          }
         }
       }
     }

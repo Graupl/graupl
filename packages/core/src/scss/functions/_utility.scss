@@ -19,7 +19,7 @@
     $map: map.merge(
       $map,
       (
-        $prop: $value,
+        "#{$prop}": $value,
       )
     );
   }

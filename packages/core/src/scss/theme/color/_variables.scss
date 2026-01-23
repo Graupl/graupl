@@ -166,7 +166,7 @@ $colors: ();
     $color-map: map.merge(
       $color-map,
       (
-        $shade: $color-property,
+        "#{$shade}": $color-property,
       )
     );
   }
@@ -175,13 +175,13 @@ $colors: ();
   $colors: map.merge(
     $colors,
     (
-      $color: $color-map,
+      "#{$color}": $color-map,
     )
   );
 }
 
 $themes: (
-  active: (),
+  "active": (),
 );
 
 // Generate all of the theme properties.
@@ -219,7 +219,7 @@ $themes: (
       $color-map: map.merge(
         $color-map,
         (
-          $shade: $color-property,
+          "#{$shade}": $color-property,
         )
       );
     }
@@ -227,7 +227,7 @@ $themes: (
     $theme: map.merge(
       $theme,
       (
-        $color-name: $color-map,
+        "#{$color-name}": $color-map,
       )
     );
   }
@@ -235,7 +235,7 @@ $themes: (
   $themes: map.merge(
     $themes,
     (
-      $theme-name: $theme,
+      "#{$theme-name}": $theme,
     )
   );
 }
@@ -269,7 +269,7 @@ $themes: (
       $color-map: map.merge(
         $color-map,
         (
-          $shade: $color-property,
+          "#{$shade}": $color-property,
         )
       );
     }
@@ -277,10 +277,10 @@ $themes: (
     $themes: map.merge(
       $themes,
       (
-        active: map.merge(
+        "active": map.merge(
             map.get($themes, active),
             (
-              $color-name: $color-map,
+              "#{$color-name}": $color-map,
             )
           ),
       )
@@ -295,19 +295,19 @@ $root-color: var(--#{root-defaults.$prefix}root-color);
 // --graupl-root-background
 $root-background: var(--#{root-defaults.$prefix}root-background);
 
-@if map.has-key($themes, active, primary, 900) {
+@if map.has-key($themes, "active", "primary", "900") {
   // --graupl-root-color
   $root-color: var(
     --#{root-defaults.$prefix}root-color,
-    #{map.get(map.get(map.get($themes, active), primary), 900)}
+    #{map.get(map.get(map.get($themes, "active"), "primary"), "900")}
   );
 }
 
-@if map.has-key($themes, active, primary, 100) {
+@if map.has-key($themes, "active", "primary", "100") {
   // --graupl-root-background
   $root-background: var(
     --#{root-defaults.$prefix}root-background,
-    #{map.get(map.get(map.get($themes, active), primary), 100)}
+    #{map.get(map.get(map.get($themes, "active"), "primary"), "100")}
   );
 }
 

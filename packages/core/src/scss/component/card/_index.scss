@@ -56,6 +56,7 @@
 // | `$modifier-selector-base`              | Selector base for component modifiers.                                                | `"."`            |
 // | `$generate-base-theme-map`             | A flag to generate the base theme maps for accordion variants.                        | `true`           |
 // | `$themeable`                           | Flag to generate theme modifiers.                                                     | `false`          |
+// | `$force-vertical-cards`                | Flag to enable forced vertical cards on small screens.                                | `true`           |
 // | `$card-selector-base`                  | Selector base for the card container.                                                 | `$selector-base` |
 // | `$card-selector`                       | Selector for the card container.                                                      | `"card"`         |
 // | `$card-image-selector-base`            | Selector base for the image wrapper.                                                  | `$selector-base` |
@@ -375,46 +376,48 @@
     flex: 0 0 auto;
   }
 
-  @include container.trigger(force-vertical-card) {
-    // .card
-    #{defaults.$card-selector-base}#{defaults.$card-selector} {
-      // .horizontal
-      &#{defaults.$horizontal-card-selector-base}#{defaults.$horizontal-card-selector} {
-        // &, &.left, &.top, &.right, &.bottom, &.inverse
-        &,
-        &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
-        &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector},
-        &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
-        &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
-        &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
-          --#{root-defaults.$prefix}horizontal-card-image-ratio: #{defaults.$card-image-ratio};
-          --#{root-defaults.$prefix}horizontal-card-content-ratio: #{defaults.$card-content-ratio};
+  @if defaults.$force-vertical-cards {
+    @include container.trigger(force-vertical-card) {
+      // .card
+      #{defaults.$card-selector-base}#{defaults.$card-selector} {
+        // .horizontal
+        &#{defaults.$horizontal-card-selector-base}#{defaults.$horizontal-card-selector} {
+          // &, &.left, &.top, &.right, &.bottom, &.inverse
+          &,
+          &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
+          &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector},
+          &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
+          &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
+          &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
+            --#{root-defaults.$prefix}horizontal-card-image-ratio: #{defaults.$card-image-ratio};
+            --#{root-defaults.$prefix}horizontal-card-content-ratio: #{defaults.$card-content-ratio};
 
-          grid-template-columns: [image-start content-start] 1fr [image-end content-end];
-        }
+            grid-template-columns: [image-start content-start] 1fr [image-end content-end];
+          }
 
-        // &, &.left, &.top
-        &,
-        &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
-        &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
-        &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector} {
-          grid-template-rows:
-            [image-start]
-            $card-image-ratio
-            [image-end content-start]
-            $card-content-ratio
-            [content-end];
-        }
+          // &, &.left, &.top
+          &,
+          &#{defaults.$horizontal-card-left-selector-base}#{defaults.$horizontal-card-left-selector},
+          &#{defaults.$horizontal-card-right-selector-base}#{defaults.$horizontal-card-right-selector},
+          &#{defaults.$vertical-card-top-selector-base}#{defaults.$vertical-card-top-selector} {
+            grid-template-rows:
+              [image-start]
+              $card-image-ratio
+              [image-end content-start]
+              $card-content-ratio
+              [content-end];
+          }
 
-        // &.bottom, &.inverse
-        &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
-        &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
-          grid-template-rows:
-            [content-start]
-            $card-content-ratio
-            [content-end image-start]
-            $card-image-ratio
-            [image-end];
+          // &.bottom, &.inverse
+          &#{defaults.$vertical-card-bottom-selector-base}#{defaults.$vertical-card-bottom-selector},
+          &#{defaults.$inverse-card-selector-base}#{defaults.$inverse-card-selector} {
+            grid-template-rows:
+              [content-start]
+              $card-content-ratio
+              [content-end image-start]
+              $card-image-ratio
+              [image-end];
+          }
         }
       }
     }

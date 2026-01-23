@@ -1,0 +1,34 @@
+// @graupl/core map functions.
+//
+// A series of functions to help manipulate maps.
+
+@use "sass:map";
+@use "sass:meta";
+
+/// Force all keys in a map to be strings.
+///
+/// This function will call itself recursively.
+///
+/// @param {map} $map
+///   The map to convert.
+///
+/// @return {map}
+///   The map with string keys.
+@function force-string-keys($map) {
+  $new-map: ();
+
+  @each $key, $value in $map {
+    @if meta.type-of($value) == "map" {
+      $value: force-string-keys($value);
+    }
+
+    $new-map: map.merge(
+      $new-map,
+      (
+        "#{$key}": $value,
+      )
+    );
+  }
+
+  @return $new-map;
+}

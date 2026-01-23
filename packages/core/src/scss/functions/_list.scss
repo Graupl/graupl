@@ -1,0 +1,22 @@
+// @graupl/core list functions.
+//
+// A series of functions to help manipulate lists.
+
+@use "sass:list";
+
+/// Force all items in a list to be strings.
+///
+/// @param {list} $list
+///   The list to convert.
+///
+/// @return {list}
+///   The list with string items.
+@function force-strings($list) {
+  $new-list: ();
+
+  @each $item in $list {
+    $new-list: list.append($new-list, "#{$item}");
+  }
+
+  @return $new-list;
+}
