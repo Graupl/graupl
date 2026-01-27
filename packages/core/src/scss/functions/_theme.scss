@@ -21,10 +21,12 @@
 ///   The shade.
 /// @param {string}        $theme [active]
 ///   The theme.
+/// @param {string|null}   $fallback [null]
+///   The fallback color to use if none is found.
 ///
 /// @return {string|null}
 ///   The custom property pointing to the correct colour or null if none is found.
-@function get($color, $shade: null, $theme: "active") {
+@function get($color, $shade: null, $theme: "active", $fallback: null) {
   $color: string.quote(#{$color});
   $theme: string.quote(#{$theme});
   $shade: string.quote(#{$shade});
