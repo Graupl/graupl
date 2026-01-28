@@ -5,10 +5,6 @@
 @use "variables" as *;
 @use "sass:map";
 
-@if defaults.$show-warnings and root-defaults.$show-warnings {
-  @warn "The `@graupl/navigation-shelf` component is under active development and is highly experimental. It is not recommended for production use at this time.";
-}
-
 // `.navigation-shelf`
 #{defaults.$navigation-shelf-selector-base}#{defaults.$navigation-shelf-selector} {
   --#{root-defaults.$prefix}navigation-shelf-current-width: #{$navigation-shelf-width};
