@@ -125,6 +125,7 @@ export default defineConfig({
           { text: "Gradient", link: "/utilities/gradient" },
           { text: "Height", link: "/utilities/height" },
           { text: "Inset", link: "/utilities/inset" },
+          { text: "Isolation", link: "/utilities/isolation" },
           { text: "Justification", link: "/utilities/justification" },
           { text: "List", link: "/utilities/list" },
           { text: "Object", link: "/utilities/object" },
