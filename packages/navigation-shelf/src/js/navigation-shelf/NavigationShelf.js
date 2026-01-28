@@ -310,6 +310,10 @@ class NavigationShelf extends Component {
     // Set side.
     this._side = side;
 
+    if (this._side === "right") {
+      this._otherSide = "left";
+    }
+
     // Set hover settings.
     this._hover = hoverable;
     this._delays.hover = hoverDelay;
