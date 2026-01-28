@@ -177,13 +177,25 @@ class NavigationShelf extends Component {
   _otherSide = "right";
   _open = false;
   _mediaQueryListEventCallback = (event) => {
-    if (event.matches && this.isOpen) {
-      this.close({
-        preserveLock: this.shouldBeLocked,
-      });
-    } else if (!event.matches && this.shouldBeLocked && !this.isOpen) {
-      this._locked.reset();
-      this.lock({ force: true });
+    if (event.matches) {
+      if (this.isOpen) {
+        this.close({
+          preserveLock: this.shouldBeLocked,
+        });
+      }
+
+      if (this.dom.lockController) {
+        this.dom.lockController.setAttribute("disabled", "disabled");
+      }
+    } else {
+      if (this.shouldBeLocked && !this.isOpen) {
+        this._locked.reset();
+        this.lock({ force: true });
+      }
+
+      if (this.dom.lockController) {
+        this.dom.lockController.removeAttribute("disabled");
+      }
     }
   };
   _storageKey = "navigation-shelves";
@@ -943,7 +955,7 @@ class NavigationShelf extends Component {
 
     // Toggle the shelf when the controlled is clicked.
     if (this.dom.controller) {
-      this.dom.controller.addEventListener("pointerup", (event) => {
+      this.dom.controller.addEventListener("click", (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -959,7 +971,7 @@ class NavigationShelf extends Component {
 
     // Toggle hoverability when the hover controller is clicked.
     if (this.dom.hoverController) {
-      this.dom.hoverController.addEventListener("pointerup", (event) => {
+      this.dom.hoverController.addEventListener("click", (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -975,7 +987,7 @@ class NavigationShelf extends Component {
 
     // Toggle shelf lock when the lock controller is clicked.
     if (this.dom.lockController) {
-      this.dom.lockController.addEventListener("pointerup", (event) => {
+      this.dom.lockController.addEventListener("click", (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -987,7 +999,7 @@ class NavigationShelf extends Component {
 
     // Toggle shifting sides when the side controller is clicked.
     if (this.dom.sideController) {
-      this.dom.sideController.addEventListener("pointerup", (event) => {
+      this.dom.sideController.addEventListener("click", (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -998,7 +1010,7 @@ class NavigationShelf extends Component {
     }
 
     // Catch all to open if shelf if there is a click inside of it.
-    this.dom.shelf.addEventListener("pointerup", (event) => {
+    this.dom.shelf.addEventListener("click", (event) => {
       if (event.button !== 0) return;
 
       this.currentEvent = "mouse";
@@ -1008,7 +1020,7 @@ class NavigationShelf extends Component {
     });
 
     // Close the shelf if a click happens outside of it.
-    document.addEventListener("pointerup", (event) => {
+    document.addEventListener("click", (event) => {
       if (this.focusState === "none") return;
       if (this.isLocked) return;
       if (
