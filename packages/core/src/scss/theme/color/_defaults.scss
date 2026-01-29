@@ -20,8 +20,8 @@ $generate-base-themes: root-defaults.$generate-base-themes !default;
 $theme-selector-base: $modifier-selector-base !default;
 $theme-selector-prefix: "" !default;
 $theme-selector-suffix: "-mode" !default;
-$root-selector-base: ":" !default;
-$root-selector: "root" !default;
+$root-selector-base: root-defaults.$root-selector-base !default;
+$root-selector: root-defaults.$root-selector !default;
 
 // The site will have colours, defaulting to primary, secondary, and tertiary.
 // Each colour will have a shade mapping, defaulting to 100-900.

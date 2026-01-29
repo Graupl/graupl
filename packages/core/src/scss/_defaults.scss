@@ -233,3 +233,7 @@ $utility-screen-aware-selector-prefix: $screen-aware-selector-prefix !default;
 $utility-theme-aware-selector-prefix: $theme-aware-selector-prefix !default;
 $utility-state-aware-selector-prefix: $state-aware-selector-prefix !default;
 $utility-container-aware-selector-prefix: $container-aware-selector-prefix !default;
+
+// Selectors.
+$root-selector-base: ":" !default;
+$root-selector: "root" !default;
