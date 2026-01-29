@@ -28,19 +28,25 @@ $h5-selector-base: $selector-base !default;
 $h5-selector: "h5" !default;
 $h6-selector-base: $selector-base !default;
 $h6-selector: "h6" !default;
-$root-selector-base: ":" !default;
-$root-selector: "root" !default;
+$root-selector-base: root-defaults.$root-selector-base !default;
+$root-selector: root-defaults.$root-selector !default;
 $bold-selector-base: $selector-base !default;
 $bold-selector: "b" !default;
 $strong-selector-base: $selector-base !default;
 $strong-selector: "strong" !default;
-$body-selector-base: $selector-base !default;
-$body-selector: "body" !default;
+$emphasis-selector-base: $selector-base !default;
+$emphasis-selector: "em" !default;
+$italic-selector-base: $selector-base !default;
+$italic-selector: "i" !default;
 $generate-base-font-sizes: root-defaults.$generate-base-font-sizes !default;
 $generate-base-font-weights: root-defaults.$generate-base-font-weights !default;
 $font-size-base: 1rem !default;
 $root-font-size: clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem) !default;
-$line-height: 1.2em !default;
+$root-line-height: 1.2em !default;
+$root-letter-spacing: normal !default;
+$root-word-spacing: normal !default;
+$root-font-style: normal !default;
+$root-font-variant: normal !default;
 
 // Multipliers for font sizes.
 // This uses a minor third scale.

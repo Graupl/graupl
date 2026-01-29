@@ -516,6 +516,8 @@
     @include screen.trigger(allow-sidebars) {
       // &.sidebars
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [sidebar-left-start feature-start] $container-sidebar-left-section-width
@@ -634,6 +636,8 @@
 
       // &.sidebars-left
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-left-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [sidebar-start feature-start] $container-sidebar-left-section-width
@@ -702,6 +706,8 @@
 
       // &.sidebars-right
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-right-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [feature-start] $container-feature-section-width
