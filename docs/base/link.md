@@ -2,6 +2,8 @@
 
 The link base component provides a set of classes to style links consistently across your application. It includes various states and modifiers to handle different link types and interactions.
 
+Links are themeable, which means that it is a component in which you can turn themeing off by setting the variable `$themeable: false` or on by setting `$themeable: true`. Themeing is false by default for links.
+
 ## Base element
 
 The base `<a>` element is styled to handle the different states ( Visited, Focused, Hovered, Active, Disabled ).
@@ -24,6 +26,12 @@ The base `<a>` element is styled to handle the different states ( Visited, Focus
   <a href="/" class="active">Active Link</a>
   <a href="/" class="disabled">Disabled Link</a>
 ```
+
+## Variants
+
+Variants for links can be turned on by setting `$themeable: true`. Themeing is false by default for links.
+
+Variants can be turned off by setting `$themeable: false`.
 
 ## States
 
@@ -262,7 +270,7 @@ The following custom properties can be used to customize the link element:
     <tr>
       <td><code>--graupl-link-transition</code></td>
       <td>The transition of the link component.</td>
-      <td><code>background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)</code></td>
+      <td><code>background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), translink var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)</code></td>
     </tr>
     <tr>
       <td><code>--graupl-link-transition-reduced-motion</code></td>
@@ -270,33 +278,33 @@ The following custom properties can be used to customize the link element:
       <td><code>background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-transform</code></td>
-      <td>The transform of the link component.</td>
+      <td><code>--graupl-link-translink</code></td>
+      <td>The translink of the link component.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-visited-transform</code></td>
-      <td>The transform of a visited link component.</td>
-      <td><code>var(--graupl-link-transform)</code></td>
+      <td><code>--graupl-link-visited-translink</code></td>
+      <td>The translink of a visited link component.</td>
+      <td><code>var(--graupl-link-translink)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-focus-transform</code></td>
-      <td>The transform of a focused link component.</td>
-      <td><code>var(--graupl-link-transform)</code></td>
+      <td><code>--graupl-link-focus-translink</code></td>
+      <td>The translink of a focused link component.</td>
+      <td><code>var(--graupl-link-translink)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-hover-transform</code></td>
-      <td>The transform of a hovered link component.</td>
+      <td><code>--graupl-link-hover-translink</code></td>
+      <td>The translink of a hovered link component.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-active-transform</code></td>
-      <td>The transform of an active link component.</td>
-      <td><code>var(--graupl-link-hover-transform)</code></td>
+      <td><code>--graupl-link-active-translink</code></td>
+      <td>The translink of an active link component.</td>
+      <td><code>var(--graupl-link-hover-translink)</code></td>
     </tr>
     <tr>
-      <td><code>--graupl-link-disabled-transform</code></td>
-      <td>The transform of a disabled link component.</td>
+      <td><code>--graupl-link-disabled-translink</code></td>
+      <td>The translink of a disabled link component.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
@@ -517,19 +525,19 @@ The following Sass variables can be used to customize the generation of the butt
       <td><code>solid</code></td>
     </tr>
     <tr>
-      <td><code>$link-initial-transform</code></td>
-      <td>The initial transform for the link.</td>
+      <td><code>$link-initial-translink</code></td>
+      <td>The initial translink for the link.</td>
       <td><code>none</code></td>
     </tr>
     <tr>
-      <td><code>$link-final-transform</code></td>
-      <td>The final transform for the link.</td>
-      <td><code>$link-initial-transform</code></td>
+      <td><code>$link-final-translink</code></td>
+      <td>The final translink for the link.</td>
+      <td><code>$link-initial-translink</code></td>
     </tr>
     <tr>
-      <td><code>$link-disabled-transform</code></td>
-      <td>The disabled transform for the link.</td>
-      <td><code>$link-initial-transform</code></td>
+      <td><code>$link-disabled-translink</code></td>
+      <td>The disabled translink for the link.</td>
+      <td><code>$link-initial-translink</code></td>
     </tr>
     <tr>
       <td><code>$link-border-width</code></td>
