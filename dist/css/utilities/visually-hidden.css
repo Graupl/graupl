@@ -1,2 +1,2 @@
-@layer graupl.utilities{.visually-hidden:not(.focusable),.visually-hidden.focusable:not(:focus,:focus-within){clip:rect(0,0,0,0)!important;white-space:nowrap!important;clip-path:inset(50%)!important;border:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;position:absolute!important;overflow:hidden!important}}
+@layer graupl.utilities{.visually-hidden:not(.focusable),.visually-hidden.focusable:not(:focus,:focus-within){clip:rect(0, 0, 0, 0)!important;white-space:nowrap!important;clip-path:inset(50%)!important;border:0!important;width:1px!important;height:1px!important;margin:-1px!important;padding:0!important;position:absolute!important;overflow:hidden!important}}
 /*# sourceMappingURL=visually-hidden.css.map */
