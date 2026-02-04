@@ -71,6 +71,7 @@ import Component from "../Component.js";
  * @property {object[]}                    _listeners                   - Event listeners throughout the alert.
  * @property {string}                      _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                      _key                         - The key used to generate IDs throughout the alert.
+ * @property {string}                      _name                        - The component name of the alert.
  * @property {string}                      _id                          - The main ID of the alert.
  * @property {boolean}                     _valid                       - The validity state of the alert.
  * @property {boolean}                     _initialized                 - The initialized state of the alert.
@@ -81,6 +82,7 @@ class Alert extends Component {
   _protectedDOMElements = ["controller"];
   _hidden = new TransactionalValue(false);
   _storageKey = "alerts";
+  _name = "Alert";
 
   /**
    * Constructs a new `Alert`.

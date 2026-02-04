@@ -226,6 +226,15 @@ class Component {
   _key = "";
 
   /**
+   * The component name of the component.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _name = "Component";
+
+  /**
    * The key used for storage.
    *
    * @protected
@@ -298,7 +307,7 @@ class Component {
     try {
       if (!this._validate()) {
         throw new Error(
-          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
+          `Graupl ${this.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
             .map((error) => error.message)
             .join("\n - ")}`
         );
@@ -619,6 +628,19 @@ class Component {
   }
 
   /**
+   * The component name of the component.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _name
+   */
+  get name() {
+    return this._name;
+  }
+
+  /**
    * The main ID of the component.
    *
    * @readonly
@@ -889,7 +911,7 @@ class Component {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.name}: "${elementType}" is not a valid element type.`
       );
     }
 
@@ -899,7 +921,7 @@ class Component {
       this._protectedDOMElements.includes(elementType)
     ) {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
+        `Graupl ${this.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
       );
     }
 
@@ -943,7 +965,7 @@ class Component {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.name}: "${elementType}" is not a valid element type.`
       );
     }
 
@@ -953,7 +975,7 @@ class Component {
       this._protectedDOMElements.includes(elementType)
     ) {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
+        `Graupl ${this.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
       );
     }
 
@@ -1184,7 +1206,7 @@ class Component {
     isValidType("boolean", { bubbles });
     isValidType("object", { detail });
 
-    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
+    const eventName = `graupl${this.name}${name.charAt(0).toUpperCase()}${name.slice(
       1
     )}`;
 

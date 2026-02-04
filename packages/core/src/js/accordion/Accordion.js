@@ -65,6 +65,7 @@ import Component from "../Component.js";
  * @property {Object<CustomEvent>}                _events                              - Custom events that can be triggered throughout the accordion.
  * @property {string}                             _prefix                              - The prefix used for CSS custom properties and attributes.
  * @property {string}                             _key                                 - The key used to generate IDs throughout the accordion.
+ * @property {string}                             _name                                - The component name of the accordion.
  * @property {string}                             _id                                  - The main ID of the accordion.
  * @property {boolean}                            _valid                               - The validity state of the accordion.
  * @property {boolean}                            _initialized                         - The initialized state of the accordion.
@@ -77,6 +78,7 @@ class Accordion extends Component {
   _collapseAll = true;
   _currentChild = 0;
   _storageKey = "accordions";
+  _name = "Accordion";
 
   /**
    * Constructs a new `Accordion`.

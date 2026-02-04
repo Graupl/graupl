@@ -68,6 +68,7 @@ import Component from "../Component.js";
  * @property {object[]}                    _listeners                   - Event listeners throughout the accordion item.
  * @property {string}                      _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                      _key                         - The key used to generate IDs throughout the accordion item.
+ * @property {string}                      _name                        - The component name of the accordion item.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {string}                      _id                          - The main ID of the accordion item.
  * @property {boolean}                     _valid                       - The validity state of the accordion item.
@@ -79,6 +80,7 @@ class AccordionItem extends Component {
   _protectedDOMElements = ["toggle", "header", "content"];
   _open = new TransactionalValue(false);
   _locked = new TransactionalValue(false);
+  _name = "AccordionItem";
 
   /**
    * Constructs a new AccordionItem.

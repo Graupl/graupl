@@ -157,6 +157,7 @@ import Component from "@graupl/core/src/Component.js";
  * @property {object[]}                             _listeners                   - Event listeners throughout the navigation shelf.
  * @property {string}                               _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                               _key                         - The key used to generate IDs throughout the navigation shelf.
+ * @property {string}                               _name                        - The component name of the navigation shelf.
  * @property {string}                               _id                          - The main ID of the navigation shelf.
  * @property {boolean}                              _valid                       - The validity state of the navigation shelf.
  * @property {boolean}                              _initialized                 - The initialized state of the navigation shelf.
@@ -199,6 +200,7 @@ class NavigationShelf extends Component {
     }
   };
   _storageKey = "navigation-shelves";
+  _name = "NavigationShelf";
 
   /**
    * Constructs a new `NavigationShelf`.
