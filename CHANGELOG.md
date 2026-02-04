@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.39](https://github.com/Graupl/graupl/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2026-02-04)
+
+
+### Features
+
+* **tables:** allow headers and cells to be customized in striped, hover, and highlighted tables ([2c9dfd4](https://github.com/Graupl/graupl/commit/2c9dfd4d770602fbbc40112f91aacb55c8254a03))
+
 ## [1.0.0-beta.38](https://github.com/Graupl/graupl/compare/v1.0.0-beta.37...v1.0.0-beta.38) (2026-01-28)
 
 
