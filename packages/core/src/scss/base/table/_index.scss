@@ -87,11 +87,23 @@
 // | `--graupl-table-header-border-radius`              | The border radius of the table header component (combines top left, top right, bottom right, and bottom left radii). | `var(--graupl-table-header-border-top-left-radius) var(--graupl-table-header-border-top-right-radius) var(--graupl-table-header-border-bottom-right-radius) var(--graupl-table-header-border-bottom-left-radius)` |
 // | `--graupl-table-header-border-color`               | The border colour of the table header component.                                                                     | `var(--graupl-table-border-color)`                                                                                                                                                                                |
 // | `--graupl-table-striped-background`                | The background colour of the striped table component modifier.                                                       | `var(--graupl-theme-active--secondary--200)`                                                                                                                                                                      |
+// | `--graupl-table-cell-striped-background`           | The background colour of striped table cell components.                                                              | `var(--graupl-table-striped-background)`                                                                                                                                                                          |
+// | `--graupl-table-header-striped-background`         | The background colour of striped table header components.                                                            | `var(--graupl-table-striped-background)`                                                                                                                                                                          |
 // | `--graupl-table-striped-color`                     | The text colour of the striped table component modifier.                                                             | `var(--graupl-theme-active--secondary--900)`                                                                                                                                                                      |
+// | `--graupl-table-cell-striped-color`                | The text colour of striped table cell components.                                                                    | `var(--graupl-table-striped-color)`                                                                                                                                                                               |
+// | `--graupl-table-header-striped-color`              | The text colour of striped table header components.                                                                  | `var(--graupl-table-striped-color)`                                                                                                                                                                               |
 // | `--graupl-table-hover-background`                  | The background colour of the hoverable table component modifier.                                                     | `var(--graupl-theme-active--secondary--300)`                                                                                                                                                                      |
+// | `--graupl-table-cell-hover-background`             | The background colour of hoverable table cell components.                                                            | `var(--graupl-table-hover-background)`                                                                                                                                                                            |
+// | `--graupl-table-header-hover-background`           | The background colour of hoverable table header components.                                                          | `var(--graupl-table-hover-background)`                                                                                                                                                                            |
 // | `--graupl-table-hover-color`                       | The text colour of the hoverable table component modifier.                                                           | `var(--graupl-theme-active--secondary--900)`                                                                                                                                                                      |
+// | `--graupl-table-cell-hover-color`                  | The text colour of hoverable table cell components.                                                                  | `var(--graupl-table-hover-color)`                                                                                                                                                                                 |
+// | `--graupl-table-header-hover-color`                | The text colour of hoverable table header components.                                                                | `var(--graupl-table-hover-color)`                                                                                                                                                                                 |
 // | `--graupl-table-highlight-background`              | The background colour of the highlighted table component modifier.                                                   | `var(--graupl-theme-active--secondary--500)`                                                                                                                                                                      |
+// | `--graupl-table-cell-highlight-background`         | The background colour of highlighted table cell components.                                                          | `var(--graupl-table-highlight-background)`                                                                                                                                                                        |
+// | `--graupl-table-header-highlight-background`       | The background colour of highlighted table header components.                                                        | `var(--graupl-table-highlight-background)`                                                                                                                                                                        |
 // | `--graupl-table-highlight-color`                   | The text colour of the highlighted table component modifier.                                                         | `var(--graupl-theme-active--secondary--100)`                                                                                                                                                                      |
+// | `--graupl-table-cell-highlight-color`              | The text colour of highlighted table cell components.                                                                | `var(--graupl-table-highlight-color)`                                                                                                                                                                             |
+// | `--graupl-table-header-highlight-color`            | The text colour of highlighted table header components.                                                              | `var(--graupl-table-highlight-color)`                                                                                                                                                                             |
 //
 // The following sass variables can be used to customize the generation of the table component:
 // | Variable                               | Description                                                                            | Default Value             |
@@ -380,47 +392,79 @@
 
     // &.striped-columns
     &#{defaults.$table-striped-columns-selector-base}#{defaults.$table-striped-columns-selector} {
-      // tbody tr:nth-child(odd) > *
+      // tbody tr:nth-child(odd)
       #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
         #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:nth-child(
           odd
-        )
-        > * {
-        background: $table-striped-background;
-        color: $table-striped-color;
+        ) {
+        // > td
+        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+          background: $table-cell-striped-background;
+          color: $table-cell-striped-color;
+        }
+
+        // > th
+        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+          background: $table-header-striped-background;
+          color: $table-header-striped-color;
+        }
       }
     }
 
     // &.striped-rows
     &#{defaults.$table-striped-rows-selector-base}#{defaults.$table-striped-rows-selector} {
-      // tbody tr > :nth-child(odd)
+      // tbody tr
       #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}
-        > :nth-child(odd) {
-        background: $table-striped-background;
-        color: $table-striped-color;
+        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector} {
+        // > td:nth-child(odd)
+        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector}:nth-child(
+            odd
+          ) {
+          background: $table-cell-striped-background;
+          color: $table-cell-striped-color;
+        }
+
+        // > th:nth-child(odd)
+        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector}:nth-child(
+            odd
+          ) {
+          background: $table-header-striped-background;
+          color: $table-header-striped-color;
+        }
       }
     }
 
     // &.hoverable
     &#{defaults.$table-hoverable-selector-base}#{defaults.$table-hoverable-selector} {
-      // tbody tr:hover > *
+      // tbody tr:hover
       #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:hover
-        > * {
-        background: $table-hover-background;
-        color: $table-hover-color;
+        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:hover {
+        // > td
+        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+          background: $table-cell-hover-background;
+          color: $table-cell-hover-color;
+        }
+
+        // > th
+        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+          background: $table-header-hover-background;
+          color: $table-header-hover-color;
+        }
       }
     }
 
     // &.highlight
     #{defaults.$table-highlight-selector-base}#{defaults.$table-highlight-selector} {
-      --#{root-defaults.$prefix}table-cell-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}table-cell-color: #{$table-highlight-color};
-      --#{root-defaults.$prefix}table-header-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}table-header-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}table-cell-background: #{$table-cell-highlight-background};
+      --#{root-defaults.$prefix}table-cell-color: #{$table-cell-highlight-color};
+      --#{root-defaults.$prefix}table-header-background: #{$table-header-highlight-background};
+      --#{root-defaults.$prefix}table-header-color: #{$table-header-highlight-color};
       --#{root-defaults.$prefix}table-striped-background: #{$table-highlight-background};
       --#{root-defaults.$prefix}table-striped-color: #{$table-highlight-color};
+      --#{root-defaults.$prefix}table-cell-striped-background: #{$table-cell-highlight-background};
+      --#{root-defaults.$prefix}table-cell-striped-color: #{$table-cell-highlight-color};
+      --#{root-defaults.$prefix}table-header-striped-background: #{$table-header-highlight-background};
+      --#{root-defaults.$prefix}table-header-striped-color: #{$table-header-highlight-color};
     }
   }
 }
