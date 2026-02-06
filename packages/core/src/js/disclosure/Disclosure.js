@@ -77,6 +77,7 @@ import Component from "../Component.js";
  * @property {object[]}                    _listeners                   - Event listeners throughout the disclosure.
  * @property {string}                      _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                      _key                         - The key used to generate IDs throughout the disclosure.
+ * @property {string}                      _name                        - The component name of the disclosure.
  * @property {string}                      _id                          - The main ID of the disclosure.
  * @property {boolean}                     _valid                       - The validity state of the disclosure.
  * @property {boolean}                     _initialized                 - The initialized state of the disclosure.
@@ -89,6 +90,7 @@ class Disclosure extends Component {
   _shouldOpen = false;
   _closeOnBlur = false;
   _storageKey = "disclosures";
+  _name = "Disclosure";
   _mediaQueryListEventCallback = (event) => {
     if (event.matches && this.isOpen) {
       this.close({ preserveState: true });

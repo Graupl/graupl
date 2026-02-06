@@ -68,6 +68,7 @@ import Component from "../Component.js";
  * @property {object[]}                           _listeners                          - Event listeners throughout the carousel.
  * @property {string}                             _prefix                             - The prefix used for CSS custom properties and attributes.
  * @property {string}                             _key                                - The key used to generate IDs throughout the carousel.
+ * @property {string}                             _name                               - The component name of the carousel.
  * @property {string}                             _id                                 - The main ID of the carousel.
  * @property {boolean}                            _valid                              - The validity state of the carousel.
  * @property {boolean}                            _initialized                        - The initialized state of the carousel.
@@ -81,6 +82,7 @@ class Carousel extends Component {
   _pauseText = "Pause";
   _currentAction = "next";
   _storageKey = "carousels";
+  _name = "Carousel";
 
   /**
    * Constructs a new `Carousel`.
