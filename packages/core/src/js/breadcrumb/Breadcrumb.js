@@ -94,6 +94,10 @@ class Breadcrumb extends Component {
   _closeOnBlur = false;
   _storageKey = "breadcrumb";
   _mediaQueryListEventCallback = (event) => {
+    if (!this.dom.breadcrumbToggle) {
+      return;
+    }
+
     if (event.matches && this.isOpen) {
       this.close();
     } else {
@@ -163,15 +167,19 @@ class Breadcrumb extends Component {
       () => {
         // Handle auto-opening breadcrumbs with aria-expanded set to true or
         // those that _should_ open.
-        if (
-          (this.dom.toggle &&
-            this.dom.toggle.getAttribute("aria-expanded") === "true") ||
-          (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
-        ) {
-          this._expand({ emit: false, transition: false });
-        } else {
-          this._collapse({ emit: false, transition: false });
-        }
+        requestAnimationFrame(() => {
+          if (this.dom.breadcrumbToggle) {
+            if (
+              this.dom.breadcrumbToggle.getAttribute("aria-expanded") ===
+                "true" ||
+              (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
+            ) {
+              this._expand({ emit: false, transition: false });
+            } else {
+              this._collapse({ emit: false, transition: false });
+            }
+          }
+        });
       }
     );
 
@@ -649,6 +657,10 @@ class Breadcrumb extends Component {
    * - Adds a `click` listener to the `document` so if the user clicks outside the breadcrumb it will close.
    */
   _handleClick() {
+    if (!this.dom.breadcrumbToggle) {
+      return;
+    }
+
     this._addEventListener("click", this.dom.breadcrumbToggle, (event) => {
       this.currentEvent = "mouse";
 
@@ -683,6 +695,10 @@ class Breadcrumb extends Component {
    *   - Blocks propagation on "Escape" keys.
    */
   _handleKeydown() {
+    if (!this.dom.breadcrumbToggle) {
+      return;
+    }
+
     this._addEventListener("keydown", this.dom.breadcrumbToggle, (event) => {
       this.currentEvent = "keyboard";
 
@@ -720,6 +736,10 @@ class Breadcrumb extends Component {
    *   - Closes the breadcrumb on "Escape" keys.
    */
   _handleKeyup() {
+    if (!this.dom.breadcrumbToggle) {
+      return;
+    }
+
     this._addEventListener("keyup", this.dom.breadcrumbToggle, (event) => {
       this.currentEvent = "keyboard";
 

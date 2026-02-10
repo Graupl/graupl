@@ -1,0 +1,54 @@
+// @graupl/core breadcrumb component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Breadcrumb selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
+$breadcrumb-selector-base: $selector-base !default;
+$breadcrumb-selector: "breadcrumb" !default;
+$breadcrumb-theme-selector-base: $modifier-selector-base !default;
+$breadcrumb-theme-selector-prefix: "" !default;
+$breadcrumb-item-selector-base: $selector-base !default;
+$breadcrumb-item-selector: "breadcrumb-item" !default;
+$breadcrumb-link-selector-base: $selector-base !default;
+$breadcrumb-link-selector: "breadcrumb-link" !default;
+
+// List item properties.
+$breadcrumb-link-intial-transform: none !default;
+$breadcrumb-link-final-transform: $breadcrumb-item-initial-transform !default;
+$breadcrumb-link-disabled-transform: $breadcrumb-item-initial-transform !default;
+
+// List state theme defaults.
+// This map defines the default colour shades applied to themed lists.
+// All theme variants will only adjust the colour and border colour of the list
+// container and items.
+$-breadcrumb-theme-mappings: (
+  color: 900,
+);
+$breadcrumb-theme-mappings: () !default;
+
+// Merge the custom list theme map with the default one.
+@if $generate-base-theme-map {
+  $breadcrumb-theme-mappings: map.merge(
+    $-breadcrumb-theme-mappings,
+    $breadcrumb-theme-mappings
+  );
+}
+
+$-breadcrumb-theme-map: theme.generate-property-map($breadcrumb-theme-mappings);
+$breadcrumb-theme-map: () !default;
+$breadcrumb-theme-map: map.deep-merge(
+  $-breadcrumb-theme-map,
+  $breadcrumb-theme-map
+);

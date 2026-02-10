@@ -1,0 +1,724 @@
+// @graupl/core list component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+// Custom property defaults:
+// | Custom property                               | Default                                                                                                                                                                                             |
+// | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-breadcrumb-padding-x                       | var(--graupl-spacer-0)                                                                                                                                                                              |
+// | --graupl-breadcrumb-padding-y                       | var(--graupl-spacer-0)                                                                                                                                                                              |
+// | --graupl-breadcrumb-padding                         | var(--graupl-breadcrumb-padding-y) var(--graupl-breadcrumb-padding-x)                                                                                                                                           |
+// | --graupl-breadcrumb-margin-x                        | var(--graupl-spacer-0)                                                                                                                                                                              |
+// | --graupl-breadcrumb-margin-y                        | var(--graupl-spacer-0)                                                                                                                                                                              |
+// | --graupl-breadcrumb-margin                          | var(--graupl-breadcrumb-margin-y) var(--graupl-breadcrumb-margin-x)                                                                                                                                             |
+// | --graupl-breadcrumb-column-gap                      | var(--graupl-spacer-2)                                                                                                                                                                              |
+// | --graupl-breadcrumb-row-gap                         | var(--graupl-spacer-2)                                                                                                                                                                              |
+// | --graupl-breadcrumb-gap                             | var(--graupl-breadcrumb-column-gap) var(--graupl-breadcrumb-row-gap)                                                                                                                                            |
+// | --graupl-breadcrumb-background                      | var(--graupl-background)                                                                                                                                                                            |
+// | --graupl-breadcrumb-color                           | var(--graupl-color)                                                                                                                                                                                 |
+// | --graupl-breadcrumb-border-color                    | var(--graupl-breadcrumb-color)                                                                                                                                                                            |
+// | --graupl-breadcrumb-border-top-left-radius          | var(--graupl-border-top-left-radius)                                                                                                                                                                |
+// | --graupl-breadcrumb-border-top-right-radius         | var(--graupl-border-top-right-radius)                                                                                                                                                               |
+// | --graupl-breadcrumb-border-bottom-left-radius       | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
+// | --graupl-breadcrumb-border-bottom-right-radius      | var(--graupl-border-bottom-right-radius)                                                                                                                                                            |
+// | --graupl-breadcrumb-border-radius                   | var(--graupl-breadcrumb-border-top-left-radius) var(--graupl-breadcrumb-border-top-right-radius) var(--graupl-breadcrumb-border-bottom-right-radius) var(--graupl-breadcrumb-border-bottom-left-radius)                     |
+// | --graupl-breadcrumb-border-top-width                | 0                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-right-width              | 0                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-bottom-width             | 0                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-left-width               | 0                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-width                    | var(--graupl-breadcrumb-border-top-width) var(--graupl-breadcrumb-border-right-width) var(--graupl-breadcrumb-border-bottom-width) var(--graupl-breadcrumb-border-left-width)                                               |
+// | --graupl-breadcrumb-border-top-style                | var(--graupl-border-top-style)                                                                                                                                                                      |
+// | --graupl-breadcrumb-border-right-style              | var(--graupl-border-right-style)                                                                                                                                                                    |
+// | --graupl-breadcrumb-border-bottom-style             | var(--graupl-border-bottom-style)                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-left-style               | var(--graupl-border-left-style)                                                                                                                                                                     |
+// | --graupl-breadcrumb-border-style                    | var(--graupl-breadcrumb-border-top-style) var(--graupl-breadcrumb-border-right-style) var(--graupl-breadcrumb-border-bottom-style) var(--graupl-breadcrumb-border-left-style)                                               |
+// | --graupl-breadcrumb-item-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                                              |
+// | --graupl-breadcrumb-item-padding-y                  | var(--graupl-spacer-3)                                                                                                                                                                              |
+// | --graupl-breadcrumb-item-padding                    | var(--graupl-breadcrumb-item-padding-y) var(--graupl-breadcrumb-item-padding-x)                                                                                                                                 |
+// | --graupl-breadcrumb-item-transition                 | transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                                           |
+// | --graupl-breadcrumb-item-transition-reduced-motion  | none                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-transform                  | none                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-hover-transform            | none                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-background                 | var(--graupl-background)                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-color                      | var(--graupl-color)                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-border-color               | var(--graupl-breadcrumb-item-color)                                                                                                                                                                       |
+// | --graupl-breadcrumb-item-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                |
+// | --graupl-breadcrumb-item-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                                               |
+// | --graupl-breadcrumb-item-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
+// | --graupl-breadcrumb-item-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                                            |
+// | --graupl-breadcrumb-item-border-radius              | var(--graupl-breadcrumb-item-border-top-left-radius) var(--graupl-breadcrumb-item-border-top-right-radius) var(--graupl-breadcrumb-item-border-bottom-right-radius) var(--graupl-breadcrumb-item-border-bottom-left-radius) |
+// | --graupl-breadcrumb-item-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                                      |
+// | --graupl-breadcrumb-item-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                                    |
+// | --graupl-breadcrumb-item-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                                     |
+// | --graupl-breadcrumb-item-border-width               | var(--graupl-breadcrumb-item-border-top-width) var(--graupl-breadcrumb-item-border-right-width) var(--graupl-breadcrumb-item-border-bottom-width) var(--graupl-breadcrumb-item-border-left-width)                           |
+// | --graupl-breadcrumb-item-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                                      |
+// | --graupl-breadcrumb-item-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                                    |
+// | --graupl-breadcrumb-item-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                                     |
+// | --graupl-breadcrumb-item-border-style               | var(--graupl-breadcrumb-item-border-top-style) var(--graupl-breadcrumb-item-border-right-style) var(--graupl-breadcrumb-item-border-bottom-style) var(--graupl-breadcrumb-item-border-left-style)                           |
+
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../variables" as root-variables;
+@use "defaults";
+@use "sass:map";
+
+// List properties.
+// --graupl-breadcrumb-padding-x
+$breadcrumb-padding-x: var(
+  --#{root-defaults.$prefix}breadcrumb-padding-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-breadcrumb-padding-y
+$breadcrumb-padding-y: var(
+  --#{root-defaults.$prefix}breadcrumb-padding-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-breadcrumb-padding
+$breadcrumb-padding: var(
+  --#{root-defaults.$prefix}breadcrumb-padding,
+  #{$breadcrumb-padding-y} #{$breadcrumb-padding-x}
+);
+
+// --graupl-breadcrumb-margin-x
+$breadcrumb-margin-x: var(
+  --#{root-defaults.$prefix}breadcrumb-margin-x,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-breadcrumb-margin-y
+$breadcrumb-margin-y: var(
+  --#{root-defaults.$prefix}breadcrumb-margin-y,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-breadcrumb-margin
+$breadcrumb-margin: var(
+  --#{root-defaults.$prefix}breadcrumb-margin,
+  #{$breadcrumb-margin-y} #{$breadcrumb-margin-x}
+);
+
+// List gap properties.
+// --graupl-breadcrumb-column-gap
+$breadcrumb-column-gap: var(
+  --#{root-defaults.$prefix}breadcrumb-column-gap,
+  #{map.get(root-variables.$spacers, 2)}
+);
+
+// --graupl-breadcrumb-row-gap
+$breadcrumb-row-gap: var(
+  --#{root-defaults.$prefix}breadcrumb-row-gap,
+  #{map.get(root-variables.$spacers, 2)}
+);
+
+// --graupl-breadcrumb-gap
+$breadcrumb-gap: var(
+  --#{root-defaults.$prefix}breadcrumb-gap,
+  #{$breadcrumb-column-gap} #{$breadcrumb-row-gap}
+);
+
+// List color properties.
+// --graupl-breadcrumb-background
+$breadcrumb-background: var(
+  --#{root-defaults.$prefix}breadcrumb-background,
+  #{color.$background}
+);
+
+// --graupl-breadcrumb-color
+$breadcrumb-color: var(
+  --#{root-defaults.$prefix}breadcrumb-color,
+  #{color.$color}
+);
+
+// List border-properties.
+// --graupl-breadcrumb-border-color
+$breadcrumb-border-color: var(
+  --#{root-defaults.$prefix}breadcrumb-border-color,
+  #{$breadcrumb-color}
+);
+
+// --graupl-breadcrumb-border-top-left-radius
+$breadcrumb-border-top-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-breadcrumb-border-top-right-radius
+$breadcrumb-border-top-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-breadcrumb-border-bottom-left-radius
+$breadcrumb-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-border-bottom-right-radius
+$breadcrumb-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-breadcrumb-border-radius
+$breadcrumb-border-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-border-radius,
+  #{$breadcrumb-border-top-left-radius} #{$breadcrumb-border-top-right-radius}
+    #{$breadcrumb-border-bottom-right-radius}
+    #{$breadcrumb-border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-border-top-width
+$breadcrumb-border-top-width: var(
+  --#{root-defaults.$prefix}breadcrumb-border-top-width,
+  0
+);
+
+// --graupl-breadcrumb-border-right-width
+$breadcrumb-border-right-width: var(
+  --#{root-defaults.$prefix}breadcrumb-border-right-width,
+  0
+);
+
+// --graupl-breadcrumb-border-bottom-width
+$breadcrumb-border-bottom-width: var(
+  --#{root-defaults.$prefix}breadcrumb-border-bottom-width,
+  0
+);
+
+// --graupl-breadcrumb-border-left-width
+$breadcrumb-border-left-width: var(
+  --#{root-defaults.$prefix}breadcrumb-border-left-width,
+  0
+);
+
+// --graupl-breadcrumb-border-width
+$breadcrumb-border-width: var(
+  --#{root-defaults.$prefix}breadcrumb-border-width,
+  #{$breadcrumb-border-top-width} #{$breadcrumb-border-right-width}
+    #{$breadcrumb-border-bottom-width} #{$breadcrumb-border-left-width}
+);
+
+// --graupl-breadcrumb-border-top-style
+$breadcrumb-border-top-style: var(
+  --#{root-defaults.$prefix}breadcrumb-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-breadcrumb-border-right-style
+$breadcrumb-border-right-style: var(
+  --#{root-defaults.$prefix}breadcrumb-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-breadcrumb-border-bottom-style
+$breadcrumb-border-bottom-style: var(
+  --#{root-defaults.$prefix}breadcrumb-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-breadcrumb-border-left-style
+$breadcrumb-border-left-style: var(
+  --#{root-defaults.$prefix}breadcrumb-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-breadcrumb-border-style
+$breadcrumb-border-style: var(
+  --#{root-defaults.$prefix}breadcrumb-border-style,
+  #{$breadcrumb-border-top-style} #{$breadcrumb-border-right-style}
+    #{$breadcrumb-border-bottom-style} #{$breadcrumb-border-left-style}
+);
+
+// --graupl-breadcrumb-link-padding-x
+$breadcrumb-link-padding-x: var(
+  --#{root-defaults.$prefix}breadcrumb-link-padding-x,
+  0
+);
+
+// --graupl-breadcrumb-link-padding-y
+$breadcrumb-link-padding-y: var(
+  --#{root-defaults.$prefix}breadcrumb-link-padding-y,
+  0
+);
+
+// --graupl-breadcrumb-link-padding
+$breadcrumb-link-padding: var(
+  --#{root-defaults.$prefix}breadcrumb-link-padding,
+  #{$breadcrumb-link-padding-y} #{$breadcrumb-link-padding-x}
+);
+
+// --graupl-breadcrumb-link-transition-duration
+$breadcrumb-link-transition-duration: var(
+  --#{root-defaults.$prefix}breadcrumb-link-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+
+// --graupl-breadcrumb-link-transition-timing-function
+$breadcrumb-link-transition-timing-function: var(
+  --#{root-defaults.$prefix}breadcrumb-link-transition-timing-function,
+  #{root-variables.$transition-timing-function}
+);
+
+// --graupl-breadcrumb-link-transition
+$breadcrumb-link-transition: var(
+  --#{root-defaults.$prefix}breadcrumb-link-transition,
+  transform #{$breadcrumb-link-transition-duration}
+    #{$breadcrumb-link-transition-timing-function}
+);
+
+// --graupl-breadcrumb-link-transition-reduced-motion
+$breadcrumb-link-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}breadcrumb-link-transition-reduced-motion,
+  none
+);
+
+// --graupl-breadcrumb-link-transform
+$breadcrumb-link-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-transform,
+  #{defaults.$breadcrumb-link-initial-transform}
+);
+
+// --graupl-breadcrumb-link-visited-transform
+$breadcrumb-link-visited-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-visited-transform,
+  #{$breadcrumb-link-transform}
+);
+
+// --graupl-breadcrumb-link-focus-transform
+$breadcrumb-link-focus-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-focus-transform,
+  #{$breadcrumb-link-transform}
+);
+
+// --graupl-breadcrumb-link-hover-transform
+$breadcrumb-link-hover-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-hover-transform,
+  #{$breadcrumb-link-transform}
+);
+
+// --graupl-breadcrumb-link-active-transform
+$breadcrumb-link-active-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-active-transform,
+  #{defaults.$breadcrumb-link-final-transform}
+);
+
+// --graupl-breadcrumb-link-disabled-transform
+$breadcrumb-link-disabled-transform: var(
+  --#{root-defaults.$prefix}breadcrumb-link-disabled-transform,
+  #{defaults.$breadcrumb-link-disabled-transform}
+);
+$breadcrumb-link-transform-states: (
+  _default: $breadcrumb-link-transform,
+  visited: $breadcrumb-link-visited-transform,
+  focus: $breadcrumb-link-focus-transform,
+  hover: $breadcrumb-link-hover-transform,
+  active: $breadcrumb-link-active-transform,
+  disabled: $breadcrumb-link-disabled-transform,
+);
+
+// --graupl-breadcrumb-link-color
+$breadcrumb-link-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-color,
+  #{$breadcrumb-color}
+);
+
+// --graupl-breadcrumb-link-visited-color
+$breadcrumb-link-visited-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-visited-color,
+  #{$breadcrumb-link-color}
+);
+
+// --graupl-breadcrumb-link-focus-color
+$breadcrumb-link-focus-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-focus-color,
+  #{$breadcrumb-link-color}
+);
+
+// --graupl-breadcrumb-link-hover-color
+$breadcrumb-link-hover-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-hover-color,
+  #{$accordion-background}
+);
+
+// --graupl-breadcrumb-link-active-color
+$breadcrumb-link-active-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-active-color,
+  #{$breadcrumb-link-hover-color}
+);
+
+// --graupl-breadcrumb-link-disabled-color
+$breadcrumb-link-disabled-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$breadcrumb-link-color-states: (
+  default: $breadcrumb-link-color,
+  visited: $breadcrumb-link-visited-color,
+  focus: $breadcrumb-link-focus-color,
+  hover: $breadcrumb-link-hover-color,
+  active: $breadcrumb-link-active-color,
+  disabled: $breadcrumb-link-disabled-color,
+);
+
+// --graupl-breadcrumb-link-background
+$breadcrumb-link-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-background,
+  #{$accordion-link-background}
+);
+
+// --graupl-breadcrumb-link-visited-background
+$breadcrumb-link-visited-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-visited-background,
+  #{$breadcrumb-link-background}
+);
+
+// --graupl-breadcrumb-link-focus-background
+$breadcrumb-link-focus-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-focus-background,
+  #{$breadcrumb-link-background}
+);
+
+// --graupl-breadcrumb-link-hover-background
+$breadcrumb-link-hover-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-hover-background,
+  #{$accordion-background}
+);
+
+// --graupl-breadcrumb-link-active-background
+$breadcrumb-link-active-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-active-background,
+  #{$breadcrumb-link-hover-background}
+);
+
+// --graupl-breadcrumb-link-disabled-background
+$breadcrumb-link-disabled-background: var(
+  --#{root-defaults.$prefix}breadcrumb-link-disabled-background,
+  #{theme.get(primary, 200)}
+);
+$breadcrumb-link-background-states: (
+  default: $breadcrumb-link-background,
+  visited: $breadcrumb-link-visited-background,
+  focus: $breadcrumb-link-focus-background,
+  hover: $breadcrumb-link-hover-background,
+  active: $breadcrumb-link-active-background,
+  disabled: $breadcrumb-link-disabled-background,
+);
+
+// --graupl-breadcrumb-link-border-color
+$breadcrumb-link-border-color: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-color,
+  #{$breadcrumb-link-color}
+);
+
+// --graupl-breadcrumb-link-border-top-left-radius
+$breadcrumb-link-border-top-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-breadcrumb-link-border-top-right-radius
+$breadcrumb-link-border-top-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-breadcrumb-link-border-bottom-left-radius
+$breadcrumb-link-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-link-border-bottom-right-radius
+$breadcrumb-link-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-breadcrumb-link-border-radius
+$breadcrumb-link-border-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-radius,
+  #{$breadcrumb-link-border-top-left-radius}
+    #{$breadcrumb-link-border-top-right-radius}
+    #{$breadcrumb-link-border-bottom-right-radius}
+    #{$breadcrumb-link-border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-link-border-top-width
+$breadcrumb-link-border-top-width: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-breadcrumb-link-border-right-width
+$breadcrumb-link-border-right-width: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-breadcrumb-link-border-bottom-width
+$breadcrumb-link-border-bottom-width: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-breadcrumb-link-border-left-width
+$breadcrumb-link-border-left-width: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-breadcrumb-link-border-width
+$breadcrumb-link-border-width: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-width,
+  #{$breadcrumb-link-border-top-width} #{$breadcrumb-link-border-right-width}
+    #{$breadcrumb-link-border-bottom-width}
+    #{$breadcrumb-link-border-left-width}
+);
+
+// --graupl-breadcrumb-link-border-top-style
+$breadcrumb-link-border-top-style: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-breadcrumb-link-border-right-style
+$breadcrumb-link-border-right-style: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-breadcrumb-link-border-bottom-style
+$breadcrumb-link-border-bottom-style: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-breadcrumb-link-border-left-style
+$breadcrumb-link-border-left-style: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-breadcrumb-link-border-style
+$breadcrumb-link-border-style: var(
+  --#{root-defaults.$prefix}breadcrumb-link-border-style,
+  #{$breadcrumb-link-border-top-style} #{$breadcrumb-link-border-right-style}
+    #{$breadcrumb-link-border-bottom-style}
+    #{$breadcrumb-link-border-left-style}
+);
+
+// --graupl-breadcrumb-item-padding-x
+$breadcrumb-item-padding-x: var(
+  --#{root-defaults.$prefix}breadcrumb-item-padding-x,
+  0
+);
+
+// --graupl-breadcrumb-item-padding-y
+$breadcrumb-item-padding-y: var(
+  --#{root-defaults.$prefix}breadcrumb-item-padding-y,
+  0
+);
+
+// --graupl-breadcrumb-item-padding
+$breadcrumb-item-padding: var(
+  --#{root-defaults.$prefix}breadcrumb-item-padding,
+  #{$breadcrumb-item-padding-y} #{$breadcrumb-item-padding-x}
+);
+
+// --graupl-breadcrumb-item-color
+$breadcrumb-item-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-color,
+  #{$breadcrumb-color}
+);
+
+// --graupl-breadcrumb-item-visited-color
+$breadcrumb-item-visited-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-visited-color,
+  #{$breadcrumb-item-color}
+);
+
+// --graupl-breadcrumb-item-focus-color
+$breadcrumb-item-focus-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-focus-color,
+  #{$breadcrumb-item-color}
+);
+
+// --graupl-breadcrumb-item-hover-color
+$breadcrumb-item-hover-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-hover-color,
+  #{$accordion-background}
+);
+
+// --graupl-breadcrumb-item-active-color
+$breadcrumb-item-active-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-active-color,
+  #{$breadcrumb-item-hover-color}
+);
+
+// --graupl-breadcrumb-item-disabled-color
+$breadcrumb-item-disabled-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$breadcrumb-item-color-states: (
+  default: $breadcrumb-item-color,
+  visited: $breadcrumb-item-visited-color,
+  focus: $breadcrumb-item-focus-color,
+  hover: $breadcrumb-item-hover-color,
+  active: $breadcrumb-item-active-color,
+  disabled: $breadcrumb-item-disabled-color,
+);
+
+// --graupl-breadcrumb-item-background
+$breadcrumb-item-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-background,
+  #{$breadcrumb-background}
+);
+
+// --graupl-breadcrumb-item-visited-background
+$breadcrumb-item-visited-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-visited-background,
+  #{$breadcrumb-item-background}
+);
+
+// --graupl-breadcrumb-item-focus-background
+$breadcrumb-item-focus-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-focus-background,
+  #{$breadcrumb-item-background}
+);
+
+// --graupl-breadcrumb-item-hover-background
+$breadcrumb-item-hover-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-hover-background,
+  #{$accordion-background}
+);
+
+// --graupl-breadcrumb-item-active-background
+$breadcrumb-item-active-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-active-background,
+  #{$breadcrumb-item-hover-background}
+);
+
+// --graupl-breadcrumb-item-disabled-background
+$breadcrumb-item-disabled-background: var(
+  --#{root-defaults.$prefix}breadcrumb-item-disabled-background,
+  #{theme.get(primary, 200)}
+);
+$breadcrumb-item-background-states: (
+  default: $breadcrumb-item-background,
+  visited: $breadcrumb-item-visited-background,
+  focus: $breadcrumb-item-focus-background,
+  hover: $breadcrumb-item-hover-background,
+  active: $breadcrumb-item-active-background,
+  disabled: $breadcrumb-item-disabled-background,
+);
+
+// List item border-properties.
+// --graupl-breadcrumb-item-border-color
+$breadcrumb-item-border-color: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-color,
+  #{$breadcrumb-item-color}
+);
+
+// --graupl-breadcrumb-item-border-top-left-radius
+$breadcrumb-item-border-top-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-breadcrumb-item-border-top-right-radius
+$breadcrumb-item-border-top-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-breadcrumb-item-border-bottom-left-radius
+$breadcrumb-item-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-item-border-bottom-right-radius
+$breadcrumb-item-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-breadcrumb-item-border-radius
+$breadcrumb-item-border-radius: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-radius,
+  #{$breadcrumb-item-border-top-left-radius}
+    #{$breadcrumb-item-border-top-right-radius}
+    #{$breadcrumb-item-border-bottom-right-radius}
+    #{$breadcrumb-item-border-bottom-left-radius}
+);
+
+// --graupl-breadcrumb-item-border-top-width
+$breadcrumb-item-border-top-width: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-breadcrumb-item-border-right-width
+$breadcrumb-item-border-right-width: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-breadcrumb-item-border-bottom-width
+$breadcrumb-item-border-bottom-width: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-breadcrumb-item-border-left-width
+$breadcrumb-item-border-left-width: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-breadcrumb-item-border-width
+$breadcrumb-item-border-width: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-width,
+  #{$breadcrumb-item-border-top-width} #{$breadcrumb-item-border-right-width}
+    #{$breadcrumb-item-border-bottom-width}
+    #{$breadcrumb-item-border-left-width}
+);
+
+// --graupl-breadcrumb-item-border-top-style
+$breadcrumb-item-border-top-style: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-breadcrumb-item-border-right-style
+$breadcrumb-item-border-right-style: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-breadcrumb-item-border-bottom-style
+$breadcrumb-item-border-bottom-style: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-breadcrumb-item-border-left-style
+$breadcrumb-item-border-left-style: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-breadcrumb-item-border-style
+$breadcrumb-item-border-style: var(
+  --#{root-defaults.$prefix}breadcrumb-item-border-style,
+  #{$breadcrumb-item-border-top-style} #{$breadcrumb-item-border-right-style}
+    #{$breadcrumb-item-border-bottom-style}
+    #{$breadcrumb-item-border-left-style}
+);
