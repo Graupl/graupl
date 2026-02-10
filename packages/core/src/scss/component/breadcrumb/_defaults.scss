@@ -21,15 +21,17 @@ $breadcrumb-theme-selector-base: $modifier-selector-base !default;
 $breadcrumb-theme-selector-prefix: "" !default;
 $breadcrumb-item-selector-base: $selector-base !default;
 $breadcrumb-item-selector: "breadcrumb-item" !default;
+$breadcrumb-item-separator-pseudo-selector: "after" !default;
 $breadcrumb-link-selector-base: $selector-base !default;
 $breadcrumb-link-selector: "breadcrumb-link" !default;
 
-// List item properties.
-$breadcrumb-link-intial-transform: none !default;
-$breadcrumb-link-final-transform: $breadcrumb-item-initial-transform !default;
-$breadcrumb-link-disabled-transform: $breadcrumb-item-initial-transform !default;
+// Breadcrumb link properties.
+$breadcrumb-link-initial-transform: none !default;
+$breadcrumb-link-final-transform: $breadcrumb-link-initial-transform !default;
+$breadcrumb-link-disabled-transform: $breadcrumb-link-initial-transform !default;
+$breadcrumb-item-separator: "'/'" !default;
 
-// List state theme defaults.
+// Breadcrumb state theme defaults.
 // This map defines the default colour shades applied to themed lists.
 // All theme variants will only adjust the colour and border colour of the list
 // container and items.
