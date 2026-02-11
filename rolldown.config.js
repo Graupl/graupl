@@ -57,6 +57,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/breadcrumb/index.js",
+    output: {
+      file: `dist/js/breadcrumb.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/carousel/index.js",
     output: {
       file: `dist/js/carousel.js`,
@@ -135,6 +145,28 @@ export default defineConfig([
       file: `dist/js/generator/alert.${format}.js`,
       format,
       name: "AlertGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/breadcrumb/Breadcrumb.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/breadcrumb.${format}.js`,
+      format,
+      name: "Breadcrumb",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/breadcrumb/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/breadcrumb.${format}.js`,
+      format,
+      name: "BreadcrumbGenerator",
       sourcemap: true,
     })),
     platform: "browser",
