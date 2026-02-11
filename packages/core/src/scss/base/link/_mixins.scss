@@ -1,0 +1,81 @@
+// @graupl/core link base mixins.
+
+@use "../../defaults" as root-defaults;
+@use "../../mixins/animation";
+@use "../../mixins/state";
+@use "../../mixins/theme";
+@use "defaults";
+@use "variables" as *;
+
+/// Mixin to apply base styles for links.
+@mixin apply-base() {
+  min-width: $link-min-width;
+  min-height: $link-min-height;
+  padding: $link-padding;
+  transform: $link-transform;
+  transition: $link-transition;
+  border-width: $link-border-width;
+  border-style: $link-border-style;
+  border-radius: $link-border-radius;
+  text-decoration: $link-text-decoration;
+  text-decoration-style: $link-text-decoration-style;
+  text-decoration-thickness: $link-text-decoration-thickness;
+
+  @include state.generate-modifiers(
+    (
+      transform: $link-transform-states,
+      text-decoration: $link-text-decoration-states,
+      text-decoration-style: $link-text-decoration-style-states,
+      text-decoration-thickness: $link-text-decoration-thickness-states,
+    )
+  );
+
+  @include animation.off {
+    transition: #{$link-transition-reduced-motion};
+  }
+}
+
+/// Mixin to apply theme styles for links.
+@mixin apply-theme() {
+  border-color: $link-border-color;
+  background: $link-background;
+  color: $link-color;
+  text-decoration-color: $link-text-decoration-color;
+
+  @if root-defaults.$themeable-components and defaults.$themeable {
+    @include theme.generate-modifiers(
+      defaults.$link-theme-map,
+      defaults.$link-theme-prefix-selector-base,
+      defaults.$link-theme-prefix-selector,
+      "link-"
+    );
+  }
+
+  @include state.generate-modifiers(
+    (
+      border-color: $link-border-color-states,
+      background: $link-background-states,
+      color: $link-color-states,
+      text-decoration-color: $link-text-decoration-color-states,
+    )
+  );
+}
+
+/// Mixin to apply stretched link styles.
+@mixin apply-stretched() {
+  isolation: isolate;
+
+  // &::after
+  &::#{defaults.$stretched-link-pseudo-selector} {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: $stretched-link-z-index;
+  }
+}
+
+/// Mixin to apply all link styles.
+@mixin apply() {
+  @include apply-base;
+  @include apply-theme;
+}
