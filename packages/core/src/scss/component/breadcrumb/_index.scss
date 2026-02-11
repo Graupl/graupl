@@ -136,6 +136,7 @@
 @use "../../mixins/animation";
 @use "../../mixins/layer" as *;
 @use "../../mixins/theme" as theme;
+@use "../../base/link/mixins" as link-mixins;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
@@ -152,6 +153,34 @@
     border-radius: $breadcrumb-border-radius;
     list-style: none;
     gap: $breadcrumb-gap;
+
+    // &,
+    // &.show
+    &,
+    &#{defaults.$breadcrumb-open-selector-base}#{defaults.$breadcrumb-open-selector} {
+      // .breadcrumb-item:has(.breadcrumb-toggle)
+      #{defaults.$breadcrumb-item-selector-base}#{defaults.$breadcrumb-item-selector}:has(
+          .breadcrumb-toggle
+        ) {
+        display: none;
+      }
+    }
+
+    // &.hide
+    &#{defaults.$breadcrumb-close-selector-base}#{defaults.$breadcrumb-close-selector} {
+      // .breadcrumb-item
+      #{defaults.$breadcrumb-item-selector-base}#{defaults.$breadcrumb-item-selector}:has(
+          #{defaults.$breadcrumb-toggle-selector-base}#{defaults.$breadcrumb-toggle-selector}
+        ) {
+        display: flex;
+
+        ~ #{defaults.$breadcrumb-item-selector-base}#{defaults.$breadcrumb-item-selector}:not(
+            :last-child
+          ) {
+          display: none;
+        }
+      }
+    }
   }
 
   // .breadcrumb-item
@@ -168,6 +197,12 @@
       content: $breadcrumb-item-separator;
       display: block;
     }
+
+    &:has(
+      #{defaults.$breadcrumb-toggle-selector-base}#{defaults.$breadcrumb-toggle-selector}
+    ) {
+      display: none;
+    }
   }
 
   // .breadcrumb-link
@@ -176,6 +211,16 @@
     border-width: $breadcrumb-link-border-width;
     border-style: $breadcrumb-link-border-style;
     border-radius: $breadcrumb-link-border-radius;
+  }
+
+  // .breadcrumb-toggle
+  #{defaults.$breadcrumb-toggle-selector-base}#{defaults.$breadcrumb-toggle-selector} {
+    @include link-mixins.apply-base;
+
+    padding: $breadcrumb-toggle-padding;
+    border-width: $breadcrumb-toggle-border-width;
+    border-style: $breadcrumb-toggle-border-style;
+    border-radius: $breadcrumb-toggle-border-radius;
   }
 }
 
@@ -215,5 +260,14 @@
     border-color: $breadcrumb-link-border-color;
     background: $breadcrumb-link-background;
     color: $breadcrumb-link-color;
+  }
+
+  // .breadcrumb-toggle
+  #{defaults.$breadcrumb-toggle-selector-base}#{defaults.$breadcrumb-toggle-selector} {
+    @include link-mixins.apply-theme;
+
+    border-color: $breadcrumb-toggle-border-color;
+    background: $breadcrumb-toggle-background;
+    color: $breadcrumb-toggle-color;
   }
 }

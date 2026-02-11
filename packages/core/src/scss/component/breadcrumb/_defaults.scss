@@ -22,8 +22,16 @@ $breadcrumb-theme-selector-prefix: "" !default;
 $breadcrumb-item-selector-base: $selector-base !default;
 $breadcrumb-item-selector: "breadcrumb-item" !default;
 $breadcrumb-item-separator-pseudo-selector: "after" !default;
+$breadcrumb-toggle-selector-base: $selector-base !default;
+$breadcrumb-toggle-selector: "breadcrumb-toggle" !default;
 $breadcrumb-link-selector-base: $selector-base !default;
 $breadcrumb-link-selector: "breadcrumb-link" !default;
+$breadcrumb-open-selector-base: $modifier-selector-base !default;
+$breadcrumb-open-selector: "show" !default;
+$breadcrumb-close-selector-base: $modifier-selector-base !default;
+$breadcrumb-close-selector: "hide" !default;
+$breadcrumb-transition-selector-base: $modifier-selector-base !default;
+$breadcrumb-transition-selector: "transitioning" !default;
 
 // Breadcrumb link properties.
 $breadcrumb-link-initial-transform: none !default;
