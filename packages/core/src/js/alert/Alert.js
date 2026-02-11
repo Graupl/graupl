@@ -57,6 +57,7 @@ import Component from "../Component.js";
  * @property {grauplAlertShow}             _events.show                 - The event triggered when the alert is shown.
  * @property {grauplAlertHide}             _events.hide                 - The event triggered when the alert is hidden.
  * @property {string}                      _storageKey                  - The key used for storage.
+ * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the alert.
  * @property {Object<Alert>}               _elements                    - The instantiated elements within the alert.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the alert.

@@ -65,6 +65,7 @@ import Component from "../Component.js";
  * @property {string}                    _prefix                       - The prefix used for CSS custom properties and attributes.
  * @property {string}                    _key                          - The key used to generate IDs throughout the tab toggle.
  * @property {string}                    _storageKey                   - The key used for storage.
+ * @property {boolean}                   _shouldStore                  - A flag to check if the component should be stored in the StorageManager.
  * @property {string}                    _id                           - The main ID of the tab toggle.
  * @property {boolean}                   _valid                        - The validity state of the tab toggle.
  * @property {boolean}                   _initialized                  - The initialized state of the tab toggle.
@@ -73,6 +74,8 @@ import Component from "../Component.js";
 class TabToggle extends Component {
   _rootDOMElement = "toggle";
   _protectedDOMElements = ["content"];
+  _storageKey = "tabToggles";
+  _shouldStore = false;
   _active = new TransactionalValue(false);
 
   /**

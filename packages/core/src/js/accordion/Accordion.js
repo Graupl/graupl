@@ -52,6 +52,7 @@ import Component from "../Component.js";
  * @property {boolean}                            _collapseAll                         - A flag to decide if all accordion items can be closed at the same time.
  * @property {number}                             _currentChild                        - The index of the current child node.
  * @property {string}                             _storageKey                          - The key used for storage.
+ * @property {boolean}                            _shouldStore                         - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<number>}                     _delays                              - The delay times (in milliseconds) for various aspects throughout the accordion.
  * @property {string}                             _focusState                          - The current state of the accordion's focus.
  * @property {string}                             _currentEvent                        - The last type of event triggered within the accordion.

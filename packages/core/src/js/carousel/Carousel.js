@@ -55,6 +55,7 @@ import Component from "../Component.js";
  * @property {string}                             _pauseText                          - The label for the autoplay button when the carousel is playing.
  * @property {string}                             _currentAction                      - The current action being performed by the carousel.
  * @property {string}                             _storageKey                         - The key used for storage.
+ * @property {boolean}                            _shouldStore                        - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<CustomEvent>}                _events                             - Custom events that can be triggered throughout the carousel.
  * @property {Object<object>}                     _elements                           - The instantiated elements within the carousel.
  * @property {string}                             _focusState                         - The current state of the carousel's focus.

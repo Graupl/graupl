@@ -146,6 +146,7 @@ import Component from "@graupl/core/src/Component.js";
  * @property {grauplNavigationShelfEnableHoverable} _events.enableHover          - The event triggered when hoverability is enabled.
  * @property {grauplNavigationShelfDisableHover}    _events.disableHover         - The event triggered when hoverability is disabled.
  * @property {string}                               _storageKey                  - The key used for storage.
+ * @property {boolean}                              _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<object>}                       _elements                    - The instantiated elements within the navigation shelf.
  * @property {string}                               _focusState                  - The current state of the navigation shelf's focus.
  * @property {string}                               _currentEvent                - The last type of event triggered within the navigation shelf.

@@ -13,7 +13,7 @@ import {
   isValidEventType,
   hasValidRootDOMElement,
 } from "./validate.js";
-import StorageManager from "./StorageManager.js";
+import StorageManager from "./storage/StorageManager.js";
 import { addClass, removeClass } from "./domHelpers.js";
 
 class Component {
@@ -242,6 +242,11 @@ class Component {
    * @type {string}
    */
   _storageKey = "components";
+
+  /**
+   * A flag to check if the component should be stored in the StorageManager.
+   */
+  _shouldStore = true;
 
   /**
    * The main ID of the component.
@@ -1096,6 +1101,11 @@ class Component {
    * @protected
    */
   _store() {
+    // Make sure the component should be stored.
+    if (!this._shouldStore) {
+      return;
+    }
+
     // Set up the storage.
     if (
       !isValidInstance(
@@ -1121,6 +1131,11 @@ class Component {
    * @protected
    */
   _unstore() {
+    // Make sure the component should be stored.
+    if (!this._shouldStore) {
+      return;
+    }
+
     if (
       !isValidInstance(
         StorageManager,
