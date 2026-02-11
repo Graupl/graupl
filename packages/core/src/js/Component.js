@@ -561,6 +561,26 @@ class Component {
   }
 
   /**
+   * A flag to check if the disclosure's focus methods should _actually_ move the focus in the DOM.
+   *
+   * This will be `false` unless any of the following criteria are met:
+   * - The disclosure's current event is "keyboard".
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   */
+  get shouldFocus() {
+    let check = false;
+
+    if (this.currentEvent === "keyboard") {
+      check = true;
+    }
+
+    return check;
+  }
+
+  /**
    * The breakoint that the component will call media query list events.
    *
    * @type {string}
@@ -1326,6 +1346,36 @@ class Component {
         listener.options
       );
     });
+  }
+
+  /**
+   * Focus the component.
+   *
+   * Sets the components's focus state to "self" and
+   * focusses the component if the component's shouldFocus
+   * value is `true`.
+   */
+  focus() {
+    this.focusState = "self";
+
+    if (this.shouldFocus) {
+      this.rootDOMElement.focus();
+    }
+  }
+
+  /**
+   * Unfocus the component.
+   *
+   * Sets the component's focus state to "none"
+   * and blurs the component if the component's shouldFocus
+   * value is `true`.
+   */
+  blur() {
+    this.focusState = "none";
+
+    if (this.shouldFocus) {
+      this.rootDOMElement.blur();
+    }
   }
 
   /**

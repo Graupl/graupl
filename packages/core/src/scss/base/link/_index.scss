@@ -166,57 +166,19 @@
 // @example
 //   <a href="#" class="stretched">Stretched Link</a>
 
-@use "../../defaults" as root-defaults;
-@use "../../mixins/animation";
 @use "../../mixins/layer" as *;
-@use "../../mixins/state";
-@use "../../mixins/theme";
 @use "defaults";
-@use "sass:map";
+@use "mixins" as *;
 @use "variables" as *;
 
 @include layer(base) {
   // a
   #{defaults.$link-selector-base}#{defaults.$link-selector} {
-    min-width: $link-min-width;
-    min-height: $link-min-height;
-    padding: $link-padding;
-    transform: $link-transform;
-    transition: $link-transition;
-    border-width: $link-border-width;
-    border-style: $link-border-style;
-    border-radius: $link-border-radius;
-    text-decoration: $link-text-decoration;
-    text-decoration-style: $link-text-decoration-style;
-    text-decoration-thickness: $link-text-decoration-thickness;
-
-    @include state.generate-modifiers(
-      (
-        transform: $link-transform-states,
-        text-decoration: $link-text-decoration-states,
-        text-decoration-style: $link-text-decoration-style-states,
-        text-decoration-thickness: $link-text-decoration-thickness-states,
-      )
-    );
+    @include apply-base;
 
     // &.stretched
     &#{defaults.$stretched-link-selector-base}#{defaults.$stretched-link-selector} {
-      isolation: isolate;
-
-      // &::after
-      &::#{defaults.$stretched-link-pseudo-selector} {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: $stretched-link-z-index;
-      }
-    }
-  }
-
-  @include animation.off {
-    // a
-    #{defaults.$link-selector-base}#{defaults.$link-selector} {
-      --#{root-defaults.$prefix}link-transition: #{$link-transition-reduced-motion};
+      @include apply-stretched;
     }
   }
 }
@@ -224,27 +186,6 @@
 @include layer(theme) {
   // a
   #{defaults.$link-selector-base}#{defaults.$link-selector} {
-    border-color: $link-border-color;
-    background: $link-background;
-    color: $link-color;
-    text-decoration-color: $link-text-decoration-color;
-
-    @if root-defaults.$themeable-components and defaults.$themeable {
-      @include theme.generate-modifiers(
-        defaults.$link-theme-map,
-        defaults.$link-theme-prefix-selector-base,
-        defaults.$link-theme-prefix-selector,
-        "link-"
-      );
-    }
-
-    @include state.generate-modifiers(
-      (
-        border-color: $link-border-color-states,
-        background: $link-background-states,
-        color: $link-color-states,
-        text-decoration-color: $link-text-decoration-color-states,
-      )
-    );
+    @include apply-theme;
   }
 }
