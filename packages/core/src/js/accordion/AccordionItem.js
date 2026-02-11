@@ -70,6 +70,7 @@ import Component from "../Component.js";
  * @property {string}                      _key                         - The key used to generate IDs throughout the accordion item.
  * @property {string}                      _name                        - The component name of the accordion item.
  * @property {string}                      _storageKey                  - The key used for storage.
+ * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {string}                      _id                          - The main ID of the accordion item.
  * @property {boolean}                     _valid                       - The validity state of the accordion item.
  * @property {boolean}                     _initialized                 - The initialized state of the accordion item.
@@ -81,6 +82,8 @@ class AccordionItem extends Component {
   _open = new TransactionalValue(false);
   _locked = new TransactionalValue(false);
   _name = "AccordionItem";
+  _storageKey = "accordionItems";
+  _shouldStore = false;
 
   /**
    * Constructs a new AccordionItem.
