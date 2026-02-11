@@ -440,26 +440,6 @@ class Disclosure extends Component {
   }
 
   /**
-   * A flag to check if the disclosure's focus methods should _actually_ move the focus in the DOM.
-   *
-   * This will be `false` unless any of the following criteria are met:
-   * - The disclosure's current event is "keyboard".
-   *
-   * @readonly
-   *
-   * @type {boolean}
-   */
-  get shouldFocus() {
-    let check = false;
-
-    if (this.currentEvent === "keyboard") {
-      check = true;
-    }
-
-    return check;
-  }
-
-  /**
    * Sets the IDs throughout the disclosure.
    *
    * The generated IDs use the key and follow the format:
