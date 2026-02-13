@@ -39,16 +39,26 @@ $breadcrumb-link-final-transform: $breadcrumb-link-initial-transform !default;
 $breadcrumb-link-disabled-transform: $breadcrumb-link-initial-transform !default;
 $breadcrumb-item-separator: "'/'" !default;
 
+// Visibility properties.
+$breadcrumb-item-show-display: flex !default;
+$breadcrumb-item-hide-display: none !default;
+$breadcrumb-item-transitioning-display: $breadcrumb-item-show-display !default;
+
+// Opacity properties.
+$breadcrumb-item-show-opacity: 1 !default;
+$breadcrumb-item-hide-opacity: 0 !default;
+$breadcrumb-item-transitioning-opacity: $breadcrumb-item-hide-opacity !default;
+
 // Breadcrumb state theme defaults.
-// This map defines the default colour shades applied to themed lists.
-// All theme variants will only adjust the colour and border colour of the list
+// This map defines the default colour shades applied to themed breadcrumbs.
+// All theme variants will only adjust the colour and border colour of the breadcrumb
 // container and items.
 $-breadcrumb-theme-mappings: (
   color: 900,
 );
 $breadcrumb-theme-mappings: () !default;
 
-// Merge the custom list theme map with the default one.
+// Merge the custom breadcrumb theme map with the default one.
 @if $generate-base-theme-map {
   $breadcrumb-theme-mappings: map.merge(
     $-breadcrumb-theme-mappings,

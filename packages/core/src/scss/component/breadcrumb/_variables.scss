@@ -1,63 +1,167 @@
-// @graupl/core list component variables.
+// @graupl/core breadcrumb component variables.
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
 
 // Custom property defaults:
-// | Custom property                               | Default                                                                                                                                                                                             |
-// | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | --graupl-breadcrumb-padding-x                       | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-breadcrumb-padding-y                       | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-breadcrumb-padding                         | var(--graupl-breadcrumb-padding-y) var(--graupl-breadcrumb-padding-x)                                                                                                                                           |
-// | --graupl-breadcrumb-margin-x                        | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-breadcrumb-margin-y                        | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-breadcrumb-margin                          | var(--graupl-breadcrumb-margin-y) var(--graupl-breadcrumb-margin-x)                                                                                                                                             |
-// | --graupl-breadcrumb-column-gap                      | var(--graupl-spacer-2)                                                                                                                                                                              |
-// | --graupl-breadcrumb-row-gap                         | var(--graupl-spacer-2)                                                                                                                                                                              |
-// | --graupl-breadcrumb-gap                             | var(--graupl-breadcrumb-column-gap) var(--graupl-breadcrumb-row-gap)                                                                                                                                            |
-// | --graupl-breadcrumb-background                      | var(--graupl-background)                                                                                                                                                                            |
-// | --graupl-breadcrumb-color                           | var(--graupl-color)                                                                                                                                                                                 |
-// | --graupl-breadcrumb-border-color                    | var(--graupl-breadcrumb-color)                                                                                                                                                                            |
-// | --graupl-breadcrumb-border-top-left-radius          | var(--graupl-border-top-left-radius)                                                                                                                                                                |
-// | --graupl-breadcrumb-border-top-right-radius         | var(--graupl-border-top-right-radius)                                                                                                                                                               |
-// | --graupl-breadcrumb-border-bottom-left-radius       | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
-// | --graupl-breadcrumb-border-bottom-right-radius      | var(--graupl-border-bottom-right-radius)                                                                                                                                                            |
-// | --graupl-breadcrumb-border-radius                   | var(--graupl-breadcrumb-border-top-left-radius) var(--graupl-breadcrumb-border-top-right-radius) var(--graupl-breadcrumb-border-bottom-right-radius) var(--graupl-breadcrumb-border-bottom-left-radius)                     |
-// | --graupl-breadcrumb-border-top-width                | 0                                                                                                                                                                                                   |
-// | --graupl-breadcrumb-border-right-width              | 0                                                                                                                                                                                                   |
-// | --graupl-breadcrumb-border-bottom-width             | 0                                                                                                                                                                                                   |
-// | --graupl-breadcrumb-border-left-width               | 0                                                                                                                                                                                                   |
-// | --graupl-breadcrumb-border-width                    | var(--graupl-breadcrumb-border-top-width) var(--graupl-breadcrumb-border-right-width) var(--graupl-breadcrumb-border-bottom-width) var(--graupl-breadcrumb-border-left-width)                                               |
-// | --graupl-breadcrumb-border-top-style                | var(--graupl-border-top-style)                                                                                                                                                                      |
-// | --graupl-breadcrumb-border-right-style              | var(--graupl-border-right-style)                                                                                                                                                                    |
-// | --graupl-breadcrumb-border-bottom-style             | var(--graupl-border-bottom-style)                                                                                                                                                                   |
-// | --graupl-breadcrumb-border-left-style               | var(--graupl-border-left-style)                                                                                                                                                                     |
-// | --graupl-breadcrumb-border-style                    | var(--graupl-breadcrumb-border-top-style) var(--graupl-breadcrumb-border-right-style) var(--graupl-breadcrumb-border-bottom-style) var(--graupl-breadcrumb-border-left-style)                                               |
-// | --graupl-breadcrumb-item-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                                              |
-// | --graupl-breadcrumb-item-padding-y                  | var(--graupl-spacer-3)                                                                                                                                                                              |
-// | --graupl-breadcrumb-item-padding                    | var(--graupl-breadcrumb-item-padding-y) var(--graupl-breadcrumb-item-padding-x)                                                                                                                                 |
-// | --graupl-breadcrumb-item-transition                 | transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                                           |
-// | --graupl-breadcrumb-item-transition-reduced-motion  | none                                                                                                                                                                                                |
-// | --graupl-breadcrumb-item-transform                  | none                                                                                                                                                                                                |
-// | --graupl-breadcrumb-item-hover-transform            | none                                                                                                                                                                                |
-// | --graupl-breadcrumb-item-background                 | var(--graupl-background)                                                                                                                                                                            |
-// | --graupl-breadcrumb-item-color                      | var(--graupl-color)                                                                                                                                                                                 |
-// | --graupl-breadcrumb-item-border-color               | var(--graupl-breadcrumb-item-color)                                                                                                                                                                       |
-// | --graupl-breadcrumb-item-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                |
-// | --graupl-breadcrumb-item-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                                               |
-// | --graupl-breadcrumb-item-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
-// | --graupl-breadcrumb-item-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                                            |
-// | --graupl-breadcrumb-item-border-radius              | var(--graupl-breadcrumb-item-border-top-left-radius) var(--graupl-breadcrumb-item-border-top-right-radius) var(--graupl-breadcrumb-item-border-bottom-right-radius) var(--graupl-breadcrumb-item-border-bottom-left-radius) |
-// | --graupl-breadcrumb-item-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                                      |
-// | --graupl-breadcrumb-item-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                                    |
-// | --graupl-breadcrumb-item-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                                   |
-// | --graupl-breadcrumb-item-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                                     |
-// | --graupl-breadcrumb-item-border-width               | var(--graupl-breadcrumb-item-border-top-width) var(--graupl-breadcrumb-item-border-right-width) var(--graupl-breadcrumb-item-border-bottom-width) var(--graupl-breadcrumb-item-border-left-width)                           |
-// | --graupl-breadcrumb-item-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                                      |
-// | --graupl-breadcrumb-item-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                                    |
-// | --graupl-breadcrumb-item-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                                   |
-// | --graupl-breadcrumb-item-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                                     |
-// | --graupl-breadcrumb-item-border-style               | var(--graupl-breadcrumb-item-border-top-style) var(--graupl-breadcrumb-item-border-right-style) var(--graupl-breadcrumb-item-border-bottom-style) var(--graupl-breadcrumb-item-border-left-style)                           |
+// | Custom property                                       | Default                                                                                                                                                                                                                             |
+// | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-breadcrumb-padding-x                         | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-padding-y                         | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-padding                           | var(--graupl-breadcrumb-padding-y) var(--graupl-breadcrumb-padding-x)                                                                                                                                                               |
+// | --graupl-breadcrumb-margin-x                          | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-margin-y                          | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-margin                            | var(--graupl-breadcrumb-margin-y) var(--graupl-breadcrumb-margin-x)                                                                                                                                                                 |
+// | --graupl-breadcrumb-column-gap                        | var(--graupl-spacer-2)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-row-gap                           | var(--graupl-spacer-2)                                                                                                                                                                                                              |
+// | --graupl-breadcrumb-gap                               | var(--graupl-breadcrumb-column-gap) var(--graupl-breadcrumb-row-gap)                                                                                                                                                                |
+// | --graupl-breadcrumb-background                        | var(--graupl-background)                                                                                                                                                                                                            |
+// | --graupl-breadcrumb-color                             | var(--graupl-color)                                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-border-color                      | var(--graupl-breadcrumb-color)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-border-top-left-radius            | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-breadcrumb-border-top-right-radius           | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-border-bottom-left-radius         | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-border-bottom-right-radius        | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-border-radius                     | var(--graupl-breadcrumb-border-top-left-radius) var(--graupl-breadcrumb-border-top-right-radius) var(--graupl-breadcrumb-border-bottom-right-radius) var(--graupl-breadcrumb-border-bottom-left-radius)                             |
+// | --graupl-breadcrumb-border-top-width                  | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-right-width                | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-bottom-width               | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-left-width                 | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-width                      | var(--graupl-breadcrumb-border-top-width) var(--graupl-breadcrumb-border-right-width) var(--graupl-breadcrumb-border-bottom-width) var(--graupl-breadcrumb-border-left-width)                                                       |
+// | --graupl-breadcrumb-border-top-style                  | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-border-right-style                | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-breadcrumb-border-bottom-style               | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-border-left-style                 | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-breadcrumb-border-style                      | var(--graupl-breadcrumb-border-top-style) var(--graupl-breadcrumb-border-right-style) var(--graupl-breadcrumb-border-bottom-style) var(--graupl-breadcrumb-border-left-style)                                                       |
+// | --graupl-breadcrumb-item-show-display                 | flex                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-hide-display                 | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-transitioning-display        | flex                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-display                      | flex                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-show-opacity                 | 1                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-hide-opacity                 | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-transitioning-opacity        | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-opacity                      | var(--graupl-breadcrumb-item-show-opacity)                                                                                                                                                                                          |
+// | --graupl-breadcrumb-item-transition-duration          | var(--graupl-transition-duration-fast)                                                                                                                                                                                              |
+// | --graupl-breadcrumb-item-transition-timing-function   | var(--graupl-transition-timing-function)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-transition                   | opacity var(--graupl-breadcrumb-item-transition-duration) var(--graupl-breadcrumb-item-transition-timing-function)                                                                                                                  |
+// | --graupl-breadcrumb-item-transition-reduced-motion    | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-padding-x                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-padding-y                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-padding                      | var(--graupl-breadcrumb-item-padding-y) var(--graupl-breadcrumb-item-padding-x)                                                                                                                                                     |
+// | --graupl-breadcrumb-item-column-gap                   | var(--graupl-breadcrumb-column-gap)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-row-gap                      | var(--graupl-breadcrumb-row-gap)                                                                                                                                                                                                    |
+// | --graupl-breadcrumb-item-gap                          | var(--graupl-breadcrumb-item-column-gap) var(--graupl-breadcrumb-item-row-gap)                                                                                                                                                      |
+// | --graupl-breadcrumb-item-color                        | var(--graupl-breadcrumb-color)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-item-background                   | var(--graupl-breadcrumb-background)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-visited-color                | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-focus-color                  | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-hover-color                  | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-active-color                 | var(--graupl-breadcrumb-item-hover-color)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-item-disabled-color               | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-visited-background           | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-focus-background             | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-hover-background             | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-active-background            | var(--graupl-breadcrumb-item-hover-background)                                                                                                                                                                                      |
+// | --graupl-breadcrumb-item-disabled-background          | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-border-color                 | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-breadcrumb-item-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-item-border-bottom-left-radius    | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-item-border-bottom-right-radius   | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-border-radius                | var(--graupl-breadcrumb-item-border-top-left-radius) var(--graupl-breadcrumb-item-border-top-right-radius) var(--graupl-breadcrumb-item-border-bottom-right-radius) var(--graupl-breadcrumb-item-border-bottom-left-radius)         |
+// | --graupl-breadcrumb-item-border-top-width             | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-right-width           | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-bottom-width          | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-left-width            | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-width                 | var(--graupl-breadcrumb-item-border-top-width) var(--graupl-breadcrumb-item-border-right-width) var(--graupl-breadcrumb-item-border-bottom-width) var(--graupl-breadcrumb-item-border-left-width)                                   |
+// | --graupl-breadcrumb-item-border-top-style             | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-item-border-right-style           | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-breadcrumb-item-border-bottom-style          | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-item-border-left-style            | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-breadcrumb-item-border-style                 | var(--graupl-breadcrumb-item-border-top-style) var(--graupl-breadcrumb-item-border-right-style) var(--graupl-breadcrumb-item-border-bottom-style) var(--graupl-breadcrumb-item-border-left-style)                                   |
+// | --graupl-breadcrumb-link-padding-x                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-padding-y                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-padding                      | var(--graupl-breadcrumb-link-padding-y) var(--graupl-breadcrumb-link-padding-x)                                                                                                                                                     |
+// | --graupl-breadcrumb-link-transition-duration          | var(--graupl-transition-duration-fast)                                                                                                                                                                                              |
+// | --graupl-breadcrumb-link-transition-timing-function   | var(--graupl-transition-timing-function)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-transition                   | transform var(--graupl-breadcrumb-link-transition-duration) var(--graupl-breadcrumb-link-transition-timing-function)                                                                                                                |
+// | --graupl-breadcrumb-link-transition-reduced-motion    | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-link-transform                    | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-link-visited-transform            | var(--graupl-breadcrumb-link-transform)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-link-focus-transform              | var(--graupl-breadcrumb-link-transform)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-link-hover-transform              | var(--graupl-breadcrumb-link-transform)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-link-active-transform             | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-link-disabled-transform           | none                                                                                                                                                                                                                                |
+// | --graupl-breadcrumb-link-color                        | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-link-background                   | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-visited-color                | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-link-focus-color                  | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-link-hover-color                  | var(--graupl-breadcrumb-link-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-active-color                 | var(--graupl-breadcrumb-link-hover-color)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-link-disabled-color               | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-visited-background           | var(--graupl-breadcrumb-link-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-focus-background             | var(--graupl-breadcrumb-link-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-hover-background             | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-link-active-background            | var(--graupl-breadcrumb-link-hover-background)                                                                                                                                                                                      |
+// | --graupl-breadcrumb-link-disabled-background          | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-border-color                 | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-link-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-breadcrumb-link-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-link-border-bottom-left-radius    | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-link-border-bottom-right-radius   | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-link-border-radius                | var(--graupl-breadcrumb-link-border-top-left-radius) var(--graupl-breadcrumb-link-border-top-right-radius) var(--graupl-breadcrumb-link-border-bottom-right-radius) var(--graupl-breadcrumb-link-border-bottom-left-radius)         |
+// | --graupl-breadcrumb-link-border-top-width             | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-border-right-width           | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-border-bottom-width          | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-border-left-width            | 0                                                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-border-width                 | var(--graupl-breadcrumb-link-border-top-width) var(--graupl-breadcrumb-link-border-right-width) var(--graupl-breadcrumb-link-border-bottom-width) var(--graupl-breadcrumb-link-border-left-width)                                   |
+// | --graupl-breadcrumb-link-border-top-style             | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-link-border-right-style           | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-breadcrumb-link-border-bottom-style          | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-breadcrumb-link-border-left-style            | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-breadcrumb-link-border-style                 | var(--graupl-breadcrumb-link-border-top-style) var(--graupl-breadcrumb-link-border-right-style) var(--graupl-breadcrumb-link-border-bottom-style) var(--graupl-breadcrumb-link-border-left-style)                                   |
+// | --graupl-breadcrumb-toggle-padding-x                  | var(--graupl-breadcrumb-link-padding-x)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-toggle-padding-y                  | var(--graupl-breadcrumb-link-padding-y)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-toggle-padding                    | var(--graupl-breadcrumb-toggle-padding-y) var(--graupl-breadcrumb-toggle-padding-x)                                                                                                                                                 |
+// | --graupl-breadcrumb-toggle-transition-duration        | var(--graupl-breadcrumb-link-transition-duration)                                                                                                                                                                                   |
+// | --graupl-breadcrumb-toggle-transition-timing-function | var(--graupl-breadcrumb-link-transition-timing-function)                                                                                                                                                                            |
+// | --graupl-breadcrumb-toggle-transition                 | transform var(--graupl-breadcrumb-toggle-transition-duration) var(--graupl-breadcrumb-toggle-transition-timing-function)                                                                                                            |
+// | --graupl-breadcrumb-toggle-transition-reduced-motion  | var(--graupl-breadcrumb-link-transition-reduced-motion)                                                                                                                                                                             |
+// | --graupl-breadcrumb-toggle-transform                  | var(--graupl-breadcrumb-link-transform)                                                                                                                                                                                             |
+// | --graupl-breadcrumb-toggle-visited-transform          | var(--graupl-breadcrumb-toggle-transform)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-toggle-focus-transform            | var(--graupl-breadcrumb-toggle-transform)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-toggle-hover-transform            | var(--graupl-breadcrumb-toggle-transform)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-toggle-active-transform           | var(--graupl-breadcrumb-link-active-transform)                                                                                                                                                                                      |
+// | --graupl-breadcrumb-toggle-disabled-transform         | var(--graupl-breadcrumb-link-disabled-transform)                                                                                                                                                                                    |
+// | --graupl-breadcrumb-toggle-color                      | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-toggle-background                 | var(--graupl-breadcrumb-link-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-toggle-visited-color              | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-focus-color                | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-hover-color                | var(--graupl-breadcrumb-toggle-background)                                                                                                                                                                                          |
+// | --graupl-breadcrumb-toggle-active-color               | var(--graupl-breadcrumb-toggle-hover-color)                                                                                                                                                                                         |
+// | --graupl-breadcrumb-toggle-disabled-color             | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-toggle-visited-background         | var(--graupl-breadcrumb-toggle-background)                                                                                                                                                                                          |
+// | --graupl-breadcrumb-toggle-focus-background           | var(--graupl-breadcrumb-toggle-background)                                                                                                                                                                                          |
+// | --graupl-breadcrumb-toggle-hover-background           | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-active-background          | var(--graupl-breadcrumb-toggle-hover-background)                                                                                                                                                                                    |
+// | --graupl-breadcrumb-toggle-disabled-background        | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-toggle-border-color               | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-border-top-left-radius     | var(--graupl-breadcrumb-link-border-top-left-radius)                                                                                                                                                                                |
+// | --graupl-breadcrumb-toggle-border-top-right-radius    | var(--graupl-breadcrumb-link-border-top-right-radius)                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-border-bottom-left-radius  | var(--graupl-breadcrumb-link-border-bottom-left-radius)                                                                                                                                                                             |
+// | --graupl-breadcrumb-toggle-border-bottom-right-radius | var(--graupl-breadcrumb-link-border-bottom-right-radius)                                                                                                                                                                            |
+// | --graupl-breadcrumb-toggle-border-radius              | var(--graupl-breadcrumb-toggle-border-top-left-radius) var(--graupl-breadcrumb-toggle-border-top-right-radius) var(--graupl-breadcrumb-toggle-border-bottom-right-radius) var(--graupl-breadcrumb-toggle-border-bottom-left-radius) |
+// | --graupl-breadcrumb-toggle-border-top-width           | var(--graupl-breadcrumb-link-border-top-width)                                                                                                                                                                                      |
+// | --graupl-breadcrumb-toggle-border-right-width         | var(--graupl-breadcrumb-link-border-right-width)                                                                                                                                                                                    |
+// | --graupl-breadcrumb-toggle-border-bottom-width        | var(--graupl-breadcrumb-link-border-bottom-width)                                                                                                                                                                                   |
+// | --graupl-breadcrumb-toggle-border-left-width          | var(--graupl-breadcrumb-link-border-left-width)                                                                                                                                                                                     |
+// | --graupl-breadcrumb-toggle-border-width               | var(--graupl-breadcrumb-toggle-border-top-width) var(--graupl-breadcrumb-toggle-border-right-width) var(--graupl-breadcrumb-toggle-border-bottom-width) var(--graupl-breadcrumb-toggle-border-left-width)                           |
+// | --graupl-breadcrumb-toggle-border-top-style           | var(--graupl-breadcrumb-link-border-top-style)                                                                                                                                                                                      |
+// | --graupl-breadcrumb-toggle-border-right-style         | var(--graupl-breadcrumb-link-border-right-style)                                                                                                                                                                                    |
+// | --graupl-breadcrumb-toggle-border-bottom-style        | var(--graupl-breadcrumb-link-border-bottom-style)                                                                                                                                                                                   |
+// | --graupl-breadcrumb-toggle-border-left-style          | var(--graupl-breadcrumb-link-border-left-style)                                                                                                                                                                                     |
+// | --graupl-breadcrumb-toggle-border-style               | var(--graupl-breadcrumb-toggle-border-top-style) var(--graupl-breadcrumb-toggle-border-right-style) var(--graupl-breadcrumb-toggle-border-bottom-style) var(--graupl-breadcrumb-toggle-border-left-style)                           |
+// | --graupl-breadcrumb-item-separator                    | "'/'"                                                                                                                                                                                                                               |
 
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
@@ -66,7 +170,7 @@
 @use "defaults";
 @use "sass:map";
 
-// List properties.
+// Breadcrumb properties.
 // --graupl-breadcrumb-padding-x
 $breadcrumb-padding-x: var(
   --#{root-defaults.$prefix}breadcrumb-padding-x,
@@ -103,7 +207,7 @@ $breadcrumb-margin: var(
   #{$breadcrumb-margin-y} #{$breadcrumb-margin-x}
 );
 
-// List gap properties.
+// Breadcrumb gap properties.
 // --graupl-breadcrumb-column-gap
 $breadcrumb-column-gap: var(
   --#{root-defaults.$prefix}breadcrumb-column-gap,
@@ -122,7 +226,7 @@ $breadcrumb-gap: var(
   #{$breadcrumb-column-gap} #{$breadcrumb-row-gap}
 );
 
-// List color properties.
+// Breadcrumb color properties.
 // --graupl-breadcrumb-background
 $breadcrumb-background: var(
   --#{root-defaults.$prefix}breadcrumb-background,
@@ -135,7 +239,7 @@ $breadcrumb-color: var(
   #{color.$color}
 );
 
-// List border-properties.
+// Breadcrumb border properties.
 // --graupl-breadcrumb-border-color
 $breadcrumb-border-color: var(
   --#{root-defaults.$prefix}breadcrumb-border-color,
@@ -236,6 +340,79 @@ $breadcrumb-border-style: var(
     #{$breadcrumb-border-bottom-style} #{$breadcrumb-border-left-style}
 );
 
+// --graupl-breadcrumb-item-show-display
+$breadcrumb-item-show-display: var(
+  --#{root-defaults.$prefix}breadcrumb-item-show-display,
+  #{defaults.$breadcrumb-item-show-display}
+);
+
+// --graupl-breadcrumb-item-hide-display
+$breadcrumb-item-hide-display: var(
+  --#{root-defaults.$prefix}breadcrumb-item-hide-display,
+  #{defaults.$breadcrumb-item-hide-display}
+);
+
+// --graupl-breadcrumb-item-transitioning-display
+$breadcrumb-item-transitioning-display: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transitioning-display,
+  #{defaults.$breadcrumb-item-transitioning-display}
+);
+
+// --graupl-breadcrumb-item-display
+$breadcrumb-item-display: var(
+  --#{root-defaults.$prefix}breadcrumb-item-display,
+  #{defaults.$breadcrumb-item-show-display}
+);
+
+// --graupl-breadcrumb-item-show-opacity
+$breadcrumb-item-show-opacity: var(
+  --#{root-defaults.$prefix}breadcrumb-item-show-opacity,
+  #{defaults.$breadcrumb-item-show-opacity}
+);
+
+// --graupl-breadcrumb-item-hide-opacity
+$breadcrumb-item-hide-opacity: var(
+  --#{root-defaults.$prefix}breadcrumb-item-hide-opacity,
+  #{defaults.$breadcrumb-item-hide-opacity}
+);
+
+// --graupl-breadcrumb-item-transitioning-opacity
+$breadcrumb-item-transitioning-opacity: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transitioning-opacity,
+  #{defaults.$breadcrumb-item-transitioning-opacity}
+);
+
+// --graupl-breadcrumb-item-opacity
+$breadcrumb-item-opacity: var(
+  --#{root-defaults.$prefix}breadcrumb-item-opacity,
+  #{$breadcrumb-item-show-opacity}
+);
+
+// --graupl-breadcrumb-item-transition-duration
+$breadcrumb-item-transition-duration: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transition-duration,
+  #{map.get(root-variables.$transition-durations, fast)}
+);
+
+// --graupl-breadcrumb-item-transition-timing-function
+$breadcrumb-item-transition-timing-function: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transition-timing-function,
+  #{root-variables.$transition-timing-function}
+);
+
+// --graupl-breadcrumb-item-transition
+$breadcrumb-item-transition: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transition,
+  opacity #{$breadcrumb-item-transition-duration}
+    #{$breadcrumb-item-transition-timing-function}
+);
+
+// --graupl-breadcrumb-item-transition-reduced-motion
+$breadcrumb-item-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}breadcrumb-item-transition-reduced-motion,
+  none
+);
+
 // --graupl-breadcrumb-item-padding-x
 $breadcrumb-item-padding-x: var(
   --#{root-defaults.$prefix}breadcrumb-item-padding-x,
@@ -253,6 +430,8 @@ $breadcrumb-item-padding: var(
   --#{root-defaults.$prefix}breadcrumb-item-padding,
   #{$breadcrumb-item-padding-y} #{$breadcrumb-item-padding-x}
 );
+
+// --graupl-breadcrumb-item-column-gap
 $breadcrumb-item-column-gap: var(
   --#{root-defaults.$prefix}breadcrumb-item-column-gap,
   #{$breadcrumb-column-gap}
@@ -358,7 +537,7 @@ $breadcrumb-item-background-states: (
   disabled: $breadcrumb-item-disabled-background,
 );
 
-// List item border-properties.
+// Breadcrumb item border properties.
 // --graupl-breadcrumb-item-border-color
 $breadcrumb-item-border-color: var(
   --#{root-defaults.$prefix}breadcrumb-item-border-color,
