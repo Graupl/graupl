@@ -7,62 +7,89 @@
 // - `.list-item`: The list item.
 //
 // The following custom properties can be used to customize the list component:
-// | Property                                       | Description                                          | Default Value                                                                                                                                                 |
-// | ---------------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `--graupl-list-padding-x`                      | Horizontal padding of the list.                      | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-list-padding-y`                      | Vertical padding of the list.                        | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-list-padding`                        | Shorthand padding of the list.                       | `var(--graupl-list-padding-y) var(--graupl-list-padding-x)`                                                                                                   |
-// | `--graupl-list-margin-x`                       | Horizontal margin of the list.                       | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-list-margin-y`                       | Vertical margin of the list.                         | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-list-margin`                         | Shorthand margin of the list.                        | `var(--graupl-list-margin-y) var(--graupl-list-margin-x)`                                                                                                     |
-// | `--graupl-list-gap`                            | Gap between list items (column/row).                 | `var(--graupl-list-column-gap) var(--graupl-list-row-gap)`                                                                                                    |
-// | `--graupl-list-background`                     | Background colour of the list.                       | `var(--graupl-background)`                                                                                                                                    |
-// | `--graupl-list-color`                          | Text colour of the list.                             | `var(--graupl-color)`                                                                                                                                         |
-// | `--graupl-list-border-width`                   | Border width of the list.                            | `0 0 0 0`                                                                                                                                                     |
-// | `--graupl-list-border-style`                   | Border style of the list.                            | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)`                           |
-// | `--graupl-list-border-radius`                  | Border radius of the list.                           | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
-// | `--graupl-list-border-color`                   | Border colour of the list.                           | `var(--graupl-list-color)`                                                                                                                                    |
-// | `--graupl-list-item-padding`                   | Padding for a list item.                             | `var(--graupl-spacer-3) var(--graupl-spacer-5)`                                                                                                               |
-// | `--graupl-list-item-transition`                | Transition applied to list items.                    | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                   |
-// | `--graupl-list-item-transition-reduced-motion` | Transition for items when reduced motion is enabled. | `none`                                                                                                                                                        |
-// | `--graupl-list-item-transform`                 | Base transform for list items.                       | `none`                                                                                                                                                        |
-// | `--graupl-list-item-hover-transform`           | Transform for hovered list items.                    | `none`                                                                                                                                                        |
-// | `--graupl-list-item-background`                | Background colour of list items.                     | `var(--graupl-background)`                                                                                                                                    |
-// | `--graupl-list-item-color`                     | Text colour of list items.                           | `var(--graupl-color)`                                                                                                                                         |
-// | `--graupl-list-item-border-width`              | Border width of list items.                          | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)`                           |
-// | `--graupl-list-item-border-style`              | Border style of list items.                          | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)`                           |
-// | `--graupl-list-item-border-radius`             | Border radius of list items.                         | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
-// | `--graupl-list-item-border-color`              | Border colour of list items.                         | `var(--graupl-list-item-color)`                                                                                                                               |
-//
+// | Property                                        | Description                                     | Default Value                                                                                                                                                                                         |
+// | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | `--graupl-list-padding-x`                       | Value for list padding horizontal.              | `var(--graupl-spacer-0)`                                                                                                                                                                              |
+// | `--graupl-list-padding-y`                       | Value for list padding vertical.                | `var(--graupl-spacer-0)`                                                                                                                                                                              |
+// | `--graupl-list-padding`                         | Value for list padding.                         | `var(--graupl-list-padding-y) var(--graupl-list-padding-x)`                                                                                                                                           |
+// | `--graupl-list-margin-x`                        | Value for list margin horizontal.               | `var(--graupl-spacer-0)`                                                                                                                                                                              |
+// | `--graupl-list-margin-y`                        | Value for list margin vertical.                 | `var(--graupl-spacer-0)`                                                                                                                                                                              |
+// | `--graupl-list-margin`                          | Value for list margin.                          | `var(--graupl-list-margin-y) var(--graupl-list-margin-x)`                                                                                                                                             |
+// | `--graupl-list-column-gap`                      | Value for list column gap.                      | `var(--graupl-spacer-2)`                                                                                                                                                                              |
+// | `--graupl-list-row-gap`                         | Value for list row gap.                         | `var(--graupl-spacer-2)`                                                                                                                                                                              |
+// | `--graupl-list-gap`                             | Value for list gap.                             | `var(--graupl-list-column-gap) var(--graupl-list-row-gap)`                                                                                                                                            |
+// | `--graupl-list-background`                      | Value for list background.                      | `var(--graupl-background)`                                                                                                                                                                            |
+// | `--graupl-list-color`                           | Value for list color.                           | `var(--graupl-color)`                                                                                                                                                                                 |
+// | `--graupl-list-border-color`                    | Value for list border color.                    | `var(--graupl-list-color)`                                                                                                                                                                            |
+// | `--graupl-list-border-top-left-radius`          | Value for list border top left radius.          | `var(--graupl-border-top-left-radius)`                                                                                                                                                                |
+// | `--graupl-list-border-top-right-radius`         | Value for list border top right radius.         | `var(--graupl-border-top-right-radius)`                                                                                                                                                               |
+// | `--graupl-list-border-bottom-left-radius`       | Value for list border bottom left radius.       | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                             |
+// | `--graupl-list-border-bottom-right-radius`      | Value for list border bottom right radius.      | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                            |
+// | `--graupl-list-border-radius`                   | Value for list border radius.                   | `var(--graupl-list-border-top-left-radius) var(--graupl-list-border-top-right-radius) var(--graupl-list-border-bottom-right-radius) var(--graupl-list-border-bottom-left-radius)`                     |
+// | `--graupl-list-border-top-width`                | Value for list border top width.                | `0`                                                                                                                                                                                                   |
+// | `--graupl-list-border-right-width`              | Value for list border right width.              | `0`                                                                                                                                                                                                   |
+// | `--graupl-list-border-bottom-width`             | Value for list border bottom width.             | `0`                                                                                                                                                                                                   |
+// | `--graupl-list-border-left-width`               | Value for list border left width.               | `0`                                                                                                                                                                                                   |
+// | `--graupl-list-border-width`                    | Value for list border width.                    | `var(--graupl-list-border-top-width) var(--graupl-list-border-right-width) var(--graupl-list-border-bottom-width) var(--graupl-list-border-left-width)`                                               |
+// | `--graupl-list-border-top-style`                | Value for list border top style.                | `var(--graupl-border-top-style)`                                                                                                                                                                      |
+// | `--graupl-list-border-right-style`              | Value for list border right style.              | `var(--graupl-border-right-style)`                                                                                                                                                                    |
+// | `--graupl-list-border-bottom-style`             | Value for list border bottom style.             | `var(--graupl-border-bottom-style)`                                                                                                                                                                   |
+// | `--graupl-list-border-left-style`               | Value for list border left style.               | `var(--graupl-border-left-style)`                                                                                                                                                                     |
+// | `--graupl-list-border-style`                    | Value for list border style.                    | `var(--graupl-list-border-top-style) var(--graupl-list-border-right-style) var(--graupl-list-border-bottom-style) var(--graupl-list-border-left-style)`                                               |
+// | `--graupl-list-item-padding-x`                  | Value for list item padding horizontal.         | `var(--graupl-spacer-5)`                                                                                                                                                                              |
+// | `--graupl-list-item-padding-y`                  | Value for list item padding vertical.           | `var(--graupl-spacer-3)`                                                                                                                                                                              |
+// | `--graupl-list-item-padding`                    | Value for list item padding.                    | `var(--graupl-list-item-padding-y) var(--graupl-list-item-padding-x)`                                                                                                                                 |
+// | `--graupl-list-item-transition`                 | Value for list item transition.                 | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                                           |
+// | `--graupl-list-item-transition-reduced-motion`  | Value for list item transition reduced motion.  | `none`                                                                                                                                                                                                |
+// | `--graupl-list-item-transform`                  | Value for list item transform.                  | `none`                                                                                                                                                                                                |
+// | `--graupl-list-item-hover-transform`            | Value for list item hover transform.            | `none`                                                                                                                                                                                                |
+// | `--graupl-list-item-background`                 | Value for list item background.                 | `var(--graupl-background)`                                                                                                                                                                            |
+// | `--graupl-list-item-color`                      | Value for list item color.                      | `var(--graupl-color)`                                                                                                                                                                                 |
+// | `--graupl-list-item-border-color`               | Value for list item border color.               | `var(--graupl-list-item-color)`                                                                                                                                                                       |
+// | `--graupl-list-item-border-top-left-radius`     | Value for list item border top left radius.     | `var(--graupl-border-top-left-radius)`                                                                                                                                                                |
+// | `--graupl-list-item-border-top-right-radius`    | Value for list item border top right radius.    | `var(--graupl-border-top-right-radius)`                                                                                                                                                               |
+// | `--graupl-list-item-border-bottom-left-radius`  | Value for list item border bottom left radius.  | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                             |
+// | `--graupl-list-item-border-bottom-right-radius` | Value for list item border bottom right radius. | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                            |
+// | `--graupl-list-item-border-radius`              | Value for list item border radius.              | `var(--graupl-list-item-border-top-left-radius) var(--graupl-list-item-border-top-right-radius) var(--graupl-list-item-border-bottom-right-radius) var(--graupl-list-item-border-bottom-left-radius)` |
+// | `--graupl-list-item-border-top-width`           | Value for list item border top width.           | `var(--graupl-border-top-width)`                                                                                                                                                                      |
+// | `--graupl-list-item-border-right-width`         | Value for list item border right width.         | `var(--graupl-border-right-width)`                                                                                                                                                                    |
+// | `--graupl-list-item-border-bottom-width`        | Value for list item border bottom width.        | `var(--graupl-border-bottom-width)`                                                                                                                                                                   |
+// | `--graupl-list-item-border-left-width`          | Value for list item border left width.          | `var(--graupl-border-left-width)`                                                                                                                                                                     |
+// | `--graupl-list-item-border-width`               | Value for list item border width.               | `var(--graupl-list-item-border-top-width) var(--graupl-list-item-border-right-width) var(--graupl-list-item-border-bottom-width) var(--graupl-list-item-border-left-width)`                           |
+// | `--graupl-list-item-border-top-style`           | Value for list item border top style.           | `var(--graupl-border-top-style)`                                                                                                                                                                      |
+// | `--graupl-list-item-border-right-style`         | Value for list item border right style.         | `var(--graupl-border-right-style)`                                                                                                                                                                    |
+// | `--graupl-list-item-border-bottom-style`        | Value for list item border bottom style.        | `var(--graupl-border-bottom-style)`                                                                                                                                                                   |
+// | `--graupl-list-item-border-left-style`          | Value for list item border left style.          | `var(--graupl-border-left-style)`                                                                                                                                                                     |
+// | `--graupl-list-item-border-style`               | Value for list item border style.               | `var(--graupl-list-item-border-top-style) var(--graupl-list-item-border-right-style) var(--graupl-list-item-border-bottom-style) var(--graupl-list-item-border-left-style)`                           |
 // The following sass variables can be used to customize the generation of the list component:
-// | Variable                     | Description                               | Default Value    |
-// | ---------------------------- | ----------------------------------------- | ---------------- |
-// | `$selector-base`             | Selector base for the component.          | `"."`            |
-// | `$modifier-selector-base`    | Selector base for component modifiers.    | `"."`            |
-// | `$generate-base-theme-map`   | Flag to generate the base theme map.      | `true`           |
-// | `$themeable`                 | Flag to generate theme modifiers.         | `false`          |
-// | `$list-selector-base`        | Selector base for the list container.     | `$selector-base` |
-// | `$list-selector`             | Selector for the list container.          | `"list"`         |
-// | `$list-theme-selector-base`  | Selector base for theme modifiers.        | `"."`            |
-// | `$list-theme-selector-prefix`| Selector prefix for theme modifiers.      | `""`             |
-// | `$list-item-selector-base`   | Selector base for list items.             | `$selector-base` |
-// | `$list-item-selector`        | Selector for list items.                  | `"list-item"`    |
-// | `$list-item-transform`       | Base transform for list items.            | `none`           |
-// | `$list-item-hover-transform` | Hover transform for list items.           | `none`           |
-// | `$list-theme-mappings`       | Map of properties/shades for list themes. | `()`             |
-// | `$list-theme-map`            | Expanded map of properties/colors/shades. | `()`             |
+// | Variable                      | Description                             | Default Value                                            |
+// | ----------------------------- | --------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`              | Default for selector base.              | `"."`                                                    |
+// | `$modifier-selector-base`     | Default for modifier selector base.     | `"."`                                                    |
+// | `$generate-base-theme-map`    | Default for generate base theme map.    | `true`                                                   |
+// | `$themeable`                  | Default for themeable.                  | `false`                                                  |
+// | `$list-selector-base`         | Default for list selector base.         | `"."`                                                    |
+// | `$list-selector`              | Default for list selector.              | `"list"`                                                 |
+// | `$list-theme-selector-base`   | Default for list theme selector base.   | `"."`                                                    |
+// | `$list-theme-selector-prefix` | Default for list theme selector prefix. | `""`                                                     |
+// | `$list-item-selector-base`    | Default for list item selector base.    | `"."`                                                    |
+// | `$list-item-selector`         | Default for list item selector.         | `"list-item"`                                            |
+// | `$list-item-transform`        | Default for list item transform.        | `none`                                                   |
+// | `$list-item-hover-transform`  | Default for list item hover transform.  | `none`                                                   |
+// | `$list-theme-mappings`        | Default for list theme mappings.        | `map.merge($-list-theme-mappings, $list-theme-mappings)` |
+// | `$list-theme-map`             | Default for list theme map.             | `map.deep-merge($-list-theme-map, $list-theme-map)`      |
 //
 // ## Using `$list-theme-mappings`
 //
 // `$list-theme-mappings` is a 1-level map of properties and shade values.
 //
 // e.g.
-// ```scss
+// ``scss
 // $list-theme-mappings: (
 //   color: 900,
 //   border-color: 700,
 // )
-// ```
+// ``
 //
 // This directly[1] maps to all list variants, telling them what shade to use for the base colour slots.
 // All list variants will use the following based on the example above:
@@ -73,12 +100,12 @@
 // You can use this to customize _all_ list variants in the same way.
 //
 // For example, if you use the following map:
-// ```scss
+// ``scss
 // $list-theme-mappings: (
 //   color: 500,
 //   item-color: 500,
 // )
-// ```
+// ``
 //
 // All list variants will use the following:
 // - Primary lists will have their `--graupl-list-color` and `--graupl-list-item-color` properties set to `--graupl-theme-active--primary--500`,
@@ -92,7 +119,7 @@
 // `$list-theme-map` is a multi-level map of properties, colors, and shade values.
 //
 // e.g.
-// ```scss
+// ``scss
 // $list-theme-map: (
 //   primary: (
 //     item-border-color: (
@@ -113,7 +140,7 @@
 //     ),
 //   ),
 // )
-// ```
+// ``
 //
 // This directly maps to all list variants, telling them what shade to use for said property.
 // You can use this to customize list variants individually.

@@ -1,4 +1,4 @@
-// @graupl/icons icon componet variables.
+// @graupl/icons icon component variables.
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
@@ -20,15 +20,22 @@
 @use "pkg:@graupl/core/src/variables" as root-variables;
 @use "sass:map";
 
+// --graupl-icon-display
 $icon-display: var(
   --#{root-defaults.$prefix}icon-display,
   #{defaults.$icon-display}
 );
+// --graupl-icon-size
 $icon-size: var(--#{root-defaults.$prefix}icon-size, #{defaults.$icon-size});
+// --graupl-icon-width
 $icon-width: var(--#{root-defaults.$prefix}icon-width, #{$icon-size});
+// --graupl-icon-height
 $icon-height: var(--#{root-defaults.$prefix}icon-height, #{$icon-size});
+// --graupl-icon-color
 $icon-color: var(--#{root-defaults.$prefix}icon-color, #{color.$color});
+// --graupl-icon
 $icon: var(--#{root-defaults.$prefix}icon, none);
+// --graupl-icon-spacer
 $icon-spacer: var(
   --#{root-defaults.$prefix}icon-spacer,
   #{map.get(root-variables.$spacers, 2)}

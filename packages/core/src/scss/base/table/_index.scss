@@ -22,7 +22,7 @@
 //
 // The following custom properties can be used to customize the table component:
 // | Property                                           | Description                                                                                                          | Default Value                                                                                                                                                                                                     |
-// | ---                                                | ---                                                                                                                  | ---                                                                                                                                                                                                               |
+// | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `--graupl-table-caption-side`                      | The caption side of the table component.                                                                             | `bottom`                                                                                                                                                                                                          |
 // | `--graupl-table-caption-padding-x`                 | The horizontal padding of the table caption component.                                                               | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
 // | `--graupl-table-caption-padding-y`                 | The vertical padding of the table caption component.                                                                 | `var(--graupl-spacer-3)`                                                                                                                                                                                          |
@@ -106,42 +106,43 @@
 // | `--graupl-table-header-highlight-color`            | The text colour of highlighted table header components.                                                              | `var(--graupl-table-highlight-color)`                                                                                                                                                                             |
 //
 // The following sass variables can be used to customize the generation of the table component:
-// | Variable                               | Description                                                                            | Default Value             |
-// | ---                                    | ---                                                                                    | ---                       |
-// | `$selector-base`                       | The selector base for the component.                                                   | `""`                      |
-// | `$modifier-selector-base`              | The selector base for component modifiers.                                             | `"."`                     |
-// | `$generate-base-theme-map`             | A flag to generate the base theme maps for table variants.                             | `true`                    |
-// | `$themeable`                           | A flag that determines whether theme modifiers are generated.                          | `true`                    |
-// | `$table-selector-base`                 | The selector base for the table component.                                             | `$selector-base`          |
-// | `$table-selector`                      | The selector for the table component.                                                  | `"table"`                 |
-// | `$table-caption-selector-base`         | The selector base for the table caption component.                                     | `$selector-base`          |
-// | `$table-caption-selector`              | The selector for the table caption component.                                          | `"caption"`               |
-// | `$table-header-selector-base`          | The selector base for the table header cell component.                                 | `$selector-base`          |
-// | `$table-header-selector`               | The selector for the table header cell component.                                      | `"th"`                    |
-// | `$table-cell-selector-base`            | The selector base for the table cell component.                                        | `$selector-base`          |
-// | `$table-cell-selector`                 | The selector for the table cell component.                                             | `"td"`                    |
-// | `$table-row-selector-base`             | The selector base for the table row component.                                         | `$selector-base`          |
-// | `$table-row-selector`                  | The selector for the table row component.                                              | `"tr"`                    |
-// | `$table-body-selector-base`            | The selector base for the table body component.                                        | `$selector-base`          |
-// | `$table-body-selector`                 | The selector for the table body component.                                             | `"tbody"`                 |
-// | `$table-theme-prefix-selector-base`    | The selector base for the themed table component modifiers.                            | `$modifier-selector-base` |
-// | `$table-theme-prefix-selector`         | The selector prefix for the themed table component modifiers.                          | `""`                      |
-// | `$table-bordered-selector-base`        | The selector base for the bordered table component modifier.                           | `$modifier-selector-base` |
-// | `$table-bordered-selector`             | The selector for the bordered table component modifier.                                | `"bordered"`              |
-// | `$table-collapsed-selector-base`       | The selector base for the collapsed table component modifier.                          | `$modifier-selector-base` |
-// | `$table-collapsed-selector`            | The selector for the collapsed table component modifier.                               | `"collapsed"`             |
-// | `$table-striped-columns-selector-base` | The selector base for the striped columns table component modifier.                    | `$modifier-selector-base` |
-// | `$table-striped-columns-selector`      | The selector for the striped columns table component modifier.                         | `"striped-columns"`       |
-// | `$table-striped-rows-selector-base`    | The selector base for the striped rows table component modifier.                       | `$modifier-selector-base` |
-// | `$table-striped-rows-selector`         | The selector for the striped rows table component modifier.                            | `"striped-rows"`          |
-// | `$table-hoverable-selector-base`       | The selector base for the hoverable table component modifier.                          | `$modifier-selector-base` |
-// | `$table-hoverable-selector`            | The selector for the hoverable table component modifier.                               | `"hoverable"`             |
-// | `$table-highlight-selector-base`       | The selector base for the highlighted table component modifier.                        | `$modifier-selector-base` |
-// | `$table-highlight-selector`            | The selector for the highlighted table component modifier.                             | `"highlight"`             |
-// | `$table-responsive-selector-base`      | The selector base for the responsive table component modifier.                         | `$modifier-selector-base` |
-// | `$table-responsive-selector`           | The selector for the responsive table component modifier.                              | `"responsive-table"`      |
-// | `$table-theme-mappings`                | A map of properties and color shades used generate all table variants.                 | `()`                      |
-// | `$table-theme-map`                     | A map of all properties, colors, and color shades used to generate all table variants. | `()`                      |
+// | Variable                               | Description                                                                            | Default Value                                         |
+// | -------------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+// | `$selector-base`                       | The selector base for the component.                                                   | `""`                                                  |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                             | `"."`                                                 |
+// | `$generate-base-theme-map`             | A flag to generate the base theme maps for table variants.                             | `true`                                                |
+// | `$themeable`                           | A flag that determines whether theme modifiers are generated.                          | `true`                                                |
+// | `$table-selector-base`                 | The selector base for the table component.                                             | `""`                                                  |
+// | `$table-selector`                      | The selector for the table component.                                                  | `"table"`                                             |
+// | `$table-caption-selector-base`         | The selector base for the table caption component.                                     | `""`                                                  |
+// | `$table-caption-selector`              | The selector for the table caption component.                                          | `"caption"`                                           |
+// | `$table-header-selector-base`          | The selector base for the table header cell component.                                 | `""`                                                  |
+// | `$table-header-selector`               | The selector for the table header cell component.                                      | `"th"`                                                |
+// | `$table-cell-selector-base`            | The selector base for the table cell component.                                        | `""`                                                  |
+// | `$table-cell-selector`                 | The selector for the table cell component.                                             | `"td"`                                                |
+// | `$table-row-selector-base`             | The selector base for the table row component.                                         | `""`                                                  |
+// | `$table-row-selector`                  | The selector for the table row component.                                              | `"tr"`                                                |
+// | `$table-body-selector-base`            | The selector base for the table body component.                                        | `""`                                                  |
+// | `$table-body-selector`                 | The selector for the table body component.                                             | `"tbody"`                                             |
+// | `$table-theme-prefix-selector-base`    | The selector base for the themed table component modifiers.                            | `"."`                                                 |
+// | `$table-theme-prefix-selector`         | The selector prefix for the themed table component modifiers.                          | `""`                                                  |
+// | `$table-bordered-selector-base`        | The selector base for the bordered table component modifier.                           | `"."`                                                 |
+// | `$table-bordered-selector`             | The selector for the bordered table component modifier.                                | `"bordered"`                                          |
+// | `$table-collapsed-selector-base`       | The selector base for the collapsed table component modifier.                          | `"."`                                                 |
+// | `$table-collapsed-selector`            | The selector for the collapsed table component modifier.                               | `"collapsed"`                                         |
+// | `$table-striped-columns-selector-base` | The selector base for the striped columns table component modifier.                    | `"."`                                                 |
+// | `$table-striped-columns-selector`      | The selector for the striped columns table component modifier.                         | `"striped-columns"`                                   |
+// | `$table-striped-rows-selector-base`    | The selector base for the striped rows table component modifier.                       | `"."`                                                 |
+// | `$table-striped-rows-selector`         | The selector for the striped rows table component modifier.                            | `"striped-rows"`                                      |
+// | `$table-hoverable-selector-base`       | The selector base for the hoverable table component modifier.                          | `"."`                                                 |
+// | `$table-hoverable-selector`            | The selector for the hoverable table component modifier.                               | `"hoverable"`                                         |
+// | `$table-highlight-selector-base`       | The selector base for the highlighted table component modifier.                        | `"."`                                                 |
+// | `$table-highlight-selector`            | The selector for the highlighted table component modifier.                             | `"highlight"`                                         |
+// | `$table-responsive-selector-base`      | The selector base for the responsive table component modifier.                         | `"."`                                                 |
+// | `$table-responsive-selector`           | The selector for the responsive table component modifier.                              | `"responsive-table"`                                  |
+// | `$table-caption-side`                  | The side of the table used to render `<caption>`.                                      | `bottom`                                              |
+// | `$table-theme-mappings`                | A map of properties and color shades used generate all table variants.                 | `()`                                                  |
+// | `$table-theme-map`                     | A map of all properties, colors, and color shades used to generate all table variants. | `map.deep-merge($-table-theme-map, $table-theme-map)` |
 //
 // ## Using `$table-theme-mappings`
 //

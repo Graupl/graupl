@@ -174,23 +174,23 @@
 // | `$modifier-selector-base`                    | Selector base for component modifiers.            | `"."`                     |
 // | `$generate-base-theme-map`                   | Flag to generate the base theme map.              | `true`                    |
 // | `$themeable`                                 | Flag to generate theme modifiers.                 | `false`                   |
-// | `$breadcrumb-selector-base`                  | Selector base for the breadcrumb container.       | `$selector-base`          |
+// | `$breadcrumb-selector-base`                  | Selector base for the breadcrumb container.       | `"."`                     |
 // | `$breadcrumb-selector`                       | Selector for the breadcrumb container.            | `"breadcrumb"`            |
 // | `$breadcrumb-theme-selector-base`            | Selector base for theme modifiers.                | `"."`                     |
 // | `$breadcrumb-theme-selector-prefix`          | Selector prefix for theme modifiers.              | `""`                      |
-// | `$breadcrumb-item-selector-base`             | Selector base for breadcrumb items.               | `$selector-base`          |
+// | `$breadcrumb-item-selector-base`             | Selector base for breadcrumb items.               | `"."`                     |
 // | `$breadcrumb-item-selector`                  | Selector for breadcrumb items.                    | `"breadcrumb-item"`       |
 // | `$breadcrumb-item-separator-pseudo-selector` | Pseudo selector for breadcrumb separators.        | `"after"`                 |
 // | `$breadcrumb-item-separator`                 | Content used as the breadcrumb separator.         | `"'/'"`                   |
-// | `$breadcrumb-toggle-selector-base`           | Selector base for breadcrumb toggles.             | `$selector-base`          |
+// | `$breadcrumb-toggle-selector-base`           | Selector base for breadcrumb toggles.             | `"."`                     |
 // | `$breadcrumb-toggle-selector`                | Selector for breadcrumb toggles.                  | `"breadcrumb-toggle"`     |
-// | `$breadcrumb-link-selector-base`             | Selector base for breadcrumb links.               | `$selector-base`          |
+// | `$breadcrumb-link-selector-base`             | Selector base for breadcrumb links.               | `"."`                     |
 // | `$breadcrumb-link-selector`                  | Selector for breadcrumb links.                    | `"breadcrumb-link"`       |
-// | `$breadcrumb-open-selector-base`             | Selector base for the open breadcrumb modifier.   | `$modifier-selector-base` |
+// | `$breadcrumb-open-selector-base`             | Selector base for the open breadcrumb modifier.   | `"."`                     |
 // | `$breadcrumb-open-selector`                  | Selector for the open breadcrumb modifier.        | `"show"`                  |
-// | `$breadcrumb-close-selector-base`            | Selector base for the closed breadcrumb modifier. | `$modifier-selector-base` |
+// | `$breadcrumb-close-selector-base`            | Selector base for the closed breadcrumb modifier. | `"."`                     |
 // | `$breadcrumb-close-selector`                 | Selector for the closed breadcrumb modifier.      | `"hide"`                  |
-// | `$breadcrumb-transition-selector-base`       | Selector base for the transitioning modifier.     | `$modifier-selector-base` |
+// | `$breadcrumb-transition-selector-base`       | Selector base for the transitioning modifier.     | `"."`                     |
 // | `$breadcrumb-transition-selector`            | Selector for the transitioning modifier.          | `"transitioning"`         |
 // | `$breadcrumb-link-initial-transform`         | Initial transform for breadcrumb links.           | `none`                    |
 // | `$breadcrumb-link-final-transform`           | Final transform for breadcrumb links.             | `none`                    |

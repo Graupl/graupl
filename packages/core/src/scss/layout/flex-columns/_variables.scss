@@ -2,6 +2,15 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                      | Default                |
+// | ------------------------------------ | ---------------------- |
+// | --graupl-flex-columns-row-gap        | var(--graupl-spacer-5) |
+// | --graupl-flex-columns-column-gap     | var(--graupl-spacer-5) |
+// | --graupl-flex-columns-size           | auto                   |
+// | --graupl-flex-columns-max-width      | unset                  |
+// | --graupl-flex-columns-container-type | inline-size            |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;

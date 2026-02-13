@@ -2,6 +2,50 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                                     | Default                                                                                                                                                                                                                                                                                                                                                                                  |
+// | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-navigation-shelf-background                | var(--graupl-background)                                                                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-navigation-shelf-color                     | var(--graupl-color)                                                                                                                                                                                                                                                                                                                                                                      |
+// | --graupl-navigation-shelf-z-index                   | 2                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-top-style          | var(--graupl-border-top-style)                                                                                                                                                                                                                                                                                                                                                           |
+// | --graupl-navigation-shelf-border-right-style        | var(--graupl-border-right-style)                                                                                                                                                                                                                                                                                                                                                         |
+// | --graupl-navigation-shelf-border-bottom-style       | var(--graupl-border-bottom-style)                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-left-style         | var(--graupl-border-left-style)                                                                                                                                                                                                                                                                                                                                                          |
+// | --graupl-navigation-shelf-border-style              | var(--graupl-navigation-shelf-border-top-style) var(--graupl-navigation-shelf-border-right-style) var(--graupl-navigation-shelf-border-bottom-style) var(--graupl-navigation-shelf-border-left-style)                                                                                                                                                                                    |
+// | --graupl-navigation-shelf-border-top-width          | 0                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-right-width        | 0                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-bottom-width       | 0                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-left-width         | 0                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-border-width              | var(--graupl-navigation-shelf-border-top-width) var(--graupl-navigation-shelf-border-right-width) var(--graupl-navigation-shelf-border-bottom-width) var(--graupl-navigation-shelf-border-left-width)                                                                                                                                                                                    |
+// | --graupl-navigation-shelf-border-color              | var(--graupl-navigation-shelf-color)                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-closed-transform          | null                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-open-transform            | null                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-transitioning-transform   | null                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-transform                 | var(--graupl-navigation-shelf-closed-transform)                                                                                                                                                                                                                                                                                                                                          |
+// | --graupl-navigation-shelf-starting-transform        | var(--graupl-navigation-shelf-transform)                                                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-navigation-shelf-min-width                 | 3.5rem                                                                                                                                                                                                                                                                                                                                                                                   |
+// | --graupl-navigation-shelf-max-width                 | 36ch                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-closed-width              | var(--graupl-navigation-shelf-min-width)                                                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-navigation-shelf-open-width                | var(--graupl-navigation-shelf-max-width)                                                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-navigation-shelf-transitioning-width       | var(--graupl-navigation-shelf-min-width)                                                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-navigation-shelf-width                     | var(--graupl-navigation-shelf-closed-width)                                                                                                                                                                                                                                                                                                                                              |
+// | --graupl-navigation-shelf-starting-width            | var(--graupl-navigation-shelf-width)                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-current-width             | var(--graupl-navigation-shelf-width)                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-closed-display            | grid                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-open-display              | grid                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-transitioning-display     | grid                                                                                                                                                                                                                                                                                                                                                                                     |
+// | --graupl-navigation-shelf-display                   | var(--graupl-navigation-shelf-closed-display)                                                                                                                                                                                                                                                                                                                                            |
+// | --graupl-navigation-shelf-starting-display          | var(--graupl-navigation-shelf-display)                                                                                                                                                                                                                                                                                                                                                   |
+// | --graupl-navigation-shelf-closed-opacity            | 1                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-open-opacity              | 1                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-transitioning-opacity     | 1                                                                                                                                                                                                                                                                                                                                                                                        |
+// | --graupl-navigation-shelf-opacity                   | var(--graupl-navigation-shelf-closed-opacity)                                                                                                                                                                                                                                                                                                                                            |
+// | --graupl-navigation-shelf-starting-opacity          | var(--graupl-navigation-shelf-opacity)                                                                                                                                                                                                                                                                                                                                                   |
+// | --graupl-navigation-shelf-transition-duration       | var(--graupl-transition-duration-fast)                                                                                                                                                                                                                                                                                                                                                   |
+// | --graupl-navigation-shelf-transition                | width var(--graupl-navigation-shelf-transition-duration) var(--graupl-transition-timing-function), transform var(--graupl-navigation-shelf-transition-duration) var(--graupl-transition-timing-function), opacity var(--graupl-navigation-shelf-transition-duration) var(--graupl-transition-timing-function), display var(--graupl-navigation-shelf-transition-duration) allow-discrete |
+// | --graupl-navigation-shelf-transition-reduced-motion | opacity var(--graupl-navigation-shelf-transition-duration) var(--graupl-transition-timing-function), display var(--graupl-navigation-shelf-transition-duration) allow-discrete                                                                                                                                                                                                           |
 
 @use "defaults";
 @use "pkg:@graupl/core/src/variables" as root-variables;
@@ -10,174 +54,213 @@
 @use "sass:map";
 
 // Navigation shelf properties.
+// --graupl-navigation-shelf-background
 $navigation-shelf-background: var(
   --#{root-defaults.$prefix}navigation-shelf-background,
   #{color.$background}
 );
+// --graupl-navigation-shelf-color
 $navigation-shelf-color: var(
   --#{root-defaults.$prefix}navigation-shelf-color,
   #{color.$color}
 );
+// --graupl-navigation-shelf-z-index
 $navigation-shelf-z-index: var(
   --#{root-defaults.$prefix}navigation-shelf-z-index,
   #{defaults.$navigation-shelf-z-index}
 );
 
 // Border properties.
+// --graupl-navigation-shelf-border-top-style
 $navigation-shelf-border-top-style: var(
   --#{root-defaults.$prefix}navigation-shelf-border-top-style,
   #{root-variables.$border-top-style}
 );
+// --graupl-navigation-shelf-border-right-style
 $navigation-shelf-border-right-style: var(
   --#{root-defaults.$prefix}navigation-shelf-border-right-style,
   #{root-variables.$border-right-style}
 );
+// --graupl-navigation-shelf-border-bottom-style
 $navigation-shelf-border-bottom-style: var(
   --#{root-defaults.$prefix}navigation-shelf-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
+// --graupl-navigation-shelf-border-left-style
 $navigation-shelf-border-left-style: var(
   --#{root-defaults.$prefix}navigation-shelf-border-left-style,
   #{root-variables.$border-left-style}
 );
+// --graupl-navigation-shelf-border-style
 $navigation-shelf-border-style: var(
   --#{root-defaults.$prefix}navigation-shelf-border-style,
   #{$navigation-shelf-border-top-style} #{$navigation-shelf-border-right-style}
     #{$navigation-shelf-border-bottom-style}
     #{$navigation-shelf-border-left-style}
 );
+// --graupl-navigation-shelf-border-top-width
 $navigation-shelf-border-top-width: var(
   --#{root-defaults.$prefix}navigation-shelf-border-top-width,
   0
 );
+// --graupl-navigation-shelf-border-right-width
 $navigation-shelf-border-right-width: var(
   --#{root-defaults.$prefix}navigation-shelf-border-right-width,
   0
 );
+// --graupl-navigation-shelf-border-bottom-width
 $navigation-shelf-border-bottom-width: var(
   --#{root-defaults.$prefix}navigation-shelf-border-bottom-width,
   0
 );
+// --graupl-navigation-shelf-border-left-width
 $navigation-shelf-border-left-width: var(
   --#{root-defaults.$prefix}navigation-shelf-border-left-width,
   0
 );
+// --graupl-navigation-shelf-border-width
 $navigation-shelf-border-width: var(
   --#{root-defaults.$prefix}navigation-shelf-border-width,
   #{$navigation-shelf-border-top-width} #{$navigation-shelf-border-right-width}
     #{$navigation-shelf-border-bottom-width}
     #{$navigation-shelf-border-left-width}
 );
+// --graupl-navigation-shelf-border-color
 $navigation-shelf-border-color: var(
   --#{root-defaults.$prefix}navigation-shelf-border-color,
   #{$navigation-shelf-color}
 );
 
 // Transform properties.
+// --graupl-navigation-shelf-closed-transform
 $navigation-shelf-closed-transform: var(
   --#{root-defaults.$prefix}navigation-shelf-closed-transform,
   null
 );
+// --graupl-navigation-shelf-open-transform
 $navigation-shelf-open-transform: var(
   --#{root-defaults.$prefix}navigation-shelf-open-transform,
   null
 );
+// --graupl-navigation-shelf-transitioning-transform
 $navigation-shelf-transitioning-transform: var(
   --#{root-defaults.$prefix}navigation-shelf-transitioning-transform,
   null
 );
+// --graupl-navigation-shelf-transform
 $navigation-shelf-transform: var(
   --#{root-defaults.$prefix}navigation-shelf-transform,
   #{$navigation-shelf-closed-transform}
 );
+// --graupl-navigation-shelf-starting-transform
 $navigation-shelf-starting-transform: var(
   --#{root-defaults.$prefix}navigation-shelf-starting-transform,
   #{$navigation-shelf-transform}
 );
 
 // Width properties.
+// --graupl-navigation-shelf-min-width
 $navigation-shelf-min-width: var(
   --#{root-defaults.$prefix}navigation-shelf-min-width,
   #{defaults.$navigation-shelf-min-width}
 );
+// --graupl-navigation-shelf-max-width
 $navigation-shelf-max-width: var(
   --#{root-defaults.$prefix}navigation-shelf-max-width,
   #{defaults.$navigation-shelf-max-width}
 );
+// --graupl-navigation-shelf-closed-width
 $navigation-shelf-closed-width: var(
   --#{root-defaults.$prefix}navigation-shelf-closed-width,
   #{$navigation-shelf-min-width}
 );
+// --graupl-navigation-shelf-open-width
 $navigation-shelf-open-width: var(
   --#{root-defaults.$prefix}navigation-shelf-open-width,
   #{$navigation-shelf-max-width}
 );
+// --graupl-navigation-shelf-transitioning-width
 $navigation-shelf-transitioning-width: var(
   --#{root-defaults.$prefix}navigation-shelf-transitioning-width,
   #{$navigation-shelf-min-width}
 );
+// --graupl-navigation-shelf-width
 $navigation-shelf-width: var(
   --#{root-defaults.$prefix}navigation-shelf-width,
   #{$navigation-shelf-closed-width}
 );
+// --graupl-navigation-shelf-starting-width
 $navigation-shelf-starting-width: var(
   --#{root-defaults.$prefix}navigation-shelf-starting-width,
   #{$navigation-shelf-width}
 );
+// --graupl-navigation-shelf-current-width
 $navigation-shelf-current-width: var(
   --#{root-defaults.$prefix}navigation-shelf-current-width,
   #{$navigation-shelf-width}
 );
 
 // Display properties.
+// --graupl-navigation-shelf-closed-display
 $navigation-shelf-closed-display: var(
   --#{root-defaults.$prefix}navigation-shelf-closed-display,
   grid
 );
+// --graupl-navigation-shelf-open-display
 $navigation-shelf-open-display: var(
   --#{root-defaults.$prefix}navigation-shelf-open-display,
   grid
 );
+// --graupl-navigation-shelf-transitioning-display
 $navigation-shelf-transitioning-display: var(
   --#{root-defaults.$prefix}navigation-shelf-transitioning-display,
   grid
 );
+// --graupl-navigation-shelf-display
 $navigation-shelf-display: var(
   --#{root-defaults.$prefix}navigation-shelf-display,
   #{$navigation-shelf-closed-display}
 );
+// --graupl-navigation-shelf-starting-display
 $navigation-shelf-starting-display: var(
   --#{root-defaults.$prefix}navigation-shelf-starting-display,
   #{$navigation-shelf-display}
 );
 
 // Opacity properties.
+// --graupl-navigation-shelf-closed-opacity
 $navigation-shelf-closed-opacity: var(
   --#{root-defaults.$prefix}navigation-shelf-closed-opacity,
   1
 );
+// --graupl-navigation-shelf-open-opacity
 $navigation-shelf-open-opacity: var(
   --#{root-defaults.$prefix}navigation-shelf-open-opacity,
   1
 );
+// --graupl-navigation-shelf-transitioning-opacity
 $navigation-shelf-transitioning-opacity: var(
   --#{root-defaults.$prefix}navigation-shelf-transitioning-opacity,
   1
 );
+// --graupl-navigation-shelf-opacity
 $navigation-shelf-opacity: var(
   --#{root-defaults.$prefix}navigation-shelf-opacity,
   #{$navigation-shelf-closed-opacity}
 );
+// --graupl-navigation-shelf-starting-opacity
 $navigation-shelf-starting-opacity: var(
   --#{root-defaults.$prefix}navigation-shelf-starting-opacity,
   #{$navigation-shelf-opacity}
 );
 
 // Transition properties.
+// --graupl-navigation-shelf-transition-duration
 $navigation-shelf-transition-duration: var(
   --#{root-defaults.$prefix}navigation-shelf-transition-duration,
   #{map.get(root-variables.$transition-durations, fast)}
 );
+// --graupl-navigation-shelf-transition
 $navigation-shelf-transition: var(
   --#{root-defaults.$prefix}navigation-shelf-transition,
   width #{$navigation-shelf-transition-duration}
@@ -192,6 +275,7 @@ $navigation-shelf-transition-initializing: (
   --#{root-defaults.$prefix}navigation-shelf-transition-initializing,
   none
 );
+// --graupl-navigation-shelf-transition-reduced-motion
 $navigation-shelf-transition-reduced-motion: var(
   --#{root-defaults.$prefix}navigation-shelf-transition-reduced-motion,
   opacity #{$navigation-shelf-transition-duration}
