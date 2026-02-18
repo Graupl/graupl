@@ -14,8 +14,8 @@
 // | --graupl-columns-max-width             | 1fr                                                                                                                                                  |
 // | --graupl-columns-grid-template-columns | repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))                                                           |
 // | --graupl-columns-span                  | 1                                                                                                                                                    |
-// | --graupl-columns-background            | var(--graupl-background)                                                                                                                             |
-// | --graupl-columns-color                 | var(--graupl-color)                                                                                                                                  |
+// | --graupl-columns-background            | null                                                                                                                                                 |
+// | --graupl-columns-color                 | null                                                                                                                                                 |
 
 @use "defaults";
 @use "../../variables" as root-variables;
@@ -83,10 +83,7 @@ $columns-span: var(
 );
 
 // --graupl-columns-background
-$columns-background: var(
-  --#{root-defaults.$prefix}columns-background,
-  #{color.$background}
-);
+$columns-background: var(--#{root-defaults.$prefix}columns-background);
 
 // --graupl-columns-color
-$columns-color: var(--#{root-defaults.$prefix}columns-color, #{color.$color});
+$columns-color: var(--#{root-defaults.$prefix}columns-color);

@@ -157,7 +157,7 @@
 @include layer(theme) {
   // .columns
   #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
-    background-color: $columns-background;
+    background: $columns-background;
     color: $columns-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {

@@ -203,7 +203,7 @@
 @include layer(theme) {
   // `.flex-columns`
   #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
-    background-color: $flex-columns-background;
+    background: $flex-columns-background;
     color: $flex-columns-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {

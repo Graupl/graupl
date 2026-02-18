@@ -790,7 +790,7 @@
 @include layer(theme) {
   // .container
   #{defaults.$container-selector-base}#{defaults.$container-selector} {
-    background-color: $container-background;
+    background: $container-background;
     color: $container-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {

@@ -36,8 +36,8 @@
 // | --graupl-container-sidebars-left-content-section-min-width  | calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))                                                              |
 // | --graupl-container-sidebars-left-content-section-max-width  | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))                                                                                                                                                       |
 // | --graupl-container-sidebars-left-content-section-width      | min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))                                                                                                                                                                                                                              |
-// | --graupl-container-background                               | var(--graupl-background)                                                                                                                                                                                                                                                                                                                                           |
-// | --graupl-container-color                                    | var(--graupl-color)                                                                                                                                                                                                                                                                                                                                                |
+// | --graupl-container-background                               | null                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-color                                    | null                                                                                                                                                                                                                                                                                                                                                               |
 
 @use "defaults";
 @use "../../variables" as root-variables;
@@ -283,14 +283,8 @@ $container-sidebars-left-content-section-width: var(
 );
 
 // --graupl-container-background
-$container-background: var(
-  --#{root-defaults.$prefix}container-background,
-  #{color.$background}
-);
+$container-background: var(--#{root-defaults.$prefix}container-background);
 
 // --graupl-container-color
-$container-color: var(
-  --#{root-defaults.$prefix}container-color,
-  #{color.$color}
-);
+$container-color: var(--#{root-defaults.$prefix}container-color);
 /* stylelint-enable  scss/operator-no-newline-after */
