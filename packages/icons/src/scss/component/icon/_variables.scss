@@ -25,16 +25,22 @@ $icon-display: var(
   --#{root-defaults.$prefix}icon-display,
   #{defaults.$icon-display}
 );
+
 // --graupl-icon-size
 $icon-size: var(--#{root-defaults.$prefix}icon-size, #{defaults.$icon-size});
+
 // --graupl-icon-width
 $icon-width: var(--#{root-defaults.$prefix}icon-width, #{$icon-size});
+
 // --graupl-icon-height
 $icon-height: var(--#{root-defaults.$prefix}icon-height, #{$icon-size});
+
 // --graupl-icon-color
 $icon-color: var(--#{root-defaults.$prefix}icon-color, #{color.$color});
+
 // --graupl-icon
 $icon: var(--#{root-defaults.$prefix}icon, none);
+
 // --graupl-icon-spacer
 $icon-spacer: var(
   --#{root-defaults.$prefix}icon-spacer,
