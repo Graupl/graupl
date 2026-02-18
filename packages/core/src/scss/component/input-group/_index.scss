@@ -9,7 +9,7 @@
 //
 // The following custom properties can be used to customize the input group component:
 // | Property                                            | Description                                   | Default Value                                                            |
-// | ---                                                 | ---                                           | ---                                                                      |
+// | --------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ |
 // | `--graupl-input-group-grid-template-areas`          | Grid template areas for the default layout.   | `"label" "input" "help"`                                                 |
 // | `--graupl-input-group-grid-template-columns`        | Grid template columns for the default layout. | `100%`                                                                   |
 // | `--graupl-input-group-grid-template-rows`           | Grid template rows for the default layout.    | `auto auto auto`                                                         |
@@ -25,14 +25,14 @@
 //
 // The following sass variables can be used to customize the generation of the input group component:
 // | Variable                                    | Description                                  | Default Value    |
-// | ---                                         | ---                                          | ---              |
+// | ------------------------------------------- | -------------------------------------------- | ---------------- |
 // | `$selector-base`                            | Selector base for the component.             | `"."`            |
 // | `$modifier-selector-base`                   | Selector base for component modifiers.       | `"."`            |
-// | `$input-group-selector-base`                | Selector base for the input group container. | `$selector-base` |
+// | `$input-group-selector-base`                | Selector base for the input group container. | `"."`            |
 // | `$input-group-selector`                     | Selector for the input group container.      | `"input-group"`  |
 // | `$input-group-inline-selector-base`         | Selector base for the inline modifier.       | `"."`            |
 // | `$input-group-inline-selector`              | Selector for the inline modifier.            | `"inline"`       |
-// | `$input-group-help-text-selector-base`      | Selector base for the help text.             | `$selector-base` |
+// | `$input-group-help-text-selector-base`      | Selector base for the help text.             | `"."`            |
 // | `$input-group-help-text-selector`           | Selector for the help text.                  | `"help-text"`    |
 // | `$input-group-grid-label-name`              | Grid area name for labels.                   | `label`          |
 // | `$input-group-grid-input-name`              | Grid area name for inputs.                   | `input`          |

@@ -2,6 +2,18 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                        | Default                                                                                                                                              |
+// | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-columns-row-gap               | var(--graupl-spacer-5)                                                                                                                               |
+// | --graupl-columns-column-gap            | var(--graupl-spacer-5)                                                                                                                               |
+// | --graupl-columns-count                 | 3                                                                                                                                                    |
+// | --graupl-columns-content-max-width     | var(--graupl-content-max-width)                                                                                                                      |
+// | --graupl-columns-min-width             | calc((var(--graupl-columns-content-max-width) - var(--graupl-columns-column-gap) * (var(--graupl-columns-count) - 1)) / var(--graupl-columns-count)) |
+// | --graupl-columns-max-width             | 1fr                                                                                                                                                  |
+// | --graupl-columns-grid-template-columns | repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))                                                           |
+// | --graupl-columns-span                  | 1                                                                                                                                                    |
 
 @use "defaults";
 @use "../../variables" as root-variables;

@@ -19,25 +19,25 @@
 // | `--graupl-icon-spacer`  | Spacer size used when placing the icon.      | `var(--graupl-spacer-2)`    |
 //
 // The following sass variables can be used to customize the generation of the icon component:
-// | Variable                         | Description                                                         | Default Value             |
-// | -------------------------------- | ------------------------------------------------------------------- | ------------------------- |
-// | `$selector-base`                 | Selector base for the component.                                    | `"."`                     |
-// | `$modifier-selector-base`        | Selector base for component modifiers.                              | `"."`                     |
-// | `$generate-base-theme-map`       | Flag to generate base theme maps for icon variants.                 | `true`                    |
-// | `$themeable`                     | Flag to generate theme modifiers.                                   | `true`                    |
-// | `$icon-selector-base`            | Selector base for the icon element.                                 | `$selector-base`          |
-// | `$icon-selector`                 | Selector for the icon element.                                      | `"icon"`                  |
-// | `$icon-before-selector`          | Selector for the before helper.                                     | `"icon-before"`           |
-// | `$icon-after-selector`           | Selector for the after helper.                                      | `"icon-after"`            |
-// | `$icon-theme-selector-base`      | Selector base used for theme modifiers.                             | `$modifier-selector-base` |
-// | `$icon-theme-selector-prefix`    | Selector prefix used for theme modifiers.                           | `""`                      |
-// | `$icon-prefix-selector-base`     | Selector base for icon name modifiers.                              | `$modifier-selector-base` |
-// | `$icon-prefix-selector`          | Selector used for icon name modifiers.                              | `""`                      |
-// | `$icon-display`                  | Default display value applied to icons.                             | `inline-block`            |
-// | `$icon-size`                     | Default size used for icon width/height.                            | `1.25em`                  |
-// | `$icons`                         | Map of icon names to their SVG data/URLs.                           | `()`                      |
-// | `$icon-theme-mappings`           | Map of properties and color shades used to generate icon variants.  | `()`                      |
-// | `$icon-theme-map`                | Resolved map of properties, colors, and shades for icon variants.   | `()`                      |
+// | Variable                         | Description                                                         | Default Value                                            |
+// | -------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`                 | Selector base for the component.                                    | `"."`                                                    |
+// | `$modifier-selector-base`        | Selector base for component modifiers.                              | `"."`                                                    |
+// | `$generate-base-theme-map`       | Flag to generate base theme maps for icon variants.                 | `true`                                                   |
+// | `$themeable`                     | Flag to generate theme modifiers.                                   | `true`                                                   |
+// | `$icon-selector-base`            | Selector base for the icon element.                                 | `"."`                                                    |
+// | `$icon-selector`                 | Selector for the icon element.                                      | `"icon"`                                                 |
+// | `$icon-before-selector`          | Selector for the before helper.                                     | `"icon-before"`                                          |
+// | `$icon-after-selector`           | Selector for the after helper.                                      | `"icon-after"`                                           |
+// | `$icon-theme-selector-base`      | Selector base used for theme modifiers.                             | `"."`                                                    |
+// | `$icon-theme-selector-prefix`    | Selector prefix used for theme modifiers.                           | `""`                                                     |
+// | `$icon-prefix-selector-base`     | Selector base for icon name modifiers.                              | `"."`                                                    |
+// | `$icon-prefix-selector`          | Selector used for icon name modifiers.                              | `""`                                                     |
+// | `$icon-display`                  | Default display value applied to icons.                             | `inline-block`                                           |
+// | `$icon-size`                     | Default size used for icon width/height.                            | `1.25em`                                                 |
+// | `$icons`                         | Map of icon names to their SVG data/URLs.                           | `()`                                                     |
+// | `$icon-theme-mappings`           | Map of properties and color shades used to generate icon variants.  | `map.merge($-icon-theme-mappings, $icon-theme-mappings)` |
+// | `$icon-theme-map`                | Resolved map of properties, colors, and shades for icon variants.   | `map.deep-merge($-icon-theme-map, $icon-theme-map)`      |
 //
 // ## Using `$icon-theme-mappings`
 //

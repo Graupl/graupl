@@ -6,26 +6,30 @@
 // - `.template-class`: Applies the base value for the property.
 //
 // The following custom properties control the generated classes:
-// - N/A.
+// | Property | Description                                              | Default Value |
+// | -------- | -------------------------------------------------------- | ------------- |
+// | N/A      | This utility template does not define custom properties. | N/A           |
 //
 // The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$template-selector-prefix`: The prefix for the utility classes.
-// - `$template-properties`: The merged properties and values for the template utility classes.
+// | Variable                           | Description                                                    | Default Value                                            |
+// | ---------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`                   | Base selector for utility classes.                             | `"."`                                                    |
+// | `$use-important`                   | Appends `!important` to generated utility declarations.        | `true`                                                   |
+// | `$generate-base-utilities`         | Generates the base utility classes.                            | `true`                                                   |
+// | `$screen-aware`                    | Enables screen-aware utility variants.                         | `false`                                                  |
+// | `$theme-aware`                     | Enables theme-aware utility variants.                          | `false`                                                  |
+// | `$state-aware`                     | Enables state-aware utility variants.                          | `false`                                                  |
+// | `$container-aware`                 | Enables container-aware utility variants.                      | `false`                                                  |
+// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.         | `"\\:"`                                                  |
+// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.          | `"\\:"`                                                  |
+// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.          | `"\\:"`                                                  |
+// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors.      | `"\\:"`                                                  |
+// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.            | `""`                                                     |
+// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.             | `""`                                                     |
+// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.             | `""`                                                     |
+// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.         | `"cq\\:"`                                                |
+// | `$template-selector-prefix`        | Prefix for generated template utility classes.                 | `"template-"`                                            |
+// | `$template-properties`             | Map of template utility values merged into generated classes.  | `map.merge($-template-properties, $template-properties)` |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

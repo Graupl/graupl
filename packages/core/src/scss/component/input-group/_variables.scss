@@ -15,9 +15,9 @@
 // | --graupl-input-group-inline-grid-template-areas   | "label input" "- help"                                                 |
 // | --graupl-input-group-inline-grid-template-columns | auto 1fr                                                               |
 // | --graupl-input-group-inline-grid-template-rows    | auto auto                                                              |
-// | --graupl-input-group-label-grid-area              | label                                           |
-// | --graupl-input-group-input-grid-area              | input                                           |
-// | --graupl-input-group-help-grid-area               | help                                            |
+// | --graupl-input-group-label-grid-area              | label                                                                  |
+// | --graupl-input-group-input-grid-area              | input                                                                  |
+// | --graupl-input-group-help-grid-area               | help                                                                   |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;

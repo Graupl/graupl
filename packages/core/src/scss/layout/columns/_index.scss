@@ -30,7 +30,7 @@
 //
 // The following custom properties can be used to customize the columns component:
 // | Property                                 | Description                                          | Default Value                                                                                                                                          |
-// | ---                                      | ---                                                  | ---                                                                                                                                                    |
+// | ---------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 // | `--graupl-columns-row-gap`               | The gap between the rows of the columns.             | `var(--graupl-spacer-5)`                                                                                                                               |
 // | `--graupl-columns-column-gap`            | The gap between the columns of the columns.          | `var(--graupl-spacer-5)`                                                                                                                               |
 // | `--graupl-columns-count`                 | The maximum number of columns.                       | `3`                                                                                                                                                    |
@@ -42,15 +42,15 @@
 //
 // The following sass variables can be used to customize the generation of the columns component:
 // | Variable                         | Description                                                        | Default Value    |
-// | ---                              | ---                                                                | ---              |
+// | -------------------------------- | ------------------------------------------------------------------ | ---------------- |
 // | `$selector-base`                 | The base selector for the component.                               | `"."`            |
 // | `$modifier-selector-base`        | The base selector for component modifiers.                         | `"."`            |
 // | `$force-single-columns`          | Flag to enable forced single column layout on small screens.       | `true`           |
-// | `$columns-selector-base`         | The base selector for the columns component.                       | `$selector-base` |
+// | `$columns-selector-base`         | The base selector for the columns component.                       | `"."`            |
 // | `$columns-selector`              | The selector for the columns component.                            | `"columns"`      |
-// | `$columns-count-selector-base`   | The base selector for the count class.                             | `$selector-base` |
+// | `$columns-count-selector-base`   | The base selector for the count class.                             | `"."`            |
 // | `$columns-count-selector-prefix` | The prefix for the count class.                                    | `"count-"`       |
-// | `$columns-span-selector-base`    | The base selector for the span class.                              | `$selector-base` |
+// | `$columns-span-selector-base`    | The base selector for the span class.                              | `"."`            |
 // | `$columns-span-selector-prefix`  | The prefix for the span class.                                     | `"span-"`        |
 // | `$columns-max-width`             | The maximum width of each column.                                  | `1fr`            |
 // | `$columns-count`                 | The default number of columns.                                     | `3`              |

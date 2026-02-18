@@ -10,7 +10,7 @@
 //
 // The following custom properties can be used to customize the link component:
 // | Property                                           | Description                                                                                                   | Default Value                                                                                                                                                                                                                                                                  |
-// | ---                                                | ---                                                                                                           | ---                                                                                                                                                                                                                                                                            |
+// | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 // | `--graupl-link-text-decoration`                    | The text decoration for the link component.                                                                   | `underline`                                                                                                                                                                                                                                                                    |
 // | `--graupl-link-visited-text-decoration`            | The text decoration for a visited link component.                                                             | `var(--graupl-link-text-decoration)`                                                                                                                                                                                                                                           |
 // | `--graupl-link-focus-text-decoration`              | The text decoration for a focused link component.                                                             | `var(--graupl-link-text-decoration)`                                                                                                                                                                                                                                           |
@@ -81,37 +81,37 @@
 // | `--graupl-link-disabled-border-color`              | The border color for a disabled link component.                                                               | `transparent`                                                                                                                                                                                                                                                                  |
 // | `--graupl-link-min-width`                          | The minimum width for the link component.                                                                     | `auto`                                                                                                                                                                                                                                                                         |
 // | `--graupl-link-min-height`                         | The minimum height for the link component.                                                                    | `auto`                                                                                                                                                                                                                                                                         |
-// | `--graupl-link-stretched-link-z-index`             | The z-index for the stretched link component modifier.                                                        | `5`                                                                                                                                                                                                                                                                            |
+// | `--graupl-stretched-link-z-index`                  | The z-index for the stretched link component modifier.                                                        | `5`                                                                                                                                                                                                                                                                            |
 //
 // The following sass variables can be used to customize the generation of the link component:
-// | Variable                               | Description                                                    | Default Value                         |
-// | -------------------------------------- | -------------------------------------------------------------- | ------------------------------------- |
-// | `$selector-base`                       | The selector base for the component.                           | `""`                                  |
-// | `$modifier-selector-base`              | The selector base for component modifiers.                     | `"."`                                 |
-// | `$generate-base-theme-map`             | Flag to generate the base theme maps for link variants.        | `true`                                |
-// | `$themeable`                           | Flag to generate theme modifiers.                              | `false`                               |
-// | `$link-selector-base`                  | The base selector for the link component.                      | `$selector-base`                      |
-// | `$link-selector`                       | The selector for the link component.                           | `"a"`                                 |
-// | `$link-theme-prefix-selector-base`     | Selector base used for link theme modifiers.                   | `$modifier-selector-base`             |
-// | `$link-theme-prefix-selector`          | Selector prefix used for link theme modifiers.                 | `""`                                  |
-// | `$stretched-link-selector-base`        | The base selector for the stretched link component modifier.   | `$modifier-selector-base`             |
-// | `$stretched-link-selector`             | The selector for the stretched link component modifier.        | `"stretched"`                         |
-// | `$stretched-link-pseudo-selector`      | The pseudo selector for the stretched link component modifier. | `"before"`                            |
-// | `$link-initial-text-decoration`        | The initial text decoration for the link component.            | `underline`                           |
-// | `$link-final-text-decoration`          | The final text decoration for the link component.              | `$link-initial-text-decoration`       |
-// | `$link-disabled-text-decoration`       | The disabled text decoration for the link component.           | `$link-initial-text-decoration`       |
-// | `$link-initial-text-decoration-style`  | The initial text decoration style for the link component.      | `solid`                               |
-// | `$link-final-text-decoration-style`    | The final text decoration style for the link component.        | `$link-initial-text-decoration-style` |
-// | `$link-disabled-text-decoration-style` | The disabled text decoration style for the link component.     | `$link-initial-text-decoration-style` |
-// | `$link-initial-transform`              | The initial transform for the link component.                  | `none`                                |
-// | `$link-final-transform`                | The final transform for the link component.                    | `$link-initial-transform`             |
-// | `$link-disabled-transform`             | The disabled transform for the link component.                 | `$link-initial-transform`             |
-// | `$link-border-width`                   | The border width for the link component.                       | `0`                                   |
-// | `$link-min-width`                      | The minimum width for the link component.                      | `auto`                                |
-// | `$link-min-height`                     | The minimum height for the link component.                     | `auto`                                |
-// | `$stretched-link-z-index`              | The z-index for the stretched link component modifier.         | `5`                                   |
-// | `$link-theme-mappings`                 | Map of properties and shade values applied to themed links.    | `()`                                  |
-// | `$link-theme-map`                      | Fully expanded property map used to generate themed links.     | `()`                                  |
+// | Variable                               | Description                                                    | Default Value                                            |
+// | -------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`                       | The selector base for the component.                           | `""`                                                     |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                     | `"."`                                                    |
+// | `$generate-base-theme-map`             | Flag to generate the base theme maps for link variants.        | `true`                                                   |
+// | `$themeable`                           | Flag to generate theme modifiers.                              | `false`                                                  |
+// | `$link-selector-base`                  | The base selector for the link component.                      | `""`                                                     |
+// | `$link-selector`                       | The selector for the link component.                           | `"a"`                                                    |
+// | `$link-theme-prefix-selector-base`     | Selector base used for link theme modifiers.                   | `"."`                                                    |
+// | `$link-theme-prefix-selector`          | Selector prefix used for link theme modifiers.                 | `""`                                                     |
+// | `$stretched-link-selector-base`        | The base selector for the stretched link component modifier.   | `"."`                                                    |
+// | `$stretched-link-selector`             | The selector for the stretched link component modifier.        | `"stretched"`                                            |
+// | `$stretched-link-pseudo-selector`      | The pseudo selector for the stretched link component modifier. | `"before"`                                               |
+// | `$link-initial-text-decoration`        | The initial text decoration for the link component.            | `underline`                                              |
+// | `$link-final-text-decoration`          | The final text decoration for the link component.              | `underline`                                              |
+// | `$link-disabled-text-decoration`       | The disabled text decoration for the link component.           | `underline`                                              |
+// | `$link-initial-text-decoration-style`  | The initial text decoration style for the link component.      | `solid`                                                  |
+// | `$link-final-text-decoration-style`    | The final text decoration style for the link component.        | `solid`                                                  |
+// | `$link-disabled-text-decoration-style` | The disabled text decoration style for the link component.     | `solid`                                                  |
+// | `$link-initial-transform`              | The initial transform for the link component.                  | `none`                                                   |
+// | `$link-final-transform`                | The final transform for the link component.                    | `none`                                                   |
+// | `$link-disabled-transform`             | The disabled transform for the link component.                 | `none`                                                   |
+// | `$link-border-width`                   | The border width for the link component.                       | `0`                                                      |
+// | `$link-min-width`                      | The minimum width for the link component.                      | `auto`                                                   |
+// | `$link-min-height`                     | The minimum height for the link component.                     | `auto`                                                   |
+// | `$stretched-link-z-index`              | The z-index for the stretched link component modifier.         | `5`                                                      |
+// | `$link-theme-mappings`                 | Map of properties and shade values applied to themed links.    | `map.merge($-link-theme-mappings, $link-theme-mappings)` |
+// | `$link-theme-map`                      | Fully expanded property map used to generate themed links.     | `map.deep-merge($-link-theme-map, $link-theme-map)`      |
 //
 // ## Using `$link-theme-mappings`
 //

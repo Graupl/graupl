@@ -28,7 +28,7 @@
 //
 // The following custom properties can be used to customize the flex columns component:
 // | Property                               | Description                                               | Default Value            |
-// | ---                                    | ---                                                       | ---                      |
+// | -------------------------------------- | --------------------------------------------------------- | ------------------------ |
 // | `--graupl-flex-columns-row-gap`        | The gap between the rows of the flex columns.             | `var(--graupl-spacer-5)` |
 // | `--graupl-flex-columns-column-gap`     | The gap between the columns of the flex columns.          | `var(--graupl-spacer-5)` |
 // | `--graupl-flex-columns-size`           | The size of a column.                                     | `auto`                   |
@@ -37,14 +37,14 @@
 //
 // The following sass variables can be used to customize the generation of the flex columns component:
 // | Variable                                        | Description                                                      | Default Value    |
-// | ---                                             | ---                                                              | ---              |
+// | ----------------------------------------------- | ---------------------------------------------------------------- | ---------------- |
 // | `$selector-base`                                | The base selector for the component.                             | `"."`            |
 // | `$modifier-selector-base`                       | The base selector for component modifiers.                       | `"."`            |
-// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `$selector-base` |
+// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `"."`            |
 // | `$flex-columns-selector`                        | The selector for the flex columns component.                     | `"flex-columns"` |
-// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `$selector-base` |
+// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `"."`            |
 // | `$flex-columns-column-selector`                 | The selector for the column class.                               | `"col-"`         |
-// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `$selector-base` |
+// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `"."`            |
 // | `$flex-columns-fill-selector`                   | The selector for the fill class.                                 | `"fill"`         |
 // | `$flex-columns-screen-aware-separator`          | The separator for the screen-aware column class.                 | `"\\:"`          |
 // | `$flex-columns-container-aware-separator`       | The separator for the container-aware column class.              | `"\\:"`          |

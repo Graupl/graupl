@@ -38,7 +38,7 @@
 //
 // The following custom properties can be used to customize the container component:
 // | Property                                                      | Description                                                                         | Default Value                                                                                                                                                                                                                                                                                                                                                        |
-// | ---                                                           | ---                                                                                 | ---                                                                                                                                                                                                                                                                                                                                                                  |
+// | ------------------------------------------------------------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `--graupl-container-sidebar-width`                            | The width of the sidebar sections.                                                  | `26ch`                                                                                                                                                                                                                                                                                                                                                               |
 // | `--graupl-container-breakout-width`                           | The width that the breakout section will extend beyond the content.                 | `4ch`                                                                                                                                                                                                                                                                                                                                                                |
 // | `--graupl-container-feature-width`                            | The width that the feature section will extend beyond the breakout.                 | `10ch`                                                                                                                                                                                                                                                                                                                                                               |
@@ -71,35 +71,36 @@
 // | `--graupl-container-sidebars-left-content-section-width`      | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
 //
 // The following sass variables can be used to customize the generation of the container component:
-// | Variable                              | Description                                                                  | Default Value             |
-// | ---                                   | ---                                                                          | ---                       |
-// | `$selector-base`                      | The selector base for the component.                                         | `.`                       |
-// | `$modifier-selector-base`             | The selector base for component modifiers.                                   | `.`                       |
-// | `$force-container-chaining`           | A flag to force container chaining in all containers.                        | `false`                   |
-// | `$generate-forced-container-selectors | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
-// | `$show-warnings`                      | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
-// | `$container-selector-base`            | The base selector for the container component.                               | `$selector-base`          |
-// | `$container-selector`                 | The selector for the container component.                                    | `container`               |
-// | `$container-breakout-selector-base`   | The base selector for the breakout container component.                      | `$selector-base`          |
-// | `$container-breakout-selector`        | The selector for the breakout container component.                           | `breakout`                |
-// | `$container-feature-selector-base`    | The base selector for the feature container component.                       | `$selector-base`          |
-// | `$container-feature-selector`         | The selector for the feature container component.                            | `feature`                 |
-// | `$container-full-width-selector-base` | The base selector for the full-width container component.                    | `$selector-base`          |
-// | `$container-full-width-selector`      | The selector for the full-width container component.                         | `full-width`              |
-// | `$container-contain-selector-base`    | The base selector for the contain utility class.                             | `$modifier-selector-base` |
-// | `$container-contain-selector`         | The selector for the contain utility class.                                  | `contain`                 |
-// | `$container-sidebars-selector-base`   | The base selector for the sidebars utility class.                            | `$modifier-selector-base` |
-// | `$container-sidebars-selector`        | The selector for the sidebars utility class.                                 | `sidebars`                |
-// | `$container-content-selector-base`    | The base selector for the content container component.                       | `$selector-base`          |
-// | `$container-content-selector`         | The selector for the content container component.                            | `content`                 |
-// | `$container-sidebar-selector-base`    | The base selector for the sidebar container component.                       | `$selector-base`          |
-// | `$container-sidebar-selector`         | The selector for the sidebar container component.                            | `sidebar`                 |
-// | `$container-left-selector-suffix`     | The suffix for the left sidebar selector.                                    | `-left`                   |
-// | `$container-right-selector-suffix`    | The suffix for the right sidebar selector.                                   | `-right`                  |
-// | `$container-inner-selector-prefix`    | The prefix for the inner content selector.                                   | `inner-`                  |
-// | `$container-breakout-width`           | The width of the breakout section will extend from the content section.      | `4ch`                     |
-// | `$container-feature-width`            | The width of the feature section will extend from the breakout section.      | `10ch`                    |
-// | `$container-sidebar-width`            | The width of the sidebar sections.                                           | `26ch`                    |
+// | Variable                               | Description                                                                  | Default Value             |
+// | -------------------------------------- | ---------------------------------------------------------------------------- | ------------------------- |
+// | `$selector-base`                       | The selector base for the component.                                         | `"."`                     |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                   | `"."`                     |
+// | `$force-container-chaining`            | A flag to force container chaining in all containers.                        | `false`                   |
+// | `$generate-forced-container-selectors` | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
+// | `$show-warnings`                       | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
+// | `$container-selector-base`             | The base selector for the container component.                               | `"."`                     |
+// | `$container-selector`                  | The selector for the container component.                                    | `"container"`             |
+// | `$container-breakout-selector-base`    | The base selector for the breakout container component.                      | `"."`                     |
+// | `$container-breakout-selector`         | The selector for the breakout container component.                           | `"breakout"`              |
+// | `$container-feature-selector-base`     | The base selector for the feature container component.                       | `"."`                     |
+// | `$container-feature-selector`          | The selector for the feature container component.                            | `"feature"`               |
+// | `$container-full-width-selector-base`  | The base selector for the full-width container component.                    | `"."`                     |
+// | `$container-full-width-selector`       | The selector for the full-width container component.                         | `"full-width"`            |
+// | `$container-contain-selector-base`     | The base selector for the contain utility class.                             | `"."`                     |
+// | `$container-contain-selector`          | The selector for the contain utility class.                                  | `"contain"`               |
+// | `$container-sidebars-selector-base`    | The base selector for the sidebars utility class.                            | `"."`                     |
+// | `$container-sidebars-selector`         | The selector for the sidebars utility class.                                 | `"sidebars"`              |
+// | `$container-content-selector-base`     | The base selector for the content container component.                       | `"."`                     |
+// | `$container-content-selector`          | The selector for the content container component.                            | `"content"`               |
+// | `$container-sidebar-selector-base`     | The base selector for the sidebar container component.                       | `"."`                     |
+// | `$container-sidebar-selector`          | The selector for the sidebar container component.                            | `"sidebar"`               |
+// | `$container-left-selector-suffix`      | The suffix for the left sidebar selector.                                    | `"-left"`                 |
+// | `$container-right-selector-suffix`     | The suffix for the right sidebar selector.                                   | `"-right"`                |
+// | `$container-inner-selector-prefix`     | The prefix for the inner content selector.                                   | `"inner-"`                |
+// | `$container-breakout-width`            | The width of the breakout section will extend from the content section.      | `4ch`                     |
+// | `$container-feature-width`             | The width of the feature section will extend from the breakout section.      | `10ch`                    |
+// | `$container-sidebar-width`             | The width of the sidebar sections.                                           | `26ch`                    |
+// | `$forced-container-selectors`          | Additional selectors included in forced container chaining.                  | `()`                      |
 //
 // ## What is container chaining?
 //
