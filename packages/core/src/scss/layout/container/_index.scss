@@ -69,17 +69,23 @@
 // | `--graupl-container-sidebars-left-content-section-min-width`  | The minimum width of the content section when only the left sidebar is enabled.     | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))`                                                              |
 // | `--graupl-container-sidebars-left-content-section-max-width`  | The maximum width of the content section when only the left sidebar is enabled.     | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                       |
 // | `--graupl-container-sidebars-left-content-section-width`      | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
+// | `--graupl-container-background`                               | The background of the container component.                                           | `var(--graupl-background)`                                                                                                                                                                                                                                                                                                                                          |
+// | `--graupl-container-color`                                    | The text color of the container component.                                           | `var(--graupl-color)`                                                                                                                                                                                                                                                                                                                                               |
 //
 // The following sass variables can be used to customize the generation of the container component:
 // | Variable                               | Description                                                                  | Default Value             |
 // | -------------------------------------- | ---------------------------------------------------------------------------- | ------------------------- |
 // | `$selector-base`                       | The selector base for the component.                                         | `"."`                     |
 // | `$modifier-selector-base`              | The selector base for component modifiers.                                   | `"."`                     |
+// | `$generate-base-theme-map`             | Flag to generate the base theme map.                                         | `true`                    |
+// | `$themeable`                           | Flag to generate theme modifiers.                                            | `false`                   |
 // | `$force-container-chaining`            | A flag to force container chaining in all containers.                        | `false`                   |
 // | `$generate-forced-container-selectors` | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
 // | `$show-warnings`                       | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
 // | `$container-selector-base`             | The base selector for the container component.                               | `"."`                     |
 // | `$container-selector`                  | The selector for the container component.                                    | `"container"`             |
+// | `$container-theme-selector-base`       | The selector base for container theme modifiers.                             | `"."`                     |
+// | `$container-theme-selector-prefix`     | The container theme modifier selector prefix.                                | `""`                      |
 // | `$container-breakout-selector-base`    | The base selector for the breakout container component.                      | `"."`                     |
 // | `$container-breakout-selector`         | The selector for the breakout container component.                           | `"breakout"`              |
 // | `$container-feature-selector-base`     | The base selector for the feature container component.                       | `"."`                     |
@@ -101,6 +107,8 @@
 // | `$container-feature-width`             | The width of the feature section will extend from the breakout section.      | `10ch`                    |
 // | `$container-sidebar-width`             | The width of the sidebar sections.                                           | `26ch`                    |
 // | `$forced-container-selectors`          | Additional selectors included in forced container chaining.                  | `()`                      |
+// | `$container-theme-mappings`            | Map of properties/shades for container themes.                               | `()`                      |
+// | `$container-theme-map`                 | Expanded map of properties/colors/shades.                                    | `()`                      |
 //
 // ## What is container chaining?
 //
@@ -202,6 +210,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/theme";
 @use "defaults";
 @use "variables" as *;
 
@@ -774,6 +783,23 @@
           grid-row: 1;
         }
       }
+    }
+  }
+}
+
+@include layer(theme) {
+  // .container
+  #{defaults.$container-selector-base}#{defaults.$container-selector} {
+    background-color: $container-background;
+    color: $container-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$container-theme-map,
+        defaults.$container-theme-selector-base,
+        defaults.$container-theme-selector-prefix,
+        "container-"
+      );
     }
   }
 }

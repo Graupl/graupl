@@ -7,16 +7,22 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
 @use "sass:list";
+@use "sass:map";
 
 // Container selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $force-container-chaining: false !default;
 $generate-forced-container-selectors: true !default;
 $show-warnings: true !default;
 $container-selector-base: $selector-base !default;
 $container-selector: "container" !default;
+$container-theme-selector-base: $modifier-selector-base !default;
+$container-theme-selector-prefix: "" !default;
 $container-breakout-selector-base: $selector-base !default;
 $container-breakout-selector: "breakout" !default;
 $container-feature-selector-base: $selector-base !default;
@@ -50,3 +56,33 @@ $forced-container-selectors: () !default;
     $forced-container-selectors
   );
 }
+
+// Container state theme defaults.
+// This map is used to define the default colour shades for the
+// themed container component.
+//
+// e.g.
+// Primary containers will use primary--900 as the text colour and
+// primary--200 as the background.
+//
+// Secondary/tertiary variants will use the same shade for their respective colours.
+$-container-theme-mappings: (
+  color: 900,
+  background: 200,
+);
+$container-theme-mappings: () !default;
+
+// Merge the custom container state theme map with the default one.
+@if $generate-base-theme-map {
+  $container-theme-mappings: map.merge(
+    $-container-theme-mappings,
+    $container-theme-mappings
+  );
+}
+
+$-container-theme-map: theme.generate-property-map($container-theme-mappings);
+$container-theme-map: () !default;
+$container-theme-map: map.deep-merge(
+  $-container-theme-map,
+  $container-theme-map
+);
