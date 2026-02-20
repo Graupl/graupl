@@ -132,9 +132,9 @@
 // | `--graupl-theme-active--tertiary--900`  | Active theme tertiary shade 900.           | `var(--graupl-theme-light--tertiary--900)`  |
 // | `--graupl-root-color`                   | Base text colour applied to `:root`.       | `var(--graupl-theme-active--primary--900)`  |
 // | `--graupl-root-background`              | Base background colour applied to `:root`. | `var(--graupl-theme-active--primary--100)`  |
-// | `--graupl-color`                        | Text colour token.                         | `var(--graupl-root-color)`                  |
-// | `--graupl-background`                   | Background colour token.                   | `var(--graupl-root-background)`             |
-// | `--graupl-border-color`                 | Border colour token.                       | `var(--graupl-color)`                       |
+// | `--graupl-color`                        | Text colour token.                         | `null`                                      |
+// | `--graupl-background`                   | Background colour token.                   | `null`                                      |
+// | `--graupl-border-color`                 | Border colour token.                       | `null`                                      |
 //
 // The following sass variables can be used to customize colour generation:
 // | Variable                  | Description                                            | Default Value                                     |

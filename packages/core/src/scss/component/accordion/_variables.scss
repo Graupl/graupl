@@ -14,7 +14,7 @@
 // | --graupl-accordion-gap                                          | var(--graupl-accordion-column-gap) var(--graupl-accordion-row-gap)                                                                                                                                                                                                                                                        |
 // | --graupl-accordion-color                                        | var(--graupl-color)                                                                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-background                                   | var(--graupl-background)                                                                                                                                                                                                                                                                                                  |
-// | --graupl-accordion-border-color                                 | var(--graupl-accordion-color)                                                                                                                                                                                                                                                                                             |
+// | --graupl-accordion-border-color                                 | var(--graupl-border-color)                                                                                                                                                                                                                                                                                                |
 // | --graupl-accordion-item-color                                   | var(--graupl-accordion-color)                                                                                                                                                                                                                                                                                             |
 // | --graupl-accordion-item-background                              | var(--graupl-accordion-background)                                                                                                                                                                                                                                                                                        |
 // | --graupl-accordion-item-border-color                            | var(--graupl-accordion-border-color)                                                                                                                                                                                                                                                                                      |
@@ -193,7 +193,7 @@ $accordion-background: var(
 // --graupl-accordion-border-color
 $accordion-border-color: var(
   --#{root-defaults.$prefix}accordion-border-color,
-  #{$accordion-color}
+  #{color.$border-color}
 );
 
 // --graupl-accordion-item-color

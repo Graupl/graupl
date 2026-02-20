@@ -7,19 +7,20 @@
 // | Custom property                 | Default                                                                                               |
 // | ------------------------------- | ----------------------------------------------------------------------------------------------------- |
 // | --graupl-focus-width            | var(--graupl-border-width)                                                                            |
-// | --graupl-focus-outline-color    | var(--graupl-color)                                                                                   |
+// | --graupl-focus-outline-color    | var(--graupl-root-color)                                                                              |
 // | --graupl-focus-outline-width    | var(--graupl-focus-width)                                                                             |
 // | --graupl-focus-outline-style    | solid                                                                                                 |
 // | --graupl-focus-outline          | var(--graupl-focus-outline-width) var(--graupl-focus-outline-style) var(--graupl-focus-outline-color) |
 // | --graupl-focus-outline-offset   | calc(-1 * var(--graupl-focus-outline-width))                                                          |
-// | --graupl-focus-box-shadow-color | var(--graupl-background)                                                                              |
-// | --graupl-focus-border-color     | var(--graupl-background)                                                                              |
+// | --graupl-focus-box-shadow-color | var(--graupl-root-background)                                                                         |
+// | --graupl-focus-border-color     | var(--graupl-root-background)                                                                         |
 // | --graupl-focus-box-shadow       | 0 0 0 var(--graupl-focus-width) inset var(--graupl-focus-box-shadow-color)                            |
 
 @use "../../variables" as root-variables;
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
+@use "../../functions/theme";
 
 // --graupl-focus-width
 $focus-width: var(
@@ -30,7 +31,7 @@ $focus-width: var(
 // --graupl-focus-outline-color
 $focus-outline-color: var(
   --#{root-defaults.$prefix}focus-outline-color,
-  #{color.$color}
+  #{color.$root-color}
 );
 
 // --graupl-focus-outline-width
@@ -60,13 +61,13 @@ $focus-outline-offset: var(
 // --graupl-focus-box-shadow-color
 $focus-box-shadow-color: var(
   --#{root-defaults.$prefix}focus-box-shadow-color,
-  #{color.$background}
+  #{color.$root-background}
 );
 
 // --graupl-focus-border-color
 $focus-border-color: var(
   --#{root-defaults.$prefix}focus-border-color,
-  #{color.$background}
+  #{color.$root-background}
 );
 
 // --graupl-focus-box-shadow

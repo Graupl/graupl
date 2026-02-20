@@ -18,7 +18,7 @@
 // | --graupl-menu-display                                 | flex                                                                                                                                                                                                |
 // | --graupl-menu-background                              | var(--graupl-background)                                                                                                                                                                            |
 // | --graupl-menu-color                                   | var(--graupl-color)                                                                                                                                                                                 |
-// | --graupl-menu-border-color                            | var(--graupl-menu-color)                                                                                                                                                                            |
+// | --graupl-menu-border-color                            | var(--graupl-border-color)                                                                                                                                                                          |
 // | --graupl-menu-border-top-left-radius                  | var(--graupl-border-top-left-radius)                                                                                                                                                                |
 // | --graupl-menu-border-top-right-radius                 | var(--graupl-border-top-right-radius)                                                                                                                                                               |
 // | --graupl-menu-border-bottom-left-radius               | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
@@ -236,7 +236,7 @@ $menu-color: var(--#{root-defaults.$prefix}menu-color, #{color.$color});
 // --graupl-menu-border-color
 $menu-border-color: var(
   --#{root-defaults.$prefix}menu-border-color,
-  #{$menu-color}
+  #{color.$border-color}
 );
 
 // --graupl-menu-border-top-left-radius

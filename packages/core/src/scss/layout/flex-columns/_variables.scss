@@ -4,15 +4,15 @@
 // cleaner way to reference custom properties.
 //
 // Custom property defaults:
-// | Custom property                      | Default                |
-// | ------------------------------------ | ---------------------- |
-// | --graupl-flex-columns-row-gap        | var(--graupl-spacer-5) |
-// | --graupl-flex-columns-column-gap     | var(--graupl-spacer-5) |
-// | --graupl-flex-columns-size           | auto                   |
-// | --graupl-flex-columns-max-width      | unset                  |
-// | --graupl-flex-columns-container-type | inline-size            |
-// | --graupl-flex-columns-background     | null                   |
-// | --graupl-flex-columns-color          | null                   |
+// | Custom property                      | Default                  |
+// | ------------------------------------ | ------------------------ |
+// | --graupl-flex-columns-row-gap        | var(--graupl-spacer-5)   |
+// | --graupl-flex-columns-column-gap     | var(--graupl-spacer-5)   |
+// | --graupl-flex-columns-size           | auto                     |
+// | --graupl-flex-columns-max-width      | unset                    |
+// | --graupl-flex-columns-container-type | inline-size              |
+// | --graupl-flex-columns-background     | var(--graupl-background) |
+// | --graupl-flex-columns-color          | var(--graupl-color)      |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -52,8 +52,12 @@ $flex-columns-container-type: var(
 
 // --graupl-flex-columns-background
 $flex-columns-background: var(
-  --#{root-defaults.$prefix}flex-columns-background
+  --#{root-defaults.$prefix}flex-columns-background,
+  color.$background
 );
 
 // --graupl-flex-columns-color
-$flex-columns-color: var(--#{root-defaults.$prefix}flex-columns-color);
+$flex-columns-color: var(
+  --#{root-defaults.$prefix}flex-columns-color,
+  color.$color
+);

@@ -18,7 +18,7 @@
 // | --graupl-card-gap                        | var(--graupl-card-column-gap) var(--graupl-card-row-gap)                                                                                                                        |
 // | --graupl-card-background                 | var(--graupl-background)                                                                                                                                                        |
 // | --graupl-card-color                      | var(--graupl-color)                                                                                                                                                             |
-// | --graupl-card-border-color               | var(--graupl-card-color)                                                                                                                                                        |
+// | --graupl-card-border-color               | var(--graupl-border-color)                                                                                                                                                      |
 // | --graupl-card-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                            |
 // | --graupl-card-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                           |
 // | --graupl-card-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                         |
@@ -138,7 +138,7 @@ $card-color: var(--#{root-defaults.$prefix}card-color, #{color.$color});
 // --graupl-card-border-color
 $card-border-color: var(
   --#{root-defaults.$prefix}card-border-color,
-  #{$card-color}
+  #{color.$border-color}
 );
 
 // --graupl-card-border-top-left-radius

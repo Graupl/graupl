@@ -27,15 +27,15 @@
 // | --graupl-root-line-height         | 1.2em                                                                                                 |
 // | --graupl-root-letter-spacing      | normal                                                                                                |
 // | --graupl-root-word-spacing        | normal                                                                                                |
-// | --graupl-font-size                | inherit                                                                                               |
-// | --graupl-font-weight              | inherit                                                                                               |
-// | --graupl-font-style               | inherit                                                                                               |
-// | --graupl-font-variant             | inherit                                                                                               |
-// | --graupl-font-color               | currentColor                                                                                          |
-// | --graupl-font-family              | inherit                                                                                               |
+// | --graupl-font-size                | null                                                                                                  |
+// | --graupl-font-weight              | null                                                                                                  |
+// | --graupl-font-style               | null                                                                                                  |
+// | --graupl-font-variant             | null                                                                                                  |
+// | --graupl-font-color               | null                                                                                                  |
+// | --graupl-font-family              | null                                                                                                  |
 // | --graupl-line-height              | var(--graupl-root-line-height)                                                                        |
-// | --graupl-letter-spacing           | inherit                                                                                               |
-// | --graupl-word-spacing             | inherit                                                                                               |
+// | --graupl-letter-spacing           | null                                                                                                  |
+// | --graupl-word-spacing             | null                                                                                                  |
 // | --graupl-paragraph-font-size      | var(--graupl-font-size                                                                                |
 // | --graupl-paragraph-font-weight    | var(--graupl-font-weight                                                                              |
 // | --graupl-paragraph-font-style     | var(--graupl-font-style                                                                               |
@@ -239,31 +239,31 @@ $root-word-spacing: var(
 
 // Generic properties.
 // --graupl-font-size
-$font-size: var(--#{root-defaults.$prefix}font-size, inherit);
+$font-size: var(--#{root-defaults.$prefix}font-size);
 
 // --graupl-font-weight
-$font-weight: var(--#{root-defaults.$prefix}font-weight, inherit);
+$font-weight: var(--#{root-defaults.$prefix}font-weight);
 
 // --graupl-font-style
-$font-style: var(--#{root-defaults.$prefix}font-style, inherit);
+$font-style: var(--#{root-defaults.$prefix}font-style);
 
 // --graupl-font-variant
-$font-variant: var(--#{root-defaults.$prefix}font-variant, inherit);
+$font-variant: var(--#{root-defaults.$prefix}font-variant);
 
 // --graupl-font-color
-$font-color: var(--#{root-defaults.$prefix}font-color, currentColor);
+$font-color: var(--#{root-defaults.$prefix}font-color);
 
 // --graupl-font-family
-$font-family: var(--#{root-defaults.$prefix}font-family, inherit);
+$font-family: var(--#{root-defaults.$prefix}font-family);
 
 // --graupl-line-height
 $line-height: var(--#{root-defaults.$prefix}line-height, #{$root-line-height});
 
 // -graupl-letter-spacing
-$letter-spacing: var(--#{root-defaults.$prefix}letter-spacing, inherit);
+$letter-spacing: var(--#{root-defaults.$prefix}letter-spacing);
 
 // --graupl-word-spacing
-$word-spacing: var(--#{root-defaults.$prefix}word-spacing, inherit);
+$word-spacing: var(--#{root-defaults.$prefix}word-spacing);
 
 // Paragraph properties.
 // --graupl-paragraph-font-size

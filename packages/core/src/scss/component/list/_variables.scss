@@ -17,7 +17,7 @@
 // | --graupl-list-gap                             | var(--graupl-list-column-gap) var(--graupl-list-row-gap)                                                                                                                                            |
 // | --graupl-list-background                      | var(--graupl-background)                                                                                                                                                                            |
 // | --graupl-list-color                           | var(--graupl-color)                                                                                                                                                                                 |
-// | --graupl-list-border-color                    | var(--graupl-list-color)                                                                                                                                                                            |
+// | --graupl-list-border-color                    | var(--graupl-border-color)                                                                                                                                                                          |
 // | --graupl-list-border-top-left-radius          | var(--graupl-border-top-left-radius)                                                                                                                                                                |
 // | --graupl-list-border-top-right-radius         | var(--graupl-border-top-right-radius)                                                                                                                                                               |
 // | --graupl-list-border-bottom-left-radius       | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
@@ -42,7 +42,7 @@
 // | --graupl-list-item-hover-transform            | none                                                                                                                                                                                                |
 // | --graupl-list-item-background                 | var(--graupl-background)                                                                                                                                                                            |
 // | --graupl-list-item-color                      | var(--graupl-color)                                                                                                                                                                                 |
-// | --graupl-list-item-border-color               | var(--graupl-list-item-color)                                                                                                                                                                       |
+// | --graupl-list-item-border-color               | var(--graupl-border-color)                                                                                                                                                                          |
 // | --graupl-list-item-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                |
 // | --graupl-list-item-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                                               |
 // | --graupl-list-item-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                                             |
@@ -135,7 +135,7 @@ $list-color: var(--#{root-defaults.$prefix}list-color, #{color.$color});
 // --graupl-list-border-color
 $list-border-color: var(
   --#{root-defaults.$prefix}list-border-color,
-  #{$list-color}
+  #{color.$border-color}
 );
 
 // --graupl-list-border-top-left-radius
@@ -290,7 +290,7 @@ $list-item-color: var(
 // --graupl-list-item-border-color
 $list-item-border-color: var(
   --#{root-defaults.$prefix}list-item-border-color,
-  #{$list-item-color}
+  #{color.$border-color}
 );
 
 // --graupl-list-item-border-top-left-radius

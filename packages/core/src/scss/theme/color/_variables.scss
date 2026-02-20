@@ -128,9 +128,9 @@
 // | --graupl-theme-active--tertiary--900  | var(--graupl-theme-light--tertiary--900)  |
 // | --graupl-root-color                   | var(--graupl-theme-active--primary--900)  |
 // | --graupl-root-background              | var(--graupl-theme-active--primary--100)  |
-// | --graupl-color                        | var(--graupl-root-color)                  |
-// | --graupl-background                   | var(--graupl-root-background)             |
-// | --graupl-border-color                 | var(--graupl-color)                       |
+// | --graupl-color                        | null                                      |
+// | --graupl-background                   | null                                      |
+// | --graupl-border-color                 | null                                      |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -312,10 +312,10 @@ $root-background: var(--#{root-defaults.$prefix}root-background);
 }
 
 // --graupl-color
-$color: var(--#{root-defaults.$prefix}color, #{$root-color});
+$color: var(--#{root-defaults.$prefix}color);
 
 // --graupl-background
-$background: var(--#{root-defaults.$prefix}background, #{$root-background});
+$background: var(--#{root-defaults.$prefix}background);
 
 // --graupl-border-color
-$border-color: var(--#{root-defaults.$prefix}border-color, #{$color});
+$border-color: var(--#{root-defaults.$prefix}border-color);

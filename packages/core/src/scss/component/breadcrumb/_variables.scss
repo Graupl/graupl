@@ -17,7 +17,7 @@
 // | --graupl-breadcrumb-gap                               | var(--graupl-breadcrumb-column-gap) var(--graupl-breadcrumb-row-gap)                                                                                                                                                                |
 // | --graupl-breadcrumb-background                        | var(--graupl-background)                                                                                                                                                                                                            |
 // | --graupl-breadcrumb-color                             | var(--graupl-color)                                                                                                                                                                                                                 |
-// | --graupl-breadcrumb-border-color                      | var(--graupl-breadcrumb-color)                                                                                                                                                                                                      |
+// | --graupl-breadcrumb-border-color                      | var(--graupl-border-color)                                                                                                                                                                                                          |
 // | --graupl-breadcrumb-border-top-left-radius            | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
 // | --graupl-breadcrumb-border-top-right-radius           | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
 // | --graupl-breadcrumb-border-bottom-left-radius         | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
@@ -145,7 +145,7 @@
 // | --graupl-breadcrumb-toggle-hover-background           | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
 // | --graupl-breadcrumb-toggle-active-background          | var(--graupl-breadcrumb-toggle-hover-background)                                                                                                                                                                                    |
 // | --graupl-breadcrumb-toggle-disabled-background        | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
-// | --graupl-breadcrumb-toggle-border-color               | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
+// | --graupl-breadcrumb-toggle-border-color               | var(--graupl-border-color)                                                                                                                                                                                                          |
 // | --graupl-breadcrumb-toggle-border-top-left-radius     | var(--graupl-breadcrumb-link-border-top-left-radius)                                                                                                                                                                                |
 // | --graupl-breadcrumb-toggle-border-top-right-radius    | var(--graupl-breadcrumb-link-border-top-right-radius)                                                                                                                                                                               |
 // | --graupl-breadcrumb-toggle-border-bottom-left-radius  | var(--graupl-breadcrumb-link-border-bottom-left-radius)                                                                                                                                                                             |
@@ -243,7 +243,7 @@ $breadcrumb-color: var(
 // --graupl-breadcrumb-border-color
 $breadcrumb-border-color: var(
   --#{root-defaults.$prefix}breadcrumb-border-color,
-  #{$breadcrumb-color}
+  #{color.$border-color}
 );
 
 // --graupl-breadcrumb-border-top-left-radius
@@ -1097,7 +1097,7 @@ $breadcrumb-toggle-background-states: (
 // --graupl-breadcrumb-toggle-border-color
 $breadcrumb-toggle-border-color: var(
   --#{root-defaults.$prefix}breadcrumb-toggle-border-color,
-  #{$breadcrumb-toggle-color}
+  #{color.$border-color}
 );
 
 // --graupl-breadcrumb-toggle-border-top-left-radius

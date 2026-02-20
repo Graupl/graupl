@@ -11,7 +11,7 @@
 // | --graupl-tabs-padding                                | var(--graupl-tabs-padding-y) var(--graupl-tabs-padding-x)                                                                                                                                                                       |
 // | --graupl-tabs-color                                  | var(--graupl-color)                                                                                                                                                                                                             |
 // | --graupl-tabs-background                             | var(--graupl-background)                                                                                                                                                                                                        |
-// | --graupl-tabs-border-color                           | var(--graupl-tabs-color)                                                                                                                                                                                                        |
+// | --graupl-tabs-border-color                           | var(--graupl-border-color)                                                                                                                                                                                                      |
 // | --graupl-tabs-border-top-left-radius                 | var(--graupl-border-top-left-radius)                                                                                                                                                                                            |
 // | --graupl-tabs-border-top-right-radius                | var(--graupl-border-top-right-radius)                                                                                                                                                                                           |
 // | --graupl-tabs-border-bottom-left-radius              | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                         |
@@ -173,7 +173,7 @@ $tabs-background: var(
 // --graupl-tabs-border-color
 $tabs-border-color: var(
   --#{root-defaults.$prefix}tabs-border-color,
-  #{$tabs-color}
+  #{color.$border-color}
 );
 
 // --graupl-tabs-border-top-left-radius
