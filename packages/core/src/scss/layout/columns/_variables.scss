@@ -85,7 +85,7 @@ $columns-span: var(
 // --graupl-columns-background
 $columns-background: var(
   --#{root-defaults.$prefix}columns-background,
-  color.$background
+  color.$background-no-fallback
 );
 
 // --graupl-columns-color

@@ -227,7 +227,7 @@ $carousel-control-focus-background: var(
 // --graupl-carousel-control-hover-background
 $carousel-control-hover-background: var(
   --#{root-defaults.$prefix}carousel-control-hover-background,
-  #{$carousel-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-carousel-control-active-background
@@ -403,7 +403,7 @@ $carousel-tab-focus-background: var(
 // --graupl-carousel-tab-hover-background
 $carousel-tab-hover-background: var(
   --#{root-defaults.$prefix}carousel-tab-hover-background,
-  #{$carousel-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-carousel-tab-active-background

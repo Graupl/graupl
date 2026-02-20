@@ -158,7 +158,7 @@ $navigation-toggle-focus-background: var(
 // --graupl-navigation-toggle-hover-background
 $navigation-toggle-hover-background: var(
   --#{root-defaults.$prefix}navigation-toggle-hover-background,
-  #{$navigation-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-navigation-toggle-active-background

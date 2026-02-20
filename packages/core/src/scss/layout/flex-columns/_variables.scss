@@ -53,7 +53,7 @@ $flex-columns-container-type: var(
 // --graupl-flex-columns-background
 $flex-columns-background: var(
   --#{root-defaults.$prefix}flex-columns-background,
-  color.$background
+  color.$background-no-fallback
 );
 
 // --graupl-flex-columns-color

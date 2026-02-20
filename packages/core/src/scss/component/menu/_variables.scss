@@ -709,7 +709,7 @@ $menu-link-focus-background: var(
 // --graupl-menu-link-hover-background
 $menu-link-hover-background: var(
   --#{root-defaults.$prefix}menu-link-hover-background,
-  #{$menu-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-menu-link-active-background

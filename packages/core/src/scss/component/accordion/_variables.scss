@@ -664,7 +664,7 @@ $accordion-item-toggle-focus-background: var(
 // --graupl-accordion-item-toggle-hover-background
 $accordion-item-toggle-hover-background: var(
   --#{root-defaults.$prefix}accordion-item-toggle-hover-background,
-  #{$accordion-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-accordion-item-toggle-active-background
@@ -871,7 +871,7 @@ $accordion-control-focus-background: var(
 // --graupl-accordion-control-hover-background
 $accordion-control-hover-background: var(
   --#{root-defaults.$prefix}accordion-control-hover-background,
-  #{$accordion-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-accordion-control-active-background

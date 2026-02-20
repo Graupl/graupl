@@ -753,7 +753,7 @@ $tabs-tab-toggle-focus-background: var(
 // --graupl-tabs-tab-toggle-hover-background
 $tabs-tab-toggle-hover-background: var(
   --#{root-defaults.$prefix}tabs-tab-toggle-hover-background,
-  #{$tabs-tab-list-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-tabs-tab-toggle-active-background

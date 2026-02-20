@@ -514,7 +514,7 @@ $breadcrumb-item-focus-background: var(
 // --graupl-breadcrumb-item-hover-background
 $breadcrumb-item-hover-background: var(
   --#{root-defaults.$prefix}breadcrumb-item-hover-background,
-  #{$breadcrumb-item-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-breadcrumb-item-active-background
@@ -793,7 +793,7 @@ $breadcrumb-link-focus-background: var(
 // --graupl-breadcrumb-link-hover-background
 $breadcrumb-link-hover-background: var(
   --#{root-defaults.$prefix}breadcrumb-link-hover-background,
-  #{$breadcrumb-link-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-breadcrumb-link-active-background
@@ -1071,7 +1071,7 @@ $breadcrumb-toggle-focus-background: var(
 // --graupl-breadcrumb-toggle-hover-background
 $breadcrumb-toggle-hover-background: var(
   --#{root-defaults.$prefix}breadcrumb-toggle-hover-background,
-  #{$breadcrumb-toggle-color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-breadcrumb-toggle-active-background

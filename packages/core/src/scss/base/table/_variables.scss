@@ -533,19 +533,19 @@ $table-header-striped-color: var(
 // --graupl-table-hover-background
 $table-hover-background: var(
   --#{root-defaults.$prefix}table-hover-background,
-  #{theme.get(secondary, 300)}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-table-cell-hover-background
 $table-cell-hover-background: var(
   --#{root-defaults.$prefix}table-cell-hover-background,
-  #{$table-hover-background}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-table-header-hover-background
 $table-header-hover-background: var(
   --#{root-defaults.$prefix}table-header-hover-background,
-  #{$table-hover-background}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-table-hover-color

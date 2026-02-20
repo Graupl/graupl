@@ -186,7 +186,7 @@ $button-focus-background: var(
 // --graupl-button-hover-background
 $button-hover-background: var(
   --#{root-defaults.$prefix}button-hover-background,
-  #{color.$color}
+  #{color.$color-root-fallback}
 );
 
 // --graupl-button-active-background

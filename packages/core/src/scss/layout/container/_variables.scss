@@ -286,7 +286,7 @@ $container-sidebars-left-content-section-width: var(
 // --graupl-container-background
 $container-background: var(
   --#{root-defaults.$prefix}container-background,
-  color.$background
+  color.$background-no-fallback
 );
 
 // --graupl-container-color

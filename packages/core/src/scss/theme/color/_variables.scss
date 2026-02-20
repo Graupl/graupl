@@ -315,7 +315,13 @@ $root-background: var(--#{root-defaults.$prefix}root-background);
 $color: var(--#{root-defaults.$prefix}color);
 
 // --graupl-background
-$background: var(--#{root-defaults.$prefix}background);
+$background: var(--#{root-defaults.$prefix}background, #{$root-background});
 
 // --graupl-border-color
 $border-color: var(--#{root-defaults.$prefix}border-color);
+
+// --graupl-color (with root fallback)
+$color-root-fallback: var(--#{root-defaults.$prefix}color, #{$root-color});
+
+// --graupl-background (with no fallback)
+$background-no-fallback: var(--#{root-defaults.$prefix}background);
