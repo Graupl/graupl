@@ -275,6 +275,24 @@
         [content-end image-start]
         $card-image-ratio
         [image-end];
+
+      // .card-image img
+      #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+        img {
+        border-radius: 0 0
+          calc(
+            $card-border-bottom-right-radius - min(
+                $card-border-bottom-width,
+                $card-border-right-width
+              )
+          )
+          calc(
+            $card-border-bottom-left-radius - min(
+                $card-border-bottom-width,
+                $card-border-left-width
+              )
+          );
+      }
     }
 
     &:hover {
@@ -427,6 +445,24 @@
               [image-end content-start]
               $card-content-ratio
               [content-end];
+
+            // .card-image img
+            #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+              img {
+              border-radius: calc(
+                  $card-border-top-left-radius - min(
+                      $card-border-top-width,
+                      $card-border-left-width
+                    )
+                )
+                calc(
+                  $card-border-top-right-radius - min(
+                      $card-border-top-width,
+                      $card-border-right-width
+                    )
+                )
+                0 0;
+            }
           }
 
           // &.bottom, &.inverse
@@ -438,6 +474,24 @@
               [content-end image-start]
               $card-image-ratio
               [image-end];
+
+            // .card-image img
+            #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+              img {
+              border-radius: 0 0
+                calc(
+                  $card-border-bottom-right-radius - min(
+                      $card-border-bottom-width,
+                      $card-border-right-width
+                    )
+                )
+                calc(
+                  $card-border-bottom-left-radius - min(
+                      $card-border-bottom-width,
+                      $card-border-left-width
+                    )
+                );
+            }
           }
         }
       }
