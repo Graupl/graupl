@@ -1,6 +1,6 @@
-## [1.0.0-beta.42](https://github.com/Graupl/graupl/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2026-02-18)
+## [1.0.0-beta.43](https://github.com/Graupl/graupl/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2026-02-25)
 
 
 ### Bug Fixes
 
-* **layout:** correct how background and color is set for layout components ([9a95838](https://github.com/Graupl/graupl/commit/9a95838d0c8b39ab017b066a1e2bf9ac69a251f1))
+* **cards:** adjust image border radius based on position and forced verticallity ([76bb763](https://github.com/Graupl/graupl/commit/76bb7633a103c493e9777a51bb85070ae61786a6))
