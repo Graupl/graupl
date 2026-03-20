@@ -1236,6 +1236,7 @@ class NavigationShelf extends Component {
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
     if (!this.isInitialized) {
+      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
       addClass(this.initializeClass, this.dom.shelf);
 
       requestAnimationFrame(() => {
@@ -1300,6 +1301,7 @@ class NavigationShelf extends Component {
     // requestAnimationFrame to add the transition class, remove the open class,
     // add the close class, and finally remove the transition class.
     if (!this.isInitialized) {
+      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
       addClass(this.initializeClass, this.dom.shelf);
 
       requestAnimationFrame(() => {
