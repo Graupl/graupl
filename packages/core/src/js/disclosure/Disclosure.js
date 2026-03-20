@@ -49,6 +49,8 @@ import Component from "../Component.js";
  * @property {Object<string>}              _selectors                   - The query selectors used by the disclosure.
  * @property {string}                      _selectors.content           - The query selector for the disclosure content.
  * @property {Object<string, string[]>}    _classes                     - The CSS classes to apply when the disclosure is in various states.
+ * @property {string|string[]}             _classes.locked              - The class(es) to apply when the disclosure is locked.
+ * @property {string|string[]}             _classes.unlocked            - The class(es) to apply when the disclosure is unlocked.
  * @property {string|string[]}             _classes.open                - The class(es) to apply when the disclosure is open.
  * @property {string|string[]}             _classes.close               - The class(es) to apply when the disclosure is closed.
  * @property {string|string[]}             _classes.transition          - The class(es) to apply when the disclosure is transitioning between states.
@@ -59,6 +61,15 @@ import Component from "../Component.js";
  * @property {number}                      _durations.close             - The duration time (in milliseconds) for the transition from open to closed states.
  * @property {TransactionalValue<boolean>} _open                        - The open state of the disclosure.
  * @property {boolean}                     _shouldOpen                  - A value to force the disclosure open when the breakpoint width is passed.
+ * @property {boolean}                     _openInsideBreakpoint        - A flag to open the disclosure when inside the breakpoint.
+ * @property {boolean}                     _openOutsideBreakpoint       - A flag to open the disclosure when outside the breakpoint.
+ * @property {boolean}                     _closeInsideBreakpoint       - A flag to close the disclosure when inside the breakpoint.
+ * @property {boolean}                     _closeOutsideBreakpoint      - A flag to close the disclosure when outside the breakpoint.
+ * @property {boolean}                     _lockInsideBreakpoint        - A flag to lock the disclosure in its current state when inside the breakpoint.
+ * @property {boolean}                     _lockOutsideBreakpoint       - A flag to lock the disclosure in its current state when outside the breakpoint.
+ * @property {boolean}                     _unlockInsideBreakpoint      - A flag to unlock the disclosure when inside the breakpoint.
+ * @property {boolean}                     _unlockOutsideBreakpoint     - A flag to unlock the disclosure when outside the breakpoint.
+ * @property {TransactionalValue<boolean>} _locked                      - The locked state of the disclosure.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the disclosure when it loses focus in the DOM.
  * @property {Function}                    _mediaQueryListEventCallback - The callback for media query list events.
  * @property {string}                      _storageKey                  - The key used for storage.
@@ -88,19 +99,60 @@ class Disclosure extends Component {
   _rootDOMElement = "disclosure";
   _protectedDOMElements = ["controller"];
   _open = new TransactionalValue(false);
+  _openInsideBreakpoint = false;
+  _openOutsideBreakpoint = false;
+  _closeInsideBreakpoint = false;
+  _closeOutsideBreakpoint = false;
+  _lockInsideBreakpoint = false;
+  _lockOutsideBreakpoint = false;
+  _unlockInsideBreakpoint = false;
+  _unlockOutsideBreakpoint = false;
+  _locked = new TransactionalValue(false);
   _shouldOpen = false;
   _closeOnBlur = false;
   _storageKey = "disclosures";
   _name = "Disclosure";
   _mediaQueryListEventCallback = (event) => {
-    if (event.matches && this.isOpen) {
-      this.close({ preserveState: true });
-    } else if (
-      !event.matches &&
-      !this.isOpen &&
-      (this.hasOpened || this.shouldOpen)
-    ) {
-      this.open();
+    if (event.matches) {
+      if (this.unlockInsideBreakpoint) {
+        this.unlock();
+      }
+
+      if (this.isOpen && this.closeInsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.close({ preserveState: true });
+      } else if (!this.isOpen && this.openInsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.open();
+      }
+
+      if (this.lockInsideBreakpoint) {
+        this.lock();
+      }
+    } else {
+      if (this.unlockOutsideBreakpoint) {
+        this.unlock();
+      }
+
+      if (this.isOpen && this.closeOutsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.close({ preserveState: true });
+      } else if (!this.isOpen && this.openOutsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.open();
+      }
+
+      if (this.lockOutsideBreakpoint) {
+        this.lock();
+      }
     }
   };
 
@@ -111,6 +163,8 @@ class Disclosure extends Component {
    * @param {HTMLElement}        options.disclosureElement                                 - The disclosure element in the DOM.
    * @param {HTMLElement}        options.controllerElement                                 - The disclosure toggle element in the DOM.
    * @param {string}             [options.disclosureContentSelector = .disclosure-content] - The query selector string for the disclosure content.
+   * @param {?(string|string[])} [options.lockedClass = locked]                            - The class(es) to apply when the disclosure is locked.
+   * @param {?(string|string[])} [options.unlockedClass = unlocked]                        - The class(es) to apply when the disclosure is unlocked.
    * @param {?(string|string[])} [options.openClass = show]                                - The class to apply when a disclosure is "open".
    * @param {?(string|string[])} [options.closeClass = hide]                               - The class to apply when a disclosure is "closed".
    * @param {?(string|string[])} [options.transitionClass = transitioning]                 - The class to apply when a disclosure is transitioning between "open" and "closed" states.
@@ -120,6 +174,16 @@ class Disclosure extends Component {
    * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
    * @param {?string}            [options.minWidth = ""]                                   - The width of the screen that the disclosure will automatically open/close itself.
    * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
+   * @param {?string}            [options.breakpoint = ""]                                 - The breakpoint that the disclosure will automatically open/close itself.
+   * @param {boolean}            [options.openInsideBreakpoint = false]                    - A flag to open the disclosure when inside the breakpoint.
+   * @param {boolean}            [options.openOutsideBreakpoint = false]                   - A flag to open the disclosure when outside the breakpoint.
+   * @param {boolean}            [options.closeInsideBreakpoint = false]                   - A flag to close the disclosure when inside the breakpoint.
+   * @param {boolean}            [options.closeOutsideBreakpoint = false]                  - A flag to close the disclosure when outside the breakpoint.
+   * @param {boolean}            [options.lockInsideBreakpoint = false]                    - A flag to lock the disclosure when inside the breakpoint.
+   * @param {boolean}            [options.lockOutsideBreakpoint = false]                   - A flag to lock the disclosure when outside the breakpoint.
+   * @param {boolean}            [options.unlockInsideBreakpoint = false]                  - A flag to unlock the disclosure when inside the breakpoint.
+   * @param {boolean}            [options.unlockOutsideBreakpoint = false]                 - A flag to unlock the disclosure when outside the breakpoint.
+   * @param {boolean}            [options.locked = false]                                  - A flag to lock the disclosure in its current state.
    * @param {?string}            [options.mediaQuery = ""]                                 - The media query to use when automatically opening/closing the disclosure.
    * @param {?string}            [options.prefix = graupl-]                                - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                                      - The key used to generate IDs throughout the disclosure.
@@ -130,6 +194,8 @@ class Disclosure extends Component {
     disclosureElement,
     controllerElement,
     disclosureContentSelector = ".disclosure-content",
+    lockedClass = "locked",
+    unlockedClass = "unlocked",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transitioning",
@@ -138,7 +204,17 @@ class Disclosure extends Component {
     closeDuration = -1,
     closeOnBlur = false,
     minWidth = "",
+    breakpoint = "",
     autoOpen = false,
+    openInsideBreakpoint = false,
+    openOutsideBreakpoint = false,
+    closeInsideBreakpoint = false,
+    closeOutsideBreakpoint = false,
+    lockInsideBreakpoint = false,
+    lockOutsideBreakpoint = false,
+    unlockInsideBreakpoint = false,
+    unlockOutsideBreakpoint = false,
+    locked = false,
     mediaQuery = "",
     prefix = "graupl-",
     key = null,
@@ -159,6 +235,8 @@ class Disclosure extends Component {
     this._selectors.content = disclosureContentSelector;
 
     // Set the classes.
+    this._classes.locked = lockedClass || "";
+    this._classes.unlocked = unlockedClass || "";
     this._classes.open = openClass || "";
     this._classes.close = closeClass || "";
     this._classes.transition = transitionClass || "";
@@ -171,14 +249,47 @@ class Disclosure extends Component {
     // Set close on blur.
     this._closeOnBlur = closeOnBlur;
 
+    // @todo Remove minWidth and autoOpen options in favor of breakpoint, openInsideBreakpoint, openOutsideBreakpoint, closeInsideBreakpoint, and closeOutsideBreakpoint options.
+    if (minWidth !== "") {
+      console.warn(
+        "`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."
+      );
+
+      if (breakpoint === "") {
+        breakpoint = minWidth;
+      }
+    }
+
+    if (autoOpen && breakpoint !== "") {
+      console.warn(
+        "`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."
+      );
+
+      openOutsideBreakpoint = autoOpen;
+      closeInsideBreakpoint = autoOpen;
+    }
+
     // Set collapse width and auto open functionality.
-    this._breakpoint = minWidth || "";
+    this._breakpoint = breakpoint || "";
     this._shouldOpen = autoOpen;
+    this._openInsideBreakpoint = openInsideBreakpoint;
+    this._openOutsideBreakpoint = openOutsideBreakpoint;
+    this._closeInsideBreakpoint = closeInsideBreakpoint;
+    this._closeOutsideBreakpoint = closeOutsideBreakpoint;
+    this._lockInsideBreakpoint = lockInsideBreakpoint;
+    this._lockOutsideBreakpoint = lockOutsideBreakpoint;
+    this._unlockInsideBreakpoint = unlockInsideBreakpoint;
+    this._unlockOutsideBreakpoint = unlockOutsideBreakpoint;
     this._mediaQueryString = mediaQuery || "";
+
+    // Set the lock state.
+    this._locked = new TransactionalValue(locked);
 
     // Register custom events.
     this._registerEvent("expand", { detail: { disclosure: this } });
     this._registerEvent("collapse", { detail: { disclosure: this } });
+    this._registerEvent("lock", { detail: { disclosure: this } });
+    this._registerEvent("unlock", { detail: { disclosure: this } });
 
     // Set up custom initialization.
     this._addEventListener(
@@ -189,11 +300,25 @@ class Disclosure extends Component {
         // those that _should_ open.
         if (
           this.dom.controller.getAttribute("aria-expanded") === "true" ||
-          (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
+          (this.openOutsideBreakpoint &&
+            !window.matchMedia(this.mediaQuery).matches) ||
+          (this.openInsideBreakpoint &&
+            window.matchMedia(this.mediaQuery).matches)
         ) {
-          this._expand({ emit: false, transition: false });
+          this.open();
         } else {
-          this._collapse({ emit: false, transition: false });
+          this.close();
+        }
+
+        // Handle auto-locking disclosures that should be locked.
+        if (
+          this.isLocked ||
+          (this.lockInsideBreakpoint &&
+            window.matchMedia(this.mediaQuery).matches) ||
+          (this.lockOutsideBreakpoint &&
+            !window.matchMedia(this.mediaQuery).matches)
+        ) {
+          this.lock();
         }
       }
     );
@@ -206,7 +331,15 @@ class Disclosure extends Component {
         // Boolean checks.
         const booleans = {
           closeOnBlur: this._closeOnBlur,
-          autoOpen: this._shouldOpen,
+          openInsideBreakpoint: this._openInsideBreakpoint,
+          openOutsideBreakpoint: this._openOutsideBreakpoint,
+          closeInsideBreakpoint: this._closeInsideBreakpoint,
+          closeOutsideBreakpoint: this._closeOutsideBreakpoint,
+          lockInsideBreakpoint: this._lockInsideBreakpoint,
+          lockOutsideBreakpoint: this._lockOutsideBreakpoint,
+          unlockInsideBreakpoint: this._unlockInsideBreakpoint,
+          unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
+          locked: this._locked.value,
         };
 
         // Check the booleans.
@@ -224,6 +357,44 @@ class Disclosure extends Component {
 
     if (initialize) {
       this.initialize();
+    }
+  }
+
+  /**
+   * The class(es) to apply to the disclosure.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes.locked
+   */
+  get lockedClass() {
+    return this._classes.locked;
+  }
+
+  set lockedClass(value) {
+    isValidClassList({ lockedClass: value });
+
+    if (this._classes.locked !== value) {
+      this._classes.locked = value;
+    }
+  }
+
+  /**
+   * The class(es) to apply to the disclosure.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes.unlocked
+   */
+  get unlockedClass() {
+    return this._classes.unlocked;
+  }
+
+  set unlockedClass(value) {
+    isValidClassList({ unlockedClass: value });
+
+    if (this._classes.unlocked !== value) {
+      this._classes.unlocked = value;
     }
   }
 
@@ -368,10 +539,18 @@ class Disclosure extends Component {
    * @see breakpoint
    */
   get minWidth() {
+    console.warn(
+      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
+    );
+
     return this.breakpoint;
   }
 
   set minWidth(value) {
+    console.warn(
+      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
+    );
+
     this.breakpoint = value;
   }
 
@@ -428,15 +607,163 @@ class Disclosure extends Component {
    * @see _shouldOpen
    */
   get shouldOpen() {
+    console.warn(
+      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
+    );
+
     return this._shouldOpen;
   }
 
   set shouldOpen(value) {
+    console.warn(
+      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
+    );
+
     isValidType("boolean", { shouldOpen: value });
 
     if (this._shouldOpen !== value) {
       this._shouldOpen = value;
     }
+  }
+
+  /**
+   * A flag to open the disclosure when inside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _openInsideBreakpoint
+   */
+  get openInsideBreakpoint() {
+    return this._openInsideBreakpoint;
+  }
+
+  set openInsideBreakpoint(value) {
+    isValidType("boolean", { openInsideBreakpoint: value });
+
+    if (this._openInsideBreakpoint !== value) {
+      this._openInsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to open the disclosure when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _openOutsideBreakpoint
+   */
+  get openOutsideBreakpoint() {
+    return this._openOutsideBreakpoint;
+  }
+
+  set openOutsideBreakpoint(value) {
+    isValidType("boolean", { openOutsideBreakpoint: value });
+
+    if (this._openOutsideBreakpoint !== value) {
+      this._openOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to close the disclosure when inside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _closeInsideBreakpoint
+   */
+  get closeInsideBreakpoint() {
+    return this._closeInsideBreakpoint;
+  }
+
+  set closeInsideBreakpoint(value) {
+    isValidType("boolean", { closeInsideBreakpoint: value });
+
+    if (this._closeInsideBreakpoint !== value) {
+      this._closeInsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to close the disclosure when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _closeOutsideBreakpoint
+   */
+  get closeOutsideBreakpoint() {
+    return this._closeOutsideBreakpoint;
+  }
+
+  set closeOutsideBreakpoint(value) {
+    isValidType("boolean", { closeOutsideBreakpoint: value });
+
+    if (this._closeOutsideBreakpoint !== value) {
+      this._closeOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to lock the disclosure in its current state when inside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _lockInsideBreakpoint
+   */
+  get lockInsideBreakpoint() {
+    return this._lockInsideBreakpoint;
+  }
+
+  set lockInsideBreakpoint(value) {
+    isValidType("boolean", { lockInsideBreakpoint: value });
+
+    if (this._lockInsideBreakpoint !== value) {
+      this._lockInsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to lock the disclosure in its current state when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _lockOutsideBreakpoint
+   */
+  get lockOutsideBreakpoint() {
+    return this._lockOutsideBreakpoint;
+  }
+
+  set lockOutsideBreakpoint(value) {
+    isValidType("boolean", { lockOutsideBreakpoint: value });
+
+    if (this._lockOutsideBreakpoint !== value) {
+      this._lockOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to indicate if the disclosure is locked.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get isLocked() {
+    return this._locked.value;
+  }
+
+  /**
+   * The committed lock preference for the disclosure.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get shouldBeLocked() {
+    return this._locked.committed;
   }
 
   /**
@@ -541,11 +868,11 @@ class Disclosure extends Component {
    *
    * @fires grauplDisclosureExpand
    *
-   * @param {Object<boolean>} [options = {}]              - Options for expanding the disclosure.
-   * @param {boolean}         [options.emit = true]       - Emit the expand event once expanded.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                            - Options for expanding the disclosure.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Emit the expand event once expanded.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  _expand({ emit = true, transition = true } = {}) {
+  _reveal({ emit = this.isInitialized, transition = this.isInitialized } = {}) {
     this.dom.controller.setAttribute("aria-expanded", "true");
 
     // If we're dealing with transition classes, then we need to utilize
@@ -592,11 +919,14 @@ class Disclosure extends Component {
    *
    * @fires grauplDisclosureCollapse
    *
-   * @param {Object<boolean>} [options = {}]              - Options for collapsing the disclosure.
-   * @param {boolean}         [options.emit = true]       - Emit the collapse event once collapsed.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                            - Options for collapsing the disclosure.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Emit the collapse event once collapsed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  _collapse({ emit = true, transition = true } = {}) {
+  _conseal({
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
     this.dom.controller.setAttribute("aria-expanded", "false");
 
     // If we're dealing with transition classes, then we need to utilize
@@ -632,6 +962,50 @@ class Disclosure extends Component {
 
     if (emit) {
       this._dispatchEvent("collapse", this.dom.controller);
+    }
+  }
+
+  /**
+   * Applies the locked state styling and dispatches the lock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for the lock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   */
+  _lock({ emit = this.isInitialized } = {}) {
+    // Add the locked class
+    addClass(this.lockedClass, this.dom.disclosure);
+
+    // Remove the unlocked class.
+    removeClass(this.unlockedClass, this.dom.disclosure);
+
+    this.dom.controller.setAttribute("disabled", "true");
+
+    if (emit) {
+      this._dispatchEvent("lock", this.dom.disclosure);
+    }
+  }
+
+  /**
+   * Applies the unlocked state styling and dispatches the unlock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for the unlock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   */
+  _unlock({ emit = this.isInitialized } = {}) {
+    // Add the unlocked class
+    addClass(this.unlockedClass, this.dom.disclosure);
+
+    // Remove the locked class.
+    removeClass(this.lockedClass, this.dom.disclosure);
+
+    this.dom.controller.removeAttribute("disabled");
+
+    if (emit) {
+      this._dispatchEvent("unlock", this.dom.disclosure);
     }
   }
 
@@ -771,18 +1145,26 @@ class Disclosure extends Component {
    *
    * Sets the disclosure's focus state to "self", calls expand, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for opening the disclosure.
-   * @param {boolean}         [options.force = false]         - Whether to force the open action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for opening the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once opened.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  open({ force = false, preserveState = false } = {}) {
+  open({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen && !force) return;
+    if (this.isLocked) return;
 
     // Set the focus state.
     this.focusState = "self";
 
     // Expand the disclosure.
-    this._expand();
+    this._reveal({ emit, transition });
 
     // Set the open state.
     this._open.value = true;
@@ -797,18 +1179,26 @@ class Disclosure extends Component {
    *
    * Sets the disclosure's focus state to "none", calls expand, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for previewing the disclosure.
-   * @param {boolean}         [options.force = false]         - Whether to force the preview action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for previewing the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the preview action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once previewed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  preview({ force = false, preserveState = false } = {}) {
+  preview({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen && !force) return;
+    if (this.isLocked) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Expand the disclosure.
-    this._expand();
+    this._reveal({ emit, transition });
 
     // Set the open state.
     this._open.value = true;
@@ -823,18 +1213,26 @@ class Disclosure extends Component {
    *
    * Sets the disclosure's focus state to "none", calls collapse, and sets isOpen to `false`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for closing the disclosure.
-   * @param {boolean}         [options.force = false]         - Whether to force the close action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for closing the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the collapse event once closed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  close({ force = false, preserveState = false } = {}) {
+  close({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (!this.isOpen && !force) return;
+    if (this.isLocked) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Collapse the disclosure.
-    this._collapse();
+    this._conseal({ emit, transition });
 
     // Set the open state.
     this._open.value = false;
@@ -847,15 +1245,72 @@ class Disclosure extends Component {
   /**
    * Toggles the open state of the disclosure.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for toggling the disclosure.
-   * @param {boolean}         [options.force = false]         - Whether to force the open or close action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for toggling the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open or close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand/collapse event once toggled.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  toggle({ force = false, preserveState = false } = {}) {
+  toggle({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen) {
-      this.close({ force, preserveState });
+      this.close({ force, emit, transition, preserveState });
     } else {
-      this.open({ force, preserveState });
+      this.open({ force, emit, transition, preserveState });
+    }
+  }
+
+  /**
+   * Locks the disclosure.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for locking the disclosure.
+   * @param {boolean}         [options.force = false]             - Whether to force the lock action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   */
+  lock({ force = false, emit = this.isInitialized } = {}) {
+    // Only lock if the disclosure is unlocked.
+    if (this.isLocked && !force) return;
+
+    this._locked.value = true;
+    this._lock({ emit });
+
+    // Commit the locked preference.
+    this._locked.commit();
+  }
+
+  /**
+   * Unlocks the disclosure.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for unlocking the disclosure.
+   * @param {boolean}         [options.force = true]              - Whether to force the unlock action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   */
+  unlock({ force = false, emit = this.isInitialized } = {}) {
+    // Only unlock if the disclosure is locked.
+    if (!this.isLocked && !force) return;
+
+    this._locked.value = false;
+    this._unlock({ emit });
+
+    this._locked.commit();
+  }
+
+  /**
+   * Toggles the locked state of the disclosure.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for toggling the lock state.
+   * @param {boolean}         [options.force = false]             - Whether to force the toggle action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock/unlock event.
+   */
+  toggleLock({ force = false, emit = this.isInitialized } = {}) {
+    if (this.isLocked) {
+      this.unlock({ force, emit });
+    } else {
+      this.lock({ force, emit });
     }
   }
 }
