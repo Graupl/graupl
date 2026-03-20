@@ -1284,11 +1284,11 @@ class NavigationShelf extends Component {
    *
    * @fires grauplNavigationShelfCollapse
    *
-   * @param {Object<boolean>} [options = {}]              - Options for conseal the shelf.
-   * @param {boolean}         [options.emit = true]       - Emit the collapse event once consealed.
+   * @param {Object<boolean>} [options = {}]              - Options for conceal the shelf.
+   * @param {boolean}         [options.emit = true]       - Emit the collapse event once concealed.
    * @param {boolean}         [options.transition = true] - Respect the transition class.
    */
-  _conseal({ emit = true, transition = true } = {}) {
+  _conceal({ emit = true, transition = true } = {}) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "false");
     }
@@ -1524,7 +1524,7 @@ class NavigationShelf extends Component {
     if (!this.isOpen && !force) return;
 
     this.unlock({ updateLock: !preserveLock });
-    this._conseal({ emit, transition });
+    this._conceal({ emit, transition });
 
     // Set the open flag.
     this._open = false;

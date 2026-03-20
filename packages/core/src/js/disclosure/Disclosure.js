@@ -923,7 +923,7 @@ class Disclosure extends Component {
    * @param {boolean}         [options.emit = this.isInitialized]       - Emit the collapse event once collapsed.
    * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  _conseal({
+  _conceal({
     emit = this.isInitialized,
     transition = this.isInitialized,
   } = {}) {
@@ -1232,7 +1232,7 @@ class Disclosure extends Component {
     this.focusState = "none";
 
     // Collapse the disclosure.
-    this._conseal({ emit, transition });
+    this._conceal({ emit, transition });
 
     // Set the open state.
     this._open.value = false;

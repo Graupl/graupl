@@ -161,7 +161,7 @@ class Alert extends Component {
       () => {
         // Handle hiding the alert by default.
         if (this.isHidden) {
-          this._conseal({ emit: false, transition: false });
+          this._conceal({ emit: false, transition: false });
         }
       }
     );
@@ -413,7 +413,7 @@ class Alert extends Component {
    * @param {boolean}         [options.emit = true]       - Emit the show event once concealed.
    * @param {boolean}         [options.transition = true] - Respect the transition class.
    */
-  _conseal({ emit = true, transition = true } = {}) {
+  _conceal({ emit = true, transition = true } = {}) {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
@@ -578,7 +578,7 @@ class Alert extends Component {
     this.focusState = "none";
 
     // Conceal the alert.
-    this._conseal();
+    this._conceal();
 
     // Set the hidden state.
     this._hidden.value = true;

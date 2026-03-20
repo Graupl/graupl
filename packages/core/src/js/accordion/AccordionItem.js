@@ -294,7 +294,7 @@ class AccordionItem extends Component {
   }
 
   /**
-   * Conseals the accordion item.
+   * Conceals the accordion item.
    *
    * Sets the accordion item's `aria-expanded` to "false", adds the
    * close class to the item, and removes the open class from the item.
@@ -407,7 +407,7 @@ class AccordionItem extends Component {
    * @param {Object<boolean>} [options = {}]                  - The options for hiding the accordion item.
    * @param {boolean}         [options.force = false]         - Whether to force the hide action.
    * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
-   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once consealed.
+   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once concealed.
    * @param {boolean}         [options.transition = true]     - Respect the transition class.
    */
   hide({
