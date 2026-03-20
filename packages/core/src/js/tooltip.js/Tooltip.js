@@ -54,12 +54,12 @@ import Component from "../Component.js";
  * @property {number}                      _durations.hide              - The duration time (in milliseconds) for the transition from shown to hidden states.
  * @property {TransactionalValue<boolean>} _hidden                      - The hidden state of the tooltip.
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the tooltip.
- * @property {grauplTooltipShow}             _events.show                 - The event triggered when the tooltip is shown.
- * @property {grauplTooltipHide}             _events.hide                 - The event triggered when the tooltip is hidden.
+ * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
+ * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the tooltip.
- * @property {Object<Tooltip>}               _elements                    - The instantiated elements within the tooltip.
+ * @property {Object<Tooltip>}             _elements                    - The instantiated elements within the tooltip.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the tooltip.
  * @property {string}                      _focusState                  - The current state of the tooltip's focus.
  * @property {string}                      _currentEvent                - The last type of event triggered within the tooltip.
