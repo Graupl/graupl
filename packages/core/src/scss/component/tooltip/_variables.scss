@@ -1,0 +1,358 @@
+// @graupl/core tooltip component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+// Custom property defaults:
+// | Custom property                           | Default                                                                                                                                                                             |
+// | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-tooltip-padding-x                  | var(--graupl-spacer-5)                                                                                                                                                              |
+// | --graupl-tooltip-padding-y                  | var(--graupl-spacer-5)                                                                                                                                                              |
+// | --graupl-tooltip-padding                    | var(--graupl-tooltip-padding-y) var(--graupl-tooltip-padding-x)                                                                                                                         |
+// | --graupl-tooltip-column-gap                 | var(--graupl-spacer-0)                                                                                                                                                              |
+// | --graupl-tooltip-row-gap                    | var(--graupl-spacer-3)                                                                                                                                                              |
+// | --graupl-tooltip-gap                        | var(--graupl-tooltip-column-gap) var(--graupl-tooltip-row-gap)                                                                                                                          |
+// | --graupl-tooltip-background                 | var(--graupl-background)                                                                                                                                                            |
+// | --graupl-tooltip-color                      | var(--graupl-color)                                                                                                                                                                 |
+// | --graupl-tooltip-link-color                 | link-variables.var(--graupl-link-color)                                                                                                                                             |
+// | --graupl-tooltip-link-visited-color         | var(--graupl-tooltip-link-color)                                                                                                                                                      |
+// | --graupl-tooltip-link-focus-color           | var(--graupl-tooltip-link-color)                                                                                                                                                      |
+// | --graupl-tooltip-link-hover-color           | link-variables.var(--graupl-link-hover-color)                                                                                                                                       |
+// | --graupl-tooltip-link-active-color          | var(--graupl-tooltip-link-hover-color)                                                                                                                                                |
+// | --graupl-tooltip-link-disabled-color        | link-variables.var(--graupl-link-disabled-color)                                                                                                                                    |
+// | --graupl-tooltip-border-color               | var(--graupl-tooltip-color)                                                                                                                                                           |
+// | --graupl-tooltip-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                |
+// | --graupl-tooltip-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                               |
+// | --graupl-tooltip-border-bottom-left-radius  | var(--graupl-border-bottom-left-radius)                                                                                                                                             |
+// | --graupl-tooltip-border-bottom-right-radius | var(--graupl-border-bottom-right-radius)                                                                                                                                            |
+// | --graupl-tooltip-border-radius              | var(--graupl-tooltip-border-top-left-radius) var(--graupl-tooltip-border-top-right-radius) var(--graupl-tooltip-border-bottom-right-radius) var(--graupl-tooltip-border-bottom-left-radius) |
+// | --graupl-tooltip-border-top-width           | var(--graupl-border-top-width)                                                                                                                                                      |
+// | --graupl-tooltip-border-right-width         | var(--graupl-border-right-width)                                                                                                                                                    |
+// | --graupl-tooltip-border-bottom-width        | var(--graupl-border-bottom-width)                                                                                                                                                   |
+// | --graupl-tooltip-border-left-width          | var(--graupl-border-left-width)                                                                                                                                                     |
+// | --graupl-tooltip-border-width               | var(--graupl-tooltip-border-top-width) var(--graupl-tooltip-border-right-width) var(--graupl-tooltip-border-bottom-width) var(--graupl-tooltip-border-left-width)                           |
+// | --graupl-tooltip-border-top-style           | var(--graupl-border-top-style)                                                                                                                                                      |
+// | --graupl-tooltip-border-right-style         | var(--graupl-border-right-style)                                                                                                                                                    |
+// | --graupl-tooltip-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                                   |
+// | --graupl-tooltip-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                     |
+// | --graupl-tooltip-border-style               | var(--graupl-tooltip-border-top-style) var(--graupl-tooltip-border-right-style) var(--graupl-tooltip-border-bottom-style) var(--graupl-tooltip-border-left-style)                           |
+// | --graupl-tooltip-transition                 | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)  |
+// | --graupl-tooltip-transition-reduced-motion  | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                             |
+// | --graupl-tooltip-header-padding-x           | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-header-padding-y           | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-header-padding             | var(--graupl-tooltip-header-padding-y) var(--graupl-tooltip-header-padding-x)                                                                                                           |
+// | --graupl-tooltip-title-color                | var(--graupl-tooltip-color)                                                                                                                                                           |
+// | --graupl-tooltip-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                          |
+// | --graupl-tooltip-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                        |
+// | --graupl-tooltip-title-font-family          | var(--graupl-h4-font-family)                                                                                                                                                        |
+// | --graupl-tooltip-title-line-height          | var(--graupl-h4-line-height)                                                                                                                                                        |
+// | --graupl-tooltip-title-margin               | 0 0 0 0                                                                                                                                                                             |
+// | --graupl-tooltip-body-padding-x             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-body-padding-y             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-body-padding               | var(--graupl-tooltip-body-padding-y) var(--graupl-tooltip-body-padding-x)                                                                                                               |
+// | --graupl-tooltip-footer-padding-x           | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-footer-padding-y           | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-footer-padding             | var(--graupl-tooltip-footer-padding-y) var(--graupl-tooltip-footer-padding-x)                                                                                                           |
+
+@use "defaults";
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "../../theme/color/variables" as color;
+@use "../../theme/typography/variables" as typography;
+@use "../../base/link/variables" as link-variables;
+@use "sass:map";
+
+// Tooltip properties.
+// --graupl-tooltip-padding-x
+$tooltip-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-padding-x,
+  #{map.get(root-variables.$spacers, 5)}
+);
+
+// --graupl-tooltip-padding-y
+$tooltip-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-padding-y,
+  #{map.get(root-variables.$spacers, 5)}
+);
+
+// --graupl-tooltip-padding
+$tooltip-padding: var(
+  --#{root-defaults.$prefix}tooltip-padding,
+  #{$tooltip-padding-y} #{$tooltip-padding-x}
+);
+
+// Tooltip gap properties.
+// --graupl-tooltip-column-gap
+$tooltip-column-gap: var(
+  --#{root-defaults.$prefix}tooltip-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-tooltip-row-gap
+$tooltip-row-gap: var(
+  --#{root-defaults.$prefix}tooltip-row-gap,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-tooltip-gap
+$tooltip-gap: var(
+  --#{root-defaults.$prefix}tooltip-gap,
+  #{$tooltip-column-gap} #{$tooltip-row-gap}
+);
+
+// Tooltip color properties.
+// --graupl-tooltip-background
+$tooltip-background: var(
+  --#{root-defaults.$prefix}tooltip-background,
+  #{color.$background}
+);
+
+// --graupl-tooltip-color
+$tooltip-color: var(--#{root-defaults.$prefix}tooltip-color, #{color.$color});
+
+// --graupl-tooltip-link-color
+$tooltip-link-color: var(
+  --#{root-defaults.$prefix}tooltip-link-color,
+  #{link-variables.$link-color}
+);
+
+// --graupl-tooltip-link-visited-color
+$tooltip-link-visited-color: var(
+  --#{root-defaults.$prefix}tooltip-link-visited-color,
+  #{$tooltip-link-color}
+);
+
+// --graupl-tooltip-link-focus-color
+$tooltip-link-focus-color: var(
+  --#{root-defaults.$prefix}tooltip-link-focus-color,
+  #{$tooltip-link-color}
+);
+
+// --graupl-tooltip-link-hover-color
+$tooltip-link-hover-color: var(
+  --#{root-defaults.$prefix}tooltip-link-hover-color,
+  #{link-variables.$link-hover-color}
+);
+
+// --graupl-tooltip-link-active-color
+$tooltip-link-active-color: var(
+  --#{root-defaults.$prefix}tooltip-link-active-color,
+  #{$tooltip-link-hover-color}
+);
+
+// --graupl-tooltip-link-disabled-color
+$tooltip-link-disabled-color: var(
+  --#{root-defaults.$prefix}tooltip-link-disabled-color,
+  #{link-variables.$link-disabled-color}
+);
+
+// Tooltip border-properties.
+// --graupl-tooltip-border-color
+$tooltip-border-color: var(
+  --#{root-defaults.$prefix}tooltip-border-color,
+  #{$tooltip-color}
+);
+
+// --graupl-tooltip-border-top-left-radius
+$tooltip-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-tooltip-border-top-right-radius
+$tooltip-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-tooltip-border-bottom-left-radius
+$tooltip-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-tooltip-border-bottom-right-radius
+$tooltip-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-tooltip-border-radius
+$tooltip-border-radius: var(
+  --#{root-defaults.$prefix}tooltip-border-radius,
+  #{$tooltip-border-top-left-radius} #{$tooltip-border-top-right-radius}
+    #{$tooltip-border-bottom-right-radius} #{$tooltip-border-bottom-left-radius}
+);
+
+// --graupl-tooltip-border-top-width
+$tooltip-border-top-width: var(
+  --#{root-defaults.$prefix}tooltip-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-tooltip-border-right-width
+$tooltip-border-right-width: var(
+  --#{root-defaults.$prefix}tooltip-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-tooltip-border-bottom-width
+$tooltip-border-bottom-width: var(
+  --#{root-defaults.$prefix}tooltip-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-tooltip-border-left-width
+$tooltip-border-left-width: var(
+  --#{root-defaults.$prefix}tooltip-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-tooltip-border-width
+$tooltip-border-width: var(
+  --#{root-defaults.$prefix}tooltip-border-width,
+  #{$tooltip-border-top-width} #{$tooltip-border-right-width}
+    #{$tooltip-border-bottom-width} #{$tooltip-border-left-width}
+);
+
+// --graupl-tooltip-border-top-style
+$tooltip-border-top-style: var(
+  --#{root-defaults.$prefix}tooltip-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-tooltip-border-right-style
+$tooltip-border-right-style: var(
+  --#{root-defaults.$prefix}tooltip-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-tooltip-border-bottom-style
+$tooltip-border-bottom-style: var(
+  --#{root-defaults.$prefix}tooltip-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-tooltip-border-left-style
+$tooltip-border-left-style: var(
+  --#{root-defaults.$prefix}tooltip-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-tooltip-border-style
+$tooltip-border-style: var(
+  --#{root-defaults.$prefix}tooltip-border-style,
+  #{$tooltip-border-top-style} #{$tooltip-border-right-style}
+    #{$tooltip-border-bottom-style} #{$tooltip-border-left-style}
+);
+
+// Tooltip transition properties.
+// --graupl-tooltip-transition
+$tooltip-transition: var(
+  --#{root-defaults.$prefix}tooltip-transition,
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function},
+  transform #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+
+// --graupl-tooltip-transition-reduced-motion
+$tooltip-transition-reduced-motion: var(
+  --#{root-defaults.$prefix}tooltip-transition-reduced-motion,
+  opacity #{map.get(root-variables.$transition-durations, fast)}
+    #{root-variables.$transition-timing-function}
+);
+
+// Tooltip header properties.
+// --graupl-tooltip-header-padding-x
+$tooltip-header-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-header-padding-x,
+  0
+);
+
+// --graupl-tooltip-header-padding-y
+$tooltip-header-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-header-padding-y,
+  0
+);
+
+// --graupl-tooltip-header-padding
+$tooltip-header-padding: var(
+  --#{root-defaults.$prefix}tooltip-header-padding,
+  #{$tooltip-header-padding-y} #{$tooltip-header-padding-x}
+);
+
+// Tooltip title properties.
+// --graupl-tooltip-title-color
+$tooltip-title-color: var(
+  --#{root-defaults.$prefix}tooltip-title-color,
+  #{$tooltip-color}
+);
+
+// --graupl-tooltip-title-font-size
+$tooltip-title-font-size: var(
+  --#{root-defaults.$prefix}tooltip-title-font-size,
+  #{typography.$h4-font-size}
+);
+
+// --graupl-tooltip-title-font-weight
+$tooltip-title-font-weight: var(
+  --#{root-defaults.$prefix}tooltip-title-font-weight,
+  #{typography.$h4-font-weight}
+);
+
+// --graupl-tooltip-title-font-family
+$tooltip-title-font-family: var(
+  --#{root-defaults.$prefix}tooltip-title-font-family,
+  #{typography.$h4-font-family}
+);
+
+// --graupl-tooltip-title-line-height
+$tooltip-title-line-height: var(
+  --#{root-defaults.$prefix}tooltip-title-line-height,
+  #{typography.$h4-line-height}
+);
+
+// --graupl-tooltip-title-margin
+$tooltip-title-margin: var(
+  --#{root-defaults.$prefix}tooltip-title-margin,
+  0 0 0 0
+);
+
+// Tooltip body properties.
+// --graupl-tooltip-body-padding-x
+$tooltip-body-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-body-padding-x,
+  0
+);
+
+// --graupl-tooltip-body-padding-y
+$tooltip-body-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-body-padding-y,
+  0
+);
+
+// --graupl-tooltip-body-padding
+$tooltip-body-padding: var(
+  --#{root-defaults.$prefix}tooltip-body-padding,
+  #{$tooltip-body-padding-y} #{$tooltip-body-padding-x}
+);
+
+// Tooltip footer properties.
+// --graupl-tooltip-footer-padding-x
+$tooltip-footer-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-footer-padding-x,
+  0
+);
+
+// --graupl-tooltip-footer-padding-y
+$tooltip-footer-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-footer-padding-y,
+  0
+);
+
+// --graupl-tooltip-footer-padding
+$tooltip-footer-padding: var(
+  --#{root-defaults.$prefix}tooltip-footer-padding,
+  #{$tooltip-footer-padding-y} #{$tooltip-footer-padding-x}
+);
