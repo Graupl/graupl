@@ -14,12 +14,6 @@
 // | --graupl-tooltip-gap                        | var(--graupl-tooltip-column-gap) var(--graupl-tooltip-row-gap)                                                                                                                          |
 // | --graupl-tooltip-background                 | var(--graupl-background)                                                                                                                                                            |
 // | --graupl-tooltip-color                      | var(--graupl-color)                                                                                                                                                                 |
-// | --graupl-tooltip-link-color                 | link-variables.var(--graupl-link-color)                                                                                                                                             |
-// | --graupl-tooltip-link-visited-color         | var(--graupl-tooltip-link-color)                                                                                                                                                      |
-// | --graupl-tooltip-link-focus-color           | var(--graupl-tooltip-link-color)                                                                                                                                                      |
-// | --graupl-tooltip-link-hover-color           | link-variables.var(--graupl-link-hover-color)                                                                                                                                       |
-// | --graupl-tooltip-link-active-color          | var(--graupl-tooltip-link-hover-color)                                                                                                                                                |
-// | --graupl-tooltip-link-disabled-color        | link-variables.var(--graupl-link-disabled-color)                                                                                                                                    |
 // | --graupl-tooltip-border-color               | var(--graupl-tooltip-color)                                                                                                                                                           |
 // | --graupl-tooltip-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                |
 // | --graupl-tooltip-border-top-right-radius    | var(--graupl-border-top-right-radius)                                                                                                                                               |
@@ -38,42 +32,30 @@
 // | --graupl-tooltip-border-style               | var(--graupl-tooltip-border-top-style) var(--graupl-tooltip-border-right-style) var(--graupl-tooltip-border-bottom-style) var(--graupl-tooltip-border-left-style)                           |
 // | --graupl-tooltip-transition                 | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)  |
 // | --graupl-tooltip-transition-reduced-motion  | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                             |
-// | --graupl-tooltip-header-padding-x           | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-header-padding-y           | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-header-padding             | var(--graupl-tooltip-header-padding-y) var(--graupl-tooltip-header-padding-x)                                                                                                           |
-// | --graupl-tooltip-title-color                | var(--graupl-tooltip-color)                                                                                                                                                           |
-// | --graupl-tooltip-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                          |
-// | --graupl-tooltip-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                        |
-// | --graupl-tooltip-title-font-family          | var(--graupl-h4-font-family)                                                                                                                                                        |
-// | --graupl-tooltip-title-line-height          | var(--graupl-h4-line-height)                                                                                                                                                        |
-// | --graupl-tooltip-title-margin               | 0 0 0 0                                                                                                                                                                             |
-// | --graupl-tooltip-body-padding-x             | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-body-padding-y             | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-body-padding               | var(--graupl-tooltip-body-padding-y) var(--graupl-tooltip-body-padding-x)                                                                                                               |
-// | --graupl-tooltip-footer-padding-x           | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-footer-padding-y           | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-footer-padding             | var(--graupl-tooltip-footer-padding-y) var(--graupl-tooltip-footer-padding-x)                                                                                                           |
+// | --graupl-tooltip-bubble-color                | var(--graupl-tooltip-color)                                                                                                                                                           |
+// | --graupl-tooltip-bubble-font-size            | var(--graupl-small-font-size)                                                                                                                                                          |
+// | --graupl-tooltip-bubble-font-weight          | var(--graupl-small-font-weight)                                                                                                                                                        |
+// | --graupl-tooltip-bubble-font-family          | var(--graupl-small-font-family)                                                                                                                                                        |
+// | --graupl-tooltip-bubble-line-height          | var(--graupl-small-line-height)                                                                                                                                                        |
+// | --graupl-tooltip-bubble-margin               | 0 0 0 0                                                                                                                                                                             |
+// | --graupl-tooltip-button-padding-x             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-button-padding-y             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-button-padding               | var(--graupl-tooltip-button-padding-y) var(--graupl-tooltip-button-padding-x)                                                                                                               |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
 @use "../../theme/color/variables" as color;
+@use "../../base/button/variables" as button;
 @use "../../theme/typography/variables" as typography;
-@use "../../base/link/variables" as link-variables;
 @use "sass:map";
 
 // Tooltip properties.
 // --graupl-tooltip-padding-x
-$tooltip-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-padding-x,
-  #{map.get(root-variables.$spacers, 5)}
-);
+$tooltip-padding-x: var(--#{root-defaults.$prefix}tooltip-padding-x, 0);
 
 // --graupl-tooltip-padding-y
-$tooltip-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-padding-y,
-  #{map.get(root-variables.$spacers, 5)}
-);
+$tooltip-padding-y: var(--#{root-defaults.$prefix}tooltip-padding-y, 0);
 
 // --graupl-tooltip-padding
 $tooltip-padding: var(
@@ -104,47 +86,11 @@ $tooltip-gap: var(
 // --graupl-tooltip-background
 $tooltip-background: var(
   --#{root-defaults.$prefix}tooltip-background,
-  #{color.$background}
+  transparent
 );
 
 // --graupl-tooltip-color
 $tooltip-color: var(--#{root-defaults.$prefix}tooltip-color, #{color.$color});
-
-// --graupl-tooltip-link-color
-$tooltip-link-color: var(
-  --#{root-defaults.$prefix}tooltip-link-color,
-  #{link-variables.$link-color}
-);
-
-// --graupl-tooltip-link-visited-color
-$tooltip-link-visited-color: var(
-  --#{root-defaults.$prefix}tooltip-link-visited-color,
-  #{$tooltip-link-color}
-);
-
-// --graupl-tooltip-link-focus-color
-$tooltip-link-focus-color: var(
-  --#{root-defaults.$prefix}tooltip-link-focus-color,
-  #{$tooltip-link-color}
-);
-
-// --graupl-tooltip-link-hover-color
-$tooltip-link-hover-color: var(
-  --#{root-defaults.$prefix}tooltip-link-hover-color,
-  #{link-variables.$link-hover-color}
-);
-
-// --graupl-tooltip-link-active-color
-$tooltip-link-active-color: var(
-  --#{root-defaults.$prefix}tooltip-link-active-color,
-  #{$tooltip-link-hover-color}
-);
-
-// --graupl-tooltip-link-disabled-color
-$tooltip-link-disabled-color: var(
-  --#{root-defaults.$prefix}tooltip-link-disabled-color,
-  #{link-variables.$link-disabled-color}
-);
 
 // Tooltip border-properties.
 // --graupl-tooltip-border-color
@@ -263,96 +209,246 @@ $tooltip-transition-reduced-motion: var(
     #{root-variables.$transition-timing-function}
 );
 
-// Tooltip header properties.
-// --graupl-tooltip-header-padding-x
-$tooltip-header-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-header-padding-x,
-  0
-);
-
-// --graupl-tooltip-header-padding-y
-$tooltip-header-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-header-padding-y,
-  0
-);
-
-// --graupl-tooltip-header-padding
-$tooltip-header-padding: var(
-  --#{root-defaults.$prefix}tooltip-header-padding,
-  #{$tooltip-header-padding-y} #{$tooltip-header-padding-x}
-);
-
-// Tooltip title properties.
-// --graupl-tooltip-title-color
-$tooltip-title-color: var(
-  --#{root-defaults.$prefix}tooltip-title-color,
+// Tooltip bubble properties.
+// --graupl-tooltip-bubble-color
+$tooltip-bubble-color: var(
+  --#{root-defaults.$prefix}tooltip-bubble-color,
   #{$tooltip-color}
 );
 
-// --graupl-tooltip-title-font-size
-$tooltip-title-font-size: var(
-  --#{root-defaults.$prefix}tooltip-title-font-size,
-  #{typography.$h4-font-size}
+// --graupl-tooltip-bubble-font-size
+$tooltip-bubble-font-size: var(
+  --#{root-defaults.$prefix}tooltip-bubble-font-size,
+  #{typography.$small-font-size}
 );
 
-// --graupl-tooltip-title-font-weight
-$tooltip-title-font-weight: var(
-  --#{root-defaults.$prefix}tooltip-title-font-weight,
-  #{typography.$h4-font-weight}
+// --graupl-tooltip-bubble-font-weight
+$tooltip-bubble-font-weight: var(
+  --#{root-defaults.$prefix}tooltip-bubble-font-weight,
+  #{typography.$small-font-weight}
 );
 
-// --graupl-tooltip-title-font-family
-$tooltip-title-font-family: var(
-  --#{root-defaults.$prefix}tooltip-title-font-family,
-  #{typography.$h4-font-family}
+// --graupl-tooltip-bubble-font-family
+$tooltip-bubble-font-family: var(
+  --#{root-defaults.$prefix}tooltip-bubble-font-family,
+  #{typography.$small-font-family}
 );
 
-// --graupl-tooltip-title-line-height
-$tooltip-title-line-height: var(
-  --#{root-defaults.$prefix}tooltip-title-line-height,
-  #{typography.$h4-line-height}
+// --graupl-tooltip-bubble-line-height
+$tooltip-bubble-line-height: var(
+  --#{root-defaults.$prefix}tooltip-bubble-line-height,
+  #{typography.$small-line-height}
 );
 
-// --graupl-tooltip-title-margin
-$tooltip-title-margin: var(
-  --#{root-defaults.$prefix}tooltip-title-margin,
+// --graupl-tooltip-bubble-margin
+$tooltip-bubble-margin: var(
+  --#{root-defaults.$prefix}tooltip-bubble-margin,
   0 0 0 0
 );
 
-// Tooltip body properties.
-// --graupl-tooltip-body-padding-x
-$tooltip-body-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-body-padding-x,
-  0
+// --graupl-tooltip-bubble-padding-x
+$tooltip-bubble-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-bubble-padding-x,
+  #{map.get(root-variables.$spacers, 2)}
 );
 
-// --graupl-tooltip-body-padding-y
-$tooltip-body-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-body-padding-y,
-  0
+// --graupl-tooltip-bubble-padding-y
+$tooltip-bubble-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-bubble-padding-y,
+  #{map.get(root-variables.$spacers, 2)}
 );
 
-// --graupl-tooltip-body-padding
-$tooltip-body-padding: var(
-  --#{root-defaults.$prefix}tooltip-body-padding,
-  #{$tooltip-body-padding-y} #{$tooltip-body-padding-x}
+// --graupl-tooltip-bubble-padding
+$tooltip-bubble-padding: var(
+  --#{root-defaults.$prefix}tooltip-bubble-padding,
+  #{$tooltip-bubble-padding-y} #{$tooltip-bubble-padding-x}
 );
 
-// Tooltip footer properties.
-// --graupl-tooltip-footer-padding-x
-$tooltip-footer-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-footer-padding-x,
-  0
+// --graupl-tooltip-bubble-border-color
+$tooltip-bubble-border-color: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-color,
+  #{$tooltip-color}
 );
 
-// --graupl-tooltip-footer-padding-y
-$tooltip-footer-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-footer-padding-y,
-  0
+// --graupl-tooltip-bubble-border-top-left-radius
+$tooltip-bubble-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
 );
 
-// --graupl-tooltip-footer-padding
-$tooltip-footer-padding: var(
-  --#{root-defaults.$prefix}tooltip-footer-padding,
-  #{$tooltip-footer-padding-y} #{$tooltip-footer-padding-x}
+// --graupl-tooltip-bubble-border-top-right-radius
+$tooltip-bubble-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-tooltip-bubble-border-bottom-left-radius
+$tooltip-bubble-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-tooltip-bubble-border-bottom-right-radius
+$tooltip-bubble-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-tooltip-bubble-border-radius
+$tooltip-bubble-border-radius: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-radius,
+  #{$tooltip-bubble-border-top-left-radius}
+    #{$tooltip-bubble-border-top-right-radius}
+    #{$tooltip-bubble-border-bottom-right-radius}
+    #{$tooltip-bubble-border-bottom-left-radius}
+);
+
+// --graupl-tooltip-bubble-border-top-width
+$tooltip-bubble-border-top-width: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-tooltip-bubble-border-right-width
+$tooltip-bubble-border-right-width: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-tooltip-bubble-border-bottom-width
+$tooltip-bubble-border-bottom-width: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-tooltip-bubble-border-left-width
+$tooltip-bubble-border-left-width: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-tooltip-bubble-border-width
+$tooltip-bubble-border-width: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-width,
+  #{$tooltip-bubble-border-top-width} #{$tooltip-bubble-border-right-width}
+    #{$tooltip-bubble-border-bottom-width} #{$tooltip-bubble-border-left-width}
+);
+
+// --graupl-tooltip-bubble-border-top-style
+$tooltip-bubble-border-top-style: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-tooltip-bubble-border-right-style
+$tooltip-bubble-border-right-style: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-tooltip-bubble-border-bottom-style
+$tooltip-bubble-border-bottom-style: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-tooltip-bubble-border-left-style
+$tooltip-bubble-border-left-style: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-tooltip-bubble-border-style
+$tooltip-bubble-border-style: var(
+  --#{root-defaults.$prefix}tooltip-bubble-border-style,
+  #{$tooltip-bubble-border-top-style} #{$tooltip-bubble-border-right-style}
+    #{$tooltip-bubble-border-bottom-style} #{$tooltip-bubble-border-left-style}
+);
+
+// Tooltip button properties.
+// --graupl-tooltip-button-background
+$tooltip-button-background: var(
+  --#{root-defaults.$prefix}tooltip-button-background,
+  #{color.$color}
+);
+
+// --graupl-tooltip-button-hover-background
+$tooltip-button-hover-background: var(
+  --#{root-defaults.$prefix}tooltip-button-hover-background,
+  #{color.$color}
+);
+
+// --graupl-tooltip-button-color
+$tooltip-button-color: var(
+  --#{root-defaults.$prefix}tooltip-button-color,
+  #{color.$background}
+);
+
+// --graupl-tooltip-button-border-color
+$tooltip-button-border-color: var(
+  --#{root-defaults.$prefix}tooltip-button-border-color,
+  #{button.$button-border-color}
+);
+
+// --graupl-tooltip-button-font-size
+$tooltip-button-font-size: var(
+  --#{root-defaults.$prefix}tooltip-button-font-size,
+  #{map.get(typography.$font-sizes, xs)}
+);
+
+// --graupl-tooltip-button-font-weight
+$tooltip-button-font-weight: var(
+  --#{root-defaults.$prefix}tooltip-button-font-weight,
+  #{typography.$font-weight-bold}
+);
+
+// --graupl-tooltip-button-padding-x
+$tooltip-button-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-button-padding-x,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-tooltip-button-padding-y
+$tooltip-button-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-button-padding-y,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-tooltip-button-padding
+$tooltip-button-padding: var(
+  --#{root-defaults.$prefix}tooltip-button-padding,
+  #{$tooltip-button-padding-y} #{$tooltip-button-padding-x}
+);
+
+// --graupl-tooltip-button-border-top-left-radius
+$tooltip-button-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-button-border-top-left-radius,
+  #{map.get(root-variables.$spacers, 7)}
+);
+
+// --graupl-tooltip-button-border-top-right-radius
+$tooltip-button-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-button-border-top-right-radius,
+  #{map.get(root-variables.$spacers, 7)}
+);
+
+// --graupl-tooltip-button-border-bottom-left-radius
+$tooltip-button-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-button-border-bottom-left-radius,
+  #{map.get(root-variables.$spacers, 7)}
+);
+
+// --graupl-tooltip-button-border-bottom-right-radius
+$tooltip-button-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-button-border-bottom-right-radius,
+  #{map.get(root-variables.$spacers, 7)}
+);
+
+// --graupl-tooltip-button-border-radius
+$tooltip-button-border-radius: var(
+  --#{root-defaults.$prefix}tooltip-button-border-radius,
+  #{$tooltip-button-border-top-left-radius}
+    #{$tooltip-button-border-top-right-radius}
+    #{$tooltip-button-border-bottom-right-radius}
+    #{$tooltip-button-border-bottom-left-radius}
 );

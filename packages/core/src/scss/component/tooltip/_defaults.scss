@@ -19,10 +19,10 @@ $tooltip-selector-base: $selector-base !default;
 $tooltip-selector: "tooltip" !default;
 $tooltip-theme-selector-base: $modifier-selector-base !default;
 $tooltip-theme-selector-prefix: "" !default;
-$tooltip-body-selector-base: $selector-base !default;
-$tooltip-body-selector: "tooltip-body" !default;
-$tooltip-title-selector-base: $selector-base !default;
-$tooltip-title-selector: "tooltip-title" !default;
+$tooltip-button-selector-base: $selector-base !default;
+$tooltip-button-selector: "tooltip-button" !default;
+$tooltip-bubble-selector-base: $selector-base !default;
+$tooltip-bubble-selector: "tooltip-bubble" !default;
 $tooltip-hidden-selector-base: $modifier-selector-base !default;
 $tooltip-hidden-selector: "hide" !default;
 $tooltip-shown-selector-base: $modifier-selector-base !default;
@@ -41,16 +41,13 @@ $tooltip-transition-selector: "transitioning" !default;
 // Secondary/tertiary tooltips will use the same shade for their respective colours.
 $-tooltip-theme-mappings: (
   color: 900,
-  background: 200,
-  border-color: 700,
-  title-color: 800,
-  button-border-color: transparent,
-  link-color: 800,
-  link-visited-color: 800,
-  link-focus-color: 800,
-  link-hover-color: 900,
-  link-active-color: 900,
-  link-disabled-color: 400,
+  background: transparent,
+  border-color: transparent,
+  bubble-color: 800,
+  button-border-color: 800,
+  button-color: 100,
+  button-background: 800,
+  button-hover-background: 700,
 );
 $tooltip-theme-mappings: () !default;
 
