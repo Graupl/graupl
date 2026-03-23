@@ -16,8 +16,6 @@ const generate = (
 
       new Tooltip({
         tooltipElement,
-        controllerElement:
-          tooltipElement.querySelector(".tooltip-button") || null,
         initialize: true,
         ...options,
         ...tooltipOptions,

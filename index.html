@@ -158,7 +158,13 @@
         <div class="input-group inline"><label for="textarea">Textarea</label>
           <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
         </div>
-        <div class="input-group"><label for="textarea-readonly">Readonly Textarea</label>
+        <div class="input-group">
+          <label for="textarea-readonly">Readonly Textarea
+            <div class="tooltip">
+              <span class="tooltip-bubble">This is information about the textarea</span>
+              <button type="button" class="tooltip-button" />
+            </div>
+          </label>
           <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
             readonly>Readonly Textarea</textarea>
         </div>
@@ -212,7 +218,12 @@
         <fieldset>
           <legend>Checkboxes</legend>
           <label for="checkbox">
-            <input type="checkbox" id="checkbox"> Checkbox</label>
+            <input type="checkbox" id="checkbox"> Checkbox
+            <div class="tooltip">
+              <span class="tooltip-bubble">This is information about the checkbox</span>
+              <button type="button" class="tooltip-button" />
+            </div>
+          </label>
           <label for="checkbox-checked">
             <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
           <label for="checkbox-disabled">
