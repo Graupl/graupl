@@ -216,8 +216,14 @@
     --#{root-defaults.$prefix}button-focus-background: #{$tooltip-button-hover-background};
     --#{root-defaults.$prefix}button-focus-color: #{$tooltip-button-color};
     --#{root-defaults.$prefix}button-padding: #{$tooltip-button-padding};
-    --#{root-defaults.$prefix}button-min-height: 20px;
-    --#{root-defaults.$prefix}button-min-width: 24px;
+    --#{root-defaults.$prefix}button-min-height: #{map.get(
+        root-variables.$spacers,
+        3
+      )};
+    --#{root-defaults.$prefix}button-min-width: #{map.get(
+        root-variables.$spacers,
+        6
+      )};
 
     display: grid;
     position: relative;
@@ -244,6 +250,7 @@
   // .tooltip-bubble
   #{defaults.$tooltip-bubble-selector-base}#{defaults.$tooltip-bubble-selector} {
     position: absolute;
+    top: 0;
     grid-area: bubble;
     width: max-content;
     min-width: 200px;
@@ -299,6 +306,7 @@
   #{defaults.$tooltip-button-selector-base}#{defaults.$tooltip-button-selector} {
     @include button-mixins.apply-theme;
 
+    font-family: $tooltip-button-font-family;
     font-size: $tooltip-button-font-size;
     font-weight: $tooltip-button-font-weight;
   }

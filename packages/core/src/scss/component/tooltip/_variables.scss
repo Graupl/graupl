@@ -396,10 +396,16 @@ $tooltip-button-border-color: var(
   #{button.$button-border-color}
 );
 
+// --graupl-tooltip-button-font-family
+$tooltip-button-font-family: var(
+  --#{root-defaults.$prefix}tooltip-button-font-family,
+  serif
+);
+
 // --graupl-tooltip-button-font-size
 $tooltip-button-font-size: var(
   --#{root-defaults.$prefix}tooltip-button-font-size,
-  #{map.get(typography.$font-sizes, xs)}
+  #{map.get(typography.$font-sizes, sm)}
 );
 
 // --graupl-tooltip-button-font-weight

@@ -57,7 +57,6 @@ import Component from "../Component.js";
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the tooltip.
  * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
  * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
- * @property {boolean}                     _shouldOpen                  - A value to force the tooltip open when the breakpoint width is passed.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the tooltip when it loses focus in the DOM.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
@@ -87,40 +86,29 @@ class Tooltip extends Component {
   _protectedDOMElements = ["button"];
   _hidden = new TransactionalValue(false);
   _storageKey = "tooltips";
-  _shouldOpen = true;
   _closeOnBlur = true;
   _name = "Tooltip";
-  _mediaQueryListEventCallback = (event) => {
-    if (!this.dom.tooltipButton) {
-      return;
-    }
-
-    if (event.matches && this.isHidden) {
-      this.close();
-    } else {
-      this.open();
-    }
-  };
 
   /**
    * Constructs a new `Tooltip`.
    *
-   * @param {object}               [options = {}]                            - The options object.
-   * @param {HTMLElement}          options.tooltipElement                    - The tooltip element.
-   * @param {?HTMLElement}         [options.tooltipButtonElement = null]     - The button element.
-   * @param {?HTMLElement}         [options.tooltipBubbleElement = null]     - The bubble element.
+   * @param {object}               options                                     - The options object.
+   * @param {HTMLElement}          [options.tooltipElement]                    - The tooltip element.
+   * @param {?HTMLElement}         [options.tooltipButtonElement = .tooltip-button]     - The button element.
+   * @param {?HTMLElement}         [options.tooltipBubbleElement = .tooltip-bubble]     - The bubble element.
    * @param {string|string[]|null} [options.showClass = show]                - The class(es) to apply when the tooltip is shown.
    * @param {string|string[]|null} [options.hideClass = hide]                - The class(es) to apply when the tooltip is hidden.
    * @param {string|string[]|null} [options.transitionClass = transitioning] - The class(es) to apply when the tooltip is transitioning between states.
+   * @param {number}               [options.transitionDelay = 1000]         - A flag to initialize the tooltip immediately upon creation.
    * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "shown" and "hidden" states (in milliseconds).
    * @param {boolean}              [options.showDuration = -1]               - The duration of the transition from "hidden" to "shown" states (in milliseconds).
    * @param {boolean}              [options.hideDuration = -1]               - The duration of the transition from "shown" to "hidden" states (in milliseconds).
-   * @param {boolean}              [options.isHidden = true]                - A flag to determine the initial state of the tooltip.
+   * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
+   * @param {boolean}              [options.isHidden = true]                 - A flag to determine the initial state of the tooltip.
    * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
    * @param {?(string|string[])}   [options.initializeClass = initializing]  - The class(es) to apply when the tooltip is initializing.
    * @param {boolean}              [options.initialize = false]              - A flag to initialize the tooltip immediately upon creation.
-   * @param options.tooltipBubbleElement
    */
   constructor({
     tooltipElement,
@@ -129,9 +117,11 @@ class Tooltip extends Component {
     showClass = "show",
     hideClass = "hide",
     transitionClass = "transitioning",
+    transitionDelay = 1000,
     transitionDuration = 150,
     showDuration = -1,
     hideDuration = -1,
+    closeOnBlur = true,
     isHidden = true,
     prefix = "graupl-",
     key = null,
@@ -156,8 +146,12 @@ class Tooltip extends Component {
 
     // Set the durations.
     this._durations.transition = transitionDuration;
+    this._durations.transitionDelay = transitionDelay;
     this._durations.show = showDuration;
     this._durations.hide = hideDuration;
+
+    // Set close on blur.
+    this._closeOnBlur = closeOnBlur;
 
     // Set hidden.
     this._hidden.value = isHidden;
@@ -375,6 +369,33 @@ class Tooltip extends Component {
   }
 
   /**
+   * Sets ARIA attributes throughout the breadcrumb.
+   *
+   * The first steps are to ensure that the toggle has `aria-expanded` set to "false"
+   * if it's not already explicitly set to "true".
+   *
+   * Then, set the `aria-controls` attribute on the toggle to the breadcrumb's ID.
+   *
+   * Finally, ensure the toggle element has a role of "button" if it is not a native button element.
+   *
+   * @protected
+   */
+  _setAriaAttributes() {
+    if (!this.dom.tooltipButton) return;
+
+    // Set .tooltip to role tooltip
+    this.dom.tooltip.setAttribute("role", "tooltip");
+
+    // Set .tooltip-button to role of button.
+    this.dom.tooltipButton.setAttribute("role", "button");
+
+    // Add aria-describedby to button
+    if (this.dom.tooltipButton) {
+      this.dom.tooltipButton.setAttribute("aria-describedby", "textarea");
+    }
+  }
+
+  /**
    * Reveals the tooltip.
    *
    * Adds the show class and removes the hide class from the tooltip.
@@ -392,17 +413,17 @@ class Tooltip extends Component {
     // requestAnimationFrame to add the transition class, remove the hide class,
     // add the show class, and finally remove the transition class.
     if (transition && this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.tooltip);
+      addClass(this.transitionClass, this.dom.tooltipBubble);
 
       requestAnimationFrame(() => {
-        removeClass(this.hideClass, this.dom.tooltip);
+        removeClass(this.hideClass, this.dom.tooltipBubble);
 
         requestAnimationFrame(() => {
-          addClass(this.showClass, this.dom.tooltip);
+          addClass(this.showClass, this.dom.tooltipBubble);
 
           requestAnimationFrame(() => {
             this._setTimeout(
-              () => removeClass(this.transitionClass, this.dom.tooltip),
+              () => removeClass(this.transitionClass, this.dom.tooltipBubble),
               this.showDuration
             );
           });
@@ -410,21 +431,21 @@ class Tooltip extends Component {
       });
     } else {
       // Add the show class
-      addClass(this.showClass, this.dom.tooltip);
+      addClass(this.showClass, this.dom.tooltipBubble);
 
       // Remove the hide class.
-      removeClass(this.hideClass, this.dom.tooltip);
+      removeClass(this.hideClass, this.dom.tooltipBubble);
     }
 
-    this.dom.tooltip.removeAttribute("inert");
+    this.dom.tooltipBubble.removeAttribute("inert");
 
     if (emit) {
-      this._dispatchEvent("show", this.dom.tooltip);
+      this._dispatchEvent("show", this.dom.tooltipBubble);
     }
   }
 
   /**
-   * Conceals the tooltip.
+   * Conceals the tooltipBubble.
    *
    * Adds the hide class and removes the show class from the tooltip.
    *
@@ -441,17 +462,17 @@ class Tooltip extends Component {
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
     if (transition && this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.tooltip);
+      addClass(this.transitionClass, this.dom.tooltipBubble);
 
       requestAnimationFrame(() => {
-        removeClass(this.showClass, this.dom.tooltip);
+        removeClass(this.showClass, this.dom.tooltipBubble);
 
         requestAnimationFrame(() => {
-          addClass(this.hideClass, this.dom.tooltip);
+          addClass(this.hideClass, this.dom.tooltipBubble);
 
           requestAnimationFrame(() => {
             this._setTimeout(
-              () => removeClass(this.transitionClass, this.dom.tooltip),
+              () => removeClass(this.transitionClass, this.dom.tooltipBubble),
               this.hideDuration
             );
           });
@@ -459,16 +480,16 @@ class Tooltip extends Component {
       });
     } else {
       // Add the hide class
-      addClass(this.hideClass, this.dom.tooltip);
+      addClass(this.hideClass, this.dom.tooltipBubble);
 
       // Remove the show class.
-      removeClass(this.showClass, this.dom.tooltip);
+      removeClass(this.showClass, this.dom.tooltipBubble);
     }
 
-    this.dom.tooltip.setAttribute("inert", "true");
+    this.dom.tooltipBubble.setAttribute("inert", "true");
 
     if (emit) {
-      this._dispatchEvent("hide", this.dom.tooltip);
+      this._dispatchEvent("hide", this.dom.tooltipBubble);
     }
   }
 
@@ -513,7 +534,39 @@ class Tooltip extends Component {
       return;
     }
 
-    this._addEventListener("click", this.dom.tooltipButton, () => this.hide());
+    this._addEventListener("click", this.dom.tooltipButton, () => {
+      if (this.focusState !== "self" || this.closeOnBlur) return;
+
+      if (this.dom.tooltipBubble.classList.contains("hide")) {
+        this.show();
+      }
+    });
+  }
+
+  /**
+   * Handles focus events throughout the tooltip.
+   *
+   * - Adds a `focusout` listener to the tooltip so when the tooltip loses focus it will close.
+   */
+  _handleFocus() {
+    if (this.dom.tooltipButton) {
+      this._addEventListener("focus", this.dom.tooltipButton, () => {
+        this.focusState = "self";
+      });
+    }
+
+    this._addEventListener("focusout", this.dom.tooltipButton, (event) => {
+      if (
+        this.closeOnBlur ||
+        this.focusState !== "self" ||
+        this.dom.tooltip.contains(event.relatedTarget) ||
+        this.dom.tooltipButton === event.relatedTarget
+      ) {
+        return;
+      }
+
+      this.hide();
+    });
   }
 
   /**
@@ -554,31 +607,59 @@ class Tooltip extends Component {
       const key = keyPress(event);
 
       if (key === "Space" || key === "Enter") {
-        this.hide();
+        if (this.dom.tooltipBubble.classList.contains("hide")) {
+          this.show();
+        }
       }
     });
   }
 
-  /**
-   * Handles the hover events throughout the tooltip for proper use.
-   *
-   * - Adds a `pointerover` listener to the tooltip to pause autoplay.
-   * - Adds a `pointerleave` listener to the tooltip to resume autoplay.
-   */
-  _handleHover() {
-    // Pause autoplay when anything in the tooltip is hovered.
-    this._addEventListener("pointerover", this.dom.tooltip, () => {
-      if (this.autoplay) {
-        this._clearInterval();
-      }
-    });
+  // /**
+  //  * Handles the hover events throughout the tooltip for proper use.
+  //  *
+  //  * - Adds a `pointerover` listener to the tooltip to show tooltipBubble.
+  //  * - Adds a `pointerleave` listener to the tooltip to hide tooltipBubble.
+  //  */
+  // _handleHover() {
+  //   this._addEventListener("pointerleave", this.dom.tooltipButton, () => {
+  //     if (!this.closeOnBlur) {
+  //       this._clearInterval();
+  //       this.hide();
+  //     }
+  //   });
 
-    this._addEventListener("pointerleave", this.dom.tooltip, () => {
-      if (this.autoplay) {
-        this._setInterval(() => this.activateNextItem(), this.transitionDelay);
-      }
-    });
-  }
+  //   this._addEventListener("pointerover", this.dom.tooltipButton, () => {
+  //     if (!this.closeOnBlur) {
+  //       this._setInterval(() => this.show(), this._durations.transitionDelay);
+  //     }
+  //   });
+  // }
+
+  // /**
+  //  * Sets an interval within the component.
+  //  *
+  //  * @protected
+  //  *
+  //  * @param {Function} [callback]         - The callback function.
+  //  * @param {number}   [delay]            - The time (in milliseconds) of the delay.
+  //  * @param {string}   [scope = _default] - The scope of the interval (used to store the interval in _intervals).
+  //  */
+  // _setInterval(callback, delay, scope = "_default") {
+  //   this._clearInterval(scope);
+
+  //   this._intervals[scope] = setInterval(callback, delay);
+  // }
+
+  // /**
+  //  * Clears an interval within the component.
+  //  *
+  //  * @protected
+  //  *
+  //  * @param {string} [scope = _default] - The scope of the interval (used to get the interval from _intervals).
+  //  */
+  // _clearInterval(scope = "_default") {
+  //   clearInterval(this._intervals[scope]);
+  // }
 
   /**
    * Shows the tooltip.

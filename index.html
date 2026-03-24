@@ -159,15 +159,15 @@
           <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
         </div>
         <div class="input-group">
-          <label for="textarea-readonly">Readonly Textarea
-            <div class="tooltip">
-              <span class="tooltip-bubble">This is information about the textarea</span>
-              <button type="button" class="tooltip-button" />
-            </div>
+          <label for="textarea-readonly" class="display-flex g-2">Readonly Textarea
           </label>
           <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
             readonly>Readonly Textarea</textarea>
         </div>
+        <div class="tooltip">
+            <span class="tooltip-bubble">This is information about the textarea</span>
+            <button type="button" class="tooltip-button"></button>
+          </div>
         <div class="input-group"><label for="textarea-disabled">Disabled Textarea</label>
           <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
         </div>
@@ -219,11 +219,11 @@
           <legend>Checkboxes</legend>
           <label for="checkbox">
             <input type="checkbox" id="checkbox"> Checkbox
-            <div class="tooltip">
-              <span class="tooltip-bubble">This is information about the checkbox</span>
-              <button type="button" class="tooltip-button" />
-            </div>
           </label>
+          <div class="tooltip">
+            <span class="tooltip-bubble">This is information about the checkbox and there is a lot of information to share</span>
+            <button type="button" class="tooltip-button"></button>
+          </div>
           <label for="checkbox-checked">
             <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
           <label for="checkbox-disabled">
@@ -1382,6 +1382,7 @@
   <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
   <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
   <script type="module" src="./packages/core/src/js/tabs/index.js"></script>
+  <script type="module" src="./packages/core/src/js/tooltip/index.js"></script>
   <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
