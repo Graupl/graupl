@@ -216,10 +216,11 @@
     --#{root-defaults.$prefix}button-focus-background: #{$tooltip-button-hover-background};
     --#{root-defaults.$prefix}button-focus-color: #{$tooltip-button-color};
     --#{root-defaults.$prefix}button-padding: #{$tooltip-button-padding};
-    --#{root-defaults.$prefix}button-min-height: 22px;
-    --#{root-defaults.$prefix}button-min-width: 22px;
+    --#{root-defaults.$prefix}button-min-height: 20px;
+    --#{root-defaults.$prefix}button-min-width: 24px;
 
     display: grid;
+    position: relative;
     grid-template-columns: [button-start] auto [button-end bubble-start] 1fr [bubble-end];
     grid-template-rows: [button-start bubble-start] auto [button-end bubble-end];
     align-items: center;
@@ -242,8 +243,15 @@
 
   // .tooltip-bubble
   #{defaults.$tooltip-bubble-selector-base}#{defaults.$tooltip-bubble-selector} {
+    position: absolute;
     grid-area: bubble;
+    width: max-content;
+    min-width: 200px;
+    max-width: 500px;
     margin: $tooltip-bubble-margin;
+    padding: $tooltip-bubble-padding;
+    background: $tooltip-bubble-background;
+    color: $tooltip-bubble-color;
 
     // &.hide
     &#{defaults.$tooltip-hidden-selector-base}#{defaults.$tooltip-hidden-selector} {
@@ -297,8 +305,6 @@
 
   // .tooltip-bubble
   #{defaults.$tooltip-bubble-selector-base}#{defaults.$tooltip-bubble-selector} {
-    margin: $tooltip-bubble-margin;
-    padding: $tooltip-bubble-padding;
     border-width: $tooltip-bubble-border-width;
     border-style: $tooltip-bubble-border-style;
     border-radius: $tooltip-bubble-border-radius;

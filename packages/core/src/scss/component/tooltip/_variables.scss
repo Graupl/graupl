@@ -213,7 +213,13 @@ $tooltip-transition-reduced-motion: var(
 // --graupl-tooltip-bubble-color
 $tooltip-bubble-color: var(
   --#{root-defaults.$prefix}tooltip-bubble-color,
-  #{$tooltip-color}
+  #{color.$color}
+);
+
+// --graupl-tooltip-bubble-background
+$tooltip-bubble-background: var(
+  --#{root-defaults.$prefix}tooltip-bubble-background,
+  #{color.$background}
 );
 
 // --graupl-tooltip-bubble-font-size
@@ -249,13 +255,13 @@ $tooltip-bubble-margin: var(
 // --graupl-tooltip-bubble-padding-x
 $tooltip-bubble-padding-x: var(
   --#{root-defaults.$prefix}tooltip-bubble-padding-x,
-  #{map.get(root-variables.$spacers, 2)}
+  #{map.get(root-variables.$spacers, 1)}
 );
 
 // --graupl-tooltip-bubble-padding-y
 $tooltip-bubble-padding-y: var(
   --#{root-defaults.$prefix}tooltip-bubble-padding-y,
-  #{map.get(root-variables.$spacers, 2)}
+  #{map.get(root-variables.$spacers, 1)}
 );
 
 // --graupl-tooltip-bubble-padding
