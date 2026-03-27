@@ -10,28 +10,6 @@ import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 /**
- * @event grauplTooltipShow
- * Fired when the tooltip is shown.
- *
- * @type {CustomEvent}
- *
- * @property {boolean}         descriptions      - Whether the event descriptions.
- * @property {Object<Tooltip>} detail       - The detail object.
- * @property {Tooltip}         detail.tooltip - The tooltip that was shown.
- */
-
-/**
- * @event grauplTooltipHide
- * Fired when the tooltip is hidden.
- *
- * @type {CustomEvent}
- *
- * @property {boolean}         descriptions      - Whether the event descriptions.
- * @property {Object<Tooltip>} detail       - The detail object.
- * @property {Tooltip}         detail.tooltip - The tooltip that was hidden.
- */
-
-/**
  * The Tooltip component.
  *
  * @extends Component
@@ -84,6 +62,8 @@ import Component from "../Component.js";
 class Tooltip extends Component {
   _rootDOMElement = "tooltip";
   _protectedDOMElements = ["button"];
+  _softLocked = false;
+  _hover = true;
   _hidden = new TransactionalValue(false);
   _storageKey = "tooltips";
   _closeOnBlur = true;
@@ -103,17 +83,16 @@ class Tooltip extends Component {
    * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "shown" and "hidden" states (in milliseconds).
    * @param {boolean}              [options.showDuration = -1]               - The duration of the transition from "hidden" to "shown" states (in milliseconds).
    * @param {boolean}              [options.hideDuration = -1]               - The duration of the transition from "shown" to "hidden" states (in milliseconds).
-   * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
+   * @param {boolean}              [options.hoverable = true]                - A flag to indicate if the tooltipDescription is hoverable.
+   * @param {number}               [options.hoverDelay = 250]                 - The delay time (in milliseconds) used for hover events.
+   * @param {number}               [options.enterDelay = -1]                  - The delay time (in milliseconds) used for pointerenter events.
+   * @param {number}               [options.leaveDelay = -1]                  - The delay time (in milliseconds) used for pointerleave events.
    * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
    * @param {boolean}              [options.isHidden = true]                 - A flag to determine the initial state of the tooltip.
    * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
    * @param {?(string|string[])}   [options.initializeClass = initializing]  - The class(es) to apply when the tooltip is initializing.
    * @param {boolean}              [options.initialize = false]              - A flag to initialize the tooltip immediately upon creation.
-   * @param options.hoverable
-   * @param options.hoverDelay
-   * @param options.enterDelay
-   * @param options.leaveDelay
    */
   constructor({
     tooltipElement,
@@ -127,7 +106,7 @@ class Tooltip extends Component {
     showDuration = -1,
     hideDuration = -1,
     closeOnBlur = true,
-    hoverable = false,
+    hoverable = true,
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
@@ -480,6 +459,9 @@ class Tooltip extends Component {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
+
+    this.isSoftLocked = false;
+
     if (transition && this.transitionClass !== "") {
       addClass(this.transitionClass, this.dom.tooltipDescription);
 
@@ -578,6 +560,44 @@ class Tooltip extends Component {
   }
 
   /**
+   * A flag to check if the tooltipDescription can dynamically hover.
+   *
+   * @type {boolean}
+   *
+   * @see _softLocked
+   */
+  get isSoftLocked() {
+    return this._softLocked;
+  }
+
+  set isSoftLocked(value) {
+    isValidType("boolean", { isSoftLocked: value });
+
+    if (this._softLocked !== value) {
+      this._softLocked = value;
+    }
+  }
+
+  /**
+   * Whether to close the breadcrumb when it loses focus in the DOM.
+   *
+   * @type {boolean}
+   *
+   * @see _closeOnBlur
+   */
+  get closeOnBlur() {
+    return this._closeOnBlur;
+  }
+
+  set closeOnBlur(value) {
+    isValidType("boolean", { closeOnBlur: value });
+
+    if (this._closeOnBlur !== value) {
+      this._closeOnBlur = value;
+    }
+  }
+
+  /**
    * Sets custom props throughout the tooltip.
    *
    * The custom properties are:
@@ -619,11 +639,34 @@ class Tooltip extends Component {
     }
 
     this._addEventListener("click", this.dom.tooltipToggle, () => {
-      if (this.focusState !== "self" || this.closeOnBlur) return;
-
       if (this.dom.tooltipDescription.classList.contains("hide")) {
         this.show();
+        this.focusState = "self";
+        this.isSoftLocked = true;
       }
+    });
+
+    // Catch all to open if tooltipDescription if there is a click inside of it.
+    this.dom.tooltipDescription.addEventListener("click", (event) => {
+      if (event.button !== 0) return;
+
+      this.currentEvent = "mouse";
+      this.focusState = "self";
+    });
+
+    // Close the tooltipDescription if a click happens outside of it.
+    document.addEventListener("click", (event) => {
+      if (this.focusState === "none") return;
+      if (
+        this.dom.tooltip === event.target ||
+        this.dom.tooltip.contains(event.target)
+      )
+        return;
+
+      this.currentEvent = "mouse";
+      this.focusState = "none";
+      this.isSoftLocked = false;
+      this.hide();
     });
   }
 
@@ -641,9 +684,9 @@ class Tooltip extends Component {
 
     this._addEventListener("focusout", this.dom.tooltipToggle, (event) => {
       if (
-        this.closeOnBlur ||
+        !this.closeOnBlur ||
         this.focusState !== "self" ||
-        this.dom.tooltip.contains(event.relatedTarget) ||
+        this.dom.tooltipToggle.contains(event.relatedTarget) ||
         this.dom.tooltipToggle === event.relatedTarget
       ) {
         return;
@@ -696,53 +739,61 @@ class Tooltip extends Component {
         }
       }
     });
+
+    // Close the shelf on `Escape`.
+    this.dom.tooltipToggle.addEventListener("keyup", (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      if (key === "Escape") {
+        this.hide();
+      }
+    });
   }
 
   /**
    * Handles the hover events throughout the tooltip for proper use.
    *
-   * - Adds a `pointerover` listener to the tooltip to show tooltipDescription.
+   * - Adds a `pointerenter` listener to the tooltip to show tooltipDescription.
    * - Adds a `pointerleave` listener to the tooltip to hide tooltipDescription.
    */
   _handleHover() {
-    this._addEventListener("pointerleave", this.dom.tooltipToggle, () => {
-      if (!this.closeOnBlur) {
-        this._clearInterval();
+    this.dom.tooltipToggle.addEventListener("pointerenter", () => {
+      if (this.isSoftLocked) return;
+      if (!this.hoverable) return;
+
+      this.currentEvent = "mouse";
+
+      if (this.enterDelay > 0) {
+        this._clearTimeout();
+        this._setTimeout(() => {
+          if (!this.isHidden) {
+            this.show();
+          }
+        }, this.enterDelay);
+      } else {
+        this.show();
+      }
+    });
+
+    this.dom.tooltipToggle.addEventListener("pointerleave", () => {
+      if (this.isSoftLocked) return;
+      if (!this.hoverable) return;
+
+      this.currentEvent = "mouse";
+
+      if (this.leaveDelay > 0) {
+        this._clearTimeout();
+        this._setTimeout(() => {
+          if (this.isHidden) {
+            this.hide();
+          }
+        }, this.leaveDelay);
+      } else {
         this.hide();
       }
     });
-
-    this._addEventListener("pointerover", this.dom.tooltipToggle, () => {
-      if (!this.closeOnBlur) {
-        this._setInterval(() => this.show(), this._durations.transitionDelay);
-      }
-    });
-  }
-
-  /**
-   * Sets an interval within the component.
-   *
-   * @protected
-   *
-   * @param {Function} [callback]         - The callback function.
-   * @param {number}   [delay]            - The time (in milliseconds) of the delay.
-   * @param {string}   [scope = _default] - The scope of the interval (used to store the interval in _intervals).
-   */
-  _setInterval(callback, delay, scope = "_default") {
-    this._clearInterval(scope);
-
-    this._intervals[scope] = setInterval(callback, delay);
-  }
-
-  /**
-   * Clears an interval within the component.
-   *
-   * @protected
-   *
-   * @param {string} [scope = _default] - The scope of the interval (used to get the interval from _intervals).
-   */
-  _clearInterval(scope = "_default") {
-    clearInterval(this._intervals[scope]);
   }
 
   /**

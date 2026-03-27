@@ -16,10 +16,10 @@ const generate = (
 
       new Tooltip({
         tooltipElement,
-        tooltipButtonElement:
-          tooltipElement.querySelector(".tooltip-button") || null,
-        tooltipBubbleElement:
-          tooltipElement.querySelector(".tooltip-bubble") || null,
+        tooltipToggleElement:
+          tooltipElement.querySelector(".tooltip-toggle") || null,
+        tooltipDescriptionElement:
+          tooltipElement.querySelector(".tooltip-description") || null,
         initialize: true,
         ...options,
         ...tooltipOptions,
