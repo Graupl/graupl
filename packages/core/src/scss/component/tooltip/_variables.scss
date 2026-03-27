@@ -32,15 +32,15 @@
 // | --graupl-tooltip-border-style               | var(--graupl-tooltip-border-top-style) var(--graupl-tooltip-border-right-style) var(--graupl-tooltip-border-bottom-style) var(--graupl-tooltip-border-left-style)                           |
 // | --graupl-tooltip-transition                 | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)  |
 // | --graupl-tooltip-transition-reduced-motion  | opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                             |
-// | --graupl-tooltip-bubble-color                | var(--graupl-tooltip-color)                                                                                                                                                           |
-// | --graupl-tooltip-bubble-font-size            | var(--graupl-small-font-size)                                                                                                                                                          |
-// | --graupl-tooltip-bubble-font-weight          | var(--graupl-small-font-weight)                                                                                                                                                        |
-// | --graupl-tooltip-bubble-font-family          | var(--graupl-small-font-family)                                                                                                                                                        |
-// | --graupl-tooltip-bubble-line-height          | var(--graupl-small-line-height)                                                                                                                                                        |
-// | --graupl-tooltip-bubble-margin               | 0 0 0 0                                                                                                                                                                             |
-// | --graupl-tooltip-button-padding-x             | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-button-padding-y             | 0                                                                                                                                                                                   |
-// | --graupl-tooltip-button-padding               | var(--graupl-tooltip-button-padding-y) var(--graupl-tooltip-button-padding-x)                                                                                                               |
+// | --graupl-tooltip-description-color                | var(--graupl-tooltip-color)                                                                                                                                                           |
+// | --graupl-tooltip-description-font-size            | var(--graupl-small-font-size)                                                                                                                                                          |
+// | --graupl-tooltip-description-font-weight          | var(--graupl-small-font-weight)                                                                                                                                                        |
+// | --graupl-tooltip-description-font-family          | var(--graupl-small-font-family)                                                                                                                                                        |
+// | --graupl-tooltip-description-line-height          | var(--graupl-small-line-height)                                                                                                                                                        |
+// | --graupl-tooltip-description-margin               | 0 0 0 0                                                                                                                                                                             |
+// | --graupl-tooltip-toggle-padding-x             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-toggle-padding-y             | 0                                                                                                                                                                                   |
+// | --graupl-tooltip-toggle-padding               | var(--graupl-tooltip-toggle-padding-y) var(--graupl-tooltip-toggle-padding-x)                                                                                                               |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -209,258 +209,262 @@ $tooltip-transition-reduced-motion: var(
     #{root-variables.$transition-timing-function}
 );
 
-// Tooltip bubble properties.
-// --graupl-tooltip-bubble-color
-$tooltip-bubble-color: var(
-  --#{root-defaults.$prefix}tooltip-bubble-color,
+// Tooltip description properties.
+// --graupl-tooltip-description-color
+$tooltip-description-color: var(
+  --#{root-defaults.$prefix}tooltip-description-color,
   #{color.$color}
 );
 
-// --graupl-tooltip-bubble-background
-$tooltip-bubble-background: var(
-  --#{root-defaults.$prefix}tooltip-bubble-background,
+// --graupl-tooltip-description-background
+$tooltip-description-background: var(
+  --#{root-defaults.$prefix}tooltip-description-background,
   #{color.$background}
 );
 
-// --graupl-tooltip-bubble-font-size
-$tooltip-bubble-font-size: var(
-  --#{root-defaults.$prefix}tooltip-bubble-font-size,
+// --graupl-tooltip-description-font-size
+$tooltip-description-font-size: var(
+  --#{root-defaults.$prefix}tooltip-description-font-size,
   #{typography.$small-font-size}
 );
 
-// --graupl-tooltip-bubble-font-weight
-$tooltip-bubble-font-weight: var(
-  --#{root-defaults.$prefix}tooltip-bubble-font-weight,
+// --graupl-tooltip-description-font-weight
+$tooltip-description-font-weight: var(
+  --#{root-defaults.$prefix}tooltip-description-font-weight,
   #{typography.$small-font-weight}
 );
 
-// --graupl-tooltip-bubble-font-family
-$tooltip-bubble-font-family: var(
-  --#{root-defaults.$prefix}tooltip-bubble-font-family,
+// --graupl-tooltip-description-font-family
+$tooltip-description-font-family: var(
+  --#{root-defaults.$prefix}tooltip-description-font-family,
   #{typography.$small-font-family}
 );
 
-// --graupl-tooltip-bubble-line-height
-$tooltip-bubble-line-height: var(
-  --#{root-defaults.$prefix}tooltip-bubble-line-height,
+// --graupl-tooltip-description-line-height
+$tooltip-description-line-height: var(
+  --#{root-defaults.$prefix}tooltip-description-line-height,
   #{typography.$small-line-height}
 );
 
-// --graupl-tooltip-bubble-margin
-$tooltip-bubble-margin: var(
-  --#{root-defaults.$prefix}tooltip-bubble-margin,
+// --graupl-tooltip-description-margin
+$tooltip-description-margin: var(
+  --#{root-defaults.$prefix}tooltip-description-margin,
   0 0 0 0
 );
 
-// --graupl-tooltip-bubble-padding-x
-$tooltip-bubble-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-bubble-padding-x,
+// --graupl-tooltip-description-padding-x
+$tooltip-description-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-description-padding-x,
   #{map.get(root-variables.$spacers, 1)}
 );
 
-// --graupl-tooltip-bubble-padding-y
-$tooltip-bubble-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-bubble-padding-y,
+// --graupl-tooltip-description-padding-y
+$tooltip-description-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-description-padding-y,
   #{map.get(root-variables.$spacers, 1)}
 );
 
-// --graupl-tooltip-bubble-padding
-$tooltip-bubble-padding: var(
-  --#{root-defaults.$prefix}tooltip-bubble-padding,
-  #{$tooltip-bubble-padding-y} #{$tooltip-bubble-padding-x}
+// --graupl-tooltip-description-padding
+$tooltip-description-padding: var(
+  --#{root-defaults.$prefix}tooltip-description-padding,
+  #{$tooltip-description-padding-y} #{$tooltip-description-padding-x}
 );
 
-// --graupl-tooltip-bubble-border-color
-$tooltip-bubble-border-color: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-color,
+// --graupl-tooltip-description-border-color
+$tooltip-description-border-color: var(
+  --#{root-defaults.$prefix}tooltip-description-border-color,
   #{$tooltip-color}
 );
 
-// --graupl-tooltip-bubble-border-top-left-radius
-$tooltip-bubble-border-top-left-radius: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-top-left-radius,
+// --graupl-tooltip-description-border-top-left-radius
+$tooltip-description-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-description-border-top-left-radius,
   #{root-variables.$border-top-left-radius}
 );
 
-// --graupl-tooltip-bubble-border-top-right-radius
-$tooltip-bubble-border-top-right-radius: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-top-right-radius,
+// --graupl-tooltip-description-border-top-right-radius
+$tooltip-description-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-description-border-top-right-radius,
   #{root-variables.$border-top-right-radius}
 );
 
-// --graupl-tooltip-bubble-border-bottom-left-radius
-$tooltip-bubble-border-bottom-left-radius: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-left-radius,
+// --graupl-tooltip-description-border-bottom-left-radius
+$tooltip-description-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-description-border-bottom-left-radius,
   #{root-variables.$border-bottom-left-radius}
 );
 
-// --graupl-tooltip-bubble-border-bottom-right-radius
-$tooltip-bubble-border-bottom-right-radius: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-right-radius,
+// --graupl-tooltip-description-border-bottom-right-radius
+$tooltip-description-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-description-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
 );
 
-// --graupl-tooltip-bubble-border-radius
-$tooltip-bubble-border-radius: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-radius,
-  #{$tooltip-bubble-border-top-left-radius}
-    #{$tooltip-bubble-border-top-right-radius}
-    #{$tooltip-bubble-border-bottom-right-radius}
-    #{$tooltip-bubble-border-bottom-left-radius}
+// --graupl-tooltip-description-border-radius
+$tooltip-description-border-radius: var(
+  --#{root-defaults.$prefix}tooltip-description-border-radius,
+  #{$tooltip-description-border-top-left-radius}
+    #{$tooltip-description-border-top-right-radius}
+    #{$tooltip-description-border-bottom-right-radius}
+    #{$tooltip-description-border-bottom-left-radius}
 );
 
-// --graupl-tooltip-bubble-border-top-width
-$tooltip-bubble-border-top-width: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-top-width,
+// --graupl-tooltip-description-border-top-width
+$tooltip-description-border-top-width: var(
+  --#{root-defaults.$prefix}tooltip-description-border-top-width,
   #{root-variables.$border-top-width}
 );
 
-// --graupl-tooltip-bubble-border-right-width
-$tooltip-bubble-border-right-width: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-right-width,
+// --graupl-tooltip-description-border-right-width
+$tooltip-description-border-right-width: var(
+  --#{root-defaults.$prefix}tooltip-description-border-right-width,
   #{root-variables.$border-right-width}
 );
 
-// --graupl-tooltip-bubble-border-bottom-width
-$tooltip-bubble-border-bottom-width: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-width,
+// --graupl-tooltip-description-border-bottom-width
+$tooltip-description-border-bottom-width: var(
+  --#{root-defaults.$prefix}tooltip-description-border-bottom-width,
   #{root-variables.$border-bottom-width}
 );
 
-// --graupl-tooltip-bubble-border-left-width
-$tooltip-bubble-border-left-width: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-left-width,
+// --graupl-tooltip-description-border-left-width
+$tooltip-description-border-left-width: var(
+  --#{root-defaults.$prefix}tooltip-description-border-left-width,
   #{root-variables.$border-left-width}
 );
 
-// --graupl-tooltip-bubble-border-width
-$tooltip-bubble-border-width: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-width,
-  #{$tooltip-bubble-border-top-width} #{$tooltip-bubble-border-right-width}
-    #{$tooltip-bubble-border-bottom-width} #{$tooltip-bubble-border-left-width}
+// --graupl-tooltip-description-border-width
+$tooltip-description-border-width: var(
+  --#{root-defaults.$prefix}tooltip-description-border-width,
+  #{$tooltip-description-border-top-width}
+    #{$tooltip-description-border-right-width}
+    #{$tooltip-description-border-bottom-width}
+    #{$tooltip-description-border-left-width}
 );
 
-// --graupl-tooltip-bubble-border-top-style
-$tooltip-bubble-border-top-style: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-top-style,
+// --graupl-tooltip-description-border-top-style
+$tooltip-description-border-top-style: var(
+  --#{root-defaults.$prefix}tooltip-description-border-top-style,
   #{root-variables.$border-top-style}
 );
 
-// --graupl-tooltip-bubble-border-right-style
-$tooltip-bubble-border-right-style: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-right-style,
+// --graupl-tooltip-description-border-right-style
+$tooltip-description-border-right-style: var(
+  --#{root-defaults.$prefix}tooltip-description-border-right-style,
   #{root-variables.$border-right-style}
 );
 
-// --graupl-tooltip-bubble-border-bottom-style
-$tooltip-bubble-border-bottom-style: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-bottom-style,
+// --graupl-tooltip-description-border-bottom-style
+$tooltip-description-border-bottom-style: var(
+  --#{root-defaults.$prefix}tooltip-description-border-bottom-style,
   #{root-variables.$border-bottom-style}
 );
 
-// --graupl-tooltip-bubble-border-left-style
-$tooltip-bubble-border-left-style: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-left-style,
+// --graupl-tooltip-description-border-left-style
+$tooltip-description-border-left-style: var(
+  --#{root-defaults.$prefix}tooltip-description-border-left-style,
   #{root-variables.$border-left-style}
 );
 
-// --graupl-tooltip-bubble-border-style
-$tooltip-bubble-border-style: var(
-  --#{root-defaults.$prefix}tooltip-bubble-border-style,
-  #{$tooltip-bubble-border-top-style} #{$tooltip-bubble-border-right-style}
-    #{$tooltip-bubble-border-bottom-style} #{$tooltip-bubble-border-left-style}
+// --graupl-tooltip-description-border-style
+$tooltip-description-border-style: var(
+  --#{root-defaults.$prefix}tooltip-description-border-style,
+  #{$tooltip-description-border-top-style}
+    #{$tooltip-description-border-right-style}
+    #{$tooltip-description-border-bottom-style}
+    #{$tooltip-description-border-left-style}
 );
 
 // Tooltip button properties.
-// --graupl-tooltip-button-background
-$tooltip-button-background: var(
-  --#{root-defaults.$prefix}tooltip-button-background,
+// --graupl-tooltip-toggle-background
+$tooltip-toggle-background: var(
+  --#{root-defaults.$prefix}tooltip-toggle-background,
   #{color.$color}
 );
 
-// --graupl-tooltip-button-hover-background
-$tooltip-button-hover-background: var(
-  --#{root-defaults.$prefix}tooltip-button-hover-background,
+// --graupl-tooltip-toggle-hover-background
+$tooltip-toggle-hover-background: var(
+  --#{root-defaults.$prefix}tooltip-toggle-hover-background,
   #{color.$color}
 );
 
-// --graupl-tooltip-button-color
-$tooltip-button-color: var(
-  --#{root-defaults.$prefix}tooltip-button-color,
+// --graupl-tooltip-toggle-color
+$tooltip-toggle-color: var(
+  --#{root-defaults.$prefix}tooltip-toggle-color,
   #{color.$background}
 );
 
-// --graupl-tooltip-button-border-color
-$tooltip-button-border-color: var(
-  --#{root-defaults.$prefix}tooltip-button-border-color,
+// --graupl-tooltip-toggle-border-color
+$tooltip-toggle-border-color: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-color,
   #{button.$button-border-color}
 );
 
-// --graupl-tooltip-button-font-family
-$tooltip-button-font-family: var(
-  --#{root-defaults.$prefix}tooltip-button-font-family,
+// --graupl-tooltip-toggle-font-family
+$tooltip-toggle-font-family: var(
+  --#{root-defaults.$prefix}tooltip-toggle-font-family,
   serif
 );
 
-// --graupl-tooltip-button-font-size
-$tooltip-button-font-size: var(
-  --#{root-defaults.$prefix}tooltip-button-font-size,
+// --graupl-tooltip-toggle-font-size
+$tooltip-toggle-font-size: var(
+  --#{root-defaults.$prefix}tooltip-toggle-font-size,
   #{map.get(typography.$font-sizes, sm)}
 );
 
-// --graupl-tooltip-button-font-weight
-$tooltip-button-font-weight: var(
-  --#{root-defaults.$prefix}tooltip-button-font-weight,
+// --graupl-tooltip-toggle-font-weight
+$tooltip-toggle-font-weight: var(
+  --#{root-defaults.$prefix}tooltip-toggle-font-weight,
   #{typography.$font-weight-bold}
 );
 
-// --graupl-tooltip-button-padding-x
-$tooltip-button-padding-x: var(
-  --#{root-defaults.$prefix}tooltip-button-padding-x,
+// --graupl-tooltip-toggle-padding-x
+$tooltip-toggle-padding-x: var(
+  --#{root-defaults.$prefix}tooltip-toggle-padding-x,
   #{map.get(root-variables.$spacers, 1)}
 );
 
-// --graupl-tooltip-button-padding-y
-$tooltip-button-padding-y: var(
-  --#{root-defaults.$prefix}tooltip-button-padding-y,
+// --graupl-tooltip-toggle-padding-y
+$tooltip-toggle-padding-y: var(
+  --#{root-defaults.$prefix}tooltip-toggle-padding-y,
   #{map.get(root-variables.$spacers, 1)}
 );
 
-// --graupl-tooltip-button-padding
-$tooltip-button-padding: var(
-  --#{root-defaults.$prefix}tooltip-button-padding,
-  #{$tooltip-button-padding-y} #{$tooltip-button-padding-x}
+// --graupl-tooltip-toggle-padding
+$tooltip-toggle-padding: var(
+  --#{root-defaults.$prefix}tooltip-toggle-padding,
+  #{$tooltip-toggle-padding-y} #{$tooltip-toggle-padding-x}
 );
 
-// --graupl-tooltip-button-border-top-left-radius
-$tooltip-button-border-top-left-radius: var(
-  --#{root-defaults.$prefix}tooltip-button-border-top-left-radius,
+// --graupl-tooltip-toggle-border-top-left-radius
+$tooltip-toggle-border-top-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-top-left-radius,
   #{map.get(root-variables.$spacers, 7)}
 );
 
-// --graupl-tooltip-button-border-top-right-radius
-$tooltip-button-border-top-right-radius: var(
-  --#{root-defaults.$prefix}tooltip-button-border-top-right-radius,
+// --graupl-tooltip-toggle-border-top-right-radius
+$tooltip-toggle-border-top-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-top-right-radius,
   #{map.get(root-variables.$spacers, 7)}
 );
 
-// --graupl-tooltip-button-border-bottom-left-radius
-$tooltip-button-border-bottom-left-radius: var(
-  --#{root-defaults.$prefix}tooltip-button-border-bottom-left-radius,
+// --graupl-tooltip-toggle-border-bottom-left-radius
+$tooltip-toggle-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-bottom-left-radius,
   #{map.get(root-variables.$spacers, 7)}
 );
 
-// --graupl-tooltip-button-border-bottom-right-radius
-$tooltip-button-border-bottom-right-radius: var(
-  --#{root-defaults.$prefix}tooltip-button-border-bottom-right-radius,
+// --graupl-tooltip-toggle-border-bottom-right-radius
+$tooltip-toggle-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-bottom-right-radius,
   #{map.get(root-variables.$spacers, 7)}
 );
 
-// --graupl-tooltip-button-border-radius
-$tooltip-button-border-radius: var(
-  --#{root-defaults.$prefix}tooltip-button-border-radius,
-  #{$tooltip-button-border-top-left-radius}
-    #{$tooltip-button-border-top-right-radius}
-    #{$tooltip-button-border-bottom-right-radius}
-    #{$tooltip-button-border-bottom-left-radius}
+// --graupl-tooltip-toggle-border-radius
+$tooltip-toggle-border-radius: var(
+  --#{root-defaults.$prefix}tooltip-toggle-border-radius,
+  #{$tooltip-toggle-border-top-left-radius}
+    #{$tooltip-toggle-border-top-right-radius}
+    #{$tooltip-toggle-border-bottom-right-radius}
+    #{$tooltip-toggle-border-bottom-left-radius}
 );

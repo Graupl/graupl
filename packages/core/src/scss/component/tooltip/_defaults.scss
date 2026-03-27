@@ -19,10 +19,10 @@ $tooltip-selector-base: $selector-base !default;
 $tooltip-selector: "tooltip" !default;
 $tooltip-theme-selector-base: $modifier-selector-base !default;
 $tooltip-theme-selector-prefix: "" !default;
-$tooltip-button-selector-base: $selector-base !default;
-$tooltip-button-selector: "tooltip-button" !default;
-$tooltip-bubble-selector-base: $selector-base !default;
-$tooltip-bubble-selector: "tooltip-bubble" !default;
+$tooltip-toggle-selector-base: $selector-base !default;
+$tooltip-toggle-selector: "tooltip-toggle" !default;
+$tooltip-description-selector-base: $selector-base !default;
+$tooltip-description-selector: "tooltip-description" !default;
 $tooltip-hidden-selector-base: $modifier-selector-base !default;
 $tooltip-hidden-selector: "hide" !default;
 $tooltip-shown-selector-base: $modifier-selector-base !default;
@@ -44,10 +44,10 @@ $-tooltip-theme-mappings: (
   background: transparent,
   border-color: transparent,
   bubble-color: 800,
-  button-border-color: 800,
-  button-color: 100,
-  button-background: 800,
-  button-hover-background: 700,
+  toggle-border-color: 800,
+  toggle-color: 100,
+  toggle-background: 800,
+  toggle-hover-background: 700,
 );
 $tooltip-theme-mappings: () !default;
 
