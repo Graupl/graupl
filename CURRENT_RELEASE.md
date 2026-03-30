@@ -1,6 +1,6 @@
-## [1.0.0-beta.43](https://github.com/Graupl/graupl/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2026-02-25)
+## [1.0.0-beta.44](https://github.com/Graupl/graupl/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2026-03-23)
 
 
-### Bug Fixes
+### Features
 
-* **cards:** adjust image border radius based on position and forced verticallity ([76bb763](https://github.com/Graupl/graupl/commit/76bb7633a103c493e9777a51bb85070ae61786a6))
+* **disclosure:** add more granular control over opening and closing ([b8601c9](https://github.com/Graupl/graupl/commit/b8601c9d1b356ab2aadad812f8ac1e8a7aeffbb9))
