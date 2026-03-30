@@ -840,7 +840,7 @@ class Breadcrumb extends Component {
           if (this.isOpen) {
             this.focusNextChild();
           } else {
-            this.forcusFirstChild();
+            this.focusFirstChild();
           }
 
           break;
