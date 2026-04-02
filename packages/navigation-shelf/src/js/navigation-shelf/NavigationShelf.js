@@ -934,12 +934,12 @@ class NavigationShelf extends Component {
    * @protected
    */
   _handleFocus() {
-    this.dom.shelf.addEventListener("focusin", () => {
+    this._addEventListener("focusin", this.dom.shelf, () => {
       this.focusState = "self";
       this.open();
     });
 
-    this.dom.shelf.addEventListener("focusout", (event) => {
+    this._addEventListener("focusout", this.dom.shelf, (event) => {
       if (
         event.relatedTarget === null ||
         this.dom.shelf.contains(event.relatedTarget)
@@ -965,8 +965,9 @@ class NavigationShelf extends Component {
       if (!element) continue;
       if (Array.isArray(element)) continue;
 
-      element.addEventListener(
+      this._addEventListener(
         "pointerdown",
+        element,
         () => {
           this.currentEvent = "mouse";
           this._clearTimeout();
@@ -977,7 +978,7 @@ class NavigationShelf extends Component {
 
     // Toggle the shelf when the controlled is clicked.
     if (this.dom.controller) {
-      this.dom.controller.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.controller, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -993,7 +994,7 @@ class NavigationShelf extends Component {
 
     // Toggle hoverability when the hover controller is clicked.
     if (this.dom.hoverController) {
-      this.dom.hoverController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.hoverController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1009,7 +1010,7 @@ class NavigationShelf extends Component {
 
     // Toggle shelf lock when the lock controller is clicked.
     if (this.dom.lockController) {
-      this.dom.lockController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.lockController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1021,7 +1022,7 @@ class NavigationShelf extends Component {
 
     // Toggle shifting sides when the side controller is clicked.
     if (this.dom.sideController) {
-      this.dom.sideController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.sideController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1032,7 +1033,7 @@ class NavigationShelf extends Component {
     }
 
     // Catch all to open if shelf if there is a click inside of it.
-    this.dom.shelf.addEventListener("click", (event) => {
+    this._addEventListener("click", this.dom.shelf, (event) => {
       if (event.button !== 0) return;
 
       this.currentEvent = "mouse";
@@ -1042,7 +1043,7 @@ class NavigationShelf extends Component {
     });
 
     // Close the shelf if a click happens outside of it.
-    document.addEventListener("click", (event) => {
+    this._addEventListener("click", document, (event) => {
       if (this.focusState === "none") return;
       if (this.isLocked) return;
       if (
@@ -1062,7 +1063,7 @@ class NavigationShelf extends Component {
    * @protected
    */
   _handleHover() {
-    this.dom.shelf.addEventListener("pointerenter", (event) => {
+    this._addEventListener("pointerenter", this.dom.shelf, (event) => {
       if (event.pointerType === "pen" || event.pointerType === "touch") return;
       if (this.isLocked || this.isSoftLocked) return;
       if (!this.hover) return;
@@ -1081,7 +1082,7 @@ class NavigationShelf extends Component {
       }
     });
 
-    this.dom.shelf.addEventListener("pointerleave", (event) => {
+    this._addEventListener("pointerleave", this.dom.shelf, (event) => {
       if (event.pointerType === "pen" || event.pointerType === "touch") return;
       if (this.isLocked || this.isSoftLocked) return;
       if (!this.hover) return;
@@ -1108,7 +1109,7 @@ class NavigationShelf extends Component {
    */
   _handleKeydown() {
     // Prevent keydown events on the shelf if they are `Escape`.
-    this.dom.shelf.addEventListener("keydown", (event) => {
+    this._addEventListener("keydown", this.dom.shelf, (event) => {
       const key = keyPress(event);
 
       if (key === "Escape") {
@@ -1122,7 +1123,7 @@ class NavigationShelf extends Component {
       if (Array.isArray(element)) continue;
       if (element === this.dom.shelf) continue;
 
-      element.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", element, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1141,7 +1142,7 @@ class NavigationShelf extends Component {
    */
   _handleKeyup() {
     // Close the shelf on `Escape`.
-    this.dom.shelf.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.shelf, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
@@ -1153,7 +1154,7 @@ class NavigationShelf extends Component {
 
     // Toggle the shelf on `Space` or `Enter` on the controller.
     if (this.dom.controller) {
-      this.dom.controller.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.controller, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1172,7 +1173,7 @@ class NavigationShelf extends Component {
 
     // Toggle hover on `Space` or `Enter` on the hover controller.
     if (this.dom.hoverController) {
-      this.dom.hoverController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.hoverController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1186,7 +1187,7 @@ class NavigationShelf extends Component {
 
     // Toggle lock on `Space` or `Enter` on the lock controller.
     if (this.dom.lockController) {
-      this.dom.lockController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.lockController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1200,7 +1201,7 @@ class NavigationShelf extends Component {
 
     // Shift sides on `Space` or `Enter` on the side controller.
     if (this.dom.sideController) {
-      this.dom.sideController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.sideController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
