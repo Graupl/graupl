@@ -833,42 +833,45 @@ class Tooltip extends Component {
   /**
    * Handles the hover events throughout the tooltip for proper use.
    *
-   * - Adds a `pointerenter` listener to the tooltip to show tooltipDescription.
-   * - Adds a `pointerleave` listener to the tooltip to hide tooltipDescription.
+   * - Adds a `pointerenter` listener to the tooltip to show tooltip.
+   * - Adds a `pointerleave` listener to the tooltip to hide tooltip.
    */
   _handleHover() {
-    this.dom.tooltipToggle.addEventListener("pointerenter", () => {
-      if (this.isSoftLocked) return;
+    this._addEventListener("pointerenter", this.dom.tooltip, (event) => {
+      // Exit out of the event if it was not made by a mouse.
+      if (event.pointerType === "pen" || event.pointerType === "touch") {
+        return;
+      }
+
       if (this.hoverType == "off") return;
 
       this.currentEvent = "mouse";
-      this.focusState = "self";
 
       if (this.enterDelay > 0) {
         this._clearTimeout();
         this._setTimeout(() => {
-          if (this.isHidden) {
-            this.show();
-          }
+          this.show();
         }, this.enterDelay);
       } else {
         this.show();
       }
     });
 
-    this.dom.tooltipToggle.addEventListener("pointerleave", () => {
-      if (this.isSoftLocked) return;
+    this._addEventListener("pointerleave", this.dom.tooltip, (event) => {
+      // Exit out of the event if it was not made by a mouse.
+      if (event.pointerType === "pen" || event.pointerType === "touch") {
+        return;
+      }
+
       if (this.hoverType == "off") return;
+      if (this.isSoftLocked) return;
 
       this.currentEvent = "mouse";
-      this.focusState = "none";
 
       if (this.leaveDelay > 0) {
         this._clearTimeout();
         this._setTimeout(() => {
-          if (!this.isHidden) {
-            this.hide();
-          }
+          this.hide();
         }, this.leaveDelay);
       } else {
         this.hide();
