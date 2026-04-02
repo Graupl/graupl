@@ -57,6 +57,7 @@ import Component from "../Component.js";
  * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
  * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the tooltip when it loses focus in the DOM.
+ * @property {boolean}                     _openOnFocus                 - Whether to open the tooltip when it gains focus in the DOM.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the tooltip.
@@ -87,6 +88,7 @@ class Tooltip extends Component {
   _hoverType = "on";
   _open = false;
   _storageKey = "tooltips";
+  _openOnFocus = true;
   _closeOnBlur = true;
   _name = "Tooltip";
 
@@ -108,6 +110,7 @@ class Tooltip extends Component {
    * @param {number}               [options.hoverDelay = 250]                                 - The delay time (in milliseconds) used for hover events.
    * @param {number}               [options.enterDelay = -1]                                  - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}               [options.leaveDelay = -1]                                  - The delay time (in milliseconds) used for pointerleave events.
+   * @param {boolean}              [options.openOnFocus = true]                               - Whether to open the tooltip when it gains focus in the DOM.
    * @param {boolean}              [options.closeOnBlur = true]                               - Whether to close the tooltip when it loses focus in the DOM.
    * @param {?string}              [options.prefix = graupl-]                                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                                       - The key used to generate IDs throughout the tooltip.
@@ -125,6 +128,7 @@ class Tooltip extends Component {
     transitionDuration = 150,
     showDuration = -1,
     hideDuration = -1,
+    openOnFocus = true,
     closeOnBlur = true,
     hoverType = "on",
     hoverDelay = 250,
@@ -157,7 +161,8 @@ class Tooltip extends Component {
     this._durations.show = showDuration;
     this._durations.hide = hideDuration;
 
-    // Set close on blur.
+    // Set focus settings.
+    this._openOnFocus = openOnFocus;
     this._closeOnBlur = closeOnBlur;
 
     // Set hover settings.
@@ -597,6 +602,25 @@ class Tooltip extends Component {
 
     if (this._softLocked !== value) {
       this._softLocked = value;
+    }
+  }
+
+  /**
+   * Whether to open the breadcrumb when it gains focus in the DOM.
+   *
+   * @type {boolean}
+   *
+   * @see _openOnFocus
+   */
+  get openOnFocus() {
+    return this._openOnFocus;
+  }
+
+  set openOnFocus(value) {
+    isValidType("boolean", { openOnFocus: value });
+
+    if (this._openOnFocus !== value) {
+      this._openOnFocus = value;
     }
   }
 
