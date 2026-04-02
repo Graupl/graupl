@@ -860,45 +860,75 @@ class Tooltip extends Component {
   /**
    * Shows the tooltip.
    *
-   * Sets the tooltip's focus state to "self", calls reveal, and sets isHidden to `false`.
+   * Sets the tooltip's focus state to "self", calls reveal, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for showing the tooltip.
-   * @param {boolean}         [options.force = false]         - Whether to force the show action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
+   * @param {Object<boolean>} [options = {}]                            - Options for opening the tooltip.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once opened.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  show({ force = false } = {}) {
-    if (!this.isHidden && !force) return;
+  show({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (this.isOpen && !force) return;
 
     // Set the focus state.
     this.focusState = "self";
 
     // Reveal the tooltip.
-    this._reveal();
+    this._reveal({ emit, transition });
 
-    // Set the hidden state.
-    this._hidden = false;
+    // Set the open state.
+    this._open = true;
   }
 
   /**
    * Hides the tooltip.
    *
-   * Sets the tooltip's focus state to "none", calls conceal, and sets isHidden to `true`.
+   * Sets the tooltip's focus state to "none", calls conceal, and sets isOpen to `false`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for hiding the tooltip.
-   * @param {boolean}         [options.force = false]         - Whether to force the hide action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
+   * @param {Object<boolean>} [options = {}]                            - Options for closing the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the collapse event once closed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  hide({ force = false } = {}) {
-    if (this.isHidden && !force) return;
+  hide({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (!this.isOpen && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Conceal the tooltip.
-    this._conceal();
+    this._conceal({ emit, transition });
 
-    // Set the hidden state.
-    this._hidden = true;
+    // Set the open state.
+    this._open = false;
+  }
+
+  /**
+   * Toggles the open state of the tooltip.
+   *
+   * @param {Object<boolean>} [options = {}]                            - Options for toggling the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open or close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand/collapse event once toggled.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   */
+  toggle({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (this.isOpen) {
+      this.hide({ force, emit, transition });
+    } else {
+      this.show({ force, emit, transition });
+    }
   }
 }
 
