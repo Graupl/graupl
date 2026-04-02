@@ -136,6 +136,14 @@ import Component from "@graupl/core/src/Component.js";
  * @property {string}                               _side                        - The side of the screen the navigation shelf is on.
  * @property {string}                               _otherSide                   - The opposite side of the screen the navigation shelf is on.
  * @property {boolean}                              _open                        - The open state of the shelf.
+ * @property {boolean}                              _openInsideBreakpoint        - A flag to open the disclosure when inside the breakpoint.
+ * @property {boolean}                              _openOutsideBreakpoint       - A flag to open the disclosure when outside the breakpoint.
+ * @property {boolean}                              _closeInsideBreakpoint       - A flag to close the disclosure when inside the breakpoint.
+ * @property {boolean}                              _closeOutsideBreakpoint      - A flag to close the disclosure when outside the breakpoint.
+ * @property {boolean}                              _lockInsideBreakpoint        - A flag to lock the disclosure in its current state when inside the breakpoint.
+ * @property {boolean}                              _lockOutsideBreakpoint       - A flag to lock the disclosure in its current state when outside the breakpoint.
+ * @property {boolean}                              _unlockInsideBreakpoint      - A flag to unlock the disclosure when inside the breakpoint.
+ * @property {boolean}                              _unlockOutsideBreakpoint     - A flag to unlock the disclosure when outside the breakpoint.
  * @property {Function}                             _mediaQueryListEventCallback - The callback for media query list events.
  * @property {Object<CustomEvent>}                  _events                      - Custom events that can be triggered throughout the navigation shelf.
  * @property {grauplNavigationShelfExpand}          _events.expand               - The event triggered when the shelf expands.
@@ -178,6 +186,14 @@ class NavigationShelf extends Component {
   _side = "left";
   _otherSide = "right";
   _open = false;
+  _openInsideBreakpoint = false;
+  _openOutsideBreakpoint = false;
+  _closeInsideBreakpoint = false;
+  _closeOutsideBreakpoint = false;
+  _lockInsideBreakpoint = false;
+  _lockOutsideBreakpoint = false;
+  _unlockInsideBreakpoint = false;
+  _unlockOutsideBreakpoint = false;
   _mediaQueryListEventCallback = (event) => {
     if (event.matches) {
       if (this.isOpen) {
@@ -232,6 +248,15 @@ class NavigationShelf extends Component {
    * @param {boolean}            [options.locked = false]                   - A flag to indicate if the shelf is locked.
    * @param {string}             [options.side = left]                      - The side of the screen the shelf is on.
    * @param {?string}            [options.minWidth = 1023px]                - The minimum width at which the shelf can auto-toggle.
+   * @param {?string}            [options.breakpoint = ""]                  - The breakpoint that the shelf will automatically open/close itself.
+   * @param {boolean}            [options.openInsideBreakpoint = false]     - A flag to open the shelf when inside the breakpoint.
+   * @param {boolean}            [options.openOutsideBreakpoint = false]    - A flag to open the shelf when outside the breakpoint.
+   * @param {boolean}            [options.closeInsideBreakpoint = false]    - A flag to close the shelf when inside the breakpoint.
+   * @param {boolean}            [options.closeOutsideBreakpoint = false]   - A flag to close the shelf when outside the breakpoint.
+   * @param {boolean}            [options.lockInsideBreakpoint = false]     - A flag to lock the shelf when inside the breakpoint.
+   * @param {boolean}            [options.lockOutsideBreakpoint = false]    - A flag to lock the shelf when outside the breakpoint.
+   * @param {boolean}            [options.unlockInsideBreakpoint = false]   - A flag to unlock the shelf when inside the breakpoint.
+   * @param {boolean}            [options.unlockOutsideBreakpoint = false]  - A flag to unlock the shelf when outside the breakpoint.
    * @param {?string}            [options.mediaQuery = ""]                  - The media query to use when automatically opening/closing the shelf.
    * @param {?string}            [options.prefix = graupl-]                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                       - The key used to generate IDs throughout the shelf.
@@ -264,6 +289,15 @@ class NavigationShelf extends Component {
     locked = false,
     side = "left",
     minWidth = "1023px",
+    breakpoint = "1023px",
+    openInsideBreakpoint = false,
+    openOutsideBreakpoint = false,
+    closeInsideBreakpoint = false,
+    closeOutsideBreakpoint = false,
+    lockInsideBreakpoint = false,
+    lockOutsideBreakpoint = false,
+    unlockInsideBreakpoint = false,
+    unlockOutsideBreakpoint = false,
     mediaQuery = "",
     prefix = "graupl-",
     key = null,
@@ -306,8 +340,27 @@ class NavigationShelf extends Component {
     // Set locked state.
     this._locked = new TransactionalValue(locked);
 
+    // @todo Remove minWidth option in favor of breakpoint.
+    if (minWidth !== "") {
+      console.warn(
+        "`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."
+      );
+
+      if (breakpoint === "") {
+        breakpoint = minWidth;
+      }
+    }
+
     // Set the breakpoint and media query.
-    this._breakpoint = minWidth;
+    this._breakpoint = breakpoint;
+    this._openInsideBreakpoint = openInsideBreakpoint;
+    this._openOutsideBreakpoint = openOutsideBreakpoint;
+    this._closeInsideBreakpoint = closeInsideBreakpoint;
+    this._closeOutsideBreakpoint = closeOutsideBreakpoint;
+    this._lockInsideBreakpoint = lockInsideBreakpoint;
+    this._lockOutsideBreakpoint = lockOutsideBreakpoint;
+    this._unlockInsideBreakpoint = unlockInsideBreakpoint;
+    this._unlockOutsideBreakpoint = unlockOutsideBreakpoint;
     this._mediaQueryString = mediaQuery || "";
 
     // Set side.
