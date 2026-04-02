@@ -718,22 +718,20 @@ class Tooltip extends Component {
   /**
    * Handles focus events throughout the tooltip.
    *
+   * - Adds a `focus` listener to the tooltip so when the tooltip gains focus it will open.
    * - Adds a `focusout` listener to the tooltip so when the tooltip loses focus it will close.
    */
   _handleFocus() {
-    if (this.dom.tooltipToggle) {
-      this._addEventListener("focus", this.dom.tooltipToggle, () => {
-        this.focusState = "self";
-      });
-    }
+    this._addEventListener("focus", this.dom.tooltip, () => {
+      this.focusState = "self";
+    });
 
-    this._addEventListener("focusout", this.dom.tooltipToggle, (event) => {
+    this._addEventListener("focusout", this.dom.tooltip, (event) => {
       if (
         !this.closeOnBlur ||
-        this.focusState !== "self" ||
+        this.currentEvent !== "keyboard" ||
         event.relatedTarget === null ||
-        this.dom.tooltip.contains(event.relatedTarget) ||
-        this.dom.tooltipToggle === event.relatedTarget
+        this.dom.tooltip.contains(event.relatedTarget)
       ) {
         return;
       }
