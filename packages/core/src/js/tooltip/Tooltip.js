@@ -52,7 +52,7 @@ import Component from "../Component.js";
  * @property {number}                      _durations.transition        - The duration time (in milliseconds) for the transition between shown and hidden states.
  * @property {number}                      _durations.show              - The duration time (in milliseconds) for the transition from hidden to shown states.
  * @property {number}                      _durations.hide              - The duration time (in milliseconds) for the transition from shown to hidden states.
- * @property {boolean}                     _hidden                      - The hidden state of the tooltip.
+ * @property {boolean}                     _open                        - The open state of the tooltip.
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the tooltip.
  * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
  * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
@@ -85,7 +85,7 @@ class Tooltip extends Component {
   _rootDOMElement = "tooltip";
   _softLocked = false;
   _hoverType = "on";
-  _hidden = true;
+  _open = false;
   _storageKey = "tooltips";
   _closeOnBlur = true;
   _name = "Tooltip";
@@ -194,7 +194,7 @@ class Tooltip extends Component {
       () => {
         // Boolean checks.
         const booleans = {
-          isHidden: this._hidden,
+          isOpen: this._open,
         };
 
         // Check the booleans.
@@ -345,16 +345,16 @@ class Tooltip extends Component {
   }
 
   /**
-   * The hidden state of the tooltip.
+   * The open state of the tooltip.
    *
    * @readonly
    *
    * @type {boolean}
    *
-   * @see _hidden
+   * @see _open
    */
-  get isHidden() {
-    return this._hidden;
+  get isOpen() {
+    return this._open;
   }
 
   /**
