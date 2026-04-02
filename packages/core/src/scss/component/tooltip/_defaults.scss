@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../base/button/variables" as button-variables;
 @use "../../functions/theme";
 @use "sass:map";
 
@@ -27,8 +28,6 @@ $tooltip-hidden-selector-base: $modifier-selector-base !default;
 $tooltip-hidden-selector: "hide" !default;
 $tooltip-shown-selector-base: $modifier-selector-base !default;
 $tooltip-shown-selector: "show" !default;
-$tooltip-transition-selector-base: $modifier-selector-base !default;
-$tooltip-transition-selector: "transitioning" !default;
 
 // Tooltip state theme defaults.
 // This map is used to define the default colour shades for the
@@ -41,15 +40,34 @@ $tooltip-transition-selector: "transitioning" !default;
 // Secondary/tertiary tooltips will use the same shade for their respective colours.
 $-tooltip-theme-mappings: (
   color: 900,
-  background: transparent,
   border-color: transparent,
-  bubble-color: 800,
+  description-color: 800,
+  description-background: 100,
   toggle-border-color: 800,
   toggle-color: 100,
   toggle-background: 800,
+  toggle-hover-color: 100,
   toggle-hover-background: 700,
+  toggle-hover-border-color: 700,
+  toggle-disabled-color: 200,
+  toggle-disabled-background: 100,
+  toggle-disabled-border-color: 200,
+  toggle-selected-background: 700,
+  toggle-selected-color: 100,
+  toggle-selected-border-color: 700,
 );
 $tooltip-theme-mappings: () !default;
+
+// Transform properties.
+$tooltip-toggle-initial-transform: none !default;
+$tooltip-toggle-final-transform: none !default;
+$tooltip-toggle-disabled-transform: $tooltip-toggle-initial-transform !default;
+$tooltip-description-top: auto !default;
+$tooltip-description-right: auto !default;
+$tooltip-description-bottom: auto !default;
+$tooltip-description-left: calc(
+  #{button-variables.$button-min-width} + 0.25rem
+) !default;
 
 // Merge the custom tooltip state theme map with the default one.
 @if $generate-base-theme-map {

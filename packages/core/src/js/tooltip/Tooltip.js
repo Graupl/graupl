@@ -6,7 +6,6 @@
 import { isValidClassList, isValidType } from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
-import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
 /**
@@ -15,9 +14,9 @@ import Component from "../Component.js";
  *
  * @type {CustomEvent}
  *
- * @property {boolean}         bubbles      - Whether the event bubbles.
- * @property {Object<Tooltip>} detail       - The detail object.
- * @property {Tooltip}         detail.tooltip - The tooltip that was shown.
+ * @property {boolean}         bubbles         - Whether the event bubbles.
+ * @property {Object<Tooltip>} detail          - The detail object.
+ * @property {Tooltip}         detail.tooltip  - The tooltip that was shown.
  */
 
 /**
@@ -26,33 +25,9 @@ import Component from "../Component.js";
  *
  * @type {CustomEvent}
  *
- * @property {boolean}         bubbles      - Whether the event bubbles.
- * @property {Object<Tooltip>} detail       - The detail object.
+ * @property {boolean}         bubbles        - Whether the event bubbles.
+ * @property {Object<Tooltip>} detail         - The detail object.
  * @property {Tooltip}         detail.tooltip - The tooltip that was hidden.
- */
-
-/**
- * The event that is triggered when the tooltip's hoverability is enabled.
- *
- * @event grauplTooltipEnableHoverable
- *
- * @type {CustomEvent}
- *
- * @property {boolean}         bubbles        - A flag to bubble the event.
- * @property {Object<Tooltip>} detail         - The details object containing the Tooltip itself.
- * @property {Tooltip}         detail.tooltip - The tooltip.
- */
-
-/**
- * The event that is triggered when the tooltip's hoverability is disabled.
- *
- * @event grauplTooltipDisableHover
- *
- * @type {CustomEvent}
- *
- * @property {boolean}         bubbles        - A flag to bubble the event.
- * @property {Object<Tooltip>} detail         - The details object containing the Tooltip itself.
- * @property {Tooltip}         detail.tooltip - The tooltip.
  */
 
 /**
@@ -77,18 +52,16 @@ import Component from "../Component.js";
  * @property {number}                      _durations.transition        - The duration time (in milliseconds) for the transition between shown and hidden states.
  * @property {number}                      _durations.show              - The duration time (in milliseconds) for the transition from hidden to shown states.
  * @property {number}                      _durations.hide              - The duration time (in milliseconds) for the transition from shown to hidden states.
- * @property {TransactionalValue<boolean>} _hidden                      - The hidden state of the tooltip.
+ * @property {boolean}                     _hidden                      - The hidden state of the tooltip.
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the tooltip.
  * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
  * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
- * @property {grauplTooltipEnableHover}    _events.enableHover          - The event triggered when the tooltip is hovered.
- * @property {grauplTooltipDisableHover}   _events.disableHover         - The event triggered when the tooltip is hovered.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the tooltip when it loses focus in the DOM.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the tooltip.
  * @property {Object<Tooltip>}             _elements                    - The instantiated elements within the tooltip.
- * @property {boolean}                     _hover                       - A flag to indicate if the tooltip is hoverable.
+ * @property {?string}                     _hoverType                   - An indication of the tooltip's hoverType.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the tooltip.
  * @property {string}                      _focusState                  - The current state of the tooltip's focus.
  * @property {string}                      _currentEvent                - The last type of event triggered within the tooltip.
@@ -110,10 +83,9 @@ import Component from "../Component.js";
 
 class Tooltip extends Component {
   _rootDOMElement = "tooltip";
-  _protectedDOMElements = ["button"];
   _softLocked = false;
-  _hover = true;
-  _hidden = new TransactionalValue(false);
+  _hoverType = "on";
+  _hidden = true;
   _storageKey = "tooltips";
   _closeOnBlur = true;
   _name = "Tooltip";
@@ -121,27 +93,27 @@ class Tooltip extends Component {
   /**
    * Constructs a new `Tooltip`.
    *
-   * @param {object}               options                                     - The options object.
-   * @param {HTMLElement}          [options.tooltipElement]                    - The tooltip element.
-   * @param {?HTMLElement}         [options.tooltipToggleElement = .tooltip-toggle]     - The button element.
-   * @param {?HTMLElement}         [options.tooltipDescriptionElement = .tooltip-description]     - The description element.
-   * @param {string|string[]|null} [options.showClass = show]                - The class(es) to apply when the tooltip is shown.
-   * @param {string|string[]|null} [options.hideClass = hide]                - The class(es) to apply when the tooltip is hidden.
-   * @param {string|string[]|null} [options.transitionClass = transitioning] - The class(es) to apply when the tooltip is transitioning between states.
-   * @param {number}               [options.transitionDelay = 250]         - A flag to initialize the tooltip immediately upon creation.
-   * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "shown" and "hidden" states (in milliseconds).
-   * @param {boolean}              [options.showDuration = -1]               - The duration of the transition from "hidden" to "shown" states (in milliseconds).
-   * @param {boolean}              [options.hideDuration = -1]               - The duration of the transition from "shown" to "hidden" states (in milliseconds).
-   * @param {boolean}              [options.hoverable = true]                - A flag to indicate if the tooltipDescription is hoverable.
-   * @param {number}               [options.hoverDelay = 250]                 - The delay time (in milliseconds) used for hover events.
-   * @param {number}               [options.enterDelay = -1]                  - The delay time (in milliseconds) used for pointerenter events.
-   * @param {number}               [options.leaveDelay = -1]                  - The delay time (in milliseconds) used for pointerleave events.
-   * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
-   * @param {boolean}              [options.isHidden = true]                 - A flag to determine the initial state of the tooltip.
-   * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
-   * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
-   * @param {?(string|string[])}   [options.initializeClass = initializing]  - The class(es) to apply when the tooltip is initializing.
-   * @param {boolean}              [options.initialize = false]              - A flag to initialize the tooltip immediately upon creation.
+   * @param {object}               options                                                    - The options object.
+   * @param {HTMLElement}          [options.tooltipElement]                                   - The tooltip element.
+   * @param {?HTMLElement}         [options.tooltipToggleElement = .tooltip-toggle]           - The button element.
+   * @param {?HTMLElement}         [options.tooltipDescriptionElement = .tooltip-description] - The description element.
+   * @param {string|string[]|null} [options.showClass = show]                                 - The class(es) to apply when the tooltip is shown.
+   * @param {string|string[]|null} [options.hideClass = hide]                                 - The class(es) to apply when the tooltip is hidden.
+   * @param {string|string[]|null} [options.transitionClass = transitioning]                  - The class(es) to apply when the tooltip is transitioning between states.
+   * @param {number}               [options.transitionDelay = 250]                            - A flag to initialize the tooltip immediately upon creation.
+   * @param {number}               [options.transitionDuration = 150]                         - The duration of the transition between "shown" and "hidden" states (in milliseconds).
+   * @param {boolean}              [options.showDuration = -1]                                - The duration of the transition from "hidden" to "shown" states (in milliseconds).
+   * @param {boolean}              [options.hideDuration = -1]                                - The duration of the transition from "shown" to "hidden" states (in milliseconds).
+   * @param {?string}              [options.hoverType = on]                                   - An indication of the tooltip Description's hoverType.
+   * @param {number}               [options.hoverDelay = 250]                                 - The delay time (in milliseconds) used for hover events.
+   * @param {number}               [options.enterDelay = -1]                                  - The delay time (in milliseconds) used for pointerenter events.
+   * @param {number}               [options.leaveDelay = -1]                                  - The delay time (in milliseconds) used for pointerleave events.
+   * @param {boolean}              [options.closeOnBlur = true]                               - Whether to close the tooltip when it loses focus in the DOM.
+   * @param {boolean}              [options.isHidden = true]                                  - A flag to determine the initial state of the tooltip.
+   * @param {?string}              [options.prefix = graupl-]                                 - The prefix used for CSS custom properties and attributes.
+   * @param {?string}              [options.key = null]                                       - The key used to generate IDs throughout the tooltip.
+   * @param {?(string|string[])}   [options.initializeClass = initializing]                   - The class(es) to apply when the tooltip is initializing.
+   * @param {boolean}              [options.initialize = false]                               - A flag to initialize the tooltip immediately upon creation.
    */
   constructor({
     tooltipElement,
@@ -155,7 +127,7 @@ class Tooltip extends Component {
     showDuration = -1,
     hideDuration = -1,
     closeOnBlur = true,
-    hoverable = true,
+    hoverType = "on",
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
@@ -191,14 +163,13 @@ class Tooltip extends Component {
     this._closeOnBlur = closeOnBlur;
 
     // Set hover settings.
-    this._hover = hoverable;
+    this._hoverType = hoverType;
     this._delays.hover = hoverDelay;
     this._delays.enter = enterDelay;
     this._delays.leave = leaveDelay;
 
     // Set hidden.
-    this._hidden.value = isHidden;
-    this._hidden.commit();
+    this._hidden = isHidden;
 
     // Register custom events.
     this._registerEvent("show", {
@@ -211,8 +182,6 @@ class Tooltip extends Component {
         tooltip: this,
       },
     });
-    this._registerEvent("enableHover", { detail: { tooltip: this } });
-    this._registerEvent("disableHover", { detail: { tooltip: this } });
 
     // Set up custom initialization.
     this._addEventListener(
@@ -222,13 +191,6 @@ class Tooltip extends Component {
         // Handle hiding the tooltip by default.
         if (this.isHidden) {
           this._conceal({ emit: false, transition: false });
-        }
-
-        // Ensure the initial hoverability of the tooltip.
-        if (this.hover) {
-          this._enableHover({ emit: false });
-        } else {
-          this._disableHover({ emit: false });
         }
       }
     );
@@ -240,8 +202,7 @@ class Tooltip extends Component {
       () => {
         // Boolean checks.
         const booleans = {
-          isHidden: this._hidden.value,
-          hoverable: this._hover,
+          isHidden: this._hidden,
         };
 
         // Check the booleans.
@@ -401,7 +362,7 @@ class Tooltip extends Component {
    * @see _hidden
    */
   get isHidden() {
-    return this._hidden.value;
+    return this._hidden;
   }
 
   /**
@@ -494,8 +455,6 @@ class Tooltip extends Component {
       removeClass(this.hideClass, this.dom.tooltipDescription);
     }
 
-    this.dom.tooltipDescription.removeAttribute("inert");
-
     if (emit) {
       this._dispatchEvent("show", this.dom.tooltipDescription);
     }
@@ -547,80 +506,22 @@ class Tooltip extends Component {
       removeClass(this.showClass, this.dom.tooltipDescription);
     }
 
-    this.dom.tooltipDescription.setAttribute("inert", "true");
-
     if (emit) {
       this._dispatchEvent("hide", this.dom.tooltipDescription);
     }
   }
 
   /**
-   * Enables hover mode on the tooltip.
-   *
-   * @protected
-   *
-   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
-   */
-  _enableHover({ emit = true } = {}) {
-    if (emit) {
-      this._dispatchEvent("enableHover", this.dom.tooltip);
-    }
-  }
-
-  /**
-   * Disables hover mode on the tooltip.
-   *
-   * @protected
-   *
-   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
-   */
-  _disableHover({ emit = true } = {}) {
-    if (emit) {
-      this._dispatchEvent("disableHover", this.dom.tooltip);
-    }
-  }
-
-  /**
-   * Enables hover mode on the shelf.
-   *
-   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
-   */
-  enableHover({ emit = true } = {}) {
-    if (this.hover) return;
-
-    this._enableHover({ emit });
-
-    this._hover = true;
-  }
-
-  /**
-   * Disables hover mode on the shelf.
-   *
-   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
-   */
-  disableHover({ emit = true } = {}) {
-    if (!this.hover) return;
-
-    this._disableHover({ emit });
-
-    this._hover = false;
-  }
-
-  /**
-   * A flag to indicate if the shelf is hoverable.
+   * A flag to indicate the tooltip's hoverType.
    *
    * @readonly
    *
-   * @type {boolean}
+   * @type {?string}
    *
-   * @see _hover
+   * @see _hoverType
    */
   get hover() {
-    return this._hover;
+    return this._hoverType;
   }
 
   /**
@@ -786,6 +687,7 @@ class Tooltip extends Component {
     document.addEventListener("click", (event) => {
       if (this.focusState === "none") return;
       if (
+        !this.closeOnBlur ||
         this.dom.tooltip === event.target ||
         this.dom.tooltip.contains(event.target)
       )
@@ -839,10 +741,21 @@ class Tooltip extends Component {
     }
 
     this._addEventListener("keydown", this.dom.tooltipToggle, (event) => {
+      this.currentEvent = "keyboard";
       const key = keyPress(event);
 
       // Prevent default behavior for space and enter keys.
       if (key === "Space" || key === "Enter") {
+        preventEvent(event);
+      }
+    });
+
+    this._addEventListener("keydown", this.dom.tooltip, (event) => {
+      this.currentEvent = "keyboard";
+      const key = keyPress(event);
+
+      // Prevent default behavior for escape key.
+      if (key === "Escape") {
         preventEvent(event);
       }
     });
@@ -874,10 +787,12 @@ class Tooltip extends Component {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
-
-      if (key === "Escape") {
-        this.hide();
+      if (this.dom.tooltipDescription.classList.contains("show")) {
+        if (key === "Escape") {
+          this.hide();
+        }
       }
+      ``;
     });
   }
 
@@ -890,9 +805,10 @@ class Tooltip extends Component {
   _handleHover() {
     this.dom.tooltipToggle.addEventListener("pointerenter", () => {
       if (this.isSoftLocked) return;
-      if (!this.hover) return;
+      if (this.hoverType == "off") return;
 
       this.currentEvent = "mouse";
+      this.focusState = "self";
 
       if (this.enterDelay > 0) {
         this._clearTimeout();
@@ -908,9 +824,10 @@ class Tooltip extends Component {
 
     this.dom.tooltipToggle.addEventListener("pointerleave", () => {
       if (this.isSoftLocked) return;
-      if (!this.hover) return;
+      if (this.hoverType == "off") return;
 
       this.currentEvent = "mouse";
+      this.focusState = "none";
 
       if (this.leaveDelay > 0) {
         this._clearTimeout();
@@ -934,7 +851,7 @@ class Tooltip extends Component {
    * @param {boolean}         [options.force = false]         - Whether to force the show action.
    * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
    */
-  show({ force = false, preserveState = false } = {}) {
+  show({ force = false } = {}) {
     if (!this.isHidden && !force) return;
 
     // Set the focus state.
@@ -944,11 +861,7 @@ class Tooltip extends Component {
     this._reveal();
 
     // Set the hidden state.
-    this._hidden.value = false;
-
-    if (!preserveState) {
-      this._hidden.commit();
-    }
+    this._hidden = false;
   }
 
   /**
@@ -960,7 +873,7 @@ class Tooltip extends Component {
    * @param {boolean}         [options.force = false]         - Whether to force the hide action.
    * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
    */
-  hide({ force = false, preserveState = false } = {}) {
+  hide({ force = false } = {}) {
     if (this.isHidden && !force) return;
 
     // Set the focus state.
@@ -970,11 +883,7 @@ class Tooltip extends Component {
     this._conceal();
 
     // Set the hidden state.
-    this._hidden.value = true;
-
-    if (!preserveState) {
-      this._hidden.commit();
-    }
+    this._hidden = true;
   }
 }
 
