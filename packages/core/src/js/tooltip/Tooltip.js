@@ -792,7 +792,6 @@ class Tooltip extends Component {
           this.hide();
         }
       }
-      ``;
     });
   }
 
