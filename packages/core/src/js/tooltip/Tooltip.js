@@ -745,14 +745,12 @@ class Tooltip extends Component {
    *
    * This method exists to assist the _handleKeyup method.
    *
-   * - Adds a `keydown` listener to the button (if it exists).
+   * - Adds a `keydown` listener to the button.
    *   - Blocks propagation on "Space" and "Enter" keys.
+   * - Adds a `keydown` listener to the tooltip.
+   *   - Blocks propagation on "Escape" key.
    */
   _handleKeydown() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
     this._addEventListener("keydown", this.dom.tooltipToggle, (event) => {
       this.currentEvent = "keyboard";
       const key = keyPress(event);
@@ -781,29 +779,53 @@ class Tooltip extends Component {
    *   - Hides the tooltip when the user hits "Space" or "Enter".
    */
   _handleKeyup() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
     this._addEventListener("keyup", this.dom.tooltipToggle, (event) => {
-      const key = keyPress(event);
-
-      if (key === "Space" || key === "Enter") {
-        if (this.dom.tooltipDescription.classList.contains("hide")) {
-          this.show();
-        }
-      }
-    });
-
-    // Close the tooltip (including on hover) on `Escape`.
-    document.addEventListener("keyup", (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
-      if (this.dom.tooltipDescription.classList.contains("show")) {
-        if (key === "Escape") {
+
+      switch (key) {
+        case "Space":
+        case "Enter":
+          preventEvent(event);
+          this.toggle();
+
+          break;
+        case "Tab":
+          if (this.openOnFocus) {
+            preventEvent(event);
+            this.show();
+          }
+
+          break;
+      }
+    });
+
+    this._addEventListener("keyup", this.dom.tooltip, (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          preventEvent(event);
           this.hide();
-        }
+
+          break;
+      }
+    });
+
+    this._addEventListener("keyup", document, (event) => {
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          if (this.hoverType !== "on" && this.focusState !== "self") return;
+
+          this.currentEvent = "keyboard";
+          this.hide();
+
+          break;
       }
     });
   }
