@@ -109,7 +109,6 @@ class Tooltip extends Component {
    * @param {number}               [options.enterDelay = -1]                                  - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}               [options.leaveDelay = -1]                                  - The delay time (in milliseconds) used for pointerleave events.
    * @param {boolean}              [options.closeOnBlur = true]                               - Whether to close the tooltip when it loses focus in the DOM.
-   * @param {boolean}              [options.isHidden = true]                                  - A flag to determine the initial state of the tooltip.
    * @param {?string}              [options.prefix = graupl-]                                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                                       - The key used to generate IDs throughout the tooltip.
    * @param {?(string|string[])}   [options.initializeClass = initializing]                   - The class(es) to apply when the tooltip is initializing.
@@ -131,7 +130,6 @@ class Tooltip extends Component {
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
-    isHidden = true,
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
@@ -168,9 +166,6 @@ class Tooltip extends Component {
     this._delays.enter = enterDelay;
     this._delays.leave = leaveDelay;
 
-    // Set hidden.
-    this._hidden = isHidden;
-
     // Register custom events.
     this._registerEvent("show", {
       detail: {
@@ -188,10 +183,7 @@ class Tooltip extends Component {
       "grauplComponentInitialize",
       this.rootDOMElement,
       () => {
-        // Handle hiding the tooltip by default.
-        if (this.isHidden) {
-          this._conceal({ emit: false, transition: false });
-        }
+        this.hide({ force: true });
       }
     );
 
