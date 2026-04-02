@@ -680,38 +680,37 @@ class Tooltip extends Component {
    * @protected
    */
   _handleClick() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
-    this._addEventListener("click", this.dom.tooltipToggle, () => {
+    this._addEventListener("click", this.dom.tooltipToggle, (event) => {
       this.currentEvent = "mouse";
-      this.focusState = "self";
-      this.isSoftLocked = true;
-      this.show();
-    });
 
-    // Catch all to open if tooltipDescription if there is a click inside of it.
-    this.dom.tooltipDescription.addEventListener("click", (event) => {
       if (event.button !== 0) return;
 
+      preventEvent(event);
+      this.isSoftLocked = true;
+      this.toggle();
+    });
+
+    // Make sure event and focus states are updated when clicking on the description.
+    this._addEventListener("click", this.dom.tooltipDescription, (event) => {
       this.currentEvent = "mouse";
+
+      if (event.button !== 0) return;
+
       this.focusState = "self";
     });
 
-    // Close the tooltipDescription if a click happens outside of it.
-    document.addEventListener("click", (event) => {
-      if (this.focusState === "none") return;
+    // Close the tooltip if a click happens outside of it.
+    this._addEventListener("click", document, (event) => {
+      if (this.focusState !== "self") return;
+      if (!this.closeOnBlur) return;
       if (
-        !this.closeOnBlur ||
         this.dom.tooltip === event.target ||
         this.dom.tooltip.contains(event.target)
-      )
+      ) {
         return;
+      }
 
       this.currentEvent = "mouse";
-      this.focusState = "none";
-      this.isSoftLocked = false;
       this.hide();
     });
   }
