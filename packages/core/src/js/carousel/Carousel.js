@@ -195,6 +195,11 @@ class Carousel extends Component {
         // Handle events.
         this._handleAutoplay();
 
+        // Make sure all carousel items are inert so they are not focusable until activated.
+        this.dom.carouselItems.forEach((item) => {
+          item.setAttribute("inert", "true");
+        });
+
         // Activate the first item.
         this.activateFirstItem();
       }
@@ -847,6 +852,7 @@ class Carousel extends Component {
    */
   activateCurrentItem() {
     addClass(this.activeClass, this.currentCarouselItem);
+    this.currentCarouselItem.removeAttribute("inert");
 
     if (this.currentCarouselTab) {
       this.currentCarouselTab.setAttribute("aria-selected", true);
@@ -859,6 +865,7 @@ class Carousel extends Component {
    */
   deactivateCurrentItem() {
     removeClass(this.activeClass, this.currentCarouselItem);
+    this.currentCarouselItem.setAttribute("inert", true);
 
     if (this.currentCarouselTab) {
       this.currentCarouselTab.setAttribute("aria-selected", false);
