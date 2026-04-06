@@ -272,6 +272,13 @@
     // &.show
     &#{defaults.$tooltip-shown-selector-base}#{defaults.$tooltip-shown-selector} {
       display: block;
+      opacity: 1;
+    }
+
+    // &.transitioning
+    &#{defaults.$tooltip-transitioning-selector-base}#{defaults.$tooltip-transitioning-selector} {
+      display: block;
+      opacity: 0;
     }
   }
 }
