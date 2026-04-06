@@ -391,12 +391,6 @@ $tooltip-toggle-content: var(
   "i"
 );
 
-// --graupl-tooltip-toggle-border-color
-$tooltip-toggle-border-color: var(
-  --#{root-defaults.$prefix}tooltip-toggle-border-color,
-  #{button.$button-border-color}
-);
-
 // --graupl-tooltip-toggle-font-family
 $tooltip-toggle-font-family: var(
   --#{root-defaults.$prefix}tooltip-toggle-font-family,
