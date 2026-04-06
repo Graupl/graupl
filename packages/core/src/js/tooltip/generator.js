@@ -4,7 +4,9 @@ import once from "@drupal/once";
 const generate = (
   options = {},
   context = document,
-  tooltipSelector = ".tooltip"
+  tooltipSelector = ".tooltip",
+  tooltipDescriptionSelector = ".tooltip-description",
+  tooltipToggleSelector = ".tooltip-toggle"
 ) => {
   once("graupl-tooltip-generator", tooltipSelector, context).forEach(
     (tooltipElement) => {
@@ -17,9 +19,9 @@ const generate = (
       new Tooltip({
         tooltipElement,
         tooltipToggleElement:
-          tooltipElement.querySelector(".tooltip-toggle") || null,
+          tooltipElement.querySelector(tooltipToggleSelector) || null,
         tooltipDescriptionElement:
-          tooltipElement.querySelector(".tooltip-description") || null,
+          tooltipElement.querySelector(tooltipDescriptionSelector) || null,
         initialize: true,
         ...options,
         ...tooltipOptions,
