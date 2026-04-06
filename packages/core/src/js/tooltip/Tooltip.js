@@ -52,11 +52,12 @@ import Component from "../Component.js";
  * @property {number}                      _durations.transition        - The duration time (in milliseconds) for the transition between shown and hidden states.
  * @property {number}                      _durations.show              - The duration time (in milliseconds) for the transition from hidden to shown states.
  * @property {number}                      _durations.hide              - The duration time (in milliseconds) for the transition from shown to hidden states.
- * @property {boolean}                     _hidden                      - The hidden state of the tooltip.
+ * @property {boolean}                     _open                        - The open state of the tooltip.
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the tooltip.
  * @property {grauplTooltipShow}           _events.show                 - The event triggered when the tooltip is shown.
  * @property {grauplTooltipHide}           _events.hide                 - The event triggered when the tooltip is hidden.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the tooltip when it loses focus in the DOM.
+ * @property {boolean}                     _openOnFocus                 - Whether to open the tooltip when it gains focus in the DOM.
  * @property {string}                      _storageKey                  - The key used for storage.
  * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the tooltip.
@@ -85,8 +86,9 @@ class Tooltip extends Component {
   _rootDOMElement = "tooltip";
   _softLocked = false;
   _hoverType = "on";
-  _hidden = true;
+  _open = false;
   _storageKey = "tooltips";
+  _openOnFocus = true;
   _closeOnBlur = true;
   _name = "Tooltip";
 
@@ -108,8 +110,8 @@ class Tooltip extends Component {
    * @param {number}               [options.hoverDelay = 250]                                 - The delay time (in milliseconds) used for hover events.
    * @param {number}               [options.enterDelay = -1]                                  - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}               [options.leaveDelay = -1]                                  - The delay time (in milliseconds) used for pointerleave events.
+   * @param {boolean}              [options.openOnFocus = true]                               - Whether to open the tooltip when it gains focus in the DOM.
    * @param {boolean}              [options.closeOnBlur = true]                               - Whether to close the tooltip when it loses focus in the DOM.
-   * @param {boolean}              [options.isHidden = true]                                  - A flag to determine the initial state of the tooltip.
    * @param {?string}              [options.prefix = graupl-]                                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                                       - The key used to generate IDs throughout the tooltip.
    * @param {?(string|string[])}   [options.initializeClass = initializing]                   - The class(es) to apply when the tooltip is initializing.
@@ -126,12 +128,12 @@ class Tooltip extends Component {
     transitionDuration = 150,
     showDuration = -1,
     hideDuration = -1,
+    openOnFocus = true,
     closeOnBlur = true,
     hoverType = "on",
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
-    isHidden = true,
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
@@ -159,7 +161,8 @@ class Tooltip extends Component {
     this._durations.show = showDuration;
     this._durations.hide = hideDuration;
 
-    // Set close on blur.
+    // Set focus settings.
+    this._openOnFocus = openOnFocus;
     this._closeOnBlur = closeOnBlur;
 
     // Set hover settings.
@@ -167,9 +170,6 @@ class Tooltip extends Component {
     this._delays.hover = hoverDelay;
     this._delays.enter = enterDelay;
     this._delays.leave = leaveDelay;
-
-    // Set hidden.
-    this._hidden = isHidden;
 
     // Register custom events.
     this._registerEvent("show", {
@@ -188,10 +188,7 @@ class Tooltip extends Component {
       "grauplComponentInitialize",
       this.rootDOMElement,
       () => {
-        // Handle hiding the tooltip by default.
-        if (this.isHidden) {
-          this._conceal({ emit: false, transition: false });
-        }
+        this.hide({ force: true });
       }
     );
 
@@ -202,7 +199,7 @@ class Tooltip extends Component {
       () => {
         // Boolean checks.
         const booleans = {
-          isHidden: this._hidden,
+          isOpen: this._open,
         };
 
         // Check the booleans.
@@ -353,16 +350,16 @@ class Tooltip extends Component {
   }
 
   /**
-   * The hidden state of the tooltip.
+   * The open state of the tooltip.
    *
    * @readonly
    *
    * @type {boolean}
    *
-   * @see _hidden
+   * @see _open
    */
-  get isHidden() {
-    return this._hidden;
+  get isOpen() {
+    return this._open;
   }
 
   /**
@@ -609,6 +606,25 @@ class Tooltip extends Component {
   }
 
   /**
+   * Whether to open the breadcrumb when it gains focus in the DOM.
+   *
+   * @type {boolean}
+   *
+   * @see _openOnFocus
+   */
+  get openOnFocus() {
+    return this._openOnFocus;
+  }
+
+  set openOnFocus(value) {
+    isValidType("boolean", { openOnFocus: value });
+
+    if (this._openOnFocus !== value) {
+      this._openOnFocus = value;
+    }
+  }
+
+  /**
    * Whether to close the breadcrumb when it loses focus in the DOM.
    *
    * @type {boolean}
@@ -664,38 +680,37 @@ class Tooltip extends Component {
    * @protected
    */
   _handleClick() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
-    this._addEventListener("click", this.dom.tooltipToggle, () => {
+    this._addEventListener("click", this.dom.tooltipToggle, (event) => {
       this.currentEvent = "mouse";
-      this.focusState = "self";
-      this.isSoftLocked = true;
-      this.show();
-    });
 
-    // Catch all to open if tooltipDescription if there is a click inside of it.
-    this.dom.tooltipDescription.addEventListener("click", (event) => {
       if (event.button !== 0) return;
 
+      preventEvent(event);
+      this.isSoftLocked = true;
+      this.toggle();
+    });
+
+    // Make sure event and focus states are updated when clicking on the description.
+    this._addEventListener("click", this.dom.tooltipDescription, (event) => {
       this.currentEvent = "mouse";
+
+      if (event.button !== 0) return;
+
       this.focusState = "self";
     });
 
-    // Close the tooltipDescription if a click happens outside of it.
-    document.addEventListener("click", (event) => {
-      if (this.focusState === "none") return;
+    // Close the tooltip if a click happens outside of it.
+    this._addEventListener("click", document, (event) => {
+      if (this.focusState !== "self") return;
+      if (!this.closeOnBlur) return;
       if (
-        !this.closeOnBlur ||
         this.dom.tooltip === event.target ||
         this.dom.tooltip.contains(event.target)
-      )
+      ) {
         return;
+      }
 
       this.currentEvent = "mouse";
-      this.focusState = "none";
-      this.isSoftLocked = false;
       this.hide();
     });
   }
@@ -703,22 +718,20 @@ class Tooltip extends Component {
   /**
    * Handles focus events throughout the tooltip.
    *
+   * - Adds a `focus` listener to the tooltip so when the tooltip gains focus it will open.
    * - Adds a `focusout` listener to the tooltip so when the tooltip loses focus it will close.
    */
   _handleFocus() {
-    if (this.dom.tooltipToggle) {
-      this._addEventListener("focus", this.dom.tooltipToggle, () => {
-        this.focusState = "self";
-      });
-    }
+    this._addEventListener("focus", this.dom.tooltip, () => {
+      this.focusState = "self";
+    });
 
-    this._addEventListener("focusout", this.dom.tooltipToggle, (event) => {
+    this._addEventListener("focusout", this.dom.tooltip, (event) => {
       if (
         !this.closeOnBlur ||
-        this.focusState !== "self" ||
+        this.currentEvent !== "keyboard" ||
         event.relatedTarget === null ||
-        this.dom.tooltip.contains(event.relatedTarget) ||
-        this.dom.tooltipToggle === event.relatedTarget
+        this.dom.tooltip.contains(event.relatedTarget)
       ) {
         return;
       }
@@ -732,14 +745,12 @@ class Tooltip extends Component {
    *
    * This method exists to assist the _handleKeyup method.
    *
-   * - Adds a `keydown` listener to the button (if it exists).
+   * - Adds a `keydown` listener to the button.
    *   - Blocks propagation on "Space" and "Enter" keys.
+   * - Adds a `keydown` listener to the tooltip.
+   *   - Blocks propagation on "Escape" key.
    */
   _handleKeydown() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
     this._addEventListener("keydown", this.dom.tooltipToggle, (event) => {
       this.currentEvent = "keyboard";
       const key = keyPress(event);
@@ -768,29 +779,53 @@ class Tooltip extends Component {
    *   - Hides the tooltip when the user hits "Space" or "Enter".
    */
   _handleKeyup() {
-    if (this.dom.tooltipToggle === null) {
-      return;
-    }
-
     this._addEventListener("keyup", this.dom.tooltipToggle, (event) => {
-      const key = keyPress(event);
-
-      if (key === "Space" || key === "Enter") {
-        if (this.dom.tooltipDescription.classList.contains("hide")) {
-          this.show();
-        }
-      }
-    });
-
-    // Close the tooltip (including on hover) on `Escape`.
-    document.addEventListener("keyup", (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
-      if (this.dom.tooltipDescription.classList.contains("show")) {
-        if (key === "Escape") {
+
+      switch (key) {
+        case "Space":
+        case "Enter":
+          preventEvent(event);
+          this.toggle();
+
+          break;
+        case "Tab":
+          if (this.openOnFocus) {
+            preventEvent(event);
+            this.show();
+          }
+
+          break;
+      }
+    });
+
+    this._addEventListener("keyup", this.dom.tooltip, (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          preventEvent(event);
           this.hide();
-        }
+
+          break;
+      }
+    });
+
+    this._addEventListener("keyup", document, (event) => {
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          if (this.hoverType !== "on" && this.focusState !== "self") return;
+
+          this.currentEvent = "keyboard";
+          this.hide();
+
+          break;
       }
     });
   }
@@ -798,42 +833,45 @@ class Tooltip extends Component {
   /**
    * Handles the hover events throughout the tooltip for proper use.
    *
-   * - Adds a `pointerenter` listener to the tooltip to show tooltipDescription.
-   * - Adds a `pointerleave` listener to the tooltip to hide tooltipDescription.
+   * - Adds a `pointerenter` listener to the tooltip to show tooltip.
+   * - Adds a `pointerleave` listener to the tooltip to hide tooltip.
    */
   _handleHover() {
-    this.dom.tooltipToggle.addEventListener("pointerenter", () => {
-      if (this.isSoftLocked) return;
+    this._addEventListener("pointerenter", this.dom.tooltip, (event) => {
+      // Exit out of the event if it was not made by a mouse.
+      if (event.pointerType === "pen" || event.pointerType === "touch") {
+        return;
+      }
+
       if (this.hoverType == "off") return;
 
       this.currentEvent = "mouse";
-      this.focusState = "self";
 
       if (this.enterDelay > 0) {
         this._clearTimeout();
         this._setTimeout(() => {
-          if (this.isHidden) {
-            this.show();
-          }
+          this.show();
         }, this.enterDelay);
       } else {
         this.show();
       }
     });
 
-    this.dom.tooltipToggle.addEventListener("pointerleave", () => {
-      if (this.isSoftLocked) return;
+    this._addEventListener("pointerleave", this.dom.tooltip, (event) => {
+      // Exit out of the event if it was not made by a mouse.
+      if (event.pointerType === "pen" || event.pointerType === "touch") {
+        return;
+      }
+
       if (this.hoverType == "off") return;
+      if (this.isSoftLocked) return;
 
       this.currentEvent = "mouse";
-      this.focusState = "none";
 
       if (this.leaveDelay > 0) {
         this._clearTimeout();
         this._setTimeout(() => {
-          if (!this.isHidden) {
-            this.hide();
-          }
+          this.hide();
         }, this.leaveDelay);
       } else {
         this.hide();
@@ -844,45 +882,75 @@ class Tooltip extends Component {
   /**
    * Shows the tooltip.
    *
-   * Sets the tooltip's focus state to "self", calls reveal, and sets isHidden to `false`.
+   * Sets the tooltip's focus state to "self", calls reveal, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for showing the tooltip.
-   * @param {boolean}         [options.force = false]         - Whether to force the show action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
+   * @param {Object<boolean>} [options = {}]                            - Options for opening the tooltip.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once opened.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  show({ force = false } = {}) {
-    if (!this.isHidden && !force) return;
+  show({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (this.isOpen && !force) return;
 
     // Set the focus state.
     this.focusState = "self";
 
     // Reveal the tooltip.
-    this._reveal();
+    this._reveal({ emit, transition });
 
-    // Set the hidden state.
-    this._hidden = false;
+    // Set the open state.
+    this._open = true;
   }
 
   /**
    * Hides the tooltip.
    *
-   * Sets the tooltip's focus state to "none", calls conceal, and sets isHidden to `true`.
+   * Sets the tooltip's focus state to "none", calls conceal, and sets isOpen to `false`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for hiding the tooltip.
-   * @param {boolean}         [options.force = false]         - Whether to force the hide action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the hidden state.
+   * @param {Object<boolean>} [options = {}]                            - Options for closing the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the collapse event once closed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  hide({ force = false } = {}) {
-    if (this.isHidden && !force) return;
+  hide({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (!this.isOpen && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Conceal the tooltip.
-    this._conceal();
+    this._conceal({ emit, transition });
 
-    // Set the hidden state.
-    this._hidden = true;
+    // Set the open state.
+    this._open = false;
+  }
+
+  /**
+   * Toggles the open state of the tooltip.
+   *
+   * @param {Object<boolean>} [options = {}]                            - Options for toggling the disclosure.
+   * @param {boolean}         [options.force = false]                   - Whether to force the open or close action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand/collapse event once toggled.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   */
+  toggle({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
+    if (this.isOpen) {
+      this.hide({ force, emit, transition });
+    } else {
+      this.show({ force, emit, transition });
+    }
   }
 }
 
