@@ -42,21 +42,13 @@ $tooltip-transitioning-selector: "transitioning" !default;
 // Secondary/tertiary tooltips will use the same shade for their respective colours.
 $-tooltip-theme-mappings: (
   color: 900,
-  border-color: transparent,
-  description-color: 800,
+  border-color: 700,
   description-background: 100,
-  toggle-border-color: 800,
-  toggle-color: 100,
-  toggle-background: 800,
+  toggle-background: 100,
   toggle-hover-color: 100,
   toggle-hover-background: 700,
-  toggle-hover-border-color: 700,
   toggle-disabled-color: 200,
-  toggle-disabled-background: 100,
   toggle-disabled-border-color: 200,
-  toggle-selected-background: 700,
-  toggle-selected-color: 100,
-  toggle-selected-border-color: 700,
 );
 $tooltip-theme-mappings: () !default;
 
