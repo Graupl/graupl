@@ -93,6 +93,7 @@ import Component from "../Component.js";
  * @property {boolean}                     _unlockInsideBreakpoint      - A flag to unlock the disclosure when inside the breakpoint.
  * @property {boolean}                     _unlockOutsideBreakpoint     - A flag to unlock the disclosure when outside the breakpoint.
  * @property {TransactionalValue<boolean>} _locked                      - The locked state of the disclosure.
+ * @property {boolean}                     _openOnFocus                 - Whether to open the disclosure when it gains focus in the DOM.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the disclosure when it loses focus in the DOM.
  * @property {Function}                    _mediaQueryListEventCallback - The callback for media query list events.
  * @property {string}                      _storageKey                  - The key used for storage.
@@ -133,6 +134,7 @@ class Disclosure extends Component {
   _lockOutsideBreakpoint = false;
   _unlockInsideBreakpoint = false;
   _unlockOutsideBreakpoint = false;
+  _openOnFocus = false;
   _closeOnBlur = false;
   _storageKey = "disclosures";
   _name = "Disclosure";
@@ -195,7 +197,8 @@ class Disclosure extends Component {
    * @param {number}             [options.transitionDuration = 250]                        - The duration of the transition between "open" and "closed" states (in milliseconds).
    * @param {boolean}            [options.openDuration = -1]                               - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {boolean}            [options.closeDuration = -1]                              - The duration of the transition from "open" to "closed" states (in milliseconds).
-   * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
+   * @param {boolean}            [options.openOnFocus = false]                             - Whether to open the disclosure when it gains focus in the DOM.
+   * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the DOM.
    * @param {?string}            [options.minWidth = ""]                                   - The width of the screen that the disclosure will automatically open/close itself.
    * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
    * @param {?string}            [options.breakpoint = ""]                                 - The breakpoint that the disclosure will automatically open/close itself.
@@ -226,6 +229,7 @@ class Disclosure extends Component {
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
+    openOnFocus = false,
     closeOnBlur = false,
     minWidth = "",
     breakpoint = "",
@@ -270,7 +274,8 @@ class Disclosure extends Component {
     this._durations.open = openDuration;
     this._durations.close = closeDuration;
 
-    // Set close on blur.
+    // Set focus settings.
+    this._openOnFocus = openOnFocus;
     this._closeOnBlur = closeOnBlur;
 
     // @todo Remove minWidth and autoOpen options in favor of breakpoint, openInsideBreakpoint, openOutsideBreakpoint, closeInsideBreakpoint, and closeOutsideBreakpoint options.
@@ -356,6 +361,7 @@ class Disclosure extends Component {
       () => {
         // Boolean checks.
         const booleans = {
+          openOnFocus: this._openOnFocus,
           closeOnBlur: this._closeOnBlur,
           openInsideBreakpoint: this._openInsideBreakpoint,
           openOutsideBreakpoint: this._openOutsideBreakpoint,
@@ -552,6 +558,25 @@ class Disclosure extends Component {
     if (this._durations.close !== value) {
       this._durations.close = value;
       this._setCustomProps();
+    }
+  }
+
+  /**
+   * Whether to open the disclosure when it gains focus in the DOM.
+   *
+   * @type {boolean}
+   *
+   * @see _openOnFocus
+   */
+  get openOnFocus() {
+    return this._openOnFocus;
+  }
+
+  set openOnFocus(value) {
+    isValidType("boolean", { openOnFocus: value });
+
+    if (this._openOnFocus !== value) {
+      this._openOnFocus = value;
     }
   }
 
@@ -995,7 +1020,25 @@ class Disclosure extends Component {
         this.currentEvent !== "keyboard" ||
         event.relatedTarget === null ||
         this.dom.disclosure.contains(event.relatedTarget) ||
-        this.dom.controller === event.relatedTarget
+        this.dom.controller.contains(event.relatedTarget) ||
+        this.dom.controller === event.relatedTarget ||
+        this.dom.disclosure === event.relatedTarget
+      ) {
+        return;
+      }
+
+      this.close();
+    });
+
+    this._addEventListener("focusout", this.dom.controller, (event) => {
+      if (
+        !this.closeOnBlur ||
+        this.currentEvent !== "keyboard" ||
+        event.relatedTarget === null ||
+        this.dom.disclosure.contains(event.relatedTarget) ||
+        this.dom.controller.contains(event.relatedTarget) ||
+        this.dom.controller === event.relatedTarget ||
+        this.dom.disclosure === event.relatedTarget
       ) {
         return;
       }
@@ -1093,6 +1136,14 @@ class Disclosure extends Component {
           this.toggle();
 
           preventEvent(event);
+
+          break;
+
+        case "Tab":
+          if (this.openOnFocus) {
+            preventEvent(event);
+            this.open();
+          }
 
           break;
       }
