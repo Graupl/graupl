@@ -34,6 +34,30 @@ import Component from "../Component.js";
  */
 
 /**
+ * The event that is triggered when the disclosure is locked.
+ *
+ * @event grauplDisclosureLock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+ * @property {Disclosure}         detail.disclosure - The disclosure.
+ */
+
+/**
+ * The event that is triggered when the disclosure is unlocked.
+ *
+ * @event grauplDisclosureUnlock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+ * @property {Disclosure}         detail.disclosure - The disclosure.
+ */
+
+/**
  * The Disclosure component.
  *
  * @extends Component
@@ -77,6 +101,8 @@ import Component from "../Component.js";
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the disclosure.
  * @property {grauplDisclosureExpand}      _events.expand               - The event triggered when the disclosure is expanded.
  * @property {grauplDisclosureCollapse}    _events.collapse             - The event triggered when the disclosure is collapsed.
+ * @property {grauplDisclosureLock}        _events.lock                 - The event triggered when the disclosure is locked.
+ * @property {grauplDisclosureUnlock}      _events.unlock               - The event triggered when the disclosure is unlocked.
  * @property {Object<object>}              _elements                    - The instantiated elements within the disclosure.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the disclosure.
  * @property {string}                      _focusState                  - The current state of the disclosure's focus.
