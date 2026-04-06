@@ -239,8 +239,6 @@
 
   // .tooltip-toggle
   #{defaults.$tooltip-toggle-selector-base}#{defaults.$tooltip-toggle-selector} {
-    @include button-mixins.apply-base;
-
     border-radius: $tooltip-toggle-border-radius;
 
     &::before {
