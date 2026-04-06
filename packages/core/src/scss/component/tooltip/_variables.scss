@@ -270,7 +270,7 @@ $tooltip-description-inset: var(
 // --graupl-tooltip-description-border-color
 $tooltip-description-border-color: var(
   --#{root-defaults.$prefix}tooltip-description-border-color,
-  #{$tooltip-description-color}
+  #{$tooltip-border-color}
 );
 
 // --graupl-tooltip-description-border-top-left-radius
