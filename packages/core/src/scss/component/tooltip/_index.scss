@@ -239,6 +239,7 @@
 
   // .tooltip-toggle
   #{defaults.$tooltip-toggle-selector-base}#{defaults.$tooltip-toggle-selector} {
+    padding: $tooltip-toggle-padding;
     border-radius: $tooltip-toggle-border-radius;
 
     &::before {
