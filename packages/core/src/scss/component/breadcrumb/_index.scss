@@ -300,6 +300,7 @@
   #{defaults.$breadcrumb-selector-base}#{defaults.$breadcrumb-selector} {
     display: flex;
     position: relative;
+    flex-wrap: wrap;
     margin: $breadcrumb-margin;
     padding: $breadcrumb-padding;
     border-width: $breadcrumb-border-width;

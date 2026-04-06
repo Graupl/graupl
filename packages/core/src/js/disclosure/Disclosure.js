@@ -34,6 +34,30 @@ import Component from "../Component.js";
  */
 
 /**
+ * The event that is triggered when the disclosure is locked.
+ *
+ * @event grauplDisclosureLock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+ * @property {Disclosure}         detail.disclosure - The disclosure.
+ */
+
+/**
+ * The event that is triggered when the disclosure is unlocked.
+ *
+ * @event grauplDisclosureUnlock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Disclosure>} detail            - The details object containing the disclosure itself.
+ * @property {Disclosure}         detail.disclosure - The disclosure.
+ */
+
+/**
  * The Disclosure component.
  *
  * @extends Component
@@ -60,7 +84,6 @@ import Component from "../Component.js";
  * @property {number}                      _durations.open              - The duration time (in milliseconds) for the transition from closed to open states.
  * @property {number}                      _durations.close             - The duration time (in milliseconds) for the transition from open to closed states.
  * @property {TransactionalValue<boolean>} _open                        - The open state of the disclosure.
- * @property {boolean}                     _shouldOpen                  - A value to force the disclosure open when the breakpoint width is passed.
  * @property {boolean}                     _openInsideBreakpoint        - A flag to open the disclosure when inside the breakpoint.
  * @property {boolean}                     _openOutsideBreakpoint       - A flag to open the disclosure when outside the breakpoint.
  * @property {boolean}                     _closeInsideBreakpoint       - A flag to close the disclosure when inside the breakpoint.
@@ -70,6 +93,7 @@ import Component from "../Component.js";
  * @property {boolean}                     _unlockInsideBreakpoint      - A flag to unlock the disclosure when inside the breakpoint.
  * @property {boolean}                     _unlockOutsideBreakpoint     - A flag to unlock the disclosure when outside the breakpoint.
  * @property {TransactionalValue<boolean>} _locked                      - The locked state of the disclosure.
+ * @property {boolean}                     _openOnFocus                 - Whether to open the disclosure when it gains focus in the DOM.
  * @property {boolean}                     _closeOnBlur                 - Whether to close the disclosure when it loses focus in the DOM.
  * @property {Function}                    _mediaQueryListEventCallback - The callback for media query list events.
  * @property {string}                      _storageKey                  - The key used for storage.
@@ -77,6 +101,8 @@ import Component from "../Component.js";
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the disclosure.
  * @property {grauplDisclosureExpand}      _events.expand               - The event triggered when the disclosure is expanded.
  * @property {grauplDisclosureCollapse}    _events.collapse             - The event triggered when the disclosure is collapsed.
+ * @property {grauplDisclosureLock}        _events.lock                 - The event triggered when the disclosure is locked.
+ * @property {grauplDisclosureUnlock}      _events.unlock               - The event triggered when the disclosure is unlocked.
  * @property {Object<object>}              _elements                    - The instantiated elements within the disclosure.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the disclosure.
  * @property {string}                      _focusState                  - The current state of the disclosure's focus.
@@ -99,6 +125,7 @@ class Disclosure extends Component {
   _rootDOMElement = "disclosure";
   _protectedDOMElements = ["controller"];
   _open = new TransactionalValue(false);
+  _locked = new TransactionalValue(false);
   _openInsideBreakpoint = false;
   _openOutsideBreakpoint = false;
   _closeInsideBreakpoint = false;
@@ -107,8 +134,7 @@ class Disclosure extends Component {
   _lockOutsideBreakpoint = false;
   _unlockInsideBreakpoint = false;
   _unlockOutsideBreakpoint = false;
-  _locked = new TransactionalValue(false);
-  _shouldOpen = false;
+  _openOnFocus = false;
   _closeOnBlur = false;
   _storageKey = "disclosures";
   _name = "Disclosure";
@@ -171,7 +197,8 @@ class Disclosure extends Component {
    * @param {number}             [options.transitionDuration = 250]                        - The duration of the transition between "open" and "closed" states (in milliseconds).
    * @param {boolean}            [options.openDuration = -1]                               - The duration of the transition from "closed" to "open" states (in milliseconds).
    * @param {boolean}            [options.closeDuration = -1]                              - The duration of the transition from "open" to "closed" states (in milliseconds).
-   * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the dom.
+   * @param {boolean}            [options.openOnFocus = false]                             - Whether to open the disclosure when it gains focus in the DOM.
+   * @param {boolean}            [options.closeOnBlur = false]                             - Whether to close the disclosure when it loses focus in the DOM.
    * @param {?string}            [options.minWidth = ""]                                   - The width of the screen that the disclosure will automatically open/close itself.
    * @param {boolean}            [options.autoOpen = false]                                - Whether to automatically open when above the minWidth.
    * @param {?string}            [options.breakpoint = ""]                                 - The breakpoint that the disclosure will automatically open/close itself.
@@ -202,6 +229,7 @@ class Disclosure extends Component {
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
+    openOnFocus = false,
     closeOnBlur = false,
     minWidth = "",
     breakpoint = "",
@@ -246,7 +274,8 @@ class Disclosure extends Component {
     this._durations.open = openDuration;
     this._durations.close = closeDuration;
 
-    // Set close on blur.
+    // Set focus settings.
+    this._openOnFocus = openOnFocus;
     this._closeOnBlur = closeOnBlur;
 
     // @todo Remove minWidth and autoOpen options in favor of breakpoint, openInsideBreakpoint, openOutsideBreakpoint, closeInsideBreakpoint, and closeOutsideBreakpoint options.
@@ -271,7 +300,6 @@ class Disclosure extends Component {
 
     // Set collapse width and auto open functionality.
     this._breakpoint = breakpoint || "";
-    this._shouldOpen = autoOpen;
     this._openInsideBreakpoint = openInsideBreakpoint;
     this._openOutsideBreakpoint = openOutsideBreakpoint;
     this._closeInsideBreakpoint = closeInsideBreakpoint;
@@ -283,7 +311,8 @@ class Disclosure extends Component {
     this._mediaQueryString = mediaQuery || "";
 
     // Set the lock state.
-    this._locked = new TransactionalValue(locked);
+    this._locked.value = locked;
+    this._locked.commit();
 
     // Register custom events.
     this._registerEvent("expand", { detail: { disclosure: this } });
@@ -298,28 +327,30 @@ class Disclosure extends Component {
       () => {
         // Handle auto-opening disclosures with aria-expanded set to true or
         // those that _should_ open.
-        if (
-          this.dom.controller.getAttribute("aria-expanded") === "true" ||
-          (this.openOutsideBreakpoint &&
-            !window.matchMedia(this.mediaQuery).matches) ||
-          (this.openInsideBreakpoint &&
-            window.matchMedia(this.mediaQuery).matches)
-        ) {
-          this.open();
-        } else {
-          this.close();
-        }
+        requestAnimationFrame(() => {
+          if (
+            this.dom.controller.getAttribute("aria-expanded") === "true" ||
+            (this.openOutsideBreakpoint &&
+              !window.matchMedia(this.mediaQuery).matches) ||
+            (this.openInsideBreakpoint &&
+              window.matchMedia(this.mediaQuery).matches)
+          ) {
+            this.open();
+          } else {
+            this.close();
+          }
 
-        // Handle auto-locking disclosures that should be locked.
-        if (
-          this.isLocked ||
-          (this.lockInsideBreakpoint &&
-            window.matchMedia(this.mediaQuery).matches) ||
-          (this.lockOutsideBreakpoint &&
-            !window.matchMedia(this.mediaQuery).matches)
-        ) {
-          this.lock();
-        }
+          // Handle auto-locking disclosures that should be locked.
+          if (
+            this.isLocked ||
+            (this.lockInsideBreakpoint &&
+              window.matchMedia(this.mediaQuery).matches) ||
+            (this.lockOutsideBreakpoint &&
+              !window.matchMedia(this.mediaQuery).matches)
+          ) {
+            this.lock();
+          }
+        });
       }
     );
 
@@ -330,6 +361,7 @@ class Disclosure extends Component {
       () => {
         // Boolean checks.
         const booleans = {
+          openOnFocus: this._openOnFocus,
           closeOnBlur: this._closeOnBlur,
           openInsideBreakpoint: this._openInsideBreakpoint,
           openOutsideBreakpoint: this._openOutsideBreakpoint,
@@ -361,7 +393,7 @@ class Disclosure extends Component {
   }
 
   /**
-   * The class(es) to apply to the disclosure.
+   * The class(es) to apply when the disclosure is locked.
    *
    * @type {string|string[]}
    *
@@ -380,7 +412,7 @@ class Disclosure extends Component {
   }
 
   /**
-   * The class(es) to apply to the disclosure.
+   * The class(es) to apply when the disclosure is unlocked.
    *
    * @type {string|string[]}
    *
@@ -530,28 +562,22 @@ class Disclosure extends Component {
   }
 
   /**
-   * The width of the screen that the disclosure will automatically open/close itself.
+   * Whether to open the disclosure when it gains focus in the DOM.
    *
-   * This is just an alias for the generic "breakpoint" used in all components.
+   * @type {boolean}
    *
-   * @type {string}
-   *
-   * @see breakpoint
+   * @see _openOnFocus
    */
-  get minWidth() {
-    console.warn(
-      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
-    );
-
-    return this.breakpoint;
+  get openOnFocus() {
+    return this._openOnFocus;
   }
 
-  set minWidth(value) {
-    console.warn(
-      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
-    );
+  set openOnFocus(value) {
+    isValidType("boolean", { openOnFocus: value });
 
-    this.breakpoint = value;
+    if (this._openOnFocus !== value) {
+      this._openOnFocus = value;
+    }
   }
 
   /**
@@ -597,33 +623,6 @@ class Disclosure extends Component {
    */
   get hasOpened() {
     return this._open.committed;
-  }
-
-  /**
-   * A value to force opening regardless of user interaction.
-   *
-   * @type {boolean}
-   *
-   * @see _shouldOpen
-   */
-  get shouldOpen() {
-    console.warn(
-      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
-    );
-
-    return this._shouldOpen;
-  }
-
-  set shouldOpen(value) {
-    console.warn(
-      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
-    );
-
-    isValidType("boolean", { shouldOpen: value });
-
-    if (this._shouldOpen !== value) {
-      this._shouldOpen = value;
-    }
   }
 
   /**
@@ -1021,7 +1020,25 @@ class Disclosure extends Component {
         this.currentEvent !== "keyboard" ||
         event.relatedTarget === null ||
         this.dom.disclosure.contains(event.relatedTarget) ||
-        this.dom.controller === event.relatedTarget
+        this.dom.controller.contains(event.relatedTarget) ||
+        this.dom.controller === event.relatedTarget ||
+        this.dom.disclosure === event.relatedTarget
+      ) {
+        return;
+      }
+
+      this.close();
+    });
+
+    this._addEventListener("focusout", this.dom.controller, (event) => {
+      if (
+        !this.closeOnBlur ||
+        this.currentEvent !== "keyboard" ||
+        event.relatedTarget === null ||
+        this.dom.disclosure.contains(event.relatedTarget) ||
+        this.dom.controller.contains(event.relatedTarget) ||
+        this.dom.controller === event.relatedTarget ||
+        this.dom.disclosure === event.relatedTarget
       ) {
         return;
       }
@@ -1121,6 +1138,14 @@ class Disclosure extends Component {
           preventEvent(event);
 
           break;
+
+        case "Tab":
+          if (this.openOnFocus) {
+            preventEvent(event);
+            this.open();
+          }
+
+          break;
       }
     });
 
@@ -1158,7 +1183,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "self";
@@ -1170,6 +1195,7 @@ class Disclosure extends Component {
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -1192,7 +1218,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
@@ -1204,6 +1230,7 @@ class Disclosure extends Component {
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -1226,7 +1253,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (!this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
@@ -1238,6 +1265,7 @@ class Disclosure extends Component {
     this._open.value = false;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -1270,16 +1298,23 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for locking the disclosure.
    * @param {boolean}         [options.force = false]             - Whether to force the lock action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked state.
    */
-  lock({ force = false, emit = this.isInitialized } = {}) {
+  lock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     // Only lock if the disclosure is unlocked.
     if (this.isLocked && !force) return;
 
     this._locked.value = true;
     this._lock({ emit });
 
-    // Commit the locked preference.
-    this._locked.commit();
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
   }
 
   /**
@@ -1288,15 +1323,23 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for unlocking the disclosure.
    * @param {boolean}         [options.force = true]              - Whether to force the unlock action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the unlocked state.
    */
-  unlock({ force = false, emit = this.isInitialized } = {}) {
+  unlock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     // Only unlock if the disclosure is locked.
     if (!this.isLocked && !force) return;
 
     this._locked.value = false;
     this._unlock({ emit });
 
-    this._locked.commit();
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
   }
 
   /**
@@ -1305,12 +1348,17 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for toggling the lock state.
    * @param {boolean}         [options.force = false]             - Whether to force the toggle action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock/unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked state.
    */
-  toggleLock({ force = false, emit = this.isInitialized } = {}) {
+  toggleLock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isLocked) {
-      this.unlock({ force, emit });
+      this.unlock({ force, emit, preserveState });
     } else {
-      this.lock({ force, emit });
+      this.lock({ force, emit, preserveState });
     }
   }
 }

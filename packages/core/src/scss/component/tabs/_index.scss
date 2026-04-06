@@ -389,6 +389,7 @@
     border-width: $tabs-tab-toggle-border-width;
     border-style: $tabs-tab-toggle-border-style;
     border-radius: $tabs-tab-toggle-border-radius;
+    text-align: left;
 
     @include state.generate-modifiers(
       (

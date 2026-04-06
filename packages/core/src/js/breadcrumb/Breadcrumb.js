@@ -35,6 +35,30 @@ import BreadcrumbItem from "./BreadcrumbItem.js";
  */
 
 /**
+ * The event that is triggered when the breadcrumb is locked.
+ *
+ * @event grauplBreadcrumbLock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Breadcrumb>} detail            - The details object containing the breadcrumb itself.
+ * @property {Breadcrumb}         detail.breadcrumb - The breadcrumb.
+ */
+
+/**
+ * The event that is triggered when the breadcrumb is unlocked.
+ *
+ * @event grauplBreadcrumbUnlock
+ *
+ * @type {CustomEvent}
+ *
+ * @property {boolean}            bubbles           - A flag to bubble the event
+ * @property {Object<Breadcrumb>} detail            - The details object containing the breadcrumb itself.
+ * @property {Breadcrumb}         detail.breadcrumb - The breadcrumb.
+ */
+
+/**
  * The Breadcrumb component.
  *
  * @extends Component
@@ -72,6 +96,8 @@ import BreadcrumbItem from "./BreadcrumbItem.js";
  * @property {Object<CustomEvent>}         _events                      - Custom events that can be triggered throughout the breadcrumb.
  * @property {grauplBreadcrumbExpand}      _events.expand               - The event triggered when the breadcrumb is expanded.
  * @property {grauplBreadcrumbCollapse}    _events.collapse             - The event triggered when the breadcrumb is collapsed.
+ * @property {grauplBreadcrumbLock}        _events.lock                 - The event triggered when the breadcrumb is locked.
+ * @property {grauplBreadcrumbUnlock}      _events.unlock               - The event triggered when the breadcrumb is unlocked.
  * @property {number}                      _currentChild                - The index of the current child node.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects througho1t the breadcrumb.
  * @property {string}                      _focusState                  - The current state of the breadcrumb's focus.
@@ -91,20 +117,62 @@ import BreadcrumbItem from "./BreadcrumbItem.js";
  */
 class Breadcrumb extends Component {
   _rootDOMElement = "breadcrumb";
-  _open = new TransactionalValue(false);
   _currentChild = 0;
-  _shouldOpen = true;
+  _open = new TransactionalValue(false);
+  _locked = new TransactionalValue(false);
+  _openInsideBreakpoint = false;
+  _openOutsideBreakpoint = true;
+  _closeInsideBreakpoint = true;
+  _closeOutsideBreakpoint = false;
+  _lockInsideBreakpoint = false;
+  _lockOutsideBreakpoint = true;
+  _unlockInsideBreakpoint = false;
+  _unlockOutsideBreakpoint = false;
+  _openOnFocus = false;
   _closeOnBlur = false;
-  _storageKey = "breadcrumb";
+  _storageKey = "breadcrumbs";
+  _name = "Breadcrumb";
   _mediaQueryListEventCallback = (event) => {
-    if (!this.dom.breadcrumbToggle) {
-      return;
-    }
+    if (event.matches) {
+      if (this.unlockInsideBreakpoint) {
+        this.unlock();
+      }
 
-    if (event.matches && this.isOpen) {
-      this.close();
+      if (this.isOpen && this.closeInsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.close({ preserveState: true });
+      } else if (!this.isOpen && this.openInsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.open();
+      }
+
+      if (this.lockInsideBreakpoint) {
+        this.lock();
+      }
     } else {
-      this.open();
+      if (this.unlockOutsideBreakpoint) {
+        this.unlock();
+      }
+
+      if (this.isOpen && this.closeOutsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.close({ preserveState: true });
+      } else if (!this.isOpen && this.openOutsideBreakpoint) {
+        if (this.isLocked) {
+          this.unlock();
+        }
+        this.open();
+      }
+
+      if (this.lockOutsideBreakpoint) {
+        this.lock();
+      }
     }
   };
 
@@ -113,15 +181,28 @@ class Breadcrumb extends Component {
     breadcrumbItemsSelector = ".breadcrumb-item",
     breadcrumbLinksSelector = ".breadcrumb-link",
     breadcrumbToggleSelector = ".breadcrumb-toggle",
+    lockedClass = "locked",
+    unlockedClass = "unlocked",
     openClass = "show",
     closeClass = "hide",
     transitionClass = "transition",
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
+    openOnFocus = false,
     closeOnBlur = false,
-    minWidth = "856px",
-    autoOpen = true,
+    minWidth = "",
+    breakpoint = "856px",
+    autoOpen = false,
+    openInsideBreakpoint = false,
+    openOutsideBreakpoint = true,
+    closeInsideBreakpoint = true,
+    closeOutsideBreakpoint = false,
+    lockInsideBreakpoint = false,
+    lockOutsideBreakpoint = true,
+    unlockInsideBreakpoint = true,
+    unlockOutsideBreakpoint = false,
+    locked = false,
     mediaQuery = "",
     prefix = "graupl-",
     key = null,
@@ -149,25 +230,61 @@ class Breadcrumb extends Component {
     this._elements.breadcrumbItems = [];
 
     // Set the classes.
-    this._classes.open = openClass;
-    this._classes.close = closeClass;
-    this._classes.transition = transitionClass;
+    this._classes.locked = lockedClass || "";
+    this._classes.unlocked = unlockedClass || "";
+    this._classes.open = openClass || "";
+    this._classes.close = closeClass || "";
+    this._classes.transition = transitionClass || "";
 
     // Set the durations.
     this._durations.transition = transitionDuration;
     this._durations.open = openDuration;
     this._durations.close = closeDuration;
 
-    // Set close on blur.
+    // Set focus settings.
+    this._openOnFocus = openOnFocus;
     this._closeOnBlur = closeOnBlur;
 
+    // @todo Remove minWidth and autoOpen options in favor of breakpoint, openInsideBreakpoint, openOutsideBreakpoint, closeInsideBreakpoint, and closeOutsideBreakpoint options.
+    if (minWidth !== "") {
+      console.warn(
+        "`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."
+      );
+
+      if (breakpoint === "") {
+        breakpoint = minWidth;
+      }
+    }
+
+    if (autoOpen && breakpoint !== "") {
+      console.warn(
+        "`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."
+      );
+
+      openOutsideBreakpoint = autoOpen;
+      closeInsideBreakpoint = autoOpen;
+    }
+
     // Set the collapse width and auto open functionality.
-    this._breakpoint = minWidth || "";
-    this._shouldOpen = autoOpen;
+    this._breakpoint = breakpoint || "";
+    this._openInsideBreakpoint = openInsideBreakpoint;
+    this._openOutsideBreakpoint = openOutsideBreakpoint;
+    this._closeInsideBreakpoint = closeInsideBreakpoint;
+    this._closeOutsideBreakpoint = closeOutsideBreakpoint;
+    this._lockInsideBreakpoint = lockInsideBreakpoint;
+    this._lockOutsideBreakpoint = lockOutsideBreakpoint;
+    this._unlockInsideBreakpoint = unlockInsideBreakpoint;
+    this._unlockOutsideBreakpoint = unlockOutsideBreakpoint;
     this._mediaQueryString = mediaQuery || "";
+
+    // Set the lock state.
+    this._locked.value = locked;
+    this._locked.commit();
 
     this._registerEvent("expand", { detail: { breadcrumb: this } });
     this._registerEvent("collapse", { detail: { breadcrumb: this } });
+    this._registerEvent("lock", { detail: { breadcrumb: this } });
+    this._registerEvent("unlock", { detail: { breadcrumb: this } });
 
     // Set up custom initialization.
     this._addEventListener(
@@ -181,12 +298,28 @@ class Breadcrumb extends Component {
             if (
               this.dom.breadcrumbToggle.getAttribute("aria-expanded") ===
                 "true" ||
-              (this.shouldOpen && !window.matchMedia(this.mediaQuery).matches)
+              (this.openOutsideBreakpoint &&
+                !window.matchMedia(this.mediaQuery).matches) ||
+              (this.openInsideBreakpoint &&
+                window.matchMedia(this.mediaQuery).matches)
             ) {
-              this._expand({ emit: false, transition: false });
+              this.open({ force: true });
             } else {
-              this._collapse({ emit: false, transition: false });
+              this.close({ force: true });
             }
+          }
+
+          // Handle auto-locking breadcrumbs that should be locked.
+          if (
+            this.isLocked ||
+            (this.lockInsideBreakpoint &&
+              window.matchMedia(this.mediaQuery).matches) ||
+            (this.lockOutsideBreakpoint &&
+              !window.matchMedia(this.mediaQuery).matches)
+          ) {
+            this.lock({ force: true });
+          } else {
+            this.unlock({ force: true });
           }
         });
       }
@@ -199,8 +332,17 @@ class Breadcrumb extends Component {
       () => {
         // Boolean checks.
         const booleans = {
+          openOnFocus: this._openOnFocus,
           closeOnBlur: this._closeOnBlur,
-          autoOpen: this._shouldOpen,
+          openInsideBreakpoint: this._openInsideBreakpoint,
+          openOutsideBreakpoint: this._openOutsideBreakpoint,
+          closeInsideBreakpoint: this._closeInsideBreakpoint,
+          closeOutsideBreakpoint: this._closeOutsideBreakpoint,
+          lockInsideBreakpoint: this._lockInsideBreakpoint,
+          lockOutsideBreakpoint: this._lockOutsideBreakpoint,
+          unlockInsideBreakpoint: this._unlockInsideBreakpoint,
+          unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
+          locked: this._locked.value,
         };
 
         // Check the booleans.
@@ -218,6 +360,44 @@ class Breadcrumb extends Component {
 
     if (initialize) {
       this.initialize();
+    }
+  }
+
+  /**
+   * The class(es) to apply when the breadcrumb is locked.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes.locked
+   */
+  get lockedClass() {
+    return this._classes.locked;
+  }
+
+  set lockedClass(value) {
+    isValidClassList({ lockedClass: value });
+
+    if (this._classes.locked !== value) {
+      this._classes.locked = value;
+    }
+  }
+
+  /**
+   * The class(es) to apply when the breadcrumb is unlocked.
+   *
+   * @type {string|string[]}
+   *
+   * @see _classes.unlocked
+   */
+  get unlockedClass() {
+    return this._classes.unlocked;
+  }
+
+  set unlockedClass(value) {
+    isValidClassList({ unlockedClass: value });
+
+    if (this._classes.unlocked !== value) {
+      this._classes.unlocked = value;
     }
   }
 
@@ -353,20 +533,22 @@ class Breadcrumb extends Component {
   }
 
   /**
-   * The width of the screen that the breadcrumb will automatically open/close itself.
+   * Whether to open the breadcrumb when it gains focus in the DOM.
    *
-   * This is just an alias for the generic "breakpoint" used in all components.
+   * @type {boolean}
    *
-   * @type {string}
-   *
-   * @see breakpoint
+   * @see _openOnFocus
    */
-  get minWidth() {
-    return this.breakpoint;
+  get openOnFocus() {
+    return this._openOnFocus;
   }
 
-  set minWidth(value) {
-    this.breakpoint = value;
+  set openOnFocus(value) {
+    isValidType("boolean", { openOnFocus: value });
+
+    if (this._openOnFocus !== value) {
+      this._openOnFocus = value;
+    }
   }
 
   /**
@@ -415,22 +597,143 @@ class Breadcrumb extends Component {
   }
 
   /**
-   * A value to force opening regardless of user interaction.
+   * A flag to open the breadcrumb when inside the breakpoint.
    *
    * @type {boolean}
    *
-   * @see _shouldOpen
+   * @see _openInsideBreakpoint
    */
-  get shouldOpen() {
-    return this._shouldOpen;
+  get openInsideBreakpoint() {
+    return this._openInsideBreakpoint;
   }
 
-  set shouldOpen(value) {
-    isValidType("boolean", { shouldOpen: value });
+  set openInsideBreakpoint(value) {
+    isValidType("boolean", { openInsideBreakpoint: value });
 
-    if (this._shouldOpen !== value) {
-      this._shouldOpen = value;
+    if (this._openInsideBreakpoint !== value) {
+      this._openInsideBreakpoint = value;
     }
+  }
+
+  /**
+   * A flag to open the breadcrumb when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _openOutsideBreakpoint
+   */
+  get openOutsideBreakpoint() {
+    return this._openOutsideBreakpoint;
+  }
+
+  set openOutsideBreakpoint(value) {
+    isValidType("boolean", { openOutsideBreakpoint: value });
+
+    if (this._openOutsideBreakpoint !== value) {
+      this._openOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to close the breadcrumb when inside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _closeInsideBreakpoint
+   */
+  get closeInsideBreakpoint() {
+    return this._closeInsideBreakpoint;
+  }
+
+  set closeInsideBreakpoint(value) {
+    isValidType("boolean", { closeInsideBreakpoint: value });
+
+    if (this._closeInsideBreakpoint !== value) {
+      this._closeInsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to close the breadcrumb when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _closeOutsideBreakpoint
+   */
+  get closeOutsideBreakpoint() {
+    return this._closeOutsideBreakpoint;
+  }
+
+  set closeOutsideBreakpoint(value) {
+    isValidType("boolean", { closeOutsideBreakpoint: value });
+
+    if (this._closeOutsideBreakpoint !== value) {
+      this._closeOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to lock the breadcrumb in its current state when inside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _lockInsideBreakpoint
+   */
+  get lockInsideBreakpoint() {
+    return this._lockInsideBreakpoint;
+  }
+
+  set lockInsideBreakpoint(value) {
+    isValidType("boolean", { lockInsideBreakpoint: value });
+
+    if (this._lockInsideBreakpoint !== value) {
+      this._lockInsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to lock the breadcrumb in its current state when outside the breakpoint.
+   *
+   * @type {boolean}
+   *
+   * @see _lockOutsideBreakpoint
+   */
+  get lockOutsideBreakpoint() {
+    return this._lockOutsideBreakpoint;
+  }
+
+  set lockOutsideBreakpoint(value) {
+    isValidType("boolean", { lockOutsideBreakpoint: value });
+
+    if (this._lockOutsideBreakpoint !== value) {
+      this._lockOutsideBreakpoint = value;
+    }
+  }
+
+  /**
+   * A flag to indicate if the breadcrumb is locked.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get isLocked() {
+    return this._locked.value;
+  }
+
+  /**
+   * The committed lock preference for the breadcrumb.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _locked
+   */
+  get shouldBeLocked() {
+    return this._locked.committed;
   }
 
   /**
@@ -616,11 +919,11 @@ class Breadcrumb extends Component {
    *
    * @fires grauplBreadcrumbExpand
    *
-   * @param {Object<boolean>} [options = {}]              - Options for expanding the breadcrumb.
-   * @param {boolean}         [options.emit = true]       - Emit the expand event once expanded.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                            - Options for expanding the breadcrumb.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Emit the expand event once expanded.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  _expand({ emit = true, transition = true } = {}) {
+  _reveal({ emit = this.isInitialized, transition = this.isInitialized } = {}) {
     this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true");
 
     // If we're dealing with transition classes, then we need to utilize
@@ -665,11 +968,14 @@ class Breadcrumb extends Component {
    *
    * @fires grauplBreadcrumbCollapse
    *
-   * @param {Object<boolean>} [options = {}]              - Options for collapsing the breadcrumb.
-   * @param {boolean}         [options.emit = true]       - Emit the collapse event once collapsed.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                            - Options for collapsing the breadcrumb.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Emit the collapse event once collapsed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
-  _collapse({ emit = true, transition = true } = {}) {
+  _conceal({
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+  } = {}) {
     this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false");
 
     // If we're dealing with transition classes, then we need to utilize
@@ -701,6 +1007,50 @@ class Breadcrumb extends Component {
 
     if (emit) {
       this._dispatchEvent("collapse", this.dom.breadcrumbToggle);
+    }
+  }
+
+  /**
+   * Applies the locked state styling and dispatches the lock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for the lock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   */
+  _lock({ emit = this.isInitialized } = {}) {
+    // Add the locked class
+    addClass(this.lockedClass, this.dom.breadcrumb);
+
+    // Remove the unlocked class.
+    removeClass(this.unlockedClass, this.dom.breadcrumb);
+
+    this.dom.breadcrumbToggle.setAttribute("disabled", "true");
+
+    if (emit) {
+      this._dispatchEvent("lock", this.dom.breadcrumbToggle);
+    }
+  }
+
+  /**
+   * Applies the unlocked state styling and dispatches the unlock event.
+   *
+   * @protected
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for the unlock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   */
+  _unlock({ emit = this.isInitialized } = {}) {
+    // Add the unlocked class
+    addClass(this.unlockedClass, this.dom.breadcrumb);
+
+    // Remove the locked class.
+    removeClass(this.lockedClass, this.dom.breadcrumb);
+
+    this.dom.breadcrumbToggle.removeAttribute("disabled");
+
+    if (emit) {
+      this._dispatchEvent("unlock", this.dom.breadcrumbToggle);
     }
   }
 
@@ -838,9 +1188,23 @@ class Breadcrumb extends Component {
           this.toggle();
 
           if (this.isOpen) {
-            this.focusNextChild();
+            requestAnimationFrame(() => {
+              this.focusNextChild();
+            });
           } else {
             this.focusFirstChild();
+          }
+
+          break;
+
+        case "Tab":
+          if (this.openOnFocus) {
+            preventEvent(event);
+            this.open();
+
+            requestAnimationFrame(() => {
+              this.focusNextChild();
+            });
           }
 
           break;
@@ -878,23 +1242,32 @@ class Breadcrumb extends Component {
    *
    * Sets the breadcrumb's focus state to "self", calls expand, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for opening the breadcrumb.
-   * @param {boolean}         [options.force = false]         - Whether to force the open action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for opening the breadcrumb.
+   * @param {boolean}         [options.force = false]                   - Whether to force the preview action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once previewed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  open({ force = false, preserveState = false } = {}) {
+  open({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen && !force) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "self";
 
     // Expand the breadcrumb.
-    this._expand();
+    this._reveal({ emit, transition });
 
     // Set the open state.
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -904,23 +1277,32 @@ class Breadcrumb extends Component {
    *
    * Sets the breadcrumb's focus state to "none", calls expand, and sets isOpen to `true`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for previewing the breadcrumb.
-   * @param {boolean}         [options.force = false]         - Whether to force the preview action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for previewing the breadcrumb.
+   * @param {boolean}         [options.force = false]                   - Whether to force the preview action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once previewed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  preview({ force = false, preserveState = false } = {}) {
+  preview({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen && !force) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Expand the breadcrumb.
-    this._expand();
+    this._reveal({ emit, transition });
 
     // Set the open state.
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -930,23 +1312,32 @@ class Breadcrumb extends Component {
    *
    * Sets the breadcrumb's focus state to "none", calls collapse, and sets isOpen to `false`.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for closing the breadcrumb.
-   * @param {boolean}         [options.force = false]         - Whether to force the close action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for closing the breadcrumb.
+   * @param {boolean}         [options.force = false]                   - Whether to force the preview action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once previewed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  close({ force = false, preserveState = false } = {}) {
+  close({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (!this.isOpen && !force) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
 
     // Collapse the breadcrumb.
-    this._collapse();
+    this._conceal({ emit, transition });
 
     // Set the open state.
     this._open.value = false;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -954,15 +1345,102 @@ class Breadcrumb extends Component {
   /**
    * Toggles the open state of the breadcrumb.
    *
-   * @param {Object<boolean>} [options = {}]                  - Options for toggling the breadcrumb.
-   * @param {boolean}         [options.force = false]         - Whether to force the open or close action.
-   * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
+   * @param {Object<boolean>} [options = {}]                            - Options for toggling the breadcrumb.
+   * @param {boolean}         [options.force = false]                   - Whether to force the preview action.
+   * @param {boolean}         [options.emit = this.isInitialized]       - Whether to emit the expand event once previewed.
+   * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
+   * @param {boolean}         [options.preserveState = false]           - Whether to preserve the open state.
    */
-  toggle({ force = false, preserveState = false } = {}) {
+  toggle({
+    force = false,
+    emit = this.isInitialized,
+    transition = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isOpen) {
-      this.close({ force, preserveState });
+      this.close({
+        force,
+        emit,
+        transition,
+        preserveState,
+      });
     } else {
-      this.open({ force, preserveState });
+      this.open({
+        force,
+        emit,
+        transition,
+        preserveState,
+      });
+    }
+  }
+
+  /**
+   * Locks the breadcrumb.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for locking the breadcrumb.
+   * @param {boolean}         [options.force = false]             - Whether to force the lock action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked state.
+   */
+  lock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
+    // Only lock if the breadcrumb is unlocked.
+    if (this.isLocked && !force) return;
+
+    this._locked.value = true;
+    this._lock({ emit });
+
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
+  }
+
+  /**
+   * Unlocks the breadcrumb.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for unlocking the breadcrumb.
+   * @param {boolean}         [options.force = false]             - Whether to force the unlock action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the unlocked state.
+   */
+  unlock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
+    // Only unlock if the breadcrumb is locked.
+    if (!this.isLocked && !force) return;
+
+    this._locked.value = false;
+    this._unlock({ emit });
+
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
+  }
+
+  /**
+   * Toggles the locked state of the breadcrumb.
+   *
+   * @param {Object<boolean>} [options = {}]                      - Options for toggling the lock state.
+   * @param {boolean}         [options.force = false]             - Whether to force the toggle action.
+   * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock/unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked/unlocked state.
+   */
+  toggleLock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
+    if (this.isLocked) {
+      this.unlock({ force, emit, preserveState });
+    } else {
+      this.lock({ force, emit, preserveState });
     }
   }
 
