@@ -124,6 +124,7 @@ class Disclosure extends Component {
   _rootDOMElement = "disclosure";
   _protectedDOMElements = ["controller"];
   _open = new TransactionalValue(false);
+  _locked = new TransactionalValue(false);
   _openInsideBreakpoint = false;
   _openOutsideBreakpoint = false;
   _closeInsideBreakpoint = false;
@@ -132,8 +133,6 @@ class Disclosure extends Component {
   _lockOutsideBreakpoint = false;
   _unlockInsideBreakpoint = false;
   _unlockOutsideBreakpoint = false;
-  _locked = new TransactionalValue(false);
-  _shouldOpen = false;
   _closeOnBlur = false;
   _storageKey = "disclosures";
   _name = "Disclosure";
@@ -296,7 +295,6 @@ class Disclosure extends Component {
 
     // Set collapse width and auto open functionality.
     this._breakpoint = breakpoint || "";
-    this._shouldOpen = autoOpen;
     this._openInsideBreakpoint = openInsideBreakpoint;
     this._openOutsideBreakpoint = openOutsideBreakpoint;
     this._closeInsideBreakpoint = closeInsideBreakpoint;
@@ -324,28 +322,30 @@ class Disclosure extends Component {
       () => {
         // Handle auto-opening disclosures with aria-expanded set to true or
         // those that _should_ open.
-        if (
-          this.dom.controller.getAttribute("aria-expanded") === "true" ||
-          (this.openOutsideBreakpoint &&
-            !window.matchMedia(this.mediaQuery).matches) ||
-          (this.openInsideBreakpoint &&
-            window.matchMedia(this.mediaQuery).matches)
-        ) {
-          this.open();
-        } else {
-          this.close();
-        }
+        requestAnimationFrame(() => {
+          if (
+            this.dom.controller.getAttribute("aria-expanded") === "true" ||
+            (this.openOutsideBreakpoint &&
+              !window.matchMedia(this.mediaQuery).matches) ||
+            (this.openInsideBreakpoint &&
+              window.matchMedia(this.mediaQuery).matches)
+          ) {
+            this.open();
+          } else {
+            this.close();
+          }
 
-        // Handle auto-locking disclosures that should be locked.
-        if (
-          this.isLocked ||
-          (this.lockInsideBreakpoint &&
-            window.matchMedia(this.mediaQuery).matches) ||
-          (this.lockOutsideBreakpoint &&
-            !window.matchMedia(this.mediaQuery).matches)
-        ) {
-          this.lock();
-        }
+          // Handle auto-locking disclosures that should be locked.
+          if (
+            this.isLocked ||
+            (this.lockInsideBreakpoint &&
+              window.matchMedia(this.mediaQuery).matches) ||
+            (this.lockOutsideBreakpoint &&
+              !window.matchMedia(this.mediaQuery).matches)
+          ) {
+            this.lock();
+          }
+        });
       }
     );
 
@@ -1132,7 +1132,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "self";
@@ -1167,7 +1167,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
@@ -1202,7 +1202,7 @@ class Disclosure extends Component {
     preserveState = false,
   } = {}) {
     if (!this.isOpen && !force) return;
-    if (this.isLocked) return;
+    if (this.isLocked && !force) return;
 
     // Set the focus state.
     this.focusState = "none";
@@ -1247,16 +1247,23 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for locking the disclosure.
    * @param {boolean}         [options.force = false]             - Whether to force the lock action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked state.
    */
-  lock({ force = false, emit = this.isInitialized } = {}) {
+  lock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     // Only lock if the disclosure is unlocked.
     if (this.isLocked && !force) return;
 
     this._locked.value = true;
     this._lock({ emit });
 
-    // Commit the locked preference.
-    this._locked.commit();
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
   }
 
   /**
@@ -1265,15 +1272,23 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for unlocking the disclosure.
    * @param {boolean}         [options.force = true]              - Whether to force the unlock action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the unlocked state.
    */
-  unlock({ force = false, emit = this.isInitialized } = {}) {
+  unlock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     // Only unlock if the disclosure is locked.
     if (!this.isLocked && !force) return;
 
     this._locked.value = false;
     this._unlock({ emit });
 
-    this._locked.commit();
+    if (!preserveState) {
+      // Commit the locked state.
+      this._locked.commit();
+    }
   }
 
   /**
@@ -1282,12 +1297,17 @@ class Disclosure extends Component {
    * @param {Object<boolean>} [options = {}]                      - Options for toggling the lock state.
    * @param {boolean}         [options.force = false]             - Whether to force the toggle action.
    * @param {boolean}         [options.emit = this.isInitialized] - Whether to emit the lock/unlock event.
+   * @param {boolean}         [options.preserveState = false]     - Whether to preserve the locked state.
    */
-  toggleLock({ force = false, emit = this.isInitialized } = {}) {
+  toggleLock({
+    force = false,
+    emit = this.isInitialized,
+    preserveState = false,
+  } = {}) {
     if (this.isLocked) {
-      this.unlock({ force, emit });
+      this.unlock({ force, emit, preserveState });
     } else {
-      this.lock({ force, emit });
+      this.lock({ force, emit, preserveState });
     }
   }
 }
