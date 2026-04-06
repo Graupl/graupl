@@ -309,7 +309,8 @@ class Disclosure extends Component {
     this._mediaQueryString = mediaQuery || "";
 
     // Set the lock state.
-    this._locked = new TransactionalValue(locked);
+    this._locked.value = locked;
+    this._locked.commit();
 
     // Register custom events.
     this._registerEvent("expand", { detail: { disclosure: this } });
