@@ -84,7 +84,6 @@ import Component from "../Component.js";
  * @property {number}                      _durations.open              - The duration time (in milliseconds) for the transition from closed to open states.
  * @property {number}                      _durations.close             - The duration time (in milliseconds) for the transition from open to closed states.
  * @property {TransactionalValue<boolean>} _open                        - The open state of the disclosure.
- * @property {boolean}                     _shouldOpen                  - A value to force the disclosure open when the breakpoint width is passed.
  * @property {boolean}                     _openInsideBreakpoint        - A flag to open the disclosure when inside the breakpoint.
  * @property {boolean}                     _openOutsideBreakpoint       - A flag to open the disclosure when outside the breakpoint.
  * @property {boolean}                     _closeInsideBreakpoint       - A flag to close the disclosure when inside the breakpoint.
@@ -557,31 +556,6 @@ class Disclosure extends Component {
   }
 
   /**
-   * The width of the screen that the disclosure will automatically open/close itself.
-   *
-   * This is just an alias for the generic "breakpoint" used in all components.
-   *
-   * @type {string}
-   *
-   * @see breakpoint
-   */
-  get minWidth() {
-    console.warn(
-      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
-    );
-
-    return this.breakpoint;
-  }
-
-  set minWidth(value) {
-    console.warn(
-      "`minWidth` is deprecated and will be removed in a future release. Please use `breakpoint` instead."
-    );
-
-    this.breakpoint = value;
-  }
-
-  /**
    * Whether to close the disclosure when it loses focus in the DOM.
    *
    * @type {boolean}
@@ -624,33 +598,6 @@ class Disclosure extends Component {
    */
   get hasOpened() {
     return this._open.committed;
-  }
-
-  /**
-   * A value to force opening regardless of user interaction.
-   *
-   * @type {boolean}
-   *
-   * @see _shouldOpen
-   */
-  get shouldOpen() {
-    console.warn(
-      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
-    );
-
-    return this._shouldOpen;
-  }
-
-  set shouldOpen(value) {
-    console.warn(
-      "`shouldOpen` is deprecated and will be removed in a future release. Please use `openOutsideBreakpoint` and `closeInsideBreakpoint` instead."
-    );
-
-    isValidType("boolean", { shouldOpen: value });
-
-    if (this._shouldOpen !== value) {
-      this._shouldOpen = value;
-    }
   }
 
   /**
@@ -1197,6 +1144,7 @@ class Disclosure extends Component {
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
