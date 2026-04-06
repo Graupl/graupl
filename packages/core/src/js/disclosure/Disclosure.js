@@ -388,7 +388,7 @@ class Disclosure extends Component {
   }
 
   /**
-   * The class(es) to apply to the disclosure.
+   * The class(es) to apply when the disclosure is locked.
    *
    * @type {string|string[]}
    *
@@ -407,7 +407,7 @@ class Disclosure extends Component {
   }
 
   /**
-   * The class(es) to apply to the disclosure.
+   * The class(es) to apply when the disclosure is unlocked.
    *
    * @type {string|string[]}
    *
@@ -1231,6 +1231,7 @@ class Disclosure extends Component {
     this._open.value = true;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
@@ -1265,6 +1266,7 @@ class Disclosure extends Component {
     this._open.value = false;
 
     if (!preserveState) {
+      // Commit the open state.
       this._open.commit();
     }
   }
