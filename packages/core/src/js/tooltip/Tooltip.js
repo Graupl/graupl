@@ -95,32 +95,32 @@ class Tooltip extends Component {
   /**
    * Constructs a new `Tooltip`.
    *
-   * @param {object}               options                                                    - The options object.
-   * @param {HTMLElement}          [options.tooltipElement]                                   - The tooltip element.
-   * @param {?HTMLElement}         [options.tooltipToggleElement = .tooltip-toggle]           - The button element.
-   * @param {?HTMLElement}         [options.tooltipDescriptionElement = .tooltip-description] - The description element.
-   * @param {string|string[]|null} [options.showClass = show]                                 - The class(es) to apply when the tooltip is shown.
-   * @param {string|string[]|null} [options.hideClass = hide]                                 - The class(es) to apply when the tooltip is hidden.
-   * @param {string|string[]|null} [options.transitionClass = transitioning]                  - The class(es) to apply when the tooltip is transitioning between states.
-   * @param {number}               [options.transitionDelay = 250]                            - A flag to initialize the tooltip immediately upon creation.
-   * @param {number}               [options.transitionDuration = 150]                         - The duration of the transition between "shown" and "hidden" states (in milliseconds).
-   * @param {boolean}              [options.showDuration = -1]                                - The duration of the transition from "hidden" to "shown" states (in milliseconds).
-   * @param {boolean}              [options.hideDuration = -1]                                - The duration of the transition from "shown" to "hidden" states (in milliseconds).
-   * @param {?string}              [options.hoverType = on]                                   - An indication of the tooltip Description's hoverType.
-   * @param {number}               [options.hoverDelay = 250]                                 - The delay time (in milliseconds) used for hover events.
-   * @param {number}               [options.enterDelay = -1]                                  - The delay time (in milliseconds) used for pointerenter events.
-   * @param {number}               [options.leaveDelay = -1]                                  - The delay time (in milliseconds) used for pointerleave events.
-   * @param {boolean}              [options.openOnFocus = true]                               - Whether to open the tooltip when it gains focus in the DOM.
-   * @param {boolean}              [options.closeOnBlur = true]                               - Whether to close the tooltip when it loses focus in the DOM.
-   * @param {?string}              [options.prefix = graupl-]                                 - The prefix used for CSS custom properties and attributes.
-   * @param {?string}              [options.key = null]                                       - The key used to generate IDs throughout the tooltip.
-   * @param {?(string|string[])}   [options.initializeClass = initializing]                   - The class(es) to apply when the tooltip is initializing.
-   * @param {boolean}              [options.initialize = false]                               - A flag to initialize the tooltip immediately upon creation.
+   * @param {object}               options                                   - The options object.
+   * @param {HTMLElement}          [options.tooltipElement]                  - The tooltip element.
+   * @param {HTMLElement}          [options.tooltipToggleElement]            - The button element.
+   * @param {HTMLElement}          [options.tooltipDescriptionElement]       - The description element.
+   * @param {string|string[]|null} [options.showClass = show]                - The class(es) to apply when the tooltip is shown.
+   * @param {string|string[]|null} [options.hideClass = hide]                - The class(es) to apply when the tooltip is hidden.
+   * @param {string|string[]|null} [options.transitionClass = transitioning] - The class(es) to apply when the tooltip is transitioning between states.
+   * @param {number}               [options.transitionDelay = 250]           - A flag to initialize the tooltip immediately upon creation.
+   * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "shown" and "hidden" states (in milliseconds).
+   * @param {boolean}              [options.showDuration = -1]               - The duration of the transition from "hidden" to "shown" states (in milliseconds).
+   * @param {boolean}              [options.hideDuration = -1]               - The duration of the transition from "shown" to "hidden" states (in milliseconds).
+   * @param {?string}              [options.hoverType = on]                  - An indication of the tooltip Description's hoverType.
+   * @param {number}               [options.hoverDelay = 250]                - The delay time (in milliseconds) used for hover events.
+   * @param {number}               [options.enterDelay = -1]                 - The delay time (in milliseconds) used for pointerenter events.
+   * @param {number}               [options.leaveDelay = -1]                 - The delay time (in milliseconds) used for pointerleave events.
+   * @param {boolean}              [options.openOnFocus = true]              - Whether to open the tooltip when it gains focus in the DOM.
+   * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
+   * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
+   * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
+   * @param {?(string|string[])}   [options.initializeClass = initializing]  - The class(es) to apply when the tooltip is initializing.
+   * @param {boolean}              [options.initialize = false]              - A flag to initialize the tooltip immediately upon creation.
    */
   constructor({
     tooltipElement,
-    tooltipToggleElement = ".tooltip-toggle",
-    tooltipDescriptionElement = ".tooltip-description",
+    tooltipToggleElement,
+    tooltipDescriptionElement,
     showClass = "show",
     hideClass = "hide",
     transitionClass = "transitioning",
