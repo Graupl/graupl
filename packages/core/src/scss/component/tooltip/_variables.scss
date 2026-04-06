@@ -436,25 +436,25 @@ $tooltip-toggle-padding: var(
 // --graupl-tooltip-toggle-border-top-left-radius
 $tooltip-toggle-border-top-left-radius: var(
   --#{root-defaults.$prefix}tooltip-toggle-border-top-left-radius,
-  #{map.get(root-variables.$spacers, 7)}
+  100vw
 );
 
 // --graupl-tooltip-toggle-border-top-right-radius
 $tooltip-toggle-border-top-right-radius: var(
   --#{root-defaults.$prefix}tooltip-toggle-border-top-right-radius,
-  #{map.get(root-variables.$spacers, 7)}
+  100vw
 );
 
 // --graupl-tooltip-toggle-border-bottom-left-radius
 $tooltip-toggle-border-bottom-left-radius: var(
   --#{root-defaults.$prefix}tooltip-toggle-border-bottom-left-radius,
-  #{map.get(root-variables.$spacers, 7)}
+  100vw
 );
 
 // --graupl-tooltip-toggle-border-bottom-right-radius
 $tooltip-toggle-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}tooltip-toggle-border-bottom-right-radius,
-  #{map.get(root-variables.$spacers, 7)}
+  100vw
 );
 
 // --graupl-tooltip-toggle-border-radius
