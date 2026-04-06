@@ -28,6 +28,8 @@ $tooltip-hidden-selector-base: $modifier-selector-base !default;
 $tooltip-hidden-selector: "hide" !default;
 $tooltip-shown-selector-base: $modifier-selector-base !default;
 $tooltip-shown-selector: "show" !default;
+$tooltip-transitioning-selector-base: $modifier-selector-base !default;
+$tooltip-transitioning-selector: "transitioning" !default;
 
 // Tooltip state theme defaults.
 // This map is used to define the default colour shades for the
