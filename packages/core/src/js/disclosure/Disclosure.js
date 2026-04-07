@@ -335,9 +335,9 @@ class Disclosure extends Component {
             (this.openInsideBreakpoint &&
               window.matchMedia(this.mediaQuery).matches)
           ) {
-            this.open();
+            this.open({ force: true });
           } else {
-            this.close();
+            this.close({ force: true });
           }
 
           // Handle auto-locking disclosures that should be locked.
@@ -348,7 +348,9 @@ class Disclosure extends Component {
             (this.lockOutsideBreakpoint &&
               !window.matchMedia(this.mediaQuery).matches)
           ) {
-            this.lock();
+            this.lock({ force: true });
+          } else {
+            this.unlock({ force: true });
           }
         });
       }
