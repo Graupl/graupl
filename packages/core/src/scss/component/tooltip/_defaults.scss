@@ -1,0 +1,73 @@
+// @graupl/core tooltip component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../base/button/variables" as button-variables;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Tooltip selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
+$tooltip-selector-base: $selector-base !default;
+$tooltip-selector: "tooltip" !default;
+$tooltip-theme-selector-base: $modifier-selector-base !default;
+$tooltip-theme-selector-prefix: "" !default;
+$tooltip-toggle-selector-base: $selector-base !default;
+$tooltip-toggle-selector: "tooltip-toggle" !default;
+$tooltip-description-selector-base: $selector-base !default;
+$tooltip-description-selector: "tooltip-description" !default;
+$tooltip-hidden-selector-base: $modifier-selector-base !default;
+$tooltip-hidden-selector: "hide" !default;
+$tooltip-shown-selector-base: $modifier-selector-base !default;
+$tooltip-shown-selector: "show" !default;
+$tooltip-transitioning-selector-base: $modifier-selector-base !default;
+$tooltip-transitioning-selector: "transitioning" !default;
+
+// Tooltip state theme defaults.
+// This map is used to define the default colour shades for the
+// themed tooltip components.
+//
+// e.g.
+// Primary tooltips will use primary--900 as the text colour, primary--100 as the background
+// and primary--900 as the border colour.
+//
+// Secondary/tertiary tooltips will use the same shade for their respective colours.
+$-tooltip-theme-mappings: (
+  color: 900,
+  border-color: 700,
+  description-background: 100,
+  toggle-background: 100,
+  toggle-hover-color: 100,
+  toggle-hover-background: 700,
+  toggle-disabled-color: 200,
+  toggle-disabled-border-color: 200,
+);
+$tooltip-theme-mappings: () !default;
+
+// Transform properties.
+$tooltip-toggle-initial-transform: none !default;
+$tooltip-toggle-final-transform: none !default;
+$tooltip-toggle-disabled-transform: $tooltip-toggle-initial-transform !default;
+$tooltip-display: inline !default;
+$tooltip-width: fit-content !default;
+$tooltip-description-width: 30ch !default;
+
+// Merge the custom tooltip state theme map with the default one.
+@if $generate-base-theme-map {
+  $tooltip-theme-mappings: map.merge(
+    $-tooltip-theme-mappings,
+    $tooltip-theme-mappings
+  );
+}
+
+$-tooltip-theme-map: theme.generate-property-map($tooltip-theme-mappings);
+$tooltip-theme-map: () !default;
+$tooltip-theme-map: map.deep-merge($-tooltip-theme-map, $tooltip-theme-map);

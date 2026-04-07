@@ -106,6 +106,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./src/js/tooltip/index.js",
+    output: {
+      file: `dist/js/tooltip.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./src/js/accordion/Accordion.js",
     output: ["iife", "es", "cjs"].map((format) => ({
       file: `dist/js/component/accordion.${format}.js`,
@@ -243,6 +253,28 @@ export default defineConfig([
       file: `dist/js/generator/tabs.${format}.js`,
       format,
       name: "TabsGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/tooltip/Tooltip.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/tooltip.${format}.js`,
+      format,
+      name: "Tooltip",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./src/js/tooltip/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/tooltip.${format}.js`,
+      format,
+      name: "TooltipGenerator",
       sourcemap: true,
     })),
     platform: "browser",
