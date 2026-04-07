@@ -9,6 +9,8 @@
 // | --graupl-tooltip-padding-x                              | var(--graupl-spacer-0)                                                                                                                                                                                                                      |
 // | --graupl-tooltip-padding-y                              | var(--graupl-spacer-0)                                                                                                                                                                                                                      |
 // | --graupl-tooltip-padding                                | var(--graupl-tooltip-padding-y) var(--graupl-tooltip-padding-x)                                                                                                                                                                             |
+// | --graupl-tooltip-display                                | inline                                                                                                                                                                                                                                      |
+// | --graupl-tooltip-width                                  | fit-content                                                                                                                                                                                                                                 |
 // | --graupl-tooltip-background                             | var(--graupl-background)                                                                                                                                                                                                                    |
 // | --graupl-tooltip-color                                  | var(--graupl-color)                                                                                                                                                                                                                         |
 // | --graupl-tooltip-border-color                           | var(--graupl-tooltip-color)                                                                                                                                                                                                                 |
@@ -27,6 +29,7 @@
 // | --graupl-tooltip-border-bottom-style                    | var(--graupl-border-bottom-style)                                                                                                                                                                                                           |
 // | --graupl-tooltip-border-left-style                      | var(--graupl-border-left-style)                                                                                                                                                                                                             |
 // | --graupl-tooltip-border-style                           | var(--graupl-tooltip-border-top-style) var(--graupl-tooltip-border-right-style) var(--graupl-tooltip-border-bottom-style) var(--graupl-tooltip-border-left-style)                                                                           |
+// | --graupl-tooltip-description-width                      | 30ch                                                                                                                                                                                                                                        |
 // | --graupl-tooltip-description-color                      | var(--graupl-tooltip-color)                                                                                                                                                                                                                 |
 // | --graupl-tooltip-description-background                 | var(--graupl-tooltip-background)                                                                                                                                                                                                            |
 // | --graupl-tooltip-description-font-size                  | var(--graupl-tooltip-padding)                                                                                                                                                                                                               |
@@ -37,10 +40,11 @@
 // | --graupl-tooltip-description-padding-x                  | var(--graupl-spacer-3)                                                                                                                                                                                                                      |
 // | --graupl-tooltip-description-padding-y                  | var(--graupl-spacer-2)                                                                                                                                                                                                                      |
 // | --graupl-tooltip-description-padding                    | var(--graupl-tooltip-description-padding-y) var(--graupl-tooltip-description-padding-x)                                                                                                                                                     |
+// | --graupl-tooltip-description-indent                     | calc(100% + var(--graupl-spacer-2))                                                                                                                                                                                                         |
 // | --graupl-tooltip-description-top                        | auto                                                                                                                                                                                                                                        |
 // | --graupl-tooltip-description-right                      | auto                                                                                                                                                                                                                                        |
 // | --graupl-tooltip-description-bottom                     | auto                                                                                                                                                                                                                                        |
-// | --graupl-tooltip-description-left                       | calc(var(--graupl-button-min-width, 44px) + 0.25rem)                                                                                                                                                                                        |
+// | --graupl-tooltip-description-left                       | var(--graupl-tooltip-description-indent)                                                                                                                                                                                                    |
 // | --graupl-tooltip-description-inset                      | var(--graupl-tooltip-description-top) var(--graupl-tooltip-description-right) var(--graupl-tooltip-description-bottom) var(--graupl-tooltip-description-left)                                                                               |
 // | --graupl-tooltip-description-border-color               | var(--graupl-tooltip-border-color)                                                                                                                                                                                                          |
 // | --graupl-tooltip-description-border-top-left-radius     | var(--graupl-border-top-left-radius)                                                                                                                                                                                                        |
@@ -125,6 +129,18 @@ $tooltip-padding-y: var(
 $tooltip-padding: var(
   --#{root-defaults.$prefix}tooltip-padding,
   #{$tooltip-padding-y} #{$tooltip-padding-x}
+);
+
+// --graupl-tooltip-display
+$tooltip-display: var(
+  --#{root-defaults.$prefix}tooltip-display,
+  #{defaults.$tooltip-display}
+);
+
+// --graupl-tooltip-width
+$tooltip-width: var(
+  --#{root-defaults.$prefix}tooltip-width,
+  #{defaults.$tooltip-width}
 );
 
 // Tooltip color properties.
@@ -238,6 +254,12 @@ $tooltip-border-style: var(
 );
 
 // Tooltip description properties.
+// --graupl-tooltip-description-width
+$tooltip-description-width: var(
+  --#{root-defaults.$prefix}tooltip-description-width,
+  #{defaults.$tooltip-description-width}
+);
+
 // --graupl-tooltip-description-color
 $tooltip-description-color: var(
   --#{root-defaults.$prefix}tooltip-description-color,
@@ -298,28 +320,34 @@ $tooltip-description-padding: var(
   #{$tooltip-description-padding-y} #{$tooltip-description-padding-x}
 );
 
+// --graupl-tooltip-description-indent
+$tooltip-description-indent: var(
+  --#{root-defaults.$prefix}tooltip-description-indent,
+  calc(100% + #{map.get(root-variables.$spacers, 2)})
+);
+
 // --graupl-tooltip-description-top
 $tooltip-description-top: var(
   --#{root-defaults.$prefix}tooltip-description-top,
-  #{defaults.$tooltip-description-top}
+  auto
 );
 
 // --graupl-tooltip-description-right
 $tooltip-description-right: var(
   --#{root-defaults.$prefix}tooltip-description-right,
-  #{defaults.$tooltip-description-right}
+  auto
 );
 
 // --graupl-tooltip-description-bottom
 $tooltip-description-bottom: var(
   --#{root-defaults.$prefix}tooltip-description-bottom,
-  #{defaults.$tooltip-description-bottom}
+  auto
 );
 
 // --graupl-tooltip-description-left
 $tooltip-description-left: var(
   --#{root-defaults.$prefix}tooltip-description-left,
-  #{defaults.$tooltip-description-left}
+  #{$tooltip-description-indent}
 );
 
 // --graupl-tooltip-description-inset

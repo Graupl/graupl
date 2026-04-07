@@ -15,7 +15,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$themeable: true !default;
+$themeable: false !default;
 $tooltip-selector-base: $selector-base !default;
 $tooltip-selector: "tooltip" !default;
 $tooltip-theme-selector-base: $modifier-selector-base !default;
@@ -56,12 +56,9 @@ $tooltip-theme-mappings: () !default;
 $tooltip-toggle-initial-transform: none !default;
 $tooltip-toggle-final-transform: none !default;
 $tooltip-toggle-disabled-transform: $tooltip-toggle-initial-transform !default;
-$tooltip-description-top: auto !default;
-$tooltip-description-right: auto !default;
-$tooltip-description-bottom: auto !default;
-$tooltip-description-left: calc(
-  #{button-variables.$button-min-width} + 0.25rem
-) !default;
+$tooltip-display: inline !default;
+$tooltip-width: fit-content !default;
+$tooltip-description-width: 30ch !default;
 
 // Merge the custom tooltip state theme map with the default one.
 @if $generate-base-theme-map {

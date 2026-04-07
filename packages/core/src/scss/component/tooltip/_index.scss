@@ -15,6 +15,8 @@
 // | `--graupl-tooltip-padding-x`                              | Value for tooltip padding horizontal.                      | `var(--graupl-spacer-0)`                                                                                                                                                                                                                      |
 // | `--graupl-tooltip-padding-y`                              | Value for tooltip padding vertical.                        | `var(--graupl-spacer-0)`                                                                                                                                                                                                                      |
 // | `--graupl-tooltip-padding`                                | Value for tooltip padding.                                 | `var(--graupl-tooltip-padding-y) var(--graupl-tooltip-padding-x)`                                                                                                                                                                             |
+// | `--graupl-tooltip-display`                                | Value for tooltip display.                                 | `inline`                                                                                                                                                                                                                                      |
+// | `--graupl-tooltip-width`                                  | Value for tooltip width.                                   | `fit-content`                                                                                                                                                                                                                                 |
 // | `--graupl-tooltip-background`                             | Value for tooltip background.                              | `var(--graupl-background)`                                                                                                                                                                                                                    |
 // | `--graupl-tooltip-color`                                  | Value for tooltip color.                                   | `var(--graupl-color)`                                                                                                                                                                                                                         |
 // | `--graupl-tooltip-border-color`                           | Value for tooltip border color.                            | `var(--graupl-tooltip-color)`                                                                                                                                                                                                                 |
@@ -33,6 +35,7 @@
 // | `--graupl-tooltip-border-bottom-style`                    | Value for tooltip border bottom style.                     | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                           |
 // | `--graupl-tooltip-border-left-style`                      | Value for tooltip border left style.                       | `var(--graupl-border-left-style)`                                                                                                                                                                                                             |
 // | `--graupl-tooltip-border-style`                           | Value for tooltip border style.                            | `var(--graupl-tooltip-border-top-style) var(--graupl-tooltip-border-right-style) var(--graupl-tooltip-border-bottom-style) var(--graupl-tooltip-border-left-style)`                                                                           |
+// | `--graupl-tooltip-description-width`                      | Value for tooltip description width.                       | `30ch`                                                                                                                                                                                                                                        |
 // | `--graupl-tooltip-description-color`                      | Value for tooltip description color.                       | `var(--graupl-tooltip-color)`                                                                                                                                                                                                                 |
 // | `--graupl-tooltip-description-background`                 | Value for tooltip description background.                  | `var(--graupl-tooltip-background)`                                                                                                                                                                                                            |
 // | `--graupl-tooltip-description-font-size`                  | Value for tooltip description font size.                   | `--graupl-tooltip-padding`                                                                                                                                                                                                                    |
@@ -43,10 +46,11 @@
 // | `--graupl-tooltip-description-padding-x`                  | Value for tooltip description padding horizontal.          | `var(--graupl-spacer-3)`                                                                                                                                                                                                                      |
 // | `--graupl-tooltip-description-padding-y`                  | Value for tooltip description padding vertical.            | `var(--graupl-spacer-2)`                                                                                                                                                                                                                      |
 // | `--graupl-tooltip-description-padding`                    | Value for tooltip description padding.                     | `var(--graupl-tooltip-description-padding-y) var(--graupl-tooltip-description-padding-x)`                                                                                                                                                     |
+// | `--graupl-tooltip-description-indent`                     | Value for tooltip description indent.                      | `calc(100% + var(--graupl-spacer-2))`                                                                                                                                                                                                         |
 // | `--graupl-tooltip-description-top`                        | Value for tooltip description top inset.                   | `auto`                                                                                                                                                                                                                                        |
 // | `--graupl-tooltip-description-right`                      | Value for tooltip description right inset.                 | `auto`                                                                                                                                                                                                                                        |
 // | `--graupl-tooltip-description-bottom`                     | Value for tooltip description bottom inset.                | `auto`                                                                                                                                                                                                                                        |
-// | `--graupl-tooltip-description-left`                       | Value for tooltip description left inset.                  | `calc(var(--graupl-button-min-width, 44px) + 0.25rem)`                                                                                                                                                                                        |
+// | `--graupl-tooltip-description-left`                       | Value for tooltip description left inset.                  | `var(--graupl-tooltip-description-indent)`                                                                                                                                                                                                    |
 // | `--graupl-tooltip-description-inset`                      | Value for tooltip description inset.                       | `var(--graupl-tooltip-description-top) var(--graupl-tooltip-description-right) var(--graupl-tooltip-description-bottom) var(--graupl-tooltip-description-left)`                                                                               |
 // | `--graupl-tooltip-description-border-color`               | Value for tooltip description border color.                | `var(--graupl-tooltip-border-color)`                                                                                                                                                                                                          |
 // | `--graupl-tooltip-description-border-top-left-radius`     | Value for tooltip description border top left radius.      | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                        |
@@ -106,35 +110,34 @@
 // | `--graupl-tooltip-toggle-disabled-transform`              | Value for tooltip toggle disabled transform component.     | `none`                                                                                                                                                                                                                                        |
 //
 // The following sass variables can be used to customize the generation of the tooltip component:
-// | Variable                               | Description                                      | Default Value                                          |
-// | -------------------------------------- | ------------------------------------------------ | ------------------------------------------------------ |
-// | `$selector-base`                       | Default for selector base.                       | `"."`                                                  |
-// | `$modifier-selector-base`              | Default for modifier selector base.              | `"."`                                                  |
-// | `$generate-base-theme-map`             | Default for generate base theme map.             | `true`                                                 |
-// | `$themeable`                           | Default for themeable.                           | `true`                                                 |
-// | `$tooltip-selector-base`               | Default for tooltip selector base.               | `"."`                                                  |
-// | `$tooltip-selector`                    | Default for tooltip selector.                    | `"tooltip"`                                            |
-// | `$tooltip-theme-selector-base`         | Default for tooltip theme selector base.         | `"."`                                                  |
-// | `$tooltip-theme-selector-prefix`       | Default for tooltip theme selector prefix.       | `""`                                                   |
-// | `$tooltip-toggle-selector-base`        | Default for tooltip button selector base.        | `"."`                                                  |
-// | `$tooltip-toggle-selector`             | Default for tooltip button selector.             | `"tooltip-toggle"`                                     |
-// | `$tooltip-description-selector-base`   | Default for tooltip description selector base.   | `"."`                                                  |
-// | `$tooltip-description-selector`        | Default for tooltip description selector.        | `"tooltip-description"`                                |
-// | `$tooltip-hidden-selector-base`        | Default for tooltip hidden selector base.        | `"."`                                                  |
-// | `$tooltip-hidden-selector`             | Default for tooltip hidden selector.             | `"hide"`                                               |
-// | `$tooltip-shown-selector-base`         | Default for tooltip shown selector base.         | `"."`                                                  |
-// | `$tooltip-shown-selector`              | Default for tooltip shown selector.              | `"show"`                                               |
-// | `$tooltip-transitioning-selector-base` | Default for tooltip transitioning selector base. | `"."`                                                  |
-// | `$tooltip-transitioning-selector`      | Default for tooltip transitioning selector.      | `"transitioning"`                                      |
-// | `$tooltip-theme-mappings`              | Default for tooltip theme mappings.              | `()`                                                   |
-// | `$tooltip-theme-map`                   | Default for tooltip theme map.                   | `()`                                                   |
-// | `$tooltip-toggle-initial-transform`    | Default for tooltip toggle initial transform.    | `none`                                                 |
-// | `$tooltip-toggle-final-transform`      | Default for tooltip toggle final transform.      | `none`                                                 |
-// | `$tooltip-toggle-disabled-transform`   | Default for tooltip toggle disabled transform.   | `$tooltip-toggle-initial-transform`                    |
-// | `$tooltip-description-top`             | Default for tooltip description top inset.       | `auto`                                                 |
-// | `$tooltip-description-right`           | Default for tooltip description right inset.     | `auto`                                                 |
-// | `$tooltip-description-bottom`          | Default for tooltip description bottom inset.    | `auto`                                                 |
-// | `$tooltip-description-left`            | Default for tooltip description left inset.      | `calc(var(--graupl-button-min-width, 44px) + 0.25rem)` |
+// | Variable                               | Description                                      | Default Value                       |
+// | -------------------------------------- | ------------------------------------------------ | ----------------------------------- |
+// | `$selector-base`                       | Default for selector base.                       | `"."`                               |
+// | `$modifier-selector-base`              | Default for modifier selector base.              | `"."`                               |
+// | `$generate-base-theme-map`             | Default for generate base theme map.             | `true`                              |
+// | `$themeable`                           | Default for themeable.                           | `false`                             |
+// | `$tooltip-selector-base`               | Default for tooltip selector base.               | `"."`                               |
+// | `$tooltip-selector`                    | Default for tooltip selector.                    | `"tooltip"`                         |
+// | `$tooltip-theme-selector-base`         | Default for tooltip theme selector base.         | `"."`                               |
+// | `$tooltip-theme-selector-prefix`       | Default for tooltip theme selector prefix.       | `""`                                |
+// | `$tooltip-toggle-selector-base`        | Default for tooltip button selector base.        | `"."`                               |
+// | `$tooltip-toggle-selector`             | Default for tooltip button selector.             | `"tooltip-toggle"`                  |
+// | `$tooltip-description-selector-base`   | Default for tooltip description selector base.   | `"."`                               |
+// | `$tooltip-description-selector`        | Default for tooltip description selector.        | `"tooltip-description"`             |
+// | `$tooltip-hidden-selector-base`        | Default for tooltip hidden selector base.        | `"."`                               |
+// | `$tooltip-hidden-selector`             | Default for tooltip hidden selector.             | `"hide"`                            |
+// | `$tooltip-shown-selector-base`         | Default for tooltip shown selector base.         | `"."`                               |
+// | `$tooltip-shown-selector`              | Default for tooltip shown selector.              | `"show"`                            |
+// | `$tooltip-transitioning-selector-base` | Default for tooltip transitioning selector base. | `"."`                               |
+// | `$tooltip-transitioning-selector`      | Default for tooltip transitioning selector.      | `"transitioning"`                   |
+// | `$tooltip-theme-mappings`              | Default for tooltip theme mappings.              | `()`                                |
+// | `$tooltip-theme-map`                   | Default for tooltip theme map.                   | `()`                                |
+// | `$tooltip-toggle-initial-transform`    | Default for tooltip toggle initial transform.    | `none`                              |
+// | `$tooltip-toggle-final-transform`      | Default for tooltip toggle final transform.      | `none`                              |
+// | `$tooltip-toggle-disabled-transform`   | Default for tooltip toggle disabled transform.   | `$tooltip-toggle-initial-transform` |
+// | `$tooltip-display`                     | Default for tooltip display.                     | `inline`                            |
+// | `$tooltip-width`                       | Default for tooltip width.                       | `fit-content`                       |
+// | `$tooltip-description-width`           | Default for tooltip description width.           | `30ch`                              |
 //
 // ## Using `$tooltip-theme-mappings`
 //
@@ -274,7 +277,9 @@
 @include layer(component) {
   // .tooltip
   #{defaults.$tooltip-selector-base}#{defaults.$tooltip-selector} {
+    display: $tooltip-display;
     position: relative;
+    width: $tooltip-width;
     padding: $tooltip-padding;
   }
 
@@ -298,8 +303,7 @@
   #{defaults.$tooltip-description-selector-base}#{defaults.$tooltip-description-selector} {
     position: absolute;
     inset: $tooltip-description-inset;
-    width: 100%;
-    max-width: 30ch;
+    width: $tooltip-description-width;
     margin: $tooltip-description-margin;
     padding: $tooltip-description-padding;
     background: $tooltip-description-background;
