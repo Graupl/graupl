@@ -3,7 +3,11 @@
  * The Tooltip class.
  */
 
-import { isValidClassList, isValidType } from "../validate.js";
+import {
+  isValidClassList,
+  isValidHoverType,
+  isValidType,
+} from "../validate.js";
 import { addClass, removeClass } from "../domHelpers.js";
 import { keyPress, preventEvent } from "../eventHandlers.js";
 import Component from "../Component.js";
@@ -85,10 +89,10 @@ import Component from "../Component.js";
 class Tooltip extends Component {
   _rootDOMElement = "tooltip";
   _softLocked = false;
-  _hoverType = "on";
+  _hoverType = "off";
   _open = false;
   _storageKey = "tooltips";
-  _openOnFocus = true;
+  _openOnFocus = false;
   _closeOnBlur = true;
   _name = "Tooltip";
 
@@ -106,11 +110,11 @@ class Tooltip extends Component {
    * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "shown" and "hidden" states (in milliseconds).
    * @param {boolean}              [options.showDuration = -1]               - The duration of the transition from "hidden" to "shown" states (in milliseconds).
    * @param {boolean}              [options.hideDuration = -1]               - The duration of the transition from "shown" to "hidden" states (in milliseconds).
-   * @param {?string}              [options.hoverType = on]                  - An indication of the tooltip Description's hoverType.
+   * @param {?string}              [options.hoverType = off]                 - An indication of the tooltip Description's hoverType.
    * @param {number}               [options.hoverDelay = 250]                - The delay time (in milliseconds) used for hover events.
    * @param {number}               [options.enterDelay = -1]                 - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}               [options.leaveDelay = -1]                 - The delay time (in milliseconds) used for pointerleave events.
-   * @param {boolean}              [options.openOnFocus = true]              - Whether to open the tooltip when it gains focus in the DOM.
+   * @param {boolean}              [options.openOnFocus = false]             - Whether to open the tooltip when it gains focus in the DOM.
    * @param {boolean}              [options.closeOnBlur = true]              - Whether to close the tooltip when it loses focus in the DOM.
    * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
@@ -128,9 +132,9 @@ class Tooltip extends Component {
     transitionDuration = 150,
     showDuration = -1,
     hideDuration = -1,
-    openOnFocus = true,
+    openOnFocus = false,
     closeOnBlur = true,
-    hoverType = "on",
+    hoverType = "off",
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
@@ -210,6 +214,19 @@ class Tooltip extends Component {
         // Handle boolean check failure.
         if (!booleanChecks.status) {
           this._errors = [...this._errors, ...booleanChecks.errors];
+          this._valid = false;
+        }
+
+        // Hover type check.
+        // Check the hover type.
+        const hoverTypeCheck = isValidHoverType(
+          { hoverType: this._hoverType },
+          { shouldThrow: false }
+        );
+
+        // Handle hover type check failure.
+        if (!hoverTypeCheck.status) {
+          this._errors = [...this._errors, ...hoverTypeCheck.errors];
           this._valid = false;
         }
       }
@@ -511,14 +528,20 @@ class Tooltip extends Component {
   /**
    * A flag to indicate the tooltip's hoverType.
    *
-   * @readonly
-   *
    * @type {?string}
    *
    * @see _hoverType
    */
-  get hover() {
+  get hoverType() {
     return this._hoverType;
+  }
+
+  set hoverType(value) {
+    isValidHoverType({ hoverType: value });
+
+    if (this._hoverType !== value) {
+      this._hoverType = value;
+    }
   }
 
   /**
@@ -843,7 +866,7 @@ class Tooltip extends Component {
         return;
       }
 
-      if (this.hoverType == "off") return;
+      if (this.hoverType === "off") return;
 
       this.currentEvent = "mouse";
 
