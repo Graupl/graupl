@@ -84,6 +84,8 @@ class Carousel extends Component {
   _currentAction = "next";
   _storageKey = "carousels";
   _name = "Carousel";
+  _itemsPerPage = 1;
+  _loop = true;
 
   /**
    * Constructs a new `Carousel`.
@@ -109,6 +111,8 @@ class Carousel extends Component {
    * @param {number}             [options.transitionDuration = 500]                                       - The duration time (in milliseconds) for the transition between carousel items.
    * @param {?string}            [options.playText = Play]                                                - The text to use for the play button.
    * @param {?string}            [options.pauseText = Pause]                                              - The text to use for the pause button.
+   * @param {number}             [options.itemsPerPage = 1]                                               - The number of items to show per page.
+   * @param {boolean}            [options.loop = true]                                                    - A flag to indicate if the carousel should loop infinitely.
    * @param {?string}            [options.prefix = graupl-]                                               - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                                                     - The key used to generate IDs throughout the carousel.
    * @param {?(string|string[])} [options.initializeClass = initializing]                                 - The class(es) to apply when the carousel is initializing.
@@ -135,6 +139,8 @@ class Carousel extends Component {
     transitionDuration = 500,
     playText = "Play",
     pauseText = "Pause",
+    itemsPerPage = 1,
+    loop = true,
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
@@ -178,6 +184,8 @@ class Carousel extends Component {
 
     // Set flags.
     this._autoplay = autoplay;
+    this._itemsPerPage = itemsPerPage;
+    this._loop = loop;
 
     // Set transition options.
     this._delays.transition = transitionDelay;
@@ -200,6 +208,13 @@ class Carousel extends Component {
           item.setAttribute("inert", "true");
         });
 
+        if (this.loop) {
+          this._appendCarouselItems();
+          this._prependCarouselItems();
+        }
+
+        this._handleIntersection();
+
         // Activate the first item.
         this.activateFirstItem();
       }
@@ -213,6 +228,7 @@ class Carousel extends Component {
         // Boolean checks.
         const booleans = {
           autoplay: this._autoplay,
+          loop: this._loop,
         };
 
         // Check the booleans.
@@ -240,6 +256,22 @@ class Carousel extends Component {
         // Handle string check failures.
         if (!stringChecks.status) {
           this._errors = [...this._errors, ...stringChecks.errors];
+          this._valid = false;
+        }
+
+        // Number checks.
+        const numbers = {
+          itemsPerPage: this._itemsPerPage,
+        };
+
+        // Check the numbers.
+        const numberChecks = isValidType("number", numbers, {
+          shouldThrow: false,
+        });
+
+        // Handle number check failures.
+        if (!numberChecks.status) {
+          this._errors = [...this._errors, ...numberChecks.errors];
           this._valid = false;
         }
       }
@@ -421,6 +453,32 @@ class Carousel extends Component {
     if (this._autoplay !== value) {
       this._autoplay = value;
     }
+  }
+
+  /**
+   * The number of items to show per page.
+   *
+   * @readonly
+   *
+   * @type {number}
+   *
+   * @see _itemsPerPage
+   */
+  get itemsPerPage() {
+    return this._itemsPerPage;
+  }
+
+  /**
+   * A flag to indicate if the carousel should loop infinitely.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _loop
+   */
+  get loop() {
+    return this._loop;
   }
 
   /**
@@ -656,6 +714,34 @@ class Carousel extends Component {
   }
 
   /**
+   * Handles the intersection observer functionality for the carousel.
+   *
+   * Sets up an intersection observer to observe the carousel items and update
+   * the current item when the carousel is scrolled manually.
+   */
+  _handleIntersection() {
+    const options = {
+      root: this.dom.carousel,
+      threshold: 0.75,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const index = this.dom.carouselItems.indexOf(entry.target);
+          if (index !== -1) {
+            this.activateItem(index, { scroll: false });
+          }
+        }
+      });
+    }, options);
+
+    this.dom.carouselItems.forEach((item) => {
+      observer.observe(item);
+    });
+  }
+
+  /**
    * Handles the focus events throughout the carousel for proper use.
    *
    * - Adds a `focusin` listener to the carousel element to pause autoplay.
@@ -848,6 +934,49 @@ class Carousel extends Component {
   }
 
   /**
+   * Appends a number of carousel items to the end of the carousel item container.
+   *
+   * This is used for infinite scrolling.
+   *
+   * The number of items appended is determined by the itemsPerPage property.
+   */
+  _appendCarouselItems() {
+    const itemsToAppend = this.dom.carouselItems.slice(0, this.itemsPerPage);
+    const container = this.dom.carouselItemContainer;
+
+    itemsToAppend.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("inert", "true");
+
+      container.appendChild(clone);
+    });
+  }
+
+  /**
+   * Prepends a number of carousel items to the beginning of the carousel item container.
+   *
+   * This is used for infinite scrolling.
+   *
+   * The number of items prepended is determined by the itemsPerPage property.
+   */
+  _prependCarouselItems() {
+    const itemsToPrepend = this.dom.carouselItems.slice(
+      this.dom.carouselItems.length - this.itemsPerPage,
+      this.dom.carouselItems.length
+    );
+    const container = this.dom.carouselItemContainer;
+
+    itemsToPrepend.forEach((item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("inert", "true");
+
+      container.insertBefore(clone, container.firstChild);
+    });
+  }
+
+  /**
    * Activates the current carousel item.
    */
   activateCurrentItem() {
@@ -876,9 +1005,11 @@ class Carousel extends Component {
   /**
    * Activates the carousel item at a given index.
    *
-   * @param {number} index - The index of the carousel item to activate.
+   * @param {number}  index                   - The index of the carousel item to activate.
+   * @param {object}  [options = {}]          - Additional options for activating the item.
+   * @param {boolean} [options.scroll = true] - A flag to indicate if the carousel should scroll to the activated item.
    */
-  activateItem(index) {
+  activateItem(index, { scroll = true } = {}) {
     const currentIndex = this.currentItem;
 
     this.dom.carousel.dataset.grauplAction = this._currentAction;
@@ -894,6 +1025,13 @@ class Carousel extends Component {
       this.deactivateCurrentItem();
       this.currentItem = index;
       this.activateCurrentItem();
+
+      if (scroll) {
+        this.currentCarouselItem.scrollIntoView({
+          block: "nearest",
+          inline: "center",
+        });
+      }
 
       requestAnimationFrame(() => {
         setTimeout(() => {

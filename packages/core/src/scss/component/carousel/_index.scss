@@ -284,55 +284,55 @@
     isolation: isolate;
     padding: $carousel-padding;
 
-    &[data-graupl-action="next"] {
-      // .carousel-item
-      #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
-        // &.carousel-previous-item
-        &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
-          transform: translateX(calc(-1 * $carousel-item-max-width));
+    // &[data-graupl-action="next"] {
+    //   // .carousel-item
+    //   #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
+    //     // &.carousel-previous-item
+    //     &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
+    //       transform: translateX(calc(-1 * $carousel-item-max-width));
 
-          // &.carousel-active-item
-          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-            transform: none;
-          }
-        }
+    //       // &.carousel-active-item
+    //       &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //         transform: none;
+    //       }
+    //     }
 
-        // &.carousel-next-item
-        &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
-          transform: translateX($carousel-item-max-width);
+    //     // &.carousel-next-item
+    //     &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
+    //       transform: translateX($carousel-item-max-width);
 
-          // &.carousel-active-item
-          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-            transform: none;
-          }
-        }
-      }
-    }
+    //       // &.carousel-active-item
+    //       &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //         transform: none;
+    //       }
+    //     }
+    //   }
+    // }
 
-    &[data-graupl-action="previous"] {
-      // .carousel-item
-      #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
-        // &.carousel-previous-item
-        &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
-          transform: translateX($carousel-item-max-width);
+    // &[data-graupl-action="previous"] {
+    //   // .carousel-item
+    //   #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
+    //     // &.carousel-previous-item
+    //     &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
+    //       transform: translateX($carousel-item-max-width);
 
-          // &.carousel-active-item
-          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-            transform: none;
-          }
-        }
+    //       // &.carousel-active-item
+    //       &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //         transform: none;
+    //       }
+    //     }
 
-        // &.carousel-next-item
-        &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
-          transform: translateX(calc(-1 * $carousel-item-max-width));
+    //     // &.carousel-next-item
+    //     &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
+    //       transform: translateX(calc(-1 * $carousel-item-max-width));
 
-          // &.carousel-active-item
-          &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-            transform: none;
-          }
-        }
-      }
-    }
+    //       // &.carousel-active-item
+    //       &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //         transform: none;
+    //       }
+    //     }
+    //   }
+    // }
   }
 
   // .carousel-control-container
@@ -392,54 +392,50 @@
 
   // .carousel-item-container
   #{defaults.$carousel-item-container-selector-base}#{defaults.$carousel-item-container-selector} {
-    display: grid;
+    display: flex;
     z-index: 0;
     grid-area: slide;
-    grid-template-areas: "items";
+    flex-wrap: nowrap;
+
+    // grid-template-areas: "items";
     padding: $carousel-item-container-padding;
-    overflow-x: hidden;
+    overflow: scroll hidden;
     isolation: isolate;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
 
   // .carousel-item
   #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
-    z-index: -1;
-    grid-area: items;
-    max-width: $carousel-item-max-width;
-    opacity: 0;
+    // z-index: -1;
+    // grid-area: items;
+    // max-width: $carousel-item-max-width;
+    // opacity: 1;
+    flex: 1 0 $carousel-item-max-width;
+    scroll-snap-align: center;
+    transition: opacity $carousel-transition-duration ease;
 
-    // &.carousel-active-item
-    &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-      z-index: 1;
-      transform: none;
-      transition: transform #{$carousel-transition-duration} ease-in-out;
-      opacity: 1;
-    }
+    // // &.carousel-active-item
+    // &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //   opacity: 1;
+    // }
 
-    // &.carousel-previous-item
-    &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
-      z-index: 1;
-      transform: translateX(calc(-1 * $carousel-item-max-width));
-      transition: transform #{$carousel-transition-duration} ease-in-out;
-      opacity: 1;
+    // // &.carousel-previous-item
+    // &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
+    //   // &.carousel-active-item
+    //   &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //     opacity: 1;
+    //   }
+    // }
 
-      // &.carousel-active-item
-      &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-        transform: none;
-      }
-    }
-
-    // &.carousel-next-item
-    &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
-      z-index: 1;
-      transform: translateX($carousel-item-max-width);
-      opacity: 1;
-
-      // &.carousel-active-item
-      &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-        transform: none;
-      }
-    }
+    // // &.carousel-next-item
+    // &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
+    //   // &.carousel-active-item
+    //   &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
+    //     opacity: 1;
+    //   }
+    // }
   }
 
   // .carousel-tab-container
