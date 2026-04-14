@@ -401,7 +401,8 @@
     padding: $carousel-item-container-padding;
     overflow: scroll hidden;
     isolation: isolate;
-    scroll-behavior: smooth;
+
+    // scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
