@@ -396,47 +396,18 @@
     z-index: 0;
     grid-area: slide;
     flex-wrap: nowrap;
-
-    // grid-template-areas: "items";
     padding: $carousel-item-container-padding;
     overflow: scroll hidden;
     isolation: isolate;
-
-    // scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
 
   // .carousel-item
   #{defaults.$carousel-item-selector-base}#{defaults.$carousel-item-selector} {
-    // z-index: -1;
-    // grid-area: items;
-    // max-width: $carousel-item-max-width;
-    // opacity: 1;
     flex: 1 0 $carousel-item-max-width;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
     transition: opacity $carousel-transition-duration ease;
-
-    // // &.carousel-active-item
-    // &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-    //   opacity: 1;
-    // }
-
-    // // &.carousel-previous-item
-    // &#{defaults.$carousel-previous-item-selector-base}#{defaults.$carousel-previous-item-selector} {
-    //   // &.carousel-active-item
-    //   &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-    //     opacity: 1;
-    //   }
-    // }
-
-    // // &.carousel-next-item
-    // &#{defaults.$carousel-next-item-selector-base}#{defaults.$carousel-next-item-selector} {
-    //   // &.carousel-active-item
-    //   &#{defaults.$carousel-active-item-selector-base}#{defaults.$carousel-active-item-selector} {
-    //     opacity: 1;
-    //   }
-    // }
   }
 
   // .carousel-tab-container

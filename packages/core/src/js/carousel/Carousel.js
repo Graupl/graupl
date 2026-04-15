@@ -89,6 +89,7 @@ class Carousel extends Component {
   _name = "Carousel";
   _itemsPerPage = 1;
   _loop = true;
+  _busy = false;
 
   /**
    * Constructs a new `Carousel`.
@@ -111,7 +112,7 @@ class Carousel extends Component {
    * @param {?(string|string[])} [options.pauseClass = pause]                                             - The class(es) to apply to the autoplay button when the carousel is playing.
    * @param {boolean}            [options.autoplay = true]                                                - A flag to indicate if the carousel should autoplay.
    * @param {number}             [options.transitionDelay = 10000]                                        - A flag to initialize the carousel immediately upon creation.
-   * @param {number}             [options.transitionDuration = 500]                                       - The duration time (in milliseconds) for the transition between carousel items.
+   * @param {number}             [options.transitionDuration = 300]                                       - The duration time (in milliseconds) for the transition between carousel items.
    * @param {?string}            [options.playText = Play]                                                - The text to use for the play button.
    * @param {?string}            [options.pauseText = Pause]                                              - The text to use for the pause button.
    * @param {number}             [options.itemsPerPage = 1]                                               - The number of items to show per page.
@@ -137,9 +138,9 @@ class Carousel extends Component {
     nextClass = "next",
     playClass = "play",
     pauseClass = "pause",
-    autoplay = true,
+    autoplay = false,
     transitionDelay = 10000,
-    transitionDuration = 500,
+    transitionDuration = 300,
     playText = "Play",
     pauseText = "Pause",
     itemsPerPage = 1,
@@ -218,7 +219,7 @@ class Carousel extends Component {
           this._handleLoop();
         }
 
-        // this._handleIntersection();
+        this._handleIntersection();
 
         // Activate the first item.
         this.activateFirstItem();
@@ -736,7 +737,9 @@ class Carousel extends Component {
   _handleIntersection() {
     const options = {
       root: this.dom.carousel,
-      threshold: 0.75,
+      rootMargin: "1px",
+      scrollMargin: "1px",
+      threshold: 1.0,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -744,7 +747,23 @@ class Carousel extends Component {
         if (entry.isIntersecting && !this.isTransitioning) {
           const index = this.dom.carouselItems.indexOf(entry.target);
           if (index !== -1) {
-            this.activateItem(index, { scroll: false });
+            if (this.elements.carouselItems[index].elements.clone !== null) {
+              this.elements.carouselItems[
+                index
+              ].elements.clone.dom.carouselItem.scrollIntoView({
+                block: "nearest",
+                behavior: "instant",
+              });
+
+              const cloneIndex = this.dom.carouselItems.indexOf(
+                this.elements.carouselItems[index].elements.clone.dom
+                  .carouselItem
+              );
+
+              this.activateItem(cloneIndex, { scroll: false });
+            } else {
+              this.activateItem(index, { scroll: false });
+            }
           }
         }
       });
@@ -883,8 +902,12 @@ class Carousel extends Component {
       });
     });
 
-    this.dom.carouselTabs.forEach((tab) => {
-      this._addEventListener("keydown", tab, (event) => {
+    this.elements.carouselItems.forEach((item) => {
+      if (!item.dom.tab) {
+        return;
+      }
+
+      this._addEventListener("keydown", item.dom.tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -957,14 +980,20 @@ class Carousel extends Component {
     });
 
     // Activate the item if the space or enter key on the tab control.
-    this.dom.carouselTabs.forEach((tab, index) => {
-      this._addEventListener("keyup", tab, (event) => {
+    this.elements.carouselItems.forEach((item) => {
+      if (!item.dom.tab) {
+        return;
+      }
+
+      this._addEventListener("keyup", item.dom.tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {
           case "Space":
           case "Enter":
-            this.activateItem(index);
+            this.activateItem(
+              this.dom.carouselItems.indexOf(item.dom.carouselItem)
+            );
 
             // Prevent the default action of the event.
             preventEvent(event);
@@ -1073,6 +1102,12 @@ class Carousel extends Component {
    * @param {boolean} [options.scroll = true] - A flag to indicate if the carousel should scroll to the activated item.
    */
   activateItem(index, { scroll = true } = {}) {
+    if (this._busy) {
+      return;
+    }
+
+    this._busy = true;
+
     if (this.autoplay) {
       this._clearInterval();
     }
@@ -1090,6 +1125,10 @@ class Carousel extends Component {
     } else if (index > this.dom.carouselItems.length - this.itemsPerPage) {
       this.currentItem = this.dom.carouselItems.length - this.itemsPerPage;
     }
+
+    setTimeout(() => {
+      this._busy = false;
+    }, this.transitionDuration);
   }
 
   /**
