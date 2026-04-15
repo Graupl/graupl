@@ -43,24 +43,19 @@ import CarouselItem from "./CarouselItem.js";
  * @property {CarouselItem[]}                     _elements.carouselItems             - The instantiated carousel items within the carousel.
  * @property {Object<string, string[]>}           _classes                            - The CSS classes to apply when the carousel is in various states.
  * @property {string|string[]}                    _classes.active                     - The class(es) to apply when a carousel item is active.
- * @property {string|string[]}                    _classes.previous                   - The class(es) to apply to a carousel item that is the previously active item.
- * @property {string|string[]}                    _classes.next                       - The class(es) to apply to a carousel item that is the next active item.
  * @property {string|string[]}                    _classes.play                       - The class(es) to apply to the autoplay button when the carousel is paused.
  * @property {string|string[]}                    _classes.pause                      - The class(es) to apply to the autoplay button when the carousel is playing.
  * @property {string|string[]}                    _classes.initialize                 - The class(es) to apply when the carousel is initializing.
  * @property {Object<number>}                     _durations                          - The duration times (in milliseconds) for various aspects throughout the carousel.
- * @property {number}                             _durations.transition               - The duration time (in milliseconds) for the transition between carousel items.
  * @property {Object<number>}                     _delays                             - The delay times (in milliseconds) for various aspects throughout the carousel.
  * @property {number}                             _delays.transition                  - The delay time (in milliseconds) for the transition between carousel items.
  * @property {number}                             _currentItem                        - The index of the currently active carousel item.
  * @property {boolean}                            _autoplay                           - A flag to indicate if the carousel is currently playing.
  * @property {string}                             _playText                           - The label for the autoplay button when the carousel is paused.
  * @property {string}                             _pauseText                          - The label for the autoplay button when the carousel is playing.
- * @property {string}                             _currentAction                      - The current action being performed by the carousel.
  * @property {string}                             _storageKey                         - The key used for storage.
  * @property {boolean}                            _shouldStore                        - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<CustomEvent>}                _events                             - Custom events that can be triggered throughout the carousel.
- * @property {Object<object>}                     _elements                           - The instantiated elements within the carousel.
  * @property {string}                             _focusState                         - The current state of the carousel's focus.
  * @property {string}                             _currentEvent                       - The last type of event triggered within the carousel.
  * @property {string}                             _breakpoint                         - The breakpoint that the carousel will call media query list events.
@@ -84,12 +79,10 @@ class Carousel extends Component {
   _autoplay = true;
   _playText = "Play";
   _pauseText = "Pause";
-  _currentAction = "next";
   _storageKey = "carousels";
   _name = "Carousel";
   _itemsPerPage = 1;
   _loop = true;
-  _busy = false;
 
   /**
    * Constructs a new `Carousel`.
@@ -106,13 +99,10 @@ class Carousel extends Component {
    * @param {string}             [options.nextSelector = .next]                                           - The query selector string for the next button.
    * @param {string}             [options.previousSelector = .previous]                                   - The query selector string for the previous button.
    * @param {?(string|string[])} [options.activeClass = active]                                           - The class(es) to apply when a carousel item is active.
-   * @param {?(string|string[])} [options.previousClass = previous]                                       - The class(es) to apply to a carousel item that is the previously active item.
-   * @param {?(string|string[])} [options.nextClass = next]                                               - The class(es) to apply to a carousel item that is the next active item.
    * @param {?(string|string[])} [options.playClass = play]                                               - The class(es) to apply to the autoplay button when the carousel is paused.
    * @param {?(string|string[])} [options.pauseClass = pause]                                             - The class(es) to apply to the autoplay button when the carousel is playing.
    * @param {boolean}            [options.autoplay = true]                                                - A flag to indicate if the carousel should autoplay.
    * @param {number}             [options.transitionDelay = 10000]                                        - A flag to initialize the carousel immediately upon creation.
-   * @param {number}             [options.transitionDuration = 300]                                       - The duration time (in milliseconds) for the transition between carousel items.
    * @param {?string}            [options.playText = Play]                                                - The text to use for the play button.
    * @param {?string}            [options.pauseText = Pause]                                              - The text to use for the pause button.
    * @param {number}             [options.itemsPerPage = 1]                                               - The number of items to show per page.
@@ -134,13 +124,10 @@ class Carousel extends Component {
     nextSelector = ".next",
     previousSelector = ".previous",
     activeClass = "active",
-    previousClass = "previous",
-    nextClass = "next",
     playClass = "play",
     pauseClass = "pause",
     autoplay = false,
     transitionDelay = 10000,
-    transitionDuration = 300,
     playText = "Play",
     pauseText = "Pause",
     itemsPerPage = 1,
@@ -184,8 +171,6 @@ class Carousel extends Component {
 
     // Set class names.
     this._classes.active = activeClass || "";
-    this._classes.previous = previousClass || "";
-    this._classes.next = nextClass || "";
     this._classes.play = playClass || "";
     this._classes.pause = pauseClass || "";
 
@@ -196,7 +181,6 @@ class Carousel extends Component {
 
     // Set transition options.
     this._delays.transition = transitionDelay;
-    this._durations.transition = transitionDuration;
 
     // Set labels.
     this._playText = playText || "";
@@ -308,44 +292,6 @@ class Carousel extends Component {
   }
 
   /**
-   * The class(es) to apply to a carousel item that is the next active item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes.previous
-   */
-  get previousClass() {
-    return this._classes.previous;
-  }
-
-  set previousClass(value) {
-    isValidClassList({ previousClass: value });
-
-    if (this._classes.previous !== value) {
-      this._classes.previous = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to a carousel item that is the next active item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes.next
-   */
-  get nextClass() {
-    return this._classes.next;
-  }
-
-  set nextClass(value) {
-    isValidClassList({ nextClass: value });
-
-    if (this._classes.next !== value) {
-      this._classes.next = value;
-    }
-  }
-
-  /**
    * The class(es) to apply to the autoplay button when the carousel is paused.
    *
    * @type {string|string[]}
@@ -407,16 +353,6 @@ class Carousel extends Component {
       this._currentItem = this.dom.carouselItems.length - 1;
     } else {
       this._currentItem = value;
-    }
-
-    // Keep the aria selected in sync with the current item.
-    const tabs = this._dom.carousel.querySelectorAll(
-      this.selectors.carouselTab
-    );
-    if (tabs) {
-      this.dom.carouselItems.forEach((item, index) => {
-        item.setAttribute("aria-selected", index === this._currentItem);
-      });
     }
   }
 
@@ -496,26 +432,6 @@ class Carousel extends Component {
   }
 
   /**
-   * The duration time (in milliseconds) for the transition between carousel items.
-   *
-   * @type {number}
-   *
-   * @see _durations.transition
-   */
-  get transitionDuration() {
-    return this._durations.transition;
-  }
-
-  set transitionDuration(value) {
-    isValidType("number", { transitionDuration: value });
-
-    if (this._durations.transition !== value && value >= 0) {
-      this._durations.transition = value;
-      this._setTransitionDuration();
-    }
-  }
-
-  /**
    * The label for the autoplay button when the carousel is paused.
    *
    * @type {string}
@@ -551,17 +467,6 @@ class Carousel extends Component {
     if (this._pauseText !== value) {
       this._pauseText = value;
     }
-  }
-
-  /**
-   * The current action being performed by the carousel.
-   *
-   * @type {string}
-   *
-   * @see _currentAction
-   */
-  get currentAction() {
-    return this._currentAction;
   }
 
   /**
@@ -674,27 +579,10 @@ class Carousel extends Component {
     }
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      if (!isTag("button", { tab: tab }, { shouldThrow: false }).status) {
-        tab.setAttribute("role", "button");
-      }
-
+      tab.setAttribute("role", "tab");
       tab.setAttribute("aria-selected", index === 0);
       tab.setAttribute("aria-controls", this.dom.carouselItems[index].id);
     });
-  }
-
-  /**
-   * Sets the transition duration for the carousel as a CSS custom property.
-   *
-   * The custom property is set as `--graupl-carousel-transition-duration`.
-   *
-   * @protected
-   */
-  _setCustomProps() {
-    this.dom.carousel.style.setProperty(
-      `--${this.prefix}carousel-transition-duration`,
-      `${this.transitionDuration}ms`
-    );
   }
 
   /**
@@ -1102,12 +990,6 @@ class Carousel extends Component {
    * @param {boolean} [options.scroll = true] - A flag to indicate if the carousel should scroll to the activated item.
    */
   activateItem(index, { scroll = true } = {}) {
-    if (this._busy) {
-      return;
-    }
-
-    this._busy = true;
-
     if (this.autoplay) {
       this._clearInterval();
     }
@@ -1119,40 +1001,55 @@ class Carousel extends Component {
     if (this.autoplay) {
       this._setInterval(() => this.activateNextItem(), this.transitionDelay);
     }
-
-    if (index < this.itemsPerPage) {
-      this.currentItem = this.itemsPerPage;
-    } else if (index > this.dom.carouselItems.length - this.itemsPerPage) {
-      this.currentItem = this.dom.carouselItems.length - this.itemsPerPage;
-    }
-
-    setTimeout(() => {
-      this._busy = false;
-    }, this.transitionDuration);
   }
 
   /**
    * Activates the first carousel item.
    */
   activateFirstItem() {
-    this.activateItem(0);
+    if (this.loop) {
+      if (
+        this.currentItem ===
+        this.dom.carouselItems.length - this.itemsPerPage - 1
+      ) {
+        this.activateNextItem();
+      } else {
+        this.activateItem(this.itemsPerPage);
+      }
+    } else {
+      this.activateItem(0);
+    }
   }
 
   /**
    * Activates the last carousel item.
    */
   activateLastItem() {
-    this.activateItem(this.dom.carouselItems.length - 1);
+    if (this.loop) {
+      if (this.currentItem === this.itemsPerPage) {
+        this.activatePreviousItem();
+      } else {
+        this.activateItem(
+          this.dom.carouselItems.length - this.itemsPerPage - 1
+        );
+      }
+    } else {
+      this.activateItem(this.dom.carouselItems.length - 1);
+    }
   }
 
   /**
    * Activates the next carousel item.
    */
   activateNextItem() {
-    if (this.currentItem + 1 >= this.dom.carouselItems.length) {
-      this.activateFirstItem();
-    } else {
+    if (this.loop) {
       this.activateItem(this.currentItem + 1);
+    } else {
+      if (this.currentItem + 1 >= this.dom.carouselItems.length) {
+        this.activateFirstItem();
+      } else {
+        this.activateItem(this.currentItem + 1);
+      }
     }
   }
 
@@ -1160,13 +1057,17 @@ class Carousel extends Component {
    * Activates the previous carousel item.
    */
   activatePreviousItem() {
-    if (
-      this.currentItem - 1 < 0 ||
-      (this.loop && this.currentItem - 1 < this.itemsPerPage)
-    ) {
-      this.activateLastItem();
-    } else {
+    if (this.loop) {
       this.activateItem(this.currentItem - 1);
+    } else {
+      if (
+        this.currentItem - 1 < 0 ||
+        (this.loop && this.currentItem - 1 < this.itemsPerPage)
+      ) {
+        this.activateLastItem();
+      } else {
+        this.activateItem(this.currentItem - 1);
+      }
     }
   }
 
