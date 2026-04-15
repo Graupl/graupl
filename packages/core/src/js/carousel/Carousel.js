@@ -194,11 +194,6 @@ class Carousel extends Component {
         // Handle events.
         this._handleAutoplay();
 
-        // Make sure all carousel items are inert so they are not focusable until activated.
-        this.dom.carouselItems.forEach((item) => {
-          item.setAttribute("inert", "true");
-        });
-
         if (this.loop) {
           this._handleLoop();
         }
@@ -569,6 +564,18 @@ class Carousel extends Component {
       !this.dom.carousel.getAttribute("role") !== "region"
     ) {
       this.dom.carousel.setAttribute("role", "group");
+    }
+
+    // Make sure all carousel items are inert so they are not focusable until activated.
+    this.dom.carouselItems.forEach((item) => {
+      item.setAttribute("inert", "true");
+    });
+
+    // Set the carousel item container's tabindex to -1 so it can't be focused.
+    // This is required because it's a scroll container, and we don't want it to
+    // be focused when the user is trying to interact with the carousel items within it.
+    if (this.dom.carouselItemContainer) {
+      this.dom.carouselItemContainer.setAttribute("tabindex", "-1");
     }
 
     // Set the role description for the carousel.
