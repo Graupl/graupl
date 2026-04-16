@@ -126,7 +126,7 @@ class Carousel extends Component {
     activeClass = "active",
     playClass = "play",
     pauseClass = "pause",
-    autoplay = false,
+    autoplay = true,
     transitionDelay = 10000,
     playText = "Play",
     pauseText = "Pause",
@@ -201,7 +201,7 @@ class Carousel extends Component {
         this._handleIntersection();
 
         // Activate the first item.
-        this.activateFirstItem();
+        this.activateFirstItem({ scrollBehavior: "instant" });
       }
     );
 
@@ -638,29 +638,45 @@ class Carousel extends Component {
     };
 
     const observer = new IntersectionObserver((entries) => {
+      // If the carousel is not initialized, do not attempt to update the current item.
+      if (!this.isInitialized) {
+        return;
+      }
+
       entries.forEach((entry) => {
-        if (entry.isIntersecting && !this.isTransitioning) {
-          const index = this.dom.carouselItems.indexOf(entry.target);
-          if (index !== -1) {
-            if (this.elements.carouselItems[index].elements.clone !== null) {
-              this.elements.carouselItems[
-                index
-              ].elements.clone.dom.carouselItem.scrollIntoView({
-                block: "nearest",
-                behavior: "instant",
-              });
+        // Only update the current item if the carousel item is fully visible in the carousel viewport.
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-              const cloneIndex = this.dom.carouselItems.indexOf(
-                this.elements.carouselItems[index].elements.clone.dom
-                  .carouselItem
-              );
+        const index = this.dom.carouselItems.indexOf(entry.target);
+        let indexToActivate = index;
 
-              this.activateItem(cloneIndex, { scroll: false });
-            } else {
-              this.activateItem(index, { scroll: false });
-            }
+        // If the item is a clone, activate the original item instead.
+        // This is necessary to properly update the current item when looping.
+        if (this.elements.carouselItems[index].elements.clone !== null) {
+          // Find the index of the original item that corresponds to the activated clone item.
+          indexToActivate = this.dom.carouselItems.indexOf(
+            this.elements.carouselItems[index].elements.clone.dom.carouselItem
+          );
+
+          if (index === 0 || index === this.dom.carouselItems.length - 1) {
+            this.elements.carouselItems[
+              index
+            ].elements.clone.dom.carouselItem.scrollIntoView({
+              block: "nearest",
+              behavior: "instant",
+            });
           }
         }
+
+        // If the activated item is the same as the current item, do not attempt to activate it again.
+        if (this.currentItem === indexToActivate) {
+          return;
+        }
+
+        // Activate the item without triggering a scroll.
+        this.activateItem(indexToActivate, { scroll: false });
       });
     }, options);
 
@@ -975,35 +991,41 @@ class Carousel extends Component {
   /**
    * Activates the current carousel item.
    *
-   * @param root0
-   * @param root0.scroll
+   * @param {object}  [options = {}]                    - Additional options for activating the current item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activateCurrentItem({ scroll = true } = {}) {
-    this.currentCarouselItem.activate({ scroll });
+  activateCurrentItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
+    this.currentCarouselItem.activate({ scroll, scrollBehavior });
   }
 
   /**
    * Deactivates the current carousel item.
+   *
+   * @param {object}  [options = {}]                    - Additional options for deactivating the current item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the deactivated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the deactivated item.
    */
-  deactivateCurrentItem() {
-    this.currentCarouselItem.deactivate();
+  deactivateCurrentItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
+    this.currentCarouselItem.deactivate({ scroll, scrollBehavior });
   }
 
   /**
    * Activates the carousel item at a given index.
    *
-   * @param {number}  index                   - The index of the carousel item to activate.
-   * @param {object}  [options = {}]          - Additional options for activating the item.
-   * @param {boolean} [options.scroll = true] - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {number}  index                             - The index of the carousel item to activate.
+   * @param {object}  [options = {}]                    - Additional options for activating the item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activateItem(index, { scroll = true } = {}) {
+  activateItem(index, { scroll = true, scrollBehavior = "smooth" } = {}) {
     if (this.autoplay) {
       this._clearInterval();
     }
 
-    this.deactivateCurrentItem();
+    this.deactivateCurrentItem({ scroll, scrollBehavior });
     this.currentItem = index;
-    this.activateCurrentItem({ scroll });
+    this.activateCurrentItem({ scroll, scrollBehavior });
 
     if (this.autoplay) {
       this._setInterval(() => this.activateNextItem(), this.transitionDelay);
@@ -1012,68 +1034,88 @@ class Carousel extends Component {
 
   /**
    * Activates the first carousel item.
+   *
+   * @param {object}  [options = {}]                    - Additional options for activating the first item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activateFirstItem() {
+  activateFirstItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
     if (this.loop) {
       if (
         this.currentItem ===
         this.dom.carouselItems.length - this.itemsPerPage - 1
       ) {
-        this.activateNextItem();
+        this.activateNextItem({ scroll, scrollBehavior });
       } else {
-        this.activateItem(this.itemsPerPage);
+        this.activateItem(this.itemsPerPage, { scroll, scrollBehavior });
       }
     } else {
-      this.activateItem(0);
+      this.activateItem(0, { scroll, scrollBehavior });
     }
   }
 
   /**
    * Activates the last carousel item.
+   *
+   * @param {object}  [options = {}]                    - Additional options for activating the last item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activateLastItem() {
+  activateLastItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
     if (this.loop) {
       if (this.currentItem === this.itemsPerPage) {
-        this.activatePreviousItem();
+        this.activatePreviousItem({ scroll, scrollBehavior });
       } else {
         this.activateItem(
-          this.dom.carouselItems.length - this.itemsPerPage - 1
+          this.dom.carouselItems.length - this.itemsPerPage - 1,
+          { scroll, scrollBehavior }
         );
       }
     } else {
-      this.activateItem(this.dom.carouselItems.length - 1);
+      this.activateItem(this.dom.carouselItems.length - 1, {
+        scroll,
+        scrollBehavior,
+      });
     }
   }
 
   /**
    * Activates the next carousel item.
+   *
+   * @param {object}  [options = {}]                    - Additional options for activating the next item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activateNextItem() {
+  activateNextItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
     if (this.loop) {
-      this.activateItem(this.currentItem + 1);
+      this.activateItem(this.currentItem + 1, { scroll, scrollBehavior });
     } else {
       if (this.currentItem + 1 >= this.dom.carouselItems.length) {
-        this.activateFirstItem();
+        this.activateFirstItem({ scroll, scrollBehavior });
       } else {
-        this.activateItem(this.currentItem + 1);
+        this.activateItem(this.currentItem + 1, { scroll, scrollBehavior });
       }
     }
   }
 
   /**
    * Activates the previous carousel item.
+   *
+   * @param {object}  [options = {}]                    - Additional options for activating the previous item.
+   * @param {boolean} [options.scroll = true]           - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {string}  [options.scrollBehavior = smooth] - The scroll behavior to use when scrolling to the activated item.
    */
-  activatePreviousItem() {
+  activatePreviousItem({ scroll = true, scrollBehavior = "smooth" } = {}) {
     if (this.loop) {
-      this.activateItem(this.currentItem - 1);
+      this.activateItem(this.currentItem - 1, { scroll, scrollBehavior });
     } else {
       if (
         this.currentItem - 1 < 0 ||
         (this.loop && this.currentItem - 1 < this.itemsPerPage)
       ) {
-        this.activateLastItem();
+        this.activateLastItem({ scroll, scrollBehavior });
       } else {
-        this.activateItem(this.currentItem - 1);
+        this.activateItem(this.currentItem - 1, { scroll, scrollBehavior });
       }
     }
   }
