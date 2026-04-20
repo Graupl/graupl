@@ -60,7 +60,14 @@ class CarouselItem extends Component {
     }
   }
 
-  activate({ scroll = true, scrollBehavior = "smooth" } = {}) {
+  /**
+   * Activates the carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
+   */
+  activate({ scroll = true, scrollOptions = {} } = {}) {
     requestAnimationFrame(() => {
       addClass(this.elements.parent.activeClass, this.dom.carouselItem);
       this.dom.carouselItem.removeAttribute("inert");
@@ -69,19 +76,23 @@ class CarouselItem extends Component {
         this.elements.parent.dom.carouselItemContainer.scrollTo({
           left: this.dom.carouselItem.offsetLeft,
           top: this.dom.carouselItem.offsetTop,
-          behavior: scrollBehavior,
+          behavior: "smooth",
+          ...scrollOptions,
         });
       }
 
       if (this.dom.tab) {
         requestAnimationFrame(() => {
           addClass(this.elements.parent.activeClass, this.dom.tab);
-          this.dom.tab.setAttribute("aria-selected", "true");
+          this.dom.tab.setAttribute("aria-selected", true);
         });
       }
     });
   }
 
+  /**
+   * Deactivates the carousel item.
+   */
   deactivate() {
     requestAnimationFrame(() => {
       removeClass(this.elements.parent.activeClass, this.dom.carouselItem);
