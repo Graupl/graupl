@@ -631,7 +631,7 @@ class Carousel extends Component {
    */
   _handleIntersection() {
     const options = {
-      root: this.dom.carousel,
+      root: this.dom.carouselItemContainer,
       rootMargin: "1px",
       scrollMargin: "1px",
       threshold: 1.0,
@@ -661,10 +661,11 @@ class Carousel extends Component {
           );
 
           if (index === 0 || index === this.dom.carouselItems.length - 1) {
-            this.elements.carouselItems[
-              index
-            ].elements.clone.dom.carouselItem.scrollIntoView({
-              block: "nearest",
+            this.dom.carouselItemContainer.scrollTo({
+              left: this.elements.carouselItems[index].elements.clone.dom
+                .carouselItem.offsetLeft,
+              top: this.elements.carouselItems[index].elements.clone.dom
+                .carouselItem.offsetTop,
               behavior: "instant",
             });
           }

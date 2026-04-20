@@ -66,8 +66,9 @@ class CarouselItem extends Component {
       this.dom.carouselItem.removeAttribute("inert");
 
       if (scroll) {
-        this.dom.carouselItem.scrollIntoView({
-          block: "nearest",
+        this.elements.parent.dom.carouselItemContainer.scrollTo({
+          left: this.dom.carouselItem.offsetLeft,
+          top: this.dom.carouselItem.offsetTop,
           behavior: scrollBehavior,
         });
       }
