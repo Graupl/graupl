@@ -575,13 +575,15 @@ var Carousel = (function() {
 				initializeClass: n
 			}), this._dom.carouselItem = t, this._dom.tab = e, this._elements.clone = r ?? null, this._elements.parent = s, _ && this.initialize();
 		}
-		activate({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activate({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			requestAnimationFrame(() => {
-				c(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.removeAttribute("inert"), t && this.dom.carouselItem.scrollIntoView({
-					block: "nearest",
-					behavior: e
+				c(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.removeAttribute("inert"), t && this.elements.parent.dom.carouselItemContainer.scrollTo({
+					left: this.dom.carouselItem.offsetLeft,
+					top: this.dom.carouselItem.offsetTop,
+					behavior: "smooth",
+					...e
 				}), this.dom.tab && requestAnimationFrame(() => {
-					c(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", "true");
+					c(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !0);
 				});
 			});
 		}
@@ -592,7 +594,7 @@ var Carousel = (function() {
 				});
 			});
 		}
-	}, O = class extends g {
+	}, x = class extends g {
 		_rootDOMElement = "carousel";
 		_currentItem = 0;
 		_autoplay = !0;
@@ -602,13 +604,13 @@ var Carousel = (function() {
 		_name = "Carousel";
 		_itemsPerPage = 1;
 		_loop = !0;
-		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: r = ".carousel-item-container", carouselControlsSelector: s = ".carousel-control", carouselControlContainerSelector: i = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: n = ".carousel-tab-container", autoplaySelector: _ = ".autoplay", nextSelector: x = ".next", previousSelector: M = ".previous", activeClass: A = "active", playClass: D = "play", pauseClass: S = "pause", autoplay: L = !0, transitionDelay: z = 1e4, playText: P = "Play", pauseText: j = "Pause", itemsPerPage: V = 1, loop: Q = !0, prefix: K = "graupl-", key: F = null, initializeClass: N = "initializing", initialize: q = !1 }) {
+		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: r = ".carousel-item-container", carouselControlsSelector: s = ".carousel-control", carouselControlContainerSelector: i = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: n = ".carousel-tab-container", autoplaySelector: _ = ".autoplay", nextSelector: M = ".next", previousSelector: A = ".previous", activeClass: O = "active", playClass: D = "play", pauseClass: S = "pause", autoplay: L = !0, transitionDelay: z = 1e4, playText: P = "Play", pauseText: j = "Pause", itemsPerPage: Q = 1, loop: V = !0, prefix: K = "graupl-", key: F = null, initializeClass: N = "initializing", initialize: q = !1 }) {
 			super({
 				prefix: K,
 				key: F,
 				initializeClass: N
-			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = r, this._selectors.carouselControls = s, this._selectors.carouselControlContainer = i, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = n, this._selectors.autoplay = _, this._selectors.next = x, this._selectors.previous = M, this._elements.carouselItems = [], this._classes.active = A || "", this._classes.play = D || "", this._classes.pause = S || "", this._autoplay = L, this._itemsPerPage = V, this._loop = Q, this._delays.transition = z, this._playText = P || "", this._pauseText = j || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
-				this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollBehavior: "instant" });
+			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = r, this._selectors.carouselControls = s, this._selectors.carouselControlContainer = i, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = n, this._selectors.autoplay = _, this._selectors.next = M, this._selectors.previous = A, this._elements.carouselItems = [], this._classes.active = O || "", this._classes.play = D || "", this._classes.pause = S || "", this._autoplay = L, this._itemsPerPage = Q, this._loop = V, this._delays.transition = z, this._playText = P || "", this._pauseText = j || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollOptions: { behavior: "instant" } });
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
 				const E = a("boolean", {
 					autoplay: this._autoplay,
@@ -716,7 +718,7 @@ var Carousel = (function() {
 		}
 		_handleIntersection() {
 			const t = {
-				root: this.dom.carousel,
+				root: this.dom.carouselItemContainer,
 				rootMargin: "1px",
 				scrollMargin: "1px",
 				threshold: 1
@@ -725,8 +727,9 @@ var Carousel = (function() {
 					if (!s.isIntersecting) return;
 					const i = this.dom.carouselItems.indexOf(s.target);
 					let o = i;
-					this.elements.carouselItems[i].elements.clone !== null && (o = this.dom.carouselItems.indexOf(this.elements.carouselItems[i].elements.clone.dom.carouselItem), (i === 0 || i === this.dom.carouselItems.length - 1) && this.elements.carouselItems[i].elements.clone.dom.carouselItem.scrollIntoView({
-						block: "nearest",
+					this.elements.carouselItems[i].elements.clone !== null && (o = this.dom.carouselItems.indexOf(this.elements.carouselItems[i].elements.clone.dom.carouselItem), (i === 0 || i === this.dom.carouselItems.length - 1) && this.dom.carouselItemContainer.scrollTo({
+						left: this.elements.carouselItems[i].elements.clone.dom.carouselItem.offsetLeft,
+						top: this.elements.carouselItems[i].elements.clone.dom.carouselItem.offsetTop,
 						behavior: "instant"
 					})), this.currentItem !== o && this.activateItem(o, { scroll: !1 });
 				});
@@ -846,80 +849,80 @@ var Carousel = (function() {
 				this.dom.carouselItems.unshift(o), this._elements.carouselItems.unshift(n);
 			});
 		}
-		activateCurrentItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.currentCarouselItem.activate({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		deactivateCurrentItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		deactivateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.currentCarouselItem.deactivate({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateItem(t, { scroll: e = !0, scrollBehavior: r = "smooth" } = {}) {
+		activateItem(t, { scroll: e = !0, scrollOptions: r = {} } = {}) {
 			this.autoplay && this._clearInterval(), this.deactivateCurrentItem({
 				scroll: e,
-				scrollBehavior: r
+				scrollOptions: r
 			}), this.currentItem = t, this.activateCurrentItem({
 				scroll: e,
-				scrollBehavior: r
+				scrollOptions: r
 			}), this.autoplay && this._setInterval(() => this.activateNextItem(), this.transitionDelay);
 		}
-		activateFirstItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateFirstItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.currentItem === this.dom.carouselItems.length - this.itemsPerPage - 1 ? this.activateNextItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.itemsPerPage, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(0, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateLastItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateLastItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.currentItem === this.itemsPerPage ? this.activatePreviousItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.dom.carouselItems.length - this.itemsPerPage - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.dom.carouselItems.length - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateNextItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateNextItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.activateItem(this.currentItem + 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.currentItem + 1 >= this.dom.carouselItems.length ? this.activateFirstItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.currentItem + 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activatePreviousItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activatePreviousItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.activateItem(this.currentItem - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.currentItem - 1 < 0 || this.loop && this.currentItem - 1 < this.itemsPerPage ? this.activateLastItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.currentItem - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
 		toggleAutoplay() {
 			this.autoplay = !this.autoplay, this._handleAutoplay();
 		}
 	};
-	return O;
+	return x;
 })();
 
 //# sourceMappingURL=carousel.iife.js.map

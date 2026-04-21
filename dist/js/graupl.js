@@ -135,7 +135,7 @@
 		if (e && !i.status) throw i.errors[0];
 		return i;
 	}
-	function L(t, e, { shouldThrow: i = !0 } = {}) {
+	function B(t, e, { shouldThrow: i = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -605,7 +605,7 @@
 			this.dom.item.id = this.dom.item.id || `accordion-item-${t}-${e}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${t}-${e}`, this.dom.header.id = this.dom.header.id || `accordion-item-header-${t}-${e}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${t}-${e}`;
 		}
 		_setAriaAttributes() {
-			L("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), L("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
+			B("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), B("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
 		}
 		_reveal({ emit: t = !0, transition: e = !0 } = {}) {
 			const { closeClass: i, openClass: s, transitionClass: o, openDuration: r } = this.elements.parent;
@@ -701,12 +701,12 @@
 		_currentChild = 0;
 		_storageKey = "accordions";
 		_name = "Accordion";
-		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: i = ".accordion-item-toggle", accordionItemHeadersSelector: s = ".accordion-item-header", accordionItemContentsSelector: o = ".accordion-item-content", accordionControlContainerSelector: r = ".accordion-control-container", accordionControlsSelector: l = ".accordion-control", expandControllerSelector: u = ".expand-all", collapseControllerSelector: f = ".collapse-all", openClass: C = "show", closeClass: E = "hide", transitionClass: b = "transitioning", transitionDuration: w = 300, openDuration: g = -1, closeDuration: y = -1, optionalKeySupport: I = !1, allowExpandMultiple: x = !0, allowCollapseAll: v = !0, automaticActivation: A = !1, prefix: T = "graupl-", key: $ = null, initializeClass: M = "initializing", initialize: S = !1 }) {
+		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: i = ".accordion-item-toggle", accordionItemHeadersSelector: s = ".accordion-item-header", accordionItemContentsSelector: o = ".accordion-item-content", accordionControlContainerSelector: r = ".accordion-control-container", accordionControlsSelector: l = ".accordion-control", expandControllerSelector: u = ".expand-all", collapseControllerSelector: f = ".collapse-all", openClass: C = "show", closeClass: E = "hide", transitionClass: b = "transitioning", transitionDuration: I = 300, openDuration: g = -1, closeDuration: y = -1, optionalKeySupport: w = !1, allowExpandMultiple: T = !0, allowCollapseAll: v = !0, automaticActivation: A = !1, prefix: x = "graupl-", key: $ = null, initializeClass: M = "initializing", initialize: S = !1 }) {
 			super({
-				prefix: T,
+				prefix: x,
 				key: $,
 				initializeClass: M
-			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = i, this._selectors.accordionItemHeaders = s, this._selectors.accordionItemContents = o, this._selectors.accordionControlContainer = r, this._selectors.accordionControls = l, this._selectors.expandController = u, this._selectors.collapseController = f, this._elements.accordionItems = [], this._classes.open = C || "", this._classes.close = E || "", this._classes.transition = b || "", this._durations.transition = w, this._durations.open = g, this._durations.close = y, this._automatic = A, this._optionalKeySupport = I, this._expandMultiple = x, this._collapseAll = v, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = i, this._selectors.accordionItemHeaders = s, this._selectors.accordionItemContents = o, this._selectors.accordionControlContainer = r, this._selectors.accordionControls = l, this._selectors.expandController = u, this._selectors.collapseController = f, this._elements.accordionItems = [], this._classes.open = C || "", this._classes.close = E || "", this._classes.transition = b || "", this._durations.transition = I, this._durations.open = g, this._durations.close = y, this._automatic = A, this._optionalKeySupport = w, this._expandMultiple = T, this._collapseAll = v, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((p) => {
 					p.setAttribute("disabled", "disabled");
 				}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((p) => {
@@ -944,7 +944,7 @@
 	function q(t, e, i) {
 		return t[`${e}Attribute`](K, i);
 	}
-	function B(t) {
+	function L(t) {
 		if (typeof t != "string") throw new TypeError("once ID must be a string");
 		if (t === "" || N.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 		return `[${K}~="${t}"]`;
@@ -976,9 +976,9 @@
 		q(t, o === "" ? "remove" : "set", o);
 	}
 	function _(t, e, i) {
-		return Q(`:not(${B(t)})`, z(e, i), (s) => G(s, { add: t }));
+		return Q(`:not(${L(t)})`, z(e, i), (s) => G(s, { add: t }));
 	}
-	_.remove = (t, e, i) => Q(B(t), z(e, i), (s) => G(s, { remove: t })), _.filter = (t, e, i) => Q(B(t), z(e, i)), _.find = (t, e) => z(t ? B(t) : `[${K}]`, e);
+	_.remove = (t, e, i) => Q(L(t), z(e, i), (s) => G(s, { remove: t })), _.filter = (t, e, i) => Q(L(t), z(e, i)), _.find = (t, e) => z(t ? L(t) : `[${K}]`, e);
 	const it = (t = {}, e = document, i = ".accordion") => {
 		_("graupl-accordion-generator", i, e).forEach((s) => {
 			const o = s.dataset.grauplAccordionOptions ? JSON.parse(s.dataset.grauplAccordionOptions.replace(/'/g, "\"")) || {} : {};
@@ -996,7 +996,7 @@
 		_hidden = new D(!1);
 		_storageKey = "alerts";
 		_name = "Alert";
-		constructor({ alertElement: t, controllerElement: e = null, showClass: i = "show", hideClass: s = "hide", transitionClass: o = "transitioning", transitionDuration: r = 150, showDuration: l = -1, hideDuration: u = -1, isHidden: f = !1, prefix: C = "graupl-", key: E = null, initializeClass: b = "initializing", initialize: w = !1 } = {}) {
+		constructor({ alertElement: t, controllerElement: e = null, showClass: i = "show", hideClass: s = "hide", transitionClass: o = "transitioning", transitionDuration: r = 150, showDuration: l = -1, hideDuration: u = -1, isHidden: f = !1, prefix: C = "graupl-", key: E = null, initializeClass: b = "initializing", initialize: I = !1 } = {}) {
 			super({
 				prefix: C,
 				key: E,
@@ -1009,7 +1009,7 @@
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
 				const g = n("boolean", { isHidden: this._hidden.value }, { shouldThrow: !1 });
 				g.status || (this._errors = [...this._errors, ...g.errors], this._valid = !1);
-			}), w && this.initialize();
+			}), I && this.initialize();
 		}
 		get showClass() {
 			return this._classes.show;
@@ -1121,13 +1121,15 @@
 				initializeClass: l
 			}), this._dom.carouselItem = t, this._dom.tab = e, this._elements.clone = i ?? null, this._elements.parent = s, u && this.initialize();
 		}
-		activate({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activate({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			requestAnimationFrame(() => {
-				h(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.removeAttribute("inert"), t && this.dom.carouselItem.scrollIntoView({
-					block: "nearest",
-					behavior: e
+				h(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.removeAttribute("inert"), t && this.elements.parent.dom.carouselItemContainer.scrollTo({
+					left: this.dom.carouselItem.offsetLeft,
+					top: this.dom.carouselItem.offsetTop,
+					behavior: "smooth",
+					...e
 				}), this.dom.tab && requestAnimationFrame(() => {
-					h(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", "true");
+					h(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !0);
 				});
 			});
 		}
@@ -1148,13 +1150,13 @@
 		_name = "Carousel";
 		_itemsPerPage = 1;
 		_loop = !0;
-		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: i = ".carousel-item-container", carouselControlsSelector: s = ".carousel-control", carouselControlContainerSelector: o = ".carousel-control-container", carouselTabsSelector: r = ".carousel-tab", carouselTabContainerSelector: l = ".carousel-tab-container", autoplaySelector: u = ".autoplay", nextSelector: f = ".next", previousSelector: C = ".previous", activeClass: E = "active", playClass: b = "play", pauseClass: w = "pause", autoplay: g = !0, transitionDelay: y = 1e4, playText: I = "Play", pauseText: x = "Pause", itemsPerPage: v = 1, loop: A = !0, prefix: T = "graupl-", key: $ = null, initializeClass: M = "initializing", initialize: S = !1 }) {
+		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: i = ".carousel-item-container", carouselControlsSelector: s = ".carousel-control", carouselControlContainerSelector: o = ".carousel-control-container", carouselTabsSelector: r = ".carousel-tab", carouselTabContainerSelector: l = ".carousel-tab-container", autoplaySelector: u = ".autoplay", nextSelector: f = ".next", previousSelector: C = ".previous", activeClass: E = "active", playClass: b = "play", pauseClass: I = "pause", autoplay: g = !0, transitionDelay: y = 1e4, playText: w = "Play", pauseText: T = "Pause", itemsPerPage: v = 1, loop: A = !0, prefix: x = "graupl-", key: $ = null, initializeClass: M = "initializing", initialize: S = !1 }) {
 			super({
-				prefix: T,
+				prefix: x,
 				key: $,
 				initializeClass: M
-			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = i, this._selectors.carouselControls = s, this._selectors.carouselControlContainer = o, this._selectors.carouselTabs = r, this._selectors.carouselTabContainer = l, this._selectors.autoplay = u, this._selectors.next = f, this._selectors.previous = C, this._elements.carouselItems = [], this._classes.active = E || "", this._classes.play = b || "", this._classes.pause = w || "", this._autoplay = g, this._itemsPerPage = v, this._loop = A, this._delays.transition = y, this._playText = I || "", this._pauseText = x || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
-				this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollBehavior: "instant" });
+			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = i, this._selectors.carouselControls = s, this._selectors.carouselControlContainer = o, this._selectors.carouselTabs = r, this._selectors.carouselTabContainer = l, this._selectors.autoplay = u, this._selectors.next = f, this._selectors.previous = C, this._elements.carouselItems = [], this._classes.active = E || "", this._classes.play = b || "", this._classes.pause = I || "", this._autoplay = g, this._itemsPerPage = v, this._loop = A, this._delays.transition = y, this._playText = w || "", this._pauseText = T || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollOptions: { behavior: "instant" } });
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
 				const p = n("boolean", {
 					autoplay: this._autoplay,
@@ -1251,7 +1253,7 @@
 			}), this._id = this.dom.carousel.id;
 		}
 		_setAriaAttributes() {
-			!L("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
+			!B("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
 				t.setAttribute("inert", "true");
 			}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
 				t.setAttribute("role", "tab"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
@@ -1262,7 +1264,7 @@
 		}
 		_handleIntersection() {
 			const t = {
-				root: this.dom.carousel,
+				root: this.dom.carouselItemContainer,
 				rootMargin: "1px",
 				scrollMargin: "1px",
 				threshold: 1
@@ -1271,8 +1273,9 @@
 					if (!s.isIntersecting) return;
 					const o = this.dom.carouselItems.indexOf(s.target);
 					let r = o;
-					this.elements.carouselItems[o].elements.clone !== null && (r = this.dom.carouselItems.indexOf(this.elements.carouselItems[o].elements.clone.dom.carouselItem), (o === 0 || o === this.dom.carouselItems.length - 1) && this.elements.carouselItems[o].elements.clone.dom.carouselItem.scrollIntoView({
-						block: "nearest",
+					this.elements.carouselItems[o].elements.clone !== null && (r = this.dom.carouselItems.indexOf(this.elements.carouselItems[o].elements.clone.dom.carouselItem), (o === 0 || o === this.dom.carouselItems.length - 1) && this.dom.carouselItemContainer.scrollTo({
+						left: this.elements.carouselItems[o].elements.clone.dom.carouselItem.offsetLeft,
+						top: this.elements.carouselItems[o].elements.clone.dom.carouselItem.offsetTop,
 						behavior: "instant"
 					})), this.currentItem !== r && this.activateItem(r, { scroll: !1 });
 				});
@@ -1392,73 +1395,73 @@
 				this.dom.carouselItems.unshift(r), this._elements.carouselItems.unshift(l);
 			});
 		}
-		activateCurrentItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.currentCarouselItem.activate({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		deactivateCurrentItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		deactivateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.currentCarouselItem.deactivate({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateItem(t, { scroll: e = !0, scrollBehavior: i = "smooth" } = {}) {
+		activateItem(t, { scroll: e = !0, scrollOptions: i = {} } = {}) {
 			this.autoplay && this._clearInterval(), this.deactivateCurrentItem({
 				scroll: e,
-				scrollBehavior: i
+				scrollOptions: i
 			}), this.currentItem = t, this.activateCurrentItem({
 				scroll: e,
-				scrollBehavior: i
+				scrollOptions: i
 			}), this.autoplay && this._setInterval(() => this.activateNextItem(), this.transitionDelay);
 		}
-		activateFirstItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateFirstItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.currentItem === this.dom.carouselItems.length - this.itemsPerPage - 1 ? this.activateNextItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.itemsPerPage, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(0, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateLastItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateLastItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.currentItem === this.itemsPerPage ? this.activatePreviousItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.dom.carouselItems.length - this.itemsPerPage - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.dom.carouselItems.length - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activateNextItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activateNextItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.activateItem(this.currentItem + 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.currentItem + 1 >= this.dom.carouselItems.length ? this.activateFirstItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.currentItem + 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
-		activatePreviousItem({ scroll: t = !0, scrollBehavior: e = "smooth" } = {}) {
+		activatePreviousItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
 			this.loop ? this.activateItem(this.currentItem - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.currentItem - 1 < 0 || this.loop && this.currentItem - 1 < this.itemsPerPage ? this.activateLastItem({
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			}) : this.activateItem(this.currentItem - 1, {
 				scroll: t,
-				scrollBehavior: e
+				scrollOptions: e
 			});
 		}
 		toggleAutoplay() {
@@ -1516,12 +1519,12 @@
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: i = ".disclosure-content", lockedClass: s = "locked", unlockedClass: o = "unlocked", openClass: r = "show", closeClass: l = "hide", transitionClass: u = "transitioning", transitionDuration: f = 250, openDuration: C = -1, closeDuration: E = -1, openOnFocus: b = !1, closeOnBlur: w = !1, minWidth: g = "", breakpoint: y = "", autoOpen: I = !1, openInsideBreakpoint: x = !1, openOutsideBreakpoint: v = !1, closeInsideBreakpoint: A = !1, closeOutsideBreakpoint: T = !1, lockInsideBreakpoint: $ = !1, lockOutsideBreakpoint: M = !1, unlockInsideBreakpoint: S = !1, unlockOutsideBreakpoint: p = !1, locked: P = !1, mediaQuery: F = "", prefix: dt = "graupl-", key: ut = null, initializeClass: mt = "initializing", initialize: pt = !1 } = {}) {
+		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: i = ".disclosure-content", lockedClass: s = "locked", unlockedClass: o = "unlocked", openClass: r = "show", closeClass: l = "hide", transitionClass: u = "transitioning", transitionDuration: f = 250, openDuration: C = -1, closeDuration: E = -1, openOnFocus: b = !1, closeOnBlur: I = !1, minWidth: g = "", breakpoint: y = "", autoOpen: w = !1, openInsideBreakpoint: T = !1, openOutsideBreakpoint: v = !1, closeInsideBreakpoint: A = !1, closeOutsideBreakpoint: x = !1, lockInsideBreakpoint: $ = !1, lockOutsideBreakpoint: M = !1, unlockInsideBreakpoint: S = !1, unlockOutsideBreakpoint: p = !1, locked: P = !1, mediaQuery: F = "", prefix: dt = "graupl-", key: ut = null, initializeClass: mt = "initializing", initialize: pt = !1 } = {}) {
 			super({
 				prefix: dt,
 				key: ut,
 				initializeClass: mt
-			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = i, this._classes.locked = s || "", this._classes.unlocked = o || "", this._classes.open = r || "", this._classes.close = l || "", this._classes.transition = u || "", this._durations.transition = f, this._durations.open = C, this._durations.close = E, this._openOnFocus = b, this._closeOnBlur = w, g !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), y === "" && (y = g)), I && y !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), v = I, A = I), this._breakpoint = y || "", this._openInsideBreakpoint = x, this._openOutsideBreakpoint = v, this._closeInsideBreakpoint = A, this._closeOutsideBreakpoint = T, this._lockInsideBreakpoint = $, this._lockOutsideBreakpoint = M, this._unlockInsideBreakpoint = S, this._unlockOutsideBreakpoint = p, this._mediaQueryString = F || "", this._locked.value = P, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = i, this._classes.locked = s || "", this._classes.unlocked = o || "", this._classes.open = r || "", this._classes.close = l || "", this._classes.transition = u || "", this._durations.transition = f, this._durations.open = C, this._durations.close = E, this._openOnFocus = b, this._closeOnBlur = I, g !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), y === "" && (y = g)), w && y !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), v = w, A = w), this._breakpoint = y || "", this._openInsideBreakpoint = T, this._openOutsideBreakpoint = v, this._closeInsideBreakpoint = A, this._closeOutsideBreakpoint = x, this._lockInsideBreakpoint = $, this._lockOutsideBreakpoint = M, this._unlockInsideBreakpoint = S, this._unlockOutsideBreakpoint = p, this._mediaQueryString = F || "", this._locked.value = P, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				requestAnimationFrame(() => {
 					this.dom.controller.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 }), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
 				});
@@ -1654,7 +1657,7 @@
 			this.dom.disclosure.id = this.dom.disclosure.id || `disclosure-${this.key}`, this.dom.controller.id = this.dom.controller.id || `disclosure-controller-${this.key}`, this._id = this.dom.disclosure.id;
 		}
 		_setAriaAttributes() {
-			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), L("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
+			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), B("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
 		}
 		_setCustomProps() {
 			this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-transition-duration`, `${this.transitionDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-open-transition-duration`, `${this.openDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-close-transition-duration`, `${this.closeDuration}ms`);
