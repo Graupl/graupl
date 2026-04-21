@@ -7,6 +7,7 @@ import { addClass, removeClass } from "../domHelpers.js";
 import { preventEvent, keyPress } from "../eventHandlers.js";
 import { isTag, isValidClassList, isValidType } from "../validate.js";
 import Component from "../Component.js";
+import CarouselItem from "./CarouselItem.js";
 
 /**
  * The Carousel component.
@@ -38,26 +39,23 @@ import Component from "../Component.js";
  * @property {string}                             _selectors.autoplay                 - The query selector string for the autoplay button.
  * @property {string}                             _selectors.next                     - The query selector string for the next button.
  * @property {string}                             _selectors.previous                 - The query selector string for the previous button.
+ * @property {Object<CarouselItem[]>}             _elements                           - The instantiated carousel items within the carousel.
+ * @property {CarouselItem[]}                     _elements.carouselItems             - The instantiated carousel items within the carousel.
  * @property {Object<string, string[]>}           _classes                            - The CSS classes to apply when the carousel is in various states.
  * @property {string|string[]}                    _classes.active                     - The class(es) to apply when a carousel item is active.
- * @property {string|string[]}                    _classes.previous                   - The class(es) to apply to a carousel item that is the previously active item.
- * @property {string|string[]}                    _classes.next                       - The class(es) to apply to a carousel item that is the next active item.
  * @property {string|string[]}                    _classes.play                       - The class(es) to apply to the autoplay button when the carousel is paused.
  * @property {string|string[]}                    _classes.pause                      - The class(es) to apply to the autoplay button when the carousel is playing.
  * @property {string|string[]}                    _classes.initialize                 - The class(es) to apply when the carousel is initializing.
  * @property {Object<number>}                     _durations                          - The duration times (in milliseconds) for various aspects throughout the carousel.
- * @property {number}                             _durations.transition               - The duration time (in milliseconds) for the transition between carousel items.
  * @property {Object<number>}                     _delays                             - The delay times (in milliseconds) for various aspects throughout the carousel.
  * @property {number}                             _delays.transition                  - The delay time (in milliseconds) for the transition between carousel items.
  * @property {number}                             _currentItem                        - The index of the currently active carousel item.
  * @property {boolean}                            _autoplay                           - A flag to indicate if the carousel is currently playing.
  * @property {string}                             _playText                           - The label for the autoplay button when the carousel is paused.
  * @property {string}                             _pauseText                          - The label for the autoplay button when the carousel is playing.
- * @property {string}                             _currentAction                      - The current action being performed by the carousel.
  * @property {string}                             _storageKey                         - The key used for storage.
  * @property {boolean}                            _shouldStore                        - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<CustomEvent>}                _events                             - Custom events that can be triggered throughout the carousel.
- * @property {Object<object>}                     _elements                           - The instantiated elements within the carousel.
  * @property {string}                             _focusState                         - The current state of the carousel's focus.
  * @property {string}                             _currentEvent                       - The last type of event triggered within the carousel.
  * @property {string}                             _breakpoint                         - The breakpoint that the carousel will call media query list events.
@@ -81,9 +79,10 @@ class Carousel extends Component {
   _autoplay = true;
   _playText = "Play";
   _pauseText = "Pause";
-  _currentAction = "next";
   _storageKey = "carousels";
   _name = "Carousel";
+  _itemsPerPage = 1;
+  _loop = true;
 
   /**
    * Constructs a new `Carousel`.
@@ -100,15 +99,14 @@ class Carousel extends Component {
    * @param {string}             [options.nextSelector = .next]                                           - The query selector string for the next button.
    * @param {string}             [options.previousSelector = .previous]                                   - The query selector string for the previous button.
    * @param {?(string|string[])} [options.activeClass = active]                                           - The class(es) to apply when a carousel item is active.
-   * @param {?(string|string[])} [options.previousClass = previous]                                       - The class(es) to apply to a carousel item that is the previously active item.
-   * @param {?(string|string[])} [options.nextClass = next]                                               - The class(es) to apply to a carousel item that is the next active item.
    * @param {?(string|string[])} [options.playClass = play]                                               - The class(es) to apply to the autoplay button when the carousel is paused.
    * @param {?(string|string[])} [options.pauseClass = pause]                                             - The class(es) to apply to the autoplay button when the carousel is playing.
    * @param {boolean}            [options.autoplay = true]                                                - A flag to indicate if the carousel should autoplay.
    * @param {number}             [options.transitionDelay = 10000]                                        - A flag to initialize the carousel immediately upon creation.
-   * @param {number}             [options.transitionDuration = 500]                                       - The duration time (in milliseconds) for the transition between carousel items.
    * @param {?string}            [options.playText = Play]                                                - The text to use for the play button.
    * @param {?string}            [options.pauseText = Pause]                                              - The text to use for the pause button.
+   * @param {number}             [options.itemsPerPage = 1]                                               - The number of items to show per page.
+   * @param {boolean}            [options.loop = true]                                                    - A flag to indicate if the carousel should loop infinitely.
    * @param {?string}            [options.prefix = graupl-]                                               - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                                                     - The key used to generate IDs throughout the carousel.
    * @param {?(string|string[])} [options.initializeClass = initializing]                                 - The class(es) to apply when the carousel is initializing.
@@ -126,15 +124,14 @@ class Carousel extends Component {
     nextSelector = ".next",
     previousSelector = ".previous",
     activeClass = "active",
-    previousClass = "previous",
-    nextClass = "next",
     playClass = "play",
     pauseClass = "pause",
     autoplay = true,
     transitionDelay = 10000,
-    transitionDuration = 500,
     playText = "Play",
     pauseText = "Pause",
+    itemsPerPage = 1,
+    loop = true,
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
@@ -169,19 +166,21 @@ class Carousel extends Component {
     this._selectors.next = nextSelector;
     this._selectors.previous = previousSelector;
 
+    // Set the elements.
+    this._elements.carouselItems = [];
+
     // Set class names.
     this._classes.active = activeClass || "";
-    this._classes.previous = previousClass || "";
-    this._classes.next = nextClass || "";
     this._classes.play = playClass || "";
     this._classes.pause = pauseClass || "";
 
     // Set flags.
     this._autoplay = autoplay;
+    this._itemsPerPage = itemsPerPage;
+    this._loop = loop;
 
     // Set transition options.
     this._delays.transition = transitionDelay;
-    this._durations.transition = transitionDuration;
 
     // Set labels.
     this._playText = playText || "";
@@ -195,13 +194,14 @@ class Carousel extends Component {
         // Handle events.
         this._handleAutoplay();
 
-        // Make sure all carousel items are inert so they are not focusable until activated.
-        this.dom.carouselItems.forEach((item) => {
-          item.setAttribute("inert", "true");
-        });
+        if (this.loop) {
+          this._handleLoop();
+        }
+
+        this._handleIntersection();
 
         // Activate the first item.
-        this.activateFirstItem();
+        this.activateFirstItem({ scrollOptions: { behavior: "instant" } });
       }
     );
 
@@ -213,6 +213,7 @@ class Carousel extends Component {
         // Boolean checks.
         const booleans = {
           autoplay: this._autoplay,
+          loop: this._loop,
         };
 
         // Check the booleans.
@@ -242,6 +243,22 @@ class Carousel extends Component {
           this._errors = [...this._errors, ...stringChecks.errors];
           this._valid = false;
         }
+
+        // Number checks.
+        const numbers = {
+          itemsPerPage: this._itemsPerPage,
+        };
+
+        // Check the numbers.
+        const numberChecks = isValidType("number", numbers, {
+          shouldThrow: false,
+        });
+
+        // Handle number check failures.
+        if (!numberChecks.status) {
+          this._errors = [...this._errors, ...numberChecks.errors];
+          this._valid = false;
+        }
       }
     );
 
@@ -266,44 +283,6 @@ class Carousel extends Component {
 
     if (this._classes.active !== value) {
       this._classes.active = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to a carousel item that is the next active item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes.previous
-   */
-  get previousClass() {
-    return this._classes.previous;
-  }
-
-  set previousClass(value) {
-    isValidClassList({ previousClass: value });
-
-    if (this._classes.previous !== value) {
-      this._classes.previous = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to a carousel item that is the next active item.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes.next
-   */
-  get nextClass() {
-    return this._classes.next;
-  }
-
-  set nextClass(value) {
-    isValidClassList({ nextClass: value });
-
-    if (this._classes.next !== value) {
-      this._classes.next = value;
     }
   }
 
@@ -370,16 +349,6 @@ class Carousel extends Component {
     } else {
       this._currentItem = value;
     }
-
-    // Keep the aria selected in sync with the current item.
-    const tabs = this._dom.carousel.querySelectorAll(
-      this.selectors.carouselTab
-    );
-    if (tabs) {
-      this.dom.carouselItems.forEach((item, index) => {
-        item.setAttribute("aria-selected", index === this._currentItem);
-      });
-    }
   }
 
   /**
@@ -387,21 +356,10 @@ class Carousel extends Component {
    *
    * @readonly
    *
-   * @type {HTMLElement}
+   * @type {CarouselItem}
    */
   get currentCarouselItem() {
-    return this.dom.carouselItems[this.currentItem];
-  }
-
-  /**
-   * The currently active carousel tab.
-   *
-   * @readonly
-   *
-   * @type {HTMLElement}
-   */
-  get currentCarouselTab() {
-    return this.dom.carouselTabs[this.currentItem];
+    return this.elements.carouselItems[this.currentItem];
   }
 
   /**
@@ -424,6 +382,32 @@ class Carousel extends Component {
   }
 
   /**
+   * The number of items to show per page.
+   *
+   * @readonly
+   *
+   * @type {number}
+   *
+   * @see _itemsPerPage
+   */
+  get itemsPerPage() {
+    return this._itemsPerPage;
+  }
+
+  /**
+   * A flag to indicate if the carousel should loop infinitely.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   *
+   * @see _loop
+   */
+  get loop() {
+    return this._loop;
+  }
+
+  /**
    * The delay in milliseconds before transitioning slides.
    *
    * @type {number}
@@ -439,26 +423,6 @@ class Carousel extends Component {
 
     if (value !== this.transitionDelay && value >= 0) {
       this._delays.transition = value;
-    }
-  }
-
-  /**
-   * The duration time (in milliseconds) for the transition between carousel items.
-   *
-   * @type {number}
-   *
-   * @see _durations.transition
-   */
-  get transitionDuration() {
-    return this._durations.transition;
-  }
-
-  set transitionDuration(value) {
-    isValidType("number", { transitionDuration: value });
-
-    if (this._durations.transition !== value && value >= 0) {
-      this._durations.transition = value;
-      this._setTransitionDuration();
     }
   }
 
@@ -498,17 +462,6 @@ class Carousel extends Component {
     if (this._pauseText !== value) {
       this._pauseText = value;
     }
-  }
-
-  /**
-   * The current action being performed by the carousel.
-   *
-   * @type {string}
-   *
-   * @see _currentAction
-   */
-  get currentAction() {
-    return this._currentAction;
   }
 
   /**
@@ -557,6 +510,26 @@ class Carousel extends Component {
   }
 
   /**
+   * Creates and initializes all carousel items.
+   *
+   * @protected
+   */
+  _createChildElements() {
+    this.dom.carouselItems.forEach((item, index) => {
+      const carouselItem = new CarouselItem({
+        carouselItemElement: item,
+        tabElement: this.dom.carouselTabs ? this.dom.carouselTabs[index] : null,
+        parent: this,
+        prefix: this.prefix,
+        initializeClass: this.classes.initialize,
+        initialize: true,
+      });
+
+      this._elements.carouselItems.push(carouselItem);
+    });
+  }
+
+  /**
    * Sets the IDs of the carousel and its children if they do not already exist.
    *
    * The generated IDs use the key and follow the format:
@@ -593,6 +566,18 @@ class Carousel extends Component {
       this.dom.carousel.setAttribute("role", "group");
     }
 
+    // Make sure all carousel items are inert so they are not focusable until activated.
+    this.dom.carouselItems.forEach((item) => {
+      item.setAttribute("inert", "true");
+    });
+
+    // Set the carousel item container's tabindex to -1 so it can't be focused.
+    // This is required because it's a scroll container, and we don't want it to
+    // be focused when the user is trying to interact with the carousel items within it.
+    if (this.dom.carouselItemContainer) {
+      this.dom.carouselItemContainer.setAttribute("tabindex", "-1");
+    }
+
     // Set the role description for the carousel.
     this._dom.carousel.setAttribute("aria-roledescription", "carousel");
 
@@ -601,27 +586,10 @@ class Carousel extends Component {
     }
 
     this.dom.carouselTabs.forEach((tab, index) => {
-      if (!isTag("button", { tab: tab }, { shouldThrow: false }).status) {
-        tab.setAttribute("role", "button");
-      }
-
+      tab.setAttribute("role", "tab");
       tab.setAttribute("aria-selected", index === 0);
       tab.setAttribute("aria-controls", this.dom.carouselItems[index].id);
     });
-  }
-
-  /**
-   * Sets the transition duration for the carousel as a CSS custom property.
-   *
-   * The custom property is set as `--graupl-carousel-transition-duration`.
-   *
-   * @protected
-   */
-  _setCustomProps() {
-    this.dom.carousel.style.setProperty(
-      `--${this.prefix}carousel-transition-duration`,
-      `${this.transitionDuration}ms`
-    );
   }
 
   /**
@@ -656,6 +624,69 @@ class Carousel extends Component {
   }
 
   /**
+   * Handles the intersection observer functionality for the carousel.
+   *
+   * Sets up an intersection observer to observe the carousel items and update
+   * the current item when the carousel is scrolled manually.
+   */
+  _handleIntersection() {
+    const options = {
+      root: this.dom.carouselItemContainer,
+      rootMargin: "1px",
+      scrollMargin: "1px",
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      // If the carousel is not initialized, do not attempt to update the current item.
+      if (!this.isInitialized) {
+        return;
+      }
+
+      entries.forEach((entry) => {
+        // Only update the current item if the carousel item is fully visible in the carousel viewport.
+        if (!entry.isIntersecting) {
+          return;
+        }
+
+        const index = this.dom.carouselItems.indexOf(entry.target);
+        let indexToActivate = index;
+
+        // If the item is a clone, activate the original item instead.
+        // This is necessary to properly update the current item when looping.
+        if (this.elements.carouselItems[index].elements.clone !== null) {
+          // Find the index of the original item that corresponds to the activated clone item.
+          indexToActivate = this.dom.carouselItems.indexOf(
+            this.elements.carouselItems[index].elements.clone.dom.carouselItem
+          );
+
+          if (index === 0 || index === this.dom.carouselItems.length - 1) {
+            this.dom.carouselItemContainer.scrollTo({
+              left: this.elements.carouselItems[index].elements.clone.dom
+                .carouselItem.offsetLeft,
+              top: this.elements.carouselItems[index].elements.clone.dom
+                .carouselItem.offsetTop,
+              behavior: "instant",
+            });
+          }
+        }
+
+        // If the activated item is the same as the current item, do not attempt to activate it again.
+        if (this.currentItem === indexToActivate) {
+          return;
+        }
+
+        // Activate the item without triggering a scroll.
+        this.activateItem(indexToActivate, { scroll: false });
+      });
+    }, options);
+
+    this.dom.carouselItems.forEach((item) => {
+      observer.observe(item);
+    });
+  }
+
+  /**
    * Handles the focus events throughout the carousel for proper use.
    *
    * - Adds a `focusin` listener to the carousel element to pause autoplay.
@@ -685,27 +716,55 @@ class Carousel extends Component {
    * - Adds a `click` listener to each tab control to activate the corresponding item.
    */
   _handleClick() {
-    this._addEventListener("click", this.dom.next, () => {
+    this._addEventListener("click", this.dom.next, (event) => {
+      if (event.button !== 0) {
+        return;
+      }
+
+      preventEvent(event);
+
+      this.currentEvent = "mouse";
       this.activateNextItem();
     });
 
-    this._addEventListener("click", this.dom.previous, () => {
+    this._addEventListener("click", this.dom.previous, (event) => {
+      if (event.button !== 0) {
+        return;
+      }
+
+      preventEvent(event);
+
+      this.currentEvent = "mouse";
       this.activatePreviousItem();
     });
 
-    this._addEventListener("click", this.dom.autoplay, () => {
+    this._addEventListener("click", this.dom.autoplay, (event) => {
+      if (event.button !== 0) {
+        return;
+      }
+
+      preventEvent(event);
+
+      this.currentEvent = "mouse";
       this.toggleAutoplay();
     });
 
-    this.dom.carouselTabs.forEach((tab, index) => {
-      this._addEventListener("click", tab, () => {
-        if (this.currentItem > index) {
-          this._currentAction = "previous";
-        } else {
-          this._currentAction = "next";
+    this.elements.carouselItems.forEach((item) => {
+      if (!item.dom.tab) {
+        return;
+      }
+
+      this._addEventListener("click", item.dom.tab, (event) => {
+        if (event.button !== 0) {
+          return;
         }
 
-        this.activateItem(index);
+        preventEvent(event);
+
+        this.currentEvent = "mouse";
+        this.activateItem(
+          this.dom.carouselItems.indexOf(item.dom.carouselItem)
+        );
       });
     });
   }
@@ -755,8 +814,12 @@ class Carousel extends Component {
       });
     });
 
-    this.dom.carouselTabs.forEach((tab) => {
-      this._addEventListener("keydown", tab, (event) => {
+    this.elements.carouselItems.forEach((item) => {
+      if (!item.dom.tab) {
+        return;
+      }
+
+      this._addEventListener("keydown", item.dom.tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {
@@ -829,14 +892,20 @@ class Carousel extends Component {
     });
 
     // Activate the item if the space or enter key on the tab control.
-    this.dom.carouselTabs.forEach((tab, index) => {
-      this._addEventListener("keyup", tab, (event) => {
+    this.elements.carouselItems.forEach((item) => {
+      if (!item.dom.tab) {
+        return;
+      }
+
+      this._addEventListener("keyup", item.dom.tab, (event) => {
         const key = keyPress(event);
 
         switch (key) {
           case "Space":
           case "Enter":
-            this.activateItem(index);
+            this.activateItem(
+              this.dom.carouselItems.indexOf(item.dom.carouselItem)
+            );
 
             // Prevent the default action of the event.
             preventEvent(event);
@@ -848,60 +917,116 @@ class Carousel extends Component {
   }
 
   /**
-   * Activates the current carousel item.
+   * Appends and prepends a number of carousel items to the end of the carousel item container.
+   *
+   * This is used for infinite scrolling.
+   *
+   * The number of items appended is determined by the itemsPerPage property.
    */
-  activateCurrentItem() {
-    addClass(this.activeClass, this.currentCarouselItem);
-    this.currentCarouselItem.removeAttribute("inert");
+  _handleLoop() {
+    const itemsToAppend = new Map();
+    const itemsToPrepend = new Map();
+    const container = this.dom.carouselItemContainer;
 
-    if (this.currentCarouselTab) {
-      this.currentCarouselTab.setAttribute("aria-selected", true);
-      addClass(this.activeClass, this.currentCarouselTab);
+    for (let i = 0; i < this.itemsPerPage; i++) {
+      itemsToAppend.set(
+        this.dom.carouselItems[i],
+        this.dom.carouselItems.indexOf(this.dom.carouselItems[i])
+      );
     }
+
+    for (
+      let i = this.dom.carouselItems.length - this.itemsPerPage;
+      i < this.dom.carouselItems.length;
+      i++
+    ) {
+      itemsToPrepend.set(
+        this.dom.carouselItems[i],
+        this.dom.carouselItems.indexOf(this.dom.carouselItems[i])
+      );
+    }
+
+    itemsToAppend.forEach((index, item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("inert", "true");
+      clone.setAttribute("id", `${item.id}-clone`);
+
+      container.appendChild(clone);
+
+      const carouselItem = new CarouselItem({
+        carouselItemElement: clone,
+        clone: this._elements.carouselItems[index],
+        parent: this,
+        prefix: this.prefix,
+        initializeClass: this.classes.initialize,
+        initialize: true,
+      });
+
+      this.dom.carouselItems.push(clone);
+      this._elements.carouselItems.push(carouselItem);
+    });
+
+    itemsToPrepend.forEach((index, item) => {
+      const clone = item.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      clone.setAttribute("inert", "true");
+      clone.setAttribute("id", `${item.id}-clone`);
+
+      container.insertBefore(clone, container.firstChild);
+
+      const carouselItem = new CarouselItem({
+        carouselItemElement: clone,
+        clone: this._elements.carouselItems[index],
+        parent: this,
+        prefix: this.prefix,
+        initializeClass: this.classes.initialize,
+        initialize: true,
+      });
+
+      this.dom.carouselItems.unshift(clone);
+      this._elements.carouselItems.unshift(carouselItem);
+    });
+  }
+
+  /**
+   * Activates the current carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the current item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
+   */
+  activateCurrentItem({ scroll = true, scrollOptions = {} } = {}) {
+    this.currentCarouselItem.activate({ scroll, scrollOptions });
   }
 
   /**
    * Deactivates the current carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for deactivating the current item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the deactivated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  deactivateCurrentItem() {
-    removeClass(this.activeClass, this.currentCarouselItem);
-    this.currentCarouselItem.setAttribute("inert", true);
-
-    if (this.currentCarouselTab) {
-      this.currentCarouselTab.setAttribute("aria-selected", false);
-      removeClass(this.activeClass, this.currentCarouselTab);
-    }
+  deactivateCurrentItem({ scroll = true, scrollOptions = {} } = {}) {
+    this.currentCarouselItem.deactivate({ scroll, scrollOptions });
   }
 
   /**
    * Activates the carousel item at a given index.
    *
-   * @param {number} index - The index of the carousel item to activate.
+   * @param {number}  index                        - The index of the carousel item to activate.
+   * @param {object}  [options = {}]               - Additional options for activating the item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  activateItem(index) {
-    const currentIndex = this.currentItem;
-
-    this.dom.carousel.dataset.grauplAction = this._currentAction;
-
+  activateItem(index, { scroll = true, scrollOptions = {} } = {}) {
     if (this.autoplay) {
       this._clearInterval();
     }
 
-    addClass(this.previousClass, this.currentCarouselItem);
-    addClass(this.nextClass, this.dom.carouselItems[index]);
-
-    requestAnimationFrame(() => {
-      this.deactivateCurrentItem();
-      this.currentItem = index;
-      this.activateCurrentItem();
-
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          removeClass(this.previousClass, this.dom.carouselItems[currentIndex]);
-          removeClass(this.nextClass, this.currentCarouselItem);
-        }, this.transitionDuration);
-      });
-    });
+    this.deactivateCurrentItem({ scroll, scrollOptions });
+    this.currentItem = index;
+    this.activateCurrentItem({ scroll, scrollOptions });
 
     if (this.autoplay) {
       this._setInterval(() => this.activateNextItem(), this.transitionDelay);
@@ -910,41 +1035,89 @@ class Carousel extends Component {
 
   /**
    * Activates the first carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the first item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  activateFirstItem() {
-    this.activateItem(0);
+  activateFirstItem({ scroll = true, scrollOptions = {} } = {}) {
+    if (this.loop) {
+      if (
+        this.currentItem ===
+        this.dom.carouselItems.length - this.itemsPerPage - 1
+      ) {
+        this.activateNextItem({ scroll, scrollOptions });
+      } else {
+        this.activateItem(this.itemsPerPage, { scroll, scrollOptions });
+      }
+    } else {
+      this.activateItem(0, { scroll, scrollOptions });
+    }
   }
 
   /**
    * Activates the last carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the last item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  activateLastItem() {
-    this.activateItem(this.dom.carouselItems.length - 1);
+  activateLastItem({ scroll = true, scrollOptions = {} } = {}) {
+    if (this.loop) {
+      if (this.currentItem === this.itemsPerPage) {
+        this.activatePreviousItem({ scroll, scrollOptions });
+      } else {
+        this.activateItem(
+          this.dom.carouselItems.length - this.itemsPerPage - 1,
+          { scroll, scrollOptions }
+        );
+      }
+    } else {
+      this.activateItem(this.dom.carouselItems.length - 1, {
+        scroll,
+        scrollOptions,
+      });
+    }
   }
 
   /**
    * Activates the next carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the next item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  activateNextItem() {
-    this._currentAction = "next";
-
-    if (this.currentItem + 1 >= this.dom.carouselItems.length) {
-      this.activateFirstItem();
+  activateNextItem({ scroll = true, scrollOptions = {} } = {}) {
+    if (this.loop) {
+      this.activateItem(this.currentItem + 1, { scroll, scrollOptions });
     } else {
-      this.activateItem(this.currentItem + 1);
+      if (this.currentItem + 1 >= this.dom.carouselItems.length) {
+        this.activateFirstItem({ scroll, scrollOptions });
+      } else {
+        this.activateItem(this.currentItem + 1, { scroll, scrollOptions });
+      }
     }
   }
 
   /**
    * Activates the previous carousel item.
+   *
+   * @param {object}  [options = {}]               - Additional options for activating the previous item.
+   * @param {boolean} [options.scroll = true]      - A flag to indicate if the carousel should scroll to the activated item.
+   * @param {object}  [options.scrollOptions = {}] - Scroll option overrides.
    */
-  activatePreviousItem() {
-    this._currentAction = "previous";
-
-    if (this.currentItem - 1 < 0) {
-      this.activateLastItem();
+  activatePreviousItem({ scroll = true, scrollOptions = {} } = {}) {
+    if (this.loop) {
+      this.activateItem(this.currentItem - 1, { scroll, scrollOptions });
     } else {
-      this.activateItem(this.currentItem - 1);
+      if (
+        this.currentItem - 1 < 0 ||
+        (this.loop && this.currentItem - 1 < this.itemsPerPage)
+      ) {
+        this.activateLastItem({ scroll, scrollOptions });
+      } else {
+        this.activateItem(this.currentItem - 1, { scroll, scrollOptions });
+      }
     }
   }
 
