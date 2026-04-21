@@ -924,7 +924,9 @@ class Breadcrumb extends Component {
    * @param {boolean}         [options.transition = this.isInitialized] - Respect the transition class.
    */
   _reveal({ emit = this.isInitialized, transition = this.isInitialized } = {}) {
-    this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true");
+    if (this.dom.breadcrumbToggle) {
+      this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true");
+    }
 
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the close class,
@@ -954,7 +956,11 @@ class Breadcrumb extends Component {
     }
 
     if (emit) {
-      this._dispatchEvent("expand", this.dom.breadcrumbToggle);
+      if (this.dom.breadcrumbToggle) {
+        this._dispatchEvent("expand", this.dom.breadcrumbToggle);
+      } else {
+        this._dispatchEvent("expand", this.dom.breadcrumb);
+      }
     }
   }
 
@@ -976,7 +982,9 @@ class Breadcrumb extends Component {
     emit = this.isInitialized,
     transition = this.isInitialized,
   } = {}) {
-    this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false");
+    if (this.dom.breadcrumbToggle) {
+      this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false");
+    }
 
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the open class,
@@ -1006,7 +1014,11 @@ class Breadcrumb extends Component {
     }
 
     if (emit) {
-      this._dispatchEvent("collapse", this.dom.breadcrumbToggle);
+      if (this.dom.breadcrumbToggle) {
+        this._dispatchEvent("collapse", this.dom.breadcrumbToggle);
+      } else {
+        this._dispatchEvent("collapse", this.dom.breadcrumb);
+      }
     }
   }
 
@@ -1025,10 +1037,16 @@ class Breadcrumb extends Component {
     // Remove the unlocked class.
     removeClass(this.unlockedClass, this.dom.breadcrumb);
 
-    this.dom.breadcrumbToggle.setAttribute("disabled", "true");
+    if (this.dom.breadcrumbToggle) {
+      this.dom.breadcrumbToggle.setAttribute("disabled", "true");
+    }
 
     if (emit) {
-      this._dispatchEvent("lock", this.dom.breadcrumbToggle);
+      if (this.dom.breadcrumbToggle) {
+        this._dispatchEvent("lock", this.dom.breadcrumbToggle);
+      } else {
+        this._dispatchEvent("lock", this.dom.breadcrumb);
+      }
     }
   }
 
@@ -1047,10 +1065,16 @@ class Breadcrumb extends Component {
     // Remove the locked class.
     removeClass(this.lockedClass, this.dom.breadcrumb);
 
-    this.dom.breadcrumbToggle.removeAttribute("disabled");
+    if (this.dom.breadcrumbToggle) {
+      this.dom.breadcrumbToggle.removeAttribute("disabled");
+    }
 
     if (emit) {
-      this._dispatchEvent("unlock", this.dom.breadcrumbToggle);
+      if (this.dom.breadcrumbToggle) {
+        this._dispatchEvent("unlock", this.dom.breadcrumbToggle);
+      } else {
+        this._dispatchEvent("unlock", this.dom.breadcrumb);
+      }
     }
   }
 
@@ -1093,19 +1117,6 @@ class Breadcrumb extends Component {
    * - Adds a `click` listener to the `document` so if the user clicks outside the breadcrumb it will close.
    */
   _handleClick() {
-    if (!this.dom.breadcrumbToggle) {
-      return;
-    }
-
-    this._addEventListener("click", this.dom.breadcrumbToggle, (event) => {
-      this.currentEvent = "mouse";
-
-      if (event.button !== 0) return;
-
-      preventEvent(event);
-      this.toggle();
-    });
-
     this._addEventListener("click", document, (event) => {
       if (this.focusState !== "self" || !this.closeOnBlur) return;
 
@@ -1117,6 +1128,17 @@ class Breadcrumb extends Component {
       ) {
         this.close();
       }
+    });
+
+    if (!this.dom.breadcrumbToggle) return;
+
+    this._addEventListener("click", this.dom.breadcrumbToggle, (event) => {
+      this.currentEvent = "mouse";
+
+      if (event.button !== 0) return;
+
+      preventEvent(event);
+      this.toggle();
     });
   }
 
@@ -1131,9 +1153,20 @@ class Breadcrumb extends Component {
    *   - Blocks propagation on "Escape" keys.
    */
   _handleKeydown() {
-    if (!this.dom.breadcrumbToggle) {
-      return;
-    }
+    this._addEventListener("keydown", this.dom.breadcrumb, (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          preventEvent(event);
+
+          break;
+      }
+    });
+
+    if (!this.dom.breadcrumbToggle) return;
 
     this._addEventListener("keydown", this.dom.breadcrumbToggle, (event) => {
       this.currentEvent = "keyboard";
@@ -1143,19 +1176,6 @@ class Breadcrumb extends Component {
       switch (key) {
         case "Space":
         case "Enter":
-          preventEvent(event);
-
-          break;
-      }
-    });
-
-    this._addEventListener("keydown", this.dom.breadcrumb, (event) => {
-      this.currentEvent = "keyboard";
-
-      const key = keyPress(event);
-
-      switch (key) {
-        case "Escape":
           preventEvent(event);
 
           break;
@@ -1172,9 +1192,32 @@ class Breadcrumb extends Component {
    *   - Closes the breadcrumb on "Escape" keys.
    */
   _handleKeyup() {
-    if (!this.dom.breadcrumbToggle) {
-      return;
-    }
+    this._addEventListener("keyup", this.dom.breadcrumb, (event) => {
+      this.currentEvent = "keyboard";
+
+      const key = keyPress(event);
+
+      switch (key) {
+        case "Escape":
+          preventEvent(event);
+          this.close();
+
+          if (
+            this.currentChild >
+            this.elements.breadcrumbItems.indexOf(
+              this.elements.breadcrumbToggle
+            )
+          ) {
+            requestAnimationFrame(() => {
+              this.focusToggle();
+            });
+          }
+
+          break;
+      }
+    });
+
+    if (!this.dom.breadcrumbToggle) return;
 
     this._addEventListener("keyup", this.dom.breadcrumbToggle, (event) => {
       this.currentEvent = "keyboard";
@@ -1204,31 +1247,6 @@ class Breadcrumb extends Component {
 
             requestAnimationFrame(() => {
               this.focusNextChild();
-            });
-          }
-
-          break;
-      }
-    });
-
-    this._addEventListener("keyup", this.dom.breadcrumb, (event) => {
-      this.currentEvent = "keyboard";
-
-      const key = keyPress(event);
-
-      switch (key) {
-        case "Escape":
-          preventEvent(event);
-          this.close();
-
-          if (
-            this.currentChild >
-            this.elements.breadcrumbItems.indexOf(
-              this.elements.breadcrumbToggle
-            )
-          ) {
-            requestAnimationFrame(() => {
-              this.focusToggle();
             });
           }
 
