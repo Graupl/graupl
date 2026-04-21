@@ -1,6 +1,11 @@
-## [1.0.0-beta.46](https://github.com/Graupl/graupl/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2026-04-07)
+## [1.0.0-beta.47](https://github.com/Graupl/graupl/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2026-04-21)
+
+
+### Features
+
+* **carousel:** add swipe control ([fb60d98](https://github.com/Graupl/graupl/commit/fb60d98addda9b818d529b6a1792b1552f7a1660)), closes [#201](https://github.com/Graupl/graupl/issues/201)
 
 
 ### Bug Fixes
 
-* **disclosure:** force open/close functions on init ([fdd191b](https://github.com/Graupl/graupl/commit/fdd191bfeb47e3c1c8f0d9a368b19d6b4888a367))
+* **breadcrumb:** check for toggle before interacting with it ([8d75207](https://github.com/Graupl/graupl/commit/8d752075be474778a4d4db6efc8d102d8dc0b722))

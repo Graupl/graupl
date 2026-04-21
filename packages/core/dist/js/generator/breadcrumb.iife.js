@@ -1,5 +1,5 @@
 var BreadcrumbGenerator = (function() {
-	function u(t, e, { shouldThrow: s = !0 } = {}) {
+	function c(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -62,7 +62,7 @@ var BreadcrumbGenerator = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function c(t, { shouldThrow: e = !0 } = {}) {
+	function u(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -141,7 +141,7 @@ var BreadcrumbGenerator = (function() {
 			errors: []
 		};
 		try {
-			if (n("string", { tagName: t }, { shouldThrow: !0 }).status && u(HTMLElement, e, { shouldThrow: !0 }).status) {
+			if (n("string", { tagName: t }, { shouldThrow: !0 }).status && c(HTMLElement, e, { shouldThrow: !0 }).status) {
 				const r = t.toLowerCase();
 				for (const o in e) try {
 					if (e[o].tagName.toLowerCase() !== r) throw new TypeError(`${o} must be a <${r}> element. <${e[o].tagName.toLowerCase()}> given.`);
@@ -168,7 +168,7 @@ var BreadcrumbGenerator = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function Q(t, { shouldThrow: e = !0 } = {}) {
+	function x(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -211,7 +211,7 @@ var BreadcrumbGenerator = (function() {
 	function d(t) {
 		t.preventDefault(), t.stopPropagation();
 	}
-	var B = class {
+	var T = class {
 		_equals = Object.is;
 		_current;
 		_committed;
@@ -249,7 +249,7 @@ var BreadcrumbGenerator = (function() {
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (u(L, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (c(L, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -389,7 +389,7 @@ var BreadcrumbGenerator = (function() {
 			return this._classes.initialize;
 		}
 		set initializeClass(t) {
-			c({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+			u({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
 		}
 		get focusState() {
 			return this._focusState;
@@ -442,13 +442,13 @@ var BreadcrumbGenerator = (function() {
 		}
 		_validate() {
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = Q(this, { shouldThrow: !1 });
+			const t = x(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const i = {};
 				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, w) => {
 					i[`${o}Element[${w}]`] = a;
 				}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
-				const r = u(HTMLElement, i, { shouldThrow: !1 });
+				const r = c(HTMLElement, i, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._selectors).length > 0) {
@@ -460,7 +460,7 @@ var BreadcrumbGenerator = (function() {
 			if (Object.keys(this._classes).length > 0) {
 				const i = {};
 				for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (i[`${o}Class`] = this._classes[o]);
-				const r = c(i, { shouldThrow: !1 });
+				const r = u(i, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._durations).length > 0) {
@@ -497,7 +497,7 @@ var BreadcrumbGenerator = (function() {
 		_setDOMElementType(t, { context: e, overwrite: s = !0, strict: i = !1 } = {}) {
 			if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
 			if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
-			u(HTMLElement, { context: e });
+			c(HTMLElement, { context: e });
 			const r = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => i ? o.parentElement === e : !0);
 			Array.isArray(this._dom[t]) ? s ? this._dom[t] = r : this._dom[t] = [...this._dom[t], ...r] : this._dom[t] = r[0] || null;
 		}
@@ -517,14 +517,14 @@ var BreadcrumbGenerator = (function() {
 		_handleKeydown() {}
 		_handleKeyup() {}
 		_store() {
-			this._shouldStore && (u(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new g({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			this._shouldStore && (c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new g({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey,
 				data: this
 			}));
 		}
 		_unstore() {
-			this._shouldStore && u(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			this._shouldStore && c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey
 			});
@@ -559,7 +559,7 @@ var BreadcrumbGenerator = (function() {
 			});
 		}
 		_dispatchEvent(t, e) {
-			F(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			F(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, s, i = {}) {
 			e.addEventListener(t, s, i), this._listeners.push({
@@ -590,7 +590,7 @@ var BreadcrumbGenerator = (function() {
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 		}
-	}, x = class extends v {
+	}, Q = class extends v {
 		_rootDOMElement = "item";
 		_protectedDOMElements = ["link"];
 		_storageKey = "breadcrumbItems";
@@ -619,8 +619,8 @@ var BreadcrumbGenerator = (function() {
 	}, q = class extends v {
 		_rootDOMElement = "breadcrumb";
 		_currentChild = 0;
-		_open = new B(!1);
-		_locked = new B(!1);
+		_open = new T(!1);
+		_locked = new T(!1);
 		_openInsideBreakpoint = !1;
 		_openOutsideBreakpoint = !0;
 		_closeInsideBreakpoint = !0;
@@ -666,31 +666,31 @@ var BreadcrumbGenerator = (function() {
 			return this._classes.locked;
 		}
 		set lockedClass(t) {
-			c({ lockedClass: t }), this._classes.locked !== t && (this._classes.locked = t);
+			u({ lockedClass: t }), this._classes.locked !== t && (this._classes.locked = t);
 		}
 		get unlockedClass() {
 			return this._classes.unlocked;
 		}
 		set unlockedClass(t) {
-			c({ unlockedClass: t }), this._classes.unlocked !== t && (this._classes.unlocked = t);
+			u({ unlockedClass: t }), this._classes.unlocked !== t && (this._classes.unlocked = t);
 		}
 		get openClass() {
 			return this._classes.open;
 		}
 		set openClass(t) {
-			c({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
+			u({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
 		}
 		get closeClass() {
 			return this._classes.close;
 		}
 		set closeClass(t) {
-			c({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
+			u({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
 		}
 		get transitionClass() {
 			return this._classes.transition;
 		}
 		set transitionClass(t) {
-			c({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
+			u({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
 		}
 		get transitionDuration() {
 			return this._durations.transition;
@@ -793,7 +793,7 @@ var BreadcrumbGenerator = (function() {
 		}
 		_createChildElements() {
 			this.dom.breadcrumbItems.forEach((t) => {
-				const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new x({
+				const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new Q({
 					breadcrumbItemElement: t,
 					breadcrumbLinkElement: e,
 					parentBreadcrumb: this,
@@ -803,7 +803,7 @@ var BreadcrumbGenerator = (function() {
 			});
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -811,10 +811,10 @@ var BreadcrumbGenerator = (function() {
 						}, this.openDuration);
 					});
 				});
-			})) : (h(this.openClass, this.dom.breadcrumb), l(this.closeClass, this.dom.breadcrumb)), t && this._dispatchEvent("expand", this.dom.breadcrumbToggle);
+			})) : (h(this.openClass, this.dom.breadcrumb), l(this.closeClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("expand", this.dom.breadcrumbToggle) : this._dispatchEvent("expand", this.dom.breadcrumb));
 		}
 		_conceal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				l(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					h(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -822,13 +822,13 @@ var BreadcrumbGenerator = (function() {
 						}, this.closeDuration);
 					});
 				});
-			})) : (h(this.closeClass, this.dom.breadcrumb), l(this.openClass, this.dom.breadcrumb)), t && this._dispatchEvent("collapse", this.dom.breadcrumbToggle);
+			})) : (h(this.closeClass, this.dom.breadcrumb), l(this.openClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("collapse", this.dom.breadcrumbToggle) : this._dispatchEvent("collapse", this.dom.breadcrumb));
 		}
 		_lock({ emit: t = this.isInitialized } = {}) {
-			h(this.lockedClass, this.dom.breadcrumb), l(this.unlockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle.setAttribute("disabled", "true"), t && this._dispatchEvent("lock", this.dom.breadcrumbToggle);
+			h(this.lockedClass, this.dom.breadcrumb), l(this.unlockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("disabled", "true"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("lock", this.dom.breadcrumbToggle) : this._dispatchEvent("lock", this.dom.breadcrumb));
 		}
 		_unlock({ emit: t = this.isInitialized } = {}) {
-			h(this.unlockedClass, this.dom.breadcrumb), l(this.lockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle.removeAttribute("disabled"), t && this._dispatchEvent("unlock", this.dom.breadcrumbToggle);
+			h(this.unlockedClass, this.dom.breadcrumb), l(this.lockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.removeAttribute("disabled"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("unlock", this.dom.breadcrumbToggle) : this._dispatchEvent("unlock", this.dom.breadcrumb));
 		}
 		_handleFocus() {
 			this.elements.breadcrumbItems.forEach((t, e) => {
@@ -840,26 +840,30 @@ var BreadcrumbGenerator = (function() {
 			});
 		}
 		_handleClick() {
-			this.dom.breadcrumbToggle && (this._addEventListener("click", this.dom.breadcrumbToggle, (t) => {
-				this.currentEvent = "mouse", t.button === 0 && (d(t), this.toggle());
-			}), this._addEventListener("click", document, (t) => {
+			this._addEventListener("click", document, (t) => {
 				this.focusState !== "self" || !this.closeOnBlur || (this.currentEvent = "mouse", !this.dom.breadcrumb.contains(t.target) && this.dom.breadcrumbToggle !== t.target && this.close());
-			}));
+			}), this.dom.breadcrumbToggle && this._addEventListener("click", this.dom.breadcrumbToggle, (t) => {
+				this.currentEvent = "mouse", t.button === 0 && (d(t), this.toggle());
+			});
 		}
 		_handleKeydown() {
-			this.dom.breadcrumbToggle && (this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
+			this._addEventListener("keydown", this.dom.breadcrumb, (t) => {
+				this.currentEvent = "keyboard", m(t) === "Escape" && d(t);
+			}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 				switch (this.currentEvent = "keyboard", m(t)) {
 					case "Space":
 					case "Enter":
 						d(t);
 						break;
 				}
-			}), this._addEventListener("keydown", this.dom.breadcrumb, (t) => {
-				this.currentEvent = "keyboard", m(t) === "Escape" && d(t);
-			}));
+			});
 		}
 		_handleKeyup() {
-			this.dom.breadcrumbToggle && (this._addEventListener("keyup", this.dom.breadcrumbToggle, (t) => {
+			this._addEventListener("keyup", this.dom.breadcrumb, (t) => {
+				this.currentEvent = "keyboard", m(t) === "Escape" && (d(t), this.close(), this.currentChild > this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) && requestAnimationFrame(() => {
+					this.focusToggle();
+				}));
+			}), this.dom.breadcrumbToggle && this._addEventListener("keyup", this.dom.breadcrumbToggle, (t) => {
 				switch (this.currentEvent = "keyboard", m(t)) {
 					case "Space":
 					case "Enter":
@@ -873,11 +877,7 @@ var BreadcrumbGenerator = (function() {
 						}));
 						break;
 				}
-			}), this._addEventListener("keyup", this.dom.breadcrumb, (t) => {
-				this.currentEvent = "keyboard", m(t) === "Escape" && (d(t), this.close(), this.currentChild > this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) && requestAnimationFrame(() => {
-					this.focusToggle();
-				}));
-			}));
+			});
 		}
 		open({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
 			this.isOpen && !t || this.isLocked && !t || (this.focusState = "self", this._reveal({
@@ -952,13 +952,13 @@ var BreadcrumbGenerator = (function() {
 			this.focusState = "self", this.elements.breadcrumbToggle !== null && (this.currentChild = this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) || 0, this.elements.breadcrumbToggle.focus());
 		}
 	};
-	const T = /[\11\12\14\15\40]+/, k = "data-once", V = document;
+	const B = /[\11\12\14\15\40]+/, k = "data-once", V = document;
 	function y(t, e, s) {
 		return t[`${e}Attribute`](k, s);
 	}
 	function f(t) {
 		if (typeof t != "string") throw new TypeError("once ID must be a string");
-		if (t === "" || T.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
+		if (t === "" || B.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 		return `[${k}~="${t}"]`;
 	}
 	function P(t) {
@@ -981,7 +981,7 @@ var BreadcrumbGenerator = (function() {
 	}
 	function I(t, { add: e, remove: s }) {
 		const i = [];
-		y(t, "has") && y(t, "get").trim().split(T).forEach((o) => {
+		y(t, "has") && y(t, "get").trim().split(B).forEach((o) => {
 			i.indexOf(o) < 0 && o !== s && i.push(o);
 		}), e && i.push(e);
 		const r = i.join(" ");

@@ -1,4 +1,4 @@
-function u(t, e, { shouldThrow: s = !0 } = {}) {
+function c(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -61,7 +61,7 @@ function I(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function c(t, { shouldThrow: e = !0 } = {}) {
+function u(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -140,7 +140,7 @@ function tt(t, e, { shouldThrow: s = !0 } = {}) {
 		errors: []
 	};
 	try {
-		if (n("string", { tagName: t }, { shouldThrow: !0 }).status && u(HTMLElement, e, { shouldThrow: !0 }).status) {
+		if (n("string", { tagName: t }, { shouldThrow: !0 }).status && c(HTMLElement, e, { shouldThrow: !0 }).status) {
 			const r = t.toLowerCase();
 			for (const o in e) try {
 				if (e[o].tagName.toLowerCase() !== r) throw new TypeError(`${o} must be a <${r}> element. <${e[o].tagName.toLowerCase()}> given.`);
@@ -248,7 +248,7 @@ var $ = class {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (u(L, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (c(L, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -388,7 +388,7 @@ var $ = class {
 		return this._classes.initialize;
 	}
 	set initializeClass(t) {
-		c({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+		u({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
 	}
 	get focusState() {
 		return this._focusState;
@@ -447,7 +447,7 @@ var $ = class {
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, g) => {
 				i[`${o}Element[${g}]`] = a;
 			}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
-			const r = u(HTMLElement, i, { shouldThrow: !1 });
+			const r = c(HTMLElement, i, { shouldThrow: !1 });
 			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 		}
 		if (Object.keys(this._selectors).length > 0) {
@@ -459,7 +459,7 @@ var $ = class {
 		if (Object.keys(this._classes).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (i[`${o}Class`] = this._classes[o]);
-			const r = c(i, { shouldThrow: !1 });
+			const r = u(i, { shouldThrow: !1 });
 			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 		}
 		if (Object.keys(this._durations).length > 0) {
@@ -496,7 +496,7 @@ var $ = class {
 	_setDOMElementType(t, { context: e, overwrite: s = !0, strict: i = !1 } = {}) {
 		if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
 		if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
-		u(HTMLElement, { context: e });
+		c(HTMLElement, { context: e });
 		const r = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => i ? o.parentElement === e : !0);
 		Array.isArray(this._dom[t]) ? s ? this._dom[t] = r : this._dom[t] = [...this._dom[t], ...r] : this._dom[t] = r[0] || null;
 	}
@@ -516,14 +516,14 @@ var $ = class {
 	_handleKeydown() {}
 	_handleKeyup() {}
 	_store() {
-		this._shouldStore && (u(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new y({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+		this._shouldStore && (c(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new y({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey,
 			data: this
 		}));
 	}
 	_unstore() {
-		this._shouldStore && u(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+		this._shouldStore && c(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey
 		});
@@ -558,7 +558,7 @@ var $ = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		et(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		et(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -635,17 +635,17 @@ var $ = class {
 	_mediaQueryListEventCallback = (t) => {
 		t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 	};
-	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: g = "hide", transitionClass: A = "transition", transitionDuration: z = 250, openDuration: j = -1, closeDuration: F = -1, openOnFocus: x = !1, closeOnBlur: Q = !1, minWidth: C = "", breakpoint: m = "856px", autoOpen: k = !1, openInsideBreakpoint: q = !1, openOutsideBreakpoint: B = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: V = !1, lockInsideBreakpoint: P = !1, lockOutsideBreakpoint: K = !0, unlockInsideBreakpoint: G = !0, unlockOutsideBreakpoint: H = !1, locked: N = !1, mediaQuery: R = "", prefix: U = "graupl-", key: J = null, initializeClass: Z = "initializing", initialize: W = !1 }) {
+	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: g = "hide", transitionClass: A = "transition", transitionDuration: z = 250, openDuration: j = -1, closeDuration: F = -1, openOnFocus: x = !1, closeOnBlur: Q = !1, minWidth: C = "", breakpoint: m = "856px", autoOpen: k = !1, openInsideBreakpoint: q = !1, openOutsideBreakpoint: T = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: V = !1, lockInsideBreakpoint: P = !1, lockOutsideBreakpoint: K = !0, unlockInsideBreakpoint: G = !0, unlockOutsideBreakpoint: H = !1, locked: N = !1, mediaQuery: R = "", prefix: U = "graupl-", key: J = null, initializeClass: Z = "initializing", initialize: W = !1 }) {
 		super({
 			prefix: U,
 			key: J,
 			initializeClass: Z
-		}), this._dom.breadcrumb = t, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._dom.breadcrumbToggle = null, this._selectors.breadcrumbItems = e, this._selectors.breadcrumbLinks = s, this._selectors.breadcrumbToggle = i, this._elements.breadcrumbItems = [], this._classes.locked = r || "", this._classes.unlocked = o || "", this._classes.open = a || "", this._classes.close = g || "", this._classes.transition = A || "", this._durations.transition = z, this._durations.open = j, this._durations.close = F, this._openOnFocus = x, this._closeOnBlur = Q, C !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), m === "" && (m = C)), k && m !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), B = k, v = k), this._breakpoint = m || "", this._openInsideBreakpoint = q, this._openOutsideBreakpoint = B, this._closeInsideBreakpoint = v, this._closeOutsideBreakpoint = V, this._lockInsideBreakpoint = P, this._lockOutsideBreakpoint = K, this._unlockInsideBreakpoint = G, this._unlockOutsideBreakpoint = H, this._mediaQueryString = R || "", this._locked.value = N, this._locked.commit(), this._registerEvent("expand", { detail: { breadcrumb: this } }), this._registerEvent("collapse", { detail: { breadcrumb: this } }), this._registerEvent("lock", { detail: { breadcrumb: this } }), this._registerEvent("unlock", { detail: { breadcrumb: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+		}), this._dom.breadcrumb = t, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._dom.breadcrumbToggle = null, this._selectors.breadcrumbItems = e, this._selectors.breadcrumbLinks = s, this._selectors.breadcrumbToggle = i, this._elements.breadcrumbItems = [], this._classes.locked = r || "", this._classes.unlocked = o || "", this._classes.open = a || "", this._classes.close = g || "", this._classes.transition = A || "", this._durations.transition = z, this._durations.open = j, this._durations.close = F, this._openOnFocus = x, this._closeOnBlur = Q, C !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), m === "" && (m = C)), k && m !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), T = k, v = k), this._breakpoint = m || "", this._openInsideBreakpoint = q, this._openOutsideBreakpoint = T, this._closeInsideBreakpoint = v, this._closeOutsideBreakpoint = V, this._lockInsideBreakpoint = P, this._lockOutsideBreakpoint = K, this._unlockInsideBreakpoint = G, this._unlockOutsideBreakpoint = H, this._mediaQueryString = R || "", this._locked.value = N, this._locked.commit(), this._registerEvent("expand", { detail: { breadcrumb: this } }), this._registerEvent("collapse", { detail: { breadcrumb: this } }), this._registerEvent("lock", { detail: { breadcrumb: this } }), this._registerEvent("unlock", { detail: { breadcrumb: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 			requestAnimationFrame(() => {
 				this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 })), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
 			});
 		}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-			const T = n("boolean", {
+			const B = n("boolean", {
 				openOnFocus: this._openOnFocus,
 				closeOnBlur: this._closeOnBlur,
 				openInsideBreakpoint: this._openInsideBreakpoint,
@@ -658,38 +658,38 @@ var $ = class {
 				unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
 				locked: this._locked.value
 			}, { shouldThrow: !1 });
-			T.status || (this._errors = [...this._errors, ...T.errors], this._valid = !1);
+			B.status || (this._errors = [...this._errors, ...B.errors], this._valid = !1);
 		}), W && this.initialize();
 	}
 	get lockedClass() {
 		return this._classes.locked;
 	}
 	set lockedClass(t) {
-		c({ lockedClass: t }), this._classes.locked !== t && (this._classes.locked = t);
+		u({ lockedClass: t }), this._classes.locked !== t && (this._classes.locked = t);
 	}
 	get unlockedClass() {
 		return this._classes.unlocked;
 	}
 	set unlockedClass(t) {
-		c({ unlockedClass: t }), this._classes.unlocked !== t && (this._classes.unlocked = t);
+		u({ unlockedClass: t }), this._classes.unlocked !== t && (this._classes.unlocked = t);
 	}
 	get openClass() {
 		return this._classes.open;
 	}
 	set openClass(t) {
-		c({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
+		u({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
 	}
 	get closeClass() {
 		return this._classes.close;
 	}
 	set closeClass(t) {
-		c({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
+		u({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
 	}
 	get transitionClass() {
 		return this._classes.transition;
 	}
 	set transitionClass(t) {
-		c({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
+		u({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
 	}
 	get transitionDuration() {
 		return this._durations.transition;
@@ -802,7 +802,7 @@ var $ = class {
 		});
 	}
 	_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-		this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 			l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					setTimeout(() => {
@@ -810,10 +810,10 @@ var $ = class {
 					}, this.openDuration);
 				});
 			});
-		})) : (h(this.openClass, this.dom.breadcrumb), l(this.closeClass, this.dom.breadcrumb)), t && this._dispatchEvent("expand", this.dom.breadcrumbToggle);
+		})) : (h(this.openClass, this.dom.breadcrumb), l(this.closeClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("expand", this.dom.breadcrumbToggle) : this._dispatchEvent("expand", this.dom.breadcrumb));
 	}
 	_conceal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-		this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 			l(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				h(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					setTimeout(() => {
@@ -821,13 +821,13 @@ var $ = class {
 					}, this.closeDuration);
 				});
 			});
-		})) : (h(this.closeClass, this.dom.breadcrumb), l(this.openClass, this.dom.breadcrumb)), t && this._dispatchEvent("collapse", this.dom.breadcrumbToggle);
+		})) : (h(this.closeClass, this.dom.breadcrumb), l(this.openClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("collapse", this.dom.breadcrumbToggle) : this._dispatchEvent("collapse", this.dom.breadcrumb));
 	}
 	_lock({ emit: t = this.isInitialized } = {}) {
-		h(this.lockedClass, this.dom.breadcrumb), l(this.unlockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle.setAttribute("disabled", "true"), t && this._dispatchEvent("lock", this.dom.breadcrumbToggle);
+		h(this.lockedClass, this.dom.breadcrumb), l(this.unlockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("disabled", "true"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("lock", this.dom.breadcrumbToggle) : this._dispatchEvent("lock", this.dom.breadcrumb));
 	}
 	_unlock({ emit: t = this.isInitialized } = {}) {
-		h(this.unlockedClass, this.dom.breadcrumb), l(this.lockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle.removeAttribute("disabled"), t && this._dispatchEvent("unlock", this.dom.breadcrumbToggle);
+		h(this.unlockedClass, this.dom.breadcrumb), l(this.lockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.removeAttribute("disabled"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("unlock", this.dom.breadcrumbToggle) : this._dispatchEvent("unlock", this.dom.breadcrumb));
 	}
 	_handleFocus() {
 		this.elements.breadcrumbItems.forEach((t, e) => {
@@ -839,26 +839,30 @@ var $ = class {
 		});
 	}
 	_handleClick() {
-		this.dom.breadcrumbToggle && (this._addEventListener("click", this.dom.breadcrumbToggle, (t) => {
-			this.currentEvent = "mouse", t.button === 0 && (d(t), this.toggle());
-		}), this._addEventListener("click", document, (t) => {
+		this._addEventListener("click", document, (t) => {
 			this.focusState !== "self" || !this.closeOnBlur || (this.currentEvent = "mouse", !this.dom.breadcrumb.contains(t.target) && this.dom.breadcrumbToggle !== t.target && this.close());
-		}));
+		}), this.dom.breadcrumbToggle && this._addEventListener("click", this.dom.breadcrumbToggle, (t) => {
+			this.currentEvent = "mouse", t.button === 0 && (d(t), this.toggle());
+		});
 	}
 	_handleKeydown() {
-		this.dom.breadcrumbToggle && (this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
+		this._addEventListener("keydown", this.dom.breadcrumb, (t) => {
+			this.currentEvent = "keyboard", f(t) === "Escape" && d(t);
+		}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 			switch (this.currentEvent = "keyboard", f(t)) {
 				case "Space":
 				case "Enter":
 					d(t);
 					break;
 			}
-		}), this._addEventListener("keydown", this.dom.breadcrumb, (t) => {
-			this.currentEvent = "keyboard", f(t) === "Escape" && d(t);
-		}));
+		});
 	}
 	_handleKeyup() {
-		this.dom.breadcrumbToggle && (this._addEventListener("keyup", this.dom.breadcrumbToggle, (t) => {
+		this._addEventListener("keyup", this.dom.breadcrumb, (t) => {
+			this.currentEvent = "keyboard", f(t) === "Escape" && (d(t), this.close(), this.currentChild > this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) && requestAnimationFrame(() => {
+				this.focusToggle();
+			}));
+		}), this.dom.breadcrumbToggle && this._addEventListener("keyup", this.dom.breadcrumbToggle, (t) => {
 			switch (this.currentEvent = "keyboard", f(t)) {
 				case "Space":
 				case "Enter":
@@ -872,11 +876,7 @@ var $ = class {
 					}));
 					break;
 			}
-		}), this._addEventListener("keyup", this.dom.breadcrumb, (t) => {
-			this.currentEvent = "keyboard", f(t) === "Escape" && (d(t), this.close(), this.currentChild > this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) && requestAnimationFrame(() => {
-				this.focusToggle();
-			}));
-		}));
+		});
 	}
 	open({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
 		this.isOpen && !t || this.isLocked && !t || (this.focusState = "self", this._reveal({
