@@ -1,5 +1,926 @@
-function h(t,e){t===""||t.length===0||(typeof t=="string"?e.classList.add(t):e.classList.add(...t))}function l(t,e){t===""||t.length===0||(typeof t=="string"?e.classList.remove(t):e.classList.remove(...t))}function c(t){try{const e=t.key||t.keyCode,r={Enter:e==="Enter"||e===13,Space:e===" "||e==="Spacebar"||e===32,Escape:e==="Escape"||e==="Esc"||e===27,ArrowUp:e==="ArrowUp"||e==="Up"||e===38,ArrowRight:e==="ArrowRight"||e==="Right"||e===39,ArrowDown:e==="ArrowDown"||e==="Down"||e===40,ArrowLeft:e==="ArrowLeft"||e==="Left"||e===37,Home:e==="Home"||e===36,End:e==="End"||e===35,Character:isNaN(e)&&!!e.match(/^[a-zA-Z]{1}$/),Tab:e==="Tab"||e===9,Asterisk:e==="*"||e===56};return Object.keys(r).find(s=>r[s]===!0)||""}catch{return""}}function d(t){t.preventDefault(),t.stopPropagation()}function _(t,e,{shouldThrow:r=!0}={}){const s={status:!0,errors:[]};try{if(typeof e!="object"){const i=typeof e;throw new TypeError(`Elements given to isValidInstance() must be inside of an object. "${i}" given.`)}for(const i in e)try{if(!(e[i]instanceof t)){const o=typeof e[i];throw new TypeError(`${i} must be an instance of ${t.name}. "${o}" given.`)}}catch(o){s.status=!1,s.errors.push(o)}}catch(i){s.status=!1,s.errors.push(i)}if(r&&!s.status)throw s.errors[0];return s}function a(t,e,{shouldThrow:r=!0}={}){const s={status:!0,errors:[]};try{if(typeof e!="object"){const i=typeof e;throw new TypeError(`Values given to isValidType() must be inside of an object. "${i}" given.`)}for(const i in e)try{const o=typeof e[i];if(o!==t)throw new TypeError(`${i} must be a ${t}. "${o}" given.`)}catch(o){s.status=!1,s.errors.push(o)}}catch(i){s.status=!1,s.errors.push(i)}if(r&&!s.status)throw s.errors[0];return s}function g(t,{shouldThrow:e=!0}={}){const r={status:!0,errors:[]};try{if(typeof t!="object"){const s=typeof t;throw new TypeError(`Values given to isQuerySelector() must be inside of an object. "${s}" given.`)}for(const s in t)try{try{if(t[s]===null)throw new Error;document.querySelector(t[s])}catch{throw new TypeError(`${s} must be a valid query selector. "${t[s]}" given.`)}}catch(i){r.status=!1,r.errors.push(i)}}catch(s){r.status=!1,r.errors.push(s)}if(e&&!r.status)throw r.errors[0];return r}function u(t,{shouldThrow:e=!0}={}){const r={status:!0,errors:[]};try{if(typeof t!="object"||Array.isArray(t)){const s=typeof t;throw new TypeError(`Values given to isValidClassList() must be inside of an object. "${s}" given.`)}for(const s in t)try{const i=typeof t[s];if(i!=="string")if(Array.isArray(t[s]))t[s].forEach(o=>{if(typeof o!="string")throw new TypeError(`${s} must be a string or an array of strings. An array containing non-strings given.`)});else throw new TypeError(`${s} must be a string or an array of strings. "${i}" given.`);else{const o={};o[s]=t[s],g(o)}}catch(i){r.status=!1,r.errors.push(i)}}catch(s){r.status=!1,r.errors.push(s)}if(e&&!r.status)throw r.errors[0];return r}function z(t,{shouldThrow:e=!0}={}){const r={status:!0,errors:[]};try{if(typeof t!="object"){const i=typeof t;throw new TypeError(`Values given to isValidState() must be inside of an object. "${i}" given.`)}const s=["none","self","child"];for(const i in t)try{if(!s.includes(t[i]))throw new TypeError(`${i} must be one of the following values: ${s.join(", ")}. "${t[i]}" given.`)}catch(o){r.status=!1,r.errors.push(o)}}catch(s){r.status=!1,r.errors.push(s)}if(e&&!r.status)throw r.errors[0];return r}function Q(t,{shouldThrow:e=!0}={}){const r={status:!0,errors:[]};try{if(typeof t!="object"){const i=typeof t;throw new TypeError(`Values given to isValidEvent() must be inside of an object. "${i}" given.`)}const s=["none","mouse","keyboard","character"];for(const i in t)try{if(!s.includes(t[i]))throw new TypeError(`${i} must be one of the following values: ${s.join(", ")}. "${t[i]}" given.`)}catch(o){r.status=!1,r.errors.push(o)}}catch(s){r.status=!1,r.errors.push(s)}if(e&&!r.status)throw r.errors[0];return r}function E(t,e,{shouldThrow:r=!0}={}){const s={status:!0,errors:[]};try{if(a("string",{tagName:t},{shouldThrow:!0}).status&&_(HTMLElement,e,{shouldThrow:!0}).status){const i=t.toLowerCase();for(const o in e)try{if(e[o].tagName.toLowerCase()!==i)throw new TypeError(`${o} must be a <${i}> element. <${e[o].tagName.toLowerCase()}> given.`)}catch(n){s.status=!1,s.errors.push(n)}}}catch(i){s.status=!1,s.errors.push(i)}if(r&&!s.status)throw s.errors[0];return s}function V(t,e,{shouldThrow:r=!0}={}){const s={status:!0,errors:[]};try{if(!Object.prototype.hasOwnProperty.call(e.events,t))throw new TypeError(`Event type "${t}" is not valid for ${e.constructor.name}. Valid event types are: "${Object.keys(e.events).join('", ')}".`)}catch(i){s.status=!1,s.errors.push(i)}if(r&&!s.status)throw s.errors[0];return s}function P(t,{shouldThrow:e=!0}={}){const r={status:!0,errors:[]};try{if(!Object.prototype.hasOwnProperty.call(t._dom,t._rootDOMElement))throw new Error(`The root DOM element "${t._rootDOMElement}" does not exist in the ${t.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(t._dom).join('", "')}".`)}catch(s){r.status=!1,r.errors.push(s)}if(e&&!r.status)throw r.errors[0];return r}var K=class{_scope;_type="_default";_storage={};constructor({scope:t,type:e=null,initialize:r=!0}={}){this._scope=t,this._type=e||"_default",r&&this.initialize()}initialize(){window[this.scope]=this}get scope(){return this._scope}get type(){return this._type}set type(t){a("string",{type:t})&&(this._type=t)}get storage(){return this._storage}get({type:t=this.type,key:e=null}={}){const r=a("string",{type:t});if(!r.status)throw new Error(`StorageManager (${this.scope}): ${r.message}`);if(!this.storage[t])throw new Error(`StorageManager (${this.scope}): Type "${t}" is not initialized.`);if(e!==null){const s=a("string",{key:e});if(!s.status)throw new Error(`StorageManager (${this.scope}): ${s.message}`);return this.storage[t][e]}return this.storage[t]}set({type:t=this.type,key:e=null,data:r={}}={}){const s=a("string",{type:t}),i=a("object",{data:r});if(!s.status)throw new Error(`StorageManager (${this.scope}): ${s.message}`);if(!i.status)throw new Error(`StorageManager (${this.scope}): ${i.message}`);if(e!==null){const o=a("string",{key:e});if(!o.status)throw new Error(`StorageManager (${this.scope}): ${o.message}`);this._storage[t]||(this._storage[t]={}),this._storage[t][e]=r}else this._storage[t]=r}clear({type:t=this.type,key:e=null}={}){const r=a("string",{type:t});if(!r.status)throw new Error(`StorageManager (${this.scope}): ${r.message}`);if(e!==null){const s=a("string",{key:e});if(!s.status)throw new Error(`StorageManager (${this.scope}): ${s.message}`);delete this.storage[t][e]}else delete this.storage[t]}dispose(){delete this._storage,delete this}},p=K,G=class{_dom={};_rootDOMElement="";_protectedDOMElements=[];_selectors={};_elements={};_classes={initialize:""};_durations={};_delays={};_focusState="none";_currentEvent="none";_breakpoint="";_mediaQueryString="";_mediaQueryList=null;_mediaQueryListEventCallback=t=>{t.matches};_intervals={};_timeouts={};_listeners=[];_events={initialize:new CustomEvent("grauplComponentInitialize",{detail:{component:this}}),preinitialize:new CustomEvent("grauplComponentPreinitialize",{detail:{component:this}}),postinitialize:new CustomEvent("grauplComponentPostinitialize",{detail:{component:this}}),validate:new CustomEvent("grauplComponentValidate",{detail:{component:this}}),prevalidate:new CustomEvent("grauplComponentPrevalidate",{detail:{component:this}}),postvalidate:new CustomEvent("grauplComponentPostvalidate",{detail:{component:this}})};_prefix="graupl-";_key="";_storageKey="components";_id="";_valid=!0;_initialized=!1;_errors=[];constructor({prefix:t="graupl-",key:e=null,initializeClass:r="initializing"}={}){this._classes.initialize=r||"",this._prefix=t||"",this._key=e||""}initialize(){try{if(!this._validate())throw new Error(`Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:
- - ${this.errors.map(t=>t.message).join(`
- - `)}`);h(this.initializeClass,this.rootDOMElement),this._dispatchEvent("preinitialize",this.rootDOMElement),this._generateKey(),this._setDOMElements(),this._setIds(),this._setAriaAttributes(),this._setCustomProps(),this._createChildElements(),this._handleMediaMatch(),this._handleFocus(),this._handleHover(),this._handleClick(),this._handleKeydown(),this._handleKeyup(),this._dispatchEvent("initialize",this.rootDOMElement),this._store(),l(this.initializeClass,this.rootDOMElement),this._initialized=!0,this._dispatchEvent("postinitialize",this.rootDOMElement)}catch(t){console.error(t)}}init(){this.initialize()}get dom(){return this._dom}get rootDOMElement(){return this._dom[this._rootDOMElement]||document.documentElement}get selectors(){return this._selectors}get elements(){return this._elements}get classes(){return this._classes}get durations(){return this._durations}get delays(){return this._delays}get intervals(){return this._intervals}get timeouts(){return this._timeouts}get listeners(){return this._listeners}get events(){return this._events}get initializeClass(){return this._classes.initialize}set initializeClass(t){u({initializeClass:t}),this._classes.initialize!==t&&(this._classes.initialize=t)}get focusState(){return this._focusState}set focusState(t){z({focusState:t}),this._focusState!==t&&(this._focusState=t)}get currentEvent(){return this._currentEvent}set currentEvent(t){Q({currentEvent:t}),this._currentEvent!==t&&(this._currentEvent=t)}get breakpoint(){return this._breakpoint}set breakpoint(t){a("string",{breakpoint:t}),this._breakpoint!==t&&(this._breakpoint=t)}get mediaQuery(){return this._mediaQueryString!==""?this._mediaQueryString:this._breakpoint===""?"":`(width <= ${this._breakpoint})`}set mediaQuery(t){a("string",{mediaQuery:t}),this._mediaQueryString!==t&&(this._mediaQueryString=t)}get prefix(){return this._prefix}get key(){return this._key}get id(){return this._id}get isValid(){return this._valid}get isInitialized(){return this._initialized}get errors(){return this._errors}_validate(){this._dispatchEvent("prevalidate",this.rootDOMElement);const t=P(this,{shouldThrow:!1});if(t.status||(this._errors=[...this._errors,...t.errors],this._valid=!1),Object.keys(this._dom).length>0){const s={};for(const o of Object.keys(this._dom))Array.isArray(this._dom[o])?this._dom[o].forEach((n,m)=>{s[`${o}Element[${m}]`]=n}):this._dom[o]!==null&&(s[`${o}Element`]=this._dom[o]);const i=_(HTMLElement,s,{shouldThrow:!1});i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1)}if(Object.keys(this._selectors).length>0){const s={};for(const o of Object.keys(this._selectors))s[`${o}Selector`]=this._selectors[o];const i=g(s,{shouldThrow:!1});i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1)}if(Object.keys(this._classes).length>0){const s={};for(const o of Object.keys(this._classes))this._classes[o]!==""&&(s[`${o}Class`]=this._classes[o]);const i=u(s,{shouldThrow:!1});i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1)}if(Object.keys(this._durations).length>0){const s={};for(const o of Object.keys(this._durations))s[`${o}Duration`]=this._durations[o];const i=a("number",s,{shouldThrow:!1});i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1)}if(Object.keys(this.delays).length>0){const s={};for(const o of Object.keys(this.delays))s[`${o}Delay`]=this.delays[o];const i=a("number",s,{shouldThrow:!1});i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1)}const e={_storageKey:this._storageKey,key:this._key,prefix:this._prefix,mediaQuery:this._mediaQueryString,breakpoint:this._breakpoint};this._protectedDOMElements.forEach(s=>{e[`_protectedDOMElementType[${s}]`]=s});const r=a("string",e,{shouldThrow:!1});return r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1),this._dispatchEvent("validate",this.rootDOMElement),this._dispatchEvent("postvalidate",this.rootDOMElement),this._valid}_generateKey(t=!1){(this._key===""||t)&&(this._key=Math.random().toString(36).replace(/[^a-z]+/g,"").substring(0,10))}_setIds(){}_setAriaAttributes(){}_setCustomProps(){}_setDOMElementType(t,{context:e,overwrite:r=!0,strict:s=!1}={}){if(typeof this.selectors[t]!="string")throw new Error(`Graupl ${this.constructor.name}: "${t}" is not a valid element type.`);if(this._rootDOMElement===t||this._protectedDOMElements.includes(t))throw new Error(`Graupl ${this.constructor.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);_(HTMLElement,{context:e});const i=Array.from(e.querySelectorAll(this.selectors[t])).filter(o=>s?o.parentElement===e:!0);Array.isArray(this._dom[t])?r?this._dom[t]=i:this._dom[t]=[...this._dom[t],...i]:this._dom[t]=i[0]||null}_resetDOMElementType(t){if(typeof this.selectors[t]!="string")throw new Error(`Graupl ${this.constructor.name}: "${t}" is not a valid element type.`);if(this._rootDOMElement===t||this._protectedDOMElements.includes(t))throw new Error(`Graupl ${this.constructor.name}: "${t}" element cannot be reset through _resetDOMElementType because it is a protected element.`);Array.isArray(this._dom[t])?this._dom[t]=[]:this._dom[t]=null}_setDOMElements(){}_createChildElements(){}_handleMediaMatch(){this.mediaQuery!==""&&(this._mediaQueryList=window.matchMedia(this.mediaQuery),this._addEventListener("change",this._mediaQueryList,this._mediaQueryListEventCallback),this._mediaQueryListEventCallback(this._mediaQueryList))}_handleFocus(){}_handleClick(){}_handleHover(){}_handleKeydown(){}_handleKeyup(){}_store(){_(p,{storage:window.GrauplStorage},{shouldThrow:!1}).status||new p({scope:"GrauplStorage"}),window.GrauplStorage.set({key:this.id!==""?this.id:this.key,type:this._storageKey,data:this})}_unstore(){_(p,{storage:window.GrauplStorage},{shouldThrow:!1}).status&&window.GrauplStorage.clear({key:this.id!==""?this.id:this.key,type:this._storageKey})}_setInterval(t,e,r="_default"){this._clearInterval(r),this._intervals[r]=setInterval(t,e)}_clearInterval(t="_default"){clearInterval(this._intervals[t])}_clearIntervals(){for(const t of Object.keys(this._intervals))this._clearInterval(t)}_setTimeout(t,e,r="_default"){this._clearTimeout(r),this._timeouts[r]=setTimeout(t,e)}_clearTimeout(t="_default"){clearTimeout(this._timeouts[t])}_clearTimeouts(){for(const t of Object.keys(this._timeouts))this._clearTimeout(t)}_registerEvent(t,{bubbles:e=!0,detail:r={}}={}){a("string",{name:t}),a("boolean",{bubbles:e}),a("object",{detail:r});const s=`graupl${this.constructor.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;this._events[t]=new CustomEvent(s,{bubbles:e,detail:{component:this,...r}})}_dispatchEvent(t,e){V(t,this),_(HTMLElement,{element:e}),e.dispatchEvent(this.events[t])}_addEventListener(t,e,r,s={}){e.addEventListener(t,r,s),this._listeners.push({type:t,element:e,listener:r,options:s})}_removeEventListener(t,e,r,s={}){e.removeEventListener(t,r,s);let i=-1;this._listeners.forEach((o,n)=>{o.type===t&&o.element===e&&o.listener===r&&JSON.stringify(o.options)===JSON.stringify(s)&&(i=n)}),i!==-1&&this._listeners.splice(i,1)}_removeEventListeners({type:t=null,element:e=null}={}){[...this._listeners].forEach(r=>{t!==null&&r.type!==t||e!==null&&r.element!==e||this._removeEventListener(r.type,r.element,r.listener,r.options)})}dispose(){this._clearIntervals(),this._clearTimeouts(),this._removeEventListeners(),this._unstore(),delete this}},q=G,H=class extends q{_rootDOMElement="carousel";_currentItem=0;_autoplay=!0;_playText="Play";_pauseText="Pause";_currentAction="next";_storageKey="carousels";constructor({carouselElement:t,carouselItemsSelector:e=".carousel-item",carouselItemContainerSelector:r=".carousel-item-container",carouselControlsSelector:s=".carousel-control",carouselControlContainerSelector:i=".carousel-control-container",carouselTabsSelector:o=".carousel-tab",carouselTabContainerSelector:n=".carousel-tab-container",autoplaySelector:m=".autoplay",nextSelector:v=".next",previousSelector:C=".previous",activeClass:w="active",previousClass:b="previous",nextClass:T="next",playClass:I="play",pauseClass:k="pause",autoplay:$=!0,transitionDelay:x=1e4,transitionDuration:O=500,playText:A="Play",pauseText:D="Pause",prefix:M="graupl-",key:S=null,initializeClass:L="initializing",initialize:j=!1}){super({prefix:M,key:S,initializeClass:L}),this._dom.carousel=t,this._dom.carouselItems=[],this._dom.carouselItemContainer=null,this._dom.carouselControls=[],this._dom.carouselControlContainer=null,this._dom.carouselTabs=[],this._dom.carouselTabContainer=null,this._dom.autoplay=null,this._dom.next=null,this._dom.previous=null,this._selectors.carouselItems=e,this._selectors.carouselItemContainer=r,this._selectors.carouselControls=s,this._selectors.carouselControlContainer=i,this._selectors.carouselTabs=o,this._selectors.carouselTabContainer=n,this._selectors.autoplay=m,this._selectors.next=v,this._selectors.previous=C,this._classes.active=w||"",this._classes.previous=b||"",this._classes.next=T||"",this._classes.play=I||"",this._classes.pause=k||"",this._autoplay=$,this._delays.transition=x,this._durations.transition=O,this._playText=A||"",this._pauseText=D||"",this._addEventListener("grauplComponentInitialize",this.rootDOMElement,()=>{this._handleAutoplay(),this.activateFirstItem()}),this._addEventListener("grauplComponentValidate",this.rootDOMElement,()=>{const f=a("boolean",{autoplay:this._autoplay},{shouldThrow:!1});f.status||(this._errors=[...this._errors,...f.errors],this._valid=!1);const y=a("string",{playText:this._playText,pauseText:this._pauseText},{shouldThrow:!1});y.status||(this._errors=[...this._errors,...y.errors],this._valid=!1)}),j&&this.initialize()}get activeClass(){return this._classes.active}set activeClass(t){u({activeClass:t}),this._classes.active!==t&&(this._classes.active=t)}get previousClass(){return this._classes.previous}set previousClass(t){u({previousClass:t}),this._classes.previous!==t&&(this._classes.previous=t)}get nextClass(){return this._classes.next}set nextClass(t){u({nextClass:t}),this._classes.next!==t&&(this._classes.next=t)}get playClass(){return this._classes.play}set playClass(t){u({playClass:t}),this._classes.play!==t&&(this._classes.play=t)}get pauseClass(){return this._classes.pause}set pauseClass(t){u({pauseClass:t}),this._classes.pause!==t&&(this._classes.pause=t)}get currentItem(){return this._currentItem}set currentItem(t){a("number",{currentItem:t}),t!==this.currentItem&&(t<0?this._currentItem=0:t>=this.dom.carouselItems.length?this._currentItem=this.dom.carouselItems.length-1:this._currentItem=t,this._dom.carousel.querySelectorAll(this.selectors.carouselTab)&&this.dom.carouselItems.forEach((e,r)=>{e.setAttribute("aria-selected",r===this._currentItem)}))}get currentCarouselItem(){return this.dom.carouselItems[this.currentItem]}get currentCarouselTab(){return this.dom.carouselTabs[this.currentItem]}get autoplay(){return this._autoplay}set autoplay(t){a("boolean",{autoplay:t}),this._autoplay!==t&&(this._autoplay=t)}get transitionDelay(){return this._delays.transition}set transitionDelay(t){a("number",{transitionDelay:t}),t!==this.transitionDelay&&t>=0&&(this._delays.transition=t)}get transitionDuration(){return this._durations.transition}set transitionDuration(t){a("number",{transitionDuration:t}),this._durations.transition!==t&&t>=0&&(this._durations.transition=t,this._setTransitionDuration())}get playText(){return this._playText}set playText(t){a("string",{playText:t}),this._playText!==t&&(this._playText=t)}get pauseText(){return this._pauseText}set pauseText(t){a("string",{pauseText:t}),this._pauseText!==t&&(this._pauseText=t)}get currentAction(){return this._currentAction}_setDOMElements(){this._setDOMElementType("carouselItemContainer",{context:this.dom.carousel}),this._setDOMElementType("carouselControlContainer",{context:this.dom.carousel}),this._setDOMElementType("carouselTabContainer",{context:this.dom.carousel}),this.dom.carouselItemContainer&&this._setDOMElementType("carouselItems",{context:this.dom.carouselItemContainer}),this.dom.carouselControlContainer&&(this._setDOMElementType("carouselControls",{context:this.dom.carouselControlContainer}),this._setDOMElementType("autoplay",{context:this.dom.carouselControlContainer}),this._setDOMElementType("next",{context:this.dom.carouselControlContainer}),this._setDOMElementType("previous",{context:this.dom.carouselControlContainer})),this._dom.carouselTabContainer&&this._setDOMElementType("carouselTabs",{context:this.dom.carouselTabContainer})}_setIds(){this.dom.carousel.id=this.dom.carousel.id||`carousel-${this.key}`,this.dom.carouselItems.forEach((t,e)=>{t.id=t.id||`carousel-item-${this.key}-${e}`}),this.dom.carouselTabs.forEach((t,e)=>{t.id=t.id||`carousel-tab-${this.key}-${e}`}),this._id=this.dom.carousel.id}_setAriaAttributes(){!E("section",{carousel:this.dom.carousel},{shouldThrow:!1}).status&&!this.dom.carousel.getAttribute("role")!=="region"&&this.dom.carousel.setAttribute("role","group"),this._dom.carousel.setAttribute("aria-roledescription","carousel"),this.dom.carouselTabContainer&&this.dom.carouselTabContainer.setAttribute("role","tablist"),this.dom.carouselTabs.forEach((t,e)=>{E("button",{tab:t},{shouldThrow:!1}).status||t.setAttribute("role","button"),t.setAttribute("aria-selected",e===0),t.setAttribute("aria-controls",this.dom.carouselItems[e].id)})}_setCustomProps(){this.dom.carousel.style.setProperty(`--${this.prefix}carousel-transition-duration`,`${this.transitionDuration}ms`)}_handleAutoplay(){this.autoplay?(h(this.pauseClass,this.dom.autoplay),l(this.playClass,this.dom.autoplay),this.dom.autoplay.setAttribute("aria-label",this.pauseText),this.dom.carousel.setAttribute("aria-live","off"),this._setInterval(()=>this.activateNextItem(),this.transitionDelay)):(h(this.playClass,this.dom.autoplay),l(this.pauseClass,this.dom.autoplay),this.dom.autoplay.setAttribute("aria-label",this.playText),this.dom.carousel.setAttribute("aria-live","polite"),this._clearInterval())}_handleFocus(){this._addEventListener("focusin",this.dom.carousel,()=>{this.autoplay&&this._clearInterval()}),this._addEventListener("focusout",this.dom.carousel,()=>{this.autoplay&&this._setInterval(()=>this.activateNextItem(),this.transitionDelay)})}_handleClick(){this._addEventListener("click",this.dom.next,()=>{this.activateNextItem()}),this._addEventListener("click",this.dom.previous,()=>{this.activatePreviousItem()}),this._addEventListener("click",this.dom.autoplay,()=>{this.toggleAutoplay()}),this.dom.carouselTabs.forEach((t,e)=>{this._addEventListener("click",t,()=>{this.currentItem>e?this._currentAction="previous":this._currentAction="next",this.activateItem(e)})})}_handleHover(){this._addEventListener("pointerover",this.dom.carousel,()=>{this.autoplay&&this._clearInterval()}),this._addEventListener("pointerleave",this.dom.carousel,()=>{this.autoplay&&this._setInterval(()=>this.activateNextItem(),this.transitionDelay)})}_handleKeydown(){this.dom.carouselControls.forEach(t=>{this._addEventListener("keydown",t,e=>{switch(c(e)){case"Space":case"Enter":d(e);break}})}),this.dom.carouselTabs.forEach(t=>{this._addEventListener("keydown",t,e=>{switch(c(e)){case"Space":case"Enter":d(e);break}})})}_handleKeyup(){this._addEventListener("keyup",this.dom.next,t=>{switch(c(t)){case"Space":case"Enter":this.activateNextItem(),d(t);break}}),this._addEventListener("keyup",this.dom.previous,t=>{switch(c(t)){case"Space":case"Enter":this.activatePreviousItem(),d(t);break}}),this._addEventListener("keyup",this.dom.autoplay,t=>{switch(c(t)){case"Space":case"Enter":this.toggleAutoplay(),d(t);break}}),this.dom.carouselTabs.forEach((t,e)=>{this._addEventListener("keyup",t,r=>{switch(c(r)){case"Space":case"Enter":this.activateItem(e),d(r);break}})})}activateCurrentItem(){h(this.activeClass,this.currentCarouselItem),this.currentCarouselTab&&(this.currentCarouselTab.setAttribute("aria-selected",!0),h(this.activeClass,this.currentCarouselTab))}deactivateCurrentItem(){l(this.activeClass,this.currentCarouselItem),this.currentCarouselTab&&(this.currentCarouselTab.setAttribute("aria-selected",!1),l(this.activeClass,this.currentCarouselTab))}activateItem(t){const e=this.currentItem;this.dom.carousel.dataset.grauplAction=this._currentAction,this.autoplay&&this._clearInterval(),h(this.previousClass,this.currentCarouselItem),h(this.nextClass,this.dom.carouselItems[t]),requestAnimationFrame(()=>{this.deactivateCurrentItem(),this.currentItem=t,this.activateCurrentItem(),requestAnimationFrame(()=>{setTimeout(()=>{l(this.previousClass,this.dom.carouselItems[e]),l(this.nextClass,this.currentCarouselItem)},this.transitionDuration)})}),this.autoplay&&this._setInterval(()=>this.activateNextItem(),this.transitionDelay)}activateFirstItem(){this.activateItem(0)}activateLastItem(){this.activateItem(this.dom.carouselItems.length-1)}activateNextItem(){this._currentAction="next",this.currentItem+1>=this.dom.carouselItems.length?this.activateFirstItem():this.activateItem(this.currentItem+1)}activatePreviousItem(){this._currentAction="previous",this.currentItem-1<0?this.activateLastItem():this.activateItem(this.currentItem-1)}toggleAutoplay(){this.autoplay=!this.autoplay,this._handleAutoplay()}},F=H;export{F as default};
+function m(t, e) {
+	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.add(t) : e.classList.add(...t));
+}
+function d(t, e) {
+	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
+}
+function u(t) {
+	try {
+		const e = t.key || t.keyCode, r = {
+			Enter: e === "Enter" || e === 13,
+			Space: e === " " || e === "Spacebar" || e === 32,
+			Escape: e === "Escape" || e === "Esc" || e === 27,
+			ArrowUp: e === "ArrowUp" || e === "Up" || e === 38,
+			ArrowRight: e === "ArrowRight" || e === "Right" || e === 39,
+			ArrowDown: e === "ArrowDown" || e === "Down" || e === 40,
+			ArrowLeft: e === "ArrowLeft" || e === "Left" || e === 37,
+			Home: e === "Home" || e === 36,
+			End: e === "End" || e === 35,
+			Character: isNaN(e) && !!e.match(/^[a-zA-Z]{1}$/),
+			Tab: e === "Tab" || e === 9,
+			Asterisk: e === "*" || e === 56
+		};
+		return Object.keys(r).find((s) => r[s] === !0) || "";
+	} catch {
+		return "";
+	}
+}
+function h(t) {
+	t.preventDefault(), t.stopPropagation();
+}
+function l(t, e, { shouldThrow: r = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof e != "object") throw new TypeError(`Elements given to isValidInstance() must be inside of an object. "${typeof e}" given.`);
+		for (const i in e) try {
+			if (!(e[i] instanceof t)) {
+				const o = typeof e[i];
+				throw new TypeError(`${i} must be an instance of ${t.name}. "${o}" given.`);
+			}
+		} catch (o) {
+			s.status = !1, s.errors.push(o);
+		}
+	} catch (i) {
+		s.status = !1, s.errors.push(i);
+	}
+	if (r && !s.status) throw s.errors[0];
+	return s;
+}
+function a(t, e, { shouldThrow: r = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof e != "object") throw new TypeError(`Values given to isValidType() must be inside of an object. "${typeof e}" given.`);
+		for (const i in e) try {
+			const o = typeof e[i];
+			if (o !== t) throw new TypeError(`${i} must be a ${t}. "${o}" given.`);
+		} catch (o) {
+			s.status = !1, s.errors.push(o);
+		}
+	} catch (i) {
+		s.status = !1, s.errors.push(i);
+	}
+	if (r && !s.status) throw s.errors[0];
+	return s;
+}
+function v(t, { shouldThrow: e = !0 } = {}) {
+	const r = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isQuerySelector() must be inside of an object. "${typeof t}" given.`);
+		for (const s in t) try {
+			try {
+				if (t[s] === null) throw new Error();
+				document.querySelector(t[s]);
+			} catch {
+				throw new TypeError(`${s} must be a valid query selector. "${t[s]}" given.`);
+			}
+		} catch (i) {
+			r.status = !1, r.errors.push(i);
+		}
+	} catch (s) {
+		r.status = !1, r.errors.push(s);
+	}
+	if (e && !r.status) throw r.errors[0];
+	return r;
+}
+function _(t, { shouldThrow: e = !0 } = {}) {
+	const r = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object" || Array.isArray(t)) throw new TypeError(`Values given to isValidClassList() must be inside of an object. "${typeof t}" given.`);
+		for (const s in t) try {
+			const i = typeof t[s];
+			if (i !== "string") if (Array.isArray(t[s])) t[s].forEach((o) => {
+				if (typeof o != "string") throw new TypeError(`${s} must be a string or an array of strings. An array containing non-strings given.`);
+			});
+			else throw new TypeError(`${s} must be a string or an array of strings. "${i}" given.`);
+			else {
+				const o = {};
+				o[s] = t[s], v(o);
+			}
+		} catch (i) {
+			r.status = !1, r.errors.push(i);
+		}
+	} catch (s) {
+		r.status = !1, r.errors.push(s);
+	}
+	if (e && !r.status) throw r.errors[0];
+	return r;
+}
+function Q(t, { shouldThrow: e = !0 } = {}) {
+	const r = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isValidState() must be inside of an object. "${typeof t}" given.`);
+		const s = [
+			"none",
+			"self",
+			"child"
+		];
+		for (const i in t) try {
+			if (!s.includes(t[i])) throw new TypeError(`${i} must be one of the following values: ${s.join(", ")}. "${t[i]}" given.`);
+		} catch (o) {
+			r.status = !1, r.errors.push(o);
+		}
+	} catch (s) {
+		r.status = !1, r.errors.push(s);
+	}
+	if (e && !r.status) throw r.errors[0];
+	return r;
+}
+function V(t, { shouldThrow: e = !0 } = {}) {
+	const r = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isValidEvent() must be inside of an object. "${typeof t}" given.`);
+		const s = [
+			"none",
+			"mouse",
+			"keyboard",
+			"character"
+		];
+		for (const i in t) try {
+			if (!s.includes(t[i])) throw new TypeError(`${i} must be one of the following values: ${s.join(", ")}. "${t[i]}" given.`);
+		} catch (o) {
+			r.status = !1, r.errors.push(o);
+		}
+	} catch (s) {
+		r.status = !1, r.errors.push(s);
+	}
+	if (e && !r.status) throw r.errors[0];
+	return r;
+}
+function K(t, e, { shouldThrow: r = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (a("string", { tagName: t }, { shouldThrow: !0 }).status && l(HTMLElement, e, { shouldThrow: !0 }).status) {
+			const i = t.toLowerCase();
+			for (const o in e) try {
+				if (e[o].tagName.toLowerCase() !== i) throw new TypeError(`${o} must be a <${i}> element. <${e[o].tagName.toLowerCase()}> given.`);
+			} catch (n) {
+				s.status = !1, s.errors.push(n);
+			}
+		}
+	} catch (i) {
+		s.status = !1, s.errors.push(i);
+	}
+	if (r && !s.status) throw s.errors[0];
+	return s;
+}
+function F(t, e, { shouldThrow: r = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (!Object.prototype.hasOwnProperty.call(e.events, t)) throw new TypeError(`Event type "${t}" is not valid for ${e.constructor.name}. Valid event types are: "${Object.keys(e.events).join("\", ")}".`);
+	} catch (i) {
+		s.status = !1, s.errors.push(i);
+	}
+	if (r && !s.status) throw s.errors[0];
+	return s;
+}
+function N(t, { shouldThrow: e = !0 } = {}) {
+	const r = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (!Object.prototype.hasOwnProperty.call(t._dom, t._rootDOMElement)) throw new Error(`The root DOM element "${t._rootDOMElement}" does not exist in the ${t.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(t._dom).join("\", \"")}".`);
+	} catch (s) {
+		r.status = !1, r.errors.push(s);
+	}
+	if (e && !r.status) throw r.errors[0];
+	return r;
+}
+var f = class b {
+	_scope;
+	_type = "_default";
+	_storage = {};
+	_crush = !1;
+	constructor({ scope: e, type: r = null, crush: s = !1, initialize: i = !0 } = {}) {
+		this._scope = e, this._type = r || "_default", this._crush = s, i && this.initialize();
+	}
+	initialize() {
+		try {
+			!this._crush && typeof window[this.scope] < "u" && (l(b, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+		} catch {} finally {
+			window[this.scope] = this;
+		}
+	}
+	get scope() {
+		return this._scope;
+	}
+	get type() {
+		return this._type;
+	}
+	set type(e) {
+		a("string", { type: e }) && (this._type = e);
+	}
+	get storage() {
+		return this._storage;
+	}
+	get({ type: e = this.type, key: r = null } = {}) {
+		const s = a("string", { type: e });
+		if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+		if (!this.storage[e]) throw new Error(`StorageManager (${this.scope}): Type "${e}" is not initialized.`);
+		if (r !== null) {
+			const i = a("string", { key: r });
+			if (!i.status) throw new Error(`StorageManager (${this.scope}): ${i.message}`);
+			return this.storage[e][r];
+		}
+		return this.storage[e];
+	}
+	set({ type: e = this.type, key: r = null, data: s = {} } = {}) {
+		const i = a("string", { type: e }), o = a("object", { data: s });
+		if (!i.status) throw new Error(`StorageManager (${this.scope}): ${i.message}`);
+		if (!o.status) throw new Error(`StorageManager (${this.scope}): ${o.message}`);
+		if (r !== null) {
+			const n = a("string", { key: r });
+			if (!n.status) throw new Error(`StorageManager (${this.scope}): ${n.message}`);
+			this._storage[e] || (this._storage[e] = {}), this._storage[e][r] = s;
+		} else this._storage[e] = s;
+	}
+	clear({ type: e = this.type, key: r = null } = {}) {
+		const s = a("string", { type: e });
+		if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+		if (r !== null) {
+			const i = a("string", { key: r });
+			if (!i.status) throw new Error(`StorageManager (${this.scope}): ${i.message}`);
+			delete this.storage[e][r];
+		} else delete this.storage[e];
+	}
+	dispose() {
+		delete this._storage, delete this;
+	}
+}, I = class {
+	_dom = {};
+	_rootDOMElement = "";
+	_protectedDOMElements = [];
+	_selectors = {};
+	_elements = {};
+	_classes = { initialize: "" };
+	_durations = {};
+	_delays = {};
+	_focusState = "none";
+	_currentEvent = "none";
+	_breakpoint = "";
+	_mediaQueryString = "";
+	_mediaQueryList = null;
+	_mediaQueryListEventCallback = (t) => {
+		t.matches;
+	};
+	_intervals = {};
+	_timeouts = {};
+	_listeners = [];
+	_events = {
+		initialize: new CustomEvent("grauplComponentInitialize", { detail: { component: this } }),
+		preinitialize: new CustomEvent("grauplComponentPreinitialize", { detail: { component: this } }),
+		postinitialize: new CustomEvent("grauplComponentPostinitialize", { detail: { component: this } }),
+		validate: new CustomEvent("grauplComponentValidate", { detail: { component: this } }),
+		prevalidate: new CustomEvent("grauplComponentPrevalidate", { detail: { component: this } }),
+		postvalidate: new CustomEvent("grauplComponentPostvalidate", { detail: { component: this } })
+	};
+	_prefix = "graupl-";
+	_key = "";
+	_name = "Component";
+	_storageKey = "components";
+	_shouldStore = !0;
+	_id = "";
+	_valid = !0;
+	_initialized = !1;
+	_errors = [];
+	constructor({ prefix: t = "graupl-", key: e = null, initializeClass: r = "initializing" } = {}) {
+		this._classes.initialize = r || "", this._prefix = t || "", this._key = e || "";
+	}
+	initialize() {
+		try {
+			if (!this._validate()) throw new Error(`Graupl ${this.name}: Cannot initialize component. The following errors have been found:
+ - ${this.errors.map((t) => t.message).join(`
+ - `)}`);
+			m(this.initializeClass, this.rootDOMElement), this._dispatchEvent("preinitialize", this.rootDOMElement), this._generateKey(), this._setDOMElements(), this._setIds(), this._setAriaAttributes(), this._setCustomProps(), this._createChildElements(), this._handleMediaMatch(), this._handleFocus(), this._handleHover(), this._handleClick(), this._handleKeydown(), this._handleKeyup(), this._dispatchEvent("initialize", this.rootDOMElement), this._store(), d(this.initializeClass, this.rootDOMElement), this._initialized = !0, this._dispatchEvent("postinitialize", this.rootDOMElement);
+		} catch (t) {
+			console.error(t);
+		}
+	}
+	init() {
+		this.initialize();
+	}
+	get dom() {
+		return this._dom;
+	}
+	get rootDOMElement() {
+		return this._dom[this._rootDOMElement] || document.documentElement;
+	}
+	get selectors() {
+		return this._selectors;
+	}
+	get elements() {
+		return this._elements;
+	}
+	get classes() {
+		return this._classes;
+	}
+	get durations() {
+		return this._durations;
+	}
+	get delays() {
+		return this._delays;
+	}
+	get intervals() {
+		return this._intervals;
+	}
+	get timeouts() {
+		return this._timeouts;
+	}
+	get listeners() {
+		return this._listeners;
+	}
+	get events() {
+		return this._events;
+	}
+	get initializeClass() {
+		return this._classes.initialize;
+	}
+	set initializeClass(t) {
+		_({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+	}
+	get focusState() {
+		return this._focusState;
+	}
+	set focusState(t) {
+		Q({ focusState: t }), this._focusState !== t && (this._focusState = t);
+	}
+	get currentEvent() {
+		return this._currentEvent;
+	}
+	set currentEvent(t) {
+		V({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+	}
+	get shouldFocus() {
+		let t = !1;
+		return this.currentEvent === "keyboard" && (t = !0), t;
+	}
+	get breakpoint() {
+		return this._breakpoint;
+	}
+	set breakpoint(t) {
+		a("string", { breakpoint: t }), this._breakpoint !== t && (this._breakpoint = t);
+	}
+	get mediaQuery() {
+		return this._mediaQueryString !== "" ? this._mediaQueryString : this._breakpoint === "" ? "" : `(width <= ${this._breakpoint})`;
+	}
+	set mediaQuery(t) {
+		a("string", { mediaQuery: t }), this._mediaQueryString !== t && (this._mediaQueryString = t);
+	}
+	get prefix() {
+		return this._prefix;
+	}
+	get key() {
+		return this._key;
+	}
+	get name() {
+		return this._name;
+	}
+	get id() {
+		return this._id;
+	}
+	get isValid() {
+		return this._valid;
+	}
+	get isInitialized() {
+		return this._initialized;
+	}
+	get errors() {
+		return this._errors;
+	}
+	_validate() {
+		this._dispatchEvent("prevalidate", this.rootDOMElement);
+		const t = N(this, { shouldThrow: !1 });
+		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((n, c) => {
+				s[`${o}Element[${c}]`] = n;
+			}) : this._dom[o] !== null && (s[`${o}Element`] = this._dom[o]);
+			const i = l(HTMLElement, s, { shouldThrow: !1 });
+			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
+		}
+		if (Object.keys(this._selectors).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._selectors)) s[`${o}Selector`] = this._selectors[o];
+			const i = v(s, { shouldThrow: !1 });
+			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
+		}
+		if (Object.keys(this._classes).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (s[`${o}Class`] = this._classes[o]);
+			const i = _(s, { shouldThrow: !1 });
+			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
+		}
+		if (Object.keys(this._durations).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._durations)) s[`${o}Duration`] = this._durations[o];
+			const i = a("number", s, { shouldThrow: !1 });
+			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
+		}
+		if (Object.keys(this.delays).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this.delays)) s[`${o}Delay`] = this.delays[o];
+			const i = a("number", s, { shouldThrow: !1 });
+			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
+		}
+		const e = {
+			_storageKey: this._storageKey,
+			key: this._key,
+			prefix: this._prefix,
+			mediaQuery: this._mediaQueryString,
+			breakpoint: this._breakpoint
+		};
+		this._protectedDOMElements.forEach((s) => {
+			e[`_protectedDOMElementType[${s}]`] = s;
+		});
+		const r = a("string", e, { shouldThrow: !1 });
+		return r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1), this._dispatchEvent("validate", this.rootDOMElement), this._dispatchEvent("postvalidate", this.rootDOMElement), this._valid;
+	}
+	_generateKey(t = !1) {
+		(this._key === "" || t) && (this._key = Math.random().toString(36).replace(/[^a-z]+/g, "").substring(0, 10));
+	}
+	_setIds() {}
+	_setAriaAttributes() {}
+	_setCustomProps() {}
+	_setDOMElementType(t, { context: e, overwrite: r = !0, strict: s = !1 } = {}) {
+		if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
+		if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
+		l(HTMLElement, { context: e });
+		const i = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => s ? o.parentElement === e : !0);
+		Array.isArray(this._dom[t]) ? r ? this._dom[t] = i : this._dom[t] = [...this._dom[t], ...i] : this._dom[t] = i[0] || null;
+	}
+	_resetDOMElementType(t) {
+		if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
+		if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be reset through _resetDOMElementType because it is a protected element.`);
+		Array.isArray(this._dom[t]) ? this._dom[t] = [] : this._dom[t] = null;
+	}
+	_setDOMElements() {}
+	_createChildElements() {}
+	_handleMediaMatch() {
+		this.mediaQuery !== "" && (this._mediaQueryList = window.matchMedia(this.mediaQuery), this._addEventListener("change", this._mediaQueryList, this._mediaQueryListEventCallback), this._mediaQueryListEventCallback(this._mediaQueryList));
+	}
+	_handleFocus() {}
+	_handleClick() {}
+	_handleHover() {}
+	_handleKeydown() {}
+	_handleKeyup() {}
+	_store() {
+		this._shouldStore && (l(f, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new f({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			key: this.id !== "" ? this.id : this.key,
+			type: this._storageKey,
+			data: this
+		}));
+	}
+	_unstore() {
+		this._shouldStore && l(f, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			key: this.id !== "" ? this.id : this.key,
+			type: this._storageKey
+		});
+	}
+	_setInterval(t, e, r = "_default") {
+		this._clearInterval(r), this._intervals[r] = setInterval(t, e);
+	}
+	_clearInterval(t = "_default") {
+		clearInterval(this._intervals[t]);
+	}
+	_clearIntervals() {
+		for (const t of Object.keys(this._intervals)) this._clearInterval(t);
+	}
+	_setTimeout(t, e, r = "_default") {
+		this._clearTimeout(r), this._timeouts[r] = setTimeout(t, e);
+	}
+	_clearTimeout(t = "_default") {
+		clearTimeout(this._timeouts[t]);
+	}
+	_clearTimeouts() {
+		for (const t of Object.keys(this._timeouts)) this._clearTimeout(t);
+	}
+	_registerEvent(t, { bubbles: e = !0, detail: r = {} } = {}) {
+		a("string", { name: t }), a("boolean", { bubbles: e }), a("object", { detail: r });
+		const s = `graupl${this.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;
+		this._events[t] = new CustomEvent(s, {
+			bubbles: e,
+			detail: {
+				component: this,
+				...r
+			}
+		});
+	}
+	_dispatchEvent(t, e) {
+		F(t, this), l(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+	}
+	_addEventListener(t, e, r, s = {}) {
+		e.addEventListener(t, r, s), this._listeners.push({
+			type: t,
+			element: e,
+			listener: r,
+			options: s
+		});
+	}
+	_removeEventListener(t, e, r, s = {}) {
+		e.removeEventListener(t, r, s);
+		let i = -1;
+		this._listeners.forEach((o, n) => {
+			o.type === t && o.element === e && o.listener === r && JSON.stringify(o.options) === JSON.stringify(s) && (i = n);
+		}), i !== -1 && this._listeners.splice(i, 1);
+	}
+	_removeEventListeners({ type: t = null, element: e = null } = {}) {
+		[...this._listeners].forEach((r) => {
+			t !== null && r.type !== t || e !== null && r.element !== e || this._removeEventListener(r.type, r.element, r.listener, r.options);
+		});
+	}
+	focus() {
+		this.focusState = "self", this.shouldFocus && this.rootDOMElement.focus();
+	}
+	blur() {
+		this.focusState = "none", this.shouldFocus && this.rootDOMElement.blur();
+	}
+	dispose() {
+		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
+	}
+}, p = class extends I {
+	_rootDOMElement = "carouselItem";
+	_shouldStore = !1;
+	_storageKey = "carouselItems";
+	_name = "CarouselItem";
+	_busy = !1;
+	constructor({ carouselItemElement: t, tabElement: e = null, clone: r = null, parent: s, prefix: i = "graupl-", key: o = null, initializeClass: n = "initializing", initialize: c = !1 }) {
+		super({
+			prefix: i,
+			key: o,
+			initializeClass: n
+		}), this._dom.carouselItem = t, this._dom.tab = e, this._elements.clone = r ?? null, this._elements.parent = s, c && this.initialize();
+	}
+	activate({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		requestAnimationFrame(() => {
+			m(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.removeAttribute("inert"), t && this.elements.parent.dom.carouselItemContainer.scrollTo({
+				left: this.dom.carouselItem.offsetLeft,
+				top: this.dom.carouselItem.offsetTop,
+				behavior: "smooth",
+				...e
+			}), this.dom.tab && requestAnimationFrame(() => {
+				m(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !0);
+			});
+		});
+	}
+	deactivate() {
+		requestAnimationFrame(() => {
+			d(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.setAttribute("inert", !0), requestAnimationFrame(() => {
+				this.dom.tab && (d(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !1));
+			});
+		});
+	}
+}, q = class extends I {
+	_rootDOMElement = "carousel";
+	_currentItem = 0;
+	_autoplay = !0;
+	_playText = "Play";
+	_pauseText = "Pause";
+	_storageKey = "carousels";
+	_name = "Carousel";
+	_itemsPerPage = 1;
+	_loop = !0;
+	constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: r = ".carousel-item-container", carouselControlsSelector: s = ".carousel-control", carouselControlContainerSelector: i = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: n = ".carousel-tab-container", autoplaySelector: c = ".autoplay", nextSelector: w = ".next", previousSelector: C = ".previous", activeClass: k = "active", playClass: T = "play", pauseClass: $ = "pause", autoplay: x = !0, transitionDelay: M = 1e4, playText: A = "Play", pauseText: O = "Pause", itemsPerPage: D = 1, loop: S = !0, prefix: L = "graupl-", key: z = null, initializeClass: P = "initializing", initialize: j = !1 }) {
+		super({
+			prefix: L,
+			key: z,
+			initializeClass: P
+		}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = r, this._selectors.carouselControls = s, this._selectors.carouselControlContainer = i, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = n, this._selectors.autoplay = c, this._selectors.next = w, this._selectors.previous = C, this._elements.carouselItems = [], this._classes.active = k || "", this._classes.play = T || "", this._classes.pause = $ || "", this._autoplay = x, this._itemsPerPage = D, this._loop = S, this._delays.transition = M, this._playText = A || "", this._pauseText = O || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollOptions: { behavior: "instant" } });
+		}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
+			const y = a("boolean", {
+				autoplay: this._autoplay,
+				loop: this._loop
+			}, { shouldThrow: !1 });
+			y.status || (this._errors = [...this._errors, ...y.errors], this._valid = !1);
+			const g = a("string", {
+				playText: this._playText,
+				pauseText: this._pauseText
+			}, { shouldThrow: !1 });
+			g.status || (this._errors = [...this._errors, ...g.errors], this._valid = !1);
+			const E = a("number", { itemsPerPage: this._itemsPerPage }, { shouldThrow: !1 });
+			E.status || (this._errors = [...this._errors, ...E.errors], this._valid = !1);
+		}), j && this.initialize();
+	}
+	get activeClass() {
+		return this._classes.active;
+	}
+	set activeClass(t) {
+		_({ activeClass: t }), this._classes.active !== t && (this._classes.active = t);
+	}
+	get playClass() {
+		return this._classes.play;
+	}
+	set playClass(t) {
+		_({ playClass: t }), this._classes.play !== t && (this._classes.play = t);
+	}
+	get pauseClass() {
+		return this._classes.pause;
+	}
+	set pauseClass(t) {
+		_({ pauseClass: t }), this._classes.pause !== t && (this._classes.pause = t);
+	}
+	get currentItem() {
+		return this._currentItem;
+	}
+	set currentItem(t) {
+		a("number", { currentItem: t }), t !== this.currentItem && (t < 0 ? this._currentItem = 0 : t >= this.dom.carouselItems.length ? this._currentItem = this.dom.carouselItems.length - 1 : this._currentItem = t);
+	}
+	get currentCarouselItem() {
+		return this.elements.carouselItems[this.currentItem];
+	}
+	get autoplay() {
+		return this._autoplay;
+	}
+	set autoplay(t) {
+		a("boolean", { autoplay: t }), this._autoplay !== t && (this._autoplay = t);
+	}
+	get itemsPerPage() {
+		return this._itemsPerPage;
+	}
+	get loop() {
+		return this._loop;
+	}
+	get transitionDelay() {
+		return this._delays.transition;
+	}
+	set transitionDelay(t) {
+		a("number", { transitionDelay: t }), t !== this.transitionDelay && t >= 0 && (this._delays.transition = t);
+	}
+	get playText() {
+		return this._playText;
+	}
+	set playText(t) {
+		a("string", { playText: t }), this._playText !== t && (this._playText = t);
+	}
+	get pauseText() {
+		return this._pauseText;
+	}
+	set pauseText(t) {
+		a("string", { pauseText: t }), this._pauseText !== t && (this._pauseText = t);
+	}
+	_setDOMElements() {
+		this._setDOMElementType("carouselItemContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselControlContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselTabContainer", { context: this.dom.carousel }), this.dom.carouselItemContainer && this._setDOMElementType("carouselItems", { context: this.dom.carouselItemContainer }), this.dom.carouselControlContainer && (this._setDOMElementType("carouselControls", { context: this.dom.carouselControlContainer }), this._setDOMElementType("autoplay", { context: this.dom.carouselControlContainer }), this._setDOMElementType("next", { context: this.dom.carouselControlContainer }), this._setDOMElementType("previous", { context: this.dom.carouselControlContainer })), this._dom.carouselTabContainer && this._setDOMElementType("carouselTabs", { context: this.dom.carouselTabContainer });
+	}
+	_createChildElements() {
+		this.dom.carouselItems.forEach((t, e) => {
+			const r = new p({
+				carouselItemElement: t,
+				tabElement: this.dom.carouselTabs ? this.dom.carouselTabs[e] : null,
+				parent: this,
+				prefix: this.prefix,
+				initializeClass: this.classes.initialize,
+				initialize: !0
+			});
+			this._elements.carouselItems.push(r);
+		});
+	}
+	_setIds() {
+		this.dom.carousel.id = this.dom.carousel.id || `carousel-${this.key}`, this.dom.carouselItems.forEach((t, e) => {
+			t.id = t.id || `carousel-item-${this.key}-${e}`;
+		}), this.dom.carouselTabs.forEach((t, e) => {
+			t.id = t.id || `carousel-tab-${this.key}-${e}`;
+		}), this._id = this.dom.carousel.id;
+	}
+	_setAriaAttributes() {
+		!K("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
+			t.setAttribute("inert", "true");
+		}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
+			t.setAttribute("role", "tab"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
+		});
+	}
+	_handleAutoplay() {
+		this.autoplay ? (m(this.pauseClass, this.dom.autoplay), d(this.playClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.pauseText), this.dom.carousel.setAttribute("aria-live", "off"), this._setInterval(() => this.activateNextItem(), this.transitionDelay)) : (m(this.playClass, this.dom.autoplay), d(this.pauseClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.playText), this.dom.carousel.setAttribute("aria-live", "polite"), this._clearInterval());
+	}
+	_handleIntersection() {
+		const t = {
+			root: this.dom.carouselItemContainer,
+			rootMargin: "1px",
+			scrollMargin: "1px",
+			threshold: 1
+		}, e = new IntersectionObserver((r) => {
+			this.isInitialized && r.forEach((s) => {
+				if (!s.isIntersecting) return;
+				const i = this.dom.carouselItems.indexOf(s.target);
+				let o = i;
+				this.elements.carouselItems[i].elements.clone !== null && (o = this.dom.carouselItems.indexOf(this.elements.carouselItems[i].elements.clone.dom.carouselItem), (i === 0 || i === this.dom.carouselItems.length - 1) && this.dom.carouselItemContainer.scrollTo({
+					left: this.elements.carouselItems[i].elements.clone.dom.carouselItem.offsetLeft,
+					top: this.elements.carouselItems[i].elements.clone.dom.carouselItem.offsetTop,
+					behavior: "instant"
+				})), this.currentItem !== o && this.activateItem(o, { scroll: !1 });
+			});
+		}, t);
+		this.dom.carouselItems.forEach((r) => {
+			e.observe(r);
+		});
+	}
+	_handleFocus() {
+		this._addEventListener("focusin", this.dom.carousel, () => {
+			this.autoplay && this._clearInterval();
+		}), this._addEventListener("focusout", this.dom.carousel, () => {
+			this.autoplay && this._setInterval(() => this.activateNextItem(), this.transitionDelay);
+		});
+	}
+	_handleClick() {
+		this._addEventListener("click", this.dom.next, (t) => {
+			t.button === 0 && (h(t), this.currentEvent = "mouse", this.activateNextItem());
+		}), this._addEventListener("click", this.dom.previous, (t) => {
+			t.button === 0 && (h(t), this.currentEvent = "mouse", this.activatePreviousItem());
+		}), this._addEventListener("click", this.dom.autoplay, (t) => {
+			t.button === 0 && (h(t), this.currentEvent = "mouse", this.toggleAutoplay());
+		}), this.elements.carouselItems.forEach((t) => {
+			t.dom.tab && this._addEventListener("click", t.dom.tab, (e) => {
+				e.button === 0 && (h(e), this.currentEvent = "mouse", this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)));
+			});
+		});
+	}
+	_handleHover() {
+		this._addEventListener("pointerover", this.dom.carousel, () => {
+			this.autoplay && this._clearInterval();
+		}), this._addEventListener("pointerleave", this.dom.carousel, () => {
+			this.autoplay && this._setInterval(() => this.activateNextItem(), this.transitionDelay);
+		});
+	}
+	_handleKeydown() {
+		this.dom.carouselControls.forEach((t) => {
+			this._addEventListener("keydown", t, (e) => {
+				switch (u(e)) {
+					case "Space":
+					case "Enter":
+						h(e);
+						break;
+				}
+			});
+		}), this.elements.carouselItems.forEach((t) => {
+			t.dom.tab && this._addEventListener("keydown", t.dom.tab, (e) => {
+				switch (u(e)) {
+					case "Space":
+					case "Enter":
+						h(e);
+						break;
+				}
+			});
+		});
+	}
+	_handleKeyup() {
+		this._addEventListener("keyup", this.dom.next, (t) => {
+			switch (u(t)) {
+				case "Space":
+				case "Enter":
+					this.activateNextItem(), h(t);
+					break;
+			}
+		}), this._addEventListener("keyup", this.dom.previous, (t) => {
+			switch (u(t)) {
+				case "Space":
+				case "Enter":
+					this.activatePreviousItem(), h(t);
+					break;
+			}
+		}), this._addEventListener("keyup", this.dom.autoplay, (t) => {
+			switch (u(t)) {
+				case "Space":
+				case "Enter":
+					this.toggleAutoplay(), h(t);
+					break;
+			}
+		}), this.elements.carouselItems.forEach((t) => {
+			t.dom.tab && this._addEventListener("keyup", t.dom.tab, (e) => {
+				switch (u(e)) {
+					case "Space":
+					case "Enter":
+						this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), h(e);
+						break;
+				}
+			});
+		});
+	}
+	_handleLoop() {
+		const t = /* @__PURE__ */ new Map(), e = /* @__PURE__ */ new Map(), r = this.dom.carouselItemContainer;
+		for (let s = 0; s < this.itemsPerPage; s++) t.set(this.dom.carouselItems[s], this.dom.carouselItems.indexOf(this.dom.carouselItems[s]));
+		for (let s = this.dom.carouselItems.length - this.itemsPerPage; s < this.dom.carouselItems.length; s++) e.set(this.dom.carouselItems[s], this.dom.carouselItems.indexOf(this.dom.carouselItems[s]));
+		t.forEach((s, i) => {
+			const o = i.cloneNode(!0);
+			o.setAttribute("aria-hidden", "true"), o.setAttribute("inert", "true"), o.setAttribute("id", `${i.id}-clone`), r.appendChild(o);
+			const n = new p({
+				carouselItemElement: o,
+				clone: this._elements.carouselItems[s],
+				parent: this,
+				prefix: this.prefix,
+				initializeClass: this.classes.initialize,
+				initialize: !0
+			});
+			this.dom.carouselItems.push(o), this._elements.carouselItems.push(n);
+		}), e.forEach((s, i) => {
+			const o = i.cloneNode(!0);
+			o.setAttribute("aria-hidden", "true"), o.setAttribute("inert", "true"), o.setAttribute("id", `${i.id}-clone`), r.insertBefore(o, r.firstChild);
+			const n = new p({
+				carouselItemElement: o,
+				clone: this._elements.carouselItems[s],
+				parent: this,
+				prefix: this.prefix,
+				initializeClass: this.classes.initialize,
+				initialize: !0
+			});
+			this.dom.carouselItems.unshift(o), this._elements.carouselItems.unshift(n);
+		});
+	}
+	activateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.currentCarouselItem.activate({
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	deactivateCurrentItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.currentCarouselItem.deactivate({
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	activateItem(t, { scroll: e = !0, scrollOptions: r = {} } = {}) {
+		this.autoplay && this._clearInterval(), this.deactivateCurrentItem({
+			scroll: e,
+			scrollOptions: r
+		}), this.currentItem = t, this.activateCurrentItem({
+			scroll: e,
+			scrollOptions: r
+		}), this.autoplay && this._setInterval(() => this.activateNextItem(), this.transitionDelay);
+	}
+	activateFirstItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.loop ? this.currentItem === this.dom.carouselItems.length - this.itemsPerPage - 1 ? this.activateNextItem({
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(this.itemsPerPage, {
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(0, {
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	activateLastItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.loop ? this.currentItem === this.itemsPerPage ? this.activatePreviousItem({
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(this.dom.carouselItems.length - this.itemsPerPage - 1, {
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(this.dom.carouselItems.length - 1, {
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	activateNextItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.loop ? this.activateItem(this.currentItem + 1, {
+			scroll: t,
+			scrollOptions: e
+		}) : this.currentItem + 1 >= this.dom.carouselItems.length ? this.activateFirstItem({
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(this.currentItem + 1, {
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	activatePreviousItem({ scroll: t = !0, scrollOptions: e = {} } = {}) {
+		this.loop ? this.activateItem(this.currentItem - 1, {
+			scroll: t,
+			scrollOptions: e
+		}) : this.currentItem - 1 < 0 || this.loop && this.currentItem - 1 < this.itemsPerPage ? this.activateLastItem({
+			scroll: t,
+			scrollOptions: e
+		}) : this.activateItem(this.currentItem - 1, {
+			scroll: t,
+			scrollOptions: e
+		});
+	}
+	toggleAutoplay() {
+		this.autoplay = !this.autoplay, this._handleAutoplay();
+	}
+};
+export { q as default };
 
 //# sourceMappingURL=carousel.es.js.map

@@ -27,24 +27,30 @@
 // - `.[container-name]:col-#`: A class to set the size of a column at a specific container size.
 //
 // The following custom properties can be used to customize the flex columns component:
-// | Property                               | Description                                               | Default Value            |
-// | ---                                    | ---                                                       | ---                      |
-// | `--graupl-flex-columns-row-gap`        | The gap between the rows of the flex columns.             | `var(--graupl-spacer-5)` |
-// | `--graupl-flex-columns-column-gap`     | The gap between the columns of the flex columns.          | `var(--graupl-spacer-5)` |
-// | `--graupl-flex-columns-size`           | The size of a column.                                     | `auto`                   |
-// | `--graupl-flex-columns-max-width`      | The maximum width of a column.                            | `unset`                  |
-// | `--graupl-flex-columns-container-type` | The container type applied to the flex columns component. | `inline-size`            |
+// | Property                               | Description                                               | Default Value              |
+// | -------------------------------------- | --------------------------------------------------------- | -------------------------- |
+// | `--graupl-flex-columns-row-gap`        | The gap between the rows of the flex columns.             | `var(--graupl-spacer-5)`   |
+// | `--graupl-flex-columns-column-gap`     | The gap between the columns of the flex columns.          | `var(--graupl-spacer-5)`   |
+// | `--graupl-flex-columns-size`           | The size of a column.                                     | `auto`                     |
+// | `--graupl-flex-columns-max-width`      | The maximum width of a column.                            | `unset`                    |
+// | `--graupl-flex-columns-container-type` | The container type applied to the flex columns component. | `inline-size`              |
+// | `--graupl-flex-columns-background`     | The background of the flex columns component.             | `var(--graupl-background)` |
+// | `--graupl-flex-columns-color`          | The text color of the flex columns component.             | `var(--graupl-color)`      |
 //
 // The following sass variables can be used to customize the generation of the flex columns component:
 // | Variable                                        | Description                                                      | Default Value    |
-// | ---                                             | ---                                                              | ---              |
+// | ----------------------------------------------- | ---------------------------------------------------------------- | ---------------- |
 // | `$selector-base`                                | The base selector for the component.                             | `"."`            |
 // | `$modifier-selector-base`                       | The base selector for component modifiers.                       | `"."`            |
-// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `$selector-base` |
+// | `$generate-base-theme-map`                      | Flag to generate the base theme map.                             | `true`           |
+// | `$themeable`                                    | Flag to generate theme modifiers.                                | `false`          |
+// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `"."`            |
 // | `$flex-columns-selector`                        | The selector for the flex columns component.                     | `"flex-columns"` |
-// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `$selector-base` |
+// | `$flex-columns-theme-selector-base`             | The selector base for flex columns theme modifiers.              | `"."`            |
+// | `$flex-columns-theme-selector-prefix`           | The flex columns theme modifier selector prefix.                 | `""`             |
+// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `"."`            |
 // | `$flex-columns-column-selector`                 | The selector for the column class.                               | `"col-"`         |
-// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `$selector-base` |
+// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `"."`            |
 // | `$flex-columns-fill-selector`                   | The selector for the fill class.                                 | `"fill"`         |
 // | `$flex-columns-screen-aware-separator`          | The separator for the screen-aware column class.                 | `"\\:"`          |
 // | `$flex-columns-container-aware-separator`       | The separator for the container-aware column class.              | `"\\:"`          |
@@ -55,6 +61,8 @@
 // | `$flex-columns-size`                            | The default size of a column.                                    | `auto`           |
 // | `$flex-columns-max-width`                       | The default maximum width of a column.                           | `unset`          |
 // | `$flex-columns-container-type`                  | The container type applied to the flex columns component.        | `"inline-size"`  |
+// | `$flex-columns-theme-mappings`                  | Map of properties/shades for flex columns themes.                | `()`             |
+// | `$flex-columns-theme-map`                       | Expanded map of properties/colors/shades.                        | `()`             |
 //
 // @example
 //   <div class="flex-columns">
@@ -81,6 +89,7 @@
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
 @use "../../mixins/container";
+@use "../../mixins/theme";
 @use "../../mixins/utility";
 @use "defaults";
 @use "sass:map";
@@ -187,6 +196,23 @@
         }
       }
       /* stylelint-enable  scss/operator-no-newline-after */
+    }
+  }
+}
+
+@include layer(theme) {
+  // `.flex-columns`
+  #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
+    background: $flex-columns-background;
+    color: $flex-columns-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$flex-columns-theme-map,
+        defaults.$flex-columns-theme-selector-base,
+        defaults.$flex-columns-theme-selector-prefix,
+        "flex-columns-"
+      );
     }
   }
 }

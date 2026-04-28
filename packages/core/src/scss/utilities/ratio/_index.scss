@@ -14,30 +14,32 @@
 // - `.eight-by-five`: Applies a 8:5 aspect ratio.
 //
 // The following custom properties control the generated classes:
-// - `--graupl-ratio`: The aspect ratio value.
+// | Property          | Description                         | Default Value |
+// | ----------------- | ----------------------------------- | ------------- |
+// | `--graupl-ratio`  | Aspect-ratio value used by `.ratio` | `auto`        |
 //
-// The following sass variables control the generated classes:
-// | Variable                           | Description                                    | Default Value                                                                                      |
-// | ---                                | ---                                            | ---                                                                                                |
-// | `$selector-base`                   | Base selector for utility classes.             | `"."`                                                                                              |
-// | `$use-important`                   | Append `!important` to generated declarations. | `true`                                                                                             |
-// | `$generate-base-utilities`         | Generate the base utilities.                   | `true`                                                                                             |
-// | `$screen-aware`                    | Generate screen-aware variants.                | `true`                                                                                             |
-// | `$theme-aware`                     | Generate theme-aware variants.                 | `true`                                                                                             |
-// | `$state-aware`                     | Generate state-aware variants.                 | `true`                                                                                             |
-// | `$container-aware`                 | Generate container-aware variants.             | `true`                                                                                             |
-// | `$screen-aware-separator`          | Separator for screen-aware utilities.          | `"\\:"`                                                                                            |
-// | `$theme-aware-separator`           | Separator for theme-aware utilities.           | `"\\:"`                                                                                            |
-// | `$state-aware-separator`           | Separator for state-aware utilities.           | `"\\:"`                                                                                            |
-// | `$container-aware-separator`       | Separator for container-aware utilities.       | `"\\:"`                                                                                            |
-// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.             | `""`                                                                                               |
-// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.              | `""`                                                                                               |
-// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.              | `""`                                                                                               |
-// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.          | `"cq\\:"`                                                                                          |
-// | `$ratio-selector`                  | Base selector for the ratio utility.           | `"ratio"`                                                                                          |
-// | `$ratio-variant-selector-prefix`   | Prefix for ratio variant utilities.            | `"ratio-"`                                                                                         |
-// | `$force-ratio-selector`            | Selector for the force ratio utility.          | `"force-ratio"`                                                                                    |
-// | `$ratios`                          | Map of ratio variants.                         | `one-by-one, two-by-one, four-by-three, four-by-one, sixteen-by-nine, three-by-two, eight-by-five` |
+// The following variables control the generated classes:
+// | Variable                           | Description                                               | Default Value                                                                                      |
+// | ---------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+// | `$selector-base`                   | Base selector for utility classes.                        | `"."`                                                                                              |
+// | `$use-important`                   | Appends `!important` to generated utility declarations.   | `true`                                                                                             |
+// | `$generate-base-utilities`         | Generates the base utility classes.                       | `true`                                                                                             |
+// | `$screen-aware`                    | Enables screen-aware utility variants.                    | `true`                                                                                             |
+// | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`                                                                                            |
+// | `$state-aware`                     | Enables state-aware utility variants.                     | `false`                                                                                            |
+// | `$container-aware`                 | Enables container-aware utility variants.                 | `true`                                                                                             |
+// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`                                                                                            |
+// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`                                                                                            |
+// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`                                                                                            |
+// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`                                                                                            |
+// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`                                                                                               |
+// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`                                                                                               |
+// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`                                                                                               |
+// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.    | `"cq\\:"`                                                                                          |
+// | `$ratio-selector`                  | Base selector for the ratio utility.                      | `"ratio"`                                                                                          |
+// | `$ratio-variant-selector-prefix`   | Prefix for ratio variant utilities.                       | `""`                                                                                               |
+// | `$force-ratio-selector`            | Selector for the force ratio utility.                     | `"force-ratio"`                                                                                    |
+// | `$ratios`                          | Map of ratio variants.                                    | `map.merge($-ratios, $ratios)`                                                                     |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, only screen-aware utility classes are generated.

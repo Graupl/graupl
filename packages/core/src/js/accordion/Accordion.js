@@ -52,6 +52,7 @@ import Component from "../Component.js";
  * @property {boolean}                            _collapseAll                         - A flag to decide if all accordion items can be closed at the same time.
  * @property {number}                             _currentChild                        - The index of the current child node.
  * @property {string}                             _storageKey                          - The key used for storage.
+ * @property {boolean}                            _shouldStore                         - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<number>}                     _delays                              - The delay times (in milliseconds) for various aspects throughout the accordion.
  * @property {string}                             _focusState                          - The current state of the accordion's focus.
  * @property {string}                             _currentEvent                        - The last type of event triggered within the accordion.
@@ -65,6 +66,7 @@ import Component from "../Component.js";
  * @property {Object<CustomEvent>}                _events                              - Custom events that can be triggered throughout the accordion.
  * @property {string}                             _prefix                              - The prefix used for CSS custom properties and attributes.
  * @property {string}                             _key                                 - The key used to generate IDs throughout the accordion.
+ * @property {string}                             _name                                - The component name of the accordion.
  * @property {string}                             _id                                  - The main ID of the accordion.
  * @property {boolean}                            _valid                               - The validity state of the accordion.
  * @property {boolean}                            _initialized                         - The initialized state of the accordion.
@@ -77,6 +79,7 @@ class Accordion extends Component {
   _collapseAll = true;
   _currentChild = 0;
   _storageKey = "accordions";
+  _name = "Accordion";
 
   /**
    * Constructs a new `Accordion`.

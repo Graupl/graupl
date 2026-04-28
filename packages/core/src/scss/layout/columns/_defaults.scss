@@ -7,13 +7,19 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Columns selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
 $force-single-columns: true !default;
 $columns-selector-base: $selector-base !default;
 $columns-selector: "columns" !default;
+$columns-theme-selector-base: $modifier-selector-base !default;
+$columns-theme-selector-prefix: "" !default;
 $columns-count-selector-base: $selector-base !default;
 $columns-count-selector-prefix: "count-" !default;
 $columns-span-selector-base: $selector-base !default;
@@ -25,3 +31,30 @@ $columns-count: 3 !default;
 $columns-min-count: 1 !default;
 $columns-max-count: 6 !default;
 $columns-span: 1 !default;
+
+// Columns state theme defaults.
+// This map is used to define the default colour shades for the
+// themed columns component.
+//
+// e.g.
+// Primary columns will use primary--900 as the text colour and
+// primary--200 as the background.
+//
+// Secondary/tertiary variants will use the same shade for their respective colours.
+$-columns-theme-mappings: (
+  color: 900,
+  background: 200,
+);
+$columns-theme-mappings: () !default;
+
+// Merge the custom columns state theme map with the default one.
+@if $generate-base-theme-map {
+  $columns-theme-mappings: map.merge(
+    $-columns-theme-mappings,
+    $columns-theme-mappings
+  );
+}
+
+$-columns-theme-map: theme.generate-property-map($columns-theme-mappings);
+$columns-theme-map: () !default;
+$columns-theme-map: map.deep-merge($-columns-theme-map, $columns-theme-map);

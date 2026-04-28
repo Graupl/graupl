@@ -13,7 +13,7 @@
 //
 // The following custom properties can be used to customize the button component:
 // | Property                                     | Description                                                                                                    | Default Value                                                                                                                                                                                                                                                                  |
-// | ---                                          | ---                                                                                                            | ---                                                                                                                                                                                                                                                                            |
+// | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 // | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `var(--graupl-interactive-min-width)`                                                                                                                                                                                                                                          |
 // | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `var(--graupl-interactive-min-height)`                                                                                                                                                                                                                                         |
 // | `--graupl-button-padding-x`                  | The horizontal padding of the button component.                                                                | `var(--graupl-spacer-5)`                                                                                                                                                                                                                                                       |
@@ -63,23 +63,23 @@
 // | `--graupl-button-disabled-border-color`      | The border colour of a disabled button component.                                                              | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                                                                     |
 //
 // The following sass variables can be used to customize the generation of the button component:
-// | Variable                        | Description                                                                             | Default Value               |
-// | ---                             | ---                                                                                     | ---                         |
-// | `$selector-base`                | The selector base for the component.                                                    | `.`                         |
-// | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `.`                         |
-// | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                      |
-// | `$themeable`                    | A flag that determines whether theme modifiers are generated.                           | `true`                      |
-// | `$button-selector-base`         | The selector base for the button component.                                             | `$selector-base`            |
-// | `$button-selector`              | The button component selector.                                                          | `button`                    |
-// | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `$modifier-selector-base`   |
-// | `$button-link-selector`         | The button link component modifier selector.                                            | `link`                      |
-// | `$button-theme-selector-base`   | The selector base for the button theme component modifiers.                             | `$modifier-selector-base`   |
-// | `$button-theme-selector-prefix` | The button theme component modifier selector prefix.                                    | `""`                        |
-// | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`                      |
-// | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)`               |
-// | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `$button-initial-transform` |
-// | `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`                        |
-// | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `()`                        |
+// | Variable                        | Description                                                                             | Default Value                                           |
+// | ------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+// | `$selector-base`                | The selector base for the component.                                                    | `"."`                                                   |
+// | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `"."`                                                   |
+// | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                                                  |
+// | `$themeable`                    | A flag that determines whether theme modifiers are generated.                           | `true`                                                  |
+// | `$button-selector-base`         | The selector base for the button component.                                             | `"."`                                                   |
+// | `$button-selector`              | The button component selector.                                                          | `"button"`                                              |
+// | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `"."`                                                   |
+// | `$button-link-selector`         | The button link component modifier selector.                                            | `"link"`                                                |
+// | `$button-theme-selector-base`   | The selector base for the button theme component modifiers.                             | `"."`                                                   |
+// | `$button-theme-selector-prefix` | The button theme component modifier selector prefix.                                    | `""`                                                    |
+// | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`                                                  |
+// | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)`                                           |
+// | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `none`                                                  |
+// | `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`                                                    |
+// | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `map.deep-merge($-button-theme-map, $button-theme-map)` |
 //
 // ## Using `$button-theme-mappings`
 //
@@ -195,6 +195,7 @@
 @use "../link/defaults" as link-defaults;
 @use "defaults";
 @use "mixins" as *;
+@use "../link/mixins" as link-mixins;
 @use "variables" as *;
 
 @include layer(base) {
@@ -204,24 +205,7 @@
 
     // &.link
     &#{defaults.$button-link-selector-base}#{defaults.$button-link-selector} {
-      --#{root-defaults.$prefix}button-padding: #{link.$link-padding};
-      --#{root-defaults.$prefix}button-transition: #{link.$link-transition};
-      --#{root-defaults.$prefix}button-transition-reduced-motion: #{link.$link-transition-reduced-motion};
-      --#{root-defaults.$prefix}button-transform: #{link.$link-transform};
-      --#{root-defaults.$prefix}button-visited-transform: #{link.$link-visited-transform};
-      --#{root-defaults.$prefix}button-focus-transform: #{link.$link-transform};
-      --#{root-defaults.$prefix}button-hover-transform: #{link.$link-hover-transform};
-      --#{root-defaults.$prefix}button-active-transform: #{link.$link-active-transform};
-      --#{root-defaults.$prefix}button-border-width: #{link.$link-border-width};
-      --#{root-defaults.$prefix}button-border-style: #{link.$link-border-style};
-      --#{root-defaults.$prefix}button-border-radius: #{link.$link-border-radius};
-      --#{root-defaults.$prefix}button-min-width: #{link.$link-min-width};
-      --#{root-defaults.$prefix}button-min-height: #{link.$link-min-height};
-      --#{root-defaults.$prefix}button-font-size: inherit;
-
-      text-decoration: link.$link-text-decoration;
-      text-decoration-thickness: link.$link-text-decoration-thickness;
-      text-decoration-style: link.$link-text-decoration-style;
+      @include link-mixins.apply-base;
     }
   }
 
@@ -231,26 +215,14 @@
     &#{defaults.$button-selector-base}#{defaults.$button-selector}:not(
         #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
       ) {
-      --#{root-defaults.$prefix}link-padding: #{$button-padding};
-      --#{root-defaults.$prefix}link-transition: #{$button-transition};
-      --#{root-defaults.$prefix}link-transition-reduced-motion: #{$button-transition-reduced-motion};
-      --#{root-defaults.$prefix}link-transform: #{$button-transform};
-      --#{root-defaults.$prefix}link-visited-transform: #{$button-visited-transform};
-      --#{root-defaults.$prefix}link-focus-transform: #{$button-focus-transform};
-      --#{root-defaults.$prefix}link-hover-transform: #{$button-hover-transform};
-      --#{root-defaults.$prefix}link-active-transform: #{$button-active-transform};
-      --#{root-defaults.$prefix}link-disabled-transform: #{$button-disabled-transform};
-      --#{root-defaults.$prefix}link-border-width: #{$button-border-width};
-      --#{root-defaults.$prefix}link-border-style: #{$button-border-style};
-      --#{root-defaults.$prefix}link-border-radius: #{$button-border-radius};
-      --#{root-defaults.$prefix}link-min-width: #{$button-min-width};
-      --#{root-defaults.$prefix}link-min-height: #{$button-min-height};
       --#{root-defaults.$prefix}link-text-decoration: none;
       --#{root-defaults.$prefix}link-visited-text-decoration: none;
       --#{root-defaults.$prefix}link-focus-text-decoration: none;
       --#{root-defaults.$prefix}link-hover-text-decoration: none;
       --#{root-defaults.$prefix}link-active-text-decoration: none;
       --#{root-defaults.$prefix}link-disabled-text-decoration: none;
+
+      @include apply-base;
     }
   }
 }
@@ -262,24 +234,7 @@
 
     // &.link
     &#{defaults.$button-link-selector-base}#{defaults.$button-link-selector} {
-      --#{root-defaults.$prefix}button-color: #{link.$link-color};
-      --#{root-defaults.$prefix}button-visited-color: #{link.$link-visited-color};
-      --#{root-defaults.$prefix}button-focus-color: #{link.$link-focus-color};
-      --#{root-defaults.$prefix}button-hover-color: #{link.$link-hover-color};
-      --#{root-defaults.$prefix}button-active-color: #{link.$link-active-color};
-      --#{root-defaults.$prefix}button-disabled-color: #{link.$link-disabled-color};
-      --#{root-defaults.$prefix}button-background: #{link.$link-background};
-      --#{root-defaults.$prefix}button-visited-background: #{link.$link-visited-background};
-      --#{root-defaults.$prefix}button-focus-background: #{link.$link-focus-background};
-      --#{root-defaults.$prefix}button-hover-background: #{link.$link-hover-background};
-      --#{root-defaults.$prefix}button-active-background: #{link.$link-active-background};
-      --#{root-defaults.$prefix}button-disabled-background: #{link.$link-disabled-background};
-      --#{root-defaults.$prefix}button-border-color: #{link.$link-border-color};
-      --#{root-defaults.$prefix}button-visited-border-color: #{link.$link-visited-border-color};
-      --#{root-defaults.$prefix}button-focus-border-color: #{link.$link-focus-border-color};
-      --#{root-defaults.$prefix}button-hover-border-color: #{link.$link-hover-border-color};
-      --#{root-defaults.$prefix}button-active-border-color: #{link.$link-active-border-color};
-      --#{root-defaults.$prefix}button-disabled-border-color: #{link.$link-disabled-border-color};
+      @include link-mixins.apply-theme;
     }
   }
 
@@ -289,24 +244,7 @@
     &#{defaults.$button-selector-base}#{defaults.$button-selector}:not(
         #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
       ) {
-      --#{root-defaults.$prefix}link-color: #{$button-color};
-      --#{root-defaults.$prefix}link-visited-color: #{$button-visited-color};
-      --#{root-defaults.$prefix}link-focus-color: #{$button-focus-color};
-      --#{root-defaults.$prefix}link-hover-color: #{$button-hover-color};
-      --#{root-defaults.$prefix}link-active-color: #{$button-active-color};
-      --#{root-defaults.$prefix}link-disabled-color: #{$button-disabled-color};
-      --#{root-defaults.$prefix}link-background: #{$button-background};
-      --#{root-defaults.$prefix}link-visited-background: #{$button-visited-background};
-      --#{root-defaults.$prefix}link-focus-background: #{$button-focus-background};
-      --#{root-defaults.$prefix}link-hover-background: #{$button-hover-background};
-      --#{root-defaults.$prefix}link-active-background: #{$button-active-background};
-      --#{root-defaults.$prefix}link-disabled-background: #{$button-disabled-background};
-      --#{root-defaults.$prefix}link-border-color: #{$button-border-color};
-      --#{root-defaults.$prefix}link-visited-border-color: #{$button-visited-border-color};
-      --#{root-defaults.$prefix}link-focus-border-color: #{$button-focus-border-color};
-      --#{root-defaults.$prefix}link-hover-border-color: #{$button-hover-border-color};
-      --#{root-defaults.$prefix}link-active-border-color: #{$button-active-border-color};
-      --#{root-defaults.$prefix}link-disabled-border-color: #{$button-disabled-border-color};
+      @include apply-theme;
     }
   }
 }

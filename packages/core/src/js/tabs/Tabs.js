@@ -40,6 +40,7 @@ import Component from "../Component.js";
  * @property {boolean}                            _automatic                   - A flag to set if focusing a tab toggle will automatically activate it.
  * @property {number}                             _currentChild                - The index of the current child node.
  * @property {string}                             _storageKey                  - The key used for storage.
+ * @property {boolean}                            _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<CustomEvent>}                _events                      - Custom events that can be triggered throughout the tabs.
  * @property {Object<number>}                     _delays                      - The delay times (in milliseconds) for various aspects throughout the tabs.
  * @property {string}                             _focusState                  - The current state of the tabs' focus.

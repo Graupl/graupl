@@ -13,7 +13,7 @@
 //
 // The following custom properties can be used to customize the tabs component:
 // | Property                                               | Description                                                                                            | Default Value                                                                                                                                                                                                                     |
-// | ---                                                    | ---                                                                                                    | ---                                                                                                                                                                                                                               |
+// | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | `--graupl-tabs-padding-x`                              | The horizontal padding of the tabs component.                                                          | `var(--graupl-spacer-0)`                                                                                                                                                                                                          |
 // | `--graupl-tabs-padding-y`                              | The vertical padding of the tabs component.                                                            | `var(--graupl-spacer-0)`                                                                                                                                                                                                          |
 // | `--graupl-tabs-padding`                                | The padding of the tabs component (combines y and x padding).                                          | `var(--graupl-tabs-padding-y) var(--graupl-tabs-padding-x)`                                                                                                                                                                       |
@@ -141,43 +141,43 @@
 // | `--graupl-tabs-tab-content-transition-reduced-motion`  | The transition for tab content changes when reduced motion is enabled.                                 | `opacity var(--graupl-tabs-tab-content-transition-duration) var(--graupl-tabs-tab-content-transition-timing-function)`                                                                                                            |
 //
 // The following sass variables can be used to customize the generation of the tabs component:
-// | Variable                                        | Description                                                                           | Default Value                        |
-// | ---                                             | ---                                                                                   | ---                                  |
-// | `$selector-base`                                | The selector base for the component.                                                  | `.`                                  |
-// | `$modifier-selector-base`                       | The selector base for component modifiers.                                            | `.`                                  |
-// | `$generate-base-theme-map`                      | A flag to generate the base theme maps for tabs variants.                             | `true`                               |
-// | `$themeable`                                    | A flag that determines whether theme modifiers are generated.                         | `false`                              |
-// | `$tabs-selector-base`                           | The selector base for the tabs component.                                             | `$selector-base`                     |
-// | `$tabs-selector`                                | The tabs component selector.                                                          | `"tabs"`                             |
-// | `$tabs-tab-list-selector-base`                  | The selector base for the tabs list component.                                        | `$selector-base`                     |
-// | `$tabs-tab-list-selector`                       | The tab list component selector.                                                      | `"tab-list"`                         |
-// | `$tabs-tab-toggle-selector-base`                | The selector base for the individual tab toggle component.                            | `$selector-base`                     |
-// | `$tabs-tab-toggle-selector`                     | The individual tab toggle component selector.                                         | `"tab-toggle"`                       |
-// | `$tabs-tab-content-selector-base`               | The selector base for the individual tab content component.                           | `$selector-base`                     |
-// | `$tabs-tab-content-selector`                    | The individual tab content component selector.                                        | `"tab-content"`                      |
-// | `$tabs-theme-selector-base`                     | The selector base for the tabs theme component modifiers.                             | `$modifier-selector-base`            |
-// | `$tabs-theme-selector-prefix`                   | The tabs theme component modifier selector prefix.                                    | `""`                                 |
-// | `$tabs-tab-content-open-selector-base`          | The selector base applied to the open modifier.                                       | `$modifier-selector-base`            |
-// | `$tabs-tab-content-open-selector`               | The selector applied to the open modifier.                                            | `"show"`                             |
-// | `$tabs-tab-content-closed-selector-base`        | The selector base applied to the closed modifier.                                     | `$modifier-selector-base`            |
-// | `$tabs-tab-content-closed-selector`             | The selector applied to the closed modifier.                                          | `"hide"`                             |
-// | `$tabs-tab-content-transitioning-selector-base` | The selector base applied to the transitioning modifier.                              | `$modifier-selector-base`            |
-// | `$tabs-tab-content-transitioning-selector`      | The selector applied to the transitioning modifier.                                   | `"transitioning"`                    |
-// | `$tabs-tab-content-show-display`                | The default display value for open tab contents.                                      | `block`                              |
-// | `$tabs-tab-content-hide-display`                | The default display value for closed tab contents.                                    | `none`                               |
-// | `$tabs-tab-content-transitioning-display`       | The default display value for transitioning tab contents.                             | `$tabs-tab-content-show-display`     |
-// | `$tabs-tab-content-show-opacity`                | The default opacity value for open tab contents.                                      | `1`                                  |
-// | `$tabs-tab-content-hide-opacity`                | The default opacity value for closed tab contents.                                    | `0`                                  |
-// | `$tabs-tab-content-transitioning-opacity`       | The default opacity value for transitioning tab contents.                             | `$tabs-tab-content-hide-opacity`     |
-// | `$tabs-tab-toggle-initial-transform`            | The initial transform of the tab toggle component.                                    | `none`                               |
-// | `$tabs-tab-toggle-final-transform`              | The final transform of the tab toggle component.                                      | `none`                               |
-// | `$tabs-tab-toggle-disabled-transform`           | The disabled transform of the tab toggle component.                                   | `$tabs-tab-toggle-initial-transform` |
-// | `$tabs-theme-mappings`                          | A map of properties and color shades used generate all tabs variants.                 | `()`                                 |
-// | `$tabs-theme-map`                               | A map of all properties, colors, and color shades used to generate all tabs variants. | `()`                                 |
+// | Variable                                        | Description                                                                           | Default Value                                            |
+// | ----------------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`                                | The selector base for the component.                                                  | `"."`                                                    |
+// | `$modifier-selector-base`                       | The selector base for component modifiers.                                            | `"."`                                                    |
+// | `$generate-base-theme-map`                      | A flag to generate the base theme maps for tabs variants.                             | `true`                                                   |
+// | `$themeable`                                    | A flag that determines whether theme modifiers are generated.                         | `false`                                                  |
+// | `$tabs-selector-base`                           | The selector base for the tabs component.                                             | `"."`                                                    |
+// | `$tabs-selector`                                | The tabs component selector.                                                          | `"tabs"`                                                 |
+// | `$tabs-tab-list-selector-base`                  | The selector base for the tabs list component.                                        | `"."`                                                    |
+// | `$tabs-tab-list-selector`                       | The tab list component selector.                                                      | `"tab-list"`                                             |
+// | `$tabs-tab-toggle-selector-base`                | The selector base for the individual tab toggle component.                            | `"."`                                                    |
+// | `$tabs-tab-toggle-selector`                     | The individual tab toggle component selector.                                         | `"tab-toggle"`                                           |
+// | `$tabs-tab-content-selector-base`               | The selector base for the individual tab content component.                           | `"."`                                                    |
+// | `$tabs-tab-content-selector`                    | The individual tab content component selector.                                        | `"tab-content"`                                          |
+// | `$tabs-theme-selector-base`                     | The selector base for the tabs theme component modifiers.                             | `"."`                                                    |
+// | `$tabs-theme-selector-prefix`                   | The tabs theme component modifier selector prefix.                                    | `""`                                                     |
+// | `$tabs-tab-content-open-selector-base`          | The selector base applied to the open modifier.                                       | `"."`                                                    |
+// | `$tabs-tab-content-open-selector`               | The selector applied to the open modifier.                                            | `"show"`                                                 |
+// | `$tabs-tab-content-closed-selector-base`        | The selector base applied to the closed modifier.                                     | `"."`                                                    |
+// | `$tabs-tab-content-closed-selector`             | The selector applied to the closed modifier.                                          | `"hide"`                                                 |
+// | `$tabs-tab-content-transitioning-selector-base` | The selector base applied to the transitioning modifier.                              | `"."`                                                    |
+// | `$tabs-tab-content-transitioning-selector`      | The selector applied to the transitioning modifier.                                   | `"transitioning"`                                        |
+// | `$tabs-tab-content-show-display`                | The default display value for open tab contents.                                      | `block`                                                  |
+// | `$tabs-tab-content-hide-display`                | The default display value for closed tab contents.                                    | `none`                                                   |
+// | `$tabs-tab-content-transitioning-display`       | The default display value for transitioning tab contents.                             | `block`                                                  |
+// | `$tabs-tab-content-show-opacity`                | The default opacity value for open tab contents.                                      | `1`                                                      |
+// | `$tabs-tab-content-hide-opacity`                | The default opacity value for closed tab contents.                                    | `0`                                                      |
+// | `$tabs-tab-content-transitioning-opacity`       | The default opacity value for transitioning tab contents.                             | `0`                                                      |
+// | `$tabs-tab-toggle-initial-transform`            | The initial transform of the tab toggle component.                                    | `none`                                                   |
+// | `$tabs-tab-toggle-final-transform`              | The final transform of the tab toggle component.                                      | `none`                                                   |
+// | `$tabs-tab-toggle-disabled-transform`           | The disabled transform of the tab toggle component.                                   | `none`                                                   |
+// | `$tabs-theme-mappings`                          | A map of properties and color shades used generate all tabs variants.                 | `map.merge($-tabs-theme-mappings, $tabs-theme-mappings)` |
+// | `$tabs-theme-map`                               | A map of all properties, colors, and color shades used to generate all tabs variants. | `map.deep-merge($-tabs-theme-map, $tabs-theme-map)`      |
 //
 // The following javascript options can be used to customize the generation of the tabs component.
 // | Variable                      | Description                                                                | Default Value  |
-// | ---                           | ---                                                                        | ---            |
+// | ----------------------------- | -------------------------------------------------------------------------- | -------------- |
 // | `context`                     | The element that scopes the selector when locating tabs.                   | `document`     |
 // | `selector`                    | The selector used to find tabs in the DOM.                                 | `.tabs`        |
 // | `options`                     | An object of options passed through to the `Tabs` constructor (see below). | `{}`           |
@@ -188,8 +188,8 @@
 // | `options.closeClass`          | The class(es) applied when a tab is closed.                                | `hide`         |
 // | `options.transitionClass`     | The class(es) applied while a tab is transitioning.                        | `null`         |
 // | `options.transitionDuration`  | Duration (ms) for transitions between open/closed states.                  | `300`          |
-// | `options.openDuration`        | Duration (ms) for closed → open; `-1` uses `transitionDuration`.           | `-1`           |
-// | `options.closeDuration`       | Duration (ms) for open → closed; `-1` uses `transitionDuration`.           | `-1`           |
+// | `options.openDuration`        | Duration (ms) for closed → open; `-1` uses `transitionDuration`.         | `-1`           |
+// | `options.closeDuration`       | Duration (ms) for open → closed; `-1` uses `transitionDuration`.         | `-1`           |
 // | `options.automaticActivation` | When `true`, focusing a tab toggle also activates it.                      | `false`        |
 // | `options.prefix`              | Prefix for generated CSS custom properties.                                | `graupl-`      |
 // | `options.key`                 | Key used when generating IDs; `null` auto-generates a random key.          | `null`         |
@@ -389,6 +389,7 @@
     border-width: $tabs-tab-toggle-border-width;
     border-style: $tabs-tab-toggle-border-style;
     border-radius: $tabs-tab-toggle-border-radius;
+    text-align: left;
 
     @include state.generate-modifiers(
       (
