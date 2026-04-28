@@ -13,7 +13,7 @@ import {
   isValidEventType,
   hasValidRootDOMElement,
 } from "./validate.js";
-import StorageManager from "./StorageManager.js";
+import StorageManager from "./storage/StorageManager.js";
 import { addClass, removeClass } from "./domHelpers.js";
 
 class Component {
@@ -226,6 +226,15 @@ class Component {
   _key = "";
 
   /**
+   * The component name of the component.
+   *
+   * @protected
+   *
+   * @type {string}
+   */
+  _name = "Component";
+
+  /**
    * The key used for storage.
    *
    * @protected
@@ -233,6 +242,11 @@ class Component {
    * @type {string}
    */
   _storageKey = "components";
+
+  /**
+   * A flag to check if the component should be stored in the StorageManager.
+   */
+  _shouldStore = true;
 
   /**
    * The main ID of the component.
@@ -298,7 +312,7 @@ class Component {
     try {
       if (!this._validate()) {
         throw new Error(
-          `Graupl ${this.constructor.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
+          `Graupl ${this.name}: Cannot initialize component. The following errors have been found:\n - ${this.errors
             .map((error) => error.message)
             .join("\n - ")}`
         );
@@ -547,6 +561,26 @@ class Component {
   }
 
   /**
+   * A flag to check if the disclosure's focus methods should _actually_ move the focus in the DOM.
+   *
+   * This will be `false` unless any of the following criteria are met:
+   * - The disclosure's current event is "keyboard".
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   */
+  get shouldFocus() {
+    let check = false;
+
+    if (this.currentEvent === "keyboard") {
+      check = true;
+    }
+
+    return check;
+  }
+
+  /**
    * The breakoint that the component will call media query list events.
    *
    * @type {string}
@@ -616,6 +650,19 @@ class Component {
    */
   get key() {
     return this._key;
+  }
+
+  /**
+   * The component name of the component.
+   *
+   * @readonly
+   *
+   * @type {string}
+   *
+   * @see _name
+   */
+  get name() {
+    return this._name;
   }
 
   /**
@@ -889,7 +936,7 @@ class Component {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.name}: "${elementType}" is not a valid element type.`
       );
     }
 
@@ -899,7 +946,7 @@ class Component {
       this._protectedDOMElements.includes(elementType)
     ) {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
+        `Graupl ${this.name}: "${elementType}" element cannot be set through _setDOMElementType because it is a protected element.`
       );
     }
 
@@ -943,7 +990,7 @@ class Component {
     // Make sure the element type is valid.
     if (typeof this.selectors[elementType] !== "string") {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" is not a valid element type.`
+        `Graupl ${this.name}: "${elementType}" is not a valid element type.`
       );
     }
 
@@ -953,7 +1000,7 @@ class Component {
       this._protectedDOMElements.includes(elementType)
     ) {
       throw new Error(
-        `Graupl ${this.constructor.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
+        `Graupl ${this.name}: "${elementType}" element cannot be reset through _resetDOMElementType because it is a protected element.`
       );
     }
 
@@ -1054,6 +1101,11 @@ class Component {
    * @protected
    */
   _store() {
+    // Make sure the component should be stored.
+    if (!this._shouldStore) {
+      return;
+    }
+
     // Set up the storage.
     if (
       !isValidInstance(
@@ -1079,6 +1131,11 @@ class Component {
    * @protected
    */
   _unstore() {
+    // Make sure the component should be stored.
+    if (!this._shouldStore) {
+      return;
+    }
+
     if (
       !isValidInstance(
         StorageManager,
@@ -1184,7 +1241,7 @@ class Component {
     isValidType("boolean", { bubbles });
     isValidType("object", { detail });
 
-    const eventName = `graupl${this.constructor.name}${name.charAt(0).toUpperCase()}${name.slice(
+    const eventName = `graupl${this.name}${name.charAt(0).toUpperCase()}${name.slice(
       1
     )}`;
 
@@ -1289,6 +1346,36 @@ class Component {
         listener.options
       );
     });
+  }
+
+  /**
+   * Focus the component.
+   *
+   * Sets the components's focus state to "self" and
+   * focusses the component if the component's shouldFocus
+   * value is `true`.
+   */
+  focus() {
+    this.focusState = "self";
+
+    if (this.shouldFocus) {
+      this.rootDOMElement.focus();
+    }
+  }
+
+  /**
+   * Unfocus the component.
+   *
+   * Sets the component's focus state to "none"
+   * and blurs the component if the component's shouldFocus
+   * value is `true`.
+   */
+  blur() {
+    this.focusState = "none";
+
+    if (this.shouldFocus) {
+      this.rootDOMElement.blur();
+    }
   }
 
   /**

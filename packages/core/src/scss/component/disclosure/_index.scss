@@ -17,76 +17,80 @@
 // - `.disclosure-toggle`: The disclosure toggle control that inherits the button base styles.
 //
 // The following custom properties can be used to customize the disclosure component:
-// - `--graupl-disclosure-background`: The disclosure container background color.
-// - `--graupl-disclosure-color`: The disclosure container text color.
-// - `--graupl-disclosure-content-border-color`: The disclosure content border color.
-// - `--graupl-disclosure-content-padding-x`: The horizontal padding for the disclosure content.
-// - `--graupl-disclosure-content-padding-y`: The vertical padding for the disclosure content.
-// - `--graupl-disclosure-content-padding`: The shorthand padding for the disclosure content (combines x and y padding).
-// - `--graupl-disclosure-show-display`: The display value applied when the disclosure is open.
-// - `--graupl-disclosure-hide-display`: The display value applied when the disclosure is hidden.
-// - `--graupl-disclosure-transitioning-display`: The display value applied while transitioning.
-// - `--graupl-disclosure-display`: The base display value applied to the disclosure container.
-// - `--graupl-disclosure-show-block-size`: The block-size value applied when the disclosure is open.
-// - `--graupl-disclosure-hide-block-size`: The block-size value applied when the disclosure is hidden.
-// - `--graupl-disclosure-transitioning-block-size`: The block-size value applied while transitioning.
-// - `--graupl-disclosure-block-size`: The base block-size value applied to the disclosure container.
-// - `--graupl-disclosure-show-opacity`: The opacity value applied when the disclosure is open.
-// - `--graupl-disclosure-hide-opacity`: The opacity value applied when the disclosure is hidden.
-// - `--graupl-disclosure-transitioning-opacity`: The opacity value applied while transitioning.
-// - `--graupl-disclosure-opacity`: The base opacity value applied to the disclosure container.
-// - `--graupl-disclosure-transition-duration`: The animation duration for disclosure transitions.
-// - `--graupl-disclosure-transition-timing-function`: The easing used for disclosure transitions.
-// - `--graupl-disclosure-transition`: The combined transition declaration for the disclosure container.
-// - `--graupl-disclosure-transition-reduced-motion`: The transition used when motion is reduced.
-// - `--graupl-disclosure-content-border-top-width`: The top border width for the disclosure content.
-// - `--graupl-disclosure-content-border-right-width`: The right border width for the disclosure content.
-// - `--graupl-disclosure-content-border-bottom-width`: The bottom border width for the disclosure content.
-// - `--graupl-disclosure-content-border-left-width`: The left border width for the disclosure content.
-// - `--graupl-disclosure-content-border-width`: The shorthand border width for the disclosure content (combines top, right, bottom, and left widths).
-// - `--graupl-disclosure-content-border-top-style`: The top border style for the disclosure content.
-// - `--graupl-disclosure-content-border-right-style`: The right border style for the disclosure content.
-// - `--graupl-disclosure-content-border-bottom-style`: The bottom border style for the disclosure content.
-// - `--graupl-disclosure-content-border-left-style`: The left border style for the disclosure content.
-// - `--graupl-disclosure-content-border-style`: The shorthand border style for the disclosure content (combines top, right, bottom, and left styles).
-// - `--graupl-disclosure-content-border-top-left-radius`: The top-left border radius for the content.
-// - `--graupl-disclosure-content-border-top-right-radius`: The top-right border radius for the content.
-// - `--graupl-disclosure-content-border-bottom-right-radius`: The bottom-right border radius for the content.
-// - `--graupl-disclosure-content-border-bottom-left-radius`: The bottom-left border radius for the content.
-// - `--graupl-disclosure-content-border-radius`: The shorthand border radius for the disclosure content (combines top-left, top-right, bottom-right, and bottom-left radii).
-// - `--graupl-disclosure-toggle-transform`: The transform applied to the toggle indicator.
-// - `--graupl-disclosure-toggle-open-transform`: The transform applied to the toggle when open.
-// - `--graupl-disclosure-toggle-content`: The string content inserted by the toggle pseudo-element.
-// - `--graupl-disclosure-toggle-transition`: The transition applied to the toggle indicator.
-// - `--graupl-disclosure-toggle-transition-reduced-motion`: The toggle transition when motion is reduced.
+// | Property                                                 | Description                                   | Default Value                                                                                                                                                                                                                             |
+// | -------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | `--graupl-disclosure-color`                              | Value for color.                              | `var(--graupl-color)`                                                                                                                                                                                                                     |
+// | `--graupl-disclosure-background`                         | Value for background.                         | `var(--graupl-background)`                                                                                                                                                                                                                |
+// | `--graupl-disclosure-content-border-color`               | Value for content border color.               | `var(--graupl-border-color)`                                                                                                                                                                                                              |
+// | `--graupl-disclosure-content-padding-x`                  | Value for content padding (horizontal).       | `var(--graupl-spacer-5)`                                                                                                                                                                                                                  |
+// | `--graupl-disclosure-content-padding-y`                  | Value for content padding (vertical).         | `var(--graupl-spacer-5)`                                                                                                                                                                                                                  |
+// | `--graupl-disclosure-content-padding`                    | Value for content padding.                    | `var(--graupl-disclosure-content-padding-y) var(--graupl-disclosure-content-padding-x)`                                                                                                                                                   |
+// | `--graupl-disclosure-show-display`                       | Value for show display.                       | `flex`                                                                                                                                                                                                                                    |
+// | `--graupl-disclosure-hide-display`                       | Value for hide display.                       | `flex`                                                                                                                                                                                                                                    |
+// | `--graupl-disclosure-transitioning-display`              | Value for transitioning display.              | `flex`                                                                                                                                                                                                                                    |
+// | `--graupl-disclosure-display`                            | Value for display.                            | `flex`                                                                                                                                                                                                                                    |
+// | `--graupl-disclosure-show-block-size`                    | Value for show block size.                    | `100%`                                                                                                                                                                                                                                    |
+// | `--graupl-disclosure-hide-block-size`                    | Value for hide block size.                    | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-transitioning-block-size`           | Value for transitioning block size.           | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-block-size`                         | Value for block size.                         | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-show-opacity`                       | Value for show opacity.                       | `1`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-hide-opacity`                       | Value for hide opacity.                       | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-transitioning-opacity`              | Value for transitioning opacity.              | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-opacity`                            | Value for opacity.                            | `0`                                                                                                                                                                                                                                       |
+// | `--graupl-disclosure-transition-duration`                | Value for transition duration.                | `var(--graupl-transition-duration-fast)`                                                                                                                                                                                                  |
+// | `--graupl-disclosure-transition-timing-function`         | Value for transition timing function.         | `var(--graupl-transition-timing-function)`                                                                                                                                                                                                |
+// | `--graupl-disclosure-transition`                         | Value for transition.                         | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function), block-size var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)`                   |
+// | `--graupl-disclosure-transition-reduced-motion`          | Value for transition reduced motion.          | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)`                                                                                                                                |
+// | `--graupl-disclosure-content-border-top-width`           | Value for content border top width.           | `var(--graupl-border-top-width)`                                                                                                                                                                                                          |
+// | `--graupl-disclosure-content-border-right-width`         | Value for content border right width.         | `var(--graupl-border-right-width)`                                                                                                                                                                                                        |
+// | `--graupl-disclosure-content-border-bottom-width`        | Value for content border bottom width.        | `var(--graupl-border-bottom-width)`                                                                                                                                                                                                       |
+// | `--graupl-disclosure-content-border-left-width`          | Value for content border left width.          | `var(--graupl-border-left-width)`                                                                                                                                                                                                         |
+// | `--graupl-disclosure-content-border-width`               | Value for content border width.               | `var(--graupl-disclosure-content-border-top-width) var(--graupl-disclosure-content-border-right-width) var(--graupl-disclosure-content-border-bottom-width) var(--graupl-disclosure-content-border-left-width)`                           |
+// | `--graupl-disclosure-content-border-top-style`           | Value for content border top style.           | `var(--graupl-border-top-style)`                                                                                                                                                                                                          |
+// | `--graupl-disclosure-content-border-right-style`         | Value for content border right style.         | `var(--graupl-border-right-style)`                                                                                                                                                                                                        |
+// | `--graupl-disclosure-content-border-bottom-style`        | Value for content border bottom style.        | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                       |
+// | `--graupl-disclosure-content-border-left-style`          | Value for content border left style.          | `var(--graupl-border-left-style)`                                                                                                                                                                                                         |
+// | `--graupl-disclosure-content-border-style`               | Value for content border style.               | `var(--graupl-disclosure-content-border-top-style) var(--graupl-disclosure-content-border-right-style) var(--graupl-disclosure-content-border-bottom-style) var(--graupl-disclosure-content-border-left-style)`                           |
+// | `--graupl-disclosure-content-border-top-left-radius`     | Value for content border top left radius.     | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                    |
+// | `--graupl-disclosure-content-border-top-right-radius`    | Value for content border top right radius.    | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                                   |
+// | `--graupl-disclosure-content-border-bottom-right-radius` | Value for content border bottom right radius. | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                                                |
+// | `--graupl-disclosure-content-border-bottom-left-radius`  | Value for content border bottom left radius.  | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                                 |
+// | `--graupl-disclosure-content-border-radius`              | Value for content border radius.              | `var(--graupl-disclosure-content-border-top-left-radius) var(--graupl-disclosure-content-border-top-right-radius) var(--graupl-disclosure-content-border-bottom-right-radius) var(--graupl-disclosure-content-border-bottom-left-radius)` |
+// | `--graupl-disclosure-toggle-transform`                   | Value for toggle transform.                   | `rotate(0deg)`                                                                                                                                                                                                                            |
+// | `--graupl-disclosure-toggle-open-transform`              | Value for toggle open transform.              | `rotate(-180deg)`                                                                                                                                                                                                                         |
+// | `--graupl-disclosure-toggle-content`                     | Value for toggle content.                     | `"'↓'"`                                                                                                                                                                                                                                 |
+// | `--graupl-disclosure-toggle-transition`                  | Value for toggle transition.                  | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                                                                               |
+// | `--graupl-disclosure-toggle-transition-reduced-motion`   | Value for toggle transition reduced motion.   | `none`                                                                                                                                                                                                                                    |
 //
 // The following Sass variables can be used to customize selectors and defaults:
-// - `$selector-base`: The selector base for the component.
-// - `$modifier-selector-base`: The selector base for component modifiers.
-// - `$disclosure-selector-base`: The selector base for disclosure containers.
-// - `$disclosure-selector`: The disclosure container selector.
-// - `$disclosure-content-selector-base`: The selector base for disclosure content.
-// - `$disclosure-content-selector`: The disclosure content selector.
-// - `$disclosure-toggle-selector-base`: The selector base for disclosure toggles.
-// - `$disclosure-toggle-selector`: The disclosure toggle selector.
-// - `$disclosure-open-selector-base`: The selector base applied to the open modifier.
-// - `$disclosure-open-selector`: The selector applied to the open modifier.
-// - `$disclosure-closed-selector-base`: The selector base applied to the closed modifier.
-// - `$disclosure-closed-selector`: The selector applied to the closed modifier.
-// - `$disclosure-transitioning-selector-base`: The selector base applied to the transitioning modifier.
-// - `$disclosure-transitioning-selector`: The selector applied to the transitioning modifier.
-// - `$disclosure-show-display`: The default display value for open disclosures.
-// - `$disclosure-hide-display`: The default display value for closed disclosures.
-// - `$disclosure-transitioning-display`: The default display value for transitioning disclosures.
-// - `$disclosure-show-block-size`: The default block-size value for open disclosures.
-// - `$disclosure-hide-block-size`: The default block-size value for closed disclosures.
-// - `$disclosure-transitioning-block-size`: The default block-size value for transitioning disclosures.
-// - `$disclosure-show-opacity`: The default opacity value for open disclosures.
-// - `$disclosure-hide-opacity`: The default opacity value for closed disclosures.
-// - `$disclosure-transitioning-opacity`: The default opacity value for transitioning disclosures.
-// - `$disclosure-toggle-content`: The default string inserted for the toggle indicator.
-// - `$disclosure-toggle-transform`: The default transform applied to the toggle indicator.
-// - `$disclosure-toggle-open-transform`: The transform applied to the toggle when the disclosure is open.
+// | Variable                                  | Description                                         | Default Value                            |
+// | ----------------------------------------- | --------------------------------------------------- | ---------------------------------------- |
+// | `$selector-base`                          | Default for selector base.                          | `"."`                                    |
+// | `$modifier-selector-base`                 | Default for modifier selector base.                 | `"."`                                    |
+// | `$disclosure-selector-base`               | Default for disclosure selector base.               | `"."`                                    |
+// | `$disclosure-selector`                    | Default for disclosure selector.                    | `"disclosure"`                           |
+// | `$disclosure-content-selector-base`       | Default for disclosure content selector base.       | `"."`                                    |
+// | `$disclosure-content-selector`            | Default for disclosure content selector.            | `"disclosure-content"`                   |
+// | `$disclosure-toggle-selector-base`        | Default for disclosure toggle selector base.        | `"."`                                    |
+// | `$disclosure-toggle-selector`             | Default for disclosure toggle selector.             | `"disclosure-toggle"`                    |
+// | `$disclosure-open-selector-base`          | Default for disclosure open selector base.          | `"."`                                    |
+// | `$disclosure-open-selector`               | Default for disclosure open selector.               | `"show"`                                 |
+// | `$disclosure-closed-selector-base`        | Default for disclosure closed selector base.        | `"."`                                    |
+// | `$disclosure-closed-selector`             | Default for disclosure closed selector.             | `"hide"`                                 |
+// | `$disclosure-transitioning-selector-base` | Default for disclosure transitioning selector base. | `"."`                                    |
+// | `$disclosure-transitioning-selector`      | Default for disclosure transitioning selector.      | `"transitioning"`                        |
+// | `$disclosure-show-display`                | Default for disclosure show display.                | `flex`                                   |
+// | `$disclosure-hide-display`                | Default for disclosure hide display.                | `flex`                                   |
+// | `$disclosure-transitioning-display`       | Default for disclosure transitioning display.       | `flex`                                   |
+// | `$disclosure-show-block-size`             | Default for disclosure show block size.             | `100%`                                   |
+// | `$disclosure-hide-block-size`             | Default for disclosure hide block size.             | `0`                                      |
+// | `$disclosure-transitioning-block-size`    | Default for disclosure transitioning block size.    | `0`                                      |
+// | `$disclosure-show-opacity`                | Default for disclosure show opacity.                | `1`                                      |
+// | `$disclosure-hide-opacity`                | Default for disclosure hide opacity.                | `0`                                      |
+// | `$disclosure-transitioning-opacity`       | Default for disclosure transitioning opacity.       | `0`                                      |
+// | `$disclosure-toggle-content`              | Default for disclosure toggle content.              | `"'↓'"`                                |
+// | `$disclosure-toggle-transform`            | Default for disclosure toggle transform.            | `rotate(0deg)`                           |
+// | `$disclosure-toggle-open-transform`       | Default for disclosure toggle open transform.       | `rotate(-180deg)`                        |
 //
 // @example
 // <button

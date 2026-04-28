@@ -3,7 +3,7 @@
  * Provides a system to get and store data in the browser.
  */
 
-import { isValidType } from "./validate.js";
+import { isValidType, isValidInstance } from "../validate.js";
 
 /**
  * Class representing a storage system.
@@ -37,16 +37,27 @@ class StorageManager {
   _storage = {};
 
   /**
+   * Whether to crush the storage instance if it already exists.
+   *
+   * @protected
+   *
+   * @type {boolean}
+   */
+  _crush = false;
+
+  /**
    * Creates a Storage instance.
    *
    * @param {object}  [options = {}]              - The options for the storage.
    * @param {string}  options.scope               - The scope of the storage.
    * @param {?string} [options.type = null]       - The type of storage.
+   * @param {boolean} [options.crush = false]     - Whether to crush the storage instance if it already exists.
    * @param {boolean} [options.initialize = true] - Whether to initialize the storage.
    */
-  constructor({ scope, type = null, initialize = true } = {}) {
+  constructor({ scope, type = null, crush = false, initialize = true } = {}) {
     this._scope = scope;
     this._type = type || "_default";
+    this._crush = crush;
 
     if (initialize) {
       this.initialize();
@@ -57,7 +68,27 @@ class StorageManager {
    * Initialize the storage.
    */
   initialize() {
-    window[this.scope] = this;
+    // Try to make sure the storage instance won't crush other instances of StorageManager with the same scope.
+    try {
+      if (!this._crush && typeof window[this.scope] !== "undefined") {
+        if (
+          isValidInstance(
+            StorageManager,
+            { storage: window[this.scope] },
+            { shouldThrow: false }
+          ).status ||
+          (typeof window[this.scope].storage !== "undefined" &&
+            typeof window[this.scope].scope !== "undefined" &&
+            typeof window[this.scope].type !== "undefined")
+        ) {
+          this._storage = window[this.scope].storage;
+        }
+      }
+    } catch {
+      // Do nothing.
+    } finally {
+      window[this.scope] = this;
+    }
   }
 
   /**

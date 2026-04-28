@@ -16,6 +16,27 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/storage/initializer.js",
+    output: {
+      file: `dist/js/storage/initializer.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/storage/StorageManager.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/storage/storage-manager.${format}.js`,
+      format,
+      name: "StorageManager",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/accordion/index.js",
     output: {
       file: `dist/js/accordion.js`,
@@ -29,6 +50,16 @@ export default defineConfig([
     input: "./packages/core/src/js/alert/index.js",
     output: {
       file: `dist/js/alert.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/breadcrumb/index.js",
+    output: {
+      file: `dist/js/breadcrumb.js`,
       format: "iife",
       sourcemap: true,
     },
@@ -76,6 +107,16 @@ export default defineConfig([
     plugins,
   },
   {
+    input: "./packages/core/src/js/tooltip/index.js",
+    output: {
+      file: `dist/js/tooltip.js`,
+      format: "iife",
+      sourcemap: true,
+    },
+    platform: "browser",
+    plugins,
+  },
+  {
     input: "./packages/core/src/js/accordion/Accordion.js",
     output: ["iife", "es", "cjs"].map((format) => ({
       file: `dist/js/component/accordion.${format}.js`,
@@ -114,6 +155,28 @@ export default defineConfig([
       file: `dist/js/generator/alert.${format}.js`,
       format,
       name: "AlertGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/breadcrumb/Breadcrumb.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/breadcrumb.${format}.js`,
+      format,
+      name: "Breadcrumb",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/breadcrumb/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/breadcrumb.${format}.js`,
+      format,
+      name: "BreadcrumbGenerator",
       sourcemap: true,
     })),
     platform: "browser",
@@ -191,6 +254,28 @@ export default defineConfig([
       file: `dist/js/generator/tabs.${format}.js`,
       format,
       name: "TabsGenerator",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/tooltip/Tooltip.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/component/tooltip.${format}.js`,
+      format,
+      name: "Tooltip",
+      sourcemap: true,
+    })),
+    platform: "browser",
+    plugins,
+  },
+  {
+    input: "./packages/core/src/js/tooltip/generator.js",
+    output: ["iife", "es", "cjs"].map((format) => ({
+      file: `dist/js/generator/tooltip.${format}.js`,
+      format,
+      name: "TooltipGenerator",
       sourcemap: true,
     })),
     platform: "browser",

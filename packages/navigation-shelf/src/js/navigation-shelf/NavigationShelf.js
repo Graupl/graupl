@@ -146,6 +146,7 @@ import Component from "@graupl/core/src/Component.js";
  * @property {grauplNavigationShelfEnableHoverable} _events.enableHover          - The event triggered when hoverability is enabled.
  * @property {grauplNavigationShelfDisableHover}    _events.disableHover         - The event triggered when hoverability is disabled.
  * @property {string}                               _storageKey                  - The key used for storage.
+ * @property {boolean}                              _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<object>}                       _elements                    - The instantiated elements within the navigation shelf.
  * @property {string}                               _focusState                  - The current state of the navigation shelf's focus.
  * @property {string}                               _currentEvent                - The last type of event triggered within the navigation shelf.
@@ -157,6 +158,7 @@ import Component from "@graupl/core/src/Component.js";
  * @property {object[]}                             _listeners                   - Event listeners throughout the navigation shelf.
  * @property {string}                               _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                               _key                         - The key used to generate IDs throughout the navigation shelf.
+ * @property {string}                               _name                        - The component name of the navigation shelf.
  * @property {string}                               _id                          - The main ID of the navigation shelf.
  * @property {boolean}                              _valid                       - The validity state of the navigation shelf.
  * @property {boolean}                              _initialized                 - The initialized state of the navigation shelf.
@@ -199,6 +201,7 @@ class NavigationShelf extends Component {
     }
   };
   _storageKey = "navigation-shelves";
+  _name = "NavigationShelf";
 
   /**
    * Constructs a new `NavigationShelf`.
@@ -1233,6 +1236,7 @@ class NavigationShelf extends Component {
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
     if (!this.isInitialized) {
+      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
       addClass(this.initializeClass, this.dom.shelf);
 
       requestAnimationFrame(() => {
@@ -1280,11 +1284,11 @@ class NavigationShelf extends Component {
    *
    * @fires grauplNavigationShelfCollapse
    *
-   * @param {Object<boolean>} [options = {}]              - Options for conseal the shelf.
-   * @param {boolean}         [options.emit = true]       - Emit the collapse event once consealed.
+   * @param {Object<boolean>} [options = {}]              - Options for conceal the shelf.
+   * @param {boolean}         [options.emit = true]       - Emit the collapse event once concealed.
    * @param {boolean}         [options.transition = true] - Respect the transition class.
    */
-  _conseal({ emit = true, transition = true } = {}) {
+  _conceal({ emit = true, transition = true } = {}) {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-expanded", "false");
     }
@@ -1297,6 +1301,7 @@ class NavigationShelf extends Component {
     // requestAnimationFrame to add the transition class, remove the open class,
     // add the close class, and finally remove the transition class.
     if (!this.isInitialized) {
+      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
       addClass(this.initializeClass, this.dom.shelf);
 
       requestAnimationFrame(() => {
@@ -1519,7 +1524,7 @@ class NavigationShelf extends Component {
     if (!this.isOpen && !force) return;
 
     this.unlock({ updateLock: !preserveLock });
-    this._conseal({ emit, transition });
+    this._conceal({ emit, transition });
 
     // Set the open flag.
     this._open = false;
