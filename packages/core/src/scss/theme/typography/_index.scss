@@ -163,34 +163,34 @@
 //
 // The following sass variables can be used to customize typography generation:
 // | Variable                      | Description                                     | Default Value                                   |
-// | ----------------------------- | ----------------------------------------------- | ---                                             |
+// | ----------------------------- | ----------------------------------------------- | ----------------------------------------------- |
 // | `$selector-base`              | The selector base for the component.            | `""`                                            |
 // | `$modifier-selector-base`     | The selector base for component modifiers.      | `"."`                                           |
-// | `$paragraph-selector-base`    | The base selector for the paragraph component.  | `$selector-base`                                |
+// | `$paragraph-selector-base`    | The base selector for the paragraph component.  | `""`                                            |
 // | `$paragraph-selector`         | The selector for the paragraph component.       | `"p"`                                           |
-// | `$small-selector-base`        | The base selector for the small component.      | `$selector-base`                                |
+// | `$small-selector-base`        | The base selector for the small component.      | `""`                                            |
 // | `$small-selector`             | The selector for the small component.           | `"small"`                                       |
-// | `$h1-selector-base`           | The base selector for the h1 component.         | `$selector-base`                                |
+// | `$h1-selector-base`           | The base selector for the h1 component.         | `""`                                            |
 // | `$h1-selector`                | The selector for the h1 component.              | `"h1"`                                          |
-// | `$h2-selector-base`           | The base selector for the h2 component.         | `$selector-base`                                |
+// | `$h2-selector-base`           | The base selector for the h2 component.         | `""`                                            |
 // | `$h2-selector`                | The selector for the h2 component.              | `"h2"`                                          |
-// | `$h3-selector-base`           | The base selector for the h3 component.         | `$selector-base`                                |
+// | `$h3-selector-base`           | The base selector for the h3 component.         | `""`                                            |
 // | `$h3-selector`                | The selector for the h3 component.              | `"h3"`                                          |
-// | `$h4-selector-base`           | The base selector for the h4 component.         | `$selector-base`                                |
+// | `$h4-selector-base`           | The base selector for the h4 component.         | `""`                                            |
 // | `$h4-selector`                | The selector for the h4 component.              | `"h4"`                                          |
-// | `$h5-selector-base`           | The base selector for the h5 component.         | `$selector-base`                                |
+// | `$h5-selector-base`           | The base selector for the h5 component.         | `""`                                            |
 // | `$h5-selector`                | The selector for the h5 component.              | `"h5"`                                          |
-// | `$h6-selector-base`           | The base selector for the h6 component.         | `$selector-base`                                |
+// | `$h6-selector-base`           | The base selector for the h6 component.         | `""`                                            |
 // | `$h6-selector`                | The selector for the h6 component.              | `"h6"`                                          |
 // | `$root-selector-base`         | The base selector for the root component.       | `":"`                                           |
 // | `$root-selector`              | The selector for the root component.            | `"root"`                                        |
-// | `$bold-selector-base`         | The base selector for the bold component.       | `$selector-base`                                |
+// | `$bold-selector-base`         | The base selector for the bold component.       | `""`                                            |
 // | `$bold-selector`              | The selector for the bold component.            | `"b"`                                           |
-// | `$strong-selector-base`       | The base selector for the strong component.     | `$selector-base`                                |
+// | `$strong-selector-base`       | The base selector for the strong component.     | `""`                                            |
 // | `$strong-selector`            | The selector for the strong component.          | `"strong"`                                      |
-// | `$emphasis-selector-base`     | The base selector for the emphasis component.   | `$selector-base`                                |
+// | `$emphasis-selector-base`     | The base selector for the emphasis component.   | `""`                                            |
 // | `$emphasis-selector`          | The selector for the emphasis component.        | `"em"`                                          |
-// | `$italic-selector-base`       | The base selector for the italic component.     | `$selector-base`                                |
+// | `$italic-selector-base`       | The base selector for the italic component.     | `""`                                            |
 // | `$italic-selector`            | The selector for the italic component.          | `"i"`                                           |
 // | `$generate-base-font-sizes`   | Flag to generate the base font-size scale.      | `true`                                          |
 // | `$generate-base-font-weights` | Flag to generate the base font-weight scale.    | `true`                                          |
@@ -201,8 +201,8 @@
 // | `$root-word-spacing`          | Root word spacing value.                        | `normal`                                        |
 // | `$root-font-style`            | Root font style value.                          | `normal`                                        |
 // | `$root-font-variant`          | Root font variant value.                        | `normal`                                        |
-// | `$font-size-multipliers`      | Map of size keys to multipliers.                | Minor third scale (see `_defaults.scss`)        |
-// | `$font-weights`               | Map of weight keys to values.                   | `light:300`, `normal:400`, `bold:700`           |
+// | `$font-size-multipliers`      | Map of size keys to multipliers.                | ()                                              |
+// | `$font-weights`               | Map of weight keys to values.                   | `map.merge($-font-weights, $font-weights)`      |
 // | `$root-font-family`           | Root font family stack.                         | System stack                                    |
 //
 // @example

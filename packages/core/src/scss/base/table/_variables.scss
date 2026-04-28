@@ -70,11 +70,23 @@
 // | --graupl-table-header-border-radius              | var(--graupl-table-header-border-top-left-radius) var(--graupl-table-header-border-top-right-radius) var(--graupl-table-header-border-bottom-right-radius) var(--graupl-table-header-border-bottom-left-radius) |
 // | --graupl-table-header-border-color               | var(--graupl-table-border-color)                                                                                                                                                                                |
 // | --graupl-table-striped-background                | var(--graupl-theme-active--secondary--200)                                                                                                                                                                      |
+// | --graupl-table-cell-striped-background           | var(--graupl-table-striped-background)                                                                                                                                                                          |
+// | --graupl-table-header-striped-background         | var(--graupl-table-striped-background)                                                                                                                                                                          |
 // | --graupl-table-striped-color                     | var(--graupl-theme-active--secondary--900)                                                                                                                                                                      |
+// | --graupl-table-cell-striped-color                | var(--graupl-table-striped-color)                                                                                                                                                                               |
+// | --graupl-table-header-striped-color              | var(--graupl-table-striped-color)                                                                                                                                                                               |
 // | --graupl-table-hover-background                  | var(--graupl-theme-active--secondary--300)                                                                                                                                                                      |
+// | --graupl-table-cell-hover-background             | var(--graupl-table-hover-background)                                                                                                                                                                            |
+// | --graupl-table-header-hover-background           | var(--graupl-table-hover-background)                                                                                                                                                                            |
 // | --graupl-table-hover-color                       | var(--graupl-theme-active--secondary--900)                                                                                                                                                                      |
+// | --graupl-table-cell-hover-color                  | var(--graupl-table-hover-color)                                                                                                                                                                                 |
+// | --graupl-table-header-hover-color                | var(--graupl-table-hover-color)                                                                                                                                                                                 |
 // | --graupl-table-highlight-background              | var(--graupl-theme-active--secondary--500)                                                                                                                                                                      |
+// | --graupl-table-cell-highlight-background         | var(--graupl-table-highlight-background)                                                                                                                                                                        |
+// | --graupl-table-header-highlight-background       | var(--graupl-table-highlight-background)                                                                                                                                                                        |
 // | --graupl-table-highlight-color                   | var(--graupl-theme-active--secondary--100)                                                                                                                                                                      |
+// | --graupl-table-cell-highlight-color              | var(--graupl-table-highlight-color)                                                                                                                                                                             |
+// | --graupl-table-header-highlight-color            | var(--graupl-table-highlight-color)                                                                                                                                                                             |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -487,10 +499,34 @@ $table-striped-background: var(
   #{theme.get(secondary, 200)}
 );
 
+// --graupl-table-cell-striped-background
+$table-cell-striped-background: var(
+  --#{root-defaults.$prefix}table-cell-striped-background,
+  #{$table-striped-background}
+);
+
+// --graupl-table-header-striped-background
+$table-header-striped-background: var(
+  --#{root-defaults.$prefix}table-header-striped-background,
+  #{$table-striped-background}
+);
+
 // --graupl-table-striped-color
 $table-striped-color: var(
   --#{root-defaults.$prefix}table-striped-color,
   #{theme.get(secondary, 900)}
+);
+
+// --graupl-table-cell-striped-color
+$table-cell-striped-color: var(
+  --#{root-defaults.$prefix}table-cell-striped-color,
+  #{$table-striped-color}
+);
+
+// --graupl-table-header-striped-color
+$table-header-striped-color: var(
+  --#{root-defaults.$prefix}table-header-striped-color,
+  #{$table-striped-color}
 );
 
 // Table hover properties.
@@ -500,10 +536,34 @@ $table-hover-background: var(
   #{theme.get(secondary, 300)}
 );
 
+// --graupl-table-cell-hover-background
+$table-cell-hover-background: var(
+  --#{root-defaults.$prefix}table-cell-hover-background,
+  #{$table-hover-background}
+);
+
+// --graupl-table-header-hover-background
+$table-header-hover-background: var(
+  --#{root-defaults.$prefix}table-header-hover-background,
+  #{$table-hover-background}
+);
+
 // --graupl-table-hover-color
 $table-hover-color: var(
   --#{root-defaults.$prefix}table-hover-color,
   #{theme.get(secondary, 900)}
+);
+
+// --graupl-table-cell-hover-color
+$table-cell-hover-color: var(
+  --#{root-defaults.$prefix}table-cell-hover-color,
+  #{$table-hover-color}
+);
+
+// --graupl-table-header-hover-color
+$table-header-hover-color: var(
+  --#{root-defaults.$prefix}table-header-hover-color,
+  #{$table-hover-color}
 );
 
 // Table highlight properties.
@@ -513,8 +573,32 @@ $table-highlight-background: var(
   #{theme.get(secondary, 500)}
 );
 
+// --graupl-table-cell-highlight-background
+$table-cell-highlight-background: var(
+  --#{root-defaults.$prefix}table-cell-highlight-background,
+  #{$table-highlight-background}
+);
+
+// --graupl-table-header-highlight-background
+$table-header-highlight-background: var(
+  --#{root-defaults.$prefix}table-header-highlight-background,
+  #{$table-highlight-background}
+);
+
 // --graupl-table-highlight-color
 $table-highlight-color: var(
   --#{root-defaults.$prefix}table-highlight-color,
   #{theme.get(secondary, 100)}
+);
+
+// --graupl-table-cell-highlight-color
+$table-cell-highlight-color: var(
+  --#{root-defaults.$prefix}table-cell-highlight-color,
+  #{$table-highlight-color}
+);
+
+// --graupl-table-header-highlight-color
+$table-header-highlight-color: var(
+  --#{root-defaults.$prefix}table-header-highlight-color,
+  #{$table-highlight-color}
 );

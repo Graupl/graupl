@@ -6,27 +6,29 @@
 // - `.template-class`: Applies the base value for the property.
 //
 // The following custom properties control the generated classes:
-// - N/A.
+// | Property | Description                                                  | Default Value |
+// | -------- | ------------------------------------------------------------ | ------------- |
+// | N/A      | This utility module does not define custom properties.       | N/A           |
 //
 // The following variables control the generated classes:
-// - `$selector-base`: The base selector for the utility classes.
-// - `$use-important`: A flag to determine if the `!important` flag should be added to the utility classes.
-// - `$generate-base-utilities`: A flag to determine if the base utility classes should be generated.
-// - `$screen-aware`: A flag to generate screen-aware utility classes.
-// - `$theme-aware`: A flag to generate theme-aware utility classes.
-// - `$state-aware`: A flag to generate state-aware utility classes.
-// - `$container-aware`: A flag to generate container-aware utility classes.
-// - `$screen-aware-separator`: The separator for screen-aware utility classes.
-// - `$theme-aware-separator`: The separator for theme-aware utility classes.
-// - `$state-aware-separator`: The separator for state-aware utility classes.
-// - `$container-aware-separator`: The separator for container-aware utility classes.
-// - `$screen-aware-selector-prefix`: The prefix for screen-aware utility classes.
-// - `$theme-aware-selector-prefix`: The prefix for theme-aware utility classes.
-// - `$state-aware-selector-prefix`: The prefix for state-aware utility classes.
-// - `$container-aware-selector-prefix`: The prefix for container-aware utility classes.
-// - `$template-selector-prefix`: The prefix for the utility classes.
-// - `$custom-template-properties`: The custom properties and values for the template utility classes.
-// - `$template-properties`: The merged properties and values for the template utility classes.
+// | Variable                           | Description                                  | Default Value                                          |
+// | ---------------------------------- | -------------------------------------------- | ------------------------------------------------------ |
+// | `$container-aware`                 | Default for container aware.                 | false                                                  |
+// | `$container-aware-selector-prefix` | Default for container aware selector prefix. | "cq\\:"                                                |
+// | `$container-aware-separator`       | Default for container aware separator.       | "\\:"                                                  |
+// | `$generate-base-utilities`         | Default for generate base utilities.         | true                                                   |
+// | `$screen-aware`                    | Default for screen aware.                    | false                                                  |
+// | `$screen-aware-selector-prefix`    | Default for screen aware selector prefix.    | ""                                                     |
+// | `$screen-aware-separator`          | Default for screen aware separator.          | "\\:"                                                  |
+// | `$selector-base`                   | Default for selector base.                   | "."                                                    |
+// | `$shelf-aware-selector`            | Default for shelf aware selector.            | "shelf-aware"                                          |
+// | `$state-aware`                     | Default for state aware.                     | false                                                  |
+// | `$state-aware-selector-prefix`     | Default for state aware selector prefix.     | ""                                                     |
+// | `$state-aware-separator`           | Default for state aware separator.           | "\\:"                                                  |
+// | `$theme-aware`                     | Default for theme aware.                     | false                                                  |
+// | `$theme-aware-selector-prefix`     | Default for theme aware selector prefix.     | ""                                                     |
+// | `$theme-aware-separator`           | Default for theme aware separator.           | "\\:"                                                  |
+// | `$use-important`                   | Default for use important.                   | true                                                   |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

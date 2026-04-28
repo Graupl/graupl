@@ -57,6 +57,7 @@ import Component from "../Component.js";
  * @property {grauplAlertShow}             _events.show                 - The event triggered when the alert is shown.
  * @property {grauplAlertHide}             _events.hide                 - The event triggered when the alert is hidden.
  * @property {string}                      _storageKey                  - The key used for storage.
+ * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string>}              _selectors                   - The query selectors used by the alert.
  * @property {Object<Alert>}               _elements                    - The instantiated elements within the alert.
  * @property {Object<number>}              _delays                      - The delay times (in milliseconds) for various aspects throughout the alert.
@@ -71,6 +72,7 @@ import Component from "../Component.js";
  * @property {object[]}                    _listeners                   - Event listeners throughout the alert.
  * @property {string}                      _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                      _key                         - The key used to generate IDs throughout the alert.
+ * @property {string}                      _name                        - The component name of the alert.
  * @property {string}                      _id                          - The main ID of the alert.
  * @property {boolean}                     _valid                       - The validity state of the alert.
  * @property {boolean}                     _initialized                 - The initialized state of the alert.
@@ -81,6 +83,7 @@ class Alert extends Component {
   _protectedDOMElements = ["controller"];
   _hidden = new TransactionalValue(false);
   _storageKey = "alerts";
+  _name = "Alert";
 
   /**
    * Constructs a new `Alert`.
@@ -158,7 +161,7 @@ class Alert extends Component {
       () => {
         // Handle hiding the alert by default.
         if (this.isHidden) {
-          this._conseal({ emit: false, transition: false });
+          this._conceal({ emit: false, transition: false });
         }
       }
     );
@@ -410,7 +413,7 @@ class Alert extends Component {
    * @param {boolean}         [options.emit = true]       - Emit the show event once concealed.
    * @param {boolean}         [options.transition = true] - Respect the transition class.
    */
-  _conseal({ emit = true, transition = true } = {}) {
+  _conceal({ emit = true, transition = true } = {}) {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the show class,
     // add the hide class, and finally remove the transition class.
@@ -575,7 +578,7 @@ class Alert extends Component {
     this.focusState = "none";
 
     // Conceal the alert.
-    this._conseal();
+    this._conceal();
 
     // Set the hidden state.
     this._hidden.value = true;

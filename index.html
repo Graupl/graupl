@@ -158,7 +158,9 @@
         <div class="input-group inline"><label for="textarea">Textarea</label>
           <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
         </div>
-        <div class="input-group"><label for="textarea-readonly">Readonly Textarea</label>
+        <div class="input-group">
+          <label for="textarea-readonly" class="display-flex g-2">Readonly Textarea
+          </label>
           <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
             readonly>Readonly Textarea</textarea>
         </div>
@@ -212,7 +214,8 @@
         <fieldset>
           <legend>Checkboxes</legend>
           <label for="checkbox">
-            <input type="checkbox" id="checkbox"> Checkbox</label>
+            <input type="checkbox" id="checkbox"> Checkbox
+          </label>
           <label for="checkbox-checked">
             <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
           <label for="checkbox-disabled">
@@ -234,6 +237,13 @@
           <input type="range" class="range" id="range">
         </div>
       </form>
+    </div>
+    <div class="container py-10 my-10 align-content-center">
+      <h2>Tooltips</h2>
+      <div class="tooltip">
+        <span class="tooltip-description">Tooltips provide some extra information that can help users understand the context or functionality of an element.</span>
+        <button type="button" class="tooltip-toggle"></button>
+      </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Navigation</h2>
@@ -1217,6 +1227,31 @@
         </div>
       </div>
     </div>
+    <div class="container py-10 my-10 align-content-center">
+      <h2>Breadcrumbs</h2>
+      <nav aria-label="Breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a class="breadcrumb-link" href="#">Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <button class="breadcrumb-link breadcrumb-toggle" aria-label="Show more breadcrumbs">...</button>
+          </li>
+          <li class="breadcrumb-item">
+            <a class="breadcrumb-link" href="#">Library</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a class="breadcrumb-link" href="#">Data</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a class="breadcrumb-link" href="#">Framework</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">
+            Graupl
+          </li>
+        </ol>
+      </nav>
+    </div>
     <div class="mt-10 pt-10 mb-5 pb-5 container">
       <div class="bg-tertiary-200 focus full-width contain">
         <div class="bg-secondary-200 focus feature contain">
@@ -1341,10 +1376,12 @@
   <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
   <script type="module" src="./packages/core/src/js/accordion/index.js"></script>
   <script type="module" src="./packages/core/src/js/alert/index.js"></script>
+  <script type="module" src="./packages/core/src/js/breadcrumb/index.js"></script>
   <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
   <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
   <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
   <script type="module" src="./packages/core/src/js/tabs/index.js"></script>
+  <script type="module" src="./packages/core/src/js/tooltip/index.js"></script>
   <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';

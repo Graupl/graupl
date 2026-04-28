@@ -65,30 +65,32 @@
 // - `.text-transparent`: Sets the text color to `transparent`.
 //
 // The following custom properties control the generated classes:
-// - N/A.
+// | Property | Description                                              | Default Value |
+// | -------- | -------------------------------------------------------- | ------------- |
+// | N/A      | This utility does not define custom properties.          | N/A           |
 //
-// The following sass variables control the generated classes:
+// The following variables control the generated classes:
 // | Variable                           | Description                                                        | Default Value                                                           |
-// | ---                                | ---                                                                | ---                                                                     |
+// | ---------------------------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------- |
 // | `$selector-base`                   | Base selector for utility classes.                                 | `"."`                                                                   |
-// | `$use-important`                   | Append `!important` to generated declarations.                     | `true`                                                                  |
-// | `$generate-base-utilities`         | Generate the base utilities.                                       | `true`                                                                  |
-// | `$screen-aware`                    | Generate screen-aware variants.                                    | `false`                                                                 |
-// | `$theme-aware`                     | Generate theme-aware variants.                                     | `true`                                                                  |
-// | `$state-aware`                     | Generate state-aware variants.                                     | `true`                                                                  |
-// | `$container-aware`                 | Generate container-aware variants.                                 | `false`                                                                 |
-// | `$screen-aware-separator`          | Separator for screen-aware utilities.                              | `"\\:"`                                                                 |
-// | `$theme-aware-separator`           | Separator for theme-aware utilities.                               | `"\\:"`                                                                 |
-// | `$state-aware-separator`           | Separator for state-aware utilities.                               | `"\\:"`                                                                 |
-// | `$container-aware-separator`       | Separator for container-aware utilities.                           | `"\\:"`                                                                 |
-// | `$screen-aware-selector-prefix`    | Prefix for screen-aware utilities.                                 | `""`                                                                    |
-// | `$theme-aware-selector-prefix`     | Prefix for theme-aware utilities.                                  | `""`                                                                    |
-// | `$state-aware-selector-prefix`     | Prefix for state-aware utilities.                                  | `""`                                                                    |
-// | `$container-aware-selector-prefix` | Prefix for container-aware utilities.                              | `"cq\\:"`                                                               |
+// | `$use-important`                   | Appends `!important` to generated utility declarations.            | `true`                                                                  |
+// | `$generate-base-utilities`         | Generates the base utility classes.                                | `true`                                                                  |
+// | `$screen-aware`                    | Enables screen-aware utility variants.                             | `false`                                                                 |
+// | `$theme-aware`                     | Enables theme-aware utility variants.                              | `true`                                                                  |
+// | `$state-aware`                     | Enables state-aware utility variants.                              | `true`                                                                  |
+// | `$container-aware`                 | Enables container-aware utility variants.                          | `false`                                                                 |
+// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.             | `"\\:"`                                                                 |
+// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.              | `"\\:"`                                                                 |
+// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.              | `"\\:"`                                                                 |
+// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors.          | `"\\:"`                                                                 |
+// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.                | `""`                                                                    |
+// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.                 | `""`                                                                    |
+// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.                 | `""`                                                                    |
+// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.             | `"cq\\:"`                                                               |
 // | `$background-selector-prefix`      | Prefix for background utilities.                                   | `"bg-"`                                                                 |
-// | `$background-properties`           | Map of background utility values (including theme colours/shades). | Includes primary/secondary/tertiary shades, inherit/current/transparent |
+// | `$background-properties`           | Map of background utility values (including theme colours/shades). | `()`                                                                    |
 // | `$text-selector-prefix`            | Prefix for text utilities.                                         | `"text-"`                                                               |
-// | `$text-properties`                 | Map of text utility values (including theme colours/shades).       | Includes primary/secondary/tertiary shades, inherit/current/transparent |
+// | `$text-properties`                 | Map of text utility values (including theme colours/shades).       | `map.merge($-text-properties, $text-properties)`                        |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, theme-aware and state-aware utility classes are generated.

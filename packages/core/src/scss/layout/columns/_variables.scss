@@ -2,10 +2,25 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                        | Default                                                                                                                                              |
+// | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-columns-row-gap               | var(--graupl-spacer-5)                                                                                                                               |
+// | --graupl-columns-column-gap            | var(--graupl-spacer-5)                                                                                                                               |
+// | --graupl-columns-count                 | 3                                                                                                                                                    |
+// | --graupl-columns-content-max-width     | var(--graupl-content-max-width)                                                                                                                      |
+// | --graupl-columns-min-width             | calc((var(--graupl-columns-content-max-width) - var(--graupl-columns-column-gap) * (var(--graupl-columns-count) - 1)) / var(--graupl-columns-count)) |
+// | --graupl-columns-max-width             | 1fr                                                                                                                                                  |
+// | --graupl-columns-grid-template-columns | repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))                                                           |
+// | --graupl-columns-span                  | 1                                                                                                                                                    |
+// | --graupl-columns-background            | null                                                                                                                                                 |
+// | --graupl-columns-color                 | null                                                                                                                                                 |
 
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
 @use "sass:map";
 
 // --graupl-columns-row-gap
@@ -66,3 +81,9 @@ $columns-span: var(
   --#{root-defaults.$prefix}columns-span,
   #{defaults.$columns-span}
 );
+
+// --graupl-columns-background
+$columns-background: var(--#{root-defaults.$prefix}columns-background);
+
+// --graupl-columns-color
+$columns-color: var(--#{root-defaults.$prefix}columns-color);
