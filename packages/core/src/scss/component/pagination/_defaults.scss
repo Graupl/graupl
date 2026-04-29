@@ -1,0 +1,66 @@
+// @graupl/core pagination component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
+// pager selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
+$pager-selector-base: $selector-base !default;
+$pager-selector: "pager" !default;
+$pager-theme-selector-base: $modifier-selector-base !default;
+$pager-theme-selector-prefix: "" !default;
+$pager-items-selector-base: $selector-base !default;
+$pager-items-selector: "pager-items" !default;
+$pager-item-selector-base: $selector-base !default;
+$pager-item-selector: "pager-item" !default;
+
+// Flex properties.
+$pager-display: flex !default;
+$pager-item-display: flex !default;
+$pager-flex-direction: row !default;
+
+// pager item properties.
+$pager-item-min-width: min-content !default;
+$pager-item-max-width: 100% !default;
+$pager-item-initial-transform: none !default;
+$pager-item-disabled-transform: $pager-item-initial-transform !default;
+$pager-item-initial-text-decoration: none !default;
+$pager-item-disabled-text-decoration: $pager-item-initial-text-decoration !default;
+$pager-item-initial-text-decoration-style: none !default;
+$pager-item-disabled-text-decoration-style: $pager-item-initial-text-decoration-style !default;
+$pager-item-first-content: "'«'" !default;
+$pager-item-previous-content: "'‹'" !default;
+$pager-item-ellipsis-content: "'. . .'" !default;
+$pager-item-next-content: "'›'" !default;
+$pager-item-last-content: "'»'" !default;
+
+// pager state theme defaults.
+// This map defines the default colour shades applied to themed pagination.
+// All theme variants will only adjust the colour and border colour of the pager
+// container and items.
+$-pager-theme-mappings: (
+  color: 900,
+);
+$pager-theme-mappings: () !default;
+
+// Merge the custom pager theme map with the default one.
+@if $generate-base-theme-map {
+  $pager-theme-mappings: map.merge(
+    $-pager-theme-mappings,
+    $pager-theme-mappings
+  );
+}
+
+$-pager-theme-map: theme.generate-property-map($pager-theme-mappings);
+$pager-theme-map: () !default;
+$pager-theme-map: map.deep-merge($-pager-theme-map, $pager-theme-map);
