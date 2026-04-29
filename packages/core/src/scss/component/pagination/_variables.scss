@@ -654,32 +654,54 @@ $pager-item-last-content: var(
   #{defaults.$pager-item-last-content}
 );
 
-// --graupl-pager-item-first-transform
-$pager-item-first-transform: var(
-  --#{root-defaults.$prefix}pager-item-first-transform,
+// Pager item transform properties.
+// --graupl-pager-item-transform
+$pager-item-transform: var(
+  --#{root-defaults.$prefix}pager-item-transform,
   #{defaults.$pager-item-initial-transform}
 );
 
-// --graupl-pager-item-previous-transform
-$pager-item-previous-transform: var(
-  --#{root-defaults.$prefix}pager-item-previous-transform,
-  #{defaults.$pager-item-initial-transform}
+// --graupl-pager-item-visited-transform
+$pager-item-visited-transform: var(
+  --#{root-defaults.$prefix}pager-item-visited-transform,
+  #{$pager-item-transform}
 );
 
-// --graupl-pager-item-ellipsis-transform
-$pager-item-ellipsis-transform: var(
-  --#{root-defaults.$prefix}pager-item-ellipsis-transform,
-  #{defaults.$pager-item-initial-transform}
+// --graupl-pager-item-focus-transform
+$pager-item-focus-transform: var(
+  --#{root-defaults.$prefix}pager-item-focus-transform,
+  #{$pager-item-transform}
 );
 
-// --graupl-pager-item-next-transform
-$pager-item-next-transform: var(
-  --#{root-defaults.$prefix}pager-item-next-transform,
-  #{defaults.$pager-item-initial-transform}
+// --graupl-pager-item-hover-transform
+$pager-item-hover-transform: var(
+  --#{root-defaults.$prefix}pager-item-hover-transform,
+  #{$pager-item-transform}
 );
 
-// --graupl-pager-item-last-transform
-$pager-item-last-transform: var(
-  --#{root-defaults.$prefix}pager-item-last-transform,
-  #{defaults.$pager-item-initial-transform}
+// --graupl-pager-item-active-transform
+$pager-item-active-transform: var(
+  --#{root-defaults.$prefix}pager-item-active-transform,
+  #{defaults.$pager-item-final-transform}
+);
+
+// --graupl-pager-item-selected-transform
+$pager-item-selected-transform: var(
+  --#{root-defaults.$prefix}pager-item-selected-transform,
+  #{defaults.$pager-item-final-transform}
+);
+
+// --graupl-pager-item-disabled-transform
+$pager-item-disabled-transform: var(
+  --#{root-defaults.$prefix}pager-item-disabled-transform,
+  #{defaults.$pager-item-disabled-transform}
+);
+$pager-item-transform-states: (
+  _default: $pager-item-transform,
+  visited: $pager-item-visited-transform,
+  focus: $pager-item-focus-transform,
+  hover: $pager-item-hover-transform,
+  active: $pager-item-active-transform,
+  selected: $pager-item-selected-transform,
+  disabled: $pager-item-disabled-transform,
 );

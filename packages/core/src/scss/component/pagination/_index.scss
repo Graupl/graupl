@@ -242,7 +242,6 @@
   #{defaults.$pager-selector-base}#{defaults.$pager-selector} {
     display: $pager-display;
     flex-direction: $pager-flex-direction;
-    isolation: isolate;
     justify-content: center;
     font-size: $pager-font-size;
     font-weight: $pager-font-weight;
@@ -269,14 +268,12 @@
       content: #{defaults.$pager-item-first-content};
       display: block;
       margin-right: #{map.get(root-variables.$spacers, 2)};
-      transform: $pager-item-first-transform;
     }
 
     &.pager-item-previous a::before {
       content: #{defaults.$pager-item-previous-content};
       display: block;
       margin-right: #{map.get(root-variables.$spacers, 2)};
-      transform: $pager-item-previous-transform;
     }
 
     &.pager-item-ellipsis {
@@ -285,7 +282,6 @@
       &::before {
         content: #{defaults.$pager-item-ellipsis-content};
         display: block;
-        transform: $pager-item-ellipsis-transform;
       }
     }
 
@@ -301,13 +297,11 @@
       content: #{defaults.$pager-item-next-content};
       display: block;
       margin-left: #{map.get(root-variables.$spacers, 2)};
-      transform: $pager-item-next-transform;
     }
 
     &.pager-item-last a::after {
       content: #{defaults.$pager-item-last-content};
       margin-left: #{map.get(root-variables.$spacers, 2)};
-      transform: $pager-item-last-transform;
     }
 
     @include state.generate-modifiers(
@@ -329,19 +323,24 @@
     color: $pager-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {
-      @include theme.generate-modifiers(
-        defaults.$pager-theme-map,
-        defaults.$pager-theme-selector-base,
-        defaults.$pager-theme-selector-prefix,
-        "pager-"
-      );
-      @include theme.generate-modifiers(
-        defaults.$pager-theme-map,
-        defaults.$pager-theme-selector-base,
-        defaults.$pager-theme-selector-prefix,
-        "pager-",
-        ""
-      );
+      @each $color, $map in defaults.$pager-theme-map {
+        @include theme.generate-modifiers(
+          defaults.$pager-theme-map,
+          defaults.$pager-theme-selector-base,
+          defaults.$pager-theme-selector-prefix,
+          "pager-"
+        );
+      }
+
+      @each $color, $map in defaults.$pager-theme-map {
+        @include theme.generate-modifiers(
+          defaults.$pager-theme-map,
+          defaults.$pager-theme-selector-base,
+          defaults.$pager-theme-selector-prefix,
+          "pager-",
+          ""
+        );
+      }
     }
   }
 
@@ -350,10 +349,13 @@
     @include button-mixins.apply-theme;
 
     border: $pager-item-border-width $pager-item-border-style transparent;
+    background: $pager-item-background;
+    color: $pager-item-color;
 
     &.pager-item-ellipsis {
       padding: #{map.get(root-variables.$spacers, 2)};
       border: $pager-item-border-width $pager-item-border-style transparent;
+      background: transparent;
 
       &:hover {
         border-color: transparent;
@@ -368,7 +370,17 @@
       border-style: $pager-item-border-style;
       border-radius: $pager-item-border-radius;
       border-color: $pager-item-border-color;
+      background: $pager-item-background;
+      color: $pager-item-color;
       text-decoration: $pager-text-decoration;
+
+      @include state.generate-modifiers(
+        (
+          border-color: $pager-item-border-color-states,
+          background: $pager-item-background-states,
+          color: $pager-item-color-states,
+        )
+      );
     }
 
     @include state.generate-modifiers(

@@ -14,7 +14,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$themeable: false !default;
+$themeable: true !default;
 $pager-selector-base: $selector-base !default;
 $pager-selector: "pager" !default;
 $pager-theme-selector-base: $modifier-selector-base !default;
@@ -33,6 +33,7 @@ $pager-flex-direction: row !default;
 $pager-item-min-width: min-content !default;
 $pager-item-max-width: 100% !default;
 $pager-item-initial-transform: none !default;
+$pager-item-final-transform: none !default;
 $pager-item-disabled-transform: $pager-item-initial-transform !default;
 $pager-item-initial-text-decoration: none !default;
 $pager-item-disabled-text-decoration: $pager-item-initial-text-decoration !default;
@@ -50,6 +51,12 @@ $pager-item-last-content: "'»'" !default;
 // container and items.
 $-pager-theme-mappings: (
   color: 900,
+  border-color: 700,
+  item-background: 100,
+  item-hover-color: 100,
+  item-hover-background: 700,
+  item-disabled-color: 200,
+  item-disabled-border-color: 200,
 );
 $pager-theme-mappings: () !default;
 
