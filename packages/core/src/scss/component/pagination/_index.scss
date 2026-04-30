@@ -72,43 +72,37 @@
 // | `--graupl-pager-item-border-bottom-style`          | Bottom border style for the pager item.                              | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                   |
 // | `--graupl-pager-item-border-left-style`            | Left border style for the pager item.                                | `var(--graupl-border-left-style)`                                                                                                                                                                                                     |
 // | `--graupl-pager-item-border-style`                 | Border style for the pager item.                                     | `var(--graupl-pager-item-border-top-style) var(--graupl-pager-item-border-right-style) var(--graupl-pager-item-border-bottom-style) var(--graupl-pager-item-border-left-style)`                                   |
-// | `--graupl-pager-item-padding-x`                    | Horizontal padding for the pager item.                               | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-padding-y`                    | Vertical padding for the pager item.                                 | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-padding`                      | Padding for the pager item.                                          | `var(--graupl-pager-item-padding-y) var(--graupl-pager-item-padding-x)`                                                                                                                                                     |
-// | `--graupl-pager-item-transform`                    | Transform for the pager item.                                        | `none`                                                                                                                                                                                                                                |
-// | `--graupl-pager-item-visited-transform`            | Transform for the pager item in the visited state.                   | `var(--graupl-pager-item-transform)`                                                                                                                                                                                             |
-// | `--graupl-pager-item-focus-transform`              | Transform for the pager item in the focus state.                     | `var(--graupl-pager-item-transform)`                                                                                                                                                                                             |
-// | `--graupl-pager-item-hover-transform`              | Transform for the pager item in the hover state.                     | `var(--graupl-pager-item-transform)`                                                                                                                                                                                             |
-// | `--graupl-pager-item-active-transform`             | Transform for the pager item in the active state.                    | `none`                                                                                                                                                                                                                                |
-// | `--graupl-pager-item-disabled-transform`           | Transform for the pager item in the disabled state.                  | `none`                                                                                                                                                                                                                                |
-// | `--graupl-pager-item-color`                        | Text color for the pager item.                                       | `var(--graupl-pager-item-color)`                                                                                                                                                                                                 |
-// | `--graupl-pager-item-background`                   | Background for the pager item.                                       | `var(--graupl-pager-item-background)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-visited-color`                | Text color for the pager item in the visited state.                  | `var(--graupl-pager-item-color)`                                                                                                                                                                                                 |
-// | `--graupl-pager-item-focus-color`                  | Text color for the pager item in the focus state.                    | `var(--graupl-pager-item-color)`                                                                                                                                                                                                 |
-// | `--graupl-pager-item-hover-color`                  | Text color for the pager item in the hover state.                    | `var(--graupl-pager-item-background)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-active-color`                 | Text color for the pager item in the active state.                   | `var(--graupl-pager-item-hover-color)`                                                                                                                                                                                           |
-// | `--graupl-pager-item-disabled-color`               | Text color for the pager item in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-visited-background`           | Background for the pager item in the visited state.                  | `var(--graupl-pager-item-background)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-focus-background`             | Background for the pager item in the focus state.                    | `var(--graupl-pager-item-background)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-hover-background`             | Background for the pager item in the hover state.                    | `var(--graupl-pager-item-color)`                                                                                                                                                                                                 |
-// | `--graupl-pager-item-active-background`            | Background for the pager item in the active state.                   | `var(--graupl-pager-item-hover-background)`                                                                                                                                                                                      |
-// | `--graupl-pager-item-disabled-background`          | Background for the pager item in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-border-color`                 | Border color for the pager item.                                     | `var(--graupl-pager-item-color)`                                                                                                                                                                                                 |
-// | `--graupl-pager-item-border-top-left-radius`       | Top-left border radius for the pager item.                           | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                |
-// | `--graupl-pager-item-border-top-right-radius`      | Top-right border radius for the pager item.                          | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                               |
-// | `--graupl-pager-item-border-bottom-left-radius`    | Bottom-left border radius for the pager item.                        | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                             |
-// | `--graupl-pager-item-border-bottom-right-radius`   | Bottom-right border radius for the pager item.                       | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                                            |
-// | `--graupl-pager-item-border-radius`                | Border radius for the pager item.                                    | `var(--graupl-pager-item-border-top-left-radius) var(--graupl-pager-item-border-top-right-radius) var(--graupl-pager-item-border-bottom-right-radius) var(--graupl-pager-item-border-bottom-left-radius)`         |
-// | `--graupl-pager-item-border-top-width`             | Top border width for the pager item.                                 | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-border-right-width`           | Right border width for the pager item.                               | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-border-bottom-width`          | Bottom border width for the pager item.                              | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-border-left-width`            | Left border width for the pager item.                                | `0`                                                                                                                                                                                                                                   |
-// | `--graupl-pager-item-border-width`                 | Border width for the pager item.                                     | `var(--graupl-pager-item-border-top-width) var(--graupl-pager-item-border-right-width) var(--graupl-pager-item-border-bottom-width) var(--graupl-pager-item-border-left-width)`                                   |
-// | `--graupl-pager-item-border-top-style`             | Top border style for the pager item.                                 | `var(--graupl-border-top-style)`                                                                                                                                                                                                      |
-// | `--graupl-pager-item-border-right-style`           | Right border style for the pager item.                               | `var(--graupl-border-right-style)`                                                                                                                                                                                                    |
-// | `--graupl-pager-item-border-bottom-style`          | Bottom border style for the pager item.                              | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                   |
-// | `--graupl-pager-item-border-left-style`            | Left border style for the pager item.                                | `var(--graupl-border-left-style)`                                                                                                                                                                                                     |
-// | `--graupl-pager-item-border-style`                 | Border style for the pager item.                                     | `var(--graupl-pager-item-border-top-style) var(--graupl-pager-item-border-right-style) var(--graupl-pager-item-border-bottom-style) var(--graupl-pager-item-border-left-style)`                                   |
+// | `--graupl-pager-link-padding-x`                    | Horizontal padding for the pager link.                               | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-padding-y`                    | Vertical padding for the pager link.                                 | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-padding`                      | Padding for the pager link.                                          | `var(--graupl-pager-link-padding-y) var(--graupl-pager-link-padding-x)`                                                                                                                                                     |
+// | `--graupl-pager-link-color`                        | Text color for the pager link.                                       | `var(--graupl-pager-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-pager-link-background`                   | Background for the pager link.                                       | `var(--graupl-pager-link-background)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-visited-color`                | Text color for the pager link in the visited state.                  | `var(--graupl-pager-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-pager-link-focus-color`                  | Text color for the pager link in the focus state.                    | `var(--graupl-pager-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-pager-link-hover-color`                  | Text color for the pager link in the hover state.                    | `var(--graupl-pager-link-background)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-active-color`                 | Text color for the pager link in the active state.                   | `var(--graupl-pager-link-hover-color)`                                                                                                                                                                                           |
+// | `--graupl-pager-link-disabled-color`               | Text color for the pager link in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-visited-background`           | Background for the pager link in the visited state.                  | `var(--graupl-pager-link-background)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-focus-background`             | Background for the pager link in the focus state.                    | `var(--graupl-pager-link-background)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-hover-background`             | Background for the pager link in the hover state.                    | `var(--graupl-pager-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-pager-link-active-background`            | Background for the pager link in the active state.                   | `var(--graupl-pager-link-hover-background)`                                                                                                                                                                                      |
+// | `--graupl-pager-link-disabled-background`          | Background for the pager link in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-border-color`                 | Border color for the pager link.                                     | `var(--graupl-pager-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-pager-link-border-top-left-radius`       | Top-left border radius for the pager link.                           | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                |
+// | `--graupl-pager-link-border-top-right-radius`      | Top-right border radius for the pager link.                          | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                               |
+// | `--graupl-pager-link-border-bottom-left-radius`    | Bottom-left border radius for the pager link.                        | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                             |
+// | `--graupl-pager-link-border-bottom-right-radius`   | Bottom-right border radius for the pager link.                       | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                                            |
+// | `--graupl-pager-link-border-radius`                | Border radius for the pager link.                                    | `var(--graupl-pager-link-border-top-left-radius) var(--graupl-pager-link-border-top-right-radius) var(--graupl-pager-link-border-bottom-right-radius) var(--graupl-pager-link-border-bottom-left-radius)`         |
+// | `--graupl-pager-link-border-top-width`             | Top border width for the pager link.                                 | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-border-right-width`           | Right border width for the pager link.                               | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-border-bottom-width`          | Bottom border width for the pager link.                              | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-border-left-width`            | Left border width for the pager link.                                | `0`                                                                                                                                                                                                                                   |
+// | `--graupl-pager-link-border-width`                 | Border width for the pager link.                                     | `var(--graupl-pager-link-border-top-width) var(--graupl-pager-link-border-right-width) var(--graupl-pager-link-border-bottom-width) var(--graupl-pager-link-border-left-width)`                                   |
+// | `--graupl-pager-link-border-top-style`             | Top border style for the pager link.                                 | `var(--graupl-border-top-style)`                                                                                                                                                                                                      |
+// | `--graupl-pager-link-border-right-style`           | Right border style for the pager link.                               | `var(--graupl-border-right-style)`                                                                                                                                                                                                    |
+// | `--graupl-pager-link-border-bottom-style`          | Bottom border style for the pager link.                              | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                   |
+// | `--graupl-pager-link-border-left-style`            | Left border style for the pager link.                                | `var(--graupl-border-left-style)`                                                                                                                                                                                                     |
+// | `--graupl-pager-link-border-style`                 | Border style for the pager link.                                     | `var(--graupl-pager-link-border-top-style) var(--graupl-pager-link-border-right-style) var(--graupl-pager-link-border-bottom-style) var(--graupl-pager-link-border-left-style)`                                   |
 //
 // The following sass variables can be used to customize the generation of the pager component:
 // | Variable                                     | Description                                       | Default Value             |
@@ -125,12 +119,8 @@
 // | `$pager-items-selector`                        | Selector for pager items.                          | `"pager-items"`       |
 // | `$pager-item-selector-base`                   | Selector base for pager items.                     | `"."`                     |
 // | `$pager-item-selector`                        | Selector for pager items.                          | `"pager-item"`       |
-// | `$pager-item-selector-base`                 | Selector base for pager items.                   | `"."`                     |
-// | `$pager-item-selector`                      | Selector for pager items.                        | `"pager-item"`     |
-// | `$pager-item-initial-transform`               | Initial transform for pager items.                 | `none`                    |
-// | `$pager-item-disabled-transform`              | Disabled transform for pager items.                | `none`                    |
-// | `$pager-item-transform`                       | Base transform for pager items.                    | `none`                    |
-// | `$pager-item-hover-transform`                 | Hover transform for pager items.                   | `none`                    |
+// | `$pager-link-selector-base`                   | Selector base for pager links.                   | `"."`                     |
+// | `$pager-link-selector`                        | Selector for pager links.                        | `"pager-link"`     |
 // | `$pager-theme-mappings`                       | Map of properties/shades for pager themes.         | `()`                      |
 // | `$pager-theme-map`                            | Expanded map of properties/colors/shades.         | `()`                      |
 //
@@ -204,16 +194,16 @@
 // <nav class="pager">
 //   <ul class="pager-items">
 //    <li class="pager-item pager-item-first">
-//      <a class="pager-item" href="#">First</a>
+//      <a class="pager-link" href="#">First</a>
 //    </li>
 //    <li class="pager-item">
-//      <a class="pager-item" aria-current="page" href="#">1</a>
+//      <a class="pager-link" aria-current="page" href="#">1</a>
 //    </li>
 //    <li class="pager-item">
-//      <a class="pager-item" href="#">2</a>
+//      <a class="pager-link" href="#">2</a>
 //    </li>
 //    <li class="pager-item pager-item-last">
-//      <a class="pager-item" href="#">Last</a>
+//      <a class="pager-link" href="#">Last</a>
 //    </li>
 //   </ul>
 // </nav>
@@ -226,6 +216,7 @@
 @use "../../mixins/state";
 @use "../../mixins/theme";
 @use "../../base/button/mixins" as button-mixins;
+@use "../../base/link/mixins" as link-mixins;
 @use "defaults";
 @use "sass:map";
 @use "variables" as *;
@@ -234,6 +225,10 @@
   // .pager-item
   #{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector} {
     @include button-mixins.apply-base;
+
+    #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector} {
+      @include link-mixins.apply-base;
+    }
   }
 }
 
@@ -243,8 +238,6 @@
     display: $pager-display;
     flex-direction: $pager-flex-direction;
     justify-content: center;
-    font-size: $pager-font-size;
-    font-weight: $pager-font-weight;
   }
 
   // .pager-items
@@ -260,23 +253,27 @@
 
   // .pager-item
   #{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector} {
-    margin: 0;
-    padding: 0;
-    border-radius: $pager-item-border-radius;
+    font-size: $pager-font-size;
+    font-weight: $pager-font-weight;
 
-    &.pager-item-first a::before {
+    // .pager-item-first .pager-link::before
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-first
+      #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector}::before {
       content: #{defaults.$pager-item-first-content};
       display: block;
       margin-right: #{map.get(root-variables.$spacers, 2)};
     }
 
-    &.pager-item-previous a::before {
+    // .pager-item-previous .pager-link::before
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-previous
+      #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector}::before {
       content: #{defaults.$pager-item-previous-content};
       display: block;
       margin-right: #{map.get(root-variables.$spacers, 2)};
     }
 
-    &.pager-item-ellipsis {
+    // .pager-item-ellipsis
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-ellipsis {
       cursor: default;
 
       &::before {
@@ -285,7 +282,8 @@
       }
     }
 
-    a {
+    // .pager-link
+    #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector} {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -293,24 +291,20 @@
       max-width: $pager-item-max-width;
     }
 
-    &.pager-item-next a::after {
+    // .pager-item-next .pager-link::after
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-next
+      #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector}::after {
       content: #{defaults.$pager-item-next-content};
       display: block;
       margin-left: #{map.get(root-variables.$spacers, 2)};
     }
 
-    &.pager-item-last a::after {
+    // .pager-item-last .pager-link::after
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-last
+      #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector}::after {
       content: #{defaults.$pager-item-last-content};
       margin-left: #{map.get(root-variables.$spacers, 2)};
     }
-
-    @include state.generate-modifiers(
-      (
-        border-color: $pager-item-border-color-states,
-        background: $pager-item-background-states,
-        color: $pager-item-color-states,
-      )
-    );
   }
 }
 
@@ -348,11 +342,17 @@
   #{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector} {
     @include button-mixins.apply-theme;
 
-    border: $pager-item-border-width $pager-item-border-style transparent;
+    z-index: 1;
+    margin-left: #{calc(0 - #{$pager-link-border-left-width})};
+    padding: $pager-item-padding;
+    border: $pager-item-border-width $pager-item-border-style
+      $pager-item-border-color;
+    border-radius: $pager-item-border-radius;
     background: $pager-item-background;
     color: $pager-item-color;
 
-    &.pager-item-ellipsis {
+    // .pager-item-ellipsis
+    &#{defaults.$pager-item-selector-base}#{defaults.$pager-item-selector}-ellipsis {
       padding: #{map.get(root-variables.$spacers, 2)};
       border: $pager-item-border-width $pager-item-border-style transparent;
       background: transparent;
@@ -364,21 +364,29 @@
       }
     }
 
-    a {
-      padding: $pager-item-padding;
-      border-width: $pager-item-border-width;
-      border-style: $pager-item-border-style;
-      border-radius: $pager-item-border-radius;
-      border-color: $pager-item-border-color;
-      background: $pager-item-background;
-      color: $pager-item-color;
+    &:has(.disabled) {
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    // .pager-link
+    #{defaults.$pager-link-selector-base}#{defaults.$pager-link-selector} {
+      @include link-mixins.apply-theme;
+
+      padding: $pager-link-padding;
+      border-width: $pager-link-border-width;
+      border-style: $pager-link-border-style;
+      border-radius: $pager-link-border-radius;
+      border-color: $pager-link-border-color;
+      background: $pager-link-background;
+      color: $pager-link-color;
       text-decoration: $pager-text-decoration;
 
       @include state.generate-modifiers(
         (
-          border-color: $pager-item-border-color-states,
-          background: $pager-item-background-states,
-          color: $pager-item-color-states,
+          border-color: $pager-link-border-color-states,
+          background: $pager-link-background-states,
+          color: $pager-link-color-states,
         )
       );
     }

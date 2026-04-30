@@ -23,6 +23,8 @@ $pager-items-selector-base: $selector-base !default;
 $pager-items-selector: "pager-items" !default;
 $pager-item-selector-base: $selector-base !default;
 $pager-item-selector: "pager-item" !default;
+$pager-link-selector-base: $selector-base !default;
+$pager-link-selector: "pager-link" !default;
 
 // Flex properties.
 $pager-display: flex !default;
@@ -32,13 +34,6 @@ $pager-flex-direction: row !default;
 // pager item properties.
 $pager-item-min-width: min-content !default;
 $pager-item-max-width: 100% !default;
-$pager-item-initial-transform: none !default;
-$pager-item-final-transform: none !default;
-$pager-item-disabled-transform: $pager-item-initial-transform !default;
-$pager-item-initial-text-decoration: none !default;
-$pager-item-disabled-text-decoration: $pager-item-initial-text-decoration !default;
-$pager-item-initial-text-decoration-style: none !default;
-$pager-item-disabled-text-decoration-style: $pager-item-initial-text-decoration-style !default;
 $pager-item-first-content: "'«'" !default;
 $pager-item-previous-content: "'‹'" !default;
 $pager-item-ellipsis-content: "'. . .'" !default;
@@ -50,13 +45,12 @@ $pager-item-last-content: "'»'" !default;
 // All theme variants will only adjust the colour and border colour of the pager
 // container and items.
 $-pager-theme-mappings: (
-  color: 900,
-  border-color: 700,
-  item-background: 100,
-  item-hover-color: 100,
-  item-hover-background: 700,
-  item-disabled-color: 200,
-  item-disabled-border-color: 200,
+  color: 800,
+  link-hover-color: 100,
+  link-hover-background: 700,
+  link-hover-border-color: 800,
+  link-active-color: 800,
+  link-active-background: 200,
 );
 $pager-theme-mappings: () !default;
 
