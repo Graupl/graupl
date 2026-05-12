@@ -1,0 +1,71 @@
+// @graupl/core inline-size utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../variables" as root-variables;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: root-defaults.$utility-selector-base !default;
+$use-important: root-defaults.$use-important !default;
+$generate-base-utilities: root-defaults.$generate-base-utilities !default;
+$screen-aware: false !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$container-aware: false !default;
+$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
+$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
+$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
+$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+
+// inline-size properties.
+$inline-size-selector-prefix: "block-" !default;
+$max-inline-size-selector-prefix: "max-block-" !default;
+$min-inline-size-selector-prefix: "min-block-" !default;
+
+// inline-size values.
+$-inline-size-values: (
+  auto: auto,
+  fit-content: fit-content,
+  max-content: max-content,
+  min-content: min-content,
+  stretch: stretch,
+  full: 100%,
+  quarter: 25%,
+  half: 50%,
+  three-quarters: 75%,
+  third: calc(100% / 3),
+  two-thirds: calc(100% / 1.5),
+  half-screen: 50vw,
+  third-screen: calc(100vw / 3),
+  two-thirds-screen: calc(100vw / 1.5),
+  quarter-screen: 25vw,
+  three-quarters-screen: 75vw,
+  full-screen: 100vw,
+);
+
+// Add the spacer values to the base inline-size values.
+@each $spacer, $value in root-variables.$spacers {
+  $-inline-size-values: map.merge(
+    $-inline-size-values,
+    (
+      $spacer: $value,
+    )
+  );
+}
+
+$inline-size-values: () !default;
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $inline-size-values: map.merge($-inline-size-values, $inline-size-values);
+}
