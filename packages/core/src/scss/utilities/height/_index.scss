@@ -89,32 +89,32 @@
 // - `.min-h-10`: Sets the min-height property to Graupl's spacer 10 value.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description                                     | Default Value |
+// | -------- | ----------------------------------------------- | ------------- |
+// | N/A      | This utility does not define custom properties. | N/A           |
 //
 // The following variables control the generated classes:
-// | Variable                           | Description                                               | Default Value                                                                                                                                                                    |
-// | ---------------------------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-// | `$selector-base`                   | Base selector for utility classes.                        | `"."`                                                                                                                                                                            |
-// | `$use-important`                   | Appends `!important` to generated utility declarations.   | `true`                                                                                                                                                                           |
-// | `$generate-base-utilities`         | Generates the base utility classes.                       | `true`                                                                                                                                                                           |
-// | `$screen-aware`                    | Enables screen-aware utility variants.                    | `false`                                                                                                                                                                          |
-// | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`                                                                                                                                                                          |
-// | `$state-aware`                     | Enables state-aware utility variants.                     | `false`                                                                                                                                                                          |
-// | `$container-aware`                 | Enables container-aware utility variants.                 | `false`                                                                                                                                                                          |
-// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`                                                                                                                                                                          |
-// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`                                                                                                                                                                          |
-// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`                                                                                                                                                                          |
-// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`                                                                                                                                                                          |
-// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`                                                                                                                                                                             |
-// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`                                                                                                                                                                             |
-// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`                                                                                                                                                                             |
-// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.    | `"cq\\:"`                                                                                                                                                                        |
-// | `$height-selector-prefix`          | Prefix for height utilities.                              | `"h-"`                                                                                                                                                                           |
-// | `$max-height-selector-prefix`      | Prefix for max-height utilities.                          | `"max-h-"`                                                                                                                                                                       |
-// | `$min-height-selector-prefix`      | Prefix for min-height utilities.                          | `"min-h-"`                                                                                                                                                                       |
-// | `$height-values`                   | Map of height utility values.                             | `map.merge($-height-values, $height-values)`                                                                                                                                     |
+// | Variable                           | Description                                               | Default Value |
+// | ---------------------------------- | --------------------------------------------------------- | ------------- |
+// | `$selector-base`                   | Base selector for utility classes.                        | `"."`         |
+// | `$use-important`                   | Appends `!important` to generated utility declarations.   | `true`        |
+// | `$generate-base-utilities`         | Generates the base utility classes.                       | `true`        |
+// | `$screen-aware`                    | Enables screen-aware utility variants.                    | `false`       |
+// | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`       |
+// | `$state-aware`                     | Enables state-aware utility variants.                     | `false`       |
+// | `$container-aware`                 | Enables container-aware utility variants.                 | `false`       |
+// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`       |
+// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`       |
+// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`       |
+// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`       |
+// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`          |
+// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`          |
+// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`          |
+// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.    | `"cq\\:"`     |
+// | `$height-selector-prefix`          | Prefix for height utilities.                              | `"h-"`        |
+// | `$max-height-selector-prefix`      | Prefix for max-height utilities.                          | `"max-h-"`    |
+// | `$min-height-selector-prefix`      | Prefix for min-height utilities.                          | `"min-h-"`    |
+// | `$height-values`                   | Map of height utility values.                             | `()`          |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.
@@ -188,38 +188,6 @@
     );
   }
 
-  // @each $spacer, $value in root-variables.$spacers {
-  //   // e.g. `.h-1` or `.h-5`
-  //   $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
-
-  //   @include utility.create(
-  //     $selector,
-  //     height,
-  //     $value,
-  //     $important: defaults.$use-important
-  //   );
-
-  //   // e.g. `.max-h-1` or `.max-h-5`
-  //   $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
-
-  //   @include utility.create(
-  //     $selector,
-  //     max-height,
-  //     $value,
-  //     $important: defaults.$use-important
-  //   );
-
-  //   // e.g. `.min-h-1` or `.min-h-5`
-  //   $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
-
-  //   @include utility.create(
-  //     $selector,
-  //     min-height,
-  //     $value,
-  //     $important: defaults.$use-important
-  //   );
-  // }
-
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
@@ -261,41 +229,6 @@
           $screen: $screen-name
         );
       }
-
-      // @each $spacer, $value in root-variables.$spacers {
-      //   // e.g. `.md:h-1` or `.lg:h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $screen: $screen-name
-      //   );
-
-      //   // e.g. `.md:max-h-1` or `.lg:max-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     max-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $screen: $screen-name
-      //   );
-
-      //   // e.g. `.md:min-h-1` or `.lg:min-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     min-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $screen: $screen-name
-      //   );
-      // }
     }
   }
 
@@ -341,41 +274,6 @@
             $theme: $theme-name
           );
         }
-
-        // @each $spacer, $value in root-variables.$spacers {
-        //   // e.g. `.dark:h-1` or `.light:h-5`
-        //   $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
-
-        //   @include utility.create(
-        //     $selector,
-        //     height,
-        //     $value,
-        //     $important: defaults.$use-important,
-        //     $theme: $theme-name
-        //   );
-
-        //   // e.g. `.dark:max-h-1` or `.light:max-h-5`
-        //   $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
-
-        //   @include utility.create(
-        //     $selector,
-        //     max-height,
-        //     $value,
-        //     $important: defaults.$use-important,
-        //     $theme: $theme-name
-        //   );
-
-        //   // e.g. `.dark:min-h-1` or `.light:min-h-5`
-        //   $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
-
-        //   @include utility.create(
-        //     $selector,
-        //     min-height,
-        //     $value,
-        //     $important: defaults.$use-important,
-        //     $theme: $theme-name
-        //   );
-        // }
       }
     }
   }
@@ -421,35 +319,6 @@
           $state: $state-name
         );
       }
-
-      // @each $spacer, $value in root-variables.$spacers {
-      //   // e.g. `.hover:h-1` or `.focus:h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
-
-      //   @include utility.create($selector, height, $value, $state: $state-name);
-
-      //   // e.g. `.hover:max-h-1` or `.focus:max-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     max-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $state: $state-name
-      //   );
-
-      //   // e.g. `.hover:min-h-1` or `.focus:min-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     min-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $state: $state-name
-      //   );
-      // }
     }
   }
 
@@ -494,41 +363,6 @@
           $container: $container-name
         );
       }
-
-      // @each $spacer, $value in root-variables.$spacers {
-      //   // e.g. `.md:h-1` or `.lg:h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $container: $container-name
-      //   );
-
-      //   // e.g. `.md:max-h-1` or `.lg:max-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$max-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     max-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $container: $container-name
-      //   );
-
-      //   // e.g. `.md:min-h-1` or `.lg:min-h-5`
-      //   $selector: #{$selector-prefix}#{defaults.$min-height-selector-prefix}#{$spacer};
-
-      //   @include utility.create(
-      //     $selector,
-      //     min-height,
-      //     $value,
-      //     $important: defaults.$use-important,
-      //     $container: $container-name
-      //   );
-      // }
     }
   }
 }
