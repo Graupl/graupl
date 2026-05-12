@@ -134,6 +134,7 @@ export default defineConfig({
           { text: "List", link: "/utilities/list" },
           { text: "Object", link: "/utilities/object" },
           { text: "Order", link: "/utilities/order" },
+          { text: "Placement", link: "/utilities/placement" },
           { text: "Position", link: "/utilities/position" },
           { text: "Ratio", link: "/utilities/ratio" },
           { text: "Spacing", link: "/utilities/spacing" },
