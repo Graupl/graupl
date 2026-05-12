@@ -117,6 +117,7 @@ export default defineConfig({
         items: [
           { text: "Alignment", link: "/utilities/alignment" },
           { text: "Background", link: "/utilities/background" },
+          { text: "Block Size", link: "/utilities/block-size" },
           { text: "Border", link: "/utilities/border" },
           { text: "Color", link: "/utilities/color" },
           { text: "Container", link: "/utilities/container" },
