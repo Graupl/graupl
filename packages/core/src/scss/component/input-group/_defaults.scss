@@ -17,21 +17,13 @@ $input-group-inline-selector-base: $modifier-selector-base !default;
 $input-group-inline-selector: "inline" !default;
 $input-group-help-text-selector-base: $selector-base !default;
 $input-group-help-text-selector: "help-text" !default;
-
-// Grid names.
-$input-group-grid-label-name: label !default;
-$input-group-grid-input-name: input !default;
-$input-group-grid-help-name: help !default;
-
-// Input group properties.
-$input-group-grid-template-columns: 100% !default;
-$input-group-grid-template-rows: auto auto auto !default;
-
-// Inline input group properties.
-$input-group-inline-grid-template-columns: auto 1fr !default;
-$input-group-inline-grid-template-rows: auto auto !default;
-
-// Inner element properties.
-$input-group-label-grid-area: $input-group-grid-label-name !default;
-$input-group-input-grid-area: $input-group-grid-input-name !default;
-$input-group-help-grid-area: $input-group-grid-help-name !default;
+$input-group-top-selector-base: $modifier-selector-base !default;
+$input-group-top-selector: "top" !default;
+$input-group-bottom-selector-base: $modifier-selector-base !default;
+$input-group-bottom-selector: "bottom" !default;
+$input-group-left-selector-base: $modifier-selector-base !default;
+$input-group-left-selector: "left" !default;
+$input-group-right-selector-base: $modifier-selector-base !default;
+$input-group-right-selector: "right" !default;
+$input-group-inverse-selector-base: $modifier-selector-base !default;
+$input-group-inverse-selector: "inverse" !default;
