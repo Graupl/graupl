@@ -25,7 +25,17 @@ In a grid there are two axes: the block or column axis; and the inline or row ax
 | [`.block-quarter-screen`](#block-quarter-screen) | block-size | 25vh |
 | [`.block-three-quarter-screen`](#block-three-quarter-screen) | block-size | 75vh |
 | [`.block-full-screen`](#block-full-screen) | block-size | 100vh |
-
+| [`.block-0`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 0 value |
+| [`.block-1`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 1 value |
+| [`.block-2`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 2 value |
+| [`.block-3`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 3 value |
+| [`.block-4`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 4 value |
+| [`.block-5`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 5 value |
+| [`.block-6`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 6 value |
+| [`.block-7`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 7 value |
+| [`.block-8`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 8 value |
+| [`.block-9`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 9 value |
+| [`.block-10`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 10 value |
 
 ### `.block-auto`
 
@@ -38,7 +48,7 @@ Sets the `block` property to `auto`.
 </div>
 
 ```html
-<div class="block-auto">
+<div class="p-4 block-auto">
   Item Block Auto
 </div>
 ```
@@ -55,7 +65,7 @@ Sets the `block` property to `fit-content`.
 </div>
 
 ```html
-<div class="block-fit-content">
+<div class="p-4 block-fit-content">
   Item Block Fit Content
 </div>
 ```
@@ -71,7 +81,7 @@ Sets the `block` property to `max-content`.
 </div>
 
 ```html
-<div class="block-max-content">
+<div class="p-4 block-max-content">
   Item Block Max Content
 </div>
 ```
@@ -87,7 +97,7 @@ Sets the `block` property to `min-content`.
 </div>
 
 ```html
-<div class="block-min-content">
+<div class="p-4 block-min-content">
   Item Block Min Content
 </div>
 ```
@@ -103,7 +113,7 @@ Sets the `block` property to `stretch`.
 </div>
 
 ```html
-<div class="block-stretch">
+<div class="p-4 block-stretch">
   <!-- Content here -->
 </div>
 ```
@@ -119,7 +129,7 @@ Sets the `block` property to `full`.
 </div>
 
 ```html
-<div class="block-full">
+<div class="p-4 block-full">
   Item Block Full
 </div>
 ```
@@ -135,7 +145,7 @@ Sets the `block` property to `quarter`.
 </div>
 
 ```html
-<div class="block-quarter">
+<div class="p-4 block-quarter">
   Item Block Quarter
 </div>
 ```
@@ -151,7 +161,7 @@ Sets the `block` property to `half`.
 </div>
 
 ```html
-<div class="block-half">
+<div class="p-4 block-half">
   Item Block Half
 </div>
 ```
@@ -167,7 +177,7 @@ Sets the `block` property to `three-quarters`.
 </div>
 
 ```html
-<div class="block-three-quarters">
+<div class="p-4 block-three-quarters">
   Item Block three quarters
 </div>
 ```
@@ -183,7 +193,7 @@ Sets the `block` property to `third`.
 </div>
 
 ```html
-<div class="block-third">
+<div class="p-4 block-third">
   Item Block Third
 </div>
 ```
@@ -199,7 +209,7 @@ Sets the `block` property to `two-thirds`.
 </div>
 
 ```html
-<div class="block-two-thirds">
+<div class="p-4 block-two-thirds">
   Item Block two thirds
 </div>
 ```
@@ -215,7 +225,7 @@ Sets the `block` property to `half-screen`.
 </div>
 
 ```html
-<div class="block-half-screen">
+<div class="p-4 block-half-screen">
   Item Block Half Screen
 </div>
 ```
@@ -230,7 +240,7 @@ Sets the `block` property to `third-screen`.
 </div>
 
 ```html
-<div class="block-third-screen">
+<div class="p-4 block-third-screen">
   Item Block third Screen
 </div>
 ```
@@ -246,7 +256,7 @@ Sets the `block` property to `two-thirds-screen`.
 </div>
 
 ```html
-<div class="block-two-thirds-screen">
+<div class="p-4 block-two-thirds-screen">
   Item Block Two Thirds Screen
 </div>
 ```
@@ -262,7 +272,7 @@ Sets the `block` property to `quarter-screen`.
 </div>
 
 ```html
-<div class="block-quarter-screen">
+<div class="p-4 block-quarter-screen">
   Item Block quarter Screen
 </div>
 ```
@@ -278,7 +288,7 @@ Sets the `block` property to `three-quarters-screen`.
 </div>
 
 ```html
-<div class="block-three-quarters-screen">
+<div class="p-4 block-three-quarters-screen">
   Item Block Three Quarters Screen
 </div>
 ```
@@ -294,8 +304,35 @@ Sets the `block` property to `full-screen`.
 </div>
 
 ```html
-<div class="block-full-screen">
+<div class="p-4 block-full-screen">
   Item Block Full Screen
+</div>
+```
+
+### `.block-0`
+
+Uses `Graupl-spacer` such as `0` to set the `block` property to a `spacer`.
+
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, max-content); grid-template-rows: max-content;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-0">0</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-1">1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-2">2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-3">3</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-4">4</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-5">5</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-6">6</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-7">7</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-8">Item 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-9">Item 9</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-10">Item 10</div>
+</div>
+
+```html
+<div class="m-2 block-0">
+   0
+</div>
+<div class="m-2 block-10">
+   Item 10
 </div>
 ```
 
