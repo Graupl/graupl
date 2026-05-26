@@ -18,7 +18,7 @@ In a grid there are two axes: the block or column axis; and the inline or row ax
 | [`.block-half`](#block-half) | block-size | 50% |
 | [`.block-three-quarters`](#block-three-quarters) | block-size | 75% |
 | [`.block-third`](#block-third) | block-size | calc(100%/ 3) |
-| [`.block-two-thirds`](#block-two-thirds) | block-size | calc(100%/ 1.5)|
+| [`.block-two-thirds`](#block-two-thirds) | block-size | calc(100%/ 1.5) |
 | [`.block-half-screen`](#block-half-screen) | block-size | 50vh |
 | [`.block-third-screen`](#block-third-screen) | block-size | calc(100vh/ 3) |
 | [`.block-two-thirds-screen`](#block-two-thirds-screen) | block-size | calc(100vh/ 1.5) |
@@ -41,10 +41,8 @@ In a grid there are two axes: the block or column axis; and the inline or row ax
 
 Sets the `block` property to `auto`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-auto">Item Block Auto</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
@@ -58,15 +56,13 @@ Sets the `block` property to `auto`.
 
 Sets the `block` property to `fit-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Item Block Fit Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Item Block fit-content</div>
 </div>
 
 ```html
 <div class="p-4 block-fit-content">
-  Item Block Fit Content
+  Item Block fit-content
 </div>
 ```
 
@@ -74,15 +70,13 @@ Sets the `block` property to `fit-content`.
 
 Sets the `block` property to `max-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Item Block Max Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Item Block max-content</div>
 </div>
 
 ```html
 <div class="p-4 block-max-content">
-  Item Block Max Content
+  Item Block max-content
 </div>
 ```
 
@@ -90,15 +84,13 @@ Sets the `block` property to `max-content`.
 
 Sets the `block` property to `min-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Item Block Min Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Item Block min-content</div>
 </div>
 
 ```html
 <div class="p-4 block-min-content">
-  Item Block Min Content
+  Item Block min-content
 </div>
 ```
 
@@ -106,15 +98,13 @@ Sets the `block` property to `min-content`.
 
 Sets the `block` property to `stretch`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Item Block Stretch</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Item Block stretch</div>
 </div>
 
 ```html
 <div class="p-4 block-stretch">
-  <!-- Content here -->
+  Item Block stretch
 </div>
 ```
 
@@ -122,15 +112,13 @@ Sets the `block` property to `stretch`.
 
 Sets the `block` property to `full`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Block Full</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Block full</div>
 </div>
 
 ```html
 <div class="p-4 block-full">
-  Item Block Full
+  Item Block full
 </div>
 ```
 
@@ -138,15 +126,13 @@ Sets the `block` property to `full`.
 
 Sets the `block` property to `quarter`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Block Quarter</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Block quarter</div>
 </div>
 
 ```html
 <div class="p-4 block-quarter">
-  Item Block Quarter
+  Item Block quarter
 </div>
 ```
 
@@ -154,15 +140,13 @@ Sets the `block` property to `quarter`.
 
 Sets the `block` property to `half`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Block Half</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Block half</div>
 </div>
 
 ```html
 <div class="p-4 block-half">
-  Item Block Half
+  Item Block half
 </div>
 ```
 
@@ -170,15 +154,13 @@ Sets the `block` property to `half`.
 
 Sets the `block` property to `three-quarters`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Block three quarters</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Block three-quarters</div>
 </div>
 
 ```html
 <div class="p-4 block-three-quarters">
-  Item Block three quarters
+  Item Block three-quarters
 </div>
 ```
 
@@ -186,15 +168,13 @@ Sets the `block` property to `three-quarters`.
 
 Sets the `block` property to `third`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Block Third </div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Block third</div>
 </div>
 
 ```html
 <div class="p-4 block-third">
-  Item Block Third
+  Item Block third
 </div>
 ```
 
@@ -202,15 +182,13 @@ Sets the `block` property to `third`.
 
 Sets the `block` property to `two-thirds`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Block two thirds</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Block two-thirds</div>
 </div>
 
 ```html
 <div class="p-4 block-two-thirds">
-  Item Block two thirds
+  Item Block two-thirds
 </div>
 ```
 
@@ -218,30 +196,27 @@ Sets the `block` property to `two-thirds`.
 
 Sets the `block` property to `half-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half-screen">Item Block Half Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Block half-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-half-screen">
-  Item Block Half Screen
+  Item Block half-screen
 </div>
 ```
+
 ### `.block-third-screen`
 
 Sets the `block` property to `third-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third-screen">Item Block third Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Block third-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-third-screen">
-  Item Block third Screen
+  Item Block third-screen
 </div>
 ```
 
@@ -249,15 +224,13 @@ Sets the `block` property to `third-screen`.
 
 Sets the `block` property to `two-thirds-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds-screen">Item Block Two Thirds Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Block two-thirds-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-two-thirds-screen">
-  Item Block Two Thirds Screen
+  Item Block two-thirds-screen
 </div>
 ```
 
@@ -265,15 +238,13 @@ Sets the `block` property to `two-thirds-screen`.
 
 Sets the `block` property to `quarter-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter-screen">Item Block quarter Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-quarter-screen">
-  Item Block quarter Screen
+  Item Block-quarter-screen
 </div>
 ```
 
@@ -281,15 +252,13 @@ Sets the `block` property to `quarter-screen`.
 
 Sets the `block` property to `three-quarters-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters-screen">Item Block Three Quarters Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Block three-quarters-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-three-quarters-screen">
-  Item Block Three Quarters Screen
+  Item Block three-quarters-screen
 </div>
 ```
 
@@ -297,15 +266,13 @@ Sets the `block` property to `three-quarters-screen`.
 
 Sets the `block` property to `full-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full-screen">Item Block Full Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Block full-screen</div>
 </div>
 
 ```html
 <div class="p-4 block-full-screen">
-  Item Block Full Screen
+  Item Block full-screen
 </div>
 ```
 
@@ -373,10 +340,8 @@ Uses `Graupl-spacer` such as `0` to set the `block` property to a `spacer`.
 
 Sets the `max-block` property to `auto`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-auto">Item Max Block Auto</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
@@ -389,15 +354,13 @@ Sets the `max-block` property to `auto`.
 
 Sets the `max-block` property to `fit-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-fit-content">Item Max Block Fit Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Item Max Block fit-content</div>
 </div>
 
 ```html
-<div class="p-4 max-block-fit-content">
-  Item Max Block Fit Content
+<div class="p-4 block-fit-content">
+  Item Max Block fit-content
 </div>
 ```
 
@@ -405,15 +368,13 @@ Sets the `max-block` property to `fit-content`.
 
 Sets the `max-block` property to `max-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-max-content">Item Max Block Max Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Item Max Block max-content</div>
 </div>
 
 ```html
-<div class="p-4 max-block-max-content">
-  Item Max Block Max Content
+<div class="p-4 block-max-content">
+  Item Max Block max-content
 </div>
 ```
 
@@ -421,15 +382,13 @@ Sets the `max-block` property to `max-content`.
 
 Sets the `max-block` property to `min-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-min-content">Item Max Block Min Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Item Max Block min-content</div>
 </div>
 
 ```html
-<div class="p-4 max-block-min-content">
-  Item Max Block Min Content
+<div class="p-4 block-min-content">
+  Item Max Block min-content
 </div>
 ```
 
@@ -437,15 +396,13 @@ Sets the `max-block` property to `min-content`.
 
 Sets the `max-block` property to `stretch`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-stretch">Item Max Block Stretch</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Item Max Block stretch</div>
 </div>
 
 ```html
-<div class="p-4 max-block-stretch">
-  <!-- Content here -->
+<div class="p-4 block-stretch">
+  Item Max Block stretch
 </div>
 ```
 
@@ -453,15 +410,13 @@ Sets the `max-block` property to `stretch`.
 
 Sets the `max-block` property to `full`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-full">Item Max Block Full</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Max Block full</div>
 </div>
 
 ```html
-<div class="p-4 max-block-full">
-  Item Max Block Full
+<div class="p-4 block-full">
+  Item Max Block full
 </div>
 ```
 
@@ -469,15 +424,13 @@ Sets the `max-block` property to `full`.
 
 Sets the `max-block` property to `quarter`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-quarter">Item Max Block Quarter</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Max Block quarter</div>
 </div>
 
 ```html
-<div class="p-4 max-block-quarter">
-  Item Max Block Quarter
+<div class="p-4 block-quarter">
+  Item Max Block quarter
 </div>
 ```
 
@@ -485,15 +438,13 @@ Sets the `max-block` property to `quarter`.
 
 Sets the `max-block` property to `half`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-half">Item Max Block Half</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Max Block half</div>
 </div>
 
 ```html
-<div class="p-4 max-block-half">
-  Item Max Block Half
+<div class="p-4 block-half">
+  Item Max Block half
 </div>
 ```
 
@@ -501,15 +452,13 @@ Sets the `max-block` property to `half`.
 
 Sets the `max-block` property to `three-quarters`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-three-quarters">Item Max Block three quarters</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Max Block three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 max-block-three-quarters">
-  Item Max Block three quarters
+<div class="p-4 block-three-quarters">
+  Item Max Block three-quarters
 </div>
 ```
 
@@ -517,15 +466,13 @@ Sets the `max-block` property to `three-quarters`.
 
 Sets the `max-block` property to `third`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-third">Item Max Block Third </div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Max Block third</div>
 </div>
 
 ```html
-<div class="p-4 max-block-third">
-  Item Max Block Third
+<div class="p-4 block-third">
+  Item Max Block third
 </div>
 ```
 
@@ -533,15 +480,13 @@ Sets the `max-block` property to `third`.
 
 Sets the `max-block` property to `two-thirds`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-two-thirds">Item Max Block two thirds</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Max Block two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 max-block-two-thirds">
-  Item Max Block two thirds
+<div class="p-4 block-two-thirds">
+  Item Max Block two-thirds
 </div>
 ```
 
@@ -549,15 +494,13 @@ Sets the `max-block` property to `two-thirds`.
 
 Sets the `max-block` property to `half-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-half-screen">Item Max Block Half Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Max Block half-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-half-screen">
-  Item Max Block Half Screen
+<div class="p-4 block-half-screen">
+  Item Max Block half-screen
 </div>
 ```
 
@@ -565,15 +508,13 @@ Sets the `max-block` property to `half-screen`.
 
 Sets the `max-block` property to `third-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-third-screen">Item Max Block third Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Max Block third-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-third-screen">
-  Item Max Block third Screen
+<div class="p-4 block-third-screen">
+  Item Max Block third-screen
 </div>
 ```
 
@@ -581,15 +522,13 @@ Sets the `max-block` property to `third-screen`.
 
 Sets the `max-block` property to `two-thirds-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-two-thirds-screen">Item Max Block Two Thirds Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Max Block two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-two-thirds-screen">
-  Item Max Block Two Thirds Screen
+<div class="p-4 block-two-thirds-screen">
+  Item Max Block two-thirds-screen
 </div>
 ```
 
@@ -597,15 +536,13 @@ Sets the `max-block` property to `two-thirds-screen`.
 
 Sets the `max-block` property to `quarter-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-quarter-screen">Item Max Block quarter Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-quarter-screen">
-  Item Max Block quarter Screen
+<div class="p-4 block-quarter-screen">
+  Item Block-quarter-screen
 </div>
 ```
 
@@ -613,15 +550,13 @@ Sets the `max-block` property to `quarter-screen`.
 
 Sets the `max-block` property to `three-quarters-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-three-quarters-screen">Item Max Block Three Quarters Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Max Block three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-three-quarters-screen">
-  Item Max Block Three Quarters Screen
+<div class="p-4 block-three-quarters-screen">
+  Item Max Block three-quarters-screen
 </div>
 ```
 
@@ -629,15 +564,13 @@ Sets the `max-block` property to `three-quarters-screen`.
 
 Sets the `max-block` property to `full-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-full-screen">Item Max Block Full Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Max Block full-screen</div>
 </div>
 
 ```html
-<div class="p-4 max-block-full-screen">
-  Item Max Block Full Screen
+<div class="p-4 block-full-screen">
+  Item Max Block full-screen
 </div>
 ```
 
@@ -705,10 +638,8 @@ Uses `Graupl-spacer` such as `0` to set the `max-block` property to a `spacer`.
 
 Sets the `min-block` property to `auto`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-auto">Item Min Block Auto</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
@@ -721,31 +652,13 @@ Sets the `min-block` property to `auto`.
 
 Sets the `min-block` property to `fit-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-fit-content">Item Min Block Fit Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-fit-content">Item Min Block fit-content</div>
 </div>
 
 ```html
 <div class="p-4 min-block-fit-content">
-  Item Min Block Fit Content
-</div>
-```
-
-### `.min-block-max-content`
-
-Sets the `min-block` property to `max-content`.
-
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-max-content">Item Min Block Max Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-</div>
-
-```html
-<div class="p-4 min-block-min-content">
-  Item Min Block Max Content
+  Item Min Block fit-content
 </div>
 ```
 
@@ -753,15 +666,27 @@ Sets the `min-block` property to `max-content`.
 
 Sets the `min-block` property to `min-content`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Item Min Block Min Content</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Item Min Block min-content</div>
 </div>
 
 ```html
 <div class="p-4 min-block-min-content">
-  Item Min Block Min Content
+  Item Min Block min-content
+</div>
+```
+
+### `.min-block-min-content`
+
+Sets the `min-block` property to `min-content`.
+
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Item Min Block min-content</div>
+</div>
+
+```html
+<div class="p-4 min-block-min-content">
+  Item Min Block min-content
 </div>
 ```
 
@@ -769,15 +694,13 @@ Sets the `min-block` property to `min-content`.
 
 Sets the `min-block` property to `stretch`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-stretch">Item Min Block Stretch</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-stretch">Item Min Block stretch</div>
 </div>
 
 ```html
 <div class="p-4 min-block-stretch">
-  <!-- Content here -->
+  Item Min Block stretch
 </div>
 ```
 
@@ -785,15 +708,13 @@ Sets the `min-block` property to `stretch`.
 
 Sets the `min-block` property to `full`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full">Item Min Block Full</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full">Item Min Block full</div>
 </div>
 
 ```html
 <div class="p-4 min-block-full">
-  Item Min Block Full
+  Item Min Block full
 </div>
 ```
 
@@ -801,15 +722,13 @@ Sets the `min-block` property to `full`.
 
 Sets the `min-block` property to `quarter`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter">Item Min Block Quarter</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter">Item Min Block quarter</div>
 </div>
 
 ```html
 <div class="p-4 min-block-quarter">
-  Item Min Block Quarter
+  Item Min Block quarter
 </div>
 ```
 
@@ -817,15 +736,13 @@ Sets the `min-block` property to `quarter`.
 
 Sets the `min-block` property to `half`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half">Item Min Block Half</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half">Item Min Block half</div>
 </div>
 
 ```html
 <div class="p-4 min-block-half">
-  Item Min Block Half
+  Item Min Block half
 </div>
 ```
 
@@ -833,15 +750,13 @@ Sets the `min-block` property to `half`.
 
 Sets the `min-block` property to `three-quarters`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters">Item Min Block three quarters</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters">Item Min Block three-quarters</div>
 </div>
 
 ```html
 <div class="p-4 min-block-three-quarters">
-  Item Min Block three quarters
+  Item Min Block three-quarters
 </div>
 ```
 
@@ -849,15 +764,13 @@ Sets the `min-block` property to `three-quarters`.
 
 Sets the `min-block` property to `third`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third">Item Min Block Third </div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third">Item Min Block third</div>
 </div>
 
 ```html
 <div class="p-4 min-block-third">
-  Item Min Block Third
+  Item Min Block third
 </div>
 ```
 
@@ -865,15 +778,13 @@ Sets the `min-block` property to `third`.
 
 Sets the `min-block` property to `two-thirds`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-10" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds">Item Min Block two thirds</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds">Item Min Block two-thirds</div>
 </div>
 
 ```html
 <div class="p-4 min-block-two-thirds">
-  Item Min Block two thirds
+  Item Min Block two-thirds
 </div>
 ```
 
@@ -881,15 +792,13 @@ Sets the `min-block` property to `two-thirds`.
 
 Sets the `min-block` property to `half-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half-screen">Item Min Block Half Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-half-screen">Item Min Block half-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-half-screen">
-  Item Min Block Half Screen
+  Item Min Block half-screen
 </div>
 ```
 
@@ -897,15 +806,13 @@ Sets the `min-block` property to `half-screen`.
 
 Sets the `min-block` property to `third-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third-screen">Item Min Block third Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-third-screen">Item Min Block third-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-third-screen">
-  Item Min Block third Screen
+  Item Min Block third-screen
 </div>
 ```
 
@@ -913,15 +820,13 @@ Sets the `min-block` property to `third-screen`.
 
 Sets the `min-block` property to `two-thirds-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds-screen">Item Min Block Two Thirds Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-two-thirds-screen">Item Min Block two-thirds-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-two-thirds-screen">
-  Item Min Block Two Thirds Screen
+  Item Min Block two-thirds-screen
 </div>
 ```
 
@@ -929,15 +834,13 @@ Sets the `min-block` property to `two-thirds-screen`.
 
 Sets the `min-block` property to `quarter-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter-screen">Item Min Block quarter Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-quarter-screen">Item min-Block-quarter-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-quarter-screen">
-  Item Min Block quarter Screen
+  Item min-Block-quarter-screen
 </div>
 ```
 
@@ -945,15 +848,13 @@ Sets the `min-block` property to `quarter-screen`.
 
 Sets the `min-block` property to `three-quarters-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters-screen">Item Min Block Three Quarters Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-three-quarters-screen">Item Min Block three-quarters-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-three-quarters-screen">
-  Item Min Block Three Quarters Screen
+  Item Min Block three-quarters-screen
 </div>
 ```
 
@@ -961,15 +862,13 @@ Sets the `min-block` property to `three-quarters-screen`.
 
 Sets the `min-block` property to `full-screen`.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full-screen">Item Min Block Full Screen</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-full-screen">Item Min Block full-screen</div>
 </div>
 
 ```html
 <div class="p-4 min-block-full-screen">
-  Item Min Block Full Screen
+  Item Min Block full-screen
 </div>
 ```
 
