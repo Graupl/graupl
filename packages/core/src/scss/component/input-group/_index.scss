@@ -92,13 +92,13 @@
 // | `$input-group-right-selector`                  | Selector for the right modifier.                        | `"right"`       |
 // | `$input-group-inverse-selector-base`           | Selector base for the inverse modifier.                 | `"."`           |
 // | `$input-group-inverse-selector`                | Selector for the inverse modifier.                      | `"inverse"`     |
-// | `$input-group-screen-aware-separator`          | The separator for the screen-aware modifier classes.    | `"\\:"`         |
+// | `$input-group-screen-aware-selector-separator`          | The separator for the screen-aware modifier classes.    | `"\\:"`         |
 // | `$input-group-screen-aware-selector-prefix`    | The prefix for the screen-aware modifier classes.       | `""`            |
-// | `$input-group-theme-aware-separator`           | The separator for the theme-aware modifier classes.     | `"\\:"`         |
+// | `$input-group-theme-aware-selector-separator`           | The separator for the theme-aware modifier classes.     | `"\\:"`         |
 // | `$input-group-theme-aware-selector-prefix`     | The prefix for the theme-aware modifier classes.        | `""`            |
-// | `$input-group-state-aware-separator`           | The separator for the state-aware modifier classes.     | `"\\:"`         |
+// | `$input-group-state-aware-selector-separator`           | The separator for the state-aware modifier classes.     | `"\\:"`         |
 // | `$input-group-state-aware-selector-prefix`     | The prefix for the state-aware modifier classes.        | `""`            |
-// | `$input-group-container-aware-separator`       | The separator for the container-aware modifier classes. | `"\\:"`         |
+// | `$input-group-container-aware-selector-separator`       | The separator for the container-aware modifier classes. | `"\\:"`         |
 // | `$input-group-container-aware-selector-prefix` | The prefix for the container-aware modifier classes.    | `"cq\\:"`       |
 //
 // @example
@@ -290,7 +290,7 @@
       #{defaults.$input-group-selector-base}#{defaults.$input-group-selector} {
         // e.g. `&.md:top` or `&.xl:top`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-top-selector}",
+          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-top-selector}",
           (
             grid-template-columns: $input-group-top-grid-template-columns,
             grid-template-rows: $input-group-top-grid-template-rows,
@@ -301,7 +301,7 @@
 
         // e.g. `&.md:bottom` or `&.xl:bottom`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-bottom-selector}",
+          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-bottom-selector}",
           (
             grid-template-columns: $input-group-bottom-grid-template-columns,
             grid-template-rows: $input-group-bottom-grid-template-rows,
@@ -312,7 +312,7 @@
 
         // e.g. `&.md:left` or `&.xl:left`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-left-selector}",
+          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-left-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -323,7 +323,7 @@
 
         // e.g. `&.md:right` or `&.xl:right`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-right-selector}",
+          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-right-selector}",
           (
             grid-template-columns: $input-group-right-grid-template-columns,
             grid-template-rows: $input-group-right-grid-template-rows,
@@ -334,7 +334,7 @@
 
         // e.g. `&.md:inverse` or `&.xl:inverse`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-inverse-selector}",
+          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-inverse-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -345,7 +345,7 @@
 
         // e.g. `&.md:inline` or `&.xl:inline`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-inline-selector}",
+          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-inline-selector}",
           (
             grid-template-columns: $input-group-inline-grid-template-columns,
             grid-template-rows: $input-group-inline-grid-template-rows,
@@ -356,7 +356,7 @@
 
         // e.g. `&.md:stacked` or `&.xl:stacked`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-separator}#{defaults.$input-group-stacked-selector}",
+          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-screen-aware-selector-prefix}#{$screen-name}#{defaults.$input-group-screen-aware-selector-separator}#{defaults.$input-group-stacked-selector}",
           (
             grid-template-columns: $input-group-stacked-grid-template-columns,
             grid-template-rows: $input-group-stacked-grid-template-rows,
@@ -375,7 +375,7 @@
       #{defaults.$input-group-selector-base}#{defaults.$input-group-selector} {
         // e.g. `&.light:top` or `&.dark:top`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-top-selector}",
+          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-top-selector}",
           (
             grid-template-columns: $input-group-top-grid-template-columns,
             grid-template-rows: $input-group-top-grid-template-rows,
@@ -386,7 +386,7 @@
 
         // e.g. `&.light:bottom` or `&.dark:bottom`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-bottom-selector}",
+          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-bottom-selector}",
           (
             grid-template-columns: $input-group-bottom-grid-template-columns,
             grid-template-rows: $input-group-bottom-grid-template-rows,
@@ -397,7 +397,7 @@
 
         // e.g. `&.light:left` or `&.dark:left`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-left-selector}",
+          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-left-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -408,7 +408,7 @@
 
         // e.g. `&.light:right` or `&.dark:right`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-right-selector}",
+          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-right-selector}",
           (
             grid-template-columns: $input-group-right-grid-template-columns,
             grid-template-rows: $input-group-right-grid-template-rows,
@@ -419,7 +419,7 @@
 
         // e.g. `&.light:inverse` or `&.dark:inverse`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-inverse-selector}",
+          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-inverse-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -430,7 +430,7 @@
 
         // e.g. `&.light:inline` or `&.dark:inline`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-inline-selector}",
+          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-inline-selector}",
           (
             grid-template-columns: $input-group-inline-grid-template-columns,
             grid-template-rows: $input-group-inline-grid-template-rows,
@@ -441,7 +441,7 @@
 
         // e.g. `&.light:stacked` or `&.dark:stacked`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-separator}#{defaults.$input-group-stacked-selector}",
+          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-theme-aware-selector-prefix}#{$theme-name}#{defaults.$input-group-theme-aware-selector-separator}#{defaults.$input-group-stacked-selector}",
           (
             grid-template-columns: $input-group-stacked-grid-template-columns,
             grid-template-rows: $input-group-stacked-grid-template-rows,
@@ -460,7 +460,7 @@
       #{defaults.$input-group-selector-base}#{defaults.$input-group-selector} {
         // e.g. `&.hover:top` or `&.focus:top`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-top-selector}",
+          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-top-selector}",
           (
             grid-template-columns: $input-group-top-grid-template-columns,
             grid-template-rows: $input-group-top-grid-template-rows,
@@ -471,7 +471,7 @@
 
         // e.g. `&.hover:bottom` or `&.focus:bottom`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-bottom-selector}",
+          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-bottom-selector}",
           (
             grid-template-columns: $input-group-bottom-grid-template-columns,
             grid-template-rows: $input-group-bottom-grid-template-rows,
@@ -482,7 +482,7 @@
 
         // e.g. `&.hover:left` or `&.focus:left`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-left-selector}",
+          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-left-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -493,7 +493,7 @@
 
         // e.g. `&.hover:right` or `&.focus:right`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-right-selector}",
+          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-right-selector}",
           (
             grid-template-columns: $input-group-right-grid-template-columns,
             grid-template-rows: $input-group-right-grid-template-rows,
@@ -504,7 +504,7 @@
 
         // e.g. `&.hover:inverse` or `&.focus:inverse`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-inverse-selector}",
+          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-inverse-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -515,7 +515,7 @@
 
         // e.g. `&.hover:inline` or `&.focus:inline`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-inline-selector}",
+          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-inline-selector}",
           (
             grid-template-columns: $input-group-inline-grid-template-columns,
             grid-template-rows: $input-group-inline-grid-template-rows,
@@ -526,7 +526,7 @@
 
         // e.g. `&.hover:stacked` or `&.focus:stacked`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-separator}#{defaults.$input-group-stacked-selector}",
+          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-state-aware-selector-prefix}#{$state-name}#{defaults.$input-group-state-aware-selector-separator}#{defaults.$input-group-stacked-selector}",
           (
             grid-template-columns: $input-group-stacked-grid-template-columns,
             grid-template-rows: $input-group-stacked-grid-template-rows,
@@ -545,7 +545,7 @@
       #{defaults.$input-group-selector-base}#{defaults.$input-group-selector} {
         // e.g. `&.cq:md:top` or `&.cq:xl:top`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-top-selector}",
+          "&#{defaults.$input-group-top-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-top-selector}",
           (
             grid-template-columns: $input-group-top-grid-template-columns,
             grid-template-rows: $input-group-top-grid-template-rows,
@@ -556,7 +556,7 @@
 
         // e.g. `&.cq:md:bottom` or `&.cq:xl:bottom`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-bottom-selector}",
+          "&#{defaults.$input-group-bottom-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-bottom-selector}",
           (
             grid-template-columns: $input-group-bottom-grid-template-columns,
             grid-template-rows: $input-group-bottom-grid-template-rows,
@@ -567,7 +567,7 @@
 
         // e.g. `&.cq:md:left` or `&.cq:xl:left`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-left-selector}",
+          "&#{defaults.$input-group-left-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-left-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -578,7 +578,7 @@
 
         // e.g. `&.cq:md:right` or `&.cq:xl:right`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-right-selector}",
+          "&#{defaults.$input-group-right-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-right-selector}",
           (
             grid-template-columns: $input-group-right-grid-template-columns,
             grid-template-rows: $input-group-right-grid-template-rows,
@@ -589,7 +589,7 @@
 
         // e.g. `&.cq:md:inverse` or `&.cq:xl:inverse`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-inverse-selector}",
+          "&#{defaults.$input-group-inverse-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-inverse-selector}",
           (
             grid-template-columns: $input-group-left-grid-template-columns,
             grid-template-rows: $input-group-left-grid-template-rows,
@@ -600,7 +600,7 @@
 
         // e.g. `&.cq:md:inline` or `&.cq:xl:inline`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-inline-selector}",
+          "&#{defaults.$input-group-inline-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-inline-selector}",
           (
             grid-template-columns: $input-group-inline-grid-template-columns,
             grid-template-rows: $input-group-inline-grid-template-rows,
@@ -611,7 +611,7 @@
 
         // e.g. `&.cq:md:stacked` or `&.cq:xl:stacked`
         @include utility.create-mapped(
-          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-separator}#{defaults.$input-group-stacked-selector}",
+          "&#{defaults.$input-group-stacked-selector-base}#{defaults.$input-group-container-aware-selector-prefix}#{$container-name}#{defaults.$input-group-container-aware-selector-separator}#{defaults.$input-group-stacked-selector}",
           (
             grid-template-columns: $input-group-stacked-grid-template-columns,
             grid-template-rows: $input-group-stacked-grid-template-rows,
