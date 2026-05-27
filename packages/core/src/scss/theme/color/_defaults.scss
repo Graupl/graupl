@@ -18,11 +18,11 @@ $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-colors: root-defaults.$generate-base-colors !default;
 $generate-base-themes: root-defaults.$generate-base-themes !default;
 $theme-selector-base: $modifier-selector-base !default;
-$theme-selector-prefix: "" !default;
-$theme-selector-suffix: "-theme" !default;
+$theme-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$theme-selector-suffix: root-defaults.$theme-aware-selector-suffix !default;
 $scheme-selector-base: $modifier-selector-base !default;
-$scheme-selector-prefix: "" !default;
-$scheme-selector-suffix: "-mode" !default;
+$scheme-selector-prefix: root-defaults.$scheme-aware-selector-prefix !default;
+$scheme-selector-suffix: root-defaults.$scheme-aware-selector-suffix !default;
 $root-selector-base: root-defaults.$root-selector-base !default;
 $root-selector: root-defaults.$root-selector !default;
 
@@ -120,6 +120,8 @@ $schemes: () !default;
 
 // Ensure all keys in the schemes are strings.
 $schemes: map-functions.force-string-keys($schemes);
+
+// Theme schemes.
 $-theme-schemes: (
   "default": "light",
 );
