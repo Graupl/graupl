@@ -15,19 +15,19 @@
 // | ---------------------------------- | -------------------------------------------- | ------------------------------------------------------ |
 // | `$container-aware`                 | Default for container aware.                 | false                                                  |
 // | `$container-aware-selector-prefix` | Default for container aware selector prefix. | "cq\\:"                                                |
-// | `$container-aware-separator`       | Default for container aware separator.       | "\\:"                                                  |
+// | `$container-aware-selector-separator`       | Default for container aware separator.       | "\\:"                                                  |
 // | `$generate-base-utilities`         | Default for generate base utilities.         | true                                                   |
 // | `$screen-aware`                    | Default for screen aware.                    | false                                                  |
 // | `$screen-aware-selector-prefix`    | Default for screen aware selector prefix.    | ""                                                     |
-// | `$screen-aware-separator`          | Default for screen aware separator.          | "\\:"                                                  |
+// | `$screen-aware-selector-separator`          | Default for screen aware separator.          | "\\:"                                                  |
 // | `$selector-base`                   | Default for selector base.                   | "."                                                    |
 // | `$shelf-aware-selector`            | Default for shelf aware selector.            | "shelf-aware"                                          |
 // | `$state-aware`                     | Default for state aware.                     | false                                                  |
 // | `$state-aware-selector-prefix`     | Default for state aware selector prefix.     | ""                                                     |
-// | `$state-aware-separator`           | Default for state aware separator.           | "\\:"                                                  |
+// | `$state-aware-selector-separator`           | Default for state aware separator.           | "\\:"                                                  |
 // | `$theme-aware`                     | Default for theme aware.                     | false                                                  |
 // | `$theme-aware-selector-prefix`     | Default for theme aware selector prefix.     | ""                                                     |
-// | `$theme-aware-separator`           | Default for theme aware separator.           | "\\:"                                                  |
+// | `$theme-aware-selector-separator`           | Default for theme aware separator.           | "\\:"                                                  |
 // | `$use-important`                   | Default for use important.                   | true                                                   |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
@@ -129,7 +129,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-separator};
 
       // e.g. `.md:shelf-aware`
       $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
@@ -194,7 +194,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-separator};
 
         // e.g. `.dark:shelf-aware` or `.light:shelf-aware`
         $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
@@ -259,7 +259,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-separator};
 
       // e.g. `.hover:shelf-aware` or `.focus:shelf-aware`
       $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
@@ -323,7 +323,7 @@
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-separator};
 
       // e.g. `.cq:md:shelf-aware`
       $selector: #{$selector-prefix}#{defaults.$shelf-aware-selector};
