@@ -29,21 +29,21 @@
 // | ---------------------------------- | -------------------------------------------- | ----------------------------------------------- |
 // | `$container-aware`                 | Default for container aware.                 | false                                           |
 // | `$container-aware-selector-prefix` | Default for container aware selector prefix. | "cq\\:"                                         |
-// | `$container-aware-separator`       | Default for container aware separator.       | "\\:"                                           |
+// | `$container-aware-selector-separator`       | Default for container aware separator.       | "\\:"                                           |
 // | `$custom-width-values`             | Default for custom width values.             | ()                                              |
 // | `$generate-base-utilities`         | Default for generate base utilities.         | true                                            |
 // | `$max-width-selector-prefix`       | Default for max width selector prefix.       | "max-w-"                                        |
 // | `$min-width-selector-prefix`       | Default for min width selector prefix.       | "min-w-"                                        |
 // | `$screen-aware`                    | Default for screen aware.                    | false                                           |
 // | `$screen-aware-selector-prefix`    | Default for screen aware selector prefix.    | ""                                              |
-// | `$screen-aware-separator`          | Default for screen aware separator.          | "\\:"                                           |
+// | `$screen-aware-selector-separator`          | Default for screen aware separator.          | "\\:"                                           |
 // | `$selector-base`                   | Default for selector base.                   | "."                                             |
 // | `$state-aware`                     | Default for state aware.                     | false                                           |
 // | `$state-aware-selector-prefix`     | Default for state aware selector prefix.     | ""                                              |
-// | `$state-aware-separator`           | Default for state aware separator.           | "\\:"                                           |
+// | `$state-aware-selector-separator`           | Default for state aware separator.           | "\\:"                                           |
 // | `$theme-aware`                     | Default for theme aware.                     | false                                           |
 // | `$theme-aware-selector-prefix`     | Default for theme aware selector prefix.     | ""                                              |
-// | `$theme-aware-separator`           | Default for theme aware separator.           | "\\:"                                           |
+// | `$theme-aware-selector-separator`           | Default for theme aware separator.           | "\\:"                                           |
 // | `$use-important`                   | Default for use important.                   | true                                            |
 // | `$width-selector-prefix`           | Default for width selector prefix.           | "w-"                                            |
 // | `$width-values`                    | Default for width values.                    | map.merge($-width-values, $width-values)        |
@@ -124,7 +124,7 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -169,7 +169,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-separator};
 
         // For each width property, create a utility class.
         @each $width, $value in defaults.$width-values {
@@ -214,7 +214,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -252,7 +252,7 @@
   @if defaults.$container-aware {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {

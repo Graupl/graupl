@@ -103,10 +103,10 @@
 // | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`       |
 // | `$state-aware`                     | Enables state-aware utility variants.                     | `false`       |
 // | `$container-aware`                 | Enables container-aware utility variants.                 | `false`       |
-// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`       |
-// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`       |
-// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`       |
-// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`       |
+// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`       |
+// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`       |
+// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`       |
+// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`       |
 // | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`          |
 // | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`          |
 // | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`          |
@@ -192,7 +192,7 @@
   @if defaults.$screen-aware {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -237,7 +237,7 @@
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
         // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-separator};
 
         // For each width property, create a utility class.
         @each $width, $value in defaults.$width-values {
@@ -282,7 +282,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
@@ -320,7 +320,7 @@
   @if defaults.$container-aware {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-separator};
 
       // For each width property, create a utility class.
       @each $width, $value in defaults.$width-values {
