@@ -17,6 +17,16 @@
   }
 }
 
+/// Applies styles to a specific color scheme.
+///
+/// @param {string} $scheme-name
+///   The name of the scheme to apply the styles to.
+@mixin scheme($scheme-name) {
+  #{color-defaults.$scheme-selector-base}#{color-defaults.$scheme-selector-prefix}#{$scheme-name}#{color-defaults.$scheme-selector-suffix} {
+    @content;
+  }
+}
+
 /// Generates a theme modifiers with custom props.
 ///
 /// @param {map} $theme-map
