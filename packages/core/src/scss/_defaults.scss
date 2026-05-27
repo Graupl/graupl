@@ -225,10 +225,10 @@ $state-selectors: () !default;
 $utility-selector-base: $modifier-selector-base !default;
 
 // Utility modifier separators.
-$utility-screen-aware-separator: $screen-aware-selector-separator !default;
-$utility-theme-aware-separator: $theme-aware-selector-separator !default;
-$utility-state-aware-separator: $state-aware-selector-separator !default;
-$utility-container-aware-separator: $container-aware-selector-separator !default;
+$utility-screen-aware-selector-separator: $screen-aware-selector-separator !default;
+$utility-theme-aware-selector-separator: $theme-aware-selector-separator !default;
+$utility-state-aware-selector-separator: $state-aware-selector-separator !default;
+$utility-container-aware-selector-separator: $container-aware-selector-separator !default;
 $utility-screen-aware-selector-prefix: $screen-aware-selector-prefix !default;
 $utility-theme-aware-selector-prefix: $theme-aware-selector-prefix !default;
 $utility-state-aware-selector-prefix: $state-aware-selector-prefix !default;
