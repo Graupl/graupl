@@ -61,10 +61,10 @@
 // | `$theme-aware`                     | Enables theme-aware utility variants.                       | `false`                                                             |
 // | `$state-aware`                     | Enables state-aware utility variants.                       | `false`                                                             |
 // | `$container-aware`                 | Enables container-aware utility variants.                   | `false`                                                             |
-// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.      | `"\\:"`                                                             |
-// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.       | `"\\:"`                                                             |
-// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.       | `"\\:"`                                                             |
-// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors.   | `"\\:"`                                                             |
+// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.      | `"\\:"`                                                             |
+// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.       | `"\\:"`                                                             |
+// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.       | `"\\:"`                                                             |
+// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors.   | `"\\:"`                                                             |
 // | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.         | `""`                                                                |
 // | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.          | `""`                                                                |
 // | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.          | `""`                                                                |
@@ -110,6 +110,7 @@
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
 @use "../../mixins/utility";
+@use "../../theme/color/defaults" as color-defaults;
 @use "../../theme/color/variables" as color;
 @use "../../variables" as root-variables;
 @use "defaults";
@@ -184,21 +185,6 @@
     );
   }
 
-  // For each theme colour, create a utility class for border color.
-  // @each $color, $map in map.get(color.$themes, active) {
-  //   @each $shade, $value in $map {
-  //     // e.g. `.border-primary-100` or `.border-secondary-900`
-  //     $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
-
-  //     @include utility.create(
-  //       $selector,
-  //       border-color,
-  //       $value,
-  //       $important: defaults.$use-important
-  //     );
-  //   }
-  // }
-
   // For each border color, create a utility class for border color.
   @each $name, $value in defaults.$border-color-properties {
     // e.g. `.border-transparent`
@@ -216,7 +202,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-suffix}#{defaults.$screen-aware-selector-separator};
 
       // e.g. `.md:bordered` or `.lg:bordered`
       $selector: #{$selector-prefix}#{defaults.$default-border-selector};
@@ -288,22 +274,6 @@
         );
       }
 
-      // For each theme colour, create a utility class for border color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:border-primary-100` or `.lg:border-secondary-900`
-      //     $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       border-color,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $screen: $screen-name
-      //     );
-      //   }
-      // }
-
       // For each border color, create a utility class for border color.
       @each $name, $value in defaults.$border-color-properties {
         // e.g. `.md:border-transparent` or `.lg:border-transparent`
@@ -324,10 +294,10 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-suffix}#{defaults.$theme-aware-selector-separator};
 
-        // e.g. `.dark:bordered` or `.light:bordered`
+        // e.g. `.default-theme:bordered` or `.default-theme:bordered`
         $selector: #{$selector-prefix}#{defaults.$default-border-selector};
 
         // Create a class to apply the default border styling.
@@ -371,7 +341,7 @@
 
         // For each border width, create a class to apply the border width.
         @each $width, $value in defaults.$border-width-properties {
-          // e.g. `.dark:border-thick` or `.light:border-thin`
+          // e.g. `.default-theme:border-thick` or `.default-theme:border-thin`
           $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
 
           @include utility.create(
@@ -385,7 +355,7 @@
 
         // For each border style, create a class to apply the border style.
         @each $border-style, $value in defaults.$border-style-properties {
-          // e.g. `.dark:border-solid` or `.light:border-dashed`
+          // e.g. `.default-theme:border-solid` or `.default-theme:border-dashed`
           $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
 
           @include utility.create(
@@ -397,25 +367,9 @@
           );
         }
 
-        // For each theme colour, create a utility class for border color.
-        // @each $color, $map in map.get(color.$themes, active) {
-        //   @each $shade, $value in $map {
-        //     // e.g. `.dark:border-primary-100` or `.light:border-secondary-900`
-        //     $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
-
-        //     @include utility.create(
-        //       $selector,
-        //       border-color,
-        //       $value,
-        //       $important: defaults.$use-important,
-        //       $theme: $theme-name
-        //     );
-        //   }
-        // }
-
         // For each border color, create a utility class for border color.
         @each $name, $value in defaults.$border-color-properties {
-          // e.g. `.dark:border-transparent` or `.light:border-transparent`
+          // e.g. `.default-theme:border-transparent` or `.default-theme:border-transparent`
           $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
 
           @include utility.create(
@@ -430,11 +384,105 @@
     }
   }
 
+  // Generate scheme-aware utilities.
+  @if defaults.$scheme-aware and root-defaults.$scheme-aware-utilities {
+    @each $scheme-name, $colors in color-defaults.$schemes {
+      @if $scheme-name != active {
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$scheme-aware-selector-prefix}#{$scheme-name}#{defaults.$scheme-aware-selector-suffix}#{defaults.$scheme-aware-selector-separator};
+
+        // e.g. `.default-theme:bordered` or `.default-theme:bordered`
+        $selector: #{$selector-prefix}#{defaults.$default-border-selector};
+
+        // Create a class to apply the default border styling.
+        @include utility.create-mapped(
+          $selector,
+          (
+            border-width: root-variables.$border-top-width
+              root-variables.$border-right-width
+              root-variables.$border-bottom-width
+              root-variables.$border-left-width,
+            border-radius: root-variables.$border-top-left-radius
+              root-variables.$border-top-right-radius
+              root-variables.$border-bottom-right-radius
+              root-variables.$border-bottom-left-radius,
+            border-style: root-variables.$border-top-style
+              root-variables.$border-right-style
+              root-variables.$border-bottom-style
+              root-variables.$border-left-style,
+          ),
+          $important: defaults.$use-important,
+          $scheme: $scheme-name
+        );
+
+        // Checks to see if the table.bordered is already in place, then gives the tables variables instead.
+        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
+        @if #{table-defaults.$table-bordered-selector-base}#{table-defaults.$table-bordered-selector} ==
+          #{defaults.$selector-base}#{defaults.$default-border-selector}
+        {
+          /* stylelint-enable  scss/operator-no-newline-after */
+          @include utility.create-mapped(
+            #{table-defaults.$table-selector-base}#{table-defaults.$table-selector}#{$selector},
+            (
+              border-width: table-variables.$table-border-width,
+              border-radius: table-variables.$table-border-radius,
+              border-style: table-variables.$table-border-style,
+            ),
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each border width, create a class to apply the border width.
+        @each $width, $value in defaults.$border-width-properties {
+          // e.g. `.default-theme:border-thick` or `.default-theme:border-thin`
+          $selector: #{$selector-prefix}#{defaults.$border-width-selector-prefix}#{$width};
+
+          @include utility.create(
+            $selector,
+            border-width,
+            $value,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each border style, create a class to apply the border style.
+        @each $border-style, $value in defaults.$border-style-properties {
+          // e.g. `.default-theme:border-solid` or `.default-theme:border-dashed`
+          $selector: #{$selector-prefix}#{defaults.$border-style-selector-prefix}#{$border-style};
+
+          @include utility.create(
+            $selector,
+            border-style,
+            $value,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each border color, create a utility class for border color.
+        @each $name, $value in defaults.$border-color-properties {
+          // e.g. `.default-theme:border-transparent` or `.default-theme:border-transparent`
+          $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            border-color,
+            $value,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+      }
+    }
+  }
+
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-suffix}#{defaults.$state-aware-selector-separator};
 
       // e.g. `.hover:bordered` or `.focus:bordered`
       $selector: #{$selector-prefix}#{defaults.$default-border-selector};
@@ -506,22 +554,6 @@
         );
       }
 
-      // For each theme colour, create a utility class for border color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.hover:border-primary-100` or `.focus:border-secondary-900`
-      //     $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       border-color,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $state: $state-name
-      //     );
-      //   }
-      // }
-
       // For each border color, create a utility class for border color.
       @each $name, $value in defaults.$border-color-properties {
         // e.g. `.hover:border-transparent` or `.focus:border-transparent`
@@ -542,7 +574,7 @@
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-suffix}#{defaults.$container-aware-selector-separator};
 
       // e.g. `.md:bordered` or `.lg:bordered`
       $selector: #{$selector-prefix}#{defaults.$default-border-selector};
@@ -613,22 +645,6 @@
           $container: $container-name
         );
       }
-
-      // For each theme colour, create a utility class for border color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:border-primary-100` or `.lg:border-secondary-900`
-      //     $selector: #{$selector-prefix}#{defaults.$border-color-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       border-color,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $container: $container-name
-      //     );
-      //   }
-      // }
 
       // For each border color, create a utility class for border color.
       @each $name, $value in defaults.$border-color-properties {

@@ -15,16 +15,24 @@ $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
+$scheme-aware: false !default;
 $state-aware: false !default;
 $container-aware: false !default;
-$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
-$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
-$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
-$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
+$theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
+$state-aware-selector-separator: root-defaults.$utility-state-aware-selector-separator !default;
+$container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 $screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
 $theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: root-defaults.$utility-scheme-aware-selector-prefix !default;
 $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: root-defaults.$utility-screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
+$container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
 // Align content properties.
 $align-content-selector-prefix: "align-content-" !default;

@@ -16,87 +16,131 @@ $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
 $theme-aware: false !default;
+$scheme-aware: false !default;
 $state-aware: false !default;
 $container-aware: false !default;
-$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
-$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
-$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
-$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
+$theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
+$state-aware-selector-separator: root-defaults.$utility-state-aware-selector-separator !default;
+$container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 $screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
 $theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: root-defaults.$utility-scheme-aware-selector-prefix !default;
 $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: root-defaults.$utility-screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
+$container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
 // Text style properties.
 $text-style-selector-prefix: "text-" !default;
+$text-style-selector-suffix: "" !default;
 $-text-style-properties: (
-  paragraph: (
-    margin: typography.$paragraph-margin,
-    font-size: typography.$paragraph-font-size,
-    font-weight: typography.$paragraph-font-weight,
-    line-height: typography.$paragraph-line-height,
-    color: typography.$paragraph-color,
+  "paragraph": (
+    "font-size": typography.$paragraph-font-size,
+    "font-weight": typography.$paragraph-font-weight,
+    "font-style": typography.$paragraph-font-style,
+    "font-variant": typography.$paragraph-font-variant,
+    "color": typography.$paragraph-color,
+    "font-family": typography.$paragraph-font-family,
+    "line-height": typography.$paragraph-line-height,
+    "letter-spacing": typography.$paragraph-letter-spacing,
+    "word-spacing": typography.$paragraph-word-spacing,
+    "margin": typography.$paragraph-margin,
   ),
-  small: (
-    margin: typography.$small-margin,
-    font-size: typography.$small-font-size,
-    font-weight: typography.$small-font-weight,
-    line-height: typography.$small-line-height,
-    color: typography.$small-color,
+  "small": (
+    "font-size": typography.$small-font-size,
+    "font-weight": typography.$small-font-weight,
+    "font-style": typography.$small-font-style,
+    "font-variant": typography.$small-font-variant,
+    "color": typography.$small-color,
+    "font-family": typography.$small-font-family,
+    "line-height": typography.$small-line-height,
+    "letter-spacing": typography.$small-letter-spacing,
+    "word-spacing": typography.$small-word-spacing,
+    "margin": typography.$small-margin,
   ),
-  h1: (
-    margin: typography.$h1-margin,
-    font-family: typography.$h1-font-family,
-    font-size: typography.$h1-font-size,
-    font-weight: typography.$h1-font-weight,
-    line-height: typography.$h1-line-height,
-    color: typography.$h1-color,
+  "h1": (
+    "font-size": typography.$h1-font-size,
+    "font-weight": typography.$h1-font-weight,
+    "font-style": typography.$h1-font-style,
+    "font-variant": typography.$h1-font-variant,
+    "color": typography.$h1-color,
+    "font-family": typography.$h1-font-family,
+    "line-height": typography.$h1-line-height,
+    "letter-spacing": typography.$h1-letter-spacing,
+    "word-spacing": typography.$h1-word-spacing,
+    "margin": typography.$h1-margin,
   ),
-  h2: (
-    margin: typography.$h2-margin,
-    font-family: typography.$h2-font-family,
-    font-size: typography.$h2-font-size,
-    font-weight: typography.$h2-font-weight,
-    line-height: typography.$h2-line-height,
-    color: typography.$h2-color,
+  "h2": (
+    "font-size": typography.$h2-font-size,
+    "font-weight": typography.$h2-font-weight,
+    "font-style": typography.$h2-font-style,
+    "font-variant": typography.$h2-font-variant,
+    "color": typography.$h2-color,
+    "font-family": typography.$h2-font-family,
+    "line-height": typography.$h2-line-height,
+    "letter-spacing": typography.$h2-letter-spacing,
+    "word-spacing": typography.$h2-word-spacing,
+    "margin": typography.$h2-margin,
   ),
-  h3: (
-    margin: typography.$h3-margin,
-    font-family: typography.$h3-font-family,
-    font-size: typography.$h3-font-size,
-    font-weight: typography.$h3-font-weight,
-    line-height: typography.$h3-line-height,
-    color: typography.$h3-color,
+  "h3": (
+    "font-size": typography.$h3-font-size,
+    "font-weight": typography.$h3-font-weight,
+    "font-style": typography.$h3-font-style,
+    "font-variant": typography.$h3-font-variant,
+    "color": typography.$h3-color,
+    "font-family": typography.$h3-font-family,
+    "line-height": typography.$h3-line-height,
+    "letter-spacing": typography.$h3-letter-spacing,
+    "word-spacing": typography.$h3-word-spacing,
+    "margin": typography.$h3-margin,
   ),
-  h4: (
-    margin: typography.$h4-margin,
-    font-family: typography.$h4-font-family,
-    font-size: typography.$h4-font-size,
-    font-weight: typography.$h4-font-weight,
-    line-height: typography.$h4-line-height,
-    color: typography.$h4-color,
+  "h4": (
+    "font-size": typography.$h4-font-size,
+    "font-weight": typography.$h4-font-weight,
+    "font-style": typography.$h4-font-style,
+    "font-variant": typography.$h4-font-variant,
+    "color": typography.$h4-color,
+    "font-family": typography.$h4-font-family,
+    "line-height": typography.$h4-line-height,
+    "letter-spacing": typography.$h4-letter-spacing,
+    "word-spacing": typography.$h4-word-spacing,
+    "margin": typography.$h4-margin,
   ),
-  h5: (
-    margin: typography.$h5-margin,
-    font-family: typography.$h5-font-family,
-    font-size: typography.$h5-font-size,
-    font-weight: typography.$h5-font-weight,
-    line-height: typography.$h5-line-height,
-    color: typography.$h5-color,
+  "h5": (
+    "font-size": typography.$h5-font-size,
+    "font-weight": typography.$h5-font-weight,
+    "font-style": typography.$h5-font-style,
+    "font-variant": typography.$h5-font-variant,
+    "color": typography.$h5-color,
+    "font-family": typography.$h5-font-family,
+    "line-height": typography.$h5-line-height,
+    "letter-spacing": typography.$h5-letter-spacing,
+    "word-spacing": typography.$h5-word-spacing,
+    "margin": typography.$h5-margin,
   ),
-  h6: (
-    margin: typography.$h6-margin,
-    font-family: typography.$h6-font-family,
-    font-size: typography.$h6-font-size,
-    font-weight: typography.$h6-font-weight,
-    line-height: typography.$h6-line-height,
-    color: typography.$h6-color,
+  "h6": (
+    "font-size": typography.$h6-font-size,
+    "font-weight": typography.$h6-font-weight,
+    "font-style": typography.$h6-font-style,
+    "font-variant": typography.$h6-font-variant,
+    "color": typography.$h6-color,
+    "font-family": typography.$h6-font-family,
+    "line-height": typography.$h6-line-height,
+    "letter-spacing": typography.$h6-letter-spacing,
+    "word-spacing": typography.$h6-word-spacing,
+    "margin": typography.$h6-margin,
   ),
 );
 $text-style-properties: () !default;
 
 // Font size properties.
 $font-size-selector-prefix: "text-" !default;
+$font-size-selector-suffix: "" !default;
 $-font-size-properties: ();
 
 // Add the typography font sizes to the base font size properties.
@@ -113,6 +157,7 @@ $font-size-properties: () !default;
 
 // Font weight properties.
 $font-weight-selector-prefix: "font-weight-" !default;
+$font-weight-selector-suffix: "" !default;
 $-font-weight-properties: ();
 
 // Add the typography font weights to the base font weight properties.
@@ -129,6 +174,7 @@ $font-weight-properties: () !default;
 
 // Font style properties.
 $font-style-selector-prefix: "font-" !default;
+$font-style-selector-suffix: "" !default;
 $-font-style-properties: (
   normal: normal,
   italic: italic,
@@ -137,6 +183,7 @@ $font-style-properties: () !default;
 
 // Text transform properties.
 $text-transform-selector-prefix: "text-" !default;
+$text-transform-selector-suffix: "" !default;
 $-text-transform-properties: (
   uppercase: uppercase,
   lowercase: lowercase,

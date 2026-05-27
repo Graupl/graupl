@@ -23,10 +23,10 @@
 // | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`                                                                 |
 // | `$state-aware`                     | Enables state-aware utility variants.                     | `false`                                                                 |
 // | `$container-aware`                 | Enables container-aware utility variants.                 | `false`                                                                 |
-// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`                                                                 |
-// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`                                                                 |
-// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`                                                                 |
-// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`                                                                 |
+// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`                                                                 |
+// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`                                                                 |
+// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`                                                                 |
+// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`                                                                 |
 // | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`                                                                    |
 // | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`                                                                    |
 // | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`                                                                    |
@@ -63,6 +63,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/defaults" as color-defaults;
 @use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
@@ -89,7 +90,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-suffix}#{defaults.$screen-aware-selector-separator};
 
       // For each container type property, create a utility class.
       @each $name, $value in defaults.$container-type-properties {
@@ -111,12 +112,12 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-suffix}#{defaults.$theme-aware-selector-separator};
 
         // For each container type property, create a utility class.
         @each $name, $value in defaults.$container-type-properties {
-          // e.g. `.dark:container-type-inline` or `.light:container-type-normal`
+          // e.g. `.default-theme:container-type-inline` or `.default-theme:container-type-normal`
           $selector: #{$selector-prefix}#{defaults.$container-type-selector-prefix}#{$name};
 
           @include utility.create(
@@ -131,11 +132,35 @@
     }
   }
 
+  // Generate scheme-aware utilities.
+  @if defaults.$scheme-aware and root-defaults.$scheme-aware-utilities {
+    @each $scheme-name, $colors in color-defaults.$schemes {
+      @if $scheme-name != active {
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$scheme-aware-selector-prefix}#{$scheme-name}#{defaults.$scheme-aware-selector-suffix}#{defaults.$scheme-aware-selector-separator};
+
+        // For each container type property, create a utility class.
+        @each $name, $value in defaults.$container-type-properties {
+          // e.g. `.default-theme:container-type-inline` or `.default-theme:container-type-normal`
+          $selector: #{$selector-prefix}#{defaults.$container-type-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            container-type,
+            $value,
+            $important: #{defaults.$use-important},
+            $scheme: $scheme-name
+          );
+        }
+      }
+    }
+  }
+
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-suffix}#{defaults.$state-aware-selector-separator};
 
       // For each container type property, create a utility class.
       @each $name, $value in defaults.$container-type-properties {
@@ -157,7 +182,7 @@
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-suffix}#{defaults.$container-aware-selector-separator};
 
       // For each container type property, create a utility class.
       @each $name, $value in defaults.$container-type-properties {

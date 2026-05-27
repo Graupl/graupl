@@ -79,10 +79,10 @@
 // | `$theme-aware`                     | Enables theme-aware utility variants.                              | `true`                                                                  |
 // | `$state-aware`                     | Enables state-aware utility variants.                              | `true`                                                                  |
 // | `$container-aware`                 | Enables container-aware utility variants.                          | `false`                                                                 |
-// | `$screen-aware-separator`          | Separator inserted for screen-aware utility selectors.             | `"\\:"`                                                                 |
-// | `$theme-aware-separator`           | Separator inserted for theme-aware utility selectors.              | `"\\:"`                                                                 |
-// | `$state-aware-separator`           | Separator inserted for state-aware utility selectors.              | `"\\:"`                                                                 |
-// | `$container-aware-separator`       | Separator inserted for container-aware utility selectors.          | `"\\:"`                                                                 |
+// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.             | `"\\:"`                                                                 |
+// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.              | `"\\:"`                                                                 |
+// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.              | `"\\:"`                                                                 |
+// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors.          | `"\\:"`                                                                 |
 // | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.                | `""`                                                                    |
 // | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.                 | `""`                                                                    |
 // | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.                 | `""`                                                                    |
@@ -129,6 +129,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/defaults" as color-defaults;
 @use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
@@ -137,32 +138,6 @@
 @include layer(utilities) {
   // `.`
   $selector-prefix: defaults.$selector-base;
-
-  // For each theme colour, create a utility class for background and color.
-  // @each $color, $map in map.get(color.$themes, active) {
-  //   @each $shade, $value in $map {
-  //     // e.g. `.bg-primary-500` or `.bg-secondary-700`
-  //     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
-
-  //     @include utility.create-mapped(
-  //       $selector,
-  //       (
-  //         --#{root-defaults.$prefix}background: #{$value},
-  //         background: #{color.$background}
-  //       ),
-  //       $important: defaults.$use-important
-  //     );
-
-  //     // e.g. `.text-primary-500` or `.text-secondary-700`
-  //     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
-
-  //     @include utility.create-mapped(
-  //       $selector,
-  //       (--#{root-defaults.$prefix}color: #{$value}, color: #{color.$color}),
-  //       $important: defaults.$use-important
-  //     );
-  //   }
-  // }
 
   // For each background property, create a utility class.
   @each $name, $value in defaults.$background-properties {
@@ -195,38 +170,7 @@
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
-
-      // For each theme colour, create a utility class for background and color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:bg-primary-500` or `.lg:bg-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}background: #{$value},
-      //         background: #{color.$background}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $screen: $screen-name
-      //     );
-
-      //     // e.g. `.md:text-primary-500` or `.lg:text-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}color: #{$value},
-      //         color: #{color.$color}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $screen: $screen-name
-      //     );
-      //   }
-      // }
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-suffix}#{defaults.$screen-aware-selector-separator};
 
       // For each background property, create a utility class.
       @each $name, $value in defaults.$background-properties {
@@ -263,43 +207,12 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
-
-        // For each theme colour, create a utility class for background and color.
-        // @each $color, $map in map.get(color.$themes, active) {
-        //   @each $shade, $value in $map {
-        //     // e.g. `.dark:bg-primary-500` or `.light:bg-secondary-700`
-        //     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
-
-        //     @include utility.create-mapped(
-        //       $selector,
-        //       (
-        //         --#{root-defaults.$prefix}background: #{$value},
-        //         background: #{color.$background}
-        //       ),
-        //       $important: defaults.$use-important,
-        //       $theme: $theme-name
-        //     );
-
-        //     // e.g. `.dark:text-primary-500` or `.light:text-secondary-700`
-        //     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
-
-        //     @include utility.create-mapped(
-        //       $selector,
-        //       (
-        //         --#{root-defaults.$prefix}color: #{$value},
-        //         color: #{color.$color}
-        //       ),
-        //       $important: defaults.$use-important,
-        //       $theme: $theme-name
-        //     );
-        //   }
-        // }
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-suffix}#{defaults.$theme-aware-selector-separator};
 
         // For each background property, create a utility class.
         @each $name, $value in defaults.$background-properties {
-          // e.g. `.dark:bg-inherit` or `.light:bg-current`
+          // e.g. `.default-theme:bg-inherit` or `.default-theme:bg-current`
           $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
 
           @include utility.create-mapped(
@@ -315,7 +228,7 @@
 
         // For each text property, create a utility class.
         @each $name, $value in defaults.$text-properties {
-          // e.g. `.dark:text-inherit` or `.light:text-current`
+          // e.g. `.default-theme:text-inherit` or `.default-theme:text-current`
           $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
 
           @include utility.create-mapped(
@@ -332,42 +245,53 @@
     }
   }
 
+  // Generate scheme-aware utilities.
+  @if defaults.$scheme-aware and root-defaults.$scheme-aware-utilities {
+    @each $scheme-name, $colors in color-defaults.$schemes {
+      @if $scheme-name != active {
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$scheme-aware-selector-prefix}#{$scheme-name}#{defaults.$scheme-aware-selector-suffix}#{defaults.$scheme-aware-selector-separator};
+
+        // For each background property, create a utility class.
+        @each $name, $value in defaults.$background-properties {
+          // e.g. `.default-theme:bg-inherit` or `.default-theme:bg-current`
+          $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$name};
+
+          @include utility.create-mapped(
+            $selector,
+            (
+              --#{root-defaults.$prefix}background: #{$value},
+              background: #{color.$background}
+            ),
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each text property, create a utility class.
+        @each $name, $value in defaults.$text-properties {
+          // e.g. `.default-theme:text-inherit` or `.default-theme:text-current`
+          $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$name};
+
+          @include utility.create-mapped(
+            $selector,
+            (
+              --#{root-defaults.$prefix}color: #{$value},
+              color: #{color.$color}
+            ),
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+      }
+    }
+  }
+
   // Generate state-aware utilities.
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
-
-      // For each theme colour, create a utility class for background and color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.hover:bg-primary-500` or `.focus:bg-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}background: #{$value},
-      //         background: #{color.$background}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $state: $state-name
-      //     );
-
-      //     // e.g. `.hover:text-primary-500` or `.focus:text-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}color: #{$value},
-      //         color: #{color.$color}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $state: $state-name
-      //     );
-      //   }
-      // }
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-suffix}#{defaults.$state-aware-selector-separator};
 
       // For each background property, create a utility class.
       @each $name, $value in defaults.$background-properties {
@@ -404,38 +328,7 @@
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
-
-      // For each theme colour, create a utility class for background and color.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:bg-primary-500` or `.lg:bg-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$background-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}background: #{$value},
-      //         background: #{color.$background}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $container: $container-name
-      //     );
-
-      //     // e.g. `.md:text-primary-500` or `.lg:text-secondary-700`
-      //     $selector: #{$selector-prefix}#{defaults.$text-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create-mapped(
-      //       $selector,
-      //       (
-      //         --#{root-defaults.$prefix}color: #{$value},
-      //         color: #{color.$color}
-      //       ),
-      //       $important: defaults.$use-important,
-      //       $container: $container-name
-      //     );
-      //   }
-      // }
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-suffix}#{defaults.$container-aware-selector-separator};
 
       // For each background property, create a utility class.
       @each $name, $value in defaults.$background-properties {

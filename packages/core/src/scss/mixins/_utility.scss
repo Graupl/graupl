@@ -9,6 +9,8 @@
 @use "../functions/important";
 @use "../functions/utility";
 @use "../defaults" as root-defaults;
+@use "../theme/color/defaults" as color-defaults;
+@use "sass:map";
 @use "sass:string";
 
 /// Insert a map of properties and values into a utility class.
@@ -87,6 +89,20 @@
   }
 }
 
+/// Handles wrapping utilities with a conditional scheme.
+///
+/// @param {?string} $scheme
+///   The scheme mode to wrap.
+@mixin _handle-scheme($scheme: null) {
+  @if $scheme {
+    @include theme.scheme($scheme) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
 /// Create a utility class with a list of properties and a single value.
 ///
 /// @param {string}      $selector
@@ -95,12 +111,14 @@
 ///   The property/properties to apply to the selector.
 /// @param {string}      $value
 ///   The value to apply to the property/properties.
-/// @param {?Boolean}     $important
+/// @param {?Boolean}    $important
 ///   A flag to determine if the important flag should be added.
 /// @param {?string}     $screen
 ///   The screen to apply the utility class to.
 /// @param {?string}     $theme
-///   The theme mode to apply the utility class to.
+///   The theme to apply the utility class to.
+/// @param {?string}     $scheme
+///   The scheme mode to apply the utility class to.
 /// @param {?string}     $state
 ///   The state to apply the utility class to.
 @mixin create(
@@ -110,6 +128,7 @@
   $important: null,
   $screen: null,
   $theme: null,
+  $scheme: null,
   $state: null,
   $container: null
 ) {
@@ -121,6 +140,7 @@
     $important: $important,
     $screen: $screen,
     $theme: $theme,
+    $scheme: $scheme,
     $state: $state,
     $container: $container
   ) {
@@ -130,17 +150,19 @@
 
 /// Create a utility class with a map of properties and values.
 ///
-/// @param {string}  $selector
+/// @param {string}   $selector
 ///   The selector to apply the utility class to.
-/// @param {Map}     $map
+/// @param {Map}      $map
 ///   The map of properties and values to apply to the selector.
 /// @param {?Boolean} $important
 ///   A flag to determine if the important flag should be added.
-/// @param {?string} $screen
+/// @param {?string}  $screen
 ///   The screen to apply the utility class to.
-/// @param {?string} $theme
-///   The theme mode to apply the utility class to.
-/// @param {?string} $state
+/// @param {?string}  $theme
+///   The theme to apply the utility class to.
+/// @param {?string}  $scheme
+///   The scheme mode to apply the utility class to.
+/// @param {?string}  $state
 ///   The state to apply the utility class to.
 @mixin create-mapped(
   $selector,
@@ -148,37 +170,156 @@
   $important: null,
   $screen: null,
   $theme: null,
+  $scheme: null,
   $state: null,
   $container: null
 ) {
   @include _handle-theme($theme) {
-    #{$selector} {
-      @if $screen or $container {
-        @if $screen {
-          @include _handle-screen($screen) {
-            @include _handle-state($state) {
-              @include _insert($map, $important) {
-                @content;
+    @include _handle-scheme($scheme) {
+      #{$selector} {
+        @if $screen or $container {
+          @if $screen {
+            @include _handle-screen($screen) {
+              @include _handle-state($state) {
+                @include _insert($map, $important) {
+                  @content;
+                }
               }
             }
           }
-        }
 
-        @if $container {
-          @include _handle-container($container) {
-            @include _handle-state($state) {
-              @include _insert($map, $important) {
-                @content;
+          @if $container {
+            @include _handle-container($container) {
+              @include _handle-state($state) {
+                @include _insert($map, $important) {
+                  @content;
+                }
               }
             }
           }
-        }
-      } @else {
-        @include _handle-state($state) {
-          @include _insert($map, $important) {
-            @content;
+        } @else {
+          @include _handle-state($state) {
+            @include _insert($map, $important) {
+              @content;
+            }
           }
         }
+      }
+    }
+  }
+}
+
+@mixin generate(
+  $selector-base: root-defaults.$utility-selector-base,
+  $selector-prefix: root-defaults.$utility-selector-prefix,
+  $selector,
+  $selector-suffix: root-defaults.$utility-selector-suffix,
+  $screen-aware: false,
+  $screen-aware-selector-prefix: $utility-screen-aware-selector-prefix,
+  $screen-aware-selector-suffix: $utility-screen-aware-selector-suffix,
+  $screen-aware-selector-separator: $utility-screen-aware-selector-separator,
+  $theme-aware: false,
+  $theme-aware-selector-prefix: $utility-theme-aware-selector-prefix,
+  $theme-aware-selector-suffix: $utility-theme-aware-selector-suffix,
+  $theme-aware-selector-separator: $utility-theme-aware-selector-separator,
+  $scheme-aware: false,
+  $scheme-aware-selector-prefix: $utility-scheme-aware-selector-prefix,
+  $scheme-aware-selector-suffix: $utility-scheme-aware-selector-suffix,
+  $scheme-aware-selector-separator: $utility-scheme-aware-selector-separator,
+  $state-aware: false,
+  $state-aware-selector-prefix: $utility-state-aware-selector-prefix,
+  $state-aware-selector-suffix: $utility-state-aware-selector-suffix,
+  $state-aware-selector-separator: $utility-state-aware-selector-separator,
+  $container-aware: false,
+  $container-aware-selector-prefix: $utility-container-aware-selector-prefix,
+  $container-aware-selector-suffix: $utility-container-aware-selector-suffix,
+  $container-aware-selector-separator:
+    $utility-container-aware-selector-separator,
+  $properties: (),
+  $important: root-defaults.$use-important
+) {
+  $utility-selector-prefix: $selector-base;
+  $utility-selector: #{$selector-prefix}#{$selector}#{$selector-suffix};
+
+  @include create-mapped(
+    #{$utility-selector-prefix}#{$utility-selector},
+    $properties,
+    $important
+  ) {
+    @content;
+  }
+
+  @if $screen-aware and root-defaults.$screen-aware-utilities {
+    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
+      $utility-selector-prefix: #{$selector-base}#{$screen-aware-selector-prefix}#{$screen-name}#{$screen-aware-selector-suffix}#{$screen-aware-selector-separator};
+
+      @include create-mapped(
+        #{$utility-selector-prefix}#{$utility-selector},
+        $properties,
+        $important,
+        $screen: $screen-name
+      ) {
+        @content;
+      }
+    }
+  }
+
+  @if $theme-aware and root-defaults.$theme-aware-utilities {
+    @each $theme-name in color-defaults.$themes {
+      $utility-selector-prefix: #{$selector-base}#{$theme-aware-selector-prefix}#{$theme-name}#{$theme-aware-selector-suffix}#{$theme-aware-selector-separator};
+
+      @include create-mapped(
+        #{$utility-selector-prefix}#{$utility-selector},
+        $properties,
+        $important,
+        $theme: $theme-name
+      ) {
+        @content;
+      }
+    }
+  }
+
+  @if $scheme-aware and root-defaults.$scheme-aware-utilities {
+    @each $scheme-name in color-defaults.$schemes {
+      $utility-selector-prefix: #{$selector-base}#{$scheme-aware-selector-prefix}#{$scheme-name}#{$scheme-aware-selector-suffix}#{$scheme-aware-selector-separator};
+
+      @include create-mapped(
+        #{$utility-selector-prefix}#{$utility-selector},
+        $properties,
+        $important,
+        $scheme: $scheme-name
+      ) {
+        @content;
+      }
+    }
+  }
+
+  @if $state-aware and root-defaults.$state-aware-utilities {
+    @each $state-name in root-defaults.$state-selectors {
+      $utility-selector-prefix: #{$selector-base}#{$state-aware-selector-prefix}#{$state-name}#{$state-aware-selector-suffix}#{$state-aware-selector-separator};
+
+      @include create-mapped(
+        #{$utility-selector-prefix}#{$utility-selector},
+        $properties,
+        $important,
+        $state: $state-name
+      ) {
+        @content;
+      }
+    }
+  }
+
+  @if $container-aware and root-defaults.$container-aware-utilities {
+    @each $container-name in map.keys(root-defaults.$container-sizes) {
+      $utility-selector-prefix: #{$selector-base}#{$container-aware-selector-prefix}#{$container-name}#{$container-aware-selector-suffix}#{$container-aware-selector-separator};
+
+      @include create-mapped(
+        #{$utility-selector-prefix}#{$utility-selector},
+        $properties,
+        $important,
+        $container: $container-name
+      ) {
+        @content;
       }
     }
   }

@@ -100,10 +100,10 @@
 // | `$theme-aware`                         | Enables theme-aware utility variants.                            | `false`                                                                                        |
 // | `$state-aware`                         | Enables state-aware utility variants.                            | `false`                                                                                        |
 // | `$container-aware`                     | Enables container-aware utility variants.                        | `false`                                                                                        |
-// | `$screen-aware-separator`              | Separator inserted for screen-aware utility selectors.           | `"\\:"`                                                                                        |
-// | `$theme-aware-separator`               | Separator inserted for theme-aware utility selectors.            | `"\\:"`                                                                                        |
-// | `$state-aware-separator`               | Separator inserted for state-aware utility selectors.            | `"\\:"`                                                                                        |
-// | `$container-aware-separator`           | Separator inserted for container-aware utility selectors.        | `"\\:"`                                                                                        |
+// | `$screen-aware-selector-separator`              | Separator inserted for screen-aware utility selectors.           | `"\\:"`                                                                                        |
+// | `$theme-aware-selector-separator`               | Separator inserted for theme-aware utility selectors.            | `"\\:"`                                                                                        |
+// | `$state-aware-selector-separator`               | Separator inserted for state-aware utility selectors.            | `"\\:"`                                                                                        |
+// | `$container-aware-selector-separator`           | Separator inserted for container-aware utility selectors.        | `"\\:"`                                                                                        |
 // | `$screen-aware-selector-prefix`        | Prefix prepended to screen-aware utility selectors.              | `""`                                                                                           |
 // | `$theme-aware-selector-prefix`         | Prefix prepended to theme-aware utility selectors.               | `""`                                                                                           |
 // | `$state-aware-selector-prefix`         | Prefix prepended to state-aware utility selectors.               | `""`                                                                                           |
@@ -147,6 +147,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
+@use "../../theme/color/defaults" as color-defaults;
 @use "../../theme/color/variables" as color;
 @use "defaults";
 @use "sass:map";
@@ -226,36 +227,11 @@
     );
   }
 
-  // For each theme color, create a utility class for both to and from.
-  // @each $color, $map in map.get(color.$themes, active) {
-  //   @each $shade, $value in $map {
-  //     // e.g. `.from-primary-500` or `.from-secondary-500`
-  //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
-
-  //     @include utility.create(
-  //       $selector,
-  //       --#{root-defaults.$prefix}gradient-from,
-  //       $value,
-  //       $important: defaults.$use-important
-  //     );
-
-  //     // e.g. `.to-primary-500` or `.to-secondary-500`
-  //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
-
-  //     @include utility.create(
-  //       $selector,
-  //       --#{root-defaults.$prefix}gradient-to,
-  //       $value,
-  //       $important: defaults.$use-important
-  //     );
-  //   }
-  // }
-
   // Generate screen-aware utilities.
   @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
     @each $screen-name in map.keys(root-defaults.$screen-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-suffix}#{defaults.$screen-aware-selector-separator};
 
       // Generate gradient utilities.
       //
@@ -331,33 +307,6 @@
           $screen: $screen-name
         );
       }
-
-      // For each theme color, create a utility class for both to and from.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:from-primary-500` or `.lg:from-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-from,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $screen: $screen-name
-      //     );
-
-      //     // e.g. `.md:to-primary-500` or `.lg:to-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-to,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $screen: $screen-name
-      //     );
-      //   }
-      // }
     }
   }
 
@@ -365,12 +314,12 @@
   @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
     @each $theme-name, $colors in color.$themes {
       @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-suffix}#{defaults.$theme-aware-selector-separator};
 
         // Generate gradient utilities.
         //
-        // e.g. `.dark:gradient` or `.light:gradient`
+        // e.g. `.default-theme:gradient` or `.default-theme:gradient`
         $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
         @include utility.create(
@@ -387,7 +336,7 @@
 
         // For each gradient type, create a utility class.
         @each $name, $type in defaults.$gradient-types {
-          // e.g. `.dark:linear` or `.light:radial`
+          // e.g. `.default-theme:linear` or `.default-theme:radial`
           $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
 
           @include utility.create(
@@ -406,7 +355,7 @@
 
         // For each gradient direction, create a utility class.
         @each $name, $direction in defaults.$gradient-directions {
-          // e.g. `.dark:to-top` or `.light:to-right`
+          // e.g. `.default-theme:to-top` or `.default-theme:to-right`
           $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
 
           @include utility.create(
@@ -420,7 +369,7 @@
 
         // For each gradient color, create a utility class for both to and from.
         @each $name, $color in defaults.$gradient-colors {
-          // e.g. `.dark:from-transparent` or `.light:from-transparent`
+          // e.g. `.default-theme:from-transparent` or `.default-theme:from-transparent`
           $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
 
           @include utility.create(
@@ -431,7 +380,7 @@
             $theme: $theme-name
           );
 
-          // e.g. `.dark:to-transparent` or `.light:to-transparent`
+          // e.g. `.default-theme:to-transparent` or `.default-theme:to-transparent`
           $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
 
           @include utility.create(
@@ -442,33 +391,91 @@
             $theme: $theme-name
           );
         }
+      }
+    }
+  }
 
-        // For each theme color, create a utility class for both to and from.
-        // @each $color, $map in map.get(color.$themes, active) {
-        //   @each $shade, $value in $map {
-        //     // e.g. `.dark:from-primary-500` or `.light:from-secondary-500`
-        //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
+  // Generate scheme-aware utilities.
+  @if defaults.$scheme-aware and root-defaults.$scheme-aware-utilities {
+    @each $scheme-name, $colors in color-defaults.$schemes {
+      @if $scheme-name != active {
+        // e.g. `.default-theme:`
+        $selector-prefix: #{defaults.$selector-base}#{defaults.$scheme-aware-selector-prefix}#{$scheme-name}#{defaults.$scheme-aware-selector-suffix}#{defaults.$scheme-aware-selector-separator};
 
-        //     @include utility.create(
-        //       $selector,
-        //       --#{root-defaults.$prefix}gradient-from,
-        //       $value,
-        //       $important: defaults.$use-important,
-        //       $theme: $theme-name
-        //     );
+        // Generate gradient utilities.
+        //
+        // e.g. `.default-theme:gradient` or `.default-theme:gradient`
+        $selector: #{$selector-prefix}#{defaults.$gradient-selector};
 
-        //     // e.g. `.dark:to-primary-500` or `.light:to-secondary-500`
-        //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
+        @include utility.create(
+          $selector,
+          background-image,
+          linear-gradient(
+            map.get($gradient-directions, linear),
+            $gradient-from $gradient-from-position,
+            $gradient-to $gradient-to-position
+          ),
+          $important: defaults.$use-important,
+          $scheme: $scheme-name
+        );
 
-        //     @include utility.create(
-        //       $selector,
-        //       --#{root-defaults.$prefix}gradient-to,
-        //       $value,
-        //       $important: defaults.$use-important,
-        //       $theme: $theme-name
-        //     );
-        //   }
-        // }
+        // For each gradient type, create a utility class.
+        @each $name, $type in defaults.$gradient-types {
+          // e.g. `.default-theme:linear` or `.default-theme:radial`
+          $selector: #{$selector-prefix}#{defaults.$gradient-type-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            background-image,
+            #{$type
+              }(
+                map.get($gradient-directions, $name),
+                $gradient-from $gradient-from-position,
+                $gradient-to $gradient-to-position
+              ),
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each gradient direction, create a utility class.
+        @each $name, $direction in defaults.$gradient-directions {
+          // e.g. `.default-theme:to-top` or `.default-theme:to-right`
+          $selector: #{$selector-prefix}#{defaults.$gradient-direction-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-direction,
+            $direction,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
+
+        // For each gradient color, create a utility class for both to and from.
+        @each $name, $color in defaults.$gradient-colors {
+          // e.g. `.default-theme:from-transparent` or `.default-theme:from-transparent`
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-from,
+            $color,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+
+          // e.g. `.default-theme:to-transparent` or `.default-theme:to-transparent`
+          $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$name};
+
+          @include utility.create(
+            $selector,
+            --#{root-defaults.$prefix}gradient-to,
+            $color,
+            $important: defaults.$use-important,
+            $scheme: $scheme-name
+          );
+        }
       }
     }
   }
@@ -477,7 +484,7 @@
   @if defaults.$state-aware and root-defaults.$state-aware-utilities {
     @each $state-name, $value in root-defaults.$state-selectors {
       // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-suffix}#{defaults.$state-aware-selector-separator};
 
       // Generate gradient utilities.
       //
@@ -553,33 +560,6 @@
           $state: $state-name
         );
       }
-
-      // For each theme color, create a utility class for both to and from.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.hover:from-primary-500` or `.focus:from-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-from,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $state: $state-name
-      //     );
-
-      //     // e.g. `.hover:to-primary-500` or `.focus:to-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-to,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $state: $state-name
-      //     );
-      //   }
-      // }
     }
   }
 
@@ -587,7 +567,7 @@
   @if defaults.$container-aware and root-defaults.$container-aware-utilities {
     @each $container-name in map.keys(root-defaults.$container-sizes) {
       // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
+      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-suffix}#{defaults.$container-aware-selector-separator};
 
       // Generate gradient utilities.
       //
@@ -663,33 +643,6 @@
           $container: $container-name
         );
       }
-
-      // For each theme color, create a utility class for both to and from.
-      // @each $color, $map in map.get(color.$themes, active) {
-      //   @each $shade, $value in $map {
-      //     // e.g. `.md:from-primary-500` or `.lg:from-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-from-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-from,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $container: $container-name
-      //     );
-
-      //     // e.g. `.md:to-primary-500` or `.lg:to-secondary-500`
-      //     $selector: #{$selector-prefix}#{defaults.$gradient-color-selector-prefix}#{defaults.$gradient-color-to-selector-prefix}#{$color}-#{$shade};
-
-      //     @include utility.create(
-      //       $selector,
-      //       --#{root-defaults.$prefix}gradient-to,
-      //       $value,
-      //       $important: defaults.$use-important,
-      //       $container: $container-name
-      //     );
-      //   }
-      // }
     }
   }
 }

@@ -29,21 +29,21 @@
 // | ---------------------------------- | -------------------------------------------- | ----------------------------------------------- |
 // | `$container-aware`                 | Default for container aware.                 | false                                           |
 // | `$container-aware-selector-prefix` | Default for container aware selector prefix. | "cq\\:"                                         |
-// | `$container-aware-separator`       | Default for container aware separator.       | "\\:"                                           |
+// | `$container-aware-selector-separator`       | Default for container aware separator.       | "\\:"                                           |
 // | `$custom-width-values`             | Default for custom width values.             | ()                                              |
 // | `$generate-base-utilities`         | Default for generate base utilities.         | true                                            |
 // | `$max-width-selector-prefix`       | Default for max width selector prefix.       | "max-w-"                                        |
 // | `$min-width-selector-prefix`       | Default for min width selector prefix.       | "min-w-"                                        |
 // | `$screen-aware`                    | Default for screen aware.                    | false                                           |
 // | `$screen-aware-selector-prefix`    | Default for screen aware selector prefix.    | ""                                              |
-// | `$screen-aware-separator`          | Default for screen aware separator.          | "\\:"                                           |
+// | `$screen-aware-selector-separator`          | Default for screen aware separator.          | "\\:"                                           |
 // | `$selector-base`                   | Default for selector base.                   | "."                                             |
 // | `$state-aware`                     | Default for state aware.                     | false                                           |
 // | `$state-aware-selector-prefix`     | Default for state aware selector prefix.     | ""                                              |
-// | `$state-aware-separator`           | Default for state aware separator.           | "\\:"                                           |
+// | `$state-aware-selector-separator`           | Default for state aware separator.           | "\\:"                                           |
 // | `$theme-aware`                     | Default for theme aware.                     | false                                           |
 // | `$theme-aware-selector-prefix`     | Default for theme aware selector prefix.     | ""                                              |
-// | `$theme-aware-separator`           | Default for theme aware separator.           | "\\:"                                           |
+// | `$theme-aware-selector-separator`           | Default for theme aware separator.           | "\\:"                                           |
 // | `$use-important`                   | Default for use important.                   | true                                            |
 // | `$width-selector-prefix`           | Default for width selector prefix.           | "w-"                                            |
 // | `$width-values`                    | Default for width values.                    | map.merge($-width-values, $width-values)        |
@@ -84,211 +84,42 @@
 @use "variables" as *;
 
 @include layer(utilities) {
-  // `.`
-  $selector-prefix: defaults.$selector-base;
-
   // For each width property, create a utility class.
-  @each $width, $value in defaults.$width-values {
-    // e.g. `.w-shelf-min` or `.w-shelf-open`
-    $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
-
-    @include utility.create(
-      $selector,
-      width,
-      $value,
+  @each $selector, $properties in defaults.$utility-map {
+    // e.g. `.w-min-content` or `.w-full`
+    // This will also generate responsive classes if those options are enabled.
+    @include utility.generate(
+      $selector-base: defaults.$selector-base,
+      $selector-prefix: defaults.$selector-prefix,
+      $selector: $selector,
+      $selector-suffix: defaults.$selector-suffix,
+      $screen-aware: defaults.$screen-aware,
+      $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
+      $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
+      $screen-aware-selector-separator:
+        defaults.$screen-aware-selector-separator,
+      $theme-aware: defaults.$theme-aware,
+      $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
+      $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
+      $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
+      $scheme-aware: defaults.$scheme-aware,
+      $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
+      $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
+      $scheme-aware-selector-separator:
+        defaults.$scheme-aware-selector-separator,
+      $state-aware: defaults.$state-aware,
+      $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
+      $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
+      $state-aware-selector-separator: defaults.$state-aware-selector-separator,
+      $container-aware: defaults.$container-aware,
+      $container-aware-selector-prefix:
+        defaults.$container-aware-selector-prefix,
+      $container-aware-selector-suffix:
+        defaults.$container-aware-selector-suffix,
+      $container-aware-selector-separator:
+        defaults.$container-aware-selector-separator,
+      $properties: $properties,
       $important: defaults.$use-important
     );
-
-    // e.g. `.max-w-shelf-min` or `.max-w-shelf-open`
-    $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
-
-    @include utility.create(
-      $selector,
-      max-width,
-      $value,
-      $important: defaults.$use-important
-    );
-
-    // e.g. `.min-w-shelf-min` or `.min-w-shelf-open`
-    $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
-
-    @include utility.create(
-      $selector,
-      min-width,
-      $value,
-      $important: defaults.$use-important
-    );
-  }
-
-  // Generate screen-aware utilities.
-  @if defaults.$screen-aware {
-    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
-
-      // For each width property, create a utility class.
-      @each $width, $value in defaults.$width-values {
-        // e.g. `.md:w-shelf-min` or `.lg:w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
-
-        // e.g. `.md:max-w-shelf-min` or `.lg:max-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
-
-        // e.g. `.md:min-w-shelf-min` or `.lg:min-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $screen: $screen-name
-        );
-      }
-    }
-  }
-
-  // Generate theme-aware utilities.
-  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
-    @each $theme-name, $colors in color.$themes {
-      @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
-
-        // For each width property, create a utility class.
-        @each $width, $value in defaults.$width-values {
-          // e.g. `.dark:w-shelf-min` or `.light:w-shelf-open`
-          $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
-
-          @include utility.create(
-            $selector,
-            width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
-
-          // e.g. `.dark:max-w-shelf-min` or `.light:max-w-shelf-open`
-          $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
-
-          @include utility.create(
-            $selector,
-            max-width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
-
-          // e.g. `.dark:min-w-shelf-min` or `.light:min-w-shelf-open`
-          $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
-
-          @include utility.create(
-            $selector,
-            min-width,
-            $value,
-            $important: defaults.$use-important,
-            $theme: $theme-name
-          );
-        }
-      }
-    }
-  }
-
-  // Generate state-aware utilities.
-  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
-    @each $state-name, $value in root-defaults.$state-selectors {
-      // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
-
-      // For each width property, create a utility class.
-      @each $width, $value in defaults.$width-values {
-        // e.g. `.hover:w-shelf-min` or `.focus:w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
-
-        @include utility.create($selector, width, $value, $state: $state-name);
-
-        // e.g. `.hover:max-w-shelf-min` or `.focus:max-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $state: $state-name
-        );
-
-        // e.g. `.hover:min-w-shelf-min` or `.focus:min-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $state: $state-name
-        );
-      }
-    }
-  }
-
-  // Generate container-aware utilities.
-  @if defaults.$container-aware {
-    @each $container-name in map.keys(root-defaults.$container-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
-
-      // For each width property, create a utility class.
-      @each $width, $value in defaults.$width-values {
-        // e.g. `.md:w-shelf-min` or `.lg:w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
-
-        // e.g. `.md:max-w-shelf-min` or `.lg:max-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$max-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          max-width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
-
-        // e.g. `.md:min-w-shelf-min` or `.lg:min-w-shelf-open`
-        $selector: #{$selector-prefix}#{defaults.$min-width-selector-prefix}#{$width};
-
-        @include utility.create(
-          $selector,
-          min-width,
-          $value,
-          $important: defaults.$use-important,
-          $container: $container-name
-        );
-      }
-    }
   }
 }
