@@ -1,6 +1,6 @@
 # Container Utilities
 
-The container utilities provide a set of classes to adjust the `container` properties of elements.
+The container utilities provide a set of classes to adjust the `container-type` properties of elements.
 
 ## `.container`
 
@@ -10,70 +10,26 @@ Applies the default container styling to an element.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.container-type-inline`](#container-type-inline) | `container` | N/A |
-| [`.container-type-normal`](#container-type-normal) | `container` | N/A |
-| [`.container-type-size`](#container-type-size) | `container` | N/A |
-| [`.container-type-scroll`](#container-type-scroll) | `container` | N/A |
+| [`.container-type-inline`](#container-type-inline) | `container` | inline-size |
+| [`.container-type-normal`](#container-type-normal) | `container` | normal |
+| [`.container-type-size`](#container-type-size) | `container` | size |
+| [`.container-type-scroll`](#container-type-scroll) | `container` | scroll-state |
 
 ### `.container-type-inline`
 
-Sets the `container-type` property to `inline`.
-
-<div class="container-type-inline g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 container-type-inline">Item Container none</div>
-</div>
-
-```html
-<div class="p-4 container-type-inline">
-  Item Container None
-</div>
-```
+Sets the `container-type` property to `inline-size`.
 
 ### `.container-type-normal`
 
 Sets the `container-type` property to `normal`.
 
-<div class="container-type-normal g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 containertype-normal">Item Container left</div>
-</div>
-
-```html
-<div class="p-4 containertype-normal">
-  Item Container left
-</div>
-```
-
 ### `.container-type-size`
 
 Sets the `container-type` property to `size`.
 
-<div class="container-type-size g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 container-type-size">Item Container Inline Start</div>
-</div>
-
-```html
-<div class="p-4 container-type-size">
-  Item Container Inline Start
-</div>
-```
-
 ### `.container-type-scroll`
 
-Sets the `container-type` property to `scroll`.
-
-<div class="container-type-scroll g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 container-type-scroll">Item Container Inline End</div>
-</div>
-
-```html
-<div class="p-4 container-type-scroll">
-  Item Container Inline End
-</div>
-```
+Sets the `container-type` property to `scroll-state`.
 
 ## Customization
 

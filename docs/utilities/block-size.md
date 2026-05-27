@@ -110,7 +110,7 @@ Sets the `block` property to `stretch`.
 
 ### `.block-full`
 
-Sets the `block` property to `full`.
+Sets the `block` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Block full</div>
@@ -124,7 +124,7 @@ Sets the `block` property to `full`.
 
 ### `.block-quarter`
 
-Sets the `block` property to `quarter`.
+Sets the `block` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Block quarter</div>
@@ -138,7 +138,7 @@ Sets the `block` property to `quarter`.
 
 ### `.block-half`
 
-Sets the `block` property to `half`.
+Sets the `block` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Block half</div>
@@ -152,7 +152,7 @@ Sets the `block` property to `half`.
 
 ### `.block-three-quarters`
 
-Sets the `block` property to `three-quarters`.
+Sets the `block` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Block three-quarters</div>
@@ -166,7 +166,7 @@ Sets the `block` property to `three-quarters`.
 
 ### `.block-third`
 
-Sets the `block` property to `third`.
+Sets the `block` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Block third</div>
@@ -180,7 +180,7 @@ Sets the `block` property to `third`.
 
 ### `.block-two-thirds`
 
-Sets the `block` property to `two-thirds`.
+Sets the `block` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Block two-thirds</div>
@@ -194,7 +194,7 @@ Sets the `block` property to `two-thirds`.
 
 ### `.block-half-screen`
 
-Sets the `block` property to `half-screen`.
+Sets the `block` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Block half-screen</div>
@@ -208,7 +208,7 @@ Sets the `block` property to `half-screen`.
 
 ### `.block-third-screen`
 
-Sets the `block` property to `third-screen`.
+Sets the `block` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Block third-screen</div>
@@ -222,7 +222,7 @@ Sets the `block` property to `third-screen`.
 
 ### `.block-two-thirds-screen`
 
-Sets the `block` property to `two-thirds-screen`.
+Sets the `block` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Block two-thirds-screen</div>
@@ -236,7 +236,7 @@ Sets the `block` property to `two-thirds-screen`.
 
 ### `.block-quarter-screen`
 
-Sets the `block` property to `quarter-screen`.
+Sets the `block` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
@@ -250,7 +250,7 @@ Sets the `block` property to `quarter-screen`.
 
 ### `.block-three-quarters-screen`
 
-Sets the `block` property to `three-quarters-screen`.
+Sets the `block` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Block three-quarters-screen</div>
@@ -264,7 +264,7 @@ Sets the `block` property to `three-quarters-screen`.
 
 ### `.block-full-screen`
 
-Sets the `block` property to `full-screen`.
+Sets the `block` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Block full-screen</div>
@@ -408,7 +408,7 @@ Sets the `max-block` property to `stretch`.
 
 ### `.max-block-full`
 
-Sets the `max-block` property to `full`.
+Sets the `max-block` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Max Block full</div>
@@ -422,7 +422,7 @@ Sets the `max-block` property to `full`.
 
 ### `.max-block-quarter`
 
-Sets the `max-block` property to `quarter`.
+Sets the `max-block` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Max Block quarter</div>
@@ -436,7 +436,7 @@ Sets the `max-block` property to `quarter`.
 
 ### `.max-block-half`
 
-Sets the `max-block` property to `half`.
+Sets the `max-block` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Max Block half</div>
@@ -450,7 +450,7 @@ Sets the `max-block` property to `half`.
 
 ### `.max-block-three-quarters`
 
-Sets the `max-block` property to `three-quarters`.
+Sets the `max-block` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Max Block three-quarters</div>
@@ -464,7 +464,7 @@ Sets the `max-block` property to `three-quarters`.
 
 ### `.max-block-third`
 
-Sets the `max-block` property to `third`.
+Sets the `max-block` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Max Block third</div>
@@ -478,7 +478,7 @@ Sets the `max-block` property to `third`.
 
 ### `.max-block-two-thirds`
 
-Sets the `max-block` property to `two-thirds`.
+Sets the `max-block` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Max Block two-thirds</div>
@@ -492,7 +492,7 @@ Sets the `max-block` property to `two-thirds`.
 
 ### `.max-block-half-screen`
 
-Sets the `max-block` property to `half-screen`.
+Sets the `max-block` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Max Block half-screen</div>
@@ -506,7 +506,7 @@ Sets the `max-block` property to `half-screen`.
 
 ### `.max-block-third-screen`
 
-Sets the `max-block` property to `third-screen`.
+Sets the `max-block` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Max Block third-screen</div>
@@ -520,7 +520,7 @@ Sets the `max-block` property to `third-screen`.
 
 ### `.max-block-two-thirds-screen`
 
-Sets the `max-block` property to `two-thirds-screen`.
+Sets the `max-block` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Max Block two-thirds-screen</div>
@@ -534,7 +534,7 @@ Sets the `max-block` property to `two-thirds-screen`.
 
 ### `.max-block-quarter-screen`
 
-Sets the `max-block` property to `quarter-screen`.
+Sets the `max-block` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
@@ -548,7 +548,7 @@ Sets the `max-block` property to `quarter-screen`.
 
 ### `.max-block-three-quarters-screen`
 
-Sets the `max-block` property to `three-quarters-screen`.
+Sets the `max-block` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Max Block three-quarters-screen</div>
@@ -562,7 +562,7 @@ Sets the `max-block` property to `three-quarters-screen`.
 
 ### `.max-block-full-screen`
 
-Sets the `max-block` property to `full-screen`.
+Sets the `max-block` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Max Block full-screen</div>
@@ -576,7 +576,7 @@ Sets the `max-block` property to `full-screen`.
 
 ### `.max-block-0`
 
-Uses `Graupl-spacer` such as `0` to set the `max-block` property to a `spacer`.
+Uses `Graupl-spacer` such as `0` to set the `max-block` property to a `spacer value`.
 
 <div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: max-content;">
   <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-0">0</div>
@@ -706,7 +706,7 @@ Sets the `min-block` property to `stretch`.
 
 ### `.min-block-full`
 
-Sets the `min-block` property to `full`.
+Sets the `min-block` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full">Item Min Block full</div>
@@ -720,7 +720,7 @@ Sets the `min-block` property to `full`.
 
 ### `.min-block-quarter`
 
-Sets the `min-block` property to `quarter`.
+Sets the `min-block` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter">Item Min Block quarter</div>
@@ -734,7 +734,7 @@ Sets the `min-block` property to `quarter`.
 
 ### `.min-block-half`
 
-Sets the `min-block` property to `half`.
+Sets the `min-block` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half">Item Min Block half</div>
@@ -748,7 +748,7 @@ Sets the `min-block` property to `half`.
 
 ### `.min-block-three-quarters`
 
-Sets the `min-block` property to `three-quarters`.
+Sets the `min-block` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters">Item Min Block three-quarters</div>
@@ -762,7 +762,7 @@ Sets the `min-block` property to `three-quarters`.
 
 ### `.min-block-third`
 
-Sets the `min-block` property to `third`.
+Sets the `min-block` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third">Item Min Block third</div>
@@ -776,7 +776,7 @@ Sets the `min-block` property to `third`.
 
 ### `.min-block-two-thirds`
 
-Sets the `min-block` property to `two-thirds`.
+Sets the `min-block` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds">Item Min Block two-thirds</div>
@@ -790,7 +790,7 @@ Sets the `min-block` property to `two-thirds`.
 
 ### `.min-block-half-screen`
 
-Sets the `min-block` property to `half-screen`.
+Sets the `min-block` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-half-screen">Item Min Block half-screen</div>
@@ -804,7 +804,7 @@ Sets the `min-block` property to `half-screen`.
 
 ### `.min-block-third-screen`
 
-Sets the `min-block` property to `third-screen`.
+Sets the `min-block` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-third-screen">Item Min Block third-screen</div>
@@ -818,7 +818,7 @@ Sets the `min-block` property to `third-screen`.
 
 ### `.min-block-two-thirds-screen`
 
-Sets the `min-block` property to `two-thirds-screen`.
+Sets the `min-block` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-two-thirds-screen">Item Min Block two-thirds-screen</div>
@@ -832,7 +832,7 @@ Sets the `min-block` property to `two-thirds-screen`.
 
 ### `.min-block-quarter-screen`
 
-Sets the `min-block` property to `quarter-screen`.
+Sets the `min-block` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-quarter-screen">Item min-Block-quarter-screen</div>
@@ -846,7 +846,7 @@ Sets the `min-block` property to `quarter-screen`.
 
 ### `.min-block-three-quarters-screen`
 
-Sets the `min-block` property to `three-quarters-screen`.
+Sets the `min-block` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-three-quarters-screen">Item Min Block three-quarters-screen</div>
@@ -860,7 +860,7 @@ Sets the `min-block` property to `three-quarters-screen`.
 
 ### `.min-block-full-screen`
 
-Sets the `min-block` property to `full-screen`.
+Sets the `min-block` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
   <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-full-screen">Item Min Block full-screen</div>
