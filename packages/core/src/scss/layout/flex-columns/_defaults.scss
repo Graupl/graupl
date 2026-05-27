@@ -23,8 +23,8 @@ $flex-columns-column-selector-base: $selector-base !default;
 $flex-columns-column-selector: "col-" !default;
 $flex-columns-fill-selector-base: $selector-base !default;
 $flex-columns-fill-selector: "fill" !default;
-$flex-columns-screen-aware-separator: root-defaults.$screen-aware-selector-separator !default;
-$flex-columns-container-aware-separator: root-defaults.$container-aware-selector-separator !default;
+$flex-columns-screen-aware-selector-separator: root-defaults.$screen-aware-selector-separator !default;
+$flex-columns-container-aware-selector-separator: root-defaults.$container-aware-selector-separator !default;
 $flex-columns-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
 $flex-columns-container-aware-selector-prefix: root-defaults.$container-aware-selector-prefix !default;
 
