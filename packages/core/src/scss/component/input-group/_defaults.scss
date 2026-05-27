@@ -11,8 +11,14 @@
 // Input group selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$state-aware: false !default;
+$container-aware: false !default;
 $input-group-selector-base: $selector-base !default;
 $input-group-selector: "input-group" !default;
+$input-group-stacked-selector-base: $modifier-selector-base !default;
+$input-group-stacked-selector: "stacked" !default;
 $input-group-inline-selector-base: $modifier-selector-base !default;
 $input-group-inline-selector: "inline" !default;
 $input-group-help-text-selector-base: $selector-base !default;
@@ -27,3 +33,11 @@ $input-group-right-selector-base: $modifier-selector-base !default;
 $input-group-right-selector: "right" !default;
 $input-group-inverse-selector-base: $modifier-selector-base !default;
 $input-group-inverse-selector: "inverse" !default;
+$input-group-screen-aware-separator: root-defaults.$screen-aware-selector-separator !default;
+$input-group-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
+$input-group-theme-aware-separator: root-defaults.$theme-aware-selector-separator !default;
+$input-group-theme-aware-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$input-group-state-aware-separator: root-defaults.$state-aware-selector-separator !default;
+$input-group-state-aware-selector-prefix: root-defaults.$state-aware-selector-prefix !default;
+$input-group-container-aware-separator: root-defaults.$container-aware-selector-separator !default;
+$input-group-container-aware-selector-prefix: root-defaults.$container-aware-selector-prefix !default;

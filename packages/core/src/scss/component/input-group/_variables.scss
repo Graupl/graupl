@@ -4,23 +4,25 @@
 // cleaner way to reference custom properties.
 
 // Custom property defaults:
-// | Custom property                                   | Default                                                                                |
-// | ------------------------------------------------- | -------------------------------------------------------------------------------------- |
-// | --graupl-input-group-top-grid-template-columns    | [label-start input-start help-start] 100% [help-end input-end label-end]               |
-// | --graupl-input-group-top-grid-template-rows       | [input-start] auto [input-end label-start] auto [label-end help-start] auto [help-end] |
-// | --graupl-input-group-bottom-grid-template-columns | [label-start input-start help-start] 100% [help-end input-end label-end]               |
-// | --graupl-input-group-bottom-grid-template-rows    | [label-start] auto [label-end input-start] auto [input-end help-start] auto [help-end] |
-// | --graupl-input-group-left-grid-template-columns   | [input-start] auto [input-end label-start help-start] 1fr [help-end label-end]         |
-// | --graupl-input-group-left-grid-template-rows      | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
-// | --graupl-input-group-right-grid-template-columns  | [label-start] auto [label-end input-start help-start] 1fr [help-end input-end]         |
-// | --graupl-input-group-right-grid-template-rows     | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
-// | --graupl-input-group-grid-template-columns        | var(--graupl-input-group-bottom-grid-template-columns)                                 |
-// | --graupl-input-group-grid-template-rows           | var(--graupl-input-group-bottom-grid-template-rows)                                    |
-// | --graupl-input-group-row-gap                      | var(--graupl-spacer-2)                                                                 |
-// | --graupl-input-group-column-gap                   | var(--graupl-spacer-3)                                                                 |
-// | --graupl-input-group-gap                          | var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap)                 |
-// | --graupl-input-group-inline-grid-template-columns | var(--graupl-input-group-right-grid-template-columns)                                  |
-// | --graupl-input-group-inline-grid-template-rows    | var(--graupl-input-group-right-grid-template-rows)                                     |
+// | Custom property                                    | Default                                                                                |
+// | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
+// | --graupl-input-group-top-grid-template-columns     | [label-start input-start help-start] 100% [help-end input-end label-end]               |
+// | --graupl-input-group-top-grid-template-rows        | [input-start] auto [input-end label-start] auto [label-end help-start] auto [help-end] |
+// | --graupl-input-group-bottom-grid-template-columns  | [label-start input-start help-start] 100% [help-end input-end label-end]               |
+// | --graupl-input-group-bottom-grid-template-rows     | [label-start] auto [label-end input-start] auto [input-end help-start] auto [help-end] |
+// | --graupl-input-group-left-grid-template-columns    | [input-start] auto [input-end label-start help-start] 1fr [help-end label-end]         |
+// | --graupl-input-group-left-grid-template-rows       | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
+// | --graupl-input-group-right-grid-template-columns   | [label-start] auto [label-end input-start help-start] 1fr [help-end input-end]         |
+// | --graupl-input-group-right-grid-template-rows      | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
+// | --graupl-input-group-grid-template-columns         | var(--graupl-input-group-bottom-grid-template-columns)                                 |
+// | --graupl-input-group-grid-template-rows            | var(--graupl-input-group-bottom-grid-template-rows)                                    |
+// | --graupl-input-group-row-gap                       | var(--graupl-spacer-2)                                                                 |
+// | --graupl-input-group-column-gap                    | var(--graupl-spacer-3)                                                                 |
+// | --graupl-input-group-gap                           | var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap)                 |
+// | --graupl-input-group-stacked-grid-template-columns | var(--graupl-input-group-bottom-grid-template-columns)                                 |
+// | --graupl-input-group-stacked-grid-template-rows    | var(--graupl-input-group-bottom-grid-template-rows)                                    |
+// | --graupl-input-group-inline-grid-template-columns  | var(--graupl-input-group-right-grid-template-columns)                                  |
+// | --graupl-input-group-inline-grid-template-rows     | var(--graupl-input-group-right-grid-template-rows)                                     |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -108,6 +110,19 @@ $input-group-column-gap: var(
 $input-group-gap: var(
   --#{root-defaults.$prefix}input-group-gap,
   #{$input-group-row-gap} #{$input-group-column-gap}
+);
+
+// Stacked input group properties.
+// --graupl-input-group-stacked-grid-template-columns
+$input-group-stacked-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-stacked-grid-template-columns,
+  #{$input-group-bottom-grid-template-columns}
+);
+
+// --graupl-input-group-stacked-grid-template-rows
+$input-group-stacked-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-stacked-grid-template-rows,
+  #{$input-group-bottom-grid-template-rows}
 );
 
 // Inline input group properties.
