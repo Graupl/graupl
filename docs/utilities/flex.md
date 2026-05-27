@@ -1,38 +1,19 @@
 # Flex Utilities
 
-The flex utilities provide a set of classes to adjust the `flex` properties of elements.
+The flex utilities provide a set of classes to adjust the `flex-direction`,`flex-grow`, `flex-shrink`, `flex-wrap` and `flex-basis` properties of elements.
 
 ## `.flex`
 
 Applies the default flex styling to an element.
 
-## Flex
+## Flex Direction
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.flex-row`](#flex-row) | `flex` | `row` |
-| [`.flex-row-reverse`](#flex-row-reverse) | `flex` | `row-reverse` |
-| [`.flex-col`](#flex-col) | `flex` | `col` |
-| [`.flex-col-reverse`](#flex-col-reverse) | `flex` | `column-reverse` |
-| [`.flex-wrap`](#flex-wrap) | `flex` | `wrap` |
-| [`.flex-wrap-reverse`](#flex-wrap-reverse) | `flex` | `wrap-reverse` |
-| [`.flex-nowrap`](#flex-nowrap) | `flex` | `nowrap` |
-| [`.flex-grow`](#flex-grow) | `flex` | `1` |
-| [`.flex-no-grow`](#flex-no-grow) | `flex` | `0` |
-| [`.flex-shrink`](#flex-shrink) | `flex` | `1` |
-| [`.flex-no-shrink`](#flex-no-shrink) | `flex` | `0` |
-| [`.flex-auto`](#flex-auto) | `flex` | `auto` |
-| [`.flex-fit-content`](#flex-fit-content) | `flex` | `fit-content` |
-| [`.flex-max-content`](#flex-max-content) | `flex` | `max-content` |
-| [`.flex-min-content`](#flex-min-content) | `flex` | `min-content` |
-| [`.flex-content`](#flex-content) | `flex` | `content` |
-| [`.flex-0`](#flex-0) | `flex` | `0` |
-| [`.flex-full`](#flex-full) | `flex` | `100%` |
-| [`.flex-quarter`](#flex-quarter) | `flex` | `25%` |
-| [`.flex-half`](#flex-half) | `flex` | `50%` |
-| [`.flex-three-quarters`](#flex-three-quarters) | `flex` | `75%` |
-| [`.flex-third`](#flex-third) | `flex` | `33.3333%` |
-| [`.flex-two-thirds`](#flex-two-thirds) | `flex` | `66.6667%` |
+| [`.flex-row`](#flex-row) | `flex-direction` | `row` |
+| [`.flex-row-reverse`](#flex-row-reverse) | `flex-direction` | `row-reverse` |
+| [`.flex-col`](#flex-col) | `flex-direction` | `col` |
+| [`.flex-col-reverse`](#flex-col-reverse) | `flex-direction` | `column-reverse` |
 
 ### `.flex-row`
 
@@ -98,6 +79,12 @@ Sets the `flex` property to `col-reverse`.
 </div>
 ```
 
+## Flex Wrap
+
+| [`.flex-wrap`](#flex-wrap) | `flex-wrap` | `wrap` |
+| [`.flex-wrap-reverse`](#flex-wrap-reverse) | `flex-wrap` | `wrap-reverse` |
+| [`.flex-nowrap`](#flex-nowrap) | `flex-wrap` | `nowrap` |
+
 ### `.flex-wrap`
 
 Sets the `flex` property to `wrap`.
@@ -129,6 +116,10 @@ Sets the `flex` property to `nowrap`.
   --Items Here--
 </div>
 ```
+
+## Flex Grow
+| [`.flex-grow`](#flex-grow) | `flex-grow` | `1` |
+| [`.flex-no-grow`](#flex-no-grow) | `flex-grow` | `0` |
 
 ### `.flex-grow`
 
@@ -162,6 +153,11 @@ Sets the `flex` property to `no-grow`.
 </div>
 ```
 
+## Flex Shrink
+
+| [`.flex-shrink`](#flex-shrink) | `flex-shrink` | `1` |
+| [`.flex-no-shrink`](#flex-no-shrink) | `flex-shrink` | `0` |
+
 ### `.flex-shrink`
 
 Sets the `flex` property to `shrink`.
@@ -193,6 +189,21 @@ Sets the `flex` property to `no-shrink`.
   <div class="flex-no-shrink"> Item 2</div>
 </div>
 ```
+
+## Flex Basis
+
+| [`.flex-auto`](#flex-auto) | `flex-basis` | `auto` |
+| [`.flex-fit-content`](#flex-fit-content) | `flex-basis` | `fit-content` |
+| [`.flex-max-content`](#flex-max-content) | `flex-basis` | `max-content` |
+| [`.flex-min-content`](#flex-min-content) | `flex-basis` | `min-content` |
+| [`.flex-content`](#flex-content) | `flex-basis` | `content` |
+| [`.flex-0`](#flex-0) | `flex-basis` | `0` |
+| [`.flex-full`](#flex-full) | `flex-basis` | `100%` |
+| [`.flex-quarter`](#flex-quarter) | `flex-basis` | `25%` |
+| [`.flex-half`](#flex-half) | `flex-basis` | `50%` |
+| [`.flex-three-quarters`](#flex-three-quarters) | `flex-basis` | `75%` |
+| [`.flex-third`](#flex-third) | `flex-basis` | `33.3333%` |
+| [`.flex-two-thirds`](#flex-two-thirds) | `flex-basis` | `66.6667%` |
 
 ### `.flex-auto`
 

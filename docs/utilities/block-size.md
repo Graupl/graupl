@@ -25,17 +25,17 @@ In a grid there are two axes: the block or column axis; and the inline or row ax
 | [`.block-quarter-screen`](#block-quarter-screen) | block-size | 25vh |
 | [`.block-three-quarters-screen`](#block-three-quarters-screen) | block-size | 75vh |
 | [`.block-full-screen`](#block-full-screen) | block-size | 100vh |
-| [`.block-0`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 0 value |
-| [`.block-1`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 1 value |
-| [`.block-2`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 2 value |
-| [`.block-3`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 3 value |
-| [`.block-4`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 4 value |
-| [`.block-5`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 5 value |
-| [`.block-6`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 6 value |
-| [`.block-7`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 7 value |
-| [`.block-8`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 8 value |
-| [`.block-9`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 9 value |
-| [`.block-10`](#block-0) | block-size | Sets the block-size property to Graupl's spacer 10 value |
+| [`.block-0`](#block-0) | block-size | `var(--graupl-spacer-0)` |
+| [`.block-1`](#block-0) | block-size | `var(--graupl-spacer-1)` |
+| [`.block-2`](#block-0) | block-size | `var(--graupl-spacer-2)` |
+| [`.block-3`](#block-0) | block-size | `var(--graupl-spacer-3)` |
+| [`.block-4`](#block-0) | block-size | `var(--graupl-spacer-4)` |
+| [`.block-5`](#block-0) | block-size | `var(--graupl-spacer-5)` |
+| [`.block-6`](#block-0) | block-size | `var(--graupl-spacer-6)` |
+| [`.block-7`](#block-0) | block-size | `var(--graupl-spacer-7)` |
+| [`.block-8`](#block-0) | block-size | `var(--graupl-spacer-8)` |
+| [`.block-9`](#block-0) | block-size | `var(--graupl-spacer-9)` |
+| [`.block-10`](#block-0) | block-size | `var(--graupl-spacer-10)` |
 
 ### `.block-auto`
 
