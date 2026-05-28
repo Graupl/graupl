@@ -1,4 +1,4 @@
-// @graupl/core alignment utilities styles.
+// @graupl/core align-content utilities styles.
 //
 // This file generates the alignment utility classes provided by Graupl.
 //
@@ -12,17 +12,6 @@
 // - `.align-content-evenly`: Sets the align-content property to `space-evenly`.
 // - `.align-content-baseline`: Sets the align-content property to `baseline`.
 // - `.align-content-stretch`: Sets the align-content property to `stretch`.
-// - `.align-items-start`: Sets the align-items property to `start`.
-// - `.align-items-end`: Sets the align-items property to `end`.
-// - `.align-items-center`: Sets the align-items property to `center`.
-// - `.align-items-baseline`: Sets the align-items property to `baseline`.
-// - `.align-items-stretch`: Sets the align-items property to `stretch`.
-// - `.align-self-auto`: Sets the align-self property to `auto`.
-// - `.align-self-start`: Sets the align-self property to `start`.
-// - `.align-self-end`: Sets the align-self property to `end`.
-// - `.align-self-center`: Sets the align-self property to `center`.
-// - `.align-self-baseline`: Sets the align-self property to `baseline`.
-// - `.align-self-stretch`: Sets the align-self property to `stretch`.
 //
 // The following custom properties control the generated classes:
 // | Property | Description | Default Value |
@@ -90,15 +79,10 @@
 // @example
 //   <div class="align-content-normal">This content is aligned normally.</div>
 
-@use "../../mixins/layer" as *;
-@use "../../mixins/utility";
+@use "../../../mixins/layer" as *;
+@use "../../../mixins/utility";
 @use "defaults";
 @use "variables" as *;
-
-// Import child utilities.
-@use "align-content";
-@use "align-items";
-@use "align-self";
 
 @include layer(utilities) {
   // Create a utitlity for each entry in the utility map.
