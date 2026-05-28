@@ -1,4 +1,4 @@
-// @graupl/core list utilities styles.
+// @graupl/core list-style-type utilities styles.
 //
 // This file generates the list utility classes provided by Graupl.
 //
@@ -8,8 +8,6 @@
 // - `.list-style-decimal`: Sets the list-style-type property to `decimal`.
 // - `.list-style-circle`: Sets the list-style-type property to `circle`.
 // - `.list-style-square`: Sets the list-style-type property to `square`.
-// - `.list-style-inside`: Sets the list-style-position property to `inside`.
-// - `.list-style-outside`: Sets the list-style-position property to `outside`.
 //
 // The following custom properties control the generated classes:
 // | Property | Description | Default Value |
@@ -75,19 +73,17 @@
 // e.g. `cq:md:list-style-none` will apply the `list-style-none` class on medium-sized containers and up.
 //
 // @example
-//   <ul class="list-style-none list-style-outside">
+//   <ul class="list-style-none">
 //     <li>Item 1</li>
 //     <li>Item 2</li>
 //   </ul>
 
-@use "../../mixins/layer" as *;
-@use "../../mixins/utility";
+@use "../../../mixins/layer" as *;
+@use "../../../mixins/utility";
 @use "defaults";
 @use "variables" as *;
 
 // Import child utilities.
-@use "list-style-position";
-@use "list-style-type";
 
 @include layer(utilities) {
   // Create a utitlity for each entry in the utility map.
