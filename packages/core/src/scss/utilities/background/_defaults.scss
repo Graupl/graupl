@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
@@ -37,102 +38,44 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Background attachment properties.
-$background-attachment-selector-prefix: "bg-attachment-" !default;
-$-background-attachment-properties: (
-  scroll: scroll,
-  fixed: fixed,
-  local: local,
-);
-$background-attachment-properties: () !default;
+// Properties.
+$-utility-properties: ();
+$utility-properties: () !default;
 
-// Background clip properties.
-$background-clip-selector-prefix: "bg-clip-" !default;
-$-background-clip-properties: (
-  border-box: border-box,
-  padding-box: padding-box,
-  content-box: content-box,
-  text: text,
-  border-area: border-area,
-);
-$background-clip-properties: () !default;
+// Values.
+$-utility-values: ();
+$utility-values: () !default;
 
-// Background image properties.
-$background-image-selector-prefix: "bg-image-" !default;
-$-background-image-properties: (
-  none: none,
-);
-$background-image-properties: () !default;
-
-// Background origin properties.
-$background-origin-selector-prefix: "bg-origin-" !default;
-$-background-origin-properties: (
-  border-box: border-box,
-  padding-box: padding-box,
-  content-box: content-box,
-);
-$background-origin-properties: () !default;
-
-// Background position properties.
-$background-position-selector-prefix: "bg-position-" !default;
-$-background-position-properties: (
-  top: top,
-  right: right,
-  bottom: bottom,
-  left: left,
-  center: center,
-);
-$background-position-properties: () !default;
-
-// Background repeat properties.
-$background-repeat-selector-prefix: "bg-repeat-" !default;
-$-background-repeat-properties: (
-  repeat: repeat,
-  repeat-x: repeat-x,
-  repeat-y: repeat-y,
-  space: space,
-  round: round,
-  no-repeat: no-repeat,
-);
-$background-repeat-properties: () !default;
-
-// Background size properties.
-$background-size-selector-prefix: "bg-size-" !default;
-$-background-size-properties: (
-  auto: auto,
-  cover: cover,
-  contain: contain,
-);
-$background-size-properties: () !default;
-
-// Merge custom properties with base properties if generating base utilities.
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $background-attachment-properties: map.merge(
-    $-background-attachment-properties,
-    $background-attachment-properties
-  );
-  $background-clip-properties: map.merge(
-    $-background-clip-properties,
-    $background-clip-properties
-  );
-  $background-image-properties: map.merge(
-    $-background-image-properties,
-    $background-image-properties
-  );
-  $background-origin-properties: map.merge(
-    $-background-origin-properties,
-    $background-origin-properties
-  );
-  $background-position-properties: map.merge(
-    $-background-position-properties,
-    $background-position-properties
-  );
-  $background-repeat-properties: map.merge(
-    $-background-repeat-properties,
-    $background-repeat-properties
-  );
-  $background-size-properties: map.merge(
-    $-background-size-properties,
-    $background-size-properties
-  );
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

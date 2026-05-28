@@ -41,10 +41,12 @@
   $map: ();
 
   @each $name, $property-list in $properties {
-    @each $key, $value in $values {
-      $selector: #{$name}#{$separator}#{$key};
-      $property-map: convert-property-values-to-map($property-list, $value);
-      $map: map.merge($map, (#{$selector}: $property-map));
+    @if $property-list {
+      @each $key, $value in $values {
+        $selector: #{$name}#{$separator}#{$key};
+        $property-map: convert-property-values-to-map($property-list, $value);
+        $map: map.merge($map, (#{$selector}: $property-map));
+      }
     }
   }
 
