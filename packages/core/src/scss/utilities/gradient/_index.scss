@@ -91,32 +91,37 @@
 // | `--graupl-gradient-direction`        | Direction/shape keyword consumed by gradient utilities.   | `to right` (linear), `circle` (radial)  |
 //
 // The following variables control the generated classes:
-// | Variable                               | Description                                                      | Default Value                                                                                  |
-// | -------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-// | `$selector-base`                       | Base selector for utility classes.                               | `"."`                                                                                          |
-// | `$use-important`                       | Appends `!important` to generated utility declarations.          | `true`                                                                                         |
-// | `$generate-base-utilities`             | Generates the base utility classes.                              | `true`                                                                                         |
-// | `$screen-aware`                        | Enables screen-aware utility variants.                           | `false`                                                                                        |
-// | `$theme-aware`                         | Enables theme-aware utility variants.                            | `false`                                                                                        |
-// | `$state-aware`                         | Enables state-aware utility variants.                            | `false`                                                                                        |
-// | `$container-aware`                     | Enables container-aware utility variants.                        | `false`                                                                                        |
-// | `$screen-aware-selector-separator`              | Separator inserted for screen-aware utility selectors.           | `"\\:"`                                                                                        |
-// | `$theme-aware-selector-separator`               | Separator inserted for theme-aware utility selectors.            | `"\\:"`                                                                                        |
-// | `$state-aware-selector-separator`               | Separator inserted for state-aware utility selectors.            | `"\\:"`                                                                                        |
-// | `$container-aware-selector-separator`           | Separator inserted for container-aware utility selectors.        | `"\\:"`                                                                                        |
-// | `$screen-aware-selector-prefix`        | Prefix prepended to screen-aware utility selectors.              | `""`                                                                                           |
-// | `$theme-aware-selector-prefix`         | Prefix prepended to theme-aware utility selectors.               | `""`                                                                                           |
-// | `$state-aware-selector-prefix`         | Prefix prepended to state-aware utility selectors.               | `""`                                                                                           |
-// | `$container-aware-selector-prefix`     | Prefix prepended to container-aware utility selectors.           | `"cq\\:"`                                                                                      |
-// | `$gradient-selector`                   | Selector for the base gradient utility.                          | `"gradient"`                                                                                   |
-// | `$gradient-type-selector-prefix`       | Prefix for gradient type utilities.                              | `""`                                                                                           |
-// | `$gradient-direction-selector-prefix`  | Prefix for gradient direction utilities.                         | `""`                                                                                           |
-// | `$gradient-color-selector-prefix`      | Prefix for gradient colour utilities.                            | `""`                                                                                           |
-// | `$gradient-color-from-selector-prefix` | Prefix for gradient “from” colour utilities.                 | `"from-"`                                                                                      |
-// | `$gradient-color-to-selector-prefix`   | Prefix for gradient “to” colour utilities.                   | `"to-"`                                                                                        |
-// | `$gradient-types`                      | Map of gradient types.                                           | `map.merge($-gradient-types, $gradient-types)`                                                 |
-// | `$gradient-directions`                 | Map of gradient direction keywords.                              | `map.merge($-gradient-directions, $gradient-directions)`                                       |
-// | `$gradient-colors`                     | Map of gradient colours (includes theme shades and transparent). | `map.merge($-gradient-colors, $gradient-colors)`                                               |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`       |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
 // By default, no responsive utility classes are generated.

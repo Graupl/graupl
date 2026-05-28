@@ -39,23 +39,23 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 $container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 
-// Z-index properties.
-$-z-index-properties: (
+// Properties.
+$-utility-properties: (
   "z": z-index,
 );
-$z-index-properties: ();
+$utility-properties: ();
 
-// Z-index values.
-$-z-index-values: (
+// Values.
+$-utility-values: (
   "n1": -1,
   0: 0,
   1: 1,
 );
-$z-index-values: () !default;
+$utility-values: () !default;
 
 @if $generate-base-utilities {
-  $z-index-properties: map.merge($-z-index-properties, $z-index-properties);
-  $z-index-values: map.merge($-z-index-values, $z-index-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
 
 // Set up all utility classes and properties for cleaner generation in the index file.
@@ -78,8 +78,8 @@ $-utility-map: ();
 $-utility-map: map.deep-merge(
   $-utility-map,
   utility.generate-utility-map(
-    $z-index-properties,
-    $z-index-values,
+    $utility-properties,
+    $utility-values,
     $selector-separator
   )
 );

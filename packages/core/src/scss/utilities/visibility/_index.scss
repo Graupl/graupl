@@ -8,59 +8,67 @@
 // - `.visibility-collapse`: Sets the visibility property to `collapse`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                             | Description                                                 | Default Value   |
-// | ------------------------------------ | ----------------------------------------------------------- | --------------- |
-// | `$selector-base`                     | Base selector for utility classes.                          | `"."`           |
-// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`          |
-// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`          |
-// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`         |
-// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`         |
-// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`         |
-// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`         |
-// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`         |
-// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`            |
-// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`            |
-// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`         |
-// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`            |
-// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`      |
-// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`         |
-// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`            |
-// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`       |
-// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`         |
-// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`            |
-// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`            |
-// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`         |
-// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`       |
-// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`            |
-// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`         |
-// | `$visibility-selector-prefix`        | Prefix for visibility utility selectors.                    | `"visibility-"` |
-// | `$visibility-selector-suffix`        | Suffix for visibility utility selectors.                    | `""`            |
-// | `$visibility-values`                 | Map of visibility utility values.                           | `()`            |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `true`        |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `true`        |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for visibility.
 //
-// e.g. `.md:visibility-visible` will set the `visibility` property to `visible` on screens equal to or larger than the `md` breakpoint.
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// e.g. `sm:z-0` will apply the `z-0` class on small-sized screens and up.
 //
-// e.g. `.dark:visibility-visible` will set the `visibility` property to `visible` when the `dark` theme is active.
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// e.g. `default-theme:z-0` will apply the `z-0` class when using the default theme.
 //
-// e.g. `.hover:visibility-visible` will set the `visibility` property to `visible` when the element is hovered.
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// e.g. `dark-mode:z-0` will apply the `z-0` class when dark-mode is active.
 //
-// e.g. `.cq:md:visibility-visible` will set the `visibility` property to `visible` when the parent container is larger than the `md` breakpoint.
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
+//
+// e.g. `hover:z-0` will apply the `z-0` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:z-0` will apply the `z-0` class on medium-sized containers and up.
 //
 // @example
 //   <div class="visibility-hidden">This is a hidden element.</div>

@@ -39,16 +39,16 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Width properties.
-$-width-properties: (
+// Properties.
+$-utility-properties: (
   "w": width,
   "max-w": max-width,
   "min-w": min-width,
 );
-$width-properties: () !default;
+$utility-properties: () !default;
 
-// Width values.
-$-width-values: (
+// Values.
+$-utility-values: (
   "auto": auto,
   "fit-content": fit-content,
   "max-content": max-content,
@@ -67,12 +67,12 @@ $-width-values: (
   "three-quarters-screen": 75vw,
   "full-screen": 100vw,
 );
-$width-values: () !default;
+$utility-values: () !default;
 
-// Add the spacer values to the base width values.
+// Add the spacer values to the base utility values.
 @each $spacer, $value in root-variables.$spacers {
-  $-width-values: map.merge(
-    $-width-values,
+  $-utility-values: map.merge(
+    $-utility-values,
     (
       $spacer: $value,
     )
@@ -81,8 +81,8 @@ $width-values: () !default;
 
 // Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $width-properties: map.merge($-width-properties, $width-properties);
-  $width-values: map.merge($-width-values, $width-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
 
 // Set up all utility classes and properties for cleaner generation in the index file.
@@ -105,8 +105,8 @@ $-utility-map: ();
 $-utility-map: map.deep-merge(
   $-utility-map,
   utility.generate-utility-map(
-    $width-properties,
-    $width-values,
+    $utility-properties,
+    $utility-values,
     $selector-separator
   )
 );

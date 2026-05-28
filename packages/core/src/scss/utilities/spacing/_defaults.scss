@@ -39,8 +39,8 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Spacing properties.
-$-spacing-properties: (
+// Properties.
+$-utility-properties: (
   "g": gap,
   "rg": row-gap,
   "cg": column-gap,
@@ -71,18 +71,18 @@ $-spacing-properties: (
   "mie": margin-inline-end,
   "mise": margin-inline-start margin-inline-end,
 );
-$spacing-properties: () !default;
+$utility-properties: () !default;
 
-// Spacing values.
-$-spacing-values: (
+// Values.
+$-utility-values: (
   "auto": "auto",
 );
-$spacing-values: ();
+$utility-values: ();
 
-// Add the spacer values to the base width values.
+// Add the spacer values to the base utility values.
 @each $spacer, $value in root-variables.$spacers {
-  $-spacing-values: map.merge(
-    $-spacing-values,
+  $-utility-values: map.merge(
+    $-utility-values,
     (
       $spacer: $value,
     )
@@ -91,8 +91,8 @@ $spacing-values: ();
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $spacing-properties: map.merge($-spacing-properties, $spacing-properties);
-  $spacing-values: map.merge($-spacing-values, $spacing-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
 
 // Set up all utility classes and properties for cleaner generation in the index file.
@@ -115,8 +115,8 @@ $-utility-map: ();
 $-utility-map: map.deep-merge(
   $-utility-map,
   utility.generate-utility-map(
-    $spacing-properties,
-    $spacing-values,
+    $utility-properties,
+    $utility-values,
     $selector-separator
   )
 );

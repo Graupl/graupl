@@ -12,96 +12,72 @@
 // - `.text-3xl`: Sets the font size property to Graupl's 3 extra large font size.
 // - `.text-4xl`: Sets the font size property to Graupl's 4 extra large font size.
 // - `.text-5xl`: Sets the font size property to Graupl's 5 extra large font size.
-// - `.text-paragraph`: Sets the font size, margin, font weight, and line height properties to Graupl's paragraph styles.
-// - `.text-small`: Sets the font size, margin, font weight, and line height properties to Graupl's small text styles.
-// - `.text-h1`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h1 styles.
-// - `.text-h2`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h2 styles.
-// - `.text-h3`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h3 styles.
-// - `.text-h4`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h4 styles.
-// - `.text-h5`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h5 styles.
-// - `.text-h6`: Sets the font size, margin, font family, font weight, and line height properties to Graupl's h6 styles.
-// - `.font-weight-light`: Sets the font weight property to Graupl's light font weight.
-// - `.font-weight-normal`: Sets the font weight property to Graupl's normal font weight.
-// - `.font-weight-bold`: Sets the font weight property to Graupl's bold font weight.
-// - `.font-normal`: Sets the font style property to `normal`.
-// - `.font-italic`: Sets the font style property to `italic`.
-// - `.text-uppercase`: Sets the text transform property to `uppercase`.
-// - `.text-lowercase`: Sets the text transform property to `lowercase`.
-// - `.text-capitalize`: Sets the text transform property to `capitalize`.
-// - `.text-none`: Sets the text transform property to `none`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                             | Description                                                 | Default Value    |
-// | ------------------------------------ | ----------------------------------------------------------- | ---------------- |
-// | `$selector-base`                     | Base selector for utility classes.                          | `"."`            |
-// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`           |
-// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`           |
-// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`          |
-// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`          |
-// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`          |
-// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`          |
-// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`          |
-// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`             |
-// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`             |
-// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`          |
-// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`             |
-// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`       |
-// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`          |
-// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`             |
-// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`        |
-// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`          |
-// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`             |
-// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`             |
-// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`          |
-// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`        |
-// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`             |
-// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`          |
-// | `$text-style-selector-prefix`        | Prefix for text-style utility selectors.                    | `"text-"`        |
-// | `$text-style-selector-suffix`        | Suffix for text-style utility selectors.                    | `""`             |
-// | `$text-style-properties`             | Map of text-style utility properties.                       | `()`             |
-// | `$font-size-selector-prefix`         | Prefix for font-size utility selectors.                     | `"text-"`        |
-// | `$font-size-selector-suffix`         | Suffix for font-size utility selectors.                     | `""`             |
-// | `$font-size-properties`              | Map of font-size utility properties.                        | `()`             |
-// | `$font-weight-selector-prefix`       | Prefix for font-weight utility selectors.                   | `"font-weight-"` |
-// | `$font-weight-selector-suffix`       | Suffix for font-weight utility selectors.                   | `""`             |
-// | `$font-weight-properties`            | Map of font-weight utility properties.                      | `()`             |
-// | `$font-style-selector-prefix`        | Prefix for font-style utility selectors.                    | `"font-"`        |
-// | `$font-style-selector-suffix`        | Suffix for font-style utility selectors.                    | `""`             |
-// | `$font-style-properties`             | Map of font-style utility properties.                       | `()`             |
-// | `$text-transform-selector-prefix`    | Prefix for text-transform utility selectors.                | `"text-"`        |
-// | `$text-transform-selector-suffix`    | Suffix for text-transform utility selectors.                | `""`             |
-// | `$text-transform-properties`         | Map of text-transform utility properties.                   | `()`             |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`       |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for font-size.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.md:text-2xl` will set the `font-size` property to Graupl's 2 extra large font size on screens equal to or larger than the `md` breakpoint.
+// e.g. `sm:text-sm` will apply the `text-sm` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the `dark` theme is active.
+// e.g. `default-theme:text-sm` will apply the `text-sm` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the element is hovered.
+// e.g. `dark-mode:text-sm` will apply the `text-sm` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:text-paragraph` will set the `font-size`, `margin`, `font-weight`, and `line-height` properties to Graupl's paragraph styles when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:text-sm` will apply the `text-sm` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:text-sm` will apply the `text-sm` class on medium-sized containers and up.
 //
 // @example
-//   <span class="text-h3">This is an h3-styled element.</span>
+//   <span class="text-sm">This is small-sized text.</span>
 
 @use "../../../mixins/layer" as *;
 @use "../../../mixins/utility";

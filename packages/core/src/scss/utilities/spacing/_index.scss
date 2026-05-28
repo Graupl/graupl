@@ -353,21 +353,26 @@
 // - `.mise-auto`: Sets the margin-inline-start and margin-inline-end property to `auto`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
 // | Variable                             | Description                                                 | Default Value |
 // | ------------------------------------ | ----------------------------------------------------------- | ------------- |
 // | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
 // | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
 // | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
-// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `true`        |
 // | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
 // | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
 // | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
-// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `true`        |
 // | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
 // | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
 // | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
@@ -383,32 +388,32 @@
 // | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
 // | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
 // | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
-// | `$spacing-selector-prefix`           | Prefix for spacing utility selectors.                       | `""`          |
-// | `$spacing-selector-suffix`           | Suffix for spacing utility selectors.                       | `""`          |
-// | `$spacing-properties`                | Map of spacing utility properties.                          | `()`          |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, only screen-aware utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, screen-aware responsive utility classes are generated for spacing.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.md:m-1` will set the `margin` property to Graupl's spacer 1 value on screens equal to or larger than the `md` breakpoint.
+// e.g. `sm:p-0` will apply the `p-0` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:m-1` will set the `margin` property to Graupl's spacer 1 value when the `dark` theme is active.
+// e.g. `default-theme:p-0` will apply the `p-0` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.active:m-1` will set the `margin` property to Graupl's spacer 1 value when the `active` state is active.
+// e.g. `dark-mode:p-0` will apply the `p-0` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:m-1` will set the `margin` property to Graupl's spacer 1 value when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:p-0` will apply the `p-0` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:p-0` will apply the `p-0` class on medium-sized containers and up.
 //
 // @example
 //   <div class="m-1">...</div>

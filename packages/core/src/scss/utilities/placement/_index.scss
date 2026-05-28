@@ -24,57 +24,67 @@
 // - `.place-self-stretch`: Sets the place-self property to `stretch`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                     | Default Value |
-// | -------- | ----------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties. | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                           | Description                                               | Default Value      |
-// | ---------------------------------- | --------------------------------------------------------- | ------------------ |
-// | `$selector-base`                   | Base selector for utility classes.                        | `"."`              |
-// | `$use-important`                   | Appends `!important` to generated utility declarations.   | `true`             |
-// | `$generate-base-utilities`         | Generates the base utility classes.                       | `true`             |
-// | `$screen-aware`                    | Enables screen-aware utility variants.                    | `false`            |
-// | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`            |
-// | `$state-aware`                     | Enables state-aware utility variants.                     | `false`            |
-// | `$container-aware`                 | Enables container-aware utility variants.                 | `false`            |
-// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`            |
-// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`            |
-// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`            |
-// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`            |
-// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`               |
-// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`               |
-// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`               |
-// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.    | `"cq\\:"`          |
-// | `$place-content-selector-prefix`   | Prefix for place-content utilities.                       | `"place-content-"` |
-// | `$place-content-properties`        | Map of place-content utility values.                      | `()`               |
-// | `$place-items-selector-prefix`     | Prefix for place-items utilities.                         | `"place-items-"`   |
-// | `$place-items-properties`          | Map of place-items utility values.                        | `()`               |
-// | `$place-self-selector-prefix`      | Prefix for place-self utilities.                          | `"place-self-"`    |
-// | `$place-self-properties`           | Map of place-self utility values.                         | `()`               |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`       |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for placement.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:place-content-normal` will set the `place-content` property to `normal` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:place-content-normal` will apply the `place-content-normal` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:place-content-normal` will set the `place-content` property to `normal` when the `dark` theme is active.
+// e.g. `default-theme:place-content-normal` will apply the `place-content-normal` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:place-content-normal` will set the `place-content` property to `normal` when the element is hovered.
+// e.g. `dark-mode:place-content-normal` will apply the `place-content-normal` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:place-content-normal` will set the `place-content` property to `normal` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:place-content-normal` will apply the `place-content-normal` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:place-content-normal` will apply the `place-content-normal` class on medium-sized containers and up.
 //
 // @example
 //   <div class="place-content-normal">This content is placeed normally.</div>

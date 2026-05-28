@@ -18,11 +18,11 @@ $selector-suffix: root-defaults.$utility-selector-suffix !default;
 $selector-separator: root-defaults.$utility-selector-separator !default;
 $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
-$screen-aware: false !default;
+$screen-aware: true !default;
 $theme-aware: false !default;
 $scheme-aware: false !default;
 $state-aware: false !default;
-$container-aware: false !default;
+$container-aware: true !default;
 $screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
 $screen-aware-selector-suffix: root-defaults.$utility-screen-aware-selector-suffix !default;
 $screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
@@ -39,26 +39,23 @@ $container-aware-selector-prefix: root-defaults.$utility-container-aware-selecto
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 $container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 
-// Visibility properties.
-$-visibility-properties: (
+// Properties.
+$-utility-properties: (
   "visibility": visibility,
 );
-$visibility-properties: () !default;
+$utility-properties: () !default;
 
-// Visibility values.
-$-visibility-values: (
+// Values.
+$-utility-values: (
   visible: visible,
   hidden: hidden,
   collapse: collapse,
 );
-$visibility-values: () !default;
+$utility-values: () !default;
 
 @if $generate-base-utilities {
-  $visibility-properties: map.merge(
-    $-visibility-properties,
-    $visibility-properties
-  );
-  $visibility-values: map.merge($-visibility-values, $visibility-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
 
 // Set up all utility classes and properties for cleaner generation in the index file.
@@ -81,8 +78,8 @@ $-utility-map: ();
 $-utility-map: map.deep-merge(
   $-utility-map,
   utility.generate-utility-map(
-    $visibility-properties,
-    $visibility-values,
+    $utility-properties,
+    $utility-values,
     $selector-separator
   )
 );

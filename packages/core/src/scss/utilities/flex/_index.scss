@@ -28,61 +28,67 @@
 // - `.flex-two-thirds: Sets the flex basis property to `66.666667%`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                           | Description                                               | Default Value                                                                                                     |
-// | ---------------------------------- | --------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-// | `$selector-base`                   | Base selector for utility classes.                        | `"."`                                                                                                             |
-// | `$use-important`                   | Appends `!important` to generated utility declarations.   | `true`                                                                                                            |
-// | `$generate-base-utilities`         | Generates the base utility classes.                       | `true`                                                                                                            |
-// | `$screen-aware`                    | Enables screen-aware utility variants.                    | `false`                                                                                                           |
-// | `$theme-aware`                     | Enables theme-aware utility variants.                     | `false`                                                                                                           |
-// | `$state-aware`                     | Enables state-aware utility variants.                     | `false`                                                                                                           |
-// | `$container-aware`                 | Enables container-aware utility variants.                 | `false`                                                                                                           |
-// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.    | `"\\:"`                                                                                                           |
-// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.     | `"\\:"`                                                                                                           |
-// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.     | `"\\:"`                                                                                                           |
-// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors. | `"\\:"`                                                                                                           |
-// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.       | `""`                                                                                                              |
-// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.        | `""`                                                                                                              |
-// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.        | `""`                                                                                                              |
-// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.    | `"cq\\:"`                                                                                                         |
-// | `$flex-direction-selector-prefix`  | Prefix for flex-direction utilities.                      | `"flex-"`                                                                                                         |
-// | `$flex-direction-properties`       | Map of flex-direction utility values.                     | `()`                                                                                                              |
-// | `$flex-wrap-selector-prefix`       | Prefix for flex-wrap utilities.                           | `"flex-"`                                                                                                         |
-// | `$flex-wrap-properties`            | Map of flex-wrap utility values.                          | `()`                                                                                                              |
-// | `$flex-grow-selector-prefix`       | Prefix for flex-grow utilities.                           | `"flex-"`                                                                                                         |
-// | `$flex-grow-properties`            | Map of flex-grow utility values.                          | `()`                                                                                                              |
-// | `$flex-shrink-selector-prefix`     | Prefix for flex-shrink utilities.                         | `"flex-"`                                                                                                         |
-// | `$flex-shrink-properties`          | Map of flex-shrink utility values.                        | `()`                                                                                                              |
-// | `$flex-basis-selector-prefix`      | Prefix for flex-basis utilities.                          | `"flex-"`                                                                                                         |
-// | `$flex-basis-properties`           | Map of flex-basis utility values.                         | `()`                                                                                                              |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `false`       |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for flex.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:flex-row` will set the `flex-direction` property to `row` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:flex-grow` will apply the `flex-grow` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:flex-row` will set the `flex-direction` property to `row` when the `dark` theme is active.
+// e.g. `default-theme:flex-grow` will apply the `flex-grow` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:flex-row` will set the `flex-direction` property to `row` when the element is hovered.
+// e.g. `dark-mode:flex-grow` will apply the `flex-grow` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:flex-row` will set the `flex-direction` property to `row` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:flex-grow` will apply the `flex-grow` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:flex-grow` will apply the `flex-grow` class on medium-sized containers and up.
 //
 // @example
 //  <div class="flex-row">This element will have a flex direction of row.</div>

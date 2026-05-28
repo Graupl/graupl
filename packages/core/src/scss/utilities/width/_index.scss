@@ -89,14 +89,19 @@
 // - `.min-w-10`: Sets the min-width property to Graupl's spacer 10 value.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                     | Default Value |
-// | -------- | ----------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties. | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
 // | Variable                             | Description                                                 | Default Value |
 // | ------------------------------------ | ----------------------------------------------------------- | ------------- |
 // | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
 // | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
 // | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
 // | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
@@ -119,36 +124,32 @@
 // | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
 // | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
 // | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
-// | `$width-selector-prefix`             | Prefix for width utility selectors.                         | `"w-"`        |
-// | `$width-selector-suffix`             | Suffix for width utility selectors.                         | `""`          |
-// | `$max-width-selector-prefix`         | Prefix for max-width utilitiy selectors.                    | `"max-w-"`    |
-// | `$max-width-selector-suffix`         | Suffix for max-width utilitiy selectors.                    | `""`          |
-// | `$min-width-selector-prefix`         | Prefix for min-width utilitiy selectors.                    | `"min-w-"`    |
-// | `$min-width-selector-suffix`         | Suffix for min-width utilitiy selectors.                    | `""`          |
-// | `$width-values`                      | Map of width utility values.                                | `()`          |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for width.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:w-auto` will set the `width` property to `auto` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:w-full` will apply the `w-full` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:w-auto` will set the `width` property to `auto` when the `dark` theme is active.
+// e.g. `default-theme:w-full` will apply the `w-full` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:w-auto` will set the `width` property to `auto` when the element is hovered.
+// e.g. `dark-mode:w-full` will apply the `w-full` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:w-auto` will set the `width` property to `auto` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:w-full` will apply the `w-full` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:w-full` will apply the `w-full` class on medium-sized containers and up.
 //
 // @example
 //   <div class="w-5">This element has a width equal to Graupl's spacer 5 value.</div>

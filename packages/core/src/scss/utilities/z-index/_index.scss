@@ -8,14 +8,19 @@
 // - `.z-1`: Sets the z-index to 1.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
 // | Variable                             | Description                                                 | Default Value |
 // | ------------------------------------ | ----------------------------------------------------------- | ------------- |
 // | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
 // | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
 // | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
 // | `$screen-aware`                      | Enables screen-aware utility variants.                      | `false`       |
@@ -38,32 +43,32 @@
 // | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
 // | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
 // | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
-// | `$z-index-selector-prefix`           | Prefix for z-index utility selectors.                       | `"z-"`        |
-// | `$z-index-selector-suffix`           | Suffix for z-index utility selectors.                       | `""`          |
-// | `$z-index-values`                    | Map of z-index utility values.                              | `()`          |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for z-index.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:z-0` will set the `z-index` property to `0` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:z-0` will apply the `z-0` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:z-0` will set the `z-index` property to `0` when the `dark` theme is active.
+// e.g. `default-theme:z-0` will apply the `z-0` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:z-0` will set the  `z-index` property to `0` when the element is hovered.
+// e.g. `dark-mode:z-0` will apply the `z-0` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:z-0` will set the `z-index` property to `0` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:z-0` will apply the `z-0` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:z-0` will apply the `z-0` class on medium-sized containers and up.
 //
 // @example
 //   <div class="z-0">This element has a z-index of 0.</div>
