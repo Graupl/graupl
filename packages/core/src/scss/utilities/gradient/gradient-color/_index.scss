@@ -130,7 +130,7 @@
 // e.g. `cq:md:to-primary` will apply the `to-primary` class on medium-sized containers and up.
 //
 // @example
-//   <div class="to-primary">This element has a will gradient to primary.</div>
+//   <div class="gradient to-primary from-teriary">This element has a  gradient from tertiary to primary.</div>
 
 @use "../../../mixins/layer" as *;
 @use "../../../mixins/utility";
