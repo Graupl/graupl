@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
@@ -37,55 +38,44 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// place content properties.
-$place-content-selector-prefix: "place-content-" !default;
-$-place-content-properties: (
-  center: center,
-  start: start,
-  end: end,
-  between: space-between,
-  around: space-around,
-  evenly: space-evenly,
-  baseline: baseline,
-  stretch: stretch,
-);
-$place-content-properties: () !default;
+// Properties
+$-utility-properties: ();
+$utility-properties: () !default;
 
-// place items properties.
-$place-items-selector-prefix: "place-items-" !default;
-$-place-items-properties: (
-  center: center,
-  start: start,
-  end: end,
-  baseline: baseline,
-  stretch: stretch,
-);
-$place-items-properties: () !default;
+// Values.
+$-utility-values: ();
+$utility-values: () !default;
 
-// place self properties.
-$place-self-selector-prefix: "place-self-" !default;
-$-place-self-properties: (
-  auto: auto,
-  center: center,
-  start: start,
-  end: end,
-  baseline: baseline,
-  stretch: stretch,
-);
-$place-self-properties: () !default;
-
-// Merge custom properties with base properties if generating base utilities.
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $place-content-properties: map.merge(
-    $-place-content-properties,
-    $place-content-properties
-  );
-  $place-items-properties: map.merge(
-    $-place-items-properties,
-    $place-items-properties
-  );
-  $place-self-properties: map.merge(
-    $-place-self-properties,
-    $place-self-properties
-  );
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

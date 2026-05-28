@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
@@ -37,18 +38,52 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Position properties.
-$position-selector-prefix: "position-" !default;
-$-position-properties: (
-  static: static,
-  fixed: fixed,
-  absolute: absolute,
-  relative: relative,
-  sticky: sticky,
+// Properties.
+$-utility-properties: (
+  "position": position,
 );
-$position-properties: () !default;
+$utility-properties: () !default;
 
-// Merge custom properties with base properties if generating base utilities.
+// Values.
+$-utility-values: (
+  "static": static,
+  "fixed": fixed,
+  "absolute": absolute,
+  "relative": relative,
+  "sticky": sticky,
+);
+$utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $position-properties: map.merge($-position-properties, $position-properties);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);
