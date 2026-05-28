@@ -207,6 +207,8 @@
   @each $scheme in defaults.$schemes {
     @include theme.scheme($scheme) {
       --#{root-defaults.$prefix}color-scheme: #{$scheme};
+
+      color-scheme: $color-scheme;
     }
   }
 }
