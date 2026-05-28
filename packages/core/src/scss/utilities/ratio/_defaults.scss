@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
@@ -16,11 +17,11 @@ $selector-suffix: root-defaults.$utility-selector-suffix !default;
 $selector-separator: root-defaults.$utility-selector-separator !default;
 $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
-$screen-aware: false !default;
+$screen-aware: true !default;
 $theme-aware: false !default;
 $scheme-aware: false !default;
 $state-aware: false !default;
-$container-aware: false !default;
+$container-aware: true !default;
 $screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
 $theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
 $scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
@@ -37,11 +38,14 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Ratio utilities.
-$ratio-selector: "ratio" !default;
-$ratio-variant-selector-prefix: "" !default;
-$force-ratio-selector: "force-ratio" !default;
-$-ratios: (
+// Properties.
+$-utility-properties: (
+  "ratio": aspect-ratio,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
   "one-by-one": "1",
   "two-by-one": "2 / 1",
   "four-by-three": "4 / 3",
@@ -50,9 +54,42 @@ $-ratios: (
   "three-by-two": "3 / 2",
   "eight-by-five": "8 / 5",
 );
-$ratios: () !default;
+$utility-values: () !default;
 
-// Merge custom properties with base properties if generating base utilities.
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $ratios: map.merge($-ratios, $ratios);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: (
+  "ratio": (
+    aspect-ratio: var(--#{root-defaults.$prefix}ratio, auto),
+  ),
+);
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);
