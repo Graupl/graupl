@@ -7,6 +7,8 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
+@use "../../variables" as root-variables;
 @use "sass:map";
 
 // Utility modifiers.
@@ -56,10 +58,6 @@ $z-index-values: () !default;
   $z-index-values: map.merge($-z-index-values, $z-index-values);
 }
 
-// Utility map.
-$-utility-map: ();
-$utility-map: () !default;
-
 // Set up all utility classes and properties for cleaner generation in the index file.
 //
 // The end result of this map is something like:
@@ -76,12 +74,14 @@ $utility-map: () !default;
 //   ),
 //   ...
 // );
-@each $name, $property in $z-index-properties {
-  @each $key, $value in $z-index-values {
-    $selector: #{$name}#{$selector-separator}#{$key};
-    $properties: (#{$property}: $value);
-    $-utility-map: map.merge($-utility-map, (#{$selector}: $properties));
-  }
-}
-
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $z-index-properties,
+    $z-index-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
 $utility-map: map.deep-merge($-utility-map, $utility-map);

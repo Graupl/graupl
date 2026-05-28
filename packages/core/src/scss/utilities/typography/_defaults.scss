@@ -7,11 +7,15 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
-@use "../../theme/typography/variables" as typography;
+@use "../../functions/utility";
+@use "../../variables" as root-variables;
 @use "sass:map";
 
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
+$selector-prefix: root-defaults.$utility-selector-prefix !default;
+$selector-suffix: root-defaults.$utility-selector-suffix !default;
+$selector-separator: root-defaults.$utility-selector-separator !default;
 $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: false !default;
@@ -19,199 +23,63 @@ $theme-aware: false !default;
 $scheme-aware: false !default;
 $state-aware: false !default;
 $container-aware: false !default;
-$screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
-$theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
-$scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
-$state-aware-selector-separator: root-defaults.$utility-state-aware-selector-separator !default;
-$container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 $screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
-$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
-$scheme-aware-selector-prefix: root-defaults.$utility-scheme-aware-selector-prefix !default;
-$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
-$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 $screen-aware-selector-suffix: root-defaults.$utility-screen-aware-selector-suffix !default;
+$screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
+$theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
 $theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix !default;
+$theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
+$scheme-aware-selector-prefix: root-defaults.$utility-scheme-aware-selector-prefix !default;
 $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
+$scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
+$state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
+$state-aware-selector-separator: root-defaults.$utility-state-aware-selector-separator !default;
+$container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
+$container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 
-// Text style properties.
-$text-style-selector-prefix: "text-" !default;
-$text-style-selector-suffix: "" !default;
-$-text-style-properties: (
-  "paragraph": (
-    "font-size": typography.$paragraph-font-size,
-    "font-weight": typography.$paragraph-font-weight,
-    "font-style": typography.$paragraph-font-style,
-    "font-variant": typography.$paragraph-font-variant,
-    "color": typography.$paragraph-color,
-    "font-family": typography.$paragraph-font-family,
-    "line-height": typography.$paragraph-line-height,
-    "letter-spacing": typography.$paragraph-letter-spacing,
-    "word-spacing": typography.$paragraph-word-spacing,
-    "margin": typography.$paragraph-margin,
-  ),
-  "small": (
-    "font-size": typography.$small-font-size,
-    "font-weight": typography.$small-font-weight,
-    "font-style": typography.$small-font-style,
-    "font-variant": typography.$small-font-variant,
-    "color": typography.$small-color,
-    "font-family": typography.$small-font-family,
-    "line-height": typography.$small-line-height,
-    "letter-spacing": typography.$small-letter-spacing,
-    "word-spacing": typography.$small-word-spacing,
-    "margin": typography.$small-margin,
-  ),
-  "h1": (
-    "font-size": typography.$h1-font-size,
-    "font-weight": typography.$h1-font-weight,
-    "font-style": typography.$h1-font-style,
-    "font-variant": typography.$h1-font-variant,
-    "color": typography.$h1-color,
-    "font-family": typography.$h1-font-family,
-    "line-height": typography.$h1-line-height,
-    "letter-spacing": typography.$h1-letter-spacing,
-    "word-spacing": typography.$h1-word-spacing,
-    "margin": typography.$h1-margin,
-  ),
-  "h2": (
-    "font-size": typography.$h2-font-size,
-    "font-weight": typography.$h2-font-weight,
-    "font-style": typography.$h2-font-style,
-    "font-variant": typography.$h2-font-variant,
-    "color": typography.$h2-color,
-    "font-family": typography.$h2-font-family,
-    "line-height": typography.$h2-line-height,
-    "letter-spacing": typography.$h2-letter-spacing,
-    "word-spacing": typography.$h2-word-spacing,
-    "margin": typography.$h2-margin,
-  ),
-  "h3": (
-    "font-size": typography.$h3-font-size,
-    "font-weight": typography.$h3-font-weight,
-    "font-style": typography.$h3-font-style,
-    "font-variant": typography.$h3-font-variant,
-    "color": typography.$h3-color,
-    "font-family": typography.$h3-font-family,
-    "line-height": typography.$h3-line-height,
-    "letter-spacing": typography.$h3-letter-spacing,
-    "word-spacing": typography.$h3-word-spacing,
-    "margin": typography.$h3-margin,
-  ),
-  "h4": (
-    "font-size": typography.$h4-font-size,
-    "font-weight": typography.$h4-font-weight,
-    "font-style": typography.$h4-font-style,
-    "font-variant": typography.$h4-font-variant,
-    "color": typography.$h4-color,
-    "font-family": typography.$h4-font-family,
-    "line-height": typography.$h4-line-height,
-    "letter-spacing": typography.$h4-letter-spacing,
-    "word-spacing": typography.$h4-word-spacing,
-    "margin": typography.$h4-margin,
-  ),
-  "h5": (
-    "font-size": typography.$h5-font-size,
-    "font-weight": typography.$h5-font-weight,
-    "font-style": typography.$h5-font-style,
-    "font-variant": typography.$h5-font-variant,
-    "color": typography.$h5-color,
-    "font-family": typography.$h5-font-family,
-    "line-height": typography.$h5-line-height,
-    "letter-spacing": typography.$h5-letter-spacing,
-    "word-spacing": typography.$h5-word-spacing,
-    "margin": typography.$h5-margin,
-  ),
-  "h6": (
-    "font-size": typography.$h6-font-size,
-    "font-weight": typography.$h6-font-weight,
-    "font-style": typography.$h6-font-style,
-    "font-variant": typography.$h6-font-variant,
-    "color": typography.$h6-color,
-    "font-family": typography.$h6-font-family,
-    "line-height": typography.$h6-line-height,
-    "letter-spacing": typography.$h6-letter-spacing,
-    "word-spacing": typography.$h6-word-spacing,
-    "margin": typography.$h6-margin,
-  ),
-);
-$text-style-properties: () !default;
+// Properties.
+$-utility-properties: ();
+$utility-properties: () !default;
 
-// Font size properties.
-$font-size-selector-prefix: "text-" !default;
-$font-size-selector-suffix: "" !default;
-$-font-size-properties: ();
+// Values.
+$-utility-values: ();
+$utility-values: () !default;
 
-// Add the typography font sizes to the base font size properties.
-@each $size, $value in typography.$font-sizes {
-  $-font-size-properties: map.merge(
-    $-font-size-properties,
-    (
-      $size: $value,
-    )
-  );
-}
-
-$font-size-properties: () !default;
-
-// Font weight properties.
-$font-weight-selector-prefix: "font-weight-" !default;
-$font-weight-selector-suffix: "" !default;
-$-font-weight-properties: ();
-
-// Add the typography font weights to the base font weight properties.
-@each $weight, $value in typography.$font-weights {
-  $-font-weight-properties: map.merge(
-    $-font-weight-properties,
-    (
-      $weight: $value,
-    )
-  );
-}
-
-$font-weight-properties: () !default;
-
-// Font style properties.
-$font-style-selector-prefix: "font-" !default;
-$font-style-selector-suffix: "" !default;
-$-font-style-properties: (
-  normal: normal,
-  italic: italic,
-);
-$font-style-properties: () !default;
-
-// Text transform properties.
-$text-transform-selector-prefix: "text-" !default;
-$text-transform-selector-suffix: "" !default;
-$-text-transform-properties: (
-  uppercase: uppercase,
-  lowercase: lowercase,
-  capitalize: capitalize,
-  none: none,
-);
-$text-transform-properties: () !default;
-
-// Merge custom properties with base properties if generating base utilities.
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $text-style-properties: map.deep-merge(
-    $-text-style-properties,
-    $text-style-properties
+  $utility-properties: map.deep-merge(
+    $-utility-properties,
+    $utility-properties
   );
-  $font-size-properties: map.merge(
-    $-font-size-properties,
-    $font-size-properties
-  );
-  $font-weight-properties: map.merge(
-    $-font-weight-properties,
-    $font-weight-properties
-  );
-  $font-style-properties: map.merge(
-    $-font-style-properties,
-    $font-style-properties
-  );
-  $text-transform-properties: map.merge(
-    $-text-transform-properties,
-    $text-transform-properties
-  );
+  $utility-values: map.deep-merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

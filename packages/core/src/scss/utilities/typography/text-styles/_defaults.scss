@@ -1,0 +1,182 @@
+// @graupl/core typography text style default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../defaults" as typography-defaults;
+@use "../../../functions/utility";
+@use "../../../theme/typography/variables" as typography;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: typography-defaults.$selector-base !default;
+$selector-prefix: typography-defaults.$selector-prefix !default;
+$selector-suffix: typography-defaults.$selector-suffix !default;
+$selector-separator: typography-defaults.$selector-separator !default;
+$use-important: typography-defaults.$use-important !default;
+$generate-base-utilities: typography-defaults.$generate-base-utilities !default;
+$screen-aware: typography-defaults.$screen-aware !default;
+$theme-aware: typography-defaults.$theme-aware !default;
+$scheme-aware: typography-defaults.$scheme-aware !default;
+$state-aware: typography-defaults.$state-aware !default;
+$container-aware: typography-defaults.$container-aware !default;
+$screen-aware-selector-prefix: typography-defaults.$screen-aware-selector-prefix !default;
+$screen-aware-selector-suffix: typography-defaults.$screen-aware-selector-suffix !default;
+$screen-aware-selector-separator: typography-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-prefix: typography-defaults.$theme-aware-selector-prefix !default;
+$theme-aware-selector-suffix: typography-defaults.$theme-aware-selector-suffix !default;
+$theme-aware-selector-separator: typography-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-prefix: typography-defaults.$scheme-aware-selector-prefix !default;
+$scheme-aware-selector-suffix: typography-defaults.$scheme-aware-selector-suffix !default;
+$scheme-aware-selector-separator: typography-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-prefix: typography-defaults.$state-aware-selector-prefix !default;
+$state-aware-selector-suffix: typography-defaults.$state-aware-selector-suffix !default;
+$state-aware-selector-separator: typography-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-prefix: typography-defaults.$container-aware-selector-prefix !default;
+$container-aware-selector-suffix: typography-defaults.$container-aware-selector-suffix !default;
+$container-aware-selector-separator: typography-defaults.$container-aware-selector-separator !default;
+
+// Properties.
+$-utility-properties: ();
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: ();
+$utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.deep-merge(
+    $-utility-properties,
+    $utility-properties
+  );
+  $utility-values: map.deep-merge($-utility-values, $utility-values);
+}
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: (
+  "text#{$selector-separator}paragraph": (
+    "font-size": typography.$paragraph-font-size,
+    "font-weight": typography.$paragraph-font-weight,
+    "font-style": typography.$paragraph-font-style,
+    "font-variant": typography.$paragraph-font-variant,
+    "color": typography.$paragraph-color,
+    "font-family": typography.$paragraph-font-family,
+    "line-height": typography.$paragraph-line-height,
+    "letter-spacing": typography.$paragraph-letter-spacing,
+    "word-spacing": typography.$paragraph-word-spacing,
+    "margin": typography.$paragraph-margin,
+  ),
+  "text#{$selector-separator}small": (
+    "font-size": typography.$small-font-size,
+    "font-weight": typography.$small-font-weight,
+    "font-style": typography.$small-font-style,
+    "font-variant": typography.$small-font-variant,
+    "color": typography.$small-color,
+    "font-family": typography.$small-font-family,
+    "line-height": typography.$small-line-height,
+    "letter-spacing": typography.$small-letter-spacing,
+    "word-spacing": typography.$small-word-spacing,
+    "margin": typography.$small-margin,
+  ),
+  "text#{$selector-separator}h1": (
+    "font-size": typography.$h1-font-size,
+    "font-weight": typography.$h1-font-weight,
+    "font-style": typography.$h1-font-style,
+    "font-variant": typography.$h1-font-variant,
+    "color": typography.$h1-color,
+    "font-family": typography.$h1-font-family,
+    "line-height": typography.$h1-line-height,
+    "letter-spacing": typography.$h1-letter-spacing,
+    "word-spacing": typography.$h1-word-spacing,
+    "margin": typography.$h1-margin,
+  ),
+  "text#{$selector-separator}h2": (
+    "font-size": typography.$h2-font-size,
+    "font-weight": typography.$h2-font-weight,
+    "font-style": typography.$h2-font-style,
+    "font-variant": typography.$h2-font-variant,
+    "color": typography.$h2-color,
+    "font-family": typography.$h2-font-family,
+    "line-height": typography.$h2-line-height,
+    "letter-spacing": typography.$h2-letter-spacing,
+    "word-spacing": typography.$h2-word-spacing,
+    "margin": typography.$h2-margin,
+  ),
+  "text#{$selector-separator}h3": (
+    "font-size": typography.$h3-font-size,
+    "font-weight": typography.$h3-font-weight,
+    "font-style": typography.$h3-font-style,
+    "font-variant": typography.$h3-font-variant,
+    "color": typography.$h3-color,
+    "font-family": typography.$h3-font-family,
+    "line-height": typography.$h3-line-height,
+    "letter-spacing": typography.$h3-letter-spacing,
+    "word-spacing": typography.$h3-word-spacing,
+    "margin": typography.$h3-margin,
+  ),
+  "text#{$selector-separator}h4": (
+    "font-size": typography.$h4-font-size,
+    "font-weight": typography.$h4-font-weight,
+    "font-style": typography.$h4-font-style,
+    "font-variant": typography.$h4-font-variant,
+    "color": typography.$h4-color,
+    "font-family": typography.$h4-font-family,
+    "line-height": typography.$h4-line-height,
+    "letter-spacing": typography.$h4-letter-spacing,
+    "word-spacing": typography.$h4-word-spacing,
+    "margin": typography.$h4-margin,
+  ),
+  "text#{$selector-separator}h5": (
+    "font-size": typography.$h5-font-size,
+    "font-weight": typography.$h5-font-weight,
+    "font-style": typography.$h5-font-style,
+    "font-variant": typography.$h5-font-variant,
+    "color": typography.$h5-color,
+    "font-family": typography.$h5-font-family,
+    "line-height": typography.$h5-line-height,
+    "letter-spacing": typography.$h5-letter-spacing,
+    "word-spacing": typography.$h5-word-spacing,
+    "margin": typography.$h5-margin,
+  ),
+  "text#{$selector-separator}h6": (
+    "font-size": typography.$h6-font-size,
+    "font-weight": typography.$h6-font-weight,
+    "font-style": typography.$h6-font-style,
+    "font-variant": typography.$h6-font-variant,
+    "color": typography.$h6-color,
+    "font-family": typography.$h6-font-family,
+    "line-height": typography.$h6-line-height,
+    "letter-spacing": typography.$h6-letter-spacing,
+    "word-spacing": typography.$h6-word-spacing,
+    "margin": typography.$h6-margin,
+  ),
+);
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

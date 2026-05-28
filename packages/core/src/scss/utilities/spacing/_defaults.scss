@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "../../variables" as root-variables;
 @use "sass:map";
 
@@ -39,8 +40,6 @@ $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
 // Spacing properties.
-$spacing-selector-prefix: "" !default;
-$spacing-selector-suffix: "" !default;
 $-spacing-properties: (
   "g": gap,
   "rg": row-gap,
@@ -73,7 +72,12 @@ $-spacing-properties: (
   "mise": margin-inline-start margin-inline-end,
 );
 $spacing-properties: () !default;
-$-spacing-values: ();
+
+// Spacing values.
+$-spacing-values: (
+  "auto": "auto",
+);
+$spacing-values: ();
 
 // Add the spacer values to the base width values.
 @each $spacer, $value in root-variables.$spacers {
@@ -85,10 +89,36 @@ $-spacing-values: ();
   );
 }
 
-$spacing-values: ();
-
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
   $spacing-properties: map.merge($-spacing-properties, $spacing-properties);
   $spacing-values: map.merge($-spacing-values, $spacing-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $spacing-properties,
+    $spacing-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

@@ -74,13 +74,8 @@
 @use "variables" as *;
 
 @include layer(utilities) {
-  // `.`
-  $selector-prefix: defaults.$selector-base;
-
-  // For each visibility property, create a utility class.
+  // Create a utitlity for each entry in the utility map.
   @each $selector, $properties in defaults.$utility-map {
-    // e.g. `.visibility-visible` or `.visibility-hidden`
-    // This will also generate responsive classes if those options are enabled.
     @include utility.generate(
       $selector-base: defaults.$selector-base,
       $selector-prefix: defaults.$selector-prefix,
