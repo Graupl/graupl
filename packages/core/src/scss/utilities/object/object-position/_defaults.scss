@@ -1,0 +1,89 @@
+// @graupl/core object-position utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../defaults" as object-defaults;
+@use "../../../functions/utility";
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: object-defaults.$selector-base !default;
+$selector-prefix: object-defaults.$selector-prefix !default;
+$selector-suffix: object-defaults.$selector-suffix !default;
+$selector-separator: object-defaults.$selector-separator !default;
+$use-important: object-defaults.$use-important !default;
+$generate-base-utilities: object-defaults.$generate-base-utilities !default;
+$screen-aware: object-defaults.$screen-aware !default;
+$theme-aware: object-defaults.$theme-aware !default;
+$scheme-aware: object-defaults.$scheme-aware !default;
+$state-aware: object-defaults.$state-aware !default;
+$container-aware: object-defaults.$container-aware !default;
+$screen-aware-selector-separator: object-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-separator: object-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: object-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-separator: object-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-separator: object-defaults.$container-aware-selector-separator !default;
+$screen-aware-selector-prefix: object-defaults.$screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: object-defaults.$theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: object-defaults.$scheme-aware-selector-prefix !default;
+$state-aware-selector-prefix: object-defaults.$state-aware-selector-prefix !default;
+$container-aware-selector-prefix: object-defaults.$container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: object-defaults.$screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: object-defaults.$theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: object-defaults.$scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: object-defaults.$state-aware-selector-suffix !default;
+$container-aware-selector-suffix: object-defaults.$container-aware-selector-suffix !default;
+
+// Properties.
+$-utility-properties: (
+  "object-position": object-position,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
+  top: "top",
+  bottom: "bottom",
+  left: "left",
+  right: "right",
+  center: "center",
+);
+$utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
+}
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

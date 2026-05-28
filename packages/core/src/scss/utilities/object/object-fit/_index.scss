@@ -1,4 +1,4 @@
-// @graupl/core object utilities styles.
+// @graupl/core object-fit utilities styles.
 //
 // This file generates the object utility classes provided by Graupl.
 //
@@ -8,11 +8,6 @@
 // - `.object-fit-cover`: Sets the object-fit property to `cover`.
 // - `.object-fit-none`: Sets the object-fit property to `none`.
 // - `.object-fit-scale-down`: Sets the object-fit property to `scale-down`.
-// - `.object-position-top`: Sets the object-position property to `top`.
-// - `.object-position-bottom`: Sets the object-position property to `bottom`.
-// - `.object-position-left`: Sets the object-position property to `left`.
-// - `.object-position-right`: Sets the object-position property to `right`.
-// - `.object-position-center`: Sets the object-position property to `center`.
 //
 // The following custom properties control the generated classes:
 // | Property | Description | Default Value |
@@ -79,18 +74,11 @@
 //
 // @example
 //   <img class="object-fit-fill"></img>
-//
-// @example
-//   <img class="object-position-top"></img>
 
-@use "../../mixins/layer" as *;
-@use "../../mixins/utility";
+@use "../../../mixins/layer" as *;
+@use "../../../mixins/utility";
 @use "defaults";
 @use "variables" as *;
-
-// Import child utilities.
-@use "object-fit";
-@use "object-position";
 
 @include layer(utilities) {
   // Create a utitlity for each entry in the utility map.
