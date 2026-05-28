@@ -8,9 +8,7 @@
 
 @use "../../defaults" as root-defaults;
 @use "../../variables" as root-variables;
-@use "../../functions/theme";
 @use "../../functions/utility";
-@use "../../theme/color/variables" as color;
 @use "sass:map";
 
 // Utility modifiers.
@@ -51,6 +49,12 @@ $utility-properties: () !default;
 // Values.
 $-utility-values: ();
 $utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
+}
 
 // Set up all utility classes and properties for cleaner generation in the index file.
 //
