@@ -8,8 +8,8 @@
 
 @use "../../component/navigation-shelf/variables" as *;
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/utility";
 @use "pkg:@graupl/core/src/utilities/width/defaults" as width-defaults;
-@use "pkg:@graupl/core/src/variables" as root-variables;
 @use "sass:map";
 
 // Utility modifiers.
@@ -41,34 +41,49 @@ $state-aware-selector-suffix: width-defaults.$state-aware-selector-suffix !defau
 $container-aware-selector-suffix: width-defaults.$container-aware-selector-suffix !default;
 
 // Width properties.
-$-width-properties: width-defaults.$width-properties;
-$width-properties: () !default;
+$-utility-properties: width-defaults.$utility-properties;
+$utility-properties: () !default;
 
 // Width values.
-$-width-values: (
-  shelf-min: $navigation-shelf-min-width,
-  shelf-max: $navigation-shelf-max-width,
-  shelf-current: $navigation-shelf-current-width,
-  shelf-closed: $navigation-shelf-closed-width,
-  shelf-open: $navigation-shelf-open-width,
+$-utility-values: (
+  "shelf-min": $navigation-shelf-min-width,
+  "shelf-max": $navigation-shelf-max-width,
+  "shelf-current": $navigation-shelf-current-width,
+  "shelf-closed": $navigation-shelf-closed-width,
+  "shelf-open": $navigation-shelf-open-width,
 );
-$width-values: () !default;
+$utility-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $width-properties: map.merge($-width-properties, $width-properties);
-  $width-values: map.merge($-width-values, $width-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
 
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
 $-utility-map: ();
-
-@each $name, $property in $width-properties {
-  @each $key, $value in $width-values {
-    $selector: #{$name}#{$selector-separator}#{$key};
-    $properties: (#{$property}: $value);
-    $-utility-map: map.merge($-utility-map, (#{$selector}: $properties));
-  }
-}
-
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
 $utility-map: () !default;
 $utility-map: map.deep-merge($-utility-map, $utility-map);
