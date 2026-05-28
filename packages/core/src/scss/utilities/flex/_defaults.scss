@@ -7,6 +7,7 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
@@ -37,51 +38,69 @@ $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suff
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
 
-// Flex direction properties.
-$flex-direction-selector-prefix: "flex-" !default;
-$-flex-direction-properties: (
+// Properties.
+$-utility-properties: (
+  "flex": flex-direction,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
   row: row,
   row-reverse: row-reverse,
   col: column,
   col-reverse: column-reverse,
 );
-$flex-direction-properties: () !default;
+$utility-values: () !default;
 
-// Flex wrap properties.
-$flex-wrap-selector-prefix: "flex-" !default;
-$-flex-wrap-properties: (
+// Properties.
+$-utility-properties: (
+  "flex": flex-wrap,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
   wrap: wrap,
   wrap-reverse: wrap-reverse,
   nowrap: nowrap,
 );
-$flex-wrap-properties: () !default;
+$utility-values: () !default;
 
-// Flex grow properties.
-$flex-grow-selector-prefix: "flex-" !default;
-$-flex-grow-properties: (
+// Properties.
+$-utility-properties: (
+  "flex": flex-grow,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
   grow: 1,
   no-grow: 0,
 );
-$flex-grow-properties: () !default;
+$utility-values: () !default;
 
-@if $generate-base-utilities {
-  $flex-grow-properties: map.merge(
-    $-flex-grow-properties,
-    $flex-grow-properties
-  );
-}
+// Properties.
+$-utility-properties: (
+  "flex": flex-shrink,
+);
+$utility-properties: () !default;
 
-// Flex shrink properties.
-$flex-shrink-selector-prefix: "flex-" !default;
-$-flex-shrink-properties: (
+// Values.
+$-utility-values: (
   shrink: 1,
   no-shrink: 0,
 );
-$flex-shrink-properties: () !default;
+$utility-values: () !default;
 
-// Flex basis properties.
-$flex-basis-selector-prefix: "flex-" !default;
-$-flex-basis-properties: (
+// Properties.
+$-utility-properties: (
+  "flex": flex-basis,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
   auto: auto,
   fit-content: fit-content,
   max-content: max-content,
@@ -95,24 +114,38 @@ $-flex-basis-properties: (
   third: calc(100% / 3),
   two-thirds: calc(100% / 1.5),
 );
-$flex-basis-properties: () !default;
+$utility-values: () !default;
 
-// Merge custom properties with base properties if generating base utilities.
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $flex-direction-properties: map.merge(
-    $-flex-direction-properties,
-    $flex-direction-properties
-  );
-  $flex-wrap-properties: map.merge(
-    $-flex-wrap-properties,
-    $flex-wrap-properties
-  );
-  $flex-shrink-properties: map.merge(
-    $-flex-shrink-properties,
-    $flex-shrink-properties
-  );
-  $flex-basis-properties: map.merge(
-    $-flex-basis-properties,
-    $flex-basis-properties
-  );
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);
