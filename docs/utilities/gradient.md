@@ -362,6 +362,16 @@ Sets the `--graupl-gradient-direction` property to `farthest-side`.
 
 Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial farthest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial farthest-corner from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
 ## Gradient From Color
 
 | Class Name | Property | Value |
