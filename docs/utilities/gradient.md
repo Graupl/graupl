@@ -2,15 +2,105 @@
 
 The gradient utilities provide a set of classes to adjust the color `gradient` properties of elements.
 
-## Gradient colors
-
-### Gradient Color Direction
+## Gradient Type
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | [`.gradient`](#gradient) | `background-image` | `linear-gradient` |
 | [`.linear`](#linear) | `background-image` | `linear-gradient` |
 | [`.radial`](#radial) | `background-image` | `radial-gradient` |
+
+### `.gradient`
+
+Applies the default gradient styling to an element.
+Sets the `background-image` property to `linear-gradient`.
+
+```css
+  .gradient {
+    background-image: linear-gradient(
+      var(--graupl-gradient-direction, to right),
+      var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
+      var(--graupl-gradient-to, transparent) var(--graupl-gradient-to-position, 100%)
+    )
+  }
+```
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="gradient from-primary-200 to-primary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="gradient from-primary-200 to-primary-400">Item</div>
+</div>
+```
+
+### `.linear`
+
+Applies the default linear styling to an element.
+Sets the `background-image` property to `linear-gradient`.
+
+```css
+  .linear {
+    background-image: linear-gradient(
+      var(--graupl-gradient-direction, to right),
+      var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
+      var(--graupl-gradient-to, transparent) var(--graupl-gradient-to-position, 100%)
+    )
+  }
+```
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="linear from-secondary-200 to-secondary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="linear from-secondary-200 to-secondary-400">Item</div>
+</div>
+```
+
+### `.radial`
+
+Applies the default radial styling to an element.
+Sets the `background-image` property to `radial-gradient`.
+
+```css
+  .radial {
+    background-image: radial-gradient(
+      var(--graupl-gradient-direction, circle),
+      var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
+      var(--graupl-gradient-to, transparent) var(--graupl-gradient-to-position, 100%)
+    )
+  }
+```
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+## Custom Gradient Properties
+
+Used to customize gradient types.
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`---graupl-gradient-from`] | `Starting color used by generated gradients` | `transparent` |
+| [`---graupl-gradient-from-position`] | `Start color stop position used for generated gradients` | `0%` |
+| [`---graupl-gradient-to`] | `Ending color used by generated gradients` | `transparent` |
+| [`---graupl-gradient-to-position`]| `End color stop position used for generated gradients` | `100%` |
+| [`---graupl-gradient-direction`] | `Direction/shape keyword consumed by gradient utilities` | `to right` (linear), `circle` (radial) |
+
+## Gradient Direction
+
+| Class Name | Property | Value |
+| --- | --- | --- |
 | [`.to-top`](#to-top) | `--graupl-gradient-direction` | `to top` |
 | [`.to-right`](#to-right) | `--graupl-gradient-direction` | `to right` |
 | [`.to-bottom`](#to-bottom) | `--graupl-gradient-direction` | `to bottom` |
@@ -25,316 +115,546 @@ The gradient utilities provide a set of classes to adjust the color `gradient` p
 | [`.ellipse-at-right`](#ellipse-at-right) | `--graupl-gradient-direction` | `ellipse at right` |
 | [`.ellipse-at-bottom`](#ellipse-at-bottom) | `--graupl-gradient-direction` | `ellipse at bottom` |
 | [`.ellipse-at-left`](#ellipse-at-left) | `--graupl-gradient-direction` | `ellipse at left` |
-| [`.ellipse-at-left`](#ellipse-at-left) | `--graupl-gradient-direction` | `ellipse at left` |
 | [`.closest-side`](#closest-side) | `--graupl-gradient-direction` | `closest-side` |
 | [`.closest-corner`](#closest-corner) | `--graupl-gradient-direction` | `closest-corner` |
 | [`.farthest-side`](#farthest-side) | `--graupl-gradient-direction` | `farthest-side` |
 | [`.farthest-corner`](#farthest-corner) | `--graupl-gradient-direction` | `farthest-corner` |
 
+### `.to-top`
+
+Sets the `--graupl-gradient-direction` property to `to top`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="gradient to-top from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="gradient to-top from-primary-200 to-primary-400">Item</div>
+</div>
+```
+
+### `.to-right`
+
+Sets the `--graupl-gradient-direction` property to `to right`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="gradient to-right from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="gradient to-right from-primary-200 to-primary-400">Item</div>
+</div>
+```
+
+### `.to-bottom`
+
+Sets the `--graupl-gradient-direction` property to `to bottom`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="gradient to-bottom from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="gradient to-bottom from-primary-200 to-primary-400">Item</div>
+</div>
+```
+
+### `.to-left`
+
+Sets the `--graupl-gradient-direction` property to `to left`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="gradient to-left from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="gradient to-left from-primary-200 to-primary-400">Item</div>
+</div>
+```
+
+### `.circle`
+
+Sets the `--graupl-gradient-direction` property to `circle`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial circle from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial circle from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.circle-at-top`
+
+Sets the `--graupl-gradient-direction` property to `circle at top`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial circle-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial circle-at-top from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.circle-at-right`
+
+Sets the `--graupl-gradient-direction` property to `circle at right`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial circle-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial circle-at-right from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.circle-at-bottom`
+
+Sets the `--graupl-gradient-direction` property to `circle at bottom`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial circle-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial circle-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.circle-at-left`
+
+Sets the `--graupl-gradient-direction` property to `circle at left`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial circle-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial circle-at-left from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.ellipse`
+
+Sets the `--graupl-gradient-direction` property to `ellipse`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.ellipse-at-top`
+
+Sets the `--graupl-gradient-direction` property to `ellipse at top`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse-at-top from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.ellipse-at-right`
+
+Sets the `--graupl-gradient-direction` property to `ellipse at right`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse-at-right from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.ellipse-at-bottom`
+
+Sets the `--graupl-gradient-direction` property to `ellipse at bottom`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.ellipse-at-left`
+
+Sets the `--graupl-gradient-direction` property to `ellipse at left`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse-at-left from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.closest-side`
+
+Sets the `--graupl-gradient-direction` property to `closest-side`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial closest-side from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial closest-side from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.closest-corner`
+
+Sets the `--graupl-gradient-direction` property to `closest-corner`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial closest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial closest-corner from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.farthest-side`
+
+Sets the `--graupl-gradient-direction` property to `farthest-side`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
+  <div class="radial ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="radial ellipse from-tertiary-200 to-tertiary-400">Item</div>
+</div>
+```
+
+### `.farthest-corner`
+
+Sets the `--graupl-gradient-direction` property to `farthest-corner`.
+
 ## Gradient From Color
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.from-transparent`](#from-transparent) | `background` | `transparent` |
-| [`.from-primary-100`](#from-primary-100) | `background` | `var(--graupl-theme-active--primary--100)` |
-| [`.from-primary-200`](#from-primary-200) | `background` | `var(--graupl-theme-active--primary--200)` |
-| [`.from-primary-300`](#from-primary-300) | `background` | `var(--graupl-theme-active--primary--300)` |
-| [`.from-primary-400`](#from-primary-400) | `background` | `var(--graupl-theme-active--primary--400)` |
-| [`.from-primary-500`](#from-primary-500) | `background` | `var(--graupl-theme-active--primary--500)` |
-| [`.from-primary-600`](#from-primary-600) | `background` | `var(--graupl-theme-active--primary--600)` |
-| [`.from-primary-700`](#from-primary-700) | `background` | `var(--graupl-theme-active--primary--700)` |
-| [`.from-primary-800`](#from-primary-800) | `background` | `var(--graupl-theme-active--primary--800)` |
-| [`.from-primary-900`](#from-primary-900) | `background` | `var(--graupl-theme-active--primary--900)` |
-| [`.from-secondary-100`](#from-secondary-100) | `background` | `var(--graupl-theme-active--secondary--100)` |
-| [`.from-secondary-200`](#from-secondary-200) | `background` | `var(--graupl-theme-active--secondary--200)` |
-| [`.from-secondary-300`](#from-secondary-300) | `background` | `var(--graupl-theme-active--secondary--300)` |
-| [`.from-secondary-400`](#from-secondary-400) | `background` | `var(--graupl-theme-active--secondary--400)` |
-| [`.from-secondary-500`](#from-secondary-500) | `background` | `var(--graupl-theme-active--secondary--500)` |
-| [`.from-secondary-600`](#from-secondary-600) | `background` | `var(--graupl-theme-active--secondary--600)` |
-| [`.from-secondary-700`](#from-secondary-700) | `background` | `var(--graupl-theme-active--secondary--700)` |
-| [`.from-secondary-800`](#from-secondary-800) | `background` | `var(--graupl-theme-active--secondary--800)` |
-| [`.from-secondary-900`](#from-secondary-900) | `background` | `var(--graupl-theme-active--secondary--900)` |
-| [`.from-tertiary-100`](#from-tertiary-100) | `background` | `var(--graupl-theme-active--tertiary--100)` |
-| [`.from-tertiary-200`](#from-tertiary-200) | `background` | `var(--graupl-theme-active--tertiary--200)` |
-| [`.from-tertiary-300`](#from-tertiary-300) | `background` | `var(--graupl-theme-active--tertiary--300)` |
-| [`.from-tertiary-400`](#from-tertiary-400) | `background` | `var(--graupl-theme-active--tertiary--400)` |
-| [`.from-tertiary-500`](#from-tertiary-500) | `background` | `var(--graupl-theme-active--tertiary--500)` |
-| [`.from-tertiary-600`](#from-tertiary-600) | `background` | `var(--graupl-theme-active--tertiary--600)` |
-| [`.from-tertiary-700`](#from-tertiary-700) | `background` | `var(--graupl-theme-active--tertiary--700)` |
-| [`.from-tertiary-800`](#from-tertiary-800) | `background` | `var(--graupl-theme-active--tertiary--800)` |
-| [`.from-tertiary-900`](#from-tertiary-900) | `background` | `var(--graupl-theme-active--tertiary--900)` |
+| [`.from-transparent`](#from-transparent) | `--graupl-gradient-from` | `transparent` |
+| [`.from-primary-100`](#from-primary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--100)` |
+| [`.from-primary-200`](#from-primary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--200)` |
+| [`.from-primary-300`](#from-primary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--300)` |
+| [`.from-primary-400`](#from-primary-400) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--400)` |
+| [`.from-primary-500`](#from-primary-500) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--500)` |
+| [`.from-primary-600`](#from-primary-600) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--600)` |
+| [`.from-primary-700`](#from-primary-700) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--700)` |
+| [`.from-primary-800`](#from-primary-800) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--800)` |
+| [`.from-primary-900`](#from-primary-900) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--900)` |
+| [`.from-secondary-100`](#from-secondary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--100)` |
+| [`.from-secondary-200`](#from-secondary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--200)` |
+| [`.from-secondary-300`](#from-secondary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--300)` |
+| [`.from-secondary-400`](#from-secondary-400) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--400)` |
+| [`.from-secondary-500`](#from-secondary-500) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--500)` |
+| [`.from-secondary-600`](#from-secondary-600) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--600)` |
+| [`.from-secondary-700`](#from-secondary-700) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--700)` |
+| [`.from-secondary-800`](#from-secondary-800) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--800)` |
+| [`.from-secondary-900`](#from-secondary-900) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--900)` |
+| [`.from-tertiary-100`](#from-tertiary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--100)` |
+| [`.from-tertiary-200`](#from-tertiary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--200)` |
+| [`.from-tertiary-300`](#from-tertiary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--300)` |
+| [`.from-tertiary-400`](#from-tertiary-400) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--400)` |
+| [`.from-tertiary-500`](#from-tertiary-500) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--500)` |
+| [`.from-tertiary-600`](#from-tertiary-600) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--600)` |
+| [`.from-tertiary-700`](#from-tertiary-700) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--700)` |
+| [`.from-tertiary-800`](#from-tertiary-800) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--800)` |
+| [`.from-tertiary-900`](#from-tertiary-900) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--900)` |
 
 ### `.from-transparent`
 
-Sets the `background` property to `transparent`.
+Sets the `--graupl-gradient-from` property to `transparent`.
 
 ### `.from-primary-100`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--100)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--100)`.
 
 ### `.from-primary-200`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--200)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--200)`.
 
 ### `.from-primary-300`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--300)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--300)`.
 
 ### `.from-primary-400`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--400)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--400)`.
 
 ### `.from-primary-500`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--500)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--500)`.
 
 ### `.from-primary-600`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--600)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--600)`.
 
 ### `.from-primary-700`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--700)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--700)`.
 
 ### `.from-primary-800`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--800)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--800)`.
 
 ### `.from-primary-900`
 
-Sets the `background` property to `var(--graupl-theme-active--primary--900)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--900)`.
 
 ### `.from-secondary-100`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--100)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--100)`.
 
 ### `.from-secondary-200`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--200)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--200)`.
 
 ### `.from-secondary-300`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--300)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--300)`.
 
 ### `.from-secondary-400`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--400)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--400)`.
 
 ### `.from-secondary-500`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--500)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--500)`.
 
 ### `.from-secondary-600`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--600)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--600)`.
 
 ### `.from-secondary-700`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--700)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--700)`.
 
 ### `.from-secondary-800`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--800)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--800)`.
 
 ### `.from-secondary-900`
 
-Sets the `background` property to `var(--graupl-theme-active--secondary--900)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--900)`.
 
 ### `.from-tertiary-100`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--100)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--100)`.
 
 ### `.from-tertiary-200`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--200)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--200)`.
 
 ### `.from-tertiary-300`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--300)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--300)`.
 
 ### `.from-tertiary-400`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--400)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--400)`.
 
 ### `.from-tertiary-500`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--500)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--500)`.
 
 ### `.from-tertiary-600`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--600)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--600)`.
 
 ### `.from-tertiary-700`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--700)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--700)`.
 
 ### `.from-tertiary-800`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--800)`.
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--800)`.
 
 ### `.from-tertiary-900`
 
-Sets the `background` property to `var(--graupl-theme-active--tertiary--900)`.
-
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary--900)`.
 
 ## Gradient To Color
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.to-transparent`](#to-transparent) | `background` | `transparent` |
-| [`.to-primary-100`](#to-primary-100) | `background` | `var(--graupl-theme-active--primary--100)` |
-| [`.to-primary-200`](#to-primary-200) | `background` | `var(--graupl-theme-active--primary--200)` |
-| [`.to-primary-300`](#to-primary-300) | `background` | `var(--graupl-theme-active--primary--300)` |
-| [`.to-primary-400`](#to-primary-400) | `background` | `var(--graupl-theme-active--primary--400)` |
-| [`.to-primary-500`](#to-primary-500) | `background` | `var(--graupl-theme-active--primary--500)` |
-| [`.to-primary-600`](#to-primary-600) | `background` | `var(--graupl-theme-active--primary--600)` |
-| [`.to-primary-700`](#to-primary-700) | `background` | `var(--graupl-theme-active--primary--700)` |
-| [`.to-primary-800`](#to-primary-800) | `background` | `var(--graupl-theme-active--primary--800)` |
-| [`.to-primary-900`](#to-primary-900) | `background` | `var(--graupl-theme-active--primary--900)` |
-| [`.to-secondary-100`](#to-secondary-100) | `background` | `var(--graupl-theme-active--secondary--100)` |
-| [`.to-secondary-200`](#to-secondary-200) | `background` | `var(--graupl-theme-active--secondary--200)` |
-| [`.to-secondary-300`](#to-secondary-300) | `background` | `var(--graupl-theme-active--secondary--300)` |
-| [`.to-secondary-400`](#to-secondary-400) | `background` | `var(--graupl-theme-active--secondary--400)` |
-| [`.to-secondary-500`](#to-secondary-500) | `background` | `var(--graupl-theme-active--secondary--500)` |
-| [`.to-secondary-600`](#to-secondary-600) | `background` | `var(--graupl-theme-active--secondary--600)` |
-| [`.to-secondary-700`](#to-secondary-700) | `background` | `var(--graupl-theme-active--secondary--700)` |
-| [`.to-secondary-800`](#to-secondary-800) | `background` | `var(--graupl-theme-active--secondary--800)` |
-| [`.to-secondary-900`](#to-secondary-900) | `background` | `var(--graupl-theme-active--secondary--900)` |
-| [`.to-tertiary-100`](#to-tertiary-100) | `background` | `var(--graupl-theme-active--tertiary--100)` |
-| [`.to-tertiary-200`](#to-tertiary-200) | `background` | `var(--graupl-theme-active--tertiary--200)` |
-| [`.to-tertiary-300`](#to-tertiary-300) | `background` | `var(--graupl-theme-active--tertiary--300)` |
-| [`.to-tertiary-400`](#to-tertiary-400) | `background` | `var(--graupl-theme-active--tertiary--400)` |
-| [`.to-tertiary-500`](#to-tertiary-500) | `background` | `var(--graupl-theme-active--tertiary--500)` |
-| [`.to-tertiary-600`](#to-tertiary-600) | `background` | `var(--graupl-theme-active--tertiary--600)` |
-| [`.to-tertiary-700`](#to-tertiary-700) | `background` | `var(--graupl-theme-active--tertiary--700)` |
-| [`.to-tertiary-800`](#to-tertiary-800) | `background` | `var(--graupl-theme-active--tertiary--800)` |
-| [`.to-tertiary-900`](#to-tertiary-900) | `background` | `var(--graupl-theme-active--tertiary--900)` |
+| [`.to-transparent`](#to-transparent) | `--graupl-gradient-to` | `transparent` |
+| [`.to-primary-100`](#to-primary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--100)` |
+| [`.to-primary-200`](#to-primary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--200)` |
+| [`.to-primary-300`](#to-primary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--300)` |
+| [`.to-primary-400`](#to-primary-400) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--400)` |
+| [`.to-primary-500`](#to-primary-500) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--500)` |
+| [`.to-primary-600`](#to-primary-600) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--600)` |
+| [`.to-primary-700`](#to-primary-700) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--700)` |
+| [`.to-primary-800`](#to-primary-800) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--800)` |
+| [`.to-primary-900`](#to-primary-900) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--900)` |
+| [`.to-secondary-100`](#to-secondary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--100)` |
+| [`.to-secondary-200`](#to-secondary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--200)` |
+| [`.to-secondary-300`](#to-secondary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--300)` |
+| [`.to-secondary-400`](#to-secondary-400) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--400)` |
+| [`.to-secondary-500`](#to-secondary-500) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--500)` |
+| [`.to-secondary-600`](#to-secondary-600) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--600)` |
+| [`.to-secondary-700`](#to-secondary-700) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--700)` |
+| [`.to-secondary-800`](#to-secondary-800) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--800)` |
+| [`.to-secondary-900`](#to-secondary-900) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--900)` |
+| [`.to-tertiary-100`](#to-tertiary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--100)` |
+| [`.to-tertiary-200`](#to-tertiary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--200)` |
+| [`.to-tertiary-300`](#to-tertiary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--300)` |
+| [`.to-tertiary-400`](#to-tertiary-400) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--400)` |
+| [`.to-tertiary-500`](#to-tertiary-500) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--500)` |
+| [`.to-tertiary-600`](#to-tertiary-600) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--600)` |
+| [`.to-tertiary-700`](#to-tertiary-700) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--700)` |
+| [`.to-tertiary-800`](#to-tertiary-800) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--800)` |
+| [`.to-tertiary-900`](#to-tertiary-900) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--900)` |
 
 ### `.to-transparent`
 
-Sets the `color` property to `transparent`.
+Sets the `--graupl-gradient-to` property to `transparent`.
 
 ### `.to-primary-100`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--100)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--100)`.
 
 ### `.to-primary-200`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--200)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--200)`.
 
 ### `.to-primary-300`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--300)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--300)`.
 
 ### `.to-primary-400`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--400)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--400)`.
 
 ### `.to-primary-500`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--500)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--500)`.
 
 ### `.to-primary-600`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--600)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--600)`.
 
 ### `.to-primary-700`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--700)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--700)`.
 
 ### `.to-primary-800`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--800)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--800)`.
 
 ### `.to-primary-900`
 
-Sets the `color` property to `var(--graupl-theme-active--primary--900)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--900)`.
 
 ### `.to-secondary-100`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--100)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--100)`.
 
 ### `.to-secondary-200`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--200)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--200)`.
 
 ### `.to-secondary-300`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--300)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--300)`.
 
 ### `.to-secondary-400`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--400)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--400)`.
 
 ### `.to-secondary-500`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--500)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--500)`.
 
 ### `.to-secondary-600`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--600)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--600)`.
 
 ### `.to-secondary-700`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--700)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--700)`.
 
 ### `.to-secondary-800`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--800)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--800)`.
 
 ### `.to-secondary-900`
 
-Sets the `color` property to `var(--graupl-theme-active--secondary--900)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--900)`.
 
 ### `.to-tertiary-100`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--100)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--100)`.
 
 ### `.to-tertiary-200`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--200)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--200)`.
 
 ### `.to-tertiary-300`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--300)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--300)`.
 
 ### `.to-tertiary-400`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--400)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--400)`.
 
 ### `.to-tertiary-500`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--500)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--500)`.
 
 ### `.to-tertiary-600`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--600)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--600)`.
 
 ### `.to-tertiary-700`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--700)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--700)`.
 
 ### `.to-tertiary-800`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--800)`.
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--800)`.
 
 ### `.to-tertiary-900`
 
-Sets the `color` property to `var(--graupl-theme-active--tertiary--900)`.
-
-## Custom Gradient Properties
-
-| Class Name | Property | Value |
-| --- | --- | --- |
-| [`---graupl-gradient-from`](#--graupl-gradient-from) | `Starting color used by generated gradients` | `transparent` |
-| [`---graupl-gradient-from-position`](#--graupl-gradient-from-position) | `Start color stop position used for generated gradients` | `0%` |
-| [`---graupl-gradient-to`](#--graupl-gradient-to) | `Ending color used by generated gradients` | `transparent` |
-| [`---graupl-gradient-to-position`](#--graupl-gradient-to-position) | `End color stop position used for generated gradients` | `100%` |
-| [`---graupl-gradient-direction`](#--graupl-gradient-direction) | `Direction/shape keyword consumed by gradient utilities` | `to right` (linear), `circle` (radial) |
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary--900)`.
 
 ## Customization
 
-To customize the color utilities, you can use the following variables.
+To customize the gradient utilities, you can use the following variables.
 
 | Variable | Default Value | Description |
 | --- | --- | --- |
@@ -355,11 +675,11 @@ To customize the color utilities, you can use the following variables.
 | `$container-aware-selector-prefix` | `"cq:"` | The prefix for the container-aware utility classes. |
 | `$gradient-selector` | Selector for the base gradient utility. | `"gradient"` |
 | `$gradient-type-selector-prefix` | Prefix for gradient type utilities. | `""` |
-| `$gradient-direction-selector-prefix`| Prefix for gradient direction utilities. | `""` |
-| `$gradient-color-selector-prefix`| Prefix for gradient color utilities. | `""` |
+| `$gradient-direction-selector-prefix` | Prefix for gradient direction utilities. | `""` |
+| `$gradient-color-selector-prefix` | Prefix for gradient color utilities. | `""` |
 | `$gradient-color-from-selector-` | Prefix for gradient “from” color utilities. | `"from-"` |
 | `$gradient-color-to-selector-` | Prefix for gradient “to" color utilities. | `"to-"` |
-| `$gradient-types` | Map of gradient types. | `map.. ($-gradien-types, $gradient-types)` |
+| `$gradient-types` | Map of gradient types. | `map.merge($-gradient-types, $gradient-types)` |
 | `$gradient-directions` | Map of gradient direction keywords. | `map. merge($gradient-directions, $gradient-directions)` |
 | `$gradient-colors` | Map of gradient colours (includes theme shades and transparent) | `map.merge($-gradient-colors, $gradient-colors)` |
 
