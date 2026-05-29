@@ -40,48 +40,6 @@ $container-aware-selector-suffix: background-defaults.$container-aware-selector-
 
 // Properties.
 $-utility-properties: (
-  "bg-attachment": background-attachment,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "scroll": scroll,
-  "fixed": fixed,
-  "local": local,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
-  "bg-clip": background-clip,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "border-box": border-box,
-  "padding-box": padding-box,
-  "content-box": content-box,
-  "text": text,
-  "border-area": border-area,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
-  "bg-image": background-image,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "none": none,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
   "bg-origin": background-origin,
 );
 $utility-properties: () !default;
@@ -91,53 +49,6 @@ $-utility-values: (
   "border-box": border-box,
   "padding-box": padding-box,
   "content-box": content-box,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
-  "bg-position": background-position,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "top": top,
-  "right": right,
-  "bottom": bottom,
-  "left": left,
-  "center": center,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
-  "bg-repeat": background-repeat,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "repeat": repeat,
-  "repeat-x": repeat-x,
-  "repeat-y": repeat-y,
-  "space": space,
-  "round": round,
-  "no-repeat": no-repeat,
-);
-$utility-values: () !default;
-
-// Properties.
-$-utility-properties: (
-  "bg-size": background-size,
-);
-$utility-properties: () !default;
-
-// Values.
-$-utility-values: (
-  "auto": auto,
-  "cover": cover,
-  "contain": contain,
 );
 $utility-values: () !default;
 

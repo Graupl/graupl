@@ -60,12 +60,12 @@ $-utility-values: (
   "three-quarters": 75%,
   "third": calc(100% / 3),
   "two-thirds": calc(100% / 1.5),
-  "half-screen": 50vw,
-  "third-screen": calc(100vw / 3),
-  "two-thirds-screen": calc(100vw / 1.5),
-  "quarter-screen": 25vw,
-  "three-quarters-screen": 75vw,
-  "full-screen": 100vw,
+  "half-screen": 50vh,
+  "third-screen": calc(100vh / 3),
+  "two-thirds-screen": calc(100vh / 1.5),
+  "quarter-screen": 25vh,
+  "three-quarters-screen": 75vh,
+  "full-screen": 100vh,
 );
 $utility-values: () !default;
 
