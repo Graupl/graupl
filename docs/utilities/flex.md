@@ -192,6 +192,8 @@ Sets the `flex` property to `no-shrink`.
 
 ## Flex Basis
 
+| Class Name | Property | Value |
+| --- | --- | --- |
 | [`.flex-auto`](#flex-auto) | `flex-basis` | `auto` |
 | [`.flex-fit-content`](#flex-fit-content) | `flex-basis` | `fit-content` |
 | [`.flex-max-content`](#flex-max-content) | `flex-basis` | `max-content` |
