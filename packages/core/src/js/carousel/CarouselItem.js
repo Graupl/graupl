@@ -3,6 +3,8 @@
  * The CarouselItem class.
  */
 
+/* global Carousel */
+
 import { addClass, removeClass } from "../domHelpers.js";
 import Component from "../Component.js";
 

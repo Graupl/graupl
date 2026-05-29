@@ -437,11 +437,10 @@
 
 @include layer(utilities) {
   // Create a utitlity for each entry in the utility map.
-  @each $selector, $properties in defaults.$utility-map {
-    @include utility.generate(
+  @include utility.generate(
+      $map: defaults.$utility-map,
       $selector-base: defaults.$selector-base,
       $selector-prefix: defaults.$selector-prefix,
-      $selector: $selector,
       $selector-suffix: defaults.$selector-suffix,
       $screen-aware: defaults.$screen-aware,
       $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
@@ -468,69 +467,68 @@
         defaults.$container-aware-selector-suffix,
       $container-aware-selector-separator:
         defaults.$container-aware-selector-separator,
-      $properties: $properties,
       $important: defaults.$use-important
-    ) {
-      @if map.has-key($properties, "gap") {
-        $value: map.get($properties, "gap");
-        $row: $value;
-        $column: $value;
+    )
+    using ($selector, $properties, $responsive-name, $responsive-type) {
+    @if map.has-key($properties, "gap") {
+      $value: map.get($properties, "gap");
+      $row: $value;
+      $column: $value;
 
-        @if list.length($value) > 1 {
-          $row: list.nth(1);
-          $column: list.nth(2);
-        }
-
-        // `&.columns`
-        @include utility.create-mapped(
-          "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
-          (
-            --#{root-defaults.$prefix}columns-column-gap: $column,
-            --#{root-defaults.$prefix}columns-row-gap: $row
-          )
-        );
-
-        // `&.flex-columns`
-        @include utility.create-mapped(
-          "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
-          (
-            --#{root-defaults.$prefix}flex-columns-column-gap: $column,
-            --#{root-defaults.$prefix}flex-columns-row-gap: $row
-          )
-        );
+      @if list.length($value) > 1 {
+        $row: list.nth(1);
+        $column: list.nth(2);
       }
 
-      @if map.has-key($properties, "column-gap") {
-        $value: map.get($properties, "column-gap");
+      // `&.columns`
+      @include utility.create-mapped(
+        "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
+        (
+          --#{root-defaults.$prefix}columns-column-gap: $column,
+          --#{root-defaults.$prefix}columns-row-gap: $row
+        )
+      );
 
-        // `&.columns`
-        @include utility.create-mapped(
-          "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
-          (--#{root-defaults.$prefix}columns-column-gap: $value)
-        );
+      // `&.flex-columns`
+      @include utility.create-mapped(
+        "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
+        (
+          --#{root-defaults.$prefix}flex-columns-column-gap: $column,
+          --#{root-defaults.$prefix}flex-columns-row-gap: $row
+        )
+      );
+    }
 
-        // `&.flex-columns`
-        @include utility.create-mapped(
-          "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
-          (--#{root-defaults.$prefix}flex-columns-column-gap: $value)
-        );
-      }
+    @if map.has-key($properties, "column-gap") {
+      $value: map.get($properties, "column-gap");
 
-      @if map.has-key($properties, "row-gap") {
-        $value: map.get($properties, "row-gap");
+      // `&.columns`
+      @include utility.create-mapped(
+        "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
+        (--#{root-defaults.$prefix}columns-column-gap: $value)
+      );
 
-        // `&.columns`
-        @include utility.create-mapped(
-          "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
-          (--#{root-defaults.$prefix}columns-row-gap: $value)
-        );
+      // `&.flex-columns`
+      @include utility.create-mapped(
+        "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
+        (--#{root-defaults.$prefix}flex-columns-column-gap: $value)
+      );
+    }
 
-        // `&.flex-columns`
-        @include utility.create-mapped(
-          "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
-          (--#{root-defaults.$prefix}flex-columns-row-gap: $value)
-        );
-      }
+    @if map.has-key($properties, "row-gap") {
+      $value: map.get($properties, "row-gap");
+
+      // `&.columns`
+      @include utility.create-mapped(
+        "&#{columns-defaults.$columns-selector-base}#{columns-defaults.$columns-selector}",
+        (--#{root-defaults.$prefix}columns-row-gap: $value)
+      );
+
+      // `&.flex-columns`
+      @include utility.create-mapped(
+        "&#{flex-columns-defaults.$flex-columns-selector-base}#{flex-columns-defaults.$flex-columns-selector}",
+        (--#{root-defaults.$prefix}flex-columns-row-gap: $value)
+      );
     }
   }
 }

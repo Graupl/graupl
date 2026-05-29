@@ -213,6 +213,31 @@
 @use "sass:map";
 @use "variables" as *;
 
+$flex-columns-column-map: ();
+
+@for $i
+  from defaults.$flex-columns-min-count
+  through defaults.$flex-columns-max-count
+{
+  $flex-columns-column-map: map.merge(
+    $flex-columns-column-map,
+    /* stylelint-disable */
+      (
+        "#{defaults.$flex-columns-column-selector}#{$i}": (
+            --#{root-defaults.$prefix}flex-columns-size: calc(
+                (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
+                  #{$flex-columns-column-gap}
+              ),
+            --#{root-defaults.$prefix}flex-columns-max-width: calc(
+                100% / #{defaults.$flex-columns-max-count} * #{$i}
+              ),
+            container-type: $flex-columns-container-type,
+          ),
+      )
+      /* stylelint-enable */
+  );
+}
+
 @include layer(layout) {
   // `.flex-columns`
   #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
@@ -226,99 +251,68 @@
       max-width: $flex-columns-max-width;
     }
 
-    // `.fill`
-    #{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
-      --#{root-defaults.$prefix}flex-columns-max-width: unset;
-    }
-
-    @for $i
-      from defaults.$flex-columns-min-count
-      through defaults.$flex-columns-max-count
-    {
-      // e.g. `.col-1` or `.col-12`
-      #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
-        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-        --#{root-defaults.$prefix}flex-columns-size: calc(
-          (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
-            #{$flex-columns-column-gap}
-        );
-        --#{root-defaults.$prefix}flex-columns-max-width: calc(
-          100% / #{defaults.$flex-columns-max-count} * #{$i}
-        );
-        /* stylelint-enable  scss/operator-no-newline-after */
-        container-type: $flex-columns-container-type;
+    @include utility.generate(
+        $map: $flex-columns-column-map,
+        $selector-base: defaults.$flex-columns-column-selector-base,
+        $selector-prefix: "",
+        $selector-suffix: "",
+        $screen-aware: defaults.$screen-aware,
+        $screen-aware-selector-prefix:
+          defaults.$flex-columns-screen-aware-selector-prefix,
+        $screen-aware-selector-suffix:
+          defaults.$flex-columns-screen-aware-selector-suffix,
+        $screen-aware-selector-separator:
+          defaults.$flex-columns-screen-aware-selector-separator,
+        $theme-aware: defaults.$theme-aware,
+        $theme-aware-selector-prefix:
+          defaults.$flex-columns-theme-aware-selector-prefix,
+        $theme-aware-selector-suffix:
+          defaults.$flex-columns-theme-aware-selector-suffix,
+        $theme-aware-selector-separator:
+          defaults.$flex-columns-theme-aware-selector-separator,
+        $scheme-aware: defaults.$scheme-aware,
+        $scheme-aware-selector-prefix:
+          defaults.$flex-columns-scheme-aware-selector-prefix,
+        $scheme-aware-selector-suffix:
+          defaults.$flex-columns-scheme-aware-selector-suffix,
+        $scheme-aware-selector-separator:
+          defaults.$flex-columns-scheme-aware-selector-separator,
+        $state-aware: defaults.$state-aware,
+        $state-aware-selector-prefix:
+          defaults.$flex-columns-state-aware-selector-prefix,
+        $state-aware-selector-suffix:
+          defaults.$flex-columns-state-aware-selector-suffix,
+        $state-aware-selector-separator:
+          defaults.$flex-columns-state-aware-selector-separator,
+        $container-aware: defaults.$container-aware,
+        $container-aware-selector-prefix:
+          defaults.$flex-columns-container-aware-selector-prefix,
+        $container-aware-selector-suffix:
+          defaults.$flex-columns-container-aware-selector-suffix,
+        $container-aware-selector-separator:
+          defaults.$flex-columns-container-aware-selector-separator,
+        $important: false
+      )
+      using($selector, $properties, $responsive-type, $responsive-name) {
+      // `&.fill`
+      &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
+        --#{root-defaults.$prefix}flex-columns-max-width: unset;
       }
+    }
+  }
 
-      @include container.trigger(force-single-column) {
+  @for $i
+    from defaults.$flex-columns-min-count
+    through defaults.$flex-columns-max-count
+  {
+    @include container.trigger(force-single-column) {
+      // `.flex-columns`
+      #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
         // e.g. `.col-1` or `.col-12`
         #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
           --#{root-defaults.$prefix}flex-columns-size: 100%;
           --#{root-defaults.$prefix}flex-columns-max-width: auto;
         }
-      }
-    }
-  }
-
-  @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-    // `.flex-columns`
-    #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
-      @for $i
-        from defaults.$flex-columns-min-count
-        through defaults.$flex-columns-max-count
-      {
-        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-        @include utility.create-mapped(
-          // e.g. `.md:col-1` or `.xl:col-12`
-          #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-screen-aware-selector-prefix}#{$screen-name}#{defaults.$flex-columns-screen-aware-selector-separator}#{defaults.$flex-columns-column-selector}#{$i},
-          (
-            --#{root-defaults.$prefix}flex-columns-size: calc(
-                (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
-                  #{$flex-columns-column-gap}
-              ),
-            --#{root-defaults.$prefix}flex-columns-max-width: calc(
-                100% / #{defaults.$flex-columns-max-count} * #{$i}
-              )
-          ),
-          $screen: $screen-name
-        ) {
-          // `&.fill`
-          &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
-            --#{root-defaults.$prefix}flex-columns-max-width: unset;
-          }
-        }
-        /* stylelint-enable  scss/operator-no-newline-after */
-      }
-    }
-  }
-
-  @each $container-name in map.keys(root-defaults.$container-sizes) {
-    // `.flex-columns`
-    #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
-      @for $i
-        from defaults.$flex-columns-min-count
-        through defaults.$flex-columns-max-count
-      {
-        /* stylelint-disable scss/operator-no-newline-after -- Prettier wants to format it this way. */
-        @include utility.create-mapped(
-          // e.g. `.cq:md:col-1` or `.cq:xl:col-12`
-          #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-container-aware-selector-prefix}#{$container-name}#{defaults.$flex-columns-container-aware-selector-separator}#{defaults.$flex-columns-column-selector}#{$i},
-          (
-            --#{root-defaults.$prefix}flex-columns-size: calc(
-                (100% / #{defaults.$flex-columns-max-count} * #{$i}) -
-                  #{$flex-columns-column-gap}
-              ),
-            --#{root-defaults.$prefix}flex-columns-max-width: calc(
-                100% / #{defaults.$flex-columns-max-count} * #{$i}
-              )
-          ),
-          $container: $container-name
-        ) {
-          // `&.fill`
-          &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
-            --#{root-defaults.$prefix}flex-columns-max-width: unset;
-          }
-        }
-        /* stylelint-enable  scss/operator-no-newline-after */
       }
     }
   }

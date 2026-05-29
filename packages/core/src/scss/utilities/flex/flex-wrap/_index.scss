@@ -78,43 +78,34 @@
 @use "defaults";
 @use "variables" as *;
 
-// Import child utilities.
-
 @include layer(utilities) {
   // Create a utitlity for each entry in the utility map.
-  @each $selector, $properties in defaults.$utility-map {
-    @include utility.generate(
-      $selector-base: defaults.$selector-base,
-      $selector-prefix: defaults.$selector-prefix,
-      $selector: $selector,
-      $selector-suffix: defaults.$selector-suffix,
-      $screen-aware: defaults.$screen-aware,
-      $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
-      $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
-      $screen-aware-selector-separator:
-        defaults.$screen-aware-selector-separator,
-      $theme-aware: defaults.$theme-aware,
-      $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
-      $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
-      $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
-      $scheme-aware: defaults.$scheme-aware,
-      $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
-      $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
-      $scheme-aware-selector-separator:
-        defaults.$scheme-aware-selector-separator,
-      $state-aware: defaults.$state-aware,
-      $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
-      $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
-      $state-aware-selector-separator: defaults.$state-aware-selector-separator,
-      $container-aware: defaults.$container-aware,
-      $container-aware-selector-prefix:
-        defaults.$container-aware-selector-prefix,
-      $container-aware-selector-suffix:
-        defaults.$container-aware-selector-suffix,
-      $container-aware-selector-separator:
-        defaults.$container-aware-selector-separator,
-      $properties: $properties,
-      $important: defaults.$use-important
-    );
-  }
+  @include utility.generate(
+    $map: defaults.$utility-map,
+    $selector-base: defaults.$selector-base,
+    $selector-prefix: defaults.$selector-prefix,
+    $selector-suffix: defaults.$selector-suffix,
+    $screen-aware: defaults.$screen-aware,
+    $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
+    $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
+    $screen-aware-selector-separator: defaults.$screen-aware-selector-separator,
+    $theme-aware: defaults.$theme-aware,
+    $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
+    $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
+    $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
+    $scheme-aware: defaults.$scheme-aware,
+    $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
+    $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
+    $scheme-aware-selector-separator: defaults.$scheme-aware-selector-separator,
+    $state-aware: defaults.$state-aware,
+    $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
+    $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
+    $state-aware-selector-separator: defaults.$state-aware-selector-separator,
+    $container-aware: defaults.$container-aware,
+    $container-aware-selector-prefix: defaults.$container-aware-selector-prefix,
+    $container-aware-selector-suffix: defaults.$container-aware-selector-suffix,
+    $container-aware-selector-separator:
+      defaults.$container-aware-selector-separator,
+    $important: defaults.$use-important
+  );
 }
