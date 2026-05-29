@@ -1,6 +1,6 @@
 # Order Utilities
 
-The order utilities provide a set of classes to adjust the `order` properties of elements. These must be used with other `order` property holding elements in order to work properly.
+The order utilities provide a set of classes to adjust the `order` properties of elements. These must be used alongside another `order` property-holding element in order to work properly.
 
 ## Order
 
