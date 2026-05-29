@@ -77,53 +77,67 @@
 // - `.left-two-thirds`: Sets the left inset property to `calc(100% / 1.5)`.
 //
 // The following custom properties control the generated classes:
-// | Property | Description                                              | Default Value |
-// | -------- | -------------------------------------------------------- | ------------- |
-// | N/A      | This utility does not define custom properties.          | N/A           |
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                           | Description                                                         | Default Value                                            |
-// | ---------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------- |
-// | `$selector-base`                   | Base selector for utility classes.                                  | `"."`                                                    |
-// | `$use-important`                   | Appends `!important` to generated utility declarations.             | `true`                                                   |
-// | `$generate-base-utilities`         | Generates the base utility classes.                                 | `true`                                                   |
-// | `$screen-aware`                    | Enables screen-aware utility variants.                              | `true`                                                   |
-// | `$theme-aware`                     | Enables theme-aware utility variants.                               | `false`                                                  |
-// | `$state-aware`                     | Enables state-aware utility variants.                               | `false`                                                  |
-// | `$container-aware`                 | Enables container-aware utility variants.                           | `true`                                                   |
-// | `$screen-aware-selector-separator`          | Separator inserted for screen-aware utility selectors.              | `"\\:"`                                                  |
-// | `$theme-aware-selector-separator`           | Separator inserted for theme-aware utility selectors.               | `"\\:"`                                                  |
-// | `$state-aware-selector-separator`           | Separator inserted for state-aware utility selectors.               | `"\\:"`                                                  |
-// | `$container-aware-selector-separator`       | Separator inserted for container-aware utility selectors.           | `"\\:"`                                                  |
-// | `$screen-aware-selector-prefix`    | Prefix prepended to screen-aware utility selectors.                 | `""`                                                     |
-// | `$theme-aware-selector-prefix`     | Prefix prepended to theme-aware utility selectors.                  | `""`                                                     |
-// | `$state-aware-selector-prefix`     | Prefix prepended to state-aware utility selectors.                  | `""`                                                     |
-// | `$container-aware-selector-prefix` | Prefix prepended to container-aware utility selectors.              | `"cq\\:"`                                                |
-// | `$inset-properties`                | Map of inset property groupings (inset, inset-x/y, logical, sides). | `map.merge($-inset-properties, $inset-properties)`       |
-// | `$inset-values`                    | Map of inset values (auto, 0, fractions, spacers 0–10, etc.).     | `map.merge($-inset-values, $inset-values)`               |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `true`        |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `true`        |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, only screen-aware utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, screen-aware responsive utility classes are generated for inset.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-prefix}{screen-name}:{prefix}{value}`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:inset-0` will set the `inset` property to `0` on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:inset-0` will apply the `inset-0` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-prefix}{theme-name}:{prefix}{value}`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:inset-0` will set the `inset` property to `0` when the `dark` theme is active.
+// e.g. `default-theme:inset-0` will apply the `inset-0` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-prefix}{state-name}:{prefix}{value}`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:inset-0` will set the `inset` property to `0` when the element is hovered.
+// e.g. `dark-mode:inset-0` will apply the `inset-0` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:inset-0` will set the `inset` property to `0` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:inset-0` will apply the `inset-0` class when hovered.
+//
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:inset-0` will apply the `inset-0` class on medium-sized containers and up.
 //
 // @example
 //   <div class="inset-0">This element has no inset.</div>
@@ -131,129 +145,39 @@
 // @example
 //   <div class="inset-x-auto md:inset-x-0">This element will have auto horizontal inset unless the screen size is `md` or larger.</div>
 
-@use "../../defaults" as root-defaults;
-@use "../../functions/important";
 @use "../../mixins/layer" as *;
 @use "../../mixins/utility";
-@use "../../theme/color/variables" as color;
 @use "defaults";
-@use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
-  // `.`
-  $selector-prefix: defaults.$selector-base;
-
-  // For each inset property, create a utility class.
-  @each $type, $property in defaults.$inset-properties {
-    @each $name, $value in defaults.$inset-values {
-      // e.g. `.inset-0` or `.inset-x-full`
-      $selector: #{$selector-prefix}#{$type}-#{$name};
-
-      @include utility.create(
-        $selector,
-        $property,
-        $value,
-        $important: defaults.$use-important
-      );
-    }
-  }
-
-  // Generate screen-aware utilities.
-  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
-    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-selector-separator};
-
-      // For each inset property, create a utility class.
-      @each $type, $property in defaults.$inset-properties {
-        @each $name, $value in defaults.$inset-values {
-          // e.g. `.md:inset-0` or `.lg:inset-x-full`
-          $selector: #{$selector-prefix}#{$type}-#{$name};
-
-          @include utility.create(
-            $selector,
-            $property,
-            $value,
-            $important: defaults.$use-important,
-            $screen: $screen-name
-          );
-        }
-      }
-    }
-  }
-
-  // Generate theme-aware utilities.
-  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
-    @each $theme-name, $colors in color.$themes {
-      @if $theme-name != active {
-        // e.g. `.dark:` or `.light:`
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-selector-separator};
-
-        // For each inset property, create a utility class.
-        @each $type, $property in defaults.$inset-properties {
-          @each $name, $value in defaults.$inset-values {
-            // e.g. `.dark:inset-0` or `.light:inset-x-full`
-            $selector: #{$selector-prefix}#{$type}-#{$name};
-
-            @include utility.create(
-              $selector,
-              $property,
-              $value,
-              $important: defaults.$use-important,
-              $theme: $theme-name
-            );
-          }
-        }
-      }
-    }
-  }
-
-  // Generate state-aware utilities.
-  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
-    @each $state-name, $value in root-defaults.$state-selectors {
-      // e.g. `.hover:` or `.focus:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-selector-separator};
-
-      // For each inset property, create a utility class.
-      @each $type, $property in defaults.$inset-properties {
-        @each $name, $value in defaults.$inset-values {
-          // e.g. `.hover:inset-0` or `.focus:inset-x-full`
-          $selector: #{$selector-prefix}#{$type}-#{$name};
-
-          @include utility.create(
-            $selector,
-            $property,
-            $value,
-            $important: defaults.$use-important,
-            $state: $state-name
-          );
-        }
-      }
-    }
-  }
-
-  // Generate container-aware utilities.
-  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
-    @each $container-name in map.keys(root-defaults.$container-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-selector-separator};
-
-      // For each inset property, create a utility class.
-      @each $type, $property in defaults.$inset-properties {
-        @each $name, $value in defaults.$inset-values {
-          // e.g. `.md:inset-0` or `.lg:inset-x-full`
-          $selector: #{$selector-prefix}#{$type}-#{$name};
-
-          @include utility.create(
-            $selector,
-            $property,
-            $value,
-            $important: defaults.$use-important,
-            $container: $container-name
-          );
-        }
-      }
-    }
-  }
+  // Create a utitlity for each entry in the utility map.
+  @include utility.generate(
+    $map: defaults.$utility-map,
+    $selector-base: defaults.$selector-base,
+    $selector-prefix: defaults.$selector-prefix,
+    $selector-suffix: defaults.$selector-suffix,
+    $screen-aware: defaults.$screen-aware,
+    $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
+    $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
+    $screen-aware-selector-separator: defaults.$screen-aware-selector-separator,
+    $theme-aware: defaults.$theme-aware,
+    $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
+    $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
+    $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
+    $scheme-aware: defaults.$scheme-aware,
+    $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
+    $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
+    $scheme-aware-selector-separator: defaults.$scheme-aware-selector-separator,
+    $state-aware: defaults.$state-aware,
+    $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
+    $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
+    $state-aware-selector-separator: defaults.$state-aware-selector-separator,
+    $container-aware: defaults.$container-aware,
+    $container-aware-selector-prefix: defaults.$container-aware-selector-prefix,
+    $container-aware-selector-suffix: defaults.$container-aware-selector-suffix,
+    $container-aware-selector-separator:
+      defaults.$container-aware-selector-separator,
+    $important: defaults.$use-important
+  );
 }
