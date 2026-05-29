@@ -156,31 +156,47 @@
 // | `--graupl-flex-columns-color`          | The text color of the flex columns component.             | `var(--graupl-color)`      |
 //
 // The following sass variables can be used to customize the generation of the flex columns component:
-// | Variable                                        | Description                                                      | Default Value    |
-// | ----------------------------------------------- | ---------------------------------------------------------------- | ---------------- |
-// | `$selector-base`                                | The base selector for the component.                             | `"."`            |
-// | `$modifier-selector-base`                       | The base selector for component modifiers.                       | `"."`            |
-// | `$generate-base-theme-map`                      | Flag to generate the base theme map.                             | `true`           |
-// | `$themeable`                                    | Flag to generate theme modifiers.                                | `false`          |
-// | `$flex-columns-selector-base`                   | The base selector for the flex columns component.                | `"."`            |
-// | `$flex-columns-selector`                        | The selector for the flex columns component.                     | `"flex-columns"` |
-// | `$flex-columns-theme-selector-base`             | The selector base for flex columns theme modifiers.              | `"."`            |
-// | `$flex-columns-theme-selector-prefix`           | The flex columns theme modifier selector prefix.                 | `""`             |
-// | `$flex-columns-column-selector-base`            | The base selector for the column class.                          | `"."`            |
-// | `$flex-columns-column-selector`                 | The selector for the column class.                               | `"col-"`         |
-// | `$flex-columns-fill-selector-base`              | The base selector for the fill class.                            | `"."`            |
-// | `$flex-columns-fill-selector`                   | The selector for the fill class.                                 | `"fill"`         |
-// | `$flex-columns-screen-aware-selector-separator`          | The separator for the screen-aware column class.                 | `"\\:"`          |
-// | `$flex-columns-container-aware-selector-separator`       | The separator for the container-aware column class.              | `"\\:"`          |
-// | `$flex-columns-screen-aware-selector-prefix`    | The prefix for the screen-aware column class.                    | `""`             |
-// | `$flex-columns-container-aware-selector-prefix` | The prefix for the container-aware column class.                 | `"cq\\:"`        |
-// | `$flex-columns-min-count`                       | The minimum number of columns used to generate `.col-#` classes. | `1`              |
-// | `$flex-columns-max-count`                       | The maximum number of columns used to generate `.col-#` classes. | `12`             |
-// | `$flex-columns-size`                            | The default size of a column.                                    | `auto`           |
-// | `$flex-columns-max-width`                       | The default maximum width of a column.                           | `unset`          |
-// | `$flex-columns-container-type`                  | The container type applied to the flex columns component.        | `"inline-size"`  |
-// | `$flex-columns-theme-mappings`                  | Map of properties/shades for flex columns themes.                | `()`             |
-// | `$flex-columns-theme-map`                       | Expanded map of properties/colors/shades.                        | `()`             |
+// | Variable                                                 | Description                                                      | Default Value    |
+// | -------------------------------------------------------- | ---------------------------------------------------------------- | ---------------- |
+// | `$selector-base`                                         | The base selector for the component.                             | `"."`            |
+// | `$modifier-selector-base`                                | The base selector for component modifiers.                       | `"."`            |
+// | `$generate-base-theme-map`                               | Flag to generate the base theme map.                             | `true`           |
+// | `$themeable`                                             | Flag to generate theme modifiers.                                | `false`          |
+// | `$screen-aware`                                          | Enables screen-aware column variants.                            | `true`           |
+// | `$theme-aware`                                           | Enables theme-aware column variants.                             | `false`          |
+// | `$scheme-aware`                                          | Enables scheme-aware column variants.                            | `false`          |
+// | `$state-aware`                                           | Enables state-aware column variants.                             | `false`          |
+// | `$container-aware`                                       | Enables container-aware column variants.                         | `true`           |
+// | `$flex-columns-selector-base`                            | The base selector for the flex columns component.                | `"."`            |
+// | `$flex-columns-selector`                                 | The selector for the flex columns component.                     | `"flex-columns"` |
+// | `$flex-columns-theme-selector-base`                      | The selector base for flex columns theme modifiers.              | `"."`            |
+// | `$flex-columns-theme-selector-prefix`                    | The flex columns theme modifier selector prefix.                 | `""`             |
+// | `$flex-columns-column-selector-base`                     | The base selector for the column class.                          | `"."`            |
+// | `$flex-columns-column-selector`                          | The selector for the column class.                               | `"col-"`         |
+// | `$flex-columns-fill-selector-base`                       | The base selector for the fill class.                            | `"."`            |
+// | `$flex-columns-fill-selector`                            | The selector for the fill class.                                 | `"fill"`         |
+// | `$flex-columns-column-screen-aware-selector-prefix`      | Prefix to the screen-aware portion of column selectors.          | `""`             |
+// | `$flex-columns-column-screen-aware-selector-suffix`      | Suffix to the screen-aware portion of column selectors.          | `""`             |
+// | `$flex-columns-column-screen-aware-selector-separator`   | Separator inserted for screen-aware column selectors.            | `"\\:"`          |
+// | `$flex-columns-column-theme-aware-selector-prefix`       | Prefix to the theme-aware portion of column selectors.           | `""`             |
+// | `$flex-columns-column-theme-aware-selector-suffix`       | Suffix to the theme-aware portion of column selectors.           | `"-theme"`       |
+// | `$flex-columns-column-theme-aware-selector-separator`    | Separator inserted for theme-aware column selectors.             | `"\\:"`          |
+// | `$flex-columns-column-scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of column selectors.          | `""`             |
+// | `$flex-columns-column-scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of column selectors.          | `"-mode"`        |
+// | `$flex-columns-column-scheme-aware-selector-separator`   | Separator inserted for scheme-aware column selectors.            | `"\\:"`          |
+// | `$flex-columns-column-state-aware-selector-prefix`       | Prefix to the state-aware portion of column selectors.           | `""`             |
+// | `$flex-columns-column-state-aware-selector-suffix`       | Suffix to the state-aware portion of column selectors.           | `""`             |
+// | `$flex-columns-column-state-aware-selector-separator`    | Separator inserted for state-aware column selectors.             | `"\\:"`          |
+// | `$flex-columns-column-container-aware-selector-prefix`   | Prefix to the container-aware portion of column selectors.       | `"cq\\:"`        |
+// | `$flex-columns-column-container-aware-selector-suffix`   | Suffix to the container-aware portion of column selectors.       | `""`             |
+// | `$flex-columns-column-container-aware-selector-separator`| Separator inserted for container-aware column selectors.         | `"\\:"`          |
+// | `$flex-columns-min-count`                                | The minimum number of columns used to generate `.col-#` classes. | `1`              |
+// | `$flex-columns-max-count`                                | The maximum number of columns used to generate `.col-#` classes. | `12`             |
+// | `$flex-columns-size`                                     | The default size of a column.                                    | `auto`           |
+// | `$flex-columns-max-width`                                | The default maximum width of a column.                           | `unset`          |
+// | `$flex-columns-container-type`                           | The container type applied to the flex columns component.        | `"inline-size"`  |
+// | `$flex-columns-theme-mappings`                           | Map of properties/shades for flex columns themes.                | `()`             |
+// | `$flex-columns-theme-map`                                | Expanded map of properties/colors/shades.                        | `()`             |
 //
 // @example
 //   <div class="flex-columns">
@@ -213,6 +229,7 @@
 @use "sass:map";
 @use "variables" as *;
 
+// Generate a utility-map for column classes.
 $flex-columns-column-map: ();
 
 @for $i

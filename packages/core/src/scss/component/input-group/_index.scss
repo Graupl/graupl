@@ -70,36 +70,41 @@
 // | `--graupl-input-group-inline-grid-template-rows`     | Grid template rows for the inline layout.     | `var(--graupl-input-group-right-grid-template-rows)`                                     |
 //
 // The following sass variables can be used to customize the generation of the input group component:
-// | Variable                                       | Description                                             | Default Value   |
-// | ---------------------------------------------- | ------------------------------------------------------- | --------------- |
-// | `$selector-base`                               | Selector base for the component.                        | `"."`           |
-// | `$modifier-selector-base`                      | Selector base for component modifiers.                  | `"."`           |
-// | `$input-group-selector-base`                   | Selector base for the input group container.            | `"."`           |
-// | `$input-group-selector`                        | Selector for the input group container.                 | `"input-group"` |
-// | `$input-group-inline-selector-base`            | Selector base for the inline modifier.                  | `"."`           |
-// | `$input-group-inline-selector`                 | Selector for the inline modifier.                       | `"inline"`      |
-// | `$input-group-inline-selector-base`            | Selector base for the inline modifier.                  | `"."`           |
-// | `$input-group-inline-selector`                 | Selector for the inline modifier.                       | `"stacked"`     |
-// | `$input-group-help-text-selector-base`         | Selector base for the help text.                        | `"."`           |
-// | `$input-group-help-text-selector`              | Selector for the help text.                             | `"help-text"`   |
-// | `$input-group-top-selector-base`               | Selector base for the top modifier.                     | `"."`           |
-// | `$input-group-top-selector`                    | Selector for the top modifier.                          | `"top"`         |
-// | `$input-group-bottom-selector-base`            | Selector base for the bottom modifier.                  | `"."`           |
-// | `$input-group-bottom-selector`                 | Selector for the bottom modifier.                       | `"bottom"`      |
-// | `$input-group-left-selector-base`              | Selector base for the left modifier.                    | `"."`           |
-// | `$input-group-left-selector`                   | Selector for the left modifier.                         | `"left"`        |
-// | `$input-group-right-selector-base`             | Selector base for the right modifier.                   | `"."`           |
-// | `$input-group-right-selector`                  | Selector for the right modifier.                        | `"right"`       |
-// | `$input-group-inverse-selector-base`           | Selector base for the inverse modifier.                 | `"."`           |
-// | `$input-group-inverse-selector`                | Selector for the inverse modifier.                      | `"inverse"`     |
-// | `$input-group-screen-aware-selector-separator`          | The separator for the screen-aware modifier classes.    | `"\\:"`         |
-// | `$input-group-screen-aware-selector-prefix`    | The prefix for the screen-aware modifier classes.       | `""`            |
-// | `$input-group-theme-aware-selector-separator`           | The separator for the theme-aware modifier classes.     | `"\\:"`         |
-// | `$input-group-theme-aware-selector-prefix`     | The prefix for the theme-aware modifier classes.        | `""`            |
-// | `$input-group-state-aware-selector-separator`           | The separator for the state-aware modifier classes.     | `"\\:"`         |
-// | `$input-group-state-aware-selector-prefix`     | The prefix for the state-aware modifier classes.        | `""`            |
-// | `$input-group-container-aware-selector-separator`       | The separator for the container-aware modifier classes. | `"\\:"`         |
-// | `$input-group-container-aware-selector-prefix` | The prefix for the container-aware modifier classes.    | `"cq\\:"`       |
+// | Variable                                          | Description                                                  | Default Value   |
+// | ------------------------------------------------- | ------------------------------------------------------------ | --------------- |
+// | `$selector-base`                                  | Selector base for the component.                             | `"."`           |
+// | `$modifier-selector-base`                         | Selector base for component modifiers.                       | `"."`           |
+// | `$screen-aware`                                   | Enables screen-aware modifier variants.                      | `false`         |
+// | `$theme-aware`                                    | Enables theme-aware modifier variants.                       | `false`         |
+// | `$scheme-aware`                                   | Enables scheme-aware modifier variants.                      | `false`         |
+// | `$state-aware`                                    | Enables state-aware modifier variants.                       | `false`         |
+// | `$container-aware`                                | Enables container-aware modifier variants.                   | `false`         |
+// | `$input-group-selector-base`                      | Selector base for the input group container.                 | `"."`           |
+// | `$input-group-selector`                           | Selector for the input group container.                      | `"input-group"` |
+// | `$input-group-help-text-selector-base`            | Selector base for the help text.                             | `"."`           |
+// | `$input-group-help-text-selector`                 | Selector for the help text.                                  | `"help-text"`   |
+// | `$input-group-inline-selector`                    | Selector for the inline modifier.                            | `"inline"`      |
+// | `$input-group-stacked-selector`                   | Selector for the stacked modifier.                           | `"stacked"`     |
+// | `$input-group-top-selector`                       | Selector for the top modifier.                               | `"top"`         |
+// | `$input-group-bottom-selector`                    | Selector for the bottom modifier.                            | `"bottom"`      |
+// | `$input-group-left-selector`                      | Selector for the left modifier.                              | `"left"`        |
+// | `$input-group-right-selector`                     | Selector for the right modifier.                             | `"right"`       |
+// | `$input-group-inverse-selector`                   | Selector for the inverse modifier.                           | `"inverse"`     |
+// | `$input-group-screen-aware-selector-prefix`       | Prefix to the screen-aware portion of modifier selectors.    | `""`            |
+// | `$input-group-screen-aware-selector-suffix`       | Suffix to the screen-aware portion of modifier selectors.    | `""`            |
+// | `$input-group-screen-aware-selector-separator`    | Separator inserted for screen-aware modifier selectors.      | `"\\:"`         |
+// | `$input-group-theme-aware-selector-prefix`        | Prefix to the theme-aware portion of modifier selectors.     | `""`            |
+// | `$input-group-theme-aware-selector-suffix`        | Suffix to the theme-aware portion of modifier selectors.     | `"-theme"`      |
+// | `$input-group-theme-aware-selector-separator`     | Separator inserted for theme-aware modifier selectors.       | `"\\:"`         |
+// | `$input-group-scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of modifier selectors.    | `""`            |
+// | `$input-group-scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of modifier selectors.    | `"-mode"`       |
+// | `$input-group-scheme-aware-selector-separator`    | Separator inserted for scheme-aware modifier selectors.      | `"\\:"`         |
+// | `$input-group-state-aware-selector-prefix`        | Prefix to the state-aware portion of modifier selectors.     | `""`            |
+// | `$input-group-state-aware-selector-suffix`        | Suffix to the state-aware portion of modifier selectors.     | `""`            |
+// | `$input-group-state-aware-selector-separator`     | Separator inserted for state-aware modifier selectors.       | `"\\:"`         |
+// | `$input-group-container-aware-selector-prefix`    | Prefix to the container-aware portion of modifier selectors. | `"cq\\:"`       |
+// | `$input-group-container-aware-selector-suffix`    | Suffix to the container-aware portion of modifier selectors. | `""`            |
+// | `$input-group-container-aware-selector-separator` | Separator inserted for container-aware modifier selectors.   | `"\\:"`         |
 //
 // @example
 // <div class="input-group">
