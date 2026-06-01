@@ -2,19 +2,6 @@
 
 The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `column-gap`, `padding`, `padding-top`, `padding-right`, `padding-bottom`, `padding-left`, `margin`, `margin-top`, `margin-right`, `margin-bottom` and `margin-left` properties of elements.
 
-## `.gap`
-
-Applies the default border styling to an element.
-
-```css
-  .bordered {
-    border-width: var(--graupl-border-width);
-    border-radius: var(--graupl-border-radius);
-    border-style: var(--graupl-border-style);
-  }
-```
-
-
 ## Gap
 
 | Class Name | Property | Value |
@@ -755,24 +742,24 @@ Sets the `column-gap` property to `auto`.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.p-0`](#p-0) | row-gap | `var(--graupl-spacer-0)` |
-| [`.p-1`](#p-0) | row-gap | `var(--graupl-spacer-1)` |
-| [`.p-2`](#p-0) | row-gap | `var(--graupl-spacer-2)` |
-| [`.p-3`](#p-0) | row-gap | `var(--graupl-spacer-3)` |
-| [`.p-4`](#p-0) | row-gap | `var(--graupl-spacer-4)` |
-| [`.p-5`](#p-0) | row-gap | `var(--graupl-spacer-5)` |
-| [`.p-6`](#p-0) | row-gap | `var(--graupl-spacer-6)` |
-| [`.p-7`](#p-0) | row-gap | `var(--graupl-spacer-7)` |
-| [`.p-8`](#p-0) | row-gap | `var(--graupl-spacer-8)` |
-| [`.p-9`](#p-0) | row-gap | `var(--graupl-spacer-9)` |
-| [`.p-10`](#p-0) | row-gap | `var(--graupl-spacer-10)` |
-| [`.p-auto`](#p-0) | row-gap | `auto` |
+| [`.p-0`](#p-0) | padding | `var(--graupl-spacer-0)` |
+| [`.p-1`](#p-0) | padding | `var(--graupl-spacer-1)` |
+| [`.p-2`](#p-0) | padding | `var(--graupl-spacer-2)` |
+| [`.p-3`](#p-0) | padding | `var(--graupl-spacer-3)` |
+| [`.p-4`](#p-0) | padding | `var(--graupl-spacer-4)` |
+| [`.p-5`](#p-0) | padding | `var(--graupl-spacer-5)` |
+| [`.p-6`](#p-0) | padding | `var(--graupl-spacer-6)` |
+| [`.p-7`](#p-0) | padding | `var(--graupl-spacer-7)` |
+| [`.p-8`](#p-0) | padding | `var(--graupl-spacer-8)` |
+| [`.p-9`](#p-0) | padding | `var(--graupl-spacer-9)` |
+| [`.p-10`](#p-0) | padding | `var(--graupl-spacer-10)` |
+| [`.p-auto`](#p-0) | padding | `auto` |
 
 ### `.p-0`
 
-Sets the `row-gap` property to `var(--graupl-spacer-0)`.
+Sets the `padding` property to `var(--graupl-spacer-0)`.
 
-<div class="w-full display-flex p-0 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+<div class="w-full display-flex flex-wrap g-5 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
   <div class="bg-primary-200 bordered border-tertiary-700 p-0 h-min-content">Item Padding 0</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-1  h-min-content">Item Padding 1</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-2  h-min-content">Item Padding 2</div>
@@ -792,44 +779,167 @@ Sets the `row-gap` property to `var(--graupl-spacer-0)`.
 </div>
 ```
 
-## Padding
+## Padding Top
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.p-0`](#p-0) | row-gap | `var(--graupl-spacer-0)` |
-| [`.p-1`](#p-0) | row-gap | `var(--graupl-spacer-1)` |
-| [`.p-2`](#p-0) | row-gap | `var(--graupl-spacer-2)` |
-| [`.p-3`](#p-0) | row-gap | `var(--graupl-spacer-3)` |
-| [`.p-4`](#p-0) | row-gap | `var(--graupl-spacer-4)` |
-| [`.p-5`](#p-0) | row-gap | `var(--graupl-spacer-5)` |
-| [`.p-6`](#p-0) | row-gap | `var(--graupl-spacer-6)` |
-| [`.p-7`](#p-0) | row-gap | `var(--graupl-spacer-7)` |
-| [`.p-8`](#p-0) | row-gap | `var(--graupl-spacer-8)` |
-| [`.p-9`](#p-0) | row-gap | `var(--graupl-spacer-9)` |
-| [`.p-10`](#p-0) | row-gap | `var(--graupl-spacer-10)` |
-| [`.p-auto`](#p-0) | row-gap | `auto` |
+| [`.pt-0`](#pt-0) | padding-top | `var(--graupl-spacer-0)` |
+| [`.pt-1`](#pt-0) | padding-top | `var(--graupl-spacer-1)` |
+| [`.pt-2`](#pt-0) | padding-top | `var(--graupl-spacer-2)` |
+| [`.pt-3`](#pt-0) | padding-top | `var(--graupl-spacer-3)` |
+| [`.pt-4`](#pt-0) | padding-top | `var(--graupl-spacer-4)` |
+| [`.pt-5`](#pt-0) | padding-top | `var(--graupl-spacer-5)` |
+| [`.pt-6`](#pt-0) | padding-top | `var(--graupl-spacer-6)` |
+| [`.pt-7`](#pt-0) | padding-top | `var(--graupl-spacer-7)` |
+| [`.pt-8`](#pt-0) | padding-top | `var(--graupl-spacer-8)` |
+| [`.pt-9`](#pt-0) | padding-top | `var(--graupl-spacer-9)` |
+| [`.pt-10`](#pt-0) | padding-top | `var(--graupl-spacer-10)` |
+| [`.pt-auto`](#pt-0) | padding-top | `auto` |
 
-### `.p-0`
+### `.pt-0`
 
-Sets the `row-gap` property to `var(--graupl-spacer-0)`.
+Sets the `padding-top` property to `var(--graupl-spacer-0)`.
 
-<div class="w-full display-flex p-0 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-0 h-min-content">Item Padding 0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-1  h-min-content">Item Padding 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-2  h-min-content">Item Padding 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-3  h-min-content">Item Padding 3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4  h-min-content">Item Padding 4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-5  h-min-content">Item Padding 5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-6  h-min-content">Item Padding 6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-7  h-min-content">Item Padding 7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-8  h-min-content">Item Padding 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-9  h-min-content">Item Padding 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-10  h-min-content">Item Padding 10</div>
+<div class="w-full display-flex flex-wrap g-5 bg-primary-100 bordered border-primary-700 align-content-normal pt-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-0 h-min-content">Item Padding Top 0</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-1  h-min-content">Item Padding Top 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-2  h-min-content">Item Padding Top 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-3  h-min-content">Item Padding Top 3</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-4  h-min-content">Item Padding Top 4</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-5  h-min-content">Item Padding Top 5</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-6  h-min-content">Item Padding Top 6</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-7  h-min-content">Item Padding Top 7</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-8  h-min-content">Item Padding Top 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-9  h-min-content">Item Padding Top 9</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pt-10  h-min-content">Item Padding Top 10</div>
 </div>
 
 ```html
-<div class="display-flex p-0">
-  <div class="p-0">Item Padding 0</div>
+<div class="display-flex pt-0">
+  <div class="pt-0">Item Padding Top 0</div>
+</div>
+```
+
+## Padding Right
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.pr-0`](#pr-0) | padding-right | `var(--graupl-spacer-0)` |
+| [`.pr-1`](#pr-0) | padding-right | `var(--graupl-spacer-1)` |
+| [`.pr-2`](#pr-0) | padding-right | `var(--graupl-spacer-2)` |
+| [`.pr-3`](#pr-0) | padding-right | `var(--graupl-spacer-3)` |
+| [`.pr-4`](#pr-0) | padding-right | `var(--graupl-spacer-4)` |
+| [`.pr-5`](#pr-0) | padding-right | `var(--graupl-spacer-5)` |
+| [`.pr-6`](#pr-0) | padding-right | `var(--graupl-spacer-6)` |
+| [`.pr-7`](#pr-0) | padding-right | `var(--graupl-spacer-7)` |
+| [`.pr-8`](#pr-0) | padding-right | `var(--graupl-spacer-8)` |
+| [`.pr-9`](#pr-0) | padding-right | `var(--graupl-spacer-9)` |
+| [`.pr-10`](#pr-0) | padding-right | `var(--graupl-spacer-10)` |
+| [`.pr-auto`](#pr-0) | padding-right | `auto` |
+
+### `.pr-0`
+
+Sets the `padding-right` property to `var(--graupl-spacer-0)`.
+
+<div class="w-full display-flex flex-wrap g-5 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-0 h-min-content">Item Padding Right 0</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-1  h-min-content">Item Padding Right 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-2  h-min-content">Item Padding Right 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-3  h-min-content">Item Padding Right 3</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-4  h-min-content">Item Padding Right 4</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-5  h-min-content">Item Padding Right 5</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-6  h-min-content">Item Padding Right 6</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-7  h-min-content">Item Padding Right 7</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-8  h-min-content">Item Padding Right 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-9  h-min-content">Item Padding Right 9</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pr-10  h-min-content">Item Padding Right 10</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="pr-0">Item Padding Right 0</div>
+</div>
+```
+
+## Padding Bottom
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.pb-0`](#pb-0) | padding-bottom | `var(--graupl-spacer-0)` |
+| [`.pb-1`](#pb-0) | padding-bottom | `var(--graupl-spacer-1)` |
+| [`.pb-2`](#pb-0) | padding-bottom | `var(--graupl-spacer-2)` |
+| [`.pb-3`](#pb-0) | padding-bottom | `var(--graupl-spacer-3)` |
+| [`.pb-4`](#pb-0) | padding-bottom | `var(--graupl-spacer-4)` |
+| [`.pb-5`](#pb-0) | padding-bottom | `var(--graupl-spacer-5)` |
+| [`.pb-6`](#pb-0) | padding-bottom | `var(--graupl-spacer-6)` |
+| [`.pb-7`](#pb-0) | padding-bottom | `var(--graupl-spacer-7)` |
+| [`.pb-8`](#pb-0) | padding-bottom | `var(--graupl-spacer-8)` |
+| [`.pb-9`](#pb-0) | padding-bottom | `var(--graupl-spacer-9)` |
+| [`.pb-10`](#pb-0) | padding-bottom | `var(--graupl-spacer-10)` |
+| [`.pb-auto`](#pb-0) | padding-bottom | `auto` |
+
+### `.pb-0`
+
+Sets the `padding-bottom` property to `var(--graupl-spacer-0)`.
+
+<div class="w-full display-flex flex-wrap g-5 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-0 h-min-content">Item Padding Bottom 0</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-1  h-min-content">Item Padding Bottom 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-2  h-min-content">Item Padding Bottom 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-3  h-min-content">Item Padding Bottom 3</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-4  h-min-content">Item Padding Bottom 4</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-5  h-min-content">Item Padding Bottom 5</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-6  h-min-content">Item Padding Bottom 6</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-7  h-min-content">Item Padding Bottom 7</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-8  h-min-content">Item Padding Bottom 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-9  h-min-content">Item Padding Bottom 9</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pb-10  h-min-content">Item Padding Bottom 10</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="pb-0">Item Padding Bottom 0</div>
+</div>
+```
+
+## Padding Left
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.pl-0`](#pl-0) | padding-left | `var(--graupl-spacer-0)` |
+| [`.pl-1`](#pl-0) | padding-left | `var(--graupl-spacer-1)` |
+| [`.pl-2`](#pl-0) | padding-left | `var(--graupl-spacer-2)` |
+| [`.pl-3`](#pl-0) | padding-left | `var(--graupl-spacer-3)` |
+| [`.pl-4`](#pl-0) | padding-left | `var(--graupl-spacer-4)` |
+| [`.pl-5`](#pl-0) | padding-left | `var(--graupl-spacer-5)` |
+| [`.pl-6`](#pl-0) | padding-left | `var(--graupl-spacer-6)` |
+| [`.pl-7`](#pl-0) | padding-left | `var(--graupl-spacer-7)` |
+| [`.pl-8`](#pl-0) | padding-left | `var(--graupl-spacer-8)` |
+| [`.pl-9`](#pl-0) | padding-left | `var(--graupl-spacer-9)` |
+| [`.pl-10`](#pl-0) | padding-left | `var(--graupl-spacer-10)` |
+| [`.pl-auto`](#pl-0) | padding-left | `auto` |
+
+### `.pl-0`
+
+Sets the `padding-left` property to `var(--graupl-spacer-0)`.
+
+<div class="w-full display-flex flex-wrap g-5 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-0 h-min-content">Item Padding Left 0</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-1  h-min-content">Item Padding Left 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-2  h-min-content">Item Padding Left 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-3  h-min-content">Item Padding Left 3</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-4  h-min-content">Item Padding Left 4</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-5  h-min-content">Item Padding Left 5</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-6  h-min-content">Item Padding Left 6</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-7  h-min-content">Item Padding Left 7</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-8  h-min-content">Item Padding Left 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-9  h-min-content">Item Padding Left 9</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 pl-10  h-min-content">Item Padding Left 10</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="pl-0">Item Padding Left 0</div>
 </div>
 ```
 
@@ -839,23 +949,35 @@ To customize the alignment utilities, you can use the following variables.
 
 | Variable | Default Value | Description |
 | --- | --- | --- |
-| `$selector-base` | `"."` | The base selector for the utility classes. |
-| `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
-| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
-| `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
-| `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
-| `$state-aware` | `false` | A flag to generate state-aware utility classes. |
-| `$display-grid-aware` | `false` | A flag to generate display-grid-aware utility classes. |
-| `$screen-aware-separator` | `"\\:"` | The separator for screen-aware utility classes. |
-| `$theme-aware-separator` | `"\\:"` | The separator for theme-aware utility classes. |
-| `$state-aware-separator` | `"\\:"` | The separator for state-aware utility classes. |
-| `$display-grid-aware-separator` | `"\\:"` | The separator for display-grid-aware utility classes. |
-| `$screen-aware-selector-prefix` | `""` | The prefix for the screen-aware utility classes. |
-| `$theme-aware-selector-prefix` | `""` | The prefix for the theme-aware utility classes. |
-| `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
-| `$display-grid-aware-selector-prefix` | `"cq\\:"` | The prefix for the display-grid-aware utility classes. |
-| `$spacing-selector-prefix` | `"spacing-"` | The prefix for the `.spacing` utility classes. |
-| `$spacing-values` | `()` | Map of the `.spacing` utility classes. |
+| `$selector-base` | Base selector for utility classes. | `"."` |
+| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
+| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-separator` | The selector separator for all utility classes. | `""` |
+| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
+| `$generate-base-utilities` | Generates the base utility classes. | `true` |
+| `$screen-aware` | Enables screen-aware utility variants. | `false` |
+| `$theme-aware` | Enables theme-aware utility variants. | `false` |
+| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
+| `$state-aware` | Enables state-aware utility variants. | `false` |
+| `$container-aware` | Enables container-aware utility variants. | `false` |
+| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
+| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
+| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
+| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
+| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
+| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
+| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
+| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
+| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
+| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
+| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
+| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
+| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
+| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
+| `$utility-properties` | Map of utility properties. | `()` |
+| `$utility-values` | Map of utility values. | `()` |
+| `$utility-map` | Map of utility property/value pairs. | `()` |
 
 ## Responsive variants
 

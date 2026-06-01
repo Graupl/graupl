@@ -104,23 +104,36 @@ To customize the alignment utilities, you can use the following variables.
 
 | Variable | Default Value | Description |
 | --- | --- | --- |
-| `$selector-base` | `"."` | The base selector for the utility classes. |
-| `$use-important` | `true` | A flag to determine if the `!important` flag should be added to the utility classes. |
-| `$generate-base-utilities` | `true` | A flag to determine if the base utility classes should be generated. |
-| `$screen-aware` | `false` | A flag to generate screen-aware utility classes. |
-| `$theme-aware` | `false` | A flag to generate theme-aware utility classes. |
-| `$state-aware` | `false` | A flag to generate state-aware utility classes. |
-| `$display-flex-aware` | `false` | A flag to generate display-flex-aware utility classes. |
-| `$screen-aware-separator` | `"\\:"` | The separator for screen-aware utility classes. |
-| `$theme-aware-separator` | `"\\:"` | The separator for theme-aware utility classes. |
-| `$state-aware-separator` | `"\\:"` | The separator for state-aware utility classes. |
-| `$display-flex-aware-separator` | `"\\:"` | The separator for display-flex-aware utility classes. |
-| `$screen-aware-selector-prefix` | `""` | The prefix for the screen-aware utility classes. |
-| `$theme-aware-selector-prefix` | `""` | The prefix for the theme-aware utility classes. |
-| `$state-aware-selector-prefix` | `""` | The prefix for the state-aware utility classes. |
-| `$display-flex-aware-selector-prefix` | `"cq\\:"` | The prefix for the display-flex-aware utility classes. |
-| `$order-selector-prefix` | `"order-"` | The prefix for the `.order` utility classes. |
-| `$order-values` | `()` | Map of the `.order` utility classes. |
+| `$selector-base` | Base selector for utility classes. | `"."` |
+| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
+| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-separator` | The selector separator for all utility classes. | `""` |
+| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
+| `$generate-base-utilities` | Generates the base utility classes. | `true` |
+| `$screen-aware` | Enables screen-aware utility variants. | `false` |
+| `$theme-aware` | Enables theme-aware utility variants. | `false` |
+| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
+| `$state-aware` | Enables state-aware utility variants. | `false` |
+| `$container-aware` | Enables container-aware utility variants. | `false` |
+| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
+| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
+| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
+| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
+| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
+| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
+| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
+| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
+| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
+| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
+| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
+| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
+| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
+| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
+| `$utility-properties` | Map of utility properties. | `()` |
+| `$utility-values` | Map of utility values. | `()` |
+| `$utility-map` | Map of utility property/value pairs. | `()` |
+| `$order-max-count` | The maximum number for generated order classes. | `12` |
 
 ## Responsive variants
 
