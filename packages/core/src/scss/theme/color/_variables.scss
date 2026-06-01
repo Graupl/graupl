@@ -181,7 +181,7 @@ $themes: (
           map.get($schemes, "dark", "shade")
         );
         $color-property: var(
-          --#{root-defaults.$prefix}theme--#{$theme-name}--#{$color-name},
+          --#{root-defaults.$prefix}theme-#{$theme-name}--#{$color-name},
           light-dark(#{$light}, #{$dark})
         );
       } @else {

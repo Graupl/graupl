@@ -160,52 +160,22 @@ $container-aware-selector-suffix: "" !default;
 // State selectors.
 $state-selector-base: $modifier-selector-base !default;
 $-state-selectors: (
-  visited: (
-    ":visited",
-  ),
-  focus: (
-    ":focus-visible",
-  ),
-  hover: (
-    ":hover",
-  ),
-  active: (
-    ":active",
-  ),
-  disabled: (
-    ":disabled",
-    "[disabled]",
-    "[aria-disabled=true]",
-  ),
-  selected: (
-    "[aria-selected=true]",
-  ),
-  current: (
-    "[aria-current=true]",
-  ),
+  visited: ":visited",
+  focus: ":focus-visible",
+  hover: ":hover",
+  active: ":active",
+  disabled: ":disabled" "[disabled]" "[aria-disabled=true]",
+  selected: "[aria-selected=true]",
+  current: "[aria-current=true]",
 );
 $-state-class-selectors: (
-  visited: (
-    "#{$state-selector-base}visited",
-  ),
-  focus: (
-    "#{$state-selector-base}focus",
-  ),
-  hover: (
-    "#{$state-selector-base}hover",
-  ),
-  active: (
-    "#{$state-selector-base}active",
-  ),
-  disabled: (
-    "#{$state-selector-base}disabled",
-  ),
-  selected: (
-    "#{$state-selector-base}selected",
-  ),
-  current: (
-    "#{$state-selector-base}current",
-  ),
+  visited: "#{$state-selector-base}visited",
+  focus: "#{$state-selector-base}focus",
+  hover: "#{$state-selector-base}hover",
+  active: "#{$state-selector-base}active",
+  disabled: "#{$state-selector-base}disabled",
+  selected: "#{$state-selector-base}selected",
+  current: "#{$state-selector-base}current",
 );
 
 // Merge the state class selectors with the state selectors.
