@@ -119,58 +119,275 @@ Applies the default `heading 6` styling to an element.
 | Class Name | Property | Value |
 | --- | --- | --- |
 | [`.text-xs`](#text-xs) | `font-size` | `var(--graupl-font-xs, calc(0.694 * var(--graupl-docs-font-size-base, 1rem)))` |
-| [`.text-sm`](#text-sm) | `font-size` | `var(--graupl-font-sm, calc(0.694 * var(--graupl-docs-font-size-base, 1rem)))` |
+| [`.text-sm`](#text-sm) | `font-size` | `var(--graupl-font-sm, calc(0.833 * var(--graupl-docs-font-size-base, 1rem)))` |
 | [`.text-base`](#text-base) | `font-size` | `var(--graupl-font-base, 1rem))` |
+| [`.text-xl`](#text-xl) | `font-size` | `var(--graupl-font-xl, , calc(1.44 * var(--graupl-docs-font-size-base, 1rem)))` |
+| [`.text-2xl`](#text-2xl) | `font-size` | `var(--graupl-font-2xl, , calc(1.728 * var(--graupl-docs-font-size-base, 1rem)))` |
+| [`.text-3xl`](#text-3xl) | `font-size` | `var(--graupl-font-3xl, , calc(2.074 * var(--graupl-docs-font-size-base, 1rem)))` |
+| [`.text-4xl`](#text-4xl) | `font-size` | `var(--graupl-font-4xl, , calc(2.488 * var(--graupl-docs-font-size-base, 1rem)))` |
+| [`.text-5xl`](#text-5xl) | `font-size` | `var(--graupl-font-5xl, , calc(2.986 * var(--graupl-docs-font-size-base, 1rem)))` |
 
-### `.typography-fill`
+### `.text-xs`
 
-Sets the `typography-fit` property to `scroll`.
+Sets the `font-size` property to `calc(0.694 * var(--graupl-docs-font-size-base, 1rem))`.
 
-### `.typography-contain`
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-xs">Item</div>
+</div>
 
-Sets the `typography-fit` property to `contain`.
+```html
+<div class="display-flex">
+  <div class="text-xs">Item</div>
+</div>
+```
 
-### `.typography-cover`
+### `.text-sm`
 
-Sets the `typography-fit` property to `cover`.
+Sets the `font-size` property to `calc(0.833 * var(--graupl-docs-font-size-base, 1rem))`.
 
-### `.typography-none`
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-sm">Item</div>
+</div>
 
-Sets the `typography-fit` property to `none`.
+```html
+<div class="display-flex">
+  <div class="text-sm">Item</div>
+</div>
+```
 
-### `.typography-scale-down`
+### `.text-base`
 
-Sets the `typography-fit` property to `scale-down`.
+Sets the `font-size` property to `(--graupl-docs-font-size-base, 1rem)`.
 
-## Typography Position
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-base">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-base">Item</div>
+</div>
+```
+
+### `.text-xl`
+
+Sets the `font-size` property to `calc(1.44 * var(--graupl-docs-font-size-base, 1rem))`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-xl">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-xl">Item</div>
+</div>
+```
+
+### `.text-2xl`
+
+Sets the `font-size` property to `calc(1.728 * var(--graupl-docs-font-size-base, 1rem))`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-2xl">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-2xl">Item</div>
+</div>
+```
+
+### `.text-3xl`
+
+Sets the `font-size` property to `calc(2.074 * var(--graupl-docs-font-size-base, 1rem))`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-3xl">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-3xl">Item</div>
+</div>
+```
+
+### `.text-4xl`
+
+Sets the `font-size` property to `calc(2.488 * var(--graupl-docs-font-size-base, 1rem))`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-4xl">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-4xl">Item</div>
+</div>
+```
+
+### `.text-5xl`
+
+Sets the `font-size` property to `calc(2.986 * var(--graupl-docs-font-size-base, 1rem))`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-5xl">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-5xl">Item</div>
+</div>
+```
+
+## Font Weight
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.typography-position-top`](#typography-position-top) | `typography-position` | `top` |
-| [`.typography-position-right`](#typography-position-right) | `typography-position` | `right` |
-| [`.typography-position-bottom`](#typography-position-bottom) | `typography-position` | `bottom` |
-| [`.typography-position-left`](#typography-position-left) | `typography-position` | `left` |
-| [`.typography-position-center`](#typography-position-center) | `typography-position` | `center` |
+| [`.font-weight-light`](#font-weight-light) | `font-weight` | `300` |
+| [`.font-weight-normal`](#font-weight-normal) | `font-weight` | `400` |
+| [`.font-weight-bold`](#font-weight-bold) | `font-weight` | `700` |
 
-### `.typography-position-top`
+### `.font-weight-light`
 
-Sets the `typography-position` property to `top`.
+Sets the `font-size` property to `300`.
 
-### `.typography-position-right`
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 font-weight-light">Item</div>
+</div>
 
-Sets the `typography-position` property to `right`.
+```html
+<div class="display-flex">
+  <div class="font-weight-light">Item</div>
+</div>
+```
 
-### `.typography-position-bottom`
+### `.font-weight-normal`
 
-Sets the `typography-position` property to `bottom`.
+Sets the `font-size` property to `400`.
 
-### `.typography-position-left`
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 font-weight-normal">Item</div>
+</div>
 
-Sets the `typography-position` property to `left`.
+```html
+<div class="display-flex">
+  <div class="font-weight-normal">Item</div>
+</div>
+```
 
-### `.typography-position-center`
+### `.font-weight-bold`
 
-Sets the `typography-position` property to `center`.
+Sets the `font-size` property to `700`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 font-weight-bold">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="font-weight-bold">Item</div>
+</div>
+```
+
+## Font Style
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.font-style-normal`](#font-style-normal) | `font-style` | `300` |
+| [`.font-style-normal`](#font-style-normal) | `font-style` | `400` |
+
+### `.font-style-normal`
+
+Sets the `font-size` property to `300`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 font-style-normal">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="font-style-normal">Item</div>
+</div>
+```
+
+### `.font-style-italic`
+
+Sets the `font-size` property to `400`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-italic p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 font-style-italic">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="font-style-italic">Item</div>
+</div>
+```
+
+## Text Transform
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.text-uppercase`](#text-uppercase) | `text-transform` | `uppercase` |
+| [`.text-lowercase`](#text-lowercase) | `text-transform` | `lowercase` |
+| [`.text-capitalize`](#text-capitalize) | `text-transform` | `capitalize` |
+| [`.text-none`](#text-none) | `text-transform` | `none` |
+
+### `.text-uppercase`
+
+Sets the `text-transform` property to `uppercase`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-lowercase p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-uppercase">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-uppercase">Item</div>
+</div>
+```
+
+### `.text-lowercase`
+
+Sets the `text-transform` property to `lowercase`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-lowercase p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-lowercase">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-lowercase">Item</div>
+</div>
+```
+
+### `.text-capitalize`
+
+Sets the `text-transform` property to `capitalize`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-capitalize">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-capitalize">Item</div>
+</div>
+```
+
+### `.text-none`
+
+Sets the `text-transform` property to `none`.
+
+<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 text-none">Item</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="text-none">Item</div>
+</div>
+```
 
 ## Customization
 

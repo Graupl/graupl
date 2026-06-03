@@ -1,6 +1,6 @@
 # Inset Utilities
 
-The inset utilities provide a set of classes to adjust the `inset`, `inset-x`, `inset-y`, `inset-start`, `inset-end`, `top`, `right`, '`bottom` and `left` properties of elements.
+The inset utilities provide a set of classes to adjust the `inset`, `inset-x`, `inset-y`, `inset-start`, `inset-end`, `top`, `right`, `bottom` and `left` properties of elements.
 
 ## Inset
 
