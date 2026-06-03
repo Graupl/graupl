@@ -24,7 +24,7 @@ Sets the `z-index` property to `0`.
 
 <br><br>
 
-<div class="w-full display-block g-4 gradient from-transparent to-primary-100 bordered border-primary-700 p-5 h-9 position-relative">
+<div class="w-full display-block g-4 gradient gradient-direction-to-top from-transparent to-primary-100 bordered border-primary-700 p-5 h-9 position-relative">
   <div class="bg-tertiary-200 bordered border-tertiary-700 bottom-full pl-3 h-8 m-2 position-relative z-n1">Z Index -1</div>
   <div class="bg-primary-200 bordered border-tertiary-700 w-two-thirds p-4 position-absolute bottom-quarter left-quarter z-0">Z Index 0</div>
   <div class="bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-10 left-half top-0 z-1

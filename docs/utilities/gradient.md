@@ -7,8 +7,8 @@ The gradient utilities provide a set of classes to adjust the color `gradient` p
 | Class Name | Property | Value |
 | --- | --- | --- |
 | [`.gradient`](#gradient) | `background-image` | `linear-gradient` |
-| [`.linear`](#linear) | `background-image` | `linear-gradient` |
-| [`.radial`](#radial) | `background-image` | `radial-gradient` |
+| [`.gradient-linear`](#gradient-linear) | `background-image` | `linear-gradient` |
+| [`.gradient-radial`](#gradient-radial) | `background-image` | `radial-gradient` |
 
 ### `.gradient`
 
@@ -16,7 +16,7 @@ Applies the default gradient styling to an element.
 Sets the `background-image` property to `linear-gradient`.
 
 ```css
-  .gradient {
+.gradient {
     background-image: linear-gradient(
       var(--graupl-gradient-direction, to right),
       var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
@@ -35,13 +35,13 @@ Sets the `background-image` property to `linear-gradient`.
 </div>
 ```
 
-### `.linear`
+### `.gradient-linear`
 
-Applies the default linear styling to an element.
+Applies the default gradient-linear styling to an element.
 Sets the `background-image` property to `linear-gradient`.
 
 ```css
-  .linear {
+.gradient-linear {
     background-image: linear-gradient(
       var(--graupl-gradient-direction, to right),
       var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
@@ -51,22 +51,22 @@ Sets the `background-image` property to `linear-gradient`.
 ```
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="linear from-secondary-200 to-secondary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-linear from-secondary-200 to-secondary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="linear from-secondary-200 to-secondary-400">Item</div>
+  <div class="gradient-linear from-secondary-200 to-secondary-400">Item</div>
 </div>
 ```
 
-### `.radial`
+### `.gradient-radial`
 
-Applies the default radial styling to an element.
+Applies the default gradient-radial styling to an element.
 Sets the `background-image` property to `radial-gradient`.
 
 ```css
-  .radial {
+.gradient-radial {
     background-image: radial-gradient(
       var(--graupl-gradient-direction, circle),
       var(--graupl-gradient-from, transparent) var(--graupl-gradient-from-position, 0%),
@@ -76,12 +76,12 @@ Sets the `background-image` property to `radial-gradient`.
 ```
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
@@ -95,280 +95,280 @@ Used to customize gradient types.
 | [`---graupl-gradient-from-position`] | `Start color stop position used for generated gradients` | `0%` |
 | [`---graupl-gradient-to`] | `Ending color used by generated gradients` | `transparent` |
 | [`---graupl-gradient-to-position`]| `End color stop position used for generated gradients` | `100%` |
-| [`---graupl-gradient-direction`] | `Direction/shape keyword consumed by gradient utilities` | `to right` (linear), `circle` (radial) |
+| [`---graupl-gradient-direction`] | `Direction/shape keyword consumed by gradient utilities` | `to right` (gradient-linear), `circle` (gradient-radial) |
 
 ## Gradient Direction
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.to-top`](#to-top) | `--graupl-gradient-direction` | `to top` |
-| [`.to-right`](#to-right) | `--graupl-gradient-direction` | `to right` |
-| [`.to-bottom`](#to-bottom) | `--graupl-gradient-direction` | `to bottom` |
-| [`.to-left`](#to-left) | `--graupl-gradient-direction` | `to left` |
-| [`.circle`](#circle) | `--graupl-gradient-direction` | `circle` |
-| [`.circle-at-top`](#circle-at-top) | `--graupl-gradient-direction` | `circle at top` |
-| [`.circle-at-right`](#circle-at-right) | `--graupl-gradient-direction` | `circle at right` |
-| [`.circle-at-bottom`](#circle-at-bottom) | `--graupl-gradient-direction` | `circle at bottom` |
-| [`.circle-at-left`](#circle-at-left) | `--graupl-gradient-direction` | `circle at left` |
-| [`.ellipse`](#ellipse) | `--graupl-gradient-direction` | `ellipse` |
-| [`.ellipse-at-top`](#ellipse-at-top) | `--graupl-gradient-direction` | `ellipse at top` |
-| [`.ellipse-at-right`](#ellipse-at-right) | `--graupl-gradient-direction` | `ellipse at right` |
-| [`.ellipse-at-bottom`](#ellipse-at-bottom) | `--graupl-gradient-direction` | `ellipse at bottom` |
-| [`.ellipse-at-left`](#ellipse-at-left) | `--graupl-gradient-direction` | `ellipse at left` |
-| [`.closest-side`](#closest-side) | `--graupl-gradient-direction` | `closest-side` |
-| [`.closest-corner`](#closest-corner) | `--graupl-gradient-direction` | `closest-corner` |
-| [`.farthest-side`](#farthest-side) | `--graupl-gradient-direction` | `farthest-side` |
-| [`.farthest-corner`](#farthest-corner) | `--graupl-gradient-direction` | `farthest-corner` |
+| [`.gradient-direction-to-top`](#gradient-direction-to-top) | `--graupl-gradient-direction` | `to top` |
+| [`.gradient-direction-to-right`](#gradient-direction-to-right) | `--graupl-gradient-direction` | `to right` |
+| [`.gradient-direction-to-bottom`](#gradient-direction-to-bottom) | `--graupl-gradient-direction` | `to bottom` |
+| [`.gradient-direction-to-left`](#gradient-direction-to-left) | `--graupl-gradient-direction` | `to left` |
+| [`.gradient-direction-circle`](#gradient-direction-circle) | `--graupl-gradient-direction` | `circle` |
+| [`.gradient-direction-circle-at-top`](#gradient-direction-circle-at-top) | `--graupl-gradient-direction` | `circle at top` |
+| [`.gradient-direction-circle-at-right`](#gradient-direction-circle-at-right) | `--graupl-gradient-direction` | `circle at right` |
+| [`.gradient-direction-circle-at-bottom`](#gradient-direction-circle-at-bottom) | `--graupl-gradient-direction` | `circle at bottom` |
+| [`.gradient-direction-circle-at-left`](#gradient-direction-circle-at-left) | `--graupl-gradient-direction` | `circle at left` |
+| [`.gradient-direction-ellipse`](#gradient-direction-ellipse) | `--graupl-gradient-direction` | `ellipse` |
+| [`.gradient-direction-ellipse-at-top`](#gradient-direction-ellipse-at-top) | `--graupl-gradient-direction` | `ellipse at top` |
+| [`.gradient-direction-ellipse-at-right`](#gradient-direction-ellipse-at-right) | `--graupl-gradient-direction` | `ellipse at right` |
+| [`.gradient-direction-ellipse-at-bottom`](#gradient-direction-ellipse-at-bottom) | `--graupl-gradient-direction` | `ellipse at bottom` |
+| [`.gradient-direction-ellipse-at-left`](#gradient-direction-ellipse-at-left) | `--graupl-gradient-direction` | `ellipse at left` |
+| [`.gradient-direction-closest-side`]( #gradient-direction-closest-side) | `--graupl-gradient-direction` | `closest-side` |
+| [`.gradient-direction-closest-corner`]( #gradient-direction-closest-corner) | `--graupl-gradient-direction` | `closest-corner` |
+| [`.gradient-direction-farthest-side`]( #gradient-direction-farthest-side) | `--graupl-gradient-direction` | `farthest-side` |
+| [`.gradient-direction-farthest-corner`]( #gradient-direction-farthest-corner) | `--graupl-gradient-direction` | `farthest-corner` |
 
-### `.to-top`
+### `.gradient-direction-to-top`
 
 Sets the `--graupl-gradient-direction` property to `to top`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="gradient to-top from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+  <div class="gradient gradient-direction-to-top from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="gradient to-top from-primary-200 to-primary-400">Item</div>
+  <div class="gradient gradient-direction-to-top from-primary-200 to-primary-400">Item</div>
 </div>
 ```
 
-### `.to-right`
+### `.gradient-direction-to-right`
 
 Sets the `--graupl-gradient-direction` property to `to right`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="gradient to-right from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+  <div class="gradient gradient-direction-to-right from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="gradient to-right from-primary-200 to-primary-400">Item</div>
+  <div class="gradient gradient-direction-to-right from-primary-200 to-primary-400">Item</div>
 </div>
 ```
 
-### `.to-bottom`
+### `.gradient-direction-to-bottom`
 
 Sets the `--graupl-gradient-direction` property to `to bottom`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="gradient to-bottom from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+  <div class="gradient gradient-direction-to-bottom from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="gradient to-bottom from-primary-200 to-primary-400">Item</div>
+  <div class="gradient gradient-direction-to-bottom from-primary-200 to-primary-400">Item</div>
 </div>
 ```
 
-### `.to-left`
+### `.gradient-direction-to-left`
 
 Sets the `--graupl-gradient-direction` property to `to left`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="gradient to-left from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
+  <div class="gradient gradient-direction-to-left from-primary-200 to-primary-600 w-half bordered border-primary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="gradient to-left from-primary-200 to-primary-400">Item</div>
+  <div class="gradient gradient-direction-to-left from-primary-200 to-primary-400">Item</div>
 </div>
 ```
 
-### `.circle`
+### `.gradient-direction-circle`
 
 Sets the `--graupl-gradient-direction` property to `circle`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial circle from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-circle from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial circle from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-circle from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.circle-at-top`
+### `.gradient-direction-circle-at-top`
 
 Sets the `--graupl-gradient-direction` property to `circle at top`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial circle-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial circle-at-top from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-top from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.circle-at-right`
+### `.gradient-direction-circle-at-right`
 
 Sets the `--graupl-gradient-direction` property to `circle at right`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial circle-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial circle-at-right from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-right from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.circle-at-bottom`
+### `.gradient-direction-circle-at-bottom`
 
 Sets the `--graupl-gradient-direction` property to `circle at bottom`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial circle-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial circle-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.circle-at-left`
+### `.gradient-direction-circle-at-left`
 
 Sets the `--graupl-gradient-direction` property to `circle at left`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial circle-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial circle-at-left from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-circle-at-left from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.ellipse`
+### `.gradient-direction-ellipse`
 
 Sets the `--graupl-gradient-direction` property to `ellipse`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.ellipse-at-top`
+### `.gradient-direction-ellipse-at-top`
 
 Sets the `--graupl-gradient-direction` property to `ellipse at top`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-top from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse-at-top from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-top from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.ellipse-at-right`
+### `.gradient-direction-ellipse-at-right`
 
 Sets the `--graupl-gradient-direction` property to `ellipse at right`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-right from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse-at-right from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-right from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.ellipse-at-bottom`
+### `.gradient-direction-ellipse-at-bottom`
 
 Sets the `--graupl-gradient-direction` property to `ellipse at bottom`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-bottom from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-bottom from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.ellipse-at-left`
+### `.gradient-direction-ellipse-at-left`
 
 Sets the `--graupl-gradient-direction` property to `ellipse at left`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-left from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse-at-left from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse-at-left from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.closest-side`
+### `.gradient-direction-closest-side`
 
 Sets the `--graupl-gradient-direction` property to `closest-side`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial closest-side from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-closest-side from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial closest-side from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-closest-side from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.closest-corner`
+### `.gradient-direction-closest-corner`
 
 Sets the `--graupl-gradient-direction` property to `closest-corner`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial closest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-closest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial closest-corner from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-closest-corner from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.farthest-side`
+### `.gradient-direction-farthest-side`
 
 Sets the `--graupl-gradient-direction` property to `farthest-side`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial ellipse from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-ellipse from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 
-### `.farthest-corner`
+### `.gradient-direction-farthest-corner`
 
 Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 
 <div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-normal p-5 h-10">
-  <div class="radial farthest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
+  <div class="gradient-radial gradient-direction-farthest-corner from-tertiary-200 to-tertiary-600 w-half bordered border-tertiary-700 p-4">Item</div>
 </div>
 
 ```html
 <div class="display-flex">
-  <div class="radial farthest-corner from-tertiary-200 to-tertiary-400">Item</div>
+  <div class="gradient-radial gradient-direction-farthest-corner from-tertiary-200 to-tertiary-400">Item</div>
 </div>
 ```
 

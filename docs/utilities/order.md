@@ -27,7 +27,7 @@ The order utilities provide a set of classes to adjust the `order` properties of
 Sets the `order` property to `none`.
 
 <div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-none">Item Order 0 None</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-none">Item Order None</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item 1</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4">Item 2</div>
 </div>
@@ -77,18 +77,18 @@ Sets the `order` property to `last`.
 Uses `1` to `12` to set the `order` property to the corresponding number.
 
 <div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-none" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-none">Item 0 Order none</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-2">Item 1 Order 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-1">Item 2 Order 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-none">Item 0 <span class="text-sm">Order none</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-2">Item 1 <span class="text-sm">Order 2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-1">Item 2 <span class="text-sm">Order 1</span></div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-3">Item 3</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-4">Item 4</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-5">Item 5</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-6">Item 6</div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-7">Item 7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-10">Item 8 Order 10</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-10">Item 8 <span class="text-sm">Order 10</span></div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-11">Item 10 Order 11</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-8">Item 11 Order 8</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-11">Item 10 <span class="text-sm">Order 11</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-8">Item 11 <span class="text-sm">Order 8</span></div>
   <div class="bg-primary-200 bordered border-tertiary-700 p-4 order-12">Item 12</div>
 </div>
 
