@@ -8,33 +8,25 @@ Applies the default border styling to an element.
 
 ```css
   .bordered {
-    border-width: var(--graupl-border-width);
-    border-radius: var(--graupl-border-radius);
-    border-style: var(--graupl-border-style);
+    border-width:
+      var(--graupl-border-top-width)
+      var(--graupl-border-right-width)
+      var(--graupl-border-bottom-width)
+      var(--graupl-border-left-width);
+    border-radius:
+      var(--graupl-border-top-left-radius)
+      var(--graupl-border-top-right-radius)
+      var(--graupl-border-bottom-right-radius)
+      var(--graupl-border-bottom-left-radius);
+    border-style:
+      var(--graupl-border-top-style)
+      var(--graupl-border-right-style)
+      var(--graupl-border-bottom-style)
+      var(--graupl-border-left-style)
   }
 ```
 
-## Border widths
-
-| Class Name | Property | Value |
-| --- | --- | --- |
-| [`.border-thick`](#border-thick) | `border-width` | `thick` |
-| [`.border-thin`](#border-thin) | `border-width` | `thin` |
-| [`.border-medium`](#border-medium) | `border-width` | `medium` |
-
-### `.border-thick`
-
-Sets the `border-width` property to `thick`.
-
-### `.border-thin`
-
-Sets the `border-width` property to `thin`.
-
-### `.border-medium`
-
-Sets the `border-width` property to `medium`.
-
-## Border colors
+## Border Color
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -179,7 +171,77 @@ Sets the `border-color` property to `var(--graupl-theme-active--tertiary--900)`.
 
 Sets the `border-color` property to `transparent`.
 
-## Border styles
+## Border Radius
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.border-radius-rounded`](#border-radius-rounded) | `border-radius` | `100vw` |
+| [`.border-radius-squared`](#border-radius-thin) | `border-radius` | `0` |
+| [`.border-radius-0`](#border-radius-0) | `border-radius` | `var(--graupl-spacer-0)` |
+| [`.border-radius-1`](#border-radius-1) | `border-radius` | `var(--graupl-spacer-1)` |
+| [`.border-radius-2`](#border-radius-2) | `border-radius` | `var(--graupl-spacer-2)` |
+| [`.border-radius-3`](#border-radius-3) | `border-radius` | `var(--graupl-spacer-3)` |
+| [`.border-radius-4`](#border-radius-4) | `border-radius` | `var(--graupl-spacer-4)` |
+| [`.border-radius-5`](#border-radius-5) | `border-radius` | `var(--graupl-spacer-5)` |
+| [`.border-radius-6`](#border-radius-6) | `border-radius` | `var(--graupl-spacer-6)` |
+| [`.border-radius-7`](#border-radius-7) | `border-radius` | `var(--graupl-spacer-7)` |
+| [`.border-radius-8`](#border-radius-8) | `border-radius` | `var(--graupl-spacer-8)` |
+| [`.border-radius-9`](#border-radius-9) | `border-radius` | `var(--graupl-spacer-9)` |
+| [`.border-radius-10`](#border-radius-10) | `border-radius` | `var(--graupl-spacer-10)` |
+
+### `.border-radius-rounded`
+
+Sets the `border-radius` property to `100vw`.
+
+### `.border-radius-squared`
+
+Sets the `border-radius` property to `0`.
+
+### `.border-radius-0`
+
+Sets the `border-radius` property to `var(--graupl-spacer-0)`.
+
+### `.border-radius-1`
+
+Sets the `border-radius` property to `var(--graupl-spacer-1)`.
+
+### `.border-radius-2`
+
+Sets the `border-radius` property to `var(--graupl-spacer-2)`.
+
+### `.border-radius-3`
+
+Sets the `border-radius` property to `var(--graupl-spacer-3)`.
+
+### `.border-radius-4`
+
+Sets the `border-radius` property to `var(--graupl-spacer-4)`.
+
+### `.border-radius-5`
+
+Sets the `border-radius` property to `var(--graupl-spacer-5)`.
+
+### `.border-radius-6`
+
+Sets the `border-radius` property to `var(--graupl-spacer-6)`.
+
+### `.border-radius-7`
+
+Sets the `border-radius` property to `var(--graupl-spacer-7)`.
+
+### `.border-radius-8`
+
+Sets the `border-radius` property to `var(--graupl-spacer-8)`.
+
+### `.border-radius-9`
+
+Sets the `border-radius` property to `var(--graupl-spacer-9)`.
+
+### `.border-radius-10`
+
+Sets the `border-radius` property to `var(--graupl-spacer-10)`.
+
+## Border Style
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -228,6 +290,81 @@ Sets the `border-style` property to `outset`.
 ### `.border-none`
 
 Sets the `border-style` property to `none`.
+
+## Border Width
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.border-thick`](#border-thick) | `border-width` | `thick` |
+| [`.border-thin`](#border-thin) | `border-width` | `thin` |
+| [`.border-medium`](#border-medium) | `border-width` | `medium` |
+| [`.border-width-0`](#border-width-0) | `border-width` | `var(--graupl-spacer-0)` |
+| [`.border-width-1`](#border-width-1) | `border-width` | `var(--graupl-spacer-1)` |
+| [`.border-width-2`](#border-width-2) | `border-width` | `var(--graupl-spacer-2)` |
+| [`.border-width-3`](#border-width-3) | `border-width` | `var(--graupl-spacer-3)` |
+| [`.border-width-4`](#border-width-4) | `border-width` | `var(--graupl-spacer-4)` |
+| [`.border-width-5`](#border-width-5) | `border-width` | `var(--graupl-spacer-5)` |
+| [`.border-width-6`](#border-width-6) | `border-width` | `var(--graupl-spacer-6)` |
+| [`.border-width-7`](#border-width-7) | `border-width` | `var(--graupl-spacer-7)` |
+| [`.border-width-8`](#border-width-8) | `border-width` | `var(--graupl-spacer-8)` |
+| [`.border-width-9`](#border-width-9) | `border-width` | `var(--graupl-spacer-9)` |
+| [`.border-width-10`](#border-width-10) | `border-width` | `var(--graupl-spacer-10)` |
+
+### `.border-thick`
+
+Sets the `border-width` property to `thick`.
+
+### `.border-thin`
+
+Sets the `border-width` property to `thin`.
+
+### `.border-medium`
+
+Sets the `border-width` property to `medium`.
+
+### `.border-width-0`
+
+Sets the `border-width` property to `var(--graupl-spacer-0)`.
+
+### `.border-width-1`
+
+Sets the `border-width` property to `var(--graupl-spacer-1)`.
+
+### `.border-width-2`
+
+Sets the `border-width` property to `var(--graupl-spacer-2)`.
+
+### `.border-width-3`
+
+Sets the `border-width` property to `var(--graupl-spacer-3)`.
+
+### `.border-width-4`
+
+Sets the `border-width` property to `var(--graupl-spacer-4)`.
+
+### `.border-width-5`
+
+Sets the `border-width` property to `var(--graupl-spacer-5)`.
+
+### `.border-width-6`
+
+Sets the `border-width` property to `var(--graupl-spacer-6)`.
+
+### `.border-width-7`
+
+Sets the `border-width` property to `var(--graupl-spacer-7)`.
+
+### `.border-width-8`
+
+Sets the `border-width` property to `var(--graupl-spacer-8)`.
+
+### `.border-width-9`
+
+Sets the `border-width` property to `var(--graupl-spacer-9)`.
+
+### `.border-width-10`
+
+Sets the `border-width` property to `var(--graupl-spacer-10)`.
 
 ## Customization
 
