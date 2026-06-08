@@ -61,6 +61,26 @@ Sets the `background-clip` property to `text`.
 
 Sets the `background-image` property to `none`.
 
+## Background Origin
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.bg-origin-border-box`](#bg-origin-border-box) | `background-origin` | `border-box` |
+| [`.bg-origin-padding-box`](#bg-origin-padding-box) | `background-origin` | `padding-box` |
+| [`.bg-origin-content-box`](#bg-origin-content-box) | `background-origin` | `content-box` |
+
+### `.bg-origin-border-box`
+
+Sets the `background-origin` property to `border-box`.
+
+### `.bg-origin-padding-box`
+
+Sets the `background-origin` property to `padding-box`.
+
+### `.bg-origin-content-box`
+
+Sets the `background-origin` property to `content-box`.
+
 ## Background Position
 
 | Class Name | Property | Value |
