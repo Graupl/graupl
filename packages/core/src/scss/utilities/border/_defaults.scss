@@ -38,9 +38,7 @@ $theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix
 $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
-
-// Default border properties.
-$default-border-selector: "bordered" !default;
+$bordered-selector: "bordered" !default;
 
 // Properties.
 $-utility-properties: ();
@@ -73,18 +71,19 @@ $utility-values: () !default;
 //   ...
 // );
 $-utility-map: (
-  "bordered": (
-    "border-width": root-variables.$border-top-width
-      root-variables.$border-right-width root-variables.$border-bottom-width
-      root-variables.$border-left-width,
-    "border-radius": root-variables.$border-top-left-radius
-      root-variables.$border-top-right-radius
-      root-variables.$border-bottom-right-radius
-      root-variables.$border-bottom-left-radius,
-    "border-style": root-variables.$border-top-style
-      root-variables.$border-right-style root-variables.$border-bottom-style
-      root-variables.$border-left-style,
-  ),
+  // bordered
+  "#{$bordered-selector}": (
+      "border-width": root-variables.$border-top-width
+        root-variables.$border-right-width root-variables.$border-bottom-width
+        root-variables.$border-left-width,
+      "border-radius": root-variables.$border-top-left-radius
+        root-variables.$border-top-right-radius
+        root-variables.$border-bottom-right-radius
+        root-variables.$border-bottom-left-radius,
+      "border-style": root-variables.$border-top-style
+        root-variables.$border-right-style root-variables.$border-bottom-style
+        root-variables.$border-left-style,
+    )
 );
 $-utility-map: map.deep-merge(
   $-utility-map,

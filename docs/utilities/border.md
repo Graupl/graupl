@@ -401,6 +401,7 @@ To customize the border utilities, you can use the following variables.
 | `$utility-properties` | Map of utility properties. | `()` |
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
+| `$bordered-selector` | The selector for the bordered class. | `"bordered"` |
 
 ## Responsive variants
 
