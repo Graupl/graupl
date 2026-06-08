@@ -195,7 +195,7 @@ Sets the `width` property to `calc(100%/ 1.5)`.
 Sets the `width` property to `50vw`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-half-screen">Half-screen</div>
 </div>
 
 ```html
@@ -209,7 +209,7 @@ Sets the `width` property to `50vw`.
 Sets the `width` property to `calc(100vw/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-third-screen">Third-screen</div>
 </div>
 
 ```html
@@ -223,7 +223,7 @@ Sets the `width` property to `calc(100vw/ 3)`.
 Sets the `width` property to `calc(100vw/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
@@ -237,7 +237,7 @@ Sets the `width` property to `calc(100vw/ 1.5)`.
 Sets the `width` property to `25vw`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
@@ -251,7 +251,7 @@ Sets the `width` property to `25vw`.
 Sets the `width` property to `75vw`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
@@ -265,7 +265,7 @@ Sets the `width` property to `75vw`.
 Sets the `width` property to `100vw`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 w-full-screen">Full-screen</div>
 </div>
 
 ```html
@@ -279,17 +279,17 @@ Sets the `width` property to `100vw`.
 Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `width` property to the corresponding value.
 
 <div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-0"><span class="position-absolute">0</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-1"><span class="position-absolute">1</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-2"><span class="position-absolute">2</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-3"><span class="position-absolute">3</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-4"><span class="position-absolute">4</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-5"><span class="position-absolute">5</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-6"><span class="position-absolute">6</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-7"><span class="position-absolute">7</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-8"><span class="position-absolute">8</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-9"><span class="position-absolute">9</span></div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-10"><span class="position-absolute">10</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative width-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html

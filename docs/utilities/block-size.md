@@ -195,7 +195,7 @@ Sets the `block-size` property to `calc(100%/ 1.5)`.
 Sets the `block-size` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-half-screen">Half-screen</div>
 </div>
 
 ```html
@@ -209,7 +209,7 @@ Sets the `block-size` property to `50vh`.
 Sets the `block-size` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-third-screen">Third-screen</div>
 </div>
 
 ```html
@@ -223,7 +223,7 @@ Sets the `block-size` property to `calc(100vh/ 3)`.
 Sets the `block-size` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
@@ -237,7 +237,7 @@ Sets the `block-size` property to `calc(100vh/ 1.5)`.
 Sets the `block-size` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
@@ -251,7 +251,7 @@ Sets the `block-size` property to `25vh`.
 Sets the `block-size` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
@@ -265,7 +265,7 @@ Sets the `block-size` property to `75vh`.
 Sets the `block-size` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 block-full-screen">Full-screen</div>
 </div>
 
 ```html
