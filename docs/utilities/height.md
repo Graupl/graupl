@@ -1,52 +1,51 @@
 # Height Utilities
 
-The height utilities provide a set of classes to adjust the `height`, `max-h`, and `min-h` properties of elements.
-
+The height utilities provide a set of classes to adjust the `height`, `max-height`, and `min-height` properties of elements.
 
 ## Height
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.h-auto`](#height-auto) | height | auto |
-| [`.h-fit-content`](#height-fit-content) | height | fit-content |
-| [`.h-max-content`](#height-max-content) | height | max-content |
-| [`.h-min-content`](#height-min-content) | height | min-content |
-| [`.h-stretch`](#height-stretch) | height | stretch |
-| [`.h-full`](#height-full) | height | 100% |
-| [`.h-quarter`](#height-quarter) | height | 25% |
-| [`.h-half`](#height-half) | height | 50% |
-| [`.h-three-quarters`](#height-three-quarters) | height | 75% |
-| [`.h-third`](#height-third) | height | calc(100%/ 3) |
-| [`.h-two-thirds`](#height-two-thirds) | height | calc(100%/ 1.5) |
-| [`.h-half-screen`](#height-half-screen) | height | 50vh |
-| [`.h-third-screen`](#height-third-screen) | height | calc(100vh/ 3) |
-| [`.h-two-thirds-screen`](#height-two-thirds-screen) | height | calc(100vh/ 1.5) |
-| [`.h-quarter-screen`](#height-quarter-screen) | height | 25vh |
-| [`.h-three-quarters-screen`](#height-three-quarters-screen) | height | 75vh |
-| [`.h-full-screen`](#height-full-screen) | height | 100vh |
-| [`.h-0`](#height-0) | height | `var(--graupl-spacer-0)` |
-| [`.h-1`](#height-0) | height | `var(--graupl-spacer-1)` |
-| [`.h-2`](#height-0) | height | `var(--graupl-spacer-2)` |
-| [`.h-3`](#height-0) | height | `var(--graupl-spacer-3)` |
-| [`.h-4`](#height-0) | height | `var(--graupl-spacer-4)` |
-| [`.h-5`](#height-0) | height | `var(--graupl-spacer-5)` |
-| [`.h-6`](#height-0) | height | `var(--graupl-spacer-6)` |
-| [`.h-7`](#height-0) | height | `var(--graupl-spacer-7)` |
-| [`.h-8`](#height-0) | height | `var(--graupl-spacer-8)` |
-| [`.h-9`](#height-0) | height | `var(--graupl-spacer-9)` |
-| [`.h-10`](#height-0) | height | `var(--graupl-spacer-10)` |
+| [`.h-auto`](#h-auto) | height | auto |
+| [`.h-fit-content`](#h-fit-content) | height | fit-content |
+| [`.h-max-content`](#h-max-content) | height | max-content |
+| [`.h-min-content`](#h-min-content) | height | min-content |
+| [`.h-stretch`](#h-stretch) | height | stretch |
+| [`.h-full`](#h-full) | height | 100% |
+| [`.h-quarter`](#h-quarter) | height | 25% |
+| [`.h-half`](#h-half) | height | 50% |
+| [`.h-three-quarters`](#h-three-quarters) | height | 75% |
+| [`.h-third`](#h-third) | height | calc(100%/ 3) |
+| [`.h-two-thirds`](#h-two-thirds) | height | calc(100%/ 1.5) |
+| [`.h-half-screen`](#h-half-screen) | height | 50vh |
+| [`.h-third-screen`](#h-third-screen) | height | calc(100vh/ 3) |
+| [`.h-two-thirds-screen`](#h-two-thirds-screen) | height | calc(100vh/ 1.5) |
+| [`.h-quarter-screen`](#h-quarter-screen) | height | 25vh |
+| [`.h-three-quarters-screen`](#h-three-quarters-screen) | height | 75vh |
+| [`.h-full-screen`](#h-full-screen) | height | 100vh |
+| [`.h-0`](#h-spacer) | height | var(--graupl-spacer-0) |
+| [`.h-1`](#h-spacer) | height | var(--graupl-spacer-1) |
+| [`.h-2`](#h-spacer) | height | var(--graupl-spacer-2) |
+| [`.h-3`](#h-spacer) | height | var(--graupl-spacer-3) |
+| [`.h-4`](#h-spacer) | height | var(--graupl-spacer-4) |
+| [`.h-5`](#h-spacer) | height | var(--graupl-spacer-5) |
+| [`.h-6`](#h-spacer) | height | var(--graupl-spacer-6) |
+| [`.h-7`](#h-spacer) | height | var(--graupl-spacer-7) |
+| [`.h-8`](#h-spacer) | height | var(--graupl-spacer-8) |
+| [`.h-9`](#h-spacer) | height | var(--graupl-spacer-9) |
+| [`.h-10`](#h-spacer) | height | var(--graupl-spacer-10) |
 
 ### `.h-auto`
 
 Sets the `height` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-auto">Item Height Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 h-auto">
-  Item Height Auto
+<div class="h-auto">
+  Auto
 </div>
 ```
 
@@ -55,13 +54,13 @@ Sets the `height` property to `auto`.
 
 Sets the `height` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-fit-content">Item Height fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 h-fit-content">
-  Item Height fit-content
+<div class="h-fit-content">
+  Fit-content
 </div>
 ```
 
@@ -69,13 +68,13 @@ Sets the `height` property to `fit-content`.
 
 Sets the `height` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-max-content">Item Height max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 h-max-content">
-  Item Height max-content
+<div class="h-max-content">
+  Max-content
 </div>
 ```
 
@@ -83,13 +82,13 @@ Sets the `height` property to `max-content`.
 
 Sets the `height` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-min-content">Item Height min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 h-min-content">
-  Item Height min-content
+<div class="h-min-content">
+  Min-content
 </div>
 ```
 
@@ -97,13 +96,13 @@ Sets the `height` property to `min-content`.
 
 Sets the `height` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-stretch">Item Height stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 h-stretch">
-  Item Height stretch
+<div class="h-stretch">
+  Stretch
 </div>
 ```
 
@@ -111,13 +110,13 @@ Sets the `height` property to `stretch`.
 
 Sets the `height` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-full">Item Height full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 h-full">
-  Item Height full
+<div class="h-full">
+  Full
 </div>
 ```
 
@@ -125,13 +124,13 @@ Sets the `height` property to `100%`.
 
 Sets the `height` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-quarter">Item Height quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 h-quarter">
-  Item Height quarter
+<div class="h-quarter">
+  Quarter
 </div>
 ```
 
@@ -139,13 +138,13 @@ Sets the `height` property to `25%`.
 
 Sets the `height` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-half">Item Height half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 h-half">
-  Item Height half
+<div class="h-half">
+  Half
 </div>
 ```
 
@@ -153,13 +152,13 @@ Sets the `height` property to `50%`.
 
 Sets the `height` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-three-quarters">Item Height three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 h-three-quarters">
-  Item Height three-quarters
+<div class="h-three-quarters">
+  Three-quarters
 </div>
 ```
 
@@ -167,13 +166,13 @@ Sets the `height` property to `75%`.
 
 Sets the `height` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-third">Item Height third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 h-third">
-  Item Height third
+<div class="h-third">
+  Third
 </div>
 ```
 
@@ -181,13 +180,13 @@ Sets the `height` property to `calc(100%/ 3)`.
 
 Sets the `height` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-two-thirds">Item Height two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 h-two-thirds">
-  Item Height two-thirds
+<div class="h-two-thirds">
+  Two-thirds
 </div>
 ```
 
@@ -195,13 +194,13 @@ Sets the `height` property to `calc(100%/ 1.5)`.
 
 Sets the `height` property to `50vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-half-screen">Item Height half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-half-screen">
-  Item Height half-screen
+<div class="h-half-screen">
+  Half-screen
 </div>
 ```
 
@@ -209,13 +208,13 @@ Sets the `height` property to `50vh`.
 
 Sets the `height` property to `calc(100vh/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-third-screen">Item Height third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-third-screen">
-  Item Height third-screen
+<div class="h-third-screen">
+  Third-screen
 </div>
 ```
 
@@ -223,13 +222,13 @@ Sets the `height` property to `calc(100vh/ 3)`.
 
 Sets the `height` property to `calc(100vh/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-two-thirds-screen">Item Height two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-two-thirds-screen">
-  Item Height two-thirds-screen
+<div class="h-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
@@ -237,13 +236,13 @@ Sets the `height` property to `calc(100vh/ 1.5)`.
 
 Sets the `height` property to `25vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-quarter-screen">Item h-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-quarter-screen">
-  Item h-quarter-screen
+<div class="h-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
@@ -251,13 +250,13 @@ Sets the `height` property to `25vh`.
 
 Sets the `height` property to `75vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-three-quarters-screen">Item Height three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-three-quarters-screen">
-  Item Height three-quarters-screen
+<div class="h-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
@@ -265,44 +264,44 @@ Sets the `height` property to `75vh`.
 
 Sets the `height` property to `100vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-full-screen">Item Height full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-full-screen">
-  Item Height full-screen
+<div class="h-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.h-0`
+### `.h-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `height` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `height` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-10">Item 10</div>
+<div class="h-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 h-0">
+<div class="h-0">
    0
 </div>
-<div class="m-2 h-10">
-   Item 10
+<div class="h-10">
+   10
 </div>
 ```
 
-## Max-h
+## Max Height
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -323,284 +322,285 @@ Uses `Graupl-spacer` such as `0` to set the `height` property to a `spacer`.
 | [`.max-h-quarter-screen`](#max-h-quarter-screen) | max-height | 25vh |
 | [`.max-h-three-quarters-screen`](#max-h-three-quarters-screen) | max-height | 75vh |
 | [`.max-h-full-screen`](#max-h-full-screen) | max-height | 100vh |
-| [`.max-h-0`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 0 value |
-| [`.max-h-1`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 1 value |
-| [`.max-h-2`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 2 value |
-| [`.max-h-3`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 3 value |
-| [`.max-h-4`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 4 value |
-| [`.max-h-5`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 5 value |
-| [`.max-h-6`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 6 value |
-| [`.max-h-7`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 7 value |
-| [`.max-h-8`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 8 value |
-| [`.max-h-9`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 9 value |
-| [`.max-h-10`](#max-h-0) | max-height | Sets the max-height property to Graupl's spacer 10 value |
+| [`.max-h-0`](#max-h-spacer) | max-height | var(--graupl-spacer-0) |
+| [`.max-h-1`](#max-h-spacer) | max-height | var(--graupl-spacer-1) |
+| [`.max-h-2`](#max-h-spacer) | max-height | var(--graupl-spacer-2) |
+| [`.max-h-3`](#max-h-spacer) | max-height | var(--graupl-spacer-3) |
+| [`.max-h-4`](#max-h-spacer) | max-height | var(--graupl-spacer-4) |
+| [`.max-h-5`](#max-h-spacer) | max-height | var(--graupl-spacer-5) |
+| [`.max-h-6`](#max-h-spacer) | max-height | var(--graupl-spacer-6) |
+| [`.max-h-7`](#max-h-spacer) | max-height | var(--graupl-spacer-7) |
+| [`.max-h-8`](#max-h-spacer) | max-height | var(--graupl-spacer-8) |
+| [`.max-h-9`](#max-h-spacer) | max-height | var(--graupl-spacer-9) |
+| [`.max-h-10`](#max-h-spacer) | max-height | var(--graupl-spacer-10) |
 
 ### `.max-h-auto`
 
-Sets the `max-h` property to `auto`.
+Sets the `max-height` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-auto">Item Max Height Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 max-h-auto">
-  Item Max Height Auto
+<div class="max-h-auto">
+  Auto
 </div>
 ```
 
+
 ### `.max-h-fit-content`
 
-Sets the `max-h` property to `fit-content`.
+Sets the `max-height` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-fit-content">Item Max Height fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 h-fit-content">
-  Item Max Height fit-content
+<div class="max-h-fit-content">
+  Fit-content
 </div>
 ```
 
 ### `.max-h-max-content`
 
-Sets the `max-h` property to `max-content`.
+Sets the `max-height` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-max-content">Item Max Height max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 h-max-content">
-  Item Max Height max-content
+<div class="max-h-max-content">
+  Max-content
 </div>
 ```
 
 ### `.max-h-min-content`
 
-Sets the `max-h` property to `min-content`.
+Sets the `max-height` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-min-content">Item Max Height min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 h-min-content">
-  Item Max Height min-content
+<div class="max-h-min-content">
+  Min-content
 </div>
 ```
 
 ### `.max-h-stretch`
 
-Sets the `max-h` property to `stretch`.
+Sets the `max-height` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-stretch">Item Max Height stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 h-stretch">
-  Item Max Height stretch
+<div class="max-h-stretch">
+  Stretch
 </div>
 ```
 
 ### `.max-h-full`
 
-Sets the `max-h` property to `100%`.
+Sets the `max-height` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-full">Item Max Height full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 h-full">
-  Item Max Height full
+<div class="max-h-full">
+  Full
 </div>
 ```
 
 ### `.max-h-quarter`
 
-Sets the `max-h` property to `25%`.
+Sets the `max-height` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-quarter">Item Max Height quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 h-quarter">
-  Item Max Height quarter
+<div class="max-h-quarter">
+  Quarter
 </div>
 ```
 
 ### `.max-h-half`
 
-Sets the `max-h` property to `50%`.
+Sets the `max-height` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-half">Item Max Height half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 h-half">
-  Item Max Height half
+<div class="max-h-half">
+  Half
 </div>
 ```
 
 ### `.max-h-three-quarters`
 
-Sets the `max-h` property to `75%`.
+Sets the `max-height` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-three-quarters">Item Max Height three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 h-three-quarters">
-  Item Max Height three-quarters
+<div class="max-h-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.max-h-third`
 
-Sets the `max-h` property to `calc(100%/ 3)`.
+Sets the `max-height` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-third">Item Max Height third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 h-third">
-  Item Max Height third
+<div class="max-h-third">
+  Third
 </div>
 ```
 
 ### `.max-h-two-thirds`
 
-Sets the `max-h` property to `calc(100%/ 1.5)`.
+Sets the `max-height` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 h-two-thirds">Item Max Height two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-h-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 h-two-thirds">
-  Item Max Height two-thirds
+<div class="max-h-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.max-h-half-screen`
 
-Sets the `max-h` property to `50vh`.
+Sets the `max-height` property to `50vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-half-screen">Item Max Height half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-half-screen">
-  Item Max Height half-screen
+<div class="max-h-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.max-h-third-screen`
 
-Sets the `max-h` property to `calc(100vh/ 3)`.
+Sets the `max-height` property to `calc(100vh/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-third-screen">Item Max Height third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-third-screen">
-  Item Max Height third-screen
+<div class="max-h-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.max-h-two-thirds-screen`
 
-Sets the `max-h` property to `calc(100vh/ 1.5)`.
+Sets the `max-height` property to `calc(100vh/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-two-thirds-screen">Item Max Height two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-two-thirds-screen">
-  Item Max Height two-thirds-screen
+<div class="max-h-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.max-h-quarter-screen`
 
-Sets the `max-h` property to `25vh`.
+Sets the `max-height` property to `25vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-quarter-screen">Item h-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-quarter-screen">
-  Item h-quarter-screen
+<div class="max-h-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.max-h-three-quarters-screen`
 
-Sets the `max-h` property to `75vh`.
+Sets the `max-height` property to `75vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-three-quarters-screen">Item Max Height three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-three-quarters-screen">
-  Item Max Height three-quarters-screen
+<div class="max-h-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.max-h-full-screen`
 
-Sets the `max-h` property to `100vh`.
+Sets the `max-height` property to `100vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 h-full-screen">Item Max Height full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-h-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 h-full-screen">
-  Item Max Height full-screen
+<div class="max-h-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.max-h-0`
+### `.max-h-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `max-h` property to a `spacer value`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `max-height` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: max-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-h-10">Item 10</div>
+<div class="h-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-h-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 max-h-0">
+<div class="max-h-0">
    0
 </div>
-<div class="m-2 max-h-10">
-   Item 10
+<div class="max-h-10">
+   10
 </div>
 ```
 
-## Min-h
+## Min Height
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -619,282 +619,283 @@ Uses `Graupl-spacer` such as `0` to set the `max-h` property to a `spacer value`
 | [`.min-h-third-screen`](#min-h-third-screen) | min-height | calc(100vh/ 3) |
 | [`.min-h-two-thirds-screen`](#min-h-two-thirds-screen) | min-height | calc(100vh/ 1.5) |
 | [`.min-h-quarter-screen`](#min-h-quarter-screen) | min-height | 25vh |
-| [`.min-h-three-quarter-screen`](#min-h-three-quarters-screen) | min-height | 75vh |
+| [`.min-h-three-quarters-screen`](#min-h-three-quarters-screen) | min-height | 75vh |
 | [`.min-h-full-screen`](#min-h-full-screen) | min-height | 100vh |
-| [`.min-h-0`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 0 value |
-| [`.min-h-1`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 1 value |
-| [`.min-h-2`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 2 value |
-| [`.min-h-3`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 3 value |
-| [`.min-h-4`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 4 value |
-| [`.min-h-5`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 5 value |
-| [`.min-h-6`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 6 value |
-| [`.min-h-7`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 7 value |
-| [`.min-h-8`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 8 value |
-| [`.min-h-9`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 9 value |
-| [`.min-h-10`](#min-h-0) | min-height | Sets the min-height property to Graupl's spacer 10 value |
+| [`.min-h-0`](#min-h-spacer) | min-height | var(--graupl-spacer-0) |
+| [`.min-h-1`](#min-h-spacer) | min-height | var(--graupl-spacer-1) |
+| [`.min-h-2`](#min-h-spacer) | min-height | var(--graupl-spacer-2) |
+| [`.min-h-3`](#min-h-spacer) | min-height | var(--graupl-spacer-3) |
+| [`.min-h-4`](#min-h-spacer) | min-height | var(--graupl-spacer-4) |
+| [`.min-h-5`](#min-h-spacer) | min-height | var(--graupl-spacer-5) |
+| [`.min-h-6`](#min-h-spacer) | min-height | var(--graupl-spacer-6) |
+| [`.min-h-7`](#min-h-spacer) | min-height | var(--graupl-spacer-7) |
+| [`.min-h-8`](#min-h-spacer) | min-height | var(--graupl-spacer-8) |
+| [`.min-h-9`](#min-h-spacer) | min-height | var(--graupl-spacer-9) |
+| [`.min-h-10`](#min-h-spacer) | min-height | var(--graupl-spacer-10) |
 
 ### `.min-h-auto`
 
-Sets the `min-h` property to `auto`.
+Sets the `min-height` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-auto">Item Min Height Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 min-h-auto">
-  Item Min Height Auto
+<div class="min-h-auto">
+  Auto
 </div>
 ```
+
 
 ### `.min-h-fit-content`
 
-Sets the `min-h` property to `fit-content`.
+Sets the `min-height` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-fit-content">Item Min Height fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 min-h-fit-content">
-  Item Min Height fit-content
+<div class="min-h-fit-content">
+  Fit-content
+</div>
+```
+
+### `.min-h-max-content`
+
+Sets the `min-height` property to `max-content`.
+
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-max-content">Max-content</div>
+</div>
+
+```html
+<div class="min-h-max-content">
+  Max-content
 </div>
 ```
 
 ### `.min-h-min-content`
 
-Sets the `min-h` property to `min-content`.
+Sets the `min-height` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-min-content">Item Min Height min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 min-h-min-content">
-  Item Min Height min-content
-</div>
-```
-
-### `.min-h-min-content`
-
-Sets the `min-h` property to `min-content`.
-
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-min-content">Item Min Height min-content</div>
-</div>
-
-```html
-<div class="p-4 min-h-min-content">
-  Item Min Height min-content
+<div class="min-h-min-content">
+  Min-content
 </div>
 ```
 
 ### `.min-h-stretch`
 
-Sets the `min-h` property to `stretch`.
+Sets the `min-height` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-stretch">Item Min Height stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 min-h-stretch">
-  Item Min Height stretch
+<div class="min-h-stretch">
+  Stretch
 </div>
 ```
 
 ### `.min-h-full`
 
-Sets the `min-h` property to `100%`.
+Sets the `min-height` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-full">Item Min Height full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 min-h-full">
-  Item Min Height full
+<div class="min-h-full">
+  Full
 </div>
 ```
 
 ### `.min-h-quarter`
 
-Sets the `min-h` property to `25%`.
+Sets the `min-height` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-quarter">Item Min Height quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 min-h-quarter">
-  Item Min Height quarter
+<div class="min-h-quarter">
+  Quarter
 </div>
 ```
 
 ### `.min-h-half`
 
-Sets the `min-h` property to `50%`.
+Sets the `min-height` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-half">Item Min Height half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 min-h-half">
-  Item Min Height half
+<div class="min-h-half">
+  Half
 </div>
 ```
 
 ### `.min-h-three-quarters`
 
-Sets the `min-h` property to `75%`.
+Sets the `min-height` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-three-quarters">Item Min Height three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 min-h-three-quarters">
-  Item Min Height three-quarters
+<div class="min-h-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.min-h-third`
 
-Sets the `min-h` property to `calc(100%/ 3)`.
+Sets the `min-height` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-third">Item Min Height third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 min-h-third">
-  Item Min Height third
+<div class="min-h-third">
+  Third
 </div>
 ```
 
 ### `.min-h-two-thirds`
 
-Sets the `min-h` property to `calc(100%/ 1.5)`.
+Sets the `min-height` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-two-thirds">Item Min Height two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-h-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 min-h-two-thirds">
-  Item Min Height two-thirds
+<div class="min-h-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.min-h-half-screen`
 
-Sets the `min-h` property to `50vh`.
+Sets the `min-height` property to `50vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-half-screen">Item Min Height half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-half-screen">
-  Item Min Height half-screen
+<div class="min-h-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.min-h-third-screen`
 
-Sets the `min-h` property to `calc(100vh/ 3)`.
+Sets the `min-height` property to `calc(100vh/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-third-screen">Item Min Height third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-third-screen">
-  Item Min Height third-screen
+<div class="min-h-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.min-h-two-thirds-screen`
 
-Sets the `min-h` property to `calc(100vh/ 1.5)`.
+Sets the `min-height` property to `calc(100vh/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-two-thirds-screen">Item Min Height two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-two-thirds-screen">
-  Item Min Height two-thirds-screen
+<div class="min-h-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.min-h-quarter-screen`
 
-Sets the `min-h` property to `25vh`.
+Sets the `min-height` property to `25vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-quarter-screen">Item min-H-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-quarter-screen">
-  Item min-H-quarter-screen
+<div class="min-h-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.min-h-three-quarters-screen`
 
-Sets the `min-h` property to `75vh`.
+Sets the `min-height` property to `75vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-three-quarters-screen">Item Min Height three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-three-quarters-screen">
-  Item Min Height three-quarters-screen
+<div class="min-h-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.min-h-full-screen`
 
-Sets the `min-h` property to `100vh`.
+Sets the `min-height` property to `100vh`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-h-full-screen">Item Min Height full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-h-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-h-full-screen">
-  Item Min Height full-screen
+<div class="min-h-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.min-h-0`
+### `.min-h-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `min-h` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `min-height` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, min-content); grid-template-rows: max-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-h-10">Item 10</div>
+<div class="h-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-h-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 min-h-0">
+<div class="min-h-0">
    0
 </div>
-<div class="m-2 min-h-10">
-   Item 10
+<div class="min-h-10">
+   10
 </div>
 ```
 
@@ -936,7 +937,7 @@ To customize the alignment utilities, you can use the following variables.
 
 ## Responsive variants
 
-To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$display-flex-aware` variables to `true`.
+To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
 
 By default, no responsive alignment utilities are generated.
 

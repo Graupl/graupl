@@ -1,52 +1,51 @@
 # Width Utilities
 
-The width utilities provide a set of classes to adjust the `width`, `max-w`, and `min-w` properties of elements.
-
+The width utilities provide a set of classes to adjust the `width`, `max-width`, and `min-width` properties of elements.
 
 ## Width
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.w-auto`](#width-auto) | width | auto |
-| [`.w-fit-content`](#width-fit-content) | width | fit-content |
-| [`.w-max-content`](#width-max-content) | width | max-content |
-| [`.w-min-content`](#width-min-content) | width | min-content |
-| [`.w-stretch`](#width-stretch) | width | stretch |
-| [`.w-full`](#width-full) | width | 100% |
-| [`.w-quarter`](#width-quarter) | width | 25% |
-| [`.w-half`](#width-half) | width | 50% |
-| [`.w-three-quarters`](#width-three-quarters) | width | 75% |
-| [`.w-third`](#width-third) | width | calc(100%/ 3) |
-| [`.w-two-thirds`](#width-two-thirds) | width | calc(100%/ 1.5) |
-| [`.w-half-screen`](#width-half-screen) | width | 50vw |
-| [`.w-third-screen`](#width-third-screen) | width | calc(100vw/ 3) |
-| [`.w-two-thirds-screen`](#width-two-thirds-screen) | width | calc(100vw/ 1.5) |
-| [`.w-quarter-screen`](#width-quarter-screen) | width | 25vw |
-| [`.w-three-quarters-screen`](#width-three-quarters-screen) | width | 75vw |
-| [`.w-full-screen`](#width-full-screen) | width | 100vw |
-| [`.w-0`](#width-0) | width | `var(--graupl-spacer-0)` |
-| [`.w-1`](#width-0) | width | `var(--graupl-spacer-1)` |
-| [`.w-2`](#width-0) | width | `var(--graupl-spacer-2)` |
-| [`.w-3`](#width-0) | width | `var(--graupl-spacer-3)` |
-| [`.w-4`](#width-0) | width | `var(--graupl-spacer-4)` |
-| [`.w-5`](#width-0) | width | `var(--graupl-spacer-5)` |
-| [`.w-6`](#width-0) | width | `var(--graupl-spacer-6)` |
-| [`.w-7`](#width-0) | width | `var(--graupl-spacer-7)` |
-| [`.w-8`](#width-0) | width | `var(--graupl-spacer-8)` |
-| [`.w-9`](#width-0) | width | `var(--graupl-spacer-9)` |
-| [`.w-10`](#width-0) | width | `var(--graupl-spacer-10)` |
+| [`.w-auto`](#w-auto) | width | auto |
+| [`.w-fit-content`](#w-fit-content) | width | fit-content |
+| [`.w-max-content`](#w-max-content) | width | max-content |
+| [`.w-min-content`](#w-min-content) | width | min-content |
+| [`.w-stretch`](#w-stretch) | width | stretch |
+| [`.w-full`](#w-full) | width | 100% |
+| [`.w-quarter`](#w-quarter) | width | 25% |
+| [`.w-half`](#w-half) | width | 50% |
+| [`.w-three-quarters`](#w-three-quarters) | width | 75% |
+| [`.w-third`](#w-third) | width | calc(100%/ 3) |
+| [`.w-two-thirds`](#w-two-thirds) | width | calc(100%/ 1.5) |
+| [`.w-half-screen`](#w-half-screen) | width | 50vw |
+| [`.w-third-screen`](#w-third-screen) | width | calc(100vw/ 3) |
+| [`.w-two-thirds-screen`](#w-two-thirds-screen) | width | calc(100vw/ 1.5) |
+| [`.w-quarter-screen`](#w-quarter-screen) | width | 25vw |
+| [`.w-three-quarters-screen`](#w-three-quarters-screen) | width | 75vw |
+| [`.w-full-screen`](#w-full-screen) | width | 100vw |
+| [`.w-0`](#w-spacer) | width | var(--graupl-spacer-0) |
+| [`.w-1`](#w-spacer) | width | var(--graupl-spacer-1) |
+| [`.w-2`](#w-spacer) | width | var(--graupl-spacer-2) |
+| [`.w-3`](#w-spacer) | width | var(--graupl-spacer-3) |
+| [`.w-4`](#w-spacer) | width | var(--graupl-spacer-4) |
+| [`.w-5`](#w-spacer) | width | var(--graupl-spacer-5) |
+| [`.w-6`](#w-spacer) | width | var(--graupl-spacer-6) |
+| [`.w-7`](#w-spacer) | width | var(--graupl-spacer-7) |
+| [`.w-8`](#w-spacer) | width | var(--graupl-spacer-8) |
+| [`.w-9`](#w-spacer) | width | var(--graupl-spacer-9) |
+| [`.w-10`](#w-spacer) | width | var(--graupl-spacer-10) |
 
 ### `.w-auto`
 
 Sets the `width` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-auto">Item Width Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 w-auto">
-  Item Width Auto
+<div class="w-auto">
+  Auto
 </div>
 ```
 
@@ -55,13 +54,13 @@ Sets the `width` property to `auto`.
 
 Sets the `width` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item Width fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 w-fit-content">
-  Item Width fit-content
+<div class="w-fit-content">
+  Fit-content
 </div>
 ```
 
@@ -69,13 +68,13 @@ Sets the `width` property to `fit-content`.
 
 Sets the `width` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-max-content">Item Width max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 w-max-content">
-  Item Width max-content
+<div class="w-max-content">
+  Max-content
 </div>
 ```
 
@@ -83,13 +82,13 @@ Sets the `width` property to `max-content`.
 
 Sets the `width` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-min-content">Item Width min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 w-min-content">
-  Item Width min-content
+<div class="w-min-content">
+  Min-content
 </div>
 ```
 
@@ -97,13 +96,13 @@ Sets the `width` property to `min-content`.
 
 Sets the `width` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-stretch">Item Width stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 w-stretch">
-  Item Width stretch
+<div class="w-stretch">
+  Stretch
 </div>
 ```
 
@@ -111,13 +110,13 @@ Sets the `width` property to `stretch`.
 
 Sets the `width` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-full">Item Width full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 w-full">
-  Item Width full
+<div class="w-full">
+  Full
 </div>
 ```
 
@@ -125,13 +124,13 @@ Sets the `width` property to `100%`.
 
 Sets the `width` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item Width quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 w-quarter">
-  Item Width quarter
+<div class="w-quarter">
+  Quarter
 </div>
 ```
 
@@ -139,13 +138,13 @@ Sets the `width` property to `25%`.
 
 Sets the `width` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item Width half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 w-half">
-  Item Width half
+<div class="w-half">
+  Half
 </div>
 ```
 
@@ -153,13 +152,13 @@ Sets the `width` property to `50%`.
 
 Sets the `width` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-three-quarters">Item Width three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 w-three-quarters">
-  Item Width three-quarters
+<div class="w-three-quarters">
+  Three-quarters
 </div>
 ```
 
@@ -167,13 +166,13 @@ Sets the `width` property to `75%`.
 
 Sets the `width` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-third">Item Width third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 w-third">
-  Item Width third
+<div class="w-third">
+  Third
 </div>
 ```
 
@@ -181,13 +180,13 @@ Sets the `width` property to `calc(100%/ 3)`.
 
 Sets the `width` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-two-thirds">Item Width two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 w-two-thirds">
-  Item Width two-thirds
+<div class="w-two-thirds">
+  Two-thirds
 </div>
 ```
 
@@ -195,13 +194,13 @@ Sets the `width` property to `calc(100%/ 1.5)`.
 
 Sets the `width` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-half-screen">Item Width half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-half-screen">
-  Item Width half-screen
+<div class="w-half-screen">
+  Half-screen
 </div>
 ```
 
@@ -209,13 +208,13 @@ Sets the `width` property to `50vw`.
 
 Sets the `width` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-third-screen">Item Width third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-third-screen">
-  Item Width third-screen
+<div class="w-third-screen">
+  Third-screen
 </div>
 ```
 
@@ -223,13 +222,13 @@ Sets the `width` property to `calc(100vw/ 3)`.
 
 Sets the `width` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-two-thirds-screen">Item Width two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-two-thirds-screen">
-  Item Width two-thirds-screen
+<div class="w-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
@@ -237,13 +236,13 @@ Sets the `width` property to `calc(100vw/ 1.5)`.
 
 Sets the `width` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-quarter-screen">Item w-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-quarter-screen">
-  Item w-quarter-screen
+<div class="w-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
@@ -251,13 +250,13 @@ Sets the `width` property to `25vw`.
 
 Sets the `width` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-three-quarters-screen">Item Width three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-three-quarters-screen">
-  Item Width three-quarters-screen
+<div class="w-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
@@ -265,32 +264,32 @@ Sets the `width` property to `75vw`.
 
 Sets the `width` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-full-screen">Item Width full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-full-screen">
-  Item Width full-screen
+<div class="w-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.w-0`
+### `.w-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `width` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `width` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 w-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 w-10">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
@@ -298,11 +297,11 @@ Uses `Graupl-spacer` such as `0` to set the `width` property to a `spacer`.
    0
 </div>
 <div class="w-10">
-   Item 10
+   10
 </div>
 ```
 
-## Max-w
+## Max Width
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -323,284 +322,285 @@ Uses `Graupl-spacer` such as `0` to set the `width` property to a `spacer`.
 | [`.max-w-quarter-screen`](#max-w-quarter-screen) | max-width | 25vw |
 | [`.max-w-three-quarters-screen`](#max-w-three-quarters-screen) | max-width | 75vw |
 | [`.max-w-full-screen`](#max-w-full-screen) | max-width | 100vw |
-| [`.max-w-0`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 0 value |
-| [`.max-w-1`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 1 value |
-| [`.max-w-2`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 2 value |
-| [`.max-w-3`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 3 value |
-| [`.max-w-4`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 4 value |
-| [`.max-w-5`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 5 value |
-| [`.max-w-6`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 6 value |
-| [`.max-w-7`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 7 value |
-| [`.max-w-8`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 8 value |
-| [`.max-w-9`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 9 value |
-| [`.max-w-10`](#max-w-0) | max-width | Sets the max-width property to Graupl's spacer 10 value |
+| [`.max-w-0`](#max-w-spacer) | max-width | var(--graupl-spacer-0) |
+| [`.max-w-1`](#max-w-spacer) | max-width | var(--graupl-spacer-1) |
+| [`.max-w-2`](#max-w-spacer) | max-width | var(--graupl-spacer-2) |
+| [`.max-w-3`](#max-w-spacer) | max-width | var(--graupl-spacer-3) |
+| [`.max-w-4`](#max-w-spacer) | max-width | var(--graupl-spacer-4) |
+| [`.max-w-5`](#max-w-spacer) | max-width | var(--graupl-spacer-5) |
+| [`.max-w-6`](#max-w-spacer) | max-width | var(--graupl-spacer-6) |
+| [`.max-w-7`](#max-w-spacer) | max-width | var(--graupl-spacer-7) |
+| [`.max-w-8`](#max-w-spacer) | max-width | var(--graupl-spacer-8) |
+| [`.max-w-9`](#max-w-spacer) | max-width | var(--graupl-spacer-9) |
+| [`.max-w-10`](#max-w-spacer) | max-width | var(--graupl-spacer-10) |
 
 ### `.max-w-auto`
 
-Sets the `max-w` property to `auto`.
+Sets the `max-width` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-auto">Item Max Width Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 max-w-auto">
-  Item Max Width Auto
+<div class="max-w-auto">
+  Auto
 </div>
 ```
 
+
 ### `.max-w-fit-content`
 
-Sets the `max-w` property to `fit-content`.
+Sets the `max-width` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item Max Width fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 w-fit-content">
-  Item Max Width fit-content
+<div class="max-w-fit-content">
+  Fit-content
 </div>
 ```
 
 ### `.max-w-max-content`
 
-Sets the `max-w` property to `max-content`.
+Sets the `max-width` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-max-content">Item Max Width max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 w-max-content">
-  Item Max Width max-content
+<div class="max-w-max-content">
+  Max-content
 </div>
 ```
 
 ### `.max-w-min-content`
 
-Sets the `max-w` property to `min-content`.
+Sets the `max-width` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-min-content">Item Max Width min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 w-min-content">
-  Item Max Width min-content
+<div class="max-w-min-content">
+  Min-content
 </div>
 ```
 
 ### `.max-w-stretch`
 
-Sets the `max-w` property to `stretch`.
+Sets the `max-width` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-stretch">Item Max Width stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 w-stretch">
-  Item Max Width stretch
+<div class="max-w-stretch">
+  Stretch
 </div>
 ```
 
 ### `.max-w-full`
 
-Sets the `max-w` property to `100%`.
+Sets the `max-width` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-full">Item Max Width full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 w-full">
-  Item Max Width full
+<div class="max-w-full">
+  Full
 </div>
 ```
 
 ### `.max-w-quarter`
 
-Sets the `max-w` property to `25%`.
+Sets the `max-width` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item Max Width quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 w-quarter">
-  Item Max Width quarter
+<div class="max-w-quarter">
+  Quarter
 </div>
 ```
 
 ### `.max-w-half`
 
-Sets the `max-w` property to `50%`.
+Sets the `max-width` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item Max Width half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 w-half">
-  Item Max Width half
+<div class="max-w-half">
+  Half
 </div>
 ```
 
 ### `.max-w-three-quarters`
 
-Sets the `max-w` property to `75%`.
+Sets the `max-width` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-three-quarters">Item Max Width three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 w-three-quarters">
-  Item Max Width three-quarters
+<div class="max-w-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.max-w-third`
 
-Sets the `max-w` property to `calc(100%/ 3)`.
+Sets the `max-width` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-third">Item Max Width third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 w-third">
-  Item Max Width third
+<div class="max-w-third">
+  Third
 </div>
 ```
 
 ### `.max-w-two-thirds`
 
-Sets the `max-w` property to `calc(100%/ 1.5)`.
+Sets the `max-width` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-two-thirds">Item Max Width two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-w-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 w-two-thirds">
-  Item Max Width two-thirds
+<div class="max-w-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.max-w-half-screen`
 
-Sets the `max-w` property to `50vw`.
+Sets the `max-width` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-half-screen">Item Max Width half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-half-screen">
-  Item Max Width half-screen
+<div class="max-w-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.max-w-third-screen`
 
-Sets the `max-w` property to `calc(100vw/ 3)`.
+Sets the `max-width` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-third-screen">Item Max Width third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-third-screen">
-  Item Max Width third-screen
+<div class="max-w-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.max-w-two-thirds-screen`
 
-Sets the `max-w` property to `calc(100vw/ 1.5)`.
+Sets the `max-width` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-two-thirds-screen">Item Max Width two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-two-thirds-screen">
-  Item Max Width two-thirds-screen
+<div class="max-w-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.max-w-quarter-screen`
 
-Sets the `max-w` property to `25vw`.
+Sets the `max-width` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-quarter-screen">Item w-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-quarter-screen">
-  Item w-quarter-screen
+<div class="max-w-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.max-w-three-quarters-screen`
 
-Sets the `max-w` property to `75vw`.
+Sets the `max-width` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-three-quarters-screen">Item Max Width three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-three-quarters-screen">
-  Item Max Width three-quarters-screen
+<div class="max-w-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.max-w-full-screen`
 
-Sets the `max-w` property to `100vw`.
+Sets the `max-width` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 w-full-screen">Item Max Width full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-w-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 w-full-screen">
-  Item Max Width full-screen
+<div class="max-w-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.max-w-0`
+### `.max-w-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `max-w` property to a `spacer value`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `max-width` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: max-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-w-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 max-h-auto">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-w-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
 <div class="max-w-0">
    0
 </div>
-<div class="max-h-auto">
-   Item 10
+<div class="max-w-10">
+   10
 </div>
 ```
 
-## Min-w
+## Min Width
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -619,274 +619,275 @@ Uses `Graupl-spacer` such as `0` to set the `max-w` property to a `spacer value`
 | [`.min-w-third-screen`](#min-w-third-screen) | min-width | calc(100vw/ 3) |
 | [`.min-w-two-thirds-screen`](#min-w-two-thirds-screen) | min-width | calc(100vw/ 1.5) |
 | [`.min-w-quarter-screen`](#min-w-quarter-screen) | min-width | 25vw |
-| [`.min-w-three-quarter-screen`](#min-w-three-quarters-screen) | min-width | 75vw |
+| [`.min-w-three-quarters-screen`](#min-w-three-quarters-screen) | min-width | 75vw |
 | [`.min-w-full-screen`](#min-w-full-screen) | min-width | 100vw |
-| [`.min-w-0`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 0 value |
-| [`.min-w-1`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 1 value |
-| [`.min-w-2`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 2 value |
-| [`.min-w-3`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 3 value |
-| [`.min-w-4`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 4 value |
-| [`.min-w-5`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 5 value |
-| [`.min-w-6`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 6 value |
-| [`.min-w-7`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 7 value |
-| [`.min-w-8`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 8 value |
-| [`.min-w-9`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 9 value |
-| [`.min-w-10`](#min-w-0) | min-width | Sets the min-width property to Graupl's spacer 10 value |
+| [`.min-w-0`](#min-w-spacer) | min-width | var(--graupl-spacer-0) |
+| [`.min-w-1`](#min-w-spacer) | min-width | var(--graupl-spacer-1) |
+| [`.min-w-2`](#min-w-spacer) | min-width | var(--graupl-spacer-2) |
+| [`.min-w-3`](#min-w-spacer) | min-width | var(--graupl-spacer-3) |
+| [`.min-w-4`](#min-w-spacer) | min-width | var(--graupl-spacer-4) |
+| [`.min-w-5`](#min-w-spacer) | min-width | var(--graupl-spacer-5) |
+| [`.min-w-6`](#min-w-spacer) | min-width | var(--graupl-spacer-6) |
+| [`.min-w-7`](#min-w-spacer) | min-width | var(--graupl-spacer-7) |
+| [`.min-w-8`](#min-w-spacer) | min-width | var(--graupl-spacer-8) |
+| [`.min-w-9`](#min-w-spacer) | min-width | var(--graupl-spacer-9) |
+| [`.min-w-10`](#min-w-spacer) | min-width | var(--graupl-spacer-10) |
 
 ### `.min-w-auto`
 
-Sets the `min-w` property to `auto`.
+Sets the `min-width` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-auto">Item Min Width Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 min-w-auto">
-  Item Min Width Auto
+<div class="min-w-auto">
+  Auto
 </div>
 ```
+
 
 ### `.min-w-fit-content`
 
-Sets the `min-w` property to `fit-content`.
+Sets the `min-width` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-fit-content">Item Min Width fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 min-w-fit-content">
-  Item Min Width fit-content
+<div class="min-w-fit-content">
+  Fit-content
+</div>
+```
+
+### `.min-w-max-content`
+
+Sets the `min-width` property to `max-content`.
+
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-max-content">Max-content</div>
+</div>
+
+```html
+<div class="min-w-max-content">
+  Max-content
 </div>
 ```
 
 ### `.min-w-min-content`
 
-Sets the `min-w` property to `min-content`.
+Sets the `min-width` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-min-content">Item Min Width min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 min-w-min-content">
-  Item Min Width min-content
-</div>
-```
-
-### `.min-w-min-content`
-
-Sets the `min-w` property to `min-content`.
-
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-min-content">Item Min Width min-content</div>
-</div>
-
-```html
-<div class="p-4 min-w-min-content">
-  Item Min Width min-content
+<div class="min-w-min-content">
+  Min-content
 </div>
 ```
 
 ### `.min-w-stretch`
 
-Sets the `min-w` property to `stretch`.
+Sets the `min-width` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-stretch">Item Min Width stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 min-w-stretch">
-  Item Min Width stretch
+<div class="min-w-stretch">
+  Stretch
 </div>
 ```
 
 ### `.min-w-full`
 
-Sets the `min-w` property to `100%`.
+Sets the `min-width` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-full">Item Min Width full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 min-w-full">
-  Item Min Width full
+<div class="min-w-full">
+  Full
 </div>
 ```
 
 ### `.min-w-quarter`
 
-Sets the `min-w` property to `25%`.
+Sets the `min-width` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-quarter">Item Min Width quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 min-w-quarter">
-  Item Min Width quarter
+<div class="min-w-quarter">
+  Quarter
 </div>
 ```
 
 ### `.min-w-half`
 
-Sets the `min-w` property to `50%`.
+Sets the `min-width` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-half">Item Min Width half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 min-w-half">
-  Item Min Width half
+<div class="min-w-half">
+  Half
 </div>
 ```
 
 ### `.min-w-three-quarters`
 
-Sets the `min-w` property to `75%`.
+Sets the `min-width` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-three-quarters">Item Min Width three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 min-w-three-quarters">
-  Item Min Width three-quarters
+<div class="min-w-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.min-w-third`
 
-Sets the `min-w` property to `calc(100%/ 3)`.
+Sets the `min-width` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-third">Item Min Width third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 min-w-third">
-  Item Min Width third
+<div class="min-w-third">
+  Third
 </div>
 ```
 
 ### `.min-w-two-thirds`
 
-Sets the `min-w` property to `calc(100%/ 1.5)`.
+Sets the `min-width` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-two-thirds">Item Min Width two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-w-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 min-w-two-thirds">
-  Item Min Width two-thirds
+<div class="min-w-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.min-w-half-screen`
 
-Sets the `min-w` property to `50vw`.
+Sets the `min-width` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-half-screen">Item Min Width half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-half-screen">
-  Item Min Width half-screen
+<div class="min-w-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.min-w-third-screen`
 
-Sets the `min-w` property to `calc(100vw/ 3)`.
+Sets the `min-width` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-third-screen">Item Min Width third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-third-screen">
-  Item Min Width third-screen
+<div class="min-w-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.min-w-two-thirds-screen`
 
-Sets the `min-w` property to `calc(100vw/ 1.5)`.
+Sets the `min-width` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-two-thirds-screen">Item Min Width two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-two-thirds-screen">
-  Item Min Width two-thirds-screen
+<div class="min-w-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.min-w-quarter-screen`
 
-Sets the `min-w` property to `25vw`.
+Sets the `min-width` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-quarter-screen">Item min-W-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-quarter-screen">
-  Item min-W-quarter-screen
+<div class="min-w-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.min-w-three-quarters-screen`
 
-Sets the `min-w` property to `75vw`.
+Sets the `min-width` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-three-quarters-screen">Item Min Width three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-three-quarters-screen">
-  Item Min Width three-quarters-screen
+<div class="min-w-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.min-w-full-screen`
 
-Sets the `min-w` property to `100vw`.
+Sets the `min-width` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-w-full-screen">Item Min Width full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-w-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-w-full-screen">
-  Item Min Width full-screen
+<div class="min-w-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.min-w-0`
+### `.min-w-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `min-w` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `min-width` property to the corresponding value.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 min-w-10">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-w-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
@@ -894,7 +895,7 @@ Uses `Graupl-spacer` such as `0` to set the `min-w` property to a `spacer`.
    0
 </div>
 <div class="min-w-10">
-   Item 10
+   10
 </div>
 ```
 
@@ -936,7 +937,7 @@ To customize the alignment utilities, you can use the following variables.
 
 ## Responsive variants
 
-To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$display-flex-aware` variables to `true`.
+To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
 
 By default, no responsive alignment utilities are generated.
 

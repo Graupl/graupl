@@ -1,52 +1,51 @@
-# Inline-size Utilities
+# Inline Size Utilities
 
-The inline-size utilities provide a set of classes to adjust the `inline-size`, `max-inline`, and `min-inline` properties of elements.
+The inline-size utilities provide a set of classes to adjust the `inline-size`, `max-inline-size`, and `min-inline-size` properties of elements.
 
-
-## Inline-size
+## Inline Size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.inline-auto`](#inline-size-auto) | inline-size | auto |
-| [`.inline-fit-content`](#inline-size-fit-content) | inline-size | fit-content |
-| [`.inline-max-content`](#inline-size-max-content) | inline-size | max-content |
-| [`.inline-min-content`](#inline-size-min-content) | inline-size | min-content |
-| [`.inline-stretch`](#inline-size-stretch) | inline-size | stretch |
-| [`.inline-full`](#inline-size-full) | inline-size | 100% |
-| [`.inline-quarter`](#inline-size-quarter) | inline-size | 25% |
-| [`.inline-half`](#inline-size-half) | inline-size | 50% |
-| [`.inline-three-quarters`](#inline-size-three-quarters) | inline-size | 75% |
-| [`.inline-third`](#inline-size-third) | inline-size | calc(100%/ 3) |
-| [`.inline-two-thirds`](#inline-size-two-thirds) | inline-size | calc(100%/ 1.5) |
-| [`.inline-half-screen`](#inline-size-half-screen) | inline-size | 50vh |
-| [`.inline-third-screen`](#inline-size-third-screen) | inline-size | calc(100vh/ 3) |
-| [`.inline-two-thirds-screen`](#inline-size-two-thirds-screen) | inline-size | calc(100vh/ 1.5) |
-| [`.inline-quarter-screen`](#inline-size-quarter-screen) | inline-size | 25vh |
-| [`.inline-three-quarters-screen`](#inline-size-three-quarters-screen) | inline-size | 75vh |
-| [`.inline-full-screen`](#inline-size-full-screen) | inline-size | 100vh |
-| [`.inline-0`](#inline-size-0) | inline-size | `var(--graupl-spacer-0)` |
-| [`.inline-1`](#inline-size-0) | inline-size | `var(--graupl-spacer-1)` |
-| [`.inline-2`](#inline-size-0) | inline-size | `var(--graupl-spacer-2)` |
-| [`.inline-3`](#inline-size-0) | inline-size | `var(--graupl-spacer-3)` |
-| [`.inline-4`](#inline-size-0) | inline-size | `var(--graupl-spacer-4)` |
-| [`.inline-5`](#inline-size-0) | inline-size | `var(--graupl-spacer-5)` |
-| [`.inline-6`](#inline-size-0) | inline-size | `var(--graupl-spacer-6)` |
-| [`.inline-7`](#inline-size-0) | inline-size | `var(--graupl-spacer-7)` |
-| [`.inline-8`](#inline-size-0) | inline-size | `var(--graupl-spacer-8)` |
-| [`.inline-9`](#inline-size-0) | inline-size | `var(--graupl-spacer-9)` |
-| [`.inline-10`](#inline-size-0) | inline-size | `var(--graupl-spacer-10)` |
+| [`.inline-auto`](#inline-auto) | inline-size | auto |
+| [`.inline-fit-content`](#inline-fit-content) | inline-size | fit-content |
+| [`.inline-max-content`](#inline-max-content) | inline-size | max-content |
+| [`.inline-min-content`](#inline-min-content) | inline-size | min-content |
+| [`.inline-stretch`](#inline-stretch) | inline-size | stretch |
+| [`.inline-full`](#inline-full) | inline-size | 100% |
+| [`.inline-quarter`](#inline-quarter) | inline-size | 25% |
+| [`.inline-half`](#inline-half) | inline-size | 50% |
+| [`.inline-three-quarters`](#inline-three-quarters) | inline-size | 75% |
+| [`.inline-third`](#inline-third) | inline-size | calc(100%/ 3) |
+| [`.inline-two-thirds`](#inline-two-thirds) | inline-size | calc(100%/ 1.5) |
+| [`.inline-half-screen`](#inline-half-screen) | inline-size | 50vw |
+| [`.inline-third-screen`](#inline-third-screen) | inline-size | calc(100vw/ 3) |
+| [`.inline-two-thirds-screen`](#inline-two-thirds-screen) | inline-size | calc(100vw/ 1.5) |
+| [`.inline-quarter-screen`](#inline-quarter-screen) | inline-size | 25vw |
+| [`.inline-three-quarters-screen`](#inline-three-quarters-screen) | inline-size | 75vw |
+| [`.inline-full-screen`](#inline-full-screen) | inline-size | 100vw |
+| [`.inline-0`](#inline-spacer) | inline-size | var(--graupl-spacer-0) |
+| [`.inline-1`](#inline-spacer) | inline-size | var(--graupl-spacer-1) |
+| [`.inline-2`](#inline-spacer) | inline-size | var(--graupl-spacer-2) |
+| [`.inline-3`](#inline-spacer) | inline-size | var(--graupl-spacer-3) |
+| [`.inline-4`](#inline-spacer) | inline-size | var(--graupl-spacer-4) |
+| [`.inline-5`](#inline-spacer) | inline-size | var(--graupl-spacer-5) |
+| [`.inline-6`](#inline-spacer) | inline-size | var(--graupl-spacer-6) |
+| [`.inline-7`](#inline-spacer) | inline-size | var(--graupl-spacer-7) |
+| [`.inline-8`](#inline-spacer) | inline-size | var(--graupl-spacer-8) |
+| [`.inline-9`](#inline-spacer) | inline-size | var(--graupl-spacer-9) |
+| [`.inline-10`](#inline-spacer) | inline-size | var(--graupl-spacer-10) |
 
 ### `.inline-auto`
 
 Sets the `inline-size` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-auto">Item Inline-size Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 inline-auto">
-  Item Inline-size Auto
+<div class="inline-auto">
+  Auto
 </div>
 ```
 
@@ -55,13 +54,13 @@ Sets the `inline-size` property to `auto`.
 
 Sets the `inline-size` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-fit-content">Item Inline-size fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-fit-content">
-  Item Inline-size fit-content
+<div class="inline-fit-content">
+  Fit-content
 </div>
 ```
 
@@ -69,13 +68,13 @@ Sets the `inline-size` property to `fit-content`.
 
 Sets the `inline-size` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-max-content">Item Inline-size max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-max-content">
-  Item Inline-size max-content
+<div class="inline-max-content">
+  Max-content
 </div>
 ```
 
@@ -83,13 +82,13 @@ Sets the `inline-size` property to `max-content`.
 
 Sets the `inline-size` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-min-content">Item Inline-size min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-min-content">
-  Item Inline-size min-content
+<div class="inline-min-content">
+  Min-content
 </div>
 ```
 
@@ -97,13 +96,13 @@ Sets the `inline-size` property to `min-content`.
 
 Sets the `inline-size` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-stretch">Item Inline-size stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 inline-stretch">
-  Item Inline-size stretch
+<div class="inline-stretch">
+  Stretch
 </div>
 ```
 
@@ -111,13 +110,13 @@ Sets the `inline-size` property to `stretch`.
 
 Sets the `inline-size` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-full">Item Inline-size full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 inline-full">
-  Item Inline-size full
+<div class="inline-full">
+  Full
 </div>
 ```
 
@@ -125,13 +124,13 @@ Sets the `inline-size` property to `100%`.
 
 Sets the `inline-size` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-quarter">Item Inline-size quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 inline-quarter">
-  Item Inline-size quarter
+<div class="inline-quarter">
+  Quarter
 </div>
 ```
 
@@ -139,13 +138,13 @@ Sets the `inline-size` property to `25%`.
 
 Sets the `inline-size` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-half">Item Inline-size half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 inline-half">
-  Item Inline-size half
+<div class="inline-half">
+  Half
 </div>
 ```
 
@@ -153,13 +152,13 @@ Sets the `inline-size` property to `50%`.
 
 Sets the `inline-size` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-three-quarters">Item Inline-size three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 inline-three-quarters">
-  Item Inline-size three-quarters
+<div class="inline-three-quarters">
+  Three-quarters
 </div>
 ```
 
@@ -167,13 +166,13 @@ Sets the `inline-size` property to `75%`.
 
 Sets the `inline-size` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-third">Item Inline-size third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 inline-third">
-  Item Inline-size third
+<div class="inline-third">
+  Third
 </div>
 ```
 
@@ -181,128 +180,128 @@ Sets the `inline-size` property to `calc(100%/ 3)`.
 
 Sets the `inline-size` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-two-thirds">Item Inline-size two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 inline-two-thirds">
-  Item Inline-size two-thirds
+<div class="inline-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.inline-half-screen`
 
-Sets the `inline-size` property to `50vh`.
+Sets the `inline-size` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-half-screen">Item Inline-size half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-half-screen">
-  Item Inline-size half-screen
+<div class="inline-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.inline-third-screen`
 
-Sets the `inline-size` property to `calc(100vh/ 3)`.
+Sets the `inline-size` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-third-screen">Item Inline-size third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-third-screen">
-  Item Inline-size third-screen
+<div class="inline-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.inline-two-thirds-screen`
 
-Sets the `inline-size` property to `calc(100vh/ 1.5)`.
+Sets the `inline-size` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-two-thirds-screen">Item Inline-size two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-two-thirds-screen">
-  Item Inline-size two-thirds-screen
+<div class="inline-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.inline-quarter-screen`
 
-Sets the `inline-size` property to `25vh`.
+Sets the `inline-size` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-quarter-screen">Item h-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-quarter-screen">
-  Item h-quarter-screen
+<div class="inline-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.inline-three-quarters-screen`
 
-Sets the `inline-size` property to `75vh`.
+Sets the `inline-size` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-three-quarters-screen">Item Inline-size three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-three-quarters-screen">
-  Item Inline-size three-quarters-screen
+<div class="inline-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.inline-full-screen`
 
-Sets the `inline-size` property to `100vh`.
+Sets the `inline-size` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-full-screen">Item Inline-size full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-full-screen">
-  Item Inline-size full-screen
+<div class="inline-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.inline-0`
+### `.inline-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `inline-size` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `inline-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 h-10">Item 10</div>
+<div class="inline-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 h-0">
+<div class="inline-0">
    0
 </div>
-<div class="m-2 h-10">
-   Item 10
+<div class="inline-10">
+   10
 </div>
 ```
 
-## Max-inline
+## Max Inline-size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -317,290 +316,291 @@ Uses `Graupl-spacer` such as `0` to set the `inline-size` property to a `spacer`
 | [`.max-inline-three-quarters`](#max-inline-three-quarters) | max-inline-size | 75% |
 | [`.max-inline-third`](#max-inline-third) | max-inline-size | calc(100%/ 3) |
 | [`.max-inline-two-thirds`](#max-inline-two-thirds) | max-inline-size | calc(100%/ 1.5) |
-| [`.max-inline-half-screen`](#max-inline-half-screen) | max-inline-size | 50vh |
-| [`.max-inline-third-screen`](#max-inline-third-screen) | max-inline-size | calc(100vh/ 3) |
-| [`.max-inline-two-thirds-screen`](#max-inline-two-thirds-screen) | max-inline-size | calc(100vh/ 1.5) |
-| [`.max-inline-quarter-screen`](#max-inline-quarter-screen) | max-inline-size | 25vh |
-| [`.max-inline-three-quarters-screen`](#max-inline-three-quarters-screen) | max-inline-size | 75vh |
-| [`.max-inline-full-screen`](#max-inline-full-screen) | max-inline-size | 100vh |
-| [`.max-inline-0`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 0 value |
-| [`.max-inline-1`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 1 value |
-| [`.max-inline-2`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 2 value |
-| [`.max-inline-3`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 3 value |
-| [`.max-inline-4`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 4 value |
-| [`.max-inline-5`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 5 value |
-| [`.max-inline-6`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 6 value |
-| [`.max-inline-7`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 7 value |
-| [`.max-inline-8`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 8 value |
-| [`.max-inline-9`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 9 value |
-| [`.max-inline-10`](#max-inline-0) | max-inline-size | Sets the max-inline-size property to Graupl's spacer 10 value |
+| [`.max-inline-half-screen`](#max-inline-half-screen) | max-inline-size | 50vw |
+| [`.max-inline-third-screen`](#max-inline-third-screen) | max-inline-size | calc(100vw/ 3) |
+| [`.max-inline-two-thirds-screen`](#max-inline-two-thirds-screen) | max-inline-size | calc(100vw/ 1.5) |
+| [`.max-inline-quarter-screen`](#max-inline-quarter-screen) | max-inline-size | 25vw |
+| [`.max-inline-three-quarters-screen`](#max-inline-three-quarters-screen) | max-inline-size | 75vw |
+| [`.max-inline-full-screen`](#max-inline-full-screen) | max-inline-size | 100vw |
+| [`.max-inline-0`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-0) |
+| [`.max-inline-1`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-1) |
+| [`.max-inline-2`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-2) |
+| [`.max-inline-3`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-3) |
+| [`.max-inline-4`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-4) |
+| [`.max-inline-5`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-5) |
+| [`.max-inline-6`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-6) |
+| [`.max-inline-7`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-7) |
+| [`.max-inline-8`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-8) |
+| [`.max-inline-9`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-9) |
+| [`.max-inline-10`](#max-inline-spacer) | max-inline-size | var(--graupl-spacer-10) |
 
 ### `.max-inline-auto`
 
-Sets the `max-inline` property to `auto`.
+Sets the `max-inline-size` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-auto">Item Max Inline-size Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 max-inline-auto">
-  Item Max Inline-size Auto
+<div class="max-inline-auto">
+  Auto
 </div>
 ```
 
+
 ### `.max-inline-fit-content`
 
-Sets the `max-inline` property to `fit-content`.
+Sets the `max-inline-size` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-fit-content">Item Max Inline-size fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-fit-content">
-  Item Max Inline-size fit-content
+<div class="max-inline-fit-content">
+  Fit-content
 </div>
 ```
 
 ### `.max-inline-max-content`
 
-Sets the `max-inline` property to `max-content`.
+Sets the `max-inline-size` property to `max-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-max-content">Item Max Inline-size max-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-max-content">
-  Item Max Inline-size max-content
+<div class="max-inline-max-content">
+  Max-content
 </div>
 ```
 
 ### `.max-inline-min-content`
 
-Sets the `max-inline` property to `min-content`.
+Sets the `max-inline-size` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-min-content">Item Max Inline-size min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 inline-min-content">
-  Item Max Inline-size min-content
+<div class="max-inline-min-content">
+  Min-content
 </div>
 ```
 
 ### `.max-inline-stretch`
 
-Sets the `max-inline` property to `stretch`.
+Sets the `max-inline-size` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-stretch">Item Max Inline-size stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 inline-stretch">
-  Item Max Inline-size stretch
+<div class="max-inline-stretch">
+  Stretch
 </div>
 ```
 
 ### `.max-inline-full`
 
-Sets the `max-inline` property to `100%`.
+Sets the `max-inline-size` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-full">Item Max Inline-size full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 inline-full">
-  Item Max Inline-size full
+<div class="max-inline-full">
+  Full
 </div>
 ```
 
 ### `.max-inline-quarter`
 
-Sets the `max-inline` property to `25%`.
+Sets the `max-inline-size` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-quarter">Item Max Inline-size quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 inline-quarter">
-  Item Max Inline-size quarter
+<div class="max-inline-quarter">
+  Quarter
 </div>
 ```
 
 ### `.max-inline-half`
 
-Sets the `max-inline` property to `50%`.
+Sets the `max-inline-size` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-half">Item Max Inline-size half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 inline-half">
-  Item Max Inline-size half
+<div class="max-inline-half">
+  Half
 </div>
 ```
 
 ### `.max-inline-three-quarters`
 
-Sets the `max-inline` property to `75%`.
+Sets the `max-inline-size` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-three-quarters">Item Max Inline-size three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 inline-three-quarters">
-  Item Max Inline-size three-quarters
+<div class="max-inline-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.max-inline-third`
 
-Sets the `max-inline` property to `calc(100%/ 3)`.
+Sets the `max-inline-size` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-third">Item Max Inline-size third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 inline-third">
-  Item Max Inline-size third
+<div class="max-inline-third">
+  Third
 </div>
 ```
 
 ### `.max-inline-two-thirds`
 
-Sets the `max-inline` property to `calc(100%/ 1.5)`.
+Sets the `max-inline-size` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 inline-two-thirds">Item Max Inline-size two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-inline-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 inline-two-thirds">
-  Item Max Inline-size two-thirds
+<div class="max-inline-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.max-inline-half-screen`
 
-Sets the `max-inline` property to `50vh`.
+Sets the `max-inline-size` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-half-screen">Item Max Inline-size half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-half-screen">
-  Item Max Inline-size half-screen
+<div class="max-inline-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.max-inline-third-screen`
 
-Sets the `max-inline` property to `calc(100vh/ 3)`.
+Sets the `max-inline-size` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-third-screen">Item Max Inline-size third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-third-screen">
-  Item Max Inline-size third-screen
+<div class="max-inline-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.max-inline-two-thirds-screen`
 
-Sets the `max-inline` property to `calc(100vh/ 1.5)`.
+Sets the `max-inline-size` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-two-thirds-screen">Item Max Inline-size two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-two-thirds-screen">
-  Item Max Inline-size two-thirds-screen
+<div class="max-inline-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.max-inline-quarter-screen`
 
-Sets the `max-inline` property to `25vh`.
+Sets the `max-inline-size` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-quarter-screen">Item h-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-quarter-screen">
-  Item h-quarter-screen
+<div class="max-inline-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.max-inline-three-quarters-screen`
 
-Sets the `max-inline` property to `75vh`.
+Sets the `max-inline-size` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-three-quarters-screen">Item Max Inline-size three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-three-quarters-screen">
-  Item Max Inline-size three-quarters-screen
+<div class="max-inline-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.max-inline-full-screen`
 
-Sets the `max-inline` property to `100vh`.
+Sets the `max-inline-size` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 inline-full-screen">Item Max Inline-size full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-inline-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 inline-full-screen">
-  Item Max Inline-size full-screen
+<div class="max-inline-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.max-inline-0`
+### `.max-inline-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `max-inline` property to a `spacer value`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `max-inline-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-inline-10">Item 10</div>
+<div class="inline-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-inline-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 max-inline-0">
+<div class="max-inline-0">
    0
 </div>
-<div class="m-2 max-inline-10">
-   Item 10
+<div class="max-inline-10">
+   10
 </div>
 ```
 
-## Min-inline
+## Min Inline-size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -615,286 +615,287 @@ Uses `Graupl-spacer` such as `0` to set the `max-inline` property to a `spacer v
 | [`.min-inline-three-quarters`](#min-inline-three-quarters) | min-inline-size | 75% |
 | [`.min-inline-third`](#min-inline-third) | min-inline-size | calc(100%/ 3) |
 | [`.min-inline-two-thirds`](#min-inline-two-thirds) | min-inline-size | calc(100%/ 1.5) |
-| [`.min-inline-half-screen`](#min-inline-half-screen) | min-inline-size | 50vh |
-| [`.min-inline-third-screen`](#min-inline-third-screen) | min-inline-size | calc(100vh/ 3) |
-| [`.min-inline-two-thirds-screen`](#min-inline-two-thirds-screen) | min-inline-size | calc(100vh/ 1.5) |
-| [`.min-inline-quarter-screen`](#min-inline-quarter-screen) | min-inline-size | 25vh |
-| [`.min-inline-three-quarter-screen`](#min-inline-three-quarters-screen) | min-inline-size | 75vh |
-| [`.min-inline-full-screen`](#min-inline-full-screen) | min-inline-size | 100vh |
-| [`.min-inline-0`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 0 value |
-| [`.min-inline-1`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 1 value |
-| [`.min-inline-2`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 2 value |
-| [`.min-inline-3`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 3 value |
-| [`.min-inline-4`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 4 value |
-| [`.min-inline-5`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 5 value |
-| [`.min-inline-6`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 6 value |
-| [`.min-inline-7`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 7 value |
-| [`.min-inline-8`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 8 value |
-| [`.min-inline-9`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 9 value |
-| [`.min-inline-10`](#min-inline-0) | min-inline-size | Sets the min-inline-size property to Graupl's spacer 10 value |
+| [`.min-inline-half-screen`](#min-inline-half-screen) | min-inline-size | 50vw |
+| [`.min-inline-third-screen`](#min-inline-third-screen) | min-inline-size | calc(100vw/ 3) |
+| [`.min-inline-two-thirds-screen`](#min-inline-two-thirds-screen) | min-inline-size | calc(100vw/ 1.5) |
+| [`.min-inline-quarter-screen`](#min-inline-quarter-screen) | min-inline-size | 25vw |
+| [`.min-inline-three-quarters-screen`](#min-inline-three-quarters-screen) | min-inline-size | 75vw |
+| [`.min-inline-full-screen`](#min-inline-full-screen) | min-inline-size | 100vw |
+| [`.min-inline-0`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-0) |
+| [`.min-inline-1`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-1) |
+| [`.min-inline-2`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-2) |
+| [`.min-inline-3`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-3) |
+| [`.min-inline-4`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-4) |
+| [`.min-inline-5`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-5) |
+| [`.min-inline-6`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-6) |
+| [`.min-inline-7`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-7) |
+| [`.min-inline-8`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-8) |
+| [`.min-inline-9`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-9) |
+| [`.min-inline-10`](#min-inline-spacer) | min-inline-size | var(--graupl-spacer-10) |
 
 ### `.min-inline-auto`
 
-Sets the `min-inline` property to `auto`.
+Sets the `min-inline-size` property to `auto`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-auto">Item Min Inline-size Auto</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-auto">
-  Item Min Inline-size Auto
+<div class="min-inline-auto">
+  Auto
 </div>
 ```
+
 
 ### `.min-inline-fit-content`
 
-Sets the `min-inline` property to `fit-content`.
+Sets the `min-inline-size` property to `fit-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-fit-content">Item Min Inline-size fit-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-fit-content">
-  Item Min Inline-size fit-content
+<div class="min-inline-fit-content">
+  Fit-content
+</div>
+```
+
+### `.min-inline-max-content`
+
+Sets the `min-inline-size` property to `max-content`.
+
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-max-content">Max-content</div>
+</div>
+
+```html
+<div class="min-inline-max-content">
+  Max-content
 </div>
 ```
 
 ### `.min-inline-min-content`
 
-Sets the `min-inline` property to `min-content`.
+Sets the `min-inline-size` property to `min-content`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-min-content">Item Min Inline-size min-content</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-min-content">
-  Item Min Inline-size min-content
-</div>
-```
-
-### `.min-inline-min-content`
-
-Sets the `min-inline` property to `min-content`.
-
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-min-content">Item Min Inline-size min-content</div>
-</div>
-
-```html
-<div class="p-4 min-inline-min-content">
-  Item Min Inline-size min-content
+<div class="min-inline-min-content">
+  Min-content
 </div>
 ```
 
 ### `.min-inline-stretch`
 
-Sets the `min-inline` property to `stretch`.
+Sets the `min-inline-size` property to `stretch`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-stretch">Item Min Inline-size stretch</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-stretch">
-  Item Min Inline-size stretch
+<div class="min-inline-stretch">
+  Stretch
 </div>
 ```
 
 ### `.min-inline-full`
 
-Sets the `min-inline` property to `100%`.
+Sets the `min-inline-size` property to `100%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-full">Item Min Inline-size full</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-full">
-  Item Min Inline-size full
+<div class="min-inline-full">
+  Full
 </div>
 ```
 
 ### `.min-inline-quarter`
 
-Sets the `min-inline` property to `25%`.
+Sets the `min-inline-size` property to `25%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-quarter">Item Min Inline-size quarter</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-quarter">
-  Item Min Inline-size quarter
+<div class="min-inline-quarter">
+  Quarter
 </div>
 ```
 
 ### `.min-inline-half`
 
-Sets the `min-inline` property to `50%`.
+Sets the `min-inline-size` property to `50%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-half">Item Min Inline-size half</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-half">
-  Item Min Inline-size half
+<div class="min-inline-half">
+  Half
 </div>
 ```
 
 ### `.min-inline-three-quarters`
 
-Sets the `min-inline` property to `75%`.
+Sets the `min-inline-size` property to `75%`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-three-quarters">Item Min Inline-size three-quarters</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-three-quarters">
-  Item Min Inline-size three-quarters
+<div class="min-inline-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.min-inline-third`
 
-Sets the `min-inline` property to `calc(100%/ 3)`.
+Sets the `min-inline-size` property to `calc(100%/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-third">Item Min Inline-size third</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-third">
-  Item Min Inline-size third
+<div class="min-inline-third">
+  Third
 </div>
 ```
 
 ### `.min-inline-two-thirds`
 
-Sets the `min-inline` property to `calc(100%/ 1.5)`.
+Sets the `min-inline-size` property to `calc(100%/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-two-thirds">Item Min Inline-size two-thirds</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-inline-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-two-thirds">
-  Item Min Inline-size two-thirds
+<div class="min-inline-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.min-inline-half-screen`
 
-Sets the `min-inline` property to `50vh`.
+Sets the `min-inline-size` property to `50vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-half-screen">Item Min Inline-size half-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-half-screen">
-  Item Min Inline-size half-screen
+<div class="min-inline-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.min-inline-third-screen`
 
-Sets the `min-inline` property to `calc(100vh/ 3)`.
+Sets the `min-inline-size` property to `calc(100vw/ 3)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-third-screen">Item Min Inline-size third-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-third-screen">
-  Item Min Inline-size third-screen
+<div class="min-inline-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.min-inline-two-thirds-screen`
 
-Sets the `min-inline` property to `calc(100vh/ 1.5)`.
+Sets the `min-inline-size` property to `calc(100vw/ 1.5)`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-two-thirds-screen">Item Min Inline-size two-thirds-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-two-thirds-screen">
-  Item Min Inline-size two-thirds-screen
+<div class="min-inline-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.min-inline-quarter-screen`
 
-Sets the `min-inline` property to `25vh`.
+Sets the `min-inline-size` property to `25vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-quarter-screen">Item min-INLINE-quarter-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-quarter-screen">
-  Item min-INLINE-quarter-screen
+<div class="min-inline-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.min-inline-three-quarters-screen`
 
-Sets the `min-inline` property to `75vh`.
+Sets the `min-inline-size` property to `75vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-three-quarters-screen">Item Min Inline-size three-quarters-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-three-quarters-screen">
-  Item Min Inline-size three-quarters-screen
+<div class="min-inline-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.min-inline-full-screen`
 
-Sets the `min-inline` property to `100vh`.
+Sets the `min-inline-size` property to `100vw`.
 
-<div class="display-flex bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 m-4 min-inline-full-screen">Item Min Inline-size full-screen</div>
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-inline-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-inline-full-screen">
-  Item Min Inline-size full-screen
+<div class="min-inline-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.min-inline-0`
+### `.min-inline-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `min-inline` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `min-inline-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-inline-10">Item 10</div>
+<div class="inline-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-inline-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 min-inline-0">
+<div class="min-inline-0">
    0
 </div>
-<div class="m-2 min-inline-10">
-   Item 10
+<div class="min-inline-10">
+   10
 </div>
 ```
 
@@ -936,7 +937,7 @@ To customize the alignment utilities, you can use the following variables.
 
 ## Responsive variants
 
-To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$display-flex-aware` variables to `true`.
+To generate responsive alignment utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
 
 By default, no responsive alignment utilities are generated.
 

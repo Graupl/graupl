@@ -1,10 +1,8 @@
 # Block Size Utilities
 
-The block-size utilities provide a set of classes to adjust the `block`, `max-block`, and `min-block` properties of elements.
+The block-size utilities provide a set of classes to adjust the `block-size`, `max-block-size`, and `min-block-size` properties of elements.
 
-In a grid there are two axes: the block or column axis; and the inline or row axis. The inline (or row, or main) axis is the direction along which regular text flows. The block (or column, or cross) axis is the axis used when laying out blocks of text.
-
-## Block
+## Block Size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -25,285 +23,285 @@ In a grid there are two axes: the block or column axis; and the inline or row ax
 | [`.block-quarter-screen`](#block-quarter-screen) | block-size | 25vh |
 | [`.block-three-quarters-screen`](#block-three-quarters-screen) | block-size | 75vh |
 | [`.block-full-screen`](#block-full-screen) | block-size | 100vh |
-| [`.block-0`](#block-0) | block-size | `var(--graupl-spacer-0)` |
-| [`.block-1`](#block-0) | block-size | `var(--graupl-spacer-1)` |
-| [`.block-2`](#block-0) | block-size | `var(--graupl-spacer-2)` |
-| [`.block-3`](#block-0) | block-size | `var(--graupl-spacer-3)` |
-| [`.block-4`](#block-0) | block-size | `var(--graupl-spacer-4)` |
-| [`.block-5`](#block-0) | block-size | `var(--graupl-spacer-5)` |
-| [`.block-6`](#block-0) | block-size | `var(--graupl-spacer-6)` |
-| [`.block-7`](#block-0) | block-size | `var(--graupl-spacer-7)` |
-| [`.block-8`](#block-0) | block-size | `var(--graupl-spacer-8)` |
-| [`.block-9`](#block-0) | block-size | `var(--graupl-spacer-9)` |
-| [`.block-10`](#block-0) | block-size | `var(--graupl-spacer-10)` |
+| [`.block-0`](#block-spacer) | block-size | var(--graupl-spacer-0) |
+| [`.block-1`](#block-spacer) | block-size | var(--graupl-spacer-1) |
+| [`.block-2`](#block-spacer) | block-size | var(--graupl-spacer-2) |
+| [`.block-3`](#block-spacer) | block-size | var(--graupl-spacer-3) |
+| [`.block-4`](#block-spacer) | block-size | var(--graupl-spacer-4) |
+| [`.block-5`](#block-spacer) | block-size | var(--graupl-spacer-5) |
+| [`.block-6`](#block-spacer) | block-size | var(--graupl-spacer-6) |
+| [`.block-7`](#block-spacer) | block-size | var(--graupl-spacer-7) |
+| [`.block-8`](#block-spacer) | block-size | var(--graupl-spacer-8) |
+| [`.block-9`](#block-spacer) | block-size | var(--graupl-spacer-9) |
+| [`.block-10`](#block-spacer) | block-size | var(--graupl-spacer-10) |
 
 ### `.block-auto`
 
-Sets the `block` property to `auto`.
+Sets the `block-size` property to `auto`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-auto">Item Block Auto</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 block-auto">
-  Item Block Auto
+<div class="block-auto">
+  Auto
 </div>
 ```
 
 
 ### `.block-fit-content`
 
-Sets the `block` property to `fit-content`.
+Sets the `block-size` property to `fit-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Item Block fit-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 block-fit-content">
-  Item Block fit-content
+<div class="block-fit-content">
+  Fit-content
 </div>
 ```
 
 ### `.block-max-content`
 
-Sets the `block` property to `max-content`.
+Sets the `block-size` property to `max-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Item Block max-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 block-max-content">
-  Item Block max-content
+<div class="block-max-content">
+  Max-content
 </div>
 ```
 
 ### `.block-min-content`
 
-Sets the `block` property to `min-content`.
+Sets the `block-size` property to `min-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Item Block min-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 block-min-content">
-  Item Block min-content
+<div class="block-min-content">
+  Min-content
 </div>
 ```
 
 ### `.block-stretch`
 
-Sets the `block` property to `stretch`.
+Sets the `block-size` property to `stretch`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Item Block stretch</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 block-stretch">
-  Item Block stretch
+<div class="block-stretch">
+  Stretch
 </div>
 ```
 
 ### `.block-full`
 
-Sets the `block` property to `100%`.
+Sets the `block-size` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Block full</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 block-full">
-  Item Block full
+<div class="block-full">
+  Full
 </div>
 ```
 
 ### `.block-quarter`
 
-Sets the `block` property to `25%`.
+Sets the `block-size` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Block quarter</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 block-quarter">
-  Item Block quarter
+<div class="block-quarter">
+  Quarter
 </div>
 ```
 
 ### `.block-half`
 
-Sets the `block` property to `50%`.
+Sets the `block-size` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Block half</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 block-half">
-  Item Block half
+<div class="block-half">
+  Half
 </div>
 ```
 
 ### `.block-three-quarters`
 
-Sets the `block` property to `75%`.
+Sets the `block-size` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Block three-quarters</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 block-three-quarters">
-  Item Block three-quarters
+<div class="block-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.block-third`
 
-Sets the `block` property to `calc(100%/ 3)`.
+Sets the `block-size` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Block third</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 block-third">
-  Item Block third
+<div class="block-third">
+  Third
 </div>
 ```
 
 ### `.block-two-thirds`
 
-Sets the `block` property to `calc(100%/ 1.5)`.
+Sets the `block-size` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Block two-thirds</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 block-two-thirds">
-  Item Block two-thirds
+<div class="block-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.block-half-screen`
 
-Sets the `block` property to `50vh`.
+Sets the `block-size` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Block half-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-half-screen">
-  Item Block half-screen
+<div class="block-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.block-third-screen`
 
-Sets the `block` property to `calc(100vh/ 3)`.
+Sets the `block-size` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Block third-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-third-screen">
-  Item Block third-screen
+<div class="block-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.block-two-thirds-screen`
 
-Sets the `block` property to `calc(100vh/ 1.5)`.
+Sets the `block-size` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Block two-thirds-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-two-thirds-screen">
-  Item Block two-thirds-screen
+<div class="block-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.block-quarter-screen`
 
-Sets the `block` property to `25vh`.
+Sets the `block-size` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-quarter-screen">
-  Item Block-quarter-screen
+<div class="block-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.block-three-quarters-screen`
 
-Sets the `block` property to `75vh`.
+Sets the `block-size` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Block three-quarters-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-three-quarters-screen">
-  Item Block three-quarters-screen
+<div class="block-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.block-full-screen`
 
-Sets the `block` property to `100vh`.
+Sets the `block-size` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Block full-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-full-screen">
-  Item Block full-screen
+<div class="block-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.block-0`
+### `.block-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `block` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `block-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 block-10">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 block-0">
+<div class="block-0">
    0
 </div>
-<div class="m-2 block-10">
-   Item 10
+<div class="block-10">
+   10
 </div>
 ```
 
-## Max-block
+## Max Block Size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -324,284 +322,285 @@ Uses `Graupl-spacer` such as `0` to set the `block` property to a `spacer`.
 | [`.max-block-quarter-screen`](#max-block-quarter-screen) | max-block-size | 25vh |
 | [`.max-block-three-quarters-screen`](#max-block-three-quarters-screen) | max-block-size | 75vh |
 | [`.max-block-full-screen`](#max-block-full-screen) | max-block-size | 100vh |
-| [`.max-block-0`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 0 value |
-| [`.max-block-1`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 1 value |
-| [`.max-block-2`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 2 value |
-| [`.max-block-3`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 3 value |
-| [`.max-block-4`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 4 value |
-| [`.max-block-5`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 5 value |
-| [`.max-block-6`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 6 value |
-| [`.max-block-7`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 7 value |
-| [`.max-block-8`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 8 value |
-| [`.max-block-9`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 9 value |
-| [`.max-block-10`](#max-block-0) | max-block-size | Sets the max-block-size property to Graupl's spacer 10 value |
+| [`.max-block-0`](#max-block-spacer) | max-block-size | var(--graupl-spacer-0) |
+| [`.max-block-1`](#max-block-spacer) | max-block-size | var(--graupl-spacer-1) |
+| [`.max-block-2`](#max-block-spacer) | max-block-size | var(--graupl-spacer-2) |
+| [`.max-block-3`](#max-block-spacer) | max-block-size | var(--graupl-spacer-3) |
+| [`.max-block-4`](#max-block-spacer) | max-block-size | var(--graupl-spacer-4) |
+| [`.max-block-5`](#max-block-spacer) | max-block-size | var(--graupl-spacer-5) |
+| [`.max-block-6`](#max-block-spacer) | max-block-size | var(--graupl-spacer-6) |
+| [`.max-block-7`](#max-block-spacer) | max-block-size | var(--graupl-spacer-7) |
+| [`.max-block-8`](#max-block-spacer) | max-block-size | var(--graupl-spacer-8) |
+| [`.max-block-9`](#max-block-spacer) | max-block-size | var(--graupl-spacer-9) |
+| [`.max-block-10`](#max-block-spacer) | max-block-size | var(--graupl-spacer-10) |
 
 ### `.max-block-auto`
 
-Sets the `max-block` property to `auto`.
+Sets the `max-block-size` property to `auto`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-auto">Item Max Block Auto</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 max-block-auto">
-  Item Max Block Auto
+<div class="max-block-auto">
+  Auto
 </div>
 ```
 
+
 ### `.max-block-fit-content`
 
-Sets the `max-block` property to `fit-content`.
+Sets the `max-block-size` property to `fit-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-fit-content">Item Max Block fit-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 block-fit-content">
-  Item Max Block fit-content
+<div class="max-block-fit-content">
+  Fit-content
 </div>
 ```
 
 ### `.max-block-max-content`
 
-Sets the `max-block` property to `max-content`.
+Sets the `max-block-size` property to `max-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-max-content">Item Max Block max-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-max-content">Max-content</div>
 </div>
 
 ```html
-<div class="p-4 block-max-content">
-  Item Max Block max-content
+<div class="max-block-max-content">
+  Max-content
 </div>
 ```
 
 ### `.max-block-min-content`
 
-Sets the `max-block` property to `min-content`.
+Sets the `max-block-size` property to `min-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-min-content">Item Max Block min-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 block-min-content">
-  Item Max Block min-content
+<div class="max-block-min-content">
+  Min-content
 </div>
 ```
 
 ### `.max-block-stretch`
 
-Sets the `max-block` property to `stretch`.
+Sets the `max-block-size` property to `stretch`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-stretch">Item Max Block stretch</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 block-stretch">
-  Item Max Block stretch
+<div class="max-block-stretch">
+  Stretch
 </div>
 ```
 
 ### `.max-block-full`
 
-Sets the `max-block` property to `100%`.
+Sets the `max-block-size` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-full">Item Max Block full</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 block-full">
-  Item Max Block full
+<div class="max-block-full">
+  Full
 </div>
 ```
 
 ### `.max-block-quarter`
 
-Sets the `max-block` property to `25%`.
+Sets the `max-block-size` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-quarter">Item Max Block quarter</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 block-quarter">
-  Item Max Block quarter
+<div class="max-block-quarter">
+  Quarter
 </div>
 ```
 
 ### `.max-block-half`
 
-Sets the `max-block` property to `50%`.
+Sets the `max-block-size` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-half">Item Max Block half</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 block-half">
-  Item Max Block half
+<div class="max-block-half">
+  Half
 </div>
 ```
 
 ### `.max-block-three-quarters`
 
-Sets the `max-block` property to `75%`.
+Sets the `max-block-size` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-three-quarters">Item Max Block three-quarters</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 block-three-quarters">
-  Item Max Block three-quarters
+<div class="max-block-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.max-block-third`
 
-Sets the `max-block` property to `calc(100%/ 3)`.
+Sets the `max-block-size` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-third">Item Max Block third</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 block-third">
-  Item Max Block third
+<div class="max-block-third">
+  Third
 </div>
 ```
 
 ### `.max-block-two-thirds`
 
-Sets the `max-block` property to `calc(100%/ 1.5)`.
+Sets the `max-block-size` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 block-two-thirds">Item Max Block two-thirds</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 max-block-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 block-two-thirds">
-  Item Max Block two-thirds
+<div class="max-block-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.max-block-half-screen`
 
-Sets the `max-block` property to `50vh`.
+Sets the `max-block-size` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-half-screen">Item Max Block half-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-half-screen">
-  Item Max Block half-screen
+<div class="max-block-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.max-block-third-screen`
 
-Sets the `max-block` property to `calc(100vh/ 3)`.
+Sets the `max-block-size` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-third-screen">Item Max Block third-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-third-screen">
-  Item Max Block third-screen
+<div class="max-block-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.max-block-two-thirds-screen`
 
-Sets the `max-block` property to `calc(100vh/ 1.5)`.
+Sets the `max-block-size` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-two-thirds-screen">Item Max Block two-thirds-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-two-thirds-screen">
-  Item Max Block two-thirds-screen
+<div class="max-block-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.max-block-quarter-screen`
 
-Sets the `max-block` property to `25vh`.
+Sets the `max-block-size` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-quarter-screen">Item Block-quarter-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-quarter-screen">
-  Item Block-quarter-screen
+<div class="max-block-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.max-block-three-quarters-screen`
 
-Sets the `max-block` property to `75vh`.
+Sets the `max-block-size` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-three-quarters-screen">Item Max Block three-quarters-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-three-quarters-screen">
-  Item Max Block three-quarters-screen
+<div class="max-block-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.max-block-full-screen`
 
-Sets the `max-block` property to `100vh`.
+Sets the `max-block-size` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 block-full-screen">Item Max Block full-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 max-block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 block-full-screen">
-  Item Max Block full-screen
+<div class="max-block-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.max-block-0`
+### `.max-block-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `max-block` property to a `spacer value`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `max-block-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, auto); grid-template-rows: max-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 max-block-10">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative max-block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 max-block-0">
+<div class="max-block-0">
    0
 </div>
-<div class="m-2 max-block-10">
-   Item 10
+<div class="max-block-10">
+   10
 </div>
 ```
 
-## Min-block
+## Min Block Size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -620,282 +619,283 @@ Uses `Graupl-spacer` such as `0` to set the `max-block` property to a `spacer va
 | [`.min-block-third-screen`](#min-block-third-screen) | min-block-size | calc(100vh/ 3) |
 | [`.min-block-two-thirds-screen`](#min-block-two-thirds-screen) | min-block-size | calc(100vh/ 1.5) |
 | [`.min-block-quarter-screen`](#min-block-quarter-screen) | min-block-size | 25vh |
-| [`.min-block-three-quarter-screen`](#min-block-three-quarters-screen) | min-block-size | 75vh |
+| [`.min-block-three-quarters-screen`](#min-block-three-quarters-screen) | min-block-size | 75vh |
 | [`.min-block-full-screen`](#min-block-full-screen) | min-block-size | 100vh |
-| [`.min-block-0`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 0 value |
-| [`.min-block-1`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 1 value |
-| [`.min-block-2`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 2 value |
-| [`.min-block-3`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 3 value |
-| [`.min-block-4`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 4 value |
-| [`.min-block-5`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 5 value |
-| [`.min-block-6`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 6 value |
-| [`.min-block-7`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 7 value |
-| [`.min-block-8`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 8 value |
-| [`.min-block-9`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 9 value |
-| [`.min-block-10`](#min-block-0) | min-block-size | Sets the min-block-size property to Graupl's spacer 10 value |
+| [`.min-block-0`](#min-block-spacer) | min-block-size | var(--graupl-spacer-0) |
+| [`.min-block-1`](#min-block-spacer) | min-block-size | var(--graupl-spacer-1) |
+| [`.min-block-2`](#min-block-spacer) | min-block-size | var(--graupl-spacer-2) |
+| [`.min-block-3`](#min-block-spacer) | min-block-size | var(--graupl-spacer-3) |
+| [`.min-block-4`](#min-block-spacer) | min-block-size | var(--graupl-spacer-4) |
+| [`.min-block-5`](#min-block-spacer) | min-block-size | var(--graupl-spacer-5) |
+| [`.min-block-6`](#min-block-spacer) | min-block-size | var(--graupl-spacer-6) |
+| [`.min-block-7`](#min-block-spacer) | min-block-size | var(--graupl-spacer-7) |
+| [`.min-block-8`](#min-block-spacer) | min-block-size | var(--graupl-spacer-8) |
+| [`.min-block-9`](#min-block-spacer) | min-block-size | var(--graupl-spacer-9) |
+| [`.min-block-10`](#min-block-spacer) | min-block-size | var(--graupl-spacer-10) |
 
 ### `.min-block-auto`
 
-Sets the `min-block` property to `auto`.
+Sets the `min-block-size` property to `auto`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-auto">Item Min Block Auto</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-auto">Auto</div>
 </div>
 
 ```html
-<div class="p-4 min-block-auto">
-  Item Min Block Auto
+<div class="min-block-auto">
+  Auto
 </div>
 ```
+
 
 ### `.min-block-fit-content`
 
-Sets the `min-block` property to `fit-content`.
+Sets the `min-block-size` property to `fit-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-fit-content">Item Min Block fit-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-fit-content">Fit-content</div>
 </div>
 
 ```html
-<div class="p-4 min-block-fit-content">
-  Item Min Block fit-content
+<div class="min-block-fit-content">
+  Fit-content
+</div>
+```
+
+### `.min-block-max-content`
+
+Sets the `min-block-size` property to `max-content`.
+
+<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-max-content">Max-content</div>
+</div>
+
+```html
+<div class="min-block-max-content">
+  Max-content
 </div>
 ```
 
 ### `.min-block-min-content`
 
-Sets the `min-block` property to `min-content`.
+Sets the `min-block-size` property to `min-content`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Item Min Block min-content</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Min-content</div>
 </div>
 
 ```html
-<div class="p-4 min-block-min-content">
-  Item Min Block min-content
-</div>
-```
-
-### `.min-block-min-content`
-
-Sets the `min-block` property to `min-content`.
-
-<div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-min-content">Item Min Block min-content</div>
-</div>
-
-```html
-<div class="p-4 min-block-min-content">
-  Item Min Block min-content
+<div class="min-block-min-content">
+  Min-content
 </div>
 ```
 
 ### `.min-block-stretch`
 
-Sets the `min-block` property to `stretch`.
+Sets the `min-block-size` property to `stretch`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-stretch">Item Min Block stretch</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-stretch">Stretch</div>
 </div>
 
 ```html
-<div class="p-4 min-block-stretch">
-  Item Min Block stretch
+<div class="min-block-stretch">
+  Stretch
 </div>
 ```
 
 ### `.min-block-full`
 
-Sets the `min-block` property to `100%`.
+Sets the `min-block-size` property to `100%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full">Item Min Block full</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-full">Full</div>
 </div>
 
 ```html
-<div class="p-4 min-block-full">
-  Item Min Block full
+<div class="min-block-full">
+  Full
 </div>
 ```
 
 ### `.min-block-quarter`
 
-Sets the `min-block` property to `25%`.
+Sets the `min-block-size` property to `25%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter">Item Min Block quarter</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-quarter">Quarter</div>
 </div>
 
 ```html
-<div class="p-4 min-block-quarter">
-  Item Min Block quarter
+<div class="min-block-quarter">
+  Quarter
 </div>
 ```
 
 ### `.min-block-half`
 
-Sets the `min-block` property to `50%`.
+Sets the `min-block-size` property to `50%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half">Item Min Block half</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-half">Half</div>
 </div>
 
 ```html
-<div class="p-4 min-block-half">
-  Item Min Block half
+<div class="min-block-half">
+  Half
 </div>
 ```
 
 ### `.min-block-three-quarters`
 
-Sets the `min-block` property to `75%`.
+Sets the `min-block-size` property to `75%`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters">Item Min Block three-quarters</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-three-quarters">Three-quarters</div>
 </div>
 
 ```html
-<div class="p-4 min-block-three-quarters">
-  Item Min Block three-quarters
+<div class="min-block-three-quarters">
+  Three-quarters
 </div>
 ```
 
 ### `.min-block-third`
 
-Sets the `min-block` property to `calc(100%/ 3)`.
+Sets the `min-block-size` property to `calc(100%/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third">Item Min Block third</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-third">Third</div>
 </div>
 
 ```html
-<div class="p-4 min-block-third">
-  Item Min Block third
+<div class="min-block-third">
+  Third
 </div>
 ```
 
 ### `.min-block-two-thirds`
 
-Sets the `min-block` property to `calc(100%/ 1.5)`.
+Sets the `min-block-size` property to `calc(100%/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds">Item Min Block two-thirds</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 min-block-two-thirds">Two-thirds</div>
 </div>
 
 ```html
-<div class="p-4 min-block-two-thirds">
-  Item Min Block two-thirds
+<div class="min-block-two-thirds">
+  Two-thirds
 </div>
 ```
 
 ### `.min-block-half-screen`
 
-Sets the `min-block` property to `50vh`.
+Sets the `min-block-size` property to `50vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-half-screen">Item Min Block half-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-half-screen">Half-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-half-screen">
-  Item Min Block half-screen
+<div class="min-block-half-screen">
+  Half-screen
 </div>
 ```
 
 ### `.min-block-third-screen`
 
-Sets the `min-block` property to `calc(100vh/ 3)`.
+Sets the `min-block-size` property to `calc(100vh/ 3)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-third-screen">Item Min Block third-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-third-screen">Third-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-third-screen">
-  Item Min Block third-screen
+<div class="min-block-third-screen">
+  Third-screen
 </div>
 ```
 
 ### `.min-block-two-thirds-screen`
 
-Sets the `min-block` property to `calc(100vh/ 1.5)`.
+Sets the `min-block-size` property to `calc(100vh/ 1.5)`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-two-thirds-screen">Item Min Block two-thirds-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-two-thirds-screen">Two-thirds-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-two-thirds-screen">
-  Item Min Block two-thirds-screen
+<div class="min-block-two-thirds-screen">
+  Two-thirds-screen
 </div>
 ```
 
 ### `.min-block-quarter-screen`
 
-Sets the `min-block` property to `25vh`.
+Sets the `min-block-size` property to `25vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-quarter-screen">Item min-Block-quarter-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-quarter-screen">Quarter-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-quarter-screen">
-  Item min-Block-quarter-screen
+<div class="min-block-quarter-screen">
+  Quarter-screen
 </div>
 ```
 
 ### `.min-block-three-quarters-screen`
 
-Sets the `min-block` property to `75vh`.
+Sets the `min-block-size` property to `75vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-three-quarters-screen">Item Min Block three-quarters-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-three-quarters-screen">Three-quarters-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-three-quarters-screen">
-  Item Min Block three-quarters-screen
+<div class="min-block-three-quarters-screen">
+  Three-quarters-screen
 </div>
 ```
 
 ### `.min-block-full-screen`
 
-Sets the `min-block` property to `100vh`.
+Sets the `min-block-size` property to `100vh`.
 
 <div class="container bg-primary-100 bordered border-primary-700 p-5 h-auto responsive-table">
-  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 p-4 m-4 min-block-full-screen">Item Min Block full-screen</div>
+  <div class="gradient from-primary-200 to-primary-400 bordered border-tertiary-700 m-4 p-4 min-block-full-screen">Full-screen</div>
 </div>
 
 ```html
-<div class="p-4 min-block-full-screen">
-  Item Min Block full-screen
+<div class="min-block-full-screen">
+  Full-screen
 </div>
 ```
 
-### `.min-block-0`
+### `.min-block-#{spacer}`
 
-Uses `Graupl-spacer` such as `0` to set the `min-block` property to a `spacer`.
+Uses `--graupl-spacer-0` through `--graupl-spacer-10` to set the `min-block-size` property to the corresponding value.
 
-<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: repeat(3, min-content); grid-template-rows: max-content;">
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-0">0</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-1">1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-2">2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-3">3</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-4">4</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-5">5</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-6">6</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-7">7</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-8">Item 8</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-9">Item 9</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 m-2 min-block-10">Item 10</div>
+<div class="w-full display-grid g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto" style="grid-template-columns: 1fr; grid-template-rows: auto;">
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-0"><span class="position-absolute">0</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-1"><span class="position-absolute">1</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-2"><span class="position-absolute">2</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-3"><span class="position-absolute">3</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-4"><span class="position-absolute">4</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-5"><span class="position-absolute">5</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-6"><span class="position-absolute">6</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-7"><span class="position-absolute">7</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-8"><span class="position-absolute">8</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-9"><span class="position-absolute">9</span></div>
+  <div class="bg-primary-200 bordered border-tertiary-700 m-2 position-relative min-block-10"><span class="position-absolute">10</span></div>
 </div>
 
 ```html
-<div class="m-2 min-block-0">
+<div class="min-block-0">
    0
 </div>
-<div class="m-2 min-block-10">
-   Item 10
+<div class="min-block-10">
+   10
 </div>
 ```
 
