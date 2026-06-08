@@ -34,6 +34,7 @@ Sets the `background-attachment` property to `local`.
 | [`.bg-clip-padding-box`](#bg-clip-padding-box) | `background-clip` | `padding-box` |
 | [`.bg-clip-content-box`](#bg-clip-content-box) | `background-clip` | `content-box` |
 | [`.bg-clip-text`](#bg-clip-text) | `background-clip` | `text` |
+| [`.bg-clip-border-area`](#bg-clip-border-area) | `background-clip` | `border-area` |
 
 ### `.bg-clip-border-box`
 
@@ -50,6 +51,10 @@ Sets the `background-clip` property to `content-box`.
 ### `.bg-clip-text`
 
 Sets the `background-clip` property to `text`.
+
+### `.bg-clip-border-area`
+
+Sets the `background-clip` property to `border-area`.
 
 ## Background Image
 
