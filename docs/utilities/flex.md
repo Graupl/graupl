@@ -1,194 +1,6 @@
 # Flex Utilities
 
-The flex utilities provide a set of classes to adjust the `flex-direction`,`flex-grow`, `flex-shrink`, `flex-wrap` and `flex-basis` properties of elements.
-
-## `.flex`
-
-Applies the default flex styling to an element.
-
-## Flex Direction
-
-| Class Name | Property | Value |
-| --- | --- | --- |
-| [`.flex-row`](#flex-row) | `flex-direction` | `row` |
-| [`.flex-row-reverse`](#flex-row-reverse) | `flex-direction` | `row-reverse` |
-| [`.flex-col`](#flex-col) | `flex-direction` | `col` |
-| [`.flex-col-reverse`](#flex-col-reverse) | `flex-direction` | `column-reverse` |
-
-### `.flex-row`
-
-Sets the `flex` property to `row`.
-
-<div class="display-flex flex-row g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-row">
-  --Items Here--
-</div>
-```
-
-### `.flex-row-reverse`
-
-Sets the `flex` property to `row-reverse`.
-
-<div class="display-flex flex-row-reverse g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-row-reverse">
-  --Items Here--
-</div>
-```
-
-### `.flex-col`
-
-Sets the `flex` property to `col`.
-
-<div class="display-flex flex-col g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-col">
-  --Items Here--
-</div>
-```
-
-### `.flex-col-reverse`
-
-Sets the `flex` property to `col-reverse`.
-
-<div class="display-flex flex-col-reverse g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-col-reverse">
-  --Items Here--
-</div>
-```
-
-## Flex Wrap
-
-| [`.flex-wrap`](#flex-wrap) | `flex-wrap` | `wrap` |
-| [`.flex-wrap-reverse`](#flex-wrap-reverse) | `flex-wrap` | `wrap-reverse` |
-| [`.flex-nowrap`](#flex-nowrap) | `flex-wrap` | `nowrap` |
-
-### `.flex-wrap`
-
-Sets the `flex` property to `wrap`.
-
-<div class="display-flex flex-wrap g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-wrap">
-  --Items Here--
-</div>
-```
-
-### `.flex-nowrap`
-
-Sets the `flex` property to `nowrap`.
-
-<div class="display-flex flex-nowrap g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex flex-nowrap">
-  --Items Here--
-</div>
-```
-
-## Flex Grow
-| [`.flex-grow`](#flex-grow) | `flex-grow` | `1` |
-| [`.flex-no-grow`](#flex-no-grow) | `flex-grow` | `0` |
-
-### `.flex-grow`
-
-Sets the `flex` property to `grow`.
-
-<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content flex-grow">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="flex-grow">Item 2</div>
-</div>
-```
-
-### `.flex-no-grow`
-
-Sets the `flex` property to `no-grow`.
-
-<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content flex-no-grow">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="flex-no-grow"> Item 2</div>
-</div>
-```
-
-## Flex Shrink
-
-| [`.flex-shrink`](#flex-shrink) | `flex-shrink` | `1` |
-| [`.flex-no-shrink`](#flex-no-shrink) | `flex-shrink` | `0` |
-
-### `.flex-shrink`
-
-Sets the `flex` property to `shrink`.
-
-<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 flex-shrink" style="width:400px">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="flex-shrink"> Item 2</div>
-</div>
-```
-
-### `.flex-no-shrink`
-
-Sets the `flex` property to `no-shrink`.
-
-<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 flex-no-shrink" style="width:400px">Item 2</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="flex-no-shrink"> Item 2</div>
-</div>
-```
+The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-direction`,`flex-grow`, `flex-shrink`, and `flex-wrap` properties of elements.
 
 ## Flex Basis
 
@@ -396,6 +208,190 @@ Sets the `flex` property to `two-thirds`.
 ```html
 <div class="display-flex flex-wrap">
   <div class="flex-two-thirds"> Item 2</div>
+</div>
+```
+
+## Flex Direction
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| [`.flex-row`](#flex-row) | `flex-direction` | `row` |
+| [`.flex-row-reverse`](#flex-row-reverse) | `flex-direction` | `row-reverse` |
+| [`.flex-col`](#flex-col) | `flex-direction` | `col` |
+| [`.flex-col-reverse`](#flex-col-reverse) | `flex-direction` | `column-reverse` |
+
+### `.flex-row`
+
+Sets the `flex` property to `row`.
+
+<div class="display-flex flex-row g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-row">
+  --Items Here--
+</div>
+```
+
+### `.flex-row-reverse`
+
+Sets the `flex` property to `row-reverse`.
+
+<div class="display-flex flex-row-reverse g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-row-reverse">
+  --Items Here--
+</div>
+```
+
+### `.flex-col`
+
+Sets the `flex` property to `col`.
+
+<div class="display-flex flex-col g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-col">
+  --Items Here--
+</div>
+```
+
+### `.flex-col-reverse`
+
+Sets the `flex` property to `col-reverse`.
+
+<div class="display-flex flex-col-reverse g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-col-reverse">
+  --Items Here--
+</div>
+```
+
+## Flex Grow
+| [`.flex-grow`](#flex-grow) | `flex-grow` | `1` |
+| [`.flex-no-grow`](#flex-no-grow) | `flex-grow` | `0` |
+
+### `.flex-grow`
+
+Sets the `flex` property to `grow`.
+
+<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content flex-grow">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="flex-grow">Item 2</div>
+</div>
+```
+
+### `.flex-no-grow`
+
+Sets the `flex` property to `no-grow`.
+
+<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content flex-no-grow">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="flex-no-grow"> Item 2</div>
+</div>
+```
+
+## Flex Shrink
+
+| [`.flex-shrink`](#flex-shrink) | `flex-shrink` | `1` |
+| [`.flex-no-shrink`](#flex-no-shrink) | `flex-shrink` | `0` |
+
+### `.flex-shrink`
+
+Sets the `flex` property to `shrink`.
+
+<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 flex-shrink" style="width:400px">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="flex-shrink"> Item 2</div>
+</div>
+```
+
+### `.flex-no-shrink`
+
+Sets the `flex` property to `no-shrink`.
+
+<div class="display-flex g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-fit-content">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 flex-no-shrink" style="width:400px">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex">
+  <div class="flex-no-shrink"> Item 2</div>
+</div>
+```
+
+## Flex Wrap
+
+| [`.flex-wrap`](#flex-wrap) | `flex-wrap` | `wrap` |
+| [`.flex-wrap-reverse`](#flex-wrap-reverse) | `flex-wrap` | `wrap-reverse` |
+| [`.flex-nowrap`](#flex-nowrap) | `flex-wrap` | `nowrap` |
+
+### `.flex-wrap`
+
+Sets the `flex` property to `wrap`.
+
+<div class="display-flex flex-wrap g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-wrap">
+  --Items Here--
+</div>
+```
+
+### `.flex-nowrap`
+
+Sets the `flex` property to `nowrap`.
+
+<div class="display-flex flex-nowrap g-4 bg-primary-100 bordered border-primary-700 p-5 h-auto">
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 1</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item 2</div>
+  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-quarter">Item 3</div>
+</div>
+
+```html
+<div class="display-flex flex-nowrap">
+  --Items Here--
 </div>
 ```
 

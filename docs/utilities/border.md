@@ -30,6 +30,7 @@ Applies the default border styling to an element.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
+| [`.border-primary`](#border-primary) | `border-color` | `var(--graupl-theme-active--primary)` |
 | [`.border-primary-100`](#border-primary-100) | `border-color` | `var(--graupl-theme-active--primary--100)` |
 | [`.border-primary-200`](#border-primary-200) | `border-color` | `var(--graupl-theme-active--primary--200)` |
 | [`.border-primary-300`](#border-primary-300) | `border-color` | `var(--graupl-theme-active--primary--300)` |
@@ -39,6 +40,7 @@ Applies the default border styling to an element.
 | [`.border-primary-700`](#border-primary-700) | `border-color` | `var(--graupl-theme-active--primary--700)` |
 | [`.border-primary-800`](#border-primary-800) | `border-color` | `var(--graupl-theme-active--primary--800)` |
 | [`.border-primary-900`](#border-primary-900) | `border-color` | `var(--graupl-theme-active--primary--900)` |
+| [`.border-secondary`](#border-secondary) | `border-color` | `var(--graupl-theme-active--secondary)` |
 | [`.border-secondary-100`](#border-secondary-100) | `border-color` | `var(--graupl-theme-active--secondary--100)` |
 | [`.border-secondary-200`](#border-secondary-200) | `border-color` | `var(--graupl-theme-active--secondary--200)` |
 | [`.border-secondary-300`](#border-secondary-300) | `border-color` | `var(--graupl-theme-active--secondary--300)` |
@@ -48,6 +50,7 @@ Applies the default border styling to an element.
 | [`.border-secondary-700`](#border-secondary-700) | `border-color` | `var(--graupl-theme-active--secondary--700)` |
 | [`.border-secondary-800`](#border-secondary-800) | `border-color` | `var(--graupl-theme-active--secondary--800)` |
 | [`.border-secondary-900`](#border-secondary-900) | `border-color` | `var(--graupl-theme-active--secondary--900)` |
+| [`.border-tertiary`](#border-tertiary) | `border-color` | `var(--graupl-theme-active--tertiary)` |
 | [`.border-tertiary-100`](#border-tertiary-100) | `border-color` | `var(--graupl-theme-active--tertiary--100)` |
 | [`.border-tertiary-200`](#border-tertiary-200) | `border-color` | `var(--graupl-theme-active--tertiary--200)` |
 | [`.border-tertiary-300`](#border-tertiary-300) | `border-color` | `var(--graupl-theme-active--tertiary--300)` |
@@ -58,6 +61,10 @@ Applies the default border styling to an element.
 | [`.border-tertiary-800`](#border-tertiary-800) | `border-color` | `var(--graupl-theme-active--tertiary--800)` |
 | [`.border-tertiary-900`](#border-tertiary-900) | `border-color` | `var(--graupl-theme-active--tertiary--900)` |
 | [`.border-transparent`](#border-transparent) | `border-color` | `transparent` |
+
+### `.border-primary`
+
+Sets the `border-color` property to `var(--graupl-theme-active--primary)`.
 
 ### `.border-primary-100`
 
@@ -95,6 +102,10 @@ Sets the `border-color` property to `var(--graupl-theme-active--primary--800)`.
 
 Sets the `border-color` property to `var(--graupl-theme-active--primary--900)`.
 
+### `.border-secondary`
+
+Sets the `border-color` property to `var(--graupl-theme-active--secondary)`.
+
 ### `.border-secondary-100`
 
 Sets the `border-color` property to `var(--graupl-theme-active--secondary--100)`.
@@ -130,6 +141,10 @@ Sets the `border-color` property to `var(--graupl-theme-active--secondary--800)`
 ### `.border-secondary-900`
 
 Sets the `border-color` property to `var(--graupl-theme-active--secondary--900)`.
+
+### `.border-tertiary`
+
+Sets the `border-color` property to `var(--graupl-theme-active--tertiary)`.
 
 ### `.border-tertiary-100`
 

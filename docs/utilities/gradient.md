@@ -6,9 +6,9 @@ The gradient utilities provide a set of classes to adjust the color `gradient` p
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.gradient`](#gradient) | `background-image` | `linear-gradient` |
-| [`.gradient-linear`](#gradient-linear) | `background-image` | `linear-gradient` |
-| [`.gradient-radial`](#gradient-radial) | `background-image` | `radial-gradient` |
+| [`.gradient`](#gradient) | `background-image` | `linear-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
+| [`.gradient-linear`](#gradient-linear) | `background-image` | `linear-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
+| [`.gradient-radial`](#gradient-radial) | `background-image` | `radial-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 
 ### `.gradient`
 
@@ -91,11 +91,11 @@ Used to customize gradient types.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`---graupl-gradient-from`] | `Starting color used by generated gradients` | `transparent` |
-| [`---graupl-gradient-from-position`] | `Start color stop position used for generated gradients` | `0%` |
-| [`---graupl-gradient-to`] | `Ending color used by generated gradients` | `transparent` |
-| [`---graupl-gradient-to-position`]| `End color stop position used for generated gradients` | `100%` |
-| [`---graupl-gradient-direction`] | `Direction/shape keyword consumed by gradient utilities` | `to right` (gradient-linear), `circle` (gradient-radial) |
+| `--graupl-gradient-from` | `Starting color used by generated gradients` | `transparent` |
+| `--graupl-gradient-from-position` | `Start color stop position used for generated gradients` | `0%` |
+| `--graupl-gradient-to` | `Ending color used by generated gradients` | `transparent` |
+| `--graupl-gradient-to-position`| `End color stop position used for generated gradients` | `100%` |
+| `--graupl-gradient-direction` | `Direction/shape keyword consumed by gradient utilities` | `to right` (gradient-linear), `circle` (gradient-radial) |
 
 ## Gradient Direction
 
@@ -377,6 +377,7 @@ Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 | Class Name | Property | Value |
 | --- | --- | --- |
 | [`.from-transparent`](#from-transparent) | `--graupl-gradient-from` | `transparent` |
+| [`.from-primary`](#from-primary) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary)` |
 | [`.from-primary-100`](#from-primary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--100)` |
 | [`.from-primary-200`](#from-primary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--200)` |
 | [`.from-primary-300`](#from-primary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--300)` |
@@ -386,6 +387,7 @@ Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 | [`.from-primary-700`](#from-primary-700) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--700)` |
 | [`.from-primary-800`](#from-primary-800) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--800)` |
 | [`.from-primary-900`](#from-primary-900) | `--graupl-gradient-from` | `var(--graupl-theme-active--primary--900)` |
+| [`.from-secondary`](#from-secondary) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary)` |
 | [`.from-secondary-100`](#from-secondary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--100)` |
 | [`.from-secondary-200`](#from-secondary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--200)` |
 | [`.from-secondary-300`](#from-secondary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--300)` |
@@ -395,6 +397,7 @@ Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 | [`.from-secondary-700`](#from-secondary-700) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--700)` |
 | [`.from-secondary-800`](#from-secondary-800) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--800)` |
 | [`.from-secondary-900`](#from-secondary-900) | `--graupl-gradient-from` | `var(--graupl-theme-active--secondary--900)` |
+| [`.from-tertiary`](#from-tertiary) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary)` |
 | [`.from-tertiary-100`](#from-tertiary-100) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--100)` |
 | [`.from-tertiary-200`](#from-tertiary-200) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--200)` |
 | [`.from-tertiary-300`](#from-tertiary-300) | `--graupl-gradient-from` | `var(--graupl-theme-active--tertiary--300)` |
@@ -408,6 +411,10 @@ Sets the `--graupl-gradient-direction` property to `farthest-corner`.
 ### `.from-transparent`
 
 Sets the `--graupl-gradient-from` property to `transparent`.
+
+### `.from-primary`
+
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary)`.
 
 ### `.from-primary-100`
 
@@ -445,6 +452,10 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primar
 
 Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--primary--900)`.
 
+### `.from-secondary`
+
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary)`.
+
 ### `.from-secondary-100`
 
 Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--100)`.
@@ -480,6 +491,10 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--second
 ### `.from-secondary-900`
 
 Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--secondary--900)`.
+
+### `.from-tertiary`
+
+Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertiary)`.
 
 ### `.from-tertiary-100`
 
@@ -522,6 +537,7 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertia
 | Class Name | Property | Value |
 | --- | --- | --- |
 | [`.to-transparent`](#to-transparent) | `--graupl-gradient-to` | `transparent` |
+| [`.to-primary`](#to-primary) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary)` |
 | [`.to-primary-100`](#to-primary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--100)` |
 | [`.to-primary-200`](#to-primary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--200)` |
 | [`.to-primary-300`](#to-primary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--300)` |
@@ -531,6 +547,7 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertia
 | [`.to-primary-700`](#to-primary-700) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--700)` |
 | [`.to-primary-800`](#to-primary-800) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--800)` |
 | [`.to-primary-900`](#to-primary-900) | `--graupl-gradient-to` | `var(--graupl-theme-active--primary--900)` |
+| [`.to-secondary`](#to-secondary) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary)` |
 | [`.to-secondary-100`](#to-secondary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--100)` |
 | [`.to-secondary-200`](#to-secondary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--200)` |
 | [`.to-secondary-300`](#to-secondary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--300)` |
@@ -540,6 +557,7 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertia
 | [`.to-secondary-700`](#to-secondary-700) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--700)` |
 | [`.to-secondary-800`](#to-secondary-800) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--800)` |
 | [`.to-secondary-900`](#to-secondary-900) | `--graupl-gradient-to` | `var(--graupl-theme-active--secondary--900)` |
+| [`.to-tertiary`](#to-tertiary) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary)` |
 | [`.to-tertiary-100`](#to-tertiary-100) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--100)` |
 | [`.to-tertiary-200`](#to-tertiary-200) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--200)` |
 | [`.to-tertiary-300`](#to-tertiary-300) | `--graupl-gradient-to` | `var(--graupl-theme-active--tertiary--300)` |
@@ -553,6 +571,10 @@ Sets the `--graupl-gradient-from` property to `var(--graupl-theme-active--tertia
 ### `.to-transparent`
 
 Sets the `--graupl-gradient-to` property to `transparent`.
+
+### `.to-primary`
+
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary)`.
 
 ### `.to-primary-100`
 
@@ -590,6 +612,10 @@ Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary-
 
 Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--primary--900)`.
 
+### `.to-secondary`
+
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary)`.
+
 ### `.to-secondary-100`
 
 Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--100)`.
@@ -625,6 +651,10 @@ Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondar
 ### `.to-secondary-900`
 
 Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--secondary--900)`.
+
+### `.to-tertiary`
+
+Sets the `--graupl-gradient-to` property to `var(--graupl-theme-active--tertiary)`.
 
 ### `.to-tertiary-100`
 
