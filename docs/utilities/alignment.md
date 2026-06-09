@@ -1,3 +1,11 @@
+<script setup>
+  import { ref } from "vue";
+
+  const content = ref("align-content-normal");
+  const items = ref("align-items-start");
+  const self = ref("align-self-auto");
+</script>
+
 # Alignment Utilities
 
 The alignment utilities provide a set of classes to adjust the `align-content`, `align-items`, and `align-self` properties of elements.
@@ -16,6 +24,28 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-content-baseline` | align-content | `baseline` |
 | `.align-content-stretch` | align-content | `stretch` |
 
+<div class="display-grid g-3 mbse-5">
+  <div :class="`${content} display-grid g-5 bordered p-5 w-full h-10`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+  </div>
+  <div class="input-group">
+    <label for="select-align-content">Align content property</label>
+    <select id="select-align-content" v-model="content">
+      <option value="align-content-normal">Normal</option>
+      <option value="align-content-start">Start</option>
+      <option value="align-content-end">End</option>
+      <option value="align-content-center">Center</option>
+      <option value="align-content-between">Between</option>
+      <option value="align-content-around">Around</option>
+      <option value="align-content-evenly">Evenly</option>
+      <option value="align-content-baseline">Baseline</option>
+      <option value="align-content-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
+
 ## Align Items
 
 | Class Name | Property | Value |
@@ -25,6 +55,24 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-items-center` | align-items | `center` |
 | `.align-items-baseline` | align-items | `baseline` |
 | `.align-items-stretch` | align-items | `stretch` |
+
+<div class="display-grid g-3 mbse-5">
+  <div :class="`${items} display-grid g-5 bordered p-5 w-full h-10`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+  </div>
+  <div class="input-group">
+    <label for="select-align-items">Align items property</label>
+    <select id="select-align-items" v-model="items">
+      <option value="align-items-start">Start</option>
+      <option value="align-items-end">End</option>
+      <option value="align-items-center">Center</option>
+      <option value="align-items-baseline">Baseline</option>
+      <option value="align-items-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Align Self
 
@@ -36,6 +84,25 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-self-center` | align-self | `center` |
 | `.align-self-baseline` | align-self | `baseline` |
 | `.align-self-stretch` | align-self | `stretch` |
+
+<div class="display-grid g-3 mbse-5">
+  <div class="display-grid g-5 bordered p-5 w-full h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+    <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${self}`"></div>
+    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+  </div>
+  <div class="input-group">
+    <label for="select-align-self">Align self property</label>
+    <select id="select-align-self" v-model="self">
+      <option value="align-self-auto">Auto</option>
+      <option value="align-self-start">Start</option>
+      <option value="align-self-end">End</option>
+      <option value="align-self-center">Center</option>
+      <option value="align-self-baseline">Baseline</option>
+      <option value="align-self-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
