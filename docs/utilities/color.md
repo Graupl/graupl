@@ -6,77 +6,77 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| `.bg-primary` | background`, `--graupl-background | `var(--graupl-theme-active--primary)` |
-| `.bg-primary-100` | background`, `--graupl-background | `var(--graupl-theme-active--primary--100)` |
-| `.bg-primary-200` | background`, `--graupl-background | `var(--graupl-theme-active--primary--200)` |
-| `.bg-primary-300` | background`, `--graupl-background | `var(--graupl-theme-active--primary--300)` |
-| `.bg-primary-400` | background`, `--graupl-background | `var(--graupl-theme-active--primary--400)` |
-| `.bg-primary-500` | background`, `--graupl-background | `var(--graupl-theme-active--primary--500)` |
-| `.bg-primary-600` | background`, `--graupl-background | `var(--graupl-theme-active--primary--600)` |
-| `.bg-primary-700` | background`, `--graupl-background | `var(--graupl-theme-active--primary--700)` |
-| `.bg-primary-800` | background`, `--graupl-background | `var(--graupl-theme-active--primary--800)` |
-| `.bg-primary-900` | background`, `--graupl-background | `var(--graupl-theme-active--primary--900)` |
-| `.bg-secondary` | background`, `--graupl-background | `var(--graupl-theme-active--secondary)` |
-| `.bg-secondary-100` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--100)` |
-| `.bg-secondary-200` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--200)` |
-| `.bg-secondary-300` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--300)` |
-| `.bg-secondary-400` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--400)` |
-| `.bg-secondary-500` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--500)` |
-| `.bg-secondary-600` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--600)` |
-| `.bg-secondary-700` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--700)` |
-| `.bg-secondary-800` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--800)` |
-| `.bg-secondary-900` | background`, `--graupl-background | `var(--graupl-theme-active--secondary--900)` |
-| `.bg-tertiary-100` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary)` |
-| `.bg-tertiary` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--100)` |
-| `.bg-tertiary-200` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--200)` |
-| `.bg-tertiary-300` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--300)` |
-| `.bg-tertiary-400` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--400)` |
-| `.bg-tertiary-500` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--500)` |
-| `.bg-tertiary-600` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--600)` |
-| `.bg-tertiary-700` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--700)` |
-| `.bg-tertiary-800` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--800)` |
-| `.bg-tertiary-900` | background`, `--graupl-background | `var(--graupl-theme-active--tertiary--900)` |
-| `.bg-inherit` | background`, `--graupl-background | `inherit` |
-| `.bg-current` | background`, `--graupl-background | `currentColor` |
-| `.bg-transparent` | background`, `--graupl-background | `transparent` |
+| `.bg-primary` | background, --graupl-background | `var(--graupl-theme-active--primary)` |
+| `.bg-primary-100` | background, --graupl-background | `var(--graupl-theme-active--primary--100)` |
+| `.bg-primary-200` | background, --graupl-background | `var(--graupl-theme-active--primary--200)` |
+| `.bg-primary-300` | background, --graupl-background | `var(--graupl-theme-active--primary--300)` |
+| `.bg-primary-400` | background, --graupl-background | `var(--graupl-theme-active--primary--400)` |
+| `.bg-primary-500` | background, --graupl-background | `var(--graupl-theme-active--primary--500)` |
+| `.bg-primary-600` | background, --graupl-background | `var(--graupl-theme-active--primary--600)` |
+| `.bg-primary-700` | background, --graupl-background | `var(--graupl-theme-active--primary--700)` |
+| `.bg-primary-800` | background, --graupl-background | `var(--graupl-theme-active--primary--800)` |
+| `.bg-primary-900` | background, --graupl-background | `var(--graupl-theme-active--primary--900)` |
+| `.bg-secondary` | background, --graupl-background | `var(--graupl-theme-active--secondary)` |
+| `.bg-secondary-100` | background, --graupl-background | `var(--graupl-theme-active--secondary--100)` |
+| `.bg-secondary-200` | background, --graupl-background | `var(--graupl-theme-active--secondary--200)` |
+| `.bg-secondary-300` | background, --graupl-background | `var(--graupl-theme-active--secondary--300)` |
+| `.bg-secondary-400` | background, --graupl-background | `var(--graupl-theme-active--secondary--400)` |
+| `.bg-secondary-500` | background, --graupl-background | `var(--graupl-theme-active--secondary--500)` |
+| `.bg-secondary-600` | background, --graupl-background | `var(--graupl-theme-active--secondary--600)` |
+| `.bg-secondary-700` | background, --graupl-background | `var(--graupl-theme-active--secondary--700)` |
+| `.bg-secondary-800` | background, --graupl-background | `var(--graupl-theme-active--secondary--800)` |
+| `.bg-secondary-900` | background, --graupl-background | `var(--graupl-theme-active--secondary--900)` |
+| `.bg-tertiary-100` | background, --graupl-background | `var(--graupl-theme-active--tertiary)` |
+| `.bg-tertiary` | background, --graupl-background | `var(--graupl-theme-active--tertiary--100)` |
+| `.bg-tertiary-200` | background, --graupl-background | `var(--graupl-theme-active--tertiary--200)` |
+| `.bg-tertiary-300` | background, --graupl-background | `var(--graupl-theme-active--tertiary--300)` |
+| `.bg-tertiary-400` | background, --graupl-background | `var(--graupl-theme-active--tertiary--400)` |
+| `.bg-tertiary-500` | background, --graupl-background | `var(--graupl-theme-active--tertiary--500)` |
+| `.bg-tertiary-600` | background, --graupl-background | `var(--graupl-theme-active--tertiary--600)` |
+| `.bg-tertiary-700` | background, --graupl-background | `var(--graupl-theme-active--tertiary--700)` |
+| `.bg-tertiary-800` | background, --graupl-background | `var(--graupl-theme-active--tertiary--800)` |
+| `.bg-tertiary-900` | background, --graupl-background | `var(--graupl-theme-active--tertiary--900)` |
+| `.bg-inherit` | background, --graupl-background | `inherit` |
+| `.bg-current` | background, --graupl-background | `currentColor` |
+| `.bg-transparent` | background, --graupl-background | `transparent` |
 
 ## Text Color
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| `.text-primary` | color`, `--graupl-color | `var(--graupl-theme-active--primary)` |
-| `.text-primary-100` | color`, `--graupl-color | `var(--graupl-theme-active--primary--100)` |
-| `.text-primary-200` | color`, `--graupl-color | `var(--graupl-theme-active--primary--200)` |
-| `.text-primary-300` | color`, `--graupl-color | `var(--graupl-theme-active--primary--300)` |
-| `.text-primary-400` | color`, `--graupl-color | `var(--graupl-theme-active--primary--400)` |
-| `.text-primary-500` | color`, `--graupl-color | `var(--graupl-theme-active--primary--500)` |
-| `.text-primary-600` | color`, `--graupl-color | `var(--graupl-theme-active--primary--600)` |
-| `.text-primary-700` | color`, `--graupl-color | `var(--graupl-theme-active--primary--700)` |
-| `.text-primary-800` | color`, `--graupl-color | `var(--graupl-theme-active--primary--800)` |
-| `.text-primary-900` | color`, `--graupl-color | `var(--graupl-theme-active--primary--900)` |
-| `.text-secondary` | color`, `--graupl-color | `var(--graupl-theme-active--secondary)` |
-| `.text-secondary-100` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--100)` |
-| `.text-secondary-200` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--200)` |
-| `.text-secondary-300` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--300)` |
-| `.text-secondary-400` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--400)` |
-| `.text-secondary-500` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--500)` |
-| `.text-secondary-600` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--600)` |
-| `.text-secondary-700` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--700)` |
-| `.text-secondary-800` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--800)` |
-| `.text-secondary-900` | color`, `--graupl-color | `var(--graupl-theme-active--secondary--900)` |
-| `.text-tertiary` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary)` |
-| `.text-tertiary-100` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--100)` |
-| `.text-tertiary-200` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--200)` |
-| `.text-tertiary-300` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--300)` |
-| `.text-tertiary-400` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--400)` |
-| `.text-tertiary-500` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--500)` |
-| `.text-tertiary-600` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--600)` |
-| `.text-tertiary-700` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--700)` |
-| `.text-tertiary-800` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--800)` |
-| `.text-tertiary-900` | color`, `--graupl-color | `var(--graupl-theme-active--tertiary--900)` |
-| `.text-inherit` | color`, `--graupl-color | `inherit` |
-| `.text-current` | color`, `--graupl-color | `currentColor` |
-| `.text-transparent` | color`, `--graupl-color | `transparent` |
+| `.text-primary` | color, --graupl-color | `var(--graupl-theme-active--primary)` |
+| `.text-primary-100` | color, --graupl-color | `var(--graupl-theme-active--primary--100)` |
+| `.text-primary-200` | color, --graupl-color | `var(--graupl-theme-active--primary--200)` |
+| `.text-primary-300` | color, --graupl-color | `var(--graupl-theme-active--primary--300)` |
+| `.text-primary-400` | color, --graupl-color | `var(--graupl-theme-active--primary--400)` |
+| `.text-primary-500` | color, --graupl-color | `var(--graupl-theme-active--primary--500)` |
+| `.text-primary-600` | color, --graupl-color | `var(--graupl-theme-active--primary--600)` |
+| `.text-primary-700` | color, --graupl-color | `var(--graupl-theme-active--primary--700)` |
+| `.text-primary-800` | color, --graupl-color | `var(--graupl-theme-active--primary--800)` |
+| `.text-primary-900` | color, --graupl-color | `var(--graupl-theme-active--primary--900)` |
+| `.text-secondary` | color, --graupl-color | `var(--graupl-theme-active--secondary)` |
+| `.text-secondary-100` | color, --graupl-color | `var(--graupl-theme-active--secondary--100)` |
+| `.text-secondary-200` | color, --graupl-color | `var(--graupl-theme-active--secondary--200)` |
+| `.text-secondary-300` | color, --graupl-color | `var(--graupl-theme-active--secondary--300)` |
+| `.text-secondary-400` | color, --graupl-color | `var(--graupl-theme-active--secondary--400)` |
+| `.text-secondary-500` | color, --graupl-color | `var(--graupl-theme-active--secondary--500)` |
+| `.text-secondary-600` | color, --graupl-color | `var(--graupl-theme-active--secondary--600)` |
+| `.text-secondary-700` | color, --graupl-color | `var(--graupl-theme-active--secondary--700)` |
+| `.text-secondary-800` | color, --graupl-color | `var(--graupl-theme-active--secondary--800)` |
+| `.text-secondary-900` | color, --graupl-color | `var(--graupl-theme-active--secondary--900)` |
+| `.text-tertiary` | color, --graupl-color | `var(--graupl-theme-active--tertiary)` |
+| `.text-tertiary-100` | color, --graupl-color | `var(--graupl-theme-active--tertiary--100)` |
+| `.text-tertiary-200` | color, --graupl-color | `var(--graupl-theme-active--tertiary--200)` |
+| `.text-tertiary-300` | color, --graupl-color | `var(--graupl-theme-active--tertiary--300)` |
+| `.text-tertiary-400` | color, --graupl-color | `var(--graupl-theme-active--tertiary--400)` |
+| `.text-tertiary-500` | color, --graupl-color | `var(--graupl-theme-active--tertiary--500)` |
+| `.text-tertiary-600` | color, --graupl-color | `var(--graupl-theme-active--tertiary--600)` |
+| `.text-tertiary-700` | color, --graupl-color | `var(--graupl-theme-active--tertiary--700)` |
+| `.text-tertiary-800` | color, --graupl-color | `var(--graupl-theme-active--tertiary--800)` |
+| `.text-tertiary-900` | color, --graupl-color | `var(--graupl-theme-active--tertiary--900)` |
+| `.text-inherit` | color, --graupl-color | `inherit` |
+| `.text-current` | color, --graupl-color | `currentColor` |
+| `.text-transparent` | color, --graupl-color | `transparent` |
 
 ## Customization
 
@@ -116,7 +116,7 @@ To customize the color utilities, you can use the following variables.
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware, $theme-aware, $scheme-aware, $state-aware`, or `$container-aware` to `true`.
 
 By default, scheme-aware and state-aware responsive utility classes are generated for color.
 
