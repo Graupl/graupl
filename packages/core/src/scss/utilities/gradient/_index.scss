@@ -130,7 +130,7 @@
 // | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
 //
 // Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-// By default, no responsive utility classes are generated for border.
+// By default, no responsive utility classes are generated for gradient.
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //

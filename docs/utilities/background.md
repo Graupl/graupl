@@ -1,6 +1,6 @@
 # Background Utilities
 
-The background utilities provide a set of classes to adjust the `bg-attachment`, `bg-clip`, `bg-image`, `bg-origin`, `bg-position`, `bg-repeat`, and `bg-size` properties of elements.
+The background utilities provide a set of classes to adjust the `background-attachment`, `background-clip`, `background-image`, `background-origin`, `background-position`, `background-repeat`, and `background-size` properties of elements.
 
 ::: tip :pencil2: Note
 For `background-color` utility classes, please refer to the [color utilities](./color).
@@ -10,172 +10,68 @@ For `background-color` utility classes, please refer to the [color utilities](./
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-attachment-scroll`](#bg-attachment-scroll) | `background-attachment` | `scroll` |
-| [`.bg-attachment-fixed`](#bg-attachment-fixed) | `background-attachment` | `fixed` |
-| [`.bg-attachment-local`](#bg-attachment-local) | `background-attachment` | `local` |
-
-### `.bg-attachment-scroll`
-
-Sets the `background-attachment` property to `scroll`.
-
-### `.bg-attachment-fixed`
-
-Sets the `background-attachment` property to `fixed`.
-
-### `.bg-attachment-local`
-
-Sets the `background-attachment` property to `local`.
+| `.bg-attachment-scroll` | background-attachment | `scroll` |
+| `.bg-attachment-fixed` | background-attachment | `fixed` |
+| `.bg-attachment-local` | background-attachment | `local` |
 
 ## Background Clip
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-clip-border-box`](#bg-clip-border-box) | `background-clip` | `border-box` |
-| [`.bg-clip-padding-box`](#bg-clip-padding-box) | `background-clip` | `padding-box` |
-| [`.bg-clip-content-box`](#bg-clip-content-box) | `background-clip` | `content-box` |
-| [`.bg-clip-text`](#bg-clip-text) | `background-clip` | `text` |
-| [`.bg-clip-border-area`](#bg-clip-border-area) | `background-clip` | `border-area` |
-
-### `.bg-clip-border-box`
-
-Sets the `background-clip` property to `border-box`.
-
-### `.bg-clip-padding-box`
-
-Sets the `background-clip` property to `padding-box`.
-
-### `.bg-clip-content-box`
-
-Sets the `background-clip` property to `content-box`.
-
-### `.bg-clip-text`
-
-Sets the `background-clip` property to `text`.
-
-### `.bg-clip-border-area`
-
-Sets the `background-clip` property to `border-area`.
+| `.bg-clip-border-box` | background-clip | `border-box` |
+| `.bg-clip-padding-box` | background-clip | `padding-box` |
+| `.bg-clip-content-box` | background-clip | `content-box` |
+| `.bg-clip-text` | background-clip | `text` |
+| `.bg-clip-border-area` | background-clip | `border-area` |
 
 ## Background Image
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-image-none`](#bg-image-none) | `background-image` | `none` |
-
-### `.bg-image-none`
-
-Sets the `background-image` property to `none`.
+| `.bg-image-none` | background-image | `none` |
 
 ## Background Origin
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-origin-border-box`](#bg-origin-border-box) | `background-origin` | `border-box` |
-| [`.bg-origin-padding-box`](#bg-origin-padding-box) | `background-origin` | `padding-box` |
-| [`.bg-origin-content-box`](#bg-origin-content-box) | `background-origin` | `content-box` |
-
-### `.bg-origin-border-box`
-
-Sets the `background-origin` property to `border-box`.
-
-### `.bg-origin-padding-box`
-
-Sets the `background-origin` property to `padding-box`.
-
-### `.bg-origin-content-box`
-
-Sets the `background-origin` property to `content-box`.
+| `.bg-origin-border-box` | background-origin | `border-box` |
+| `.bg-origin-padding-box` | background-origin | `padding-box` |
+| `.bg-origin-content-box` | background-origin | `content-box` |
 
 ## Background Position
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-position-top`](#bg-position-top) | `background-position` | `top` |
-| [`.bg-position-right`](#bg-position-right) | `background-position` | `right` |
-| [`.bg-position-bottom`](#bg-position-bottom) | `background-position` | `bottom` |
-| [`.bg-position-left`](#bg-position-left) | `background-position` | `left` |
-| [`.bg-position-center`](#bg-position-center) | `background-position` | `center` |
-
-### `.bg-position-top`
-
-Sets the `background-position` property to `top`.
-
-### `.bg-position-right`
-
-Sets the `background-position` property to `right`.
-
-### `.bg-position-bottom`
-
-Sets the `background-position` property to `bottom`.
-
-### `.bg-position-left`
-
-Sets the `background-position` property to `left`.
-
-### `.bg-position-center`
-
-Sets the `background-position` property to `center`.
+| `.bg-position-top` | background-position | `top` |
+| `.bg-position-right` | background-position | `right` |
+| `.bg-position-bottom` | background-position | `bottom` |
+| `.bg-position-left` | background-position | `left` |
+| `.bg-position-center` | background-position | `center` |
 
 ## Background Repeat
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-repeat-repeat`](#bg-repeat-repeat) | `background-repeat` | `repeat` |
-| [`.bg-repeat-repeat-x`](#bg-repeat-repeat-x) | `background-repeat` | `repeat-x` |
-| [`.bg-repeat-repeat-y`](#bg-repeat-repeat-y) | `background-repeat` | `repeat-y` |
-| [`.bg-repeat-space`](#bg-repeat-space) | `background-repeat` | `space` |
-| [`.bg-repeat-round`](#bg-repeat-round) | `background-repeat` | `round` |
-| [`.bg-repeat-no-repeat`](#bg-repeat-no-repeat) | `background-repeat` | `no-repeat` |
-
-### `.bg-repeat-repeat`
-
-Sets the `background-repeat` property to `repeat`.
-
-### `.bg-repeat-repeat-x`
-
-Sets the `background-repeat` property to `repeat-x`.
-
-### `.bg-repeat-repeat-y`
-
-Sets the `background-repeat` property to `repeat-y`.
-
-### `.bg-repeat-space`
-
-Sets the `background-repeat` property to `space`.
-
-### `.bg-repeat-round`
-
-Sets the `background-repeat` property to `round`.
-
-### `.bg-repeat-no-repeat`
-
-Sets the `background-repeat` property to `no-repeat`.
+| `.bg-repeat-repeat` | background-repeat | `repeat` |
+| `.bg-repeat-repeat-x` | background-repeat | `repeat-x` |
+| `.bg-repeat-repeat-y` | background-repeat | `repeat-y` |
+| `.bg-repeat-space` | background-repeat | `space` |
+| `.bg-repeat-round` | background-repeat | `round` |
+| `.bg-repeat-no-repeat` | background-repeat | `no-repeat` |
 
 ## Background Size
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.bg-size-auto`](#bg-size-auto) | `background-size` | `auto` |
-| [`.bg-size-cover`](#bg-size-cover) | `background-size` | `cover` |
-| [`.bg-size-contain`](#bg-size-contain) | `background-size` | `contain` |
-
-### `.bg-size-auto`
-
-Sets the `background-size` property to `auto`.
-
-### `.bg-size-cover`
-
-Sets the `background-size` property to `cover`.
-
-### `.bg-size-contain`
-
-Sets the `background-size` property to `contain`.
+| `.bg-size-auto` | background-size | `auto` |
+| `.bg-size-cover` | background-size | `cover` |
+| `.bg-size-contain` | background-size | `contain` |
 
 ## Customization
 
 To customize the background utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -207,11 +103,11 @@ To customize the background utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive background utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, no responsive utility classes are generated for background.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

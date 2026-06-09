@@ -6,37 +6,17 @@ The position utilities provide a set of classes to adjust the `position` propert
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.position-static`](#position-static) | `position` | static |
-| [`.position-fixed`](#position-fixed) | `position` | fixed |
-| [`.position-absolute`](#position-absolute) | `position-absolute` | absolute |
-| [`.position-relative`](#position-relative) | `position` | relative |
-| [`.position-sticky`](#position-sticky) | `position` | sticky |
-
-### `.position-static`
-
-Sets the `position` property to `static`.
-
-### `.position-fixed`
-
-Sets the `position` property to `fixed`.
-
-### `.position-absolute`
-
-Sets the `position-absolute` property to `absolute`.
-
-### `.position-relative`
-
-Sets the `position` property to `relative`.
-
-### `.position-sticky`
-
-Sets the `position` property to `sticky`.
+| `.position-static` | position | `static` |
+| `.position-fixed` | position | `fixed` |
+| `.position-absolute` | position-absolute | `absolute` |
+| `.position-relative` | position | `relative` |
+| `.position-sticky` | position | `sticky` |
 
 ## Customization
 
 To customize the position utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -68,11 +48,11 @@ To customize the position utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive position utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$position-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, screen-aware responsive utility classes are generated for position.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

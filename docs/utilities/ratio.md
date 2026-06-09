@@ -1,6 +1,6 @@
 # Ratio Utilities
 
-The ratio utilities provide a set of classes to adjust the `--graupl-ratio` properties of elements.
+The ratio utilities provide a set of classes to adjust the `aspect-ratio` properties of elements.
 
 ## `.ratio`
 
@@ -31,55 +31,27 @@ Ensures child elements maintain the aspect ratio.
 
 Used to customize ratio.
 
-| Class Name | Property | Value |
+| Custom Property | Description | Default Value |
 | --- | --- | --- |
-| [`--graupl-ratio`] | Aspect-ratio used by `.ratio` | `auto` |
+| `--graupl-ratio` | AAspect-ratio value used by `.ratio` | `auto` |
 
 ## Aspect Ratio
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.one-by-one`](#one-by-one) | `--graupl-ratio` | `1:1` |
-| [`.two-by-one`](#two-by-one) | `--graupl-ratio` | `2:1` |
-| [`.four-by-three`](#four-by-three) | `--graupl-ratio` | `4:3` |
-| [`.four-by-one`](#four-by-one) | `--graupl-ratio` | `4:1` |
-| [`.sixteen-by-nine`](#sixteen-by-nine) | `--graupl-ratio` | `16:9` |
-| [`.three-by-two`](#one-by-one) | `--graupl-ratio` | `3:2` |
-| [`.eight-by-five`](#one-by-one) | `--graupl-ratio` | `8:5` |
-
-### `.one-by-one`
-
-Sets the `--graupl-ratio` property to `1:1`.
-
-### `.two-by-one`
-
-Sets the `--graupl-ratio` property to `2:1`.
-
-### `.four-by-three`
-
-Sets the `--graupl-ratio` property to `4:3`.
-
-### `.four-by-one`
-
-Sets the `--graupl-ratio` property to `4:1`.
-
-### `.sixteen-by-nine`
-
-Sets the `--graupl-ratio` property to `16:9`.
-
-### `.three-by-two`
-
-Sets the `--graupl-ratio` property to `3:2`.
-
-### `.eight-by-five`
-
-Sets the `--graupl-ratio` property to `8:5`.
+| `.one-by-one` | --graupl-ratio | `1` |
+| `.two-by-one` | --graupl-ratio | `2 / 1` |
+| `.four-by-three` | --graupl-ratio | `4 / 3` |
+| `.four-by-one` | --graupl-ratio | `4 / 1` |
+| `.sixteen-by-nine` | --graupl-ratio | `16 / 9` |
+| `.three-by-two` | --graupl-ratio | `3 / 2` |
+| `.eight-by-five` | --graupl-ratio | `8 / 5` |
 
 ## Customization
 
 To customize the ratio utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -111,11 +83,11 @@ To customize the ratio utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive ratio utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$ratio-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, screen-aware responsive utility classes are generated for ratio.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

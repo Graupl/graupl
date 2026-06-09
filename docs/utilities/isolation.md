@@ -2,30 +2,18 @@
 
 The isolation utilities provide a set of classes to adjust the `isolation` properties of elements.
 
-## `.isolation`
-
-Applies the default isolation styling to an element.
-
 ## Isolation
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.isolation-auto`](#isolation-auto) | `isolation` | auto |
-| [`.isolation-isolate`](#isolation-isolate) | `isolation` | isolate |
-
-### `.isolation-auto`
-
-Sets the `isolation` property to `auto`.
-
-### `.isolation-isolate`
-
-Sets the `isolation` property to `isolate`.
+| `.isolation-auto` | isolation | `auto` |
+| `.isolation-isolate` | isolation | `isolate` |
 
 ## Customization
 
 To customize the isolation utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -57,11 +45,11 @@ To customize the isolation utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive isolation utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, screen-aware responsive utility classes are generated for isolation.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

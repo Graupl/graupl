@@ -2,100 +2,21 @@
 
 The float utilities provide a set of classes to adjust the `float` properties of elements.
 
-## `.float`
-
-Applies the default float styling to an element.
-
 ## Float
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.float-none`](#float-none) | `float` | `none` |
-| [`.float-left`](#float-left) | `float` | `left` |
-| [`.float-right`](#float-right) | `float` | `right` |
-| [`.float-inline-start`](#float-inline-start) | `float` | `inline-start` |
-| [`.float-inline-end`](#float-inline-end) | `float` | `inline-end` |
-
-### `.float-none`
-
-Sets the `float` property to `none`.
-
-<div class="w-full display-flow-root g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 float-none">Item Float none</div>
-</div>
-
-```html
-<div class="p-4 float-none">
-  Item Float None
-</div>
-```
-
-### `.float-left`
-
-Sets the `float` property to `left`.
-
-<div class="w-full display-flow-root g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 float-left">Item Float left</div>
-</div>
-
-```html
-<div class="p-4 float-left">
-  Item Float left
-</div>
-```
-
-### `.float-right`
-
-Sets the `float` property to `right`.
-
-<div class="w-full display-flow-root g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 float-right">Item Float right</div>
-</div>
-
-```html
-<div class="p-4 float-right">
-  Item Float right
-</div>
-```
-
-### `.float-inline-start`
-
-Sets the `float` property to `inline-start`.
-
-<div class="w-full display-flow-root g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 float-inline-start">Item Float Inline Start</div>
-</div>
-
-```html
-<div class="p-4 float-inline-start">
-  Item Float Inline Start
-</div>
-```
-
-### `.float-inline-end`
-
-Sets the `float` property to `inline-end`.
-
-<div class="w-full display-flow-root g-4 bg-primary-100 bordered border-primary-700 p-5 h-10">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 w-half">Item</div>
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 float-inline-end">Item Float Inline End</div>
-</div>
-
-```html
-<div class="p-4 float-inline-end">
-  Item Float Inline End
-</div>
-```
+| `.float-none` | float | `none` |
+| `.float-left` | float | `left` |
+| `.float-right` | float | `right` |
+| `.float-inline-start` | float | `inline-start` |
+| `.float-inline-end` | float | `inline-end` |
 
 ## Customization
 
 To customize the float utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -127,11 +48,11 @@ To customize the float utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive float utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, screen-aware responsive utility classes are generated for float.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

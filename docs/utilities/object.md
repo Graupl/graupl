@@ -6,69 +6,29 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.object-fill`](#object-fill) | `object-fit` | `fill` |
-| [`.object-contain`](#object-contain) | `object-fit` | `contain` |
-| [`.object-cover`](#object-cover) | `object-fit` | `cover` |
-| [`.object-none`](#object-none) | `object-fit` | `none` |
-| [`.object-scale-down`](#object-scale-down) | `object-fit` | `scale-down` |
-
-### `.object-fill`
-
-Sets the `object-fit` property to `scroll`.
-
-### `.object-contain`
-
-Sets the `object-fit` property to `contain`.
-
-### `.object-cover`
-
-Sets the `object-fit` property to `cover`.
-
-### `.object-none`
-
-Sets the `object-fit` property to `none`.
-
-### `.object-scale-down`
-
-Sets the `object-fit` property to `scale-down`.
+| `.object-fit-fill` | object-fit | `fill` |
+| `.object-fit-contain` | object-fit | `contain` |
+| `.object-fit-cover` | object-fit | `cover` |
+| `.object-fit-none` | object-fit | `none` |
+| `.object-fit-scale-down` | object-fit | `scale-down` |
 
 ## Object Position
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.object-position-top`](#object-position-top) | `object-position` | `top` |
-| [`.object-position-right`](#object-position-right) | `object-position` | `right` |
-| [`.object-position-bottom`](#object-position-bottom) | `object-position` | `bottom` |
-| [`.object-position-left`](#object-position-left) | `object-position` | `left` |
-| [`.object-position-center`](#object-position-center) | `object-position` | `center` |
-
-### `.object-position-top`
-
-Sets the `object-position` property to `top`.
-
-### `.object-position-right`
-
-Sets the `object-position` property to `right`.
-
-### `.object-position-bottom`
-
-Sets the `object-position` property to `bottom`.
-
-### `.object-position-left`
-
-Sets the `object-position` property to `left`.
-
-### `.object-position-center`
-
-Sets the `object-position` property to `center`.
+| `.object-position-top` | object-position | `top` |
+| `.object-position-right` | object-position | `right` |
+| `.object-position-bottom` | object-position | `bottom` |
+| `.object-position-left` | object-position | `left` |
+| `.object-position-center` | object-position | `center` |
 
 ## Customization
 
 To customize the object utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
-| `$selector-base` | `"."` | The base selector for the utility | `$selector-base` | Base selector for utility classes. | `"."` |
+| `$selector-base` | "." | `The base selector for the utility` | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
 | `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
@@ -98,11 +58,11 @@ To customize the object utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive object utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, no responsive utility classes are generated for object.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

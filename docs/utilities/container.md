@@ -2,40 +2,20 @@
 
 The container utilities provide a set of classes to adjust the `container-type` properties of elements.
 
-## `.container`
-
-Applies the default container styling to an element.
-
 ## Container
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.container-type-inline`](#container-type-inline) | `container` | inline-size |
-| [`.container-type-normal`](#container-type-normal) | `container` | normal |
-| [`.container-type-size`](#container-type-size) | `container` | size |
-| [`.container-type-scroll`](#container-type-scroll) | `container` | scroll-state |
-
-### `.container-type-inline`
-
-Sets the `container-type` property to `inline-size`.
-
-### `.container-type-normal`
-
-Sets the `container-type` property to `normal`.
-
-### `.container-type-size`
-
-Sets the `container-type` property to `size`.
-
-### `.container-type-scroll`
-
-Sets the `container-type` property to `scroll-state`.
+| `.container-type-inline` | container | `inline-size` |
+| `.container-type-normal` | container | `normal` |
+| `.container-type-size` | container | `size` |
+| `.container-type-scroll` | container | `scroll-state` |
 
 ## Customization
 
 To customize the container utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -67,11 +47,11 @@ To customize the container utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive container utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, no responsive utility classes are generated for container.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

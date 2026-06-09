@@ -6,57 +6,15 @@ The visibility utilities provide a set of classes to adjust the `visibility` pro
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| [`.visibility-visible`](#visibility-visible) | `visibility` | `visible` |
-| [`.visibility-hidden`](#visibility-hidden) | `visibility` | `hidden` |
-| [`.visibility-collapse`](#visibility-collapse) | `visibility` | `collapse` |
-
-### `.visibility-visible`
-
-Sets the `visibility` property to `visible`.
-
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-hidden p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 visibility-visible">Item</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="visibility-visible">Item</div>
-</div>
-```
-
-### `.visibility-hidden`
-
-Sets the `visibility` property to `hidden`.
-
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-hidden p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 visibility-hidden">Item</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="visibility-hidden">Item</div>
-</div>
-```
-
-### `.visibility-collapse`
-
-Sets the `visibility` property to `collapse`.
-
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-hidden p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 visibility-collapse">Item</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="visibility-collapse">Item</div>
-</div>
-```
+| `.visibility-visible` | visibility | `visible` |
+| `.visibility-hidden` | visibility | `hidden` |
+| `.visibility-collapse` | visibility | `collapse` |
 
 ## Customization
 
 To customize the visibility utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -88,11 +46,11 @@ To customize the visibility utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive visibility utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, no responsive utility classes are generated for visibility.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.

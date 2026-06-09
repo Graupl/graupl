@@ -1,47 +1,50 @@
 # Visually-hidden Utilities
 
-The visually-hidden utilities provide a set of classes to adjust screen-reader abilities of an element.
+The visually-hidden utilities provide a set of classes to for screen-reader interactions.
 
 ## Visually-hidden
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| [`.visually-hidden`](#visually-hidden) | N/A | `visually-hidden` |
-| [`.focusable`](#focusable) | N/A | `focusable` |
+Hides an element visually but leaves it accessible to screen readers.
 
-### `.visually-hidden`
-
-Gives the class `visually-hidden` to the element.
-
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-hidden p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 visually-hidden">Item</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="visually-hidden">Item</div>
-</div>
+```css
+  .visually-hidden:not(.focusable) {
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    overflow: hidden !important
+  }
 ```
 
-### `.focusable`
+## Focusable
 
-Gives the class `focusable` to the element - usually work alongside `visually-hidden` to allow screen-readers access to a focus on an accessibility element.
+When applied to a visually hidden element, it makes the element accessible to keyboard navigation.
 
-<div class="w-full display-flex g-4 bg-primary-100 bordered border-primary-700 align-content-hidden p-5 h-auto">
-  <div class="bg-primary-200 bordered border-tertiary-700 p-4 visually-hidden focusable">Item</div>
-</div>
-
-```html
-<div class="display-flex">
-  <div class="visually-hidden focusable">Item</div>
-</div>
+```css
+  .visually-hidden.focusable:not(:focus, :focus-within) {
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    clip-path: inset(50%) !important;
+    border: 0 !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    position: absolute !important;
+    overflow: hidden !important
+  }
 ```
 
 ## Customization
 
 To customize the visually-hidden utilities, you can use the following variables.
 
-| Variable | Default Value | Description |
+| Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
@@ -73,11 +76,11 @@ To customize the visually-hidden utilities, you can use the following variables.
 | `$utility-values` | Map of utility values. | `()` |
 | `$utility-map` | Map of utility property/value pairs. | `()` |
 
-## Responsive variants
+## Responsive Variants
 
-To generate responsive visually-hidden utilities, you can set the `$screen-aware`, `$theme-aware`, `$state-aware`, or `$container-aware` variables to `true`.
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
 
-By default, no responsive alignment utilities are generated.
+By default, no responsive utility classes are generated for visually-hidden.
 
 ::: tip :pencil2: Note
 For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.
