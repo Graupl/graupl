@@ -19,7 +19,7 @@ Screen aware utility classes provide screen size based variants. They use media 
 To enable screen aware utility variants for any given utility class, set it's `$screen-aware` variable to `true`.
 
 ```scss
-@use `pkg:@graupl/core/src/utilities/display/defaults` as graupl-display-utility-defaults with(
+@use "pkg:@graupl/core/src/utilities/display/defaults" as graupl-display-utility-defaults with(
   $screen-aware: true,
 );
 ```
@@ -39,7 +39,7 @@ Theme aware utility classes provide theme based variants. They use a nested sele
 To enable theme aware utility variants for any given utility class, set it's `$theme-aware` variable to `true`.
 
 ```scss
-@use `pkg:@graupl/core/src/utilities/color/defaults` as graupl-color-utility-defaults with(
+@use "pkg:@graupl/core/src/utilities/color/defaults" as graupl-color-utility-defaults with(
   $theme-aware: true,
 );
 ```
@@ -63,7 +63,7 @@ Scheme aware utilities will be getting an upgrade shortly to properly handle col
 To enable scheme aware utility variants for any given utility class, set it's `$scheme-aware` variable to `true`.
 
 ```scss
-@use `pkg:@graupl/core/src/utilities/color/defaults` as graupl-color-utility-defaults with(
+@use "pkg:@graupl/core/src/utilities/color/defaults" as graupl-color-utility-defaults with(
   $scheme-aware: true,
 );
 ```
@@ -82,7 +82,7 @@ State aware utility classes provide state based variants. They use a series of n
 To enable state aware utility variants for any given utility class, set it's `$state-aware` variable to `true`.
 
 ```scss
-@use `pkg:@graupl/core/src/utilities/typography/defaults` as graupl-typography-utility-defaults with(
+@use "pkg:@graupl/core/src/utilities/typography/defaults" as graupl-typography-utility-defaults with(
   $state-aware: true,
 );
 ```
@@ -101,7 +101,7 @@ Container aware utility classes provide container size based variants. They use 
 To enable container aware utility variants for any given utility class, set it's `$container-aware` variable to `true`.
 
 ```scss
-@use `pkg:@graupl/core/src/utilities/display/defaults` as graupl-display-utility-defaults with(
+@use "pkg:@graupl/core/src/utilities/display/defaults" as graupl-display-utility-defaults with(
   $container-aware: true,
 );
 ```
