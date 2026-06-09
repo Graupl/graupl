@@ -41,7 +41,7 @@ $container-aware-selector-separator: typography-defaults.$container-aware-select
 
 // Properties.
 $-utility-properties: (
-  "text": font-size,
+  "text": text-transform,
 );
 $utility-properties: () !default;
 
