@@ -173,8 +173,8 @@ Applies the default h6 styling to an element.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| `.font-style-normal` | font-style | `300` |
-| `.font-style-normal` | font-style | `400` |
+| `.font-style-normal` | font-style | `normal` |
+| `.font-style-italic` | font-style | `italic` |
 
 ## Font Weight
 

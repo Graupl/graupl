@@ -8,7 +8,7 @@ The position utilities provide a set of classes to adjust the `position` propert
 | --- | --- | --- |
 | `.position-static` | position | `static` |
 | `.position-fixed` | position | `fixed` |
-| `.position-absolute` | position-absolute | `absolute` |
+| `.position-absolute` | position | `absolute` |
 | `.position-relative` | position | `relative` |
 | `.position-sticky` | position | `sticky` |
 

@@ -26,8 +26,8 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 | `.bg-secondary-700` | background, --graupl-background | `var(--graupl-theme-active--secondary--700)` |
 | `.bg-secondary-800` | background, --graupl-background | `var(--graupl-theme-active--secondary--800)` |
 | `.bg-secondary-900` | background, --graupl-background | `var(--graupl-theme-active--secondary--900)` |
-| `.bg-tertiary-100` | background, --graupl-background | `var(--graupl-theme-active--tertiary)` |
-| `.bg-tertiary` | background, --graupl-background | `var(--graupl-theme-active--tertiary--100)` |
+| `.bg-tertiary` | background, --graupl-background | `var(--graupl-theme-active--tertiary)` |
+| `.bg-tertiary-100` | background, --graupl-background | `var(--graupl-theme-active--tertiary--100)` |
 | `.bg-tertiary-200` | background, --graupl-background | `var(--graupl-theme-active--tertiary--200)` |
 | `.bg-tertiary-300` | background, --graupl-background | `var(--graupl-theme-active--tertiary--300)` |
 | `.bg-tertiary-400` | background, --graupl-background | `var(--graupl-theme-active--tertiary--400)` |
