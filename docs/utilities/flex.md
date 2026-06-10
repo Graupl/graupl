@@ -25,7 +25,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | --- | --- | --- |
 | `.flex-row` | flex-direction | `row` |
 | `.flex-row-reverse` | flex-direction | `row-reverse` |
-| `.flex-col` | flex-direction | `col` |
+| `.flex-col` | flex-direction | `column` |
 | `.flex-col-reverse` | flex-direction | `column-reverse` |
 
 ## Flex Grow

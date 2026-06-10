@@ -7,8 +7,8 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.justify-content-normal` | justify-content | `normal` |
-| `.justify-content-start` | justify-content | `block-start` |
-| `.justify-content-end` | justify-content | `block-end` |
+| `.justify-content-start` | justify-content | `flex-start` |
+| `.justify-content-end` | justify-content | `flex-end` |
 | `.justify-content-center` | justify-content | `center` |
 | `.justify-content-between` | justify-content | `space-between` |
 | `.justify-content-around` | justify-content | `space-around` |
