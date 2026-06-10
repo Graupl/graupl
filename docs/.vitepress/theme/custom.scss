@@ -4,9 +4,9 @@
 @use "pkg:@graupl/core/src/defaults" as graupl-root-defaults with (
   $id: "graupl-docs"
 );
-@use "pkg:@graupl/core/src/base/button/defaults" as graupl-button-defaults;
-@use "pkg:@graupl/icons/src/component/icon/defaults" as graupl-icon-defaults
-  with (
+@use "pkg:@graupl/core/src/base/button/defaults" as graupl-base-button-defaults;
+@use "pkg:@graupl/icons/src/component/icon/defaults" as
+  graupl-component-icon-defaults with (
   $icons: (
     copy:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%231f1f1f'%3E%3Cpath d='M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z'/%3E%3C/svg%3E"),
@@ -20,11 +20,17 @@
 );
 
 // Variables.
-@use "pkg:@graupl/core/src/base/button/variables" as graupl-button-variables;
+@use "pkg:@graupl/core/src/variables" as graupl-root-variables;
+@use "pkg:@graupl/core/src/base/button/variables" as
+  graupl-base-button-variables;
 
 // Mixins.
-@use "pkg:@graupl/core/src/base/button/mixins" as graupl-button-mixins;
-@use "pkg:@graupl/icons/src/component/icon/mixins" as graupl-icon-mixins;
+@use "pkg:@graupl/core/src/base/button/mixins" as graupl-base-button-mixins;
+@use "pkg:@graupl/icons/src/component/icon/mixins" as
+  graupl-component-icon-mixins;
+
+// Functions.
+@use "pkg:@graupl/core/src/functions/theme";
 
 // Packages.
 @use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
@@ -166,15 +172,15 @@ pre code {
   }
 
   .copy {
-    --graupl-docs-icon: #{map.get(graupl-icon-defaults.$icons, copy)};
+    --graupl-docs-icon: #{map.get(graupl-component-icon-defaults.$icons, copy)};
     --graupl-docs-button-padding: var(--graupl-docs-spacer-3);
 
-    @include graupl-button-mixins.apply-base;
-    @include graupl-button-mixins.apply-theme;
-    @include graupl-icon-mixins.apply("after");
-    @include graupl-icon-mixins.bind(
-      graupl-button-variables.$button-color,
-      graupl-button-variables.$button-color-states
+    @include graupl-base-button-mixins.apply-base;
+    @include graupl-base-button-mixins.apply-theme;
+    @include graupl-component-icon-mixins.apply("after");
+    @include graupl-component-icon-mixins.bind(
+      graupl-base-button-variables.$button-color,
+      graupl-base-button-variables.$button-color-states
     );
 
     position: absolute;
@@ -185,14 +191,14 @@ pre code {
     opacity: 0;
 
     @if graupl-root-defaults.$themeable-components and
-      graupl-button-defaults.$themeable
+      graupl-base-button-defaults.$themeable
     {
-      @each $color, $map in graupl-button-defaults.$button-theme-map {
+      @each $color, $map in graupl-base-button-defaults.$button-theme-map {
         // &.primary, &.secondary, &.tertiary
-        &#{graupl-button-defaults.$button-theme-selector-base}#{graupl-button-defaults.$button-theme-selector-prefix}#{$color} {
-          @include graupl-icon-mixins.bind(
-            graupl-button-variables.$button-color,
-            graupl-button-variables.$button-color-states
+        &#{graupl-base-button-defaults.$button-theme-selector-base}#{graupl-base-button-defaults.$button-theme-selector-prefix}#{$color} {
+          @include graupl-component-icon-mixins.bind(
+            graupl-base-button-variables.$button-color,
+            graupl-base-button-variables.$button-color-states
           );
         }
       }
@@ -254,6 +260,47 @@ pre code {
     .navigation {
       opacity: 0;
       pointer-events: none;
+    }
+  }
+}
+
+.example {
+  display: flex;
+  flex-direction: column;
+  gap: map.get(graupl-root-variables.$spacers, 3);
+  margin-block: map.get(graupl-root-variables.$spacers, 5);
+
+  .example-container {
+    inline-size: 100%;
+
+    .example-display {
+      /* stylelint-disable scss/operator-no-newline-after */
+      block-size: calc(
+        map.get(graupl-root-variables.$spacers, 10) +
+          (map.get(graupl-root-variables.$spacers, 5) * 2)
+      );
+      /* stylelint-enable scss/operator-no-newline-after */
+      padding: map.get(graupl-root-variables.$spacers, 5);
+      overflow-y: scroll;
+      border-width: graupl-root-variables.$border-top-width
+        graupl-root-variables.$border-right-width
+        graupl-root-variables.$border-bottom-width
+        graupl-root-variables.$border-left-width;
+      border-style: graupl-root-variables.$border-top-style
+        graupl-root-variables.$border-right-style
+        graupl-root-variables.$border-bottom-style
+        graupl-root-variables.$border-left-style;
+      border-radius: graupl-root-variables.$border-top-left-radius
+        graupl-root-variables.$border-top-right-radius
+        graupl-root-variables.$border-bottom-right-radius
+        graupl-root-variables.$border-bottom-left-radius;
+      scrollbar-color: theme.get("primary", "700") theme.get("primary", "100");
+      scrollbar-width: thin;
+    }
+
+    .example-classes {
+      padding: map.get(graupl-root-variables.$spacers, 3);
+      background: theme.get("primary", "100");
     }
   }
 }

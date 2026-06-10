@@ -24,11 +24,18 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-content-baseline` | align-content | `baseline` |
 | `.align-content-stretch` | align-content | `stretch` |
 
-<div class="display-grid g-3 mbse-5">
-  <div :class="`${content} display-grid g-5 bordered p-5 w-full h-10`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+    </div>
   </div>
   <div class="input-group">
     <label for="select-align-content">Align content property</label>
@@ -56,11 +63,18 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-items-baseline` | align-items | `baseline` |
 | `.align-items-stretch` | align-items | `stretch` |
 
-<div class="display-grid g-3 mbse-5">
-  <div :class="`${items} display-grid g-5 bordered p-5 w-full h-10`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${items} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+    </div>
   </div>
   <div class="input-group">
     <label for="select-align-items">Align items property</label>
@@ -85,11 +99,18 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-self-baseline` | align-self | `baseline` |
 | `.align-self-stretch` | align-self | `stretch` |
 
-<div class="display-grid g-3 mbse-5">
-  <div class="display-grid g-5 bordered p-5 w-full h-10" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-    <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${self}`"></div>
-    <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${self}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ self }}"&gt;&lt;/div&gt;</code>
+    </div>
   </div>
   <div class="input-group">
     <label for="select-align-self">Align self property</label>
