@@ -26,3 +26,29 @@
 
   @return $map;
 }
+
+/// Convert a map of properties and a map of values into a single utility map.
+///
+/// This mixin is used internally.
+///
+/// @param {Map} $properties
+///   The map of properties.
+/// @param {Map} $values
+///   The map of values.
+/// @param {string} $separator
+///   The separator to use for the selector.
+@function generate-utility-map($properties, $values, $separator) {
+  $map: ();
+
+  @each $name, $property-list in $properties {
+    @if $property-list {
+      @each $key, $value in $values {
+        $selector: #{$name}#{$separator}#{$key};
+        $property-map: convert-property-values-to-map($property-list, $value);
+        $map: map.merge($map, (#{$selector}: $property-map));
+      }
+    }
+  }
+
+  @return $map;
+}

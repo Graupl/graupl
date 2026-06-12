@@ -2,10 +2,56 @@
 //
 // These values are to be used to directly style components and provide a
 // cleaner way to reference custom properties.
+//
+// Custom property defaults:
+// | Custom property                                                       | Default                                                                                                                                                                                                                                                                                                                                                            |
+// | --------------------------------------------------------------------  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+// | --graupl-container-sidebar-width                                      | 26ch                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-breakout-width                                     | 4ch                                                                                                                                                                                                                                                                                                                                                                |
+// | --graupl-container-feature-width                                      | 10ch                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-content-max-width                                  | var(--graupl-content-max-width)                                                                                                                                                                                                                                                                                                                                    |
+// | --graupl-container-breakout-max-width                                 | calc(var(--graupl-container-content-max-width) + var(--graupl-container-breakout-width))                                                                                                                                                                                                                                                                           |
+// | --graupl-container-feature-max-width                                  | calc(var(--graupl-container-breakout-max-width) + var(--graupl-container-feature-width))                                                                                                                                                                                                                                                                           |
+// | --graupl-container-full-width-section-min-width                       | var(--graupl-spacer-5)                                                                                                                                                                                                                                                                                                                                             |
+// | --graupl-container-full-width-section-max-width                       | 1fr                                                                                                                                                                                                                                                                                                                                                                |
+// | --graupl-container-feature-section-min-width                          | 0rem                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-feature-section-max-width                          | calc((var(--graupl-container-feature-max-width) - var(--graupl-container-breakout-max-width)) / 2)                                                                                                                                                                                                                                                                 |
+// | --graupl-container-breakout-section-min-width                         | 0rem                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-breakout-section-max-width                         | calc((var(--graupl-container-breakout-max-width) - var(--graupl-container-content-max-width)) / 2)                                                                                                                                                                                                                                                                 |
+// | --graupl-container-content-section-min-width                          | calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-breakout-section-min-width) * 2))                                                                                                                                                                       |
+// | --graupl-container-content-section-max-width                          | var(--graupl-container-content-max-width)                                                                                                                                                                                                                                                                                                                          |
+// | --graupl-container-full-width-section-width                           | minmax(var(--graupl-container-full-width-section-min-width), var(--graupl-container-full-width-section-max-width))                                                                                                                                                                                                                                                 |
+// | --graupl-container-feature-section-width                              | minmax(var(--graupl-container-feature-section-min-width), var(--graupl-container-feature-section-max-width))                                                                                                                                                                                                                                                       |
+// | --graupl-container-breakout-section-width                             | minmax(var(--graupl-container-breakout-section-min-width), var(--graupl-container-breakout-section-max-width))                                                                                                                                                                                                                                                     |
+// | --graupl-container-content-section-width                              | min(var(--graupl-container-content-section-min-width), var(--graupl-container-content-section-max-width))                                                                                                                                                                                                                                                          |
+// | --graupl-container-sidebar-left-section-width                         | max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))                                                                                                                                                                                                                                                                      |
+// | --graupl-container-sidebar-right-section-width                        | max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))                                                                                                                                                                                                                                                                      |
+// | --graupl-container-sidebars-breakout-section-width                    | var(--graupl-container-breakout-section-max-width)                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-container-sidebars-content-section-min-width                 | calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-sidebars-breakout-section-width) * 2) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width))                                                       |
+// | --graupl-container-sidebars-content-section-max-width                 | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))) |
+// | --graupl-container-sidebars-content-section-width                     | min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-content-section-max-width))                                                                                                                                                                                                                                        |
+// | --graupl-container-sidebars-right-content-section-min-width           | calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-right-section-width))                                                             |
+// | --graupl-container-sidebars-right-content-section-max-width           | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))                                                                                                                                                      |
+// | --graupl-container-sidebars-right-content-section-width               | min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-right-content-section-max-width))                                                                                                                                                                                                                            |
+// | --graupl-container-sidebars-left-content-section-min-width            | calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))                                                              |
+// | --graupl-container-sidebars-left-content-section-max-width            | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))                                                                                                                                                       |
+// | --graupl-container-sidebars-left-content-section-width                | min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))                                                                                                                                                                                                                              |
+// | --graupl-container-contained-sidebar-left-section-width               | var(--graupl-container-sidebar-left-section-width)                                                                                                                                                                                                                                                                                                                 |
+// | --graupl-container-contained-sidebar-right-section-width              | var(--graupl-container-sidebar-right-section-width)                                                                                                                                                                                                                                                                                                                |
+// | --graupl-container-sidebars-contained-spacer-section-width            | var(--graupl-container-sidebars-breakout-section-width)                                                                                                                                                                                                                                                                                                            |
+// | --graupl-container-sidebars-contained-content-section-max-width       | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-left-section-width) - var(--graupl-container-contained-sidebar-right-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width) * 2)                                                                                                       |
+// | --graupl-container-sidebars-contained-content-section-width           | min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-contained-content-section-max-width))                                                                                                                                                                                                                              |
+// | --graupl-container-sidebars-contained-left-content-section-max-width  | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-left-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width))                                                                                                                                                                           |
+// | --graupl-container-sidebars-contained-left-content-section-width      | min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-contained-left-content-section-max-width))                                                                                                                                                                                                                    |
+// | --graupl-container-sidebars-contained-right-content-section-max-width | calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-right-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width))                                                                                                                                                                          |
+// | --graupl-container-sidebars-contained-right-content-section-width     | min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-contained-right-content-section-max-width))                                                                                                                                                                                                                  |
+// | --graupl-container-background                                         | null                                                                                                                                                                                                                                                                                                                                                               |
+// | --graupl-container-color                                              | null                                                                                                                                                                                                                                                                                                                                                               |
 
 @use "defaults";
 @use "../../variables" as root-variables;
 @use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
 @use "sass:map";
 
 // --graupl-container-sidebar-width
@@ -135,13 +181,13 @@ $container-content-section-width: var(
 // --graupl-container-sidebar-left-section-width
 $container-sidebar-left-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-left-section-width,
-  max($container-sidebar-width, $container-feature-section-max-width)
+  max(#{$container-sidebar-width}, #{$container-feature-section-max-width})
 );
 
 // --graupl-container-sidebar-right-section-width
 $container-sidebar-right-section-width: var(
   --#{root-defaults.$prefix}container-sidebar-right-section-width,
-  max($container-sidebar-width, $container-feature-section-max-width)
+  max(#{$container-sidebar-width}, #{$container-feature-section-max-width})
 );
 
 // --graupl-container-sidebars-breakout-section-width
@@ -169,8 +215,11 @@ $container-sidebars-content-section-max-width: var(
     #{$container-content-section-max-width} -
       #{$container-sidebar-left-section-width} -
       #{$container-sidebar-right-section-width} +
-      min($container-sidebar-width, $container-feature-section-max-width) +
-      min($container-sidebar-width, $container-feature-section-max-width)
+      min(
+        #{$container-sidebar-width},
+        #{$container-feature-section-max-width}
+      ) +
+      min(#{$container-sidebar-width}, #{$container-feature-section-max-width})
   )
 );
 
@@ -201,7 +250,7 @@ $container-sidebars-right-content-section-max-width: var(
   calc(
     #{$container-content-section-max-width} -
       #{$container-sidebar-right-section-width} +
-      min($container-sidebar-width, $container-feature-section-max-width)
+      min(#{$container-sidebar-width}, #{$container-feature-section-max-width})
   )
 );
 
@@ -209,8 +258,8 @@ $container-sidebars-right-content-section-max-width: var(
 $container-sidebars-right-content-section-width: var(
   --#{root-defaults.$prefix}container-sidebars-right-content-section-width,
   min(
-    $container-sidebars-right-content-section-min-width,
-    $container-sidebars-right-content-section-max-width
+    #{$container-sidebars-right-content-section-min-width},
+    #{$container-sidebars-right-content-section-max-width}
   )
 );
 
@@ -232,7 +281,7 @@ $container-sidebars-left-content-section-max-width: var(
   calc(
     #{$container-content-section-max-width} -
       #{$container-sidebar-left-section-width} +
-      min($container-sidebar-width, $container-feature-section-max-width)
+      min(#{$container-sidebar-width}, #{$container-feature-section-max-width})
   )
 );
 
@@ -240,8 +289,90 @@ $container-sidebars-left-content-section-max-width: var(
 $container-sidebars-left-content-section-width: var(
   --#{root-defaults.$prefix}container-sidebars-left-content-section-width,
   min(
-    $container-sidebars-left-content-section-min-width,
-    $container-sidebars-left-content-section-max-width
+    #{$container-sidebars-left-content-section-min-width},
+    #{$container-sidebars-left-content-section-max-width}
   )
 );
+
+// --graupl-container-contained-sidebar-left-section-width
+$container-contained-sidebar-left-section-width: var(
+  --#{root-defaults.$prefix}container-contained-sidebar-left-section-width,
+  #{$container-sidebar-left-section-width}
+);
+
+// --graupl-container-contained-sidebar-right-section-width
+$container-contained-sidebar-right-section-width: var(
+  --#{root-defaults.$prefix}container-contained-sidebar-right-section-width,
+  #{$container-sidebar-right-section-width}
+);
+
+// --graupl-container-sidebars-contained-spacer-section-width
+$container-sidebars-contained-spacer-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-spacer-section-width,
+  #{$container-sidebars-breakout-section-width}
+);
+
+// --graupl-container-sidebars-contained-content-section-max-width
+$container-sidebars-contained-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-contained-sidebar-left-section-width} -
+      #{$container-contained-sidebar-right-section-width} -
+      #{$container-sidebars-contained-spacer-section-width} * 2
+  )
+);
+
+// --graupl-container-sidebars-contained-content-section-width
+$container-sidebars-contained-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-content-section-width,
+  min(
+    #{$container-sidebars-content-section-min-width},
+    #{$container-sidebars-contained-content-section-max-width}
+  )
+);
+
+// --graupl-container-sidebars-contained-left-content-section-max-width
+$container-sidebars-contained-left-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-left-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-contained-sidebar-left-section-width} -
+      #{$container-sidebars-contained-spacer-section-width}
+  )
+);
+
+// --graupl-container-sidebars-contained-left-content-section-width
+$container-sidebars-contained-left-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-left-content-section-width,
+  min(
+    #{$container-sidebars-left-content-section-min-width},
+    #{$container-sidebars-contained-left-content-section-max-width}
+  )
+);
+
+// --graupl-container-sidebars-contained-right-content-section-max-width
+$container-sidebars-contained-right-content-section-max-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-right-content-section-max-width,
+  calc(
+    #{$container-content-section-max-width} -
+      #{$container-contained-sidebar-right-section-width} -
+      #{$container-sidebars-contained-spacer-section-width}
+  )
+);
+
+// --graupl-container-sidebars-contained-right-content-section-width
+$container-sidebars-contained-right-content-section-width: var(
+  --#{root-defaults.$prefix}container-sidebars-contained-right-content-section-width,
+  min(
+    #{$container-sidebars-right-content-section-min-width},
+    #{$container-sidebars-contained-right-content-section-max-width}
+  )
+);
+
+// --graupl-container-background
+$container-background: var(--#{root-defaults.$prefix}container-background);
+
+// --graupl-container-color
+$container-color: var(--#{root-defaults.$prefix}container-color);
 /* stylelint-enable  scss/operator-no-newline-after */

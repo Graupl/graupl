@@ -7,41 +7,89 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/utility";
 @use "sass:map";
 
 // Utility modifiers.
 $selector-base: root-defaults.$utility-selector-base !default;
+$selector-prefix: root-defaults.$utility-selector-prefix !default;
+$selector-suffix: root-defaults.$utility-selector-suffix !default;
+$selector-separator: root-defaults.$utility-selector-separator !default;
 $use-important: root-defaults.$use-important !default;
 $generate-base-utilities: root-defaults.$generate-base-utilities !default;
 $screen-aware: true !default;
 $theme-aware: false !default;
+$scheme-aware: false !default;
 $state-aware: false !default;
 $container-aware: true !default;
-$screen-aware-separator: root-defaults.$utility-screen-aware-separator !default;
-$theme-aware-separator: root-defaults.$utility-theme-aware-separator !default;
-$state-aware-separator: root-defaults.$utility-state-aware-separator !default;
-$container-aware-separator: root-defaults.$utility-container-aware-separator !default;
+$screen-aware-selector-separator: root-defaults.$utility-screen-aware-selector-separator !default;
+$theme-aware-selector-separator: root-defaults.$utility-theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: root-defaults.$utility-scheme-aware-selector-separator !default;
+$state-aware-selector-separator: root-defaults.$utility-state-aware-selector-separator !default;
+$container-aware-selector-separator: root-defaults.$utility-container-aware-selector-separator !default;
 $screen-aware-selector-prefix: root-defaults.$utility-screen-aware-selector-prefix !default;
 $theme-aware-selector-prefix: root-defaults.$utility-theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: root-defaults.$utility-scheme-aware-selector-prefix !default;
 $state-aware-selector-prefix: root-defaults.$utility-state-aware-selector-prefix !default;
 $container-aware-selector-prefix: root-defaults.$utility-container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: root-defaults.$utility-screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
+$container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
+$ratio-selector: "ratio";
+$force-ratio-selector: "force-ratio";
 
-// Ratio utilities.
-$ratio-selector: "ratio" !default;
-$ratio-variant-selector-prefix: "" !default;
-$force-ratio-selector: "force-ratio" !default;
-$-ratios: (
-  "one-by-one": "1",
-  "two-by-one": "2 / 1",
-  "four-by-three": "4 / 3",
-  "four-by-one": "4 / 1",
-  "sixteen-by-nine": "16 / 9",
-  "three-by-two": "3 / 2",
-  "eight-by-five": "8 / 5",
-);
-$ratios: () !default;
+// Properties.
+$-utility-properties: ();
+$utility-properties: () !default;
 
-// Merge custom properties with base properties if generating base utilities.
+// Values.
+$-utility-values: ();
+$utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
 @if $generate-base-utilities {
-  $ratios: map.merge($-ratios, $ratios);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: (
+  #{$ratio-selector}: (
+      "aspect-ratio": var(--#{root-defaults.$prefix}ratio, auto),
+      "width": 100%,
+    ),
+  "one-by-one": (--#{root-defaults.$prefix}ratio: "1"),
+  "two-by-one": (--#{root-defaults.$prefix}ratio: "2 / 1"),
+  "four-by-three": (--#{root-defaults.$prefix}ratio: "4 / 3"),
+  "four-by-one": (--#{root-defaults.$prefix}ratio: "4 / 1"),
+  "sixteen-by-nine": (--#{root-defaults.$prefix}ratio: "16 / 9"),
+  "three-by-two": (--#{root-defaults.$prefix}ratio: "3 / 2"),
+  "eight-by-five": (--#{root-defaults.$prefix}ratio: "8 / 5")
+);
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

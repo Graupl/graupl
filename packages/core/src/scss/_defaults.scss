@@ -24,6 +24,7 @@ $generate-state-classes: true !default;
 $generate-base-utilities: true !default;
 $screen-aware-utilities: true !default;
 $theme-aware-utilities: true !default;
+$scheme-aware-utilities: true !default;
 $state-aware-utilities: true !default;
 $container-aware-utilities: false !default;
 $themeable-components: true !default;
@@ -134,66 +135,47 @@ $transition-durations: map.merge($-transition-durations, $transition-durations);
 $element-selector-base: "" !default;
 $component-selector-base: "." !default;
 $modifier-selector-base: "." !default;
+
+// Selector separators.
 $screen-aware-selector-separator: "\\:" !default;
 $theme-aware-selector-separator: "\\:" !default;
+$scheme-aware-selector-separator: "\\:" !default;
 $state-aware-selector-separator: "\\:" !default;
 $container-aware-selector-separator: "\\:" !default;
 
 // Selector prefixes.
 $screen-aware-selector-prefix: "" !default;
 $theme-aware-selector-prefix: "" !default;
+$scheme-aware-selector-prefix: "" !default;
 $state-aware-selector-prefix: "" !default;
 $container-aware-selector-prefix: "cq\\:" !default;
+
+// Selector suffixes.
+$screen-aware-selector-suffix: "" !default;
+$theme-aware-selector-suffix: "-theme" !default;
+$scheme-aware-selector-suffix: "-mode" !default;
+$state-aware-selector-suffix: "" !default;
+$container-aware-selector-suffix: "" !default;
 
 // State selectors.
 $state-selector-base: $modifier-selector-base !default;
 $-state-selectors: (
-  visited: (
-    ":visited",
-  ),
-  focus: (
-    ":focus-visible",
-  ),
-  hover: (
-    ":hover",
-  ),
-  active: (
-    ":active",
-  ),
-  disabled: (
-    ":disabled",
-    "[disabled]",
-    "[aria-disabled=true]",
-  ),
-  selected: (
-    "[aria-selected=true]",
-  ),
-  current: (
-    "[aria-current=true]",
-  ),
+  visited: ":visited",
+  focus: ":focus-visible",
+  hover: ":hover",
+  active: ":active",
+  disabled: ":disabled" "[disabled]" "[aria-disabled=true]",
+  selected: "[aria-selected=true]",
+  current: "[aria-current=true]",
 );
 $-state-class-selectors: (
-  visited: (
-    "#{$state-selector-base}visited",
-  ),
-  focus: (
-    "#{$state-selector-base}focus",
-  ),
-  hover: (
-    "#{$state-selector-base}hover",
-  ),
-  active: (
-    "#{$state-selector-base}active",
-  ),
-  disabled: (
-    "#{$state-selector-base}disabled",
-  ),
-  selected: (
-    "#{$state-selector-base}selected",
-  ),
-  current: (
-    "#{$state-selector-base}current",
-  ),
+  visited: "#{$state-selector-base}visited",
+  focus: "#{$state-selector-base}focus",
+  hover: "#{$state-selector-base}hover",
+  active: "#{$state-selector-base}active",
+  disabled: "#{$state-selector-base}disabled",
+  selected: "#{$state-selector-base}selected",
+  current: "#{$state-selector-base}current",
 );
 
 // Merge the state class selectors with the state selectors.
@@ -223,13 +205,27 @@ $state-selectors: () !default;
 
 // Utility properties.
 $utility-selector-base: $modifier-selector-base !default;
+$utility-selector-prefix: "" !default;
+$utility-selector-suffix: "" !default;
+$utility-selector-separator: "-" !default;
 
 // Utility modifier separators.
-$utility-screen-aware-separator: $screen-aware-selector-separator !default;
-$utility-theme-aware-separator: $theme-aware-selector-separator !default;
-$utility-state-aware-separator: $state-aware-selector-separator !default;
-$utility-container-aware-separator: $container-aware-selector-separator !default;
+$utility-screen-aware-selector-separator: $screen-aware-selector-separator !default;
+$utility-theme-aware-selector-separator: $theme-aware-selector-separator !default;
+$utility-scheme-aware-selector-separator: $scheme-aware-selector-separator !default;
+$utility-state-aware-selector-separator: $state-aware-selector-separator !default;
+$utility-container-aware-selector-separator: $container-aware-selector-separator !default;
 $utility-screen-aware-selector-prefix: $screen-aware-selector-prefix !default;
 $utility-theme-aware-selector-prefix: $theme-aware-selector-prefix !default;
+$utility-scheme-aware-selector-prefix: $scheme-aware-selector-prefix !default;
 $utility-state-aware-selector-prefix: $state-aware-selector-prefix !default;
 $utility-container-aware-selector-prefix: $container-aware-selector-prefix !default;
+$utility-screen-aware-selector-suffix: $screen-aware-selector-suffix !default;
+$utility-theme-aware-selector-suffix: $theme-aware-selector-suffix !default;
+$utility-scheme-aware-selector-suffix: $scheme-aware-selector-suffix !default;
+$utility-state-aware-selector-suffix: $state-aware-selector-suffix !default;
+$utility-container-aware-selector-suffix: $container-aware-selector-suffix !default;
+
+// Selectors.
+$root-selector-base: ":" !default;
+$root-selector: "root" !default;

@@ -7,20 +7,42 @@
 // Those should be defined as custom properties in the `_variables.scss` file.
 
 @use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
 
 // Flex columns selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$scheme-aware: false !default;
+$state-aware: false !default;
+$container-aware: true !default;
 $flex-columns-selector-base: $selector-base !default;
 $flex-columns-selector: "flex-columns" !default;
+$flex-columns-theme-selector-base: $modifier-selector-base !default;
+$flex-columns-theme-selector-prefix: "" !default;
 $flex-columns-column-selector-base: $selector-base !default;
 $flex-columns-column-selector: "col-" !default;
 $flex-columns-fill-selector-base: $selector-base !default;
 $flex-columns-fill-selector: "fill" !default;
-$flex-columns-screen-aware-separator: root-defaults.$screen-aware-selector-separator !default;
-$flex-columns-container-aware-separator: root-defaults.$container-aware-selector-separator !default;
 $flex-columns-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
+$flex-columns-screen-aware-selector-suffix: root-defaults.$screen-aware-selector-suffix !default;
+$flex-columns-screen-aware-selector-separator: root-defaults.$screen-aware-selector-separator !default;
+$flex-columns-theme-aware-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$flex-columns-theme-aware-selector-suffix: root-defaults.$theme-aware-selector-suffix !default;
+$flex-columns-theme-aware-selector-separator: root-defaults.$theme-aware-selector-separator !default;
+$flex-columns-scheme-aware-selector-prefix: root-defaults.$scheme-aware-selector-prefix !default;
+$flex-columns-scheme-aware-selector-suffix: root-defaults.$scheme-aware-selector-suffix !default;
+$flex-columns-scheme-aware-selector-separator: root-defaults.$scheme-aware-selector-separator !default;
+$flex-columns-state-aware-selector-prefix: root-defaults.$state-aware-selector-prefix !default;
+$flex-columns-state-aware-selector-suffix: root-defaults.$state-aware-selector-suffix !default;
+$flex-columns-state-aware-selector-separator: root-defaults.$state-aware-selector-separator !default;
 $flex-columns-container-aware-selector-prefix: root-defaults.$container-aware-selector-prefix !default;
+$flex-columns-container-aware-selector-suffix: root-defaults.$container-aware-selector-suffix !default;
+$flex-columns-container-aware-selector-separator: root-defaults.$container-aware-selector-separator !default;
 
 // Flex columns properties.
 $flex-columns-min-count: 1 !default;
@@ -28,3 +50,35 @@ $flex-columns-max-count: 12 !default;
 $flex-columns-size: auto !default;
 $flex-columns-max-width: unset !default;
 $flex-columns-container-type: "inline-size" !default;
+
+// Flex columns state theme defaults.
+// This map is used to define the default colour shades for the
+// themed flex columns component.
+//
+// e.g.
+// Primary flex columns will use primary--900 as the text colour and
+// primary--200 as the background.
+//
+// Secondary/tertiary variants will use the same shade for their respective colours.
+$-flex-columns-theme-mappings: (
+  color: 900,
+  background: 200,
+);
+$flex-columns-theme-mappings: () !default;
+
+// Merge the custom flex columns state theme map with the default one.
+@if $generate-base-theme-map {
+  $flex-columns-theme-mappings: map.merge(
+    $-flex-columns-theme-mappings,
+    $flex-columns-theme-mappings
+  );
+}
+
+$-flex-columns-theme-map: theme.generate-property-map(
+  $flex-columns-theme-mappings
+);
+$flex-columns-theme-map: () !default;
+$flex-columns-theme-map: map.deep-merge(
+  $-flex-columns-theme-map,
+  $flex-columns-theme-map
+);

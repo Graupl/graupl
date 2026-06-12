@@ -68,7 +68,9 @@ import Component from "../Component.js";
  * @property {object[]}                    _listeners                   - Event listeners throughout the accordion item.
  * @property {string}                      _prefix                      - The prefix used for CSS custom properties and attributes.
  * @property {string}                      _key                         - The key used to generate IDs throughout the accordion item.
+ * @property {string}                      _name                        - The component name of the accordion item.
  * @property {string}                      _storageKey                  - The key used for storage.
+ * @property {boolean}                     _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {string}                      _id                          - The main ID of the accordion item.
  * @property {boolean}                     _valid                       - The validity state of the accordion item.
  * @property {boolean}                     _initialized                 - The initialized state of the accordion item.
@@ -79,6 +81,9 @@ class AccordionItem extends Component {
   _protectedDOMElements = ["toggle", "header", "content"];
   _open = new TransactionalValue(false);
   _locked = new TransactionalValue(false);
+  _name = "AccordionItem";
+  _storageKey = "accordionItems";
+  _shouldStore = false;
 
   /**
    * Constructs a new AccordionItem.
@@ -289,7 +294,7 @@ class AccordionItem extends Component {
   }
 
   /**
-   * Conseals the accordion item.
+   * Conceals the accordion item.
    *
    * Sets the accordion item's `aria-expanded` to "false", adds the
    * close class to the item, and removes the open class from the item.
@@ -402,7 +407,7 @@ class AccordionItem extends Component {
    * @param {Object<boolean>} [options = {}]                  - The options for hiding the accordion item.
    * @param {boolean}         [options.force = false]         - Whether to force the hide action.
    * @param {boolean}         [options.preserveState = false] - Whether to preserve the open state.
-   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once consealed.
+   * @param {boolean}         [options.emit = true]           - Emit the deactivate event once concealed.
    * @param {boolean}         [options.transition = true]     - Respect the transition class.
    */
   hide({

@@ -1,0 +1,74 @@
+// @graupl/core breadcrumb component default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../defaults" as root-defaults;
+@use "../../functions/theme";
+@use "sass:map";
+
+// Breadcrumb selectors.
+$selector-base: root-defaults.$component-selector-base !default;
+$modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
+$themeable: false !default;
+$breadcrumb-selector-base: $selector-base !default;
+$breadcrumb-selector: "breadcrumb" !default;
+$breadcrumb-theme-selector-base: $modifier-selector-base !default;
+$breadcrumb-theme-selector-prefix: "" !default;
+$breadcrumb-item-selector-base: $selector-base !default;
+$breadcrumb-item-selector: "breadcrumb-item" !default;
+$breadcrumb-item-separator-pseudo-selector: "after" !default;
+$breadcrumb-toggle-selector-base: $selector-base !default;
+$breadcrumb-toggle-selector: "breadcrumb-toggle" !default;
+$breadcrumb-link-selector-base: $selector-base !default;
+$breadcrumb-link-selector: "breadcrumb-link" !default;
+$breadcrumb-open-selector-base: $modifier-selector-base !default;
+$breadcrumb-open-selector: "show" !default;
+$breadcrumb-close-selector-base: $modifier-selector-base !default;
+$breadcrumb-close-selector: "hide" !default;
+$breadcrumb-transition-selector-base: $modifier-selector-base !default;
+$breadcrumb-transition-selector: "transitioning" !default;
+
+// Breadcrumb link properties.
+$breadcrumb-link-initial-transform: none !default;
+$breadcrumb-link-final-transform: $breadcrumb-link-initial-transform !default;
+$breadcrumb-link-disabled-transform: $breadcrumb-link-initial-transform !default;
+$breadcrumb-item-separator: "'/'" !default;
+
+// Visibility properties.
+$breadcrumb-item-show-display: flex !default;
+$breadcrumb-item-hide-display: none !default;
+$breadcrumb-item-transitioning-display: $breadcrumb-item-show-display !default;
+
+// Opacity properties.
+$breadcrumb-item-show-opacity: 1 !default;
+$breadcrumb-item-hide-opacity: 0 !default;
+$breadcrumb-item-transitioning-opacity: $breadcrumb-item-hide-opacity !default;
+
+// Breadcrumb state theme defaults.
+// This map defines the default colour shades applied to themed breadcrumbs.
+// All theme variants will only adjust the colour and border colour of the breadcrumb
+// container and items.
+$-breadcrumb-theme-mappings: (
+  color: 900,
+);
+$breadcrumb-theme-mappings: () !default;
+
+// Merge the custom breadcrumb theme map with the default one.
+@if $generate-base-theme-map {
+  $breadcrumb-theme-mappings: map.merge(
+    $-breadcrumb-theme-mappings,
+    $breadcrumb-theme-mappings
+  );
+}
+
+$-breadcrumb-theme-map: theme.generate-property-map($breadcrumb-theme-mappings);
+$breadcrumb-theme-map: () !default;
+$breadcrumb-theme-map: map.deep-merge(
+  $-breadcrumb-theme-map,
+  $breadcrumb-theme-map
+);

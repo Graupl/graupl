@@ -1,5 +1,6 @@
 import { NodePackageImporter } from "sass-embedded";
 import { defineConfig } from "vite";
+import { Features } from "lightningcss";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +15,9 @@ export default defineConfig({
   },
   css: {
     transformer: "lightningcss",
+    lightningcss: {
+      exclude: Features.LightDark,
+    },
     preprocessorOptions: {
       scss: {
         importers: [new NodePackageImporter()],

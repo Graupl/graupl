@@ -43,10 +43,6 @@ $carousel-tab-selector-base: $selector-base !default;
 $carousel-tab-selector: "carousel-tab" !default;
 $carousel-active-item-selector-base: $modifier-selector-base !default;
 $carousel-active-item-selector: "active" !default;
-$carousel-next-item-selector-base: $modifier-selector-base !default;
-$carousel-next-item-selector: "next" !default;
-$carousel-previous-item-selector-base: $modifier-selector-base !default;
-$carousel-previous-item-selector: "previous" !default;
 
 // Carousel grid area properties.
 $carousel-controls-height: auto !default;
@@ -55,7 +51,6 @@ $carousel-tabs-height: auto !default;
 $carousel-slide-height: 1fr !default;
 $carousel-control-height: 3rem !default;
 $carousel-control-width: 4rem !default;
-$carousel-transition-duration: 500ms !default;
 
 // Carousel slide properties.
 $carousel-item-max-width: 100% !default;

@@ -2,6 +2,165 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.50](https://github.com/Graupl/graupl/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2026-06-02)
+
+
+### Features
+
+* **component:** add proper responsiveness to input groups ([bcd91d9](https://github.com/Graupl/graupl/commit/bcd91d96f33289c19727cdbb27af98d304c3a5d6))
+* **component:** add responsive utility classes to input groups ([32ea808](https://github.com/Graupl/graupl/commit/32ea808850901a47a0eae52f0c81beea49983d2d))
+* **layout:** add contained sidebar container modifier ([b84932c](https://github.com/Graupl/graupl/commit/b84932c030ba69ae024ed4865d450af622ff523e))
+* **theme:** redefine how colors work with light-dark() ([51329ec](https://github.com/Graupl/graupl/commit/51329ec69a0b9855e0281fe347cd91d99ffb7f12))
+* **utilities:** implement new utility generation system ([75be2d1](https://github.com/Graupl/graupl/commit/75be2d15b6c16cb367fd073f41d4c7f1ca957e46))
+
+
+### Code Refactoring
+
+* **layout:** move column classes specifically into flex-columns ([061758f](https://github.com/Graupl/graupl/commit/061758f760449f9bb38cc53860a8e931fe8a8a12))
+* update responsive selector separator names ([1bea609](https://github.com/Graupl/graupl/commit/1bea6093bbf7017a9a7a5400ca74519912ee3295))
+
+## [1.0.0-beta.49](https://github.com/Graupl/graupl/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2026-05-22)
+
+
+### Features
+
+* **base:** add input type selectors to forms ([23bf9a6](https://github.com/Graupl/graupl/commit/23bf9a6b08a3089aad97ba1b7dacbf764f5965de))
+* **component:** add left/right/top/bottom modifiers to input groups ([7b66c77](https://github.com/Graupl/graupl/commit/7b66c776094aca9f26d7a122ef4fba61eb3a4fb4))
+
+## [1.0.0-beta.48](https://github.com/Graupl/graupl/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2026-05-12)
+
+
+### Features
+
+* **utility:** add block-size classes ([743a15b](https://github.com/Graupl/graupl/commit/743a15bda262763fb459f69ac68fb38bc14e5d46))
+* **utility:** add float and clear classes ([9082f27](https://github.com/Graupl/graupl/commit/9082f278df8cfabcb89997f56df8a8943cbd1c49))
+* **utility:** add placement classes ([5f5291a](https://github.com/Graupl/graupl/commit/5f5291a4c99fee8685403ab770d6f4d39d287abe))
+
+## [1.0.0-beta.47](https://github.com/Graupl/graupl/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2026-04-21)
+
+
+### Features
+
+* **carousel:** add swipe control ([fb60d98](https://github.com/Graupl/graupl/commit/fb60d98addda9b818d529b6a1792b1552f7a1660)), closes [#201](https://github.com/Graupl/graupl/issues/201)
+
+
+### Bug Fixes
+
+* **breadcrumb:** check for toggle before interacting with it ([8d75207](https://github.com/Graupl/graupl/commit/8d752075be474778a4d4db6efc8d102d8dc0b722))
+
+## [1.0.0-beta.46](https://github.com/Graupl/graupl/compare/v1.0.0-beta.45...v1.0.0-beta.46) (2026-04-07)
+
+
+### Bug Fixes
+
+* **disclosure:** force open/close functions on init ([fdd191b](https://github.com/Graupl/graupl/commit/fdd191bfeb47e3c1c8f0d9a368b19d6b4888a367))
+
+## [1.0.0-beta.45](https://github.com/Graupl/graupl/compare/v1.0.0-beta.44...v1.0.0-beta.45) (2026-04-07)
+
+
+### Features
+
+* **breadcrumb:** add lock/unlock and fix interactions with open/close ([36d0412](https://github.com/Graupl/graupl/commit/36d04121d35d832d6c61d465f26ed797720ae3da))
+* **component:** add tooltips ([696aba2](https://github.com/Graupl/graupl/commit/696aba289887ac821a36ff9bf9c6c1a3a67ae141)), closes [#84](https://github.com/Graupl/graupl/issues/84)
+* **disclosure:** add openOnFocus option ([00d6d4a](https://github.com/Graupl/graupl/commit/00d6d4acea8837c8b9469c5929ad7e669663c7ba))
+
+
+### Bug Fixes
+
+* **breadcrumbs:** allow breadcrumbs to wrap ([fc32f37](https://github.com/Graupl/graupl/commit/fc32f374f74dd2686c03fda3292f342f83df3034))
+* **carousel:** make non-active slides inert ([4f80c9f](https://github.com/Graupl/graupl/commit/4f80c9fc8e167f345c5384ab47138f9534cbc107)), closes [#239](https://github.com/Graupl/graupl/issues/239)
+* **disclosure:** correct lock interaction with open and close ([8c76661](https://github.com/Graupl/graupl/commit/8c76661cc4743ffc21fdcccac73a9b9d9aa80ee4))
+* **tabs:** correct text alignment on toggles ([4c19c9b](https://github.com/Graupl/graupl/commit/4c19c9b47c65b3bb287e59bbe7260fdf302b2d40)), closes [#241](https://github.com/Graupl/graupl/issues/241)
+
+
+### Performance Improvements
+
+* **disclosure:** adjust lock setting on init ([646a434](https://github.com/Graupl/graupl/commit/646a434ebd485d647c5dd4f8c6e051c354be09a1))
+
+
+### Documentation
+
+* **disclosure:** add lock/unlock event doc comments ([4c97267](https://github.com/Graupl/graupl/commit/4c97267acc0f9018fca4cb3068d56c21b37c583f))
+* **disclosure:** clarify wording on some methods ([aa1f99e](https://github.com/Graupl/graupl/commit/aa1f99e736b2994eee8a4924a7342f56ae41dcb0))
+
+## [1.0.0-beta.44](https://github.com/Graupl/graupl/compare/v1.0.0-beta.43...v1.0.0-beta.44) (2026-03-23)
+
+
+### Features
+
+* **disclosure:** add more granular control over opening and closing ([b8601c9](https://github.com/Graupl/graupl/commit/b8601c9d1b356ab2aadad812f8ac1e8a7aeffbb9))
+
+## [1.0.0-beta.43](https://github.com/Graupl/graupl/compare/v1.0.0-beta.42...v1.0.0-beta.43) (2026-02-25)
+
+
+### Bug Fixes
+
+* **cards:** adjust image border radius based on position and forced verticallity ([76bb763](https://github.com/Graupl/graupl/commit/76bb7633a103c493e9777a51bb85070ae61786a6))
+
+## [1.0.0-beta.42](https://github.com/Graupl/graupl/compare/v1.0.0-beta.41...v1.0.0-beta.42) (2026-02-18)
+
+
+### Bug Fixes
+
+* **layout:** correct how background and color is set for layout components ([9a95838](https://github.com/Graupl/graupl/commit/9a95838d0c8b39ab017b066a1e2bf9ac69a251f1))
+
+## [1.0.0-beta.41](https://github.com/Graupl/graupl/compare/v1.0.0-beta.40...v1.0.0-beta.41) (2026-02-18)
+
+
+### Features
+
+* **component:** add focus and blur handling ([be6df79](https://github.com/Graupl/graupl/commit/be6df79c228b3ccf99763be040045c178ef287c1))
+* **component:** implement breadcrumb ([49838f9](https://github.com/Graupl/graupl/commit/49838f92aa9083f6afe5d79954cc795316711212)), closes [#85](https://github.com/Graupl/graupl/issues/85)
+* **layout:** make columns themeable ([872a960](https://github.com/Graupl/graupl/commit/872a9601aff2eced11381c97940ce4115850bb98))
+* **layout:** make containers themeable ([21dac5f](https://github.com/Graupl/graupl/commit/21dac5fe69ea76e8527788bee892b84bedced92e))
+* **layout:** make flex columns themeable ([37c7bcc](https://github.com/Graupl/graupl/commit/37c7bcc9aab6c9933904be8ecfba79707794ca72))
+* **link:** add mixins to apply link styles ([e0f8807](https://github.com/Graupl/graupl/commit/e0f880723e8bd8bc742b0afff66d178c3a95f5f4))
+* **storage:** handle existing storage instances ([aece124](https://github.com/Graupl/graupl/commit/aece12468ccf470833ecfcfb408c61785f4767e6))
+
+
+### Documentation
+
+* clean up a lot of generated docs ([6dad7d7](https://github.com/Graupl/graupl/commit/6dad7d710a2d3b30cd47faa704745f20d534d3b1))
+
+## [1.0.0-beta.40](https://github.com/Graupl/graupl/compare/v1.0.0-beta.39...v1.0.0-beta.40) (2026-02-06)
+
+
+### Bug Fixes
+
+* **component:** add component name field to ensure event consistency ([b3181d6](https://github.com/Graupl/graupl/commit/b3181d6ab2536df1fcef515ff90802867c5400d8))
+
+## [1.0.0-beta.39](https://github.com/Graupl/graupl/compare/v1.0.0-beta.38...v1.0.0-beta.39) (2026-02-04)
+
+
+### Features
+
+* **tables:** allow headers and cells to be customized in striped, hover, and highlighted tables ([2c9dfd4](https://github.com/Graupl/graupl/commit/2c9dfd4d770602fbbc40112f91aacb55c8254a03))
+
+## [1.0.0-beta.38](https://github.com/Graupl/graupl/compare/v1.0.0-beta.37...v1.0.0-beta.38) (2026-01-28)
+
+
+### Features
+
+* **function:** add fallback option to theme.get ([9226943](https://github.com/Graupl/graupl/commit/9226943402573abe64c52a62892925557360fefe))
+* **layout:** set max column width in containers with sidebars ([c50163f](https://github.com/Graupl/graupl/commit/c50163fdf146602b980d9f46c4180196e5245cac))
+* **root:** implement global root selector ([5a89b75](https://github.com/Graupl/graupl/commit/5a89b750b8eb6baf9a6667907ca435f13ba509d6))
+* **typography:** add new font features and remove body styles ([c5d6f8e](https://github.com/Graupl/graupl/commit/c5d6f8ebeb0cccb39de90c1321d6427ad61cf00c))
+* **utility:** add isolation utility classes ([bcff2d0](https://github.com/Graupl/graupl/commit/bcff2d0c0d61a43a2e282fc43281a0e8859c4e39))
+
+
+### Bug Fixes
+
+* **navigation shelf:** do not allow locking on mobile displays ([a41118c](https://github.com/Graupl/graupl/commit/a41118ca7ddf8975037c9936fb89f10e6dc6f7e6))
+* **navigation shelf:** properly handle setup events ([4082e1e](https://github.com/Graupl/graupl/commit/4082e1e6cad800226ebab2b332a4cee337cd81b6))
+* **navigation shelf:** properly set other side on construction ([42e9037](https://github.com/Graupl/graupl/commit/42e9037127307a573abb1ab5c5cd3360c96531ca))
+* **navigation shelf:** remove warning about experimental component ([3c93f1e](https://github.com/Graupl/graupl/commit/3c93f1eee2165e468eeba67469ff2ebb1653df3f))
+
+
+### Documentation
+
+* add icons ([0332092](https://github.com/Graupl/graupl/commit/0332092a917341bc970b6e71cf6e35d0609c8a64))
+* fix menu ([7148440](https://github.com/Graupl/graupl/commit/714844062e116703e7bce31489833de1e9faa680))
+
 ## [1.0.0-beta.37](https://github.com/Graupl/graupl/compare/v1.0.0-beta.36...v1.0.0-beta.37) (2026-01-22)
 
 

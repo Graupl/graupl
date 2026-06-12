@@ -7,53 +7,70 @@
 // - `.focusable`: When applied to a visually hidden element, it makes the element accessible to keyboard navigation.
 //
 // The following custom properties control the generated classes:
-// - N/A.
+// | Property | Description | Default Value |
+// | -------- | ----------- | ------------- |
+// | N/A      | N/A         | N/A           |
+//
+// This utility does not define any custom properties.
 //
 // The following variables control the generated classes:
-// | Variable                              | Description                                       | Default Value       |
-// | ---                                   | ---                                               | ---                 |
-// | `$selector-base`                      | Base selector for utility classes.                | `"."`               |
-// | `$use-important`                      | Append `!important` to generated declarations.    | `true`              |
-// | `$generate-base-utilities`            | Generate the base utilities.                      | `true`              |
-// | `$screen-aware`                       | Generate screen-aware variants.                   | `false`             |
-// | `$theme-aware`                        | Generate theme-aware variants.                    | `false`             |
-// | `$state-aware`                        | Generate state-aware variants.                    | `false`             |
-// | `$container-aware`                    | Generate container-aware variants.                | `false`             |
-// | `$screen-aware-separator`             | Separator for screen-aware utilities.             | `"\\:"`             |
-// | `$theme-aware-separator`              | Separator for theme-aware utilities.              | `"\\:"`             |
-// | `$state-aware-separator`              | Separator for state-aware utilities.              | `"\\:"`             |
-// | `$container-aware-separator`          | Separator for container-aware utilities.          | `"\\:"`             |
-// | `$screen-aware-selector-prefix`       | Prefix for screen-aware utilities.                | `""`                |
-// | `$theme-aware-selector-prefix`        | Prefix for theme-aware utilities.                 | `""`                |
-// | `$state-aware-selector-prefix`        | Prefix for state-aware utilities.                 | `""`                |
-// | `$container-aware-selector-prefix`    | Prefix for container-aware utilities.             | `"cq\\:"`           |
-// | `$visually-hidden-selector`           | Selector used for visually hidden utilities.      | `"visually-hidden"` |
-// | `$visually-hidden-focusable-selector` | Selector used to expose focusable hidden content. | `"focusable"`       |
+// | Variable                             | Description                                                 | Default Value |
+// | ------------------------------------ | ----------------------------------------------------------- | ------------- |
+// | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
+// | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
+// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
+// | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
+// | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
+// | `$screen-aware`                      | Enables screen-aware utility variants.                      | `true`        |
+// | `$theme-aware`                       | Enables theme-aware utility variants.                       | `false`       |
+// | `$scheme-aware`                      | Enables scheme-aware utility variants.                      | `false`       |
+// | `$state-aware`                       | Enables state-aware utility variants.                       | `false`       |
+// | `$container-aware`                   | Enables container-aware utility variants.                   | `true`        |
+// | `$screen-aware-selector-prefix`      | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-suffix`      | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+// | `$screen-aware-selector-separator`   | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+// | `$theme-aware-selector-prefix`       | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+// | `$theme-aware-selector-suffix`       | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+// | `$theme-aware-selector-separator`    | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+// | `$scheme-aware-selector-prefix`      | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+// | `$scheme-aware-selector-suffix`      | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+// | `$scheme-aware-selector-separator`   | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+// | `$state-aware-selector-prefix`       | Prefix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-suffix`       | Suffix to the state-aware portion of utility selectors.     | `""`          |
+// | `$state-aware-selector-separator`    | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+// | `$container-aware-selector-prefix`   | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+// | `$container-aware-selector-suffix`   | Suffix to the container-aware portion of utility selectors. | `""`          |
+// | `$container-aware-selector-separator`| Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+// | `$utility-properties`                | Map of utility properties.                                  | `()`          |
+// | `$utility-values`                    | Map of utility values.                                      | `()`          |
+// | `$utility-map`                       | Map of utility property/value pairs.                        | `()`          |
+// | `$focusable-selector`                | The selector to use to identify the focusable variant.      | `focusable`   |
 //
-// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, or `$state-aware` to `true`.
-// By default, no responsive utility classes are generated.
+// Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+// By default, no responsive utility classes are generated for visually-hidden.
 //
-// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern:
-// - `.{screen-name}:visually-hidden`
+// When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `.sm:visually-hidden` will visually hide elements on screens equal to or larger than the `sm` breakpoint.
+// e.g. `sm:z-0` will apply the `z-0` class on small-sized screens and up.
 //
-// When set to true, theme-aware utility classes will be generated for each theme in the following pattern:
-// - `.{theme-name}:visually-hidden`
+// When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `.dark:visually-hidden` will visually hide elements when the `dark` theme is active.
+// e.g. `default-theme:z-0` will apply the `z-0` class when using the default theme.
 //
-// When set to true, state-aware utility classes will be generated for each state in the following pattern:
-// - `.{state-name}:visually-hidden`
+// When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `.hover:visually-hidden` will visually hide elements when the element is hovered.
+// e.g. `dark-mode:z-0` will apply the `z-0` class when dark-mode is active.
 //
-// When set to true, container-aware utility classes will be generated for each container in the following pattern:
-// - `.{container-prefix}{container-name}:{prefix}{value}`
+// When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `.cq:md:visually-hidden` will set the `visibility` property to `hidden` when the parent container is larger than the `md` breakpoint.
+// e.g. `hover:z-0` will apply the `z-0` class when hovered.
 //
-// Note: The `.focusable` class will never have screen-aware, theme-aware, or state-aware classes generated.
+// When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
+//
+// e.g. `cq:md:z-0` will apply the `z-0` class on medium-sized containers and up.
+//
+// Note: The `.focusable` class will never have responsive classes generated for it. It will rely on the `.visually-hidden` class for that.
 //
 // @example
 //   <div class="visually-hidden">This is visually hidden.</div>
@@ -61,132 +78,77 @@
 // @example
 //   <a href="#main-content" class="visually-hidden focusable">Skip to main content</a>
 
-@use "../../defaults" as root-defaults;
-@use "../../mixins/container";
 @use "../../mixins/layer" as *;
-@use "../../mixins/screen";
-@use "../../mixins/state";
-@use "../../mixins/theme";
-@use "../../mixins/visually-hidden";
-@use "../../theme/color/variables" as color;
+@use "../../mixins/utility";
 @use "defaults";
-@use "sass:map";
 @use "variables" as *;
 
 @include layer(utilities) {
-  // `.`
-  $selector-prefix: defaults.$selector-base;
+  // Create a utitlity for each entry in the utility map.
+  //
+  // Because visually hidden is very specific, all generated classes will be made
+  // with the suffix ":not(.focusable)".
+  @include utility.generate(
+    $map: defaults.$utility-map,
+    $selector-base: defaults.$selector-base,
+    $selector-prefix: defaults.$selector-prefix,
+    $selector-suffix:
+      ":not(#{defaults.$selector-base}#{defaults.$focusable-selector})",
+    $screen-aware: defaults.$screen-aware,
+    $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
+    $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
+    $screen-aware-selector-separator: defaults.$screen-aware-selector-separator,
+    $theme-aware: defaults.$theme-aware,
+    $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
+    $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
+    $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
+    $scheme-aware: defaults.$scheme-aware,
+    $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
+    $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
+    $scheme-aware-selector-separator: defaults.$scheme-aware-selector-separator,
+    $state-aware: defaults.$state-aware,
+    $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
+    $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
+    $state-aware-selector-separator: defaults.$state-aware-selector-separator,
+    $container-aware: defaults.$container-aware,
+    $container-aware-selector-prefix: defaults.$container-aware-selector-prefix,
+    $container-aware-selector-suffix: defaults.$container-aware-selector-suffix,
+    $container-aware-selector-separator:
+      defaults.$container-aware-selector-separator,
+    $important: defaults.$use-important
+  );
 
-  // `.visually-hidden`
-  #{$selector-prefix}#{defaults.$visually-hidden-selector} {
-    // `&:not(.focusable)`
-    &:not(#{$selector-prefix}#{defaults.$visually-hidden-focusable-selector}) {
-      @include visually-hidden.apply(defaults.$use-important);
-    }
-
-    // `&.focusable`
-    &#{$selector-prefix}#{defaults.$visually-hidden-focusable-selector} {
-      @include visually-hidden.focusable(defaults.$use-important);
-    }
-  }
-
-  // Create screen-aware utilities.
-  @if defaults.$screen-aware and root-defaults.$screen-aware-utilities {
-    @each $screen-name in map.keys(root-defaults.$screen-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$screen-aware-selector-prefix}#{$screen-name}#{defaults.$screen-aware-separator};
-
-      @include screen.up($screen-name) {
-        // e.g. `.md:visually-hidden`
-        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
-          // `&:not(.focusable)`
-          &:not(
-            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-          ) {
-            @include visually-hidden.apply(defaults.$use-important);
-          }
-
-          // `&.focusable`
-          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
-            @include visually-hidden.focusable(defaults.$use-important);
-          }
-        }
-      }
-    }
-  }
-
-  // Generate theme-aware utilities.
-  @if defaults.$theme-aware and root-defaults.$theme-aware-utilities {
-    @each $theme-name, $colors in color.$themes {
-      @if $theme-name != active {
-        $selector-prefix: #{defaults.$selector-base}#{defaults.$theme-aware-selector-prefix}#{$theme-name}#{defaults.$theme-aware-separator};
-
-        @include theme.theme($theme-name) {
-          // e.g. `.dark:visually-hidden`
-          #{$selector-prefix}#{defaults.$visually-hidden-selector} {
-            // `&:not(.focusable)`
-            &:not(
-              #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-            ) {
-              @include visually-hidden.apply(defaults.$use-important);
-            }
-
-            // `&.focusable`
-            &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
-              @include visually-hidden.focusable(defaults.$use-important);
-            }
-          }
-        }
-      }
-    }
-  }
-
-  // Generate state-aware utilities.
-  @if defaults.$state-aware and root-defaults.$state-aware-utilities {
-    @each $state-name, $value in root-defaults.$state-selectors {
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$state-aware-selector-prefix}#{$state-name}#{defaults.$state-aware-separator};
-
-      @include state.state($state-name) {
-        // e.g. `.hover:visually-hidden`
-        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
-          // `&:not(.focusable)`
-          &:not(
-            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-          ) {
-            @include visually-hidden.apply(defaults.$use-important);
-          }
-
-          // `&.focusable`
-          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
-            @include visually-hidden.focusable(defaults.$use-important);
-          }
-        }
-      }
-    }
-  }
-
-  // Create container aware utilities.
-  @if defaults.$container-aware and root-defaults.$container-aware-utilities {
-    @each $container-name in map.keys(root-defaults.$container-sizes) {
-      // e.g. `.md:` or `.lg:`
-      $selector-prefix: #{defaults.$selector-base}#{defaults.$container-aware-selector-prefix}#{$container-name}#{defaults.$container-aware-separator};
-
-      @include container.up($container-name) {
-        // e.g. `.md:visually-hidden`
-        #{$selector-prefix}#{defaults.$visually-hidden-selector} {
-          // `&:not(.focusable)`
-          &:not(
-            #{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector}
-          ) {
-            @include visually-hidden.apply(defaults.$use-important);
-          }
-
-          // `&.focusable`
-          &#{defaults.$selector-base}#{defaults.$visually-hidden-focusable-selector} {
-            @include visually-hidden.focusable(defaults.$use-important);
-          }
-        }
-      }
-    }
-  }
+  // Create a utitlity for each entry in the utility map.
+  //
+  // Because visually hidden is very specific, all generated classes will be made
+  // with the suffix ".focusable:not(:focus,:focus-within)".
+  @include utility.generate(
+    $map: defaults.$utility-map,
+    $selector-base: defaults.$selector-base,
+    $selector-prefix: defaults.$selector-prefix,
+    $selector-suffix:
+      "#{defaults.$selector-base}#{defaults.$focusable-selector}:not(:focus, :focus-within)",
+    $screen-aware: defaults.$screen-aware,
+    $screen-aware-selector-prefix: defaults.$screen-aware-selector-prefix,
+    $screen-aware-selector-suffix: defaults.$screen-aware-selector-suffix,
+    $screen-aware-selector-separator: defaults.$screen-aware-selector-separator,
+    $theme-aware: defaults.$theme-aware,
+    $theme-aware-selector-prefix: defaults.$theme-aware-selector-prefix,
+    $theme-aware-selector-suffix: defaults.$theme-aware-selector-suffix,
+    $theme-aware-selector-separator: defaults.$theme-aware-selector-separator,
+    $scheme-aware: defaults.$scheme-aware,
+    $scheme-aware-selector-prefix: defaults.$scheme-aware-selector-prefix,
+    $scheme-aware-selector-suffix: defaults.$scheme-aware-selector-suffix,
+    $scheme-aware-selector-separator: defaults.$scheme-aware-selector-separator,
+    $state-aware: defaults.$state-aware,
+    $state-aware-selector-prefix: defaults.$state-aware-selector-prefix,
+    $state-aware-selector-suffix: defaults.$state-aware-selector-suffix,
+    $state-aware-selector-separator: defaults.$state-aware-selector-separator,
+    $container-aware: defaults.$container-aware,
+    $container-aware-selector-prefix: defaults.$container-aware-selector-prefix,
+    $container-aware-selector-suffix: defaults.$container-aware-selector-suffix,
+    $container-aware-selector-separator:
+      defaults.$container-aware-selector-separator,
+    $important: defaults.$use-important
+  );
 }

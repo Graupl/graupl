@@ -4,20 +4,25 @@
 // cleaner way to reference custom properties.
 
 // Custom property defaults:
-// | Custom property                                   | Default                                                                |
-// | ------------------------------------------------- | ---------------------------------------------------------------------- |
-// | --graupl-input-group-grid-template-areas          | "label" "input" "help"                                                 |
-// | --graupl-input-group-grid-template-columns        | 100%                                                                   |
-// | --graupl-input-group-grid-template-rows           | auto auto auto                                                         |
-// | --graupl-input-group-row-gap                      | var(--graupl-spacer-2)                                                 |
-// | --graupl-input-group-column-gap                   | var(--graupl-spacer-3)                                                 |
-// | --graupl-input-group-gap                          | var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap) |
-// | --graupl-input-group-inline-grid-template-areas   | "label input" "- help"                                                 |
-// | --graupl-input-group-inline-grid-template-columns | auto 1fr                                                               |
-// | --graupl-input-group-inline-grid-template-rows    | auto auto                                                              |
-// | --graupl-input-group-label-grid-area              | label                                           |
-// | --graupl-input-group-input-grid-area              | input                                           |
-// | --graupl-input-group-help-grid-area               | help                                            |
+// | Custom property                                    | Default                                                                                |
+// | -------------------------------------------------- | -------------------------------------------------------------------------------------- |
+// | --graupl-input-group-top-grid-template-columns     | [label-start input-start help-start] 100% [help-end input-end label-end]               |
+// | --graupl-input-group-top-grid-template-rows        | [input-start] auto [input-end label-start] auto [label-end help-start] auto [help-end] |
+// | --graupl-input-group-bottom-grid-template-columns  | [label-start input-start help-start] 100% [help-end input-end label-end]               |
+// | --graupl-input-group-bottom-grid-template-rows     | [label-start] auto [label-end input-start] auto [input-end help-start] auto [help-end] |
+// | --graupl-input-group-left-grid-template-columns    | [input-start] auto [input-end label-start help-start] 1fr [help-end label-end]         |
+// | --graupl-input-group-left-grid-template-rows       | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
+// | --graupl-input-group-right-grid-template-columns   | [label-start] auto [label-end input-start help-start] 1fr [help-end input-end]         |
+// | --graupl-input-group-right-grid-template-rows      | [label-start input-start] auto [input-end label-end help-start] auto [help-end]        |
+// | --graupl-input-group-grid-template-columns         | var(--graupl-input-group-bottom-grid-template-columns)                                 |
+// | --graupl-input-group-grid-template-rows            | var(--graupl-input-group-bottom-grid-template-rows)                                    |
+// | --graupl-input-group-row-gap                       | var(--graupl-spacer-2)                                                                 |
+// | --graupl-input-group-column-gap                    | var(--graupl-spacer-3)                                                                 |
+// | --graupl-input-group-gap                           | var(--graupl-input-group-row-gap) var(--graupl-input-group-column-gap)                 |
+// | --graupl-input-group-stacked-grid-template-columns | var(--graupl-input-group-bottom-grid-template-columns)                                 |
+// | --graupl-input-group-stacked-grid-template-rows    | var(--graupl-input-group-bottom-grid-template-rows)                                    |
+// | --graupl-input-group-inline-grid-template-columns  | var(--graupl-input-group-right-grid-template-columns)                                  |
+// | --graupl-input-group-inline-grid-template-rows     | var(--graupl-input-group-right-grid-template-rows)                                     |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
@@ -25,24 +30,68 @@
 @use "sass:map";
 
 // Input group properties.
-// --graupl-input-group-grid-template-areas
-$input-group-grid-template-areas: var(
-  --#{root-defaults.$prefix}input-group-grid-template-areas,
-  "#{defaults.$input-group-grid-label-name}"
-    "#{defaults.$input-group-grid-input-name}"
-    "#{defaults.$input-group-grid-help-name}"
+// --graupl-input-group-top-grid-template-columns
+$input-group-top-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-top-grid-template-columns,
+  [label-start input-start help-start] 100% [help-end input-end label-end]
+);
+
+// --graupl-input-group-top-grid-template-rows
+$input-group-top-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-top-grid-template-rows,
+  [input-start] auto [input-end label-start] auto [label-end help-start] auto
+    [help-end]
+);
+
+// --graupl-input-group-bottom-grid-template-columns
+$input-group-bottom-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-bottom-grid-template-columns,
+  [label-start input-start help-start] 100% [help-end input-end label-end]
+);
+
+// --graupl-input-group-bottom-grid-template-rows
+$input-group-bottom-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-bottom-grid-template-rows,
+  [label-start] auto [label-end input-start] auto [input-end help-start] auto
+    [help-end]
+);
+
+// --graupl-input-group-left-grid-template-columns
+$input-group-left-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-left-grid-template-columns,
+  [input-start] auto [input-end label-start help-start] 1fr [help-end label-end]
+);
+
+// --graupl-input-group-left-grid-template-rows
+$input-group-left-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-left-grid-template-rows,
+  [label-start input-start] auto [input-end label-end help-start] auto
+    [help-end]
+);
+
+// --graupl-input-group-right-grid-template-columns
+$input-group-right-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-right-grid-template-columns,
+  [label-start] auto [label-end input-start help-start] 1fr [help-end input-end]
+);
+
+// --graupl-input-group-right-grid-template-rows
+$input-group-right-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-right-grid-template-rows,
+  [label-start input-start] auto [input-end label-end help-start] auto
+    [help-end]
 );
 
 // --graupl-input-group-grid-template-columns
 $input-group-grid-template-columns: var(
   --#{root-defaults.$prefix}input-group-grid-template-columns,
-  #{defaults.$input-group-grid-template-columns}
+  #{$input-group-bottom-grid-template-columns}
 );
 
 // --graupl-input-group-grid-template-rows
 $input-group-grid-template-rows: var(
   --#{root-defaults.$prefix}input-group-grid-template-rows,
-  #{defaults.$input-group-grid-template-rows}
+  #{$input-group-bottom-grid-template-rows}
 );
 
 // --graupl-input-group-row-gap
@@ -63,41 +112,28 @@ $input-group-gap: var(
   #{$input-group-row-gap} #{$input-group-column-gap}
 );
 
-// Inline input group properties.
-// --graupl-input-group-inline-grid-template-areas
-$input-group-inline-grid-template-areas: var(
-  --#{root-defaults.$prefix}input-group-inline-grid-template-areas,
-  "#{defaults.$input-group-grid-label-name} #{defaults.$input-group-grid-input-name}"
-    "- #{defaults.$input-group-grid-help-name}"
+// Stacked input group properties.
+// --graupl-input-group-stacked-grid-template-columns
+$input-group-stacked-grid-template-columns: var(
+  --#{root-defaults.$prefix}input-group-stacked-grid-template-columns,
+  #{$input-group-bottom-grid-template-columns}
 );
 
+// --graupl-input-group-stacked-grid-template-rows
+$input-group-stacked-grid-template-rows: var(
+  --#{root-defaults.$prefix}input-group-stacked-grid-template-rows,
+  #{$input-group-bottom-grid-template-rows}
+);
+
+// Inline input group properties.
 // --graupl-input-group-inline-grid-template-columns
 $input-group-inline-grid-template-columns: var(
   --#{root-defaults.$prefix}input-group-inline-grid-template-columns,
-  #{defaults.$input-group-inline-grid-template-columns}
+  #{$input-group-right-grid-template-columns}
 );
 
 // --graupl-input-group-inline-grid-template-rows
 $input-group-inline-grid-template-rows: var(
   --#{root-defaults.$prefix}input-group-inline-grid-template-rows,
-  #{defaults.$input-group-inline-grid-template-rows}
-);
-
-// Inner element properties.
-// --graupl-input-group-label-grid-area
-$input-group-label-grid-area: var(
-  --#{root-defaults.$prefix}input-group-label-grid-area,
-  #{defaults.$input-group-label-grid-area}
-);
-
-// --graupl-input-group-input-grid-area
-$input-group-input-grid-area: var(
-  --#{root-defaults.$prefix}input-group-input-grid-area,
-  #{defaults.$input-group-input-grid-area}
-);
-
-// --graupl-input-group-help-grid-area
-$input-group-help-grid-area: var(
-  --#{root-defaults.$prefix}input-group-help-grid-area,
-  #{defaults.$input-group-help-grid-area}
+  #{$input-group-right-grid-template-rows}
 );

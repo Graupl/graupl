@@ -1,0 +1,93 @@
+// @graupl/core border-style utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../defaults" as border-defaults;
+@use "../../../functions/utility";
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: border-defaults.$selector-base !default;
+$selector-prefix: border-defaults.$selector-prefix !default;
+$selector-suffix: border-defaults.$selector-suffix !default;
+$selector-separator: border-defaults.$selector-separator !default;
+$use-important: border-defaults.$use-important !default;
+$generate-base-utilities: border-defaults.$generate-base-utilities !default;
+$screen-aware: border-defaults.$screen-aware !default;
+$theme-aware: border-defaults.$theme-aware !default;
+$scheme-aware: border-defaults.$scheme-aware !default;
+$state-aware: border-defaults.$state-aware !default;
+$container-aware: border-defaults.$container-aware !default;
+$screen-aware-selector-separator: border-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-separator: border-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: border-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-separator: border-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-separator: border-defaults.$container-aware-selector-separator !default;
+$screen-aware-selector-prefix: border-defaults.$screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: border-defaults.$theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: border-defaults.$scheme-aware-selector-prefix !default;
+$state-aware-selector-prefix: border-defaults.$state-aware-selector-prefix !default;
+$container-aware-selector-prefix: border-defaults.$container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: border-defaults.$screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: border-defaults.$theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: border-defaults.$scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: border-defaults.$state-aware-selector-suffix !default;
+$container-aware-selector-suffix: border-defaults.$container-aware-selector-suffix !default;
+
+// Properties.
+$-utility-properties: (
+  "border": border-style,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
+  solid: solid,
+  dashed: dashed,
+  dotted: dotted,
+  double: double,
+  groove: groove,
+  ridge: ridge,
+  inset: inset,
+  outset: outset,
+  none: none,
+);
+$utility-values: () !default;
+
+// Merge custom and base properties/values if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
+}
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

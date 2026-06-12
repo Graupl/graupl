@@ -18,90 +18,111 @@
 // - `.inverse`: A modifier to invert the image/content positioning.
 //
 // The following custom properties can be used to customize the card component:
-// | Property                                  | Description                                            | Default Value                                                                                                                                                 |
-// | ---                                       | ---                                                    | ---                                                                                                                                                           |
-// | `--graupl-card-padding-x`                 | Horizontal padding of the card.                        | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-card-padding-y`                 | Vertical padding of the card.                          | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-card-padding`                   | Shorthand padding of the card.                         | `var(--graupl-card-padding-y) var(--graupl-card-padding-x)`                                                                                                   |
-// | `--graupl-card-transition`                | Transition applied to the card.                        | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                   |
-// | `--graupl-card-transition-reduced-motion` | Transition when reduced motion is enabled.             | `none`                                                                                                                                                        |
-// | `--graupl-card-transform`                 | Base transform for the card.                           | `none`                                                                                                                                                        |
-// | `--graupl-card-hover-transform`           | Transform for hovered cards.                           | `none`                                                                                                                                                        |
-// | `--graupl-card-column-gap`                | Column gap inside the card.                            | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-card-row-gap`                   | Row gap inside the card.                               | `var(--graupl-spacer-0)`                                                                                                                                      |
-// | `--graupl-card-gap`                       | Gap inside the card (column/row).                      | `var(--graupl-card-column-gap) var(--graupl-card-row-gap)`                                                                                                    |
-// | `--graupl-card-background`                | Background colour of the card.                         | `var(--graupl-background)`                                                                                                                                    |
-// | `--graupl-card-color`                     | Text colour of the card.                               | `var(--graupl-color)`                                                                                                                                         |
-// | `--graupl-card-border-width`              | Border width of the card.                              | `var(--graupl-border-top-width) var(--graupl-border-right-width) var(--graupl-border-bottom-width) var(--graupl-border-left-width)`                           |
-// | `--graupl-card-border-style`              | Border style of the card.                              | `var(--graupl-border-top-style) var(--graupl-border-right-style) var(--graupl-border-bottom-style) var(--graupl-border-left-style)`                           |
-// | `--graupl-card-border-radius`             | Border radius of the card.                             | `var(--graupl-border-top-left-radius) var(--graupl-border-top-right-radius) var(--graupl-border-bottom-right-radius) var(--graupl-border-bottom-left-radius)` |
-// | `--graupl-card-border-color`              | Border colour of the card.                             | `var(--graupl-card-color)`                                                                                                                                    |
-// | `--graupl-card-content-ratio`             | Grid row ratio used for card content.                  | `1fr`                                                                                                                                                         |
-// | `--graupl-card-image-ratio`               | Grid row ratio used for card images.                   | `auto`                                                                                                                                                        |
-// | `--graupl-horizontal-card-content-ratio`  | Grid column ratio for horizontal cards (content area). | `3fr`                                                                                                                                                         |
-// | `--graupl-horizontal-card-image-ratio`    | Grid column ratio for horizontal cards (image area).   | `2fr`                                                                                                                                                         |
-// | `--graupl-card-image-padding`             | Padding for the card image wrapper.                    | `var(--graupl-spacer-0) var(--graupl-spacer-0)`                                                                                                               |
-// | `--graupl-card-content-padding`           | Padding for the card content wrapper.                  | `var(--graupl-spacer-3) var(--graupl-spacer-5)`                                                                                                               |
-// | `--graupl-card-content-gap`               | Gap inside the card content (column/row).              | `var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)`                                                                                    |
-// | `--graupl-card-title-color`               | Text colour of the card title.                         | `var(--graupl-card-color)`                                                                                                                                    |
-// | `--graupl-card-title-font-size`           | Font size of the card title.                           | `var(--graupl-h4)`                                                                                                                                            |
-// | `--graupl-card-title-font-weight`         | Font weight of the card title.                         | `var(--graupl-font-weight-h4)`                                                                                                                                |
-// | `--graupl-card-title-font-family`         | Font family of the card title.                         | `var(--graupl-font-family-h4)`                                                                                                                                |
-// | `--graupl-card-title-line-height`         | Line height of the card title.                         | `var(--graupl-line-height-h4)`                                                                                                                                |
-//
+// | Property                                   | Description                                   | Default Value                                                                                                                                                                     |
+// | ------------------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | `--graupl-card-padding-x`                  | Value for card padding horizontal.            | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-padding-y`                  | Value for card padding vertical.              | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-padding`                    | Value for card padding.                       | `var(--graupl-card-padding-y) var(--graupl-card-padding-x)`                                                                                                                       |
+// | `--graupl-card-transition`                 | Value for card transition.                    | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                       |
+// | `--graupl-card-transition-reduced-motion`  | Value for card transition reduced motion.     | `none`                                                                                                                                                                            |
+// | `--graupl-card-transform`                  | Value for card transform.                     | `none`                                                                                                                                                                            |
+// | `--graupl-card-hover-transform`            | Value for card hover transform.               | `none`                                                                                                                                                                            |
+// | `--graupl-card-column-gap`                 | Value for card column gap.                    | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-row-gap`                    | Value for card row gap.                       | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-gap`                        | Value for card gap.                           | `var(--graupl-card-column-gap) var(--graupl-card-row-gap)`                                                                                                                        |
+// | `--graupl-card-background`                 | Value for card background.                    | `var(--graupl-background)`                                                                                                                                                        |
+// | `--graupl-card-color`                      | Value for card color.                         | `var(--graupl-color)`                                                                                                                                                             |
+// | `--graupl-card-border-color`               | Value for card border color.                  | `var(--graupl-card-color)`                                                                                                                                                        |
+// | `--graupl-card-border-top-left-radius`     | Value for card border top left radius.        | `var(--graupl-border-top-left-radius)`                                                                                                                                            |
+// | `--graupl-card-border-top-right-radius`    | Value for card border top right radius.       | `var(--graupl-border-top-right-radius)`                                                                                                                                           |
+// | `--graupl-card-border-bottom-left-radius`  | Value for card border bottom left radius.     | `var(--graupl-border-bottom-left-radius)`                                                                                                                                         |
+// | `--graupl-card-border-bottom-right-radius` | Value for card border bottom right radius.    | `var(--graupl-border-bottom-right-radius)`                                                                                                                                        |
+// | `--graupl-card-border-radius`              | Value for card border radius.                 | `var(--graupl-card-border-top-left-radius) var(--graupl-card-border-top-right-radius) var(--graupl-card-border-bottom-right-radius) var(--graupl-card-border-bottom-left-radius)` |
+// | `--graupl-card-border-top-width`           | Value for card border top width.              | `var(--graupl-border-top-width)`                                                                                                                                                  |
+// | `--graupl-card-border-right-width`         | Value for card border right width.            | `var(--graupl-border-right-width)`                                                                                                                                                |
+// | `--graupl-card-border-bottom-width`        | Value for card border bottom width.           | `var(--graupl-border-bottom-width)`                                                                                                                                               |
+// | `--graupl-card-border-left-width`          | Value for card border left width.             | `var(--graupl-border-left-width)`                                                                                                                                                 |
+// | `--graupl-card-border-width`               | Value for card border width.                  | `var(--graupl-card-border-top-width) var(--graupl-card-border-right-width) var(--graupl-card-border-bottom-width) var(--graupl-card-border-left-width)`                           |
+// | `--graupl-card-border-top-style`           | Value for card border top style.              | `var(--graupl-border-top-style)`                                                                                                                                                  |
+// | `--graupl-card-border-right-style`         | Value for card border right style.            | `var(--graupl-border-right-style)`                                                                                                                                                |
+// | `--graupl-card-border-bottom-style`        | Value for card border bottom style.           | `var(--graupl-border-bottom-style)`                                                                                                                                               |
+// | `--graupl-card-border-left-style`          | Value for card border left style.             | `var(--graupl-border-left-style)`                                                                                                                                                 |
+// | `--graupl-card-border-style`               | Value for card border style.                  | `var(--graupl-card-border-top-style) var(--graupl-card-border-right-style) var(--graupl-card-border-bottom-style) var(--graupl-card-border-left-style)`                           |
+// | `--graupl-card-content-ratio`              | Value for card content ratio.                 | `1fr`                                                                                                                                                                             |
+// | `--graupl-card-image-ratio`                | Value for card image ratio.                   | `auto`                                                                                                                                                                            |
+// | `--graupl-horizontal-card-content-ratio`   | Value for card horizontal card content ratio. | `3fr`                                                                                                                                                                             |
+// | `--graupl-horizontal-card-image-ratio`     | Value for card horizontal card image ratio.   | `2fr`                                                                                                                                                                             |
+// | `--graupl-card-image-padding-x`            | Value for card image padding horizontal.      | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-image-padding-y`            | Value for card image padding vertical.        | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-image-padding`              | Value for card image padding.                 | `var(--graupl-card-image-padding-y) var(--graupl-card-image-padding-x)`                                                                                                           |
+// | `--graupl-card-content-padding-x`          | Value for card content padding horizontal.    | `var(--graupl-spacer-5)`                                                                                                                                                          |
+// | `--graupl-card-content-padding-y`          | Value for card content padding vertical.      | `var(--graupl-spacer-3)`                                                                                                                                                          |
+// | `--graupl-card-content-padding`            | Value for card content padding.               | `var(--graupl-card-content-padding-y) var(--graupl-card-content-padding-x)`                                                                                                       |
+// | `--graupl-card-content-column-gap`         | Value for card content column gap.            | `var(--graupl-spacer-0)`                                                                                                                                                          |
+// | `--graupl-card-content-row-gap`            | Value for card content row gap.               | `var(--graupl-spacer-3)`                                                                                                                                                          |
+// | `--graupl-card-content-gap`                | Value for card content gap.                   | `var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)`                                                                                                        |
+// | `--graupl-card-title-color`                | Value for card title color.                   | `var(--graupl-card-color)`                                                                                                                                                        |
+// | `--graupl-card-title-font-size`            | Value for card title font size.               | `var(--graupl-h4-font-size)`                                                                                                                                                      |
+// | `--graupl-card-title-font-weight`          | Value for card title font weight.             | `var(--graupl-h4-font-weight)`                                                                                                                                                    |
+// | `--graupl-card-title-font-family`          | Value for card title font family.             | `var(--graupl-h4-font-family)`                                                                                                                                                    |
+// | `--graupl-card-title-line-height`          | Value for card title line height.             | `var(--graupl-h4-line-height)`                                                                                                                                                    |
 // The following sass variables can be used to customize the generation of the card component:
-// | Variable                               | Description                                                                           | Default Value    |
-// | ---                                    | ---                                                                                   | ---              |
-// | `$selector-base`                       | Selector base for the component.                                                      | `"."`            |
-// | `$modifier-selector-base`              | Selector base for component modifiers.                                                | `"."`            |
-// | `$generate-base-theme-map`             | A flag to generate the base theme maps for accordion variants.                        | `true`           |
-// | `$themeable`                           | Flag to generate theme modifiers.                                                     | `false`          |
-// | `$force-vertical-cards`                | Flag to enable forced vertical cards on small screens.                                | `true`           |
-// | `$card-selector-base`                  | Selector base for the card container.                                                 | `$selector-base` |
-// | `$card-selector`                       | Selector for the card container.                                                      | `"card"`         |
-// | `$card-image-selector-base`            | Selector base for the image wrapper.                                                  | `$selector-base` |
-// | `$card-image-selector`                 | Selector for the image wrapper.                                                       | `"card-image"`   |
-// | `$card-content-selector-base`          | Selector base for the content wrapper.                                                | `$selector-base` |
-// | `$card-content-selector`               | Selector for the content wrapper.                                                     | `"card-content"` |
-// | `$card-body-selector-base`             | Selector base for the body region.                                                    | `$selector-base` |
-// | `$card-body-selector`                  | Selector for the body region.                                                         | `"card-body"`    |
-// | `$card-header-selector-base`           | Selector base for the header region.                                                  | `$selector-base` |
-// | `$card-header-selector`                | Selector for the header region.                                                       | `"card-header"`  |
-// | `$card-footer-selector-base`           | Selector base for the footer region.                                                  | `$selector-base` |
-// | `$card-footer-selector`                | Selector for the footer region.                                                       | `"card-footer"`  |
-// | `$card-title-selector-base`            | Selector base for the title element.                                                  | `$selector-base` |
-// | `$card-title-selector`                 | Selector for the title element.                                                       | `"card-title"`   |
-// | `$horizontal-card-selector-base`       | Selector base for horizontal layout modifier.                                         | `"."`            |
-// | `$horizontal-card-selector`            | Selector for horizontal layout modifier.                                              | `"horizontal"`   |
-// | `$horizontal-card-left-selector-base`  | Selector base for left modifier.                                                      | `"."`            |
-// | `$horizontal-card-left-selector`       | Selector for left modifier.                                                           | `"left"`         |
-// | `$horizontal-card-right-selector-base` | Selector base for right modifier.                                                     | `"."`            |
-// | `$horizontal-card-right-selector`      | Selector for right modifier.                                                          | `"right"`        |
-// | `$vertical-card-top-selector-base`     | Selector base for top modifier.                                                       | `"."`            |
-// | `$vertical-card-top-selector`          | Selector for top modifier.                                                            | `"top"`          |
-// | `$vertical-card-bottom-selector-base`  | Selector base for bottom modifier.                                                    | `"."`            |
-// | `$vertical-card-bottom-selector`       | Selector for bottom modifier.                                                         | `"bottom"`       |
-// | `$inverse-card-selector-base`          | Selector base for inverse layout modifier.                                            | `"."`            |
-// | `$inverse-card-selector`               | Selector for inverse layout modifier.                                                 | `"inverse"`      |
-// | `$card-transform`                      | Base transform for the card.                                                          | `none`           |
-// | `$card-hover-transform`                | Hover transform for the card.                                                         | `none`           |
-// | `$card-content-ratio`                  | Grid ratio for content rows.                                                          | `1fr`            |
-// | `$card-image-ratio`                    | Grid ratio for image rows.                                                            | `auto`           |
-// | `$horizontal-card-content-ratio`       | Grid ratio for content in horizontal layout.                                          | `3fr`            |
-// | `$horizontal-card-image-ratio`         | Grid ratio for images in horizontal layout.                                           | `2fr`            |
-// | `$card-theme-mappings`                 | A map of properties and color shades used generate all card variants.                 | `()`             |
-// | `$card-theme-map`                      | A map of all properties, colors, and color shades used to generate all card variants. | `()`             |
+// | Variable                               | Description                                      | Default Value                                            |
+// | -------------------------------------- | ------------------------------------------------ | -------------------------------------------------------- |
+// | `$selector-base`                       | Default for selector base.                       | `"."`                                                    |
+// | `$modifier-selector-base`              | Default for modifier selector base.              | `"."`                                                    |
+// | `$generate-base-theme-map`             | Default for generate base theme map.             | `true`                                                   |
+// | `$themeable`                           | Default for themeable.                           | `false`                                                  |
+// | `$force-vertical-cards`                | Default for force vertical cards.                | `true`                                                   |
+// | `$card-selector-base`                  | Default for card selector base.                  | `"."`                                                    |
+// | `$card-selector`                       | Default for card selector.                       | `"card"`                                                 |
+// | `$card-theme-selector-base`            | Default for card theme selector base.            | `"."`                                                    |
+// | `$card-theme-selector-prefix`          | Default for card theme selector prefix.          | `""`                                                     |
+// | `$card-image-selector-base`            | Default for card image selector base.            | `"."`                                                    |
+// | `$card-image-selector`                 | Default for card image selector.                 | `"card-image"`                                           |
+// | `$card-content-selector-base`          | Default for card content selector base.          | `"."`                                                    |
+// | `$card-content-selector`               | Default for card content selector.               | `"card-content"`                                         |
+// | `$card-body-selector-base`             | Default for card body selector base.             | `"."`                                                    |
+// | `$card-body-selector`                  | Default for card body selector.                  | `"card-body"`                                            |
+// | `$card-header-selector-base`           | Default for card header selector base.           | `"."`                                                    |
+// | `$card-header-selector`                | Default for card header selector.                | `"card-header"`                                          |
+// | `$card-footer-selector-base`           | Default for card footer selector base.           | `"."`                                                    |
+// | `$card-footer-selector`                | Default for card footer selector.                | `"card-footer"`                                          |
+// | `$card-title-selector-base`            | Default for card title selector base.            | `"."`                                                    |
+// | `$card-title-selector`                 | Default for card title selector.                 | `"card-title"`                                           |
+// | `$horizontal-card-selector-base`       | Default for horizontal card selector base.       | `"."`                                                    |
+// | `$horizontal-card-selector`            | Default for horizontal card selector.            | `"horizontal"`                                           |
+// | `$horizontal-card-left-selector-base`  | Default for horizontal card left selector base.  | `"."`                                                    |
+// | `$horizontal-card-left-selector`       | Default for horizontal card left selector.       | `"left"`                                                 |
+// | `$horizontal-card-right-selector-base` | Default for horizontal card right selector base. | `"."`                                                    |
+// | `$horizontal-card-right-selector`      | Default for horizontal card right selector.      | `"right"`                                                |
+// | `$vertical-card-top-selector-base`     | Default for vertical card top selector base.     | `"."`                                                    |
+// | `$vertical-card-top-selector`          | Default for vertical card top selector.          | `"top"`                                                  |
+// | `$vertical-card-bottom-selector-base`  | Default for vertical card bottom selector base.  | `"."`                                                    |
+// | `$vertical-card-bottom-selector`       | Default for vertical card bottom selector.       | `"bottom"`                                               |
+// | `$inverse-card-selector-base`          | Default for inverse card selector base.          | `"."`                                                    |
+// | `$inverse-card-selector`               | Default for inverse card selector.               | `"inverse"`                                              |
+// | `$card-transform`                      | Default for card transform.                      | `none`                                                   |
+// | `$card-hover-transform`                | Default for card hover transform.                | `none`                                                   |
+// | `$card-content-ratio`                  | Default for card content ratio.                  | `1fr`                                                    |
+// | `$card-image-ratio`                    | Default for card image ratio.                    | `auto`                                                   |
+// | `$horizontal-card-content-ratio`       | Default for horizontal card content ratio.       | `3fr`                                                    |
+// | `$horizontal-card-image-ratio`         | Default for horizontal card image ratio.         | `2fr`                                                    |
+// | `$card-item-content-transform`         | Default for card item content transform.         | `translateY(-100%)`                                      |
+// | `$card-item-content-open-transform`    | Default for card item content open transform.    | `translateY(0)`                                          |
+// | `$card-theme-mappings`                 | Default for card theme mappings.                 | `map.merge($-card-theme-mappings, $card-theme-mappings)` |
+// | `$card-theme-map`                      | Default for card theme map.                      | `map.deep-merge($-card-theme-map, $card-theme-map)`      |
 //
 // ## Using `$card-theme-mappings`
 //
 // `$card-theme-mappings` is a 1-level map of properties and shade values.
 //
 // e.g.
-// ```scss
+// ``scss
 // $card-theme-mappings: (
 //   border-color: 700,
 // )
-// ```
+// ``
 //
 // This directly[1] maps to all card variants, telling them what shade to use for said property.
 // All card variants will use the following based on the example above:
@@ -112,11 +133,11 @@
 // You can use this to customize _all_ cards variants in the same way.
 //
 // For example, if you use the following map:
-// ```scss
+// ``scss
 // $card-theme-mappings: (
 //   border-color: 500,
 // )
-// ```
+// ``
 //
 // All card variants will use the following:
 // - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--primary--500`,
@@ -130,7 +151,7 @@
 // `$card-theme-map` is a multi-level map of properties, colors, and shade values.
 //
 // e.g.
-// ```scss
+// ``scss
 // $card-theme-map: (
 //   primary: (
 //     border-color: (
@@ -151,7 +172,7 @@
 //     ),
 //   ),
 // )
-// ```
+// ``
 //
 // This directly maps to all card variants, telling them what shade to use for said property.
 // The card variants will use the following based on the example above:
@@ -163,7 +184,7 @@
 //
 // For example, if you use the following map:
 //
-// ```scss
+// ``scss
 // $card-theme-map: (
 //   primary: (
 //     border-color: (
@@ -184,7 +205,7 @@
 //     ),
 //   ),
 // )
-// ```
+// ``
 //
 // The card variants will use the following:
 // - Primary cards will have their `--graupl-card-border-color` property set to `--graupl-theme-active--secondary--700`,
@@ -254,6 +275,24 @@
         [content-end image-start]
         $card-image-ratio
         [image-end];
+
+      // .card-image img
+      #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+        img {
+        border-radius: 0 0
+          calc(
+            $card-border-bottom-right-radius - min(
+                $card-border-bottom-width,
+                $card-border-right-width
+              )
+          )
+          calc(
+            $card-border-bottom-left-radius - min(
+                $card-border-bottom-width,
+                $card-border-left-width
+              )
+          );
+      }
     }
 
     &:hover {
@@ -406,6 +445,24 @@
               [image-end content-start]
               $card-content-ratio
               [content-end];
+
+            // .card-image img
+            #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+              img {
+              border-radius: calc(
+                  $card-border-top-left-radius - min(
+                      $card-border-top-width,
+                      $card-border-left-width
+                    )
+                )
+                calc(
+                  $card-border-top-right-radius - min(
+                      $card-border-top-width,
+                      $card-border-right-width
+                    )
+                )
+                0 0;
+            }
           }
 
           // &.bottom, &.inverse
@@ -417,6 +474,24 @@
               [content-end image-start]
               $card-image-ratio
               [image-end];
+
+            // .card-image img
+            #{defaults.$card-image-selector-base}#{defaults.$card-image-selector}
+              img {
+              border-radius: 0 0
+                calc(
+                  $card-border-bottom-right-radius - min(
+                      $card-border-bottom-width,
+                      $card-border-right-width
+                    )
+                )
+                calc(
+                  $card-border-bottom-left-radius - min(
+                      $card-border-bottom-width,
+                      $card-border-left-width
+                    )
+                );
+            }
           }
         }
       }

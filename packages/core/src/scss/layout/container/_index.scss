@@ -27,7 +27,7 @@
 // - `.full-width`: A full-width container component.
 // - `.feature`: A feature container component.
 // - `.breakout`: A breakout container component.
-// - `.contain`: A utility class to contain child elements to the content section of the container grid.
+// - `.contain`: A utility class to contain child elements to the content section of the container grid. This also works when added to a sidebars container to contain the sidebar itself to the container section.
 // - `.sidebars`: A utility class to enable two sidebars in the container.
 // - `.sidebars-left`: A utility class to enable a left sidebar in the container.
 // - `.sidebars-right`: A utility class to enable a right sidebar in the container.
@@ -37,69 +37,87 @@
 // - `.content`: A content container component used directly inside of a container with sidebars.
 //
 // The following custom properties can be used to customize the container component:
-// | Property                                                      | Description                                                                         | Default Value                                                                                                                                                                                                                                                                                                                                                        |
-// | ---                                                           | ---                                                                                 | ---                                                                                                                                                                                                                                                                                                                                                                  |
-// | `--graupl-container-sidebar-width`                            | The width of the sidebar sections.                                                  | `26ch`                                                                                                                                                                                                                                                                                                                                                               |
-// | `--graupl-container-breakout-width`                           | The width that the breakout section will extend beyond the content.                 | `4ch`                                                                                                                                                                                                                                                                                                                                                                |
-// | `--graupl-container-feature-width`                            | The width that the feature section will extend beyond the breakout.                 | `10ch`                                                                                                                                                                                                                                                                                                                                                               |
-// | `--graupl-container-content-max-width`                        | The maximum width of the content section.                                           | `var(--graupl-content-max-width)`                                                                                                                                                                                                                                                                                                                                    |
-// | `--graupl-container-breakout-max-width`                       | The maximum width of the breakout section.                                          | `calc(var(--graupl-container-content-max-width) + var(--graupl-container-breakout-width))`                                                                                                                                                                                                                                                                           |
-// | `--graupl-container-feature-max-width`                        | The maximum width of the feature section.                                           | `calc(var(--graupl-container-breakout-max-width) + var(--graupl-container-feature-width))`                                                                                                                                                                                                                                                                           |
-// | `--graupl-container-full-width-section-min-width`             | The minimum width of one side of the full-width section.                            | `var(--graupl-spacer-5)`                                                                                                                                                                                                                                                                                                                                             |
-// | `--graupl-container-full-width-section-max-width`             | The maximum width of one side of the full-width section.                            | `1fr`                                                                                                                                                                                                                                                                                                                                                                |
-// | `--graupl-container-feature-section-min-width`                | The minimum width of one side of the feature section.                               | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
-// | `--graupl-container-feature-section-max-width`                | The maximum width of one side of the feature section.                               | `calc((var(--graupl-container-feature-max-width) - var(--graupl-container-breakout-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
-// | `--graupl-container-breakout-section-min-width`               | The minimum width of one side of the breakout section.                              | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
-// | `--graupl-container-breakout-section-max-width`               | The maximum width of one side of the breakout section.                              | `calc((var(--graupl-container-breakout-max-width) - var(--graupl-container-content-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
-// | `--graupl-container-content-section-min-width`                | The minimum width of the content section.                                           | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-breakout-section-min-width) * 2))`                                                                                                                                                                       |
-// | `--graupl-container-content-section-max-width`                | The maximum width of the content section.                                           | `var(--graupl-container-content-max-width)`                                                                                                                                                                                                                                                                                                                          |
-// | `--graupl-container-full-width-section-width`                 | The calculated minmax width of the full-width section.                              | `minmax(var(--graupl-container-full-width-section-min-width), var(--graupl-container-full-width-section-max-width))`                                                                                                                                                                                                                                                 |
-// | `--graupl-container-feature-section-width`                    | The calculated minmax width of the feature section.                                 | `minmax(var(--graupl-container-feature-section-min-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                       |
-// | `--graupl-container-breakout-section-width`                   | The calculated minmax width of the breakout section.                                | `minmax(var(--graupl-container-breakout-section-min-width), var(--graupl-container-breakout-section-max-width))`                                                                                                                                                                                                                                                     |
-// | `--graupl-container-content-section-width`                    | The calculated width of the content section.                                        | `min(var(--graupl-container-content-section-min-width), var(--graupl-container-content-section-max-width))`                                                                                                                                                                                                                                                          |
-// | `--graupl-container-sidebar-left-section-width`               | The width of the left sidebar section.                                              | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
-// | `--graupl-container-sidebar-right-section-width`              | The width of the right sidebar section.                                             | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
-// | `--graupl-container-sidebars-breakout-section-width`          | The breakout width when both sidebars are enabled.                                  | `var(--graupl-container-breakout-section-max-width)`                                                                                                                                                                                                                                                                                                                 |
-// | `--graupl-container-sidebars-content-section-min-width`       | The minimum width of the content section when both sidebars are enabled.            | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-sidebars-breakout-section-width) * 2) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                       |
-// | `--graupl-container-sidebars-content-section-max-width`       | The maximum width of the content section when both sidebars are enabled.            | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))` |
-// | `--graupl-container-sidebars-content-section-width`           | The calculated width of the content section when both sidebars are enabled.         | `min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-content-section-max-width))`                                                                                                                                                                                                                                        |
-// | `--graupl-container-sidebars-right-content-section-min-width` | The minimum width of the content section when only the right sidebar is enabled.    | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                             |
-// | `--graupl-container-sidebars-right-content-section-max-width` | The maximum width of the content section when only the right sidebar is enabled.    | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                      |
-// | `--graupl-container-sidebars-right-content-section-width`     | The calculated width of the content section when only the right sidebar is enabled. | `min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-right-content-section-max-width))`                                                                                                                                                                                                                            |
-// | `--graupl-container-sidebars-left-content-section-min-width`  | The minimum width of the content section when only the left sidebar is enabled.     | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))`                                                              |
-// | `--graupl-container-sidebars-left-content-section-max-width`  | The maximum width of the content section when only the left sidebar is enabled.     | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                       |
-// | `--graupl-container-sidebars-left-content-section-width`      | The calculated width of the content section when only the left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
+// | Property                                                                | Description                                                                                   | Default Value                                                                                                                                                                                                                                                                                                                                                        |
+// | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | `--graupl-container-sidebar-width`                                      | The width of the sidebar sections.                                                            | `26ch`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-breakout-width`                                     | The width that the breakout section will extend beyond the content.                           | `4ch`                                                                                                                                                                                                                                                                                                                                                                |
+// | `--graupl-container-feature-width`                                      | The width that the feature section will extend beyond the breakout.                           | `10ch`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-content-max-width`                                  | The maximum width of the content section.                                                     | `var(--graupl-content-max-width)`                                                                                                                                                                                                                                                                                                                                    |
+// | `--graupl-container-breakout-max-width`                                 | The maximum width of the breakout section.                                                    | `calc(var(--graupl-container-content-max-width) + var(--graupl-container-breakout-width))`                                                                                                                                                                                                                                                                           |
+// | `--graupl-container-feature-max-width`                                  | The maximum width of the feature section.                                                     | `calc(var(--graupl-container-breakout-max-width) + var(--graupl-container-feature-width))`                                                                                                                                                                                                                                                                           |
+// | `--graupl-container-full-width-section-min-width`                       | The minimum width of one side of the full-width section.                                      | `var(--graupl-spacer-5)`                                                                                                                                                                                                                                                                                                                                             |
+// | `--graupl-container-full-width-section-max-width`                       | The maximum width of one side of the full-width section.                                      | `1fr`                                                                                                                                                                                                                                                                                                                                                                |
+// | `--graupl-container-feature-section-min-width`                          | The minimum width of one side of the feature section.                                         | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-feature-section-max-width`                          | The maximum width of one side of the feature section.                                         | `calc((var(--graupl-container-feature-max-width) - var(--graupl-container-breakout-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-breakout-section-min-width`                         | The minimum width of one side of the breakout section.                                        | `0rem`                                                                                                                                                                                                                                                                                                                                                               |
+// | `--graupl-container-breakout-section-max-width`                         | The maximum width of one side of the breakout section.                                        | `calc((var(--graupl-container-breakout-max-width) - var(--graupl-container-content-max-width)) / 2)`                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-content-section-min-width`                          | The minimum width of the content section.                                                     | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-breakout-section-min-width) * 2))`                                                                                                                                                                       |
+// | `--graupl-container-content-section-max-width`                          | The maximum width of the content section.                                                     | `var(--graupl-container-content-max-width)`                                                                                                                                                                                                                                                                                                                          |
+// | `--graupl-container-full-width-section-width`                           | The calculated minmax width of the full-width section.                                        | `minmax(var(--graupl-container-full-width-section-min-width), var(--graupl-container-full-width-section-max-width))`                                                                                                                                                                                                                                                 |
+// | `--graupl-container-feature-section-width`                              | The calculated minmax width of the feature section.                                           | `minmax(var(--graupl-container-feature-section-min-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                       |
+// | `--graupl-container-breakout-section-width`                             | The calculated minmax width of the breakout section.                                          | `minmax(var(--graupl-container-breakout-section-min-width), var(--graupl-container-breakout-section-max-width))`                                                                                                                                                                                                                                                     |
+// | `--graupl-container-content-section-width`                              | The calculated width of the content section.                                                  | `min(var(--graupl-container-content-section-min-width), var(--graupl-container-content-section-max-width))`                                                                                                                                                                                                                                                          |
+// | `--graupl-container-sidebar-left-section-width`                         | The width of the left sidebar section.                                                        | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
+// | `--graupl-container-sidebar-right-section-width`                        | The width of the right sidebar section.                                                       | `max(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width))`                                                                                                                                                                                                                                                                      |
+// | `--graupl-container-sidebars-breakout-section-width`                    | The breakout width between the content and sidebar areas.                                     | `var(--graupl-container-breakout-section-max-width)`                                                                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-sidebars-content-section-min-width`                 | The minimum width of the content section when both sidebars are enabled.                      | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - (var(--graupl-container-sidebars-breakout-section-width) * 2) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                       |
+// | `--graupl-container-sidebars-content-section-max-width`                 | The maximum width of the content section when both sidebars are enabled.                      | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))` |
+// | `--graupl-container-sidebars-content-section-width`                     | The calculated width of the content section when both sidebars are enabled.                   | `min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-content-section-max-width))`                                                                                                                                                                                                                                        |
+// | `--graupl-container-sidebars-right-content-section-min-width`           | The minimum width of the content section when only the right sidebar is enabled.              | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-right-section-width))`                                                             |
+// | `--graupl-container-sidebars-right-content-section-max-width`           | The maximum width of the content section when only the right sidebar is enabled.              | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-right-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                      |
+// | `--graupl-container-sidebars-right-content-section-width`               | The calculated width of the content section when only the right sidebar is enabled.           | `min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-right-content-section-max-width))`                                                                                                                                                                                                                            |
+// | `--graupl-container-sidebars-left-content-section-min-width`            | The minimum width of the content section when only the left sidebar is enabled.               | `calc(100% - (var(--graupl-container-full-width-section-min-width) * 2) - (var(--graupl-container-feature-section-min-width) * 2) - var(--graupl-container-breakout-section-min-width) - var(--graupl-container-sidebars-breakout-section-width) - var(--graupl-container-sidebar-left-section-width))`                                                              |
+// | `--graupl-container-sidebars-left-content-section-max-width`            | The maximum width of the content section when only the left sidebar is enabled.               | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-sidebar-left-section-width) + min(var(--graupl-container-sidebar-width), var(--graupl-container-feature-section-max-width)))`                                                                                                                                                       |
+// | `--graupl-container-sidebars-left-content-section-width`                | The calculated width of the content section when only the left sidebar is enabled.            | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-left-content-section-max-width))`                                                                                                                                                                                                                              |
+// | `--graupl-container-contained-sidebar-left-section-width`               | The width of the left contained sidebar section.                                              | `var(--graupl-container-sidebar-left-section-width)`                                                                                                                                                                                                                                                                                                                 |
+// | `--graupl-container-contained-sidebar-right-section-width`              | The width of the right contained sidebar section.                                             | `var(--graupl-container-sidebar-right-section-width)`                                                                                                                                                                                                                                                                                                                |
+// | `--graupl-container-sidebars-contained-spacer-section-width`            | The spacer width between the content and sidebar areas.                                       | `var(--graupl-container-sidebars-breakout-section-width)`                                                                                                                                                                                                                                                                                                            |
+// | `--graupl-container-sidebars-contained-content-section-max-width`       | The maximum width of the content section when both contained sidebars are enabled.            | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-left-section-width) - var(--graupl-container-contained-sidebar-right-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width) * 2)`                                                                                                       |
+// | `--graupl-container-sidebars-contained-content-section-width`           | The calculated width of the content section when both contained sidebars are enabled.         | `min(var(--graupl-container-sidebars-content-section-min-width), var(--graupl-container-sidebars-contained-content-section-max-width))`                                                                                                                                                                                                                              |
+// | `--graupl-container-sidebars-contained-right-content-section-max-width` | The maximum width of the content section when only the contained right sidebar is enabled.    | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-right-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width))`                                                                                                                                                                          |
+// | `--graupl-container-sidebars-contained-right-content-section-width`     | The calculated width of the content section when only the contained right sidebar is enabled. | `min(var(--graupl-container-sidebars-right-content-section-min-width), var(--graupl-container-sidebars-contained-right-content-section-max-width))`                                                                                                                                                                                                                  |
+// | `--graupl-container-sidebars-contained-left-content-section-max-width`  | The maximum width of the content section when only the contained left sidebar is enabled.     | `calc(var(--graupl-container-content-section-max-width) - var(--graupl-container-contained-sidebar-left-section-width) - var(--graupl-container-sidebars-contained-spacer-section-width))`                                                                                                                                                                           |
+// | `--graupl-container-sidebars-contained-left-content-section-width`      | The calculated width of the content section when only the contained left sidebar is enabled.  | `min(var(--graupl-container-sidebars-left-content-section-min-width), var(--graupl-container-sidebars-contained-left-content-section-max-width))`                                                                                                                                                                                                                    |
+// | `--graupl-container-background`                                         | The background of the container component.                                                    | `var(--graupl-background)`                                                                                                                                                                                                                                                                                                                                           |
+// | `--graupl-container-color`                                              | The text color of the container component.                                                    | `var(--graupl-color)`                                                                                                                                                                                                                                                                                                                                                |
 //
 // The following sass variables can be used to customize the generation of the container component:
-// | Variable                              | Description                                                                  | Default Value             |
-// | ---                                   | ---                                                                          | ---                       |
-// | `$selector-base`                      | The selector base for the component.                                         | `.`                       |
-// | `$modifier-selector-base`             | The selector base for component modifiers.                                   | `.`                       |
-// | `$force-container-chaining`           | A flag to force container chaining in all containers.                        | `false`                   |
-// | `$generate-forced-container-selectors | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
-// | `$show-warnings`                      | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
-// | `$container-selector-base`            | The base selector for the container component.                               | `$selector-base`          |
-// | `$container-selector`                 | The selector for the container component.                                    | `container`               |
-// | `$container-breakout-selector-base`   | The base selector for the breakout container component.                      | `$selector-base`          |
-// | `$container-breakout-selector`        | The selector for the breakout container component.                           | `breakout`                |
-// | `$container-feature-selector-base`    | The base selector for the feature container component.                       | `$selector-base`          |
-// | `$container-feature-selector`         | The selector for the feature container component.                            | `feature`                 |
-// | `$container-full-width-selector-base` | The base selector for the full-width container component.                    | `$selector-base`          |
-// | `$container-full-width-selector`      | The selector for the full-width container component.                         | `full-width`              |
-// | `$container-contain-selector-base`    | The base selector for the contain utility class.                             | `$modifier-selector-base` |
-// | `$container-contain-selector`         | The selector for the contain utility class.                                  | `contain`                 |
-// | `$container-sidebars-selector-base`   | The base selector for the sidebars utility class.                            | `$modifier-selector-base` |
-// | `$container-sidebars-selector`        | The selector for the sidebars utility class.                                 | `sidebars`                |
-// | `$container-content-selector-base`    | The base selector for the content container component.                       | `$selector-base`          |
-// | `$container-content-selector`         | The selector for the content container component.                            | `content`                 |
-// | `$container-sidebar-selector-base`    | The base selector for the sidebar container component.                       | `$selector-base`          |
-// | `$container-sidebar-selector`         | The selector for the sidebar container component.                            | `sidebar`                 |
-// | `$container-left-selector-suffix`     | The suffix for the left sidebar selector.                                    | `-left`                   |
-// | `$container-right-selector-suffix`    | The suffix for the right sidebar selector.                                   | `-right`                  |
-// | `$container-inner-selector-prefix`    | The prefix for the inner content selector.                                   | `inner-`                  |
-// | `$container-breakout-width`           | The width of the breakout section will extend from the content section.      | `4ch`                     |
-// | `$container-feature-width`            | The width of the feature section will extend from the breakout section.      | `10ch`                    |
-// | `$container-sidebar-width`            | The width of the sidebar sections.                                           | `26ch`                    |
+// | Variable                               | Description                                                                  | Default Value             |
+// | -------------------------------------- | ---------------------------------------------------------------------------- | ------------------------- |
+// | `$selector-base`                       | The selector base for the component.                                         | `"."`                     |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                   | `"."`                     |
+// | `$generate-base-theme-map`             | Flag to generate the base theme map.                                         | `true`                    |
+// | `$themeable`                           | Flag to generate theme modifiers.                                            | `false`                   |
+// | `$force-container-chaining`            | A flag to force container chaining in all containers.                        | `false`                   |
+// | `$generate-forced-container-selectors` | A flag to generate a set of default selectors for forced container chaining. | `true`                    |
+// | `$show-warnings`                       | A flag to show any built-in warnings that may be output during compiling.    | `true`                    |
+// | `$container-selector-base`             | The base selector for the container component.                               | `"."`                     |
+// | `$container-selector`                  | The selector for the container component.                                    | `"container"`             |
+// | `$container-theme-selector-base`       | The selector base for container theme modifiers.                             | `"."`                     |
+// | `$container-theme-selector-prefix`     | The container theme modifier selector prefix.                                | `""`                      |
+// | `$container-breakout-selector-base`    | The base selector for the breakout container component.                      | `"."`                     |
+// | `$container-breakout-selector`         | The selector for the breakout container component.                           | `"breakout"`              |
+// | `$container-feature-selector-base`     | The base selector for the feature container component.                       | `"."`                     |
+// | `$container-feature-selector`          | The selector for the feature container component.                            | `"feature"`               |
+// | `$container-full-width-selector-base`  | The base selector for the full-width container component.                    | `"."`                     |
+// | `$container-full-width-selector`       | The selector for the full-width container component.                         | `"full-width"`            |
+// | `$container-contain-selector-base`     | The base selector for the contain utility class.                             | `"."`                     |
+// | `$container-contain-selector`          | The selector for the contain utility class.                                  | `"contain"`               |
+// | `$container-sidebars-selector-base`    | The base selector for the sidebars utility class.                            | `"."`                     |
+// | `$container-sidebars-selector`         | The selector for the sidebars utility class.                                 | `"sidebars"`              |
+// | `$container-content-selector-base`     | The base selector for the content container component.                       | `"."`                     |
+// | `$container-content-selector`          | The selector for the content container component.                            | `"content"`               |
+// | `$container-sidebar-selector-base`     | The base selector for the sidebar container component.                       | `"."`                     |
+// | `$container-sidebar-selector`          | The selector for the sidebar container component.                            | `"sidebar"`               |
+// | `$container-left-selector-suffix`      | The suffix for the left sidebar selector.                                    | `"-left"`                 |
+// | `$container-right-selector-suffix`     | The suffix for the right sidebar selector.                                   | `"-right"`                |
+// | `$container-inner-selector-prefix`     | The prefix for the inner content selector.                                   | `"inner-"`                |
+// | `$container-breakout-width`            | The width of the breakout section will extend from the content section.      | `4ch`                     |
+// | `$container-feature-width`             | The width of the feature section will extend from the breakout section.      | `10ch`                    |
+// | `$container-sidebar-width`             | The width of the sidebar sections.                                           | `26ch`                    |
+// | `$forced-container-selectors`          | Additional selectors included in forced container chaining.                  | `()`                      |
+// | `$container-theme-mappings`            | Map of properties/shades for container themes.                               | `()`                      |
+// | `$container-theme-map`                 | Expanded map of properties/colors/shades.                                    | `()`                      |
 //
 // ## What is container chaining?
 //
@@ -201,6 +219,7 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
 @use "../../mixins/screen";
+@use "../../mixins/theme";
 @use "defaults";
 @use "variables" as *;
 
@@ -516,6 +535,8 @@
     @include screen.trigger(allow-sidebars) {
       // &.sidebars
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [sidebar-left-start feature-start] $container-sidebar-left-section-width
@@ -525,6 +546,24 @@
           [breakout-end sidebar-right-start] $container-sidebar-right-section-width
           [feature-end sidebar-right-end] $container-full-width-section-width
           [full-width-end];
+
+        &#{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-contained-content-section-max-width};
+
+          grid-template-columns:
+            [full-width-start] $container-full-width-section-width
+            [feature-start] $container-feature-section-width
+            [breakout-start] $container-breakout-section-width
+            [sidebar-left-start] $container-contained-sidebar-left-section-width
+            [sidebar-left-end] $container-sidebars-contained-spacer-section-width
+            [content-start] $container-sidebars-contained-content-section-width
+            [content-end] $container-sidebars-contained-spacer-section-width
+            [sidebar-right-start] $container-contained-sidebar-right-section-width
+            [sidebar-right-end] $container-breakout-section-width
+            [breakout-end] $container-feature-section-width
+            [feature-end] $container-full-width-section-width
+            [full-width-end];
+        }
 
         // > .sidebar-left
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector}#{defaults.$container-left-selector-suffix} {
@@ -634,6 +673,8 @@
 
       // &.sidebars-left
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-left-selector-suffix} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-left-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [sidebar-start feature-start] $container-sidebar-left-section-width
@@ -643,6 +684,22 @@
           [breakout-end] $container-feature-section-width
           [feature-end] $container-full-width-section-width
           [full-width-end];
+
+        &#{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-contained-left-content-section-max-width};
+
+          grid-template-columns:
+            [full-width-start] $container-full-width-section-width
+            [feature-start] $container-feature-section-width
+            [breakout-start] $container-breakout-section-width
+            [sidebar-start] $container-contained-sidebar-left-section-width
+            [sidebar-end] $container-sidebars-contained-spacer-section-width
+            [content-start] $container-sidebars-contained-left-content-section-width
+            [content-end] $container-breakout-section-width
+            [breakout-end] $container-feature-section-width
+            [feature-end] $container-full-width-section-width
+            [full-width-end];
+        }
 
         // > .sidebar
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
@@ -702,6 +759,8 @@
 
       // &.sidebars-right
       &#{defaults.$container-sidebars-selector-base}#{defaults.$container-sidebars-selector}#{defaults.$container-right-selector-suffix} {
+        --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-right-content-section-max-width};
+
         grid-template-columns:
           [full-width-start] $container-full-width-section-width
           [feature-start] $container-feature-section-width
@@ -711,6 +770,22 @@
           [breakout-end sidebar-start] $container-sidebar-right-section-width
           [feature-end sidebar-end] $container-full-width-section-width
           [full-width-end];
+
+        &#{defaults.$container-contain-selector-base}#{defaults.$container-contain-selector} {
+          --#{root-defaults.$prefix}columns-content-max-width: #{$container-sidebars-contained-right-content-section-max-width};
+
+          grid-template-columns:
+            [full-width-start] $container-full-width-section-width
+            [feature-start] $container-feature-section-width
+            [breakout-start] $container-breakout-section-width
+            [content-start] $container-sidebars-contained-right-content-section-width
+            [content-end] $container-sidebars-contained-spacer-section-width
+            [sidebar-start] $container-contained-sidebar-right-section-width
+            [sidebar-end] $container-breakout-section-width
+            [breakout-end] $container-feature-section-width
+            [feature-end] $container-full-width-section-width
+            [full-width-end];
+        }
 
         // > .sidebar
         > #{defaults.$container-sidebar-selector-base}#{defaults.$container-sidebar-selector} {
@@ -767,6 +842,23 @@
           grid-row: 1;
         }
       }
+    }
+  }
+}
+
+@include layer(theme) {
+  // .container
+  #{defaults.$container-selector-base}#{defaults.$container-selector} {
+    background: $container-background;
+    color: $container-color;
+
+    @if root-defaults.$themeable-components and defaults.$themeable {
+      @include theme.generate-modifiers(
+        defaults.$container-theme-map,
+        defaults.$container-theme-selector-base,
+        defaults.$container-theme-selector-prefix,
+        "container-"
+      );
     }
   }
 }
