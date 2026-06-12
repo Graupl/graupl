@@ -19,11 +19,15 @@ Ensures child elements maintain the aspect ratio.
 
 ```css
   .force-ratio {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ratio:has(.force-ratio) {
+    position: relative;
   }
 ```
 

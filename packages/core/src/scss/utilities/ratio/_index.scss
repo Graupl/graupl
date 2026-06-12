@@ -129,7 +129,7 @@
       @include utility.create-mapped(
         "&:has(#{defaults.$selector-base}#{defaults.$selector-prefix}#{defaults.$force-ratio-selector}#{defaults.$selector-suffix})",
         (
-          "position": absolute,
+          "position": relative,
         ),
         $important: defaults.$use-important
       );
