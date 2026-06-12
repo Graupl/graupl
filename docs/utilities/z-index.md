@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const content = ref("z-n1");
+</script>
+
 # Z Index Utilities
 
 The z-index utilities provide a set of classes to adjust the `z-index` properties of elements.
@@ -9,6 +15,28 @@ The z-index utilities provide a set of classes to adjust the `z-index` propertie
 | `.z-n1` | z-index | `-1` |
 | `.z-0` | z-index | `0` |
 | `.z-1` | z-index | `1` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display gradient from-transparent  to-primary-100 bordered border-primary-700 position-relative">
+      <div class="bg-tertiary-200 bordered border-tertiary-700 pl-3 h-8 m-2 mt-8 position-relative z-0">Z Index 0</div>
+      <div class="bg-primary-200 bordered border-tertiary-700 w-two-thirds p-4 position-absolute bottom-quarter left-quarter z-1">Z Index 1</div>
+      <div :class="`bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-10 left-half top-0
+      position-absolute ${content}`">Z Index Changing</div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-z-index">Z Index property</label>
+    <select id="select-z-index" v-model="content">
+      <option value="z-n1">Index -1</option>
+      <option value="z-0">Index 0</option>
+      <option value="z-1">Index 1</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
