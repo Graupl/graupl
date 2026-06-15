@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import TransactionalValue from "../../packages/core/src/js/TransactionalValue.js";
+import TransactionalValue from "@graupl/core/src/TransactionalValue.js";
 
 // Test the TransactionalValue initialization.
 describe("TransactionalValue", () => {

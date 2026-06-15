@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isValidInstance } from "../../packages/core/src/js/validate.js";
+import { isValidInstance } from "@graupl/core/src/validate.js";
 
 describe("isValidInstance", () => {
   // Test checking for an HTMLElement.

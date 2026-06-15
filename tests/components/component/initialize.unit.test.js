@@ -4,7 +4,7 @@
  */
 
 import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
-import Component from "../../../packages/core/src/js/Component.js";
+import Component from "@graupl/core/src/Component.js";
 
 beforeAll(() => {
   // Mock the console.error method.

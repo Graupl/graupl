@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
-import { addClass } from "../../packages/core/src/js/domHelpers.js";
+import { addClass } from "@graupl/core/src/domHelpers.js";
 
 describe("addClass", () => {
   // Test if classList.add is called.

@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isValidEventType } from "../../packages/core/src/js/validate.js";
+import { isValidEventType } from "@graupl/core/src/validate.js";
 
 describe("isValidEventType", () => {
   class TestComponent {

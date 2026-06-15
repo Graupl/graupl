@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { hasValidRootDOMElement } from "../../packages/core/src/js/validate.js";
+import { hasValidRootDOMElement } from "@graupl/core/src/validate.js";
 
 describe("hasValidRootDOMElement", () => {
   class TestComponent {

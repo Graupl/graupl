@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
-import { removeClass } from "../../packages/core/src/js/domHelpers.js";
+import { removeClass } from "@graupl/core/src/domHelpers.js";
 
 describe("removeClass", () => {
   // Test if classList.remove is called.

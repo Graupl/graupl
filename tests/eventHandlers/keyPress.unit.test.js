@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { keyPress } from "../../packages/core/src/js/eventHandlers.js";
+import { keyPress } from "@graupl/core/src/eventHandlers.js";
 
 describe("keyPress", () => {
   // Test the Enter key.

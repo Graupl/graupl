@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi } from "vitest";
-import { preventEvent } from "../../packages/core/src/js/eventHandlers.js";
+import { preventEvent } from "@graupl/core/src/eventHandlers.js";
 
 describe("preventEvent", () => {
   // Make sure the event is prevented.

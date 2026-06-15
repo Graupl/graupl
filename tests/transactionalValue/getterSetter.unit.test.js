@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import TransactionalValue from "../../packages/core/src/js/TransactionalValue.js";
+import TransactionalValue from "@graupl/core/src/TransactionalValue.js";
 
 // Test all getter/setter methods in the TransactionalValue class.
 describe("TransactionalValue getter/setters", () => {

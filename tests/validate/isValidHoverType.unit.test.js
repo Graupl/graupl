@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isValidHoverType } from "../../packages/core/src/js/validate.js";
+import { isValidHoverType } from "@graupl/core/src/validate.js";
 
 describe("isValidHoverType", () => {
   // Test for all valid hover types.

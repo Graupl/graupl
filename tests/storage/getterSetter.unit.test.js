@@ -3,8 +3,8 @@
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
-import StorageManager from "../../packages/core/src/js/storage/StorageManager.js";
-import * as validation from "../../packages/core/src/js/validate.js";
+import StorageManager from "@graupl/core/src/storage/StorageManager.js";
+import * as validation from "@graupl/core/src/validate.js";
 
 const scope = "TestStorage";
 

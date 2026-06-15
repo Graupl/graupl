@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isValidState } from "../../packages/core/src/js/validate.js";
+import { isValidState } from "@graupl/core/src/validate.js";
 
 describe("isValidState", () => {
   // Test for all valid states.

@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isTag } from "../../packages/core/src/js/validate.js";
+import { isTag } from "@graupl/core/src/validate.js";
 
 describe("isTag", () => {
   // Test that a paragraph element is a 'p' tag.

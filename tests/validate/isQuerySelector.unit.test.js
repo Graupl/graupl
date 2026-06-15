@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isQuerySelector } from "../../packages/core/src/js/validate.js";
+import { isQuerySelector } from "@graupl/core/src/validate.js";
 
 describe("isQuerySelector", () => {
   // Test a valid query selector.

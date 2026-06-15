@@ -9,7 +9,7 @@ import {
   selectLastFocusableElement,
   selectNextFocusableElement,
   selectPreviousFocusableElement,
-} from "../../packages/core/src/js/domHelpers.js";
+} from "@graupl/core/src/domHelpers.js";
 
 describe("focusable element selectors", () => {
   it("should select all focusable elements and ignore tabindex -1", () => {

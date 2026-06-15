@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from "vitest";
-import { isValidClassList } from "../../packages/core/src/js/validate.js";
+import { isValidClassList } from "@graupl/core/src/validate.js";
 
 describe("isValidClassList", () => {
   // Test a valid single class.
