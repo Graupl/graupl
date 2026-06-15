@@ -1,10 +1,11 @@
 import { h } from "vue";
+import "../../../dist/css/graupl.css";
 
 export default {
   props: {
     variant: {
       type: String,
-      default: "primary",
+      default: "",
     },
     state: {
       type: String,
