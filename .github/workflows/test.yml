@@ -91,5 +91,8 @@ jobs:
       - name: Install modules
         run: npm install
 
+      - name: Install Playwright Browsers
+        run: npx --no playwright install --with-deps --only-shell
+
       - name: Run vitest
         run: npm run test:run

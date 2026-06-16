@@ -13,3 +13,6 @@ docs/.vitepress/dist
 
 # VSCode stuff.
 testing/flashpost
+
+# Generated test files.
+.vitest-attachments
