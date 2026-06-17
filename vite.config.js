@@ -58,7 +58,11 @@ export default defineConfig({
                 },
               },
             },
-            instances: [{ browser: "chromium" }],
+            instances: [
+              { browser: "chromium" },
+              { browser: "firefox" },
+              { browser: "webkit" },
+            ],
           },
           include: ["tests/**/*.browser.{test,spec}.{js,ts,jsx,tsx}"],
         },
