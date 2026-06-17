@@ -1,5 +1,5 @@
 import { h } from "vue";
-import "../../../dist/css/graupl.css";
+import "../../tests.css";
 
 export default {
   props: {
