@@ -1,5 +1,956 @@
-function c(t,e,{shouldThrow:i=!0}={}){const s={status:!0,errors:[]};try{if(typeof e!="object"){const r=typeof e;throw new TypeError(`Elements given to isValidInstance() must be inside of an object. "${r}" given.`)}for(const r in e)try{if(!(e[r]instanceof t)){const o=typeof e[r];throw new TypeError(`${r} must be an instance of ${t.name}. "${o}" given.`)}}catch(o){s.status=!1,s.errors.push(o)}}catch(r){s.status=!1,s.errors.push(r)}if(i&&!s.status)throw s.errors[0];return s}function n(t,e,{shouldThrow:i=!0}={}){const s={status:!0,errors:[]};try{if(typeof e!="object"){const r=typeof e;throw new TypeError(`Values given to isValidType() must be inside of an object. "${r}" given.`)}for(const r in e)try{const o=typeof e[r];if(o!==t)throw new TypeError(`${r} must be a ${t}. "${o}" given.`)}catch(o){s.status=!1,s.errors.push(o)}}catch(r){s.status=!1,s.errors.push(r)}if(i&&!s.status)throw s.errors[0];return s}function w(t,{shouldThrow:e=!0}={}){const i={status:!0,errors:[]};try{if(typeof t!="object"){const s=typeof t;throw new TypeError(`Values given to isQuerySelector() must be inside of an object. "${s}" given.`)}for(const s in t)try{try{if(t[s]===null)throw new Error;document.querySelector(t[s])}catch{throw new TypeError(`${s} must be a valid query selector. "${t[s]}" given.`)}}catch(r){i.status=!1,i.errors.push(r)}}catch(s){i.status=!1,i.errors.push(s)}if(e&&!i.status)throw i.errors[0];return i}function u(t,{shouldThrow:e=!0}={}){const i={status:!0,errors:[]};try{if(typeof t!="object"||Array.isArray(t)){const s=typeof t;throw new TypeError(`Values given to isValidClassList() must be inside of an object. "${s}" given.`)}for(const s in t)try{const r=typeof t[s];if(r!=="string")if(Array.isArray(t[s]))t[s].forEach(o=>{if(typeof o!="string")throw new TypeError(`${s} must be a string or an array of strings. An array containing non-strings given.`)});else throw new TypeError(`${s} must be a string or an array of strings. "${r}" given.`);else{const o={};o[s]=t[s],w(o)}}catch(r){i.status=!1,i.errors.push(r)}}catch(s){i.status=!1,i.errors.push(s)}if(e&&!i.status)throw i.errors[0];return i}function G(t,{shouldThrow:e=!0}={}){const i={status:!0,errors:[]};try{if(typeof t!="object"){const r=typeof t;throw new TypeError(`Values given to isValidState() must be inside of an object. "${r}" given.`)}const s=["none","self","child"];for(const r in t)try{if(!s.includes(t[r]))throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`)}catch(o){i.status=!1,i.errors.push(o)}}catch(s){i.status=!1,i.errors.push(s)}if(e&&!i.status)throw i.errors[0];return i}function H(t,{shouldThrow:e=!0}={}){const i={status:!0,errors:[]};try{if(typeof t!="object"){const r=typeof t;throw new TypeError(`Values given to isValidEvent() must be inside of an object. "${r}" given.`)}const s=["none","mouse","keyboard","character"];for(const r in t)try{if(!s.includes(t[r]))throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`)}catch(o){i.status=!1,i.errors.push(o)}}catch(s){i.status=!1,i.errors.push(s)}if(e&&!i.status)throw i.errors[0];return i}function N(t,e,{shouldThrow:i=!0}={}){const s={status:!0,errors:[]};try{if(n("string",{tagName:t},{shouldThrow:!0}).status&&c(HTMLElement,e,{shouldThrow:!0}).status){const r=t.toLowerCase();for(const o in e)try{if(e[o].tagName.toLowerCase()!==r)throw new TypeError(`${o} must be a <${r}> element. <${e[o].tagName.toLowerCase()}> given.`)}catch(a){s.status=!1,s.errors.push(a)}}}catch(r){s.status=!1,s.errors.push(r)}if(i&&!s.status)throw s.errors[0];return s}function R(t,e,{shouldThrow:i=!0}={}){const s={status:!0,errors:[]};try{if(!Object.prototype.hasOwnProperty.call(e.events,t))throw new TypeError(`Event type "${t}" is not valid for ${e.constructor.name}. Valid event types are: "${Object.keys(e.events).join('", ')}".`)}catch(r){s.status=!1,s.errors.push(r)}if(i&&!s.status)throw s.errors[0];return s}function U(t,{shouldThrow:e=!0}={}){const i={status:!0,errors:[]};try{if(!Object.prototype.hasOwnProperty.call(t._dom,t._rootDOMElement))throw new Error(`The root DOM element "${t._rootDOMElement}" does not exist in the ${t.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(t._dom).join('", "')}".`)}catch(s){i.status=!1,i.errors.push(s)}if(e&&!i.status)throw i.errors[0];return i}function h(t,e){t===""||t.length===0||(typeof t=="string"?e.classList.add(t):e.classList.add(...t))}function l(t,e){t===""||t.length===0||(typeof t=="string"?e.classList.remove(t):e.classList.remove(...t))}function _(t){try{const e=t.key||t.keyCode,i={Enter:e==="Enter"||e===13,Space:e===" "||e==="Spacebar"||e===32,Escape:e==="Escape"||e==="Esc"||e===27,ArrowUp:e==="ArrowUp"||e==="Up"||e===38,ArrowRight:e==="ArrowRight"||e==="Right"||e===39,ArrowDown:e==="ArrowDown"||e==="Down"||e===40,ArrowLeft:e==="ArrowLeft"||e==="Left"||e===37,Home:e==="Home"||e===36,End:e==="End"||e===35,Character:isNaN(e)&&!!e.match(/^[a-zA-Z]{1}$/),Tab:e==="Tab"||e===9,Asterisk:e==="*"||e===56};return Object.keys(i).find(s=>i[s]===!0)||""}catch{return""}}function d(t){t.preventDefault(),t.stopPropagation()}var O=class{_equals=Object.is;_current;_committed;constructor(t,{equals:e=Object.is}={}){this._equals=e||Object.is,this._current=t,this._committed=t}get value(){return this._current}set value(t){this._current=t}get committed(){return this._committed}get isDirty(){return!this._equals(this._current,this._committed)}commit(){return this._committed=this._current,this}reset(){return this._current=this._committed,this}update(t){return this._current=t(this._current),this}},b=class T{_scope;_type="_default";_storage={};_crush=!1;constructor({scope:e,type:i=null,crush:s=!1,initialize:r=!0}={}){this._scope=e,this._type=i||"_default",this._crush=s,r&&this.initialize()}initialize(){try{!this._crush&&typeof window[this.scope]<"u"&&(c(T,{storage:window[this.scope]},{shouldThrow:!1}).status||typeof window[this.scope].storage<"u"&&typeof window[this.scope].scope<"u"&&typeof window[this.scope].type<"u")&&(this._storage=window[this.scope].storage)}catch{}finally{window[this.scope]=this}}get scope(){return this._scope}get type(){return this._type}set type(e){n("string",{type:e})&&(this._type=e)}get storage(){return this._storage}get({type:e=this.type,key:i=null}={}){const s=n("string",{type:e});if(!s.status)throw new Error(`StorageManager (${this.scope}): ${s.message}`);if(!this.storage[e])throw new Error(`StorageManager (${this.scope}): Type "${e}" is not initialized.`);if(i!==null){const r=n("string",{key:i});if(!r.status)throw new Error(`StorageManager (${this.scope}): ${r.message}`);return this.storage[e][i]}return this.storage[e]}set({type:e=this.type,key:i=null,data:s={}}={}){const r=n("string",{type:e}),o=n("object",{data:s});if(!r.status)throw new Error(`StorageManager (${this.scope}): ${r.message}`);if(!o.status)throw new Error(`StorageManager (${this.scope}): ${o.message}`);if(i!==null){const a=n("string",{key:i});if(!a.status)throw new Error(`StorageManager (${this.scope}): ${a.message}`);this._storage[e]||(this._storage[e]={}),this._storage[e][i]=s}else this._storage[e]=s}clear({type:e=this.type,key:i=null}={}){const s=n("string",{type:e});if(!s.status)throw new Error(`StorageManager (${this.scope}): ${s.message}`);if(i!==null){const r=n("string",{key:i});if(!r.status)throw new Error(`StorageManager (${this.scope}): ${r.message}`);delete this.storage[e][i]}else delete this.storage[e]}dispose(){delete this._storage,delete this}},C=class{_dom={};_rootDOMElement="";_protectedDOMElements=[];_selectors={};_elements={};_classes={initialize:""};_durations={};_delays={};_focusState="none";_currentEvent="none";_breakpoint="";_mediaQueryString="";_mediaQueryList=null;_mediaQueryListEventCallback=t=>{t.matches};_intervals={};_timeouts={};_listeners=[];_events={initialize:new CustomEvent("grauplComponentInitialize",{detail:{component:this}}),preinitialize:new CustomEvent("grauplComponentPreinitialize",{detail:{component:this}}),postinitialize:new CustomEvent("grauplComponentPostinitialize",{detail:{component:this}}),validate:new CustomEvent("grauplComponentValidate",{detail:{component:this}}),prevalidate:new CustomEvent("grauplComponentPrevalidate",{detail:{component:this}}),postvalidate:new CustomEvent("grauplComponentPostvalidate",{detail:{component:this}})};_prefix="graupl-";_key="";_name="Component";_storageKey="components";_shouldStore=!0;_id="";_valid=!0;_initialized=!1;_errors=[];constructor({prefix:t="graupl-",key:e=null,initializeClass:i="initializing"}={}){this._classes.initialize=i||"",this._prefix=t||"",this._key=e||""}initialize(){try{if(!this._validate())throw new Error(`Graupl ${this.name}: Cannot initialize component. The following errors have been found:
- - ${this.errors.map(t=>t.message).join(`
- - `)}`);h(this.initializeClass,this.rootDOMElement),this._dispatchEvent("preinitialize",this.rootDOMElement),this._generateKey(),this._setDOMElements(),this._setIds(),this._setAriaAttributes(),this._setCustomProps(),this._createChildElements(),this._handleMediaMatch(),this._handleFocus(),this._handleHover(),this._handleClick(),this._handleKeydown(),this._handleKeyup(),this._dispatchEvent("initialize",this.rootDOMElement),this._store(),l(this.initializeClass,this.rootDOMElement),this._initialized=!0,this._dispatchEvent("postinitialize",this.rootDOMElement)}catch(t){console.error(t)}}init(){this.initialize()}get dom(){return this._dom}get rootDOMElement(){return this._dom[this._rootDOMElement]||document.documentElement}get selectors(){return this._selectors}get elements(){return this._elements}get classes(){return this._classes}get durations(){return this._durations}get delays(){return this._delays}get intervals(){return this._intervals}get timeouts(){return this._timeouts}get listeners(){return this._listeners}get events(){return this._events}get initializeClass(){return this._classes.initialize}set initializeClass(t){u({initializeClass:t}),this._classes.initialize!==t&&(this._classes.initialize=t)}get focusState(){return this._focusState}set focusState(t){G({focusState:t}),this._focusState!==t&&(this._focusState=t)}get currentEvent(){return this._currentEvent}set currentEvent(t){H({currentEvent:t}),this._currentEvent!==t&&(this._currentEvent=t)}get shouldFocus(){let t=!1;return this.currentEvent==="keyboard"&&(t=!0),t}get breakpoint(){return this._breakpoint}set breakpoint(t){n("string",{breakpoint:t}),this._breakpoint!==t&&(this._breakpoint=t)}get mediaQuery(){return this._mediaQueryString!==""?this._mediaQueryString:this._breakpoint===""?"":`(width <= ${this._breakpoint})`}set mediaQuery(t){n("string",{mediaQuery:t}),this._mediaQueryString!==t&&(this._mediaQueryString=t)}get prefix(){return this._prefix}get key(){return this._key}get name(){return this._name}get id(){return this._id}get isValid(){return this._valid}get isInitialized(){return this._initialized}get errors(){return this._errors}_validate(){this._dispatchEvent("prevalidate",this.rootDOMElement);const t=U(this,{shouldThrow:!1});if(t.status||(this._errors=[...this._errors,...t.errors],this._valid=!1),Object.keys(this._dom).length>0){const s={};for(const o of Object.keys(this._dom))Array.isArray(this._dom[o])?this._dom[o].forEach((a,f)=>{s[`${o}Element[${f}]`]=a}):this._dom[o]!==null&&(s[`${o}Element`]=this._dom[o]);const r=c(HTMLElement,s,{shouldThrow:!1});r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1)}if(Object.keys(this._selectors).length>0){const s={};for(const o of Object.keys(this._selectors))s[`${o}Selector`]=this._selectors[o];const r=w(s,{shouldThrow:!1});r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1)}if(Object.keys(this._classes).length>0){const s={};for(const o of Object.keys(this._classes))this._classes[o]!==""&&(s[`${o}Class`]=this._classes[o]);const r=u(s,{shouldThrow:!1});r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1)}if(Object.keys(this._durations).length>0){const s={};for(const o of Object.keys(this._durations))s[`${o}Duration`]=this._durations[o];const r=n("number",s,{shouldThrow:!1});r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1)}if(Object.keys(this.delays).length>0){const s={};for(const o of Object.keys(this.delays))s[`${o}Delay`]=this.delays[o];const r=n("number",s,{shouldThrow:!1});r.status||(this._errors=[...this._errors,...r.errors],this._valid=!1)}const e={_storageKey:this._storageKey,key:this._key,prefix:this._prefix,mediaQuery:this._mediaQueryString,breakpoint:this._breakpoint};this._protectedDOMElements.forEach(s=>{e[`_protectedDOMElementType[${s}]`]=s});const i=n("string",e,{shouldThrow:!1});return i.status||(this._errors=[...this._errors,...i.errors],this._valid=!1),this._dispatchEvent("validate",this.rootDOMElement),this._dispatchEvent("postvalidate",this.rootDOMElement),this._valid}_generateKey(t=!1){(this._key===""||t)&&(this._key=Math.random().toString(36).replace(/[^a-z]+/g,"").substring(0,10))}_setIds(){}_setAriaAttributes(){}_setCustomProps(){}_setDOMElementType(t,{context:e,overwrite:i=!0,strict:s=!1}={}){if(typeof this.selectors[t]!="string")throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);if(this._rootDOMElement===t||this._protectedDOMElements.includes(t))throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);c(HTMLElement,{context:e});const r=Array.from(e.querySelectorAll(this.selectors[t])).filter(o=>s?o.parentElement===e:!0);Array.isArray(this._dom[t])?i?this._dom[t]=r:this._dom[t]=[...this._dom[t],...r]:this._dom[t]=r[0]||null}_resetDOMElementType(t){if(typeof this.selectors[t]!="string")throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);if(this._rootDOMElement===t||this._protectedDOMElements.includes(t))throw new Error(`Graupl ${this.name}: "${t}" element cannot be reset through _resetDOMElementType because it is a protected element.`);Array.isArray(this._dom[t])?this._dom[t]=[]:this._dom[t]=null}_setDOMElements(){}_createChildElements(){}_handleMediaMatch(){this.mediaQuery!==""&&(this._mediaQueryList=window.matchMedia(this.mediaQuery),this._addEventListener("change",this._mediaQueryList,this._mediaQueryListEventCallback),this._mediaQueryListEventCallback(this._mediaQueryList))}_handleFocus(){}_handleClick(){}_handleHover(){}_handleKeydown(){}_handleKeyup(){}_store(){this._shouldStore&&(c(b,{storage:window.GrauplStorage},{shouldThrow:!1}).status||new b({scope:"GrauplStorage"}),window.GrauplStorage.set({key:this.id!==""?this.id:this.key,type:this._storageKey,data:this}))}_unstore(){this._shouldStore&&c(b,{storage:window.GrauplStorage},{shouldThrow:!1}).status&&window.GrauplStorage.clear({key:this.id!==""?this.id:this.key,type:this._storageKey})}_setInterval(t,e,i="_default"){this._clearInterval(i),this._intervals[i]=setInterval(t,e)}_clearInterval(t="_default"){clearInterval(this._intervals[t])}_clearIntervals(){for(const t of Object.keys(this._intervals))this._clearInterval(t)}_setTimeout(t,e,i="_default"){this._clearTimeout(i),this._timeouts[i]=setTimeout(t,e)}_clearTimeout(t="_default"){clearTimeout(this._timeouts[t])}_clearTimeouts(){for(const t of Object.keys(this._timeouts))this._clearTimeout(t)}_registerEvent(t,{bubbles:e=!0,detail:i={}}={}){n("string",{name:t}),n("boolean",{bubbles:e}),n("object",{detail:i});const s=`graupl${this.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;this._events[t]=new CustomEvent(s,{bubbles:e,detail:{component:this,...i}})}_dispatchEvent(t,e){R(t,this),c(HTMLElement,{element:e}),e.dispatchEvent(this.events[t])}_addEventListener(t,e,i,s={}){e.addEventListener(t,i,s),this._listeners.push({type:t,element:e,listener:i,options:s})}_removeEventListener(t,e,i,s={}){e.removeEventListener(t,i,s);let r=-1;this._listeners.forEach((o,a)=>{o.type===t&&o.element===e&&o.listener===i&&JSON.stringify(o.options)===JSON.stringify(s)&&(r=a)}),r!==-1&&this._listeners.splice(r,1)}_removeEventListeners({type:t=null,element:e=null}={}){[...this._listeners].forEach(i=>{t!==null&&i.type!==t||e!==null&&i.element!==e||this._removeEventListener(i.type,i.element,i.listener,i.options)})}focus(){this.focusState="self",this.shouldFocus&&this.rootDOMElement.focus()}blur(){this.focusState="none",this.shouldFocus&&this.rootDOMElement.blur()}dispose(){this._clearIntervals(),this._clearTimeouts(),this._removeEventListeners(),this._unstore(),delete this}},J=class extends C{_rootDOMElement="item";_protectedDOMElements=["link"];_storageKey="breadcrumbItems";_shouldStore=!1;_toggle=!1;constructor({breadcrumbItemElement:t,breadcrumbLinkElement:e=null,parentBreadcrumb:i,isToggle:s=!1,prefix:r="graupl-",key:o=null,initializeClass:a="initializing"}){super({prefix:r,key:o,initializeClass:a}),this._dom.item=t,this._dom.link=e||null,this._elements.parent=i,this._toggle=s}get isToggle(){return this._toggle}focus(){this.elements.parent.shouldFocus&&this.dom.link&&requestAnimationFrame(()=>{this.dom.link.focus()})}blur(){this.elements.parent.shouldFocus&&this.dom.link&&requestAnimationFrame(()=>{this.dom.link.blur()})}},Z=class extends C{_rootDOMElement="breadcrumb";_currentChild=0;_open=new O(!1);_locked=new O(!1);_openInsideBreakpoint=!1;_openOutsideBreakpoint=!0;_closeInsideBreakpoint=!0;_closeOutsideBreakpoint=!1;_lockInsideBreakpoint=!1;_lockOutsideBreakpoint=!0;_unlockInsideBreakpoint=!1;_unlockOutsideBreakpoint=!1;_openOnFocus=!1;_closeOnBlur=!1;_storageKey="breadcrumbs";_name="Breadcrumb";_mediaQueryListEventCallback=t=>{t.matches?(this.unlockInsideBreakpoint&&this.unlock(),this.isOpen&&this.closeInsideBreakpoint?(this.isLocked&&this.unlock(),this.close({preserveState:!0})):!this.isOpen&&this.openInsideBreakpoint&&(this.isLocked&&this.unlock(),this.open()),this.lockInsideBreakpoint&&this.lock()):(this.unlockOutsideBreakpoint&&this.unlock(),this.isOpen&&this.closeOutsideBreakpoint?(this.isLocked&&this.unlock(),this.close({preserveState:!0})):!this.isOpen&&this.openOutsideBreakpoint&&(this.isLocked&&this.unlock(),this.open()),this.lockOutsideBreakpoint&&this.lock())};constructor({breadcrumbElement:t,breadcrumbItemsSelector:e=".breadcrumb-item",breadcrumbLinksSelector:i=".breadcrumb-link",breadcrumbToggleSelector:s=".breadcrumb-toggle",lockedClass:r="locked",unlockedClass:o="unlocked",openClass:a="show",closeClass:f="hide",transitionClass:v="transition",transitionDuration:B=250,openDuration:I=-1,closeDuration:$=-1,openOnFocus:M=!1,closeOnBlur:D=!1,minWidth:g="",breakpoint:m="856px",autoOpen:p=!1,openInsideBreakpoint:S=!1,openOutsideBreakpoint:k=!0,closeInsideBreakpoint:y=!0,closeOutsideBreakpoint:L=!1,lockInsideBreakpoint:z=!1,lockOutsideBreakpoint:A=!0,unlockInsideBreakpoint:j=!0,unlockOutsideBreakpoint:F=!1,locked:x=!1,mediaQuery:Q="",prefix:q="graupl-",key:V=null,initializeClass:P="initializing",initialize:K=!1}){super({prefix:q,key:V,initializeClass:P}),this._dom.breadcrumb=t,this._dom.breadcrumbItems=[],this._dom.breadcrumbLinks=[],this._dom.breadcrumbToggle=null,this._selectors.breadcrumbItems=e,this._selectors.breadcrumbLinks=i,this._selectors.breadcrumbToggle=s,this._elements.breadcrumbItems=[],this._classes.locked=r||"",this._classes.unlocked=o||"",this._classes.open=a||"",this._classes.close=f||"",this._classes.transition=v||"",this._durations.transition=B,this._durations.open=I,this._durations.close=$,this._openOnFocus=M,this._closeOnBlur=D,g!==""&&(console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."),m===""&&(m=g)),p&&m!==""&&(console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."),k=p,y=p),this._breakpoint=m||"",this._openInsideBreakpoint=S,this._openOutsideBreakpoint=k,this._closeInsideBreakpoint=y,this._closeOutsideBreakpoint=L,this._lockInsideBreakpoint=z,this._lockOutsideBreakpoint=A,this._unlockInsideBreakpoint=j,this._unlockOutsideBreakpoint=F,this._mediaQueryString=Q||"",this._locked.value=x,this._locked.commit(),this._registerEvent("expand",{detail:{breadcrumb:this}}),this._registerEvent("collapse",{detail:{breadcrumb:this}}),this._registerEvent("lock",{detail:{breadcrumb:this}}),this._registerEvent("unlock",{detail:{breadcrumb:this}}),this._addEventListener("grauplComponentInitialize",this.rootDOMElement,()=>{requestAnimationFrame(()=>{this.dom.breadcrumbToggle&&(this.dom.breadcrumbToggle.getAttribute("aria-expanded")==="true"||this.openOutsideBreakpoint&&!window.matchMedia(this.mediaQuery).matches||this.openInsideBreakpoint&&window.matchMedia(this.mediaQuery).matches?this.open({force:!0}):this.close({force:!0})),this.isLocked||this.lockInsideBreakpoint&&window.matchMedia(this.mediaQuery).matches||this.lockOutsideBreakpoint&&!window.matchMedia(this.mediaQuery).matches?this.lock({force:!0}):this.unlock({force:!0})})}),this._addEventListener("grauplComponentValidate",this.rootDOMElement,()=>{const E=n("boolean",{openOnFocus:this._openOnFocus,closeOnBlur:this._closeOnBlur,openInsideBreakpoint:this._openInsideBreakpoint,openOutsideBreakpoint:this._openOutsideBreakpoint,closeInsideBreakpoint:this._closeInsideBreakpoint,closeOutsideBreakpoint:this._closeOutsideBreakpoint,lockInsideBreakpoint:this._lockInsideBreakpoint,lockOutsideBreakpoint:this._lockOutsideBreakpoint,unlockInsideBreakpoint:this._unlockInsideBreakpoint,unlockOutsideBreakpoint:this._unlockOutsideBreakpoint,locked:this._locked.value},{shouldThrow:!1});E.status||(this._errors=[...this._errors,...E.errors],this._valid=!1)}),K&&this.initialize()}get lockedClass(){return this._classes.locked}set lockedClass(t){u({lockedClass:t}),this._classes.locked!==t&&(this._classes.locked=t)}get unlockedClass(){return this._classes.unlocked}set unlockedClass(t){u({unlockedClass:t}),this._classes.unlocked!==t&&(this._classes.unlocked=t)}get openClass(){return this._classes.open}set openClass(t){u({openClass:t}),this._classes.open!==t&&(this._classes.open=t)}get closeClass(){return this._classes.close}set closeClass(t){u({closeClass:t}),this._classes.close!==t&&(this._classes.close=t)}get transitionClass(){return this._classes.transition}set transitionClass(t){u({transitionClass:t}),this._classes.transition!==t&&(this._classes.transition=t)}get transitionDuration(){return this._durations.transition}set transitionDuration(t){n("number",{transitionDuration:t}),this._durations.transition!==t&&(this._durations.transition=t,this._setCustomProps())}get openDuration(){return this._durations.open===-1?this.transitionDuration:this._durations.open}set openDuration(t){n("number",{openDuration:t}),this._durations.open!==t&&(this._durations.open=t,this._setCustomProps())}get closeDuration(){return this._durations.close===-1?this.transitionDuration:this._durations.close}set closeDuration(t){n("number",{closeDuration:t}),this._durations.close!==t&&(this._durations.close=t,this._setCustomProps())}get openOnFocus(){return this._openOnFocus}set openOnFocus(t){n("boolean",{openOnFocus:t}),this._openOnFocus!==t&&(this._openOnFocus=t)}get closeOnBlur(){return this._closeOnBlur}set closeOnBlur(t){n("boolean",{closeOnBlur:t}),this._closeOnBlur!==t&&(this._closeOnBlur=t)}get isOpen(){return this._open.value}get hasOpened(){return this._open.committed}get openInsideBreakpoint(){return this._openInsideBreakpoint}set openInsideBreakpoint(t){n("boolean",{openInsideBreakpoint:t}),this._openInsideBreakpoint!==t&&(this._openInsideBreakpoint=t)}get openOutsideBreakpoint(){return this._openOutsideBreakpoint}set openOutsideBreakpoint(t){n("boolean",{openOutsideBreakpoint:t}),this._openOutsideBreakpoint!==t&&(this._openOutsideBreakpoint=t)}get closeInsideBreakpoint(){return this._closeInsideBreakpoint}set closeInsideBreakpoint(t){n("boolean",{closeInsideBreakpoint:t}),this._closeInsideBreakpoint!==t&&(this._closeInsideBreakpoint=t)}get closeOutsideBreakpoint(){return this._closeOutsideBreakpoint}set closeOutsideBreakpoint(t){n("boolean",{closeOutsideBreakpoint:t}),this._closeOutsideBreakpoint!==t&&(this._closeOutsideBreakpoint=t)}get lockInsideBreakpoint(){return this._lockInsideBreakpoint}set lockInsideBreakpoint(t){n("boolean",{lockInsideBreakpoint:t}),this._lockInsideBreakpoint!==t&&(this._lockInsideBreakpoint=t)}get lockOutsideBreakpoint(){return this._lockOutsideBreakpoint}set lockOutsideBreakpoint(t){n("boolean",{lockOutsideBreakpoint:t}),this._lockOutsideBreakpoint!==t&&(this._lockOutsideBreakpoint=t)}get isLocked(){return this._locked.value}get shouldBeLocked(){return this._locked.committed}get currentChild(){return this._currentChild}set currentChild(t){n("number",{currentChild:t}),this._currentChild!==t&&t>=0&&t<this.elements.breadcrumbItems.length&&(this._currentChild=t)}get currentBreadcrumbItem(){return this.elements.breadcrumbItems[this.currentChild]}_setIds(){this.dom.breadcrumb.id=this.dom.breadcrumb.id||`breadcrumb-${this.key}`,this.dom.breadcrumbToggle&&(this.dom.breadcrumbToggle.id=this.dom.breadcrumbToggle.id||`breadcrumb-toggle-${this.key}`),this._id=this.dom.breadcrumb.id}_setAriaAttributes(){this.dom.breadcrumbToggle&&(this.dom.breadcrumbToggle.getAttribute("aria-expanded")!=="true"&&this.dom.breadcrumbToggle.setAttribute("aria-expanded","false"),this.dom.breadcrumbToggle.setAttribute("aria-controls",this.dom.breadcrumb.id),N("button",{toggle:this.dom.breadcrumbToggle},{shouldThrow:!1}).status||this.dom.breadcrumbToggle.setAttribute("role","button"))}_setCustomProps(){this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`,`${this.transitionDuration}ms`),this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`,`${this.openDuration}ms`),this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`,`${this.closeDuration}ms`)}_setDOMElements(){this._resetDOMElementType("breadcrumbItems"),this._setDOMElementType("breadcrumbItems",{context:this.dom.breadcrumb}),this._resetDOMElementType("breadcrumbLinks"),this._setDOMElementType("breadcrumbLinks",{context:this.dom.breadcrumb}),this._resetDOMElementType("breadcrumbToggle"),this._setDOMElementType("breadcrumbToggle",{context:this.dom.breadcrumb})}_createChildElements(){this.dom.breadcrumbItems.forEach(t=>{const e=t.querySelector(this.selectors.breadcrumbLinks),i=t.querySelector(this.selectors.breadcrumbToggle)!==null,s=new J({breadcrumbItemElement:t,breadcrumbLinkElement:e,parentBreadcrumb:this,isToggle:i});this.elements.breadcrumbItems.push(s),i&&(this._elements.breadcrumbToggle=s)})}_reveal({emit:t=this.isInitialized,transition:e=this.isInitialized}={}){this.dom.breadcrumbToggle&&this.dom.breadcrumbToggle.setAttribute("aria-expanded","true"),e&&this.transitionlass!==""?(h(this.transitionClass,this.dom.breadcrumb),requestAnimationFrame(()=>{l(this.closeClass,this.dom.breadcrumb),requestAnimationFrame(()=>{h(this.openClass,this.dom.breadcrumb),requestAnimationFrame(()=>{setTimeout(()=>{l(this.transitionClass,this.dom.breadcrumb)},this.openDuration)})})})):(h(this.openClass,this.dom.breadcrumb),l(this.closeClass,this.dom.breadcrumb)),t&&(this.dom.breadcrumbToggle?this._dispatchEvent("expand",this.dom.breadcrumbToggle):this._dispatchEvent("expand",this.dom.breadcrumb))}_conceal({emit:t=this.isInitialized,transition:e=this.isInitialized}={}){this.dom.breadcrumbToggle&&this.dom.breadcrumbToggle.setAttribute("aria-expanded","false"),e&&this.transitionClass!==""?(h(this.transitionClass,this.dom.breadcrumb),requestAnimationFrame(()=>{l(this.openClass,this.dom.breadcrumb),requestAnimationFrame(()=>{h(this.closeClass,this.dom.breadcrumb),requestAnimationFrame(()=>{setTimeout(()=>{l(this.transitionClass,this.dom.breadcrumb)},this.closeDuration)})})})):(h(this.closeClass,this.dom.breadcrumb),l(this.openClass,this.dom.breadcrumb)),t&&(this.dom.breadcrumbToggle?this._dispatchEvent("collapse",this.dom.breadcrumbToggle):this._dispatchEvent("collapse",this.dom.breadcrumb))}_lock({emit:t=this.isInitialized}={}){h(this.lockedClass,this.dom.breadcrumb),l(this.unlockedClass,this.dom.breadcrumb),this.dom.breadcrumbToggle&&this.dom.breadcrumbToggle.setAttribute("disabled","true"),t&&(this.dom.breadcrumbToggle?this._dispatchEvent("lock",this.dom.breadcrumbToggle):this._dispatchEvent("lock",this.dom.breadcrumb))}_unlock({emit:t=this.isInitialized}={}){h(this.unlockedClass,this.dom.breadcrumb),l(this.lockedClass,this.dom.breadcrumb),this.dom.breadcrumbToggle&&this.dom.breadcrumbToggle.removeAttribute("disabled"),t&&(this.dom.breadcrumbToggle?this._dispatchEvent("unlock",this.dom.breadcrumbToggle):this._dispatchEvent("unlock",this.dom.breadcrumb))}_handleFocus(){this.elements.breadcrumbItems.forEach((t,e)=>{t.dom.link&&this._addEventListener("focus",t.dom.link,()=>{this.focusState="self",this.currentChild=e})}),this._addEventListener("focusout",this.dom.breadcrumb,t=>{!this.closeOnBlur||this.currentEvent!=="keyboard"||t.relatedTarget===null||this.dom.breadcrumb.contains(t.relatedTarget)||this.dom.breadcrumbToggle===t.relatedTarget||this.close()})}_handleClick(){this._addEventListener("click",document,t=>{this.focusState!=="self"||!this.closeOnBlur||(this.currentEvent="mouse",!this.dom.breadcrumb.contains(t.target)&&this.dom.breadcrumbToggle!==t.target&&this.close())}),this.dom.breadcrumbToggle&&this._addEventListener("click",this.dom.breadcrumbToggle,t=>{this.currentEvent="mouse",t.button===0&&(d(t),this.toggle())})}_handleKeydown(){this._addEventListener("keydown",this.dom.breadcrumb,t=>{this.currentEvent="keyboard",_(t)==="Escape"&&d(t)}),this.dom.breadcrumbToggle&&this._addEventListener("keydown",this.dom.breadcrumbToggle,t=>{switch(this.currentEvent="keyboard",_(t)){case"Space":case"Enter":d(t);break}})}_handleKeyup(){this._addEventListener("keyup",this.dom.breadcrumb,t=>{this.currentEvent="keyboard",_(t)==="Escape"&&(d(t),this.close(),this.currentChild>this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle)&&requestAnimationFrame(()=>{this.focusToggle()}))}),this.dom.breadcrumbToggle&&this._addEventListener("keyup",this.dom.breadcrumbToggle,t=>{switch(this.currentEvent="keyboard",_(t)){case"Space":case"Enter":d(t),this.toggle(),this.isOpen?requestAnimationFrame(()=>{this.focusNextChild()}):this.focusFirstChild();break;case"Tab":this.openOnFocus&&(d(t),this.open(),requestAnimationFrame(()=>{this.focusNextChild()}));break}})}open({force:t=!1,emit:e=this.isInitialized,transition:i=this.isInitialized,preserveState:s=!1}={}){this.isOpen&&!t||this.isLocked&&!t||(this.focusState="self",this._reveal({emit:e,transition:i}),this._open.value=!0,s||this._open.commit())}preview({force:t=!1,emit:e=this.isInitialized,transition:i=this.isInitialized,preserveState:s=!1}={}){this.isOpen&&!t||this.isLocked&&!t||(this.focusState="none",this._reveal({emit:e,transition:i}),this._open.value=!0,s||this._open.commit())}close({force:t=!1,emit:e=this.isInitialized,transition:i=this.isInitialized,preserveState:s=!1}={}){!this.isOpen&&!t||this.isLocked&&!t||(this.focusState="none",this._conceal({emit:e,transition:i}),this._open.value=!1,s||this._open.commit())}toggle({force:t=!1,emit:e=this.isInitialized,transition:i=this.isInitialized,preserveState:s=!1}={}){this.isOpen?this.close({force:t,emit:e,transition:i,preserveState:s}):this.open({force:t,emit:e,transition:i,preserveState:s})}lock({force:t=!1,emit:e=this.isInitialized,preserveState:i=!1}={}){this.isLocked&&!t||(this._locked.value=!0,this._lock({emit:e}),i||this._locked.commit())}unlock({force:t=!1,emit:e=this.isInitialized,preserveState:i=!1}={}){!this.isLocked&&!t||(this._locked.value=!1,this._unlock({emit:e}),i||this._locked.commit())}toggleLock({force:t=!1,emit:e=this.isInitialized,preserveState:i=!1}={}){this.isLocked?this.unlock({force:t,emit:e,preserveState:i}):this.lock({force:t,emit:e,preserveState:i})}focusCurrentChild(){this.focusState="self",this.currentChild!==-1&&this.currentBreadcrumbItem.focus()}focusChild(t){this.blurCurrentChild(),this.currentChild=t,this.focusCurrentChild()}focusFirstChild(){this.focusChild(0)}focusLastChild(){this.focusChild(this.elements.breadcrumbItems.length-1)}focusNextChild(){this.currentChild<this.elements.breadcrumbItems.length-1?this.focusChild(this.currentChild+1):this.focusCurrentChild()}focusPreviousChild(){this.currentChild>0?this.focusChild(this.currentChild-1):this.focusCurrentChild()}blurCurrentChild(){this.focusState="none",this.currentChild!==-1&&this.currentBreadcrumbItem.blur()}focusToggle(){this.focusState="self",this.elements.breadcrumbToggle!==null&&(this.currentChild=this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle)||0,this.elements.breadcrumbToggle.focus())}};export{Z as default};
+function c(t, e, { shouldThrow: i = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof e != "object") throw new TypeError(`Elements given to isValidInstance() must be inside of an object. "${typeof e}" given.`);
+		for (const r in e) try {
+			if (!(e[r] instanceof t)) {
+				const o = typeof e[r];
+				throw new TypeError(`${r} must be an instance of ${t.name}. "${o}" given.`);
+			}
+		} catch (o) {
+			s.status = !1, s.errors.push(o);
+		}
+	} catch (r) {
+		s.status = !1, s.errors.push(r);
+	}
+	if (i && !s.status) throw s.errors[0];
+	return s;
+}
+function n(t, e, { shouldThrow: i = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof e != "object") throw new TypeError(`Values given to isValidType() must be inside of an object. "${typeof e}" given.`);
+		for (const r in e) try {
+			const o = typeof e[r];
+			if (o !== t) throw new TypeError(`${r} must be a ${t}. "${o}" given.`);
+		} catch (o) {
+			s.status = !1, s.errors.push(o);
+		}
+	} catch (r) {
+		s.status = !1, s.errors.push(r);
+	}
+	if (i && !s.status) throw s.errors[0];
+	return s;
+}
+function w(t, { shouldThrow: e = !0 } = {}) {
+	const i = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isQuerySelector() must be inside of an object. "${typeof t}" given.`);
+		for (const s in t) try {
+			try {
+				if (t[s] === null) throw new Error();
+				document.querySelector(t[s]);
+			} catch {
+				throw new TypeError(`${s} must be a valid query selector. "${t[s]}" given.`);
+			}
+		} catch (r) {
+			i.status = !1, i.errors.push(r);
+		}
+	} catch (s) {
+		i.status = !1, i.errors.push(s);
+	}
+	if (e && !i.status) throw i.errors[0];
+	return i;
+}
+function u(t, { shouldThrow: e = !0 } = {}) {
+	const i = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object" || Array.isArray(t)) throw new TypeError(`Values given to isValidClassList() must be inside of an object. "${typeof t}" given.`);
+		for (const s in t) try {
+			const r = typeof t[s];
+			if (r !== "string") if (Array.isArray(t[s])) t[s].forEach((o) => {
+				if (typeof o != "string") throw new TypeError(`${s} must be a string or an array of strings. An array containing non-strings given.`);
+			});
+			else throw new TypeError(`${s} must be a string or an array of strings. "${r}" given.`);
+			else {
+				const o = {};
+				o[s] = t[s], w(o);
+			}
+		} catch (r) {
+			i.status = !1, i.errors.push(r);
+		}
+	} catch (s) {
+		i.status = !1, i.errors.push(s);
+	}
+	if (e && !i.status) throw i.errors[0];
+	return i;
+}
+function G(t, { shouldThrow: e = !0 } = {}) {
+	const i = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isValidState() must be inside of an object. "${typeof t}" given.`);
+		const s = [
+			"none",
+			"self",
+			"child"
+		];
+		for (const r in t) try {
+			if (!s.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`);
+		} catch (o) {
+			i.status = !1, i.errors.push(o);
+		}
+	} catch (s) {
+		i.status = !1, i.errors.push(s);
+	}
+	if (e && !i.status) throw i.errors[0];
+	return i;
+}
+function H(t, { shouldThrow: e = !0 } = {}) {
+	const i = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (typeof t != "object") throw new TypeError(`Values given to isValidEvent() must be inside of an object. "${typeof t}" given.`);
+		const s = [
+			"none",
+			"mouse",
+			"keyboard",
+			"character"
+		];
+		for (const r in t) try {
+			if (!s.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`);
+		} catch (o) {
+			i.status = !1, i.errors.push(o);
+		}
+	} catch (s) {
+		i.status = !1, i.errors.push(s);
+	}
+	if (e && !i.status) throw i.errors[0];
+	return i;
+}
+function N(t, e, { shouldThrow: i = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (n("string", { tagName: t }, { shouldThrow: !0 }).status && c(HTMLElement, e, { shouldThrow: !0 }).status) {
+			const r = t.toLowerCase();
+			for (const o in e) try {
+				if (e[o].tagName.toLowerCase() !== r) throw new TypeError(`${o} must be a <${r}> element. <${e[o].tagName.toLowerCase()}> given.`);
+			} catch (a) {
+				s.status = !1, s.errors.push(a);
+			}
+		}
+	} catch (r) {
+		s.status = !1, s.errors.push(r);
+	}
+	if (i && !s.status) throw s.errors[0];
+	return s;
+}
+function R(t, e, { shouldThrow: i = !0 } = {}) {
+	const s = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (!Object.prototype.hasOwnProperty.call(e.events, t)) throw new TypeError(`Event type "${t}" is not valid for ${e.constructor.name}. Valid event types are: "${Object.keys(e.events).join("\", ")}".`);
+	} catch (r) {
+		s.status = !1, s.errors.push(r);
+	}
+	if (i && !s.status) throw s.errors[0];
+	return s;
+}
+function U(t, { shouldThrow: e = !0 } = {}) {
+	const i = {
+		status: !0,
+		errors: []
+	};
+	try {
+		if (!Object.prototype.hasOwnProperty.call(t._dom, t._rootDOMElement)) throw new Error(`The root DOM element "${t._rootDOMElement}" does not exist in the ${t.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(t._dom).join("\", \"")}".`);
+	} catch (s) {
+		i.status = !1, i.errors.push(s);
+	}
+	if (e && !i.status) throw i.errors[0];
+	return i;
+}
+function h(t, e) {
+	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.add(t) : e.classList.add(...t));
+}
+function l(t, e) {
+	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
+}
+function _(t) {
+	try {
+		const e = t.key || t.keyCode, i = {
+			Enter: e === "Enter" || e === 13,
+			Space: e === " " || e === "Spacebar" || e === 32,
+			Escape: e === "Escape" || e === "Esc" || e === 27,
+			ArrowUp: e === "ArrowUp" || e === "Up" || e === 38,
+			ArrowRight: e === "ArrowRight" || e === "Right" || e === 39,
+			ArrowDown: e === "ArrowDown" || e === "Down" || e === 40,
+			ArrowLeft: e === "ArrowLeft" || e === "Left" || e === 37,
+			Home: e === "Home" || e === 36,
+			End: e === "End" || e === 35,
+			Character: isNaN(e) && !!e.match(/^[a-zA-Z]{1}$/),
+			Tab: e === "Tab" || e === 9,
+			Asterisk: e === "*" || e === 56
+		};
+		return Object.keys(i).find((s) => i[s] === !0) || "";
+	} catch {
+		return "";
+	}
+}
+function d(t) {
+	t.preventDefault(), t.stopPropagation();
+}
+var O = class {
+	_equals = Object.is;
+	_current;
+	_committed;
+	constructor(t, { equals: e = Object.is } = {}) {
+		this._equals = e || Object.is, this._current = t, this._committed = t;
+	}
+	get value() {
+		return this._current;
+	}
+	set value(t) {
+		this._current = t;
+	}
+	get committed() {
+		return this._committed;
+	}
+	get isDirty() {
+		return !this._equals(this._current, this._committed);
+	}
+	commit() {
+		return this._committed = this._current, this;
+	}
+	reset() {
+		return this._current = this._committed, this;
+	}
+	update(t) {
+		return this._current = t(this._current), this;
+	}
+}, b = class B {
+	_scope;
+	_type = "_default";
+	_storage = {};
+	_crush = !1;
+	constructor({ scope: e, type: i = null, crush: s = !1, initialize: r = !0 } = {}) {
+		this._scope = e, this._type = i || "_default", this._crush = s, r && this.initialize();
+	}
+	initialize() {
+		try {
+			!this._crush && typeof window[this.scope] < "u" && (c(B, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+		} catch {} finally {
+			window[this.scope] = this;
+		}
+	}
+	get scope() {
+		return this._scope;
+	}
+	get type() {
+		return this._type;
+	}
+	set type(e) {
+		n("string", { type: e }) && (this._type = e);
+	}
+	get storage() {
+		return this._storage;
+	}
+	get({ type: e = this.type, key: i = null } = {}) {
+		const s = n("string", { type: e });
+		if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+		if (!this.storage[e]) throw new Error(`StorageManager (${this.scope}): Type "${e}" is not initialized.`);
+		if (i !== null) {
+			const r = n("string", { key: i });
+			if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
+			return this.storage[e][i];
+		}
+		return this.storage[e];
+	}
+	set({ type: e = this.type, key: i = null, data: s = {} } = {}) {
+		const r = n("string", { type: e }), o = n("object", { data: s });
+		if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
+		if (!o.status) throw new Error(`StorageManager (${this.scope}): ${o.message}`);
+		if (i !== null) {
+			const a = n("string", { key: i });
+			if (!a.status) throw new Error(`StorageManager (${this.scope}): ${a.message}`);
+			this._storage[e] || (this._storage[e] = {}), this._storage[e][i] = s;
+		} else this._storage[e] = s;
+	}
+	clear({ type: e = this.type, key: i = null } = {}) {
+		const s = n("string", { type: e });
+		if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+		if (i !== null) {
+			const r = n("string", { key: i });
+			if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
+			delete this.storage[e][i];
+		} else delete this.storage[e];
+	}
+	dispose() {
+		delete this._storage, delete this;
+	}
+}, C = class {
+	_dom = {};
+	_rootDOMElement = "";
+	_protectedDOMElements = [];
+	_selectors = {};
+	_elements = {};
+	_classes = { initialize: "" };
+	_durations = {};
+	_delays = {};
+	_focusState = "none";
+	_currentEvent = "none";
+	_breakpoint = "";
+	_mediaQueryString = "";
+	_mediaQueryList = null;
+	_mediaQueryListEventCallback = (t) => {
+		t.matches;
+	};
+	_intervals = {};
+	_timeouts = {};
+	_listeners = [];
+	_events = {
+		initialize: new CustomEvent("grauplComponentInitialize", { detail: { component: this } }),
+		preinitialize: new CustomEvent("grauplComponentPreinitialize", { detail: { component: this } }),
+		postinitialize: new CustomEvent("grauplComponentPostinitialize", { detail: { component: this } }),
+		validate: new CustomEvent("grauplComponentValidate", { detail: { component: this } }),
+		prevalidate: new CustomEvent("grauplComponentPrevalidate", { detail: { component: this } }),
+		postvalidate: new CustomEvent("grauplComponentPostvalidate", { detail: { component: this } })
+	};
+	_prefix = "graupl-";
+	_key = "";
+	_name = "Component";
+	_storageKey = "components";
+	_shouldStore = !0;
+	_id = "";
+	_valid = !0;
+	_initialized = !1;
+	_errors = [];
+	constructor({ prefix: t = "graupl-", key: e = null, initializeClass: i = "initializing" } = {}) {
+		this._classes.initialize = i || "", this._prefix = t || "", this._key = e || "";
+	}
+	initialize() {
+		try {
+			if (!this._validate()) throw new Error(`Graupl ${this.name}: Cannot initialize component. The following errors have been found:
+ - ${this.errors.map((t) => t.message).join(`
+ - `)}`);
+			h(this.initializeClass, this.rootDOMElement), this._dispatchEvent("preinitialize", this.rootDOMElement), this._generateKey(), this._setDOMElements(), this._setIds(), this._setAriaAttributes(), this._setCustomProps(), this._createChildElements(), this._handleMediaMatch(), this._handleFocus(), this._handleHover(), this._handleClick(), this._handleKeydown(), this._handleKeyup(), this._dispatchEvent("initialize", this.rootDOMElement), this._store(), l(this.initializeClass, this.rootDOMElement), this._initialized = !0, this._dispatchEvent("postinitialize", this.rootDOMElement);
+		} catch (t) {
+			console.error(t);
+		}
+	}
+	init() {
+		this.initialize();
+	}
+	get dom() {
+		return this._dom;
+	}
+	get rootDOMElement() {
+		return this._dom[this._rootDOMElement] || document.documentElement;
+	}
+	get selectors() {
+		return this._selectors;
+	}
+	get elements() {
+		return this._elements;
+	}
+	get classes() {
+		return this._classes;
+	}
+	get durations() {
+		return this._durations;
+	}
+	get delays() {
+		return this._delays;
+	}
+	get intervals() {
+		return this._intervals;
+	}
+	get timeouts() {
+		return this._timeouts;
+	}
+	get listeners() {
+		return this._listeners;
+	}
+	get events() {
+		return this._events;
+	}
+	get initializeClass() {
+		return this._classes.initialize;
+	}
+	set initializeClass(t) {
+		u({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+	}
+	get focusState() {
+		return this._focusState;
+	}
+	set focusState(t) {
+		G({ focusState: t }), this._focusState !== t && (this._focusState = t);
+	}
+	get currentEvent() {
+		return this._currentEvent;
+	}
+	set currentEvent(t) {
+		H({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+	}
+	get shouldFocus() {
+		let t = !1;
+		return this.currentEvent === "keyboard" && (t = !0), t;
+	}
+	get breakpoint() {
+		return this._breakpoint;
+	}
+	set breakpoint(t) {
+		n("string", { breakpoint: t }), this._breakpoint !== t && (this._breakpoint = t);
+	}
+	get mediaQuery() {
+		return this._mediaQueryString !== "" ? this._mediaQueryString : this._breakpoint === "" ? "" : `(width <= ${this._breakpoint})`;
+	}
+	set mediaQuery(t) {
+		n("string", { mediaQuery: t }), this._mediaQueryString !== t && (this._mediaQueryString = t);
+	}
+	get prefix() {
+		return this._prefix;
+	}
+	get key() {
+		return this._key;
+	}
+	get name() {
+		return this._name;
+	}
+	get id() {
+		return this._id;
+	}
+	get isValid() {
+		return this._valid;
+	}
+	get isInitialized() {
+		return this._initialized;
+	}
+	get errors() {
+		return this._errors;
+	}
+	_validate() {
+		this._dispatchEvent("prevalidate", this.rootDOMElement);
+		const t = U(this, { shouldThrow: !1 });
+		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, f) => {
+				s[`${o}Element[${f}]`] = a;
+			}) : this._dom[o] !== null && (s[`${o}Element`] = this._dom[o]);
+			const r = c(HTMLElement, s, { shouldThrow: !1 });
+			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
+		}
+		if (Object.keys(this._selectors).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._selectors)) s[`${o}Selector`] = this._selectors[o];
+			const r = w(s, { shouldThrow: !1 });
+			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
+		}
+		if (Object.keys(this._classes).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (s[`${o}Class`] = this._classes[o]);
+			const r = u(s, { shouldThrow: !1 });
+			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
+		}
+		if (Object.keys(this._durations).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this._durations)) s[`${o}Duration`] = this._durations[o];
+			const r = n("number", s, { shouldThrow: !1 });
+			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
+		}
+		if (Object.keys(this.delays).length > 0) {
+			const s = {};
+			for (const o of Object.keys(this.delays)) s[`${o}Delay`] = this.delays[o];
+			const r = n("number", s, { shouldThrow: !1 });
+			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
+		}
+		const e = {
+			_storageKey: this._storageKey,
+			key: this._key,
+			prefix: this._prefix,
+			mediaQuery: this._mediaQueryString,
+			breakpoint: this._breakpoint
+		};
+		this._protectedDOMElements.forEach((s) => {
+			e[`_protectedDOMElementType[${s}]`] = s;
+		});
+		const i = n("string", e, { shouldThrow: !1 });
+		return i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1), this._dispatchEvent("validate", this.rootDOMElement), this._dispatchEvent("postvalidate", this.rootDOMElement), this._valid;
+	}
+	_generateKey(t = !1) {
+		(this._key === "" || t) && (this._key = Math.random().toString(36).replace(/[^a-z]+/g, "").substring(0, 10));
+	}
+	_setIds() {}
+	_setAriaAttributes() {}
+	_setCustomProps() {}
+	_setDOMElementType(t, { context: e, overwrite: i = !0, strict: s = !1 } = {}) {
+		if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
+		if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
+		c(HTMLElement, { context: e });
+		const r = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => s ? o.parentElement === e : !0);
+		Array.isArray(this._dom[t]) ? i ? this._dom[t] = r : this._dom[t] = [...this._dom[t], ...r] : this._dom[t] = r[0] || null;
+	}
+	_resetDOMElementType(t) {
+		if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
+		if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be reset through _resetDOMElementType because it is a protected element.`);
+		Array.isArray(this._dom[t]) ? this._dom[t] = [] : this._dom[t] = null;
+	}
+	_setDOMElements() {}
+	_createChildElements() {}
+	_handleMediaMatch() {
+		this.mediaQuery !== "" && (this._mediaQueryList = window.matchMedia(this.mediaQuery), this._addEventListener("change", this._mediaQueryList, this._mediaQueryListEventCallback), this._mediaQueryListEventCallback(this._mediaQueryList));
+	}
+	_handleFocus() {}
+	_handleClick() {}
+	_handleHover() {}
+	_handleKeydown() {}
+	_handleKeyup() {}
+	_store() {
+		this._shouldStore && (c(b, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new b({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			key: this.id !== "" ? this.id : this.key,
+			type: this._storageKey,
+			data: this
+		}));
+	}
+	_unstore() {
+		this._shouldStore && c(b, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			key: this.id !== "" ? this.id : this.key,
+			type: this._storageKey
+		});
+	}
+	_setInterval(t, e, i = "_default") {
+		this._clearInterval(i), this._intervals[i] = setInterval(t, e);
+	}
+	_clearInterval(t = "_default") {
+		clearInterval(this._intervals[t]);
+	}
+	_clearIntervals() {
+		for (const t of Object.keys(this._intervals)) this._clearInterval(t);
+	}
+	_setTimeout(t, e, i = "_default") {
+		this._clearTimeout(i), this._timeouts[i] = setTimeout(t, e);
+	}
+	_clearTimeout(t = "_default") {
+		clearTimeout(this._timeouts[t]);
+	}
+	_clearTimeouts() {
+		for (const t of Object.keys(this._timeouts)) this._clearTimeout(t);
+	}
+	_registerEvent(t, { bubbles: e = !0, detail: i = {} } = {}) {
+		n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: i });
+		const s = `graupl${this.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;
+		this._events[t] = new CustomEvent(s, {
+			bubbles: e,
+			detail: {
+				component: this,
+				...i
+			}
+		});
+	}
+	_dispatchEvent(t, e) {
+		R(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+	}
+	_addEventListener(t, e, i, s = {}) {
+		e.addEventListener(t, i, s), this._listeners.push({
+			type: t,
+			element: e,
+			listener: i,
+			options: s
+		});
+	}
+	_removeEventListener(t, e, i, s = {}) {
+		e.removeEventListener(t, i, s);
+		let r = -1;
+		this._listeners.forEach((o, a) => {
+			o.type === t && o.element === e && o.listener === i && JSON.stringify(o.options) === JSON.stringify(s) && (r = a);
+		}), r !== -1 && this._listeners.splice(r, 1);
+	}
+	_removeEventListeners({ type: t = null, element: e = null } = {}) {
+		[...this._listeners].forEach((i) => {
+			t !== null && i.type !== t || e !== null && i.element !== e || this._removeEventListener(i.type, i.element, i.listener, i.options);
+		});
+	}
+	focus() {
+		this.focusState = "self", this.shouldFocus && this.rootDOMElement.focus();
+	}
+	blur() {
+		this.focusState = "none", this.shouldFocus && this.rootDOMElement.blur();
+	}
+	dispose() {
+		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
+	}
+}, J = class extends C {
+	_rootDOMElement = "item";
+	_protectedDOMElements = ["link"];
+	_storageKey = "breadcrumbItems";
+	_shouldStore = !1;
+	_toggle = !1;
+	constructor({ breadcrumbItemElement: t, breadcrumbLinkElement: e = null, parentBreadcrumb: i, isToggle: s = !1, prefix: r = "graupl-", key: o = null, initializeClass: a = "initializing" }) {
+		super({
+			prefix: r,
+			key: o,
+			initializeClass: a
+		}), this._dom.item = t, this._dom.link = e || null, this._elements.parent = i, this._toggle = s;
+	}
+	get isToggle() {
+		return this._toggle;
+	}
+	focus() {
+		this.elements.parent.shouldFocus && this.dom.link && requestAnimationFrame(() => {
+			this.dom.link.focus();
+		});
+	}
+	blur() {
+		this.elements.parent.shouldFocus && this.dom.link && requestAnimationFrame(() => {
+			this.dom.link.blur();
+		});
+	}
+}, Z = class extends C {
+	_rootDOMElement = "breadcrumb";
+	_currentChild = 0;
+	_open = new O(!1);
+	_locked = new O(!1);
+	_openInsideBreakpoint = !1;
+	_openOutsideBreakpoint = !0;
+	_closeInsideBreakpoint = !0;
+	_closeOutsideBreakpoint = !1;
+	_lockInsideBreakpoint = !1;
+	_lockOutsideBreakpoint = !0;
+	_unlockInsideBreakpoint = !1;
+	_unlockOutsideBreakpoint = !1;
+	_openOnFocus = !1;
+	_closeOnBlur = !1;
+	_storageKey = "breadcrumbs";
+	_name = "Breadcrumb";
+	_mediaQueryListEventCallback = (t) => {
+		t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
+	};
+	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: i = ".breadcrumb-link", breadcrumbToggleSelector: s = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: f = "hide", transitionClass: v = "transition", transitionDuration: T = 250, openDuration: I = -1, closeDuration: $ = -1, openOnFocus: M = !1, closeOnBlur: D = !1, minWidth: g = "", breakpoint: m = "856px", autoOpen: p = !1, openInsideBreakpoint: S = !1, openOutsideBreakpoint: k = !0, closeInsideBreakpoint: y = !0, closeOutsideBreakpoint: L = !1, lockInsideBreakpoint: z = !1, lockOutsideBreakpoint: A = !0, unlockInsideBreakpoint: j = !0, unlockOutsideBreakpoint: F = !1, locked: x = !1, mediaQuery: Q = "", prefix: q = "graupl-", key: V = null, initializeClass: P = "initializing", initialize: K = !1 }) {
+		super({
+			prefix: q,
+			key: V,
+			initializeClass: P
+		}), this._dom.breadcrumb = t, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._dom.breadcrumbToggle = null, this._selectors.breadcrumbItems = e, this._selectors.breadcrumbLinks = i, this._selectors.breadcrumbToggle = s, this._elements.breadcrumbItems = [], this._classes.locked = r || "", this._classes.unlocked = o || "", this._classes.open = a || "", this._classes.close = f || "", this._classes.transition = v || "", this._durations.transition = T, this._durations.open = I, this._durations.close = $, this._openOnFocus = M, this._closeOnBlur = D, g !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), m === "" && (m = g)), p && m !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), k = p, y = p), this._breakpoint = m || "", this._openInsideBreakpoint = S, this._openOutsideBreakpoint = k, this._closeInsideBreakpoint = y, this._closeOutsideBreakpoint = L, this._lockInsideBreakpoint = z, this._lockOutsideBreakpoint = A, this._unlockInsideBreakpoint = j, this._unlockOutsideBreakpoint = F, this._mediaQueryString = Q || "", this._locked.value = x, this._locked.commit(), this._registerEvent("expand", { detail: { breadcrumb: this } }), this._registerEvent("collapse", { detail: { breadcrumb: this } }), this._registerEvent("lock", { detail: { breadcrumb: this } }), this._registerEvent("unlock", { detail: { breadcrumb: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			requestAnimationFrame(() => {
+				this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 })), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
+			});
+		}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
+			const E = n("boolean", {
+				openOnFocus: this._openOnFocus,
+				closeOnBlur: this._closeOnBlur,
+				openInsideBreakpoint: this._openInsideBreakpoint,
+				openOutsideBreakpoint: this._openOutsideBreakpoint,
+				closeInsideBreakpoint: this._closeInsideBreakpoint,
+				closeOutsideBreakpoint: this._closeOutsideBreakpoint,
+				lockInsideBreakpoint: this._lockInsideBreakpoint,
+				lockOutsideBreakpoint: this._lockOutsideBreakpoint,
+				unlockInsideBreakpoint: this._unlockInsideBreakpoint,
+				unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
+				locked: this._locked.value
+			}, { shouldThrow: !1 });
+			E.status || (this._errors = [...this._errors, ...E.errors], this._valid = !1);
+		}), K && this.initialize();
+	}
+	get lockedClass() {
+		return this._classes.locked;
+	}
+	set lockedClass(t) {
+		u({ lockedClass: t }), this._classes.locked !== t && (this._classes.locked = t);
+	}
+	get unlockedClass() {
+		return this._classes.unlocked;
+	}
+	set unlockedClass(t) {
+		u({ unlockedClass: t }), this._classes.unlocked !== t && (this._classes.unlocked = t);
+	}
+	get openClass() {
+		return this._classes.open;
+	}
+	set openClass(t) {
+		u({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
+	}
+	get closeClass() {
+		return this._classes.close;
+	}
+	set closeClass(t) {
+		u({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
+	}
+	get transitionClass() {
+		return this._classes.transition;
+	}
+	set transitionClass(t) {
+		u({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
+	}
+	get transitionDuration() {
+		return this._durations.transition;
+	}
+	set transitionDuration(t) {
+		n("number", { transitionDuration: t }), this._durations.transition !== t && (this._durations.transition = t, this._setCustomProps());
+	}
+	get openDuration() {
+		return this._durations.open === -1 ? this.transitionDuration : this._durations.open;
+	}
+	set openDuration(t) {
+		n("number", { openDuration: t }), this._durations.open !== t && (this._durations.open = t, this._setCustomProps());
+	}
+	get closeDuration() {
+		return this._durations.close === -1 ? this.transitionDuration : this._durations.close;
+	}
+	set closeDuration(t) {
+		n("number", { closeDuration: t }), this._durations.close !== t && (this._durations.close = t, this._setCustomProps());
+	}
+	get openOnFocus() {
+		return this._openOnFocus;
+	}
+	set openOnFocus(t) {
+		n("boolean", { openOnFocus: t }), this._openOnFocus !== t && (this._openOnFocus = t);
+	}
+	get closeOnBlur() {
+		return this._closeOnBlur;
+	}
+	set closeOnBlur(t) {
+		n("boolean", { closeOnBlur: t }), this._closeOnBlur !== t && (this._closeOnBlur = t);
+	}
+	get isOpen() {
+		return this._open.value;
+	}
+	get hasOpened() {
+		return this._open.committed;
+	}
+	get openInsideBreakpoint() {
+		return this._openInsideBreakpoint;
+	}
+	set openInsideBreakpoint(t) {
+		n("boolean", { openInsideBreakpoint: t }), this._openInsideBreakpoint !== t && (this._openInsideBreakpoint = t);
+	}
+	get openOutsideBreakpoint() {
+		return this._openOutsideBreakpoint;
+	}
+	set openOutsideBreakpoint(t) {
+		n("boolean", { openOutsideBreakpoint: t }), this._openOutsideBreakpoint !== t && (this._openOutsideBreakpoint = t);
+	}
+	get closeInsideBreakpoint() {
+		return this._closeInsideBreakpoint;
+	}
+	set closeInsideBreakpoint(t) {
+		n("boolean", { closeInsideBreakpoint: t }), this._closeInsideBreakpoint !== t && (this._closeInsideBreakpoint = t);
+	}
+	get closeOutsideBreakpoint() {
+		return this._closeOutsideBreakpoint;
+	}
+	set closeOutsideBreakpoint(t) {
+		n("boolean", { closeOutsideBreakpoint: t }), this._closeOutsideBreakpoint !== t && (this._closeOutsideBreakpoint = t);
+	}
+	get lockInsideBreakpoint() {
+		return this._lockInsideBreakpoint;
+	}
+	set lockInsideBreakpoint(t) {
+		n("boolean", { lockInsideBreakpoint: t }), this._lockInsideBreakpoint !== t && (this._lockInsideBreakpoint = t);
+	}
+	get lockOutsideBreakpoint() {
+		return this._lockOutsideBreakpoint;
+	}
+	set lockOutsideBreakpoint(t) {
+		n("boolean", { lockOutsideBreakpoint: t }), this._lockOutsideBreakpoint !== t && (this._lockOutsideBreakpoint = t);
+	}
+	get isLocked() {
+		return this._locked.value;
+	}
+	get shouldBeLocked() {
+		return this._locked.committed;
+	}
+	get currentChild() {
+		return this._currentChild;
+	}
+	set currentChild(t) {
+		n("number", { currentChild: t }), this._currentChild !== t && t >= 0 && t < this.elements.breadcrumbItems.length && (this._currentChild = t);
+	}
+	get currentBreadcrumbItem() {
+		return this.elements.breadcrumbItems[this.currentChild];
+	}
+	_setIds() {
+		this.dom.breadcrumb.id = this.dom.breadcrumb.id || `breadcrumb-${this.key}`, this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.id = this.dom.breadcrumbToggle.id || `breadcrumb-toggle-${this.key}`), this._id = this.dom.breadcrumb.id;
+	}
+	_setAriaAttributes() {
+		this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), N("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
+	}
+	_setCustomProps() {
+		this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`, `${this.transitionDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`, `${this.openDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`, `${this.closeDuration}ms`);
+	}
+	_setDOMElements() {
+		this._resetDOMElementType("breadcrumbItems"), this._setDOMElementType("breadcrumbItems", { context: this.dom.breadcrumb }), this._resetDOMElementType("breadcrumbLinks"), this._setDOMElementType("breadcrumbLinks", { context: this.dom.breadcrumb }), this._resetDOMElementType("breadcrumbToggle"), this._setDOMElementType("breadcrumbToggle", { context: this.dom.breadcrumb });
+	}
+	_createChildElements() {
+		this.dom.breadcrumbItems.forEach((t) => {
+			const e = t.querySelector(this.selectors.breadcrumbLinks), i = t.querySelector(this.selectors.breadcrumbToggle) !== null, s = new J({
+				breadcrumbItemElement: t,
+				breadcrumbLinkElement: e,
+				parentBreadcrumb: this,
+				isToggle: i
+			});
+			this.elements.breadcrumbItems.push(s), i && (this._elements.breadcrumbToggle = s);
+		});
+	}
+	_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+				h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+					setTimeout(() => {
+						l(this.transitionClass, this.dom.breadcrumb);
+					}, this.openDuration);
+				});
+			});
+		})) : (h(this.openClass, this.dom.breadcrumb), l(this.closeClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("expand", this.dom.breadcrumbToggle) : this._dispatchEvent("expand", this.dom.breadcrumb));
+	}
+	_conceal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			l(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+				h(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+					setTimeout(() => {
+						l(this.transitionClass, this.dom.breadcrumb);
+					}, this.closeDuration);
+				});
+			});
+		})) : (h(this.closeClass, this.dom.breadcrumb), l(this.openClass, this.dom.breadcrumb)), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("collapse", this.dom.breadcrumbToggle) : this._dispatchEvent("collapse", this.dom.breadcrumb));
+	}
+	_lock({ emit: t = this.isInitialized } = {}) {
+		h(this.lockedClass, this.dom.breadcrumb), l(this.unlockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("disabled", "true"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("lock", this.dom.breadcrumbToggle) : this._dispatchEvent("lock", this.dom.breadcrumb));
+	}
+	_unlock({ emit: t = this.isInitialized } = {}) {
+		h(this.unlockedClass, this.dom.breadcrumb), l(this.lockedClass, this.dom.breadcrumb), this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.removeAttribute("disabled"), t && (this.dom.breadcrumbToggle ? this._dispatchEvent("unlock", this.dom.breadcrumbToggle) : this._dispatchEvent("unlock", this.dom.breadcrumb));
+	}
+	_handleFocus() {
+		this.elements.breadcrumbItems.forEach((t, e) => {
+			t.dom.link && this._addEventListener("focus", t.dom.link, () => {
+				this.focusState = "self", this.currentChild = e;
+			});
+		}), this._addEventListener("focusout", this.dom.breadcrumb, (t) => {
+			!this.closeOnBlur || this.currentEvent !== "keyboard" || t.relatedTarget === null || this.dom.breadcrumb.contains(t.relatedTarget) || this.dom.breadcrumbToggle === t.relatedTarget || this.close();
+		});
+	}
+	_handleClick() {
+		this._addEventListener("click", document, (t) => {
+			this.focusState !== "self" || !this.closeOnBlur || (this.currentEvent = "mouse", !this.dom.breadcrumb.contains(t.target) && this.dom.breadcrumbToggle !== t.target && this.close());
+		}), this.dom.breadcrumbToggle && this._addEventListener("click", this.dom.breadcrumbToggle, (t) => {
+			this.currentEvent = "mouse", t.button === 0 && (d(t), this.toggle());
+		});
+	}
+	_handleKeydown() {
+		this._addEventListener("keydown", this.dom.breadcrumb, (t) => {
+			this.currentEvent = "keyboard", _(t) === "Escape" && d(t);
+		}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
+			switch (this.currentEvent = "keyboard", _(t)) {
+				case "Space":
+				case "Enter":
+					d(t);
+					break;
+			}
+		});
+	}
+	_handleKeyup() {
+		this._addEventListener("keyup", this.dom.breadcrumb, (t) => {
+			this.currentEvent = "keyboard", _(t) === "Escape" && (d(t), this.close(), this.currentChild > this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) && requestAnimationFrame(() => {
+				this.focusToggle();
+			}));
+		}), this.dom.breadcrumbToggle && this._addEventListener("keyup", this.dom.breadcrumbToggle, (t) => {
+			switch (this.currentEvent = "keyboard", _(t)) {
+				case "Space":
+				case "Enter":
+					d(t), this.toggle(), this.isOpen ? requestAnimationFrame(() => {
+						this.focusNextChild();
+					}) : this.focusFirstChild();
+					break;
+				case "Tab":
+					this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
+						this.focusNextChild();
+					}));
+					break;
+			}
+		});
+	}
+	open({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
+		this.isOpen && !t || this.isLocked && !t || (this.focusState = "self", this._reveal({
+			emit: e,
+			transition: i
+		}), this._open.value = !0, s || this._open.commit());
+	}
+	preview({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
+		this.isOpen && !t || this.isLocked && !t || (this.focusState = "none", this._reveal({
+			emit: e,
+			transition: i
+		}), this._open.value = !0, s || this._open.commit());
+	}
+	close({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
+		!this.isOpen && !t || this.isLocked && !t || (this.focusState = "none", this._conceal({
+			emit: e,
+			transition: i
+		}), this._open.value = !1, s || this._open.commit());
+	}
+	toggle({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
+		this.isOpen ? this.close({
+			force: t,
+			emit: e,
+			transition: i,
+			preserveState: s
+		}) : this.open({
+			force: t,
+			emit: e,
+			transition: i,
+			preserveState: s
+		});
+	}
+	lock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
+		this.isLocked && !t || (this._locked.value = !0, this._lock({ emit: e }), i || this._locked.commit());
+	}
+	unlock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
+		!this.isLocked && !t || (this._locked.value = !1, this._unlock({ emit: e }), i || this._locked.commit());
+	}
+	toggleLock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
+		this.isLocked ? this.unlock({
+			force: t,
+			emit: e,
+			preserveState: i
+		}) : this.lock({
+			force: t,
+			emit: e,
+			preserveState: i
+		});
+	}
+	focusCurrentChild() {
+		this.focusState = "self", this.currentChild !== -1 && this.currentBreadcrumbItem.focus();
+	}
+	focusChild(t) {
+		this.blurCurrentChild(), this.currentChild = t, this.focusCurrentChild();
+	}
+	focusFirstChild() {
+		this.focusChild(0);
+	}
+	focusLastChild() {
+		this.focusChild(this.elements.breadcrumbItems.length - 1);
+	}
+	focusNextChild() {
+		this.currentChild < this.elements.breadcrumbItems.length - 1 ? this.focusChild(this.currentChild + 1) : this.focusCurrentChild();
+	}
+	focusPreviousChild() {
+		this.currentChild > 0 ? this.focusChild(this.currentChild - 1) : this.focusCurrentChild();
+	}
+	blurCurrentChild() {
+		this.focusState = "none", this.currentChild !== -1 && this.currentBreadcrumbItem.blur();
+	}
+	focusToggle() {
+		this.focusState = "self", this.elements.breadcrumbToggle !== null && (this.currentChild = this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) || 0, this.elements.breadcrumbToggle.focus());
+	}
+};
+export { Z as default };
 
 //# sourceMappingURL=breadcrumb.es.js.map

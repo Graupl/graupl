@@ -1,16 +1,24 @@
-## [1.0.0-beta.50](https://github.com/Graupl/graupl/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2026-06-02)
+## [1.0.0-beta.51](https://github.com/Graupl/graupl/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2026-06-17)
 
 
-### Features
+### Bug Fixes
 
-* **component:** add proper responsiveness to input groups ([bcd91d9](https://github.com/Graupl/graupl/commit/bcd91d96f33289c19727cdbb27af98d304c3a5d6))
-* **component:** add responsive utility classes to input groups ([32ea808](https://github.com/Graupl/graupl/commit/32ea808850901a47a0eae52f0c81beea49983d2d))
-* **layout:** add contained sidebar container modifier ([b84932c](https://github.com/Graupl/graupl/commit/b84932c030ba69ae024ed4865d450af622ff523e))
-* **theme:** redefine how colors work with light-dark() ([51329ec](https://github.com/Graupl/graupl/commit/51329ec69a0b9855e0281fe347cd91d99ffb7f12))
-* **utilities:** implement new utility generation system ([75be2d1](https://github.com/Graupl/graupl/commit/75be2d15b6c16cb367fd073f41d4c7f1ca957e46))
+* **utilities:** correct ratio position when container force-ratio class ([7b5e9f7](https://github.com/Graupl/graupl/commit/7b5e9f7541158a1c61bdb6010367d153ef18df72))
+* **utility:** correct inline size props ([4dea588](https://github.com/Graupl/graupl/commit/4dea588b5d544fff04400e02cfb1de729f468f7c))
 
 
-### Code Refactoring
+### Documentation
 
-* **layout:** move column classes specifically into flex-columns ([061758f](https://github.com/Graupl/graupl/commit/061758f760449f9bb38cc53860a8e931fe8a8a12))
-* update responsive selector separator names ([1bea609](https://github.com/Graupl/graupl/commit/1bea6093bbf7017a9a7a5400ca74519912ee3295))
+* add utility class documentation ([3754a2f](https://github.com/Graupl/graupl/commit/3754a2fc12eb625b2fc83274df8bbcf7466b2ce1))
+* fix formatting ([74756be](https://github.com/Graupl/graupl/commit/74756be73f1f3bde72108a80cef62d68c9668aa3))
+* **utilities:** correct minor innacuracies ([87d0647](https://github.com/Graupl/graupl/commit/87d064767d54fbaa5ca04ae50262fc50cad7970f))
+
+
+### Build System
+
+* **release:** run headless tests prerelease ([b55629a](https://github.com/Graupl/graupl/commit/b55629a8ecea72a416c40ed5b80c978ae6a7e7a4))
+
+
+### Continuous Integration
+
+* **tests:** ensure all tests run in headless ([d52a685](https://github.com/Graupl/graupl/commit/d52a6853c682d6e7465af989152ad69ef4fe12e4))
