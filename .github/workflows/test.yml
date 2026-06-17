@@ -95,4 +95,4 @@ jobs:
         run: npx --no playwright install --with-deps --only-shell
 
       - name: Run vitest
-        run: npm run test:run
+        run: npm run test:run -- --browser.headless

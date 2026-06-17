@@ -53,7 +53,7 @@ jobs:
 
       # the magic happens below 🪄
       - name: Update Visual Regression Screenshots
-        run: npm run test -- --update
+        run: npm run test -- --update --browser.headless
 
       # check what changed
       - name: Check for changes
