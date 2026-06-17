@@ -1,11 +1,9 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./button.js";
+import { variants, states } from "../defaults.js";
 
 describe("Button Component", () => {
-  const variants = ["default", "primary", "secondary", "tertiary"];
-  const states = ["default", "hover", "active", "disabled", "focus", "current"];
-
   it("Should render", async () => {
     const screen = render(Component);
 
@@ -20,6 +18,8 @@ describe("Button Component", () => {
           state,
         },
       });
+
+      await document.fonts.ready;
 
       await expect(screen.getByText("Click me")).toMatchScreenshot();
     });
