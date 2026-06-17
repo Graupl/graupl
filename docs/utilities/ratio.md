@@ -60,7 +60,7 @@ Used to customize ratio.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`ratio ${ratio} display-grid h-auto w-10`">
+      <div :class="`ratio ${ratio} display-flex h-auto w-10`">
         <div class="bordered border-primary-700 bg-primary-300 force-ratio"></div>
       </div>
     </div>
