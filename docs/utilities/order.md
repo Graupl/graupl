@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const order = ref("order-none");
+</script>
+
 # Order Utilities
 
 The order utilities provide a set of classes to adjust the `order` properties of elements.
@@ -21,6 +27,50 @@ The order utilities provide a set of classes to adjust the `order` properties of
 | `.order-10` | order | `10` |
 | `.order-11` | order | `11` |
 | `.order-12` | order | `12` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-grid g-5 h-auto" style="grid-template-columns: repeat(4, max-content); grid-template-rows: auto;">
+        <div :class="` bordered border-tertiary-700 text-primary-100 bg-tertiary-300 p-3 ${order} `">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-1">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-2">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-3">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-4">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-5">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-6">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-7">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-8">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-9">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-10">Test Item</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-11">Test Item</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ order }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-order">Width property</label>
+    <select id="select-order" v-model="order">
+      <option value="order-none">None</option>
+      <option value="order-first">First</option>
+      <option value="order-last">Last</option>
+      <option value="order-1">Order 1</option>
+      <option value="order-2">Order 2</option>
+      <option value="order-3">Order 3</option>
+      <option value="order-4">Order 4</option>
+      <option value="order-5">Order 5</option>
+      <option value="order-6">Order 6</option>
+      <option value="order-7">Order 7</option>
+      <option value="order-8">Order 8</option>
+      <option value="order-9">Order 9</option>
+      <option value="order-10">Order 10</option>
+      <option value="order-11">Order 11</option>
+      <option value="order-12">Order 12</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

@@ -1,3 +1,11 @@
+<script setup>
+  import { ref } from "vue";
+
+  const content = ref("place-content-center");
+  const items = ref("place-items-center");
+  const self = ref("place-self-center");
+</script>
+
 # Placement Utilities
 
 The placement utilities provide a set of classes to adjust the `place-content`, `place-items`, and `place-self` properties of elements.
@@ -15,6 +23,34 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-content-baseline` | place-content | `baseline` |
 | `.place-content-stretch` | place-content | `stretch` |
 
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-place-content">Place content property</label>
+    <select id="select-place-content" v-model="content">
+      <option value="place-content-center">Center</option>
+      <option value="place-content-start">Start</option>
+      <option value="place-content-end">End</option>
+      <option value="place-content-between">Between</option>
+      <option value="place-content-around">Around</option>
+      <option value="place-content-evenly">Evenly</option>
+      <option value="place-content-baseline">Baseline</option>
+      <option value="place-content-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
+
 ## Place Items
 
 | Class Name | Property | Value |
@@ -24,6 +60,31 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-items-end` | place-items | `end` |
 | `.place-items-baseline` | place-items | `baseline` |
 | `.place-items-stretch` | place-items | `stretch` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${items} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ items }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-place-items">Place Items property</label>
+    <select id="select-place-items" v-model="items">
+      <option value="place-items-center">Center</option>
+      <option value="place-items-start">Start</option>
+      <option value="place-items-end">End</option>
+      <option value="place-items-baseline">Baseline</option>
+      <option value="place-items-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Place Self
 
@@ -35,6 +96,31 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-self-end` | place-self | `end` |
 | `.place-self-baseline` | place-self | `baseline` |
 | `.place-self-stretch` | place-self | `stretch` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`${self} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ self }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-place-self">Place Self property</label>
+    <select id="select-place-self" v-model="self">
+      <option value="place-self-center">Center</option>
+      <option value="place-self-start">Start</option>
+      <option value="place-self-end">End</option>
+      <option value="place-self-baseline">Baseline</option>
+      <option value="place-self-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
