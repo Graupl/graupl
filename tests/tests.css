@@ -1,1 +1,7 @@
 @import "../dist/css/graupl.css";
+@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
+
+:root {
+  --gruapl-root-font-family: "Roboto";
+  --graupl-root-font-size: 18px;
+}
