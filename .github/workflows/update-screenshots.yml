@@ -56,7 +56,7 @@ jobs:
 
       # the magic happens below 🪄
       - name: Update Visual Regression Screenshots
-        run: npm run test -- --update
+        run: npm run test:browser -- --update
 
       # check what changed
       - name: Check for changes

@@ -77,7 +77,7 @@ jobs:
       - name: Run prettier
         run: npm run prettier -- --check
 
-  vitest:
+  unit:
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
@@ -98,4 +98,27 @@ jobs:
         run: fc-cache -f -v
 
       - name: Run vitest
-        run: npm run test:run
+        run: npm run test:unit
+
+  browser:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+
+      - name: Install modules
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx --no playwright install --with-deps --only-shell
+
+      - name: Clear font cache
+        run: fc-cache -f -v
+
+      - name: Run vitest
+        run: npm run test:browser
