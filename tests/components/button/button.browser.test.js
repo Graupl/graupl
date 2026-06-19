@@ -8,6 +8,8 @@ describe("Button Component", () => {
   it("Should render", async () => {
     const screen = render(Component);
 
+    await document.fonts.ready;
+
     await expect(screen.getByText("Click me")).toBeInTheDocument();
   });
 
