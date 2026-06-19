@@ -10,6 +10,10 @@ export default {
       type: String,
       default: "",
     },
+    text: {
+      type: String,
+      default: "Click me",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -22,6 +26,6 @@ export default {
     attributes.class.push(props.variant);
     attributes.class.push(props.state);
 
-    return () => h("a", attributes, "Click me");
+    return () => h("a", attributes, props.text);
   },
 };
