@@ -48,11 +48,7 @@ export default defineConfig({
           name: "browser",
           browser: {
             enabled: true,
-            provider: playwright({
-              contextOptions: {
-                deviceScaleFactor: 1,
-              },
-            }),
+            provider: playwright(),
             expect: {
               toMatchScreenshot: {
                 comparator: "pixelMatch",
@@ -63,6 +59,7 @@ export default defineConfig({
               },
             },
             viewport: { width: 1920, height: 1080 },
+            deviceScaleFactor: 1,
             headless: true,
             instances: [
               {
