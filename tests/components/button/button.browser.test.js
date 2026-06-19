@@ -13,7 +13,7 @@ describe("Button Component", () => {
     await expect(screen.getByText("Click me")).toBeInTheDocument();
   });
 
-  describe.for(variants)("%s button", async (variant) => {
+  describe.for(variants)("%s button", (variant) => {
     it.each(states)("Should match screenshot with state: %s", async (state) => {
       const screen = render(Component, {
         props: {
