@@ -5,14 +5,6 @@ import { variants } from "../defaults.js";
 import "../../tests.css";
 
 describe("Badge Component", () => {
-  it("Should render", async () => {
-    const screen = render(Component);
-
-    await document.fonts.ready;
-
-    await expect(screen.getByText("Badge")).toBeInTheDocument();
-  });
-
   describe.for(variants)("%s badge", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {

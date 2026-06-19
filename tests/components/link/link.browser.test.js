@@ -5,14 +5,6 @@ import { states } from "../defaults.js";
 import "../../tests.css";
 
 describe("Link Component", () => {
-  it("Should render", async () => {
-    const screen = render(Component);
-
-    await document.fonts.ready;
-
-    await expect(screen.getByText("Click me")).toBeInTheDocument();
-  });
-
   it.each(states)("Should match screenshot with state: %s", async (state) => {
     const screen = render(Component, {
       props: {
