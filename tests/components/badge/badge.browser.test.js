@@ -2,8 +2,9 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./badge.js";
 import { variants } from "../defaults.js";
+import "../../tests.css";
 
-describe("Button Component", () => {
+describe("Badge Component", () => {
   it("Should render", async () => {
     const screen = render(Component);
 

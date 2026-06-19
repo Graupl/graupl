@@ -1,5 +1,4 @@
 import { h } from "vue";
-import "../../tests.css";
 
 export default {
   props: {

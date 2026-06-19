@@ -1,6 +1,1 @@
 @import "../dist/css/graupl.css";
-@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
-
-:root {
-  --graupl-root-font-family: roboto, system-ui;
-}
