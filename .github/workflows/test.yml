@@ -93,7 +93,7 @@ jobs:
 
       - name: Run vitest
         run: npm run test:unit
-  unit:
+  browser:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
