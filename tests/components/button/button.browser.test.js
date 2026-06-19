@@ -17,18 +17,14 @@ describe("Button Component", () => {
     it.each(states)("Should match screenshot with state: %s", async (state) => {
       const screen = render(Component, {
         props: {
-          text: "",
           variant,
           state,
-          attributes: {
-            "data-testid": "test-button",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("test-button")).toMatchScreenshot();
+      await expect(screen.getByText("Click me")).toMatchScreenshot();
     });
   });
 });
