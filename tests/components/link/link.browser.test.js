@@ -4,12 +4,6 @@ import Component from "./link.js";
 import { states } from "../defaults.js";
 
 describe("Link Component", () => {
-  it("Should render", async () => {
-    const screen = render(Component);
-
-    await expect(screen.getByText("Click me")).toBeInTheDocument();
-  });
-
   it.each(states)("Should match screenshot with state: %s", async (state) => {
     const screen = render(Component, {
       props: {

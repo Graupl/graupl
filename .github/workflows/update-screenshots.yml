@@ -51,6 +51,9 @@ jobs:
       - name: Install Playwright Browsers
         run: npx --no playwright install --with-deps --only-shell
 
+      - name: Clear font cache
+        run: fc-cache -f -v
+
       # the magic happens below 🪄
       - name: Update Visual Regression Screenshots
         run: npm run test:browser -- --update

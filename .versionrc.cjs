@@ -65,8 +65,7 @@ const config = {
     },
   ],
   scripts: {
-    prerelease:
-      "npm run lint && npm run build && npm run test:run -- --browser.headless",
+    prerelease: "npm run lint && npm run build && npm run test:unit",
     prechangelog: "rm -f CURRENT_RELEASE.md",
     postchangelog: "node scripts/current-release.js",
     precommit: "git add dist/. packages/*/dist/. CURRENT_RELEASE.md",

@@ -4,13 +4,7 @@ import Component from "./button.js";
 import { variants, states } from "../defaults.js";
 
 describe("Button Component", () => {
-  it("Should render", async () => {
-    const screen = render(Component);
-
-    await expect(screen.getByText("Click me")).toBeInTheDocument();
-  });
-
-  describe.for(variants)("%s button", async (variant) => {
+  describe.for(variants)("%s button", (variant) => {
     it.each(states)("Should match screenshot with state: %s", async (state) => {
       const screen = render(Component, {
         props: {

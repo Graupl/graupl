@@ -65,9 +65,15 @@ export default defineConfig({
             viewport: { width: 1920, height: 1080 },
             headless: true,
             instances: [
-              { browser: "chromium" },
-              { browser: "firefox" },
-              { browser: "webkit" },
+              {
+                browser: "chromium",
+              },
+              {
+                browser: "firefox",
+              },
+              {
+                browser: "webkit",
+              },
             ],
           },
           include: ["tests/**/*.browser.{test,spec}.{js,ts,jsx,tsx}"],

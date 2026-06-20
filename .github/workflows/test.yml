@@ -110,5 +110,8 @@ jobs:
       - name: Install Playwright Browsers
         run: npx --no playwright install --with-deps --only-shell
 
+      - name: Clear font cache
+        run: fc-cache -f -v
+
       - name: Run vitest
         run: npm run test:browser

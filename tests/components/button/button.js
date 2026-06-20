@@ -1,5 +1,5 @@
 import { h } from "vue";
-import "../../tests.css";
+import BasicComponent from "../component/basic-component.js";
 
 export default {
   props: {
@@ -11,19 +11,20 @@ export default {
       type: String,
       default: "",
     },
+    text: {
+      type: String,
+      default: "Click me",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
     },
   },
   setup(props) {
-    const attributes = props.attributes || {};
-    attributes.class = attributes.class || [];
+    props.attributes.class = props.attributes.class || [];
 
-    attributes.class.push("button");
-    attributes.class.push(props.variant);
-    attributes.class.push(props.state);
+    props.attributes.class.push("button");
 
-    return () => h("button", attributes, "Click me");
+    return () => h(BasicComponent, { ...props, tag: "button" });
   },
 };
