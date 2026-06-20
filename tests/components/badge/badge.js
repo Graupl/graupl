@@ -1,4 +1,5 @@
 import { h } from "vue";
+import BasicComponent from "../component/basic-component.js";
 
 export default {
   props: {
@@ -16,12 +17,10 @@ export default {
     },
   },
   setup(props) {
-    const attributes = props.attributes || {};
-    attributes.class = attributes.class || [];
+    props.attributes.class = props.attributes.class || [];
 
-    attributes.class.push("badge");
-    attributes.class.push(props.variant);
+    props.attributes.class.push("bagde");
 
-    return () => h("div", attributes, props.text);
+    return () => h(BasicComponent, { ...props, tag: "span" });
   },
 };

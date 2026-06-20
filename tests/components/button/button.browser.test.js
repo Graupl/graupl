@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./button.js";
 import { variants, states } from "../defaults.js";
-import "../../tests.css";
 
 describe("Button Component", () => {
   describe.for(variants)("%s button", (variant) => {

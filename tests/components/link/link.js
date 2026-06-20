@@ -1,4 +1,5 @@
 import { h } from "vue";
+import BasicComponent from "../component/basic-component.js";
 
 export default {
   props: {
@@ -20,12 +21,8 @@ export default {
     },
   },
   setup(props) {
-    const attributes = props.attributes || {};
-    attributes.class = attributes.class || [];
+    props.attributes.href = props.attributes.href || "#";
 
-    attributes.class.push(props.variant);
-    attributes.class.push(props.state);
-
-    return () => h("a", attributes, props.text);
+    return () => h(BasicComponent, { ...props, tag: "a" });
   },
 };

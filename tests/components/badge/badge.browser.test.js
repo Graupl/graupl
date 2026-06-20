@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./badge.js";
 import { variants } from "../defaults.js";
-import "../../tests.css";
 
 describe("Badge Component", () => {
   describe.for(variants)("%s badge", async (variant) => {
