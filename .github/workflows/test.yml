@@ -91,15 +91,8 @@ jobs:
       - name: Install modules
         run: npm install
 
-      - name: Install Playwright Browsers
-        run: npx --no playwright install --with-deps --only-shell
-
-      - name: Clear font cache
-        run: fc-cache -f -v
-
       - name: Run vitest
         run: npm run test:unit
-
   browser:
     runs-on: ubuntu-24.04
     steps:
