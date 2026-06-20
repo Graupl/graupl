@@ -41,7 +41,9 @@
     "docs:preview": "vitepress preview docs",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "test:unit": "vitest run unit",
+    "test:browser": "vitest run browser"
   },
   "repository": {
     "type": "git",
