@@ -45,8 +45,8 @@ $flex-columns-container-aware-selector-suffix: root-defaults.$container-aware-se
 $flex-columns-container-aware-selector-separator: root-defaults.$container-aware-selector-separator !default;
 
 // Flex columns properties.
-$flex-columns-min-count: 1 !default;
-$flex-columns-max-count: 12 !default;
+$flex-columns-min-count: root-defaults.$column-layout-min-count !default;
+$flex-columns-max-count: root-defaults.$column-layout-max-count !default;
 $flex-columns-size: auto !default;
 $flex-columns-max-width: unset !default;
 $flex-columns-container-type: "inline-size" !default;

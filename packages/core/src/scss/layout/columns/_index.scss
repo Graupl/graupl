@@ -21,12 +21,24 @@
 // - `.count-4`: Sets the number of columns in the columns component to 4.
 // - `.count-5`: Sets the number of columns in the columns component to 5.
 // - `.count-6`: Sets the number of columns in the columns component to 6.
+// - `.count-7`: Sets the number of columns in the columns component to 7.
+// - `.count-8`: Sets the number of columns in the columns component to 8.
+// - `.count-9`: Sets the number of columns in the columns component to 9.
+// - `.count-10`: Sets the number of columns in the columns component to 10.
+// - `.count-11`: Sets the number of columns in the columns component to 11.
+// - `.count-12`: Sets the number of columns in the columns component to 12.
 // - `.span-1`: Sets the span of a column in the columns component to 1.
 // - `.span-2`: Sets the span of a column in the columns component to 2.
 // - `.span-3`: Sets the span of a column in the columns component to 3.
 // - `.span-4`: Sets the span of a column in the columns component to 4.
 // - `.span-5`: Sets the span of a column in the columns component to 5.
 // - `.span-6`: Sets the span of a column in the columns component to 6.
+// - `.span-7`: Sets the span of a column in the columns component to 7.
+// - `.span-8`: Sets the span of a column in the columns component to 8.
+// - `.span-9`: Sets the span of a column in the columns component to 9.
+// - `.span-10`: Sets the span of a column in the columns component to 10.
+// - `.span-11`: Sets the span of a column in the columns component to 11.
+// - `.span-12`: Sets the span of a column in the columns component to 12.
 //
 // The following custom properties can be used to customize the columns component:
 // | Property                                 | Description                                          | Default Value                                                                                                                                          |
@@ -61,7 +73,7 @@
 // | `$columns-max-width`             | The maximum width of each column.                                  | `1fr`            |
 // | `$columns-count`                 | The default number of columns.                                     | `3`              |
 // | `$columns-min-count`             | The minimum number of columns used to generate `.count-#` classes. | `1`              |
-// | `$columns-max-count`             | The maximum number of columns used to generate `.count-#` classes. | `6`              |
+// | `$columns-max-count`             | The maximum number of columns used to generate `.count-#` classes. | `12`             |
 // | `$columns-span`                  | The default span of each column.                                   | `1`              |
 // | `$columns-theme-mappings`        | Map of properties/shades for columns themes.                       | `()`             |
 // | `$columns-theme-map`             | Expanded map of properties/colors/shades.                          | `()`             |

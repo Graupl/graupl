@@ -28,8 +28,8 @@ $columns-span-selector-prefix: "span-" !default;
 // Columns properties.
 $columns-max-width: 1fr !default;
 $columns-count: 3 !default;
-$columns-min-count: 1 !default;
-$columns-max-count: 6 !default;
+$columns-min-count: root-defaults.$column-layout-min-count !default;
+$columns-max-count: root-defaults.$column-layout-max-count !default;
 $columns-span: 1 !default;
 
 // Columns state theme defaults.
