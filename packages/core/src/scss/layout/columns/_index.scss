@@ -21,12 +21,150 @@
 // - `.count-4`: Sets the number of columns in the columns component to 4.
 // - `.count-5`: Sets the number of columns in the columns component to 5.
 // - `.count-6`: Sets the number of columns in the columns component to 6.
+// - `.count-7`: Sets the number of columns in the columns component to 7.
+// - `.count-8`: Sets the number of columns in the columns component to 8.
+// - `.count-9`: Sets the number of columns in the columns component to 9.
+// - `.count-10`: Sets the number of columns in the columns component to 10.
+// - `.count-11`: Sets the number of columns in the columns component to 11.
+// - `.count-12`: Sets the number of columns in the columns component to 12.
+// - `.fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns.
+// - `.xs:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on extra small screens.
+// - `.sm:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on small screens.
+// - `.md:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on medium screens.
+// - `.lg:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on large screens.
+// - `.xl:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on extra large screens.
+// - `.xs:count-1`: Sets the number of columns in the columns component to 1 on extra small screens.
+// - `.xs:count-2`: Sets the number of columns in the columns component to 2 on extra small screens.
+// - `.xs:count-3`: Sets the number of columns in the columns component to 3 on extra small screens.
+// - `.xs:count-4`: Sets the number of columns in the columns component to 4 on extra small screens.
+// - `.xs:count-5`: Sets the number of columns in the columns component to 5 on extra small screens.
+// - `.xs:count-6`: Sets the number of columns in the columns component to 6 on extra small screens.
+// - `.xs:count-7`: Sets the number of columns in the columns component to 7 on extra small screens.
+// - `.xs:count-8`: Sets the number of columns in the columns component to 8 on extra small screens.
+// - `.xs:count-9`: Sets the number of columns in the columns component to 9 on extra small screens.
+// - `.xs:count-10`: Sets the number of columns in the columns component to 10 on extra small screens.
+// - `.xs:count-11`: Sets the number of columns in the columns component to 11 on extra small screens.
+// - `.xs:count-12`: Sets the number of columns in the columns component to 12 on extra small screens.
+// - `.sm:count-1`: Sets the number of columns in the columns component to 1 on small screens.
+// - `.sm:count-2`: Sets the number of columns in the columns component to 2 on small screens.
+// - `.sm:count-3`: Sets the number of columns in the columns component to 3 on small screens.
+// - `.sm:count-4`: Sets the number of columns in the columns component to 4 on small screens.
+// - `.sm:count-5`: Sets the number of columns in the columns component to 5 on small screens.
+// - `.sm:count-6`: Sets the number of columns in the columns component to 6 on small screens.
+// - `.sm:count-7`: Sets the number of columns in the columns component to 7 on small screens.
+// - `.sm:count-8`: Sets the number of columns in the columns component to 8 on small screens.
+// - `.sm:count-9`: Sets the number of columns in the columns component to 9 on small screens.
+// - `.sm:count-10`: Sets the number of columns in the columns component to 10 on small screens.
+// - `.sm:count-11`: Sets the number of columns in the columns component to 11 on small screens.
+// - `.sm:count-12`: Sets the number of columns in the columns component to 12 on small screens.
+// - `.md:count-1`: Sets the number of columns in the columns component to 1 on medium screens.
+// - `.md:count-2`: Sets the number of columns in the columns component to 2 on medium screens.
+// - `.md:count-3`: Sets the number of columns in the columns component to 3 on medium screens.
+// - `.md:count-4`: Sets the number of columns in the columns component to 4 on medium screens.
+// - `.md:count-5`: Sets the number of columns in the columns component to 5 on medium screens.
+// - `.md:count-6`: Sets the number of columns in the columns component to 6 on medium screens.
+// - `.md:count-7`: Sets the number of columns in the columns component to 7 on medium screens.
+// - `.md:count-8`: Sets the number of columns in the columns component to 8 on medium screens.
+// - `.md:count-9`: Sets the number of columns in the columns component to 9 on medium screens.
+// - `.md:count-10`: Sets the number of columns in the columns component to 10 on medium screens.
+// - `.md:count-11`: Sets the number of columns in the columns component to 11 on medium screens.
+// - `.md:count-12`: Sets the number of columns in the columns component to 12 on medium screens.
+// - `.lg:count-1`: Sets the number of columns in the columns component to 1 on large screens.
+// - `.lg:count-2`: Sets the number of columns in the columns component to 2 on large screens.
+// - `.lg:count-3`: Sets the number of columns in the columns component to 3 on large screens.
+// - `.lg:count-4`: Sets the number of columns in the columns component to 4 on large screens.
+// - `.lg:count-5`: Sets the number of columns in the columns component to 5 on large screens.
+// - `.lg:count-6`: Sets the number of columns in the columns component to 6 on large screens.
+// - `.lg:count-7`: Sets the number of columns in the columns component to 7 on large screens.
+// - `.lg:count-8`: Sets the number of columns in the columns component to 8 on large screens.
+// - `.lg:count-9`: Sets the number of columns in the columns component to 9 on large screens.
+// - `.lg:count-10`: Sets the number of columns in the columns component to 10 on large screens.
+// - `.lg:count-11`: Sets the number of columns in the columns component to 11 on large screens.
+// - `.lg:count-12`: Sets the number of columns in the columns component to 12 on large screens.
+// - `.xl:count-1`: Sets the number of columns in the columns component to 1 on extra large screens.
+// - `.xl:count-2`: Sets the number of columns in the columns component to 2 on extra large screens.
+// - `.xl:count-3`: Sets the number of columns in the columns component to 3 on extra large screens.
+// - `.xl:count-4`: Sets the number of columns in the columns component to 4 on extra large screens.
+// - `.xl:count-5`: Sets the number of columns in the columns component to 5 on extra large screens.
+// - `.xl:count-6`: Sets the number of columns in the columns component to 6 on extra large screens.
+// - `.xl:count-7`: Sets the number of columns in the columns component to 7 on extra large screens.
+// - `.xl:count-8`: Sets the number of columns in the columns component to 8 on extra large screens.
+// - `.xl:count-9`: Sets the number of columns in the columns component to 9 on extra large screens.
+// - `.xl:count-10`: Sets the number of columns in the columns component to 10 on extra large screens.
+// - `.xl:count-11`: Sets the number of columns in the columns component to 11 on extra large screens.
+// - `.xl:count-12`: Sets the number of columns in the columns component to 12 on extra large screens.
 // - `.span-1`: Sets the span of a column in the columns component to 1.
 // - `.span-2`: Sets the span of a column in the columns component to 2.
 // - `.span-3`: Sets the span of a column in the columns component to 3.
 // - `.span-4`: Sets the span of a column in the columns component to 4.
 // - `.span-5`: Sets the span of a column in the columns component to 5.
 // - `.span-6`: Sets the span of a column in the columns component to 6.
+// - `.span-7`: Sets the span of a column in the columns component to 7.
+// - `.span-8`: Sets the span of a column in the columns component to 8.
+// - `.span-9`: Sets the span of a column in the columns component to 9.
+// - `.span-10`: Sets the span of a column in the columns component to 10.
+// - `.span-11`: Sets the span of a column in the columns component to 11.
+// - `.span-12`: Sets the span of a column in the columns component to 12.
+// - `.xs:span-1`: Sets the span of a column in the columns component to 1 on extra small screens.
+// - `.xs:span-2`: Sets the span of a column in the columns component to 2 on extra small screens.
+// - `.xs:span-3`: Sets the span of a column in the columns component to 3 on extra small screens.
+// - `.xs:span-4`: Sets the span of a column in the columns component to 4 on extra small screens.
+// - `.xs:span-5`: Sets the span of a column in the columns component to 5 on extra small screens.
+// - `.xs:span-6`: Sets the span of a column in the columns component to 6 on extra small screens.
+// - `.xs:span-7`: Sets the span of a column in the columns component to 7 on extra small screens.
+// - `.xs:span-8`: Sets the span of a column in the columns component to 8 on extra small screens.
+// - `.xs:span-9`: Sets the span of a column in the columns component to 9 on extra small screens.
+// - `.xs:span-10`: Sets the span of a column in the columns component to 10 on extra small screens.
+// - `.xs:span-11`: Sets the span of a column in the columns component to 11 on extra small screens.
+// - `.xs:span-12`: Sets the span of a column in the columns component to 12 on extra small screens.
+// - `.sm:span-1`: Sets the span of a column in the columns component to 1 on small screens.
+// - `.sm:span-2`: Sets the span of a column in the columns component to 2 on small screens.
+// - `.sm:span-3`: Sets the span of a column in the columns component to 3 on small screens.
+// - `.sm:span-4`: Sets the span of a column in the columns component to 4 on small screens.
+// - `.sm:span-5`: Sets the span of a column in the columns component to 5 on small screens.
+// - `.sm:span-6`: Sets the span of a column in the columns component to 6 on small screens.
+// - `.sm:span-7`: Sets the span of a column in the columns component to 7 on small screens.
+// - `.sm:span-8`: Sets the span of a column in the columns component to 8 on small screens.
+// - `.sm:span-9`: Sets the span of a column in the columns component to 9 on small screens.
+// - `.sm:span-10`: Sets the span of a column in the columns component to 10 on small screens.
+// - `.sm:span-11`: Sets the span of a column in the columns component to 11 on small screens.
+// - `.sm:span-12`: Sets the span of a column in the columns component to 12 on small screens.
+// - `.md:span-1`: Sets the span of a column in the columns component to 1 on medium screens.
+// - `.md:span-2`: Sets the span of a column in the columns component to 2 on medium screens.
+// - `.md:span-3`: Sets the span of a column in the columns component to 3 on medium screens.
+// - `.md:span-4`: Sets the span of a column in the columns component to 4 on medium screens.
+// - `.md:span-5`: Sets the span of a column in the columns component to 5 on medium screens.
+// - `.md:span-6`: Sets the span of a column in the columns component to 6 on medium screens.
+// - `.md:span-7`: Sets the span of a column in the columns component to 7 on medium screens.
+// - `.md:span-8`: Sets the span of a column in the columns component to 8 on medium screens.
+// - `.md:span-9`: Sets the span of a column in the columns component to 9 on medium screens.
+// - `.md:span-10`: Sets the span of a column in the columns component to 10 on medium screens.
+// - `.md:span-11`: Sets the span of a column in the columns component to 11 on medium screens.
+// - `.md:span-12`: Sets the span of a column in the columns component to 12 on medium screens.
+// - `.lg:span-1`: Sets the span of a column in the columns component to 1 on large screens.
+// - `.lg:span-2`: Sets the span of a column in the columns component to 2 on large screens.
+// - `.lg:span-3`: Sets the span of a column in the columns component to 3 on large screens.
+// - `.lg:span-4`: Sets the span of a column in the columns component to 4 on large screens.
+// - `.lg:span-5`: Sets the span of a column in the columns component to 5 on large screens.
+// - `.lg:span-6`: Sets the span of a column in the columns component to 6 on large screens.
+// - `.lg:span-7`: Sets the span of a column in the columns component to 7 on large screens.
+// - `.lg:span-8`: Sets the span of a column in the columns component to 8 on large screens.
+// - `.lg:span-9`: Sets the span of a column in the columns component to 9 on large screens.
+// - `.lg:span-10`: Sets the span of a column in the columns component to 10 on large screens.
+// - `.lg:span-11`: Sets the span of a column in the columns component to 11 on large screens.
+// - `.lg:span-12`: Sets the span of a column in the columns component to 12 on large screens.
+// - `.xl:span-1`: Sets the span of a column in the columns component to 1 on extra large screens.
+// - `.xl:span-2`: Sets the span of a column in the columns component to 2 on extra large screens.
+// - `.xl:span-3`: Sets the span of a column in the columns component to 3 on extra large screens.
+// - `.xl:span-4`: Sets the span of a column in the columns component to 4 on extra large screens.
+// - `.xl:span-5`: Sets the span of a column in the columns component to 5 on extra large screens.
+// - `.xl:span-6`: Sets the span of a column in the columns component to 6 on extra large screens.
+// - `.xl:span-7`: Sets the span of a column in the columns component to 7 on extra large screens.
+// - `.xl:span-8`: Sets the span of a column in the columns component to 8 on extra large screens.
+// - `.xl:span-9`: Sets the span of a column in the columns component to 9 on extra large screens.
+// - `.xl:span-10`: Sets the span of a column in the columns component to 10 on extra large screens.
+// - `.xl:span-11`: Sets the span of a column in the columns component to 11 on extra large screens.
+// - `.xl:span-12`: Sets the span of a column in the columns component to 12 on extra large screens.
 //
 // The following custom properties can be used to customize the columns component:
 // | Property                                 | Description                                          | Default Value                                                                                                                                          |
@@ -43,28 +181,50 @@
 // | `--graupl-columns-color`                 | The text color of the columns component.             | `var(--graupl-color)`                                                                                                                                  |
 //
 // The following sass variables can be used to customize the generation of the columns component:
-// | Variable                         | Description                                                        | Default Value    |
-// | -------------------------------- | ------------------------------------------------------------------ | ---------------- |
-// | `$selector-base`                 | The base selector for the component.                               | `"."`            |
-// | `$modifier-selector-base`        | The base selector for component modifiers.                         | `"."`            |
-// | `$generate-base-theme-map`       | Flag to generate the base theme map.                               | `true`           |
-// | `$themeable`                     | Flag to generate theme modifiers.                                  | `false`          |
-// | `$force-single-columns`          | Flag to enable forced single column layout on small screens.       | `true`           |
-// | `$columns-selector-base`         | The base selector for the columns component.                       | `"."`            |
-// | `$columns-selector`              | The selector for the columns component.                            | `"columns"`      |
-// | `$columns-theme-selector-base`   | The selector base for columns theme modifiers.                     | `"."`            |
-// | `$columns-theme-selector-prefix` | The columns theme modifier selector prefix.                        | `""`             |
-// | `$columns-count-selector-base`   | The base selector for the count class.                             | `"."`            |
-// | `$columns-count-selector-prefix` | The prefix for the count class.                                    | `"count-"`       |
-// | `$columns-span-selector-base`    | The base selector for the span class.                              | `"."`            |
-// | `$columns-span-selector-prefix`  | The prefix for the span class.                                     | `"span-"`        |
-// | `$columns-max-width`             | The maximum width of each column.                                  | `1fr`            |
-// | `$columns-count`                 | The default number of columns.                                     | `3`              |
-// | `$columns-min-count`             | The minimum number of columns used to generate `.count-#` classes. | `1`              |
-// | `$columns-max-count`             | The maximum number of columns used to generate `.count-#` classes. | `6`              |
-// | `$columns-span`                  | The default span of each column.                                   | `1`              |
-// | `$columns-theme-mappings`        | Map of properties/shades for columns themes.                       | `()`             |
-// | `$columns-theme-map`             | Expanded map of properties/colors/shades.                          | `()`             |
+// | Variable                                      | Description                                                            | Default Value    |
+// | --------------------------------------------- | ---------------------------------------------------------------------- | ---------------- |
+// | `$selector-base`                              | The base selector for the component.                                   | `"."`            |
+// | `$modifier-selector-base`                     | The base selector for component modifiers.                             | `"."`            |
+// | `$generate-base-theme-map`                    | Flag to generate the base theme map.                                   | `true`           |
+// | `$themeable`                                  | Flag to generate theme modifiers.                                      | `false`          |
+// | `$screen-aware`                               | Enables screen-aware column variants.                                  | `true`           |
+// | `$theme-aware`                                | Enables theme-aware column variants.                                   | `false`          |
+// | `$scheme-aware`                               | Enables scheme-aware column variants.                                  | `false`          |
+// | `$state-aware`                                | Enables state-aware column variants.                                   | `false`          |
+// | `$container-aware`                            | Enables container-aware column variants.                               | `true`           |
+// | `$force-single-columns`                       | Flag to enable forced single column layout on small screens.           | `true`           |
+// | `$columns-selector-base`                      | The base selector for the columns component.                           | `"."`            |
+// | `$columns-selector`                           | The selector for the columns component.                                | `"columns"`      |
+// | `$columns-theme-selector-base`                | The selector base for columns theme modifiers.                         | `"."`            |
+// | `$columns-theme-selector-prefix`              | The columns theme modifier selector prefix.                            | `""`             |
+// | `$columns-count-selector-base`                | The base selector for the count class.                                 | `"."`            |
+// | `$columns-count-selector-prefix`              | The prefix for the count class.                                        | `"count-"`       |
+// | `$columns-span-selector-base`                 | The base selector for the span class.                                  | `"."`            |
+// | `$columns-span-selector-prefix`               | The prefix for the span class.                                         | `"span-"`        |
+// | `$columns-fixed-selector-base`                | The base selector for the fixed class.                                 | `"."`            |
+// | `$columns-fixed-selector`                     | The selector for the fixed class.                                      | `"fixed"`        |
+// | `$columns-screen-aware-selector-prefix`       | Prefix to the screen-aware portion of column selectors.                | `""`             |
+// | `$columns-screen-aware-selector-suffix`       | Suffix to the screen-aware portion of column selectors.                | `""`             |
+// | `$columns-screen-aware-selector-separator`    | Separator inserted for screen-aware column selectors.                  | `"\\:"`          |
+// | `$columns-theme-aware-selector-prefix`        | Prefix to the theme-aware portion of column selectors.                 | `""`             |
+// | `$columns-theme-aware-selector-suffix`        | Suffix to the theme-aware portion of column selectors.                 | `"-theme"`       |
+// | `$columns-theme-aware-selector-separator`     | Separator inserted for theme-aware column selectors.                   | `"\\:"`          |
+// | `$columns-scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of column selectors.                | `""`             |
+// | `$columns-scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of column selectors.                | `"-mode"`        |
+// | `$columns-scheme-aware-selector-separator`    | Separator inserted for scheme-aware column selectors.                  | `"\\:"`          |
+// | `$columns-state-aware-selector-prefix`        | Prefix to the state-aware portion of column selectors.                 | `""`             |
+// | `$columns-state-aware-selector-suffix`        | Suffix to the state-aware portion of column selectors.                 | `""`             |
+// | `$columns-state-aware-selector-separator`     | Separator inserted for state-aware column selectors.                   | `"\\:"`          |
+// | `$columns-container-aware-selector-prefix`    | Prefix to the container-aware portion of column selectors.             | `"cq\\:"`        |
+// | `$columns-container-aware-selector-suffix`    | Suffix to the container-aware portion of column selectors.             | `""`             |
+// | `$columns-container-aware-selector-separator` | Separator inserted for container-aware column selectors.               | `"\\:"`          |
+// | `$columns-max-width`                          | The maximum width of each column.                                      | `1fr`            |
+// | `$columns-count`                              | The default number of columns.                                         | `3`              |
+// | `$columns-min-count`                          | The minimum number of columns used to generate `.count-#` classes.     | `1`              |
+// | `$columns-max-count`                          | The maximum number of columns used to generate `.count-#` classes.     | `12`             |
+// | `$columns-span`                               | The default span of each column.                                       | `1`              |
+// | `$columns-theme-mappings`                     | Map of properties/shades for columns themes.                           | `()`             |
+// | `$columns-theme-map`                          | Expanded map of properties/colors/shades.                              | `()`             |
 //
 // @example
 //   <div class="columns">
@@ -86,6 +246,33 @@
 @use "../../mixins/layer" as *;
 @use "../../mixins/container";
 @use "../../mixins/theme";
+@use "../../mixins/utility";
+@use "sass:map";
+@use "sass:list";
+
+$columns-count-map: ();
+$columns-span-map: ();
+
+@for $i from defaults.$columns-min-count through defaults.$columns-max-count {
+  /* stylelint-disable */
+  $columns-count-map: map.merge(
+    $columns-count-map,
+    (
+      #{defaults.$columns-count-selector-prefix}#{$i}: (
+          --#{root-defaults.$prefix}columns-count: #{$i}
+        )
+    )
+  );
+  $columns-span-map: map.merge(
+    $columns-span-map,
+    (
+      #{defaults.$columns-span-selector-prefix}#{$i}: (
+          --#{root-defaults.$prefix}columns-span: #{$i}
+        )
+    )
+  );
+  /* stylelint-enable */
+}
 
 @include layer(layout) {
   // .columns
@@ -105,27 +292,151 @@
     #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
       grid-template-columns: subgrid;
     }
-  }
 
-  @for $i from defaults.$columns-min-count through defaults.$columns-max-count {
-    // .count-#{$i}
-    #{defaults.$columns-count-selector-base}#{defaults.$columns-count-selector-prefix}#{$i} {
-      --#{root-defaults.$prefix}columns-count: #{$i};
+    @include utility.generate(
+      $map: (
+        "#{defaults.$columns-fixed-selector}": (
+          --graupl-columns-max-width: #{$columns-min-width},
+        ),
+      ),
+      $selector-base: "&#{defaults.$columns-fixed-selector-base}",
+      $selector-prefix: "",
+      $selector-suffix: "",
+      $screen-aware: defaults.$screen-aware,
+      $screen-aware-selector-prefix:
+        defaults.$columns-screen-aware-selector-prefix,
+      $screen-aware-selector-suffix:
+        defaults.$columns-screen-aware-selector-suffix,
+      $screen-aware-selector-separator:
+        defaults.$columns-screen-aware-selector-separator,
+      $theme-aware: defaults.$theme-aware,
+      $theme-aware-selector-prefix:
+        defaults.$columns-theme-aware-selector-prefix,
+      $theme-aware-selector-suffix:
+        defaults.$columns-theme-aware-selector-suffix,
+      $theme-aware-selector-separator:
+        defaults.$columns-theme-aware-selector-separator,
+      $scheme-aware: defaults.$scheme-aware,
+      $scheme-aware-selector-prefix:
+        defaults.$columns-scheme-aware-selector-prefix,
+      $scheme-aware-selector-suffix:
+        defaults.$columns-scheme-aware-selector-suffix,
+      $scheme-aware-selector-separator:
+        defaults.$columns-scheme-aware-selector-separator,
+      $state-aware: defaults.$state-aware,
+      $state-aware-selector-prefix:
+        defaults.$columns-state-aware-selector-prefix,
+      $state-aware-selector-suffix:
+        defaults.$columns-state-aware-selector-suffix,
+      $state-aware-selector-separator:
+        defaults.$columns-state-aware-selector-separator,
+      $container-aware: defaults.$container-aware,
+      $container-aware-selector-prefix:
+        defaults.$columns-container-aware-selector-prefix,
+      $container-aware-selector-suffix:
+        defaults.$columns-container-aware-selector-suffix,
+      $container-aware-selector-separator:
+        defaults.$columns-container-aware-selector-separator,
+      $important: false
+    );
 
-      // For span values bigger than the actual column count, set them to the
+    @include utility.generate(
+        $map: $columns-count-map,
+        $selector-base: "&#{defaults.$columns-count-selector-base}",
+        $selector-prefix: "",
+        $selector-suffix: "",
+        $screen-aware: defaults.$screen-aware,
+        $screen-aware-selector-prefix:
+          defaults.$columns-screen-aware-selector-prefix,
+        $screen-aware-selector-suffix:
+          defaults.$columns-screen-aware-selector-suffix,
+        $screen-aware-selector-separator:
+          defaults.$columns-screen-aware-selector-separator,
+        $theme-aware: defaults.$theme-aware,
+        $theme-aware-selector-prefix:
+          defaults.$columns-theme-aware-selector-prefix,
+        $theme-aware-selector-suffix:
+          defaults.$columns-theme-aware-selector-suffix,
+        $theme-aware-selector-separator:
+          defaults.$columns-theme-aware-selector-separator,
+        $scheme-aware: defaults.$scheme-aware,
+        $scheme-aware-selector-prefix:
+          defaults.$columns-scheme-aware-selector-prefix,
+        $scheme-aware-selector-suffix:
+          defaults.$columns-scheme-aware-selector-suffix,
+        $scheme-aware-selector-separator:
+          defaults.$columns-scheme-aware-selector-separator,
+        $state-aware: defaults.$state-aware,
+        $state-aware-selector-prefix:
+          defaults.$columns-state-aware-selector-prefix,
+        $state-aware-selector-suffix:
+          defaults.$columns-state-aware-selector-suffix,
+        $state-aware-selector-separator:
+          defaults.$columns-state-aware-selector-separator,
+        $container-aware: defaults.$container-aware,
+        $container-aware-selector-prefix:
+          defaults.$columns-container-aware-selector-prefix,
+        $container-aware-selector-suffix:
+          defaults.$columns-container-aware-selector-suffix,
+        $container-aware-selector-separator:
+          defaults.$columns-container-aware-selector-separator,
+        $important: false
+      )
+      using($selector, $properties, $responsive-type, $responsive-name) {
+      $count-classes: map.keys($columns-count-map);
+      $i: list.index($count-classes, $selector);
+
       // maximum column count so they don't break the layout.
       @for $j from $i + 1 through defaults.$columns-max-count {
-        // .span-#{$j}
-        #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
+        // > .span-#{$j}
+        > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
           --#{root-defaults.$prefix}columns-span: #{$i};
         }
       }
     }
 
-    // .span-#{$i}
-    #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
-      --#{root-defaults.$prefix}columns-span: #{$i};
-    }
+    @include utility.generate(
+      $map: $columns-span-map,
+      $selector-base: "#{defaults.$columns-span-selector-base}",
+      $selector-prefix: "",
+      $selector-suffix: "",
+      $screen-aware: defaults.$screen-aware,
+      $screen-aware-selector-prefix:
+        defaults.$columns-screen-aware-selector-prefix,
+      $screen-aware-selector-suffix:
+        defaults.$columns-screen-aware-selector-suffix,
+      $screen-aware-selector-separator:
+        defaults.$columns-screen-aware-selector-separator,
+      $theme-aware: defaults.$theme-aware,
+      $theme-aware-selector-prefix:
+        defaults.$columns-theme-aware-selector-prefix,
+      $theme-aware-selector-suffix:
+        defaults.$columns-theme-aware-selector-suffix,
+      $theme-aware-selector-separator:
+        defaults.$columns-theme-aware-selector-separator,
+      $scheme-aware: defaults.$scheme-aware,
+      $scheme-aware-selector-prefix:
+        defaults.$columns-scheme-aware-selector-prefix,
+      $scheme-aware-selector-suffix:
+        defaults.$columns-scheme-aware-selector-suffix,
+      $scheme-aware-selector-separator:
+        defaults.$columns-scheme-aware-selector-separator,
+      $state-aware: defaults.$state-aware,
+      $state-aware-selector-prefix:
+        defaults.$columns-state-aware-selector-prefix,
+      $state-aware-selector-suffix:
+        defaults.$columns-state-aware-selector-suffix,
+      $state-aware-selector-separator:
+        defaults.$columns-state-aware-selector-separator,
+      $container-aware: defaults.$container-aware,
+      $container-aware-selector-prefix:
+        defaults.$columns-container-aware-selector-prefix,
+      $container-aware-selector-suffix:
+        defaults.$columns-container-aware-selector-suffix,
+      $container-aware-selector-separator:
+        defaults.$columns-container-aware-selector-separator,
+      $important: false
+    );
   }
 
   // Disable columns on small screens to avoid horizontal bleeding.
@@ -144,7 +455,7 @@
           from defaults.$columns-min-count
           through defaults.$columns-max-count
         {
-          // .span-#{$i}
+          // > .span-#{$i}
           #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
             --#{root-defaults.$prefix}columns-span: 1;
           }
