@@ -1,6 +1,6 @@
 {
   "name": "@graupl/graupl",
-  "version": "1.0.0-beta.50",
+  "version": "1.0.0-beta.51",
   "license": "GPL-3.0-or-later",
   "description": "A modular and modern CSS framework.",
   "type": "module",
@@ -41,7 +41,9 @@
     "docs:preview": "vitepress preview docs",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "test:unit": "vitest run unit",
+    "test:browser": "vitest run browser"
   },
   "repository": {
     "type": "git",
@@ -69,6 +71,7 @@
     "@drupal/once": "git+https://git.drupalcode.org/issue/once-3466026.git",
     "@eslint/js": "^9.0.0",
     "@rollup/plugin-babel": "^6.0.4",
+    "@vitest/browser-playwright": "^4.1.9",
     "@vitest/ui": "^4.0.16",
     "accessible-menu": "^4.2.2",
     "chokidar-cli": "^3.0.0",
@@ -100,6 +103,7 @@
     "vitepress": "^1.1.0",
     "vitest": "^4.0.16",
     "vitest-axe": "^0.1.0",
+    "vitest-browser-vue": "^2.1.0",
     "vue-codemirror": "^6.1.1"
   },
   "dependencies": {

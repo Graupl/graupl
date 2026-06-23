@@ -33,6 +33,10 @@ $show-warnings: true !default;
 
 // Layout properties.
 $content-max-width: 96ch !default;
+$column-layout-min-count: 1 !default;
+$column-layout-max-count: 12 !default;
+$row-layout-min-count: 1 !default;
+$row-layout-max-count: 12 !default;
 
 // Screen sizes.
 $-screen-sizes: (

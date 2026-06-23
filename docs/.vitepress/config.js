@@ -126,6 +126,7 @@ export default defineConfig({
           { text: "Flex", link: "/utilities/flex" },
           { text: "Float", link: "/utilities/float" },
           { text: "Gradient", link: "/utilities/gradient" },
+          { text: "Grid", link: "/utilities/grid" },
           { text: "Height", link: "/utilities/height" },
           { text: "Inline Size", link: "/utilities/inline-size" },
           { text: "Inset", link: "/utilities/inset" },

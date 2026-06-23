@@ -15,21 +15,43 @@ $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
 $themeable: false !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$scheme-aware: false !default;
+$state-aware: false !default;
+$container-aware: true !default;
 $force-single-columns: true !default;
 $columns-selector-base: $selector-base !default;
 $columns-selector: "columns" !default;
 $columns-theme-selector-base: $modifier-selector-base !default;
 $columns-theme-selector-prefix: "" !default;
-$columns-count-selector-base: $selector-base !default;
+$columns-count-selector-base: $modifier-selector-base !default;
 $columns-count-selector-prefix: "count-" !default;
-$columns-span-selector-base: $selector-base !default;
+$columns-span-selector-base: $modifier-selector-base !default;
 $columns-span-selector-prefix: "span-" !default;
+$columns-fixed-selector-base: $modifier-selector-base !default;
+$columns-fixed-selector: "fixed" !default;
+$columns-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
+$columns-screen-aware-selector-suffix: root-defaults.$screen-aware-selector-suffix !default;
+$columns-screen-aware-selector-separator: root-defaults.$screen-aware-selector-separator !default;
+$columns-theme-aware-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$columns-theme-aware-selector-suffix: root-defaults.$theme-aware-selector-suffix !default;
+$columns-theme-aware-selector-separator: root-defaults.$theme-aware-selector-separator !default;
+$columns-scheme-aware-selector-prefix: root-defaults.$scheme-aware-selector-prefix !default;
+$columns-scheme-aware-selector-suffix: root-defaults.$scheme-aware-selector-suffix !default;
+$columns-scheme-aware-selector-separator: root-defaults.$scheme-aware-selector-separator !default;
+$columns-state-aware-selector-prefix: root-defaults.$state-aware-selector-prefix !default;
+$columns-state-aware-selector-suffix: root-defaults.$state-aware-selector-suffix !default;
+$columns-state-aware-selector-separator: root-defaults.$state-aware-selector-separator !default;
+$columns-container-aware-selector-prefix: root-defaults.$container-aware-selector-prefix !default;
+$columns-container-aware-selector-suffix: root-defaults.$container-aware-selector-suffix !default;
+$columns-container-aware-selector-separator: root-defaults.$container-aware-selector-separator !default;
 
 // Columns properties.
 $columns-max-width: 1fr !default;
 $columns-count: 3 !default;
-$columns-min-count: 1 !default;
-$columns-max-count: 6 !default;
+$columns-min-count: root-defaults.$column-layout-min-count !default;
+$columns-max-count: root-defaults.$column-layout-max-count !default;
 $columns-span: 1 !default;
 
 // Columns state theme defaults.
