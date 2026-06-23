@@ -29,6 +29,8 @@ $columns-count-selector-base: $modifier-selector-base !default;
 $columns-count-selector-prefix: "count-" !default;
 $columns-span-selector-base: $modifier-selector-base !default;
 $columns-span-selector-prefix: "span-" !default;
+$columns-fixed-selector-base: $modifier-selector-base !default;
+$columns-fixed-selector: "fixed" !default;
 $columns-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
 $columns-screen-aware-selector-suffix: root-defaults.$screen-aware-selector-suffix !default;
 $columns-screen-aware-selector-separator: root-defaults.$screen-aware-selector-separator !default;

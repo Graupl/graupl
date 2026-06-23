@@ -27,6 +27,12 @@
 // - `.count-10`: Sets the number of columns in the columns component to 10.
 // - `.count-11`: Sets the number of columns in the columns component to 11.
 // - `.count-12`: Sets the number of columns in the columns component to 12.
+// - `.fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns.
+// - `.xs:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on extra small screens.
+// - `.sm:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on small screens.
+// - `.md:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on medium screens.
+// - `.lg:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on large screens.
+// - `.xl:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on extra large screens.
 // - `.xs:count-1`: Sets the number of columns in the columns component to 1 on extra small screens.
 // - `.xs:count-2`: Sets the number of columns in the columns component to 2 on extra small screens.
 // - `.xs:count-3`: Sets the number of columns in the columns component to 3 on extra small screens.
@@ -195,6 +201,8 @@
 // | `$columns-count-selector-prefix`              | The prefix for the count class.                                        | `"count-"`       |
 // | `$columns-span-selector-base`                 | The base selector for the span class.                                  | `"."`            |
 // | `$columns-span-selector-prefix`               | The prefix for the span class.                                         | `"span-"`        |
+// | `$columns-fixed-selector-base`                | The base selector for the fixed class.                                 | `"."`            |
+// | `$columns-fixed-selector`                     | The selector for the fixed class.                                      | `"fixed"`        |
 // | `$columns-screen-aware-selector-prefix`       | Prefix to the screen-aware portion of column selectors.                | `""`             |
 // | `$columns-screen-aware-selector-suffix`       | Suffix to the screen-aware portion of column selectors.                | `""`             |
 // | `$columns-screen-aware-selector-separator`    | Separator inserted for screen-aware column selectors.                  | `"\\:"`          |
@@ -284,6 +292,53 @@ $columns-span-map: ();
     #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
       grid-template-columns: subgrid;
     }
+
+    @include utility.generate(
+      $map: (
+        "#{defaults.$columns-fixed-selector}": (
+          --graupl-columns-max-width: #{$columns-min-width},
+        ),
+      ),
+      $selector-base: "&#{defaults.$columns-fixed-selector-base}",
+      $selector-prefix: "",
+      $selector-suffix: "",
+      $screen-aware: defaults.$screen-aware,
+      $screen-aware-selector-prefix:
+        defaults.$columns-screen-aware-selector-prefix,
+      $screen-aware-selector-suffix:
+        defaults.$columns-screen-aware-selector-suffix,
+      $screen-aware-selector-separator:
+        defaults.$columns-screen-aware-selector-separator,
+      $theme-aware: defaults.$theme-aware,
+      $theme-aware-selector-prefix:
+        defaults.$columns-theme-aware-selector-prefix,
+      $theme-aware-selector-suffix:
+        defaults.$columns-theme-aware-selector-suffix,
+      $theme-aware-selector-separator:
+        defaults.$columns-theme-aware-selector-separator,
+      $scheme-aware: defaults.$scheme-aware,
+      $scheme-aware-selector-prefix:
+        defaults.$columns-scheme-aware-selector-prefix,
+      $scheme-aware-selector-suffix:
+        defaults.$columns-scheme-aware-selector-suffix,
+      $scheme-aware-selector-separator:
+        defaults.$columns-scheme-aware-selector-separator,
+      $state-aware: defaults.$state-aware,
+      $state-aware-selector-prefix:
+        defaults.$columns-state-aware-selector-prefix,
+      $state-aware-selector-suffix:
+        defaults.$columns-state-aware-selector-suffix,
+      $state-aware-selector-separator:
+        defaults.$columns-state-aware-selector-separator,
+      $container-aware: defaults.$container-aware,
+      $container-aware-selector-prefix:
+        defaults.$columns-container-aware-selector-prefix,
+      $container-aware-selector-suffix:
+        defaults.$columns-container-aware-selector-suffix,
+      $container-aware-selector-separator:
+        defaults.$columns-container-aware-selector-separator,
+      $important: false
+    );
 
     @include utility.generate(
         $map: $columns-count-map,
