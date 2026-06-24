@@ -196,7 +196,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.p-0` | padding | `var(--graupl-spacer-0)` |
 | `.p-1` | padding | `var(--graupl-spacer-1)` |
 | `.p-2` | padding | `var(--graupl-spacer-2)` |
-| `.p-3` | padding | `var(--graupl-spacer-3)` |
+| `.p-5` | padding | `var(--graupl-spacer-3)` |
 | `.p-4` | padding | `var(--graupl-spacer-4)` |
 | `.p-5` | padding | `var(--graupl-spacer-5)` |
 | `.p-6` | padding | `var(--graupl-spacer-6)` |
@@ -225,7 +225,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
       <option value="p-0">Spacer 0</option>
       <option value="p-1">Spacer 1</option>
       <option value="p-2">Spacer 2</option>
-      <option value="p-3">Spacer 3</option>
+      <option value="p-5">Spacer 3</option>
       <option value="p-4">Spacer 4</option>
       <option value="p-5">Spacer 5</option>
       <option value="p-6">Spacer 6</option>
@@ -836,9 +836,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${margin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${margin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -884,9 +884,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${topMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${topMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -932,9 +932,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${rightMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${rightMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -980,9 +980,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${bottomMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${bottomMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -1028,9 +1028,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${leftMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${leftMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -1076,9 +1076,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${xMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${xMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -1124,9 +1124,9 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid h-full g-3" style="grid-template-columns: repeat(3, min-content); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
-        <div :class="`bordered border-primary-700 bg-primary-300 p-3 ${yMargin}`"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-3"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="`bordered border-primary-700 bg-primary-300 p-5 ${yMargin}`"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
