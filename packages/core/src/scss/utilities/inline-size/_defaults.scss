@@ -41,9 +41,9 @@ $container-aware-selector-suffix: root-defaults.$utility-container-aware-selecto
 
 // Properties.
 $-utility-properties: (
-  "inline": inline-size,
-  "max-inline": max-inline-size,
-  "min-inline": min-inline-size,
+  "is": inline-size,
+  "max-is": max-inline-size,
+  "min-is": min-inline-size,
 );
 $utility-properties: () !default;
 
