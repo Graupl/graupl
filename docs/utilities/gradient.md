@@ -1,3 +1,12 @@
+<script setup>
+  import { ref } from "vue";
+
+  const gradient = ref("gradient");
+  const gradientDirection = ref("gradient gradient-direction-to-top");
+  const gradientFrom = ref("from-transparent");
+  const gradientTo = ref("to-transparent");
+</script>
+
 # Gradient Utilities
 
 The gradient utilities provide a set of classes to adjust the color `background-image` properties of elements for the purpose of creating gradients.
@@ -9,6 +18,26 @@ The gradient utilities provide a set of classes to adjust the color `background-
 | `.gradient` | background-image | `linear-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 | `.gradient-linear` | background-image | `linear-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 | `.gradient-radial` | background-image | `radial-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` bordered border-primary-700 ${gradient} from-transparent to-primary-300 h-two-thirds w-half `">
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gradient }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-gradient">Gradient property</label>
+    <select id="select-gradient" v-model="gradient">
+      <option value="gradient">Gradient</option>
+      <option value="gradient-linear">Linear Gradient</option>
+      <option value="gradient-radial">Radial Gradient</option>
+    </select>
+  </div>
+</div>
 
 ## Custom Gradient Properties
 
@@ -44,6 +73,41 @@ Used to customize gradient types.
 | `.gradient-direction-closest-corner` | --graupl-gradient-direction | `closest-corner` |
 | `.gradient-direction-farthest-side` | --graupl-gradient-direction | `farthest-side` |
 | `.gradient-direction-farthest-corner` | --graupl-gradient-direction | `farthest-corner` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` bordered border-primary-700 ${gradientDirection} from-transparent to-primary-300 h-two-thirds w-half `">
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gradientDirection }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-gradient-direction">Gradient Direction property</label>
+    <select id="select-gradient-direction" v-model="gradientDirection">
+      <option value="gradient gradient-direction-to-top">To Top</option>
+      <option value="gradient gradient-direction-to-right">To Right</option>
+      <option value="gradient gradient-direction-to-bottom">To Bottom</option>
+      <option value="gradient gradient-direction-to-left">To Left</option>
+      <option value="gradient-radial gradient-direction-circle">Circle</option>
+      <option value="gradient-radial gradient-direction-circle-at-top">Circle To Top</option>
+      <option value="gradient-radial gradient-direction-circle-at-right">Circle To Right</option>
+      <option value="gradient-radial gradient-direction-circle-at-bottom">Circle To Bottom</option>
+      <option value="gradient-radial gradient-direction-circle-at-left">Circle To Left</option>
+      <option value="gradient-radial gradient-direction-ellipse">Ellipse</option>
+      <option value="gradient-radial gradient-direction-ellipse-at-top">Ellipse To Top</option>
+      <option value="gradient-radial gradient-direction-ellipse-at-right">Ellipse To Right</option>
+      <option value="gradient-radial gradient-direction-ellipse-at-bottom">Ellipse To Bottom</option>
+      <option value="gradient-radial gradient-direction-ellipse-at-left">Ellipse To Left</option>
+      <option value="gradient-radial gradient-direction-closest-side">Closest Side</option>
+      <option value="gradient-radial gradient-direction-closest-corner">Closest Corner</option>
+      <option value="gradient-radial gradient-direction-farthest-side">Farthest Side</option>
+      <option value="gradient-radial gradient-direction-farthest-corner">Farthest Corner</option>
+    </select>
+  </div>
+</div>
 
 ## Gradient From Color
 
@@ -81,6 +145,52 @@ Used to customize gradient types.
 | `.from-tertiary-800` | --graupl-gradient-from | `var(--graupl-theme-active--tertiary--800)` |
 | `.from-tertiary-900` | --graupl-gradient-from | `var(--graupl-theme-active--tertiary--900)` |
 
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` bordered border-primary-700 gradient ${gradientFrom} to-primary-300 h-two-thirds w-half `">
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gradientFrom }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-gradient-from">Gradient From property</label>
+    <select id="select-gradient-from" v-model="gradientFrom">
+      <option value="from-transparent">Transparent</option>
+      <option value="from-primary">Primary</option>
+      <option value="from-primary-100">Primary 100</option>
+      <option value="from-primary-200">Primary 200</option>
+      <option value="from-primary-300">Primary 300</option>
+      <option value="from-primary-400">Primary 400</option>
+      <option value="from-primary-500">Primary 500</option>
+      <option value="from-primary-600">Primary 600</option>
+      <option value="from-primary-700">Primary 700</option>
+      <option value="from-primary-800">Primary 800</option>
+      <option value="from-primary-900">Primary 900</option>
+      <option value="from-secondary-100">Secondary 100</option>
+      <option value="from-secondary-200">Secondary 200</option>
+      <option value="from-secondary-300">Secondary 300</option>
+      <option value="from-secondary-400">Secondary 400</option>
+      <option value="from-secondary-500">Secondary 500</option>
+      <option value="from-secondary-600">Secondary 600</option>
+      <option value="from-secondary-700">Secondary 700</option>
+      <option value="from-secondary-800">Secondary 800</option>
+      <option value="from-secondary-900">Secondary 900</option>
+      <option value="from-tertiary-100">Tertiary 100</option>
+      <option value="from-tertiary-200">Tertiary 200</option>
+      <option value="from-tertiary-300">Tertiary 300</option>
+      <option value="from-tertiary-400">Tertiary 400</option>
+      <option value="from-tertiary-500">Tertiary 500</option>
+      <option value="from-tertiary-600">Tertiary 600</option>
+      <option value="from-tertiary-700">Tertiary 700</option>
+      <option value="from-tertiary-800">Tertiary 800</option>
+      <option value="from-tertiary-900">Tertiary 900</option>
+    </select>
+  </div>
+</div>
+
 ## Gradient To Color
 
 | Class Name | Property | Value |
@@ -116,6 +226,52 @@ Used to customize gradient types.
 | `.to-tertiary-700` | --graupl-gradient-to | `var(--graupl-theme-active--tertiary--700)` |
 | `.to-tertiary-800` | --graupl-gradient-to | `var(--graupl-theme-active--tertiary--800)` |
 | `.to-tertiary-900` | --graupl-gradient-to | `var(--graupl-theme-active--tertiary--900)` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` bordered border-primary-700 gradient ${gradientTo} from-primary-300 h-two-thirds w-half `">
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gradientTo }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-gradient-to">Gradient To property</label>
+    <select id="select-gradient-to" v-model="gradientTo">
+      <option value="to-transparent">Transparent</option>
+      <option value="to-primary">Primary</option>
+      <option value="to-primary-100">Primary 100</option>
+      <option value="to-primary-200">Primary 200</option>
+      <option value="to-primary-300">Primary 300</option>
+      <option value="to-primary-400">Primary 400</option>
+      <option value="to-primary-500">Primary 500</option>
+      <option value="to-primary-600">Primary 600</option>
+      <option value="to-primary-700">Primary 700</option>
+      <option value="to-primary-800">Primary 800</option>
+      <option value="to-primary-900">Primary 900</option>
+      <option value="to-secondary-100">Secondary 100</option>
+      <option value="to-secondary-200">Secondary 200</option>
+      <option value="to-secondary-300">Secondary 300</option>
+      <option value="to-secondary-400">Secondary 400</option>
+      <option value="to-secondary-500">Secondary 500</option>
+      <option value="to-secondary-600">Secondary 600</option>
+      <option value="to-secondary-700">Secondary 700</option>
+      <option value="to-secondary-800">Secondary 800</option>
+      <option value="to-secondary-900">Secondary 900</option>
+      <option value="to-tertiary-100">Tertiary 100</option>
+      <option value="to-tertiary-200">Tertiary 200</option>
+      <option value="to-tertiary-300">Tertiary 300</option>
+      <option value="to-tertiary-400">Tertiary 400</option>
+      <option value="to-tertiary-500">Tertiary 500</option>
+      <option value="to-tertiary-600">Tertiary 600</option>
+      <option value="to-tertiary-700">Tertiary 700</option>
+      <option value="to-tertiary-800">Tertiary 800</option>
+      <option value="to-tertiary-900">Tertiary 900</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
