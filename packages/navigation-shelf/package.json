@@ -1,6 +1,6 @@
 {
   "name": "@graupl/navigation-shelf",
-  "version": "1.0.0-beta.51",
+  "version": "1.0.0-beta.52",
   "license": "GPL-3.0-or-later",
   "description": "A plugin for Graupl that provides a navigation shelf component.",
   "main": "dist/js/navigation-shelf.cjs.js",
