@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const display = ref("display-block");
+</script>
+
 # Display Utilities
 
 The display utilities provide a set of classes to adjust the `display` properties of elements.
@@ -17,6 +23,40 @@ The display utilities provide a set of classes to adjust the `display` propertie
 | `.display-none` | display | `none` |
 | `.display-contents` | display | `contents` |
 | `.display-list-item` | display | `list-item` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display px-6">
+      <div :class="` ${display} g-5 border-dashed border-tertiary-500 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+        <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ display }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-display">Display property</label>
+    <select id="select-display" v-model="display">
+      <option value="display-block">Block</option>
+      <option value="display-inline-block">Inline Block</option>
+      <option value="display-inline">Inline</option>
+      <option value="display-flex">Flex</option>
+      <option value="display-inline-flex">Inline flex</option>
+      <option value="display-grid">Grid</option>
+      <option value="display-inline-grid">Inline Grid</option>
+      <option value="display-flow-root">Flow Root</option>
+      <option value="display-none">None</option>
+      <option value="display-contents">Contents</option>
+      <option value="display-list-item">List Item</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

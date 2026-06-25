@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const float = ref("float-none");
+</script>
+
 # Float Utilities
 
 The float utilities provide a set of classes to adjust the `float` properties of elements.
@@ -11,6 +17,31 @@ The float utilities provide a set of classes to adjust the `float` properties of
 | `.float-right` | float | `right` |
 | `.float-inline-start` | float | `inline-start` |
 | `.float-inline-end` | float | `inline-end` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="` w-full h-full `">
+        <div :class="` ${float} bordered border-tertiary-700 bg-tertiary-300 p-5 m-3 `"></div>
+        <div class="float-left bordered border-primary-700 bg-primary-300 p-5 m-3"></div>
+        <div class="float-left bordered border-primary-700 bg-primary-300 p-5 m-3"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="p-5 {{ float }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-float">Float property</label>
+    <select id="select-float" v-model="float">
+      <option value="float-none">None</option>
+      <option value="float-left">Left</option>
+      <option value="float-right">Right</option>
+      <option value="float-inline-start">Inline-start</option>
+      <option value="float-inline-end">Inline End</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
