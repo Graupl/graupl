@@ -1,11 +1,11 @@
 <script setup>
   import { ref } from "vue";
 
-  const block = ref("block-auto");
-  const maxBlock = ref("block-10");
-  const max = ref("max-block-auto");
-  const minBlock = ref("block-1");
-  const min = ref("min-block-auto");
+  const block = ref("bs-auto");
+  const maxBlock = ref("bs-10");
+  const max = ref("max-bs-auto");
+  const minBlock = ref("bs-1");
+  const min = ref("min-bs-auto");
 </script>
 
 # Block Size Utilities
@@ -16,34 +16,34 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 
 | Class Name                     | Property   | Value                     |
 | ------------------------------ | ---------- | ------------------------- |
-| `.block-auto`                  | block-size | `auto`                    |
-| `.block-fit-content`           | block-size | `fit-content`             |
-| `.block-max-content`           | block-size | `max-content`             |
-| `.block-min-content`           | block-size | `min-content`             |
-| `.block-stretch`               | block-size | `stretch`                 |
-| `.block-full`                  | block-size | `100%`                    |
-| `.block-quarter`               | block-size | `25%`                     |
-| `.block-half`                  | block-size | `50%`                     |
-| `.block-three-quarters`        | block-size | `75%`                     |
-| `.block-third`                 | block-size | `calc(100%/ 3)`           |
-| `.block-two-thirds`            | block-size | `calc(100%/ 1.5)`         |
-| `.block-half-screen`           | block-size | `50vh`                    |
-| `.block-third-screen`          | block-size | `calc(100vh/ 3)`          |
-| `.block-two-thirds-screen`     | block-size | `calc(100vh/ 1.5)`        |
-| `.block-quarter-screen`        | block-size | `25vh`                    |
-| `.block-three-quarters-screen` | block-size | `75vh`                    |
-| `.block-full-screen`           | block-size | `100vh`                   |
-| `.block-0`                     | block-size | `var(--graupl-spacer-0)`  |
-| `.block-1`                     | block-size | `var(--graupl-spacer-1)`  |
-| `.block-2`                     | block-size | `var(--graupl-spacer-2)`  |
-| `.block-3`                     | block-size | `var(--graupl-spacer-3)`  |
-| `.block-4`                     | block-size | `var(--graupl-spacer-4)`  |
-| `.block-5`                     | block-size | `var(--graupl-spacer-5)`  |
-| `.block-6`                     | block-size | `var(--graupl-spacer-6)`  |
-| `.block-7`                     | block-size | `var(--graupl-spacer-7)`  |
-| `.block-8`                     | block-size | `var(--graupl-spacer-8)`  |
-| `.block-9`                     | block-size | `var(--graupl-spacer-9)`  |
-| `.block-10`                    | block-size | `var(--graupl-spacer-10)` |
+| `.bs-auto`                  | block-size | `auto`                    |
+| `.bs-fit-content`           | block-size | `fit-content`             |
+| `.bs-max-content`           | block-size | `max-content`             |
+| `.bs-min-content`           | block-size | `min-content`             |
+| `.bs-stretch`               | block-size | `stretch`                 |
+| `.bs-full`                  | block-size | `100%`                    |
+| `.bs-quarter`               | block-size | `25%`                     |
+| `.bs-half`                  | block-size | `50%`                     |
+| `.bs-three-quarters`        | block-size | `75%`                     |
+| `.bs-third`                 | block-size | `calc(100%/ 3)`           |
+| `.bs-two-thirds`            | block-size | `calc(100%/ 1.5)`         |
+| `.bs-half-screen`           | block-size | `50vh`                    |
+| `.bs-third-screen`          | block-size | `calc(100vh/ 3)`          |
+| `.bs-two-thirds-screen`     | block-size | `calc(100vh/ 1.5)`        |
+| `.bs-quarter-screen`        | block-size | `25vh`                    |
+| `.bs-three-quarters-screen` | block-size | `75vh`                    |
+| `.bs-full-screen`           | block-size | `100vh`                   |
+| `.bs-0`                     | block-size | `var(--graupl-spacer-0)`  |
+| `.bs-1`                     | block-size | `var(--graupl-spacer-1)`  |
+| `.bs-2`                     | block-size | `var(--graupl-spacer-2)`  |
+| `.bs-3`                     | block-size | `var(--graupl-spacer-3)`  |
+| `.bs-4`                     | block-size | `var(--graupl-spacer-4)`  |
+| `.bs-5`                     | block-size | `var(--graupl-spacer-5)`  |
+| `.bs-6`                     | block-size | `var(--graupl-spacer-6)`  |
+| `.bs-7`                     | block-size | `var(--graupl-spacer-7)`  |
+| `.bs-8`                     | block-size | `var(--graupl-spacer-8)`  |
+| `.bs-9`                     | block-size | `var(--graupl-spacer-9)`  |
+| `.bs-10`                    | block-size | `var(--graupl-spacer-10)` |
 
 <div class="example">
   <div class="example-container">
@@ -57,34 +57,34 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
   <div class="input-group">
     <label for="select-block">Block size property</label>
     <select id="select-block" v-model="block">
-      <option value="block-auto">Auto</option>
-      <option value="block-fit-content">Fit-Content</option>
-      <option value="block-max-content">Max-Content</option>
-      <option value="block-min-content">Min-Content</option>
-      <option value="block-stretch">Stretch</option>
-      <option value="block-full">Full</option>
-      <option value="block-quarter">Quarter</option>
-      <option value="block-half">Half</option>
-      <option value="block-three-quarters">Three-Quarters</option>
-      <option value="block-third">Third</option>
-      <option value="block-two-thirds">Two-Thirds</option>
-      <option value="block-half-screen">Half-Screen</option>
-      <option value="block-third-screen">Third-Screen</option>
-      <option value="block-two-thirds-screen">Two-Thirds-Screen</option>
-      <option value="block-quarter-screen">Quarter-Screen</option>
-      <option value="block-three-quarters-screen">Three-Quarters-Screen</option>
-      <option value="block-full-screen">Full-Screen</option>
-      <option value="block-0">0</option>
-      <option value="block-1">1</option>
-      <option value="block-2">2</option>
-      <option value="block-3">3</option>
-      <option value="block-4">4</option>
-      <option value="block-5">5</option>
-      <option value="block-6">6</option>
-      <option value="block-7">7</option>
-      <option value="block-8">8</option>
-      <option value="block-9">9</option>
-      <option value="block-10">10</option>
+      <option value="bs-auto">Auto</option>
+      <option value="bs-fit-content">Fit-Content</option>
+      <option value="bs-max-content">Max-Content</option>
+      <option value="bs-min-content">Min-Content</option>
+      <option value="bs-stretch">Stretch</option>
+      <option value="bs-full">Full</option>
+      <option value="bs-quarter">Quarter</option>
+      <option value="bs-half">Half</option>
+      <option value="bs-three-quarters">Three-Quarters</option>
+      <option value="bs-third">Third</option>
+      <option value="bs-two-thirds">Two-Thirds</option>
+      <option value="bs-half-screen">Half-Screen</option>
+      <option value="bs-third-screen">Third-Screen</option>
+      <option value="bs-two-thirds-screen">Two-Thirds-Screen</option>
+      <option value="bs-quarter-screen">Quarter-Screen</option>
+      <option value="bs-three-quarters-screen">Three-Quarters-Screen</option>
+      <option value="bs-full-screen">Full-Screen</option>
+      <option value="bs-0">0</option>
+      <option value="bs-1">1</option>
+      <option value="bs-2">2</option>
+      <option value="bs-3">3</option>
+      <option value="bs-4">4</option>
+      <option value="bs-5">5</option>
+      <option value="bs-6">6</option>
+      <option value="bs-7">7</option>
+      <option value="bs-8">8</option>
+      <option value="bs-9">9</option>
+      <option value="bs-10">10</option>
     </select>
   </div>
 </div>
@@ -93,34 +93,34 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 
 | Class Name                         | Property       | Value                     |
 | ---------------------------------- | -------------- | ------------------------- |
-| `.max-block-auto`                  | max-block-size | `auto`                    |
-| `.max-block-fit-content`           | max-block-size | `fit-content`             |
-| `.max-block-max-content`           | max-block-size | `max-content`             |
-| `.max-block-min-content`           | max-block-size | `min-content`             |
-| `.max-block-stretch`               | max-block-size | `stretch`                 |
-| `.max-block-full`                  | max-block-size | `100%`                    |
-| `.max-block-quarter`               | max-block-size | `25%`                     |
-| `.max-block-half`                  | max-block-size | `50%`                     |
-| `.max-block-three-quarters`        | max-block-size | `75%`                     |
-| `.max-block-third`                 | max-block-size | `calc(100%/ 3)`           |
-| `.max-block-two-thirds`            | max-block-size | `calc(100%/ 1.5)`         |
-| `.max-block-half-screen`           | max-block-size | `50vh`                    |
-| `.max-block-third-screen`          | max-block-size | `calc(100vh/ 3)`          |
-| `.max-block-two-thirds-screen`     | max-block-size | `calc(100vh/ 1.5)`        |
-| `.max-block-quarter-screen`        | max-block-size | `25vh`                    |
-| `.max-block-three-quarters-screen` | max-block-size | `75vh`                    |
-| `.max-block-full-screen`           | max-block-size | `100vh`                   |
-| `.max-block-0`                     | max-block-size | `var(--graupl-spacer-0)`  |
-| `.max-block-1`                     | max-block-size | `var(--graupl-spacer-1)`  |
-| `.max-block-2`                     | max-block-size | `var(--graupl-spacer-2)`  |
-| `.max-block-3`                     | max-block-size | `var(--graupl-spacer-3)`  |
-| `.max-block-4`                     | max-block-size | `var(--graupl-spacer-4)`  |
-| `.max-block-5`                     | max-block-size | `var(--graupl-spacer-5)`  |
-| `.max-block-6`                     | max-block-size | `var(--graupl-spacer-6)`  |
-| `.max-block-7`                     | max-block-size | `var(--graupl-spacer-7)`  |
-| `.max-block-8`                     | max-block-size | `var(--graupl-spacer-8)`  |
-| `.max-block-9`                     | max-block-size | `var(--graupl-spacer-9)`  |
-| `.max-block-10`                    | max-block-size | `var(--graupl-spacer-10)` |
+| `.max-bs-auto`                  | max-block-size | `auto`                    |
+| `.max-bs-fit-content`           | max-block-size | `fit-content`             |
+| `.max-bs-max-content`           | max-block-size | `max-content`             |
+| `.max-bs-min-content`           | max-block-size | `min-content`             |
+| `.max-bs-stretch`               | max-block-size | `stretch`                 |
+| `.max-bs-full`                  | max-block-size | `100%`                    |
+| `.max-bs-quarter`               | max-block-size | `25%`                     |
+| `.max-bs-half`                  | max-block-size | `50%`                     |
+| `.max-bs-three-quarters`        | max-block-size | `75%`                     |
+| `.max-bs-third`                 | max-block-size | `calc(100%/ 3)`           |
+| `.max-bs-two-thirds`            | max-block-size | `calc(100%/ 1.5)`         |
+| `.max-bs-half-screen`           | max-block-size | `50vh`                    |
+| `.max-bs-third-screen`          | max-block-size | `calc(100vh/ 3)`          |
+| `.max-bs-two-thirds-screen`     | max-block-size | `calc(100vh/ 1.5)`        |
+| `.max-bs-quarter-screen`        | max-block-size | `25vh`                    |
+| `.max-bs-three-quarters-screen` | max-block-size | `75vh`                    |
+| `.max-bs-full-screen`           | max-block-size | `100vh`                   |
+| `.max-bs-0`                     | max-block-size | `var(--graupl-spacer-0)`  |
+| `.max-bs-1`                     | max-block-size | `var(--graupl-spacer-1)`  |
+| `.max-bs-2`                     | max-block-size | `var(--graupl-spacer-2)`  |
+| `.max-bs-3`                     | max-block-size | `var(--graupl-spacer-3)`  |
+| `.max-bs-4`                     | max-block-size | `var(--graupl-spacer-4)`  |
+| `.max-bs-5`                     | max-block-size | `var(--graupl-spacer-5)`  |
+| `.max-bs-6`                     | max-block-size | `var(--graupl-spacer-6)`  |
+| `.max-bs-7`                     | max-block-size | `var(--graupl-spacer-7)`  |
+| `.max-bs-8`                     | max-block-size | `var(--graupl-spacer-8)`  |
+| `.max-bs-9`                     | max-block-size | `var(--graupl-spacer-9)`  |
+| `.max-bs-10`                    | max-block-size | `var(--graupl-spacer-10)` |
 
 <div class="example">
   <div class="example-container">
@@ -134,67 +134,67 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
   <div class="input-group">
     <label for="select-max-block">Block size property</label>
     <select id="select-max-block" v-model="maxBlock">
-      <option value="block-auto">Auto</option>
-      <option value="block-fit-content">Fit-Content</option>
-      <option value="block-max-content">Max-Content</option>
-      <option value="block-min-content">Min-Content</option>
-      <option value="block-stretch">Stretch</option>
-      <option value="block-full">Full</option>
-      <option value="block-quarter">Quarter</option>
-      <option value="block-half">Half</option>
-      <option value="block-three-quarters">Three-Quarters</option>
-      <option value="block-third">Third</option>
-      <option value="block-two-thirds">Two-Thirds</option>
-      <option value="block-half-screen">Half-Screen</option>
-      <option value="block-third-screen">Third-Screen</option>
-      <option value="block-two-thirds-screen">Two-Thirds-Screen</option>
-      <option value="block-quarter-screen">Quarter-Screen</option>
-      <option value="block-three-quarters-screen">Three-Quarters-Screen</option>
-      <option value="block-full-screen">Full-Screen</option>
-      <option value="block-0">0</option>
-      <option value="block-1">1</option>
-      <option value="block-2">2</option>
-      <option value="block-3">3</option>
-      <option value="block-4">4</option>
-      <option value="block-5">5</option>
-      <option value="block-6">6</option>
-      <option value="block-7">7</option>
-      <option value="block-8">8</option>
-      <option value="block-9">9</option>
-      <option value="block-10">10</option>
+      <option value="bs-auto">Auto</option>
+      <option value="bs-fit-content">Fit-Content</option>
+      <option value="bs-max-content">Max-Content</option>
+      <option value="bs-min-content">Min-Content</option>
+      <option value="bs-stretch">Stretch</option>
+      <option value="bs-full">Full</option>
+      <option value="bs-quarter">Quarter</option>
+      <option value="bs-half">Half</option>
+      <option value="bs-three-quarters">Three-Quarters</option>
+      <option value="bs-third">Third</option>
+      <option value="bs-two-thirds">Two-Thirds</option>
+      <option value="bs-half-screen">Half-Screen</option>
+      <option value="bs-third-screen">Third-Screen</option>
+      <option value="bs-two-thirds-screen">Two-Thirds-Screen</option>
+      <option value="bs-quarter-screen">Quarter-Screen</option>
+      <option value="bs-three-quarters-screen">Three-Quarters-Screen</option>
+      <option value="bs-full-screen">Full-Screen</option>
+      <option value="bs-0">0</option>
+      <option value="bs-1">1</option>
+      <option value="bs-2">2</option>
+      <option value="bs-3">3</option>
+      <option value="bs-4">4</option>
+      <option value="bs-5">5</option>
+      <option value="bs-6">6</option>
+      <option value="bs-7">7</option>
+      <option value="bs-8">8</option>
+      <option value="bs-9">9</option>
+      <option value="bs-10">10</option>
     </select>
   </div>
   <div class="input-group">
     <label for="select-max">Max block size property</label>
     <select id="select-max" v-model="max">
-      <option value="max-block-auto">Auto</option>
-      <option value="max-block-fit-content">Fit-Content</option>
-      <option value="max-block-max-content">Max-Content</option>
-      <option value="max-block-min-content">Min-Content</option>
-      <option value="max-block-stretch">Stretch</option>
-      <option value="max-block-full">Full</option>
-      <option value="max-block-quarter">Quarter</option>
-      <option value="max-block-half">Half</option>
-      <option value="max-block-three-quarters">Three-Quarters</option>
-      <option value="max-block-third">Third</option>
-      <option value="max-block-two-thirds">Two-Thirds</option>
-      <option value="max-block-half-screen">Half-Screen</option>
-      <option value="max-block-third-screen">Third-Screen</option>
-      <option value="max-block-two-thirds-screen">Two-Thirds-Screen</option>
-      <option value="max-block-quarter-screen">Quarter-Screen</option>
-      <option value="max-block-three-quarters-screen">Three-Quarters-Screen</option>
-      <option value="max-block-full-screen">Full-Screen</option>
-      <option value="max-block-0">0</option>
-      <option value="max-block-1">1</option>
-      <option value="max-block-2">2</option>
-      <option value="max-block-3">3</option>
-      <option value="max-block-4">4</option>
-      <option value="max-block-5">5</option>
-      <option value="max-block-6">6</option>
-      <option value="max-block-7">7</option>
-      <option value="max-block-8">8</option>
-      <option value="max-block-9">9</option>
-      <option value="max-block-10">10</option>
+      <option value="max-bs-auto">Auto</option>
+      <option value="max-bs-fit-content">Fit-Content</option>
+      <option value="max-bs-max-content">Max-Content</option>
+      <option value="max-bs-min-content">Min-Content</option>
+      <option value="max-bs-stretch">Stretch</option>
+      <option value="max-bs-full">Full</option>
+      <option value="max-bs-quarter">Quarter</option>
+      <option value="max-bs-half">Half</option>
+      <option value="max-bs-three-quarters">Three-Quarters</option>
+      <option value="max-bs-third">Third</option>
+      <option value="max-bs-two-thirds">Two-Thirds</option>
+      <option value="max-bs-half-screen">Half-Screen</option>
+      <option value="max-bs-third-screen">Third-Screen</option>
+      <option value="max-bs-two-thirds-screen">Two-Thirds-Screen</option>
+      <option value="max-bs-quarter-screen">Quarter-Screen</option>
+      <option value="max-bs-three-quarters-screen">Three-Quarters-Screen</option>
+      <option value="max-bs-full-screen">Full-Screen</option>
+      <option value="max-bs-0">0</option>
+      <option value="max-bs-1">1</option>
+      <option value="max-bs-2">2</option>
+      <option value="max-bs-3">3</option>
+      <option value="max-bs-4">4</option>
+      <option value="max-bs-5">5</option>
+      <option value="max-bs-6">6</option>
+      <option value="max-bs-7">7</option>
+      <option value="max-bs-8">8</option>
+      <option value="max-bs-9">9</option>
+      <option value="max-bs-10">10</option>
     </select>
   </div>
 </div>
@@ -203,34 +203,34 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 
 | Class Name                         | Property       | Value                     |
 | ---------------------------------- | -------------- | ------------------------- |
-| `.min-block-auto`                  | min-block-size | `auto`                    |
-| `.min-block-fit-content`           | min-block-size | `fit-content`             |
-| `.min-block-max-content`           | min-block-size | `max-content`             |
-| `.min-block-min-content`           | min-block-size | `min-content`             |
-| `.min-block-stretch`               | min-block-size | `stretch`                 |
-| `.min-block-full`                  | min-block-size | `100%`                    |
-| `.min-block-quarter`               | min-block-size | `25%`                     |
-| `.min-block-half`                  | min-block-size | `50%`                     |
-| `.min-block-three-quarters`        | min-block-size | `75%`                     |
-| `.min-block-third`                 | min-block-size | `calc(100%/ 3)`           |
-| `.min-block-two-thirds`            | min-block-size | `calc(100%/ 1.5)`         |
-| `.min-block-half-screen`           | min-block-size | `50vh`                    |
-| `.min-block-third-screen`          | min-block-size | `calc(100vh/ 3)`          |
-| `.min-block-two-thirds-screen`     | min-block-size | `calc(100vh/ 1.5)`        |
-| `.min-block-quarter-screen`        | min-block-size | `25vh`                    |
-| `.min-block-three-quarters-screen` | min-block-size | `75vh`                    |
-| `.min-block-full-screen`           | min-block-size | `100vh`                   |
-| `.min-block-0`                     | min-block-size | `var(--graupl-spacer-0)`  |
-| `.min-block-1`                     | min-block-size | `var(--graupl-spacer-1)`  |
-| `.min-block-2`                     | min-block-size | `var(--graupl-spacer-2)`  |
-| `.min-block-3`                     | min-block-size | `var(--graupl-spacer-3)`  |
-| `.min-block-4`                     | min-block-size | `var(--graupl-spacer-4)`  |
-| `.min-block-5`                     | min-block-size | `var(--graupl-spacer-5)`  |
-| `.min-block-6`                     | min-block-size | `var(--graupl-spacer-6)`  |
-| `.min-block-7`                     | min-block-size | `var(--graupl-spacer-7)`  |
-| `.min-block-8`                     | min-block-size | `var(--graupl-spacer-8)`  |
-| `.min-block-9`                     | min-block-size | `var(--graupl-spacer-9)`  |
-| `.min-block-10`                    | min-block-size | `var(--graupl-spacer-10)` |
+| `.min-bs-auto`                  | min-block-size | `auto`                    |
+| `.min-bs-fit-content`           | min-block-size | `fit-content`             |
+| `.min-bs-max-content`           | min-block-size | `max-content`             |
+| `.min-bs-min-content`           | min-block-size | `min-content`             |
+| `.min-bs-stretch`               | min-block-size | `stretch`                 |
+| `.min-bs-full`                  | min-block-size | `100%`                    |
+| `.min-bs-quarter`               | min-block-size | `25%`                     |
+| `.min-bs-half`                  | min-block-size | `50%`                     |
+| `.min-bs-three-quarters`        | min-block-size | `75%`                     |
+| `.min-bs-third`                 | min-block-size | `calc(100%/ 3)`           |
+| `.min-bs-two-thirds`            | min-block-size | `calc(100%/ 1.5)`         |
+| `.min-bs-half-screen`           | min-block-size | `50vh`                    |
+| `.min-bs-third-screen`          | min-block-size | `calc(100vh/ 3)`          |
+| `.min-bs-two-thirds-screen`     | min-block-size | `calc(100vh/ 1.5)`        |
+| `.min-bs-quarter-screen`        | min-block-size | `25vh`                    |
+| `.min-bs-three-quarters-screen` | min-block-size | `75vh`                    |
+| `.min-bs-full-screen`           | min-block-size | `100vh`                   |
+| `.min-bs-0`                     | min-block-size | `var(--graupl-spacer-0)`  |
+| `.min-bs-1`                     | min-block-size | `var(--graupl-spacer-1)`  |
+| `.min-bs-2`                     | min-block-size | `var(--graupl-spacer-2)`  |
+| `.min-bs-3`                     | min-block-size | `var(--graupl-spacer-3)`  |
+| `.min-bs-4`                     | min-block-size | `var(--graupl-spacer-4)`  |
+| `.min-bs-5`                     | min-block-size | `var(--graupl-spacer-5)`  |
+| `.min-bs-6`                     | min-block-size | `var(--graupl-spacer-6)`  |
+| `.min-bs-7`                     | min-block-size | `var(--graupl-spacer-7)`  |
+| `.min-bs-8`                     | min-block-size | `var(--graupl-spacer-8)`  |
+| `.min-bs-9`                     | min-block-size | `var(--graupl-spacer-9)`  |
+| `.min-bs-10`                    | min-block-size | `var(--graupl-spacer-10)` |
 
 <div class="example">
   <div class="example-container">
@@ -244,67 +244,67 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
   <div class="input-group">
     <label for="select-min-block">Block size property</label>
     <select id="select-min-block" v-model="minBlock">
-      <option value="block-auto">Auto</option>
-      <option value="block-fit-content">Fit-Content</option>
-      <option value="block-max-content">Max-Content</option>
-      <option value="block-min-content">Min-Content</option>
-      <option value="block-stretch">Stretch</option>
-      <option value="block-full">Full</option>
-      <option value="block-quarter">Quarter</option>
-      <option value="block-half">Half</option>
-      <option value="block-three-quarters">Three-Quarters</option>
-      <option value="block-third">Third</option>
-      <option value="block-two-thirds">Two-Thirds</option>
-      <option value="block-half-screen">Half-Screen</option>
-      <option value="block-third-screen">Third-Screen</option>
-      <option value="block-two-thirds-screen">Two-Thirds-Screen</option>
-      <option value="block-quarter-screen">Quarter-Screen</option>
-      <option value="block-three-quarters-screen">Three-Quarters-Screen</option>
-      <option value="block-full-screen">Full-Screen</option>
-      <option value="block-0">0</option>
-      <option value="block-1">1</option>
-      <option value="block-2">2</option>
-      <option value="block-3">3</option>
-      <option value="block-4">4</option>
-      <option value="block-5">5</option>
-      <option value="block-6">6</option>
-      <option value="block-7">7</option>
-      <option value="block-8">8</option>
-      <option value="block-9">9</option>
-      <option value="block-10">10</option>
+      <option value="bs-auto">Auto</option>
+      <option value="bs-fit-content">Fit-Content</option>
+      <option value="bs-max-content">Max-Content</option>
+      <option value="bs-min-content">Min-Content</option>
+      <option value="bs-stretch">Stretch</option>
+      <option value="bs-full">Full</option>
+      <option value="bs-quarter">Quarter</option>
+      <option value="bs-half">Half</option>
+      <option value="bs-three-quarters">Three-Quarters</option>
+      <option value="bs-third">Third</option>
+      <option value="bs-two-thirds">Two-Thirds</option>
+      <option value="bs-half-screen">Half-Screen</option>
+      <option value="bs-third-screen">Third-Screen</option>
+      <option value="bs-two-thirds-screen">Two-Thirds-Screen</option>
+      <option value="bs-quarter-screen">Quarter-Screen</option>
+      <option value="bs-three-quarters-screen">Three-Quarters-Screen</option>
+      <option value="bs-full-screen">Full-Screen</option>
+      <option value="bs-0">0</option>
+      <option value="bs-1">1</option>
+      <option value="bs-2">2</option>
+      <option value="bs-3">3</option>
+      <option value="bs-4">4</option>
+      <option value="bs-5">5</option>
+      <option value="bs-6">6</option>
+      <option value="bs-7">7</option>
+      <option value="bs-8">8</option>
+      <option value="bs-9">9</option>
+      <option value="bs-10">10</option>
     </select>
   </div>
   <div class="input-group">
     <label for="select-min">Min block size property</label>
     <select id="select-min" v-model="min">
-      <option value="min-block-auto">Auto</option>
-      <option value="min-block-fit-content">Fit-Content</option>
-      <option value="min-block-max-content">Max-Content</option>
-      <option value="min-block-min-content">Min-Content</option>
-      <option value="min-block-stretch">Stretch</option>
-      <option value="min-block-full">Full</option>
-      <option value="min-block-quarter">Quarter</option>
-      <option value="min-block-half">Half</option>
-      <option value="min-block-three-quarters">Three-Quarters</option>
-      <option value="min-block-third">Third</option>
-      <option value="min-block-two-thirds">Two-Thirds</option>
-      <option value="min-block-half-screen">Half-Screen</option>
-      <option value="min-block-third-screen">Third-Screen</option>
-      <option value="min-block-two-thirds-screen">Two-Thirds-Screen</option>
-      <option value="min-block-quarter-screen">Quarter-Screen</option>
-      <option value="min-block-three-quarters-screen">Three-Quarters-Screen</option>
-      <option value="min-block-full-screen">Full-Screen</option>
-      <option value="min-block-0">0</option>
-      <option value="min-block-1">1</option>
-      <option value="min-block-2">2</option>
-      <option value="min-block-3">3</option>
-      <option value="min-block-4">4</option>
-      <option value="min-block-5">5</option>
-      <option value="min-block-6">6</option>
-      <option value="min-block-7">7</option>
-      <option value="min-block-8">8</option>
-      <option value="min-block-9">9</option>
-      <option value="min-block-10">10</option>
+      <option value="min-bs-auto">Auto</option>
+      <option value="min-bs-fit-content">Fit-Content</option>
+      <option value="min-bs-max-content">Max-Content</option>
+      <option value="min-bs-min-content">Min-Content</option>
+      <option value="min-bs-stretch">Stretch</option>
+      <option value="min-bs-full">Full</option>
+      <option value="min-bs-quarter">Quarter</option>
+      <option value="min-bs-half">Half</option>
+      <option value="min-bs-three-quarters">Three-Quarters</option>
+      <option value="min-bs-third">Third</option>
+      <option value="min-bs-two-thirds">Two-Thirds</option>
+      <option value="min-bs-half-screen">Half-Screen</option>
+      <option value="min-bs-third-screen">Third-Screen</option>
+      <option value="min-bs-two-thirds-screen">Two-Thirds-Screen</option>
+      <option value="min-bs-quarter-screen">Quarter-Screen</option>
+      <option value="min-bs-three-quarters-screen">Three-Quarters-Screen</option>
+      <option value="min-bs-full-screen">Full-Screen</option>
+      <option value="min-bs-0">0</option>
+      <option value="min-bs-1">1</option>
+      <option value="min-bs-2">2</option>
+      <option value="min-bs-3">3</option>
+      <option value="min-bs-4">4</option>
+      <option value="min-bs-5">5</option>
+      <option value="min-bs-6">6</option>
+      <option value="min-bs-7">7</option>
+      <option value="min-bs-8">8</option>
+      <option value="min-bs-9">9</option>
+      <option value="min-bs-10">10</option>
     </select>
   </div>
 </div>
