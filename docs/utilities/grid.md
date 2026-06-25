@@ -1,10 +1,14 @@
 <script setup>
   import { ref } from "vue";
 
-  const gridColumn = ref("column-start-first");
-  const gridRow = ref("row-start-first");
+  const gridColumnStart = ref("column-start-first");
+  const gridColumnEnd = ref("column-end-first");
+  const gridRowStart = ref("row-start-first");
+  const gridRowEnd = ref("row-end-first");
   const gridTemplateColumns = ref("grid-cols-auto");
   const gridTemplateRows = ref("grid-rows-auto");
+  const gridColSpan = ref("col-span-auto");
+  const gridRowSpan = ref("row-span-auto");
 </script>
 
 # Grid Utilities
@@ -50,7 +54,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
   <div class="example-container">
     <div class="example-display">
       <div class=" display-grid g-3 bg-primary-200 " style="grid-template-columns: repeat(12, minmax(0,1fr)); grid-template-rows: repeat(auto-fill, auto);">
-        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridColumn} `"></div>
+        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridColumnStart} ${gridColumnEnd} `"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
@@ -58,19 +62,19 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridColumn} `"></div>
+        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridColumnStart} ${gridColumnEnd} `"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ gridColumn }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ gridColumnStart }} {{ gridColumnEnd }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
-    <label for="select-grid-columns">Grid Columns property</label>
-    <select id="select-grid-columns" v-model="gridColumn">
+    <label for="select-grid-columns">Grid Columns Start property</label>
+    <select id="select-grid-columns" v-model="gridColumnStart">
       <option value="column-start-first">Start First</option>
       <option value="column-start-last">Start Last</option>
       <option value="column-start-auto">Start Auto</option>
@@ -86,6 +90,11 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
       <option value="column-start-10">Start 10</option>
       <option value="column-start-11">Start 11</option>
       <option value="column-start-12">Start 12</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="select-grid-columns-end">Grid Columns End property</label>
+    <select id="select-grid-columns-end" v-model="gridColumnEnd">
       <option value="column-end-first">End First</option>
       <option value="column-end-last">End Last</option>
       <option value="column-end-auto">End Auto</option>
@@ -143,8 +152,8 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class=" display-grid g-3 bg-primary-200 " style="grid-template-columns: repeat(12, minmax(0,1fr)); grid-template-rows: repeat(auto-fill, auto);">
-        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridRow} `"></div>
+      <div class=" display-grid g-3 bg-primary-200 " style="grid-template-columns: repeat(12, minmax(0,1fr)); grid-template-rows: repeat(12, 1fr);">
+        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridRowStart} ${gridRowEnd} `"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
@@ -152,19 +161,19 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridRow} `"></div>
+        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridRowStart} ${gridRowEnd} `"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ gridRow }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ gridRowStart }} {{ gridRowEnd }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
-    <label for="select-grid-rows">Grid Rows property</label>
-    <select id="select-grid-rows" v-model="gridRow">
+    <label for="select-grid-row-start">Grid Row Start property</label>
+    <select id="select-grid-row-start" v-model="gridRowStart">
       <option value="row-start-first">Start First</option>
       <option value="row-start-last">Start Last</option>
       <option value="row-start-auto">Start Auto</option>
@@ -180,6 +189,11 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
       <option value="row-start-10">Start 10</option>
       <option value="row-start-11">Start 11</option>
       <option value="row-start-12">Start 12</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="select-grid-rows-end">Grid Row End property</label>
+    <select id="select-grid-rows-end" v-model="gridRowEnd">
       <option value="row-end-first">End First</option>
       <option value="row-end-last">End Last</option>
       <option value="row-end-auto">End Auto</option>
@@ -283,16 +297,16 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="` display-grid g-3 bg-primary-200 ${gridTemplateRows} `" style="grid-template-columns: repeat(12, auto);">
+      <div :class="` display-grid g-3 bg-primary-200 ${gridTemplateRows} `" style="grid-template-columns: repeat(12, 1fr);">
         <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 `"></div>
+        <div class="bordered Spanborder-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 `"></div>
+        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5`"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
         <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
@@ -342,6 +356,50 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.col-span-11` | `grid-column` | `span 11` |
 | `.col-span-12` | `grid-column` | `span 12` |
 
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` display-grid g-3 bg-primary-200 `" style="grid-template-columns: repeat(12, auto); grid-template-rows: repeat(auto-fill, auto);">
+        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridColSpan} `"></div>
+        <div class="bordered Spanborder-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridColSpan} `"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gridColSpan }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-grid-column-span">Grid Column Span property</label>
+    <select id="select-grid-column-span" v-model="gridColSpan">
+      <option value="col-span-auto">Auto</option>
+      <option value="col-span-subgrid">Subgrid</option>
+      <option value="col-span-1">1 Row</option>
+      <option value="col-span-2">2 Rows</option>
+      <option value="col-span-3">3 Rows</option>
+      <option value="col-span-4">4 Rows</option>
+      <option value="col-span-5">5 Rows</option>
+      <option value="col-span-6">6 Rows</option>
+      <option value="col-span-7">7 Rows</option>
+      <option value="col-span-8">8 Rows</option>
+      <option value="col-span-9">9 Rows</option>
+      <option value="col-span-10">10 Rows</option>
+      <option value="col-span-11">11 Rows</option>
+      <option value="col-span-12">12 Rows</option>
+    </select>
+  </div>
+</div>
+
 ## Row Span
 
 | Class Name | Property | Value |
@@ -360,6 +418,50 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.row-span-10` | `grid-row` | `span 10` |
 | `.row-span-11` | `grid-row` | `span 11` |
 | `.row-span-12` | `grid-row` | `span 12` |
+
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="` display-grid g-3 bg-primary-200 `" style="grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(12, 1fr);">
+        <div :class="`bordered border-tertiary-700 bg-tertiary-300 p-5 ${gridRowSpan} `"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div :class="` bordered border-secondary-700 bg-secondary-300 p-5 ${gridRowSpan} `"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ gridRowSpan }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-grid-row-span">Grid Row Span property</label>
+    <select id="select-grid-row-span" v-model="gridRowSpan">
+      <option value="row-span-auto">Auto</option>
+      <option value="row-span-subgrid">Subgrid</option>
+      <option value="row-span-1">1 Row</option>
+      <option value="row-span-2">2 Rows</option>
+      <option value="row-span-3">3 Rows</option>
+      <option value="row-span-4">4 Rows</option>
+      <option value="row-span-5">5 Rows</option>
+      <option value="row-span-6">6 Rows</option>
+      <option value="row-span-7">7 Rows</option>
+      <option value="row-span-8">8 Rows</option>
+      <option value="row-span-9">9 Rows</option>
+      <option value="row-span-10">10 Rows</option>
+      <option value="row-span-11">11 Rows</option>
+      <option value="row-span-12">12 Rows</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
