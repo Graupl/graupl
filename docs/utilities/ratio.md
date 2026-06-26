@@ -59,9 +59,12 @@ Used to customize ratio.
 
 <div class="example">
   <div class="example-container">
-    <div class="example-display">
-      <div :class="`ratio ${ratio} display-flex h-auto w-10`">
-        <div class="bordered border-primary-700 bg-primary-300 force-ratio"></div>
+    <div class="example-display p-4">
+      <div class="display-flex is-max-content bs-max-content position-relative">
+        <div class="float-left position-absolute w-10 h-10 bg-tertiary-300"></div>
+        <div :class="`ratio ${ratio} display-flex h-auto w-10`">
+          <div class="bordered border-primary-700 bg-primary-300 force-ratio"></div>
+      </div>
       </div>
     </div>
     <div class="example-classes">

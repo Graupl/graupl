@@ -26,10 +26,15 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div class="position-absolute z-0 display-flex g-5">
+        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
+        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
+        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
+      </div>
+      <div :class="`position-relative z-1 ${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -64,10 +69,28 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${items} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div class="position-relative">
+       <div :class="`display-flex w-full m-1 g-5 position-absolute z-0`">
+        <div class=" w-third">
+          <div class="bordered border-primary-700 bg-primary-300 w-7 h-7 "></div>
+        </div>
+        <div class=" w-third">
+          <div class="bordered border-primary-700 bg-primary-300 w-7 h-7 "></div>
+        </div>
+        <div class=" w-third">
+          <div class="bordered border-primary-700 bg-primary-300 w-7 h-7 "></div>
+        </div>
+      </div>
+      </div>
+      <div :class="`display-grid border-dotted g-5 ${items} position-relative z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: 80px;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div><div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -100,10 +123,12 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${self} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: 80px;">
+        <div :class="` bordered border-tertiary-700 bg-tertiary-300 ${self} `">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-primary-700 bg-primary-300 bs-7 is-7"></div>
+        <div class="bordered border-primary-700 bg-primary-300 bs-7 is-7"></div>
       </div>
     </div>
     <div class="example-classes">

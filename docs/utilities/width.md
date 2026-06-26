@@ -46,8 +46,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex g-5 h-full`">
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 ${width}`">The Test Item</div>
+      <div class="display-flex is-full bs-fit-content bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${width}`"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -125,8 +125,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex g-5 h-full`">
-        <div :class="`bordered border-primary-700 text-primary-100 py-5 bg-primary-300 ${maxWidth}`">The Test Item</div>
+      <div class="display-flex  is-full bs-fit-content bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${maxWidth}`"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -204,8 +204,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex g-5 h-full`">
-        <div :class="`bordered border-primary-700 text-primary-100 py-5 bg-primary-300 ${minWidth}`">The Test Item</div>
+       <div class="display-flex is-full bs-fit-content bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${minWidth}`"></div>
       </div>
     </div>
     <div class="example-classes">

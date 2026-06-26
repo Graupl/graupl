@@ -19,8 +19,9 @@ The visibility utilities provide a set of classes to adjust the `visibility` pro
 <div class="example">
   <div class="example-container">
     <div class="example-display position-relative">
-      <div class="bg-tertiary-200 bordered border-tertiary-700 h-8 mt-5 w-half position-absolute z-0"></div>
-      <div :class="`bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-9 position-relative ${visibility}`">Visible</div>
+      <div class="display-flex is-fit-content bs-fit-content bg-tertiary-200">
+        <div :class="`bordered bg-primary-200 bs-7 is-7 ${visibility}`"></div>
+      </div>
     </div>
     <div class="example-classes">
       <code>&lt;div class="{{ visibility }}"&gt;&lt;/div&gt;</code>

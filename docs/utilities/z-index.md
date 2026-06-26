@@ -22,7 +22,7 @@ The z-index utilities provide a set of classes to adjust the `z-index` propertie
       <div class="bg-tertiary-200 bordered border-tertiary-700 pl-3 h-8 m-2 mt-8 position-relative z-0">Z Index 0</div>
       <div class="bg-primary-200 bordered border-tertiary-700 w-two-thirds p-4 position-absolute bottom-quarter left-quarter z-1">Z Index 1</div>
       <div :class="`bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-10 left-half top-0
-      position-absolute ${zIndex}`">Z Index Changing</div>
+      position-absolute ${zIndex}`">{{ zIndex }}</div>
     </div>
     <div class="example-classes">
       <code>&lt;div class="{{ zIndex }}"&gt;&lt;/div&gt;</code>
