@@ -296,7 +296,7 @@ $columns-span-map: ();
     @include utility.generate(
       $map: (
         "#{defaults.$columns-fixed-selector}": (
-          --graupl-columns-max-width: #{$columns-min-width},
+          --#{root-defaults.$prefix}columns-max-width: #{$columns-min-width},
         ),
       ),
       $selector-base: "&#{defaults.$columns-fixed-selector-base}",
