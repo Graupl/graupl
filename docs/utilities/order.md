@@ -56,18 +56,18 @@ The order utilities provide a set of classes to adjust the `order` properties of
       <option value="order-none">None</option>
       <option value="order-first">First</option>
       <option value="order-last">Last</option>
-      <option value="order-1">Order 1</option>
-      <option value="order-2">Order 2</option>
-      <option value="order-3">Order 3</option>
-      <option value="order-4">Order 4</option>
-      <option value="order-5">Order 5</option>
-      <option value="order-6">Order 6</option>
-      <option value="order-7">Order 7</option>
-      <option value="order-8">Order 8</option>
-      <option value="order-9">Order 9</option>
-      <option value="order-10">Order 10</option>
-      <option value="order-11">Order 11</option>
-      <option value="order-12">Order 12</option>
+      <option value="order-1">1</option>
+      <option value="order-2">2</option>
+      <option value="order-3">3</option>
+      <option value="order-4">4</option>
+      <option value="order-5">5</option>
+      <option value="order-6">6</option>
+      <option value="order-7">7</option>
+      <option value="order-8">8</option>
+      <option value="order-9">9</option>
+      <option value="order-10">10</option>
+      <option value="order-11">11</option>
+      <option value="order-12">12</option>
     </select>
   </div>
 </div>

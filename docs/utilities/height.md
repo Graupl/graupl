@@ -74,17 +74,17 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
        <option value="h-quarter-screen">Quarter Screen</option>
       <option value="h-three-quarters-screen">Three Quarters Screen</option>
       <option value="h-full-screen">Full Screen</option>
-      <option value="h-0">Spacer 0</option>
-      <option value="h-1">Spacer 1</option>
-      <option value="h-2">Spacer 2</option>
-      <option value="h-3">Spacer 3</option>
-      <option value="h-4">Spacer 4</option>
-      <option value="h-5">Spacer 5</option>
-      <option value="h-6">Spacer 6</option>
-      <option value="h-7">Spacer 7</option>
-      <option value="h-8">Spacer 8</option>
-      <option value="h-9">Spacer 9</option>
-      <option value="h-10">Spacer 10</option>
+      <option value="h-0">0</option>
+      <option value="h-1">1</option>
+      <option value="h-2">2</option>
+      <option value="h-3">3</option>
+      <option value="h-4">4</option>
+      <option value="h-5">5</option>
+      <option value="h-6">6</option>
+      <option value="h-7">7</option>
+      <option value="h-8">8</option>
+      <option value="h-9">9</option>
+      <option value="h-10">10</option>
     </select>
   </div>
 </div>
@@ -153,17 +153,17 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
        <option value="max-h-quarter-screen">Quarter Screen</option>
       <option value="max-h-three-quarters-screen">Three Quarters Screen</option>
       <option value="max-h-full-screen">Full Screen</option>
-      <option value="max-h-0">Spacer 0</option>
-      <option value="max-h-1">Spacer 1</option>
-      <option value="max-h-2">Spacer 2</option>
-      <option value="max-h-3">Spacer 3</option>
-      <option value="max-h-4">Spacer 4</option>
-      <option value="max-h-5">Spacer 5</option>
-      <option value="max-h-6">Spacer 6</option>
-      <option value="max-h-7">Spacer 7</option>
-      <option value="max-h-8">Spacer 8</option>
-      <option value="max-h-9">Spacer 9</option>
-      <option value="max-h-10">Spacer 10</option>
+      <option value="max-h-0">0</option>
+      <option value="max-h-1">1</option>
+      <option value="max-h-2">2</option>
+      <option value="max-h-3">3</option>
+      <option value="max-h-4">4</option>
+      <option value="max-h-5">5</option>
+      <option value="max-h-6">6</option>
+      <option value="max-h-7">7</option>
+      <option value="max-h-8">8</option>
+      <option value="max-h-9">9</option>
+      <option value="max-h-10">10</option>
     </select>
   </div>
 </div>
@@ -232,17 +232,17 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
        <option value="min-h-quarter-screen">Quarter Screen</option>
       <option value="min-h-three-quarters-screen">Three Quarters Screen</option>
       <option value="min-h-full-screen">Full Screen</option>
-      <option value="min-h-0">Spacer 0</option>
-      <option value="min-h-1">Spacer 1</option>
-      <option value="min-h-2">Spacer 2</option>
-      <option value="min-h-3">Spacer 3</option>
-      <option value="min-h-4">Spacer 4</option>
-      <option value="min-h-5">Spacer 5</option>
-      <option value="min-h-6">Spacer 6</option>
-      <option value="min-h-7">Spacer 7</option>
-      <option value="min-h-8">Spacer 8</option>
-      <option value="min-h-9">Spacer 9</option>
-      <option value="min-h-10">Spacer 10</option>
+      <option value="min-h-0">0</option>
+      <option value="min-h-1">1</option>
+      <option value="min-h-2">2</option>
+      <option value="min-h-3">3</option>
+      <option value="min-h-4">4</option>
+      <option value="min-h-5">5</option>
+      <option value="min-h-6">6</option>
+      <option value="min-h-7">7</option>
+      <option value="min-h-8">8</option>
+      <option value="min-h-9">9</option>
+      <option value="min-h-10">10</option>
     </select>
   </div>
 </div>

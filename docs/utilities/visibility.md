@@ -1,7 +1,7 @@
 <script setup>
   import { ref } from "vue";
 
-  const content = ref("visibility-visible");
+  const visibility = ref("visibility-visible");
 </script>
 
 # Visibility Utilities
@@ -20,15 +20,15 @@ The visibility utilities provide a set of classes to adjust the `visibility` pro
   <div class="example-container">
     <div class="example-display position-relative">
       <div class="bg-tertiary-200 bordered border-tertiary-700 h-8 mt-5 w-half position-absolute z-0"></div>
-      <div :class="`bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-9 position-relative ${content}`">Visible</div>
+      <div :class="`bg-secondary-400 text-primary-100 bordered border-tertiary-700 p-4 w-10 h-9 position-relative ${visibility}`">Visible</div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ visibility }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
-    <label for="select-z-index">Z Index property</label>
-    <select id="select-z-index" v-model="content">
+    <label for="select-visibility">Visibility property</label>
+    <select id="select-visibility" v-model="visibility">
       <option value="visibility-visible">Visible</option>
       <option value="visibility-hidden">Hidden</option>
       <option value="visibility-collapse">Collapse</option>

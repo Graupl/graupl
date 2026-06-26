@@ -1,9 +1,9 @@
 <script setup>
   import { ref } from "vue";
 
-  const content = ref("is-auto");
-  const maxContent = ref("max-is-auto");
-  const minContent = ref("min-is-auto");
+  const inlineSize = ref("is-auto");
+  const maxInlineSize = ref("max-is-auto");
+  const minInlineSize = ref("min-is-auto");
 </script>
 
 # Inline Size Utilities
@@ -47,16 +47,16 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex  `">
-        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${content}`"></div>
+        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${inlineSize}`"></div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ inlineSize }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
     <label for="select-inline">Inline property</label>
-    <select id="select-inline" v-model="content">
+    <select id="select-inline" v-model="inlineSize">
       <option value="is-auto">Auto</option>
       <option value="is-fit-content">Fit Content</option>
       <option value="is-max-content">Max Content</option>
@@ -74,17 +74,17 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
        <option value="is-quarter-screen">Quarter Screen</option>
       <option value="is-three-quarters-screen">Three Quarters Screen</option>
       <option value="is-full-screen">Full Screen</option>
-      <option value="is-0">Spacer 0</option>
-      <option value="is-1">Spacer 1</option>
-      <option value="is-2">Spacer 2</option>
-      <option value="is-3">Spacer 3</option>
-      <option value="is-4">Spacer 4</option>
-      <option value="is-5">Spacer 5</option>
-      <option value="is-6">Spacer 6</option>
-      <option value="is-7">Spacer 7</option>
-      <option value="is-8">Spacer 8</option>
-      <option value="is-9">Spacer 9</option>
-      <option value="is-10">Spacer 10</option>
+      <option value="is-0">0</option>
+      <option value="is-1">1</option>
+      <option value="is-2">2</option>
+      <option value="is-3">3</option>
+      <option value="is-4">4</option>
+      <option value="is-5">5</option>
+      <option value="is-6">6</option>
+      <option value="is-7">7</option>
+      <option value="is-8">8</option>
+      <option value="is-9">9</option>
+      <option value="is-10">10</option>
     </select>
   </div>
 </div>
@@ -126,16 +126,16 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
-        <div :class="` bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${maxContent} `">Test</div>
+        <div :class="` bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${maxInlineSize} `">Test</div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ maxContent }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ maxInlineSize }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
     <label for="select-max-inline">Max Inline property</label>
-    <select id="select-max-inline" v-model="maxContent">
+    <select id="select-max-inline" v-model="maxInlineSize">
       <option value="max-is-auto">Auto</option>
       <option value="max-is-fit-content">Fit Content</option>
       <option value="max-is-max-content">Max Content</option>
@@ -153,17 +153,17 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
        <option value="max-is-quarter-screen">Quarter Screen</option>
       <option value="max-is-three-quarters-screen">Three Quarters Screen</option>
       <option value="max-is-full-screen">Full Screen</option>
-      <option value="max-is-0">Spacer 0</option>
-      <option value="max-is-1">Spacer 1</option>
-      <option value="max-is-2">Spacer 2</option>
-      <option value="max-is-3">Spacer 3</option>
-      <option value="max-is-4">Spacer 4</option>
-      <option value="max-is-5">Spacer 5</option>
-      <option value="max-is-6">Spacer 6</option>
-      <option value="max-is-7">Spacer 7</option>
-      <option value="max-is-8">Spacer 8</option>
-      <option value="max-is-9">Spacer 9</option>
-      <option value="max-is-10">Spacer 10</option>
+      <option value="max-is-0">0</option>
+      <option value="max-is-1">1</option>
+      <option value="max-is-2">2</option>
+      <option value="max-is-3">3</option>
+      <option value="max-is-4">4</option>
+      <option value="max-is-5">5</option>
+      <option value="max-is-6">6</option>
+      <option value="max-is-7">7</option>
+      <option value="max-is-8">8</option>
+      <option value="max-is-9">9</option>
+      <option value="max-is-10">10</option>
     </select>
   </div>
 </div>
@@ -205,16 +205,16 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
-        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${minContent}`">Test</div>
+        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${minInlineSize}`">Test</div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ minContent }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ minInlineSize }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
     <label for="select-min-inline">Min Inline property</label>
-    <select id="select-min-inline" v-model="minContent">
+    <select id="select-min-inline" v-model="minInlineSize">
       <option value="min-is-auto">Auto</option>
       <option value="min-is-fit-content">Fit Content</option>
       <option value="min-is-max-content">Max Content</option>
@@ -232,17 +232,17 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
        <option value="min-is-quarter-screen">Quarter Screen</option>
       <option value="min-is-three-quarters-screen">Three Quarters Screen</option>
       <option value="min-is-full-screen">Full Screen</option>
-      <option value="min-is-0">Spacer 0</option>
-      <option value="min-is-1">Spacer 1</option>
-      <option value="min-is-2">Spacer 2</option>
-      <option value="min-is-3">Spacer 3</option>
-      <option value="min-is-4">Spacer 4</option>
-      <option value="min-is-5">Spacer 5</option>
-      <option value="min-is-6">Spacer 6</option>
-      <option value="min-is-7">Spacer 7</option>
-      <option value="min-is-8">Spacer 8</option>
-      <option value="min-is-9">Spacer 9</option>
-      <option value="min-is-10">Spacer 10</option>
+      <option value="min-is-0">0</option>
+      <option value="min-is-1">1</option>
+      <option value="min-is-2">2</option>
+      <option value="min-is-3">3</option>
+      <option value="min-is-4">4</option>
+      <option value="min-is-5">5</option>
+      <option value="min-is-6">6</option>
+      <option value="min-is-7">7</option>
+      <option value="min-is-8">8</option>
+      <option value="min-is-9">9</option>
+      <option value="min-is-10">10</option>
     </select>
   </div>
 </div>

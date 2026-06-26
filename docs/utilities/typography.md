@@ -193,14 +193,14 @@ Applies the default h6 styling to an element.
   <div class="input-group">
     <label for="select-font-size">Font Size property</label>
     <select id="select-font-size" v-model="fontSize">
-      <option value="text-xs">Size xs</option>
-      <option value="text-sm">Size sm</option>
-      <option value="text-base">Size base</option>
-      <option value="text-xl">Size xl</option>
-      <option value="text-2xl">Size 2xl</option>
-      <option value="text-3xl">Size 3xl</option>
-      <option value="text-4xl">Size 4xl</option>
-      <option value="text-5xl">Size 5xl</option>
+      <option value="text-xs">xs</option>
+      <option value="text-sm">sm</option>
+      <option value="text-base">base</option>
+      <option value="text-xl">xl</option>
+      <option value="text-2xl">2xl</option>
+      <option value="text-3xl">3xl</option>
+      <option value="text-4xl">4xl</option>
+      <option value="text-5xl">5xl</option>
     </select>
   </div>
 </div>

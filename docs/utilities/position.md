@@ -46,7 +46,6 @@ The position utilities provide a set of classes to adjust the `position` propert
   </div>
 </div>
 
-
 ## Customization
 
 To customize the position utilities, you can use the following variables.

@@ -22,7 +22,9 @@ The gradient utilities provide a set of classes to adjust the color `background-
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="` bordered border-primary-700 ${gradient} from-transparent to-primary-300 h-two-thirds w-half `">
+      <div class="display-flex is-fit-content bs-fit-content">
+        <div :class="` bordered border-primary-700 ${gradient} from-transparent to-primary-300 bs-7 is-7 `">
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -77,7 +79,9 @@ Used to customize gradient types.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="` bordered border-primary-700 ${gradientDirection} from-transparent to-primary-300 h-two-thirds w-half `">
+      <div class="display-flex is-fit-content bs-fit-content">
+        <div :class="` bordered border-primary-700 ${gradientDirection} from-transparent to-primary-300 bs-7 is-7 `">
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -148,7 +152,9 @@ Used to customize gradient types.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="` bordered border-primary-700 gradient ${gradientFrom} to-primary-300 h-two-thirds w-half `">
+      <div class="display-flex is-fit-content bs-fit-content">
+        <div :class="` bordered border-primary-700 gradient ${gradientFrom} to-primary-300 bs-7 is-7 `">
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -230,7 +236,9 @@ Used to customize gradient types.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="` bordered border-primary-700 gradient ${gradientTo} from-primary-300 h-two-thirds w-half `">
+      <div class="display-flex is-fit-content bs-fit-content">
+        <div :class="` bordered border-primary-700 gradient ${gradientTo} from-primary-300 bs-7 is-7 `">
+        </div>
       </div>
     </div>
     <div class="example-classes">
