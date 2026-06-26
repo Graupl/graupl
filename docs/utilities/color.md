@@ -1,3 +1,10 @@
+<script setup>
+  import { ref } from "vue";
+
+  const backgroundColor = ref("bg-primary");
+  const textColor = ref("text-primary");
+</script>
+
 # Color Utilities
 
 The color utilities provide a set of classes to adjust the `color` and `background` properties of elements.
@@ -40,6 +47,57 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 | `.bg-current` | background, --graupl-background | `currentColor` |
 | `.bg-transparent` | background, --graupl-background | `transparent` |
 
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex h-full `">
+        <div :class="`bordered text-primary-100 border-primary-700 w-quarter h-half ${backgroundColor}`"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundColor }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-color">Background Color property</label>
+    <select id="select-background-color" v-model="backgroundColor">
+      <option value="bg-primary">Primary</option>
+      <option value="bg-primary-100">Primary 100</option>
+      <option value="bg-primary-200">Primary 200</option>
+      <option value="bg-primary-300">Primary 300</option>
+      <option value="bg-primary-400">Primary 400</option>
+      <option value="bg-primary-500">Primary 500</option>
+      <option value="bg-primary-600">Primary 600</option>
+      <option value="bg-primary-700">Primary 700</option>
+      <option value="bg-primary-800">Primary 800</option>
+      <option value="bg-primary-900">Primary 900</option>
+      <option value="bg-secondary">Secondary</option>
+      <option value="bg-secondary-100">Secondary 100</option>
+      <option value="bg-secondary-200">Secondary 200</option>
+      <option value="bg-secondary-300">Secondary 300</option>
+      <option value="bg-secondary-400">Secondary 400</option>
+      <option value="bg-secondary-500">Secondary 500</option>
+      <option value="bg-secondary-600">Secondary 600</option>
+      <option value="bg-secondary-700">Secondary 700</option>
+      <option value="bg-secondary-800">Secondary 800</option>
+      <option value="bg-secondary-900">Secondary 900</option>
+      <option value="bg-tertiary">Tertiary</option>
+      <option value="bg-tertiary-100">Tertiary 100</option>
+      <option value="bg-tertiary-200">Tertiary 200</option>
+      <option value="bg-tertiary-300">Tertiary 300</option>
+      <option value="bg-tertiary-400">Tertiary 400</option>
+      <option value="bg-tertiary-500">Tertiary 500</option>
+      <option value="bg-tertiary-600">Tertiary 600</option>
+      <option value="bg-tertiary-700">Tertiary 700</option>
+      <option value="bg-tertiary-800">Tertiary 800</option>
+      <option value="bg-tertiary-900">Tertiary 900</option>
+      <option value="bg-inherit">Inherit</option>
+      <option value="bg-current">Current</option>
+      <option value="bg-transparent">Transparent</option>
+    </select>
+  </div>
+</div>
+
 ## Text Color
 
 | Class Name | Property | Value |
@@ -77,6 +135,58 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 | `.text-inherit` | color, --graupl-color | `inherit` |
 | `.text-current` | color, --graupl-color | `currentColor` |
 | `.text-transparent` | color, --graupl-color | `transparent` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex h-full g-5 `">
+        <div :class="`bordered border-primary-700 bg-primary-100 p-3 align-content-center w-fit-content h-fit-content ${textColor}`"> Text color for Light Background</div>
+        <div :class="`bordered border-primary-700 bg-primary-700 p-3 align-content-center w-fit-content h-fit-content ${textColor}`"> Text color for Dark Background</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ textColor }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-text-color">Text Color property</label>
+    <select id="select-text-color" v-model="textColor">
+      <option value="text-primary">Primary</option>
+      <option value="text-primary-100">Primary 100</option>
+      <option value="text-primary-200">Primary 200</option>
+      <option value="text-primary-300">Primary 300</option>
+      <option value="text-primary-400">Primary 400</option>
+      <option value="text-primary-500">Primary 500</option>
+      <option value="text-primary-600">Primary 600</option>
+      <option value="text-primary-700">Primary 700</option>
+      <option value="text-primary-800">Primary 800</option>
+      <option value="text-primary-900">Primary 900</option>
+      <option value="text-secondary">Secondary</option>
+      <option value="text-secondary-100">Secondary 100</option>
+      <option value="text-secondary-200">Secondary 200</option>
+      <option value="text-secondary-300">Secondary 300</option>
+      <option value="text-secondary-400">Secondary 400</option>
+      <option value="text-secondary-500">Secondary 500</option>
+      <option value="text-secondary-600">Secondary 600</option>
+      <option value="text-secondary-700">Secondary 700</option>
+      <option value="text-secondary-800">Secondary 800</option>
+      <option value="text-secondary-900">Secondary 900</option>
+      <option value="text-tertiary">Tertiary</option>
+      <option value="text-tertiary-100">Tertiary 100</option>
+      <option value="text-tertiary-200">Tertiary 200</option>
+      <option value="text-tertiary-300">Tertiary 300</option>
+      <option value="text-tertiary-400">Tertiary 400</option>
+      <option value="text-tertiary-500">Tertiary 500</option>
+      <option value="text-tertiary-600">Tertiary 600</option>
+      <option value="text-tertiary-700">Tertiary 700</option>
+      <option value="text-tertiary-800">Tertiary 800</option>
+      <option value="text-tertiary-900">Tertiary 900</option>
+      <option value="text-inherit">Inherit</option>
+      <option value="text-current">Current</option>
+      <option value="text-transparent">Transparent</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
