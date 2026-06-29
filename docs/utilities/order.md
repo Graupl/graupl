@@ -32,18 +32,18 @@ The order utilities provide a set of classes to adjust the `order` properties of
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid g-5 h-auto" style="grid-template-columns: repeat(4, max-content); grid-template-rows: auto;">
-        <div :class="` bordered border-tertiary-700 text-primary-100 bg-tertiary-300 p-3 ${order} `">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-1">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-2">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-3">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-4">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-5">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-6">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-7">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-8">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-9">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-10">Test Item</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-11">Test Item</div>
+        <div :class="` bordered border-tertiary-700 text-primary-100 bg-tertiary-300 p-3 ${order} order-none `">Box 1 ({{ order }})</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-1">Box 2 (order 1)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-2">Box 3 (order 2)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-3">Box 4 (order 3)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-4">Box 5 (order 4)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-5">Box 6 (order 5)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-6">Box 7 (order 6)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-7">Box 8 (order 7)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-8">Box 9 (order 8)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-9">Box 10 (order 9)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-10">Box 11 (order 10)</div>
+        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-11">Box 12 (order 11)</div>
       </div>
     </div>
     <div class="example-classes">
@@ -51,7 +51,7 @@ The order utilities provide a set of classes to adjust the `order` properties of
     </div>
   </div>
   <div class="input-group">
-    <label for="select-order">Width property</label>
+    <label for="select-order">Order property</label>
     <select id="select-order" v-model="order">
       <option value="order-none">None</option>
       <option value="order-first">First</option>

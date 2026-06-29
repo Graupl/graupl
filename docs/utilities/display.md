@@ -27,7 +27,7 @@ The display utilities provide a set of classes to adjust the `display` propertie
 <div class="example">
   <div class="example-container">
     <div class="example-display px-6">
-      <div :class="` ${display} g-5 border-dashed border-tertiary-500 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+      <div :class="` ${display} bs-fit-content g-5 border-dashed border-tertiary-500 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
         <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
         <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>
         <div class="display-inline-block bordered border-primary-700 bg-primary-300 p-5 w-auto h-auto m-3"></div>

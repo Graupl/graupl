@@ -21,7 +21,7 @@ The position utilities provide a set of classes to adjust the `position` propert
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="position-relative">
+      <div class="position-relative isolation-isolate">
         <div class="bordered border-primary-700 bg-primary-300 h-8 w-three-quarters m-4"></div>
         <div class="bordered border-primary-700 bg-primary-300 h-4 w-full m-4  mt-8"></div>
          <div :class="` ${position} bordered border-primary-700 bg-tertiary-300 h-7 w-three-quarters m-5 top-0 `"></div>

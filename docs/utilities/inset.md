@@ -37,7 +37,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${inset} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${inset} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -76,7 +79,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetX} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetX} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -115,7 +121,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetY} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetY} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -154,7 +163,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetInline} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInline} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -193,7 +205,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetBlock} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlock} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -232,7 +247,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetInlineStart} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInlineStart} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -271,7 +289,8 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetInlineEnd} `">The Test Item</div>
+        <div :class="` right-0 position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInlineEnd} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -310,7 +329,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetBlockStart} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlockStart} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -349,7 +371,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 p-3 w-fit-content ${insetBlockEnd} mt-10`">The Test Item</div>
+        <div class="position-relative">
+          <div class="position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content mt-10"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlockEnd} mt-10`"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -388,7 +413,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 w-fit-content ${top} `">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${top} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -427,7 +455,10 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 p-3 bg-primary-300 w-fit-content ${right} ml-auto`">The Test Item</div>
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${right} `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -465,8 +496,11 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 <div class="example">
   <div class="example-container">
     <div class="example-display p-0">
-      <div :class="` display-contents h-auto `">
-        <div :class="` position-relative bordered text-primary-100 border-primary-700 py-3 bg-primary-300 w-fit-content ${bottom} mt-10`">The Test Item</div>
+     <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content mt-10 `"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${bottom} mt-10 `"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -504,8 +538,11 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 <div class="example">
   <div class="example-container">
     <div class="example-display p-0">
-      <div :class="` display-contents h-auto `">
-        <div :class="` position-absolute bordered text-primary-100 border-primary-700 py-3 bg-primary-300 w-fit-content ${left} `">The Test Item</div>
+     <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${left} `"></div>
       </div>
     </div>
     <div class="example-classes">

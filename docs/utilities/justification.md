@@ -26,10 +26,17 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${content} display-grid g-5 h-auto`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div class="position-relative">
+        <div :class="`display-flex w-full g-5 position-absolute z-0`">
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7 "></div>
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7 "></div>
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7"> </div>
+        </div>
+      </div>
+      <div :class="`${content} display-grid g-5 h-auto position-relative z-1 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -63,10 +70,28 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${items} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div class="position-relative">
+        <div :class="`display-grid g-5 position-absolute bordered border-transparent w-full z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+        </div>
+      </div>
+      <div :class="`display-grid border-dotted g-5 ${items} position-relative z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div><div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 bs-7 "></div>
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -97,10 +122,12 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`${self} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, auto); grid-template-rows: min-content;">
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
-        <div class="bordered border-primary-700 bg-primary-300 p-5"></div>
+      <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+        <div :class="` bordered border-tertiary-700 bg-tertiary-300 ${self} `">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-primary-700 bg-primary-300"><div class=" w-7 h-7 "></div></div>
+        <div class="bordered border-primary-700 bg-primary-300"><div class=" w-7 h-7 "></div></div>
       </div>
     </div>
     <div class="example-classes">

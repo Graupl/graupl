@@ -1,3 +1,12 @@
+<script setup>
+  import { ref } from "vue";
+
+  const borderColor = ref("border-primary");
+  const borderRadius = ref("border-radius-rounded");
+  const borderStyle = ref("border-solid");
+  const borderWidth = ref("border-thick");
+</script>
+
 # Border Utilities
 
 The border utilities provide a set of classes to adjust the `border-color`, `border-radius`, `border-style`, and `border-width` properties of elements.
@@ -62,6 +71,57 @@ Applies the default border styling to an element.
 | `.border-tertiary-900` | border-color | `var(--graupl-theme-active--tertiary--900)` |
 | `.border-transparent` | border-color | `transparent` |
 
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex h-full g-5">
+        <div :class="`bordered ${borderColor} bg-primary-100 is-7 bs-7`"> </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ borderColor }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-border-color">Border Color property</label>
+    <select id="select-border-color" v-model="borderColor">
+      <option value="border-primary">Primary</option>
+      <option value="border-primary-100">Primary 100</option>
+      <option value="border-primary-200">Primary 200</option>
+      <option value="border-primary-300">Primary 300</option>
+      <option value="border-primary-400">Primary 400</option>
+      <option value="border-primary-500">Primary 500</option>
+      <option value="border-primary-600">Primary 600</option>
+      <option value="border-primary-700">Primary 700</option>
+      <option value="border-primary-800">Primary 800</option>
+      <option value="border-primary-900">Primary 900</option>
+      <option value="border-secondary">Secondary</option>
+      <option value="border-secondary-100">Secondary 100</option>
+      <option value="border-secondary-200">Secondary 200</option>
+      <option value="border-secondary-300">Secondary 300</option>
+      <option value="border-secondary-400">Secondary 400</option>
+      <option value="border-secondary-500">Secondary 500</option>
+      <option value="border-secondary-600">Secondary 600</option>
+      <option value="border-secondary-700">Secondary 700</option>
+      <option value="border-secondary-800">Secondary 800</option>
+      <option value="border-secondary-900">Secondary 900</option>
+      <option value="border-tertiary">Tertiary</option>
+      <option value="border-tertiary-100">Tertiary 100</option>
+      <option value="border-tertiary-200">Tertiary 200</option>
+      <option value="border-tertiary-300">Tertiary 300</option>
+      <option value="border-tertiary-400">Tertiary 400</option>
+      <option value="border-tertiary-500">Tertiary 500</option>
+      <option value="border-tertiary-600">Tertiary 600</option>
+      <option value="border-tertiary-700">Tertiary 700</option>
+      <option value="border-tertiary-800">Tertiary 800</option>
+      <option value="border-tertiary-900">Tertiary 900</option>
+      <option value="border-inherit">Inherit</option>
+      <option value="border-current">Current</option>
+      <option value="border-transparent">Transparent</option>
+    </select>
+  </div>
+</div>
+
 ## Border Radius
 
 | Class Name | Property | Value |
@@ -80,6 +140,36 @@ Applies the default border styling to an element.
 | `.border-radius-9` | border-radius | `var(--graupl-spacer-9)` |
 | `.border-radius-10` | border-radius | `var(--graupl-spacer-10)` |
 
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex">
+        <div :class="`bordered border-primary-700 ${borderRadius} bg-primary-100 is-7 bs-7`"> </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ borderRadius }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-border-radius">Border Radius property</label>
+    <select id="select-border-radius" v-model="borderRadius">
+      <option value="border-radius-rounded">Rounded</option>
+      <option value="border-radius-Squared">Squared</option>
+      <option value="border-radius-1">1</option>
+      <option value="border-radius-2">2</option>
+      <option value="border-radius-3">3</option>
+      <option value="border-radius-4">4</option>
+      <option value="border-radius-5">5</option>
+      <option value="border-radius-6">6</option>
+      <option value="border-radius-7">7</option>
+      <option value="border-radius-8">8</option>
+      <option value="border-radius-9">9</option>
+      <option value="border-radius-10">10</option>
+    </select>
+  </div>
+</div>
+
 ## Border Style
 
 | Class Name | Property | Value |
@@ -93,6 +183,32 @@ Applies the default border styling to an element.
 | `.border-inset` | border-style | `inset` |
 | `.border-outset` | border-style | `outset` |
 | `.border-none` | border-style | `none` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex">
+        <div :class="`bordered border-primary-700 ${borderStyle} bg-primary-100 is-7 bs-7`"> </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ borderStyle }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-border-style">Border Style property</label>
+    <select id="select-border-style" v-model="borderStyle">
+      <option value="border-solid">Solid</option>
+      <option value="border-dashed">Dashed</option>
+      <option value="border-dotted">Dotted</option>
+      <option value="border-double">Double</option>
+      <option value="border-groove">Groove</option>
+      <option value="border-ridge">Ridge</option>
+      <option value="border-inset">Inset</option>
+      <option value="border-outset">Outset</option>
+      <option value="border-none">None</option>    </select>
+  </div>
+</div>
 
 ## Border Width
 

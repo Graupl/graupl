@@ -46,8 +46,8 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex `">
-        <div :class="`bordered text-primary-100 border-primary-700 px-5 bg-primary-300 ${height}`"></div>
+      <div class="display-flex is-fit-content bs-full bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${height}`"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -125,8 +125,8 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex `">
-        <div :class="` bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${maxHeight} `">Test</div>
+      <div class="display-flex is-fit-content bs-full bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${maxHeight}`"></div>
       </div>
     </div>
     <div class="example-classes">
@@ -204,8 +204,8 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex `">
-        <div :class="` bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${minHeight} `">Test</div>
+      <div class="display-flex is-fit-content bs-full bg-tertiary-200">
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${minHeight}`"></div>
       </div>
     </div>
     <div class="example-classes">

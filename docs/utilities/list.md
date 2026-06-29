@@ -21,9 +21,9 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
         <ul>
-          <li :class="`${position} p-2 m-2 bordered border-primary-700 `" >List Item 1</li>
-          <li :class="`${position} p-2 m-2 bordered border-primary-700 `" >List Item 2</li>
-          <li :class="`${position} p-2 m-2 bordered border-primary-700`" >List Item 3</li>
+          <li :class="` p-2 m-2 bordered border-primary `" >List Item 1</li>
+          <li :class="`${position} p-2 m-2 bordered border-tertiary `" >List Item 2</li>
+          <li :class="`${position} p-2 m-2 bordered border-tertiary`" >List Item 3</li>
         </ul>
       </div>
     </div>
@@ -55,9 +55,9 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
         <ul>
-          <li :class="`${type} p-2 `" >List Item 1</li>
-          <li :class="`${type} p-2 `" >List Item 2</li>
-          <li :class="`${type} p-2 `" >List Item 3</li>
+          <li :class="`p-2 text-primary `" >List Item 1</li>
+          <li :class="`${type} p-2  text-tertiary `" >List Item 2</li>
+          <li :class="`${type} p-2 text-tertiary `" >List Item 3</li>
         </ul>
       </div>
     </div>

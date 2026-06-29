@@ -33,7 +33,8 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 h-full`">
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 ${flex}`">Item Test</div>
+        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 ${flex}`">Test Item</div>
+        <div class="bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 flex-auto w-auto bg-tertiary-300">Auto Item</div>
       </div>
     </div>
     <div class="example-classes">
@@ -131,7 +132,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 `">
-        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-quarter ${flexShrink} `"></div>
+        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-half ${flexShrink} `"></div>
         <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-half `"></div>
         <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-half `"></div>
       </div>

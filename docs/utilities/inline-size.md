@@ -46,8 +46,10 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div :class="`display-flex  `">
-        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${inlineSize}`"></div>
+      <div :class="`display-flex `">
+        <div class="bg-tertiary-300 is-full">
+          <div :class="` bordered bg-primary-300 bs-7 ${inlineSize}`"></div>
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -126,7 +128,9 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
-        <div :class="` bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${maxInlineSize} `">Test</div>
+        <div class="bg-tertiary-300 is-full">
+          <div :class="` bordered bg-primary-300 bs-7 ${maxInlineSize}`"></div>
+        </div>
       </div>
     </div>
     <div class="example-classes">
@@ -205,7 +209,8 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
-        <div :class="`bordered text-primary-100 border-primary-700 py-3 bg-primary-300 ${minInlineSize}`">Test</div>
+        <div :class="` position-relative bordered bg-primary-300 bs-7 ${minInlineSize}`"></div>
+        <div class="bg-tertiary-300 w-full position-relative"></div>
       </div>
     </div>
     <div class="example-classes">
