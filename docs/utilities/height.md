@@ -2,8 +2,10 @@
   import { ref } from "vue";
 
   const height = ref("h-auto");
-  const maxHeight = ref("max-h-auto");
-  const minHeight = ref("min-h-auto");
+  const maxHeight = ref("h-auto");
+  const max = ref("max-h-auto");
+  const minHeight = ref("h-auto");
+  const min = ref("min-h-auto");
 </script>
 
 # Height Utilities
@@ -126,16 +128,49 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-full bg-tertiary-200">
-        <div :class="`bordered bg-primary-300 bs-7 is-7 ${maxHeight}`"></div>
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${maxHeight} ${max} `"></div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ maxHeight }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ maxHeight }} {{max}}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
-    <label for="select-max-height">Max Height property</label>
+    <label for="select-max-height">Height property</label>
     <select id="select-max-height" v-model="maxHeight">
+      <option value="h-auto">Auto</option>
+      <option value="h-fit-content">Fit Content</option>
+      <option value="h-max-content">Max Content</option>
+      <option value="h-min-content">Min Content</option>
+      <option value="h-stretch">Stretch</option>
+      <option value="h-full">Full</option>
+      <option value="h-quarter">Quarter</option>
+      <option value="h-half">Half</option>
+      <option value="h-three-quarters">Three Quarters</option>
+      <option value="h-third">Third</option>
+      <option value="h-two-thirds">Two Thirds</option>
+      <option value="h-half-screen">Half Screen</option>
+      <option value="h-third-screen">Third Screen</option>
+      <option value="h-two-thirds-screen">Two Thirds Screen</option>
+       <option value="h-quarter-screen">Quarter Screen</option>
+      <option value="h-three-quarters-screen">Three Quarters Screen</option>
+      <option value="h-full-screen">Full Screen</option>
+      <option value="h-0">0</option>
+      <option value="h-1">1</option>
+      <option value="h-2">2</option>
+      <option value="h-3">3</option>
+      <option value="h-4">4</option>
+      <option value="h-5">5</option>
+      <option value="h-6">6</option>
+      <option value="h-7">7</option>
+      <option value="h-8">8</option>
+      <option value="h-9">9</option>
+      <option value="h-10">10</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="select-max-height">Max Height property</label>
+    <select id="select-max-height" v-model="max">
       <option value="max-h-auto">Auto</option>
       <option value="max-h-fit-content">Fit Content</option>
       <option value="max-h-max-content">Max Content</option>
@@ -205,16 +240,49 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-full bg-tertiary-200">
-        <div :class="`bordered bg-primary-300 bs-7 is-7 ${minHeight}`"></div>
+        <div :class="`bordered bg-primary-300 bs-7 is-7 ${minHeight} ${min} `"></div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ minHeight }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="{{ minHeight }} {{min}}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
-    <label for="select-min-height">Min Height property</label>
+    <label for="select-min-height">Height property</label>
     <select id="select-min-height" v-model="minHeight">
+      <option value="h-auto">Auto</option>
+      <option value="h-fit-content">Fit Content</option>
+      <option value="h-max-content">Max Content</option>
+      <option value="h-min-content">Min Content</option>
+      <option value="h-stretch">Stretch</option>
+      <option value="h-full">Full</option>
+      <option value="h-quarter">Quarter</option>
+      <option value="h-half">Half</option>
+      <option value="h-three-quarters">Three Quarters</option>
+      <option value="h-third">Third</option>
+      <option value="h-two-thirds">Two Thirds</option>
+      <option value="h-half-screen">Half Screen</option>
+      <option value="h-third-screen">Third Screen</option>
+      <option value="h-two-thirds-screen">Two Thirds Screen</option>
+       <option value="h-quarter-screen">Quarter Screen</option>
+      <option value="h-three-quarters-screen">Three Quarters Screen</option>
+      <option value="h-full-screen">Full Screen</option>
+      <option value="h-0">0</option>
+      <option value="h-1">1</option>
+      <option value="h-2">2</option>
+      <option value="h-3">3</option>
+      <option value="h-4">4</option>
+      <option value="h-5">5</option>
+      <option value="h-6">6</option>
+      <option value="h-7">7</option>
+      <option value="h-8">8</option>
+      <option value="h-9">9</option>
+      <option value="h-10">10</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <label for="select-min">Min Height property</label>
+    <select id="select-min" v-model="min">
       <option value="min-h-auto">Auto</option>
       <option value="min-h-fit-content">Fit Content</option>
       <option value="min-h-max-content">Max Content</option>

@@ -13,7 +13,7 @@ The border utilities provide a set of classes to adjust the `border-color`, `bor
 
 ## Bordered
 
-Applies the default border styling to an element.
+Applies the default border styling to an element. This class works in combination with `border-color`, but does not work in combination with the border classes which apply to `border-radius`, `border-style`, and `border-width`.
 
 ```css
   .bordered {
@@ -75,11 +75,11 @@ Applies the default border styling to an element.
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex h-full g-5">
-        <div :class="`bordered ${borderColor} bg-primary-100 is-7 bs-7`"> </div>
+        <div :class="`bordered ${borderColor} bg-primary-100 is-quarter bs-half`"> </div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ borderColor }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="bordered {{ borderColor }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
@@ -143,12 +143,12 @@ Applies the default border styling to an element.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="`bordered border-primary-700 ${borderRadius} bg-primary-100 is-7 bs-7`"> </div>
+      <div class="display-flex bs-full">
+        <div :class="`border-solid border-thick border-primary ${borderRadius} bg-primary-100 is-quarter bs-half`"> </div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ borderRadius }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="border-solid border-thick {{ borderRadius }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
@@ -187,12 +187,12 @@ Applies the default border styling to an element.
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="`bordered border-primary-700 ${borderStyle} bg-primary-100 is-7 bs-7`"> </div>
+      <div class="display-flex bs-full">
+        <div :class="`border-thick border-primary ${borderStyle} bg-primary-100 is-quarter bs-half`"> </div>
       </div>
     </div>
     <div class="example-classes">
-      <code>&lt;div class="{{ borderStyle }}"&gt;&lt;/div&gt;</code>
+      <code>&lt;div class="border-thick border-primary {{ borderStyle }}"&gt;&lt;/div&gt;</code>
     </div>
   </div>
   <div class="input-group">
@@ -206,7 +206,8 @@ Applies the default border styling to an element.
       <option value="border-ridge">Ridge</option>
       <option value="border-inset">Inset</option>
       <option value="border-outset">Outset</option>
-      <option value="border-none">None</option>    </select>
+      <option value="border-none">None</option>
+    </select>
   </div>
 </div>
 
@@ -228,6 +229,38 @@ Applies the default border styling to an element.
 | `.border-8` | border-width | `var(--graupl-spacer-8)` |
 | `.border-9` | border-width | `var(--graupl-spacer-9)` |
 | `.border-10` | border-width | `var(--graupl-spacer-10)` |
+
+<div class="example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex bs-full">
+        <div :class="`border-solid border-primary ${borderWidth} bg-primary-100 is-quarter bs-half`"> </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="border-solid border-primary {{ borderWidth }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-border-width">Border Width property</label>
+    <select id="select-border-width" v-model="borderWidth">
+      <option value="border-thick">Thick</option>
+      <option value="border-thin">Thin</option>
+      <option value="border-medium">Medium</option>
+      <option value="border-0">0</option>
+      <option value="border-1">1</option>
+      <option value="border-2">2</option>
+      <option value="border-3">3</option>
+      <option value="border-4">4</option>
+      <option value="border-5">5</option>
+      <option value="border-6">6</option>
+      <option value="border-7">7</option>
+      <option value="border-8">8</option>
+      <option value="border-9">9</option>
+      <option value="border-10">10</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

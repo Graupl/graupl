@@ -23,13 +23,13 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
-        <div class=" bordered border-primary-700 bg-primary-300 w-quarter h-half p-3">
-          <img src="https://picsum.photos/1000/400?random=6"
-            alt="Card image" height=250 width=175 :class="`${fit} `" />
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="`${fit} w-full h-full `" />
         </div>
-         <div class="bordered border-primary-700 bg-primary-300 w-third h-quarter p-3">
-          <img src="https://picsum.photos/400/1000?random=5"
-            alt="Card image" height=150 width=235 :class="` ${fit} `" />
+         <div class="bordered border-primary-700" style="width:350px; height:175px;">
+          <img src="https://picsum.photos/650/225?random=4"
+            alt="Card image" :class="` ${fit} w-full h-full `" />
         </div>
       </div>
     </div>
@@ -63,13 +63,13 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
-        <div class=" bordered border-primary-700 bg-primary-300 w-quarter h-half p-3">
-          <img src="https://picsum.photos/1000/400?random=6"
-            alt="Card image" height=250 width=175 :class="` ${position} object-fit-none `" />
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="`${position} object-fit-none w-full h-full `" />
         </div>
-         <div class="bordered border-primary-700 bg-primary-300 w-third h-quarter p-3">
-          <img src="https://picsum.photos/400/1000?random=5"
-            alt="Card image" height=150 width=235 :class="` ${position} object-fit-none `" />
+         <div class="bordered border-primary-700" style="width:350px; height:175px;">
+          <img src="https://picsum.photos/650/225?random=4"
+            alt="Card image" :class="` ${position} object-fit-none w-full h-full `" />
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
       <option value="object-position-top">Top</option>
       <option value="object-position-right">Right</option>
       <option value="object-position-bottom">Bottom</option>
-      <option value="object-position-left">None</option>
+      <option value="object-position-left">Left</option>
       <option value="object-position-center">Center</option>
     </select>
   </div>
