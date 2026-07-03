@@ -7,10 +7,6 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: String,
-      default: "",
-    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -23,9 +19,9 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ul" }, [
-        h("li", "Menu 1"),
-        h("li", "Menu 2"),
-        h("li", "Menu 3"),
+        h("li", null, ["Menu 1"]),
+        h("li", null, ["Menu 2"]),
+        h("li", null, ["Menu 3"]),
       ]);
   },
 };
