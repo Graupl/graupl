@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default: "Accordion",
+      default: "Menu",
     },
     attributes: {
       type: Object,
@@ -19,8 +19,8 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
 
-    props.attributes.class.push("accordion");
+    props.attributes.class.push("menu");
 
-    return () => h(BasicComponent, { ...props, tag: "div" });
+    return () => h(BasicComponent, { ...props, tag: "ul" });
   },
 };
