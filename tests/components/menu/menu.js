@@ -9,9 +9,11 @@ export default {
     },
     text: {
       type: Function,
-      default: () => {
-        (h("li", "Menu Item"), h("li", "Menu Item"), h("li", "Menu Item"));
-      },
+      default: () => (
+        h("li", "Menu Item"),
+        h("li", "Menu Item"),
+        h("li", "Menu Item")
+      ),
     },
     attributes: {
       type: Object,
