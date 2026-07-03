@@ -20,7 +20,9 @@ export default {
     props.attributes.class = props.attributes.class || [];
 
     props.attributes.class.push("breadcrumb");
-    props.attributes.add("data-once", "graupl-breadcrumb-generator");
+
+    props.attributes["data-once"] = props.attributes["data-once"] || [];
+    props.attributes["data-once"].push("graupl-breadcrumb-generator");
 
     return () => h(BasicComponent, { ...props, tag: "ol" });
   },
