@@ -29,8 +29,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="` bordered border-primary-700 bg-repeat-repeat-y bg-position-top text-primary ${backgroundAttachment} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Test Item
+      <div class="display-flex g-5 g-5">
+        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary ${backgroundAttachment} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Test Item
+        </div>
+        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary`" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Auto Item
         </div>
       </div>
     </div>
@@ -61,8 +63,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
+      <div class="display-flex g-5">
         <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 ${backgroundClip} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>
@@ -91,8 +95,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
+      <div class="display-flex g-5">
         <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>
@@ -119,8 +125,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="`  border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  ${backgroundOrigin} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+      <div class="display-flex g-5">
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  ${backgroundOrigin} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>
@@ -153,8 +161,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="` bordered border-primary-700 bg-repeat-space ${backgroundPosition} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space ${backgroundPosition} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>
@@ -188,8 +198,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="` bordered border-primary-700 ${backgroundRepeat} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary ${backgroundRepeat} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>
@@ -221,8 +233,10 @@ For `background-color` utility classes, please refer to the [color utilities](./
 <div class="example">
   <div class="example-container">
     <div class="example-display">
-      <div class="display-flex">
-        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundSize} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y ${backgroundSize} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
         </div>
       </div>
     </div>

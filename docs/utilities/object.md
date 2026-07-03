@@ -27,9 +27,9 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
           <img src="https://picsum.photos/175/550?random=6"
             alt="Card image" :class="`${fit} w-full h-full `" />
         </div>
-         <div class="bordered border-primary-700" style="width:350px; height:175px;">
-          <img src="https://picsum.photos/650/225?random=4"
-            alt="Card image" :class="` ${fit} w-full h-full `" />
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="` w-full h-full `" />
         </div>
       </div>
     </div>
@@ -67,9 +67,9 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
           <img src="https://picsum.photos/175/550?random=6"
             alt="Card image" :class="`${position} object-fit-none w-full h-full `" />
         </div>
-         <div class="bordered border-primary-700" style="width:350px; height:175px;">
-          <img src="https://picsum.photos/650/225?random=4"
-            alt="Card image" :class="` ${position} object-fit-none w-full h-full `" />
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="` object-fit-none w-full h-full `" />
         </div>
       </div>
     </div>
