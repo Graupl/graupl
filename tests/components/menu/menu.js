@@ -8,8 +8,10 @@ export default {
       default: "",
     },
     text: {
-      type: String,
-      default: "<li>Menu Item</li><li>Menu Items</li><li>Menu Items</li>",
+      type: Function,
+      default: () => {
+        (h("li", "Menu Item"), h("li", "Menu Item"), h("li", "Menu Item"));
+      },
     },
     attributes: {
       type: Object,
