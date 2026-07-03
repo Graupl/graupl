@@ -10,9 +10,9 @@ export default {
     children: {
       type: Array,
       default: () => (
-        h(BasicComponent, { text: "Menu Item", tag: "li" }),
-        h(BasicComponent, { text: "Menu Item", tag: "li" }),
-        h(BasicComponent, { text: "Menu Item", tag: "li" })
+        h(BasicComponent, { text: "Menu 1", tag: "li" }),
+        h(BasicComponent, { text: "Menu 2", tag: "li" }),
+        h(BasicComponent, { text: "Menu 3", tag: "li" })
       ),
     },
     attributes: {
