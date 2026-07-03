@@ -7,8 +7,8 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: Function,
+    children: {
+      type: Array,
       default: () => (
         h(BasicComponent, { text: () => "Menu Item", tag: "li" }),
         h(BasicComponent, { text: () => "Menu Item", tag: "li" }),

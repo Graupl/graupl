@@ -34,9 +34,13 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    children: {
+      type: Array,
+      default: () => [],
+    },
   },
   setup(props) {
-    const { attributes, variant, state, text, tag } = props;
+    const { attributes, variant, state, text, tag, children } = props;
 
     if (variant !== "" || state !== "") {
       attributes.class = attributes.class || [];
@@ -48,6 +52,10 @@ export default {
       if (state !== "") {
         attributes.class.push(state);
       }
+    }
+
+    if (children.length > 0) {
+      props.text = children.map((child) => h({ ...child })).join("");
     }
 
     return () => h(tag, attributes, text);
