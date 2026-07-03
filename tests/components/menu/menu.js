@@ -16,6 +16,7 @@ export default {
     props.attributes.class = props.attributes.class || [];
 
     props.attributes.class.push("menu");
+    props.attributes["data-testid"] = "menu";
 
     return () =>
       h(BasicComponent, { ...props, tag: "ul" }, [
