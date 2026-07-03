@@ -7,13 +7,9 @@ export default {
       type: String,
       default: "",
     },
-    children: {
-      type: Array,
-      default: () => (
-        h(BasicComponent, { text: "Menu 1", tag: "li" }),
-        h(BasicComponent, { text: "Menu 2", tag: "li" }),
-        h(BasicComponent, { text: "Menu 3", tag: "li" })
-      ),
+    text: {
+      type: String,
+      default: "",
     },
     attributes: {
       type: Object,
@@ -25,6 +21,11 @@ export default {
 
     props.attributes.class.push("menu");
 
-    return () => h(BasicComponent, { ...props, tag: "ul" });
+    return () =>
+      h(BasicComponent, { ...props, tag: "ul" }, [
+        h("li", "Menu 1"),
+        h("li", "Menu 2"),
+        h("li", "Menu 3"),
+      ]);
   },
 };
