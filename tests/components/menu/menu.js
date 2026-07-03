@@ -10,9 +10,9 @@ export default {
     text: {
       type: Function,
       default: () => (
-        h(BasicComponent, { text: "Menu Item", tag: "li" }),
-        h(BasicComponent, { text: "Menu Item", tag: "li" }),
-        h(BasicComponent, { text: "Menu Item", tag: "li" })
+        h(BasicComponent, { text: () => "Menu Item", tag: "li" }),
+        h(BasicComponent, { text: () => "Menu Item", tag: "li" }),
+        h(BasicComponent, { text: () => "Menu Item", tag: "li" })
       ),
     },
     attributes: {
