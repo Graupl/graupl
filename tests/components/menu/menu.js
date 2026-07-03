@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default: "Menu",
+      default: "<li>Menu Item</li><li>Menu Items</li><li>Menu Items</li>",
     },
     attributes: {
       type: Object,
