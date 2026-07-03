@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default: "Badge",
+      default: "Accordion",
     },
     attributes: {
       type: Object,
@@ -19,7 +19,7 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
 
-    props.attributes.class.push("badge");
+    props.attributes.class.push("accordion");
 
     return () => h(BasicComponent, { ...props, tag: "span" });
   },
