@@ -411,8 +411,10 @@
       )
     );
 
-    // &.button
-    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
+    // .button:not(.link)
+    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+        #{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector}
+      ) {
       --#{root-defaults.$prefix}menu-link-padding: #{button-variables.$button-padding};
       --#{root-defaults.$prefix}menu-link-border-width: #{button-variables.$button-border-width};
       --#{root-defaults.$prefix}menu-link-border-radius: #{button-variables.$button-border-radius};
@@ -537,8 +539,10 @@
       )
     );
 
-    // .button
-    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
+    // .button:not(.link)
+    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+        #{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector}
+      ) {
       --#{root-defaults.$prefix}menu-link-background: #{button-variables.$button-background};
       --#{root-defaults.$prefix}menu-link-color: #{button-variables.$button-color};
       --#{root-defaults.$prefix}menu-link-border-color: #{button-variables.$button-border-color};
