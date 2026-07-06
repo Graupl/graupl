@@ -26,7 +26,7 @@ export default {
     return () =>
       h(
         BasicComponent,
-        { ...props.attributes, ...props.variant, tag: "button" },
+        { attributes: props.attributes, variant: props.variant, tag: "button" },
         h("div", { class: "disclosure show" }, props.text)
       );
   },
