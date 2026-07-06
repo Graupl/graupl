@@ -7,6 +7,10 @@ export default {
       type: String,
       default: "",
     },
+    text: {
+      type: String,
+      default: "Breadcrumb",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -23,7 +27,7 @@ export default {
     return () =>
       h(BasicComponent, { ...props, tag: "ol" }, [
         h("li", { class: "breadcrumb-item" }, "Home"),
-        h("li", { class: "breadcrumb-item" }, "Next Page"),
+        h("li", { class: "breadcrumb-item" }, props.text),
       ]);
   },
 };
