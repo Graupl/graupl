@@ -21,6 +21,11 @@ export default {
 
     props.attributes.class.push("disclosure-toggle");
 
-    return () => h(BasicComponent, { ...props, tag: "button" });
+    return () =>
+      h(
+        BasicComponent,
+        { ...props.attributes, ...props.variant, tag: "button" },
+        h("div", { class: "disclosure show" }, props.text)
+      );
   },
 };
