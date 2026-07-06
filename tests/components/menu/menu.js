@@ -3,6 +3,10 @@ import BasicComponent from "../component/basic-component.js";
 
 export default {
   props: {
+    variant: {
+      type: String,
+      default: "",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -11,7 +15,7 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
 
-    props.attributes.class.push("navigation");
+    props.attributes.class.push("menu");
     props.attributes["data-graupl-menu-type"] = "DisclosureMenu";
 
     return () =>
