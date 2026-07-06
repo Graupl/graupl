@@ -18,8 +18,10 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
+    props.attributes["aria-expanded"] = props.attributes["aria-expanded"] || [];
 
     props.attributes.class.push("disclosure-toggle");
+    props.attributes["aria-expanded"].push("true");
 
     return () =>
       h(
