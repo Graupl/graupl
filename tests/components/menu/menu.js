@@ -11,7 +11,7 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
 
-    props.attributes.class.push("menu");
+    props.attributes.class.push("navigation");
     props.attributes["data-graupl-menu-type"] = "DisclosureMenu";
 
     return () =>
