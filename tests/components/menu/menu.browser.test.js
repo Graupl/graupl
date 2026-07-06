@@ -14,7 +14,7 @@ describe("Menu Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("menu-item-2")).toMatchScreenshot();
+      await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
   });
 });
