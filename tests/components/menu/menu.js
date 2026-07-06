@@ -20,15 +20,21 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ul" }, [
-        h("li", { "data-testid": "menu-item-1", class: "menu-item" }, [
-          h("a", { href: "#", class: "menu-link" }, "Menu Item 1"),
-        ]),
-        h("li", { "data-testid": "menu-item-2", class: "menu-item" }, [
-          h("a", { href: "#", class: "menu-link" }, "Menu Item 2"),
-        ]),
-        h("li", { "data-testid": "menu-item-3", class: "menu-item" }, [
-          h("a", { href: "#", class: "menu-link" }, "Menu Item 3"),
-        ]),
+        h(
+          BasicComponent,
+          { "data-testid": "menu-item-1", class: "menu-item", tag: "li" },
+          [h("a", { href: "#", class: "menu-link" }, "Menu Item 1")]
+        ),
+        h(
+          BasicComponent,
+          { "data-testid": "menu-item-2", class: "menu-item", tag: "li" },
+          [h("a", { href: "#", class: "menu-link" }, "Menu Item 2")]
+        ),
+        h(
+          BasicComponent,
+          { "data-testid": "menu-item-3", class: "menu-item", tag: "li" },
+          [h("a", { href: "#", class: "menu-link" }, "Menu Item 3")]
+        ),
       ]);
   },
 };
