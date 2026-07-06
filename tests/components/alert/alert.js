@@ -21,6 +21,18 @@ export default {
 
     props.attributes.class.push("alert");
 
-    return () => h(BasicComponent, { ...props, tag: "span" });
+    return () =>
+      h(BasicComponent, { ...props, tag: "div" }, [
+        h(
+          "div",
+          { class: "alert-header" },
+          h("h3", { class: "alert-title" }, props.text)
+        ),
+        h(
+          "div",
+          { class: "alert-body" },
+          h("p", null, "This is an alert message.")
+        ),
+      ]);
   },
 };
