@@ -26,13 +26,9 @@ export default {
         h(
           "div",
           { class: "alert-header" },
-          h("h3", { class: "alert-title" }, props.text)
+          h("h3", { class: "alert-title" }, "Title")
         ),
-        h(
-          "div",
-          { class: "alert-body" },
-          h("p", null, "This is an alert message.")
-        ),
+        h("div", { class: "alert-body" }, h("p", null, props.text)),
       ]);
   },
 };

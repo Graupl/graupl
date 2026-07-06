@@ -18,16 +18,19 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-    props.attributes["aria-expanded"] = props.attributes["aria-expanded"] || [];
 
-    props.attributes.class.push("disclosure-toggle");
-    props.attributes["aria-expanded"].push("true");
+    props.attributes.class.push("disclosure");
 
-    return () =>
+    return () => (
+      h("button", {
+        class: "disclosure-toggle",
+        "data-graupl-disclosure-target": "#disclosure",
+      }),
       h(
         BasicComponent,
-        { attributes: props.attributes, variant: props.variant, tag: "button" },
-        h("div", { class: "disclosure show" }, props.text)
-      );
+        { tag: "button", id: "#disclosure", ...props.attributes },
+        h("div", { class: "disclosure-content" }, h("p", null, props.text))
+      )
+    );
   },
 };
