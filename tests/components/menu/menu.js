@@ -16,11 +16,16 @@ export default {
     props.attributes.class = props.attributes.class || [];
 
     props.attributes.class.push("menu");
+    props.attributes["data-testid"] = "menu";
     props.attributes["data-graupl-menu-type"] = "DisclosureMenu";
 
     return () =>
-      h(BasicComponent, { ...props, tag: "nav" }, [
-        h(BasicComponent, { "data-testid": "menu", class: "menu", tag: "ul" }),
+      h(BasicComponent, { ...props, tag: "ul" }, [
+        h(BasicComponent, {
+          "data-testid": "menu-item",
+          class: "menu-item",
+          tag: "li",
+        }),
       ]);
   },
 };
