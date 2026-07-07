@@ -10,14 +10,13 @@ export default {
     text: {
       type: Function,
       default() {
-        () =>
-          h(BasicComponent, {
-            tag: "div",
-            attributes: { class: "disclosure-content" },
-            text: () => {
-              h("p", null, "Disclosure");
-            },
-          });
+        return h(BasicComponent, {
+          tag: "div",
+          attributes: { class: "disclosure-content" },
+          text: () => {
+            h("p", null, "Disclosure");
+          },
+        });
       },
     },
     attributes: {
