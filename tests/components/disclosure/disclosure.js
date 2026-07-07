@@ -10,7 +10,11 @@ export default {
     text: {
       type: Function,
       default: () =>
-        h("div", { class: "disclosure-content" }, [h("p", null, "Disclosure")]),
+        h(BasicComponent, {
+          tag: "div",
+          attributes: { class: "disclosure-content" },
+          text: () => h("p", null, "Disclosure"),
+        }),
     },
     attributes: {
       type: Object,

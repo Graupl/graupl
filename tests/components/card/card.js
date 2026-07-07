@@ -13,13 +13,12 @@ export default {
         h(BasicComponent, {
           tag: "div",
           attributes: { class: "card-content" },
-          text: [
+          text: () =>
             h(BasicComponent, {
               tag: "div",
               attributes: { class: "card-body" },
               text: [h(BasicComponent, { tag: "p", text: "Card" })],
             }),
-          ],
         }),
         h(BasicComponent, {
           tag: "div",

@@ -11,17 +11,16 @@ export default {
       type: Function,
       default: () => {
         () => (
-          h(
-            BasicComponent,
-            { tag: "li", attributes: { class: "breadcrumb-item" } },
-            [
+          h(BasicComponent, {
+            tag: "li",
+            attributes: { class: "breadcrumb-item" },
+            text: () =>
               h(BasicComponent, {
                 tag: "a",
                 attributes: { class: "breadcrumb-link", href: "/" },
                 text: "Home",
               }),
-            ]
-          ),
+          }),
           h(BasicComponent, {
             tag: "li",
             attributes: { class: "breadcrumb-item" },
