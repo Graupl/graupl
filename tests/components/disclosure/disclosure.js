@@ -20,14 +20,11 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("disclosure");
 
-    props.attributes["data-once"] = props.attributes["data-once"] || [];
-    props.attributes["data-once"].push("graupl-disclosure-generator");
-
     return () => [
       h(
         BasicComponent,
         { tag: "button", attributes: { ...props.attributes } },
-        h("div", { class: "disclosure-content" }, h("p", null, props.text))
+        [h("div", { class: "disclosure-content" }, [h("p", null, props.text)])]
       ),
     ];
   },
