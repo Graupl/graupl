@@ -8,16 +8,22 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
-      default() {
-        () => (
-          h(
-            "div",
-            { class: "alert-header" },
-            h("h3", { class: "alert-title" }, "Title")
-          ),
-          h("div", { class: "alert-body" }, h("p", null, "Alert"))
-        );
+      type: String,
+      default: () => {
+        (h(BasicComponent, {
+          class: "alert-header",
+          tag: "div",
+          text: h(BasicComponent, {
+            tag: "h3",
+            attributes: { class: "alert-title" },
+            text: "Title",
+          }),
+        }),
+          h(BasicComponent, {
+            tag: "div",
+            class: "alert-body",
+            text: h(BasicComponent, { tag: "p", text: "Alert" }),
+          }));
       },
     },
     attributes: {
