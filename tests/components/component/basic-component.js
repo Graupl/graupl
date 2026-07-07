@@ -24,7 +24,9 @@ export default {
     },
     text: {
       type: Function,
-      default: () => "",
+      default() {
+        return () => "";
+      },
     },
     tag: {
       type: String,

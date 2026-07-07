@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: Function,
-      default: () => {
+      default() {
         () => (
           h(
             "div",
