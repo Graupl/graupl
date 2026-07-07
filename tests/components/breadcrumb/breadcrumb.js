@@ -18,7 +18,6 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-
     props.attributes.class.push("breadcrumb");
 
     props.attributes["data-once"] = props.attributes["data-once"] || [];
@@ -27,7 +26,7 @@ export default {
     return () =>
       h(BasicComponent, { attributes: { ...props.attributes }, tag: "ol" }, [
         h("li", { class: "breadcrumb-item" }, "Home"),
-        h("li", { class: "breadcrumb-item" }, { ...props.text }),
+        h("li", { class: "breadcrumb-item" }, props.text),
       ]);
   },
 };

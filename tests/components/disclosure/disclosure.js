@@ -18,17 +18,15 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-
     props.attributes.class.push("disclosure");
 
+    props.attributes["data-once"] = props.attributes["data-once"] || [];
+    props.attributes["data-once"].push("graupl-disclosure-generator");
+
     return () => [
-      h("button", {
-        class: "disclosure-toggle",
-        "data-graupl-disclosure-target": "#disclosure",
-      }),
       h(
         BasicComponent,
-        { tag: "button", id: "#disclosure", attributes: props.attributes },
+        { tag: "button", attributes: { ...props.attributes } },
         h("div", { class: "disclosure-content" }, h("p", null, props.text))
       ),
     ];
