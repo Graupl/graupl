@@ -8,8 +8,10 @@ export default {
       default: "",
     },
     text: {
-      type: String,
-      default: "Disclosure",
+      type: [String, Array],
+      default: [
+        h("div", { class: "disclosure-content" }, [h("p", null, "Disclosure")]),
+      ],
     },
     attributes: {
       type: Object,
@@ -20,10 +22,6 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("disclosure");
 
-    return () => [
-      h(BasicComponent, { tag: "button", ...props }, [
-        h("div", { class: "disclosure-content" }, [h("p", null, props.text)]),
-      ]),
-    ];
+    return () => [h(BasicComponent, { tag: "button", ...props })];
   },
 };
