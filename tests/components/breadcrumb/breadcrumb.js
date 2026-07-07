@@ -21,7 +21,7 @@ export default {
     props.attributes.class.push("breadcrumb");
 
     return () =>
-      h(BasicComponent, { attributes: { ...props.attributes }, tag: "ol" }, [
+      h(BasicComponent, { ...props, tag: "ol" }, [
         h("li", { class: "breadcrumb-item" }, [
           h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
         ]),
