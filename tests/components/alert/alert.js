@@ -21,7 +21,7 @@ export default {
         }),
         h(BasicComponent, {
           tag: "div",
-          class: "alert-body",
+          attributes: { class: "alert-body" },
           text: h(BasicComponent, { tag: "p", text: "Alert" }),
         })),
     },
