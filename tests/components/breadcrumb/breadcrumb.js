@@ -9,24 +9,27 @@ export default {
     },
     text: {
       type: Function,
-      default: () => (
-        h(
-          BasicComponent,
-          { tag: "li", attributes: { class: "breadcrumb-item" } },
-          [
-            h(BasicComponent, {
-              tag: "a",
-              attributes: { class: "breadcrumb-link", href: "/" },
-              text: "Home",
-            }),
-          ]
-        ),
-        h(BasicComponent, {
-          tag: "li",
-          attributes: { class: "breadcrumb-item" },
-          text: "Breadcrumb",
-        })
-      ),
+      default: () => {
+        return (
+          () =>
+            h(
+              BasicComponent,
+              { tag: "li", attributes: { class: "breadcrumb-item" } },
+              [
+                h(BasicComponent, {
+                  tag: "a",
+                  attributes: { class: "breadcrumb-link", href: "/" },
+                  text: "Home",
+                }),
+              ]
+            ),
+          h(BasicComponent, {
+            tag: "li",
+            attributes: { class: "breadcrumb-item" },
+            text: "Breadcrumb",
+          })
+        );
+      },
     },
     attributes: {
       type: Object,
