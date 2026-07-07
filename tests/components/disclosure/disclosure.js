@@ -9,9 +9,8 @@ export default {
     },
     text: {
       type: [String, Function],
-      default: () => [
+      default: () =>
         h("div", { class: "disclosure-content" }, [h("p", null, "Disclosure")]),
-      ],
     },
     attributes: {
       type: Object,

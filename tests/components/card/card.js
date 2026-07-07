@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: [String, Function],
-      default: () => [
+      default: () => (
         h(BasicComponent, {
           tag: "div",
           attributes: { class: "card-content" },
@@ -31,8 +31,8 @@ export default {
               text: "The Action",
             }),
           ],
-        }),
-      ],
+        })
+      ),
     },
     attributes: {
       type: Object,
