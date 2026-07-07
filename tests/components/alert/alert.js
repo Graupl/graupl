@@ -8,7 +8,7 @@ export default {
       default: "",
     },
     text: {
-      type: Object,
+      type: Function,
       default:
         (h(BasicComponent, {
           class: "alert-header",
