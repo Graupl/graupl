@@ -8,7 +8,7 @@ export default {
       default: "",
     },
     text: {
-      type: String,
+      type: [String, Array],
       default: [
         h("li", { class: "breadcrumb-item" }, [
           h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
