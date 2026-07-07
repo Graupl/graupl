@@ -10,20 +10,22 @@ export default {
     text: {
       type: Function,
       default:
-        (h(BasicComponent, {
-          class: "alert-header",
-          tag: "div",
-          text: h(BasicComponent, {
-            tag: "h3",
-            attributes: { class: "alert-title" },
-            text: "Title",
-          }),
-        }),
-        h(BasicComponent, {
-          tag: "div",
-          attributes: { class: "alert-body" },
-          text: h(BasicComponent, { tag: "p", text: "Alert" }),
-        })),
+        (() =>
+          h(BasicComponent, {
+            class: "alert-header",
+            tag: "div",
+            text: h(BasicComponent, {
+              tag: "h3",
+              attributes: { class: "alert-title" },
+              text: "Title",
+            }),
+          })) +
+        (() =>
+          h(BasicComponent, {
+            tag: "div",
+            attributes: { class: "alert-body" },
+            text: h(BasicComponent, { tag: "p", text: "Alert" }),
+          })),
     },
     attributes: {
       type: Object,
