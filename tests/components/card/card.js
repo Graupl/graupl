@@ -10,12 +10,29 @@ export default {
     text: {
       type: [String, Array],
       default: [
-        h("div", { class: "card-content" }, [
-          h("div", { class: "card-body" }, h("p", null, "Card")),
-        ]),
-        h("div", { class: "card-footer" }, [
-          h("a", { class: "button-stretched", href: "/" }, "The Action"),
-        ]),
+        h(BasicComponent, {
+          tag: "div",
+          class: "card-content",
+          text: [
+            h(BasicComponent, {
+              tag: "div",
+              class: "card-body",
+              text: [h(BasicComponent, { tag: "p", text: "Card" })],
+            }),
+          ],
+        }),
+        h(BasicComponent, {
+          tag: "div",
+          class: "card-footer",
+          text: [
+            h(BasicComponent, {
+              tag: "a",
+              class: "button-stretched",
+              href: "/",
+              text: "The Action",
+            }),
+          ],
+        }),
       ],
     },
     attributes: {
