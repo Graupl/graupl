@@ -9,12 +9,11 @@ export default {
     },
     text: {
       type: Function,
-      default: () =>
-        h(BasicComponent, {
-          tag: "div",
-          attributes: { class: "disclosure-content" },
-          text: () => h(BasicComponent, { tag: "p", text: "Disclosure" }),
-        }),
+      default: h(BasicComponent, {
+        tag: "div",
+        attributes: { class: "disclosure-content" },
+        text: h(BasicComponent, { tag: "p", text: "Disclosure" }),
+      }),
     },
     attributes: {
       type: Object,
