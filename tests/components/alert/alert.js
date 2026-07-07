@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default: () => {
+      default:
         (h(BasicComponent, {
           class: "alert-header",
           tag: "div",
@@ -19,12 +19,11 @@ export default {
             text: "Title",
           }),
         }),
-          h(BasicComponent, {
-            tag: "div",
-            class: "alert-body",
-            text: h(BasicComponent, { tag: "p", text: "Alert" }),
-          }));
-      },
+        h(BasicComponent, {
+          tag: "div",
+          class: "alert-body",
+          text: h(BasicComponent, { tag: "p", text: "Alert" }),
+        })),
     },
     attributes: {
       type: Object,
