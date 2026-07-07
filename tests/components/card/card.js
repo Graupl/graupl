@@ -12,23 +12,22 @@ export default {
       default: [
         h(BasicComponent, {
           tag: "div",
-          class: "card-content",
+          attributes: { class: "card-content" },
           text: [
             h(BasicComponent, {
               tag: "div",
-              class: "card-body",
+              attributes: { class: "card-body" },
               text: [h(BasicComponent, { tag: "p", text: "Card" })],
             }),
           ],
         }),
         h(BasicComponent, {
           tag: "div",
-          class: "card-footer",
+          attributes: { class: "card-footer" },
           text: [
             h(BasicComponent, {
               tag: "a",
-              class: "button-stretched",
-              href: "/",
+              attributes: { class: "button-stretched", href: "/" },
               text: "The Action",
             }),
           ],
