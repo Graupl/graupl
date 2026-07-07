@@ -8,8 +8,28 @@ export default {
       default: "",
     },
     text: {
-      type: String,
-      default: "",
+      type: Function,
+      default() {
+        [
+          h(BasicComponent, {
+            tag: "li",
+            attributes: { class: "breadcrumb-item" },
+            text: () =>
+              h(BasicComponent, {
+                tag: "a",
+                attributes: { class: "breadcrumb-link", href: "/" },
+                text: "Home",
+              }),
+          }),
+          h(BasicComponent, {
+            tag: "li",
+            attributes: { class: "breadcrumb-item" },
+            text: "Breadcrumb",
+          }),
+        ].forEach((item) => {
+          item;
+        });
+      },
     },
     attributes: {
       type: Object,
@@ -20,12 +40,6 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("breadcrumb");
 
-    return () =>
-      h(BasicComponent, { ...props, tag: "ol" }, [
-        h("li", { class: "breadcrumb-item" }, [
-          h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
-        ]),
-        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
-      ]);
+    return () => h(BasicComponent, { ...props, tag: "ol" });
   },
 };
