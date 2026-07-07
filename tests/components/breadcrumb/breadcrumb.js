@@ -8,8 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
-      default: "Breadcrumb",
+      type: String,
+      default: "",
     },
     attributes: {
       type: Object,
@@ -22,25 +22,10 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ol" }, [
-        h(
-          BasicComponent,
-          {
-            tag: "li",
-            attributes: { class: "breadcrumb-item" },
-          },
-          [
-            h(BasicComponent, {
-              tag: "a",
-              attributes: { class: "breadcrumb-link", href: "/" },
-              text: "Home",
-            }),
-          ]
-        ),
-        h(BasicComponent, {
-          tag: "li",
-          attributes: { class: "breadcrumb-item" },
-          text: "Breadcrumb",
-        }),
+        h("li", { class: "breadcrumb-item" }, [
+          h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
+        ]),
+        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
       ]);
   },
 };
