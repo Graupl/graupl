@@ -14,9 +14,10 @@ describe("Card Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Card"))
-        .getByRole("link", { name: "Card Action" })
-        .toMatchScreenshot();
+      await expect(screen.getByText("Card")).toMatchScreenshot();
+      await expect(
+        screen.getByRole("link", { name: "Card Action" })
+      ).toMatchScreenshot();
     });
   });
 });
