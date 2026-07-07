@@ -10,10 +10,12 @@ export default {
     text: {
       type: [String, Array],
       default: [
-        h("li", { class: "breadcrumb-item" }, [
-          h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
+        h("div", { class: "card-content" }, [
+          h("div", { class: "card-body" }, h("p", null, "Card")),
         ]),
-        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
+        h("div", { class: "card-footer" }, [
+          h("a", { class: "button-stretched", href: "/" }, "Card Action"),
+        ]),
       ],
     },
     attributes: {
@@ -23,8 +25,8 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("breadcrumb");
+    props.attributes.class.push("card");
 
-    return () => h(BasicComponent, { ...props, tag: "ol" });
+    return () => h(BasicComponent, { ...props, tag: "div" });
   },
 };
