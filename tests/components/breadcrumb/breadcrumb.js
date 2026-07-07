@@ -25,7 +25,7 @@ export default {
     props.attributes["data-once"].push("graupl-breadcrumb-generator");
 
     return () =>
-      h(BasicComponent, { ...props, tag: "ol" }, [
+      h(BasicComponent, { attributes: props.attributes, tag: "ol" }, [
         h("li", { class: "breadcrumb-item" }, "Home"),
         h("li", { class: "breadcrumb-item" }, props.text),
       ]);

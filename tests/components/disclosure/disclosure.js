@@ -21,16 +21,16 @@ export default {
 
     props.attributes.class.push("disclosure");
 
-    return () => (
+    return () => [
       h("button", {
         class: "disclosure-toggle",
         "data-graupl-disclosure-target": "#disclosure",
       }),
       h(
         BasicComponent,
-        { tag: "button", id: "#disclosure", ...props.attributes },
+        { tag: "button", id: "#disclosure", attributes: props.attributes },
         h("div", { class: "disclosure-content" }, h("p", null, props.text))
-      )
-    );
+      ),
+    ];
   },
 };
