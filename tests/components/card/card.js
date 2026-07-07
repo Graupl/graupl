@@ -10,7 +10,7 @@ export default {
     text: {
       type: String,
       default:
-        (h(BasicComponent, {
+        h(BasicComponent, {
           tag: "div",
           attributes: { class: "card-content" },
           text: h(BasicComponent, {
@@ -18,7 +18,7 @@ export default {
             attributes: { class: "card-body" },
             text: h(BasicComponent, { tag: "p", text: "Card" }),
           }),
-        }),
+        }) +
         h(BasicComponent, {
           tag: "div",
           attributes: { class: "card-footer" },
@@ -27,7 +27,7 @@ export default {
             attributes: { class: "button-stretched", href: "/" },
             text: "The Action",
           }),
-        })),
+        }),
     },
     attributes: {
       type: Object,
