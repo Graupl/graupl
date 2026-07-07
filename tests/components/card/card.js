@@ -8,7 +8,7 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
+      type: Object,
       default:
         (h(BasicComponent, {
           tag: "div",
