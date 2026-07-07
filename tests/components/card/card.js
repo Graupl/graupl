@@ -8,8 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: [String, Array],
-      default: [
+      type: [String, Function],
+      default: () => [
         h(BasicComponent, {
           tag: "div",
           attributes: { class: "card-content" },

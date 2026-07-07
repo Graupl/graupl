@@ -23,7 +23,7 @@ export default {
       },
     },
     text: {
-      type: [String, Array],
+      type: [String, Function],
       default: "",
     },
     tag: {

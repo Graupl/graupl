@@ -8,8 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: [String, Array],
-      default: [
+      type: [String, Function],
+      default: () => [
         h("div", { class: "disclosure-content" }, [h("p", null, "Disclosure")]),
       ],
     },
