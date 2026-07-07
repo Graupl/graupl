@@ -10,10 +10,19 @@ export default {
     text: {
       type: [String, Array],
       default: [
-        h("li", { class: "breadcrumb-item" }, [
-          h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
+        h(BasicComponent, { tag: "li", class: "breadcrumb-item" }, [
+          h(BasicComponent, {
+            tag: "a",
+            class: "breadcrumb-link",
+            href: "/",
+            text: "Home",
+          }),
         ]),
-        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
+        h(BasicComponent, {
+          tag: "li",
+          class: "breadcrumb-item",
+          text: "Breadcrumb",
+        }),
       ],
     },
     attributes: {
