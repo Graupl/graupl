@@ -8,16 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
-      default: h(BasicComponent, {
-        tag: "div",
-        attributes: { class: "card-content" },
-        text: h(BasicComponent, {
-          tag: "div",
-          attributes: { class: "card-body" },
-          text: h(BasicComponent, { tag: "p", text: "Card" }),
-        }),
-      }),
+      type: String,
+      default: "",
     },
     attributes: {
       type: Object,
@@ -27,6 +19,30 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("card");
+
+    props.text.push(() =>
+      h(BasicComponent, {
+        tag: "div",
+        attributes: { class: "card-content" },
+        text: h(BasicComponent, {
+          tag: "div",
+          attributes: { class: "card-body" },
+          text: h(BasicComponent, { tag: "p", text: "Card" }),
+        }),
+      })
+    );
+
+    props.text.push(() =>
+      h(BasicComponent, {
+        tag: "div",
+        attributes: { class: "card-footer" },
+        text: h(BasicComponent, {
+          tag: "a",
+          attributes: { class: "button-stretched", href: "/" },
+          text: "The Action",
+        }),
+      })
+    );
 
     return () => h(BasicComponent, { ...props, tag: "div" });
   },

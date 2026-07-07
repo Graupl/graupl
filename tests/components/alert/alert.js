@@ -9,8 +9,8 @@ export default {
     },
     text: {
       type: Function,
-      default:
-        (h(BasicComponent, {
+      default: () => (
+        h(BasicComponent, {
           class: "alert-header",
           tag: "div",
           text: h(BasicComponent, {
@@ -23,7 +23,8 @@ export default {
           tag: "div",
           attributes: { class: "alert-body" },
           text: h(BasicComponent, { tag: "p", text: "Alert" }),
-        })),
+        })
+      ),
     },
     attributes: {
       type: Object,
