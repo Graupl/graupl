@@ -20,7 +20,7 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("card");
 
-    props.text.push(() =>
+    props.text += () =>
       h(BasicComponent, {
         tag: "div",
         attributes: { class: "card-content" },
@@ -29,10 +29,9 @@ export default {
           attributes: { class: "card-body" },
           text: h(BasicComponent, { tag: "p", text: "Card" }),
         }),
-      })
-    );
+      });
 
-    props.text.push(() =>
+    props.text += () =>
       h(BasicComponent, {
         tag: "div",
         attributes: { class: "card-footer" },
@@ -41,8 +40,7 @@ export default {
           attributes: { class: "button-stretched", href: "/" },
           text: "The Action",
         }),
-      })
-    );
+      });
 
     return () => h(BasicComponent, { ...props, tag: "div" });
   },
