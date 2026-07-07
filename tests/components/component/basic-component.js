@@ -23,8 +23,8 @@ export default {
       },
     },
     text: {
-      type: [String, Function],
-      default: "",
+      type: Function,
+      default: () => "",
     },
     tag: {
       type: String,

@@ -13,7 +13,9 @@ export default {
         h(BasicComponent, {
           tag: "div",
           attributes: { class: "disclosure-content" },
-          text: () => h("p", null, "Disclosure"),
+          text: () => {
+            h("p", null, "Disclosure");
+          },
         }),
     },
     attributes: {

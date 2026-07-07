@@ -17,7 +17,7 @@ export default {
             h(BasicComponent, {
               tag: "div",
               attributes: { class: "card-body" },
-              text: [h(BasicComponent, { tag: "p", text: "Card" })],
+              text: () => h(BasicComponent, { tag: "p", text: "Card" }),
             }),
         }),
         h(BasicComponent, {
