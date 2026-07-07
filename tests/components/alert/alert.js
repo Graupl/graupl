@@ -8,8 +8,17 @@ export default {
       default: "",
     },
     text: {
-      type: String,
-      default: "Alert",
+      type: Function,
+      default: () => {
+        () => (
+          h(
+            "div",
+            { class: "alert-header" },
+            h("h3", { class: "alert-title" }, "Title")
+          ),
+          h("div", { class: "alert-body" }, h("p", null, "Alert"))
+        );
+      },
     },
     attributes: {
       type: Object,
