@@ -22,7 +22,9 @@ export default {
 
     return () =>
       h(BasicComponent, { attributes: { ...props.attributes }, tag: "ol" }, [
-        h("li", { class: "breadcrumb-item" }, "Home"),
+        h("li", { class: "breadcrumb-item" }, [
+          h("a", { class: "breadcrumb-link", href: "/" }, "Home"),
+        ]),
         h("li", { class: "breadcrumb-item" }, props.text),
       ]);
   },

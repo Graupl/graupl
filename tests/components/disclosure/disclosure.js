@@ -21,11 +21,9 @@ export default {
     props.attributes.class.push("disclosure");
 
     return () => [
-      h(
-        BasicComponent,
-        { tag: "button", attributes: { ...props.attributes } },
-        [h("div", { class: "disclosure-content" }, [h("p", null, props.text)])]
-      ),
+      h(BasicComponent, { tag: "button", ...props }, [
+        h("div", { class: "disclosure-content" }, [h("p", null, props.text)]),
+      ]),
     ];
   },
 };
