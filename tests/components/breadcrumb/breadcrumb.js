@@ -9,8 +9,8 @@ export default {
     },
     text: {
       type: [String, Function],
-      default: () => [
-        h(
+      default: () => {
+        (h(
           BasicComponent,
           { tag: "li", attributes: { class: "breadcrumb-item" } },
           [
@@ -21,12 +21,12 @@ export default {
             }),
           ]
         ),
-        h(BasicComponent, {
-          tag: "li",
-          attributes: { class: "breadcrumb-item" },
-          text: "Breadcrumb",
-        }),
-      ],
+          h(BasicComponent, {
+            tag: "li",
+            attributes: { class: "breadcrumb-item" },
+            text: "Breadcrumb",
+          }));
+      },
     },
     attributes: {
       type: Object,
