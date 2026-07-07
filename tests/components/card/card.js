@@ -14,7 +14,7 @@ export default {
           h("div", { class: "card-body" }, h("p", null, "Card")),
         ]),
         h("div", { class: "card-footer" }, [
-          h("a", { class: "button-stretched", href: "/" }, "Card Action"),
+          h("a", { class: "button-stretched", href: "/" }, "The Action"),
         ]),
       ],
     },
