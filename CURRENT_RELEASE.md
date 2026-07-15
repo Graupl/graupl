@@ -1,6 +1,6 @@
-## [1.0.0-beta.54](https://github.com/Graupl/graupl/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-06-26)
+## [1.0.0-beta.55](https://github.com/Graupl/graupl/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-15)
 
 
-### Bug Fixes
+### Features
 
-* **layout:** do not hard-code graupl variable ([6122013](https://github.com/Graupl/graupl/commit/61220137f865fa51a7924d3fc9d6eb01403fecf0))
+* **utlity:** add more border control utilities ([f30c234](https://github.com/Graupl/graupl/commit/f30c2344855c7c425aaaa630bdd98bf32d644fca))
