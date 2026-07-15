@@ -54,33 +54,23 @@ $screen-sizes: map.merge($-screen-sizes, $screen-sizes);
 $-screen-size-triggers: (
   navigation-collapse: (
     mixin: "down",
-    args: (
-      "sm",
-    ),
+    args: ("sm"),
   ),
   navigation-expand: (
     mixin: "up",
-    args: (
-      "md",
-    ),
+    args: ("md"),
   ),
   force-vertical-card: (
     mixin: "down",
-    args: (
-      "sm",
-    ),
+    args: ("sm"),
   ),
   force-single-column: (
     mixin: "down",
-    args: (
-      "xs",
-    ),
+    args: ("xs"),
   ),
   allow-sidebars: (
     mixin: "up",
-    args: (
-      "lg",
-    ),
+    args: ("lg"),
   ),
 );
 $screen-size-triggers: () !default;
