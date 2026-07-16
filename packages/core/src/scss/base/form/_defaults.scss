@@ -31,6 +31,32 @@ $fieldset-selector-base: $selector-base !default;
 $fieldset-selector: "fieldset" !default;
 $fieldset-theme-prefix-selector-base: $input-theme-prefix-selector-base !default;
 $fieldset-theme-prefix-selector: $input-theme-prefix-selector !default;
+$-input-type-selectors: (
+  "button": ("[type=button]"),
+  "checkbox": ("[type=checkbox]"),
+  "color": ("[type=color]"),
+  "date": ("[type=date]"),
+  "datetime-local": ("[type=datetime-local]"),
+  "email": ("[type=email]"),
+  "file": ("[type=file]"),
+  "hidden": ("[type=hidden]"),
+  "image": ("[type=image]"),
+  "month": ("[type=month]"),
+  "number": ("[type=number]"),
+  "password": ("[type=password]"),
+  "radio": ("[type=radio]"),
+  "range": ("[type=range]"),
+  "reset": ("[type=reset]"),
+  "search": ("[type=search]"),
+  "submit": ("[type=submit]"),
+  "tel": ("[type=tel]"),
+  "text": ("[type=text]"),
+  "time": ("[type=time]"),
+  "url": ("[type=url]"),
+  "week": ("[type=week]"),
+);
+$input-type-selectors: () !default;
+$input-type-selectors: map.merge($-input-type-selectors, $input-type-selectors);
 
 // Fieldset properties.
 $fieldset-direction: column !default;

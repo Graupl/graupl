@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="./_demo.scss">
+  <link rel="stylesheet" href="./_demo.scss" />
   <style>
     /* Have the shelf fully disappear when closed */
     /* :root {
@@ -32,43 +32,95 @@
   <main class="container pb-10">
     <div class="flex-columns">
       <div class="col-8">
-        <h1 class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">Hello Graupl!</h1>
-        <p>Graupl is a modular CSS framework with the goal of making it easy to theme a site.</p>
-        <p>This source code can be found in <a href="https://github.com/Graupl/graupl">GitHub</a>.</p>
+        <h1
+          class="gradient from-tertiary-600 to-primary-600 w-max-content bg-clip-text text-transparent">
+          Hello Graupl!
+        </h1>
+        <p>
+          Graupl is a modular CSS framework with the goal of making it easy to
+          theme a site.
+        </p>
+        <p>
+          This source code can be found in
+          <a href="https://github.com/Graupl/graupl">GitHub</a>.
+        </p>
         <p>Graupl supports light and dark modes out-of-the-box.</p>
-        <button id="dark-mode-toggle" class="button mt-5 w-half">Toggle dark mode</button>
+        <button id="dark-mode-toggle" class="button mt-5 w-half">
+          Toggle dark mode
+        </button>
       </div>
       <div class="col-4 align-items-center">
-        <img src="./logo.svg" alt="Graupl logo" class="logo">
+        <img src="./logo.svg" alt="Graupl logo" class="logo" />
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Typography</h2>
-      <p>Graupl provides default typography styles and classes to go with them.</p>
-      <div class="text-h1">Heading 1 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h1</span>)</div>
-      <div class="text-h2">Heading 2 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h2</span>)</div>
-      <div class="text-h3">Heading 3 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h3</span>)</div>
-      <div class="text-h4">Heading 4 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h4</span>)</div>
-      <div class="text-h5">Heading 5 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h5</span>)</div>
-      <div class="text-h6">Heading 6 (<span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h6</span>)</div>
-      <p>This is a paragraph. It provides the default styles for all text on the site and can be applied to non-paragraph elements using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-paragraph</span> class. There are also set defaults for <strong>bold</strong> and <em>emphasized</em> text.</p>
+      <p>
+        Graupl provides default typography styles and classes to go with them.
+      </p>
+      <div class="text-h1">
+        Heading 1 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h1</span>)
+      </div>
+      <div class="text-h2">
+        Heading 2 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h2</span>)
+      </div>
+      <div class="text-h3">
+        Heading 3 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h3</span>)
+      </div>
+      <div class="text-h4">
+        Heading 4 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h4</span>)
+      </div>
+      <div class="text-h5">
+        Heading 5 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h5</span>)
+      </div>
+      <div class="text-h6">
+        Heading 6 (<span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-h6</span>)
+      </div>
+      <p>
+        This is a paragraph. It provides the default styles for all text on
+        the site and can be applied to non-paragraph elements using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.text-paragraph</span>
+        class. There are also set defaults for <strong>bold</strong> and
+        <em>emphasized</em> text.
+      </p>
       <h3>Links</h3>
-      <p>There are also default links styles that handle all states they could be in.</p>
+      <p>
+        There are also default links styles that handle all states they could
+        be in.
+      </p>
       <ul class="list-style-none m-0 p-0 display-flex flex-col g-3">
-        <li><a href="https://graupl.dev/page-that-cant-be-visited">Link</a></li>
+        <li>
+          <a href="https://graupl.dev/page-that-cant-be-visited">Link</a>
+        </li>
         <li><a href="https://graupl.dev" class="visited">Visited link</a></li>
         <li><a href="https://graupl.dev" class="focus">Focused link</a></li>
         <li><a href="https://graupl.dev" class="hover">Hovered link</a></li>
         <li><a href="https://graupl.dev" class="active">Active link</a></li>
-        <li><a href="https://graupl.dev" class="disabled">Disabled link</a></li>
+        <li>
+          <a href="https://graupl.dev" class="disabled">Disabled link</a>
+        </li>
       </ul>
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Buttons</h2>
-      <p>There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more.
+      <p>
+        There are 4 colours of buttons supported by default, with plans to
+        have a "graupl-theme" plugin that adds more.
       </p>
       <h3>Default buttons</h3>
-      <p>The default button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> class to any element.</p>
+      <p>
+        The default button can be applied by adding the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        class to any element.
+      </p>
       <div class="columns">
         <button class="button">Default button</button>
         <button class="button visited">Visited button</button>
@@ -78,7 +130,15 @@
         <button class="button disabled">Disabled Button</button>
       </div>
       <h3>Primary buttons</h3>
-      <p>The primary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.primary</span> classes to any element.</p>
+      <p>
+        The primary button can be applied by adding the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        and
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.primary</span>
+        classes to any element.
+      </p>
       <div class="columns">
         <button class="button primary">Default button</button>
         <button class="button primary visited">Visited button</button>
@@ -88,7 +148,15 @@
         <button class="button primary disabled">Disabled Button</button>
       </div>
       <h3>Secondary buttons</h3>
-      <p>The secondary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.secondary</span> classes to any element.</p>
+      <p>
+        The secondary button can be applied by adding the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        and
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.secondary</span>
+        classes to any element.
+      </p>
       <div class="columns">
         <button class="button secondary">Default button</button>
         <button class="button secondary visited">Visited button</button>
@@ -98,7 +166,15 @@
         <button class="button secondary disabled">Disabled Button</button>
       </div>
       <h3>Tertiary buttons</h3>
-      <p>The tertiary button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.tertiary</span> classes to any element.</p>
+      <p>
+        The tertiary button can be applied by adding the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        and
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.tertiary</span>
+        classes to any element.
+      </p>
       <div class="columns">
         <button class="button tertiary">Default button</button>
         <button class="button tertiary visited">Visited button</button>
@@ -108,7 +184,16 @@
         <button class="button tertiary disabled">Disabled Button</button>
       </div>
       <h3>Link buttons</h3>
-      <p>The link button can be applied by adding the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.link</span> classes to any element. Buttons set to use the link variant will have their defaults overwritten by link defaults.</p>
+      <p>
+        The link button can be applied by adding the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        and
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.link</span>
+        classes to any element. Buttons set to use the link variant will have
+        their defaults overwritten by link defaults.
+      </p>
       <div class="columns">
         <button class="button link">Default button</button>
         <button class="button link visited">Visited button</button>
@@ -118,9 +203,19 @@
         <button class="button link disabled">Disabled Button</button>
       </div>
       <h3>Anchor buttons</h3>
-      <p>The anchor button isn't a class, but demonstrates the interactions between buttons and links. Any <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">&lt;a&gt;</span> tag with the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span> class will have its defaults overwritten with button defaults.</p>
+      <p>
+        The anchor button isn't a class, but demonstrates the interactions
+        between buttons and links. Any
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">&lt;a&gt;</span>
+        tag with the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.button</span>
+        class will have its defaults overwritten with button defaults.
+      </p>
       <div class="columns">
-        <a href="https://graupl.dev/page-that-cant-be-visited" class="button">Default button</a>
+        <a href="https://graupl.dev/page-that-cant-be-visited"
+          class="button">Default button</a>
         <a href="https://graupl.dev" class="button visited">Visited button</a>
         <a href="https://graupl.dev" class="button focus">Focused Button</a>
         <a href="https://graupl.dev" class="button hover">Hovered Button</a>
@@ -144,30 +239,47 @@
       <form class="container rg-4">
         <div class="input-group">
           <label for="input">Input</label>
-          <input type="text" placeholder="Input" id="input">
-          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
+          <input type="text" placeholder="Input" id="input" />
+          <small class="help-text">This is some help text to assist with knowing
+            what the field is
+            about.</small>
         </div>
-        <div class="input-group inline"><label for="input-readonly">Readonly Input</label>
-          <input type="text" placeholder="Readonly Input" id="input-readonly" value="Readonly Input" readonly>
-          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
-        </div>
-        <div class="input-group"><label for="input-disabled">Disabled Input</label>
-          <input type="text" placeholder="Disabled Input" id="input-disabled" disabled>
-          <small class="help-text">This is some help text to assist with knowing what the field is about.</small>
-        </div>
-        <div class="input-group inline"><label for="textarea">Textarea</label>
-          <textarea class="textarea" placeholder="Textarea" id="textarea"></textarea>
+        <div class="input-group inline">
+          <label for="input-readonly">Readonly Input</label>
+          <input type="text" placeholder="Readonly Input" id="input-readonly"
+            value="Readonly Input" readonly />
+          <small class="help-text">This is some help text to assist with knowing
+            what the field is
+            about.</small>
         </div>
         <div class="input-group">
-          <label for="textarea-readonly" class="display-flex g-2">Readonly Textarea
+          <label for="input-disabled">Disabled Input</label>
+          <input type="text" placeholder="Disabled Input" id="input-disabled"
+            disabled />
+          <small class="help-text">This is some help text to assist with knowing
+            what the field is
+            about.</small>
+        </div>
+        <div class="input-group inline">
+          <label for="textarea">Textarea</label>
+          <textarea class="textarea" placeholder="Textarea"
+            id="textarea"></textarea>
+        </div>
+        <div class="input-group">
+          <label for="textarea-readonly" class="display-flex g-2">Readonly
+            Textarea
           </label>
-          <textarea class="textarea" placeholder="Readonly Textarea" id="textarea-readonly"
-            readonly>Readonly Textarea</textarea>
+          <textarea class="textarea" placeholder="Readonly Textarea"
+            id="textarea-readonly" readonly>
+Readonly Textarea</textarea>
         </div>
-        <div class="input-group"><label for="textarea-disabled">Disabled Textarea</label>
-          <textarea class="textarea" placeholder="Disabled Textarea" id="textarea-disabled" disabled></textarea>
+        <div class="input-group">
+          <label for="textarea-disabled">Disabled Textarea</label>
+          <textarea class="textarea" placeholder="Disabled Textarea"
+            id="textarea-disabled" disabled></textarea>
         </div>
-        <div class="input-group inline"><label for="select">Select</label>
+        <div class="input-group inline">
+          <label for="select">Select</label>
           <select id="select">
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -178,7 +290,8 @@
             </optgroup>
           </select>
         </div>
-        <div class="input-group"><label for="select-disabled">Disabled Select</label>
+        <div class="input-group">
+          <label for="select-disabled">Disabled Select</label>
           <select id="select-disabled" disabled>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -189,7 +302,8 @@
             </optgroup>
           </select>
         </div>
-        <div class="input-group"><label for="multi-select">Multi-select</label>
+        <div class="input-group">
+          <label for="multi-select">Multi-select</label>
           <select id="multi-select" multiple>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -200,7 +314,8 @@
             </optgroup>
           </select>
         </div>
-        <div class="input-group inline"><label for="multi-select-disabled">Disabled Multi-select</label>
+        <div class="input-group inline">
+          <label for="multi-select-disabled">Disabled Multi-select</label>
           <select id="multi-select-disabled" multiple disabled>
             <option value="1">Option 1</option>
             <option value="2">Option 2</option>
@@ -213,35 +328,53 @@
         </div>
         <fieldset>
           <legend>Checkboxes</legend>
-          <label for="checkbox">
-            <input type="checkbox" id="checkbox"> Checkbox
-          </label>
-          <label for="checkbox-checked">
-            <input type="checkbox" id="checkbox-checked" checked> Checked Checkbox</label>
-          <label for="checkbox-disabled">
-            <input type="checkbox" id="checkbox-disabled" disabled> Disabled Checkbox</label>
+          <div class="input-group inline left">
+            <label for="checkbox">Checkbox</label>
+            <input type="checkbox" id="checkbox" />
+          </div>
+          <div class="input-group inline left">
+            <label for="checkbox-checked">Checked Checkbox</label>
+            <input type="checkbox" id="checkbox-checked" checked />
+          </div>
+          <div class="input-group inline left">
+            <label for="checkbox-disabled">Disabled Checkbox</label>
+            <input type="checkbox" id="checkbox-disabled" disabled />
+          </div>
         </fieldset>
         <fieldset>
           <legend>Radio Buttons</legend>
-          <label for="radio"><input type="radio" id="radio" name="radio"> Radio</label>
-          <label for="radio-checked"><input type="radio" id="radio-checked" name="radio" checked> Checked Radio</label>
-          <label for="radio-disabled"><input type="radio" id="radio-disabled" name="radio" disabled> Disabled
-            Radio</label>
+          <div class="input-group inline left">
+            <label for="radio">Radio</label>
+            <input type="radio" id="radio" name="radio" />
+          </div>
+          <div class="input-group inline left">
+            <label for="radio-checked">Checked Radio</label>
+            <input type="radio" id="radio-checked" name="radio" checked />
+          </div>
+          <div class="input-group inline left">
+            <label for="radio-disabled">Disabled Radio</label>
+            <input type="radio" id="radio-disabled" name="radio" disabled />
+          </div>
         </fieldset>
         <fieldset disabled>
           <legend>Disabled Fieldset</legend>
-          <label for="disabled-fieldset-checkbox">
-            <input type="checkbox" id="disabled-fieldset-checkbox"> Checkbox</label>
+          <div class="input-group inline left">
+            <label for="disabled-fieldset-checkbox">Checkbox</label>
+            <input type="checkbox" id="disabled-fieldset-checkbox" />
+          </div>
         </fieldset>
-        <div class="input-group"><label for="range">Range</label>
-          <input type="range" class="range" id="range">
+        <div class="input-group">
+          <label for="range">Range</label>
+          <input type="range" class="range" id="range" />
         </div>
       </form>
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Tooltips</h2>
       <div class="tooltip">
-        <span class="tooltip-description">Tooltips provide some extra information that can help users understand the context or functionality of an element.</span>
+        <span class="tooltip-description">Tooltips provide some extra
+          information that can help users
+          understand the context or functionality of an element.</span>
         <button type="button" class="tooltip-toggle"></button>
       </div>
     </div>
@@ -251,27 +384,43 @@
         <nav class="navigation" data-graupl-menu-type="DisclosureMenu"
           data-graupl-menu-options="{'optionalKeySupport': true}">
           <a class="navigation-branding" href="#">Graupl</a>
-          <button class="navigation-toggle ml-auto mr-0" aria-label="Toggle navigation"></button>
+          <button class="navigation-toggle ml-auto mr-0"
+            aria-label="Toggle navigation"></button>
           <ul class="menu">
             <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
             <li class="menu-item submenu-item">
-              <button class="menu-link button link submenu-toggle">About</button>
+              <button class="menu-link button link submenu-toggle">
+                About
+              </button>
               <ul class="submenu">
-                <li class="menu-item"><a class="menu-link" href="#">About Us</a></li>
-                <li class="menu-item"><a class="menu-link" href="#">Our Team</a></li>
-                <li class="menu-item"><a class="menu-link" href="#">Our Mission</a></li>
+                <li class="menu-item">
+                  <a class="menu-link" href="#">About Us</a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="#">Our Team</a>
+                </li>
+                <li class="menu-item">
+                  <a class="menu-link" href="#">Our Mission</a>
+                </li>
               </ul>
             </li>
             <li class="menu-item"><a class="menu-link" href="#">Blog</a></li>
-            <li class="menu-item"><a class="menu-link" href="#">Portfolio</a></li>
-            <li class="menu-item"><a class="menu-link button tertiary" href="#">Contact</a></li>
+            <li class="menu-item">
+              <a class="menu-link" href="#">Portfolio</a>
+            </li>
+            <li class="menu-item">
+              <a class="menu-link button tertiary" href="#">Contact</a>
+            </li>
           </ul>
         </nav>
       </div>
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Tables</h2>
-      <p>Graupl provides some default styling for tables as well as some other useful features to customize them.</p>
+      <p>
+        Graupl provides some default styling for tables as well as some other
+        useful features to customize them.
+      </p>
       <table class="bordered striped-rows hoverable">
         <caption>
           Front-end web developer course 2021
@@ -520,17 +669,24 @@
     <div class="container py-10 my-10 align-content-center">
       <h2>Flex columns</h2>
       <div class="flex-columns py-5">
-        <div class="col-6 md:col-8 xl:col-9 py-7 bg-primary-700 text-primary-100 px-5">
+        <div
+          class="col-6 md:col-8 xl:col-9 py-7 bg-primary-700 text-primary-100 px-5">
           <div class="flex-columns">
             <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
             <div class="col-6 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
           </div>
         </div>
-        <div class="col-6 md:col-4 xl:col-3 py-7 bg-primary-700 text-primary-100 px-5"></div>
+        <div
+          class="col-6 md:col-4 xl:col-3 py-7 bg-primary-700 text-primary-100 px-5">
+        </div>
         <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
           <div class="flex-columns">
-            <div class="col-6 md:col-9 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
-            <div class="col-6 md:col-3 py-7 bg-tertiary-700 text-primary-100 px-5"></div>
+            <div
+              class="col-6 md:col-9 py-7 bg-tertiary-700 text-primary-100 px-5">
+            </div>
+            <div
+              class="col-6 md:col-3 py-7 bg-tertiary-700 text-primary-100 px-5">
+            </div>
           </div>
         </div>
         <div class="col-8 py-7 bg-primary-700 text-primary-100 px-5">
@@ -544,14 +700,20 @@
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.top</span> class
-        will have the image placed on the top while cards using the <span
-          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom</span> class will have the image
-        placed on the bottom.</p>
+      <p>
+        Cards using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.top</span>
+        class will have the image placed on the top while cards using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom</span>
+        class will have the image placed on the bottom.
+      </p>
       <div class="columns">
         <div class="card">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=1" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=1"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -567,7 +729,8 @@
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=2" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=2"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -583,7 +746,8 @@
         </div>
         <div class="card">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=3" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=3"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -599,7 +763,8 @@
         </div>
         <div class="card bottom">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=4" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=4"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -615,7 +780,8 @@
         </div>
         <div class="card bottom">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=5" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=5"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -631,7 +797,8 @@
         </div>
         <div class="card bottom">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=6" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=6"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -649,14 +816,20 @@
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Horizontal Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.right</span> class
-        will have the image placed on the right while cards using the <span
-          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.left</span> class will have the image
-        placed on the left.</p>
+      <p>
+        Cards using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.right</span>
+        class will have the image placed on the right while cards using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.left</span>
+        class will have the image placed on the left.
+      </p>
       <div class="columns count-2">
         <div class="card horizontal">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=1" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=1"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -672,7 +845,8 @@
         </div>
         <div class="card horizontal right">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=2" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=2"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -688,7 +862,8 @@
         </div>
         <div class="card horizontal">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=3" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=3"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -704,7 +879,8 @@
         </div>
         <div class="card horizontal right">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=4" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=4"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -720,7 +896,8 @@
         </div>
         <div class="card horizontal">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=5" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=5"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -736,7 +913,8 @@
         </div>
         <div class="card horizontal right">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=6" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=6"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -754,16 +932,26 @@
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Inverse Cards</h2>
-      <p>Cards using the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.inverse</span>
-        class will have the image placed on the right if it is a horizontal card and on the bottom if it is a vertical
-        card.</p>
-      <p>This is mainly to provide a shortcut for horizontal cards that you'd like to use the <span
-          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom .right</span> classes on when the
-        card is forced to be vertical.</p>
+      <p>
+        Cards using the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.inverse</span>
+        class will have the image placed on the right if it is a horizontal
+        card and on the bottom if it is a vertical card.
+      </p>
+      <p>
+        This is mainly to provide a shortcut for horizontal cards that you'd
+        like to use the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.bottom
+          .right</span>
+        classes on when the card is forced to be vertical.
+      </p>
       <div class="columns count-2">
         <div class="card horizontal inverse">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=1" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=1"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -779,7 +967,8 @@
         </div>
         <div class="card horizontal inverse">
           <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=2" alt="Card image">
+            <img src="https://picsum.photos/1000/400?random=2"
+              alt="Card image" />
           </div>
           <div class="card-content">
             <div class="card-header">
@@ -797,116 +986,129 @@
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Contained Cards</h2>
-      <p>Cards will adjust their layout based on the available space within their parent container.</p>
-      <p>If you use horizontal cards in a grid, where each individual grid space is it's own container, the cards will go from horizontal to vertical depending on the layout.</p>
+      <p>
+        Cards will adjust their layout based on the available space within
+        their parent container.
+      </p>
+      <p>
+        If you use horizontal cards in a grid, where each individual grid
+        space is it's own container, the cards will go from horizontal to
+        vertical depending on the layout.
+      </p>
       <div class="flex-columns">
         <div class="col-6 lg:col-4 container-type-inline display-flex">
-        <div class="card horizontal flex-grow">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=1" alt="Card image">
+          <div class="card horizontal flex-grow">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=1"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="col-6 lg:col-4 container-type-inline display-flex">
-        <div class="card horizontal flex-grow right">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=2" alt="Card image">
+          <div class="card horizontal flex-grow right">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=2"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="col-6 lg:col-4 container-type-inline display-flex">
-        <div class="card horizontal flex-grow">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=3" alt="Card image">
+          <div class="card horizontal flex-grow">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=3"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="col-6 lg:col-12 container-type-inline display-flex">
-        <div class="card horizontal flex-grow right">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=4" alt="Card image">
+          <div class="card horizontal flex-grow right">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=4"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="col-6 xl:col-9 container-type-inline display-flex">
-        <div class="card horizontal flex-grow">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=5" alt="Card image">
+          <div class="card horizontal flex-grow">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=5"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="col-6 xl:col-3 container-type-inline display-flex">
-        <div class="card horizontal flex-grow right">
-          <div class="card-image">
-            <img src="https://picsum.photos/1000/400?random=6" alt="Card image">
+          <div class="card horizontal flex-grow right">
+            <div class="card-image">
+              <img src="https://picsum.photos/1000/400?random=6"
+                alt="Card image" />
+            </div>
+            <div class="card-content">
+              <div class="card-header">
+                <h3 class="card-title">Title</h3>
+              </div>
+              <div class="card-body">
+                <p>This is some text that describes the card.</p>
+              </div>
+              <div class="card-footer">
+                <a class="button stretched" href="#">Card Action</a>
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            <div class="card-header">
-              <h3 class="card-title">Title</h3>
-            </div>
-            <div class="card-body">
-              <p>This is some text that describes the card.</p>
-            </div>
-            <div class="card-footer">
-              <a class="button stretched" href="#">Card Action</a>
-            </div>
-          </div>
-        </div>
         </div>
       </div>
     </div>
@@ -973,50 +1175,68 @@
         <div class="accordion-item show">
           <div class="accordion-item-header">
             <h3 class="accordion-item-title">
-              <button aria-expanded="true" class="accordion-item-toggle">Accordion 1</button>
+              <button aria-expanded="true" class="accordion-item-toggle">
+                Accordion 1
+              </button>
             </h3>
           </div>
           <div class="accordion-item-content">
             <div class="accordion-item-body">
-              <p>This is the body of the accordion that can expand/collapse based on the state.</p>
+              <p>
+                This is the body of the accordion that can expand/collapse
+                based on the state.
+              </p>
             </div>
             <div class="accordion-item-footer">
-                <p>This is the footer.</p>
+              <p>This is the footer.</p>
             </div>
           </div>
         </div>
         <div class="accordion-item hide">
           <div class="accordion-item-header">
             <h3 class="accordion-item-title">
-              <button aria-expanded="false" class="accordion-item-toggle">Accordion 2</button>
+              <button aria-expanded="false" class="accordion-item-toggle">
+                Accordion 2
+              </button>
             </h3>
           </div>
           <div class="accordion-item-content">
             <div class="accordion-item-body">
-              <p>This is the body of the accordion that can expand/collapse based on the state.</p>
+              <p>
+                This is the body of the accordion that can expand/collapse
+                based on the state.
+              </p>
               <p>This one has some extra text in it to make it longer.</p>
             </div>
             <div class="accordion-item-footer">
-                <p>This is the footer.</p>
-                <p>There is more info in the footer too.</p>
+              <p>This is the footer.</p>
+              <p>There is more info in the footer too.</p>
             </div>
           </div>
         </div>
         <div class="accordion-item hide">
           <div class="accordion-item-header">
             <h3 class="accordion-item-title">
-              <button aria-expanded="false" class="accordion-item-toggle">Accordion 3</button>
+              <button aria-expanded="false" class="accordion-item-toggle">
+                Accordion 3
+              </button>
             </h3>
           </div>
           <div class="accordion-item-content">
             <div class="accordion-item-body">
-              <p>This is the body of the accordion that can expand/collapse based on the state.</p>
-              <p>This one is even longer than the second one. Why? Because it needs to be. That's why.</p>
+              <p>
+                This is the body of the accordion that can expand/collapse
+                based on the state.
+              </p>
+              <p>
+                This one is even longer than the second one. Why? Because it
+                needs to be. That's why.
+              </p>
               <p>It's also a bit more verbose than the other two.</p>
               <p>But that's okay. It's just an example.</p>
             </div>
             <div class="accordion-item-footer">
-                <p>This is the footer.</p>
+              <p>This is the footer.</p>
             </div>
           </div>
         </div>
@@ -1025,21 +1245,15 @@
     <div class="container py-10">
       <div class="tabs">
         <div class="tab-list">
-          <button class="tab-toggle">
-            Tab 1 with text
-          </button>
-          <button class="tab-toggle">
-            Tab 2 with more text
-          </button>
+          <button class="tab-toggle">Tab 1 with text</button>
+          <button class="tab-toggle">Tab 2 with more text</button>
           <button class="tab-toggle">
             Tab 3 this is the longest title of them all!
           </button>
           <button class="tab-toggle">
             Tab 4 and this has a longer title
           </button>
-          <button class="tab-toggle">
-            Tab 5 this has some text too
-          </button>
+          <button class="tab-toggle">Tab 5 this has some text too</button>
         </div>
         <div class="tab-content">
           <p>This is the content of the first tab.</p>
@@ -1115,7 +1329,7 @@
       <h2>Carousels</h2>
       <section class="carousel">
         <div class="carousel-control-container">
-          <button class=" carousel-control autoplay"></button>
+          <button class="carousel-control autoplay"></button>
           <button class="carousel-control previous"></button>
           <button class="carousel-control next"></button>
         </div>
@@ -1128,19 +1342,64 @@
         </div>
         <div class="carousel-item-container">
           <div class="carousel-item">
-            <div class="ratio sixteen-by-nine"><img class="force-ratio" src="https://picsum.photos/1400/600?random=1" alt="A placeholder carousel image" /></div>
+              <img
+                src="https://picsum.photos/1400/600?random=1"
+                alt="A placeholder carousel image" />
+            <div
+              class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
+              <p>
+                This is a slide! It has a
+                <a href="#">thing you can click</a> in it!
+              </p>
+            </div>
           </div>
           <div class="carousel-item">
-            <div class="ratio sixteen-by-nine"><img class="force-ratio" src="https://picsum.photos/1400/600?random=2" alt="A placeholder carousel image" /></div>
+              <img
+                src="https://picsum.photos/1400/600?random=2"
+                alt="A placeholder carousel image" />
+            <div
+              class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
+              <p>
+                This is a slide! It has a
+                <a href="#">thing you can click</a> in it!
+              </p>
+            </div>
           </div>
           <div class="carousel-item">
-            <div class="ratio sixteen-by-nine"><img class="force-ratio" src="https://picsum.photos/1400/600?random=3" alt="A placeholder carousel image" /></div>
+              <img
+                src="https://picsum.photos/1400/600?random=3"
+                alt="A placeholder carousel image" />
+            <div
+              class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
+              <p>
+                This is a slide! It has a
+                <a href="#">thing you can click</a> in it!
+              </p>
+            </div>
           </div>
           <div class="carousel-item">
-            <div class="ratio sixteen-by-nine"><img class="force-ratio" src="https://picsum.photos/1400/600?random=4" alt="A placeholder carousel image" /></div>
+              <img
+                src="https://picsum.photos/1400/600?random=4"
+                alt="A placeholder carousel image" />
+            <div
+              class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
+              <p>
+                This is a slide! It has a
+                <a href="#">thing you can click</a> in it!
+              </p>
+            </div>
           </div>
           <div class="carousel-item">
-            <div class="ratio sixteen-by-nine"><img class="force-ratio" src="https://picsum.photos/1400/600?random=5" alt="A placeholder carousel image" /></div>
+              <img
+                src="https://picsum.photos/1400/600?random=5"
+                alt="A placeholder carousel image" />
+            <div
+              class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
+              <p>
+                This is a slide! It has a
+                <a href="#">thing you can click</a> in it!
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -1153,65 +1412,71 @@
         <li class="list-item">
           <a href="#">List item 1</a>
         </li>
-        <li class="list-item">
-          List item 2
-        </li>
+        <li class="list-item">List item 2</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 3</a>
         </li>
       </ul>
       <h3>Ordered list</h3>
-      <p>You can add the list markers back in using utility classes (in this case <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.list-style-decimal</span> and <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.list-style-inside</span>).</p>
+      <p>
+        You can add the list markers back in using utility classes (in this
+        case
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.list-style-decimal</span>
+        and
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.list-style-inside</span>).
+      </p>
       <ol class="list list-style-decimal list-style-inside">
         <li class="list-item">
           <a href="#">List item 1</a>
         </li>
-        <li class="list-item">
-          List item 2
-        </li>
+        <li class="list-item">List item 2</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 3</a>
         </li>
       </ol>
       <h3>Inline lists</h3>
-      <p>We can achieve an inline list by utilizing the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.columns</span> class.</p>
+      <p>
+        We can achieve an inline list by utilizing the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.columns</span>
+        class.
+      </p>
       <ul class="list columns">
         <li class="list-item">
           <a href="#">List item 1</a>
         </li>
-        <li class="list-item">
-          List item 2
-        </li>
+        <li class="list-item">List item 2</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 3</a>
         </li>
         <li class="list-item">
           <a href="#">List item 4</a>
         </li>
-        <li class="list-item">
-          List item 5
-        </li>
+        <li class="list-item">List item 5</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 6</a>
         </li>
       </ul>
-      <p class="pt-5">We can also use the <span class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.display-flex</span> utility class.</p>
+      <p class="pt-5">
+        We can also use the
+        <span
+          class="display-inline-block text-tertiary-800 bg-secondary-100 px-1">.display-flex</span>
+        utility class.
+      </p>
       <ul class="list display-flex flex-wrap">
         <li class="list-item">
           <a href="#">List item 1</a>
         </li>
-        <li class="list-item">
-          List item 2
-        </li>
+        <li class="list-item">List item 2</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 3</a>
         </li>
         <li class="list-item">
           <a href="#">List item 4</a>
         </li>
-        <li class="list-item">
-          List item 5
-        </li>
+        <li class="list-item">List item 5</li>
         <li class="list-item">
           <a href="#" class="stretched">List item 6</a>
         </li>
@@ -1219,7 +1484,9 @@
     </div>
     <div class="container py-10 my-10 align-content-center">
       <h2>Disclosures</h2>
-      <button class="disclosure-toggle primary" data-graupl-disclosure-target="#disclosure" type="button" aria-label="Toggle disclosure example"></button>
+      <button class="disclosure-toggle primary"
+        data-graupl-disclosure-target="#disclosure" type="button"
+        aria-label="Toggle disclosure example"></button>
       <div id="#disclosure" class="disclosure">
         <div class="disclosure-content">
           <p>This content is hidden until the disclosure is open.</p>
@@ -1235,7 +1502,10 @@
             <a class="breadcrumb-link" href="#">Home</a>
           </li>
           <li class="breadcrumb-item">
-            <button class="breadcrumb-link breadcrumb-toggle" aria-label="Show more breadcrumbs">...</button>
+            <button class="breadcrumb-link breadcrumb-toggle"
+              aria-label="Show more breadcrumbs">
+              ...
+            </button>
           </li>
           <li class="breadcrumb-item">
             <a class="breadcrumb-link" href="#">Library</a>
@@ -1246,126 +1516,206 @@
           <li class="breadcrumb-item">
             <a class="breadcrumb-link" href="#">Framework</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            Graupl
-          </li>
+          <li class="breadcrumb-item active" aria-current="page">Graupl</li>
         </ol>
       </nav>
     </div>
     <div class="mt-10 pt-10 mb-5 pb-5 container">
-      <div class="bg-tertiary-200 focus full-width contain">
-        <div class="bg-secondary-200 focus feature contain">
-          <div class="bg-primary-200 focus breakout contain">
-            <div class="bg-primary-100 focus py-10">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="py-5 my-5 container sidebars">
-      <div class="bg-tertiary-200 focus full-width contain">
-        <div class="bg-secondary-200 focus feature contain">
-          <div class="bg-primary-200 focus breakout contain">
-            <div class="bg-primary-100 focus py-10">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="py-5 my-5 container sidebars-left">
-      <div class="bg-tertiary-200 focus full-width contain">
-        <div class="bg-secondary-200 focus feature contain">
-          <div class="bg-primary-200 focus breakout contain">
-            <div class="bg-primary-100 focus py-10">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="mb-10 pb-10 mt-5 pt-5 container sidebars-right">
-      <div class="bg-tertiary-200 focus full-width contain">
-        <div class="bg-secondary-200 focus feature contain">
-          <div class="bg-primary-200 focus breakout contain">
-            <div class="bg-primary-100 focus py-10">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container sidebars py-10">
-      <div class="sidebar-left bg-secondary-800 z-1 align-content-stretch">
-        <div class="bg-secondary-200 py-5"></div>
-      </div>
-      <div class="sidebar-right bg-secondary-800 z-1 align-content-stretch">
-        <div class="bg-tertiary-200 py-5"></div>
-      </div>
-      <div class="container content bg-secondary-800">
-        <div class="bg-primary-200">
-          <div class="columns py-5 g-5">
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-            <div class="bg-primary py-7 px-5"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container sidebars-left py-10">
-      <div class="sidebar bg-secondary-800 z-1 align-content-stretch">
-        <div class="bg-secondary-200 py-5"></div>
-      </div>
-      <div class="container content bg-secondary-800">
-        <div class="bg-tertiary feature contain">
-          <div class="bg-secondary-800 breakout contain">
-            <div class="bg-primary-200">
-              <div class="columns py-5 g-5">
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
+      <h2>Containers</h2>
+      <h3>Standard container</h3>
+      <div class="container py-5">
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="container sidebars-right py-10">
-      <div class="sidebar bg-secondary-800 z-1 align-content-stretch">
-        <div class="bg-secondary-200 py-5"></div>
+      <h3>Container with sidebars</h3>
+      <div class="container sidebars py-5">
+        <div class="sidebar-left z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="sidebar-right z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="container content bg-secondary-800">
-        <div class="bg-tertiary feature contain">
-          <div class="bg-secondary-800 breakout contain">
-            <div class="bg-primary-200">
-              <div class="columns count-4 py-5 g-5">
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
-                <div class="bg-primary py-7 px-5"></div>
+      <h3>Container with left sidebar</h3>
+      <div class="container sidebars-left py-5">
+        <div class="sidebar z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Container with right sidebar</h3>
+      <div class="container sidebars-right py-5">
+        <div class="sidebar z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Container with contained sidebars</h3>
+      <div class="container contain sidebars py-5">
+        <div class="sidebar-left z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="sidebar-right z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Container with contained left sidebar</h3>
+      <div class="container contain sidebars-left py-5">
+        <div class="sidebar z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3>Container with contained right sidebar</h3>
+      <div class="container contain sidebars-right py-5">
+        <div class="sidebar z-1 align-content-stretch">
+          <div class="bg-secondary-200 py-5"></div>
+        </div>
+        <div class="container content bg-secondary-800">
+          <div class="bg-tertiary feature contain">
+            <div class="bg-secondary-800 breakout contain">
+              <div class="bg-primary-200">
+                <div class="columns count-4 py-5 g-5">
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                  <div class="bg-primary py-7 px-5"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1373,32 +1723,47 @@
       </div>
     </div>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script type="module" src="./packages/core/src/js/accordion/index.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
+  <script type="module"
+    src="./packages/core/src/js/accordion/index.js"></script>
   <script type="module" src="./packages/core/src/js/alert/index.js"></script>
-  <script type="module" src="./packages/core/src/js/breadcrumb/index.js"></script>
+  <script type="module"
+    src="./packages/core/src/js/breadcrumb/index.js"></script>
   <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
-  <script type="module" src="./packages/core/src/js/disclosure/index.js"></script>
-  <script type="module" src="./packages/core/src/js/navigation/index.js"></script>
+  <script type="module"
+    src="./packages/core/src/js/disclosure/index.js"></script>
+  <script type="module"
+    src="./packages/core/src/js/navigation/index.js"></script>
   <script type="module" src="./packages/core/src/js/tabs/index.js"></script>
   <script type="module" src="./packages/core/src/js/tooltip/index.js"></script>
-  <script type="module" src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
+  <script type="module"
+    src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
-    const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    const setTheme = window.localStorage.getItem('theme') || preferredTheme;
-    const themeToggle = document.getElementById('dark-mode-toggle');
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
+      .matches
+      ? "dark"
+      : "light";
+    const setTheme = window.localStorage.getItem("theme") || preferredTheme;
+    const themeToggle = document.getElementById("dark-mode-toggle");
 
     document.documentElement.classList.add(`${setTheme}-mode`);
-    themeToggle.innerHTML = setTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+    themeToggle.innerHTML =
+      setTheme === "dark" ? "Toggle light mode" : "Toggle dark mode";
 
-    themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.classList.contains('dark-mode') ? 'dark' : 'light';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    themeToggle.addEventListener("click", () => {
+      const currentTheme = document.documentElement.classList.contains(
+        "dark-mode"
+      )
+        ? "dark"
+        : "light";
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
 
       document.documentElement.classList.remove(`${currentTheme}-mode`);
       document.documentElement.classList.add(`${newTheme}-mode`);
-      window.localStorage.setItem('theme', newTheme);
-      themeToggle.innerHTML = newTheme === 'dark' ? 'Toggle light mode' : 'Toggle dark mode';
+      window.localStorage.setItem("theme", newTheme);
+      themeToggle.innerHTML =
+        newTheme === "dark" ? "Toggle light mode" : "Toggle dark mode";
     });
   </script>
   <script>
@@ -1406,7 +1771,11 @@
       document.querySelectorAll("h1,h2,h3,h4,h5,h6").forEach((heading) => {
         if (heading.id !== "") return;
 
-        heading.id = heading.innerText.toLowerCase().replace(/[^\w]/g, " ").trim().replace(/\s+/g, "-");
+        heading.id = heading.innerText
+          .toLowerCase()
+          .replace(/[^\w]/g, " ")
+          .trim()
+          .replace(/\s+/g, "-");
       });
     });
   </script>
