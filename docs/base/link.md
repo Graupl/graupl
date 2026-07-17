@@ -7,13 +7,11 @@
 
 # Links
 
-The link base component provides a set of classes to style links consistently across your application. It includes various states and modifiers to handle different link types and interactions.
-
-Links are themeable, which means that it is a component in which you can turn themeing off by setting the variable `$themeable: false` or on by setting `$themeable: true`. Themeing is false by default for links.
+The link base component provides a set of base-styles and classes to style links consistently across your application. It includes various states and modifiers to handle different link types and interactions.
 
 ## Base element
 
-The base `<a>` element is styled to handle the different states ( Visited, Focused, Hovered, Active, Disabled ).
+The base `<a>` element is styled by default with no need for classes.
 
 <live-example>
   <a href="#">Click me!</a>
@@ -21,13 +19,11 @@ The base `<a>` element is styled to handle the different states ( Visited, Focus
 
 ## Variants
 
-Variants for links can be turned on by setting `$themeable: true`. Themeing is false by default for links.
-
-Variants can be turned off by setting `$themeable: false`.
+By default, there are no link variants available for links _however_ if you are compiling your own version of Graupl, you can set the `$themeable` variable to `true` to enable variants.
 
 ## States
 
-Links are set up to handle different states by default: visited, focus, hover, active and disabled.
+Links handle the following states by default: visited, focus, hover, active and disabled.
 
 You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active` and `.disabled`, respectively.
 
