@@ -23,15 +23,15 @@ By default, there are no link variants available for links _however_ if you are 
 
 ## States
 
-Links handle the following states by default: visited, focus, hover, active and disabled.
+Links handle the following states by default: visited, focus, hover, active, disabled, selected, and current (though not all will have visual differences out-of-the-box).
 
 You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active` and `.disabled`, respectively.
 
 <live-example>
-  <a href="#" :class="state">Click me!</a>
+  <a href="#" :class="state !== 'default' ? state : ''">Click me!</a>
   <template #options>
     <div class="input-group">
-      <label for="select-link-state">Link State</label>
+      <label for="select-link-state">Link state</label>
       <select id="select-link-state" v-model="state">
         <option value="default">Default</option>
         <option value="visited">Visited</option>
@@ -39,8 +39,10 @@ You can manually apply these states with the helper classes `.visited`, `.focus`
         <option value="hover">Hover</option>
         <option value="active">Active</option>
         <option value="disabled">Disabled</option>
+        <option value="selected">Selected</option>
+        <option value="current">Current</option>
       </select>
-      <p class="help-text">Select the link state you would like displayed</p>
+      <p class="help-text">Select the link state you would like displayed.</p>
     </div>
   </template>
 </live-example>
