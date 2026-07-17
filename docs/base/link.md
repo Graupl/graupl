@@ -19,7 +19,9 @@ The base `<a>` element is styled by default with no need for classes.
 
 ## Variants
 
-By default, there are no link variants available for links _however_ if you are compiling your own version of Graupl, you can set the `$themeable` variable to `true` to enable variants.
+By default, there are no variants available for links.
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the `$themeable` variable to `true` to enable variants.
 
 ## States
 
