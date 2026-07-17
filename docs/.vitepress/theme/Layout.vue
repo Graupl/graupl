@@ -53,7 +53,7 @@ onMounted(() => {
     <div class="container topbar shelf-aware">
       <div class="display-flex justify-content-end g-4">
         <div
-          class="navigation-shelf dark-mode bg-secondary-100 text-secondary-900"
+          class="docs-navigation-shelf navigation-shelf dark-mode bg-secondary-100 text-secondary-900"
           ref="navigationShelf"
         >
           <div class="navigation-shelf-header"></div>

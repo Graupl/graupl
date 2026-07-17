@@ -41,9 +41,9 @@ $container-aware-selector-suffix: root-defaults.$utility-container-aware-selecto
 
 // Properties.
 $-utility-properties: (
-  "block": block-size,
-  "max-block": max-block-size,
-  "min-block": min-block-size,
+  "bs": block-size,
+  "max-bs": max-block-size,
+  "min-bs": min-block-size,
 );
 $utility-properties: () !default;
 

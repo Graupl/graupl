@@ -1,0 +1,104 @@
+// @graupl/core grid-column utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../defaults" as grid-defaults;
+@use "../../../functions/utility";
+@use "sass:map";
+@use "sass:math";
+
+// Utility modifiers.
+$selector-base: grid-defaults.$selector-base !default;
+$selector-prefix: grid-defaults.$selector-prefix !default;
+$selector-suffix: grid-defaults.$selector-suffix !default;
+$selector-separator: grid-defaults.$selector-separator !default;
+$use-important: grid-defaults.$use-important !default;
+$generate-base-utilities: grid-defaults.$generate-base-utilities !default;
+$screen-aware: grid-defaults.$screen-aware !default;
+$theme-aware: grid-defaults.$theme-aware !default;
+$scheme-aware: grid-defaults.$scheme-aware !default;
+$state-aware: grid-defaults.$state-aware !default;
+$container-aware: grid-defaults.$container-aware !default;
+$screen-aware-selector-prefix: grid-defaults.$screen-aware-selector-prefix !default;
+$screen-aware-selector-suffix: grid-defaults.$screen-aware-selector-suffix !default;
+$screen-aware-selector-separator: grid-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-prefix: grid-defaults.$theme-aware-selector-prefix !default;
+$theme-aware-selector-suffix: grid-defaults.$theme-aware-selector-suffix !default;
+$theme-aware-selector-separator: grid-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-prefix: grid-defaults.$scheme-aware-selector-prefix !default;
+$scheme-aware-selector-suffix: grid-defaults.$scheme-aware-selector-suffix !default;
+$scheme-aware-selector-separator: grid-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-prefix: grid-defaults.$state-aware-selector-prefix !default;
+$state-aware-selector-suffix: grid-defaults.$state-aware-selector-suffix !default;
+$state-aware-selector-separator: grid-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-prefix: grid-defaults.$container-aware-selector-prefix !default;
+$container-aware-selector-suffix: grid-defaults.$container-aware-selector-suffix !default;
+$container-aware-selector-separator: grid-defaults.$container-aware-selector-separator !default;
+$grid-column-min-count: grid-defaults.$grid-column-min-count;
+$grid-column-max-count: grid-defaults.$grid-column-max-count;
+
+// Properties.
+$-utility-properties: (
+  "column-start": grid-column-start,
+  "column-end": grid-column-end,
+);
+$utility-properties: () !default;
+
+// Values.
+$-utility-values: (
+  "first": 1,
+  "last": -1,
+  "auto": auto,
+);
+$utility-values: () !default;
+
+// Add the count values to the base values.
+@for $i from $grid-column-min-count through $grid-column-max-count {
+  $-utility-values: map.merge(
+    $-utility-values,
+    (
+      math.abs($i): $i,
+    )
+  );
+}
+
+// Merge custom and base properties/values if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.deep-merge(
+    $-utility-properties,
+    $utility-properties
+  );
+  $utility-values: map.deep-merge($-utility-values, $utility-values);
+}
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

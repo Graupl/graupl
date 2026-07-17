@@ -2,6 +2,68 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.55](https://github.com/Graupl/graupl/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-15)
+
+
+### Features
+
+* **utlity:** add more border control utilities ([f30c234](https://github.com/Graupl/graupl/commit/f30c2344855c7c425aaaa630bdd98bf32d644fca))
+
+## [1.0.0-beta.54](https://github.com/Graupl/graupl/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-06-26)
+
+
+### Bug Fixes
+
+* **layout:** do not hard-code graupl variable ([6122013](https://github.com/Graupl/graupl/commit/61220137f865fa51a7924d3fc9d6eb01403fecf0))
+
+## [1.0.0-beta.53](https://github.com/Graupl/graupl/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2026-06-26)
+
+
+### Features
+
+* **utilities:** rename block-size classes from 'block' to 'bs' ([8d07c5a](https://github.com/Graupl/graupl/commit/8d07c5aee0cdebbc0cb03f25fcc6a17e69d921d7))
+* **utilities:** rename inline-size classes from 'inline' to 'is' ([86ebc6e](https://github.com/Graupl/graupl/commit/86ebc6ef28c336c7f5cfa8204d17447c515f8016))
+
+## [1.0.0-beta.52](https://github.com/Graupl/graupl/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2026-06-25)
+
+
+### Features
+
+* **layout:** add fixed modifier to columns ([0d166f6](https://github.com/Graupl/graupl/commit/0d166f6a54ad380be30b38c15d59f3f69e258ed1))
+* **layout:** implement proper responsive count and span into columns ([2c2854a](https://github.com/Graupl/graupl/commit/2c2854a2de3f2b9cad547bd399e79cd6b5183231))
+* **layout:** unifiy column counts ([51fbd40](https://github.com/Graupl/graupl/commit/51fbd406e553a656c50e1c117c6cd41c5c1e60fb))
+* **utilities:** add grid classes ([37c2d30](https://github.com/Graupl/graupl/commit/37c2d305252daba2d43f204f9533b8074c62833e))
+
+
+### Documentation
+
+* **utility:** add customization options for grid ([2a29234](https://github.com/Graupl/graupl/commit/2a29234578b7b6690181e5c6395a1a60ba9623f3))
+
+## [1.0.0-beta.51](https://github.com/Graupl/graupl/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2026-06-17)
+
+
+### Bug Fixes
+
+* **utilities:** correct ratio position when container force-ratio class ([7b5e9f7](https://github.com/Graupl/graupl/commit/7b5e9f7541158a1c61bdb6010367d153ef18df72))
+* **utility:** correct inline size props ([4dea588](https://github.com/Graupl/graupl/commit/4dea588b5d544fff04400e02cfb1de729f468f7c))
+
+
+### Documentation
+
+* add utility class documentation ([3754a2f](https://github.com/Graupl/graupl/commit/3754a2fc12eb625b2fc83274df8bbcf7466b2ce1))
+* fix formatting ([74756be](https://github.com/Graupl/graupl/commit/74756be73f1f3bde72108a80cef62d68c9668aa3))
+* **utilities:** correct minor innacuracies ([87d0647](https://github.com/Graupl/graupl/commit/87d064767d54fbaa5ca04ae50262fc50cad7970f))
+
+
+### Build System
+
+* **release:** run headless tests prerelease ([b55629a](https://github.com/Graupl/graupl/commit/b55629a8ecea72a416c40ed5b80c978ae6a7e7a4))
+
+
+### Continuous Integration
+
+* **tests:** ensure all tests run in headless ([d52a685](https://github.com/Graupl/graupl/commit/d52a6853c682d6e7465af989152ad69ef4fe12e4))
+
 ## [1.0.0-beta.50](https://github.com/Graupl/graupl/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2026-06-02)
 
 
