@@ -15,7 +15,7 @@ The isolation utilities provide a set of classes to adjust the `isolation` prope
 | `.isolation-auto` | isolation | `auto` |
 | `.isolation-isolate` | isolation | `isolate` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex bg-secondary-500 g-5 h-half p-5 w-quarter z-0 text-secondary-100"> Z Index 0

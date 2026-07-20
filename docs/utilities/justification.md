@@ -23,7 +23,7 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-content-evenly` | justify-content | `space-evenly` |
 | `.justify-content-stretch` | justify-content | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="position-relative">
@@ -67,7 +67,7 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-items-center` | justify-items | `center` |
 | `.justify-items-stretch` | justify-items | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="position-relative">
@@ -119,7 +119,7 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-self-center` | justify-self | `center` |
 | `.justify-self-stretch` | justify-self | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">

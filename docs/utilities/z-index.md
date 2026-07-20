@@ -16,7 +16,7 @@ The z-index utilities provide a set of classes to adjust the `z-index` propertie
 | `.z-0` | z-index | `0` |
 | `.z-1` | z-index | `1` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display gradient from-transparent  to-primary-100 bordered border-primary-700 position-relative">
       <div class="bg-tertiary-200 bordered border-tertiary-700 pl-3 h-8 m-2 mt-8 position-relative z-0">Z Index 0</div>

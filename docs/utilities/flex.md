@@ -29,7 +29,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-third` | flex-basis | `33.3333%` |
 | `.flex-two-thirds` | flex-basis | `66.6667%` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 h-full`">
@@ -68,7 +68,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-col` | flex-direction | `column` |
 | `.flex-col-reverse` | flex-direction | `column-reverse` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 ${flexDirection} `">
@@ -99,7 +99,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-grow` | flex-grow | `1` |
 | `.flex-no-grow` | flex-grow | `0` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 `">
@@ -128,7 +128,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-shrink` | flex-shrink | `1` |
 | `.flex-no-shrink` | flex-shrink | `0` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 `">
@@ -158,7 +158,7 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-wrap-reverse` | flex-wrap | `wrap-reverse` |
 | `.flex-nowrap` | flex-wrap | `nowrap` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5 ${flexWrap} `">

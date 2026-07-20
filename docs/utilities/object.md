@@ -19,7 +19,7 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
 | `.object-fit-none` | object-fit | `none` |
 | `.object-fit-scale-down` | object-fit | `scale-down` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
@@ -59,7 +59,7 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
 | `.object-position-left` | object-position | `left` |
 | `.object-position-center` | object-position | `center` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">

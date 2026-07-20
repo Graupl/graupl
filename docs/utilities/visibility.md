@@ -16,7 +16,7 @@ The visibility utilities provide a set of classes to adjust the `visibility` pro
 | `.visibility-hidden` | visibility | `hidden` |
 | `.visibility-collapse` | visibility | `collapse` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display position-relative">
       <div class="display-flex is-fit-content bs-fit-content bg-tertiary-200">

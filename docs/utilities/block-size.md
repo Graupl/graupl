@@ -45,7 +45,7 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 | `.bs-9`                     | block-size | `var(--graupl-spacer-9)`  |
 | `.bs-10`                    | block-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`bordered border-primary-700 bg-primary-300 inline-full max-inline-10 ${block}`"></div>
@@ -122,7 +122,7 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 | `.max-bs-9`                     | max-block-size | `var(--graupl-spacer-9)`  |
 | `.max-bs-10`                    | max-block-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`bordered border-primary-700 bg-primary-300 inline-full max-inline-10 ${maxBlock} ${max}`"></div>
@@ -232,7 +232,7 @@ The block-size utilities provide a set of classes to adjust the `block-size`, `m
 | `.min-bs-9`                     | min-block-size | `var(--graupl-spacer-9)`  |
 | `.min-bs-10`                    | min-block-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`bordered border-primary-700 bg-primary-300 inline-full max-inline-10 ${minBlock} ${min}`"></div>

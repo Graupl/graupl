@@ -50,7 +50,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.column-end-11` | `grid-column-end` | `11` |
 | `.column-end-12` | `grid-column-end` | `12` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class=" display-grid g-3 bg-primary-200 " style="grid-template-columns: repeat(12, minmax(0,1fr)); grid-template-rows: repeat(auto-fill, auto);">
@@ -149,7 +149,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.row-end-11` | `grid-row-end` | `11` |
 | `.row-end-12` | `grid-row-end` | `12` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class=" display-grid g-3 bg-primary-200 " style="grid-template-columns: repeat(12, minmax(0,1fr)); grid-template-rows: repeat(12, 1fr);">
@@ -232,7 +232,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.grid-cols-11` | `grid-template-columns` | `11` |
 | `.grid-cols-12` | `grid-template-columns` | `12` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-grid g-3 bg-primary-200  ${gridTemplateColumns} `" style="grid-template-rows: repeat(auto-fill, auto);">
@@ -294,7 +294,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.grid-rows-11` | `grid-template-rows` | `11` |
 | `.grid-rows-12` | `grid-template-rows` | `12` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-grid g-3 bg-primary-200 ${gridTemplateRows} `" style="grid-template-columns: repeat(12, 1fr);">
@@ -357,7 +357,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.col-span-12` | `grid-column` | `span 12` |
 
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-grid g-3 bg-primary-200 `" style="grid-template-columns: repeat(12, auto); grid-template-rows: repeat(auto-fill, auto);">
@@ -420,7 +420,7 @@ The grid utilities provide a set of classes to adjust the `grid-column`, `grid-r
 | `.row-span-12` | `grid-row` | `span 12` |
 
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-grid g-3 bg-primary-200 `" style="grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(12, 1fr);">

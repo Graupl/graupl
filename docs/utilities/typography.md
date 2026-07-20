@@ -179,7 +179,7 @@ Applies the default h6 styling to an element.
 | `.text-4xl` | font-size | `var(--graupl-font-4xl)` |
 | `.text-5xl` | font-size | `var(--graupl-font-5xl)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5`">
@@ -212,7 +212,7 @@ Applies the default h6 styling to an element.
 | `.font-style-normal` | font-style | `normal` |
 | `.font-style-italic` | font-style | `italic` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5`">
@@ -240,7 +240,7 @@ Applies the default h6 styling to an element.
 | `.font-weight-normal` | font-weight | `400` |
 | `.font-weight-bold` | font-weight | `700` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5`">
@@ -270,7 +270,7 @@ Applies the default h6 styling to an element.
 | `.text-capitalize` | text-transform | `capitalize` |
 | `.text-none` | text-transform | `none` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex g-5`">

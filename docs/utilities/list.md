@@ -16,7 +16,7 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
 | `.list-style-inside` | list-style-position | `inside` |
 | `.list-style-outside` | list-style-position | `outside` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">
@@ -50,7 +50,7 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
 | `.list-style-circle` | list-style-type | `circle` |
 | `.list-style-square` | list-style-type | `square` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display  h-auto">
       <div class="display-flex g-5">

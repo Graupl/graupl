@@ -24,7 +24,7 @@ The display utilities provide a set of classes to adjust the `display` propertie
 | `.display-contents` | display | `contents` |
 | `.display-list-item` | display | `list-item` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display px-6">
       <div :class="` ${display} bs-fit-content g-5 border-dashed border-tertiary-500 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">

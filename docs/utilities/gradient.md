@@ -19,7 +19,7 @@ The gradient utilities provide a set of classes to adjust the color `background-
 | `.gradient-linear` | background-image | `linear-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 | `.gradient-radial` | background-image | `radial-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-flex bordered border-primary-700 ${gradient} from-transparent to-primary-300 h-full `">
@@ -74,7 +74,7 @@ Used to customize gradient types.
 | `.gradient-direction-farthest-side` | --graupl-gradient-direction | `farthest-side` |
 | `.gradient-direction-farthest-corner` | --graupl-gradient-direction | `farthest-corner` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-flex bordered border-primary-700 gradient h-full ${gradientDirection} from-transparent to-primary-300 `">
@@ -145,7 +145,7 @@ Used to customize gradient types.
 | `.from-tertiary-800` | --graupl-gradient-from | `var(--graupl-theme-active--tertiary--800)` |
 | `.from-tertiary-900` | --graupl-gradient-from | `var(--graupl-theme-active--tertiary--900)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-flex is-full bs-full bordered border-primary-700 gradient ${gradientFrom} to-primary-300 `">
@@ -227,7 +227,7 @@ Used to customize gradient types.
 | `.to-tertiary-800` | --graupl-gradient-to | `var(--graupl-theme-active--tertiary--800)` |
 | `.to-tertiary-900` | --graupl-gradient-to | `var(--graupl-theme-active--tertiary--900)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="` display-flex is-full bs-full bordered border-primary-700 gradient ${gradientTo} from-primary-300 `">

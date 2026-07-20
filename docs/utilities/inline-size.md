@@ -43,7 +43,7 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.is-9` | inline-size | `var(--graupl-spacer-9)` |
 | `.is-10` | inline-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
@@ -124,7 +124,7 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.max-is-9` | max-inline-size | `var(--graupl-spacer-9)` |
 | `.max-is-10` | max-inline-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">
@@ -205,7 +205,7 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.min-is-9` | min-inline-size | `var(--graupl-spacer-9)` |
 | `.min-is-10` | min-inline-size | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex `">

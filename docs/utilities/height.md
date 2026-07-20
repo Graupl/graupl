@@ -45,7 +45,7 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 | `.h-9` | height | `var(--graupl-spacer-9)` |
 | `.h-10` | height | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-full bg-tertiary-200">
@@ -124,7 +124,7 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 | `.max-h-9` | max-height | `var(--graupl-spacer-9)` |
 | `.max-h-10` | max-height | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-full bg-tertiary-200">
@@ -236,7 +236,7 @@ The height utilities provide a set of classes to adjust the `height`, `max-heigh
 | `.min-h-9` | min-height | `var(--graupl-spacer-9)` |
 | `.min-h-10` | min-height | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-full bg-tertiary-200">

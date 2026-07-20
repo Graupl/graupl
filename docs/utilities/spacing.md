@@ -53,7 +53,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.g-9` | gap | `var(--graupl-spacer-9)` |
 | `.g-10` | gap | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`${gap} display-grid bg-tertiary-200 grid-cols-3 grid-rows-auto is-fit-content bs-fit-content`">
@@ -105,7 +105,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.rg-9` | row-gap | `var(--graupl-spacer-9)` |
 | `.rg-10` | row-gap | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`${rowGap} display-grid bg-tertiary-200 grid-cols-3 grid-rows-auto is-fit-content bs-fit-content`">
@@ -157,7 +157,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.cg-9` | column-gap | `var(--graupl-spacer-9)` |
 | `.cg-10` | column-gap | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`${columnGap} display-grid bg-tertiary-200 grid-cols-3 grid-rows-auto is-fit-content bs-fit-content`">
@@ -209,7 +209,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.p-9` | padding | `var(--graupl-spacer-9)` |
 | `.p-10` | padding | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -259,7 +259,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pt-9` | padding-top | `var(--graupl-spacer-9)` |
 | `.pt-10` | padding-top | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -308,7 +308,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pr-9` | padding-right | `var(--graupl-spacer-9)` |
 | `.pr-10` | padding-right | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -357,7 +357,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pb-9` | padding-bottom | `var(--graupl-spacer-9)` |
 | `.pb-10` | padding-bottom | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -406,7 +406,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pl-9` | padding-left | `var(--graupl-spacer-9)` |
 | `.pl-10` | padding-left | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -455,7 +455,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.px-9` | padding-left, padding-right | `var(--graupl-spacer-9)` |
 | `.px-10` | padding-left, padding-right | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -504,7 +504,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.py-9` | padding-top, padding-bottom | `var(--graupl-spacer-9)` |
 | `.py-10` | padding-top, padding-bottom | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -553,7 +553,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pbs-9` | padding-block-start | `var(--graupl-spacer-9)` |
 | `.pbs-10` | padding-block-start | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -603,7 +603,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pbe-9` | padding-block-end | `var(--graupl-spacer-9)` |
 | `.pbe-10` | padding-block-end | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -652,7 +652,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pbse-9` | padding-block | `var(--graupl-spacer-9)` |
 | `.pbse-10` | padding-block | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -701,7 +701,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pis-9` | padding-inline-start | `var(--graupl-spacer-9)` |
 | `.pis-10` | padding-inline-start | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -750,7 +750,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pie-9` | padding-inline-end | `var(--graupl-spacer-9)` |
 | `.pie-10` | padding-inline-end | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -799,7 +799,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.pise-9` | padding-inline | `var(--graupl-spacer-9)` |
 | `.pise-10` | padding-inline | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -848,7 +848,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.m-9` | margin | `var(--graupl-spacer-9)` |
 | `.m-10` | margin | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -897,7 +897,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mt-9` | margin-top | `var(--graupl-spacer-9)` |
 | `.mt-10` | margin-top | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -946,7 +946,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mr-9` | margin-right | `var(--graupl-spacer-9)` |
 | `.mr-10` | margin-right | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -995,7 +995,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mb-9` | margin-bottom | `var(--graupl-spacer-9)` |
 | `.mb-10` | margin-bottom | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1044,7 +1044,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.ml-9` | margin-left | `var(--graupl-spacer-9)` |
 | `.ml-10` | margin-left | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1093,7 +1093,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mx-9` | margin-left, margin-right | `var(--graupl-spacer-9)` |
 | `.mx-10` | margin-left, margin-right | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1142,7 +1142,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.my-9` | margin-top, margin-bottom | `var(--graupl-spacer-9)` |
 | `.my-10` | margin-top, margin-bottom | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1191,7 +1191,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mbs-9` | margin-block-start | `var(--graupl-spacer-9)` |
 | `.mbs-10` | margin-block-start | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1241,7 +1241,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mbe-9` | margin-block-end | `var(--graupl-spacer-9)` |
 | `.mbe-10` | margin-block-end | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1290,7 +1290,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mbse-9` | margin-block | `var(--graupl-spacer-9)` |
 | `.mbse-10` | margin-block | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1339,7 +1339,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mis-9` | margin-inline-start | `var(--graupl-spacer-9)` |
 | `.mis-10` | margin-inline-start | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1388,7 +1388,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mie-9` | margin-inline-end | `var(--graupl-spacer-9)` |
 | `.mie-10` | margin-inline-end | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">
@@ -1437,7 +1437,7 @@ The spacing utilities provide a set of classes to adjust the `gap`, `row-gap`, `
 | `.mise-9` | margin-inline | `var(--graupl-spacer-9)` |
 | `.mise-10` | margin-inline | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-fit-content bs-fit-content">

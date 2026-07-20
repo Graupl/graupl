@@ -18,7 +18,7 @@ The position utilities provide a set of classes to adjust the `position` propert
 | `.position-relative` | position | `relative` |
 | `.position-sticky` | position | `sticky` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="position-relative isolation-isolate">

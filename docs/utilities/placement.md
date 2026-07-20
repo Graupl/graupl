@@ -23,7 +23,7 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-content-baseline` | place-content | `baseline` |
 | `.place-content-stretch` | place-content | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="position-absolute z-0 display-flex g-5">
@@ -66,7 +66,7 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-items-baseline` | place-items | `baseline` |
 | `.place-items-stretch` | place-items | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="position-relative">
@@ -120,7 +120,7 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-self-baseline` | place-self | `baseline` |
 | `.place-self-stretch` | place-self | `stretch` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: 80px;">

@@ -57,7 +57,7 @@ Used to customize ratio.
 | `.three-by-two` | --graupl-ratio | `3 / 2` |
 | `.eight-by-five` | --graupl-ratio | `8 / 5` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-4">
       <div class="display-flex is-max-content bs-max-content position-relative">

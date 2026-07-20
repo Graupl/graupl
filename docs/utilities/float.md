@@ -18,7 +18,7 @@ The float utilities provide a set of classes to adjust the `float` properties of
 | `.float-inline-start` | float | `inline-start` |
 | `.float-inline-end` | float | `inline-end` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="` w-full h-full `">

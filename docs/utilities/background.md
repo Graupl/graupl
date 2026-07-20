@@ -26,7 +26,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-attachment-fixed` | background-attachment | `fixed` |
 | `.bg-attachment-local` | background-attachment | `local` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5 g-5">
@@ -60,7 +60,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-clip-text` | background-clip | `text` |
 | `.bg-clip-border-area` | background-clip | `border-area` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">
@@ -92,7 +92,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | --- | --- | --- |
 | `.bg-image-none` | background-image | `none` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">
@@ -122,7 +122,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-origin-padding-box` | background-origin | `padding-box` |
 | `.bg-origin-content-box` | background-origin | `content-box` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">
@@ -158,7 +158,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-position-left` | background-position | `left` |
 | `.bg-position-center` | background-position | `center` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">
@@ -195,7 +195,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-repeat-round` | background-repeat | `round` |
 | `.bg-repeat-no-repeat` | background-repeat | `no-repeat` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">
@@ -230,7 +230,7 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-size-cover` | background-size | `cover` |
 | `.bg-size-contain` | background-size | `contain` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex g-5">

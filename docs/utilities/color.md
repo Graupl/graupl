@@ -47,7 +47,7 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 | `.bg-current` | background, --graupl-background | `currentColor` |
 | `.bg-transparent` | background, --graupl-background | `transparent` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex h-full `">
@@ -136,7 +136,7 @@ The color utilities provide a set of classes to adjust the `color` and `backgrou
 | `.text-current` | color, --graupl-color | `currentColor` |
 | `.text-transparent` | color, --graupl-color | `transparent` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div :class="`display-flex h-full g-5 `">

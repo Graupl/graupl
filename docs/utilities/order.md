@@ -28,7 +28,7 @@ The order utilities provide a set of classes to adjust the `order` properties of
 | `.order-11` | order | `11` |
 | `.order-12` | order | `12` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-grid g-5 h-auto" style="grid-template-columns: repeat(4, max-content); grid-template-rows: auto;">

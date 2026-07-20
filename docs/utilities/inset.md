@@ -33,7 +33,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-third` | inset | `calc(100%/ 3)` |
 | `.inset-two-thirds` | inset | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -75,7 +75,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-x-third` | inset-x | `calc(100%/ 3)` |
 | `.inset-x-two-thirds` | inset-x | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -117,7 +117,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-y-third` | inset-y | `calc(100%/ 3)` |
 | `.inset-y-two-thirds` | inset-y | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -159,7 +159,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-third` | inset-inline | `calc(100%/ 3)` |
 | `.inset-inline-two-thirds` | inset-inline | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -201,7 +201,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-third` | inset-block | `calc(100%/ 3)` |
 | `.inset-block-two-thirds` | inset-block | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -243,7 +243,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-start-third` | inset-inline-start | `calc(100%/ 3)` |
 | `.inset-inline-start-two-thirds` | inset-inline-start | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -285,7 +285,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-end-third` | inset-inline-end | `calc(100%/ 3)` |
 | `.inset-inline-end-two-thirds` | inset-inline-end | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -325,7 +325,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-start-third` | inset-block-start | `calc(100%/ 3)` |
 | `.inset-block-start-two-thirds` | inset-block-start | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -367,7 +367,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-end-third` | inset-block-end | `calc(100%/ 3)` |
 | `.inset-block-end-two-thirds` | inset-block-end | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents `">
@@ -409,7 +409,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.top-third` | top | `calc(100%/ 3)` |
 | `.top-two-thirds` | top | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -451,7 +451,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.right-third` | right | `calc(100%/ 3)` |
 | `.right-two-thirds` | right | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
       <div :class="` display-contents h-auto `">
@@ -493,7 +493,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.bottom-third` | bottom | `calc(100%/ 3)` |
 | `.bottom-two-thirds` | bottom | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
      <div :class="` display-contents h-auto `">
@@ -535,7 +535,7 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.left-third` | left | `calc(100%/ 3)` |
 | `.left-two-thirds` | left | `calc(100%/ 1.5)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display p-0">
      <div :class="` display-contents h-auto `">

@@ -45,7 +45,7 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.w-9` | width | `var(--graupl-spacer-9)` |
 | `.w-10` | width | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex is-full bs-fit-content bg-tertiary-200">
@@ -124,7 +124,7 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.max-w-9` | max-width | `var(--graupl-spacer-9)` |
 | `.max-w-10` | max-width | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex  is-full bs-fit-content bg-tertiary-200">
@@ -236,7 +236,7 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.min-w-9` | min-width | `var(--graupl-spacer-9)` |
 | `.min-w-10` | min-width | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
        <div class="display-flex is-full bs-fit-content bg-tertiary-200">

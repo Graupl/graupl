@@ -195,7 +195,7 @@ Applies the default border styling to an element. This class works in combinatio
 | `.border-left-tertiary-900` | `border-left-color`, `--graupl-border-left-color` | `var(--graupl-theme-active--tertiary--900)` |
 | `.border-left-transparent` | `border-left-color`, `--graupl-border-left-color` | `transparent` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex h-full g-5">
@@ -364,7 +364,7 @@ Applies the default border styling to an element. This class works in combinatio
 | `.border-bottom-left-radius-9` | `border-bottom-left-radius`, `--graupl-border-bottom-left-radius` | `var(--graupl-spacer-9)` |
 | `.border-bottom-left-radius-10`: Sets the`border-bottom-left-radius`, `--graupl-border-bottom-left-radius` | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex bs-full">
@@ -444,7 +444,7 @@ Applies the default border styling to an element. This class works in combinatio
 | `.border-left-outset` | `border-left-style`, `--graupl-border-left-style` | `outset` |
 | `.border-left-none` | `border-left-style`, `--graupl-border-left-style` | `none` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex bs-full">
@@ -551,7 +551,7 @@ Applies the default border styling to an element. This class works in combinatio
 | `.border-left-9` | `border-left-width`, `--graupl-border-left-width` | `var(--graupl-spacer-9)` |
 | `.border-left-10` | `border-left-width`, `--graupl-border-left-width` | `var(--graupl-spacer-10)` |
 
-<div class="example">
+<div class="static-example">
   <div class="example-container">
     <div class="example-display">
       <div class="display-flex bs-full">
