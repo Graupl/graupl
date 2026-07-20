@@ -7,6 +7,7 @@ import { css } from "@codemirror/lang-css";
 const props = defineProps({
   sourceCode: { type: String, default: null },
   codeClass: { type: String, default: "" },
+  exampleClass: { type: String, default: "" },
   trim: { type: Boolean, default: true },
 });
 
@@ -48,7 +49,7 @@ onMounted(() => {
     </div>
 
     <!-- Live preview -->
-    <div class="example" v-html="code"></div>
+    <div class="example" :class="exampleClass" v-html="code"></div>
 
     <!-- CodeMirror editor -->
     <div class="example-code" :class="codeClass">
