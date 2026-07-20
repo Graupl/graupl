@@ -30,14 +30,13 @@
       "h-10",
       "w-10",
       "p-5",
-      "mb-7",
       "bordered",
       overflowX.value,
     ].filter((c) => c !== null).join(" ");
 
     return `
 <div class="${classes}">
-  <div class="h-10 p-5 bordered bg-tertiary-200 border-color-tertiary-700"
+  <div class="w-10 p-5 bordered bg-tertiary-200 border-color-tertiary-700"
 </div>
     `;
   });
@@ -47,13 +46,47 @@
       "h-10",
       "w-10",
       "p-5",
+      "mb-7",
       "bordered",
       overflowY.value,
     ].filter((c) => c !== null).join(" ");
 
     return `
 <div class="${classes}">
+  <div class="h-10 p-5 bordered bg-tertiary-200 border-color-tertiary-700"
+</div>
+    `;
+  });
+
+  const exampleOverflowInline = computed(() => {
+    const classes = [
+      "h-10",
+      "w-10",
+      "p-5",
+      "bordered",
+      overflowInline.value,
+    ].filter((c) => c !== null).join(" ");
+
+    return `
+<div class="${classes}">
   <div class="w-10 p-5 bordered bg-tertiary-200 border-color-tertiary-700"
+</div>
+    `;
+  });
+
+  const exampleOverflowBlock = computed(() => {
+    const classes = [
+      "h-10",
+      "w-10",
+      "p-5",
+      "mb-7",
+      "bordered",
+      overflowBlock.value,
+    ].filter((c) => c !== null).join(" ");
+
+    return `
+<div class="${classes}">
+  <div class="h-10 p-5 bordered bg-tertiary-200 border-color-tertiary-700"
 </div>
     `;
   });
@@ -126,13 +159,63 @@ The overflow utilities provide a set of classes to adjust the `overflow`, `overf
 <live-example :source-code="exampleOverflowY" :key="overflowY" example-class="min-h-max-content">
   <template #options>
     <div class="input-group">
-      <label for="select-overflow">Overflow X</label>
+      <label for="select-overflow">Overflow Y</label>
       <select id="select-overflow" v-model="overflowY">
         <option value="overflow-y-auto">Auto</option>
         <option value="overflow-y-visible">Visible</option>
         <option value="overflow-y-hidden">Hidden</option>
         <option value="overflow-y-clip">Clip</option>
         <option value="overflow-y-scroll">Scroll</option>
+      </select>
+    </div>
+  </template>
+</live-example>
+
+## Overflow Inline
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| `.overflow-inline-auto` | overflow-inline | `auto` |
+| `.overflow-inline-visible` | overflow-inline | `visible` |
+| `.overflow-inline-hidden` | overflow-inline | `hidden` |
+| `.overflow-inline-clip` | overflow-inline | `clip` |
+| `.overflow-inline-scroll` | overflow-inline | `scroll` |
+
+<live-example :source-code="exampleOverflowInline" :key="overflowInline" example-class="min-h-max-content">
+  <template #options>
+    <div class="input-group">
+      <label for="select-overflow">Overflow inline</label>
+      <select id="select-overflow" v-model="overflowInline">
+        <option value="overflow-inline-auto">Auto</option>
+        <option value="overflow-inline-visible">Visible</option>
+        <option value="overflow-inline-hidden">Hidden</option>
+        <option value="overflow-inline-clip">Clip</option>
+        <option value="overflow-inline-scroll">Scroll</option>
+      </select>
+    </div>
+  </template>
+</live-example>
+
+## Overflow Block
+
+| Class Name | Property | Value |
+| --- | --- | --- |
+| `.overflow-block-auto` | overflow-block | `auto` |
+| `.overflow-block-visible` | overflow-block | `visible` |
+| `.overflow-block-hidden` | overflow-block | `hidden` |
+| `.overflow-block-clip` | overflow-block | `clip` |
+| `.overflow-block-scroll` | overflow-block | `scroll` |
+
+<live-example :source-code="exampleOverflowBlock" :key="overflowBlock" example-class="min-h-max-content">
+  <template #options>
+    <div class="input-group">
+      <label for="select-overflow">Overflow block</label>
+      <select id="select-overflow" v-model="overflowBlock">
+        <option value="overflow-block-auto">Auto</option>
+        <option value="overflow-block-visible">Visible</option>
+        <option value="overflow-block-hidden">Hidden</option>
+        <option value="overflow-block-clip">Clip</option>
+        <option value="overflow-block-scroll">Scroll</option>
       </select>
     </div>
   </template>
