@@ -1,11 +1,23 @@
 <script setup>
   import { ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+
+  const exampleFieldset =`
+<fieldset>
+  <legend>Fieldset</legend>
+</fieldset>
+  `;
 </script>
 
 # Forms
 
 This module provides the base styles for form components, such as inputs, textareas, selects, labels, and fieldsets.
+
+::: info Note
+
+Form elements and inputs alone are only a portion of Graupl's feature set for forms. For a complete setup of labels, form items, and help text please see the [Input Group](../components/input-group.md) component.
+
+:::
 
 ## Base elements
 
@@ -37,15 +49,11 @@ The base `<input>`, `<textarea>`, `<select>`, `<fieldset>`, `<legend>`, and `<la
 
 ### Fieldsets
 
-<live-example>
-  <fieldset>
-    <legend>Fieldset</legend>
-  </fieldset>
-</live-example>
+<live-example :source-code="exampleFieldset" />
 
 ## Variants
 
-By default, there are no variants available for tables.
+By default, there are no variants available for forms.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the `$themeable` variable to `true` to enable variants.
 

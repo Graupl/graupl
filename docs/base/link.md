@@ -1,8 +1,15 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref, computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const state = ref("default");
+  const exampleLinkState = computed(() => {
+    const classes = [
+      state.value !== "default" ? state.value : null
+    ].filter(c => c !== null).join(" ");
+
+    return `<a href="#" class="${classes}">Click me!</a>`;
+  });
 </script>
 
 # Links
@@ -29,8 +36,7 @@ Links handle the following states by default: visited, focus, hover, active, dis
 
 You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active` and `.disabled`, respectively.
 
-<live-example>
-  <a href="#" :class="state !== 'default' ? state : ''">Click me!</a>
+<live-example :source-code="exampleLinkState" :key="state">
   <template #options>
     <div class="input-group">
       <label for="select-link-state">Link state</label>
