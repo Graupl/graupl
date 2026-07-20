@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.55](https://github.com/Graupl/graupl/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-15)
+
+
+### Features
+
+* **utlity:** add more border control utilities ([f30c234](https://github.com/Graupl/graupl/commit/f30c2344855c7c425aaaa630bdd98bf32d644fca))
+
+## [1.0.0-beta.54](https://github.com/Graupl/graupl/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-06-26)
+
+
+### Bug Fixes
+
+* **layout:** do not hard-code graupl variable ([6122013](https://github.com/Graupl/graupl/commit/61220137f865fa51a7924d3fc9d6eb01403fecf0))
+
+## [1.0.0-beta.53](https://github.com/Graupl/graupl/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2026-06-26)
+
+
+### Features
+
+* **utilities:** rename block-size classes from 'block' to 'bs' ([8d07c5a](https://github.com/Graupl/graupl/commit/8d07c5aee0cdebbc0cb03f25fcc6a17e69d921d7))
+* **utilities:** rename inline-size classes from 'inline' to 'is' ([86ebc6e](https://github.com/Graupl/graupl/commit/86ebc6ef28c336c7f5cfa8204d17447c515f8016))
+
 ## [1.0.0-beta.52](https://github.com/Graupl/graupl/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2026-06-25)
 
 
