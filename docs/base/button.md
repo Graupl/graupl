@@ -1,9 +1,27 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref, computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const state = ref("default");
   const variant = ref("default");
+
+  const exampleButtonState = computed(() => {
+    const classes = [
+      "button",
+      state.value !== "default" ? state.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `<button class="${classes}">Click me!</button>`;
+  });
+
+  const exampleButtonVariant = computed(() => {
+    const classes = [
+      "button",
+      variant.value !== "default" ? variant.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `<button class="${classes}">Click me!</button>`;
+  });
 </script>
 
 # Buttons
@@ -24,8 +42,7 @@ The `.button` class is the base class for all button styles.
 
 There are 4 button variants provided by default: `.primary`, `.secondary`, `.tertiary`, and `.link`.
 
-<live-example>
-  <button :class="`button ${variant !== 'default' ? variant : ''}`">Click me!</button>
+<live-example :source-code="exampleButtonVariant" :key="variant">
   <template #options>
     <div class="input-group">
       <label for="select-button-variant">Button variant</label>
@@ -49,8 +66,7 @@ Buttons handle the following states by default: visited, focus, hover, active, d
 
 You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active`, `.disabled`, `.selected`, and `.current` respectively.
 
-<live-example>
-  <button :class="`button ${state !== 'default' ? state : ''}`">Click me!</button>
+<live-example :source-code="exampleButtonState" :key="state">
   <template #options>
     <div class="input-group">
       <label for="select-button-state">Button state</label>

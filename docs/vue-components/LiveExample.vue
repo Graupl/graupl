@@ -5,48 +5,52 @@ import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 
 const props = defineProps({
-  codeClass: String,
+  sourceCode: { type: String, default: null },
+  codeClass: { type: String, default: "" },
+  trim: { type: Boolean, default: true },
 });
 
-const sourceStore = ref("");
-const source = useTemplateRef("example-source");
+const sourceElement = useTemplateRef("example-source");
 const code = ref("");
 const extensions = [html(), css()];
 const view = shallowRef();
+
 const handleReady = (payload) => {
   view.value = payload.view;
 };
 
-const getCodemirrorStates = () => {
-  const state = view.value.state;
-  const ranges = state.selection.ranges;
-  const selected = ranges.reduce((r, range) => r + range.to - r);
-  const cursor = ranges[0].anchor;
-  const length = state.doc.length;
-  const lines = state.doc.lines;
-};
-
+/**
+ * Mount the source code into the example.
+ *
+ * This will prioritize the sourceCode prop over the default slot.
+ *
+ * White space before/after the component is trimmed by default, but can
+ * be altered with the `trim` prop.
+ */
 onMounted(() => {
-  code.value = source.value.innerHTML;
-  sourceStore.value = source.value.innerHTML;
-});
-
-onUpdated(() => {
-  if (source.value.innerHTML !== sourceStore.value) {
-    code.value = source.value.innerHTML;
-    sourceStore.value = source.value.innerHTML;
+  if (props.sourceCode) {
+    code.value = props.trim ? props.sourceCode.trim() : props.sourceCode;
+  } else if (sourceElement.value) {
+    code.value = props.trim
+      ? sourceElement.value.innerHTML.trim()
+      : sourceElement.value.innerHTML;
   }
 });
 </script>
 
 <template>
   <div class="example-container">
+    <!-- Hidden source reference -->
     <div class="example-source" aria-hidden="true" ref="example-source">
       <slot>
         <div>Hello!</div>
       </slot>
     </div>
+
+    <!-- Live preview -->
     <div class="example" v-html="code"></div>
+
+    <!-- CodeMirror editor -->
     <div class="example-code" :class="codeClass">
       <codemirror
         v-model="code"
@@ -60,6 +64,8 @@ onUpdated(() => {
         @blur="console.log('blur', $event)"
       />
     </div>
+
+    <!-- Options for altering the example -->
     <div class="example-options">
       <slot name="options"></slot>
     </div>
