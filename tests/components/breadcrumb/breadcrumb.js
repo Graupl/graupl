@@ -9,7 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default: "<li><a href=' / '>Home</a></li><li>Breadcrumb</li>",
+      default: "",
     },
     attributes: {
       type: Object,
@@ -20,6 +20,9 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("breadcrumb");
 
-    return () => h(BasicComponent, { ...props, tag: "ol" });
+    return () =>
+      h(BasicComponent, { ...props, tag: "ol" }, [
+        "<li><a href=' / '>Home</a></li><li>Breadcrumb</li>",
+      ]);
   },
 };
