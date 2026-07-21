@@ -22,8 +22,8 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ol" }, [
-        h("li", {}, [h("a", { href: "/", text: "Home" })]),
-        h("li", { text: "Breadcrumb" }),
+        h("li", {}, [h("a", { href: "/", innerHTML: "Home" })]),
+        h("li", { innerHTML: "Breadcrumb" }),
       ]);
   },
 };
