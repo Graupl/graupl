@@ -10,22 +10,8 @@ export default {
     text: {
       type: String,
       default:
-        (() =>
-          h(BasicComponent, {
-            class: "alert-header",
-            tag: "div",
-            text: h(BasicComponent, {
-              tag: "h3",
-              attributes: { class: "alert-title" },
-              text: "Title",
-            }),
-          })) +
-        (() =>
-          h(BasicComponent, {
-            tag: "div",
-            attributes: { class: "alert-body" },
-            text: h(BasicComponent, { tag: "p", text: "Alert" }),
-          })),
+        "<div class='alert-header'><h3 class='alert-title'>Title</h3></div>" +
+        "<div class='alert-body'><p>Alert</p></div>",
     },
     attributes: {
       type: Object,
@@ -37,14 +23,6 @@ export default {
 
     props.attributes.class.push("alert");
 
-    return () =>
-      h(BasicComponent, { ...props, tag: "div" }, [
-        h(
-          "div",
-          { class: "alert-header" },
-          h("h3", { class: "alert-title" }, "Title")
-        ),
-        h("div", { class: "alert-body" }, h("p", null, props.text)),
-      ]);
+    return () => h(BasicComponent, { ...props, tag: "div" });
   },
 };
