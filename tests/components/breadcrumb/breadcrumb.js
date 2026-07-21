@@ -22,7 +22,8 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ol" }, [
-        "<li><a href=' / '>Home</a></li><li>Breadcrumb</li>",
+        h("li", {}, [h("a", { href: "/", text: "Home" })]),
+        h("li", { text: "Breadcrumb" }),
       ]);
   },
 };
