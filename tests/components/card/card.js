@@ -8,29 +8,10 @@ export default {
       default: "",
     },
     text: {
-      type: Object,
-      default: () => {
-        (() =>
-          h(BasicComponent, {
-            tag: "div",
-            attributes: { class: "card-content" },
-            text: h(BasicComponent, {
-              tag: "div",
-              attributes: { class: "card-body" },
-              text: h(BasicComponent, { tag: "p", text: "Card" }),
-            }),
-          }),
-          () =>
-            h(BasicComponent, {
-              tag: "div",
-              attributes: { class: "card-footer" },
-              text: h(BasicComponent, {
-                tag: "a",
-                attributes: { class: "button-stretched", href: "/" },
-                text: "The Action",
-              }),
-            }));
-      },
+      type: String,
+      default:
+        "<div class='card-content'><div class='card-body'><p> Card</p></div></div>" +
+        "<div class='card-footer'><a class='button-stretched' href='/'>The Action</a></div>",
     },
     attributes: {
       type: Object,
