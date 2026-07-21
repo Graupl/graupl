@@ -8,7 +8,7 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
+      type: String,
       default() {
         [
           h(BasicComponent, {
@@ -24,9 +24,7 @@ export default {
             tag: "li",
             text: "Breadcrumb",
           }),
-        ].forEach((item) => {
-          item;
-        });
+        ].join("");
       },
     },
     attributes: {
