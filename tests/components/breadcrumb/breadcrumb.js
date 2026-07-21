@@ -9,18 +9,7 @@ export default {
     },
     text: {
       type: String,
-      default() {
-        [
-          h(BasicComponent, {
-            tag: "li",
-            text: "<a href=" / ">Home</a>",
-          }),
-          h(BasicComponent, {
-            tag: "li",
-            text: "Breadcrumb",
-          }),
-        ].join("");
-      },
+      default: "<li><a href=' / '>Home</a></li><li>Breadcrumb</li>",
     },
     attributes: {
       type: Object,
