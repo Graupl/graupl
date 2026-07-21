@@ -8,12 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: Function,
-      default: h(BasicComponent, {
-        tag: "div",
-        attributes: { class: "disclosure-content" },
-        text: h(BasicComponent, { tag: "p", text: "Disclosure" }),
-      }),
+      type: String,
+      default: "Disclosure",
     },
     attributes: {
       type: Object,
