@@ -13,12 +13,7 @@ export default {
         [
           h(BasicComponent, {
             tag: "li",
-            text: () =>
-              h(BasicComponent, {
-                tag: "a",
-                attributes: { href: "/" },
-                text: "Home",
-              }),
+            text: "<a href=" / ">Home</a>",
           }),
           h(BasicComponent, {
             tag: "li",
