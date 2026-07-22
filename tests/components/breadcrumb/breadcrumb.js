@@ -18,8 +18,10 @@ export default {
 
     return () =>
       h(BasicComponent, { ...props, tag: "ol" }, [
-        h("li", [h("a", "Home")]),
-        h("li", "Breadcrumb"),
+        h("li", { class: "breadcrumb-item" }, [
+          h("a", { class: "breadcrumb-link" }, "Home"),
+        ]),
+        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
       ]);
   },
 };
