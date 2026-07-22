@@ -7,12 +7,6 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: String,
-      default:
-        "<div class='alert-header'><h3 class='alert-title'>Title</h3></div>" +
-        "<div class='alert-body'><p>Alert</p></div>",
-    },
     attributes: {
       type: Object,
       default: () => ({}),
