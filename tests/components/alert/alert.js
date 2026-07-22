@@ -24,6 +24,9 @@ export default {
     props.attributes.class.push("alert");
 
     return () =>
-      h(BasicComponent, { ...props, tag: "div" }, [h["li"], h["li"]]);
+      h(BasicComponent, { ...props, tag: "div" }, [
+        h["li"],
+        h[("li", { class: "alert-body" }, [h("p", "Alert")])],
+      ]);
   },
 };
