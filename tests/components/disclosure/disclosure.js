@@ -20,11 +20,9 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("disclosure");
 
-    return () => [
+    return () =>
       h("button", {
         class: "disclosure-toggle",
-      }),
-      h(BasicComponent, { tag: "div", ...props }),
-    ];
+      }) + h(BasicComponent, { tag: "div", ...props });
   },
 };
