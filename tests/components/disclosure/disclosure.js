@@ -22,7 +22,6 @@ export default {
 
     return () => [
       h("button", {
-        variant: props.variant,
         class: "disclosure-toggle",
       }),
       h(BasicComponent, { tag: "div", ...props }),
