@@ -7,10 +7,6 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: String,
-      default: "",
-    },
     attributes: {
       type: Object,
       default: () => ({}),
