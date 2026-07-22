@@ -21,11 +21,9 @@ export default {
     props.attributes.class.push("disclosure");
 
     return [
-      h(BasicComponent, {
-        tag: "button",
+      h("button", {
         variant: props.variant,
         class: "disclosure-toggle",
-        text: "",
       }),
       h(BasicComponent, { tag: "div", ...props }),
     ];
