@@ -23,6 +23,7 @@ export default {
 
     props.attributes.class.push("alert");
 
-    return () => h(BasicComponent, { ...props, tag: "div" });
+    return () =>
+      h(BasicComponent, { ...props, tag: "div" }, [h["li"], h["li"]]);
   },
 };
