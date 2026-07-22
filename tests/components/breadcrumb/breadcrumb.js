@@ -7,6 +7,10 @@ export default {
       type: String,
       default: "",
     },
+    text: {
+      type: String,
+      default: "Breadcrumb",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -16,12 +20,6 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("breadcrumb");
 
-    return () =>
-      h(BasicComponent, { ...props, tag: "ol" }, [
-        h("li", { class: "breadcrumb-item" }, [
-          h("a", { class: "breadcrumb-link" }, "Home"),
-        ]),
-        h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
-      ]);
+    return () => h(BasicComponent, { ...props, tag: "ol" });
   },
 };
