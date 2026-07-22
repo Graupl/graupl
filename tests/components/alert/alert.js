@@ -26,6 +26,8 @@ export default {
     return () =>
       h(BasicComponent, { ...props, tag: "div" }, [
         h["li"],
+        { class: "alert-header" },
+        [h("h3", { class: "alert-title" }, "Title")],
         h[("li", { class: "alert-body" }, [h("p", "Alert")])],
       ]);
   },
