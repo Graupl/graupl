@@ -32,7 +32,9 @@ $fieldset-selector: "fieldset" !default;
 $fieldset-theme-prefix-selector-base: $input-theme-prefix-selector-base !default;
 $fieldset-theme-prefix-selector: $input-theme-prefix-selector !default;
 
-/* stylelint-disable */
+/* stylelint-disable
+ * prettier-ignore
+ */
 $-input-type-selectors: (
   "button": (
     "[type=button]",
