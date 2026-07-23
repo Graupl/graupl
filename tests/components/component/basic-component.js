@@ -23,7 +23,7 @@ export default {
       },
     },
     text: {
-      type: String,
+      type: [String, Object],
       default: "",
     },
     tag: {
