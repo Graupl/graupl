@@ -52,9 +52,8 @@ $-screen-sizes: (
 $screen-sizes: () !default;
 $screen-sizes: map.merge($-screen-sizes, $screen-sizes);
 
-/* stylelint-disable
- * prettier-ignore
- */
+/* prettier-ignore */
+/* stylelint-disable */
 $-screen-size-triggers: (
   navigation-collapse: (
     mixin: "down",
