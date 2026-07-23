@@ -20,14 +20,6 @@ export default {
       h(BasicComponent, {
         ...props,
         tag: "ol",
-        text: [
-          h(
-            "li",
-            { class: "breadcrumb-item" },
-            h("a", { class: "breadcrumb-link", href: "#" }, "Home")
-          ),
-          h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
-        ],
       });
   },
 };
