@@ -52,7 +52,7 @@ $-screen-sizes: (
 $screen-sizes: () !default;
 $screen-sizes: map.merge($-screen-sizes, $screen-sizes);
 
-/* stylelint-disable --allow-empty-input */
+/* stylelint-disable */
 $-screen-size-triggers: (
   navigation-collapse: (
     mixin: "down",
@@ -85,7 +85,7 @@ $-screen-size-triggers: (
     ),
   ),
 );
-/* stylelint-enable --allow-empty-input */
+/* stylelint-enable */
 
 $screen-size-triggers: () !default;
 $screen-size-triggers: map.merge($-screen-size-triggers, $screen-size-triggers);
