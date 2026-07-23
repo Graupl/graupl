@@ -7,10 +7,6 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: String,
-      default: "Disclosure",
-    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -22,7 +18,11 @@ export default {
 
     return () => [
       h("button", { class: "disclosure-toggle" }),
-      h(BasicComponent, { tag: "div", ...props }),
+      h(BasicComponent, {
+        tag: "div",
+        ...props,
+        text: h("div", { class: "disclosure-content" }, [h("p", "Disclosure")]),
+      }),
     ];
   },
 };
