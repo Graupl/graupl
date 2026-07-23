@@ -22,10 +22,10 @@ export default {
         ...props,
         tag: "div",
         text: [
-          h("li", { class: "alert-header" }, [
+          h("div", { class: "alert-header" }, [
             h("h3", { class: "alert-title" }, "Title"),
           ]),
-          h("li", { class: "alert-body" }, [h("p", "Alert")]),
+          h("div", { class: "alert-body" }, [h("p", "Alert")]),
         ],
       });
   },
