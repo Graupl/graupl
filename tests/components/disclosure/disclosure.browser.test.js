@@ -14,7 +14,10 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      await screen.getByRole("button").trigger("click");
+      const toggleButton = screen.getByRole("button", {
+        class: "disclosure-toggle",
+      });
+      await toggleButton.trigger("click");
 
       await expect(screen.getByText("Disclosure")).toMatchScreenshot();
     });
