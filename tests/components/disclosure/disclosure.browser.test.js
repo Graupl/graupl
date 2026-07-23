@@ -14,7 +14,7 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      await screen.find(".disclosure-toggle").trigger("click");
+      await screen.getByRole("button").trigger("click");
 
       await expect(screen.getByText("Disclosure")).toMatchScreenshot();
     });
