@@ -17,7 +17,7 @@ describe("Disclosure Component", () => {
       const toggleButton = screen.getByRole("button", {
         class: "disclosure-toggle",
       });
-      await toggleButton.trigger("click");
+      await toggleButton.click();
 
       await expect(screen.getByText("Disclosure")).toMatchScreenshot();
     });
