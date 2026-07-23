@@ -18,11 +18,15 @@ export default {
     props.attributes.class.push("alert");
 
     return () =>
-      h(BasicComponent, { ...props, tag: "div" }, [
-        h(["li"], { class: "alert-header" }, [
-          h("h3", { class: "alert-title" }, "Title"),
-        ]),
-        h("li", { class: "alert-body" }, [h("p", "Alert")]),
-      ]);
+      h(BasicComponent, {
+        ...props,
+        tag: "div",
+        text: [
+          h("li", { class: "alert-header" }, [
+            h("h3", { class: "alert-title" }, "Title"),
+          ]),
+          h("li", { class: "alert-body" }, [h("p", "Alert")]),
+        ],
+      });
   },
 };
