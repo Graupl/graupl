@@ -6,8 +6,9 @@
 // They should not be used to define direct property values (i.e. font-size, color, etc.).
 // Those should be defined as custom properties in the `_variables.scss` file.
 
-@use "../defaults" as border-defaults;
+@use "../../../defaults" as root-defaults;
 @use "../../../functions/utility";
+@use "../defaults" as border-defaults;
 @use "sass:map";
 
 // Utility modifiers.
@@ -40,7 +41,13 @@ $container-aware-selector-suffix: border-defaults.$container-aware-selector-suff
 
 // Properties.
 $-utility-properties: (
-  "border": border-style,
+  "border": border-style --#{root-defaults.$prefix}border-style,
+  "border-top": border-top-style --#{root-defaults.$prefix}border-top-style,
+  "border-right": border-right-style
+    --#{root-defaults.$prefix}border-right-style,
+  "border-bottom": border-bottom-style
+    --#{root-defaults.$prefix}border-bottom-style,
+  "border-left": border-left-style --#{root-defaults.$prefix}border-left-style,
 );
 $utility-properties: () !default;
 

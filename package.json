@@ -1,6 +1,6 @@
 {
   "name": "@graupl/graupl",
-  "version": "1.0.0-beta.54",
+  "version": "1.0.0-beta.56",
   "license": "GPL-3.0-or-later",
   "description": "A modular and modern CSS framework.",
   "type": "module",
@@ -64,6 +64,8 @@
   },
   "homepage": "https://github.com/Graupl/graupl#readme",
   "devDependencies": {
+    "@codemirror/lang-css": "^6.3.1",
+    "@codemirror/lang-html": "^6.4.11",
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
     "@drupal/once": "git+https://git.drupalcode.org/issue/once-3466026.git",
@@ -73,6 +75,7 @@
     "@vitest/ui": "^4.0.16",
     "accessible-menu": "^4.2.2",
     "chokidar-cli": "^3.0.0",
+    "codemirror": "^6.0.2",
     "commit-and-tag-version": "^12.5.1",
     "commitizen": "^4.3.0",
     "cz-conventional-changelog": "^3.3.0",
@@ -100,7 +103,8 @@
     "vitepress": "^1.1.0",
     "vitest": "^4.0.16",
     "vitest-axe": "^0.1.0",
-    "vitest-browser-vue": "^2.1.0"
+    "vitest-browser-vue": "^2.1.0",
+    "vue-codemirror": "^6.1.1"
   },
   "dependencies": {
     "@graupl/core": "*"
