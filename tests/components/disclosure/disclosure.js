@@ -20,7 +20,6 @@ export default {
       h(BasicComponent, {
         tag: "div",
         ...props,
-        text: h("div", { class: "disclosure-content" }, [h("p", "Disclosure")]),
       }),
     ];
   },
