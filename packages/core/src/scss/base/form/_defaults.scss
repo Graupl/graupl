@@ -31,6 +31,8 @@ $fieldset-selector-base: $selector-base !default;
 $fieldset-selector: "fieldset" !default;
 $fieldset-theme-prefix-selector-base: $input-theme-prefix-selector-base !default;
 $fieldset-theme-prefix-selector: $input-theme-prefix-selector !default;
+
+/* stylelint-disable --allow-empty-input */
 $-input-type-selectors: (
   "button": (
     "[type=button]",
@@ -99,6 +101,8 @@ $-input-type-selectors: (
     "[type=week]",
   ),
 );
+
+/* stylelint-enable --allow-empty-input */
 $input-type-selectors: () !default;
 $input-type-selectors: map.merge($-input-type-selectors, $input-type-selectors);
 
