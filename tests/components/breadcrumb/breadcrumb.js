@@ -16,6 +16,9 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("breadcrumb");
 
+    props.attributes["date-testid"] = props.attributes["date-testid"] || [];
+    props.attributes["date-testid"].push("breadcrumb");
+
     return () =>
       h(BasicComponent, {
         ...props,

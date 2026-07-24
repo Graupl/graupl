@@ -14,8 +14,10 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-
     props.attributes.class.push("alert");
+
+    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
+    props.attributes["data-testid"].push("alert");
 
     return () =>
       h(BasicComponent, {
