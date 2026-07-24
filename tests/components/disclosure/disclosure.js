@@ -20,10 +20,14 @@ export default {
       h("button", {
         class: "disclosure-toggle " + props.variant,
       }),
-      h(BasicComponent, {
-        tag: "div",
-        ...props,
-      }),
+      h(
+        BasicComponent,
+        {
+          tag: "div",
+          ...props,
+        },
+        h("div", { class: "disclosure-content" }, [h("p", "Disclosure")])
+      ),
     ];
   },
 };

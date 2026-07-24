@@ -1,4 +1,3 @@
-import { h } from "vue";
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./disclosure.js";
@@ -10,9 +9,6 @@ describe("Disclosure Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          text: h("div", { class: "disclosure-content" }, [
-            h("p", "Disclosure"),
-          ]),
         },
       });
 
