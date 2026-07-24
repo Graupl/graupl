@@ -9,7 +9,27 @@ export default {
     },
     text: {
       type: Object,
-      default: h("div", { class: "accordion-item" }, [h("p", "Disclosure")]),
+      default: [
+        h("div", { class: "accordion-item" }, [
+          h("div", { class: "accordion-item-header" }, [
+            h("h3", { class: "accordion-item-title" }, [
+              h(
+                "button",
+                { class: "accordion-item-toggle" },
+                "Accordion Heading"
+              ),
+            ]),
+          ]),
+          h("div", { class: "accordion-item-content" }, [
+            h("div", { class: "accordion-item-body" }, [
+              h("p", "Accordion Body"),
+            ]),
+            h("div", { class: "accordion-item-footer" }, [
+              h("p", "Accordion Footer"),
+            ]),
+          ]),
+        ]),
+      ],
     },
     attributes: {
       type: Object,
