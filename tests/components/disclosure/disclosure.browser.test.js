@@ -25,7 +25,7 @@ describe("Disclosure Component", () => {
       await document.fonts.ready;
 
       const toggleButton = screen.getByRole("button", {
-        class: "disclosure-toggle",
+        name: "",
       });
       await toggleButton.click();
 
