@@ -10,6 +10,14 @@ export default {
     text: {
       type: Object,
       default: [
+        h("div", { class: "accordion-control-container" }, [
+          h("button", { class: "accordion-control expand-all" }, "Expand All"),
+          h(
+            "button",
+            { class: "accordion-control collapse-all" },
+            "Collapse All"
+          ),
+        ]),
         h("div", { class: "accordion-item" }, [
           h("div", { class: "accordion-item-header" }, [
             h("h3", { class: "accordion-item-title" }, [
