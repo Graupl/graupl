@@ -3,12 +3,13 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./disclosure.js";
 import { variants } from "../defaults.js";
+import { userEvent } from "vitest/browser";
 
 describe("Disclosure Component", () => {
   describe.for(variants)("%s disclosure", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(
-        (h("button", { class: "disclosure-toggle" + " " + variant }),
+        (h("button", { class: "disclosure-toggle " + variant, type: "button" }),
         Component,
         {
           props: {
@@ -25,7 +26,7 @@ describe("Disclosure Component", () => {
       const toggleButton = screen.getByRole("button", {
         class: "disclosure-toggle",
       });
-      await toggleButton.click();
+      await userEvent.click(toggleButton);
 
       await expect(screen.getByText("Disclosure")).toBeVisible();
 
