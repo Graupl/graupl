@@ -15,6 +15,11 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("disclosure");
+    props.attributes.class.push("unlocked");
+    props.attributes.class.push("hide");
+
+    props.attributes.id = props.attributes.id || [];
+    props.attributes.id.push("disclosure");
 
     return () => [
       h("button", {
