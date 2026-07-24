@@ -19,7 +19,7 @@ describe("Disclosure Component", () => {
 
       await expect(toggleButton).toHaveClass("disclosure-toggle");
 
-      await expect(screen.getByText("Disclosure")).toMatchScreenshot();
+      await expect(screen.getByTestId("Disclosure")).toMatchScreenshot();
     });
   });
 });

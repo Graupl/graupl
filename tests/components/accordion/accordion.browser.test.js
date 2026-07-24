@@ -14,7 +14,7 @@ describe("Accordion Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Accordion")).toMatchScreenshot();
+      await expect(screen.getByTestId("accordion")).toMatchScreenshot();
     });
   });
 });

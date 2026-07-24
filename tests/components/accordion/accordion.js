@@ -18,8 +18,10 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-
     props.attributes.class.push("accordion");
+
+    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
+    props.attributes["data-testid"].push("accordion");
 
     return () => h(BasicComponent, { ...props, tag: "div" });
   },
