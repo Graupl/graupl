@@ -14,7 +14,7 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("disclosure");
+    props.attributes.class.push("disclosure show");
 
     return () =>
       h(
