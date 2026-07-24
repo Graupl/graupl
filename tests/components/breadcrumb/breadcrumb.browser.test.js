@@ -24,7 +24,9 @@ describe("Breadcrumb Component", () => {
       await document.fonts.ready;
 
       await expect(screen.getByText("Home")).toBeVisible();
-      await expect(screen.getByText("Breadcrumb")).toMatchScreenshot();
+      await expect(
+        screen.getAttribute("class", "breadcrumb")
+      ).toMatchScreenshot();
     });
   });
 });
