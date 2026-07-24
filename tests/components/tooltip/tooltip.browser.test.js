@@ -15,7 +15,7 @@ describe("Disclosure Component", () => {
       await document.fonts.ready;
 
       const toggleButton = screen.getByRole("button").first();
-      toggleButton.click();
+      await toggleButton.click();
 
       await expect(toggleButton).toHaveClass("tooltip-toggle");
 
