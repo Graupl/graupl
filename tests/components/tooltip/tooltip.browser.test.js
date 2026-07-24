@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./accordion.js";
+import Component from "./tooltip.js";
 import { variants } from "../defaults.js";
 
-describe("Accordion Component", () => {
-  describe.for(variants)("%s accordion", async (variant) => {
+describe("Disclosure Component", () => {
+  describe.for(variants)("%s tooltip", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {
         props: {
@@ -15,9 +15,11 @@ describe("Accordion Component", () => {
       await document.fonts.ready;
 
       const toggleButton = screen.getByRole("button").first();
-      toggleButton.click();
+      await toggleButton.click();
 
-      await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+      await expect(toggleButton).toHaveClass("tooltip-toggle");
+
+      await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
     });
   });
 });

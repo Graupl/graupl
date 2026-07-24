@@ -1,10 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./accordion.js";
+import Component from "./tabs.js";
 import { variants } from "../defaults.js";
 
-describe("Accordion Component", () => {
-  describe.for(variants)("%s accordion", async (variant) => {
+describe("Disclosure Component", () => {
+  describe.for(variants)("%s tabs", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {
         props: {
@@ -17,7 +17,9 @@ describe("Accordion Component", () => {
       const toggleButton = screen.getByRole("button").first();
       toggleButton.click();
 
-      await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+      await expect(toggleButton).toHaveAttribute("tabindex", "0");
+
+      await expect(screen.getByTestId("tabs")).toMatchScreenshot();
     });
   });
 });

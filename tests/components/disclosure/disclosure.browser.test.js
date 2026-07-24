@@ -14,10 +14,10 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button").first();
-      await toggleButton.click();
+      const toggleButton = screen.getByRole("button", { name: "" }).first();
+      toggleButton.click();
 
-      await expect(toggleButton).toHaveClass("disclosure-toggle");
+      await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
 
       await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
     });
