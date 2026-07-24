@@ -8,8 +8,8 @@ export default {
       default: "",
     },
     text: {
-      type: String,
-      default: "Accordion",
+      type: Object,
+      default: h("div", { class: "accordion-item" }, [h("p", "Disclosure")]),
     },
     attributes: {
       type: Object,
