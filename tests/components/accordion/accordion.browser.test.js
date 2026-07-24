@@ -14,6 +14,9 @@ describe("Accordion Component", () => {
 
       await document.fonts.ready;
 
+      const toggleButton = screen.getByRole("button").first();
+      await toggleButton.click();
+
       await expect(screen.getByTestId("accordion")).toMatchScreenshot();
     });
   });

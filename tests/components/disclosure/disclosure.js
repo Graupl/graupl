@@ -17,18 +17,22 @@ export default {
     props.attributes.class.push("disclosure");
 
     return () =>
-      h("div", { "data-testid": "disclosure" }, [
-        h(BasicComponent, {
-          class: "disclosure-toggle " + props.variant,
-          tag: "button",
-        }),
-        h(BasicComponent, {
-          tag: "div",
-          ...props,
-          text: h("div", { class: "disclosure-content" }, [
-            h("p", "Disclosure"),
-          ]),
-        }),
-      ]);
+      h(
+        "div",
+        { "data-testid": "disclosure", class: "display-flex flex-col" },
+        [
+          h(BasicComponent, {
+            class: "disclosure-toggle " + props.variant,
+            tag: "button",
+          }),
+          h(BasicComponent, {
+            tag: "div",
+            ...props,
+            text: h("div", { class: "disclosure-content" }, [
+              h("p", "Disclosure for the hidden paragraphs there are here"),
+            ]),
+          }),
+        ]
+      );
   },
 };

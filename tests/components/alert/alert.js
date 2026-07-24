@@ -27,7 +27,13 @@ export default {
           h("div", { class: "alert-header" }, [
             h("h3", { class: "alert-title" }, "Title"),
           ]),
-          h("div", { class: "alert-body" }, [h("p", "Alert")]),
+          h("div", { class: "alert-body" }, [
+            h("p", "Alert body that describes something"),
+          ]),
+          h("div", { class: "alert-footer" }, [
+            h("a", { href: "#" }, "Action taken"),
+          ]),
+          h("button", { class: "alert-bodismisserdy" }, "X"),
         ],
       });
   },
