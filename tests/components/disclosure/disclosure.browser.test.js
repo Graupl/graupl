@@ -17,10 +17,7 @@ describe("Disclosure Component", () => {
       const toggleButton = screen.getByRole("button").first();
       await toggleButton.click();
 
-      await expect(screen.getByText("Disclosure")).toHaveAttribute(
-        "aria-expanded",
-        true
-      );
+      await expect(toggleButton).toHaveAttribute("aria-expanded", true);
 
       await expect(screen.getByText("Disclosure")).toMatchScreenshot();
     });
