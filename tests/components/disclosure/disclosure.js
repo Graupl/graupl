@@ -23,6 +23,7 @@ export default {
         [
           h(BasicComponent, {
             class: "disclosure-toggle " + props.variant,
+            "aria-expanded": "true",
             tag: "button",
           }),
           h(BasicComponent, {
