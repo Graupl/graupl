@@ -14,7 +14,7 @@ describe("Card Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Card")).toMatchScreenshot();
+      await expect(screen.getByTestId("Card")).toMatchScreenshot();
     });
   });
 });

@@ -16,6 +16,9 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("card");
 
+    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
+    props.attributes["data-testid"].push("card");
+
     return () =>
       h(BasicComponent, {
         ...props,
