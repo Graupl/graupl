@@ -11,7 +11,8 @@ describe("Disclosure Component", () => {
         (h("button", {
           class: "disclosure-toggle " + variant,
           type: "button",
-        }) + Component,
+        }),
+        Component,
         {
           props: {
             variant,
@@ -24,9 +25,7 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button", {
-        name: "",
-      });
+      const toggleButton = screen.getByRole("button").first();
       await toggleButton.click();
 
       await expect(screen.getByText("Disclosure")).toBeVisible();
