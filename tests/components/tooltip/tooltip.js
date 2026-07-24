@@ -22,8 +22,9 @@ export default {
     return () =>
       h(BasicComponent, { tag: "div", ...props }, [
         h(BasicComponent, {
-          class: "tooltip-description ",
+          class: "tooltip-description show",
           tag: "span",
+          text: "Tips go here",
         }),
         h(BasicComponent, {
           tag: "button",
