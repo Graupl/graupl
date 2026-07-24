@@ -16,9 +16,6 @@ export default {
     props.attributes.class = props.attributes.class || [];
     props.attributes.class.push("disclosure");
 
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("disclosure");
-
     return () =>
       h("div", { "data-testid": "disclosure" }, [
         h(BasicComponent, {
