@@ -14,7 +14,7 @@ describe("Alert Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getAttribute("class", "alert")).toMatchScreenshot();
+      await expect(screen).toHaveClass("class", "alert").toMatchScreenshot();
     });
   });
 });
