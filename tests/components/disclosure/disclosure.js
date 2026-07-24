@@ -20,17 +20,15 @@ export default {
     props.attributes.id.push("disclosure");
 
     return () => [
-      h("button", {
+      h(BasicComponent, {
         class: "disclosure-toggle " + props.variant,
-        type: "button",
-      }) +
-        h(BasicComponent, {
-          tag: "div",
-          ...props,
-          text: h("div", { class: "disclosure-content" }, [
-            h("p", "Disclosure"),
-          ]),
-        }),
+        tag: "button",
+      }),
+      h(BasicComponent, {
+        tag: "div",
+        ...props,
+        text: h("div", { class: "disclosure-content" }, [h("p", "Disclosure")]),
+      }),
     ];
   },
 };
