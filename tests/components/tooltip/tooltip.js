@@ -11,7 +11,7 @@ export default {
       type: Object,
       default: [
         h("button", { class: "tooltip-toggle" }),
-        h("div", { class: "tooltip-description show" }, "Tips go here"),
+        h("span", { class: "tooltip-description show" }, "Tips go here"),
       ],
     },
     attributes: {
