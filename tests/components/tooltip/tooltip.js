@@ -11,13 +11,13 @@ export default {
       type: Object,
       default: [
         h(BasicComponent, {
+          tag: "button",
+          class: "tooltip-toggle",
+        }),
+        h(BasicComponent, {
           class: "tooltip-description show",
           tag: "span",
           text: "Tips go here",
-        }),
-        h(BasicComponent, {
-          tag: "button",
-          class: "tooltip-toggle",
         }),
       ],
     },

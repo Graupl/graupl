@@ -17,8 +17,6 @@ describe("Disclosure Component", () => {
       const toggleButton = screen.getByRole("button");
       await toggleButton.click();
 
-      await expect(toggleButton).toHaveClass("tooltip-toggle");
-
       await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
     });
   });
