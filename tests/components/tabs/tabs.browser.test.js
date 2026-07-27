@@ -3,7 +3,7 @@ import { render } from "vitest-browser-vue";
 import Component from "./tabs.js";
 import { variants } from "../defaults.js";
 
-describe("Disclosure Component", () => {
+describe("Tabs Component", () => {
   describe.for(variants)("%s tabs", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {

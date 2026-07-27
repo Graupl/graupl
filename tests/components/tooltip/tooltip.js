@@ -10,7 +10,7 @@ export default {
     text: {
       type: Object,
       default: [
-        h("span", { class: "tooltip-description ml-7 show" }, "Tips go here"),
+        h("span", { class: "tooltip-description hide" }, "Tips go here"),
         h("button", { class: "tooltip-toggle" }),
       ],
     },
