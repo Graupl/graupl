@@ -15,7 +15,7 @@ describe("List Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("List Item")).toMatchScreenshot();
+      await expect(screen.getByTextId("list")).toMatchScreenshot();
     });
   });
 });
