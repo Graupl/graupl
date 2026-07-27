@@ -3,7 +3,7 @@ import { render } from "vitest-browser-vue";
 import Component from "./tooltip.js";
 import { variants } from "../defaults.js";
 
-describe("Disclosure Component", () => {
+describe("Tooltip Component", () => {
   describe.for(variants)("%s tooltip", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {
