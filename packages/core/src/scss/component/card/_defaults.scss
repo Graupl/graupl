@@ -14,7 +14,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$themeable: false !default;
+$themeable: true !default;
 $force-vertical-cards: true !default;
 $card-selector-base: $selector-base !default;
 $card-selector: "card" !default;
