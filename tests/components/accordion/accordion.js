@@ -23,7 +23,11 @@ export default {
             h("h3", { class: "accordion-item-title" }, [
               h(
                 "button",
-                { class: "accordion-item-toggle", "aria-expanded": true },
+                {
+                  class: "accordion-item-toggle",
+                  "aria-expanded": true,
+                  "data-testid": "item-toggle",
+                },
                 "Accordion Heading"
               ),
             ]),
