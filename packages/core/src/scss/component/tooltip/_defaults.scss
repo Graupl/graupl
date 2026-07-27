@@ -15,7 +15,7 @@
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;
-$themeable: true !default;
+$themeable: false !default;
 $tooltip-selector-base: $selector-base !default;
 $tooltip-selector: "tooltip" !default;
 $tooltip-theme-selector-base: $modifier-selector-base !default;
