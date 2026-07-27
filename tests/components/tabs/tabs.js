@@ -11,10 +11,10 @@ export default {
       type: Object,
       default: [
         h("div", { class: "tab-list", role: "tablist" }, [
-          h[("button", { class: "tab-toggle", tabindex: "0" }, "Tab 1")],
-          [h[("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 2")]],
-          [h[("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 3")]],
-          [h[("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 4")]],
+          h("button", { class: "tab-toggle", tabindex: "0" }, "Tab 1"),
+          h("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 2"),
+          h("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 3"),
+          h("button", { class: "tab-toggle", tabindex: "-1" }, "Tab 4"),
         ]),
         h("div", { class: "tab-content show" }, [
           h("p", "Content in the tabs "),
