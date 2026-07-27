@@ -7,6 +7,20 @@ export default {
       type: String,
       default: "",
     },
+    text: {
+      type: Object,
+      default: [
+        h(BasicComponent, {
+          class: "tooltip-description show",
+          tag: "span",
+          text: "Tips go here",
+        }),
+        h(BasicComponent, {
+          tag: "button",
+          class: "tooltip-toggle",
+        }),
+      ],
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -20,16 +34,9 @@ export default {
     props.attributes["data-testid"].push("tooltip");
 
     return () =>
-      h(BasicComponent, { tag: "div", ...props }, [
-        h(BasicComponent, {
-          class: "tooltip-description show",
-          tag: "span",
-          text: "Tips go here",
-        }),
-        h(BasicComponent, {
-          tag: "button",
-          class: "tooltip-toggle",
-        }),
-      ]);
+      h(BasicComponent, {
+        tag: "div",
+        ...props,
+      });
   },
 };
