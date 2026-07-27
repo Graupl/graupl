@@ -15,7 +15,7 @@ describe("Tooltip Component", () => {
       await document.fonts.ready;
 
       const toggleButton = screen.getByRole("button", { name: "" }).first();
-      await toggleButton.click();
+      toggleButton.click();
 
       await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
     });
