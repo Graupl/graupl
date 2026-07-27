@@ -14,7 +14,7 @@ describe("Accordion Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByTestid("item-toggle");
+      const toggleButton = screen.getByTestId("item-toggle");
       await toggleButton.click();
 
       await expect(screen.getByTestId("accordion")).toMatchScreenshot();
