@@ -11,7 +11,7 @@ export default {
       type: Object,
       default: [
         h(BasicComponent, {
-          class: "tooltip-description hide",
+          class: "tooltip-description show",
           tag: "span",
           text: "Tips go here",
         }),
