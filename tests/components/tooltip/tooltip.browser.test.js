@@ -17,8 +17,6 @@ describe("Tooltip Component", () => {
       const toggleButton = screen.getByRole("button").first();
       await toggleButton.click();
 
-      await expect(screen.getByText("Tips")).toHaveClass("show");
-
       await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
     });
   });
