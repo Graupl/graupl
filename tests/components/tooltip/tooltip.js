@@ -12,7 +12,7 @@ export default {
       default: [
         h(BasicComponent, {
           class: "tooltip-description ml-8 show",
-          tag: "div",
+          tag: "span",
           text: "Tips go here",
         }),
         h(BasicComponent, {
