@@ -14,7 +14,8 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("tab", { selected: true });
+      const toggleButton = screen.getByRole("button").first();
+      await toggleButton.click();
 
       await expect(toggleButton).toHaveAttribute("tabindex", "0");
 
