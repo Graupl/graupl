@@ -11,8 +11,8 @@ export default {
       type: Object,
       default: [
         h(BasicComponent, {
-          class: "tooltip-description ml-8 show",
-          tag: "span",
+          class: "tooltip-description show",
+          tag: "div",
           text: "Tips go here",
         }),
         h(BasicComponent, {
