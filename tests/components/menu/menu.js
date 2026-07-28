@@ -14,14 +14,45 @@ export default {
     text: {
       type: Object,
       default: [
-        h("li", { class: "menu-item" }, [
-          h("a", { class: "menu-link" }, "List Item "),
-          h("a", { class: "menu-link" }, "Second Listed"),
-          h("a", { class: "menu-link" }, "Third Listed"),
-          h("a", { class: "menu-link" }, "Fourth Listed"),
+        h("li", { class: "menu-item submenu-item" }, [
+          h(
+            "button",
+            { class: "menu-link button link submenu-toggle" },
+            "Button"
+          ),
+          h("ul", { class: "submenu show" }, [
+            h(
+              "li",
+              { class: "menu-item" },
+              h("a", { class: "menu-link" }, "List Item ")
+            ),
+            h(
+              "li",
+              { class: "menu-item" },
+              h("a", { class: "menu-link" }, "Second Listed")
+            ),
+            h(
+              "li",
+              { class: "menu-item" },
+              h("a", { class: "menu-link" }, "Third Listed")
+            ),
+            h(
+              "li",
+              { class: "menu-item" },
+              h("a", { class: "menu-link" }, "Fourth Listed")
+            ),
+          ]),
         ]),
-        h("li", { class: "menu-item" }, "List content"),
-        h("li", { class: "menu-item" }, "List content"),
+        h(
+          "li",
+          { class: "menu-item" },
+          h("a", { class: "menu-link" }, "List Content ")
+        ),
+        h(
+          "li",
+          { class: "menu-item" },
+          h("a", { class: "menu-link" }, "List Content 2")
+        ),
       ],
     },
     attributes: {

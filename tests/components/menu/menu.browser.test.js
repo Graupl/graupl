@@ -15,6 +15,9 @@ describe("Menu Component", () => {
 
       await document.fonts.ready;
 
+      const toggleButton = screen.getByRole("button", { name: "Button" });
+      await toggleButton.click();
+
       await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
   });
