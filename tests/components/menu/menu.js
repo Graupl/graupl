@@ -17,41 +17,44 @@ export default {
         h("li", { class: "menu-item submenu-item" }, [
           h(
             "button",
-            { class: "menu-link button link submenu-toggle" },
+            {
+              class: "menu-link button link submenu-toggle",
+              "aria-expanded": "true",
+            },
             "Button"
           ),
           h("ul", { class: "submenu show" }, [
             h(
               "li",
               { class: "menu-item" },
-              h("a", { class: "menu-link" }, "List Item ")
+              h("a", { class: "menu-link", href: "#" }, "List Item ")
             ),
             h(
               "li",
               { class: "menu-item" },
-              h("a", { class: "menu-link" }, "Second Listed")
+              h("a", { class: "menu-link", href: "#" }, "Second Listed")
             ),
             h(
               "li",
               { class: "menu-item" },
-              h("a", { class: "menu-link" }, "Third Listed")
+              h("a", { class: "menu-link", href: "#" }, "Third Listed")
             ),
             h(
               "li",
               { class: "menu-item" },
-              h("a", { class: "menu-link" }, "Fourth Listed")
+              h("a", { class: "menu-link", href: "#" }, "Fourth Listed")
             ),
           ]),
         ]),
         h(
           "li",
           { class: "menu-item" },
-          h("a", { class: "menu-link" }, "List Content ")
+          h("a", { class: "menu-link", href: "#" }, "List Content ")
         ),
         h(
           "li",
           { class: "menu-item" },
-          h("a", { class: "menu-link" }, "List Content 2")
+          h("a", { class: "menu-link", href: "#" }, "List Content 2")
         ),
       ],
     },
