@@ -18,7 +18,7 @@ export default {
           h(BasicComponent, {
             tag: "button",
             class: "menu-link button submenu-toggle",
-            "aria-expanded": "true",
+            "aria-expanded": true,
             text: "Button",
           }),
           h("ul", { class: "submenu show", "data-testid": "submenu" }, [

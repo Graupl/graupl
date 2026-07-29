@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./tooltip.js";
+import Component from "./tooltip-closed.js";
 import { variants } from "../defaults.js";
 
 describe("Tooltip Closed Component", () => {

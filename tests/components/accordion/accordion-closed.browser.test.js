@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render } from "vitest-browser-vue";
-import Component from "./accordion.js";
+import Component from "./accordion-closed.js";
 import { variants } from "../defaults.js";
 
 describe("Accordion Closed Component", () => {

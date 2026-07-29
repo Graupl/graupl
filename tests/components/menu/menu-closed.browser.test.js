@@ -1,6 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render } from "vitest-browser-vue";
-import Component from "./menu.js";
+import Component from "./menu-closed.js";
 import { variants } from "../defaults.js";
 
 describe("Menu Closed Component", () => {
@@ -14,12 +14,6 @@ describe("Menu Closed Component", () => {
 
       await document.fonts.ready;
 
-      const menuButton = screen.getByRole("button", { name: "Button" }).first();
-      await menuButton.click();
-
-      await expect(menuButton).toHaveAttribute("aria-expanded", "true");
-
-      await expect(screen.getByTestId("submenu")).toBeInTheDocument();
       await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
   });
