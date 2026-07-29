@@ -13,7 +13,7 @@ export default {
         h(BasicComponent, { tag: "button", class: "tooltip-toggle" }),
         h(BasicComponent, {
           tag: "span",
-          class: "tooltip-description position-relative hide",
+          class: "tooltip-description hide",
           text: "Tips go here",
         }),
       ],
