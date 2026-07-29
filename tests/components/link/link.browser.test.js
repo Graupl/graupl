@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { render } from "vitest-browser-vue";
+import { describe, it, expect, afterEach } from "vitest";
+import { cleanup, render } from "vitest-browser-vue";
 import Component from "./link.js";
 import { states } from "../defaults.js";
 
@@ -15,4 +15,8 @@ describe("Link Component", () => {
 
     await expect(screen.getByText("Click me")).toMatchScreenshot();
   });
+});
+
+afterEach(() => {
+  cleanup();
 });
