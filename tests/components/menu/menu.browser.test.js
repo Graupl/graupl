@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./menu.js";
 import { variants } from "../defaults.js";
-import { userEvent } from "vitest/browser";
 
 describe("Menu Component", () => {
   describe.for(variants)("%s menu", (variant) => {
@@ -15,8 +14,8 @@ describe("Menu Component", () => {
 
       await document.fonts.ready;
 
-      const menuButton = screen.getByRole("button", { name: "Button" });
-      await userEvent.click(menuButton);
+      const menuButton = screen.getByRole("button", { name: "" }).first();
+      await menuButton.click();
 
       await expect(menuButton).toHaveAttribute("aria-expanded", "true");
 

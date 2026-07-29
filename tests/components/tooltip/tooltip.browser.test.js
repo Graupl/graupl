@@ -14,7 +14,7 @@ describe("Tooltip Component", () => {
 
       await document.fonts.ready;
 
-      const tooltipButton = screen.getByRole("button");
+      const tooltipButton = screen.getByRole("button", { name: "" }).first();
       await tooltipButton.click();
 
       await expect(screen.getByTestId("tooltip")).toHaveTextContent(

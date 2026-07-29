@@ -14,10 +14,10 @@ describe("Tabs Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button").first();
-      await toggleButton.click();
+      const tabButton = screen.getByRole("button").first();
+      await tabButton.click();
 
-      await expect(toggleButton).toHaveAttribute("tabindex", "0");
+      await expect(tabButton).toHaveAttribute("tabindex", "0");
 
       await expect(screen.getByTestId("tabs")).toMatchScreenshot();
     });
