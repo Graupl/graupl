@@ -18,7 +18,7 @@ export default {
           h(
             "button",
             {
-              class: "menu-link button link submenu-toggle",
+              class: "menu-link button submenu-toggle",
               "aria-expanded": "true",
             },
             "Button"
