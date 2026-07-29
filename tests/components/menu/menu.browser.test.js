@@ -14,7 +14,7 @@ describe("Menu Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button");
+      const toggleButton = screen.getByRole("button", { name: "Button" });
       await toggleButton.click();
 
       await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
