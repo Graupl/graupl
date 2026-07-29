@@ -13,7 +13,7 @@ export default {
         h(BasicComponent, { tag: "button", class: "tooltip-toggle" }),
         h(BasicComponent, {
           tag: "div",
-          class: "tooltip-description z-1 show",
+          class: "tooltip-description show",
           text: "Tips go here",
         }),
       ],
@@ -25,7 +25,7 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("tooltip display-flex");
+    props.attributes.class.push("tooltip");
 
     props.attributes["data-testid"] = props.attributes["data-testid"] || [];
     props.attributes["data-testid"].push("tooltip");
