@@ -14,7 +14,7 @@ describe("Tooltip Component", () => {
 
       await document.fonts.ready;
 
-      const tooltipButton = screen.getByRole("button", { name: "" });
+      const tooltipButton = screen.getByRole("button");
       await tooltipButton.click();
 
       await expect(screen.getByText("Tips go here")).toHaveClass("show");

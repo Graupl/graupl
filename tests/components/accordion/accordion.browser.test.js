@@ -1,5 +1,5 @@
-import { describe, it, expect } from "vitest";
-import { render } from "vitest-browser-vue";
+import { describe, it, expect, afterEach } from "vitest";
+import { cleanup, render } from "vitest-browser-vue";
 import Component from "./accordion.js";
 import { variants } from "../defaults.js";
 
@@ -20,4 +20,8 @@ describe("Accordion Component", () => {
       await expect(screen.getByTestId("accordion")).toMatchScreenshot();
     });
   });
+});
+
+afterEach(() => {
+  cleanup();
 });

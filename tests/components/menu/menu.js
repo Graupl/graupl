@@ -21,7 +21,7 @@ export default {
             "aria-expanded": "true",
             text: "Button",
           }),
-          h("ul", { class: "submenu show" }, [
+          h("ul", { class: "submenu show", "data-testid": "submenu" }, [
             h(
               "li",
               { class: "menu-item" },
