@@ -19,6 +19,7 @@ describe("Menu Component", () => {
 
       await expect(menuButton).toHaveAttribute("aria-expanded", "true");
 
+      await expect(screen.getByTestId("submenu")).toMatchScreenshot();
       await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
   });
