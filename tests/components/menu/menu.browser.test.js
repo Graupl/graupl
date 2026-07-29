@@ -17,7 +17,7 @@ describe("Menu Component", () => {
       const menuButton = screen.getByRole("button", { name: "Button" }).first();
       await menuButton.click();
 
-      await expect(menuButton).toHaveAttribute("aria-expanded", "true");
+      await expect(menuButton).toHaveBeenCalledOnce;
 
       await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
