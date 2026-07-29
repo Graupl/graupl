@@ -15,14 +15,12 @@ export default {
       type: Object,
       default: [
         h("li", { class: "menu-item submenu-item" }, [
-          h(
-            "button",
-            {
-              class: "menu-link button submenu-toggle",
-              "aria-expanded": "true",
-            },
-            "Button"
-          ),
+          h(BasicComponent, {
+            tag: "button",
+            class: "menu-link button submenu-toggle",
+            "aria-expanded": "true",
+            text: "Button",
+          }),
           h("ul", { class: "submenu show" }, [
             h(
               "li",

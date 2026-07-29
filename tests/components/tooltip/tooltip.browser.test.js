@@ -14,12 +14,10 @@ describe("Tooltip Component", () => {
 
       await document.fonts.ready;
 
-      const tooltipButton = screen.getByRole("button", { name: "" }).first();
+      const tooltipButton = screen.getByRole("button", { name: "" });
       await tooltipButton.click();
 
-      await expect(screen.getByTestId("tooltip")).toHaveTextContent(
-        "Tips go here"
-      );
+      await expect(screen.getByText("Tips go here")).toHaveClass("show");
 
       await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
     });

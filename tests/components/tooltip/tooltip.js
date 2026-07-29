@@ -10,8 +10,12 @@ export default {
     text: {
       type: Object,
       default: [
-        h("button", { class: "tooltip-toggle" }),
-        h("span", { class: "tooltip-description show" }, "Tips go here"),
+        h(BasicComponent, { tag: "button", class: "tooltip-toggle" }),
+        h(BasicComponent, {
+          tag: "span",
+          class: "tooltip-description show",
+          text: "Tips go here",
+        }),
       ],
     },
     attributes: {
