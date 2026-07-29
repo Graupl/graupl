@@ -18,7 +18,7 @@ export default {
             "Collapse All"
           ),
         ]),
-        h("div", { class: "accordion-item show" }, [
+        h("div", { class: "accordion-item hide" }, [
           h("div", { class: "accordion-item-header" }, [
             h("h3", { class: "accordion-item-title" }, [
               h(
