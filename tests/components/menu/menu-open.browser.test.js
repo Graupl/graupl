@@ -3,7 +3,7 @@ import { cleanup, render } from "vitest-browser-vue";
 import Component from "./menu.js";
 import { variants } from "../defaults.js";
 
-describe("Menu Component", () => {
+describe("Menu Open Component", () => {
   describe.for(variants)("%s menu", (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {

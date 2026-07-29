@@ -1,10 +1,10 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render } from "vitest-browser-vue";
-import Component from "./disclosure.js";
+import Component from "./accordion.js";
 import { variants } from "../defaults.js";
 
-describe("Disclosure Component", () => {
-  describe.for(variants)("%s disclosure", async (variant) => {
+describe("Accordion Open Component", () => {
+  describe.for(variants)("%s accordion", async (variant) => {
     it("Should match screenshot", async () => {
       const screen = render(Component, {
         props: {
@@ -14,12 +14,10 @@ describe("Disclosure Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button", { name: "" }).first();
+      const toggleButton = screen.getByTestId("item-toggle");
       await toggleButton.click();
 
-      await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
-
-      await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
+      await expect(screen.getByTestId("accordion")).toMatchScreenshot();
     });
   });
 });
