@@ -14,10 +14,10 @@ describe("Menu Component", () => {
 
       await document.fonts.ready;
 
-      const toggleButton = screen.getByRole("button", { name: "Button" });
-      await toggleButton.click();
+      const menuButton = screen.getByRole("button", { name: "Button" });
+      await menuButton.click();
 
-      await expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+      await expect(menuButton).toHaveAttribute("aria-expanded", "true");
 
       await expect(screen.getByTestId("menu")).toMatchScreenshot();
     });
