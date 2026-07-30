@@ -7,6 +7,10 @@ export default {
       type: String,
       default: "",
     },
+    status: {
+      type: String,
+      default: "",
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -14,7 +18,7 @@ export default {
   },
   setup(props) {
     props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("disclosure hide");
+    props.attributes.class.push("disclosure");
 
     return () =>
       h(
@@ -23,7 +27,7 @@ export default {
         [
           h(BasicComponent, {
             class: "disclosure-toggle " + props.variant,
-            "aria-expanded": false,
+            "aria-expanded": "true",
             tag: "button",
           }),
           h(BasicComponent, {

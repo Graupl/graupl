@@ -14,3 +14,5 @@ export const states = [
   "selected",
   "current",
 ];
+
+export const statuses = ["open", "closed"];
