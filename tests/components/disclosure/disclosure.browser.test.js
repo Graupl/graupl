@@ -17,9 +17,6 @@ describe("Disclosure Open Component", () => {
 
         await document.fonts.ready;
 
-        const toggleButton = screen.getByRole("button", { name: "" }).first();
-        await toggleButton.click();
-
         await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
       }
     );

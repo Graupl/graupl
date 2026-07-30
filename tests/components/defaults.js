@@ -15,4 +15,4 @@ export const states = [
   "current",
 ];
 
-export const statuses = ["open", "closed"];
+export const statuses = ["show", "hide"];
