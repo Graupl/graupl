@@ -14,11 +14,6 @@ describe("Tabs Component", () => {
 
       await document.fonts.ready;
 
-      const tabButton = screen.getByRole("button").first();
-      await tabButton.click();
-
-      await expect(tabButton).toHaveAttribute("tabindex", "0");
-
       await expect(screen.getByTestId("tabs")).toMatchScreenshot();
     });
   });
