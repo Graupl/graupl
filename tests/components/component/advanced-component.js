@@ -22,9 +22,9 @@ export default {
         return states.includes(value);
       },
     },
-    text: {
-      type: String,
-      default: "",
+    children: {
+      type: Array,
+      default: () => [],
     },
     tag: {
       type: String,
@@ -36,12 +36,12 @@ export default {
     },
   },
   setup(props) {
-    const { attributes, variant, state, text, tag } = props;
+    const { attributes, variant, state, children, tag } = props;
 
     attributes.class = attributes.class || [];
     attributes.class.push(variant, state);
     attributes.class = attributes.class.filter((value) => value !== "");
 
-    return () => h(tag, attributes, text);
+    return () => h(tag, attributes, children);
   },
 };
