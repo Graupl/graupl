@@ -5,14 +5,12 @@ import { variants } from "../defaults.js";
 
 describe("Disclosure Closed Component", () => {
   describe.for(variants)("%s disclosure", async (variant) => {
-    it("Should match screenshot while closed: %s", async () => {
+    it("Should match screenshot while closed:", async () => {
       const screen = render(Component, {
         props: {
           variant,
           attributes: {
-            dataset: {
-              testId: "disclosure",
-            },
+            "dataset-testId": "disclosure",
           },
         },
       });
@@ -26,15 +24,13 @@ describe("Disclosure Closed Component", () => {
 
 describe("Disclosure Open Component", () => {
   describe.for(variants)("%s disclosure", async (variant) => {
-    it("Should match screenshot while open: %s", async () => {
+    it("Should match screenshot while open:", async () => {
       const screen = render(Component, {
         props: {
           open: true,
           variant,
           attributes: {
-            dataset: {
-              testId: "disclosure",
-            },
+            "dataset-testId": "disclosure",
           },
         },
       });

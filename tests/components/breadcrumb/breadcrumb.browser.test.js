@@ -9,6 +9,9 @@ describe("Breadcrumb Component", () => {
       const screen = render(Component, {
         props: {
           variant,
+          attributes: {
+            "dataset-testId": "breadcrumb",
+          },
         },
       });
 

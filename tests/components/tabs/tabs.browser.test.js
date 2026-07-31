@@ -9,6 +9,11 @@ describe("Tabs Component", () => {
       const screen = render(Component, {
         props: {
           variant,
+          attributes: {
+            dataset: {
+              testId: "tabs",
+            },
+          },
         },
       });
 
