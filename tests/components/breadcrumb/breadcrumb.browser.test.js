@@ -10,7 +10,7 @@ describe("Breadcrumb Component", () => {
         props: {
           variant,
           attributes: {
-            "dataset-testId": "breadcrumb",
+            "data-testid": "breadcrumb",
           },
         },
       });

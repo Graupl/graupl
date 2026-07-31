@@ -10,7 +10,7 @@ describe("Tabs Component", () => {
         props: {
           variant,
           attributes: {
-            "dataset-testid": "tabs",
+            "data-testid": "tabs",
           },
         },
       });

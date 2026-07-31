@@ -10,7 +10,7 @@ describe("Disclosure Closed Component", () => {
         props: {
           variant,
           attributes: {
-            "dataset-testId": "disclosure",
+            "data-testid": "disclosure",
           },
         },
       });
@@ -30,7 +30,7 @@ describe("Disclosure Open Component", () => {
           open: true,
           variant,
           attributes: {
-            "dataset-testId": "disclosure",
+            "data-testid": "disclosure",
           },
         },
       });

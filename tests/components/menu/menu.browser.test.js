@@ -10,7 +10,7 @@ describe("Menu Closed Component", () => {
         props: {
           variant,
           attributes: {
-            "dataset-testId": "menu",
+            "data-testid": "menu",
           },
         },
       });
@@ -30,7 +30,7 @@ describe("Menu Open Component", () => {
           open: true,
           variant,
           attributes: {
-            "dataset-testId": "menu",
+            "data-testid": "menu",
           },
         },
       });
