@@ -19,9 +19,6 @@ export default {
     },
   },
   setup(props) {
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("accordion");
-
     const attributes = setupClasses(props.attributes, ["accordion"]);
 
     return () =>

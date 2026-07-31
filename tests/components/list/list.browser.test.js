@@ -9,6 +9,9 @@ describe("List Component", () => {
       const screen = render(Component, {
         props: {
           variant,
+          attributes: {
+            "data-testid": "list",
+          },
         },
       });
 
