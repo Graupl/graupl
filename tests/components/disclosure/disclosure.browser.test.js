@@ -9,9 +9,6 @@ describe("Disclosure Closed Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          attributes: {
-            "data-testid": "disclosure",
-          },
         },
       });
 
@@ -29,9 +26,6 @@ describe("Disclosure Open Component", () => {
         props: {
           open: true,
           variant,
-          attributes: {
-            "data-testid": "disclosure",
-          },
         },
       });
 

@@ -26,6 +26,7 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
+        "data-testid": "disclosure",
         children: [
           h(BasicComponent, {
             attributes: {
