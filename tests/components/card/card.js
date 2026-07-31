@@ -9,8 +9,8 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: Object,
+    children: {
+      type: Array,
       default: [
         h(AdvancedComponent, {
           attributes: { class: ["card-image"] },
