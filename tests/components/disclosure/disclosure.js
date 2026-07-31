@@ -29,7 +29,6 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
-        attributes,
         children: [
           h(BasicComponent, {
             attributes: {
@@ -40,6 +39,7 @@ export default {
           }),
           h(AdvancedComponent, {
             ...props,
+            attributes,
             children: [
               h(AdvancedComponent, {
                 attributes: { class: ["disclosure-content"] },
