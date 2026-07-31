@@ -39,7 +39,7 @@ export default {
         }),
         h(AdvancedComponent, {
           attributes: {
-            class: ["tooltip-description", "show"],
+            class: ["tab-content", "show"],
           },
           children: [
             h(BasicComponent, { tag: "p", text: "Content in the tabs" }),
@@ -48,7 +48,7 @@ export default {
         }),
         h(AdvancedComponent, {
           attributes: {
-            class: ["tooltip-description", "hide"],
+            class: ["tab-content", "hide"],
           },
           children: [
             h(BasicComponent, { tag: "p", text: "Content in the tabs" }),

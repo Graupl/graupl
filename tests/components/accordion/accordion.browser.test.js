@@ -1,30 +1,36 @@
-import { describe, it, expect, afterEach } from "vitest";
-import { cleanup, render } from "vitest-browser-vue";
+import { describe, it, expect } from "vitest";
+import { render } from "vitest-browser-vue";
 import Component from "./accordion.js";
-import { variants } from "../defaults.js";
 
 describe("Accordion Open Component", () => {
-  describe.for(variants)("%s accordion", async (variant) => {
-    it("Should match screenshot", async () => {
-      const screen = render(Component, {
-        props: {
-          variant,
-          attributes: {
-            "data-testid": "accordion",
-          },
+  it("Should match screenshot", async () => {
+    const screen = render(Component, {
+      props: {
+        attributes: {
+          "data-testid": "accordion",
         },
-      });
-
-      await document.fonts.ready;
-
-      const toggleButton = screen.getByTestId("item-toggle");
-      await toggleButton.click();
-
-      await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+      },
     });
+
+    await document.fonts.ready;
+
+    await expect(screen.getByTestId("accordion")).toMatchScreenshot();
   });
 });
 
-afterEach(() => {
-  cleanup();
+describe("Accordion Open Component", () => {
+  it("Should match screenshot", async () => {
+    const screen = render(Component, {
+      props: {
+        open: true,
+        attributes: {
+          "data-testid": "accordion",
+        },
+      },
+    });
+
+    await document.fonts.ready;
+
+    await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+  });
 });

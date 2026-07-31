@@ -5,14 +5,6 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    variant: {
-      type: String,
-      default: "",
-    },
-    state: {
-      type: String,
-      default: "",
-    },
     children: {
       type: Array,
       default: [

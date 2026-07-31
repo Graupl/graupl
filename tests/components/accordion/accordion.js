@@ -5,10 +5,6 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    variant: {
-      type: String,
-      default: "",
-    },
     open: {
       type: Boolean,
       default: false,

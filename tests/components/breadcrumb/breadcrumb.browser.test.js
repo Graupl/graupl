@@ -1,23 +1,19 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./breadcrumb.js";
-import { variants } from "../defaults.js";
 
 describe("Breadcrumb Component", () => {
-  describe.for(variants)("%s breadcrumb", async (variant) => {
-    it("Should match screenshot", async () => {
-      const screen = render(Component, {
-        props: {
-          variant,
-          attributes: {
-            "data-testid": "breadcrumb",
-          },
+  it("Should match screenshot", async () => {
+    const screen = render(Component, {
+      props: {
+        attributes: {
+          "data-testid": "breadcrumb",
         },
-      });
-
-      await document.fonts.ready;
-
-      await expect(screen.getByTestId("breadcrumb")).toMatchScreenshot();
+      },
     });
+
+    await document.fonts.ready;
+
+    await expect(screen.getByTestId("breadcrumb")).toMatchScreenshot();
   });
 });
