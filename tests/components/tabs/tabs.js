@@ -37,14 +37,24 @@ export default {
             }),
           ],
         }),
-        h("div", { class: "tab-content show" }, [
-          h("p", "Content in the tabs "),
-          h("p", "These might get big"),
-        ]),
-        h("div", { class: "tab-content hide" }, [
-          h("p", "Content in the tabs "),
-          h("p", "These might get big"),
-        ]),
+        h(AdvancedComponent, {
+          attributes: {
+            class: ["tooltip-description", "show"],
+          },
+          children: [
+            h(BasicComponent, { tag: "p", text: "Content in the tabs" }),
+            h(BasicComponent, { tag: "p", text: "These might get big" }),
+          ],
+        }),
+        h(AdvancedComponent, {
+          attributes: {
+            class: ["tooltip-description", "hide"],
+          },
+          children: [
+            h(BasicComponent, { tag: "p", text: "Content in the tabs" }),
+            h(BasicComponent, { tag: "p", text: "These might get big" }),
+          ],
+        }),
       ],
     },
     attributes: {
