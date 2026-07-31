@@ -1,5 +1,7 @@
 import { h } from "vue";
+import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -11,17 +13,45 @@ export default {
       type: String,
       default: "",
     },
-    text: {
-      type: Object,
+    children: {
+      type: Array,
       default: [
-        h("li", { class: "list-item" }, [
-          h("li", { class: "list-item" }, "List Item "),
-          h("li", { class: "list-item" }, "Second Listed"),
-          h("li", { class: "list-item" }, "Third Listed"),
-          h("li", { class: "list-item" }, "Fourth Listed"),
-        ]),
-        h("li", { class: "list-item" }, "List content"),
-        h("li", { class: "list-item" }, "List content"),
+        h(AdvancedComponent, {
+          tag: "li",
+          attributes: { class: ["list-item"] },
+          children: [
+            h(BasicComponent, {
+              tag: "li",
+              attributes: { class: ["list-item"] },
+              text: "List Item ",
+            }),
+            h(BasicComponent, {
+              tag: "li",
+              attributes: { class: ["list-item"] },
+              text: "Second Listed",
+            }),
+            h(BasicComponent, {
+              tag: "li",
+              attributes: { class: ["list-item"] },
+              text: "Third Listed",
+            }),
+            h(BasicComponent, {
+              tag: "li",
+              attributes: { class: ["list-item"] },
+              text: "Fourth Listed",
+            }),
+          ],
+        }),
+        h(BasicComponent, {
+          tag: "li",
+          attributes: { class: ["list-item"] },
+          text: "List content",
+        }),
+        h(BasicComponent, {
+          tag: "li",
+          attributes: { class: ["list-item"] },
+          text: "List content",
+        }),
       ],
     },
     attributes: {
@@ -30,12 +60,8 @@ export default {
     },
   },
   setup(props) {
-    props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("list");
+    const attributes = setupClasses(props.attributes, ["list"]);
 
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("list");
-
-    return () => h(BasicComponent, { ...props, tag: "ul" });
+    return () => h(AdvancedComponent, { ...props, attributes, tag: "ul" });
   },
 };
