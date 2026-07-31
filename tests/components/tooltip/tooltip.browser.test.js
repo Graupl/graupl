@@ -22,9 +22,7 @@ describe("Tooltip Component", () => {
       props: {
         open: true,
         attributes: {
-          dataset: {
-            testId: "tooltip",
-          },
+          "dataset-testId": "tooltip",
         },
       },
     });
