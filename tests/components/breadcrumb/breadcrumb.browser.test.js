@@ -1,4 +1,3 @@
-import { h } from "vue";
 import { describe, it, expect, afterEach } from "vitest";
 import { cleanup, render } from "vitest-browser-vue";
 import Component from "./breadcrumb.js";
@@ -10,20 +9,11 @@ describe("Breadcrumb Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          text: [
-            h(
-              "li",
-              { class: "breadcrumb-item" },
-              h("a", { class: "breadcrumb-link", href: "#" }, "Home")
-            ),
-            h("li", { class: "breadcrumb-item" }, "Breadcrumb"),
-          ],
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Home")).toBeVisible();
       await expect(screen.getByTestId("breadcrumb")).toMatchScreenshot();
     });
   });

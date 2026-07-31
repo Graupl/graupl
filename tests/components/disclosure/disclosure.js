@@ -30,14 +30,16 @@ export default {
         attributes,
         children: [
           h(BasicComponent, {
-            class: "disclosure-toggle " + props.variant,
-            "aria-expanded": "true",
+            attributes: {
+              class: "disclosure-toggle " + props.variant,
+              "aria-expanded": "true",
+            },
             tag: "button",
           }),
           h(AdvancedComponent, {
             ...props,
             children: h(AdvancedComponent, {
-              class: "disclosure-content",
+              attributes: { class: "disclosure-content" },
               children: [
                 h(BasicComponent, {
                   tag: "p",
