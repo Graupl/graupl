@@ -4,13 +4,7 @@ import Component from "./tooltip.js";
 
 describe("Tooltip Component", () => {
   it("Should match screenshot when closed", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "dataset-testid": "tooltip",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
@@ -21,9 +15,6 @@ describe("Tooltip Component", () => {
     const screen = render(Component, {
       props: {
         open: true,
-        attributes: {
-          "dataset-testIid": "tooltip",
-        },
       },
     });
 

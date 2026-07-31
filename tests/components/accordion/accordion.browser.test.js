@@ -9,9 +9,6 @@ describe("Accordion Closed Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          attributes: {
-            "dataset-testid": "accordion",
-          },
         },
       });
 
@@ -29,9 +26,6 @@ describe("Accordion Open Component", () => {
         props: {
           open: true,
           variant,
-          attributes: {
-            "dataset-testid": "accordion",
-          },
         },
       });
 
