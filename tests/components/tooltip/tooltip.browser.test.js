@@ -7,9 +7,7 @@ describe("Tooltip Component", () => {
     const screen = render(Component, {
       props: {
         attributes: {
-          dataset: {
-            testId: "tooltip",
-          },
+          "dataset-testid": "tooltip",
         },
       },
     });
