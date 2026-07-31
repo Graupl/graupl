@@ -1,5 +1,5 @@
-import { describe, it, expect, afterEach } from "vitest";
-import { cleanup, render } from "vitest-browser-vue";
+import { describe, it, expect } from "vitest";
+import { render } from "vitest-browser-vue";
 import Component from "./disclosure.js";
 import { variants } from "../defaults.js";
 
@@ -40,8 +40,4 @@ describe("Disclosure Open Component", () => {
       await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
     });
   });
-});
-
-afterEach(() => {
-  cleanup();
 });

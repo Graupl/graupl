@@ -1,5 +1,5 @@
-import { describe, it, expect, afterEach } from "vitest";
-import { cleanup, render } from "vitest-browser-vue";
+import { describe, it, expect } from "vitest";
+import { render } from "vitest-browser-vue";
 import Component from "./button.js";
 import { variants, states } from "../defaults.js";
 
@@ -18,8 +18,4 @@ describe("Button Component", () => {
       await expect(screen.getByText("Click me")).toMatchScreenshot();
     });
   });
-});
-
-afterEach(() => {
-  cleanup();
 });
