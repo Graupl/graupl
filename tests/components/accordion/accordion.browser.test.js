@@ -10,7 +10,7 @@ describe("Accordion Closed Component", () => {
         props: {
           variant,
           attributes: {
-            "dataset-testId": "accordion",
+            "dataset-testid": "accordion",
           },
         },
       });
@@ -30,7 +30,7 @@ describe("Accordion Open Component", () => {
           open: true,
           variant,
           attributes: {
-            "dataset-testId": "accordion",
+            "dataset-testid": "accordion",
           },
         },
       });
