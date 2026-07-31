@@ -30,11 +30,12 @@ export default {
                 tag: "button",
                 attributes: {
                   class: ["menu-link", "button", "submenu-toggle"],
+                  "aria-expanded": props.open ? true : false,
                 },
                 text: "Button",
               }),
               h(AdvancedComponent, {
-                tag: "ul",
+                tag: "ol",
                 attributes: {
                   class: ["submenu", props.open ? "show" : "hide"],
                   "data-testid": "submenu",
