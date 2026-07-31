@@ -23,9 +23,9 @@ export default {
         return states.includes(value);
       },
     },
-    text: {
-      type: [String, Object],
-      default: "",
+    children: {
+      type: Array,
+      default: () => [],
     },
     tag: {
       type: String,
@@ -37,10 +37,10 @@ export default {
     },
   },
   setup(props) {
-    const { variant, state, text, tag } = props;
+    const { variant, state, children, tag } = props;
 
     const attributes = setupClasses(props.attributes, [variant, state]);
 
-    return () => h(tag, attributes, text);
+    return () => h(tag, attributes, children);
   },
 };
