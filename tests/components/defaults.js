@@ -14,5 +14,3 @@ export const states = [
   "selected",
   "current",
 ];
-
-export const statuses = ["show", "hide"];

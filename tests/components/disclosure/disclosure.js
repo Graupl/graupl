@@ -1,5 +1,7 @@
 import { h } from "vue";
+import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -7,9 +9,9 @@ export default {
       type: String,
       default: "",
     },
-    status: {
-      type: String,
-      default: "",
+    open: {
+      type: Boolean,
+      default: false,
     },
     attributes: {
       type: Object,
@@ -17,27 +19,34 @@ export default {
     },
   },
   setup(props) {
-    props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("disclosure");
+    const attributes = setupClasses(props.attributes, [
+      "disclosure",
+      props.open ? "show" : "hide",
+    ]);
 
     return () =>
-      h(
-        "div",
-        { "data-testid": "disclosure", class: "display-flex flex-col" },
-        [
+      h(AdvancedComponent, {
+        ...props,
+        attributes,
+        children: [
           h(BasicComponent, {
             class: "disclosure-toggle " + props.variant,
             "aria-expanded": "true",
             tag: "button",
           }),
-          h(BasicComponent, {
-            tag: "div",
+          h(AdvancedComponent, {
             ...props,
-            text: h("div", { class: "disclosure-content" }, [
-              h("p", "Disclosure for the hidden paragraphs there are here"),
-            ]),
+            children: h(AdvancedComponent, {
+              class: "disclosure-content",
+              children: [
+                h(BasicComponent, {
+                  tag: "p",
+                  text: "Disclosure for the hidden paragraphs there are here",
+                }),
+              ],
+            }),
           }),
-        ]
-      );
+        ],
+      });
   },
 };

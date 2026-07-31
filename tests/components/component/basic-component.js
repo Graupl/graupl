@@ -24,7 +24,7 @@ export default {
       },
     },
     text: {
-      type: [String, Object],
+      type: String,
       default: "",
     },
     tag: {
