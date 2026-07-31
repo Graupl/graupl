@@ -10,14 +10,14 @@ describe("Disclosure Closed Component", () => {
         props: {
           variant,
           attributes: {
-            "data-testid": "disclosure",
+            "data-testid": "disclosure-closed",
           },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
+      await expect(screen.getByTestId("disclosure-closed")).toMatchScreenshot();
     });
   });
 });
@@ -30,14 +30,14 @@ describe("Disclosure Open Component", () => {
           open: true,
           variant,
           attributes: {
-            "data-testid": "disclosure",
+            "data-testid": "disclosure-open",
           },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
+      await expect(screen.getByTestId("disclosure-open")).toMatchScreenshot();
     });
   });
 });

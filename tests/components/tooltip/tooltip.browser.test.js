@@ -7,14 +7,14 @@ describe("Tooltip Component", () => {
     const screen = render(Component, {
       props: {
         attributes: {
-          "data-testid": "tooltip",
+          "data-testid": "tooltip-closed",
         },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
+    await expect(screen.getByTestId("tooltip-closed")).toMatchScreenshot();
   });
 
   it("Should match screenshot when open", async () => {
@@ -22,13 +22,13 @@ describe("Tooltip Component", () => {
       props: {
         open: true,
         attributes: {
-          "data-testid": "tooltip",
+          "data-testid": "tooltip-open",
         },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("tooltip")).toMatchScreenshot();
+    await expect(screen.getByTestId("tooltip-open")).toMatchScreenshot();
   });
 });
