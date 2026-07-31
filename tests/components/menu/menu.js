@@ -5,10 +5,6 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    variant: {
-      type: String,
-      default: "",
-    },
     open: {
       type: Boolean,
       default: false,
@@ -34,7 +30,6 @@ export default {
                 tag: "button",
                 attributes: {
                   class: ["menu-link", "button", "submenu-toggle"],
-                  "aria-expanded": true,
                 },
                 text: "Button",
               }),

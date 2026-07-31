@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./accordion.js";
 
-describe("Accordion Open Component", () => {
+describe("Accordion Closed Component", () => {
   it("Should match screenshot", async () => {
     const screen = render(Component, {
       props: {

@@ -5,10 +5,6 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    variant: {
-      type: String,
-      default: "",
-    },
     children: {
       type: Array,
       default: [
@@ -17,7 +13,11 @@ export default {
           children: [
             h(BasicComponent, {
               tag: "button",
-              attributes: { class: ["tab-toggle"], tabindex: "0" },
+              attributes: {
+                class: ["tab-toggle"],
+                tabindex: "0",
+                "aria-selected": "true",
+              },
               text: "Tab 1",
             }),
             h(BasicComponent, {
@@ -51,8 +51,11 @@ export default {
             class: ["tab-content", "hide"],
           },
           children: [
-            h(BasicComponent, { tag: "p", text: "Content in the tabs" }),
-            h(BasicComponent, { tag: "p", text: "These might get big" }),
+            h(BasicComponent, { tag: "p", text: "Second tabs" }),
+            h(BasicComponent, {
+              tag: "p",
+              text: "More information in the second tab",
+            }),
           ],
         }),
       ],

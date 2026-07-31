@@ -53,8 +53,6 @@ export default {
                         tag: "button",
                         attributes: {
                           class: ["accordion-item-toggle"],
-                          "aria-expanded": true,
-                          "data-testid": "item-toggle",
                         },
                         text: "Accordion Heading",
                       }),
