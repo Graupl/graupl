@@ -24,7 +24,7 @@ export default {
       },
     },
     children: {
-      type: Object,
+      type: Array,
       default: () => [],
     },
     tag: {

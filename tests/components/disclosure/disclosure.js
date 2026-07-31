@@ -37,15 +37,17 @@ export default {
           }),
           h(AdvancedComponent, {
             ...props,
-            children: h(AdvancedComponent, {
-              attributes: { class: ["disclosure-content"] },
-              children: [
-                h(BasicComponent, {
-                  tag: "p",
-                  text: "Disclosure for the hidden paragraphs there are here",
-                }),
-              ],
-            }),
+            children: [
+              h(AdvancedComponent, {
+                attributes: { class: ["disclosure-content"] },
+                children: [
+                  h(BasicComponent, {
+                    tag: "p",
+                    text: "Disclosure for the hidden paragraphs there are here",
+                  }),
+                ],
+              }),
+            ],
           }),
         ],
       });
