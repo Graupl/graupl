@@ -9,6 +9,9 @@ describe("Alert Component", () => {
       const screen = render(Component, {
         props: {
           variant,
+          attributes: {
+            "data-testid": "alert",
+          },
         },
       });
 

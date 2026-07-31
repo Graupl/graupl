@@ -1,5 +1,7 @@
 import { h } from "vue";
+import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -13,27 +15,47 @@ export default {
     },
   },
   setup(props) {
-    props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("alert");
-
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("alert");
+    const attributes = setupClasses(props.attributes, ["alert"]);
 
     return () =>
-      h(BasicComponent, {
+      h(AdvancedComponent, {
         ...props,
-        tag: "div",
-        text: [
-          h("div", { class: "alert-header" }, [
-            h("h3", { class: "alert-title" }, "Title"),
-          ]),
-          h("div", { class: "alert-body" }, [
-            h("p", "Alert body that describes something"),
-          ]),
-          h("div", { class: "alert-footer" }, [
-            h("a", { href: "#" }, "Action taken"),
-          ]),
-          h("button", { class: "alert-bodismisserdy" }, "X"),
+        attributes,
+        children: [
+          h(AdvancedComponent, {
+            attributes: { class: ["alert-header"] },
+            children: [
+              h(BasicComponent, {
+                tag: "h3",
+                attributes: { class: ["alert-title"] },
+                text: "Title",
+              }),
+            ],
+          }),
+          h(AdvancedComponent, {
+            attributes: { class: ["alert-body"] },
+            children: [
+              h(BasicComponent, {
+                tag: "p",
+                text: "Alert body that describes something",
+              }),
+            ],
+          }),
+          h(AdvancedComponent, {
+            attributes: { class: ["alert-footer"] },
+            children: [
+              h(BasicComponent, {
+                tag: "a",
+                attributes: { href: "#" },
+                text: "Action taken",
+              }),
+            ],
+          }),
+          h(BasicComponent, {
+            tag: "button",
+            attributes: { class: ["alert-dismisser"] },
+            text: "X",
+          }),
         ],
       });
   },
