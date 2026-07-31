@@ -26,7 +26,7 @@ export default {
         ...props,
         attributes,
         children: [
-          h(BasicComponent, {
+          h(AdvancedComponent, {
             attributes: { class: ["accordion-control-container"] },
             children: [
               h(BasicComponent, {
@@ -46,7 +46,7 @@ export default {
               class: ["accordion-item", props.open ? "show" : "hide"],
             },
             children: [
-              h(BasicComponent, {
+              h(AdvancedComponent, {
                 attributes: { class: ["accordion-item-header"] },
                 children: [
                   h(AdvancedComponent, {
@@ -66,10 +66,10 @@ export default {
                   }),
                 ],
               }),
-              h(BasicComponent, {
+              h(AdvancedComponent, {
                 attributes: { class: ["accordion-item-content"] },
                 children: [
-                  h(BasicComponent, {
+                  h(AdvancedComponent, {
                     attributes: { class: ["accordion-item-body"] },
                     children: [
                       h(BasicComponent, { tag: "p", text: "Accordion Body" }),
