@@ -1,6 +1,7 @@
 import { h } from "vue";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -14,27 +15,24 @@ export default {
     },
   },
   setup(props) {
-    props.attributes.class = props.attributes.class || [];
-
-    props.attributes.class.push("tooltip");
+    const attributes = setupClasses(props.attributes, ["tooltip"]);
 
     return () =>
       h(AdvancedComponent, {
         ...props,
+        attributes,
         children: [
-          () =>
-            h(BasicComponent, {
-              text: "This is a tooltip!",
-              tag: "span",
-              attributes: {
-                class: ["tooltip-description", open ? "show" : ""],
-              },
-            }),
-          () =>
-            h(BasicComponent, {
-              tag: "button",
-              attributes: { class: ["tooltip-toggle"] },
-            }),
+          h(BasicComponent, {
+            text: "This is a tooltip!",
+            tag: "span",
+            attributes: {
+              class: ["tooltip-description", props.open ? "show" : "hide"],
+            },
+          }),
+          h(BasicComponent, {
+            tag: "button",
+            attributes: { class: ["tooltip-toggle"] },
+          }),
         ],
       });
   },
