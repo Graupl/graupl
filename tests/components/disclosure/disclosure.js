@@ -19,9 +19,6 @@ export default {
     },
   },
   setup(props) {
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("disclosure");
-
     const attributes = setupClasses(props.attributes, [
       "disclosure",
       props.open ? "show" : "hide",
