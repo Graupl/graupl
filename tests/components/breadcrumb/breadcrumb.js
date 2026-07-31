@@ -14,18 +14,18 @@ export default {
       default: [
         h(AdvancedComponent, {
           tag: "li",
-          attributes: { class: "breadcrumb-item" },
+          attributes: { class: ["breadcrumb-item"] },
           children: [
             h(BasicComponent, {
               tag: "a",
-              attributes: { class: "breadcrumb-link", href: "#" },
+              attributes: { class: ["breadcrumb-link"], href: "#" },
               text: "Home",
             }),
           ],
         }),
         h(BasicComponent, {
           tag: "li",
-          attributes: { class: "breadcrumb-item" },
+          attributes: { class: ["breadcrumb-item"] },
           text: "Breadcrumb",
         }),
       ],
