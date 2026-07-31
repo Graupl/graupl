@@ -1,5 +1,7 @@
 import { h } from "vue";
 import BasicComponent from "../component/basic-component.js";
+import AdvancedComponent from "../component/advanced-component.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -10,18 +12,49 @@ export default {
     text: {
       type: Object,
       default: [
-        h("div", { class: "card-image" }, [h("img", { alt: "Card Image" })]),
-        h("div", { class: "card-content" }, [
-          h("div", { class: "card-header" }, [
-            h("h3", { class: "card-title" }, "Title"),
-          ]),
-          h("div", { class: "card-body" }, [
-            h("p", "Card body for some description."),
-          ]),
-          h("div", { class: "card-footer" }, [
-            h("a", { class: "button-stretched", href: "#" }, "The Action"),
-          ]),
-        ]),
+        h(AdvancedComponent, {
+          attributes: { class: ["card-image"] },
+          children: [
+            h(BasicComponent, {
+              tag: "img",
+              attributes: { alt: "Card Image" },
+            }),
+          ],
+        }),
+        h(AdvancedComponent, {
+          attributes: { class: ["card-content"] },
+          children: [
+            h(AdvancedComponent, {
+              attributes: { class: ["card-header"] },
+              children: [
+                h(BasicComponent, {
+                  tag: "h3",
+                  attributes: { class: ["card-title"] },
+                  text: "Title",
+                }),
+              ],
+            }),
+            h(AdvancedComponent, {
+              attributes: { class: ["card-body"] },
+              children: [
+                h(BasicComponent, {
+                  tag: "p",
+                  text: "Card body for some description.",
+                }),
+              ],
+            }),
+            h(AdvancedComponent, {
+              attributes: { class: ["card-footer"] },
+              children: [
+                h(BasicComponent, {
+                  tag: "a",
+                  attributes: { class: ["button-stretched"], href: "#" },
+                  text: "The Action",
+                }),
+              ],
+            }),
+          ],
+        }),
       ],
     },
     attributes: {
@@ -30,16 +63,12 @@ export default {
     },
   },
   setup(props) {
-    props.attributes.class = props.attributes.class || [];
-    props.attributes.class.push("card");
-
-    props.attributes["data-testid"] = props.attributes["data-testid"] || [];
-    props.attributes["data-testid"].push("card");
+    const attributes = setupClasses(props.attributes, ["card"]);
 
     return () =>
-      h(BasicComponent, {
+      h(AdvancedComponent, {
         ...props,
-        tag: "div",
+        attributes,
       });
   },
 };
