@@ -57,7 +57,7 @@ export default {
               type: "input",
               placeholder: "Input Disabled",
               id: "input-disabled",
-              disabled: props.value ? false : true,
+              disabled: props.value ? null : "",
             },
           }),
           h(BasicComponent, {
@@ -72,7 +72,7 @@ export default {
               type: "textarea-disabled",
               placeholder: "Enter text",
               id: "textarea-disabled",
-              disabled: props.value ? false : true,
+              disabled: props.value ? null : "",
             },
           }),
           h(BasicComponent, {
@@ -83,14 +83,14 @@ export default {
           h(AdvancedComponent, {
             attributes: {
               class: ["input-group", "inline"],
-              disabled: props.value ? false : true,
+              disabled: props.value ? null : "",
             },
             children: [
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
                   id: "select-disabled",
-                  disabled: props.value ? false : true,
+                  disabled: props.value ? null : "",
                 },
                 children: [
                   h(BasicComponent, {
@@ -134,7 +134,7 @@ export default {
                         tag: "option",
                         attributes: { value: "group1option2" },
                         text: "Option 2",
-                        selected: props.value ? false : true,
+                        selected: props.value ? null : "",
                       }),
                     ],
                   }),
@@ -149,7 +149,7 @@ export default {
           }),
           h(AdvancedComponent, {
             tag: "fieldset",
-            checked: props.value ? false : true,
+            checked: props.value ? null : "",
             children: [
               h(BasicComponent, {
                 tag: "legend",
@@ -189,7 +189,7 @@ export default {
                         tag: "label",
                         attributes: { for: "checkbox1" },
                         text: "Checkbox 1",
-                        checked: props.value ? false : true,
+                        checked: props.value ? null : "",
                       }),
                     ],
                   }),
@@ -244,7 +244,7 @@ export default {
                         tag: "input",
                         attributes: { type: "radio", name: "radio2" },
                         id: "radio2",
-                        checked: props.value ? false : true,
+                        checked: props.value ? null : "",
                       }),
                       h(BasicComponent, {
                         tag: "label",
