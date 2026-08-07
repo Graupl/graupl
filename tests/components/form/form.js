@@ -89,7 +89,6 @@ export default {
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
-                  type: "select",
                   id: "select-disabled",
                   disabled: props.value ? false : true,
                 },
@@ -114,7 +113,6 @@ export default {
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
-                  type: "select ",
                   id: "select",
                 },
                 children: [
