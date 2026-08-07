@@ -10,7 +10,6 @@ describe("Form Component", () => {
         state,
         attributes: {
           "data-testid": "form",
-          value: true,
         },
       },
     });
