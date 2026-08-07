@@ -30,6 +30,22 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
+    const input = screen.getByText("Input Default");
+    const textarea = screen.getByText("Textarea Disabled");
+    const select = screen.getByTestId("select-disabled");
+    const fieldset = screen.getByTestId("fieldset-disabled");
+    const selectedOption = screen.getByTestId("selectoption1");
+    const checkedOption = screen.getByTestId("checkedoption1");
+    const disabledOption = screen.getByTestId("disabledoption1");
+
+    // Set the element value directly to the option's value attribute
+    await input.setValue("disabled");
+    await textarea.setValue("disabled");
+    await select.setValue("disabled");
+    await fieldset.setValue("disabled");
+    await selectedOption.setValue("selected");
+    await checkedOption.setValue("checked");
+    await disabledOption.setValue("disabled");
 
     await expect(screen.getByTestId("form")).toMatchScreenshot();
   });

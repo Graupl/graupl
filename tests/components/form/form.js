@@ -57,7 +57,6 @@ export default {
               type: "input",
               placeholder: "Input Disabled",
               id: "input-disabled",
-              disabled: props.value ? null : "",
             },
           }),
           h(BasicComponent, {
@@ -69,10 +68,22 @@ export default {
           h(BasicComponent, {
             tag: "textarea",
             attributes: {
-              type: "textarea-disabled",
+              type: "textarea",
               placeholder: "Enter text",
+              id: "textarea",
+            },
+          }),
+          h(BasicComponent, {
+            tag: "label",
+            attributes: { for: "textarea" },
+            text: "Textarea",
+          }),
+          h(BasicComponent, {
+            tag: "textarea",
+            attributes: {
+              type: "textarea-disabled",
+              placeholder: "Textarea Disabled",
               id: "textarea-disabled",
-              disabled: props.value ? null : "",
             },
           }),
           h(BasicComponent, {
@@ -83,14 +94,13 @@ export default {
           h(AdvancedComponent, {
             attributes: {
               class: ["input-group", "inline"],
-              disabled: props.value ? null : "",
             },
             children: [
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
                   id: "select-disabled",
-                  disabled: props.value ? null : "",
+                  "data-testid": "select-disabled",
                 },
                 children: [
                   h(BasicComponent, {
@@ -129,12 +139,12 @@ export default {
                         tag: "option",
                         attributes: { value: "group1option1" },
                         text: "Option 1",
+                        "data-testid": "selectoption1",
                       }),
                       h(BasicComponent, {
                         tag: "option",
                         attributes: { value: "group1option2" },
                         text: "Option 2",
-                        selected: props.value ? null : "",
                       }),
                     ],
                   }),
@@ -149,7 +159,7 @@ export default {
           }),
           h(AdvancedComponent, {
             tag: "fieldset",
-            checked: props.value ? null : "",
+            "data-testid": "checked-disabled",
             children: [
               h(BasicComponent, {
                 tag: "legend",
@@ -184,12 +194,12 @@ export default {
                         tag: "input",
                         attributes: { type: "checkbox" },
                         id: "checkbox1",
+                        "data-testid": "checkedoption1",
                       }),
                       h(BasicComponent, {
                         tag: "label",
                         attributes: { for: "checkbox1" },
                         text: "Checkbox 1",
-                        checked: props.value ? null : "",
                       }),
                     ],
                   }),
@@ -200,6 +210,7 @@ export default {
                         tag: "input",
                         attributes: { type: "checkbox" },
                         id: "Checkbox2",
+                        "data-testid": "disabledoption1",
                       }),
                       h(BasicComponent, {
                         tag: "label",
@@ -229,6 +240,7 @@ export default {
                         tag: "input",
                         attributes: { type: "radio", name: "radio1" },
                         id: "radio1",
+                        "data-testid": "checkedoption1",
                       }),
                       h(BasicComponent, {
                         tag: "label",
@@ -244,7 +256,7 @@ export default {
                         tag: "input",
                         attributes: { type: "radio", name: "radio2" },
                         id: "radio2",
-                        checked: props.value ? null : "",
+                        "data-testid": "disabledoption1",
                       }),
                       h(BasicComponent, {
                         tag: "label",
