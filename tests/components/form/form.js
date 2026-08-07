@@ -93,10 +93,6 @@ export default {
           children: [
             h(AdvancedComponent, {
               tag: "fieldset",
-              attributes: {
-                type: "checkbox ",
-                id: "checkbox",
-              },
               children: [
                 h(BasicComponent, {
                   tag: "legend",
@@ -141,10 +137,6 @@ export default {
           children: [
             h(AdvancedComponent, {
               tag: "fieldset",
-              attributes: {
-                type: "radio ",
-                id: "radio",
-              },
               children: [
                 h(BasicComponent, {
                   tag: "legend",
@@ -155,7 +147,7 @@ export default {
                   children: [
                     h(BasicComponent, {
                       tag: "input",
-                      attributes: { type: "radio", name: "radio" },
+                      attributes: { type: "radio", name: "radio1" },
                       id: "radio1",
                     }),
                     h(BasicComponent, {
@@ -170,7 +162,7 @@ export default {
                   children: [
                     h(BasicComponent, {
                       tag: "input",
-                      attributes: { type: "radio", name: "radio" },
+                      attributes: { type: "radio", name: "radio2" },
                       id: "radio2",
                     }),
                     h(BasicComponent, {
