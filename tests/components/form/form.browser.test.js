@@ -29,14 +29,14 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
-    const selecter2 = screen.getByRole("option", { name: "selecter2" });
+    const selecter2 = screen.getByTestId("selecter2");
     const checkedOption = screen.getByTestId("checkedoption1");
     const disabledOption = screen.getByTestId("disabledoption1");
     const checkedOption2 = screen.getByTestId("checkedoption2");
     const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
-    await selecter2.setAttribute("selected", "selected");
+    await selecter2.setAttribute("selected", "true");
     await checkedOption.setAttribute("checked", "true");
     await disabledOption.setAttribute("disabled", "true");
     await checkedOption2.setAttribute("checked", "true");
