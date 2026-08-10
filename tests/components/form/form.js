@@ -169,6 +169,7 @@ export default {
                 attributes: {
                   id: "multi-select",
                   "data-testid": "selecter2",
+                  multiple: "multiple",
                 },
                 children: [
                   h(BasicComponent, {
@@ -176,7 +177,6 @@ export default {
                     attributes: {
                       value: "Value Default",
                       selected: "selected",
-                      multiple: "multiple",
                     },
                     text: "Value Default",
                   }),
