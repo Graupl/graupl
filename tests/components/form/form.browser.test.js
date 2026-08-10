@@ -1,11 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./form.js";
-import { states } from "../defaults.js";
 import { userEvent } from "vitest/browser";
 
 describe("Form Component", () => {
-  it.each(states)("Should match screenshot when normal:", async () => {
+  it("Should match screenshot when normal:", async () => {
     const screen = render(Component, {
       props: {
         attributes: {
