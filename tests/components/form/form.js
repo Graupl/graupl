@@ -51,7 +51,7 @@ export default {
             tag: "input",
             attributes: {
               type: "input",
-              placeholder: "Input Disabled",
+              "data-testid": "input-disabled",
               id: "input-disabled",
             },
           }),
@@ -77,7 +77,7 @@ export default {
             tag: "textarea",
             attributes: {
               type: "textarea-disabled",
-              placeholder: "Textarea Disabled",
+              "data-testid": "textarea-disabled",
               id: "textarea-disabled",
             },
           }),

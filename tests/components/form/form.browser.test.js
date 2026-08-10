@@ -29,8 +29,8 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
-    const input = screen.getByText("Input Default");
-    const textarea = screen.getByText("Textarea Disabled");
+    const input = screen.getByTestId("input-default");
+    const textarea = screen.getByTestId("textarea-disabled");
     const select = screen.getByTestId("select-disabled");
     const fieldset = screen.getByTestId("fieldset-disabled");
     const selecter = screen.getByTestId("selecter");
