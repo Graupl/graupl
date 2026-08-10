@@ -21,16 +21,16 @@
 // The following custom properties can be used to customize typography:
 // | Property                            | Description                       | Default Value                                                                                           |
 // | ----------------------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------- |
-// | `--graupl-font-size-base`           | Base font size used for scaling.  | `1rem`                                                                                                  |
-// | `--graupl-font-xs`                  | XS font size token.               | `calc(0.694 * var(--graupl-font-size-base))`                                                            |
-// | `--graupl-font-sm`                  | Small font size token.            | `calc(0.833 * var(--graupl-font-size-base))`                                                            |
-// | `--graupl-font-base`                | Base font size token.             | `calc(1 * var(--graupl-font-size-base))`                                                                |
-// | `--graupl-font-lg`                  | Large font size token.            | `calc(1.2 * var(--graupl-font-size-base))`                                                              |
-// | `--graupl-font-xl`                  | XL font size token.               | `calc(1.44 * var(--graupl-font-size-base))`                                                             |
-// | `--graupl-font-2xl`                 | 2XL font size token.              | `calc(1.728 * var(--graupl-font-size-base))`                                                            |
-// | `--graupl-font-3xl`                 | 3XL font size token.              | `calc(2.074 * var(--graupl-font-size-base))`                                                            |
-// | `--graupl-font-4xl`                 | 4XL font size token.              | `calc(2.488 * var(--graupl-font-size-base))`                                                            |
-// | `--graupl-font-5xl`                 | 5XL font size token.              | `calc(2.986 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-base-font-size`           | Base font size used for scaling.  | `1rem`                                                                                                  |
+// | `--graupl-font-size-xs`             | XS font size token.               | `calc(0.694 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-font-size-sm`             | Small font size token.            | `calc(0.833 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-font-size-base`           | Base font size token.             | `calc(1 * var(--graupl-font-size-base))`                                                                |
+// | `--graupl-font-size-lg`             | Large font size token.            | `calc(1.2 * var(--graupl-font-size-base))`                                                              |
+// | `--graupl-font-size-xl`             | XL font size token.               | `calc(1.44 * var(--graupl-font-size-base))`                                                             |
+// | `--graupl-font-size-2xl`            | 2XL font size token.              | `calc(1.728 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-font-size-3xl`            | 3XL font size token.              | `calc(2.074 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-font-size-4xl`            | 4XL font size token.              | `calc(2.488 * var(--graupl-font-size-base))`                                                            |
+// | `--graupl-font-size-5xl`            | 5XL font size token.              | `calc(2.986 * var(--graupl-font-size-base))`                                                            |
 // | `--graupl-font-weight-light`        | Light font weight token.          | `300`                                                                                                   |
 // | `--graupl-font-weight-normal`       | Normal font weight token.         | `400`                                                                                                   |
 // | `--graupl-font-weight-bold`         | Bold font weight token.           | `700`                                                                                                   |
@@ -194,7 +194,7 @@
 // | `$italic-selector`            | The selector for the italic component.          | `"i"`                                           |
 // | `$generate-base-font-sizes`   | Flag to generate the base font-size scale.      | `true`                                          |
 // | `$generate-base-font-weights` | Flag to generate the base font-weight scale.    | `true`                                          |
-// | `$font-size-base`             | Base font size for the scale.                   | `1rem`                                          |
+// | `$base-font-size`             | Base font size for the scale.                   | `1rem`                                          |
 // | `$root-font-size`             | Root font size value.                           | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)` |
 // | `$root-line-height`           | Root line height value.                         | `1.2em`                                         |
 // | `$root-letter-spacing`        | Root letter spacing value.                      | `normal`                                        |
