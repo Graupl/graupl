@@ -6,16 +6,16 @@
 // Custom property defaults:
 // | Custom property                   | Default                                                                                               |
 // | --------------------------------- | ----------------------------------------------------------------------------------------------------- |
-// | --graupl-font-size-base           | 1rem                                                                                                  |
-// | --graupl-font-xs                  | calc(0.694 * var(--graupl-font-size-base))                                                            |
-// | --graupl-font-sm                  | calc(0.833 * var(--graupl-font-size-base))                                                            |
-// | --graupl-font-base                | calc(1 * var(--graupl-font-size-base))                                                                |
-// | --graupl-font-lg                  | calc(1.2 * var(--graupl-font-size-base))                                                              |
-// | --graupl-font-xl                  | calc(1.44 * var(--graupl-font-size-base))                                                             |
-// | --graupl-font-2xl                 | calc(1.728 * var(--graupl-font-size-base))                                                            |
-// | --graupl-font-3xl                 | calc(2.074 * var(--graupl-font-size-base))                                                            |
-// | --graupl-font-4xl                 | calc(2.488 * var(--graupl-font-size-base))                                                            |
-// | --graupl-font-5xl                 | calc(2.986 * var(--graupl-font-size-base))                                                            |
+// | --graupl-base-font-size           | 1rem                                                                                                  |
+// | --graupl-font-size-xs             | calc(0.694 * var(--graupl-font-size-base))                                                            |
+// | --graupl-font-size-sm             | calc(0.833 * var(--graupl-font-size-base))                                                            |
+// | --graupl-font-size-base           | calc(1 * var(--graupl-font-size-base))                                                                |
+// | --graupl-font-size-lg             | calc(1.2 * var(--graupl-font-size-base))                                                              |
+// | --graupl-font-size-xl             | calc(1.44 * var(--graupl-font-size-base))                                                             |
+// | --graupl-font-size-2xl            | calc(1.728 * var(--graupl-font-size-base))                                                            |
+// | --graupl-font-size-3xl            | calc(2.074 * var(--graupl-font-size-base))                                                            |
+// | --graupl-font-size-4xl            | calc(2.488 * var(--graupl-font-size-base))                                                            |
+// | --graupl-font-size-5xl            | calc(2.986 * var(--graupl-font-size-base))                                                            |
 // | --graupl-font-weight-light        | 300                                                                                                   |
 // | --graupl-font-weight-normal       | 400                                                                                                   |
 // | --graupl-font-weight-bold         | 700                                                                                                   |
@@ -153,9 +153,9 @@
 @use "sass:map";
 
 // Font properties.
-// --graupl-font-size-base
-$font-size-base: var(
-  --#{root-defaults.$prefix}font-size-base,
+// --graupl-base-font-size
+$base-font-size: var(
+  --#{root-defaults.$prefix}base-font-size,
   #{defaults.$font-size-base}
 );
 
@@ -163,10 +163,10 @@ $font-size-base: var(
 $font-sizes: ();
 
 @each $key, $value in defaults.$font-size-multipliers {
-  // --graupl-font-xs, --graupl-font-sm, --graupl-font-base, --graupl-font-lg, --graupl-font-xl, --graupl-font-2xl, --graupl-font-3xl, --graupl-font-4xl, --graupl-font-5xl
+  // --graupl-font-size-xs, --graupl-font-size-sm, --graupl-font-size-base, --graupl-font-size-lg, --graupl-font-size-xl, --graupl-font-size-2xl, --graupl-font-size-3xl, --graupl-font-size-4xl, --graupl-font-size-5xl
   $size: var(
-    --#{root-defaults.$prefix}font-#{$key},
-    calc(#{$value} * #{$font-size-base})
+    --#{root-defaults.$prefix}font-size-#{$key},
+    calc(#{$value} * #{$font-base})
   );
   $font-sizes: map.set($font-sizes, $key, $size);
 }
