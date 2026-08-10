@@ -37,7 +37,7 @@ describe("Form Component", () => {
 
     // Set the element value directly to the option's value attribute
     await user.selectOptions(selecter, "Option 2");
-    await user.selectOptions(selecter2, ["Default Value", "Option 2"]);
+    await user.selectOptions(selecter2, ["Value Default", "Option 2"]);
     await user.click(checkedOption);
     await user.click(checkedOption2);
 
