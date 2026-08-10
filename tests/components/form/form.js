@@ -120,14 +120,14 @@ export default {
                 tag: "select",
                 attributes: {
                   id: "select",
-                  "data-testid": "selecter",
                 },
                 children: [
                   h(BasicComponent, {
                     tag: "option",
                     attributes: {
                       value: "Value Default",
-                      select: true,
+                      selected: true,
+                      "data-testid": "selecter1",
                     },
                     text: "Value Default",
                   }),
@@ -142,7 +142,10 @@ export default {
                       }),
                       h(BasicComponent, {
                         tag: "option",
-                        attributes: { value: "group1option2" },
+                        attributes: {
+                          value: "group1option2",
+                          "data-testid": "selecter2",
+                        },
                         text: "Option 2",
                       }),
                     ],
