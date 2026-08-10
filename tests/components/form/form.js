@@ -213,9 +213,8 @@ export default {
                     children: [
                       h(BasicComponent, {
                         tag: "input",
-                        attributes: { type: "checkbox" },
+                        attributes: { type: "checkbox", disabled: "disabled" },
                         id: "Checkbox2",
-                        "data-testid": "disabledoption1",
                       }),
                       h(BasicComponent, {
                         tag: "label",
@@ -259,9 +258,12 @@ export default {
                     children: [
                       h(BasicComponent, {
                         tag: "input",
-                        attributes: { type: "radio", name: "radio2" },
+                        attributes: {
+                          type: "radio",
+                          name: "radio2",
+                          disabled: "disabled",
+                        },
                         id: "radio2",
-                        "data-testid": "disabledoption2",
                       }),
                       h(BasicComponent, {
                         tag: "label",

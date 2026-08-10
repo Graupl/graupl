@@ -33,16 +33,12 @@ describe("Form Component", () => {
     const user = userEvent.setup();
     const selecter = screen.getByTestId("selecter1");
     const checkedOption = screen.getByTestId("checkedoption1");
-    const disabledOption = screen.getByTestId("disabledoption1");
     const checkedOption2 = screen.getByTestId("checkedoption2");
-    const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
     await user.selectOptions(selecter, "Option 2");
-    await checkedOption.setAttribute("checked", "true");
-    await disabledOption.setAttribute("disabled", "true");
-    await checkedOption2.setAttribute("checked", "true");
-    await disabledOption2.setAttribute("disabled", "true");
+    await user.click(checkedOption);
+    await user.click(checkedOption2);
 
     await expect(screen.getByTestId("form")).toMatchScreenshot();
   });
