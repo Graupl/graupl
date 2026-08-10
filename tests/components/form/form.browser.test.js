@@ -38,7 +38,7 @@ describe("Form Component", () => {
 
     // Set the element value directly to the option's value attribute
     await selecter.click();
-    await selecter2.click();
+    await selecter2.select();
     await checkedOption.setAttribute("checked", "true");
     await disabledOption.setAttribute("disabled", "true");
     await checkedOption2.setAttribute("checked", "true");
