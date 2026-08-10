@@ -51,7 +51,7 @@ export default {
             tag: "input",
             attributes: {
               type: "input",
-              "data-testid": "input-disabled",
+              disabled: true,
               id: "input-disabled",
             },
           }),
@@ -77,8 +77,9 @@ export default {
             tag: "textarea",
             attributes: {
               type: "textarea-disabled",
-              "data-testid": "textarea-disabled",
+              placeholder: "Textarea Disabled",
               id: "textarea-disabled",
+              disabled: true,
             },
           }),
           h(BasicComponent, {
@@ -95,12 +96,12 @@ export default {
                 tag: "select",
                 attributes: {
                   id: "select-disabled",
-                  "data-testid": "select-disabled",
+                  disabled: true,
                 },
                 children: [
                   h(BasicComponent, {
                     tag: "option",
-                    attributes: { value: "Value-disabled" },
+                    attributes: { value: "Value-disabled", selected: true },
                     text: "Disabled option",
                   }),
                 ],
@@ -150,14 +151,14 @@ export default {
               }),
               h(BasicComponent, {
                 tag: "label",
-                attributes: { for: "select-disable" },
+                attributes: { for: "select" },
                 text: "Select",
               }),
             ],
           }),
           h(AdvancedComponent, {
             tag: "fieldset",
-            "data-testid": "checked-disabled",
+            attributes: { disabled: true },
             children: [
               h(BasicComponent, {
                 tag: "legend",
