@@ -38,11 +38,11 @@ describe("Form Component", () => {
 
     // Set the element value directly to the option's value attribute
     await selecter1.removeAttribute("selected");
-    await selecter2.setAttribute("selected", "true");
-    await checkedOption.setAttribute("checked");
-    await disabledOption.setAttribute("disabled");
-    await checkedOption2.setAttribute("checked");
-    await disabledOption2.setAttribute("disabled");
+    await selecter2.setAttribute("selected", "selected");
+    await checkedOption.setAttribute("checked", "true");
+    await disabledOption.setAttribute("disabled", "true");
+    await checkedOption2.setAttribute("checked", "true");
+    await disabledOption2.setAttribute("disabled", "true");
 
     await expect(screen.getByTestId("form")).toMatchScreenshot();
   });
