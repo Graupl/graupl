@@ -29,7 +29,7 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
-    const selecter2 = screen.getByTestId("selecter2");
+    const selecter2 = screen.getByRole("option", { name: "Option 2" });
     const checkedOption = screen.getByTestId("checkedoption1");
     const disabledOption = screen.getByTestId("disabledoption1");
     const checkedOption2 = screen.getByTestId("checkedoption2");

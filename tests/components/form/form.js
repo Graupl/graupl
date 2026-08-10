@@ -147,7 +147,7 @@ export default {
                         tag: "option",
                         attributes: {
                           value: "group1option2",
-                          "data-testid": "selecter2",
+                          name: "selecter2",
                         },
                         text: "Option 2",
                       }),
