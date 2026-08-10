@@ -29,7 +29,6 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
-    const textarea = screen.getByTestId("textarea-disabled");
     const select = screen.getByTestId("select-disabled");
     const selecter = screen.getByTestId("selecter");
     const checkedOption = screen.getByTestId("checkedoption1");
@@ -38,7 +37,6 @@ describe("Form Component", () => {
     const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
-    await textarea.setAttribute("disabled");
     await select.setAttribute("disabled");
     await selecter.selectOptions(select, "Option 2");
     await checkedOption.setAttribute("checked");
