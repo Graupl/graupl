@@ -147,7 +147,6 @@ export default {
                         tag: "option",
                         attributes: {
                           value: "group1option2",
-                          "data-testid": "selecter2",
                         },
                         text: "Option 2",
                       }),
@@ -159,6 +158,51 @@ export default {
                 tag: "label",
                 attributes: { for: "select" },
                 text: "Select",
+              }),
+            ],
+          }),
+          h(AdvancedComponent, {
+            attributes: { class: ["input-group", "inline"] },
+            children: [
+              h(AdvancedComponent, {
+                tag: "select",
+                attributes: {
+                  id: "multi-select",
+                  "data-testid": "selecter2",
+                },
+                children: [
+                  h(BasicComponent, {
+                    tag: "option",
+                    attributes: {
+                      value: "Value Default",
+                      selected: "selected",
+                    },
+                    text: "Value Default",
+                  }),
+                  h(AdvancedComponent, {
+                    tag: "optgroup",
+                    attributes: { label: "group1" },
+                    children: [
+                      h(BasicComponent, {
+                        tag: "option",
+                        attributes: { value: "group1option1" },
+                        text: "Option 1",
+                      }),
+                      h(BasicComponent, {
+                        tag: "option",
+                        attributes: {
+                          value: "group1option2",
+                        },
+                        text: "Option 2",
+                      }),
+                    ],
+                  }),
+                ],
+              }),
+              h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "multi-select" },
+                text: "Multi-Select",
               }),
             ],
           }),
