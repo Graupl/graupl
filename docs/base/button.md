@@ -28,7 +28,7 @@
 
 The button base component provides a set of classes to style buttons consistently across your application. It includes various states and modifiers to handle different button types and interactions.
 
-The button component is meant to be used on a `<button>` or `<a>` element, but can be applied to anything.
+The button component is meant to be used on `<button>` or `<a>` elements, but can be applied to anything.
 
 ## Base class
 

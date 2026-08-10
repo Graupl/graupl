@@ -156,7 +156,7 @@
 // --graupl-base-font-size
 $base-font-size: var(
   --#{root-defaults.$prefix}base-font-size,
-  #{defaults.$font-size-base}
+  #{defaults.$base-font-size}
 );
 
 // Generate all of the font-size-x custom properties.
@@ -166,7 +166,7 @@ $font-sizes: ();
   // --graupl-font-size-xs, --graupl-font-size-sm, --graupl-font-size-base, --graupl-font-size-lg, --graupl-font-size-xl, --graupl-font-size-2xl, --graupl-font-size-3xl, --graupl-font-size-4xl, --graupl-font-size-5xl
   $size: var(
     --#{root-defaults.$prefix}font-size-#{$key},
-    calc(#{$value} * #{$font-base})
+    calc(#{$value} * #{$base-font-size})
   );
   $font-sizes: map.set($font-sizes, $key, $size);
 }
