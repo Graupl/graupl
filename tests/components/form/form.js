@@ -176,6 +176,7 @@ export default {
                     attributes: {
                       value: "Value Default",
                       selected: "selected",
+                      multiple: "multiple",
                     },
                     text: "Value Default",
                   }),
