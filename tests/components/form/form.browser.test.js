@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./form.js";
 import { states } from "../defaults.js";
+import { userEvent } from "vitest/browser";
 
 describe("Form Component", () => {
   it.each(states)("Should match screenshot when normal:", async () => {
@@ -29,7 +30,6 @@ describe("Form Component", () => {
     });
 
     await document.fonts.ready;
-    const selecter = screen.getByTestId("selecter1");
     const selecter2 = screen.getByTestId("selecter2");
     const checkedOption = screen.getByTestId("checkedoption1");
     const disabledOption = screen.getByTestId("disabledoption1");
@@ -37,7 +37,7 @@ describe("Form Component", () => {
     const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
-    await selecter.selectOptions(selecter, selecter2.value);
+    await userEvent.click(selecter2);
     await checkedOption.setAttribute("checked", "true");
     await disabledOption.setAttribute("disabled", "true");
     await checkedOption2.setAttribute("checked", "true");
