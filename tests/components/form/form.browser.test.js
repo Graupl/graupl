@@ -36,7 +36,7 @@ describe("Form Component", () => {
     const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
-    await selecter2.setAttribute("selected", "true").select();
+    await selecter2.click();
     await checkedOption.setAttribute("checked", "true");
     await disabledOption.setAttribute("disabled", "true");
     await checkedOption2.setAttribute("checked", "true");
