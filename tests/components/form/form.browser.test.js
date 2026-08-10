@@ -4,10 +4,9 @@ import Component from "./form.js";
 import { states } from "../defaults.js";
 
 describe("Form Component", () => {
-  it.each(states)("Should match screenshot with state: %s", async (state) => {
+  it.each(states)("Should match screenshot when normal:", async () => {
     const screen = render(Component, {
       props: {
-        state,
         attributes: {
           "data-testid": "form",
         },
@@ -34,18 +33,22 @@ describe("Form Component", () => {
     const textarea = screen.getByText("Textarea Disabled");
     const select = screen.getByTestId("select-disabled");
     const fieldset = screen.getByTestId("fieldset-disabled");
-    const selectedOption = screen.getByTestId("selectoption1");
+    const selecter = screen.getByTestId("selecter");
     const checkedOption = screen.getByTestId("checkedoption1");
     const disabledOption = screen.getByTestId("disabledoption1");
+    const checkedOption2 = screen.getByTestId("checkedoption2");
+    const disabledOption2 = screen.getByTestId("disabledoption2");
 
     // Set the element value directly to the option's value attribute
-    await input.setValue("disabled");
-    await textarea.setValue("disabled");
-    await select.setValue("disabled");
-    await fieldset.setValue("disabled");
-    await selectedOption.setValue("selected");
-    await checkedOption.setValue("checked");
-    await disabledOption.setValue("disabled");
+    await input.setAttribute("disabled");
+    await textarea.setAttribute("disabled");
+    await select.setAttribute("disabled");
+    await fieldset.setAttribute("disabled");
+    await selecter.selectOptions(select, "Option 2");
+    await checkedOption.setAttribute("checked");
+    await disabledOption.setAttribute("disabled");
+    await checkedOption2.setAttribute("checked");
+    await disabledOption2.setAttribute("disabled");
 
     await expect(screen.getByTestId("form")).toMatchScreenshot();
   });

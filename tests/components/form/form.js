@@ -5,10 +5,6 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    state: {
-      type: String,
-      default: "",
-    },
     value: {
       type: Boolean,
       default: false,
@@ -64,7 +60,6 @@ export default {
             attributes: { for: "input-disabled" },
             text: "Input Disabled",
           }),
-
           h(BasicComponent, {
             tag: "textarea",
             attributes: {
@@ -124,12 +119,16 @@ export default {
                 tag: "select",
                 attributes: {
                   id: "select",
+                  "data-testid": "selecter",
                 },
                 children: [
                   h(BasicComponent, {
                     tag: "option",
-                    attributes: { value: "Value Default" },
-                    text: "Select an option",
+                    attributes: {
+                      value: "Value Default",
+                      select: true,
+                    },
+                    text: "Value Default",
                   }),
                   h(AdvancedComponent, {
                     tag: "optgroup",
@@ -139,7 +138,6 @@ export default {
                         tag: "option",
                         attributes: { value: "group1option1" },
                         text: "Option 1",
-                        "data-testid": "selectoption1",
                       }),
                       h(BasicComponent, {
                         tag: "option",
@@ -240,7 +238,7 @@ export default {
                         tag: "input",
                         attributes: { type: "radio", name: "radio1" },
                         id: "radio1",
-                        "data-testid": "checkedoption1",
+                        "data-testid": "checkedoption2",
                       }),
                       h(BasicComponent, {
                         tag: "label",
@@ -256,7 +254,7 @@ export default {
                         tag: "input",
                         attributes: { type: "radio", name: "radio2" },
                         id: "radio2",
-                        "data-testid": "disabledoption1",
+                        "data-testid": "disabledoption2",
                       }),
                       h(BasicComponent, {
                         tag: "label",
