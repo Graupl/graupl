@@ -185,7 +185,7 @@ class Breadcrumb extends Component {
     unlockedClass = "unlocked",
     openClass = "show",
     closeClass = "hide",
-    transitionClass = "transition",
+    transitionClass = "transitioning",
     transitionDuration = 250,
     openDuration = -1,
     closeDuration = -1,
