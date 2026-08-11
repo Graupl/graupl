@@ -5,7 +5,7 @@
 
 /* global Tabs */
 
-import { addClass, removeClass } from "@graupl/core/src/domHelpers.js";
+import { addClass, removeClass } from "../domHelpers.js";
 import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
