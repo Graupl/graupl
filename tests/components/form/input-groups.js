@@ -36,6 +36,34 @@ export default {
             attributes: { class: ["help-text"] },
             text: "This is the help text for this input.",
           }),
+          h(AdvancedComponent, {
+            attributes: {
+              class: ["input-group", "inline"],
+            },
+            children: [
+              h(AdvancedComponent, {
+                tag: "select",
+                attributes: {
+                  id: "select",
+                },
+                children: [
+                  h(BasicComponent, {
+                    tag: "option",
+                    attributes: {
+                      value: "Value",
+                      selected: "selected",
+                    },
+                    text: "Select option",
+                  }),
+                ],
+              }),
+              h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "select" },
+                text: "Select",
+              }),
+            ],
+          }),
         ],
       });
   },

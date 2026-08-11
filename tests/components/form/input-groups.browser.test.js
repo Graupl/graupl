@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./input-groups.js";
 
-describe("Form Component", () => {
-  it("Should match screenshot when normal:", async () => {
+describe("Input Group Component", () => {
+  it("Should match screenshot:", async () => {
     const screen = render(Component, {
       props: {
         attributes: {
