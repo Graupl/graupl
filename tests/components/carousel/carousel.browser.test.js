@@ -3,7 +3,7 @@ import { render } from "vitest-browser-vue";
 import Component from "./carousel.js";
 
 describe("Carousel Component", () => {
-  it("Should match screenshot:", async () => {
+  it("Should match screenshot", async () => {
     const screen = render(Component, {
       props: {
         attributes: {
