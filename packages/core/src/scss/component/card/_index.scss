@@ -236,6 +236,7 @@
 @use "variables" as *;
 @use "../../defaults" as root-defaults;
 @use "../../mixins/layer" as *;
+@use "../../mixins/state";
 @use "../../mixins/theme";
 @use "../../mixins/animation";
 @use "../../mixins/container";
@@ -295,7 +296,8 @@
       }
     }
 
-    &:hover {
+    // &:hover, &.hover, etc.
+    @include state.state("hover") {
       --#{root-defaults.$prefix}card-transform: #{$card-hover-transform};
     }
 
