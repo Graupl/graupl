@@ -52,23 +52,23 @@
 //
 // When set to true, screen-aware utility classes will be generated for each screen size in the following pattern: `.{screen-modifier}:{utility-selector}`
 //
-// e.g. `sm:z-0` will apply the `z-0` class on small-sized screens and up.
+// e.g. `sm:visually-hidden` will apply the `visually-hidden` class on small-sized screens and up.
 //
 // When set to true, theme-aware utility classes will be generated for each theme in the following pattern: `.{theme-modifier}:{utility-selector}`
 //
-// e.g. `default-theme:z-0` will apply the `z-0` class when using the default theme.
+// e.g. `default-theme:visually-hidden` will apply the `visually-hidden` class when using the default theme.
 //
 // When set to true, scheme-aware utility classes will be generated for each theme in the following pattern: `.{scheme-modifier}:{utility-selector}`
 //
-// e.g. `dark-mode:z-0` will apply the `z-0` class when dark-mode is active.
+// e.g. `dark-mode:visually-hidden` will apply the `visually-hidden` class when dark-mode is active.
 //
 // When set to true, state-aware utility classes will be generated for each state in the following pattern: `.{state-modifier}:{utility-selector}`
 //
-// e.g. `hover:z-0` will apply the `z-0` class when hovered.
+// e.g. `hover:visually-hidden` will apply the `visually-hidden` class when hovered.
 //
 // When set to true, container-aware utility classes will be generated for each container in the following pattern: `.{container-modifier}:{utility-selector}`
 //
-// e.g. `cq:md:z-0` will apply the `z-0` class on medium-sized containers and up.
+// e.g. `cq:md:visually-hidden` will apply the `visually-hidden` class on medium-sized containers and up.
 //
 // Note: The `.focusable` class will never have responsive classes generated for it. It will rely on the `.visually-hidden` class for that.
 //
