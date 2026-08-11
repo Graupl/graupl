@@ -111,6 +111,8 @@ export default {
                     attributes: {
                       src: "slide1.jpg",
                       alt: "Slide 1 placeholder alt text",
+                      height: 600,
+                      width: 1400,
                     },
                   }),
                   h(AdvancedComponent, {
