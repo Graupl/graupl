@@ -13,7 +13,7 @@ const classes = [
 
 describe("Table Component", () => {
   describe.for(variants)("%s table", async (variant) => {
-    it.each(classes)("Should match screenshot:", async (classes) => {
+    it.each(classes)("Should match screenshot with %s:", async (classes) => {
       const screen = render(Component, {
         props: {
           attributes: {
