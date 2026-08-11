@@ -42,10 +42,6 @@ export default {
   setup(props) {
     const attributes = setupClasses(props.attributes, ["columns", "py-5"]);
 
-    return () =>
-      h(AdvancedComponent, {
-        attributes: { class: ["container"] },
-        children: [h(AdvancedComponent, { ...props, attributes })],
-      });
+    return () => h(AdvancedComponent, { ...props, attributes });
   },
 };
