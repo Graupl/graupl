@@ -32,7 +32,7 @@ describe("Carousel Component", () => {
     await document.fonts.ready;
 
     const user = userEvent.setup();
-    const pauseButton = screen.getByRole("button", { class: "autoplay" });
+    const pauseButton = screen.getByRole("button").first();
 
     await user.click(pauseButton);
 
