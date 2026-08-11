@@ -946,7 +946,7 @@ class Disclosure extends Component {
             setTimeout(() => {
               removeClass(this.transitionClass, this.dom.disclosure);
 
-              this.dom.content.innert = true;
+              this.dom.content.inert = true;
             }, this.closeDuration);
           });
         });
