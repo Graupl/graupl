@@ -40,12 +40,7 @@ export default {
     },
   },
   setup(props) {
-    const attributes = setupClasses(props.attributes, [
-      "columns",
-      "count-4",
-      "py-4",
-      "g-4",
-    ]);
+    const attributes = setupClasses(props.attributes, ["columns", "py-5"]);
 
     return () =>
       h(AdvancedComponent, {
