@@ -25,12 +25,12 @@ export default {
               children: [
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "bg-primary", "py-7", "px-5"],
+                    class: ["col-6", "bg-tertiary-700", "py-7", "px-5"],
                   },
                 }),
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "bg-primary", "py-7", "px-5"],
+                    class: ["col-6", "bg-tertiary-700", "py-7", "px-5"],
                   },
                 }),
               ],
@@ -59,12 +59,24 @@ export default {
               children: [
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "md:col-9", "bg-primary", "py-7", "px-5"],
+                    class: [
+                      "col-6",
+                      "md:col-9",
+                      "bg-tertiary-700",
+                      "py-7",
+                      "px-5",
+                    ],
                   },
                 }),
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "md:col-3", "bg-primary", "py-7", "px-5"],
+                    class: [
+                      "col-6",
+                      "md:col-3",
+                      "bg-tertiary-700",
+                      "py-7",
+                      "px-5",
+                    ],
                   },
                 }),
               ],
@@ -88,12 +100,12 @@ export default {
               children: [
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "bg-primary", "py-7", "px-5"],
+                    class: ["col-6", "bg-tertiary-700", "py-7", "px-5"],
                   },
                 }),
                 h(BasicComponent, {
                   attributes: {
-                    class: ["col-6", "bg-primary", "py-7", "px-5"],
+                    class: ["col-6", "bg-tertiary-700", "py-7", "px-5"],
                   },
                 }),
               ],
