@@ -77,7 +77,7 @@ $utility-properties: () !default;
 $-utility-values: (
   "auto": "auto",
 );
-$utility-values: ();
+$utility-values: () !default;
 
 // Add the spacer values to the base utility values.
 @each $spacer, $value in root-variables.$spacers {
