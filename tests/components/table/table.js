@@ -108,9 +108,6 @@ export default {
                   }),
                   h(BasicComponent, {
                     tag: "td",
-                    attributes: {
-                      class: ["highlight", props.variant ? props.variant : ""],
-                    },
                     text: "JavaScript frameworks",
                   }),
                   h(BasicComponent, {
