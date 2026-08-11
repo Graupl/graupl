@@ -1,11 +1,25 @@
+/**
+ * @file
+ * Navigation generator.
+ *
+ * This file currently assumes you have loaded Accessible Menu's libraries manually.
+ */
 import once from "@drupal/once";
 
-const generate = (
+/**
+ * Generates Navigation elements.
+ *
+ * @param {object}      [options = {}]                   - Options for generating the navigation.
+ * @param {object}      [options.options = {}]           - Options to pass to the Navigation constructor.
+ * @param {HTMLElement} [options.context = document]     - The element to base the selector off of.
+ * @param {string}      [options.selector = .navigation] - The query selector for the navigation elements in the DOM.
+ */
+const generate = ({
   options = {},
   context = document,
-  navigationSelector = ".navigation"
-) => {
-  once("graupl-navigation-generator", navigationSelector, context).forEach(
+  selector = ".navigation",
+} = {}) => {
+  once("graupl-navigation-generator", selector, context).forEach(
     (navigationElement) => {
       const MenuConstructor =
         navigationElement.dataset.grauplMenuType || "DisclosureMenu";
