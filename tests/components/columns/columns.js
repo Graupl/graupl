@@ -43,8 +43,8 @@ export default {
     const attributes = setupClasses(props.attributes, [
       "columns",
       "count-4",
-      "py-5",
-      "g-5",
+      "py-4",
+      "g-4",
     ]);
 
     return () =>
