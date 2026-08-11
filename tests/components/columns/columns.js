@@ -47,6 +47,10 @@ export default {
       "g-5",
     ]);
 
-    return () => h(AdvancedComponent, { ...props, attributes });
+    return () =>
+      h(AdvancedComponent, {
+        attributes: { class: ["container"] },
+        children: [h(AdvancedComponent, { ...props, attributes })],
+      });
   },
 };
