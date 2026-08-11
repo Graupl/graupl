@@ -19,6 +19,7 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
+        tag: "table",
         ...props,
         attributes,
         children: [
