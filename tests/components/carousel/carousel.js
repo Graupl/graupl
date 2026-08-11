@@ -28,7 +28,6 @@ export default {
                 tag: "button",
                 attributes: {
                   class: ["carousel-control", "autoplay", "pause"],
-                  "aria-label": "Pause",
                 },
               }),
               h(BasicComponent, {
@@ -56,7 +55,7 @@ export default {
               h(AdvancedComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-tab"],
+                  class: ["carousel-tab", "active"],
                   "aria-label": "Carousel item 1",
                   role: "tab",
                 },
