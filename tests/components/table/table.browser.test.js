@@ -16,9 +16,8 @@ describe("Table Component", () => {
     it.each(classes)("Should match screenshot:", async (classes) => {
       const screen = render(Component, {
         props: {
-          variant,
-          classes,
           attributes: {
+            class: `${variant} ${classes}`,
             "data-testid": "table",
           },
         },
