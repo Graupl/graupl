@@ -8,7 +8,7 @@ const generate = (
   once("graupl-navigation-generator", navigationSelector, context).forEach(
     (navigationElement) => {
       const MenuConstructor =
-        navigationElement.dataset.grauplMenuType || DisclosureMenu;
+        navigationElement.dataset.grauplMenuType || "DisclosureMenu";
 
       if (window[MenuConstructor] === undefined) {
         console.warn(
