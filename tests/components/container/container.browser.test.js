@@ -1,19 +1,19 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./columns.js";
+import Component from "./container.js";
 
-describe("Columns Layout", () => {
+describe("Container Layout", () => {
   it("Should match screenshot:", async () => {
     const screen = render(Component, {
       props: {
         attributes: {
-          "data-testid": "columns",
+          "data-testid": "container",
         },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("columns")).toMatchScreenshot();
+    await expect(screen.getByTestId("container")).toMatchScreenshot();
   });
 });
