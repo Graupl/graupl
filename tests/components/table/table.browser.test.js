@@ -17,7 +17,7 @@ describe("Table Component", () => {
       const screen = render(Component, {
         props: {
           attributes: {
-            class: `${variant} ${classes}`,
+            class: [`${variant}`, `${classes}`],
             "data-testid": "table",
           },
         },
