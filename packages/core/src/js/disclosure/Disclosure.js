@@ -879,7 +879,7 @@ class Disclosure extends Component {
     // If we're dealing with transition classes, then we need to utilize
     // requestAnimationFrame to add the transition class, remove the close class,
     // add the open class, and finally remove the transition class.
-    if (transition && this.transitionlass !== "") {
+    if (transition && this.transitionClass !== "") {
       addClass(this.transitionClass, this.dom.disclosure);
 
       requestAnimationFrame(() => {
