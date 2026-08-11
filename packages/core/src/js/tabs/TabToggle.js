@@ -75,6 +75,7 @@ class TabToggle extends Component {
   _rootDOMElement = "toggle";
   _protectedDOMElements = ["content"];
   _storageKey = "tabToggles";
+  _name = "TabToggle";
   _shouldStore = false;
   _active = new TransactionalValue(false);
 
