@@ -43,7 +43,7 @@ $container-aware-selector-separator: root-defaults.$utility-container-aware-sele
 $-utility-properties: (
   "z": z-index,
 );
-$utility-properties: ();
+$utility-properties: () !default;
 
 // Values.
 $-utility-values: (

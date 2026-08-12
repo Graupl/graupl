@@ -1,6 +1,7 @@
 import { h } from "vue";
 import "../../../dist/css/graupl.css";
 import { variants, states } from "../defaults.js";
+import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
@@ -36,19 +37,9 @@ export default {
     },
   },
   setup(props) {
-    const { attributes, variant, state, text, tag } = props;
+    const { variant, state, text, tag } = props;
 
-    if (variant !== "" || state !== "") {
-      attributes.class = attributes.class || [];
-
-      if (variant !== "") {
-        attributes.class.push(variant);
-      }
-
-      if (state !== "") {
-        attributes.class.push(state);
-      }
-    }
+    const attributes = setupClasses(props.attributes, [variant, state]);
 
     return () => h(tag, attributes, text);
   },

@@ -10,3 +10,7 @@ package-lock.json
 
 # Do not ignore config files.
 !.*.js
+
+# Specific pages
+packages/core/src/scss/_defaults.scss
+packages/core/src/scss/base/form/_defaults.scss
