@@ -64,6 +64,7 @@ export default {
                   class: ["carousel-tab"],
                   "aria-label": "Carousel item 2",
                   role: "tab",
+                  "data-testid": "second-tab",
                 },
               }),
               h(AdvancedComponent, {

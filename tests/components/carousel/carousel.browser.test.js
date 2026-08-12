@@ -50,9 +50,9 @@ describe("Carousel Component", () => {
 
     await document.fonts.ready;
 
-    const pauseButton = screen.getByRole("tab").first();
+    const secondTab = screen.getByTestId("second-tab");
 
-    await pauseButton.click();
+    await secondTab.click();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
