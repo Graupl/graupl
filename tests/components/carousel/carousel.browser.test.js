@@ -55,11 +55,9 @@ describe("Carousel Component", () => {
 });
 
 describe("Carousel Component", () => {
-  it("Should match screenshot on fourth with next double clicked", async () => {
+  it("Should match screenshot on second with next clicked", async () => {
     const screen = render(Component, {
       props: {
-        play: true,
-        secondTab: true,
         attributes: {
           "data-testid": "carousel",
         },
@@ -71,18 +69,16 @@ describe("Carousel Component", () => {
     const user = userEvent.setup();
     const next = screen.getByTestId("next");
 
-    await user.dblClick(next);
+    await user.click(next);
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
 });
 
 describe("Carousel Component", () => {
-  it("Should match screenshot with third image", async () => {
+  it("Should match screenshot with last image", async () => {
     const screen = render(Component, {
       props: {
-        play: true,
-        secondTab: true,
         attributes: {
           "data-testid": "carousel",
         },
