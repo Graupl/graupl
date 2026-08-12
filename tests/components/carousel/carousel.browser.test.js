@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./carousel.js";
-import { userEvent } from "vitest/browser";
 
 describe("Carousel Component", () => {
   it("Should match screenshot with pause", async () => {
@@ -31,10 +30,9 @@ describe("Carousel Component", () => {
 
     await document.fonts.ready;
 
-    const user = userEvent.setup();
     const pauseButton = screen.getByRole("button").first();
 
-    await user.click(pauseButton);
+    await pauseButton.click();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
