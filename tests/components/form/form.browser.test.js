@@ -21,9 +21,9 @@ describe("Form Component", () => {
   it("Should match screenshot with changed attributes:", async () => {
     const screen = render(Component, {
       props: {
+        value: true,
         attributes: {
           "data-testid": "form",
-          value: true,
         },
       },
     });

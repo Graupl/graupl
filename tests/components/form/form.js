@@ -27,18 +27,18 @@ export default {
             attributes: { class: ["input-group"] },
             children: [
               h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "input" },
+                text: "Input",
+              }),
+              h(BasicComponent, {
                 tag: "input",
                 attributes: {
-                  type: "input",
+                  type: "text",
                   placeholder: "Enter text",
                   id: "input",
                   value: props.value ? "" : "Value",
                 },
-              }),
-              h(BasicComponent, {
-                tag: "label",
-                attributes: { for: "input" },
-                text: "Input",
               }),
               h(BasicComponent, {
                 tag: "small",
@@ -48,24 +48,17 @@ export default {
             ],
           }),
           h(BasicComponent, {
-            tag: "input",
-            attributes: {
-              type: "input",
-              disabled: "disabled",
-              id: "input-disabled",
-            },
-          }),
-          h(BasicComponent, {
             tag: "label",
             attributes: { for: "input-disabled" },
             text: "Input Disabled",
           }),
           h(BasicComponent, {
-            tag: "textarea",
+            tag: "input",
             attributes: {
-              type: "textarea",
+              type: "text",
               placeholder: "Enter text",
-              id: "textarea",
+              disabled: "disabled",
+              id: "input-disabled",
             },
           }),
           h(BasicComponent, {
@@ -76,10 +69,8 @@ export default {
           h(BasicComponent, {
             tag: "textarea",
             attributes: {
-              type: "textarea-disabled",
-              placeholder: "Textarea Disabled",
-              id: "textarea-disabled",
-              disabled: "disabled",
+              placeholder: "Enter text",
+              id: "textarea",
             },
           }),
           h(BasicComponent, {
@@ -87,11 +78,24 @@ export default {
             attributes: { for: "textarea-disabled" },
             text: "Textarea Disabled",
           }),
+          h(BasicComponent, {
+            tag: "textarea",
+            attributes: {
+              placeholder: "Textarea Disabled",
+              id: "textarea-disabled",
+              disabled: "disabled",
+            },
+          }),
           h(AdvancedComponent, {
             attributes: {
               class: ["input-group", "inline"],
             },
             children: [
+              h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "select-disabled" },
+                text: "Select-disabled",
+              }),
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
@@ -109,16 +113,16 @@ export default {
                   }),
                 ],
               }),
-              h(BasicComponent, {
-                tag: "label",
-                attributes: { for: "select-disabled" },
-                text: "Select-disabled",
-              }),
             ],
           }),
           h(AdvancedComponent, {
             attributes: { class: ["input-group", "inline"] },
             children: [
+              h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "select" },
+                text: "Select",
+              }),
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
@@ -154,16 +158,16 @@ export default {
                   }),
                 ],
               }),
-              h(BasicComponent, {
-                tag: "label",
-                attributes: { for: "select" },
-                text: "Select",
-              }),
             ],
           }),
           h(AdvancedComponent, {
             attributes: { class: ["input-group", "inline"] },
             children: [
+              h(BasicComponent, {
+                tag: "label",
+                attributes: { for: "multi-select" },
+                text: "Multi-Select",
+              }),
               h(AdvancedComponent, {
                 tag: "select",
                 attributes: {
@@ -200,11 +204,6 @@ export default {
                   }),
                 ],
               }),
-              h(BasicComponent, {
-                tag: "label",
-                attributes: { for: "multi-select" },
-                text: "Multi-Select",
-              }),
             ],
           }),
           h(AdvancedComponent, {
@@ -219,9 +218,13 @@ export default {
                 attributes: { class: ["input-group", "inline"] },
                 children: [
                   h(BasicComponent, {
+                    tag: "label",
+                    attributes: { for: "checkbox-disabled" },
+                    text: "Checkbox Disabled",
+                  }),
+                  h(BasicComponent, {
                     tag: "input",
-                    attributes: { type: "checkbox" },
-                    id: "checkbox1",
+                    attributes: { type: "checkbox", id: "checkbox-disabled" },
                   }),
                 ],
               }),
@@ -241,15 +244,17 @@ export default {
                     attributes: { class: ["input-group", "inline"] },
                     children: [
                       h(BasicComponent, {
-                        tag: "input",
-                        attributes: { type: "checkbox" },
-                        id: "checkbox1",
-                        "data-testid": "checkedoption1",
-                      }),
-                      h(BasicComponent, {
                         tag: "label",
                         attributes: { for: "checkbox1" },
                         text: "Checkbox 1",
+                      }),
+                      h(BasicComponent, {
+                        tag: "input",
+                        attributes: {
+                          type: "checkbox",
+                          id: "checkbox1",
+                          "data-testid": "checkedoption1",
+                        },
                       }),
                     ],
                   }),
@@ -257,14 +262,17 @@ export default {
                     attributes: { class: ["input-group", "inline"] },
                     children: [
                       h(BasicComponent, {
-                        tag: "input",
-                        attributes: { type: "checkbox", disabled: "disabled" },
-                        id: "Checkbox2",
-                      }),
-                      h(BasicComponent, {
                         tag: "label",
                         attributes: { for: "Checkbox2" },
                         text: "Checkbox 2",
+                      }),
+                      h(BasicComponent, {
+                        tag: "input",
+                        attributes: {
+                          type: "checkbox",
+                          disabled: "disabled",
+                          id: "Checkbox2",
+                        },
                       }),
                     ],
                   }),
@@ -286,15 +294,18 @@ export default {
                     attributes: { class: ["input-group", "inline"] },
                     children: [
                       h(BasicComponent, {
-                        tag: "input",
-                        attributes: { type: "radio", name: "radio1" },
-                        id: "radio1",
-                        "data-testid": "checkedoption2",
-                      }),
-                      h(BasicComponent, {
                         tag: "label",
                         attributes: { for: "radio1" },
                         text: "Radio 1",
+                      }),
+                      h(BasicComponent, {
+                        tag: "input",
+                        attributes: {
+                          type: "radio",
+                          name: "radio-group",
+                          id: "radio1",
+                          "data-testid": "checkedoption2",
+                        },
                       }),
                     ],
                   }),
@@ -302,18 +313,18 @@ export default {
                     attributes: { class: ["input-group", "inline"] },
                     children: [
                       h(BasicComponent, {
-                        tag: "input",
-                        attributes: {
-                          type: "radio",
-                          name: "radio2",
-                          disabled: "disabled",
-                        },
-                        id: "radio2",
-                      }),
-                      h(BasicComponent, {
                         tag: "label",
                         attributes: { for: "radio2" },
                         text: "Radio 2",
+                      }),
+                      h(BasicComponent, {
+                        tag: "input",
+                        attributes: {
+                          type: "radio",
+                          name: "radio-group",
+                          disabled: "disabled",
+                          id: "radio2",
+                        },
                       }),
                     ],
                   }),
