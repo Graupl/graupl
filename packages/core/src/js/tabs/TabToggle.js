@@ -5,7 +5,7 @@
 
 /* global Tabs */
 
-import { addClass, removeClass } from "@graupl/core/src/domHelpers.js";
+import { addClass, removeClass } from "../domHelpers.js";
 import TransactionalValue from "../TransactionalValue.js";
 import Component from "../Component.js";
 
@@ -75,6 +75,7 @@ class TabToggle extends Component {
   _rootDOMElement = "toggle";
   _protectedDOMElements = ["content"];
   _storageKey = "tabToggles";
+  _name = "TabToggle";
   _shouldStore = false;
   _active = new TransactionalValue(false);
 

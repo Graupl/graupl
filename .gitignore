@@ -16,3 +16,6 @@ testing/flashpost
 
 # Generated test files.
 .vitest-attachments
+
+# AI files
+.claude
