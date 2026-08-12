@@ -21,7 +21,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run build
         run: npm run build
@@ -38,7 +38,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run eslint
         run: npm run eslint
@@ -55,7 +55,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run stylelint
         run: npm run stylelint
@@ -72,7 +72,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run prettier
         run: npm run prettier -- --check
@@ -89,7 +89,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run vitest
         run: npm run test:unit
@@ -105,7 +105,7 @@ jobs:
           node-version: 24.x
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Install Playwright Browsers
         run: npx --no playwright install --with-deps --only-shell

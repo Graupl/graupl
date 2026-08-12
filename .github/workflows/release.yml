@@ -81,7 +81,7 @@ jobs:
           scope: "@graupl"
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Publish workspaces to npm (full release)
         if: needs.meta.outputs.is_prerelease != 'true'
@@ -116,7 +116,7 @@ jobs:
           scope: "@graupl"
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Publish workspaces to GitHub Packages (full release)
         if: needs.meta.outputs.is_prerelease != 'true'
