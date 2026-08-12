@@ -27,7 +27,7 @@ export default {
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-control", "autoplay"],
+                  class: ["carousel-control", "autoplay", "pause"],
                 },
               }),
               h(BasicComponent, {
