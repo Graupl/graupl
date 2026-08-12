@@ -19,7 +19,7 @@ export default {
   setup(props) {
     props.attributes.class = props.attributes.class || [];
 
-    props.attributes.class.push("bagde");
+    props.attributes.class.push("badge");
 
     return () => h(BasicComponent, { ...props, tag: "span" });
   },

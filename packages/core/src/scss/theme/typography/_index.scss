@@ -36,7 +36,7 @@
 // | `--graupl-font-weight-bold`         | Bold font weight token.           | `700`                                                                                                   |
 // | `--graupl-root-font-family`         | Root font family.                 | `system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif` |
 // | `--graupl-root-font-size`           | Root font size.                   | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)`                                                         |
-// | `--graupl-root-font-weight`         | Root font weight.                 | `var(--graupl-font-weight-normal                                                                        |
+// | `--graupl-root-font-weight`         | Root font weight.                 | `var(--graupl-font-weight-normal)`                                                                      |
 // | `--graupl-root-font-style`          | Root font style.                  | `normal`                                                                                                |
 // | `--graupl-root-font-variant`        | Root font variant.                | `normal`                                                                                                |
 // | `--graupl-root-line-height`         | Root line height.                 | `1.2em`                                                                                                 |
@@ -51,115 +51,115 @@
 // | `--graupl-line-height`              | Generic line height.              | `var(--graupl-root-line-height)`                                                                        |
 // | `--graupl-letter-spacing`           | Generic letter spacing.           | `inherit`                                                                                               |
 // | `--graupl-word-spacing`             | Generic word spacing.             | `inherit`                                                                                               |
-// | `--graupl-paragraph-font-size`      | Paragraph font size.              | `var(--graupl-font-size                                                                                 |
-// | `--graupl-paragraph-font-weight`    | Paragraph font weight.            | `var(--graupl-font-weight                                                                               |
-// | `--graupl-paragraph-font-style`     | Paragraph font style.             | `var(--graupl-font-style                                                                                |
-// | `--graupl-paragraph-font-variant`   | Paragraph font variant.           | `var(--graupl-font-variant                                                                              |
-// | `--graupl-paragraph-color`          | Paragraph text color.             | `var(--graupl-font-color                                                                                |
-// | `--graupl-paragraph-font-family`    | Paragraph font family.            | `var(--graupl-font-family                                                                               |
+// | `--graupl-paragraph-font-size`      | Paragraph font size.              | `var(--graupl-font-size)`                                                                               |
+// | `--graupl-paragraph-font-weight`    | Paragraph font weight.            | `var(--graupl-font-weight)`                                                                             |
+// | `--graupl-paragraph-font-style`     | Paragraph font style.             | `var(--graupl-font-style)`                                                                              |
+// | `--graupl-paragraph-font-variant`   | Paragraph font variant.           | `var(--graupl-font-variant)`                                                                            |
+// | `--graupl-paragraph-color`          | Paragraph text color.             | `var(--graupl-font-color)`                                                                              |
+// | `--graupl-paragraph-font-family`    | Paragraph font family.            | `var(--graupl-font-family)`                                                                             |
 // | `--graupl-paragraph-line-height`    | Paragraph line height.            | `var(--graupl-line-height)`                                                                             |
 // | `--graupl-paragraph-letter-spacing` | Paragraph letter spacing.         | `var(--graupl-letter-spacing                                                                            |
 // | `--graupl-paragraph-word-spacing`   | Paragraph word spacing.           | `var(--graupl-word-spacing                                                                              |
 // | `--graupl-paragraph-margin`         | Paragraph margin.                 | `0 0 var(--graupl-spacer-2) 0`                                                                          |
-// | `--graupl-small-font-size`          | Small text font size.             | `var(--graupl-font-sm                                                                                   |
-// | `--graupl-small-font-weight`        | Small text font weight.           | `var(--graupl-font-weight                                                                               |
-// | `--graupl-small-font-style`         | Small text font style.            | `var(--graupl-font-style                                                                                |
-// | `--graupl-small-font-variant`       | Small text font variant.          | `var(--graupl-font-variant                                                                              |
-// | `--graupl-small-color`              | Small text color.                 | `var(--graupl-font-color                                                                                |
-// | `--graupl-small-font-family`        | Small text font family.           | `var(--graupl-font-family                                                                               |
+// | `--graupl-small-font-size`          | Small text font size.             | `var(--graupl-font-size-sm)`                                                                            |
+// | `--graupl-small-font-weight`        | Small text font weight.           | `var(--graupl-font-weight)`                                                                             |
+// | `--graupl-small-font-style`         | Small text font style.            | `var(--graupl-font-style)`                                                                              |
+// | `--graupl-small-font-variant`       | Small text font variant.          | `var(--graupl-font-variant)`                                                                            |
+// | `--graupl-small-color`              | Small text color.                 | `var(--graupl-font-color)`                                                                              |
+// | `--graupl-small-font-family`        | Small text font family.           | `var(--graupl-font-family)`                                                                             |
 // | `--graupl-small-line-height`        | Small text line height.           | `var(--graupl-line-height)`                                                                             |
 // | `--graupl-small-letter-spacing`     | Small text letter spacing.        | `var(--graupl-letter-spacing                                                                            |
 // | `--graupl-small-word-spacing`       | Small text word spacing.          | `var(--graupl-word-spacing                                                                              |
 // | `--graupl-small-margin`             | Small text margin.                | `0 0 var(--graupl-spacer-2) 0`                                                                          |
-// | `--graupl-bold-font-size`           | Bold font size.                   | `var(--graupl-font-size                                                                                 |
-// | `--graupl-bold-font-weight`         | Bold font weight.                 | `var(--graupl-font-weight                                                                               |
-// | `--graupl-bold-font-style`          | Bold font style.                  | `var(--graupl-font-style                                                                                |
-// | `--graupl-bold-font-variant`        | Bold font variant.                | `var(--graupl-font-variant                                                                              |
-// | `--graupl-bold-color`               | Bold text color.                  | `var(--graupl-font-color                                                                                |
-// | `--graupl-bold-font-family`         | Bold font family.                 | `var(--graupl-font-family                                                                               |
+// | `--graupl-bold-font-size`           | Bold font size.                   | `var(--graupl-font-size)`                                                                               |
+// | `--graupl-bold-font-weight`         | Bold font weight.                 | `var(--graupl-font-weight)`                                                                             |
+// | `--graupl-bold-font-style`          | Bold font style.                  | `var(--graupl-font-style)`                                                                              |
+// | `--graupl-bold-font-variant`        | Bold font variant.                | `var(--graupl-font-variant)`                                                                            |
+// | `--graupl-bold-color`               | Bold text color.                  | `var(--graupl-font-color)`                                                                              |
+// | `--graupl-bold-font-family`         | Bold font family.                 | `var(--graupl-font-family)`                                                                             |
 // | `--graupl-bold-line-height`         | Bold line height.                 | `var(--graupl-line-height)`                                                                             |
 // | `--graupl-bold-letter-spacing`      | Bold letter spacing.              | `var(--graupl-letter-spacing                                                                            |
 // | `--graupl-bold-word-spacing`        | Bold word spacing.                | `var(--graupl-word-spacing                                                                              |
 // | `--graupl-bold-margin`              | Bold margin.                      | `0 0 var(--graupl-spacer-2) 0`                                                                          |
-// | `--graupl-italic-font-size`         | Italic font size.                 | `var(--graupl-font-size                                                                                 |
-// | `--graupl-italic-font-weight`       | Italic font weight.               | `var(--graupl-font-weight                                                                               |
+// | `--graupl-italic-font-size`         | Italic font size.                 | `var(--graupl-font-size)`                                                                               |
+// | `--graupl-italic-font-weight`       | Italic font weight.               | `var(--graupl-font-weight)`                                                                             |
 // | `--graupl-italic-font-style`        | Italic font style.                | `italic`                                                                                                |
-// | `--graupl-italic-font-variant`      | Italic font variant.              | `var(--graupl-font-variant                                                                              |
-// | `--graupl-italic-color`             | Italic text color.                | `var(--graupl-font-color                                                                                |
-// | `--graupl-italic-font-family`       | Italic font family.               | `var(--graupl-font-family                                                                               |
+// | `--graupl-italic-font-variant`      | Italic font variant.              | `var(--graupl-font-variant)`                                                                            |
+// | `--graupl-italic-color`             | Italic text color.                | `var(--graupl-font-color)`                                                                              |
+// | `--graupl-italic-font-family`       | Italic font family.               | `var(--graupl-font-family)`                                                                             |
 // | `--graupl-italic-line-height`       | Italic line height.               | `var(--graupl-line-height)`                                                                             |
-// | `--graupl-italic-letter-spacing`    | Italic letter spacing.            | `var(--graupl-letter-spacing                                                                            |
-// | `--graupl-italic-word-spacing`      | Italic word spacing.              | `var(--graupl-word-spacing                                                                              |
+// | `--graupl-italic-letter-spacing`    | Italic letter spacing.            | `var(--graupl-letter-spacing)`                                                                          |
+// | `--graupl-italic-word-spacing`      | Italic word spacing.              | `var(--graupl-word-spacing)`                                                                            |
 // | `--graupl-italic-margin`            | Italic margin.                    | `0 0 var(--graupl-spacer-2) 0`                                                                          |
-// | `--graupl-heading-font-weight`      | Heading font weight.              | `var(--graupl-font-weight-bold                                                                          |
-// | `--graupl-heading-font-style`       | Heading font style.               | `var(--graupl-font-style                                                                                |
-// | `--graupl-heading-font-variant`     | Heading font variant.             | `var(--graupl-font-variant                                                                              |
-// | `--graupl-heading-color`            | Heading text color.               | `var(--graupl-font-color                                                                                |
-// | `--graupl-heading-font-family`      | Heading font family.              | `var(--graupl-font-family                                                                               |
+// | `--graupl-heading-font-weight`      | Heading font weight.              | `var(--graupl-font-weight-bold)`                                                                        |
+// | `--graupl-heading-font-style`       | Heading font style.               | `var(--graupl-font-style)`                                                                              |
+// | `--graupl-heading-font-variant`     | Heading font variant.             | `var(--graupl-font-variant)`                                                                            |
+// | `--graupl-heading-color`            | Heading text color.               | `var(--graupl-font-color)`                                                                              |
+// | `--graupl-heading-font-family`      | Heading font family.              | `var(--graupl-font-family)`                                                                             |
 // | `--graupl-heading-line-height`      | Heading line height.              | `var(--graupl-line-height)`                                                                             |
-// | `--graupl-heading-letter-spacing`   | Heading letter spacing.           | `var(--graupl-letter-spacing                                                                            |
-// | `--graupl-heading-word-spacing`     | Heading word spacing.             | `var(--graupl-word-spacing                                                                              |
+// | `--graupl-heading-letter-spacing`   | Heading letter spacing.           | `var(--graupl-letter-spacing)`                                                                          |
+// | `--graupl-heading-word-spacing`     | Heading word spacing.             | `var(--graupl-word-spacing)`                                                                            |
 // | `--graupl-heading-margin`           | Heading margin.                   | `var(--graupl-spacer-5) 0 var(--graupl-spacer-2) 0`                                                     |
-// | `--graupl-h1-font-size`             | H1 font size.                     | `var(--graupl-font-5xl                                                                                  |
-// | `--graupl-h1-font-weight`           | H1 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h1-font-style`            | H1 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h1-font-variant`          | H1 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h1-color`                 | H1 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h1-font-family`           | H1 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h1-font-size`             | H1 font size.                     | `var(--graupl-font-5xl)`                                                                                |
+// | `--graupl-h1-font-weight`           | H1 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h1-font-style`            | H1 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h1-font-variant`          | H1 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h1-color`                 | H1 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h1-font-family`           | H1 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h1-line-height`           | H1 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h1-letter-spacing`        | H1 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h1-word-spacing`          | H1 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h1-margin`                | H1 margin.                        | `var(--graupl-heading-margin                                                                            |
-// | `--graupl-h2-font-size`             | H2 font size.                     | `var(--graupl-font-4xl                                                                                  |
-// | `--graupl-h2-font-weight`           | H2 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h2-font-style`            | H2 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h2-font-variant`          | H2 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h2-color`                 | H2 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h2-font-family`           | H2 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h1-letter-spacing`        | H1 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h1-word-spacing`          | H1 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h1-margin`                | H1 margin.                        | `var(--graupl-heading-margin)`                                                                          |
+// | `--graupl-h2-font-size`             | H2 font size.                     | `var(--graupl-font-4xl)`                                                                                |
+// | `--graupl-h2-font-weight`           | H2 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h2-font-style`            | H2 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h2-font-variant`          | H2 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h2-color`                 | H2 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h2-font-family`           | H2 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h2-line-height`           | H2 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h2-letter-spacing`        | H2 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h2-word-spacing`          | H2 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h2-margin`                | H2 margin.                        | `var(--graupl-heading-margin                                                                            |
-// | `--graupl-h3-font-size`             | H3 font size.                     | `var(--graupl-font-3xl                                                                                  |
-// | `--graupl-h3-font-weight`           | H3 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h3-font-style`            | H3 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h3-font-variant`          | H3 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h3-color`                 | H3 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h3-font-family`           | H3 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h2-letter-spacing`        | H2 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h2-word-spacing`          | H2 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h2-margin`                | H2 margin.                        | `var(--graupl-heading-margin)`                                                                          |
+// | `--graupl-h3-font-size`             | H3 font size.                     | `var(--graupl-font-3xl)`                                                                                |
+// | `--graupl-h3-font-weight`           | H3 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h3-font-style`            | H3 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h3-font-variant`          | H3 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h3-color`                 | H3 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h3-font-family`           | H3 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h3-line-height`           | H3 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h3-letter-spacing`        | H3 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h3-word-spacing`          | H3 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h3-margin`                | H3 margin.                        | `var(--graupl-heading-margin                                                                            |
-// | `--graupl-h4-font-size`             | H4 font size.                     | `var(--graupl-font-2xl                                                                                  |
-// | `--graupl-h4-font-weight`           | H4 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h4-font-style`            | H4 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h4-font-variant`          | H4 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h4-color`                 | H4 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h4-font-family`           | H4 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h3-letter-spacing`        | H3 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h3-word-spacing`          | H3 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h3-margin`                | H3 margin.                        | `var(--graupl-heading-margin)`                                                                          |
+// | `--graupl-h4-font-size`             | H4 font size.                     | `var(--graupl-font-2xl)`                                                                                |
+// | `--graupl-h4-font-weight`           | H4 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h4-font-style`            | H4 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h4-font-variant`          | H4 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h4-color`                 | H4 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h4-font-family`           | H4 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h4-line-height`           | H4 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h4-letter-spacing`        | H4 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h4-word-spacing`          | H4 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h4-margin`                | H4 margin.                        | `var(--graupl-heading-margin                                                                            |
-// | `--graupl-h5-font-size`             | H5 font size.                     | `var(--graupl-font-xl                                                                                   |
-// | `--graupl-h5-font-weight`           | H5 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h5-font-style`            | H5 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h5-font-variant`          | H5 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h5-color`                 | H5 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h5-font-family`           | H5 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h4-letter-spacing`        | H4 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h4-word-spacing`          | H4 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h4-margin`                | H4 margin.                        | `var(--graupl-heading-margin)`                                                                          |
+// | `--graupl-h5-font-size`             | H5 font size.                     | `var(--graupl-font-size-xl)`                                                                            |
+// | `--graupl-h5-font-weight`           | H5 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h5-font-style`            | H5 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h5-font-variant`          | H5 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h5-color`                 | H5 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h5-font-family`           | H5 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h5-line-height`           | H5 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h5-letter-spacing`        | H5 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h5-word-spacing`          | H5 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h5-margin`                | H5 margin.                        | `var(--graupl-heading-margin                                                                            |
-// | `--graupl-h6-font-size`             | H6 font size.                     | `var(--graupl-font-lg                                                                                   |
-// | `--graupl-h6-font-weight`           | H6 font weight.                   | `var(--graupl-heading-font-weight                                                                       |
-// | `--graupl-h6-font-style`            | H6 font style.                    | `var(--graupl-heading-font-style                                                                        |
-// | `--graupl-h6-font-variant`          | H6 font variant.                  | `var(--graupl-heading-font-variant                                                                      |
-// | `--graupl-h6-color`                 | H6 text color.                    | `var(--graupl-heading-color                                                                             |
-// | `--graupl-h6-font-family`           | H6 font family.                   | `var(--graupl-heading-font-family                                                                       |
+// | `--graupl-h5-letter-spacing`        | H5 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h5-word-spacing`          | H5 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h5-margin`                | H5 margin.                        | `var(--graupl-heading-margin)`                                                                          |
+// | `--graupl-h6-font-size`             | H6 font size.                     | `var(--graupl-font-size-lg)`                                                                            |
+// | `--graupl-h6-font-weight`           | H6 font weight.                   | `var(--graupl-heading-font-weight)`                                                                     |
+// | `--graupl-h6-font-style`            | H6 font style.                    | `var(--graupl-heading-font-style)`                                                                      |
+// | `--graupl-h6-font-variant`          | H6 font variant.                  | `var(--graupl-heading-font-variant)`                                                                    |
+// | `--graupl-h6-color`                 | H6 text color.                    | `var(--graupl-heading-color)`                                                                           |
+// | `--graupl-h6-font-family`           | H6 font family.                   | `var(--graupl-heading-font-family)`                                                                     |
 // | `--graupl-h6-line-height`           | H6 line height.                   | `var(--graupl-heading-line-height)`                                                                     |
-// | `--graupl-h6-letter-spacing`        | H6 letter spacing.                | `var(--graupl-heading-letter-spacing                                                                    |
-// | `--graupl-h6-word-spacing`          | H6 word spacing.                  | `var(--graupl-heading-word-spacing                                                                      |
-// | `--graupl-h6-margin`                | H6 margin.                        | `var(--graupl-heading-margin                                                                            |
+// | `--graupl-h6-letter-spacing`        | H6 letter spacing.                | `var(--graupl-heading-letter-spacing)`                                                                  |
+// | `--graupl-h6-word-spacing`          | H6 word spacing.                  | `var(--graupl-heading-word-spacing)`                                                                    |
+// | `--graupl-h6-margin`                | H6 margin.                        | `var(--graupl-heading-margin)`                                                                          |
 //
 // The following sass variables can be used to customize typography generation:
 // | Variable                      | Description                                     | Default Value                                   |
