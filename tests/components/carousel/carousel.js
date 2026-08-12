@@ -5,6 +5,14 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
+    secondTab: {
+      type: Boolean,
+      default: false,
+    },
+    play: {
+      type: Boolean,
+      default: false,
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -27,7 +35,11 @@ export default {
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-control", "autoplay", "pause"],
+                  class: [
+                    "carousel-control",
+                    "autoplay",
+                    props.play ? "pause" : "play",
+                  ],
                 },
               }),
               h(BasicComponent, {
@@ -53,7 +65,7 @@ export default {
               h(AdvancedComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-tab"],
+                  class: ["carousel-tab", props.secondTab ? "" : "active"],
                   "aria-label": "Carousel item 1",
                   role: "tab",
                 },
@@ -61,7 +73,7 @@ export default {
               h(AdvancedComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-tab"],
+                  class: ["carousel-tab", props.secondTab ? "active" : ""],
                   "aria-label": "Carousel item 2",
                   role: "tab",
                   "data-testid": "second-tab",
@@ -101,14 +113,14 @@ export default {
             children: [
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item"],
+                  class: ["carousel-item", props.secondTab ? "" : "active"],
                 },
                 children: [
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
                       src: "slide1.jpg",
-                      alt: "Slide 1 placeholder alt text",
+                      alt: "Slide 1 placeholder alt text 1",
                     },
                   }),
                   h(AdvancedComponent, {
@@ -133,14 +145,14 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item"],
+                  class: ["carousel-item", props.secondTab ? "active" : ""],
                 },
                 children: [
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
                       src: "slide2.jpg",
-                      alt: "Slide 2 placeholder alt text",
+                      alt: "Slide 2 placeholder alt text 2",
                     },
                   }),
                   h(AdvancedComponent, {

@@ -22,6 +22,7 @@ describe("Carousel Component", () => {
   it("Should match screenshot with play", async () => {
     const screen = render(Component, {
       props: {
+        play: true,
         attributes: {
           "data-testid": "carousel",
         },
@@ -29,9 +30,6 @@ describe("Carousel Component", () => {
     });
 
     await document.fonts.ready;
-
-    const pauseButton = screen.getByRole("button").first();
-    await pauseButton.click();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
@@ -41,6 +39,8 @@ describe("Carousel Component", () => {
   it("Should match screenshot with second image", async () => {
     const screen = render(Component, {
       props: {
+        play: true,
+        secondTab: true,
         attributes: {
           "data-testid": "carousel",
         },
@@ -48,12 +48,6 @@ describe("Carousel Component", () => {
     });
 
     await document.fonts.ready;
-
-    const pauseButton = screen.getByRole("button").first();
-    await pauseButton.click();
-
-    const secondTab = screen.getByTestId("second-tab");
-    await secondTab.click();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
