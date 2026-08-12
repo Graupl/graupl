@@ -40,6 +40,7 @@ export default {
                     "autoplay",
                     props.play ? "play" : "pause",
                   ],
+                  "aria-label": props.play ? "Play" : "Pause",
                 },
               }),
               h(BasicComponent, {
