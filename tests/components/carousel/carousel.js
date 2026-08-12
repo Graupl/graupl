@@ -34,14 +34,12 @@ export default {
                 tag: "button",
                 attributes: {
                   class: ["carousel-control", "previous"],
-                  "aria-label": "Previous slide",
                 },
               }),
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
                   class: ["carousel-control", "next"],
-                  "aria-label": "Next slide",
                 },
               }),
             ],

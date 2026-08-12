@@ -37,3 +37,23 @@ describe("Carousel Component", () => {
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
 });
+
+describe("Carousel Component", () => {
+  it("Should match screenshot with second image", async () => {
+    const screen = render(Component, {
+      props: {
+        attributes: {
+          "data-testid": "carousel",
+        },
+      },
+    });
+
+    await document.fonts.ready;
+
+    const pauseButton = screen.getByRole("tab").first();
+
+    await pauseButton.click();
+
+    await expect(screen.getByTestId("carousel")).toMatchScreenshot();
+  });
+});
