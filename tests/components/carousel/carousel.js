@@ -38,7 +38,7 @@ export default {
                   class: [
                     "carousel-control",
                     "autoplay",
-                    props.play ? "pause" : "play",
+                    props.play ? "play" : "pause",
                   ],
                 },
               }),
