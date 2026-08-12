@@ -15,6 +15,13 @@ export default {
       type: String,
       default: "Click me",
     },
+    tag: {
+      type: String,
+      default: "button",
+      validate: (value) => {
+        return value === "button" || value === "a";
+      },
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -25,6 +32,10 @@ export default {
 
     props.attributes.class.push("button");
 
-    return () => h(BasicComponent, { ...props, tag: "button" });
+    if (props.tag === "a") {
+      props.attributes.href = props.attributes.href || "#";
+    }
+
+    return () => h(BasicComponent, { ...props, tag: props.tag });
   },
 };
