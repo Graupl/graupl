@@ -7,6 +7,7 @@ import { userEvent } from "vitest/browser";
 const classes = [
   "responsive-table",
   "bordered",
+  "collapsed",
   "hoverable",
   "striped-columns",
   "striped-rows",
@@ -14,24 +15,27 @@ const classes = [
 
 describe("Table Component", () => {
   describe.for(variants)("%s table", async (variant) => {
-    it.each(classes)("Should match screenshot with %s:", async (classes) => {
-      const screen = render(Component, {
-        props: {
-          attributes: {
-            class: [`${variant}`, `${classes}`],
-            "data-testid": "table",
+    it.each(classes)(
+      "Should match screenshot with %s:",
+      async (modifierClass) => {
+        const screen = render(Component, {
+          props: {
+            attributes: {
+              class: [`${variant}`, `${modifierClass}`],
+              "data-testid": "table",
+            },
           },
-        },
-      });
+        });
 
-      await document.fonts.ready;
+        await document.fonts.ready;
 
-      const user = userEvent.setup();
-      const cell = screen.getByText("JavaScript frameworks");
+        const user = userEvent.setup();
+        const cell = screen.getByText("JavaScript frameworks");
 
-      await user.hover(cell);
+        await user.hover(cell);
 
-      await expect(screen.getByTestId("table")).toMatchScreenshot();
-    });
+        await expect(screen.getByTestId("table")).toMatchScreenshot();
+      }
+    );
   });
 });
