@@ -48,7 +48,7 @@ export default {
               children: [
                 h(BasicComponent, {
                   tag: "a",
-                  attributes: { class: ["button-stretched"], href: "#" },
+                  attributes: { class: ["stretched"], href: "#" },
                   text: "The Action",
                 }),
               ],

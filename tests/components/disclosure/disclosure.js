@@ -31,6 +31,7 @@ export default {
           h(BasicComponent, {
             attributes: {
               class: ["disclosure-toggle", props.variant],
+              "aria-expanded": props.open ? "true" : "false",
             },
             tag: "button",
           }),

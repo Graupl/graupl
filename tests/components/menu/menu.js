@@ -21,6 +21,7 @@ export default {
       h(AdvancedComponent, {
         ...props,
         attributes,
+        tag: "ul",
         children: [
           h(AdvancedComponent, {
             tag: "li",
@@ -29,13 +30,13 @@ export default {
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["menu-link", "button", "submenu-toggle"],
-                  "aria-expanded": props.open ? true : false,
+                  class: ["menu-link", "button", "link", "submenu-toggle"],
+                  "aria-expanded": props.open ? "true" : "false",
                 },
                 text: "Button",
               }),
               h(AdvancedComponent, {
-                tag: "ol",
+                tag: "ul",
                 attributes: {
                   class: ["submenu", props.open ? "show" : "hide"],
                   "data-testid": "submenu",

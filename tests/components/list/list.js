@@ -8,41 +8,25 @@ export default {
     children: {
       type: Array,
       default: [
-        h(AdvancedComponent, {
+        h(BasicComponent, {
           tag: "li",
           attributes: { class: ["list-item"] },
-          children: [
-            h(BasicComponent, {
-              tag: "li",
-              attributes: { class: ["list-item"] },
-              text: "List Item ",
-            }),
-            h(BasicComponent, {
-              tag: "li",
-              attributes: { class: ["list-item"] },
-              text: "Second Listed",
-            }),
-            h(BasicComponent, {
-              tag: "li",
-              attributes: { class: ["list-item"] },
-              text: "Third Listed",
-            }),
-            h(BasicComponent, {
-              tag: "li",
-              attributes: { class: ["list-item"] },
-              text: "Fourth Listed",
-            }),
-          ],
+          text: "List Item ",
         }),
         h(BasicComponent, {
           tag: "li",
           attributes: { class: ["list-item"] },
-          text: "List content",
+          text: "Second Listed",
         }),
         h(BasicComponent, {
           tag: "li",
           attributes: { class: ["list-item"] },
-          text: "List content",
+          text: "Third Listed",
+        }),
+        h(BasicComponent, {
+          tag: "li",
+          attributes: { class: ["list-item"] },
+          text: "Fourth Listed",
         }),
       ],
     },

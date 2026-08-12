@@ -9,7 +9,7 @@ export default {
       type: Array,
       default: [
         h(AdvancedComponent, {
-          attributes: { class: ["tab-list"], role: ["tablist"] },
+          attributes: { class: ["tab-list"], role: "tablist" },
           children: [
             h(BasicComponent, {
               tag: "button",
@@ -29,11 +29,6 @@ export default {
               tag: "button",
               attributes: { class: ["tab-toggle"], tabindex: "-1" },
               text: "Tab 3",
-            }),
-            h(BasicComponent, {
-              tag: "button",
-              attributes: { class: ["tab-toggle"], tabindex: "-1" },
-              text: "Tab 4",
             }),
           ],
         }),
@@ -55,6 +50,18 @@ export default {
             h(BasicComponent, {
               tag: "p",
               text: "More information in the second tab",
+            }),
+          ],
+        }),
+        h(AdvancedComponent, {
+          attributes: {
+            class: ["tab-content", "hide"],
+          },
+          children: [
+            h(BasicComponent, { tag: "p", text: "Third tabs" }),
+            h(BasicComponent, {
+              tag: "p",
+              text: "More information in the third tab",
             }),
           ],
         }),

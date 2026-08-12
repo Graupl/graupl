@@ -41,11 +41,40 @@ export default {
                 attributes: { class: ["menu-item", "submenu-item"] },
                 children: [
                   h(BasicComponent, {
-                    tag: "a",
+                    tag: "button",
                     attributes: {
-                      class: ["menu-link"],
+                      class: ["menu-link", "button", "link", "submenu-toggle"],
+                      "aria-expanded": "false",
                     },
                     text: "Button",
+                  }),
+                  h(AdvancedComponent, {
+                    tag: "ul",
+                    attributes: { class: ["submenu", "hide"] },
+                    children: [
+                      h(AdvancedComponent, {
+                        tag: "li",
+                        attributes: { class: ["menu-item"] },
+                        children: [
+                          h(BasicComponent, {
+                            tag: "a",
+                            attributes: { class: ["menu-link"], href: "#" },
+                            text: "Sub Item 1",
+                          }),
+                        ],
+                      }),
+                      h(AdvancedComponent, {
+                        tag: "li",
+                        attributes: { class: ["menu-item"] },
+                        children: [
+                          h(BasicComponent, {
+                            tag: "a",
+                            attributes: { class: ["menu-link"], href: "#" },
+                            text: "Sub Item 2",
+                          }),
+                        ],
+                      }),
+                    ],
                   }),
                 ],
               }),
