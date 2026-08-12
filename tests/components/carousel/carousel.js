@@ -47,12 +47,14 @@ export default {
                 tag: "button",
                 attributes: {
                   class: ["carousel-control", "previous"],
+                  "data-testid": "previous",
                 },
               }),
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
                   class: ["carousel-control", "next"],
+                  "data-testid": "next",
                 },
               }),
             ],
