@@ -136,7 +136,7 @@ The following custom properties can be used to customize the link element:
 
 ## Sass variables
 
-The following Sass variables can be used to customize the generation of the button component:
+The following Sass variables can be used to customize the generation of the link component:
 
 | Variable                               | Description                                                    | Default Value                                            |
 | -------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |

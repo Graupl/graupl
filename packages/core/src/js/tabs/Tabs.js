@@ -64,6 +64,7 @@ class Tabs extends Component {
   _automatic = false;
   _currentChild = 0;
   _storageKey = "tabs";
+  _name = "Tab";
 
   /**
    * Constructs a new `Tab`.
