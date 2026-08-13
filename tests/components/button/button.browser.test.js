@@ -18,7 +18,7 @@ describe("Button Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Click me")).toMatchScreenshot();
+      await expect(screen.getByTestId("button-wrapper")).toMatchScreenshot();
     });
   });
 
@@ -32,7 +32,7 @@ describe("Button Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Click me")).toMatchScreenshot();
+      await expect(screen.getByTestId("button-wrapper")).toMatchScreenshot();
     });
   });
 });

@@ -1,5 +1,6 @@
 import { h } from "vue";
 import BasicComponent from "../component/basic-component.js";
+import AdvancedComponent from "../component/advanced-component.js";
 
 export default {
   props: {
@@ -36,6 +37,13 @@ export default {
       props.attributes.href = props.attributes.href || "#";
     }
 
-    return () => h(BasicComponent, { ...props, tag: props.tag });
+    return () =>
+      h(AdvancedComponent, {
+        attributes: {
+          style: "padding: 5rem",
+          "data-testid": "button-wrapper",
+        },
+        children: [h(BasicComponent, { ...props, tag: props.tag })],
+      });
   },
 };

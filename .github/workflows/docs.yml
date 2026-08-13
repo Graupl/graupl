@@ -1,7 +1,10 @@
 name: Deploy VitePress site to Pages
 
 on:
-  push:
+  # Run once the "Tests" workflow finishes on 1.x.
+  workflow_run:
+    workflows: ["Tests"]
+    types: [completed]
     branches: [1.x]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -20,21 +23,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
-    uses: ./.github/workflows/test.yml
-
   # Build job
   build:
     runs-on: ubuntu-24.04
-    needs: test
+    # workflow_run also fires for the "Tests" run triggered by PRs targeting
+    # 1.x (its branches filter matches on the PR's base branch), so this must
+    # be restricted to the push-triggered run that actually landed on 1.x,
+    # and only proceed if that run passed.
+    if: |
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success')
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # workflow_run checks out the default branch by default, lock to commit.
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
