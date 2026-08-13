@@ -50,7 +50,7 @@ describe("Columns Layout", () => {
 });
 
 describe("Columns Layout", () => {
-  it.each(colCount)("Should match screenshot fixed %s:", async (colCount) => {
+  it.each(colCount)("Should match screenshot: fixed %s", async (colCount) => {
     const screen = render(Component, {
       props: {
         fixed: true,
@@ -68,23 +68,20 @@ describe("Columns Layout", () => {
 });
 
 describe("Columns Layout", () => {
-  it.each(spanCount)(
-    "Should match screenshot fixed columns with %s:",
-    async (spanCount) => {
-      const screen = render(Component, {
-        props: {
-          fixed: true,
-          span: `${spanCount}`,
-          attributes: {
-            class: ["count-12"],
-            "data-testid": "columns",
-          },
+  it.each(spanCount)("Should match screenshot: fixed %s", async (spanCount) => {
+    const screen = render(Component, {
+      props: {
+        fixed: true,
+        span: `${spanCount}`,
+        attributes: {
+          class: ["count-12"],
+          "data-testid": "columns",
         },
-      });
+      },
+    });
 
-      await document.fonts.ready;
+    await document.fonts.ready;
 
-      await expect(screen.getByTestId("columns")).toMatchScreenshot();
-    }
-  );
+    await expect(screen.getByTestId("columns")).toMatchScreenshot();
+  });
 });
