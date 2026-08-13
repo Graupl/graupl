@@ -1,3 +1,10 @@
+<script setup>
+  import { ref } from "vue";
+
+  const position = ref("list-style-inside");
+  const type = ref("list-style-none");
+</script>
+
 # List Utilities
 
 The list utilities provide a set of classes to adjust the `list-style-position` and `list-style-type` properties of elements.
@@ -9,6 +16,30 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
 | `.list-style-inside` | list-style-position | `inside` |
 | `.list-style-outside` | list-style-position | `outside` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display  h-auto">
+      <div class="display-flex g-5">
+        <ul>
+          <li :class="` p-2 m-2 bordered border-primary `" >List Item 1</li>
+          <li :class="`${position} p-2 m-2 bordered border-tertiary `" >List Item 2</li>
+          <li :class="`${position} p-2 m-2 bordered border-tertiary`" >List Item 3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;li class="{{ position }}"&gt;&lt;/li&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-position">List Style Type property</label>
+    <select id="select-position" v-model="position">
+      <option value="list-style-inside">Inside</option>
+      <option value="list-style-outside">Outside</option>
+    </select>
+  </div>
+</div>
+
 ## List Style Type
 
 | Class Name | Property | Value |
@@ -18,6 +49,33 @@ The list utilities provide a set of classes to adjust the `list-style-position` 
 | `.list-style-decimal` | list-style-type | `decimal` |
 | `.list-style-circle` | list-style-type | `circle` |
 | `.list-style-square` | list-style-type | `square` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display  h-auto">
+      <div class="display-flex g-5">
+        <ul>
+          <li :class="`p-2 text-primary `" >List Item 1</li>
+          <li :class="`${type} p-2  text-tertiary `" >List Item 2</li>
+          <li :class="`${type} p-2 text-tertiary `" >List Item 3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;img class="{{ type }}"&gt;&lt;/img&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-type">List Style Type property</label>
+    <select id="select-type" v-model="type">
+      <option value="list-style-none">None</option>
+      <option value="list-style-disc">Disc</option>
+      <option value="list-style-decimal">Decimal</option>
+      <option value="list-style-circle">Circle</option>
+      <option value="list-style-square">Square</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

@@ -1,3 +1,11 @@
+<script setup>
+  import { ref } from "vue";
+
+  const inlineSize = ref("is-auto");
+  const maxInlineSize = ref("max-is-auto");
+  const minInlineSize = ref("min-is-auto");
+</script>
+
 # Inline Size Utilities
 
 The inline-size utilities provide a set of classes to adjust the `inline-size`, `max-inline-size`, and `min-inline-size` properties of elements.
@@ -35,6 +43,54 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.is-9` | inline-size | `var(--graupl-spacer-9)` |
 | `.is-10` | inline-size | `var(--graupl-spacer-10)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex `">
+        <div class="bg-tertiary-300 is-full">
+          <div :class="` bordered bg-primary-300 bs-7 ${inlineSize}`"></div>
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ inlineSize }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inline">Inline property</label>
+    <select id="select-inline" v-model="inlineSize">
+      <option value="is-auto">Auto</option>
+      <option value="is-fit-content">Fit Content</option>
+      <option value="is-max-content">Max Content</option>
+      <option value="is-min-content">Min Content</option>
+      <option value="is-stretch">Stretch</option>
+      <option value="is-full">Full</option>
+      <option value="is-quarter">Quarter</option>
+      <option value="is-half">Half</option>
+      <option value="is-three-quarters">Three Quarters</option>
+      <option value="is-third">Third</option>
+      <option value="is-two-thirds">Two Thirds</option>
+      <option value="is-half-screen">Half Screen</option>
+      <option value="is-third-screen">Third Screen</option>
+      <option value="is-two-thirds-screen">Two Thirds Screen</option>
+       <option value="is-quarter-screen">Quarter Screen</option>
+      <option value="is-three-quarters-screen">Three Quarters Screen</option>
+      <option value="is-full-screen">Full Screen</option>
+      <option value="is-0">0</option>
+      <option value="is-1">1</option>
+      <option value="is-2">2</option>
+      <option value="is-3">3</option>
+      <option value="is-4">4</option>
+      <option value="is-5">5</option>
+      <option value="is-6">6</option>
+      <option value="is-7">7</option>
+      <option value="is-8">8</option>
+      <option value="is-9">9</option>
+      <option value="is-10">10</option>
+    </select>
+  </div>
+</div>
+
 ## Max Inline-size
 
 | Class Name | Property | Value |
@@ -68,6 +124,54 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.max-is-9` | max-inline-size | `var(--graupl-spacer-9)` |
 | `.max-is-10` | max-inline-size | `var(--graupl-spacer-10)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex `">
+        <div class="bg-tertiary-300 is-full">
+          <div :class="` bordered bg-primary-300 bs-7 ${maxInlineSize}`"></div>
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ maxInlineSize }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-max-inline">Max Inline property</label>
+    <select id="select-max-inline" v-model="maxInlineSize">
+      <option value="max-is-auto">Auto</option>
+      <option value="max-is-fit-content">Fit Content</option>
+      <option value="max-is-max-content">Max Content</option>
+      <option value="max-is-min-content">Min Content</option>
+      <option value="max-is-stretch">Stretch</option>
+      <option value="max-is-full">Full</option>
+      <option value="max-is-quarter">Quarter</option>
+      <option value="max-is-half">Half</option>
+      <option value="max-is-three-quarters">Three Quarters</option>
+      <option value="max-is-third">Third</option>
+      <option value="max-is-two-thirds">Two Thirds</option>
+      <option value="max-is-half-screen">Half Screen</option>
+      <option value="max-is-third-screen">Third Screen</option>
+      <option value="max-is-two-thirds-screen">Two Thirds Screen</option>
+       <option value="max-is-quarter-screen">Quarter Screen</option>
+      <option value="max-is-three-quarters-screen">Three Quarters Screen</option>
+      <option value="max-is-full-screen">Full Screen</option>
+      <option value="max-is-0">0</option>
+      <option value="max-is-1">1</option>
+      <option value="max-is-2">2</option>
+      <option value="max-is-3">3</option>
+      <option value="max-is-4">4</option>
+      <option value="max-is-5">5</option>
+      <option value="max-is-6">6</option>
+      <option value="max-is-7">7</option>
+      <option value="max-is-8">8</option>
+      <option value="max-is-9">9</option>
+      <option value="max-is-10">10</option>
+    </select>
+  </div>
+</div>
+
 ## Min Inline-size
 
 | Class Name | Property | Value |
@@ -100,6 +204,53 @@ The inline-size utilities provide a set of classes to adjust the `inline-size`, 
 | `.min-is-8` | min-inline-size | `var(--graupl-spacer-8)` |
 | `.min-is-9` | min-inline-size | `var(--graupl-spacer-9)` |
 | `.min-is-10` | min-inline-size | `var(--graupl-spacer-10)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex `">
+        <div :class="` position-relative bordered bg-primary-300 bs-7 ${minInlineSize}`"></div>
+        <div class="bg-tertiary-300 w-full position-relative"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ minInlineSize }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-min-inline">Min Inline property</label>
+    <select id="select-min-inline" v-model="minInlineSize">
+      <option value="min-is-auto">Auto</option>
+      <option value="min-is-fit-content">Fit Content</option>
+      <option value="min-is-max-content">Max Content</option>
+      <option value="min-is-min-content">Min Content</option>
+      <option value="min-is-stretch">Stretch</option>
+      <option value="min-is-full">Full</option>
+      <option value="min-is-quarter">Quarter</option>
+      <option value="min-is-half">Half</option>
+      <option value="min-is-three-quarters">Three Quarters</option>
+      <option value="min-is-third">Third</option>
+      <option value="min-is-two-thirds">Two Thirds</option>
+      <option value="min-is-half-screen">Half Screen</option>
+      <option value="min-is-third-screen">Third Screen</option>
+      <option value="min-is-two-thirds-screen">Two Thirds Screen</option>
+       <option value="min-is-quarter-screen">Quarter Screen</option>
+      <option value="min-is-three-quarters-screen">Three Quarters Screen</option>
+      <option value="min-is-full-screen">Full Screen</option>
+      <option value="min-is-0">0</option>
+      <option value="min-is-1">1</option>
+      <option value="min-is-2">2</option>
+      <option value="min-is-3">3</option>
+      <option value="min-is-4">4</option>
+      <option value="min-is-5">5</option>
+      <option value="min-is-6">6</option>
+      <option value="min-is-7">7</option>
+      <option value="min-is-8">8</option>
+      <option value="min-is-9">9</option>
+      <option value="min-is-10">10</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

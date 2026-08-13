@@ -1,3 +1,13 @@
+<script setup>
+  import { ref } from "vue";
+
+  const fontSize = ref("text-xs");
+  const fontStyle = ref("font-style-normal");
+  const fontWeight = ref("font-weight-light");
+  const textTransform = ref("text-uppercase");
+
+</script>
+
 # Typography Utilities
 
 The typography utilities provide a set of classes to adjust the `font-size`, `font-weight`, `font-style`, `text-transform` properties of elements.
@@ -169,12 +179,58 @@ Applies the default h6 styling to an element.
 | `.text-4xl` | font-size | `var(--graupl-font-4xl)` |
 | `.text-5xl` | font-size | `var(--graupl-font-5xl)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex g-5`">
+        <div :class="`p-3 ${fontSize}`">The Test Item</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ fontSize }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-font-size">Font Size property</label>
+    <select id="select-font-size" v-model="fontSize">
+      <option value="text-xs">xs</option>
+      <option value="text-sm">sm</option>
+      <option value="text-base">base</option>
+      <option value="text-xl">xl</option>
+      <option value="text-2xl">2xl</option>
+      <option value="text-3xl">3xl</option>
+      <option value="text-4xl">4xl</option>
+      <option value="text-5xl">5xl</option>
+    </select>
+  </div>
+</div>
+
 ## Font Style
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.font-style-normal` | font-style | `normal` |
 | `.font-style-italic` | font-style | `italic` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex g-5`">
+        <div :class="`p-3 ${fontStyle}`">The Test Item</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ fontStyle }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-font-style">Font Style property</label>
+    <select id="select-font-style" v-model="fontStyle">
+      <option value="font-style-normal">Normal</option>
+      <option value="font-style-italic">Italic</option>
+    </select>
+  </div>
+</div>
 
 ## Font Weight
 
@@ -184,6 +240,27 @@ Applies the default h6 styling to an element.
 | `.font-weight-normal` | font-weight | `400` |
 | `.font-weight-bold` | font-weight | `700` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex g-5`">
+        <div :class="`p-3 ${fontWeight}`">The Test Item</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ fontWeight }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-font-weight">Font Weight property</label>
+    <select id="select-font-weight" v-model="fontWeight">
+      <option value="font-weight-light">Light</option>
+      <option value="font-weight-normal">Normal</option>
+      <option value="font-weight-bold">Bold</option>
+    </select>
+  </div>
+</div>
+
 ## Text Transform
 
 | Class Name | Property | Value |
@@ -192,6 +269,28 @@ Applies the default h6 styling to an element.
 | `.text-lowercase` | text-transform | `lowercase` |
 | `.text-capitalize` | text-transform | `capitalize` |
 | `.text-none` | text-transform | `none` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-flex g-5`">
+        <div :class="`p-3 ${textTransform}`">The Test Item</div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ textTransform }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-text-transform">Text Transform property</label>
+    <select id="select-text-transform" v-model="textTransform">
+      <option value="text-uppercase">Uppercase</option>
+      <option value="text-lowercase">Lowercase</option>
+      <option value="text-captalize">Capitalize</option>
+      <option value="text-none">None</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

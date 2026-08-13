@@ -1,3 +1,11 @@
+<script setup>
+  import { ref } from "vue";
+
+  const content = ref("justify-content-normal");
+  const items = ref("justify-items-start");
+  const self = ref("justify-self-auto");
+</script>
+
 # Justification Utilities
 
 The justification utilities provide a set of classes to adjust the `justify-content`, `justify-items`, and `justify-self` properties of elements.
@@ -15,6 +23,41 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-content-evenly` | justify-content | `space-evenly` |
 | `.justify-content-stretch` | justify-content | `stretch` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="position-relative">
+        <div :class="`display-flex w-full g-5 position-absolute z-0`">
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7 "></div>
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7 "></div>
+            <div class="bordered border-primary-700 bg-primary-300 is-7 bs-7"> </div>
+        </div>
+      </div>
+      <div :class="`${content} display-grid g-5 h-auto position-relative z-1 `" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300 is-7 bs-7"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-justify-content">Justify Content property</label>
+    <select id="select-justify-content" v-model="content">
+      <option value="justify-content-normal">Normal</option>
+      <option value="justify-content-start">Start</option>
+      <option value="justify-content-end">End</option>
+      <option value="justify-content-center">Center</option>
+      <option value="justify-content-between">Space Between</option>
+      <option value="justify-content-around">Space Around</option>
+      <option value="justify-content-evenly">Space Evenly</option>
+      <option value="justify-content-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
+
 ## Justify Items
 
 | Class Name | Property | Value |
@@ -23,6 +66,48 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-items-end` | justify-items | `end` |
 | `.justify-items-center` | justify-items | `center` |
 | `.justify-items-stretch` | justify-items | `stretch` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="position-relative">
+        <div :class="`display-grid g-5 position-absolute bordered border-transparent w-full z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+          <div class="w-fit-content bordered border-primary-700 bg-primary-300">
+            <div class=" w-7 h-7 "></div>
+          </div>
+        </div>
+      </div>
+      <div :class="`display-grid border-dotted g-5 ${items} position-relative z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 h-7 "></div>
+        </div><div class="bordered border-tertiary-700 bg-tertiary-300">
+          <div class=" w-7 bs-7 "></div>
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ items }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-justify-items">Justify Items property</label>
+    <select id="select-justify-items" v-model="items">
+      <option value="justify-items-start">Start</option>
+      <option value="justify-items-end">End</option>
+      <option value="justify-items-center">Center</option>
+      <option value="justify-items-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Justify Self
 
@@ -33,6 +118,33 @@ The justification utilities provide a set of classes to adjust the `justify-cont
 | `.justify-self-end` | justify-self | `end` |
 | `.justify-self-center` | justify-self | `center` |
 | `.justify-self-stretch` | justify-self | `stretch` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
+        <div :class="` bordered border-tertiary-700 bg-tertiary-300 ${self} `">
+          <div class=" w-7 h-7 "></div>
+        </div>
+        <div class="bordered border-primary-700 bg-primary-300"><div class=" w-7 h-7 "></div></div>
+        <div class="bordered border-primary-700 bg-primary-300"><div class=" w-7 h-7 "></div></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ self }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-justify-self">Justify Self property</label>
+    <select id="select-justify-self" v-model="self">
+      <option value="justify-self-auto">Auto</option>
+      <option value="justify-self-start">Start</option>
+      <option value="justify-self-end">End</option>
+      <option value="justify-self-center">Center</option>
+      <option value="justify-self-stretch">Stretch</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
