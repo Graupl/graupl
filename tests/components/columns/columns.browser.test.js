@@ -23,7 +23,7 @@ describe("Columns Layout", () => {
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("columns")).toMatchScreenshot();
+    await expect(screen.getByTestId("columns-wrapper")).toMatchScreenshot();
   });
 
   it.each(counts)(
@@ -41,7 +41,7 @@ describe("Columns Layout", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("columns")).toMatchScreenshot();
+      await expect(screen.getByTestId("columns-wrapper")).toMatchScreenshot();
     }
   );
 
@@ -56,15 +56,12 @@ describe("Columns Layout", () => {
         count: 3,
         fixed: true,
         items: 1,
-        attributes: {
-          "data-testid": "columns",
-        },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("columns")).toMatchScreenshot();
+    await expect(screen.getByTestId("columns-wrapper")).toMatchScreenshot();
   });
 
   it.each(spans)("Should match screenshot with span: %s", async (span) => {
@@ -72,15 +69,12 @@ describe("Columns Layout", () => {
       props: {
         span,
         count: 12,
-        attributes: {
-          "data-testid": "columns",
-        },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("columns")).toMatchScreenshot();
+    await expect(screen.getByTestId("columns-wrapper")).toMatchScreenshot();
   });
 
   it.each(sidebarsOptions)(
@@ -89,15 +83,12 @@ describe("Columns Layout", () => {
       const screen = render(Component, {
         props: {
           sidebars,
-          attributes: {
-            "data-testid": "columns",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("columns")).toMatchScreenshot();
+      await expect(screen.getByTestId("columns-wrapper")).toMatchScreenshot();
     }
   );
 });

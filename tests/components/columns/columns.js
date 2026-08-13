@@ -73,7 +73,10 @@ export default {
       containerClasses.push("sidebars-right");
     }
 
-    const attributes = setupClasses(props.attributes, containerClasses);
+    const attributes = setupClasses(
+      { "data-testid": "columns-wrapper" },
+      containerClasses
+    );
 
     const columns = h(AdvancedComponent, {
       attributes: {
