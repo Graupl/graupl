@@ -1,3 +1,15 @@
+<script setup>
+  import { ref } from "vue";
+
+  const backgroundAttachment = ref("bg-attachment-scroll");
+  const backgroundClip = ref("bg-clip-border-box");
+  const backgroundImage = ref("bg-image-none");
+  const backgroundOrigin = ref("bg-origin-border-box");
+  const backgroundPosition = ref("bg-position-top");
+  const backgroundRepeat = ref("bg-repeat-repeat");
+  const backgroundSize = ref("bg-size-auto");
+</script>
+
 # Background Utilities
 
 The background utilities provide a set of classes to adjust the `background-attachment`, `background-clip`, `background-image`, `background-origin`, `background-position`, `background-repeat`, and `background-size` properties of elements.
@@ -14,6 +26,30 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-attachment-fixed` | background-attachment | `fixed` |
 | `.bg-attachment-local` | background-attachment | `local` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5 g-5">
+        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary ${backgroundAttachment} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Test Item
+        </div>
+        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary`" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundAttachment }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-attachment">Background Attachment property</label>
+    <select id="select-background-attachment" v-model="backgroundAttachment">
+      <option value="bg-attachment-scroll">Scroll</option>
+      <option value="bg-attachment-fixed">Fixed</option>
+      <option value="bg-attachment-local">Local</option>
+    </select>
+  </div>
+</div>
+
 ## Background Clip
 
 | Class Name | Property | Value |
@@ -24,11 +60,59 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-clip-text` | background-clip | `text` |
 | `.bg-clip-border-area` | background-clip | `border-area` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 ${backgroundClip} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundClip }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-clip">Background Clip property</label>
+    <select id="select-background-clip" v-model="backgroundClip">
+      <option value="bg-clip-border-box">Border Box</option>
+      <option value="bg-clip-padding-box">Padding Box</option>
+      <option value="bg-clip-content-box">Content Box</option>
+      <option value="bg-clip-text">Text</option>
+      <option value="bg-clip-border-area">Border Area</option>
+    </select>
+  </div>
+</div>
+
 ## Background Image
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.bg-image-none` | background-image | `none` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundImage }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-image">Background image property</label>
+    <select id="select-background-image" v-model="backgroundImage">
+      <option value="bg-image-none">None</option>
+    </select>
+  </div>
+</div>
 
 ## Background Origin
 
@@ -37,6 +121,32 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-origin-border-box` | background-origin | `border-box` |
 | `.bg-origin-padding-box` | background-origin | `padding-box` |
 | `.bg-origin-content-box` | background-origin | `content-box` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  ${backgroundOrigin} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundOrigin }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-origin">Background Origin property</label>
+    <select id="select-background-origin" v-model="backgroundOrigin">
+      <option value="bg-origin-border-box">Border Box</option>
+      <option value="bg-origin-padding-box">Padding Box</option>
+      <option value="bg-origin-content-box">Content Box</option>
+      <option value="bg-origin-text">Text</option>
+      <option value="bg-origin-border-area">Border Area</option>
+    </select>
+  </div>
+</div>
 
 ## Background Position
 
@@ -47,6 +157,32 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-position-bottom` | background-position | `bottom` |
 | `.bg-position-left` | background-position | `left` |
 | `.bg-position-center` | background-position | `center` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space ${backgroundPosition} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundPosition }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-position">Background Position property</label>
+    <select id="select-background-position" v-model="backgroundPosition">
+      <option value="bg-position-top">Top</option>
+      <option value="bg-position-right">Right</option>
+      <option value="bg-position-bottom">Bottom</option>
+      <option value="bg-position-left">Left</option>
+      <option value="bg-position-center">Center</option>
+    </select>
+  </div>
+</div>
 
 ## Background Repeat
 
@@ -59,6 +195,33 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-repeat-round` | background-repeat | `round` |
 | `.bg-repeat-no-repeat` | background-repeat | `no-repeat` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary ${backgroundRepeat} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundRepeat }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-repeat">Background Repeat property</label>
+    <select id="select-background-repeat" v-model="backgroundRepeat">
+      <option value="bg-repeat-repeat">Repeat</option>
+      <option value="bg-repeat-repeat-x">Repeat X</option>
+      <option value="bg-repeat-repeat-y">Repeat Y</option>
+      <option value="bg-repeat-space">Space</option>
+      <option value="bg-repeat-round">Round</option>
+      <option value="bg-repeat-no-repeat">No Repeat</option>
+    </select>
+  </div>
+</div>
+
 ## Background Size
 
 | Class Name | Property | Value |
@@ -66,6 +229,30 @@ For `background-color` utility classes, please refer to the [color utilities](./
 | `.bg-size-auto` | background-size | `auto` |
 | `.bg-size-cover` | background-size | `cover` |
 | `.bg-size-contain` | background-size | `contain` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex g-5">
+        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y ${backgroundSize} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
+        </div>
+        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ backgroundSize }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-background-size">Background Size property</label>
+    <select id="select-background-size" v-model="backgroundSize">
+      <option value="bg-size-auto">Auto</option>
+      <option value="bg-size-cover">Cover</option>
+      <option value="bg-size-contain">Contain</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

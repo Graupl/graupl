@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const visibility = ref("visibility-visible");
+</script>
+
 # Visibility Utilities
 
 The visibility utilities provide a set of classes to adjust the `visibility` properties of elements.
@@ -9,6 +15,27 @@ The visibility utilities provide a set of classes to adjust the `visibility` pro
 | `.visibility-visible` | visibility | `visible` |
 | `.visibility-hidden` | visibility | `hidden` |
 | `.visibility-collapse` | visibility | `collapse` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display position-relative">
+      <div class="display-flex is-fit-content bs-fit-content bg-tertiary-200">
+        <div :class="`bordered bg-primary-200 bs-7 is-7 ${visibility}`"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ visibility }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-visibility">Visibility property</label>
+    <select id="select-visibility" v-model="visibility">
+      <option value="visibility-visible">Visible</option>
+      <option value="visibility-hidden">Hidden</option>
+      <option value="visibility-collapse">Collapse</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

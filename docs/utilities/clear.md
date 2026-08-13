@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const clear = ref("clear-none");
+</script>
+
 # Clear Utilities
 
 The clear utilities provide a set of classes to adjust the `clear` properties of elements.
@@ -12,6 +18,32 @@ The clear utilities provide a set of classes to adjust the `clear` properties of
 | `.clear-both` | clear | `both` |
 | `.clear-inline-start` | clear | `inline-start` |
 | `.clear-inline-end` | clear | `inline-end` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="` w-full h-full `">
+        <div class="float-right bordered border-primary-700 bg-primary-300 p-7 h-two-thirds m-3"></div>
+        <div class="float-left bordered border-secondary-700 bg-secondary-300 p-7 m-3"></div>
+        <div :class="` ${clear} bordered border-tertiary-700 bg-tertiary-300 p-5 m-3 `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="p-5 {{ clear }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-clear">clear property</label>
+    <select id="select-clear" v-model="clear">
+      <option value="clear-none">None</option>
+      <option value="clear-left">Left</option>
+      <option value="clear-right">Right</option>
+      <option value="clear-both">Both</option>
+      <option value="clear-inline-start">Inline-start</option>
+      <option value="clear-inline-end">Inline End</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
