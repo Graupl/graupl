@@ -187,7 +187,8 @@ export default {
                     tag: "img",
                     attributes: {
                       src: "slide3.jpg",
-                      alt: "Slide 3 placeholder alt text",
+                      alt: "Slide 3 placeholder alt text 3",
+                      "data-testid": "third",
                     },
                   }),
                   h(AdvancedComponent, {
