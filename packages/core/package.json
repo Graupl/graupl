@@ -1,6 +1,6 @@
 {
   "name": "@graupl/core",
-  "version": "1.0.0-beta.55",
+  "version": "1.0.0-beta.56",
   "license": "GPL-3.0-or-later",
   "description": "The core module of Graupl, providing essential styles and utilities.",
   "main": "dist/js/graupl.cjs.js",
@@ -42,6 +42,14 @@
       "import": "./dist/js/generator/alert.es.js",
       "require": "./dist/js/generator/alert.cjs.js"
     },
+    "./breadcrumb": {
+      "import": "./dist/js/component/breadcrumb.es.js",
+      "require": "./dist/js/component/breadcrumb.cjs.js"
+    },
+    "./breadcrumb/generator": {
+      "import": "./dist/js/generator/breadcrumb.es.js",
+      "require": "./dist/js/generator/breadcrumb.cjs.js"
+    },
     "./carousel": {
       "import": "./dist/js/component/carousel.es.js",
       "require": "./dist/js/component/carousel.cjs.js"
@@ -50,9 +58,32 @@
       "import": "./dist/js/generator/carousel.es.js",
       "require": "./dist/js/generator/carousel.cjs.js"
     },
+    "./disclosure": {
+      "import": "./dist/js/component/disclosure.es.js",
+      "require": "./dist/js/component/disclosure.cjs.js"
+    },
+    "./disclosure/generator": {
+      "import": "./dist/js/generator/disclosure.es.js",
+      "require": "./dist/js/generator/disclosure.cjs.js"
+    },
     "./navigation/generator": {
       "import": "./dist/js/generator/navigation.es.js",
       "require": "./dist/js/generator/navigation.cjs.js"
+    },
+    "./tabs": {
+      "import": "./dist/js/component/tabs.es.js",
+      "require": "./dist/js/component/tabs.cjs.js"
+    },
+    "./tabs/generator": {
+      "import": "./dist/js/generator/tabs.es.js"
+    },
+    "./tooltip": {
+      "import": "./dist/js/component/tooltip.es.js",
+      "require": "./dist/js/component/tooltip.cjs.js"
+    },
+    "./tooltip/generator": {
+      "import": "./dist/js/generator/tooltip.es.js",
+      "require": "./dist/js/generator/tooltip.cjs.js"
     }
   },
   "repository": {

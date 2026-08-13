@@ -20,6 +20,11 @@ on:
   schedule:
     - cron: '23 0 * * 5'
 
+# Cancel superseded runs on rapid PR pushes; leave scheduled/push runs alone.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   analyze:
     name: Analyze
