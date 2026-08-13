@@ -68,10 +68,9 @@ describe("Columns Layout", () => {
 });
 
 describe("Columns Layout", () => {
-  it.each(spanCount)("Should match screenshot: fixed %s", async (spanCount) => {
+  it.each(spanCount)("Should match screenshot: %s", async (spanCount) => {
     const screen = render(Component, {
       props: {
-        fixed: true,
         span: `${spanCount}`,
         attributes: {
           class: ["count-12"],
