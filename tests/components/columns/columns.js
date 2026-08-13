@@ -36,37 +36,37 @@ export default {
             },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
           h(BasicComponent, {
-            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+            attributes: { class: ["bg-primary", "span-1", "py-7", "px-5"] },
           }),
         ],
       });
