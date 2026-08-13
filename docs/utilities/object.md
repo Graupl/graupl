@@ -1,3 +1,10 @@
+<script setup>
+  import { ref } from "vue";
+
+  const fit = ref("object-fit-fill");
+  const position = ref("object-position-top");
+</script>
+
 # Object Utilities
 
 The object utilities provide a set of classes to adjust the `object-fit`, and `object-position` properties of elements.
@@ -12,6 +19,36 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
 | `.object-fit-none` | object-fit | `none` |
 | `.object-fit-scale-down` | object-fit | `scale-down` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display  h-auto">
+      <div class="display-flex g-5">
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="`${fit} w-full h-full `" />
+        </div>
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="` w-full h-full `" />
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;img class="{{ fit }}"&gt;&lt;/img&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-fit">Object Fit property</label>
+    <select id="select-fit" v-model="fit">
+      <option value="object-fit-fill">Fill</option>
+      <option value="object-fit-contain">Contain</option>
+      <option value="object-fit-cover">Cover</option>
+      <option value="object-fit-none">None</option>
+      <option value="object-fit-scale-down">Scale-down</option>
+    </select>
+  </div>
+</div>
+
 ## Object Position
 
 | Class Name | Property | Value |
@@ -21,6 +58,36 @@ The object utilities provide a set of classes to adjust the `object-fit`, and `o
 | `.object-position-bottom` | object-position | `bottom` |
 | `.object-position-left` | object-position | `left` |
 | `.object-position-center` | object-position | `center` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display  h-auto">
+      <div class="display-flex g-5">
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="`${position} object-fit-none w-full h-full `" />
+        </div>
+        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
+          <img src="https://picsum.photos/175/550?random=6"
+            alt="Card image" :class="` object-fit-none w-full h-full `" />
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;img class="{{ position }}"&gt;&lt;/img&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-position">Object Position property</label>
+    <select id="select-position" v-model="position">
+      <option value="object-position-top">Top</option>
+      <option value="object-position-right">Right</option>
+      <option value="object-position-bottom">Bottom</option>
+      <option value="object-position-left">Left</option>
+      <option value="object-position-center">Center</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

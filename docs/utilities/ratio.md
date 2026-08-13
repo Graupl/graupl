@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const ratio = ref("one-by-one");
+</script>
+
 # Ratio Utilities
 
 The ratio utilities provide a set of classes to adjust the `aspect-ratio` properties of elements.
@@ -37,7 +43,7 @@ Used to customize ratio.
 
 | Custom Property | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-ratio` | AAspect-ratio value used by `.ratio` | `auto` |
+| `--graupl-ratio` | Aspect-ratio value used by `.ratio` | `auto` |
 
 ## Aspect Ratio
 
@@ -50,6 +56,34 @@ Used to customize ratio.
 | `.sixteen-by-nine` | --graupl-ratio | `16 / 9` |
 | `.three-by-two` | --graupl-ratio | `3 / 2` |
 | `.eight-by-five` | --graupl-ratio | `8 / 5` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-4">
+      <div class="display-flex is-max-content bs-max-content position-relative">
+        <div class="float-left position-absolute w-10 h-10 bg-tertiary-300"></div>
+        <div :class="`ratio ${ratio} display-flex h-auto w-10`">
+          <div class="bordered border-primary-700 bg-primary-300 force-ratio"></div>
+      </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="ratio {{ ratio }}">&lt;div class="force-ratio"&gt;&lt;/div&gt;&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-ratio">Ratio property</label>
+    <select id="select-ratio" v-model="ratio">
+      <option value="one-by-one">One by One</option>
+      <option value="two-by-one">Two by One</option>
+      <option value="four-by-three">Four by Three</option>
+      <option value="sixteen-by-nine">Sixteen by Nine</option>
+      <option value="four-by-one">Four by One</option>
+      <option value="three-by-two">Three by Two</option>
+      <option value="eight-by-five">Eight by Five</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
