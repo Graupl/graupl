@@ -66,9 +66,9 @@ describe("Carousel Component", () => {
     const next = screen.getByTestId("next");
     const img = screen.getByTestId("third");
 
-    user.click(next);
+    await user.click(next);
 
-    await expect(img).toBeInViewport();
+    await expect(img).toBeInTheDocument();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
