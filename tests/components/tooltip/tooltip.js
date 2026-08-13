@@ -19,19 +19,27 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
-        ...props,
-        attributes,
+        attributes: {
+          style: "padding: 5rem",
+          "data-testid": "tooltip-wrapper",
+        },
         children: [
-          h(BasicComponent, {
-            text: "This is a tooltip!",
-            tag: "span",
-            attributes: {
-              class: ["tooltip-description", props.open ? "show" : "hide"],
-            },
-          }),
-          h(BasicComponent, {
-            tag: "button",
-            attributes: { class: ["tooltip-toggle"] },
+          h(AdvancedComponent, {
+            ...props,
+            attributes,
+            children: [
+              h(BasicComponent, {
+                text: "This is a tooltip!",
+                tag: "span",
+                attributes: {
+                  class: ["tooltip-description", props.open ? "show" : "hide"],
+                },
+              }),
+              h(BasicComponent, {
+                tag: "button",
+                attributes: { class: ["tooltip-toggle"] },
+              }),
+            ],
           }),
         ],
       });
