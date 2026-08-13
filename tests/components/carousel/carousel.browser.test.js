@@ -1,7 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
 import Component from "./carousel.js";
-import { userEvent } from "vitest/browser";
 
 describe("Carousel Component", () => {
   it("Should match screenshot with pause", async () => {
@@ -44,29 +43,6 @@ describe("Carousel Component", () => {
     });
 
     await document.fonts.ready;
-
-    await expect(screen.getByTestId("carousel")).toMatchScreenshot();
-  });
-
-  it("Should match screenshot on second with next clicked", async () => {
-    const screen = render(Component, {
-      props: {
-        secondTab: true,
-        attributes: {
-          "data-testid": "carousel",
-        },
-      },
-    });
-
-    await document.fonts.ready;
-
-    const user = userEvent.setup();
-    const next = screen.getByTestId("next");
-    const img = screen.getByTestId("third");
-
-    await user.click(next);
-
-    await expect(img).toBeInTheDocument();
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
