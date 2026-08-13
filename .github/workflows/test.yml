@@ -8,6 +8,12 @@ on:
   workflow_dispatch:
   workflow_call:
 
+# Cancel superseded runs on rapid PR pushes, but let push-triggered runs on
+# *.x branches finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   build:
     runs-on: ubuntu-24.04
@@ -19,9 +25,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run build
         run: npm run build
@@ -36,9 +43,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run eslint
         run: npm run eslint
@@ -53,9 +61,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run stylelint
         run: npm run stylelint
@@ -70,9 +79,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run prettier
         run: npm run prettier -- --check
@@ -87,9 +97,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
 
       - name: Run vitest
         run: npm run test:unit
@@ -103,12 +114,25 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24.x
+          cache: npm
 
       - name: Install modules
-        run: npm install
+        run: npm ci
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
 
       - name: Install Playwright Browsers
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: npx --no playwright install --with-deps --only-shell
+
+      - name: Install Playwright system dependencies
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
+        run: npx --no playwright install-deps
 
       - name: Clear font cache
         run: fc-cache -f -v

@@ -13,6 +13,6 @@ describe("Link Component", () => {
 
     await document.fonts.ready;
 
-    await expect(screen.getByText("Click me")).toMatchScreenshot();
+    await expect(screen.getByTestId("link-wrapper")).toMatchScreenshot();
   });
 });
