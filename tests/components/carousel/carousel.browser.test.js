@@ -36,7 +36,6 @@ describe("Carousel Component", () => {
   it("Should match screenshot with second image", async () => {
     const screen = render(Component, {
       props: {
-        play: true,
         secondTab: true,
         attributes: {
           "data-testid": "carousel",
@@ -52,7 +51,6 @@ describe("Carousel Component", () => {
   it("Should match screenshot on second with next clicked", async () => {
     const screen = render(Component, {
       props: {
-        play: true,
         secondTab: true,
         attributes: {
           "data-testid": "carousel",
