@@ -17,9 +17,7 @@ describe("Carousel Component", () => {
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
-});
 
-describe("Carousel Component", () => {
   it("Should match screenshot with play", async () => {
     const screen = render(Component, {
       props: {
@@ -34,9 +32,7 @@ describe("Carousel Component", () => {
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
-});
 
-describe("Carousel Component", () => {
   it("Should match screenshot with second image", async () => {
     const screen = render(Component, {
       props: {
@@ -52,9 +48,7 @@ describe("Carousel Component", () => {
 
     await expect(screen.getByTestId("carousel")).toMatchScreenshot();
   });
-});
 
-describe("Carousel Component", () => {
   it("Should match screenshot on second with next clicked", async () => {
     const screen = render(Component, {
       props: {
