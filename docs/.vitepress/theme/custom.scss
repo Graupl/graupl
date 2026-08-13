@@ -261,3 +261,44 @@ table {
     gap: map.get(graupl-root-variables.$spacers, 3);
   }
 }
+
+.static-example {
+  display: flex;
+  flex-direction: column;
+  gap: map.get(graupl-root-variables.$spacers, 3);
+  margin-block: map.get(graupl-root-variables.$spacers, 5);
+
+  .example-container {
+    inline-size: 100%;
+
+    .example-display {
+      /* stylelint-disable scss/operator-no-newline-after */
+      block-size: calc(
+        map.get(graupl-root-variables.$spacers, 10) +
+          (map.get(graupl-root-variables.$spacers, 5) * 2)
+      );
+      /* stylelint-enable scss/operator-no-newline-after */
+      padding: map.get(graupl-root-variables.$spacers, 5);
+      overflow-y: scroll;
+      border-width: graupl-root-variables.$border-top-width
+        graupl-root-variables.$border-right-width
+        graupl-root-variables.$border-bottom-width
+        graupl-root-variables.$border-left-width;
+      border-style: graupl-root-variables.$border-top-style
+        graupl-root-variables.$border-right-style
+        graupl-root-variables.$border-bottom-style
+        graupl-root-variables.$border-left-style;
+      border-radius: graupl-root-variables.$border-top-left-radius
+        graupl-root-variables.$border-top-right-radius
+        graupl-root-variables.$border-bottom-right-radius
+        graupl-root-variables.$border-bottom-left-radius;
+      scrollbar-color: theme.get("primary", "700") theme.get("primary", "100");
+      scrollbar-width: thin;
+    }
+
+    .example-classes {
+      padding: map.get(graupl-root-variables.$spacers, 3);
+      background: theme.get("primary", "100");
+    }
+  }
+}

@@ -1,3 +1,21 @@
+<script setup>
+  import { ref } from "vue";
+
+  const inset = ref("inset-0");
+  const insetX = ref("inset-x-0");
+  const insetY = ref("inset-y-0");
+  const insetInline = ref("inset-inline-0");
+  const insetBlock = ref("inset-block-0");
+  const insetInlineStart = ref("inset-inline-start-0");
+  const insetInlineEnd = ref("inset-inline-end-0");
+  const insetBlockStart = ref("inset-block-start-0");
+  const insetBlockEnd = ref("inset-block-end-0");
+  const top = ref("top-0");
+  const right = ref("right-0");
+  const bottom = ref("bottom-0");
+  const left = ref("left-0");
+</script>
+
 # Inset Utilities
 
 The inset utilities provide a set of classes to adjust the `inset`, `inset-inline`, `inset-block`, `inset-inline-start`, `inset-inline-end`, `inset-block-start`, `inset-block-end`, `top`, `right`, `bottom` and `left` properties of elements.
@@ -15,6 +33,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-third` | inset | `calc(100%/ 3)` |
 | `.inset-two-thirds` | inset | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${inset} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ inset }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset">Inset property</label>
+    <select id="select-inset" v-model="inset">
+      <option value="inset-0">0</option>
+      <option value="inset-auto">Auto</option>
+      <option value="inset-full">Full</option>
+      <option value="inset-quarter">Quarter</option>
+      <option value="inset-half">Half</option>
+      <option value="inset-three-quarters">Three Quarters</option>
+      <option value="inset-third">Third</option>
+      <option value="inset-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Inset X
 
 | Class Name | Property | Value |
@@ -27,6 +74,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-x-three-quarters` | inset-x | `75%` |
 | `.inset-x-third` | inset-x | `calc(100%/ 3)` |
 | `.inset-x-two-thirds` | inset-x | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetX} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetX }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-x">Inset X property</label>
+    <select id="select-inset-x" v-model="insetX">
+      <option value="inset-x-0">0</option>
+      <option value="inset-x-auto">Auto</option>
+      <option value="inset-x-full">Full</option>
+      <option value="inset-x-quarter">Quarter</option>
+      <option value="inset-x-half">Half</option>
+      <option value="inset-x-three-quarters">Three Quarters</option>
+      <option value="inset-x-third">Third</option>
+      <option value="inset-x-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Inset Y
 
@@ -41,6 +117,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-y-third` | inset-y | `calc(100%/ 3)` |
 | `.inset-y-two-thirds` | inset-y | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetY} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetY }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-y">Inset Y property</label>
+    <select id="select-inset-y" v-model="insetY">
+      <option value="inset-y-0">0</option>
+      <option value="inset-y-auto">Auto</option>
+      <option value="inset-y-full">Full</option>
+      <option value="inset-y-quarter">Quarter</option>
+      <option value="inset-y-half">Half</option>
+      <option value="inset-y-three-quarters">Three Quarters</option>
+      <option value="inset-y-third">Third</option>
+      <option value="inset-y-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Inset Inline
 
 | Class Name | Property | Value |
@@ -53,6 +158,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-three-quarters` | inset-inline | `75%` |
 | `.inset-inline-third` | inset-inline | `calc(100%/ 3)` |
 | `.inset-inline-two-thirds` | inset-inline | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInline} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetInline }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-inline">Inset Inline property</label>
+    <select id="select-inset-inline" v-model="insetInline">
+      <option value="inset-inline-0">0</option>
+      <option value="inset-inline-auto">Auto</option>
+      <option value="inset-inline-full">Full</option>
+      <option value="inset-inline-quarter">Quarter</option>
+      <option value="inset-inline-half">Half</option>
+      <option value="inset-inline-three-quarters">Three Quarters</option>
+      <option value="inset-inline-third">Third</option>
+      <option value="inset-inline-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Inset Block
 
@@ -67,6 +201,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-third` | inset-block | `calc(100%/ 3)` |
 | `.inset-block-two-thirds` | inset-block | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlock} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetBlock }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-block">Inset Block property</label>
+    <select id="select-inset-block" v-model="insetBlock">
+      <option value="inset-block-0">0</option>
+      <option value="inset-block-auto">Auto</option>
+      <option value="inset-block-full">Full</option>
+      <option value="inset-block-quarter">Quarter</option>
+      <option value="inset-block-half">Half</option>
+      <option value="inset-block-three-quarters">Three Quarters</option>
+      <option value="inset-block-third">Third</option>
+      <option value="inset-block-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Inset Inline Start
 
 | Class Name | Property | Value |
@@ -79,6 +242,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-start-three-quarters` | inset-inline-start | `75%` |
 | `.inset-inline-start-third` | inset-inline-start | `calc(100%/ 3)` |
 | `.inset-inline-start-two-thirds` | inset-inline-start | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInlineStart} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetInlineStart }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-inline-start">Inset Inline Start property</label>
+    <select id="select-inset-inline-start" v-model="insetInlineStart">
+      <option value="inset-inline-start-0">0</option>
+      <option value="inset-inline-start-auto">Auto</option>
+      <option value="inset-inline-start-full">Full</option>
+      <option value="inset-inline-start-quarter">Quarter</option>
+      <option value="inset-inline-start-half">Half</option>
+      <option value="inset-inline-start-three-quarters">Three Quarters</option>
+      <option value="inset-inline-start-third">Third</option>
+      <option value="inset-inline-start-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Inset Inline End
 
@@ -93,6 +285,33 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-inline-end-third` | inset-inline-end | `calc(100%/ 3)` |
 | `.inset-inline-end-two-thirds` | inset-inline-end | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div :class="` right-0 position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetInlineEnd} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetInlineEnd }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-inline-end">Inset Inline End property</label>
+    <select id="select-inset-inline-end" v-model="insetInlineEnd">
+      <option value="inset-inline-end-0">0</option>
+      <option value="inset-inline-end-auto">Auto</option>
+      <option value="inset-inline-end-full">Full</option>
+      <option value="inset-inline-end-quarter">Quarter</option>
+      <option value="inset-inline-end-half">Half</option>
+      <option value="inset-inline-end-three-quarters">Three Quarters</option>
+      <option value="inset-inline-end-third">Third</option>
+      <option value="inset-inline-end-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Inset Block Start
 
 | Class Name | Property | Value |
@@ -105,6 +324,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-start-three-quarters` | inset-block-start | `75%` |
 | `.inset-block-start-third` | inset-block-start | `calc(100%/ 3)` |
 | `.inset-block-start-two-thirds` | inset-block-start | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlockStart} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetBlockStart }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-block-start">Inset Block Start property</label>
+    <select id="select-inset-block-start" v-model="insetBlockStart">
+      <option value="inset-block-start-0">0</option>
+      <option value="inset-block-start-auto">Auto</option>
+      <option value="inset-block-start-full">Full</option>
+      <option value="inset-block-start-quarter">Quarter</option>
+      <option value="inset-block-start-half">Half</option>
+      <option value="inset-block-start-three-quarters">Three Quarters</option>
+      <option value="inset-block-start-third">Third</option>
+      <option value="inset-block-start-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Inset Block End
 
@@ -119,6 +367,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.inset-block-end-third` | inset-block-end | `calc(100%/ 3)` |
 | `.inset-block-end-two-thirds` | inset-block-end | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents `">
+        <div class="position-relative">
+          <div class="position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content mt-10"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${insetBlockEnd} mt-10`"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ insetBlockEnd }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-inset-block-end">Inset Block End property</label>
+    <select id="select-inset-block-end" v-model="insetBlockEnd">
+      <option value="inset-block-end-0">0</option>
+      <option value="inset-block-end-auto">Auto</option>
+      <option value="inset-block-end-full">Full</option>
+      <option value="inset-block-end-quarter">Quarter</option>
+      <option value="inset-block-end-half">Half</option>
+      <option value="inset-block-end-three-quarters">Three Quarters</option>
+      <option value="inset-block-end-third">Third</option>
+      <option value="inset-block-end-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Top
 
 | Class Name | Property | Value |
@@ -131,6 +408,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.top-three-quarters` | top | `75%` |
 | `.top-third` | top | `calc(100%/ 3)` |
 | `.top-two-thirds` | top | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${top} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ top }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-top">Top property</label>
+    <select id="select-top" v-model="top">
+      <option value="top-0">0</option>
+      <option value="top-auto">Auto</option>
+      <option value="top-full">Full</option>
+      <option value="top-quarter">Quarter</option>
+      <option value="top-half">Half</option>
+      <option value="top-three-quarters">Three Quarters</option>
+      <option value="top-third">Third</option>
+      <option value="top-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Right
 
@@ -145,6 +451,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.right-third` | right | `calc(100%/ 3)` |
 | `.right-two-thirds` | right | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+      <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${right} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ right }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-right">Right property</label>
+    <select id="select-right" v-model="right">
+      <option value="right-0">0</option>
+      <option value="right-auto">Auto</option>
+      <option value="right-full">Full</option>
+      <option value="right-quarter">Quarter</option>
+      <option value="right-half">Half</option>
+      <option value="right-three-quarters">Three Quarters</option>
+      <option value="right-third">Third</option>
+      <option value="right-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Bottom
 
 | Class Name | Property | Value |
@@ -158,6 +493,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.bottom-third` | bottom | `calc(100%/ 3)` |
 | `.bottom-two-thirds` | bottom | `calc(100%/ 1.5)` |
 
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+     <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content mt-10 `"></div>
+        </div>
+        <div :class="` position-relative bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${bottom} mt-10 `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ bottom }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-bottom">Bottom property</label>
+    <select id="select-bottom" v-model="bottom">
+      <option value="bottom-0">0</option>
+      <option value="bottom-auto">Auto</option>
+      <option value="bottom-full">Full</option>
+      <option value="bottom-quarter">Quarter</option>
+      <option value="bottom-half">Half</option>
+      <option value="bottom-three-quarters">Three Quarters</option>
+      <option value="bottom-third">Third</option>
+      <option value="bottom-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
+
 ## Left
 
 | Class Name | Property | Value |
@@ -170,6 +534,35 @@ The inset utilities provide a set of classes to adjust the `inset`, `inset-inlin
 | `.left-three-quarters` | left | `75%` |
 | `.left-third` | left | `calc(100%/ 3)` |
 | `.left-two-thirds` | left | `calc(100%/ 1.5)` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display p-0">
+     <div :class="` display-contents h-auto `">
+        <div class="position-relative">
+          <div :class="` position-absolute bordered text-primary-100 border-primary-700 bg-primary-300 p-5 w-fit-content`"></div>
+        </div>
+        <div :class="` position-absolute bordered text-tertiary-100 border-tertiary-700 bg-tertiary-300 p-5 w-fit-content ${left} `"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ left }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-left">Left property</label>
+    <select id="select-left" v-model="left">
+      <option value="left-0">0</option>
+      <option value="left-auto">Auto</option>
+      <option value="left-full">Full</option>
+      <option value="left-quarter">Quarter</option>
+      <option value="left-half">Half</option>
+      <option value="left-three-quarters">Three Quarters</option>
+      <option value="left-third">Third</option>
+      <option value="left-two-thirds">Two Thirds</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

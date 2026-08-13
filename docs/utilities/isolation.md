@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const isolation = ref("isolation-auto");
+</script>
+
 # Isolation Utilities
 
 The isolation utilities provide a set of classes to adjust the `isolation` properties of elements.
@@ -8,6 +14,30 @@ The isolation utilities provide a set of classes to adjust the `isolation` prope
 | --- | --- | --- |
 | `.isolation-auto` | isolation | `auto` |
 | `.isolation-isolate` | isolation | `isolate` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="display-flex bg-secondary-500 g-5 h-half p-5 w-quarter z-0 text-secondary-100"> Z Index 0
+        <div :class="` display-flex cg-5 ${isolation} `">
+          <div :class="` bordered border-primary-700 bg-primary-300 p-3 h-9 z-n1`"> Z index -1</div>
+          <div :class="` bordered border-primary-700 bg-primary-300 p-3 h-9 z-n1 `">Z index -1</div>
+          <div :class="` bordered border-primary-700 bg-primary-300 p-3 h-9 z-n1 `">Z index -1</div>
+        </div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ isolation }}"&gt;&lt;div class="z-n1"&gt;&lt;/div&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-isolation">Isolation property</label>
+    <select id="select-isolation" v-model="isolation">
+      <option value="isolation-auto">Auto</option>
+      <option value="isolation-isolate">Isolate</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 

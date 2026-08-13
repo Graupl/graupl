@@ -1,3 +1,9 @@
+<script setup>
+  import { ref } from "vue";
+
+  const position = ref("position-static");
+</script>
+
 # Position Utilities
 
 The position utilities provide a set of classes to adjust the `position` properties of elements.
@@ -11,6 +17,34 @@ The position utilities provide a set of classes to adjust the `position` propert
 | `.position-absolute` | position | `absolute` |
 | `.position-relative` | position | `relative` |
 | `.position-sticky` | position | `sticky` |
+
+<div class="static-example">
+  <div class="example-container">
+    <div class="example-display">
+      <div class="position-relative isolation-isolate">
+        <div class="bordered border-primary-700 bg-primary-300 h-8 w-three-quarters m-4"></div>
+        <div class="bordered border-primary-700 bg-primary-300 h-4 w-full m-4  mt-8"></div>
+         <div :class="` ${position} bordered border-primary-700 bg-tertiary-300 h-7 w-three-quarters m-5 top-0 `"></div>
+        <div class="bordered border-primary-700 bg-primary-300 h-9 w-half m-5"></div>
+        <div class="bordered border-primary-700 bg-primary-300 h-5 w-three-quarters m-7 mb-8"></div>
+        <div class="bordered border-primary-700 bg-primary-300 h-7 w-three-quarters m-5"></div>
+      </div>
+    </div>
+    <div class="example-classes">
+      <code>&lt;div class="{{ position }}"&gt;&lt;/div&gt;</code>
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="select-position">Position property</label>
+    <select id="select-position" v-model="position">
+      <option value="position-static">Static</option>
+      <option value="position-fixed">Fixed</option>
+      <option value="position-absolute">Absolute</option>
+      <option value="position-relative">Relative</option>
+      <option value="position-sticky">Sticky</option>
+    </select>
+  </div>
+</div>
 
 ## Customization
 
