@@ -36,6 +36,7 @@ describe("Carousel Component", () => {
     const screen = render(Component, {
       props: {
         secondTab: true,
+        secondImage: true,
         attributes: {
           "data-testid": "carousel",
         },

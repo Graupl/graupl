@@ -9,6 +9,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    secondImage: {
+      type: Boolean,
+      default: false,
+    },
     play: {
       type: Boolean,
       default: false,
@@ -116,7 +120,7 @@ export default {
             children: [
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item", props.secondTab ? "" : "active"],
+                  class: ["carousel-item", props.secondImage ? "" : "active"],
                 },
                 children: [
                   h(BasicComponent, {
@@ -148,7 +152,7 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item", props.secondTab ? "active" : ""],
+                  class: ["carousel-item", props.secondImage ? "active" : ""],
                 },
                 children: [
                   h(BasicComponent, {
