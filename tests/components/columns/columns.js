@@ -5,34 +5,13 @@ import { setupClasses } from "../helpers.js";
 
 export default {
   props: {
-    children: {
-      type: Array,
-      default: [
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-        h(BasicComponent, {
-          attributes: { class: ["bg-primary", "py-7", "px-5"] },
-        }),
-      ],
+    fixed: {
+      type: Boolean,
+      default: false,
+    },
+    span: {
+      type: String,
+      default: "span-1",
     },
     attributes: {
       type: Object,
@@ -40,8 +19,56 @@ export default {
     },
   },
   setup(props) {
-    const attributes = setupClasses(props.attributes, ["columns", "py-5"]);
+    const attributes = setupClasses(props.attributes, [
+      "columns",
+      "py-5",
+      props.fixed ? "fixed" : "",
+    ]);
 
-    return () => h(AdvancedComponent, { ...props, attributes });
+    return () =>
+      h(AdvancedComponent, {
+        ...props,
+        attributes,
+        children: [
+          h(BasicComponent, {
+            attributes: {
+              class: ["bg-primary", `${props.span}`, "py-7", "px-5"],
+            },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+          h(BasicComponent, {
+            attributes: { class: ["bg-primary", "py-7", "px-5"] },
+          }),
+        ],
+      });
   },
 };
