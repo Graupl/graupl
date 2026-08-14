@@ -120,7 +120,11 @@ export default {
             children: [
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item", props.secondImage ? "" : "active"],
+                  class: [
+                    "carousel-item",
+                    "position-relative",
+                    props.secondImage ? "" : "active",
+                  ],
                 },
                 children: [
                   h(BasicComponent, {
@@ -152,7 +156,11 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item", props.secondImage ? "active" : ""],
+                  class: [
+                    "carousel-item",
+                    "position-relative",
+                    props.secondImage ? "active" : "",
+                  ],
                 },
                 children: [
                   h(BasicComponent, {
@@ -184,7 +192,7 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item"],
+                  class: ["carousel-item", "position-relative"],
                 },
                 children: [
                   h(BasicComponent, {
@@ -217,7 +225,7 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item"],
+                  class: ["carousel-item", "position-relative"],
                 },
                 children: [
                   h(BasicComponent, {
@@ -249,7 +257,7 @@ export default {
               }),
               h(AdvancedComponent, {
                 attributes: {
-                  class: ["carousel-item"],
+                  class: ["carousel-item", "position-relative"],
                 },
                 children: [
                   h(BasicComponent, {
