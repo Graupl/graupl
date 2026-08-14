@@ -26,25 +26,33 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
-        "data-testid": "disclosure",
+        attributes: {
+          "data-testid": "disclosure-wrapper",
+          class: ["container"],
+        },
         children: [
-          h(BasicComponent, {
-            attributes: {
-              class: ["disclosure-toggle", props.variant],
-              "aria-expanded": props.open ? "true" : "false",
-            },
-            tag: "button",
-          }),
           h(AdvancedComponent, {
-            ...props,
-            attributes,
+            "data-testid": "disclosure",
             children: [
+              h(BasicComponent, {
+                attributes: {
+                  class: ["disclosure-toggle", props.variant],
+                  "aria-expanded": props.open ? "true" : "false",
+                },
+                tag: "button",
+              }),
               h(AdvancedComponent, {
-                attributes: { class: ["disclosure-content"] },
+                ...props,
+                attributes,
                 children: [
-                  h(BasicComponent, {
-                    tag: "p",
-                    text: "Disclosure for the hidden paragraphs there are here",
+                  h(AdvancedComponent, {
+                    attributes: { class: ["disclosure-content"] },
+                    children: [
+                      h(BasicComponent, {
+                        tag: "p",
+                        text: "Disclosure for the hidden paragraphs there are here",
+                      }),
+                    ],
                   }),
                 ],
               }),
