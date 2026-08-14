@@ -12,6 +12,14 @@ const slides = [
 
 export default {
   props: {
+    play: {
+      type: Boolean,
+      default: false,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     attributes: {
       type: Object,
       default: () => ({}),
@@ -31,8 +39,12 @@ export default {
               h(BasicComponent, {
                 tag: "button",
                 attributes: {
-                  class: ["carousel-control", "autoplay", "pause"],
-                  "aria-label": "Pause",
+                  class: [
+                    "carousel-control",
+                    "autoplay",
+                    props.play ? "play" : "pause",
+                  ],
+                  "aria-label": props.play ? "Play" : "Pause",
                 },
               }),
               h(BasicComponent, {
@@ -40,6 +52,7 @@ export default {
                 attributes: {
                   class: ["carousel-control", "previous"],
                   "aria-label": "Previous",
+                  disabled: props.disabled ? "disabled" : undefined,
                 },
               }),
               h(BasicComponent, {
