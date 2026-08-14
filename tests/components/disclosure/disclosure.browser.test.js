@@ -14,7 +14,9 @@ describe("Disclosure Closed Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("disclosure-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });
@@ -31,7 +33,9 @@ describe("Disclosure Open Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("disclosure")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("disclosure-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });
