@@ -27,7 +27,7 @@ describe("Columns Layout", () => {
   });
 
   it.each(counts)(
-    "Should match screenshot: fixed with count: %s",
+    "Should match screenshot with fixed with count: %s",
     async (count) => {
       const screen = render(Component, {
         props: {
@@ -45,7 +45,7 @@ describe("Columns Layout", () => {
     }
   );
 
-  it("Should match screenshot: fixed with fewer items than count", async () => {
+  it("Should match screenshot with fixed and fewer items than count", async () => {
     // With only 1 item in a count-3 fixed layout, the item should hold to
     // its calculated 1/3-width column rather than stretching to fill the
     // row - that's the whole point of .fixed, and it's invisible in the
