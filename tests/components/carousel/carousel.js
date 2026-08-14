@@ -2,6 +2,7 @@ import { h } from "vue";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
 import { setupClasses } from "../helpers.js";
+import placeholderImage from "../placeholder.svg";
 
 export default {
   props: {
@@ -130,7 +131,7 @@ export default {
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
-                      src: "slide1.jpg",
+                      src: placeholderImage,
                       alt: "Slide 1 placeholder alt text 1",
                     },
                   }),
@@ -166,7 +167,7 @@ export default {
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
-                      src: "slide2.jpg",
+                      src: placeholderImage,
                       alt: "Slide 2 placeholder alt text 2",
                     },
                   }),
@@ -198,7 +199,7 @@ export default {
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
-                      src: "slide3.jpg",
+                      src: placeholderImage,
                       alt: "Slide 3 placeholder alt text 3",
                       "data-testid": "third",
                     },
@@ -231,7 +232,7 @@ export default {
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
-                      src: "slide4.jpg",
+                      src: placeholderImage,
                       alt: "Slide 4 placeholder alt text",
                     },
                   }),
@@ -263,7 +264,7 @@ export default {
                   h(BasicComponent, {
                     tag: "img",
                     attributes: {
-                      src: "slide5.jpg",
+                      src: placeholderImage,
                       alt: "Slide 5 placeholder alt text",
                     },
                   }),
