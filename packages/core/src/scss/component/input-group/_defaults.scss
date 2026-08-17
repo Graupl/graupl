@@ -11,27 +11,34 @@
 // Input group selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
+$screen-aware: true !default;
+$theme-aware: false !default;
+$scheme-aware: false !default;
+$state-aware: false !default;
+$container-aware: true !default;
 $input-group-selector-base: $selector-base !default;
 $input-group-selector: "input-group" !default;
-$input-group-inline-selector-base: $modifier-selector-base !default;
-$input-group-inline-selector: "inline" !default;
 $input-group-help-text-selector-base: $selector-base !default;
 $input-group-help-text-selector: "help-text" !default;
-
-// Grid names.
-$input-group-grid-label-name: label !default;
-$input-group-grid-input-name: input !default;
-$input-group-grid-help-name: help !default;
-
-// Input group properties.
-$input-group-grid-template-columns: 100% !default;
-$input-group-grid-template-rows: auto auto auto !default;
-
-// Inline input group properties.
-$input-group-inline-grid-template-columns: auto 1fr !default;
-$input-group-inline-grid-template-rows: auto auto !default;
-
-// Inner element properties.
-$input-group-label-grid-area: $input-group-grid-label-name !default;
-$input-group-input-grid-area: $input-group-grid-input-name !default;
-$input-group-help-grid-area: $input-group-grid-help-name !default;
+$input-group-stacked-selector: "stacked" !default;
+$input-group-inline-selector: "inline" !default;
+$input-group-top-selector: "top" !default;
+$input-group-bottom-selector: "bottom" !default;
+$input-group-left-selector: "left" !default;
+$input-group-right-selector: "right" !default;
+$input-group-inverse-selector: "inverse" !default;
+$input-group-screen-aware-selector-prefix: root-defaults.$screen-aware-selector-prefix !default;
+$input-group-screen-aware-selector-suffix: root-defaults.$screen-aware-selector-suffix !default;
+$input-group-screen-aware-selector-separator: root-defaults.$screen-aware-selector-separator !default;
+$input-group-theme-aware-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$input-group-theme-aware-selector-suffix: root-defaults.$theme-aware-selector-suffix !default;
+$input-group-theme-aware-selector-separator: root-defaults.$theme-aware-selector-separator !default;
+$input-group-scheme-aware-selector-prefix: root-defaults.$scheme-aware-selector-prefix !default;
+$input-group-scheme-aware-selector-suffix: root-defaults.$scheme-aware-selector-suffix !default;
+$input-group-scheme-aware-selector-separator: root-defaults.$scheme-aware-selector-separator !default;
+$input-group-state-aware-selector-prefix: root-defaults.$state-aware-selector-prefix !default;
+$input-group-state-aware-selector-suffix: root-defaults.$state-aware-selector-suffix !default;
+$input-group-state-aware-selector-separator: root-defaults.$state-aware-selector-separator !default;
+$input-group-container-aware-selector-prefix: root-defaults.$container-aware-selector-prefix !default;
+$input-group-container-aware-selector-suffix: root-defaults.$container-aware-selector-suffix !default;
+$input-group-container-aware-selector-separator: root-defaults.$container-aware-selector-separator !default;

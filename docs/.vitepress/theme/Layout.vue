@@ -53,7 +53,7 @@ onMounted(() => {
     <div class="container topbar shelf-aware">
       <div class="display-flex justify-content-end g-4">
         <div
-          class="navigation-shelf dark-mode bg-secondary-100 text-secondary-900"
+          class="docs-navigation-shelf navigation-shelf dark-mode bg-secondary-100 text-secondary-900"
           ref="navigationShelf"
         >
           <div class="navigation-shelf-header"></div>
@@ -64,7 +64,7 @@ onMounted(() => {
                   <button class="menu-link submenu-toggle">
                     {{ item.text }}
                   </button>
-                  <ul class="submenu">
+                  <ul class="submenu pl-5">
                     <li
                       v-for="subItem in item.items"
                       :key="subItem.text"

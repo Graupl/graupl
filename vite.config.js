@@ -1,5 +1,8 @@
+/// <reference types="vitest/config" />
 import { NodePackageImporter } from "sass-embedded";
 import { defineConfig } from "vite";
+import { Features } from "lightningcss";
+import { playwright } from "@vitest/browser-playwright";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,8 +15,16 @@ export default defineConfig({
       host: "localhost",
     },
   },
+  define: {
+    __VUE_OPTIONS_API__: true,
+    __VUE_PROD_DEVTOOLS__: false,
+    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false,
+  },
   css: {
     transformer: "lightningcss",
+    lightningcss: {
+      exclude: Features.LightDark,
+    },
     preprocessorOptions: {
       scss: {
         importers: [new NodePackageImporter()],
@@ -21,9 +32,53 @@ export default defineConfig({
     },
   },
   test: {
-    environment: "jsdom",
-    environmentOptions: {
-      pretendToBeVisual: true,
-    },
+    projects: [
+      {
+        test: {
+          name: "unit",
+          environment: "jsdom",
+          environmentOptions: {
+            pretendToBeVisual: true,
+          },
+          include: ["tests/**/*.unit.{test,spec}.{js,ts,jsx,tsx}"],
+        },
+      },
+      {
+        test: {
+          name: "browser",
+          browser: {
+            enabled: true,
+            provider: playwright({
+              contextOptions: {
+                deviceScaleFactor: 1,
+              },
+            }),
+            expect: {
+              toMatchScreenshot: {
+                comparator: "pixelMatch",
+                comparatorOptions: {
+                  threshold: 0.1,
+                  allowedMismatchedPixelRatio: 0.01,
+                },
+              },
+            },
+            viewport: { width: 1920, height: 1080 },
+            headless: true,
+            instances: [
+              {
+                browser: "chromium",
+              },
+              {
+                browser: "firefox",
+              },
+              {
+                browser: "webkit",
+              },
+            ],
+          },
+          include: ["tests/**/*.browser.{test,spec}.{js,ts,jsx,tsx}"],
+        },
+      },
+    ],
   },
 });

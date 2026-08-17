@@ -1,12 +1,10 @@
 /* stylelint-disable custom-property-pattern */
 
 // Defaults.
-@use "pkg:@graupl/core/src/defaults" as graupl-root-defaults with (
-  $id: "graupl-docs"
-);
-@use "pkg:@graupl/core/src/base/button/defaults" as graupl-button-defaults;
-@use "pkg:@graupl/icons/src/component/icon/defaults" as graupl-icon-defaults
-  with (
+@use "pkg:@graupl/core/src/defaults" as graupl-root-defaults;
+@use "pkg:@graupl/core/src/base/button/defaults" as graupl-base-button-defaults;
+@use "pkg:@graupl/icons/src/component/icon/defaults" as
+  graupl-component-icon-defaults with (
   $icons: (
     copy:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='%231f1f1f'%3E%3Cpath d='M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z'/%3E%3C/svg%3E"),
@@ -20,11 +18,21 @@
 );
 
 // Variables.
-@use "pkg:@graupl/core/src/base/button/variables" as graupl-button-variables;
+@use "pkg:@graupl/core/src/variables" as graupl-root-variables;
+@use "pkg:@graupl/core/src/base/button/variables" as
+  graupl-base-button-variables;
+@use "pkg:@graupl/core/src/theme/color/variables" as graupl-color-variables;
+@use "pkg:@graupl/core/src/theme/typography/variables" as
+  graupl-typography-variables;
 
 // Mixins.
-@use "pkg:@graupl/core/src/base/button/mixins" as graupl-button-mixins;
-@use "pkg:@graupl/icons/src/component/icon/mixins" as graupl-icon-mixins;
+@use "pkg:@graupl/core/src/base/button/mixins" as graupl-base-button-mixins;
+@use "pkg:@graupl/icons/src/component/icon/mixins" as
+  graupl-component-icon-mixins;
+@use "pkg:@graupl/core/src/base/table/mixins" as graupl-base-table-mixins;
+
+// Functions.
+@use "pkg:@graupl/core/src/functions/theme";
 
 // Packages.
 @use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
@@ -32,124 +40,69 @@
 @use "pkg:@graupl/core" as graupl;
 @use "sass:map";
 
-:root {
-  --graupl-docs-content-max-width: 158ch;
-  --graupl-docs-container-sidebar-width: 28ch;
-  --graupl-docs-spacer: 1rem;
-  --graupl-docs-root-background: var(--graupl-docs-theme-active--primary--100);
-  --graupl-docs-root-color: var(--graupl-docs-theme-active--primary--900);
-  --graupl-docs-background: var(--graupl-docs-theme-active--primary--100);
-  --graupl-docs-color: var(--graupl-docs-theme-active--primary--900);
-  --graupl-docs-navigation-background: transparent;
-  --graupl-docs-menu-link-hover-background: transparent;
-  --graupl-docs-menu-link-hover-color: var(
-    --graupl-docs-theme-active--primary--700
-  );
-  --graupl-docs-menu-link-hover-text-decoration: underline;
-  --graupl-docs-menu-link-hover-text-decoration-thickness: 0.125rem;
-  --graupl-docs-menu-link-hover-text-decoration-color: var(
-    --graupl-docs-theme-active--tertiary--600
-  );
-  --graupl-docs-border-width: 0.125rem;
-  --graupl-docs-border-style: solid;
-  --graupl-docs-navigation-shelf-min-width: 4rem;
-
-  @each $key, $value in graupl-root-defaults.$spacer-multipliers {
-    --graupl-docs-spacer-#{$key}: calc(#{$value} * var(--graupl-docs-spacer));
-  }
-
-  @each $key, $value in graupl-root-defaults.$transition-durations {
-    --graupl-docs-transition-duration-#{$key}: #{$value};
-  }
-}
-
 code {
   display: inline;
-  padding: 0 var(--graupl-docs-spacer-2);
-  background: var(--graupl-docs-theme-active--secondary--100);
-  color: var(--graupl-docs-theme-active--secondary--800);
+  padding: 0 map.get(graupl-root-variables.$spacers, 2);
+  background: theme.get("secondary", "100");
+  color: theme.get("secondary", "800");
 }
 
 pre code {
   display: block;
-  padding: var(--graupl-docs-spacer-6);
+  padding: map.get(graupl-root-variables.$spacers, 6);
   overflow-x: scroll;
   scrollbar-width: thin;
 }
 
 .custom-block {
-  --graupl-docs-color: var(
-    --graupl-docs-custom-block-color,
-    var(--graupl-docs-theme-active--primary--900)
+  --graupl-color: var(
+    --graupl-custom-block-color,
+    #{theme.get("primary", "900")}
+  );
+  --graupl-background: var(
+    --graupl-custom-block-background,
+    #{theme.get("secondary", "200")}
+  );
+  --graupl-border-color: var(
+    --graupl-custom-border-color,
+    #{theme.get("secondary", "500")}
   );
 
-  padding: var(--graupl-docs-spacer-4) var(--graupl-docs-spacer-6);
-  border-width: 0 0 0 calc(var(--graupl-docs-border-width) * 2);
-  border-style: var(--graupl-docs-border-style);
-  border-color: var(
-    --graupl-docs-custom-block-border-color,
-    var(--graupl-docs-theme-active--secondary--500)
-  );
-  background: var(
-    --graupl-docs-custom-block-background,
-    var(--graupl-docs-theme-active--secondary--200)
-  );
-  color: var(
-    --graupl-docs-custom-block-color,
-    var(--graupl-docs-theme-active--primary--900)
-  );
+  padding: map.get(graupl-root-variables.$spacers, 4)
+    map.get(graupl-root-variables.$spacers, 6);
+  border-width: 0 0 0 calc(graupl-root-variables.$border-width * 2);
+  border-style: graupl-root-variables.$border-style;
+  border-color: graupl-color-variables.$border-color;
+  background: graupl-color-variables.$background;
+  color: graupl-color-variables.$color;
 
   .custom-block-title {
-    font-size: var(--gruapl-docs-font-size-lg, 1.125rem);
-    font-weight: var(--graupl-docs-font-weight-bold, 700);
+    font-size: map.get(graupl-typography-variables.$font-sizes, "lg");
+    font-weight: map.get(graupl-typography-variables.$font-weights, "bold");
   }
 
   &.info {
-    --graupl-docs-custom-block-background: var(
-      --graupl-docs-theme-active--primary--200
-    );
-    --graupl-docs-custom-block-border-color: var(
-      --graupl-docs-theme-active--primary--500
-    );
-    --graupl-docs-custom-block-color: var(
-      --graupl-docs-theme-active--primary--900
-    );
+    --graupl-custom-block-background: theme.get("primary", "200");
+    --graupl-custom-block-border-color: theme.get("primary", "500");
+    --graupl-custom-block-color: theme.get("primary", "900");
   }
 
   &.tip {
-    --graupl-docs-custom-block-background: var(
-      --graupl-docs-theme-active--secondary--200
-    );
-    --graupl-docs-custom-block-border-color: var(
-      --graupl-docs-theme-active--secondary--500
-    );
-    --graupl-docs-custom-block-color: var(
-      --graupl-docs-theme-active--secondary--900
-    );
+    --graupl-custom-block-background: theme.get("secondary", "200");
+    --graupl-custom-block-border-color: theme.get("secondary", "500");
+    --graupl-custom-block-color: theme.get("secondary", "900");
   }
 
   &.warning {
-    --graupl-docs-custom-block-background: var(
-      --graupl-docs-theme-active--tertiary--200
-    );
-    --graupl-docs-custom-block-border-color: var(
-      --graupl-docs-theme-active--tertiary--500
-    );
-    --graupl-docs-custom-block-color: var(
-      --graupl-docs-theme-active--tertiary--900
-    );
+    --graupl-custom-block-background: theme.get("tertiary", "200");
+    --graupl-custom-block-border-color: theme.get("tertiary", "500");
+    --graupl-custom-block-color: theme.get("tertiary", "900");
   }
 
   &.danger {
-    --graupl-docs-custom-block-background: var(
-      --graupl-docs-theme-active--tertiary--700
-    );
-    --graupl-docs-custom-block-border-color: var(
-      --graupl-docs-theme-active--tertiary--500
-    );
-    --graupl-docs-custom-block-color: var(
-      --graupl-docs-theme-active--tertiary--100
-    );
+    --graupl-custom-block-background: theme.get("tertiary", "700");
+    --graupl-custom-block-border-color: theme.get("tertiary", "500");
+    --graupl-custom-block-color: theme.get("tertiary", "100");
   }
 }
 
@@ -158,41 +111,42 @@ pre code {
 
   .lang {
     position: absolute;
-    top: var(--graupl-docs-spacer-1);
-    right: var(--graupl-docs-spacer-3);
-    height: var(--graupl-docs-spacer-6);
-    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    top: map.get(graupl-root-variables.$spacers, 1);
+    right: map.get(graupl-root-variables.$spacers, 3);
+    height: map.get(graupl-root-variables.$spacers, 6);
+    transition: opacity var(--graupl-transition-duration-fast) ease-in-out;
     opacity: 1;
   }
 
   .copy {
-    --graupl-docs-icon: #{map.get(graupl-icon-defaults.$icons, copy)};
-    --graupl-docs-button-padding: var(--graupl-docs-spacer-3);
+    --graupl-icon: #{map.get(graupl-component-icon-defaults.$icons, copy)};
+    --graupl-button-padding: #{map.get(graupl-root-variables.$spacers, 3)};
 
-    @include graupl-button-mixins.apply-base;
-    @include graupl-button-mixins.apply-theme;
-    @include graupl-icon-mixins.apply("after");
-    @include graupl-icon-mixins.bind(
-      graupl-button-variables.$button-color,
-      graupl-button-variables.$button-color-states
+    @include graupl-base-button-mixins.apply-base;
+    @include graupl-base-button-mixins.apply-theme;
+    @include graupl-component-icon-mixins.apply("after");
+    @include graupl-component-icon-mixins.bind(
+      graupl-base-button-variables.$button-color,
+      graupl-base-button-variables.$button-color-states
     );
 
     position: absolute;
     z-index: 2;
-    top: var(--graupl-docs-spacer-3);
-    right: var(--graupl-docs-spacer-3);
-    transition: opacity var(--graupl-docs-transition-duration-fast) ease-in-out;
+    top: map.get(graupl-root-variables.$spacers, 3);
+    right: map.get(graupl-root-variables.$spacers, 3);
+    transition: opacity
+      map.get(graupl-root-variables.$transition-durations, "fast") ease-in-out;
     opacity: 0;
 
     @if graupl-root-defaults.$themeable-components and
-      graupl-button-defaults.$themeable
+      graupl-base-button-defaults.$themeable
     {
-      @each $color, $map in graupl-button-defaults.$button-theme-map {
+      @each $color, $map in graupl-base-button-defaults.$button-theme-map {
         // &.primary, &.secondary, &.tertiary
-        &#{graupl-button-defaults.$button-theme-selector-base}#{graupl-button-defaults.$button-theme-selector-prefix}#{$color} {
-          @include graupl-icon-mixins.bind(
-            graupl-button-variables.$button-color,
-            graupl-button-variables.$button-color-states
+        &#{graupl-base-button-defaults.$button-theme-selector-base}#{graupl-base-button-defaults.$button-theme-selector-prefix}#{$color} {
+          @include graupl-component-icon-mixins.bind(
+            graupl-base-button-variables.$button-color,
+            graupl-base-button-variables.$button-color-states
           );
         }
       }
@@ -220,40 +174,131 @@ pre code {
   }
 }
 
-.navigation-shelf {
-  --graupl-docs-button-border-color: transparent;
-  --graupl-docs-menu-link-border-color: transparent;
-  --graupl-docs-submenu-border-color: transparent;
-  --graupl-docs-submenu-position: relative;
-  --graupl-docs-submenu-inset: auto;
-  --graupl-docs-menu-link-hover-color: var(
-    --graupl-docs-theme-active--primary--700
-  );
+.docs-navigation-shelf {
+  --graupl-button-border-color: transparent;
+  --graupl-menu-link-border-color: transparent;
+  --graupl-submenu-border-color: transparent;
+  --graupl-submenu-position: relative;
+  --graupl-submenu-inset: auto;
+  --graupl-menu-link-hover-color: #{theme.get("primary", "700")};
 
-  border: calc(var(--graupl-docs-border-width) * 2)
-    var(--graupl-docs-border-style) transparent;
+  border: calc(graupl-root-variables.$border-width * 2)
+    graupl-root-variables.$border-style transparent;
   border-top-width: 0;
   border-bottom-width: 0;
 
   &.left-side {
-    border-right-color: var(--graupl-docs-theme-active--tertiary--500);
+    border-right-color: theme.get("tertiary", "500");
   }
 
   &.right-side {
-    border-left-color: var(--graupl-docs-theme-active--tertiary--500);
+    border-left-color: theme.get("tertiary", "500");
   }
 
   .navigation {
-    --graupl-docs-menu-flex-direction: column;
+    --graupl-menu-flex-direction: column;
 
     grid-template-columns: auto auto 1fr;
-    transition: opacity var(--graupl-docs-transition-duration-fast);
+    transition: opacity
+      map.get(graupl-root-variables.$transition-durations, "fast");
   }
 
   &.hide {
     .navigation {
       opacity: 0;
       pointer-events: none;
+    }
+  }
+}
+
+table {
+  @include graupl-base-table-mixins.apply-bordered;
+  @include graupl-base-table-mixins.apply-striped-columns;
+  @include graupl-base-table-mixins.apply-hoverable;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%;
+  padding: map.get(graupl-root-variables.$spacers, 3);
+  background: theme.get("secondary", 100);
+  gap: map.get(graupl-root-variables.$spacers, 4);
+
+  .example {
+    padding: map.get(graupl-root-variables.$spacers, 5);
+    overflow-y: scroll;
+    border-width: graupl-root-variables.$border-top-width
+      graupl-root-variables.$border-right-width
+      graupl-root-variables.$border-bottom-width
+      graupl-root-variables.$border-left-width;
+    border-style: graupl-root-variables.$border-top-style
+      graupl-root-variables.$border-right-style
+      graupl-root-variables.$border-bottom-style
+      graupl-root-variables.$border-left-style;
+    border-radius: graupl-root-variables.$border-top-left-radius
+      graupl-root-variables.$border-top-right-radius
+      graupl-root-variables.$border-bottom-right-radius
+      graupl-root-variables.$border-bottom-left-radius;
+    border-color: graupl-color-variables.$border-color;
+    background: graupl-color-variables.$root-background;
+    scrollbar-color: theme.get("primary", "700") theme.get("primary", "100");
+    scrollbar-width: thin;
+  }
+
+  .example-code {
+    background: graupl-color-variables.$root-background;
+  }
+
+  .example-source,
+  .example-options {
+    display: none;
+  }
+
+  .example-options:has(:first-child) {
+    display: flex;
+    flex-direction: column;
+    gap: map.get(graupl-root-variables.$spacers, 3);
+  }
+}
+
+.static-example {
+  display: flex;
+  flex-direction: column;
+  gap: map.get(graupl-root-variables.$spacers, 3);
+  margin-block: map.get(graupl-root-variables.$spacers, 5);
+
+  .example-container {
+    inline-size: 100%;
+
+    .example-display {
+      /* stylelint-disable scss/operator-no-newline-after */
+      block-size: calc(
+        map.get(graupl-root-variables.$spacers, 10) +
+          (map.get(graupl-root-variables.$spacers, 5) * 2)
+      );
+      /* stylelint-enable scss/operator-no-newline-after */
+      padding: map.get(graupl-root-variables.$spacers, 5);
+      overflow-y: scroll;
+      border-width: graupl-root-variables.$border-top-width
+        graupl-root-variables.$border-right-width
+        graupl-root-variables.$border-bottom-width
+        graupl-root-variables.$border-left-width;
+      border-style: graupl-root-variables.$border-top-style
+        graupl-root-variables.$border-right-style
+        graupl-root-variables.$border-bottom-style
+        graupl-root-variables.$border-left-style;
+      border-radius: graupl-root-variables.$border-top-left-radius
+        graupl-root-variables.$border-top-right-radius
+        graupl-root-variables.$border-bottom-right-radius
+        graupl-root-variables.$border-bottom-left-radius;
+      scrollbar-color: theme.get("primary", "700") theme.get("primary", "100");
+      scrollbar-width: thin;
+    }
+
+    .example-classes {
+      padding: map.get(graupl-root-variables.$spacers, 3);
+      background: theme.get("primary", "100");
     }
   }
 }
