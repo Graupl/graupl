@@ -1,0 +1,31 @@
+import { describe, it, expect } from "vitest";
+import { render } from "vitest-browser-vue";
+import Component from "./colors.js";
+import { variants } from "../defaults.js";
+
+const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+
+describe("Colors Component", () => {
+  describe.for(variants)("%s color", async (variant) => {
+    let variantShade = "";
+    if (variants != "default") {
+      shades.forEach((shade) => {
+        variantShade = `bg-${variant}-${shade}`;
+        it("Should match screenshot", async () => {
+          const screen = render(Component, {
+            props: {
+              variantShade,
+              attributes: {
+                "data-testid": "color",
+              },
+            },
+          });
+
+          await document.fonts.ready;
+
+          await expect(screen.getByTestId("color")).toMatchScreenshot();
+        });
+      });
+    }
+  });
+});
