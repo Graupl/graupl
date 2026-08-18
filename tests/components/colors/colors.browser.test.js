@@ -14,7 +14,6 @@ describe("Colors Component", () => {
         it(`Should match ${variant}-${shade}`, async () => {
           const screen = render(Component, {
             props: {
-              variant,
               attributes: {
                 class: [variantShade],
                 "data-testid": "color",
