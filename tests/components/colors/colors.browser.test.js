@@ -26,6 +26,21 @@ describe("Colors Component", () => {
           await expect(screen.getByTestId("color")).toMatchScreenshot();
         });
       });
+    } else {
+      it("Should match screenshot", async () => {
+        const screen = render(Component, {
+          props: {
+            variant,
+            attributes: {
+              "data-testid": "color",
+            },
+          },
+        });
+
+        await document.fonts.ready;
+
+        await expect(screen.getByTestId("color")).toMatchScreenshot();
+      });
     }
   });
 });
