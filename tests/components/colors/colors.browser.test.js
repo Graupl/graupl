@@ -3,14 +3,14 @@ import { render } from "vitest-browser-vue";
 import Component from "./colors.js";
 import { variants } from "../defaults.js";
 
-const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
+const shades = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 describe("Colors Component", () => {
   describe.for(variants)("%s color", async (variant) => {
     if (variant != "default") {
       shades.forEach((shade) => {
         const darker = () => {
-          shade > "500" ? `text-${shade}-100` : "";
+          shade.valueOf() > 500 ? `text-${shade}-100` : "";
         };
 
         it(`Should match ${variant}-${shade}`, async () => {
