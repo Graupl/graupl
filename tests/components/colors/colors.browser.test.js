@@ -13,7 +13,10 @@ describe("Colors Component", () => {
           const screen = render(Component, {
             props: {
               attributes: {
-                class: [`bg-${variant}-${shade}`],
+                class: [
+                  `bg-${variant}-${shade}`,
+                  shade > 500 ? `text-${shade}-900` : "",
+                ],
                 "data-testid": "color",
               },
             },
