@@ -10,7 +10,7 @@ describe("Colors Component", () => {
     if (variant != "default") {
       shades.forEach((shade) => {
         const darker = () => {
-          shade.valueOf() > 500 ? `text-${shade}-100` : "";
+          shade > 500 ? `text-${shade}-100` : "";
         };
 
         it(`Should match ${variant}-${shade}`, async () => {
