@@ -11,11 +11,12 @@ describe("Colors Component", () => {
     if (variants != "default") {
       shades.forEach((shade) => {
         variantShade = `bg-${variant}-${shade}`;
-        it("Should match screenshot", async () => {
+        it(`Should match ${variant}-${shade}`, async () => {
           const screen = render(Component, {
             props: {
-              variantShade,
+              variant,
               attributes: {
+                class: [variantShade],
                 "data-testid": "color",
               },
             },
