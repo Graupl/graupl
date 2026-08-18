@@ -15,7 +15,7 @@ describe("Colors Component", () => {
               attributes: {
                 class: [
                   `bg-${variant}-${shade}`,
-                  shade > "500" ? `text-${shade}-900` : "",
+                  shade > "500" ? `text-${shade}-100` : "",
                 ],
                 "data-testid": "color",
               },
