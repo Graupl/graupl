@@ -8,7 +8,7 @@ const shades = ["100", "200", "300", "400", "500", "600", "700", "800", "900"];
 describe("Colors Component", () => {
   describe.for(variants)("%s color", async (variant) => {
     let variantShade = "";
-    if (variant !== "default") {
+    if (variant != "default") {
       shades.forEach((shade) => {
         variantShade = `bg-${variant}-${shade}`;
         it(`Should match ${variant}-${shade}`, async () => {
@@ -16,6 +16,7 @@ describe("Colors Component", () => {
             props: {
               variantShade,
               attributes: {
+                class: [variantShade],
                 "data-testid": "color",
               },
             },
