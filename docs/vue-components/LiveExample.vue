@@ -4,8 +4,6 @@ import { Codemirror } from "vue-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
 
-import { javascript } from "@codemirror/lang-javascript";
-
 const props = defineProps({
   sourceCode: { type: String, default: null },
   codeClass: { type: String, default: "" },
@@ -15,7 +13,7 @@ const props = defineProps({
 
 const sourceElement = useTemplateRef("example-source");
 const code = ref("");
-const extensions = [html(), css(), javascript()];
+const extensions = [html(), css()];
 const view = shallowRef();
 
 const handleReady = (payload) => {
