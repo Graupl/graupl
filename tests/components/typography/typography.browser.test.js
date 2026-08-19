@@ -12,9 +12,6 @@ const sizes = [
   `text-3xl`,
   `text-4xl`,
   `text-5xl`,
-];
-
-const headings = [
   `text-h1`,
   `text-h2`,
   `text-h3`,
@@ -22,6 +19,8 @@ const headings = [
   `text-h5`,
   `text-h6`,
 ];
+
+const headings = [`h1`, `h2`, `h3`, `h4`, `h5`, `h6`];
 
 const styles = [`font-normal`, `font-italic`];
 
@@ -55,8 +54,8 @@ describe("Typography Component", () => {
     async (heading) => {
       const screen = render(Component, {
         props: {
+          tag: [`${heading}`],
           attributes: {
-            class: [`${heading}`],
             "data-testid": "font",
           },
         },
