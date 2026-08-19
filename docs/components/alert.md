@@ -87,79 +87,17 @@
 
 # Alerts
 
-<div class="accordion">
-  <div class="accordion-control-container">
-    <button class="accordion-control expand-all">Expand All</button>
-    <button class="accordion-control collapse-all">Collapse All</button>
+<div class="alert">
+  <div class="alert-header">
+    <h3 class="alert-title">Alert</h3>
   </div>
-  <div class="accordion-item show">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="true" class="accordion-item-toggle">
-          Alerts 1
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-      </div>
-    </div>
+  <div class="alert-body">
+    <p>This is some text that describes the alert.</p>
   </div>
-  <div class="accordion-item hide">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="false" class="accordion-item-toggle">
-          Alerts 2
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-        <p>This one has some extra text in it to make it longer.</p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-        <p>There is more info in the footer too.</p>
-      </div>
-    </div>
+  <div class="alert-footer">
+    <a href="#">Action</a>
   </div>
-  <div class="accordion-item hide">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="false" class="accordion-item-toggle">
-          Alerts 3
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-        <p>
-          This one is even longer than the second one. Why? Because it
-          needs to be. That's why.
-        </p>
-        <p>It's also a bit more verbose than the other two.</p>
-        <p>But that's okay. It's just an example.</p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-      </div>
-    </div>
-  </div>
+  <button class="alert-dismisser">x</button>
 </div>
 
 <br/>
