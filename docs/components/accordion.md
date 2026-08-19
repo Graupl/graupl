@@ -204,7 +204,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-border-color` | Value for accordion border color. | `var(--graupl-accordion-color)`|
 | `--graupl-accordion-transition-duration` | Value for accordion transition duration. | `var(--graupl-transition-duration-slow)` |
 | `--graupl-accordion-transition-timing-function` | Value for accordion transition timing function. | `var(--graupl-transition-timing-function)` |
-| `--graupl-accordion-item-transition` | Value for accordion item transition. | `height var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
+
 
 ## .accordion-control-container
 
@@ -216,6 +216,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-control-container-column-gap` | Value for accordion control container column gap. | `var(--graupl-spacer-3)` |
 | `--graupl-accordion-control-container-row-gap` | Value for accordion control container row gap. | `var(--graupl-spacer-3)` |
 | `--graupl-accordion-control-container-gap` | Value for accordion control container gap. | `var(--graupl-accordion-control-container-column-gap) var(--graupl-accordion-control-container-row-gap)` |
+
 
 ## .accordion-control
 
@@ -240,6 +241,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-control-active-border-color` | Value for accordion control active border color. | `var(--graupl-accordion-control-hover-border-color)` |
 | `--graupl-accordion-control-disabled-border-color` | Value for accordion control disabled border color. | `var(--graupl-theme-active--primary--200)` |
 
+
 ## .accordion-item
 
 | Property Name | Description | Default Value |
@@ -263,6 +265,8 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-border-left-style`| Value for accordion item border left style.| `var(--graupl-border-left-style)`|
 | `--graupl-accordion-item-border-style`   | Value for accordion item border style.   | `var(--graupl-accordion-item-border-top-style) var(--graupl-accordion-item-border-right-style) var(--graupl-accordion-item-border-bottom-style) var(--graupl-accordion-item-border-left-style)`|
 | `--graupl-accordion-item-transition-reduced-motion`| Value for accordion item transition reduced motion.| `none`|
+| `--graupl-accordion-item-transition` | Value for accordion item transition. | `height var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
+
 
 ## .accordion-item-header
 
@@ -308,6 +312,27 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-toggle-pseudo-open-transform` | Value for accordion item toggle pseudo open transform. | `rotate(-180deg)` |
 | `--graupl-accordion-item-toggle-pseudo-transition` | Value for accordion item toggle pseudo transition. | `transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
 | `--graupl-accordion-item-toggle-pseudo-transition-reduced-motion` | Value for accordion item toggle pseudo transition reduced motion. | `none` |
+| `--graupl-accordion-item-toggle-transition`| Value for accordion item toggle transition.| `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
+| `--graupl-accordion-item-toggle-transition-reduced-motion` | Value for accordion item toggle transition reduced motion. | `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
+| `--graupl-accordion-item-toggle-color`   | Value for accordion item toggle color.   | `var(--graupl-accordion-color)`|
+| `--graupl-accordion-item-toggle-visited-color`| Value for accordion item toggle visited color.| `var(--graupl-accordion-item-toggle-color)`|
+| `--graupl-accordion-item-toggle-focus-color`| Value for accordion item toggle focus color.| `var(--graupl-accordion-item-toggle-color)`|
+| `--graupl-accordion-item-toggle-hover-color`| Value for accordion item toggle hover color.| `var(--graupl-accordion-background)`|
+| `--graupl-accordion-item-toggle-active-color`| Value for accordion item toggle active color.| `var(--graupl-accordion-item-toggle-hover-color)`|
+| `--graupl-accordion-item-toggle-disabled-color`| Value for accordion item toggle disabled color.| `var(--graupl-theme-active--primary--200)`|
+| `--graupl-accordion-item-toggle-background`| Value for accordion item toggle background.| `var(--graupl-accordion-background)`|
+| `--graupl-accordion-item-toggle-visited-background`| Value for accordion item toggle visited background.| `var(--graupl-accordion-item-toggle-background)`|
+| `--graupl-accordion-item-toggle-focus-background`| Value for accordion item toggle focus background.| `var(--graupl-accordion-item-toggle-background)`|
+| `--graupl-accordion-item-toggle-hover-background`| Value for accordion item toggle hover background.| `var(--graupl-accordion-color)`|
+| `--graupl-accordion-item-toggle-active-background`| Value for accordion item toggle active background.| `var(--graupl-accordion-item-toggle-hover-background)`|
+| `--graupl-accordion-item-toggle-disabled-background`| Value for accordion item toggle disabled background.| `var(--graupl-accordion-background)`|
+| `--graupl-accordion-item-toggle-border-color`| Value for accordion item toggle border color.| `var(--graupl-accordion-item-border-color)`|
+| `--graupl-accordion-item-toggle-visited-border-color`| Value for accordion item toggle visited border color.| `var(--graupl-accordion-item-toggle-border-color)`|
+| `--graupl-accordion-item-toggle-focus-border-color`| Value for accordion item toggle focus border color.| `var(--graupl-accordion-item-toggle-border-color)`|
+| `--graupl-accordion-item-toggle-hover-border-color`| Value for accordion item toggle hover border color.| `var(--graupl-accordion-item-border-color)`|
+| `--graupl-accordion-item-toggle-active-border-color`| Value for accordion item toggle active border color.| `var(--graupl-accordion-item-toggle-hover-border-color)` |
+| `--graupl-accordion-item-toggle-disabled-border-color`| Value for accordion item toggle disabled border color.| `var(--graupl-theme-active--primary--200)`|
+
 
 ## .accordion-item-content
 
@@ -342,27 +367,6 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-footer-padding-y`| Value for accordion item footer padding vertical.| `var(--graupl-spacer-0)`|
 | `--graupl-accordion-item-footer-padding` | Value for accordion item footer padding. | `var(--graupl-accordion-item-footer-padding-y) var(--graupl-accordion-item-footer-padding-x)`|
 
-
-| `--graupl-accordion-item-toggle-transition`| Value for accordion item toggle transition.| `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-toggle-transition-reduced-motion` | Value for accordion item toggle transition reduced motion. | `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-toggle-color`   | Value for accordion item toggle color.   | `var(--graupl-accordion-color)`|
-| `--graupl-accordion-item-toggle-visited-color`| Value for accordion item toggle visited color.| `var(--graupl-accordion-item-toggle-color)`|
-| `--graupl-accordion-item-toggle-focus-color`| Value for accordion item toggle focus color.| `var(--graupl-accordion-item-toggle-color)`|
-| `--graupl-accordion-item-toggle-hover-color`| Value for accordion item toggle hover color.| `var(--graupl-accordion-background)`|
-| `--graupl-accordion-item-toggle-active-color`| Value for accordion item toggle active color.| `var(--graupl-accordion-item-toggle-hover-color)`|
-| `--graupl-accordion-item-toggle-disabled-color`| Value for accordion item toggle disabled color.| `var(--graupl-theme-active--primary--200)`|
-| `--graupl-accordion-item-toggle-background`| Value for accordion item toggle background.| `var(--graupl-accordion-background)`|
-| `--graupl-accordion-item-toggle-visited-background`| Value for accordion item toggle visited background.| `var(--graupl-accordion-item-toggle-background)`|
-| `--graupl-accordion-item-toggle-focus-background`| Value for accordion item toggle focus background.| `var(--graupl-accordion-item-toggle-background)`|
-| `--graupl-accordion-item-toggle-hover-background`| Value for accordion item toggle hover background.| `var(--graupl-accordion-color)`|
-| `--graupl-accordion-item-toggle-active-background`| Value for accordion item toggle active background.| `var(--graupl-accordion-item-toggle-hover-background)`|
-| `--graupl-accordion-item-toggle-disabled-background`| Value for accordion item toggle disabled background.| `var(--graupl-accordion-background)`|
-| `--graupl-accordion-item-toggle-border-color`| Value for accordion item toggle border color.| `var(--graupl-accordion-item-border-color)`|
-| `--graupl-accordion-item-toggle-visited-border-color`| Value for accordion item toggle visited border color.| `var(--graupl-accordion-item-toggle-border-color)`|
-| `--graupl-accordion-item-toggle-focus-border-color`| Value for accordion item toggle focus border color.| `var(--graupl-accordion-item-toggle-border-color)`|
-| `--graupl-accordion-item-toggle-hover-border-color`| Value for accordion item toggle hover border color.| `var(--graupl-accordion-item-border-color)`|
-| `--graupl-accordion-item-toggle-active-border-color`| Value for accordion item toggle active border color.| `var(--graupl-accordion-item-toggle-hover-border-color)` |
-| `--graupl-accordion-item-toggle-disabled-border-color`| Value for accordion item toggle disabled border color.| `var(--graupl-theme-active--primary--200)`|
 
 ## Accordion Live Example
 
