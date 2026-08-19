@@ -87,28 +87,6 @@
 
 # Accordions
 
-The accordion component provides a set of classes to apply the preset properties of for the specific elements.
-
-| Class Name | Description |
-| --- | --- |
-| `.accordion` | The accordion container. |
-| `.accordion-control-container` | The accordion control container. |
-| `.accordion-control` | The accordion control wrapper. |
-| `.accordion-item` | The accordion item wrapper. |
-| `.accordion-item-header` | The accordion item header. |
-| `.accordion-item-title` | The accordion item title row. |
-| `.accordion-item-toggle` | The accordion item toggle control. |
-| `.accordion-item-content` | The collapsible content wrapper. |
-| `.accordion-item-body` | The main body region inside the content wrapper. |
-| `.accordion-item-footer` | The footer region inside the content wrapper. |
-| `.show` | Modifier applied to an item when open. |
-| `.hide` | Modifier applied to an item when closed. |
-| `.collapse-all` | Modifier applied to collapse control. |
-| `.expand-all` | Modifier applied to expand control. |
-| `.transitioning` | Modifier applied while an item is transitioning. |
-
-<br />
-
 <div class="accordion">
   <div class="accordion-control-container">
     <button class="accordion-control expand-all">Expand All</button>
@@ -185,9 +163,30 @@ The accordion component provides a set of classes to apply the preset properties
 </div>
 
 <br/>
+
+The accordion component provides a set of classes to apply the preset properties of for the specific elements.
+
+| Class Name | Description |
+| --- | --- |
+| `.accordion` | The accordion container. |
+| `.accordion-control-container` | The accordion control container. |
+| `.accordion-control` | The accordion control wrapper. |
+| `.accordion-item` | The accordion item wrapper. |
+| `.accordion-item-header` | The accordion item header. |
+| `.accordion-item-title` | The accordion item title row. |
+| `.accordion-item-toggle` | The accordion item toggle control. |
+| `.accordion-item-content` | The collapsible content wrapper. |
+| `.accordion-item-body` | The main body region inside the content wrapper. |
+| `.accordion-item-footer` | The footer region inside the content wrapper. |
+| `.show` | Modifier applied to an item when open. |
+| `.hide` | Modifier applied to an item when closed. |
+| `.collapse-all` | Modifier applied to collapse control. |
+| `.expand-all` | Modifier applied to expand control. |
+| `.transitioning` | Modifier applied while an item is transitioning. |
+
 <br/>
 
-## .accordion
+## .accordion custom properties
 
 These are the default values for the `.accordion ` class.
 
@@ -206,7 +205,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-transition-timing-function` | Value for accordion transition timing function. | `var(--graupl-transition-timing-function)` |
 
 
-## .accordion-control-container
+## .accordion-control-container custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -218,7 +217,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-control-container-gap` | Value for accordion control container gap. | `var(--graupl-accordion-control-container-column-gap) var(--graupl-accordion-control-container-row-gap)` |
 
 
-## .accordion-control
+## .accordion-control custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -242,7 +241,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-control-disabled-border-color` | Value for accordion control disabled border color. | `var(--graupl-theme-active--primary--200)` |
 
 
-## .accordion-item
+## .accordion-item custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -268,7 +267,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-transition` | Value for accordion item transition. | `height var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
 
 
-## .accordion-item-header
+## .accordion-item-header custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -277,7 +276,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-header-padding` | Value for accordion item header padding. | `var(--graupl-accordion-item-header-padding-y) var(--graupl-accordion-item-header-padding-x)`|
 | `--graupl-accordion-item-header-margin`  | Value for accordion item header margin.  | `calc(-1 * min(var(--graupl-accordion-item-border-top-width), var(--graupl-accordion-item-border-bottom-width), var(--graupl-accordion-item-border-left-width), var(--graupl-accordion-item-border-right-width)))` |
 
-## .accordion-item-title
+## .accordion-item-title custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -295,7 +294,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-title-font-family`| Value for accordion item title font family.| `var(--graupl-h5-font-family)`|
 | `--graupl-accordion-item-title-line-height`| Value for accordion item title line height.| `var(--graupl-h5-line-height)`|
 
-## .accordion-item-toggle
+## .accordion-item-toggle custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -334,7 +333,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-toggle-disabled-border-color`| Value for accordion item toggle disabled border color.| `var(--graupl-theme-active--primary--200)`|
 
 
-## .accordion-item-content
+## .accordion-item-content custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -351,7 +350,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-content-transition` | Value for accordion item content transition. | `opacity var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function) transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
 | `--graupl-accordion-item-content-transition-reduced-motion` | Value for accordion item content transition reduced motion. | `opacity var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
 
-## .accordion-item-body
+## .accordion-item-body custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
@@ -359,7 +358,7 @@ These are the default values for the `.accordion ` class.
 | `--graupl-accordion-item-body-padding-y` | Value for accordion item body padding vertical.| `var(--graupl-spacer-0)`|
 | `--graupl-accordion-item-body-padding`   | Value for accordion item body padding.   | `var(--graupl-accordion-item-body-padding-y) var(--graupl-accordion-item-body-padding-x)`|
 
-## .accordion-item-footer
+## .accordion-item-footer custom properties
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
