@@ -1,85 +1,35 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import AlertsGenerator from "@graupl/core/src/accordion/generator.js";
+  import AlertGenerator from "@graupl/core/src/alert/generator.js";
 
-  onMounted(() => {AlertsGenerator()});
+  onMounted(() => {AlertGenerator()});
+
+  const background = ref("bg-primary");
+  const content = ref("text-secondary-900");
 
   const exampleAlerts = computed(() => {
+
+    const backgroundClasses = [
+      background.value,
+    ].filter(c => c !== null).join(" ");
+
+    const contentClasses = [
+      content.value
+    ].filter(c => c !== null).join(" ");
+
     return `
-<div class="accordion">
-  <div class="accordion-control-container">
-    <button class="accordion-control expand-all">Expand All</button>
-    <button class="accordion-control collapse-all">Collapse All</button>
+<div class="alert ${backgroundClasses} ${contentClasses}">
+  <div class="alert-header">
+    <h3 class="alert-title">Alert</h3>
   </div>
-  <div class="accordion-item show">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="true" class="accordion-item-toggle">
-          Alerts 1
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-      </div>
-    </div>
+  <div class="alert-body">
+    <p>This is some text that describes the alert.</p>
   </div>
-  <div class="accordion-item hide">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="false" class="accordion-item-toggle">
-          Alerts 2
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-        <p>This one has some extra text in it to make it longer.</p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-        <p>There is more info in the footer too.</p>
-      </div>
-    </div>
+  <div class="alert-footer">
+    <a href="#">Action</a>
   </div>
-  <div class="accordion-item hide">
-    <div class="accordion-item-header">
-      <h3 class="accordion-item-title">
-        <button aria-expanded="false" class="accordion-item-toggle">
-          Alerts 3
-        </button>
-      </h3>
-    </div>
-    <div class="accordion-item-content">
-      <div class="accordion-item-body">
-        <p>
-          This is the body of the accordion that can expand/collapse
-          based on the state.
-        </p>
-        <p>
-          This one is even longer than the second one. Why? Because it
-          needs to be. That's why.
-        </p>
-        <p>It's also a bit more verbose than the other two.</p>
-        <p>But that's okay. It's just an example.</p>
-      </div>
-      <div class="accordion-item-footer">
-        <p>This is the footer.</p>
-      </div>
-    </div>
-  </div>
+  <button class="alert-dismisser">x</button>
 </div>
     `;
   });
@@ -106,202 +56,182 @@ The accordion component provides the following set of classes to apply the prese
 
 | Class Name | Description |
 | --- | --- |
-| `.accordion` | The accordion container. |
-| `.accordion-control-container` | The accordion control container. |
-| `.accordion-control` | The accordion control wrapper. |
-| `.accordion-item` | The accordion item wrapper. |
-| `.accordion-item-header` | The accordion item header. |
-| `.accordion-item-title` | The accordion item title row. |
-| `.accordion-item-toggle` | The accordion item toggle control. |
-| `.accordion-item-content` | The collapsible content wrapper. |
-| `.accordion-item-body` | The main body region inside the content wrapper. |
-| `.accordion-item-footer` | The footer region inside the content wrapper. |
-| `.show` | Modifier applied to an item when open. |
-| `.hide` | Modifier applied to an item when closed. |
-| `.collapse-all` | Modifier applied to collapse control. |
-| `.expand-all` | Modifier applied to expand control. |
-| `.transitioning` | Modifier applied while an item is transitioning. |
+| `.alert` | The alert container |
+| `.alert-body` | The alert body content |
+| `.alert-header` | The alert header content |
+| `.alert-footer` | The alert footer content |
+| `.alert-title` | The alert title element |
+| `.alert-dismisser` | The alert dismisser control |
+| `.show` | Modifier applied when the alert is shown |
+| `.hide` | Modifier applied when the alert is hidden |
+| `.transitioning` | Modifier applied while the alert is transitioning |
 
 <br/>
 
-## .accordion custom properties
+## .alert custom properties
 
-These are the default values for the `.accordion` class.
-
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-accordion-padding-x` | Value for accordion padding horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-padding-y` | Value for accordion padding vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-padding` | Value for accordion padding. | `var(--graupl-accordion-padding-y) var(--graupl-accordion-padding-x)` |
-| `--graupl-accordion-column-gap` | Value for accordion column gap. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-row-gap` | Value for accordion row gap. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-gap` | Value for accordion gap. | `var(--graupl-accordion-column-gap) var(--graupl-accordion-row-gap)` |
-| `--graupl-accordion-color` | Value for accordion color. | `var(--graupl-color)` |
-| `--graupl-accordion-background` | Value for accordion background. | `var(--graupl-background)` |
-| `--graupl-accordion-border-color` | Value for accordion border color. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-transition-duration` | Value for accordion transition duration. | `var(--graupl-transition-duration-slow)` |
-| `--graupl-accordion-transition-timing-function` | Value for accordion transition timing function. | `var(--graupl-transition-timing-function)` |
-
-## .accordion-control-container custom properties
+These are the default values for the `.alert` class.
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-accordion-control-container-padding-x` | Value for accordion control container padding horizontal. | `0` |
-| `--graupl-accordion-control-container-padding-y` | Value for accordion control container padding vertical. | `0` |
-| `--graupl-accordion-control-container-padding` | Value for accordion control container padding. | `var(--graupl-accordion-control-container-padding-y) var(--graupl-accordion-control-container-padding-x)` |
-| `--graupl-accordion-control-container-column-gap` | Value for accordion control container column gap. | `var(--graupl-spacer-3)` |
-| `--graupl-accordion-control-container-row-gap` | Value for accordion control container row gap. | `var(--graupl-spacer-3)` |
-| `--graupl-accordion-control-container-gap` | Value for accordion control container gap. | `var(--graupl-accordion-control-container-column-gap) var(--graupl-accordion-control-container-row-gap)` |
+| `--graupl-alert-padding-x` | Value for alert padding horizontal. | `var(--graupl-spacer-5)` |
+| `--graupl-alert-padding-y` | Value for alert padding vertical. | `var(--graupl-spacer-5)` |
+| `--graupl-alert-padding` | Value for alert padding. | `var(--graupl-alert-padding-y) var(--graupl-alert-padding-x)` |
+| `--graupl-alert-column-gap` | Value for alert column gap. | `var(--graupl-spacer-0)` |
+| `--graupl-alert-row-gap` | Value for alert row gap. | `var(--graupl-spacer-3)` |
+| `--graupl-alert-gap` | Value for alert gap. | `var(--graupl-alert-column-gap) var(--graupl-alert-row-gap)` |
+| `--graupl-alert-background` | Value for alert background. | `var(--graupl-background)` |
+| `--graupl-alert-color` | Value for alert color. | `var(--graupl-color)` |
+| `--graupl-alert-link-color` | Value for alert link color. | `link-variables.var(--graupl-link-color)` |
+| `--graupl-alert-link-visited-color` | Value for alert link visited color. | `var(--graupl-alert-link-color)` |
+| `--graupl-alert-link-focus-color` | Value for alert link focus color. | `var(--graupl-alert-link-color)` |
+| `--graupl-alert-link-hover-color` | Value for alert link hover color. | `link-variables.var(--graupl-link-hover-color)` |
+| `--graupl-alert-link-active-color` | Value for alert link active color. | `var(--graupl-alert-link-hover-color)` |
+| `--graupl-alert-link-disabled-color` | Value for alert link disabled color. | `link-variables.var(--graupl-link-disabled-color)` |
+| `--graupl-alert-border-color` | Value for alert border color. | `var(--graupl-alert-color)` |
+| `--graupl-alert-border-top-left-radius` | Value for alert border top left radius. | `var(--graupl-border-top-left-radius)` |
+| `--graupl-alert-border-top-right-radius` | Value for alert border top right radius. | `var(--graupl-border-top-right-radius)` |
+| `--graupl-alert-border-bottom-left-radius` | Value for alert border bottom left radius. | `var(--graupl-border-bottom-left-radius)` |
+| `--graupl-alert-border-bottom-right-radius` | Value for alert border bottom right radius. | `var(--graupl-border-bottom-right-radius)` |
+| `--graupl-alert-border-radius` | Value for alert border radius. | `var(--graupl-alert-border-top-left-radius) var(--graupl-alert-border-top-right-radius) var(--graupl-alert-border-bottom-right-radius) var(--graupl-alert-border-bottom-left-radius)` |
+| `--graupl-alert-border-top-width` | Value for alert border top width. | `var(--graupl-border-top-width)` |
+| `--graupl-alert-border-right-width` | Value for alert border right width. | `var(--graupl-border-right-width)` |
+| `--graupl-alert-border-bottom-width` | Value for alert border bottom width. | `var(--graupl-border-bottom-width)` |
+| `--graupl-alert-border-left-width` | Value for alert border left width. | `var(--graupl-border-left-width)` |
+| `--graupl-alert-border-width` | Value for alert border width. | `var(--graupl-alert-border-top-width) var(--graupl-alert-border-right-width) var(--graupl-alert-border-bottom-width) var(--graupl-alert-border-left-width)` |
+| `--graupl-alert-border-top-style` | Value for alert border top style. | `var(--graupl-border-top-style)` |
+| `--graupl-alert-border-right-style` | Value for alert border right style. | `var(--graupl-border-right-style)` |
+| `--graupl-alert-border-bottom-style` | Value for alert border bottom style. | `var(--graupl-border-bottom-style)` |
+| `--graupl-alert-border-left-style` | Value for alert border left style. | `var(--graupl-border-left-style)` |
+| `--graupl-alert-border-style` | Value for alert border style. | `var(--graupl-alert-border-top-style) var(--graupl-alert-border-right-style) var(--graupl-alert-border-bottom-style) var(--graupl-alert-border-left-style)` |
+| `--graupl-alert-transition` | Value for alert transition. | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
+| `--graupl-alert-transition-reduced-motion` | Value for alert transition reduced motion. | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
 
-## .accordion-control custom properties
+## .alert-header custom properties
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-accordion-control-color` | Value for accordion control color. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-control-visited-color` | Value for accordion control visited color. | `var(--graupl-accordion-control-color)` |
-| `--graupl-accordion-control-focus-color` | Value for accordion control focus color. | `var(--graupl-accordion-control-color)` |
-| `--graupl-accordion-control-hover-color` | Value for accordion control hover color. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-control-active-color` | Value for accordion control active color. | `var(--graupl-accordion-control-hover-color)` |
-| `--graupl-accordion-control-disabled-color` | Value for accordion control disabled color. | `var(--graupl-theme-active--primary--200)` |
-| `--graupl-accordion-control-background` | Value for accordion control background. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-control-visited-background` | Value for accordion control visited background. | `var(--graupl-accordion-control-background)` |
-| `--graupl-accordion-control-focus-background` | Value for accordion control focus background. | `var(--graupl-accordion-control-background)` |
-| `--graupl-accordion-control-hover-background` | Value for accordion control hover background. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-control-active-background` | Value for accordion control active background. | `var(--graupl-accordion-control-hover-background)` |
-| `--graupl-accordion-control-disabled-background` | Value for accordion control disabled background. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-control-border-color` | Value for accordion control border color. | `var(--graupl-accordion-border-color)` |
-| `--graupl-accordion-control-visited-border-color` | Value for accordion control visited border color. | `var(--graupl-accordion-control-border-color)` |
-| `--graupl-accordion-control-focus-border-color` | Value for accordion control focus border color. | `var(--graupl-accordion-control-border-color)` |
-| `--graupl-accordion-control-hover-border-color` | Value for accordion control hover border color. | `var(--graupl-accordion-border-color)` |
-| `--graupl-accordion-control-active-border-color` | Value for accordion control active border color. | `var(--graupl-accordion-control-hover-border-color)` |
-| `--graupl-accordion-control-disabled-border-color` | Value for accordion control disabled border color. | `var(--graupl-theme-active--primary--200)` |
-
-## .accordion-item custom properties
-
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-accordion-item-color` | Value for accordion item color. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-item-background` | Value for accordion item background. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-item-border-color` | Value for accordion item border color. | `var(--graupl-accordion-border-color)` |
-| `--graupl-accordion-item-border-top-left-radius` | Value for accordion item border top left radius. | `var(--graupl-border-top-left-radius)` |
-| `--graupl-accordion-item-border-top-right-radius` | Value for accordion item border top right radius. | `var(--graupl-border-top-right-radius)` |
-| `--graupl-accordion-item-border-bottom-right-radius` | Value for accordion item border bottom right radius. | `var(--graupl-border-bottom-right-radius)` |
-| `--graupl-accordion-item-border-bottom-left-radius` | Value for accordion item border bottom left radius. | `var(--graupl-border-bottom-left-radius)` |
-| `--graupl-accordion-item-border-radius` | Value for accordion item border radius. | `var(--graupl-accordion-item-border-top-left-radius) var(--graupl-accordion-item-border-top-right-radius) var(--graupl-accordion-item-border-bottom-right-radius) var(--graupl-accordion-item-border-bottom-left-radius)` |
-| `--graupl-accordion-item-border-top-width` | Value for accordion item border top width. | `var(--graupl-border-top-width)` |
-| `--graupl-accordion-item-border-right-width` | Value for accordion item border right width. | `var(--graupl-border-right-width)` |
-| `--graupl-accordion-item-border-bottom-width` | Value for accordion item border bottom width. | `var(--graupl-border-bottom-width)` |
-| `--graupl-accordion-item-border-left-width` | Value for accordion item border left width. | `var(--graupl-border-left-width)` |
-| `--graupl-accordion-item-border-width` | Value for accordion item border width. | `var(--graupl-accordion-item-border-top-width) var(--graupl-accordion-item-border-right-width) var(--graupl-accordion-item-border-bottom-width) var(--graupl-accordion-item-border-left-width)` |
-| `--graupl-accordion-item-border-top-style` | Value for accordion item border top style. | `var(--graupl-border-top-style)` |
-| `--graupl-accordion-item-border-right-style` | Value for accordion item border right style. | `var(--graupl-border-right-style)` |
-| `--graupl-accordion-item-border-bottom-style` | Value for accordion item border bottom style. | `var(--graupl-border-bottom-style)` |
-| `--graupl-accordion-item-border-left-style` | Value for accordion item border left style. | `var(--graupl-border-left-style)` |
-| `--graupl-accordion-item-border-style` | Value for accordion item border style. | `var(--graupl-accordion-item-border-top-style) var(--graupl-accordion-item-border-right-style) var(--graupl-accordion-item-border-bottom-style) var(--graupl-accordion-item-border-left-style)` |
-| `--graupl-accordion-item-transition-reduced-motion` | Value for accordion item transition reduced motion. | `none` |
-| `--graupl-accordion-item-transition` | Value for accordion item transition. | `height var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-
-## .accordion-item-header custom properties
+These are the default values for the `.alert-header` class.
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-accordion-item-header-padding-x` | Value for accordion item header padding horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-header-padding-y` | Value for accordion item header padding vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-header-padding` | Value for accordion item header padding. | `var(--graupl-accordion-item-header-padding-y) var(--graupl-accordion-item-header-padding-x)` |
-| `--graupl-accordion-item-header-margin` | Value for accordion item header margin. | `calc(-1 * min(var(--graupl-accordion-item-border-top-width), var(--graupl-accordion-item-border-bottom-width), var(--graupl-accordion-item-border-left-width), var(--graupl-accordion-item-border-right-width)))` |
+| `--graupl-alert-header-padding-x` | Value for alert header padding horizontal. | `0` |
+| `--graupl-alert-header-padding-y` | Value for alert header padding vertical. | `0` |
+| `--graupl-alert-header-padding` | Value for alert header padding. | `var(--graupl-alert-header-padding-y) var(--graupl-alert-header-padding-x)` |
 
-## .accordion-item-title custom properties
+## .alert-title custom properties
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-accordion-item-title-padding-x` | Value for accordion item title padding horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-title-padding-y` | Value for accordion item title padding vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-title-padding` | Value for accordion item title padding. | `var(--graupl-accordion-item-title-padding-y) var(--graupl-accordion-item-title-padding-x)` |
-| `--graupl-accordion-item-title-margin-x` | Value for accordion item title margin horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-title-margin-y` | Value for accordion item title margin vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-title-margin` | Value for accordion item title margin. | `var(--graupl-accordion-item-title-margin-y) var(--graupl-accordion-item-title-margin-x)` |
-| `--graupl-accordion-item-title-color` | Value for accordion item title color. | `var(--graupl-accordion-item-color)` |
-| `--graupl-accordion-item-title-background` | Value for accordion item title background. | `var(--graupl-accordion-item-background)` |
-| `--graupl-accordion-item-title-border-color` | Value for accordion item title border color. | `var(--graupl-accordion-item-border-color)` |
-| `--graupl-accordion-item-title-font-size` | Value for accordion item title font size. | `var(--graupl-h5-font-size)` |
-| `--graupl-accordion-item-title-font-weight` | Value for accordion item title font weight. | `var(--graupl-h5-font-weight)` |
-| `--graupl-accordion-item-title-font-family` | Value for accordion item title font family. | `var(--graupl-h5-font-family)` |
-| `--graupl-accordion-item-title-line-height` | Value for accordion item title line height. | `var(--graupl-h5-line-height)` |
-
-## .accordion-item-toggle custom properties
+These are the default values for the `.alert-title` class.
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-accordion-item-toggle-padding-x` | Value for accordion item toggle padding horizontal. | `var(--graupl-button-padding-x)` |
-| `--graupl-accordion-item-toggle-padding-y` | Value for accordion item toggle padding vertical. | `var(--graupl-button-padding-y)` |
-| `--graupl-accordion-item-toggle-padding` | Value for accordion item toggle padding. | `var(--graupl-accordion-item-toggle-padding-y) var(--graupl-accordion-item-toggle-padding-x)` |
-| `--graupl-accordion-item-toggle-transform` | Value for accordion item toggle transform. | `none` |
-| `--graupl-accordion-item-toggle-visited-transform` | Value for accordion item toggle visited transform. | `var(--graupl-accordion-item-toggle-transform)` |
-| `--graupl-accordion-item-toggle-focus-transform` | Value for accordion item toggle focus transform. | `var(--graupl-accordion-item-toggle-transform)` |
-| `--graupl-accordion-item-toggle-hover-transform` | Value for accordion item toggle hover transform. | `var(--graupl-accordion-item-toggle-transform)` |
-| `--graupl-accordion-item-toggle-active-transform` | Value for accordion item toggle active transform. | `none` |
-| `--graupl-accordion-item-toggle-disabled-transform` | Value for accordion item toggle disabled transform. | `none` |
-| `--graupl-accordion-item-toggle-pseudo-transform` | Value for accordion item toggle pseudo transform. | `none` |
-| `--graupl-accordion-item-toggle-pseudo-open-transform` | Value for accordion item toggle pseudo open transform. | `rotate(-180deg)` |
-| `--graupl-accordion-item-toggle-pseudo-transition` | Value for accordion item toggle pseudo transition. | `transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-toggle-pseudo-transition-reduced-motion` | Value for accordion item toggle pseudo transition reduced motion. | `none` |
-| `--graupl-accordion-item-toggle-transition` | Value for accordion item toggle transition. | `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-toggle-transition-reduced-motion` | Value for accordion item toggle transition reduced motion. | `background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-toggle-color` | Value for accordion item toggle color. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-item-toggle-visited-color` | Value for accordion item toggle visited color. | `var(--graupl-accordion-item-toggle-color)` |
-| `--graupl-accordion-item-toggle-focus-color` | Value for accordion item toggle focus color. | `var(--graupl-accordion-item-toggle-color)` |
-| `--graupl-accordion-item-toggle-hover-color` | Value for accordion item toggle hover color. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-item-toggle-active-color` | Value for accordion item toggle active color. | `var(--graupl-accordion-item-toggle-hover-color)` |
-| `--graupl-accordion-item-toggle-disabled-color` | Value for accordion item toggle disabled color. | `var(--graupl-theme-active--primary--200)` |
-| `--graupl-accordion-item-toggle-background` | Value for accordion item toggle background. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-item-toggle-visited-background` | Value for accordion item toggle visited background. | `var(--graupl-accordion-item-toggle-background)` |
-| `--graupl-accordion-item-toggle-focus-background` | Value for accordion item toggle focus background. | `var(--graupl-accordion-item-toggle-background)` |
-| `--graupl-accordion-item-toggle-hover-background` | Value for accordion item toggle hover background. | `var(--graupl-accordion-color)` |
-| `--graupl-accordion-item-toggle-active-background` | Value for accordion item toggle active background. | `var(--graupl-accordion-item-toggle-hover-background)` |
-| `--graupl-accordion-item-toggle-disabled-background` | Value for accordion item toggle disabled background. | `var(--graupl-accordion-background)` |
-| `--graupl-accordion-item-toggle-border-color` | Value for accordion item toggle border color. | `var(--graupl-accordion-item-border-color)` |
-| `--graupl-accordion-item-toggle-visited-border-color` | Value for accordion item toggle visited border color. | `var(--graupl-accordion-item-toggle-border-color)` |
-| `--graupl-accordion-item-toggle-focus-border-color` | Value for accordion item toggle focus border color. | `var(--graupl-accordion-item-toggle-border-color)` |
-| `--graupl-accordion-item-toggle-hover-border-color` | Value for accordion item toggle hover border color. | `var(--graupl-accordion-item-border-color)` |
-| `--graupl-accordion-item-toggle-active-border-color` | Value for accordion item toggle active border color. | `var(--graupl-accordion-item-toggle-hover-border-color)` |
-| `--graupl-accordion-item-toggle-disabled-border-color` | Value for accordion item toggle disabled border color. | `var(--graupl-theme-active--primary--200)` |
+| `--graupl-alert-title-color` | Value for alert title color. | `var(--graupl-alert-color)` |
+| `--graupl-alert-title-font-size` | Value for alert title font size. | `var(--graupl-h4-font-size)` |
+| `--graupl-alert-title-font-weight` | Value for alert title font weight. | `var(--graupl-h4-font-weight)` |
+| `--graupl-alert-title-font-family` | Value for alert title font family. | `var(--graupl-h4-font-family)` |
+| `--graupl-alert-title-line-height` | Value for alert title line height. | `var(--graupl-h4-line-height)` |
+| `--graupl-alert-title-margin` | Value for alert title margin. | `0 0 0 0` |
 
-## .accordion-item-content custom properties
+## .alert-body custom properties
+
+These are the default values for the `.alert-body` class.
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-accordion-item-content-color` | Value for accordion item content color. | `var(--graupl-accordion-item-color)` |
-| `--graupl-accordion-item-content-background` | Value for accordion item content background. | `var(--graupl-accordion-item-background)` |
-| `--graupl-accordion-item-content-padding-x` | Value for accordion item content padding horizontal. | `var(--graupl-spacer-5)` |
-| `--graupl-accordion-item-content-padding-y` | Value for accordion item content padding vertical. | `var(--graupl-spacer-5)` |
-| `--graupl-accordion-item-content-padding` | Value for accordion item content padding. | `var(--graupl-accordion-item-content-padding-y) var(--graupl-accordion-item-content-padding-x)` |
-| `--graupl-accordion-item-content-column-gap` | Value for accordion item content column gap. | `var(--graupl-spacer-3)` |
-| `--graupl-accordion-item-content-row-gap` | Value for accordion item content row gap. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-content-gap` | Value for accordion item content gap. | `var(--graupl-accordion-item-content-column-gap) var(--graupl-accordion-item-content-row-gap)` |
-| `--graupl-accordion-item-content-transform` | Value for accordion item content transform. | `translateY(-100%)` |
-| `--graupl-accordion-item-content-open-transform` | Value for accordion item content open transform. | `translateY(0)` |
-| `--graupl-accordion-item-content-transition` | Value for accordion item content transition. | `opacity var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function) transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
-| `--graupl-accordion-item-content-transition-reduced-motion` | Value for accordion item content transition reduced motion. | `opacity var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)` |
+| `--graupl-alert-body-padding-x` | Value for alert body padding horizontal. | `0` |
+| `--graupl-alert-body-padding-y` | Value for alert body padding vertical. | `0` |
+| `--graupl-alert-body-padding` | Value for alert body padding. | `var(--graupl-alert-body-padding-y) var(--graupl-alert-body-padding-x)` |
 
-## .accordion-item-body custom properties
+## .alert-footer custom properties
+
+These are the default values for the `.alert-footer` class.
 
 | Property Name | Description | Default Value |
 | --- | --- | --- |
-| `--graupl-accordion-item-body-padding-x` | Value for accordion item body padding horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-body-padding-y` | Value for accordion item body padding vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-body-padding` | Value for accordion item body padding. | `var(--graupl-accordion-item-body-padding-y) var(--graupl-accordion-item-body-padding-x)` |
+| `--graupl-alert-footer-padding-x` | Value for alert footer padding horizontal. | `0` |
+| `--graupl-alert-footer-padding-y` | Value for alert footer padding vertical. | `0` |
+| `--graupl-alert-footer-padding` | Value for alert footer padding. | `var(--graupl-alert-footer-padding-y) var(--graupl-alert-footer-padding-x)` |
 
-## .accordion-item-footer custom properties
-
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-accordion-item-footer-padding-x` | Value for accordion item footer padding horizontal. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-footer-padding-y` | Value for accordion item footer padding vertical. | `var(--graupl-spacer-0)` |
-| `--graupl-accordion-item-footer-padding` | Value for accordion item footer padding. | `var(--graupl-accordion-item-footer-padding-y) var(--graupl-accordion-item-footer-padding-x)` |
 
 ## Alerts Live Example
 
-<live-example :source-code="exampleAlerts">
+<live-example :source-code="exampleAlerts" :key="background-content">
+  <template #options>
+    <div class="input-group">
+      <label for="background">Alert Background Property</label>
+      <select id="background" v-model="background">
+        <option value="bg-primary">Primary</option>
+        <option value="bg-primary-100">Primary 100</option>
+        <option value="bg-primary-200">Primary 200</option>
+        <option value="bg-primary-300">Primary 300</option>
+        <option value="bg-primary-400">Primary 400</option>
+        <option value="bg-primary-500">Primary 500</option>
+        <option value="bg-primary-600">Primary 600</option>
+        <option value="bg-primary-700">Primary 700</option>
+        <option value="bg-primary-800">Primary 800</option>
+        <option value="bg-primary-900">Primary 900</option>
+        <option value="bg-secondary">Secondary</option>
+        <option value="bg-secondary-100">Secondary 100</option>
+        <option value="bg-secondary-200">Secondary 200</option>
+        <option value="bg-secondary-300">Secondary 300</option>
+        <option value="bg-secondary-400">Secondary 400</option>
+        <option value="bg-secondary-500">Secondary 500</option>
+        <option value="bg-secondary-600">Secondary 600</option>
+        <option value="bg-secondary-700">Secondary 700</option>
+        <option value="bg-secondary-800">Secondary 800</option>
+        <option value="bg-secondary-900">Secondary 900</option>
+        <option value="bg-tertiary">Tertiary</option>
+        <option value="bg-tertiary-100">Tertiary 100</option>
+        <option value="bg-tertiary-200">Tertiary 200</option>
+        <option value="bg-tertiary-300">Tertiary 300</option>
+        <option value="bg-tertiary-400">Tertiary 400</option>
+        <option value="bg-tertiary-500">Tertiary 500</option>
+        <option value="bg-tertiary-600">Tertiary 600</option>
+        <option value="bg-tertiary-700">Tertiary 700</option>
+        <option value="bg-tertiary-800">Tertiary 800</option>
+        <option value="bg-tertiary-900">Tertiary 900</option>
+        <option value="bg-inherit">Inherit</option>
+        <option value="bg-current">Current</option>
+        <option value="bg-transparent">Transparent</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="content">Alert Color Property</label>
+      <select id="content" v-model="content">
+        <option value="text-primary">Primary</option>
+        <option value="text-primary-100">Primary 100</option>
+        <option value="text-primary-200">Primary 200</option>
+        <option value="text-primary-300">Primary 300</option>
+        <option value="text-primary-400">Primary 400</option>
+        <option value="text-primary-500">Primary 500</option>
+        <option value="text-primary-600">Primary 600</option>
+        <option value="text-primary-700">Primary 700</option>
+        <option value="text-primary-800">Primary 800</option>
+        <option value="text-primary-900">Primary 900</option>
+        <option value="text-secondary">Secondary</option>
+        <option value="text-secondary-100">Secondary 100</option>
+        <option value="text-secondary-200">Secondary 200</option>
+        <option value="text-secondary-300">Secondary 300</option>
+        <option value="text-secondary-400">Secondary 400</option>
+        <option value="text-secondary-500">Secondary 500</option>
+        <option value="text-secondary-600">Secondary 600</option>
+        <option value="text-secondary-700">Secondary 700</option>
+        <option value="text-secondary-800">Secondary 800</option>
+        <option value="text-secondary-900">Secondary 900</option>
+        <option value="text-tertiary">Tertiary</option>
+        <option value="text-tertiary-100">Tertiary 100</option>
+        <option value="text-tertiary-200">Tertiary 200</option>
+        <option value="text-tertiary-300">Tertiary 300</option>
+        <option value="text-tertiary-400">Tertiary 400</option>
+        <option value="text-tertiary-500">Tertiary 500</option>
+        <option value="text-tertiary-600">Tertiary 600</option>
+        <option value="text-tertiary-700">Tertiary 700</option>
+        <option value="text-tertiary-800">Tertiary 800</option>
+        <option value="text-tertiary-900">Tertiary 900</option>
+        <option value="text-inherit">Inherit</option>
+        <option value="text-current">Current</option>
+        <option value="text-transparent">Transparent</option>
+      </select>
+    </div>
+  </template>
 </live-example>
 
 ## Customization
