@@ -54,7 +54,7 @@ describe("Typography Component", () => {
     async (heading) => {
       const screen = render(Component, {
         props: {
-          tag: [`${heading}`],
+          tag: `${heading}`,
           attributes: {
             "data-testid": "font",
           },
