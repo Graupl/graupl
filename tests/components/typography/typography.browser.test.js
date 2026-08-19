@@ -28,14 +28,14 @@ const styles = [`font-normal`, `font-italic`];
 const weights = [`font-weight-light`, `font-weight-normal`, `font-weight-bold`];
 
 const transforms = [
-  `.text-uppercase`,
+  `text-uppercase`,
   `text-lowercase`,
   `text-capitalize`,
   `text-none`,
 ];
 
 describe("Typography Component", () => {
-  it.each(sizes)("Should match screenshot with %s:", async (size) => {
+  it.each(sizes)("Should match size screenshot with %s:", async (size) => {
     const screen = render(Component, {
       props: {
         attributes: {
@@ -50,22 +50,25 @@ describe("Typography Component", () => {
     await expect(screen.getByTestId("font")).toMatchScreenshot();
   });
 
-  it.each(headings)("Should match screenshot with %s:", async (heading) => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          class: [`${heading}`],
-          "data-testid": "font",
+  it.each(headings)(
+    "Should match heading screenshot with %s:",
+    async (heading) => {
+      const screen = render(Component, {
+        props: {
+          attributes: {
+            class: [`${heading}`],
+            "data-testid": "font",
+          },
         },
-      },
-    });
+      });
 
-    await document.fonts.ready;
+      await document.fonts.ready;
 
-    await expect(screen.getByTestId("font")).toMatchScreenshot();
-  });
+      await expect(screen.getByTestId("font")).toMatchScreenshot();
+    }
+  );
 
-  it.each(styles)("Should match screenshot with %s:", async (style) => {
+  it.each(styles)("Should match styles screenshot with %s:", async (style) => {
     const screen = render(Component, {
       props: {
         attributes: {
@@ -80,33 +83,39 @@ describe("Typography Component", () => {
     await expect(screen.getByTestId("font")).toMatchScreenshot();
   });
 
-  it.each(weights)("Should match screenshot with %s:", async (weight) => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          class: [`${weight}`],
-          "data-testid": "font",
+  it.each(weights)(
+    "Should match weight screenshot with %s:",
+    async (weight) => {
+      const screen = render(Component, {
+        props: {
+          attributes: {
+            class: [`${weight}`],
+            "data-testid": "font",
+          },
         },
-      },
-    });
+      });
 
-    await document.fonts.ready;
+      await document.fonts.ready;
 
-    await expect(screen.getByTestId("font")).toMatchScreenshot();
-  });
+      await expect(screen.getByTestId("font")).toMatchScreenshot();
+    }
+  );
 
-  it.each(transforms)("Should match screenshot with %s:", async (transform) => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          class: [`${transform}`],
-          "data-testid": "font",
+  it.each(transforms)(
+    "Should match transform screenshot with %s:",
+    async (transform) => {
+      const screen = render(Component, {
+        props: {
+          attributes: {
+            class: [`${transform}`],
+            "data-testid": "font",
+          },
         },
-      },
-    });
+      });
 
-    await document.fonts.ready;
+      await document.fonts.ready;
 
-    await expect(screen.getByTestId("font")).toMatchScreenshot();
-  });
+      await expect(screen.getByTestId("font")).toMatchScreenshot();
+    }
+  );
 });
