@@ -51,7 +51,7 @@ The card component provides the following set of classes to apply the preset pro
 | `.right` | A modifier to layout the image on the right in a horizontal layout. |
 | `.top` | A modifier to layout the image on the top in a vertical layout. |
 | `.bottom` | A modifier to layout the image on the bottom in a vertical layout. |
-| `.inverse` | A modifier to invert the image/content layouting. |
+| `.inverse` | A modifier to invert the image/content positioning. |
 
 <br />
 
