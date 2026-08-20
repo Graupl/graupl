@@ -5,7 +5,7 @@
 
   onMounted(() => {AlertGenerator()});
 
-  const background = ref("bg-primary");
+  const background = ref("bg-primary-200");
   const content = ref("text-secondary-900");
 
   const exampleAlerts = computed(() => {
