@@ -52,7 +52,7 @@
 
 <br/>
 
-The accordion component provides the following set of classes to apply the preset properties of for the specific elements.
+The alert component provides the following set of classes to apply the preset properties of for the specific elements.
 
 | Class Name | Description |
 | --- | --- |
