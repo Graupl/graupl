@@ -1,5 +1,5 @@
 (function() {
-	function L(t, e, { shouldThrow: s = !0 } = {}) {
+	function M(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -39,7 +39,7 @@
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function U(t, { shouldThrow: e = !0 } = {}) {
+	function Z(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -77,7 +77,7 @@
 				else throw new TypeError(`${i} must be a string or an array of strings. "${o}" given.`);
 				else {
 					const r = {};
-					r[i] = t[i], U(r);
+					r[i] = t[i], Z(r);
 				}
 			} catch (o) {
 				s.status = !1, s.errors.push(o);
@@ -88,7 +88,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function et(t, { shouldThrow: e = !0 } = {}) {
+	function st(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -111,7 +111,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function st(t, { shouldThrow: e = !0 } = {}) {
+	function it(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -135,7 +135,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function Z(t, { shouldThrow: e = !0 } = {}) {
+	function W(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -158,13 +158,13 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function z(t, e, { shouldThrow: s = !0 } = {}) {
+	function F(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
-			if (n("string", { tagName: t }, { shouldThrow: !0 }).status && L(HTMLElement, e, { shouldThrow: !0 }).status) {
+			if (n("string", { tagName: t }, { shouldThrow: !0 }).status && M(HTMLElement, e, { shouldThrow: !0 }).status) {
 				const o = t.toLowerCase();
 				for (const r in e) try {
 					if (e[r].tagName.toLowerCase() !== o) throw new TypeError(`${r} must be a <${o}> element. <${e[r].tagName.toLowerCase()}> given.`);
@@ -178,7 +178,7 @@
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function it(t, e, { shouldThrow: s = !0 } = {}) {
+	function ot(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -191,7 +191,7 @@
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function ot(t, { shouldThrow: e = !0 } = {}) {
+	function rt(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -210,7 +210,7 @@
 	function l(t, e) {
 		t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 	}
-	var x = class {
+	var $ = class {
 		_equals = Object.is;
 		_current;
 		_committed;
@@ -238,7 +238,7 @@
 		update(t) {
 			return this._current = t(this._current), this;
 		}
-	}, K = class tt {
+	}, V = class et {
 		_scope;
 		_type = "_default";
 		_storage = {};
@@ -248,7 +248,7 @@
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (L(tt, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (M(et, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -394,13 +394,13 @@
 			return this._focusState;
 		}
 		set focusState(t) {
-			et({ focusState: t }), this._focusState !== t && (this._focusState = t);
+			st({ focusState: t }), this._focusState !== t && (this._focusState = t);
 		}
 		get currentEvent() {
 			return this._currentEvent;
 		}
 		set currentEvent(t) {
-			st({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+			it({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 		}
 		get shouldFocus() {
 			let t = !1;
@@ -441,19 +441,19 @@
 		}
 		_validate() {
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = ot(this, { shouldThrow: !1 });
+			const t = rt(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const i = {};
 				for (const r of Object.keys(this._dom)) Array.isArray(this._dom[r]) ? this._dom[r].forEach((c, m) => {
 					i[`${r}Element[${m}]`] = c;
 				}) : this._dom[r] !== null && (i[`${r}Element`] = this._dom[r]);
-				const o = L(HTMLElement, i, { shouldThrow: !1 });
+				const o = M(HTMLElement, i, { shouldThrow: !1 });
 				o.status || (this._errors = [...this._errors, ...o.errors], this._valid = !1);
 			}
 			if (Object.keys(this._selectors).length > 0) {
 				const i = {};
 				for (const r of Object.keys(this._selectors)) i[`${r}Selector`] = this._selectors[r];
-				const o = U(i, { shouldThrow: !1 });
+				const o = Z(i, { shouldThrow: !1 });
 				o.status || (this._errors = [...this._errors, ...o.errors], this._valid = !1);
 			}
 			if (Object.keys(this._classes).length > 0) {
@@ -496,7 +496,7 @@
 		_setDOMElementType(t, { context: e, overwrite: s = !0, strict: i = !1 } = {}) {
 			if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
 			if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
-			L(HTMLElement, { context: e });
+			M(HTMLElement, { context: e });
 			const o = Array.from(e.querySelectorAll(this.selectors[t])).filter((r) => i ? r.parentElement === e : !0);
 			Array.isArray(this._dom[t]) ? s ? this._dom[t] = o : this._dom[t] = [...this._dom[t], ...o] : this._dom[t] = o[0] || null;
 		}
@@ -516,14 +516,14 @@
 		_handleKeydown() {}
 		_handleKeyup() {}
 		_store() {
-			this._shouldStore && (L(K, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new K({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			this._shouldStore && (M(V, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new V({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey,
 				data: this
 			}));
 		}
 		_unstore() {
-			this._shouldStore && L(K, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			this._shouldStore && M(V, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey
 			});
@@ -558,7 +558,7 @@
 			});
 		}
 		_dispatchEvent(t, e) {
-			it(t, this), L(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			ot(t, this), M(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, s, i = {}) {
 			e.addEventListener(t, s, i), this._listeners.push({
@@ -589,15 +589,15 @@
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 		}
-	}, rt = class extends w {
+	}, nt = class extends w {
 		_rootDOMElement = "item";
 		_protectedDOMElements = [
 			"toggle",
 			"header",
 			"content"
 		];
-		_open = new x(!1);
-		_locked = new x(!1);
+		_open = new $(!1);
+		_locked = new $(!1);
 		_name = "AccordionItem";
 		_storageKey = "accordionItems";
 		_shouldStore = !1;
@@ -628,7 +628,7 @@
 			this.dom.item.id = this.dom.item.id || `accordion-item-${t}-${e}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${t}-${e}`, this.dom.header.id = this.dom.header.id || `accordion-item-header-${t}-${e}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${t}-${e}`;
 		}
 		_setAriaAttributes() {
-			z("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), z("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
+			F("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), F("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
 		}
 		_reveal({ emit: t = !0, transition: e = !0 } = {}) {
 			const { closeClass: s, openClass: i, transitionClass: o, openDuration: r } = this.elements.parent;
@@ -716,7 +716,7 @@
 	function h(t) {
 		t.preventDefault(), t.stopPropagation();
 	}
-	var nt = class extends w {
+	var at = class extends w {
 		_rootDOMElement = "accordion";
 		_optionalKeySupport = !0;
 		_expandMultiple = !0;
@@ -724,26 +724,26 @@
 		_currentChild = 0;
 		_storageKey = "accordions";
 		_name = "Accordion";
-		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: o = ".accordion-item-content", accordionControlContainerSelector: r = ".accordion-control-container", accordionControlsSelector: c = ".accordion-control", expandControllerSelector: m = ".expand-all", collapseControllerSelector: _ = ".collapse-all", openClass: k = "show", closeClass: C = "hide", transitionClass: y = "transitioning", transitionDuration: E = 300, openDuration: f = -1, closeDuration: g = -1, optionalKeySupport: p = !1, allowExpandMultiple: O = !0, allowCollapseAll: D = !0, automaticActivation: T = !1, prefix: v = "graupl-", key: A = null, initializeClass: B = "initializing", initialize: $ = !1 }) {
+		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: o = ".accordion-item-content", accordionControlContainerSelector: r = ".accordion-control-container", accordionControlsSelector: c = ".accordion-control", expandControllerSelector: m = ".expand-all", collapseControllerSelector: f = ".collapse-all", openClass: C = "show", closeClass: y = "hide", transitionClass: E = "transitioning", transitionDuration: I = 300, openDuration: g = -1, closeDuration: p = -1, optionalKeySupport: _ = !1, allowExpandMultiple: b = !0, allowCollapseAll: D = !0, automaticActivation: O = !1, prefix: v = "graupl-", key: x = null, initializeClass: A = "initializing", initialize: B = !1 }) {
 			super({
 				prefix: v,
-				key: A,
-				initializeClass: B
-			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = o, this._selectors.accordionControlContainer = r, this._selectors.accordionControls = c, this._selectors.expandController = m, this._selectors.collapseController = _, this._elements.accordionItems = [], this._classes.open = k || "", this._classes.close = C || "", this._classes.transition = y || "", this._durations.transition = E, this._durations.open = f, this._durations.close = g, this._automatic = T, this._optionalKeySupport = p, this._expandMultiple = O, this._collapseAll = D, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
-				this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((I) => {
-					I.setAttribute("disabled", "disabled");
-				}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((I) => {
-					I.setAttribute("disabled", "disabled");
+				key: x,
+				initializeClass: A
+			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = o, this._selectors.accordionControlContainer = r, this._selectors.accordionControls = c, this._selectors.expandController = m, this._selectors.collapseController = f, this._elements.accordionItems = [], this._classes.open = C || "", this._classes.close = y || "", this._classes.transition = E || "", this._durations.transition = I, this._durations.open = g, this._durations.close = p, this._automatic = O, this._optionalKeySupport = _, this._expandMultiple = b, this._collapseAll = D, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((T) => {
+					T.setAttribute("disabled", "disabled");
+				}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((T) => {
+					T.setAttribute("disabled", "disabled");
 				});
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const I = n("boolean", {
+				const L = n("boolean", {
 					automaticActivation: this._automatic,
 					optionalKeySupport: this._optionalKeySupport,
 					allowExpandMultiple: this._expandMultiple,
 					allowCollapseAll: this._collapseAll
-				});
-				I.status || (this._errors = [...this._errors, ...I.errors], this._valid = !1);
-			}), $ && this.initialize();
+				}, { shouldThrow: !1 });
+				L.status || (this._errors = [...this._errors, ...L.errors], this._valid = !1);
+			}), B && this.initialize();
 		}
 		get openClass() {
 			return this._classes.open;
@@ -844,7 +844,7 @@
 		}
 		_createChildElements() {
 			this.dom.accordionItems.forEach((t, e) => {
-				const s = new rt({
+				const s = new nt({
 					accordionItemElement: t,
 					accordionItemToggleElement: this.dom.accordionItemToggles[e],
 					accordionItemHeaderElement: this.dom.accordionItemHeaders[e],
@@ -900,9 +900,7 @@
 					const s = d(e);
 					switch (s) {
 						case "Space":
-						case "Enter":
-							h(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
-							break;
+						case "Enter": h(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
 					}
 					if (this.optionalKeySupport) switch (s) {
 						case "Home":
@@ -914,9 +912,7 @@
 						case "ArrowDown":
 							h(e), this.focusNextChild();
 							break;
-						case "ArrowUp":
-							h(e), this.focusPreviousChild();
-							break;
+						case "ArrowUp": h(e), this.focusPreviousChild();
 					}
 				});
 			}), this.dom.expandController.forEach((t) => {
@@ -963,20 +959,20 @@
 			this.elements.accordionItems.forEach((t) => t.hide());
 		}
 	};
-	const W = /[\11\12\14\15\40]+/, j = "data-once", at = document;
-	function Q(t, e, s) {
-		return t[`${e}Attribute`](j, s);
+	const X = /[\11\12\14\15\40]+/, N = "data-once", lt = document;
+	function H(t, e, s) {
+		return t[`${e}Attribute`](N, s);
 	}
-	function F(t) {
+	function K(t) {
 		if (typeof t != "string") throw new TypeError("once ID must be a string");
-		if (t === "" || W.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
-		return `[${j}~="${t}"]`;
+		if (t === "" || X.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
+		return `[${N}~="${t}"]`;
 	}
-	function lt(t) {
+	function ht(t) {
 		if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 		return !0;
 	}
-	function P(t, e = at) {
+	function j(t, e = lt) {
 		let s = t;
 		if (t === null) s = [];
 		else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -984,28 +980,28 @@
 		else throw new TypeError("Selector must not be empty");
 		return Array.prototype.slice.call(s);
 	}
-	function V(t, e, s) {
+	function R(t, e, s) {
 		return e.filter((i) => {
-			const o = lt(i) && i.matches(t);
+			const o = ht(i) && i.matches(t);
 			return o && s && s(i), o;
 		});
 	}
-	function X(t, { add: e, remove: s }) {
+	function Y(t, { add: e, remove: s }) {
 		const i = [];
-		Q(t, "has") && Q(t, "get").trim().split(W).forEach((r) => {
+		H(t, "has") && H(t, "get").trim().split(X).forEach((r) => {
 			i.indexOf(r) < 0 && r !== s && i.push(r);
 		}), e && i.push(e);
 		const o = i.join(" ");
-		Q(t, o === "" ? "remove" : "set", o);
+		H(t, o === "" ? "remove" : "set", o);
 	}
-	function b(t, e, s) {
-		return V(`:not(${F(t)})`, P(e, s), (i) => X(i, { add: t }));
+	function k(t, e, s) {
+		return R(`:not(${K(t)})`, j(e, s), (i) => Y(i, { add: t }));
 	}
-	b.remove = (t, e, s) => V(F(t), P(e, s), (i) => X(i, { remove: t })), b.filter = (t, e, s) => V(F(t), P(e, s)), b.find = (t, e) => P(t ? F(t) : `[${j}]`, e);
-	const ht = (t = {}, e = document, s = ".accordion") => {
-		b("graupl-accordion-generator", s, e).forEach((i) => {
+	k.remove = (t, e, s) => R(K(t), j(e, s), (i) => Y(i, { remove: t })), k.filter = (t, e, s) => R(K(t), j(e, s)), k.find = (t, e) => j(t ? K(t) : `[${N}]`, e);
+	const ct = ({ options: t = {}, context: e = document, selector: s = ".accordion" } = {}) => {
+		k("graupl-accordion-generator", s, e).forEach((i) => {
 			const o = i.dataset.grauplAccordionOptions ? JSON.parse(i.dataset.grauplAccordionOptions.replace(/'/g, "\"")) || {} : {};
-			new nt({
+			new at({
 				accordionElement: i,
 				initialize: !0,
 				...t,
@@ -1013,26 +1009,26 @@
 			});
 		});
 	};
-	var ct = class extends w {
+	var dt = class extends w {
 		_rootDOMElement = "alert";
 		_protectedDOMElements = ["controller"];
-		_hidden = new x(!1);
+		_hidden = new $(!1);
 		_storageKey = "alerts";
 		_name = "Alert";
-		constructor({ alertElement: t, controllerElement: e = null, showClass: s = "show", hideClass: i = "hide", transitionClass: o = "transitioning", transitionDuration: r = 150, showDuration: c = -1, hideDuration: m = -1, isHidden: _ = !1, prefix: k = "graupl-", key: C = null, initializeClass: y = "initializing", initialize: E = !1 } = {}) {
+		constructor({ alertElement: t, controllerElement: e = null, showClass: s = "show", hideClass: i = "hide", transitionClass: o = "transitioning", transitionDuration: r = 150, showDuration: c = -1, hideDuration: m = -1, isHidden: f = !1, prefix: C = "graupl-", key: y = null, initializeClass: E = "initializing", initialize: I = !1 } = {}) {
 			super({
-				prefix: k,
-				key: C,
-				initializeClass: y
-			}), this._dom.alert = t, this._dom.controller = e, this._classes.show = s || "", this._classes.hide = i || "", this._classes.transition = o || "", this._durations.transition = r, this._durations.show = c, this._durations.hide = m, this._hidden.value = _, this._hidden.commit(), this._registerEvent("show", { detail: { alert: this } }), this._registerEvent("hide", { detail: { alert: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				prefix: C,
+				key: y,
+				initializeClass: E
+			}), this._dom.alert = t, this._dom.controller = e, this._classes.show = s || "", this._classes.hide = i || "", this._classes.transition = o || "", this._durations.transition = r, this._durations.show = c, this._durations.hide = m, this._hidden.value = f, this._hidden.commit(), this._registerEvent("show", { detail: { alert: this } }), this._registerEvent("hide", { detail: { alert: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				this.isHidden && this._conceal({
 					emit: !1,
 					transition: !1
 				});
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const f = n("boolean", { isHidden: this._hidden.value }, { shouldThrow: !1 });
-				f.status || (this._errors = [...this._errors, ...f.errors], this._valid = !1);
-			}), E && this.initialize();
+				const p = n("boolean", { isHidden: this._hidden.value }, { shouldThrow: !1 });
+				p.status || (this._errors = [...this._errors, ...p.errors], this._valid = !1);
+			}), I && this.initialize();
 		}
 		get showClass() {
 			return this._classes.show;
@@ -1119,10 +1115,10 @@
 			this.isHidden && !t || (this.focusState = "none", this._conceal(), this._hidden.value = !0, e || this._hidden.commit());
 		}
 	};
-	const dt = (t = {}, e = document, s = ".alert") => {
-		b("graupl-alert-generator", s, e).forEach((i) => {
+	const ut = ({ options: t = {}, context: e = document, selector: s = ".alert" } = {}) => {
+		k("graupl-alert-generator", s, e).forEach((i) => {
 			const o = i.dataset.grauplAlertOptions ? JSON.parse(i.dataset.grauplAlertOptions.replace(/'/g, "\"")) || {} : {};
-			new ct({
+			new dt({
 				alertElement: i,
 				controllerElement: i.querySelector(".alert-dismisser") || null,
 				initialize: !0,
@@ -1131,7 +1127,7 @@
 			});
 		});
 	};
-	var ut = class extends w {
+	var mt = class extends w {
 		_rootDOMElement = "item";
 		_protectedDOMElements = ["link"];
 		_storageKey = "breadcrumbItems";
@@ -1157,11 +1153,11 @@
 				this.dom.link.blur();
 			});
 		}
-	}, mt = class extends w {
+	}, pt = class extends w {
 		_rootDOMElement = "breadcrumb";
 		_currentChild = 0;
-		_open = new x(!1);
-		_locked = new x(!1);
+		_open = new $(!1);
+		_locked = new $(!1);
 		_openInsideBreakpoint = !1;
 		_openOutsideBreakpoint = !0;
 		_closeInsideBreakpoint = !0;
@@ -1177,17 +1173,17 @@
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: o = "locked", unlockedClass: r = "unlocked", openClass: c = "show", closeClass: m = "hide", transitionClass: _ = "transition", transitionDuration: k = 250, openDuration: C = -1, closeDuration: y = -1, openOnFocus: E = !1, closeOnBlur: f = !1, minWidth: g = "", breakpoint: p = "856px", autoOpen: O = !1, openInsideBreakpoint: D = !1, openOutsideBreakpoint: T = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: A = !1, lockInsideBreakpoint: B = !1, lockOutsideBreakpoint: $ = !0, unlockInsideBreakpoint: I = !0, unlockOutsideBreakpoint: M = !1, locked: S = !1, mediaQuery: H = "", prefix: R = "graupl-", key: G = null, initializeClass: J = "initializing", initialize: q = !1 }) {
+		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: o = "locked", unlockedClass: r = "unlocked", openClass: c = "show", closeClass: m = "hide", transitionClass: f = "transitioning", transitionDuration: C = 250, openDuration: y = -1, closeDuration: E = -1, openOnFocus: I = !1, closeOnBlur: g = !1, minWidth: p = "", breakpoint: _ = "856px", autoOpen: b = !1, openInsideBreakpoint: D = !1, openOutsideBreakpoint: O = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: x = !1, lockInsideBreakpoint: A = !1, lockOutsideBreakpoint: B = !0, unlockInsideBreakpoint: T = !0, unlockOutsideBreakpoint: L = !1, locked: P = !1, mediaQuery: S = "", prefix: q = "graupl-", key: z = null, initializeClass: J = "initializing", initialize: U = !1 }) {
 			super({
-				prefix: R,
-				key: G,
+				prefix: q,
+				key: z,
 				initializeClass: J
-			}), this._dom.breadcrumb = t, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._dom.breadcrumbToggle = null, this._selectors.breadcrumbItems = e, this._selectors.breadcrumbLinks = s, this._selectors.breadcrumbToggle = i, this._elements.breadcrumbItems = [], this._classes.locked = o || "", this._classes.unlocked = r || "", this._classes.open = c || "", this._classes.close = m || "", this._classes.transition = _ || "", this._durations.transition = k, this._durations.open = C, this._durations.close = y, this._openOnFocus = E, this._closeOnBlur = f, g !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), p === "" && (p = g)), O && p !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), T = O, v = O), this._breakpoint = p || "", this._openInsideBreakpoint = D, this._openOutsideBreakpoint = T, this._closeInsideBreakpoint = v, this._closeOutsideBreakpoint = A, this._lockInsideBreakpoint = B, this._lockOutsideBreakpoint = $, this._unlockInsideBreakpoint = I, this._unlockOutsideBreakpoint = M, this._mediaQueryString = H || "", this._locked.value = S, this._locked.commit(), this._registerEvent("expand", { detail: { breadcrumb: this } }), this._registerEvent("collapse", { detail: { breadcrumb: this } }), this._registerEvent("lock", { detail: { breadcrumb: this } }), this._registerEvent("unlock", { detail: { breadcrumb: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			}), this._dom.breadcrumb = t, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._dom.breadcrumbToggle = null, this._selectors.breadcrumbItems = e, this._selectors.breadcrumbLinks = s, this._selectors.breadcrumbToggle = i, this._elements.breadcrumbItems = [], this._classes.locked = o || "", this._classes.unlocked = r || "", this._classes.open = c || "", this._classes.close = m || "", this._classes.transition = f || "", this._durations.transition = C, this._durations.open = y, this._durations.close = E, this._openOnFocus = I, this._closeOnBlur = g, p !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), _ === "" && (_ = p)), b && _ !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), O = b, v = b), this._breakpoint = _ || "", this._openInsideBreakpoint = D, this._openOutsideBreakpoint = O, this._closeInsideBreakpoint = v, this._closeOutsideBreakpoint = x, this._lockInsideBreakpoint = A, this._lockOutsideBreakpoint = B, this._unlockInsideBreakpoint = T, this._unlockOutsideBreakpoint = L, this._mediaQueryString = S || "", this._locked.value = P, this._locked.commit(), this._registerEvent("expand", { detail: { breadcrumb: this } }), this._registerEvent("collapse", { detail: { breadcrumb: this } }), this._registerEvent("lock", { detail: { breadcrumb: this } }), this._registerEvent("unlock", { detail: { breadcrumb: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				requestAnimationFrame(() => {
 					this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 })), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
 				});
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const Y = n("boolean", {
+				const tt = n("boolean", {
 					openOnFocus: this._openOnFocus,
 					closeOnBlur: this._closeOnBlur,
 					openInsideBreakpoint: this._openInsideBreakpoint,
@@ -1200,8 +1196,8 @@
 					unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
 					locked: this._locked.value
 				}, { shouldThrow: !1 });
-				Y.status || (this._errors = [...this._errors, ...Y.errors], this._valid = !1);
-			}), q && this.initialize();
+				tt.status || (this._errors = [...this._errors, ...tt.errors], this._valid = !1);
+			}), U && this.initialize();
 		}
 		get lockedClass() {
 			return this._classes.locked;
@@ -1324,7 +1320,7 @@
 			this.dom.breadcrumb.id = this.dom.breadcrumb.id || `breadcrumb-${this.key}`, this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.id = this.dom.breadcrumbToggle.id || `breadcrumb-toggle-${this.key}`), this._id = this.dom.breadcrumb.id;
 		}
 		_setAriaAttributes() {
-			this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), z("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
+			this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), F("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
 		}
 		_setCustomProps() {
 			this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`, `${this.transitionDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`, `${this.openDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`, `${this.closeDuration}ms`);
@@ -1334,7 +1330,7 @@
 		}
 		_createChildElements() {
 			this.dom.breadcrumbItems.forEach((t) => {
-				const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new ut({
+				const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new mt({
 					breadcrumbItemElement: t,
 					breadcrumbLinkElement: e,
 					parentBreadcrumb: this,
@@ -1344,7 +1340,7 @@
 			});
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (a(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (a(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					a(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -1393,9 +1389,7 @@
 			}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 				switch (this.currentEvent = "keyboard", d(t)) {
 					case "Space":
-					case "Enter":
-						h(t);
-						break;
+					case "Enter": h(t);
 				}
 			});
 		}
@@ -1412,11 +1406,9 @@
 							this.focusNextChild();
 						}) : this.focusFirstChild();
 						break;
-					case "Tab":
-						this.openOnFocus && (h(t), this.open(), requestAnimationFrame(() => {
-							this.focusNextChild();
-						}));
-						break;
+					case "Tab": this.openOnFocus && (h(t), this.open(), requestAnimationFrame(() => {
+						this.focusNextChild();
+					}));
 				}
 			});
 		}
@@ -1493,10 +1485,10 @@
 			this.focusState = "self", this.elements.breadcrumbToggle !== null && (this.currentChild = this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) || 0, this.elements.breadcrumbToggle.focus());
 		}
 	};
-	const pt = ({ options: t = {}, context: e = document, selector: s = ".breadcrumb" } = {}) => {
-		b("graupl-breadcrumb-generator", s, e).forEach((i) => {
+	const _t = ({ options: t = {}, context: e = document, selector: s = ".breadcrumb" } = {}) => {
+		k("graupl-breadcrumb-generator", s, e).forEach((i) => {
 			const o = i.dataset.grauplBreadcrumbOptions ? JSON.parse(i.dataset.grauplBreadcrumbOptions.replace(/'/g, "\"")) || {} : {};
-			new mt({
+			new pt({
 				breadcrumbElement: i,
 				initialize: !0,
 				...t,
@@ -1504,7 +1496,7 @@
 			});
 		});
 	};
-	var N = class extends w {
+	var G = class extends w {
 		_rootDOMElement = "carouselItem";
 		_shouldStore = !1;
 		_storageKey = "carouselItems";
@@ -1536,7 +1528,7 @@
 				});
 			});
 		}
-	}, _t = class extends w {
+	}, ft = class extends w {
 		_rootDOMElement = "carousel";
 		_currentItem = 0;
 		_autoplay = !0;
@@ -1546,27 +1538,27 @@
 		_name = "Carousel";
 		_itemsPerPage = 1;
 		_loop = !0;
-		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: o = ".carousel-control-container", carouselTabsSelector: r = ".carousel-tab", carouselTabContainerSelector: c = ".carousel-tab-container", autoplaySelector: m = ".autoplay", nextSelector: _ = ".next", previousSelector: k = ".previous", activeClass: C = "active", playClass: y = "play", pauseClass: E = "pause", autoplay: f = !0, transitionDelay: g = 1e4, playText: p = "Play", pauseText: O = "Pause", itemsPerPage: D = 1, loop: T = !0, prefix: v = "graupl-", key: A = null, initializeClass: B = "initializing", initialize: $ = !1 }) {
+		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: o = ".carousel-control-container", carouselTabsSelector: r = ".carousel-tab", carouselTabContainerSelector: c = ".carousel-tab-container", autoplaySelector: m = ".autoplay", nextSelector: f = ".next", previousSelector: C = ".previous", activeClass: y = "active", playClass: E = "play", pauseClass: I = "pause", autoplay: g = !0, transitionDelay: p = 1e4, playText: _ = "Play", pauseText: b = "Pause", itemsPerPage: D = 1, loop: O = !0, prefix: v = "graupl-", key: x = null, initializeClass: A = "initializing", initialize: B = !1 }) {
 			super({
 				prefix: v,
-				key: A,
-				initializeClass: B
-			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = o, this._selectors.carouselTabs = r, this._selectors.carouselTabContainer = c, this._selectors.autoplay = m, this._selectors.next = _, this._selectors.previous = k, this._elements.carouselItems = [], this._classes.active = C || "", this._classes.play = y || "", this._classes.pause = E || "", this._autoplay = f, this._itemsPerPage = D, this._loop = T, this._delays.transition = g, this._playText = p || "", this._pauseText = O || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				key: x,
+				initializeClass: A
+			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = o, this._selectors.carouselTabs = r, this._selectors.carouselTabContainer = c, this._selectors.autoplay = m, this._selectors.next = f, this._selectors.previous = C, this._elements.carouselItems = [], this._classes.active = y || "", this._classes.play = E || "", this._classes.pause = I || "", this._autoplay = g, this._itemsPerPage = D, this._loop = O, this._delays.transition = p, this._playText = _ || "", this._pauseText = b || "", this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				this._handleAutoplay(), this.loop && this._handleLoop(), this._handleIntersection(), this.activateFirstItem({ scrollOptions: { behavior: "instant" } });
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const I = n("boolean", {
+				const L = n("boolean", {
 					autoplay: this._autoplay,
 					loop: this._loop
 				}, { shouldThrow: !1 });
-				I.status || (this._errors = [...this._errors, ...I.errors], this._valid = !1);
-				const M = n("string", {
+				L.status || (this._errors = [...this._errors, ...L.errors], this._valid = !1);
+				const S = n("string", {
 					playText: this._playText,
 					pauseText: this._pauseText
 				}, { shouldThrow: !1 });
-				M.status || (this._errors = [...this._errors, ...M.errors], this._valid = !1);
-				const S = n("number", { itemsPerPage: this._itemsPerPage }, { shouldThrow: !1 });
 				S.status || (this._errors = [...this._errors, ...S.errors], this._valid = !1);
-			}), $ && this.initialize();
+				const z = n("number", { itemsPerPage: this._itemsPerPage }, { shouldThrow: !1 });
+				z.status || (this._errors = [...this._errors, ...z.errors], this._valid = !1);
+			}), B && this.initialize();
 		}
 		get activeClass() {
 			return this._classes.active;
@@ -1630,7 +1622,7 @@
 		}
 		_createChildElements() {
 			this.dom.carouselItems.forEach((t, e) => {
-				const s = new N({
+				const s = new G({
 					carouselItemElement: t,
 					tabElement: this.dom.carouselTabs ? this.dom.carouselTabs[e] : null,
 					parent: this,
@@ -1649,7 +1641,7 @@
 			}), this._id = this.dom.carousel.id;
 		}
 		_setAriaAttributes() {
-			!z("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
+			!F("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
 				t.setAttribute("inert", "true");
 			}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
 				t.setAttribute("role", "tab"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
@@ -1712,18 +1704,14 @@
 				this._addEventListener("keydown", t, (e) => {
 					switch (d(e)) {
 						case "Space":
-						case "Enter":
-							h(e);
-							break;
+						case "Enter": h(e);
 					}
 				});
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keydown", t.dom.tab, (e) => {
 					switch (d(e)) {
 						case "Space":
-						case "Enter":
-							h(e);
-							break;
+						case "Enter": h(e);
 					}
 				});
 			});
@@ -1732,31 +1720,23 @@
 			this._addEventListener("keyup", this.dom.next, (t) => {
 				switch (d(t)) {
 					case "Space":
-					case "Enter":
-						this.activateNextItem(), h(t);
-						break;
+					case "Enter": this.activateNextItem(), h(t);
 				}
 			}), this._addEventListener("keyup", this.dom.previous, (t) => {
 				switch (d(t)) {
 					case "Space":
-					case "Enter":
-						this.activatePreviousItem(), h(t);
-						break;
+					case "Enter": this.activatePreviousItem(), h(t);
 				}
 			}), this._addEventListener("keyup", this.dom.autoplay, (t) => {
 				switch (d(t)) {
 					case "Space":
-					case "Enter":
-						this.toggleAutoplay(), h(t);
-						break;
+					case "Enter": this.toggleAutoplay(), h(t);
 				}
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keyup", t.dom.tab, (e) => {
 					switch (d(e)) {
 						case "Space":
-						case "Enter":
-							this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), h(e);
-							break;
+						case "Enter": this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), h(e);
 					}
 				});
 			});
@@ -1768,7 +1748,7 @@
 			t.forEach((i, o) => {
 				const r = o.cloneNode(!0);
 				r.setAttribute("aria-hidden", "true"), r.setAttribute("inert", "true"), r.setAttribute("id", `${o.id}-clone`), s.appendChild(r);
-				const c = new N({
+				const c = new G({
 					carouselItemElement: r,
 					clone: this._elements.carouselItems[i],
 					parent: this,
@@ -1780,7 +1760,7 @@
 			}), e.forEach((i, o) => {
 				const r = o.cloneNode(!0);
 				r.setAttribute("aria-hidden", "true"), r.setAttribute("inert", "true"), r.setAttribute("id", `${o.id}-clone`), s.insertBefore(r, s.firstChild);
-				const c = new N({
+				const c = new G({
 					carouselItemElement: r,
 					clone: this._elements.carouselItems[i],
 					parent: this,
@@ -1864,10 +1844,10 @@
 			this.autoplay = !this.autoplay, this._handleAutoplay();
 		}
 	};
-	const ft = (t = {}, e = document, s = ".carousel") => {
-		b("graupl-carousel-generator", s, e).forEach((i) => {
+	const gt = ({ options: t = {}, context: e = document, selector: s = ".carousel" } = {}) => {
+		k("graupl-carousel-generator", s, e).forEach((i) => {
 			const o = i.dataset.grauplCarouselOptions ? JSON.parse(i.dataset.grauplCarouselOptions.replace(/'/g, "\"")) || {} : {};
-			new _t({
+			new ft({
 				carouselElement: i,
 				initialize: !0,
 				...t,
@@ -1875,11 +1855,11 @@
 			});
 		});
 	};
-	var gt = class extends w {
+	var bt = class extends w {
 		_rootDOMElement = "disclosure";
 		_protectedDOMElements = ["controller"];
-		_open = new x(!1);
-		_locked = new x(!1);
+		_open = new $(!1);
+		_locked = new $(!1);
 		_openInsideBreakpoint = !1;
 		_openOutsideBreakpoint = !1;
 		_closeInsideBreakpoint = !1;
@@ -1895,17 +1875,17 @@
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: s = ".disclosure-content", lockedClass: i = "locked", unlockedClass: o = "unlocked", openClass: r = "show", closeClass: c = "hide", transitionClass: m = "transitioning", transitionDuration: _ = 250, openDuration: k = -1, closeDuration: C = -1, openOnFocus: y = !1, closeOnBlur: E = !1, minWidth: f = "", breakpoint: g = "", autoOpen: p = !1, openInsideBreakpoint: O = !1, openOutsideBreakpoint: D = !1, closeInsideBreakpoint: T = !1, closeOutsideBreakpoint: v = !1, lockInsideBreakpoint: A = !1, lockOutsideBreakpoint: B = !1, unlockInsideBreakpoint: $ = !1, unlockOutsideBreakpoint: I = !1, locked: M = !1, mediaQuery: S = "", prefix: H = "graupl-", key: R = null, initializeClass: G = "initializing", initialize: J = !1 } = {}) {
+		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: s = ".disclosure-content", lockedClass: i = "locked", unlockedClass: o = "unlocked", openClass: r = "show", closeClass: c = "hide", transitionClass: m = "transitioning", transitionDuration: f = 250, openDuration: C = -1, closeDuration: y = -1, openOnFocus: E = !1, closeOnBlur: I = !1, minWidth: g = "", breakpoint: p = "", autoOpen: _ = !1, openInsideBreakpoint: b = !1, openOutsideBreakpoint: D = !1, closeInsideBreakpoint: O = !1, closeOutsideBreakpoint: v = !1, lockInsideBreakpoint: x = !1, lockOutsideBreakpoint: A = !1, unlockInsideBreakpoint: B = !1, unlockOutsideBreakpoint: T = !1, locked: L = !1, mediaQuery: P = "", prefix: S = "graupl-", key: q = null, initializeClass: z = "initializing", initialize: J = !1 } = {}) {
 			super({
-				prefix: H,
-				key: R,
-				initializeClass: G
-			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = s, this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.open = r || "", this._classes.close = c || "", this._classes.transition = m || "", this._durations.transition = _, this._durations.open = k, this._durations.close = C, this._openOnFocus = y, this._closeOnBlur = E, f !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), g === "" && (g = f)), p && g !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), D = p, T = p), this._breakpoint = g || "", this._openInsideBreakpoint = O, this._openOutsideBreakpoint = D, this._closeInsideBreakpoint = T, this._closeOutsideBreakpoint = v, this._lockInsideBreakpoint = A, this._lockOutsideBreakpoint = B, this._unlockInsideBreakpoint = $, this._unlockOutsideBreakpoint = I, this._mediaQueryString = S || "", this._locked.value = M, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				prefix: S,
+				key: q,
+				initializeClass: z
+			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = s, this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.open = r || "", this._classes.close = c || "", this._classes.transition = m || "", this._durations.transition = f, this._durations.open = C, this._durations.close = y, this._openOnFocus = E, this._closeOnBlur = I, g !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), p === "" && (p = g)), _ && p !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), D = _, O = _), this._breakpoint = p || "", this._openInsideBreakpoint = b, this._openOutsideBreakpoint = D, this._closeInsideBreakpoint = O, this._closeOutsideBreakpoint = v, this._lockInsideBreakpoint = x, this._lockOutsideBreakpoint = A, this._unlockInsideBreakpoint = B, this._unlockOutsideBreakpoint = T, this._mediaQueryString = P || "", this._locked.value = L, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				requestAnimationFrame(() => {
 					this.dom.controller.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 }), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
 				});
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const q = n("boolean", {
+				const Q = n("boolean", {
 					openOnFocus: this._openOnFocus,
 					closeOnBlur: this._closeOnBlur,
 					openInsideBreakpoint: this._openInsideBreakpoint,
@@ -1918,7 +1898,7 @@
 					unlockOutsideBreakpoint: this._unlockOutsideBreakpoint,
 					locked: this._locked.value
 				}, { shouldThrow: !1 });
-				q.status || (this._errors = [...this._errors, ...q.errors], this._valid = !1);
+				Q.status || (this._errors = [...this._errors, ...Q.errors], this._valid = !1);
 			}), J && this.initialize();
 		}
 		get lockedClass() {
@@ -2033,7 +2013,7 @@
 			this.dom.disclosure.id = this.dom.disclosure.id || `disclosure-${this.key}`, this.dom.controller.id = this.dom.controller.id || `disclosure-controller-${this.key}`, this._id = this.dom.disclosure.id;
 		}
 		_setAriaAttributes() {
-			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), z("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
+			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), F("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
 		}
 		_setCustomProps() {
 			this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-transition-duration`, `${this.transitionDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-open-transition-duration`, `${this.openDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-close-transition-duration`, `${this.closeDuration}ms`);
@@ -2042,7 +2022,7 @@
 			this._resetDOMElementType("content"), this._setDOMElementType("content", { context: this.dom.disclosure });
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (a(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
+			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (a(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 					a(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -2057,7 +2037,7 @@
 				l(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 					a(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
-							l(this.transitionClass, this.dom.disclosure), this.dom.content.innert = !0;
+							l(this.transitionClass, this.dom.disclosure), this.dom.content.inert = !0;
 						}, this.closeDuration);
 					});
 				});
@@ -2087,9 +2067,7 @@
 			this._addEventListener("keydown", this.dom.controller, (t) => {
 				switch (this.currentEvent = "keyboard", d(t)) {
 					case "Space":
-					case "Enter":
-						h(t);
-						break;
+					case "Enter": h(t);
 				}
 			}), this._addEventListener("keydown", this.dom.disclosure, (t) => {
 				this.currentEvent = "keyboard", d(t) === "Escape" && h(t);
@@ -2102,9 +2080,7 @@
 					case "Enter":
 						this.toggle(), h(t);
 						break;
-					case "Tab":
-						this.openOnFocus && (h(t), this.open());
-						break;
+					case "Tab": this.openOnFocus && (h(t), this.open());
 				}
 			}), this._addEventListener("keyup", this.dom.disclosure, (t) => {
 				this.currentEvent = "keyboard", d(t) === "Escape" && (this.close(), h(t));
@@ -2159,29 +2135,29 @@
 			});
 		}
 	};
-	const bt = ({ options: t = {}, context: e = document, disclosureSelector: s = ".disclosure", controllerSelector: i = ".disclosure-toggle" } = {}) => {
-		b("graupl-disclosure-generator", s, e).forEach((o) => {
-			const r = o.dataset.grauplDisclosureOptions ? JSON.parse(o.dataset.grauplDisclosureOptions.replace(/'/g, "\"")) || {} : {}, c = `${i}[data-graupl-disclosure-target="${o.id}"]`, [m] = b("graupl-disclosure-generator", c, e);
-			if (!m) {
-				console.warn(`No controller found for disclosure with ID "${o.id}". Please ensure there is an element with the selector "${c}".`), b.remove("graupl-disclosure-generator", o);
+	const kt = ({ options: t = {}, context: e = document, selector: s = ".disclosure" } = {}) => {
+		k("graupl-disclosure-generator", s, e).forEach((i) => {
+			const o = i.dataset.grauplDisclosureOptions ? JSON.parse(i.dataset.grauplDisclosureOptions.replace(/'/g, "\"")) || {} : {}, r = `[data-graupl-disclosure-target="${i.id}"]`, [c] = k("graupl-disclosure-generator", r, e);
+			if (!c) {
+				console.warn(`No controller found for disclosure with ID "${i.id}". Please ensure there is an element with the selector "${r}".`), k.remove("graupl-disclosure-generator", i);
 				return;
 			}
-			new gt({
-				disclosureElement: o,
-				controllerElement: m,
+			new bt({
+				disclosureElement: i,
+				controllerElement: c,
 				initialize: !0,
 				...t,
-				...r
+				...o
 			});
 		});
-	}, kt = (t = {}, e = document, s = ".navigation") => {
-		b("graupl-navigation-generator", s, e).forEach((i) => {
-			const o = i.dataset.grauplMenuType || DisclosureMenu;
+	}, Ct = ({ options: t = {}, context: e = document, selector: s = ".navigation" } = {}) => {
+		k("graupl-navigation-generator", s, e).forEach((i) => {
+			const o = i.dataset.grauplMenuType || "DisclosureMenu";
 			if (window[o] === void 0) {
 				console.warn(`Graupl navigation requires accessible-menu's ${o}. Please make sure to include it on this page.`);
 				return;
 			}
-			const r = i.dataset.grauplMenuOptions ? JSON.parse(i.dataset.grauplMenuOptions.replace(/'/g, "\"")) || {} : {}, c = i.querySelector(".menu"), m = i.querySelector(".navigation-toggle") || null, _ = m ? i : null;
+			const r = i.dataset.grauplMenuOptions ? JSON.parse(i.dataset.grauplMenuOptions.replace(/'/g, "\"")) || {} : {}, c = i.querySelector(".menu"), m = i.querySelector(".navigation-toggle") || null, f = m ? i : null;
 			new window[o]({
 				menuElement: c,
 				menuItemSelector: ".menu-item",
@@ -2189,18 +2165,19 @@
 				submenuItemSelector: ".submenu-item",
 				submenuToggleSelector: ".submenu-toggle",
 				controllerElement: m,
-				containerElement: _,
+				containerElement: f,
 				...t,
 				...r
 			});
 		});
 	};
-	var Ct = class extends w {
+	var yt = class extends w {
 		_rootDOMElement = "toggle";
 		_protectedDOMElements = ["content"];
 		_storageKey = "tabToggles";
+		_name = "TabToggle";
 		_shouldStore = !1;
-		_active = new x(!1);
+		_active = new $(!1);
 		constructor({ toggleElement: t, contentElement: e, parentTab: s } = {}) {
 			super({
 				prefix: s.prefix,
@@ -2270,22 +2247,23 @@
 				t !== this && t.hide();
 			});
 		}
-	}, yt = class extends w {
+	}, Et = class extends w {
 		_rootDOMElement = "tabs";
 		_automatic = !1;
 		_currentChild = 0;
 		_storageKey = "tabs";
-		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: o = "show", closeClass: r = "hide", transitionClass: c = null, transitionDuration: m = 300, openDuration: _ = -1, closeDuration: k = -1, automaticActivation: C = !1, prefix: y = "graupl-", key: E = null, initializeClass: f = "initializing", initialize: g = !1 }) {
+		_name = "Tab";
+		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: o = "show", closeClass: r = "hide", transitionClass: c = null, transitionDuration: m = 300, openDuration: f = -1, closeDuration: C = -1, automaticActivation: y = !1, prefix: E = "graupl-", key: I = null, initializeClass: g = "initializing", initialize: p = !1 }) {
 			super({
-				prefix: y,
-				key: E,
-				initializeClass: f
-			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = o || "", this._classes.close = r || "", this._classes.transition = c || "", this._durations.transition = m, this._durations.open = _, this._durations.close = k, this._automatic = C, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
-				this.elements.tabToggles.filter((p) => p.isActive).length === 0 && this.elements.tabToggles[0].show();
+				prefix: E,
+				key: I,
+				initializeClass: g
+			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = o || "", this._classes.close = r || "", this._classes.transition = c || "", this._durations.transition = m, this._durations.open = f, this._durations.close = C, this._automatic = y, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
+				this.elements.tabToggles.filter((_) => _.isActive).length === 0 && this.elements.tabToggles[0].show();
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const p = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
-				p.status || (this._errors = [...this._errors, ...p.errors], this._valid = !1);
-			}), g && this.initialize();
+				const b = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
+				b.status || (this._errors = [...this._errors, ...b.errors], this._valid = !1);
+			}), p && this.initialize();
 		}
 		get openClass() {
 			return this._classes.open;
@@ -2352,7 +2330,7 @@
 		}
 		_createChildElements() {
 			this.dom.tabToggles.forEach((t, e) => {
-				const s = new Ct({
+				const s = new yt({
 					toggleElement: t,
 					contentElement: this.dom.tabContents[e],
 					parentTab: this
@@ -2406,9 +2384,7 @@
 						case "ArrowRight":
 							h(e), this.focusNextChild();
 							break;
-						case "ArrowLeft":
-							h(e), this.focusPreviousChild();
-							break;
+						case "ArrowLeft": h(e), this.focusPreviousChild();
 					}
 				});
 			});
@@ -2435,10 +2411,10 @@
 			this.currentChild !== -1 && this.currentTabToggle.blur();
 		}
 	};
-	const Et = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
-		b("graupl-tabs-generator", s, e).forEach((i) => {
+	const It = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
+		k("graupl-tabs-generator", s, e).forEach((i) => {
 			const o = i.dataset.grauplTabsOptions ? JSON.parse(i.dataset.grauplTabsOptions.replace(/'/g, "\"")) || {} : {};
-			new yt({
+			new Et({
 				tabsElement: i,
 				initialize: !0,
 				...t,
@@ -2446,7 +2422,7 @@
 			});
 		});
 	};
-	var It = class extends w {
+	var wt = class extends w {
 		_rootDOMElement = "tooltip";
 		_softLocked = !1;
 		_hoverType = "off";
@@ -2455,17 +2431,17 @@
 		_openOnFocus = !1;
 		_closeOnBlur = !0;
 		_name = "Tooltip";
-		constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, showClass: i = "show", hideClass: o = "hide", transitionClass: r = "transitioning", transitionDelay: c = 250, transitionDuration: m = 150, showDuration: _ = -1, hideDuration: k = -1, openOnFocus: C = !1, closeOnBlur: y = !0, hoverType: E = "off", hoverDelay: f = 250, enterDelay: g = -1, leaveDelay: p = -1, prefix: O = "graupl-", key: D = null, initializeClass: T = "initializing", initialize: v = !1 } = {}) {
+		constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, showClass: i = "show", hideClass: o = "hide", transitionClass: r = "transitioning", transitionDelay: c = 250, transitionDuration: m = 150, showDuration: f = -1, hideDuration: C = -1, openOnFocus: y = !1, closeOnBlur: E = !0, hoverType: I = "off", hoverDelay: g = 250, enterDelay: p = -1, leaveDelay: _ = -1, prefix: b = "graupl-", key: D = null, initializeClass: O = "initializing", initialize: v = !1 } = {}) {
 			super({
-				prefix: O,
+				prefix: b,
 				key: D,
-				initializeClass: T
-			}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._classes.show = i || "", this._classes.hide = o || "", this._classes.transition = r || "", this._durations.transition = m, this._durations.transitionDelay = c, this._durations.show = _, this._durations.hide = k, this._openOnFocus = C, this._closeOnBlur = y, this._hoverType = E, this._delays.hover = f, this._delays.enter = g, this._delays.leave = p, this._registerEvent("show", { detail: { tooltip: this } }), this._registerEvent("hide", { detail: { tooltip: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				initializeClass: O
+			}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._classes.show = i || "", this._classes.hide = o || "", this._classes.transition = r || "", this._durations.transition = m, this._durations.transitionDelay = c, this._durations.show = f, this._durations.hide = C, this._openOnFocus = y, this._closeOnBlur = E, this._hoverType = I, this._delays.hover = g, this._delays.enter = p, this._delays.leave = _, this._registerEvent("show", { detail: { tooltip: this } }), this._registerEvent("hide", { detail: { tooltip: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				this.hide({ force: !0 });
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
 				const A = n("boolean", { isOpen: this._open }, { shouldThrow: !1 });
 				A.status || (this._errors = [...this._errors, ...A.errors], this._valid = !1);
-				const B = Z({ hoverType: this._hoverType }, { shouldThrow: !1 });
+				const B = W({ hoverType: this._hoverType }, { shouldThrow: !1 });
 				B.status || (this._errors = [...this._errors, ...B.errors], this._valid = !1);
 			}), v && this.initialize();
 		}
@@ -2536,7 +2512,7 @@
 			return this._hoverType;
 		}
 		set hoverType(t) {
-			Z({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
+			W({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
 		}
 		get hoverDelay() {
 			return this._delays.hover;
@@ -2609,9 +2585,7 @@
 					case "Enter":
 						h(t), this.toggle();
 						break;
-					case "Tab":
-						this.openOnFocus && (h(t), this.show());
-						break;
+					case "Tab": this.openOnFocus && (h(t), this.show());
 				}
 			}), this._addEventListener("keyup", this.dom.tooltip, (t) => {
 				this.currentEvent = "keyboard", d(t) === "Escape" && (h(t), this.hide());
@@ -2620,7 +2594,6 @@
 					case "Escape":
 						if (this.hoverType !== "on" && this.focusState !== "self") return;
 						this.currentEvent = "keyboard", this.hide();
-						break;
 				}
 			});
 		}
@@ -2659,10 +2632,10 @@
 			});
 		}
 	};
-	const wt = (t = {}, e = document, s = ".tooltip", i = ".tooltip-description", o = ".tooltip-toggle") => {
-		b("graupl-tooltip-generator", s, e).forEach((r) => {
+	const Ot = ({ options: t = {}, context: e = document, selector: s = ".tooltip", descriptionSelector: i = ".tooltip-description", controllerSelector: o = ".tooltip-toggle" } = {}) => {
+		k("graupl-tooltip-generator", s, e).forEach((r) => {
 			const c = r.dataset.grauplTooltipOptions ? JSON.parse(r.dataset.grauplTooltipOptions.replace(/'/g, "\"")) || {} : {};
-			new It({
+			new wt({
 				tooltipElement: r,
 				tooltipToggleElement: r.querySelector(o) || null,
 				tooltipDescriptionElement: r.querySelector(i) || null,
@@ -2673,7 +2646,7 @@
 		});
 	};
 	document.addEventListener("DOMContentLoaded", () => {
-		ht(), dt(), pt(), ft(), bt(), kt(), Et(), wt();
+		ct(), ut(), _t(), gt(), kt(), Ct(), It(), Ot();
 	});
 })();
 
