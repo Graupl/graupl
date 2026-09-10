@@ -87,7 +87,7 @@ function a(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function G(t, { shouldThrow: e = !0 } = {}) {
+function P(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function G(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function R(t, { shouldThrow: e = !0 } = {}) {
+function G(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function R(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function U(t, e, { shouldThrow: s = !0 } = {}) {
+function R(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -147,7 +147,7 @@ function U(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function B(t, { shouldThrow: e = !0 } = {}) {
+function U(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -160,7 +160,7 @@ function B(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function J(t, { shouldThrow: e = !0 } = {}) {
+function B(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -213,15 +213,15 @@ function h(t, e) {
 function l(t, e) {
 	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 }
-function N(t = document, e = null) {
+function J(t = document, e = null) {
 	const s = Array.from(t.querySelectorAll("a[href],area[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]")).filter((i) => {
 		let r = !0;
 		return i.getAttribute("tabindex") === "-1" && (r = !1), r;
 	});
 	return e !== null ? s.filter(e) : s;
 }
-function Z(t = document, e = null) {
-	return N(t, e)[0] || !1;
+function N(t = document, e = null) {
+	return J(t, e)[0] || !1;
 }
 var v = class {
 	_equals = Object.is;
@@ -311,7 +311,7 @@ var v = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, W = class {
+}, Z = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -407,13 +407,13 @@ var v = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		G({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		P({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		R({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		G({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -454,7 +454,7 @@ var v = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = B(this, { shouldThrow: !1 });
+		const t = U(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((c, _) => {
@@ -571,7 +571,7 @@ var v = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		U(t, this), f(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		R(t, this), f(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -602,7 +602,7 @@ var v = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, X = class extends W {
+}, W = class extends Z {
 	_rootDOMElement = "shelf";
 	_protectedDOMElements = [
 		"controller",
@@ -642,7 +642,7 @@ var v = class {
 				locked: this._locked.value
 			}, { shouldThrow: !1 });
 			p.status || (this._errors = [...this._errors, ...p.errors], this._valid = !1);
-			const g = J({ side: this._side }, { shouldThrow: !1 });
+			const g = B({ side: this._side }, { shouldThrow: !1 });
 			g.status || (this._errors = [...this._errors, ...g.errors], this._valid = !1);
 		}), K && this.initialize();
 	}
@@ -824,7 +824,7 @@ var v = class {
 		}), this.dom.controller && this.dom.controller.addEventListener("keyup", (t) => {
 			this.currentEvent = "keyboard";
 			const e = u(t);
-			(e === "Space" || e === "Enter") && (d(t), this.toggle(), this.isOpen && Z(this.dom.shelf).focus());
+			(e === "Space" || e === "Enter") && (d(t), this.toggle(), this.isOpen && N(this.dom.shelf).focus());
 		}), this.dom.hoverController && this.dom.hoverController.addEventListener("keyup", (t) => {
 			this.currentEvent = "keyboard";
 			const e = u(t);
@@ -964,6 +964,6 @@ var v = class {
 		this.hover ? this.disableHover({ emit: t }) : this.enableHover({ emit: t });
 	}
 };
-module.exports = X;
+module.exports = W;
 
 //# sourceMappingURL=navigation-shelf.cjs.js.map

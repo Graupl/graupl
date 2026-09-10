@@ -87,7 +87,7 @@ function c(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function T(t, { shouldThrow: e = !0 } = {}) {
+function j(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function T(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function z(t, { shouldThrow: e = !0 } = {}) {
+function T(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function z(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function L(t, e, { shouldThrow: r = !0 } = {}) {
+function z(t, e, { shouldThrow: r = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -147,7 +147,7 @@ function L(t, e, { shouldThrow: r = !0 } = {}) {
 	if (r && !s.status) throw s.errors[0];
 	return s;
 }
-function Q(t, { shouldThrow: e = !0 } = {}) {
+function L(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -187,10 +187,10 @@ function b(t) {
 		return "";
 	}
 }
-function V(t) {
+function Q(t) {
 	t.preventDefault(), t.stopPropagation();
 }
-var I = class {
+var V = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -278,7 +278,7 @@ var I = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, q = class {
+}, I = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -374,13 +374,13 @@ var I = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		T({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		j({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		z({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		T({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -421,7 +421,7 @@ var I = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = Q(this, { shouldThrow: !1 });
+		const t = L(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const s = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, m) => {
@@ -538,7 +538,7 @@ var I = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		L(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		z(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, r, s = {}) {
 		e.addEventListener(t, r, s), this._listeners.push({
@@ -569,10 +569,10 @@ var I = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, P = class extends q {
+}, q = class extends I {
 	_rootDOMElement = "alert";
 	_protectedDOMElements = ["controller"];
-	_hidden = new I(!1);
+	_hidden = new V(!1);
 	_storageKey = "alerts";
 	_name = "Alert";
 	constructor({ alertElement: t, controllerElement: e = null, showClass: r = "show", hideClass: s = "hide", transitionClass: i = "transitioning", transitionDuration: o = 150, showDuration: a = -1, hideDuration: m = -1, isHidden: D = !1, prefix: O = "graupl-", key: S = null, initializeClass: M = "initializing", initialize: A = !1 } = {}) {
@@ -659,7 +659,7 @@ var I = class {
 	_handleKeydown() {
 		this.dom.controller !== null && this._addEventListener("keydown", this.dom.controller, (t) => {
 			const e = b(t);
-			(e === "Space" || e === "Enter") && V(t);
+			(e === "Space" || e === "Enter") && Q(t);
 		});
 	}
 	_handleKeyup() {
@@ -675,7 +675,7 @@ var I = class {
 		this.isHidden && !t || (this.focusState = "none", this._conceal(), this._hidden.value = !0, e || this._hidden.commit());
 	}
 };
-const C = /[\11\12\14\15\40]+/, g = "data-once", K = document;
+const C = /[\11\12\14\15\40]+/, g = "data-once", P = document;
 function y(t, e, r) {
 	return t[`${e}Attribute`](g, r);
 }
@@ -684,11 +684,11 @@ function d(t) {
 	if (t === "" || C.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 	return `[${g}~="${t}"]`;
 }
-function F(t) {
+function K(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function f(t, e = K) {
+function f(t, e = P) {
 	let r = t;
 	if (t === null) r = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? r = e.querySelectorAll(t) : t instanceof Element && (r = [t]);
@@ -698,7 +698,7 @@ function f(t, e = K) {
 }
 function w(t, e, r) {
 	return e.filter((s) => {
-		const i = F(s) && s.matches(t);
+		const i = K(s) && s.matches(t);
 		return i && r && r(s), i;
 	});
 }
@@ -714,10 +714,10 @@ function _(t, e, r) {
 	return w(`:not(${d(t)})`, f(e, r), (s) => $(s, { add: t }));
 }
 _.remove = (t, e, r) => w(d(t), f(e, r), (s) => $(s, { remove: t })), _.filter = (t, e, r) => w(d(t), f(e, r)), _.find = (t, e) => f(t ? d(t) : `[${g}]`, e);
-const H = ({ options: t = {}, context: e = document, selector: r = ".alert" } = {}) => {
+const F = (t = {}, e = document, r = ".alert") => {
 	_("graupl-alert-generator", r, e).forEach((s) => {
 		const i = s.dataset.grauplAlertOptions ? JSON.parse(s.dataset.grauplAlertOptions.replace(/'/g, "\"")) || {} : {};
-		new P({
+		new q({
 			alertElement: s,
 			controllerElement: s.querySelector(".alert-dismisser") || null,
 			initialize: !0,
@@ -726,6 +726,6 @@ const H = ({ options: t = {}, context: e = document, selector: r = ".alert" } = 
 		});
 	});
 };
-export { H as default };
+export { F as default };
 
 //# sourceMappingURL=alert.es.js.map

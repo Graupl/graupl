@@ -61,7 +61,7 @@ function m(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function c(t, { shouldThrow: e = !0 } = {}) {
+function d(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -87,7 +87,7 @@ function c(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function k(t, { shouldThrow: e = !0 } = {}) {
+function C(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function k(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function $(t, { shouldThrow: e = !0 } = {}) {
+function k(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function $(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !r.status) throw r.errors[0];
 	return r;
 }
-function O(t, e, { shouldThrow: r = !0 } = {}) {
+function $(t, e, { shouldThrow: r = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -147,7 +147,7 @@ function O(t, e, { shouldThrow: r = !0 } = {}) {
 	if (r && !s.status) throw s.errors[0];
 	return s;
 }
-function D(t, { shouldThrow: e = !0 } = {}) {
+function O(t, { shouldThrow: e = !0 } = {}) {
 	const r = {
 		status: !0,
 		errors: []
@@ -187,10 +187,10 @@ function p(t) {
 		return "";
 	}
 }
-function M(t) {
+function D(t) {
 	t.preventDefault(), t.stopPropagation();
 }
-var S = class {
+var M = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -278,7 +278,7 @@ var S = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, j = class {
+}, S = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -368,19 +368,19 @@ var S = class {
 		return this._classes.initialize;
 	}
 	set initializeClass(t) {
-		c({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+		d({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
 	}
 	get focusState() {
 		return this._focusState;
 	}
 	set focusState(t) {
-		k({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		C({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		$({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		k({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -421,11 +421,11 @@ var S = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = D(this, { shouldThrow: !1 });
+		const t = O(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const s = {};
-			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, d) => {
-				s[`${o}Element[${d}]`] = a;
+			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, c) => {
+				s[`${o}Element[${c}]`] = a;
 			}) : this._dom[o] !== null && (s[`${o}Element`] = this._dom[o]);
 			const i = u(HTMLElement, s, { shouldThrow: !1 });
 			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
@@ -439,7 +439,7 @@ var S = class {
 		if (Object.keys(this._classes).length > 0) {
 			const s = {};
 			for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (s[`${o}Class`] = this._classes[o]);
-			const i = c(s, { shouldThrow: !1 });
+			const i = d(s, { shouldThrow: !1 });
 			i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
 		}
 		if (Object.keys(this._durations).length > 0) {
@@ -538,7 +538,7 @@ var S = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		O(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		$(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, r, s = {}) {
 		e.addEventListener(t, r, s), this._listeners.push({
@@ -569,18 +569,18 @@ var S = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, A = class extends j {
+}, j = class extends S {
 	_rootDOMElement = "alert";
 	_protectedDOMElements = ["controller"];
-	_hidden = new S(!1);
+	_hidden = new M(!1);
 	_storageKey = "alerts";
 	_name = "Alert";
-	constructor({ alertElement: t, controllerElement: e = null, showClass: r = "show", hideClass: s = "hide", transitionClass: i = "transitioning", transitionDuration: o = 150, showDuration: a = -1, hideDuration: d = -1, isHidden: y = !1, prefix: w = "graupl-", key: E = null, initializeClass: v = "initializing", initialize: b = !1 } = {}) {
+	constructor({ alertElement: t, controllerElement: e = null, showClass: r = "show", hideClass: s = "hide", transitionClass: i = "transitioning", transitionDuration: o = 150, showDuration: a = -1, hideDuration: c = -1, isHidden: y = !1, prefix: w = "graupl-", key: E = null, initializeClass: v = "initializing", initialize: b = !1 } = {}) {
 		super({
 			prefix: w,
 			key: E,
 			initializeClass: v
-		}), this._dom.alert = t, this._dom.controller = e, this._classes.show = r || "", this._classes.hide = s || "", this._classes.transition = i || "", this._durations.transition = o, this._durations.show = a, this._durations.hide = d, this._hidden.value = y, this._hidden.commit(), this._registerEvent("show", { detail: { alert: this } }), this._registerEvent("hide", { detail: { alert: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+		}), this._dom.alert = t, this._dom.controller = e, this._classes.show = r || "", this._classes.hide = s || "", this._classes.transition = i || "", this._durations.transition = o, this._durations.show = a, this._durations.hide = c, this._hidden.value = y, this._hidden.commit(), this._registerEvent("show", { detail: { alert: this } }), this._registerEvent("hide", { detail: { alert: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 			this.isHidden && this._conceal({
 				emit: !1,
 				transition: !1
@@ -594,19 +594,19 @@ var S = class {
 		return this._classes.show;
 	}
 	set showClass(t) {
-		c({ showClass: t }), this._classes.show !== t && (this._classes.show = t);
+		d({ showClass: t }), this._classes.show !== t && (this._classes.show = t);
 	}
 	get hideClass() {
 		return this._classes.hide;
 	}
 	set hideClass(t) {
-		c({ hideClass: t }), this._classes.hide !== t && (this._classes.hide = t);
+		d({ hideClass: t }), this._classes.hide !== t && (this._classes.hide = t);
 	}
 	get transitionClass() {
 		return this._classes.transition;
 	}
 	set transitionClass(t) {
-		c({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
+		d({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
 	}
 	get transitionDuration() {
 		return this._durations.transition;
@@ -659,7 +659,7 @@ var S = class {
 	_handleKeydown() {
 		this.dom.controller !== null && this._addEventListener("keydown", this.dom.controller, (t) => {
 			const e = p(t);
-			(e === "Space" || e === "Enter") && M(t);
+			(e === "Space" || e === "Enter") && D(t);
 		});
 	}
 	_handleKeyup() {
@@ -675,6 +675,6 @@ var S = class {
 		this.isHidden && !t || (this.focusState = "none", this._conceal(), this._hidden.value = !0, e || this._hidden.commit());
 	}
 };
-export { A as default };
+export { j as default };
 
 //# sourceMappingURL=alert.es.js.map

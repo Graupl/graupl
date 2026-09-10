@@ -87,7 +87,7 @@ function u(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function Y(t, { shouldThrow: e = !0 } = {}) {
+function X(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function Y(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function tt(t, { shouldThrow: e = !0 } = {}) {
+function Y(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function tt(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function et(t, e, { shouldThrow: s = !0 } = {}) {
+function tt(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -154,7 +154,7 @@ function et(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function st(t, e, { shouldThrow: s = !0 } = {}) {
+function et(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -167,7 +167,7 @@ function st(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function it(t, { shouldThrow: e = !0 } = {}) {
+function st(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -394,13 +394,13 @@ var $ = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		Y({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		X({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		tt({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		Y({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -441,7 +441,7 @@ var $ = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = it(this, { shouldThrow: !1 });
+		const t = st(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, g) => {
@@ -558,7 +558,7 @@ var $ = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		st(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		et(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -589,7 +589,7 @@ var $ = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, rt = class extends D {
+}, it = class extends D {
 	_rootDOMElement = "item";
 	_protectedDOMElements = ["link"];
 	_storageKey = "breadcrumbItems";
@@ -615,7 +615,7 @@ var $ = class {
 			this.dom.link.blur();
 		});
 	}
-}, ot = class extends D {
+}, rt = class extends D {
 	_rootDOMElement = "breadcrumb";
 	_currentChild = 0;
 	_open = new $(!1);
@@ -635,7 +635,7 @@ var $ = class {
 	_mediaQueryListEventCallback = (t) => {
 		t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 	};
-	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: g = "hide", transitionClass: A = "transitioning", transitionDuration: z = 250, openDuration: j = -1, closeDuration: F = -1, openOnFocus: x = !1, closeOnBlur: Q = !1, minWidth: C = "", breakpoint: m = "856px", autoOpen: k = !1, openInsideBreakpoint: q = !1, openOutsideBreakpoint: T = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: V = !1, lockInsideBreakpoint: P = !1, lockOutsideBreakpoint: K = !0, unlockInsideBreakpoint: G = !0, unlockOutsideBreakpoint: H = !1, locked: N = !1, mediaQuery: R = "", prefix: U = "graupl-", key: J = null, initializeClass: Z = "initializing", initialize: W = !1 }) {
+	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: g = "hide", transitionClass: A = "transition", transitionDuration: z = 250, openDuration: j = -1, closeDuration: F = -1, openOnFocus: x = !1, closeOnBlur: Q = !1, minWidth: C = "", breakpoint: m = "856px", autoOpen: k = !1, openInsideBreakpoint: q = !1, openOutsideBreakpoint: T = !0, closeInsideBreakpoint: v = !0, closeOutsideBreakpoint: V = !1, lockInsideBreakpoint: P = !1, lockOutsideBreakpoint: K = !0, unlockInsideBreakpoint: G = !0, unlockOutsideBreakpoint: H = !1, locked: N = !1, mediaQuery: R = "", prefix: U = "graupl-", key: J = null, initializeClass: Z = "initializing", initialize: W = !1 }) {
 		super({
 			prefix: U,
 			key: J,
@@ -782,7 +782,7 @@ var $ = class {
 		this.dom.breadcrumb.id = this.dom.breadcrumb.id || `breadcrumb-${this.key}`, this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.id = this.dom.breadcrumbToggle.id || `breadcrumb-toggle-${this.key}`), this._id = this.dom.breadcrumb.id;
 	}
 	_setAriaAttributes() {
-		this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), et("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
+		this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), tt("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
 	}
 	_setCustomProps() {
 		this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`, `${this.transitionDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`, `${this.openDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`, `${this.closeDuration}ms`);
@@ -792,7 +792,7 @@ var $ = class {
 	}
 	_createChildElements() {
 		this.dom.breadcrumbItems.forEach((t) => {
-			const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new rt({
+			const e = t.querySelector(this.selectors.breadcrumbLinks), s = t.querySelector(this.selectors.breadcrumbToggle) !== null, i = new it({
 				breadcrumbItemElement: t,
 				breadcrumbLinkElement: e,
 				parentBreadcrumb: this,
@@ -802,7 +802,7 @@ var $ = class {
 		});
 	}
 	_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 			l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					setTimeout(() => {
@@ -851,7 +851,9 @@ var $ = class {
 		}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 			switch (this.currentEvent = "keyboard", f(t)) {
 				case "Space":
-				case "Enter": d(t);
+				case "Enter":
+					d(t);
+					break;
 			}
 		});
 	}
@@ -868,9 +870,11 @@ var $ = class {
 						this.focusNextChild();
 					}) : this.focusFirstChild();
 					break;
-				case "Tab": this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
-					this.focusNextChild();
-				}));
+				case "Tab":
+					this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
+						this.focusNextChild();
+					}));
+					break;
 			}
 		});
 	}
@@ -947,7 +951,7 @@ var $ = class {
 		this.focusState = "self", this.elements.breadcrumbToggle !== null && (this.currentChild = this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) || 0, this.elements.breadcrumbToggle.focus());
 	}
 };
-const M = /[\11\12\14\15\40]+/, E = "data-once", nt = document;
+const M = /[\11\12\14\15\40]+/, E = "data-once", ot = document;
 function w(t, e, s) {
 	return t[`${e}Attribute`](E, s);
 }
@@ -956,11 +960,11 @@ function _(t) {
 	if (t === "" || M.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 	return `[${E}~="${t}"]`;
 }
-function at(t) {
+function nt(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function p(t, e = nt) {
+function p(t, e = ot) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -970,7 +974,7 @@ function p(t, e = nt) {
 }
 function O(t, e, s) {
 	return e.filter((i) => {
-		const r = at(i) && i.matches(t);
+		const r = nt(i) && i.matches(t);
 		return r && s && s(i), r;
 	});
 }
@@ -986,10 +990,10 @@ function b(t, e, s) {
 	return O(`:not(${_(t)})`, p(e, s), (i) => S(i, { add: t }));
 }
 b.remove = (t, e, s) => O(_(t), p(e, s), (i) => S(i, { remove: t })), b.filter = (t, e, s) => O(_(t), p(e, s)), b.find = (t, e) => p(t ? _(t) : `[${E}]`, e);
-const ht = ({ options: t = {}, context: e = document, selector: s = ".breadcrumb" } = {}) => {
+const at = ({ options: t = {}, context: e = document, selector: s = ".breadcrumb" } = {}) => {
 	b("graupl-breadcrumb-generator", s, e).forEach((i) => {
 		const r = i.dataset.grauplBreadcrumbOptions ? JSON.parse(i.dataset.grauplBreadcrumbOptions.replace(/'/g, "\"")) || {} : {};
-		new ot({
+		new rt({
 			breadcrumbElement: i,
 			initialize: !0,
 			...t,
@@ -997,6 +1001,6 @@ const ht = ({ options: t = {}, context: e = document, selector: s = ".breadcrumb
 		});
 	});
 };
-module.exports = ht;
+module.exports = at;
 
 //# sourceMappingURL=breadcrumb.cjs.js.map

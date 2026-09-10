@@ -69,7 +69,7 @@
 		if (r && !s.status) throw s.errors[0];
 		return s;
 	}
-	function b(t, { shouldThrow: e = !0 } = {}) {
+	function I(t, { shouldThrow: e = !0 } = {}) {
 		const r = {
 			status: !0,
 			errors: []
@@ -107,7 +107,7 @@
 				else throw new TypeError(`${s} must be a string or an array of strings. "${i}" given.`);
 				else {
 					const o = {};
-					o[s] = t[s], b(o);
+					o[s] = t[s], I(o);
 				}
 			} catch (i) {
 				r.status = !1, r.errors.push(i);
@@ -426,7 +426,7 @@
 			if (Object.keys(this._selectors).length > 0) {
 				const s = {};
 				for (const o of Object.keys(this._selectors)) s[`${o}Selector`] = this._selectors[o];
-				const i = b(s, { shouldThrow: !1 });
+				const i = I(s, { shouldThrow: !1 });
 				i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1);
 			}
 			if (Object.keys(this._classes).length > 0) {
@@ -770,14 +770,18 @@
 				this._addEventListener("keydown", t, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": l(e);
+						case "Enter":
+							l(e);
+							break;
 					}
 				});
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keydown", t.dom.tab, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": l(e);
+						case "Enter":
+							l(e);
+							break;
 					}
 				});
 			});
@@ -786,23 +790,31 @@
 			this._addEventListener("keyup", this.dom.next, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.activateNextItem(), l(t);
+					case "Enter":
+						this.activateNextItem(), l(t);
+						break;
 				}
 			}), this._addEventListener("keyup", this.dom.previous, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.activatePreviousItem(), l(t);
+					case "Enter":
+						this.activatePreviousItem(), l(t);
+						break;
 				}
 			}), this._addEventListener("keyup", this.dom.autoplay, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.toggleAutoplay(), l(t);
+					case "Enter":
+						this.toggleAutoplay(), l(t);
+						break;
 				}
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keyup", t.dom.tab, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), l(e);
+						case "Enter":
+							this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), l(e);
+							break;
 					}
 				});
 			});
@@ -931,7 +943,7 @@
 		else throw new TypeError("Selector must not be empty");
 		return Array.prototype.slice.call(r);
 	}
-	function I(t, e, r) {
+	function b(t, e, r) {
 		return e.filter((s) => {
 			const i = Q(s) && s.matches(t);
 			return i && r && r(s), i;
@@ -946,10 +958,10 @@
 		w(t, i === "" ? "remove" : "set", i);
 	}
 	function y(t, e, r) {
-		return I(`:not(${_(t)})`, p(e, r), (s) => k(s, { add: t }));
+		return b(`:not(${_(t)})`, p(e, r), (s) => k(s, { add: t }));
 	}
-	y.remove = (t, e, r) => I(_(t), p(e, r), (s) => k(s, { remove: t })), y.filter = (t, e, r) => I(_(t), p(e, r)), y.find = (t, e) => p(t ? _(t) : `[${v}]`, e);
-	const V = ({ options: t = {}, context: e = document, selector: r = ".carousel" } = {}) => {
+	y.remove = (t, e, r) => b(_(t), p(e, r), (s) => k(s, { remove: t })), y.filter = (t, e, r) => b(_(t), p(e, r)), y.find = (t, e) => p(t ? _(t) : `[${v}]`, e);
+	const V = (t = {}, e = document, r = ".carousel") => {
 		y("graupl-carousel-generator", r, e).forEach((s) => {
 			const i = s.dataset.grauplCarouselOptions ? JSON.parse(s.dataset.grauplCarouselOptions.replace(/'/g, "\"")) || {} : {};
 			new P({

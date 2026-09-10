@@ -87,7 +87,7 @@ function d(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function x(t, { shouldThrow: e = !0 } = {}) {
+function K(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function x(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function B(t, { shouldThrow: e = !0 } = {}) {
+function x(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -157,7 +157,7 @@ function $(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function G(t, e, { shouldThrow: s = !0 } = {}) {
+function B(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -170,7 +170,7 @@ function G(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function H(t, { shouldThrow: e = !0 } = {}) {
+function G(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -273,7 +273,7 @@ var g = class T {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, R = class {
+}, H = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -369,13 +369,13 @@ var g = class T {
 		return this._focusState;
 	}
 	set focusState(t) {
-		x({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		K({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		B({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		x({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -416,7 +416,7 @@ var g = class T {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = H(this, { shouldThrow: !1 });
+		const t = G(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, y) => {
@@ -533,7 +533,7 @@ var g = class T {
 		});
 	}
 	_dispatchEvent(t, e) {
-		G(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		B(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -564,7 +564,7 @@ var g = class T {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, U = class extends R {
+}, R = class extends H {
 	_rootDOMElement = "tooltip";
 	_softLocked = !1;
 	_hoverType = "off";
@@ -727,7 +727,9 @@ var g = class T {
 				case "Enter":
 					c(t), this.toggle();
 					break;
-				case "Tab": this.openOnFocus && (c(t), this.show());
+				case "Tab":
+					this.openOnFocus && (c(t), this.show());
+					break;
 			}
 		}), this._addEventListener("keyup", this.dom.tooltip, (t) => {
 			this.currentEvent = "keyboard", f(t) === "Escape" && (c(t), this.hide());
@@ -736,6 +738,7 @@ var g = class T {
 				case "Escape":
 					if (this.hoverType !== "on" && this.focusState !== "self") return;
 					this.currentEvent = "keyboard", this.hide();
+					break;
 			}
 		});
 	}
@@ -774,7 +777,7 @@ var g = class T {
 		});
 	}
 };
-const C = /[\11\12\14\15\40]+/, w = "data-once", J = document;
+const C = /[\11\12\14\15\40]+/, w = "data-once", U = document;
 function E(t, e, s) {
 	return t[`${e}Attribute`](w, s);
 }
@@ -783,11 +786,11 @@ function p(t) {
 	if (t === "" || C.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 	return `[${w}~="${t}"]`;
 }
-function N(t) {
+function J(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function _(t, e = J) {
+function _(t, e = U) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -797,7 +800,7 @@ function _(t, e = J) {
 }
 function v(t, e, s) {
 	return e.filter((i) => {
-		const r = N(i) && i.matches(t);
+		const r = J(i) && i.matches(t);
 		return r && s && s(i), r;
 	});
 }
@@ -813,10 +816,10 @@ function m(t, e, s) {
 	return v(`:not(${p(t)})`, _(e, s), (i) => O(i, { add: t }));
 }
 m.remove = (t, e, s) => v(p(t), _(e, s), (i) => O(i, { remove: t })), m.filter = (t, e, s) => v(p(t), _(e, s)), m.find = (t, e) => _(t ? p(t) : `[${w}]`, e);
-const Z = ({ options: t = {}, context: e = document, selector: s = ".tooltip", descriptionSelector: i = ".tooltip-description", controllerSelector: r = ".tooltip-toggle" } = {}) => {
+const N = (t = {}, e = document, s = ".tooltip", i = ".tooltip-description", r = ".tooltip-toggle") => {
 	m("graupl-tooltip-generator", s, e).forEach((o) => {
 		const a = o.dataset.grauplTooltipOptions ? JSON.parse(o.dataset.grauplTooltipOptions.replace(/'/g, "\"")) || {} : {};
-		new U({
+		new R({
 			tooltipElement: o,
 			tooltipToggleElement: o.querySelector(r) || null,
 			tooltipDescriptionElement: o.querySelector(i) || null,
@@ -826,6 +829,6 @@ const Z = ({ options: t = {}, context: e = document, selector: s = ".tooltip", d
 		});
 	});
 };
-module.exports = Z;
+module.exports = N;
 
 //# sourceMappingURL=tooltip.cjs.js.map

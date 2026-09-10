@@ -38,9 +38,9 @@
 		return m(`:not(${s(e)})`, c(t, n), (r) => p(r, { add: e }));
 	}
 	i.remove = (e, t, n) => m(s(e), c(t, n), (r) => p(r, { remove: e })), i.filter = (e, t, n) => m(s(e), c(t, n)), i.find = (e, t) => c(e ? s(e) : `[${a}]`, t);
-	const y = ({ options: e = {}, context: t = document, selector: n = ".navigation" } = {}) => {
+	const y = (e = {}, t = document, n = ".navigation") => {
 		i("graupl-navigation-generator", n, t).forEach((r) => {
-			const o = r.dataset.grauplMenuType || "DisclosureMenu";
+			const o = r.dataset.grauplMenuType || DisclosureMenu;
 			if (window[o] === void 0) {
 				console.warn(`Graupl navigation requires accessible-menu's ${o}. Please make sure to include it on this page.`);
 				return;

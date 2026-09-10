@@ -118,7 +118,7 @@ var Carousel = (function() {
 		if (e && !r.status) throw r.errors[0];
 		return r;
 	}
-	function b(t, { shouldThrow: e = !0 } = {}) {
+	function w(t, { shouldThrow: e = !0 } = {}) {
 		const r = {
 			status: !0,
 			errors: []
@@ -165,7 +165,7 @@ var Carousel = (function() {
 		if (e && !r.status) throw r.errors[0];
 		return r;
 	}
-	function T(t, e, { shouldThrow: r = !0 } = {}) {
+	function k(t, e, { shouldThrow: r = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -185,7 +185,7 @@ var Carousel = (function() {
 		if (r && !s.status) throw s.errors[0];
 		return s;
 	}
-	function k(t, e, { shouldThrow: r = !0 } = {}) {
+	function T(t, e, { shouldThrow: r = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -211,7 +211,7 @@ var Carousel = (function() {
 		if (e && !r.status) throw r.errors[0];
 		return r;
 	}
-	var f = class w {
+	var f = class b {
 		_scope;
 		_type = "_default";
 		_storage = {};
@@ -221,7 +221,7 @@ var Carousel = (function() {
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (l(w, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (l(b, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -367,7 +367,7 @@ var Carousel = (function() {
 			return this._focusState;
 		}
 		set focusState(t) {
-			b({ focusState: t }), this._focusState !== t && (this._focusState = t);
+			w({ focusState: t }), this._focusState !== t && (this._focusState = t);
 		}
 		get currentEvent() {
 			return this._currentEvent;
@@ -531,7 +531,7 @@ var Carousel = (function() {
 			});
 		}
 		_dispatchEvent(t, e) {
-			k(t, this), l(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			T(t, this), l(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, r, s = {}) {
 			e.addEventListener(t, r, s), this._listeners.push({
@@ -707,7 +707,7 @@ var Carousel = (function() {
 			}), this._id = this.dom.carousel.id;
 		}
 		_setAriaAttributes() {
-			!T("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
+			!k("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && !this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
 				t.setAttribute("inert", "true");
 			}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
 				t.setAttribute("role", "tab"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
@@ -770,14 +770,18 @@ var Carousel = (function() {
 				this._addEventListener("keydown", t, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": h(e);
+						case "Enter":
+							h(e);
+							break;
 					}
 				});
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keydown", t.dom.tab, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": h(e);
+						case "Enter":
+							h(e);
+							break;
 					}
 				});
 			});
@@ -786,23 +790,31 @@ var Carousel = (function() {
 			this._addEventListener("keyup", this.dom.next, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.activateNextItem(), h(t);
+					case "Enter":
+						this.activateNextItem(), h(t);
+						break;
 				}
 			}), this._addEventListener("keyup", this.dom.previous, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.activatePreviousItem(), h(t);
+					case "Enter":
+						this.activatePreviousItem(), h(t);
+						break;
 				}
 			}), this._addEventListener("keyup", this.dom.autoplay, (t) => {
 				switch (u(t)) {
 					case "Space":
-					case "Enter": this.toggleAutoplay(), h(t);
+					case "Enter":
+						this.toggleAutoplay(), h(t);
+						break;
 				}
 			}), this.elements.carouselItems.forEach((t) => {
 				t.dom.tab && this._addEventListener("keyup", t.dom.tab, (e) => {
 					switch (u(e)) {
 						case "Space":
-						case "Enter": this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), h(e);
+						case "Enter":
+							this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), h(e);
+							break;
 					}
 				});
 			});
