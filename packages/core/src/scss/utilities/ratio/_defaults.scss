@@ -41,11 +41,21 @@ $ratio-selector: "ratio";
 $force-ratio-selector: "force-ratio";
 
 // Properties.
-$-utility-properties: ();
+$-utility-properties: (
+  "_default": --#{root-defaults.$prefix}ratio,
+);
 $utility-properties: () !default;
 
 // Values.
-$-utility-values: ();
+$-utility-values: (
+  "one-by-one": "1",
+  "two-by-one": "2 / 1",
+  "four-by-three": "4 / 3",
+  "four-by-one": "4 / 1",
+  "sixteen-by-nine": "16 / 9",
+  "three-by-two": "3 / 2",
+  "eight-by-five": "8 / 5",
+);
 $utility-values: () !default;
 
 // Merge custom and base properties/values if generating base utilities.
@@ -74,14 +84,7 @@ $-utility-map: (
   #{$ratio-selector}: (
       "aspect-ratio": var(--#{root-defaults.$prefix}ratio, auto),
       "width": 100%,
-    ),
-  "one-by-one": (--#{root-defaults.$prefix}ratio: "1"),
-  "two-by-one": (--#{root-defaults.$prefix}ratio: "2 / 1"),
-  "four-by-three": (--#{root-defaults.$prefix}ratio: "4 / 3"),
-  "four-by-one": (--#{root-defaults.$prefix}ratio: "4 / 1"),
-  "sixteen-by-nine": (--#{root-defaults.$prefix}ratio: "16 / 9"),
-  "three-by-two": (--#{root-defaults.$prefix}ratio: "3 / 2"),
-  "eight-by-five": (--#{root-defaults.$prefix}ratio: "8 / 5")
+    )
 );
 $-utility-map: map.deep-merge(
   $-utility-map,
