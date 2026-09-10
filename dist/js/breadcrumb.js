@@ -636,7 +636,7 @@
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: w = "hide", transitionClass: G = "transitioning", transitionDuration: H = 250, openDuration: N = -1, closeDuration: R = -1, openOnFocus: U = !1, closeOnBlur: J = !1, minWidth: $ = "", breakpoint: b = "856px", autoOpen: O = !1, openInsideBreakpoint: Z = !1, openOutsideBreakpoint: D = !0, closeInsideBreakpoint: M = !0, closeOutsideBreakpoint: W = !1, lockInsideBreakpoint: X = !1, lockOutsideBreakpoint: Y = !0, unlockInsideBreakpoint: tt = !0, unlockOutsideBreakpoint: et = !1, locked: st = !1, mediaQuery: it = "", prefix: rt = "graupl-", key: ot = null, initializeClass: nt = "initializing", initialize: at = !1 }) {
+		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: w = "hide", transitionClass: G = "transition", transitionDuration: H = 250, openDuration: N = -1, closeDuration: R = -1, openOnFocus: U = !1, closeOnBlur: J = !1, minWidth: $ = "", breakpoint: b = "856px", autoOpen: O = !1, openInsideBreakpoint: Z = !1, openOutsideBreakpoint: D = !0, closeInsideBreakpoint: M = !0, closeOutsideBreakpoint: W = !1, lockInsideBreakpoint: X = !1, lockOutsideBreakpoint: Y = !0, unlockInsideBreakpoint: tt = !0, unlockOutsideBreakpoint: et = !1, locked: st = !1, mediaQuery: it = "", prefix: rt = "graupl-", key: ot = null, initializeClass: nt = "initializing", initialize: at = !1 }) {
 			super({
 				prefix: rt,
 				key: ot,
@@ -803,7 +803,7 @@
 			});
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -852,7 +852,9 @@
 			}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 				switch (this.currentEvent = "keyboard", m(t)) {
 					case "Space":
-					case "Enter": d(t);
+					case "Enter":
+						d(t);
+						break;
 				}
 			});
 		}
@@ -869,9 +871,11 @@
 							this.focusNextChild();
 						}) : this.focusFirstChild();
 						break;
-					case "Tab": this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
-						this.focusNextChild();
-					}));
+					case "Tab":
+						this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
+							this.focusNextChild();
+						}));
+						break;
 				}
 			});
 		}

@@ -87,7 +87,7 @@ function a(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function X(t, { shouldThrow: e = !0 } = {}) {
+function W(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function X(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function Y(t, { shouldThrow: e = !0 } = {}) {
+function X(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function Y(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function tt(t, e, { shouldThrow: s = !0 } = {}) {
+function Y(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -147,7 +147,7 @@ function tt(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function et(t, { shouldThrow: e = !0 } = {}) {
+function tt(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -160,7 +160,7 @@ function et(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function st(t, { shouldThrow: e = !0 } = {}) {
+function et(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -213,15 +213,15 @@ function h(t, e) {
 function l(t, e) {
 	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 }
-function it(t = document, e = null) {
+function st(t = document, e = null) {
 	const s = Array.from(t.querySelectorAll("a[href],area[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),button:not([disabled]),[tabindex]")).filter((i) => {
 		let r = !0;
 		return i.getAttribute("tabindex") === "-1" && (r = !1), r;
 	});
 	return e !== null ? s.filter(e) : s;
 }
-function rt(t = document, e = null) {
-	return it(t, e)[0] || !1;
+function it(t = document, e = null) {
+	return st(t, e)[0] || !1;
 }
 var S = class {
 	_equals = Object.is;
@@ -311,7 +311,7 @@ var S = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, ot = class {
+}, rt = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -407,13 +407,13 @@ var S = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		X({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		W({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		Y({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		X({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -454,7 +454,7 @@ var S = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = et(this, { shouldThrow: !1 });
+		const t = tt(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((d, g) => {
@@ -571,7 +571,7 @@ var S = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		tt(t, this), f(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		Y(t, this), f(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -602,7 +602,7 @@ var S = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, nt = class extends ot {
+}, ot = class extends rt {
 	_rootDOMElement = "shelf";
 	_protectedDOMElements = [
 		"controller",
@@ -642,7 +642,7 @@ var S = class {
 				locked: this._locked.value
 			}, { shouldThrow: !1 });
 			C.status || (this._errors = [...this._errors, ...C.errors], this._valid = !1);
-			const b = st({ side: this._side }, { shouldThrow: !1 });
+			const b = et({ side: this._side }, { shouldThrow: !1 });
 			b.status || (this._errors = [...this._errors, ...b.errors], this._valid = !1);
 		}), Z && this.initialize();
 	}
@@ -824,7 +824,7 @@ var S = class {
 		}), this.dom.controller && this.dom.controller.addEventListener("keyup", (t) => {
 			this.currentEvent = "keyboard";
 			const e = u(t);
-			(e === "Space" || e === "Enter") && (c(t), this.toggle(), this.isOpen && rt(this.dom.shelf).focus());
+			(e === "Space" || e === "Enter") && (c(t), this.toggle(), this.isOpen && it(this.dom.shelf).focus());
 		}), this.dom.hoverController && this.dom.hoverController.addEventListener("keyup", (t) => {
 			this.currentEvent = "keyboard";
 			const e = u(t);
@@ -964,7 +964,7 @@ var S = class {
 		this.hover ? this.disableHover({ emit: t }) : this.enableHover({ emit: t });
 	}
 };
-const $ = /[\11\12\14\15\40]+/, v = "data-once", ht = document;
+const $ = /[\11\12\14\15\40]+/, v = "data-once", nt = document;
 function k(t, e, s) {
 	return t[`${e}Attribute`](v, s);
 }
@@ -973,11 +973,11 @@ function _(t) {
 	if (t === "" || $.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 	return `[${v}~="${t}"]`;
 }
-function lt(t) {
+function ht(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function m(t, e = ht) {
+function m(t, e = nt) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -987,7 +987,7 @@ function m(t, e = ht) {
 }
 function E(t, e, s) {
 	return e.filter((i) => {
-		const r = lt(i) && i.matches(t);
+		const r = ht(i) && i.matches(t);
 		return r && s && s(i), r;
 	});
 }
@@ -1003,10 +1003,10 @@ function p(t, e, s) {
 	return E(`:not(${_(t)})`, m(e, s), (i) => D(i, { add: t }));
 }
 p.remove = (t, e, s) => E(_(t), m(e, s), (i) => D(i, { remove: t })), p.filter = (t, e, s) => E(_(t), m(e, s)), p.find = (t, e) => m(t ? _(t) : `[${v}]`, e);
-const at = (t = {}, e = document, s = ".navigation-shelf") => {
+const lt = (t = {}, e = document, s = ".navigation-shelf") => {
 	p("graupl-navigation-shelf-generator", s, e).forEach((i) => {
 		const r = i.dataset.grauplNavigationShelfOptions ? JSON.parse(i.dataset.grauplNavigationShelfOptions.replace(/'/g, "\"")) || {} : {};
-		new nt({
+		new ot({
 			shelfElement: i,
 			controllerElement: e.querySelector(".navigation-shelf-toggle") || null,
 			lockControllerElement: e.querySelector(".navigation-shelf-lock-toggle") || null,
@@ -1018,6 +1018,6 @@ const at = (t = {}, e = document, s = ".navigation-shelf") => {
 		});
 	});
 };
-module.exports = at;
+module.exports = lt;
 
 //# sourceMappingURL=navigation-shelf.cjs.js.map

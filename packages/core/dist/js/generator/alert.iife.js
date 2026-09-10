@@ -714,7 +714,7 @@ var AlertGenerator = (function() {
 	function _(t, e, r) {
 		return y(`:not(${d(t)})`, f(e, r), (s) => C(s, { add: t }));
 	}
-	return _.remove = (t, e, r) => y(d(t), f(e, r), (s) => C(s, { remove: t })), _.filter = (t, e, r) => y(d(t), f(e, r)), _.find = (t, e) => f(t ? d(t) : `[${p}]`, e), ({ options: t = {}, context: e = document, selector: r = ".alert" } = {}) => {
+	return _.remove = (t, e, r) => y(d(t), f(e, r), (s) => C(s, { remove: t })), _.filter = (t, e, r) => y(d(t), f(e, r)), _.find = (t, e) => f(t ? d(t) : `[${p}]`, e), (t = {}, e = document, r = ".alert") => {
 		_("graupl-alert-generator", r, e).forEach((s) => {
 			const i = s.dataset.grauplAlertOptions ? JSON.parse(s.dataset.grauplAlertOptions.replace(/'/g, "\"")) || {} : {};
 			new z({

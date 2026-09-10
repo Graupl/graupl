@@ -62,7 +62,7 @@ var AccordionGenerator = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function u(t, { shouldThrow: e = !0 } = {}) {
+	function m(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -88,7 +88,7 @@ var AccordionGenerator = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function I(t, { shouldThrow: e = !0 } = {}) {
+	function S(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -111,7 +111,7 @@ var AccordionGenerator = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function T(t, { shouldThrow: e = !0 } = {}) {
+	function I(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -155,7 +155,7 @@ var AccordionGenerator = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function x(t, e, { shouldThrow: s = !0 } = {}) {
+	function T(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -168,7 +168,7 @@ var AccordionGenerator = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function L(t, { shouldThrow: e = !0 } = {}) {
+	function x(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -215,7 +215,7 @@ var AccordionGenerator = (function() {
 		update(t) {
 			return this._current = t(this._current), this;
 		}
-	}, y = class S {
+	}, y = class D {
 		_scope;
 		_type = "_default";
 		_storage = {};
@@ -225,7 +225,7 @@ var AccordionGenerator = (function() {
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (h(S, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (h(D, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -365,19 +365,19 @@ var AccordionGenerator = (function() {
 			return this._classes.initialize;
 		}
 		set initializeClass(t) {
-			u({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
+			m({ initializeClass: t }), this._classes.initialize !== t && (this._classes.initialize = t);
 		}
 		get focusState() {
 			return this._focusState;
 		}
 		set focusState(t) {
-			I({ focusState: t }), this._focusState !== t && (this._focusState = t);
+			S({ focusState: t }), this._focusState !== t && (this._focusState = t);
 		}
 		get currentEvent() {
 			return this._currentEvent;
 		}
 		set currentEvent(t) {
-			T({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+			I({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 		}
 		get shouldFocus() {
 			let t = !1;
@@ -418,7 +418,7 @@ var AccordionGenerator = (function() {
 		}
 		_validate() {
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = L(this, { shouldThrow: !1 });
+			const t = x(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const i = {};
 				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((l, b) => {
@@ -436,7 +436,7 @@ var AccordionGenerator = (function() {
 			if (Object.keys(this._classes).length > 0) {
 				const i = {};
 				for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (i[`${o}Class`] = this._classes[o]);
-				const r = u(i, { shouldThrow: !1 });
+				const r = m(i, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._durations).length > 0) {
@@ -535,7 +535,7 @@ var AccordionGenerator = (function() {
 			});
 		}
 		_dispatchEvent(t, e) {
-			x(t, this), h(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			T(t, this), h(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, s, i = {}) {
 			e.addEventListener(t, s, i), this._listeners.push({
@@ -566,7 +566,7 @@ var AccordionGenerator = (function() {
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 		}
-	}, j = class extends $ {
+	}, L = class extends $ {
 		_rootDOMElement = "item";
 		_protectedDOMElements = [
 			"toggle",
@@ -669,7 +669,7 @@ var AccordionGenerator = (function() {
 			});
 		}
 	};
-	function m(t) {
+	function f(t) {
 		try {
 			const e = t.key || t.keyCode, s = {
 				Enter: e === "Enter" || e === 13,
@@ -693,7 +693,7 @@ var AccordionGenerator = (function() {
 	function a(t) {
 		t.preventDefault(), t.stopPropagation();
 	}
-	var z = class extends $ {
+	var j = class extends $ {
 		_rootDOMElement = "accordion";
 		_optionalKeySupport = !0;
 		_expandMultiple = !0;
@@ -701,44 +701,44 @@ var AccordionGenerator = (function() {
 		_currentChild = 0;
 		_storageKey = "accordions";
 		_name = "Accordion";
-		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: l = ".accordion-control", expandControllerSelector: b = ".expand-all", collapseControllerSelector: V = ".collapse-all", openClass: P = "show", closeClass: q = "hide", transitionClass: F = "transitioning", transitionDuration: H = 300, openDuration: G = -1, closeDuration: R = -1, optionalKeySupport: U = !1, allowExpandMultiple: B = !0, allowCollapseAll: N = !0, automaticActivation: J = !1, prefix: Z = "graupl-", key: W = null, initializeClass: X = "initializing", initialize: Y = !1 }) {
+		constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: l = ".accordion-control", expandControllerSelector: b = ".expand-all", collapseControllerSelector: Q = ".collapse-all", openClass: V = "show", closeClass: P = "hide", transitionClass: q = "transitioning", transitionDuration: F = 300, openDuration: H = -1, closeDuration: G = -1, optionalKeySupport: R = !1, allowExpandMultiple: U = !0, allowCollapseAll: B = !0, automaticActivation: N = !1, prefix: J = "graupl-", key: Z = null, initializeClass: W = "initializing", initialize: X = !1 }) {
 			super({
-				prefix: Z,
-				key: W,
-				initializeClass: X
-			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = l, this._selectors.expandController = b, this._selectors.collapseController = V, this._elements.accordionItems = [], this._classes.open = P || "", this._classes.close = q || "", this._classes.transition = F || "", this._durations.transition = H, this._durations.open = G, this._durations.close = R, this._automatic = J, this._optionalKeySupport = U, this._expandMultiple = B, this._collapseAll = N, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
-				this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((f) => {
-					f.setAttribute("disabled", "disabled");
-				}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((f) => {
-					f.setAttribute("disabled", "disabled");
+				prefix: J,
+				key: Z,
+				initializeClass: W
+			}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = l, this._selectors.expandController = b, this._selectors.collapseController = Q, this._elements.accordionItems = [], this._classes.open = V || "", this._classes.close = P || "", this._classes.transition = q || "", this._durations.transition = F, this._durations.open = H, this._durations.close = G, this._automatic = N, this._optionalKeySupport = R, this._expandMultiple = U, this._collapseAll = B, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+				this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((u) => {
+					u.setAttribute("disabled", "disabled");
+				}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((u) => {
+					u.setAttribute("disabled", "disabled");
 				});
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const D = n("boolean", {
+				const u = n("boolean", {
 					automaticActivation: this._automatic,
 					optionalKeySupport: this._optionalKeySupport,
 					allowExpandMultiple: this._expandMultiple,
 					allowCollapseAll: this._collapseAll
-				}, { shouldThrow: !1 });
-				D.status || (this._errors = [...this._errors, ...D.errors], this._valid = !1);
-			}), Y && this.initialize();
+				});
+				u.status || (this._errors = [...this._errors, ...u.errors], this._valid = !1);
+			}), X && this.initialize();
 		}
 		get openClass() {
 			return this._classes.open;
 		}
 		set openClass(t) {
-			u({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
+			m({ openClass: t }), this._classes.open !== t && (this._classes.open = t);
 		}
 		get closeClass() {
 			return this._classes.close;
 		}
 		set closeClass(t) {
-			u({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
+			m({ closeClass: t }), this._classes.close !== t && (this._classes.close = t);
 		}
 		get transitionClass() {
 			return this._classes.transition;
 		}
 		set transitionClass(t) {
-			u({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
+			m({ transitionClass: t }), this._classes.transition !== t && (this._classes.transition = t);
 		}
 		get transitionDuration() {
 			return this._durations.transition;
@@ -821,7 +821,7 @@ var AccordionGenerator = (function() {
 		}
 		_createChildElements() {
 			this.dom.accordionItems.forEach((t, e) => {
-				const s = new j({
+				const s = new L({
 					accordionItemElement: t,
 					accordionItemToggleElement: this.dom.accordionItemToggles[e],
 					accordionItemHeaderElement: this.dom.accordionItemHeaders[e],
@@ -856,7 +856,7 @@ var AccordionGenerator = (function() {
 		_handleKeydown() {
 			this.dom.accordionItemToggles.forEach((t) => {
 				this._addEventListener("keydown", t, (e) => {
-					const s = m(e);
+					const s = f(e);
 					["Space", "Enter"].includes(s) ? (a(e), this.currentEvent = "keyboard") : this.optionalKeySupport && [
 						"ArrowDown",
 						"ArrowUp",
@@ -866,7 +866,7 @@ var AccordionGenerator = (function() {
 				});
 			}), this.dom.accordionControls.forEach((t) => {
 				this._addEventListener("keydown", t, (e) => {
-					const s = m(e);
+					const s = f(e);
 					["Space", "Enter"].includes(s) && (a(e), this.currentEvent = "keyboard");
 				});
 			});
@@ -874,10 +874,12 @@ var AccordionGenerator = (function() {
 		_handleKeyup() {
 			this.dom.accordionItemToggles.forEach((t) => {
 				this._addEventListener("keyup", t, (e) => {
-					const s = m(e);
+					const s = f(e);
 					switch (s) {
 						case "Space":
-						case "Enter": a(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
+						case "Enter":
+							a(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
+							break;
 					}
 					if (this.optionalKeySupport) switch (s) {
 						case "Home":
@@ -889,19 +891,21 @@ var AccordionGenerator = (function() {
 						case "ArrowDown":
 							a(e), this.focusNextChild();
 							break;
-						case "ArrowUp": a(e), this.focusPreviousChild();
+						case "ArrowUp":
+							a(e), this.focusPreviousChild();
+							break;
 					}
 				});
 			}), this.dom.expandController.forEach((t) => {
 				this._addEventListener("keyup", t, (e) => {
-					switch (m(e)) {
+					switch (f(e)) {
 						case "Space":
 						case "Enter": a(e), this.currentEvent = "keyboard", this.allowExpandMultiple && this.openChildren();
 					}
 				});
 			}), this.dom.collapseController.forEach((t) => {
 				this._addEventListener("keyup", t, (e) => {
-					switch (m(e)) {
+					switch (f(e)) {
 						case "Space":
 						case "Enter": a(e), this.currentEvent = "keyboard", this.allowCollapseAll && this.closeChildren();
 					}
@@ -936,7 +940,7 @@ var AccordionGenerator = (function() {
 			this.elements.accordionItems.forEach((t) => t.hide());
 		}
 	};
-	const M = /[\11\12\14\15\40]+/, E = "data-once", K = document;
+	const M = /[\11\12\14\15\40]+/, E = "data-once", z = document;
 	function w(t, e, s) {
 		return t[`${e}Attribute`](E, s);
 	}
@@ -945,11 +949,11 @@ var AccordionGenerator = (function() {
 		if (t === "" || M.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 		return `[${E}~="${t}"]`;
 	}
-	function Q(t) {
+	function K(t) {
 		if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 		return !0;
 	}
-	function _(t, e = K) {
+	function _(t, e = z) {
 		let s = t;
 		if (t === null) s = [];
 		else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -959,7 +963,7 @@ var AccordionGenerator = (function() {
 	}
 	function C(t, e, s) {
 		return e.filter((i) => {
-			const r = Q(i) && i.matches(t);
+			const r = K(i) && i.matches(t);
 			return r && s && s(i), r;
 		});
 	}
@@ -974,10 +978,10 @@ var AccordionGenerator = (function() {
 	function g(t, e, s) {
 		return C(`:not(${p(t)})`, _(e, s), (i) => O(i, { add: t }));
 	}
-	return g.remove = (t, e, s) => C(p(t), _(e, s), (i) => O(i, { remove: t })), g.filter = (t, e, s) => C(p(t), _(e, s)), g.find = (t, e) => _(t ? p(t) : `[${E}]`, e), ({ options: t = {}, context: e = document, selector: s = ".accordion" } = {}) => {
+	return g.remove = (t, e, s) => C(p(t), _(e, s), (i) => O(i, { remove: t })), g.filter = (t, e, s) => C(p(t), _(e, s)), g.find = (t, e) => _(t ? p(t) : `[${E}]`, e), (t = {}, e = document, s = ".accordion") => {
 		g("graupl-accordion-generator", s, e).forEach((i) => {
 			const r = i.dataset.grauplAccordionOptions ? JSON.parse(i.dataset.grauplAccordionOptions.replace(/'/g, "\"")) || {} : {};
-			new z({
+			new j({
 				accordionElement: i,
 				initialize: !0,
 				...t,

@@ -636,7 +636,7 @@ var BreadcrumbGenerator = (function() {
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: w = "hide", transitionClass: K = "transitioning", transitionDuration: G = 250, openDuration: H = -1, closeDuration: N = -1, openOnFocus: R = !1, closeOnBlur: U = !1, minWidth: $ = "", breakpoint: b = "856px", autoOpen: O = !1, openInsideBreakpoint: J = !1, openOutsideBreakpoint: D = !0, closeInsideBreakpoint: M = !0, closeOutsideBreakpoint: Z = !1, lockInsideBreakpoint: W = !1, lockOutsideBreakpoint: X = !0, unlockInsideBreakpoint: Y = !0, unlockOutsideBreakpoint: tt = !1, locked: et = !1, mediaQuery: st = "", prefix: it = "graupl-", key: rt = null, initializeClass: ot = "initializing", initialize: nt = !1 }) {
+		constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: s = ".breadcrumb-link", breadcrumbToggleSelector: i = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: w = "hide", transitionClass: K = "transition", transitionDuration: G = 250, openDuration: H = -1, closeDuration: N = -1, openOnFocus: R = !1, closeOnBlur: U = !1, minWidth: $ = "", breakpoint: b = "856px", autoOpen: O = !1, openInsideBreakpoint: J = !1, openOutsideBreakpoint: D = !0, closeInsideBreakpoint: M = !0, closeOutsideBreakpoint: Z = !1, lockInsideBreakpoint: W = !1, lockOutsideBreakpoint: X = !0, unlockInsideBreakpoint: Y = !0, unlockOutsideBreakpoint: tt = !1, locked: et = !1, mediaQuery: st = "", prefix: it = "graupl-", key: rt = null, initializeClass: ot = "initializing", initialize: nt = !1 }) {
 			super({
 				prefix: it,
 				key: rt,
@@ -803,7 +803,7 @@ var BreadcrumbGenerator = (function() {
 			});
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+			this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -852,7 +852,9 @@ var BreadcrumbGenerator = (function() {
 			}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 				switch (this.currentEvent = "keyboard", m(t)) {
 					case "Space":
-					case "Enter": d(t);
+					case "Enter":
+						d(t);
+						break;
 				}
 			});
 		}
@@ -869,9 +871,11 @@ var BreadcrumbGenerator = (function() {
 							this.focusNextChild();
 						}) : this.focusFirstChild();
 						break;
-					case "Tab": this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
-						this.focusNextChild();
-					}));
+					case "Tab":
+						this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
+							this.focusNextChild();
+						}));
+						break;
 				}
 			});
 		}

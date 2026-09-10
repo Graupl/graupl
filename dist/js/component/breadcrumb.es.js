@@ -87,7 +87,7 @@ function u(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function H(t, { shouldThrow: e = !0 } = {}) {
+function G(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function H(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function N(t, { shouldThrow: e = !0 } = {}) {
+function H(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function N(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function R(t, e, { shouldThrow: i = !0 } = {}) {
+function N(t, e, { shouldThrow: i = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -154,7 +154,7 @@ function R(t, e, { shouldThrow: i = !0 } = {}) {
 	if (i && !s.status) throw s.errors[0];
 	return s;
 }
-function U(t, e, { shouldThrow: i = !0 } = {}) {
+function R(t, e, { shouldThrow: i = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -167,7 +167,7 @@ function U(t, e, { shouldThrow: i = !0 } = {}) {
 	if (i && !s.status) throw s.errors[0];
 	return s;
 }
-function J(t, { shouldThrow: e = !0 } = {}) {
+function U(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -394,13 +394,13 @@ var O = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		H({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		G({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		N({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		H({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -441,7 +441,7 @@ var O = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = J(this, { shouldThrow: !1 });
+		const t = U(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const s = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, f) => {
@@ -558,7 +558,7 @@ var O = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		U(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		R(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, i, s = {}) {
 		e.addEventListener(t, i, s), this._listeners.push({
@@ -589,7 +589,7 @@ var O = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, Z = class extends C {
+}, J = class extends C {
 	_rootDOMElement = "item";
 	_protectedDOMElements = ["link"];
 	_storageKey = "breadcrumbItems";
@@ -615,7 +615,7 @@ var O = class {
 			this.dom.link.blur();
 		});
 	}
-}, W = class extends C {
+}, Z = class extends C {
 	_rootDOMElement = "breadcrumb";
 	_currentChild = 0;
 	_open = new O(!1);
@@ -635,7 +635,7 @@ var O = class {
 	_mediaQueryListEventCallback = (t) => {
 		t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 	};
-	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: i = ".breadcrumb-link", breadcrumbToggleSelector: s = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: f = "hide", transitionClass: v = "transitioning", transitionDuration: T = 250, openDuration: I = -1, closeDuration: $ = -1, openOnFocus: M = !1, closeOnBlur: D = !1, minWidth: g = "", breakpoint: m = "856px", autoOpen: p = !1, openInsideBreakpoint: S = !1, openOutsideBreakpoint: k = !0, closeInsideBreakpoint: y = !0, closeOutsideBreakpoint: L = !1, lockInsideBreakpoint: z = !1, lockOutsideBreakpoint: A = !0, unlockInsideBreakpoint: j = !0, unlockOutsideBreakpoint: F = !1, locked: x = !1, mediaQuery: Q = "", prefix: q = "graupl-", key: V = null, initializeClass: P = "initializing", initialize: K = !1 }) {
+	constructor({ breadcrumbElement: t, breadcrumbItemsSelector: e = ".breadcrumb-item", breadcrumbLinksSelector: i = ".breadcrumb-link", breadcrumbToggleSelector: s = ".breadcrumb-toggle", lockedClass: r = "locked", unlockedClass: o = "unlocked", openClass: a = "show", closeClass: f = "hide", transitionClass: v = "transition", transitionDuration: T = 250, openDuration: I = -1, closeDuration: $ = -1, openOnFocus: M = !1, closeOnBlur: D = !1, minWidth: g = "", breakpoint: m = "856px", autoOpen: p = !1, openInsideBreakpoint: S = !1, openOutsideBreakpoint: k = !0, closeInsideBreakpoint: y = !0, closeOutsideBreakpoint: L = !1, lockInsideBreakpoint: z = !1, lockOutsideBreakpoint: A = !0, unlockInsideBreakpoint: j = !0, unlockOutsideBreakpoint: F = !1, locked: x = !1, mediaQuery: Q = "", prefix: q = "graupl-", key: V = null, initializeClass: P = "initializing", initialize: K = !1 }) {
 		super({
 			prefix: q,
 			key: V,
@@ -782,7 +782,7 @@ var O = class {
 		this.dom.breadcrumb.id = this.dom.breadcrumb.id || `breadcrumb-${this.key}`, this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.id = this.dom.breadcrumbToggle.id || `breadcrumb-toggle-${this.key}`), this._id = this.dom.breadcrumb.id;
 	}
 	_setAriaAttributes() {
-		this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), R("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
+		this.dom.breadcrumbToggle && (this.dom.breadcrumbToggle.getAttribute("aria-expanded") !== "true" && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "false"), this.dom.breadcrumbToggle.setAttribute("aria-controls", this.dom.breadcrumb.id), N("button", { toggle: this.dom.breadcrumbToggle }, { shouldThrow: !1 }).status || this.dom.breadcrumbToggle.setAttribute("role", "button"));
 	}
 	_setCustomProps() {
 		this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`, `${this.transitionDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`, `${this.openDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`, `${this.closeDuration}ms`);
@@ -792,7 +792,7 @@ var O = class {
 	}
 	_createChildElements() {
 		this.dom.breadcrumbItems.forEach((t) => {
-			const e = t.querySelector(this.selectors.breadcrumbLinks), i = t.querySelector(this.selectors.breadcrumbToggle) !== null, s = new Z({
+			const e = t.querySelector(this.selectors.breadcrumbLinks), i = t.querySelector(this.selectors.breadcrumbToggle) !== null, s = new J({
 				breadcrumbItemElement: t,
 				breadcrumbLinkElement: e,
 				parentBreadcrumb: this,
@@ -802,7 +802,7 @@ var O = class {
 		});
 	}
 	_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
+		this.dom.breadcrumbToggle && this.dom.breadcrumbToggle.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (h(this.transitionClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 			l(this.closeClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 				h(this.openClass, this.dom.breadcrumb), requestAnimationFrame(() => {
 					setTimeout(() => {
@@ -851,7 +851,9 @@ var O = class {
 		}), this.dom.breadcrumbToggle && this._addEventListener("keydown", this.dom.breadcrumbToggle, (t) => {
 			switch (this.currentEvent = "keyboard", _(t)) {
 				case "Space":
-				case "Enter": d(t);
+				case "Enter":
+					d(t);
+					break;
 			}
 		});
 	}
@@ -868,9 +870,11 @@ var O = class {
 						this.focusNextChild();
 					}) : this.focusFirstChild();
 					break;
-				case "Tab": this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
-					this.focusNextChild();
-				}));
+				case "Tab":
+					this.openOnFocus && (d(t), this.open(), requestAnimationFrame(() => {
+						this.focusNextChild();
+					}));
+					break;
 			}
 		});
 	}
@@ -947,6 +951,6 @@ var O = class {
 		this.focusState = "self", this.elements.breadcrumbToggle !== null && (this.currentChild = this.elements.breadcrumbItems.indexOf(this.elements.breadcrumbToggle) || 0, this.elements.breadcrumbToggle.focus());
 	}
 };
-export { W as default };
+export { Z as default };
 
 //# sourceMappingURL=breadcrumb.es.js.map

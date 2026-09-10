@@ -5,7 +5,7 @@
 	function l(t, e) {
 		t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 	}
-	var A = class {
+	var O = class {
 		_equals = Object.is;
 		_current;
 		_committed;
@@ -123,7 +123,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function M(t, { shouldThrow: e = !0 } = {}) {
+	function A(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -146,7 +146,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function S(t, { shouldThrow: e = !0 } = {}) {
+	function M(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -170,7 +170,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function L(t, e, { shouldThrow: s = !0 } = {}) {
+	function S(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -183,7 +183,7 @@
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function j(t, { shouldThrow: e = !0 } = {}) {
+	function L(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -196,7 +196,7 @@
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	var g = class O {
+	var p = class D {
 		_scope;
 		_type = "_default";
 		_storage = {};
@@ -206,7 +206,7 @@
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (c(O, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (c(D, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -352,13 +352,13 @@
 			return this._focusState;
 		}
 		set focusState(t) {
-			M({ focusState: t }), this._focusState !== t && (this._focusState = t);
+			A({ focusState: t }), this._focusState !== t && (this._focusState = t);
 		}
 		get currentEvent() {
 			return this._currentEvent;
 		}
 		set currentEvent(t) {
-			S({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+			M({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 		}
 		get shouldFocus() {
 			let t = !1;
@@ -399,11 +399,11 @@
 		}
 		_validate() {
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = j(this, { shouldThrow: !1 });
+			const t = L(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const i = {};
-				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, E) => {
-					i[`${o}Element[${E}]`] = a;
+				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, w) => {
+					i[`${o}Element[${w}]`] = a;
 				}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
 				const r = c(HTMLElement, i, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
@@ -474,14 +474,14 @@
 		_handleKeydown() {}
 		_handleKeyup() {}
 		_store() {
-			this._shouldStore && (c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new g({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			this._shouldStore && (c(p, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new p({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey,
 				data: this
 			}));
 		}
 		_unstore() {
-			this._shouldStore && c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			this._shouldStore && c(p, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey
 			});
@@ -516,7 +516,7 @@
 			});
 		}
 		_dispatchEvent(t, e) {
-			L(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			S(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, s, i = {}) {
 			e.addEventListener(t, s, i), this._listeners.push({
@@ -547,13 +547,12 @@
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 		}
-	}, z = class extends v {
+	}, j = class extends v {
 		_rootDOMElement = "toggle";
 		_protectedDOMElements = ["content"];
 		_storageKey = "tabToggles";
-		_name = "TabToggle";
 		_shouldStore = !1;
-		_active = new A(!1);
+		_active = new O(!1);
 		constructor({ toggleElement: t, contentElement: e, parentTab: s } = {}) {
 			super({
 				prefix: s.prefix,
@@ -648,23 +647,22 @@
 	function u(t) {
 		t.preventDefault(), t.stopPropagation();
 	}
-	var x = class extends v {
+	var z = class extends v {
 		_rootDOMElement = "tabs";
 		_automatic = !1;
 		_currentChild = 0;
 		_storageKey = "tabs";
-		_name = "Tab";
-		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: E = 300, openDuration: F = -1, closeDuration: q = -1, automaticActivation: K = !1, prefix: P = "graupl-", key: G = null, initializeClass: H = "initializing", initialize: R = !1 }) {
+		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: w = 300, openDuration: V = -1, closeDuration: F = -1, automaticActivation: q = !1, prefix: K = "graupl-", key: P = null, initializeClass: G = "initializing", initialize: H = !1 }) {
 			super({
-				prefix: P,
-				key: G,
-				initializeClass: H
-			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = E, this._durations.open = F, this._durations.close = q, this._automatic = K, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
-				this.elements.tabToggles.filter((w) => w.isActive).length === 0 && this.elements.tabToggles[0].show();
+				prefix: K,
+				key: P,
+				initializeClass: G
+			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = w, this._durations.open = V, this._durations.close = F, this._automatic = q, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
+				this.elements.tabToggles.filter((g) => g.isActive).length === 0 && this.elements.tabToggles[0].show();
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const D = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
-				D.status || (this._errors = [...this._errors, ...D.errors], this._valid = !1);
-			}), R && this.initialize();
+				const g = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
+				g.status || (this._errors = [...this._errors, ...g.errors], this._valid = !1);
+			}), H && this.initialize();
 		}
 		get openClass() {
 			return this._classes.open;
@@ -731,7 +729,7 @@
 		}
 		_createChildElements() {
 			this.dom.tabToggles.forEach((t, e) => {
-				const s = new z({
+				const s = new j({
 					toggleElement: t,
 					contentElement: this.dom.tabContents[e],
 					parentTab: this
@@ -785,7 +783,9 @@
 						case "ArrowRight":
 							u(e), this.focusNextChild();
 							break;
-						case "ArrowLeft": u(e), this.focusPreviousChild();
+						case "ArrowLeft":
+							u(e), this.focusPreviousChild();
+							break;
 					}
 				});
 			});
@@ -812,20 +812,20 @@
 			this.currentChild !== -1 && this.currentTabToggle.blur();
 		}
 	};
-	const T = /[\11\12\14\15\40]+/, p = "data-once", I = document;
-	function y(t, e, s) {
-		return t[`${e}Attribute`](p, s);
+	const $ = /[\11\12\14\15\40]+/, y = "data-once", x = document;
+	function b(t, e, s) {
+		return t[`${e}Attribute`](y, s);
 	}
 	function f(t) {
 		if (typeof t != "string") throw new TypeError("once ID must be a string");
-		if (t === "" || T.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
-		return `[${p}~="${t}"]`;
+		if (t === "" || $.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
+		return `[${y}~="${t}"]`;
 	}
-	function Q(t) {
+	function I(t) {
 		if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 		return !0;
 	}
-	function _(t, e = I) {
+	function _(t, e = x) {
 		let s = t;
 		if (t === null) s = [];
 		else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -833,28 +833,28 @@
 		else throw new TypeError("Selector must not be empty");
 		return Array.prototype.slice.call(s);
 	}
-	function b(t, e, s) {
+	function E(t, e, s) {
 		return e.filter((i) => {
-			const r = Q(i) && i.matches(t);
+			const r = I(i) && i.matches(t);
 			return r && s && s(i), r;
 		});
 	}
-	function $(t, { add: e, remove: s }) {
+	function T(t, { add: e, remove: s }) {
 		const i = [];
-		y(t, "has") && y(t, "get").trim().split(T).forEach((o) => {
+		b(t, "has") && b(t, "get").trim().split($).forEach((o) => {
 			i.indexOf(o) < 0 && o !== s && i.push(o);
 		}), e && i.push(e);
 		const r = i.join(" ");
-		y(t, r === "" ? "remove" : "set", r);
+		b(t, r === "" ? "remove" : "set", r);
 	}
 	function m(t, e, s) {
-		return b(`:not(${f(t)})`, _(e, s), (i) => $(i, { add: t }));
+		return E(`:not(${f(t)})`, _(e, s), (i) => T(i, { add: t }));
 	}
-	m.remove = (t, e, s) => b(f(t), _(e, s), (i) => $(i, { remove: t })), m.filter = (t, e, s) => b(f(t), _(e, s)), m.find = (t, e) => _(t ? f(t) : `[${p}]`, e);
-	const V = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
+	m.remove = (t, e, s) => E(f(t), _(e, s), (i) => T(i, { remove: t })), m.filter = (t, e, s) => E(f(t), _(e, s)), m.find = (t, e) => _(t ? f(t) : `[${y}]`, e);
+	const Q = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
 		m("graupl-tabs-generator", s, e).forEach((i) => {
 			const r = i.dataset.grauplTabsOptions ? JSON.parse(i.dataset.grauplTabsOptions.replace(/'/g, "\"")) || {} : {};
-			new x({
+			new z({
 				tabsElement: i,
 				initialize: !0,
 				...t,
@@ -863,7 +863,7 @@
 		});
 	};
 	document.addEventListener("DOMContentLoaded", () => {
-		V();
+		Q();
 	});
 })();
 
