@@ -757,7 +757,7 @@ var Disclosure = (function() {
 			this._resetDOMElementType("content"), this._setDOMElementType("content", { context: this.dom.disclosure });
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
+			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
 				h(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 					l(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -772,7 +772,7 @@ var Disclosure = (function() {
 				h(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 					l(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
-							h(this.transitionClass, this.dom.disclosure), this.dom.content.innert = !0;
+							h(this.transitionClass, this.dom.disclosure), this.dom.content.inert = !0;
 						}, this.closeDuration);
 					});
 				});
@@ -802,9 +802,7 @@ var Disclosure = (function() {
 			this._addEventListener("keydown", this.dom.controller, (t) => {
 				switch (this.currentEvent = "keyboard", _(t)) {
 					case "Space":
-					case "Enter":
-						d(t);
-						break;
+					case "Enter": d(t);
 				}
 			}), this._addEventListener("keydown", this.dom.disclosure, (t) => {
 				this.currentEvent = "keyboard", _(t) === "Escape" && d(t);
@@ -817,9 +815,7 @@ var Disclosure = (function() {
 					case "Enter":
 						this.toggle(), d(t);
 						break;
-					case "Tab":
-						this.openOnFocus && (d(t), this.open());
-						break;
+					case "Tab": this.openOnFocus && (d(t), this.open());
 				}
 			}), this._addEventListener("keyup", this.dom.disclosure, (t) => {
 				this.currentEvent = "keyboard", _(t) === "Escape" && (this.close(), d(t));

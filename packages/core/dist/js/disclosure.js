@@ -1,6 +1,6 @@
 (function() {
-	function c(t, e, { shouldThrow: s = !0 } = {}) {
-		const i = {
+	function c(t, e, { shouldThrow: i = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
@@ -12,16 +12,16 @@
 					throw new TypeError(`${r} must be an instance of ${t.name}. "${o}" given.`);
 				}
 			} catch (o) {
-				i.status = !1, i.errors.push(o);
+				s.status = !1, s.errors.push(o);
 			}
 		} catch (r) {
-			i.status = !1, i.errors.push(r);
+			s.status = !1, s.errors.push(r);
 		}
-		if (s && !i.status) throw i.errors[0];
-		return i;
+		if (i && !s.status) throw s.errors[0];
+		return s;
 	}
-	function n(t, e, { shouldThrow: s = !0 } = {}) {
-		const i = {
+	function n(t, e, { shouldThrow: i = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
@@ -31,112 +31,112 @@
 				const o = typeof e[r];
 				if (o !== t) throw new TypeError(`${r} must be a ${t}. "${o}" given.`);
 			} catch (o) {
-				i.status = !1, i.errors.push(o);
+				s.status = !1, s.errors.push(o);
 			}
 		} catch (r) {
-			i.status = !1, i.errors.push(r);
+			s.status = !1, s.errors.push(r);
 		}
-		if (s && !i.status) throw i.errors[0];
-		return i;
+		if (i && !s.status) throw s.errors[0];
+		return s;
 	}
 	function C(t, { shouldThrow: e = !0 } = {}) {
-		const s = {
+		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object") throw new TypeError(`Values given to isQuerySelector() must be inside of an object. "${typeof t}" given.`);
-			for (const i in t) try {
+			for (const s in t) try {
 				try {
-					if (t[i] === null) throw new Error();
-					document.querySelector(t[i]);
+					if (t[s] === null) throw new Error();
+					document.querySelector(t[s]);
 				} catch {
-					throw new TypeError(`${i} must be a valid query selector. "${t[i]}" given.`);
+					throw new TypeError(`${s} must be a valid query selector. "${t[s]}" given.`);
 				}
 			} catch (r) {
-				s.status = !1, s.errors.push(r);
+				i.status = !1, i.errors.push(r);
 			}
-		} catch (i) {
-			s.status = !1, s.errors.push(i);
+		} catch (s) {
+			i.status = !1, i.errors.push(s);
 		}
-		if (e && !s.status) throw s.errors[0];
-		return s;
+		if (e && !i.status) throw i.errors[0];
+		return i;
 	}
 	function u(t, { shouldThrow: e = !0 } = {}) {
-		const s = {
+		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object" || Array.isArray(t)) throw new TypeError(`Values given to isValidClassList() must be inside of an object. "${typeof t}" given.`);
-			for (const i in t) try {
-				const r = typeof t[i];
-				if (r !== "string") if (Array.isArray(t[i])) t[i].forEach((o) => {
-					if (typeof o != "string") throw new TypeError(`${i} must be a string or an array of strings. An array containing non-strings given.`);
+			for (const s in t) try {
+				const r = typeof t[s];
+				if (r !== "string") if (Array.isArray(t[s])) t[s].forEach((o) => {
+					if (typeof o != "string") throw new TypeError(`${s} must be a string or an array of strings. An array containing non-strings given.`);
 				});
-				else throw new TypeError(`${i} must be a string or an array of strings. "${r}" given.`);
+				else throw new TypeError(`${s} must be a string or an array of strings. "${r}" given.`);
 				else {
 					const o = {};
-					o[i] = t[i], C(o);
+					o[s] = t[s], C(o);
 				}
 			} catch (r) {
-				s.status = !1, s.errors.push(r);
+				i.status = !1, i.errors.push(r);
 			}
-		} catch (i) {
-			s.status = !1, s.errors.push(i);
+		} catch (s) {
+			i.status = !1, i.errors.push(s);
 		}
-		if (e && !s.status) throw s.errors[0];
-		return s;
+		if (e && !i.status) throw i.errors[0];
+		return i;
 	}
 	function L(t, { shouldThrow: e = !0 } = {}) {
-		const s = {
+		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object") throw new TypeError(`Values given to isValidState() must be inside of an object. "${typeof t}" given.`);
-			const i = [
+			const s = [
 				"none",
 				"self",
 				"child"
 			];
 			for (const r in t) try {
-				if (!i.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${i.join(", ")}. "${t[r]}" given.`);
+				if (!s.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`);
 			} catch (o) {
-				s.status = !1, s.errors.push(o);
+				i.status = !1, i.errors.push(o);
 			}
-		} catch (i) {
-			s.status = !1, s.errors.push(i);
+		} catch (s) {
+			i.status = !1, i.errors.push(s);
 		}
-		if (e && !s.status) throw s.errors[0];
-		return s;
+		if (e && !i.status) throw i.errors[0];
+		return i;
 	}
 	function z(t, { shouldThrow: e = !0 } = {}) {
-		const s = {
+		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object") throw new TypeError(`Values given to isValidEvent() must be inside of an object. "${typeof t}" given.`);
-			const i = [
+			const s = [
 				"none",
 				"mouse",
 				"keyboard",
 				"character"
 			];
 			for (const r in t) try {
-				if (!i.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${i.join(", ")}. "${t[r]}" given.`);
+				if (!s.includes(t[r])) throw new TypeError(`${r} must be one of the following values: ${s.join(", ")}. "${t[r]}" given.`);
 			} catch (o) {
-				s.status = !1, s.errors.push(o);
+				i.status = !1, i.errors.push(o);
 			}
-		} catch (i) {
-			s.status = !1, s.errors.push(i);
+		} catch (s) {
+			i.status = !1, i.errors.push(s);
 		}
-		if (e && !s.status) throw s.errors[0];
-		return s;
+		if (e && !i.status) throw i.errors[0];
+		return i;
 	}
-	function A(t, e, { shouldThrow: s = !0 } = {}) {
-		const i = {
+	function A(t, e, { shouldThrow: i = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
@@ -146,40 +146,40 @@
 				for (const o in e) try {
 					if (e[o].tagName.toLowerCase() !== r) throw new TypeError(`${o} must be a <${r}> element. <${e[o].tagName.toLowerCase()}> given.`);
 				} catch (a) {
-					i.status = !1, i.errors.push(a);
+					s.status = !1, s.errors.push(a);
 				}
 			}
 		} catch (r) {
-			i.status = !1, i.errors.push(r);
+			s.status = !1, s.errors.push(r);
 		}
-		if (s && !i.status) throw i.errors[0];
-		return i;
+		if (i && !s.status) throw s.errors[0];
+		return s;
 	}
-	function j(t, e, { shouldThrow: s = !0 } = {}) {
-		const i = {
+	function j(t, e, { shouldThrow: i = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (!Object.prototype.hasOwnProperty.call(e.events, t)) throw new TypeError(`Event type "${t}" is not valid for ${e.constructor.name}. Valid event types are: "${Object.keys(e.events).join("\", ")}".`);
 		} catch (r) {
-			i.status = !1, i.errors.push(r);
+			s.status = !1, s.errors.push(r);
 		}
-		if (s && !i.status) throw i.errors[0];
-		return i;
+		if (i && !s.status) throw s.errors[0];
+		return s;
 	}
 	function Q(t, { shouldThrow: e = !0 } = {}) {
-		const s = {
+		const i = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (!Object.prototype.hasOwnProperty.call(t._dom, t._rootDOMElement)) throw new Error(`The root DOM element "${t._rootDOMElement}" does not exist in the ${t.constructor.name}'s _dom property. It must be one of the following: "${Object.keys(t._dom).join("\", \"")}".`);
-		} catch (i) {
-			s.status = !1, s.errors.push(i);
+		} catch (s) {
+			i.status = !1, i.errors.push(s);
 		}
-		if (e && !s.status) throw s.errors[0];
-		return s;
+		if (e && !i.status) throw i.errors[0];
+		return i;
 	}
 	function l(t, e) {
 		t === "" || t.length === 0 || (typeof t == "string" ? e.classList.add(t) : e.classList.add(...t));
@@ -187,9 +187,9 @@
 	function h(t, e) {
 		t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 	}
-	function p(t) {
+	function _(t) {
 		try {
-			const e = t.key || t.keyCode, s = {
+			const e = t.key || t.keyCode, i = {
 				Enter: e === "Enter" || e === 13,
 				Space: e === " " || e === "Spacebar" || e === 32,
 				Escape: e === "Escape" || e === "Esc" || e === 27,
@@ -203,7 +203,7 @@
 				Tab: e === "Tab" || e === 9,
 				Asterisk: e === "*" || e === 56
 			};
-			return Object.keys(s).find((i) => s[i] === !0) || "";
+			return Object.keys(i).find((s) => i[s] === !0) || "";
 		} catch {
 			return "";
 		}
@@ -239,13 +239,13 @@
 		update(t) {
 			return this._current = t(this._current), this;
 		}
-	}, y = class T {
+	}, g = class T {
 		_scope;
 		_type = "_default";
 		_storage = {};
 		_crush = !1;
-		constructor({ scope: e, type: s = null, crush: i = !1, initialize: r = !0 } = {}) {
-			this._scope = e, this._type = s || "_default", this._crush = i, r && this.initialize();
+		constructor({ scope: e, type: i = null, crush: s = !1, initialize: r = !0 } = {}) {
+			this._scope = e, this._type = i || "_default", this._crush = s, r && this.initialize();
 		}
 		initialize() {
 			try {
@@ -266,34 +266,34 @@
 		get storage() {
 			return this._storage;
 		}
-		get({ type: e = this.type, key: s = null } = {}) {
-			const i = n("string", { type: e });
-			if (!i.status) throw new Error(`StorageManager (${this.scope}): ${i.message}`);
+		get({ type: e = this.type, key: i = null } = {}) {
+			const s = n("string", { type: e });
+			if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
 			if (!this.storage[e]) throw new Error(`StorageManager (${this.scope}): Type "${e}" is not initialized.`);
-			if (s !== null) {
-				const r = n("string", { key: s });
+			if (i !== null) {
+				const r = n("string", { key: i });
 				if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
-				return this.storage[e][s];
+				return this.storage[e][i];
 			}
 			return this.storage[e];
 		}
-		set({ type: e = this.type, key: s = null, data: i = {} } = {}) {
-			const r = n("string", { type: e }), o = n("object", { data: i });
+		set({ type: e = this.type, key: i = null, data: s = {} } = {}) {
+			const r = n("string", { type: e }), o = n("object", { data: s });
 			if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
 			if (!o.status) throw new Error(`StorageManager (${this.scope}): ${o.message}`);
-			if (s !== null) {
-				const a = n("string", { key: s });
+			if (i !== null) {
+				const a = n("string", { key: i });
 				if (!a.status) throw new Error(`StorageManager (${this.scope}): ${a.message}`);
-				this._storage[e] || (this._storage[e] = {}), this._storage[e][s] = i;
-			} else this._storage[e] = i;
+				this._storage[e] || (this._storage[e] = {}), this._storage[e][i] = s;
+			} else this._storage[e] = s;
 		}
-		clear({ type: e = this.type, key: s = null } = {}) {
-			const i = n("string", { type: e });
-			if (!i.status) throw new Error(`StorageManager (${this.scope}): ${i.message}`);
-			if (s !== null) {
-				const r = n("string", { key: s });
+		clear({ type: e = this.type, key: i = null } = {}) {
+			const s = n("string", { type: e });
+			if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+			if (i !== null) {
+				const r = n("string", { key: i });
 				if (!r.status) throw new Error(`StorageManager (${this.scope}): ${r.message}`);
-				delete this.storage[e][s];
+				delete this.storage[e][i];
 			} else delete this.storage[e];
 		}
 		dispose() {
@@ -336,8 +336,8 @@
 		_valid = !0;
 		_initialized = !1;
 		_errors = [];
-		constructor({ prefix: t = "graupl-", key: e = null, initializeClass: s = "initializing" } = {}) {
-			this._classes.initialize = s || "", this._prefix = t || "", this._key = e || "";
+		constructor({ prefix: t = "graupl-", key: e = null, initializeClass: i = "initializing" } = {}) {
+			this._classes.initialize = i || "", this._prefix = t || "", this._key = e || "";
 		}
 		initialize() {
 			try {
@@ -444,35 +444,35 @@
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
 			const t = Q(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
-				const i = {};
-				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, _) => {
-					i[`${o}Element[${_}]`] = a;
-				}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
-				const r = c(HTMLElement, i, { shouldThrow: !1 });
+				const s = {};
+				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, O) => {
+					s[`${o}Element[${O}]`] = a;
+				}) : this._dom[o] !== null && (s[`${o}Element`] = this._dom[o]);
+				const r = c(HTMLElement, s, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._selectors).length > 0) {
-				const i = {};
-				for (const o of Object.keys(this._selectors)) i[`${o}Selector`] = this._selectors[o];
-				const r = C(i, { shouldThrow: !1 });
+				const s = {};
+				for (const o of Object.keys(this._selectors)) s[`${o}Selector`] = this._selectors[o];
+				const r = C(s, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._classes).length > 0) {
-				const i = {};
-				for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (i[`${o}Class`] = this._classes[o]);
-				const r = u(i, { shouldThrow: !1 });
+				const s = {};
+				for (const o of Object.keys(this._classes)) this._classes[o] !== "" && (s[`${o}Class`] = this._classes[o]);
+				const r = u(s, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this._durations).length > 0) {
-				const i = {};
-				for (const o of Object.keys(this._durations)) i[`${o}Duration`] = this._durations[o];
-				const r = n("number", i, { shouldThrow: !1 });
+				const s = {};
+				for (const o of Object.keys(this._durations)) s[`${o}Duration`] = this._durations[o];
+				const r = n("number", s, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			if (Object.keys(this.delays).length > 0) {
-				const i = {};
-				for (const o of Object.keys(this.delays)) i[`${o}Delay`] = this.delays[o];
-				const r = n("number", i, { shouldThrow: !1 });
+				const s = {};
+				for (const o of Object.keys(this.delays)) s[`${o}Delay`] = this.delays[o];
+				const r = n("number", s, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 			}
 			const e = {
@@ -482,11 +482,11 @@
 				mediaQuery: this._mediaQueryString,
 				breakpoint: this._breakpoint
 			};
-			this._protectedDOMElements.forEach((i) => {
-				e[`_protectedDOMElementType[${i}]`] = i;
+			this._protectedDOMElements.forEach((s) => {
+				e[`_protectedDOMElementType[${s}]`] = s;
 			});
-			const s = n("string", e, { shouldThrow: !1 });
-			return s.status || (this._errors = [...this._errors, ...s.errors], this._valid = !1), this._dispatchEvent("validate", this.rootDOMElement), this._dispatchEvent("postvalidate", this.rootDOMElement), this._valid;
+			const i = n("string", e, { shouldThrow: !1 });
+			return i.status || (this._errors = [...this._errors, ...i.errors], this._valid = !1), this._dispatchEvent("validate", this.rootDOMElement), this._dispatchEvent("postvalidate", this.rootDOMElement), this._valid;
 		}
 		_generateKey(t = !1) {
 			(this._key === "" || t) && (this._key = Math.random().toString(36).replace(/[^a-z]+/g, "").substring(0, 10));
@@ -494,12 +494,12 @@
 		_setIds() {}
 		_setAriaAttributes() {}
 		_setCustomProps() {}
-		_setDOMElementType(t, { context: e, overwrite: s = !0, strict: i = !1 } = {}) {
+		_setDOMElementType(t, { context: e, overwrite: i = !0, strict: s = !1 } = {}) {
 			if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
 			if (this._rootDOMElement === t || this._protectedDOMElements.includes(t)) throw new Error(`Graupl ${this.name}: "${t}" element cannot be set through _setDOMElementType because it is a protected element.`);
 			c(HTMLElement, { context: e });
-			const r = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => i ? o.parentElement === e : !0);
-			Array.isArray(this._dom[t]) ? s ? this._dom[t] = r : this._dom[t] = [...this._dom[t], ...r] : this._dom[t] = r[0] || null;
+			const r = Array.from(e.querySelectorAll(this.selectors[t])).filter((o) => s ? o.parentElement === e : !0);
+			Array.isArray(this._dom[t]) ? i ? this._dom[t] = r : this._dom[t] = [...this._dom[t], ...r] : this._dom[t] = r[0] || null;
 		}
 		_resetDOMElementType(t) {
 			if (typeof this.selectors[t] != "string") throw new Error(`Graupl ${this.name}: "${t}" is not a valid element type.`);
@@ -517,20 +517,20 @@
 		_handleKeydown() {}
 		_handleKeyup() {}
 		_store() {
-			this._shouldStore && (c(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new y({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			this._shouldStore && (c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new g({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey,
 				data: this
 			}));
 		}
 		_unstore() {
-			this._shouldStore && c(y, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			this._shouldStore && c(g, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey
 			});
 		}
-		_setInterval(t, e, s = "_default") {
-			this._clearInterval(s), this._intervals[s] = setInterval(t, e);
+		_setInterval(t, e, i = "_default") {
+			this._clearInterval(i), this._intervals[i] = setInterval(t, e);
 		}
 		_clearInterval(t = "_default") {
 			clearInterval(this._intervals[t]);
@@ -538,8 +538,8 @@
 		_clearIntervals() {
 			for (const t of Object.keys(this._intervals)) this._clearInterval(t);
 		}
-		_setTimeout(t, e, s = "_default") {
-			this._clearTimeout(s), this._timeouts[s] = setTimeout(t, e);
+		_setTimeout(t, e, i = "_default") {
+			this._clearTimeout(i), this._timeouts[i] = setTimeout(t, e);
 		}
 		_clearTimeout(t = "_default") {
 			clearTimeout(this._timeouts[t]);
@@ -547,38 +547,38 @@
 		_clearTimeouts() {
 			for (const t of Object.keys(this._timeouts)) this._clearTimeout(t);
 		}
-		_registerEvent(t, { bubbles: e = !0, detail: s = {} } = {}) {
-			n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: s });
-			const i = `graupl${this.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;
-			this._events[t] = new CustomEvent(i, {
+		_registerEvent(t, { bubbles: e = !0, detail: i = {} } = {}) {
+			n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: i });
+			const s = `graupl${this.name}${t.charAt(0).toUpperCase()}${t.slice(1)}`;
+			this._events[t] = new CustomEvent(s, {
 				bubbles: e,
 				detail: {
 					component: this,
-					...s
+					...i
 				}
 			});
 		}
 		_dispatchEvent(t, e) {
 			j(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
-		_addEventListener(t, e, s, i = {}) {
-			e.addEventListener(t, s, i), this._listeners.push({
+		_addEventListener(t, e, i, s = {}) {
+			e.addEventListener(t, i, s), this._listeners.push({
 				type: t,
 				element: e,
-				listener: s,
-				options: i
+				listener: i,
+				options: s
 			});
 		}
-		_removeEventListener(t, e, s, i = {}) {
-			e.removeEventListener(t, s, i);
+		_removeEventListener(t, e, i, s = {}) {
+			e.removeEventListener(t, i, s);
 			let r = -1;
 			this._listeners.forEach((o, a) => {
-				o.type === t && o.element === e && o.listener === s && JSON.stringify(o.options) === JSON.stringify(i) && (r = a);
+				o.type === t && o.element === e && o.listener === i && JSON.stringify(o.options) === JSON.stringify(s) && (r = a);
 			}), r !== -1 && this._listeners.splice(r, 1);
 		}
 		_removeEventListeners({ type: t = null, element: e = null } = {}) {
-			[...this._listeners].forEach((s) => {
-				t !== null && s.type !== t || e !== null && s.element !== e || this._removeEventListener(s.type, s.element, s.listener, s.options);
+			[...this._listeners].forEach((i) => {
+				t !== null && i.type !== t || e !== null && i.element !== e || this._removeEventListener(i.type, i.element, i.listener, i.options);
 			});
 		}
 		focus() {
@@ -610,12 +610,12 @@
 		_mediaQueryListEventCallback = (t) => {
 			t.matches ? (this.unlockInsideBreakpoint && this.unlock(), this.isOpen && this.closeInsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openInsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockInsideBreakpoint && this.lock()) : (this.unlockOutsideBreakpoint && this.unlock(), this.isOpen && this.closeOutsideBreakpoint ? (this.isLocked && this.unlock(), this.close({ preserveState: !0 })) : !this.isOpen && this.openOutsideBreakpoint && (this.isLocked && this.unlock(), this.open()), this.lockOutsideBreakpoint && this.lock());
 		};
-		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: s = ".disclosure-content", lockedClass: i = "locked", unlockedClass: r = "unlocked", openClass: o = "show", closeClass: a = "hide", transitionClass: _ = "transitioning", transitionDuration: K = 250, openDuration: G = -1, closeDuration: H = -1, openOnFocus: R = !1, closeOnBlur: N = !1, minWidth: I = "", breakpoint: g = "", autoOpen: b = !1, openInsideBreakpoint: U = !1, openOutsideBreakpoint: D = !1, closeInsideBreakpoint: M = !1, closeOutsideBreakpoint: J = !1, lockInsideBreakpoint: Z = !1, lockOutsideBreakpoint: W = !1, unlockInsideBreakpoint: X = !1, unlockOutsideBreakpoint: Y = !1, locked: tt = !1, mediaQuery: et = "", prefix: st = "graupl-", key: it = null, initializeClass: rt = "initializing", initialize: ot = !1 } = {}) {
+		constructor({ disclosureElement: t, controllerElement: e, disclosureContentSelector: i = ".disclosure-content", lockedClass: s = "locked", unlockedClass: r = "unlocked", openClass: o = "show", closeClass: a = "hide", transitionClass: O = "transitioning", transitionDuration: K = 250, openDuration: G = -1, closeDuration: H = -1, openOnFocus: R = !1, closeOnBlur: N = !1, minWidth: I = "", breakpoint: k = "", autoOpen: b = !1, openInsideBreakpoint: U = !1, openOutsideBreakpoint: D = !1, closeInsideBreakpoint: M = !1, closeOutsideBreakpoint: J = !1, lockInsideBreakpoint: Z = !1, lockOutsideBreakpoint: W = !1, unlockInsideBreakpoint: X = !1, unlockOutsideBreakpoint: Y = !1, locked: tt = !1, mediaQuery: et = "", prefix: st = "graupl-", key: it = null, initializeClass: rt = "initializing", initialize: ot = !1 } = {}) {
 			super({
 				prefix: st,
 				key: it,
 				initializeClass: rt
-			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = s, this._classes.locked = i || "", this._classes.unlocked = r || "", this._classes.open = o || "", this._classes.close = a || "", this._classes.transition = _ || "", this._durations.transition = K, this._durations.open = G, this._durations.close = H, this._openOnFocus = R, this._closeOnBlur = N, I !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), g === "" && (g = I)), b && g !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), D = b, M = b), this._breakpoint = g || "", this._openInsideBreakpoint = U, this._openOutsideBreakpoint = D, this._closeInsideBreakpoint = M, this._closeOutsideBreakpoint = J, this._lockInsideBreakpoint = Z, this._lockOutsideBreakpoint = W, this._unlockInsideBreakpoint = X, this._unlockOutsideBreakpoint = Y, this._mediaQueryString = et || "", this._locked.value = tt, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			}), this._dom.disclosure = t, this._dom.controller = e, this._selectors.content = i, this._classes.locked = s || "", this._classes.unlocked = r || "", this._classes.open = o || "", this._classes.close = a || "", this._classes.transition = O || "", this._durations.transition = K, this._durations.open = G, this._durations.close = H, this._openOnFocus = R, this._closeOnBlur = N, I !== "" && (console.warn("`minWidth` is deprecated and will be removed in a future release. Please set `breakpoint` instead."), k === "" && (k = I)), b && k !== "" && (console.warn("`autoOpen` is deprecated and will be removed in a future release. Please set `openOutsideBreakpoint` and `closeInsideBreakpoint` to `true` instead."), D = b, M = b), this._breakpoint = k || "", this._openInsideBreakpoint = U, this._openOutsideBreakpoint = D, this._closeInsideBreakpoint = M, this._closeOutsideBreakpoint = J, this._lockInsideBreakpoint = Z, this._lockOutsideBreakpoint = W, this._unlockInsideBreakpoint = X, this._unlockOutsideBreakpoint = Y, this._mediaQueryString = et || "", this._locked.value = tt, this._locked.commit(), this._registerEvent("expand", { detail: { disclosure: this } }), this._registerEvent("collapse", { detail: { disclosure: this } }), this._registerEvent("lock", { detail: { disclosure: this } }), this._registerEvent("unlock", { detail: { disclosure: this } }), this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 				requestAnimationFrame(() => {
 					this.dom.controller.getAttribute("aria-expanded") === "true" || this.openOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches || this.openInsideBreakpoint && window.matchMedia(this.mediaQuery).matches ? this.open({ force: !0 }) : this.close({ force: !0 }), this.isLocked || this.lockInsideBreakpoint && window.matchMedia(this.mediaQuery).matches || this.lockOutsideBreakpoint && !window.matchMedia(this.mediaQuery).matches ? this.lock({ force: !0 }) : this.unlock({ force: !0 });
 				});
@@ -757,7 +757,7 @@
 			this._resetDOMElementType("content"), this._setDOMElementType("content", { context: this.dom.disclosure });
 		}
 		_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
+			this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
 				h(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 					l(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
@@ -772,7 +772,7 @@
 				h(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 					l(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 						setTimeout(() => {
-							h(this.transitionClass, this.dom.disclosure), this.dom.content.innert = !0;
+							h(this.transitionClass, this.dom.disclosure), this.dom.content.inert = !0;
 						}, this.closeDuration);
 					});
 				});
@@ -800,132 +800,128 @@
 		}
 		_handleKeydown() {
 			this._addEventListener("keydown", this.dom.controller, (t) => {
-				switch (this.currentEvent = "keyboard", p(t)) {
+				switch (this.currentEvent = "keyboard", _(t)) {
 					case "Space":
-					case "Enter":
-						d(t);
-						break;
+					case "Enter": d(t);
 				}
 			}), this._addEventListener("keydown", this.dom.disclosure, (t) => {
-				this.currentEvent = "keyboard", p(t) === "Escape" && d(t);
+				this.currentEvent = "keyboard", _(t) === "Escape" && d(t);
 			});
 		}
 		_handleKeyup() {
 			this._addEventListener("keyup", this.dom.controller, (t) => {
-				switch (this.currentEvent = "keyboard", p(t)) {
+				switch (this.currentEvent = "keyboard", _(t)) {
 					case "Space":
 					case "Enter":
 						this.toggle(), d(t);
 						break;
-					case "Tab":
-						this.openOnFocus && (d(t), this.open());
-						break;
+					case "Tab": this.openOnFocus && (d(t), this.open());
 				}
 			}), this._addEventListener("keyup", this.dom.disclosure, (t) => {
-				this.currentEvent = "keyboard", p(t) === "Escape" && (this.close(), d(t));
+				this.currentEvent = "keyboard", _(t) === "Escape" && (this.close(), d(t));
 			});
 		}
-		open({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
+		open({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
 			this.isOpen && !t || this.isLocked && !t || (this.focusState = "self", this._reveal({
 				emit: e,
-				transition: s
-			}), this._open.value = !0, i || this._open.commit());
+				transition: i
+			}), this._open.value = !0, s || this._open.commit());
 		}
-		preview({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
+		preview({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
 			this.isOpen && !t || this.isLocked && !t || (this.focusState = "none", this._reveal({
 				emit: e,
-				transition: s
-			}), this._open.value = !0, i || this._open.commit());
+				transition: i
+			}), this._open.value = !0, s || this._open.commit());
 		}
-		close({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
+		close({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
 			!this.isOpen && !t || this.isLocked && !t || (this.focusState = "none", this._conceal({
 				emit: e,
-				transition: s
-			}), this._open.value = !1, i || this._open.commit());
+				transition: i
+			}), this._open.value = !1, s || this._open.commit());
 		}
-		toggle({ force: t = !1, emit: e = this.isInitialized, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
+		toggle({ force: t = !1, emit: e = this.isInitialized, transition: i = this.isInitialized, preserveState: s = !1 } = {}) {
 			this.isOpen ? this.close({
 				force: t,
 				emit: e,
-				transition: s,
-				preserveState: i
+				transition: i,
+				preserveState: s
 			}) : this.open({
 				force: t,
 				emit: e,
-				transition: s,
-				preserveState: i
+				transition: i,
+				preserveState: s
 			});
 		}
-		lock({ force: t = !1, emit: e = this.isInitialized, preserveState: s = !1 } = {}) {
-			this.isLocked && !t || (this._locked.value = !0, this._lock({ emit: e }), s || this._locked.commit());
+		lock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
+			this.isLocked && !t || (this._locked.value = !0, this._lock({ emit: e }), i || this._locked.commit());
 		}
-		unlock({ force: t = !1, emit: e = this.isInitialized, preserveState: s = !1 } = {}) {
-			!this.isLocked && !t || (this._locked.value = !1, this._unlock({ emit: e }), s || this._locked.commit());
+		unlock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
+			!this.isLocked && !t || (this._locked.value = !1, this._unlock({ emit: e }), i || this._locked.commit());
 		}
-		toggleLock({ force: t = !1, emit: e = this.isInitialized, preserveState: s = !1 } = {}) {
+		toggleLock({ force: t = !1, emit: e = this.isInitialized, preserveState: i = !1 } = {}) {
 			this.isLocked ? this.unlock({
 				force: t,
 				emit: e,
-				preserveState: s
+				preserveState: i
 			}) : this.lock({
 				force: t,
 				emit: e,
-				preserveState: s
+				preserveState: i
 			});
 		}
 	};
-	const B = /[\11\12\14\15\40]+/, w = "data-once", P = document;
-	function E(t, e, s) {
-		return t[`${e}Attribute`](w, s);
+	const B = /[\11\12\14\15\40]+/, y = "data-once", P = document;
+	function w(t, e, i) {
+		return t[`${e}Attribute`](y, i);
 	}
-	function m(t) {
+	function p(t) {
 		if (typeof t != "string") throw new TypeError("once ID must be a string");
 		if (t === "" || B.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
-		return `[${w}~="${t}"]`;
+		return `[${y}~="${t}"]`;
 	}
 	function q(t) {
 		if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 		return !0;
 	}
-	function k(t, e = P) {
-		let s = t;
-		if (t === null) s = [];
-		else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
+	function m(t, e = P) {
+		let i = t;
+		if (t === null) i = [];
+		else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? i = e.querySelectorAll(t) : t instanceof Element && (i = [t]);
 		else throw new TypeError("Context must be an object of type \"Document\", \"DocumentFragment\", or \"Element\".");
 		else throw new TypeError("Selector must not be empty");
-		return Array.prototype.slice.call(s);
+		return Array.prototype.slice.call(i);
 	}
-	function O(t, e, s) {
-		return e.filter((i) => {
-			const r = q(i) && i.matches(t);
-			return r && s && s(i), r;
+	function E(t, e, i) {
+		return e.filter((s) => {
+			const r = q(s) && s.matches(t);
+			return r && i && i(s), r;
 		});
 	}
-	function $(t, { add: e, remove: s }) {
-		const i = [];
-		E(t, "has") && E(t, "get").trim().split(B).forEach((o) => {
-			i.indexOf(o) < 0 && o !== s && i.push(o);
-		}), e && i.push(e);
-		const r = i.join(" ");
-		E(t, r === "" ? "remove" : "set", r);
+	function $(t, { add: e, remove: i }) {
+		const s = [];
+		w(t, "has") && w(t, "get").trim().split(B).forEach((o) => {
+			s.indexOf(o) < 0 && o !== i && s.push(o);
+		}), e && s.push(e);
+		const r = s.join(" ");
+		w(t, r === "" ? "remove" : "set", r);
 	}
-	function f(t, e, s) {
-		return O(`:not(${m(t)})`, k(e, s), (i) => $(i, { add: t }));
+	function f(t, e, i) {
+		return E(`:not(${p(t)})`, m(e, i), (s) => $(s, { add: t }));
 	}
-	f.remove = (t, e, s) => O(m(t), k(e, s), (i) => $(i, { remove: t })), f.filter = (t, e, s) => O(m(t), k(e, s)), f.find = (t, e) => k(t ? m(t) : `[${w}]`, e);
-	const x = ({ options: t = {}, context: e = document, disclosureSelector: s = ".disclosure", controllerSelector: i = ".disclosure-toggle" } = {}) => {
-		f("graupl-disclosure-generator", s, e).forEach((r) => {
-			const o = r.dataset.grauplDisclosureOptions ? JSON.parse(r.dataset.grauplDisclosureOptions.replace(/'/g, "\"")) || {} : {}, a = `${i}[data-graupl-disclosure-target="${r.id}"]`, [_] = f("graupl-disclosure-generator", a, e);
-			if (!_) {
-				console.warn(`No controller found for disclosure with ID "${r.id}". Please ensure there is an element with the selector "${a}".`), f.remove("graupl-disclosure-generator", r);
+	f.remove = (t, e, i) => E(p(t), m(e, i), (s) => $(s, { remove: t })), f.filter = (t, e, i) => E(p(t), m(e, i)), f.find = (t, e) => m(t ? p(t) : `[${y}]`, e);
+	const x = ({ options: t = {}, context: e = document, selector: i = ".disclosure" } = {}) => {
+		f("graupl-disclosure-generator", i, e).forEach((s) => {
+			const r = s.dataset.grauplDisclosureOptions ? JSON.parse(s.dataset.grauplDisclosureOptions.replace(/'/g, "\"")) || {} : {}, o = `[data-graupl-disclosure-target="${s.id}"]`, [a] = f("graupl-disclosure-generator", o, e);
+			if (!a) {
+				console.warn(`No controller found for disclosure with ID "${s.id}". Please ensure there is an element with the selector "${o}".`), f.remove("graupl-disclosure-generator", s);
 				return;
 			}
 			new V({
-				disclosureElement: r,
-				controllerElement: _,
+				disclosureElement: s,
+				controllerElement: a,
 				initialize: !0,
 				...t,
-				...o
+				...r
 			});
 		});
 	};

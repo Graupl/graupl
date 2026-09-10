@@ -87,7 +87,7 @@ function d(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function j(t, { shouldThrow: e = !0 } = {}) {
+function A(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function j(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function A(t, { shouldThrow: e = !0 } = {}) {
+function V(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -157,7 +157,7 @@ function w(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function V(t, e, { shouldThrow: s = !0 } = {}) {
+function I(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -170,7 +170,7 @@ function V(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function I(t, { shouldThrow: e = !0 } = {}) {
+function F(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -273,7 +273,7 @@ var p = class E {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, F = class {
+}, Q = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -369,13 +369,13 @@ var p = class E {
 		return this._focusState;
 	}
 	set focusState(t) {
-		j({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		A({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		A({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		V({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -416,7 +416,7 @@ var p = class E {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = I(this, { shouldThrow: !1 });
+		const t = F(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((h, _) => {
@@ -533,7 +533,7 @@ var p = class E {
 		});
 	}
 	_dispatchEvent(t, e) {
-		V(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		I(t, this), u(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -564,7 +564,7 @@ var p = class E {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, Q = class extends F {
+}, P = class extends Q {
 	_rootDOMElement = "tooltip";
 	_softLocked = !1;
 	_hoverType = "off";
@@ -727,9 +727,7 @@ var p = class E {
 				case "Enter":
 					c(t), this.toggle();
 					break;
-				case "Tab":
-					this.openOnFocus && (c(t), this.show());
-					break;
+				case "Tab": this.openOnFocus && (c(t), this.show());
 			}
 		}), this._addEventListener("keyup", this.dom.tooltip, (t) => {
 			this.currentEvent = "keyboard", f(t) === "Escape" && (c(t), this.hide());
@@ -738,7 +736,6 @@ var p = class E {
 				case "Escape":
 					if (this.hoverType !== "on" && this.focusState !== "self") return;
 					this.currentEvent = "keyboard", this.hide();
-					break;
 			}
 		});
 	}
@@ -777,6 +774,6 @@ var p = class E {
 		});
 	}
 };
-export { Q as default };
+export { P as default };
 
 //# sourceMappingURL=tooltip.es.js.map
