@@ -114,16 +114,22 @@
   @each $color in map.keys(map.get(color.$themes, $theme)) {
     $map: ();
 
+    // Create the map of colors and shades.
+    // If the shade is specifically set to `null`, skip it.
+    // This allows for users to nullify default values without turning them all off.
     @each $prop, $shade in $mapping {
-      $map: map.merge(
-        $map,
-        (
-          "#{$prop}": (
-              "color": $color,
-              "shade": $shade,
-            ),
-        )
-      );
+      /* stylelint-disable scss/at-if-no-null */
+      @if $shade != null {
+        $map: map.merge(
+          $map,
+          (
+            "#{$prop}": (
+                "color": $color,
+                "shade": $shade,
+              ),
+          )
+        );
+      }
     }
 
     $theme-map: map.merge(
