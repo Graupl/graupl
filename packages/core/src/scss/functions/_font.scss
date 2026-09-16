@@ -1,0 +1,55 @@
+// @graupl/core font functions.
+//
+// Functions to help with getting information about typography.
+
+@use "sass:map";
+@use "sass:string";
+@use "../theme/typography/variables" as typography;
+
+/// Get a specific font size.
+///
+/// @param {string} $size
+///   The size.
+/// @param {string|null} $fallback [base]
+///   The fallback size to use if none is found.
+///
+/// @return {string|null}
+///   The custom property pointing to the correct size or null if none is found.
+@function size($size, $fallback: "base") {
+  $size: string.quote(#{$size});
+  $fallback: string.quote(#{$fallback});
+
+  @if map.has-key(typography.$font-sizes, $size) {
+    @return map.get(typography.$font-sizes, $size);
+  }
+
+  @if (map.has-key(typography.$font-sizes, $fallback)) {
+    @return map.get(typography.$font-sizes, $fallback);
+  }
+
+  @return null;
+}
+
+/// Get a specific font weight.
+///
+/// @param {string} $weight
+///   The weight.
+/// @param {string|null} $fallback [normal]
+///   The fallback weight to use if none is found.
+///
+/// @return {string|null}
+///   The custom property pointing to the correct weight or null if none is found.
+@function weight($weight, $fallback: "normal") {
+  $weight: string.quote(#{$weight});
+  $fallback: string.quote(#{$fallback});
+
+  @if map.has-key(typography.$font-weights, $weight) {
+    @return map.get(typography.$font-weights, $weight);
+  }
+
+  @if map.has-key(typography.$font-weights, $fallback) {
+    @return map.get(typography.$font-weights, $fallback);
+  }
+
+  @return null;
+}
