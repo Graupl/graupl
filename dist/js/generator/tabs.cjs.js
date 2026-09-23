@@ -4,7 +4,7 @@ function h(t, e) {
 function l(t, e) {
 	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 }
-var x = class {
+var I = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -73,7 +73,7 @@ function n(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function C(t, { shouldThrow: e = !0 } = {}) {
+function v(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -111,7 +111,7 @@ function d(t, { shouldThrow: e = !0 } = {}) {
 			else throw new TypeError(`${i} must be a string or an array of strings. "${r}" given.`);
 			else {
 				const o = {};
-				o[i] = t[i], C(o);
+				o[i] = t[i], v(o);
 			}
 		} catch (r) {
 			s.status = !1, s.errors.push(r);
@@ -122,7 +122,7 @@ function d(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function I(t, { shouldThrow: e = !0 } = {}) {
+function Q(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -145,7 +145,7 @@ function I(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function Q(t, { shouldThrow: e = !0 } = {}) {
+function V(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -169,7 +169,7 @@ function Q(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function V(t, e, { shouldThrow: s = !0 } = {}) {
+function F(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -182,7 +182,7 @@ function V(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function F(t, { shouldThrow: e = !0 } = {}) {
+function q(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -195,7 +195,7 @@ function F(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-var y = class D {
+var y = class O {
 	_scope;
 	_type = "_default";
 	_storage = {};
@@ -205,7 +205,7 @@ var y = class D {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (c(D, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (c(O, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -255,7 +255,7 @@ var y = class D {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, v = class {
+}, k = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -351,13 +351,13 @@ var y = class D {
 		return this._focusState;
 	}
 	set focusState(t) {
-		I({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		Q({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		Q({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		V({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -398,11 +398,11 @@ var y = class D {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = F(this, { shouldThrow: !1 });
+		const t = q(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
-			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, p) => {
-				i[`${o}Element[${p}]`] = a;
+			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, g) => {
+				i[`${o}Element[${g}]`] = a;
 			}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
 			const r = c(HTMLElement, i, { shouldThrow: !1 });
 			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
@@ -410,7 +410,7 @@ var y = class D {
 		if (Object.keys(this._selectors).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._selectors)) i[`${o}Selector`] = this._selectors[o];
-			const r = C(i, { shouldThrow: !1 });
+			const r = v(i, { shouldThrow: !1 });
 			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 		}
 		if (Object.keys(this._classes).length > 0) {
@@ -515,7 +515,7 @@ var y = class D {
 		});
 	}
 	_dispatchEvent(t, e) {
-		V(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		F(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -546,12 +546,13 @@ var y = class D {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, q = class extends v {
+}, K = class extends k {
 	_rootDOMElement = "toggle";
 	_protectedDOMElements = ["content"];
 	_storageKey = "tabToggles";
+	_name = "TabToggle";
 	_shouldStore = !1;
-	_active = new x(!1);
+	_active = new I(!1);
 	constructor({ toggleElement: t, contentElement: e, parentTab: s } = {}) {
 		super({
 			prefix: s.prefix,
@@ -622,7 +623,7 @@ var y = class D {
 		});
 	}
 };
-function k(t) {
+function T(t) {
 	try {
 		const e = t.key || t.keyCode, s = {
 			Enter: e === "Enter" || e === 13,
@@ -646,22 +647,23 @@ function k(t) {
 function u(t) {
 	t.preventDefault(), t.stopPropagation();
 }
-var K = class extends v {
+var P = class extends k {
 	_rootDOMElement = "tabs";
 	_automatic = !1;
 	_currentChild = 0;
 	_storageKey = "tabs";
-	constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: p = 300, openDuration: O = -1, closeDuration: A = -1, automaticActivation: M = !1, prefix: S = "graupl-", key: L = null, initializeClass: j = "initializing", initialize: z = !1 }) {
+	_name = "Tab";
+	constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: g = 300, openDuration: A = -1, closeDuration: M = -1, automaticActivation: S = !1, prefix: L = "graupl-", key: j = null, initializeClass: z = "initializing", initialize: x = !1 }) {
 		super({
-			prefix: S,
-			key: L,
-			initializeClass: j
-		}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = p, this._durations.open = O, this._durations.close = A, this._automatic = M, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
-			this.elements.tabToggles.filter((f) => f.isActive).length === 0 && this.elements.tabToggles[0].show();
+			prefix: L,
+			key: j,
+			initializeClass: z
+		}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = g, this._durations.open = A, this._durations.close = M, this._automatic = S, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
+			this.elements.tabToggles.filter((p) => p.isActive).length === 0 && this.elements.tabToggles[0].show();
 		}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-			const f = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
-			f.status || (this._errors = [...this._errors, ...f.errors], this._valid = !1);
-		}), z && this.initialize();
+			const C = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
+			C.status || (this._errors = [...this._errors, ...C.errors], this._valid = !1);
+		}), x && this.initialize();
 	}
 	get openClass() {
 		return this._classes.open;
@@ -728,7 +730,7 @@ var K = class extends v {
 	}
 	_createChildElements() {
 		this.dom.tabToggles.forEach((t, e) => {
-			const s = new q({
+			const s = new K({
 				toggleElement: t,
 				contentElement: this.dom.tabContents[e],
 				parentTab: this
@@ -753,7 +755,7 @@ var K = class extends v {
 	_handleKeydown() {
 		this.dom.tabToggles.forEach((t) => {
 			this._addEventListener("keydown", t, (e) => {
-				const s = k(e);
+				const s = T(e);
 				[
 					"Space",
 					"Enter",
@@ -768,7 +770,7 @@ var K = class extends v {
 	_handleKeyup() {
 		this.dom.tabToggles.forEach((t) => {
 			this._addEventListener("keyup", t, (e) => {
-				switch (k(e)) {
+				switch (T(e)) {
 					case "Space":
 					case "Enter":
 						u(e), this.currentTabToggle.show();
@@ -782,9 +784,7 @@ var K = class extends v {
 					case "ArrowRight":
 						u(e), this.focusNextChild();
 						break;
-					case "ArrowLeft":
-						u(e), this.focusPreviousChild();
-						break;
+					case "ArrowLeft": u(e), this.focusPreviousChild();
 				}
 			});
 		});
@@ -811,20 +811,20 @@ var K = class extends v {
 		this.currentChild !== -1 && this.currentTabToggle.blur();
 	}
 };
-const $ = /[\11\12\14\15\40]+/, b = "data-once", P = document;
+const $ = /[\11\12\14\15\40]+/, b = "data-once", G = document;
 function E(t, e, s) {
 	return t[`${e}Attribute`](b, s);
 }
-function _(t) {
+function f(t) {
 	if (typeof t != "string") throw new TypeError("once ID must be a string");
 	if (t === "" || $.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
 	return `[${b}~="${t}"]`;
 }
-function G(t) {
+function H(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function m(t, e = P) {
+function _(t, e = G) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -834,11 +834,11 @@ function m(t, e = P) {
 }
 function w(t, e, s) {
 	return e.filter((i) => {
-		const r = G(i) && i.matches(t);
+		const r = H(i) && i.matches(t);
 		return r && s && s(i), r;
 	});
 }
-function T(t, { add: e, remove: s }) {
+function D(t, { add: e, remove: s }) {
 	const i = [];
 	E(t, "has") && E(t, "get").trim().split($).forEach((o) => {
 		i.indexOf(o) < 0 && o !== s && i.push(o);
@@ -846,14 +846,14 @@ function T(t, { add: e, remove: s }) {
 	const r = i.join(" ");
 	E(t, r === "" ? "remove" : "set", r);
 }
-function g(t, e, s) {
-	return w(`:not(${_(t)})`, m(e, s), (i) => T(i, { add: t }));
+function m(t, e, s) {
+	return w(`:not(${f(t)})`, _(e, s), (i) => D(i, { add: t }));
 }
-g.remove = (t, e, s) => w(_(t), m(e, s), (i) => T(i, { remove: t })), g.filter = (t, e, s) => w(_(t), m(e, s)), g.find = (t, e) => m(t ? _(t) : `[${b}]`, e);
-const H = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
-	g("graupl-tabs-generator", s, e).forEach((i) => {
+m.remove = (t, e, s) => w(f(t), _(e, s), (i) => D(i, { remove: t })), m.filter = (t, e, s) => w(f(t), _(e, s)), m.find = (t, e) => _(t ? f(t) : `[${b}]`, e);
+const R = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {}) => {
+	m("graupl-tabs-generator", s, e).forEach((i) => {
 		const r = i.dataset.grauplTabsOptions ? JSON.parse(i.dataset.grauplTabsOptions.replace(/'/g, "\"")) || {} : {};
-		new K({
+		new P({
 			tabsElement: i,
 			initialize: !0,
 			...t,
@@ -861,6 +861,6 @@ const H = ({ options: t = {}, context: e = document, selector: s = ".tabs" } = {
 		});
 	});
 };
-module.exports = H;
+module.exports = R;
 
 //# sourceMappingURL=tabs.cjs.js.map
