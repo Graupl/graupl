@@ -84,7 +84,7 @@ export default defineConfig({
         items: [
           { text: "Accordions", link: "/components/accordion" },
           { text: "Alerts", link: "/components/alert" },
-          { text: "Buttons", link: "/components/button" },
+          { text: "Badge", link: "/components/badge" },
           { text: "Cards", link: "/components/card" },
           { text: "Carousels", link: "/components/carousel" },
           { text: "Input Groups", link: "/components/input-group" },
