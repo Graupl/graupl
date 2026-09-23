@@ -58,7 +58,7 @@ The disclosure component provides the following set of classes to apply the pres
   </template>
 </live-example>
 
-## .disclosure custom properties
+## .disclosure properties
 
 These are the default values for the `.disclosure` class.
 
@@ -70,7 +70,7 @@ These are the default values for the `.disclosure` class.
 | `--graupl-disclosure-block-size` | Value for block size. | `0` |
 | `--graupl-disclosure-opacity` | Value for opacity. | `0` |
 
-## .disclosure.show custom properties
+## .disclosure.show properties
 
 These are the default values for the `.disclosure.show` class.
 
@@ -80,7 +80,7 @@ These are the default values for the `.disclosure.show` class.
 | `--graupl-disclosure-show-block-size` | Value for show block size. | `100%` |
 | `--graupl-disclosure-show-opacity` | Value for show opacity. | `1` |
 
-## .disclosure.hide custom properties
+## .disclosure.hide properties
 
 These are the default values for the `.disclosure.hide` class.
 
@@ -91,7 +91,7 @@ These are the default values for the `.disclosure.hide` class.
 | `--graupl-disclosure-hide-block-size` | Value for hide block size. | `0` |
 | `--graupl-disclosure-hide-opacity` | Value for hide opacity. | `0` |
 
-## .disclosure.transition custom properties
+## .disclosure.transition properties
 
 These are the default values for the `.disclosure.transition` class.
 
@@ -105,7 +105,7 @@ These are the default values for the `.disclosure.transition` class.
 | `--graupl-disclosure-transition` | Value for transition. | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function), block-size var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)` |
 | `--graupl-disclosure-transition-reduced-motion` | Value for transition reduced motion. | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)` |
 
-## .disclosure-content custom properties
+## .disclosure-content properties
 
 These are the default values for the `.disclosure-content` class.
 
@@ -131,7 +131,7 @@ These are the default values for the `.disclosure-content` class.
 | `--graupl-disclosure-content-border-bottom-left-radius` | Value for content border bottom left radius. | `var(--graupl-border-bottom-left-radius)` |
 | `--graupl-disclosure-content-border-radius` | Value for content border radius. | `var(--graupl-disclosure-content-border-top-left-radius) var(--graupl-disclosure-content-border-top-right-radius) var(--graupl-disclosure-content-border-bottom-right-radius) var(--graupl-disclosure-content-border-bottom-left-radius)` |
 
-## .disclosure-toggle custom properties
+## .disclosure-toggle properties
 
 These are the default values for the `.disclosure-toggle` class.
 
