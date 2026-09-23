@@ -36,8 +36,16 @@ export default {
 
     return () =>
       h(AdvancedComponent, {
-        ...props,
-        attributes,
+        attributes: {
+          style: "padding: 5rem",
+          "data-testid": "breadcrumb-wrapper",
+        },
+        children: [
+          h(AdvancedComponent, {
+            ...props,
+            attributes,
+          }),
+        ],
       });
   },
 };

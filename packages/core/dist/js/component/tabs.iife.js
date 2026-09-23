@@ -5,7 +5,7 @@ var Tabs = (function() {
 	function l(t, e) {
 		t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 	}
-	var E = class {
+	var w = class {
 		_equals = Object.is;
 		_current;
 		_committed;
@@ -123,7 +123,7 @@ var Tabs = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function w(t, { shouldThrow: e = !0 } = {}) {
+	function C(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -146,7 +146,7 @@ var Tabs = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function C(t, { shouldThrow: e = !0 } = {}) {
+	function v(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -170,7 +170,7 @@ var Tabs = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	function v(t, e, { shouldThrow: s = !0 } = {}) {
+	function k(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -183,7 +183,7 @@ var Tabs = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function k(t, { shouldThrow: e = !0 } = {}) {
+	function $(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -196,7 +196,7 @@ var Tabs = (function() {
 		if (e && !s.status) throw s.errors[0];
 		return s;
 	}
-	var f = class b {
+	var _ = class E {
 		_scope;
 		_type = "_default";
 		_storage = {};
@@ -206,7 +206,7 @@ var Tabs = (function() {
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (c(b, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (c(E, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -352,13 +352,13 @@ var Tabs = (function() {
 			return this._focusState;
 		}
 		set focusState(t) {
-			w({ focusState: t }), this._focusState !== t && (this._focusState = t);
+			C({ focusState: t }), this._focusState !== t && (this._focusState = t);
 		}
 		get currentEvent() {
 			return this._currentEvent;
 		}
 		set currentEvent(t) {
-			C({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+			v({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 		}
 		get shouldFocus() {
 			let t = !1;
@@ -399,11 +399,11 @@ var Tabs = (function() {
 		}
 		_validate() {
 			this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = k(this, { shouldThrow: !1 });
+			const t = $(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const i = {};
-				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, m) => {
-					i[`${o}Element[${m}]`] = a;
+				for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, f) => {
+					i[`${o}Element[${f}]`] = a;
 				}) : this._dom[o] !== null && (i[`${o}Element`] = this._dom[o]);
 				const r = c(HTMLElement, i, { shouldThrow: !1 });
 				r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
@@ -474,14 +474,14 @@ var Tabs = (function() {
 		_handleKeydown() {}
 		_handleKeyup() {}
 		_store() {
-			this._shouldStore && (c(f, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new f({ scope: "GrauplStorage" }), window.GrauplStorage.set({
+			this._shouldStore && (c(_, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status || new _({ scope: "GrauplStorage" }), window.GrauplStorage.set({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey,
 				data: this
 			}));
 		}
 		_unstore() {
-			this._shouldStore && c(f, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
+			this._shouldStore && c(_, { storage: window.GrauplStorage }, { shouldThrow: !1 }).status && window.GrauplStorage.clear({
 				key: this.id !== "" ? this.id : this.key,
 				type: this._storageKey
 			});
@@ -516,7 +516,7 @@ var Tabs = (function() {
 			});
 		}
 		_dispatchEvent(t, e) {
-			v(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+			k(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 		}
 		_addEventListener(t, e, s, i = {}) {
 			e.addEventListener(t, s, i), this._listeners.push({
@@ -547,12 +547,13 @@ var Tabs = (function() {
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 		}
-	}, $ = class extends p {
+	}, T = class extends p {
 		_rootDOMElement = "toggle";
 		_protectedDOMElements = ["content"];
 		_storageKey = "tabToggles";
+		_name = "TabToggle";
 		_shouldStore = !1;
-		_active = new E(!1);
+		_active = new w(!1);
 		constructor({ toggleElement: t, contentElement: e, parentTab: s } = {}) {
 			super({
 				prefix: s.prefix,
@@ -647,22 +648,23 @@ var Tabs = (function() {
 	function u(t) {
 		t.preventDefault(), t.stopPropagation();
 	}
-	var T = class extends p {
+	var D = class extends p {
 		_rootDOMElement = "tabs";
 		_automatic = !1;
 		_currentChild = 0;
 		_storageKey = "tabs";
-		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: m = 300, openDuration: D = -1, closeDuration: O = -1, automaticActivation: A = !1, prefix: M = "graupl-", key: S = null, initializeClass: L = "initializing", initialize: j = !1 }) {
+		_name = "Tab";
+		constructor({ tabsElement: t, tabListSelector: e = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", openClass: r = "show", closeClass: o = "hide", transitionClass: a = null, transitionDuration: f = 300, openDuration: O = -1, closeDuration: A = -1, automaticActivation: M = !1, prefix: S = "graupl-", key: L = null, initializeClass: j = "initializing", initialize: z = !1 }) {
 			super({
-				prefix: M,
-				key: S,
-				initializeClass: L
-			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = m, this._durations.open = D, this._durations.close = O, this._automatic = A, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
-				this.elements.tabToggles.filter((_) => _.isActive).length === 0 && this.elements.tabToggles[0].show();
+				prefix: S,
+				key: L,
+				initializeClass: j
+			}), this._dom.tabs = t, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = e, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.open = r || "", this._classes.close = o || "", this._classes.transition = a || "", this._durations.transition = f, this._durations.open = O, this._durations.close = A, this._automatic = M, this._addEventListener("grauplComponentInitialize", this.dom.tabs, () => {
+				this.elements.tabToggles.filter((m) => m.isActive).length === 0 && this.elements.tabToggles[0].show();
 			}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-				const _ = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
-				_.status || (this._errors = [...this._errors, ..._.errors], this._valid = !1);
-			}), j && this.initialize();
+				const b = n("boolean", { automaticActivation: this._automatic }, { shouldThrow: !1 });
+				b.status || (this._errors = [...this._errors, ...b.errors], this._valid = !1);
+			}), z && this.initialize();
 		}
 		get openClass() {
 			return this._classes.open;
@@ -729,7 +731,7 @@ var Tabs = (function() {
 		}
 		_createChildElements() {
 			this.dom.tabToggles.forEach((t, e) => {
-				const s = new $({
+				const s = new T({
 					toggleElement: t,
 					contentElement: this.dom.tabContents[e],
 					parentTab: this
@@ -783,9 +785,7 @@ var Tabs = (function() {
 						case "ArrowRight":
 							u(e), this.focusNextChild();
 							break;
-						case "ArrowLeft":
-							u(e), this.focusPreviousChild();
-							break;
+						case "ArrowLeft": u(e), this.focusPreviousChild();
 					}
 				});
 			});
@@ -812,7 +812,7 @@ var Tabs = (function() {
 			this.currentChild !== -1 && this.currentTabToggle.blur();
 		}
 	};
-	return T;
+	return D;
 })();
 
 //# sourceMappingURL=tabs.iife.js.map
