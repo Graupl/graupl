@@ -5,11 +5,26 @@
 
   const exampleBreadcrumbs = computed(() => {
     return `
-  <ul class="breadcrumb">
-    <li class="breadcrumb-item">First item</li>
-    <li class="breadcrumb-item">Second item</li>
-    <li class="breadcrumb-item">Third item</li>
-  </ul>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" href="#a">First Item</a>
+    </li>
+    <li class="breadcrumb-item">
+      <button class="breadcrumb-toggle breadcrumb-link"
+        aria-label="Show more breadcrumbs"
+        id="breadcrumb-toggle-example"
+        aria-expanded="true"
+        aria-controls="breadcrumb-example"
+        disabled="true"
+      > ... </button>
+    </li>
+    <li class="breadcrumb-item">
+      <a class="breadcrumb-link" href="#a">Second Item</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">
+      <a class="breadcrumb-link" href="#a">Third Item</a>
+    </li>
+  </ol>
     `;
   });
 </script>
