@@ -728,9 +728,7 @@ var Tooltip = (function() {
 					case "Enter":
 						c(t), this.toggle();
 						break;
-					case "Tab":
-						this.openOnFocus && (c(t), this.show());
-						break;
+					case "Tab": this.openOnFocus && (c(t), this.show());
 				}
 			}), this._addEventListener("keyup", this.dom.tooltip, (t) => {
 				this.currentEvent = "keyboard", f(t) === "Escape" && (c(t), this.hide());
@@ -739,7 +737,6 @@ var Tooltip = (function() {
 					case "Escape":
 						if (this.hoverType !== "on" && this.focusState !== "self") return;
 						this.currentEvent = "keyboard", this.hide();
-						break;
 				}
 			});
 		}

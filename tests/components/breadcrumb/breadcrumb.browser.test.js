@@ -4,16 +4,10 @@ import Component from "./breadcrumb.js";
 
 describe("Breadcrumb Component", () => {
   it("Should match screenshot", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "breadcrumb",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("breadcrumb")).toMatchScreenshot();
+    await expect(screen.getByTestId("breadcrumb-wrapper")).toMatchScreenshot();
   });
 });
