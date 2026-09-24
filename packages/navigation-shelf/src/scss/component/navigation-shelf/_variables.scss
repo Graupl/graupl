@@ -48,9 +48,10 @@
 // | --graupl-navigation-shelf-transition-reduced-motion | opacity var(--graupl-navigation-shelf-transition-duration) var(--graupl-transition-timing-function), display var(--graupl-navigation-shelf-transition-duration) allow-discrete                                                                                                                                                                                                           |
 
 @use "defaults";
-@use "pkg:@graupl/core/src/variables" as root-variables;
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/theme";
 @use "pkg:@graupl/core/src/theme/color/variables" as color;
+@use "pkg:@graupl/core/src/variables" as root-variables;
 @use "sass:map";
 
 // Navigation shelf properties.
@@ -314,4 +315,239 @@ $navigation-shelf-transition-reduced-motion: var(
   opacity #{$navigation-shelf-transition-duration}
     #{root-variables.$transition-timing-function},
   display #{$navigation-shelf-transition-duration} allow-discrete
+);
+
+// Background properties.
+// --graupl-navigation-shelf-button-background
+$navigation-shelf-button-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-background,
+  #{$navigation-shelf-background}
+);
+
+// --graupl-navigation-shelf-button-visited-background
+$navigation-shelf-button-visited-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-visited-background,
+  #{$navigation-shelf-button-background}
+);
+
+// --graupl-navigation-shelf-button-focus-background
+$navigation-shelf-button-focus-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-focus-background,
+  #{$navigation-shelf-button-background}
+);
+
+// --graupl-navigation-shelf-button-hover-background
+$navigation-shelf-button-hover-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-hover-background,
+  #{$navigation-shelf-color}
+);
+
+// --graupl-navigation-shelf-button-active-background
+$navigation-shelf-button-active-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-active-background,
+  #{$navigation-shelf-button-hover-background}
+);
+
+// --graupl-navigation-shelf-button-disabled-background
+$navigation-shelf-button-disabled-background: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-disabled-background,
+  #{$navigation-shelf-background}
+);
+$navigation-shelf-button-background-states: (
+  default: $navigation-shelf-button-background,
+  visited: $navigation-shelf-button-visited-background,
+  focus: $navigation-shelf-button-focus-background,
+  hover: $navigation-shelf-button-hover-background,
+  active: $navigation-shelf-button-active-background,
+  disabled: $navigation-shelf-button-disabled-background,
+);
+
+// Text properties.
+// --graupl-navigation-shelf-button-color
+$navigation-shelf-button-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-color,
+  #{$navigation-shelf-color}
+);
+
+// --graupl-navigation-shelf-button-visited-color
+$navigation-shelf-button-visited-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-visited-color,
+  #{$navigation-shelf-button-color}
+);
+
+// --graupl-navigation-shelf-button-focus-color
+$navigation-shelf-button-focus-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-focus-color,
+  #{$navigation-shelf-button-color}
+);
+
+// --graupl-navigation-shelf-button-hover-color
+$navigation-shelf-button-hover-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-hover-color,
+  #{$navigation-shelf-background}
+);
+
+// --graupl-navigation-shelf-button-active-color
+$navigation-shelf-button-active-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-active-color,
+  #{$navigation-shelf-button-hover-color}
+);
+
+// --graupl-navigation-shelf-button-disabled-color
+$navigation-shelf-button-disabled-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$navigation-shelf-button-color-states: (
+  default: $navigation-shelf-button-color,
+  visited: $navigation-shelf-button-visited-color,
+  focus: $navigation-shelf-button-focus-color,
+  hover: $navigation-shelf-button-hover-color,
+  active: $navigation-shelf-button-active-color,
+  disabled: $navigation-shelf-button-disabled-color,
+);
+
+// Border properties.
+// --graupl-navigation-shelf-button-border-top-width
+$navigation-shelf-button-border-top-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-navigation-shelf-button-border-right-width
+$navigation-shelf-button-border-right-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-navigation-shelf-button-border-bottom-width
+$navigation-shelf-button-border-bottom-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-navigation-shelf-button-border-left-width
+$navigation-shelf-button-border-left-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-navigation-shelf-button-border-width
+$navigation-shelf-button-border-width: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-width,
+  #{$navigation-shelf-button-border-top-width}
+    #{$navigation-shelf-button-border-right-width}
+    #{$navigation-shelf-button-border-bottom-width}
+    #{$navigation-shelf-button-border-left-width}
+);
+
+// --graupl-navigation-shelf-button-border-top-style
+$navigation-shelf-button-border-top-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-navigation-shelf-button-border-right-style
+$navigation-shelf-button-border-right-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-navigation-shelf-button-border-bottom-style
+$navigation-shelf-button-border-bottom-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-navigation-shelf-button-border-left-style
+$navigation-shelf-button-border-left-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-navigation-shelf-button-border-style
+$navigation-shelf-button-border-style: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-style,
+  #{$navigation-shelf-button-border-top-style}
+    #{$navigation-shelf-button-border-right-style}
+    #{$navigation-shelf-button-border-bottom-style}
+    #{$navigation-shelf-button-border-left-style}
+);
+
+// --graupl-navigation-shelf-button-border-top-left-radius
+$navigation-shelf-button-border-top-left-radius: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-top-left-radius,
+  #{root-variables.$border-top-left-radius}
+);
+
+// --graupl-navigation-shelf-button-border-top-right-radius
+$navigation-shelf-button-border-top-right-radius: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-top-right-radius,
+  #{root-variables.$border-top-right-radius}
+);
+
+// --graupl-navigation-shelf-button-border-bottom-right-radius
+$navigation-shelf-button-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-bottom-right-radius,
+  #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-navigation-shelf-button-border-bottom-left-radius
+$navigation-shelf-button-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
+);
+
+// --graupl-navigation-shelf-button-border-radius
+$navigation-shelf-button-border-radius: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-radius,
+  #{$navigation-shelf-button-border-top-left-radius}
+    #{$navigation-shelf-button-border-top-right-radius}
+    #{$navigation-shelf-button-border-bottom-right-radius}
+    #{$navigation-shelf-button-border-bottom-left-radius}
+);
+
+// Border colour properties.
+// --graupl-navigation-shelf-button-border-color
+$navigation-shelf-button-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-border-color,
+  #{$navigation-shelf-background}
+);
+
+// --graupl-navigation-shelf-button-visited-border-color
+$navigation-shelf-button-visited-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-visited-border-color,
+  #{$navigation-shelf-button-border-color}
+);
+
+// --graupl-navigation-shelf-button-focus-border-color
+$navigation-shelf-button-focus-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-focus-border-color,
+  #{$navigation-shelf-button-border-color}
+);
+
+// --graupl-navigation-shelf-button-hover-border-color
+$navigation-shelf-button-hover-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-hover-border-color,
+  #{$navigation-shelf-border-color}
+);
+
+// --graupl-navigation-shelf-button-active-border-color
+$navigation-shelf-button-active-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-active-border-color,
+  #{$navigation-shelf-button-hover-border-color}
+);
+
+// --graupl-navigation-shelf-button-disabled-border-color
+$navigation-shelf-button-disabled-border-color: var(
+  --#{root-defaults.$prefix}navigation-shelf-button-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$navigation-shelf-button-border-color-states: (
+  default: $navigation-shelf-button-border-color,
+  visited: $navigation-shelf-button-visited-border-color,
+  focus: $navigation-shelf-button-focus-border-color,
+  hover: $navigation-shelf-button-hover-border-color,
+  active: $navigation-shelf-button-active-border-color,
+  disabled: $navigation-shelf-button-disabled-border-color,
 );

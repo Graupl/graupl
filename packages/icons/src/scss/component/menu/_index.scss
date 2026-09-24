@@ -1,4 +1,4 @@
-// @graupl/icons button base styles.
+// @graupl/icons menu component base styles.
 //
 // This module provides icon component integration for the button component.
 //
@@ -22,49 +22,30 @@
 
 @use "../../component/icon/defaults" as icon-defaults;
 @use "../../component/icon/mixins" as icon;
-@use "pkg:@graupl/core/src/base/button/defaults" as button-defaults;
-@use "pkg:@graupl/core/src/base/button/variables" as button;
-@use "pkg:@graupl/core/src/base/link/defaults" as link-defaults;
-@use "pkg:@graupl/core/src/base/link/variables" as link;
+@use "pkg:@graupl/core/src/component/menu/defaults" as menu-defaults;
+@use "pkg:@graupl/core/src/component/menu/variables" as menu;
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/mixins/layer" as *;
 @use "pkg:@graupl/core/src/mixins/theme";
 @use "variables" as *;
 
 @include layer(theme) {
-  // .button
-  #{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
+  // .menu-link
+  #{menu-defaults.$menu-link-selector-base}#{menu-defaults.$menu-link-selector} {
     // &.icon, &.icon-before, &.icon-after
     &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-selector},
     &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-before-selector},
     &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-after-selector} {
-      @include icon.bind(button.$button-color, button.$button-color-states);
+      @include icon.bind(menu.$menu-link-color, menu.$menu-link-color-states);
 
-      @if root-defaults.$themeable-components and button-defaults.$themeable {
-        @each $color, $map in button-defaults.$button-theme-map {
+      @if root-defaults.$themeable-components and menu-defaults.$themeable {
+        @each $color, $map in menu-defaults.$menu-theme-map {
           // &.primary, &.secondary, &.tertiary
-          &#{button-defaults.$button-theme-selector-base}#{button-defaults.$button-theme-selector-prefix}#{$color} {
+          &#{menu-defaults.$menu-theme-selector-base}#{menu-defaults.$menu-theme-selector-prefix}#{$color} {
             @include icon.bind(
-              button.$button-color,
-              button.$button-color-states
+              menu.$menu-link-color,
+              menu.$menu-link-color-states
             );
-          }
-        }
-      }
-    }
-    &#{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector} {
-      // &.icon, &.icon-before, &.icon-after
-      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-selector},
-      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-before-selector},
-      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-after-selector} {
-        @include icon.bind(link.$link-color, link.$link-color-states);
-
-        @if root-defaults.$themeable-components and link-defaults.$themeable {
-          @each $color, $map in link-defaults.$link-theme-map {
-            // &.primary, &.secondary, &.tertiary
-            &#{link-defaults.$link-theme-selector-base}#{link-defaults.$link-theme-selector-prefix}#{$color} {
-              @include icon.bind(link.$link-color, link.$link-color-states);
-            }
           }
         }
       }
