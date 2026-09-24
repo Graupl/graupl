@@ -23,7 +23,7 @@
     @return map.get(typography.$font-sizes, $size);
   }
 
-  @if (map.has-key(typography.$font-sizes, $fallback)) {
+  @if map.has-key(typography.$font-sizes, $fallback) {
     @return map.get(typography.$font-sizes, $fallback);
   }
 
