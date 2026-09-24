@@ -34,7 +34,7 @@
 
 # Breadcrumbs
 
-{{Breadcrumb}}
+${{ Breadcrumb }}
 
 The breadcrumb component provides the following set of classes to apply the preset properties of for the specific elements.
 
