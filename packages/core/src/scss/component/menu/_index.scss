@@ -411,26 +411,29 @@
       )
     );
 
-    // &.button
-    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
-      --#{root-defaults.$prefix}menu-link-padding: #{button-variables.$button-padding};
-      --#{root-defaults.$prefix}menu-link-border-width: #{button-variables.$button-border-width};
-      --#{root-defaults.$prefix}menu-link-border-radius: #{button-variables.$button-border-radius};
-      --#{root-defaults.$prefix}menu-link-border-style: #{button-variables.$button-border-style};
+    // &.button:not(.link)
+    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+        #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
+      ) {
       --#{root-defaults.$prefix}menu-link-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-visited-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-focus-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-hover-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-active-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-disabled-text-decoration: none;
-      --#{root-defaults.$prefix}menu-link-transition: #{button-variables.$button-transition};
-      --#{root-defaults.$prefix}menu-link-transition-reduced-motion: #{button-variables.$button-transition-reduced-motion};
-      --#{root-defaults.$prefix}menu-link-transform: #{button-variables.$button-transform};
-      --#{root-defaults.$prefix}menu-link-visited-transform: #{button-variables.$button-visited-transform};
-      --#{root-defaults.$prefix}menu-link-focus-transform: #{button-variables.$button-focus-transform};
-      --#{root-defaults.$prefix}menu-link-hover-transform: #{button-variables.$button-hover-transform};
-      --#{root-defaults.$prefix}menu-link-active-transform: #{button-variables.$button-active-transform};
-      --#{root-defaults.$prefix}menu-link-disabled-transform: #{button-variables.$button-disabled-transform};
+
+      padding: button-variables.$button-padding;
+      transform: button-variables.$button-transform;
+      transition: button-variables.$button-transition;
+      border-width: button-variables.$button-border-width;
+      border-style: button-variables.$button-border-style;
+      border-radius: button-variables.$button-border-radius;
+
+      @include state.generate-modifiers(
+        (
+          transform: button-variables.$button-transform-states,
+        )
+      );
     }
   }
 
@@ -448,19 +451,26 @@
     }
 
     &[aria-expanded="true"]::after {
-      --#{root-defaults.$prefix}submenu-toggle-transform: #{$submenu-toggle-open-transform};
+      transform: $submenu-toggle-open-transform;
     }
   }
 
   @include animation.off {
     // .menu-link
     #{defaults.$menu-link-selector-base}#{defaults.$menu-link-selector} {
-      --#{root-defaults.$prefix}menu-link-transition: #{$menu-link-transition-reduced-motion};
+      transition: $menu-link-transition-reduced-motion;
     }
 
     // .submenu-toggle
     #{defaults.$submenu-toggle-selector-base}#{defaults.$submenu-toggle-selector}::after {
-      --#{root-defaults.$prefix}submenu-toggle-transition: #{$submenu-toggle-transition-reduced-motion};
+      transition: $submenu-toggle-transition-reduced-motion;
+
+      // &.button:not(.link)
+      &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+          #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
+        ) {
+        transition: button-variables.$button-transition-reduced-motion;
+      }
     }
   }
 }
@@ -537,26 +547,21 @@
       )
     );
 
-    // .button
-    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector} {
-      --#{root-defaults.$prefix}menu-link-background: #{button-variables.$button-background};
-      --#{root-defaults.$prefix}menu-link-color: #{button-variables.$button-color};
-      --#{root-defaults.$prefix}menu-link-border-color: #{button-variables.$button-border-color};
-      --#{root-defaults.$prefix}menu-link-visited-background: #{button-variables.$button-visited-background};
-      --#{root-defaults.$prefix}menu-link-visited-color: #{button-variables.$button-visited-color};
-      --#{root-defaults.$prefix}menu-link-visited-border-color: #{button-variables.$button-visited-border-color};
-      --#{root-defaults.$prefix}menu-link-focus-background: #{button-variables.$button-focus-background};
-      --#{root-defaults.$prefix}menu-link-focus-color: #{button-variables.$button-focus-color};
-      --#{root-defaults.$prefix}menu-link-focus-border-color: #{button-variables.$button-focus-border-color};
-      --#{root-defaults.$prefix}menu-link-hover-background: #{button-variables.$button-hover-background};
-      --#{root-defaults.$prefix}menu-link-hover-color: #{button-variables.$button-hover-color};
-      --#{root-defaults.$prefix}menu-link-hover-border-color: #{button-variables.$button-hover-border-color};
-      --#{root-defaults.$prefix}menu-link-active-background: #{button-variables.$button-active-background};
-      --#{root-defaults.$prefix}menu-link-active-color: #{button-variables.$button-active-color};
-      --#{root-defaults.$prefix}menu-link-active-border-color: #{button-variables.$button-active-border-color};
-      --#{root-defaults.$prefix}menu-link-disabled-background: #{button-variables.$button-disabled-background};
-      --#{root-defaults.$prefix}menu-link-disabled-color: #{button-variables.$button-disabled-color};
-      --#{root-defaults.$prefix}menu-link-disabled-border-color: #{button-variables.$button-disabled-border-color};
+    // .button:not(.link)
+    &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+        #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
+      ) {
+      border-color: button-variables.$button-border-color;
+      background: button-variables.$button-background;
+      color: button-variables.$button-color;
+
+      @include state.generate-modifiers(
+        (
+          border-color: button-variables.$button-border-color-states,
+          background: button-variables.$button-background-states,
+          color: button-variables.$button-color-states,
+        )
+      );
     }
   }
 }
