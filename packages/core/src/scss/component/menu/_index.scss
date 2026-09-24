@@ -413,7 +413,7 @@
 
     // &.button:not(.link)
     &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
-        #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
+        #{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector}
       ) {
       --#{root-defaults.$prefix}menu-link-text-decoration: none;
       --#{root-defaults.$prefix}menu-link-visited-text-decoration: none;
@@ -459,18 +459,18 @@
     // .menu-link
     #{defaults.$menu-link-selector-base}#{defaults.$menu-link-selector} {
       transition: $menu-link-transition-reduced-motion;
+
+      // &.button:not(.link)
+      &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
+          #{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector}
+        ) {
+        transition: button-variables.$button-transition-reduced-motion;
+      }
     }
 
     // .submenu-toggle
     #{defaults.$submenu-toggle-selector-base}#{defaults.$submenu-toggle-selector}::after {
       transition: $submenu-toggle-transition-reduced-motion;
-
-      // &.button:not(.link)
-      &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
-          #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
-        ) {
-        transition: button-variables.$button-transition-reduced-motion;
-      }
     }
   }
 }
@@ -549,7 +549,7 @@
 
     // .button:not(.link)
     &#{button-defaults.$button-selector-base}#{button-defaults.$button-selector}:not(
-        #{defaults.$button-link-selector-base}#{defaults.$button-link-selector}
+        #{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector}
       ) {
       border-color: button-variables.$button-border-color;
       background: button-variables.$button-background;
