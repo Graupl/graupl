@@ -1,7 +1,6 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import DisclosureGenerator from "@graupl/core/src/disclosure/generator.js";
 
   const background = ref("default");
 
