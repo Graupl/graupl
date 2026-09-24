@@ -268,9 +268,46 @@ $flex-columns-column-map: ();
       max-width: $flex-columns-max-width;
     }
 
+    // Generate all the base `.col-#` classes.
+    // e.g. `> .col-1` or `> .col-12`
     @include utility.generate(
         $map: $flex-columns-column-map,
-        $selector-base: defaults.$flex-columns-column-selector-base,
+        $selector-base: "> #{defaults.$flex-columns-column-selector-base}",
+        $selector-prefix: "",
+        $selector-suffix: "",
+        $screen-aware: false,
+        $theme-aware: false,
+        $scheme-aware: false,
+        $state-aware: false,
+        $container-aware: false,
+        $important: false
+      )
+      using($selector, $properties, $responsive-type, $responsive-name) {
+      // `&.fill`
+      &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
+        --#{root-defaults.$prefix}flex-columns-max-width: unset;
+      }
+    }
+
+    // Handle force-signle-column.
+    @for $i
+      from defaults.$flex-columns-min-count
+      through defaults.$flex-columns-max-count
+    {
+      @include container.trigger(force-single-column) {
+        // e.g. `> .col-1` or `> .col-12`
+        > #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
+          --#{root-defaults.$prefix}flex-columns-size: 100%;
+          --#{root-defaults.$prefix}flex-columns-max-width: auto;
+        }
+      }
+    }
+
+    // Generate all responsive `.col-#` classes.
+    // e.g. `> .xs:col-1` or `> .cq:xl:col-12`
+    @include utility.generate(
+        $map: $flex-columns-column-map,
+        $selector-base: "> #{defaults.$flex-columns-column-selector-base}",
         $selector-prefix: "",
         $selector-suffix: "",
         $screen-aware: defaults.$screen-aware,
@@ -308,28 +345,13 @@ $flex-columns-column-map: ();
           defaults.$flex-columns-container-aware-selector-suffix,
         $container-aware-selector-separator:
           defaults.$flex-columns-container-aware-selector-separator,
-        $important: false
+        $important: false,
+        $generate-base-utility: false
       )
       using($selector, $properties, $responsive-type, $responsive-name) {
       // `&.fill`
       &#{defaults.$flex-columns-fill-selector-base}#{defaults.$flex-columns-fill-selector} {
         --#{root-defaults.$prefix}flex-columns-max-width: unset;
-      }
-    }
-  }
-
-  @for $i
-    from defaults.$flex-columns-min-count
-    through defaults.$flex-columns-max-count
-  {
-    @include container.trigger(force-single-column) {
-      // `.flex-columns`
-      #{defaults.$flex-columns-selector-base}#{defaults.$flex-columns-selector} {
-        // e.g. `.col-1` or `.col-12`
-        #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
-          --#{root-defaults.$prefix}flex-columns-size: 100%;
-          --#{root-defaults.$prefix}flex-columns-max-width: auto;
-        }
       }
     }
   }
