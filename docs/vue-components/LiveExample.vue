@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef, useTemplateRef, onMounted, onUpdated } from "vue";
+import { ref, shallowRef, useTemplateRef, onMounted } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
