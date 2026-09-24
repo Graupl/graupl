@@ -1,12 +1,8 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import BreadcrumbGenerator from "@graupl/core/src/breadcrumb/generator.js";
-
-  const Breadcrumb = ref(BreadcrumbGenerator());
 
   const exampleBreadcrumbs = computed(() => {
-
     return `
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
@@ -33,8 +29,6 @@
 </script>
 
 # Breadcrumbs
-
-${{ Breadcrumb }}
 
 The breadcrumb component provides the following set of classes to apply the preset properties of for the specific elements.
 
