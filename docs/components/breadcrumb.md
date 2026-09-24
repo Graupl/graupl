@@ -22,7 +22,7 @@
       <a class="breadcrumb-link" href="#a">Second Item</a>
     </li>
     <li class="breadcrumb-item active" aria-current="page">
-      <a class="breadcrumb-link" href="#a">Third Item</a>
+      Third Item
     </li>
   </ol>
     `;
