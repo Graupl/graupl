@@ -1,7 +1,6 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import BreadcrumbGenerator from "@graupl/core/src/breadcrumb/generator.js";
 
   const exampleBreadcrumbs = computed(() => {
     return `
