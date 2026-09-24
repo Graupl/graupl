@@ -167,6 +167,7 @@
 // | `$scheme-aware`                                           | Enables scheme-aware column variants.                            | `false`          |
 // | `$state-aware`                                            | Enables state-aware column variants.                             | `false`          |
 // | `$container-aware`                                        | Enables container-aware column variants.                         | `true`           |
+// | `$force-single-columns`                                   | Flag to enable forced single column layout on small screens.     | `true`           |
 // | `$flex-columns-selector-base`                             | The base selector for the flex columns component.                | `"."`            |
 // | `$flex-columns-selector`                                  | The selector for the flex columns component.                     | `"flex-columns"` |
 // | `$flex-columns-theme-selector-base`                       | The selector base for flex columns theme modifiers.              | `"."`            |
@@ -289,16 +290,18 @@ $flex-columns-column-map: ();
       }
     }
 
-    // Handle force-signle-column.
-    @for $i
-      from defaults.$flex-columns-min-count
-      through defaults.$flex-columns-max-count
-    {
-      @include container.trigger(force-single-column) {
-        // e.g. `> .col-1` or `> .col-12`
-        > #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
-          --#{root-defaults.$prefix}flex-columns-size: 100%;
-          --#{root-defaults.$prefix}flex-columns-max-width: auto;
+    // Handle force-signle-columns.
+    @if defaults.$force-single-columns {
+      @for $i
+        from defaults.$flex-columns-min-count
+        through defaults.$flex-columns-max-count
+      {
+        @include container.trigger(force-single-column) {
+          // e.g. `> .col-1` or `> .col-12`
+          > #{defaults.$flex-columns-column-selector-base}#{defaults.$flex-columns-column-selector}#{$i} {
+            --#{root-defaults.$prefix}flex-columns-size: 100%;
+            --#{root-defaults.$prefix}flex-columns-max-width: auto;
+          }
         }
       }
     }
