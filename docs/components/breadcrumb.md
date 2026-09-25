@@ -1,6 +1,7 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import generate from "../../packages/core/src/js/breadcrumb/generator.js";
 
   const exampleBreadcrumbs = computed(() => {
     return `
@@ -41,7 +42,7 @@ The breadcrumb component provides the following set of classes to apply the pres
 
 <br/>
 
-<live-example :source-code="exampleBreadcrumbs" >
+<live-example :source-code="exampleBreadcrumbs" @mounted="generate()" @updated="generate()" >
   <template #options>
   </template>
 </live-example>
