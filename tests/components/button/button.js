@@ -1,6 +1,6 @@
 import { h } from "vue";
 import BasicComponent from "../component/basic-component.js";
-import AdvancedComponent from "../component/advanced-component.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 export default {
   props: {
@@ -38,11 +38,7 @@ export default {
     }
 
     return () =>
-      h(AdvancedComponent, {
-        attributes: {
-          style: "padding: 5rem",
-          "data-testid": "button-wrapper",
-        },
+      h(WrapperComponent, {
         children: [h(BasicComponent, { ...props, tag: props.tag })],
       });
   },

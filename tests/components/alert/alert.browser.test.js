@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./alert.js";
 import { variants } from "../defaults.js";
+import Component from "./alert.js";
 
 describe("Alert Component", () => {
   describe.for(variants)("%s alert", async (variant) => {
@@ -9,15 +9,14 @@ describe("Alert Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          attributes: {
-            "data-testid": "alert",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("alert")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });
