@@ -1,7 +1,8 @@
 import { h } from "vue";
+import { setupClasses } from "../helpers.js";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
-import { setupClasses } from "../helpers.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 const sidebarsOptions = ["none", "left", "right", "both"];
 
@@ -105,6 +106,10 @@ export default {
       ];
     }
 
-    return () => h(AdvancedComponent, { ...props, attributes, children });
+    return () =>
+      h(WrapperComponent, {
+        children: [h(AdvancedComponent, { ...props, attributes, children })],
+        padding: false,
+      });
   },
 };

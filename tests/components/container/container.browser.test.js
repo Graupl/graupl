@@ -13,15 +13,14 @@ describe("Container Layout", () => {
       const screen = render(Component, {
         props: {
           sidebars,
-          attributes: {
-            "data-testid": "container",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("container")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     }
   );
 });
