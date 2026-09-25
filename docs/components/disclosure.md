@@ -1,34 +1,33 @@
 <script setup>
-  import { ref, computed, onMounted } from "vue";
+  import { ref, computed, onMounted, onUpdated } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import generate from "../../packages/core/src/js/disclosure/generator.js";
 
   const background = ref("default");
 
   const exampleDisclosures = computed(() => {
-
-    const backgroundClasses = [
-      background.value,
-    ].filter(c => c !== null).join(" ");
     return `
-
   <button
-    class="disclosure-toggle ${backgroundClasses}"
+    class="disclosure-toggle"
     type="button"
-    aria-expanded="false"
-    aria-controls="disclosure-example"
-  >
-    Toggle details
-  </button>
-  <div id="disclosure-example" class="disclosure show">
+    data-graupl-disclosure-target="disclosure"
+    aria-label="Toggle disclosure example"
+  ></button>
+  <div id="disclosure" class="disclosure">
     <div class="disclosure-content">
       <p>This content is hidden until the disclosure is open.</p>
     </div>
   </div>
-    `;
+    `
   });
 </script>
 
 # Disclosures
+
+<live-example :source-code="exampleDisclosures" :key="background" @mounted="generate()" @updated="generate()">
+</live-example>
+
+<br/>
 
 The disclosure component provides the following set of classes to apply the preset properties of for the specific elements.
 
@@ -40,22 +39,6 @@ The disclosure component provides the following set of classes to apply the pres
 | `.disclosure.transitioning` | A modifier that applies the transitioning state to the container |
 | `.disclosure-content` | The disclosure content wrapper that receives padding and border style |
 | `.disclosure-toggle` | The disclosure toggle control that inherits the button base styles |
-
-<br/>
-
-<live-example :source-code="exampleDisclosures" :key="background-content">
-  <template #options>
-    <div class="input-group">
-      <label for="background">Disclosure Background Property</label>
-      <select id="background" v-model="background">
-        <option value="default">Default</option>
-        <option value="primary">Primary</option>
-        <option value="secondary">Secondary</option>
-        <option value="tertiary">Tertiary</option>
-      </select>
-    </div>
-  </template>
-</live-example>
 
 ## .disclosure properties
 
