@@ -1,3 +1,169 @@
+<script setup>
+  import { ref, computed, onMounted } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
+  import generate from "@graupl/core/src/alert/generator.js";
+
+  const exampleAlerts = computed(() => {
+    return `
+<div class="alert">
+  <div class="alert-header">
+    <h3 class="alert-title">Alert</h3>
+  </div>
+  <div class="alert-body">
+    <p>This is some text that describes the alert.</p>
+  </div>
+  <div class="alert-footer">
+    <a href="#">Action</a>
+  </div>
+  <button class="alert-dismisser">x</button>
+</div>
+    `;
+  });
+</script>
+
 # Alerts
 
-Documentation to be written.
+The alert component provides the following set of classes to apply the preset properties of for the specific elements.
+
+<live-example :source-code="exampleAlerts" :key="background-content" @mounted="generate()" @updated="generate()">
+</live-example>
+
+<br/>
+
+| Class Name | Description |
+| --- | --- |
+| `.alert` | The alert container |
+| `.alert-body` | The alert body content |
+| `.alert-header` | The alert header content |
+| `.alert-footer` | The alert footer content |
+| `.alert-title` | The alert title element |
+| `.alert-dismisser` | The alert dismisser control |
+| `.show` | Modifier applied when the alert is shown |
+| `.hide` | Modifier applied when the alert is hidden |
+| `.transitioning` | Modifier applied while the alert is transitioning |
+
+
+## .alert custom properties
+
+These are the default values for the `.alert` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-alert-padding-x` | Value for alert padding horizontal. | `var(--graupl-spacer-5)` |
+| `--graupl-alert-padding-y` | Value for alert padding vertical. | `var(--graupl-spacer-5)` |
+| `--graupl-alert-padding` | Value for alert padding. | `var(--graupl-alert-padding-y) var(--graupl-alert-padding-x)` |
+| `--graupl-alert-column-gap` | Value for alert column gap. | `var(--graupl-spacer-0)` |
+| `--graupl-alert-row-gap` | Value for alert row gap. | `var(--graupl-spacer-3)` |
+| `--graupl-alert-gap` | Value for alert gap. | `var(--graupl-alert-column-gap) var(--graupl-alert-row-gap)` |
+| `--graupl-alert-background` | Value for alert background. | `var(--graupl-background)` |
+| `--graupl-alert-color` | Value for alert color. | `var(--graupl-color)` |
+| `--graupl-alert-link-color` | Value for alert link color. | `link-variables.var(--graupl-link-color)` |
+| `--graupl-alert-link-visited-color` | Value for alert link visited color. | `var(--graupl-alert-link-color)` |
+| `--graupl-alert-link-focus-color` | Value for alert link focus color. | `var(--graupl-alert-link-color)` |
+| `--graupl-alert-link-hover-color` | Value for alert link hover color. | `link-variables.var(--graupl-link-hover-color)` |
+| `--graupl-alert-link-active-color` | Value for alert link active color. | `var(--graupl-alert-link-hover-color)` |
+| `--graupl-alert-link-disabled-color` | Value for alert link disabled color. | `link-variables.var(--graupl-link-disabled-color)` |
+| `--graupl-alert-border-color` | Value for alert border color. | `var(--graupl-alert-color)` |
+| `--graupl-alert-border-top-left-radius` | Value for alert border top left radius. | `var(--graupl-border-top-left-radius)` |
+| `--graupl-alert-border-top-right-radius` | Value for alert border top right radius. | `var(--graupl-border-top-right-radius)` |
+| `--graupl-alert-border-bottom-left-radius` | Value for alert border bottom left radius. | `var(--graupl-border-bottom-left-radius)` |
+| `--graupl-alert-border-bottom-right-radius` | Value for alert border bottom right radius. | `var(--graupl-border-bottom-right-radius)` |
+| `--graupl-alert-border-radius` | Value for alert border radius. | `var(--graupl-alert-border-top-left-radius) var(--graupl-alert-border-top-right-radius) var(--graupl-alert-border-bottom-right-radius) var(--graupl-alert-border-bottom-left-radius)` |
+| `--graupl-alert-border-top-width` | Value for alert border top width. | `var(--graupl-border-top-width)` |
+| `--graupl-alert-border-right-width` | Value for alert border right width. | `var(--graupl-border-right-width)` |
+| `--graupl-alert-border-bottom-width` | Value for alert border bottom width. | `var(--graupl-border-bottom-width)` |
+| `--graupl-alert-border-left-width` | Value for alert border left width. | `var(--graupl-border-left-width)` |
+| `--graupl-alert-border-width` | Value for alert border width. | `var(--graupl-alert-border-top-width) var(--graupl-alert-border-right-width) var(--graupl-alert-border-bottom-width) var(--graupl-alert-border-left-width)` |
+| `--graupl-alert-border-top-style` | Value for alert border top style. | `var(--graupl-border-top-style)` |
+| `--graupl-alert-border-right-style` | Value for alert border right style. | `var(--graupl-border-right-style)` |
+| `--graupl-alert-border-bottom-style` | Value for alert border bottom style. | `var(--graupl-border-bottom-style)` |
+| `--graupl-alert-border-left-style` | Value for alert border left style. | `var(--graupl-border-left-style)` |
+| `--graupl-alert-border-style` | Value for alert border style. | `var(--graupl-alert-border-top-style) var(--graupl-alert-border-right-style) var(--graupl-alert-border-bottom-style) var(--graupl-alert-border-left-style)` |
+| `--graupl-alert-transition` | Value for alert transition. | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
+| `--graupl-alert-transition-reduced-motion` | Value for alert transition reduced motion. | `opacity var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
+
+## .alert-header custom properties
+
+These are the default values for the `.alert-header` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-alert-header-padding-x` | Value for alert header padding horizontal. | `0` |
+| `--graupl-alert-header-padding-y` | Value for alert header padding vertical. | `0` |
+| `--graupl-alert-header-padding` | Value for alert header padding. | `var(--graupl-alert-header-padding-y) var(--graupl-alert-header-padding-x)` |
+
+## .alert-title custom properties
+
+These are the default values for the `.alert-title` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-alert-title-color` | Value for alert title color. | `var(--graupl-alert-color)` |
+| `--graupl-alert-title-font-size` | Value for alert title font size. | `var(--graupl-h4-font-size)` |
+| `--graupl-alert-title-font-weight` | Value for alert title font weight. | `var(--graupl-h4-font-weight)` |
+| `--graupl-alert-title-font-family` | Value for alert title font family. | `var(--graupl-h4-font-family)` |
+| `--graupl-alert-title-line-height` | Value for alert title line height. | `var(--graupl-h4-line-height)` |
+| `--graupl-alert-title-margin` | Value for alert title margin. | `0 0 0 0` |
+
+## .alert-body custom properties
+
+These are the default values for the `.alert-body` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-alert-body-padding-x` | Value for alert body padding horizontal. | `0` |
+| `--graupl-alert-body-padding-y` | Value for alert body padding vertical. | `0` |
+| `--graupl-alert-body-padding` | Value for alert body padding. | `var(--graupl-alert-body-padding-y) var(--graupl-alert-body-padding-x)` |
+
+## .alert-footer custom properties
+
+These are the default values for the `.alert-footer` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-alert-footer-padding-x` | Value for alert footer padding horizontal. | `0` |
+| `--graupl-alert-footer-padding-y` | Value for alert footer padding vertical. | `0` |
+| `--graupl-alert-footer-padding` | Value for alert footer padding. | `var(--graupl-alert-footer-padding-y) var(--graupl-alert-footer-padding-x)` |
+
+## Customization
+
+To customize the alignment utilities, you can use the following variables.
+
+| Variable | Description | Default Value |
+| -------- | ----------- | ------------- |
+| `$selector-base` | Default for selector base. | `"."` |
+| `$modifier-selector-base` | Default for modifier selector base. | `"."` |
+| `$generate-base-theme-map` | Default for generate base theme map. | `true` |
+| `$themeable` | Default for themeable. | `true` |
+| `$alert-selector-base` | Default for alert selector base. | `"."` |
+| `$alert-selector` | Default for alert selector. | `"alert"` |
+| `$alert-theme-selector-base` | Default for alert theme selector base. | `"."` |
+| `$alert-theme-selector-prefix` | Default for alert theme selector prefix. | `""` |
+| `$alert-body-selector-base` | Default for alert body selector base. | `"."` |
+| `$alert-body-selector` | Default for alert body selector. | `"alert-body"` |
+| `$alert-header-selector-base` | Default for alert header selector base. | `"."` |
+| `$alert-header-selector` | Default for alert header selector. | `"alert-header"` |
+| `$alert-footer-selector-base` | Default for alert footer selector base. | `"."` |
+| `$alert-footer-selector` | Default for alert footer selector. | `"alert-footer"` |
+| `$alert-title-selector-base` | Default for alert title selector base. | `"."` |
+| `$alert-title-selector` | Default for alert title selector. | `"alert-title"` |
+| `$alert-dismisser-selector-base` | Default for alert dismisser selector base. | `"."` |
+| `$alert-dismisser-selector` | Default for alert dismisser selector. | `"alert-dismisser"` |
+| `$alert-hidden-selector-base` | Default for alert hidden selector base. | `"."` |
+| `$alert-hidden-selector` | Default for alert hidden selector. | `"hide"` |
+| `$alert-shown-selector-base` | Default for alert shown selector base. | `"."` |
+| `$alert-shown-selector` | Default for alert shown selector. | `"show"` |
+| `$alert-transition-selector-base` | Default for alert transition selector base. | `"."` |
+| `$alert-transition-selector` | Default for alert transition selector. | `"transitioning"` |
+| `$alert-theme-mappings` | Default for alert theme mappings. | `()` |
+| `$alert-theme-map` | Default for alert theme map. | `map.deep-merge($-alert-theme-map, $alert-theme-map)` |
+
+## Responsive Variants
+
+Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
+
+By default, no responsive utility classes are generated for alignment.
+
+::: tip :pencil2: Note
+For more information on responsive variants, refer to the [Responsive utility classes](../utilities/responsive-classes) documentation.
+:::
