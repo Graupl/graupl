@@ -1,23 +1,11 @@
 <script setup>
   import { ref, computed, onMounted } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import AlertGenerator from "@graupl/core/src/alert/generator.js";
-
-  const background = ref("bg-primary-200");
-  const content = ref("text-secondary-900");
+  import generate from "@graupl/core/src/alert/generator.js";
 
   const exampleAlerts = computed(() => {
-
-    const backgroundClasses = [
-      background.value,
-    ].filter(c => c !== null).join(" ");
-
-    const contentClasses = [
-      content.value
-    ].filter(c => c !== null).join(" ");
-
     return `
-<div class="alert ${backgroundClasses} ${contentClasses}">
+<div class="alert">
   <div class="alert-header">
     <h3 class="alert-title">Alert</h3>
   </div>
@@ -37,6 +25,11 @@
 
 The alert component provides the following set of classes to apply the preset properties of for the specific elements.
 
+<live-example :source-code="exampleAlerts" :key="background-content" @mounted="generate()" @updated="generate()">
+</live-example>
+
+<br/>
+
 | Class Name | Description |
 | --- | --- |
 | `.alert` | The alert container |
@@ -49,88 +42,6 @@ The alert component provides the following set of classes to apply the preset pr
 | `.hide` | Modifier applied when the alert is hidden |
 | `.transitioning` | Modifier applied while the alert is transitioning |
 
-<br/>
-
-<live-example :source-code="exampleAlerts" :key="background-content">
-  <template #options>
-    <div class="input-group">
-      <label for="background">Alert Background Property</label>
-      <select id="background" v-model="background">
-        <option value="bg-primary">Primary</option>
-        <option value="bg-primary-100">Primary 100</option>
-        <option value="bg-primary-200">Primary 200</option>
-        <option value="bg-primary-300">Primary 300</option>
-        <option value="bg-primary-400">Primary 400</option>
-        <option value="bg-primary-500">Primary 500</option>
-        <option value="bg-primary-600">Primary 600</option>
-        <option value="bg-primary-700">Primary 700</option>
-        <option value="bg-primary-800">Primary 800</option>
-        <option value="bg-primary-900">Primary 900</option>
-        <option value="bg-secondary">Secondary</option>
-        <option value="bg-secondary-100">Secondary 100</option>
-        <option value="bg-secondary-200">Secondary 200</option>
-        <option value="bg-secondary-300">Secondary 300</option>
-        <option value="bg-secondary-400">Secondary 400</option>
-        <option value="bg-secondary-500">Secondary 500</option>
-        <option value="bg-secondary-600">Secondary 600</option>
-        <option value="bg-secondary-700">Secondary 700</option>
-        <option value="bg-secondary-800">Secondary 800</option>
-        <option value="bg-secondary-900">Secondary 900</option>
-        <option value="bg-tertiary">Tertiary</option>
-        <option value="bg-tertiary-100">Tertiary 100</option>
-        <option value="bg-tertiary-200">Tertiary 200</option>
-        <option value="bg-tertiary-300">Tertiary 300</option>
-        <option value="bg-tertiary-400">Tertiary 400</option>
-        <option value="bg-tertiary-500">Tertiary 500</option>
-        <option value="bg-tertiary-600">Tertiary 600</option>
-        <option value="bg-tertiary-700">Tertiary 700</option>
-        <option value="bg-tertiary-800">Tertiary 800</option>
-        <option value="bg-tertiary-900">Tertiary 900</option>
-        <option value="bg-inherit">Inherit</option>
-        <option value="bg-current">Current</option>
-        <option value="bg-transparent">Transparent</option>
-      </select>
-    </div>
-    <div class="input-group">
-      <label for="content">Alert Color Property</label>
-      <select id="content" v-model="content">
-        <option value="text-primary">Primary</option>
-        <option value="text-primary-100">Primary 100</option>
-        <option value="text-primary-200">Primary 200</option>
-        <option value="text-primary-300">Primary 300</option>
-        <option value="text-primary-400">Primary 400</option>
-        <option value="text-primary-500">Primary 500</option>
-        <option value="text-primary-600">Primary 600</option>
-        <option value="text-primary-700">Primary 700</option>
-        <option value="text-primary-800">Primary 800</option>
-        <option value="text-primary-900">Primary 900</option>
-        <option value="text-secondary">Secondary</option>
-        <option value="text-secondary-100">Secondary 100</option>
-        <option value="text-secondary-200">Secondary 200</option>
-        <option value="text-secondary-300">Secondary 300</option>
-        <option value="text-secondary-400">Secondary 400</option>
-        <option value="text-secondary-500">Secondary 500</option>
-        <option value="text-secondary-600">Secondary 600</option>
-        <option value="text-secondary-700">Secondary 700</option>
-        <option value="text-secondary-800">Secondary 800</option>
-        <option value="text-secondary-900">Secondary 900</option>
-        <option value="text-tertiary">Tertiary</option>
-        <option value="text-tertiary-100">Tertiary 100</option>
-        <option value="text-tertiary-200">Tertiary 200</option>
-        <option value="text-tertiary-300">Tertiary 300</option>
-        <option value="text-tertiary-400">Tertiary 400</option>
-        <option value="text-tertiary-500">Tertiary 500</option>
-        <option value="text-tertiary-600">Tertiary 600</option>
-        <option value="text-tertiary-700">Tertiary 700</option>
-        <option value="text-tertiary-800">Tertiary 800</option>
-        <option value="text-tertiary-900">Tertiary 900</option>
-        <option value="text-inherit">Inherit</option>
-        <option value="text-current">Current</option>
-        <option value="text-transparent">Transparent</option>
-      </select>
-    </div>
-  </template>
-</live-example>
 
 ## .alert custom properties
 
