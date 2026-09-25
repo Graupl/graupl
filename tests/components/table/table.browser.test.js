@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./table.js";
-import { variants } from "../defaults.js";
 import { userEvent } from "vitest/browser";
+import { variants } from "../defaults.js";
+import Component from "./table.js";
 
 const classes = [
   "responsive-table",
@@ -22,7 +22,6 @@ describe("Table Component", () => {
           props: {
             attributes: {
               class: [`${variant}`, `${modifierClass}`],
-              "data-testid": "table",
             },
           },
         });
@@ -34,7 +33,9 @@ describe("Table Component", () => {
 
         await user.hover(cell);
 
-        await expect(screen.getByTestId("table")).toMatchScreenshot();
+        await expect(
+          screen.getByTestId("component-test-wrapper")
+        ).toMatchScreenshot();
       }
     );
   });

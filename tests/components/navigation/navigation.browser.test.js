@@ -4,16 +4,12 @@ import Component from "./navigation.js";
 
 describe("Navigation Component", () => {
   it("Should match screenshot:", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "navigation",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("navigation")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });

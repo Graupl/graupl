@@ -1,5 +1,6 @@
 import { h } from "vue";
 import BasicComponent from "../component/basic-component.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 export default {
   props: {
@@ -21,6 +22,9 @@ export default {
 
     props.attributes.class.push("badge");
 
-    return () => h(BasicComponent, { ...props, tag: "span" });
+    return () =>
+      h(WrapperComponent, {
+        children: [h(BasicComponent, { ...props, tag: "span" })],
+      });
   },
 };
