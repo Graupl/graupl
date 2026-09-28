@@ -12,7 +12,7 @@
   </div>
   <div class="accordion-item show">
     <div class="accordion-item-header">
-      <h3 class="m-0 accordion-item-title">
+      <h3 class="accordion-item-title">
         <button aria-expanded="true" class="accordion-item-toggle">
           Accordion 1
         </button>
@@ -32,7 +32,7 @@
   </div>
   <div class="accordion-item hide">
     <div class="accordion-item-header">
-      <h3 class="m-0 accordion-item-title">
+      <h3 class="accordion-item-title">
         <button aria-expanded="false" class="accordion-item-toggle">
           Accordion 2
         </button>
@@ -54,7 +54,7 @@
   </div>
   <div class="accordion-item hide">
     <div class="accordion-item-header">
-      <h3 class="m-0 accordion-item-title">
+      <h3 class="accordion-item-title">
         <button aria-expanded="false" class="accordion-item-toggle">
           Accordion 3
         </button>
