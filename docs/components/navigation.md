@@ -1,11 +1,13 @@
 <script setup>
   import { ref, computed, onMounted, onUpdated } from "vue";
+  import DisclosureMenu from "accessible-menu/disclosure-menu";
   import LiveExample from "../vue-components/LiveExample.vue";
   import generate from "../../packages/core/src/js/navigation/generator.js";
 
   const exampleNavigations = computed(() => {
+
     return `
-<nav class="navigation">
+<nav class="navigation" ref="exampleMenu">
   <a class="navigation-branding" href="#">Graupl</a>
   <button class="navigation-toggle"
     aria-label="Toggle navigation"></button>
