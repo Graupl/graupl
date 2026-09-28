@@ -22,15 +22,14 @@ describe("Input Group Component", () => {
       const screen = render(Component, {
         props: {
           modifier: modifier === "default" ? "" : modifier,
-          attributes: {
-            "data-testid": "input-group",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("input-group")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     }
   );
 
@@ -40,15 +39,14 @@ describe("Input Group Component", () => {
         props: {
           modifier: "inline",
           control: "select",
-          attributes: {
-            "data-testid": "input-group",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("input-group")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     });
   });
 
@@ -57,15 +55,14 @@ describe("Input Group Component", () => {
       const screen = render(Component, {
         props: {
           control: "checkbox",
-          attributes: {
-            "data-testid": "input-group",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("input-group")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });

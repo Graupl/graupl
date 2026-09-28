@@ -1,22 +1,18 @@
-import { h } from "vue";
 import { describe, it, expect } from "vitest";
+import { h } from "vue";
 import { render } from "vitest-browser-vue";
 import BasicComponent from "../component/basic-component.js";
 import Component from "./flex-columns.js";
 
 describe("Flex Columns Layout", () => {
   it("Should match screenshot:", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "flex",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("flex")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 
   it("Should match screenshot with a fill column", async () => {
@@ -37,14 +33,13 @@ describe("Flex Columns Layout", () => {
             attributes: { class: ["col-3", "bg-primary-700", "py-7", "px-5"] },
           }),
         ],
-        attributes: {
-          "data-testid": "flex",
-        },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("flex")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });
