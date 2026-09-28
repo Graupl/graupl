@@ -119,8 +119,25 @@ These are the default values for the `.carousel` class.
 | `--graupl-carousel-padding-x` | Value for carousel padding horizontal. | `var(--graupl-spacer-0)` |
 | `--graupl-carousel-padding-y` | Value for carousel padding vertical. | `var(--graupl-spacer-0)` |
 | `--graupl-carousel-padding` | Value for carousel padding. | `var(--graupl-carousel-padding-y) var(--graupl-carousel-padding-x)` |
+
+## .carousel-item custom properties
+
+These are the default values for the `.carousel-item` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
 | `--graupl-carousel-item-max-width` | Value for carousel item max width. | `100%` |
 | `--graupl-carousel-item-scroll-snap-align` | Value for carousel item scroll snap align. | `center` |
+| `--graupl-carousel-color` | Value for carousel color. | `var(--graupl-color)` |
+| `--graupl-carousel-background` | Value for carousel background. | `var(--graupl-background)` |
+| `--graupl-carousel-border-color` | Value for carousel border color. | `var(--graupl-border-color)` |
+
+## .carousel-item-container custom properties
+
+These are the default values for the `.carousel-item-container` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
 | `--graupl-carousel-item-container-padding-x` | Value for carousel item container padding horizontal. | `var(--graupl-spacer-0)` |
 | `--graupl-carousel-item-container-padding-y` | Value for carousel item container padding vertical. | `var(--graupl-spacer-0)` |
 | `--graupl-carousel-item-container-padding` | Value for carousel item container padding. | `var(--graupl-carousel-item-container-padding-y) var(--graupl-carousel-item-container-padding-x)` |
@@ -128,19 +145,19 @@ These are the default values for the `.carousel` class.
 | --graupl-carousel-item-container-flex-wrap | Value for carousel item container flex wrap. | `nowrap` |
 | --graupl-carousel-item-container-flex-flow | Value for carousel item container flex flow. | `var(--graupl-carousel-item-container-flex-direction) var(--graupl-carousel-item-container-flex-wrap)` |
 | --graupl-carousel-item-container-aspect-ratio | Value for carousel item container aspect ratio. | `auto` |
+
+## .carousel-control custom properties
+
+These are the default values for the `.carousel` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
 | `--graupl-carousel-play-content` | Value for carousel play content. | `"'▶'"` |
 | `--graupl-carousel-pause-content` | Value for carousel pause content. | `"'❚❚'"` |
 | `--graupl-carousel-next-content` | Value for carousel next content. | `"'▶'"` |
 | `--graupl-carousel-previous-content` | Value for carousel previous content. | `"'◀'"` |
 | `--graupl-carousel-control-width` | Value for carousel control width. | `4rem` |
 | `--graupl-carousel-control-height` | Value for carousel control height. | `3rem` |
-| `--graupl-carousel-tab-container-padding-x` | Value for carousel tab container padding horizontal. | `var(--graupl-spacer-3)` |
-| `--graupl-carousel-tab-container-padding-y` | Value for carousel tab container padding vertical. | `var(--graupl-spacer-3)` |
-| `--graupl-carousel-tab-container-padding` | Value for carousel tab container padding. | `var(--graupl-carousel-tab-container-padding-y) var(--graupl-carousel-tab-container-padding-x)` |
-| `--graupl-carousel-tab-container-gap` | Value for carousel tab container gap. | `var(--graupl-spacer-3)` |
-| `--graupl-carousel-color` | Value for carousel color. | `var(--graupl-color)` |
-| `--graupl-carousel-background` | Value for carousel background. | `var(--graupl-background)` |
-| `--graupl-carousel-border-color` | Value for carousel border color. | `var(--graupl-border-color)` |
 | `--graupl-carousel-control-color` | Value for carousel control color. | `var(--graupl-carousel-color)` |
 | `--graupl-carousel-control-visited-color` | Value for carousel control visited color. | `var(--graupl-carousel-control-color)` |
 | `--graupl-carousel-control-focus-color` | Value for carousel control focus color. | `var(--graupl-carousel-control-color)` |
@@ -159,6 +176,24 @@ These are the default values for the `.carousel` class.
 | `--graupl-carousel-control-hover-border-color` | Value for carousel control hover border color. | `var(--graupl-carousel-control-border-color)` |
 | `--graupl-carousel-control-active-border-color` | Value for carousel control active border color. | `var(--graupl-carousel-control-hover-border-color)` |
 | `--graupl-carousel-control-disabled-border-color` | Value for carousel control disabled border color. | `var(--graupl-theme-active--primary--200)` |
+
+## .carousel-tab-container custom properties
+
+These are the default values for the `.carousel-tab-container` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
+| `--graupl-carousel-tab-container-padding-x` | Value for carousel tab container padding horizontal. | `var(--graupl-spacer-3)` |
+| `--graupl-carousel-tab-container-padding-y` | Value for carousel tab container padding vertical. | `var(--graupl-spacer-3)` |
+| `--graupl-carousel-tab-container-padding` | Value for carousel tab container padding. | `var(--graupl-carousel-tab-container-padding-y) var(--graupl-carousel-tab-container-padding-x)` |
+| `--graupl-carousel-tab-container-gap` | Value for carousel tab container gap. | `var(--graupl-spacer-3)` |
+
+## .carousel-tab custom properties
+
+These are the default values for the `.carousel-tab` class.
+
+| Property Name | Description | Default Value |
+| --- | --- | --- |
 | `--graupl-carousel-tab-color` | Value for carousel tab color. | `var(--graupl-carousel-color)` |
 | `--graupl-carousel-tab-visited-color` | Value for carousel tab visited color. | `var(--graupl-carousel-tab-color)` |
 | `--graupl-carousel-tab-focus-color` | Value for carousel tab focus color. | `var(--graupl-carousel-tab-color)` |
