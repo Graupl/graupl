@@ -1,0 +1,1038 @@
+// @graupl/core pagination component variables.
+//
+// These values are to be used to directly style components and provide a
+// cleaner way to reference custom properties.
+
+// Custom property defaults:
+// | Custom property                                       | Default                                                                                                                                                                                                                             |
+// | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+// | --graupl-pager-padding-x                         | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-padding-y                         | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-padding                           | var(--graupl-pager-padding-y) var(--graupl-pager-padding-x)                                                                                                                                                               |
+// | --graupl-pager-margin-x                          | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-margin-y                          | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-margin                            | var(--graupl-pager-margin-y) var(--graupl-pager-margin-x)                                                                                                                                                                 |
+// | --graupl-pager-column-gap                        | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-row-gap                           | var(--graupl-spacer-0)                                                                                                                                                                                                              |
+// | --graupl-pager-gap                               | var(--graupl-pager-column-gap) var(--graupl-pager-row-gap)                                                                                                                                                                |
+// | --graupl-pager-background                        | var(--graupl-background)                                                                                                                                                                                                            |
+// | --graupl-pager-color                             | var(--graupl-color)                                                                                                                                                                                                                 |
+// | --graupl-pager-border-color                      | var(--graupl-pager-color)                                                                                                                                                                                                      |
+// | --graupl-pager-border-top-left-radius            | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-pager-border-top-right-radius           | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-pager-border-bottom-left-radius         | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-pager-border-bottom-right-radius        | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-pager-border-radius                     | var(--graupl-pager-border-top-left-radius) var(--graupl-pager-border-top-right-radius) var(--graupl-pager-border-bottom-right-radius) var(--graupl-pager-border-bottom-left-radius)                             |
+// | --graupl-pager-border-top-width                  | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-border-right-width                | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-border-bottom-width               | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-border-left-width                 | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-border-width                      | var(--graupl-pager-border-top-width) var(--graupl-pager-border-right-width) var(--graupl-pager-border-bottom-width) var(--graupl-pager-border-left-width)                                                       |
+// | --graupl-pager-border-top-style                  | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-pager-border-right-style                | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-pager-border-bottom-style               | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-pager-border-left-style                 | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-pager-border-style                      | var(--graupl-pager-border-top-style) var(--graupl-pager-border-right-style) var(--graupl-pager-border-bottom-style) var(--graupl-pager-border-left-style)                                                       |
+// | --graupl-pager-item-display                      | flex                                                                                                                                                                                                                                |
+// | --graupl-pager-item-padding-x                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-padding-y                    | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-padding                      | var(--graupl-pager-item-padding-y) var(--graupl-pager-item-padding-x)                                                                                                                                                     |
+// | --graupl-pager-item-column-gap                   | var(--graupl-pager-column-gap)                                                                                                                                                                                                 |
+// | --graupl-pager-item-row-gap                      | var(--graupl-pager-row-gap)                                                                                                                                                                                                    |
+// | --graupl-pager-item-gap                          | var(--graupl-pager-item-column-gap) var(--graupl-pager-item-row-gap)                                                                                                                                                      |
+// | --graupl-pager-item-color                        | var(--graupl-pager-color)                                                                                                                                                                                                      |
+// | --graupl-pager-item-background                   | var(--graupl-pager-background)                                                                                                                                                                                                 |
+// | --graupl-pager-item-visited-color                | var(--graupl-pager-item-color)                                                                                                                                                                                                 |
+// | --graupl-pager-item-focus-color                  | var(--graupl-pager-item-color)                                                                                                                                                                                                 |
+// | --graupl-pager-item-hover-color                  | var(--graupl-pager-item-background)                                                                                                                                                                                            |
+// | --graupl-pager-item-active-color                 | var(--graupl-pager-item-hover-color)                                                                                                                                                                                           |
+// | --graupl-pager-item-disabled-color               | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-pager-item-visited-background           | var(--graupl-pager-item-background)                                                                                                                                                                                            |
+// | --graupl-pager-item-focus-background             | var(--graupl-pager-item-background)                                                                                                                                                                                            |
+// | --graupl-pager-item-hover-background             | var(--graupl-pager-item-color)                                                                                                                                                                                                 |
+// | --graupl-pager-item-active-background            | var(--graupl-pager-item-hover-background)                                                                                                                                                                                      |
+// | --graupl-pager-item-disabled-background          | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-pager-item-border-color                 | var(--graupl-pager-item-color)                                                                                                                                                                                                 |
+// | --graupl-pager-item-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
+// | --graupl-pager-item-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
+// | --graupl-pager-item-border-bottom-left-radius    | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                             |
+// | --graupl-pager-item-border-bottom-right-radius   | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                            |
+// | --graupl-pager-item-border-radius                | var(--graupl-pager-item-border-top-left-radius) var(--graupl-pager-item-border-top-right-radius) var(--graupl-pager-item-border-bottom-right-radius) var(--graupl-pager-item-border-bottom-left-radius)         |
+// | --graupl-pager-item-border-top-width             | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-border-right-width           | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-border-bottom-width          | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-border-left-width            | 0                                                                                                                                                                                                                                   |
+// | --graupl-pager-item-border-width                 | var(--graupl-pager-item-border-top-width) var(--graupl-pager-item-border-right-width) var(--graupl-pager-item-border-bottom-width) var(--graupl-pager-item-border-left-width)                                   |
+// | --graupl-pager-item-border-top-style             | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-pager-item-border-right-style           | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-pager-item-border-bottom-style          | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-pager-item-border-left-style            | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-pager-item-border-style                 | var(--graupl-pager-item-border-top-style) var(--graupl-pager-item-border-right-style) var(--graupl-pager-item-border-bottom-style) var(--graupl-pager-item-border-left-style)                                   |
+// | --graupl-pager-link-display                      | flex                                                                                                                                                                                                                                |
+// | --graupl-pager-link-padding-x                    | 3                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-padding-y                    | 3                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-padding                      | var(--graupl-pager-link-padding-y) var(--graupl-pager-link-padding-x)                                                                                                                                                     |
+// | --graupl-pager-link-column-gap                   | var(--graupl-pager-column-gap)                                                                                                                                                                                                 |
+// | --graupl-pager-link-row-gap                      | var(--graupl-pager-row-gap)                                                                                                                                                                                                    |
+// | --graupl-pager-link-gap                          | var(--graupl-pager-link-column-gap) var(--graupl-pager-link-row-gap)                                                                                                                                                      |
+// | --graupl-pager-link-color                        | var(--graupl-pager-color)                                                                                                                                                                                                      |
+// | --graupl-pager-link-background                   | var(--graupl-pager-background)                                                                                                                                                                                                 |
+// | --graupl-pager-link-visited-color                | var(--graupl-pager-link-color)                                                                                                                                                                                                 |
+// | --graupl-pager-link-focus-color                  | var(--graupl-pager-link-color)                                                                                                                                                                                                 |
+// | --graupl-pager-link-hover-color                  | var(--graupl-pager-link-background)                                                                                                                                                                                            |
+// | --graupl-pager-link-active-color                 | var(--graupl-pager-link-hover-color)                                                                                                                                                                                           |
+// | --graupl-pager-link-disabled-color               | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-pager-link-visited-background           | var(--graupl-pager-link-background)                                                                                                                                                                                            |
+// | --graupl-pager-link-focus-background             | var(--graupl-pager-link-background)                                                                                                                                                                                            |
+// | --graupl-pager-link-hover-background             | var(--graupl-pager-link-color)                                                                                                                                                                                                 |
+// | --graupl-pager-link-active-background            | var(--graupl-pager-link-hover-background)                                                                                                                                                                                      |
+// | --graupl-pager-link-disabled-background          | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
+// | --graupl-pager-link-border-color                 | var(--graupl-pager-link-color)                                                                                                                                                                                                 |
+// | --graupl-pager-link-border-top-left-radius       | 0                                                                                                                                                                                                |
+// | --graupl-pager-link-border-top-right-radius      | 0                                                                                                                                                                                               |
+// | --graupl-pager-link-border-bottom-left-radius    | 0                                                                                                                                                                                             |
+// | --graupl-pager-link-border-bottom-right-radius   | 0                                                                                                                                                                                            |
+// | --graupl-pager-link-border-radius                | var(--graupl-pager-link-border-top-left-radius) var(--graupl-pager-link-border-top-right-radius) var(--graupl-pager-link-border-bottom-right-radius) var(--graupl-pager-link-border-bottom-left-radius)         |
+// | --graupl-pager-link-border-top-width             | 1                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-border-right-width           | 1                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-border-bottom-width          | 1                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-border-left-width            | 1                                                                                                                                                                                                                                   |
+// | --graupl-pager-link-border-width                 | var(--graupl-pager-link-border-top-width) var(--graupl-pager-link-border-right-width) var(--graupl-pager-link-border-bottom-width) var(--graupl-pager-link-border-left-width)                                   |
+// | --graupl-pager-link-border-top-style             | var(--graupl-border-top-style)                                                                                                                                                                                                      |
+// | --graupl-pager-link-border-right-style           | var(--graupl-border-right-style)                                                                                                                                                                                                    |
+// | --graupl-pager-link-border-bottom-style          | var(--graupl-border-bottom-style)                                                                                                                                                                                                   |
+// | --graupl-pager-link-border-left-style            | var(--graupl-border-left-style)                                                                                                                                                                                                     |
+// | --graupl-pager-link-border-style                 | var(--graupl-pager-link-border-top-style) var(--graupl-pager-link-border-right-style) var(--graupl-pager-link-border-bottom-style) var(--graupl-pager-link-border-left-style)                                   |
+
+@use "../../defaults" as root-defaults;
+@use "../../theme/color/variables" as color;
+@use "../../functions/theme";
+@use "../../variables" as root-variables;
+@use "../../base/button/variables" as button-variables;
+@use "../../base/link/variables" as link-variables;
+@use "../../theme/typography/variables" as typography-variables;
+@use "defaults";
+@use "sass:map";
+
+// Pager properties.
+// --graupl-pager-flex-direciton
+$pager-flex-direction: var(
+  --#{root-defaults.$prefix}pager-flex-direction,
+  #{defaults.$pager-flex-direction}
+);
+
+// --graupl-pager-display
+$pager-display: var(
+  --#{root-defaults.$prefix}pager-display,
+  #{defaults.$pager-display}
+);
+
+// --graupl-pager-padding-x
+$pager-padding-x: var(
+  --#{root-defaults.$prefix}pager-padding-x,
+  #{map.get(root-variables.$spacers, 4)}
+);
+
+// --graupl-pager-padding-y
+$pager-padding-y: var(
+  --#{root-defaults.$prefix}pager-padding-y,
+  #{map.get(root-variables.$spacers, 4)}
+);
+
+// --graupl-pager-padding
+$pager-padding: var(
+  --#{root-defaults.$prefix}pager-padding,
+  #{$pager-padding-y} #{$pager-padding-x}
+);
+
+// --graupl-pager-margin-x
+$pager-margin-x: var(
+  --#{root-defaults.$prefix}pager-margin-x,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-margin-y
+$pager-margin-y: var(
+  --#{root-defaults.$prefix}pager-margin-y,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-margin
+$pager-margin: var(
+  --#{root-defaults.$prefix}pager-margin,
+  #{$pager-margin-y} #{$pager-margin-x}
+);
+
+// pager font properties.
+// --graupl-pager-font-size
+$pager-font-size: var(
+  --#{root-defaults.$prefix}pager-font-size,
+  map.get(typography-variables.$font-sizes, base)
+);
+
+// --graupl-pager-font-weight
+$pager-font-weight: var(
+  --#{root-defaults.$prefix}pager-font-weight,
+  map.get(typography-variables.$font-weights, normal)
+);
+
+// pager gap properties.
+// --graupl-pager-column-gap
+$pager-column-gap: var(
+  --#{root-defaults.$prefix}pager-column-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-row-gap
+$pager-row-gap: var(
+  --#{root-defaults.$prefix}pager-row-gap,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-gap
+$pager-gap: var(
+  --#{root-defaults.$prefix}pager-gap,
+  #{$pager-column-gap} #{$pager-row-gap}
+);
+
+// pager color properties.
+// --graupl-pager-background
+$pager-background: var(
+  --#{root-defaults.$prefix}pager-background,
+  #{color.$background}
+);
+
+// --graupl-pager-color
+$pager-color: var(--#{root-defaults.$prefix}pager-color, #{color.$color});
+
+// pager text properties.
+// --graupl-pager-text-decoration
+$pager-text-decoration: var(--#{root-defaults}pager-text-decoration, none);
+
+// --graupl-pager-visited-text-decoration
+$pager-visited-text-decoration: var(
+  --#{root-defaults.$prefix}pager-visited-text-decoration,
+  #{$pager-text-decoration}
+);
+
+// --graupl-pager-focus-text-decoration
+$pager-focus-text-decoration: var(
+  --#{root-defaults.$prefix}pager-focus-text-decoration,
+  #{$pager-text-decoration}
+);
+
+// --graupl-pager-hover-text-decoration
+$pager-hover-text-decoration: var(
+  --#{root-defaults.$prefix}pager-hover-text-decoration,
+  #{$pager-background}
+);
+
+// --graupl-pager-active-text-decoration
+$pager-active-text-decoration: var(
+  --#{root-defaults.$prefix}pager-active-text-decoration,
+  #{$pager-hover-text-decoration}
+);
+
+// --graupl-pager-disabled-text-decoration
+$pager-disabled-text-decoration: var(
+  --#{root-defaults.$prefix}pager-disabled-text-decoration,
+  #{theme.get(primary, 200)}
+);
+$pager-text-decoration-states: (
+  default: $pager-text-decoration,
+  visited: $pager-visited-text-decoration,
+  focus: $pager-focus-text-decoration,
+  hover: $pager-hover-text-decoration,
+  active: $pager-active-text-decoration,
+  disabled: $pager-disabled-text-decoration,
+);
+
+// --graupl-pager-text-decoration-thickness
+$pager-text-decoration-thickness: var(
+  --#{root-defaults}pager-text-decoration-thickness,
+  #{root-variables.$border-width}
+);
+
+// --graupl-pager-visited-text-decoration-thickness
+$pager-visited-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}pager-visited-text-decoration-thickness,
+  #{$pager-text-decoration-thickness}
+);
+
+// --graupl-pager-focus-text-decoration-thickness
+$pager-focus-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}pager-focus-text-decoration-thickness,
+  #{$pager-text-decoration-thickness}
+);
+
+// --graupl-pager-hover-text-decoration-thickness
+$pager-hover-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}pager-hover-text-decoration-thickness,
+  #{$pager-background}
+);
+
+// --graupl-pager-active-text-decoration-thickness
+$pager-active-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}pager-active-text-decoration-thickness,
+  #{$pager-hover-text-decoration-thickness}
+);
+
+// --graupl-pager-disabled-text-decoration-thickness
+$pager-disabled-text-decoration-thickness: var(
+  --#{root-defaults.$prefix}pager-disabled-text-decoration-thickness,
+  #{theme.get(primary, 200)}
+);
+$pager-text-decoration-thickness-states: (
+  default: $pager-text-decoration-thickness,
+  visited: $pager-visited-text-decoration-thickness,
+  focus: $pager-focus-text-decoration-thickness,
+  hover: $pager-hover-text-decoration-thickness,
+  active: $pager-active-text-decoration-thickness,
+  disabled: $pager-disabled-text-decoration-thickness,
+);
+
+// --graupl-pager-text-decoration-style
+$pager-text-decoration-style: var(
+  --#{root-defaults}pager-text-decoration-style,
+  solid
+);
+
+// --graupl-pager-visited-text-decoration-style
+$pager-visited-text-decoration-style: var(
+  --#{root-defaults.$prefix}pager-visited-text-decoration-style,
+  #{$pager-text-decoration-style}
+);
+
+// --graupl-pager-focus-text-decoration-style
+$pager-focus-text-decoration-style: var(
+  --#{root-defaults.$prefix}pager-focus-text-decoration-style,
+  #{$pager-text-decoration-style}
+);
+
+// --graupl-pager-hover-text-decoration-style
+$pager-hover-text-decoration-style: var(
+  --#{root-defaults.$prefix}pager-hover-text-decoration-style,
+  #{$pager-background}
+);
+
+// --graupl-pager-active-text-decoration-style
+$pager-active-text-decoration-style: var(
+  --#{root-defaults.$prefix}pager-active-text-decoration-style,
+  #{$pager-hover-text-decoration-style}
+);
+
+// --graupl-pager-disabled-text-decoration-style
+$pager-disabled-text-decoration-style: var(
+  --#{root-defaults.$prefix}pager-disabled-text-decoration-style,
+  #{theme.get(primary, 200)}
+);
+$pager-text-decoration-style-states: (
+  default: $pager-text-decoration-style,
+  visited: $pager-visited-text-decoration-style,
+  focus: $pager-focus-text-decoration-style,
+  hover: $pager-hover-text-decoration-style,
+  active: $pager-active-text-decoration-style,
+  disabled: $pager-disabled-text-decoration-style,
+);
+
+// --graupl-pager-text-decoration-color
+$pager-text-decoration-color: var(
+  --#{root-defaults}pager-text-decoration-color,
+  #{$pager-color}
+);
+
+// --graupl-pager-visited-text-decoration-color
+$pager-visited-text-decoration-color: var(
+  --#{root-defaults.$prefix}pager-visited-text-decoration-color,
+  #{$pager-text-decoration-color}
+);
+
+// --graupl-pager-focus-text-decoration-color
+$pager-focus-text-decoration-color: var(
+  --#{root-defaults.$prefix}pager-focus-text-decoration-color,
+  #{$pager-text-decoration-color}
+);
+
+// --graupl-pager-hover-text-decoration-color
+$pager-hover-text-decoration-color: var(
+  --#{root-defaults.$prefix}pager-hover-text-decoration-color,
+  #{$pager-background}
+);
+
+// --graupl-pager-active-text-decoration-color
+$pager-active-text-decoration-color: var(
+  --#{root-defaults.$prefix}pager-active-text-decoration-color,
+  #{$pager-hover-text-decoration-color}
+);
+
+// --graupl-pager-disabled-text-decoration-color
+$pager-disabled-text-decoration-color: var(
+  --#{root-defaults.$prefix}pager-disabled-text-decoration-color,
+  #{theme.get(primary, 200)}
+);
+$pager-text-decoration-color-states: (
+  default: $pager-text-decoration-color,
+  visited: $pager-visited-text-decoration-color,
+  focus: $pager-focus-text-decoration-color,
+  hover: $pager-hover-text-decoration-color,
+  active: $pager-active-text-decoration-color,
+  disabled: $pager-disabled-text-decoration-color,
+);
+
+// pager border properties.
+// --graupl-pager-border-color
+$pager-border-color: var(
+  --#{root-defaults.$prefix}pager-border-color,
+  #{$pager-color}
+);
+
+// --graupl-pager-border-top-left-radius
+$pager-border-top-left-radius: var(
+  --#{root-defaults.$prefix}pager-border-top-left-radius,
+  #{button-variables.$button-border-top-left-radius}
+);
+
+// --graupl-pager-border-top-right-radius
+$pager-border-top-right-radius: var(
+  --#{root-defaults.$prefix}pager-border-top-right-radius,
+  #{button-variables.$button-border-top-right-radius}
+);
+
+// --graupl-pager-border-bottom-left-radius
+$pager-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}pager-border-bottom-left-radius,
+  #{button-variables.$button-border-bottom-left-radius}
+);
+
+// --graupl-pager-border-bottom-right-radius
+$pager-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}pager-border-bottom-right-radius,
+  #{button-variables.$button-border-bottom-right-radius}
+);
+
+// --graupl-pager-border-radius
+$pager-border-radius: var(
+  --#{root-defaults.$prefix}pager-border-radius,
+  #{$pager-border-top-left-radius} #{$pager-border-top-right-radius}
+    #{$pager-border-bottom-right-radius} #{$pager-border-bottom-left-radius}
+);
+
+// --graupl-pager-border-top-width
+$pager-border-top-width: var(
+  --#{root-defaults.$prefix}pager-border-top-width,
+  #{root-variables.$border-top-width}
+);
+
+// --graupl-pager-border-right-width
+$pager-border-right-width: var(
+  --#{root-defaults.$prefix}pager-border-right-width,
+  #{root-variables.$border-right-width}
+);
+
+// --graupl-pager-border-bottom-width
+$pager-border-bottom-width: var(
+  --#{root-defaults.$prefix}pager-border-bottom-width,
+  #{root-variables.$border-bottom-width}
+);
+
+// --graupl-pager-border-left-width
+$pager-border-left-width: var(
+  --#{root-defaults.$prefix}pager-border-left-width,
+  #{root-variables.$border-left-width}
+);
+
+// --graupl-pager-border-width
+$pager-border-width: var(
+  --#{root-defaults.$prefix}pager-border-width,
+  #{$pager-border-top-width} #{$pager-border-right-width}
+    #{$pager-border-bottom-width} #{$pager-border-left-width}
+);
+
+// --graupl-pager-border-top-style
+$pager-border-top-style: var(
+  --#{root-defaults.$prefix}pager-border-top-style,
+  #{link-variables.$link-border-bottom-style}
+);
+
+// --graupl-pager-border-right-style
+$pager-border-right-style: var(
+  --#{root-defaults.$prefix}pager-border-right-style,
+  #{link-variables.$link-border-bottom-style}
+);
+
+// --graupl-pager-border-bottom-style
+$pager-border-bottom-style: var(
+  --#{root-defaults.$prefix}pager-border-bottom-style,
+  #{link-variables.$link-border-bottom-style}
+);
+
+// --graupl-pager-border-left-style
+$pager-border-left-style: var(
+  --#{root-defaults.$prefix}pager-border-left-style,
+  #{link-variables.$link-border-bottom-style}
+);
+
+// --graupl-pager-border-style
+$pager-border-style: var(
+  --#{root-defaults.$prefix}pager-border-style,
+  #{$pager-border-top-style} #{$pager-border-right-style}
+    #{$pager-border-bottom-style} #{$pager-border-left-style}
+);
+
+// pager Item Properties
+// --graupl-pager-item-min-width
+$pager-item-min-width: var(
+  --#{root-defaults.$prefix}pager-item-min-width,
+  #{defaults.$pager-item-min-width}
+);
+
+// --graupl-pager-item-max-width
+$pager-item-max-width: var(
+  --#{root-defaults.$prefix}pager-item-max-width,
+  #{defaults.$pager-item-max-width}
+);
+
+// --graupl-pager-item-display
+$pager-item-display: var(
+  --#{root-defaults.$prefix}pager-item-display,
+  #{defaults.$pager-item-display}
+);
+
+// --graupl-pager-item-padding-x
+$pager-item-padding-x: var(--#{root-defaults.$prefix}pager-item-padding-x, 0);
+
+// --graupl-pager-item-padding-y
+$pager-item-padding-y: var(--#{root-defaults.$prefix}pager-item-padding-y, 0);
+
+// --graupl-pager-item-padding
+$pager-item-padding: var(
+  --#{root-defaults.$prefix}pager-item-padding,
+  #{$pager-item-padding-y} #{$pager-item-padding-x}
+);
+
+// --graupl-pager-item-column-gap
+$pager-item-column-gap: var(
+  --#{root-defaults.$prefix}pager-item-column-gap,
+  #{$pager-column-gap}
+);
+
+// --graupl-pager-item-row-gap
+$pager-item-row-gap: var(
+  --#{root-defaults.$prefix}pager-item-row-gap,
+  #{$pager-row-gap}
+);
+
+// --graupl-pager-item-color
+$pager-item-color: var(
+  --#{root-defaults.$prefix}pager-item-color,
+  #{$pager-color}
+);
+
+// --graupl-pager-item-background
+$pager-item-background: var(
+  --#{root-defaults.$prefix}pager-item-background,
+  #{$pager-background}
+);
+
+// --graupl-pager-item-visited-color
+$pager-item-visited-color: var(
+  --#{root-defaults.$prefix}pager-item-visited-color,
+  #{$pager-item-color}
+);
+
+// --graupl-pager-item-focus-color
+$pager-item-focus-color: var(
+  --#{root-defaults.$prefix}pager-item-focus-color,
+  #{$pager-item-color}
+);
+
+// --graupl-pager-item-hover-color
+$pager-item-hover-color: var(
+  --#{root-defaults.$prefix}pager-item-hover-color,
+  #{$pager-item-background}
+);
+
+// --graupl-pager-item-active-color
+$pager-item-active-color: var(
+  --#{root-defaults.$prefix}pager-item-active-color,
+  #{$pager-item-hover-color}
+);
+
+// --graupl-pager-item-disabled-color
+$pager-item-disabled-color: var(
+  --#{root-defaults.$prefix}pager-item-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$pager-item-color-states: (
+  default: $pager-item-color,
+  visited: $pager-item-visited-color,
+  focus: $pager-item-focus-color,
+  hover: $pager-item-hover-color,
+  active: $pager-item-active-color,
+  disabled: $pager-item-disabled-color,
+);
+
+// --graupl-pager-item-visited-background
+$pager-item-visited-background: var(
+  --#{root-defaults.$prefix}pager-item-visited-background,
+  #{$pager-item-background}
+);
+
+// --graupl-pager-item-focus-background
+$pager-item-focus-background: var(
+  --#{root-defaults.$prefix}pager-item-focus-background,
+  #{$pager-item-background}
+);
+
+// --graupl-pager-item-hover-background
+$pager-item-hover-background: var(
+  --#{root-defaults.$prefix}pager-item-hover-background,
+  #{$pager-item-background}
+);
+
+// --graupl-pager-item-active-background
+$pager-item-active-background: var(
+  --#{root-defaults.$prefix}pager-item-active-background,
+  #{$pager-item-hover-background}
+);
+
+// --graupl-pager-item-disabled-background
+$pager-item-disabled-background: var(
+  --#{root-defaults.$prefix}pager-item-disabled-background,
+  #{$pager-item-background}
+);
+$pager-item-background-states: (
+  default: $pager-item-background,
+  visited: $pager-item-visited-background,
+  focus: $pager-item-focus-background,
+  hover: $pager-item-hover-background,
+  active: $pager-item-active-background,
+  disabled: $pager-item-disabled-background,
+);
+
+// pager item border properties.
+// --graupl-pager-item-border-color
+$pager-item-border-color: var(
+  --#{root-defaults.$prefix}pager-item-border-color,
+  transparent
+);
+
+// --graupl-pager-item-visited-border-color
+$pager-item-visited-border-color: var(
+  --#{root-defaults.$prefix}pager-item-visited-border-color,
+  #{$pager-item-border-color}
+);
+
+// --graupl-pager-item-focus-border-color
+$pager-item-focus-border-color: var(
+  --#{root-defaults.$prefix}pager-item-focus-border-color,
+  #{$pager-item-border-color}
+);
+
+// --graupl-pager-item-hover-border-color
+$pager-item-hover-border-color: var(
+  --#{root-defaults.$prefix}pager-item-hover-border-color,
+  transparent
+);
+
+// --graupl-pager-item-active-border-color
+$pager-item-active-border-color: var(
+  --#{root-defaults.$prefix}pager-item-active-border-color,
+  #{$pager-item-hover-border-color}
+);
+
+// --graupl-pager-item-disabled-border-color
+$pager-item-disabled-border-color: var(
+  --#{root-defaults.$prefix}pager-item-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$pager-item-border-color-states: (
+  default: $pager-item-border-color,
+  visited: $pager-item-visited-border-color,
+  focus: $pager-item-focus-border-color,
+  hover: $pager-item-hover-border-color,
+  active: $pager-item-active-border-color,
+  disabled: $pager-item-disabled-border-color,
+);
+
+// --graupl-pager-item-border-top-left-radius
+$pager-item-border-top-left-radius: var(
+  --#{root-defaults.$prefix}pager-item-border-top-left-radius,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-item-border-top-right-radius
+$pager-item-border-top-right-radius: var(
+  --#{root-defaults.$prefix}pager-item-border-top-right-radius,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-item-border-bottom-left-radius
+$pager-item-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}pager-item-border-bottom-left-radius,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-item-border-bottom-right-radius
+$pager-item-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}pager-item-border-bottom-right-radius,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-item-border-radius
+$pager-item-border-radius: var(
+  --#{root-defaults.$prefix}pager-item-border-radius,
+  #{$pager-item-border-top-left-radius} #{$pager-item-border-top-right-radius}
+    #{$pager-item-border-bottom-right-radius}
+    #{$pager-item-border-bottom-left-radius}
+);
+
+// --graupl-pager-item-border-top-width
+$pager-item-border-top-width: var(
+  --#{root-defaults.$prefix}pager-item-border-top-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-item-border-right-width
+$pager-item-border-right-width: var(
+  --#{root-defaults.$prefix}pager-item-border-right-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-item-border-bottom-width
+$pager-item-border-bottom-width: var(
+  --#{root-defaults.$prefix}pager-item-border-bottom-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-item-border-left-width
+$pager-item-border-left-width: var(
+  --#{root-defaults.$prefix}pager-item-border-left-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-item-border-width
+$pager-item-border-width: var(
+  --#{root-defaults.$prefix}pager-item-border-width,
+  #{$pager-item-border-top-width} #{$pager-item-border-right-width}
+    #{$pager-item-border-bottom-width} #{$pager-item-border-left-width}
+);
+
+// --graupl-pager-item-border-top-style
+$pager-item-border-top-style: var(
+  --#{root-defaults.$prefix}pager-item-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-pager-item-border-right-style
+$pager-item-border-right-style: var(
+  --#{root-defaults.$prefix}pager-item-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-pager-item-border-bottom-style
+$pager-item-border-bottom-style: var(
+  --#{root-defaults.$prefix}pager-item-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-pager-item-border-left-style
+$pager-item-border-left-style: var(
+  --#{root-defaults.$prefix}pager-item-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-pager-item-border-style
+$pager-item-border-style: var(
+  --#{root-defaults.$prefix}pager-item-border-style,
+  #{$pager-item-border-top-style} #{$pager-item-border-right-style}
+    #{$pager-item-border-bottom-style} #{$pager-item-border-left-style}
+);
+
+// --graupl-pager-item-first-content
+$pager-item-first-content: var(
+  --#{root-defaults.$prefix}pager-item-first-content,
+  #{defaults.$pager-item-first-content}
+);
+
+// --graupl-pager-item-previous-content
+$pager-item-previous-content: var(
+  --#{root-defaults.$prefix}pager-item-previous-content,
+  #{defaults.$pager-item-previous-content}
+);
+
+// --graupl-pager-item-ellipsis-content
+$pager-item-ellipsis-content: var(
+  --#{root-defaults.$prefix}pager-item-ellipsis-content,
+  #{defaults.$pager-item-ellipsis-content}
+);
+
+// --graupl-pager-item-next-content
+$pager-item-next-content: var(
+  --#{root-defaults.$prefix}pager-item-next-content,
+  #{defaults.$pager-item-next-content}
+);
+
+// --graupl-pager-item-last-content
+$pager-item-last-content: var(
+  --#{root-defaults.$prefix}pager-item-last-content,
+  #{defaults.$pager-item-last-content}
+);
+
+// pager link Properties
+// --graupl-pager-link-padding-x
+$pager-link-padding-x: var(
+  --#{root-defaults.$prefix}pager-link-padding-x,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-link-padding-y
+$pager-link-padding-y: var(
+  --#{root-defaults.$prefix}pager-link-padding-y,
+  #{map.get(root-variables.$spacers, 3)}
+);
+
+// --graupl-pager-link-padding
+$pager-link-padding: var(
+  --#{root-defaults.$prefix}pager-link-padding,
+  #{$pager-link-padding-y} #{$pager-link-padding-x}
+);
+
+// --graupl-pager-link-column-gap
+$pager-link-column-gap: var(
+  --#{root-defaults.$prefix}pager-link-column-gap,
+  #{$pager-column-gap}
+);
+
+// --graupl-pager-link-row-gap
+$pager-link-row-gap: var(
+  --#{root-defaults.$prefix}pager-link-row-gap,
+  #{$pager-row-gap}
+);
+
+// --graupl-pager-link-color
+$pager-link-color: var(
+  --#{root-defaults.$prefix}pager-link-color,
+  #{$pager-item-color}
+);
+
+// --graupl-pager-link-background
+$pager-link-background: var(
+  --#{root-defaults.$prefix}pager-link-background,
+  #{$pager-item-background}
+);
+
+// --graupl-pager-link-visited-color
+$pager-link-visited-color: var(
+  --#{root-defaults.$prefix}pager-link-visited-color,
+  #{$pager-link-color}
+);
+
+// --graupl-pager-link-focus-color
+$pager-link-focus-color: var(
+  --#{root-defaults.$prefix}pager-link-focus-color,
+  #{$pager-link-color}
+);
+
+// --graupl-pager-link-hover-color
+$pager-link-hover-color: var(
+  --#{root-defaults.$prefix}pager-link-hover-color,
+  #{$pager-link-background}
+);
+
+// --graupl-pager-link-active-color
+$pager-link-active-color: var(
+  --#{root-defaults.$prefix}pager-link-active-color,
+  #{$pager-link-hover-color}
+);
+
+// --graupl-pager-link-disabled-color
+$pager-link-disabled-color: var(
+  --#{root-defaults.$prefix}pager-link-disabled-color,
+  #{theme.get(primary, 200)}
+);
+$pager-link-color-states: (
+  default: $pager-link-color,
+  visited: $pager-link-visited-color,
+  focus: $pager-link-focus-color,
+  hover: $pager-link-hover-color,
+  active: $pager-link-active-color,
+  disabled: $pager-link-disabled-color,
+);
+
+// --graupl-pager-link-visited-background
+$pager-link-visited-background: var(
+  --#{root-defaults.$prefix}pager-link-visited-background,
+  #{$pager-link-background}
+);
+
+// --graupl-pager-link-focus-background
+$pager-link-focus-background: var(
+  --#{root-defaults.$prefix}pager-link-focus-background,
+  #{$pager-link-background}
+);
+
+// --graupl-pager-link-hover-background
+$pager-link-hover-background: var(
+  --#{root-defaults.$prefix}pager-link-hover-background,
+  #{$pager-link-color}
+);
+
+// --graupl-pager-link-active-background
+$pager-link-active-background: var(
+  --#{root-defaults.$prefix}pager-link-active-background,
+  #{$pager-link-hover-background}
+);
+
+// --graupl-pager-link-disabled-background
+$pager-link-disabled-background: var(
+  --#{root-defaults.$prefix}pager-link-disabled-background,
+  #{$pager-link-background}
+);
+$pager-link-background-states: (
+  default: $pager-link-background,
+  visited: $pager-link-visited-background,
+  focus: $pager-link-focus-background,
+  hover: $pager-link-hover-background,
+  active: $pager-link-active-background,
+  disabled: $pager-link-disabled-background,
+);
+
+// pager link border properties.
+// --graupl-pager-link-border-color
+$pager-link-border-color: var(
+  --#{root-defaults.$prefix}pager-link-border-color,
+  #{$pager-link-color}
+);
+
+// --graupl-pager-link-visited-border-color
+$pager-link-visited-border-color: var(
+  --#{root-defaults.$prefix}pager-link-visited-border-color,
+  #{$pager-link-border-color}
+);
+
+// --graupl-pager-link-focus-border-color
+$pager-link-focus-border-color: var(
+  --#{root-defaults.$prefix}pager-link-focus-border-color,
+  #{$pager-link-border-color}
+);
+
+// --graupl-pager-link-hover-border-color
+$pager-link-hover-border-color: var(
+  --#{root-defaults.$prefix}pager-link-hover-border-color,
+  #{$pager-link-hover-background}
+);
+
+// --graupl-pager-link-active-border-color
+$pager-link-active-border-color: var(
+  --#{root-defaults.$prefix}pager-link-active-border-color,
+  #{$pager-link-hover-border-color}
+);
+
+// --graupl-pager-link-disabled-border-color
+$pager-link-disabled-border-color: var(
+  --#{root-defaults.$prefix}pager-link-disabled-border-color,
+  #{theme.get(primary, 200)}
+);
+$pager-link-border-color-states: (
+  default: $pager-link-border-color,
+  visited: $pager-link-visited-border-color,
+  focus: $pager-link-focus-border-color,
+  hover: $pager-link-hover-border-color,
+  active: $pager-link-active-border-color,
+  disabled: $pager-link-disabled-border-color,
+);
+
+// --graupl-pager-link-border-top-left-radius
+$pager-link-border-top-left-radius: var(
+  --#{root-defaults.$prefix}pager-link-border-top-left-radius,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-link-border-top-right-radius
+$pager-link-border-top-right-radius: var(
+  --#{root-defaults.$prefix}pager-link-border-top-right-radius,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-link-border-bottom-left-radius
+$pager-link-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}pager-link-border-bottom-left-radius,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-link-border-bottom-right-radius
+$pager-link-border-bottom-right-radius: var(
+  --#{root-defaults.$prefix}pager-link-border-bottom-right-radius,
+  #{map.get(root-variables.$spacers, 0)}
+);
+
+// --graupl-pager-link-border-radius
+$pager-link-border-radius: var(
+  --#{root-defaults.$prefix}pager-link-border-radius,
+  #{$pager-link-border-top-left-radius} #{$pager-link-border-top-right-radius}
+    #{$pager-link-border-bottom-right-radius}
+    #{$pager-link-border-bottom-left-radius}
+);
+
+// --graupl-pager-link-border-top-width
+$pager-link-border-top-width: var(
+  --#{root-defaults.$prefix}pager-link-border-top-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-link-border-right-width
+$pager-link-border-right-width: var(
+  --#{root-defaults.$prefix}pager-link-border-right-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-link-border-bottom-width
+$pager-link-border-bottom-width: var(
+  --#{root-defaults.$prefix}pager-link-border-bottom-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-link-border-left-width
+$pager-link-border-left-width: var(
+  --#{root-defaults.$prefix}pager-link-border-left-width,
+  #{map.get(root-variables.$spacers, 1)}
+);
+
+// --graupl-pager-link-border-width
+$pager-link-border-width: var(
+  --#{root-defaults.$prefix}pager-link-border-width,
+  #{$pager-link-border-top-width} #{$pager-link-border-right-width}
+    #{$pager-link-border-bottom-width} #{$pager-link-border-left-width}
+);
+
+// --graupl-pager-link-border-top-style
+$pager-link-border-top-style: var(
+  --#{root-defaults.$prefix}pager-link-border-top-style,
+  #{root-variables.$border-top-style}
+);
+
+// --graupl-pager-link-border-right-style
+$pager-link-border-right-style: var(
+  --#{root-defaults.$prefix}pager-link-border-right-style,
+  #{root-variables.$border-right-style}
+);
+
+// --graupl-pager-link-border-bottom-style
+$pager-link-border-bottom-style: var(
+  --#{root-defaults.$prefix}pager-link-border-bottom-style,
+  #{root-variables.$border-bottom-style}
+);
+
+// --graupl-pager-link-border-left-style
+$pager-link-border-left-style: var(
+  --#{root-defaults.$prefix}pager-link-border-left-style,
+  #{root-variables.$border-left-style}
+);
+
+// --graupl-pager-link-border-style
+$pager-link-border-style: var(
+  --#{root-defaults.$prefix}pager-link-border-style,
+  #{$pager-link-border-top-style} #{$pager-link-border-right-style}
+    #{$pager-link-border-bottom-style} #{$pager-link-border-left-style}
+);
