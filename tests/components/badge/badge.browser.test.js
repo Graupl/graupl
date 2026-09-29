@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./badge.js";
 import { variants } from "../defaults.js";
+import Component from "./badge.js";
 
 describe("Badge Component", () => {
   describe.for(variants)("%s badge", async (variant) => {
@@ -14,7 +14,9 @@ describe("Badge Component", () => {
 
       await document.fonts.ready;
 
-      await expect(screen.getByText("Badge")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });

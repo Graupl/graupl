@@ -20,13 +20,15 @@
 // @example
 // <button class="button icon-after">Button</button>
 
-@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "../../component/icon/defaults" as icon-defaults;
+@use "../../component/icon/mixins" as icon;
 @use "pkg:@graupl/core/src/base/button/defaults" as button-defaults;
 @use "pkg:@graupl/core/src/base/button/variables" as button;
+@use "pkg:@graupl/core/src/base/link/defaults" as link-defaults;
+@use "pkg:@graupl/core/src/base/link/variables" as link;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
 @use "pkg:@graupl/core/src/mixins/layer" as *;
 @use "pkg:@graupl/core/src/mixins/theme";
-@use "../../component/icon/mixins" as icon;
-@use "../../component/icon/defaults" as icon-defaults;
 @use "variables" as *;
 
 @include layer(theme) {
@@ -46,6 +48,23 @@
               button.$button-color,
               button.$button-color-states
             );
+          }
+        }
+      }
+    }
+    &#{button-defaults.$button-link-selector-base}#{button-defaults.$button-link-selector} {
+      // &.icon, &.icon-before, &.icon-after
+      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-selector},
+      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-before-selector},
+      &#{icon-defaults.$icon-selector-base}#{icon-defaults.$icon-after-selector} {
+        @include icon.bind(link.$link-color, link.$link-color-states);
+
+        @if root-defaults.$themeable-components and link-defaults.$themeable {
+          @each $color, $map in link-defaults.$link-theme-map {
+            // &.primary, &.secondary, &.tertiary
+            &#{link-defaults.$link-theme-selector-base}#{link-defaults.$link-theme-selector-prefix}#{$color} {
+              @include icon.bind(link.$link-color, link.$link-color-states);
+            }
           }
         }
       }

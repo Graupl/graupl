@@ -1,30 +1,23 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./form.js";
 import { userEvent } from "vitest/browser";
+import Component from "./form.js";
 
 describe("Form Component", () => {
   it("Should match screenshot when normal:", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "form",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("form")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 
   it("Should match screenshot with changed attributes:", async () => {
     const screen = render(Component, {
       props: {
         value: true,
-        attributes: {
-          "data-testid": "form",
-        },
       },
     });
 
@@ -41,6 +34,8 @@ describe("Form Component", () => {
     await user.click(checkedOption);
     await user.click(checkedOption2);
 
-    await expect(screen.getByTestId("form")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });

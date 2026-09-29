@@ -1,7 +1,8 @@
 import { h } from "vue";
+import { setupClasses } from "../helpers.js";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
-import { setupClasses } from "../helpers.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 export default {
   props: {
@@ -38,6 +39,9 @@ export default {
   setup(props) {
     const attributes = setupClasses(props.attributes, ["list"]);
 
-    return () => h(AdvancedComponent, { ...props, attributes, tag: "ul" });
+    return () =>
+      h(WrapperComponent, {
+        children: [h(AdvancedComponent, { ...props, attributes, tag: "ul" })],
+      });
   },
 };

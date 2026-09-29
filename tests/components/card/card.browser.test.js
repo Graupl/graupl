@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render } from "vitest-browser-vue";
-import Component from "./card.js";
 import { variants } from "../defaults.js";
+import Component from "./card.js";
 
 describe("Card Component", () => {
   describe.for(variants)("%s card", async (variant) => {
@@ -9,15 +9,14 @@ describe("Card Component", () => {
       const screen = render(Component, {
         props: {
           variant,
-          attributes: {
-            "data-testid": "card",
-          },
         },
       });
 
       await document.fonts.ready;
 
-      await expect(screen.getByTestId("card")).toMatchScreenshot();
+      await expect(
+        screen.getByTestId("component-test-wrapper")
+      ).toMatchScreenshot();
     });
   });
 });
