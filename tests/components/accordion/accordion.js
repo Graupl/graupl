@@ -1,7 +1,8 @@
 import { h } from "vue";
-import BasicComponent from "../component/basic-component.js";
-import AdvancedComponent from "../component/advanced-component.js";
 import { setupClasses } from "../helpers.js";
+import AdvancedComponent from "../component/advanced-component.js";
+import BasicComponent from "../component/basic-component.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 export default {
   props: {
@@ -18,62 +19,74 @@ export default {
     const attributes = setupClasses(props.attributes, ["accordion"]);
 
     return () =>
-      h(AdvancedComponent, {
-        ...props,
-        attributes,
+      h(WrapperComponent, {
         children: [
           h(AdvancedComponent, {
-            attributes: { class: ["accordion-control-container"] },
-            children: [
-              h(BasicComponent, {
-                tag: "button",
-                attributes: { class: ["accordion-control", "expand-all"] },
-                text: "Expand All",
-              }),
-              h(BasicComponent, {
-                tag: "button",
-                attributes: { class: ["accordion-control", "collapse-all"] },
-                text: "Collapse All",
-              }),
-            ],
-          }),
-          h(AdvancedComponent, {
-            attributes: {
-              class: ["accordion-item", props.open ? "show" : "hide"],
-            },
+            ...props,
+            attributes,
             children: [
               h(AdvancedComponent, {
-                attributes: { class: ["accordion-item-header"] },
+                attributes: { class: ["accordion-control-container"] },
                 children: [
-                  h(AdvancedComponent, {
-                    tag: "h3",
-                    attributes: { class: ["accordion-item-title"] },
-                    children: [
-                      h(BasicComponent, {
-                        tag: "button",
-                        attributes: {
-                          class: ["accordion-item-toggle"],
-                          "aria-expanded": props.open ? "true" : "false",
-                        },
-                        text: "Accordion Heading",
-                      }),
-                    ],
+                  h(BasicComponent, {
+                    tag: "button",
+                    attributes: { class: ["accordion-control", "expand-all"] },
+                    text: "Expand All",
+                  }),
+                  h(BasicComponent, {
+                    tag: "button",
+                    attributes: {
+                      class: ["accordion-control", "collapse-all"],
+                    },
+                    text: "Collapse All",
                   }),
                 ],
               }),
               h(AdvancedComponent, {
-                attributes: { class: ["accordion-item-content"] },
+                attributes: {
+                  class: ["accordion-item", props.open ? "show" : "hide"],
+                },
                 children: [
                   h(AdvancedComponent, {
-                    attributes: { class: ["accordion-item-body"] },
+                    attributes: { class: ["accordion-item-header"] },
                     children: [
-                      h(BasicComponent, { tag: "p", text: "Accordion Body" }),
+                      h(AdvancedComponent, {
+                        tag: "h3",
+                        attributes: { class: ["accordion-item-title"] },
+                        children: [
+                          h(BasicComponent, {
+                            tag: "button",
+                            attributes: {
+                              class: ["accordion-item-toggle"],
+                              "aria-expanded": props.open ? "true" : "false",
+                            },
+                            text: "Accordion Heading",
+                          }),
+                        ],
+                      }),
                     ],
                   }),
                   h(AdvancedComponent, {
-                    attributes: { class: ["accordion-item-footer"] },
+                    attributes: { class: ["accordion-item-content"] },
                     children: [
-                      h(BasicComponent, { tag: "p", text: "Accordion Footer" }),
+                      h(AdvancedComponent, {
+                        attributes: { class: ["accordion-item-body"] },
+                        children: [
+                          h(BasicComponent, {
+                            tag: "p",
+                            text: "Accordion Body",
+                          }),
+                        ],
+                      }),
+                      h(AdvancedComponent, {
+                        attributes: { class: ["accordion-item-footer"] },
+                        children: [
+                          h(BasicComponent, {
+                            tag: "p",
+                            text: "Accordion Footer",
+                          }),
+                        ],
+                      }),
                     ],
                   }),
                 ],

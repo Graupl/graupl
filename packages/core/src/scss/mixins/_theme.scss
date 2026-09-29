@@ -50,10 +50,14 @@
     // e.g. &.primary, &.secondary, &.tertiary
     #{$base}#{$selector-base}#{$selector-prefix}#{$color} {
       @each $prop, $value in $map {
-        --#{root-defaults.$prefix}#{$scope}#{$prop}: #{theme.get(
-            map.get($value, color),
-            map.get($value, shade)
-          )};
+        /* stylelint-disable scss/at-if-no-null */
+        @if $value != null {
+          --#{root-defaults.$prefix}#{$scope}#{$prop}: #{theme.get(
+              map.get($value, color),
+              map.get($value, shade)
+            )};
+        }
+        /* stylelint-enable scss/at-if-no-null */
       }
     }
   }
