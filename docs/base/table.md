@@ -144,7 +144,7 @@ There are also many classes that help to modify and customize your table:
 
 <br>
 
-<live-example :source-code="exampleTableVariant" :key="variant-modifier">
+<live-example :source-code="exampleTableVariant" :key="`${variant}-${modifier}`">
   <template #options>
     <div class="input-group">
       <label for="select-table-variant">Table Variant</label>
