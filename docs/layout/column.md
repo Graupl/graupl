@@ -115,6 +115,79 @@
 <div class="${classes}">${twelveColumns}</div>
     `
   });
+
+  const exampleColumnsSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      'count-8',
+      span.value !== "default" ? span.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
+
+    const exampleColumnsXsSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      xsSpan.value !== "default" ? xsSpan.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
+
+  const exampleColumnsSmSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      smSpan.value !== "default" ? smSpan.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
+
+  const exampleColumnsMdSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      mdSpan.value !== "default" ? mdSpan.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
+
+    const exampleColumnsLgSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      lgSpan.value !== "default" ? lgSpan.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
+
+    const exampleColumnsXlSpan = computed(() => {
+
+    const classes = [
+      "columns",
+      xlSpan.value !== "default" ? xlSpan.value : null,
+    ].filter(c => c !== null).join(' ');
+
+    return `
+<div class="${classes}">${twelveColumns}</div>
+    `
+  });
 </script>
 
 # Columns
@@ -242,6 +315,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.sm:count-11` | Sets the number of columns in the columns component to 11 on small screens. |
 | `.sm:count-12` | Sets the number of columns in the columns component to 12 on small screens. |
 
+<live-example :source-code="exampleColumnsSmCount" :key="smCount">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-sm-count" v-model="smCount">
+        <option value="sm:count-1">Small Count 1</option>
+        <option value="sm:count-2">Small Count 2</option>
+        <option value="sm:count-3">Small Count 3</option>
+        <option value="sm:count-4">Small Count 4</option>
+        <option value="sm:count-5">Small Count 5</option>
+        <option value="sm:count-6">Small Count 6</option>
+        <option value="sm:count-7">Small Count 7</option>
+        <option value="sm:count-8">Small Count 8</option>
+        <option value="sm:count-9">Small Count 9</option>
+        <option value="sm:count-10">Small Count 10</option>
+        <option value="sm:count-11">Small Count 11</option>
+        <option value="sm:count-12">Small Count 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ### .md:count properties
 
 | Property Name | Description |
@@ -258,6 +353,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.md:count-10` | Sets the number of columns in the columns component to 10 on medium screens. |
 | `.md:count-11` | Sets the number of columns in the columns component to 11 on medium screens. |
 | `.md:count-12` | Sets the number of columns in the columns component to 12 on medium screens. |
+
+<live-example :source-code="exampleColumnsMdCount" :key="mdCount">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-md-count" v-model="mdCount">
+        <option value="md:count-1">Medium Count 1</option>
+        <option value="md:count-2">Medium Count 2</option>
+        <option value="md:count-3">Medium Count 3</option>
+        <option value="md:count-4">Medium Count 4</option>
+        <option value="md:count-5">Medium Count 5</option>
+        <option value="md:count-6">Medium Count 6</option>
+        <option value="md:count-7">Medium Count 7</option>
+        <option value="md:count-8">Medium Count 8</option>
+        <option value="md:count-9">Medium Count 9</option>
+        <option value="md:count-10">Medium Count 10</option>
+        <option value="md:count-11">Medium Count 11</option>
+        <option value="md:count-12">Medium Count 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
 
 ## .lg:count properties
 
@@ -276,6 +393,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.lg:count-11` | Sets the number of columns in the columns component to 11 on large screens. |
 | `.lg:count-12` | Sets the number of columns in the columns component to 12 on large screens. |
 
+<live-example :source-code="exampleColumnsLgCount" :key="lgCount">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-lg-count" v-model="lgCount">
+        <option value="lg:count-1">Large Count 1</option>
+        <option value="lg:count-2">Large Count 2</option>
+        <option value="lg:count-3">Large Count 3</option>
+        <option value="lg:count-4">Large Count 4</option>
+        <option value="lg:count-5">Large Count 5</option>
+        <option value="lg:count-6">Large Count 6</option>
+        <option value="lg:count-7">Large Count 7</option>
+        <option value="lg:count-8">Large Count 8</option>
+        <option value="lg:count-9">Large Count 9</option>
+        <option value="lg:count-10">Large Count 10</option>
+        <option value="lg:count-11">Large Count 11</option>
+        <option value="lg:count-12">Large Count 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ## .xl:count properties
 
 | Property Name | Description |
@@ -293,6 +432,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.xl:count-11` | Sets the number of columns in the columns component to 11 on extra large screens. |
 | `.xl:count-12` | Sets the number of columns in the columns component to 12 on extra large screens. |
 
+<live-example :source-code="exampleColumnsXlCount" :key="xlCount">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-xl-count" v-model="xlCount">
+        <option value="xl:count-1">Extra Large Count 1</option>
+        <option value="xl:count-2">Extra Large Count 2</option>
+        <option value="xl:count-3">Extra Large Count 3</option>
+        <option value="xl:count-4">Extra Large Count 4</option>
+        <option value="xl:count-5">Extra Large Count 5</option>
+        <option value="xl:count-6">Extra Large Count 6</option>
+        <option value="xl:count-7">Extra Large Count 7</option>
+        <option value="xl:count-8">Extra Large Count 8</option>
+        <option value="xl:count-9">Extra Large Count 9</option>
+        <option value="xl:count-10">Extra Large Count 10</option>
+        <option value="xl:count-11">Extra Large Count 11</option>
+        <option value="xl:count-12">Extra Large Count 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ### .span properties
 
 | Property Name | Description |
@@ -309,6 +470,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.span-10` | Sets the span of a column in the columns component to 10. |
 | `.span-11` | Sets the span of a column in the columns component to 11. |
 | `.span-12` | Sets the span of a column in the columns component to 12. |
+
+<live-example :source-code="exampleColumnsSpan" :key="span">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-span" v-model="span">
+        <option value="span-1">Span 1</option>
+        <option value="span-2">Span 2</option>
+        <option value="span-3">Span 3</option>
+        <option value="span-4">Span 4</option>
+        <option value="span-5">Span 5</option>
+        <option value="span-6">Span 6</option>
+        <option value="span-7">Span 7</option>
+        <option value="span-8">Span 8</option>
+        <option value="span-9">Span 9</option>
+        <option value="span-10">Span 10</option>
+        <option value="span-11">Span 11</option>
+        <option value="span-12">Span 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
 
 ### .xs:span properties
 
@@ -328,6 +511,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.xs:span-11` | Sets the span of a column in the columns component to 11 on extra small screens. |
 | `.xs:span-12` | Sets the span of a column in the columns component to 12 on extra small screens. |
 
+<live-example :source-code="exampleColumnsXsSpan" :key="xsSpan">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-xs-span" v-model="xsSpan">
+        <option value="xs:span-1">Extra Small Span 1</option>
+        <option value="xs:span-2">Extra Small Span 2</option>
+        <option value="xs:span-3">Extra Small Span 3</option>
+        <option value="xs:span-4">Extra Small Span 4</option>
+        <option value="xs:span-5">Extra Small Span 5</option>
+        <option value="xs:span-6">Extra Small Span 6</option>
+        <option value="xs:span-7">Extra Small Span 7</option>
+        <option value="xs:span-8">Extra Small Span 8</option>
+        <option value="xs:span-9">Extra Small Span 9</option>
+        <option value="xs:span-10">Extra Small Span 10</option>
+        <option value="xs:span-11">Extra Small Span 11</option>
+        <option value="xs:span-12">Extra Small Span 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ### .sm:span properties
 
 | Property Name | Description |
@@ -344,6 +549,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.sm:span-10` | Sets the span of a column in the columns component to 10 on small screens. |
 | `.sm:span-11` | Sets the span of a column in the columns component to 11 on small screens. |
 | `.sm:span-12` | Sets the span of a column in the columns component to 12 on small screens. |
+
+<live-example :source-code="exampleColumnsSmSpan" :key="smSpan">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-sm-span" v-model="smSpan">
+        <option value="sm:span-1">Small Span 1</option>
+        <option value="sm:span-2">Small Span 2</option>
+        <option value="sm:span-3">Small Span 3</option>
+        <option value="sm:span-4">Small Span 4</option>
+        <option value="sm:span-5">Small Span 5</option>
+        <option value="sm:span-6">Small Span 6</option>
+        <option value="sm:span-7">Small Span 7</option>
+        <option value="sm:span-8">Small Span 8</option>
+        <option value="sm:span-9">Small Span 9</option>
+        <option value="sm:span-10">Small Span 10</option>
+        <option value="sm:span-11">Small Span 11</option>
+        <option value="sm:span-12">Small Span 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
 
 ### .md:span properties
 
@@ -362,6 +589,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.md:span-11` | Sets the span of a column in the columns component to 11 on medium screens. |
 | `.md:span-12` | Sets the span of a column in the columns component to 12 on medium screens. |
 
+<live-example :source-code="exampleColumnsMdSpan" :key="mdSpan">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-md-span" v-model="mdSpan">
+        <option value="md:span-1">Medium Span 1</option>
+        <option value="md:span-2">Medium Span 2</option>
+        <option value="md:span-3">Medium Span 3</option>
+        <option value="md:span-4">Medium Span 4</option>
+        <option value="md:span-5">Medium Span 5</option>
+        <option value="md:span-6">Medium Span 6</option>
+        <option value="md:span-7">Medium Span 7</option>
+        <option value="md:span-8">Medium Span 8</option>
+        <option value="md:span-9">Medium Span 9</option>
+        <option value="md:span-10">Medium Span 10</option>
+        <option value="md:span-11">Medium Span 11</option>
+        <option value="md:span-12">Medium Span 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ## .lg:span properties
 
 | Property Name | Description |
@@ -379,6 +628,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.lg:span-11` | Sets the span of a column in the columns component to 11 on large screens. |
 | `.lg:span-12` | Sets the span of a column in the columns component to 12 on large screens. |
 
+<live-example :source-code="exampleColumnsLgCount" :key="lgCount">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-lg-count" v-model="lgCount">
+        <option value="lg:count-1">Large Count 1</option>
+        <option value="lg:count-2">Large Count 2</option>
+        <option value="lg:count-3">Large Count 3</option>
+        <option value="lg:count-4">Large Count 4</option>
+        <option value="lg:count-5">Large Count 5</option>
+        <option value="lg:count-6">Large Count 6</option>
+        <option value="lg:count-7">Large Count 7</option>
+        <option value="lg:count-8">Large Count 8</option>
+        <option value="lg:count-9">Large Count 9</option>
+        <option value="lg:count-10">Large Count 10</option>
+        <option value="lg:count-11">Large Count 11</option>
+        <option value="lg:count-12">Large Count 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
 ## .xl:span properties
 
 | Property Name | Description |
@@ -395,6 +666,28 @@ The columns component provides the following set of classes to apply the preset 
 | `.xl:span-10` | Sets the span of a column in the columns component to 10 on extra large screens. |
 | `.xl:span-11` | Sets the span of a column in the columns component to 11 on extra large screens. |
 | `.xl:span-12` | Sets the span of a column in the columns component to 12 on extra large screens. |
+
+<live-example :source-code="exampleColumnsXlSpan" :key="xlSpan">
+  <template #options>
+    <div class="input-group">
+      <select id="select-columns-xl-span" v-model="xlSpan">
+        <option value="xl:span-1">Extra Large Span 1</option>
+        <option value="xl:span-2">Extra Large Span 2</option>
+        <option value="xl:span-3">Extra Large Span 3</option>
+        <option value="xl:span-4">Extra Large Span 4</option>
+        <option value="xl:span-5">Extra Large Span 5</option>
+        <option value="xl:span-6">Extra Large Span 6</option>
+        <option value="xl:span-7">Extra Large Span 7</option>
+        <option value="xl:span-8">Extra Large Span 8</option>
+        <option value="xl:span-9">Extra Large Span 9</option>
+        <option value="xl:span-10">Extra Large Span 10</option>
+        <option value="xl:span-11">Extra Large Span 11</option>
+        <option value="xl:span-12">Extra Large Span 12</option>
+      </select>
+    <p class="help-text">Select the alignment you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
 
 ## .columns properties
 
