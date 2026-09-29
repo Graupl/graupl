@@ -588,7 +588,7 @@ The following custom properties can be used to customize the table component:
   </tbody>
 </table>
 
-## Sass variables
+## Customization
 
 The following Sass variables can be used to customize the generation of the table component:
 
