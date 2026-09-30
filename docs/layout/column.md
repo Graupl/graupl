@@ -254,7 +254,7 @@ The columns component provides the following set of classes to apply the preset 
 | `.xl:count-11` | Sets the number of columns in the columns component to 11 on extra large screens. |
 | `.xl:count-12` | Sets the number of columns in the columns component to 12 on extra large screens. |
 
-<live-example :source-code="exampleColumnsSizeCount" :key="`xsCount-smCount-mdCount-lgCount-xlCount`">
+<live-example :source-code="exampleColumnsSizeCount" :key="xsCount-smCount-mdCount-lgCount-xlCount">
   <template #options>
     <div class="input-group">
       <select id="select-columns-xs-count" v-model="xsCount">
@@ -448,7 +448,7 @@ The columns component provides the following set of classes to apply the preset 
 | `.xl:span-11` | Sets the span of a column in the columns component to 11 on extra large screens. |
 | `.xl:span-12` | Sets the span of a column in the columns component to 12 on extra large screens. |
 
-<live-example :source-code="exampleColumnsSizeSpan" :key="`xsSpan-smSpan-mdSpan-lgSpan-xlSpan`">
+<live-example :source-code="exampleColumnsSizeSpan" :key="xsSpan-smSpan-mdSpan-lgSpan-xlSpan">
   <template #options>
     <div class="input-group">
       <select id="select-columns-xs-span" v-model="xsSpan">
