@@ -29,7 +29,7 @@
   <div class="bg-primary-700 text-primary-100 py-5 px-3"></div>
   <div class="bg-primary-700 text-primary-100 py-5 px-3"></div>
   <div class="bg-primary-700 text-primary-100 py-5 px-3"></div>
-    `;
+`;
 
   const exampleColumns = computed(() => {
 
@@ -39,8 +39,10 @@
     ].filter(c => c !== null).join(' ');
 
     return `
-<div class="${classes}">${twelveColumns}</div>
-    `
+<div class="${classes}">
+  ${twelveColumns}
+</div>
+`
   });
 
   const exampleColumnsFixed = computed(() => {
@@ -50,31 +52,22 @@
     ].filter(c => c !== null).join(' ');
 
     return `
-<div class="columns count-8 ${classes}">${twelveColumns}</div>
-    `
+<div class="columns count-8 ${classes}">${twelveColumns}
+</div>
+  `
   });
 
   const exampleColumnsSizeCount = computed(() => {
 
-    const xsClasses = [
-      xsCount.value !== "default" ? xsCount.value : null,
-    ].filter(c => c !== null);
+    const xsClasses = xsCount.value !== "default" ? xsCount.value : null;
 
-    const smClasses = [
-      smCount.value !== "default" ? smCount.value : null,
-    ].filter(c => c !== null);
+    const smClasses = smCount.value !== "default" ? smCount.value : null;
 
-    const mdClasses = [
-      mdCount.value !== "default" ? mdCount.value : null,
-    ].filter(c => c !== null);
+    const mdClasses = mdCount.value !== "default" ? mdCount.value : null;
 
-    const lgClasses = [
-      lgCount.value !== "default" ? lgCount.value : null,
-    ].filter(c => c !== null);
+    const lgClasses = lgCount.value !== "default" ? lgCount.value : null;
 
-    const xlClasses = [
-      xlCount.value !== "default" ? xlCount.value : null,
-    ].filter(c => c !== null);
+    const xlClasses = xlCount.value !== "default" ? xlCount.value : null;
 
     return `
 <div class="columns ${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses}">${twelveColumns}</div>
@@ -83,40 +76,28 @@
 
   const exampleColumnsSpan = computed(() => {
 
-    const classes = [
-      span.value !== "default" ? span.value : null,
-    ].filter(c => c !== null);
-
-    return `
-<div class="columns count-8 ${classes}">${twelveColumns}</div>
+    const classes = span.value !== "default" ? span.value : null
+return `
+<div class="columns count-8 ${classes}">${twelveColumns}
+</div>
     `
   });
 
   const exampleColumnsSizeSpan = computed(() => {
 
-    const xsClasses = [
-      xsSpan.value !== "default" ? xsSpan.value : null,
-    ].filter(c => c !== null);
+    const xsClasses = xsSpan.value !== "default" ? xsSpan.value : null;
 
-    const smClasses = [
-      smSpan.value !== "default" ? smSpan.value : null,
-    ].filter(c => c !== null);
+    const smClasses = smSpan.value !== "default" ? smSpan.value : null;
 
-    const mdClasses = [
-      mdSpan.value !== "default" ? mdSpan.value : null,
-    ].filter(c => c !== null);
+    const mdClasses = mdSpan.value !== "default" ? mdSpan.value : null;
 
-    const lgClasses = [
-      lgSpan.value !== "default" ? lgSpan.value : null,
-    ].filter(c => c !== null);
+    const lgClasses = lgSpan.value !== "default" ? lgSpan.value : null;
 
-    const xlClasses = [
-      xlSpan.value !== "default" ? xlSpan.value : null,
-    ].filter(c => c !== null);
+    const xlClasses = xlSpan.value !== "default" ? xlSpan.value : null;
 
     return `
 <div class="columns ${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses}">${twelveColumns}</div>
-    `
+  `
   });
 </script>
 
@@ -448,7 +429,7 @@ The columns component provides the following set of classes to apply the preset 
 | `.xl:span-11` | Sets the span of a column in the columns component to 11 on extra large screens. |
 | `.xl:span-12` | Sets the span of a column in the columns component to 12 on extra large screens. |
 
-<live-example :source-code="exampleColumnsSizeSpan" :key="xsSpan-smSpan-mdSpan-lgSpan-xlSpan">
+<live-example :source-code="exampleColumnsSizeSpan" :key="`${xsSpan}-${smSpan}-${mdSpan}-${lgSpan}-${xlSpan}`">
   <template #options>
     <div class="input-group">
       <select id="select-columns-xs-span" v-model="xsSpan">
