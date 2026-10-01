@@ -6,17 +6,34 @@
 
   const exampleContainer = computed(() => {
 
-    const classes = count.value !== "default" ? count.value : null;
+    const sidebarChildLeft = !count.value.includes("right") & count.value.includes("sidebar") ? `<div class="sidebar-left z-1 align-content-stretch">
+    <div class="bg-secondary-200 py-5"></div>
+  </div>`  : "";
+    const sidebarChildRight = !count.value.includes("left") & count.value.includes("sidebar") ? `<div class="sidebar-right z-1 align-content-stretch">
+    <div class="bg-secondary-200 py-5"></div>
+  </div>`  : "";
+
+    const classes = count.value.includes("sidebar") ? "container content" : count.value;
+
+    const sidebar = count.value.includes("sidebars") ? ( "sidebars") : count.value.includes("sidebar") ? "contain sidebars" : "";
 
   return `
-<div class="container bordered text-white">
-  <div class="bg-primary-200 ${classes}">
-      <div class="py-7 px-5">${classes}</div>
+<div class="container bg-tertiary-400 text-primary-100 ${sidebar}">
+  ${sidebarChildLeft}
+  ${sidebarChildRight}
+  <div class="bg-primary ${classes}">
+    <div class="py-7 px-5">${count.value}</div>
   </div>
 </div>
     `
   });
 </script>
+
+<style>
+  .example .container {
+    grid-template-columns: [full-width-start] 2fr [feature-start] 1fr [breakout-start] 0.5fr [content-start] 5fr [content-end] 0.5fr [breakout-end] 1fr [feature-end] 2fr [full-width-end]
+  }
+</style>
 
 # Container
 
@@ -70,13 +87,12 @@ nested container to inherit the grid columns of the parent container.
         <option value="full-width">Full Width</option>
         <option value="feature">Feature</option>
         <option value="breakout">Breakout</option>
-        <option value="contain">Contain</option>
         <option value="sidebars">Sidebars</option>
         <option value="sidebars-left">Sidebars Left</option>
         <option value="sidebars-right">Sidebars Right</option>
-        <option value="sidebar">Sidebar</option>
-        <option value="sidebar-left">Sidebar Left</option>
-        <option value="sidebar-right">Sidebar Right</option>
+        <option value="contain sidebar">Contained Sidebars</option>
+        <option value="contain sidebar-left">Contained Sidebars Left</option>
+        <option value="contain sidebar-right">Contained Sidebars Right</option>
         <option value="content">Content</option>
       </select>
     <p class="help-text">Select the alignment you would like displayed.</p>
