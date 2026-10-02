@@ -160,7 +160,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="col-12">Col 12</option>
         <option value="fill">Fill</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -247,7 +247,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="xs:col-11">Extra Small Col 11</option>
         <option value="xs:col-12">Extra Small Col 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-sm-col" v-model="smCol">
@@ -264,7 +264,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="sm:col-11">Small Col 11</option>
         <option value="sm:col-12">Small Col 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-md-col" v-model="mdCol">
@@ -281,7 +281,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="md:col-11">Medium Col 11</option>
         <option value="md:col-12">Medium Col 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the medium column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-lg-col" v-model="lgCol">
@@ -298,7 +298,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="lg:col-11">Large Col 11</option>
         <option value="lg:col-12">Large Col 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the large column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-xl-col" v-model="xlCol">
@@ -315,7 +315,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="xl:col-11">Extra Large Col 11</option>
         <option value="xl:col-12">Extra Large Col 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-large column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -402,7 +402,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="cq:xs:col-11">Extra Small Size 11</option>
         <option value="cq:xs:col-12">Extra Small Size 12</option>
       </select>
-      <p class="help-text">Select the alignment you would like displayed.</p>
+      <p class="help-text">Select the extra-small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-sm-size" v-model="smSize">
@@ -419,7 +419,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="cq:sm:col-11">Small Size 11</option>
         <option value="cq:sm:col-12">Small Size 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-md-Size" v-model="mdSize">
@@ -436,7 +436,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="cq:md:col-11">Medium Size 11</option>
         <option value="cq:md:col-12">Medium Size 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the medium column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-lg-Size" v-model="lgSize">
@@ -453,7 +453,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="cq:lg:col-11">Large Size 11</option>
         <option value="cq:lg:col-12">Large Size 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the large column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-flex-columns-xl-Size" v-model="xlSize">
@@ -470,7 +470,7 @@ The flex-columns component provides the following set of classes to apply the pr
         <option value="cq:xl:col-11">Extra Large Size 11</option>
         <option value="cq:xl:col-12">Extra Large Size 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-large column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
