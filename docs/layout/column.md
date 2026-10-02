@@ -35,39 +35,36 @@
 
     const classes = [
       "columns",
-      count.value !== "columns" ? count.value : null,
-    ].filter(c => c !== null).join(' ');
+      count.value !== "columns" ? count.value : "",
+    ].filter(c => c !== "").join(' ');
 
     return `
-<div class="${classes}">
-  ${twelveColumns}
-</div>
+<div class="${classes}">${twelveColumns}</div>
 `
   });
 
   const exampleColumnsFixed = computed(() => {
 
     const classes = [
-      fixed.value !== "default" ? fixed.value : null,
-    ].filter(c => c !== null).join(' ');
+      fixed.value !== "default" ? fixed.value : "",
+    ].filter(c => c !== "").join(' ');
 
     return `
-<div class="columns count-8 ${classes}">${twelveColumns}
-</div>
+<div class="columns count-8 ${classes}">${twelveColumns}</div>
   `
   });
 
   const exampleColumnsSizeCount = computed(() => {
 
-    const xsClasses = xsCount.value !== "default" ? xsCount.value : null;
+    const xsClasses = xsCount.value !== "default" ? xsCount.value : "";
 
-    const smClasses = smCount.value !== "default" ? smCount.value : null;
+    const smClasses = smCount.value !== "default" ? smCount.value : "";
 
-    const mdClasses = mdCount.value !== "default" ? mdCount.value : null;
+    const mdClasses = mdCount.value !== "default" ? mdCount.value : "";
 
-    const lgClasses = lgCount.value !== "default" ? lgCount.value : null;
+    const lgClasses = lgCount.value !== "default" ? lgCount.value : "";
 
-    const xlClasses = xlCount.value !== "default" ? xlCount.value : null;
+    const xlClasses = xlCount.value !== "default" ? xlCount.value : "";
 
     return `
 <div class="columns ${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses}">${twelveColumns}</div>
@@ -76,24 +73,23 @@
 
   const exampleColumnsSpan = computed(() => {
 
-    const classes = span.value !== "default" ? span.value : null
+    const classes = span.value !== "default" ? span.value : ""
 return `
-<div class="columns count-8 ${classes}">${twelveColumns}
-</div>
+<div class="columns count-8 ${classes}">${twelveColumns}</div>
     `
   });
 
   const exampleColumnsSizeSpan = computed(() => {
 
-    const xsClasses = xsSpan.value !== "default" ? xsSpan.value : null;
+    const xsClasses = xsSpan.value !== "default" ? xsSpan.value : "";
 
-    const smClasses = smSpan.value !== "default" ? smSpan.value : null;
+    const smClasses = smSpan.value !== "default" ? smSpan.value : "";
 
-    const mdClasses = mdSpan.value !== "default" ? mdSpan.value : null;
+    const mdClasses = mdSpan.value !== "default" ? mdSpan.value : "";
 
-    const lgClasses = lgSpan.value !== "default" ? lgSpan.value : null;
+    const lgClasses = lgSpan.value !== "default" ? lgSpan.value : "";
 
-    const xlClasses = xlSpan.value !== "default" ? xlSpan.value : null;
+    const xlClasses = xlSpan.value !== "default" ? xlSpan.value : "";
 
     return `
 <div class="columns ${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses}">${twelveColumns}</div>
