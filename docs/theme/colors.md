@@ -23,8 +23,6 @@
 
 # Colors
 
-The `.color` class is the base class for all color styles.
-
 | Class Name | Property |
 | --- | --- |
 | `:root` | Defines base colours and the active theme properties. |
@@ -34,8 +32,7 @@ The `.color` class is the base class for all color styles.
 
 ## Variants
 
-There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more: `.default`, `.primary`, `.secondary`, and `.tertiary `.
-
+There are 4 colours supported by default: `.default`, `.primary`, `.secondary`, and `.tertiary `.
 
 ## Variant Shades Properties
 
