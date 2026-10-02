@@ -28,7 +28,7 @@
     </div>
   </div>
   <div
-    class="fill py-7 bg-primary-700 text-primary-100 px-5">
+    class="fill py-7 bg-primary-700 text-primary-100 px-5"> Fill
   </div>
   <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
     <div class="flex-columns">
@@ -36,7 +36,7 @@
         class="${classes} py-7 bg-tertiary-700 text-primary-100 px-5">
       </div>
       <div
-        class="fill py-7 bg-tertiary-700 text-primary-100 px-5">
+        class="fill py-7 bg-tertiary-700 text-primary-100 px-5"> Fill
       </div>
     </div>
   </div>
@@ -66,7 +66,7 @@
     </div>
   </div>
   <div
-    class="fill py-7 bg-primary-700 text-primary-100 px-5">
+    class="fill py-7 bg-primary-700 text-primary-100 px-5"> Fill
   </div>
   <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
     <div class="flex-columns">
@@ -74,7 +74,7 @@
         class="${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses} py-7 bg-tertiary-700 text-primary-100 px-5">
       </div>
       <div
-        class="fill py-7 bg-tertiary-700 text-primary-100 px-5">
+        class="fill py-7 bg-tertiary-700 text-primary-100 px-5"> Fill
       </div>
     </div>
   </div>
@@ -95,7 +95,7 @@
     const xlClasses = xlSize.value !== "default" ? xlSize.value : "";
 
     return `
-<div class="flex-columns>
+<div class="flex-columns">
   <div
     class="${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses} py-7 bg-primary-700 text-primary-100 px-5">
     <div class="flex-columns">
@@ -104,7 +104,7 @@
     </div>
   </div>
   <div
-    class="fill py-7 bg-primary-700 text-primary-100 px-5">
+    class="fill py-7 bg-primary-700 text-primary-100 px-5"> Fill
   </div>
   <div class="col-12 py-7 bg-primary-700 text-primary-100 px-5">
     <div class="flex-columns">
@@ -112,7 +112,7 @@
         class="${xsClasses} ${smClasses} ${mdClasses} ${lgClasses} ${xlClasses} py-7 bg-tertiary-700 text-primary-100 px-5">
       </div>
       <div
-        class="fill py-7 bg-tertiary-700 text-primary-100 px-5">
+        class="fill py-7 bg-tertiary-700 text-primary-100 px-5"> Fill
       </div>
     </div>
   </div>
@@ -320,7 +320,7 @@ The flex-columns component provides the following set of classes to apply the pr
   </template>
 </live-example>
 
-## .[size]:col properties
+## .cq:[size]:col properties
 
 | Property Name | Description |
 | --- | --- |
