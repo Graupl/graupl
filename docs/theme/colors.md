@@ -1,3 +1,192 @@
+<script setup>
+  import { ref, computed } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
+
+  const shade = ref("default");
+
+  const exampleColorShades = computed(() => {
+    return `
+<div class="columns w-two-thirds g-0">
+  <div class="p-5 bordered bg-${shade.value}-100">${shade.value} 100</div>
+  <div class="p-5 bordered bg-${shade.value}-200">${shade.value} 200</div>
+  <div class="p-5 bordered bg-${shade.value}-300">${shade.value} 300</div>
+  <div class="p-5 bordered bg-${shade.value}-400">${shade.value} 400</div>
+  <div class="p-5 bordered bg-${shade.value}-500">${shade.value} 500</div>
+  <div class="p-5 bordered text-${shade.value}-100 bg-${shade.value}-600">${shade.value} 600</div>
+  <div class="p-5 bordered text-${shade.value}-100 bg-${shade.value}-700">${shade.value} 700</div>
+  <div class="p-5 bordered text-${shade.value}-100 bg-${shade.value}-800">${shade.value} 800</div>
+  <div class="p-5 bordered text-${shade.value}-100 bg-${shade.value}-900">${shade.value} 900</div>
+</div>
+    `;
+  });
+</script>
+
 # Colors
 
-Documentation to be written.
+The `.color` class is the base class for all color styles.
+
+| Class Name | Property |
+| --- | --- |
+| `:root` | Defines base colours and the active theme properties. |
+| `.default-theme` | Sets the colour properties for the default theme. |
+| `.light-mode` | Sets the `color-scheme` property to `light`. |
+| `.dark-mode` | Sets the `color-scheme` property to `dark`. |
+
+## Variants
+
+There are 4 colours of buttons supported by default, with plans to have a "graupl-theme" plugin that adds more: `.default`, `.primary`, `.secondary`, and `.tertiary `.
+
+
+## Variant Shades Properties
+
+| Class Name | Property | Default Value |
+| --- | --- | --- |
+| `--graupl-primary` | Primary base colour. | `hsl(219deg 75% 50%)` |
+| `--graupl-primary--100` | Primary shade 100. | `hsl(219deg 100% 95%)` |
+| `--graupl-primary--200` | Primary shade 200. | `hsl(219deg 90% 80%)` |
+| `--graupl-primary--300` | Primary shade 300. | `hsl(219deg 80% 65%)` |
+| `--graupl-primary--400` | Primary shade 400. | `hsl(219deg 75% 55%)` |
+| `--graupl-primary--500` | Primary shade 500. | `hsl(219deg 75% 50%)` |
+| `--graupl-primary--600` | Primary shade 600. | `hsl(219deg 75% 45%)` |
+| `--graupl-primary--700` | Primary shade 700. | `hsl(219deg 80% 35%)` |
+| `--graupl-primary--800` | Primary shade 800. | `hsl(219deg 90% 20%)` |
+| `--graupl-primary--900` | Primary shade 900. | `hsl(219deg 100% 10%)` |
+| `--graupl-secondary` | Secondary base colour. | `hsl(235deg 15% 50%)` |
+| `--graupl-secondary--100` | Secondary shade 100. | `hsl(235deg 40% 95%)` |
+| `--graupl-secondary--200` | Secondary shade 200. | `hsl(235deg 30% 80%)` |
+| `--graupl-secondary--300` | Secondary shade 300. | `hsl(235deg 20% 65%)` |
+| `--graupl-secondary--400` | Secondary shade 400. | `hsl(235deg 15% 55%)` |
+| `--graupl-secondary--500` | Secondary shade 500. | `hsl(235deg 15% 50%)` |
+| `--graupl-secondary--600` | Secondary shade 600. | `hsl(235deg 15% 45%)` |
+| `--graupl-secondary--700` | Secondary shade 700. | `hsl(235deg 20% 35%)` |
+| `--graupl-secondary--800` | Secondary shade 800. | `hsl(235deg 30% 20%)` |
+| `--graupl-secondary--900` | Secondary shade 900. | `hsl(235deg 40% 10%)` |
+| `--graupl-tertiary` | Tertiary base colour. | `hsl(340deg 60% 50%)` |
+| `--graupl-tertiary--100` | Tertiary shade 100. | `hsl(340deg 85% 95%)` |
+| `--graupl-tertiary--200` | Tertiary shade 200. | `hsl(340deg 75% 80%)` |
+| `--graupl-tertiary--300` | Tertiary shade 300. | `hsl(340deg 65% 65%)` |
+| `--graupl-tertiary--400` | Tertiary shade 400. | `hsl(340deg 60% 55%)` |
+| `--graupl-tertiary--500` | Tertiary shade 500. | `hsl(340deg 60% 50%)` |
+| `--graupl-tertiary--600` | Tertiary shade 600. | `hsl(340deg 60% 45%)` |
+| `--graupl-tertiary--700` | Tertiary shade 700. | `hsl(340deg 65% 35%)` |
+| `--graupl-tertiary--800` | Tertiary shade 800. | `hsl(340deg 75% 20%)` |
+| `--graupl-tertiary--900` | Tertiary shade 900. | `hsl(340deg 85% 10%)` |
+
+<live-example :source-code="exampleColorShades" :key="shade">
+  <template #options>
+    <div class="input-group">
+      <label for="select-color-shade">Color Shade</label>
+      <select id="select-color-shade" v-model="shade">
+        <option value="default">Default</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+        <option value="tertiary">Tertiary</option>
+      </select>
+      <p class="help-text">Select the color variant you would like displayed.</p>
+    </div>
+  </template>
+</live-example>
+
+## Color State Properties
+
+| Class Name | Property | Default Value |
+| --- | --- | --- |
+| `--graupl-theme-default--primary` | Default theme primary base colour. | `var(--graupl-primary)` |
+| `--graupl-theme-default--primary--100` | Default theme primary shade 100. | `var(--graupl-primary--100)` |
+| `--graupl-theme-default--primary--200` | Default theme primary shade 200. | `var(--graupl-primary--200)` |
+| `--graupl-theme-default--primary--300` | Default theme primary shade 300. | `var(--graupl-primary--300)` |
+| `--graupl-theme-default--primary--400` | Default theme primary shade 400. | `var(--graupl-primary--400)` |
+| `--graupl-theme-default--primary--500` | Default theme primary shade 500. | `var(--graupl-primary--500)` |
+| `--graupl-theme-default--primary--600` | Default theme primary shade 600. | `var(--graupl-primary--600)` |
+| `--graupl-theme-default--primary--700` | Default theme primary shade 700. | `var(--graupl-primary--700)` |
+| `--graupl-theme-default--primary--800` | Default theme primary shade 800. | `var(--graupl-primary--800)` |
+| `--graupl-theme-default--primary--900` | Default theme primary shade 900. | `var(--graupl-primary--900)` |
+| `--graupl-theme-default--secondary` | Default theme secondary base colour. | `var(--graupl-secondary)` |
+| `--graupl-theme-default--secondary--100` | Default theme secondary shade 100. | `var(--graupl-secondary--100)` |
+| `--graupl-theme-default--secondary--200` | Default theme secondary shade 200. | `var(--graupl-secondary--200)` |
+| `--graupl-theme-default--secondary--300` | Default theme secondary shade 300. | `var(--graupl-secondary--300)` |
+| `--graupl-theme-default--secondary--400` | Default theme secondary shade 400. | `var(--graupl-secondary--400)` |
+| `--graupl-theme-default--secondary--500` | Default theme secondary shade 500. | `var(--graupl-secondary--500)` |
+| `--graupl-theme-default--secondary--600` | Default theme secondary shade 600. | `var(--graupl-secondary--600)` |
+| `--graupl-theme-default--secondary--700` | Default theme secondary shade 700. | `var(--graupl-secondary--700)` |
+| `--graupl-theme-default--secondary--800` | Default theme secondary shade 800. | `var(--graupl-secondary--800)` |
+| `--graupl-theme-default--secondary--900` | Default theme secondary shade 900. | `var(--graupl-secondary--900)` |
+| `--graupl-theme-default--tertiary` | Default theme tertiary base colour. | `var(--graupl-tertiary)` |
+| `--graupl-theme-default--tertiary--100` | Default theme tertiary shade 100. | `var(--graupl-tertiary--100)` |
+| `--graupl-theme-default--tertiary--200` | Default theme tertiary shade 200. | `var(--graupl-tertiary--200)` |
+| `--graupl-theme-default--tertiary--300` | Default theme tertiary shade 300. | `var(--graupl-tertiary--300)` |
+| `--graupl-theme-default--tertiary--400` | Default theme tertiary shade 400. | `var(--graupl-tertiary--400)` |
+| `--graupl-theme-default--tertiary--500` | Default theme tertiary shade 500. | `var(--graupl-tertiary--500)` |
+| `--graupl-theme-default--tertiary--600` | Default theme tertiary shade 600. | `var(--graupl-tertiary--600)` |
+| `--graupl-theme-default--tertiary--700` | Default theme tertiary shade 700. | `var(--graupl-tertiary--700)` |
+| `--graupl-theme-default--tertiary--800` | Default theme tertiary shade 800. | `var(--graupl-tertiary--800)` |
+| `--graupl-theme-default--tertiary--900` | Default theme tertiary shade 900. | `var(--graupl-tertiary--900)` |
+| `--graupl-theme-active--primary` | Active theme primary base colour. | `var(--graupl-theme-default--primary)` |
+| `--graupl-theme-active--primary--100` | Active theme primary shade 100. | `var(--graupl-theme-default--primary--100)` |
+| `--graupl-theme-active--primary--200` | Active theme primary shade 200. | `var(--graupl-theme-default--primary--200)` |
+| `--graupl-theme-active--primary--300` | Active theme primary shade 300. | `var(--graupl-theme-default--primary--300)` |
+| `--graupl-theme-active--primary--400` | Active theme primary shade 400. | `var(--graupl-theme-default--primary--400)` |
+| `--graupl-theme-active--primary--500` | Active theme primary shade 500. | `var(--graupl-theme-default--primary--500)` |
+| `--graupl-theme-active--primary--600` | Active theme primary shade 600. | `var(--graupl-theme-default--primary--600)` |
+| `--graupl-theme-active--primary--700` | Active theme primary shade 700. | `var(--graupl-theme-default--primary--700)` |
+| `--graupl-theme-active--primary--800` | Active theme primary shade 800. | `var(--graupl-theme-default--primary--800)` |
+| `--graupl-theme-active--primary--900` | Active theme primary shade 900. | `var(--graupl-theme-default--primary--900)` |
+| `--graupl-theme-active--secondary` | Active theme secondary base colour. | `var(--graupl-theme-default--secondary)` |
+| `--graupl-theme-active--secondary--100` | Active theme secondary shade 100. | `var(--graupl-theme-default--secondary--100)` |
+| `--graupl-theme-active--secondary--200` | Active theme secondary shade 200. | `var(--graupl-theme-default--secondary--200)` |
+| `--graupl-theme-active--secondary--300` | Active theme secondary shade 300. | `var(--graupl-theme-default--secondary--300)` |
+| `--graupl-theme-active--secondary--400` | Active theme secondary shade 400. | `var(--graupl-theme-default--secondary--400)` |
+| `--graupl-theme-active--secondary--500` | Active theme secondary shade 500. | `var(--graupl-theme-default--secondary--500)` |
+| `--graupl-theme-active--secondary--600` | Active theme secondary shade 600. | `var(--graupl-theme-default--secondary--600)` |
+| `--graupl-theme-active--secondary--700` | Active theme secondary shade 700. | `var(--graupl-theme-default--secondary--700)` |
+| `--graupl-theme-active--secondary--800` | Active theme secondary shade 800. | `var(--graupl-theme-default--secondary--800)` |
+| `--graupl-theme-active--secondary--900` | Active theme secondary shade 900. | `var(--graupl-theme-default--secondary--900)` |
+| `--graupl-theme-active--tertiary` | Active theme tertiary base colour. | `var(--graupl-theme-default--tertiary)` |
+| `--graupl-theme-active--tertiary--100` | Active theme tertiary shade 100. | `var(--graupl-theme-default--tertiary--100)` |
+| `--graupl-theme-active--tertiary--200` | Active theme tertiary shade 200. | `var(--graupl-theme-default--tertiary--200)` |
+| `--graupl-theme-active--tertiary--300` | Active theme tertiary shade 300. | `var(--graupl-theme-default--tertiary--300)` |
+| `--graupl-theme-active--tertiary--400` | Active theme tertiary shade 400. | `var(--graupl-theme-default--tertiary--400)` |
+| `--graupl-theme-active--tertiary--500` | Active theme tertiary shade 500. | `var(--graupl-theme-default--tertiary--500)` |
+| `--graupl-theme-active--tertiary--600` | Active theme tertiary shade 600. | `var(--graupl-theme-default--tertiary--600)` |
+| `--graupl-theme-active--tertiary--700` | Active theme tertiary shade 700. | `var(--graupl-theme-default--tertiary--700)` |
+| `--graupl-theme-active--tertiary--800` | Active theme tertiary shade 800. | `var(--graupl-theme-default--tertiary--800)` |
+| `--graupl-theme-active--tertiary--900` | Active theme tertiary shade 900. | `var(--graupl-theme-default--tertiary--900)` |
+| `--graupl-color-scheme` | The color scheme. | `light` |
+
+## Color Properties
+
+| Class Name | Property | Default Value |
+| --- | --- | --- |
+| `--graupl-root-color` | Base text colour applied to `:root`. | `var(--graupl-theme-active--primary--900)` |
+| `--graupl-root-background` | Base background colour applied to `:root`. | `var(--graupl-theme-active--primary--100)` |
+| `--graupl-color` | Text colour token. | `var(--graupl-root-color)` |
+| `--graupl-background` | Background colour token. | `var(--graupl-root-background)` |
+| `--graupl-border-color` | Border colour token. | `var(--graupl-color)` |
+
+## Customization
+
+The following Sass variables can be used to customize the generation of the color component:
+
+| Class Name | Property | Default Value |
+| --- | --- | --- |
+| `$selector-base` | The selector base for the component. | `"."` |
+| `$modifier-selector-base` | The selector base for component modifiers. | `"."` |
+| `$generate-base-colors` | Flag to generate base colour tokens. | `true` |
+| `$generate-base-themes` | Flag to generate base theme tokens. | `true` |
+| `$theme-selector-base` | The selector base for the theme modifiers. | `"."` |
+| `$theme-selector-prefix` | Prefix for theme modifiers. | `""` |
+| `$theme-selector-suffix` | Suffix for theme modifiers. | `"-theme"` |
+| `$scheme-selector-base` | The selector base for the scheme modifiers. | `"."` |
+| `$scheme-selector-prefix` | Prefix for scheme modifiers. | `""` |
+| `$scheme-selector-suffix` | Suffix for scheme modifiers. | `"-mode"` |
+| `$root-selector-base` | The base selector for the root component. | `":"` |
+| `$root-selector` | The selector for the root component. | `"root"` |
+| `$colors` | Map of base colours and shades. | `()` |
+| `$themes` | List of available themes. | `()` |
+| `$default-theme` | Theme used for the active tokens at `:root`. | `"default"` |
+| `$schemes` | List of available schemes. | `()` |
+| `$theme-schemes` | The default scheme for each theme. | `()` |
+| `$non-themeable-colors` | A list of colors to be excluded from theme generation. | `()` |
+| `$theme-colors` | A map of themes and their respective colors. | `()` |
+| `$scheme-mappings` | A map of shade mappings for each theme + scheme. | `()` |
+| `$theme-map` | Expanded map of theme → colour → shade references. | `()` |
