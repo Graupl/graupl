@@ -21,35 +21,33 @@ describe("Accordion.vue", () => {
     );
   });
 
-  it("is open by default and does not show content", () => {
+  it("is closed by default and does not show content", () => {
     const Accordion = mounted();
-    expect(Accordion.find(".accordion-item-content").exists()).toBe(true);
+    expect(Accordion.find(".accordion-item-content").exists()).toBe(false);
   });
 
-  it("closes and hides content when clicked", async () => {
+  it("opens and displays content when clicked", async () => {
     const Accordion = mounted();
     const button = Accordion.find(".accordion-item-toggle");
 
-    // Click to close
+    // Click to open
     await button.trigger("click");
 
     const content = Accordion.find(".accordion-item-content");
-    expect(content.exists()).toBe(false);
+    expect(content.exists()).toBe(true);
+    expect(content.text()).toBe("Accordion Content");
   });
 
-  it("opens when clicked a second time", async () => {
+  it("closes when clicked a second time", async () => {
     const Accordion = mounted();
     const button = Accordion.find(".accordion-item-toggle");
+
+    // Open it
+    await button.trigger("click");
+    expect(Accordion.find(".accordion-item-content").exists()).toBe(true);
 
     // Close it
     await button.trigger("click");
     expect(Accordion.find(".accordion-item-content").exists()).toBe(false);
-
-    // Open it
-    await button.trigger("click");
-    const content = Accordion.find(".accordion-item-content");
-
-    expect(content.exists()).toBe(true);
-    expect(content.text()).toBe("Accordion Content");
   });
 });
