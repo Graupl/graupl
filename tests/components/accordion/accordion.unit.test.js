@@ -8,9 +8,9 @@ describe("Accordion.vue", () => {
     return mount(Component);
   };
 
-  vi.mock(generate, () => {
+  vi.mock("./accordion", () => {
     return {
-      default: Component,
+      default: () => generate(),
     };
   });
 
