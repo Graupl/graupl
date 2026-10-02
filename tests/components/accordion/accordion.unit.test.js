@@ -3,16 +3,16 @@ import { describe, it, expect, vi } from "vitest";
 import Component from "./accordion.js";
 import generate from "../../components/accordion/accordion.js";
 
+vi.mock("./accordion.unit.test.js", () => {
+  return {
+    default: () => generate(),
+  };
+});
+
 describe("Accordion.vue", () => {
   const mounted = () => {
     return mount(Component);
   };
-
-  vi.mock("./accordion", () => {
-    return {
-      default: () => generate(),
-    };
-  });
 
   it("renders the title correctly", () => {
     const Accordion = mounted();
