@@ -3,21 +3,24 @@ import { describe, it, expect } from "vitest";
 import Component from "./accordion.js";
 
 describe("Accordion.vue", () => {
-  const Accordion = () => {
+  const mounted = () => {
     return mount(Component);
   };
 
   it("renders the title correctly", () => {
+    const Accordion = mounted();
     expect(Accordion.find(".accordion-item-toggle").text()).toBe(
       "Accordion Heading"
     );
   });
 
   it("is closed by default and does not show content", () => {
+    const Accordion = mounted();
     expect(Accordion.find(".accordion-item-content").exists()).toBe(false);
   });
 
   it("opens and displays content when clicked", async () => {
+    const Accordion = mounted();
     const button = Accordion.find(".accordion-item-toggle");
 
     // Click to open
@@ -29,6 +32,7 @@ describe("Accordion.vue", () => {
   });
 
   it("closes when clicked a second time", async () => {
+    const Accordion = mounted();
     const button = Accordion.find(".accordion-item-toggle");
 
     // Open it
