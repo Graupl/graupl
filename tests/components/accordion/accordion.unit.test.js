@@ -5,11 +5,10 @@ import generate from "../../components/accordion/accordion.js";
 
 describe("Accordion.vue", () => {
   const mounted = () => {
-    vi.mock(generate, () => ({
-      default: Component,
-    }));
     return mount(Component);
   };
+
+  vi.mock(generate);
 
   it("renders the title correctly", () => {
     const Accordion = mounted();
