@@ -95,7 +95,7 @@ nested container to inherit the grid columns of the parent container.
         <option value="contain sidebar-right">Contained Sidebars Right</option>
         <option value="content">Content</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the container option you would like displayed.</p>
     </div>
   </template>
 </live-example>
