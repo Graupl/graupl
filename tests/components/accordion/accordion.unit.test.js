@@ -1,9 +1,11 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect } from "vitest";
 import Component from "./accordion.js";
+import generate from "../../components/accordion/accordion.js";
 
 describe("Accordion.vue", () => {
   const mounted = () => {
+    generate();
     return mount(Component);
   };
 
