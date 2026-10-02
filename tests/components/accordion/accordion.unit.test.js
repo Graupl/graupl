@@ -8,7 +8,11 @@ describe("Accordion.vue", () => {
     return mount(Component);
   };
 
-  vi.mock(generate);
+  vi.mock(generate, () => {
+    return {
+      default: Component,
+    };
+  });
 
   it("renders the title correctly", () => {
     const Accordion = mounted();
