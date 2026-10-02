@@ -3,7 +3,6 @@ import { setupClasses } from "../helpers.js";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
 import WrapperComponent from "../component/wrapper-component.js";
-import generate from "@graupl/core/src/accordion/generator.js";
 
 export default {
   props: {
@@ -18,8 +17,6 @@ export default {
   },
   setup(props) {
     const attributes = setupClasses(props.attributes, ["accordion"]);
-
-    generate();
 
     return () =>
       h(WrapperComponent, {
