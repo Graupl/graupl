@@ -134,7 +134,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="count-11">Count 11</option>
         <option value="count-12">Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -161,7 +161,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="lg:fixed">Large Fixed</option>
         <option value="xl:fixed">Extra Large Fixed</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the fixed columns you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -248,7 +248,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="xs:count-11">Extra Small Count 11</option>
         <option value="xs:count-12">Extra Small Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-sm-count" v-model="smCount">
@@ -265,7 +265,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="sm:count-11">Small Count 11</option>
         <option value="sm:count-12">Small Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-md-count" v-model="mdCount">
@@ -282,7 +282,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="md:count-11">Medium Count 11</option>
         <option value="md:count-12">Medium Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the medium column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-lg-count" v-model="lgCount">
@@ -299,7 +299,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="lg:count-11">Large Count 11</option>
         <option value="lg:count-12">Large Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the large column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-xl-count" v-model="xlCount">
@@ -316,7 +316,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="xl:count-11">Extra Large Count 11</option>
         <option value="xl:count-12">Extra Large Count 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-large column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -355,7 +355,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="span-11">Span 11</option>
         <option value="span-12">Span 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the span count you would like displayed.</p>
     </div>
   </template>
 </live-example>
@@ -442,7 +442,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="xs:span-11">Extra Small Span 11</option>
         <option value="xs:span-12">Extra Small Span 12</option>
       </select>
-      <p class="help-text">Select the alignment you would like displayed.</p>
+      <p class="help-text">Select the extra-small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-sm-span" v-model="smSpan">
@@ -459,7 +459,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="sm:span-11">Small Span 11</option>
         <option value="sm:span-12">Small Span 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the small column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-md-Span" v-model="mdSpan">
@@ -476,7 +476,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="md:span-11">Medium Span 11</option>
         <option value="md:span-12">Medium Span 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the medium column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-lg-Span" v-model="lgSpan">
@@ -493,7 +493,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="lg:span-11">Large Span 11</option>
         <option value="lg:span-12">Large Span 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the large column count you would like displayed.</p>
     </div>
     <div class="input-group">
       <select id="select-columns-xl-Span" v-model="xlSpan">
@@ -510,7 +510,7 @@ The columns component provides the following set of classes to apply the preset 
         <option value="xl:span-11">Extra Large Span 11</option>
         <option value="xl:span-12">Extra Large Span 12</option>
       </select>
-    <p class="help-text">Select the alignment you would like displayed.</p>
+    <p class="help-text">Select the extra-large column count you would like displayed.</p>
     </div>
   </template>
 </live-example>
