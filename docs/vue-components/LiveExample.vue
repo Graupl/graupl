@@ -1,5 +1,5 @@
 <script setup>
-import { ref, shallowRef, useTemplateRef, onMounted, onUpdated } from "vue";
+import { ref, shallowRef, useTemplateRef, onMounted, onUpdated, defineEmits } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
@@ -15,6 +15,7 @@ const sourceElement = useTemplateRef("example-source");
 const code = ref("");
 const extensions = [html(), css()];
 const view = shallowRef();
+const emit = defineEmits(['mounted', 'updated'])
 
 const handleReady = (payload) => {
   view.value = payload.view;
@@ -36,6 +37,12 @@ onMounted(() => {
       ? sourceElement.value.innerHTML.trim()
       : sourceElement.value.innerHTML;
   }
+
+  emit('mounted');
+});
+
+onUpdated(() => {
+  emit('updated');
 });
 </script>
 
