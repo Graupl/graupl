@@ -20,6 +20,7 @@ $theme-aware: false !default;
 $scheme-aware: false !default;
 $state-aware: false !default;
 $container-aware: true !default;
+$force-single-columns: true !default;
 $flex-columns-selector-base: $selector-base !default;
 $flex-columns-selector: "flex-columns" !default;
 $flex-columns-theme-selector-base: $modifier-selector-base !default;

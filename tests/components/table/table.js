@@ -1,7 +1,8 @@
 import { h } from "vue";
+import { setupClasses } from "../helpers.js";
 import AdvancedComponent from "../component/advanced-component.js";
 import BasicComponent from "../component/basic-component.js";
-import { setupClasses } from "../helpers.js";
+import WrapperComponent from "../component/wrapper-component.js";
 
 export default {
   props: {
@@ -18,137 +19,144 @@ export default {
     const attributes = setupClasses(props.attributes, ["table"]);
 
     return () =>
-      h(AdvancedComponent, {
-        tag: "table",
-        ...props,
-        attributes,
+      h(WrapperComponent, {
         children: [
-          h(BasicComponent, {
-            tag: "caption",
-            text: "A caption for the table",
-          }),
           h(AdvancedComponent, {
-            tag: "thead",
+            tag: "table",
+            ...props,
+            attributes,
             children: [
+              h(BasicComponent, {
+                tag: "caption",
+                text: "A caption for the table",
+              }),
               h(AdvancedComponent, {
-                tag: "tr",
+                tag: "thead",
                 children: [
-                  h(BasicComponent, {
-                    tag: "th",
-                    attributes: {
-                      scope: "col",
-                    },
-                    text: "Person",
-                  }),
-                  h(BasicComponent, {
-                    tag: "th",
-                    attributes: {
-                      scope: "col",
-                    },
-                    text: "Most interested in",
-                  }),
-                  h(BasicComponent, {
-                    tag: "th",
-                    attributes: {
-                      scope: "col",
-                    },
-                    text: "Age",
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "th",
+                        attributes: {
+                          scope: "col",
+                        },
+                        text: "Person",
+                      }),
+                      h(BasicComponent, {
+                        tag: "th",
+                        attributes: {
+                          scope: "col",
+                        },
+                        text: "Most interested in",
+                      }),
+                      h(BasicComponent, {
+                        tag: "th",
+                        attributes: {
+                          scope: "col",
+                        },
+                        text: "Age",
+                      }),
+                    ],
                   }),
                 ],
               }),
-            ],
-          }),
 
-          h(AdvancedComponent, {
-            tag: "tbody",
-            children: [
               h(AdvancedComponent, {
-                tag: "tr",
+                tag: "tbody",
                 children: [
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "Chris",
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "Chris",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "HTML tables",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "22",
+                      }),
+                    ],
                   }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "HTML tables",
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "Dennis",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        attributes: {
+                          class: [
+                            "highlight",
+                            props.variant ? props.variant : "",
+                          ],
+                        },
+                        text: "Web Accessibility",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "45",
+                      }),
+                    ],
                   }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "22",
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "Sarah",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "JavaScript frameworks",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "29",
+                      }),
+                    ],
+                  }),
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "Karen",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "Web performance",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "36",
+                      }),
+                    ],
                   }),
                 ],
               }),
               h(AdvancedComponent, {
-                tag: "tr",
+                tag: "tfoot",
                 children: [
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "Dennis",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    attributes: {
-                      class: ["highlight", props.variant ? props.variant : ""],
-                    },
-                    text: "Web Accessibility",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "45",
-                  }),
-                ],
-              }),
-              h(AdvancedComponent, {
-                tag: "tr",
-                children: [
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "Sarah",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "JavaScript frameworks",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "29",
-                  }),
-                ],
-              }),
-              h(AdvancedComponent, {
-                tag: "tr",
-                children: [
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "Karen",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "Web performance",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "36",
-                  }),
-                ],
-              }),
-            ],
-          }),
-          h(AdvancedComponent, {
-            tag: "tfoot",
-            children: [
-              h(AdvancedComponent, {
-                tag: "tr",
-                children: [
-                  h(BasicComponent, {
-                    tag: "th",
-                    attributes: { scope: "row", colspan: "2" },
-                    text: "Average age",
-                  }),
-                  h(BasicComponent, {
-                    tag: "td",
-                    text: "33",
+                  h(AdvancedComponent, {
+                    tag: "tr",
+                    children: [
+                      h(BasicComponent, {
+                        tag: "th",
+                        attributes: { scope: "row", colspan: "2" },
+                        text: "Average age",
+                      }),
+                      h(BasicComponent, {
+                        tag: "td",
+                        text: "33",
+                      }),
+                    ],
                   }),
                 ],
               }),
