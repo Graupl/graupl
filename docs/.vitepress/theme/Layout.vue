@@ -83,17 +83,17 @@ onMounted(() => {
             class="navigation-shelf-footer w-shelf-open display-flex flex-wrap"
           >
             <button
-              class="button navigation-shelf-lock-toggle w-min-content mr-auto"
+              class="navigation-shelf-lock-toggle w-min-content mr-auto"
               aria-label="Toggle shelf lock"
               ref="shelfLockToggle"
             ></button>
             <button
-              class="button navigation-shelf-hover-toggle w-min-content"
+              class="navigation-shelf-hover-toggle w-min-content"
               aria-label="Toggle shelf hover"
               ref="shelfHoverToggle"
             ></button>
             <button
-              class="button navigation-shelf-side-toggle w-min-content"
+              class="navigation-shelf-side-toggle w-min-content"
               aria-label="Toggle side"
               ref="shelfSideToggle"
             ></button>
