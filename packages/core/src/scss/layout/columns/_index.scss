@@ -293,6 +293,91 @@ $columns-span-map: ();
       grid-template-columns: subgrid;
     }
 
+    // Generate the base `.fixed` class.
+    // `&.fixed`
+    @include utility.generate(
+      $map: (
+        "#{defaults.$columns-fixed-selector}": (
+          --#{root-defaults.$prefix}columns-max-width: #{$columns-min-width},
+        ),
+      ),
+      $selector-base: "&#{defaults.$columns-fixed-selector-base}",
+      $selector-prefix: "",
+      $selector-suffix: "",
+      $screen-aware: false,
+      $theme-aware: false,
+      $scheme-aware: false,
+      $state-aware: false,
+      $container-aware: false,
+      $important: false
+    );
+
+    // Generate the base `.count-#` classes.
+    // e.g. `&.count-1` or `&.count-12`
+    @include utility.generate(
+        $map: $columns-count-map,
+        $selector-base: "&#{defaults.$columns-count-selector-base}",
+        $selector-prefix: "",
+        $selector-suffix: "",
+        $screen-aware: false,
+        $theme-aware: false,
+        $scheme-aware: false,
+        $state-aware: false,
+        $container-aware: false,
+        $important: false
+      )
+      using($selector, $properties, $responsive-type, $responsive-name) {
+      $count-classes: map.keys($columns-count-map);
+      $i: list.index($count-classes, $selector);
+
+      // maximum column count so they don't break the layout.
+      @for $j from $i + 1 through defaults.$columns-max-count {
+        // > .span-#{$j}
+        > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
+          --#{root-defaults.$prefix}columns-span: #{$i};
+        }
+      }
+    }
+
+    // Generate the base `.span-#` classes.
+    // e.g. `> .span-1` or `> .span-12`
+    @include utility.generate(
+      $map: $columns-span-map,
+      $selector-base: "> #{defaults.$columns-span-selector-base}",
+      $selector-prefix: "",
+      $selector-suffix: "",
+      $screen-aware: false,
+      $theme-aware: false,
+      $scheme-aware: false,
+      $state-aware: false,
+      $container-aware: false,
+      $important: false
+    );
+
+    // Disable columns on small screens to avoid horizontal bleeding.
+    @if defaults.$force-single-columns {
+      @include container.trigger(force-single-column) {
+        --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};
+
+        > * {
+          --#{root-defaults.$prefix}columns-span: 1;
+        }
+
+        // All spans should be set to 1 to avoid adding columns.
+        @for $i
+          from defaults.$columns-min-count
+          through defaults.$columns-max-count
+        {
+          // > .span-#{$i}
+          #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
+            --#{root-defaults.$prefix}columns-span: 1;
+          }
+        }
+      }
+    }
+
+    // Generate all responsive `.fixed` classes.
+    // e.g. `&.xs:fixed` or `&.xl:fixed`
     @include utility.generate(
       $map: (
         "#{defaults.$columns-fixed-selector}": (
@@ -337,9 +422,12 @@ $columns-span-map: ();
         defaults.$columns-container-aware-selector-suffix,
       $container-aware-selector-separator:
         defaults.$columns-container-aware-selector-separator,
-      $important: false
+      $important: false,
+      $generate-base-utility: false
     );
 
+    // Generate all responsive `.count-#` classes.
+    // e.g. `&.xs:count-2` or `&.xl:count-12`
     @include utility.generate(
         $map: $columns-count-map,
         $selector-base: "&#{defaults.$columns-count-selector-base}",
@@ -380,7 +468,8 @@ $columns-span-map: ();
           defaults.$columns-container-aware-selector-suffix,
         $container-aware-selector-separator:
           defaults.$columns-container-aware-selector-separator,
-        $important: false
+        $important: false,
+        $generate-base-utility: false
       )
       using($selector, $properties, $responsive-type, $responsive-name) {
       $count-classes: map.keys($columns-count-map);
@@ -395,9 +484,11 @@ $columns-span-map: ();
       }
     }
 
+    // Generate all responsive `.span-#` classes.
+    // e.g. `> .xs:span-2` or `> .xl:span-12`
     @include utility.generate(
       $map: $columns-span-map,
-      $selector-base: "#{defaults.$columns-span-selector-base}",
+      $selector-base: "> #{defaults.$columns-span-selector-base}",
       $selector-prefix: "",
       $selector-suffix: "",
       $screen-aware: defaults.$screen-aware,
@@ -435,33 +526,9 @@ $columns-span-map: ();
         defaults.$columns-container-aware-selector-suffix,
       $container-aware-selector-separator:
         defaults.$columns-container-aware-selector-separator,
-      $important: false
+      $important: false,
+      $generate-base-utility: false
     );
-  }
-
-  // Disable columns on small screens to avoid horizontal bleeding.
-  @if defaults.$force-single-columns {
-    @include container.trigger(force-single-column) {
-      // .columns
-      #{defaults.$columns-selector-base}#{defaults.$columns-selector} {
-        --#{root-defaults.$prefix}columns-min-width: #{defaults.$columns-max-width};
-
-        > * {
-          --#{root-defaults.$prefix}columns-span: 1;
-        }
-
-        // All spans should be set to 1 to avoid adding columns.
-        @for $i
-          from defaults.$columns-min-count
-          through defaults.$columns-max-count
-        {
-          // > .span-#{$i}
-          #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$i} {
-            --#{root-defaults.$prefix}columns-span: 1;
-          }
-        }
-      }
-    }
   }
 }
 
