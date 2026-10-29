@@ -4,33 +4,24 @@ import Component from "./menu.js";
 
 describe("Menu Closed Component", () => {
   it("Should match screenshot while closed:", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "menu",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("menu")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });
 
 describe("Menu Open Component", () => {
   it("Should match screenshot while open:", async () => {
-    const screen = render(Component, {
-      props: {
-        open: true,
-        attributes: {
-          "data-testid": "menu",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("menu")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });
