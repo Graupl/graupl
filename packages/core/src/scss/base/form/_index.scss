@@ -70,35 +70,36 @@
 // | `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-input-color)`                                                                                                                                                                       |
 //
 // The following sass variables can be used to customize the generation of the form components:
-// | Variable                               | Description                                                             | Default Value                                               |
-// | -------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------- |
-// | `$selector-base`                       | The selector base for the component.                                    | `""`                                                        |
-// | `$modifier-selector-base`              | The selector base for component modifiers.                              | `"."`                                                       |
-// | `$generate-base-theme-map`             | Flag to generate the base theme maps for form elements.                 | `true`                                                      |
-// | `$themeable`                           | Flag to generate theme modifiers.                                       | `true`                                                      |
-// | `$input-selector-base`                 | The base selector for the input component.                              | `""`                                                        |
-// | `$input-selector`                      | The input component selector.                                           | `"input"`                                                   |
-// | `$input-theme-prefix-selector-base`    | Selector base used for input theme modifiers.                           | `"."`                                                       |
-// | `$input-theme-prefix-selector`         | Selector prefix used for input theme modifiers.                         | `""`                                                        |
-// | `$textarea-selector-base`              | The base selector for the textarea component.                           | `""`                                                        |
-// | `$textarea-selector`                   | The textarea component selector.                                        | `"textarea"`                                                |
-// | `$select-selector-base`                | The base selector for the select component.                             | `""`                                                        |
-// | `$select-selector`                     | The select component selector.                                          | `"select"`                                                  |
-// | `$label-selector-base`                 | The base selector for the label component.                              | `""`                                                        |
-// | `$label-selector`                      | The label component selector.                                           | `"label"`                                                   |
-// | `$label-theme-prefix-selector-base`    | Selector base used for label theme modifiers.                           | `"."`                                                       |
-// | `$label-theme-prefix-selector`         | Selector prefix used for label theme modifiers.                         | `""`                                                        |
-// | `$fieldset-selector-base`              | The base selector for the fieldset component.                           | `""`                                                        |
-// | `$fieldset-selector`                   | The fieldset component selector.                                        | `"fieldset"`                                                |
-// | `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                        | `"."`                                                       |
-// | `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                      | `""`                                                        |
-// | `$fieldset-direction`                  | The direction of fieldset component items.                              | `column`                                                    |
-// | `$input-theme-mappings`                | Map of properties and shade values applied to themed input variants.    | `()`                                                        |
-// | `$input-theme-map`                     | Fully expanded property map used to generate themed input variants.     | `map.deep-merge($-input-theme-map, $input-theme-map)`       |
-// | `$label-theme-mappings`                | Map of properties and shade values applied to themed label variants.    | `()`                                                        |
-// | `$label-theme-map`                     | Fully expanded property map used to generate themed label variants.     | `map.deep-merge($-label-theme-map, $label-theme-map)`       |
-// | `$fieldset-theme-mappings`             | Map of properties and shade values applied to themed fieldset variants. | `()`                                                        |
-// | `$fieldset-theme-map`                  | Fully expanded property map used to generate themed fieldset variants.  | `map.deep-merge($-fieldset-theme-map, $fieldset-theme-map)` |
+// | Variable                               | Description                                                             | Default Value |
+// | -------------------------------------- | ----------------------------------------------------------------------- | ------------- |
+// | `$selector-base`                       | The selector base for the component.                                    | `""`          |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                              | `"."`         |
+// | `$generate-base-theme-map`             | Flag to generate the base theme maps for form elements.                 | `true`        |
+// | `$themeable`                           | Flag to generate theme modifiers.                                       | `true`        |
+// | `$input-selector-base`                 | The base selector for the input component.                              | `""`          |
+// | `$input-selector`                      | The input component selector.                                           | `"input"`     |
+// | `$input-theme-prefix-selector-base`    | Selector base used for input theme modifiers.                           | `"."`         |
+// | `$input-theme-prefix-selector`         | Selector prefix used for input theme modifiers.                         | `""`          |
+// | `$textarea-selector-base`              | The base selector for the textarea component.                           | `""`          |
+// | `$textarea-selector`                   | The textarea component selector.                                        | `"textarea"`  |
+// | `$select-selector-base`                | The base selector for the select component.                             | `""`          |
+// | `$select-selector`                     | The select component selector.                                          | `"select"`    |
+// | `$label-selector-base`                 | The base selector for the label component.                              | `""`          |
+// | `$label-selector`                      | The label component selector.                                           | `"label"`     |
+// | `$label-theme-prefix-selector-base`    | Selector base used for label theme modifiers.                           | `"."`         |
+// | `$label-theme-prefix-selector`         | Selector prefix used for label theme modifiers.                         | `""`          |
+// | `$fieldset-selector-base`              | The base selector for the fieldset component.                           | `""`          |
+// | `$fieldset-selector`                   | The fieldset component selector.                                        | `"fieldset"`  |
+// | `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                        | `"."`         |
+// | `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                      | `""`          |
+// | `$fieldset-direction`                  | The direction of fieldset component items.                              | `column`      |
+// | `$input-type-selectors`                | Various tyles of inputs and their associated selectors.                 | `()`          |
+// | `$input-theme-mappings`                | Map of properties and shade values applied to themed input variants.    | `()`          |
+// | `$input-theme-map`                     | Fully expanded property map used to generate themed input variants.     | `()`          |
+// | `$label-theme-mappings`                | Map of properties and shade values applied to themed label variants.    | `()`          |
+// | `$label-theme-map`                     | Fully expanded property map used to generate themed label variants.     | `()`          |
+// | `$fieldset-theme-mappings`             | Map of properties and shade values applied to themed fieldset variants. | `()`          |
+// | `$fieldset-theme-map`                  | Fully expanded property map used to generate themed fieldset variants.  | `()`          |
 //
 // ## Using `$input-theme-mappings`, `$label-theme-mappings`, and `$fieldset-theme-mappings`
 //

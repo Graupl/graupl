@@ -18,8 +18,11 @@ $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-colors: root-defaults.$generate-base-colors !default;
 $generate-base-themes: root-defaults.$generate-base-themes !default;
 $theme-selector-base: $modifier-selector-base !default;
-$theme-selector-prefix: "" !default;
-$theme-selector-suffix: "-mode" !default;
+$theme-selector-prefix: root-defaults.$theme-aware-selector-prefix !default;
+$theme-selector-suffix: root-defaults.$theme-aware-selector-suffix !default;
+$scheme-selector-base: $modifier-selector-base !default;
+$scheme-selector-prefix: root-defaults.$scheme-aware-selector-prefix !default;
+$scheme-selector-suffix: root-defaults.$scheme-aware-selector-suffix !default;
 $root-selector-base: root-defaults.$root-selector-base !default;
 $root-selector: root-defaults.$root-selector !default;
 
@@ -81,7 +84,7 @@ $colors: () !default;
 // Ensure all keys in the colors map are strings.
 $colors: map-functions.force-string-keys($colors);
 
-// If a vlaue in colors is a color, convert it to a map with only the _default shade.
+// If a value in colors is a color, convert it to a map with only the _default shade.
 // This allows users to more easlily add 1-off custom colours without having to define the entire color map structure.
 @each $color, $value in $colors {
   @if meta.type-of($value) == "color" {
@@ -102,47 +105,102 @@ $colors: map-functions.force-string-keys($colors);
 }
 
 // Themes.
-$-themes: ("light", "dark");
+$-themes: ("default");
 $themes: () !default;
 
 // Ensure all themes are strings.
 $themes: list-functions.force-strings($themes);
-$default-theme: "light" !default;
 
-// Theme mappings.
-$-theme-mappings: (
-  "light": (
-    "100": "100",
-    "200": "200",
-    "300": "300",
-    "400": "400",
-    "500": "500",
-    "600": "600",
-    "700": "700",
-    "800": "800",
-    "900": "900",
-  ),
-  "dark": (
-    "100": "900",
-    "200": "800",
-    "300": "700",
-    "400": "600",
-    "500": "500",
-    "600": "400",
-    "700": "300",
-    "800": "200",
-    "900": "100",
+// Set the default theme.
+$default-theme: "default" !default;
+
+// Schemes.
+$-schemes: ("light", "dark");
+$schemes: () !default;
+
+// Ensure all keys in the schemes are strings.
+$schemes: map-functions.force-string-keys($schemes);
+
+// Theme schemes.
+$-theme-schemes: (
+  "default": "light",
+);
+$theme-schemes: () !default;
+
+// Ensure all keys in the theme schemes are strings.
+$theme-schemes: map-functions.force-string-keys($theme-schemes);
+
+// Non-themeable colors.
+$-non-themeable-colors: ();
+$non-themeable-colors: () !default;
+
+// Ensure all values in the non-themeable colors are strings.
+$non-themeable-colors: list-functions.force-strings($non-themeable-colors);
+$non-themeable-colors: list.join($-non-themeable-colors, $non-themeable-colors);
+$-theme-colors: (
+  "_default": (),
+);
+
+@each $color-name, $color-shades in $colors {
+  @if not list.index($non-themeable-colors, $color-name) {
+    $default-theme-colors: ();
+    $default-theme-colors: map.merge(
+      $default-theme-colors,
+      (
+        $color-name: $color-name,
+      )
+    );
+    $theme-colors: (
+      "_default": $default-theme-colors,
+    );
+    $-theme-colors: map.deep-merge($-theme-colors, $theme-colors);
+  }
+}
+
+$theme-colors: ();
+
+// Ensure all keys in the theme colors are strings.
+$theme-colors: map-functions.force-string-keys($theme-colors);
+
+// Scheme mappings.
+$-scheme-mappings: (
+  "_default": (
+    "light": (
+      "100": "100",
+      "200": "200",
+      "300": "300",
+      "400": "400",
+      "500": "500",
+      "600": "600",
+      "700": "700",
+      "800": "800",
+      "900": "900",
+    ),
+    "dark": (
+      "100": "900",
+      "200": "800",
+      "300": "700",
+      "400": "600",
+      "500": "500",
+      "600": "400",
+      "700": "300",
+      "800": "200",
+      "900": "100",
+    ),
   ),
 );
-$theme-mappings: () !default;
+$scheme-mappings: () !default;
 
-// Ensure all keys in the theme mappings are strings.
-$theme-mappings: map-functions.force-string-keys($theme-mappings);
+// Ensure all keys in the scheme mappings are strings.
+$scheme-mappings: map-functions.force-string-keys($scheme-mappings);
 
 // Merge the custom themes with the default ones.
 @if $generate-base-themes {
   $themes: list.join($-themes, $themes);
-  $theme-mappings: map.deep-merge($-theme-mappings, $theme-mappings);
+  $schemes: list.join($-schemes, $schemes);
+  $theme-schemes: map.deep-merge($-theme-schemes, $theme-schemes);
+  $theme-colors: map.deep-merge($-theme-colors, $theme-colors);
+  $scheme-mappings: map.deep-merge($-scheme-mappings, $scheme-mappings);
 }
 
 // Theme map.
@@ -150,27 +208,54 @@ $-theme-map: ();
 
 @each $theme in $themes {
   $theme-map: ();
+  $theme-color-map: ();
 
-  @each $color-name, $color-map in $colors {
+  @if map.has-key($theme-colors, $theme) {
+    $theme-color-map: map.get($theme-colors, $theme);
+  } @else {
+    $theme-color-map: map.get($theme-colors, "_default");
+  }
+
+  @each $color-name, $color-value in $theme-color-map {
+    $color-map: map.get($colors, $color-value);
     $color-theme-map: ();
 
     @each $shade, $value in $color-map {
-      $color-property: null;
+      $shade-map: ();
+      $scheme-mapping: null;
 
-      // Handle _default shade vs proper shade mappings.
-      @if map.has-key($theme-mappings, $theme, $shade) {
-        $color-property: map.get($theme-mappings, $theme, $shade);
-      } @else if $shade == "_default" {
-        $color-property: $shade;
+      @if map.has-key($scheme-mappings, $theme) {
+        $scheme-mapping: map.get($scheme-mappings, $theme);
+      } @else {
+        $scheme-mapping: map.get($scheme-mappings, "_default");
+      }
+
+      @each $scheme, $mapping in $scheme-mapping {
+        $color-property: null;
+
+        // Handle _default shade vs proper shade mappings.
+        @if map.has-key($mapping, $shade) {
+          $color-property: map.get($mapping, $shade);
+        } @else if $shade == "_default" {
+          $color-property: $shade;
+        }
+
+        $scheme-mapping: (
+          "color": $color-value,
+          "shade": $color-property,
+        );
+        $shade-map: map.merge(
+          $shade-map,
+          (
+            $scheme: $scheme-mapping,
+          )
+        );
       }
 
       $color-theme-map: map.merge(
         $color-theme-map,
         (
-          $shade: (
-              color: $color-name,
-              shade: $color-property,
-            ),
+          $shade: $shade-map,
         )
       );
     }

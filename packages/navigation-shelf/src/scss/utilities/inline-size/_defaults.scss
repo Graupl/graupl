@@ -1,0 +1,90 @@
+// @graupl/navigation-shelf inline-size utilities default values.
+//
+// Generally, these should not be used directly when styling components unless a static value is needed.
+// They are mainly used to provide class selectors, fallbacks for custom properties, or loop values.
+//
+// They should not be used to define direct property values (i.e. font-size, color, etc.).
+// Those should be defined as custom properties in the `_variables.scss` file.
+
+@use "../../component/navigation-shelf/variables" as *;
+@use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/utility";
+@use "pkg:@graupl/core/src/utilities/inline-size/defaults" as
+  inline-size-defaults;
+@use "sass:map";
+
+// Utility modifiers.
+$selector-base: inline-size-defaults.$selector-base !default;
+$selector-prefix: inline-size-defaults.$selector-prefix !default;
+$selector-suffix: inline-size-defaults.$selector-suffix !default;
+$selector-separator: inline-size-defaults.$selector-separator !default;
+$use-important: inline-size-defaults.$use-important !default;
+$generate-base-utilities: inline-size-defaults.$generate-base-utilities !default;
+$screen-aware: inline-size-defaults.$screen-aware !default;
+$theme-aware: inline-size-defaults.$theme-aware !default;
+$scheme-aware: inline-size-defaults.$scheme-aware !default;
+$state-aware: inline-size-defaults.$state-aware !default;
+$container-aware: inline-size-defaults.$container-aware !default;
+$screen-aware-selector-separator: inline-size-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-separator: inline-size-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: inline-size-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-separator: inline-size-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-separator: inline-size-defaults.$container-aware-selector-separator !default;
+$screen-aware-selector-prefix: inline-size-defaults.$screen-aware-selector-prefix !default;
+$theme-aware-selector-prefix: inline-size-defaults.$theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: inline-size-defaults.$scheme-aware-selector-prefix !default;
+$state-aware-selector-prefix: inline-size-defaults.$state-aware-selector-prefix !default;
+$container-aware-selector-prefix: inline-size-defaults.$container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: inline-size-defaults.$screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: inline-size-defaults.$theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: inline-size-defaults.$scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: inline-size-defaults.$state-aware-selector-suffix !default;
+$container-aware-selector-suffix: inline-size-defaults.$container-aware-selector-suffix !default;
+
+// Width properties.
+$-utility-properties: width-defaults.$utility-properties;
+$utility-properties: () !default;
+
+// Width values.
+$-utility-values: (
+  "shelf-min": $navigation-shelf-min-width,
+  "shelf-max": $navigation-shelf-max-width,
+  "shelf-current": $navigation-shelf-current-width,
+  "shelf-closed": $navigation-shelf-closed-width,
+  "shelf-open": $navigation-shelf-open-width,
+);
+$utility-values: () !default;
+
+// Merge custom properties with base properties if generating base utilities.
+@if $generate-base-utilities {
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
+}
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

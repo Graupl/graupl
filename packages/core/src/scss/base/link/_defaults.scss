@@ -34,8 +34,8 @@ $link-initial-transform: none !default;
 $link-final-transform: $link-initial-transform !default;
 $link-disabled-transform: $link-initial-transform !default;
 $link-border-width: 0 !default;
-$link-min-width: auto;
-$link-min-height: auto;
+$link-min-width: auto !default;
+$link-min-height: auto !default;
 
 // Stretched link properties.
 $stretched-link-z-index: 5 !default;

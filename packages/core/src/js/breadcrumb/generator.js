@@ -1,3 +1,7 @@
+/**
+ * @file
+ * Breadcrumb generator.
+ */
 import Breadcrumb from "./Breadcrumb.js";
 import once from "@drupal/once";
 

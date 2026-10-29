@@ -1,3 +1,7 @@
+/**
+ * @file
+ * Tabs generator.
+ */
 import Tabs from "./Tabs.js";
 import once from "@drupal/once";
 

@@ -8,51 +8,82 @@
 
 @use "../../component/navigation-shelf/variables" as *;
 @use "pkg:@graupl/core/src/defaults" as root-defaults;
+@use "pkg:@graupl/core/src/functions/utility";
 @use "pkg:@graupl/core/src/utilities/width/defaults" as width-defaults;
-@use "pkg:@graupl/core/src/variables" as root-variables;
 @use "sass:map";
 
 // Utility modifiers.
 $selector-base: width-defaults.$selector-base !default;
+$selector-prefix: width-defaults.$selector-prefix !default;
+$selector-suffix: width-defaults.$selector-suffix !default;
+$selector-separator: width-defaults.$selector-separator !default;
 $use-important: width-defaults.$use-important !default;
 $generate-base-utilities: width-defaults.$generate-base-utilities !default;
 $screen-aware: width-defaults.$screen-aware !default;
 $theme-aware: width-defaults.$theme-aware !default;
+$scheme-aware: width-defaults.$scheme-aware !default;
 $state-aware: width-defaults.$state-aware !default;
 $container-aware: width-defaults.$container-aware !default;
-$screen-aware-separator: width-defaults.$screen-aware-separator !default;
-$theme-aware-separator: width-defaults.$theme-aware-separator !default;
-$state-aware-separator: width-defaults.$state-aware-separator !default;
-$container-aware-separator: width-defaults.$container-aware-separator !default;
+$screen-aware-selector-separator: width-defaults.$screen-aware-selector-separator !default;
+$theme-aware-selector-separator: width-defaults.$theme-aware-selector-separator !default;
+$scheme-aware-selector-separator: width-defaults.$scheme-aware-selector-separator !default;
+$state-aware-selector-separator: width-defaults.$state-aware-selector-separator !default;
+$container-aware-selector-separator: width-defaults.$container-aware-selector-separator !default;
 $screen-aware-selector-prefix: width-defaults.$screen-aware-selector-prefix !default;
 $theme-aware-selector-prefix: width-defaults.$theme-aware-selector-prefix !default;
+$scheme-aware-selector-prefix: width-defaults.$scheme-aware-selector-prefix !default;
 $state-aware-selector-prefix: width-defaults.$state-aware-selector-prefix !default;
 $container-aware-selector-prefix: width-defaults.$container-aware-selector-prefix !default;
+$screen-aware-selector-suffix: width-defaults.$screen-aware-selector-suffix !default;
+$theme-aware-selector-suffix: width-defaults.$theme-aware-selector-suffix !default;
+$scheme-aware-selector-suffix: width-defaults.$scheme-aware-selector-suffix !default;
+$state-aware-selector-suffix: width-defaults.$state-aware-selector-suffix !default;
+$container-aware-selector-suffix: width-defaults.$container-aware-selector-suffix !default;
 
 // Width properties.
-$width-selector-prefix: width-defaults.$width-selector-prefix !default;
-$max-width-selector-prefix: width-defaults.$max-width-selector-prefix !default;
-$min-width-selector-prefix: width-defaults.$min-width-selector-prefix !default;
+$-utility-properties: width-defaults.$utility-properties;
+$utility-properties: () !default;
 
 // Width values.
-$-width-values: (
-  shelf-min: $navigation-shelf-min-width,
-  shelf-max: $navigation-shelf-max-width,
-  shelf-current: $navigation-shelf-current-width,
-  shelf-closed: $navigation-shelf-closed-width,
-  shelf-open: $navigation-shelf-open-width,
+$-utility-values: (
+  "shelf-min": $navigation-shelf-min-width,
+  "shelf-max": $navigation-shelf-max-width,
+  "shelf-current": $navigation-shelf-current-width,
+  "shelf-closed": $navigation-shelf-closed-width,
+  "shelf-open": $navigation-shelf-open-width,
 );
-$custom-width-values: () !default;
-$width-values: () !default;
-
-// @todo remove this once $custom-width-values is removed
-@if $custom-width-values != () {
-  @warn "`$custom-width-values` is deprecated and will be removed in a future release of Graupl. Use `$width-values` instead.";
-
-  $width-values: map.merge($width-values, $custom-width-values);
-}
+$utility-values: () !default;
 
 // Merge custom properties with base properties if generating base utilities.
 @if $generate-base-utilities {
-  $width-values: map.merge($-width-values, $width-values);
+  $utility-properties: map.merge($-utility-properties, $utility-properties);
+  $utility-values: map.merge($-utility-values, $utility-values);
 }
+
+// Set up all utility classes and properties for cleaner generation in the index file.
+//
+// The end result of this map is something like:
+// $-utility-map: (
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   class-name: (
+//     property: value,
+//     property: value,
+//     ...
+//   ),
+//   ...
+// );
+$-utility-map: ();
+$-utility-map: map.deep-merge(
+  $-utility-map,
+  utility.generate-utility-map(
+    $utility-properties,
+    $utility-values,
+    $selector-separator
+  )
+);
+$utility-map: () !default;
+$utility-map: map.deep-merge($-utility-map, $utility-map);

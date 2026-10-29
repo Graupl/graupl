@@ -14,8 +14,8 @@
 // The following custom properties can be used to customize the button component:
 // | Property                                     | Description                                                                                                    | Default Value                                                                                                                                                                                                                                                                  |
 // | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-// | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `var(--graupl-interactive-min-width)`                                                                                                                                                                                                                                          |
-// | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `var(--graupl-interactive-min-height)`                                                                                                                                                                                                                                         |
+// | `--graupl-button-min-width`                  | The minimum width of the button component.                                                                     | `44px`                                                                                                                                                                                                                                                                         |
+// | `--graupl-button-min-height`                 | The minimum height of the button component.                                                                    | `44px`                                                                                                                                                                                                                                                                         |
 // | `--graupl-button-padding-x`                  | The horizontal padding of the button component.                                                                | `var(--graupl-spacer-5)`                                                                                                                                                                                                                                                       |
 // | `--graupl-button-padding-y`                  | The vertical padding of the button component.                                                                  | `var(--graupl-spacer-3)`                                                                                                                                                                                                                                                       |
 // | `--graupl-button-padding`                    | The padding of the button component (combines x and y padding).                                                | `var(--graupl-button-padding-y) var(--graupl-button-padding-x)`                                                                                                                                                                                                                |
@@ -63,23 +63,23 @@
 // | `--graupl-button-disabled-border-color`      | The border colour of a disabled button component.                                                              | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                                                                     |
 //
 // The following sass variables can be used to customize the generation of the button component:
-// | Variable                        | Description                                                                             | Default Value                                           |
-// | ------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-// | `$selector-base`                | The selector base for the component.                                                    | `"."`                                                   |
-// | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `"."`                                                   |
-// | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`                                                  |
-// | `$themeable`                    | A flag that determines whether theme modifiers are generated.                           | `true`                                                  |
-// | `$button-selector-base`         | The selector base for the button component.                                             | `"."`                                                   |
-// | `$button-selector`              | The button component selector.                                                          | `"button"`                                              |
-// | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `"."`                                                   |
-// | `$button-link-selector`         | The button link component modifier selector.                                            | `"link"`                                                |
-// | `$button-theme-selector-base`   | The selector base for the button theme component modifiers.                             | `"."`                                                   |
-// | `$button-theme-selector-prefix` | The button theme component modifier selector prefix.                                    | `""`                                                    |
-// | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`                                                  |
-// | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)`                                           |
-// | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `none`                                                  |
-// | `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`                                                    |
-// | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `map.deep-merge($-button-theme-map, $button-theme-map)` |
+// | Variable                        | Description                                                                             | Default Value |
+// | ------------------------------- | --------------------------------------------------------------------------------------- | ------------- |
+// | `$selector-base`                | The selector base for the component.                                                    | `"."`         |
+// | `$modifier-selector-base`       | The selector base for component modifiers.                                              | `"."`         |
+// | `$generate-base-theme-map`      | A flag to generate the base theme maps for button variants.                             | `true`        |
+// | `$themeable`                    | A flag that determines whether theme modifiers are generated.                           | `true`        |
+// | `$button-selector-base`         | The selector base for the button component.                                             | `"."`         |
+// | `$button-selector`              | The button component selector.                                                          | `"button"`    |
+// | `$button-link-selector-base`    | The selector base for the button link component modifier.                               | `"."`         |
+// | `$button-link-selector`         | The button link component modifier selector.                                            | `"link"`      |
+// | `$button-theme-selector-base`   | The selector base for the button theme component modifiers.                             | `"."`         |
+// | `$button-theme-selector-prefix` | The button theme component modifier selector prefix.                                    | `""`          |
+// | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`        |
+// | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)` |
+// | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `none`        |
+// | `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`          |
+// | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `()`          |
 //
 // ## Using `$button-theme-mappings`
 //

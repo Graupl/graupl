@@ -10,7 +10,7 @@
 @use "../../functions/theme";
 @use "sass:map";
 
-// Card selectors.
+// List selectors.
 $selector-base: root-defaults.$component-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $generate-base-theme-map: root-defaults.$generate-base-theme-maps !default;

@@ -728,9 +728,7 @@ var TooltipGenerator = (function() {
 					case "Enter":
 						c(t), this.toggle();
 						break;
-					case "Tab":
-						this.openOnFocus && (c(t), this.show());
-						break;
+					case "Tab": this.openOnFocus && (c(t), this.show());
 				}
 			}), this._addEventListener("keyup", this.dom.tooltip, (t) => {
 				this.currentEvent = "keyboard", f(t) === "Escape" && (c(t), this.hide());
@@ -739,7 +737,6 @@ var TooltipGenerator = (function() {
 					case "Escape":
 						if (this.hoverType !== "on" && this.focusState !== "self") return;
 						this.currentEvent = "keyboard", this.hide();
-						break;
 				}
 			});
 		}
@@ -816,7 +813,7 @@ var TooltipGenerator = (function() {
 	function m(t, e, s) {
 		return E(`:not(${p(t)})`, _(e, s), (i) => $(i, { add: t }));
 	}
-	return m.remove = (t, e, s) => E(p(t), _(e, s), (i) => $(i, { remove: t })), m.filter = (t, e, s) => E(p(t), _(e, s)), m.find = (t, e) => _(t ? p(t) : `[${g}]`, e), (t = {}, e = document, s = ".tooltip", i = ".tooltip-description", r = ".tooltip-toggle") => {
+	return m.remove = (t, e, s) => E(p(t), _(e, s), (i) => $(i, { remove: t })), m.filter = (t, e, s) => E(p(t), _(e, s)), m.find = (t, e) => _(t ? p(t) : `[${g}]`, e), ({ options: t = {}, context: e = document, selector: s = ".tooltip", descriptionSelector: i = ".tooltip-description", controllerSelector: r = ".tooltip-toggle" } = {}) => {
 		m("graupl-tooltip-generator", s, e).forEach((o) => {
 			const a = o.dataset.grauplTooltipOptions ? JSON.parse(o.dataset.grauplTooltipOptions.replace(/'/g, "\"")) || {} : {};
 			new z({

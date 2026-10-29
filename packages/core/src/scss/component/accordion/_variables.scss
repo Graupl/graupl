@@ -578,7 +578,7 @@ $accordion-item-toggle-disabled-transform: var(
   #{defaults.$accordion-item-toggle-disabled-transform}
 );
 $accordion-item-toggle-transform-states: (
-  _default: $accordion-item-toggle-transform,
+  default: $accordion-item-toggle-transform,
   visited: $accordion-item-toggle-visited-transform,
   focus: $accordion-item-toggle-focus-transform,
   hover: $accordion-item-toggle-hover-transform,

@@ -361,6 +361,8 @@
   #{defaults.$tooltip-toggle-selector-base}#{defaults.$tooltip-toggle-selector} {
     @include button-mixins.apply-theme;
 
+    width: $tooltip-toggle-width;
+    height: $tooltip-toggle-height;
     border-color: $tooltip-toggle-border-color;
     background: $tooltip-toggle-background;
     color: $tooltip-toggle-color;

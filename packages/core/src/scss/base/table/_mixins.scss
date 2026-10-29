@@ -1,0 +1,155 @@
+// @graupl/core table base mixins.
+
+@use "../../defaults" as root-defaults;
+@use "defaults";
+@use "variables" as *;
+
+/// Mixin to apply collapsed styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-collapsed($layer: "all") {
+  @if $layer == "all" or $layer == "base" {
+    border-collapse: collapse;
+  }
+}
+
+/// Mixin to apply bordered styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-bordered($layer: "all") {
+  @if $layer == "all" or $layer == "base" {
+    // A bordered table can't actually have rounded corners.
+    --#{root-defaults.$prefix}table-border-radius: 0;
+    --#{root-defaults.$prefix}table-cell-border-radius: 0;
+    --#{root-defaults.$prefix}table-header-border-radius: 0;
+
+    border-collapse: collapse;
+    border-width: $table-border-width;
+    border-style: $table-border-style;
+
+    // td
+    #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+      border-width: $table-cell-border-width;
+      border-style: $table-cell-border-style;
+    }
+
+    // th
+    #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+      border-width: $table-header-border-width;
+      border-style: $table-header-border-style;
+    }
+  }
+
+  @if $layer == "all" or $layer == "theme" {
+    border-color: $table-border-color;
+
+    // td
+    #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+      border-color: $table-cell-border-color;
+    }
+
+    // th
+    #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+      border-color: $table-header-border-color;
+    }
+  }
+}
+
+/// Mixin to apply striped columns styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-striped-columns($layer: "all") {
+  @if $layer == "all" or $layer == "theme" {
+    // tbody tr:nth-child(odd)
+    #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
+      #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:nth-child(
+        odd
+      ) {
+      // > td
+      > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+        background: $table-cell-striped-background;
+        color: $table-cell-striped-color;
+      }
+
+      // > th
+      > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+        background: $table-header-striped-background;
+        color: $table-header-striped-color;
+      }
+    }
+  }
+}
+
+/// Mixin to apply striped rows theme styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-striped-rows($layer: "all") {
+  @if $layer == "all" or $layer == "theme" {
+    // tbody tr
+    #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
+      #{defaults.$table-row-selector-base}#{defaults.$table-row-selector} {
+      // > td:nth-child(odd)
+      > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector}:nth-child(
+          odd
+        ) {
+        background: $table-cell-striped-background;
+        color: $table-cell-striped-color;
+      }
+
+      // > th:nth-child(odd)
+      > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector}:nth-child(
+          odd
+        ) {
+        background: $table-header-striped-background;
+        color: $table-header-striped-color;
+      }
+    }
+  }
+}
+
+/// Mixin to apply hoverable styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-hoverable($layer: "all") {
+  @if $layer == "all" or $layer == "theme" {
+    // tbody tr:hover
+    #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
+      #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:hover {
+      // > td
+      > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+        background: $table-cell-hover-background;
+        color: $table-cell-hover-color;
+      }
+
+      // > th
+      > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
+        background: $table-header-hover-background;
+        color: $table-header-hover-color;
+      }
+    }
+  }
+}
+
+/// Mixin to apply hightlight styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-highlight($layer: "all") {
+  @if $layer == "all" or $layer == "theme" {
+    --#{root-defaults.$prefix}table-cell-background: #{$table-cell-highlight-background};
+    --#{root-defaults.$prefix}table-cell-color: #{$table-cell-highlight-color};
+    --#{root-defaults.$prefix}table-header-background: #{$table-header-highlight-background};
+    --#{root-defaults.$prefix}table-header-color: #{$table-header-highlight-color};
+    --#{root-defaults.$prefix}table-striped-background: #{$table-highlight-background};
+    --#{root-defaults.$prefix}table-striped-color: #{$table-highlight-color};
+    --#{root-defaults.$prefix}table-cell-striped-background: #{$table-cell-highlight-background};
+    --#{root-defaults.$prefix}table-cell-striped-color: #{$table-cell-highlight-color};
+    --#{root-defaults.$prefix}table-header-striped-background: #{$table-header-highlight-background};
+    --#{root-defaults.$prefix}table-header-striped-color: #{$table-header-highlight-color};
+  }
+}

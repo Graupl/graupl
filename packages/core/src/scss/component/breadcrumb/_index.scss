@@ -68,6 +68,11 @@
 // | `--graupl-breadcrumb-item-active-background`            | Background for the breadcrumb item in the active state.                   | `var(--graupl-breadcrumb-item-hover-background)`                                                                                                                                                                                      |
 // | `--graupl-breadcrumb-item-disabled-background`          | Background for the breadcrumb item in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-item-border-color`                 | Border color for the breadcrumb item.                                     | `var(--graupl-breadcrumb-item-color)`                                                                                                                                                                                                 |
+// | `--graupl-breadcrumb-item-visited-border-color`         | Border color for the breadcrumb item in the visited state.                | `var(--graupl-breadcrumb-item-border-color)`                                                                                                                                                                                          |
+// | `--graupl-breadcrumb-item-focus-border-color`           | Border color for the breadcrumb item in the focus state.                  | `var(--graupl-breadcrumb-item-border-color)`                                                                                                                                                                                          |
+// | `--graupl-breadcrumb-item-hover-border-color`           | Border color for the breadcrumb item in the hover state.                  | `var(--graupl-breadcrumb-item-color)`                                                                                                                                                                                                 |
+// | `--graupl-breadcrumb-item-active-border-color`          | Border color for the breadcrumb item in the active state.                 | `var(--graupl-breadcrumb-item-hover-border-color)`                                                                                                                                                                                    |
+// | `--graupl-breadcrumb-item-disabled-border-color`        | Border color for the breadcrumb item in the disabled state.               | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-item-border-top-left-radius`       | Top-left border radius for the breadcrumb item.                           | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                |
 // | `--graupl-breadcrumb-item-border-top-right-radius`      | Top-right border radius for the breadcrumb item.                          | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                               |
 // | `--graupl-breadcrumb-item-border-bottom-left-radius`    | Bottom-left border radius for the breadcrumb item.                        | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                             |
@@ -109,6 +114,11 @@
 // | `--graupl-breadcrumb-link-active-background`            | Background for the breadcrumb link in the active state.                   | `var(--graupl-breadcrumb-link-hover-background)`                                                                                                                                                                                      |
 // | `--graupl-breadcrumb-link-disabled-background`          | Background for the breadcrumb link in the disabled state.                 | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-link-border-color`                 | Border color for the breadcrumb link.                                     | `var(--graupl-breadcrumb-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-breadcrumb-link-visited-border-color`         | Border color for the breadcrumb link in the visited state.                | `var(--graupl-breadcrumb-link-border-color)`                                                                                                                                                                                          |
+// | `--graupl-breadcrumb-link-focus-border-color`           | Border color for the breadcrumb link in the focus state.                  | `var(--graupl-breadcrumb-link-border-color)`                                                                                                                                                                                          |
+// | `--graupl-breadcrumb-link-hover-border-color`           | Border color for the breadcrumb link in the hover state.                  | `var(--graupl-breadcrumb-link-color)`                                                                                                                                                                                                 |
+// | `--graupl-breadcrumb-link-active-border-color`          | Border color for the breadcrumb link in the active state.                 | `var(--graupl-breadcrumb-link-hover-border-color)`                                                                                                                                                                                    |
+// | `--graupl-breadcrumb-link-disabled-border-color`        | Border color for the breadcrumb link in the disabled state.               | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-link-border-top-left-radius`       | Top-left border radius for the breadcrumb link.                           | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                |
 // | `--graupl-breadcrumb-link-border-top-right-radius`      | Top-right border radius for the breadcrumb link.                          | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                               |
 // | `--graupl-breadcrumb-link-border-bottom-left-radius`    | Bottom-left border radius for the breadcrumb link.                        | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                             |
@@ -150,6 +160,11 @@
 // | `--graupl-breadcrumb-toggle-active-background`          | Background for the breadcrumb toggle in the active state.                 | `var(--graupl-breadcrumb-toggle-hover-background)`                                                                                                                                                                                    |
 // | `--graupl-breadcrumb-toggle-disabled-background`        | Background for the breadcrumb toggle in the disabled state.               | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-toggle-border-color`               | Border color for the breadcrumb toggle.                                   | `var(--graupl-breadcrumb-toggle-color)`                                                                                                                                                                                               |
+// | `--graupl-breadcrumb-toggle-visited-border-color`       | Border color for the breadcrumb toggle in the visited state.              | `var(--graupl-breadcrumb-toggle-border-color)`                                                                                                                                                                                        |
+// | `--graupl-breadcrumb-toggle-focus-border-color`         | Border color for the breadcrumb toggle in the focus state.                | `var(--graupl-breadcrumb-toggle-border-color)`                                                                                                                                                                                        |
+// | `--graupl-breadcrumb-toggle-hover-border-color`         | Border color for the breadcrumb toggle in the hover state.                | `var(--graupl-breadcrumb-toggle-color)`                                                                                                                                                                                               |
+// | `--graupl-breadcrumb-toggle-active-border-color`        | Border color for the breadcrumb toggle in the active state.               | `var(--graupl-breadcrumb-toggle-hover-border-color)`                                                                                                                                                                                  |
+// | `--graupl-breadcrumb-toggle-disabled-border-color`      | Border color for the breadcrumb toggle in the disabled state.             | `var(--graupl-theme-active--primary--200)`                                                                                                                                                                                            |
 // | `--graupl-breadcrumb-toggle-border-top-left-radius`     | Top-left border radius for the breadcrumb toggle.                         | `var(--graupl-breadcrumb-link-border-top-left-radius)`                                                                                                                                                                                |
 // | `--graupl-breadcrumb-toggle-border-top-right-radius`    | Top-right border radius for the breadcrumb toggle.                        | `var(--graupl-breadcrumb-link-border-top-right-radius)`                                                                                                                                                                               |
 // | `--graupl-breadcrumb-toggle-border-bottom-left-radius`  | Bottom-left border radius for the breadcrumb toggle.                      | `var(--graupl-breadcrumb-link-border-bottom-left-radius)`                                                                                                                                                                             |
@@ -289,7 +304,8 @@
 @use "../../defaults" as root-defaults;
 @use "../../mixins/animation";
 @use "../../mixins/layer" as *;
-@use "../../mixins/theme" as theme;
+@use "../../mixins/state";
+@use "../../mixins/theme";
 @use "../../base/link/mixins" as link-mixins;
 @use "defaults";
 @use "sass:map";
@@ -387,6 +403,12 @@
     border-width: $breadcrumb-link-border-width;
     border-style: $breadcrumb-link-border-style;
     border-radius: $breadcrumb-link-border-radius;
+
+    @include state.generate-modifiers(
+      (
+        transform: $breadcrumb-link-transform-states,
+      )
+    );
   }
 
   // .breadcrumb-toggle
@@ -397,6 +419,12 @@
     border-width: $breadcrumb-toggle-border-width;
     border-style: $breadcrumb-toggle-border-style;
     border-radius: $breadcrumb-toggle-border-radius;
+
+    @include state.generate-modifiers(
+      (
+        transform: $breadcrumb-toggle-transform-states,
+      )
+    );
   }
 }
 
@@ -429,6 +457,14 @@
     border-color: $breadcrumb-item-border-color;
     background: $breadcrumb-item-background;
     color: $breadcrumb-item-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $breadcrumb-item-border-color-states,
+        background: $breadcrumb-item-background-states,
+        color: $breadcrumb-item-color-states,
+      )
+    );
   }
 
   // .breadcrumb-link
@@ -436,6 +472,14 @@
     border-color: $breadcrumb-link-border-color;
     background: $breadcrumb-link-background;
     color: $breadcrumb-link-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $breadcrumb-link-border-color-states,
+        background: $breadcrumb-link-background-states,
+        color: $breadcrumb-link-color-states,
+      )
+    );
   }
 
   // .breadcrumb-toggle
@@ -445,5 +489,13 @@
     border-color: $breadcrumb-toggle-border-color;
     background: $breadcrumb-toggle-background;
     color: $breadcrumb-toggle-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $breadcrumb-toggle-border-color-states,
+        background: $breadcrumb-toggle-background-states,
+        color: $breadcrumb-toggle-color-states,
+      )
+    );
   }
 }

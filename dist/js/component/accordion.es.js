@@ -38,7 +38,7 @@ function n(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function g(t, { shouldThrow: e = !0 } = {}) {
+function y(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -76,7 +76,7 @@ function m(t, { shouldThrow: e = !0 } = {}) {
 			else throw new TypeError(`${i} must be a string or an array of strings. "${r}" given.`);
 			else {
 				const o = {};
-				o[i] = t[i], g(o);
+				o[i] = t[i], y(o);
 			}
 		} catch (r) {
 			s.status = !1, s.errors.push(r);
@@ -87,7 +87,7 @@ function m(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function K(t, { shouldThrow: e = !0 } = {}) {
+function Q(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function K(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function Q(t, { shouldThrow: e = !0 } = {}) {
+function V(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function Q(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function y(t, e, { shouldThrow: s = !0 } = {}) {
+function E(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -154,7 +154,7 @@ function y(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function V(t, e, { shouldThrow: s = !0 } = {}) {
+function P(t, e, { shouldThrow: s = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -167,7 +167,7 @@ function V(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function P(t, { shouldThrow: e = !0 } = {}) {
+function q(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -186,7 +186,7 @@ function c(t, e) {
 function d(t, e) {
 	t === "" || t.length === 0 || (typeof t == "string" ? e.classList.remove(t) : e.classList.remove(...t));
 }
-var E = class {
+var C = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -214,7 +214,7 @@ var E = class {
 	update(t) {
 		return this._current = t(this._current), this;
 	}
-}, f = class w {
+}, f = class b {
 	_scope;
 	_type = "_default";
 	_storage = {};
@@ -224,7 +224,7 @@ var E = class {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (h(w, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (h(b, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -274,7 +274,7 @@ var E = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, C = class {
+}, w = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -370,13 +370,13 @@ var E = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		K({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		Q({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		Q({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		V({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -417,7 +417,7 @@ var E = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = P(this, { shouldThrow: !1 });
+		const t = q(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, p) => {
@@ -429,7 +429,7 @@ var E = class {
 		if (Object.keys(this._selectors).length > 0) {
 			const i = {};
 			for (const o of Object.keys(this._selectors)) i[`${o}Selector`] = this._selectors[o];
-			const r = g(i, { shouldThrow: !1 });
+			const r = y(i, { shouldThrow: !1 });
 			r.status || (this._errors = [...this._errors, ...r.errors], this._valid = !1);
 		}
 		if (Object.keys(this._classes).length > 0) {
@@ -534,7 +534,7 @@ var E = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		V(t, this), h(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		P(t, this), h(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, s, i = {}) {
 		e.addEventListener(t, s, i), this._listeners.push({
@@ -565,15 +565,15 @@ var E = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, q = class extends C {
+}, H = class extends w {
 	_rootDOMElement = "item";
 	_protectedDOMElements = [
 		"toggle",
 		"header",
 		"content"
 	];
-	_open = new E(!1);
-	_locked = new E(!1);
+	_open = new C(!1);
+	_locked = new C(!1);
 	_name = "AccordionItem";
 	_storageKey = "accordionItems";
 	_shouldStore = !1;
@@ -604,7 +604,7 @@ var E = class {
 		this.dom.item.id = this.dom.item.id || `accordion-item-${t}-${e}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${t}-${e}`, this.dom.header.id = this.dom.header.id || `accordion-item-header-${t}-${e}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${t}-${e}`;
 	}
 	_setAriaAttributes() {
-		y("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), y("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
+		E("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), E("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
 	}
 	_reveal({ emit: t = !0, transition: e = !0 } = {}) {
 		const { closeClass: s, openClass: i, transitionClass: r, openDuration: o } = this.elements.parent;
@@ -692,7 +692,7 @@ function _(t) {
 function l(t) {
 	t.preventDefault(), t.stopPropagation();
 }
-var H = class extends C {
+var F = class extends w {
 	_rootDOMElement = "accordion";
 	_optionalKeySupport = !0;
 	_expandMultiple = !0;
@@ -700,26 +700,26 @@ var H = class extends C {
 	_currentChild = 0;
 	_storageKey = "accordions";
 	_name = "Accordion";
-	constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: a = ".accordion-control", expandControllerSelector: p = ".expand-all", collapseControllerSelector: b = ".collapse-all", openClass: k = "show", closeClass: v = "hide", transitionClass: $ = "transitioning", transitionDuration: A = 300, openDuration: M = -1, closeDuration: O = -1, optionalKeySupport: D = !1, allowExpandMultiple: S = !0, allowCollapseAll: I = !0, automaticActivation: x = !1, prefix: T = "graupl-", key: L = null, initializeClass: j = "initializing", initialize: z = !1 }) {
+	constructor({ accordionElement: t, accordionItemsSelector: e = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: a = ".accordion-control", expandControllerSelector: p = ".expand-all", collapseControllerSelector: k = ".collapse-all", openClass: v = "show", closeClass: $ = "hide", transitionClass: A = "transitioning", transitionDuration: M = 300, openDuration: O = -1, closeDuration: D = -1, optionalKeySupport: S = !1, allowExpandMultiple: I = !0, allowCollapseAll: x = !0, automaticActivation: T = !1, prefix: L = "graupl-", key: j = null, initializeClass: z = "initializing", initialize: K = !1 }) {
 		super({
-			prefix: T,
-			key: L,
-			initializeClass: j
-		}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = a, this._selectors.expandController = p, this._selectors.collapseController = b, this._elements.accordionItems = [], this._classes.open = k || "", this._classes.close = v || "", this._classes.transition = $ || "", this._durations.transition = A, this._durations.open = M, this._durations.close = O, this._automatic = x, this._optionalKeySupport = D, this._expandMultiple = S, this._collapseAll = I, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
+			prefix: L,
+			key: j,
+			initializeClass: z
+		}), this._dom.accordion = t, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = e, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = a, this._selectors.expandController = p, this._selectors.collapseController = k, this._elements.accordionItems = [], this._classes.open = v || "", this._classes.close = $ || "", this._classes.transition = A || "", this._durations.transition = M, this._durations.open = O, this._durations.close = D, this._automatic = T, this._optionalKeySupport = S, this._expandMultiple = I, this._collapseAll = x, this._addEventListener("grauplComponentInitialize", this.rootDOMElement, () => {
 			this.dom.expandController.length > 0 && !this.allowExpandMultiple && this.dom.expandController.forEach((u) => {
 				u.setAttribute("disabled", "disabled");
 			}), this.dom.collapseController.length > 0 && !this.allowCollapseAll && this.dom.collapseController.forEach((u) => {
 				u.setAttribute("disabled", "disabled");
 			});
 		}), this._addEventListener("grauplComponentValidate", this.rootDOMElement, () => {
-			const u = n("boolean", {
+			const g = n("boolean", {
 				automaticActivation: this._automatic,
 				optionalKeySupport: this._optionalKeySupport,
 				allowExpandMultiple: this._expandMultiple,
 				allowCollapseAll: this._collapseAll
-			});
-			u.status || (this._errors = [...this._errors, ...u.errors], this._valid = !1);
-		}), z && this.initialize();
+			}, { shouldThrow: !1 });
+			g.status || (this._errors = [...this._errors, ...g.errors], this._valid = !1);
+		}), K && this.initialize();
 	}
 	get openClass() {
 		return this._classes.open;
@@ -820,7 +820,7 @@ var H = class extends C {
 	}
 	_createChildElements() {
 		this.dom.accordionItems.forEach((t, e) => {
-			const s = new q({
+			const s = new H({
 				accordionItemElement: t,
 				accordionItemToggleElement: this.dom.accordionItemToggles[e],
 				accordionItemHeaderElement: this.dom.accordionItemHeaders[e],
@@ -876,9 +876,7 @@ var H = class extends C {
 				const s = _(e);
 				switch (s) {
 					case "Space":
-					case "Enter":
-						l(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
-						break;
+					case "Enter": l(e), this.currentEvent = "keyboard", this.currentAccordionItem.toggle();
 				}
 				if (this.optionalKeySupport) switch (s) {
 					case "Home":
@@ -890,9 +888,7 @@ var H = class extends C {
 					case "ArrowDown":
 						l(e), this.focusNextChild();
 						break;
-					case "ArrowUp":
-						l(e), this.focusPreviousChild();
-						break;
+					case "ArrowUp": l(e), this.focusPreviousChild();
 				}
 			});
 		}), this.dom.expandController.forEach((t) => {
@@ -939,6 +935,6 @@ var H = class extends C {
 		this.elements.accordionItems.forEach((t) => t.hide());
 	}
 };
-export { H as default };
+export { F as default };
 
 //# sourceMappingURL=accordion.es.js.map

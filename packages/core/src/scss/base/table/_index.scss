@@ -264,12 +264,13 @@
 //   </tbody>
 // </table>
 
-@use "defaults";
-@use "variables" as *;
-@use "../../mixins/layer" as *;
 @use "../../defaults" as root-defaults;
+@use "../../mixins/layer" as *;
 @use "../../mixins/state";
 @use "../../mixins/theme";
+@use "defaults";
+@use "mixins" as *;
+@use "variables" as *;
 
 @include layer(base) {
   // table
@@ -299,31 +300,12 @@
 
     // &.collapsed
     &#{defaults.$table-collapsed-selector-base}#{defaults.$table-collapsed-selector} {
-      border-collapse: collapse;
+      @include apply-collapsed("base");
     }
 
     // &.bordered
     &#{defaults.$table-bordered-selector-base}#{defaults.$table-bordered-selector} {
-      // A bordered table can't actually have rounded corners.
-      --#{root-defaults.$prefix}table-border-radius: 0;
-      --#{root-defaults.$prefix}table-cell-border-radius: 0;
-      --#{root-defaults.$prefix}table-header-border-radius: 0;
-
-      border-collapse: collapse;
-      border-width: $table-border-width;
-      border-style: $table-border-style;
-
-      // td
-      #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
-        border-width: $table-cell-border-width;
-        border-style: $table-cell-border-style;
-      }
-
-      // th
-      #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
-        border-width: $table-header-border-width;
-        border-style: $table-header-border-style;
-      }
+      @include apply-bordered("base");
     }
   }
 
@@ -378,94 +360,27 @@
 
     // &.bordered
     &#{defaults.$table-bordered-selector-base}#{defaults.$table-bordered-selector} {
-      border-color: $table-border-color;
-
-      // td
-      #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
-        border-color: $table-cell-border-color;
-      }
-
-      // th
-      #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
-        border-color: $table-header-border-color;
-      }
+      @include apply-bordered("theme");
     }
 
     // &.striped-columns
     &#{defaults.$table-striped-columns-selector-base}#{defaults.$table-striped-columns-selector} {
-      // tbody tr:nth-child(odd)
-      #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:nth-child(
-          odd
-        ) {
-        // > td
-        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
-          background: $table-cell-striped-background;
-          color: $table-cell-striped-color;
-        }
-
-        // > th
-        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
-          background: $table-header-striped-background;
-          color: $table-header-striped-color;
-        }
-      }
+      @include apply-striped-columns("theme");
     }
 
     // &.striped-rows
     &#{defaults.$table-striped-rows-selector-base}#{defaults.$table-striped-rows-selector} {
-      // tbody tr
-      #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector} {
-        // > td:nth-child(odd)
-        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector}:nth-child(
-            odd
-          ) {
-          background: $table-cell-striped-background;
-          color: $table-cell-striped-color;
-        }
-
-        // > th:nth-child(odd)
-        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector}:nth-child(
-            odd
-          ) {
-          background: $table-header-striped-background;
-          color: $table-header-striped-color;
-        }
-      }
+      @include apply-striped-rows("theme");
     }
 
     // &.hoverable
     &#{defaults.$table-hoverable-selector-base}#{defaults.$table-hoverable-selector} {
-      // tbody tr:hover
-      #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-        #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:hover {
-        // > td
-        > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
-          background: $table-cell-hover-background;
-          color: $table-cell-hover-color;
-        }
-
-        // > th
-        > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
-          background: $table-header-hover-background;
-          color: $table-header-hover-color;
-        }
-      }
+      @include apply-hoverable("theme");
     }
 
     // &.highlight
     #{defaults.$table-highlight-selector-base}#{defaults.$table-highlight-selector} {
-      --#{root-defaults.$prefix}table-cell-background: #{$table-cell-highlight-background};
-      --#{root-defaults.$prefix}table-cell-color: #{$table-cell-highlight-color};
-      --#{root-defaults.$prefix}table-header-background: #{$table-header-highlight-background};
-      --#{root-defaults.$prefix}table-header-color: #{$table-header-highlight-color};
-      --#{root-defaults.$prefix}table-striped-background: #{$table-highlight-background};
-      --#{root-defaults.$prefix}table-striped-color: #{$table-highlight-color};
-      --#{root-defaults.$prefix}table-cell-striped-background: #{$table-cell-highlight-background};
-      --#{root-defaults.$prefix}table-cell-striped-color: #{$table-cell-highlight-color};
-      --#{root-defaults.$prefix}table-header-striped-background: #{$table-header-highlight-background};
-      --#{root-defaults.$prefix}table-header-striped-color: #{$table-header-highlight-color};
+      @include apply-highlight("theme");
     }
   }
 }

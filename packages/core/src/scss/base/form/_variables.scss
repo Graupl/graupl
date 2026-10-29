@@ -9,7 +9,7 @@
 // | --graupl-input-padding-x                     | var(--graupl-spacer-5)                                                                                                                                                                          |
 // | --graupl-input-padding-y                     | var(--graupl-spacer-3)                                                                                                                                                                          |
 // | --graupl-input-padding                       | var(--graupl-input-padding-y) var(--graupl-input-padding-x)                                                                                                                                     |
-// | --graupl-input-font-size                     | var(--graupl-font-base)                                                                                                                                                                         |
+// | --graupl-input-font-size                     | var(--graupl-font-size-base)                                                                                                                                                                    |
 // | --graupl-label-font-size                     | var(--graupl-input-font-size)                                                                                                                                                                   |
 // | --graupl-fieldset-direction                  | column                                                                                                                                                                                          |
 // | --graupl-fieldset-gap                        | var(--graupl-spacer-2)                                                                                                                                                                          |
@@ -39,8 +39,8 @@
 // | --graupl-input-border-style                  | var(--graupl-input-border-top-style) var(--graupl-input-border-right-style) var(--graupl-input-border-bottom-style) var(--graupl-input-border-left-style)                                       |
 // | --graupl-input-border-top-left-radius        | var(--graupl-border-top-left-radius)                                                                                                                                                            |
 // | --graupl-input-border-top-right-radius       | var(--graupl-border-top-right-radius)                                                                                                                                                           |
-// | --graupl-input-border-bottom-left-radius     | var(--graupl-border-bottom-left-radius)                                                                                                                                                         |
 // | --graupl-input-border-bottom-right-radius    | var(--graupl-border-bottom-right-radius)                                                                                                                                                        |
+// | --graupl-input-border-bottom-left-radius     | var(--graupl-border-bottom-left-radius)                                                                                                                                                         |
 // | --graupl-input-border-radius                 | var(--graupl-input-border-top-left-radius) var(--graupl-input-border-top-right-radius) var(--graupl-input-border-bottom-right-radius) var(--graupl-input-border-bottom-left-radius)             |
 // | --graupl-fieldset-border-top-width           | var(--graupl-input-border-top-width)                                                                                                                                                            |
 // | --graupl-fieldset-border-right-width         | var(--graupl-input-border-right-width)                                                                                                                                                          |
@@ -54,8 +54,8 @@
 // | --graupl-fieldset-border-style               | var(--graupl-fieldset-border-top-style) var(--graupl-fieldset-border-right-style) var(--graupl-fieldset-border-bottom-style) var(--graupl-fieldset-border-left-style)                           |
 // | --graupl-fieldset-border-top-left-radius     | var(--graupl-input-border-top-left-radius)                                                                                                                                                      |
 // | --graupl-fieldset-border-top-right-radius    | var(--graupl-input-border-top-right-radius)                                                                                                                                                     |
-// | --graupl-fieldset-border-bottom-left-radius  | var(--graupl-input-border-bottom-left-radius)                                                                                                                                                   |
 // | --graupl-fieldset-border-bottom-right-radius | var(--graupl-input-border-bottom-right-radius)                                                                                                                                                  |
+// | --graupl-fieldset-border-bottom-left-radius  | var(--graupl-input-border-bottom-left-radius)                                                                                                                                                   |
 // | --graupl-fieldset-border-radius              | var(--graupl-fieldset-border-top-left-radius) var(--graupl-fieldset-border-top-right-radius) var(--graupl-fieldset-border-bottom-right-radius) var(--graupl-fieldset-border-bottom-left-radius) |
 // | --graupl-input-border-color                  | var(--graupl-border-color)                                                                                                                                                                      |
 // | --graupl-input-disabled-border-color         | var(--graupl-theme-active--secondary--200)                                                                                                                                                      |
@@ -265,16 +265,16 @@ $input-border-top-right-radius: var(
   #{root-variables.$border-top-right-radius}
 );
 
-// --graupl-input-border-bottom-left-radius
-$input-border-bottom-left-radius: var(
-  --#{root-defaults.$prefix}input-border-bottom-left-radius,
-  #{root-variables.$border-bottom-left-radius}
-);
-
 // --graupl-input-border-bottom-right-radius
 $input-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}input-border-bottom-right-radius,
   #{root-variables.$border-bottom-right-radius}
+);
+
+// --graupl-input-border-bottom-left-radius
+$input-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}input-border-bottom-left-radius,
+  #{root-variables.$border-bottom-left-radius}
 );
 
 // --graupl-input-border-radius
@@ -358,16 +358,16 @@ $fieldset-border-top-right-radius: var(
   #{$input-border-top-right-radius}
 );
 
-// --graupl-fieldset-border-bottom-left-radius
-$fieldset-border-bottom-left-radius: var(
-  --#{root-defaults.$prefix}fieldset-border-bottom-left-radius,
-  #{$input-border-bottom-left-radius}
-);
-
 // --graupl-fieldset-border-bottom-right-radius
 $fieldset-border-bottom-right-radius: var(
   --#{root-defaults.$prefix}fieldset-border-bottom-right-radius,
   #{$input-border-bottom-right-radius}
+);
+
+// --graupl-fieldset-border-bottom-left-radius
+$fieldset-border-bottom-left-radius: var(
+  --#{root-defaults.$prefix}fieldset-border-bottom-left-radius,
+  #{$input-border-bottom-left-radius}
 );
 
 // --graupl-fieldset-border-radius

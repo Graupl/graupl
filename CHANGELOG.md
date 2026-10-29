@@ -2,6 +2,211 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.0.0-beta.58](https://github.com/Graupl/graupl/compare/v1.0.0-beta.57...v1.0.0-beta.58) (2026-09-25)
+
+
+### Features
+
+* **function:** add functions for getting font variables ([8654e63](https://github.com/Graupl/graupl/commit/8654e63f96a15898ddd0284f14471387ebc8c231))
+* **function:** allow theme property map values to be nulled ([80ceb58](https://github.com/Graupl/graupl/commit/80ceb58caf318e110c39900c1ddffb6b65bfdaf8))
+* **layout:** add force-signle-column option to flex columns ([f802041](https://github.com/Graupl/graupl/commit/f80204173ddfff80f7d0499d4948066c096caffb))
+* **mixin:** add ability for utilities to be generated without their base ([554a824](https://github.com/Graupl/graupl/commit/554a824a13d34731d11545a1a06249356861b0d6))
+* **mixin:** allow theme modifier generator value to be nulled ([459d8a5](https://github.com/Graupl/graupl/commit/459d8a517f9866f0a65d9aef33b89ef4eed85871))
+
+
+### Bug Fixes
+
+* **component:** correct how menu links, buttons, and icons interact ([836ed4b](https://github.com/Graupl/graupl/commit/836ed4baae97763d2696a0d6269eee88e90d29af))
+* **function:** properly handle fallback theme colours ([0bc2972](https://github.com/Graupl/graupl/commit/0bc297207f9a5f20d824d7fa3256fcc0e3069896))
+* **layout:** allow screen size modifiers to override force-single-column ([ba4071a](https://github.com/Graupl/graupl/commit/ba4071a46055aca22898f9e8fe0883ae67dedc5d))
+* **layout:** allow screen size modifiers to override force-single-column for columns ([f7c5b12](https://github.com/Graupl/graupl/commit/f7c5b12d48de1d0f92da49f875bb2cf0fffc4fec))
+
+
+### Reverts
+
+* Revert "chore(release): 1.0.0-beta.58" ([1f2b512](https://github.com/Graupl/graupl/commit/1f2b5125567890954a4b8831e3769e6af0df60db))
+* Revert "chore(release): 1.0.0-beta.57" ([d9f80f1](https://github.com/Graupl/graupl/commit/d9f80f13fdf180f843a34ead2a2661b2155af3bd))
+
+## [1.0.0-beta.57](https://github.com/Graupl/graupl/compare/v1.0.0-beta.56...v1.0.0-beta.57) (2026-09-10)
+
+
+### Features
+
+* **utility:** handle _default in utility class names ([68b8418](https://github.com/Graupl/graupl/commit/68b84189071788573c9de678279cac7f0ed3fd2e))
+
+
+### Bug Fixes
+
+* **accordion:** allow validation to run past failure ([c0ed64b](https://github.com/Graupl/graupl/commit/c0ed64bcace919ca7e19f28adb94ad76ffd1b97f))
+* **accordion:** correct default transform state ([cdf98ea](https://github.com/Graupl/graupl/commit/cdf98ea3ba202b51c5910e67ed0012dab53207d2))
+* **breadcrumb:** correct transitioning class ([45afb14](https://github.com/Graupl/graupl/commit/45afb1477028945445fa09f9bf48f4cbe25dbd23))
+* **breadcrumb:** properly use state props ([25848b6](https://github.com/Graupl/graupl/commit/25848b6b1347a168130353d4c56f78d8625bb99d))
+* **card:** apply proper hover state selectors ([b3ddeb1](https://github.com/Graupl/graupl/commit/b3ddeb1ea0e2ee1d4d85598decaa3d8d70a6f4fe))
+* **code:** correct import string ([6312916](https://github.com/Graupl/graupl/commit/6312916c9a72441b796bc137ff798b7ae5dc2db3))
+* **component:** correct spelling error in reveal checks ([d5a825b](https://github.com/Graupl/graupl/commit/d5a825b10dd71de654d47621ce1f225cf01ab443))
+* **disclosure:** correct setting inert ([4e80e0f](https://github.com/Graupl/graupl/commit/4e80e0f17d245f42c2cca4e7c2ac54e914fa05f9))
+* fix more references to old font base ([dc2118a](https://github.com/Graupl/graupl/commit/dc2118a2777ff975ee1108b53342e5ddeb93f5ab))
+* **generators:** standardize all generater code ([34a3bd7](https://github.com/Graupl/graupl/commit/34a3bd7ef253962ff5a1a01a26e42495a0abef00))
+* **link:** allow min height/width to be overwritten in scss ([e14ec88](https://github.com/Graupl/graupl/commit/e14ec88eb1b6b3992e2385ace6420fecf24b961e))
+* **navigation:** properly fallback to DisclosureMenu ([ac05285](https://github.com/Graupl/graupl/commit/ac0528593dfe964292429e21e92b13b24bad10f8))
+* **tabs:** add proper name for event triggering ([7d7371a](https://github.com/Graupl/graupl/commit/7d7371ac95e7d321ac02a70b559b49ccd97989f4))
+* **typography:** correct variable names for font sizes ([d579521](https://github.com/Graupl/graupl/commit/d579521aa7232ed5cf9390c8bb459e37dc673f94))
+* **utility:** allow spacing and z-index to be customized and documentation correction ([c9ba696](https://github.com/Graupl/graupl/commit/c9ba6968e513637bd6e70a789f35e4a2488c7ba3))
+
+
+### Reverts
+
+* Revert "chore(release): 1.0.0-beta.57" ([4446479](https://github.com/Graupl/graupl/commit/444647944baf93cb89a0d31ea155b4e6527cb22d))
+
+
+### Documentation
+
+* **base:** correct button defaults and information ([d5c8a33](https://github.com/Graupl/graupl/commit/d5c8a33034d01f7805d4d21344d3166b0cacb35f))
+* **button:** correct default references ([1fc9180](https://github.com/Graupl/graupl/commit/1fc9180d642ff7cc691779ed5c6e081bc24d38d7))
+* clean up unused documentation and spell mistakes ([5b652b0](https://github.com/Graupl/graupl/commit/5b652b09fa47c169269bded282d52bd80dbb7f9f))
+* **component:** correct default values ([c7e99d4](https://github.com/Graupl/graupl/commit/c7e99d41b3a6df4c2a9b2d8f38f87b409d4eb690))
+* **component:** correct in-code documentation ([e2576b2](https://github.com/Graupl/graupl/commit/e2576b2f7a36c4f2de3092e7d626892561c9f38a))
+* correct order of border radius declarations ([5b16961](https://github.com/Graupl/graupl/commit/5b16961dbacd647d4b5b01e8993c3d815593dd25))
+* **disclosre:** correct example ([8647522](https://github.com/Graupl/graupl/commit/86475224ea3cf85dcb59bb2f578f1b9d1b25dbde))
+* **focus:** correct default values ([0da43ed](https://github.com/Graupl/graupl/commit/0da43ed1fa3f3d0629885431c2f54571e9098968))
+* **form:** correct default values ([02b6b42](https://github.com/Graupl/graupl/commit/02b6b422fc87cdcf153d2d1bb11dac434f7fbdbf))
+* **link:** correct incorrect defaults ([3f01865](https://github.com/Graupl/graupl/commit/3f0186527db8b34c44d82c46d6df63007dd2f73f))
+* **table:** correct default values ([2466ad3](https://github.com/Graupl/graupl/commit/2466ad3553d008817e2f968866319e0b3fdecede))
+* **theme:** correct default values and formatting ([0a071cd](https://github.com/Graupl/graupl/commit/0a071cdb1ec47f811ca633ae70cbab2e3c6ed499))
+* **utilities:** add examples ([ae66628](https://github.com/Graupl/graupl/commit/ae6662865b66838097952972461345eda022ba05))
+
+
+### Build System
+
+* **core:** add missing components to exports ([f719cee](https://github.com/Graupl/graupl/commit/f719ceef7d81205542aac13409e2e504f2f8d0a8))
+
+
+### Continuous Integration
+
+* **actions:** add concurrency, caching, and reduce duplicate runs ([e39f8b3](https://github.com/Graupl/graupl/commit/e39f8b33624d471c6c145e7a9843c388edab154c))
+* **codeql:** upgrade to v4 ([6fe85a1](https://github.com/Graupl/graupl/commit/6fe85a133985735b7847aa142894a6f75ff65858))
+
+## [1.0.0-beta.56](https://github.com/Graupl/graupl/compare/v1.0.0-beta.55...v1.0.0-beta.56) (2026-07-22)
+
+
+### Features
+
+* **utility:** add overflow ([9816044](https://github.com/Graupl/graupl/commit/981604449a9741f11c6c0f035889f330572598bd))
+
+
+### Bug Fixes
+
+* add missing components to full JS build ([529a9fd](https://github.com/Graupl/graupl/commit/529a9fdb05b9490600847777913c7eec5e95f130))
+
+
+### Performance Improvements
+
+* **demo:** remove unneeded scss file ([9cd3b62](https://github.com/Graupl/graupl/commit/9cd3b62fcba4f438b7ffa30ec645f2b137f5fe82))
+
+
+### Documentation
+
+* **base:** add form documentation ([848219c](https://github.com/Graupl/graupl/commit/848219c69e4b49820d36640bd16379478dec27f6))
+* **base:** add link information ([705321b](https://github.com/Graupl/graupl/commit/705321b8baee4a9f1f69cb4ef857aa5ea1388c56))
+* fix overflow examples ([c3b4be2](https://github.com/Graupl/graupl/commit/c3b4be2b2ba4b30191807af87a887f4092069ec4))
+* update buttons and links with the latest examples and state ([69f7c48](https://github.com/Graupl/graupl/commit/69f7c48399ce60a4ed51ec364689e11ebdcdb6b4))
+
+## [1.0.0-beta.55](https://github.com/Graupl/graupl/compare/v1.0.0-beta.54...v1.0.0-beta.55) (2026-07-15)
+
+
+### Features
+
+* **utlity:** add more border control utilities ([f30c234](https://github.com/Graupl/graupl/commit/f30c2344855c7c425aaaa630bdd98bf32d644fca))
+
+## [1.0.0-beta.54](https://github.com/Graupl/graupl/compare/v1.0.0-beta.53...v1.0.0-beta.54) (2026-06-26)
+
+
+### Bug Fixes
+
+* **layout:** do not hard-code graupl variable ([6122013](https://github.com/Graupl/graupl/commit/61220137f865fa51a7924d3fc9d6eb01403fecf0))
+
+## [1.0.0-beta.53](https://github.com/Graupl/graupl/compare/v1.0.0-beta.52...v1.0.0-beta.53) (2026-06-26)
+
+
+### Features
+
+* **utilities:** rename block-size classes from 'block' to 'bs' ([8d07c5a](https://github.com/Graupl/graupl/commit/8d07c5aee0cdebbc0cb03f25fcc6a17e69d921d7))
+* **utilities:** rename inline-size classes from 'inline' to 'is' ([86ebc6e](https://github.com/Graupl/graupl/commit/86ebc6ef28c336c7f5cfa8204d17447c515f8016))
+
+## [1.0.0-beta.52](https://github.com/Graupl/graupl/compare/v1.0.0-beta.51...v1.0.0-beta.52) (2026-06-25)
+
+
+### Features
+
+* **layout:** add fixed modifier to columns ([0d166f6](https://github.com/Graupl/graupl/commit/0d166f6a54ad380be30b38c15d59f3f69e258ed1))
+* **layout:** implement proper responsive count and span into columns ([2c2854a](https://github.com/Graupl/graupl/commit/2c2854a2de3f2b9cad547bd399e79cd6b5183231))
+* **layout:** unifiy column counts ([51fbd40](https://github.com/Graupl/graupl/commit/51fbd406e553a656c50e1c117c6cd41c5c1e60fb))
+* **utilities:** add grid classes ([37c2d30](https://github.com/Graupl/graupl/commit/37c2d305252daba2d43f204f9533b8074c62833e))
+
+
+### Documentation
+
+* **utility:** add customization options for grid ([2a29234](https://github.com/Graupl/graupl/commit/2a29234578b7b6690181e5c6395a1a60ba9623f3))
+
+## [1.0.0-beta.51](https://github.com/Graupl/graupl/compare/v1.0.0-beta.50...v1.0.0-beta.51) (2026-06-17)
+
+
+### Bug Fixes
+
+* **utilities:** correct ratio position when container force-ratio class ([7b5e9f7](https://github.com/Graupl/graupl/commit/7b5e9f7541158a1c61bdb6010367d153ef18df72))
+* **utility:** correct inline size props ([4dea588](https://github.com/Graupl/graupl/commit/4dea588b5d544fff04400e02cfb1de729f468f7c))
+
+
+### Documentation
+
+* add utility class documentation ([3754a2f](https://github.com/Graupl/graupl/commit/3754a2fc12eb625b2fc83274df8bbcf7466b2ce1))
+* fix formatting ([74756be](https://github.com/Graupl/graupl/commit/74756be73f1f3bde72108a80cef62d68c9668aa3))
+* **utilities:** correct minor innacuracies ([87d0647](https://github.com/Graupl/graupl/commit/87d064767d54fbaa5ca04ae50262fc50cad7970f))
+
+
+### Build System
+
+* **release:** run headless tests prerelease ([b55629a](https://github.com/Graupl/graupl/commit/b55629a8ecea72a416c40ed5b80c978ae6a7e7a4))
+
+
+### Continuous Integration
+
+* **tests:** ensure all tests run in headless ([d52a685](https://github.com/Graupl/graupl/commit/d52a6853c682d6e7465af989152ad69ef4fe12e4))
+
+## [1.0.0-beta.50](https://github.com/Graupl/graupl/compare/v1.0.0-beta.49...v1.0.0-beta.50) (2026-06-02)
+
+
+### Features
+
+* **component:** add proper responsiveness to input groups ([bcd91d9](https://github.com/Graupl/graupl/commit/bcd91d96f33289c19727cdbb27af98d304c3a5d6))
+* **component:** add responsive utility classes to input groups ([32ea808](https://github.com/Graupl/graupl/commit/32ea808850901a47a0eae52f0c81beea49983d2d))
+* **layout:** add contained sidebar container modifier ([b84932c](https://github.com/Graupl/graupl/commit/b84932c030ba69ae024ed4865d450af622ff523e))
+* **theme:** redefine how colors work with light-dark() ([51329ec](https://github.com/Graupl/graupl/commit/51329ec69a0b9855e0281fe347cd91d99ffb7f12))
+* **utilities:** implement new utility generation system ([75be2d1](https://github.com/Graupl/graupl/commit/75be2d15b6c16cb367fd073f41d4c7f1ca957e46))
+
+
+### Code Refactoring
+
+* **layout:** move column classes specifically into flex-columns ([061758f](https://github.com/Graupl/graupl/commit/061758f760449f9bb38cc53860a8e931fe8a8a12))
+* update responsive selector separator names ([1bea609](https://github.com/Graupl/graupl/commit/1bea6093bbf7017a9a7a5400ca74519912ee3295))
+
+## [1.0.0-beta.49](https://github.com/Graupl/graupl/compare/v1.0.0-beta.48...v1.0.0-beta.49) (2026-05-22)
+
+
+### Features
+
+* **base:** add input type selectors to forms ([23bf9a6](https://github.com/Graupl/graupl/commit/23bf9a6b08a3089aad97ba1b7dacbf764f5965de))
+* **component:** add left/right/top/bottom modifiers to input groups ([7b66c77](https://github.com/Graupl/graupl/commit/7b66c776094aca9f26d7a122ef4fba61eb3a4fb4))
+
+## [1.0.0-beta.48](https://github.com/Graupl/graupl/compare/v1.0.0-beta.47...v1.0.0-beta.48) (2026-05-12)
+
+
+### Features
+
+* **utility:** add block-size classes ([743a15b](https://github.com/Graupl/graupl/commit/743a15bda262763fb459f69ac68fb38bc14e5d46))
+* **utility:** add float and clear classes ([9082f27](https://github.com/Graupl/graupl/commit/9082f278df8cfabcb89997f56df8a8943cbd1c49))
+* **utility:** add placement classes ([5f5291a](https://github.com/Graupl/graupl/commit/5f5291a4c99fee8685403ab770d6f4d39d287abe))
+
 ## [1.0.0-beta.47](https://github.com/Graupl/graupl/compare/v1.0.0-beta.46...v1.0.0-beta.47) (2026-04-21)
 
 

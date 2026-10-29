@@ -1,12 +1,24 @@
+/**
+ * @file
+ * Accordion generator.
+ */
 import Accordion from "./Accordion.js";
 import once from "@drupal/once";
 
-const generate = (
+/**
+ * Generates Accordion elements.
+ *
+ * @param {object}      [options = {}]                  - Options for generating the accordion.
+ * @param {object}      [options.options = {}]          - Options to pass to the Accordion constructor.
+ * @param {HTMLElement} [options.context = document]    - The element to base the selector off of.
+ * @param {string}      [options.selector = .accordion] - The query selector for the accordion elements in the DOM.
+ */
+const generate = ({
   options = {},
   context = document,
-  accordionSelector = ".accordion"
-) => {
-  once("graupl-accordion-generator", accordionSelector, context).forEach(
+  selector = ".accordion",
+} = {}) => {
+  once("graupl-accordion-generator", selector, context).forEach(
     (accordionElement) => {
       const accordionOptions = accordionElement.dataset.grauplAccordionOptions
         ? JSON.parse(
