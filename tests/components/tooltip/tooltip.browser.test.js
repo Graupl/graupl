@@ -8,7 +8,9 @@ describe("Tooltip Component", () => {
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("tooltip-wrapper")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 
   it("Should match screenshot when open", async () => {
@@ -20,6 +22,8 @@ describe("Tooltip Component", () => {
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("tooltip-wrapper")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });

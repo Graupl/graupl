@@ -8,6 +8,8 @@ describe("Breadcrumb Component", () => {
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("breadcrumb-wrapper")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });
