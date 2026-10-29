@@ -21,15 +21,16 @@
 ///   The shade.
 /// @param {string}        $theme [active]
 ///   The theme.
-/// @param {string|null}   $fallback [null]
+/// @param {string|null}   $fallback [_default]
 ///   The fallback color to use if none is found.
 ///
 /// @return {string|null}
 ///   The custom property pointing to the correct colour or null if none is found.
-@function get($color, $shade: null, $theme: "active", $fallback: null) {
+@function get($color, $shade: null, $theme: "active", $fallback: "_default") {
   $color: string.quote(#{$color});
   $theme: string.quote(#{$theme});
   $shade: string.quote(#{$shade});
+  $fallback: string.quote(#{$fallback});
 
   @if $shade == "transparent" or $color == "transparent" {
     @return transparent;
@@ -48,14 +49,11 @@
   }
 
   @if map.has-key(color.$themes, $theme, $color, $shade) {
-    @return map.get(map.get(map.get(color.$themes, $theme), $color), $shade);
+    @return map.get(color.$themes, $theme, $color, $shade);
   }
 
-  @if map.has-key(color.$themes, $theme, $color, "_default") {
-    @return map.get(
-      map.get(map.get(color.$themes, $theme), $color),
-      "_default"
-    );
+  @if map.has-key(color.$themes, $theme, $color, $fallback) {
+    @return map.get(color.$themes, $theme, $color, $fallback);
   }
 
   @return null;
@@ -114,16 +112,23 @@
   @each $color in map.keys(map.get(color.$themes, $theme)) {
     $map: ();
 
+    // Create the map of colors and shades.
+    // If the shade is specifically set to `null`, skip it.
+    // This allows for users to nullify default values without turning them all off.
     @each $prop, $shade in $mapping {
-      $map: map.merge(
-        $map,
-        (
-          "#{$prop}": (
-              "color": $color,
-              "shade": $shade,
-            ),
-        )
-      );
+      /* stylelint-disable scss/at-if-no-null */
+      @if $shade != null {
+        $map: map.merge(
+          $map,
+          (
+            "#{$prop}": (
+                "color": $color,
+                "shade": $shade,
+              ),
+          )
+        );
+      }
+      /* stylelint-enable scss/at-if-no-null */
     }
 
     $theme-map: map.merge(

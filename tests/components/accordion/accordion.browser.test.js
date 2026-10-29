@@ -4,17 +4,13 @@ import Component from "./accordion.js";
 
 describe("Accordion Closed Component", () => {
   it("Should match screenshot", async () => {
-    const screen = render(Component, {
-      props: {
-        attributes: {
-          "data-testid": "accordion",
-        },
-      },
-    });
+    const screen = render(Component);
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });
 
@@ -23,14 +19,13 @@ describe("Accordion Open Component", () => {
     const screen = render(Component, {
       props: {
         open: true,
-        attributes: {
-          "data-testid": "accordion",
-        },
       },
     });
 
     await document.fonts.ready;
 
-    await expect(screen.getByTestId("accordion")).toMatchScreenshot();
+    await expect(
+      screen.getByTestId("component-test-wrapper")
+    ).toMatchScreenshot();
   });
 });

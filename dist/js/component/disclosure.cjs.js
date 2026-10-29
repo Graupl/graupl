@@ -87,7 +87,7 @@ function u(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function q(t, { shouldThrow: e = !0 } = {}) {
+function K(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -110,7 +110,7 @@ function q(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function K(t, { shouldThrow: e = !0 } = {}) {
+function G(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -134,7 +134,7 @@ function K(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !i.status) throw i.errors[0];
 	return i;
 }
-function G(t, e, { shouldThrow: i = !0 } = {}) {
+function H(t, e, { shouldThrow: i = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -154,7 +154,7 @@ function G(t, e, { shouldThrow: i = !0 } = {}) {
 	if (i && !s.status) throw s.errors[0];
 	return s;
 }
-function H(t, e, { shouldThrow: i = !0 } = {}) {
+function R(t, e, { shouldThrow: i = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -167,7 +167,7 @@ function H(t, e, { shouldThrow: i = !0 } = {}) {
 	if (i && !s.status) throw s.errors[0];
 	return s;
 }
-function R(t, { shouldThrow: e = !0 } = {}) {
+function U(t, { shouldThrow: e = !0 } = {}) {
 	const i = {
 		status: !0,
 		errors: []
@@ -298,7 +298,7 @@ var b = class {
 	dispose() {
 		delete this._storage, delete this;
 	}
-}, U = class {
+}, J = class {
 	_dom = {};
 	_rootDOMElement = "";
 	_protectedDOMElements = [];
@@ -394,13 +394,13 @@ var b = class {
 		return this._focusState;
 	}
 	set focusState(t) {
-		q({ focusState: t }), this._focusState !== t && (this._focusState = t);
+		K({ focusState: t }), this._focusState !== t && (this._focusState = t);
 	}
 	get currentEvent() {
 		return this._currentEvent;
 	}
 	set currentEvent(t) {
-		K({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
+		G({ currentEvent: t }), this._currentEvent !== t && (this._currentEvent = t);
 	}
 	get shouldFocus() {
 		let t = !1;
@@ -441,7 +441,7 @@ var b = class {
 	}
 	_validate() {
 		this._dispatchEvent("prevalidate", this.rootDOMElement);
-		const t = R(this, { shouldThrow: !1 });
+		const t = U(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const s = {};
 			for (const o of Object.keys(this._dom)) Array.isArray(this._dom[o]) ? this._dom[o].forEach((a, f) => {
@@ -558,7 +558,7 @@ var b = class {
 		});
 	}
 	_dispatchEvent(t, e) {
-		H(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
+		R(t, this), c(HTMLElement, { element: e }), e.dispatchEvent(this.events[t]);
 	}
 	_addEventListener(t, e, i, s = {}) {
 		e.addEventListener(t, i, s), this._listeners.push({
@@ -589,7 +589,7 @@ var b = class {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._removeEventListeners(), this._unstore(), delete this;
 	}
-}, J = class extends U {
+}, N = class extends J {
 	_rootDOMElement = "disclosure";
 	_protectedDOMElements = ["controller"];
 	_open = new b(!1);
@@ -747,7 +747,7 @@ var b = class {
 		this.dom.disclosure.id = this.dom.disclosure.id || `disclosure-${this.key}`, this.dom.controller.id = this.dom.controller.id || `disclosure-controller-${this.key}`, this._id = this.dom.disclosure.id;
 	}
 	_setAriaAttributes() {
-		this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), G("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
+		this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), H("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
 	}
 	_setCustomProps() {
 		this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-transition-duration`, `${this.transitionDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-open-transition-duration`, `${this.openDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-close-transition-duration`, `${this.closeDuration}ms`);
@@ -756,7 +756,7 @@ var b = class {
 		this._resetDOMElementType("content"), this._setDOMElementType("content", { context: this.dom.disclosure });
 	}
 	_reveal({ emit: t = this.isInitialized, transition: e = this.isInitialized } = {}) {
-		this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionlass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
+		this.dom.controller.setAttribute("aria-expanded", "true"), e && this.transitionClass !== "" ? (l(this.transitionClass, this.dom.disclosure), requestAnimationFrame(() => {
 			h(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 				l(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 					setTimeout(() => {
@@ -771,7 +771,7 @@ var b = class {
 			h(this.openClass, this.dom.disclosure), requestAnimationFrame(() => {
 				l(this.closeClass, this.dom.disclosure), requestAnimationFrame(() => {
 					setTimeout(() => {
-						h(this.transitionClass, this.dom.disclosure), this.dom.content.innert = !0;
+						h(this.transitionClass, this.dom.disclosure), this.dom.content.inert = !0;
 					}, this.closeDuration);
 				});
 			});
@@ -801,9 +801,7 @@ var b = class {
 		this._addEventListener("keydown", this.dom.controller, (t) => {
 			switch (this.currentEvent = "keyboard", p(t)) {
 				case "Space":
-				case "Enter":
-					d(t);
-					break;
+				case "Enter": d(t);
 			}
 		}), this._addEventListener("keydown", this.dom.disclosure, (t) => {
 			this.currentEvent = "keyboard", p(t) === "Escape" && d(t);
@@ -816,9 +814,7 @@ var b = class {
 				case "Enter":
 					this.toggle(), d(t);
 					break;
-				case "Tab":
-					this.openOnFocus && (d(t), this.open());
-					break;
+				case "Tab": this.openOnFocus && (d(t), this.open());
 			}
 		}), this._addEventListener("keyup", this.dom.disclosure, (t) => {
 			this.currentEvent = "keyboard", p(t) === "Escape" && (this.close(), d(t));
@@ -873,6 +869,6 @@ var b = class {
 		});
 	}
 };
-module.exports = J;
+module.exports = N;
 
 //# sourceMappingURL=disclosure.cjs.js.map

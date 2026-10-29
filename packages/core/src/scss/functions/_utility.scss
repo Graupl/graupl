@@ -43,7 +43,13 @@
   @each $name, $property-list in $properties {
     @if $property-list {
       @each $key, $value in $values {
-        $selector: #{$name}#{$separator}#{$key};
+        // If $name is set to _default, don't add it to the utility class.
+        $selector: #{$key};
+
+        @if $name != "_default" {
+          $selector: #{$name}#{$separator}#{$key};
+        }
+
         $property-map: convert-property-values-to-map($property-list, $value);
         $map: map.merge($map, (#{$selector}: $property-map));
       }
