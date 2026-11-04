@@ -399,12 +399,14 @@ class NavigationShelf extends CollapsibleComponent {
         );
       }
 
+      // Ensure the initial hoverability of the shelf.
       if (this.hover) {
         this._enableHover({ emit: false });
       } else {
         this._disableHover({ emit: false });
       }
 
+      // Ensure the initial side of the shelf.
       this._shiftSide({ emit: false });
     });
 
