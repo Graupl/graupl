@@ -14,8 +14,8 @@ const projectRoot = path.resolve(process.cwd());
  * - Partials (files starting with "_") are excluded.
  * - Subdirectories are traversed.
  *
- * @param {string} dir - The directory to scan.
- * @return {string[]} An array of absolute or relative file paths to SCSS entry files.
+ * @param  {string}   dir - The directory to scan.
+ * @return {string[]}     - An array of absolute or relative file paths to SCSS entry files.
  */
 function getScssEntries(dir) {
   const entries = [];
@@ -41,9 +41,8 @@ function getScssEntries(dir) {
  * Build a single SCSS file into CSS + sourcemap.
  *
  * @param {string} entryPath - Path to the SCSS entry file (not a partial).
- * @param {string} srcDir - Root of the SCSS source directory tree.
- * @param {string} outDir - Output directory to write compiled CSS files into.
- * @return {void}
+ * @param {string} srcDir    - Root of the SCSS source directory tree.
+ * @param {string} outDir    - Output directory to write compiled CSS files into.
  */
 function buildScssFile(entryPath, srcDir, outDir) {
   const relPath = path.relative(srcDir, entryPath);
@@ -89,7 +88,6 @@ function buildScssFile(entryPath, srcDir, outDir) {
  *
  * @param {string} srcDir - Source SCSS directory to scan for entry files.
  * @param {string} outDir - Output directory where resulting CSS should be written.
- * @return {void}
  */
 function buildAll(srcDir, outDir) {
   const entries = getScssEntries(srcDir);
