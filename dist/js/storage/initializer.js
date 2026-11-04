@@ -1,55 +1,55 @@
 (function() {
-	function c(a, t, { shouldThrow: r = !0 } = {}) {
-		const e = {
+	function u(n, t, { shouldThrow: r = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object") throw new TypeError(`Elements given to isValidInstance() must be inside of an object. "${typeof t}" given.`);
-			for (const s in t) try {
-				if (!(t[s] instanceof a)) {
-					const o = typeof t[s];
-					throw new TypeError(`${s} must be an instance of ${a.name}. "${o}" given.`);
+			for (const e in t) try {
+				if (!(t[e] instanceof n)) {
+					const o = typeof t[e];
+					throw new TypeError(`${e} must be an instance of ${n.name}. "${o}" given.`);
 				}
 			} catch (o) {
-				e.status = !1, e.errors.push(o);
+				s.status = !1, s.errors.push(o);
 			}
-		} catch (s) {
-			e.status = !1, e.errors.push(s);
+		} catch (e) {
+			s.status = !1, s.errors.push(e);
 		}
-		if (r && !e.status) throw e.errors[0];
-		return e;
+		if (r && !s.status) throw s.errors[0];
+		return s;
 	}
-	function i(a, t, { shouldThrow: r = !0 } = {}) {
-		const e = {
+	function i(n, t, { shouldThrow: r = !0 } = {}) {
+		const s = {
 			status: !0,
 			errors: []
 		};
 		try {
 			if (typeof t != "object") throw new TypeError(`Values given to isValidType() must be inside of an object. "${typeof t}" given.`);
-			for (const s in t) try {
-				const o = typeof t[s];
-				if (o !== a) throw new TypeError(`${s} must be a ${a}. "${o}" given.`);
+			for (const e in t) try {
+				const o = typeof t[e];
+				if (o !== n) throw new TypeError(`${e} must be a ${n}. "${o}" given.`);
 			} catch (o) {
-				e.status = !1, e.errors.push(o);
+				s.status = !1, s.errors.push(o);
 			}
-		} catch (s) {
-			e.status = !1, e.errors.push(s);
+		} catch (e) {
+			s.status = !1, s.errors.push(e);
 		}
-		if (r && !e.status) throw e.errors[0];
-		return e;
+		if (r && !s.status) throw s.errors[0];
+		return s;
 	}
-	var g = class h {
+	var c = class h {
 		_scope;
 		_type = "_default";
 		_storage = {};
 		_crush = !1;
-		constructor({ scope: t, type: r = null, crush: e = !1, initialize: s = !0 } = {}) {
-			this._scope = t, this._type = r || "_default", this._crush = e, s && this.initialize();
+		constructor({ scope: t, type: r = null, crush: s = !1, initialize: e = !0 } = {}) {
+			this._scope = t, this._type = r || "_default", this._crush = s, e && this.initialize();
 		}
 		initialize() {
 			try {
-				!this._crush && typeof window[this.scope] < "u" && (c(h, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+				!this._crush && typeof window[this.scope] < "u" && (u(h, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 			} catch {} finally {
 				window[this.scope] = this;
 			}
@@ -67,41 +67,41 @@
 			return this._storage;
 		}
 		get({ type: t = this.type, key: r = null } = {}) {
-			const e = i("string", { type: t });
-			if (!e.status) throw new Error(`StorageManager (${this.scope}): ${e.message}`);
+			const s = i("string", { type: t }, { shouldThrow: !1 });
+			if (!s.status) throw s.errors[0];
 			if (!this.storage[t]) throw new Error(`StorageManager (${this.scope}): Type "${t}" is not initialized.`);
 			if (r !== null) {
-				const s = i("string", { key: r });
-				if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+				const e = i("string", { key: r }, { shouldThrow: !1 });
+				if (!e.status) throw e.errors[0];
 				return this.storage[t][r];
 			}
 			return this.storage[t];
 		}
-		set({ type: t = this.type, key: r = null, data: e = {} } = {}) {
-			const s = i("string", { type: t }), o = i("object", { data: e });
-			if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
-			if (!o.status) throw new Error(`StorageManager (${this.scope}): ${o.message}`);
+		set({ type: t = this.type, key: r = null, data: s = {} } = {}) {
+			const e = i("string", { type: t }, { shouldThrow: !1 }), o = i("object", { data: s }, { shouldThrow: !1 });
+			if (!e.status) throw e.errors[0];
+			if (!o.status) throw o.errors[0];
 			if (r !== null) {
-				const n = i("string", { key: r });
-				if (!n.status) throw new Error(`StorageManager (${this.scope}): ${n.message}`);
-				this._storage[t] || (this._storage[t] = {}), this._storage[t][r] = e;
-			} else this._storage[t] = e;
+				const a = i("string", { key: r }, { shouldThrow: !1 });
+				if (!a.status) throw a.errors[0];
+				this._storage[t] || (this._storage[t] = {}), this._storage[t][r] = s;
+			} else this._storage[t] = s;
 		}
 		clear({ type: t = this.type, key: r = null } = {}) {
-			const e = i("string", { type: t });
-			if (!e.status) throw new Error(`StorageManager (${this.scope}): ${e.message}`);
+			const s = i("string", { type: t }, { shouldThrow: !1 });
+			if (!s.status) throw s.errors[0];
 			if (r !== null) {
-				const s = i("string", { key: r });
-				if (!s.status) throw new Error(`StorageManager (${this.scope}): ${s.message}`);
+				const e = i("string", { key: r }, { shouldThrow: !1 });
+				if (!e.status) throw e.errors[0];
 				delete this.storage[t][r];
 			} else delete this.storage[t];
 		}
 		dispose() {
-			delete this._storage, delete this;
+			typeof window < "u" && window[this.scope] === this && delete window[this.scope], delete this._storage;
 		}
 	};
 	document.addEventListener("readystatechange", () => {
-		document.readyState === "interactive" && new g({
+		document.readyState === "interactive" && new c({
 			scope: "GrauplStorage",
 			crush: !0
 		});
