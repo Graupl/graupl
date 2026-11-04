@@ -1101,7 +1101,7 @@ class NavigationShelf extends CollapsibleComponent {
 
         if (key === "Space" || key === "Enter") {
           preventEvent(event);
-          this.toggle();
+          this.toggle({ preserveLock: false });
 
           if (this.isExpanded) {
             const element = selectFirstFocusableElement(this.dom.shelf);
