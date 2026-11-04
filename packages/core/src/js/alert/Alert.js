@@ -205,13 +205,12 @@ class Alert extends CollapsibleComponent {
     this._registerEvent("collapse", { detail: { alert: this } });
     this._registerEvent("postcollapse", { detail: { alert: this } });
 
-    // Keep visibility semantics on the alert, including silent actions.
+    // Update inert when the alert expands or collapses, including silent actions.
     this._addInternalEventListener(this.getEventName("preexpand"), () => {
       this.dom.alert.removeAttribute("inert");
     });
     this._addInternalEventListener(this.getEventName("precollapse"), () => {
       this.dom.alert.setAttribute("inert", "true");
-      this.focusState = "none";
     });
   }
 
@@ -325,11 +324,11 @@ class Alert extends CollapsibleComponent {
   }
 
   /**
-   * Sets the alert and optional dismiss-button IDs if they do not already exist.
+   * Sets the IDs of the alert and its children if they do not already exist.
    *
    * The generated IDs use the key and follow the format:
    *  - alert: `alert-${key}`
-   *  - dismiss button, when provided: `alert-controller-${key}`
+   *  - controller, when provided: `alert-controller-${key}`
    */
   _setIds() {
     this.dom.alert.id = this.dom.alert.id || `alert-${this.key}`;
@@ -372,7 +371,7 @@ class Alert extends CollapsibleComponent {
   }
 
   /**
-   * Handles click events on the optional dismiss button for proper use.
+   * Handles click events throughout the alert for proper use.
    *
    * - Adds a `click` listener to the controller that will collapse the alert.
    *
@@ -387,7 +386,7 @@ class Alert extends CollapsibleComponent {
   }
 
   /**
-   * Handles keydown events on the optional dismiss button for proper use.
+   * Handles keydown events throughout the alert for proper use.
    *
    * This method exists to assist the _handleKeyup method.
    *
@@ -410,7 +409,7 @@ class Alert extends CollapsibleComponent {
   }
 
   /**
-   * Handles keyup events on the optional dismiss button for proper use.
+   * Handles keyup events throughout the alert for proper use.
    *
    * - Adds a `keyup` listener to the controller (if it exists).
    *   - Collapses the alert when the user hits "Space" or "Enter".
