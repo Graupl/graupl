@@ -1107,7 +1107,7 @@ class NavigationShelf extends CollapsibleComponent {
 
           if (this.isExpanded) {
             const element = selectFirstFocusableElement(this.dom.shelf);
-            element.focus();
+            if (element) element.focus();
           }
         }
       });
