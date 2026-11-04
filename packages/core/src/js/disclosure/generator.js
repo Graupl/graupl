@@ -8,10 +8,10 @@ import once from "@drupal/once";
 /**
  * Generates Disclosure elements.
  *
- * @param {object}      [options = {}]                   - Options for generating the disclosure.
- * @param {object}      [options.options = {}]           - Options to pass to the Disclosure constructor.
- * @param {HTMLElement} [options.context = document]     - The element to base the selector off of.
- * @param {string}      [options.selector = .disclosure] - The query selector for the disclosure elements in the DOM.
+ * @param {object}           [options = {}]                   - Options for generating the disclosure.
+ * @param {object}           [options.options = {}]           - Options to pass to the Disclosure constructor.
+ * @param {Document|Element} [options.context = document]     - The element to base the selector off of.
+ * @param {string}           [options.selector = .disclosure] - The query selector for the disclosure elements in the DOM.
  */
 const generate = ({
   options = {},
