@@ -1172,7 +1172,10 @@ var NavigationShelf = (function() {
 			}), this.dom.controller && this._addEventListener("keyup", this.dom.controller, (t) => {
 				this.currentEvent = "keyboard";
 				const e = p(t);
-				(e === "Space" || e === "Enter") && (u(t), this.toggle(), this.isExpanded && tt(this.dom.shelf).focus());
+				if ((e === "Space" || e === "Enter") && (u(t), this.toggle({ preserveLock: !1 }), this.isExpanded)) {
+					const s = tt(this.dom.shelf);
+					s && s.focus();
+				}
 			}), this.dom.hoverController && this._addEventListener("keyup", this.dom.hoverController, (t) => {
 				this.currentEvent = "keyboard";
 				const e = p(t);
