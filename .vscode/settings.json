@@ -22,7 +22,8 @@
     "shouldfocus",
     "unslop",
     "unstub",
-    "vitest"
+    "vitest",
+    "vnodes"
   ],
   "liveServer.settings.port": 5501,
   "vp.docsDir": "docs",
