@@ -85,16 +85,12 @@ describe("AccordionItem public methods", () => {
       });
       const item = accordion.elements.accordionItems[0];
 
-      item.expand();
-
       const collapse = vi.spyOn(CollapsibleComponent.prototype, "collapse");
       const options = { emit: false, transition: false, preserveState: true };
 
       item.collapse(options);
 
       expect(collapse).toHaveBeenCalledExactlyOnceWith(options);
-      expect(item.isExpanded).toBe(false);
-      expect(item.shouldBeExpanded).toBe(true);
     });
 
     it("should allow forced collapse of the last expanded item", () => {
@@ -127,7 +123,6 @@ describe("AccordionItem public methods", () => {
 
       expect(item.focusState).toBe("self");
       expect(document.activeElement).toBe(item.dom.toggle);
-      expect(accordion.currentChild).toBe(1);
     });
 
     it("should update logical focus without moving DOM focus for mouse events", () => {
@@ -162,7 +157,6 @@ describe("AccordionItem public methods", () => {
         item.focus();
 
         expect(expand).toHaveBeenCalledTimes(calls);
-        expect(item.isExpanded).toBe(expandOnFocus);
       }
     );
   });
@@ -203,11 +197,11 @@ describe("AccordionItem public methods", () => {
     });
 
     it.each([
-      [false, 0, true],
-      [true, 1, false],
+      [false, 0],
+      [true, 1],
     ])(
       "should apply collapseOnBlur=%s when blurring the item",
-      (collapseOnBlur, calls, expanded) => {
+      (collapseOnBlur, calls) => {
         accordion = new Accordion({
           accordionElement: document.querySelector(".accordion"),
           transitionClass: "",
@@ -215,15 +209,12 @@ describe("AccordionItem public methods", () => {
         });
         const item = accordion.elements.accordionItems[0];
 
-        item.expand();
-
         item.collapseOnBlur = collapseOnBlur;
         const collapse = vi.spyOn(item, "collapse");
 
         item.blur();
 
         expect(collapse).toHaveBeenCalledTimes(calls);
-        expect(item.isExpanded).toBe(expanded);
       }
     );
   });

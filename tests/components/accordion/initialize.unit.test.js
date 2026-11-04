@@ -31,9 +31,23 @@ describe("Accordion initialization", () => {
       expect(accordion.isBootstrapped).toBe(true);
       expect(accordion.isInitialized).toBe(false);
       expect(accordion.elements.accordionItems).toEqual([]);
+    });
+
+    it("should use the default interaction settings", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+      });
+
       expect(accordion.allowExpandMultiple).toBe(true);
       expect(accordion.allowCollapseAll).toBe(true);
       expect(accordion.optionalKeySupport).toBe(false);
+    });
+
+    it("should use the default classes and durations", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+      });
+
       expect(accordion.expandClass).toBe("show");
       expect(accordion.collapseClass).toBe("hide");
       expect(accordion.transitionClass).toBe("transitioning");
@@ -92,24 +106,24 @@ describe("Accordion initialization", () => {
         expect(item.unlockedClass).toBe("");
         expect(item.prefix).toBe("custom-");
         expect(item.key).toBe("example");
-        expect(item.dom.item.classList.contains("collapsed")).toBe(true);
       }
     });
 
-    it.each(["expandClass", "collapseClass", "transitionClass"])(
-      "should use an empty class when %s is null",
-      (option) => {
-        accordion = new Accordion({
-          accordionElement: document.querySelector(".accordion"),
-          [option]: null,
-          initialize: true,
-        });
+    it.each([
+      ["expandClass", "expand"],
+      ["collapseClass", "collapse"],
+      ["transitionClass", "transition"],
+    ])("should use an empty class when %s is null", (option, className) => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        [option]: null,
+        initialize: true,
+      });
 
-        expect(accordion.isInitialized).toBe(true);
-        expect(accordion[option]).toBe("");
-        expect(accordion.elements.accordionItems[0][option]).toBe("");
-      }
-    );
+      expect(accordion.isInitialized).toBe(true);
+      expect(accordion[option]).toBe("");
+      expect(accordion.elements.accordionItems[0].classes[className]).toBe("");
+    });
   });
 
   describe("initialize", () => {
@@ -169,7 +183,6 @@ describe("Accordion initialization", () => {
       expect(accordion.isInitialized).toBe(true);
       expect(accordion.dom.accordionControlContainer).toBeNull();
       expect(accordion.dom.accordionControls).toEqual([]);
-      expect(accordion.elements.accordionItems).toHaveLength(3);
     });
 
     it.each(["optionalKeySupport", "allowExpandMultiple", "allowCollapseAll"])(

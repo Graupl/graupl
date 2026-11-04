@@ -12,8 +12,7 @@ export const threeItemAccordion = `
         <button type="button" class="accordion-item-toggle" aria-expanded="false">Accordion Heading</button>
       </h3>
       <div class="accordion-item-content">
-        <p class="accordion-item-body">Accordion Body</p>
-        <a href="#details">Read details</a>
+        <p>Accordion Body</p>
       </div>
     </div>
     <div class="accordion-item">

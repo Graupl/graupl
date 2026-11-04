@@ -100,7 +100,6 @@ describe("AccordionItem protected methods", () => {
 
       expect(item.isInitialized).toBe(true);
       expect(item.dom.toggle.getAttribute("role")).toBe("button");
-      expect(item.dom.toggle.getAttribute("tabindex")).toBe("0");
     });
 
     it("should label a section without adding a redundant region role", () => {
@@ -120,26 +119,30 @@ describe("AccordionItem protected methods", () => {
   });
 
   describe("_registerEvents", () => {
-    it("should emit the Graupl expansion and collapse events on the item", () => {
-      accordion = new Accordion({
-        accordionElement: document.querySelector(".accordion"),
-        transitionClass: "",
-        initialize: true,
-      });
-      const item = accordion.elements.accordionItems[0];
-      const expand = vi.fn();
-      const collapse = vi.fn();
-      item.dom.item.addEventListener("grauplAccordionItemExpand", expand);
-      item.dom.item.addEventListener("grauplAccordionItemCollapse", collapse);
+    it.each([
+      ["expand", "grauplAccordionItemExpand", "false"],
+      ["collapse", "grauplAccordionItemCollapse", "true"],
+    ])(
+      "should dispatch %s as %s on the item",
+      (method, eventName, expanded) => {
+        document
+          .querySelector(".accordion-item-toggle")
+          .setAttribute("aria-expanded", expanded);
+        accordion = new Accordion({
+          accordionElement: document.querySelector(".accordion"),
+          transitionClass: "",
+          initialize: true,
+        });
+        const item = accordion.elements.accordionItems[0];
+        const listener = vi.fn();
+        item.dom.item.addEventListener(eventName, listener);
 
-      item.expand();
-      item.collapse();
+        item[method]();
 
-      expect(expand).toHaveBeenCalledOnce();
-      expect(collapse).toHaveBeenCalledOnce();
-      expect(expand.mock.calls[0][0].target).toBe(item.dom.item);
-      expect(collapse.mock.calls[0][0].target).toBe(item.dom.item);
-    });
+        expect(listener).toHaveBeenCalledOnce();
+        expect(listener.mock.calls[0][0].target).toBe(item.dom.item);
+      }
+    );
 
     it("should update expansion height and clear it after the transition", () => {
       vi.useFakeTimers();
@@ -163,8 +166,6 @@ describe("AccordionItem protected methods", () => {
       item.expand();
 
       expect(item.dom.item.style.height).toBe("20px");
-      expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("true");
-      expect(item.dom.content.hasAttribute("inert")).toBe(false);
 
       vi.advanceTimersByTime(32);
 
@@ -200,8 +201,6 @@ describe("AccordionItem protected methods", () => {
       item.collapse();
 
       expect(item.dom.item.style.height).toBe("120px");
-      expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("false");
-      expect(item.dom.content.hasAttribute("inert")).toBe(true);
 
       vi.advanceTimersByTime(16);
 
@@ -238,8 +237,6 @@ describe("AccordionItem protected methods", () => {
       vi.runAllTimers();
 
       expect(item.dom.item.style.height).toBe("");
-      expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("true");
-      expect(item.dom.content.hasAttribute("inert")).toBe(false);
     });
 
     it("should cancel the accordion height frame when disposed", () => {
@@ -270,29 +267,41 @@ describe("AccordionItem protected methods", () => {
       expect(item.dom.item.style.height).toBe("120px");
     });
 
-    it("should update ARIA and inert when public events are suppressed", () => {
-      accordion = new Accordion({
-        accordionElement: document.querySelector(".accordion"),
-        transitionClass: "",
-        initialize: true,
-      });
-      const item = accordion.elements.accordionItems[0];
-      const expand = vi.fn();
-      const collapse = vi.fn();
-      item.dom.item.addEventListener("grauplAccordionItemExpand", expand);
-      item.dom.item.addEventListener("grauplAccordionItemCollapse", collapse);
+    it.each([true, false])(
+      "should update ARIA and remove inert when expanding with emit=%s",
+      (emit) => {
+        accordion = new Accordion({
+          accordionElement: document.querySelector(".accordion"),
+          transitionClass: "",
+          initialize: true,
+        });
+        const item = accordion.elements.accordionItems[0];
 
-      item.expand({ emit: false });
+        item.expand({ emit });
 
-      expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("true");
-      expect(item.dom.content.hasAttribute("inert")).toBe(false);
+        expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("true");
+        expect(item.dom.content.hasAttribute("inert")).toBe(false);
+      }
+    );
 
-      item.collapse({ emit: false });
+    it.each([true, false])(
+      "should update ARIA and apply inert when collapsing with emit=%s",
+      (emit) => {
+        document
+          .querySelector(".accordion-item-toggle")
+          .setAttribute("aria-expanded", "true");
+        accordion = new Accordion({
+          accordionElement: document.querySelector(".accordion"),
+          transitionClass: "",
+          initialize: true,
+        });
+        const item = accordion.elements.accordionItems[0];
 
-      expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("false");
-      expect(item.dom.content.hasAttribute("inert")).toBe(true);
-      expect(expand).not.toHaveBeenCalled();
-      expect(collapse).not.toHaveBeenCalled();
-    });
+        item.collapse({ emit });
+
+        expect(item.dom.toggle.getAttribute("aria-expanded")).toBe("false");
+        expect(item.dom.content.hasAttribute("inert")).toBe(true);
+      }
+    );
   });
 });

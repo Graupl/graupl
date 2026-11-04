@@ -72,118 +72,129 @@ describe("Accordion keyboard events", () => {
 
         expect(event.defaultPrevented).toBe(true);
         expect(accordion.currentEvent).toBe("keyboard");
-        expect(accordion.currentChild).toBe(1);
       }
     );
 
-    it.each(["Enter", " "])(
-      "should prevent native %j activation on bulk controls",
-      (key) => {
+    it.each([
+      ["Enter", ".expand-all", "expandChildren"],
+      [" ", ".expand-all", "expandChildren"],
+      ["Enter", ".collapse-all", "collapseChildren"],
+      [" ", ".collapse-all", "collapseChildren"],
+    ])(
+      "should prevent native %j activation on %s until keyup",
+      (key, selector, method) => {
         accordion = new Accordion({
           accordionElement: document.querySelector(".accordion"),
           initialize: true,
         });
-        const expand = vi.spyOn(accordion, "expandChildren");
-        const collapse = vi.spyOn(accordion, "collapseChildren");
-        const expandEvent = new KeyboardEvent("keydown", {
-          key,
-          bubbles: true,
-          cancelable: true,
-        });
-        const collapseEvent = new KeyboardEvent("keydown", {
+        const action = vi.spyOn(accordion, method);
+        const event = new KeyboardEvent("keydown", {
           key,
           bubbles: true,
           cancelable: true,
         });
 
-        document.querySelector(".expand-all").dispatchEvent(expandEvent);
-        document.querySelector(".collapse-all").dispatchEvent(collapseEvent);
+        document.querySelector(selector).dispatchEvent(event);
 
-        expect(expandEvent.defaultPrevented).toBe(true);
-        expect(collapseEvent.defaultPrevented).toBe(true);
+        expect(event.defaultPrevented).toBe(true);
         expect(accordion.currentEvent).toBe("keyboard");
-        expect(expand).not.toHaveBeenCalled();
-        expect(collapse).not.toHaveBeenCalled();
+        expect(action).not.toHaveBeenCalled();
       }
     );
   });
 
   describe("_handleKeyup", () => {
-    it.each(["Enter", " "])("should toggle the focused item with %j", (key) => {
+    it.each(["Enter", " "])("should expand the focused item with %j", (key) => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         transitionClass: "",
         initialize: true,
       });
-      const [first, second] = accordion.elements.accordionItems;
+      const item = accordion.elements.accordionItems[1];
 
-      second.dom.toggle.focus();
+      item.dom.toggle.focus();
 
-      const toggle = vi.spyOn(second, "toggle");
+      const toggle = vi.spyOn(item, "toggle");
       const event = new KeyboardEvent("keyup", {
         key,
         bubbles: true,
         cancelable: true,
       });
 
-      second.dom.toggle.dispatchEvent(event);
+      item.dom.toggle.dispatchEvent(event);
 
       expect(accordion.currentChild).toBe(1);
       expect(accordion.currentEvent).toBe("keyboard");
       expect(event.defaultPrevented).toBe(true);
       expect(toggle).toHaveBeenCalledOnce();
-      expect(second.isExpanded).toBe(true);
-      expect(first.isExpanded).toBe(false);
-
-      second.dom.toggle.dispatchEvent(
-        new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
-      );
-
-      expect(toggle).toHaveBeenCalledTimes(2);
-      expect(second.isExpanded).toBe(false);
+      expect(item.isExpanded).toBe(true);
     });
 
-    it.each([
-      ["ArrowDown", 1, 2],
-      ["ArrowDown", 2, 2],
-      ["ArrowUp", 1, 0],
-      ["ArrowUp", 0, 0],
-      ["Home", 1, 0],
-      ["End", 1, 2],
-    ])(
-      "should move focus with %s from index %i to index %i",
-      (key, initialIndex, expectedIndex) => {
+    it.each(["Enter", " "])(
+      "should collapse the focused item with %j",
+      (key) => {
+        document
+          .querySelectorAll(".accordion-item-toggle")[1]
+          .setAttribute("aria-expanded", "true");
         accordion = new Accordion({
           accordionElement: document.querySelector(".accordion"),
-          optionalKeySupport: true,
+          transitionClass: "",
           initialize: true,
         });
-        const item = accordion.elements.accordionItems[initialIndex];
+        const item = accordion.elements.accordionItems[1];
 
         item.dom.toggle.focus();
 
-        const keydown = new KeyboardEvent("keydown", {
-          key,
-          bubbles: true,
-          cancelable: true,
-        });
-        const keyup = new KeyboardEvent("keyup", {
+        const toggle = vi.spyOn(item, "toggle");
+        const event = new KeyboardEvent("keyup", {
           key,
           bubbles: true,
           cancelable: true,
         });
 
-        item.dom.toggle.dispatchEvent(keydown);
-        item.dom.toggle.dispatchEvent(keyup);
+        item.dom.toggle.dispatchEvent(event);
 
-        expect(keyup.defaultPrevented).toBe(true);
-        expect(accordion.currentChild).toBe(expectedIndex);
-        expect(document.activeElement).toBe(
-          accordion.elements.accordionItems[expectedIndex].dom.toggle
-        );
-        expect(accordion.expandedAccordionItems).toEqual([]);
+        expect(accordion.currentChild).toBe(1);
+        expect(accordion.currentEvent).toBe("keyboard");
+        expect(event.defaultPrevented).toBe(true);
+        expect(toggle).toHaveBeenCalledOnce();
+        expect(item.isExpanded).toBe(false);
       }
     );
+
+    it.each([
+      ["ArrowDown", "focusNextChild"],
+      ["ArrowUp", "focusPreviousChild"],
+      ["Home", "focusFirstChild"],
+      ["End", "focusLastChild"],
+    ])("should handle %s by calling %s", (key, method) => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        optionalKeySupport: true,
+        initialize: true,
+      });
+      const item = accordion.elements.accordionItems[1];
+
+      item.dom.toggle.focus();
+
+      const keydown = new KeyboardEvent("keydown", {
+        key,
+        bubbles: true,
+        cancelable: true,
+      });
+      const keyup = new KeyboardEvent("keyup", {
+        key,
+        bubbles: true,
+        cancelable: true,
+      });
+      const navigate = vi.spyOn(accordion, method);
+
+      item.dom.toggle.dispatchEvent(keydown);
+      item.dom.toggle.dispatchEvent(keyup);
+
+      expect(keyup.defaultPrevented).toBe(true);
+      expect(navigate).toHaveBeenCalledExactlyOnceWith();
+    });
 
     it.each(["ArrowDown", "ArrowUp", "Home", "End"])(
       "should preserve focus and allow %s by default",

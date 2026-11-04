@@ -110,7 +110,7 @@ describe("Accordion getter/setters", () => {
   });
 
   describe("currentChild", () => {
-    it("should select an item by index and ignore out-of-range values", () => {
+    it("should update the current index", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         initialize: true,
@@ -119,14 +119,26 @@ describe("Accordion getter/setters", () => {
       accordion.currentChild = 1;
 
       expect(accordion.currentChild).toBe(1);
-      expect(accordion.currentAccordionItem).toBe(
-        accordion.elements.accordionItems[1]
-      );
+    });
 
-      accordion.currentChild = -1;
-      accordion.currentChild = 3;
+    it.each([-1, 3])("should ignore the out-of-range index %i", (index) => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+      accordion.currentChild = 1;
+
+      accordion.currentChild = index;
 
       expect(accordion.currentChild).toBe(1);
+    });
+
+    it("should reject an invalid index type without changing the current index", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+      accordion.currentChild = 1;
 
       expect(() => {
         accordion.currentChild = "2";
@@ -135,26 +147,42 @@ describe("Accordion getter/setters", () => {
     });
   });
 
+  describe("currentAccordionItem", () => {
+    it("should return the item at the current index", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+      accordion.currentChild = 1;
+
+      expect(accordion.currentAccordionItem).toBe(
+        accordion.elements.accordionItems[1]
+      );
+    });
+  });
+
   describe("expandedAccordionItems", () => {
-    it("should return only currently expanded items", () => {
+    it("should return an empty array when every item is collapsed", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+
+      expect(accordion.expandedAccordionItems).toEqual([]);
+    });
+
+    it("should return expanded items and exclude collapsed items", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         transitionClass: "",
         initialize: true,
       });
-      const [first, second, third] = accordion.elements.accordionItems;
-
-      expect(accordion.expandedAccordionItems).toEqual([]);
+      const [first, , third] = accordion.elements.accordionItems;
 
       first.expand();
       third.expand();
 
       expect(accordion.expandedAccordionItems).toEqual([first, third]);
-
-      first.collapse();
-      second.expand();
-
-      expect(accordion.expandedAccordionItems).toEqual([second, third]);
     });
   });
 
@@ -200,23 +228,25 @@ describe("Accordion getter/setters", () => {
       expect(document.querySelector(selector).disabled).toBe(true);
     });
 
-    it("should update the bulk control when changed", () => {
-      accordion = new Accordion({
-        accordionElement: document.querySelector(".accordion"),
-        initialize: true,
-      });
-      const control = document.querySelector(selector);
+    it.each([
+      [true, false, true],
+      [false, true, false],
+    ])(
+      "should update the bulk control when changing from %s to %s",
+      (initialValue, value, disabled) => {
+        accordion = new Accordion({
+          accordionElement: document.querySelector(".accordion"),
+          [property]: initialValue,
+          initialize: true,
+        });
+        const control = document.querySelector(selector);
 
-      expect(control.disabled).toBe(false);
+        accordion[property] = value;
 
-      accordion[property] = false;
-
-      expect(control.disabled).toBe(true);
-
-      accordion[property] = true;
-
-      expect(control.disabled).toBe(false);
-    });
+        expect(accordion[property]).toBe(value);
+        expect(control.disabled).toBe(disabled);
+      }
+    );
 
     it("should reject an invalid boolean without changing the value", () => {
       accordion = new Accordion({

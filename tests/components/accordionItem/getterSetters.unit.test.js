@@ -53,37 +53,51 @@ describe("AccordionItem getter/setters", () => {
     ["expandDuration", 100, 110],
     ["collapseDuration", 120, 130],
   ])("%s", (property, parentValue, itemValue) => {
-    it("should read live parent settings and forward writes to the parent", () => {
+    it("should read the current value from the parent", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+      const item = accordion.elements.accordionItems[0];
+
+      accordion[property] = parentValue;
+
+      expect(item[property]).toBe(parentValue);
+    });
+
+    it("should update the parent through the setter", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         initialize: true,
       });
       const [first, second] = accordion.elements.accordionItems;
 
-      accordion[property] = parentValue;
-
-      expect(first[property]).toBe(parentValue);
-      expect(second[property]).toBe(parentValue);
-
       first[property] = itemValue;
 
       expect(accordion[property]).toBe(itemValue);
-      expect(first[property]).toBe(itemValue);
       expect(second[property]).toBe(itemValue);
     });
   });
 
   describe("currentEvent", () => {
-    it("should share the current event with the parent and sibling items", () => {
+    it("should read the parent's current event", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        initialize: true,
+      });
+      const item = accordion.elements.accordionItems[0];
+
+      accordion.currentEvent = "keyboard";
+
+      expect(item.currentEvent).toBe("keyboard");
+    });
+
+    it("should update the parent's current event through the setter", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         initialize: true,
       });
       const [first, second] = accordion.elements.accordionItems;
-
-      accordion.currentEvent = "keyboard";
-
-      expect(first.currentEvent).toBe("keyboard");
 
       first.currentEvent = "mouse";
 
@@ -93,20 +107,22 @@ describe("AccordionItem getter/setters", () => {
   });
 
   describe("shouldFocus", () => {
-    it("should read the parent's focus permission", () => {
-      accordion = new Accordion({
-        accordionElement: document.querySelector(".accordion"),
-        initialize: true,
-      });
-      const item = accordion.elements.accordionItems[0];
+    it.each([
+      ["keyboard", true],
+      ["mouse", false],
+    ])(
+      "should use the parent's focus permission for %s events",
+      (currentEvent, shouldFocus) => {
+        accordion = new Accordion({
+          accordionElement: document.querySelector(".accordion"),
+          initialize: true,
+        });
+        const item = accordion.elements.accordionItems[0];
 
-      accordion.currentEvent = "keyboard";
+        accordion.currentEvent = currentEvent;
 
-      expect(item.shouldFocus).toBe(true);
-
-      accordion.currentEvent = "mouse";
-
-      expect(item.shouldFocus).toBe(false);
-    });
+        expect(item.shouldFocus).toBe(shouldFocus);
+      }
+    );
   });
 });

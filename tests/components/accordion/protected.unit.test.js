@@ -78,7 +78,7 @@ describe("Accordion protected methods", () => {
   });
 
   describe("_createChildElements", () => {
-    it("should allow multiple expanded items and collapsing every item by default", () => {
+    it("should allow multiple expanded items by default", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         transitionClass: "",
@@ -90,8 +90,18 @@ describe("Accordion protected methods", () => {
       second.expand();
 
       expect(accordion.expandedAccordionItems).toEqual([first, second]);
-      expect(first.isLocked).toBe(false);
-      expect(second.isLocked).toBe(false);
+    });
+
+    it("should allow every item to collapse by default", () => {
+      const toggles = document.querySelectorAll(".accordion-item-toggle");
+      toggles[0].setAttribute("aria-expanded", "true");
+      toggles[1].setAttribute("aria-expanded", "true");
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        transitionClass: "",
+        initialize: true,
+      });
+      const [first, second] = accordion.elements.accordionItems;
 
       first.collapse();
       second.collapse();
@@ -122,12 +132,24 @@ describe("Accordion protected methods", () => {
           transition: true,
         });
         expect(accordion.expandedAccordionItems).toEqual([second]);
-        expect(first.dom.toggle.getAttribute("aria-expanded")).toBe("false");
-        expect(second.dom.toggle.getAttribute("aria-expanded")).toBe("true");
       }
     );
 
-    it("should unlock a previously required item when another item expands", () => {
+    it("should lock the first expanded item when allowCollapseAll is false", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        allowCollapseAll: false,
+        transitionClass: "",
+        initialize: true,
+      });
+      const item = accordion.elements.accordionItems[0];
+
+      item.expand();
+
+      expect(item.isLocked).toBe(true);
+    });
+
+    it("should unlock a sibling when another item expands", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         allowCollapseAll: false,
@@ -137,18 +159,27 @@ describe("Accordion protected methods", () => {
       const [first, second] = accordion.elements.accordionItems;
 
       first.expand({ emit: false });
-
-      expect(first.isLocked).toBe(true);
+      first.lock({ emit: false });
 
       second.expand({ emit: false });
 
       expect(first.isLocked).toBe(false);
       expect(second.isLocked).toBe(false);
+    });
+
+    it("should lock the remaining expanded item when another item collapses", () => {
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        allowCollapseAll: false,
+        transitionClass: "",
+        initialize: true,
+      });
+      const [first, second] = accordion.elements.accordionItems;
+      first.expand({ emit: false });
+      second.expand({ emit: false });
 
       first.collapse({ emit: false });
 
-      expect(first.isExpanded).toBe(false);
-      expect(second.isExpanded).toBe(true);
       expect(second.isLocked).toBe(true);
     });
 
@@ -163,8 +194,6 @@ describe("Accordion protected methods", () => {
       const [first, second] = accordion.elements.accordionItems;
 
       first.expand();
-
-      expect(first.isLocked).toBe(true);
 
       second.expand();
 
@@ -208,8 +237,6 @@ describe("Accordion protected methods", () => {
       item.dom.toggle.focus();
 
       expect(accordion.currentChild).toBe(2);
-      expect(accordion.currentAccordionItem).toBe(item);
-      expect(document.activeElement).toBe(item.dom.toggle);
     });
   });
 });

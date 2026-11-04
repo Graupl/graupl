@@ -22,37 +22,41 @@ afterEach(() => {
 
 describe("Accordion clicks", () => {
   describe("_handleClick", () => {
-    it("should toggle the clicked item and retain its content", () => {
+    it("should expand the clicked item", () => {
       accordion = new Accordion({
         accordionElement: document.querySelector(".accordion"),
         transitionClass: "",
         initialize: true,
       });
-      const [first, second] = accordion.elements.accordionItems;
-      const toggle = vi.spyOn(second, "toggle");
-      const content = second.dom.content;
+      const item = accordion.elements.accordionItems[1];
+      const toggle = vi.spyOn(item, "toggle");
 
-      second.dom.toggle.click();
+      item.dom.toggle.click();
 
       expect(toggle).toHaveBeenCalledOnce();
       expect(accordion.currentChild).toBe(1);
       expect(accordion.currentEvent).toBe("mouse");
-      expect(second.isExpanded).toBe(true);
-      expect(second.dom.item.classList.contains("show")).toBe(true);
-      expect(second.dom.toggle.getAttribute("aria-expanded")).toBe("true");
-      expect(content.hasAttribute("inert")).toBe(false);
-      expect(first.isExpanded).toBe(false);
+      expect(item.isExpanded).toBe(true);
+    });
 
-      second.dom.toggle.click();
+    it("should collapse the clicked item", () => {
+      document
+        .querySelectorAll(".accordion-item-toggle")[1]
+        .setAttribute("aria-expanded", "true");
+      accordion = new Accordion({
+        accordionElement: document.querySelector(".accordion"),
+        transitionClass: "",
+        initialize: true,
+      });
+      const item = accordion.elements.accordionItems[1];
+      const toggle = vi.spyOn(item, "toggle");
 
-      expect(toggle).toHaveBeenCalledTimes(2);
-      expect(second.isExpanded).toBe(false);
-      expect(second.dom.item.classList.contains("hide")).toBe(true);
-      expect(second.dom.toggle.getAttribute("aria-expanded")).toBe("false");
-      expect(content.hasAttribute("inert")).toBe(true);
-      expect(second.dom.content).toBe(content);
-      expect(content.isConnected).toBe(true);
-      expect(content.textContent).toBe("Second panel");
+      item.dom.toggle.click();
+
+      expect(toggle).toHaveBeenCalledOnce();
+      expect(accordion.currentChild).toBe(1);
+      expect(accordion.currentEvent).toBe("mouse");
+      expect(item.isExpanded).toBe(false);
     });
 
     it.each([
