@@ -26,17 +26,6 @@ export default defineConfig([
     plugins,
   },
   {
-    input: "./packages/core/src/js/storage/StorageManager.js",
-    output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/storage/storage-manager.${format}.js`,
-      format,
-      name: "StorageManager",
-      sourcemap: true,
-    })),
-    platform: "browser",
-    plugins,
-  },
-  {
     input: "./packages/core/src/js/accordion/index.js",
     output: {
       file: `dist/js/accordion.js`,
