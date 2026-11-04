@@ -43,8 +43,9 @@ function getScssEntries(dir) {
  * @param {string} entryPath - Path to the SCSS entry file (not a partial).
  * @param {string} srcDir    - Root of the SCSS source directory tree.
  * @param {string} outDir    - Output directory to write compiled CSS files into.
+ * @return {Promise<void>} Resolves when the CSS and sourcemap have been written.
  */
-function buildScssFile(entryPath, srcDir, outDir) {
+async function buildScssFile(entryPath, srcDir, outDir) {
   const relPath = path.relative(srcDir, entryPath);
   const outFile = path.join(outDir, relPath).replace(/\.scss$/, ".css");
   const outMapFile = `${outFile}.map`;
@@ -52,7 +53,7 @@ function buildScssFile(entryPath, srcDir, outDir) {
   console.log(`Building ${entryPath} → ${outFile}`);
 
   // 1. Compile SCSS
-  const sassResult = sass.compile(entryPath, {
+  const sassResult = await sass.compileAsync(entryPath, {
     style: "expanded",
     sourceMap: true,
     sourceMapIncludeSources: true,
@@ -88,8 +89,9 @@ function buildScssFile(entryPath, srcDir, outDir) {
  *
  * @param {string} srcDir - Source SCSS directory to scan for entry files.
  * @param {string} outDir - Output directory where resulting CSS should be written.
+ * @return {Promise<void>} Resolves when all SCSS entries have been built.
  */
-function buildAll(srcDir, outDir) {
+async function buildAll(srcDir, outDir) {
   const entries = getScssEntries(srcDir);
 
   if (entries.length === 0) {
@@ -100,7 +102,7 @@ function buildAll(srcDir, outDir) {
   fs.mkdirSync(outDir, { recursive: true });
 
   for (const entry of entries) {
-    buildScssFile(entry, srcDir, outDir);
+    await buildScssFile(entry, srcDir, outDir);
   }
 
   console.log(`Built ${entries.length} files from ${srcDir}`);
@@ -112,7 +114,7 @@ function buildAll(srcDir, outDir) {
 
 if (process.argv[1] === new URL(import.meta.url).pathname) {
   // Example usage: build the main project's SCSS
-  buildAll("scss", "dist/css");
+  await buildAll("scss", "dist/css");
 }
 
 export { buildAll };
