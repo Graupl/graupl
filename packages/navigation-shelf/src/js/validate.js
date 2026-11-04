@@ -8,10 +8,10 @@
  *
  * Will return `{ status: true }` if the check is successful.
  *
- * @param  {Object<string>}          values                       - The value(s) to check.
- * @param  {object}                  [options = {}]               - The options for the check.
- * @param  {boolean}                 [options.shouldThrow = true] - Whether to throw on error or return it.
- * @return {Object<boolean, string>}                              - The result of the check.
+ * @param  {Object<string, string>} values                       - The value(s) to check.
+ * @param  {object}                 [options = {}]               - The options for the check.
+ * @param  {boolean}                [options.shouldThrow = true] - Whether to throw on error or return it.
+ * @return {Object<boolean, Error[]>}                            - The result of the check.
  */
 export function isValidSideType(values, { shouldThrow = true } = {}) {
   const result = {
