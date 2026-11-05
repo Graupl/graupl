@@ -3,7 +3,7 @@
   "version": "1.0.0-beta.58",
   "license": "GPL-3.0-or-later",
   "description": "A plugin for Graupl that provides a navigation shelf component.",
-  "main": "dist/js/navigation-shelf.cjs.js",
+  "main": "dist/js/navigation-shelf.cjs",
   "module": "dist/js/navigation-shelf.es.js",
   "type": "module",
   "files": [
@@ -15,7 +15,7 @@
     ".": {
       "sass": "./scss/navigation-shelf.scss",
       "import": "./dist/js/navigation-shelf.es.js",
-      "require": "./dist/js/navigation-shelf.cjs.js"
+      "require": "./dist/js/navigation-shelf.cjs"
     },
     "./*.scss": {
       "sass": "./scss/*.scss"
@@ -28,11 +28,11 @@
     },
     "./navigation-shelf": {
       "import": "./dist/js/component/navigation-shelf.es.js",
-      "require": "./dist/js/component/navigation-shelf.cjs.js"
+      "require": "./dist/js/component/navigation-shelf.cjs"
     },
     "./navigation-shelf/generator": {
       "import": "./dist/js/generator/navigation-shelf.es.js",
-      "require": "./dist/js/generator/navigation-shelf.cjs.js"
+      "require": "./dist/js/generator/navigation-shelf.cjs"
     }
   },
   "repository": {
@@ -66,6 +66,7 @@
     "build:js": "npm run rolldown"
   },
   "dependencies": {
+    "@accessible-ecosystem/core": "^1.0.0-beta.14",
     "@graupl/core": "*",
     "@graupl/icons": "*"
   }
