@@ -3,7 +3,7 @@
  * Provides an initializer for the storage system.
  */
 
-import StorageManager from "./StorageManager.js";
+import StorageManager from "@accessible-ecosystem/core/StorageManager.js";
 
 document.addEventListener("readystatechange", () => {
   if (document.readyState === "interactive") {

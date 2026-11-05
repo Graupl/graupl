@@ -3,7 +3,7 @@
   "version": "1.0.0-beta.58",
   "license": "GPL-3.0-or-later",
   "description": "The core module of Graupl, providing essential styles and utilities.",
-  "main": "dist/js/graupl.cjs.js",
+  "main": "dist/js/graupl.cjs",
   "module": "dist/js/graupl.es.js",
   "type": "module",
   "files": [
@@ -15,7 +15,7 @@
     ".": {
       "sass": "./scss/graupl.scss",
       "import": "./dist/js/graupl.es.js",
-      "require": "./dist/js/graupl.cjs.js"
+      "require": "./dist/js/graupl.cjs"
     },
     "./*.scss": {
       "sass": "./scss/*.scss"
@@ -28,62 +28,62 @@
     },
     "./accordion": {
       "import": "./dist/js/component/accordion.es.js",
-      "require": "./dist/js/component/accordion.cjs.js"
+      "require": "./dist/js/component/accordion.cjs"
     },
     "./accordion/generator": {
       "import": "./dist/js/generator/accordion.es.js",
-      "require": "./dist/js/generator/accordion.cjs.js"
+      "require": "./dist/js/generator/accordion.cjs"
     },
     "./alert": {
       "import": "./dist/js/component/alert.es.js",
-      "require": "./dist/js/component/alert.cjs.js"
+      "require": "./dist/js/component/alert.cjs"
     },
     "./alert/generator": {
       "import": "./dist/js/generator/alert.es.js",
-      "require": "./dist/js/generator/alert.cjs.js"
+      "require": "./dist/js/generator/alert.cjs"
     },
     "./breadcrumb": {
       "import": "./dist/js/component/breadcrumb.es.js",
-      "require": "./dist/js/component/breadcrumb.cjs.js"
+      "require": "./dist/js/component/breadcrumb.cjs"
     },
     "./breadcrumb/generator": {
       "import": "./dist/js/generator/breadcrumb.es.js",
-      "require": "./dist/js/generator/breadcrumb.cjs.js"
+      "require": "./dist/js/generator/breadcrumb.cjs"
     },
     "./carousel": {
       "import": "./dist/js/component/carousel.es.js",
-      "require": "./dist/js/component/carousel.cjs.js"
+      "require": "./dist/js/component/carousel.cjs"
     },
     "./carousel/generator": {
       "import": "./dist/js/generator/carousel.es.js",
-      "require": "./dist/js/generator/carousel.cjs.js"
+      "require": "./dist/js/generator/carousel.cjs"
     },
     "./disclosure": {
       "import": "./dist/js/component/disclosure.es.js",
-      "require": "./dist/js/component/disclosure.cjs.js"
+      "require": "./dist/js/component/disclosure.cjs"
     },
     "./disclosure/generator": {
       "import": "./dist/js/generator/disclosure.es.js",
-      "require": "./dist/js/generator/disclosure.cjs.js"
+      "require": "./dist/js/generator/disclosure.cjs"
     },
     "./navigation/generator": {
       "import": "./dist/js/generator/navigation.es.js",
-      "require": "./dist/js/generator/navigation.cjs.js"
+      "require": "./dist/js/generator/navigation.cjs"
     },
     "./tabs": {
       "import": "./dist/js/component/tabs.es.js",
-      "require": "./dist/js/component/tabs.cjs.js"
+      "require": "./dist/js/component/tabs.cjs"
     },
     "./tabs/generator": {
       "import": "./dist/js/generator/tabs.es.js"
     },
     "./tooltip": {
       "import": "./dist/js/component/tooltip.es.js",
-      "require": "./dist/js/component/tooltip.cjs.js"
+      "require": "./dist/js/component/tooltip.cjs"
     },
     "./tooltip/generator": {
       "import": "./dist/js/generator/tooltip.es.js",
-      "require": "./dist/js/generator/tooltip.cjs.js"
+      "require": "./dist/js/generator/tooltip.cjs"
     }
   },
   "repository": {
@@ -115,5 +115,8 @@
     "build": "npm-run-all build:*",
     "build:css": "npm run css",
     "build:js": "npm run rolldown"
+  },
+  "dependencies": {
+    "@accessible-ecosystem/core": "^1.0.0-beta.14"
   }
 }

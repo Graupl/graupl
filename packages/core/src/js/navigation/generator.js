@@ -9,10 +9,10 @@ import once from "@drupal/once";
 /**
  * Generates Navigation elements.
  *
- * @param {object}      [options = {}]                   - Options for generating the navigation.
- * @param {object}      [options.options = {}]           - Options to pass to the Navigation constructor.
- * @param {HTMLElement} [options.context = document]     - The element to base the selector off of.
- * @param {string}      [options.selector = .navigation] - The query selector for the navigation elements in the DOM.
+ * @param {object}           [options = {}]                   - Options for generating the navigation.
+ * @param {object}           [options.options = {}]           - Options to pass to the Navigation constructor.
+ * @param {Document|Element} [options.context = document]     - The element to base the selector off of.
+ * @param {string}           [options.selector = .navigation] - The query selector for the navigation elements in the DOM.
  */
 const generate = ({
   options = {},
