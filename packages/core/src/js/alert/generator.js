@@ -8,10 +8,10 @@ import once from "@drupal/once";
 /**
  * Generates Alert elements.
  *
- * @param {object}      [options = {}]               - Options for generating the alert.
- * @param {object}      [options.options = {}]       - Options to pass to the Alert constructor.
- * @param {HTMLElement} [options.context = document] - The element to base the selector off of.
- * @param {string}      [options.selector = .alert]  - The query selector for the alert elements in the DOM.
+ * @param {object}           [options = {}]               - Options for generating the alert.
+ * @param {object}           [options.options = {}]       - Options to pass to the Alert constructor.
+ * @param {Document|Element} [options.context = document] - The element to base the selector off of.
+ * @param {string}           [options.selector = .alert]  - The query selector for the alert elements in the DOM.
  */
 const generate = ({
   options = {},
