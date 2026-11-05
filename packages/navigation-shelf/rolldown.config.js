@@ -17,7 +17,10 @@ export default defineConfig([
   {
     input: "./src/js/navigation-shelf/NavigationShelf.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/navigation-shelf.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/navigation-shelf.cjs`
+          : `dist/js/component/navigation-shelf.${format}.js`,
       format,
       name: "NavigationShelf",
       sourcemap: true,
@@ -28,7 +31,10 @@ export default defineConfig([
   {
     input: "./src/js/navigation-shelf/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/navigation-shelf.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/navigation-shelf.cjs`
+          : `dist/js/generator/navigation-shelf.${format}.js`,
       format,
       name: "NavigationShelfGenerator",
       sourcemap: true,
