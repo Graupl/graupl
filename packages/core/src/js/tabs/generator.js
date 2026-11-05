@@ -8,10 +8,10 @@ import once from "@drupal/once";
 /**
  * Generates Tabs elements.
  *
- * @param {object}      [options = {}]               - Options for generating the tabs.
- * @param {object}      [options.options = {}]       - Options to pass to the Tabs constructor.
- * @param {HTMLElement} [options.context = document] - The element to base the selector off of.
- * @param {string}      [options.selector = .tabs]   - The query selector for the tabs elements in the DOM.
+ * @param {object}           [options = {}]               - Options for generating the tabs.
+ * @param {object}           [options.options = {}]       - Options to pass to the Tabs constructor.
+ * @param {Document|Element} [options.context = document] - The element to base the selector off of.
+ * @param {string}           [options.selector = .tabs]   - The query selector for the tabs elements in the DOM.
  */
 const generate = ({
   options = {},

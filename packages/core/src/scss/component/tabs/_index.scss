@@ -184,12 +184,12 @@
 // | `options.tabListSelector`     | The selector for the tab list element.                                     | `.tab-list`    |
 // | `options.tabToggleSelector`   | The selector for tab toggle elements.                                      | `.tab-toggle`  |
 // | `options.tabContentSelector`  | The selector for tab content elements.                                     | `.tab-content` |
-// | `options.openClass`           | The class(es) applied when a tab is open.                                  | `show`         |
-// | `options.closeClass`          | The class(es) applied when a tab is closed.                                | `hide`         |
+// | `options.expandClass`         | The class(es) applied when a tab is open.                                  | `show`         |
+// | `options.collapseClass`       | The class(es) applied when a tab is closed.                                | `hide`         |
 // | `options.transitionClass`     | The class(es) applied while a tab is transitioning.                        | `null`         |
 // | `options.transitionDuration`  | Duration (ms) for transitions between open/closed states.                  | `300`          |
-// | `options.openDuration`        | Duration (ms) for closed → open; `-1` uses `transitionDuration`.         | `-1`           |
-// | `options.closeDuration`       | Duration (ms) for open → closed; `-1` uses `transitionDuration`.         | `-1`           |
+// | `options.expandDuration`      | Duration (ms) for closed → open; `-1` uses `transitionDuration`.           | `-1`           |
+// | `options.collapseDuration`    | Duration (ms) for open → closed; `-1` uses `transitionDuration`.           | `-1`           |
 // | `options.automaticActivation` | When `true`, focusing a tab toggle also activates it.                      | `false`        |
 // | `options.prefix`              | Prefix for generated CSS custom properties.                                | `graupl-`      |
 // | `options.key`                 | Key used when generating IDs; `null` auto-generates a random key.          | `null`         |
