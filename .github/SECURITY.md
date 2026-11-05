@@ -1,26 +1,27 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Supported versions
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x     | ✔                  |
+| Version | Supported |
+| ------- | --------- |
+| 1.x     | Yes       |
 
-## Reporting a Vulnerability
+## Report a vulnerability
 
-If you discover a vulnerability within this project, please [open an issue](https://github.com/Graupl/graupl/issues/new) and label it with the `security` tag. The issue board is checked at least 2-3 times a week, so you should expect a response to your issue within a few days.
+To report a vulnerability in Graupl, [open an issue](https://github.com/Graupl/graupl/issues/new) with the `security` label.
 
-If a PR is submitted along with the issue to resolve the vulnerability, you can expect it to be reviewed within the same time frame as issue responses. If a PR is not submitted, the time it takes to develop a fix will differ depending on the severity of the vulnerability.
+Maintainers check issues at least two or three times a week. You can expect a response within a few days.
+
+If you submit a pull request with a fix, maintainers will review it within the same time frame. Otherwise, the time needed to develop a fix depends on the severity of the vulnerability.
 
 ## Vulnerabilities in dependencies
 
-Given that graupl does not have any production dependencies, any vulnerable dev dependencies will be updated when/if possible- though a new release of graupl may not be pushed out right away.
+Graupl has production dependencies, including Accessible Ecosystem Core and Graupl workspace packages. Maintainers prioritize vulnerabilities that affect the code shipped to users. When a dependency fix affects shipped code, update the dependency and lockfile, rebuild the affected bundles, and verify the result before releasing.
 
-A higher priority will be given to dev dependencies that are directly responsible for compiling the project:
+Maintainers will update vulnerable development dependencies when possible. Maintainers may not publish a Graupl release immediately after these updates.
 
-- [sass](https://sass-lang.com),
-- [postcss](https://postcss.org),
-- [vite](https://github.com/vitejs/vite), and
-- all related plugins
+Maintainers prioritize vulnerabilities in tools that compile project code, including Sass, Rolldown, Vite, Lightning CSS, and related plugins. When a vulnerability in one of these dependencies is resolved, maintainers will publish a new Graupl release.
 
-If a vulnerability is found and resolved within one of these dependencies, a new release will be made.
+## Attribution
+
+This document is based on [Accessible Ecosystem Core](https://github.com/Accessible-Ecosystem/core), adapted from its [corresponding document](https://github.com/Accessible-Ecosystem/core/blob/1.x/.github/SECURITY.md).
