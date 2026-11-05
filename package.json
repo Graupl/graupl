@@ -42,8 +42,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "test:unit": "vitest run unit",
-    "test:browser": "vitest run browser"
+    "test:unit": "vitest run unit --passWithNoTests",
+    "test:browser": "vitest run browser --passWithNoTests"
   },
   "repository": {
     "type": "git",
@@ -107,6 +107,7 @@
     "vue-codemirror": "^6.1.1"
   },
   "dependencies": {
+    "@accessible-ecosystem/core": "^1.0.0-beta.14",
     "@graupl/core": "*"
   }
 }
