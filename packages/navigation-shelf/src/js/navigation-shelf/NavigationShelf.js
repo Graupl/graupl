@@ -1,61 +1,20 @@
-import { isValidClassList, isValidType } from "@graupl/core/src/validate.js";
+/* global TransactionalValue */
+
+import {
+  isValidClassList,
+  isValidType,
+} from "@accessible-ecosystem/core/validate.js";
 import { isValidSideType } from "../validate.js";
-import { keyPress, preventEvent } from "@graupl/core/src/eventHandlers.js";
+import {
+  keyPress,
+  preventEvent,
+} from "@accessible-ecosystem/core/eventHelpers.js";
 import {
   addClass,
   removeClass,
   selectFirstFocusableElement,
-} from "@graupl/core/src/domHelpers.js";
-import TransactionalValue from "@graupl/core/src/TransactionalValue.js";
-import Component from "@graupl/core/src/Component.js";
-
-/**
- * The event that is triggered when the shelf expands.
- *
- * @event grauplNavigationShelfExpand
- *
- * @type {CustomEvent}
- *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
- */
-
-/**
- * The event that is triggered when the shelf collapses.
- *
- * @event grauplNavigationShelfCollapse
- *
- * @type {CustomEvent}
- *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
- */
-
-/**
- * The event that is triggered when the shelf is locked.
- *
- * @event grauplNavigationShelfLock
- *
- * @type {CustomEvent}
- *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
- */
-
-/**
- * The event that is triggered when the shelf is unlocked.
- *
- * @event grauplNavigationShelfUnlock
- *
- * @type {CustomEvent}
- *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
- */
+} from "@accessible-ecosystem/core/domHelpers.js";
+import CollapsibleComponent from "@accessible-ecosystem/core/CollapsibleComponent.js";
 
 /**
  * The event that is triggered when the shelf has shifted sides.
@@ -64,9 +23,9 @@ import Component from "@graupl/core/src/Component.js";
  *
  * @type {CustomEvent}
  *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
+ * @property {boolean}                         bubbles          - A flag to bubble the event.
+ * @property {Object<string, NavigationShelf>} detail           - The details object containing the NavigationShelf itself.
+ * @property {NavigationShelf}                 detail.component - The navigation shelf.
  */
 
 /**
@@ -76,9 +35,9 @@ import Component from "@graupl/core/src/Component.js";
  *
  * @type {CustomEvent}
  *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
+ * @property {boolean}                         bubbles          - A flag to bubble the event.
+ * @property {Object<string, NavigationShelf>} detail           - The details object containing the NavigationShelf itself.
+ * @property {NavigationShelf}                 detail.component - The navigation shelf.
  */
 
 /**
@@ -88,100 +47,90 @@ import Component from "@graupl/core/src/Component.js";
  *
  * @type {CustomEvent}
  *
- * @property {boolean}                 bubbles      - A flag to bubble the event.
- * @property {Object<NavigationShelf>} detail       - The details object containing the NavigationShelf itself.
- * @property {NavigationShelf}         detail.shelf - The navigation shelf.
+ * @property {boolean}                         bubbles          - A flag to bubble the event.
+ * @property {Object<string, NavigationShelf>} detail           - The details object containing the NavigationShelf itself.
+ * @property {NavigationShelf}                 detail.component - The navigation shelf.
  */
 
 /**
  * The Navigation shelf component.
  *
- * @extends Component
+ * @extends CollapsibleComponent
  *
  * Protected fields are documented below.
  *
- * @property {Object<HTMLElement, HTMLElement[]>}   _dom                         - The DOM elements within the navigation shelf.
- * @property {HTMLElement}                          _dom.shelf                   - The shelf element.
- * @property {HTMLElement}                          _dom.controller              - The toggle for the shelf.
- * @property {HTMLElement}                          _dom.lockController          - The toggle for locking the shelf.
- * @property {HTMLElement}                          _dom.hoverController         - The toggle for hoverability of the shelf.
- * @property {HTMLElement}                          _dom.sideController          - The toggle for the side controller of the shelf.
- * @property {HTMLElement[]}                        _dom.dependents              - The list of dependent elements updated when the shelf opens or closes.
- * @property {string}                               _rootDOMElement              - The root DOM element of the navigation shelf.
- * @property {string[]}                             _protectedDOMElements        - The DOM elements within the navigation shelf that cannot be reset or generated by the navigation shelf itself.
- * @property {Object<string>}                       _selectors                   - The query selectors used by the navigation shelf.
- * @property {string}                               _selectors.dependents        - The query selector for dependent elements.
- * @property {Object<string, string[]>}             _classes                     - The classes to apply when the navigation shelf is in various states.
- * @property {string|string[]}                      _classes.locked              - The class(es) to apply to the shelf and dependent elements when the shelf is locked.
- * @property {string|string[]}                      _classes.unlocked            - The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
- * @property {string|string[]}                      _classes.hover               - The class(es) to apply to the shelf element when the shelf is hoverable.
- * @property {string|string[]}                      _classes.noHover             - The class(es) to apply to the shelf element when the shelf is not hoverable.
- * @property {string|string[]}                      _classes.left                - The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
- * @property {string|string[]}                      _classes.right               - The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
- * @property {string|string[]}                      _classes.open                - The class(es) to apply to the shelf when the shelf is open.
- * @property {string|string[]}                      _classes.close               - The class(es) to apply to the shelf when the shelf is closed.
- * @property {string|string[]}                      _classes.transition          - The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
- * @property {string|string[]}                      _classes.initialize          - The class(es) to apply to the shelf when the shelf is initializing.
- * @property {Object<number>}                       _durations                   - The duration times (in milliseconds) for various aspects throughout the navigation shelf.
- * @property {number}                               _durations.transition        - The duration time (in milliseconds) for the transition between open and closed states.
- * @property {number}                               _durations.open              - The duration time (in milliseconds) for the transition from closed to open states.
- * @property {number}                               _durations.close             - The duration time (in milliseconds) for the transition from open to closed states.
- * @property {Object<number>}                       _delays                      - The delay times (in milliseconds) for various aspects throughout the navigation shelf.
- * @property {number}                               _delays.hover                - The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
- * @property {number}                               _delays.enter                - The delay time (in milliseconds) used for pointerenter events to take place.
- * @property {number}                               _delays.leave                - The delay time (in milliseconds) used for pointerleave events to take place.
- * @property {boolean}                              _hover                       - A flag to indicate if the shelf is hoverable.
- * @property {TransactionalValue<boolean>}          _locked                      - A flag to indicate if the navigation shelf is locked.
- * @property {boolean}                              _softLocked                  - A flag to check if the shelf can dynamically close based on manual interaction.
- * @property {string}                               _side                        - The side of the screen the navigation shelf is on.
- * @property {string}                               _otherSide                   - The opposite side of the screen the navigation shelf is on.
- * @property {boolean}                              _open                        - The open state of the shelf.
- * @property {Function}                             _mediaQueryListEventCallback - The callback for media query list events.
- * @property {Object<CustomEvent>}                  _events                      - Custom events that can be triggered throughout the navigation shelf.
- * @property {grauplNavigationShelfExpand}          _events.expand               - The event triggered when the shelf expands.
- * @property {grauplNavigationShelfCollapse}        _events.collapse             - The event triggered when the shelf collapses.
- * @property {grauplNavigationShelfLock}            _events.lock                 - The event triggered when the shelf is locked.
- * @property {grauplNavigationShelfUnlock}          _events.unlock               - The event triggered when the shelf is unlocked.
- * @property {grauplNavigationShelfShiftSide}       _events.shiftSide            - The event triggered when the shelf shifts sides.
- * @property {grauplNavigationShelfEnableHoverable} _events.enableHover          - The event triggered when hoverability is enabled.
- * @property {grauplNavigationShelfDisableHover}    _events.disableHover         - The event triggered when hoverability is disabled.
- * @property {string}                               _storageKey                  - The key used for storage.
- * @property {boolean}                              _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
- * @property {Object<object>}                       _elements                    - The instantiated elements within the navigation shelf.
- * @property {string}                               _focusState                  - The current state of the navigation shelf's focus.
- * @property {string}                               _currentEvent                - The last type of event triggered within the navigation shelf.
- * @property {string}                               _breakpoint                  - The breakpoint that the navigation shelf will call media query list events.
- * @property {string}                               _mediaQueryString            - The media query to use to trigger media query list events.
- * @property {MediaQueryList|null}                  _mediaQueryList              - The MediaQueryList for the navigation shelf.
- * @property {Object<Function>}                     _intervals                   - Intervals throughout the navigation shelf.
- * @property {Object<Function>}                     _timeouts                    - Timeouts throughout the navigation shelf.
- * @property {object[]}                             _listeners                   - Event listeners throughout the navigation shelf.
- * @property {string}                               _prefix                      - The prefix used for CSS custom properties and attributes.
- * @property {string}                               _key                         - The key used to generate IDs throughout the navigation shelf.
- * @property {string}                               _name                        - The component name of the navigation shelf.
- * @property {string}                               _id                          - The main ID of the navigation shelf.
- * @property {boolean}                              _valid                       - The validity state of the navigation shelf.
- * @property {boolean}                              _initialized                 - The initialized state of the navigation shelf.
- * @property {string[]}                             _errors                      - The errors found throughout the navigation shelf.
+ * @property {Object<string, HTMLElement|HTMLElement[]|null>} _dom                         - The DOM elements within the navigation shelf.
+ * @property {HTMLElement}                                    _dom.shelf                   - The shelf element.
+ * @property {?HTMLElement}                                   _dom.controller              - The toggle for the shelf.
+ * @property {?HTMLElement}                                   _dom.lockController          - The toggle for locking the shelf.
+ * @property {?HTMLElement}                                   _dom.hoverController         - The toggle for hoverability of the shelf.
+ * @property {?HTMLElement}                                   _dom.sideController          - The toggle for the side controller of the shelf.
+ * @property {HTMLElement[]}                                  _dom.dependents              - The list of dependent elements updated when the shelf opens or closes.
+ * @property {string}                                         _rootDOMElement              - The root DOM element of the navigation shelf.
+ * @property {string[]}                                       _protectedDOMElements        - The DOM elements within the navigation shelf that cannot be reset or generated by the navigation shelf itself.
+ * @property {Object<string, string>}                         _selectors                   - The query selectors used by the navigation shelf.
+ * @property {string}                                         _selectors.dependents        - The query selector for dependent elements.
+ * @property {Object<string, string|string[]>}                _classes                     - The classes to apply when the navigation shelf is in various states.
+ * @property {string|string[]}                                _classes.locked              - The class(es) to apply to the shelf and dependent elements when the shelf is locked.
+ * @property {string|string[]}                                _classes.unlocked            - The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
+ * @property {string|string[]}                                _classes.hover               - The class(es) to apply to the shelf element when the shelf is hoverable.
+ * @property {string|string[]}                                _classes.noHover             - The class(es) to apply to the shelf element when the shelf is not hoverable.
+ * @property {string|string[]}                                _classes.left                - The class(es) to apply to the shelf and dependent elements when the shelf is on the left side.
+ * @property {string|string[]}                                _classes.right               - The class(es) to apply to the shelf and dependent elements when the shelf is on the right side.
+ * @property {string|string[]}                                _classes.expand              - The class(es) to apply to the shelf when the shelf is expanded.
+ * @property {string|string[]}                                _classes.collapse            - The class(es) to apply to the shelf when the shelf is collapsed.
+ * @property {string|string[]}                                _classes.transition          - The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
+ * @property {string|string[]}                                _classes.initialize          - The class(es) to apply to the shelf when the shelf is initializing.
+ * @property {Object<string, number>}                         _durations                   - The duration times (in milliseconds) for various aspects throughout the navigation shelf.
+ * @property {number}                                         _durations.transition        - The duration time (in milliseconds) for the transition between expanded and collapsed states.
+ * @property {number}                                         _durations.expand            - The duration time (in milliseconds) for the transition from collapsed to expanded states.
+ * @property {number}                                         _durations.collapse          - The duration time (in milliseconds) for the transition from expanded to collapsed states.
+ * @property {Object<string, number>}                         _delays                      - The delay times (in milliseconds) for various aspects throughout the navigation shelf.
+ * @property {number}                                         _delays.hover                - The delay time (in milliseconds) used for pointerenter/pointerleave events to take place.
+ * @property {number}                                         _delays.enter                - The delay time (in milliseconds) used for pointerenter events to take place.
+ * @property {number}                                         _delays.leave                - The delay time (in milliseconds) used for pointerleave events to take place.
+ * @property {boolean}                                        _hover                       - A flag to indicate if the shelf is hoverable.
+ * @property {TransactionalValue<boolean>}                    _locked                      - A flag to indicate if the navigation shelf is locked.
+ * @property {boolean}                                        _softLocked                  - A flag to check if the shelf can dynamically close based on manual interaction.
+ * @property {string}                                         _side                        - The side of the screen the navigation shelf is on.
+ * @property {string}                                         _otherSide                   - The opposite side of the screen the navigation shelf is on.
+ * @property {TransactionalValue<boolean>}                    _expanded                    - The expanded state of the shelf.
+ * @property {Function}                                       _mediaQueryListEventCallback - The callback for media query list events.
+ * @property {Object<string, CustomEvent>}                    _events                      - Custom events that can be triggered throughout the navigation shelf.
+ * @property {grauplNavigationShelfShiftSide}                 _events.shiftSide            - The event triggered when the shelf shifts sides.
+ * @property {grauplNavigationShelfEnableHoverable}           _events.enableHover          - The event triggered when hoverability is enabled.
+ * @property {grauplNavigationShelfDisableHover}              _events.disableHover         - The event triggered when hoverability is disabled.
+ * @property {string}                                         _storageKey                  - The key used for storage.
+ * @property {boolean}                                        _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
+ * @property {Object<string, object>}                         _elements                    - The instantiated elements within the navigation shelf.
+ * @property {string}                                         _focusState                  - The current state of the navigation shelf's focus.
+ * @property {string}                                         _currentEvent                - The last type of event triggered within the navigation shelf.
+ * @property {string}                                         _breakpoint                  - The breakpoint that the navigation shelf will call media query list events.
+ * @property {string}                                         _mediaQueryString            - The media query to use to trigger media query list events.
+ * @property {MediaQueryList|null}                            _mediaQueryList              - The MediaQueryList for the navigation shelf.
+ * @property {Object<string, number>}                         _intervals                   - Intervals throughout the navigation shelf.
+ * @property {Object<string, number>}                         _timeouts                    - Timeouts throughout the navigation shelf.
+ * @property {object[]}                                       _listeners                   - Event listeners throughout the navigation shelf.
+ * @property {string}                                         _prefix                      - The prefix used for CSS custom properties and attributes.
+ * @property {string}                                         _key                         - The key used to generate IDs throughout the navigation shelf.
+ * @property {string}                                         _name                        - The component name of the navigation shelf.
+ * @property {string}                                         _id                          - The main ID of the navigation shelf.
+ * @property {boolean}                                        _valid                       - The validity state of the navigation shelf.
+ * @property {boolean}                                        _initialized                 - The initialized state of the navigation shelf.
+ * @property {Error[]}                                        _errors                      - The errors found throughout the navigation shelf.
  */
-class NavigationShelf extends Component {
+class NavigationShelf extends CollapsibleComponent {
+  _scope = "Graupl";
   _rootDOMElement = "shelf";
-  _protectedDOMElements = [
-    "controller",
-    "lockController",
-    "hoverController",
-    "sideController",
-  ];
+
   _hover = false;
-  _locked = new TransactionalValue(false);
   _softLocked = false;
   _side = "left";
   _otherSide = "right";
-  _open = false;
   _mediaQueryListEventCallback = (event) => {
     if (event.matches) {
-      if (this.isOpen) {
-        this.close({
+      if (this.isExpanded) {
+        this.collapse({
           preserveLock: this.shouldBeLocked,
         });
       }
@@ -190,7 +139,7 @@ class NavigationShelf extends Component {
         this.dom.lockController.setAttribute("disabled", "disabled");
       }
     } else {
-      if (this.shouldBeLocked && !this.isOpen) {
+      if (this.shouldBeLocked && !this.isExpanded) {
         this._locked.reset();
         this.lock({ force: true });
       }
@@ -200,6 +149,7 @@ class NavigationShelf extends Component {
       }
     }
   };
+
   _storageKey = "navigation-shelves";
   _name = "NavigationShelf";
 
@@ -213,30 +163,38 @@ class NavigationShelf extends Component {
    * @param {?HTMLElement}       [options.hoverControllerElement = null]    - The toggle for hoverability of this shelf.
    * @param {?HTMLElement}       [options.sideControllerElement = null]     - The toggle for the side controller of this shelf.
    * @param {string}             [options.dependentSelector = .shelf-aware] - The query selector for dependent elements.
-   * @param {?(string|string[])} [options.lockedClass = locked]             - The class(es) to apply when the shelf is locked.
-   * @param {?(string|string[])} [options.unlockedClass = unlocked]         - The class(es) to apply when the shelf is unlocked.
+   * @param {?(string|string[])} [options.lockClass = locked]               - The class(es) to apply when the shelf is locked.
+   * @param {?(string|string[])} [options.unlockClass = unlocked]           - The class(es) to apply when the shelf is unlocked.
    * @param {?(string|string[])} [options.hoverClass = hoverable]           - The class(es) to apply when the shelf is hoverable.
    * @param {?(string|string[])} [options.noHoverClass = not-hoverable]     - The class(es) to apply when the shelf is not hoverable.
    * @param {?(string|string[])} [options.leftClass = left-side]            - The class(es) to apply when the shelf is on the left side.
    * @param {?(string|string[])} [options.rightClass = right-side]          - The class(es) to apply when the shelf is on the right side.
-   * @param {?(string|string[])} [options.openClass = show]                 - The class(es) to apply when the shelf is open.
-   * @param {?(string|string[])} [options.closeClass = hide]                - The class(es) to apply when the shelf is closed.
+   * @param {?(string|string[])} [options.expandClass = show]               - The class(es) to apply when the shelf is expanded.
+   * @param {?(string|string[])} [options.collapseClass = hide]             - The class(es) to apply when the shelf is collapsed.
    * @param {?(string|string[])} [options.transitionClass = transitioning]  - The class(es) to apply when the shelf is transitioning between states.
-   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between open and closed states (in milliseconds).
-   * @param {number}             [options.openDuration = -1]                - The duration of the transition from closed to open states (in milliseconds).
-   * @param {number}             [options.closeDuration = -1]               - The duration of the transition from open to closed states (in milliseconds).
+   * @param {number}             [options.transitionDuration = 250]         - The duration of the transition between expanded and collapsed states (in milliseconds).
+   * @param {number}             [options.expandDuration = -1]              - The duration of the transition from collapsed to expanded states (in milliseconds).
+   * @param {number}             [options.collapseDuration = -1]            - The duration of the transition from expanded to collapsed states (in milliseconds).
    * @param {boolean}            [options.hoverable = false]                - A flag to indicate if the shelf is hoverable.
    * @param {number}             [options.hoverDelay = 250]                 - The delay time (in milliseconds) used for hover events.
    * @param {number}             [options.enterDelay = -1]                  - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}             [options.leaveDelay = -1]                  - The delay time (in milliseconds) used for pointerleave events.
    * @param {boolean}            [options.locked = false]                   - A flag to indicate if the shelf is locked.
    * @param {string}             [options.side = left]                      - The side of the screen the shelf is on.
-   * @param {?string}            [options.minWidth = 1023px]                - The minimum width at which the shelf can auto-toggle.
-   * @param {?string}            [options.mediaQuery = ""]                  - The media query to use when automatically opening/closing the shelf.
+   * @param {?string}            [options.breakpoint = 1023px]              - The minimum width at which the shelf can auto-toggle.
+   * @param {?string}            [options.mediaQuery = ""]                  - The media query to use when automatically expanding/collapsing the shelf.
    * @param {?string}            [options.prefix = graupl-]                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                       - The key used to generate IDs throughout the shelf.
    * @param {?(string|string[])} [options.initializeClass = initializing]   - The class(es) to apply when the shelf is initializing.
+   * @param {boolean}            [options.emit = true]                      - Whether to emit public events.
    * @param {boolean}            [options.initialize = false]               - A flag to initialize the shelf immediately upon creation.
+   * @param {?(string|string[])} [options.lockedClass]                      - Deprecated. Use lockClass; this option takes precedence when supplied.
+   * @param {?(string|string[])} [options.unlockedClass]                    - Deprecated. Use unlockClass; this option takes precedence when supplied.
+   * @param {?(string|string[])} [options.openClass]                        - Deprecated. Use expandClass; this option takes precedence when supplied.
+   * @param {?(string|string[])} [options.closeClass]                       - Deprecated. Use collapseClass; this option takes precedence when supplied.
+   * @param {number}             [options.openDuration]                     - Deprecated. Use expandDuration; this option takes precedence when supplied.
+   * @param {number}             [options.closeDuration]                    - Deprecated. Use collapseDuration; this option takes precedence when supplied.
+   * @param {?string}            [options.minWidth]                         - Deprecated. Use breakpoint; this option takes precedence when supplied.
    */
   constructor({
     shelfElement,
@@ -245,40 +203,119 @@ class NavigationShelf extends Component {
     hoverControllerElement,
     sideControllerElement,
     dependentSelector = ".shelf-aware",
-    lockedClass = "locked",
-    unlockedClass = "unlocked",
+    lockClass = "locked",
+    unlockClass = "unlocked",
     hoverClass = "hoverable",
     noHoverClass = "not-hoverable",
     leftClass = "left-side",
     rightClass = "right-side",
-    openClass = "show",
-    closeClass = "hide",
+    expandClass = "show",
+    collapseClass = "hide",
     transitionClass = "transitioning",
     transitionDuration = 250,
-    openDuration = -1,
-    closeDuration = -1,
+    expandDuration = -1,
+    collapseDuration = -1,
     hoverable = false,
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,
     locked = false,
     side = "left",
-    minWidth = "1023px",
+    breakpoint = "1023px",
     mediaQuery = "",
     prefix = "graupl-",
     key = null,
     initializeClass = "initializing",
+    lockedClass,
+    unlockedClass,
+    openClass,
+    closeClass,
+    openDuration,
+    closeDuration,
+    minWidth,
+    emit = true,
     initialize = false,
   } = {}) {
+    // Map deprecated options before passing the configuration to Core.
+    if (lockedClass !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "lockedClass" is deprecated and will be removed. Use lockClass instead.'
+      );
+      lockClass = lockedClass;
+    }
+
+    if (unlockedClass !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "unlockedClass" is deprecated and will be removed. Use unlockClass instead.'
+      );
+      unlockClass = unlockedClass;
+    }
+
+    if (openClass !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "openClass" is deprecated and will be removed. Use expandClass instead.'
+      );
+      expandClass = openClass;
+    }
+
+    if (closeClass !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "closeClass" is deprecated and will be removed. Use collapseClass instead.'
+      );
+      collapseClass = closeClass;
+    }
+
+    if (openDuration !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "openDuration" is deprecated and will be removed. Use expandDuration instead.'
+      );
+      expandDuration = openDuration;
+    }
+
+    if (closeDuration !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "closeDuration" is deprecated and will be removed. Use collapseDuration instead.'
+      );
+      collapseDuration = closeDuration;
+    }
+
+    if (minWidth !== undefined) {
+      console.warn(
+        'Graupl NavigationShelf option "minWidth" is deprecated and will be removed. Use breakpoint instead.'
+      );
+      breakpoint = minWidth;
+    }
+
     super({
+      controllerElement: controllerElement ?? null,
+      controlledElement: shelfElement,
+      bootstrap: false,
+      initialize: false,
+      expandClass,
+      collapseClass,
+      transitionClass,
+      transitionDuration,
+      expandDuration,
+      collapseDuration,
+      locked,
+      breakpoint,
+      mediaQuery,
+      lockClass,
+      unlockClass,
       prefix,
       key,
       initializeClass,
+      emit,
     });
+
+    this._protectedDOMElements.push(
+      "lockController",
+      "hoverController",
+      "sideController"
+    );
 
     // Set DOM elements.
     this._dom.shelf = shelfElement;
-    this._dom.controller = controllerElement || null;
     this._dom.lockController = lockControllerElement || null;
     this._dom.hoverController = hoverControllerElement || null;
     this._dom.sideController = sideControllerElement || null;
@@ -288,27 +325,10 @@ class NavigationShelf extends Component {
     this._selectors.dependents = dependentSelector;
 
     // Set classes.
-    this._classes.locked = lockedClass || "";
-    this._classes.unlocked = unlockedClass || "";
     this._classes.hover = hoverClass || "";
     this._classes.noHover = noHoverClass || "";
     this._classes.left = leftClass || "";
     this._classes.right = rightClass || "";
-    this._classes.open = openClass || "";
-    this._classes.close = closeClass || "";
-    this._classes.transition = transitionClass || "";
-
-    // Set transition duration.
-    this._durations.transition = transitionDuration;
-    this._durations.open = openDuration;
-    this._durations.close = closeDuration;
-
-    // Set locked state.
-    this._locked = new TransactionalValue(locked);
-
-    // Set the breakpoint and media query.
-    this._breakpoint = minWidth;
-    this._mediaQueryString = mediaQuery || "";
 
     // Set side.
     this._side = side;
@@ -323,96 +343,8 @@ class NavigationShelf extends Component {
     this._delays.enter = enterDelay;
     this._delays.leave = leaveDelay;
 
-    // Register custom events.
-    this._registerEvent("expand", { detail: { shelf: this } });
-    this._registerEvent("collapse", { detail: { shelf: this } });
-    this._registerEvent("lock", { detail: { shelf: this } });
-    this._registerEvent("unlock", { detail: { shelf: this } });
-    this._registerEvent("shiftSide", { detail: { shelf: this } });
-    this._registerEvent("enableHover", { detail: { shelf: this } });
-    this._registerEvent("disableHover", { detail: { shelf: this } });
-
-    // Set up custom initialization.
-    this._addEventListener(
-      "grauplComponentInitialize",
-      this.rootDOMElement,
-      () => {
-        // Ensure the initial open state of the shelf.
-        if (this._mediaQueryList.matches) {
-          this.close({
-            force: true,
-            emit: false,
-            transition: false,
-            preserveLock: this.isLocked,
-          });
-
-          if (this.dom.lockController) {
-            this.dom.lockController.setAttribute("disabled", "disabled");
-          }
-        } else {
-          if (
-            this.dom.controller.getAttribute("aria-expanded") === "true" ||
-            this.isLocked
-          ) {
-            this.open({ emit: false, transition: false });
-
-            if (this.isLocked) {
-              this.lock({ force: true });
-            }
-          }
-
-          if (this.dom.lockController) {
-            this.dom.lockController.removeAttribute("disabled");
-          }
-        }
-
-        // Ensure the initial hoverability of the shelf.
-        if (this.hover) {
-          this._enableHover({ emit: false });
-        } else {
-          this._disableHover({ emit: false });
-        }
-
-        // Ensure the initial side of the shelf.
-        this._shiftSide({ emit: false });
-      }
-    );
-
-    // Set up custom validation.
-    this._addEventListener(
-      "grauplComponentValidate",
-      this.rootDOMElement,
-      () => {
-        // Boolean checks.
-        const booleans = {
-          hoverable: this._hover,
-          locked: this._locked.value,
-        };
-
-        // Check the booleans.
-        const booleanChecks = isValidType("boolean", booleans, {
-          shouldThrow: false,
-        });
-
-        // Handle boolean check failure.
-        if (!booleanChecks.status) {
-          this._errors = [...this._errors, ...booleanChecks.errors];
-          this._valid = false;
-        }
-
-        // Side check.
-        // Check the side.
-        const sideCheck = isValidSideType(
-          { side: this._side },
-          { shouldThrow: false }
-        );
-
-        if (!sideCheck.status) {
-          this._errors = [...this._errors, ...sideCheck.errors];
-          this._valid = false;
-        }
-      }
-    );
+    // Bootstrap the component.
+    this._bootstrap();
 
     if (initialize) {
       this.initialize();
@@ -420,41 +352,205 @@ class NavigationShelf extends Component {
   }
 
   /**
-   * The class(es) to apply to the shelf and dependent elements when the shelf is locked.
+   * Registers the shelf's events and internal lifecycle listeners.
    *
-   * @type {string|string[]}
-   *
-   * @see _classes
+   * @protected
    */
-  get lockedClass() {
-    return this._classes.locked;
-  }
+  _registerEvents() {
+    // Resolve the breakpoint and controller preferences before Core applies the initial state.
+    // Core has not registered the event yet, so use its name with this component's prefix.
+    this._addInternalEventListener(`${this.eventPrefix}Initialize`, (event) => {
+      if (event.detail.component !== this) return;
 
-  set lockedClass(value) {
-    isValidClassList({ lockedClass: value });
+      const matches = window.matchMedia(this.mediaQuery).matches;
+      this._expanded.value =
+        !matches &&
+        (this.dom.controller?.getAttribute("aria-expanded") === "true" ||
+          this.isLocked);
 
-    if (this._classes.locked !== value) {
-      this._classes.locked = value;
-    }
+      if (matches) {
+        // Keep the committed lock preference while the breakpoint temporarily unpins the shelf.
+        this._locked.value = false;
+      }
+    });
+
+    super._registerEvents();
+
+    this._registerEvent("shiftSide");
+    this._registerEvent("enableHover");
+    this._registerEvent("disableHover");
+
+    this._addInternalEventListener(this.getEventName("preexpand"), () => {
+      this.dom.controller?.setAttribute("aria-expanded", "true");
+    });
+    this._addInternalEventListener(this.getEventName("precollapse"), () => {
+      this.dom.controller?.setAttribute("aria-expanded", "false");
+      this.isSoftLocked = false;
+    });
+
+    // Apply shelf-specific controls and styling after Core initializes expansion and locking.
+    this._addInternalEventListener(this.getEventName("initialize"), (event) => {
+      if (event.detail.component !== this) return;
+
+      if (this.dom.lockController) {
+        this.dom.lockController.toggleAttribute(
+          "disabled",
+          this._mediaQueryList?.matches === true
+        );
+      }
+
+      // Ensure the initial hoverability of the shelf.
+      if (this.hover) {
+        this._enableHover({ emit: false });
+      } else {
+        this._disableHover({ emit: false });
+      }
+
+      // Ensure the initial side of the shelf.
+      this._shiftSide({ emit: false });
+    });
+
+    // Set up custom validation.
+    this._addInternalEventListener(this.getEventName("validate"), (event) => {
+      if (event.detail.component !== this) return;
+
+      // Boolean checks.
+      const booleans = {
+        hoverable: this._hover,
+      };
+
+      // Check the booleans.
+      const booleanChecks = isValidType("boolean", booleans, {
+        shouldThrow: false,
+      });
+
+      // Handle boolean check failure.
+      if (!booleanChecks.status) {
+        this._errors = [...this._errors, ...booleanChecks.errors];
+        this._valid = false;
+      }
+
+      // Side check.
+      // Check the side.
+      const sideCheck = isValidSideType(
+        { side: this._side },
+        { shouldThrow: false }
+      );
+
+      if (!sideCheck.status) {
+        this._errors = [...this._errors, ...sideCheck.errors];
+        this._valid = false;
+      }
+    });
   }
 
   /**
-   * The class(es) to apply to the shelf and dependent elements when the shelf is unlocked.
+   * The deprecated alias for expandClass.
+   *
+   * @deprecated Use expandClass instead. This property will be removed.
    *
    * @type {string|string[]}
-   *
-   * @see _classes
    */
-  get unlockedClass() {
-    return this._classes.unlocked;
+  get openClass() {
+    console.warn(
+      "Graupl NavigationShelf.openClass is deprecated and will be removed. Use expandClass instead."
+    );
+
+    return this.expandClass;
   }
 
-  set unlockedClass(value) {
-    isValidClassList({ unlockedClass: value });
+  set openClass(value) {
+    console.warn(
+      "Graupl NavigationShelf.openClass is deprecated and will be removed. Use expandClass instead."
+    );
 
-    if (this._classes.unlocked !== value) {
-      this._classes.unlocked = value;
-    }
+    this.expandClass = value;
+  }
+
+  /**
+   * The deprecated alias for collapseClass.
+   *
+   * @deprecated Use collapseClass instead. This property will be removed.
+   *
+   * @type {string|string[]}
+   */
+  get closeClass() {
+    console.warn(
+      "Graupl NavigationShelf.closeClass is deprecated and will be removed. Use collapseClass instead."
+    );
+
+    return this.collapseClass;
+  }
+
+  set closeClass(value) {
+    console.warn(
+      "Graupl NavigationShelf.closeClass is deprecated and will be removed. Use collapseClass instead."
+    );
+
+    this.collapseClass = value;
+  }
+
+  /**
+   * The deprecated alias for expandDuration.
+   *
+   * @deprecated Use expandDuration instead. This property will be removed.
+   *
+   * @type {number}
+   */
+  get openDuration() {
+    console.warn(
+      "Graupl NavigationShelf.openDuration is deprecated and will be removed. Use expandDuration instead."
+    );
+
+    return this.expandDuration;
+  }
+
+  set openDuration(value) {
+    console.warn(
+      "Graupl NavigationShelf.openDuration is deprecated and will be removed. Use expandDuration instead."
+    );
+
+    this.expandDuration = value;
+  }
+
+  /**
+   * The deprecated alias for collapseDuration.
+   *
+   * @deprecated Use collapseDuration instead. This property will be removed.
+   *
+   * @type {number}
+   */
+  get closeDuration() {
+    console.warn(
+      "Graupl NavigationShelf.closeDuration is deprecated and will be removed. Use collapseDuration instead."
+    );
+
+    return this.collapseDuration;
+  }
+
+  set closeDuration(value) {
+    console.warn(
+      "Graupl NavigationShelf.closeDuration is deprecated and will be removed. Use collapseDuration instead."
+    );
+
+    this.collapseDuration = value;
+  }
+
+  /**
+   * The deprecated alias for isExpanded.
+   *
+   * @deprecated Use isExpanded instead. This property will be removed.
+   *
+   * @readonly
+   *
+   * @type {boolean}
+   */
+  get isOpen() {
+    console.warn(
+      "Graupl NavigationShelf.isOpen is deprecated and will be removed. Use isExpanded instead."
+    );
+
+    return this.isExpanded;
   }
 
   /**
@@ -530,137 +626,6 @@ class NavigationShelf extends Component {
 
     if (this._classes.right !== value) {
       this._classes.right = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to the shelf when the shelf is open.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes
-   */
-  get openClass() {
-    return this._classes.open;
-  }
-
-  set openClass(value) {
-    isValidClassList({ openClass: value });
-
-    if (this._classes.open !== value) {
-      this._classes.open = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to the shelf when the shelf is closed.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes
-   */
-  get closeClass() {
-    return this._classes.close;
-  }
-
-  set closeClass(value) {
-    isValidClassList({ closeClass: value });
-
-    if (this._classes.close !== value) {
-      this._classes.close = value;
-    }
-  }
-
-  /**
-   * The class(es) to apply to the shelf and dependent elements when the shelf is transitioning between states.
-   *
-   * @type {string|string[]}
-   *
-   * @see _classes
-   */
-  get transitionClass() {
-    return this._classes.transition;
-  }
-
-  set transitionClass(value) {
-    isValidClassList({ transitionClass: value });
-
-    if (this._classes.transition !== value) {
-      this._classes.transition = value;
-    }
-  }
-
-  /**
-   * The duration time (in milliseconds) for the transition between open and closed states.
-   *
-   * Setting this value will also set the --am-transition-duration CSS custom property on the shelf.
-   *
-   * @type {number}
-   *
-   * @see _durations
-   */
-  get transitionDuration() {
-    return this._durations.transition;
-  }
-
-  set transitionDuration(value) {
-    isValidType("number", { transitionDuration: value });
-
-    if (this._durations.transition !== value) {
-      this._durations.transition = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  /**
-   * The duration time (in milliseconds) for the transition from closed to open states.
-   *
-   * If openDuration is set to -1, the transitionDuration value will be used instead.
-   *
-   * Setting this value will also set the --am-open-transition-duration CSS custom property on the shelf.
-   *
-   * @type {number}
-   *
-   * @see _durations
-   */
-  get openDuration() {
-    if (this._durations.open === -1) return this.transitionDuration;
-
-    return this._durations.open;
-  }
-
-  set openDuration(value) {
-    isValidType("number", { openDuration: value });
-
-    if (this._durations.open !== value) {
-      this._durations.open = value;
-      this._setTransitionDurations();
-    }
-  }
-
-  /**
-   * The duration time (in milliseconds) for the transition from open to closed states.
-   *
-   * If closeDuration is set to -1, the transitionDuration value will be used instead.
-   *
-   * Setting this value will also set the --am-close-transition-duration CSS custom property on the shelf.
-   *
-   * @type {number}
-   *
-   * @see _durations
-   */
-  get closeDuration() {
-    if (this._durations.close === -1) return this.transitionDuration;
-
-    return this._durations.close;
-  }
-
-  set closeDuration(value) {
-    isValidType("number", { closeDuration: value });
-
-    if (this._durations.close !== value) {
-      this._durations.close = value;
-      this._setTransitionDurations();
     }
   }
 
@@ -743,32 +708,6 @@ class NavigationShelf extends Component {
   }
 
   /**
-   * A flag to indicate if the navigation shelf is locked.
-   *
-   * @readonly
-   *
-   * @type {boolean}
-   *
-   * @see _locked
-   */
-  get isLocked() {
-    return this._locked.value;
-  }
-
-  /**
-   * The committed lock preference for the navigation shelf.
-   *
-   * @readonly
-   *
-   * @type {boolean}
-   *
-   * @see _locked
-   */
-  get shouldBeLocked() {
-    return this._locked.committed;
-  }
-
-  /**
    * The side of the screen the navigation shelf is on.
    *
    * @readonly
@@ -810,20 +749,9 @@ class NavigationShelf extends Component {
 
     if (this._softLocked !== value) {
       this._softLocked = value;
-    }
-  }
 
-  /**
-   * The open state on the shelf.
-   *
-   * @readonly
-   *
-   * @type {boolean}
-   *
-   * @see _open
-   */
-  get isOpen() {
-    return this._open;
+      if (value) this._clearTimeout("hover");
+    }
   }
 
   /**
@@ -862,7 +790,7 @@ class NavigationShelf extends Component {
     if (this.dom.controller) {
       this.dom.controller.setAttribute("aria-controls", this.dom.shelf.id);
 
-      if (this.dom.controller.getAttribute("aria-expanded") !== "true") {
+      if (this.dom.controller?.getAttribute("aria-expanded") !== "true") {
         this.dom.controller.setAttribute("aria-expanded", "false");
       }
     }
@@ -879,7 +807,7 @@ class NavigationShelf extends Component {
       this.dom.hoverController.setAttribute("aria-controls", this.dom.shelf.id);
       this.dom.hoverController.setAttribute(
         "aria-pressed",
-        this._hoverType === "on" ? "true" : "false"
+        this.hover ? "true" : "false"
       );
     }
 
@@ -893,8 +821,8 @@ class NavigationShelf extends Component {
    *
    * The custom properties are:
    *   - `--graupl-transition-duration`,
-   *   - `--graupl-open-transition-duration`, and
-   *   - `--graupl-close-transition-duration`.
+   *   - `--graupl-navigation-shelf-open-transition-duration`, and
+   *   - `--graupl-navigation-shelf-close-transition-duration`.
    *
    * The prefix of `graupl-` can be changed by setting the shelf's prefix value.
    *
@@ -908,12 +836,12 @@ class NavigationShelf extends Component {
 
     this.dom.shelf.style.setProperty(
       `--${this.prefix}navigation-shelf-open-transition-duration`,
-      `${this.openDuration}ms`
+      `${this.expandDuration}ms`
     );
 
     this.dom.shelf.style.setProperty(
       `--${this.prefix}navigation-shelf-close-transition-duration`,
-      `${this.closeDuration}ms`
+      `${this.collapseDuration}ms`
     );
   }
 
@@ -934,12 +862,12 @@ class NavigationShelf extends Component {
    * @protected
    */
   _handleFocus() {
-    this.dom.shelf.addEventListener("focusin", () => {
+    this._addEventListener("focusin", this.dom.shelf, () => {
       this.focusState = "self";
-      this.open();
+      this.expand();
     });
 
-    this.dom.shelf.addEventListener("focusout", (event) => {
+    this._addEventListener("focusout", this.dom.shelf, (event) => {
       if (
         event.relatedTarget === null ||
         this.dom.shelf.contains(event.relatedTarget)
@@ -949,7 +877,7 @@ class NavigationShelf extends Component {
       this.focusState = "none";
 
       if (!this.isLocked) {
-        this.close();
+        this.collapse();
       }
     });
   }
@@ -965,11 +893,12 @@ class NavigationShelf extends Component {
       if (!element) continue;
       if (Array.isArray(element)) continue;
 
-      element.addEventListener(
+      this._addEventListener(
         "pointerdown",
+        element,
         () => {
           this.currentEvent = "mouse";
-          this._clearTimeout();
+          this._clearTimeout("hover");
         },
         { passive: true }
       );
@@ -977,14 +906,14 @@ class NavigationShelf extends Component {
 
     // Toggle the shelf when the controlled is clicked.
     if (this.dom.controller) {
-      this.dom.controller.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.controller, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
         preventEvent(event);
         this.toggle({ preserveLock: false });
 
-        if (this.isOpen) {
+        if (this.isExpanded) {
           this.focusState = "self";
           this.isSoftLocked = true;
         }
@@ -993,7 +922,7 @@ class NavigationShelf extends Component {
 
     // Toggle hoverability when the hover controller is clicked.
     if (this.dom.hoverController) {
-      this.dom.hoverController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.hoverController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1002,14 +931,14 @@ class NavigationShelf extends Component {
         this.toggleHover();
 
         if (this.hover) {
-          this.open();
+          this.expand();
         }
       });
     }
 
     // Toggle shelf lock when the lock controller is clicked.
     if (this.dom.lockController) {
-      this.dom.lockController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.lockController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1021,7 +950,7 @@ class NavigationShelf extends Component {
 
     // Toggle shifting sides when the side controller is clicked.
     if (this.dom.sideController) {
-      this.dom.sideController.addEventListener("click", (event) => {
+      this._addEventListener("click", this.dom.sideController, (event) => {
         if (event.button !== 0) return;
 
         this.currentEvent = "mouse";
@@ -1031,18 +960,18 @@ class NavigationShelf extends Component {
       });
     }
 
-    // Catch all to open if shelf if there is a click inside of it.
-    this.dom.shelf.addEventListener("click", (event) => {
+    // Catch all to expanded if shelf if there is a click inside of it.
+    this._addEventListener("click", this.dom.shelf, (event) => {
       if (event.button !== 0) return;
 
       this.currentEvent = "mouse";
       this.focusState = "self";
       this.isSoftLocked = true;
-      this.open();
+      this.expand();
     });
 
     // Close the shelf if a click happens outside of it.
-    document.addEventListener("click", (event) => {
+    this._addEventListener("click", document, (event) => {
       if (this.focusState === "none") return;
       if (this.isLocked) return;
       if (
@@ -1052,7 +981,7 @@ class NavigationShelf extends Component {
         return;
 
       this.currentEvent = "mouse";
-      this.close();
+      this.collapse();
     });
   }
 
@@ -1062,41 +991,55 @@ class NavigationShelf extends Component {
    * @protected
    */
   _handleHover() {
-    this.dom.shelf.addEventListener("pointerenter", (event) => {
+    this._addEventListener("pointerenter", this.dom.shelf, (event) => {
       if (event.pointerType === "pen" || event.pointerType === "touch") return;
+
+      this._clearTimeout("hover");
       if (this.isLocked || this.isSoftLocked) return;
       if (!this.hover) return;
 
       this.currentEvent = "mouse";
 
       if (this.enterDelay > 0) {
-        this._clearTimeout();
-        this._setTimeout(() => {
-          if (!this.isOpen) {
-            this.open();
-          }
-        }, this.enterDelay);
+        this._setTimeout(
+          () => {
+            if (!this.hover || this.isLocked || this.isSoftLocked) return;
+
+            if (!this.isExpanded) {
+              this.expand();
+            }
+          },
+          this.enterDelay,
+          "hover"
+        );
       } else {
-        this.open();
+        this.expand();
       }
     });
 
-    this.dom.shelf.addEventListener("pointerleave", (event) => {
+    this._addEventListener("pointerleave", this.dom.shelf, (event) => {
       if (event.pointerType === "pen" || event.pointerType === "touch") return;
+
+      this._clearTimeout("hover");
       if (this.isLocked || this.isSoftLocked) return;
       if (!this.hover) return;
 
       this.currentEvent = "mouse";
 
       if (this.leaveDelay > 0) {
-        this._clearTimeout();
-        this._setTimeout(() => {
-          if (this.isOpen) {
-            this.close();
-          }
-        }, this.leaveDelay);
+        this._setTimeout(
+          () => {
+            if (!this.hover || this.isLocked || this.isSoftLocked) return;
+
+            if (this.isExpanded) {
+              this.collapse();
+            }
+          },
+          this.leaveDelay,
+          "hover"
+        );
       } else {
-        this.close();
+        this.collapse();
       }
     });
   }
@@ -1108,7 +1051,7 @@ class NavigationShelf extends Component {
    */
   _handleKeydown() {
     // Prevent keydown events on the shelf if they are `Escape`.
-    this.dom.shelf.addEventListener("keydown", (event) => {
+    this._addEventListener("keydown", this.dom.shelf, (event) => {
       const key = keyPress(event);
 
       if (key === "Escape") {
@@ -1122,7 +1065,7 @@ class NavigationShelf extends Component {
       if (Array.isArray(element)) continue;
       if (element === this.dom.shelf) continue;
 
-      element.addEventListener("keydown", (event) => {
+      this._addEventListener("keydown", element, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1141,30 +1084,30 @@ class NavigationShelf extends Component {
    */
   _handleKeyup() {
     // Close the shelf on `Escape`.
-    this.dom.shelf.addEventListener("keyup", (event) => {
+    this._addEventListener("keyup", this.dom.shelf, (event) => {
       this.currentEvent = "keyboard";
 
       const key = keyPress(event);
 
       if (key === "Escape") {
-        this.close();
+        this.collapse();
       }
     });
 
     // Toggle the shelf on `Space` or `Enter` on the controller.
     if (this.dom.controller) {
-      this.dom.controller.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.controller, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
 
         if (key === "Space" || key === "Enter") {
           preventEvent(event);
-          this.toggle();
+          this.toggle({ preserveLock: false });
 
-          if (this.isOpen) {
+          if (this.isExpanded) {
             const element = selectFirstFocusableElement(this.dom.shelf);
-            element.focus();
+            if (element) element.focus();
           }
         }
       });
@@ -1172,7 +1115,7 @@ class NavigationShelf extends Component {
 
     // Toggle hover on `Space` or `Enter` on the hover controller.
     if (this.dom.hoverController) {
-      this.dom.hoverController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.hoverController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1186,7 +1129,7 @@ class NavigationShelf extends Component {
 
     // Toggle lock on `Space` or `Enter` on the lock controller.
     if (this.dom.lockController) {
-      this.dom.lockController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.lockController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1200,7 +1143,7 @@ class NavigationShelf extends Component {
 
     // Shift sides on `Space` or `Enter` on the side controller.
     if (this.dom.sideController) {
-      this.dom.sideController.addEventListener("keyup", (event) => {
+      this._addEventListener("keyup", this.dom.sideController, (event) => {
         this.currentEvent = "keyboard";
 
         const key = keyPress(event);
@@ -1214,143 +1157,18 @@ class NavigationShelf extends Component {
   }
 
   /**
-   * Reveals the shelf.
-   *
-   * @protected
-   *
-   * @fires grauplNavigationShelfExpand
-   *
-   * @param {Object<boolean>} [options = {}]              - Options for revealing the shelf.
-   * @param {boolean}         [options.emit = true]       - Emit the expand event once revealed.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
-   */
-  _reveal({ emit = true, transition = true } = {}) {
-    if (this.dom.controller) {
-      this.dom.controller.setAttribute("aria-expanded", "true");
-    }
-
-    // If the shelf hasn't been initialized, we need to add the initialize class
-    // before opening the shelf for the first time.
-    //
-    // If we're dealing with transition classes, then we need to utilize
-    // requestAnimationFrame to add the transition class, remove the close class,
-    // add the open class, and finally remove the transition class.
-    if (!this.isInitialized) {
-      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
-      addClass(this.initializeClass, this.dom.shelf);
-
-      requestAnimationFrame(() => {
-        addClass(this.openClass, this.dom.shelf);
-
-        removeClass(this.closeClass, this.dom.shelf);
-
-        requestAnimationFrame(() => {
-          removeClass(this.initializeClass, this.dom.shelf);
-        });
-      });
-    } else if (transition && this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.shelf);
-
-      requestAnimationFrame(() => {
-        removeClass(this.closeClass, this.dom.shelf);
-
-        requestAnimationFrame(() => {
-          addClass(this.openClass, this.dom.shelf);
-
-          requestAnimationFrame(() => {
-            setTimeout(() => {
-              removeClass(this.transitionClass, this.dom.shelf);
-            }, this.openDuration);
-          });
-        });
-      });
-    } else {
-      // Add the open class
-      addClass(this.openClass, this.dom.shelf);
-
-      // Remove the close class.
-      removeClass(this.closeClass, this.dom.shelf);
-    }
-
-    if (emit) {
-      this._dispatchEvent("expand", this.dom.shelf);
-    }
-  }
-
-  /**
-   * Conceals the shelf.
-   *
-   * @protected
-   *
-   * @fires grauplNavigationShelfCollapse
-   *
-   * @param {Object<boolean>} [options = {}]              - Options for conceal the shelf.
-   * @param {boolean}         [options.emit = true]       - Emit the collapse event once concealed.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
-   */
-  _conceal({ emit = true, transition = true } = {}) {
-    if (this.dom.controller) {
-      this.dom.controller.setAttribute("aria-expanded", "false");
-    }
-    this.isSoftLocked = false;
-
-    // If the shelf hasn't been initialized, we need to add the initialize class
-    // before closing the shelf for the first time.
-    //
-    // If we're dealing with transition classes, then we need to utilize
-    // requestAnimationFrame to add the transition class, remove the open class,
-    // add the close class, and finally remove the transition class.
-    if (!this.isInitialized) {
-      // @todo this isn't needed anymore. Components handle adding/removing initialize classes.
-      addClass(this.initializeClass, this.dom.shelf);
-
-      requestAnimationFrame(() => {
-        addClass(this.closeClass, this.dom.shelf);
-
-        removeClass(this.openClass, this.dom.shelf);
-
-        requestAnimationFrame(() => {
-          removeClass(this.initializeClass, this.dom.shelf);
-        });
-      });
-    } else if (transition && this.transitionClass !== "") {
-      addClass(this.transitionClass, this.dom.shelf);
-
-      requestAnimationFrame(() => {
-        removeClass(this.openClass, this.dom.shelf);
-
-        requestAnimationFrame(() => {
-          addClass(this.closeClass, this.dom.shelf);
-
-          requestAnimationFrame(() => {
-            setTimeout(() => {
-              removeClass(this.transitionClass, this.dom.shelf);
-            }, this.closeDuration);
-          });
-        });
-      });
-    } else {
-      // Add the close class
-      addClass(this.closeClass, this.dom.shelf);
-
-      // Remove the open class.
-      removeClass(this.openClass, this.dom.shelf);
-    }
-
-    if (emit) {
-      this._dispatchEvent("collapse", this.dom.shelf);
-    }
-  }
-
-  /**
    * Applies the locked state styling and dispatches the lock event.
    *
    * @protected
    *
-   * @param {Object<boolean>} [options = {}]        - Options for the lock side effects.
-   * @param {boolean}         [options.emit = true] - Whether to emit the lock event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for the lock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the lock event.
    */
-  _lock({ emit = true } = {}) {
+  _lock({ emit = this.isInitialized && this.shouldEmit } = {}) {
+    this._clearTimeout("hover");
+
+    this._dispatchEvent("prelock", this.rootDOMElement, { emit });
+
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "true");
     }
@@ -1371,9 +1189,8 @@ class NavigationShelf extends Component {
       removeClass(this.unlockedClass, dependent);
     });
 
-    if (emit) {
-      this._dispatchEvent("lock", this.dom.shelf);
-    }
+    this._dispatchEvent("lock", this.dom.shelf, { emit });
+    this._dispatchEvent("postlock", this.rootDOMElement, { emit });
   }
 
   /**
@@ -1381,10 +1198,12 @@ class NavigationShelf extends Component {
    *
    * @protected
    *
-   * @param {Object<boolean>} [options = {}]        - Options for the unlock side effects.
-   * @param {boolean}         [options.emit = true] - Whether to emit the unlock event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for the unlock side effects.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the unlock event.
    */
-  _unlock({ emit = true } = {}) {
+  _unlock({ emit = this.isInitialized && this.shouldEmit } = {}) {
+    this._dispatchEvent("preunlock", this.rootDOMElement, { emit });
+
     if (this.dom.lockController) {
       this.dom.lockController.setAttribute("aria-pressed", "false");
     }
@@ -1405,9 +1224,8 @@ class NavigationShelf extends Component {
       removeClass(this.lockedClass, dependent);
     });
 
-    if (emit) {
-      this._dispatchEvent("unlock", this.dom.shelf);
-    }
+    this._dispatchEvent("unlock", this.dom.shelf, { emit });
+    this._dispatchEvent("postunlock", this.rootDOMElement, { emit });
   }
 
   /**
@@ -1415,10 +1233,10 @@ class NavigationShelf extends Component {
    *
    * @protected
    *
-   * @param {Object<boolean>} [options = {}]      - Options for shifting side.
-   * @param {boolean}         [options.emit=true] - Whether to emit the shift event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for shifting side.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the shift event.
    */
-  _shiftSide({ emit = true } = {}) {
+  _shiftSide({ emit = this.isInitialized && this.shouldEmit } = {}) {
     const toClass = this._classes[this.side];
     const fromClass = this._classes[this.otherSide];
 
@@ -1438,9 +1256,7 @@ class NavigationShelf extends Component {
       removeClass(fromClass, dependent);
     });
 
-    if (emit) {
-      this._dispatchEvent("shiftSide", this.dom.shelf);
-    }
+    this._dispatchEvent("shiftSide", this.dom.shelf, { emit });
   }
 
   /**
@@ -1448,10 +1264,10 @@ class NavigationShelf extends Component {
    *
    * @protected
    *
-   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for enabling hoverability.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the enable hover event.
    */
-  _enableHover({ emit = true } = {}) {
+  _enableHover({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "true");
     }
@@ -1460,9 +1276,7 @@ class NavigationShelf extends Component {
 
     removeClass(this.noHoverClass, this.dom.shelf);
 
-    if (emit) {
-      this._dispatchEvent("enableHover", this.dom.shelf);
-    }
+    this._dispatchEvent("enableHover", this.dom.shelf, { emit });
   }
 
   /**
@@ -1470,10 +1284,12 @@ class NavigationShelf extends Component {
    *
    * @protected
    *
-   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for disabling hoverability.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the disable hover event.
    */
-  _disableHover({ emit = true } = {}) {
+  _disableHover({ emit = this.isInitialized && this.shouldEmit } = {}) {
+    this._clearTimeout("hover");
+
     if (this.dom.hoverController) {
       this.dom.hoverController.setAttribute("aria-pressed", "false");
     }
@@ -1482,137 +1298,130 @@ class NavigationShelf extends Component {
 
     removeClass(this.hoverClass, this.dom.shelf);
 
-    if (emit) {
-      this._dispatchEvent("disableHover", this.dom.shelf);
-    }
+    this._dispatchEvent("disableHover", this.dom.shelf, { emit });
   }
 
   /**
    * Opens the shelf.
    *
-   * @param {Object<boolean>} [options = {}]              - Options for opening the shelf.
-   * @param {boolean}         [options.force = false]     - Whether to force the open action.
-   * @param {boolean}         [options.emit = true]       - Whether to emit the expand event once opened.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                                         - Options for expanding the shelf.
+   * @param {boolean}         [options.force = !this.isInitialized]                  - Whether to force the expanded action.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the expand event once opened.
+   * @param {boolean}         [options.transition = this.isInitialized]              - Respect the transition class.
    */
-  open({ force = false, emit = true, transition = true } = {}) {
-    // Only open if the shelf is closed.
-    if (this.isOpen && !force) return;
+  expand({
+    force = !this.isInitialized,
+    emit = this.isInitialized && this.shouldEmit,
+    transition = this.isInitialized,
+  } = {}) {
+    // Explicit state changes supersede any pending hover action.
+    this._clearTimeout("hover");
 
-    this._reveal({ emit, transition });
+    if (this.isExpanded && !force) return;
 
-    // Set the open flag.
-    this._open = true;
+    // A pinned shelf can still be expanded by its controller or breakpoint rules.
+    super.expand({ force: true, emit, transition });
   }
 
   /**
    * Closes the shelf and optionally preserves the committed lock state.
    *
-   * @param {Object<boolean>} [options = {}]                - Options for closing the shelf.
-   * @param {boolean}         [options.force = false]       - Whether to force the close action.
-   * @param {boolean}         [options.emit = true]         - Whether to emit the collapse event once closed.
-   * @param {boolean}         [options.transition = true]   - Respect the transition class.
-   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged.
+   * @param {Object<boolean>} [options = {}]                                         - Options for collapsing the shelf.
+   * @param {boolean}         [options.force = !this.isInitialized]                  - Whether to force the close action.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the collapse event once collapsed.
+   * @param {boolean}         [options.transition = this.isInitialized]              - Respect the transition class.
+   * @param {boolean}         [options.preserveLock = true]                          - Whether to keep the current lock preference unchanged.
    */
-  close({
-    force = false,
-    emit = true,
-    transition = true,
+  collapse({
+    force = !this.isInitialized,
+    emit = this.isInitialized && this.shouldEmit,
+    transition = this.isInitialized,
     preserveLock = true,
   } = {}) {
-    // Only close if the shelf is open.
-    if (!this.isOpen && !force) return;
+    // Explicit state changes supersede any pending hover action.
+    this._clearTimeout("hover");
 
-    this.unlock({ updateLock: !preserveLock });
-    this._conceal({ emit, transition });
+    if (!this.isExpanded && !force) return;
 
-    // Set the open flag.
-    this._open = false;
+    this.unlock({ emit, updateLock: !preserveLock });
+    super.collapse({ force, emit, transition });
   }
 
   /**
-   * Toggles the shelf open or closed.
+   * Toggles the shelf expanded or collapsed.
    *
-   * @param {Object<boolean>} [options = {}]                - Options for toggling the shelf.
-   * @param {boolean}         [options.force = false]       - Whether to force the transition.
-   * @param {boolean}         [options.emit = true]         - Whether to emit the expand/collapse events.
-   * @param {boolean}         [options.transition = true]   - Respect the transition class.
-   * @param {boolean}         [options.preserveLock = true] - Whether to keep the current lock preference unchanged when closing.
+   * @param {Object<boolean>} [options = {}]                                         - Options for toggling the shelf.
+   * @param {boolean}         [options.force = false]                                - Whether to force the transition.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the expand/collapse events.
+   * @param {boolean}         [options.transition = true]                            - Respect the transition class.
+   * @param {boolean}         [options.preserveLock = true]                          - Whether to keep the current lock preference unchanged when collapsing.
    */
   toggle({
     force = false,
-    emit = true,
+    emit = this.isInitialized && this.shouldEmit,
     transition = true,
     preserveLock = true,
   } = {}) {
-    if (this.isOpen) {
-      this.close({ force, emit, transition, preserveLock });
+    if (this.isExpanded) {
+      this.collapse({ force, emit, transition, preserveLock });
     } else {
-      this.open({ force, emit, transition });
+      this.expand({ force, emit, transition });
     }
   }
 
   /**
-   * Locks the shelf and ensures it remains open.
+   * Locks the shelf and ensures it remains expanded.
    *
-   * @param {Object<boolean>} [options = {}]              - Options for locking the shelf.
-   * @param {boolean}         [options.emit = true]       - Whether to force the lock even if already locked.
-   * @param {boolean}         [options.force = false]     - Whether to emit the expand event.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
+   * @param {Object<boolean>} [options = {}]                                         - Options for locking the shelf.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the lock event.
+   * @param {boolean}         [options.force = !this.isInitialized]                  - Whether to force the lock even if already locked.
+   * @param {boolean}         [options.transition = this.isInitialized]              - Respect the transition class.
    */
-  lock({ force = false, emit = true, transition = true } = {}) {
-    // Only lock if the shelf is unlocked.
+  lock({
+    force = !this.isInitialized,
+    emit = this.isInitialized && this.shouldEmit,
+    transition = this.isInitialized,
+  } = {}) {
     if (this.isLocked && !force) return;
 
-    this._locked.value = true;
-    this._lock();
-
-    // Commit the locked preference.
-    this._locked.commit();
-
-    // Open the shelf.
-    this.open({ force: true, emit, transition });
+    super.lock({ force, emit });
+    this.expand({ force: true, emit, transition });
   }
 
   /**
    * Unlocks the shelf.
    *
-   * @param {Object<boolean>} [options = {}]              - Options for unlocking the shelf.
-   * @param {boolean}         [options.emit = true]       - Whether to emit the unlock event.
-   * @param {boolean}         [options.updateLock = true] - Whether to commit the unlocked state as the new preference.
+   * @param {Object<boolean>} [options = {}]                                         - Options for unlocking the shelf.
+   * @param {boolean}         [options.force = !this.isInitialized]                  - Whether to force the unlock action.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the unlock event.
+   * @param {boolean}         [options.updateLock = this.isInitialized]              - Whether to commit the unlocked state as the new preference.
    */
-  unlock({ emit = true, updateLock = true } = {}) {
-    // Only unlock if the shelf is locked.
-    if (!this.isLocked) {
-      this._locked.value = false;
-
-      if (updateLock) {
-        this._locked.commit();
-      }
-
-      return;
-    }
-
-    this._locked.value = false;
-    this._unlock({ emit });
-
-    if (updateLock) {
+  unlock({
+    force = !this.isInitialized,
+    emit = this.isInitialized && this.shouldEmit,
+    updateLock = this.isInitialized,
+  } = {}) {
+    // Core skips an already unlocked shelf, but an explicit preference update
+    // must still clear a pin saved before the breakpoint temporarily unlocked it.
+    if (!this.isLocked && !force && updateLock) {
       this._locked.commit();
     }
+
+    super.unlock({ force, emit, preserveState: !updateLock });
   }
 
   /**
    * Toggles the locked state of the shelf.
    *
-   * @param {Object<boolean>} [options = {}]              - Options for toggling the lock state.
-   * @param {boolean}         [options.force = false]     - Whether to force the toggle action.
-   * @param {boolean}         [options.emit = true]       - Whether to emit the lock/unlock event.
-   * @param {boolean}         [options.transition = true] - Respect the transition class.
-   * @param {boolean}         [options.updateLock = true] - Whether to commit the new lock state as the preference.
+   * @param {Object<boolean>} [options = {}]                                         - Options for toggling the lock state.
+   * @param {boolean}         [options.force = false]                                - Whether to force the toggle action.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the lock/unlock event.
+   * @param {boolean}         [options.transition = true]                            - Respect the transition class.
+   * @param {boolean}         [options.updateLock = true]                            - Whether to commit the new lock state as the preference.
    */
   toggleLock({
     force = false,
-    emit = true,
+    emit = this.isInitialized && this.shouldEmit,
     transition = true,
     updateLock = true,
   } = {}) {
@@ -1626,10 +1435,10 @@ class NavigationShelf extends Component {
   /**
    * Shift the shelf to the left side.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for shifting side.
-   * @param {boolean}         [options.emit = true] - Whether to emit the shift event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for shifting side.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the shift event.
    */
-  toLeft({ emit = true } = {}) {
+  toLeft({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.side === "left") return;
 
     this._side = "left";
@@ -1640,10 +1449,10 @@ class NavigationShelf extends Component {
   /**
    * Shift the shelf to the right side.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for shifting side.
-   * @param {boolean}         [options.emit = true] - Whether to emit the shift event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for shifting side.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the shift event.
    */
-  toRight({ emit = true } = {}) {
+  toRight({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.side === "right") return;
 
     this._side = "right";
@@ -1654,10 +1463,10 @@ class NavigationShelf extends Component {
   /**
    * Toggles the shelf side between left and right.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for shifting side.
-   * @param {boolean}         [options.emit = true] - Whether to emit the shift event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for shifting side.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the shift event.
    */
-  toggleSide({ emit = true } = {}) {
+  toggleSide({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.side === "left") {
       this.toRight({ emit });
     } else {
@@ -1668,10 +1477,10 @@ class NavigationShelf extends Component {
   /**
    * Enables hover mode on the shelf.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for enabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the enable hover event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for enabling hoverability.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the enable hover event.
    */
-  enableHover({ emit = true } = {}) {
+  enableHover({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.hover) return;
 
     this._enableHover({ emit });
@@ -1682,10 +1491,10 @@ class NavigationShelf extends Component {
   /**
    * Disables hover mode on the shelf.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for disabling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the disable hover event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for disabling hoverability.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the disable hover event.
    */
-  disableHover({ emit = true } = {}) {
+  disableHover({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (!this.hover) return;
 
     this._disableHover({ emit });
@@ -1696,15 +1505,47 @@ class NavigationShelf extends Component {
   /**
    * Toggles hover mode on the shelf.
    *
-   * @param {Object<boolean>} [options = {}]        - Options for toggling hoverability.
-   * @param {boolean}         [options.emit = true] - Whether to emit the enable/disable hover event.
+   * @param {Object<boolean>} [options = {}]                                         - Options for toggling hoverability.
+   * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit the enable/disable hover event.
    */
-  toggleHover({ emit = true } = {}) {
+  toggleHover({ emit = this.isInitialized && this.shouldEmit } = {}) {
     if (this.hover) {
       this.disableHover({ emit });
     } else {
       this.enableHover({ emit });
     }
+  }
+
+  /**
+   * Calls expand using the former method name.
+   *
+   * @deprecated Use expand instead. This method will be removed.
+   *
+   * @param {...*} args - Arguments forwarded to expand.
+   * @return {*} - The result of calling expand.
+   */
+  open(...args) {
+    console.warn(
+      "Graupl NavigationShelf.open() is deprecated and will be removed. Use expand() instead."
+    );
+
+    return this.expand(...args);
+  }
+
+  /**
+   * Calls collapse using the former method name.
+   *
+   * @deprecated Use collapse instead. This method will be removed.
+   *
+   * @param {...*} args - Arguments forwarded to collapse.
+   * @return {*} - The result of calling collapse.
+   */
+  close(...args) {
+    console.warn(
+      "Graupl NavigationShelf.close() is deprecated and will be removed. Use collapse() instead."
+    );
+
+    return this.collapse(...args);
   }
 }
 
