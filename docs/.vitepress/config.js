@@ -129,6 +129,7 @@ export default defineConfig({
           { text: "Lists", link: "/components/list" },
           { text: "Menus", link: "/components/menu" },
           { text: "Navigations", link: "/components/navigation" },
+          { text: "Tabs", link: "/components/tab" },
         ],
       },
       {
