@@ -25,6 +25,28 @@ export default defineConfig({
     },
   },
   markdown: {
+    config(md) {
+      // Resolve repository-relative policy links for the documentation site.
+      const policyLinks = {
+        "CONTRIBUTING.md": "/community/contributing",
+        "AI_CONTRIBUTIONS.md": "/community/ai-contributions",
+        "ACCESSIBILITY.md": "/community/accessibility",
+        "../AGENTS.md": "https://github.com/Graupl/graupl/blob/1.x/AGENTS.md",
+        "../LICENSE": "https://github.com/Graupl/graupl/blob/1.x/LICENSE",
+      };
+      const renderLink = md.renderer.rules.link_open;
+
+      md.renderer.rules.link_open = (tokens, index, options, env, self) => {
+        const token = tokens[index];
+        const destination = policyLinks[token.attrGet("href")];
+
+        if (destination) token.attrSet("href", destination);
+
+        return renderLink
+          ? renderLink(tokens, index, options, env, self)
+          : self.renderToken(tokens, index, options);
+      };
+    },
     toc: {
       level: [1, 2, 3],
     },
@@ -35,6 +57,7 @@ export default defineConfig({
       provider: "local",
     },
     nav: [
+      { text: "Community", link: "/community/" },
       {
         text: "Docs",
         link: "/introduction",
@@ -52,7 +75,7 @@ export default defineConfig({
           },
           {
             text: "Contributing",
-            link: "https://github.com/Graupl/graupl/blob/1.x/.github/CONTRIBUTING.md",
+            link: "/community/contributing",
           },
         ],
       },
@@ -61,6 +84,21 @@ export default defineConfig({
     socialLinks: [{ icon: "github", link: "https://github.com/Graupl/graupl" }],
 
     sidebar: [
+      {
+        text: "Community",
+        items: [
+          { text: "Overview", link: "/community/" },
+          { text: "Contributing", link: "/community/contributing" },
+          {
+            text: "AI contribution policy",
+            link: "/community/ai-contributions",
+          },
+          { text: "Accessibility policy", link: "/community/accessibility" },
+          { text: "Code of conduct", link: "/community/code-of-conduct" },
+          { text: "Security policy", link: "/community/security" },
+          { text: "Commit guidelines", link: "/community/commit-guidelines" },
+        ],
+      },
       {
         text: "Getting Started",
         items: [
