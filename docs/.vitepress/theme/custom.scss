@@ -211,7 +211,7 @@ pre code {
   }
 }
 
-table {
+.container > div > div > table {
   @include graupl-base-table-mixins.apply-bordered;
   @include graupl-base-table-mixins.apply-striped-columns;
   @include graupl-base-table-mixins.apply-hoverable;
