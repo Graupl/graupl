@@ -290,7 +290,7 @@ $flex-columns-column-map: ();
       }
     }
 
-    // Handle force-signle-columns.
+    // Handle force-single-columns.
     @if defaults.$force-single-columns {
       @for $i
         from defaults.$flex-columns-min-count
