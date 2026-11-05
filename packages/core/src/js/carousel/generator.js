@@ -8,10 +8,10 @@ import once from "@drupal/once";
 /**
  * Generates Carousel elements.
  *
- * @param {object}      [options = {}]                 - Options for generating the carousel.
- * @param {object}      [options.options = {}]         - Options to pass to the Carousel constructor.
- * @param {HTMLElement} [options.context = document]   - The element to base the selector off of.
- * @param {string}      [options.selector = .carousel] - The query selector for the carousel elements in the DOM.
+ * @param {object}           [options = {}]                 - Options for generating the carousel.
+ * @param {object}           [options.options = {}]         - Options to pass to the Carousel constructor.
+ * @param {Document|Element} [options.context = document]   - The element to base the selector off of.
+ * @param {string}           [options.selector = .carousel] - The query selector for the carousel elements in the DOM.
  */
 const generate = ({
   options = {},

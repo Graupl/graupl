@@ -9,6 +9,10 @@
   <link rel="stylesheet" href="./packages/icons/scss/icon.scss" />
   <link rel="stylesheet" href="./packages/navigation-shelf/scss/navigation-shelf.scss" />
   <style>
+    :root {
+      --graupl-carousel-item-container-aspect-ratio: 7 / 3;
+    }
+
     /* Have the shelf fully disappear when closed */
     /* :root {
       --graupl-navigation-shelf-closed-display: none;
@@ -1343,9 +1347,10 @@ Readonly Textarea</textarea>
           <button class="carousel-tab" aria-label="Carousel item 5"></button>
         </div>
         <div class="carousel-item-container">
-          <div class="carousel-item">
+          <div class="carousel-item position-relative">
               <img
                 src="https://picsum.photos/1400/600?random=1"
+                class="max-w-full"
                 alt="A placeholder carousel image" />
             <div
               class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
@@ -1355,9 +1360,10 @@ Readonly Textarea</textarea>
               </p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item position-relative">
               <img
                 src="https://picsum.photos/1400/600?random=2"
+                class="max-w-full"
                 alt="A placeholder carousel image" />
             <div
               class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
@@ -1367,9 +1373,10 @@ Readonly Textarea</textarea>
               </p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item position-relative">
               <img
                 src="https://picsum.photos/1400/600?random=3"
+                class="max-w-full"
                 alt="A placeholder carousel image" />
             <div
               class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
@@ -1379,9 +1386,10 @@ Readonly Textarea</textarea>
               </p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item position-relative">
               <img
                 src="https://picsum.photos/1400/600?random=4"
+                class="max-w-full"
                 alt="A placeholder carousel image" />
             <div
               class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
@@ -1391,9 +1399,10 @@ Readonly Textarea</textarea>
               </p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item position-relative">
               <img
                 src="https://picsum.photos/1400/600?random=5"
+                class="max-w-full"
                 alt="A placeholder carousel image" />
             <div
               class="position-absolute bottom-0 left-0 right-0 p-5 bg-tertiary-100">
