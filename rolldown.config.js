@@ -26,17 +26,6 @@ export default defineConfig([
     plugins,
   },
   {
-    input: "./packages/core/src/js/storage/StorageManager.js",
-    output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/storage/storage-manager.${format}.js`,
-      format,
-      name: "StorageManager",
-      sourcemap: true,
-    })),
-    platform: "browser",
-    plugins,
-  },
-  {
     input: "./packages/core/src/js/accordion/index.js",
     output: {
       file: `dist/js/accordion.js`,
@@ -119,7 +108,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/accordion/Accordion.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/accordion.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/accordion.cjs`
+          : `dist/js/component/accordion.${format}.js`,
       format,
       name: "Accordion",
       sourcemap: true,
@@ -130,7 +122,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/accordion/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/accordion.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/accordion.cjs`
+          : `dist/js/generator/accordion.${format}.js`,
       format,
       name: "AccordionGenerator",
       sourcemap: true,
@@ -141,7 +136,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/alert/Alert.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/alert.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/alert.cjs`
+          : `dist/js/component/alert.${format}.js`,
       format,
       name: "Alert",
       sourcemap: true,
@@ -152,7 +150,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/alert/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/alert.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/alert.cjs`
+          : `dist/js/generator/alert.${format}.js`,
       format,
       name: "AlertGenerator",
       sourcemap: true,
@@ -163,7 +164,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/breadcrumb/Breadcrumb.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/breadcrumb.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/breadcrumb.cjs`
+          : `dist/js/component/breadcrumb.${format}.js`,
       format,
       name: "Breadcrumb",
       sourcemap: true,
@@ -174,7 +178,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/breadcrumb/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/breadcrumb.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/breadcrumb.cjs`
+          : `dist/js/generator/breadcrumb.${format}.js`,
       format,
       name: "BreadcrumbGenerator",
       sourcemap: true,
@@ -185,7 +192,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/carousel/Carousel.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/carousel.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/carousel.cjs`
+          : `dist/js/component/carousel.${format}.js`,
       format,
       name: "Carousel",
       sourcemap: true,
@@ -196,7 +206,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/carousel/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/carousel.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/carousel.cjs`
+          : `dist/js/generator/carousel.${format}.js`,
       format,
       name: "CarouselGenerator",
       sourcemap: true,
@@ -207,7 +220,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/disclosure/Disclosure.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/disclosure.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/disclosure.cjs`
+          : `dist/js/component/disclosure.${format}.js`,
       format,
       name: "Disclosure",
       sourcemap: true,
@@ -218,7 +234,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/disclosure/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/disclosure.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/disclosure.cjs`
+          : `dist/js/generator/disclosure.${format}.js`,
       format,
       name: "DisclosureGenerator",
       sourcemap: true,
@@ -229,7 +248,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/navigation/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/navigation.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/navigation.cjs`
+          : `dist/js/generator/navigation.${format}.js`,
       format,
       name: "NavigationGenerator",
       sourcemap: true,
@@ -240,7 +262,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/tabs/Tabs.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/tabs.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/tabs.cjs`
+          : `dist/js/component/tabs.${format}.js`,
       format,
       name: "Tabs",
       sourcemap: true,
@@ -251,7 +276,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/tabs/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/tabs.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/tabs.cjs`
+          : `dist/js/generator/tabs.${format}.js`,
       format,
       name: "TabsGenerator",
       sourcemap: true,
@@ -262,7 +290,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/tooltip/Tooltip.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/component/tooltip.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/component/tooltip.cjs`
+          : `dist/js/component/tooltip.${format}.js`,
       format,
       name: "Tooltip",
       sourcemap: true,
@@ -273,7 +304,10 @@ export default defineConfig([
   {
     input: "./packages/core/src/js/tooltip/generator.js",
     output: ["iife", "es", "cjs"].map((format) => ({
-      file: `dist/js/generator/tooltip.${format}.js`,
+      file:
+        format === "cjs"
+          ? `dist/js/generator/tooltip.cjs`
+          : `dist/js/generator/tooltip.${format}.js`,
       format,
       name: "TooltipGenerator",
       sourcemap: true,

@@ -10,9 +10,9 @@ const sidebarsOptions = ["none", "left", "right", "both"];
  * Builds the given number of column items, with the given span applied to
  * the first.
  *
- * @param  {number} span  - The span to apply to the first column item.
- * @param  {number} count - The number of column items to build.
- * @return {Array}        - The column item vnodes.
+ * @param  {number} span           - The span to apply to the first column item.
+ * @param  {number} count          - The number of column items to build.
+ * @return {import("vue").VNode[]} - The column item vnodes.
  */
 function buildColumnItems(span, count) {
   const items = [];

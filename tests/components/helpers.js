@@ -8,9 +8,9 @@
  *
  * Optionally, you can provide default classes to add as well.
  *
- * @param  {object}        attributes     - The attributes object to alter.
- * @param  {Array[string]} [classes = []] - The classes to add by default.
- * @return {object}                       - The attributes object with a class array.
+ * @param  {object}   attributes     - The attributes object to alter.
+ * @param  {string[]} [classes = []] - The classes to add by default.
+ * @return {object}                  - The attributes object with a class array.
  */
 export function setupClasses(attributes, classes = []) {
   attributes.class = attributes.class || [];
