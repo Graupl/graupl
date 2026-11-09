@@ -262,6 +262,40 @@ table {
   }
 }
 
+.example-container:has(> .example-layout) {
+  container: live-example / inline-size;
+}
+
+.example-layout,
+.example-layout > .example-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: inherit;
+}
+
+.example-layout .example-code {
+  min-inline-size: 0;
+}
+
+@container live-example (min-width: #{map.get(graupl-root-defaults.$screen-sizes, sm)}) {
+  .example-panels.side-by-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .example-panels.side-by-side > .example-code {
+    contain: size;
+    overflow: auto;
+  }
+
+  .options-left:has(> .example-options > *) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  }
+
+  .options-right:has(> .example-options > *) {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  }
+}
+
 .static-example {
   display: flex;
   flex-direction: column;
