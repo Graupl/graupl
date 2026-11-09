@@ -37,6 +37,12 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Keep issue-driven documentation focused on the agreed solution. Read the issue discussion to distinguish the actual request from examples or ideas mentioned along the way. Do not add adjacent patterns just because the same configuration could support them.
 - Check compatibility beyond the final result. Preserve focus timing, event propagation, parent synchronization, and other existing side effects unless the requested change requires otherwise.
 
+## Independent verification
+
+- Agents must challenge each other's work. Treat claims, assumptions, and reported checks as unverified until there is evidence. Give concrete findings and be prepared to revise them when the evidence changes.
+- For every change, have a separate agent review the full set of changes made for the task against all applicable AGENTS.md instructions. The reviewer must assume the changes do not comply until they verify compliance from the diff, relevant source, and checks. Include changes to AGENTS.md itself.
+- Resolve findings and have the reviewer recheck any corrections before finishing. Apply the additional source and coverage checks required for documentation, bug fixes, and tests.
+
 ## Bug-fix workflow
 
 - Work through reported bugs one at a time. First verify the report against the current implementation in each selected version. Distinguish a runtime bug from a configuration error, missing test coverage, or an optional improvement.
@@ -54,6 +60,19 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Keep feature backports separate from bug fixes. An additive API still needs a compatibility review and a reason to add it to a maintenance branch.
 
 ## Documentation and comments
+
+- Have another agent independently review every documentation change. The reviewer should treat the change as incorrect until they can verify its claims and examples against the relevant source code. Resolve any discrepancies and have the reviewer check the corrections before completing the work.
+- Use the [button docs](docs/base/button.md) as the model for Graupl style pages. Start with a short overview, show the default styles in live examples, then list custom properties and Sass variables.
+- Match the button page's introductory wording for the Custom Properties and Sass variables sections, changing the name to fit the page. Keep specific configuration notes separate from the standard introduction.
+- Use headings readers are likely to look for, such as "Dark mode". Keep basic theme pages focused on common tasks and reserve detailed theme configuration for a separate guide.
+- Use Graupl utility classes in examples where they express the intended behaviour. Use existing Graupl Sass values and the shared docs stylesheet for example layouts. Keep example controls inside LiveExample and place them before long previews when readers need them to use the example.
+- Write for someone using the docs. Use direct instructions when they help, such as "Use `<b>` or `<strong>` to display bold text." Let previews show visible differences. Mention Graupl where it adds context and cut repeated introductions and prose that just describes what the preview shows.
+- Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
+- Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
+- Keep Sass variable and CSS custom property descriptions identical wherever they appear in the style docs and SCSS source comments. When editing either copy, check the other and update both in the same change.
+- When a custom property’s default is already documented, reference it as `var(--property)` in the docs and matching SCSS comments. Keep the fallback in the actual Sass.
+- Verify documented CSS defaults against compiled output when Sass can change the emitted value. For example, a null duration in a transition shorthand is omitted, and CSS uses its default duration of `0s`.
+- Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
 
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.
 - Explain parameters, defaults, null handling, meaningful return values, side effects, and validation where relevant. Distinguish constructor options, protected fields, getters, and method arguments.
@@ -73,6 +92,13 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Explain why an unusual setup step is needed, then give the shortest useful example. Avoid expanding a small change into a detailed guide unless that detail is needed to use it.
 - Update the documentation and comments affected by a behavior change. Add subclass-specific explanations only where the subclass behaves differently. Respect requests to defer broader documentation work.
 - Use VitePress info, tip, and warning containers selectively to make useful requirements or caveats stand out. Preserve the existing explanation and examples; do not turn routine reference text into callouts or add warnings just for emphasis.
+
+## Sass selectors
+
+- Preserve Sass comment sections that list the classes or selectors generated by default. Update the list when the defaults change. Use "selectors" when the list includes pseudo-classes or other selectors alongside classes.
+- Make Graupl's Sass selectors configurable, including selectors that default to HTML tags. Declare selector defaults with `!default` and use the configured selectors wherever the styles are emitted.
+- Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
+- Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
 
 ## Code organization and readability
 
@@ -117,6 +143,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Follow the existing cleanup approach. Do not add disposal registries, such as componentsToDispose, or a broader cleanup refactor while adding unrelated behavior tests. Handle cleanup work separately. When each test creates one component, use one scoped variable for cleanup rather than an array and disposal loop. In Core tests, dispose owned components before restoring mocks, globals, and timers.
 - Separate setup, actions, and assertions with blank lines. Group component selections before the assertions that use them. For tests with several actions, separate each action from its resulting assertions. Put a blank line between sibling tests and describe blocks.
 - Match test names and comments to the actual class, method, and assertion. Distinguish reported validation failures from thrown errors. When a validator returns a result object, describe acceptance or errors rather than claiming it returns a boolean. Distinguish current state from committed state and stored data from the object that owns it. Use parameter placeholders only where the test runner substitutes them.
+- Follow the test structure and wording used in Accessible Ecosystem Core and Accessible Menu. Keep separate click tests for expanding and collapsing, with each test starting in the state it needs.
+- Leave deprecated APIs out of new coverage and remove tests and test references dedicated to deprecated APIs when updating a suite.
+- Tie each assertion to a requirement or a plausible regression. For example, an accordion click test should check the relevant expanded or collapsed state. Only check that content survives the click if content preservation is part of the behavior under test.
+- Treat the native `disabled` attribute on locked accordion headers as intentional. It prevents activation for users regardless of whether they use assistive technology.
 - Test observable behavior and meaningful API contracts. Do not add assertions about the absence of removed internal properties just to record that they were removed.
 - Check that inheritance assertions reference real members. Comparing two misspelled or missing methods can pass because both values are undefined. Successful initialization tests should check isInitialized rather than only checking that nothing throws, since validation failures may be reported without throwing.
 - Prefer spies on real helpers when their side effects matter, such as event prevention and propagation. Restore spies between tests. Mock methods through restorable spies instead of assigning mock functions directly to prototypes or module exports.
