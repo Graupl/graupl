@@ -37,6 +37,12 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Keep issue-driven documentation focused on the agreed solution. Read the issue discussion to distinguish the actual request from examples or ideas mentioned along the way. Do not add adjacent patterns just because the same configuration could support them.
 - Check compatibility beyond the final result. Preserve focus timing, event propagation, parent synchronization, and other existing side effects unless the requested change requires otherwise.
 
+## Independent verification
+
+- Agents must challenge each other's work. Treat claims, assumptions, and reported checks as unverified until there is evidence. Give concrete findings and be prepared to revise them when the evidence changes.
+- For every change, have a separate agent review the full set of changes made for the task against all applicable AGENTS.md instructions. The reviewer must assume the changes do not comply until they verify compliance from the diff, relevant source, and checks. Include changes to AGENTS.md itself.
+- Resolve findings and have the reviewer recheck any corrections before finishing. Apply the additional source and coverage checks required for documentation, bug fixes, and tests.
+
 ## Bug-fix workflow
 
 - Work through reported bugs one at a time. First verify the report against the current implementation in each selected version. Distinguish a runtime bug from a configuration error, missing test coverage, or an optional improvement.
@@ -57,6 +63,9 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 - Have another agent independently review every documentation change. The reviewer should treat the change as incorrect until they can verify its claims and examples against the relevant source code. Resolve any discrepancies and have the reviewer check the corrections before completing the work.
 - Use the [button docs](docs/base/button.md) as the model for Graupl style pages. Start with a short overview, show the default styles in live examples, then list custom properties and Sass variables.
+- Match the button page's introductory wording for the Custom Properties and Sass variables sections, changing the name to fit the page. Keep specific configuration notes separate from the standard introduction.
+- Use headings readers are likely to look for, such as "Dark mode". Keep basic theme pages focused on common tasks and reserve detailed theme configuration for a separate guide.
+- Use Graupl utility classes in examples where they express the intended behaviour. Use existing Graupl Sass values and the shared docs stylesheet for example layouts. Keep example controls inside LiveExample and place them before long previews when readers need them to use the example.
 - Write for someone using the docs. Use direct instructions when they help, such as "Use `<b>` or `<strong>` to display bold text." Let previews show visible differences. Mention Graupl where it adds context and cut repeated introductions and prose that just describes what the preview shows.
 - Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
 - Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
