@@ -55,10 +55,15 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Documentation and comments
 
+- Have another agent independently review every documentation change. The reviewer should treat the change as incorrect until they can verify its claims and examples against the relevant source code. Resolve any discrepancies and have the reviewer check the corrections before completing the work.
 - Use the [button docs](docs/base/button.md) as the model for Graupl style pages. Start with a short overview, show the default styles in live examples, then list custom properties and Sass variables.
 - Write for someone using the docs. Use direct instructions when they help, such as "Use `<b>` or `<strong>` to display bold text." Let previews show visible differences. Mention Graupl where it adds context and cut repeated introductions and prose that just describes what the preview shows.
 - Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
 - Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
+- Keep Sass variable and CSS custom property descriptions identical wherever they appear in the style docs and SCSS source comments. When editing either copy, check the other and update both in the same change.
+- When a custom property’s default is already documented, reference it as `var(--property)` in the docs and matching SCSS comments. Keep the fallback in the actual Sass.
+- Verify documented CSS defaults against compiled output when Sass can change the emitted value. For example, a null duration in a transition shorthand is omitted, and CSS uses its default duration of `0s`.
+- Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
 
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.
 - Explain parameters, defaults, null handling, meaningful return values, side effects, and validation where relevant. Distinguish constructor options, protected fields, getters, and method arguments.
@@ -83,6 +88,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 - Make Graupl's Sass selectors configurable, including selectors that default to HTML tags. Declare selector defaults with `!default` and use the configured selectors wherever the styles are emitted.
 - Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
+- Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
 
 ## Code organization and readability
 
