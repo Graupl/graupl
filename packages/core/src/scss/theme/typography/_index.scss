@@ -298,6 +298,20 @@
     word-spacing: $bold-word-spacing;
   }
 
+  // em, i
+  #{defaults.$emphasis-selector-base}#{defaults.$emphasis-selector},
+  #{defaults.$italic-selector-base}#{defaults.$italic-selector} {
+    color: $italic-color;
+    font-family: $italic-font-family;
+    font-size: $italic-font-size;
+    font-style: $italic-font-style;
+    font-variant: $italic-font-variant;
+    font-weight: $italic-font-weight;
+    letter-spacing: $italic-letter-spacing;
+    line-height: $italic-line-height;
+    word-spacing: $italic-word-spacing;
+  }
+
   // p
   #{defaults.$paragraph-selector-base}#{defaults.$paragraph-selector} {
     color: $paragraph-color;
