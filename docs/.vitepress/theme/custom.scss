@@ -213,7 +213,7 @@ pre code {
 
 table {
   @include graupl-base-table-mixins.apply-bordered;
-  @include graupl-base-table-mixins.apply-striped-columns;
+  @include graupl-base-table-mixins.apply-striped-rows;
   @include graupl-base-table-mixins.apply-hoverable;
 }
 
