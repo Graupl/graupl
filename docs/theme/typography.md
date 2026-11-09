@@ -37,7 +37,7 @@ For examples of changing the size or weight of individual elements, see the [fon
 
 ## Custom Properties
 
-Change `--graupl-base-font-size` to scale the default font sizes together, or set a property for the element you want to adjust.
+The following custom properties can be used to customize the typography theme:
 
 | Property                            | Description                                              | Default Value                                                                                           |
 | ----------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -181,9 +181,11 @@ Change `--graupl-base-font-size` to scale the default font sizes together, or se
 | `--graupl-h6-word-spacing`          | The word spacing of H6 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
 | `--graupl-h6-margin`                | The margin of H6 elements.                               | `var(--graupl-heading-margin)`                                                                          |
 
+Change `--graupl-base-font-size` to adjust the font-size scale, or set a property for the element you want to adjust.
+
 ## Sass variables
 
-When [compiling Graupl](../compiling-graupl.md), set `$paragraph-selector` or `$small-selector` to apply the styles to a different selector. Use the corresponding `-selector-base` variable to add a prefix.
+The following Sass variables can be used to customize the generation of the typography theme:
 
 | Variable                      | Description                                               | Default Value                                   |
 | ----------------------------- | --------------------------------------------------------- | ----------------------------------------------- |
@@ -227,3 +229,5 @@ When [compiling Graupl](../compiling-graupl.md), set `$paragraph-selector` or `$
 | `$font-size-multipliers`      | A map of overrides for the default font size multipliers. | `()`                                            |
 | `$font-weights`               | A map of overrides for the default font weights.          | `()`                                            |
 | `$root-font-family`           | The font family of the root element.                      | System font stack                               |
+
+When [compiling Graupl](../compiling-graupl.md), set `$paragraph-selector` or `$small-selector` to apply the styles to a different selector. Use the corresponding `-selector-base` variable to add a prefix.
