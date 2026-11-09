@@ -72,6 +72,11 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Keep Sass variable and CSS custom property descriptions identical wherever they appear in the style docs and SCSS source comments. When editing either copy, check the other and update both in the same change.
 - When a custom property’s default is already documented, reference it as `var(--property)` in the docs and matching SCSS comments. Keep the fallback in the actual Sass.
 - Verify documented CSS defaults against compiled output when Sass can change the emitted value. For example, a null duration in a transition shorthand is omitted, and CSS uses its default duration of `0s`.
+- Describe what fits in the available width. Use plain wording such as "if there isn't enough room" when explaining why a layout uses fewer columns.
+- Connect related ideas in the prose. Explain what a class does and what it does by default together, then describe how it responds to changes in the layout. Keep wording that already reads clearly.
+- Show the base layout on its own. Group settings that affect each other in the same section and preview, such as column count and fixed width. Let readers select the full documented range, and give them enough items or an item count control to see how the layout changes.
+- Explain what the classes do in the prose and let the previews demonstrate it. Skip prompts such as "try this" or "in the example below" when the controls and surrounding text already make the purpose clear. Use a VitePress note for setup specific to a preview, such as sizing a grid to its available width.
+- Link to the responsive utility class reference for shared prefix information. Keep the layout's own responsive behaviour and class placement in its page.
 - Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
 
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.
