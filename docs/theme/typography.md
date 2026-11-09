@@ -42,26 +42,26 @@ Change `--graupl-base-font-size` to scale the default font sizes together, or se
 | Property                            | Description                                              | Default Value                                                                                           |
 | ----------------------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
 | `--graupl-base-font-size`           | The base font size used to generate the font size scale. | `1rem`                                                                                                  |
-| `--graupl-font-size-xs`             | The extra-small font size.                               | `calc(0.694 * var(--graupl-base-font-size, 1rem))`                                                      |
-| `--graupl-font-size-sm`             | The small font size.                                     | `calc(0.833 * var(--graupl-base-font-size, 1rem))`                                                      |
-| `--graupl-font-size-base`           | The base font size.                                      | `calc(1 * var(--graupl-base-font-size, 1rem))`                                                          |
-| `--graupl-font-size-lg`             | The large font size.                                     | `calc(1.2 * var(--graupl-base-font-size, 1rem))`                                                        |
-| `--graupl-font-size-xl`             | The extra-large font size.                               | `calc(1.44 * var(--graupl-base-font-size, 1rem))`                                                       |
-| `--graupl-font-size-2xl`            | The 2XL font size.                                       | `calc(1.728 * var(--graupl-base-font-size, 1rem))`                                                      |
-| `--graupl-font-size-3xl`            | The 3XL font size.                                       | `calc(2.074 * var(--graupl-base-font-size, 1rem))`                                                      |
-| `--graupl-font-size-4xl`            | The 4XL font size.                                       | `calc(2.488 * var(--graupl-base-font-size, 1rem))`                                                      |
-| `--graupl-font-size-5xl`            | The 5XL font size.                                       | `calc(2.986 * var(--graupl-base-font-size, 1rem))`                                                      |
+| `--graupl-font-size-xs`             | The extra-small font size.                               | `calc(0.694 * var(--graupl-base-font-size))`                                                            |
+| `--graupl-font-size-sm`             | The small font size.                                     | `calc(0.833 * var(--graupl-base-font-size))`                                                            |
+| `--graupl-font-size-base`           | The base font size.                                      | `calc(1 * var(--graupl-base-font-size))`                                                                |
+| `--graupl-font-size-lg`             | The large font size.                                     | `calc(1.2 * var(--graupl-base-font-size))`                                                              |
+| `--graupl-font-size-xl`             | The extra-large font size.                               | `calc(1.44 * var(--graupl-base-font-size))`                                                             |
+| `--graupl-font-size-2xl`            | The 2XL font size.                                       | `calc(1.728 * var(--graupl-base-font-size))`                                                            |
+| `--graupl-font-size-3xl`            | The 3XL font size.                                       | `calc(2.074 * var(--graupl-base-font-size))`                                                            |
+| `--graupl-font-size-4xl`            | The 4XL font size.                                       | `calc(2.488 * var(--graupl-base-font-size))`                                                            |
+| `--graupl-font-size-5xl`            | The 5XL font size.                                       | `calc(2.986 * var(--graupl-base-font-size))`                                                            |
 | `--graupl-font-weight-light`        | The light font weight.                                   | `300`                                                                                                   |
 | `--graupl-font-weight-normal`       | The normal font weight.                                  | `400`                                                                                                   |
 | `--graupl-font-weight-bold`         | The bold font weight.                                    | `700`                                                                                                   |
-| `--graupl-root-font-family`         | The font family of the root `<html>` element.            | `system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif` |
-| `--graupl-root-font-size`           | The font size of the root `<html>` element.              | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)`                                                         |
-| `--graupl-root-font-weight`         | The font weight of the root `<html>` element.            | `var(--graupl-font-weight-normal)`                                                                      |
-| `--graupl-root-font-style`          | The font style of the root `<html>` element.             | `normal`                                                                                                |
-| `--graupl-root-font-variant`        | The font variant of the root `<html>` element.           | `normal`                                                                                                |
-| `--graupl-root-line-height`         | The line height of the root `<html>` element.            | `1.2em`                                                                                                 |
-| `--graupl-root-letter-spacing`      | The letter spacing of the root `<html>` element.         | `normal`                                                                                                |
-| `--graupl-root-word-spacing`        | The word spacing of the root `<html>` element.           | `normal`                                                                                                |
+| `--graupl-root-font-family`         | The font family of the root element.                     | `system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif` |
+| `--graupl-root-font-size`           | The font size of the root element.                       | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)`                                                         |
+| `--graupl-root-font-weight`         | The font weight of the root element.                     | `var(--graupl-font-weight-normal)`                                                                      |
+| `--graupl-root-font-style`          | The font style of the root element.                      | `normal`                                                                                                |
+| `--graupl-root-font-variant`        | The font variant of the root element.                    | `normal`                                                                                                |
+| `--graupl-root-line-height`         | The line height of the root element.                     | `1.2em`                                                                                                 |
+| `--graupl-root-letter-spacing`      | The letter spacing of the root element.                  | `normal`                                                                                                |
+| `--graupl-root-word-spacing`        | The word spacing of the root element.                    | `normal`                                                                                                |
 | `--graupl-font-size`                | The shared font size.                                    | `inherit`                                                                                               |
 | `--graupl-font-weight`              | The shared font weight.                                  | `inherit`                                                                                               |
 | `--graupl-font-style`               | The shared font style.                                   | `inherit`                                                                                               |
@@ -120,68 +120,66 @@ Change `--graupl-base-font-size` to scale the default font sizes together, or se
 | `--graupl-heading-letter-spacing`   | The letter spacing of headings.                          | `var(--graupl-letter-spacing)`                                                                          |
 | `--graupl-heading-word-spacing`     | The word spacing of headings.                            | `var(--graupl-word-spacing)`                                                                            |
 | `--graupl-heading-margin`           | The margin of headings.                                  | `var(--graupl-spacer-5) 0 var(--graupl-spacer-2) 0`                                                     |
-| `--graupl-h1-font-size`             | The font size of `<h1>` elements.                        | `var(--graupl-font-size-5xl)`                                                                           |
-| `--graupl-h1-font-weight`           | The font weight of `<h1>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h1-font-style`            | The font style of `<h1>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h1-font-variant`          | The font variant of `<h1>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h1-color`                 | The text colour of `<h1>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h1-font-family`           | The font family of `<h1>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h1-line-height`           | The line height of `<h1>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h1-letter-spacing`        | The letter spacing of `<h1>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h1-word-spacing`          | The word spacing of `<h1>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h1-margin`                | The margin of `<h1>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-| `--graupl-h2-font-size`             | The font size of `<h2>` elements.                        | `var(--graupl-font-size-4xl)`                                                                           |
-| `--graupl-h2-font-weight`           | The font weight of `<h2>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h2-font-style`            | The font style of `<h2>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h2-font-variant`          | The font variant of `<h2>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h2-color`                 | The text colour of `<h2>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h2-font-family`           | The font family of `<h2>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h2-line-height`           | The line height of `<h2>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h2-letter-spacing`        | The letter spacing of `<h2>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h2-word-spacing`          | The word spacing of `<h2>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h2-margin`                | The margin of `<h2>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-| `--graupl-h3-font-size`             | The font size of `<h3>` elements.                        | `var(--graupl-font-size-3xl)`                                                                           |
-| `--graupl-h3-font-weight`           | The font weight of `<h3>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h3-font-style`            | The font style of `<h3>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h3-font-variant`          | The font variant of `<h3>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h3-color`                 | The text colour of `<h3>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h3-font-family`           | The font family of `<h3>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h3-line-height`           | The line height of `<h3>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h3-letter-spacing`        | The letter spacing of `<h3>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h3-word-spacing`          | The word spacing of `<h3>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h3-margin`                | The margin of `<h3>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-| `--graupl-h4-font-size`             | The font size of `<h4>` elements.                        | `var(--graupl-font-size-2xl)`                                                                           |
-| `--graupl-h4-font-weight`           | The font weight of `<h4>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h4-font-style`            | The font style of `<h4>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h4-font-variant`          | The font variant of `<h4>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h4-color`                 | The text colour of `<h4>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h4-font-family`           | The font family of `<h4>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h4-line-height`           | The line height of `<h4>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h4-letter-spacing`        | The letter spacing of `<h4>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h4-word-spacing`          | The word spacing of `<h4>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h4-margin`                | The margin of `<h4>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-| `--graupl-h5-font-size`             | The font size of `<h5>` elements.                        | `var(--graupl-font-size-xl)`                                                                            |
-| `--graupl-h5-font-weight`           | The font weight of `<h5>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h5-font-style`            | The font style of `<h5>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h5-font-variant`          | The font variant of `<h5>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h5-color`                 | The text colour of `<h5>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h5-font-family`           | The font family of `<h5>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h5-line-height`           | The line height of `<h5>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h5-letter-spacing`        | The letter spacing of `<h5>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h5-word-spacing`          | The word spacing of `<h5>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h5-margin`                | The margin of `<h5>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-| `--graupl-h6-font-size`             | The font size of `<h6>` elements.                        | `var(--graupl-font-size-lg)`                                                                            |
-| `--graupl-h6-font-weight`           | The font weight of `<h6>` elements.                      | `var(--graupl-heading-font-weight)`                                                                     |
-| `--graupl-h6-font-style`            | The font style of `<h6>` elements.                       | `var(--graupl-heading-font-style)`                                                                      |
-| `--graupl-h6-font-variant`          | The font variant of `<h6>` elements.                     | `var(--graupl-heading-font-variant)`                                                                    |
-| `--graupl-h6-color`                 | The text colour of `<h6>` elements.                      | `var(--graupl-heading-color)`                                                                           |
-| `--graupl-h6-font-family`           | The font family of `<h6>` elements.                      | `var(--graupl-heading-font-family)`                                                                     |
-| `--graupl-h6-line-height`           | The line height of `<h6>` elements.                      | `var(--graupl-heading-line-height)`                                                                     |
-| `--graupl-h6-letter-spacing`        | The letter spacing of `<h6>` elements.                   | `var(--graupl-heading-letter-spacing)`                                                                  |
-| `--graupl-h6-word-spacing`          | The word spacing of `<h6>` elements.                     | `var(--graupl-heading-word-spacing)`                                                                    |
-| `--graupl-h6-margin`                | The margin of `<h6>` elements.                           | `var(--graupl-heading-margin)`                                                                          |
-
-Only `--graupl-italic-margin` currently affects `<em>` and `<i>`. The other italic properties listed above do not change their appearance.
+| `--graupl-h1-font-size`             | The font size of H1 elements.                            | `var(--graupl-font-size-5xl)`                                                                           |
+| `--graupl-h1-font-weight`           | The font weight of H1 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h1-font-style`            | The font style of H1 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h1-font-variant`          | The font variant of H1 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h1-color`                 | The text colour of H1 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h1-font-family`           | The font family of H1 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h1-line-height`           | The line height of H1 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h1-letter-spacing`        | The letter spacing of H1 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h1-word-spacing`          | The word spacing of H1 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h1-margin`                | The margin of H1 elements.                               | `var(--graupl-heading-margin)`                                                                          |
+| `--graupl-h2-font-size`             | The font size of H2 elements.                            | `var(--graupl-font-size-4xl)`                                                                           |
+| `--graupl-h2-font-weight`           | The font weight of H2 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h2-font-style`            | The font style of H2 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h2-font-variant`          | The font variant of H2 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h2-color`                 | The text colour of H2 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h2-font-family`           | The font family of H2 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h2-line-height`           | The line height of H2 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h2-letter-spacing`        | The letter spacing of H2 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h2-word-spacing`          | The word spacing of H2 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h2-margin`                | The margin of H2 elements.                               | `var(--graupl-heading-margin)`                                                                          |
+| `--graupl-h3-font-size`             | The font size of H3 elements.                            | `var(--graupl-font-size-3xl)`                                                                           |
+| `--graupl-h3-font-weight`           | The font weight of H3 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h3-font-style`            | The font style of H3 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h3-font-variant`          | The font variant of H3 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h3-color`                 | The text colour of H3 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h3-font-family`           | The font family of H3 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h3-line-height`           | The line height of H3 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h3-letter-spacing`        | The letter spacing of H3 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h3-word-spacing`          | The word spacing of H3 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h3-margin`                | The margin of H3 elements.                               | `var(--graupl-heading-margin)`                                                                          |
+| `--graupl-h4-font-size`             | The font size of H4 elements.                            | `var(--graupl-font-size-2xl)`                                                                           |
+| `--graupl-h4-font-weight`           | The font weight of H4 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h4-font-style`            | The font style of H4 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h4-font-variant`          | The font variant of H4 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h4-color`                 | The text colour of H4 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h4-font-family`           | The font family of H4 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h4-line-height`           | The line height of H4 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h4-letter-spacing`        | The letter spacing of H4 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h4-word-spacing`          | The word spacing of H4 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h4-margin`                | The margin of H4 elements.                               | `var(--graupl-heading-margin)`                                                                          |
+| `--graupl-h5-font-size`             | The font size of H5 elements.                            | `var(--graupl-font-size-xl)`                                                                            |
+| `--graupl-h5-font-weight`           | The font weight of H5 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h5-font-style`            | The font style of H5 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h5-font-variant`          | The font variant of H5 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h5-color`                 | The text colour of H5 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h5-font-family`           | The font family of H5 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h5-line-height`           | The line height of H5 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h5-letter-spacing`        | The letter spacing of H5 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h5-word-spacing`          | The word spacing of H5 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h5-margin`                | The margin of H5 elements.                               | `var(--graupl-heading-margin)`                                                                          |
+| `--graupl-h6-font-size`             | The font size of H6 elements.                            | `var(--graupl-font-size-lg)`                                                                            |
+| `--graupl-h6-font-weight`           | The font weight of H6 elements.                          | `var(--graupl-heading-font-weight)`                                                                     |
+| `--graupl-h6-font-style`            | The font style of H6 elements.                           | `var(--graupl-heading-font-style)`                                                                      |
+| `--graupl-h6-font-variant`          | The font variant of H6 elements.                         | `var(--graupl-heading-font-variant)`                                                                    |
+| `--graupl-h6-color`                 | The text colour of H6 elements.                          | `var(--graupl-heading-color)`                                                                           |
+| `--graupl-h6-font-family`           | The font family of H6 elements.                          | `var(--graupl-heading-font-family)`                                                                     |
+| `--graupl-h6-line-height`           | The line height of H6 elements.                          | `var(--graupl-heading-line-height)`                                                                     |
+| `--graupl-h6-letter-spacing`        | The letter spacing of H6 elements.                       | `var(--graupl-heading-letter-spacing)`                                                                  |
+| `--graupl-h6-word-spacing`          | The word spacing of H6 elements.                         | `var(--graupl-heading-word-spacing)`                                                                    |
+| `--graupl-h6-margin`                | The margin of H6 elements.                               | `var(--graupl-heading-margin)`                                                                          |
 
 ## Sass variables
 
@@ -195,37 +193,37 @@ When [compiling Graupl](../compiling-graupl.md), set `$paragraph-selector` or `$
 | `$paragraph-selector`         | The paragraph element selector.                           | `"p"`                                           |
 | `$small-selector-base`        | The prefix for the small text selector.                   | `""`                                            |
 | `$small-selector`             | The small text element selector.                          | `"small"`                                       |
-| `$h1-selector-base`           | The prefix for the `<h1>` selector.                       | `""`                                            |
-| `$h1-selector`                | The `<h1>` element selector.                              | `"h1"`                                          |
-| `$h2-selector-base`           | The prefix for the `<h2>` selector.                       | `""`                                            |
-| `$h2-selector`                | The `<h2>` element selector.                              | `"h2"`                                          |
-| `$h3-selector-base`           | The prefix for the `<h3>` selector.                       | `""`                                            |
-| `$h3-selector`                | The `<h3>` element selector.                              | `"h3"`                                          |
-| `$h4-selector-base`           | The prefix for the `<h4>` selector.                       | `""`                                            |
-| `$h4-selector`                | The `<h4>` element selector.                              | `"h4"`                                          |
-| `$h5-selector-base`           | The prefix for the `<h5>` selector.                       | `""`                                            |
-| `$h5-selector`                | The `<h5>` element selector.                              | `"h5"`                                          |
-| `$h6-selector-base`           | The prefix for the `<h6>` selector.                       | `""`                                            |
-| `$h6-selector`                | The `<h6>` element selector.                              | `"h6"`                                          |
+| `$h1-selector-base`           | The prefix for the H1 selector.                           | `""`                                            |
+| `$h1-selector`                | The H1 element selector.                                  | `"h1"`                                          |
+| `$h2-selector-base`           | The prefix for the H2 selector.                           | `""`                                            |
+| `$h2-selector`                | The H2 element selector.                                  | `"h2"`                                          |
+| `$h3-selector-base`           | The prefix for the H3 selector.                           | `""`                                            |
+| `$h3-selector`                | The H3 element selector.                                  | `"h3"`                                          |
+| `$h4-selector-base`           | The prefix for the H4 selector.                           | `""`                                            |
+| `$h4-selector`                | The H4 element selector.                                  | `"h4"`                                          |
+| `$h5-selector-base`           | The prefix for the H5 selector.                           | `""`                                            |
+| `$h5-selector`                | The H5 element selector.                                  | `"h5"`                                          |
+| `$h6-selector-base`           | The prefix for the H6 selector.                           | `""`                                            |
+| `$h6-selector`                | The H6 element selector.                                  | `"h6"`                                          |
 | `$root-selector-base`         | The prefix for the root selector.                         | `":"`                                           |
 | `$root-selector`              | The root element selector.                                | `"root"`                                        |
-| `$bold-selector-base`         | The prefix for the `<b>` selector.                        | `""`                                            |
-| `$bold-selector`              | The `<b>` element selector.                               | `"b"`                                           |
-| `$strong-selector-base`       | The prefix for the `<strong>` selector.                   | `""`                                            |
-| `$strong-selector`            | The `<strong>` element selector.                          | `"strong"`                                      |
-| `$emphasis-selector-base`     | The prefix for the `<em>` selector.                       | `""`                                            |
-| `$emphasis-selector`          | The `<em>` element selector.                              | `"em"`                                          |
-| `$italic-selector-base`       | The prefix for the `<i>` selector.                        | `""`                                            |
-| `$italic-selector`            | The `<i>` element selector.                               | `"i"`                                           |
+| `$bold-selector-base`         | The prefix for the bold selector.                         | `""`                                            |
+| `$bold-selector`              | The bold element selector.                                | `"b"`                                           |
+| `$strong-selector-base`       | The prefix for the strong selector.                       | `""`                                            |
+| `$strong-selector`            | The strong element selector.                              | `"strong"`                                      |
+| `$emphasis-selector-base`     | The prefix for the emphasis selector.                     | `""`                                            |
+| `$emphasis-selector`          | The emphasis element selector.                            | `"em"`                                          |
+| `$italic-selector-base`       | The prefix for the italic selector.                       | `""`                                            |
+| `$italic-selector`            | The italic element selector.                              | `"i"`                                           |
 | `$generate-base-font-sizes`   | A flag to generate the base font-size scale.              | `true`                                          |
 | `$generate-base-font-weights` | A flag to generate the base font-weight scale.            | `true`                                          |
 | `$base-font-size`             | The base font size used to generate the font size scale.  | `1rem`                                          |
-| `$root-font-size`             | The font size of the root `<html>` element.               | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)` |
-| `$root-line-height`           | The line height of the root `<html>` element.             | `1.2em`                                         |
-| `$root-letter-spacing`        | The letter spacing of the root `<html>` element.          | `normal`                                        |
-| `$root-word-spacing`          | The word spacing of the root `<html>` element.            | `normal`                                        |
-| `$root-font-style`            | The font style of the root `<html>` element.              | `normal`                                        |
-| `$root-font-variant`          | The font variant of the root `<html>` element.            | `normal`                                        |
+| `$root-font-size`             | The font size of the root element.                        | `clamp(0.85rem, calc(0.8rem + 0.5vw), 1.25rem)` |
+| `$root-line-height`           | The line height of the root element.                      | `1.2em`                                         |
+| `$root-letter-spacing`        | The letter spacing of the root element.                   | `normal`                                        |
+| `$root-word-spacing`          | The word spacing of the root element.                     | `normal`                                        |
+| `$root-font-style`            | The font style of the root element.                       | `normal`                                        |
+| `$root-font-variant`          | The font variant of the root element.                     | `normal`                                        |
 | `$font-size-multipliers`      | A map of overrides for the default font size multipliers. | `()`                                            |
 | `$font-weights`               | A map of overrides for the default font weights.          | `()`                                            |
-| `$root-font-family`           | The font family of the root `<html>` element.             | System font stack                               |
+| `$root-font-family`           | The font family of the root element.                      | System font stack                               |
