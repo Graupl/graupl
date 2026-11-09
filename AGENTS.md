@@ -55,6 +55,11 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Documentation and comments
 
+- Use the [button docs](docs/base/button.md) as the model for Graupl style pages. Start with a short overview, show the default styles in live examples, then list custom properties and Sass variables.
+- Write for someone using the docs. Use direct instructions when they help, such as "Use `<b>` or `<strong>` to display bold text." Let previews show visible differences. Mention Graupl where it adds context and cut repeated introductions and prose that just describes what the preview shows.
+- Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
+- Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
+
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.
 - Explain parameters, defaults, null handling, meaningful return values, side effects, and validation where relevant. Distinguish constructor options, protected fields, getters, and method arguments.
 - Avoid documentation noise. Include details that help someone use or understand the API, not incidental JavaScript behavior. Do not add "returns undefined" for methods with no explicit return value, or repeat obvious details just to make an entry look complete.
@@ -73,6 +78,11 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Explain why an unusual setup step is needed, then give the shortest useful example. Avoid expanding a small change into a detailed guide unless that detail is needed to use it.
 - Update the documentation and comments affected by a behavior change. Add subclass-specific explanations only where the subclass behaves differently. Respect requests to defer broader documentation work.
 - Use VitePress info, tip, and warning containers selectively to make useful requirements or caveats stand out. Preserve the existing explanation and examples; do not turn routine reference text into callouts or add warnings just for emphasis.
+
+## Sass selectors
+
+- Make Graupl's Sass selectors configurable, including selectors that default to HTML tags. Declare selector defaults with `!default` and use the configured selectors wherever the styles are emitted.
+- Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
 
 ## Code organization and readability
 
@@ -117,6 +127,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Follow the existing cleanup approach. Do not add disposal registries, such as componentsToDispose, or a broader cleanup refactor while adding unrelated behavior tests. Handle cleanup work separately. When each test creates one component, use one scoped variable for cleanup rather than an array and disposal loop. In Core tests, dispose owned components before restoring mocks, globals, and timers.
 - Separate setup, actions, and assertions with blank lines. Group component selections before the assertions that use them. For tests with several actions, separate each action from its resulting assertions. Put a blank line between sibling tests and describe blocks.
 - Match test names and comments to the actual class, method, and assertion. Distinguish reported validation failures from thrown errors. When a validator returns a result object, describe acceptance or errors rather than claiming it returns a boolean. Distinguish current state from committed state and stored data from the object that owns it. Use parameter placeholders only where the test runner substitutes them.
+- Follow the test structure and wording used in Accessible Ecosystem Core and Accessible Menu. Keep separate click tests for expanding and collapsing, with each test starting in the state it needs.
+- Leave deprecated APIs out of new coverage and remove tests and test references dedicated to deprecated APIs when updating a suite.
+- Tie each assertion to a requirement or a plausible regression. For example, an accordion click test should check the relevant expanded or collapsed state. Only check that content survives the click if content preservation is part of the behavior under test.
+- Treat the native `disabled` attribute on locked accordion headers as intentional. It prevents activation for users regardless of whether they use assistive technology.
 - Test observable behavior and meaningful API contracts. Do not add assertions about the absence of removed internal properties just to record that they were removed.
 - Check that inheritance assertions reference real members. Comparing two misspelled or missing methods can pass because both values are undefined. Successful initialization tests should check isInitialized rather than only checking that nothing throws, since validation failures may be reported without throwing.
 - Prefer spies on real helpers when their side effects matter, such as event prevention and propagation. Restore spies between tests. Mock methods through restorable spies instead of assigning mock functions directly to prototypes or module exports.
