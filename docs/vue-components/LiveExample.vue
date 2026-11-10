@@ -61,7 +61,7 @@ onUpdated(() => {
 });
 
 onMounted(() => {
-  loadSource;
+  loadSource();
 
   emit("mounted");
 });
