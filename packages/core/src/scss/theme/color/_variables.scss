@@ -4,104 +4,104 @@
 // cleaner way to reference custom properties.
 //
 // Custom property defaults:
-// | Custom property                         | Default                                     |
-// | --------------------------------------- | ------------------------------------------- |
-// | --graupl-primary                        | hsl(219deg 75% 50%)                         |
-// | --graupl-primary--100                   | hsl(219deg 100% 95%)                        |
-// | --graupl-primary--200                   | hsl(219deg 90% 80%)                         |
-// | --graupl-primary--300                   | hsl(219deg 80% 65%)                         |
-// | --graupl-primary--400                   | hsl(219deg 75% 55%)                         |
-// | --graupl-primary--500                   | hsl(219deg 75% 50%)                         |
-// | --graupl-primary--600                   | hsl(219deg 75% 45%)                         |
-// | --graupl-primary--700                   | hsl(219deg 80% 35%)                         |
-// | --graupl-primary--800                   | hsl(219deg 90% 20%)                         |
-// | --graupl-primary--900                   | hsl(219deg 100% 10%)                        |
-// | --graupl-secondary                      | hsl(235deg 15% 50%)                         |
-// | --graupl-secondary--100                 | hsl(235deg 40% 95%)                         |
-// | --graupl-secondary--200                 | hsl(235deg 30% 80%)                         |
-// | --graupl-secondary--300                 | hsl(235deg 20% 65%)                         |
-// | --graupl-secondary--400                 | hsl(235deg 15% 55%)                         |
-// | --graupl-secondary--500                 | hsl(235deg 15% 50%)                         |
-// | --graupl-secondary--600                 | hsl(235deg 15% 45%)                         |
-// | --graupl-secondary--700                 | hsl(235deg 20% 35%)                         |
-// | --graupl-secondary--800                 | hsl(235deg 30% 20%)                         |
-// | --graupl-secondary--900                 | hsl(235deg 40% 10%)                         |
-// | --graupl-tertiary                       | hsl(340deg 60% 50%)                         |
-// | --graupl-tertiary--100                  | hsl(340deg 85% 95%)                         |
-// | --graupl-tertiary--200                  | hsl(340deg 75% 80%)                         |
-// | --graupl-tertiary--300                  | hsl(340deg 65% 65%)                         |
-// | --graupl-tertiary--400                  | hsl(340deg 60% 55%)                         |
-// | --graupl-tertiary--500                  | hsl(340deg 60% 50%)                         |
-// | --graupl-tertiary--600                  | hsl(340deg 60% 45%)                         |
-// | --graupl-tertiary--700                  | hsl(340deg 65% 35%)                         |
-// | --graupl-tertiary--800                  | hsl(340deg 75% 20%)                         |
-// | --graupl-tertiary--900                  | hsl(340deg 85% 10%)                         |
-// | --graupl-theme-default--primary         | var(--graupl-primary)                       |
-// | --graupl-theme-default--primary--100    | var(--graupl-primary--100)                  |
-// | --graupl-theme-default--primary--200    | var(--graupl-primary--200)                  |
-// | --graupl-theme-default--primary--300    | var(--graupl-primary--300)                  |
-// | --graupl-theme-default--primary--400    | var(--graupl-primary--400)                  |
-// | --graupl-theme-default--primary--500    | var(--graupl-primary--500)                  |
-// | --graupl-theme-default--primary--600    | var(--graupl-primary--600)                  |
-// | --graupl-theme-default--primary--700    | var(--graupl-primary--700)                  |
-// | --graupl-theme-default--primary--800    | var(--graupl-primary--800)                  |
-// | --graupl-theme-default--primary--900    | var(--graupl-primary--900)                  |
-// | --graupl-theme-default--secondary       | var(--graupl-secondary)                     |
-// | --graupl-theme-default--secondary--100  | var(--graupl-secondary--100)                |
-// | --graupl-theme-default--secondary--200  | var(--graupl-secondary--200)                |
-// | --graupl-theme-default--secondary--300  | var(--graupl-secondary--300)                |
-// | --graupl-theme-default--secondary--400  | var(--graupl-secondary--400)                |
-// | --graupl-theme-default--secondary--500  | var(--graupl-secondary--500)                |
-// | --graupl-theme-default--secondary--600  | var(--graupl-secondary--600)                |
-// | --graupl-theme-default--secondary--700  | var(--graupl-secondary--700)                |
-// | --graupl-theme-default--secondary--800  | var(--graupl-secondary--800)                |
-// | --graupl-theme-default--secondary--900  | var(--graupl-secondary--900)                |
-// | --graupl-theme-default--tertiary        | var(--graupl-tertiary)                      |
-// | --graupl-theme-default--tertiary--100   | var(--graupl-tertiary--100)                 |
-// | --graupl-theme-default--tertiary--200   | var(--graupl-tertiary--200)                 |
-// | --graupl-theme-default--tertiary--300   | var(--graupl-tertiary--300)                 |
-// | --graupl-theme-default--tertiary--400   | var(--graupl-tertiary--400)                 |
-// | --graupl-theme-default--tertiary--500   | var(--graupl-tertiary--500)                 |
-// | --graupl-theme-default--tertiary--600   | var(--graupl-tertiary--600)                 |
-// | --graupl-theme-default--tertiary--700   | var(--graupl-tertiary--700)                 |
-// | --graupl-theme-default--tertiary--800   | var(--graupl-tertiary--800)                 |
-// | --graupl-theme-default--tertiary--900   | var(--graupl-tertiary--900)                 |
-// | --graupl-theme-active--primary          | var(--graupl-theme-default--primary)        |
-// | --graupl-theme-active--primary--100     | var(--graupl-theme-default--primary--100)   |
-// | --graupl-theme-active--primary--200     | var(--graupl-theme-default--primary--200)   |
-// | --graupl-theme-active--primary--300     | var(--graupl-theme-default--primary--300)   |
-// | --graupl-theme-active--primary--400     | var(--graupl-theme-default--primary--400)   |
-// | --graupl-theme-active--primary--500     | var(--graupl-theme-default--primary--500)   |
-// | --graupl-theme-active--primary--600     | var(--graupl-theme-default--primary--600)   |
-// | --graupl-theme-active--primary--700     | var(--graupl-theme-default--primary--700)   |
-// | --graupl-theme-active--primary--800     | var(--graupl-theme-default--primary--800)   |
-// | --graupl-theme-active--primary--900     | var(--graupl-theme-default--primary--900)   |
-// | --graupl-theme-active--secondary        | var(--graupl-theme-default--secondary)      |
-// | --graupl-theme-active--secondary--100   | var(--graupl-theme-default--secondary--100) |
-// | --graupl-theme-active--secondary--200   | var(--graupl-theme-default--secondary--200) |
-// | --graupl-theme-active--secondary--300   | var(--graupl-theme-default--secondary--300) |
-// | --graupl-theme-active--secondary--400   | var(--graupl-theme-default--secondary--400) |
-// | --graupl-theme-active--secondary--500   | var(--graupl-theme-default--secondary--500) |
-// | --graupl-theme-active--secondary--600   | var(--graupl-theme-default--secondary--600) |
-// | --graupl-theme-active--secondary--700   | var(--graupl-theme-default--secondary--700) |
-// | --graupl-theme-active--secondary--800   | var(--graupl-theme-default--secondary--800) |
-// | --graupl-theme-active--secondary--900   | var(--graupl-theme-default--secondary--900) |
-// | --graupl-theme-active--tertiary         | var(--graupl-theme-default--tertiary)       |
-// | --graupl-theme-active--tertiary--100    | var(--graupl-theme-default--tertiary--100)  |
-// | --graupl-theme-active--tertiary--200    | var(--graupl-theme-default--tertiary--200)  |
-// | --graupl-theme-active--tertiary--300    | var(--graupl-theme-default--tertiary--300)  |
-// | --graupl-theme-active--tertiary--400    | var(--graupl-theme-default--tertiary--400)  |
-// | --graupl-theme-active--tertiary--500    | var(--graupl-theme-default--tertiary--500)  |
-// | --graupl-theme-active--tertiary--600    | var(--graupl-theme-default--tertiary--600)  |
-// | --graupl-theme-active--tertiary--700    | var(--graupl-theme-default--tertiary--700)  |
-// | --graupl-theme-active--tertiary--800    | var(--graupl-theme-default--tertiary--800)  |
-// | --graupl-theme-active--tertiary--900    | var(--graupl-theme-default--tertiary--900)  |
-// | --graupl-color-scheme                   | light                                       |
-// | --graupl-root-color                     | var(--graupl-theme-active--primary--900)    |
-// | --graupl-root-background                | var(--graupl-theme-active--primary--100)    |
-// | --graupl-color                          | var(--graupl-root-color)                    |
-// | --graupl-background                     | var(--graupl-root-background)               |
-// | --graupl-border-color                   | var(--graupl-color)                         |
+// | Custom property                        | Default                                                                |
+// | -------------------------------------- | ---------------------------------------------------------------------- |
+// | --graupl-primary                       | hsl(219deg 75% 50%)                                                    |
+// | --graupl-primary--100                  | hsl(219deg 100% 95%)                                                   |
+// | --graupl-primary--200                  | hsl(219deg 90% 80%)                                                    |
+// | --graupl-primary--300                  | hsl(219deg 80% 65%)                                                    |
+// | --graupl-primary--400                  | hsl(219deg 75% 55%)                                                    |
+// | --graupl-primary--500                  | hsl(219deg 75% 50%)                                                    |
+// | --graupl-primary--600                  | hsl(219deg 75% 45%)                                                    |
+// | --graupl-primary--700                  | hsl(219deg 80% 35%)                                                    |
+// | --graupl-primary--800                  | hsl(219deg 90% 20%)                                                    |
+// | --graupl-primary--900                  | hsl(219deg 100% 10%)                                                   |
+// | --graupl-secondary                     | hsl(235deg 15% 50%)                                                    |
+// | --graupl-secondary--100                | hsl(235deg 40% 95%)                                                    |
+// | --graupl-secondary--200                | hsl(235deg 30% 80%)                                                    |
+// | --graupl-secondary--300                | hsl(235deg 20% 65%)                                                    |
+// | --graupl-secondary--400                | hsl(235deg 15% 55%)                                                    |
+// | --graupl-secondary--500                | hsl(235deg 15% 50%)                                                    |
+// | --graupl-secondary--600                | hsl(235deg 15% 45%)                                                    |
+// | --graupl-secondary--700                | hsl(235deg 20% 35%)                                                    |
+// | --graupl-secondary--800                | hsl(235deg 30% 20%)                                                    |
+// | --graupl-secondary--900                | hsl(235deg 40% 10%)                                                    |
+// | --graupl-tertiary                      | hsl(340deg 60% 50%)                                                    |
+// | --graupl-tertiary--100                 | hsl(340deg 85% 95%)                                                    |
+// | --graupl-tertiary--200                 | hsl(340deg 75% 80%)                                                    |
+// | --graupl-tertiary--300                 | hsl(340deg 65% 65%)                                                    |
+// | --graupl-tertiary--400                 | hsl(340deg 60% 55%)                                                    |
+// | --graupl-tertiary--500                 | hsl(340deg 60% 50%)                                                    |
+// | --graupl-tertiary--600                 | hsl(340deg 60% 45%)                                                    |
+// | --graupl-tertiary--700                 | hsl(340deg 65% 35%)                                                    |
+// | --graupl-tertiary--800                 | hsl(340deg 75% 20%)                                                    |
+// | --graupl-tertiary--900                 | hsl(340deg 85% 10%)                                                    |
+// | --graupl-theme-default--primary        | light-dark(var(--graupl-primary), var(--graupl-primary))               |
+// | --graupl-theme-default--primary--100   | light-dark(var(--graupl-primary--100), var(--graupl-primary--900))     |
+// | --graupl-theme-default--primary--200   | light-dark(var(--graupl-primary--200), var(--graupl-primary--800))     |
+// | --graupl-theme-default--primary--300   | light-dark(var(--graupl-primary--300), var(--graupl-primary--700))     |
+// | --graupl-theme-default--primary--400   | light-dark(var(--graupl-primary--400), var(--graupl-primary--600))     |
+// | --graupl-theme-default--primary--500   | light-dark(var(--graupl-primary--500), var(--graupl-primary--500))     |
+// | --graupl-theme-default--primary--600   | light-dark(var(--graupl-primary--600), var(--graupl-primary--400))     |
+// | --graupl-theme-default--primary--700   | light-dark(var(--graupl-primary--700), var(--graupl-primary--300))     |
+// | --graupl-theme-default--primary--800   | light-dark(var(--graupl-primary--800), var(--graupl-primary--200))     |
+// | --graupl-theme-default--primary--900   | light-dark(var(--graupl-primary--900), var(--graupl-primary--100))     |
+// | --graupl-theme-default--secondary      | light-dark(var(--graupl-secondary), var(--graupl-secondary))           |
+// | --graupl-theme-default--secondary--100 | light-dark(var(--graupl-secondary--100), var(--graupl-secondary--900)) |
+// | --graupl-theme-default--secondary--200 | light-dark(var(--graupl-secondary--200), var(--graupl-secondary--800)) |
+// | --graupl-theme-default--secondary--300 | light-dark(var(--graupl-secondary--300), var(--graupl-secondary--700)) |
+// | --graupl-theme-default--secondary--400 | light-dark(var(--graupl-secondary--400), var(--graupl-secondary--600)) |
+// | --graupl-theme-default--secondary--500 | light-dark(var(--graupl-secondary--500), var(--graupl-secondary--500)) |
+// | --graupl-theme-default--secondary--600 | light-dark(var(--graupl-secondary--600), var(--graupl-secondary--400)) |
+// | --graupl-theme-default--secondary--700 | light-dark(var(--graupl-secondary--700), var(--graupl-secondary--300)) |
+// | --graupl-theme-default--secondary--800 | light-dark(var(--graupl-secondary--800), var(--graupl-secondary--200)) |
+// | --graupl-theme-default--secondary--900 | light-dark(var(--graupl-secondary--900), var(--graupl-secondary--100)) |
+// | --graupl-theme-default--tertiary       | light-dark(var(--graupl-tertiary), var(--graupl-tertiary))             |
+// | --graupl-theme-default--tertiary--100  | light-dark(var(--graupl-tertiary--100), var(--graupl-tertiary--900))   |
+// | --graupl-theme-default--tertiary--200  | light-dark(var(--graupl-tertiary--200), var(--graupl-tertiary--800))   |
+// | --graupl-theme-default--tertiary--300  | light-dark(var(--graupl-tertiary--300), var(--graupl-tertiary--700))   |
+// | --graupl-theme-default--tertiary--400  | light-dark(var(--graupl-tertiary--400), var(--graupl-tertiary--600))   |
+// | --graupl-theme-default--tertiary--500  | light-dark(var(--graupl-tertiary--500), var(--graupl-tertiary--500))   |
+// | --graupl-theme-default--tertiary--600  | light-dark(var(--graupl-tertiary--600), var(--graupl-tertiary--400))   |
+// | --graupl-theme-default--tertiary--700  | light-dark(var(--graupl-tertiary--700), var(--graupl-tertiary--300))   |
+// | --graupl-theme-default--tertiary--800  | light-dark(var(--graupl-tertiary--800), var(--graupl-tertiary--200))   |
+// | --graupl-theme-default--tertiary--900  | light-dark(var(--graupl-tertiary--900), var(--graupl-tertiary--100))   |
+// | --graupl-theme-active--primary         | var(--graupl-theme-default--primary)                                   |
+// | --graupl-theme-active--primary--100    | var(--graupl-theme-default--primary--100)                              |
+// | --graupl-theme-active--primary--200    | var(--graupl-theme-default--primary--200)                              |
+// | --graupl-theme-active--primary--300    | var(--graupl-theme-default--primary--300)                              |
+// | --graupl-theme-active--primary--400    | var(--graupl-theme-default--primary--400)                              |
+// | --graupl-theme-active--primary--500    | var(--graupl-theme-default--primary--500)                              |
+// | --graupl-theme-active--primary--600    | var(--graupl-theme-default--primary--600)                              |
+// | --graupl-theme-active--primary--700    | var(--graupl-theme-default--primary--700)                              |
+// | --graupl-theme-active--primary--800    | var(--graupl-theme-default--primary--800)                              |
+// | --graupl-theme-active--primary--900    | var(--graupl-theme-default--primary--900)                              |
+// | --graupl-theme-active--secondary       | var(--graupl-theme-default--secondary)                                 |
+// | --graupl-theme-active--secondary--100  | var(--graupl-theme-default--secondary--100)                            |
+// | --graupl-theme-active--secondary--200  | var(--graupl-theme-default--secondary--200)                            |
+// | --graupl-theme-active--secondary--300  | var(--graupl-theme-default--secondary--300)                            |
+// | --graupl-theme-active--secondary--400  | var(--graupl-theme-default--secondary--400)                            |
+// | --graupl-theme-active--secondary--500  | var(--graupl-theme-default--secondary--500)                            |
+// | --graupl-theme-active--secondary--600  | var(--graupl-theme-default--secondary--600)                            |
+// | --graupl-theme-active--secondary--700  | var(--graupl-theme-default--secondary--700)                            |
+// | --graupl-theme-active--secondary--800  | var(--graupl-theme-default--secondary--800)                            |
+// | --graupl-theme-active--secondary--900  | var(--graupl-theme-default--secondary--900)                            |
+// | --graupl-theme-active--tertiary        | var(--graupl-theme-default--tertiary)                                  |
+// | --graupl-theme-active--tertiary--100   | var(--graupl-theme-default--tertiary--100)                             |
+// | --graupl-theme-active--tertiary--200   | var(--graupl-theme-default--tertiary--200)                             |
+// | --graupl-theme-active--tertiary--300   | var(--graupl-theme-default--tertiary--300)                             |
+// | --graupl-theme-active--tertiary--400   | var(--graupl-theme-default--tertiary--400)                             |
+// | --graupl-theme-active--tertiary--500   | var(--graupl-theme-default--tertiary--500)                             |
+// | --graupl-theme-active--tertiary--600   | var(--graupl-theme-default--tertiary--600)                             |
+// | --graupl-theme-active--tertiary--700   | var(--graupl-theme-default--tertiary--700)                             |
+// | --graupl-theme-active--tertiary--800   | var(--graupl-theme-default--tertiary--800)                             |
+// | --graupl-theme-active--tertiary--900   | var(--graupl-theme-default--tertiary--900)                             |
+// | --graupl-color-scheme                  | light                                                                  |
+// | --graupl-root-color                    | var(--graupl-theme-active--primary--900)                               |
+// | --graupl-root-background               | var(--graupl-theme-active--primary--100)                               |
+// | --graupl-color                         | var(--graupl-root-color)                                               |
+// | --graupl-background                    | var(--graupl-root-background)                                          |
+// | --graupl-border-color                  | var(--graupl-color)                                                    |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;
