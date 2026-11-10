@@ -5,7 +5,7 @@ import {
   useTemplateRef,
   onMounted,
   onUpdated,
-  defineEmits,
+  watch,
 } from "vue";
 import { Codemirror } from "vue-codemirror";
 import { html } from "@codemirror/lang-html";
