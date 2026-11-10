@@ -16,6 +16,7 @@ const props = defineProps({
   codeClass: { type: String, default: "" },
   exampleClass: { type: String, default: "" },
   trim: { type: Boolean, default: true },
+  resettable: { type: Boolean, default: false },
   optionsPosition: {
     type: String,
     default: "bottom",
@@ -30,6 +31,7 @@ const props = defineProps({
 
 const sourceElement = useTemplateRef("example-source");
 const code = ref("");
+const previewKey = ref(0);
 const extensions = [html(), css()];
 const view = shallowRef();
 const emit = defineEmits(["mounted", "updated"]);
@@ -54,6 +56,11 @@ function loadSource() {
       ? sourceElement.value.innerHTML.trim()
       : sourceElement.value.innerHTML;
   }
+}
+
+function resetExample() {
+  loadSource();
+  previewKey.value++;
 }
 
 onUpdated(() => {
@@ -91,7 +98,12 @@ watch(() => props.sourceCode, loadSource);
         :class="{ 'side-by-side': layout === 'side-by-side' }"
       >
         <!-- Live preview -->
-        <div class="example" :class="exampleClass" v-html="code"></div>
+        <div
+          :key="previewKey"
+          class="example"
+          :class="exampleClass"
+          v-html="code"
+        ></div>
 
         <!-- CodeMirror editor -->
         <div class="example-code" :class="codeClass">
@@ -115,6 +127,12 @@ watch(() => props.sourceCode, loadSource);
       >
         <slot name="options"></slot>
       </div>
+    </div>
+
+    <div v-if="resettable">
+      <button type="button" class="button" @click="resetExample">
+        Reset example
+      </button>
     </div>
   </div>
 </template>
