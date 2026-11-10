@@ -505,8 +505,7 @@
 @include layer(theme) {
   // .card
   #{#{defaults.$card-selector-base}}#{defaults.$card-selector} {
-    --#{root-defaults.$prefix}color: #{$card-color};
-    --#{root-defaults.$prefix}background: #{$card-background};
+    --#{root-defaults.$prefix}font-color: currentcolor;
 
     border-color: $card-border-color;
     background: $card-background;
