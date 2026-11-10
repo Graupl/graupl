@@ -211,10 +211,90 @@ pre code {
   }
 }
 
-table {
+.container > div > div > table {
   @include graupl-base-table-mixins.apply-bordered;
-  @include graupl-base-table-mixins.apply-striped-columns;
+  @include graupl-base-table-mixins.apply-striped-rows;
   @include graupl-base-table-mixins.apply-hoverable;
+}
+
+// Pass the page container's tracks through the VitePress content wrappers.
+.container.shelf-aware > div:has(> div > .container-page-example),
+.container.shelf-aware > div > div:has(> .container-page-example) {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+}
+
+.container.shelf-aware
+  > div
+  > div:has(> .container-page-example)
+  > :not(.breakout, .feature, .full-width) {
+  grid-column: content;
+  min-inline-size: 0;
+}
+
+.container.shelf-aware > div > div:has(> .container-page-example) > table {
+  overflow-wrap: anywhere;
+}
+
+.container-area-demo {
+  position: relative;
+  isolation: isolate;
+
+  --container-area-line-width: #{graupl-root-variables.$border-width};
+
+  > .container-area-highlight {
+    display: none;
+    position: absolute;
+    z-index: -1;
+    background: var(--container-area-color);
+    pointer-events: none;
+    inset: 0;
+    border-inline: var(--container-area-line-width)
+      var(--container-area-line-style) var(--container-area-text);
+  }
+
+  &:has(.container-page-example > button[aria-pressed="true"])
+    > .container-area-highlight {
+    display: block;
+  }
+
+  .area-full-width {
+    --container-area-color: #{theme.get("secondary", "300")};
+    --container-area-text: #{theme.get("tertiary", "900")};
+    --container-area-line-style: solid;
+  }
+
+  .area-feature {
+    --container-area-color: #{theme.get("tertiary", "300")};
+    --container-area-text: #{theme.get("tertiary", "900")};
+    --container-area-line-style: dashed;
+  }
+
+  .area-breakout {
+    --container-area-color: #{theme.get("primary", "300")};
+    --container-area-text: #{theme.get("primary", "900")};
+    --container-area-line-style: double;
+    --container-area-line-width: calc(
+      2 * #{graupl-root-variables.$border-width}
+    );
+  }
+
+  .area-content {
+    --container-area-color: #{theme.get("primary", "100")};
+    --container-area-text: #{theme.get("primary", "900")};
+    --container-area-line-style: dotted;
+  }
+
+  .container-area-key {
+    display: inline-block;
+    padding: map.get(graupl-root-variables.$spacers, 1)
+      map.get(graupl-root-variables.$spacers, 2);
+    background: var(--container-area-color);
+    color: var(--container-area-text);
+    border-inline-start: var(--container-area-line-width)
+      var(--container-area-line-style) currentcolor;
+  }
 }
 
 .example-container {
@@ -259,6 +339,40 @@ table {
     display: flex;
     flex-direction: column;
     gap: map.get(graupl-root-variables.$spacers, 3);
+  }
+}
+
+.example-container:has(> .example-layout) {
+  container: live-example / inline-size;
+}
+
+.example-layout,
+.example-layout > .example-panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: inherit;
+}
+
+.example-layout .example-code {
+  min-inline-size: 0;
+}
+
+@container live-example (min-width: #{map.get(graupl-root-defaults.$screen-sizes, sm)}) {
+  .example-panels.side-by-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .example-panels.side-by-side > .example-code {
+    contain: size;
+    overflow: auto;
+  }
+
+  .options-left:has(> .example-options > *) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+  }
+
+  .options-right:has(> .example-options > *) {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
   }
 }
 
