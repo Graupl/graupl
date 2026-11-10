@@ -196,7 +196,5 @@ The following Sass variables can be used to customize the generation of the card
 | `$card-image-ratio`                    | The default size of the image track in a vertical card.        | `auto`                                                   |
 | `$horizontal-card-content-ratio`       | The default size of the content track in a horizontal card.    | `3fr`                                                    |
 | `$horizontal-card-image-ratio`         | The default size of the image track in a horizontal card.      | `2fr`                                                    |
-| `$card-item-content-transform`         | An unused default for the closed card content transform.       | `translateY(-100%)`                                      |
-| `$card-item-content-open-transform`    | An unused default for the open card content transform.         | `translateY(0)`                                          |
 | `$card-theme-mappings`                 | Map of card properties and their theme shades.                 | `map.merge($-card-theme-mappings, $card-theme-mappings)` |
 | `$card-theme-map`                      | Map of CSS custom property values for each card variant.       | `map.deep-merge($-card-theme-map, $card-theme-map)`      |
