@@ -581,7 +581,7 @@ $tooltip-description-background: var(
 // --graupl-tooltip-description-font-size
 $tooltip-description-font-size: var(
   --#{root-defaults.$prefix}tooltip-description-font-size,
-  --#{root-defaults.$prefix}tooltip-padding
+  inherit
 );
 
 // --graupl-tooltip-description-font-weight
