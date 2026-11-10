@@ -110,6 +110,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Flag classes that are listed as defaults but are only generated with opt-in configuration. Keep them out of the default list and ask the maintainer before adding a separate opt-in section.
 - Make Graupl's Sass selectors configurable, including selectors that default to HTML tags. Declare selector defaults with `!default` and use the configured selectors wherever the styles are emitted.
 - Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
+- Flag unused Sass variables, selectors, and CSS custom properties to the maintainer. Identify each unused item and ask whether to wire it up or remove it before making either change.
 - Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
 
 ## Sass custom properties

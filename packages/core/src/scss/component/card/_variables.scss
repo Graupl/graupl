@@ -47,6 +47,15 @@
 // | --graupl-card-content-column-gap         | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-content-row-gap            | var(--graupl-spacer-3)                                                                                                                                                          |
 // | --graupl-card-content-gap                | var(--graupl-card-content-row-gap) var(--graupl-card-content-column-gap)                                                                                                        |
+// | --graupl-card-header-padding-x           | 0                                                                                                                                                                               |
+// | --graupl-card-header-padding-y           | 0                                                                                                                                                                               |
+// | --graupl-card-header-padding             | var(--graupl-card-header-padding-y) var(--graupl-card-header-padding-x)                                                                                                         |
+// | --graupl-card-body-padding-x             | 0                                                                                                                                                                               |
+// | --graupl-card-body-padding-y             | 0                                                                                                                                                                               |
+// | --graupl-card-body-padding               | var(--graupl-card-body-padding-y) var(--graupl-card-body-padding-x)                                                                                                             |
+// | --graupl-card-footer-padding-x           | 0                                                                                                                                                                               |
+// | --graupl-card-footer-padding-y           | 0                                                                                                                                                                               |
+// | --graupl-card-footer-padding             | var(--graupl-card-footer-padding-y) var(--graupl-card-footer-padding-x)                                                                                                         |
 // | --graupl-card-title-color                | var(--graupl-card-color)                                                                                                                                                        |
 // | --graupl-card-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                      |
 // | --graupl-card-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                    |
@@ -314,6 +323,45 @@ $card-content-row-gap: var(
 $card-content-gap: var(
   --#{root-defaults.$prefix}card-content-gap,
   #{$card-content-row-gap} #{$card-content-column-gap}
+);
+
+// Card header properties.
+// --graupl-card-header-padding-x
+$card-header-padding-x: var(--#{root-defaults.$prefix}card-header-padding-x, 0);
+
+// --graupl-card-header-padding-y
+$card-header-padding-y: var(--#{root-defaults.$prefix}card-header-padding-y, 0);
+
+// --graupl-card-header-padding
+$card-header-padding: var(
+  --#{root-defaults.$prefix}card-header-padding,
+  #{$card-header-padding-y} #{$card-header-padding-x}
+);
+
+// Card body properties.
+// --graupl-card-body-padding-x
+$card-body-padding-x: var(--#{root-defaults.$prefix}card-body-padding-x, 0);
+
+// --graupl-card-body-padding-y
+$card-body-padding-y: var(--#{root-defaults.$prefix}card-body-padding-y, 0);
+
+// --graupl-card-body-padding
+$card-body-padding: var(
+  --#{root-defaults.$prefix}card-body-padding,
+  #{$card-body-padding-y} #{$card-body-padding-x}
+);
+
+// Card footer properties.
+// --graupl-card-footer-padding-x
+$card-footer-padding-x: var(--#{root-defaults.$prefix}card-footer-padding-x, 0);
+
+// --graupl-card-footer-padding-y
+$card-footer-padding-y: var(--#{root-defaults.$prefix}card-footer-padding-y, 0);
+
+// --graupl-card-footer-padding
+$card-footer-padding: var(
+  --#{root-defaults.$prefix}card-footer-padding,
+  #{$card-footer-padding-y} #{$card-footer-padding-x}
 );
 
 // Card title properties.
