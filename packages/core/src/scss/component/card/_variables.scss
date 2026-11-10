@@ -121,7 +121,7 @@ $card-row-gap: var(
 // --graupl-card-gap
 $card-gap: var(
   --#{root-defaults.$prefix}card-gap,
-  #{$card-column-gap} #{$card-row-gap}
+  #{$card-row-gap} #{$card-column-gap}
 );
 
 // Card color properties.
@@ -313,7 +313,7 @@ $card-content-row-gap: var(
 // --graupl-card-content-gap
 $card-content-gap: var(
   --#{root-defaults.$prefix}card-content-gap,
-  #{$card-content-column-gap} #{$card-content-row-gap}
+  #{$card-content-row-gap} #{$card-content-column-gap}
 );
 
 // Card title properties.
