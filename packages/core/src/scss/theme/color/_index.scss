@@ -182,8 +182,8 @@
     }
   }
 
-  // Generate the available theme properties.
-  @each $theme-name, $theme in $themes {
+  // Generate theme selectors, skipping the internal active palette lookup.
+  @each $theme-name, $theme in map.remove($themes, "active") {
     // e.g. .light-mode, .dark-mode
     @include theme.theme($theme-name) {
       @each $color, $map in $theme {
