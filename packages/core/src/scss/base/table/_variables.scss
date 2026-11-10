@@ -81,7 +81,7 @@
 // | --graupl-table-hover-color                       | var(--graupl-theme-active--secondary--900)                                                                                                                                                                      |
 // | --graupl-table-cell-hover-color                  | var(--graupl-table-hover-color)                                                                                                                                                                                 |
 // | --graupl-table-header-hover-color                | var(--graupl-table-hover-color)                                                                                                                                                                                 |
-// | --graupl-table-highlight-background              | var(--graupl-theme-active--secondary--500)                                                                                                                                                                      |
+// | --graupl-table-highlight-background              | var(--graupl-theme-active--secondary--700)                                                                                                                                                                      |
 // | --graupl-table-cell-highlight-background         | var(--graupl-table-highlight-background)                                                                                                                                                                        |
 // | --graupl-table-header-highlight-background       | var(--graupl-table-highlight-background)                                                                                                                                                                        |
 // | --graupl-table-highlight-color                   | var(--graupl-theme-active--secondary--100)                                                                                                                                                                      |
@@ -570,7 +570,7 @@ $table-header-hover-color: var(
 // --graupl-table-highlight-background
 $table-highlight-background: var(
   --#{root-defaults.$prefix}table-highlight-background,
-  #{theme.get(secondary, 500)}
+  #{theme.get(secondary, 700)}
 );
 
 // --graupl-table-cell-highlight-background
