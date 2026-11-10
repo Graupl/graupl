@@ -115,6 +115,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Sass custom properties
 
+- Give each supported state its own Sass variable and CSS custom property, even when states share a fallback. By default, visited and focus fall back to the standard state, active falls back to hover, and hover and disabled define their own defaults. Preserve intentional interaction effects that need a different fallback, such as the button press scale.
 - Apply component custom properties directly to the CSS declarations they control, including declarations on descendants. For example, use the alert's link color in the link's `color` declaration.
 - Avoid assigning a shared custom property from a value that references it anywhere in its fallback chain. That creates a CSS variable cycle when both values resolve on the same element. Let descendants inherit the applied style when possible, as card typography does with `currentcolor`.
 
