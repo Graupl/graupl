@@ -140,6 +140,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Tests
 
+- Before changing an existing test, identify it by file and test name, explain what you would change and why it is needed, and get the user's explicit approval for that test. Apply this rule to edits, moves, and removals, including wording and formatting changes. If a shared fixture, hook, or parameter table change alters multiple tests, identify each affected test or case and get explicit approval for each one. General approval to work on a suite does not replace per-test approval.
 - Follow the existing directories and files for the component or utility under test. Add coverage to the relevant existing suite rather than creating a separate file for each feature.
 - Use the existing sections within each suite. Tests for a property or method belong under its existing section. Merge duplicate sections for the same method or property. Put lifecycle and deferred-work tests with the methods they exercise instead of creating separate feature-wide sections or files.
 - Explicitly test one component or utility per file. Keep multiple types together only when the test requires their interaction or comparison, such as combined package exports. Supporting fixtures and base-class imports for inheritance checks are appropriate.
@@ -155,7 +156,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Separate setup, actions, and assertions with blank lines. Group component selections before the assertions that use them. For tests with several actions, separate each action from its resulting assertions. Put a blank line between sibling tests and describe blocks.
 - Match test names and comments to the actual class, method, and assertion. Distinguish reported validation failures from thrown errors. When a validator returns a result object, describe acceptance or errors rather than claiming it returns a boolean. Distinguish current state from committed state and stored data from the object that owns it. Use parameter placeholders only where the test runner substitutes them.
 - Follow the test structure and wording used in Accessible Ecosystem Core and Accessible Menu. Keep separate click tests for expanding and collapsing, with each test starting in the state it needs.
-- Leave deprecated APIs out of new coverage and remove tests and test references dedicated to deprecated APIs when updating a suite.
+- Leave deprecated APIs out of new coverage. Get per-test approval before removing existing tests or test references dedicated to deprecated APIs.
 - Tie each assertion to a requirement or a plausible regression. For example, an accordion click test should check the relevant expanded or collapsed state. Only check that content survives the click if content preservation is part of the behavior under test.
 - Treat the native `disabled` attribute on locked accordion headers as intentional. It prevents activation for users regardless of whether they use assistive technology.
 - Test observable behavior and meaningful API contracts. Do not add assertions about the absence of removed internal properties just to record that they were removed.
