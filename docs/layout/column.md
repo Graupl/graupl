@@ -37,6 +37,8 @@ ${items}
 
 The columns layout provides a set of classes to arrange content in a responsive CSS grid.
 
+Columns use CSS Grid to size columns automatically and keep them aligned across rows. If you need more control over the width of each item, use [Flex columns](./flex-column.md).
+
 ## Base class
 
 The `.columns` class puts a container's direct children in a grid with three columns by default. The grid will responsively use fewer columns if there isn't enough room.
