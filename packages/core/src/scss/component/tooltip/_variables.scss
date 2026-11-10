@@ -19,10 +19,10 @@
 // | --graupl-tooltip-border-bottom-left-radius              | var(--graupl-border-bottom-left-radius)                                                                                                                                                                                                     |
 // | --graupl-tooltip-border-bottom-right-radius             | var(--graupl-border-bottom-right-radius)                                                                                                                                                                                                    |
 // | --graupl-tooltip-border-radius                          | var(--graupl-tooltip-border-top-left-radius) var(--graupl-tooltip-border-top-right-radius) var(--graupl-tooltip-border-bottom-right-radius) var(--graupl-tooltip-border-bottom-left-radius)                                                 |
-// | --graupl-tooltip-border-top-width                       | var(--graupl-border-top-width)                                                                                                                                                                                                              |
-// | --graupl-tooltip-border-right-width                     | var(--graupl-border-right-width)                                                                                                                                                                                                            |
-// | --graupl-tooltip-border-bottom-width                    | var(--graupl-border-bottom-width)                                                                                                                                                                                                           |
-// | --graupl-tooltip-border-left-width                      | var(--graupl-border-left-width)                                                                                                                                                                                                             |
+// | --graupl-tooltip-border-top-width                       | 0                                                                                                                                                                                                                                           |
+// | --graupl-tooltip-border-right-width                     | 0                                                                                                                                                                                                                                           |
+// | --graupl-tooltip-border-bottom-width                    | 0                                                                                                                                                                                                                                           |
+// | --graupl-tooltip-border-left-width                      | 0                                                                                                                                                                                                                                           |
 // | --graupl-tooltip-border-width                           | var(--graupl-tooltip-border-top-width) var(--graupl-tooltip-border-right-width) var(--graupl-tooltip-border-bottom-width) var(--graupl-tooltip-border-left-width)                                                                           |
 // | --graupl-tooltip-border-top-style                       | var(--graupl-border-top-style)                                                                                                                                                                                                              |
 // | --graupl-tooltip-border-right-style                     | var(--graupl-border-right-style)                                                                                                                                                                                                            |
@@ -196,25 +196,25 @@ $tooltip-border-radius: var(
 // --graupl-tooltip-border-top-width
 $tooltip-border-top-width: var(
   --#{root-defaults.$prefix}tooltip-border-top-width,
-  #{root-variables.$border-top-width}
+  0
 );
 
 // --graupl-tooltip-border-right-width
 $tooltip-border-right-width: var(
   --#{root-defaults.$prefix}tooltip-border-right-width,
-  #{root-variables.$border-right-width}
+  0
 );
 
 // --graupl-tooltip-border-bottom-width
 $tooltip-border-bottom-width: var(
   --#{root-defaults.$prefix}tooltip-border-bottom-width,
-  #{root-variables.$border-bottom-width}
+  0
 );
 
 // --graupl-tooltip-border-left-width
 $tooltip-border-left-width: var(
   --#{root-defaults.$prefix}tooltip-border-left-width,
-  #{root-variables.$border-left-width}
+  0
 );
 
 // --graupl-tooltip-border-width
