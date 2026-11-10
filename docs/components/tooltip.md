@@ -58,6 +58,12 @@ import generateTooltips from "@graupl/core/tooltip/generator";
 generateTooltips();
 ```
 
+## Variants
+
+By default, no theme variants are generated.
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the tooltip module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
+
 ## Custom Properties
 
 The following custom properties can be used to customize the tooltip component:

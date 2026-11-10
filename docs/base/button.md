@@ -58,7 +58,7 @@ There are 4 button variants provided by default: `.primary`, `.secondary`, `.ter
   </template>
 </live-example>
 
-If you are compiling your own version of Graupl, you can set the `$themeable` variable to `false` to skip generating theme variants.
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the button module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## States
 

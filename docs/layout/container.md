@@ -104,6 +104,12 @@ Sidebars sit beside the content from the large screen breakpoint and stack with 
   </template>
 </live-example>
 
+## Variants
+
+By default, no theme variants are generated.
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the container module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
+
 ## Custom Properties
 
 The following custom properties can be used to customize the container component:
