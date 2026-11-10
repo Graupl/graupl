@@ -14,7 +14,7 @@
 // | --graupl-list-margin                          | var(--graupl-list-margin-y) var(--graupl-list-margin-x)                                                                                                                                             |
 // | --graupl-list-column-gap                      | var(--graupl-spacer-2)                                                                                                                                                                              |
 // | --graupl-list-row-gap                         | var(--graupl-spacer-2)                                                                                                                                                                              |
-// | --graupl-list-gap                             | var(--graupl-list-column-gap) var(--graupl-list-row-gap)                                                                                                                                            |
+// | --graupl-list-gap                             | var(--graupl-list-row-gap) var(--graupl-list-column-gap)                                                                                                                                            |
 // | --graupl-list-background                      | var(--graupl-background)                                                                                                                                                                            |
 // | --graupl-list-color                           | var(--graupl-color)                                                                                                                                                                                 |
 // | --graupl-list-border-color                    | var(--graupl-list-color)                                                                                                                                                                            |
@@ -118,7 +118,7 @@ $list-row-gap: var(
 // --graupl-list-gap
 $list-gap: var(
   --#{root-defaults.$prefix}list-gap,
-  #{$list-column-gap} #{$list-row-gap}
+  #{$list-row-gap} #{$list-column-gap}
 );
 
 // List color properties.

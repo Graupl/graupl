@@ -11,7 +11,7 @@
       state.value !== "default" ? state.value : null,
     ].filter(c => c !== null).join(' ');
 
-    return `<button class="${classes}">Click me!</button>`;
+    return `<button type="button" class="${classes}">Pack your satchel</button>`;
   });
 
   const exampleButtonVariant = computed(() => {
@@ -20,7 +20,7 @@
       variant.value !== "default" ? variant.value : null,
     ].filter(c => c !== null).join(' ');
 
-    return `<button class="${classes}">Click me!</button>`;
+    return `<button type="button" class="${classes}">Pack your satchel</button>`;
   });
 </script>
 
@@ -35,12 +35,12 @@ The button component is meant to be used on `<button>` or `<a>` elements, but ca
 The `.button` class is the base class for all button styles.
 
 <live-example>
-  <button class="button">Click me!</button>
+  <button type="button" class="button">Pack your satchel</button>
 </live-example>
 
 ## Variants
 
-There are 4 button variants provided by default: `.primary`, `.secondary`, `.tertiary`, and `.link`.
+There are 4 button variants provided by default: `.primary`, `.secondary`, `.tertiary`, and `.link`. Add the variant class alongside `.button`.
 
 <live-example :source-code="exampleButtonVariant" :key="variant">
   <template #options>
@@ -58,13 +58,17 @@ There are 4 button variants provided by default: `.primary`, `.secondary`, `.ter
   </template>
 </live-example>
 
-If you are compiling your own version of Graupl, you can set the `$themeable` variable to `false` to disable variants.
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the button module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## States
 
-Buttons handle the following states by default: visited, focus, hover, active, disabled, selected, and current (though not all will have visual differences out-of-the-box).
+Buttons handle the following states by default: visited, focus, hover, active, disabled, selected, and current. Some states share the same styles by default.
 
 You can manually apply these states with the helper classes `.visited`, `.focus`, `.hover`, `.active`, `.disabled`, `.selected`, and `.current` respectively.
+
+::: info Note
+These classes are purely visual and do not apply the actual state. For proper accessibility, do not rely on classes alone. Use `disabled` to disable a button, `focus()` to move keyboard focus, and the appropriate ARIA attribute for the control when marking it as selected or current.
+:::
 
 <live-example :source-code="exampleButtonState" :key="state">
   <template #options>
@@ -98,7 +102,7 @@ The following custom properties can be used to customize the button component:
 | `--graupl-button-padding`                    | The padding of the button component (combines x and y padding).                                                | `var(--graupl-button-padding-y) var(--graupl-button-padding-x)`                                                                                                                                                                                                                |
 | `--graupl-button-font-size`                  | The font size of the button component.                                                                         | `var(--graupl-font-size-base)`                                                                                                                                                                                                                                                 |
 | `--graupl-button-transition`                 | The transition of the button component.                                                                        | `background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
-| `--graupl-button-transition-reduced-motion`  | The transition of the button component when reduced motion is enabled.                                         | `background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)`                                                                                            |
+| `--graupl-button-transition-reduced-motion`  | The transition of the button component when reduced motion is enabled.                                         | `background var(--graupl-transition-timing-function), color var(--graupl-transition-timing-function)`                                                                                                                                                                          |
 | `--graupl-button-transform`                  | The transform of the button component.                                                                         | `none`                                                                                                                                                                                                                                                                         |
 | `--graupl-button-visited-transform`          | The transform of a visited button component.                                                                   | `var(--graupl-button-transform)`                                                                                                                                                                                                                                               |
 | `--graupl-button-focus-transform`            | The transform of a focused button component.                                                                   | `var(--graupl-button-transform)`                                                                                                                                                                                                                                               |
@@ -158,5 +162,5 @@ The following Sass variables can be used to customize the generation of the butt
 | `$button-initial-transform`     | The initial transform of the button.                                                    | `none`        |
 | `$button-final-transform`       | The final transform of the button.                                                      | `scale(0.95)` |
 | `$button-disabled-transform`    | The disabled transform of the button.                                                   | `none`        |
-| `$button-theme-mappings`        | A map of properties and color shades used generate all button variants.                 | `()`          |
+| `$button-theme-mappings`        | A map of properties and color shades used to generate all button variants.              | `()`          |
 | `$button-theme-map`             | A map of all properties, colors, and color shades used to generate all button variants. | `()`          |
