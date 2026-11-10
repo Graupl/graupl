@@ -81,7 +81,7 @@ Use a fieldset and legend to group related controls, such as a set of radio butt
 
 ## Variants
 
-There are three form colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to an input, textarea, select, label, or fieldset. Set the form module’s `$themeable` to `false` when [compiling Graupl](../compiling-graupl.md) to skip generating these variants.
+There are three form colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to an input, textarea, select, label, or fieldset.
 
 <live-example :source-code="exampleFormVariant" options-position="top">
   <template #options>
@@ -96,6 +96,8 @@ There are three form colour variants provided by default: `.primary`, `.secondar
     </div>
   </template>
 </live-example>
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the form module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## Custom Properties
 

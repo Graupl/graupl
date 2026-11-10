@@ -65,7 +65,7 @@ The styles apply directly to the table and its elements by default.
 
 ## Variants and modifiers
 
-There are three table colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to the table. Set `$themeable` to `false` when compiling Graupl to skip generating theme variants for tables.
+There are three table colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to the table.
 
 | Class               | Description                                          |
 | ------------------- | ---------------------------------------------------- |
@@ -102,6 +102,8 @@ Add the border, stripe, and hover classes to the table. Add `.highlight` to the 
     </fieldset>
   </template>
 </live-example>
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the table module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## Custom Properties
 

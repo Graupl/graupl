@@ -119,6 +119,12 @@ Use `count-2 lg:count-3` to set two columns by default and three from the large 
 
 See [responsive utility classes](../utilities/responsive-classes.md) for the available prefixes.
 
+## Variants
+
+By default, no theme variants are generated.
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the columns module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
+
 ## Custom Properties
 
 The following custom properties can be used to customize the columns layout:

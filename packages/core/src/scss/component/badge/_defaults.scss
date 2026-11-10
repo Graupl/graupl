@@ -25,8 +25,7 @@ $badge-theme-selector-prefix: "" !default;
 // themed badge bases.
 //
 // e.g.
-// Primary badges will use primary--900 as the text colour, primary--100 as the background
-// and primary--900 as the border colour.
+// Primary badges use primary--900 for text and primary--700 for the border.
 //
 // Secondary/tertiary badges will use the same shade for their respective colours.
 $-badge-theme-mappings: (

@@ -78,6 +78,12 @@ Graupl applies a single-column fallback to unprefixed width classes when the fle
 
 See [responsive utility classes](../utilities/responsive-classes.md) for the available prefixes.
 
+## Variants
+
+By default, no theme variants are generated.
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the flex columns module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
+
 ## Custom Properties
 
 The following custom properties can be used to customize the flex columns layout:
