@@ -97,7 +97,7 @@ $alert-row-gap: var(
 // --graupl-alert-gap
 $alert-gap: var(
   --#{root-defaults.$prefix}alert-gap,
-  #{$alert-column-gap} #{$alert-row-gap}
+  #{$alert-row-gap} #{$alert-column-gap}
 );
 
 // Alert color properties.
