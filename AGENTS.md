@@ -77,7 +77,9 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Describe what fits in the available width. Use plain wording such as "if there isn't enough room" when explaining why a layout uses fewer columns.
 - Connect related ideas in the prose. Explain what a class does and what it does by default together, then describe how it responds to changes in the layout. Keep wording that already reads clearly.
 - Show the base layout on its own. Group settings that affect each other in the same section and preview, such as column count and fixed width. Let readers select the full documented range, and give them enough items or an item count control to see how the layout changes.
-- Explain what the classes do in the prose and let the previews demonstrate it. Skip prompts such as "try this" or "in the example below" when the controls and surrounding text already make the purpose clear. Use a VitePress note for setup specific to a preview, such as sizing a grid to its available width.
+- Explain what the classes do in the prose and let the previews demonstrate it. Skip prompts such as "try this" or "in the example below" when the controls and surrounding text already make the purpose clear. When previews override defaults, put a VitePress note immediately before the first preview it applies to. Explain which defaults the previews override and why.
+- When a demo uses the docs site's own layout, explain what readers can see there that the scaled preview cannot show.
+- Check text contrast in both light and dark mode for examples, legends, and highlighted areas. Compare each text colour with the background it renders on, including when highlights are active. Use at least 4.5:1 for normal text and give readers another way to match areas to labels, such as distinct line patterns.
 - Link to the responsive utility class reference for shared prefix information. Keep the layout's own responsive behaviour and class placement in its page.
 - Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
 
