@@ -67,14 +67,14 @@ The styles apply directly to the table and its elements by default.
 
 There are three table colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to the table. Set `$themeable` to `false` when compiling Graupl to skip generating theme variants for tables.
 
-| Class | Description |
-| --- | --- |
-| `.bordered` | Adds borders to the table and its cells. |
-| `.collapsed` | Collapses the borders between cells. |
-| `.striped-columns` | Styles odd cells in each row of the table body. |
-| `.striped-rows` | Styles odd rows in the table body. |
-| `.hoverable` | Changes the colour of body rows on hover. |
-| `.highlight` | Highlights a row or cell inside the table. |
+| Class               | Description                                          |
+| ------------------- | ---------------------------------------------------- |
+| `.bordered`         | Adds borders to the table and its cells.             |
+| `.collapsed`        | Collapses the borders between cells.                 |
+| `.striped-columns`  | Styles odd cells in each row of the table body.      |
+| `.striped-rows`     | Styles odd rows in the table body.                   |
+| `.hoverable`        | Changes the colour of body rows on hover.            |
+| `.highlight`        | Highlights a row or cell inside the table.           |
 | `.responsive-table` | Lets a wrapper around the table scroll horizontally. |
 
 Add the border, stripe, and hover classes to the table. Add `.highlight` to the row or cell you want to highlight. For a wide table, add `.responsive-table` to a wrapper. Give the wrapper a label and `tabindex="0"` so keyboard users can focus it and scroll. The responsive preview uses `.min-w-full-screen` to make the table wide enough to scroll.

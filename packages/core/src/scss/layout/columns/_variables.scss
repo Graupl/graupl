@@ -14,8 +14,8 @@
 // | --graupl-columns-max-width             | 1fr                                                                                                                                                  |
 // | --graupl-columns-grid-template-columns | repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))                                                           |
 // | --graupl-columns-span                  | 1                                                                                                                                                    |
-// | --graupl-columns-background            | Unset                                                                                                                                                |
-// | --graupl-columns-color                 | Unset                                                                                                                                                |
+// | --graupl-columns-background            | No default                                                                                                                                           |
+// | --graupl-columns-color                 | No default                                                                                                                                           |
 
 @use "defaults";
 @use "../../variables" as root-variables;

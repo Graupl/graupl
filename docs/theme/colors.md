@@ -191,7 +191,7 @@ The following Sass variables can be used to customize the generation of the colo
 | `$default-theme`          | Theme used for the active colour properties on the root element. | `"default"`   |
 | `$schemes`                | Additional colour schemes to generate.                           | `()`          |
 | `$theme-schemes`          | The default scheme for each theme.                               | `()`          |
-| `$non-themeable-colors`   | List of colours to exclude from the default theme colour map.               | `()`          |
+| `$non-themeable-colors`   | List of colours to exclude from the default theme colour map.    | `()`          |
 | `$theme-colors`           | Map of colours for each theme.                                   | `()`          |
 | `$scheme-mappings`        | Map of shades to use for each theme and colour scheme.           | `()`          |
 | `$theme-map`              | Map of colour and shade references for each theme.               | `()`          |
