@@ -1,7 +1,12 @@
 {
   "cSpell.words": [
     "blinkmacsystemfont",
+    "Cclip",
+    "Cdefs",
     "codegen",
+    "Cpath",
+    "Crect",
+    "Csvg",
     "Flexbox",
     "lightningcss",
     "mbse",
@@ -26,6 +31,7 @@
     "prelock",
     "preunlock",
     "prevalidate",
+    "shiki",
     "shouldfocus",
     "unslop",
     "unstub",
