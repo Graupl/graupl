@@ -1,17 +1,51 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
 
-  const exampleFieldset =`
+  const exampleTextInput = `
+<label for="adventurer-name">Adventurer name</label>
+<input id="adventurer-name" type="text">
+  `;
+
+  const exampleSelect = `
+<label for="quest-region">Region</label>
+<select id="quest-region">
+  <option>North woods</option>
+  <option>Silver marsh</option>
+</select>
+  `;
+
+  const exampleCheckbox = `
+<label><input type="checkbox" name="supplies" value="torch"> Pack a torch</label>
+  `;
+
+  const exampleTextarea = `
+<label for="quest-notes">Quest notes</label>
+<textarea id="quest-notes" rows="3"></textarea>
+  `;
+
+  const exampleFieldset = `
 <fieldset>
-  <legend>Fieldset</legend>
+  <legend>Departure time</legend>
+  <label><input type="radio" name="departure" value="dawn"> Dawn</label>
+  <label><input type="radio" name="departure" value="dusk"> Dusk</label>
 </fieldset>
   `;
+  const variant = ref("default");
+  const exampleFormVariant = computed(() => {
+    const variantClass = variant.value === "default" ? "" : ` class="${variant.value}"`;
+
+    return `<fieldset${variantClass}>
+  <legend>Quest registration</legend>
+  <label for="quest-party-name">Party name</label>
+  <input id="quest-party-name" type="text">
+</fieldset>`;
+  });
 </script>
 
 # Forms
 
-This module provides the base styles for form components, such as inputs, textareas, selects, labels, and fieldsets.
+The form base component provides a set of styles for inputs, textareas, selects, labels, and fieldsets.
 
 ::: info Note
 
@@ -21,41 +55,49 @@ Form elements and inputs alone are only a portion of Graupl's feature set for fo
 
 ## Base elements
 
-The base `<input>`, `<textarea>`, `<select>`, `<fieldset>`, `<legend>`, and `<label>` elements are styled by default with no need for classes.
+The base `<input>`, `<textarea>`, `<select>`, `<fieldset>`, and `<label>` elements are styled by default with no need for classes.
 
 ### Text input
 
-<live-example>
-  <input type="text" placeholder="Text input" aria-label="Example input" />
-</live-example>
+<live-example :source-code="exampleTextInput" />
+
+### Select
+
+<live-example :source-code="exampleSelect" />
 
 ### Checkbox
 
-<live-example>
-  <label><input type="checkbox"> Example checkbox</label>
-</live-example>
-
-### Radio
-
-<live-example>
-  <label><input type="radio"> Example radio</label>
-</live-example>
+<live-example :source-code="exampleCheckbox" />
 
 ### Text area
 
-<live-example>
-  <textarea placeholder="Text area" aria-label="Example text area"></textarea>
-</live-example>
+<live-example :source-code="exampleTextarea" />
 
 ### Fieldsets
+
+Use a fieldset and legend to group related controls, such as a set of radio buttons.
 
 <live-example :source-code="exampleFieldset" />
 
 ## Variants
 
-By default, there are no variants available for forms.
+There are three form colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to an input, textarea, select, label, or fieldset.
 
-If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the `$themeable` variable to `true` to enable variants.
+<live-example :source-code="exampleFormVariant" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-form-variant">Form variant</label>
+      <select id="select-form-variant" v-model="variant">
+        <option value="default">Default</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+        <option value="tertiary">Tertiary</option>
+      </select>
+    </div>
+  </template>
+</live-example>
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the form module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## Custom Properties
 
@@ -147,7 +189,7 @@ The following Sass variables can be used to customize the generation of the form
 | `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                        | `"."`         |
 | `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                      | `""`          |
 | `$fieldset-direction`                  | The direction of fieldset component items.                              | `column`      |
-| `$input-type-selectors`                | Various tyles of inputs and their associated selectors.                 | `()`          |
+| `$input-type-selectors`                | Map of input types and their selectors.                                 | `()`          |
 | `$input-theme-mappings`                | Map of properties and shade values applied to themed input variants.    | `()`          |
 | `$input-theme-map`                     | Fully expanded property map used to generate themed input variants.     | `()`          |
 | `$label-theme-mappings`                | Map of properties and shade values applied to themed label variants.    | `()`          |
