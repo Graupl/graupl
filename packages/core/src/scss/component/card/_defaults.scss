@@ -22,6 +22,8 @@ $card-theme-selector-base: $modifier-selector-base !default;
 $card-theme-selector-prefix: "" !default;
 $card-image-selector-base: $selector-base !default;
 $card-image-selector: "card-image" !default;
+$card-image-element-selector-base: "" !default;
+$card-image-element-selector: "img" !default;
 $card-content-selector-base: $selector-base !default;
 $card-content-selector: "card-content" !default;
 $card-body-selector-base: $selector-base !default;
