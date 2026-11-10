@@ -1,10 +1,12 @@
 <script setup>
-  import { ref, computed, onMounted } from "vue";
+  import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import generate from "@graupl/core/src/alert/generator.js";
+  import Alert from "../../packages/core/src/js/alert/Alert.js";
 
-  const exampleAlerts = computed(() => {
-    return `
+  const preview = useTemplateRef("alert-preview");
+  let alert;
+
+  const exampleAlerts = `
 <div class="alert">
   <div class="alert-header">
     <h3 class="alert-title">Alert</h3>
@@ -17,16 +19,31 @@
   </div>
   <button class="alert-dismisser">x</button>
 </div>
-    `;
-  });
+  `;
+
+  function initializePreview() {
+    const alertElement = preview.value?.querySelector(".example .alert");
+
+    if (alert?.dom.alert === alertElement) return;
+
+    alert?.dispose();
+    alert = alertElement && new Alert({
+      alertElement,
+      controllerElement: alertElement.querySelector(".alert-dismisser"),
+      initialize: true,
+    });
+  }
+
+  onBeforeUnmount(() => alert?.dispose());
 </script>
 
 # Alerts
 
 The alert component provides the following set of classes to apply the preset properties of for the specific elements.
 
-<live-example :source-code="exampleAlerts" :key="background-content" @mounted="generate()" @updated="generate()">
-</live-example>
+<div ref="alert-preview">
+  <live-example :source-code="exampleAlerts" @updated="initializePreview" />
+</div>
 
 <br/>
 
