@@ -24,6 +24,7 @@
 // | `--graupl-fieldset-padding`                    | The padding for fieldset components (combines x and y padding).                                                | `var(--graupl-fieldset-padding-y) var(--graupl-fieldset-padding-x)`                                                                                                                               |
 // | `--graupl-fieldset-font-size`                  | The font size for fieldset components.                                                                         | `var(--graupl-input-font-size)`                                                                                                                                                                   |
 // | `--graupl-input-background`                    | The background color for input components.                                                                     | `var(--graupl-background)`                                                                                                                                                                        |
+// | `--graupl-label-background`                    | The background color for label components.                                                                     | `transparent`                                                                                                                                                                                     |
 // | `--graupl-fieldset-background`                 | The background color for fieldset components.                                                                  | `var(--graupl-input-background)`                                                                                                                                                                  |
 // | `--graupl-input-color`                         | The text color for input components.                                                                           | `var(--graupl-color)`                                                                                                                                                                             |
 // | `--graupl-input-placeholder-color`             | The placeholder text color for input components.                                                               | `var(--graupl-theme-active--secondary--600)`                                                                                                                                                      |
@@ -65,9 +66,11 @@
 // | `--graupl-fieldset-border-radius`              | The border radius for fieldset components (combines top-left, top-right, bottom-right, and bottom-left radii). | `var(--graupl-fieldset-border-top-left-radius) var(--graupl-fieldset-border-top-right-radius) var(--graupl-fieldset-border-bottom-right-radius) var(--graupl-fieldset-border-bottom-left-radius)` |
 // | `--graupl-input-border-color`                  | The border color for input components.                                                                         | `var(--graupl-border-color)`                                                                                                                                                                      |
 // | `--graupl-input-disabled-border-color`         | The border color for disabled input components.                                                                | `var(--graupl-theme-active--secondary--200)`                                                                                                                                                      |
+// | `--graupl-label-border-color`                  | The border color for label components.                                                                         | `currentcolor`                                                                                                                                                                                    |
 // | `--graupl-fieldset-border-color`               | The border color for fieldset components.                                                                      | `var(--graupl-input-border-color)`                                                                                                                                                                |
 // | `--graupl-fieldset-disabled-border-color`      | The border color for disabled fieldset components.                                                             | `var(--graupl-input-disabled-border-color)`                                                                                                                                                       |
-// | `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-input-color)`                                                                                                                                                                       |
+// | `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-fieldset-accent-color, var(--graupl-input-color))`                                                                                                                                  |
+// | `--graupl-fieldset-accent-color`               | The accent color for fieldsets and the controls inside them.                                                   | `inherit`                                                                                                                                                                                         |
 //
 // The following sass variables can be used to customize the generation of the form components:
 // | Variable                               | Description                                                             | Default Value |
@@ -283,6 +286,8 @@
 
   // label
   #{defaults.$label-selector-base}#{defaults.$label-selector} {
+    border-color: $label-border-color;
+    background-color: $label-background;
     color: $label-color;
 
     @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
@@ -317,6 +322,7 @@
     border-color: $fieldset-border-color;
     background: $fieldset-background;
     color: $fieldset-color;
+    accent-color: $fieldset-accent-color;
 
     @each $selector in map.get(root-defaults.$state-selectors, "disabled") {
       // e.g :disabled, .disabled
