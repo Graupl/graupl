@@ -110,42 +110,6 @@ $alert-background: var(
 // --graupl-alert-color
 $alert-color: var(--#{root-defaults.$prefix}alert-color, #{color.$color});
 
-// --graupl-alert-link-color
-$alert-link-color: var(
-  --#{root-defaults.$prefix}alert-link-color,
-  #{link-variables.$link-color}
-);
-
-// --graupl-alert-link-visited-color
-$alert-link-visited-color: var(
-  --#{root-defaults.$prefix}alert-link-visited-color,
-  #{$alert-link-color}
-);
-
-// --graupl-alert-link-focus-color
-$alert-link-focus-color: var(
-  --#{root-defaults.$prefix}alert-link-focus-color,
-  #{$alert-link-color}
-);
-
-// --graupl-alert-link-hover-color
-$alert-link-hover-color: var(
-  --#{root-defaults.$prefix}alert-link-hover-color,
-  #{link-variables.$link-hover-color}
-);
-
-// --graupl-alert-link-active-color
-$alert-link-active-color: var(
-  --#{root-defaults.$prefix}alert-link-active-color,
-  #{$alert-link-hover-color}
-);
-
-// --graupl-alert-link-disabled-color
-$alert-link-disabled-color: var(
-  --#{root-defaults.$prefix}alert-link-disabled-color,
-  #{link-variables.$link-disabled-color}
-);
-
 // Alert border-properties.
 // --graupl-alert-border-color
 $alert-border-color: var(

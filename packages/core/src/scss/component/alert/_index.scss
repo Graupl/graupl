@@ -310,12 +310,6 @@
   #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
     --#{root-defaults.$prefix}button-background: #{$alert-background};
     --#{root-defaults.$prefix}button-focus-background: #{$alert-background};
-    --#{root-defaults.$prefix}link-color: #{$alert-link-color};
-    --#{root-defaults.$prefix}link-visited-color: #{$alert-link-visited-color};
-    --#{root-defaults.$prefix}link-focus-color: #{$alert-link-focus-color};
-    --#{root-defaults.$prefix}link-hover-color: #{$alert-link-hover-color};
-    --#{root-defaults.$prefix}link-active-color: #{$alert-link-active-color};
-    --#{root-defaults.$prefix}link-disabled-color: #{$alert-link-disabled-color};
 
     border-color: $alert-border-color;
     background-color: $alert-background;
