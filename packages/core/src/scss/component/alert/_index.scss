@@ -315,6 +315,22 @@
     background-color: $alert-background;
     color: $alert-color;
 
+    #{link-defaults.$link-selector-base}#{link-defaults.$link-selector} {
+      border-color: $alert-link-border-color;
+      background: $alert-link-background;
+      color: $alert-link-color;
+      text-decoration-color: $alert-link-text-decoration-color;
+
+      @include state.generate-modifiers(
+        (
+          border-color: $alert-link-border-color-states,
+          background: $alert-link-background-states,
+          color: $alert-link-color-states,
+          text-decoration-color: $alert-link-text-decoration-color-states,
+        )
+      );
+    }
+
     @if root-defaults.$themeable-components and defaults.$themeable {
       @include theme.generate-modifiers(
         defaults.$alert-theme-map,
