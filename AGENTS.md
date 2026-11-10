@@ -112,6 +112,11 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
 - Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
 
+## Sass custom properties
+
+- Apply component custom properties directly to the CSS declarations they control, including declarations on descendants. For example, use the alert's link color in the link's `color` declaration.
+- Avoid assigning a shared custom property from a value that references it anywhere in its fallback chain. That creates a CSS variable cycle when both values resolve on the same element. Let descendants inherit the applied style when possible, as card typography does with `currentcolor`.
+
 ## Code organization and readability
 
 - Follow the existing formatting, naming, spacing, blank lines, and JSDoc alignment. Preserve the file's organization when adding code.

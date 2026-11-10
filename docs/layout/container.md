@@ -53,11 +53,11 @@ Add `.container` to a page wrapper. Its direct children sit in the content area 
 
 Add a class to a section to control how far it extends across the container.
 
-| Class | Description |
-| --- | --- |
-| `.breakout` | Extends beyond the content area. |
-| `.feature` | Extends beyond the breakout area. |
-| `.full-width` | Spans the entire container. |
+| Class         | Description                       |
+| ------------- | --------------------------------- |
+| `.breakout`   | Extends beyond the content area.  |
+| `.feature`    | Extends beyond the breakout area. |
+| `.full-width` | Spans the entire container.       |
 
 Add `.contain` to a wide section to keep its inner content aligned with the main content area.
 

@@ -32,7 +32,7 @@
 
 # Tooltips
 
-The tooltip component shows a short description alongside a button. Use it for supplemental information and keep essential instructions visible on the page.
+The tooltip component provides a set of classes to show a short description alongside a button. Use it for supplemental information and keep essential instructions visible on the page.
 
 ## Base classes
 

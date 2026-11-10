@@ -48,7 +48,7 @@
 
 # Alerts
 
-The alert component highlights messages that readers need to see, such as a warning or a change that affects their next step.
+The alert component provides a set of classes to highlight messages that readers need to see, such as a warning or a change that affects their next step.
 
 ## Base classes
 

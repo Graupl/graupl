@@ -43,11 +43,11 @@ Columns use CSS Grid to size columns automatically and keep them aligned across 
 
 The `.columns` class puts a container's direct children in a grid with three columns by default. The grid will responsively use fewer columns if there isn't enough room.
 
-<live-example :source-code="exampleColumns" />
-
 ::: info Note
 Column widths are based on `--graupl-content-max-width` by default. These examples set `--graupl-columns-content-max-width` to `100%` so the column widths adjust to the space available in the preview.
 :::
+
+<live-example :source-code="exampleColumns" />
 
 ## Column count and width
 
