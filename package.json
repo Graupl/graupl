@@ -42,9 +42,9 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "test:unit": "vitest run unit --passWithNoTests",
+    "test:unit": "vitest run --project unit --passWithNoTests",
     "pretest:browser": "npm run build:css",
-    "test:browser": "vitest run browser --passWithNoTests"
+    "test:browser": "vitest run --project browser --passWithNoTests"
   },
   "repository": {
     "type": "git",
