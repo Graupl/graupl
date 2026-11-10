@@ -15,9 +15,9 @@
 // - `.accordion-item-footer`: The footer region inside the content wrapper.
 // - `.show`: Modifier applied to an item when open.
 // - `.hide`: Modifier applied to an item when closed.
-// - `.collapse-all`: Modifier applied to collapse control.
-// - `.expand-all`: Modifier applied to expand control.
 // - `.transitioning`: Modifier applied while an item is transitioning.
+//
+// JavaScript uses `.expand-all` and `.collapse-all` to identify the bulk controls.
 //
 // The following custom properties can be used to customize the accordion component:
 // | Property                                                          | Description                                                       | Default Value                                                                                                                                                                                                                                                                                                               |
@@ -178,10 +178,6 @@
 // | `$accordion-item-transition-selector-base`        | Default for accordion item transition selector base.          | `"."`                                                              |
 // | `$accordion-item-transition-selector`             | Default for accordion item transition selector.               | `"transitioning"`                                                  |
 // | `$accordion-item-toggle-pseudo-selector`          | Default for accordion item toggle pseudo selector.            | `"after"`                                                          |
-// | `$accordion-expand-selector-base`                 | Default for accordion expand selector base.                   | `"."`                                                              |
-// | `$accordion-expand-selector`                      | Default for accordion expand selector.                        | `".expand-all"`                                                    |
-// | `$accordion-collapse-selector-base`               | Default for accordion collapse selector base.                 | `"."`                                                              |
-// | `$accordion-collapse-selector`                    | Default for accordion collapse selector.                      | `".collapse-all"`                                                  |
 // | `$accordion-control-selector-base`                | Default for accordion control selector base.                  | `"."`                                                              |
 // | `$accordion-control-selector`                     | Default for accordion control selector.                       | `"accordion-control"`                                              |
 // | `$accordion-control-container-selector-base`      | Default for accordion control container selector base.        | `"."`                                                              |

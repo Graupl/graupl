@@ -87,7 +87,7 @@ generateAccordions();
 
 ## Expand and collapse all
 
-Place the buttons inside `.accordion-control-container`. Give each button the `.accordion-control` class and add `.expand-all` or `.collapse-all` to choose its action.
+Place the buttons inside `.accordion-control-container`. Use `.accordion-control` to style both buttons. Add `.expand-all` or `.collapse-all` so the accordion knows which action each button performs.
 
 <div ref="controls-preview">
   <live-example :source-code="accordionWithControls" @updated="initializePreview(controlsPreview)" />
@@ -282,10 +282,6 @@ The following Sass variables can be used to customize the generation of the acco
 | `$accordion-item-transition-selector-base`        | Default for accordion item transition selector base.          | `"."`                                                              |
 | `$accordion-item-transition-selector`             | Default for accordion item transition selector.               | `"transitioning"`                                                  |
 | `$accordion-item-toggle-pseudo-selector`          | Default for accordion item toggle pseudo selector.            | `"after"`                                                          |
-| `$accordion-expand-selector-base`                 | Default for accordion expand selector base.                   | `"."`                                                              |
-| `$accordion-expand-selector`                      | Default for accordion expand selector.                        | `".expand-all"`                                                    |
-| `$accordion-collapse-selector-base`               | Default for accordion collapse selector base.                 | `"."`                                                              |
-| `$accordion-collapse-selector`                    | Default for accordion collapse selector.                      | `".collapse-all"`                                                  |
 | `$accordion-control-selector-base`                | Default for accordion control selector base.                  | `"."`                                                              |
 | `$accordion-control-selector`                     | Default for accordion control selector.                       | `"accordion-control"`                                              |
 | `$accordion-control-container-selector-base`      | Default for accordion control container selector base.        | `"."`                                                              |
