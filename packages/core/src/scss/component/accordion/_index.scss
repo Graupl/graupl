@@ -620,13 +620,14 @@
     --#{root-defaults.$prefix}accordion-item-toggle-background: #{$accordion-item-title-background};
     --#{root-defaults.$prefix}accordion-item-toggle-border-color: #{$accordion-item-title-border-color};
 
+    border-color: $accordion-item-title-border-color;
+    background: $accordion-item-title-background;
+    color: $accordion-item-title-color;
+
     // &,
     // .accordion-item-toggle
     &,
     #{defaults.$accordion-item-toggle-selector-base}#{defaults.$accordion-item-toggle-selector} {
-      border-color: $accordion-item-title-border-color;
-      background: $accordion-item-title-background;
-      color: $accordion-item-title-color;
       font-family: $accordion-item-title-font-family;
       font-size: $accordion-item-title-font-size;
       font-weight: $accordion-item-title-font-weight;
