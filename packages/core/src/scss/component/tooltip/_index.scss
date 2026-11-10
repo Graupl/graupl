@@ -281,6 +281,9 @@
     position: relative;
     width: $tooltip-width;
     padding: $tooltip-padding;
+    border-width: $tooltip-border-width;
+    border-style: $tooltip-border-style;
+    border-radius: $tooltip-border-radius;
   }
 
   // .tooltip-toggle
