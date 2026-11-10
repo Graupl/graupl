@@ -1,5 +1,12 @@
 <script setup>
-import { ref, shallowRef, useTemplateRef, onMounted, onUpdated, defineEmits } from "vue";
+import {
+  ref,
+  shallowRef,
+  useTemplateRef,
+  onMounted,
+  onUpdated,
+  watch,
+} from "vue";
 import { Codemirror } from "vue-codemirror";
 import { html } from "@codemirror/lang-html";
 import { css } from "@codemirror/lang-css";
@@ -9,13 +16,25 @@ const props = defineProps({
   codeClass: { type: String, default: "" },
   exampleClass: { type: String, default: "" },
   trim: { type: Boolean, default: true },
+  resettable: { type: Boolean, default: false },
+  optionsPosition: {
+    type: String,
+    default: "bottom",
+    validator: (value) => ["top", "right", "bottom", "left"].includes(value),
+  },
+  layout: {
+    type: String,
+    default: "stacked",
+    validator: (value) => ["stacked", "side-by-side"].includes(value),
+  },
 });
 
 const sourceElement = useTemplateRef("example-source");
 const code = ref("");
+const previewKey = ref(0);
 const extensions = [html(), css()];
 const view = shallowRef();
-const emit = defineEmits(['mounted', 'updated']);
+const emit = defineEmits(["mounted", "updated"]);
 
 const handleReady = (payload) => {
   view.value = payload.view;
@@ -29,7 +48,7 @@ const handleReady = (payload) => {
  * White space before/after the component is trimmed by default, but can
  * be altered with the `trim` prop.
  */
-onMounted(() => {
+function loadSource() {
   if (props.sourceCode) {
     code.value = props.trim ? props.sourceCode.trim() : props.sourceCode;
   } else if (sourceElement.value) {
@@ -37,13 +56,24 @@ onMounted(() => {
       ? sourceElement.value.innerHTML.trim()
       : sourceElement.value.innerHTML;
   }
+}
 
-  emit('mounted');
-});
+function resetExample() {
+  loadSource();
+  previewKey.value++;
+}
 
 onUpdated(() => {
-  emit('updated');
+  emit("updated");
 });
+
+onMounted(() => {
+  loadSource();
+
+  emit("mounted");
+});
+
+watch(() => props.sourceCode, loadSource);
 </script>
 
 <template>
@@ -55,27 +85,54 @@ onUpdated(() => {
       </slot>
     </div>
 
-    <!-- Live preview -->
-    <div class="example" :class="exampleClass" v-html="code"></div>
+    <div class="example-layout" :class="`options-${optionsPosition}`">
+      <div
+        v-if="optionsPosition === 'top' || optionsPosition === 'left'"
+        class="example-options"
+      >
+        <slot name="options"></slot>
+      </div>
 
-    <!-- CodeMirror editor -->
-    <div class="example-code" :class="codeClass">
-      <codemirror
-        v-model="code"
-        placehodler="Code goes here..."
-        :indent-with-tab="true"
-        :tab-size="2"
-        :extensions="extensions"
-        @ready="handleReady"
-        @change="console.log('change', $event)"
-        @focus="console.log('focus', $event)"
-        @blur="console.log('blur', $event)"
-      />
+      <div
+        class="example-panels"
+        :class="{ 'side-by-side': layout === 'side-by-side' }"
+      >
+        <!-- Live preview -->
+        <div
+          :key="previewKey"
+          class="example"
+          :class="exampleClass"
+          v-html="code"
+        ></div>
+
+        <!-- CodeMirror editor -->
+        <div class="example-code" :class="codeClass">
+          <codemirror
+            v-model="code"
+            placeholder="Code goes here..."
+            :indent-with-tab="true"
+            :tab-size="2"
+            :extensions="extensions"
+            @ready="handleReady"
+            @change="console.log('change', $event)"
+            @focus="console.log('focus', $event)"
+            @blur="console.log('blur', $event)"
+          />
+        </div>
+      </div>
+
+      <div
+        v-if="optionsPosition === 'bottom' || optionsPosition === 'right'"
+        class="example-options"
+      >
+        <slot name="options"></slot>
+      </div>
     </div>
 
-    <!-- Options for altering the example -->
-    <div class="example-options">
-      <slot name="options"></slot>
+    <div v-if="resettable">
+      <button type="button" class="button" @click="resetExample">
+        Reset example
+      </button>
     </div>
   </div>
 </template>

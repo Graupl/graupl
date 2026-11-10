@@ -43,6 +43,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:unit": "vitest run unit --passWithNoTests",
+    "pretest:browser": "npm run build:css",
     "test:browser": "vitest run browser --passWithNoTests"
   },
   "repository": {
