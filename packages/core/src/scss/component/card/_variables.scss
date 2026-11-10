@@ -4,7 +4,7 @@
 // cleaner way to reference custom properties.
 
 // Custom property defaults:
-// | Custom property                          | Default                                                                                                                                                                         |
+// | Property                                 | Default Value                                                                                                                                                                   |
 // | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 // | --graupl-card-padding-x                  | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-padding-y                  | var(--graupl-spacer-0)                                                                                                                                                          |
@@ -15,7 +15,7 @@
 // | --graupl-card-hover-transform            | none                                                                                                                                                                            |
 // | --graupl-card-column-gap                 | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-row-gap                    | var(--graupl-spacer-0)                                                                                                                                                          |
-// | --graupl-card-gap                        | var(--graupl-card-column-gap) var(--graupl-card-row-gap)                                                                                                                        |
+// | --graupl-card-gap                        | var(--graupl-card-row-gap) var(--graupl-card-column-gap)                                                                                                                        |
 // | --graupl-card-background                 | var(--graupl-background)                                                                                                                                                        |
 // | --graupl-card-color                      | var(--graupl-color)                                                                                                                                                             |
 // | --graupl-card-border-color               | var(--graupl-card-color)                                                                                                                                                        |
@@ -34,19 +34,19 @@
 // | --graupl-card-border-bottom-style        | var(--graupl-border-bottom-style)                                                                                                                                               |
 // | --graupl-card-border-left-style          | var(--graupl-border-left-style)                                                                                                                                                 |
 // | --graupl-card-border-style               | var(--graupl-card-border-top-style) var(--graupl-card-border-right-style) var(--graupl-card-border-bottom-style) var(--graupl-card-border-left-style)                           |
-// | --graupl-card-content-ratio              | 1fr                                                                                                                                                                             |
 // | --graupl-card-image-ratio                | auto                                                                                                                                                                            |
-// | --graupl-horizontal-card-content-ratio   | 3fr                                                                                                                                                                             |
 // | --graupl-horizontal-card-image-ratio     | 2fr                                                                                                                                                                             |
 // | --graupl-card-image-padding-x            | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-image-padding-y            | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-image-padding              | var(--graupl-card-image-padding-y) var(--graupl-card-image-padding-x)                                                                                                           |
+// | --graupl-card-content-ratio              | 1fr                                                                                                                                                                             |
+// | --graupl-horizontal-card-content-ratio   | 3fr                                                                                                                                                                             |
 // | --graupl-card-content-padding-x          | var(--graupl-spacer-5)                                                                                                                                                          |
 // | --graupl-card-content-padding-y          | var(--graupl-spacer-3)                                                                                                                                                          |
 // | --graupl-card-content-padding            | var(--graupl-card-content-padding-y) var(--graupl-card-content-padding-x)                                                                                                       |
 // | --graupl-card-content-column-gap         | var(--graupl-spacer-0)                                                                                                                                                          |
 // | --graupl-card-content-row-gap            | var(--graupl-spacer-3)                                                                                                                                                          |
-// | --graupl-card-content-gap                | var(--graupl-card-content-column-gap) var(--graupl-card-content-row-gap)                                                                                                        |
+// | --graupl-card-content-gap                | var(--graupl-card-content-row-gap) var(--graupl-card-content-column-gap)                                                                                                        |
 // | --graupl-card-title-color                | var(--graupl-card-color)                                                                                                                                                        |
 // | --graupl-card-title-font-size            | var(--graupl-h4-font-size)                                                                                                                                                      |
 // | --graupl-card-title-font-weight          | var(--graupl-h4-font-weight)                                                                                                                                                    |
