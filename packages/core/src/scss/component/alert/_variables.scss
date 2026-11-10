@@ -20,23 +20,23 @@
 // | --graupl-alert-link-hover-color                    | var(--graupl-link-hover-color)                                                                                                                                                      |
 // | --graupl-alert-link-active-color                   | var(--graupl-alert-link-hover-color)                                                                                                                                                |
 // | --graupl-alert-link-disabled-color                 | var(--graupl-link-disabled-color)                                                                                                                                                   |
-// | --graupl-alert-link-text-decoration-color          | var(--graupl-link-text-decoration-color)                                                                                                                                            |
-// | --graupl-alert-link-visited-text-decoration-color  | var(--graupl-link-visited-text-decoration-color)                                                                                                                                    |
-// | --graupl-alert-link-focus-text-decoration-color    | var(--graupl-link-focus-text-decoration-color)                                                                                                                                      |
-// | --graupl-alert-link-hover-text-decoration-color    | var(--graupl-link-hover-text-decoration-color)                                                                                                                                      |
-// | --graupl-alert-link-active-text-decoration-color   | var(--graupl-link-active-text-decoration-color)                                                                                                                                     |
-// | --graupl-alert-link-disabled-text-decoration-color | var(--graupl-link-disabled-text-decoration-color)                                                                                                                                   |
+// | --graupl-alert-link-text-decoration-color          | var(--graupl-alert-link-color)                                                                                                                                                      |
+// | --graupl-alert-link-visited-text-decoration-color  | var(--graupl-alert-link-visited-color)                                                                                                                                              |
+// | --graupl-alert-link-focus-text-decoration-color    | var(--graupl-alert-link-focus-color)                                                                                                                                                |
+// | --graupl-alert-link-hover-text-decoration-color    | var(--graupl-alert-link-hover-color)                                                                                                                                                |
+// | --graupl-alert-link-active-text-decoration-color   | var(--graupl-alert-link-active-color)                                                                                                                                               |
+// | --graupl-alert-link-disabled-text-decoration-color | var(--graupl-alert-link-disabled-color)                                                                                                                                             |
 // | --graupl-alert-link-background                     | var(--graupl-link-background)                                                                                                                                                       |
-// | --graupl-alert-link-visited-background             | var(--graupl-link-visited-background)                                                                                                                                               |
-// | --graupl-alert-link-focus-background               | var(--graupl-link-focus-background)                                                                                                                                                 |
+// | --graupl-alert-link-visited-background             | var(--graupl-alert-link-background)                                                                                                                                                 |
+// | --graupl-alert-link-focus-background               | var(--graupl-alert-link-background)                                                                                                                                                 |
 // | --graupl-alert-link-hover-background               | var(--graupl-link-hover-background)                                                                                                                                                 |
-// | --graupl-alert-link-active-background              | var(--graupl-link-active-background)                                                                                                                                                |
+// | --graupl-alert-link-active-background              | var(--graupl-alert-link-hover-background)                                                                                                                                           |
 // | --graupl-alert-link-disabled-background            | var(--graupl-link-disabled-background)                                                                                                                                              |
 // | --graupl-alert-link-border-color                   | var(--graupl-link-border-color)                                                                                                                                                     |
-// | --graupl-alert-link-visited-border-color           | var(--graupl-link-visited-border-color)                                                                                                                                             |
-// | --graupl-alert-link-focus-border-color             | var(--graupl-link-focus-border-color)                                                                                                                                               |
+// | --graupl-alert-link-visited-border-color           | var(--graupl-alert-link-border-color)                                                                                                                                               |
+// | --graupl-alert-link-focus-border-color             | var(--graupl-alert-link-border-color)                                                                                                                                               |
 // | --graupl-alert-link-hover-border-color             | var(--graupl-link-hover-border-color)                                                                                                                                               |
-// | --graupl-alert-link-active-border-color            | var(--graupl-link-active-border-color)                                                                                                                                              |
+// | --graupl-alert-link-active-border-color            | var(--graupl-alert-link-hover-border-color)                                                                                                                                         |
 // | --graupl-alert-link-disabled-border-color          | var(--graupl-link-disabled-border-color)                                                                                                                                            |
 // | --graupl-alert-border-color                        | var(--graupl-alert-color)                                                                                                                                                           |
 // | --graupl-alert-border-top-left-radius              | var(--graupl-border-top-left-radius)                                                                                                                                                |
@@ -59,6 +59,24 @@
 // | --graupl-alert-header-padding-x                    | 0                                                                                                                                                                                   |
 // | --graupl-alert-header-padding-y                    | 0                                                                                                                                                                                   |
 // | --graupl-alert-header-padding                      | var(--graupl-alert-header-padding-y) var(--graupl-alert-header-padding-x)                                                                                                           |
+// | --graupl-alert-dismisser-border-color              | transparent                                                                                                                                                                         |
+// | --graupl-alert-dismisser-visited-border-color      | var(--graupl-alert-dismisser-border-color)                                                                                                                                          |
+// | --graupl-alert-dismisser-focus-border-color        | var(--graupl-alert-dismisser-border-color)                                                                                                                                          |
+// | --graupl-alert-dismisser-hover-border-color        | transparent                                                                                                                                                                         |
+// | --graupl-alert-dismisser-active-border-color       | var(--graupl-alert-dismisser-hover-border-color)                                                                                                                                    |
+// | --graupl-alert-dismisser-disabled-border-color     | transparent                                                                                                                                                                         |
+// | --graupl-alert-dismisser-background                | var(--graupl-alert-background)                                                                                                                                                      |
+// | --graupl-alert-dismisser-visited-background        | var(--graupl-alert-dismisser-background)                                                                                                                                            |
+// | --graupl-alert-dismisser-focus-background          | var(--graupl-alert-dismisser-background)                                                                                                                                            |
+// | --graupl-alert-dismisser-hover-background          | var(--graupl-button-hover-background)                                                                                                                                               |
+// | --graupl-alert-dismisser-active-background         | var(--graupl-alert-dismisser-hover-background)                                                                                                                                      |
+// | --graupl-alert-dismisser-disabled-background       | var(--graupl-button-disabled-background)                                                                                                                                            |
+// | --graupl-alert-dismisser-color                     | var(--graupl-alert-color)                                                                                                                                                           |
+// | --graupl-alert-dismisser-visited-color             | var(--graupl-alert-dismisser-color)                                                                                                                                                 |
+// | --graupl-alert-dismisser-focus-color               | var(--graupl-alert-dismisser-color)                                                                                                                                                 |
+// | --graupl-alert-dismisser-hover-color               | var(--graupl-button-hover-color)                                                                                                                                                    |
+// | --graupl-alert-dismisser-active-color              | var(--graupl-alert-dismisser-hover-color)                                                                                                                                           |
+// | --graupl-alert-dismisser-disabled-color            | var(--graupl-button-disabled-color)                                                                                                                                                 |
 // | --graupl-alert-title-color                         | var(--graupl-alert-color)                                                                                                                                                           |
 // | --graupl-alert-title-font-size                     | var(--graupl-h4-font-size)                                                                                                                                                          |
 // | --graupl-alert-title-font-weight                   | var(--graupl-h4-font-weight)                                                                                                                                                        |
@@ -78,6 +96,7 @@
 @use "../../theme/color/variables" as color;
 @use "../../theme/typography/variables" as typography;
 @use "../../base/link/variables" as link-variables;
+@use "../../base/button/variables" as button-variables;
 @use "sass:map";
 
 // Alert properties.
@@ -175,37 +194,37 @@ $alert-link-color-states: (
 // --graupl-alert-link-text-decoration-color
 $alert-link-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-text-decoration-color,
-  #{link-variables.$link-text-decoration-color}
+  #{$alert-link-color}
 );
 
 // --graupl-alert-link-visited-text-decoration-color
 $alert-link-visited-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-visited-text-decoration-color,
-  #{link-variables.$link-visited-text-decoration-color}
+  #{$alert-link-visited-color}
 );
 
 // --graupl-alert-link-focus-text-decoration-color
 $alert-link-focus-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-focus-text-decoration-color,
-  #{link-variables.$link-focus-text-decoration-color}
+  #{$alert-link-focus-color}
 );
 
 // --graupl-alert-link-hover-text-decoration-color
 $alert-link-hover-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-hover-text-decoration-color,
-  #{link-variables.$link-hover-text-decoration-color}
+  #{$alert-link-hover-color}
 );
 
 // --graupl-alert-link-active-text-decoration-color
 $alert-link-active-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-active-text-decoration-color,
-  #{link-variables.$link-active-text-decoration-color}
+  #{$alert-link-active-color}
 );
 
 // --graupl-alert-link-disabled-text-decoration-color
 $alert-link-disabled-text-decoration-color: var(
   --#{root-defaults.$prefix}alert-link-disabled-text-decoration-color,
-  #{link-variables.$link-disabled-text-decoration-color}
+  #{$alert-link-disabled-color}
 );
 $alert-link-text-decoration-color-states: (
   default: $alert-link-text-decoration-color,
@@ -225,13 +244,13 @@ $alert-link-background: var(
 // --graupl-alert-link-visited-background
 $alert-link-visited-background: var(
   --#{root-defaults.$prefix}alert-link-visited-background,
-  #{link-variables.$link-visited-background}
+  #{$alert-link-background}
 );
 
 // --graupl-alert-link-focus-background
 $alert-link-focus-background: var(
   --#{root-defaults.$prefix}alert-link-focus-background,
-  #{link-variables.$link-focus-background}
+  #{$alert-link-background}
 );
 
 // --graupl-alert-link-hover-background
@@ -243,7 +262,7 @@ $alert-link-hover-background: var(
 // --graupl-alert-link-active-background
 $alert-link-active-background: var(
   --#{root-defaults.$prefix}alert-link-active-background,
-  #{link-variables.$link-active-background}
+  #{$alert-link-hover-background}
 );
 
 // --graupl-alert-link-disabled-background
@@ -269,13 +288,13 @@ $alert-link-border-color: var(
 // --graupl-alert-link-visited-border-color
 $alert-link-visited-border-color: var(
   --#{root-defaults.$prefix}alert-link-visited-border-color,
-  #{link-variables.$link-visited-border-color}
+  #{$alert-link-border-color}
 );
 
 // --graupl-alert-link-focus-border-color
 $alert-link-focus-border-color: var(
   --#{root-defaults.$prefix}alert-link-focus-border-color,
-  #{link-variables.$link-focus-border-color}
+  #{$alert-link-border-color}
 );
 
 // --graupl-alert-link-hover-border-color
@@ -287,7 +306,7 @@ $alert-link-hover-border-color: var(
 // --graupl-alert-link-active-border-color
 $alert-link-active-border-color: var(
   --#{root-defaults.$prefix}alert-link-active-border-color,
-  #{link-variables.$link-active-border-color}
+  #{$alert-link-hover-border-color}
 );
 
 // --graupl-alert-link-disabled-border-color
@@ -438,6 +457,139 @@ $alert-header-padding-y: var(
 $alert-header-padding: var(
   --#{root-defaults.$prefix}alert-header-padding,
   #{$alert-header-padding-y} #{$alert-header-padding-x}
+);
+
+// Alert dismiss button properties.
+// --graupl-alert-dismisser-border-color
+$alert-dismisser-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-border-color,
+  transparent
+);
+
+// --graupl-alert-dismisser-visited-border-color
+$alert-dismisser-visited-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-visited-border-color,
+  #{$alert-dismisser-border-color}
+);
+
+// --graupl-alert-dismisser-focus-border-color
+$alert-dismisser-focus-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-focus-border-color,
+  #{$alert-dismisser-border-color}
+);
+
+// --graupl-alert-dismisser-hover-border-color
+$alert-dismisser-hover-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-hover-border-color,
+  transparent
+);
+
+// --graupl-alert-dismisser-active-border-color
+$alert-dismisser-active-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-active-border-color,
+  #{$alert-dismisser-hover-border-color}
+);
+
+// --graupl-alert-dismisser-disabled-border-color
+$alert-dismisser-disabled-border-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-disabled-border-color,
+  transparent
+);
+$alert-dismisser-border-color-states: (
+  default: $alert-dismisser-border-color,
+  visited: $alert-dismisser-visited-border-color,
+  focus: $alert-dismisser-focus-border-color,
+  hover: $alert-dismisser-hover-border-color,
+  active: $alert-dismisser-active-border-color,
+  disabled: $alert-dismisser-disabled-border-color,
+);
+
+// --graupl-alert-dismisser-background
+$alert-dismisser-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-background,
+  #{$alert-background}
+);
+
+// --graupl-alert-dismisser-visited-background
+$alert-dismisser-visited-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-visited-background,
+  #{$alert-dismisser-background}
+);
+
+// --graupl-alert-dismisser-focus-background
+$alert-dismisser-focus-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-focus-background,
+  #{$alert-dismisser-background}
+);
+
+// --graupl-alert-dismisser-hover-background
+$alert-dismisser-hover-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-hover-background,
+  #{button-variables.$button-hover-background}
+);
+
+// --graupl-alert-dismisser-active-background
+$alert-dismisser-active-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-active-background,
+  #{$alert-dismisser-hover-background}
+);
+
+// --graupl-alert-dismisser-disabled-background
+$alert-dismisser-disabled-background: var(
+  --#{root-defaults.$prefix}alert-dismisser-disabled-background,
+  #{button-variables.$button-disabled-background}
+);
+$alert-dismisser-background-states: (
+  default: $alert-dismisser-background,
+  visited: $alert-dismisser-visited-background,
+  focus: $alert-dismisser-focus-background,
+  hover: $alert-dismisser-hover-background,
+  active: $alert-dismisser-active-background,
+  disabled: $alert-dismisser-disabled-background,
+);
+
+// --graupl-alert-dismisser-color
+$alert-dismisser-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-color,
+  #{$alert-color}
+);
+
+// --graupl-alert-dismisser-visited-color
+$alert-dismisser-visited-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-visited-color,
+  #{$alert-dismisser-color}
+);
+
+// --graupl-alert-dismisser-focus-color
+$alert-dismisser-focus-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-focus-color,
+  #{$alert-dismisser-color}
+);
+
+// --graupl-alert-dismisser-hover-color
+$alert-dismisser-hover-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-hover-color,
+  #{button-variables.$button-hover-color}
+);
+
+// --graupl-alert-dismisser-active-color
+$alert-dismisser-active-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-active-color,
+  #{$alert-dismisser-hover-color}
+);
+
+// --graupl-alert-dismisser-disabled-color
+$alert-dismisser-disabled-color: var(
+  --#{root-defaults.$prefix}alert-dismisser-disabled-color,
+  #{button-variables.$button-disabled-color}
+);
+$alert-dismisser-color-states: (
+  default: $alert-dismisser-color,
+  visited: $alert-dismisser-visited-color,
+  focus: $alert-dismisser-focus-color,
+  hover: $alert-dismisser-hover-color,
+  active: $alert-dismisser-active-color,
+  disabled: $alert-dismisser-disabled-color,
 );
 
 // Alert title properties.

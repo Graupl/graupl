@@ -33,23 +33,23 @@
 // | `--graupl-alert-link-hover-color`                    | The color of hovered links in the alert.                  | `var(--graupl-link-hover-color)`                                                                                                                                                      |
 // | `--graupl-alert-link-active-color`                   | The color of active links in the alert.                   | `var(--graupl-alert-link-hover-color)`                                                                                                                                                |
 // | `--graupl-alert-link-disabled-color`                 | The color of disabled links in the alert.                 | `var(--graupl-link-disabled-color)`                                                                                                                                                   |
-// | `--graupl-alert-link-text-decoration-color`          | The text decoration color of links in the alert.          | `var(--graupl-link-text-decoration-color)`                                                                                                                                            |
-// | `--graupl-alert-link-visited-text-decoration-color`  | The text decoration color of visited links in the alert.  | `var(--graupl-link-visited-text-decoration-color)`                                                                                                                                    |
-// | `--graupl-alert-link-focus-text-decoration-color`    | The text decoration color of focused links in the alert.  | `var(--graupl-link-focus-text-decoration-color)`                                                                                                                                      |
-// | `--graupl-alert-link-hover-text-decoration-color`    | The text decoration color of hovered links in the alert.  | `var(--graupl-link-hover-text-decoration-color)`                                                                                                                                      |
-// | `--graupl-alert-link-active-text-decoration-color`   | The text decoration color of active links in the alert.   | `var(--graupl-link-active-text-decoration-color)`                                                                                                                                     |
-// | `--graupl-alert-link-disabled-text-decoration-color` | The text decoration color of disabled links in the alert. | `var(--graupl-link-disabled-text-decoration-color)`                                                                                                                                   |
+// | `--graupl-alert-link-text-decoration-color`          | The text decoration color of links in the alert.          | `var(--graupl-alert-link-color)`                                                                                                                                                      |
+// | `--graupl-alert-link-visited-text-decoration-color`  | The text decoration color of visited links in the alert.  | `var(--graupl-alert-link-visited-color)`                                                                                                                                              |
+// | `--graupl-alert-link-focus-text-decoration-color`    | The text decoration color of focused links in the alert.  | `var(--graupl-alert-link-focus-color)`                                                                                                                                                |
+// | `--graupl-alert-link-hover-text-decoration-color`    | The text decoration color of hovered links in the alert.  | `var(--graupl-alert-link-hover-color)`                                                                                                                                                |
+// | `--graupl-alert-link-active-text-decoration-color`   | The text decoration color of active links in the alert.   | `var(--graupl-alert-link-active-color)`                                                                                                                                               |
+// | `--graupl-alert-link-disabled-text-decoration-color` | The text decoration color of disabled links in the alert. | `var(--graupl-alert-link-disabled-color)`                                                                                                                                             |
 // | `--graupl-alert-link-background`                     | The background of links in the alert.                     | `var(--graupl-link-background)`                                                                                                                                                       |
-// | `--graupl-alert-link-visited-background`             | The background of visited links in the alert.             | `var(--graupl-link-visited-background)`                                                                                                                                               |
-// | `--graupl-alert-link-focus-background`               | The background of focused links in the alert.             | `var(--graupl-link-focus-background)`                                                                                                                                                 |
+// | `--graupl-alert-link-visited-background`             | The background of visited links in the alert.             | `var(--graupl-alert-link-background)`                                                                                                                                                 |
+// | `--graupl-alert-link-focus-background`               | The background of focused links in the alert.             | `var(--graupl-alert-link-background)`                                                                                                                                                 |
 // | `--graupl-alert-link-hover-background`               | The background of hovered links in the alert.             | `var(--graupl-link-hover-background)`                                                                                                                                                 |
-// | `--graupl-alert-link-active-background`              | The background of active links in the alert.              | `var(--graupl-link-active-background)`                                                                                                                                                |
+// | `--graupl-alert-link-active-background`              | The background of active links in the alert.              | `var(--graupl-alert-link-hover-background)`                                                                                                                                           |
 // | `--graupl-alert-link-disabled-background`            | The background of disabled links in the alert.            | `var(--graupl-link-disabled-background)`                                                                                                                                              |
 // | `--graupl-alert-link-border-color`                   | The border color of links in the alert.                   | `var(--graupl-link-border-color)`                                                                                                                                                     |
-// | `--graupl-alert-link-visited-border-color`           | The border color of visited links in the alert.           | `var(--graupl-link-visited-border-color)`                                                                                                                                             |
-// | `--graupl-alert-link-focus-border-color`             | The border color of focused links in the alert.           | `var(--graupl-link-focus-border-color)`                                                                                                                                               |
+// | `--graupl-alert-link-visited-border-color`           | The border color of visited links in the alert.           | `var(--graupl-alert-link-border-color)`                                                                                                                                               |
+// | `--graupl-alert-link-focus-border-color`             | The border color of focused links in the alert.           | `var(--graupl-alert-link-border-color)`                                                                                                                                               |
 // | `--graupl-alert-link-hover-border-color`             | The border color of hovered links in the alert.           | `var(--graupl-link-hover-border-color)`                                                                                                                                               |
-// | `--graupl-alert-link-active-border-color`            | The border color of active links in the alert.            | `var(--graupl-link-active-border-color)`                                                                                                                                              |
+// | `--graupl-alert-link-active-border-color`            | The border color of active links in the alert.            | `var(--graupl-alert-link-hover-border-color)`                                                                                                                                         |
 // | `--graupl-alert-link-disabled-border-color`          | The border color of disabled links in the alert.          | `var(--graupl-link-disabled-border-color)`                                                                                                                                            |
 // | `--graupl-alert-border-color`                        | The border color of the alert.                            | `var(--graupl-alert-color)`                                                                                                                                                           |
 // | `--graupl-alert-border-top-left-radius`              | The border top left radius of the alert.                  | `var(--graupl-border-top-left-radius)`                                                                                                                                                |
@@ -72,6 +72,24 @@
 // | `--graupl-alert-header-padding-x`                    | The horizontal padding of the alert header.               | `0`                                                                                                                                                                                   |
 // | `--graupl-alert-header-padding-y`                    | The vertical padding of the alert header.                 | `0`                                                                                                                                                                                   |
 // | `--graupl-alert-header-padding`                      | The padding of the alert header.                          | `var(--graupl-alert-header-padding-y) var(--graupl-alert-header-padding-x)`                                                                                                           |
+// | `--graupl-alert-dismisser-border-color`              | The border color of the alert dismiss button.             | `transparent`                                                                                                                                                                         |
+// | `--graupl-alert-dismisser-visited-border-color`      | The border color of the visited alert dismiss button.     | `var(--graupl-alert-dismisser-border-color)`                                                                                                                                          |
+// | `--graupl-alert-dismisser-focus-border-color`        | The border color of the focused alert dismiss button.     | `var(--graupl-alert-dismisser-border-color)`                                                                                                                                          |
+// | `--graupl-alert-dismisser-hover-border-color`        | The border color of the hovered alert dismiss button.     | `transparent`                                                                                                                                                                         |
+// | `--graupl-alert-dismisser-active-border-color`       | The border color of the active alert dismiss button.      | `var(--graupl-alert-dismisser-hover-border-color)`                                                                                                                                    |
+// | `--graupl-alert-dismisser-disabled-border-color`     | The border color of the disabled alert dismiss button.    | `transparent`                                                                                                                                                                         |
+// | `--graupl-alert-dismisser-background`                | The default background of the alert dismiss button.       | `var(--graupl-alert-background)`                                                                                                                                                      |
+// | `--graupl-alert-dismisser-visited-background`        | The background of the visited alert dismiss button.       | `var(--graupl-alert-dismisser-background)`                                                                                                                                            |
+// | `--graupl-alert-dismisser-focus-background`          | The background of the focused alert dismiss button.       | `var(--graupl-alert-dismisser-background)`                                                                                                                                            |
+// | `--graupl-alert-dismisser-hover-background`          | The background of the hovered alert dismiss button.       | `var(--graupl-button-hover-background)`                                                                                                                                               |
+// | `--graupl-alert-dismisser-active-background`         | The background of the active alert dismiss button.        | `var(--graupl-alert-dismisser-hover-background)`                                                                                                                                      |
+// | `--graupl-alert-dismisser-disabled-background`       | The background of the disabled alert dismiss button.      | `var(--graupl-button-disabled-background)`                                                                                                                                            |
+// | `--graupl-alert-dismisser-color`                     | The default text color of the alert dismiss button.       | `var(--graupl-alert-color)`                                                                                                                                                           |
+// | `--graupl-alert-dismisser-visited-color`             | The text color of the visited alert dismiss button.       | `var(--graupl-alert-dismisser-color)`                                                                                                                                                 |
+// | `--graupl-alert-dismisser-focus-color`               | The text color of the focused alert dismiss button.       | `var(--graupl-alert-dismisser-color)`                                                                                                                                                 |
+// | `--graupl-alert-dismisser-hover-color`               | The text color of the hovered alert dismiss button.       | `var(--graupl-button-hover-color)`                                                                                                                                                    |
+// | `--graupl-alert-dismisser-active-color`              | The text color of the active alert dismiss button.        | `var(--graupl-alert-dismisser-hover-color)`                                                                                                                                           |
+// | `--graupl-alert-dismisser-disabled-color`            | The text color of the disabled alert dismiss button.      | `var(--graupl-button-disabled-color)`                                                                                                                                                 |
 // | `--graupl-alert-title-color`                         | The color of the alert title.                             | `var(--graupl-alert-color)`                                                                                                                                                           |
 // | `--graupl-alert-title-font-size`                     | The font size of the alert title.                         | `var(--graupl-h4-font-size)`                                                                                                                                                          |
 // | `--graupl-alert-title-font-weight`                   | The font weight of the alert title.                       | `var(--graupl-h4-font-weight)`                                                                                                                                                        |
@@ -257,8 +275,6 @@
 @include layer(component) {
   // .alert
   #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
-    --#{root-defaults.$prefix}button-border: 0;
-
     display: grid;
     grid-template-columns: [content-start] 1fr [content-end dismiss-start] auto [dismiss-end];
     grid-template-rows: [header-start] auto [header-end body-start] auto [body-end footer-start] auto [footer-end];
@@ -330,9 +346,6 @@
 @include layer(theme) {
   // .alert
   #{defaults.$alert-selector-base}#{defaults.$alert-selector} {
-    --#{root-defaults.$prefix}button-background: #{$alert-background};
-    --#{root-defaults.$prefix}button-focus-background: #{$alert-background};
-
     border-color: $alert-border-color;
     background-color: $alert-background;
     color: $alert-color;
@@ -366,6 +379,18 @@
   // .alert-dismisser
   #{defaults.$alert-dismisser-selector-base}#{defaults.$alert-dismisser-selector} {
     @include button-mixins.apply-theme;
+
+    border-color: $alert-dismisser-border-color;
+    background: $alert-dismisser-background;
+    color: $alert-dismisser-color;
+
+    @include state.generate-modifiers(
+      (
+        border-color: $alert-dismisser-border-color-states,
+        background: $alert-dismisser-background-states,
+        color: $alert-dismisser-color-states,
+      )
+    );
   }
 
   // .alert-title
