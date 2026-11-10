@@ -17,7 +17,7 @@
 // | `--graupl-list-margin`                          | The margin of the list.                                                        | `var(--graupl-list-margin-y) var(--graupl-list-margin-x)`                                                                                                                                             |
 // | `--graupl-list-column-gap`                      | The column gap of the list.                                                    | `var(--graupl-spacer-2)`                                                                                                                                                                              |
 // | `--graupl-list-row-gap`                         | The row gap of the list.                                                       | `var(--graupl-spacer-2)`                                                                                                                                                                              |
-// | `--graupl-list-gap`                             | The gap of the list.                                                           | `var(--graupl-list-column-gap) var(--graupl-list-row-gap)`                                                                                                                                            |
+// | `--graupl-list-gap`                             | The gap of the list.                                                           | `var(--graupl-list-row-gap) var(--graupl-list-column-gap)`                                                                                                                                            |
 // | `--graupl-list-background`                      | The background colour of the list.                                             | `var(--graupl-background)`                                                                                                                                                                            |
 // | `--graupl-list-color`                           | The text colour of the list.                                                   | `var(--graupl-color)`                                                                                                                                                                                 |
 // | `--graupl-list-border-color`                    | The border colour of the list.                                                 | `var(--graupl-list-color)`                                                                                                                                                                            |
@@ -40,7 +40,7 @@
 // | `--graupl-list-item-padding-y`                  | The vertical padding of the list item.                                         | `var(--graupl-spacer-3)`                                                                                                                                                                              |
 // | `--graupl-list-item-padding`                    | The padding of the list item.                                                  | `var(--graupl-list-item-padding-y) var(--graupl-list-item-padding-x)`                                                                                                                                 |
 // | `--graupl-list-item-transition`                 | The transition of the list item.                                               | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                                           |
-// | `--graupl-list-item-transition-reduced-motion`  | Defined for the reduced-motion transition. The list component does not use it. | `none`                                                                                                                                                                                                |
+// | `--graupl-list-item-transition-reduced-motion`  | The transition of the list item when reduced motion is enabled.                | `none`                                                                                                                                                                                                |
 // | `--graupl-list-item-transform`                  | The transform of the list item.                                                | `none`                                                                                                                                                                                                |
 // | `--graupl-list-item-hover-transform`            | The transform on hover of the list item.                                       | `none`                                                                                                                                                                                                |
 // | `--graupl-list-item-background`                 | The background colour of the list item.                                        | `var(--graupl-background)`                                                                                                                                                                            |
@@ -61,8 +61,6 @@
 // | `--graupl-list-item-border-bottom-style`        | The border bottom style of the list item.                                      | `var(--graupl-border-bottom-style)`                                                                                                                                                                   |
 // | `--graupl-list-item-border-left-style`          | The border left style of the list item.                                        | `var(--graupl-border-left-style)`                                                                                                                                                                     |
 // | `--graupl-list-item-border-style`               | The border style of the list item.                                             | `var(--graupl-list-item-border-top-style) var(--graupl-list-item-border-right-style) var(--graupl-list-item-border-bottom-style) var(--graupl-list-item-border-left-style)`                           |
-// The default gap shorthand puts the column-gap property first. CSS uses that value for the row gap and the second value for the column gap.
-//
 // The following sass variables can be used to customize the generation of the list component:
 // | Variable                      | Description                                             | Default Value |
 // | ----------------------------- | ------------------------------------------------------- | ------------- |
@@ -192,6 +190,10 @@
     border-width: $list-item-border-width;
     border-style: $list-item-border-style;
     border-radius: $list-item-border-radius;
+
+    @include animation.off {
+      transition: $list-item-transition-reduced-motion;
+    }
 
     @each $selector in map.get(root-defaults.$state-selectors, hover) {
       // e.g &:hover, &.hover
