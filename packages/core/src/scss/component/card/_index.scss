@@ -76,51 +76,51 @@
 // | `--graupl-card-title-font-family`          | The font family of the card title.                                             | `var(--graupl-h4-font-family)`                                                                                                                                                    |
 // | `--graupl-card-title-line-height`          | The line height of the card title.                                             | `var(--graupl-h4-line-height)`                                                                                                                                                    |
 // The following Sass variables can be used to customize the generation of the card component:
-// | Variable                               | Description                                                    | Default Value                                            |
-// | -------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------- |
-// | `$selector-base`                       | The selector base for the component.                           | `"."`                                                    |
-// | `$modifier-selector-base`              | The selector base for component modifiers.                     | `"."`                                                    |
-// | `$generate-base-theme-map`             | Whether to include the default card theme mappings.            | `true`                                                   |
-// | `$themeable`                           | Whether to generate theme variants for cards.                  | `false`                                                  |
-// | `$force-vertical-cards`                | Whether to stack horizontal cards in narrow containers.        | `true`                                                   |
-// | `$card-selector-base`                  | The selector base for the card.                                | `"."`                                                    |
-// | `$card-selector`                       | The selector for the card.                                     | `"card"`                                                 |
-// | `$card-theme-selector-base`            | The selector base for card theme variants.                     | `"."`                                                    |
-// | `$card-theme-selector-prefix`          | The selector prefix for card theme variants.                   | `""`                                                     |
-// | `$card-image-selector-base`            | The selector base for the card image.                          | `"."`                                                    |
-// | `$card-image-selector`                 | The selector for the card image.                               | `"card-image"`                                           |
-// | `$card-image-element-selector-base`    | The selector base for the image inside the card image wrapper. | `""`                                                     |
-// | `$card-image-element-selector`         | The selector for the image inside the card image wrapper.      | `"img"`                                                  |
-// | `$card-content-selector-base`          | The selector base for the card content.                        | `"."`                                                    |
-// | `$card-content-selector`               | The selector for the card content.                             | `"card-content"`                                         |
-// | `$card-body-selector-base`             | The selector base for the card body.                           | `"."`                                                    |
-// | `$card-body-selector`                  | The selector for the card body.                                | `"card-body"`                                            |
-// | `$card-header-selector-base`           | The selector base for the card header.                         | `"."`                                                    |
-// | `$card-header-selector`                | The selector for the card header.                              | `"card-header"`                                          |
-// | `$card-footer-selector-base`           | The selector base for the card footer.                         | `"."`                                                    |
-// | `$card-footer-selector`                | The selector for the card footer.                              | `"card-footer"`                                          |
-// | `$card-title-selector-base`            | The selector base for the card title.                          | `"."`                                                    |
-// | `$card-title-selector`                 | The selector for the card title.                               | `"card-title"`                                           |
-// | `$horizontal-card-selector-base`       | The selector base for the horizontal card.                     | `"."`                                                    |
-// | `$horizontal-card-selector`            | The selector for the horizontal card.                          | `"horizontal"`                                           |
-// | `$horizontal-card-left-selector-base`  | The selector base for the horizontal card left.                | `"."`                                                    |
-// | `$horizontal-card-left-selector`       | The selector for the horizontal card left.                     | `"left"`                                                 |
-// | `$horizontal-card-right-selector-base` | The selector base for the horizontal card right.               | `"."`                                                    |
-// | `$horizontal-card-right-selector`      | The selector for the horizontal card right.                    | `"right"`                                                |
-// | `$vertical-card-top-selector-base`     | The selector base for the vertical card top.                   | `"."`                                                    |
-// | `$vertical-card-top-selector`          | The selector for the vertical card top.                        | `"top"`                                                  |
-// | `$vertical-card-bottom-selector-base`  | The selector base for the vertical card bottom.                | `"."`                                                    |
-// | `$vertical-card-bottom-selector`       | The selector for the vertical card bottom.                     | `"bottom"`                                               |
-// | `$inverse-card-selector-base`          | The selector base for the inverse card.                        | `"."`                                                    |
-// | `$inverse-card-selector`               | The selector for the inverse card.                             | `"inverse"`                                              |
-// | `$card-transform`                      | The default transform of the card.                             | `none`                                                   |
-// | `$card-hover-transform`                | The transform of the card on hover.                            | `none`                                                   |
-// | `$card-content-ratio`                  | The default size of the content track in a vertical card.      | `1fr`                                                    |
-// | `$card-image-ratio`                    | The default size of the image track in a vertical card.        | `auto`                                                   |
-// | `$horizontal-card-content-ratio`       | The default size of the content track in a horizontal card.    | `3fr`                                                    |
-// | `$horizontal-card-image-ratio`         | The default size of the image track in a horizontal card.      | `2fr`                                                    |
-// | `$card-theme-mappings`                 | Map of card properties and their theme shades.                 | `map.merge($-card-theme-mappings, $card-theme-mappings)` |
-// | `$card-theme-map`                      | Map of CSS custom property values for each card variant.       | `map.deep-merge($-card-theme-map, $card-theme-map)`      |
+// | Variable                               | Description                                                                           | Default Value                                            |
+// | -------------------------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+// | `$selector-base`                       | The selector base for the component.                                                  | `"."`                                                    |
+// | `$modifier-selector-base`              | The selector base for component modifiers.                                            | `"."`                                                    |
+// | `$generate-base-theme-map`             | Whether to include the default card theme mappings.                                   | `true`                                                   |
+// | `$themeable`                           | Whether to generate theme variants for cards.                                         | `false`                                                  |
+// | `$force-vertical-cards`                | Whether to stack horizontal cards in narrow containers.                               | `true`                                                   |
+// | `$card-selector-base`                  | The selector base for the card.                                                       | `"."`                                                    |
+// | `$card-selector`                       | The selector for the card.                                                            | `"card"`                                                 |
+// | `$card-theme-selector-base`            | The selector base for card theme variants.                                            | `"."`                                                    |
+// | `$card-theme-selector-prefix`          | The selector prefix for card theme variants.                                          | `""`                                                     |
+// | `$card-image-selector-base`            | The selector base for the card image.                                                 | `"."`                                                    |
+// | `$card-image-selector`                 | The selector for the card image.                                                      | `"card-image"`                                           |
+// | `$card-image-element-selector-base`    | The selector base for the image inside the card image wrapper.                        | `""`                                                     |
+// | `$card-image-element-selector`         | The selector for the image inside the card image wrapper.                             | `"img"`                                                  |
+// | `$card-content-selector-base`          | The selector base for the card content.                                               | `"."`                                                    |
+// | `$card-content-selector`               | The selector for the card content.                                                    | `"card-content"`                                         |
+// | `$card-body-selector-base`             | The selector base for the card body.                                                  | `"."`                                                    |
+// | `$card-body-selector`                  | The selector for the card body.                                                       | `"card-body"`                                            |
+// | `$card-header-selector-base`           | The selector base for the card header.                                                | `"."`                                                    |
+// | `$card-header-selector`                | The selector for the card header.                                                     | `"card-header"`                                          |
+// | `$card-footer-selector-base`           | The selector base for the card footer.                                                | `"."`                                                    |
+// | `$card-footer-selector`                | The selector for the card footer.                                                     | `"card-footer"`                                          |
+// | `$card-title-selector-base`            | The selector base for the card title.                                                 | `"."`                                                    |
+// | `$card-title-selector`                 | The selector for the card title.                                                      | `"card-title"`                                           |
+// | `$horizontal-card-selector-base`       | The selector base for the horizontal card.                                            | `"."`                                                    |
+// | `$horizontal-card-selector`            | The selector for the horizontal card.                                                 | `"horizontal"`                                           |
+// | `$horizontal-card-left-selector-base`  | The selector base for the horizontal card left.                                       | `"."`                                                    |
+// | `$horizontal-card-left-selector`       | The selector for the horizontal card left.                                            | `"left"`                                                 |
+// | `$horizontal-card-right-selector-base` | The selector base for the horizontal card right.                                      | `"."`                                                    |
+// | `$horizontal-card-right-selector`      | The selector for the horizontal card right.                                           | `"right"`                                                |
+// | `$vertical-card-top-selector-base`     | The selector base for the vertical card top.                                          | `"."`                                                    |
+// | `$vertical-card-top-selector`          | The selector for the vertical card top.                                               | `"top"`                                                  |
+// | `$vertical-card-bottom-selector-base`  | The selector base for the vertical card bottom.                                       | `"."`                                                    |
+// | `$vertical-card-bottom-selector`       | The selector for the vertical card bottom.                                            | `"bottom"`                                               |
+// | `$inverse-card-selector-base`          | The selector base for the inverse card.                                               | `"."`                                                    |
+// | `$inverse-card-selector`               | The selector for the inverse card.                                                    | `"inverse"`                                              |
+// | `$card-transform`                      | The default transform of the card.                                                    | `none`                                                   |
+// | `$card-hover-transform`                | The transform of the card on hover.                                                   | `none`                                                   |
+// | `$card-content-ratio`                  | The default size of the content track in a vertical card.                             | `1fr`                                                    |
+// | `$card-image-ratio`                    | The default size of the image track in a vertical card.                               | `auto`                                                   |
+// | `$horizontal-card-content-ratio`       | The default size of the content track in a horizontal card.                           | `3fr`                                                    |
+// | `$horizontal-card-image-ratio`         | The default size of the image track in a horizontal card.                             | `2fr`                                                    |
+// | `$card-theme-mappings`                 | A map of properties and color shades used to generate all card variants.              | `map.merge($-card-theme-mappings, $card-theme-mappings)` |
+// | `$card-theme-map`                      | A map of all properties, colors, and color shades used to generate all card variants. | `map.deep-merge($-card-theme-map, $card-theme-map)`      |
 //
 // ## Using `$card-theme-mappings`
 //
