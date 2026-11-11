@@ -3,9 +3,9 @@
 
   const exampleList = `
 <ul class="list" role="list">
-  <li class="list-item">Parchment</li>
-  <li class="list-item">Quill</li>
-  <li class="list-item">Ink</li>
+  <li class="list-item">Rope</li>
+  <li class="list-item">Lantern</li>
+  <li class="list-item">Basilisk mirror</li>
 </ul>
   `;
 

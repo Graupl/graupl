@@ -11,22 +11,22 @@
     const classes = variant.value === "default" ? "alert" : `alert ${variant.value}`;
 
     return `<div class="${classes}">
-  <div class="alert-body">The north gate closes at sundown.</div>
+  <div class="alert-body">A dragon is circling the ridge trail.</div>
 </div>`;
   });
 
   const exampleAlert = `
 <div class="alert">
   <div class="alert-header">
-    <p class="alert-title">North gate closure</p>
+    <p class="alert-title">Dragon on the ridge</p>
   </div>
   <div class="alert-body">
-    <p>The north gate closes at sundown.</p>
+    <p>A dragon is circling the ridge trail.</p>
   </div>
   <div class="alert-footer">
-    <small>Use the east gate after sundown.</small>
+    <small>Take the river path until the trail is clear.</small>
   </div>
-  <button type="button" class="alert-dismisser" aria-label="Dismiss north gate alert">×</button>
+  <button type="button" class="alert-dismisser" aria-label="Dismiss dragon warning">×</button>
 </div>
   `;
 

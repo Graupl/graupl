@@ -8,8 +8,8 @@
   const instances = new Map();
 
   const items = [
-    { title: "North gate", body: "The gate closes at sundown." },
-    { title: "East gate", body: "Use this gate to return after sundown." },
+    { title: "Ogre toll bridge", body: "The ogre accepts riddles instead of coins." },
+    { title: "Kelpie ford", body: "Cross at the stepping stones and leave the kelpie alone." },
   ];
 
   function renderAccordion(controls = "") {

@@ -8,8 +8,8 @@
 
   const exampleTooltip = `
 <div class="tooltip">
-  <span class="tooltip-description hide">The north gate closes at sundown.</span>
-  <button type="button" class="tooltip-toggle" aria-label="North gate hours"></button>
+  <span class="tooltip-description hide">Griffins nest on the upper ledges.</span>
+  <button type="button" class="tooltip-toggle" aria-label="Griffin nesting grounds"></button>
 </div>
   `;
 

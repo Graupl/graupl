@@ -16,7 +16,7 @@
   const exampleColorMode = computed(() => `
 <div class="${mode.value}-mode bg-primary-100 text-primary-900 p-5">
   <p><strong>Quest notice</strong></p>
-  <p>Meet at the north gate before sundown.</p>
+  <p>Meet the sphinx at the ruined observatory.</p>
   <button type="button" class="button primary">Accept quest</button>
 </div>
   `);

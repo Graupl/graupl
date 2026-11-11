@@ -15,10 +15,10 @@
   </div>
   <div class="card-content">
     <div class="card-header">
-      <h3 class="card-title">North gate trail</h3>
+      <h3 class="card-title">Wyvern Ridge</h3>
     </div>
     <div class="card-body">
-      <p>Follow the ridge trail to reach the north gate before sundown.</p>
+      <p>Follow the marked trail to the old watchtower below the wyvern nests.</p>
     </div>
     <div class="card-footer">
       <small>Two hours on foot</small>
