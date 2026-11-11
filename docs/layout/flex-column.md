@@ -76,7 +76,7 @@ Graupl applies a single-column fallback to unprefixed width classes when the fle
 
 <live-example :source-code="exampleResponsive" />
 
-See [responsive utility classes](../utilities/responsive-classes.md) for the available prefixes.
+See [responsive classes](../responsive-classes.md) for the available prefixes.
 
 ## Variants
 
