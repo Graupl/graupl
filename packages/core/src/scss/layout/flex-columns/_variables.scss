@@ -4,15 +4,15 @@
 // cleaner way to reference custom properties.
 //
 // Custom property defaults:
-// | Custom property                      | Default                |
-// | ------------------------------------ | ---------------------- |
-// | --graupl-flex-columns-row-gap        | var(--graupl-spacer-5) |
-// | --graupl-flex-columns-column-gap     | var(--graupl-spacer-5) |
-// | --graupl-flex-columns-size           | auto                   |
-// | --graupl-flex-columns-max-width      | unset                  |
-// | --graupl-flex-columns-container-type | inline-size            |
-// | --graupl-flex-columns-background     | null                   |
-// | --graupl-flex-columns-color          | null                   |
+// | Custom property                      | Default                          |
+// | ------------------------------------ | -------------------------------- |
+// | --graupl-flex-columns-row-gap        | var(--graupl-columns-row-gap)    |
+// | --graupl-flex-columns-column-gap     | var(--graupl-columns-column-gap) |
+// | --graupl-flex-columns-size           | auto                             |
+// | --graupl-flex-columns-max-width      | unset                            |
+// | --graupl-flex-columns-container-type | inline-size                      |
+// | --graupl-flex-columns-background     | No default                       |
+// | --graupl-flex-columns-color          | No default                       |
 
 @use "defaults";
 @use "../../defaults" as root-defaults;

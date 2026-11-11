@@ -85,21 +85,6 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: "Community",
-        items: [
-          { text: "Overview", link: "/community/" },
-          { text: "Contributing", link: "/community/contributing" },
-          {
-            text: "AI contribution policy",
-            link: "/community/ai-contributions",
-          },
-          { text: "Accessibility policy", link: "/community/accessibility" },
-          { text: "Code of conduct", link: "/community/code-of-conduct" },
-          { text: "Security policy", link: "/community/security" },
-          { text: "Commit guidelines", link: "/community/commit-guidelines" },
-        ],
-      },
-      {
         text: "Getting Started",
         items: [
           { text: "Introduction", link: "/introduction" },
@@ -122,13 +107,14 @@ export default defineConfig({
         items: [
           { text: "Accordions", link: "/components/accordion" },
           { text: "Alerts", link: "/components/alert" },
-          { text: "Buttons", link: "/components/button" },
+          { text: "Badge", link: "/components/badge" },
           { text: "Cards", link: "/components/card" },
           { text: "Carousels", link: "/components/carousel" },
           { text: "Input Groups", link: "/components/input-group" },
           { text: "Lists", link: "/components/list" },
           { text: "Menus", link: "/components/menu" },
           { text: "Navigations", link: "/components/navigation" },
+          { text: "Tooltips", link: "/components/tooltip" },
         ],
       },
       {
@@ -183,6 +169,25 @@ export default defineConfig({
           { text: "Visually-hidden", link: "/utilities/visually-hidden" },
           { text: "Width", link: "/utilities/width" },
           { text: "Z-index", link: "/utilities/z-index" },
+        ],
+      },
+      {
+        text: "Advanced Topics",
+        items: [{ text: "Responsive Classes", link: "/responsive-classes" }],
+      },
+      {
+        text: "Community",
+        items: [
+          { text: "Overview", link: "/community/" },
+          { text: "Contributing", link: "/community/contributing" },
+          {
+            text: "AI contribution policy",
+            link: "/community/ai-contributions",
+          },
+          { text: "Accessibility policy", link: "/community/accessibility" },
+          { text: "Code of conduct", link: "/community/code-of-conduct" },
+          { text: "Security policy", link: "/community/security" },
+          { text: "Commit guidelines", link: "/community/commit-guidelines" },
         ],
       },
     ],

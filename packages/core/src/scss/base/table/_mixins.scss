@@ -57,37 +57,11 @@
   }
 }
 
-/// Mixin to apply striped columns styles to tables.
+/// Mixin to apply striped columns theme styles to tables.
 ///
 /// @param {String} $layer
 ///   The layer to output.
 @mixin apply-striped-columns($layer: "all") {
-  @if $layer == "all" or $layer == "theme" {
-    // tbody tr:nth-child(odd)
-    #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
-      #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:nth-child(
-        odd
-      ) {
-      // > td
-      > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
-        background: $table-cell-striped-background;
-        color: $table-cell-striped-color;
-      }
-
-      // > th
-      > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
-        background: $table-header-striped-background;
-        color: $table-header-striped-color;
-      }
-    }
-  }
-}
-
-/// Mixin to apply striped rows theme styles to tables.
-///
-/// @param {String} $layer
-///   The layer to output.
-@mixin apply-striped-rows($layer: "all") {
   @if $layer == "all" or $layer == "theme" {
     // tbody tr
     #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
@@ -104,6 +78,32 @@
       > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector}:nth-child(
           odd
         ) {
+        background: $table-header-striped-background;
+        color: $table-header-striped-color;
+      }
+    }
+  }
+}
+
+/// Mixin to apply striped rows styles to tables.
+///
+/// @param {String} $layer
+///   The layer to output.
+@mixin apply-striped-rows($layer: "all") {
+  @if $layer == "all" or $layer == "theme" {
+    // tbody tr:nth-child(odd)
+    #{defaults.$table-body-selector-base}#{defaults.$table-body-selector}
+      #{defaults.$table-row-selector-base}#{defaults.$table-row-selector}:nth-child(
+        odd
+      ) {
+      // > td
+      > #{defaults.$table-cell-selector-base}#{defaults.$table-cell-selector} {
+        background: $table-cell-striped-background;
+        color: $table-cell-striped-color;
+      }
+
+      // > th
+      > #{defaults.$table-header-selector-base}#{defaults.$table-header-selector} {
         background: $table-header-striped-background;
         color: $table-header-striped-color;
       }
