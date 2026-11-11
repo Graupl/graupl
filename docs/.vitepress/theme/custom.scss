@@ -37,9 +37,9 @@
 @use "pkg:@graupl/core/src/functions/theme";
 
 // Packages.
-@use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
-@use "pkg:@graupl/icons" as graupl-icons;
 @use "pkg:@graupl/core" as graupl;
+@use "pkg:@graupl/icons" as graupl-icons;
+@use "pkg:@graupl/navigation-shelf" as graupl-navigation-shelf;
 @use "sass:map";
 
 code {
