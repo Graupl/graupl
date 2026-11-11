@@ -406,10 +406,12 @@ $columns-span-map: ();
       $i: list.index($count-classes, $selector);
 
       // maximum column count so they don't break the layout.
-      @for $j from $i + 1 through defaults.$columns-max-count {
-        // > .span-#{$j}
-        > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
-          --#{root-defaults.$prefix}columns-span: #{$i};
+      @if $i < defaults.$columns-max-count {
+        @for $j from $i + 1 through defaults.$columns-max-count {
+          // > .span-#{$j}
+          > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
+            --#{root-defaults.$prefix}columns-span: #{$i};
+          }
         }
       }
     }
@@ -551,10 +553,12 @@ $columns-span-map: ();
       $i: list.index($count-classes, $selector);
 
       // maximum column count so they don't break the layout.
-      @for $j from $i + 1 through defaults.$columns-max-count {
-        // > .span-#{$j}
-        > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
-          --#{root-defaults.$prefix}columns-span: #{$i};
+      @if $i < defaults.$columns-max-count {
+        @for $j from $i + 1 through defaults.$columns-max-count {
+          // > .span-#{$j}
+          > #{defaults.$columns-span-selector-base}#{defaults.$columns-span-selector-prefix}#{$j} {
+            --#{root-defaults.$prefix}columns-span: #{$i};
+          }
         }
       }
     }
