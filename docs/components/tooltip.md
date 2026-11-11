@@ -8,8 +8,8 @@
 
   const exampleTooltip = `
 <div class="tooltip">
-  <span class="tooltip-description hide">The north gate closes at sundown.</span>
-  <button type="button" class="tooltip-toggle" aria-label="North gate hours"></button>
+  <span class="tooltip-description hide">Griffins nest on the upper ledges.</span>
+  <button type="button" class="tooltip-toggle" aria-label="Griffin nesting grounds"></button>
 </div>
   `;
 
@@ -173,31 +173,31 @@ The following custom properties can be used to customize the tooltip component:
 
 The following Sass variables can be used to customize the generation of the tooltip component:
 
-| Variable                               | Description                                      | Default Value                       |
-| -------------------------------------- | ------------------------------------------------ | ----------------------------------- |
-| `$selector-base`                       | Default for selector base.                       | `"."`                               |
-| `$modifier-selector-base`              | Default for modifier selector base.              | `"."`                               |
-| `$generate-base-theme-map`             | Default for generate base theme map.             | `true`                              |
-| `$themeable`                           | Default for themeable.                           | `false`                             |
-| `$tooltip-selector-base`               | Default for tooltip selector base.               | `"."`                               |
-| `$tooltip-selector`                    | Default for tooltip selector.                    | `"tooltip"`                         |
-| `$tooltip-theme-selector-base`         | Default for tooltip theme selector base.         | `"."`                               |
-| `$tooltip-theme-selector-prefix`       | Default for tooltip theme selector prefix.       | `""`                                |
-| `$tooltip-toggle-selector-base`        | Default for tooltip button selector base.        | `"."`                               |
-| `$tooltip-toggle-selector`             | Default for tooltip button selector.             | `"tooltip-toggle"`                  |
-| `$tooltip-description-selector-base`   | Default for tooltip description selector base.   | `"."`                               |
-| `$tooltip-description-selector`        | Default for tooltip description selector.        | `"tooltip-description"`             |
-| `$tooltip-hidden-selector-base`        | Default for tooltip hidden selector base.        | `"."`                               |
-| `$tooltip-hidden-selector`             | Default for tooltip hidden selector.             | `"hide"`                            |
-| `$tooltip-shown-selector-base`         | Default for tooltip shown selector base.         | `"."`                               |
-| `$tooltip-shown-selector`              | Default for tooltip shown selector.              | `"show"`                            |
-| `$tooltip-transitioning-selector-base` | Default for tooltip transitioning selector base. | `"."`                               |
-| `$tooltip-transitioning-selector`      | Default for tooltip transitioning selector.      | `"transitioning"`                   |
-| `$tooltip-theme-mappings`              | Default for tooltip theme mappings.              | `()`                                |
-| `$tooltip-theme-map`                   | Default for tooltip theme map.                   | `()`                                |
-| `$tooltip-toggle-initial-transform`    | Default for tooltip toggle initial transform.    | `none`                              |
-| `$tooltip-toggle-final-transform`      | Default for tooltip toggle final transform.      | `none`                              |
-| `$tooltip-toggle-disabled-transform`   | Default for tooltip toggle disabled transform.   | `$tooltip-toggle-initial-transform` |
-| `$tooltip-display`                     | Default for tooltip display.                     | `inline`                            |
-| `$tooltip-width`                       | Default for tooltip width.                       | `fit-content`                       |
-| `$tooltip-description-width`           | Default for tooltip description width.           | `30ch`                              |
+| Variable                               | Description                                                                              | Default Value                       |
+| -------------------------------------- | ---------------------------------------------------------------------------------------- | ----------------------------------- |
+| `$selector-base`                       | Default for selector base.                                                               | `"."`                               |
+| `$modifier-selector-base`              | Default for modifier selector base.                                                      | `"."`                               |
+| `$generate-base-theme-map`             | Default for generate base theme map.                                                     | `true`                              |
+| `$themeable`                           | Default for themeable.                                                                   | `false`                             |
+| `$tooltip-selector-base`               | Default for tooltip selector base.                                                       | `"."`                               |
+| `$tooltip-selector`                    | Default for tooltip selector.                                                            | `"tooltip"`                         |
+| `$tooltip-theme-selector-base`         | Default for tooltip theme selector base.                                                 | `"."`                               |
+| `$tooltip-theme-selector-prefix`       | Default for tooltip theme selector prefix.                                               | `""`                                |
+| `$tooltip-toggle-selector-base`        | Default for tooltip button selector base.                                                | `"."`                               |
+| `$tooltip-toggle-selector`             | Default for tooltip button selector.                                                     | `"tooltip-toggle"`                  |
+| `$tooltip-description-selector-base`   | Default for tooltip description selector base.                                           | `"."`                               |
+| `$tooltip-description-selector`        | Default for tooltip description selector.                                                | `"tooltip-description"`             |
+| `$tooltip-hidden-selector-base`        | Default for tooltip hidden selector base.                                                | `"."`                               |
+| `$tooltip-hidden-selector`             | Default for tooltip hidden selector.                                                     | `"hide"`                            |
+| `$tooltip-shown-selector-base`         | Default for tooltip shown selector base.                                                 | `"."`                               |
+| `$tooltip-shown-selector`              | Default for tooltip shown selector.                                                      | `"show"`                            |
+| `$tooltip-transitioning-selector-base` | Default for tooltip transitioning selector base.                                         | `"."`                               |
+| `$tooltip-transitioning-selector`      | Default for tooltip transitioning selector.                                              | `"transitioning"`                   |
+| `$tooltip-theme-mappings`              | A map of properties and color shades used to generate all tooltip variants.              | `()`                                |
+| `$tooltip-theme-map`                   | A map of all properties, colors, and color shades used to generate all tooltip variants. | `()`                                |
+| `$tooltip-toggle-initial-transform`    | Default for tooltip toggle initial transform.                                            | `none`                              |
+| `$tooltip-toggle-final-transform`      | Default for tooltip toggle final transform.                                              | `none`                              |
+| `$tooltip-toggle-disabled-transform`   | Default for tooltip toggle disabled transform.                                           | `$tooltip-toggle-initial-transform` |
+| `$tooltip-display`                     | Default for tooltip display.                                                             | `inline`                            |
+| `$tooltip-width`                       | Default for tooltip width.                                                               | `fit-content`                       |
+| `$tooltip-description-width`           | Default for tooltip description width.                                                   | `30ch`                              |

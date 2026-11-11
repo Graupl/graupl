@@ -88,5 +88,5 @@ Generating responsive utility classes can be done by setting `$screen-aware`, `$
 By default, screen-aware classes are generated for clear.
 
 ::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.
+For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
 :::

@@ -117,7 +117,7 @@ Use `count-2 lg:count-3` to set two columns by default and three from the large 
   </template>
 </live-example>
 
-See [responsive utility classes](../utilities/responsive-classes.md) for the available prefixes.
+See [responsive classes](../responsive-classes.md) for the available prefixes.
 
 ## Variants
 
@@ -146,47 +146,47 @@ The following custom properties can be used to customize the columns layout:
 
 The following Sass variables can be used to customize the generation of the columns layout:
 
-| Variable                                      | Description                                                        | Default Value |
-| --------------------------------------------- | ------------------------------------------------------------------ | ------------- |
-| `$selector-base`                              | The base selector for the component.                               | `"."`         |
-| `$modifier-selector-base`                     | The base selector for component modifiers.                         | `"."`         |
-| `$generate-base-theme-map`                    | Flag to generate the base theme map.                               | `true`        |
-| `$themeable`                                  | Flag to generate theme modifiers.                                  | `false`       |
-| `$screen-aware`                               | Enables screen-aware column variants.                              | `true`        |
-| `$theme-aware`                                | Enables theme-aware column variants.                               | `false`       |
-| `$scheme-aware`                               | Enables scheme-aware column variants.                              | `false`       |
-| `$state-aware`                                | Enables state-aware column variants.                               | `false`       |
-| `$container-aware`                            | Allows container-aware variants when enabled globally.             | `true`        |
-| `$force-single-columns`                       | Enables a single column in narrow query containers.                | `true`        |
-| `$columns-selector-base`                      | The base selector for the columns component.                       | `"."`         |
-| `$columns-selector`                           | The selector for the columns component.                            | `"columns"`   |
-| `$columns-theme-selector-base`                | The selector base for columns theme modifiers.                     | `"."`         |
-| `$columns-theme-selector-prefix`              | The columns theme modifier selector prefix.                        | `""`          |
-| `$columns-count-selector-base`                | The base selector for the count class.                             | `"."`         |
-| `$columns-count-selector-prefix`              | The prefix for the count class.                                    | `"count-"`    |
-| `$columns-span-selector-base`                 | The base selector for the span class.                              | `"."`         |
-| `$columns-span-selector-prefix`               | The prefix for the span class.                                     | `"span-"`     |
-| `$columns-fixed-selector-base`                | The base selector for the fixed class.                             | `"."`         |
-| `$columns-fixed-selector`                     | The selector for the fixed class.                                  | `"fixed"`     |
-| `$columns-screen-aware-selector-prefix`       | Prefix to the screen-aware portion of column selectors.            | `""`          |
-| `$columns-screen-aware-selector-suffix`       | Suffix to the screen-aware portion of column selectors.            | `""`          |
-| `$columns-screen-aware-selector-separator`    | Separator inserted for screen-aware column selectors.              | `"\\:"`       |
-| `$columns-theme-aware-selector-prefix`        | Prefix to the theme-aware portion of column selectors.             | `""`          |
-| `$columns-theme-aware-selector-suffix`        | Suffix to the theme-aware portion of column selectors.             | `"-theme"`    |
-| `$columns-theme-aware-selector-separator`     | Separator inserted for theme-aware column selectors.               | `"\\:"`       |
-| `$columns-scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of column selectors.            | `""`          |
-| `$columns-scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of column selectors.            | `"-mode"`     |
-| `$columns-scheme-aware-selector-separator`    | Separator inserted for scheme-aware column selectors.              | `"\\:"`       |
-| `$columns-state-aware-selector-prefix`        | Prefix to the state-aware portion of column selectors.             | `""`          |
-| `$columns-state-aware-selector-suffix`        | Suffix to the state-aware portion of column selectors.             | `""`          |
-| `$columns-state-aware-selector-separator`     | Separator inserted for state-aware column selectors.               | `"\\:"`       |
-| `$columns-container-aware-selector-prefix`    | Prefix to the container-aware portion of column selectors.         | `"cq\\:"`     |
-| `$columns-container-aware-selector-suffix`    | Suffix to the container-aware portion of column selectors.         | `""`          |
-| `$columns-container-aware-selector-separator` | Separator inserted for container-aware column selectors.           | `"\\:"`       |
-| `$columns-max-width`                          | The maximum width of each column.                                  | `1fr`         |
-| `$columns-count`                              | The default number of columns.                                     | `3`           |
-| `$columns-min-count`                          | The minimum number of columns used to generate `.count-#` classes. | `1`           |
-| `$columns-max-count`                          | The maximum number of columns used to generate `.count-#` classes. | `12`          |
-| `$columns-span`                               | The default span of each column.                                   | `1`           |
-| `$columns-theme-mappings`                     | Map of properties/shades for columns themes.                       | `()`          |
-| `$columns-theme-map`                          | Expanded map of properties/colors/shades.                          | `()`          |
+| Variable                                      | Description                                                                              | Default Value |
+| --------------------------------------------- | ---------------------------------------------------------------------------------------- | ------------- |
+| `$selector-base`                              | The base selector for the component.                                                     | `"."`         |
+| `$modifier-selector-base`                     | The base selector for component modifiers.                                               | `"."`         |
+| `$generate-base-theme-map`                    | Flag to generate the base theme map.                                                     | `true`        |
+| `$themeable`                                  | Flag to generate theme modifiers.                                                        | `false`       |
+| `$screen-aware`                               | Enables screen-aware column variants.                                                    | `true`        |
+| `$theme-aware`                                | Enables theme-aware column variants.                                                     | `false`       |
+| `$scheme-aware`                               | Enables scheme-aware column variants.                                                    | `false`       |
+| `$state-aware`                                | Enables state-aware column variants.                                                     | `false`       |
+| `$container-aware`                            | Enables container-aware column variants.                                                 | `true`        |
+| `$force-single-columns`                       | Enables a single column in narrow query containers.                                      | `true`        |
+| `$columns-selector-base`                      | The base selector for the columns component.                                             | `"."`         |
+| `$columns-selector`                           | The selector for the columns component.                                                  | `"columns"`   |
+| `$columns-theme-selector-base`                | The selector base for columns theme modifiers.                                           | `"."`         |
+| `$columns-theme-selector-prefix`              | The columns theme modifier selector prefix.                                              | `""`          |
+| `$columns-count-selector-base`                | The base selector for the count class.                                                   | `"."`         |
+| `$columns-count-selector-prefix`              | The prefix for the count class.                                                          | `"count-"`    |
+| `$columns-span-selector-base`                 | The base selector for the span class.                                                    | `"."`         |
+| `$columns-span-selector-prefix`               | The prefix for the span class.                                                           | `"span-"`     |
+| `$columns-fixed-selector-base`                | The base selector for the fixed class.                                                   | `"."`         |
+| `$columns-fixed-selector`                     | The selector for the fixed class.                                                        | `"fixed"`     |
+| `$columns-screen-aware-selector-prefix`       | Prefix to the screen-aware portion of column selectors.                                  | `""`          |
+| `$columns-screen-aware-selector-suffix`       | Suffix to the screen-aware portion of column selectors.                                  | `""`          |
+| `$columns-screen-aware-selector-separator`    | Separator inserted for screen-aware column selectors.                                    | `"\\:"`       |
+| `$columns-theme-aware-selector-prefix`        | Prefix to the theme-aware portion of column selectors.                                   | `""`          |
+| `$columns-theme-aware-selector-suffix`        | Suffix to the theme-aware portion of column selectors.                                   | `"-theme"`    |
+| `$columns-theme-aware-selector-separator`     | Separator inserted for theme-aware column selectors.                                     | `"\\:"`       |
+| `$columns-scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of column selectors.                                  | `""`          |
+| `$columns-scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of column selectors.                                  | `"-mode"`     |
+| `$columns-scheme-aware-selector-separator`    | Separator inserted for scheme-aware column selectors.                                    | `"\\:"`       |
+| `$columns-state-aware-selector-prefix`        | Prefix to the state-aware portion of column selectors.                                   | `""`          |
+| `$columns-state-aware-selector-suffix`        | Suffix to the state-aware portion of column selectors.                                   | `""`          |
+| `$columns-state-aware-selector-separator`     | Separator inserted for state-aware column selectors.                                     | `"\\:"`       |
+| `$columns-container-aware-selector-prefix`    | Prefix to the container-aware portion of column selectors.                               | `"cq\\:"`     |
+| `$columns-container-aware-selector-suffix`    | Suffix to the container-aware portion of column selectors.                               | `""`          |
+| `$columns-container-aware-selector-separator` | Separator inserted for container-aware column selectors.                                 | `"\\:"`       |
+| `$columns-max-width`                          | The maximum width of each column.                                                        | `1fr`         |
+| `$columns-count`                              | The default number of columns.                                                           | `3`           |
+| `$columns-min-count`                          | The minimum number of columns used to generate `.count-#` classes.                       | `1`           |
+| `$columns-max-count`                          | The maximum number of columns used to generate `.count-#` classes.                       | `12`          |
+| `$columns-span`                               | The default span of each column.                                                         | `1`           |
+| `$columns-theme-mappings`                     | A map of properties and color shades used to generate all columns variants.              | `()`          |
+| `$columns-theme-map`                          | A map of all properties, colors, and color shades used to generate all columns variants. | `()`          |

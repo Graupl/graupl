@@ -3,9 +3,9 @@
 
   const exampleList = `
 <ul class="list" role="list">
-  <li class="list-item">Parchment</li>
-  <li class="list-item">Quill</li>
-  <li class="list-item">Ink</li>
+  <li class="list-item">Rope</li>
+  <li class="list-item">Lantern</li>
+  <li class="list-item">Basilisk mirror</li>
 </ul>
   `;
 
@@ -108,19 +108,19 @@ The following custom properties can be used to customize the list component:
 
 The following Sass variables can be used to customize the generation of the list component:
 
-| Variable                      | Description                                             | Default Value |
-| ----------------------------- | ------------------------------------------------------- | ------------- |
-| `$selector-base`              | The selector base for the component.                    | `"."`         |
-| `$modifier-selector-base`     | The selector base for component modifiers.              | `"."`         |
-| `$generate-base-theme-map`    | Flag to generate the base theme map.                    | `true`        |
-| `$themeable`                  | Flag to generate theme modifiers.                       | `false`       |
-| `$list-selector-base`         | The list selector base.                                 | `"."`         |
-| `$list-selector`              | The list selector.                                      | `"list"`      |
-| `$list-theme-selector-base`   | The list theme selector base.                           | `"."`         |
-| `$list-theme-selector-prefix` | The list theme selector prefix.                         | `""`          |
-| `$list-item-selector-base`    | The list item selector base.                            | `"."`         |
-| `$list-item-selector`         | The list item selector.                                 | `"list-item"` |
-| `$list-item-transform`        | The list item transform.                                | `none`        |
-| `$list-item-hover-transform`  | The list item hover transform.                          | `none`        |
-| `$list-theme-mappings`        | Map of properties and shades for list variants.         | `()`          |
-| `$list-theme-map`             | Map of property overrides for individual list variants. | `()`          |
+| Variable                      | Description                                                                           | Default Value |
+| ----------------------------- | ------------------------------------------------------------------------------------- | ------------- |
+| `$selector-base`              | The selector base for the component.                                                  | `"."`         |
+| `$modifier-selector-base`     | The selector base for component modifiers.                                            | `"."`         |
+| `$generate-base-theme-map`    | Flag to generate the base theme map.                                                  | `true`        |
+| `$themeable`                  | Flag to generate theme modifiers.                                                     | `false`       |
+| `$list-selector-base`         | The list selector base.                                                               | `"."`         |
+| `$list-selector`              | The list selector.                                                                    | `"list"`      |
+| `$list-theme-selector-base`   | The list theme selector base.                                                         | `"."`         |
+| `$list-theme-selector-prefix` | The list theme selector prefix.                                                       | `""`          |
+| `$list-item-selector-base`    | The list item selector base.                                                          | `"."`         |
+| `$list-item-selector`         | The list item selector.                                                               | `"list-item"` |
+| `$list-item-transform`        | The list item transform.                                                              | `none`        |
+| `$list-item-hover-transform`  | The list item hover transform.                                                        | `none`        |
+| `$list-theme-mappings`        | A map of properties and color shades used to generate all list variants.              | `()`          |
+| `$list-theme-map`             | A map of all properties, colors, and color shades used to generate all list variants. | `()`          |

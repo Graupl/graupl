@@ -3,11 +3,11 @@
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const variant = ref("default");
-  const exampleBadge = '<span class="badge w-fit-content">Quest complete</span>';
+  const exampleBadge = '<span class="badge w-fit-content">Hydra spotted</span>';
   const exampleBadgeVariant = computed(() =>
     variant.value === "default"
       ? exampleBadge
-      : `<span class="badge ${variant.value} w-fit-content">Quest complete</span>`
+      : `<span class="badge ${variant.value} w-fit-content">Hydra spotted</span>`
   );
 </script>
 
