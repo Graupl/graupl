@@ -71,6 +71,8 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
 - Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
 - Keep Sass variable and CSS custom property descriptions identical wherever they appear in the style docs and SCSS source comments. When editing either copy, check the other and update both in the same change.
+- When components reuse a Sass variable or CSS custom property for the same purpose, use consistent descriptions across those components. Fix wording differences in both the docs and Sass comments, adapting the component name as needed. Describe differences in behavior where they exist.
+- Use the [Button wording](docs/base/button.md#sass-variables) for `theme-mappings` and `theme-map`, changing only the component name. Use "A map of properties and color shades used to generate all button variants." for `theme-mappings` and "A map of all properties, colors, and color shades used to generate all button variants." for `theme-map`. Use the same descriptions in the docs and Sass comments.
 - Align the vertical pipes in Markdown tables and SCSS comment tables, including the header and separator row. After editing a cell, check the alignment of the whole table.
 - When a custom property’s default is already documented, reference it as `var(--property)` in the docs and matching SCSS comments. Keep the fallback in the actual Sass.
 - Use "No default" in the docs and matching SCSS comments when a custom property has no default value or fallback. Use `unset` only when it is the actual CSS value.
@@ -112,6 +114,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
 - Flag unused Sass variables, selectors, and CSS custom properties to the maintainer. Identify each unused item and ask whether to wire it up or remove it before making either change.
 - Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
+
+## Sass imports
+
+- Import Sass defaults first, followed by variables, functions and mixins, and finally style index files. Within each group, import Graupl Core files before plugin files.
 
 ## Sass custom properties
 
