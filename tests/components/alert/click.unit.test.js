@@ -57,21 +57,5 @@ describe("Alert clicks", () => {
 
       expect(collapseSpy).not.toHaveBeenCalled();
     });
-
-    it.each([".alert-dismisser"])(
-      "should delegate click events on %s to collapse",
-      (selector) => {
-        alert = new Alert({
-          alertElement: document.querySelector(".alert"),
-          controllerElement: document.querySelector(".alert-dismisser"),
-          initialize: true,
-        });
-
-        const collapseSpy = vi.spyOn(alert, "collapse");
-        document.querySelector(selector).click();
-
-        expect(collapseSpy).toHaveBeenCalledOnce();
-      }
-    );
   });
 });

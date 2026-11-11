@@ -22,7 +22,7 @@ afterEach(() => {
 
 describe("Alert initialization", () => {
   describe("constructor", () => {
-    it("should bootstrap with initializing by default", () => {
+    it("should initialize with the default classes and durations", () => {
       alert = new Alert({
         alertElement: document.querySelector(".alert"),
         initialize: true,

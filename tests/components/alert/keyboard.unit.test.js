@@ -89,4 +89,46 @@ describe("Alert keyboard interactions", () => {
     expect(collapseSpy).not.toHaveBeenCalled();
     expect(alert.isExpanded).toBe(true);
   });
+
+  it.each([
+    { key: "Enter", name: "Enter" },
+    { key: " ", name: "Space" },
+  ])("$name keydown is not handled when there is no controller", ({ key }) => {
+    alert = new Alert({
+      alertElement: document.querySelector(".alert"),
+      controllerElement: null,
+      initialize: true,
+    });
+
+    const event = new KeyboardEvent("keydown", {
+      key,
+      bubbles: true,
+      cancelable: true,
+    });
+
+    alert.dom.alert.dispatchEvent(event);
+
+    expect(event.defaultPrevented).toBe(false);
+    expect(alert.isExpanded).toBe(true);
+  });
+
+  it.each([
+    { key: "Enter", name: "Enter" },
+    { key: " ", name: "Space" },
+  ])("$name keyup does not collapse when there is no controller", ({ key }) => {
+    alert = new Alert({
+      alertElement: document.querySelector(".alert"),
+      controllerElement: null,
+      initialize: true,
+    });
+
+    const collapseSpy = vi.spyOn(alert, "collapse");
+
+    alert.dom.alert.dispatchEvent(
+      new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
+    );
+
+    expect(collapseSpy).not.toHaveBeenCalled();
+    expect(alert.isExpanded).toBe(true);
+  });
 });

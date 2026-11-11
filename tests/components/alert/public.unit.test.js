@@ -76,10 +76,9 @@ describe("Alert public methods", () => {
         controllerElement: document.querySelector(".alert-dismisser"),
         initialize: true,
       });
-      // lock it first.
+
       alert.lock();
 
-      // unlock it.
       alert.unlock();
 
       expect(alert.isLocked).toBe(false);

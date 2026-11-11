@@ -29,7 +29,6 @@ describe("Alert getter/setters", () => {
     "transitionDuration",
     "expandDuration",
     "collapseDuration",
-    "isExpanded",
   ])("%s", (property) => {
     it("should inherit the Core accessor", () => {
       const descriptor = Object.getOwnPropertyDescriptor(

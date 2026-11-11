@@ -1,5 +1,5 @@
 /**
- * Prtoected method tests for the Alert class.
+ * Protected method tests for the Alert class.
  */
 
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
