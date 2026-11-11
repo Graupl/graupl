@@ -84,7 +84,7 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Explain what the classes do in the prose and let the previews demonstrate it. Skip prompts such as "try this" or "in the example below" when the controls and surrounding text already make the purpose clear. When previews override defaults, put a VitePress note immediately before the first preview it applies to. Explain which defaults the previews override and why.
 - When a demo uses the docs site's own layout, explain what readers can see there that the scaled preview cannot show.
 - Check text contrast in both light and dark mode for examples, legends, and highlighted areas. Compare each text colour with the background it renders on, including when highlights are active. Use at least 4.5:1 for normal text and give readers another way to match areas to labels, such as distinct line patterns.
-- Link to the responsive utility class reference for shared prefix information. Keep the layout's own responsive behaviour and class placement in its page.
+- Link to the Responsive Classes guide for shared prefix information. Keep the layout's own responsive behaviour and class placement in its page. Describe what each responsive flag does in the component reference. Keep shared prerequisites in the Responsive Classes guide.
 - Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
 
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.

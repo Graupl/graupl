@@ -117,7 +117,7 @@ Use `count-2 lg:count-3` to set two columns by default and three from the large 
   </template>
 </live-example>
 
-See [responsive utility classes](../utilities/responsive-classes.md) for the available prefixes.
+See [responsive classes](../responsive-classes.md) for the available prefixes.
 
 ## Variants
 
@@ -156,7 +156,7 @@ The following Sass variables can be used to customize the generation of the colu
 | `$theme-aware`                                | Enables theme-aware column variants.                                                     | `false`       |
 | `$scheme-aware`                               | Enables scheme-aware column variants.                                                    | `false`       |
 | `$state-aware`                                | Enables state-aware column variants.                                                     | `false`       |
-| `$container-aware`                            | Allows container-aware variants when enabled globally.                                   | `true`        |
+| `$container-aware`                            | Enables container-aware column variants.                                                 | `true`        |
 | `$force-single-columns`                       | Enables a single column in narrow query containers.                                      | `true`        |
 | `$columns-selector-base`                      | The base selector for the columns component.                                             | `"."`         |
 | `$columns-selector`                           | The selector for the columns component.                                                  | `"columns"`   |
