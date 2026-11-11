@@ -101,15 +101,15 @@ class Accordion extends Component {
    * @param {string}             [options.accordionControlsSelector = .accordion-control]                   - The query selector string for accordion controls.
    * @param {string}             [options.expandControllerSelector = .expand-all]                           - The query selector string for the expand all controller(s).
    * @param {string}             [options.collapseControllerSelector = .collapse-all]                       - The query selector string for the collapse all controller(s).
-   * @param {?(string|string[])} [options.expandClass = show]                                               - The class to apply when a accordion is "expanded".
-   * @param {?(string|string[])} [options.collapseClass = hide]                                             - The class to apply when a accordion is "collapsed".
-   * @param {?(string|string[])} [options.transitionClass = transitioning]                                  - The class to apply when a accordion is transitioning between "expanded" and "collapsed" states.
+   * @param {?(string|string[])} [options.expandClass = show]                                               - The class to apply when an accordion item is expanded.
+   * @param {?(string|string[])} [options.collapseClass = hide]                                             - The class to apply when an accordion item is collapsed.
+   * @param {?(string|string[])} [options.transitionClass = transitioning]                                  - The class to apply while an accordion item is expanding or collapsing.
    * @param {number}             [options.transitionDuration = 300]                                         - The duration of the transition between "expanded" and "collapsed" states (in milliseconds).
    * @param {number}             [options.expandDuration = -1]                                              - The duration of the transition from "collapsed" to "expanded" states (in milliseconds).
    * @param {number}             [options.collapseDuration = -1]                                            - The duration of the transition from "expanded" to "collapsed" states (in milliseconds).
-   * @param {boolean}            [options.optionalKeySupport = false]                                       - A flag to determine if accordions can be navigated with arrows.
-   * @param {boolean}            [options.allowExpandMultiple = true]                                       - A flag to determine if multiple accordions can be expanded at the same time.
-   * @param {boolean}            [options.allowCollapseAll = true]                                          - A flag to determine if no accordions can be expanded at the same time.
+   * @param {boolean}            [options.optionalKeySupport = false]                                       - A flag to determine if arrow keys, Home, and End move focus between accordion item toggles.
+   * @param {boolean}            [options.allowExpandMultiple = true]                                       - A flag to determine if multiple accordion items can be expanded at the same time.
+   * @param {boolean}            [options.allowCollapseAll = true]                                          - A flag to determine if all accordion items can be collapsed at the same time.
    * @param {?string}            [options.prefix = graupl-]                                                 - The prefix used for CSS custom properties and attributes.
    * @param {?string}            [options.key = null]                                                       - The key used to generate IDs throughout the accordion.
    * @param {?(string|string[])} [options.initializeClass = initializing]                                   - The class(es) to apply when the accordion is initializing.
@@ -895,7 +895,7 @@ class Accordion extends Component {
    *   - When focus is on the accordion header for a collapsed panel, expands the associated panel. If the implementation allows only one panel to be expanded, and if another panel is expanded, collapses that panel.
    *   - When focus is on the accordion header for an expanded panel, collapses the panel if the implementation supports collapsing. Some implementations require one panel to be expanded at all times and allow only one panel to be expanded; so, they do not support a collapse function.
    *   - When focus is on the accordion expand all control, expands all panels. If the implementation allows only one panel to be expanded, does nothing.
-   *   - WHen focus is on the accordion collapse all control, collapses all panels. If the implementation requires one panel to be expanded at all times, does nothing.
+   *   - When focus is on the accordion collapse all control, collapses all panels. If the implementation requires one panel to be expanded at all times, does nothing.
    * - `Accordion`: Moves focus to the next focusable element; all focusable elements in the accordion are included in the page `Accordion` sequence.
    * - `Shift + Accordion`: Moves focus to the previous focusable element; all focusable elements in the accordion are included in the page `Accordion` sequence.
    * - `Down Arrow` (Optional): If focus is on an accordion header, moves focus to the next accordion header. If focus is on the last accordion header, either does nothing or moves focus to the first accordion header.

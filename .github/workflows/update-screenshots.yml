@@ -75,7 +75,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          CHANGED_FILES=$(git status --porcelain | awk '{print $2}')
+          CHANGED_FILES=$(git status --porcelain --untracked-files=all -- ':(glob)tests/**/__screenshots__/**/*.png' | cut -c4-)
           if [ "${CHANGED_FILES:+x}" ]; then
             echo "changes=true" >> $GITHUB_OUTPUT
             echo "Changes detected"
@@ -94,7 +94,7 @@ jobs:
       - name: Commit changes
         if: steps.check_changes.outputs.changes == 'true'
         run: |
-          git add -A
+          git add -A -- ':(glob)tests/**/__screenshots__/**/*.png'
           git commit -m "${{ env.COMMIT_MESSAGE }}"
 
       - name: Push changes

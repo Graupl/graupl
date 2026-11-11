@@ -13,9 +13,9 @@
 $selector-base: root-defaults.$element-selector-base !default;
 $modifier-selector-base: root-defaults.$modifier-selector-base !default;
 $paragraph-selector-base: $selector-base !default;
-$paragraph-selector: "p";
+$paragraph-selector: "p" !default;
 $small-selector-base: $selector-base !default;
-$small-selector: "small";
+$small-selector: "small" !default;
 $h1-selector-base: $selector-base !default;
 $h1-selector: "h1" !default;
 $h2-selector-base: $selector-base !default;
