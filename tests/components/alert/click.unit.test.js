@@ -22,33 +22,55 @@ afterEach(() => {
 
 describe("Alert clicks", () => {
   describe("_handleClick", () => {
-    it("should close the clicked alert", () => {
+    it("should add a click listener to the controller and collapse when clicked", async () => {
       alert = new Alert({
         alertElement: document.querySelector(".alert"),
+        controllerElement: document.querySelector(".alert-dismisser"),
         initialize: true,
       });
-      const toggle = document.querySelector(".alert-dismisser");
 
-      const clicker = vi.spyOn(alert, "collapseClass");
-      toggle.click();
+      const collapseSpy = vi.spyOn(alert, "collapse");
+      alert.dom.controller.click();
 
-      expect(clicker).toHaveBeenCalledOnce();
-      expect(alert.currentEvent).toBe("mouse");
+      await vi.waitFor(() => {
+        expect(alert.dom.alert.classList.contains("hide")).toBe(true);
+      });
+
+      expect(collapseSpy).toHaveBeenCalledOnce();
+      expect(alert.isExpanded).toBe(false);
     });
 
-    it.each([[".alert-dismisser", "_handleClick"]])(
-      "should delegate clicks on %s to %s",
-      (selector, method) => {
+    it("should not collapse when no controller exists", () => {
+      alert = new Alert({
+        alertElement: document.querySelector(".alert"),
+        controllerElement: null,
+        initialize: true,
+      });
+
+      const collapseSpy = vi.spyOn(alert, "collapse");
+      const clickEvent = new MouseEvent("click", {
+        bubbles: true,
+        cancelable: true,
+      });
+
+      alert.dom.alert.dispatchEvent(clickEvent);
+
+      expect(collapseSpy).not.toHaveBeenCalled();
+    });
+
+    it.each([".alert-dismisser"])(
+      "should delegate click events on %s to collapse",
+      (selector) => {
         alert = new Alert({
           alertElement: document.querySelector(".alert"),
+          controllerElement: document.querySelector(".alert-dismisser"),
           initialize: true,
         });
-        const action = vi.spyOn(alert, method);
 
+        const collapseSpy = vi.spyOn(alert, "collapse");
         document.querySelector(selector).click();
 
-        expect(action).toHaveBeenCalledExactlyOnceWith();
-        expect(alert.currentEvent).toBe("mouse");
+        expect(collapseSpy).toHaveBeenCalledOnce();
       }
     );
   });
