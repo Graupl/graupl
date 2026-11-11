@@ -33,6 +33,9 @@
 // - `.md:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on medium screens.
 // - `.lg:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on large screens.
 // - `.xl:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns on extra large screens.
+// - `.hd:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns at the hd breakpoint and above.
+// - `.qhd:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns at the qhd breakpoint and above.
+// - `.uhd:fixed`: Sets the min/max columns widths to be equal, forcing a fixed number of columns at the uhd breakpoint and above.
 // - `.xs:count-1`: Sets the number of columns in the columns component to 1 on extra small screens.
 // - `.xs:count-2`: Sets the number of columns in the columns component to 2 on extra small screens.
 // - `.xs:count-3`: Sets the number of columns in the columns component to 3 on extra small screens.
@@ -93,6 +96,42 @@
 // - `.xl:count-10`: Sets the number of columns in the columns component to 10 on extra large screens.
 // - `.xl:count-11`: Sets the number of columns in the columns component to 11 on extra large screens.
 // - `.xl:count-12`: Sets the number of columns in the columns component to 12 on extra large screens.
+// - `.hd:count-1`: Sets the number of columns in the columns component to 1 at the hd breakpoint and above.
+// - `.hd:count-2`: Sets the number of columns in the columns component to 2 at the hd breakpoint and above.
+// - `.hd:count-3`: Sets the number of columns in the columns component to 3 at the hd breakpoint and above.
+// - `.hd:count-4`: Sets the number of columns in the columns component to 4 at the hd breakpoint and above.
+// - `.hd:count-5`: Sets the number of columns in the columns component to 5 at the hd breakpoint and above.
+// - `.hd:count-6`: Sets the number of columns in the columns component to 6 at the hd breakpoint and above.
+// - `.hd:count-7`: Sets the number of columns in the columns component to 7 at the hd breakpoint and above.
+// - `.hd:count-8`: Sets the number of columns in the columns component to 8 at the hd breakpoint and above.
+// - `.hd:count-9`: Sets the number of columns in the columns component to 9 at the hd breakpoint and above.
+// - `.hd:count-10`: Sets the number of columns in the columns component to 10 at the hd breakpoint and above.
+// - `.hd:count-11`: Sets the number of columns in the columns component to 11 at the hd breakpoint and above.
+// - `.hd:count-12`: Sets the number of columns in the columns component to 12 at the hd breakpoint and above.
+// - `.qhd:count-1`: Sets the number of columns in the columns component to 1 at the qhd breakpoint and above.
+// - `.qhd:count-2`: Sets the number of columns in the columns component to 2 at the qhd breakpoint and above.
+// - `.qhd:count-3`: Sets the number of columns in the columns component to 3 at the qhd breakpoint and above.
+// - `.qhd:count-4`: Sets the number of columns in the columns component to 4 at the qhd breakpoint and above.
+// - `.qhd:count-5`: Sets the number of columns in the columns component to 5 at the qhd breakpoint and above.
+// - `.qhd:count-6`: Sets the number of columns in the columns component to 6 at the qhd breakpoint and above.
+// - `.qhd:count-7`: Sets the number of columns in the columns component to 7 at the qhd breakpoint and above.
+// - `.qhd:count-8`: Sets the number of columns in the columns component to 8 at the qhd breakpoint and above.
+// - `.qhd:count-9`: Sets the number of columns in the columns component to 9 at the qhd breakpoint and above.
+// - `.qhd:count-10`: Sets the number of columns in the columns component to 10 at the qhd breakpoint and above.
+// - `.qhd:count-11`: Sets the number of columns in the columns component to 11 at the qhd breakpoint and above.
+// - `.qhd:count-12`: Sets the number of columns in the columns component to 12 at the qhd breakpoint and above.
+// - `.uhd:count-1`: Sets the number of columns in the columns component to 1 at the uhd breakpoint and above.
+// - `.uhd:count-2`: Sets the number of columns in the columns component to 2 at the uhd breakpoint and above.
+// - `.uhd:count-3`: Sets the number of columns in the columns component to 3 at the uhd breakpoint and above.
+// - `.uhd:count-4`: Sets the number of columns in the columns component to 4 at the uhd breakpoint and above.
+// - `.uhd:count-5`: Sets the number of columns in the columns component to 5 at the uhd breakpoint and above.
+// - `.uhd:count-6`: Sets the number of columns in the columns component to 6 at the uhd breakpoint and above.
+// - `.uhd:count-7`: Sets the number of columns in the columns component to 7 at the uhd breakpoint and above.
+// - `.uhd:count-8`: Sets the number of columns in the columns component to 8 at the uhd breakpoint and above.
+// - `.uhd:count-9`: Sets the number of columns in the columns component to 9 at the uhd breakpoint and above.
+// - `.uhd:count-10`: Sets the number of columns in the columns component to 10 at the uhd breakpoint and above.
+// - `.uhd:count-11`: Sets the number of columns in the columns component to 11 at the uhd breakpoint and above.
+// - `.uhd:count-12`: Sets the number of columns in the columns component to 12 at the uhd breakpoint and above.
 // - `.span-1`: Sets the span of a column in the columns component to 1.
 // - `.span-2`: Sets the span of a column in the columns component to 2.
 // - `.span-3`: Sets the span of a column in the columns component to 3.
@@ -165,6 +204,42 @@
 // - `.xl:span-10`: Sets the span of a column in the columns component to 10 on extra large screens.
 // - `.xl:span-11`: Sets the span of a column in the columns component to 11 on extra large screens.
 // - `.xl:span-12`: Sets the span of a column in the columns component to 12 on extra large screens.
+// - `.hd:span-1`: Sets the span of a column in the columns component to 1 at the hd breakpoint and above.
+// - `.hd:span-2`: Sets the span of a column in the columns component to 2 at the hd breakpoint and above.
+// - `.hd:span-3`: Sets the span of a column in the columns component to 3 at the hd breakpoint and above.
+// - `.hd:span-4`: Sets the span of a column in the columns component to 4 at the hd breakpoint and above.
+// - `.hd:span-5`: Sets the span of a column in the columns component to 5 at the hd breakpoint and above.
+// - `.hd:span-6`: Sets the span of a column in the columns component to 6 at the hd breakpoint and above.
+// - `.hd:span-7`: Sets the span of a column in the columns component to 7 at the hd breakpoint and above.
+// - `.hd:span-8`: Sets the span of a column in the columns component to 8 at the hd breakpoint and above.
+// - `.hd:span-9`: Sets the span of a column in the columns component to 9 at the hd breakpoint and above.
+// - `.hd:span-10`: Sets the span of a column in the columns component to 10 at the hd breakpoint and above.
+// - `.hd:span-11`: Sets the span of a column in the columns component to 11 at the hd breakpoint and above.
+// - `.hd:span-12`: Sets the span of a column in the columns component to 12 at the hd breakpoint and above.
+// - `.qhd:span-1`: Sets the span of a column in the columns component to 1 at the qhd breakpoint and above.
+// - `.qhd:span-2`: Sets the span of a column in the columns component to 2 at the qhd breakpoint and above.
+// - `.qhd:span-3`: Sets the span of a column in the columns component to 3 at the qhd breakpoint and above.
+// - `.qhd:span-4`: Sets the span of a column in the columns component to 4 at the qhd breakpoint and above.
+// - `.qhd:span-5`: Sets the span of a column in the columns component to 5 at the qhd breakpoint and above.
+// - `.qhd:span-6`: Sets the span of a column in the columns component to 6 at the qhd breakpoint and above.
+// - `.qhd:span-7`: Sets the span of a column in the columns component to 7 at the qhd breakpoint and above.
+// - `.qhd:span-8`: Sets the span of a column in the columns component to 8 at the qhd breakpoint and above.
+// - `.qhd:span-9`: Sets the span of a column in the columns component to 9 at the qhd breakpoint and above.
+// - `.qhd:span-10`: Sets the span of a column in the columns component to 10 at the qhd breakpoint and above.
+// - `.qhd:span-11`: Sets the span of a column in the columns component to 11 at the qhd breakpoint and above.
+// - `.qhd:span-12`: Sets the span of a column in the columns component to 12 at the qhd breakpoint and above.
+// - `.uhd:span-1`: Sets the span of a column in the columns component to 1 at the uhd breakpoint and above.
+// - `.uhd:span-2`: Sets the span of a column in the columns component to 2 at the uhd breakpoint and above.
+// - `.uhd:span-3`: Sets the span of a column in the columns component to 3 at the uhd breakpoint and above.
+// - `.uhd:span-4`: Sets the span of a column in the columns component to 4 at the uhd breakpoint and above.
+// - `.uhd:span-5`: Sets the span of a column in the columns component to 5 at the uhd breakpoint and above.
+// - `.uhd:span-6`: Sets the span of a column in the columns component to 6 at the uhd breakpoint and above.
+// - `.uhd:span-7`: Sets the span of a column in the columns component to 7 at the uhd breakpoint and above.
+// - `.uhd:span-8`: Sets the span of a column in the columns component to 8 at the uhd breakpoint and above.
+// - `.uhd:span-9`: Sets the span of a column in the columns component to 9 at the uhd breakpoint and above.
+// - `.uhd:span-10`: Sets the span of a column in the columns component to 10 at the uhd breakpoint and above.
+// - `.uhd:span-11`: Sets the span of a column in the columns component to 11 at the uhd breakpoint and above.
+// - `.uhd:span-12`: Sets the span of a column in the columns component to 12 at the uhd breakpoint and above.
 //
 // The following custom properties can be used to customize the columns component:
 // | Property                                 | Description                                                         | Default Value                                                                                                                                          |

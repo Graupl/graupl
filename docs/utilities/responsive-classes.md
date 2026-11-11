@@ -4,7 +4,7 @@ Responsive utility classes are variants on existing utility classes that only ge
 
 The current supported responsive variants are:
 
-- [Screen Aware](#screen-aware-utilties): provides screen size based variants,
+- [Screen Aware](#screen-aware-utilities): provides screen size based variants,
 - [Theme Aware](#theme-aware-utilities): provides theme based variants,
 - [Scheme Aware](#scheme-aware-utilities): provides color-scheme based variants,
 - [State Aware](#state-aware-utilities): provides state based variants, and
@@ -30,7 +30,18 @@ Screen aware utility variants use the following pattern for their generation:
 .#{screen-modifier}:#{utility-selector}
 ```
 
-By default Graupl will provide the following screen modifiers: `xs:`, `sm:`, `md:`, `lg:`, `xl:`.
+When screen-aware variants are enabled, Graupl generates them at these default minimum viewport widths.
+
+| Prefix | Minimum width |
+| ------ | ------------- |
+| `xs:`  | 0px           |
+| `sm:`  | 576px         |
+| `md:`  | 768px         |
+| `lg:`  | 1024px        |
+| `xl:`  | 1280px        |
+| `hd:`  | 1500px        |
+| `qhd:` | 1921px        |
+| `uhd:` | 2561px        |
 
 ## Theme Aware Utilities
 
@@ -112,5 +123,5 @@ Container aware utility variants use the following pattern for their generation:
 .#{container-modifier}:#{utility-selector}
 ```
 
-By default Graupl will provide the following container modifiers: `cq:xs:`, `cq:sm:`, `cq:md:`, `cq:lg:`, `cq:xl:`.
+When container-aware variants are enabled, the default container breakpoints use the same widths as the [screen breakpoints](#screen-aware-utilities). Use `cq:` before the breakpoint prefix, as in `cq:md:` or `cq:hd:`.
 
