@@ -103,34 +103,34 @@
 // | `--graupl-alert-footer-padding-y`                    | The vertical padding of the alert footer.                 | `0`                                                                                                                                                                                   |
 // | `--graupl-alert-footer-padding`                      | The padding of the alert footer.                          | `var(--graupl-alert-footer-padding-y) var(--graupl-alert-footer-padding-x)`                                                                                                           |
 // The following Sass variables can be used to customize the generation of the alert component:
-// | Variable                          | Description                                               | Default Value                                              |
-// | --------------------------------- | --------------------------------------------------------- | ---------------------------------------------------------- |
-// | `$selector-base`                  | The selector base for the component.                      | `"."`                                                      |
-// | `$modifier-selector-base`         | The selector base for component modifiers.                | `"."`                                                      |
-// | `$generate-base-theme-map`        | Whether to include the default alert theme mappings.      | `true`                                                     |
-// | `$themeable`                      | Whether to generate theme variants for alerts.            | `true`                                                     |
-// | `$alert-selector-base`            | The selector base for the alert selector-base.            | `"."`                                                      |
-// | `$alert-selector`                 | The selector for the alert selector.                      | `"alert"`                                                  |
-// | `$alert-theme-selector-base`      | The selector base for alert theme variants.               | `"."`                                                      |
-// | `$alert-theme-selector-prefix`    | The selector prefix for alert theme variants.             | `""`                                                       |
-// | `$alert-body-selector-base`       | The selector base for the alert body.                     | `"."`                                                      |
-// | `$alert-body-selector`            | The selector for the alert body.                          | `"alert-body"`                                             |
-// | `$alert-header-selector-base`     | The selector base for the alert header.                   | `"."`                                                      |
-// | `$alert-header-selector`          | The selector for the alert header.                        | `"alert-header"`                                           |
-// | `$alert-footer-selector-base`     | The selector base for the alert footer.                   | `"."`                                                      |
-// | `$alert-footer-selector`          | The selector for the alert footer.                        | `"alert-footer"`                                           |
-// | `$alert-title-selector-base`      | The selector base for the alert title.                    | `"."`                                                      |
-// | `$alert-title-selector`           | The selector for the alert title.                         | `"alert-title"`                                            |
-// | `$alert-dismisser-selector-base`  | The selector base for the dismiss button.                 | `"."`                                                      |
-// | `$alert-dismisser-selector`       | The selector for the dismiss button.                      | `"alert-dismisser"`                                        |
-// | `$alert-hidden-selector-base`     | The selector base for the hidden state.                   | `"."`                                                      |
-// | `$alert-hidden-selector`          | The selector for the hidden state.                        | `"hide"`                                                   |
-// | `$alert-shown-selector-base`      | The selector base for the shown state.                    | `"."`                                                      |
-// | `$alert-shown-selector`           | The selector for the shown state.                         | `"show"`                                                   |
-// | `$alert-transition-selector-base` | The selector base for the transition state.               | `"."`                                                      |
-// | `$alert-transition-selector`      | The selector for the transition state.                    | `"transitioning"`                                          |
-// | `$alert-theme-mappings`           | Map of alert properties and their theme shades.           | `map.merge($-alert-theme-mappings, $alert-theme-mappings)` |
-// | `$alert-theme-map`                | Map of CSS custom property values for each alert variant. | `map.deep-merge($-alert-theme-map, $alert-theme-map)`      |
+// | Variable                          | Description                                                                            | Default Value                                              |
+// | --------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+// | `$selector-base`                  | The selector base for the component.                                                   | `"."`                                                      |
+// | `$modifier-selector-base`         | The selector base for component modifiers.                                             | `"."`                                                      |
+// | `$generate-base-theme-map`        | Whether to include the default alert theme mappings.                                   | `true`                                                     |
+// | `$themeable`                      | Whether to generate theme variants for alerts.                                         | `true`                                                     |
+// | `$alert-selector-base`            | The selector base for the alert selector-base.                                         | `"."`                                                      |
+// | `$alert-selector`                 | The selector for the alert selector.                                                   | `"alert"`                                                  |
+// | `$alert-theme-selector-base`      | The selector base for alert theme variants.                                            | `"."`                                                      |
+// | `$alert-theme-selector-prefix`    | The selector prefix for alert theme variants.                                          | `""`                                                       |
+// | `$alert-body-selector-base`       | The selector base for the alert body.                                                  | `"."`                                                      |
+// | `$alert-body-selector`            | The selector for the alert body.                                                       | `"alert-body"`                                             |
+// | `$alert-header-selector-base`     | The selector base for the alert header.                                                | `"."`                                                      |
+// | `$alert-header-selector`          | The selector for the alert header.                                                     | `"alert-header"`                                           |
+// | `$alert-footer-selector-base`     | The selector base for the alert footer.                                                | `"."`                                                      |
+// | `$alert-footer-selector`          | The selector for the alert footer.                                                     | `"alert-footer"`                                           |
+// | `$alert-title-selector-base`      | The selector base for the alert title.                                                 | `"."`                                                      |
+// | `$alert-title-selector`           | The selector for the alert title.                                                      | `"alert-title"`                                            |
+// | `$alert-dismisser-selector-base`  | The selector base for the dismiss button.                                              | `"."`                                                      |
+// | `$alert-dismisser-selector`       | The selector for the dismiss button.                                                   | `"alert-dismisser"`                                        |
+// | `$alert-hidden-selector-base`     | The selector base for the hidden state.                                                | `"."`                                                      |
+// | `$alert-hidden-selector`          | The selector for the hidden state.                                                     | `"hide"`                                                   |
+// | `$alert-shown-selector-base`      | The selector base for the shown state.                                                 | `"."`                                                      |
+// | `$alert-shown-selector`           | The selector for the shown state.                                                      | `"show"`                                                   |
+// | `$alert-transition-selector-base` | The selector base for the transition state.                                            | `"."`                                                      |
+// | `$alert-transition-selector`      | The selector for the transition state.                                                 | `"transitioning"`                                          |
+// | `$alert-theme-mappings`           | A map of properties and color shades used to generate all alert variants.              | `map.merge($-alert-theme-mappings, $alert-theme-mappings)` |
+// | `$alert-theme-map`                | A map of all properties, colors, and color shades used to generate all alert variants. | `map.deep-merge($-alert-theme-map, $alert-theme-map)`      |
 //
 // ## Using `$alert-theme-mappings`
 //
