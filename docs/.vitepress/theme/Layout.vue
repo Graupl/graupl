@@ -148,7 +148,16 @@ onMounted(() => {
         ></button>
       </div>
     </div>
-    <div class="container shelf-aware">
+    <div
+      class="container shelf-aware"
+      :class="{ 'container-area-demo': page.frontmatter?.highlightContainerAreas }"
+    >
+      <template v-if="page.frontmatter?.highlightContainerAreas">
+        <div class="container-area-highlight full-width area-full-width" aria-hidden="true"></div>
+        <div class="container-area-highlight feature area-feature" aria-hidden="true"></div>
+        <div class="container-area-highlight breakout area-breakout" aria-hidden="true"></div>
+        <div class="container-area-highlight area-content" aria-hidden="true"></div>
+      </template>
       <template v-if="page.frontmatter?.layout === 'home'">
         <div v-if="page.frontmatter?.hero" class="display-flex flex-col g-5">
           <div>
