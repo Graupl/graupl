@@ -11,7 +11,7 @@
 // | --graupl-accordion-padding                                      | var(--graupl-accordion-padding-y) var(--graupl-accordion-padding-x)                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-column-gap                                   | var(--graupl-spacer-0)                                                                                                                                                                                                                                                                                                    |
 // | --graupl-accordion-row-gap                                      | var(--graupl-spacer-0)                                                                                                                                                                                                                                                                                                    |
-// | --graupl-accordion-gap                                          | var(--graupl-accordion-column-gap) var(--graupl-accordion-row-gap)                                                                                                                                                                                                                                                        |
+// | --graupl-accordion-gap                                          | var(--graupl-accordion-row-gap) var(--graupl-accordion-column-gap)                                                                                                                                                                                                                                                        |
 // | --graupl-accordion-color                                        | var(--graupl-color)                                                                                                                                                                                                                                                                                                       |
 // | --graupl-accordion-background                                   | var(--graupl-background)                                                                                                                                                                                                                                                                                                  |
 // | --graupl-accordion-border-color                                 | var(--graupl-accordion-color)                                                                                                                                                                                                                                                                                             |
@@ -57,7 +57,7 @@
 // | --graupl-accordion-item-content-padding                         | var(--graupl-accordion-item-content-padding-y) var(--graupl-accordion-item-content-padding-x)                                                                                                                                                                                                                             |
 // | --graupl-accordion-item-content-column-gap                      | var(--graupl-spacer-3)                                                                                                                                                                                                                                                                                                    |
 // | --graupl-accordion-item-content-row-gap                         | var(--graupl-spacer-0)                                                                                                                                                                                                                                                                                                    |
-// | --graupl-accordion-item-content-gap                             | var(--graupl-accordion-item-content-column-gap) var(--graupl-accordion-item-content-row-gap)                                                                                                                                                                                                                              |
+// | --graupl-accordion-item-content-gap                             | var(--graupl-accordion-item-content-row-gap) var(--graupl-accordion-item-content-column-gap)                                                                                                                                                                                                                              |
 // | --graupl-accordion-item-body-padding-x                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                                                                    |
 // | --graupl-accordion-item-body-padding-y                          | var(--graupl-spacer-0)                                                                                                                                                                                                                                                                                                    |
 // | --graupl-accordion-item-body-padding                            | var(--graupl-accordion-item-body-padding-y) var(--graupl-accordion-item-body-padding-x)                                                                                                                                                                                                                                   |
@@ -87,7 +87,7 @@
 // | --graupl-accordion-item-content-transition-reduced-motion       | opacity var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)                                                                                                                                                                                                                    |
 // | --graupl-accordion-item-toggle-transition                       | background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), transform var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function) |
 // | --graupl-accordion-item-toggle-transition-reduced-motion        | background var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function), color var(--graupl-accordion-transition-duration) var(--graupl-accordion-transition-timing-function)                                                                                                           |
-// | --graupl-accordion-item-toggle-color                            | var(--graupl-accordion-color)                                                                                                                                                                                                                                                                                             |
+// | --graupl-accordion-item-toggle-color                            | var(--graupl-accordion-item-color)                                                                                                                                                                                                                                                                                        |
 // | --graupl-accordion-item-toggle-visited-color                    | var(--graupl-accordion-item-toggle-color)                                                                                                                                                                                                                                                                                 |
 // | --graupl-accordion-item-toggle-focus-color                      | var(--graupl-accordion-item-toggle-color)                                                                                                                                                                                                                                                                                 |
 // | --graupl-accordion-item-toggle-hover-color                      | var(--graupl-accordion-background)                                                                                                                                                                                                                                                                                        |
@@ -128,7 +128,7 @@
 // | --graupl-accordion-control-container-padding                    | var(--graupl-accordion-control-container-padding-y) var(--graupl-accordion-control-container-padding-x)                                                                                                                                                                                                                   |
 // | --graupl-accordion-control-container-column-gap                 | var(--graupl-spacer-3)                                                                                                                                                                                                                                                                                                    |
 // | --graupl-accordion-control-container-row-gap                    | var(--graupl-spacer-3)                                                                                                                                                                                                                                                                                                    |
-// | --graupl-accordion-control-container-gap                        | var(--graupl-accordion-control-container-column-gap) var(--graupl-accordion-control-container-row-gap)                                                                                                                                                                                                                    |
+// | --graupl-accordion-control-container-gap                        | var(--graupl-accordion-control-container-row-gap) var(--graupl-accordion-control-container-column-gap)                                                                                                                                                                                                                    |
 
 @use "../../base/button/variables" as button;
 @use "../../defaults" as root-defaults;
@@ -174,7 +174,7 @@ $accordion-row-gap: var(
 // --graupl-accordion-gap
 $accordion-gap: var(
   --#{root-defaults.$prefix}accordion-gap,
-  #{$accordion-column-gap} #{$accordion-row-gap}
+  #{$accordion-row-gap} #{$accordion-column-gap}
 );
 
 // Accordion color properties.
@@ -469,7 +469,7 @@ $accordion-item-content-row-gap: var(
 // --graupl-accordion-item-content-gap
 $accordion-item-content-gap: var(
   --#{root-defaults.$prefix}accordion-item-content-gap,
-  #{$accordion-item-content-column-gap} #{$accordion-item-content-row-gap}
+  #{$accordion-item-content-row-gap} #{$accordion-item-content-column-gap}
 );
 
 // Accordion item body properties.
@@ -972,6 +972,6 @@ $accordion-control-container-row-gap: var(
 // --graupl-accordion-control-container-gap
 $accordion-control-container-gap: var(
   --#{root-defaults.$prefix}accordion-control-container-gap,
-  #{$accordion-control-container-column-gap}
-    #{$accordion-control-container-row-gap}
+  #{$accordion-control-container-row-gap}
+    #{$accordion-control-container-column-gap}
 );

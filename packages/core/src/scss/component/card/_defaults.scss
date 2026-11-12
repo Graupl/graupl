@@ -22,6 +22,8 @@ $card-theme-selector-base: $modifier-selector-base !default;
 $card-theme-selector-prefix: "" !default;
 $card-image-selector-base: $selector-base !default;
 $card-image-selector: "card-image" !default;
+$card-image-element-selector-base: "" !default;
+$card-image-element-selector: "img" !default;
 $card-content-selector-base: $selector-base !default;
 $card-content-selector: "card-content" !default;
 $card-body-selector-base: $selector-base !default;
@@ -55,16 +57,12 @@ $card-image-ratio: auto !default;
 $horizontal-card-content-ratio: 3fr !default;
 $horizontal-card-image-ratio: 2fr !default;
 
-// Card transform properties.
-$card-item-content-transform: translateY(-100%) !default;
-$card-item-content-open-transform: translateY(0) !default;
-
 // Card state theme defaults.
 // This map is used to define the default colour shades for the
 // themed card bases.
 //
 // e.g.
-// Primary cards will use primary--900 as the text colour and primary--800 as the title colour.
+// Primary cards will use primary--900 as the text colour and primary--700 as the title colour.
 //
 // Secondary/tertiary cards will use the same shade for their respective colours.
 $-card-theme-mappings: (
