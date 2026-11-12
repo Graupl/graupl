@@ -705,9 +705,9 @@ $tabs-tab-content-opacity: var(
 );
 
 // Tab content transition properties.
-// --graupl-tabs-tab-content-transition-duration
-$tabs-tab-content-transition-duration: var(
-  --#{root-defaults.$prefix}tabs-tab-content-transition-duration,
+// --graupl-tabs-transition-duration
+$tabs-transition-duration: var(
+  --#{root-defaults.$prefix}tabs-transition-duration,
   #{map.get(root-variables.$transition-durations, fast)}
 );
 
@@ -720,14 +720,14 @@ $tabs-tab-content-transition-timing-function: var(
 // --graupl-tabs-tab-content-transition
 $tabs-tab-content-transition: var(
   --#{root-defaults.$prefix}tabs-tab-content-transition,
-  opacity #{$tabs-tab-content-transition-duration}
+  opacity #{$tabs-transition-duration}
     #{$tabs-tab-content-transition-timing-function}
 );
 
 // --graupl-tabs-tab-content-transition-reduced-motion
 $tabs-tab-content-transition-reduced-motion: var(
   --#{root-defaults.$prefix}tabs-tab-content-transition-reduced-motion,
-  opacity #{$tabs-tab-content-transition-duration}
+  opacity #{$tabs-transition-duration}
     #{$tabs-tab-content-transition-timing-function}
 );
 
