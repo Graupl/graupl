@@ -22,6 +22,7 @@ Accessibility is the project's highest priority. Components that implement an in
 - Any deviation from the APG needs a strong, specific reason. Identify the difference and explain why it is necessary. Do not introduce or accept a deviation for convenience, code simplification, or personal preference.
 - If the implementation and APG differ, flag the discrepancy and investigate it. Do not assume the implementation is correct or rewrite the documentation to make the difference appear intentional.
 - Distinguish requirements, optional behavior, and choices made by an APG example. If an example's code and keyboard description differ, explain the difference before classifying library behavior as a bug.
+- Link to the relevant ARIA APG pattern or example from the documentation for each component based on the APG.
 - Preserve APG reference links, list structure, and the APG's specific wording in API keyboard tables. Do not paraphrase or simplify that wording. Explain library-specific differences in separate notes rather than rewriting the APG descriptions.
 - Valid HTML alone does not establish an accessible interaction pattern. Check the relevant APG pattern before recommending markup, and distinguish ordinary navigation from ARIA menus, menubars, and treeviews. Do not turn an incidental example in an issue into project guidance without a supported purpose and structure.
 
