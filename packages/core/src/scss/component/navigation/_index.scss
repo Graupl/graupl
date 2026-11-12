@@ -339,7 +339,7 @@
     @include state.generate-modifiers(
       (
         color: $navigation-branding-color-states,
-        text-decoration: $navigation-branding-text-decoration-color-states,
+        text-decoration-color: $navigation-branding-text-decoration-color-states,
       )
     );
   }
