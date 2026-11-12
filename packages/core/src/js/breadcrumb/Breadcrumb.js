@@ -136,7 +136,7 @@ class Breadcrumb extends CollapsibleComponent {
    * @param {?(string|string[])} [options.unlockClass = "unlocked"]                     - The class(es) to apply when the breadcrumb is unlocked.
    * @param {?(string|string[])} [options.expandClass = "show"]                         - The class to apply when a breadcrumb is "expanded".
    * @param {?(string|string[])} [options.collapseClass = "hide"]                       - The class to apply when a breadcrumb is "collapsed".
-   * @param {?(string|string[])} [options.transitionClass = "transitioning"]            - The class to apply when a breadcrumb is transitioning between "expanded" and "collapsed" states.
+   * @param {?(string|string[])} [options.transitionClass = null]                       - The class to apply when a breadcrumb is transitioning between "expanded" and "collapsed" states.
    * @param {number}             [options.transitionDuration = 250]                     - The duration of the transition between "expanded" and "collapsed" states (in milliseconds).
    * @param {number}             [options.expandDuration = -1]                          - The duration of the transition from "collapsed" to "expanded" states (in milliseconds).
    * @param {number}             [options.collapseDuration = -1]                        - The duration of the transition from "expanded" to "collapsed" states (in milliseconds).
@@ -181,7 +181,7 @@ class Breadcrumb extends CollapsibleComponent {
     unlockClass = "unlocked",
     expandClass = "show",
     collapseClass = "hide",
-    transitionClass = "transitioning",
+    transitionClass = null,
     transitionDuration = 250,
     expandDuration = -1,
     collapseDuration = -1,

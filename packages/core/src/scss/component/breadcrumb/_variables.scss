@@ -14,7 +14,7 @@
 // | --graupl-breadcrumb-margin                            | var(--graupl-breadcrumb-margin-y) var(--graupl-breadcrumb-margin-x)                                                                                                                                                                 |
 // | --graupl-breadcrumb-column-gap                        | var(--graupl-spacer-2)                                                                                                                                                                                                              |
 // | --graupl-breadcrumb-row-gap                           | var(--graupl-spacer-2)                                                                                                                                                                                                              |
-// | --graupl-breadcrumb-gap                               | var(--graupl-breadcrumb-column-gap) var(--graupl-breadcrumb-row-gap)                                                                                                                                                                |
+// | --graupl-breadcrumb-gap                               | var(--graupl-breadcrumb-row-gap) var(--graupl-breadcrumb-column-gap)                                                                                                                                                                |
 // | --graupl-breadcrumb-background                        | var(--graupl-background)                                                                                                                                                                                                            |
 // | --graupl-breadcrumb-color                             | var(--graupl-color)                                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-border-color                      | var(--graupl-breadcrumb-color)                                                                                                                                                                                                      |
@@ -41,33 +41,33 @@
 // | --graupl-breadcrumb-item-hide-opacity                 | 0                                                                                                                                                                                                                                   |
 // | --graupl-breadcrumb-item-transitioning-opacity        | 0                                                                                                                                                                                                                                   |
 // | --graupl-breadcrumb-item-opacity                      | var(--graupl-breadcrumb-item-show-opacity)                                                                                                                                                                                          |
-// | --graupl-breadcrumb-item-transition-duration          | var(--graupl-transition-duration-fast)                                                                                                                                                                                              |
+// | --graupl-breadcrumb-transition-duration               | var(--graupl-transition-duration-fast)                                                                                                                                                                                              |
 // | --graupl-breadcrumb-item-transition-timing-function   | var(--graupl-transition-timing-function)                                                                                                                                                                                            |
-// | --graupl-breadcrumb-item-transition                   | opacity var(--graupl-breadcrumb-item-transition-duration) var(--graupl-breadcrumb-item-transition-timing-function)                                                                                                                  |
+// | --graupl-breadcrumb-item-transition                   | opacity var(--graupl-breadcrumb-transition-duration) var(--graupl-breadcrumb-item-transition-timing-function)                                                                                                                       |
 // | --graupl-breadcrumb-item-transition-reduced-motion    | none                                                                                                                                                                                                                                |
 // | --graupl-breadcrumb-item-padding-x                    | 0                                                                                                                                                                                                                                   |
 // | --graupl-breadcrumb-item-padding-y                    | 0                                                                                                                                                                                                                                   |
 // | --graupl-breadcrumb-item-padding                      | var(--graupl-breadcrumb-item-padding-y) var(--graupl-breadcrumb-item-padding-x)                                                                                                                                                     |
 // | --graupl-breadcrumb-item-column-gap                   | var(--graupl-breadcrumb-column-gap)                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-item-row-gap                      | var(--graupl-breadcrumb-row-gap)                                                                                                                                                                                                    |
-// | --graupl-breadcrumb-item-gap                          | var(--graupl-breadcrumb-item-column-gap) var(--graupl-breadcrumb-item-row-gap)                                                                                                                                                      |
+// | --graupl-breadcrumb-item-gap                          | var(--graupl-breadcrumb-item-row-gap) var(--graupl-breadcrumb-item-column-gap)                                                                                                                                                      |
 // | --graupl-breadcrumb-item-color                        | var(--graupl-breadcrumb-color)                                                                                                                                                                                                      |
 // | --graupl-breadcrumb-item-background                   | var(--graupl-breadcrumb-background)                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-item-visited-color                | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-item-focus-color                  | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
-// | --graupl-breadcrumb-item-hover-color                  | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
+// | --graupl-breadcrumb-item-hover-color                  | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-item-active-color                 | var(--graupl-breadcrumb-item-hover-color)                                                                                                                                                                                           |
 // | --graupl-breadcrumb-item-disabled-color               | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-item-visited-background           | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-item-focus-background             | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
-// | --graupl-breadcrumb-item-hover-background             | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
+// | --graupl-breadcrumb-item-hover-background             | var(--graupl-breadcrumb-item-background)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-item-active-background            | var(--graupl-breadcrumb-item-hover-background)                                                                                                                                                                                      |
 // | --graupl-breadcrumb-item-disabled-background          | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-item-border-color                 | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
 // | --graupl-breadcrumb-item-visited-border-color         | var(--graupl-breadcrumb-item-border-color)                                                                                                                                                                                          |
 // | --graupl-breadcrumb-item-focus-border-color           | var(--graupl-breadcrumb-item-border-color)                                                                                                                                                                                          |
-// | --graupl-breadcrumb-item-hover-border-color           | var(--graupl-breadcrumb-item-color)                                                                                                                                                                                                 |
-// | --graupl-breadcrumb-item-active-border-color          | var(--graupl-breadcrumb-item-hover-color)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-item-hover-border-color           | var(--graupl-breadcrumb-item-border-color)                                                                                                                                                                                          |
+// | --graupl-breadcrumb-item-active-border-color          | var(--graupl-breadcrumb-item-hover-border-color)                                                                                                                                                                                    |
 // | --graupl-breadcrumb-item-disabled-border-color        | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-item-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
 // | --graupl-breadcrumb-item-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
@@ -113,7 +113,7 @@
 // | --graupl-breadcrumb-link-visited-border-color         | var(--graupl-breadcrumb-link-border-color)                                                                                                                                                                                          |
 // | --graupl-breadcrumb-link-focus-border-color           | var(--graupl-breadcrumb-link-border-color)                                                                                                                                                                                          |
 // | --graupl-breadcrumb-link-hover-border-color           | var(--graupl-breadcrumb-link-color)                                                                                                                                                                                                 |
-// | --graupl-breadcrumb-link-active-border-color          | var(--graupl-breadcrumb-link-hover-color)                                                                                                                                                                                           |
+// | --graupl-breadcrumb-link-active-border-color          | var(--graupl-breadcrumb-link-hover-border-color)                                                                                                                                                                                    |
 // | --graupl-breadcrumb-link-disabled-border-color        | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-link-border-top-left-radius       | var(--graupl-border-top-left-radius)                                                                                                                                                                                                |
 // | --graupl-breadcrumb-link-border-top-right-radius      | var(--graupl-border-top-right-radius)                                                                                                                                                                                               |
@@ -159,7 +159,7 @@
 // | --graupl-breadcrumb-toggle-visited-border-color       | var(--graupl-breadcrumb-toggle-border-color)                                                                                                                                                                                        |
 // | --graupl-breadcrumb-toggle-focus-border-color         | var(--graupl-breadcrumb-toggle-border-color)                                                                                                                                                                                        |
 // | --graupl-breadcrumb-toggle-hover-border-color         | var(--graupl-breadcrumb-toggle-color)                                                                                                                                                                                               |
-// | --graupl-breadcrumb-toggle-active-border-color        | var(--graupl-breadcrumb-toggle-hover-color)                                                                                                                                                                                         |
+// | --graupl-breadcrumb-toggle-active-border-color        | var(--graupl-breadcrumb-toggle-hover-border-color)                                                                                                                                                                                  |
 // | --graupl-breadcrumb-toggle-disabled-border-color      | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-breadcrumb-toggle-border-top-left-radius     | var(--graupl-breadcrumb-link-border-top-left-radius)                                                                                                                                                                                |
 // | --graupl-breadcrumb-toggle-border-top-right-radius    | var(--graupl-breadcrumb-link-border-top-right-radius)                                                                                                                                                                               |
@@ -176,7 +176,7 @@
 // | --graupl-breadcrumb-toggle-border-bottom-style        | var(--graupl-breadcrumb-link-border-bottom-style)                                                                                                                                                                                   |
 // | --graupl-breadcrumb-toggle-border-left-style          | var(--graupl-breadcrumb-link-border-left-style)                                                                                                                                                                                     |
 // | --graupl-breadcrumb-toggle-border-style               | var(--graupl-breadcrumb-toggle-border-top-style) var(--graupl-breadcrumb-toggle-border-right-style) var(--graupl-breadcrumb-toggle-border-bottom-style) var(--graupl-breadcrumb-toggle-border-left-style)                           |
-// | --graupl-breadcrumb-item-separator                    | "'/'"                                                                                                                                                                                                                               |
+// | --graupl-breadcrumb-item-separator-content            | '/'                                                                                                                                                                                                                                 |
 
 @use "../../defaults" as root-defaults;
 @use "../../theme/color/variables" as color;
@@ -403,9 +403,9 @@ $breadcrumb-item-opacity: var(
   #{$breadcrumb-item-show-opacity}
 );
 
-// --graupl-breadcrumb-item-transition-duration
-$breadcrumb-item-transition-duration: var(
-  --#{root-defaults.$prefix}breadcrumb-item-transition-duration,
+// --graupl-breadcrumb-transition-duration
+$breadcrumb-transition-duration: var(
+  --#{root-defaults.$prefix}breadcrumb-transition-duration,
   #{map.get(root-variables.$transition-durations, fast)}
 );
 
@@ -418,7 +418,7 @@ $breadcrumb-item-transition-timing-function: var(
 // --graupl-breadcrumb-item-transition
 $breadcrumb-item-transition: var(
   --#{root-defaults.$prefix}breadcrumb-item-transition,
-  opacity #{$breadcrumb-item-transition-duration}
+  opacity #{$breadcrumb-transition-duration}
     #{$breadcrumb-item-transition-timing-function}
 );
 
@@ -491,7 +491,7 @@ $breadcrumb-item-focus-color: var(
 // --graupl-breadcrumb-item-hover-color
 $breadcrumb-item-hover-color: var(
   --#{root-defaults.$prefix}breadcrumb-item-hover-color,
-  #{$breadcrumb-item-background}
+  #{$breadcrumb-item-color}
 );
 
 // --graupl-breadcrumb-item-active-color
@@ -529,7 +529,7 @@ $breadcrumb-item-focus-background: var(
 // --graupl-breadcrumb-item-hover-background
 $breadcrumb-item-hover-background: var(
   --#{root-defaults.$prefix}breadcrumb-item-hover-background,
-  #{$breadcrumb-item-color}
+  #{$breadcrumb-item-background}
 );
 
 // --graupl-breadcrumb-item-active-background
@@ -574,7 +574,7 @@ $breadcrumb-item-focus-border-color: var(
 // --graupl-breadcrumb-item-hover-border-color
 $breadcrumb-item-hover-border-color: var(
   --#{root-defaults.$prefix}breadcrumb-item-hover-border-color,
-  #{$breadcrumb-item-color}
+  #{$breadcrumb-item-border-color}
 );
 
 // --graupl-breadcrumb-item-active-border-color
@@ -1328,7 +1328,7 @@ $breadcrumb-toggle-border-style: var(
     #{$breadcrumb-toggle-border-left-style}
 );
 
-// --graupl-breadcrumb-item-separator
+// --graupl-breadcrumb-item-separator-content
 $breadcrumb-item-separator: var(
   --#{root-defaults.$prefix}breadcrumb-item-separator-content,
   #{defaults.$breadcrumb-item-separator}
