@@ -65,6 +65,8 @@ ${controls}${panels}
 
 The accordion component provides a set of classes for grouping content into panels that readers can expand or collapse.
 
+Accordions implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+
 ## Base classes
 
 Inside `.accordion`, use an `.accordion-item` for each panel. Start each item with an `.accordion-item-header` containing a heading with the `.accordion-item-title` class. The heading holds the `.accordion-item-toggle` button.

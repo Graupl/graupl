@@ -34,6 +34,8 @@
 
 The tooltip component provides a set of classes to show a short description alongside a button. Use it for supplemental information and keep essential instructions visible on the page.
 
+Tooltips implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/).
+
 ## Base classes
 
 Wrap the description and its button in `.tooltip`. Use `.tooltip-description` for the text and `.tooltip-toggle` on a button with an accessible name. Initialization gives the description the tooltip role and associates it with the button through `aria-describedby`.

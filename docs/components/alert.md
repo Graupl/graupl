@@ -50,6 +50,8 @@
 
 The alert component provides a set of classes to highlight messages that readers need to see, such as a warning or a change that affects their next step.
 
+Alerts implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
+
 ## Base classes
 
 Wrap the message in `.alert` and put its main content in `.alert-body`. Use `.alert-header` with `.alert-title` for an optional title, and `.alert-footer` for a follow-up action or additional information.
@@ -73,7 +75,7 @@ generateAlerts();
 The alert is visible by default. To start with the alert hidden, add `.hide` and set `data-graupl-alert-options='{"expanded":false}'` on the alert. The component uses `.show`, `.hide`, and `.transitioning` to manage visibility and transitions.
 
 ::: info Note
-For urgent messages that appear while someone is using the page, add `role="alert"` to the message text so assistive technology can announce it. See the [WAI-ARIA alert pattern](https://www.w3.org/WAI/ARIA/apg/patterns/alert/).
+For urgent messages that appear while someone is using the page, add `role="alert"` to the message text so assistive technology can announce it.
 :::
 
 ## Variants

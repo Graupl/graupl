@@ -66,6 +66,8 @@
 
 The navigation component provides a set of classes to arrange a site's branding and menu, with a toggle for smaller screens. It uses [Menu](./menu.md) for the list and submenu styles, and [Accessible Menu](https://accessible-menu.dev) adds the interactive behaviour.
 
+Navigations implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/).
+
 ## Base classes
 
 Use `.navigation` on a navigation landmark and place the branding and menu directly inside it. Add `.navigation-branding` to the site name or home link. Give the `.navigation-toggle` button an accessible name, and use the [Menu classes](./menu.md) for the list of links and any submenus.

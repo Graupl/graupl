@@ -42,6 +42,8 @@
 
 The disclosure component provides a set of classes to show and hide content with a button.
 
+Disclosures implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/).
+
 ## Base classes
 
 Use `.disclosure` for the panel and `.disclosure-content` for the wrapper around its contents. Give the panel a unique `id` and use that ID as the `.disclosure-toggle` button's `data-graupl-disclosure-target`.
