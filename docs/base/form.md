@@ -1,17 +1,51 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
 
-  const exampleFieldset =`
+  const exampleTextInput = `
+<label for="adventurer-name">Adventurer name</label>
+<input id="adventurer-name" type="text">
+  `;
+
+  const exampleSelect = `
+<label for="quest-region">Region</label>
+<select id="quest-region">
+  <option>North woods</option>
+  <option>Silver marsh</option>
+</select>
+  `;
+
+  const exampleCheckbox = `
+<label><input type="checkbox" name="supplies" value="torch"> Pack a torch</label>
+  `;
+
+  const exampleTextarea = `
+<label for="quest-notes">Quest notes</label>
+<textarea id="quest-notes" rows="3"></textarea>
+  `;
+
+  const exampleFieldset = `
 <fieldset>
-  <legend>Fieldset</legend>
+  <legend>Departure time</legend>
+  <label><input type="radio" name="departure" value="dawn"> Dawn</label>
+  <label><input type="radio" name="departure" value="dusk"> Dusk</label>
 </fieldset>
   `;
+  const variant = ref("default");
+  const exampleFormVariant = computed(() => {
+    const variantClass = variant.value === "default" ? "" : ` class="${variant.value}"`;
+
+    return `<fieldset${variantClass}>
+  <legend>Quest registration</legend>
+  <label for="quest-party-name">Party name</label>
+  <input id="quest-party-name" type="text">
+</fieldset>`;
+  });
 </script>
 
 # Forms
 
-This module provides the base styles for form components, such as inputs, textareas, selects, labels, and fieldsets.
+The form base component provides a set of styles for inputs, textareas, selects, labels, and fieldsets.
 
 ::: info Note
 
@@ -21,41 +55,49 @@ Form elements and inputs alone are only a portion of Graupl's feature set for fo
 
 ## Base elements
 
-The base `<input>`, `<textarea>`, `<select>`, `<fieldset>`, `<legend>`, and `<label>` elements are styled by default with no need for classes.
+The base `<input>`, `<textarea>`, `<select>`, `<fieldset>`, and `<label>` elements are styled by default with no need for classes.
 
 ### Text input
 
-<live-example>
-  <input type="text" placeholder="Text input" aria-label="Example input" />
-</live-example>
+<live-example :source-code="exampleTextInput" />
+
+### Select
+
+<live-example :source-code="exampleSelect" />
 
 ### Checkbox
 
-<live-example>
-  <label><input type="checkbox"> Example checkbox</label>
-</live-example>
-
-### Radio
-
-<live-example>
-  <label><input type="radio"> Example radio</label>
-</live-example>
+<live-example :source-code="exampleCheckbox" />
 
 ### Text area
 
-<live-example>
-  <textarea placeholder="Text area" aria-label="Example text area"></textarea>
-</live-example>
+<live-example :source-code="exampleTextarea" />
 
 ### Fieldsets
+
+Use a fieldset and legend to group related controls, such as a set of radio buttons.
 
 <live-example :source-code="exampleFieldset" />
 
 ## Variants
 
-By default, there are no variants available for forms.
+There are three form colour variants provided by default: `.primary`, `.secondary`, and `.tertiary`. Add the variant class to an input, textarea, select, label, or fieldset.
 
-If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the `$themeable` variable to `true` to enable variants.
+<live-example :source-code="exampleFormVariant" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-form-variant">Form variant</label>
+      <select id="select-form-variant" v-model="variant">
+        <option value="default">Default</option>
+        <option value="primary">Primary</option>
+        <option value="secondary">Secondary</option>
+        <option value="tertiary">Tertiary</option>
+      </select>
+    </div>
+  </template>
+</live-example>
+
+If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the form module’s `$themeable` variable to `false` to skip generating theme variants.
 
 ## Custom Properties
 
@@ -75,6 +117,7 @@ The following custom properties can be used to customize the form components:
 | `--graupl-fieldset-padding`                    | The padding for fieldset components (combines x and y padding).                                                | `var(--graupl-fieldset-padding-y) var(--graupl-fieldset-padding-x)`                                                                                                                               |
 | `--graupl-fieldset-font-size`                  | The font size for fieldset components.                                                                         | `var(--graupl-input-font-size)`                                                                                                                                                                   |
 | `--graupl-input-background`                    | The background color for input components.                                                                     | `var(--graupl-background)`                                                                                                                                                                        |
+| `--graupl-label-background`                    | The background color for label components.                                                                     | `transparent`                                                                                                                                                                                     |
 | `--graupl-fieldset-background`                 | The background color for fieldset components.                                                                  | `var(--graupl-input-background)`                                                                                                                                                                  |
 | `--graupl-input-color`                         | The text color for input components.                                                                           | `var(--graupl-color)`                                                                                                                                                                             |
 | `--graupl-input-placeholder-color`             | The placeholder text color for input components.                                                               | `var(--graupl-theme-active--secondary--600)`                                                                                                                                                      |
@@ -116,41 +159,43 @@ The following custom properties can be used to customize the form components:
 | `--graupl-fieldset-border-radius`              | The border radius for fieldset components (combines top-left, top-right, bottom-right, and bottom-left radii). | `var(--graupl-fieldset-border-top-left-radius) var(--graupl-fieldset-border-top-right-radius) var(--graupl-fieldset-border-bottom-right-radius) var(--graupl-fieldset-border-bottom-left-radius)` |
 | `--graupl-input-border-color`                  | The border color for input components.                                                                         | `var(--graupl-border-color)`                                                                                                                                                                      |
 | `--graupl-input-disabled-border-color`         | The border color for disabled input components.                                                                | `var(--graupl-theme-active--secondary--200)`                                                                                                                                                      |
+| `--graupl-label-border-color`                  | The border color for label components.                                                                         | `currentcolor`                                                                                                                                                                                    |
 | `--graupl-fieldset-border-color`               | The border color for fieldset components.                                                                      | `var(--graupl-input-border-color)`                                                                                                                                                                |
 | `--graupl-fieldset-disabled-border-color`      | The border color for disabled fieldset components.                                                             | `var(--graupl-input-disabled-border-color)`                                                                                                                                                       |
-| `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-input-color)`                                                                                                                                                                       |
+| `--graupl-input-accent-color`                  | The accent color for input components.                                                                         | `var(--graupl-fieldset-accent-color, var(--graupl-input-color))`                                                                                                                                  |
+| `--graupl-fieldset-accent-color`               | The accent color for fieldsets and the controls inside them.                                                   | `inherit`                                                                                                                                                                                         |
 
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the form components:
 
-| Variable                               | Description                                                             | Default Value |
-| -------------------------------------- | ----------------------------------------------------------------------- | ------------- |
-| `$selector-base`                       | The selector base for the component.                                    | `""`          |
-| `$modifier-selector-base`              | The selector base for component modifiers.                              | `"."`         |
-| `$generate-base-theme-map`             | Flag to generate the base theme maps for form elements.                 | `true`        |
-| `$themeable`                           | Flag to generate theme modifiers.                                       | `true`        |
-| `$input-selector-base`                 | The base selector for the input component.                              | `""`          |
-| `$input-selector`                      | The input component selector.                                           | `"input"`     |
-| `$input-theme-prefix-selector-base`    | Selector base used for input theme modifiers.                           | `"."`         |
-| `$input-theme-prefix-selector`         | Selector prefix used for input theme modifiers.                         | `""`          |
-| `$textarea-selector-base`              | The base selector for the textarea component.                           | `""`          |
-| `$textarea-selector`                   | The textarea component selector.                                        | `"textarea"`  |
-| `$select-selector-base`                | The base selector for the select component.                             | `""`          |
-| `$select-selector`                     | The select component selector.                                          | `"select"`    |
-| `$label-selector-base`                 | The base selector for the label component.                              | `""`          |
-| `$label-selector`                      | The label component selector.                                           | `"label"`     |
-| `$label-theme-prefix-selector-base`    | Selector base used for label theme modifiers.                           | `"."`         |
-| `$label-theme-prefix-selector`         | Selector prefix used for label theme modifiers.                         | `""`          |
-| `$fieldset-selector-base`              | The base selector for the fieldset component.                           | `""`          |
-| `$fieldset-selector`                   | The fieldset component selector.                                        | `"fieldset"`  |
-| `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                        | `"."`         |
-| `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                      | `""`          |
-| `$fieldset-direction`                  | The direction of fieldset component items.                              | `column`      |
-| `$input-type-selectors`                | Various tyles of inputs and their associated selectors.                 | `()`          |
-| `$input-theme-mappings`                | Map of properties and shade values applied to themed input variants.    | `()`          |
-| `$input-theme-map`                     | Fully expanded property map used to generate themed input variants.     | `()`          |
-| `$label-theme-mappings`                | Map of properties and shade values applied to themed label variants.    | `()`          |
-| `$label-theme-map`                     | Fully expanded property map used to generate themed label variants.     | `()`          |
-| `$fieldset-theme-mappings`             | Map of properties and shade values applied to themed fieldset variants. | `()`          |
-| `$fieldset-theme-map`                  | Fully expanded property map used to generate themed fieldset variants.  | `()`          |
+| Variable                               | Description                                                                               | Default Value |
+| -------------------------------------- | ----------------------------------------------------------------------------------------- | ------------- |
+| `$selector-base`                       | The selector base for the component.                                                      | `""`          |
+| `$modifier-selector-base`              | The selector base for component modifiers.                                                | `"."`         |
+| `$generate-base-theme-map`             | Flag to generate the base theme maps for form elements.                                   | `true`        |
+| `$themeable`                           | Flag to generate theme modifiers.                                                         | `true`        |
+| `$input-selector-base`                 | The base selector for the input component.                                                | `""`          |
+| `$input-selector`                      | The input component selector.                                                             | `"input"`     |
+| `$input-theme-prefix-selector-base`    | Selector base used for input theme modifiers.                                             | `"."`         |
+| `$input-theme-prefix-selector`         | Selector prefix used for input theme modifiers.                                           | `""`          |
+| `$textarea-selector-base`              | The base selector for the textarea component.                                             | `""`          |
+| `$textarea-selector`                   | The textarea component selector.                                                          | `"textarea"`  |
+| `$select-selector-base`                | The base selector for the select component.                                               | `""`          |
+| `$select-selector`                     | The select component selector.                                                            | `"select"`    |
+| `$label-selector-base`                 | The base selector for the label component.                                                | `""`          |
+| `$label-selector`                      | The label component selector.                                                             | `"label"`     |
+| `$label-theme-prefix-selector-base`    | Selector base used for label theme modifiers.                                             | `"."`         |
+| `$label-theme-prefix-selector`         | Selector prefix used for label theme modifiers.                                           | `""`          |
+| `$fieldset-selector-base`              | The base selector for the fieldset component.                                             | `""`          |
+| `$fieldset-selector`                   | The fieldset component selector.                                                          | `"fieldset"`  |
+| `$fieldset-theme-prefix-selector-base` | Selector base used for fieldset theme modifiers.                                          | `"."`         |
+| `$fieldset-theme-prefix-selector`      | Selector prefix used for fieldset theme modifiers.                                        | `""`          |
+| `$fieldset-direction`                  | The direction of fieldset component items.                                                | `column`      |
+| `$input-type-selectors`                | Map of input types and their selectors.                                                   | `()`          |
+| `$input-theme-mappings`                | A map of properties and color shades used to generate all input variants.                 | `()`          |
+| `$input-theme-map`                     | A map of all properties, colors, and color shades used to generate all input variants.    | `()`          |
+| `$label-theme-mappings`                | A map of properties and color shades used to generate all label variants.                 | `()`          |
+| `$label-theme-map`                     | A map of all properties, colors, and color shades used to generate all label variants.    | `()`          |
+| `$fieldset-theme-mappings`             | A map of properties and color shades used to generate all fieldset variants.              | `()`          |
+| `$fieldset-theme-map`                  | A map of all properties, colors, and color shades used to generate all fieldset variants. | `()`          |

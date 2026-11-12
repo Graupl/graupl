@@ -7,9 +7,6 @@
 // - `.tab-list`: The list of tabs in the tabs component.
 // - `.tab-toggle`: The individual tab toggle component.
 // - `.tab-content`: The individual tab content component.
-// - `.primary`: A component modifier to use the primary colour for the tabs component.
-// - `.secondary`: A component modifier to use the secondary colour for the tabs component.
-// - `.tertiary`: A component modifier to use the tertiary colour for the tabs component.
 //
 // The following custom properties can be used to customize the tabs component:
 // | Property                                               | Description                                                                                            | Default Value                                                                                                                                                                                                                     |
@@ -37,7 +34,7 @@
 // | `--graupl-tabs-border-style`                           | The border style of the tabs component (combines top, right, bottom, and left styles).                 | `var(--graupl-tabs-border-top-style) var(--graupl-tabs-border-right-style) var(--graupl-tabs-border-bottom-style) var(--graupl-tabs-border-left-style)`                                                                           |
 // | `--graupl-tabs-tab-list-column-gap`                    | The column gap between tab toggles.                                                                    | `var(--graupl-spacer-0)`                                                                                                                                                                                                          |
 // | `--graupl-tabs-tab-list-row-gap`                       | The row gap between tab toggles.                                                                       | `var(--graupl-spacer-2)`                                                                                                                                                                                                          |
-// | `--graupl-tabs-tab-list-gap`                           | The gap between tab toggles (combines column and row gaps).                                            | `var(--graupl-tabs-tab-list-column-gap) var(--graupl-tabs-tab-list-row-gap)`                                                                                                                                                      |
+// | `--graupl-tabs-tab-list-gap`                           | The gap between tab toggles (combines row and column gaps).                                            | `var(--graupl-tabs-tab-list-row-gap) var(--graupl-tabs-tab-list-column-gap)`                                                                                                                                                      |
 // | `--graupl-tabs-tab-list-background`                    | The background colour of the tab list component.                                                       | `var(--graupl-tabs-background)`                                                                                                                                                                                                   |
 // | `--graupl-tabs-tab-list-color`                         | The text colour of the tab list component.                                                             | `var(--graupl-tabs-color)`                                                                                                                                                                                                        |
 // | `--graupl-tabs-tab-list-border-color`                  | The border colour of the tab list component.                                                           | `var(--graupl-tabs-border-color)`                                                                                                                                                                                                 |
@@ -129,16 +126,16 @@
 // | `--graupl-tabs-tab-content-border-style`               | The border style of the tab content component (combines top, right, bottom, and left styles).          | `var(--graupl-tabs-tab-content-border-top-style) var(--graupl-tabs-tab-content-border-right-style) var(--graupl-tabs-tab-content-border-bottom-style) var(--graupl-tabs-tab-content-border-left-style)`                           |
 // | `--graupl-tabs-tab-content-show-display`               | The display value for tab content when shown.                                                          | `block`                                                                                                                                                                                                                           |
 // | `--graupl-tabs-tab-content-hide-display`               | The display value for tab content when hidden.                                                         | `none`                                                                                                                                                                                                                            |
-// | `--graupl-tabs-tab-content-transitioning-display`      | The display value for tab content while transitioning.                                                 | `var(--graupl-tabs-tab-content-show-display)`                                                                                                                                                                                     |
-// | `--graupl-tabs-tab-content-display`                    | The display value for tab content.                                                                     | `var(--graupl-tabs-tab-content-hide-display)`                                                                                                                                                                                     |
+// | `--graupl-tabs-tab-content-transitioning-display`      | The display value for tab content while transitioning.                                                 | `block`                                                                                                                                                                                                                           |
+// | `--graupl-tabs-tab-content-display`                    | The display value for tab content.                                                                     | `none`                                                                                                                                                                                                                            |
 // | `--graupl-tabs-tab-content-show-opacity`               | The opacity value for tab content when shown.                                                          | `1`                                                                                                                                                                                                                               |
 // | `--graupl-tabs-tab-content-hide-opacity`               | The opacity value for tab content when hidden.                                                         | `0`                                                                                                                                                                                                                               |
-// | `--graupl-tabs-tab-content-transitioning-opacity`      | The opacity value for tab content while transitioning.                                                 | `var(--graupl-tabs-tab-content-hide-opacity)`                                                                                                                                                                                     |
+// | `--graupl-tabs-tab-content-transitioning-opacity`      | The opacity value for tab content while transitioning.                                                 | `0`                                                                                                                                                                                                                               |
 // | `--graupl-tabs-tab-content-opacity`                    | The opacity value for tab content.                                                                     | `var(--graupl-tabs-tab-content-hide-opacity)`                                                                                                                                                                                     |
-// | `--graupl-tabs-tab-content-transition-duration`        | The transition duration for tab content.                                                               | `var(--graupl-transition-duration-fast)`                                                                                                                                                                                          |
+// | `--graupl-tabs-transition-duration`                    | The transition duration for tab content.                                                               | `var(--graupl-transition-duration-fast)                                    `                                                                                                                                                  |
 // | `--graupl-tabs-tab-content-transition-timing-function` | The transition timing function for tab content.                                                        | `var(--graupl-transition-timing-function)`                                                                                                                                                                                        |
-// | `--graupl-tabs-tab-content-transition`                 | The transition for tab content changes.                                                                | `opacity var(--graupl-tabs-tab-content-transition-duration) var(--graupl-tabs-tab-content-transition-timing-function)`                                                                                                            |
-// | `--graupl-tabs-tab-content-transition-reduced-motion`  | The transition for tab content changes when reduced motion is enabled.                                 | `opacity var(--graupl-tabs-tab-content-transition-duration) var(--graupl-tabs-tab-content-transition-timing-function)`                                                                                                            |
+// | `--graupl-tabs-tab-content-transition`                 | The transition for tab content changes.                                                                | `opacity var(--graupl-tabs-transition-duration) var(--graupl-tabs-tab-content-transition-timing-function)`                                                                                                                        |
+// | `--graupl-tabs-tab-content-transition-reduced-motion`  | The transition for tab content changes when reduced motion is enabled.                                 | `opacity var(--graupl-tabs-transition-duration) var(--graupl-tabs-tab-content-transition-timing-function)`                                                                                                                        |
 //
 // The following sass variables can be used to customize the generation of the tabs component:
 // | Variable                                        | Description                                                                           | Default Value                                            |
@@ -176,25 +173,25 @@
 // | `$tabs-theme-map`                               | A map of all properties, colors, and color shades used to generate all tabs variants. | `map.deep-merge($-tabs-theme-map, $tabs-theme-map)`      |
 //
 // The following javascript options can be used to customize the generation of the tabs component.
-// | Variable                      | Description                                                                | Default Value  |
-// | ----------------------------- | -------------------------------------------------------------------------- | -------------- |
-// | `context`                     | The element that scopes the selector when locating tabs.                   | `document`     |
-// | `selector`                    | The selector used to find tabs in the DOM.                                 | `.tabs`        |
-// | `options`                     | An object of options passed through to the `Tabs` constructor (see below). | `{}`           |
-// | `options.tabListSelector`     | The selector for the tab list element.                                     | `.tab-list`    |
-// | `options.tabToggleSelector`   | The selector for tab toggle elements.                                      | `.tab-toggle`  |
-// | `options.tabContentSelector`  | The selector for tab content elements.                                     | `.tab-content` |
-// | `options.expandClass`         | The class(es) applied when a tab is open.                                  | `show`         |
-// | `options.collapseClass`       | The class(es) applied when a tab is closed.                                | `hide`         |
-// | `options.transitionClass`     | The class(es) applied while a tab is transitioning.                        | `null`         |
-// | `options.transitionDuration`  | Duration (ms) for transitions between open/closed states.                  | `300`          |
-// | `options.expandDuration`      | Duration (ms) for closed → open; `-1` uses `transitionDuration`.           | `-1`           |
-// | `options.collapseDuration`    | Duration (ms) for open → closed; `-1` uses `transitionDuration`.           | `-1`           |
-// | `options.automaticActivation` | When `true`, focusing a tab toggle also activates it.                      | `false`        |
-// | `options.prefix`              | Prefix for generated CSS custom properties.                                | `graupl-`      |
-// | `options.key`                 | Key used when generating IDs; `null` auto-generates a random key.          | `null`         |
-// | `options.initializeClass`     | The class applied while the tabs are initializing.                         | `initializing` |
-// | `options.initialize`          | When `true`, initializes the tabs immediately on creation.                 | `false`        |
+// | Property Name                 | Description                                                                | Default Value                   |
+// | ----------------------------- | -------------------------------------------------------------------------- | ------------------------------- |
+// | `context`                     | The element that scopes the selector when locating tabs.                   | `document`                      |
+// | `selector`                    | The selector used to find tabs in the DOM.                                 | `.tabs`                         |
+// | `options`                     | An object of options passed through to the `Tabs` constructor (see below). | `{}`                            |
+// | `options.tabListSelector`     | The selector for the tab list element.                                     | `.tab-list`                     |
+// | `options.tabTogglesSelector`  | The selector for tab toggle elements.                                      | `.tab-toggle`                   |
+// | `options.tabContentsSelector` | The selector for tab content elements.                                     | `.tab-content`                  |
+// | `options.expandClass`         | The class(es) applied when a tab is open.                                  | `show`                          |
+// | `options.collapseClass`       | The class(es) applied when a tab is closed.                                | `hide`                          |
+// | `options.transitionClass`     | The class(es) applied while a tab is transitioning.                        | `null`                          |
+// | `options.transitionDuration`  | Duration (ms) for transitions between open/closed states.                  | `300`                           |
+// | `options.expandDuration`      | Duration (ms) for closed → open; `-1` uses `transitionDuration`.           | `-1`                            |
+// | `options.collapseDuration`    | Duration (ms) for open → closed; `-1` uses `transitionDuration`.           | `-1`                            |
+// | `options.automaticActivation` | When `true`, focusing a tab toggle also activates it.                      | `false`                         |
+// | `options.prefix`              | Prefix for generated CSS custom properties.                                | `graupl-`                       |
+// | `options.key`                 | Key used when generating IDs; `null` auto-generates a random key.          | `null`                          |
+// | `options.initializeClass`     | The class applied while the tabs are initializing.                         | `initializing`                  |
+// | `options.initialize`          | When `true`, initializes the tabs immediately on creation.                 | `true` when using the generator |
 //
 // ## Using `$tabs-theme-mappings`
 //
@@ -444,24 +441,19 @@
     color: $tabs-color;
 
     @if root-defaults.$themeable-components and defaults.$themeable {
-      @each $color, $map in defaults.$tabs-theme-map {
-        @include theme.generate-modifiers(
-          defaults.$tabs-theme-map,
-          defaults.$tabs-theme-selector-base,
-          defaults.$tabs-theme-selector-prefix,
-          "tabs-"
-        );
-      }
-
-      @each $color, $map in defaults.$tabs-theme-map {
-        @include theme.generate-modifiers(
-          defaults.$tabs-theme-map,
-          defaults.$tabs-theme-selector-base,
-          defaults.$tabs-theme-selector-prefix,
-          "tabs-",
-          ""
-        );
-      }
+      @include theme.generate-modifiers(
+        defaults.$tabs-theme-map,
+        defaults.$tabs-theme-selector-base,
+        defaults.$tabs-theme-selector-prefix,
+        "tabs-"
+      );
+      @include theme.generate-modifiers(
+        defaults.$tabs-theme-map,
+        defaults.$tabs-theme-selector-base,
+        defaults.$tabs-theme-selector-prefix,
+        "tabs-",
+        ""
+      );
     }
   }
 

@@ -138,4 +138,14 @@ jobs:
         run: fc-cache -f -v
 
       - name: Run vitest
+        id: browser-tests
         run: npm run test:browser
+
+      - name: Upload browser screenshot failures
+        if: failure() && steps.browser-tests.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-screenshot-failures
+          path: .vitest-attachments/**/*.png
+          include-hidden-files: true
+          if-no-files-found: ignore

@@ -41,8 +41,8 @@ $alert-transition-selector: "transitioning" !default;
 // themed alert components.
 //
 // e.g.
-// Primary alerts will use primary--900 as the text colour, primary--100 as the background
-// and primary--900 as the border colour.
+// Primary alerts will use primary--900 as the text colour, primary--200 as the background
+// and primary--700 as the border colour.
 //
 // Secondary/tertiary alerts will use the same shade for their respective colours.
 $-alert-theme-mappings: (
@@ -50,12 +50,8 @@ $-alert-theme-mappings: (
   background: 200,
   border-color: 700,
   title-color: 800,
-  button-border-color: transparent,
   link-color: 800,
-  link-visited-color: 800,
-  link-focus-color: 800,
   link-hover-color: 900,
-  link-active-color: 900,
   link-disabled-color: 400,
 );
 $alert-theme-mappings: () !default;
