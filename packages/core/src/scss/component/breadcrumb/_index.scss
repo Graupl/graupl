@@ -329,7 +329,7 @@
     &#{defaults.$breadcrumb-open-selector-base}#{defaults.$breadcrumb-open-selector} {
       // .breadcrumb-item:has(.breadcrumb-toggle)
       #{defaults.$breadcrumb-item-selector-base}#{defaults.$breadcrumb-item-selector}:has(
-          .breadcrumb-toggle
+          #{defaults.$breadcrumb-toggle-selector-base}#{defaults.$breadcrumb-toggle-selector}
         ) {
         display: $breadcrumb-item-hide-display;
         opacity: $breadcrumb-item-hide-opacity;
