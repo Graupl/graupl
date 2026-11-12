@@ -238,7 +238,7 @@ $breadcrumb-row-gap: var(
 // --graupl-breadcrumb-gap
 $breadcrumb-gap: var(
   --#{root-defaults.$prefix}breadcrumb-gap,
-  #{$breadcrumb-column-gap} #{$breadcrumb-row-gap}
+  #{$breadcrumb-row-gap} #{$breadcrumb-column-gap}
 );
 
 // Breadcrumb color properties.
@@ -461,7 +461,7 @@ $breadcrumb-item-row-gap: var(
 // --graupl-breadcrumb-item-gap
 $breadcrumb-item-gap: var(
   --#{root-defaults.$prefix}breadcrumb-item-gap,
-  #{$breadcrumb-item-column-gap} #{$breadcrumb-item-row-gap}
+  #{$breadcrumb-item-row-gap} #{$breadcrumb-item-column-gap}
 );
 
 // --graupl-breadcrumb-item-color
