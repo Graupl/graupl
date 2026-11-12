@@ -65,7 +65,7 @@ import CollapsibleComponent from "@accessible-ecosystem/core/CollapsibleComponen
  * @property {grauplTooltipExpand}             _events.expand               - The event triggered when the tooltip is expanded.
  * @property {grauplTooltipCollapse}           _events.collapse             - The event triggered when the tooltip is collapsed.
  * @property {boolean}                         _collapseOnBlur              - Whether to close the tooltip when it loses focus in the DOM.
- * @property {boolean}                         _expandOnFocus               - Whether to expanded the tooltip when it gains focus in the DOM.
+ * @property {boolean}                         _expandOnFocus               - Whether to expand the tooltip when the trigger receives keyboard focus.
  * @property {string}                          _storageKey                  - The key used for storage.
  * @property {boolean}                         _shouldStore                 - A flag to check if the component should be stored in the StorageManager.
  * @property {Object<string, string>}          _selectors                   - The query selectors used by the tooltip.
@@ -94,7 +94,7 @@ class Tooltip extends CollapsibleComponent {
   _scope = "Graupl";
   _rootDOMElement = "tooltip";
   _softLocked = false;
-  _hoverType = "off";
+  _hoverType = "on";
   _storageKey = "tooltips";
   _name = "Tooltip";
 
@@ -112,11 +112,11 @@ class Tooltip extends CollapsibleComponent {
    * @param {number}               [options.transitionDuration = 150]        - The duration of the transition between "expanded" and "collapsed" states (in milliseconds).
    * @param {number}               [options.expandDuration = -1]             - The duration of the transition from "collapsed" to "expanded" states (in milliseconds).
    * @param {number}               [options.collapseDuration = -1]           - The duration of the transition from "expanded" to "collapsed" states (in milliseconds).
-   * @param {?string}              [options.hoverType = off]                 - An indication of the tooltip Description's hoverType.
+   * @param {?string}              [options.hoverType = "on"]                 - An indication of the tooltip Description's hoverType.
    * @param {number}               [options.hoverDelay = 250]                - The delay time (in milliseconds) used for hover events.
    * @param {number}               [options.enterDelay = -1]                 - The delay time (in milliseconds) used for pointerenter events.
    * @param {number}               [options.leaveDelay = -1]                 - The delay time (in milliseconds) used for pointerleave events.
-   * @param {boolean}              [options.expandOnFocus = false]           - Whether to expanded the tooltip when it gains focus in the DOM.
+   * @param {boolean}              [options.expandOnFocus = true]            - Whether to expand the tooltip when the trigger receives keyboard focus.
    * @param {boolean}              [options.collapseOnBlur = true]           - Whether to close the tooltip when it loses focus in the DOM.
    * @param {?string}              [options.prefix = graupl-]                - The prefix used for CSS custom properties and attributes.
    * @param {?string}              [options.key = null]                      - The key used to generate IDs throughout the tooltip.
@@ -140,9 +140,9 @@ class Tooltip extends CollapsibleComponent {
     transitionDuration = 150,
     expandDuration = -1,
     collapseDuration = -1,
-    expandOnFocus = false,
+    expandOnFocus = true,
     collapseOnBlur = true,
-    hoverType = "off",
+    hoverType = "on",
     hoverDelay = 250,
     enterDelay = -1,
     leaveDelay = -1,

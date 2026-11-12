@@ -1117,7 +1117,7 @@ class Carousel extends Component {
    * @protected
    *
    * @param {CarouselItem}    item                 - The item to scroll into view.
-   * @param {ScrollToOptions} [scrollOptions = {}] - Scroll option overrides.
+   * @param {object}          [scrollOptions = {}] - Scroll option overrides.
    */
   _scrollToItem(item, scrollOptions = {}) {
     this.dom.carouselItemContainer.scrollTo({
@@ -1133,7 +1133,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the current item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activateCurrentItem({
@@ -1149,7 +1149,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for deactivating the current item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the deactivated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   deactivateCurrentItem({
@@ -1166,7 +1166,7 @@ class Carousel extends Component {
    * @param {number}          index                                                  - The index of the carousel item to activate.
    * @param {object}          [options = {}]                                         - Additional options for activating the item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activateItem(
@@ -1189,7 +1189,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the first item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activateFirstItem({
@@ -1216,7 +1216,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the last item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activateLastItem({
@@ -1247,7 +1247,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the next item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activateNextItem({
@@ -1275,7 +1275,7 @@ class Carousel extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the previous item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public item lifecycle events.
    */
   activatePreviousItem({

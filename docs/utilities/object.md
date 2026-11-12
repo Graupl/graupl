@@ -132,5 +132,5 @@ Generating responsive utility classes can be done by setting `$screen-aware`, `$
 By default, no responsive utility classes are generated for object.
 
 ::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive utility classes](./responsive-classes) documentation.
+For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
 :::

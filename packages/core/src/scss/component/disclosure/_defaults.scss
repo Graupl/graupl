@@ -30,7 +30,7 @@ $disclosure-hide-display: flex !default;
 $disclosure-transitioning-display: $disclosure-show-display !default;
 
 // Disclosure block-size properties.
-$disclosure-show-block-size: 100% !default;
+$disclosure-show-block-size: auto !default;
 $disclosure-hide-block-size: 0 !default;
 $disclosure-transitioning-block-size: $disclosure-hide-block-size !default;
 
