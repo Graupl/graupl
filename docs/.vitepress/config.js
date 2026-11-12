@@ -107,6 +107,7 @@ export default defineConfig({
         items: [
           { text: "Accordions", link: "/components/accordion" },
           { text: "Alerts", link: "/components/alert" },
+          { text: "Breadcrumb", link: "/components/breadcrumb" },
           { text: "Badge", link: "/components/badge" },
           { text: "Cards", link: "/components/card" },
           { text: "Carousels", link: "/components/carousel" },
