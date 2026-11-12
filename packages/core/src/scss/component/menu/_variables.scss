@@ -12,7 +12,7 @@
 // | --graupl-menu-padding                                 | var(--graupl-menu-padding-y) var(--graupl-menu-padding-x)                                                                                                                                           |
 // | --graupl-menu-column-gap                              | var(--graupl-spacer-0)                                                                                                                                                                              |
 // | --graupl-menu-row-gap                                 | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-menu-gap                                     | var(--graupl-menu-column-gap) var(--graupl-menu-row-gap)                                                                                                                                            |
+// | --graupl-menu-gap                                     | var(--graupl-menu-row-gap) var(--graupl-menu-column-gap)                                                                                                                                            |
 // | --graupl-menu-show-display                            | flex                                                                                                                                                                                                |
 // | --graupl-menu-hide-display                            | none                                                                                                                                                                                                |
 // | --graupl-menu-display                                 | flex                                                                                                                                                                                                |
@@ -41,7 +41,7 @@
 // | --graupl-submenu-padding                              | var(--graupl-submenu-padding-y) var(--graupl-submenu-padding-x)                                                                                                                                     |
 // | --graupl-submenu-column-gap                           | var(--graupl-menu-column-gap)                                                                                                                                                                       |
 // | --graupl-submenu-row-gap                              | var(--graupl-menu-row-gap)                                                                                                                                                                          |
-// | --graupl-submenu-gap                                  | var(--graupl-submenu-column-gap) var(--graupl-submenu-row-gap)                                                                                                                                      |
+// | --graupl-submenu-gap                                  | var(--graupl-submenu-row-gap) var(--graupl-submenu-column-gap)                                                                                                                                      |
 // | --graupl-submenu-show-display                         | flex                                                                                                                                                                                                |
 // | --graupl-submenu-hide-display                         | none                                                                                                                                                                                                |
 // | --graupl-submenu-display                              | none                                                                                                                                                                                                |
@@ -88,7 +88,7 @@
 // | --graupl-menu-link-disabled-transform                 | none                                                                                                                                                                                                |
 // | --graupl-menu-link-column-gap                         | var(--graupl-menu-link-padding-x)                                                                                                                                                                   |
 // | --graupl-menu-link-row-gap                            | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-menu-link-gap                                | var(--graupl-menu-link-column-gap) var(--graupl-menu-link-row-gap)                                                                                                                                  |
+// | --graupl-menu-link-gap                                | var(--graupl-menu-link-row-gap) var(--graupl-menu-link-column-gap)                                                                                                                                  |
 // | --graupl-menu-link-background                         | var(--graupl-menu-background)                                                                                                                                                                       |
 // | --graupl-menu-link-visited-background                 | var(--graupl-menu-link-background)                                                                                                                                                                  |
 // | --graupl-menu-link-focus-background                   | var(--graupl-menu-link-background)                                                                                                                                                                  |
@@ -200,7 +200,7 @@ $menu-row-gap: var(
 // --graupl-menu-gap
 $menu-gap: var(
   --#{root-defaults.$prefix}menu-gap,
-  #{$menu-column-gap} #{$menu-row-gap}
+  #{$menu-row-gap} #{$menu-column-gap}
 );
 
 // Menu display properties.
@@ -379,7 +379,7 @@ $submenu-row-gap: var(
 // --graupl-submenu-gap
 $submenu-gap: var(
   --#{root-defaults.$prefix}submenu-gap,
-  #{$submenu-column-gap} #{$submenu-row-gap}
+  #{$submenu-row-gap} #{$submenu-column-gap}
 );
 
 // Submenu display properties.
@@ -684,7 +684,7 @@ $menu-link-row-gap: var(
 // --graupl-menu-link-gap
 $menu-link-gap: var(
   --#{root-defaults.$prefix}menu-link-gap,
-  #{$menu-link-column-gap} #{$menu-link-row-gap}
+  #{$menu-link-row-gap} #{$menu-link-column-gap}
 );
 
 // Menu link colors.
