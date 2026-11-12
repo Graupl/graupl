@@ -1,169 +1,151 @@
 <script setup>
-  import { ref, computed, onMounted, onUpdated } from "vue";
+  import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import generate from "../../packages/core/src/js/disclosure/generator.js";
+  import Disclosure from "../../packages/core/src/js/disclosure/Disclosure.js";
 
-  const background = ref("default");
+  const preview = useTemplateRef("disclosure-preview");
+  let disclosure;
 
-  const exampleDisclosures = computed(() => {
-    return `
-  <button
-    class="disclosure-toggle"
-    type="button"
-    data-graupl-disclosure-target="disclosure"
-    aria-label="Toggle disclosure example"
-  ></button>
-  <div id="disclosure" class="disclosure">
-    <div class="disclosure-content">
-      <p>This content is hidden until the disclosure is open.</p>
-    </div>
+  const exampleDisclosure = `
+<button type="button" class="disclosure-toggle"
+  data-graupl-disclosure-target="griffin-field-notes"
+  aria-controls="griffin-field-notes" aria-expanded="false">
+  Griffin field notes
+</button>
+<div id="griffin-field-notes" class="disclosure hide">
+  <div class="disclosure-content" inert>
+    <p>Griffins nest on the upper ledges. Keep to the river trail during nesting season.</p>
   </div>
-    `
-  });
+</div>
+  `;
+
+  function initializePreview() {
+    const example = preview.value?.querySelector(".example");
+    const disclosureElement = example?.querySelector(".disclosure");
+    const controllerElement = example?.querySelector(".disclosure-toggle");
+
+    if (disclosure?.dom.disclosure === disclosureElement &&
+        disclosure?.dom.controller === controllerElement) return;
+
+    disclosure?.dispose();
+    disclosure = disclosureElement && controllerElement && new Disclosure({
+      disclosureElement,
+      controllerElement,
+      initialize: true,
+    });
+  }
+
+  onBeforeUnmount(() => disclosure?.dispose());
 </script>
 
 # Disclosures
 
-<live-example :source-code="exampleDisclosures" :key="background" @mounted="generate()" @updated="generate()">
-</live-example>
+The disclosure component provides a set of classes to show and hide content with a button.
 
-<br/>
+## Base classes
 
-The disclosure component provides the following set of classes to apply the preset properties of for the specific elements.
+Use `.disclosure` for the panel and `.disclosure-content` for the wrapper around its contents. Give the panel a unique `id` and use that ID as the `.disclosure-toggle` button's `data-graupl-disclosure-target`.
 
-| Class Name | Description |
-| --- | --- |
-| `.disclosure` | The disclosure root container that manages layout, overflow, and transitions |
-| `.disclosure.show` | A modifier that forces the disclosure container into the open state |
-| `.disclosure.hide` | A modifier that forces the disclosure container into the closed state |
-| `.disclosure.transitioning` | A modifier that applies the transitioning state to the container |
-| `.disclosure-content` | The disclosure content wrapper that receives padding and border style |
-| `.disclosure-toggle` | The disclosure toggle control that inherits the button base styles |
+Once initialized, click the button or press Enter or Space while it has focus to expand or collapse the panel.
 
-## .disclosure properties
+<div ref="disclosure-preview">
+  <live-example :source-code="exampleDisclosure" @mounted="initializePreview" @updated="initializePreview" />
+</div>
 
-These are the default values for the `.disclosure` class.
+## Initialization
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-color` | Value for color. | `var(--graupl-color)` |
-| `--graupl-disclosure-background` | Value for background. | `var(--graupl-background)` |
-| `--graupl-disclosure-display` | Value for display. | `flex` |
-| `--graupl-disclosure-block-size` | Value for block size. | `0` |
-| `--graupl-disclosure-opacity` | Value for opacity. | `0` |
+Run the disclosure generator after the markup is in the DOM.
 
-## .disclosure.show properties
+```js
+import generateDisclosures from "@graupl/core/disclosure/generator";
 
-These are the default values for the `.disclosure.show` class.
+generateDisclosures();
+```
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-show-display` | Value for show display. | `flex` |
-| `--graupl-disclosure-show-block-size` | Value for show block size. | `100%` |
-| `--graupl-disclosure-show-opacity` | Value for show opacity. | `1` |
+During initialization, Disclosure sets the button's `aria-controls` to the panel's ID.
 
-## .disclosure.hide properties
+To start expanded, set `aria-expanded="true"` on the button and add `.show` to the panel. To start collapsed, set `aria-expanded="false"` and add `.hide`. Add `inert` to the collapsed panel's `.disclosure-content` so its contents stay out of the tab order before initialization. Disclosure updates the button state and removes `inert` when the panel opens.
 
-These are the default values for the `.disclosure.hide` class.
+<!-- TODO: Document how to animate Disclosure height in both directions while keeping the expanded panel sized to its contents and respecting reduced motion. -->
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-hide-display` | Value for hide display. | `flex` |
-| `--graupl-disclosure-hide-block-size` | Value for hide block size. | `0` |
-| `--graupl-disclosure-hide-block-size` | Value for hide block size. | `0` |
-| `--graupl-disclosure-hide-opacity` | Value for hide opacity. | `0` |
+## Custom Properties
 
-## .disclosure.transition properties
+The following custom properties can be used to customize the disclosure component:
 
-These are the default values for the `.disclosure.transition` class.
+| Property                                                 | Description                                                           | Default Value                                                                                                                                                                                                                             |
+| -------------------------------------------------------- | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--graupl-disclosure-color`                              | Text color of the disclosure.                                         | `var(--graupl-color)`                                                                                                                                                                                                                     |
+| `--graupl-disclosure-background`                         | Background of the disclosure.                                         | `var(--graupl-background)`                                                                                                                                                                                                                |
+| `--graupl-disclosure-content-border-color`               | Border color of the disclosure content.                               | `var(--graupl-border-color)`                                                                                                                                                                                                              |
+| `--graupl-disclosure-content-padding-x`                  | Horizontal padding of the disclosure content.                         | `var(--graupl-spacer-5)`                                                                                                                                                                                                                  |
+| `--graupl-disclosure-content-padding-y`                  | Vertical padding of the disclosure content.                           | `var(--graupl-spacer-5)`                                                                                                                                                                                                                  |
+| `--graupl-disclosure-content-padding`                    | Padding of the disclosure content.                                    | `var(--graupl-disclosure-content-padding-y) var(--graupl-disclosure-content-padding-x)`                                                                                                                                                   |
+| `--graupl-disclosure-show-display`                       | Display of the expanded disclosure.                                   | `flex`                                                                                                                                                                                                                                    |
+| `--graupl-disclosure-hide-display`                       | Display of the collapsed disclosure.                                  | `flex`                                                                                                                                                                                                                                    |
+| `--graupl-disclosure-transitioning-display`              | Display of the transitioning disclosure.                              | `flex`                                                                                                                                                                                                                                    |
+| `--graupl-disclosure-display`                            | Display of the disclosure.                                            | `flex`                                                                                                                                                                                                                                    |
+| `--graupl-disclosure-show-block-size`                    | Block size of the expanded disclosure.                                | `auto`                                                                                                                                                                                                                                    |
+| `--graupl-disclosure-hide-block-size`                    | Block size of the collapsed disclosure.                               | `0`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-transitioning-block-size`           | Block size of the transitioning disclosure.                           | `0`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-block-size`                         | Block size of the disclosure.                                         | `0`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-show-opacity`                       | Opacity of the expanded disclosure.                                   | `1`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-hide-opacity`                       | Opacity of the collapsed disclosure.                                  | `0`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-transitioning-opacity`              | Opacity of the transitioning disclosure.                              | `0`                                                                                                                                                                                                                                       |
+| `--graupl-disclosure-opacity`                            | Opacity of the disclosure.                                            | `var(--graupl-disclosure-hide-opacity)`                                                                                                                                                                                                   |
+| `--graupl-disclosure-transition-duration`                | Transition duration of the disclosure.                                | `var(--graupl-transition-duration-fast)`                                                                                                                                                                                                  |
+| `--graupl-disclosure-transition-timing-function`         | Transition timing function of the disclosure.                         | `var(--graupl-transition-timing-function)`                                                                                                                                                                                                |
+| `--graupl-disclosure-transition`                         | Transition of the disclosure.                                         | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function), block-size var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)`                   |
+| `--graupl-disclosure-transition-reduced-motion`          | Transition of the disclosure when reduced motion is requested.        | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)`                                                                                                                                |
+| `--graupl-disclosure-content-border-top-width`           | Border top width of the disclosure content.                           | `var(--graupl-border-top-width)`                                                                                                                                                                                                          |
+| `--graupl-disclosure-content-border-right-width`         | Border right width of the disclosure content.                         | `var(--graupl-border-right-width)`                                                                                                                                                                                                        |
+| `--graupl-disclosure-content-border-bottom-width`        | Border bottom width of the disclosure content.                        | `var(--graupl-border-bottom-width)`                                                                                                                                                                                                       |
+| `--graupl-disclosure-content-border-left-width`          | Border left width of the disclosure content.                          | `var(--graupl-border-left-width)`                                                                                                                                                                                                         |
+| `--graupl-disclosure-content-border-width`               | Border width of the disclosure content.                               | `var(--graupl-disclosure-content-border-top-width) var(--graupl-disclosure-content-border-right-width) var(--graupl-disclosure-content-border-bottom-width) var(--graupl-disclosure-content-border-left-width)`                           |
+| `--graupl-disclosure-content-border-top-style`           | Border top style of the disclosure content.                           | `var(--graupl-border-top-style)`                                                                                                                                                                                                          |
+| `--graupl-disclosure-content-border-right-style`         | Border right style of the disclosure content.                         | `var(--graupl-border-right-style)`                                                                                                                                                                                                        |
+| `--graupl-disclosure-content-border-bottom-style`        | Border bottom style of the disclosure content.                        | `var(--graupl-border-bottom-style)`                                                                                                                                                                                                       |
+| `--graupl-disclosure-content-border-left-style`          | Border left style of the disclosure content.                          | `var(--graupl-border-left-style)`                                                                                                                                                                                                         |
+| `--graupl-disclosure-content-border-style`               | Border style of the disclosure content.                               | `var(--graupl-disclosure-content-border-top-style) var(--graupl-disclosure-content-border-right-style) var(--graupl-disclosure-content-border-bottom-style) var(--graupl-disclosure-content-border-left-style)`                           |
+| `--graupl-disclosure-content-border-top-left-radius`     | Border top left radius of the disclosure content.                     | `var(--graupl-border-top-left-radius)`                                                                                                                                                                                                    |
+| `--graupl-disclosure-content-border-top-right-radius`    | Border top right radius of the disclosure content.                    | `var(--graupl-border-top-right-radius)`                                                                                                                                                                                                   |
+| `--graupl-disclosure-content-border-bottom-right-radius` | Border bottom right radius of the disclosure content.                 | `var(--graupl-border-bottom-right-radius)`                                                                                                                                                                                                |
+| `--graupl-disclosure-content-border-bottom-left-radius`  | Border bottom left radius of the disclosure content.                  | `var(--graupl-border-bottom-left-radius)`                                                                                                                                                                                                 |
+| `--graupl-disclosure-content-border-radius`              | Border radius of the disclosure content.                              | `var(--graupl-disclosure-content-border-top-left-radius) var(--graupl-disclosure-content-border-top-right-radius) var(--graupl-disclosure-content-border-bottom-right-radius) var(--graupl-disclosure-content-border-bottom-left-radius)` |
+| `--graupl-disclosure-toggle-transform`                   | Transform of the disclosure toggle.                                   | `rotate(0deg)`                                                                                                                                                                                                                            |
+| `--graupl-disclosure-toggle-open-transform`              | Expanded indicator transform of the disclosure toggle.                | `rotate(-180deg)`                                                                                                                                                                                                                         |
+| `--graupl-disclosure-toggle-content`                     | Indicator content of the disclosure toggle.                           | `'↓'`                                                                                                                                                                                                                                     |
+| `--graupl-disclosure-toggle-transition`                  | Transition of the disclosure toggle.                                  | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)`                                                                                                                                               |
+| `--graupl-disclosure-toggle-transition-reduced-motion`   | Transition of the disclosure toggle when reduced motion is requested. | `none`                                                                                                                                                                                                                                    |
 
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-transitioning-display` | Value for transitioning display. | `flex` |
-| `--graupl-disclosure-transitioning-block-size` | Value for transitioning block size. | `0` |
-| `--graupl-disclosure-transitioning-opacity` | Value for transitioning opacity. | `0` |
-| `--graupl-disclosure-transition-duration` | Value for transition duration. | `var(--graupl-transition-duration-fast)` |
-| `--graupl-disclosure-transition-timing-function` | Value for transition timing function. | `var(--graupl-transition-timing-function)` |
-| `--graupl-disclosure-transition` | Value for transition. | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function), block-size var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)` |
-| `--graupl-disclosure-transition-reduced-motion` | Value for transition reduced motion. | `opacity var(--graupl-disclosure-transition-duration) var(--graupl-disclosure-transition-timing-function)` |
+## Sass variables
 
-## .disclosure-content properties
+The following Sass variables can be used to customize the generation of the disclosure component:
 
-These are the default values for the `.disclosure-content` class.
-
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-content-border-color` | Value for content border color. | `var(--graupl-border-color)` |
-| `--graupl-disclosure-content-padding-x` | Value for content padding (horizontal). | `var(--graupl-spacer-5)` |
-| `--graupl-disclosure-content-padding-y` | Value for content padding (vertical). | `var(--graupl-spacer-5)` |
-| `--graupl-disclosure-content-padding` | Value for content padding. | `var(--graupl-disclosure-content-padding-y) var(--graupl-disclosure-content-padding-x)` |
-| `--graupl-disclosure-content-border-top-width` | Value for content border top width. | `var(--graupl-border-top-width)` |
-| `--graupl-disclosure-content-border-right-width` | Value for content border right width. | `var(--graupl-border-right-width)` |
-| `--graupl-disclosure-content-border-bottom-width` | Value for content border bottom width. | `var(--graupl-border-bottom-width)` |
-| `--graupl-disclosure-content-border-left-width` | Value for content border left width. | `var(--graupl-border-left-width)` |
-| `--graupl-disclosure-content-border-width` | Value for content border width. | `var(--graupl-disclosure-content-border-top-width) var(--graupl-disclosure-content-border-right-width) var(--graupl-disclosure-content-border-bottom-width) var(--graupl-disclosure-content-border-left-width)` |
-| `--graupl-disclosure-content-border-top-style` | Value for content border top style. | `var(--graupl-border-top-style)` |
-| `--graupl-disclosure-content-border-right-style` | Value for content border right style. | `var(--graupl-border-right-style)` |
-| `--graupl-disclosure-content-border-bottom-style` | Value for content border bottom style. | `var(--graupl-border-bottom-style)` |
-| `--graupl-disclosure-content-border-left-style` | Value for content border left style. | `var(--graupl-border-left-style)` |
-| `--graupl-disclosure-content-border-style` | Value for content border style. | `var(--graupl-disclosure-content-border-top-style) var(--graupl-disclosure-content-border-right-style) var(--graupl-disclosure-content-border-bottom-style) var(--graupl-disclosure-content-border-left-style)` |
-| `--graupl-disclosure-content-border-top-left-radius` | Value for content border top left radius. | `var(--graupl-border-top-left-radius)` |
-| `--graupl-disclosure-content-border-top-right-radius` | Value for content border top right radius. | `var(--graupl-border-top-right-radius)` |
-| `--graupl-disclosure-content-border-bottom-right-radius` | Value for content border bottom right radius. | `var(--graupl-border-bottom-right-radius)` |
-| `--graupl-disclosure-content-border-bottom-left-radius` | Value for content border bottom left radius. | `var(--graupl-border-bottom-left-radius)` |
-| `--graupl-disclosure-content-border-radius` | Value for content border radius. | `var(--graupl-disclosure-content-border-top-left-radius) var(--graupl-disclosure-content-border-top-right-radius) var(--graupl-disclosure-content-border-bottom-right-radius) var(--graupl-disclosure-content-border-bottom-left-radius)` |
-
-## .disclosure-toggle properties
-
-These are the default values for the `.disclosure-toggle` class.
-
-| Property Name | Description | Default Value |
-| --- | --- | --- |
-| `--graupl-disclosure-toggle-transform` | Value for toggle transform. | `rotate(0deg)` |
-| `--graupl-disclosure-toggle-open-transform` | Value for toggle open transform. | `rotate(-180deg)` |
-| `--graupl-disclosure-toggle-content` | Value for toggle content. | `"'↓'"` |
-| `--graupl-disclosure-toggle-transition` | Value for toggle transition. | `transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)` |
-| `--graupl-disclosure-toggle-transition-reduced-motion` | Value for toggle transition reduced motion. | `none` |
-
-## Customization
-
-To customize the alignment utilities, you can use the following variables.
-
-| Variable | Description | Default Value |
-| -------- | ----------- | ------------- |
-| `$selector-base` | Default for selector base. | `"."` |
-| `$modifier-selector-base` | Default for modifier selector base. | `"."` |
-| `$disclosure-selector-base` | Default for disclosure selector base. | `"."` |
-| `$disclosure-selector` | Default for disclosure selector. | `"disclosure"` |
-| `$disclosure-content-selector-base` | Default for disclosure content selector base. | `"."` |
-| `$disclosure-content-selector` | Default for disclosure content selector. | `"disclosure-content"` |
-| `$disclosure-toggle-selector-base` | Default for disclosure toggle selector base. | `"."` |
-| `$disclosure-toggle-selector` | Default for disclosure toggle selector. | `"disclosure-toggle"` |
-| `$disclosure-open-selector-base` | Default for disclosure open selector base. | `"."` |
-| `$disclosure-open-selector` | Default for disclosure open selector. | `"show"` |
-| `$disclosure-closed-selector-base` | Default for disclosure closed selector base. | `"."` |
-| `$disclosure-closed-selector` | Default for disclosure closed selector. | `"hide"` |
-| `$disclosure-transitioning-selector-base` | Default for disclosure transitioning selector base. | `"."` |
-| `$disclosure-transitioning-selector` | Default for disclosure transitioning selector. | `"transitioning"` |
-| `$disclosure-show-display` | Default for disclosure show display. | `flex` |
-| `$disclosure-hide-display` | Default for disclosure hide display. | `flex` |
-| `$disclosure-transitioning-display` | Default for disclosure transitioning display. | `flex` |
-| `$disclosure-show-block-size` | Default for disclosure show block size. | `100%` |
-| `$disclosure-hide-block-size` | Default for disclosure hide block size. | `0` |
-| `$disclosure-transitioning-block-size` | Default for disclosure transitioning block size. | `0` |
-| `$disclosure-show-opacity` | Default for disclosure show opacity. | `1` |
-| `$disclosure-hide-opacity` | Default for disclosure hide opacity. | `0` |
-| `$disclosure-transitioning-opacity` | Default for disclosure transitioning opacity. | `0` |
-| `$disclosure-toggle-content` | Default for disclosure toggle content. | `"'↓'"` |
-| `$disclosure-toggle-transform` | Default for disclosure toggle transform. | `rotate(0deg)` |
-| `$disclosure-toggle-open-transform` | Default for disclosure toggle open transform. | `rotate(-180deg)` |
-
-## Responsive Variants
-
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for alignment.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive utility classes](../utilities/responsive-classes) documentation.
-:::
+| Variable                                  | Description                                            | Default Value          |
+| ----------------------------------------- | ------------------------------------------------------ | ---------------------- |
+| `$selector-base`                          | The selector base for the component.                   | `"."`                  |
+| `$modifier-selector-base`                 | The selector base for component modifiers.             | `"."`                  |
+| `$disclosure-selector-base`               | Selector base for the disclosure.                      | `"."`                  |
+| `$disclosure-selector`                    | Selector for the disclosure.                           | `"disclosure"`         |
+| `$disclosure-content-selector-base`       | Selector base for the disclosure content.              | `"."`                  |
+| `$disclosure-content-selector`            | Selector for the disclosure content.                   | `"disclosure-content"` |
+| `$disclosure-toggle-selector-base`        | Selector base for the disclosure toggle.               | `"."`                  |
+| `$disclosure-toggle-selector`             | Selector for the disclosure toggle.                    | `"disclosure-toggle"`  |
+| `$disclosure-open-selector-base`          | Selector base for the expanded disclosure.             | `"."`                  |
+| `$disclosure-open-selector`               | Selector for the expanded disclosure.                  | `"show"`               |
+| `$disclosure-closed-selector-base`        | Selector base for the collapsed disclosure.            | `"."`                  |
+| `$disclosure-closed-selector`             | Selector for the collapsed disclosure.                 | `"hide"`               |
+| `$disclosure-transitioning-selector-base` | Selector base for the transitioning disclosure.        | `"."`                  |
+| `$disclosure-transitioning-selector`      | Selector for the transitioning disclosure.             | `"transitioning"`      |
+| `$disclosure-show-display`                | Display of the expanded disclosure.                    | `flex`                 |
+| `$disclosure-hide-display`                | Display of the collapsed disclosure.                   | `flex`                 |
+| `$disclosure-transitioning-display`       | Display of the transitioning disclosure.               | `flex`                 |
+| `$disclosure-show-block-size`             | Block size of the expanded disclosure.                 | `auto`                 |
+| `$disclosure-hide-block-size`             | Block size of the collapsed disclosure.                | `0`                    |
+| `$disclosure-transitioning-block-size`    | Block size of the transitioning disclosure.            | `0`                    |
+| `$disclosure-show-opacity`                | Opacity of the expanded disclosure.                    | `1`                    |
+| `$disclosure-hide-opacity`                | Opacity of the collapsed disclosure.                   | `0`                    |
+| `$disclosure-transitioning-opacity`       | Opacity of the transitioning disclosure.               | `0`                    |
+| `$disclosure-toggle-content`              | Indicator content of the disclosure toggle.            | `"'↓'"`                |
+| `$disclosure-toggle-transform`            | Transform of the disclosure toggle.                    | `rotate(0deg)`         |
+| `$disclosure-toggle-open-transform`       | Expanded indicator transform of the disclosure toggle. | `rotate(-180deg)`      |
