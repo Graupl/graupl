@@ -29,7 +29,7 @@
 // | --graupl-tabs-border-style                           | var(--graupl-tabs-border-top-style) var(--graupl-tabs-border-right-style) var(--graupl-tabs-border-bottom-style) var(--graupl-tabs-border-left-style)                                                                           |
 // | --graupl-tabs-tab-list-column-gap                    | var(--graupl-spacer-0)                                                                                                                                                                                                          |
 // | --graupl-tabs-tab-list-row-gap                       | var(--graupl-spacer-2)                                                                                                                                                                                                          |
-// | --graupl-tabs-tab-list-gap                           | var(--graupl-tabs-tab-list-column-gap) var(--graupl-tabs-tab-list-row-gap)                                                                                                                                                      |
+// | --graupl-tabs-tab-list-gap                           | var(--graupl-tabs-tab-list-row-gap) var(--graupl-tabs-tab-list-column-gap)                                                                                                                                                      |
 // | --graupl-tabs-tab-list-background                    | var(--graupl-tabs-background)                                                                                                                                                                                                   |
 // | --graupl-tabs-tab-list-color                         | var(--graupl-tabs-color)                                                                                                                                                                                                        |
 // | --graupl-tabs-tab-list-border-color                  | var(--graupl-tabs-border-color)                                                                                                                                                                                                 |
@@ -285,7 +285,7 @@ $tabs-tab-list-row-gap: var(
 // --graupl-tabs-tab-list-gap
 $tabs-tab-list-gap: var(
   --#{root-defaults.$prefix}tabs-tab-list-gap,
-  #{$tabs-tab-list-column-gap} #{$tabs-tab-list-row-gap}
+  #{$tabs-tab-list-row-gap} #{$tabs-tab-list-column-gap}
 );
 
 // --graupl-tabs-tab-list-background
