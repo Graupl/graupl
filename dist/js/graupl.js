@@ -2792,10 +2792,10 @@
 		_scope = "Graupl";
 		_rootDOMElement = "tooltip";
 		_softLocked = !1;
-		_hoverType = "off";
+		_hoverType = "on";
 		_storageKey = "tooltips";
 		_name = "Tooltip";
-		constructor({ tooltipElement: e, tooltipToggleElement: t, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: r = "hide", transitionClass: o = "transitioning", transitionDelay: n = 250, transitionDuration: l = 150, expandDuration: u = -1, collapseDuration: p = -1, expandOnFocus: f = !1, collapseOnBlur: E = !0, hoverType: v = "off", hoverDelay: g = 250, enterDelay: m = -1, leaveDelay: _ = -1, prefix: h = "graupl-", key: b = null, initializeClass: y = "initializing", showClass: O, hideClass: T, showDuration: I, hideDuration: D, openOnFocus: A, closeOnBlur: B, initialize: $ = !1 } = {}) {
+		constructor({ tooltipElement: e, tooltipToggleElement: t, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: r = "hide", transitionClass: o = "transitioning", transitionDelay: n = 250, transitionDuration: l = 150, expandDuration: u = -1, collapseDuration: p = -1, expandOnFocus: f = !0, collapseOnBlur: E = !0, hoverType: v = "on", hoverDelay: g = 250, enterDelay: m = -1, leaveDelay: _ = -1, prefix: h = "graupl-", key: b = null, initializeClass: y = "initializing", showClass: O, hideClass: T, showDuration: I, hideDuration: D, openOnFocus: A, closeOnBlur: B, initialize: $ = !1 } = {}) {
 			O !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = O), T !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), r = T), I !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), u = I), D !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), p = D), A !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), f = A), B !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), E = B), super({
 				controllerElement: t,
 				controlledElement: s,

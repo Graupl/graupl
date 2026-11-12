@@ -144,6 +144,9 @@ $input-background: var(
   #{color.$background}
 );
 
+// --graupl-label-background
+$label-background: var(--#{root-defaults.$prefix}label-background, transparent);
+
 // --graupl-fieldset-background
 $fieldset-background: var(
   --#{root-defaults.$prefix}fieldset-background,
@@ -391,6 +394,12 @@ $input-disabled-border-color: var(
   #{theme.get(secondary, 200)}
 );
 
+// --graupl-label-border-color
+$label-border-color: var(
+  --#{root-defaults.$prefix}label-border-color,
+  currentcolor
+);
+
 // --graupl-fieldset-border-color
 $fieldset-border-color: var(
   --#{root-defaults.$prefix}fieldset-border-color,
@@ -407,5 +416,11 @@ $fieldset-disabled-border-color: var(
 // --graupl-input-accent-color
 $input-accent-color: var(
   --#{root-defaults.$prefix}input-accent-color,
-  #{$input-color}
+  var(--#{root-defaults.$prefix}fieldset-accent-color, #{$input-color})
+);
+
+// --graupl-fieldset-accent-color
+$fieldset-accent-color: var(
+  --#{root-defaults.$prefix}fieldset-accent-color,
+  inherit
 );

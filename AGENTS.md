@@ -22,6 +22,7 @@ Accessibility is the project's highest priority. Components that implement an in
 - Any deviation from the APG needs a strong, specific reason. Identify the difference and explain why it is necessary. Do not introduce or accept a deviation for convenience, code simplification, or personal preference.
 - If the implementation and APG differ, flag the discrepancy and investigate it. Do not assume the implementation is correct or rewrite the documentation to make the difference appear intentional.
 - Distinguish requirements, optional behavior, and choices made by an APG example. If an example's code and keyboard description differ, explain the difference before classifying library behavior as a bug.
+- Link to the relevant ARIA APG pattern or example from the documentation for each component based on the APG.
 - Preserve APG reference links, list structure, and the APG's specific wording in API keyboard tables. Do not paraphrase or simplify that wording. Explain library-specific differences in separate notes rather than rewriting the APG descriptions.
 - Valid HTML alone does not establish an accessible interaction pattern. Check the relevant APG pattern before recommending markup, and distinguish ordinary navigation from ARIA menus, menubars, and treeviews. Do not turn an incidental example in an issue into project guidance without a supported purpose and structure.
 
@@ -36,6 +37,12 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Choose the smallest change that solves the actual problem. A documentation issue can need only a documentation correction, and existing tests can already provide sufficient coverage.
 - Keep issue-driven documentation focused on the agreed solution. Read the issue discussion to distinguish the actual request from examples or ideas mentioned along the way. Do not add adjacent patterns just because the same configuration could support them.
 - Check compatibility beyond the final result. Preserve focus timing, event propagation, parent synchronization, and other existing side effects unless the requested change requires otherwise.
+
+## Independent verification
+
+- Agents must challenge each other's work. Treat claims, assumptions, and reported checks as unverified until there is evidence. Give concrete findings and be prepared to revise them when the evidence changes.
+- For every change, have a separate agent review the full set of changes made for the task against all applicable AGENTS.md instructions. The reviewer must assume the changes do not comply until they verify compliance from the diff, relevant source, and checks. Include changes to AGENTS.md itself.
+- Resolve findings and have the reviewer recheck any corrections before finishing. Apply the additional source and coverage checks required for documentation, bug fixes, and tests.
 
 ## Bug-fix workflow
 
@@ -55,6 +62,32 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Documentation and comments
 
+- Have another agent independently review every documentation change. The reviewer should treat the change as incorrect until they can verify its claims and examples against the relevant source code. Resolve any discrepancies and have the reviewer check the corrections before completing the work.
+- Use the [button docs](docs/base/button.md) as the model for Graupl style pages. Start with a short overview, show the default styles in live examples, then list custom properties and Sass variables.
+- Match the button page's introductory wording for the Custom Properties and Sass variables sections, changing the name to fit the page. Keep specific configuration notes separate from the standard introduction.
+- For modules that generate theme variants, use the [Links page](docs/base/link.md#variants) as the wording model. Link to Compiling Graupl, name the module that owns `$themeable`, and check its Sass default. Explain how to set it to `true` to generate variants when they are off by default or to `false` to skip generating them when they are on by default. Verify which variants the module generates before naming them.
+- Use headings readers are likely to look for, such as "Dark mode". Keep basic theme pages focused on common tasks and reserve detailed theme configuration for a separate guide.
+- Use Graupl utility classes in examples where they express the intended behaviour. Use existing Graupl Sass values and the shared docs stylesheet for example layouts. Keep example controls inside LiveExample and place them before long previews when readers need them to use the example.
+- Write for someone using the docs. Use direct instructions when they help, such as "Use `<b>` or `<strong>` to display bold text." Let previews show visible differences. Mention Graupl where it adds context and cut repeated introductions and prose that just describes what the preview shows.
+- Keep theme examples focused on the styles that apply to the elements. Group related styles when a single example makes them easier to see together. Keep the customization reference and link to the utility docs for examples of changing individual font sizes or weights.
+- Use an adventuring theme for sample copy when it fits. A workshop notice might ask readers to bring parchment and a quill for a reading from *Dragon Slaying for Dummies*. Keep the copy short and make the HTML and the behavior it demonstrates easy to understand.
+- Keep Sass variable and CSS custom property descriptions identical wherever they appear in the style docs and SCSS source comments. When editing either copy, check the other and update both in the same change.
+- When components reuse a Sass variable or CSS custom property for the same purpose, use consistent descriptions across those components. Fix wording differences in both the docs and Sass comments, adapting the component name as needed. Describe differences in behavior where they exist.
+- Use the [Button wording](docs/base/button.md#sass-variables) for `theme-mappings` and `theme-map`, changing only the component name. Use "A map of properties and color shades used to generate all button variants." for `theme-mappings` and "A map of all properties, colors, and color shades used to generate all button variants." for `theme-map`. Use the same descriptions in the docs and Sass comments.
+- Align the vertical pipes in Markdown tables and SCSS comment tables, including the header and separator row. After editing a cell, check the alignment of the whole table.
+- When a custom property’s default is already documented, reference it as `var(--property)` in the docs and matching SCSS comments. Keep the fallback in the actual Sass.
+- Use "No default" in the docs and matching SCSS comments when a custom property has no default value or fallback. Use `unset` only when it is the actual CSS value.
+- Verify documented CSS defaults against compiled output when Sass can change the emitted value. For example, a null duration in a transition shorthand is omitted, and CSS uses its default duration of `0s`.
+- Describe what fits in the available width. Use plain wording such as "if there isn't enough room" when explaining why a layout uses fewer columns.
+- Connect related ideas in the prose. Explain what a class does and what it does by default together, then describe how it responds to changes in the layout. When describing markup, start with the outer element and explain how its parts fit together in the order readers encounter them. Keep related instructions together and keep wording that already reads clearly.
+- Give the basic usage its own live example, separate from layout modifiers and advanced options. Group settings that affect each other in the same section and preview, such as column count and fixed width. Let readers select the full documented range, and give them enough items or an item count control to see how the layout changes.
+- When documenting a container-width fallback, give it a dedicated preview if it would be hard to see alongside other layout options. Look at existing demos in [index.html](index.html) for working markup. Let readers change the container width and use the actual container query to show the layout change.
+- Explain what the classes do in the prose and let the previews demonstrate it. Skip prompts such as "try this" or "in the example below" when the controls and surrounding text already make the purpose clear. When previews override defaults, put a VitePress note immediately before the first preview it applies to. Explain which defaults the previews override and why.
+- When a demo uses the docs site's own layout, explain what readers can see there that the scaled preview cannot show.
+- Check text contrast in both light and dark mode for examples, legends, and highlighted areas. Compare each text colour with the background it renders on, including when highlights are active. Use at least 4.5:1 for normal text and give readers another way to match areas to labels, such as distinct line patterns.
+- Link to the Responsive Classes guide for shared prefix information. Keep the layout's own responsive behaviour and class placement in its page. Describe what each responsive flag does in the component reference. Keep shared prerequisites in the Responsive Classes guide.
+- Preserve the author's wording when it is clear. Keep explanations and instructions that help readers use Graupl, and keep the scope of edits focused on Graupl's behavior.
+
 - Write API documentation so a junior developer can understand what an API does and how to use it. Include enough detail that a senior developer does not need to read the source to understand its contract.
 - Explain parameters, defaults, null handling, meaningful return values, side effects, and validation where relevant. Distinguish constructor options, protected fields, getters, and method arguments.
 - Avoid documentation noise. Include details that help someone use or understand the API, not incidental JavaScript behavior. Do not add "returns undefined" for methods with no explicit return value, or repeat obvious details just to make an entry look complete.
@@ -73,6 +106,26 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Explain why an unusual setup step is needed, then give the shortest useful example. Avoid expanding a small change into a detailed guide unless that detail is needed to use it.
 - Update the documentation and comments affected by a behavior change. Add subclass-specific explanations only where the subclass behaves differently. Respect requests to defer broader documentation work.
 - Use VitePress info, tip, and warning containers selectively to make useful requirements or caveats stand out. Preserve the existing explanation and examples; do not turn routine reference text into callouts or add warnings just for emphasis.
+
+## Sass selectors
+
+- Preserve Sass comment sections that list the classes or selectors generated by default. Update the list when the defaults change. Use "selectors" when the list includes pseudo-classes or other selectors alongside classes.
+- Compare generated-class lists against the compiled default Sass for the file you are working on. Flag any missing default responsive variants to the maintainer, including screen-aware variants at `hd:`, `qhd:`, and `uhd:`. Include only variants that the default configuration generates.
+- Flag classes that are listed as defaults but are only generated with opt-in configuration. Keep them out of the default list and ask the maintainer before adding a separate opt-in section.
+- Make Graupl's Sass selectors configurable, including selectors that default to HTML tags. Declare selector defaults with `!default` and use the configured selectors wherever the styles are emitted.
+- Flag fixed selectors to the maintainer when you find them. Document the default and explain how to override it once the source supports configuration. Describe selector prefixes separately from selector overrides.
+- Flag unused Sass variables, selectors, and CSS custom properties to the maintainer. Identify each unused item and ask whether to wire it up or remove it before making either change.
+- Describe styles by their target when the selector can be overridden. Use terms such as "root element" or "H1 elements" in property descriptions. Show the default selectors in examples and selector reference entries.
+
+## Sass imports
+
+- Import Sass defaults first, followed by variables, functions and mixins, and finally style index files. Within each group, import Graupl Core files before plugin files.
+
+## Sass custom properties
+
+- Give each supported state its own Sass variable and CSS custom property, even when states share a fallback. By default, visited and focus fall back to the standard state, active falls back to hover, and hover and disabled define their own defaults. Preserve intentional interaction effects that need a different fallback, such as the button press scale.
+- Apply component custom properties directly to the CSS declarations they control, including declarations on descendants. For example, use the alert's link color in the link's `color` declaration.
+- Avoid assigning a shared custom property from a value that references it anywhere in its fallback chain. That creates a CSS variable cycle when both values resolve on the same element. Let descendants inherit the applied style when possible, as card typography does with `currentcolor`.
 
 ## Code organization and readability
 
@@ -103,6 +156,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Tests
 
+- For every style change, including additions, removals, and edits, verify that the affected browser tests pass. Targeted runs are sufficient when the scope is clear. For example, an Alert-only style change requires only the Alert browser tests. Include tests for other components when they use the changed styles. Use the Linux CI run to verify against the checked-in screenshot baselines if the local environment cannot do so. Treat a missing result as unverified.
+- Apply the same per-test approval rule to visual tests and their screenshot baselines. If a browser test fails, identify the failing test, explain the difference, and fix unintended regressions. If an intended change requires a new baseline, explain the expected visual change and get the user's explicit approval for each affected test before editing the test, replacing its baseline, or running the [Update Visual Regression Screenshots workflow](.github/workflows/update-screenshots.yml).
+
+- Before changing an existing test, identify it by file and test name, explain what you would change and why it is needed, and get the user's explicit approval for that test. Apply this rule to edits, moves, and removals, including wording and formatting changes. If a shared fixture, hook, or parameter table change alters multiple tests, identify each affected test or case and get explicit approval for each one. General approval to work on a suite does not replace per-test approval.
 - Follow the existing directories and files for the component or utility under test. Add coverage to the relevant existing suite rather than creating a separate file for each feature.
 - Use the existing sections within each suite. Tests for a property or method belong under its existing section. Merge duplicate sections for the same method or property. Put lifecycle and deferred-work tests with the methods they exercise instead of creating separate feature-wide sections or files.
 - Explicitly test one component or utility per file. Keep multiple types together only when the test requires their interaction or comparison, such as combined package exports. Supporting fixtures and base-class imports for inheritance checks are appropriate.
@@ -117,6 +174,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 - Follow the existing cleanup approach. Do not add disposal registries, such as componentsToDispose, or a broader cleanup refactor while adding unrelated behavior tests. Handle cleanup work separately. When each test creates one component, use one scoped variable for cleanup rather than an array and disposal loop. In Core tests, dispose owned components before restoring mocks, globals, and timers.
 - Separate setup, actions, and assertions with blank lines. Group component selections before the assertions that use them. For tests with several actions, separate each action from its resulting assertions. Put a blank line between sibling tests and describe blocks.
 - Match test names and comments to the actual class, method, and assertion. Distinguish reported validation failures from thrown errors. When a validator returns a result object, describe acceptance or errors rather than claiming it returns a boolean. Distinguish current state from committed state and stored data from the object that owns it. Use parameter placeholders only where the test runner substitutes them.
+- Follow the test structure and wording used in Accessible Ecosystem Core and Accessible Menu. Keep separate click tests for expanding and collapsing, with each test starting in the state it needs.
+- Leave deprecated APIs out of new coverage. Get per-test approval before removing existing tests or test references dedicated to deprecated APIs.
+- Tie each assertion to a requirement or a plausible regression. For example, an accordion click test should check the relevant expanded or collapsed state. Only check that content survives the click if content preservation is part of the behavior under test.
+- Treat the native `disabled` attribute on locked accordion headers as intentional. It prevents activation for users regardless of whether they use assistive technology.
 - Test observable behavior and meaningful API contracts. Do not add assertions about the absence of removed internal properties just to record that they were removed.
 - Check that inheritance assertions reference real members. Comparing two misspelled or missing methods can pass because both values are undefined. Successful initialization tests should check isInitialized rather than only checking that nothing throws, since validation failures may be reported without throwing.
 - Prefer spies on real helpers when their side effects matter, such as event prevention and propagation. Restore spies between tests. Mock methods through restorable spies instead of assigning mock functions directly to prototypes or module exports.

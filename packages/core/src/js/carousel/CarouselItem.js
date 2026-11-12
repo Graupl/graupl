@@ -28,7 +28,7 @@ class CarouselItem extends Component {
    *
    * @protected
    *
-   * @type {?{scroll: boolean, scrollOptions: ScrollToOptions}}
+   * @type {?{scroll: boolean, scrollOptions: object}}
    */
   _pendingAction = null;
 
@@ -133,7 +133,7 @@ class CarouselItem extends Component {
    *
    * @param {object}          [options = {}]                                         - Additional options for activating the item.
    * @param {boolean}         [options.scroll = true]                                - A flag to indicate if the carousel should scroll to the activated item.
-   * @param {ScrollToOptions} [options.scrollOptions = {}]                           - Scroll option overrides.
+   * @param {object}          [options.scrollOptions = {}]                           - Scroll option overrides.
    * @param {boolean}         [options.emit = this.isInitialized && this.shouldEmit] - Whether to emit public activation events.
    */
   activate({

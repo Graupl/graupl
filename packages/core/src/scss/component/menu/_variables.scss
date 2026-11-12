@@ -12,7 +12,7 @@
 // | --graupl-menu-padding                                 | var(--graupl-menu-padding-y) var(--graupl-menu-padding-x)                                                                                                                                           |
 // | --graupl-menu-column-gap                              | var(--graupl-spacer-0)                                                                                                                                                                              |
 // | --graupl-menu-row-gap                                 | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-menu-gap                                     | var(--graupl-menu-column-gap) var(--graupl-menu-row-gap)                                                                                                                                            |
+// | --graupl-menu-gap                                     | var(--graupl-menu-row-gap) var(--graupl-menu-column-gap)                                                                                                                                            |
 // | --graupl-menu-show-display                            | flex                                                                                                                                                                                                |
 // | --graupl-menu-hide-display                            | none                                                                                                                                                                                                |
 // | --graupl-menu-display                                 | flex                                                                                                                                                                                                |
@@ -41,7 +41,7 @@
 // | --graupl-submenu-padding                              | var(--graupl-submenu-padding-y) var(--graupl-submenu-padding-x)                                                                                                                                     |
 // | --graupl-submenu-column-gap                           | var(--graupl-menu-column-gap)                                                                                                                                                                       |
 // | --graupl-submenu-row-gap                              | var(--graupl-menu-row-gap)                                                                                                                                                                          |
-// | --graupl-submenu-gap                                  | var(--graupl-submenu-column-gap) var(--graupl-submenu-row-gap)                                                                                                                                      |
+// | --graupl-submenu-gap                                  | var(--graupl-submenu-row-gap) var(--graupl-submenu-column-gap)                                                                                                                                      |
 // | --graupl-submenu-show-display                         | flex                                                                                                                                                                                                |
 // | --graupl-submenu-hide-display                         | none                                                                                                                                                                                                |
 // | --graupl-submenu-display                              | none                                                                                                                                                                                                |
@@ -68,18 +68,17 @@
 // | --graupl-submenu-right                                | auto                                                                                                                                                                                                |
 // | --graupl-submenu-bottom                               | auto                                                                                                                                                                                                |
 // | --graupl-submenu-left                                 | 0                                                                                                                                                                                                   |
-// | --graupl-submenu-inset                                | 100% auto auto 0                                                                                                                                                                                    |
+// | --graupl-submenu-inset                                | var(--graupl-submenu-top) var(--graupl-submenu-right) var(--graupl-submenu-bottom) var(--graupl-submenu-left)                                                                                       |
 // | --graupl-menu-item-min-width                          | min-content                                                                                                                                                                                         |
 // | --graupl-menu-item-max-width                          | 100%                                                                                                                                                                                                |
 // | --graupl-menu-item-padding-x                          | var(--graupl-spacer-0)                                                                                                                                                                              |
 // | --graupl-menu-item-padding-y                          | var(--graupl-spacer-0)                                                                                                                                                                              |
 // | --graupl-menu-item-padding                            | var(--graupl-menu-item-padding-y) var(--graupl-menu-item-padding-x)                                                                                                                                 |
-// | --graupl-submenu-item-width                           | 100%                                                                                                                                                                                                |
 // | --graupl-menu-link-padding-x                          | var(--graupl-spacer-5)                                                                                                                                                                              |
 // | --graupl-menu-link-padding-y                          | var(--graupl-spacer-3)                                                                                                                                                                              |
 // | --graupl-menu-link-padding                            | var(--graupl-menu-link-padding-y) var(--graupl-menu-link-padding-x)                                                                                                                                 |
 // | --graupl-menu-link-transition                         | background var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                   |
-// | --graupl-menu-link-transition-reduced-motion          | background var(--graupl-transition-duration-none) var(--graupl-transition-timing-function), color var(--graupl-transition-duration-none) var(--graupl-transition-timing-function)                   |
+// | --graupl-menu-link-transition-reduced-motion          | background var(--graupl-transition-timing-function), color var(--graupl-transition-timing-function)                                                                                                 |
 // | --graupl-menu-link-transform                          | none                                                                                                                                                                                                |
 // | --graupl-menu-link-visited-transform                  | var(--graupl-menu-link-transform)                                                                                                                                                                   |
 // | --graupl-menu-link-focus-transform                    | var(--graupl-menu-link-transform)                                                                                                                                                                   |
@@ -88,7 +87,7 @@
 // | --graupl-menu-link-disabled-transform                 | none                                                                                                                                                                                                |
 // | --graupl-menu-link-column-gap                         | var(--graupl-menu-link-padding-x)                                                                                                                                                                   |
 // | --graupl-menu-link-row-gap                            | var(--graupl-spacer-0)                                                                                                                                                                              |
-// | --graupl-menu-link-gap                                | var(--graupl-menu-link-column-gap) var(--graupl-menu-link-row-gap)                                                                                                                                  |
+// | --graupl-menu-link-gap                                | var(--graupl-menu-link-row-gap) var(--graupl-menu-link-column-gap)                                                                                                                                  |
 // | --graupl-menu-link-background                         | var(--graupl-menu-background)                                                                                                                                                                       |
 // | --graupl-menu-link-visited-background                 | var(--graupl-menu-link-background)                                                                                                                                                                  |
 // | --graupl-menu-link-focus-background                   | var(--graupl-menu-link-background)                                                                                                                                                                  |
@@ -148,7 +147,7 @@
 // | --graupl-menu-link-disabled-border-color              | var(--graupl-menu-link-disabled-color)                                                                                                                                                              |
 // | --graupl-submenu-toggle-transform                     | rotate(0deg)                                                                                                                                                                                        |
 // | --graupl-submenu-toggle-open-transform                | rotate(-180deg)                                                                                                                                                                                     |
-// | --graupl-submenu-toggle-content                       | "'↓'"                                                                                                                                                                                               |
+// | --graupl-submenu-toggle-content                       | '↓'                                                                                                                                                                                                 |
 // | --graupl-submenu-toggle-transition                    | transform var(--graupl-transition-duration-fast) var(--graupl-transition-timing-function)                                                                                                           |
 // | --graupl-submenu-toggle-transition-reduced-motion     | none                                                                                                                                                                                                |
 
@@ -200,7 +199,7 @@ $menu-row-gap: var(
 // --graupl-menu-gap
 $menu-gap: var(
   --#{root-defaults.$prefix}menu-gap,
-  #{$menu-column-gap} #{$menu-row-gap}
+  #{$menu-row-gap} #{$menu-column-gap}
 );
 
 // Menu display properties.
@@ -379,7 +378,7 @@ $submenu-row-gap: var(
 // --graupl-submenu-gap
 $submenu-gap: var(
   --#{root-defaults.$prefix}submenu-gap,
-  #{$submenu-column-gap} #{$submenu-row-gap}
+  #{$submenu-row-gap} #{$submenu-column-gap}
 );
 
 // Submenu display properties.
@@ -579,13 +578,6 @@ $menu-item-padding: var(
   #{$menu-item-padding-y} #{$menu-item-padding-x}
 );
 
-// Submenu item properties.
-// --graupl-submenu-item-width
-$submenu-item-width: var(
-  --#{root-defaults.$prefix}submenu-item-width,
-  #{defaults.$submenu-item-width}
-);
-
 // Menu link properties.
 // --graupl-menu-link-padding-x
 $menu-link-padding-x: var(
@@ -684,7 +676,7 @@ $menu-link-row-gap: var(
 // --graupl-menu-link-gap
 $menu-link-gap: var(
   --#{root-defaults.$prefix}menu-link-gap,
-  #{$menu-link-column-gap} #{$menu-link-row-gap}
+  #{$menu-link-row-gap} #{$menu-link-column-gap}
 );
 
 // Menu link colors.
