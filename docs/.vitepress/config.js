@@ -110,6 +110,7 @@ export default defineConfig({
           { text: "Badge", link: "/components/badge" },
           { text: "Cards", link: "/components/card" },
           { text: "Carousels", link: "/components/carousel" },
+          { text: "Disclosure", link: "/components/disclosure" },
           { text: "Input Groups", link: "/components/input-group" },
           { text: "Lists", link: "/components/list" },
           { text: "Menus", link: "/components/menu" },
