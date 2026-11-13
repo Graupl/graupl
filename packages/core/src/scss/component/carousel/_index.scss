@@ -255,6 +255,7 @@
 
 @use "../../base/button/mixins" as button-mixins;
 @use "../../defaults" as root-defaults;
+@use "../../mixins/animation";
 @use "../../mixins/layer" as *;
 @use "../../mixins/state";
 @use "../../mixins/theme";
@@ -352,6 +353,10 @@
     scrollbar-width: none;
     scroll-behavior: smooth;
     aspect-ratio: $carousel-item-container-aspect-ratio;
+
+    @include animation.off {
+      scroll-behavior: auto;
+    }
   }
 
   // .carousel-item
