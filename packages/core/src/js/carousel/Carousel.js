@@ -61,6 +61,7 @@ import CarouselItem from "./CarouselItem.js";
  * @property {number}                                    _delays.transition                  - The delay time (in milliseconds) for the transition between carousel items.
  * @property {number}                                    _currentItem                        - The index of the currently active carousel item.
  * @property {boolean}                                   _autoplay                           - A flag to indicate if autoplay is enabled.
+ * @property {boolean}                                   _automatic                          - A flag to determine if focusing an indicator activates its slide.
  * @property {boolean}                                   _hoverPaused                        - A flag to pause autoplay while the pointer is over the carousel.
  * @property {boolean}                                   _focusPaused                        - A flag to pause autoplay after focus until it is explicitly restarted.
  * @property {string}                                    _playText                           - The label for the autoplay button when the carousel is paused.
@@ -89,7 +90,9 @@ class Carousel extends Component {
   _scope = "Graupl";
   _rootDOMElement = "carousel";
   _currentItem = 0;
+  _currentTabIndex = -1;
   _autoplay = true;
+  _automatic = true;
   _hoverPaused = false;
   _focusPaused = false;
   _playText = "Play";
@@ -127,6 +130,7 @@ class Carousel extends Component {
    * @param {?(string|string[])} [options.playClass = play]                                               - The class(es) to apply to the autoplay button when the carousel is paused.
    * @param {?(string|string[])} [options.pauseClass = pause]                                             - The class(es) to apply to the autoplay button when the carousel is playing.
    * @param {boolean}            [options.autoplay = true]                                                - A flag to indicate if the carousel should autoplay.
+   * @param {boolean}            [options.automaticActivation = true]                                    - A flag to determine if focusing an indicator activates its slide.
    * @param {number}             [options.transitionDelay = 10000]                                        - A flag to initialize the carousel immediately upon creation.
    * @param {?string}            [options.playText = Play]                                                - The text to use for the play button.
    * @param {?string}            [options.pauseText = Pause]                                              - The text to use for the pause button.
@@ -152,6 +156,7 @@ class Carousel extends Component {
     playClass = "play",
     pauseClass = "pause",
     autoplay = true,
+    automaticActivation = true,
     transitionDelay = 10000,
     playText = "Play",
     pauseText = "Pause",
@@ -203,6 +208,7 @@ class Carousel extends Component {
 
     // Set flags.
     this._autoplay = autoplay;
+    this._automatic = automaticActivation;
     this._itemsPerPage = itemsPerPage;
     this._loop = loop;
 
@@ -255,6 +261,7 @@ class Carousel extends Component {
       // Boolean checks.
       const booleans = {
         autoplay: this._autoplay,
+        automaticActivation: this._automatic,
         loop: this._loop,
       };
 
@@ -405,6 +412,25 @@ class Carousel extends Component {
    */
   get currentCarouselItem() {
     return this.elements.carouselItems[this.currentItem];
+  }
+
+  /**
+   * A flag to determine if focusing an indicator activates its slide.
+   *
+   * @type {boolean}
+   *
+   * @see _automatic
+   */
+  get isAutomatic() {
+    return this._automatic;
+  }
+
+  set isAutomatic(value) {
+    isValidType("boolean", { isAutomatic: value });
+
+    if (this._automatic !== value) {
+      this._automatic = value;
+    }
   }
 
   /**
@@ -569,7 +595,7 @@ class Carousel extends Component {
   }
 
   /**
-   * Registers the carousel's internal activation listener for an item.
+   * Registers the carousel's internal listeners for an item.
    *
    * The item registers this after its own slide listener, so scrolling uses the
    * updated slide before the activation event is dispatched publicly.
@@ -583,6 +609,18 @@ class Carousel extends Component {
       if (!event.detail.scroll) return;
 
       this._scrollToItem(item, event.detail.scrollOptions);
+    });
+
+    if (!item.dom.tab) {
+      return;
+    }
+
+    item._addInternalEventListener(item.getEventName("postactivate"), () => {
+      const tabList = this.dom.carouselTabContainer;
+
+      if (!tabList.contains(tabList.ownerDocument.activeElement)) {
+        this._setTabStop(this._getItemsWithTabs().indexOf(item));
+      }
     });
   }
 
@@ -604,6 +642,21 @@ class Carousel extends Component {
 
       this._elements.carouselItems.push(carouselItem);
     });
+
+    this._getItemsWithTabs().forEach((item) => {
+      const { tab, carouselItem: panel } = item.dom;
+
+      tab.setAttribute("role", "tab");
+      tab.setAttribute("aria-selected", item === this.currentCarouselItem);
+      tab.setAttribute("aria-controls", panel.id);
+      panel.setAttribute("role", "tabpanel");
+      panel.setAttribute("aria-labelledby", tab.id);
+      panel.removeAttribute("aria-roledescription");
+    });
+
+    this._setTabStop(
+      this._getItemsWithTabs().indexOf(this.currentCarouselItem)
+    );
   }
 
   /**
@@ -662,10 +715,8 @@ class Carousel extends Component {
       this.dom.carouselTabContainer.setAttribute("role", "tablist");
     }
 
-    this.dom.carouselTabs.forEach((tab, index) => {
-      tab.setAttribute("role", "tab");
-      tab.setAttribute("aria-selected", index === 0);
-      tab.setAttribute("aria-controls", this.dom.carouselItems[index].id);
+    this.dom.carouselTabs.forEach((tab) => {
+      tab.setAttribute("tabindex", "-1");
     });
   }
 
@@ -800,6 +851,52 @@ class Carousel extends Component {
       this._focusPaused = true;
       this._handleAutoplay();
     });
+
+    const tabList = this.dom.carouselTabContainer;
+    if (!tabList) {
+      return;
+    }
+
+    this._addEventListener("focusin", tabList, (event) => {
+      const items = this._getItemsWithTabs();
+      const index = items.findIndex((item) => item.dom.tab === event.target);
+
+      if (index === -1) {
+        return;
+      }
+
+      this._setTabStop(index);
+
+      const item = items[index];
+      if (this.isAutomatic && item !== this.currentCarouselItem) {
+        this.activateItem(this.elements.carouselItems.indexOf(item));
+      }
+    });
+
+    this._addEventListener("focusout", tabList, (event) => {
+      if (tabList.contains(event.relatedTarget)) {
+        return;
+      }
+
+      this._setTabStop(
+        this._getItemsWithTabs().indexOf(this.currentCarouselItem)
+      );
+    });
+  }
+
+  /**
+   * Keeps one slide indicator in the tab order.
+   *
+   * @protected
+   *
+   * @param {number} index - The paired indicator index, or -1 to clear it.
+   */
+  _setTabStop(index) {
+    const items = this._getItemsWithTabs();
+
+    items[this._currentTabIndex]?.dom.tab.setAttribute("tabindex", "-1");
+    this._currentTabIndex = index;
+    items[this._currentTabIndex]?.dom.tab.setAttribute("tabindex", "0");
   }
 
   /**
@@ -856,6 +953,10 @@ class Carousel extends Component {
 
         preventEvent(event);
 
+        if (this.isAutomatic && item === this.currentCarouselItem) {
+          return;
+        }
+
         this.currentEvent = "mouse";
         this.activateItem(
           this.dom.carouselItems.indexOf(item.dom.carouselItem)
@@ -895,7 +996,7 @@ class Carousel extends Component {
    * - Adds a `keydown` listener to all control elements.
    *   - Prevents Space and Enter key events.
    * - Adds a `keydown` listener to all tab elements.
-   *   - Prevents Space and Enter key events.
+   *   - Prevents the default action for Space, Enter, Left Arrow, Right Arrow, Home, and End.
    */
   _handleKeydown() {
     this.dom.carouselControls.forEach((control) => {
@@ -924,6 +1025,10 @@ class Carousel extends Component {
         switch (key) {
           case "Space":
           case "Enter":
+          case "ArrowLeft":
+          case "ArrowRight":
+          case "Home":
+          case "End":
             // Prevent the default action of the event.
             preventEvent(event);
 
@@ -939,7 +1044,9 @@ class Carousel extends Component {
    * - Adds a `keyup` listener to all control elements.
    *   - Activates the next/previous item depending on which control is pressed.
    *   - Toggles autoplay if the autoplay control is pressed.
-   *
+   * - Adds a `keyup` listener to all tab elements.
+   *   - Moves focus with Left Arrow, Right Arrow, Home, and End.
+   *   - Activates the focused tab with Space or Enter.
    */
   _handleKeyup() {
     // Activate the next item if the space or enter key on the next control.
@@ -990,7 +1097,7 @@ class Carousel extends Component {
       }
     });
 
-    // Activate the item if the space or enter key on the tab control.
+    // Move focus between slide indicators and activate the focused tab.
     this.elements.carouselItems.forEach((item) => {
       if (!item.dom.tab) {
         return;
@@ -1002,17 +1109,102 @@ class Carousel extends Component {
         switch (key) {
           case "Space":
           case "Enter":
+            preventEvent(event);
+            this.currentEvent = "keyboard";
             this.activateItem(
               this.dom.carouselItems.indexOf(item.dom.carouselItem)
             );
 
-            // Prevent the default action of the event.
+            break;
+          case "ArrowLeft":
             preventEvent(event);
+            this._focusPreviousTab();
+
+            break;
+          case "ArrowRight":
+            preventEvent(event);
+            this._focusNextTab();
+
+            break;
+          case "Home":
+            preventEvent(event);
+            this._focusFirstTab();
+
+            break;
+          case "End":
+            preventEvent(event);
+            this._focusLastTab();
 
             break;
         }
       });
     });
+  }
+
+  /**
+   * Returns the carousel items with paired indicators.
+   *
+   * @protected
+   *
+   * @return {CarouselItem[]} - The items with paired indicators.
+   */
+  _getItemsWithTabs() {
+    return this.elements.carouselItems.filter((item) => item.dom.tab);
+  }
+
+  /**
+   * Focuses the paired indicator at the given index.
+   *
+   * @protected
+   *
+   * @param {number} index - The index of the indicator to focus.
+   */
+  _focusTab(index) {
+    this._getItemsWithTabs()[index]?.dom.tab.focus();
+  }
+
+  /**
+   * Focuses the first paired indicator.
+   *
+   * @protected
+   */
+  _focusFirstTab() {
+    this._focusTab(0);
+  }
+
+  /**
+   * Focuses the last paired indicator.
+   *
+   * @protected
+   */
+  _focusLastTab() {
+    this._focusTab(this._getItemsWithTabs().length - 1);
+  }
+
+  /**
+   * Focuses the next paired indicator, wrapping at the end.
+   *
+   * @protected
+   */
+  _focusNextTab() {
+    if (this._currentTabIndex < this._getItemsWithTabs().length - 1) {
+      this._focusTab(this._currentTabIndex + 1);
+    } else {
+      this._focusFirstTab();
+    }
+  }
+
+  /**
+   * Focuses the previous paired indicator, wrapping at the start.
+   *
+   * @protected
+   */
+  _focusPreviousTab() {
+    if (this._currentTabIndex > 0) {
+      this._focusTab(this._currentTabIndex - 1);
+    } else {
+      this._focusLastTab();
+    }
   }
 
   /**
