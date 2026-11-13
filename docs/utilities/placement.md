@@ -1,16 +1,40 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
   const content = ref("place-content-center");
-  const items = ref("place-items-center");
-  const self = ref("place-self-center");
+  const items = ref("place-items-start");
+  const self = ref("place-self-auto");
+  const block = "bordered border-primary-700 bg-primary-300 min-w-7 min-h-7";
+  const container = "display-grid h-10 gap-2 bordered border-dashed border-tertiary-700";
+
+  const exampleContent = computed(() => `<div class="${container} ${content.value}" style="grid-template-columns: repeat(2, auto)">
+  <div class="${block}"></div>
+  <div class="${block}"></div>
+  <div class="${block}"></div>
+  <div class="${block}"></div>
+</div>`);
+
+  const exampleItems = computed(() => `<div class="${container} grid-cols-3 ${items.value}">
+  <div class="${block}"></div>
+  <div class="${block}"></div>
+  <div class="${block}"></div>
+</div>`);
+
+  const exampleSelf = computed(() => `<div class="${container} grid-cols-3 place-items-start">
+  <div class="${block}"></div>
+  <div class="bordered border-tertiary-700 bg-tertiary-300 min-w-7 min-h-7 ${self.value}"></div>
+  <div class="${block}"></div>
+</div>`);
 </script>
 
 # Placement Utilities
 
-The placement utilities provide a set of classes to adjust the `place-content`, `place-items`, and `place-self` properties of elements.
+The placement utilities provide a set of classes to set alignment and justification together. Use the [Alignment](./alignment.md) and [Justification](./justification.md) utilities to adjust either axis on its own.
 
 ## Place Content
+
+Use `place-content-*` on a grid container to position its rows and columns as a group or distribute extra space between them.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -23,40 +47,28 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-content-baseline` | place-content | `baseline` |
 | `.place-content-stretch` | place-content | `stretch` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="position-absolute z-0 display-flex g-5">
-        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
-        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
-        <div class="bordered border-primary-700 bg-primary-300 w-7 h-7"></div>
-      </div>
-      <div :class="`position-relative z-1 ${content} display-grid g-5 h-full`" style="grid-template-columns: repeat(3, min-content); grid-template-rows: auto;">
-        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
-        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
-        <div class="bordered border-tertiary-700 bg-tertiary-300 w-7 h-7"></div>
-      </div>
+<live-example :source-code="exampleContent" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-place-content">Place content class</label>
+      <select id="select-place-content" v-model="content">
+        <option value="place-content-center">.place-content-center</option>
+        <option value="place-content-start">.place-content-start</option>
+        <option value="place-content-end">.place-content-end</option>
+        <option value="place-content-between">.place-content-between</option>
+        <option value="place-content-around">.place-content-around</option>
+        <option value="place-content-evenly">.place-content-evenly</option>
+        <option value="place-content-baseline">.place-content-baseline</option>
+        <option value="place-content-stretch">.place-content-stretch</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ content }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-place-content">Place content property</label>
-    <select id="select-place-content" v-model="content">
-      <option value="place-content-center">Center</option>
-      <option value="place-content-start">Start</option>
-      <option value="place-content-end">End</option>
-      <option value="place-content-between">Between</option>
-      <option value="place-content-around">Around</option>
-      <option value="place-content-evenly">Evenly</option>
-      <option value="place-content-baseline">Baseline</option>
-      <option value="place-content-stretch">Stretch</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Place Items
+
+Use `place-items-*` on a grid container to align all its items within their cells.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -66,50 +78,25 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-items-baseline` | place-items | `baseline` |
 | `.place-items-stretch` | place-items | `stretch` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="position-relative">
-        <div :class="`display-grid g-5 position-absolute bordered border-transparent w-full z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: auto;">
-        <div class="w-fit-content bordered border-primary-700 bg-primary-300">
-          <div class=" w-7 h-7 "></div>
-        </div>
-        <div class="w-fit-content bordered border-primary-700 bg-primary-300">
-          <div class=" w-7 h-7 "></div>
-        </div>
-        <div class="w-fit-content bordered border-primary-700 bg-primary-300">
-          <div class=" w-7 h-7 "></div>
-        </div>
-      </div>
-      </div>
-      <div :class="`display-grid border-dotted g-5 ${items} position-relative z-1`" style="grid-template-columns: repeat(3, auto); grid-template-rows: 80px;">
-        <div class="bordered border-tertiary-700 bg-tertiary-300">
-          <div class=" w-7 h-7 "></div>
-        </div>
-        <div class="bordered border-tertiary-700 bg-tertiary-300">
-          <div class=" w-7 h-7 "></div>
-        </div><div class="bordered border-tertiary-700 bg-tertiary-300">
-          <div class=" w-7 h-7 "></div>
-        </div>
-      </div>
+<live-example :source-code="exampleItems" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-place-items">Place items class</label>
+      <select id="select-place-items" v-model="items">
+        <option value="place-items-center">.place-items-center</option>
+        <option value="place-items-start">.place-items-start</option>
+        <option value="place-items-end">.place-items-end</option>
+        <option value="place-items-baseline">.place-items-baseline</option>
+        <option value="place-items-stretch">.place-items-stretch</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ items }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-place-items">Place Items property</label>
-    <select id="select-place-items" v-model="items">
-      <option value="place-items-center">Center</option>
-      <option value="place-items-start">Start</option>
-      <option value="place-items-end">End</option>
-      <option value="place-items-baseline">Baseline</option>
-      <option value="place-items-stretch">Stretch</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Place Self
+
+Use `place-self-*` on a grid item to align it within its cell. Only the pink block changes. Choose `.place-self-auto` to use the container’s alignment.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -120,42 +107,32 @@ The placement utilities provide a set of classes to adjust the `place-content`, 
 | `.place-self-baseline` | place-self | `baseline` |
 | `.place-self-stretch` | place-self | `stretch` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-grid g-5`" style="grid-template-columns: repeat(3, auto); grid-template-rows: 80px;">
-        <div :class="` bordered border-tertiary-700 bg-tertiary-300 ${self} `">
-          <div class=" w-7 h-7 "></div>
-        </div>
-        <div class="bordered border-primary-700 bg-primary-300 "><div class=" w-7 h-7 "></div></div>
-        <div class="bordered border-primary-700 bg-primary-300 "><div class=" w-7 h-7 "></div></div>
-      </div>
+<live-example :source-code="exampleSelf" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-place-self">Place self class</label>
+      <select id="select-place-self" v-model="self">
+        <option value="place-self-auto">.place-self-auto</option>
+        <option value="place-self-center">.place-self-center</option>
+        <option value="place-self-start">.place-self-start</option>
+        <option value="place-self-end">.place-self-end</option>
+        <option value="place-self-baseline">.place-self-baseline</option>
+        <option value="place-self-stretch">.place-self-stretch</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ self }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-place-self">Place Self property</label>
-    <select id="select-place-self" v-model="self">
-      <option value="place-self-center">Center</option>
-      <option value="place-self-start">Start</option>
-      <option value="place-self-end">End</option>
-      <option value="place-self-baseline">Baseline</option>
-      <option value="place-self-stretch">Stretch</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
 
-To customize the placement utilities, you can use the following variables.
+## Sass variables
+
+The following Sass variables can be used to customize the generation of the placement utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
@@ -185,10 +162,4 @@ To customize the placement utilities, you can use the following variables.
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for placement.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.
