@@ -91,7 +91,7 @@
 // - `.grid-rows-10`: Sets the `grid-template-rows` property to `10`.
 // - `.grid-rows-11`: Sets the `grid-template-rows` property to `11`.
 // - `.grid-rows-12`: Sets the `grid-template-rows` property to `12`.
-// - `.col-span-auto`: Sets the `grid-column` property to `span auto`.
+// - `.col-span-auto`: Sets the `grid-column` property to `auto`.
 // - `.col-span-full`: Sets the `grid-column` property to `1 / -1`.
 // - `.col-span-1`: Sets the `grid-column` property to `span 1`.
 // - `.col-span-2`: Sets the `grid-column` property to `span 2`.
@@ -105,7 +105,7 @@
 // - `.col-span-10`: Sets the `grid-column` property to `span 10`.
 // - `.col-span-11`: Sets the `grid-column` property to `span 11`.
 // - `.col-span-12`: Sets the `grid-column` property to `span 12`.
-// - `.row-span-auto`: Sets the `grid-row` property to `span auto`.
+// - `.row-span-auto`: Sets the `grid-row` property to `auto`.
 // - `.row-span-full`: Sets the `grid-row` property to `1 / -1`.
 // - `.row-span-1`: Sets the `grid-row` property to `span 1`.
 // - `.row-span-2`: Sets the `grid-row` property to `span 2`.
@@ -132,7 +132,7 @@
 // | ------------------------------------ | ----------------------------------------------------------- | ------------- |
 // | `$selector-base`                     | Base selector for utility classes.                          | `"."`         |
 // | `$selector-prefix`                   | The selector prefix for all utility classes.                | `""`          |
-// | `$selector-suffix`                   | The selctor suffix for all utility classes.                 | `""`          |
+// | `$selector-suffix`                   | The selector suffix for all utility classes.                | `""`          |
 // | `$selector-separator`                | The selector separator for all utility classes.             | `""`          |
 // | `$use-important`                     | Appends `!important` to generated utility declarations.     | `true`        |
 // | `$generate-base-utilities`           | Generates the base utility classes.                         | `true`        |
