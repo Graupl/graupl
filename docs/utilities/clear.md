@@ -1,92 +1,84 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
   const clear = ref("clear-none");
+  const exampleClear = computed(() => `<div class="display-flow-root bordered border-dashed border-tertiary-700 p-3" dir="ltr">
+  <div class="float-left w-quarter h-8 bg-primary-300 text-primary-900 p-2">Left</div>
+  <div class="float-right w-quarter h-9 bg-primary-300 text-primary-900 p-2">Right</div>
+  <div class="${clear.value} bordered border-tertiary-700">
+    <span class="display-inline-block bg-tertiary-300 text-tertiary-900 p-2">Trail notes</span>
+  </div>
+</div>`);
 </script>
 
 # Clear Utilities
 
-The clear utilities provide a set of classes to adjust the `clear` properties of elements.
+The clear utilities provide classes for moving a block below earlier floats on one or both sides. The inline-start and inline-end classes follow the text direction. See [Float](./float.md) to place an element beside wrapping text.
 
 ## Clear
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.clear-none` | clear | `none` |
-| `.clear-left` | clear | `left` |
-| `.clear-right` | clear | `right` |
-| `.clear-both` | clear | `both` |
-| `.clear-inline-start` | clear | `inline-start` |
-| `.clear-inline-end` | clear | `inline-end` |
+| Class Name            | Property | Value          |
+| --------------------- | -------- | -------------- |
+| `.clear-none`         | clear    | `none`         |
+| `.clear-left`         | clear    | `left`         |
+| `.clear-right`        | clear    | `right`        |
+| `.clear-both`         | clear    | `both`         |
+| `.clear-inline-start` | clear    | `inline-start` |
+| `.clear-inline-end`   | clear    | `inline-end`   |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="` w-full h-full `">
-        <div class="float-right bordered border-primary-700 bg-primary-300 p-7 h-two-thirds m-3"></div>
-        <div class="float-left bordered border-secondary-700 bg-secondary-300 p-7 m-3"></div>
-        <div :class="` ${clear} bordered border-tertiary-700 bg-tertiary-300 p-5 m-3 `"></div>
-      </div>
+<live-example :source-code="exampleClear" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="clear-example-class">Clear class</label>
+      <select id="clear-example-class" v-model="clear">
+        <option value="clear-none">.clear-none</option>
+        <option value="clear-left">.clear-left</option>
+        <option value="clear-right">.clear-right</option>
+        <option value="clear-both">.clear-both</option>
+        <option value="clear-inline-start">.clear-inline-start</option>
+        <option value="clear-inline-end">.clear-inline-end</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="p-5 {{ clear }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-clear">clear property</label>
-    <select id="select-clear" v-model="clear">
-      <option value="clear-none">None</option>
-      <option value="clear-left">Left</option>
-      <option value="clear-right">Right</option>
-      <option value="clear-both">Both</option>
-      <option value="clear-inline-start">Inline-start</option>
-      <option value="clear-inline-end">Inline End</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
+## Sass variables
 
-To customize the clear utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the clear utilities.
 
-| Variable | Description | Default Value |
-| --- | --- | --- |
-| `$selector-base` | Base selector for utility classes. | `"."` |
-| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
-| `$selector-separator` | The selector separator for all utility classes. | `""` |
-| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
-| `$generate-base-utilities` | Generates the base utility classes. | `true` |
-| `$screen-aware` | Enables screen-aware utility variants. | `false` |
-| `$theme-aware` | Enables theme-aware utility variants. | `false` |
-| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
-| `$state-aware` | Enables state-aware utility variants. | `false` |
-| `$container-aware` | Enables container-aware utility variants. | `false` |
-| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
-| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
-| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
-| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
-| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
-| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
-| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
-| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
-| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
-| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
-| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
-| `$utility-properties` | Map of utility properties. | `()` |
-| `$utility-values` | Map of utility values. | `()` |
-| `$utility-map` | Map of utility property/value pairs. | `()` |
+| Variable                              | Description                                                 | Default Value |
+| ------------------------------------- | ----------------------------------------------------------- | ------------- |
+| `$selector-base`                      | Base selector for utility classes.                          | `"."`         |
+| `$selector-prefix`                    | The selector prefix for all utility classes.                | `""`          |
+| `$selector-suffix`                    | The selector suffix for all utility classes.                | `""`          |
+| `$selector-separator`                 | The selector separator for all utility classes.             | `"-"`         |
+| `$use-important`                      | Appends `!important` to generated utility declarations.     | `true`        |
+| `$generate-base-utilities`            | Generates the base utility classes.                         | `true`        |
+| `$screen-aware`                       | Enables screen-aware utility variants.                      | `true`        |
+| `$theme-aware`                        | Enables theme-aware utility variants.                       | `false`       |
+| `$scheme-aware`                       | Enables scheme-aware utility variants.                      | `false`       |
+| `$state-aware`                        | Enables state-aware utility variants.                       | `false`       |
+| `$container-aware`                    | Enables container-aware utility variants.                   | `false`       |
+| `$screen-aware-selector-prefix`       | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-suffix`       | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-separator`    | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+| `$theme-aware-selector-prefix`        | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+| `$theme-aware-selector-suffix`        | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+| `$theme-aware-selector-separator`     | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+| `$scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+| `$scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+| `$scheme-aware-selector-separator`    | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+| `$state-aware-selector-prefix`        | Prefix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-suffix`        | Suffix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-separator`     | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+| `$container-aware-selector-prefix`    | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+| `$container-aware-selector-suffix`    | Suffix to the container-aware portion of utility selectors. | `""`          |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+| `$utility-properties`                 | Map of utility properties.                                  | `()`          |
+| `$utility-values`                     | Map of utility values.                                      | `()`          |
+| `$utility-map`                        | Map of utility property/value pairs.                        | `()`          |
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, screen-aware classes are generated for clear.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+Screen-aware classes are generated by default, including `hd:`, `qhd:`, and `uhd:`. See the [Responsive Classes guide](../responsive-classes.md) for the available prefixes.
