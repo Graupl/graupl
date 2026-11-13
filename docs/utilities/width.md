@@ -232,6 +232,28 @@ The width utilities provide classes for setting an element’s width with `w-*`.
 | `.min-w-10` | min-width | `var(--graupl-spacer-10)` |
 
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/width.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/width.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/width.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the width utilities.

@@ -54,7 +54,7 @@ ${blocks}
 
 # Grid Utilities
 
-The grid utilities provide classes for setting up CSS Grid tracks and placing items on them. Use `.display-grid` on the container, then set its rows and columns or place individual items. The [Columns layout](../layout/column.md) handles responsive columns for you. Use Grid utilities when you want to set the tracks and item placement yourself.
+The grid utilities provide classes for setting up CSS Grid tracks and placing items on them. Use `.display-grid` on the container, then set its rows and columns or place individual items. Use the [Columns layout](../layout/column.md) when you want the column count to adjust automatically.
 
 ## Grid Columns
 
@@ -399,6 +399,28 @@ Use row span classes on an item to set how many rows it covers. The full span ru
     </div>
   </template>
 </live-example>
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/grid.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/grid.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/grid.scss";
+```
+
+:::
 
 ## Sass variables
 

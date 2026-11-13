@@ -183,6 +183,50 @@ pre code {
   }
 }
 
+.vp-code-group {
+  margin-block: map.get(graupl-root-variables.$spacers, 5);
+
+  > .tabs {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: map.get(graupl-root-variables.$spacers, 2);
+
+    > input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    > label {
+      padding: map.get(graupl-root-variables.$spacers, 3)
+        map.get(graupl-root-variables.$spacers, 5);
+      border-block-end: graupl-root-variables.$border-width solid transparent;
+      cursor: pointer;
+    }
+
+    > label:hover,
+    > input:checked + label {
+      background: theme.get("primary", "100");
+      color: theme.get("primary", "900");
+    }
+
+    > input:checked + label {
+      border-block-end-color: currentcolor;
+    }
+
+    > input:focus + label {
+      outline: graupl-root-variables.$border-width solid currentcolor;
+      outline-offset: -2px;
+    }
+  }
+
+  > .blocks > :not(.active) {
+    display: none;
+  }
+}
+
 .dark-mode {
   .vp-adaptive-theme[class*="language-"] span {
     color: var(--graupl-code-color, var(--shiki-dark));

@@ -242,6 +242,28 @@ Percentage values use the parent’s block size. Classes ending in `-screen` use
 | `.min-bs-9`                     | min-block-size | `var(--graupl-spacer-9)`  |
 | `.min-bs-10`                    | min-block-size | `var(--graupl-spacer-10)` |
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/block-size.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/block-size.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/block-size.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the block size utilities.

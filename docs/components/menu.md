@@ -51,6 +51,28 @@ By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the menu module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants. Add the variant class alongside `.menu` to style the list and its submenus. If the menu is inside a navigation, see [Navigation variants](./navigation.md#variants) for how the two sets of variants work together.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/menu.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/menu.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/menu.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the menu component:

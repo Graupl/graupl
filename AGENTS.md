@@ -125,6 +125,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 - Import Sass defaults first, followed by variables, functions and mixins, and finally style index files. Within each group, import Graupl Core files before plugin files.
 
+## Sass maps
+
+- Quote Sass map keys in source code and examples, including numeric-looking keys such as `"100"`. Use a different key type only when the map specifically requires it.
+
 ## Sass custom properties
 
 - Give each supported state its own Sass variable and CSS custom property, even when states share a fallback. By default, visited and focus fall back to the standard state, active falls back to hover, and hover and disabled define their own defaults. Preserve intentional interaction effects that need a different fallback, such as the button press scale.

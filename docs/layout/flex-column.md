@@ -84,6 +84,28 @@ By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the flex columns module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/layout/flex-columns.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/layout/flex-columns.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/layout/flex-columns.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the flex columns layout:

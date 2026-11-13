@@ -27,7 +27,7 @@
 
 # Overflow Utilities
 
-The overflow utilities provide a set of classes to adjust the `overflow`, `overflow-x`, `overflow-y`, `overflow-block`, and `overflow-inline` properties of elements.
+The overflow utilities provide classes for controlling what happens when content extends beyond its box.
 
 ## Overflow
 
@@ -177,6 +177,28 @@ Block overflow follows the direction lines stack. It is vertical in horizontal w
     </div>
   </template>
 </live-example>
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/overflow.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/overflow.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/overflow.scss";
+```
+
+:::
 
 ## Customization
 

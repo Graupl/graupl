@@ -34,6 +34,28 @@ Add `.focusable` alongside `.visually-hidden` to reveal an element when it or on
 
 <live-example class="vp-raw" :source-code="skipLink" />
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/visually-hidden.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/visually-hidden.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/visually-hidden.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the visually hidden utilities.

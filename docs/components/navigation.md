@@ -104,6 +104,48 @@ By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the navigation module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants. Add the variant class alongside `.navigation` to set the navigation’s background and text color. The nested menu uses those colors by default. To style the menu separately, enable [Menu variants](./menu.md#variants) and add a variant class alongside `.menu`. The Menu variant sets its own text, border, and link hover colors.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/navigation.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/navigation.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/navigation.scss";
+```
+
+:::
+
+### JavaScript
+
+For a page that uses this component, include its generator script below. It finds and initializes matching markup when the page loads. If you already load the full `graupl.js` bundle, it runs the generator for you. To call the generator yourself, see [Initialization](#initialization).
+
+Load Accessible Menu's `DisclosureMenu` script before the Graupl script, including when you use the full bundle. If you host it locally, copy `dist/disclosure-menu.iife.js` from the `accessible-menu` package to the path shown.
+
+::: code-group
+
+```html [Local]
+<script defer src="./accessible-menu/dist/disclosure-menu.iife.js"></script>
+<script defer src="./dist/js/navigation.js"></script>
+```
+
+```html [CDN]
+<script defer src="https://cdn.jsdelivr.net/npm/accessible-menu@4.4.0/dist/disclosure-menu.iife.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/navigation.js"></script>
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the navigation component.

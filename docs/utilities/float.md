@@ -39,6 +39,28 @@ The float utilities provide classes for moving an element to one side so the sur
   </template>
 </live-example>
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/float.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/float.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/float.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the float utilities.

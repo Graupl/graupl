@@ -13,7 +13,7 @@
 
 # Isolation Utilities
 
-The isolation utilities provide classes for controlling whether an element creates a stacking context. Use `.isolation-isolate` to create a stacking context for a group of elements. The browser then stacks the group as a unit relative to nearby elements. See [Z Index](./z-index.md) to control the order of elements within a stacking context.
+The isolation utilities provide classes for controlling how a group stacks relative to nearby elements. Add `.isolation-isolate` to create a stacking context so the browser stacks the group as a unit. See [Z Index](./z-index.md) to control the order of elements within a stacking context.
 
 ## Isolation
 
@@ -35,6 +35,28 @@ Block 1 has `.z-1` and starts above block 2. Apply `.isolation-isolate` to the i
     </div>
   </template>
 </live-example>
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/isolation.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/isolation.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/isolation.scss";
+```
+
+:::
 
 ## Sass variables
 

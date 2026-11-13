@@ -27,7 +27,7 @@ The link base component provides a set of base styles and classes to style links
 
 ## Base element
 
-The base `<a>` element is styled by default with no need for classes.
+Link styles apply to `<a>` elements by default.
 
 <live-example :source-code="exampleLink" />
 
@@ -69,6 +69,28 @@ These classes are purely visual and do not apply the actual state. For example, 
     </div>
   </template>
 </live-example>
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/base/link.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/base/link.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/base/link.scss";
+```
+
+:::
 
 ## Custom Properties
 

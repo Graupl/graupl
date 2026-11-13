@@ -357,6 +357,28 @@ Choose physical edges to target the top, right, bottom, or left. Logical edges f
 </live-example>
 
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/inset.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/inset.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/inset.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the inset utilities.

@@ -26,7 +26,7 @@
 
 # Container Utilities
 
-The container utilities provide a set of classes to set the `container-type` property. Use them to make an element a query container so its descendants can respond to changes in its size or scroll state.
+The container utilities provide classes for setting `container-type`. Use them to make an element a query container so its descendants can respond to its size or scroll state.
 
 ## Inline-size queries
 
@@ -49,6 +49,28 @@ A [horizontal card](../components/card.md#horizontal-cards-in-narrow-containers)
 | `.container-type-normal` | container-type | `normal` |
 | `.container-type-size` | container-type | `size` |
 | `.container-type-scroll` | container-type | `scroll-state` |
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/container.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/container.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/container.scss";
+```
+
+:::
 
 ## Sass variables
 

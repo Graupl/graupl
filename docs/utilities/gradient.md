@@ -140,6 +140,28 @@ The gradient utilities provide classes for creating linear and radial background
 | `.gradient-radial` | background-image | `radial-gradient(var(--graupl-gradient-direction), var(--graupl-gradient-from) var(--graupl-gradient-from-position), var(--graupl-gradient-to) var(--graupl-gradient-to-position))` |
 
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/gradient.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/gradient.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/gradient.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the gradient utilities.

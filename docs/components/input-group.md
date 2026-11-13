@@ -62,6 +62,28 @@ On screens up to 575px wide, `.left`, `.right`, and `.inline` stack the group wi
 
 Use a screen-size prefix to choose a layout from that breakpoint onward. For example, `stacked md:inline` puts the label above the control on smaller screens and to its left from the medium breakpoint. See [responsive classes](../responsive-classes.md) for the available prefixes.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/input-group.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/input-group.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/input-group.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the input group component:

@@ -69,6 +69,44 @@ By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the tabs module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants. Add a variant class alongside `.tabs` to style the whole component or to an element inside it to style that part separately.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/tabs.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/tabs.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/tabs.scss";
+```
+
+:::
+
+### JavaScript
+
+For a page that uses this component, include its generator script below. It finds and initializes matching markup when the page loads. If you already load the full `graupl.js` bundle, it runs the generator for you. To call the generator yourself, see [Initialization](#initialization).
+
+::: code-group
+
+```html [Local]
+<script defer src="./dist/js/tabs.js"></script>
+```
+
+```html [CDN]
+<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/tabs.js"></script>
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the tabs component:

@@ -49,7 +49,7 @@ The form base component provides a set of styles for inputs, textareas, selects,
 
 ::: info Note
 
-Form elements and inputs alone are only a portion of Graupl's feature set for forms. For a complete setup of labels, form items, and help text please see the [Input Group](../components/input-group.md) component.
+Use the [Input Group](../components/input-group.md) component to lay out a label, control, and help text together.
 
 :::
 
@@ -98,6 +98,28 @@ There are three form colour variants provided by default: `.primary`, `.secondar
 </live-example>
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the form module’s `$themeable` variable to `false` to skip generating theme variants.
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/base/form.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/base/form.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/base/form.scss";
+```
+
+:::
 
 ## Custom Properties
 

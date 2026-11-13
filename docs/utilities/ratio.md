@@ -17,7 +17,7 @@
 
 # Ratio Utilities
 
-The ratio utilities provide classes for setting a box’s aspect ratio. Use `.ratio` to make a box fill its parent’s width and size its height using `--graupl-ratio`. Add a preset class to set the ratio.
+The ratio utilities provide classes for setting a box’s aspect ratio. Add `.ratio` to a box to fill its parent's width, then add a preset class to set its aspect ratio. The preset sets `--graupl-ratio`, which determines the box's height.
 
 ## Aspect Ratio
 
@@ -60,6 +60,28 @@ Add `.force-ratio` to an image inside a `.ratio` box to fill the box. The image 
     </div>
   </template>
 </live-example>
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/ratio.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/ratio.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/ratio.scss";
+```
+
+:::
 
 ## Custom Properties
 

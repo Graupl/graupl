@@ -45,6 +45,28 @@ By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the list module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/list.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/list.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/list.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the list component:

@@ -105,6 +105,28 @@ Add the border, stripe, and hover classes to the table. Add `.highlight` to the 
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the table module’s `$themeable` variable to `false` to skip generating theme variants.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/base/table.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/base/table.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/base/table.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the table component:

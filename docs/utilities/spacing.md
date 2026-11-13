@@ -611,6 +611,28 @@ Apply a margin class to the filled block to add space between it and the dashed 
 | `.mise-9`    | margin-inline | `var(--graupl-spacer-9)`  |
 | `.mise-10`   | margin-inline | `var(--graupl-spacer-10)` |
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/spacing.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/spacing.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/spacing.scss";
+```
+
+:::
+
 ## Sass variables
 
 The following Sass variables can be used to customize the generation of the spacing utilities.

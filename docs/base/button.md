@@ -89,6 +89,28 @@ These classes are purely visual and do not apply the actual state. For proper ac
   </template>
 </live-example>
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/base/button.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/base/button.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/base/button.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the button component:
