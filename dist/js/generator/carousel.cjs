@@ -76,7 +76,7 @@ function n(t, e, { shouldThrow: s = !0 } = {}) {
 	if (s && !i.status) throw i.errors[0];
 	return i;
 }
-function H(t, { shouldThrow: e = !0 } = {}) {
+function W(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -226,10 +226,10 @@ function Q(t, { shouldThrow: e = !0 } = {}) {
 function J(t) {
 	return n("string", { value: t }), `${t.charAt(0).toLowerCase()}${t.slice(1)}`;
 }
-function C(t) {
+function T(t) {
 	return n("string", { value: t }), `${t.charAt(0).toUpperCase()}${t.slice(1)}`;
 }
-var E = class k {
+var E = class $ {
 	_scope;
 	_type = "_default";
 	_storage = {};
@@ -239,7 +239,7 @@ var E = class k {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (u(k, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (u($, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -289,7 +289,7 @@ var E = class k {
 	dispose() {
 		typeof window < "u" && window[this.scope] === this && delete window[this.scope], delete this._storage;
 	}
-}, T = class {
+}, C = class {
 	#t = new EventTarget();
 	_dom = {};
 	_rootDOMElement = "";
@@ -419,7 +419,7 @@ var E = class k {
 		return this._scope;
 	}
 	get eventPrefix() {
-		return this._eventPrefix !== "" ? this._eventPrefix : `${J(this.scope)}${C(this.name)}`;
+		return this._eventPrefix !== "" ? this._eventPrefix : `${J(this.scope)}${T(this.name)}`;
 	}
 	get id() {
 		return this._id;
@@ -447,8 +447,8 @@ var E = class k {
 		const t = Q(this, { shouldThrow: !1 });
 		if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 			const o = {};
-			for (const h of Object.keys(this._dom)) Array.isArray(this._dom[h]) ? this._dom[h].forEach((y, g) => {
-				o[`${h}Element[${g}]`] = y;
+			for (const h of Object.keys(this._dom)) Array.isArray(this._dom[h]) ? this._dom[h].forEach((v, y) => {
+				o[`${h}Element[${y}]`] = v;
 			}) : this._dom[h] !== null && (o[`${h}Element`] = this._dom[h]);
 			const a = u(HTMLElement, o, { shouldThrow: !1 });
 			a.status || (this._errors = [...this._errors, ...a.errors], this._valid = !1);
@@ -456,7 +456,7 @@ var E = class k {
 		if (Object.keys(this._selectors).length > 0) {
 			const o = {};
 			for (const h of Object.keys(this._selectors)) this._selectors[h] !== "" && (o[`${h}Selector`] = this._selectors[h]);
-			const a = H(o, { shouldThrow: !1 });
+			const a = W(o, { shouldThrow: !1 });
 			a.status || (this._errors = [...this._errors, ...a.errors], this._valid = !1);
 		}
 		if (Object.keys(this._classes).length > 0) {
@@ -568,7 +568,7 @@ var E = class k {
 	}
 	_registerEvent(t, { bubbles: e = !0, detail: s = {} } = {}) {
 		n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: s });
-		const i = `${this.eventPrefix}${C(t)}`;
+		const i = `${this.eventPrefix}${T(t)}`;
 		this._events[t] = new CustomEvent(i, {
 			bubbles: e,
 			detail: {
@@ -625,7 +625,7 @@ var E = class k {
 	dispose() {
 		this._clearIntervals(), this._clearTimeouts(), this._cancelAnimationFrames(), this._removeEventListeners(), this._bootstrapped = !1, this._unstore(), delete this;
 	}
-}, A = class extends T {
+}, A = class extends C {
 	_scope = "Graupl";
 	_rootDOMElement = "carouselItem";
 	_shouldStore = !1;
@@ -679,11 +679,13 @@ var E = class k {
 			}, "deactivate"), this._dispatchEvent("deactivate", this.rootDOMElement, { emit: t });
 		}, "deactivate");
 	}
-}, Z = class extends T {
+}, Z = class extends C {
 	_scope = "Graupl";
 	_rootDOMElement = "carousel";
 	_currentItem = 0;
+	_currentTabIndex = -1;
 	_autoplay = !0;
+	_automatic = !0;
 	_hoverPaused = !1;
 	_focusPaused = !1;
 	_playText = "Play";
@@ -694,14 +696,14 @@ var E = class k {
 	_loop = !0;
 	_intersectionObserver = null;
 	_loopItems = /* @__PURE__ */ new Set();
-	constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: a = ".carousel-tab-container", autoplaySelector: h = ".autoplay", nextSelector: y = ".next", previousSelector: g = ".previous", activeClass: x = "active", playClass: D = "play", pauseClass: z = "pause", autoplay: M = !0, transitionDelay: L = 1e4, playText: P = "Play", pauseText: S = "Pause", itemsPerPage: j = 1, loop: F = !0, prefix: V = "graupl-", key: K = null, initializeClass: q = "initializing", initialize: N = !1 }) {
+	constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: a = ".carousel-tab-container", autoplaySelector: h = ".autoplay", nextSelector: v = ".next", previousSelector: y = ".previous", activeClass: k = "active", playClass: L = "play", pauseClass: D = "pause", autoplay: M = !0, automaticActivation: z = !0, transitionDelay: P = 1e4, playText: S = "Play", pauseText: j = "Pause", itemsPerPage: F = 1, loop: V = !0, prefix: K = "graupl-", key: N = null, initializeClass: q = "initializing", initialize: H = !1 }) {
 		super({
 			bootstrap: !1,
 			initialize: !1,
-			prefix: V,
-			key: K,
+			prefix: K,
+			key: N,
 			initializeClass: q
-		}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = a, this._selectors.autoplay = h, this._selectors.next = y, this._selectors.previous = g, this._elements.carouselItems = [], this._classes.active = x || "", this._classes.play = D || "", this._classes.pause = z || "", this._autoplay = M, this._itemsPerPage = j, this._loop = F, this._delays.transition = L, this._playText = P || "", this._pauseText = S || "", this._bootstrap(), N && this.initialize();
+		}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = a, this._selectors.autoplay = h, this._selectors.next = v, this._selectors.previous = y, this._elements.carouselItems = [], this._classes.active = k || "", this._classes.play = L || "", this._classes.pause = D || "", this._autoplay = M, this._automatic = z, this._itemsPerPage = F, this._loop = V, this._delays.transition = P, this._playText = S || "", this._pauseText = j || "", this._bootstrap(), H && this.initialize();
 	}
 	_registerEvents() {
 		super._registerEvents(), this._addInternalEventListener(this.getEventName("initialize"), (t) => {
@@ -713,6 +715,7 @@ var E = class k {
 			if (t.detail.component !== this) return;
 			const s = n("boolean", {
 				autoplay: this._autoplay,
+				automaticActivation: this._automatic,
 				loop: this._loop
 			}, { shouldThrow: !1 });
 			s.status || (this._errors = [...this._errors, ...s.errors], this._valid = !1);
@@ -752,6 +755,12 @@ var E = class k {
 	get currentCarouselItem() {
 		return this.elements.carouselItems[this.currentItem];
 	}
+	get isAutomatic() {
+		return this._automatic;
+	}
+	set isAutomatic(t) {
+		n("boolean", { isAutomatic: t }), this._automatic !== t && (this._automatic = t);
+	}
 	get autoplay() {
 		return this._autoplay;
 	}
@@ -788,6 +797,9 @@ var E = class k {
 	_registerItemEvents(t) {
 		t._addInternalEventListener(t.getEventName("activate"), (e) => {
 			e.detail.scroll && this._scrollToItem(t, e.detail.scrollOptions);
+		}), t.dom.tab && t._addInternalEventListener(t.getEventName("postactivate"), () => {
+			const e = this.dom.carouselTabContainer;
+			e.contains(e.ownerDocument.activeElement) || this._setTabStop(this._getItemsWithTabs().indexOf(t));
 		});
 	}
 	_createChildElements() {
@@ -801,7 +813,10 @@ var E = class k {
 				initialize: !0
 			});
 			this._elements.carouselItems.push(s);
-		});
+		}), this._getItemsWithTabs().forEach((t) => {
+			const { tab: e, carouselItem: s } = t.dom;
+			e.setAttribute("role", "tab"), e.setAttribute("aria-selected", t === this.currentCarouselItem), e.setAttribute("aria-controls", s.id), s.setAttribute("role", "tabpanel"), s.setAttribute("aria-labelledby", e.id), s.removeAttribute("aria-roledescription");
+		}), this._setTabStop(this._getItemsWithTabs().indexOf(this.currentCarouselItem));
 	}
 	_setIds() {
 		this.dom.carousel.id = this.dom.carousel.id || `carousel-${this.key}`, this.dom.carouselItems.forEach((t, e) => {
@@ -813,8 +828,8 @@ var E = class k {
 	_setAriaAttributes() {
 		!U("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((t) => {
 			t.setAttribute("inert", "true");
-		}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t, e) => {
-			t.setAttribute("role", "tab"), t.setAttribute("aria-selected", e === 0), t.setAttribute("aria-controls", this.dom.carouselItems[e].id);
+		}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((t) => {
+			t.setAttribute("tabindex", "-1");
 		});
 	}
 	_handleAutoplay() {
@@ -849,6 +864,20 @@ var E = class k {
 		this._addEventListener("focusin", this.dom.carousel, () => {
 			this._focusPaused = !0, this._handleAutoplay();
 		});
+		const t = this.dom.carouselTabContainer;
+		t && (this._addEventListener("focusin", t, (e) => {
+			const s = this._getItemsWithTabs(), i = s.findIndex((o) => o.dom.tab === e.target);
+			if (i === -1) return;
+			this._setTabStop(i);
+			const r = s[i];
+			this.isAutomatic && r !== this.currentCarouselItem && this.activateItem(this.elements.carouselItems.indexOf(r));
+		}), this._addEventListener("focusout", t, (e) => {
+			t.contains(e.relatedTarget) || this._setTabStop(this._getItemsWithTabs().indexOf(this.currentCarouselItem));
+		}));
+	}
+	_setTabStop(t) {
+		const e = this._getItemsWithTabs();
+		e[this._currentTabIndex]?.dom.tab.setAttribute("tabindex", "-1"), this._currentTabIndex = t, e[this._currentTabIndex]?.dom.tab.setAttribute("tabindex", "0");
 	}
 	_handleClick() {
 		this._addEventListener("click", this.dom.next, (t) => {
@@ -859,7 +888,7 @@ var E = class k {
 			t.button === 0 && (l(t), this.currentEvent = "mouse", this.toggleAutoplay());
 		}), this.elements.carouselItems.forEach((t) => {
 			t.dom.tab && this._addEventListener("click", t.dom.tab, (e) => {
-				e.button === 0 && (l(e), this.currentEvent = "mouse", this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)));
+				e.button === 0 && (l(e), !(this.isAutomatic && t === this.currentCarouselItem) && (this.currentEvent = "mouse", this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem))));
 			});
 		});
 	}
@@ -882,7 +911,11 @@ var E = class k {
 			t.dom.tab && this._addEventListener("keydown", t.dom.tab, (e) => {
 				switch (d(e)) {
 					case "Space":
-					case "Enter": l(e);
+					case "Enter":
+					case "ArrowLeft":
+					case "ArrowRight":
+					case "Home":
+					case "End": l(e);
 				}
 			});
 		});
@@ -907,10 +940,40 @@ var E = class k {
 			t.dom.tab && this._addEventListener("keyup", t.dom.tab, (e) => {
 				switch (d(e)) {
 					case "Space":
-					case "Enter": this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem)), l(e);
+					case "Enter":
+						l(e), this.currentEvent = "keyboard", this.activateItem(this.dom.carouselItems.indexOf(t.dom.carouselItem));
+						break;
+					case "ArrowLeft":
+						l(e), this._focusPreviousTab();
+						break;
+					case "ArrowRight":
+						l(e), this._focusNextTab();
+						break;
+					case "Home":
+						l(e), this._focusFirstTab();
+						break;
+					case "End": l(e), this._focusLastTab();
 				}
 			});
 		});
+	}
+	_getItemsWithTabs() {
+		return this.elements.carouselItems.filter((t) => t.dom.tab);
+	}
+	_focusTab(t) {
+		this._getItemsWithTabs()[t]?.dom.tab.focus();
+	}
+	_focusFirstTab() {
+		this._focusTab(0);
+	}
+	_focusLastTab() {
+		this._focusTab(this._getItemsWithTabs().length - 1);
+	}
+	_focusNextTab() {
+		this._currentTabIndex < this._getItemsWithTabs().length - 1 ? this._focusTab(this._currentTabIndex + 1) : this._focusFirstTab();
+	}
+	_focusPreviousTab() {
+		this._currentTabIndex > 0 ? this._focusTab(this._currentTabIndex - 1) : this._focusLastTab();
 	}
 	_handleLoop() {
 		this._removeLoop();
@@ -943,11 +1006,12 @@ var E = class k {
 		}), this._dom.carouselItems = this.dom.carouselItems.filter((i) => !s.has(i)), this._elements.carouselItems = this.elements.carouselItems.filter((i) => !this._loopItems.has(i)), this._loopItems.clear(), this._currentItem = Math.max(0, this.elements.carouselItems.indexOf(e));
 	}
 	_scrollToItem(t, e = {}) {
+		const { behavior: s = "smooth", ...i } = e, r = s === "smooth" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 		this.dom.carouselItemContainer.scrollTo({
 			left: t.dom.carouselItem.offsetLeft,
 			top: t.dom.carouselItem.offsetTop,
-			behavior: "smooth",
-			...e
+			...i,
+			behavior: r ? "instant" : s
 		});
 	}
 	activateCurrentItem({ scroll: t = !0, scrollOptions: e = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
@@ -1042,20 +1106,20 @@ var E = class k {
 		this._intersectionObserver?.disconnect(), this._intersectionObserver = null, this._removeLoop(), this.elements.carouselItems.forEach((t) => t.dispose()), super.dispose();
 	}
 };
-const O = /[\11\12\14\15\40]+/, I = "data-once", W = document;
-function b(t, e, s) {
-	return t[`${e}Attribute`](I, s);
+const O = /[\11\12\14\15\40]+/, b = "data-once", X = document;
+function I(t, e, s) {
+	return t[`${e}Attribute`](b, s);
 }
 function f(t) {
 	if (typeof t != "string") throw new TypeError("once ID must be a string");
 	if (t === "" || O.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
-	return `[${I}~="${t}"]`;
+	return `[${b}~="${t}"]`;
 }
-function X(t) {
+function Y(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function p(t, e = W) {
+function p(t, e = X) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -1065,24 +1129,24 @@ function p(t, e = W) {
 }
 function w(t, e, s) {
 	return e.filter((i) => {
-		const r = X(i) && i.matches(t);
+		const r = Y(i) && i.matches(t);
 		return r && s && s(i), r;
 	});
 }
-function $(t, { add: e, remove: s }) {
+function x(t, { add: e, remove: s }) {
 	const i = [];
-	b(t, "has") && b(t, "get").trim().split(O).forEach((o) => {
+	I(t, "has") && I(t, "get").trim().split(O).forEach((o) => {
 		i.indexOf(o) < 0 && o !== s && i.push(o);
 	}), e && i.push(e);
 	const r = i.join(" ");
-	b(t, r === "" ? "remove" : "set", r);
+	I(t, r === "" ? "remove" : "set", r);
 }
-function v(t, e, s) {
-	return w(`:not(${f(t)})`, p(e, s), (i) => $(i, { add: t }));
+function g(t, e, s) {
+	return w(`:not(${f(t)})`, p(e, s), (i) => x(i, { add: t }));
 }
-v.remove = (t, e, s) => w(f(t), p(e, s), (i) => $(i, { remove: t })), v.filter = (t, e, s) => w(f(t), p(e, s)), v.find = (t, e) => p(t ? f(t) : `[${I}]`, e);
-const Y = ({ options: t = {}, context: e = document, selector: s = ".carousel" } = {}) => {
-	v("graupl-carousel-generator", s, e).forEach((i) => {
+g.remove = (t, e, s) => w(f(t), p(e, s), (i) => x(i, { remove: t })), g.filter = (t, e, s) => w(f(t), p(e, s)), g.find = (t, e) => p(t ? f(t) : `[${b}]`, e);
+const tt = ({ options: t = {}, context: e = document, selector: s = ".carousel" } = {}) => {
+	g("graupl-carousel-generator", s, e).forEach((i) => {
 		const r = i.dataset.grauplCarouselOptions ? JSON.parse(i.dataset.grauplCarouselOptions.replace(/'/g, "\"")) || {} : {};
 		new Z({
 			carouselElement: i,
@@ -1092,6 +1156,6 @@ const Y = ({ options: t = {}, context: e = document, selector: s = ".carousel" }
 		});
 	});
 };
-module.exports = Y;
+module.exports = tt;
 
 //# sourceMappingURL=carousel.cjs.map
