@@ -1,301 +1,245 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import { withBase } from "vitepress";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
-  const backgroundAttachment = ref("bg-attachment-scroll");
-  const backgroundClip = ref("bg-clip-border-box");
-  const backgroundImage = ref("bg-image-none");
-  const backgroundOrigin = ref("bg-origin-border-box");
-  const backgroundPosition = ref("bg-position-top");
-  const backgroundRepeat = ref("bg-repeat-repeat");
-  const backgroundSize = ref("bg-size-auto");
+  const imageUrl = withBase("/card-trail-map.svg");
+
+  function renderBackground(classes, extraStyles = "", content = "", attributes = "") {
+    const styles = [`background-image: url('${imageUrl}')`, extraStyles].filter(Boolean).join("; ");
+
+    return `<div class="h-10 bordered border-dashed border-tertiary-700 ${classes}" style="${styles}"${attributes}>${content}</div>`;
+  }
+
+  const attachment = ref("bg-attachment-scroll");
+  const attachmentExample = computed(() => renderBackground(`overflow-auto bg-repeat-repeat ${attachment.value}`, "background-size: 8rem auto", `<div class="h-10"></div>
+  <div class="h-10"></div>`, ' tabindex="0" role="region" aria-label="Scrollable background preview"'));
+  const clip = ref("bg-clip-border-box");
+  const clipExample = computed(() => renderBackground(`border-7 p-7 text-3xl ${clip.value} ${clip.value === "bg-clip-text" ? "text-transparent" : ""}`, "background-size: cover", `Trail map`));
+  const image = ref("");
+  const imageExample = computed(() => renderBackground(`bg-size-cover ${image.value}`));
+  const origin = ref("bg-origin-border-box");
+  const originExample = computed(() => renderBackground(`border-7 p-7 bg-repeat-no-repeat ${origin.value}`, "background-size: 8rem auto"));
+  const position = ref("bg-position-top");
+  const positionExample = computed(() => renderBackground(`bg-repeat-no-repeat ${position.value}`, "background-size: 80% 75%"));
+  const repeat = ref("bg-repeat-repeat");
+  const repeatExample = computed(() => renderBackground(`${repeat.value}`, "background-size: 6rem auto"));
+  const size = ref("bg-size-auto");
+  const sizeExample = computed(() => renderBackground(`bg-repeat-no-repeat bg-position-center ${size.value}`));
 </script>
 
 # Background Utilities
 
-The background utilities provide a set of classes to adjust the `background-attachment`, `background-clip`, `background-image`, `background-origin`, `background-position`, `background-repeat`, and `background-size` properties of elements.
-
-::: tip :pencil2: Note
-For `background-color` utility classes, please refer to the [color utilities](./color).
-:::
+The background utilities provide classes for controlling how a background image is displayed. To set a background color, use the [Color utilities](./color.md#background-color).
 
 ## Background Attachment
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-attachment-scroll` | background-attachment | `scroll` |
-| `.bg-attachment-fixed` | background-attachment | `fixed` |
-| `.bg-attachment-local` | background-attachment | `local` |
+Scroll inside the preview to compare how the image moves with the content. Fixed backgrounds use the viewport and can appear differently on mobile.
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5 g-5">
-        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary ${backgroundAttachment} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Test Item
-        </div>
-        <div :class="` bordered border-primary-700 bg-repeat-repeat bg-position-top text-primary`" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');"> Auto Item
-        </div>
-      </div>
+| Class Name              | Property              | Value    |
+| ----------------------- | --------------------- | -------- |
+| `.bg-attachment-scroll` | background-attachment | `scroll` |
+| `.bg-attachment-fixed`  | background-attachment | `fixed`  |
+| `.bg-attachment-local`  | background-attachment | `local`  |
+
+<live-example :source-code="attachmentExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-attachment">Background attachment</label>
+      <select id="background-attachment" v-model="attachment">
+        <option value="bg-attachment-scroll">.bg-attachment-scroll</option>
+        <option value="bg-attachment-fixed">.bg-attachment-fixed</option>
+        <option value="bg-attachment-local">.bg-attachment-local</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundAttachment }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-attachment">Background Attachment property</label>
-    <select id="select-background-attachment" v-model="backgroundAttachment">
-      <option value="bg-attachment-scroll">Scroll</option>
-      <option value="bg-attachment-fixed">Fixed</option>
-      <option value="bg-attachment-local">Local</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Clip
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-clip-border-box` | background-clip | `border-box` |
+The border and padding mark where each clip starts. Select `.bg-clip-text` to show the image through the letters.
+
+| Class Name             | Property        | Value         |
+| ---------------------- | --------------- | ------------- |
+| `.bg-clip-border-box`  | background-clip | `border-box`  |
 | `.bg-clip-padding-box` | background-clip | `padding-box` |
 | `.bg-clip-content-box` | background-clip | `content-box` |
-| `.bg-clip-text` | background-clip | `text` |
+| `.bg-clip-text`        | background-clip | `text`        |
 | `.bg-clip-border-area` | background-clip | `border-area` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 ${backgroundClip} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5 `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="clipExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-clip">Background clip</label>
+      <select id="background-clip" v-model="clip">
+        <option value="bg-clip-border-box">.bg-clip-border-box</option>
+        <option value="bg-clip-padding-box">.bg-clip-padding-box</option>
+        <option value="bg-clip-content-box">.bg-clip-content-box</option>
+        <option value="bg-clip-text">.bg-clip-text</option>
+        <option value="bg-clip-border-area">.bg-clip-border-area</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundClip }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-clip">Background Clip property</label>
-    <select id="select-background-clip" v-model="backgroundClip">
-      <option value="bg-clip-border-box">Border Box</option>
-      <option value="bg-clip-padding-box">Padding Box</option>
-      <option value="bg-clip-content-box">Content Box</option>
-      <option value="bg-clip-text">Text</option>
-      <option value="bg-clip-border-area">Border Area</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Image
 
-| Class Name | Property | Value |
-| --- | --- | --- |
+Select `.bg-image-none` to remove the image.
+
+| Class Name       | Property         | Value  |
+| ---------------- | ---------------- | ------ |
 | `.bg-image-none` | background-image | `none` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` bordered border-primary-700 bg-repeat-repeat-y ${backgroundImage} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="imageExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-image">Background image</label>
+      <select id="background-image" v-model="image">
+        <option value="">Show image</option>
+        <option value="bg-image-none">.bg-image-none</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundImage }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-image">Background image property</label>
-    <select id="select-background-image" v-model="backgroundImage">
-      <option value="bg-image-none">None</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Origin
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-origin-border-box` | background-origin | `border-box` |
+The border and padding show where the image starts.
+
+| Class Name               | Property          | Value         |
+| ------------------------ | ----------------- | ------------- |
+| `.bg-origin-border-box`  | background-origin | `border-box`  |
 | `.bg-origin-padding-box` | background-origin | `padding-box` |
 | `.bg-origin-content-box` | background-origin | `content-box` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  ${backgroundOrigin} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` border-3 border-dashed text-primary border-primary-700 bg-repeat-round p-5  `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="originExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-origin">Background origin</label>
+      <select id="background-origin" v-model="origin">
+        <option value="bg-origin-border-box">.bg-origin-border-box</option>
+        <option value="bg-origin-padding-box">.bg-origin-padding-box</option>
+        <option value="bg-origin-content-box">.bg-origin-content-box</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundOrigin }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-origin">Background Origin property</label>
-    <select id="select-background-origin" v-model="backgroundOrigin">
-      <option value="bg-origin-border-box">Border Box</option>
-      <option value="bg-origin-padding-box">Padding Box</option>
-      <option value="bg-origin-content-box">Content Box</option>
-      <option value="bg-origin-text">Text</option>
-      <option value="bg-origin-border-area">Border Area</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Position
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-position-top` | background-position | `top` |
-| `.bg-position-right` | background-position | `right` |
+Move the image within the box.
+
+| Class Name            | Property            | Value    |
+| --------------------- | ------------------- | -------- |
+| `.bg-position-top`    | background-position | `top`    |
+| `.bg-position-right`  | background-position | `right`  |
 | `.bg-position-bottom` | background-position | `bottom` |
-| `.bg-position-left` | background-position | `left` |
+| `.bg-position-left`   | background-position | `left`   |
 | `.bg-position-center` | background-position | `center` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space ${backgroundPosition} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` bordered border-primary-700 text-primary  bg-repeat-space `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="positionExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-position">Background position</label>
+      <select id="background-position" v-model="position">
+        <option value="bg-position-top">.bg-position-top</option>
+        <option value="bg-position-right">.bg-position-right</option>
+        <option value="bg-position-bottom">.bg-position-bottom</option>
+        <option value="bg-position-left">.bg-position-left</option>
+        <option value="bg-position-center">.bg-position-center</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundPosition }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-position">Background Position property</label>
-    <select id="select-background-position" v-model="backgroundPosition">
-      <option value="bg-position-top">Top</option>
-      <option value="bg-position-right">Right</option>
-      <option value="bg-position-bottom">Bottom</option>
-      <option value="bg-position-left">Left</option>
-      <option value="bg-position-center">Center</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Repeat
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-repeat-repeat` | background-repeat | `repeat` |
-| `.bg-repeat-repeat-x` | background-repeat | `repeat-x` |
-| `.bg-repeat-repeat-y` | background-repeat | `repeat-y` |
-| `.bg-repeat-space` | background-repeat | `space` |
-| `.bg-repeat-round` | background-repeat | `round` |
+Change how the image tiles across the box.
+
+| Class Name             | Property          | Value       |
+| ---------------------- | ----------------- | ----------- |
+| `.bg-repeat-repeat`    | background-repeat | `repeat`    |
+| `.bg-repeat-repeat-x`  | background-repeat | `repeat-x`  |
+| `.bg-repeat-repeat-y`  | background-repeat | `repeat-y`  |
+| `.bg-repeat-space`     | background-repeat | `space`     |
+| `.bg-repeat-round`     | background-repeat | `round`     |
 | `.bg-repeat-no-repeat` | background-repeat | `no-repeat` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` bordered border-primary-700 text-primary ${backgroundRepeat} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` bordered border-primary-700 text-primary `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="repeatExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-repeat">Background repeat</label>
+      <select id="background-repeat" v-model="repeat">
+        <option value="bg-repeat-repeat">.bg-repeat-repeat</option>
+        <option value="bg-repeat-repeat-x">.bg-repeat-repeat-x</option>
+        <option value="bg-repeat-repeat-y">.bg-repeat-repeat-y</option>
+        <option value="bg-repeat-space">.bg-repeat-space</option>
+        <option value="bg-repeat-round">.bg-repeat-round</option>
+        <option value="bg-repeat-no-repeat">.bg-repeat-no-repeat</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundRepeat }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-repeat">Background Repeat property</label>
-    <select id="select-background-repeat" v-model="backgroundRepeat">
-      <option value="bg-repeat-repeat">Repeat</option>
-      <option value="bg-repeat-repeat-x">Repeat X</option>
-      <option value="bg-repeat-repeat-y">Repeat Y</option>
-      <option value="bg-repeat-space">Space</option>
-      <option value="bg-repeat-round">Round</option>
-      <option value="bg-repeat-no-repeat">No Repeat</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Background Size
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.bg-size-auto` | background-size | `auto` |
-| `.bg-size-cover` | background-size | `cover` |
+Compare the image at its automatic size, fitted inside the box, or scaled to cover it.
+
+| Class Name         | Property        | Value     |
+| ------------------ | --------------- | --------- |
+| `.bg-size-auto`    | background-size | `auto`    |
+| `.bg-size-cover`   | background-size | `cover`   |
 | `.bg-size-contain` | background-size | `contain` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex g-5">
-        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y ${backgroundSize} `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Test Item
-        </div>
-        <div :class="` bordered border-primary-700 text-primary bg-repeat-repeat-y `" style="height:1000px; width:300px; background-image: url('https://picsum.photos/200/350?random=6');">Auto Item
-        </div>
-      </div>
+<live-example :source-code="sizeExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="background-size">Background size</label>
+      <select id="background-size" v-model="size">
+        <option value="bg-size-auto">.bg-size-auto</option>
+        <option value="bg-size-cover">.bg-size-cover</option>
+        <option value="bg-size-contain">.bg-size-contain</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ backgroundSize }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-background-size">Background Size property</label>
-    <select id="select-background-size" v-model="backgroundSize">
-      <option value="bg-size-auto">Auto</option>
-      <option value="bg-size-cover">Cover</option>
-      <option value="bg-size-contain">Contain</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
+## Sass variables
 
-To customize the background utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the background utilities.
 
-| Variable | Description | Default Value |
-| --- | --- | --- |
-| `$selector-base` | Base selector for utility classes. | `"."` |
-| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
-| `$selector-separator` | The selector separator for all utility classes. | `""` |
-| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
-| `$generate-base-utilities` | Generates the base utility classes. | `true` |
-| `$screen-aware` | Enables screen-aware utility variants. | `false` |
-| `$theme-aware` | Enables theme-aware utility variants. | `false` |
-| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
-| `$state-aware` | Enables state-aware utility variants. | `false` |
-| `$container-aware` | Enables container-aware utility variants. | `false` |
-| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
-| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
-| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
-| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
-| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
-| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
-| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
-| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
-| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
-| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
-| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
-| `$utility-properties` | Map of utility properties. | `()` |
-| `$utility-values` | Map of utility values. | `()` |
-| `$utility-map` | Map of utility property/value pairs. | `()` |
+| Variable                              | Description                                                 | Default Value |
+| ------------------------------------- | ----------------------------------------------------------- | ------------- |
+| `$selector-base`                      | Base selector for utility classes.                          | `"."`         |
+| `$selector-prefix`                    | The selector prefix for all utility classes.                | `""`          |
+| `$selector-suffix`                    | The selector suffix for all utility classes.                | `""`          |
+| `$selector-separator`                 | The selector separator for all utility classes.             | `"-"`         |
+| `$use-important`                      | Appends `!important` to generated utility declarations.     | `true`        |
+| `$generate-base-utilities`            | Generates the base utility classes.                         | `true`        |
+| `$screen-aware`                       | Enables screen-aware utility variants.                      | `false`       |
+| `$theme-aware`                        | Enables theme-aware utility variants.                       | `false`       |
+| `$scheme-aware`                       | Enables scheme-aware utility variants.                      | `false`       |
+| `$state-aware`                        | Enables state-aware utility variants.                       | `false`       |
+| `$container-aware`                    | Enables container-aware utility variants.                   | `false`       |
+| `$screen-aware-selector-prefix`       | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-suffix`       | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-separator`    | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+| `$theme-aware-selector-prefix`        | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+| `$theme-aware-selector-suffix`        | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+| `$theme-aware-selector-separator`     | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+| `$scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+| `$scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+| `$scheme-aware-selector-separator`    | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+| `$state-aware-selector-prefix`        | Prefix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-suffix`        | Suffix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-separator`     | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+| `$container-aware-selector-prefix`    | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+| `$container-aware-selector-suffix`    | Suffix to the container-aware portion of utility selectors. | `""`          |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+| `$utility-properties`                 | Map of utility properties.                                  | `()`          |
+| `$utility-values`                     | Map of utility values.                                      | `()`          |
+| `$utility-map`                        | Map of utility property/value pairs.                        | `()`          |
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for background.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.

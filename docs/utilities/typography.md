@@ -1,18 +1,45 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
+  const sample = "A field guide to dragons";
+  const textStyle = ref("text-paragraph");
+  const textStyleExample = computed(() => `<div class="${textStyle.value}">${sample}</div>`);
   const fontSize = ref("text-xs");
+  const fontSizeExample = computed(() => `<p class="${fontSize.value}">${sample}</p>`);
   const fontStyle = ref("font-style-normal");
+  const fontStyleExample = computed(() => `<p class="${fontStyle.value}">${sample}</p>`);
   const fontWeight = ref("font-weight-light");
+  const fontWeightExample = computed(() => `<p class="${fontWeight.value}">${sample}</p>`);
   const textTransform = ref("text-uppercase");
-
+  const textTransformExample = computed(() => `<p class="${textTransform.value}">${sample}</p>`);
 </script>
 
 # Typography Utilities
 
-The typography utilities provide a set of classes to adjust the `font-size`, `font-weight`, `font-style`, `text-transform` properties of elements.
+The typography utilities provide classes for applying text styles and changing font size, style, weight, and capitalization. See [Theme Typography](../theme/typography.md) for the default styles applied to elements.
 
 ## Text Styles
+
+Use these classes to apply paragraph, small text, or heading styles to an element.
+
+<live-example :source-code="textStyleExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="typography-textStyle">Text style</label>
+      <select id="typography-textStyle" v-model="textStyle">
+        <option value="text-paragraph">.text-paragraph</option>
+        <option value="text-small">.text-small</option>
+        <option value="text-h1">.text-h1</option>
+        <option value="text-h2">.text-h2</option>
+        <option value="text-h3">.text-h3</option>
+        <option value="text-h4">.text-h4</option>
+        <option value="text-h5">.text-h5</option>
+        <option value="text-h6">.text-h6</option>
+      </select>
+    </div>
+  </template>
+</live-example>
 
 ### Paragraph
 
@@ -168,172 +195,136 @@ Applies the default h6 styling to an element.
 
 ## Font Size
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.text-xs` | font-size | `var(--graupl-font-xs)` |
-| `.text-sm` | font-size | `var(--graupl-font-sm)` |
-| `.text-base` | font-size | `var(--graupl-font-base)` |
-| `.text-xl` | font-size | `var(--graupl-font-xl)` |
-| `.text-2xl` | font-size | `var(--graupl-font-2xl)` |
-| `.text-3xl` | font-size | `var(--graupl-font-3xl)` |
-| `.text-4xl` | font-size | `var(--graupl-font-4xl)` |
-| `.text-5xl` | font-size | `var(--graupl-font-5xl)` |
+| Class Name   | Property  | Value                          |
+| ------------ | --------- | ------------------------------ |
+| `.text-xs`   | font-size | `var(--graupl-font-size-xs)`   |
+| `.text-sm`   | font-size | `var(--graupl-font-size-sm)`   |
+| `.text-base` | font-size | `var(--graupl-font-size-base)` |
+| `.text-lg`   | font-size | `var(--graupl-font-size-lg)`   |
+| `.text-xl`   | font-size | `var(--graupl-font-size-xl)`   |
+| `.text-2xl`  | font-size | `var(--graupl-font-size-2xl)`  |
+| `.text-3xl`  | font-size | `var(--graupl-font-size-3xl)`  |
+| `.text-4xl`  | font-size | `var(--graupl-font-size-4xl)`  |
+| `.text-5xl`  | font-size | `var(--graupl-font-size-5xl)`  |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5`">
-        <div :class="`p-3 ${fontSize}`">The Test Item</div>
-      </div>
+<live-example :source-code="fontSizeExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="typography-fontSize">Font size</label>
+      <select id="typography-fontSize" v-model="fontSize">
+        <option value="text-xs">.text-xs</option>
+        <option value="text-sm">.text-sm</option>
+        <option value="text-base">.text-base</option>
+        <option value="text-lg">.text-lg</option>
+        <option value="text-xl">.text-xl</option>
+        <option value="text-2xl">.text-2xl</option>
+        <option value="text-3xl">.text-3xl</option>
+        <option value="text-4xl">.text-4xl</option>
+        <option value="text-5xl">.text-5xl</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ fontSize }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-font-size">Font Size property</label>
-    <select id="select-font-size" v-model="fontSize">
-      <option value="text-xs">xs</option>
-      <option value="text-sm">sm</option>
-      <option value="text-base">base</option>
-      <option value="text-xl">xl</option>
-      <option value="text-2xl">2xl</option>
-      <option value="text-3xl">3xl</option>
-      <option value="text-4xl">4xl</option>
-      <option value="text-5xl">5xl</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Font Style
 
-| Class Name | Property | Value |
-| --- | --- | --- |
+| Class Name           | Property   | Value    |
+| -------------------- | ---------- | -------- |
 | `.font-style-normal` | font-style | `normal` |
 | `.font-style-italic` | font-style | `italic` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5`">
-        <div :class="`p-3 ${fontStyle}`">The Test Item</div>
-      </div>
+<live-example :source-code="fontStyleExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="typography-fontStyle">Font style</label>
+      <select id="typography-fontStyle" v-model="fontStyle">
+        <option value="font-style-normal">.font-style-normal</option>
+        <option value="font-style-italic">.font-style-italic</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ fontStyle }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-font-style">Font Style property</label>
-    <select id="select-font-style" v-model="fontStyle">
-      <option value="font-style-normal">Normal</option>
-      <option value="font-style-italic">Italic</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Font Weight
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.font-weight-light` | font-weight | `300` |
+| Class Name            | Property    | Value |
+| --------------------- | ----------- | ----- |
+| `.font-weight-light`  | font-weight | `300` |
 | `.font-weight-normal` | font-weight | `400` |
-| `.font-weight-bold` | font-weight | `700` |
+| `.font-weight-bold`   | font-weight | `700` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5`">
-        <div :class="`p-3 ${fontWeight}`">The Test Item</div>
-      </div>
+<live-example :source-code="fontWeightExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="typography-fontWeight">Font weight</label>
+      <select id="typography-fontWeight" v-model="fontWeight">
+        <option value="font-weight-light">.font-weight-light</option>
+        <option value="font-weight-normal">.font-weight-normal</option>
+        <option value="font-weight-bold">.font-weight-bold</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ fontWeight }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-font-weight">Font Weight property</label>
-    <select id="select-font-weight" v-model="fontWeight">
-      <option value="font-weight-light">Light</option>
-      <option value="font-weight-normal">Normal</option>
-      <option value="font-weight-bold">Bold</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
 ## Text Transform
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.text-uppercase` | text-transform | `uppercase` |
-| `.text-lowercase` | text-transform | `lowercase` |
+| Class Name         | Property       | Value        |
+| ------------------ | -------------- | ------------ |
+| `.text-uppercase`  | text-transform | `uppercase`  |
+| `.text-lowercase`  | text-transform | `lowercase`  |
 | `.text-capitalize` | text-transform | `capitalize` |
-| `.text-none` | text-transform | `none` |
+| `.text-none`       | text-transform | `none`       |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5`">
-        <div :class="`p-3 ${textTransform}`">The Test Item</div>
-      </div>
+<live-example :source-code="textTransformExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="typography-textTransform">Text transform</label>
+      <select id="typography-textTransform" v-model="textTransform">
+        <option value="text-uppercase">.text-uppercase</option>
+        <option value="text-lowercase">.text-lowercase</option>
+        <option value="text-capitalize">.text-capitalize</option>
+        <option value="text-none">.text-none</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ textTransform }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-text-transform">Text Transform property</label>
-    <select id="select-text-transform" v-model="textTransform">
-      <option value="text-uppercase">Uppercase</option>
-      <option value="text-lowercase">Lowercase</option>
-      <option value="text-captalize">Capitalize</option>
-      <option value="text-none">None</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
+## Sass variables
 
-To customize the typography utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the typography utilities.
 
-| Variable | Description | Default Value |
-| --- | --- | --- |
-| `$selector-base` | Base selector for utility classes. | `"."` |
-| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
-| `$selector-separator` | The selector separator for all utility classes. | `""` |
-| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
-| `$generate-base-utilities` | Generates the base utility classes. | `true` |
-| `$screen-aware` | Enables screen-aware utility variants. | `false` |
-| `$theme-aware` | Enables theme-aware utility variants. | `false` |
-| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
-| `$state-aware` | Enables state-aware utility variants. | `false` |
-| `$container-aware` | Enables container-aware utility variants. | `false` |
-| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
-| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
-| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
-| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
-| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
-| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
-| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
-| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
-| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
-| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
-| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
-| `$utility-properties` | Map of utility properties. | `()` |
-| `$utility-values` | Map of utility values. | `()` |
-| `$utility-map` | Map of utility property/value pairs. | `()` |
+| Variable                              | Description                                                 | Default Value |
+| ------------------------------------- | ----------------------------------------------------------- | ------------- |
+| `$selector-base`                      | Base selector for utility classes.                          | `"."`         |
+| `$selector-prefix`                    | The selector prefix for all utility classes.                | `""`          |
+| `$selector-suffix`                    | The selector suffix for all utility classes.                | `""`          |
+| `$selector-separator`                 | The selector separator for all utility classes.             | `"-"`         |
+| `$use-important`                      | Appends `!important` to generated utility declarations.     | `true`        |
+| `$generate-base-utilities`            | Generates the base utility classes.                         | `true`        |
+| `$screen-aware`                       | Enables screen-aware utility variants.                      | `false`       |
+| `$theme-aware`                        | Enables theme-aware utility variants.                       | `false`       |
+| `$scheme-aware`                       | Enables scheme-aware utility variants.                      | `false`       |
+| `$state-aware`                        | Enables state-aware utility variants.                       | `false`       |
+| `$container-aware`                    | Enables container-aware utility variants.                   | `false`       |
+| `$screen-aware-selector-prefix`       | Prefix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-suffix`       | Suffix to the screen-aware portion of utility selectors.    | `""`          |
+| `$screen-aware-selector-separator`    | Separator inserted for screen-aware utility selectors.      | `"\\:"`       |
+| `$theme-aware-selector-prefix`        | Prefix to the theme-aware portion of utility selectors.     | `""`          |
+| `$theme-aware-selector-suffix`        | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`    |
+| `$theme-aware-selector-separator`     | Separator inserted for theme-aware utility selectors.       | `"\\:"`       |
+| `$scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of utility selectors.    | `""`          |
+| `$scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`     |
+| `$scheme-aware-selector-separator`    | Separator inserted for scheme-aware utility selectors.      | `"\\:"`       |
+| `$state-aware-selector-prefix`        | Prefix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-suffix`        | Suffix to the state-aware portion of utility selectors.     | `""`          |
+| `$state-aware-selector-separator`     | Separator inserted for state-aware utility selectors.       | `"\\:"`       |
+| `$container-aware-selector-prefix`    | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`     |
+| `$container-aware-selector-suffix`    | Suffix to the container-aware portion of utility selectors. | `""`          |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors.   | `"\\:"`       |
+| `$utility-properties`                 | Map of utility properties.                                  | `()`          |
+| `$utility-values`                     | Map of utility values.                                      | `()`          |
+| `$utility-map`                        | Map of utility property/value pairs.                        | `()`          |
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for typography.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.

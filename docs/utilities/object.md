@@ -1,136 +1,113 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import { withBase } from "vitepress";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
-  const fit = ref("object-fit-fill");
-  const position = ref("object-position-top");
+  const fit = ref("object-fit-contain");
+  const position = ref("object-position-center");
+  const image = withBase("/card-trail-map.svg");
+
+  const fitExample = computed(() => `<img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 ${fit.value}" src="${image}" alt="Illustrated trail map">`);
+  const positionExample = computed(() => `<div class="display-flex flex-wrap g-2">
+  <img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image}" alt="Illustrated trail map in a square frame">
+  <img class="display-block w-10 h-8 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image}" alt="Illustrated trail map in a wide frame">
+</div>`);
 </script>
 
 # Object Utilities
 
-The object utilities provide a set of classes to adjust the `object-fit`, and `object-position` properties of elements.
+The object utilities provide classes for controlling how an image fits inside its box and which part stays in view when it’s cropped.
 
 ## Object Fit
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.object-fit-fill` | object-fit | `fill` |
-| `.object-fit-contain` | object-fit | `contain` |
-| `.object-fit-cover` | object-fit | `cover` |
-| `.object-fit-none` | object-fit | `none` |
-| `.object-fit-scale-down` | object-fit | `scale-down` |
+Use an object fit class on an image with a set width and height to control whether it scales, stretches, or crops to fit.
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display  h-auto">
-      <div class="display-flex g-5">
-        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
-          <img src="https://picsum.photos/175/550?random=6"
-            alt="Card image" :class="`${fit} w-full h-full `" />
-        </div>
-        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
-          <img src="https://picsum.photos/175/550?random=6"
-            alt="Card image" :class="` w-full h-full `" />
-        </div>
-      </div>
+<live-example :source-code="fitExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="object-example-fit">Object Fit</label>
+      <select id="object-example-fit" v-model="fit">
+        <option value="object-fit-fill">.object-fit-fill</option>
+        <option value="object-fit-contain">.object-fit-contain</option>
+        <option value="object-fit-cover">.object-fit-cover</option>
+        <option value="object-fit-none">.object-fit-none</option>
+        <option value="object-fit-scale-down">.object-fit-scale-down</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;img class="{{ fit }}"&gt;&lt;/img&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-fit">Object Fit property</label>
-    <select id="select-fit" v-model="fit">
-      <option value="object-fit-fill">Fill</option>
-      <option value="object-fit-contain">Contain</option>
-      <option value="object-fit-cover">Cover</option>
-      <option value="object-fit-none">None</option>
-      <option value="object-fit-scale-down">Scale-down</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
+| Class Name               | Property   | Value        |
+| ------------------------ | ---------- | ------------ |
+| `.object-fit-fill`       | object-fit | `fill`       |
+| `.object-fit-contain`    | object-fit | `contain`    |
+| `.object-fit-cover`      | object-fit | `cover`      |
+| `.object-fit-none`       | object-fit | `none`       |
+| `.object-fit-scale-down` | object-fit | `scale-down` |
 
 ## Object Position
 
-| Class Name | Property | Value |
-| --- | --- | --- |
-| `.object-position-top` | object-position | `top` |
-| `.object-position-right` | object-position | `right` |
+Use an object position class to move the crop. The square frame crops the sides, and the wide frame crops the top and bottom.
+
+<live-example :source-code="positionExample" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="object-example-position">Object Position</label>
+      <select id="object-example-position" v-model="position">
+        <option value="object-position-top">.object-position-top</option>
+        <option value="object-position-right">.object-position-right</option>
+        <option value="object-position-bottom">.object-position-bottom</option>
+        <option value="object-position-left">.object-position-left</option>
+        <option value="object-position-center">.object-position-center</option>
+      </select>
+    </div>
+  </template>
+</live-example>
+
+| Class Name                | Property        | Value    |
+| ------------------------- | --------------- | -------- |
+| `.object-position-top`    | object-position | `top`    |
+| `.object-position-right`  | object-position | `right`  |
 | `.object-position-bottom` | object-position | `bottom` |
-| `.object-position-left` | object-position | `left` |
+| `.object-position-left`   | object-position | `left`   |
 | `.object-position-center` | object-position | `center` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display  h-auto">
-      <div class="display-flex g-5">
-        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
-          <img src="https://picsum.photos/175/550?random=6"
-            alt="Card image" :class="`${position} object-fit-none w-full h-full `" />
-        </div>
-        <div class=" bordered border-primary-700" style="height:300px; width:225px;">
-          <img src="https://picsum.photos/175/550?random=6"
-            alt="Card image" :class="` object-fit-none w-full h-full `" />
-        </div>
-      </div>
-    </div>
-    <div class="example-classes">
-      <code>&lt;img class="{{ position }}"&gt;&lt;/img&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-position">Object Position property</label>
-    <select id="select-position" v-model="position">
-      <option value="object-position-top">Top</option>
-      <option value="object-position-right">Right</option>
-      <option value="object-position-bottom">Bottom</option>
-      <option value="object-position-left">Left</option>
-      <option value="object-position-center">Center</option>
-    </select>
-  </div>
-</div>
+## Sass variables
 
-## Customization
+The following Sass variables can be used to customize the generation of the object utilities.
 
-To customize the object utilities, you can use the following variables.
-
-| Variable | Description | Default Value |
-| --- | --- | --- |
-| `$selector-base` | "." | `The base selector for the utility` | `$selector-base` | Base selector for utility classes. | `"."` |
-| `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
-| `$selector-separator` | The selector separator for all utility classes. | `""` |
-| `$use-important` | Appends `!important` to generated utility declarations. | `true` |
-| `$generate-base-utilities` | Generates the base utility classes. | `true` |
-| `$screen-aware` | Enables screen-aware utility variants. | `false` |
-| `$theme-aware` | Enables theme-aware utility variants. | `false` |
-| `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
-| `$state-aware` | Enables state-aware utility variants. | `false` |
-| `$container-aware` | Enables container-aware utility variants. | `false` |
-| `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
-| `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
-| `$theme-aware-selector-prefix` | Prefix to the theme-aware portion of utility selectors. | `""` |
-| `$theme-aware-selector-suffix` | Suffix to the theme-aware portion of utility selectors. | `"-theme"` |
-| `$theme-aware-selector-separator` | Separator inserted for theme-aware utility selectors. | `"\\:"` |
-| `$scheme-aware-selector-prefix` | Prefix to the scheme-aware portion of utility selectors. | `""` |
-| `$scheme-aware-selector-suffix` | Suffix to the scheme-aware portion of utility selectors. | `"-mode"` |
-| `$scheme-aware-selector-separator` | Separator inserted for scheme-aware utility selectors. | `"\\:"` |
-| `$state-aware-selector-prefix` | Prefix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-suffix` | Suffix to the state-aware portion of utility selectors. | `""` |
-| `$state-aware-selector-separator` | Separator inserted for state-aware utility selectors. | `"\\:"` |
-| `$container-aware-selector-prefix` | Prefix to the container-aware portion of utility selectors. | `"cq\\:"` |
-| `$container-aware-selector-suffix` | Suffix to the container-aware portion of utility selectors. | `""` |
-| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors. | `"\\:"` |
-| `$utility-properties` | Map of utility properties. | `()` |
-| `$utility-values` | Map of utility values. | `()` |
-| `$utility-map` | Map of utility property/value pairs. | `()` |
+| Variable                              | Description                                                 | Default Value                       |
+| ------------------------------------- | ----------------------------------------------------------- | ----------------------------------- |
+| `$selector-base`                      | "."                                                         | `The base selector for the utility` |
+| `$selector-prefix`                    | The selector prefix for all utility classes.                | `""`                                |
+| `$selector-suffix`                    | The selector suffix for all utility classes.                | `""`                                |
+| `$selector-separator`                 | The selector separator for all utility classes.             | `"-"`                               |
+| `$use-important`                      | Appends `!important` to generated utility declarations.     | `true`                              |
+| `$generate-base-utilities`            | Generates the base utility classes.                         | `true`                              |
+| `$screen-aware`                       | Enables screen-aware utility variants.                      | `false`                             |
+| `$theme-aware`                        | Enables theme-aware utility variants.                       | `false`                             |
+| `$scheme-aware`                       | Enables scheme-aware utility variants.                      | `false`                             |
+| `$state-aware`                        | Enables state-aware utility variants.                       | `false`                             |
+| `$container-aware`                    | Enables container-aware utility variants.                   | `false`                             |
+| `$screen-aware-selector-prefix`       | Prefix to the screen-aware portion of utility selectors.    | `""`                                |
+| `$screen-aware-selector-suffix`       | Suffix to the screen-aware portion of utility selectors.    | `""`                                |
+| `$screen-aware-selector-separator`    | Separator inserted for screen-aware utility selectors.      | `"\\:"`                             |
+| `$theme-aware-selector-prefix`        | Prefix to the theme-aware portion of utility selectors.     | `""`                                |
+| `$theme-aware-selector-suffix`        | Suffix to the theme-aware portion of utility selectors.     | `"-theme"`                          |
+| `$theme-aware-selector-separator`     | Separator inserted for theme-aware utility selectors.       | `"\\:"`                             |
+| `$scheme-aware-selector-prefix`       | Prefix to the scheme-aware portion of utility selectors.    | `""`                                |
+| `$scheme-aware-selector-suffix`       | Suffix to the scheme-aware portion of utility selectors.    | `"-mode"`                           |
+| `$scheme-aware-selector-separator`    | Separator inserted for scheme-aware utility selectors.      | `"\\:"`                             |
+| `$state-aware-selector-prefix`        | Prefix to the state-aware portion of utility selectors.     | `""`                                |
+| `$state-aware-selector-suffix`        | Suffix to the state-aware portion of utility selectors.     | `""`                                |
+| `$state-aware-selector-separator`     | Separator inserted for state-aware utility selectors.       | `"\\:"`                             |
+| `$container-aware-selector-prefix`    | Prefix to the container-aware portion of utility selectors. | `"cq\\:"`                           |
+| `$container-aware-selector-suffix`    | Suffix to the container-aware portion of utility selectors. | `""`                                |
+| `$container-aware-selector-separator` | Separator inserted for container-aware utility selectors.   | `"\\:"`                             |
+| `$utility-properties`                 | Map of utility properties.                                  | `()`                                |
+| `$utility-values`                     | Map of utility values.                                      | `()`                                |
+| `$utility-map`                        | Map of utility property/value pairs.                        | `()`                                |
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for object.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.

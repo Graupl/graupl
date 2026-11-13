@@ -37,8 +37,8 @@ $theme-aware-selector-suffix: root-defaults.$utility-theme-aware-selector-suffix
 $scheme-aware-selector-suffix: root-defaults.$utility-scheme-aware-selector-suffix !default;
 $state-aware-selector-suffix: root-defaults.$utility-state-aware-selector-suffix !default;
 $container-aware-selector-suffix: root-defaults.$utility-container-aware-selector-suffix !default;
-$ratio-selector: "ratio";
-$force-ratio-selector: "force-ratio";
+$ratio-selector: "ratio" !default;
+$force-ratio-selector: "force-ratio" !default;
 
 // Properties.
 $-utility-properties: (

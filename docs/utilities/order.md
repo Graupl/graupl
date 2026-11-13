@@ -1,14 +1,22 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
   const order = ref("order-none");
+  const block = "bordered border-primary-700 bg-primary-300 text-primary-900 p-3";
+  const exampleOrder = computed(() => `<div class="display-grid grid-cols-4 gap-2">
+  <div class="bordered border-tertiary-700 bg-tertiary-300 text-tertiary-900 p-3 ${order.value}">1</div>
+${Array.from({ length: 11 }, (_, index) => `  <div class="${block} order-${index + 1}">${index + 2}</div>`).join("\n")}
+</div>`);
 </script>
 
 # Order Utilities
 
-The order utilities provide a set of classes to adjust the `order` properties of elements.
+The order utilities provide a set of classes to change the visual order of flex and grid items. The DOM order and keyboard focus order stay the same.
 
 ## Order
+
+Items with lower order values appear first. Items with the same value appear in DOM order. Change the class on the pink block to move it among the numbered blocks.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -28,67 +36,48 @@ The order utilities provide a set of classes to adjust the `order` properties of
 | `.order-11` | order | `11` |
 | `.order-12` | order | `12` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-grid g-5 h-auto" style="grid-template-columns: repeat(4, max-content); grid-template-rows: auto;">
-        <div :class="` bordered border-tertiary-700 text-primary-100 bg-tertiary-300 p-3 ${order} order-none `">Box 1 ({{ order }})</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-1">Box 2 (order 1)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-2">Box 3 (order 2)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-3">Box 4 (order 3)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-4">Box 5 (order 4)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-5">Box 6 (order 5)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-6">Box 7 (order 6)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-7">Box 8 (order 7)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-8">Box 9 (order 8)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-9">Box 10 (order 9)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-10">Box 11 (order 10)</div>
-        <div class="bordered border-primary-700 text-primary-100 bg-primary-300 p-3 order-11">Box 12 (order 11)</div>
-      </div>
+<live-example :source-code="exampleOrder" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-order">Order class for block 1</label>
+      <select id="select-order" v-model="order">
+        <option value="order-none">.order-none</option>
+        <option value="order-first">.order-first</option>
+        <option value="order-last">.order-last</option>
+        <option value="order-1">.order-1</option>
+        <option value="order-2">.order-2</option>
+        <option value="order-3">.order-3</option>
+        <option value="order-4">.order-4</option>
+        <option value="order-5">.order-5</option>
+        <option value="order-6">.order-6</option>
+        <option value="order-7">.order-7</option>
+        <option value="order-8">.order-8</option>
+        <option value="order-9">.order-9</option>
+        <option value="order-10">.order-10</option>
+        <option value="order-11">.order-11</option>
+        <option value="order-12">.order-12</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ order }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-order">Order property</label>
-    <select id="select-order" v-model="order">
-      <option value="order-none">None</option>
-      <option value="order-first">First</option>
-      <option value="order-last">Last</option>
-      <option value="order-1">1</option>
-      <option value="order-2">2</option>
-      <option value="order-3">3</option>
-      <option value="order-4">4</option>
-      <option value="order-5">5</option>
-      <option value="order-6">6</option>
-      <option value="order-7">7</option>
-      <option value="order-8">8</option>
-      <option value="order-9">9</option>
-      <option value="order-10">10</option>
-      <option value="order-11">11</option>
-      <option value="order-12">12</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
+## Sass variables
 
-To customize the alignment utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the order utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
-| `$screen-aware` | Enables screen-aware utility variants. | `false` |
+| `$screen-aware` | Enables screen-aware utility variants. | `true` |
 | `$theme-aware` | Enables theme-aware utility variants. | `false` |
 | `$scheme-aware` | Enables scheme-aware utility variants. | `false` |
 | `$state-aware` | Enables state-aware utility variants. | `false` |
-| `$container-aware` | Enables container-aware utility variants. | `false` |
+| `$container-aware` | Enables container-aware utility variants. | `true` |
 | `$screen-aware-selector-prefix` | Prefix to the screen-aware portion of utility selectors. | `""` |
 | `$screen-aware-selector-suffix` | Suffix to the screen-aware portion of utility selectors. | `""` |
 | `$screen-aware-selector-separator` | Separator inserted for screen-aware utility selectors. | `"\\:"` |
@@ -111,10 +100,4 @@ To customize the alignment utilities, you can use the following variables.
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, screen-aware responsive utility classes are generated for order.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+Screen-aware classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.

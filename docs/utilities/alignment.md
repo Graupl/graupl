@@ -6,92 +6,34 @@
   const items = ref("align-items-start");
   const self = ref("align-self-auto");
 
-  const exampleAlignContent = computed(() => {
-    const containerClasses = [
-      "display-grid",
-      "h-10",
-      content.value,
-    ].filter(c => c !== null).join(" ");
+  const itemClasses = "bordered min-h-7 w-7 border-primary-700 bg-primary-300";
 
-    const itemClasses = [
-      "bordered",
-      "min-h-7",
-      "w-7",
-      "border-primary-700",
-      "bg-primary-300",
-    ].filter(c => c !== null).join(" ");
-
-    return `
-<div class="${containerClasses}">
+  const exampleAlignContent = computed(() => `<div class="display-grid h-10 bordered border-dashed border-tertiary-700 ${content.value}">
   <div class="${itemClasses}"></div>
   <div class="${itemClasses}"></div>
   <div class="${itemClasses}"></div>
-</div>
-    `;
-  });
+</div>`);
 
-  const exampleAlignItems = computed(() => {
-    const containerClasses = [
-      "display-flex",
-      "h-10",
-      items.value,
-    ].filter(c => c !== null).join(" ");
-
-    const itemClasses = [
-      "bordered",
-      "min-h-7",
-      "w-7",
-      "border-primary-700",
-      "bg-primary-300",
-    ].filter(c => c !== null).join(" ");
-
-    return `
-<div class="${containerClasses}">
+  const exampleAlignItems = computed(() => `<div class="display-flex h-10 bordered border-dashed border-tertiary-700 ${items.value}">
   <div class="${itemClasses}"></div>
   <div class="${itemClasses}"></div>
   <div class="${itemClasses}"></div>
-</div>
-    `;
-  });
+</div>`);
 
-  const exampleAlignSelf = computed(() => {
-    const containerClasses = [
-      "display-flex",
-      "h-10",
-    ].filter(c => c !== null).join(" ");
-
-    const itemClasses = [
-      "bordered",
-      "min-h-7",
-      "w-7",
-      "border-primary-700",
-      "bg-primary-300",
-    ].filter(c => c !== null).join(" ");
-
-    const highlightedItemClasses = [
-      "bordered",
-      "min-h-7",
-      "w-7",
-      "border-tertiary-700",
-      "bg-tertiary-300",
-      self.value,
-    ].filter(c => c !== null).join(" ");
-
-    return `
-<div class="${containerClasses}">
+  const exampleAlignSelf = computed(() => `<div class="display-flex align-items-start h-10 bordered border-dashed border-tertiary-700">
   <div class="${itemClasses}"></div>
-  <div class="${highlightedItemClasses}"></div>
+  <div class="bordered min-h-7 w-7 border-tertiary-700 bg-tertiary-300 ${self.value}"></div>
   <div class="${itemClasses}"></div>
-</div>
-    `;
-  });
+</div>`);
 </script>
 
 # Alignment Utilities
 
-The alignment utilities provide a set of classes to adjust the `align-content`, `align-items`, and `align-self` properties of elements.
+The alignment utilities provide a set of classes to align rows, groups of items, or individual items in flex and grid layouts.
 
 ## Align Content
+
+Use `align-content-*` on a container to distribute space between its rows. The grid below has three rows and extra height so you can see how the rows move. In a flex layout, the container needs to allow wrapping for these classes to take effect.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -105,27 +47,28 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-content-baseline` | align-content | `baseline` |
 | `.align-content-stretch` | align-content | `stretch` |
 
-<live-example :source-code="exampleAlignContent" :key="content">
+<live-example :source-code="exampleAlignContent" options-position="top">
   <template #options>
     <div class="input-group">
-      <label for="select-align-content">Align content property</label>
+      <label for="select-align-content">Align content class</label>
       <select id="select-align-content" v-model="content">
-        <option value="align-content-normal">Normal</option>
-        <option value="align-content-start">Start</option>
-        <option value="align-content-end">End</option>
-        <option value="align-content-center">Center</option>
-        <option value="align-content-between">Between</option>
-        <option value="align-content-around">Around</option>
-        <option value="align-content-evenly">Evenly</option>
-        <option value="align-content-baseline">Baseline</option>
-        <option value="align-content-stretch">Stretch</option>
+        <option value="align-content-normal">.align-content-normal</option>
+        <option value="align-content-start">.align-content-start</option>
+        <option value="align-content-end">.align-content-end</option>
+        <option value="align-content-center">.align-content-center</option>
+        <option value="align-content-between">.align-content-between</option>
+        <option value="align-content-around">.align-content-around</option>
+        <option value="align-content-evenly">.align-content-evenly</option>
+        <option value="align-content-baseline">.align-content-baseline</option>
+        <option value="align-content-stretch">.align-content-stretch</option>
       </select>
-      <p class="help-text">Select the alignment you would like displayed.</p>
     </div>
   </template>
 </live-example>
 
 ## Align Items
+
+Use `align-items-*` on a container to align all its items. In the flex row below, these classes move the squares vertically or stretch them to fill the row’s height.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -135,23 +78,24 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-items-baseline` | align-items | `baseline` |
 | `.align-items-stretch` | align-items | `stretch` |
 
-<live-example :source-code="exampleAlignItems" :key="items">
+<live-example :source-code="exampleAlignItems" options-position="top">
   <template #options>
     <div class="input-group">
-      <label for="select-align-items">Align items property</label>
+      <label for="select-align-items">Align items class</label>
       <select id="select-align-items" v-model="items">
-        <option value="align-items-start">Start</option>
-        <option value="align-items-end">End</option>
-        <option value="align-items-center">Center</option>
-        <option value="align-items-baseline">Baseline</option>
-        <option value="align-items-stretch">Stretch</option>
+        <option value="align-items-start">.align-items-start</option>
+        <option value="align-items-end">.align-items-end</option>
+        <option value="align-items-center">.align-items-center</option>
+        <option value="align-items-baseline">.align-items-baseline</option>
+        <option value="align-items-stretch">.align-items-stretch</option>
       </select>
-      <p class="help-text">Select the alignment you would like displayed.</p>
     </div>
   </template>
 </live-example>
 
 ## Align Self
+
+Use `align-self-*` on an individual item to give it a different alignment from its siblings. Only the pink square changes alignment. Choose `.align-self-auto` to use the container’s alignment.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -162,32 +106,31 @@ The alignment utilities provide a set of classes to adjust the `align-content`, 
 | `.align-self-baseline` | align-self | `baseline` |
 | `.align-self-stretch` | align-self | `stretch` |
 
-<live-example :source-code="exampleAlignSelf" :key="self">
+<live-example :source-code="exampleAlignSelf" options-position="top">
   <template #options>
     <div class="input-group">
-      <label for="select-align-self">Align self property</label>
+      <label for="select-align-self">Align self class</label>
       <select id="select-align-self" v-model="self">
-        <option value="align-self-auto">Auto</option>
-        <option value="align-self-start">Start</option>
-        <option value="align-self-end">End</option>
-        <option value="align-self-center">Center</option>
-        <option value="align-self-baseline">Baseline</option>
-        <option value="align-self-stretch">Stretch</option>
+        <option value="align-self-auto">.align-self-auto</option>
+        <option value="align-self-start">.align-self-start</option>
+        <option value="align-self-end">.align-self-end</option>
+        <option value="align-self-center">.align-self-center</option>
+        <option value="align-self-baseline">.align-self-baseline</option>
+        <option value="align-self-stretch">.align-self-stretch</option>
       </select>
-      <p class="help-text">Select the alignment you would like displayed.</p>
     </div>
   </template>
 </live-example>
 
-## Customization
+## Sass variables
 
-To customize the alignment utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the alignment utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
@@ -217,10 +160,4 @@ To customize the alignment utilities, you can use the following variables.
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for alignment.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.
