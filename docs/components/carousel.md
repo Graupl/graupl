@@ -71,13 +71,13 @@
 
 The carousel component provides a set of classes to show a series of slides one at a time.
 
-See the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/) for the Carousel pattern.
+Carousels implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/carousel/).
 
 ## Base classes
 
 Use `.carousel` on a labelled section and group its slides in `.carousel-item-container`. Give each `.carousel-item` an accessible name with `aria-label`, along with `role="group"` and `aria-roledescription="slide"`.
 
-Put the controls inside `.carousel-control-container`. Add `.autoplay`, `.previous`, or `.next` alongside `.carousel-control` to set each button's action. Give each button an accessible name. Initialization updates the rotation button's name to match its current action.
+Put the buttons in `.carousel-control-container`. Use `.carousel-control` on each button with `.autoplay` to start or stop rotation, `.previous` to go back, or `.next` to advance. Give each button an accessible name. Once initialized, the rotation button’s name changes to reflect whether it starts or stops rotation.
 
 <div ref="carousel-preview">
   <live-example :source-code="exampleCarousel" @mounted="initializePreview(preview)" @updated="initializePreview(preview)" />
@@ -85,9 +85,13 @@ Put the controls inside `.carousel-control-container`. Add `.autoplay`, `.previo
 
 ## Slide indicators
 
-Use `.carousel-tab-container` for the slide indicators and add one `.carousel-tab` button per slide, in the same order as the slides. Give each button an accessible name that identifies its slide.
+Slide indicators show which slide is active and let readers jump directly to another slide.
 
-Initialization pairs the indicators and panels by order and sets their roles and ARIA attributes. Add `tabindex="0"` to a panel that starts with text so readers can Tab into it. Focusing an indicator selects its slide by default. Set `automaticActivation` to `false` in the carousel options to select slides manually with Enter or Space.
+Use `.carousel-tab-container` to group the indicators. Add one `.carousel-tab` button per slide in the same order, and give each button an accessible name that identifies its slide.
+
+Initialization sets the roles and ARIA attributes that link each indicator to its panel. If a panel starts with text, add `tabindex="0"` so readers can reach it by pressing Tab.
+
+Focusing an indicator selects its slide by default. Set `automaticActivation` to `false` in the carousel options to select slides manually with Enter or Space.
 
 <div ref="carousel-indicator-preview">
   <live-example :source-code="exampleWithIndicators" @mounted="initializePreview(indicatorPreview)" @updated="initializePreview(indicatorPreview)" />
@@ -103,7 +107,7 @@ import generateCarousels from "@graupl/core/carousel/generator";
 generateCarousels();
 ```
 
-By default, slides rotate automatically. Set `data-graupl-carousel-options='{"autoplay":false}'` on the carousel to start with rotation stopped, as in the example.
+By default, slides rotate automatically. Set `data-graupl-carousel-options='{"autoplay":false}'` on the carousel to start with rotation stopped. Both previews start with rotation stopped.
 
 ## Variants
 
