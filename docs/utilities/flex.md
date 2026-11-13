@@ -1,18 +1,55 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
-  const flex = ref("flex-auto");
-  const flexDirection = ref("flex-row");
-  const flexGrow = ref("flex-grow");
-  const flexShrink = ref("flex-shrink");
-  const flexWrap = ref("flex-wrap");
+  const basis = ref("flex-auto");
+  const direction = ref("flex-row");
+  const grow = ref("flex-grow");
+  const shrink = ref("flex-shrink");
+  const wrap = ref("flex-wrap");
+  const frame = "display-flex g-2 bordered border-dashed border-tertiary-700 overflow-auto";
+  const block = "w-7 h-7 flex-no-shrink bordered border-primary-700 bg-primary-300";
+  const highlight = "w-7 h-7 bordered border-tertiary-700 bg-tertiary-300";
+
+  const exampleBasis = computed(() => `<div class="${frame}">
+  <div class="${block}"></div>
+  <div class="${highlight} text-tertiary-900 flex-no-shrink ${basis.value}">Trail map</div>
+  <div class="${block}"></div>
+</div>`);
+
+  const exampleDirection = computed(() => `<div class="${frame} ${direction.value}">
+  <div class="${block} text-primary-900">1</div>
+  <div class="${block} text-primary-900">2</div>
+  <div class="${block} text-primary-900">3</div>
+</div>`);
+
+  const exampleGrow = computed(() => `<div class="${frame}">
+  <div class="${block}"></div>
+  <div class="${highlight} ${grow.value}"></div>
+  <div class="${block}"></div>
+</div>`);
+
+  const exampleShrink = computed(() => `<div class="${frame} w-fit-content" style="max-width: 6rem">
+  <div class="${block}"></div>
+  <div class="${highlight} ${shrink.value}"></div>
+  <div class="${block}"></div>
+</div>`);
+
+  const exampleWrap = computed(() => `<div class="${frame} ${wrap.value}" style="max-width: 6rem">
+  <div class="${block} text-primary-900">1</div>
+  <div class="${block} text-primary-900">2</div>
+  <div class="${block} text-primary-900">3</div>
+  <div class="${block} text-primary-900">4</div>
+</div>`);
 </script>
 
 # Flex Utilities
 
-The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-direction`,`flex-grow`, `flex-shrink`, and `flex-wrap` properties of elements.
+The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-direction`, `flex-grow`, `flex-shrink`, and `flex-wrap` properties of elements.
 
 ## Flex Basis
+
+Flex basis sets an item’s starting size along the main axis. With `.flex-auto`, the pink item starts at its `.w-7` width. Choose a different class to size it from its text or from the available width.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -29,37 +66,32 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-third` | flex-basis | `33.3333%` |
 | `.flex-two-thirds` | flex-basis | `66.6667%` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5 h-full`">
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 ${flex}`">Test Item</div>
-        <div class="bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 flex-auto w-auto bg-tertiary-300">Auto Item</div>
-      </div>
+<live-example :source-code="exampleBasis" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-flex-basis">Flex basis class</label>
+      <select id="select-flex-basis" v-model="basis">
+        <option value="flex-auto">.flex-auto</option>
+        <option value="flex-fit-content">.flex-fit-content</option>
+        <option value="flex-max-content">.flex-max-content</option>
+        <option value="flex-min-content">.flex-min-content</option>
+        <option value="flex-content">.flex-content</option>
+        <option value="flex-0">.flex-0</option>
+        <option value="flex-full">.flex-full</option>
+        <option value="flex-quarter">.flex-quarter</option>
+        <option value="flex-half">.flex-half</option>
+        <option value="flex-three-quarters">.flex-three-quarters</option>
+        <option value="flex-third">.flex-third</option>
+        <option value="flex-two-thirds">.flex-two-thirds</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="display-flex"&gt;&lt;div class="{{ flex }}"&gt;&lt;/div&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-flex">Flex property</label>
-    <select id="select-flex" v-model="flex">
-      <option value="flex-auto">Auto</option>
-      <option value="flex-fit-content">Fit Content</option>
-      <option value="flex-max-content">Max Content</option>
-      <option value="flex-min-content">Min Content</option>
-      <option value="flex-stretch">Stretch</option>
-      <option value="flex-full">Full</option>
-      <option value="flex-quarter">Quarter</option>
-      <option value="flex-half">Half</option>
-      <option value="flex-three-quarters">Three Quarters</option>
-      <option value="flex-third">Third</option>
-      <option value="flex-two-thirds">Two Thirds</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Flex Direction
+
+Flex direction determines whether items form a row or column and which end the row or column starts from.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -68,89 +100,68 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-col` | flex-direction | `column` |
 | `.flex-col-reverse` | flex-direction | `column-reverse` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5 ${flexDirection} `">
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-5 `"></div>
-        <div :class="`bordered text-secondary-100 border-secondary-700 py-5 bg-secondary-300 p-5 w-5 `"></div>
-        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-5 `"></div>
-      </div>
+<live-example :source-code="exampleDirection" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-flex-direction">Flex direction class</label>
+      <select id="select-flex-direction" v-model="direction">
+        <option value="flex-row">.flex-row</option>
+        <option value="flex-row-reverse">.flex-row-reverse</option>
+        <option value="flex-col">.flex-col</option>
+        <option value="flex-col-reverse">.flex-col-reverse</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="display-flex {{ flexDirection }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-flex-direction">Flex Direction property</label>
-    <select id="select-flex-direction" v-model="flexDirection">
-      <option value="flex-row">Row</option>
-      <option value="flex-row-reverse">Row Reverse</option>
-      <option value="flex-col">Column</option>
-      <option value="flex-col-reverse">Column Reverse</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Flex Grow
+
+Flex grow determines whether an item takes up extra space. Only the pink item can grow in this row.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.flex-grow` | flex-grow | `1` |
 | `.flex-no-grow` | flex-grow | `0` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5 `">
-        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-quarter ${flexGrow} `"></div>
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-quarter `"></div>
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-quarter `"></div>
-      </div>
+<live-example :source-code="exampleGrow" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-flex-grow">Flex grow class</label>
+      <select id="select-flex-grow" v-model="grow">
+        <option value="flex-grow">.flex-grow</option>
+        <option value="flex-no-grow">.flex-no-grow</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ flexGrow }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-flex-grow">Flex Grow property</label>
-    <select id="select-flex-grow" v-model="flexGrow">
-      <option value="flex-grow">Grow</option>
-      <option value="flex-no-grow">No Grow</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Flex Shrink
+
+Flex shrink determines whether an item gets smaller when the row runs out of space. The blue items keep their widths, so only the pink item shrinks when you select `.flex-shrink`.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.flex-shrink` | flex-shrink | `1` |
 | `.flex-no-shrink` | flex-shrink | `0` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5 `">
-        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-half ${flexShrink} `"></div>
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-half `"></div>
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-half `"></div>
-      </div>
+<live-example :source-code="exampleShrink" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-flex-shrink">Flex shrink class</label>
+      <select id="select-flex-shrink" v-model="shrink">
+        <option value="flex-shrink">.flex-shrink</option>
+        <option value="flex-no-shrink">.flex-no-shrink</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ flexShrink }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-flex-shrink">Flex Shrink property</label>
-    <select id="select-flex-shrink" v-model="flexShrink">
-      <option value="flex-shrink">Shrink</option>
-      <option value="flex-no-shrink">No Shrink</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
+
 
 ## Flex Wrap
+
+Flex wrap determines whether items stay on one line or move to additional lines. Reverse wrapping places new lines on the opposite side of the first line.
 
 | Class Name | Property | Value |
 | --- | --- | --- |
@@ -158,38 +169,29 @@ The flex utilities provide a set of classes to adjust the `flex-basis`, `flex-di
 | `.flex-wrap-reverse` | flex-wrap | `wrap-reverse` |
 | `.flex-nowrap` | flex-wrap | `nowrap` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div :class="`display-flex g-5 ${flexWrap} `">
-        <div :class="`bordered text-tertiary-100 border-tertiary-700 py-5 bg-tertiary-300 p-5 w-third `"></div>
-        <div :class="`bordered text-secondary-100 border-secondary-700 py-5 bg-secondary-300 p-5 w-half `"></div>
-        <div :class="`bordered text-primary-100 border-primary-700 py-5 bg-primary-300 p-5 w-half `"></div>
-      </div>
+<live-example :source-code="exampleWrap" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="select-flex-wrap">Flex wrap class</label>
+      <select id="select-flex-wrap" v-model="wrap">
+        <option value="flex-wrap">.flex-wrap</option>
+        <option value="flex-wrap-reverse">.flex-wrap-reverse</option>
+        <option value="flex-nowrap">.flex-nowrap</option>
+      </select>
     </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ flexWrap }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-flex-wrap">Flex Wrap property</label>
-    <select id="select-flex-wrap" v-model="flexWrap">
-      <option value="flex-wrap">Wrap</option>
-      <option value="flex-wrap-reverse">Wrap Reverse</option>
-      <option value="flex-no-wrap">No Wrap</option>
-    </select>
-  </div>
-</div>
+  </template>
+</live-example>
 
-## Customization
 
-To customize the flex utilities, you can use the following variables.
+## Sass variables
+
+The following Sass variables can be used to customize the generation of the flex utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
@@ -219,10 +221,4 @@ To customize the flex utilities, you can use the following variables.
 
 ## Responsive Variants
 
-Generating responsive utility classes can be done by setting `$screen-aware`, `$theme-aware`, `$scheme-aware`, `$state-aware`, or `$container-aware` to `true`.
-
-By default, no responsive utility classes are generated for flex.
-
-::: tip :pencil2: Note
-For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
-:::
+No responsive classes are generated by default. See the [Responsive Classes guide](../responsive-classes.md) for configuration.
