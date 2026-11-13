@@ -1120,11 +1120,16 @@ class Carousel extends Component {
    * @param {object}          [scrollOptions = {}] - Scroll option overrides.
    */
   _scrollToItem(item, scrollOptions = {}) {
+    const { behavior = "smooth", ...options } = scrollOptions;
+    const reduceMotion =
+      behavior === "smooth" &&
+      window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+
     this.dom.carouselItemContainer.scrollTo({
       left: item.dom.carouselItem.offsetLeft,
       top: item.dom.carouselItem.offsetTop,
-      behavior: "smooth",
-      ...scrollOptions,
+      ...options,
+      behavior: reduceMotion ? "instant" : behavior,
     });
   }
 
