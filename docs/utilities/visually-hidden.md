@@ -1,48 +1,42 @@
-# Visually-hidden Utilities
+<script setup>
+  import LiveExample from "../vue-components/LiveExample.vue";
 
-The visually-hidden utilities provide a set of classes to for screen-reader interactions.
+  const accessibleName = `<button type="button" class="button">
+  <span aria-hidden="true">✕</span>
+  <span class="visually-hidden">Close</span>
+</button>`;
 
-## Visually-hidden
+  const skipLink = `<div class="position-relative">
+  <a class="visually-hidden focusable" href="#guild-supplies">
+    Skip to guild supplies
+  </a>
+  <p><a href="#guild-map">View the guild map</a></p>
+  <h3 id="guild-supplies" tabindex="-1">Guild supplies</h3>
+  <p>Bring parchment, a quill, and a lantern.</p>
+  <h3 id="guild-map">Guild map</h3>
+  <p>The supply room is beside the entrance.</p>
+</div>`;
+</script>
 
-Hides an element visually but leaves it accessible to screen readers.
+# Visually Hidden Utilities
 
-```css
-  .visually-hidden:not(.focusable) {
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    clip-path: inset(50%) !important;
-    border: 0 !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    position: absolute !important;
-    overflow: hidden !important
-  }
-```
+The visually hidden utilities provide classes for hiding content on screen while keeping it available to assistive technology.
+
+## Accessible names
+
+Use `.visually-hidden` for text that names a control without adding visible text. The button shows a close symbol. Its accessible name comes from the hidden text, and `aria-hidden="true"` keeps the symbol out of that name.
+
+<live-example :source-code="accessibleName" />
 
 ## Focusable
 
-When applied to a visually hidden element, it makes the element accessible to keyboard navigation.
+Add `.focusable` alongside `.visually-hidden` to reveal an element when it or one of its descendants receives focus. Use it on a skip link so keyboard users can see where the link will take them. Tab to the link, then press Enter to move focus to the heading.
 
-```css
-  .visually-hidden.focusable:not(:focus, :focus-within) {
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    clip-path: inset(50%) !important;
-    border: 0 !important;
-    width: 1px !important;
-    height: 1px !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    position: absolute !important;
-    overflow: hidden !important
-  }
-```
+<live-example class="vp-raw" :source-code="skipLink" />
 
-## Customization
+## Sass variables
 
-To customize the visually-hidden utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the visually hidden utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
@@ -82,6 +76,6 @@ Generating responsive utility classes can be done by setting `$screen-aware`, `$
 
 By default, no responsive utility classes are generated for visually-hidden.
 
-::: tip :pencil2: Note
+::: info Note
 For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
 :::
