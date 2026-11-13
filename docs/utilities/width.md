@@ -1,23 +1,141 @@
 <script setup>
-  import { ref } from "vue";
+  import { computed, ref } from "vue";
+  import LiveExample from "../vue-components/LiveExample.vue";
 
-  const width = ref("w-auto");
-  const maxWidth = ref("w-auto");
-  const max = ref("max-w-auto");
-  const minWidth = ref("w-auto");
-  const min = ref("min-w-auto");
+  const parentWidth = ref(75);
+  const width = ref("w-full");
+  const minWidth = ref("");
+  const maxWidth = ref("max-w-half");
+  const exampleWidth = computed(() => {
+    const classes = [width.value, minWidth.value, maxWidth.value].filter(Boolean).join(" ");
+
+    return `<div class="bordered border-tertiary-700 border-dashed" style="width: ${parentWidth.value}%">
+  <div class="bordered border-primary-700 bg-primary-300 text-primary-900 p-2 ${classes}">Guild supplies</div>
+</div>`;
+  });
 </script>
 
 # Width Utilities
 
-The width utilities provide a set of classes to adjust the `width`, `max-width`, and `min-width` properties of elements.
+The width utilities provide classes for setting an element’s width with `w-*`. Add a `min-w-*` or `max-w-*` class to limit how narrow or wide it can get. Percentage widths use the parent’s width. For sizing along the direction text runs, see [Inline Size](./inline-size.md).
+
+<live-example :source-code="exampleWidth" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="width-example-parent">Parent width ({{ parentWidth }}%)</label>
+      <input id="width-example-parent" type="range" min="25" max="100" v-model.number="parentWidth">
+    </div>
+    <div class="input-group">
+      <label for="width-example-width">Width</label>
+      <select id="width-example-width" v-model="width">
+        <option value="">None</option>
+        <option value="w-auto">.w-auto</option>
+        <option value="w-fit-content">.w-fit-content</option>
+        <option value="w-max-content">.w-max-content</option>
+        <option value="w-min-content">.w-min-content</option>
+        <option value="w-stretch">.w-stretch</option>
+        <option value="w-full">.w-full</option>
+        <option value="w-quarter">.w-quarter</option>
+        <option value="w-half">.w-half</option>
+        <option value="w-three-quarters">.w-three-quarters</option>
+        <option value="w-third">.w-third</option>
+        <option value="w-two-thirds">.w-two-thirds</option>
+        <option value="w-half-screen">.w-half-screen</option>
+        <option value="w-third-screen">.w-third-screen</option>
+        <option value="w-two-thirds-screen">.w-two-thirds-screen</option>
+        <option value="w-quarter-screen">.w-quarter-screen</option>
+        <option value="w-three-quarters-screen">.w-three-quarters-screen</option>
+        <option value="w-full-screen">.w-full-screen</option>
+        <option value="w-0">.w-0</option>
+        <option value="w-1">.w-1</option>
+        <option value="w-2">.w-2</option>
+        <option value="w-3">.w-3</option>
+        <option value="w-4">.w-4</option>
+        <option value="w-5">.w-5</option>
+        <option value="w-6">.w-6</option>
+        <option value="w-7">.w-7</option>
+        <option value="w-8">.w-8</option>
+        <option value="w-9">.w-9</option>
+        <option value="w-10">.w-10</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="width-example-min-width">Minimum width</label>
+      <select id="width-example-min-width" v-model="minWidth">
+        <option value="">None</option>
+        <option value="min-w-auto">.min-w-auto</option>
+        <option value="min-w-fit-content">.min-w-fit-content</option>
+        <option value="min-w-max-content">.min-w-max-content</option>
+        <option value="min-w-min-content">.min-w-min-content</option>
+        <option value="min-w-stretch">.min-w-stretch</option>
+        <option value="min-w-full">.min-w-full</option>
+        <option value="min-w-quarter">.min-w-quarter</option>
+        <option value="min-w-half">.min-w-half</option>
+        <option value="min-w-three-quarters">.min-w-three-quarters</option>
+        <option value="min-w-third">.min-w-third</option>
+        <option value="min-w-two-thirds">.min-w-two-thirds</option>
+        <option value="min-w-half-screen">.min-w-half-screen</option>
+        <option value="min-w-third-screen">.min-w-third-screen</option>
+        <option value="min-w-two-thirds-screen">.min-w-two-thirds-screen</option>
+        <option value="min-w-quarter-screen">.min-w-quarter-screen</option>
+        <option value="min-w-three-quarters-screen">.min-w-three-quarters-screen</option>
+        <option value="min-w-full-screen">.min-w-full-screen</option>
+        <option value="min-w-0">.min-w-0</option>
+        <option value="min-w-1">.min-w-1</option>
+        <option value="min-w-2">.min-w-2</option>
+        <option value="min-w-3">.min-w-3</option>
+        <option value="min-w-4">.min-w-4</option>
+        <option value="min-w-5">.min-w-5</option>
+        <option value="min-w-6">.min-w-6</option>
+        <option value="min-w-7">.min-w-7</option>
+        <option value="min-w-8">.min-w-8</option>
+        <option value="min-w-9">.min-w-9</option>
+        <option value="min-w-10">.min-w-10</option>
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="width-example-max-width">Maximum width</label>
+      <select id="width-example-max-width" v-model="maxWidth">
+        <option value="">None</option>
+        <option value="max-w-auto">.max-w-auto</option>
+        <option value="max-w-fit-content">.max-w-fit-content</option>
+        <option value="max-w-max-content">.max-w-max-content</option>
+        <option value="max-w-min-content">.max-w-min-content</option>
+        <option value="max-w-stretch">.max-w-stretch</option>
+        <option value="max-w-full">.max-w-full</option>
+        <option value="max-w-quarter">.max-w-quarter</option>
+        <option value="max-w-half">.max-w-half</option>
+        <option value="max-w-three-quarters">.max-w-three-quarters</option>
+        <option value="max-w-third">.max-w-third</option>
+        <option value="max-w-two-thirds">.max-w-two-thirds</option>
+        <option value="max-w-half-screen">.max-w-half-screen</option>
+        <option value="max-w-third-screen">.max-w-third-screen</option>
+        <option value="max-w-two-thirds-screen">.max-w-two-thirds-screen</option>
+        <option value="max-w-quarter-screen">.max-w-quarter-screen</option>
+        <option value="max-w-three-quarters-screen">.max-w-three-quarters-screen</option>
+        <option value="max-w-full-screen">.max-w-full-screen</option>
+        <option value="max-w-0">.max-w-0</option>
+        <option value="max-w-1">.max-w-1</option>
+        <option value="max-w-2">.max-w-2</option>
+        <option value="max-w-3">.max-w-3</option>
+        <option value="max-w-4">.max-w-4</option>
+        <option value="max-w-5">.max-w-5</option>
+        <option value="max-w-6">.max-w-6</option>
+        <option value="max-w-7">.max-w-7</option>
+        <option value="max-w-8">.max-w-8</option>
+        <option value="max-w-9">.max-w-9</option>
+        <option value="max-w-10">.max-w-10</option>
+      </select>
+    </div>
+  </template>
+</live-example>
 
 ## Width
 
 | Class Name | Property | Value |
 | --- | --- | --- |
 | `.w-auto` | width | `auto` |
-| `.w-fit-Width` | width | `fit-content` |
+| `.w-fit-content` | width | `fit-content` |
 | `.w-max-content` | width | `max-content` |
 | `.w-min-content` | width | `min-content` |
 | `.w-stretch` | width | `stretch` |
@@ -25,8 +143,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.w-quarter` | width | `25%` |
 | `.w-half` | width | `50%` |
 | `.w-three-quarters` | width | `75%` |
-| `.w-third` | width | `calc(100%/ 3)` |
-| `.w-two-thirds` | width | `calc(100%/ 1.5)` |
+| `.w-third` | width | `calc(100% / 3)` |
+| `.w-two-thirds` | width | `calc(100% / 1.5)` |
 | `.w-half-screen` | width | `50vw` |
 | `.w-third-screen` | width | `calc(100vw/ 3)` |
 | `.w-two-thirds-screen` | width | `calc(100vw/ 1.5)` |
@@ -45,51 +163,6 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.w-9` | width | `var(--graupl-spacer-9)` |
 | `.w-10` | width | `var(--graupl-spacer-10)` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex is-full bs-fit-content bg-tertiary-200">
-        <div :class="`bordered bg-primary-300 bs-7 is-7 ${width}`"></div>
-      </div>
-    </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ width }}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-width">Width property</label>
-    <select id="select-width" v-model="width">
-      <option value="w-auto">Auto</option>
-      <option value="w-fit-content">Fit Content</option>
-      <option value="w-max-content">Max Content</option>
-      <option value="w-min-content">Min Content</option>
-      <option value="w-stretch">Stretch</option>
-      <option value="w-full">Full</option>
-      <option value="w-quarter">Quarter</option>
-      <option value="w-half">Half</option>
-      <option value="w-three-quarters">Three Quarters</option>
-      <option value="w-third">Third</option>
-      <option value="w-two-thirds">Two Thirds</option>
-      <option value="w-half-screen">Half Screen</option>
-      <option value="w-third-screen">Third Screen</option>
-      <option value="w-two-thirds-screen">Two Thirds Screen</option>
-       <option value="w-quarter-screen">Quarter Screen</option>
-      <option value="w-three-quarters-screen">Three Quarters Screen</option>
-      <option value="w-full-screen">Full Screen</option>
-      <option value="w-0">0</option>
-      <option value="w-1">1</option>
-      <option value="w-2">2</option>
-      <option value="w-3">3</option>
-      <option value="w-4">4</option>
-      <option value="w-5">5</option>
-      <option value="w-6">6</option>
-      <option value="w-7">7</option>
-      <option value="w-8">8</option>
-      <option value="w-9">9</option>
-      <option value="w-10">10</option>
-    </select>
-  </div>
-</div>
 
 ## Max Width
 
@@ -104,8 +177,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.max-w-quarter` | max-width | `25%` |
 | `.max-w-half` | max-width | `50%` |
 | `.max-w-three-quarters` | max-width | `75%` |
-| `.max-w-third` | max-width | `calc(100%/ 3)` |
-| `.max-w-two-thirds` | max-width | `calc(100%/ 1.5)` |
+| `.max-w-third` | max-width | `calc(100% / 3)` |
+| `.max-w-two-thirds` | max-width | `calc(100% / 1.5)` |
 | `.max-w-half-screen` | max-width | `50vw` |
 | `.max-w-third-screen` | max-width | `calc(100vw/ 3)` |
 | `.max-w-two-thirds-screen` | max-width | `calc(100vw/ 1.5)` |
@@ -124,84 +197,6 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.max-w-9` | max-width | `var(--graupl-spacer-9)` |
 | `.max-w-10` | max-width | `var(--graupl-spacer-10)` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-      <div class="display-flex  is-full bs-fit-content bg-tertiary-200">
-        <div :class="`bordered bg-primary-300 bs-7 is-7 ${maxWidth} ${max} `"></div>
-      </div>
-    </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ maxWidth }} {{max}} "&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-max-width">Width property</label>
-    <select id="select-max-width" v-model="maxWidth">
-      <option value="w-auto">Auto</option>
-      <option value="w-fit-content">Fit Content</option>
-      <option value="w-max-content">Max Content</option>
-      <option value="w-min-content">Min Content</option>
-      <option value="w-stretch">Stretch</option>
-      <option value="w-full">Full</option>
-      <option value="w-quarter">Quarter</option>
-      <option value="w-half">Half</option>
-      <option value="w-three-quarters">Three Quarters</option>
-      <option value="w-third">Third</option>
-      <option value="w-two-thirds">Two Thirds</option>
-      <option value="w-half-screen">Half Screen</option>
-      <option value="w-third-screen">Third Screen</option>
-      <option value="w-two-thirds-screen">Two Thirds Screen</option>
-       <option value="w-quarter-screen">Quarter Screen</option>
-      <option value="w-three-quarters-screen">Three Quarters Screen</option>
-      <option value="w-full-screen">Full Screen</option>
-      <option value="w-0">0</option>
-      <option value="w-1">1</option>
-      <option value="w-2">2</option>
-      <option value="w-3">3</option>
-      <option value="w-4">4</option>
-      <option value="w-5">5</option>
-      <option value="w-6">6</option>
-      <option value="w-7">7</option>
-      <option value="w-8">8</option>
-      <option value="w-9">9</option>
-      <option value="w-10">10</option>
-    </select>
-  </div>
-  <div class="input-group">
-    <label for="select-max">Max Width property</label>
-    <select id="select-max" v-model="max">
-      <option value="max-w-auto">Auto</option>
-      <option value="max-w-fit-content">Fit Content</option>
-      <option value="max-w-max-content">Max Content</option>
-      <option value="max-w-min-content">Min Content</option>
-      <option value="max-w-stretch">Stretch</option>
-      <option value="max-w-full">Full</option>
-      <option value="max-w-quarter">Quarter</option>
-      <option value="max-w-half">Half</option>
-      <option value="max-w-three-quarters">Three Quarters</option>
-      <option value="max-w-third">Third</option>
-      <option value="max-w-two-thirds">Two Thirds</option>
-      <option value="max-w-half-screen">Half Screen</option>
-      <option value="max-w-third-screen">Third Screen</option>
-      <option value="max-w-two-thirds-screen">Two Thirds Screen</option>
-       <option value="max-w-quarter-screen">Quarter Screen</option>
-      <option value="max-w-three-quarters-screen">Three Quarters Screen</option>
-      <option value="max-w-full-screen">Full Screen</option>
-      <option value="max-w-0">0</option>
-      <option value="max-w-1">1</option>
-      <option value="max-w-2">2</option>
-      <option value="max-w-3">3</option>
-      <option value="max-w-4">4</option>
-      <option value="max-w-5">5</option>
-      <option value="max-w-6">6</option>
-      <option value="max-w-7">7</option>
-      <option value="max-w-8">8</option>
-      <option value="max-w-9">9</option>
-      <option value="max-w-10">10</option>
-    </select>
-  </div>
-</div>
 
 ## Min Width
 
@@ -216,8 +211,8 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.min-w-quarter` | min-width | `25%` |
 | `.min-w-half` | min-width | `50%` |
 | `.min-w-three-quarters` | min-width | `75%` |
-| `.min-w-third` | min-width | `calc(100%/ 3)` |
-| `.min-w-two-thirds` | min-width | `calc(100%/ 1.5)` |
+| `.min-w-third` | min-width | `calc(100% / 3)` |
+| `.min-w-two-thirds` | min-width | `calc(100% / 1.5)` |
 | `.min-w-half-screen` | min-width | `50vw` |
 | `.min-w-third-screen` | min-width | `calc(100vw/ 3)` |
 | `.min-w-two-thirds-screen` | min-width | `calc(100vw/ 1.5)` |
@@ -236,94 +231,16 @@ The width utilities provide a set of classes to adjust the `width`, `max-width`,
 | `.min-w-9` | min-width | `var(--graupl-spacer-9)` |
 | `.min-w-10` | min-width | `var(--graupl-spacer-10)` |
 
-<div class="static-example">
-  <div class="example-container">
-    <div class="example-display">
-       <div class="display-flex is-full bs-fit-content bg-tertiary-200">
-        <div :class="`bordered bg-primary-300 bs-7 is-7 ${minWidth} ${min} `"></div>
-      </div>
-    </div>
-    <div class="example-classes">
-      <code>&lt;div class="{{ minWidth }} {{min}}"&gt;&lt;/div&gt;</code>
-    </div>
-  </div>
-  <div class="input-group">
-    <label for="select-min-width">Width property</label>
-    <select id="select-min-width" v-model="minWidth">
-      <option value="w-auto">Auto</option>
-      <option value="w-fit-content">Fit Content</option>
-      <option value="w-min-content">Min Content</option>
-      <option value="w-min-content">Min Content</option>
-      <option value="w-stretch">Stretch</option>
-      <option value="w-full">Full</option>
-      <option value="w-quarter">Quarter</option>
-      <option value="w-half">Half</option>
-      <option value="w-three-quarters">Three Quarters</option>
-      <option value="w-third">Third</option>
-      <option value="w-two-thirds">Two Thirds</option>
-      <option value="w-half-screen">Half Screen</option>
-      <option value="w-third-screen">Third Screen</option>
-      <option value="w-two-thirds-screen">Two Thirds Screen</option>
-       <option value="w-quarter-screen">Quarter Screen</option>
-      <option value="w-three-quarters-screen">Three Quarters Screen</option>
-      <option value="w-full-screen">Full Screen</option>
-      <option value="w-0">0</option>
-      <option value="w-1">1</option>
-      <option value="w-2">2</option>
-      <option value="w-3">3</option>
-      <option value="w-4">4</option>
-      <option value="w-5">5</option>
-      <option value="w-6">6</option>
-      <option value="w-7">7</option>
-      <option value="w-8">8</option>
-      <option value="w-9">9</option>
-      <option value="w-10">10</option>
-    </select>
-  </div>
-  <div class="input-group">
-    <label for="select-min">Min Width property</label>
-    <select id="select-min" v-model="min">
-      <option value="min-w-auto">Auto</option>
-      <option value="min-w-fit-content">Fit Content</option>
-      <option value="min-w-min-content">Min Content</option>
-      <option value="min-w-min-content">Min Content</option>
-      <option value="min-w-stretch">Stretch</option>
-      <option value="min-w-full">Full</option>
-      <option value="min-w-quarter">Quarter</option>
-      <option value="min-w-half">Half</option>
-      <option value="min-w-three-quarters">Three Quarters</option>
-      <option value="min-w-third">Third</option>
-      <option value="min-w-two-thirds">Two Thirds</option>
-      <option value="min-w-half-screen">Half Screen</option>
-      <option value="min-w-third-screen">Third Screen</option>
-      <option value="min-w-two-thirds-screen">Two Thirds Screen</option>
-       <option value="min-w-quarter-screen">Quarter Screen</option>
-      <option value="min-w-three-quarters-screen">Three Quarters Screen</option>
-      <option value="min-w-full-screen">Full Screen</option>
-      <option value="min-w-0">0</option>
-      <option value="min-w-1">1</option>
-      <option value="min-w-2">2</option>
-      <option value="min-w-3">3</option>
-      <option value="min-w-4">4</option>
-      <option value="min-w-5">5</option>
-      <option value="min-w-6">6</option>
-      <option value="min-w-7">7</option>
-      <option value="min-w-8">8</option>
-      <option value="min-w-9">9</option>
-      <option value="min-w-10">10</option>
-    </select>
-  </div>
-</div>
 
-## Customization
+## Sass variables
 
-To customize the alignment utilities, you can use the following variables.
+The following Sass variables can be used to customize the generation of the width utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
@@ -357,6 +274,6 @@ Generating responsive utility classes can be done by setting `$screen-aware`, `$
 
 By default, no responsive utility classes are generated for width.
 
-::: tip :pencil2: Note
+::: info Note
 For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
 :::
