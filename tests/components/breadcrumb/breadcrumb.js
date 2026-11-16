@@ -22,7 +22,7 @@ export default {
         }),
         h(BasicComponent, {
           tag: "li",
-          attributes: { class: ["breadcrumb-item"] },
+          attributes: { class: ["breadcrumb-item", "active"] },
           text: "Breadcrumb",
         }),
       ],

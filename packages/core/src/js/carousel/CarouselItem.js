@@ -124,7 +124,7 @@ class CarouselItem extends Component {
       }
     });
 
-    // Register scrolling after the listener that updates the slide's state.
+    // Register parent listeners after the listeners that update the slide state.
     this.elements.parent._registerItemEvents(this);
   }
 

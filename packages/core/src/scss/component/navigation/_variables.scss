@@ -20,10 +20,10 @@
 // | --graupl-navigation-toggle-active-background                    | var(--graupl-navigation-toggle-hover-background)                                                                                                                                                                                    |
 // | --graupl-navigation-toggle-disabled-background                  | var(--graupl-navigation-background)                                                                                                                                                                                                 |
 // | --graupl-navigation-toggle-color                                | var(--graupl-navigation-color)                                                                                                                                                                                                      |
-// | --graupl-navigation-toggle-visited-color                        | var(--graupl-navigation-background)                                                                                                                                                                                                 |
-// | --graupl-navigation-toggle-focus-color                          | var(--graupl-navigation-background)                                                                                                                                                                                                 |
+// | --graupl-navigation-toggle-visited-color                        | var(--graupl-navigation-toggle-color)                                                                                                                                                                                               |
+// | --graupl-navigation-toggle-focus-color                          | var(--graupl-navigation-toggle-color)                                                                                                                                                                                               |
 // | --graupl-navigation-toggle-hover-color                          | var(--graupl-navigation-background)                                                                                                                                                                                                 |
-// | --graupl-navigation-toggle-active-color                         | var(--graupl-navigation-background)                                                                                                                                                                                                 |
+// | --graupl-navigation-toggle-active-color                         | var(--graupl-navigation-toggle-hover-color)                                                                                                                                                                                         |
 // | --graupl-navigation-toggle-disabled-color                       | var(--graupl-theme-active--primary--200)                                                                                                                                                                                            |
 // | --graupl-navigation-toggle-border-top-width                     | var(--graupl-border-top-width)                                                                                                                                                                                                      |
 // | --graupl-navigation-toggle-border-right-width                   | var(--graupl-border-right-width)                                                                                                                                                                                                    |
@@ -190,13 +190,13 @@ $navigation-toggle-color: var(
 // --graupl-navigation-toggle-visited-color
 $navigation-toggle-visited-color: var(
   --#{root-defaults.$prefix}navigation-toggle-visited-color,
-  #{$navigation-background}
+  #{$navigation-toggle-color}
 );
 
 // --graupl-navigation-toggle-focus-color
 $navigation-toggle-focus-color: var(
   --#{root-defaults.$prefix}navigation-toggle-focus-color,
-  #{$navigation-background}
+  #{$navigation-toggle-color}
 );
 
 // --graupl-navigation-toggle-hover-color
@@ -208,7 +208,7 @@ $navigation-toggle-hover-color: var(
 // --graupl-navigation-toggle-active-color
 $navigation-toggle-active-color: var(
   --#{root-defaults.$prefix}navigation-toggle-active-color,
-  #{$navigation-background}
+  #{$navigation-toggle-hover-color}
 );
 
 // --graupl-navigation-toggle-disabled-color

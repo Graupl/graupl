@@ -35,6 +35,28 @@ Use `<b>` or `<strong>` for bold text, `<i>` or `<em>` for italics, and `<small>
 
 For examples of changing the size or weight of individual elements, see the [font size](../utilities/typography.md#font-size) and [font weight](../utilities/typography.md#font-weight) utilities.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/theme/typography.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/theme/typography.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/theme/typography.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the typography theme:

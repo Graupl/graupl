@@ -45,8 +45,8 @@
 code {
   display: inline;
   padding: 0 map.get(graupl-root-variables.$spacers, 2);
-  background: theme.get("secondary", "100");
-  color: theme.get("secondary", "800");
+  background: var(--graupl-code-background, #{theme.get("secondary", "100")});
+  color: var(--graupl-code-color, #{theme.get("secondary", "800")});
 }
 
 pre code {
@@ -57,6 +57,8 @@ pre code {
 }
 
 .custom-block {
+  --graupl-code-background: #{theme.get("secondary", "100")};
+  --graupl-code-color: var(--graupl-color);
   --graupl-color: var(
     --graupl-custom-block-color,
     #{theme.get("primary", "900")}
@@ -90,6 +92,8 @@ pre code {
   }
 
   &.info {
+    --graupl-code-background: #{theme.get("tertiary", "100")};
+    --graupl-code-color: #{theme.get("tertiary", "800")};
     --graupl-custom-block-background: #{theme.get("primary", "200")};
     --graupl-custom-block-border-color: #{theme.get("primary", "500")};
     --graupl-custom-block-color: #{theme.get("primary", "900")};
@@ -102,12 +106,15 @@ pre code {
   }
 
   &.warning {
+    --graupl-code-background: #{theme.get("primary", "100")};
+    --graupl-code-color: #{theme.get("primary", "800")};
     --graupl-custom-block-background: #{theme.get("tertiary", "200")};
     --graupl-custom-block-border-color: #{theme.get("tertiary", "500")};
     --graupl-custom-block-color: #{theme.get("tertiary", "900")};
   }
 
   &.danger {
+    --graupl-code-background: #{theme.get("tertiary", "900")};
     --graupl-custom-block-background: #{theme.get("tertiary", "700")};
     --graupl-custom-block-border-color: #{theme.get("tertiary", "500")};
     --graupl-custom-block-color: #{theme.get("tertiary", "100")};
@@ -172,13 +179,57 @@ pre code {
   }
 
   span {
-    color: var(--shiki-light);
+    color: var(--graupl-code-color, var(--shiki-light));
+  }
+}
+
+.vp-code-group {
+  margin-block: map.get(graupl-root-variables.$spacers, 5);
+
+  > .tabs {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: map.get(graupl-root-variables.$spacers, 2);
+
+    > input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    > label {
+      padding: map.get(graupl-root-variables.$spacers, 3)
+        map.get(graupl-root-variables.$spacers, 5);
+      border-block-end: graupl-root-variables.$border-width solid transparent;
+      cursor: pointer;
+    }
+
+    > label:hover,
+    > input:checked + label {
+      background: theme.get("primary", "100");
+      color: theme.get("primary", "900");
+    }
+
+    > input:checked + label {
+      border-block-end-color: currentcolor;
+    }
+
+    > input:focus + label {
+      outline: graupl-root-variables.$border-width solid currentcolor;
+      outline-offset: -2px;
+    }
+  }
+
+  > .blocks > :not(.active) {
+    display: none;
   }
 }
 
 .dark-mode {
   .vp-adaptive-theme[class*="language-"] span {
-    color: var(--shiki-dark);
+    color: var(--graupl-code-color, var(--shiki-dark));
   }
 }
 
@@ -382,6 +433,11 @@ pre code {
   .options-right:has(> .example-options > *) {
     grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
   }
+}
+
+.example-container .navigation-preview {
+  min-block-size: 20rem;
+  overflow-y: auto;
 }
 
 .tooltip-preview {

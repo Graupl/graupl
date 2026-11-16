@@ -16,6 +16,28 @@ Use Tab to move focus to the button and see the focus outline.
 
 The `.focus` class applies the same styles. It changes the appearance without moving focus.
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/state/focus.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/state/focus.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/state/focus.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the focus state:
