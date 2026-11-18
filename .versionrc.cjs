@@ -1,11 +1,3 @@
-const fs = require("fs");
-
-// Get all package.json files in the packages/*/ directories
-const packageJsonFiles = fs
-  .readdirSync("packages")
-  .filter((dir) => fs.statSync(`packages/${dir}`).isDirectory())
-  .map((dir) => `packages/${dir}/package.json`);
-
 const config = {
   types: [
     {
@@ -65,15 +57,15 @@ const config = {
     },
   ],
   scripts: {
-    prerelease: "npm run lint && npm run build && npm run test:unit",
+    prerelease: "npm run lint && npm run build && npm run test:package",
     prechangelog: "rm -f CURRENT_RELEASE.md",
     postchangelog: "node scripts/current-release.js",
-    precommit: "git add dist/. packages/*/dist/. CURRENT_RELEASE.md",
+    precommit: "git add dist/. CURRENT_RELEASE.md",
   },
 };
 
 config.packageFiles = ["package.json"];
 
-config.bumpFiles = [...config.packageFiles, ...packageJsonFiles];
+config.bumpFiles = ["package.json", "package-lock.json"];
 
 module.exports = config;

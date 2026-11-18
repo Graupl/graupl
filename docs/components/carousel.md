@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Carousel from "../../packages/core/src/js/carousel/Carousel.js";
+  import Carousel from "@graupl/core/src/carousel/Carousel.js";
 
   const preview = useTemplateRef("carousel-preview");
   const indicatorPreview = useTemplateRef("carousel-indicator-preview");

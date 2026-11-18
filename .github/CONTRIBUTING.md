@@ -54,7 +54,7 @@ Include the following in your bug report:
 
 Use Node.js 24, which is also used by the project workflows. Run `npm install` to install the development tools.
 
-Run commands from the repository root. Graupl uses npm workspaces under `packages/`. Keep JavaScript component code in `packages/core/src/js/` or the package that owns the component. Shared Sass lives in `packages/core/src/scss/` and `packages/core/scss/`; check the existing files before adding styles. Keep tests in `tests/`. Name unit tests `.unit.test.js` and browser tests `.browser.test.js`.
+Run commands from the repository root. Graupl publishes the framework distribution and maintains the documentation and demo. Component and Sass source changes belong in [Graupl Core](https://github.com/Graupl/core), [Graupl Icons](https://github.com/Graupl/icons), or [Navigation Shelf](https://github.com/Graupl/navigation-shelf).
 
 The project uses ESLint, Prettier, and JSDoc for JavaScript, and Stylelint, Prettier, and the configured Sass guidelines for styles.
 
@@ -74,29 +74,17 @@ npm run lint
 
 Review the resulting changes. Automatic fixes do not resolve every issue. Code must pass the project's linting and formatting checks before it can be merged.
 
-Run the unit tests:
-
-```shell
-npm run test:unit
-```
-
-For browser tests, install the Playwright browsers and run the browser suite:
-
-```shell
-npx playwright install
-npm run test:browser
-```
-
-Browser screenshot baselines are maintained in the Linux environment used by CI. Review visual differences before updating them.
+Component unit and browser tests, including screenshot baselines, live in [Graupl Core](https://github.com/Graupl/core).
 
 Build the affected output:
 
 ```shell
 npm run build
-npm run build:packages
 ```
 
-The root build also builds the documentation and demo. For documentation-only changes, run `npm run docs:build`. `npm run demo:build` builds the demo separately. Package builds regenerate each workspace package's output. Review generated changes along with source changes.
+The root build also builds the documentation and demo. For documentation-only changes, run `npm run docs:build`. `npm run demo:build` builds the demo separately. The build compiles the Sass forwarding entry points and copies the JavaScript bundles from the installed Core package. Review generated changes along with source changes.
+
+After building, run `npm run test:package` to install the tarball in a temporary consumer, compile its public Sass entry, and run its browser bundle.
 
 Also verify the behavior your change affects, including keyboard interaction, focus, and assistive-technology behavior where applicable. Automated tests alone do not establish that an interaction is accessible.
 

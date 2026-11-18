@@ -5,9 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="./packages/core/scss/graupl.scss" />
-  <link rel="stylesheet" href="./packages/icons/scss/icon.scss" />
-  <link rel="stylesheet" href="./packages/navigation-shelf/scss/navigation-shelf.scss" />
+  <link rel="stylesheet" href="./scss/graupl.scss" />
+  <link rel="stylesheet" href="./node_modules/@graupl/icons/scss/icon.scss" />
+  <link rel="stylesheet" href="./node_modules/@graupl/navigation-shelf/scss/navigation-shelf.scss" />
   <style>
     :root {
       --graupl-carousel-item-container-aspect-ratio: 7 / 3;
@@ -1736,20 +1736,8 @@ Readonly Textarea</textarea>
   </main>
   <script
     src="https://cdn.jsdelivr.net/npm/accessible-menu/dist/disclosure-menu.iife.js"></script>
-  <script type="module"
-    src="./packages/core/src/js/accordion/index.js"></script>
-  <script type="module" src="./packages/core/src/js/alert/index.js"></script>
-  <script type="module"
-    src="./packages/core/src/js/breadcrumb/index.js"></script>
-  <script type="module" src="./packages/core/src/js/carousel/index.js"></script>
-  <script type="module"
-    src="./packages/core/src/js/disclosure/index.js"></script>
-  <script type="module"
-    src="./packages/core/src/js/navigation/index.js"></script>
-  <script type="module" src="./packages/core/src/js/tabs/index.js"></script>
-  <script type="module" src="./packages/core/src/js/tooltip/index.js"></script>
-  <script type="module"
-    src="./packages/navigation-shelf/dist/js/navigation-shelf.js"></script>
+  <script type="module" src="./dist/js/graupl.js"></script>
+  <script type="module" src="./node_modules/@graupl/navigation-shelf/dist/js/navigation-shelf.js"></script>
   <script>
     const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)")
       .matches

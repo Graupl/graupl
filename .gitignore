@@ -11,11 +11,5 @@ docs/.vitepress/dist
 # VSCode stuff.
 testing/flashpost
 
-# Generated test files.
-.vitest-attachments
-
-# Local macOS browser screenshots.
-tests/components/**/__screenshots__/**/*-darwin.png
-
 # AI files
 .claude

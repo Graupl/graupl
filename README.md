@@ -11,7 +11,11 @@
 
 A modular and modern CSS framework.
 
-Graupl is part of Accessible Ecosystem. Its JavaScript components extend [Accessible Ecosystem Core](https://github.com/Accessible-Ecosystem/core), while Graupl provides styles and component-specific behavior.
+Graupl is part of [Accessible Ecosystem](https://github.com/Accessible-Ecosystem). This repository packages the CSS and JavaScript from [Graupl Core](https://github.com/Graupl/core) and hosts the documentation and demo. Graupl Core's JavaScript components extend [Accessible Ecosystem Core](https://github.com/Accessible-Ecosystem/core).
+
+## Documentation
+
+See the [Graupl documentation](https://graupl.dev/) for setup, examples, and reference guides.
 
 ## Community and contributions
 
@@ -22,3 +26,11 @@ Read the [contribution guidelines](.github/CONTRIBUTING.md) before submitting ch
 - [Code of conduct](.github/CODE_OF_CONDUCT.md)
 - [Security policy](.github/SECURITY.md)
 - [Commit guidelines](.github/COMMIT_CONVENTION.md)
+
+## Sponsors
+
+<p align="center">
+  <a href="https://coldfrontlabs.ca">
+    <img src="https://coldfrontlabs.ca/themes/custom/frosty/images/coldfrontlabs-flakkon-logo.png" alt="Coldfront Labs Inc." width="300px"/>
+  </a>
+</p>

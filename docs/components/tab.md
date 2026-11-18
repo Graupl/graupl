@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Tabs from "../../packages/core/src/js/tabs/Tabs.js";
+  import Tabs from "@graupl/core/src/tabs/Tabs.js";
 
   const preview = useTemplateRef("tabs-preview");
   let tabs;

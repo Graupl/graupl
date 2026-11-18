@@ -4,7 +4,7 @@ Accessibility includes the people reading this project's code and documentation.
 
 ## Scope of these instructions
 
-These instructions cover Graupl, an Accessible Ecosystem project, including its workspace packages, JavaScript components, Sass, tests, and documentation.
+These instructions cover Graupl, an Accessible Ecosystem project, including its distribution, tests, demo, and documentation.
 
 Core provides shared component classes and utilities. Keep those APIs useful to different kinds of components. Put behavior that belongs to a particular interaction pattern in the project that implements it.
 
@@ -164,8 +164,10 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Tests
 
+The distribution smoke test is in `scripts/test-package.js`. Component tests and screenshot baselines live in [Graupl Core](https://github.com/Graupl/core).
+
 - For every style change, including additions, removals, and edits, verify that the affected browser tests pass. Targeted runs are sufficient when the scope is clear. For example, an Alert-only style change requires only the Alert browser tests. Include tests for other components when they use the changed styles. Use the Linux CI run to verify against the checked-in screenshot baselines if the local environment cannot do so. Treat a missing result as unverified.
-- Apply the same per-test approval rule to visual tests and their screenshot baselines. If a browser test fails, identify the failing test, explain the difference, and fix unintended regressions. If an intended change requires a new baseline, explain the expected visual change and get the user's explicit approval for each affected test before editing the test, replacing its baseline, or running the [Update Visual Regression Screenshots workflow](.github/workflows/update-screenshots.yml).
+- Apply the same per-test approval rule to visual tests and their screenshot baselines. If a browser test fails, identify the failing test, explain the difference, and fix unintended regressions. If an intended change requires a new baseline, explain the expected visual change and get the user's explicit approval for each affected test before editing the test, replacing its baseline, or running the [Update Visual Regression Screenshots workflow](https://github.com/Graupl/core/blob/1.x/.github/workflows/update-screenshots.yml).
 
 - Before changing an existing test, identify it by file and test name, explain what you would change and why it is needed, and get the user's explicit approval for that test. Apply this rule to edits, moves, and removals, including wording and formatting changes. If a shared fixture, hook, or parameter table change alters multiple tests, identify each affected test or case and get explicit approval for each one. General approval to work on a suite does not replace per-test approval.
 - Follow the existing directories and files for the component or utility under test. Add coverage to the relevant existing suite rather than creating a separate file for each feature.
@@ -210,12 +212,12 @@ Always read and apply [the Unslop skill](skills/unslop/SKILL.md) when working on
 
 ## Graupl structure and checks
 
-- Work from the repository root on the `1.x` development branch unless the task selects another branch. Graupl is an npm workspace with packages under `packages/`.
+- Work from the repository root on the `1.x` development branch unless the task selects another branch. Graupl ships the framework distribution using the standalone Graupl Core package.
 - Keep JavaScript in the owning package's `src/js/` directory and styles with the existing Sass structure. Keep Graupl's component behavior and styling in Graupl. Import shared utilities directly from `@accessible-ecosystem/core`; do not add duplicate implementations or forwarding files.
 - Graupl provides CSS and visual styling. Verify contrast, focus indicators, responsive behavior, and reduced-motion behavior when changes affect them. Use Graupl's actual API names in comments and documentation.
 - Follow `.github/CONTRIBUTING.md` for the supported Node version, lint, test, and build commands. `npm run lint` writes fixes. Run read-only checks first when inspecting existing code.
 - Unit tests use `.unit.test.js`; browser tests use `.browser.test.js` and Playwright. Keep tests with the component they exercise and retain Graupl-specific integration coverage when shared behavior moves to Core.
-- Rebuild affected root and workspace package output separately. A root build does not rebuild package output. Distinguish source tests, generated bundles, and published packages in verification reports.
+- Rebuild the distribution after updating its Core dependency. Distinguish source tests, generated bundles, and published packages in verification reports.
 - Community pages in `docs/community/` include repository policies. Update the policy source under `.github/` and check the documentation build. Keep agent instructions, Unslop, and GitHub submission templates in the repository.
 
 ## Attribution

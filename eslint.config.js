@@ -9,7 +9,6 @@ const ignores = [
   "dist/",
   "docs/.vitepress/cache/",
   "docs/.vitepress/dist/",
-  "packages/*/dist/",
   "!.*.js",
   "!.*.mjs",
   "!.*.cjs",

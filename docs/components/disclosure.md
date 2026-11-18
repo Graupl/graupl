@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Disclosure from "../../packages/core/src/js/disclosure/Disclosure.js";
+  import Disclosure from "@graupl/core/src/disclosure/Disclosure.js";
 
   const preview = useTemplateRef("disclosure-preview");
   let disclosure;

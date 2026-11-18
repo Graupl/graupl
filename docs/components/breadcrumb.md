@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Breadcrumb from "../../packages/core/src/js/breadcrumb/Breadcrumb.js";
+  import Breadcrumb from "@graupl/core/src/breadcrumb/Breadcrumb.js";
 
   const preview = useTemplateRef("breadcrumb-preview");
   let breadcrumb;

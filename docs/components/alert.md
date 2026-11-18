@@ -1,7 +1,7 @@
 <script setup>
   import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Alert from "../../packages/core/src/js/alert/Alert.js";
+  import Alert from "@graupl/core/src/alert/Alert.js";
 
   const preview = useTemplateRef("alert-preview");
   let alert;

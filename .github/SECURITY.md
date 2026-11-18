@@ -16,7 +16,7 @@ If you submit a pull request with a fix, maintainers will review it within the s
 
 ## Vulnerabilities in dependencies
 
-Graupl has production dependencies, including Accessible Ecosystem Core and Graupl workspace packages. Maintainers prioritize vulnerabilities that affect the code shipped to users. When a dependency fix affects shipped code, update the dependency and lockfile, rebuild the affected bundles, and verify the result before releasing.
+Graupl has production dependencies, including Accessible Ecosystem Core and Graupl Core. Maintainers prioritize vulnerabilities that affect the code shipped to users. When a dependency fix affects shipped code, update the dependency and lockfile, rebuild the affected bundles, and verify the result before releasing.
 
 Maintainers will update vulnerable development dependencies when possible. Maintainers may not publish a Graupl release immediately after these updates.
 

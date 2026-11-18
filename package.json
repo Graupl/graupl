@@ -8,9 +8,6 @@
     "dist",
     "scss"
   ],
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "prepare": "husky",
     "commit": "git cz",
@@ -21,16 +18,10 @@
     "presass": "rm -rf dist/css/*",
     "precss": "rm -rf dist/css/*",
     "sass": "sass scss:dist/css --pkg-importer=node --embed-sources",
-    "sass:packages": "npm --workspaces run sass --if-present",
     "css": "node compile-styles.js",
-    "css:packages": "npm --workspaces run css --if-present",
-    "prerolldown": "rm -rf dist/js/*",
-    "rolldown": "rolldown --config ./rolldown.config.js",
-    "rolldown:packages": "npm --workspaces run rolldown --if-present",
     "build": "npm-run-all build:*",
-    "build:packages": "npm --workspaces run build --if-present",
     "build:css": "npm run css",
-    "build:js": "npm run rolldown",
+    "build:js": "node scripts/copy-core-bundles.js",
     "postbuild": "npm run docs:build && npm run demo:build",
     "release": "commit-and-tag-version -a",
     "demo:dev": "vite",
@@ -39,12 +30,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:run": "vitest run",
-    "test:unit": "vitest run --project unit --passWithNoTests",
-    "pretest:browser": "npm run build:css",
-    "test:browser": "vitest run --project browser --passWithNoTests"
+    "test:package": "node scripts/test-package.js"
   },
   "repository": {
     "type": "git",
@@ -69,11 +55,9 @@
     "@codemirror/lang-html": "^6.4.11",
     "@commitlint/cli": "^19.2.1",
     "@commitlint/config-conventional": "^19.1.0",
-    "@drupal/once": "git+https://git.drupalcode.org/issue/once-3466026.git",
     "@eslint/js": "^9.0.0",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@vitest/browser-playwright": "^4.1.9",
-    "@vitest/ui": "^4.0.16",
+    "@graupl/icons": "^1.0.0-beta.59",
+    "@graupl/navigation-shelf": "^1.0.0-beta.59",
     "accessible-menu": "^4.2.2",
     "chokidar-cli": "^3.0.0",
     "codemirror": "^6.0.2",
@@ -91,8 +75,6 @@
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.2.5",
-    "rolldown": "^1.0.0-beta.19",
-    "rollup-plugin-esbuild": "^6.2.1",
     "sass": "^1.89.2",
     "sass-embedded": "^1.89.2",
     "stylelint": "^16.3.1",
@@ -102,13 +84,9 @@
     "stylelint-prettier": "^5.0.0",
     "vite": "^8.0.14",
     "vitepress": "^1.1.0",
-    "vitest": "^4.0.16",
-    "vitest-axe": "^0.1.0",
-    "vitest-browser-vue": "^2.1.0",
     "vue-codemirror": "^6.1.1"
   },
   "dependencies": {
-    "@accessible-ecosystem/core": "^1.0.0-beta.14",
-    "@graupl/core": "*"
+    "@graupl/core": "^1.0.0-beta.59"
   }
 }

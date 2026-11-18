@@ -3,7 +3,7 @@ import { onMounted, ref, useTemplateRef } from "vue";
 import { useData } from "vitepress";
 import DisclosureMenu from "accessible-menu/disclosure-menu";
 import Treeview from "accessible-menu/treeview";
-import NavigationShelf from "../../../packages/navigation-shelf/src/js/navigation-shelf/NavigationShelf.js";
+import NavigationShelf from "@graupl/navigation-shelf/navigation-shelf";
 const { page, site } = useData();
 const { nav, sidebar, socialLinks } = site.value.themeConfig || {};
 const mainNav = useTemplateRef("mainNav");

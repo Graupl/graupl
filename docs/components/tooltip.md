@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Tooltip from "../../packages/core/src/js/tooltip/Tooltip.js";
+  import Tooltip from "@graupl/core/src/tooltip/Tooltip.js";
 
   const preview = useTemplateRef("tooltip-preview");
   let tooltip;

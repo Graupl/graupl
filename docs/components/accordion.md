@@ -1,7 +1,7 @@
 <script setup>
   import { onBeforeUnmount, useTemplateRef } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Accordion from "../../packages/core/src/js/accordion/Accordion.js";
+  import Accordion from "@graupl/core/src/accordion/Accordion.js";
 
   const basicPreview = useTemplateRef("basic-preview");
   const controlsPreview = useTemplateRef("controls-preview");
