@@ -65,6 +65,8 @@ ${controls}${panels}
 
 The accordion component provides a set of classes for grouping content into panels that readers can expand or collapse.
 
+Accordions implement the spec found in the [ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+
 ## Base classes
 
 Inside `.accordion`, use an `.accordion-item` for each panel. Start each item with an `.accordion-item-header` containing a heading with the `.accordion-item-title` class. The heading holds the `.accordion-item-toggle` button.
@@ -120,6 +122,44 @@ generateAccordions({
 By default, no theme variants are generated.
 
 If you are [compiling your own version of Graupl](../compiling-graupl.md), you can set the accordion module’s `$themeable` variable to `true` to generate the `.primary`, `.secondary`, and `.tertiary` variants. Add the variant class to `.accordion` to style the whole accordion, or to an element inside it to style that part separately.
+
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/component/accordion.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/accordion.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/component/accordion.scss";
+```
+
+:::
+
+### JavaScript
+
+For a page that uses this component, include its generator script below. It finds and initializes matching markup when the page loads. If you already load the full `graupl.js` bundle, it runs the generator for you. To call the generator yourself, see [Initialization](#initialization).
+
+::: code-group
+
+```html [Local]
+<script defer src="./dist/js/accordion.js"></script>
+```
+
+```html [CDN]
+<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/accordion.js"></script>
+```
+
+:::
 
 ## Custom Properties
 

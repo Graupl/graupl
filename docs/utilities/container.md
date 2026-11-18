@@ -1,25 +1,86 @@
+<script setup>
+  import { computed, ref } from "vue";
+  import { withBase } from "vitepress";
+  import LiveExample from "../vue-components/LiveExample.vue";
+
+  const width = ref(100);
+  const exampleContainer = computed(() => `<div class="container-type-inline" style="width: ${width.value}%">
+  <div class="card horizontal">
+    <div class="card-image">
+      <img src="${withBase("/card-trail-map.svg")}" alt="" width="480" height="240">
+    </div>
+    <div class="card-content">
+      <div class="card-header">
+        <h3 class="card-title">Wyvern Ridge</h3>
+      </div>
+      <div class="card-body">
+        <p>Follow the marked trail to the old watchtower below the wyvern nests.</p>
+      </div>
+      <div class="card-footer">
+        <small>Two hours on foot</small>
+      </div>
+    </div>
+  </div>
+</div>`);
+</script>
+
 # Container Utilities
 
-The container utilities provide a set of classes to adjust the `container-type` properties of elements.
+The container utilities provide classes for setting `container-type`. Use them to make an element a query container so its descendants can respond to its size or scroll state.
 
-## Container
+## Inline-size queries
+
+A [horizontal card](../components/card.md#horizontal-cards-in-narrow-containers) shows how a component can adapt to the space it has. Adding `.container-type-inline` to the wrapper makes its width available to the card's container query. At 767px or narrower, the card stacks its image above the content. The slider changes the wrapper's width so you can see the card switch layouts without resizing the browser.
+
+<live-example :source-code="exampleContainer" options-position="top">
+  <template #options>
+    <div class="input-group">
+      <label for="query-container-width">Container width ({{ width }}%)</label>
+      <input id="query-container-width" type="range" min="50" max="100" v-model.number="width">
+    </div>
+  </template>
+</live-example>
+
+## Classes
 
 | Class Name | Property | Value |
 | --- | --- | --- |
-| `.container-type-inline` | container | `inline-size` |
-| `.container-type-normal` | container | `normal` |
-| `.container-type-size` | container | `size` |
-| `.container-type-scroll` | container | `scroll-state` |
+| `.container-type-inline` | container-type | `inline-size` |
+| `.container-type-normal` | container-type | `normal` |
+| `.container-type-size` | container-type | `size` |
+| `.container-type-scroll` | container-type | `scroll-state` |
 
-## Customization
+## Installation
 
-To customize the container utilities, you can use the following variables.
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/utilities/container.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/utilities/container.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/utilities/container.scss";
+```
+
+:::
+
+## Sass variables
+
+The following Sass variables can be used to customize the generation of the container utilities.
 
 | Variable | Description | Default Value |
 | --- | --- | --- |
 | `$selector-base` | Base selector for utility classes. | `"."` |
 | `$selector-prefix` | The selector prefix for all utility classes. | `""` |
-| `$selector-suffix` | The selctor suffix for all utility classes. | `""` |
+| `$selector-suffix` | The selector suffix for all utility classes. | `""` |
 | `$selector-separator` | The selector separator for all utility classes. | `""` |
 | `$use-important` | Appends `!important` to generated utility declarations. | `true` |
 | `$generate-base-utilities` | Generates the base utility classes. | `true` |
@@ -53,6 +114,6 @@ Generating responsive utility classes can be done by setting `$screen-aware`, `$
 
 By default, no responsive utility classes are generated for container.
 
-::: tip :pencil2: Note
+::: info Note
 For more information on responsive variants, refer to the [Responsive classes](../responsive-classes) documentation.
 :::

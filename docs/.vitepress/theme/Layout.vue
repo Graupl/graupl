@@ -17,9 +17,13 @@ const shelfToggle = useTemplateRef("shelfToggle");
 const menus = ref([]);
 
 onMounted(() => {
+  const mainMenu = mainNav.value.querySelector(".menu");
+
   menus.value.push(
     new DisclosureMenu({
-      menuElement: mainNav.value.querySelector(".menu"),
+      menuElement: mainMenu,
+      controllerElement: mainNav.value.querySelector(".navigation-toggle"),
+      containerElement: mainMenu,
       optionalKeySupport: true,
     })
   );
@@ -102,8 +106,13 @@ onMounted(() => {
         <a href="/" class="w-full height-auto display-flex align-items-center"
           ><img src="/logo.svg" alt="Graupl Logo" class="w-9 h-auto"
         /></a>
-        <nav class="navigation" id="main" ref="mainNav">
-          <ul class="menu mbs-3 mbe-3 g-2">
+        <nav class="navigation" id="main" ref="mainNav" aria-label="Main navigation">
+          <button
+            type="button"
+            class="navigation-toggle icon-after dropdown-arrow"
+            aria-label="Toggle main navigation"
+          ></button>
+          <ul class="menu md:mbs-3 md:mbe-3 g-2">
             <li v-for="item in nav" :key="item.text" class="menu-item">
               <a v-if="item.link" :href="item.link" class="menu-link">{{
                 item.text
@@ -129,7 +138,7 @@ onMounted(() => {
             </li>
           </ul>
         </nav>
-        <nav class="navigation" id="social" ref="socialNav">
+        <nav class="flex-no-shrink" id="social" aria-label="Social links" ref="socialNav">
           <ul class="menu mbs-3 mbe-3 g-2">
             <li v-for="item in socialLinks" :key="item.link" class="menu-item">
               <a
@@ -142,7 +151,7 @@ onMounted(() => {
           </ul>
         </nav>
         <button
-          class="button navigation-shelf-toggle navigation-toggle border-none icon-before nav-toggle"
+          class="button navigation-shelf-toggle navigation-toggle icon-before nav-toggle"
           aria-label="Toggle sidebar"
           ref="shelfToggle"
         ></button>

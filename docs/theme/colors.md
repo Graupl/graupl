@@ -63,6 +63,28 @@ Use `.dark-mode` to apply dark mode to an element and its descendants. Use `.lig
 
 <!-- TODO: Add a separate guide to themes and colour schemes, including how palettes and shades are mapped. -->
 
+## Installation
+
+### Stylesheets
+
+The full `graupl.css` stylesheet includes these styles. To load them separately, use one of the options below.
+
+::: code-group
+
+```html [Local]
+<link rel="stylesheet" href="./dist/css/theme/color.css">
+```
+
+```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/theme/color.css">
+```
+
+```scss [Sass]
+@use "pkg:@graupl/core/theme/color.scss";
+```
+
+:::
+
 ## Custom Properties
 
 The following custom properties can be used to customize the colour theme:

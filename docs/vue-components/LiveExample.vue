@@ -110,7 +110,7 @@ watch(() => props.sourceCode, loadSource);
           <codemirror
             v-model="code"
             placeholder="Code goes here..."
-            :indent-with-tab="true"
+            :indent-with-tab="false"
             :tab-size="2"
             :extensions="extensions"
             @ready="handleReady"
