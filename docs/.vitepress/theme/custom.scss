@@ -1,4 +1,4 @@
-/* stylelint-disable custom-property-pattern */
+/* stylelint-disable custom-property-pattern, selector-max-id */
 
 // Defaults.
 @use "pkg:@graupl/core/src/defaults" as graupl-root-defaults;
@@ -35,6 +35,7 @@
 
 // Functions.
 @use "pkg:@graupl/core/src/functions/theme";
+@use "pkg:@graupl/core/src/mixins/screen";
 
 // Packages.
 @use "pkg:@graupl/core" as graupl;
@@ -230,6 +231,49 @@ pre code {
 .dark-mode {
   .vp-adaptive-theme[class*="language-"] span {
     color: var(--graupl-code-color, var(--shiki-dark));
+  }
+}
+
+.topbar .navigation-shelf-toggle {
+  --graupl-button-border-width: 0;
+  --graupl-navigation-toggle-border-width: 0;
+  --graupl-icon-color: currentcolor;
+}
+
+@include screen.trigger("navigation-collapse") {
+  .topbar {
+    position: relative;
+    z-index: 1;
+  }
+
+  .topbar #main {
+    position: relative;
+
+    > .navigation-toggle {
+      --graupl-navigation-toggle-content: none;
+      --graupl-icon-color: currentcolor;
+      --graupl-navigation-toggle-border-width: 0;
+
+      &[aria-expanded="true"]::after {
+        transform: rotate(180deg);
+      }
+    }
+
+    > .menu {
+      position: absolute;
+      inset-block-start: 100%;
+      inset-inline-end: 0;
+      inline-size: max-content;
+      max-inline-size: 90vw;
+      background: theme.get("primary", "100");
+    }
+  }
+}
+
+@include screen.trigger("navigation-expand") {
+  .topbar {
+    position: relative;
+    z-index: 1;
   }
 }
 
