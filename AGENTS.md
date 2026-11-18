@@ -213,7 +213,7 @@ The distribution smoke test is in `scripts/test-package.js`. Component tests and
 ## Graupl structure and checks
 
 - Work from the repository root on the `1.x` development branch unless the task selects another branch. Graupl ships the framework distribution using the standalone Graupl Core package.
-- Keep JavaScript in the owning package's `src/js/` directory and styles with the existing Sass structure. Keep Graupl's component behavior and styling in Graupl. Import shared utilities directly from `@accessible-ecosystem/core`; do not add duplicate implementations or forwarding files.
+- Keep component JavaScript and Sass source in the standalone Graupl Core, Icons, or Navigation Shelf repository. This repository owns the distribution forwarding entries, documentation, demo, and package smoke test.
 - Graupl provides CSS and visual styling. Verify contrast, focus indicators, responsive behavior, and reduced-motion behavior when changes affect them. Use Graupl's actual API names in comments and documentation.
 - Follow `.github/CONTRIBUTING.md` for the supported Node version, lint, test, and build commands. `npm run lint` writes fixes. Run read-only checks first when inspecting existing code.
 - Unit tests use `.unit.test.js`; browser tests use `.browser.test.js` and Playwright. Keep tests with the component they exercise and retain Graupl-specific integration coverage when shared behavior moves to Core.
