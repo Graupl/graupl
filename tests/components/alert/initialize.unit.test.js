@@ -55,7 +55,7 @@ describe("Alert initialization", () => {
   });
 
   describe("initialize", () => {
-    it("should initialize explicitly with custom selectors", () => {
+    it("should initialize with a custom dismiss controller", () => {
       document.body.innerHTML = `
         <div class="custom-alert">
           <div class="alert-header">
@@ -67,17 +67,23 @@ describe("Alert initialization", () => {
           <div class="alert-footer">
             <a href="#">Action</a>
           </div>
-          <button class="alert-dismisser">x</button>
+          <button type="button" class="custom-dismiss">Dismiss</button>
         </div>
       `;
+      const controller = document.querySelector(".custom-dismiss");
       alert = new Alert({
         alertElement: document.querySelector(".custom-alert"),
-        controllerElement: null,
+        controllerElement: controller,
       });
 
       alert.initialize();
 
       expect(alert.isInitialized).toBe(true);
+      expect(alert.dom.controller).toBe(controller);
+
+      controller.click();
+
+      expect(alert.isExpanded).toBe(false);
     });
   });
 });

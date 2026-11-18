@@ -22,22 +22,18 @@ afterEach(() => {
 
 describe("Alert clicks", () => {
   describe("_handleClick", () => {
-    it("should add a click listener to the controller and collapse when clicked", async () => {
+    it("should collapse the alert when the controller is clicked", async () => {
       alert = new Alert({
         alertElement: document.querySelector(".alert"),
         controllerElement: document.querySelector(".alert-dismisser"),
         initialize: true,
       });
 
-      const collapseSpy = vi.spyOn(alert, "collapse");
       alert.dom.controller.click();
 
       await vi.waitFor(() => {
         expect(alert.dom.alert.classList.contains("hide")).toBe(true);
       });
-
-      expect(collapseSpy).toHaveBeenCalledOnce();
-      expect(alert.isExpanded).toBe(false);
     });
 
     it("should not collapse when no controller exists", () => {

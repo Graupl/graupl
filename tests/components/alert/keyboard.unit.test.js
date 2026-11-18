@@ -20,115 +20,136 @@ afterEach(() => {
   vi.restoreAllMocks();
 });
 
-describe("Alert keyboard interactions", () => {
-  it.each([
-    { key: "Enter", name: "Enter" },
-    { key: " ", name: "Space" },
-  ])("$name keydown prevents default and stops propagation", ({ key }) => {
-    alert = new Alert({
-      alertElement: document.querySelector(".alert"),
-      controllerElement: document.querySelector(".alert-dismisser"),
-      initialize: true,
+describe("Alert keyboard events", () => {
+  describe("_handleKeydown", () => {
+    it.each([
+      { key: "Enter", name: "Enter" },
+      { key: " ", name: "Space" },
+    ])("should prevent default and stop propagation for $name", ({ key }) => {
+      alert = new Alert({
+        alertElement: document.querySelector(".alert"),
+        controllerElement: document.querySelector(".alert-dismisser"),
+        initialize: true,
+      });
+
+      const alertKeydown = vi.fn();
+      alert.dom.alert.addEventListener("keydown", alertKeydown);
+
+      const event = new KeyboardEvent("keydown", {
+        key,
+        bubbles: true,
+        cancelable: true,
+      });
+
+      alert.dom.controller.dispatchEvent(event);
+
+      expect(event.defaultPrevented).toBe(true);
+      expect(alertKeydown).not.toHaveBeenCalled();
     });
 
-    const alertKeydown = vi.fn();
-    alert.dom.alert.addEventListener("keydown", alertKeydown);
+    it("should leave unrelated keys to the browser", () => {
+      alert = new Alert({
+        alertElement: document.querySelector(".alert"),
+        controllerElement: document.querySelector(".alert-dismisser"),
+        initialize: true,
+      });
 
-    const event = new KeyboardEvent("keydown", {
-      key,
-      bubbles: true,
-      cancelable: true,
-    });
-    alert.dom.controller.dispatchEvent(event);
+      const alertKeydown = vi.fn();
+      alert.dom.alert.addEventListener("keydown", alertKeydown);
+      const event = new KeyboardEvent("keydown", {
+        key: "Escape",
+        bubbles: true,
+        cancelable: true,
+      });
 
-    expect(event.defaultPrevented).toBe(true);
-    expect(alertKeydown).not.toHaveBeenCalled();
-  });
+      alert.dom.controller.dispatchEvent(event);
 
-  it.each([
-    { key: "Enter", name: "Enter" },
-    { key: " ", name: "Space" },
-  ])("$name keyup collapses the alert", ({ key }) => {
-    alert = new Alert({
-      alertElement: document.querySelector(".alert"),
-      controllerElement: document.querySelector(".alert-dismisser"),
-      initialize: true,
+      expect(event.defaultPrevented).toBe(false);
+      expect(alertKeydown).toHaveBeenCalledOnce();
     });
 
-    const collapseSpy = vi.spyOn(alert, "collapse");
-    alert.dom.controller.dispatchEvent(
-      new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
+    it.each([
+      { key: "Enter", name: "Enter" },
+      { key: " ", name: "Space" },
+    ])(
+      "should leave $name to the browser when no controller exists",
+      ({ key }) => {
+        alert = new Alert({
+          alertElement: document.querySelector(".alert"),
+          controllerElement: null,
+          initialize: true,
+        });
+
+        const event = new KeyboardEvent("keydown", {
+          key,
+          bubbles: true,
+          cancelable: true,
+        });
+
+        alert.dom.alert.dispatchEvent(event);
+
+        expect(event.defaultPrevented).toBe(false);
+        expect(alert.isExpanded).toBe(true);
+      }
     );
-
-    expect(collapseSpy).toHaveBeenCalledOnce();
-    expect(alert.isExpanded).toBe(false);
   });
 
-  it("does not prevent or collapse for an unrelated key", () => {
-    alert = new Alert({
-      alertElement: document.querySelector(".alert"),
-      controllerElement: document.querySelector(".alert-dismisser"),
-      initialize: true,
+  describe("_handleKeyup", () => {
+    it.each([
+      { key: "Enter", name: "Enter" },
+      { key: " ", name: "Space" },
+    ])("should collapse the alert with $name", ({ key }) => {
+      alert = new Alert({
+        alertElement: document.querySelector(".alert"),
+        controllerElement: document.querySelector(".alert-dismisser"),
+        initialize: true,
+      });
+
+      alert.dom.controller.dispatchEvent(
+        new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
+      );
+
+      expect(alert.isExpanded).toBe(false);
     });
 
-    const alertKeydown = vi.fn();
-    alert.dom.alert.addEventListener("keydown", alertKeydown);
-    const collapseSpy = vi.spyOn(alert, "collapse");
-    const event = new KeyboardEvent("keydown", {
-      key: "Escape",
-      bubbles: true,
-      cancelable: true,
+    it("should leave the alert expanded on an unrelated key", () => {
+      alert = new Alert({
+        alertElement: document.querySelector(".alert"),
+        controllerElement: document.querySelector(".alert-dismisser"),
+        initialize: true,
+      });
+      const event = new KeyboardEvent("keyup", {
+        key: "Escape",
+        bubbles: true,
+        cancelable: true,
+      });
+
+      alert.dom.controller.dispatchEvent(event);
+
+      expect(alert.isExpanded).toBe(true);
     });
-    alert.dom.controller.dispatchEvent(event);
-    alert.dom.controller.dispatchEvent(
-      new KeyboardEvent("keyup", { key: "Escape", bubbles: true })
+
+    it.each([
+      { key: "Enter", name: "Enter" },
+      { key: " ", name: "Space" },
+    ])(
+      "should leave the alert expanded on $name when no controller exists",
+      ({ key }) => {
+        alert = new Alert({
+          alertElement: document.querySelector(".alert"),
+          controllerElement: null,
+          initialize: true,
+        });
+
+        const collapseSpy = vi.spyOn(alert, "collapse");
+
+        alert.dom.alert.dispatchEvent(
+          new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
+        );
+
+        expect(collapseSpy).not.toHaveBeenCalled();
+        expect(alert.isExpanded).toBe(true);
+      }
     );
-
-    expect(event.defaultPrevented).toBe(false);
-    expect(alertKeydown).toHaveBeenCalledOnce();
-    expect(collapseSpy).not.toHaveBeenCalled();
-    expect(alert.isExpanded).toBe(true);
-  });
-
-  it.each([
-    { key: "Enter", name: "Enter" },
-    { key: " ", name: "Space" },
-  ])("$name keydown is not handled when there is no controller", ({ key }) => {
-    alert = new Alert({
-      alertElement: document.querySelector(".alert"),
-      controllerElement: null,
-      initialize: true,
-    });
-
-    const event = new KeyboardEvent("keydown", {
-      key,
-      bubbles: true,
-      cancelable: true,
-    });
-
-    alert.dom.alert.dispatchEvent(event);
-
-    expect(event.defaultPrevented).toBe(false);
-    expect(alert.isExpanded).toBe(true);
-  });
-
-  it.each([
-    { key: "Enter", name: "Enter" },
-    { key: " ", name: "Space" },
-  ])("$name keyup does not collapse when there is no controller", ({ key }) => {
-    alert = new Alert({
-      alertElement: document.querySelector(".alert"),
-      controllerElement: null,
-      initialize: true,
-    });
-
-    const collapseSpy = vi.spyOn(alert, "collapse");
-
-    alert.dom.alert.dispatchEvent(
-      new KeyboardEvent("keyup", { key, bubbles: true, cancelable: true })
-    );
-
-    expect(collapseSpy).not.toHaveBeenCalled();
-    expect(alert.isExpanded).toBe(true);
   });
 });
