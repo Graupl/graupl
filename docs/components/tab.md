@@ -9,19 +9,19 @@
 
   const exampleTabs = computed(() => `
 <div class="tabs">
-  <div class="tab-list" aria-label="${exampleCopy.html("forecast.title")}">
-    <button type="button" class="tab-toggle" aria-selected="true">${exampleCopy.html("forecast.firstTitle")}</button>
-    <button type="button" class="tab-toggle">${exampleCopy.html("forecast.secondTitle")}</button>
-    <button type="button" class="tab-toggle">${exampleCopy.html("forecast.thirdTitle")}</button>
+  <div class="tab-list" aria-label="${exampleCopy.html("carousel.title")}">
+    <button type="button" class="tab-toggle" aria-selected="true">${exampleCopy.html("carousel.firstTitle")}</button>
+    <button type="button" class="tab-toggle">${exampleCopy.html("carousel.secondTitle")}</button>
+    <button type="button" class="tab-toggle">${exampleCopy.html("carousel.thirdTitle")}</button>
   </div>
   <div class="tab-content show" tabindex="0">
-    <p>${exampleCopy.html("forecast.firstBody")}</p>
+    <p>${exampleCopy.html("carousel.firstBody")}</p>
   </div>
   <div class="tab-content" tabindex="0">
-    <p>${exampleCopy.html("forecast.secondBody")}</p>
+    <p>${exampleCopy.html("carousel.secondBody")}</p>
   </div>
   <div class="tab-content" tabindex="0">
-    <p>${exampleCopy.html("forecast.thirdBody")}</p>
+    <p>${exampleCopy.html("carousel.thirdBody")}</p>
   </div>
 </div>
   `);
