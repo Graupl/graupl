@@ -13,10 +13,10 @@
   const exampleSubmenu = computed(() => `
 <ul class="menu">
   <li class="menu-item">
-    <span class="menu-link">${exampleCopy.html("forecast.title")}</span>
+    <span class="menu-link">${exampleCopy.html("carousel.title")}</span>
     <ul class="submenu show position-static">
-      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("forecast.firstTitle")}</a></li>
-      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("forecast.thirdTitle")}</a></li>
+      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("carousel.firstTitle")}</a></li>
+      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("carousel.thirdTitle")}</a></li>
     </ul>
   </li>
 </ul>
