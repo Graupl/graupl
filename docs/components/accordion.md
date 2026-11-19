@@ -1,5 +1,6 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Accordion from "@graupl/core/src/accordion/Accordion.js";
 
@@ -7,13 +8,13 @@
   const controlsPreview = useTemplateRef("controls-preview");
   const instances = new Map();
 
-  const items = [
-    { title: "Ogre toll bridge", body: "The ogre accepts riddles instead of coins." },
-    { title: "Kelpie ford", body: "Cross at the stepping stones and leave the kelpie alone." },
-  ];
+  const items = computed(() => [
+    { title: exampleCopy.html("accordion.firstTitle"), body: exampleCopy.html("accordion.firstBody") },
+    { title: exampleCopy.html("accordion.secondTitle"), body: exampleCopy.html("accordion.secondBody") },
+  ]);
 
   function renderAccordion(controls = "") {
-    const panels = items.map(({ title, body }, index) => {
+    const panels = items.value.map(({ title, body }, index) => {
       const expanded = index === 0;
 
       return `  <div class="accordion-item ${expanded ? "show" : "hide"}">
@@ -35,12 +36,12 @@ ${controls}${panels}
 </div>`;
   }
 
-  const basicAccordion = renderAccordion();
-  const accordionWithControls = renderAccordion(`  <div class="accordion-control-container">
+  const basicAccordion = computed(() => renderAccordion());
+  const accordionWithControls = computed(() => renderAccordion(`  <div class="accordion-control-container">
     <button type="button" class="accordion-control expand-all">Expand all</button>
     <button type="button" class="accordion-control collapse-all">Collapse all</button>
   </div>
-`);
+`));
 
   function initializePreview(preview) {
     const accordionElement = preview?.querySelector(".example .accordion");

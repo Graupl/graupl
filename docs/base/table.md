@@ -1,13 +1,14 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const variant = ref("default");
   const modifiers = ref([]);
 
-  function questTable(classes = "", highlight = false) {
+  function renderSupplyTable(classes = "", highlight = false) {
     return `<table${classes ? ` class="${classes}"` : ""}>
-  <caption>Guild supply list</caption>
+  <caption>${exampleCopy.html("table.caption")}</caption>
   <thead>
     <tr>
       <th scope="col">Supply</th>
@@ -17,25 +18,25 @@
   </thead>
   <tbody>
     <tr${highlight ? ' class="highlight"' : ""}>
-      <th scope="row">Torch</th>
+      <th scope="row">${exampleCopy.html("table.firstItem")}</th>
       <td>4</td>
-      <td>Light</td>
+      <td>${exampleCopy.html("table.firstUse")}</td>
     </tr>
     <tr>
-      <th scope="row">Rope</th>
+      <th scope="row">${exampleCopy.html("table.secondItem")}</th>
       <td>2</td>
-      <td>Climbing</td>
+      <td>${exampleCopy.html("table.secondUse")}</td>
     </tr>
     <tr>
-      <th scope="row">Healing potion</th>
+      <th scope="row">${exampleCopy.html("table.thirdItem")}</th>
       <td>6</td>
-      <td>Healing</td>
+      <td>${exampleCopy.html("table.thirdUse")}</td>
     </tr>
   </tbody>
 </table>`;
   }
 
-  const exampleTable = questTable();
+  const exampleTable = computed(() => renderSupplyTable());
   const exampleTableVariant = computed(() => {
     const responsive = modifiers.value.includes("responsive-table");
     const classes = [
@@ -44,9 +45,9 @@
       ...modifiers.value.filter((modifier) => modifier !== "highlight" && modifier !== "responsive-table"),
     ].filter(Boolean).join(" ");
 
-    const table = questTable(classes, modifiers.value.includes("highlight"));
+    const table = renderSupplyTable(classes, modifiers.value.includes("highlight"));
     return responsive
-      ? `<div class="responsive-table" role="region" aria-label="Scrollable guild supply list" tabindex="0">
+      ? `<div class="responsive-table" role="region" aria-label="${exampleCopy.html("table.region")}" tabindex="0">
   ${table.replaceAll("\n", "\n  ")}
 </div>`
       : table;

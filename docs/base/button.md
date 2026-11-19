@@ -1,9 +1,12 @@
 <script setup>
   import { ref, computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const state = ref("default");
   const variant = ref("default");
+
+  const exampleButton = computed(() => `<button type="button" class="button">${exampleCopy.html("button.label")}</button>`);
 
   const exampleButtonState = computed(() => {
     const classes = [
@@ -11,7 +14,7 @@
       state.value !== "default" ? state.value : null,
     ].filter(c => c !== null).join(' ');
 
-    return `<button type="button" class="${classes}">Pack your satchel</button>`;
+    return `<button type="button" class="${classes}">${exampleCopy.html("button.label")}</button>`;
   });
 
   const exampleButtonVariant = computed(() => {
@@ -20,7 +23,7 @@
       variant.value !== "default" ? variant.value : null,
     ].filter(c => c !== null).join(' ');
 
-    return `<button type="button" class="${classes}">Pack your satchel</button>`;
+    return `<button type="button" class="${classes}">${exampleCopy.html("button.label")}</button>`;
   });
 </script>
 
@@ -34,9 +37,7 @@ The button component is meant to be used on `<button>` or `<a>` elements, but ca
 
 The `.button` class is the base class for all button styles.
 
-<live-example>
-  <button type="button" class="button">Pack your satchel</button>
-</live-example>
+<live-example :source-code="exampleButton" />
 
 ## Variants
 

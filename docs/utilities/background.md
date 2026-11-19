@@ -2,10 +2,10 @@
   import { computed, ref } from "vue";
   import { withBase } from "vitepress";
   import LiveExample from "../vue-components/LiveExample.vue";
-
-  const imageUrl = withBase("/card-trail-map.svg");
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   function renderBackground(classes, extraStyles = "", content = "", attributes = "") {
+    const imageUrl = withBase(exampleCopy.get("map.src"));
     const styles = [`background-image: url('${imageUrl}')`, extraStyles].filter(Boolean).join("; ");
 
     return `<div class="h-10 bordered border-dashed border-tertiary-700 ${classes}" style="${styles}"${attributes}>${content}</div>`;
@@ -15,7 +15,7 @@
   const attachmentExample = computed(() => renderBackground(`overflow-auto bg-repeat-repeat ${attachment.value}`, "background-size: 8rem auto", `<div class="h-10"></div>
   <div class="h-10"></div>`, ' tabindex="0" role="region" aria-label="Scrollable background preview"'));
   const clip = ref("bg-clip-border-box");
-  const clipExample = computed(() => renderBackground(`border-7 p-7 text-3xl ${clip.value} ${clip.value === "bg-clip-text" ? "text-transparent" : ""}`, "background-size: cover", `Trail map`));
+  const clipExample = computed(() => renderBackground(`border-7 p-7 text-3xl ${clip.value} ${clip.value === "bg-clip-text" ? "text-transparent" : ""}`, "background-size: cover", exampleCopy.html("map.label")));
   const image = ref("");
   const imageExample = computed(() => renderBackground(`bg-size-cover ${image.value}`));
   const origin = ref("bg-origin-border-box");

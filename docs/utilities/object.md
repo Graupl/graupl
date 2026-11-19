@@ -2,15 +2,16 @@
   import { computed, ref } from "vue";
   import { withBase } from "vitepress";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const fit = ref("object-fit-contain");
   const position = ref("object-position-center");
-  const image = withBase("/card-trail-map.svg");
+  const image = computed(() => withBase(exampleCopy.get("map.src")));
 
-  const fitExample = computed(() => `<img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 ${fit.value}" src="${image}" alt="Illustrated trail map">`);
+  const fitExample = computed(() => `<img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 ${fit.value}" src="${image.value}" alt="${exampleCopy.html("map.alt")}">`);
   const positionExample = computed(() => `<div class="display-flex flex-wrap g-2">
-  <img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image}" alt="Illustrated trail map in a square frame">
-  <img class="display-block w-10 h-8 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image}" alt="Illustrated trail map in a wide frame">
+  <img class="display-block w-10 h-10 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image.value}" alt="${exampleCopy.html("map.alt")} in a square frame">
+  <img class="display-block w-10 h-8 bordered border-dashed border-tertiary-700 object-fit-cover ${position.value}" src="${image.value}" alt="${exampleCopy.html("map.alt")} in a wide frame">
 </div>`);
 </script>
 

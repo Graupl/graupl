@@ -2,11 +2,12 @@
   import { computed, ref } from "vue";
   import { withBase } from "vitepress";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const float = ref("float-left");
   const exampleFloat = computed(() => `<div class="display-flow-root">
-  <img class="${float.value} w-10 h-auto m-2" src="${withBase("/card-trail-map.svg")}" alt="Illustrated trail map" width="480" height="240">
-  <p>Follow the trail past the ruined watchtower and cross the river at the stone bridge. The ogres keep to the valley, so take the ridge path if you’re carrying anything that smells like dinner.</p>
+  <img class="${float.value} w-10 h-auto m-2" src="${withBase(exampleCopy.get("map.src"))}" alt="${exampleCopy.html("map.alt")}" width="480" height="240">
+  <p>${exampleCopy.html("float.body")}</p>
 </div>`);
 </script>
 

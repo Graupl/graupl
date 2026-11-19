@@ -1,44 +1,45 @@
 <script setup>
-  import { useTemplateRef } from "vue";
+  import { computed, useTemplateRef } from "vue";
   import DisclosureMenu from "accessible-menu/disclosure-menu";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const preview = useTemplateRef("navigation-preview");
   const initialized = new WeakSet();
 
-  const exampleNavigation = `
-<nav class="navigation" data-graupl-menu-type="DisclosureMenu" aria-label="Adventurers’ Guild">
-  <a class="navigation-branding" href="#">Adventurers’ Guild</a>
+  const exampleNavigation = computed(() => `
+<nav class="navigation" data-graupl-menu-type="DisclosureMenu" aria-label="${exampleCopy.html("navigation.siteName")}">
+  <a class="navigation-branding" href="#">${exampleCopy.html("navigation.siteName")}</a>
   <button type="button" class="navigation-toggle"
     aria-label="Toggle navigation"></button>
   <ul class="menu">
-    <li class="menu-item"><a class="menu-link" href="#">Guild hall</a></li>
+    <li class="menu-item"><a class="menu-link" href="#">${exampleCopy.html("navigation.firstLink")}</a></li>
     <li class="menu-item submenu-item">
       <button type="button" class="menu-link button link submenu-toggle">
-        Quests
+        ${exampleCopy.html("navigation.submenuLabel")}
       </button>
       <ul class="submenu">
         <li class="menu-item">
-          <a class="menu-link" href="#">Dragon sightings</a>
+          <a class="menu-link" href="#">${exampleCopy.html("navigation.firstSubmenuLink")}</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="#">Ogre patrols</a>
+          <a class="menu-link" href="#">${exampleCopy.html("navigation.secondSubmenuLink")}</a>
         </li>
         <li class="menu-item">
-          <a class="menu-link" href="#">Griffin rescue</a>
+          <a class="menu-link" href="#">${exampleCopy.html("navigation.thirdSubmenuLink")}</a>
         </li>
       </ul>
     </li>
-    <li class="menu-item"><a class="menu-link" href="#">Bestiary</a></li>
+    <li class="menu-item"><a class="menu-link" href="#">${exampleCopy.html("navigation.secondLink")}</a></li>
     <li class="menu-item">
-      <a class="menu-link" href="#">Maps</a>
+      <a class="menu-link" href="#">${exampleCopy.html("navigation.thirdLink")}</a>
     </li>
     <li class="menu-item">
-      <a class="menu-link button tertiary" href="#">Join the guild</a>
+      <a class="menu-link button tertiary" href="#">${exampleCopy.html("navigation.action")}</a>
     </li>
   </ul>
 </nav>
-  `;
+  `);
 
   function initializePreview() {
     const navigation = preview.value?.querySelector(".example .navigation");

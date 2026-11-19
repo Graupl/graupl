@@ -1,5 +1,6 @@
 <script setup>
   import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Alert from "@graupl/core/src/alert/Alert.js";
 
@@ -11,24 +12,24 @@
     const classes = variant.value === "default" ? "alert" : `alert ${variant.value}`;
 
     return `<div class="${classes}">
-  <div class="alert-body">A dragon is circling the ridge trail.</div>
+  <div class="alert-body">${exampleCopy.html("alert.body")}</div>
 </div>`;
   });
 
-  const exampleAlert = `
+  const exampleAlert = computed(() => `
 <div class="alert">
   <div class="alert-header">
-    <p class="alert-title">Dragon on the ridge</p>
+    <p class="alert-title">${exampleCopy.html("alert.title")}</p>
   </div>
   <div class="alert-body">
-    <p>A dragon is circling the ridge trail.</p>
+    <p>${exampleCopy.html("alert.body")}</p>
   </div>
   <div class="alert-footer">
-    <small>Take the river path until the trail is clear.</small>
+    <small>${exampleCopy.html("alert.footer")}</small>
   </div>
-  <button type="button" class="alert-dismisser" aria-label="Dismiss dragon warning">×</button>
+  <button type="button" class="alert-dismisser" aria-label="${exampleCopy.html("alert.dismissLabel")}">×</button>
 </div>
-  `;
+  `);
 
   function initializePreview() {
     const alertElement = preview.value?.querySelector(".example .alert");

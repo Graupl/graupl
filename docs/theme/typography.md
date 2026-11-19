@@ -1,11 +1,13 @@
 <script setup>
+  import { computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
-  const exampleBodyText = `
-<p><b>What to bring</b>: parchment and a quill. <strong>Register by Friday</strong> to reserve a seat.</p>
-<p>We'll start with a reading from <i>Dragon Slaying for Dummies</i>. Bring your <em>best</em> dragon voice.</p>
-<p><small>Please leave your familiar at home.</small></p>
-  `;
+  const exampleBodyText = computed(() => `
+<p><b>What to bring</b>: ${exampleCopy.html("bodyText.supplies")} <strong>Register by Friday</strong> to reserve a seat.</p>
+<p>${exampleCopy.html("bodyText.intro")}<i>${exampleCopy.html("bodyText.book")}</i>${exampleCopy.html("bodyText.activity")}<em>${exampleCopy.html("bodyText.emphasis")}</em>${exampleCopy.html("bodyText.activityEnd")}</p>
+<p><small>${exampleCopy.html("bodyText.note")}</small></p>
+  `);
 
   const exampleHeadings = `
 <h1>Heading 1</h1>

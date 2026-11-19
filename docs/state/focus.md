@@ -1,7 +1,9 @@
 <script setup>
+  import { computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
-  const exampleFocus = '<button type="button" class="button">Open the quest log</button>';
+  const exampleFocus = computed(() => `<button type="button" class="button">${exampleCopy.html("focus.label")}</button>`);
 </script>
 
 # Focus

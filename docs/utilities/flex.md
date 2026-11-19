@@ -1,6 +1,7 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const basis = ref("flex-auto");
   const direction = ref("flex-row");
@@ -13,7 +14,7 @@
 
   const exampleBasis = computed(() => `<div class="${frame}">
   <div class="${block}"></div>
-  <div class="${highlight} text-tertiary-900 flex-no-shrink ${basis.value}">Trail map</div>
+  <div class="${highlight} text-tertiary-900 flex-no-shrink ${basis.value}">${exampleCopy.html("map.label")}</div>
   <div class="${block}"></div>
 </div>`);
 

@@ -1,5 +1,6 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Carousel from "@graupl/core/src/carousel/Carousel.js";
 
@@ -7,40 +8,40 @@
   const indicatorPreview = useTemplateRef("carousel-indicator-preview");
   const carousels = new Map();
 
-  const exampleCarousel = `
-<section class="carousel" aria-label="Field guide" data-graupl-carousel-options='{"autoplay":false}'>
+  const exampleCarousel = computed(() => `
+<section class="carousel" aria-label="${exampleCopy.html("carousel.title")}" data-graupl-carousel-options='{"autoplay":false}'>
   <div class="carousel-control-container">
     <button type="button" class="carousel-control autoplay play" aria-label="Start slide rotation"></button>
     <button type="button" class="carousel-control previous" aria-label="Previous slide"></button>
     <button type="button" class="carousel-control next" aria-label="Next slide"></button>
   </div>
   <div class="carousel-item-container">
-    <div class="carousel-item px-5 pb-5 pt-9 bg-primary-100" role="group" aria-roledescription="slide" aria-label="Dragons">
-      <h3>Dragons</h3>
-      <p>Look for scorched trees before you pitch your tent.</p>
+    <div class="carousel-item px-5 pb-5 pt-9 bg-primary-100" role="group" aria-roledescription="slide" aria-label="${exampleCopy.html("carousel.firstTitle")}">
+      <h3>${exampleCopy.html("carousel.firstTitle")}</h3>
+      <p>${exampleCopy.html("carousel.firstBody")}</p>
     </div>
-    <div class="carousel-item px-5 pb-5 pt-9 bg-secondary-100" role="group" aria-roledescription="slide" aria-label="Ogres" inert>
-      <h3>Ogres</h3>
-      <p>Take the ridge trail to avoid the ogre patrols.</p>
+    <div class="carousel-item px-5 pb-5 pt-9 bg-secondary-100" role="group" aria-roledescription="slide" aria-label="${exampleCopy.html("carousel.secondTitle")}" inert>
+      <h3>${exampleCopy.html("carousel.secondTitle")}</h3>
+      <p>${exampleCopy.html("carousel.secondBody")}</p>
     </div>
-    <div class="carousel-item px-5 pb-5 pt-9 bg-tertiary-100" role="group" aria-roledescription="slide" aria-label="Griffins" inert>
-      <h3>Griffins</h3>
-      <p>Bring a spare glove if you plan to feed a griffin.</p>
+    <div class="carousel-item px-5 pb-5 pt-9 bg-tertiary-100" role="group" aria-roledescription="slide" aria-label="${exampleCopy.html("carousel.thirdTitle")}" inert>
+      <h3>${exampleCopy.html("carousel.thirdTitle")}</h3>
+      <p>${exampleCopy.html("carousel.thirdBody")}</p>
     </div>
   </div>
 </section>
-  `;
+  `);
 
-  const exampleWithIndicators = exampleCarousel
-    .replace('aria-label="Field guide"', 'aria-label="Field guide with slide indicators"')
+  const exampleWithIndicators = computed(() => exampleCarousel.value
+    .replace(`aria-label="${exampleCopy.html("carousel.title")}"`, () => `aria-label="${exampleCopy.html("carousel.indicatorTitle")}"`)
     .replace('  <div class="carousel-item-container">', `  <div class="carousel-tab-container" aria-label="Choose a slide">
-    <button type="button" class="carousel-tab" aria-label="Dragons"></button>
-    <button type="button" class="carousel-tab" aria-label="Ogres"></button>
-    <button type="button" class="carousel-tab" aria-label="Griffins"></button>
+    <button type="button" class="carousel-tab" aria-label="${exampleCopy.html("carousel.firstTitle")}"></button>
+    <button type="button" class="carousel-tab" aria-label="${exampleCopy.html("carousel.secondTitle")}"></button>
+    <button type="button" class="carousel-tab" aria-label="${exampleCopy.html("carousel.thirdTitle")}"></button>
   </div>
   <div class="carousel-item-container">`)
     .replaceAll('pb-5 pt-9', 'pb-9 pt-9')
-    .replaceAll('role="group" aria-roledescription="slide"', 'tabindex="0"');
+    .replaceAll('role="group" aria-roledescription="slide"', 'tabindex="0"'));
 
   function initializePreview(wrapper) {
     if (!wrapper) return;

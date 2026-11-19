@@ -1,13 +1,15 @@
 <script setup>
+  import { computed } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
-  const exampleList = `
+  const exampleList = computed(() => `
 <ul class="list" role="list">
-  <li class="list-item">Rope</li>
-  <li class="list-item">Lantern</li>
-  <li class="list-item">Basilisk mirror</li>
+  <li class="list-item">${exampleCopy.html("list.firstItem")}</li>
+  <li class="list-item">${exampleCopy.html("list.secondItem")}</li>
+  <li class="list-item">${exampleCopy.html("list.thirdItem")}</li>
 </ul>
-  `;
+  `);
 
   const exampleLinks = `
 <ul class="list" role="list">

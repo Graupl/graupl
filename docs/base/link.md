@@ -1,24 +1,25 @@
 <script setup>
   import { ref, computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const state = ref("default");
-  const exampleLink = '<a href="#custom-properties">Read the link reference</a>';
+  const exampleLink = computed(() => `<a href="#example-report">${exampleCopy.html("link.label")}</a>`);
   const exampleLinkState = computed(() => {
     if (state.value === "disabled") {
-      return '<a class="disabled" role="link" aria-disabled="true">Read the link reference</a>';
+      return `<a class="disabled" role="link" aria-disabled="true">${exampleCopy.html("link.label")}</a>`;
     }
 
     return state.value === "default"
-      ? exampleLink
-      : `<a href="#custom-properties" class="${state.value}">Read the link reference</a>`;
+      ? exampleLink.value
+      : `<a href="#example-report" class="${state.value}">${exampleCopy.html("link.label")}</a>`;
   });
-  const exampleStretchedLink = `
+  const exampleStretchedLink = computed(() => `
 <div class="position-relative bordered p-5">
-  <p>Guild records</p>
-  <a class="stretched" href="#custom-properties">Read the link reference</a>
+  <p>${exampleCopy.html("link.summary")}</p>
+  <a class="stretched" href="#example-report">${exampleCopy.html("link.label")}</a>
 </div>
-  `;
+  `);
 </script>
 
 # Links
@@ -69,6 +70,11 @@ These classes are purely visual and do not apply the actual state. For example, 
     </div>
   </template>
 </live-example>
+
+<div id="example-report" class="bordered p-5">
+  <strong v-text='exampleCopy.get("link.reportTitle")'></strong>
+  <p v-text='exampleCopy.get("link.reportBody")'></p>
+</div>
 
 ## Installation
 

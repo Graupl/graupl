@@ -1,24 +1,26 @@
 <script setup>
+  import { computed } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
-  const exampleMenu = `
+  const exampleMenu = computed(() => `
 <ul class="menu">
-  <li class="menu-item"><a class="menu-link" href="#base-classes">Guild hall</a></li>
-  <li class="menu-item"><a class="menu-link" href="#submenus">Quest board</a></li>
+  <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("menu.firstItem")}</a></li>
+  <li class="menu-item"><a class="menu-link" href="#submenus">${exampleCopy.html("menu.secondItem")}</a></li>
 </ul>
-  `;
+  `);
 
-  const exampleSubmenu = `
+  const exampleSubmenu = computed(() => `
 <ul class="menu">
   <li class="menu-item">
-    <span class="menu-link">Field guides</span>
+    <span class="menu-link">${exampleCopy.html("forecast.title")}</span>
     <ul class="submenu show position-static">
-      <li class="menu-item"><a class="menu-link" href="#base-classes">Dragons</a></li>
-      <li class="menu-item"><a class="menu-link" href="#base-classes">Griffins</a></li>
+      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("forecast.firstTitle")}</a></li>
+      <li class="menu-item"><a class="menu-link" href="#base-classes">${exampleCopy.html("forecast.thirdTitle")}</a></li>
     </ul>
   </li>
 </ul>
-  `;
+  `);
 </script>
 
 # Menus

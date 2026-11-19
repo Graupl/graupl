@@ -1,17 +1,18 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const markerPosition = ref("list-style-outside");
   const markerType = ref("list-style-disc");
   const positionExample = computed(() => `<ul class="max-w-10 bordered border-dashed border-tertiary-700 m-0 p-5 pl-8 list-style-disc ${markerPosition.value}">
-  <li>Pack a lantern for the journey through the ogre caves.</li>
-  <li>Bring a spare wick.</li>
+  <li>${exampleCopy.html("utilityList.firstInstruction")}</li>
+  <li>${exampleCopy.html("utilityList.secondInstruction")}</li>
 </ul>`);
   const typeExample = computed(() => `<ul role="list" class="m-0 pl-8 ${markerType.value}">
-  <li>Parchment</li>
-  <li>Quill</li>
-  <li>Trail map</li>
+  <li>${exampleCopy.html("utilityList.firstItem")}</li>
+  <li>${exampleCopy.html("utilityList.secondItem")}</li>
+  <li>${exampleCopy.html("map.label")}</li>
 </ul>`);
 </script>
 

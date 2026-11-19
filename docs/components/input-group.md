@@ -1,22 +1,23 @@
 <script setup>
   import { computed, ref } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const layout = ref("");
-  const exampleField = `<div class="input-group">
-  <label for="familiar-name">Familiar name</label>
-  <input type="text" id="familiar-name" aria-describedby="familiar-name-help">
-  <small class="help-text" id="familiar-name-help">Use the name your familiar answers to.</small>
-</div>`;
+  const exampleField = computed(() => `<div class="input-group">
+  <label for="example-name">${exampleCopy.html("inputGroup.nameLabel")}</label>
+  <input type="text" id="example-name" aria-describedby="example-name-help">
+  <small class="help-text" id="example-name-help">${exampleCopy.html("inputGroup.nameHelp")}</small>
+</div>`);
 
   const exampleLayout = computed(() => `<div class="input-group${layout.value ? ` ${layout.value}` : ""}">
-  <label for="mount">Mount</label>
-  <select id="mount" aria-describedby="mount-help">
-    <option>Griffin</option>
-    <option>Hippogriff</option>
-    <option>Regular horse</option>
+  <label for="example-type">${exampleCopy.html("inputGroup.typeLabel")}</label>
+  <select id="example-type" aria-describedby="example-type-help">
+    <option>${exampleCopy.html("inputGroup.firstOption")}</option>
+    <option>${exampleCopy.html("inputGroup.secondOption")}</option>
+    <option>${exampleCopy.html("inputGroup.thirdOption")}</option>
   </select>
-  <small class="help-text" id="mount-help">Choose a mount for the journey.</small>
+  <small class="help-text" id="example-type-help">${exampleCopy.html("inputGroup.typeHelp")}</small>
 </div>`);
 </script>
 

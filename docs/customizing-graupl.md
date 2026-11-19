@@ -1,12 +1,14 @@
 <script setup>
+  import { computed } from "vue";
   import LiveExample from "./vue-components/LiveExample.vue";
+  import exampleCopy from "./vue-components/exampleCopy.js";
 
-  const example = `<div class="display-flex flex-wrap g-5">
-  <section aria-label="Expedition actions" style="--graupl-button-border-radius: 2rem; --graupl-button-border-width: 4px;">
-    <button type="button" class="button">Join the expedition</button>
+  const example = computed(() => `<div class="display-flex flex-wrap g-5">
+  <section aria-label="${exampleCopy.html("customizing.label")}" style="--graupl-button-border-radius: 2rem; --graupl-button-border-width: 4px;">
+    <button type="button" class="button">${exampleCopy.html("customizing.firstButton")}</button>
   </section>
-  <button type="button" class="button">View the trail map</button>
-</div>`;
+  <button type="button" class="button">${exampleCopy.html("customizing.secondButton")}</button>
+</div>`);
 </script>
 
 # Customizing Graupl
@@ -17,7 +19,7 @@ Each reference page in this documentation site lists the available properties an
 
 ## Change a button's border
 
-The expedition button already has rounded corners and a thicker border. Edit the code to change `2rem` to `0` for square corners, or change `4px` to `1px` for a thinner border.
+The first button already has rounded corners and a thicker border. Edit the code to change `2rem` to `0` for square corners, or change `4px` to `1px` for a thinner border.
 
 You can also move the custom styles to the surrounding `<div>` to see the change take place on both buttons.
 

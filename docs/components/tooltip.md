@@ -1,17 +1,18 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Tooltip from "@graupl/core/src/tooltip/Tooltip.js";
 
   const preview = useTemplateRef("tooltip-preview");
   let tooltip;
 
-  const exampleTooltip = `
+  const exampleTooltip = computed(() => `
 <div class="tooltip">
-  <span class="tooltip-description hide">Griffins nest on the upper ledges.</span>
-  <button type="button" class="tooltip-toggle" aria-label="Griffin nesting grounds"></button>
+  <span class="tooltip-description hide">${exampleCopy.html("tooltip.body")}</span>
+  <button type="button" class="tooltip-toggle" aria-label="${exampleCopy.html("tooltip.label")}"></button>
 </div>
-  `;
+  `);
 
   function initializeTooltip() {
     const tooltipElement = preview.value?.querySelector(".example .tooltip");

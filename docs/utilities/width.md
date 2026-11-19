@@ -1,6 +1,7 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const parentWidth = ref(75);
   const width = ref("w-full");
@@ -10,7 +11,7 @@
     const classes = [width.value, minWidth.value, maxWidth.value].filter(Boolean).join(" ");
 
     return `<div class="bordered border-tertiary-700 border-dashed" style="width: ${parentWidth.value}%">
-  <div class="bordered border-primary-700 bg-primary-300 text-primary-900 p-2 ${classes}">Guild supplies</div>
+  <div class="bordered border-primary-700 bg-primary-300 text-primary-900 p-2 ${classes}">${exampleCopy.html("supplies.label")}</div>
 </div>`;
   });
 </script>

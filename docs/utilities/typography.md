@@ -1,18 +1,19 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
-  const sample = "A field guide to dragons";
+  const sample = computed(() => exampleCopy.html("typography.sample"));
   const textStyle = ref("text-paragraph");
-  const textStyleExample = computed(() => `<div class="${textStyle.value}">${sample}</div>`);
+  const textStyleExample = computed(() => `<div class="${textStyle.value}">${sample.value}</div>`);
   const fontSize = ref("text-xs");
-  const fontSizeExample = computed(() => `<p class="${fontSize.value}">${sample}</p>`);
+  const fontSizeExample = computed(() => `<p class="${fontSize.value}">${sample.value}</p>`);
   const fontStyle = ref("font-style-normal");
-  const fontStyleExample = computed(() => `<p class="${fontStyle.value}">${sample}</p>`);
+  const fontStyleExample = computed(() => `<p class="${fontStyle.value}">${sample.value}</p>`);
   const fontWeight = ref("font-weight-light");
-  const fontWeightExample = computed(() => `<p class="${fontWeight.value}">${sample}</p>`);
+  const fontWeightExample = computed(() => `<p class="${fontWeight.value}">${sample.value}</p>`);
   const textTransform = ref("text-uppercase");
-  const textTransformExample = computed(() => `<p class="${textTransform.value}">${sample}</p>`);
+  const textTransformExample = computed(() => `<p class="${textTransform.value}">${sample.value}</p>`);
 </script>
 
 # Typography Utilities

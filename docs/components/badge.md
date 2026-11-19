@@ -1,13 +1,14 @@
 <script setup>
   import { computed, ref } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const variant = ref("default");
-  const exampleBadge = '<span class="badge w-fit-content">Hydra spotted</span>';
+  const exampleBadge = computed(() => `<span class="badge w-fit-content">${exampleCopy.html("badge.label")}</span>`);
   const exampleBadgeVariant = computed(() =>
     variant.value === "default"
-      ? exampleBadge
-      : `<span class="badge ${variant.value} w-fit-content">Hydra spotted</span>`
+      ? exampleBadge.value
+      : `<span class="badge ${variant.value} w-fit-content">${exampleCopy.html("badge.label")}</span>`
   );
 </script>
 

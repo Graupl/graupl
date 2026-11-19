@@ -1,21 +1,23 @@
 <script setup>
+  import { computed } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const accessibleName = `<button type="button" class="button">
   <span aria-hidden="true">✕</span>
   <span class="visually-hidden">Close</span>
 </button>`;
 
-  const skipLink = `<div class="position-relative">
-  <a class="visually-hidden focusable" href="#guild-supplies">
-    Skip to guild supplies
+  const skipLink = computed(() => `<div class="position-relative">
+  <a class="visually-hidden focusable" href="#supplies">
+    ${exampleCopy.html("skipLink.skip")}
   </a>
-  <p><a href="#guild-map">View the guild map</a></p>
-  <h3 id="guild-supplies" tabindex="-1">Guild supplies</h3>
-  <p>Bring parchment, a quill, and a lantern.</p>
-  <h3 id="guild-map">Guild map</h3>
-  <p>The supply room is beside the entrance.</p>
-</div>`;
+  <p><a href="#location">${exampleCopy.html("skipLink.secondaryLink")}</a></p>
+  <h3 id="supplies" tabindex="-1">${exampleCopy.html("skipLink.supplies")}</h3>
+  <p>${exampleCopy.html("skipLink.suppliesBody")}</p>
+  <h3 id="location">${exampleCopy.html("skipLink.secondaryTitle")}</h3>
+  <p>${exampleCopy.html("skipLink.secondaryBody")}</p>
+</div>`);
 </script>
 
 # Visually Hidden Utilities

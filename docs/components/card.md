@@ -1,6 +1,7 @@
 <script setup>
   import { computed, ref } from "vue";
   import { withBase } from "vitepress";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const layout = ref("");
@@ -11,23 +12,23 @@
 
     return `<div class="${classes}">
   <div class="card-image">
-    <img src="${withBase("/card-trail-map.svg")}" alt="" width="480" height="240">
+    <img src="${withBase(exampleCopy.get("map.src"))}" alt="" width="480" height="240">
   </div>
   <div class="card-content">
     <div class="card-header">
-      <h3 class="card-title">Wyvern Ridge</h3>
+      <h3 class="card-title">${exampleCopy.html("card.title")}</h3>
     </div>
     <div class="card-body">
-      <p>Follow the marked trail to the old watchtower below the wyvern nests.</p>
+      <p>${exampleCopy.html("card.body")}</p>
     </div>
     <div class="card-footer">
-      <small>Two hours on foot</small>
+      <small>${exampleCopy.html("card.footer")}</small>
     </div>
   </div>
 </div>`;
   }
 
-  const basicCard = renderCard();
+  const basicCard = computed(() => renderCard());
   const layoutCard = computed(() => renderCard(layout.value));
   const responsiveCard = computed(() => `
 <div class="container-type-inline" style="width: ${containerWidth.value}%">

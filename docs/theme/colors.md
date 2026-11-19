@@ -1,6 +1,7 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const color = ref("primary");
   const mode = ref("light");
@@ -15,9 +16,9 @@
   );
   const exampleColorMode = computed(() => `
 <div class="${mode.value}-mode bg-primary-100 text-primary-900 p-5">
-  <p><strong>Quest notice</strong></p>
-  <p>Meet the sphinx at the ruined observatory.</p>
-  <button type="button" class="button primary">Accept quest</button>
+  <p><strong>${exampleCopy.html("color.title")}</strong></p>
+  <p>${exampleCopy.html("color.body")}</p>
+  <button type="button" class="button primary">${exampleCopy.html("color.button")}</button>
 </div>
   `);
 </script>

@@ -1,23 +1,24 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Disclosure from "@graupl/core/src/disclosure/Disclosure.js";
 
   const preview = useTemplateRef("disclosure-preview");
   let disclosure;
 
-  const exampleDisclosure = `
+  const exampleDisclosure = computed(() => `
 <button type="button" class="disclosure-toggle"
-  data-graupl-disclosure-target="griffin-field-notes"
-  aria-controls="griffin-field-notes" aria-expanded="false">
-  Griffin field notes
+  data-graupl-disclosure-target="example-disclosure"
+  aria-controls="example-disclosure" aria-expanded="false">
+  ${exampleCopy.html("disclosure.title")}
 </button>
-<div id="griffin-field-notes" class="disclosure hide">
+<div id="example-disclosure" class="disclosure hide">
   <div class="disclosure-content" inert>
-    <p>Griffins nest on the upper ledges. Keep to the river trail during nesting season.</p>
+    <p>${exampleCopy.html("disclosure.body")}</p>
   </div>
 </div>
-  `;
+  `);
 
   function initializePreview() {
     const example = preview.value?.querySelector(".example");

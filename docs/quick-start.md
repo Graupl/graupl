@@ -1,7 +1,9 @@
 <script setup>
+  import { computed } from "vue";
   import LiveExample from "./vue-components/LiveExample.vue";
+  import exampleCopy from "./vue-components/exampleCopy.js";
 
-  const example = `<button type="button" class="button primary">Report a hydra spotting</button>`;
+  const example = computed(() => `<button type="button" class="button primary">${exampleCopy.html("quickStart.label")}</button>`);
 </script>
 
 # Quick Start

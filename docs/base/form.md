@@ -1,44 +1,45 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
-  const exampleTextInput = `
-<label for="adventurer-name">Adventurer name</label>
-<input id="adventurer-name" type="text">
-  `;
+  const exampleTextInput = computed(() => `
+<label for="skater-name">${exampleCopy.html("form.name")}</label>
+<input id="skater-name" type="text">
+  `);
 
-  const exampleSelect = `
-<label for="quest-region">Region</label>
-<select id="quest-region">
-  <option>North woods</option>
-  <option>Silver marsh</option>
+  const exampleSelect = computed(() => `
+<label for="rink-location">${exampleCopy.html("form.location")}</label>
+<select id="rink-location">
+  <option>${exampleCopy.html("form.firstLocation")}</option>
+  <option>${exampleCopy.html("form.secondLocation")}</option>
 </select>
-  `;
+  `);
 
-  const exampleCheckbox = `
-<label><input type="checkbox" name="supplies" value="torch"> Pack a torch</label>
-  `;
+  const exampleCheckbox = computed(() => `
+<label><input type="checkbox" name="supplies" value="skates"> ${exampleCopy.html("form.checkbox")}</label>
+  `);
 
-  const exampleTextarea = `
-<label for="quest-notes">Quest notes</label>
-<textarea id="quest-notes" rows="3"></textarea>
-  `;
+  const exampleTextarea = computed(() => `
+<label for="rental-notes">${exampleCopy.html("form.notes")}</label>
+<textarea id="rental-notes" rows="3"></textarea>
+  `);
 
-  const exampleFieldset = `
+  const exampleFieldset = computed(() => `
 <fieldset>
-  <legend>Departure time</legend>
-  <label><input type="radio" name="departure" value="dawn"> Dawn</label>
-  <label><input type="radio" name="departure" value="dusk"> Dusk</label>
+  <legend>${exampleCopy.html("form.session")}</legend>
+  <label><input type="radio" name="session" value="morning"> ${exampleCopy.html("form.firstSession")}</label>
+  <label><input type="radio" name="session" value="afternoon"> ${exampleCopy.html("form.secondSession")}</label>
 </fieldset>
-  `;
+  `);
   const variant = ref("default");
   const exampleFormVariant = computed(() => {
     const variantClass = variant.value === "default" ? "" : ` class="${variant.value}"`;
 
     return `<fieldset${variantClass}>
-  <legend>Quest registration</legend>
-  <label for="quest-party-name">Party name</label>
-  <input id="quest-party-name" type="text">
+  <legend>${exampleCopy.html("form.registration")}</legend>
+  <label for="skating-group-name">${exampleCopy.html("form.group")}</label>
+  <input id="skating-group-name" type="text">
 </fieldset>`;
   });
 </script>

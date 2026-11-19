@@ -1,29 +1,30 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Tabs from "@graupl/core/src/tabs/Tabs.js";
 
   const preview = useTemplateRef("tabs-preview");
   let tabs;
 
-  const exampleTabs = `
+  const exampleTabs = computed(() => `
 <div class="tabs">
-  <div class="tab-list" aria-label="Field guides">
-    <button type="button" class="tab-toggle" aria-selected="true">Dragons</button>
-    <button type="button" class="tab-toggle">Ogres</button>
-    <button type="button" class="tab-toggle">Griffins</button>
+  <div class="tab-list" aria-label="${exampleCopy.html("forecast.title")}">
+    <button type="button" class="tab-toggle" aria-selected="true">${exampleCopy.html("forecast.firstTitle")}</button>
+    <button type="button" class="tab-toggle">${exampleCopy.html("forecast.secondTitle")}</button>
+    <button type="button" class="tab-toggle">${exampleCopy.html("forecast.thirdTitle")}</button>
   </div>
   <div class="tab-content show" tabindex="0">
-    <p>Look for scorched trees before you pitch your tent.</p>
+    <p>${exampleCopy.html("forecast.firstBody")}</p>
   </div>
   <div class="tab-content" tabindex="0">
-    <p>Take the ridge trail to avoid the ogre patrols.</p>
+    <p>${exampleCopy.html("forecast.secondBody")}</p>
   </div>
   <div class="tab-content" tabindex="0">
-    <p>Bring a spare glove if you plan to feed a griffin.</p>
+    <p>${exampleCopy.html("forecast.thirdBody")}</p>
   </div>
 </div>
-  `;
+  `);
 
   function initializePreview() {
     const tabsElement = preview.value?.querySelector(".example .tabs");

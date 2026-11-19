@@ -1,35 +1,36 @@
 <script setup>
-  import { onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
   import Breadcrumb from "@graupl/core/src/breadcrumb/Breadcrumb.js";
 
   const preview = useTemplateRef("breadcrumb-preview");
   let breadcrumb;
 
-  const exampleBreadcrumb = `
+  const exampleBreadcrumb = computed(() => `
 <nav aria-label="Breadcrumb">
   <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Guild hall</a></li>
-    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Field guides</a></li>
-    <li class="breadcrumb-item" aria-current="page">Griffins</li>
+    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">${exampleCopy.html("breadcrumb.root")}</a></li>
+    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">${exampleCopy.html("breadcrumb.section")}</a></li>
+    <li class="breadcrumb-item" aria-current="page">${exampleCopy.html("breadcrumb.currentPage")}</li>
   </ol>
 </nav>
-  `;
+  `);
 
-  const exampleCollapsibleBreadcrumb = `
+  const exampleCollapsibleBreadcrumb = computed(() => `
 <nav aria-label="Collapsible breadcrumb">
-  <ol id="griffin-breadcrumb" class="breadcrumb hide">
-    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Guild hall</a></li>
+  <ol id="example-breadcrumb" class="breadcrumb hide">
+    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">${exampleCopy.html("breadcrumb.root")}</a></li>
     <li class="breadcrumb-item">
       <button type="button" class="breadcrumb-toggle" aria-label="Show more breadcrumbs"
-        aria-expanded="false" aria-controls="griffin-breadcrumb">…</button>
+        aria-expanded="false" aria-controls="example-breadcrumb">…</button>
     </li>
-    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Field guides</a></li>
-    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">Winged beasts</a></li>
-    <li class="breadcrumb-item" aria-current="page">Griffins</li>
+    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">${exampleCopy.html("breadcrumb.section")}</a></li>
+    <li class="breadcrumb-item"><a class="breadcrumb-link" href="#">${exampleCopy.html("breadcrumb.subcategory")}</a></li>
+    <li class="breadcrumb-item" aria-current="page">${exampleCopy.html("breadcrumb.currentPage")}</li>
   </ol>
 </nav>
-  `;
+  `);
 
   function initializePreview() {
     const breadcrumbElement = preview.value?.querySelector(".example .breadcrumb");

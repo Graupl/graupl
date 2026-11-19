@@ -1,13 +1,14 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const clear = ref("clear-none");
   const exampleClear = computed(() => `<div class="display-flow-root bordered border-dashed border-tertiary-700 p-3" dir="ltr">
   <div class="float-left w-quarter h-8 bg-primary-300 text-primary-900 p-2">Left</div>
   <div class="float-right w-quarter h-9 bg-primary-300 text-primary-900 p-2">Right</div>
   <div class="${clear.value} bordered border-tertiary-700">
-    <span class="display-inline-block bg-tertiary-300 text-tertiary-900 p-2">Trail notes</span>
+    <span class="display-inline-block bg-tertiary-300 text-tertiary-900 p-2">${exampleCopy.html("clear.label")}</span>
   </div>
 </div>`);
 </script>

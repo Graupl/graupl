@@ -2,6 +2,7 @@
   import { computed, ref } from "vue";
   import { withBase } from "vitepress";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const ratio = ref("one-by-one");
   const forceRatio = ref(true);
@@ -10,7 +11,7 @@
 </div>`);
   const imageExample = computed(() => `<div class="max-w-10">
   <div class="ratio one-by-one bordered border-tertiary-700 border-dashed">
-    <img class="${forceRatio.value ? "force-ratio" : "w-full h-auto"}" src="${withBase("/card-trail-map.svg")}" alt="Illustrated trail map" width="480" height="240">
+    <img class="${forceRatio.value ? "force-ratio" : "w-full h-auto"}" src="${withBase(exampleCopy.get("map.src"))}" alt="${exampleCopy.html("map.alt")}" width="480" height="240">
   </div>
 </div>`);
 </script>

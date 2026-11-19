@@ -42,21 +42,21 @@ Sass variables marked with `!default` have a value you can replace. To replace o
 
 ## Adding a theme color palette
 
-A palette is a named group of colors. Add one to the color module's `$colors` map, which stores palettes by name. This version of `styles.scss` adds a palette named `moss` with nine shades, from the lightest at `100` to the darkest at `900`.
+A palette is a named group of colors. Add one to the color module's `$colors` map, which stores palettes by name. This version of `styles.scss` adds a palette named `ice` with nine shades, from the lightest at `100` to the darkest at `900`.
 
 ```scss
 @use "pkg:@graupl/core/src/theme/color/defaults.scss" with (
   $colors: (
-    "moss": (
-      "100": #e6f4d7,
-      "200": #d0e7b7,
-      "300": #b5d590,
-      "400": #97bd6b,
-      "500": #7ba34e,
-      "600": #60843b,
-      "700": #49672d,
-      "800": #354d20,
-      "900": #223313,
+    "ice": (
+      "100": #eff8ff,
+      "200": #dbeefb,
+      "300": #b9dff5,
+      "400": #90c8e8,
+      "500": #65acd6,
+      "600": #3e86b0,
+      "700": #2c6486,
+      "800": #214a65,
+      "900": #162f42,
     ),
   ),
 );
@@ -64,16 +64,16 @@ A palette is a named group of colors. Add one to the color module's `$colors` ma
 @use "pkg:@graupl/core";
 ```
 
-Compiling this palette adds custom properties and utility classes such as `.bg-moss-100` and `.text-moss-900`.
+Compiling this palette adds custom properties and utility classes such as `.bg-ice-100` and `.text-ice-900`.
 
-Adding a colour palette also generates a new colour variant for components with theme variants enabled. Add `.moss` alongside `.button` to use the new palette on a button.
+Adding a colour palette also generates a new colour variant for components with theme variants enabled. Add `.ice` alongside `.button` to use the new palette on a button.
 
 ```html
-<button type="button" class="button moss">Join the expedition</button>
+<button type="button" class="button ice">Reserve skates</button>
 ```
 
 Each component's theme map chooses which shades its variant uses. See [Theme Colors](./theme/colors.md) for more on palettes.
 
 ::: info Replacing an existing palette
-You can also replace Graupl's default palettes by setting them to different values in your `@use ... with` statement. Try renaming "moss" to "primary" and see what happens!
+You can also replace Graupl's default palettes by setting them to different values in your `@use ... with` statement. Try renaming "ice" to "primary" and see what happens!
 :::

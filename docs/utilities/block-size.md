@@ -1,6 +1,7 @@
 <script setup>
   import { computed, ref } from "vue";
   import LiveExample from "../vue-components/LiveExample.vue";
+  import exampleCopy from "../vue-components/exampleCopy.js";
 
   const parentSize = ref(16);
   const writingMode = ref("horizontal-tb");
@@ -14,7 +15,7 @@
     const parentBlockSize = writingMode.value === "vertical-rl" ? `min(${size}, 100%)` : size;
 
     return `<div class="bordered border-tertiary-700 border-dashed overflow-auto" style="writing-mode: ${writingMode.value}; block-size: ${parentBlockSize}; inline-size: 6rem">
-  <div class="bg-primary-300 text-primary-900 overflow-hidden ${classes}" style="inline-size: 100%">Guild supplies</div>
+  <div class="bg-primary-300 text-primary-900 overflow-hidden ${classes}" style="inline-size: 100%">${exampleCopy.html("supplies.label")}</div>
 </div>`;
   });
 </script>
