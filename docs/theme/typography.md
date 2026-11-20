@@ -116,7 +116,7 @@ The following custom properties can be used to customize the typography theme:
 | `--graupl-small-word-spacing`       | The word spacing of small text.                          | `var(--graupl-word-spacing)`                                                                            |
 | `--graupl-small-margin`             | The margin of small text.                                | `0 0 var(--graupl-spacer-2) 0`                                                                          |
 | `--graupl-bold-font-size`           | The font size of bold text.                              | `var(--graupl-font-size)`                                                                               |
-| `--graupl-bold-font-weight`         | The font weight of bold text.                            | `var(--graupl-font-weight)`                                                                             |
+| `--graupl-bold-font-weight`         | The font weight of bold text.                            | `var(--graupl-font-weight-bold)`                                                                        |
 | `--graupl-bold-font-style`          | The font style of bold text.                             | `var(--graupl-font-style)`                                                                              |
 | `--graupl-bold-font-variant`        | The font variant of bold text.                           | `var(--graupl-font-variant)`                                                                            |
 | `--graupl-bold-color`               | The text colour of bold text.                            | `var(--graupl-font-color)`                                                                              |
