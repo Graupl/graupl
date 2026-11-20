@@ -1,12 +1,9 @@
-## [1.0.0-beta.60](https://github.com/Graupl/graupl/compare/v1.0.0-beta.59...v1.0.0-beta.60) (2026-11-18)
+## [1.0.0-beta.61](https://github.com/Graupl/graupl/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-11-20)
 
 
-### Build System
+### Documentation
 
-* split packages into their own repos ([f2bee6a](https://github.com/Graupl/graupl/commit/f2bee6a0b702801c8681ce5f85ce704e8664ecfa))
-* update core, icons, and navigation shelf to latest ([5445530](https://github.com/Graupl/graupl/commit/5445530a4702eadd9f92d4eda29580c87dd8eb9e))
-
-
-### Continuous Integration
-
-* remove github publishing ([376a24c](https://github.com/Graupl/graupl/commit/376a24c7299802d015a17873e8983ef804bde3fa))
+* fix examples for tabs and menus ([b11d8db](https://github.com/Graupl/graupl/commit/b11d8db0c29a7e0d3077d4c3700998456996737c))
+* fix license link ([0e15bba](https://github.com/Graupl/graupl/commit/0e15bbafc2214ba84cee395c24523e4edf79db38))
+* **typography:** correct information about b and strong tags ([1923b46](https://github.com/Graupl/graupl/commit/1923b46dd1e99b6a6875a3ac621df12c44870521))
+* update examples to be cold weather themed ([11de7c5](https://github.com/Graupl/graupl/commit/11de7c5a9a14269365f0ba3a72204bf013cb0080))
