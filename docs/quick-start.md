@@ -44,6 +44,28 @@ Once the stylesheet is loaded, add this button inside your page's `<body>`. The 
 
 <live-example :source-code="example" />
 
+## Create a theme
+
+Create your own Graupl theme by setting CSS custom properties on `:root`, the selector for your page's `<html>` element.
+
+```css
+:root {
+  --graupl-border-width: 1px;
+  --graupl-border-radius: 0;
+  --graupl-button-border-radius: 100vw;
+}
+```
+
+Import or link to your custom styles _after_ Graupl's stylesheet.
+
+You can also scope properties to specific components, such as cards, by adding more specific selectors.
+
+```css
+.card {
+  --graupl-button-border-radius: 0;
+}
+```
+
 ## When to add JavaScript
 
 Base styles such as [Buttons](./base/button.md), utilities, and components such as [Badges](./components/badge.md) work with CSS alone. Interactive components such as [Accordions](./components/accordion.md) also use JavaScript to open and close panels.
