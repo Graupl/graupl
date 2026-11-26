@@ -1,11 +1,12 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Tooltip from "@graupl/core/src/tooltip/Tooltip.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Tooltip from "@graupl/core/src/tooltip/Tooltip.js";
 
-  const preview = useTemplateRef("tooltip-preview");
-  let tooltip;
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleTooltip = computed(() => `
 <div class="tooltip">
@@ -14,21 +15,75 @@
 </div>
   `);
 
-  function initializeTooltip() {
-    const tooltipElement = preview.value?.querySelector(".example .tooltip");
+  const optionsControls = [
+    {
+      name: "expandOnFocus",
+      defaultValue: true,
+      label: "Expand on keyboard focus",
+      help: "Show the tooltip when you tab to its trigger. Enabled by default.",
+    },
+    {
+      name: "hoverType",
+      defaultValue: "on",
+      checkedValue: "on",
+      uncheckedValue: "off",
+      label: "Expand on mouse hover",
+      help: "Show the tooltip when you move the mouse over its trigger. Enabled by default.",
+    },
+  ];
 
-    if (tooltip?.dom.tooltip === tooltipElement) return;
+  const optionsAttribute = "data-graupl-tooltip-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    tooltip?.dispose();
-    tooltip = tooltipElement && new Tooltip({
-      tooltipElement,
-      tooltipToggleElement: tooltipElement.querySelector(".tooltip-toggle"),
-      tooltipDescriptionElement: tooltipElement.querySelector(".tooltip-description"),
+  const exampleWithOptions = computed(() =>
+    exampleTooltip.value
+      .replace('class="tooltip', `data-graupl-tooltip-options='${JSON.stringify(optionValues.value)}' class="tooltip`));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .tooltip");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.tooltip === element) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    instances.set(wrapper, new Tooltip({
+      ...options,
+      tooltipElement: element,
+      tooltipToggleElement: element.querySelector(".tooltip-toggle"),
+      tooltipDescriptionElement: element.querySelector(".tooltip-description"),
       initialize: true,
-    });
+    }));
   }
 
-  onBeforeUnmount(() => tooltip?.dispose());
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Tooltips
@@ -47,8 +102,8 @@ By default, the tooltip opens when you hover over the button or Tab to it. Click
 The preview limits the description width so it fits beside the button on narrow screens.
 :::
 
-<div ref="tooltip-preview">
-  <live-example :source-code="exampleTooltip" example-class="tooltip-preview" @updated="initializeTooltip" />
+<div ref="preview">
+  <live-example :source-code="exampleTooltip" example-class="tooltip-preview" @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -60,6 +115,41 @@ import generateTooltips from "@graupl/core/tooltip/generator";
 
 generateTooltips();
 ```
+
+## JavaScript customization
+
+Use `data-graupl-tooltip-options` to customize a tooltip. The example below shows how `expandOnFocus` and `hoverType` change its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Tooltip options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`tooltip-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`tooltip-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+              :true-value="control.checkedValue ?? true"
+              :false-value="control.uncheckedValue ?? false"
+            >
+            <label :for="`tooltip-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`tooltip-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -242,3 +332,41 @@ The following Sass variables can be used to customize the generation of the tool
 | `$tooltip-display`                     | Default for tooltip display.                                                             | `inline`                            |
 | `$tooltip-width`                       | Default for tooltip width.                                                               | `fit-content`                       |
 | `$tooltip-description-width`           | Default for tooltip description width.                                                   | `30ch`                              |
+
+## Generator options
+
+The following options can be used to customize the tooltip component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.tooltip` | CSS selector for tooltip elements. |
+| `controllerSelector` | `.tooltip-toggle` | CSS selector for the tooltip trigger inside each component. |
+| `descriptionSelector` | `.tooltip-description` | CSS selector for the description inside each tooltip. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-tooltip-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the tooltip component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `tooltipElement` | Required | Root element for the tooltip. The generator supplies this element. |
+| `tooltipToggleElement` | Required | Tooltip trigger. The generator finds it using `controllerSelector`. |
+| `tooltipDescriptionElement` | Required | Element containing the tooltip text. The generator finds it using `descriptionSelector`. |
+| `expandClass` | `show` | Class names applied in the expanded state. |
+| `collapseClass` | `hide` | Class names applied in the collapsed state. |
+| `transitionClass` | `transitioning` | Class names applied during a transition. |
+| `transitionDuration` | `150` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `expandOnFocus` | `true` | Expand when a user tabs to the trigger or when you call the component's `focus()` method. |
+| `collapseOnBlur` | `true` | Collapse when keyboard focus moves outside, when a user clicks outside while the component has focus, or when you call its `blur()` method. |
+| `hoverType` | `on` | Use `off` to disable mouse hover. Both `on` and `dynamic` enable it. With `off` or `dynamic`, the document-level Escape handler requires the tooltip's focus state to be `self`. |
+| `hoverDelay` | `250` | Default delay for mouse entry and exit in milliseconds. |
+| `enterDelay` | `-1` | Delay before expanding on mouse entry in milliseconds. `-1` uses `hoverDelay`. |
+| `leaveDelay` | `-1` | Delay before collapsing on mouse exit in milliseconds. `-1` uses `hoverDelay`. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |

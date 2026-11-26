@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, useTemplateRef } from "vue";
+import { onBeforeUnmount, onMounted, useTemplateRef } from "vue";
 import { useData } from "vitepress";
 import DisclosureMenu from "accessible-menu/disclosure-menu";
 import Treeview from "accessible-menu/treeview";
@@ -14,12 +14,12 @@ const shelfLockToggle = useTemplateRef("shelfLockToggle");
 const shelfHoverToggle = useTemplateRef("shelfHoverToggle");
 const shelfSideToggle = useTemplateRef("shelfSideToggle");
 const shelfToggle = useTemplateRef("shelfToggle");
-const menus = ref([]);
+const menus = [];
 
 onMounted(() => {
   const mainMenu = mainNav.value.querySelector(".menu");
 
-  menus.value.push(
+  menus.push(
     new DisclosureMenu({
       menuElement: mainMenu,
       controllerElement: mainNav.value.querySelector(".navigation-toggle"),
@@ -27,16 +27,16 @@ onMounted(() => {
       optionalKeySupport: true,
     })
   );
-  menus.value.push(
+  menus.push(
     new DisclosureMenu({
       menuElement: socialNav.value.querySelector(".menu"),
       optionalKeySupport: true,
     })
   );
-  menus.value.push(
+  menus.push(
     new Treeview({
       menuElement: sidebarNav.value.querySelector(".menu"),
-      submenuToggleSelector: "button",
+      submenuTogglesSelector: "button",
     })
   );
 
@@ -50,6 +50,8 @@ onMounted(() => {
     initialize: true,
   });
 });
+
+onBeforeUnmount(() => menus.forEach((menu) => menu.dispose()));
 </script>
 
 <template>

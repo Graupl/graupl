@@ -58,7 +58,7 @@
     "@eslint/js": "^9.0.0",
     "@graupl/icons": "^1.0.0-beta.60",
     "@graupl/navigation-shelf": "^1.0.0-beta.60",
-    "accessible-menu": "^4.2.2",
+    "accessible-menu": "^5.0.0-beta.7",
     "chokidar-cli": "^3.0.0",
     "codemirror": "^6.0.2",
     "commit-and-tag-version": "^12.5.1",

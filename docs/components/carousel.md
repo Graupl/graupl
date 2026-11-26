@@ -1,12 +1,13 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Carousel from "@graupl/core/src/carousel/Carousel.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Carousel from "@graupl/core/src/carousel/Carousel.js";
 
-  const preview = useTemplateRef("carousel-preview");
+  const preview = useTemplateRef("preview");
   const indicatorPreview = useTemplateRef("carousel-indicator-preview");
-  const carousels = new Map();
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleCarousel = computed(() => `
 <section class="carousel" aria-label="${exampleCopy.html("carousel.title")}" data-graupl-carousel-options='{"autoplay":false}'>
@@ -43,29 +44,73 @@
     .replaceAll('pb-5 pt-9', 'pb-9 pt-9')
     .replaceAll('role="group" aria-roledescription="slide"', 'tabindex="0"'));
 
+  const optionsControls = [
+    {
+      name: "autoplay",
+      defaultValue: true,
+      label: "Start slide rotation automatically",
+      help: "Start rotating slides when the carousel initializes. Use the rotation button to stop them. Enabled by default.",
+    },
+    {
+      name: "loop",
+      defaultValue: true,
+      label: "Loop slides",
+      help: "Keep scrolling in the same direction past either end. With Loop off, the carousel scrolls back across the track to the opposite end. Enabled by default.",
+    },
+  ];
+
+  const optionsAttribute = "data-graupl-carousel-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
+
+  const exampleWithOptions = computed(() => exampleCarousel.value.replace(
+    /data-graupl-carousel-options='[^']*'/,
+    `data-graupl-carousel-options='${JSON.stringify(optionValues.value)}'`
+  ));
+
   function initializePreview(wrapper) {
-    if (!wrapper) return;
+    const element = wrapper?.querySelector(".example .carousel");
+    const previous = instances.get(wrapper);
 
-    const element = wrapper.querySelector(".example .carousel");
-    const carousel = carousels.get(wrapper);
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.carousel === element) return;
 
-    if (carousel?.dom.carousel === element) return;
+    previous?.dispose();
+    instances.delete(wrapper);
 
-    carousel?.dispose();
-    carousels.delete(wrapper);
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
 
-    if (element) {
-      carousels.set(wrapper, new Carousel({
-        carouselElement: element,
-        autoplay: false,
-        initialize: true,
-      }));
+    // Keep the basic and indicator examples paused while you try the autoplay controls.
+    let options = isOptionsPreview ? {} : { autoplay: false };
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
     }
+
+    instances.set(wrapper, new Carousel({
+      ...options,
+      carouselElement: element,
+      initialize: true,
+    }));
   }
 
-  onBeforeUnmount(() => {
-    carousels.forEach(carousel => carousel.dispose());
-  });
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Carousels
@@ -80,8 +125,8 @@ Use `.carousel` on a labelled section and group its slides in `.carousel-item-co
 
 Put the buttons in `.carousel-control-container`. Use `.carousel-control` on each button with `.autoplay` to start or stop rotation, `.previous` to go back, or `.next` to advance. Give each button an accessible name. Once initialized, the rotation button’s name changes to reflect whether it starts or stops rotation.
 
-<div ref="carousel-preview">
-  <live-example :source-code="exampleCarousel" @mounted="initializePreview(preview)" @updated="initializePreview(preview)" />
+<div ref="preview">
+  <live-example :source-code="exampleCarousel" @updated="initializePreview(preview)" />
 </div>
 
 ## Slide indicators
@@ -95,7 +140,7 @@ Initialization sets the roles and ARIA attributes that link each indicator to it
 Focusing an indicator selects its slide by default. Set `automaticActivation` to `false` in the carousel options to select slides manually with Enter or Space.
 
 <div ref="carousel-indicator-preview">
-  <live-example :source-code="exampleWithIndicators" @mounted="initializePreview(indicatorPreview)" @updated="initializePreview(indicatorPreview)" />
+  <live-example :source-code="exampleWithIndicators" @updated="initializePreview(indicatorPreview)" />
 </div>
 
 ## Initialization
@@ -108,7 +153,38 @@ import generateCarousels from "@graupl/core/carousel/generator";
 generateCarousels();
 ```
 
-By default, slides rotate automatically. Set `data-graupl-carousel-options='{"autoplay":false}'` on the carousel to start with rotation stopped. Both previews start with rotation stopped.
+## JavaScript customization
+
+Use `data-graupl-carousel-options` to customize a carousel. The example below shows how `autoplay` and `loop` change its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Carousel options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`carousel-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`carousel-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`carousel-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`carousel-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -275,3 +351,44 @@ The following Sass variables can be used to customize the generation of the caro
 | `$carousel-previous-content`                | Icon content for the previous control.                                                    | `"'◀'"`                        |
 | `$carousel-theme-mappings`                  | A map of properties and color shades used to generate all carousel variants.              | `()`                           |
 | `$carousel-theme-map`                       | A map of all properties, colors, and color shades used to generate all carousel variants. | `()`                           |
+
+## Generator options
+
+The following options can be used to customize the carousel component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.carousel` | CSS selector for carousel elements. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-carousel-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the carousel component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `carouselElement` | Required | Root element for the carousel. The generator supplies this element. |
+| `carouselItemsSelector` | `.carousel-item` | CSS selector for carousel items. |
+| `carouselItemContainerSelector` | `.carousel-item-container` | CSS selector for the carousel item container. |
+| `carouselControlsSelector` | `.carousel-control` | CSS selector for carousel controls. |
+| `carouselControlContainerSelector` | `.carousel-control-container` | CSS selector for carousel control container. |
+| `carouselTabsSelector` | `.carousel-tab` | CSS selector for slide indicators. |
+| `carouselTabContainerSelector` | `.carousel-tab-container` | CSS selector for the carousel tab container. |
+| `autoplaySelector` | `.autoplay` | CSS selector for the autoplay button. |
+| `nextSelector` | `.next` | CSS selector for the next button. |
+| `previousSelector` | `.previous` | CSS selector for the previous button. |
+| `activeClass` | `active` | Class names applied to the active slide and its indicator. |
+| `playClass` | `play` | Class names applied to the rotation button when it offers to start rotation. |
+| `pauseClass` | `pause` | Class names applied to the rotation button when it offers to stop rotation. |
+| `autoplay` | `true` | Start with automatic slide rotation enabled. |
+| `automaticActivation` | `true` | Activate a slide when its indicator receives focus. |
+| `transitionDelay` | `10000` | Time between automatic slide changes in milliseconds. |
+| `playText` | `Play` | Accessible label for the rotation button when it offers to start rotation. |
+| `pauseText` | `Pause` | Accessible label for the rotation button when it offers to stop rotation. |
+| `itemsPerPage` | `1` | Number of slides the carousel copies at each end when looping. Set slide widths in CSS to control how many slides are visible. |
+| `loop` | `true` | Keep scrolling in the same direction past either end. When disabled, the carousel scrolls back across the track to the opposite end. |
+| `prefix` | `graupl-` | Prefix passed to the shared component class. Carousel currently generates no prefixed CSS custom properties or attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |
