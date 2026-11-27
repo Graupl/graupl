@@ -35,6 +35,7 @@
 
   const exampleWithIndicators = computed(() => exampleCarousel.value
     .replace(`aria-label="${exampleCopy.html("carousel.title")}"`, () => `aria-label="${exampleCopy.html("carousel.indicatorTitle")}"`)
+    .replace('{"autoplay":false}', '{"autoplay":false,"automaticActivation":true}')
     .replace('  <div class="carousel-item-container">', `  <div class="carousel-tab-container" aria-label="Choose a slide">
     <button type="button" class="carousel-tab" aria-label="${exampleCopy.html("carousel.firstTitle")}"></button>
     <button type="button" class="carousel-tab" aria-label="${exampleCopy.html("carousel.secondTitle")}"></button>
@@ -99,20 +100,28 @@
 
     // Keep the basic and indicator examples paused while you try the autoplay controls.
     let options = isOptionsPreview ? {} : { autoplay: false };
-    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+    const attribute = (isOptionsPreview || wrapper === indicatorPreview.value)
+      ? element.getAttribute(optionsAttribute)
+      : null;
 
     if (attribute) {
+      let editedOptions;
+
       // An edit can leave incomplete JSON until the next keystroke.
       try {
-        options = JSON.parse(attribute);
+        editedOptions = JSON.parse(attribute);
       } catch {
-        options = null;
+        editedOptions = null;
       }
 
-      if (!options || typeof options !== "object" || Array.isArray(options)) {
-        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+      if (!editedOptions || typeof editedOptions !== "object" || Array.isArray(editedOptions)) {
+        if (isOptionsPreview) optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
         return;
       }
+
+      options = isOptionsPreview
+        ? editedOptions
+        : { ...options, automaticActivation: editedOptions.automaticActivation };
     }
 
     instances.set(wrapper, new Carousel({
@@ -149,7 +158,7 @@ Use `.carousel-tab-container` to group the indicators. Add one `.carousel-tab` b
 
 Initialization sets the roles and ARIA attributes that link each indicator to its panel. If a panel starts with text, add `tabindex="0"` so readers can reach it by pressing Tab.
 
-Focusing an indicator selects its slide by default. Set `automaticActivation` to `false` in the carousel options to select slides manually with Enter or Space.
+Focusing an indicator selects its slide by default. In the example below, set `automaticActivation` to `false` in `data-graupl-carousel-options` to select slides manually with Enter or Space.
 
 <div ref="carousel-indicator-preview">
   <live-example :source-code="exampleWithIndicators" @updated="initializePreview(indicatorPreview)" />
