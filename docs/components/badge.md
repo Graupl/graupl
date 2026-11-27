@@ -4,11 +4,11 @@
   import LiveExample from "../vue-components/LiveExample.vue";
 
   const variant = ref("default");
-  const exampleBadge = computed(() => `<span class="badge w-fit-content">${exampleCopy.html("badge.label")}</span>`);
+  const exampleBadge = computed(() => `<span class="badge">${exampleCopy.html("badge.label")}</span>`);
   const exampleBadgeVariant = computed(() =>
     variant.value === "default"
       ? exampleBadge.value
-      : `<span class="badge ${variant.value} w-fit-content">${exampleCopy.html("badge.label")}</span>`
+      : `<span class="badge ${variant.value}">${exampleCopy.html("badge.label")}</span>`
   );
 </script>
 
@@ -18,7 +18,7 @@ The badge component provides a set of classes to style short labels, such as a s
 
 ## Base class
 
-The `.badge` class is the base class for all badge styles. Use `.w-fit-content` if you want the badge to fit its label.
+The `.badge` class is the base class for all badge styles.
 
 <live-example :source-code="exampleBadge" />
 
