@@ -139,7 +139,7 @@ function tt(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function U(t, { shouldThrow: e = !0 } = {}) {
+function Q(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -215,10 +215,10 @@ function f(t) {
 function it(t) {
 	return n("string", { value: t }), `${t.charAt(0).toLowerCase()}${t.slice(1)}`;
 }
-function G(t) {
+function U(t) {
 	return n("string", { value: t }), `${t.charAt(0).toUpperCase()}${t.slice(1)}`;
 }
-var A = class K {
+var S = class P {
 	_scope;
 	_type = "_default";
 	_storage = {};
@@ -228,7 +228,7 @@ var A = class K {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (_(K, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (_(P, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -423,7 +423,7 @@ var ot = class {
 		return this._scope;
 	}
 	get eventPrefix() {
-		return this._eventPrefix !== "" ? this._eventPrefix : `${it(this.scope)}${G(this.name)}`;
+		return this._eventPrefix !== "" ? this._eventPrefix : `${it(this.scope)}${U(this.name)}`;
 	}
 	get id() {
 		return this._id;
@@ -526,14 +526,14 @@ var ot = class {
 	_handleKeydown() {}
 	_handleKeyup() {}
 	_store() {
-		this._shouldStore && (_(A, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status || new A({ scope: `${this.scope}Storage` }), window[`${this.scope}Storage`].set({
+		this._shouldStore && (_(S, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status || new S({ scope: `${this.scope}Storage` }), window[`${this.scope}Storage`].set({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey,
 			data: this
 		}));
 	}
 	_unstore() {
-		this._shouldStore && _(A, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status && window[`${this.scope}Storage`].clear({
+		this._shouldStore && _(S, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status && window[`${this.scope}Storage`].clear({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey
 		});
@@ -572,7 +572,7 @@ var ot = class {
 	}
 	_registerEvent(t, { bubbles: e = !0, detail: s = {} } = {}) {
 		n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: s });
-		const i = `${this.eventPrefix}${G(t)}`;
+		const i = `${this.eventPrefix}${U(t)}`;
 		this._events[t] = new CustomEvent(i, {
 			bubbles: e,
 			detail: {
@@ -679,7 +679,7 @@ var ot = class {
 			this._mediaQueryListEventCallback(this._mediaQueryList);
 		}, "mediaMatch"));
 	}
-}, V = class {
+}, G = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -709,8 +709,8 @@ var ot = class {
 	}
 }, nt = class extends rt {
 	_name = "CollapsibleComponent";
-	_expanded = new V(!1);
-	_locked = new V(!1);
+	_expanded = new G(!1);
+	_locked = new G(!1);
 	_expandInsideBreakpoint = !1;
 	_expandOutsideBreakpoint = !1;
 	_collapseInsideBreakpoint = !1;
@@ -721,17 +721,17 @@ var ot = class {
 	_unlockOutsideBreakpoint = !1;
 	_expandOnFocus = !1;
 	_collapseOnBlur = !1;
-	constructor({ controlledElement: t, controllerElement: e = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: o = "unlocked", expandClass: r = "show", collapseClass: a = "hide", transitionClass: l = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: k = -1, collapseDuration: g = -1, expandInsideBreakpoint: C = !1, expandOutsideBreakpoint: B = !1, collapseInsideBreakpoint: I = !1, collapseOutsideBreakpoint: $ = !1, lockInsideBreakpoint: L = !1, lockOutsideBreakpoint: M = !1, unlockInsideBreakpoint: z = !1, unlockOutsideBreakpoint: y = !1, expandOnFocus: E = !1, collapseOnBlur: v = !1, expanded: w = !1, locked: b = !1, breakpoint: O = "", mediaQuery: S = "", prefix: H = "ae-", key: R = null, initializeClass: N = "initializing", emit: J = !0, bootstrap: Z = !0, initialize: W = !0 } = {}) {
+	constructor({ controlledElement: t, controllerElement: e = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: o = "unlocked", expandClass: r = "show", collapseClass: a = "hide", transitionClass: l = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: k = -1, collapseDuration: D = -1, expandInsideBreakpoint: C = !1, expandOutsideBreakpoint: B = !1, collapseInsideBreakpoint: I = !1, collapseOutsideBreakpoint: $ = !1, lockInsideBreakpoint: L = !1, lockOutsideBreakpoint: M = !1, unlockInsideBreakpoint: g = !1, unlockOutsideBreakpoint: y = !1, expandOnFocus: E = !1, collapseOnBlur: v = !1, expanded: w = !1, locked: b = !1, breakpoint: z = "", mediaQuery: K = "", prefix: H = "ae-", key: R = null, initializeClass: N = "initializing", emit: J = !0, bootstrap: Z = !0, initialize: W = !0 } = {}) {
 		super({
-			breakpoint: O,
-			mediaQuery: S,
+			breakpoint: z,
+			mediaQuery: K,
 			prefix: H,
 			key: R,
 			initializeClass: N,
 			emit: J,
 			bootstrap: !1,
 			initialize: !1
-		}), this._dom.controller = e, this._dom.trigger = s ?? e, this._dom.controlled = t, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.expand = r || "", this._classes.collapse = a || "", this._classes.transition = l || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = k, this._durations.collapse = g, this._expandInsideBreakpoint = C, this._expandOutsideBreakpoint = B, this._collapseInsideBreakpoint = I, this._collapseOutsideBreakpoint = $, this._lockInsideBreakpoint = L, this._lockOutsideBreakpoint = M, this._unlockInsideBreakpoint = z, this._unlockOutsideBreakpoint = y, this._expandOnFocus = E, this._collapseOnBlur = v, this._expanded.value = w, this._expanded.commit(), this._locked.value = b, this._locked.commit(), Z && this._bootstrap(), W && this.initialize();
+		}), this._dom.controller = e, this._dom.trigger = s ?? e, this._dom.controlled = t, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.expand = r || "", this._classes.collapse = a || "", this._classes.transition = l || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = k, this._durations.collapse = D, this._expandInsideBreakpoint = C, this._expandOutsideBreakpoint = B, this._collapseInsideBreakpoint = I, this._collapseOutsideBreakpoint = $, this._lockInsideBreakpoint = L, this._lockOutsideBreakpoint = M, this._unlockInsideBreakpoint = g, this._unlockOutsideBreakpoint = y, this._expandOnFocus = E, this._collapseOnBlur = v, this._expanded.value = w, this._expanded.commit(), this._locked.value = b, this._locked.commit(), Z && this._bootstrap(), W && this.initialize();
 	}
 	_registerEvents() {
 		super._registerEvents(), this._registerEvent("preexpand"), this._registerEvent("expand"), this._registerEvent("postexpand"), this._registerEvent("precollapse"), this._registerEvent("collapse"), this._registerEvent("postcollapse"), this._registerEvent("prelock"), this._registerEvent("lock"), this._registerEvent("postlock"), this._registerEvent("preunlock"), this._registerEvent("unlock"), this._registerEvent("postunlock"), this._addInternalEventListener(this.getEventName("validate"), (t) => {
@@ -967,32 +967,31 @@ var ot = class {
 	_hoverType = "on";
 	_storageKey = "tooltips";
 	_name = "Tooltip";
-	constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: o = "hide", transitionClass: r = "transitioning", transitionDelay: a = 250, transitionDuration: l = 150, expandDuration: u = -1, collapseDuration: p = -1, expandOnFocus: k = !0, collapseOnBlur: g = !0, hoverType: C = "on", hoverDelay: B = 250, enterDelay: I = -1, leaveDelay: $ = -1, prefix: L = "graupl-", key: M = null, initializeClass: z = "initializing", showClass: y, hideClass: E, showDuration: v, hideDuration: w, openOnFocus: b, closeOnBlur: O, initialize: S = !1 } = {}) {
-		y !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = y), E !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), o = E), v !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), u = v), w !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), p = w), b !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), k = b), O !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), g = O), super({
+	constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: o = "hide", transitionClass: r = "transitioning", transitionDuration: a = 150, expandDuration: l = -1, collapseDuration: u = -1, expandOnFocus: p = !0, collapseOnBlur: k = !0, hoverType: D = "on", hoverDelay: C = 250, enterDelay: B = -1, leaveDelay: I = -1, prefix: $ = "graupl-", key: L = null, initializeClass: M = "initializing", showClass: g, hideClass: y, showDuration: E, hideDuration: v, openOnFocus: w, closeOnBlur: b, initialize: z = !1 } = {}) {
+		g !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = g), y !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), o = y), E !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), l = E), v !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), u = v), w !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), p = w), b !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), k = b), super({
 			controllerElement: e,
 			controlledElement: s,
 			expandClass: i,
 			collapseClass: o,
 			transitionClass: r,
-			transitionDelay: a,
-			transitionDuration: l,
-			expandDuration: u,
-			collapseDuration: p,
-			expandOnFocus: k,
-			collapseOnBlur: g,
+			transitionDuration: a,
+			expandDuration: l,
+			collapseDuration: u,
+			expandOnFocus: p,
+			collapseOnBlur: k,
 			bootstrap: !1,
 			initialize: !1,
-			prefix: L,
-			key: M,
-			initializeClass: z
-		}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._hoverType = C, this._delays.hover = B, this._delays.enter = I, this._delays.leave = $, this._bootstrap(), S && this.initialize();
+			prefix: $,
+			key: L,
+			initializeClass: M
+		}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._hoverType = D, this._delays.hover = C, this._delays.enter = B, this._delays.leave = I, this._bootstrap(), z && this.initialize();
 	}
 	_registerEvents() {
 		super._registerEvents(), this._addInternalEventListener(this.getEventName("precollapse"), () => {
 			this.isSoftLocked = !1;
 		}), this._addInternalEventListener(this.getEventName("validate"), (t) => {
 			if (t.detail.component !== this) return;
-			const e = U({ hoverType: this._hoverType }, { shouldThrow: !1 });
+			const e = Q({ hoverType: this._hoverType }, { shouldThrow: !1 });
 			e.status || (this._errors = [...this._errors, ...e.errors], this._valid = !1);
 		});
 	}
@@ -1045,7 +1044,7 @@ var ot = class {
 		return this._hoverType;
 	}
 	set hoverType(t) {
-		U({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
+		Q({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
 	}
 	get hoverDelay() {
 		return this._delays.hover;
@@ -1136,20 +1135,20 @@ var ot = class {
 		return console.warn("Graupl Tooltip.hide() is deprecated and will be removed. Use collapse() instead."), this.collapse(...t);
 	}
 };
-const q = /[\11\12\14\15\40]+/, F = "data-once", lt = document;
-function j(t, e, s) {
-	return t[`${e}Attribute`](F, s);
+const V = /[\11\12\14\15\40]+/, A = "data-once", lt = document;
+function F(t, e, s) {
+	return t[`${e}Attribute`](A, s);
 }
-function x(t) {
+function O(t) {
 	if (typeof t != "string") throw new TypeError("once ID must be a string");
-	if (t === "" || q.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
-	return `[${F}~="${t}"]`;
+	if (t === "" || V.test(t)) throw new RangeError("once ID must not be empty or contain spaces");
+	return `[${A}~="${t}"]`;
 }
 function ht(t) {
 	if (!(t instanceof Element)) throw new TypeError("The element must be an instance of Element");
 	return !0;
 }
-function T(t, e = lt) {
+function x(t, e = lt) {
 	let s = t;
 	if (t === null) s = [];
 	else if (t) if (e instanceof Document || e instanceof DocumentFragment || e instanceof Element) typeof t == "string" ? s = e.querySelectorAll(t) : t instanceof Element && (s = [t]);
@@ -1157,26 +1156,26 @@ function T(t, e = lt) {
 	else throw new TypeError("Selector must not be empty");
 	return Array.prototype.slice.call(s);
 }
-function Q(t, e, s) {
+function j(t, e, s) {
 	return e.filter((i) => {
 		const o = ht(i) && i.matches(t);
 		return o && s && s(i), o;
 	});
 }
-function P(t, { add: e, remove: s }) {
+function q(t, { add: e, remove: s }) {
 	const i = [];
-	j(t, "has") && j(t, "get").trim().split(q).forEach((r) => {
+	F(t, "has") && F(t, "get").trim().split(V).forEach((r) => {
 		i.indexOf(r) < 0 && r !== s && i.push(r);
 	}), e && i.push(e);
 	const o = i.join(" ");
-	j(t, o === "" ? "remove" : "set", o);
+	F(t, o === "" ? "remove" : "set", o);
 }
-function D(t, e, s) {
-	return Q(`:not(${x(t)})`, T(e, s), (i) => P(i, { add: t }));
+function T(t, e, s) {
+	return j(`:not(${O(t)})`, x(e, s), (i) => q(i, { add: t }));
 }
-D.remove = (t, e, s) => Q(x(t), T(e, s), (i) => P(i, { remove: t })), D.filter = (t, e, s) => Q(x(t), T(e, s)), D.find = (t, e) => T(t ? x(t) : `[${F}]`, e);
+T.remove = (t, e, s) => j(O(t), x(e, s), (i) => q(i, { remove: t })), T.filter = (t, e, s) => j(O(t), x(e, s)), T.find = (t, e) => x(t ? O(t) : `[${A}]`, e);
 const dt = ({ options: t = {}, context: e = document, selector: s = ".tooltip", descriptionSelector: i = ".tooltip-description", controllerSelector: o = ".tooltip-toggle" } = {}) => {
-	D("graupl-tooltip-generator", s, e).forEach((r) => {
+	T("graupl-tooltip-generator", s, e).forEach((r) => {
 		const a = r.dataset.grauplTooltipOptions ? JSON.parse(r.dataset.grauplTooltipOptions.replace(/'/g, "\"")) || {} : {};
 		new at({
 			tooltipElement: r,

@@ -139,7 +139,7 @@ function H(t, { shouldThrow: e = !0 } = {}) {
 	if (e && !s.status) throw s.errors[0];
 	return s;
 }
-function z(t, { shouldThrow: e = !0 } = {}) {
+function M(t, { shouldThrow: e = !0 } = {}) {
 	const s = {
 		status: !0,
 		errors: []
@@ -215,10 +215,10 @@ function f(t) {
 function Z(t) {
 	return n("string", { value: t }), `${t.charAt(0).toLowerCase()}${t.slice(1)}`;
 }
-function S(t) {
+function z(t) {
 	return n("string", { value: t }), `${t.charAt(0).toUpperCase()}${t.slice(1)}`;
 }
-var M = class F {
+var L = class A {
 	_scope;
 	_type = "_default";
 	_storage = {};
@@ -228,7 +228,7 @@ var M = class F {
 	}
 	initialize() {
 		try {
-			!this._crush && typeof window[this.scope] < "u" && (_(F, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
+			!this._crush && typeof window[this.scope] < "u" && (_(A, { storage: window[this.scope] }, { shouldThrow: !1 }).status || typeof window[this.scope].storage < "u" && typeof window[this.scope].scope < "u" && typeof window[this.scope].type < "u") && (this._storage = window[this.scope].storage);
 		} catch {} finally {
 			window[this.scope] = this;
 		}
@@ -423,7 +423,7 @@ var J = class {
 		return this._scope;
 	}
 	get eventPrefix() {
-		return this._eventPrefix !== "" ? this._eventPrefix : `${Z(this.scope)}${S(this.name)}`;
+		return this._eventPrefix !== "" ? this._eventPrefix : `${Z(this.scope)}${z(this.name)}`;
 	}
 	get id() {
 		return this._id;
@@ -526,14 +526,14 @@ var J = class {
 	_handleKeydown() {}
 	_handleKeyup() {}
 	_store() {
-		this._shouldStore && (_(M, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status || new M({ scope: `${this.scope}Storage` }), window[`${this.scope}Storage`].set({
+		this._shouldStore && (_(L, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status || new L({ scope: `${this.scope}Storage` }), window[`${this.scope}Storage`].set({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey,
 			data: this
 		}));
 	}
 	_unstore() {
-		this._shouldStore && _(M, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status && window[`${this.scope}Storage`].clear({
+		this._shouldStore && _(L, { storage: window[`${this.scope}Storage`] }, { shouldThrow: !1 }).status && window[`${this.scope}Storage`].clear({
 			key: this.id !== "" ? this.id : this.key,
 			type: this._storageKey
 		});
@@ -572,7 +572,7 @@ var J = class {
 	}
 	_registerEvent(t, { bubbles: e = !0, detail: s = {} } = {}) {
 		n("string", { name: t }), n("boolean", { bubbles: e }), n("object", { detail: s });
-		const i = `${this.eventPrefix}${S(t)}`;
+		const i = `${this.eventPrefix}${z(t)}`;
 		this._events[t] = new CustomEvent(i, {
 			bubbles: e,
 			detail: {
@@ -679,7 +679,7 @@ var J = class {
 			this._mediaQueryListEventCallback(this._mediaQueryList);
 		}, "mediaMatch"));
 	}
-}, A = class {
+}, S = class {
 	_equals = Object.is;
 	_current;
 	_committed;
@@ -709,8 +709,8 @@ var J = class {
 	}
 }, X = class extends W {
 	_name = "CollapsibleComponent";
-	_expanded = new A(!1);
-	_locked = new A(!1);
+	_expanded = new S(!1);
+	_locked = new S(!1);
 	_expandInsideBreakpoint = !1;
 	_expandOutsideBreakpoint = !1;
 	_collapseInsideBreakpoint = !1;
@@ -721,17 +721,17 @@ var J = class {
 	_unlockOutsideBreakpoint = !1;
 	_expandOnFocus = !1;
 	_collapseOnBlur = !1;
-	constructor({ controlledElement: t, controllerElement: e = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: o = "unlocked", expandClass: r = "show", collapseClass: l = "hide", transitionClass: a = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: k = -1, collapseDuration: g = -1, expandInsideBreakpoint: x = !1, expandOutsideBreakpoint: T = !1, collapseInsideBreakpoint: B = !1, collapseOutsideBreakpoint: C = !1, lockInsideBreakpoint: D = !1, lockOutsideBreakpoint: I = !1, unlockInsideBreakpoint: $ = !1, unlockOutsideBreakpoint: y = !1, expandOnFocus: E = !1, collapseOnBlur: v = !1, expanded: w = !1, locked: b = !1, breakpoint: O = "", mediaQuery: L = "", prefix: j = "ae-", key: Q = null, initializeClass: U = "initializing", emit: G = !0, bootstrap: V = !0, initialize: P = !0 } = {}) {
+	constructor({ controlledElement: t, controllerElement: e = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: o = "unlocked", expandClass: r = "show", collapseClass: l = "hide", transitionClass: a = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: k = -1, collapseDuration: O = -1, expandInsideBreakpoint: x = !1, expandOutsideBreakpoint: T = !1, collapseInsideBreakpoint: B = !1, collapseOutsideBreakpoint: C = !1, lockInsideBreakpoint: D = !1, lockOutsideBreakpoint: I = !1, unlockInsideBreakpoint: g = !1, unlockOutsideBreakpoint: y = !1, expandOnFocus: E = !1, collapseOnBlur: v = !1, expanded: w = !1, locked: b = !1, breakpoint: $ = "", mediaQuery: F = "", prefix: j = "ae-", key: Q = null, initializeClass: U = "initializing", emit: G = !0, bootstrap: V = !0, initialize: P = !0 } = {}) {
 		super({
-			breakpoint: O,
-			mediaQuery: L,
+			breakpoint: $,
+			mediaQuery: F,
 			prefix: j,
 			key: Q,
 			initializeClass: U,
 			emit: G,
 			bootstrap: !1,
 			initialize: !1
-		}), this._dom.controller = e, this._dom.trigger = s ?? e, this._dom.controlled = t, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.expand = r || "", this._classes.collapse = l || "", this._classes.transition = a || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = k, this._durations.collapse = g, this._expandInsideBreakpoint = x, this._expandOutsideBreakpoint = T, this._collapseInsideBreakpoint = B, this._collapseOutsideBreakpoint = C, this._lockInsideBreakpoint = D, this._lockOutsideBreakpoint = I, this._unlockInsideBreakpoint = $, this._unlockOutsideBreakpoint = y, this._expandOnFocus = E, this._collapseOnBlur = v, this._expanded.value = w, this._expanded.commit(), this._locked.value = b, this._locked.commit(), V && this._bootstrap(), P && this.initialize();
+		}), this._dom.controller = e, this._dom.trigger = s ?? e, this._dom.controlled = t, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = o || "", this._classes.expand = r || "", this._classes.collapse = l || "", this._classes.transition = a || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = k, this._durations.collapse = O, this._expandInsideBreakpoint = x, this._expandOutsideBreakpoint = T, this._collapseInsideBreakpoint = B, this._collapseOutsideBreakpoint = C, this._lockInsideBreakpoint = D, this._lockOutsideBreakpoint = I, this._unlockInsideBreakpoint = g, this._unlockOutsideBreakpoint = y, this._expandOnFocus = E, this._collapseOnBlur = v, this._expanded.value = w, this._expanded.commit(), this._locked.value = b, this._locked.commit(), V && this._bootstrap(), P && this.initialize();
 	}
 	_registerEvents() {
 		super._registerEvents(), this._registerEvent("preexpand"), this._registerEvent("expand"), this._registerEvent("postexpand"), this._registerEvent("precollapse"), this._registerEvent("collapse"), this._registerEvent("postcollapse"), this._registerEvent("prelock"), this._registerEvent("lock"), this._registerEvent("postlock"), this._registerEvent("preunlock"), this._registerEvent("unlock"), this._registerEvent("postunlock"), this._addInternalEventListener(this.getEventName("validate"), (t) => {
@@ -967,32 +967,31 @@ var J = class {
 	_hoverType = "on";
 	_storageKey = "tooltips";
 	_name = "Tooltip";
-	constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: o = "hide", transitionClass: r = "transitioning", transitionDelay: l = 250, transitionDuration: a = 150, expandDuration: u = -1, collapseDuration: p = -1, expandOnFocus: k = !0, collapseOnBlur: g = !0, hoverType: x = "on", hoverDelay: T = 250, enterDelay: B = -1, leaveDelay: C = -1, prefix: D = "graupl-", key: I = null, initializeClass: $ = "initializing", showClass: y, hideClass: E, showDuration: v, hideDuration: w, openOnFocus: b, closeOnBlur: O, initialize: L = !1 } = {}) {
-		y !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = y), E !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), o = E), v !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), u = v), w !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), p = w), b !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), k = b), O !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), g = O), super({
+	constructor({ tooltipElement: t, tooltipToggleElement: e, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: o = "hide", transitionClass: r = "transitioning", transitionDuration: l = 150, expandDuration: a = -1, collapseDuration: u = -1, expandOnFocus: p = !0, collapseOnBlur: k = !0, hoverType: O = "on", hoverDelay: x = 250, enterDelay: T = -1, leaveDelay: B = -1, prefix: C = "graupl-", key: D = null, initializeClass: I = "initializing", showClass: g, hideClass: y, showDuration: E, hideDuration: v, openOnFocus: w, closeOnBlur: b, initialize: $ = !1 } = {}) {
+		g !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = g), y !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), o = y), E !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), a = E), v !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), u = v), w !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), p = w), b !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), k = b), super({
 			controllerElement: e,
 			controlledElement: s,
 			expandClass: i,
 			collapseClass: o,
 			transitionClass: r,
-			transitionDelay: l,
-			transitionDuration: a,
-			expandDuration: u,
-			collapseDuration: p,
-			expandOnFocus: k,
-			collapseOnBlur: g,
+			transitionDuration: l,
+			expandDuration: a,
+			collapseDuration: u,
+			expandOnFocus: p,
+			collapseOnBlur: k,
 			bootstrap: !1,
 			initialize: !1,
-			prefix: D,
-			key: I,
-			initializeClass: $
-		}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._hoverType = x, this._delays.hover = T, this._delays.enter = B, this._delays.leave = C, this._bootstrap(), L && this.initialize();
+			prefix: C,
+			key: D,
+			initializeClass: I
+		}), this._dom.tooltip = t, this._dom.tooltipToggle = e, this._dom.tooltipDescription = s, this._hoverType = O, this._delays.hover = x, this._delays.enter = T, this._delays.leave = B, this._bootstrap(), $ && this.initialize();
 	}
 	_registerEvents() {
 		super._registerEvents(), this._addInternalEventListener(this.getEventName("precollapse"), () => {
 			this.isSoftLocked = !1;
 		}), this._addInternalEventListener(this.getEventName("validate"), (t) => {
 			if (t.detail.component !== this) return;
-			const e = z({ hoverType: this._hoverType }, { shouldThrow: !1 });
+			const e = M({ hoverType: this._hoverType }, { shouldThrow: !1 });
 			e.status || (this._errors = [...this._errors, ...e.errors], this._valid = !1);
 		});
 	}
@@ -1045,7 +1044,7 @@ var J = class {
 		return this._hoverType;
 	}
 	set hoverType(t) {
-		z({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
+		M({ hoverType: t }), this._hoverType !== t && (this._hoverType = t);
 	}
 	get hoverDelay() {
 		return this._delays.hover;

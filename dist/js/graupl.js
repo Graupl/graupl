@@ -163,7 +163,7 @@
 		if (t && !s.status) throw s.errors[0];
 		return s;
 	}
-	function K(e, t, { shouldThrow: s = !0 } = {}) {
+	function j(e, t, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -283,14 +283,14 @@
 			s.length > 0 && t.classList.add(...s);
 		}
 	}
-	function w(e, t) {
+	function v(e, t) {
 		if (!(e === "" || e.length === 0)) if (typeof e == "string") t.classList.remove(e);
 		else {
 			const s = e.filter((i) => i !== "");
 			s.length > 0 && t.classList.remove(...s);
 		}
 	}
-	var z = class {
+	var P = class {
 		#e = new EventTarget();
 		_dom = {};
 		_rootDOMElement = "";
@@ -340,7 +340,7 @@
 				if (!this._validate()) throw new Error(`${this.scope} ${this.name}: Cannot initialize component. The following errors have been found:
  - ${this.errors.map((e) => e.message).join(`
  - `)}`);
-				k(this.initializeClass, this.rootDOMElement), this._dispatchEvent("preinitialize", this.rootDOMElement), this._generateKey(), this._setDOMElements(), this._setIds(), this._setAriaAttributes(), this._setCustomProps(), this._createChildElements(), this._handleFocus(), this._handleHover(), this._handleClick(), this._handleKeydown(), this._handleKeyup(), this._dispatchEvent("initialize", this.rootDOMElement), this._store(), w(this.initializeClass, this.rootDOMElement), this._initialized = !0, this._dispatchEvent("postinitialize", this.rootDOMElement);
+				k(this.initializeClass, this.rootDOMElement), this._dispatchEvent("preinitialize", this.rootDOMElement), this._generateKey(), this._setDOMElements(), this._setIds(), this._setAriaAttributes(), this._setCustomProps(), this._createChildElements(), this._handleFocus(), this._handleHover(), this._handleClick(), this._handleKeydown(), this._handleKeyup(), this._dispatchEvent("initialize", this.rootDOMElement), this._store(), v(this.initializeClass, this.rootDOMElement), this._initialized = !0, this._dispatchEvent("postinitialize", this.rootDOMElement);
 			} catch (e) {
 				this._valid = !1, console.error(e);
 			}
@@ -626,7 +626,7 @@
 		dispose() {
 			this._clearIntervals(), this._clearTimeouts(), this._cancelAnimationFrames(), this._removeEventListeners(), this._bootstrapped = !1, this._unstore(), delete this;
 		}
-	}, be = class extends z {
+	}, be = class extends P {
 		_name = "ResponsiveComponent";
 		_breakpoint = "";
 		_mediaQueryString = "";
@@ -704,7 +704,7 @@
 		update(e) {
 			return this._current = e(this._current), this;
 		}
-	}, F = class extends be {
+	}, N = class extends be {
 		_name = "CollapsibleComponent";
 		_expanded = new ae(!1);
 		_locked = new ae(!1);
@@ -718,17 +718,17 @@
 		_unlockOutsideBreakpoint = !1;
 		_expandOnFocus = !1;
 		_collapseOnBlur = !1;
-		constructor({ controlledElement: e, controllerElement: t = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: r = "unlocked", expandClass: o = "show", collapseClass: n = "hide", transitionClass: d = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: f = -1, collapseDuration: E = -1, expandInsideBreakpoint: v = !1, expandOutsideBreakpoint: g = !1, collapseInsideBreakpoint: m = !1, collapseOutsideBreakpoint: _ = !1, lockInsideBreakpoint: h = !1, lockOutsideBreakpoint: b = !1, unlockInsideBreakpoint: y = !1, unlockOutsideBreakpoint: O = !1, expandOnFocus: A = !1, collapseOnBlur: I = !1, expanded: D = !1, locked: T = !1, breakpoint: B = "", mediaQuery: $ = "", prefix: j = "ae-", key: P = null, initializeClass: G = "initializing", emit: S = !0, bootstrap: U = !0, initialize: M = !0 } = {}) {
+		constructor({ controlledElement: e, controllerElement: t = null, triggerElement: s = null, lockClass: i = "locked", unlockClass: r = "unlocked", expandClass: o = "show", collapseClass: n = "hide", transitionClass: d = "transitioning", transitionDelay: u = 250, transitionDuration: p = 150, expandDuration: f = -1, collapseDuration: w = -1, expandInsideBreakpoint: E = !1, expandOutsideBreakpoint: g = !1, collapseInsideBreakpoint: m = !1, collapseOutsideBreakpoint: _ = !1, lockInsideBreakpoint: h = !1, lockOutsideBreakpoint: b = !1, unlockInsideBreakpoint: y = !1, unlockOutsideBreakpoint: T = !1, expandOnFocus: A = !1, collapseOnBlur: I = !1, expanded: O = !1, locked: D = !1, breakpoint: B = "", mediaQuery: $ = "", prefix: G = "ae-", key: S = null, initializeClass: U = "initializing", emit: M = !0, bootstrap: z = !0, initialize: F = !0 } = {}) {
 			super({
 				breakpoint: B,
 				mediaQuery: $,
-				prefix: j,
-				key: P,
-				initializeClass: G,
-				emit: S,
+				prefix: G,
+				key: S,
+				initializeClass: U,
+				emit: M,
 				bootstrap: !1,
 				initialize: !1
-			}), this._dom.controller = t, this._dom.trigger = s ?? t, this._dom.controlled = e, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = r || "", this._classes.expand = o || "", this._classes.collapse = n || "", this._classes.transition = d || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = f, this._durations.collapse = E, this._expandInsideBreakpoint = v, this._expandOutsideBreakpoint = g, this._collapseInsideBreakpoint = m, this._collapseOutsideBreakpoint = _, this._lockInsideBreakpoint = h, this._lockOutsideBreakpoint = b, this._unlockInsideBreakpoint = y, this._unlockOutsideBreakpoint = O, this._expandOnFocus = A, this._collapseOnBlur = I, this._expanded.value = D, this._expanded.commit(), this._locked.value = T, this._locked.commit(), U && this._bootstrap(), M && this.initialize();
+			}), this._dom.controller = t, this._dom.trigger = s ?? t, this._dom.controlled = e, this._protectedDOMElements.push("controller", "trigger", "controlled"), this._classes.locked = i || "", this._classes.unlocked = r || "", this._classes.expand = o || "", this._classes.collapse = n || "", this._classes.transition = d || "", this._delays.transition = u, this._durations.transition = p, this._durations.expand = f, this._durations.collapse = w, this._expandInsideBreakpoint = E, this._expandOutsideBreakpoint = g, this._collapseInsideBreakpoint = m, this._collapseOutsideBreakpoint = _, this._lockInsideBreakpoint = h, this._lockOutsideBreakpoint = b, this._unlockInsideBreakpoint = y, this._unlockOutsideBreakpoint = T, this._expandOnFocus = A, this._collapseOnBlur = I, this._expanded.value = O, this._expanded.commit(), this._locked.value = D, this._locked.commit(), z && this._bootstrap(), F && this.initialize();
 		}
 		_registerEvents() {
 			super._registerEvents(), this._registerEvent("preexpand"), this._registerEvent("expand"), this._registerEvent("postexpand"), this._registerEvent("precollapse"), this._registerEvent("collapse"), this._registerEvent("postcollapse"), this._registerEvent("prelock"), this._registerEvent("lock"), this._registerEvent("postlock"), this._registerEvent("preunlock"), this._registerEvent("unlock"), this._registerEvent("postunlock"), this._addInternalEventListener(this.getEventName("validate"), (e) => {
@@ -877,31 +877,31 @@
 		}
 		_expand({ emit: e = this.isInitialized && this.shouldEmit, transition: t = this.isInitialized } = {}) {
 			this._dispatchEvent("preexpand", this.rootDOMElement, { emit: e }), this._cancelAnimationFrame("expandTransition"), this._cancelAnimationFrame("collapseTransition"), this._clearTimeout("expandTransition"), this._clearTimeout("collapseTransition"), t && this.transitionClass !== "" ? (k(this.transitionClass, this.dom.controlled), this._requestAnimationFrame(() => {
-				w(this.collapseClass, this.dom.controlled), this._requestAnimationFrame(() => {
+				v(this.collapseClass, this.dom.controlled), this._requestAnimationFrame(() => {
 					k(this.expandClass, this.dom.controlled), this._requestAnimationFrame(() => {
 						this._setTimeout(() => {
-							w(this.transitionClass, this.dom.controlled), this._dispatchEvent("postexpand", this.rootDOMElement, { emit: e });
+							v(this.transitionClass, this.dom.controlled), this._dispatchEvent("postexpand", this.rootDOMElement, { emit: e });
 						}, this.expandDuration, "expandTransition");
 					}, "expandTransition"), this._dispatchEvent("expand", this.rootDOMElement, { emit: e });
 				}, "expandTransition");
-			}, "expandTransition")) : (w(this.transitionClass, this.dom.controlled), k(this.expandClass, this.dom.controlled), w(this.collapseClass, this.dom.controlled), this._dispatchEvent("expand", this.rootDOMElement, { emit: e }), this._dispatchEvent("postexpand", this.rootDOMElement, { emit: e }));
+			}, "expandTransition")) : (v(this.transitionClass, this.dom.controlled), k(this.expandClass, this.dom.controlled), v(this.collapseClass, this.dom.controlled), this._dispatchEvent("expand", this.rootDOMElement, { emit: e }), this._dispatchEvent("postexpand", this.rootDOMElement, { emit: e }));
 		}
 		_collapse({ emit: e = this.isInitialized && this.shouldEmit, transition: t = this.isInitialized } = {}) {
 			this._dispatchEvent("precollapse", this.rootDOMElement, { emit: e }), this._cancelAnimationFrame("expandTransition"), this._cancelAnimationFrame("collapseTransition"), this._clearTimeout("expandTransition"), this._clearTimeout("collapseTransition"), t && this.transitionClass !== "" ? (k(this.transitionClass, this.dom.controlled), this._requestAnimationFrame(() => {
-				w(this.expandClass, this.dom.controlled), this._requestAnimationFrame(() => {
+				v(this.expandClass, this.dom.controlled), this._requestAnimationFrame(() => {
 					k(this.collapseClass, this.dom.controlled), this._requestAnimationFrame(() => {
 						this._setTimeout(() => {
-							w(this.transitionClass, this.dom.controlled), this._dispatchEvent("postcollapse", this.rootDOMElement, { emit: e });
+							v(this.transitionClass, this.dom.controlled), this._dispatchEvent("postcollapse", this.rootDOMElement, { emit: e });
 						}, this.collapseDuration, "collapseTransition");
 					}, "collapseTransition"), this._dispatchEvent("collapse", this.rootDOMElement, { emit: e });
 				}, "collapseTransition");
-			}, "collapseTransition")) : (w(this.transitionClass, this.dom.controlled), k(this.collapseClass, this.dom.controlled), w(this.expandClass, this.dom.controlled), this._dispatchEvent("collapse", this.rootDOMElement, { emit: e }), this._dispatchEvent("postcollapse", this.rootDOMElement, { emit: e }));
+			}, "collapseTransition")) : (v(this.transitionClass, this.dom.controlled), k(this.collapseClass, this.dom.controlled), v(this.expandClass, this.dom.controlled), this._dispatchEvent("collapse", this.rootDOMElement, { emit: e }), this._dispatchEvent("postcollapse", this.rootDOMElement, { emit: e }));
 		}
 		_lock({ emit: e = this.isInitialized && this.shouldEmit } = {}) {
-			this._dispatchEvent("prelock", this.rootDOMElement, { emit: e }), k(this.lockedClass, this.dom.controlled), w(this.unlockedClass, this.dom.controlled), this.dom.controller?.setAttribute("disabled", "true"), this._dispatchEvent("lock", this.rootDOMElement, { emit: e }), this._dispatchEvent("postlock", this.rootDOMElement, { emit: e });
+			this._dispatchEvent("prelock", this.rootDOMElement, { emit: e }), k(this.lockedClass, this.dom.controlled), v(this.unlockedClass, this.dom.controlled), this.dom.controller?.setAttribute("disabled", "true"), this._dispatchEvent("lock", this.rootDOMElement, { emit: e }), this._dispatchEvent("postlock", this.rootDOMElement, { emit: e });
 		}
 		_unlock({ emit: e = this.isInitialized && this.shouldEmit } = {}) {
-			this._dispatchEvent("preunlock", this.rootDOMElement, { emit: e }), k(this.unlockedClass, this.dom.controlled), w(this.lockedClass, this.dom.controlled), this.dom.controller?.removeAttribute("disabled"), this._dispatchEvent("unlock", this.rootDOMElement, { emit: e }), this._dispatchEvent("postunlock", this.rootDOMElement, { emit: e });
+			this._dispatchEvent("preunlock", this.rootDOMElement, { emit: e }), k(this.unlockedClass, this.dom.controlled), v(this.lockedClass, this.dom.controlled), this.dom.controller?.removeAttribute("disabled"), this._dispatchEvent("unlock", this.rootDOMElement, { emit: e }), this._dispatchEvent("postunlock", this.rootDOMElement, { emit: e });
 		}
 		expand({ force: e = !this.isInitialized, emit: t = this.isInitialized && this.shouldEmit, transition: s = this.isInitialized, preserveState: i = !1 } = {}) {
 			this.isExpanded && !e || this.isLocked && !e || (this.focusState = "self", this._expand({
@@ -957,7 +957,7 @@
 				preserveState: s
 			});
 		}
-	}, Ee = class extends F {
+	}, Ee = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "item";
 		_name = "AccordionItem";
@@ -1051,7 +1051,7 @@
 			this.dom.item.id = this.dom.item.id || `accordion-item-${e}-${t}`, this.dom.toggle.id = this.dom.toggle.id || `accordion-item-toggle-${e}-${t}`, this.dom.header.id = this.dom.header.id || `accordion-item-header-${e}-${t}`, this.dom.content.id = this.dom.content.id || `accordion-item-content-${e}-${t}`;
 		}
 		_setAriaAttributes() {
-			K("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), K("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
+			j("button", { toggle: this.dom.toggle }, { shouldThrow: !1 }).status || this.dom.toggle.setAttribute("role", "button"), this.dom.toggle.getAttribute("aria-expanded") !== "true" && this.dom.toggle.setAttribute("aria-expanded", "false"), this.dom.toggle.setAttribute("aria-controls", this.dom.content.id), j("section", { content: this.dom.content }, { shouldThrow: !1 }).status || this.dom.content.setAttribute("role", "region"), this.dom.content.setAttribute("aria-labelledby", this.dom.toggle.id);
 		}
 		collapse(e = {}) {
 			this.isInitialized && !e.force && this.isExpanded && !this.elements.parent.allowCollapseAll && this.elements.parent.expandedAccordionItems.length <= 1 || super.collapse(e);
@@ -1106,7 +1106,7 @@
 	function l(e) {
 		e.preventDefault(), e.stopPropagation();
 	}
-	var ve = class extends z {
+	var ve = class extends P {
 		_scope = "Graupl";
 		_rootDOMElement = "accordion";
 		_optionalKeySupport = !0;
@@ -1115,14 +1115,14 @@
 		_currentChild = 0;
 		_storageKey = "accordions";
 		_name = "Accordion";
-		constructor({ accordionElement: e, accordionItemsSelector: t = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: n = ".accordion-control", expandControllerSelector: d = ".expand-all", collapseControllerSelector: u = ".collapse-all", expandClass: p = "show", collapseClass: f = "hide", transitionClass: E = "transitioning", transitionDuration: v = 300, expandDuration: g = -1, collapseDuration: m = -1, optionalKeySupport: _ = !1, allowExpandMultiple: h = !0, allowCollapseAll: b = !0, prefix: y = "graupl-", key: O = null, initializeClass: A = "initializing", openClass: I, closeClass: D, openDuration: T, closeDuration: B, initialize: $ = !1 }) {
-			I !== void 0 && (console.warn("Graupl Accordion option \"openClass\" is deprecated and will be removed. Use expandClass instead."), p = I), D !== void 0 && (console.warn("Graupl Accordion option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), f = D), T !== void 0 && (console.warn("Graupl Accordion option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), g = T), B !== void 0 && (console.warn("Graupl Accordion option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), m = B), super({
+		constructor({ accordionElement: e, accordionItemsSelector: t = ".accordion-item", accordionItemTogglesSelector: s = ".accordion-item-toggle", accordionItemHeadersSelector: i = ".accordion-item-header", accordionItemContentsSelector: r = ".accordion-item-content", accordionControlContainerSelector: o = ".accordion-control-container", accordionControlsSelector: n = ".accordion-control", expandControllerSelector: d = ".expand-all", collapseControllerSelector: u = ".collapse-all", expandClass: p = "show", collapseClass: f = "hide", transitionClass: w = "transitioning", transitionDuration: E = 300, expandDuration: g = -1, collapseDuration: m = -1, optionalKeySupport: _ = !1, allowExpandMultiple: h = !0, allowCollapseAll: b = !0, prefix: y = "graupl-", key: T = null, initializeClass: A = "initializing", openClass: I, closeClass: O, openDuration: D, closeDuration: B, initialize: $ = !1 }) {
+			I !== void 0 && (console.warn("Graupl Accordion option \"openClass\" is deprecated and will be removed. Use expandClass instead."), p = I), O !== void 0 && (console.warn("Graupl Accordion option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), f = O), D !== void 0 && (console.warn("Graupl Accordion option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), g = D), B !== void 0 && (console.warn("Graupl Accordion option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), m = B), super({
 				bootstrap: !1,
 				initialize: !1,
 				prefix: y,
-				key: O,
+				key: T,
 				initializeClass: A
-			}), this._dom.accordion = e, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = t, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = n, this._selectors.expandController = d, this._selectors.collapseController = u, this._elements.accordionItems = [], this._classes.expand = p || "", this._classes.collapse = f || "", this._classes.transition = E || "", this._durations.transition = v, this._durations.expand = g, this._durations.collapse = m, this._optionalKeySupport = _, this._expandMultiple = h, this._collapseAll = b, this._bootstrap(), $ && this.initialize();
+			}), this._dom.accordion = e, this._dom.accordionItems = [], this._dom.accordionItemToggles = [], this._dom.accordionItemHeaders = [], this._dom.accordionItemContents = [], this._dom.accordionControlContainer = null, this._dom.accordionControls = [], this._dom.expandController = [], this._dom.collapseController = [], this._selectors.accordionItems = t, this._selectors.accordionItemToggles = s, this._selectors.accordionItemHeaders = i, this._selectors.accordionItemContents = r, this._selectors.accordionControlContainer = o, this._selectors.accordionControls = n, this._selectors.expandController = d, this._selectors.collapseController = u, this._elements.accordionItems = [], this._classes.expand = p || "", this._classes.collapse = f || "", this._classes.transition = w || "", this._durations.transition = E, this._durations.expand = g, this._durations.collapse = m, this._optionalKeySupport = _, this._expandMultiple = h, this._collapseAll = b, this._bootstrap(), $ && this.initialize();
 		}
 		_registerEvents() {
 			super._registerEvents(), this._addInternalEventListener(this.getEventName("initialize"), (e) => {
@@ -1451,13 +1451,13 @@
 			});
 		});
 	};
-	var ke = class extends F {
+	var ke = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "alert";
 		_storageKey = "alerts";
 		_name = "Alert";
-		constructor({ alertElement: e, controllerElement: t = null, expandClass: s = "show", collapseClass: i = "hide", transitionClass: r = "transitioning", transitionDuration: o = 150, expandDuration: n = -1, collapseDuration: d = -1, expanded: u = !0, prefix: p = "graupl-", key: f = null, initializeClass: E = "initializing", showClass: v, hideClass: g, showDuration: m, hideDuration: _, isHidden: h, initialize: b = !1 } = {}) {
-			v !== void 0 && (console.warn("Graupl Alert option \"showClass\" is deprecated and will be removed. Use expandClass instead."), s = v), g !== void 0 && (console.warn("Graupl Alert option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), i = g), m !== void 0 && (console.warn("Graupl Alert option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), n = m), _ !== void 0 && (console.warn("Graupl Alert option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), d = _), h !== void 0 && (console.warn("Graupl Alert option \"isHidden\" is deprecated and will be removed. Use expanded instead."), u = typeof h == "boolean" ? !h : h), super({
+		constructor({ alertElement: e, controllerElement: t = null, expandClass: s = "show", collapseClass: i = "hide", transitionClass: r = "transitioning", transitionDuration: o = 150, expandDuration: n = -1, collapseDuration: d = -1, expanded: u = !0, prefix: p = "graupl-", key: f = null, initializeClass: w = "initializing", showClass: E, hideClass: g, showDuration: m, hideDuration: _, isHidden: h, initialize: b = !1 } = {}) {
+			E !== void 0 && (console.warn("Graupl Alert option \"showClass\" is deprecated and will be removed. Use expandClass instead."), s = E), g !== void 0 && (console.warn("Graupl Alert option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), i = g), m !== void 0 && (console.warn("Graupl Alert option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), n = m), _ !== void 0 && (console.warn("Graupl Alert option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), d = _), h !== void 0 && (console.warn("Graupl Alert option \"isHidden\" is deprecated and will be removed. Use expanded instead."), u = typeof h == "boolean" ? !h : h), super({
 				controlledElement: e,
 				controllerElement: t,
 				expanded: u,
@@ -1469,7 +1469,7 @@
 				collapseDuration: d,
 				prefix: p,
 				key: f,
-				initializeClass: E,
+				initializeClass: w,
 				bootstrap: !1,
 				initialize: !1
 			}), this._dom.alert = e, this._bootstrap(), b && this.initialize();
@@ -1548,7 +1548,7 @@
 			});
 		});
 	};
-	var Ie = class extends z {
+	var Ie = class extends P {
 		_scope = "Graupl";
 		_rootDOMElement = "item";
 		_name = "BreadcrumbItem";
@@ -1586,14 +1586,14 @@
 				this.dom.link.blur();
 			}, "blur");
 		}
-	}, De = class extends F {
+	}, Oe = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "breadcrumb";
 		_currentChild = 0;
 		_storageKey = "breadcrumbs";
 		_name = "Breadcrumb";
-		constructor({ breadcrumbElement: e, controllerElement: t = null, breadcrumbItemsSelector: s = ".breadcrumb-item", breadcrumbLinksSelector: i = ".breadcrumb-link", lockClass: r = "locked", unlockClass: o = "unlocked", expandClass: n = "show", collapseClass: d = "hide", transitionClass: u = null, transitionDuration: p = 250, expandDuration: f = -1, collapseDuration: E = -1, expandOnFocus: v = !1, collapseOnBlur: g = !1, breakpoint: m = "856px", expandInsideBreakpoint: _ = !1, expandOutsideBreakpoint: h = !0, collapseInsideBreakpoint: b = !0, collapseOutsideBreakpoint: y = !1, lockInsideBreakpoint: O = !1, lockOutsideBreakpoint: A = !0, unlockInsideBreakpoint: I = !0, unlockOutsideBreakpoint: D = !1, locked: T = !1, mediaQuery: B = "", prefix: $ = "graupl-", key: j = null, initializeClass: P = "initializing", lockedClass: G, unlockedClass: S, openClass: U, closeClass: M, openDuration: q, closeDuration: H, openOnFocus: Q, closeOnBlur: V, minWidth: R, openInsideBreakpoint: W, openOutsideBreakpoint: J, closeInsideBreakpoint: Z, closeOutsideBreakpoint: N, autoOpen: X, initialize: Fe = !1 }) {
-			G !== void 0 && (console.warn("Graupl Breadcrumb option \"lockedClass\" is deprecated and will be removed. Use lockClass instead."), r = G), S !== void 0 && (console.warn("Graupl Breadcrumb option \"unlockedClass\" is deprecated and will be removed. Use unlockClass instead."), o = S), U !== void 0 && (console.warn("Graupl Breadcrumb option \"openClass\" is deprecated and will be removed. Use expandClass instead."), n = U), M !== void 0 && (console.warn("Graupl Breadcrumb option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), d = M), q !== void 0 && (console.warn("Graupl Breadcrumb option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), f = q), H !== void 0 && (console.warn("Graupl Breadcrumb option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), E = H), Q !== void 0 && (console.warn("Graupl Breadcrumb option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), v = Q), V !== void 0 && (console.warn("Graupl Breadcrumb option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), g = V), R !== void 0 && (console.warn("Graupl Breadcrumb option \"minWidth\" is deprecated and will be removed. Use breakpoint instead."), m = R), W !== void 0 && (console.warn("Graupl Breadcrumb option \"openInsideBreakpoint\" is deprecated and will be removed. Use expandInsideBreakpoint instead."), _ = W), J !== void 0 && (console.warn("Graupl Breadcrumb option \"openOutsideBreakpoint\" is deprecated and will be removed. Use expandOutsideBreakpoint instead."), h = J), Z !== void 0 && (console.warn("Graupl Breadcrumb option \"closeInsideBreakpoint\" is deprecated and will be removed. Use collapseInsideBreakpoint instead."), b = Z), N !== void 0 && (console.warn("Graupl Breadcrumb option \"closeOutsideBreakpoint\" is deprecated and will be removed. Use collapseOutsideBreakpoint instead."), y = N), X !== void 0 && (console.warn("Graupl Breadcrumb option \"autoOpen\" is deprecated and will be removed. Use expandOutsideBreakpoint and collapseInsideBreakpoint instead."), h = X, b = X), super({
+		constructor({ breadcrumbElement: e, controllerElement: t = null, breadcrumbItemsSelector: s = ".breadcrumb-item", breadcrumbLinksSelector: i = ".breadcrumb-link", lockClass: r = "locked", unlockClass: o = "unlocked", expandClass: n = "show", collapseClass: d = "hide", transitionClass: u = null, transitionDuration: p = 250, expandDuration: f = -1, collapseDuration: w = -1, expandOnFocus: E = !1, collapseOnBlur: g = !1, breakpoint: m = "856px", expandInsideBreakpoint: _ = !1, expandOutsideBreakpoint: h = !0, collapseInsideBreakpoint: b = !0, collapseOutsideBreakpoint: y = !1, lockInsideBreakpoint: T = !1, lockOutsideBreakpoint: A = !0, unlockInsideBreakpoint: I = !0, unlockOutsideBreakpoint: O = !1, locked: D = !1, mediaQuery: B = "", prefix: $ = "graupl-", key: G = null, initializeClass: S = "initializing", lockedClass: U, unlockedClass: M, openClass: z, closeClass: F, openDuration: q, closeDuration: H, openOnFocus: Q, closeOnBlur: V, minWidth: R, openInsideBreakpoint: W, openOutsideBreakpoint: J, closeInsideBreakpoint: Z, closeOutsideBreakpoint: K, autoOpen: X, initialize: Fe = !1 }) {
+			U !== void 0 && (console.warn("Graupl Breadcrumb option \"lockedClass\" is deprecated and will be removed. Use lockClass instead."), r = U), M !== void 0 && (console.warn("Graupl Breadcrumb option \"unlockedClass\" is deprecated and will be removed. Use unlockClass instead."), o = M), z !== void 0 && (console.warn("Graupl Breadcrumb option \"openClass\" is deprecated and will be removed. Use expandClass instead."), n = z), F !== void 0 && (console.warn("Graupl Breadcrumb option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), d = F), q !== void 0 && (console.warn("Graupl Breadcrumb option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), f = q), H !== void 0 && (console.warn("Graupl Breadcrumb option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), w = H), Q !== void 0 && (console.warn("Graupl Breadcrumb option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), E = Q), V !== void 0 && (console.warn("Graupl Breadcrumb option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), g = V), R !== void 0 && (console.warn("Graupl Breadcrumb option \"minWidth\" is deprecated and will be removed. Use breakpoint instead."), m = R), W !== void 0 && (console.warn("Graupl Breadcrumb option \"openInsideBreakpoint\" is deprecated and will be removed. Use expandInsideBreakpoint instead."), _ = W), J !== void 0 && (console.warn("Graupl Breadcrumb option \"openOutsideBreakpoint\" is deprecated and will be removed. Use expandOutsideBreakpoint instead."), h = J), Z !== void 0 && (console.warn("Graupl Breadcrumb option \"closeInsideBreakpoint\" is deprecated and will be removed. Use collapseInsideBreakpoint instead."), b = Z), K !== void 0 && (console.warn("Graupl Breadcrumb option \"closeOutsideBreakpoint\" is deprecated and will be removed. Use collapseOutsideBreakpoint instead."), y = K), X !== void 0 && (console.warn("Graupl Breadcrumb option \"autoOpen\" is deprecated and will be removed. Use expandOutsideBreakpoint and collapseInsideBreakpoint instead."), h = X, b = X), super({
 				controllerElement: t,
 				controlledElement: e,
 				bootstrap: !1,
@@ -1603,25 +1603,25 @@
 				transitionClass: u,
 				transitionDuration: p,
 				expandDuration: f,
-				collapseDuration: E,
-				expandOnFocus: v,
+				collapseDuration: w,
+				expandOnFocus: E,
 				collapseOnBlur: g,
 				expandInsideBreakpoint: _,
 				expandOutsideBreakpoint: h,
 				collapseInsideBreakpoint: b,
 				collapseOutsideBreakpoint: y,
-				lockInsideBreakpoint: O,
+				lockInsideBreakpoint: T,
 				lockOutsideBreakpoint: A,
 				unlockInsideBreakpoint: I,
-				unlockOutsideBreakpoint: D,
-				locked: T,
+				unlockOutsideBreakpoint: O,
+				locked: D,
 				breakpoint: m,
 				mediaQuery: B,
 				lockClass: r,
 				unlockClass: o,
 				prefix: $,
-				key: j,
-				initializeClass: P
+				key: G,
+				initializeClass: S
 			}), this._dom.breadcrumb = e, this._dom.breadcrumbItems = [], this._dom.breadcrumbLinks = [], this._selectors.breadcrumbItems = s, this._selectors.breadcrumbLinks = i, this._elements.breadcrumbItems = [], this._elements.breadcrumbToggle = null, this._bootstrap(), Fe && this.initialize();
 		}
 		_registerEvents() {
@@ -1714,7 +1714,7 @@
 			this.dom.breadcrumb.id = this.dom.breadcrumb.id || `breadcrumb-${this.key}`, this.dom.controller && (this.dom.controller.id = this.dom.controller.id || `breadcrumb-toggle-${this.key}`), this._id = this.dom.breadcrumb.id;
 		}
 		_setAriaAttributes() {
-			this.dom.controller && (this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.breadcrumb.id), K("button", { toggle: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button"));
+			this.dom.controller && (this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.breadcrumb.id), j("button", { toggle: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button"));
 		}
 		_setCustomProps() {
 			this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-transition-duration`, `${this.transitionDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-open-transition-duration`, `${this.expandDuration}ms`), this.dom.breadcrumb.style.setProperty(`--${this.prefix}breadcrumb-close-transition-duration`, `${this.collapseDuration}ms`);
@@ -1812,10 +1812,10 @@
 			this.elements.breadcrumbItems.forEach((e) => e.dispose()), super.dispose();
 		}
 	};
-	const Te = ({ options: e = {}, context: t = document, selector: s = ".breadcrumb", controllerSelector: i = ".breadcrumb-toggle" } = {}) => {
+	const De = ({ options: e = {}, context: t = document, selector: s = ".breadcrumb", controllerSelector: i = ".breadcrumb-toggle" } = {}) => {
 		x("graupl-breadcrumb-generator", s, t).forEach((r) => {
 			const o = r.dataset.grauplBreadcrumbOptions ? JSON.parse(r.dataset.grauplBreadcrumbOptions.replace(/'/g, "\"")) || {} : {};
-			new De({
+			new Oe({
 				breadcrumbElement: r,
 				controllerElement: r.querySelector(i) || null,
 				initialize: !0,
@@ -1824,7 +1824,7 @@
 			});
 		});
 	};
-	var ce = class extends z {
+	var ce = class extends P {
 		_scope = "Graupl";
 		_rootDOMElement = "carouselItem";
 		_shouldStore = !1;
@@ -1849,9 +1849,9 @@
 			}), this._addInternalEventListener(this.getEventName("postactivate"), () => {
 				this.dom.tab && (k(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !0));
 			}), this._addInternalEventListener(this.getEventName("deactivate"), () => {
-				w(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.setAttribute("inert", !0);
+				v(this.elements.parent.activeClass, this.dom.carouselItem), this.dom.carouselItem.setAttribute("inert", !0);
 			}), this._addInternalEventListener(this.getEventName("postdeactivate"), () => {
-				this.dom.tab && (w(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !1));
+				this.dom.tab && (v(this.elements.parent.activeClass, this.dom.tab), this.dom.tab.setAttribute("aria-selected", !1));
 			}), this.elements.parent._registerItemEvents(this);
 		}
 		activate({ scroll: e = !0, scrollOptions: t = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
@@ -1878,13 +1878,17 @@
 				}, "deactivate"), this._dispatchEvent("deactivate", this.rootDOMElement, { emit: e });
 			}, "deactivate");
 		}
-	}, Oe = class extends z {
+	}, Te = class extends P {
 		_scope = "Graupl";
 		_rootDOMElement = "carousel";
 		_currentItem = 0;
 		_currentTabIndex = -1;
 		_autoplay = !0;
 		_automatic = !0;
+		_pauseOnFocus = !0;
+		_resumeOnBlur = !1;
+		_pauseOnEnter = !0;
+		_resumeOnLeave = !0;
 		_hoverPaused = !1;
 		_focusPaused = !1;
 		_playText = "Play";
@@ -1895,14 +1899,14 @@
 		_loop = !0;
 		_intersectionObserver = null;
 		_loopItems = /* @__PURE__ */ new Set();
-		constructor({ carouselElement: e, carouselItemsSelector: t = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: n = ".carousel-tab-container", autoplaySelector: d = ".autoplay", nextSelector: u = ".next", previousSelector: p = ".previous", activeClass: f = "active", playClass: E = "play", pauseClass: v = "pause", autoplay: g = !0, automaticActivation: m = !0, transitionDelay: _ = 1e4, playText: h = "Play", pauseText: b = "Pause", itemsPerPage: y = 1, loop: O = !0, prefix: A = "graupl-", key: I = null, initializeClass: D = "initializing", initialize: T = !1 }) {
+		constructor({ carouselElement: e, carouselItemsSelector: t = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: n = ".carousel-tab-container", autoplaySelector: d = ".autoplay", nextSelector: u = ".next", previousSelector: p = ".previous", activeClass: f = "active", playClass: w = "play", pauseClass: E = "pause", autoplay: g = !0, pauseOnFocus: m = !0, resumeOnBlur: _ = !1, pauseOnEnter: h = !0, resumeOnLeave: b = !0, automaticActivation: y = !0, transitionDelay: T = 1e4, playText: A = "Play", pauseText: I = "Pause", itemsPerPage: O = 1, loop: D = !0, prefix: B = "graupl-", key: $ = null, initializeClass: G = "initializing", initialize: S = !1 }) {
 			super({
 				bootstrap: !1,
 				initialize: !1,
-				prefix: A,
-				key: I,
-				initializeClass: D
-			}), this._dom.carousel = e, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = t, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = n, this._selectors.autoplay = d, this._selectors.next = u, this._selectors.previous = p, this._elements.carouselItems = [], this._classes.active = f || "", this._classes.play = E || "", this._classes.pause = v || "", this._autoplay = g, this._automatic = m, this._itemsPerPage = y, this._loop = O, this._delays.transition = _, this._playText = h || "", this._pauseText = b || "", this._bootstrap(), T && this.initialize();
+				prefix: B,
+				key: $,
+				initializeClass: G
+			}), this._dom.carousel = e, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = t, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = n, this._selectors.autoplay = d, this._selectors.next = u, this._selectors.previous = p, this._elements.carouselItems = [], this._classes.active = f || "", this._classes.play = w || "", this._classes.pause = E || "", this._autoplay = g, this._pauseOnFocus = m, this._resumeOnBlur = _, this._pauseOnEnter = h, this._resumeOnLeave = b, this._automatic = y, this._itemsPerPage = O, this._loop = D, this._delays.transition = T, this._playText = A || "", this._pauseText = I || "", this._bootstrap(), S && this.initialize();
 		}
 		_registerEvents() {
 			super._registerEvents(), this._addInternalEventListener(this.getEventName("initialize"), (e) => {
@@ -1914,6 +1918,10 @@
 				if (e.detail.component !== this) return;
 				const s = a("boolean", {
 					autoplay: this._autoplay,
+					pauseOnFocus: this._pauseOnFocus,
+					resumeOnBlur: this._resumeOnBlur,
+					pauseOnEnter: this._pauseOnEnter,
+					resumeOnLeave: this._resumeOnLeave,
 					automaticActivation: this._automatic,
 					loop: this._loop
 				}, { shouldThrow: !1 });
@@ -1937,13 +1945,13 @@
 			return this._classes.play;
 		}
 		set playClass(e) {
-			C({ playClass: e }), this._classes.play !== e && (this.isInitialized && w(this._classes.play, this.dom.autoplay), this._classes.play = e, this.isInitialized && this._handleAutoplay());
+			C({ playClass: e }), this._classes.play !== e && (this.isInitialized && v(this._classes.play, this.dom.autoplay), this._classes.play = e, this.isInitialized && this._handleAutoplay());
 		}
 		get pauseClass() {
 			return this._classes.pause;
 		}
 		set pauseClass(e) {
-			C({ pauseClass: e }), this._classes.pause !== e && (this.isInitialized && w(this._classes.pause, this.dom.autoplay), this._classes.pause = e, this.isInitialized && this._handleAutoplay());
+			C({ pauseClass: e }), this._classes.pause !== e && (this.isInitialized && v(this._classes.pause, this.dom.autoplay), this._classes.pause = e, this.isInitialized && this._handleAutoplay());
 		}
 		get currentItem() {
 			return this._currentItem;
@@ -1990,6 +1998,9 @@
 		set pauseText(e) {
 			a("string", { pauseText: e }), this._pauseText !== e && (this._pauseText = e, this.isInitialized && this._handleAutoplay());
 		}
+		get _isAutoplayStopped() {
+			return !this.autoplay || this._focusPaused && !this._resumeOnBlur || this._hoverPaused && !this._resumeOnLeave;
+		}
 		_setDOMElements() {
 			this._setDOMElementType("carouselItemContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselControlContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselTabContainer", { context: this.dom.carousel }), this.dom.carouselItemContainer && this._setDOMElementType("carouselItems", { context: this.dom.carouselItemContainer }), this.dom.carouselControlContainer && (this._setDOMElementType("carouselControls", { context: this.dom.carouselControlContainer }), this._setDOMElementType("autoplay", { context: this.dom.carouselControlContainer }), this._setDOMElementType("next", { context: this.dom.carouselControlContainer }), this._setDOMElementType("previous", { context: this.dom.carouselControlContainer })), this._dom.carouselTabContainer && this._setDOMElementType("carouselTabs", { context: this.dom.carouselTabContainer });
 		}
@@ -2025,7 +2036,7 @@
 			}), this._id = this.dom.carousel.id;
 		}
 		_setAriaAttributes() {
-			!K("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((e) => {
+			!j("section", { carousel: this.dom.carousel }, { shouldThrow: !1 }).status && this.dom.carousel.getAttribute("role") !== "region" && this.dom.carousel.setAttribute("role", "group"), this.dom.carouselItems.forEach((e) => {
 				e.setAttribute("inert", "true");
 			}), this.dom.carouselItemContainer && this.dom.carouselItemContainer.setAttribute("tabindex", "-1"), this._dom.carousel.setAttribute("aria-roledescription", "carousel"), this.dom.carouselTabContainer && this.dom.carouselTabContainer.setAttribute("role", "tablist"), this.dom.carouselTabs.forEach((e) => {
 				e.setAttribute("tabindex", "-1");
@@ -2033,8 +2044,10 @@
 		}
 		_handleAutoplay() {
 			if (!this.isBootstrapped) return;
-			const e = !this.autoplay || this._focusPaused, t = !e && !this._hoverPaused;
-			e ? (k(this.playClass, this.dom.autoplay), w(this.pauseClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.playText)) : (k(this.pauseClass, this.dom.autoplay), w(this.playClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.pauseText)), this.dom.carousel.setAttribute("aria-live", t ? "off" : "polite"), t ? this._setInterval(() => this.activateNextItem(), this.transitionDelay, "autoplay") : this._clearInterval("autoplay");
+			const e = this._isAutoplayStopped, t = !e && !this._focusPaused && !this._hoverPaused;
+			e ? (k(this.playClass, this.dom.autoplay), v(this.pauseClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.playText)) : (k(this.pauseClass, this.dom.autoplay), v(this.playClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.pauseText)), this.dom.carousel.setAttribute("aria-live", t ? "off" : "polite"), t ? this._setInterval(() => {
+				this.activateNextItem(), !this.loop && this.currentItem === this.dom.carouselItems.length - 1 && (this.autoplay = !1);
+			}, this.transitionDelay, "autoplay") : this._clearInterval("autoplay");
 		}
 		_handleIntersection() {
 			const e = {
@@ -2060,9 +2073,11 @@
 			});
 		}
 		_handleFocus() {
-			this._addEventListener("focusin", this.dom.carousel, () => {
+			this._pauseOnFocus && (this._addEventListener("focusin", this.dom.carousel, () => {
 				this._focusPaused = !0, this._handleAutoplay();
-			});
+			}), this._resumeOnBlur && this._addEventListener("focusout", this.dom.carousel, (t) => {
+				!this._focusPaused || this.dom.carousel.contains(t.relatedTarget) || (this._focusPaused = !1, this._handleAutoplay());
+			}));
 			const e = this.dom.carouselTabContainer;
 			e && (this._addEventListener("focusin", e, (t) => {
 				const s = this._getItemsWithTabs(), i = s.findIndex((o) => o.dom.tab === t.target);
@@ -2092,11 +2107,11 @@
 			});
 		}
 		_handleHover() {
-			this._addEventListener("pointerover", this.dom.carousel, (e) => {
+			this._pauseOnEnter && (this._addEventListener("pointerover", this.dom.carousel, (e) => {
 				e.relatedTarget && this.dom.carousel.contains(e.relatedTarget) || (this._hoverPaused = !0, this._handleAutoplay());
-			}), this._addEventListener("pointerleave", this.dom.carousel, () => {
-				this._hoverPaused = !1, this._handleAutoplay();
-			});
+			}), this._resumeOnLeave && this._addEventListener("pointerleave", this.dom.carousel, () => {
+				this._hoverPaused && (this._hoverPaused = !1, this._handleAutoplay());
+			}));
 		}
 		_handleKeydown() {
 			this.dom.carouselControls.forEach((e) => {
@@ -2269,37 +2284,23 @@
 			});
 		}
 		activateNextItem({ scroll: e = !0, scrollOptions: t = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
-			this.loop ? this.activateItem(this.currentItem + 1, {
-				scroll: e,
-				scrollOptions: t,
-				emit: s
-			}) : this.currentItem + 1 >= this.dom.carouselItems.length ? this.activateFirstItem({
-				scroll: e,
-				scrollOptions: t,
-				emit: s
-			}) : this.activateItem(this.currentItem + 1, {
+			const i = this.currentItem + 1;
+			!this.loop && i >= this.dom.carouselItems.length || this.activateItem(i, {
 				scroll: e,
 				scrollOptions: t,
 				emit: s
 			});
 		}
 		activatePreviousItem({ scroll: e = !0, scrollOptions: t = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
-			this.loop ? this.activateItem(this.currentItem - 1, {
-				scroll: e,
-				scrollOptions: t,
-				emit: s
-			}) : this.currentItem - 1 < 0 || this.loop && this.currentItem - 1 < this.itemsPerPage ? this.activateLastItem({
-				scroll: e,
-				scrollOptions: t,
-				emit: s
-			}) : this.activateItem(this.currentItem - 1, {
+			const i = this.currentItem - 1;
+			!this.loop && i < 0 || this.activateItem(i, {
 				scroll: e,
 				scrollOptions: t,
 				emit: s
 			});
 		}
 		toggleAutoplay() {
-			this.autoplay = !this.autoplay || this._focusPaused;
+			this.autoplay = this._isAutoplayStopped;
 		}
 		dispose() {
 			this._intersectionObserver?.disconnect(), this._intersectionObserver = null, this._removeLoop(), this.elements.carouselItems.forEach((e) => e.dispose()), super.dispose();
@@ -2308,7 +2309,7 @@
 	const Ae = ({ options: e = {}, context: t = document, selector: s = ".carousel" } = {}) => {
 		x("graupl-carousel-generator", s, t).forEach((i) => {
 			const r = i.dataset.grauplCarouselOptions ? JSON.parse(i.dataset.grauplCarouselOptions.replace(/'/g, "\"")) || {} : {};
-			new Oe({
+			new Te({
 				carouselElement: i,
 				initialize: !0,
 				...e,
@@ -2316,13 +2317,13 @@
 			});
 		});
 	};
-	var Be = class extends F {
+	var Be = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "disclosure";
 		_storageKey = "disclosures";
 		_name = "Disclosure";
-		constructor({ disclosureElement: e, controllerElement: t, disclosureContentSelector: s = ".disclosure-content", lockClass: i = "locked", unlockClass: r = "unlocked", expandClass: o = "show", collapseClass: n = "hide", transitionClass: d = "transitioning", transitionDuration: u = 250, expandDuration: p = -1, collapseDuration: f = -1, expandOnFocus: E = !1, collapseOnBlur: v = !1, breakpoint: g = "", expandInsideBreakpoint: m = !1, expandOutsideBreakpoint: _ = !1, collapseInsideBreakpoint: h = !1, collapseOutsideBreakpoint: b = !1, lockInsideBreakpoint: y = !1, lockOutsideBreakpoint: O = !1, unlockInsideBreakpoint: A = !1, unlockOutsideBreakpoint: I = !1, locked: D = !1, mediaQuery: T = "", prefix: B = "graupl-", key: $ = null, initializeClass: j = "initializing", lockedClass: P, unlockedClass: G, openClass: S, closeClass: U, openDuration: M, closeDuration: q, openOnFocus: H, closeOnBlur: Q, minWidth: V, openInsideBreakpoint: R, openOutsideBreakpoint: W, closeInsideBreakpoint: J, closeOutsideBreakpoint: Z, autoOpen: N, initialize: X = !1 } = {}) {
-			P !== void 0 && (console.warn("Graupl Disclosure option \"lockedClass\" is deprecated and will be removed. Use lockClass instead."), i = P), G !== void 0 && (console.warn("Graupl Disclosure option \"unlockedClass\" is deprecated and will be removed. Use unlockClass instead."), r = G), S !== void 0 && (console.warn("Graupl Disclosure option \"openClass\" is deprecated and will be removed. Use expandClass instead."), o = S), U !== void 0 && (console.warn("Graupl Disclosure option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), n = U), M !== void 0 && (console.warn("Graupl Disclosure option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), p = M), q !== void 0 && (console.warn("Graupl Disclosure option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), f = q), H !== void 0 && (console.warn("Graupl Disclosure option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), E = H), Q !== void 0 && (console.warn("Graupl Disclosure option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), v = Q), V !== void 0 && (console.warn("Graupl Disclosure option \"minWidth\" is deprecated and will be removed. Use breakpoint instead."), g = V), R !== void 0 && (console.warn("Graupl Disclosure option \"openInsideBreakpoint\" is deprecated and will be removed. Use expandInsideBreakpoint instead."), m = R), W !== void 0 && (console.warn("Graupl Disclosure option \"openOutsideBreakpoint\" is deprecated and will be removed. Use expandOutsideBreakpoint instead."), _ = W), J !== void 0 && (console.warn("Graupl Disclosure option \"closeInsideBreakpoint\" is deprecated and will be removed. Use collapseInsideBreakpoint instead."), h = J), Z !== void 0 && (console.warn("Graupl Disclosure option \"closeOutsideBreakpoint\" is deprecated and will be removed. Use collapseOutsideBreakpoint instead."), b = Z), N !== void 0 && (console.warn("Graupl Disclosure option \"autoOpen\" is deprecated and will be removed. Use expandOutsideBreakpoint and collapseInsideBreakpoint instead."), _ = N, h = N), super({
+		constructor({ disclosureElement: e, controllerElement: t, disclosureContentSelector: s = ".disclosure-content", lockClass: i = "locked", unlockClass: r = "unlocked", expandClass: o = "show", collapseClass: n = "hide", transitionClass: d = "transitioning", transitionDuration: u = 250, expandDuration: p = -1, collapseDuration: f = -1, expandOnFocus: w = !1, collapseOnBlur: E = !1, breakpoint: g = "", expandInsideBreakpoint: m = !1, expandOutsideBreakpoint: _ = !1, collapseInsideBreakpoint: h = !1, collapseOutsideBreakpoint: b = !1, lockInsideBreakpoint: y = !1, lockOutsideBreakpoint: T = !1, unlockInsideBreakpoint: A = !1, unlockOutsideBreakpoint: I = !1, locked: O = !1, mediaQuery: D = "", prefix: B = "graupl-", key: $ = null, initializeClass: G = "initializing", lockedClass: S, unlockedClass: U, openClass: M, closeClass: z, openDuration: F, closeDuration: q, openOnFocus: H, closeOnBlur: Q, minWidth: V, openInsideBreakpoint: R, openOutsideBreakpoint: W, closeInsideBreakpoint: J, closeOutsideBreakpoint: Z, autoOpen: K, initialize: X = !1 } = {}) {
+			S !== void 0 && (console.warn("Graupl Disclosure option \"lockedClass\" is deprecated and will be removed. Use lockClass instead."), i = S), U !== void 0 && (console.warn("Graupl Disclosure option \"unlockedClass\" is deprecated and will be removed. Use unlockClass instead."), r = U), M !== void 0 && (console.warn("Graupl Disclosure option \"openClass\" is deprecated and will be removed. Use expandClass instead."), o = M), z !== void 0 && (console.warn("Graupl Disclosure option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), n = z), F !== void 0 && (console.warn("Graupl Disclosure option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), p = F), q !== void 0 && (console.warn("Graupl Disclosure option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), f = q), H !== void 0 && (console.warn("Graupl Disclosure option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), w = H), Q !== void 0 && (console.warn("Graupl Disclosure option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), E = Q), V !== void 0 && (console.warn("Graupl Disclosure option \"minWidth\" is deprecated and will be removed. Use breakpoint instead."), g = V), R !== void 0 && (console.warn("Graupl Disclosure option \"openInsideBreakpoint\" is deprecated and will be removed. Use expandInsideBreakpoint instead."), m = R), W !== void 0 && (console.warn("Graupl Disclosure option \"openOutsideBreakpoint\" is deprecated and will be removed. Use expandOutsideBreakpoint instead."), _ = W), J !== void 0 && (console.warn("Graupl Disclosure option \"closeInsideBreakpoint\" is deprecated and will be removed. Use collapseInsideBreakpoint instead."), h = J), Z !== void 0 && (console.warn("Graupl Disclosure option \"closeOutsideBreakpoint\" is deprecated and will be removed. Use collapseOutsideBreakpoint instead."), b = Z), K !== void 0 && (console.warn("Graupl Disclosure option \"autoOpen\" is deprecated and will be removed. Use expandOutsideBreakpoint and collapseInsideBreakpoint instead."), _ = K, h = K), super({
 				controllerElement: t,
 				controlledElement: e,
 				bootstrap: !1,
@@ -2333,24 +2334,24 @@
 				transitionDuration: u,
 				expandDuration: p,
 				collapseDuration: f,
-				expandOnFocus: E,
-				collapseOnBlur: v,
+				expandOnFocus: w,
+				collapseOnBlur: E,
 				expandInsideBreakpoint: m,
 				expandOutsideBreakpoint: _,
 				collapseInsideBreakpoint: h,
 				collapseOutsideBreakpoint: b,
 				lockInsideBreakpoint: y,
-				lockOutsideBreakpoint: O,
+				lockOutsideBreakpoint: T,
 				unlockInsideBreakpoint: A,
 				unlockOutsideBreakpoint: I,
-				locked: D,
+				locked: O,
 				breakpoint: g,
-				mediaQuery: T,
+				mediaQuery: D,
 				lockClass: i,
 				unlockClass: r,
 				prefix: B,
 				key: $,
-				initializeClass: j
+				initializeClass: G
 			}), this._dom.disclosure = e, this._selectors.content = s, this._bootstrap(), X && this.initialize();
 		}
 		_registerEvents() {
@@ -2437,7 +2438,7 @@
 			this.dom.disclosure.id = this.dom.disclosure.id || `disclosure-${this.key}`, this.dom.controller.id = this.dom.controller.id || `disclosure-controller-${this.key}`, this._id = this.dom.disclosure.id;
 		}
 		_setAriaAttributes() {
-			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), K("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
+			this.dom.controller.getAttribute("aria-expanded") !== "true" && this.dom.controller.setAttribute("aria-expanded", "false"), this.dom.controller.setAttribute("aria-controls", this.dom.disclosure.id), j("button", { controller: this.dom.controller }, { shouldThrow: !1 }).status || this.dom.controller.setAttribute("role", "button");
 		}
 		_setCustomProps() {
 			this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-transition-duration`, `${this.transitionDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-open-transition-duration`, `${this.expandDuration}ms`), this.dom.disclosure.style.setProperty(`--${this.prefix}disclosure-close-transition-duration`, `${this.collapseDuration}ms`);
@@ -2518,6 +2519,10 @@
 				menuLinkSelector: ".menu-link",
 				submenuItemSelector: ".submenu-item",
 				submenuToggleSelector: ".submenu-toggle",
+				menuItemsSelector: ".menu-item",
+				menuLinksSelector: ".menu-link",
+				submenuItemsSelector: ".submenu-item",
+				submenuTogglesSelector: ".submenu-toggle",
 				controllerElement: d,
 				containerElement: u,
 				...e,
@@ -2525,7 +2530,7 @@
 			});
 		});
 	};
-	var Ge = class extends F {
+	var Se = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "toggle";
 		_storageKey = "tabToggles";
@@ -2634,19 +2639,19 @@
 		hideSiblings(...e) {
 			return console.warn("Graupl TabToggle.hideSiblings() is deprecated and will be removed. Use collapseSiblings() instead."), this.collapseSiblings(...e);
 		}
-	}, Se = class extends z {
+	}, Ge = class extends P {
 		_scope = "Graupl";
 		_rootDOMElement = "tabs";
 		_automatic = !1;
 		_currentChild = 0;
 		_storageKey = "tabs";
 		_name = "Tab";
-		constructor({ tabsElement: e, tabListSelector: t = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", expandClass: r = "show", collapseClass: o = "hide", transitionClass: n = null, transitionDuration: d = 300, expandDuration: u = -1, collapseDuration: p = -1, automaticActivation: f = !1, prefix: E = "graupl-", key: v = null, initializeClass: g = "initializing", openClass: m, closeClass: _, openDuration: h, closeDuration: b, initialize: y = !1 }) {
+		constructor({ tabsElement: e, tabListSelector: t = ".tab-list", tabTogglesSelector: s = ".tab-toggle", tabContentsSelector: i = ".tab-content", expandClass: r = "show", collapseClass: o = "hide", transitionClass: n = null, transitionDuration: d = 300, expandDuration: u = -1, collapseDuration: p = -1, automaticActivation: f = !1, prefix: w = "graupl-", key: E = null, initializeClass: g = "initializing", openClass: m, closeClass: _, openDuration: h, closeDuration: b, initialize: y = !1 }) {
 			m !== void 0 && (console.warn("Graupl Tabs option \"openClass\" is deprecated and will be removed. Use expandClass instead."), r = m), _ !== void 0 && (console.warn("Graupl Tabs option \"closeClass\" is deprecated and will be removed. Use collapseClass instead."), o = _), h !== void 0 && (console.warn("Graupl Tabs option \"openDuration\" is deprecated and will be removed. Use expandDuration instead."), u = h), b !== void 0 && (console.warn("Graupl Tabs option \"closeDuration\" is deprecated and will be removed. Use collapseDuration instead."), p = b), super({
 				bootstrap: !1,
 				initialize: !1,
-				prefix: E,
-				key: v,
+				prefix: w,
+				key: E,
 				initializeClass: g
 			}), this._dom.tabs = e, this._dom.tabList = null, this._dom.tabToggles = [], this._dom.tabContents = [], this._selectors.tabList = t, this._selectors.tabToggles = s, this._selectors.tabContents = i, this._elements.tabToggles = [], this._classes.expand = r || "", this._classes.collapse = o || "", this._classes.transition = n || "", this._durations.transition = d, this._durations.expand = u, this._durations.collapse = p, this._automatic = f, this._bootstrap(), y && this.initialize();
 		}
@@ -2748,7 +2753,7 @@
 		}
 		_createChildElements() {
 			this.dom.tabToggles.forEach((e, t) => {
-				const s = new Ge({
+				const s = new Se({
 					toggleElement: e,
 					contentElement: this.dom.tabContents[t],
 					parentTab: this
@@ -2844,7 +2849,7 @@
 	const Ue = ({ options: e = {}, context: t = document, selector: s = ".tabs" } = {}) => {
 		x("graupl-tabs-generator", s, t).forEach((i) => {
 			const r = i.dataset.grauplTabsOptions ? JSON.parse(i.dataset.grauplTabsOptions.replace(/'/g, "\"")) || {} : {};
-			new Se({
+			new Ge({
 				tabsElement: i,
 				initialize: !0,
 				...e,
@@ -2852,32 +2857,31 @@
 			});
 		});
 	};
-	var Me = class extends F {
+	var Me = class extends N {
 		_scope = "Graupl";
 		_rootDOMElement = "tooltip";
 		_softLocked = !1;
 		_hoverType = "on";
 		_storageKey = "tooltips";
 		_name = "Tooltip";
-		constructor({ tooltipElement: e, tooltipToggleElement: t, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: r = "hide", transitionClass: o = "transitioning", transitionDelay: n = 250, transitionDuration: d = 150, expandDuration: u = -1, collapseDuration: p = -1, expandOnFocus: f = !0, collapseOnBlur: E = !0, hoverType: v = "on", hoverDelay: g = 250, enterDelay: m = -1, leaveDelay: _ = -1, prefix: h = "graupl-", key: b = null, initializeClass: y = "initializing", showClass: O, hideClass: A, showDuration: I, hideDuration: D, openOnFocus: T, closeOnBlur: B, initialize: $ = !1 } = {}) {
-			O !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = O), A !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), r = A), I !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), u = I), D !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), p = D), T !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), f = T), B !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), E = B), super({
+		constructor({ tooltipElement: e, tooltipToggleElement: t, tooltipDescriptionElement: s, expandClass: i = "show", collapseClass: r = "hide", transitionClass: o = "transitioning", transitionDuration: n = 150, expandDuration: d = -1, collapseDuration: u = -1, expandOnFocus: p = !0, collapseOnBlur: f = !0, hoverType: w = "on", hoverDelay: E = 250, enterDelay: g = -1, leaveDelay: m = -1, prefix: _ = "graupl-", key: h = null, initializeClass: b = "initializing", showClass: y, hideClass: T, showDuration: A, hideDuration: I, openOnFocus: O, closeOnBlur: D, initialize: B = !1 } = {}) {
+			y !== void 0 && (console.warn("Graupl Tooltip option \"showClass\" is deprecated and will be removed. Use expandClass instead."), i = y), T !== void 0 && (console.warn("Graupl Tooltip option \"hideClass\" is deprecated and will be removed. Use collapseClass instead."), r = T), A !== void 0 && (console.warn("Graupl Tooltip option \"showDuration\" is deprecated and will be removed. Use expandDuration instead."), d = A), I !== void 0 && (console.warn("Graupl Tooltip option \"hideDuration\" is deprecated and will be removed. Use collapseDuration instead."), u = I), O !== void 0 && (console.warn("Graupl Tooltip option \"openOnFocus\" is deprecated and will be removed. Use expandOnFocus instead."), p = O), D !== void 0 && (console.warn("Graupl Tooltip option \"closeOnBlur\" is deprecated and will be removed. Use collapseOnBlur instead."), f = D), super({
 				controllerElement: t,
 				controlledElement: s,
 				expandClass: i,
 				collapseClass: r,
 				transitionClass: o,
-				transitionDelay: n,
-				transitionDuration: d,
-				expandDuration: u,
-				collapseDuration: p,
-				expandOnFocus: f,
-				collapseOnBlur: E,
+				transitionDuration: n,
+				expandDuration: d,
+				collapseDuration: u,
+				expandOnFocus: p,
+				collapseOnBlur: f,
 				bootstrap: !1,
 				initialize: !1,
-				prefix: h,
-				key: b,
-				initializeClass: y
-			}), this._dom.tooltip = e, this._dom.tooltipToggle = t, this._dom.tooltipDescription = s, this._hoverType = v, this._delays.hover = g, this._delays.enter = m, this._delays.leave = _, this._bootstrap(), $ && this.initialize();
+				prefix: _,
+				key: h,
+				initializeClass: b
+			}), this._dom.tooltip = e, this._dom.tooltipToggle = t, this._dom.tooltipDescription = s, this._hoverType = w, this._delays.hover = E, this._delays.enter = g, this._delays.leave = m, this._bootstrap(), B && this.initialize();
 		}
 		_registerEvents() {
 			super._registerEvents(), this._addInternalEventListener(this.getEventName("precollapse"), () => {
@@ -3042,7 +3046,7 @@
 		});
 	};
 	document.addEventListener("DOMContentLoaded", () => {
-		ye(), xe(), Te(), Ae(), Le(), $e(), Ue(), ze();
+		ye(), xe(), De(), Ae(), Le(), $e(), Ue(), ze();
 	});
 })();
 

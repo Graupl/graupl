@@ -198,7 +198,7 @@ var Carousel = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function A(t, e, { shouldThrow: s = !0 } = {}) {
+	function O(t, e, { shouldThrow: s = !0 } = {}) {
 		const i = {
 			status: !0,
 			errors: []
@@ -211,7 +211,7 @@ var Carousel = (function() {
 		if (s && !i.status) throw i.errors[0];
 		return i;
 	}
-	function O(t, { shouldThrow: e = !0 } = {}) {
+	function A(t, { shouldThrow: e = !0 } = {}) {
 		const s = {
 			status: !0,
 			errors: []
@@ -445,7 +445,7 @@ var Carousel = (function() {
 		}
 		_validate() {
 			this._errors = [], this._valid = !0, this._dispatchEvent("prevalidate", this.rootDOMElement);
-			const t = O(this, { shouldThrow: !1 });
+			const t = A(this, { shouldThrow: !1 });
 			if (t.status || (this._errors = [...this._errors, ...t.errors], this._valid = !1), Object.keys(this._dom).length > 0) {
 				const o = {};
 				for (const h of Object.keys(this._dom)) Array.isArray(this._dom[h]) ? this._dom[h].forEach((p, v) => {
@@ -582,7 +582,7 @@ var Carousel = (function() {
 			return Object.keys(this._events).includes(t) ? this._events[t].type : null;
 		}
 		_dispatchEvent(t, e = this.rootDOMElement, { emit: s = !0 } = {}) {
-			A(t, this), n("boolean", { emit: s }), s && this.shouldEmit && u(HTMLElement, { element: e });
+			O(t, this), n("boolean", { emit: s }), s && this.shouldEmit && u(HTMLElement, { element: e });
 			const i = this.events[t];
 			this.#t.dispatchEvent(i), s && this.shouldEmit && e.dispatchEvent(i);
 		}
@@ -687,6 +687,10 @@ var Carousel = (function() {
 		_currentTabIndex = -1;
 		_autoplay = !0;
 		_automatic = !0;
+		_pauseOnFocus = !0;
+		_resumeOnBlur = !1;
+		_pauseOnEnter = !0;
+		_resumeOnLeave = !0;
 		_hoverPaused = !1;
 		_focusPaused = !1;
 		_playText = "Play";
@@ -697,14 +701,14 @@ var Carousel = (function() {
 		_loop = !0;
 		_intersectionObserver = null;
 		_loopItems = /* @__PURE__ */ new Set();
-		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: a = ".carousel-tab-container", autoplaySelector: h = ".autoplay", nextSelector: p = ".next", previousSelector: v = ".previous", activeClass: $ = "active", playClass: L = "play", pauseClass: M = "pause", autoplay: z = !0, automaticActivation: D = !0, transitionDelay: P = 1e4, playText: S = "Play", pauseText: j = "Pause", itemsPerPage: F = 1, loop: V = !0, prefix: K = "graupl-", key: q = null, initializeClass: N = "initializing", initialize: H = !1 }) {
+		constructor({ carouselElement: t, carouselItemsSelector: e = ".carousel-item", carouselItemContainerSelector: s = ".carousel-item-container", carouselControlsSelector: i = ".carousel-control", carouselControlContainerSelector: r = ".carousel-control-container", carouselTabsSelector: o = ".carousel-tab", carouselTabContainerSelector: a = ".carousel-tab-container", autoplaySelector: h = ".autoplay", nextSelector: p = ".next", previousSelector: v = ".previous", activeClass: $ = "active", playClass: L = "play", pauseClass: M = "pause", autoplay: z = !0, pauseOnFocus: P = !0, resumeOnBlur: D = !1, pauseOnEnter: S = !0, resumeOnLeave: j = !0, automaticActivation: F = !0, transitionDelay: V = 1e4, playText: K = "Play", pauseText: B = "Pause", itemsPerPage: q = 1, loop: N = !0, prefix: H = "graupl-", key: W = null, initializeClass: R = "initializing", initialize: U = !1 }) {
 			super({
 				bootstrap: !1,
 				initialize: !1,
-				prefix: K,
-				key: q,
-				initializeClass: N
-			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = a, this._selectors.autoplay = h, this._selectors.next = p, this._selectors.previous = v, this._elements.carouselItems = [], this._classes.active = $ || "", this._classes.play = L || "", this._classes.pause = M || "", this._autoplay = z, this._automatic = D, this._itemsPerPage = F, this._loop = V, this._delays.transition = P, this._playText = S || "", this._pauseText = j || "", this._bootstrap(), H && this.initialize();
+				prefix: H,
+				key: W,
+				initializeClass: R
+			}), this._dom.carousel = t, this._dom.carouselItems = [], this._dom.carouselItemContainer = null, this._dom.carouselControls = [], this._dom.carouselControlContainer = null, this._dom.carouselTabs = [], this._dom.carouselTabContainer = null, this._dom.autoplay = null, this._dom.next = null, this._dom.previous = null, this._selectors.carouselItems = e, this._selectors.carouselItemContainer = s, this._selectors.carouselControls = i, this._selectors.carouselControlContainer = r, this._selectors.carouselTabs = o, this._selectors.carouselTabContainer = a, this._selectors.autoplay = h, this._selectors.next = p, this._selectors.previous = v, this._elements.carouselItems = [], this._classes.active = $ || "", this._classes.play = L || "", this._classes.pause = M || "", this._autoplay = z, this._pauseOnFocus = P, this._resumeOnBlur = D, this._pauseOnEnter = S, this._resumeOnLeave = j, this._automatic = F, this._itemsPerPage = q, this._loop = N, this._delays.transition = V, this._playText = K || "", this._pauseText = B || "", this._bootstrap(), U && this.initialize();
 		}
 		_registerEvents() {
 			super._registerEvents(), this._addInternalEventListener(this.getEventName("initialize"), (t) => {
@@ -716,6 +720,10 @@ var Carousel = (function() {
 				if (t.detail.component !== this) return;
 				const s = n("boolean", {
 					autoplay: this._autoplay,
+					pauseOnFocus: this._pauseOnFocus,
+					resumeOnBlur: this._resumeOnBlur,
+					pauseOnEnter: this._pauseOnEnter,
+					resumeOnLeave: this._resumeOnLeave,
 					automaticActivation: this._automatic,
 					loop: this._loop
 				}, { shouldThrow: !1 });
@@ -792,6 +800,9 @@ var Carousel = (function() {
 		set pauseText(t) {
 			n("string", { pauseText: t }), this._pauseText !== t && (this._pauseText = t, this.isInitialized && this._handleAutoplay());
 		}
+		get _isAutoplayStopped() {
+			return !this.autoplay || this._focusPaused && !this._resumeOnBlur || this._hoverPaused && !this._resumeOnLeave;
+		}
 		_setDOMElements() {
 			this._setDOMElementType("carouselItemContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselControlContainer", { context: this.dom.carousel }), this._setDOMElementType("carouselTabContainer", { context: this.dom.carousel }), this.dom.carouselItemContainer && this._setDOMElementType("carouselItems", { context: this.dom.carouselItemContainer }), this.dom.carouselControlContainer && (this._setDOMElementType("carouselControls", { context: this.dom.carouselControlContainer }), this._setDOMElementType("autoplay", { context: this.dom.carouselControlContainer }), this._setDOMElementType("next", { context: this.dom.carouselControlContainer }), this._setDOMElementType("previous", { context: this.dom.carouselControlContainer })), this._dom.carouselTabContainer && this._setDOMElementType("carouselTabs", { context: this.dom.carouselTabContainer });
 		}
@@ -835,8 +846,10 @@ var Carousel = (function() {
 		}
 		_handleAutoplay() {
 			if (!this.isBootstrapped) return;
-			const t = !this.autoplay || this._focusPaused, e = !t && !this._hoverPaused;
-			t ? (m(this.playClass, this.dom.autoplay), c(this.pauseClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.playText)) : (m(this.pauseClass, this.dom.autoplay), c(this.playClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.pauseText)), this.dom.carousel.setAttribute("aria-live", e ? "off" : "polite"), e ? this._setInterval(() => this.activateNextItem(), this.transitionDelay, "autoplay") : this._clearInterval("autoplay");
+			const t = this._isAutoplayStopped, e = !t && !this._focusPaused && !this._hoverPaused;
+			t ? (m(this.playClass, this.dom.autoplay), c(this.pauseClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.playText)) : (m(this.pauseClass, this.dom.autoplay), c(this.playClass, this.dom.autoplay), this.dom.autoplay.setAttribute("aria-label", this.pauseText)), this.dom.carousel.setAttribute("aria-live", e ? "off" : "polite"), e ? this._setInterval(() => {
+				this.activateNextItem(), !this.loop && this.currentItem === this.dom.carouselItems.length - 1 && (this.autoplay = !1);
+			}, this.transitionDelay, "autoplay") : this._clearInterval("autoplay");
 		}
 		_handleIntersection() {
 			const t = {
@@ -862,9 +875,11 @@ var Carousel = (function() {
 			});
 		}
 		_handleFocus() {
-			this._addEventListener("focusin", this.dom.carousel, () => {
+			this._pauseOnFocus && (this._addEventListener("focusin", this.dom.carousel, () => {
 				this._focusPaused = !0, this._handleAutoplay();
-			});
+			}), this._resumeOnBlur && this._addEventListener("focusout", this.dom.carousel, (e) => {
+				!this._focusPaused || this.dom.carousel.contains(e.relatedTarget) || (this._focusPaused = !1, this._handleAutoplay());
+			}));
 			const t = this.dom.carouselTabContainer;
 			t && (this._addEventListener("focusin", t, (e) => {
 				const s = this._getItemsWithTabs(), i = s.findIndex((o) => o.dom.tab === e.target);
@@ -894,11 +909,11 @@ var Carousel = (function() {
 			});
 		}
 		_handleHover() {
-			this._addEventListener("pointerover", this.dom.carousel, (t) => {
+			this._pauseOnEnter && (this._addEventListener("pointerover", this.dom.carousel, (t) => {
 				t.relatedTarget && this.dom.carousel.contains(t.relatedTarget) || (this._hoverPaused = !0, this._handleAutoplay());
-			}), this._addEventListener("pointerleave", this.dom.carousel, () => {
-				this._hoverPaused = !1, this._handleAutoplay();
-			});
+			}), this._resumeOnLeave && this._addEventListener("pointerleave", this.dom.carousel, () => {
+				this._hoverPaused && (this._hoverPaused = !1, this._handleAutoplay());
+			}));
 		}
 		_handleKeydown() {
 			this.dom.carouselControls.forEach((t) => {
@@ -1071,37 +1086,23 @@ var Carousel = (function() {
 			});
 		}
 		activateNextItem({ scroll: t = !0, scrollOptions: e = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
-			this.loop ? this.activateItem(this.currentItem + 1, {
-				scroll: t,
-				scrollOptions: e,
-				emit: s
-			}) : this.currentItem + 1 >= this.dom.carouselItems.length ? this.activateFirstItem({
-				scroll: t,
-				scrollOptions: e,
-				emit: s
-			}) : this.activateItem(this.currentItem + 1, {
+			const i = this.currentItem + 1;
+			!this.loop && i >= this.dom.carouselItems.length || this.activateItem(i, {
 				scroll: t,
 				scrollOptions: e,
 				emit: s
 			});
 		}
 		activatePreviousItem({ scroll: t = !0, scrollOptions: e = {}, emit: s = this.isInitialized && this.shouldEmit } = {}) {
-			this.loop ? this.activateItem(this.currentItem - 1, {
-				scroll: t,
-				scrollOptions: e,
-				emit: s
-			}) : this.currentItem - 1 < 0 || this.loop && this.currentItem - 1 < this.itemsPerPage ? this.activateLastItem({
-				scroll: t,
-				scrollOptions: e,
-				emit: s
-			}) : this.activateItem(this.currentItem - 1, {
+			const i = this.currentItem - 1;
+			!this.loop && i < 0 || this.activateItem(i, {
 				scroll: t,
 				scrollOptions: e,
 				emit: s
 			});
 		}
 		toggleAutoplay() {
-			this.autoplay = !this.autoplay || this._focusPaused;
+			this.autoplay = this._isAutoplayStopped;
 		}
 		dispose() {
 			this._intersectionObserver?.disconnect(), this._intersectionObserver = null, this._removeLoop(), this.elements.carouselItems.forEach((t) => t.dispose()), super.dispose();
