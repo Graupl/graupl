@@ -1,11 +1,12 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Breadcrumb from "@graupl/core/src/breadcrumb/Breadcrumb.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Breadcrumb from "@graupl/core/src/breadcrumb/Breadcrumb.js";
 
-  const preview = useTemplateRef("breadcrumb-preview");
-  let breadcrumb;
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleBreadcrumb = computed(() => `
 <nav aria-label="Breadcrumb">
@@ -32,23 +33,89 @@
 </nav>
   `);
 
-  function initializePreview() {
-    const breadcrumbElement = preview.value?.querySelector(".example .breadcrumb");
-    const controllerElement = breadcrumbElement?.querySelector(".breadcrumb-toggle");
+  const optionsControls = [
+    {
+      name: "expandInsideBreakpoint",
+      defaultValue: false,
+      label: "Expand inside the breakpoint",
+      help: "Expand the trail at 856 px or narrower. Disabled by default.",
+    },
+    {
+      name: "expandOutsideBreakpoint",
+      defaultValue: true,
+      label: "Expand outside the breakpoint",
+      help: "Expand the trail when the window is wider than 856 px. Enabled by default.",
+    },
+    {
+      name: "collapseInsideBreakpoint",
+      defaultValue: true,
+      label: "Collapse inside the breakpoint",
+      help: "Collapse the trail at 856 px or narrower. Enabled by default.",
+    },
+    {
+      name: "collapseOutsideBreakpoint",
+      defaultValue: false,
+      label: "Collapse outside the breakpoint",
+      help: "Collapse the trail when the window is wider than 856 px. Disabled by default.",
+    },
+  ];
 
-    if (breadcrumb?.dom.breadcrumb === breadcrumbElement &&
-        breadcrumb?.dom.controller === controllerElement) return;
+  const optionsAttribute = "data-graupl-breadcrumb-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    breadcrumb?.dispose();
-    breadcrumb = breadcrumbElement && controllerElement && new Breadcrumb({
-      breadcrumbElement,
+  const exampleWithOptions = computed(() =>
+    exampleCollapsibleBreadcrumb.value
+      .replace('class="breadcrumb', `data-graupl-breadcrumb-options='${JSON.stringify(optionValues.value)}' class="breadcrumb`)
+      .replaceAll("example-breadcrumb", "options-breadcrumb"));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .breadcrumb");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.breadcrumb === element) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    // Keep the toggle usable at wide widths in the collapsible trail example.
+    let options = isOptionsPreview ? {} : { mediaQuery: "(min-width: 0px)" };
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    const controllerElement = element.querySelector(".breadcrumb-toggle");
+    if (!controllerElement) return;
+
+    instances.set(wrapper, new Breadcrumb({
+      ...options,
+      breadcrumbElement: element,
       controllerElement,
-      mediaQuery: "(min-width: 0px)",
       initialize: true,
-    });
+    }));
   }
 
-  onBeforeUnmount(() => breadcrumb?.dispose());
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Breadcrumbs
@@ -73,8 +140,8 @@ Put a `.breadcrumb-toggle` button in its own `.breadcrumb-item` before the items
 By default, the trail can collapse at viewport widths of 856px and below. The preview sets `mediaQuery` to `"(min-width: 0px)"` so you can expand the trail at any viewport width.
 :::
 
-<div ref="breadcrumb-preview">
-  <live-example :source-code="exampleCollapsibleBreadcrumb" resettable @mounted="initializePreview" @updated="initializePreview" />
+<div ref="preview">
+  <live-example :source-code="exampleCollapsibleBreadcrumb" resettable @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -89,7 +156,38 @@ generateBreadcrumbs();
 
 The generator finds the toggle inside `.breadcrumb`. Initialization sets the button's `aria-controls` to the trail's ID and updates `aria-expanded` as the trail expands or collapses.
 
-Breadcrumb items show and hide immediately by default. To enable item fades, pass `transitionClass: "transitioning"` in the generator’s `options` object. The fade uses `transitionDuration`.
+## JavaScript customization
+
+Use `data-graupl-breadcrumb-options` to customize a breadcrumb. The example below shows how `expandInsideBreakpoint`, `expandOutsideBreakpoint`, `collapseInsideBreakpoint`, and `collapseOutsideBreakpoint` change its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Breadcrumb options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`breadcrumb-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`breadcrumb-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`breadcrumb-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`breadcrumb-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -352,3 +450,50 @@ The following Sass variables can be used to customize the generation of the brea
 | `$breadcrumb-item-transitioning-opacity`     | Opacity for transitioning breadcrumb items.       | `0`                   |
 | `$breadcrumb-theme-mappings`                 | Map of properties/shades for breadcrumb themes.   | `()`                  |
 | `$breadcrumb-theme-map`                      | Expanded map of properties/colors/shades.         | `()`                  |
+
+## Generator options
+
+The following options can be used to customize the breadcrumb component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.breadcrumb` | CSS selector for breadcrumb elements. |
+| `controllerSelector` | `.breadcrumb-toggle` | CSS selector for the breadcrumb toggle button inside each component. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-breadcrumb-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the breadcrumb component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `breadcrumbElement` | Required | Root element for the breadcrumb. The generator supplies this element. |
+| `controllerElement` | `null` | Optional breadcrumb toggle button. Without a toggle, the breadcrumb starts expanded. |
+| `breadcrumbItemsSelector` | `.breadcrumb-item` | CSS selector for breadcrumb items. |
+| `breadcrumbLinksSelector` | `.breadcrumb-link` | CSS selector for links within breadcrumb items. |
+| `lockClass` | `locked` | Class names applied when locked. |
+| `unlockClass` | `unlocked` | Class names applied when unlocked. |
+| `expandClass` | `show` | Class names applied in the expanded state. |
+| `collapseClass` | `hide` | Class names applied in the collapsed state. |
+| `transitionClass` | `null` | Class names applied during a transition. |
+| `transitionDuration` | `250` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `expandOnFocus` | `false` | Expand when a user tabs to the trigger or when you call the component's `focus()` method. |
+| `collapseOnBlur` | `false` | Collapse when keyboard focus moves outside, when a user clicks outside while the component has focus, or when you call its `blur()` method. |
+| `breakpoint` | `856px` | CSS length used to create a media query that matches at or below this width. |
+| `expandInsideBreakpoint` | `false` | Expand the component when the media query matches. |
+| `expandOutsideBreakpoint` | `true` | Expand the component when the media query does not match. |
+| `collapseInsideBreakpoint` | `true` | Collapse the component when the media query matches. |
+| `collapseOutsideBreakpoint` | `false` | Collapse the component when the media query does not match. |
+| `lockInsideBreakpoint` | `false` | Lock the component when the media query matches. |
+| `lockOutsideBreakpoint` | `true` | Lock the component when the media query does not match. |
+| `unlockInsideBreakpoint` | `true` | Unlock the component when the media query matches. |
+| `unlockOutsideBreakpoint` | `false` | Unlock the component when the media query does not match. |
+| `locked` | `false` | Start with the component locked in its current state. Responsive settings can change the lock. |
+| `mediaQuery` | `""` | Explicit media query. An empty string falls back to `breakpoint`. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |

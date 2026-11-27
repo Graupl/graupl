@@ -1,11 +1,12 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Disclosure from "@graupl/core/src/disclosure/Disclosure.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Disclosure from "@graupl/core/src/disclosure/Disclosure.js";
 
-  const preview = useTemplateRef("disclosure-preview");
-  let disclosure;
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleDisclosure = computed(() => `
 <button type="button" class="disclosure-toggle"
@@ -20,23 +21,79 @@
 </div>
   `);
 
-  function initializePreview() {
-    const example = preview.value?.querySelector(".example");
-    const disclosureElement = example?.querySelector(".disclosure");
-    const controllerElement = example?.querySelector(".disclosure-toggle");
+  const optionsControls = [
+    {
+      name: "expandOnFocus",
+      defaultValue: false,
+      label: "Expand on keyboard focus",
+      help: "Open the panel when you tab to its toggle button. Disabled by default.",
+    },
+    {
+      name: "collapseOnBlur",
+      defaultValue: false,
+      label: "Collapse when focus leaves",
+      help: "Open the panel and press Tab. With this enabled, the panel closes as focus moves outside. Disabled by default.",
+    },
+  ];
 
-    if (disclosure?.dom.disclosure === disclosureElement &&
-        disclosure?.dom.controller === controllerElement) return;
+  const optionsAttribute = "data-graupl-disclosure-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    disclosure?.dispose();
-    disclosure = disclosureElement && controllerElement && new Disclosure({
-      disclosureElement,
+  const exampleWithOptions = computed(() =>
+    exampleDisclosure.value
+      .replace('class="disclosure hide"', `data-graupl-disclosure-options='${JSON.stringify(optionValues.value)}' class="disclosure hide"`)
+      .replaceAll("example-disclosure", "options-disclosure"));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .disclosure");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.disclosure === element) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    // The toggle sits outside the panel, so find it by its target ID within this preview.
+    const controllerElement = Array.from(
+      wrapper.querySelectorAll(".example [data-graupl-disclosure-target]")
+    ).find((button) => button.dataset.grauplDisclosureTarget === element.id);
+    if (!controllerElement) return;
+
+    instances.set(wrapper, new Disclosure({
+      ...options,
+      disclosureElement: element,
       controllerElement,
       initialize: true,
-    });
+    }));
   }
 
-  onBeforeUnmount(() => disclosure?.dispose());
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Disclosures
@@ -51,8 +108,8 @@ Use `.disclosure` for the panel and `.disclosure-content` for the wrapper around
 
 Once initialized, click the button or press Enter or Space while it has focus to expand or collapse the panel.
 
-<div ref="disclosure-preview">
-  <live-example :source-code="exampleDisclosure" @mounted="initializePreview" @updated="initializePreview" />
+<div ref="preview">
+  <live-example :source-code="exampleDisclosure" @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -70,6 +127,39 @@ During initialization, Disclosure sets the button's `aria-controls` to the panel
 To start expanded, set `aria-expanded="true"` on the button and add `.show` to the panel. To start collapsed, set `aria-expanded="false"` and add `.hide`. Add `inert` to the collapsed panel's `.disclosure-content` so its contents stay out of the tab order before initialization. Disclosure updates the button state and removes `inert` when the panel opens.
 
 <!-- TODO: Document how to animate Disclosure height in both directions while keeping the expanded panel sized to its contents and respecting reduced motion. -->
+
+## JavaScript customization
+
+Use `data-graupl-disclosure-options` to customize a disclosure. The example below shows how `expandOnFocus` and `collapseOnBlur` change its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Disclosure options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`disclosure-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`disclosure-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`disclosure-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`disclosure-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Installation
 
@@ -190,3 +280,48 @@ The following Sass variables can be used to customize the generation of the disc
 | `$disclosure-toggle-content`              | Indicator content of the disclosure toggle.            | `"'↓'"`                |
 | `$disclosure-toggle-transform`            | Transform of the disclosure toggle.                    | `rotate(0deg)`         |
 | `$disclosure-toggle-open-transform`       | Expanded indicator transform of the disclosure toggle. | `rotate(-180deg)`      |
+
+## Generator options
+
+The following options can be used to customize the disclosure component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.disclosure` | CSS selector for disclosure elements. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-disclosure-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the disclosure component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `disclosureElement` | Required | Root element for the disclosure. The generator supplies this element. |
+| `controllerElement` | Required | Disclosure toggle button. The generator finds it in `context` by matching its `data-graupl-disclosure-target` to the disclosure's ID. |
+| `disclosureContentSelector` | `.disclosure-content` | CSS selector for the disclosure content. |
+| `lockClass` | `locked` | Class names applied when locked. |
+| `unlockClass` | `unlocked` | Class names applied when unlocked. |
+| `expandClass` | `show` | Class names applied in the expanded state. |
+| `collapseClass` | `hide` | Class names applied in the collapsed state. |
+| `transitionClass` | `transitioning` | Class names applied during a transition. |
+| `transitionDuration` | `250` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `expandOnFocus` | `false` | Expand when a user tabs to the trigger or when you call the component's `focus()` method. |
+| `collapseOnBlur` | `false` | Collapse when keyboard focus moves outside, when a user clicks outside while the component has focus, or when you call its `blur()` method. |
+| `breakpoint` | `""` | CSS length used to create a media query that matches at or below this width. |
+| `expandInsideBreakpoint` | `false` | Expand the component when the media query matches. |
+| `expandOutsideBreakpoint` | `false` | Expand the component when the media query does not match. |
+| `collapseInsideBreakpoint` | `false` | Collapse the component when the media query matches. |
+| `collapseOutsideBreakpoint` | `false` | Collapse the component when the media query does not match. |
+| `lockInsideBreakpoint` | `false` | Lock the component when the media query matches. |
+| `lockOutsideBreakpoint` | `false` | Lock the component when the media query does not match. |
+| `unlockInsideBreakpoint` | `false` | Unlock the component when the media query matches. |
+| `unlockOutsideBreakpoint` | `false` | Unlock the component when the media query does not match. |
+| `locked` | `false` | Start with the component locked in its current state. Responsive settings can change the lock. |
+| `mediaQuery` | `""` | Explicit media query. An empty string falls back to `breakpoint`. Leave both empty to disable responsive updates. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |

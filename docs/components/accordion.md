@@ -1,11 +1,12 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Accordion from "@graupl/core/src/accordion/Accordion.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Accordion from "@graupl/core/src/accordion/Accordion.js";
 
-  const basicPreview = useTemplateRef("basic-preview");
+  const preview = useTemplateRef("preview");
   const controlsPreview = useTemplateRef("controls-preview");
+  const optionsPreview = useTemplateRef("options-preview");
   const instances = new Map();
 
   const items = computed(() => [
@@ -13,7 +14,7 @@
     { title: exampleCopy.html("accordion.secondTitle"), body: exampleCopy.html("accordion.secondBody") },
   ]);
 
-  function renderAccordion(controls = "") {
+  function renderAccordion(controls = "", attributes = "") {
     const panels = items.value.map(({ title, body }, index) => {
       const expanded = index === 0;
 
@@ -31,35 +32,90 @@
   </div>`;
     }).join("\n");
 
-    return `<div class="accordion">
+    return `<div class="accordion"${attributes}>
 ${controls}${panels}
 </div>`;
   }
 
-  const basicAccordion = computed(() => renderAccordion());
-  const accordionWithControls = computed(() => renderAccordion(`  <div class="accordion-control-container">
+  const exampleAccordion = computed(() => renderAccordion());
+  const exampleWithControls = computed(() => renderAccordion(`  <div class="accordion-control-container">
     <button type="button" class="accordion-control expand-all">Expand all</button>
     <button type="button" class="accordion-control collapse-all">Collapse all</button>
   </div>
 `));
 
-  function initializePreview(preview) {
-    const accordionElement = preview?.querySelector(".example .accordion");
-    const previous = instances.get(preview);
+  const optionsControls = [
+    {
+      name: "allowCollapseAll",
+      defaultValue: true,
+      label: "Allow all panels to collapse",
+      help: "When enabled, you can close the last expanded panel. Enabled by default.",
+    },
+    {
+      name: "allowExpandMultiple",
+      defaultValue: true,
+      label: "Allow multiple panels to expand",
+      help: "When enabled, opening a panel leaves the other panels open. Enabled by default.",
+    },
+    {
+      name: "optionalKeySupport",
+      defaultValue: false,
+      label: "Enable optional keyboard navigation",
+      help: "Use the Up and Down arrows, Home, and End to move focus between panel buttons when both buttons are enabled. Disabled by default.",
+    },
+  ];
 
-    if (previous?.dom.accordion === accordionElement) return;
+  const optionsAttribute = "data-graupl-accordion-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
+
+  const exampleWithOptions = computed(() => renderAccordion(
+    "",
+    ` data-graupl-accordion-options='${JSON.stringify(optionValues.value)}'`
+  ));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .accordion");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.accordion === element) return;
 
     previous?.dispose();
-    instances.delete(preview);
+    instances.delete(wrapper);
 
-    if (accordionElement) {
-      instances.set(preview, new Accordion({ accordionElement, initialize: true }));
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
     }
+
+    instances.set(wrapper, new Accordion({
+      ...options,
+      accordionElement: element,
+      initialize: true,
+    }));
   }
 
-  onBeforeUnmount(() => {
-    instances.forEach((accordion) => accordion.dispose());
-  });
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Accordions
@@ -76,8 +132,8 @@ Place `.accordion-item-content` after the header. Put the main content in `.acco
 
 For an item that starts expanded, add `.show` to the item and set `aria-expanded="true"` on its button. For an item that starts collapsed, use `.hide` and `aria-expanded="false"`. Once the accordion is initialized, readers can toggle a panel by clicking its button or pressing Enter or Space while the button has focus.
 
-<div ref="basic-preview">
-  <live-example :source-code="basicAccordion" @updated="initializePreview(basicPreview)" />
+<div ref="preview">
+  <live-example :source-code="exampleAccordion" @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -95,28 +151,41 @@ generateAccordions();
 To let readers open or close every panel at once, put the buttons in an `.accordion-control-container`. Give both buttons the `.accordion-control` class, then add `.expand-all` to the button that opens the panels and `.collapse-all` to the one that closes them.
 
 <div ref="controls-preview">
-  <live-example :source-code="accordionWithControls" @updated="initializePreview(controlsPreview)" />
+  <live-example :source-code="exampleWithControls" @updated="initializePreview(controlsPreview)" />
 </div>
 
-## Options
+## JavaScript customization
 
-By default, readers can expand multiple panels and collapse all of them. To limit the accordion to one expanded panel at a time, set `allowExpandMultiple` to `false`.
+Use `data-graupl-accordion-options` to customize an individual accordion. The example below shows how `allowCollapseAll`, `allowExpandMultiple`, and `optionalKeySupport` change its behavior.
 
-Set `allowCollapseAll` to `false` to keep the last expanded panel from closing. Start with at least one panel expanded when using this setting. If you also limit the accordion to one expanded panel, start with exactly one.
-
-Set `optionalKeySupport` to `true` so readers can use the Up and Down arrows, Home, and End to move between item toggles.
-
-Pass these options to the generator to apply them to the accordions it initializes. To configure an individual accordion, set `data-graupl-accordion-options` on the `.accordion` element. The attribute takes JSON, such as `data-graupl-accordion-options='{"optionalKeySupport":true}'`.
-
-```js
-generateAccordions({
-  options: {
-    allowExpandMultiple: false,
-    allowCollapseAll: false,
-    optionalKeySupport: true,
-  },
-});
-```
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Accordion options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`accordion-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`accordion-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`accordion-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`accordion-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -340,3 +409,42 @@ The following Sass variables can be used to customize the generation of the acco
 | `$accordion-item-content-final-transform`         | The transform of the panel when expanded.                                                  | `translateY(0)`                                                    |
 | `$accordion-theme-mappings`                       | A map of properties and color shades used to generate all accordion variants.              | `map.merge($-accordion-theme-mappings, $accordion-theme-mappings)` |
 | `$accordion-theme-map`                            | A map of all properties, colors, and color shades used to generate all accordion variants. | `map.deep-merge($-accordion-theme-map, $accordion-theme-map)`      |
+
+## Generator options
+
+The following options can be used to customize the accordion component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.accordion` | CSS selector for accordion elements. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-accordion-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the accordion component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `accordionElement` | Required | Root element for the accordion. The generator supplies this element. |
+| `accordionItemsSelector` | `.accordion-item` | CSS selector for accordion items. |
+| `accordionItemTogglesSelector` | `.accordion-item-toggle` | CSS selector for item toggle buttons. |
+| `accordionItemHeadersSelector` | `.accordion-item-header` | CSS selector for item headers. |
+| `accordionItemContentsSelector` | `.accordion-item-content` | CSS selector for item panels. |
+| `accordionControlContainerSelector` | `.accordion-control-container` | CSS selector for the container for the expand and collapse all buttons. |
+| `accordionControlsSelector` | `.accordion-control` | CSS selector for expand and collapse all controls. |
+| `expandControllerSelector` | `.expand-all` | CSS selector for the expand all button. |
+| `collapseControllerSelector` | `.collapse-all` | CSS selector for the collapse all button. |
+| `expandClass` | `show` | Class names applied when an individual accordion item is expanded. |
+| `collapseClass` | `hide` | Class names applied when an individual accordion item is collapsed. |
+| `transitionClass` | `transitioning` | Class names applied while an individual accordion item is expanding or collapsing. |
+| `transitionDuration` | `300` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `optionalKeySupport` | `false` | Allow the Up and Down arrows, Home, and End to move focus between item toggles. |
+| `allowExpandMultiple` | `true` | Allow more than one panel to be expanded at a time. |
+| `allowCollapseAll` | `true` | Allow the last expanded panel to collapse. When disabled, start with at least one panel expanded. If `allowExpandMultiple` is also disabled, start with exactly one. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |

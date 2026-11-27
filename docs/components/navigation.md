@@ -1,14 +1,15 @@
 <script setup>
-  import { computed, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
   import DisclosureMenu from "accessible-menu/disclosure-menu";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
 
-  const preview = useTemplateRef("navigation-preview");
-  const initialized = new WeakSet();
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleNavigation = computed(() => `
-<nav class="navigation" data-graupl-menu-type="DisclosureMenu" aria-label="${exampleCopy.html("navigation.siteName")}">
+<nav class="navigation" aria-label="${exampleCopy.html("navigation.siteName")}">
   <a class="navigation-branding" href="#">${exampleCopy.html("navigation.siteName")}</a>
   <button type="button" class="navigation-toggle"
     aria-label="Toggle navigation"></button>
@@ -41,26 +42,68 @@
 </nav>
   `);
 
-  function initializePreview() {
-    const navigation = preview.value?.querySelector(".example .navigation");
-    if (!navigation || initialized.has(navigation)) return;
+  const optionsControls = [
+    {
+      name: "optionalKeySupport",
+      defaultValue: false,
+      label: "Enable optional keyboard navigation",
+      help: "Use the arrow keys, Home, and End to move through the menu. If the navigation toggle is visible, open the navigation first. Disabled by default.",
+    },
+  ];
 
-    const menuElement = navigation.querySelector(".menu");
-    const controllerElement = navigation.querySelector(".navigation-toggle");
-    if (!menuElement || !controllerElement) return;
+  const optionsAttribute = "data-graupl-menu-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    new DisclosureMenu({
+  const exampleWithOptions = computed(() =>
+    exampleNavigation.value
+      .replace('class="navigation', `data-graupl-menu-options='${JSON.stringify(optionValues.value)}' class="navigation`));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .navigation");
+    const menuElement = element?.querySelector(".menu");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.menu === menuElement) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!menuElement) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    const controllerElement = element.querySelector(".navigation-toggle");
+    instances.set(wrapper, new DisclosureMenu({
+      ...options,
       menuElement,
       controllerElement,
-      containerElement: navigation,
-      menuItemSelector: ".menu-item",
-      menuLinkSelector: ".menu-link",
-      submenuItemSelector: ".submenu-item",
-      submenuToggleSelector: ".submenu-toggle",
-    });
-
-    initialized.add(navigation);
+      containerElement: controllerElement ? element : null,
+    }));
   }
+
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Navigations
@@ -73,8 +116,8 @@ Navigations implement the spec found in the [ARIA Authoring Practices Guide](htt
 
 Use `.navigation` on a navigation landmark and place the branding and menu directly inside it. Add `.navigation-branding` to the site name or home link. Give the `.navigation-toggle` button an accessible name, and use the [Menu classes](./menu.md) for the list of links and any submenus.
 
-<div ref="navigation-preview">
-  <live-example :source-code="exampleNavigation" example-class="navigation-preview" @mounted="initializePreview" @updated="initializePreview" />
+<div ref="preview">
+  <live-example :source-code="exampleNavigation" example-class="navigation-preview" @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -95,6 +138,40 @@ generateNavigations();
 If you load `disclosure-menu.iife.js` as a classic script, it already provides `window.DisclosureMenu`. With the full `accessible-menu.iife.js` bundle, set `window.DisclosureMenu = window.AccessibleMenu.DisclosureMenu` before calling the generator. See the [Accessible Menu quick start](https://accessible-menu.dev/quick-start.html).
 :::
 
+## JavaScript customization
+
+Use `data-graupl-menu-options` to customize a navigation. The example below shows how `optionalKeySupport` changes its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    example-class="navigation-preview"
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Navigation options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`navigation-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`navigation-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`navigation-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`navigation-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
+
 ## Responsive behaviour
 
 Below the `md` breakpoint, use the toggle to open or close the vertical menu. Open submenus take up space in the list and push the items below them down. At `md` (768px) and above, the menu stays visible beside the branding and the toggle is hidden.
@@ -114,14 +191,17 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 ::: code-group
 
 ```html [Local]
+<link rel="stylesheet" href="./dist/css/component/menu.css">
 <link rel="stylesheet" href="./dist/css/component/navigation.css">
 ```
 
 ```html [CDN]
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/menu.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/navigation.css">
 ```
 
 ```scss [Sass]
+@use "pkg:@graupl/core/component/menu.scss";
 @use "pkg:@graupl/core/component/navigation.scss";
 ```
 
@@ -141,7 +221,7 @@ Load Accessible Menu's `DisclosureMenu` script before the Graupl script, includi
 ```
 
 ```html [CDN]
-<script defer src="https://cdn.jsdelivr.net/npm/accessible-menu@4.4.0/dist/disclosure-menu.iife.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/accessible-menu@5.0.0-beta.7/dist/disclosure-menu.iife.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/navigation.js"></script>
 ```
 
@@ -257,3 +337,29 @@ The following Sass variables can be used to customize the generation of the navi
 | `$navigation-branding-disabled-text-decoration-style` | Text decoration style of the disabled navigation branding.                                  | `solid`                 |
 | `$navigation-theme-mappings`                          | A map of properties and color shades used to generate all navigation variants.              | `()`                    |
 | `$navigation-theme-map`                               | A map of all properties, colors, and color shades used to generate all navigation variants. | `()`                    |
+
+## Generator options
+
+The following options can be used to customize the navigation component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.navigation` | CSS selector for navigation elements. |
+| `options` | `{}` | Settings passed to the selected Accessible Menu constructor for each match. A JSON object in `data-graupl-menu-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Accessible Menu options
+
+Graupl passes these values to the selected [Accessible Menu constructor](https://accessible-menu.dev/api/). The selector defaults work with Accessible Menu 4 and 5. To override them, use the option names for your version in the generator options or in `data-graupl-menu-options`.
+
+Graupl bundles through 1.0.0-beta.61 supply the Accessible Menu 4 selector names. With those bundles, pass the plural names explicitly if your markup needs different selectors than the Accessible Menu 5 defaults.
+
+| Option | Default |
+| --- | --- |
+| `menuElement` | The first `.menu` in the navigation. |
+| `menuItemSelector` (`menuItemsSelector` in v5) | `.menu-item` |
+| `menuLinkSelector` (`menuLinksSelector` in v5) | `.menu-link` |
+| `submenuItemSelector` (`submenuItemsSelector` in v5) | `.submenu-item` |
+| `submenuToggleSelector` (`submenuTogglesSelector` in v5) | `.submenu-toggle` |
+| `controllerElement` | The first `.navigation-toggle` in the navigation, or `null`. |
+| `containerElement` | The navigation element if the generator finds a toggle, or `null`. |
