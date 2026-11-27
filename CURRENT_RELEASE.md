@@ -1,9 +1,13 @@
-## [1.0.0-beta.61](https://github.com/Graupl/graupl/compare/v1.0.0-beta.60...v1.0.0-beta.61) (2026-11-20)
+## [1.0.0-beta.62](https://github.com/Graupl/graupl/compare/v1.0.0-beta.61...v1.0.0-beta.62) (2026-11-27)
+
+
+### Bug Fixes
+
+* **badge:** remove fit content information ([39508d5](https://github.com/Graupl/graupl/commit/39508d58aea9a947859875df0c85adbe5ea5f334))
 
 
 ### Documentation
 
-* fix examples for tabs and menus ([b11d8db](https://github.com/Graupl/graupl/commit/b11d8db0c29a7e0d3077d4c3700998456996737c))
-* fix license link ([0e15bba](https://github.com/Graupl/graupl/commit/0e15bbafc2214ba84cee395c24523e4edf79db38))
-* **typography:** correct information about b and strong tags ([1923b46](https://github.com/Graupl/graupl/commit/1923b46dd1e99b6a6875a3ac621df12c44870521))
-* update examples to be cold weather themed ([11de7c5](https://github.com/Graupl/graupl/commit/11de7c5a9a14269365f0ba3a72204bf013cb0080))
+* add js component information and examples ([3a60ffa](https://github.com/Graupl/graupl/commit/3a60ffa0a04c2e56bd901dc68ba47b8697cbad99))
+* add root example in quickstart guide ([1bc0da6](https://github.com/Graupl/graupl/commit/1bc0da6edd3eeeb7e08026eb35f7b4e22ea089ea)), closes [#267](https://github.com/Graupl/graupl/issues/267)
+* **table:** update header information ([46714bb](https://github.com/Graupl/graupl/commit/46714bb8e4d38571d3116ef5b868240521c1a64b))
