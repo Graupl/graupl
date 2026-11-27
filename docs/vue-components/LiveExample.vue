@@ -34,7 +34,7 @@ const code = ref("");
 const previewKey = ref(0);
 const extensions = [html(), css()];
 const view = shallowRef();
-const emit = defineEmits(["mounted", "updated"]);
+const emit = defineEmits(["mounted", "updated", "reset"]);
 
 const handleReady = (payload) => {
   view.value = payload.view;
@@ -59,7 +59,9 @@ function loadSource() {
 }
 
 function resetExample() {
+  emit("reset");
   loadSource();
+  // Interacting with a component can change its DOM without changing the editor text.
   previewKey.value++;
 }
 

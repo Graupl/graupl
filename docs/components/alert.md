@@ -1,11 +1,12 @@
 <script setup>
   import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Alert from "@graupl/core/src/alert/Alert.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Alert from "@graupl/core/src/alert/Alert.js";
 
-  const preview = useTemplateRef("alert-preview");
-  let alert;
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const variant = ref("default");
   const exampleVariant = computed(() => {
@@ -31,20 +32,66 @@
 </div>
   `);
 
-  function initializePreview() {
-    const alertElement = preview.value?.querySelector(".example .alert");
+  const optionsControls = [
+    {
+      name: "expanded",
+      defaultValue: true,
+      label: "Start visible",
+      help: "Turn this off to start the alert hidden. Enabled by default.",
+    },
+  ];
 
-    if (alert?.dom.alert === alertElement) return;
+  const optionsAttribute = "data-graupl-alert-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    alert?.dispose();
-    alert = alertElement && new Alert({
-      alertElement,
-      controllerElement: alertElement.querySelector(".alert-dismisser"),
+  const exampleWithOptions = computed(() =>
+    exampleAlert.value
+      .replace('class="alert', `data-graupl-alert-options='${JSON.stringify(optionValues.value)}' class="alert`));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .alert");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.alert === element) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    instances.set(wrapper, new Alert({
+      ...options,
+      alertElement: element,
+      controllerElement: element.querySelector(".alert-dismisser"),
       initialize: true,
-    });
+    }));
   }
 
-  onBeforeUnmount(() => alert?.dispose());
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Alerts
@@ -59,8 +106,8 @@ Wrap the message in `.alert` and put its main content in `.alert-body`. Use `.al
 
 To make an alert dismissible, add a button with the `.alert-dismisser` class and an accessible name. Once initialized, the alert can be dismissed by clicking the button or pressing Enter or Space while it has focus.
 
-<div ref="alert-preview">
-  <live-example :source-code="exampleAlert" resettable @updated="initializePreview" />
+<div ref="preview">
+  <live-example :source-code="exampleAlert" resettable @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -73,11 +120,42 @@ import generateAlerts from "@graupl/core/alert/generator";
 generateAlerts();
 ```
 
-The alert is visible by default. To start with the alert hidden, add `.hide` and set `data-graupl-alert-options='{"expanded":false}'` on the alert. The component uses `.show`, `.hide`, and `.transitioning` to manage visibility and transitions.
-
 ::: info Note
 For urgent messages that appear while someone is using the page, add `role="alert"` to the message text so assistive technology can announce it.
 :::
+
+## JavaScript customization
+
+Use `data-graupl-alert-options` to customize an individual alert. The example below shows how `expanded` changes its behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Alert options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`alert-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`alert-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`alert-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`alert-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -259,3 +337,33 @@ The following Sass variables can be used to customize the generation of the aler
 | `$alert-transition-selector`      | The selector for the transition state.                                                 | `"transitioning"`                                          |
 | `$alert-theme-mappings`           | A map of properties and color shades used to generate all alert variants.              | `map.merge($-alert-theme-mappings, $alert-theme-mappings)` |
 | `$alert-theme-map`                | A map of all properties, colors, and color shades used to generate all alert variants. | `map.deep-merge($-alert-theme-map, $alert-theme-map)`      |
+
+## Generator options
+
+The following options can be used to customize the alert component generator.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.alert` | CSS selector for alert elements. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-alert-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the alert component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `alertElement` | Required | Root element for the alert. The generator supplies this element. |
+| `controllerElement` | `null` | Dismiss button. The generator looks for `.alert-dismisser`. Pass `null` for an alert without a dismiss button. |
+| `expandClass` | `show` | Class names applied in the expanded state. |
+| `collapseClass` | `hide` | Class names applied in the collapsed state. |
+| `transitionClass` | `transitioning` | Class names applied during a transition. |
+| `transitionDuration` | `150` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `expanded` | `true` | Start with the alert visible. Add `.hide` to an alert that starts hidden to keep it hidden before initialization. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |

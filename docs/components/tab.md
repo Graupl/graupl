@@ -1,11 +1,12 @@
 <script setup>
-  import { computed, onBeforeUnmount, useTemplateRef } from "vue";
+  import { computed, onBeforeUnmount, ref, useTemplateRef } from "vue";
+  import Tabs from "@graupl/core/src/tabs/Tabs.js";
   import exampleCopy from "../vue-components/exampleCopy.js";
   import LiveExample from "../vue-components/LiveExample.vue";
-  import Tabs from "@graupl/core/src/tabs/Tabs.js";
 
-  const preview = useTemplateRef("tabs-preview");
-  let tabs;
+  const preview = useTemplateRef("preview");
+  const optionsPreview = useTemplateRef("options-preview");
+  const instances = new Map();
 
   const exampleTabs = computed(() => `
 <div class="tabs">
@@ -26,16 +27,65 @@
 </div>
   `);
 
-  function initializePreview() {
-    const tabsElement = preview.value?.querySelector(".example .tabs");
+  const optionsControls = [
+    {
+      name: "automaticActivation",
+      defaultValue: false,
+      label: "Activate tabs on focus",
+      help: "Press Right Arrow on the selected tab to move focus. With this enabled, the next tab opens as it receives focus. Disabled by default.",
+    },
+  ];
 
-    if (tabs?.dom.tabs === tabsElement) return;
+  const optionsAttribute = "data-graupl-tabs-options";
+  const defaultOptions = Object.fromEntries(
+    optionsControls.map(({ name, defaultValue }) => [name, defaultValue])
+  );
+  const optionValues = ref({ ...defaultOptions });
+  const optionsError = ref("");
 
-    tabs?.dispose();
-    tabs = tabsElement && new Tabs({ tabsElement, initialize: true });
+  const exampleWithOptions = computed(() =>
+    exampleTabs.value
+      .replace('class="tabs', `data-graupl-tabs-options='${JSON.stringify(optionValues.value)}' class="tabs`));
+
+  function initializePreview(wrapper) {
+    const element = wrapper?.querySelector(".example .tabs");
+    const previous = instances.get(wrapper);
+
+    // Form and status updates can run this hook without replacing the markup.
+    if (previous?.dom.tabs === element) return;
+
+    previous?.dispose();
+    instances.delete(wrapper);
+
+    const isOptionsPreview = wrapper === optionsPreview.value;
+    if (isOptionsPreview) optionsError.value = "";
+    if (!element) return;
+
+    let options = {};
+    const attribute = isOptionsPreview ? element.getAttribute(optionsAttribute) : null;
+
+    if (attribute) {
+      // An edit can leave incomplete JSON until the next keystroke.
+      try {
+        options = JSON.parse(attribute);
+      } catch {
+        options = null;
+      }
+
+      if (!options || typeof options !== "object" || Array.isArray(options)) {
+        optionsError.value = `Enter a JSON object in ${optionsAttribute}.`;
+        return;
+      }
+    }
+
+    instances.set(wrapper, new Tabs({
+      ...options,
+      tabsElement: element,
+      initialize: true,
+    }));
   }
 
-  onBeforeUnmount(() => tabs?.dispose());
+  onBeforeUnmount(() => instances.forEach((instance) => instance.dispose()));
 </script>
 
 # Tabs
@@ -48,8 +98,8 @@ Tabs implement the spec found in the [ARIA Authoring Practices Guide](https://ww
 
 The `.tabs` class wraps the tab list and its panels. Use `.tab-list` for the list and give it an accessible name with `aria-label` or `aria-labelledby`. Add one `.tab-toggle` button for each `.tab-content` panel, keeping the buttons and panels in the same order. If a panel starts with text, add `tabindex="0"` so readers can reach it by pressing Tab.
 
-<div ref="tabs-preview">
-  <live-example :source-code="exampleTabs" @mounted="initializePreview" @updated="initializePreview" />
+<div ref="preview">
+  <live-example :source-code="exampleTabs" @updated="initializePreview(preview)" />
 </div>
 
 ## Initialization
@@ -63,6 +113,39 @@ generateTabs();
 ```
 
 The generator sets the roles and ARIA attributes that link each button to its panel. To select a tab initially, set `aria-selected="true"` on its button and add `.show` to its panel so it is visible before initialization. If no tab is marked as selected, the first tab is selected during initialization.
+
+## JavaScript customization
+
+Use `data-graupl-tabs-options` to customize a set of tabs. The example below shows how `automaticActivation` changes their behavior.
+
+<div ref="options-preview">
+  <live-example
+    :source-code="exampleWithOptions"
+    options-position="top"
+    resettable
+    @updated="initializePreview(optionsPreview)"
+    @reset="optionValues = { ...defaultOptions }"
+  >
+    <template #options>
+      <form @submit.prevent>
+        <fieldset>
+          <legend>Tabs options</legend>
+          <div v-for="control in optionsControls" :key="control.name" class="input-group left">
+            <input
+              :id="`tabs-option-${control.name}`"
+              type="checkbox"
+              :aria-describedby="`tabs-option-${control.name}-help`"
+              v-model="optionValues[control.name]"
+            >
+            <label :for="`tabs-option-${control.name}`">{{ control.label }}</label>
+            <small :id="`tabs-option-${control.name}-help`" class="help-text">{{ control.help }}</small>
+          </div>
+        </fieldset>
+      </form>
+    </template>
+  </live-example>
+  <div role="status">{{ optionsError }}</div>
+</div>
 
 ## Variants
 
@@ -278,26 +361,34 @@ The following Sass variables can be used to customize the generation of the tabs
 | `$tabs-theme-mappings`                          | A map of properties and color shades used generate all tabs variants.                 | `map.merge($-tabs-theme-mappings, $tabs-theme-mappings)` |
 | `$tabs-theme-map`                               | A map of all properties, colors, and color shades used to generate all tabs variants. | `map.deep-merge($-tabs-theme-map, $tabs-theme-map)`      |
 
-## JavaScript options
+## Generator options
 
-Pass constructor settings in the generator’s `options` object. The generator initializes each instance by default. When calling the `Tabs` constructor directly, `initialize` defaults to `false`.
+The following options can be used to customize the tabs component generator.
 
-| Property Name                 | Description                                                                | Default Value                   |
-| ----------------------------- | -------------------------------------------------------------------------- | ------------------------------- |
-| `context`                     | The element that scopes the selector when locating tabs.                   | `document`                      |
-| `selector`                    | The selector used to find tabs in the DOM.                                 | `.tabs`                         |
-| `options`                     | An object of options passed through to the `Tabs` constructor (see below). | `{}`                            |
-| `options.tabListSelector`     | The selector for the tab list element.                                     | `.tab-list`                     |
-| `options.tabTogglesSelector`  | The selector for tab toggle elements.                                      | `.tab-toggle`                   |
-| `options.tabContentsSelector` | The selector for tab content elements.                                     | `.tab-content`                  |
-| `options.expandClass`         | The class(es) applied when a tab is open.                                  | `show`                          |
-| `options.collapseClass`       | The class(es) applied when a tab is closed.                                | `hide`                          |
-| `options.transitionClass`     | The class(es) applied while a tab is transitioning.                        | `null`                          |
-| `options.transitionDuration`  | Duration (ms) for transitions between open/closed states.                  | `300`                           |
-| `options.expandDuration`      | Duration (ms) for closed → open; `-1` uses `transitionDuration`.           | `-1`                            |
-| `options.collapseDuration`    | Duration (ms) for open → closed; `-1` uses `transitionDuration`.           | `-1`                            |
-| `options.automaticActivation` | When `true`, focusing a tab toggle also activates it.                      | `false`                         |
-| `options.prefix`              | Prefix for generated CSS custom properties.                                | `graupl-`                       |
-| `options.key`                 | Key used when generating IDs; `null` auto-generates a random key.          | `null`                          |
-| `options.initializeClass`     | The class applied while the tabs are initializing.                         | `initializing`                  |
-| `options.initialize`          | When `true`, initializes the tabs immediately on creation.                 | `true` when using the generator |
+| Option | Default | Description |
+| --- | --- | --- |
+| `context` | `document` | Document or element whose descendants the generator searches. |
+| `selector` | `.tabs` | CSS selector for tabs. |
+| `options` | `{}` | Settings passed to the constructor for each match. A JSON object in `data-graupl-tabs-options` overrides matching settings for that element. Pass element references through JavaScript. |
+
+## Constructor options
+
+The following options can be used to customize the tabs component during construction.
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `tabsElement` | Required | Root element for the tabs. The generator supplies this element. |
+| `tabListSelector` | `.tab-list` | CSS selector for the tab list. |
+| `tabTogglesSelector` | `.tab-toggle` | CSS selector for tab toggles. |
+| `tabContentsSelector` | `.tab-content` | CSS selector for tab panels. |
+| `expandClass` | `show` | Class names applied when an individual tab panel is expanded. |
+| `collapseClass` | `hide` | Class names applied when an individual tab panel is collapsed. |
+| `transitionClass` | `null` | Class names applied while an individual tab panel is expanding or collapsing. |
+| `transitionDuration` | `300` | Default expand and collapse duration in milliseconds. |
+| `expandDuration` | `-1` | Expand duration in milliseconds. `-1` uses `transitionDuration`. |
+| `collapseDuration` | `-1` | Collapse duration in milliseconds. `-1` uses `transitionDuration`. |
+| `automaticActivation` | `false` | Activate a tab when its toggle receives focus. |
+| `prefix` | `graupl-` | Prefix for generated CSS custom properties and attributes. |
+| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
+| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
+| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |
