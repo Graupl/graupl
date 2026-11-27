@@ -87,6 +87,6 @@
     "vue-codemirror": "^6.1.1"
   },
   "dependencies": {
-    "@graupl/core": "^1.0.0-beta.61"
+    "@graupl/core": "^1.0.0-beta.62"
   }
 }
