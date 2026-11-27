@@ -55,7 +55,19 @@
       name: "loop",
       defaultValue: true,
       label: "Loop slides",
-      help: "Keep scrolling in the same direction past either end. With Loop off, the carousel scrolls back across the track to the opposite end. Enabled by default.",
+      help: "Wrap to the opposite end when you navigate past the first or last slide. With Loop off, autoplay stops at the last slide. Enabled by default.",
+    },
+    {
+      name: "pauseOnEnter",
+      defaultValue: true,
+      label: "Pause when the pointer enters",
+      help: "Pause slide rotation when you move the pointer into the carousel. Enabled by default.",
+    },
+    {
+      name: "resumeOnLeave",
+      defaultValue: true,
+      label: "Resume when the pointer leaves",
+      help: "Resume a pointer pause when you move the pointer out of the carousel. Requires Pause when the pointer enters. With this off, use Play to resume. Enabled by default.",
     },
   ];
 
@@ -155,7 +167,7 @@ generateCarousels();
 
 ## JavaScript customization
 
-Use `data-graupl-carousel-options` to customize a carousel. The example below shows how `autoplay` and `loop` change its behavior.
+Use `data-graupl-carousel-options` to customize a carousel. To try the pointer options, keep automatic rotation on and move the pointer into and out of the preview. Slides change every 10 seconds while rotation is running.
 
 <div ref="options-preview">
   <live-example
@@ -366,29 +378,33 @@ The following options can be used to customize the carousel component generator.
 
 The following options can be used to customize the carousel component during construction.
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `carouselElement` | Required | Root element for the carousel. The generator supplies this element. |
-| `carouselItemsSelector` | `.carousel-item` | CSS selector for carousel items. |
-| `carouselItemContainerSelector` | `.carousel-item-container` | CSS selector for the carousel item container. |
-| `carouselControlsSelector` | `.carousel-control` | CSS selector for carousel controls. |
-| `carouselControlContainerSelector` | `.carousel-control-container` | CSS selector for carousel control container. |
-| `carouselTabsSelector` | `.carousel-tab` | CSS selector for slide indicators. |
-| `carouselTabContainerSelector` | `.carousel-tab-container` | CSS selector for the carousel tab container. |
-| `autoplaySelector` | `.autoplay` | CSS selector for the autoplay button. |
-| `nextSelector` | `.next` | CSS selector for the next button. |
-| `previousSelector` | `.previous` | CSS selector for the previous button. |
-| `activeClass` | `active` | Class names applied to the active slide and its indicator. |
-| `playClass` | `play` | Class names applied to the rotation button when it offers to start rotation. |
-| `pauseClass` | `pause` | Class names applied to the rotation button when it offers to stop rotation. |
-| `autoplay` | `true` | Start with automatic slide rotation enabled. |
-| `automaticActivation` | `true` | Activate a slide when its indicator receives focus. |
-| `transitionDelay` | `10000` | Time between automatic slide changes in milliseconds. |
-| `playText` | `Play` | Accessible label for the rotation button when it offers to start rotation. |
-| `pauseText` | `Pause` | Accessible label for the rotation button when it offers to stop rotation. |
-| `itemsPerPage` | `1` | Number of slides the carousel copies at each end when looping. Set slide widths in CSS to control how many slides are visible. |
-| `loop` | `true` | Keep scrolling in the same direction past either end. When disabled, the carousel scrolls back across the track to the opposite end. |
-| `prefix` | `graupl-` | Prefix passed to the shared component class. Carousel currently generates no prefixed CSS custom properties or attributes. |
-| `key` | `null` | Key used to generate IDs. A `null` or empty key produces a random key. |
-| `initializeClass` | `initializing` | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class. |
-| `initialize` | `false` | Initialize the instance when it is constructed. The generator defaults this to `true`. |
+| Option                             | Default                       | Description                                                                                                                                                      |
+| ---------------------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `carouselElement`                  | Required                      | Root element for the carousel. The generator supplies this element.                                                                                              |
+| `carouselItemsSelector`            | `.carousel-item`              | CSS selector for carousel items.                                                                                                                                 |
+| `carouselItemContainerSelector`    | `.carousel-item-container`    | CSS selector for the carousel item container.                                                                                                                    |
+| `carouselControlsSelector`         | `.carousel-control`           | CSS selector for carousel controls.                                                                                                                              |
+| `carouselControlContainerSelector` | `.carousel-control-container` | CSS selector for carousel control container.                                                                                                                     |
+| `carouselTabsSelector`             | `.carousel-tab`               | CSS selector for slide indicators.                                                                                                                               |
+| `carouselTabContainerSelector`     | `.carousel-tab-container`     | CSS selector for the carousel tab container.                                                                                                                     |
+| `autoplaySelector`                 | `.autoplay`                   | CSS selector for the autoplay button.                                                                                                                            |
+| `nextSelector`                     | `.next`                       | CSS selector for the next button.                                                                                                                                |
+| `previousSelector`                 | `.previous`                   | CSS selector for the previous button.                                                                                                                            |
+| `activeClass`                      | `active`                      | Class names applied to the active slide and its indicator.                                                                                                       |
+| `playClass`                        | `play`                        | Class names applied to the rotation button when it offers to start rotation.                                                                                     |
+| `pauseClass`                       | `pause`                       | Class names applied to the rotation button when it offers to stop rotation.                                                                                      |
+| `autoplay`                         | `true`                        | Start with automatic slide rotation enabled.                                                                                                                     |
+| `pauseOnFocus`                     | `true`                        | Pause rotation when focus enters the carousel.                                                                                                                   |
+| `resumeOnBlur`                     | `false`                       | Resume a focus pause when focus leaves the entire carousel. This requires `pauseOnFocus`.                                                                        |
+| `pauseOnEnter`                     | `true`                        | Pause rotation when the pointer enters the carousel.                                                                                                             |
+| `resumeOnLeave`                    | `true`                        | Resume a pointer pause when the pointer leaves the carousel. This requires `pauseOnEnter`.                                                                       |
+| `automaticActivation`              | `true`                        | Activate a slide when its indicator receives focus.                                                                                                              |
+| `transitionDelay`                  | `10000`                       | Time between automatic slide changes in milliseconds.                                                                                                            |
+| `playText`                         | `Play`                        | Accessible label for the rotation button when it offers to start rotation.                                                                                       |
+| `pauseText`                        | `Pause`                       | Accessible label for the rotation button when it offers to stop rotation.                                                                                        |
+| `itemsPerPage`                     | `1`                           | Number of slides the carousel copies at each end when looping. Set slide widths in CSS to control how many slides are visible.                                   |
+| `loop`                             | `true`                        | Wrap to the opposite end when navigating past the first or last slide. When disabled, navigation stays within those bounds and autoplay stops at the last slide. |
+| `prefix`                           | `graupl-`                     | Prefix passed to the shared component class. Carousel currently generates no prefixed CSS custom properties or attributes.                                       |
+| `key`                              | `null`                        | Key used to generate IDs. A `null` or empty key produces a random key.                                                                                           |
+| `initializeClass`                  | `initializing`                | Class names applied during initialization. Class options accept a string, an array of class names, or `null` for no class.                                       |
+| `initialize`                       | `false`                       | Initialize the instance when it is constructed. The generator defaults this to `true`.                                                                           |
