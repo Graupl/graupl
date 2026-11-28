@@ -196,8 +196,8 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 ```
 
 ```html [CDN]
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/menu.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/navigation.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/css/component/menu.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/css/component/navigation.css">
 ```
 
 ```scss [Sass]
@@ -222,7 +222,7 @@ Load Accessible Menu's `DisclosureMenu` script before the Graupl script, includi
 
 ```html [CDN]
 <script defer src="https://cdn.jsdelivr.net/npm/accessible-menu@5.0.0-beta.7/dist/disclosure-menu.iife.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/navigation.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/js/navigation.js"></script>
 ```
 
 :::

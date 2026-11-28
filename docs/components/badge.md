@@ -55,7 +55,7 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 ```
 
 ```html [CDN]
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/badge.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/css/component/badge.css">
 ```
 
 ```scss [Sass]

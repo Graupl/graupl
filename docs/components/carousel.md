@@ -226,7 +226,7 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 ```
 
 ```html [CDN]
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/component/carousel.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/css/component/carousel.css">
 ```
 
 ```scss [Sass]
@@ -246,7 +246,7 @@ For a page that uses this component, include its generator script below. It find
 ```
 
 ```html [CDN]
-<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/js/carousel.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/js/carousel.js"></script>
 ```
 
 :::

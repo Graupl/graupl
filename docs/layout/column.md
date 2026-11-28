@@ -138,7 +138,7 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 ```
 
 ```html [CDN]
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.58/dist/css/layout/columns.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@graupl/graupl@1.0.0-beta.62/dist/css/layout/columns.css">
 ```
 
 ```scss [Sass]
@@ -151,18 +151,18 @@ The full `graupl.css` stylesheet includes these styles. To load them separately,
 
 The following custom properties can be used to customize the columns layout:
 
-| Property                                 | Description                                                         | Default Value                                                                                                                                          |
-| ---------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `--graupl-columns-row-gap`               | The gap between the rows of the columns.                            | `var(--graupl-spacer-5)`                                                                                                                               |
-| `--graupl-columns-column-gap`            | The gap between the columns of the columns.                         | `var(--graupl-spacer-5)`                                                                                                                               |
-| `--graupl-columns-count`                 | The target column count used to calculate the minimum column width. | `3`                                                                                                                                                    |
-| `--graupl-columns-content-max-width`     | The reference width used to calculate the minimum column width.     | `var(--graupl-content-max-width)`                                                                                                                      |
-| `--graupl-columns-min-width`             | The minimum width of each column.                                   | `calc((var(--graupl-columns-content-max-width) - var(--graupl-columns-column-gap) * (var(--graupl-columns-count) - 1)) / var(--graupl-columns-count))` |
-| `--graupl-columns-max-width`             | The maximum width of each column.                                   | `1fr`                                                                                                                                                  |
-| `--graupl-columns-grid-template-columns` | The grid template columns for the columns.                          | `repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))`                                                           |
-| `--graupl-columns-span`                  | The number of columns a grid item spans.                            | `1`                                                                                                                                                    |
-| `--graupl-columns-background`            | The background of the columns component.                            | No default                                                                                                                                             |
-| `--graupl-columns-color`                 | The text color of the columns component.                            | No default                                                                                                                                             |
+| Property                                 | Description                                                         | Default Value                                                                                                                                                              |
+| ---------------------------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `--graupl-columns-row-gap`               | The gap between the rows of the columns.                            | `var(--graupl-spacer-5)`                                                                                                                                                   |
+| `--graupl-columns-column-gap`            | The gap between the columns of the columns.                         | `var(--graupl-spacer-5)`                                                                                                                                                   |
+| `--graupl-columns-count`                 | The target column count used to calculate the minimum column width. | `3`                                                                                                                                                                        |
+| `--graupl-columns-content-max-width`     | The reference width used to calculate the minimum column width.     | `var(--graupl-content-max-width)`                                                                                                                                          |
+| `--graupl-columns-min-width`             | The minimum width of each column.                                   | `round(down, calc((var(--graupl-columns-content-max-width) - var(--graupl-columns-column-gap) * (var(--graupl-columns-count) - 1)) / var(--graupl-columns-count)), 0.1px)` |
+| `--graupl-columns-max-width`             | The maximum width of each column.                                   | `1fr`                                                                                                                                                                      |
+| `--graupl-columns-grid-template-columns` | The grid template columns for the columns.                          | `repeat(auto-fit, minmax(var(--graupl-columns-min-width), var(--graupl-columns-max-width)))`                                                                               |
+| `--graupl-columns-span`                  | The number of columns a grid item spans.                            | `1`                                                                                                                                                                        |
+| `--graupl-columns-background`            | The background of the columns component.                            | No default                                                                                                                                                                 |
+| `--graupl-columns-color`                 | The text color of the columns component.                            | No default                                                                                                                                                                 |
 
 ## Sass variables
 
